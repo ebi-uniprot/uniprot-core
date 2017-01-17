@@ -123,5 +123,7 @@
     <modules>
     	<module>utils</module>
     	<module>domain</module>
+    	<module>core-domain</module>
+    	<module>core-util</module>
     </modules>
 </project>

@@ -5,5 +5,5 @@
     <artifactId>core-parent</artifactId>
     <version>1.0</version>
   </parent>
-  <artifactId>domain</artifactId>
+  <artifactId>core-util</artifactId>
 </project>
