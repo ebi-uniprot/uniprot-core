@@ -1,0 +1,13 @@
+/bin
+/.settings
+target
+*.iml
+/.project
+/.classpath
+/*/.settings
+/*/.project
+/*/.classpath
+/*/parser.failed.log
+
+
+/.idea
