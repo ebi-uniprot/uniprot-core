@@ -1,0 +1,14 @@
+package uk.ac.ebi.uniprot.domain.uniprot.comments;
+
+import uk.ac.ebi.uniprot.domain.uniprot.interfaces.EvidencedValue;
+
+/**
+ * Generic description of the disease.
+ *
+ * @author Francesco Fazzini
+ * @author Ricardo Antunes
+ * @see Disease
+ * @version 1.0
+ */
+public interface DiseaseDescription extends EvidencedValue{
+}
