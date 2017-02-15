@@ -1,4 +1,4 @@
-package uk.ac.ebi.kraken.interfaces.uniprot.internalsection;
+package uk.ac.ebi.uniprot.domain.uniprot.internalsection;
 
 import java.util.List;
 
