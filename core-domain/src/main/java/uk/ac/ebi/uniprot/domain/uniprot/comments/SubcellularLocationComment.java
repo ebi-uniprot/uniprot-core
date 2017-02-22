@@ -5,7 +5,7 @@ import java.util.List;
 public interface SubcellularLocationComment extends Comment{
 
 
-    public SubcellularMolecule getSubcellularMolecule();
+    public String getSubcellularMolecule();
 
     public Note getSubcellularLocationNote();
 

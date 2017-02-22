@@ -21,17 +21,17 @@ public interface Citation extends HasEvidences {
 
     public boolean hasCitationXrefs();
 
-    public List<AuthoringGroup> getAuthoringGroup();
+    public List<String> getAuthoringGroup();
 
-    public List<Author> getAuthors();
+    public List<String> getAuthors();
 
     public CitationType getCitationType();
 
     public List<SampleSource> getSampleSources();
 
-    public List<CitationSummary> getCitationSummary();
+    public List<String> getCitationSummary();
 
-    public Title getTitle();
+    public String getTitle();
 
     public boolean hasTitle();
 

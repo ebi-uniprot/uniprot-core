@@ -12,5 +12,5 @@ public interface MassSpectrometryRange  {
 
     public boolean hasIsoformId();
 
-    public MassSpectrometryIsoformId getIsoformId();
+    public String getIsoformId();
 }

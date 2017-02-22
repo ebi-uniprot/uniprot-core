@@ -12,7 +12,7 @@ public interface DiseaseReference {
     /**
      * @return an expression used by the external source to uniquely identify the disease
      */
-	public DiseaseReferenceId getDiseaseReferenceId();
+	public String getDiseaseReferenceId();
 
 
     /**

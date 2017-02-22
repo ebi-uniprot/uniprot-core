@@ -9,12 +9,12 @@ public interface MassSpectrometryComment extends Comment {
     public float getMolWeight();
 
     public boolean hasNote();
-    public MassSpectrometryCommentNote getNote();
+    public String getNote();
 
     public List<MassSpectrometryRange> getRanges();
 
     public MassSpectrometryMethod getMethod();
 
-    public List<MassSpectrometryCommentSource> getSources();
+    public List<String> getSources();
 
 }

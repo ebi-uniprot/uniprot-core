@@ -11,9 +11,9 @@ public interface SequenceCautionComment extends Comment {
 
     public boolean hasNote();
 
-    public SequenceCautionCommentNote getNote();
+    public String getNote();
 
     public SequenceCautionType getType();
 
-    public List<SequenceCautionPosition> getPositions();
+    public List<String> getPositions();
 }

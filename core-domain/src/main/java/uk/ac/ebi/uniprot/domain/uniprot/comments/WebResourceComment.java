@@ -3,19 +3,19 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments;
 public interface WebResourceComment extends Comment {
     public String ONLINE_INFORMATION_XMLTAG = "online information";
 
-    public DatabaseName getDatabaseName();
+    public String getDatabaseName();
 
     public boolean hasDatabaseName();
 
-    public DatabaseNote getDatabaseNote();
+    public String getDatabaseNote();
 
     public boolean hasDatabaseNote();
 
-    public DatabaseURL getDatabaseURL();
+    public String getDatabaseURL();
 
     public boolean hasDatabaseURL();
 
-    public DatabaseFTP getDatabaseFTP();
+    public String getDatabaseFTP();
 
     public boolean hasDatabaseFTP();
                                 

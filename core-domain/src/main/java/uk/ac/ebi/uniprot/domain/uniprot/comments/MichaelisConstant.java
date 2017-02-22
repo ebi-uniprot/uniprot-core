@@ -10,6 +10,6 @@ public interface MichaelisConstant  extends HasEvidences {
 
     public MichaelisConstantUnit getUnit();
 
-    public Substrate getSubstrate();
+    public String getSubstrate();
 
 }

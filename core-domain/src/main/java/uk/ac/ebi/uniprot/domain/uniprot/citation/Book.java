@@ -24,18 +24,18 @@ import java.util.List;
  */
 public interface Book extends Citation {
 
-    public Adress getAddress();
+    public String getAddress();
 
-    public BookName getBookName();
+    public String getBookName();
 
-    public List<Editor> getEditors();
+    public List<String> getEditors();
 
-    public Page getFirstPage();
+    public String getFirstPage();
 
-    public Page getLastPage();
+    public String getLastPage();
 
-    public Volume getVolume();
+    public String getVolume();
 
-    public Publisher getPublisher();
+    public String getPublisher();
 
 }

@@ -40,29 +40,19 @@ import java.io.Serializable;
  * @see DiseaseComment
  * @version 1.0
  */
-public interface Disease extends Serializable{
+public interface Disease {
     /**
      * @return disease id (ID)
      */
     public DiseaseId getDiseaseId();
 
     /**
-     * @param diseaseId disease id (ID)
-     */
-    public void setDiseaseId(DiseaseId diseaseId);
-
-    /**
      * @return disease acronym (AR)
      */
-    public DiseaseAcronym getAcronym();
-
-    public void setDiseaseAcronym(DiseaseAcronym diseaseAcronym);
+    public String getAcronym();
 
     public DiseaseDescription getDescription();
 
-    public void setDiseaseDescription(DiseaseDescription diseaseDescription);
-
     public DiseaseReference getReference();
 
-    public void setDiseaseReference(DiseaseReference reference);
 }

@@ -12,7 +12,7 @@ public interface AlternativeProductsIsoform  extends   Serializable  {
     public Note getNote();
     public boolean hasNote();
     public List<IsoformId> getIds();
-    public List<IsoformSequenceId> getSequenceIds();
+    public List<String> getSequenceIds();
     public IsoformSequenceStatus getIsoformSequenceStatus();
 
 }

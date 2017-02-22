@@ -6,9 +6,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.citation;
 
 public interface Thesis extends Citation{
 
-	public Institute getInstitute();
+	public String getInstitute();
 
-    public void setInstitute(Institute institute);
-
-    public Adress getAddress();
+    public String getAddress();
 }
