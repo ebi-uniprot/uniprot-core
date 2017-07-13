@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import uk.ac.ebi.uniprot.domain.common.Sequence;
+import uk.ac.ebi.uniprot.domain.uniprot.api.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
@@ -8,10 +10,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.internalsection.InternalSection;
 
 import java.util.List;
-import uk.ac.ebi.uniprot.domain.common.Sequence;
 
 /**
- * 
+ *
  * @author jieluo
  * @date 17 Jan 2017
  * @time 18:41:20
@@ -23,7 +24,7 @@ public interface UniProtEntry {
      * Returns the Primary UniProtAccessions of the UniProtEntry. <br>
      * <br>
      * This value can be found in first elements in the AC line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ID   CYC_HUMAN      STANDARD;      PRT;   104 AA.
      * AC   <font color="#000000">P99999</font>; <font color="#000000">P00001</font>; <font color=
@@ -34,9 +35,9 @@ public interface UniProtEntry {
      * DE   Cytochrome c.
      * ...</font>
      * </pre>
-     * 
+     *
      * In XML:
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> &lt;entry dataset="Swiss-Prot" created="1986-07-21" modified="2005-02-01"&gt;
      * &lt;accession&gt;<font color="#000000">P99999</font>&lt;/accession&gt;
@@ -60,7 +61,7 @@ public interface UniProtEntry {
      * Returns the list of UniProtAccessions of the UniProtEntry. <br>
      * <br>
      * These values can be found in the AC line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ID   CYC_HUMAN      STANDARD;      PRT;   104 AA.
      * AC   <font color="#000000">P99999</font>; <font color="#000000">P00001</font>; <font color=
@@ -71,9 +72,9 @@ public interface UniProtEntry {
      * DE   Cytochrome c.
      * ...</font>
      * </pre>
-     * 
+     *
      * In XML:
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> &lt;entry dataset="Swiss-Prot" created="1986-07-21" modified="2005-02-01"&gt;
      * &lt;accession&gt;<font color="#000000">P99999</font>&lt;/accession&gt;
@@ -97,7 +98,7 @@ public interface UniProtEntry {
      * Returns the UniProtId of the UniProtEntry. <br>
      * <br>
      * This value can be found in the ID line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ID   <font color="#000000">CYC_HUMAN</font>      STANDARD;      PRT;   104 AA.
      * AC   P99999; P00001; Q6NUR2; Q6NX69; Q96BV4;
@@ -107,9 +108,9 @@ public interface UniProtEntry {
      * DE   Cytochrome c.
      * ...</font>
      * </pre>
-     * 
+     *
      * In XML:
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> &lt;entry dataset="Swiss-Prot" created="1986-07-21" modified="2005-02-01"&gt;
      * &lt;accession&gt;P99999&lt;/accession&gt;
@@ -133,7 +134,7 @@ public interface UniProtEntry {
      * Returns the taxonomy annotated in the UniProtEntry. <br>
      * <br>
      * These values can be found in the OC line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ...
      * OS   Serratia marcescens.
@@ -143,9 +144,9 @@ public interface UniProtEntry {
      * OX   NCBI_TaxID=615;
      * ...</font>
      * </pre>
-     * 
+     *
      * In XML:
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ...
      * &lt;organism key="2"&gt;
@@ -176,7 +177,7 @@ public interface UniProtEntry {
      * Returns the Entry Audit Information. <br>
      * <br>
      * These values can be found in the DT line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ID   CYC_HUMAN      STANDARD;      PRT;   104 AA.
      * AC   P99999; P00001; Q6NUR2; Q6NX69; Q96BV4;
@@ -197,7 +198,7 @@ public interface UniProtEntry {
 
     ProteinDescription getProteinDescription();
 
-    public List<Comment> getComments();
+    public Comments getComments();
 
     <T extends Comment> List<T> getComments(CommentType type);
 
@@ -212,7 +213,7 @@ public interface UniProtEntry {
      * backward compatibility a List of Organisms is still supported through this interface. <br/>
      * <br/>
      * This value can be found in the OS line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> GN   Name=CYP71A2; Synonyms=CYPEG4;
      * OS   <font color="#000000">Solanum melongena (Eggplant) (Aubergine).</font>
@@ -231,7 +232,7 @@ public interface UniProtEntry {
      * the host organism(s) that are susceptible to be infected by a virus. <br>
      * <br>
      * This value can be found in the OH line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> OC   Viruses; ssRNA positive-strand viruses, no DNA stage; Picornaviridae;
      * OC   Hepatovirus.
@@ -252,7 +253,7 @@ public interface UniProtEntry {
      * Returns the list of DatabaseCrossReferences annotated in the UniProtEntry. <br>
      * <br>
      * These values can be found in the DR lines of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ...
      * CC   -!- SIMILARITY: Belongs to the cytochrome c family.
@@ -261,9 +262,9 @@ public interface UniProtEntry {
      * KW   Acetylation; Apoptosis; Direct protein sequencing; Electron transport;
      * ...</font>
      * </pre>
-     * 
+     *
      * In XML:
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ...
      * &lt;comment type="similarity"&gt;
@@ -292,7 +293,7 @@ public interface UniProtEntry {
      * Returns the Sequence annotation in the UniProtEntry. <br>
      * <br>
      * These values can be found in the SQ line of the flat file on the marked position.
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ...
      * FT   CONFLICT     40     40       T -> I (in Ref. 7; AAH68464).
@@ -302,9 +303,9 @@ public interface UniProtEntry {
      * //
      * ...</font>
      * </pre>
-     * 
+     *
      * In XML:
-     * 
+     *
      * <pre class="example">
      * <font color="#AAAAAA"> ...
      * &lt;/feature&gt;
