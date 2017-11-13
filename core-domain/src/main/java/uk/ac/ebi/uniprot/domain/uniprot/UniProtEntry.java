@@ -4,8 +4,6 @@ import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.uniprot.api.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.internalsection.InternalSection;
 
@@ -199,8 +197,6 @@ public interface UniProtEntry {
     ProteinDescription getProteinDescription();
 
     public Comments getComments();
-
-    <T extends Comment> List<T> getComments(CommentType type);
 
     public List<Citation> getCitations();
 
