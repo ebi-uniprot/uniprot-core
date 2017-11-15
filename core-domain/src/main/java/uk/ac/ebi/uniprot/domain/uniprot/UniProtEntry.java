@@ -1,9 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.common.Sequence;
+import uk.ac.ebi.uniprot.domain.gene.Gene;
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.uniprot.api.Comments;
-import uk.ac.ebi.uniprot.domain.uniprot.citation.Citation;
-import uk.ac.ebi.uniprot.domain.uniprot.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.internalsection.InternalSection;
 
@@ -221,7 +223,7 @@ public interface UniProtEntry {
      *
      * @return the List of Organisms in which this protein is found.
      */
-    public Organism getOrganism();
+    public UniProtOrganism getOrganism();
 
     /**
      * Returns the list of organism hosts. This data item is optional and appears only in viral entries. It indicates
@@ -243,7 +245,7 @@ public interface UniProtEntry {
      *
      * @return The list of organism hosts.
      */
-    public List<OrganismHost> getOrganismHosts();
+    public List<Taxon> getOrganismHosts();
 
     /**
      * Returns the list of DatabaseCrossReferences annotated in the UniProtEntry. <br>
@@ -320,7 +322,7 @@ public interface UniProtEntry {
      */
     public Sequence getSequence();
 
-    public List<NcbiTaxonomyId> getNcbiTaxonomyIds();
+    public List<UniProtOrganism> getNcbiTaxonomyIds();
 
     public Boolean isFragment();
 

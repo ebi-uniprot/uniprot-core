@@ -7,11 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AbsorptionImpl implements Absorption {
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
     private int max;
     private String absorptionNote;
     private boolean approximate;

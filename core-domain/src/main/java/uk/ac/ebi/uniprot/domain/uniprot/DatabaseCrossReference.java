@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.HasEvidences;
-
 /**
  * The DBCrossReference annotation of the {@link UniProtEntry UniProtEntry}.
  * This interface defines the coarse grain access to the Databasecrossreference

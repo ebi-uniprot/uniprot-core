@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.HasFreeText;
+import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
 
 public interface AlternativeProductsCommentComment extends HasFreeText {
 }

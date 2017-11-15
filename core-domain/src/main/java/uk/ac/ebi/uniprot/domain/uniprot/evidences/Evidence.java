@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidences;
 
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 // **EV EI4; PIR; -; T37459; 14-JUL-2005.
@@ -40,11 +39,10 @@ import java.time.LocalDate;
  * &lt;sequence length="67" mass="8012" checksum="57098438650D14B1" modified="1997-07-01">
  * ...</font></pre>
  */
-public interface Evidence extends Serializable, Comparable<Evidence> {
-	 EvidenceCategory getCategory();
+public interface Evidence extends Comparable<Evidence> {
 	 LocalDate getDate();
 	 EvidenceType getType();
 	 EvidenceCode getEvidenceCode();
-	 String getTypeValue();
 	 String getAttribute();
+	 String getValue();
 }

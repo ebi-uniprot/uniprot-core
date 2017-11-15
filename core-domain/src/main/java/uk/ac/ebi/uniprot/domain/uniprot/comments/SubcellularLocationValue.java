@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 
 /**
  * Created by IntelliJ IDEA.

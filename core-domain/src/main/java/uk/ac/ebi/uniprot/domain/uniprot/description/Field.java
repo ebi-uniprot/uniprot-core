@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 
 /**
  * Stores the sub category type of a specific category as well as the respective value.

@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.EvidencedValue;
-
 /**
  * Encapsulates a single gene coding of the {@link UniProtEntry UniProtEntry}.
  * The gene coding for a protein originates from the mitochondria, the chloroplast, the cyanelle, the nucleomorph or a plasmid.

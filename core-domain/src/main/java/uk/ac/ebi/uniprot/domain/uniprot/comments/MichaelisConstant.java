@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.HasEvidences;
+import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 
 public interface MichaelisConstant  extends HasEvidences {
 

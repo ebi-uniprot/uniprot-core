@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 
 import java.util.ArrayList;
 import java.util.List;

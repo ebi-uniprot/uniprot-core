@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.interfaces.EvidencedValue;
 
 import java.util.List;
 
