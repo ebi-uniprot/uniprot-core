@@ -21,11 +21,11 @@ public class TaxonNodeImpl implements TaxonNode {
     }
 
     @Override
-    public List<String> getTaxonLineage() {
-        List<String> names = new ArrayList<>();
+    public List<Taxon> getTaxonLineage() {
+        List<Taxon> names = new ArrayList<>();
         TaxonNode parentNode = this.getParent();
         while(parentNode !=null){
-            names.add(parentNode.getTaxon().getScientificName());
+            names.add(parentNode.getTaxon());
             parentNode = parentNode.getParent();
         }
         Collections.reverse(names);

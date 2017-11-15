@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonNode;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -43,13 +45,19 @@ public class TaxonNodeImplTest {
         assertEquals(9606, node.getTaxon().getTaxonId().getTaxonId());
         assertEquals(TaxonomyRank.SPECIES, node.getRank());
         assertEquals(homo, node.getParent());
-        List<String> lineage = node.getTaxonLineage();
+        List<Taxon> lineage = node.getTaxonLineage();
+        List<String> lineageString = 
+                lineage.stream().map(Taxon::getScientificName)
+                .collect(Collectors.toList());
         List<String> expected = Arrays.asList(new String[]{"Haplorrhini", "Catarrhini", "Hominidae", "Homo"});
-        assertEquals(expected, lineage);
+        assertEquals(expected, lineageString);
         lineage = homo.getTaxonLineage();
+      lineageString = 
+                lineage.stream().map(Taxon::getScientificName)
+                .collect(Collectors.toList());
         expected = Arrays.asList(new String[]{"Haplorrhini", "Catarrhini", "Hominidae"});
 
-        assertEquals(expected, lineage);
+        assertEquals(expected, lineageString);
     }
 
 }

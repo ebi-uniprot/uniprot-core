@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface TaxonNode  {
     TaxonNode getParent();
-    List<String> getTaxonLineage();
+    List<Taxon> getTaxonLineage();
     TaxonomyRank getRank();
     Taxon getTaxon();
 }

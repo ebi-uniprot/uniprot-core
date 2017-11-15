@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.uniprot.api.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
@@ -223,7 +224,7 @@ public interface UniProtEntry {
      *
      * @return the List of Organisms in which this protein is found.
      */
-    public UniProtOrganism getOrganism();
+    public Organism getOrganism();
 
     /**
      * Returns the list of organism hosts. This data item is optional and appears only in viral entries. It indicates
@@ -245,7 +246,7 @@ public interface UniProtEntry {
      *
      * @return The list of organism hosts.
      */
-    public List<Taxon> getOrganismHosts();
+    public List<Organism> getOrganismHosts();
 
     /**
      * Returns the list of DatabaseCrossReferences annotated in the UniProtEntry. <br>
@@ -322,7 +323,7 @@ public interface UniProtEntry {
      */
     public Sequence getSequence();
 
-    public List<UniProtOrganism> getNcbiTaxonomyIds();
+    public UniProtTaxonId getTaxonId();
 
     public Boolean isFragment();
 
