@@ -14,5 +14,5 @@ public interface ElectronicArticle extends Citation {
 
     public Locator getLocator();
 
-    public JournalName getJournalName();
+    public String getJournalName();
 }

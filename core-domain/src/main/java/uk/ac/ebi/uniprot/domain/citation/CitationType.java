@@ -4,7 +4,6 @@ package uk.ac.ebi.uniprot.domain.citation;
 public enum CitationType {
 
 	JOURNAL_ARTICLE("journal article"),
-	UNPUBLISHED_JOURNAL_ARTICLE("unpublished journal article"),
 	BOOK("book"),
 	ELECTRONIC_ARTICLE("online journal article"),
 	PATENT("patent"),

@@ -19,7 +19,7 @@ package uk.ac.ebi.uniprot.domain.citation;
 
 public interface JournalArticle extends Citation{
 
-    public JournalName getJournalName();
+    public String getJournalName();
     public String getFirstPage();
 	public String getLastPage();
     public String getVolume();
