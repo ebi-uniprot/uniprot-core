@@ -32,7 +32,7 @@ package uk.ac.ebi.uniprot.domain.uniprot;
  *
  */
 
-public enum SampleSourceType {
+public enum ReferenceCommentType {
 
     PLASMID("PLASMID"),
 	TISSUE("TISSUE"),
@@ -41,7 +41,7 @@ public enum SampleSourceType {
 
     private String value;
 
-    private SampleSourceType(String type){
+    private ReferenceCommentType(String type){
         this.value = type;
     }
 
@@ -49,8 +49,8 @@ public enum SampleSourceType {
 		return value;
 	}
 
-	public static SampleSourceType typeOf (String value) {
-		for (SampleSourceType type : SampleSourceType.values()) {
+	public static ReferenceCommentType typeOf (String value) {
+		for (ReferenceCommentType type : ReferenceCommentType.values()) {
 			if (type.getValue().equalsIgnoreCase(value)) {
 				return type;
 			}
