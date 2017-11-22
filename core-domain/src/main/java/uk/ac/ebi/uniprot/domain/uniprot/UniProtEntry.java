@@ -284,9 +284,8 @@ public interface UniProtEntry {
      *
      * @return The DatabaseCrossReferences annotation of the UniProtEntry.
      */
-    public List<DatabaseCrossReference> getDatabaseCrossReferences();
+    public  UniProtDatabaseCrossReferences getDatabaseCrossReferences();
 
-    public List<DatabaseCrossReference> getDatabaseCrossReferences(DatabaseType type);
 
     /**
      * Returns the Sequence annotation in the UniProtEntry. <br>
