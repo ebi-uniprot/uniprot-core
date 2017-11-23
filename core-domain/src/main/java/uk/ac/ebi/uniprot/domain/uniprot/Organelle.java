@@ -17,6 +17,4 @@ package uk.ac.ebi.uniprot.domain.uniprot;
  */
 public interface Organelle extends EvidencedValue  {
      GeneEncodingType getType();
-     boolean hasValue();
-
 }

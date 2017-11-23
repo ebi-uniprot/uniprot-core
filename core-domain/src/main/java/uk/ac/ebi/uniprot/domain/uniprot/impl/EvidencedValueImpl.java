@@ -7,13 +7,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class EvidencedValueImpl implements EvidencedValue {
+public abstract class EvidencedValueImpl implements EvidencedValue {
     private String value;
     private List<Evidence> evidences;
 
     public EvidencedValueImpl(String value, List<Evidence> evidences) {
-        this.value = value;
-        if(evidences !=null)
+        if(value ==null){
+            this.value ="";
+        }else
+            this.value = value;
+        if((evidences !=null) && !evidences.isEmpty())
             this.evidences = Collections.unmodifiableList(evidences);
         else
             this.evidences = Collections.emptyList();

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import uk.ac.ebi.uniprot.domain.common.EntryId;
 import uk.ac.ebi.uniprot.domain.common.Value;
 
 
@@ -33,6 +34,6 @@ import uk.ac.ebi.uniprot.domain.common.Value;
  * &lt;/entry&gt;</font></pre>
  */
 
-public interface UniProtAccession extends Value {
+public interface UniProtAccession extends EntryId {
     boolean isValidAccession();
 }
