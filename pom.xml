@@ -8,6 +8,8 @@
         <version>1.0</version>
         <relativePath>../uniprot-ujdk-parent</relativePath>
     </parent>
+
+    
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>core-parent</artifactId>
@@ -121,9 +123,7 @@
 
    
     <modules>
-    	<module>utils</module>
-    	<module>domain</module>
-    	<module>core-domain</module>
-    	<module>core-util</module>
+   		 <module>core-util</module>
+    	<module>core-domain</module>   	
     </modules>
 </project>
