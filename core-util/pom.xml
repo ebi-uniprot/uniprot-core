@@ -4,6 +4,7 @@
     <groupId>uk.ac.ebi.uniprot</groupId>
     <artifactId>core-parent</artifactId>
     <version>1.0</version>
+    <relativePath>../</relativePath>
   </parent>
   
   <version>0.1-SNAPSHOT</version>

@@ -5,6 +5,9 @@ public interface BioPhysicoChemicalPropertiesComment extends Comment {
 
 	public Absorption getAbsorption();
 	public boolean hasAbsorptionProperty();
+	
+	public KineticParameters getKineticParameters();
+	public boolean hasKineticParametersProperty();
 
 	public PHDependence getPHDependence();
 	public boolean hasPHDependenceProperty();
@@ -15,7 +18,6 @@ public interface BioPhysicoChemicalPropertiesComment extends Comment {
 	public TemperatureDependence getTemperatureDependence();
 	public boolean hasTemperatureDependenceProperty();
 
-	public KineticParameters getKineticParameters();
-	public boolean hasKineticParametersProperty();
+
 
 }

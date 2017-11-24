@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import java.util.List;
-import java.io.Serializable;
 
-public interface KineticParameters extends Serializable {
+public interface KineticParameters {
+    public List<MaximumVelocity> getMaximumVelocities();
 
     public List<MichaelisConstant> getMichaelisConstants();
 
-    public List<MaximumVelocity> getMaximumVelocities();
+    public KPNote getNote();
 
-    public Note getNote();
     public boolean hasNote();
 
 }

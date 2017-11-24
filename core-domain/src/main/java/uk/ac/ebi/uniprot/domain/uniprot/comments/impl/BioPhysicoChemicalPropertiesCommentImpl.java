@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.BioPhysicoChemicalPropertiesComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
@@ -14,26 +15,41 @@ import java.util.List;
 
 public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
         implements BioPhysicoChemicalPropertiesComment {
+    public static PHDependence createPHDependence(List<EvidencedValue> texts) {
+        return new PHDependenceImpl(texts);
+    }
 
-    private Absorption absorption;
-    private PHDependence phDependence;
-    private RedoxPotential redoxPotential;
-    private TemperatureDependence temperatureDependence;
-    private KineticParameters kineticParameters;
+    public static RedoxPotential createRedoxPotential(List<EvidencedValue> texts) {
+        return new RedoxPotentialImpl(texts);
+    }
 
-    public BioPhysicoChemicalPropertiesCommentImpl() {
-        this.setCommentType(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
-        this.absorption = new AbsorptionImpl();
-        this.redoxPotential = new RedoxPotentialImpl();
+    public static TemperatureDependence createTemperatureDependence(List<EvidencedValue> texts) {
+        return new TemperatureDependenceImpl(texts);
+    }
+
+    private final Absorption absorption;
+    private final KineticParameters kineticParameters;
+    private final PHDependence phDependence;
+    private final RedoxPotential redoxPotential;
+    private final TemperatureDependence temperatureDependence;
+
+    public BioPhysicoChemicalPropertiesCommentImpl(Absorption absorption,
+        KineticParameters kineticParameters,
+        PHDependence phDependence,
+        RedoxPotential redoxPotential,
+        TemperatureDependence temperatureDependence) {
+        super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+
+        this.absorption = absorption;
+        this.kineticParameters = kineticParameters;
+        this.phDependence = phDependence;
+        this.redoxPotential = redoxPotential;
+        this.temperatureDependence = temperatureDependence;
     }
 
     @Override
     public Absorption getAbsorption() {
         return this.absorption;
-    }
-
-    public void setAbsorption(Absorption absorption) {
-        this.absorption = absorption;
     }
 
     @Override
@@ -51,17 +67,9 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
 
     }
 
-    public void setPHDepencence(PHDependence phDependence) {
-        this.phDependence = phDependence;
-    }
-
     @Override
     public boolean hasPHDependenceProperty() {
-        if (this.phDependence == null) {
-            return false;
-        } else {
-            return true;
-        }
+        return ((this.phDependence != null) && !this.phDependence.getTexts().isEmpty());
     }
 
     @Override
@@ -71,15 +79,8 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
 
     @Override
     public boolean hasRedoxPotentialProperty() {
-        if (this.redoxPotential == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+        return ((this.redoxPotential != null) && !this.redoxPotential.getTexts().isEmpty());
 
-    public void setRedoxPotential(RedoxPotential redoxPotential) {
-        this.redoxPotential = redoxPotential;
     }
 
     @Override
@@ -89,19 +90,7 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
 
     @Override
     public boolean hasTemperatureDependenceProperty() {
-        if (this.temperatureDependence == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public void setTemperatureDependence(TemperatureDependence temperatureDependence) {
-        this.temperatureDependence = temperatureDependence;
-    }
-
-    public void setKineticParameters(KineticParameters kineticParameters) {
-        this.kineticParameters = kineticParameters;
+        return ((this.temperatureDependence != null) && !this.temperatureDependence.getTexts().isEmpty());
     }
 
     @Override
@@ -111,44 +100,56 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
 
     @Override
     public boolean hasKineticParametersProperty() {
-        return false;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        if (!super.equals(o))
-            return false;
-
-        final BioPhysicoChemicalPropertiesCommentImpl that = (BioPhysicoChemicalPropertiesCommentImpl) o;
-
-        if (absorption != null ? !absorption.equals(that.absorption) : that.absorption != null)
-            return false;
-        if (kineticParameters != null ? !kineticParameters.equals(that.kineticParameters)
-                : that.kineticParameters != null)
-            return false;
-        if (phDependence != null ? !phDependence.equals(that.phDependence) : that.phDependence != null)
-            return false;
-        if (redoxPotential != null ? !redoxPotential.equals(that.redoxPotential) : that.redoxPotential != null)
-            return false;
-        if (temperatureDependence != null ? !temperatureDependence.equals(that.temperatureDependence)
-                : that.temperatureDependence != null)
-            return false;
-        return true;
+        return this.kineticParameters != null;
     }
 
     @Override
     public int hashCode() {
+        final int prime = 31;
         int result = super.hashCode();
-        result = 29 * result + (absorption != null ? absorption.hashCode() : 0);
-        result = 29 * result + (phDependence != null ? phDependence.hashCode() : 0);
-        result = 29 * result + (redoxPotential != null ? redoxPotential.hashCode() : 0);
-        result = 29 * result + (temperatureDependence != null ? temperatureDependence.hashCode() : 0);
-        result = 29 * result + (kineticParameters != null ? kineticParameters.hashCode() : 0);
+        result = prime * result + ((absorption == null) ? 0 : absorption.hashCode());
+        result = prime * result + ((kineticParameters == null) ? 0 : kineticParameters.hashCode());
+        result = prime * result + ((phDependence == null) ? 0 : phDependence.hashCode());
+        result = prime * result + ((redoxPotential == null) ? 0 : redoxPotential.hashCode());
+        result = prime * result + ((temperatureDependence == null) ? 0 : temperatureDependence.hashCode());
         return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        BioPhysicoChemicalPropertiesCommentImpl other = (BioPhysicoChemicalPropertiesCommentImpl) obj;
+        if (absorption == null) {
+            if (other.absorption != null)
+                return false;
+        } else if (!absorption.equals(other.absorption))
+            return false;
+        if (kineticParameters == null) {
+            if (other.kineticParameters != null)
+                return false;
+        } else if (!kineticParameters.equals(other.kineticParameters))
+            return false;
+        if (phDependence == null) {
+            if (other.phDependence != null)
+                return false;
+        } else if (!phDependence.equals(other.phDependence))
+            return false;
+        if (redoxPotential == null) {
+            if (other.redoxPotential != null)
+                return false;
+        } else if (!redoxPotential.equals(other.redoxPotential))
+            return false;
+        if (temperatureDependence == null) {
+            if (other.temperatureDependence != null)
+                return false;
+        } else if (!temperatureDependence.equals(other.temperatureDependence))
+            return false;
+        return true;
     }
 
     @Override
@@ -208,7 +209,7 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
                     sb.append("CC         Vmax=" +
                             maximumVelocity.getVelocity() +
                             " " +
-                            maximumVelocity.getMaxVelocityUnit() +
+                            maximumVelocity.getVelocityUnit() +
                             " " +
                             maximumVelocity.getEnzyme() +
                             ";");
@@ -242,4 +243,26 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
 
         return sb.toString();
     }
+
+    static class RedoxPotentialImpl extends FreeTextImpl implements RedoxPotential {
+
+        public RedoxPotentialImpl(List<EvidencedValue> texts) {
+            super(texts);
+        }
+    }
+
+    static class PHDependenceImpl extends FreeTextImpl implements PHDependence {
+
+        public PHDependenceImpl(List<EvidencedValue> texts) {
+            super(texts);
+        }
+    }
+
+    static class TemperatureDependenceImpl extends FreeTextImpl implements TemperatureDependence {
+
+        public TemperatureDependenceImpl(List<EvidencedValue> texts) {
+            super(texts);
+        }
+    }
+
 }
