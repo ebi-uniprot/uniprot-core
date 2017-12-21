@@ -1,4 +1,4 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-public interface PharmaceuticalComment extends TextOnlyComment {
+public interface PharmaceuticalComment extends FreeTextComment {
 }

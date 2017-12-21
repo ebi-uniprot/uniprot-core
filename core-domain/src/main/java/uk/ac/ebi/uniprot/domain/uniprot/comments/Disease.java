@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-import java.io.Serializable;
-
 /**
  * Container used to represent the definition of the disease.
  * <p>
@@ -44,15 +42,16 @@ public interface Disease {
     /**
      * @return disease id (ID)
      */
-    public DiseaseId getDiseaseId();
+     DiseaseId getDiseaseId();
 
     /**
      * @return disease acronym (AR)
      */
-    public String getAcronym();
+     String getAcronym();
 
-    public DiseaseDescription getDescription();
+     DiseaseDescription getDescription();
 
-    public DiseaseReference getReference();
+     DiseaseReference getReference();
+    boolean hasDefinedDisease();
 
 }

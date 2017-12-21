@@ -70,8 +70,6 @@ public enum CommentType {
 	CAUTION("CAUTION","caution"),
 	SEQUENCE_CAUTION("SEQUENCE CAUTION","sequence caution"),
 	WEBRESOURCE("WEB RESOURCE","online information"),
-    @Deprecated
-    PAGE("PAGE","page"),
     UNKNOWN("UNKOWN","unknown");
 
 	private final String xmlDisplayValue;

@@ -2,18 +2,15 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import java.util.List;
 
-/**
- * User: Emilio Salazar Date: 14-May-2007
- */
 public interface SequenceCautionComment extends Comment {
 
-    public String getSequence();
+     String getSequence();
 
-    public boolean hasNote();
+     boolean hasNote();
 
-    public String getNote();
+     String getNote();
 
-    public SequenceCautionType getType();
+     SequenceCautionType getType();
 
-    public List<String> getPositions();
+     List<String> getPositions();
 }

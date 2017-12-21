@@ -1,0 +1,94 @@
+package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
+
+import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionType;
+
+import java.util.Collections;
+import java.util.List;
+
+public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
+    private final SequenceCautionType sequenceCautionType;
+    private final String sequence;
+    private final List<String> positions;
+    private final String note;
+    public SequenceCautionCommentImpl(SequenceCautionType sequenceCautionType, String sequence,
+            List<String> positions,
+            String note) {
+        super(CommentType.SEQUENCE_CAUTION);
+        this.sequenceCautionType = sequenceCautionType;
+        this.sequence =sequence;
+        if ((positions == null) || positions.isEmpty()) {
+            this.positions = Collections.emptyList();
+        } else {
+            this.positions = Collections.unmodifiableList(positions);
+        }
+        this.note = note;
+    }
+
+    @Override
+    public String getSequence() {
+        return sequence;
+    }
+
+    @Override
+    public boolean hasNote() {
+        return ((note !=null) && !note.isEmpty());
+    }
+
+    @Override
+    public String getNote() {
+        return note;
+    }
+
+    @Override
+    public SequenceCautionType getType() {
+        return sequenceCautionType;
+    }
+
+    @Override
+    public List<String> getPositions() {
+        return positions;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((note == null) ? 0 : note.hashCode());
+        result = prime * result + ((positions == null) ? 0 : positions.hashCode());
+        result = prime * result + ((sequence == null) ? 0 : sequence.hashCode());
+        result = prime * result + ((sequenceCautionType == null) ? 0 : sequenceCautionType.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        SequenceCautionCommentImpl other = (SequenceCautionCommentImpl) obj;
+        if (note == null) {
+            if (other.note != null)
+                return false;
+        } else if (!note.equals(other.note))
+            return false;
+        if (positions == null) {
+            if (other.positions != null)
+                return false;
+        } else if (!positions.equals(other.positions))
+            return false;
+        if (sequence == null) {
+            if (other.sequence != null)
+                return false;
+        } else if (!sequence.equals(other.sequence))
+            return false;
+        if (sequenceCautionType != other.sequenceCautionType)
+            return false;
+        return true;
+    }
+
+}

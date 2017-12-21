@@ -55,16 +55,12 @@ public interface CofactorComment extends Comment {
 	 * @return list of cofactor
 	 */
 	List<Cofactor> getCofactors();
-	/**
-	 * 
-	 * @param cofactors, a list of cofactor
-	 */
-	void setCofactors(List<Cofactor> cofactors);
+
 	/**
 	 * 
 	 * @return cofactor note
 	 */
-	Note getNote();
+	CommentNote getNote();
 
 	
 }

@@ -1,4 +1,4 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-public interface TissueSpecificityComment extends TextOnlyComment {
+public interface TissueSpecificityComment extends FreeTextComment {
 }

@@ -7,7 +7,7 @@ public interface SubcellularLocationComment extends Comment{
 
     public String getSubcellularMolecule();
 
-    public Note getSubcellularLocationNote();
+    public CommentNote getSubcellularLocationNote();
 
     public List<SubcellularLocation> getSubcellularLocations();
 }

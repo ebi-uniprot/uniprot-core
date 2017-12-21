@@ -1,12 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-public interface Interaction extends Comment {
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
+
+public interface Interaction {
 
     public InteractionType getInteractionType();
 
-    public InteractorUniProtAccession getInteractorUniProtAccession();
+    public UniProtAccession getInteractionUniProtAccession();
 
-    public InteractionGeneName getInteractionGeneName();
+    public String getInteractionGeneName();
 
     public int getNumberOfExperiments();
 

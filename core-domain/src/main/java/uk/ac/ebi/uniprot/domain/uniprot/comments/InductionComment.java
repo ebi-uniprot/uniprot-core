@@ -1,4 +1,4 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-public interface InductionComment extends TextOnlyComment {
+public interface InductionComment extends FreeTextComment {
 }

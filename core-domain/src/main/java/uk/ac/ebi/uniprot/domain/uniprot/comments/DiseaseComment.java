@@ -46,7 +46,7 @@ public interface DiseaseComment extends Comment{
     /**
      * @return the definition of the disease
      */
-    public Disease getDisease();
+     Disease getDisease();
 
     /**
      * Helper method that verifies whether the {link Disease} object has been populated with a defined disease,
@@ -54,11 +54,11 @@ public interface DiseaseComment extends Comment{
      *
      * @return true if the disease object has a defined disease, false otherwise
      */
-    public boolean hasDefinedDisease();
+     boolean hasDefinedDisease();
     
     /**
      * @return free text description of the manifestation of the disease on the protein containing this comment
      */
-    public Note getNote();
+     CommentNote getNote();
 
 }

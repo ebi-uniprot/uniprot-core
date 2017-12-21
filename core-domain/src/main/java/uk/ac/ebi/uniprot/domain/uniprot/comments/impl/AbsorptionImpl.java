@@ -9,15 +9,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class AbsorptionImpl implements Absorption {
-    private final int max;
-    private final boolean approximate;
-    private final AbsorptionNote note;
-
-    private List<Evidence> evidences;
-
     public static AbsorptionNote createAbsorptionNote(List<EvidencedValue> texts) {
         return new AbsorptionNoteImpl(texts);
     }
+    private final int max;
+    private final boolean approximate;
+    private final AbsorptionNote note;
+    private final List<Evidence> evidences;
 
     public AbsorptionImpl(int max, boolean approximate, AbsorptionNote note, List<Evidence> evidences) {
         this.max = max;
@@ -93,8 +91,7 @@ public class AbsorptionImpl implements Absorption {
             return false;
         return true;
     }
-
-    static class AbsorptionNoteImpl extends FreeTextImpl implements AbsorptionNote {
+    static class AbsorptionNoteImpl extends CommentNoteImpl implements AbsorptionNote {
 
         public AbsorptionNoteImpl(List<EvidencedValue> texts) {
             super(texts);

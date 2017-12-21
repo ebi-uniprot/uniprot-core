@@ -13,7 +13,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.TemperatureDependence;
 
 import java.util.List;
 
-public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
+public class BPCPCommentImpl extends CommentImpl
         implements BioPhysicoChemicalPropertiesComment {
     public static PHDependence createPHDependence(List<EvidencedValue> texts) {
         return new PHDependenceImpl(texts);
@@ -33,7 +33,7 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
     private final RedoxPotential redoxPotential;
     private final TemperatureDependence temperatureDependence;
 
-    public BioPhysicoChemicalPropertiesCommentImpl(Absorption absorption,
+    public BPCPCommentImpl(Absorption absorption,
         KineticParameters kineticParameters,
         PHDependence phDependence,
         RedoxPotential redoxPotential,
@@ -123,7 +123,7 @@ public class BioPhysicoChemicalPropertiesCommentImpl extends CommentImpl
             return false;
         if (getClass() != obj.getClass())
             return false;
-        BioPhysicoChemicalPropertiesCommentImpl other = (BioPhysicoChemicalPropertiesCommentImpl) obj;
+        BPCPCommentImpl other = (BPCPCommentImpl) obj;
         if (absorption == null) {
             if (other.absorption != null)
                 return false;

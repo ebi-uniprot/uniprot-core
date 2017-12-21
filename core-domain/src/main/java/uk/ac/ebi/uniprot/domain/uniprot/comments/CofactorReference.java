@@ -1,13 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-import java.io.Serializable;
 /**
  * 
  * @author jieluo
  * @see CofactorComment
  * @version 1.0
  */
-public interface CofactorReference extends Serializable {
+public interface CofactorReference {
 	/**
 	 * 
 	 * @return cofactor reference type, ChEBI

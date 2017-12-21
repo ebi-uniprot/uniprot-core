@@ -1,4 +1,4 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-public interface ToxicDoseComment extends TextOnlyComment {
+public interface ToxicDoseComment extends FreeTextComment {
 }

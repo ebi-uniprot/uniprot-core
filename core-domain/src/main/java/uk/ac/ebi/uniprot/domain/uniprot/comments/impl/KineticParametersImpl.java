@@ -91,7 +91,7 @@ public class KineticParametersImpl implements KineticParameters {
     }
 
 
-    static class KPNoteImpl extends FreeTextImpl implements KPNote {
+    static class KPNoteImpl extends CommentNoteImpl implements KPNote {
 
         public KPNoteImpl(List<EvidencedValue> texts) {
             super(texts);

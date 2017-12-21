@@ -27,7 +27,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SimilarityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubunitComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.TextOnlyComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.TissueSpecificityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.ToxicDoseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.WebResourceComment;
@@ -151,8 +151,8 @@ public class Comments {
         return getComments(SubunitComment.class);
     }
 
-    public List<TextOnlyComment> getTextOnlyComments() {
-        return getComments(TextOnlyComment.class);
+    public List<FreeTextComment> getTextOnlyComments() {
+        return getComments(FreeTextComment.class);
     }
 
     public List<TissueSpecificityComment> getTissueSpecificityComments() {

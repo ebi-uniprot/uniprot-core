@@ -2,13 +2,13 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.TextOnlyComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
 
 import java.util.List;
 
-public abstract class TextOnlyCommentImpl extends FreeTextImpl implements TextOnlyComment {
+public abstract class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment {
     private final CommentType type;
-    public TextOnlyCommentImpl(CommentType type, List<EvidencedValue> texts) {
+    public FreeTextCommentImpl(CommentType type, List<EvidencedValue> texts) {
         super(texts);
         this.type = type;
        
@@ -32,7 +32,7 @@ public abstract class TextOnlyCommentImpl extends FreeTextImpl implements TextOn
             return false;
         if (getClass() != obj.getClass())
             return false;
-        TextOnlyCommentImpl other = (TextOnlyCommentImpl) obj;
+        FreeTextCommentImpl other = (FreeTextCommentImpl) obj;
         if (type != other.type)
             return false;
         return true;

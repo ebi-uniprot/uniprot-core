@@ -2,5 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import uk.ac.ebi.uniprot.domain.common.Value;
 
-public interface InteractorUniProtAccession extends Value {
+public interface APEvent extends Value{
+
 }
