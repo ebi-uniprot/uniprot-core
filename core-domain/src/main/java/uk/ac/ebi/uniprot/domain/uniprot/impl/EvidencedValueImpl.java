@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class EvidencedValueImpl implements EvidencedValue {
+public class EvidencedValueImpl implements EvidencedValue {
     private String value;
     private List<Evidence> evidences;
 
