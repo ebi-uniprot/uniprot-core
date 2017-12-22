@@ -21,7 +21,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DiseaseBuilderTest {
-
+    @Test
+    public void testNewInstance() {
+        DiseaseBuilder builder1 = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder2 = DiseaseBuilder.newInstance();
+        assertNotNull(builder1);
+        assertNotNull(builder2);
+        assertFalse(builder1== builder2);
+    }
+    
     @Test
     public void testSetDiseaseId() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();

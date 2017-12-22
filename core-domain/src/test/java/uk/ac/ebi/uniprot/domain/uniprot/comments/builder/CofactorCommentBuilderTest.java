@@ -20,7 +20,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class CofactorCommentBuilderTest {
-
+    @Test
+    public void testNewInstance() {
+        CofactorCommentBuilder builder1 = CofactorCommentBuilder.newInstance();
+        CofactorCommentBuilder builder2 = CofactorCommentBuilder.newInstance();
+        assertNotNull(builder1);
+        assertNotNull(builder2);
+        assertFalse(builder1== builder2);
+    }
+    
     @Test
     public void testSetMolecule() {
         CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();

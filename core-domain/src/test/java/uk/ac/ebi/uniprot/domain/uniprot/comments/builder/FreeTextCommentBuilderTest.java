@@ -29,9 +29,11 @@ import java.util.List;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 public class FreeTextCommentBuilderTest {
-
+   
     @Test
     public void testBuildAllergenComment() {
         List<EvidencedValue> texts= createEvidenceValues();

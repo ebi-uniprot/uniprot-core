@@ -42,7 +42,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     }
 
     @Override
-    public SequenceCautionType getType() {
+    public SequenceCautionType getSequenceCautionType() {
         return sequenceCautionType;
     }
 

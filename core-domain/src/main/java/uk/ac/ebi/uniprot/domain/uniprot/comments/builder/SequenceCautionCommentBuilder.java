@@ -12,6 +12,9 @@ public final class SequenceCautionCommentBuilder {
     private  List<String> positions;
     private  String note;
     
+    public static SequenceCautionCommentBuilder newInstance(){
+        return new SequenceCautionCommentBuilder();
+    }
     public SequenceCautionComment build(){
         return new SequenceCautionCommentImpl( sequenceCautionType,  sequence, positions,
                  note) ;

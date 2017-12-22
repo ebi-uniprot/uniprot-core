@@ -15,9 +15,10 @@ public final class MassSpectrometryCommentBuilder {
     private  String note;
     private  List<MassSpectrometryRange> ranges;
     private  List<Evidence> evidences;
-    
-    
-    
+ 
+    public static MassSpectrometryCommentBuilder newInstance(){
+        return new MassSpectrometryCommentBuilder();
+    }
     public MassSpectrometryComment build(){
         return new  MassSpectrometryCommentImpl( method,
                  molWeight,  molWeightError,  note,
@@ -47,7 +48,7 @@ public final class MassSpectrometryCommentBuilder {
         this.evidences = evidences;
         return this; 
     }
-    public static MassSpectrometryRange buildMassSpectrometryRange(Integer start, Integer end, String isoformId){
+    public static MassSpectrometryRange createMassSpectrometryRange(Integer start, Integer end, String isoformId){
         return MassSpectrometryCommentImpl.buildMassSpectrometryRange( start,  end,  isoformId);
     }
 }

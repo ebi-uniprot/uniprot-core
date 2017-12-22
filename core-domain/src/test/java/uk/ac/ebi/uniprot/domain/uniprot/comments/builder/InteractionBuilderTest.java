@@ -14,7 +14,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class InteractionBuilderTest {
-
+    @Test
+    public void testNewInstance() {
+        InteractionBuilder builder1 = InteractionBuilder.newInstance();
+        InteractionBuilder builder2 = InteractionBuilder.newInstance();
+        assertNotNull(builder1);
+        assertNotNull(builder2);
+        assertFalse(builder1== builder2);
+    }
+    
+    
     @Test
     public void testSetInteractionType() {
         InteractionBuilder builder = InteractionBuilder.newInstance();

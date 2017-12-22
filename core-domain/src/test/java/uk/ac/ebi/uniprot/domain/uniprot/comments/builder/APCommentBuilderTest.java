@@ -23,7 +23,16 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class APCommentBuilderTest {
+    @Test
+    public void testNewInstance() {
+        APCommentBuilder builder1 = APCommentBuilder.newInstance();
+        APCommentBuilder builder2 = APCommentBuilder.newInstance();
+        assertNotNull(builder1);
+        assertNotNull(builder2);
+        assertFalse(builder1== builder2);
+    }
 
+    
     @Test
     public void testSetEvents() {
         APCommentBuilder builder = APCommentBuilder.newInstance();

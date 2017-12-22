@@ -10,7 +10,7 @@ public interface SequenceCautionComment extends Comment {
 
      String getNote();
 
-     SequenceCautionType getType();
+     SequenceCautionType getSequenceCautionType();
 
      List<String> getPositions();
 }

@@ -26,6 +26,15 @@ import static org.junit.Assert.*;
 
 public class BPCPCommentBuilderTest {
     @Test
+    public void testNewInstance() {
+        BPCPCommentBuilder builder1 = BPCPCommentBuilder.newInstance();
+        BPCPCommentBuilder builder2 = BPCPCommentBuilder.newInstance();
+        assertNotNull(builder1);
+        assertNotNull(builder2);
+        assertFalse(builder1== builder2);
+    }
+    
+    @Test
     public void testSetAbsorption() {
         int max =21;
         List<EvidencedValue> texts = createEvidenceValues();

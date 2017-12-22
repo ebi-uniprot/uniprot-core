@@ -14,6 +14,9 @@ public final class RnaEditingCommentBuilder {
     private  List<Position> locations;
     private  CommentNote note;
     
+    public static RnaEditingCommentBuilder newInstance(){
+        return new RnaEditingCommentBuilder();
+    }
     public RnaEditingComment build(){
         return new RnaEditingCommentImpl( locationType, locations,
                  note) ;
