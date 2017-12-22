@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSynonym;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,6 +19,9 @@ public class APIsoformImpl implements APIsoform {
     }
     public static IsoformName createIsoformName(String value, List<Evidence> evidences){
         return new IsoformNameImpl(value, evidences);
+    }
+    public static IsoformId createIsoformId(String value){
+        return new IsoformIdImpl(value);
     }
     private final IsoformName name;
     private final List<IsoformSynonym> synonyms;
@@ -45,7 +49,10 @@ public class APIsoformImpl implements APIsoform {
         }else{
             this.sequenceIds =Collections.unmodifiableList(sequenceIds);
         }
-        this.isoformSequenceStatus = isoformSequenceStatus;
+        if(isoformSequenceStatus ==null){
+            this.isoformSequenceStatus =IsoformSequenceStatus.DESCRIBED;
+        }else
+            this.isoformSequenceStatus = isoformSequenceStatus;
     }
     @Override
     public IsoformName getName() {
@@ -145,5 +152,13 @@ public class APIsoformImpl implements APIsoform {
         public IsoformNameImpl(String value, List<Evidence> evidences) {
             super(value, evidences);
         }
+    }
+    static class IsoformIdImpl extends ValueImpl implements IsoformId {
+        public IsoformIdImpl(String value) {
+            super(value);
+         
+        }
+
+      
     }
 }

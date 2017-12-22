@@ -28,7 +28,11 @@ public final class BPCPCommentBuilder {
     private RedoxPotential redoxPotential;
     private TemperatureDependence temperatureDependence;
 
-    BioPhysicoChemicalPropertiesComment build() {
+    public static BPCPCommentBuilder newInstance() {
+        return new BPCPCommentBuilder();
+    }
+
+    public BioPhysicoChemicalPropertiesComment build() {
         return new BPCPCommentImpl(absorption,
                 kineticParameters,
                 phDependence,
@@ -81,122 +85,30 @@ public final class BPCPCommentBuilder {
         return KineticParametersImpl.createKPNote(texts);
     }
 
-    public static final class AbsorptionBuilder {
-        private int max;
-        private boolean approximate;
-        private AbsorptionNote note;
-        private List<Evidence> evidences;
-
-        public Absorption build() {
-            return new AbsorptionImpl(max, approximate, note, evidences);
-        }
-
-        public AbsorptionBuilder setMax(int max) {
-            this.max = max;
-            return this;
-        }
-
-        public AbsorptionBuilder setApproximate(boolean approximate) {
-            this.approximate = approximate;
-            return this;
-        }
-
-        public AbsorptionBuilder setNote(AbsorptionNote note) {
-            this.note = note;
-            return this;
-        }
-
-        public AbsorptionBuilder setMax(List<Evidence> evidences) {
-            this.evidences = evidences;
-            return this;
-        }
+    public static Absorption createAbsorption(int max, AbsorptionNote note, List<Evidence> evidences) {
+        return createAbsorption(max, false, note, evidences);
     }
 
-    public static final class MaximumVelocityBuilder {
-        private float velocity;
-        private String unit;
-        private String enzyme;
-        private List<Evidence> evidences;
-
-        public MaximumVelocity build() {
-            return new MaximumVelocityImpl(velocity, unit, enzyme, evidences);
-        }
-
-        public MaximumVelocityBuilder setVelocity(float velocity) {
-            this.velocity = velocity;
-            return this;
-        }
-
-        public MaximumVelocityBuilder setUnit(String unit) {
-            this.unit = unit;
-            return this;
-        }
-
-        public MaximumVelocityBuilder setEnzyme(String enzyme) {
-            this.enzyme = enzyme;
-            return this;
-        }
-
-        public MaximumVelocityBuilder setEvidence(List<Evidence> evidences) {
-            this.evidences = evidences;
-            return this;
-        }
+    public static Absorption createAbsorption(int max, boolean approximate, AbsorptionNote note,
+            List<Evidence> evidences) {
+        return new AbsorptionImpl(max, approximate, note, evidences);
     }
 
-    public static final class MichaelisConstantBuilder {
-        private float constant;
-        private MichaelisConstantUnit unit;
-        private String substrate;
-        private List<Evidence> evidences;
-
-        public MichaelisConstant build() {
-            return new MichaelisConstantImpl(constant, unit, substrate, evidences);
-        }
-
-        public MichaelisConstantBuilder setVelocity(float constant) {
-            this.constant = constant;
-            return this;
-        }
-
-        public MichaelisConstantBuilder setUnit(MichaelisConstantUnit unit) {
-            this.unit = unit;
-            return this;
-        }
-
-        public MichaelisConstantBuilder setSubstrate(String substrate) {
-            this.substrate = substrate;
-            return this;
-        }
-
-        public MichaelisConstantBuilder setEvidence(List<Evidence> evidences) {
-            this.evidences = evidences;
-            return this;
-        }
+    public static MaximumVelocity createMaximumVelocity(float velocity, String unit, String enzyme,
+            List<Evidence> evidences) {
+        return new MaximumVelocityImpl(velocity, unit, enzyme, evidences);
     }
 
-    public static final class KineticParametersBuilder {
-        private List<MaximumVelocity> velocities;
-        private List<MichaelisConstant> mConstants;
-        private KPNote note;
-
-        public KineticParameters build() {
-            return new KineticParametersImpl(velocities, mConstants,
-                    note);
-        }
-
-        public KineticParametersBuilder setMaximumVelocities(List<MaximumVelocity> velocities) {
-            this.velocities = velocities;
-            return this;
-        }
-
-        public KineticParametersBuilder setMichaelisConstants(List<MichaelisConstant> mConstants) {
-            this.mConstants = mConstants;
-            return this;
-        }
-
-        public KineticParametersBuilder setNote(KPNote note) {
-            this.note = note;
-            return this;
-        }
+    public static MichaelisConstant createMichaelisConstant(float constant, MichaelisConstantUnit unit,
+            String substrate,
+            List<Evidence> evidences) {
+        return new MichaelisConstantImpl(constant, unit, substrate, evidences);
     }
+
+    public static KineticParameters createKineticParameters(List<MaximumVelocity> velocities,
+            List<MichaelisConstant> mConstants,
+            KPNote note) {
+        return new KineticParametersImpl(velocities, mConstants, note);
+    }
+
 }

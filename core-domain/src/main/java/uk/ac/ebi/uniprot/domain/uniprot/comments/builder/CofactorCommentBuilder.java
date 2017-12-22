@@ -16,6 +16,9 @@ public final class CofactorCommentBuilder {
     private List<Cofactor> cofactors;
     private CommentNote note;
 
+    public static CofactorCommentBuilder newInstance(){
+        return new CofactorCommentBuilder();
+    }
     public CofactorComment build() {
         return new CofactorCommentImpl(molecule, cofactors, note);
     }
@@ -39,28 +42,8 @@ public final class CofactorCommentBuilder {
         return CofactorImpl.createCofactorReference(type, referenceId);
     }
 
-    public static final class CofactorBuilder {
-        private String name;
-        private List<Evidence> evidences;
-        private CofactorReference reference;
-
-        public Cofactor build() {
-            return new CofactorImpl(name, evidences, reference);
-        }
-
-        public CofactorBuilder setName(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public CofactorBuilder setEvidences(List<Evidence> evidences) {
-            this.evidences = evidences;
-            return this;
-        }
-
-        public CofactorBuilder setCofactorReference(CofactorReference reference) {
-            this.reference = reference;
-            return this;
-        }
+    public static Cofactor createCofactor(String name, List<Evidence> evidences, CofactorReference reference) {
+        return new CofactorImpl(name, evidences, reference);
     }
+
 }

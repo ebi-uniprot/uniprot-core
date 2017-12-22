@@ -29,7 +29,7 @@ public class AbsorptionImpl implements Absorption {
 
     @Override
     public List<Evidence> getEvidences() {
-        return this.getEvidences();
+        return this.evidences;
     }
 
     @Override

@@ -22,6 +22,9 @@ public final class APCommentBuilder {
     private  List<APIsoform> isoforms;
     private  APNote note;
     
+    public static APCommentBuilder newInstance(){
+        return new APCommentBuilder();
+    }
     public AlternativeProductsComment build(){
         return new AlternativeProductsCommentImpl( events, 
                 isoforms,  note  );
@@ -53,6 +56,9 @@ public final class APCommentBuilder {
     public static IsoformName createIsoformName(String value, List<Evidence> evidences) {
         return APIsoformImpl.createIsoformName(value, evidences);
     }
+    public static IsoformId createIsoformId(String value) {
+        return APIsoformImpl.createIsoformId(value);
+    }
 
     public static class APIsoformBuilder {
         private IsoformName name;
@@ -62,6 +68,9 @@ public final class APCommentBuilder {
         private List<String> sequenceIds;
         private IsoformSequenceStatus isoformSequenceStatus;
 
+        public static APIsoformBuilder newInstance(){
+            return new APIsoformBuilder();
+        }
         public APIsoform build() {
             return new APIsoformImpl(name, synonyms,
                     note, isoformIds,

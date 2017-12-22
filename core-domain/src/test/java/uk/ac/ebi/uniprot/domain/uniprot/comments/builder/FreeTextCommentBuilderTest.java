@@ -5,7 +5,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.AllergenComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.BiotechnologyComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CautionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DevelopmentalStageComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DisruptionPhenotypeComment;
@@ -29,7 +28,7 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FreeTextCommentBuilderTest {
 

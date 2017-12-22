@@ -11,53 +11,57 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.InteractionImpl;
 import java.util.List;
 
 public final class InteractionBuilder {
-    private  InteractionType type;
-    private  UniProtAccession uniprotAccession;
-    private  String geneName;
-    private  int nbExp;
-    private  InteractorAccession firstInteractor;
-    private  InteractorAccession secondInteractor;
-    public Interaction build(){
-        return new InteractionImpl( type,  uniprotAccession,
-                 geneName,  nbExp,
-                 firstInteractor,  secondInteractor);
+    private InteractionType type;
+    private UniProtAccession uniprotAccession;
+    private String geneName;
+    private int nbExp;
+    private InteractorAccession firstInteractor;
+    private InteractorAccession secondInteractor;
+
+    public static InteractionBuilder newInstance(){
+        return new InteractionBuilder();
     }
-    
-    public InteractionBuilder setInteractionType (InteractionType type){
+    public Interaction build() {
+        return new InteractionImpl(type, uniprotAccession,
+                geneName, nbExp,
+                firstInteractor, secondInteractor);
+    }
+
+    public InteractionBuilder setInteractionType(InteractionType type) {
         this.type = type;
         return this;
     }
-    
-    public InteractionBuilder setGeneName (String geneName){
+
+    public InteractionBuilder setGeneName(String geneName) {
         this.geneName = geneName;
         return this;
     }
-    
-    public InteractionBuilder setNumberOfExperiments (int nbExp){
+
+    public InteractionBuilder setNumberOfExperiments(int nbExp) {
         this.nbExp = nbExp;
         return this;
     }
-    
-    public InteractionBuilder setFirstInteractor (InteractorAccession firstInteractor){
+
+    public InteractionBuilder setFirstInteractor(InteractorAccession firstInteractor) {
         this.firstInteractor = firstInteractor;
         return this;
     }
-    
-    public InteractionBuilder setSecondInteractor (InteractorAccession secondInteractor){
+
+    public InteractionBuilder setSecondInteractor(InteractorAccession secondInteractor) {
         this.secondInteractor = secondInteractor;
         return this;
     }
-    
-    public InteractionBuilder setUniProtAccession (UniProtAccession uniprotAccession){
+
+    public InteractionBuilder setUniProtAccession(UniProtAccession uniprotAccession) {
         this.uniprotAccession = uniprotAccession;
         return this;
     }
-    
-    
-    public static InteractionComment buildComment(List<Interaction> interactions){
-    return new InteractionCommentImpl(interactions);
+
+    public static InteractionComment createInteractionComment(List<Interaction> interactions) {
+        return new InteractionCommentImpl(interactions);
     }
-    public static InteractorAccession createInteractorAccession(String value){
+
+    public static InteractorAccession createInteractorAccession(String value) {
         return InteractionImpl.createInteractorAccession(value);
     }
 }
