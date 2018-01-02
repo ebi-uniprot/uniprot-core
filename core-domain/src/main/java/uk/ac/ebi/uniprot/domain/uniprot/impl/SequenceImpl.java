@@ -2,8 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.common.MoleculeWeight;
 import uk.ac.ebi.uniprot.domain.common.Sequence;
-import uk.ac.ebi.uniprot.util.Crc64;
-import uk.ac.ebi.uniprot.util.MessageDigestUtil;
 
 public class SequenceImpl implements Sequence {
     private final String sequence;
@@ -26,12 +24,12 @@ public class SequenceImpl implements Sequence {
     
     @Override
     public String getCRC64() {
-       return Crc64.getCrc64(sequence);
+       return MessageDigestUtil.getCrc64(sequence);
     }
 
     @Override
     public String getMD5() {
-        return MessageDigestUtil.getMD5(sequence);
+        return MessageDigestUtil.getDigest(sequence, "MD5");
     }
 
     @Override

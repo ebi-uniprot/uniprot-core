@@ -9,6 +9,9 @@ public final class WebResourceCommentBuilder {
     private  String databaseFtp;
     private  String note;
     
+    public static WebResourceCommentBuilder newInstance(){
+        return new WebResourceCommentBuilder();
+    }
     public WebResourceComment build(){
         return new  WebResourceCommentImpl( databaseName,  databaseUrl,  databaseFtp,  note);
     }
@@ -26,7 +29,7 @@ public final class WebResourceCommentBuilder {
         return this;
     }
     
-    public WebResourceCommentBuilder seNote(String note){
+    public WebResourceCommentBuilder setNote(String note){
         this.note = note;
         return this;
     }

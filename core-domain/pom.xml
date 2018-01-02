@@ -12,11 +12,6 @@
 	<artifactId>core-domain</artifactId>
 	
 	<dependencies>
-		<dependency>
-			<groupId>uk.ac.ebi.uniprot</groupId>
-			<artifactId>core-util</artifactId>
- 			<version>${project.version}</version>
-		</dependency>
 	
 		<dependency>
 			<groupId>org.slf4j</groupId>

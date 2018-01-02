@@ -15,6 +15,9 @@ public final class SubcellularLocationCommentBuilder {
     private  List<SubcellularLocation>  subcellularLocations;
     private  CommentNote note;
     
+    public static SubcellularLocationCommentBuilder newInstance(){
+        return new SubcellularLocationCommentBuilder();
+    }
     public SubcellularLocationComment build(){
         return  new SubcellularLocationCommentImpl( molecule, 
                  subcellularLocations,  note);
