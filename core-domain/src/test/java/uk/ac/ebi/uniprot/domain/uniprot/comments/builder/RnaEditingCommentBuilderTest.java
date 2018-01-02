@@ -92,8 +92,8 @@ public class RnaEditingCommentBuilderTest {
     }
     private List<EvidencedValue> createEvidenceValues() {
         List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.createEvidencedValue("value1", Collections.emptyList()));
-        evidencedValues.add(UniProtFactory.createEvidencedValue("value2", Collections.emptyList()));
+        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
+        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
         return evidencedValues;
     }
 }

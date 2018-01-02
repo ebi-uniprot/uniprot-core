@@ -1,18 +1,45 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
+import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIdImpl;
 
 import java.util.List;
 
-public final class UniProtFactory {
-    public static EvidencedValue createEvidencedValue(String value, List<Evidence> evidences) {
+public enum UniProtFactory {
+    INSTANCE;
+    public  EvidencedValue createEvidencedValue(String value, List<Evidence> evidences) {
         return new EvidencedValueImpl(value, evidences);
     }
-    public static UniProtAccession createUniProtAccession(String value){
+    public  UniProtAccession createUniProtAccession(String value){
         return new UniProtAccessionImpl(value);
+    }
+    public  UniProtId createUniProtId(String value){
+        return new UniProtIdImpl(value);
+    }
+    public Organelle createOrganelle(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences){
+        return new OrganelleImpl( geneEncodingType,  value, evidences);
+    }
+    public InternalSection createInternalSection(List<InternalLine> internalLines, List<SourceLine> sourceLines){
+        return new InternalSectionImpl(internalLines, sourceLines);
+    }
+    public InternalLine createInternalLine(InternalLineType type, String value) {
+        return InternalSectionImpl.createInternalLine(type, value);
+    }
+    
+    public  SourceLine createSourceLine(String value){
+        return InternalSectionImpl.createSourceLine(value);
     }
 }

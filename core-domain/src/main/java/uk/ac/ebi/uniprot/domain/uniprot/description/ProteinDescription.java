@@ -114,15 +114,6 @@ public interface ProteinDescription  {
     public List<Flag> getFlags();
 
     /**
-     * Alternativley to defining the main protein through the getter methods of the
-     * recommended, alternative and sub names methods, one can get the main protein as an
-     * entire section.
-     *
-     * @return Section - The main protein containg all of its nomenculatures
-     */
-    public Section getSection();
-
-    /**
      * Retrieves a list of all the EC numbers present in the DE line
      * 
      * @return list of all EC numbers found wihtin a the De line

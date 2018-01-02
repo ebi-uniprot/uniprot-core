@@ -25,5 +25,6 @@ public interface Section{
      * @param type - The type of name one wants to retreive
      * @return list of names belonging to the sought after name type
      */
-    public List<Name> getNamesByType(NameType type);  
+    public List<Name> getNamesByType(NameType type);
+    boolean isValidSection();
 }

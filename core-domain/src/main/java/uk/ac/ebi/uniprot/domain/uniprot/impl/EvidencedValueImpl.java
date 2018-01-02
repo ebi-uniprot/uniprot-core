@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class EvidencedValueImpl implements EvidencedValue {
-    private String value;
-    private List<Evidence> evidences;
+    private final String value;
+    private final List<Evidence> evidences;
 
     public EvidencedValueImpl(String value, List<Evidence> evidences) {
         if(value ==null){

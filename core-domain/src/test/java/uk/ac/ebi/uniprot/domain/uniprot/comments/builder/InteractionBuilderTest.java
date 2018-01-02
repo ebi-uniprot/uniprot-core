@@ -106,7 +106,7 @@ public class InteractionBuilderTest {
                 .setNumberOfExperiments(3)
                 .setFirstInteractor(InteractionBuilder.createInteractorAccession("first1"))
                 .setSecondInteractor(InteractionBuilder.createInteractorAccession("first2"))
-                .setUniProtAccession(UniProtFactory.createUniProtAccession("P12345"))
+                .setUniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
@@ -125,7 +125,7 @@ public class InteractionBuilderTest {
                 .setNumberOfExperiments(3)
                 .setFirstInteractor(InteractionBuilder.createInteractorAccession("first1"))
                 .setSecondInteractor(InteractionBuilder.createInteractorAccession("first2"))
-                .setUniProtAccession(UniProtFactory.createUniProtAccession("P12345"))
+                .setUniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
                 .build();
         List<Interaction> interactions = Arrays.asList(interaction);
         InteractionComment comment = InteractionBuilder.createInteractionComment(interactions);

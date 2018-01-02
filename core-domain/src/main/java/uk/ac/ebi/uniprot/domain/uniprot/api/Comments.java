@@ -38,6 +38,8 @@ import java.util.stream.Collectors;
 public class Comments {
 
     private List<Comment> comments;
+    
+   
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;

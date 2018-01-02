@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
 import uk.ac.ebi.uniprot.domain.common.Sequence;
+import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
-import uk.ac.ebi.uniprot.domain.uniprot.api.Comments;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.internalsection.InternalSection;
 
 import java.util.List;
 
@@ -29,15 +29,15 @@ public interface UniProtEntry {
     List<Organelle> getOrganelles();
     List<Keyword> getKeywords();
     ProteinDescription getProteinDescription();
-    public Comments getComments();
-
+     Comments getComments();
+     Features getFeatures();
     UniProtReferences getReferences();
-    public List<Gene> getGenes();
-    public Organism getOrganism();
-    public List<Organism> getOrganismHosts();
-    public  UniProtDatabaseCrossReferences getDatabaseCrossReferences();
-    public Sequence getSequence();
-    public UniProtTaxonId getTaxonId();
-    public Boolean isFragment();
+     List<Gene> getGenes();
+     Organism getOrganism();
+     List<Organism> getOrganismHosts();
+      UniProtDatabaseCrossReferences getDatabaseCrossReferences();
+     Sequence getSequence();
+     UniProtTaxonId getTaxonId();
+     Boolean isFragment();
     InternalSection getInternalSection();
 }

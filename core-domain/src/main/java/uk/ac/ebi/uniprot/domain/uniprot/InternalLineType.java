@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.internalsection;
+package uk.ac.ebi.uniprot.domain.uniprot;
 
 /**
  * Created by IntelliJ IDEA.
