@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.citation.Thesis;
 
 import java.util.List;
 
-public final class ThesisBuilder extends AbstractCitationBuilder {
+public final class ThesisBuilder extends AbstractCitationBuilder<Thesis> {
 
     public static ThesisBuilder newInstance() {
         return new ThesisBuilder();

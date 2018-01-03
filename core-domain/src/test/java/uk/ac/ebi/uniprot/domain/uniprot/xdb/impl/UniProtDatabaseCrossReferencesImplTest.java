@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtDatabaseCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDatabaseCrossReference;
 
@@ -13,6 +14,7 @@ import static org.junit.Assert.*;
 
 public class UniProtDatabaseCrossReferencesImplTest {
     private UniProtDatabaseCrossReferences uniXrefs ;
+    List<UniProtDatabaseCrossReference> xrefs;
     @Before
     public void setup(){
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
@@ -22,7 +24,7 @@ public class UniProtDatabaseCrossReferencesImplTest {
         String thirdAttr= "ENSG00000011143";
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
-        List<UniProtDatabaseCrossReference> xrefs = new ArrayList<>();
+        xrefs = new ArrayList<>();
         xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
         
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
@@ -70,6 +72,11 @@ public class UniProtDatabaseCrossReferencesImplTest {
     xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
     uniXrefs = new UniProtDatabaseCrossReferencesImpl(xrefs);
     
+    }
+    @Test
+    public void createByFactory(){
+        UniProtDatabaseCrossReferences dbXrefs = UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDatabaseCrossReferences(xrefs);
+        assertEquals(uniXrefs, dbXrefs);
     }
     @Test
     public void testGetCrossReferences() {

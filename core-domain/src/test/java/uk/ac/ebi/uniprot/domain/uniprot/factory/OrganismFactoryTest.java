@@ -15,7 +15,7 @@ public class OrganismFactoryTest {
     public void testParseScientificNameOnly() {
         long taxId =9606;
        String str ="Homo sapiens";
-       Organism organism = OrganismFactory.parse(taxId, str);
+       Organism organism = OrganismFactory.INSTANCE.createOrganismFromOrganismLine(taxId, str);
        assertEquals(str, organism.getScientificName());
        assertEquals(str, organism.toString());    
     }
@@ -24,7 +24,7 @@ public class OrganismFactoryTest {
     public void testParseScientificNameCommonName() {
         long taxId =9606;
         String str ="Homo sapiens (Human)";
-        Organism organism = OrganismFactory.parse(taxId, str);
+        Organism organism = OrganismFactory.INSTANCE.createOrganismFromOrganismLine(taxId, str);
         assertEquals("Homo sapiens", organism.getScientificName());
         assertEquals("Human", organism.getCommonName());
         assertTrue(organism.getSynonyms().isEmpty());
@@ -35,7 +35,7 @@ public class OrganismFactoryTest {
     public void testParseScientificNameCommonNameSynonyms() {
         long taxId =9606;
         String str ="Homo sapiens (Human) (Name1, Name2)";
-        Organism organism = OrganismFactory.parse(taxId, str);
+        Organism organism = OrganismFactory.INSTANCE.createOrganismFromOrganismLine(taxId, str);
         assertEquals("Homo sapiens", organism.getScientificName());
         assertEquals("Human", organism.getCommonName());
         assertEquals(2, organism.getSynonyms().size());
@@ -47,7 +47,7 @@ public class OrganismFactoryTest {
     public void testCreateScientificNameOnly() {
         long taxId =9606;
        String scientificName ="Homo sapiens";
-       Organism organism = OrganismFactory.createOrganism(taxId, scientificName);
+       Organism organism = OrganismFactory.INSTANCE.createOrganism(taxId, scientificName);
        assertEquals(scientificName, organism.getScientificName());
        assertEquals(scientificName, organism.toString());    
        assertEquals(taxId, organism.getTaxonId().getTaxonId());
@@ -58,7 +58,7 @@ public class OrganismFactoryTest {
         long taxId =9606;
         String scientificName ="Homo sapiens";
         String commonName = "Human";
-        Organism organism =  OrganismFactory.createOrganism(taxId, scientificName, commonName);
+        Organism organism =  OrganismFactory.INSTANCE.createOrganism(taxId, scientificName, commonName);
         assertEquals("Homo sapiens", organism.getScientificName());
         assertEquals("Human", organism.getCommonName());
         assertTrue(organism.getSynonyms().isEmpty());
@@ -72,7 +72,7 @@ public class OrganismFactoryTest {
         String scientificName ="Homo sapiens";
         String commonName = "Human";
         List<String> synonyms =Arrays.asList(new String[]{"Name1", "Name2"});
-        Organism organism =  OrganismFactory.createOrganism(taxId, scientificName, commonName, synonyms);
+        Organism organism =  OrganismFactory.INSTANCE.createOrganism(taxId, scientificName, commonName, synonyms);
 
         assertEquals("Homo sapiens", organism.getScientificName());
         assertEquals("Human", organism.getCommonName());

@@ -16,7 +16,6 @@ import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
 import uk.ac.ebi.uniprot.domain.feature.VariantFeature;
-import uk.ac.ebi.uniprot.domain.feature.Builder.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.feature.impl.ChainFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.PeptideFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.ProPepFeatureImpl;
@@ -51,6 +50,7 @@ import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.TransmemFeatureI
 import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.TurnFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.UnsureFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.ZnFingFeatureImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;

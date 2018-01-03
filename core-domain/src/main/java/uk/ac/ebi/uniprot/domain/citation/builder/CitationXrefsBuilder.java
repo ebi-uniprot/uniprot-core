@@ -8,12 +8,15 @@ import java.util.List;
 import java.util.Optional;
 
 public class CitationXrefsBuilder {
-    public static CitationXrefs createCitationXrefs(List<CitationXref> xrefs){
-        return new CitationXrefsImpl(xrefs);
+    public static CitationXrefsBuilder newInstance() {
+        return new CitationXrefsBuilder();
     }
     
-    
-    public static CitationXref createCitationXref(CitationXrefType type, String id){
+    public CitationXrefs createCitationXrefs(List<CitationXref> xrefs){
+        return new CitationXrefsImpl(xrefs);
+    }
+ 
+    public CitationXref createCitationXref(CitationXrefType type, String id){
         return new CitationXrefImpl(type, id);
     }
     

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.feature.Builder;
+package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;

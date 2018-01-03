@@ -5,13 +5,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 
-public final class EvidenceFactory {
+public enum EvidenceFactory {
     // private static final List<String> NOT_EVIDENCE_TYPES = Arrays.asList(
     // "PubMed", "Reference", "Ref");
     // private static final List<EvidenceCode> MAPPED_ECO_CODES = Arrays.asList(
     // EvidenceCode.ECO_0000312, EvidenceCode.ECO_0000250);
-
-    public static Evidence from(String val) {
+    INSTANCE;
+    public Evidence createFromEvidenceLine(String val) {
         String[] token = val.split("\\|");
         String code = token[0];
         String attribute = "";
@@ -61,7 +61,7 @@ public final class EvidenceFactory {
         return new EvidenceImpl(evidenceType, evidenceCode, attribute);
     }
 
-    public static EvidenceType convertToEvidenceType(EvidenceCode evidenceCode) {
+    public EvidenceType convertToEvidenceType(EvidenceCode evidenceCode) {
         EvidenceType type = EvidenceType.NOT_SPECIFIED;
         switch (evidenceCode) {
             case ECO_0000305:

@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.Position;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingLocationType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
@@ -64,7 +65,7 @@ public class RnaEditingCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         positions.add(RnaEditingCommentBuilder.createPosition("123", evidences));
         positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
-        CommentNote note = CommentBuilderUtil.createCommentNote(createEvidenceValues());
+        CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         RnaEditingCommentBuilder builder= RnaEditingCommentBuilder.newInstance();
         RnaEditingComment comment =
         builder.setRnaEditingLocationType(RnaEditingLocationType.Known)
@@ -86,8 +87,8 @@ public class RnaEditingCommentBuilderTest {
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.from("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.from("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
     private List<EvidencedValue> createEvidenceValues() {

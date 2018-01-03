@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
@@ -82,7 +83,7 @@ public class SubcellularLocationCommentBuilderTest {
                 null);
         sublocations.add(sublocation2);
         
-        CommentNote note = CommentBuilderUtil.createCommentNote(createEvidenceValues());
+        CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         
         SubcellularLocationCommentBuilder builder =SubcellularLocationCommentBuilder.newInstance();
         SubcellularLocationComment comment =builder.setMolecule(molecule)
@@ -127,8 +128,8 @@ public class SubcellularLocationCommentBuilderTest {
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.from("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.from("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
     private List<EvidencedValue> createEvidenceValues() {

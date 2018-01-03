@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
@@ -68,7 +69,7 @@ public class CofactorCommentBuilderTest {
         Cofactor cofactor =CofactorCommentBuilder.createCofactor(name, createEvidences(), reference);
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
-        CommentNote note = CommentBuilderUtil.createCommentNote(createEvidenceValues());
+        CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         String molecule ="some mol";
         CofactorComment comment =
                 builder.setMolecule(molecule)
@@ -103,8 +104,8 @@ public class CofactorCommentBuilderTest {
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.from("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.from("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
     private List<EvidencedValue> createEvidenceValues() {

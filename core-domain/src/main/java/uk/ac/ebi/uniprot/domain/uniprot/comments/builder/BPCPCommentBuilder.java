@@ -21,7 +21,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.List;
 
-public final class BPCPCommentBuilder {
+public final class BPCPCommentBuilder implements CommentBuilder<BioPhysicoChemicalPropertiesComment> {
     private Absorption absorption;
     private KineticParameters kineticParameters;
     private PHDependence phDependence;

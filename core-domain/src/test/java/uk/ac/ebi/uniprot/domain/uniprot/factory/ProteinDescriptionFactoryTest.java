@@ -132,8 +132,8 @@ public class ProteinDescriptionFactoryTest {
 
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.from("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.from("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
 

@@ -27,8 +27,28 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.FreeTextCommentImpl;
 
 import java.util.List;
 
-public final class FreeTextCommentBuilder {
-    public static <T extends FreeTextComment> T buildFreeTextComment(CommentType commentType,
+public  class FreeTextCommentBuilder<T extends FreeTextComment> implements CommentBuilder<T> {
+    
+    public static FreeTextCommentBuilder newInstance(){
+        return new FreeTextCommentBuilder();
+    }
+    private CommentType commentType;
+    private List<EvidencedValue> texts;
+    @Override
+    public T build() {
+        return buildFreeTextComment(commentType, texts);
+    }
+    
+    public FreeTextCommentBuilder setCommentType(CommentType commentType){
+        this.commentType  = commentType;
+        return this;
+    }
+    public FreeTextCommentBuilder setTexts(List<EvidencedValue> texts){
+        this.texts  = texts;
+        return this;
+    }
+    
+    public static <S extends FreeTextComment> S buildFreeTextComment(CommentType commentType,
             List<EvidencedValue> texts){
         FreeTextComment comment;
     
@@ -95,7 +115,7 @@ public final class FreeTextCommentBuilder {
             default:
                 throw new IllegalArgumentException(commentType + " is not free text comment");
         }
-        return (T) comment;
+        return (S) comment;
                 
     }
    static class AllergenCommentImpl extends FreeTextCommentImpl implements AllergenComment {
@@ -212,4 +232,5 @@ public final class FreeTextCommentBuilder {
            super(CommentType.TOXIC_DOSE, texts);
        }
    }
+
 }

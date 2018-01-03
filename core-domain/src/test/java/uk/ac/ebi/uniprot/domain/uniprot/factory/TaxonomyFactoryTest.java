@@ -16,7 +16,7 @@ public class TaxonomyFactoryTest {
 
     @Test
     public void testCreateTaxonId() {
-        TaxonId taxonId = TaxonomyFactory.createTaxonId(9606);
+        TaxonId taxonId = TaxonomyFactory.INSTANCE.createTaxonId(9606);
         assertEquals(9606, taxonId.getTaxonId());
     }
 
@@ -24,7 +24,7 @@ public class TaxonomyFactoryTest {
     public void testCreateScientificNameOnly() {
         long taxId = 9606;
         String scientificName = "Homo sapiens";
-        Taxon organism = TaxonomyFactory.createTaxon(taxId, scientificName);
+        Taxon organism = TaxonomyFactory.INSTANCE.createTaxon(taxId, scientificName);
         assertEquals(scientificName, organism.getScientificName());
         assertEquals(scientificName, organism.toString());
         assertEquals(taxId, organism.getTaxonId().getTaxonId());
@@ -35,7 +35,7 @@ public class TaxonomyFactoryTest {
         long taxId = 9606;
         String scientificName = "Homo sapiens";
         String commonName = "Human";
-        Taxon organism = TaxonomyFactory.createTaxon(taxId, scientificName, commonName);
+        Taxon organism = TaxonomyFactory.INSTANCE.createTaxon(taxId, scientificName, commonName);
         assertEquals("Homo sapiens", organism.getScientificName());
         assertEquals("Human", organism.getCommonName());
         assertTrue(organism.getSynonyms().isEmpty());
@@ -49,7 +49,7 @@ public class TaxonomyFactoryTest {
         String scientificName = "Homo sapiens";
         String commonName = "Human";
         List<String> synonyms = Arrays.asList(new String[]{"Name1", "Name2"});
-        Taxon organism = TaxonomyFactory.createTaxon(taxId, scientificName, commonName, synonyms);
+        Taxon organism = TaxonomyFactory.INSTANCE.createTaxon(taxId, scientificName, commonName, synonyms);
 
         assertEquals("Homo sapiens", organism.getScientificName());
         assertEquals("Human", organism.getCommonName());
@@ -60,10 +60,10 @@ public class TaxonomyFactoryTest {
     @Test
     public void testCreateTaxonNode() {
         TaxonNode parent =
-                TaxonomyFactory.createTaxonNode(null, TaxonomyFactory.createTaxon(9605, "Homo"), TaxonomyRank.GENUS);
+                TaxonomyFactory.INSTANCE.createTaxonNode(null, TaxonomyFactory.INSTANCE.createTaxon(9605, "Homo"), TaxonomyRank.GENUS);
 
         TaxonNode node =
-                TaxonomyFactory.createTaxonNode(parent, TaxonomyFactory.createTaxon(9606, "Homo sapiens"),
+                TaxonomyFactory.INSTANCE.createTaxonNode(parent, TaxonomyFactory.INSTANCE.createTaxon(9606, "Homo sapiens"),
                         TaxonomyRank.SPECIES);
         assertEquals(9606, node.getTaxon().getTaxonId().getTaxonId());
         assertEquals(TaxonomyRank.SPECIES, node.getRank());

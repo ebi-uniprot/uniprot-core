@@ -11,7 +11,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.List;
 
-public final class CofactorCommentBuilder {
+public final class CofactorCommentBuilder implements CommentBuilder<CofactorComment> {
     private String molecule;
     private List<Cofactor> cofactors;
     private CommentNote note;

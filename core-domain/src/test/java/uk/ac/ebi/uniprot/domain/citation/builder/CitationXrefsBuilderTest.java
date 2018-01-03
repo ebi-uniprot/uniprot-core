@@ -16,9 +16,9 @@ public class CitationXrefsBuilderTest {
     @Test
     public void testCreateCitationXrefsPubmed() {
         List<CitationXref> xrefs = new ArrayList<>();
-        CitationXref xref= CitationXrefsBuilder.createCitationXref(CitationXrefType.PUBMED, "somepID1");
+        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.PUBMED, "somepID1");
         xrefs.add(xref);
-        CitationXrefs citationXrefs = CitationXrefsBuilder.createCitationXrefs(xrefs);
+        CitationXrefs citationXrefs = CitationXrefsBuilder.newInstance().createCitationXrefs(xrefs);
         assertEquals(1, citationXrefs.getAllXrefs().size());
         Optional<CitationXref> pubmed = citationXrefs.hasXref(CitationXrefType.PUBMED);
         assertTrue(pubmed.isPresent());
@@ -29,13 +29,13 @@ public class CitationXrefsBuilderTest {
     @Test
     public void testCreateCitationXrefsAll() {
         List<CitationXref> xrefs = new ArrayList<>();
-        CitationXref pubmed= CitationXrefsBuilder.createCitationXref(CitationXrefType.PUBMED, "somepID1");
+        CitationXref pubmed= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.PUBMED, "somepID1");
         xrefs.add(pubmed);
-        CitationXref agricola= CitationXrefsBuilder.createCitationXref(CitationXrefType.AGRICOLA, "someID1");
-        CitationXref doi= CitationXrefsBuilder.createCitationXref(CitationXrefType.DOI, "someDoiID2");
+        CitationXref agricola= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.AGRICOLA, "someID1");
+        CitationXref doi= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.DOI, "someDoiID2");
         xrefs.add(agricola);
         xrefs.add(doi);
-        CitationXrefs citationXrefs = CitationXrefsBuilder.createCitationXrefs(xrefs);
+        CitationXrefs citationXrefs = CitationXrefsBuilder.newInstance().createCitationXrefs(xrefs);
         assertEquals(3, citationXrefs.getAllXrefs().size());
         assertTrue(citationXrefs.hasXref(CitationXrefType.PUBMED).isPresent());
         assertTrue(citationXrefs.hasXref(CitationXrefType.AGRICOLA).isPresent());
@@ -47,7 +47,7 @@ public class CitationXrefsBuilderTest {
 
     @Test
     public void testCreateArgicolaCitationXref() {
-        CitationXref xref= CitationXrefsBuilder.createCitationXref(CitationXrefType.AGRICOLA, "someID1");
+        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.AGRICOLA, "someID1");
         verifyXref(xref, CitationXrefType.AGRICOLA, "someID1");
     }
     private void verifyXref(CitationXref xref, CitationXrefType type, String id){
@@ -56,12 +56,12 @@ public class CitationXrefsBuilderTest {
     }
     @Test
     public void testCreateDOICitationXref() {
-        CitationXref xref= CitationXrefsBuilder.createCitationXref(CitationXrefType.DOI, "someDoiID2");
+        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.DOI, "someDoiID2");
         verifyXref(xref, CitationXrefType.DOI, "someDoiID2");
     }
     @Test
     public void testCreatePubMedCitationXref() {
-        CitationXref xref= CitationXrefsBuilder.createCitationXref(CitationXrefType.PUBMED, "somepID1");
+        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.PUBMED, "somepID1");
         verifyXref(xref, CitationXrefType.PUBMED, "somepID1");
     }
 }

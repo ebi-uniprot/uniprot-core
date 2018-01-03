@@ -1,13 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.builder;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.DiseaseCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.DiseaseImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
@@ -57,10 +54,6 @@ public final class DiseaseBuilder {
 
     public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {
         return DiseaseImpl.createDiseaseDescription(val, evidences);
-    }
-
-    public static DiseaseComment createDiseaseComment(Disease disease, CommentNote note) {
-        return new DiseaseCommentImpl(disease, note);
     }
 
 }

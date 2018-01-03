@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.List;
 
-public final class MassSpectrometryCommentBuilder {
+public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryComment>{
     private  MassSpectrometryMethod method;
     private  Double molWeight;
     private  Double molWeightError;

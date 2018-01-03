@@ -11,8 +11,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
 import java.util.List;
 
-public final class GeneFactory {
-    public static Gene createGene(GeneName geneName, List<GeneNameSynonym>  synonyms,
+public enum GeneFactory {
+    INSTANCE;
+    public Gene createGene(GeneName geneName, List<GeneNameSynonym>  synonyms,
             List<OrderedLocusName> olnNames,
             List<ORFName> orfNames
             ){
@@ -20,24 +21,24 @@ public final class GeneFactory {
     }
     
     
-    public static GeneName createGeneName(String val,  List<Evidence> evidences){
+    public GeneName createGeneName(String val,  List<Evidence> evidences){
       return new GeneNameImpl(val, evidences);
       
     }
     
-    public static GeneNameSynonym createGeneNameSynonym(String val,  List<Evidence> evidences){
+    public GeneNameSynonym createGeneNameSynonym(String val,  List<Evidence> evidences){
         return new GeneNameSynonymImpl(val, evidences);
         
       }
       
     
     
-    public static OrderedLocusName createOrderedLocusName(String val,  List<Evidence> evidences){
+    public OrderedLocusName createOrderedLocusName(String val,  List<Evidence> evidences){
         return new OrderedLocusNameImpl(val, evidences);
         
       }
     
-    public static ORFName createORFName(String val,  List<Evidence> evidences){
+    public ORFName createORFName(String val,  List<Evidence> evidences){
         return new ORFNameImpl(val, evidences);
         
       }

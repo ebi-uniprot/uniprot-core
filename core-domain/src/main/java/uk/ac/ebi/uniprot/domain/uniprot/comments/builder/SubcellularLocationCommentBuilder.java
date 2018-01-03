@@ -10,7 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.List;
 
-public final class SubcellularLocationCommentBuilder {
+public final class SubcellularLocationCommentBuilder implements CommentBuilder<SubcellularLocationComment>{
     private  String molecule;
     private  List<SubcellularLocation>  subcellularLocations;
     private  CommentNote note;

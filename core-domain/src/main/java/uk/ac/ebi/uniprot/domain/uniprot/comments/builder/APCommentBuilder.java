@@ -17,7 +17,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.List;
 
-public final class APCommentBuilder {
+public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
     private  List<APEvent> events;
     private  List<APIsoform> isoforms;
     private  APNote note;

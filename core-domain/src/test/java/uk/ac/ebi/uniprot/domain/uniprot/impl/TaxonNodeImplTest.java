@@ -17,10 +17,10 @@ public class TaxonNodeImplTest {
     @Test
     public void testTaxonNodeImpl() {
 
-        TaxonNode parent = new TaxonNodeImpl(null, TaxonomyFactory.createTaxon(9605, "Homo"), TaxonomyRank.GENUS);
+        TaxonNode parent = new TaxonNodeImpl(null, TaxonomyFactory.INSTANCE.createTaxon(9605, "Homo"), TaxonomyRank.GENUS);
 
         TaxonNode node =
-                new TaxonNodeImpl(parent, TaxonomyFactory.createTaxon(9606, "Homo sapiens"), TaxonomyRank.SPECIES);
+                new TaxonNodeImpl(parent, TaxonomyFactory.INSTANCE.createTaxon(9606, "Homo sapiens"), TaxonomyRank.SPECIES);
         assertEquals(9606, node.getTaxon().getTaxonId().getTaxonId());
         assertEquals(TaxonomyRank.SPECIES, node.getRank());
         assertEquals(parent, node.getParent());
@@ -30,18 +30,18 @@ public class TaxonNodeImplTest {
     public void testGetTaxonLineage() {
 
         TaxonNode haplorrhini =
-                new TaxonNodeImpl(null, TaxonomyFactory.createTaxon(376913, "Haplorrhini"), TaxonomyRank.SUBORDER);
+                new TaxonNodeImpl(null, TaxonomyFactory.INSTANCE.createTaxon(376913, "Haplorrhini"), TaxonomyRank.SUBORDER);
 
         TaxonNode catarrhini =
-                new TaxonNodeImpl(haplorrhini, TaxonomyFactory.createTaxon(9526, "Catarrhini"), TaxonomyRank.PARVORDER);
+                new TaxonNodeImpl(haplorrhini, TaxonomyFactory.INSTANCE.createTaxon(9526, "Catarrhini"), TaxonomyRank.PARVORDER);
 
         TaxonNode homininae =
-                new TaxonNodeImpl(catarrhini, TaxonomyFactory.createTaxon(9604, "Hominidae"), TaxonomyRank.FAMILY);
+                new TaxonNodeImpl(catarrhini, TaxonomyFactory.INSTANCE.createTaxon(9604, "Hominidae"), TaxonomyRank.FAMILY);
 
-        TaxonNode homo = new TaxonNodeImpl(homininae, TaxonomyFactory.createTaxon(9605, "Homo"), TaxonomyRank.GENUS);
+        TaxonNode homo = new TaxonNodeImpl(homininae, TaxonomyFactory.INSTANCE.createTaxon(9605, "Homo"), TaxonomyRank.GENUS);
 
         TaxonNode node =
-                new TaxonNodeImpl(homo, TaxonomyFactory.createTaxon(9606, "Homo sapiens"), TaxonomyRank.SPECIES);
+                new TaxonNodeImpl(homo, TaxonomyFactory.INSTANCE.createTaxon(9606, "Homo sapiens"), TaxonomyRank.SPECIES);
         assertEquals(9606, node.getTaxon().getTaxonId().getTaxonId());
         assertEquals(TaxonomyRank.SPECIES, node.getRank());
         assertEquals(homo, node.getParent());

@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 import java.util.List;
 
-public final class ElectronicArticleBuilder extends AbstractCitationBuilder {
+public final class ElectronicArticleBuilder extends AbstractCitationBuilder<ElectronicArticle> {
     public static ElectronicArticleBuilder newInstance() {
         return new ElectronicArticleBuilder();
     }

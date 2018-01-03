@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.WebResourceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.WebResourceCommentImpl;
 
-public final class WebResourceCommentBuilder {
+public final class WebResourceCommentBuilder implements CommentBuilder<WebResourceComment>{
     private  String databaseName;
     private  String databaseUrl;
     private  String databaseFtp;

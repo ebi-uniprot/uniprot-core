@@ -119,7 +119,7 @@ public class InteractionBuilderTest {
 
     @Test
     public void testCreateInteractionComment() {
-        InteractionBuilder builder = InteractionBuilder.newInstance();
+        InteractionBuilder builder = InteractionCommentBuilder.newInteractionBuilder();
         Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
                 .setGeneName("gn22")
                 .setNumberOfExperiments(3)
@@ -128,7 +128,11 @@ public class InteractionBuilderTest {
                 .setUniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
                 .build();
         List<Interaction> interactions = Arrays.asList(interaction);
-        InteractionComment comment = InteractionBuilder.createInteractionComment(interactions);
+        InteractionCommentBuilder commentBuilder = InteractionCommentBuilder.newInstance();
+        
+        InteractionComment comment = 
+                commentBuilder.setInteractions(interactions)
+                .build();
         assertEquals(interactions, comment.getInteractions());
         assertEquals(CommentType.INTERACTION, comment.getCommentType());
     }

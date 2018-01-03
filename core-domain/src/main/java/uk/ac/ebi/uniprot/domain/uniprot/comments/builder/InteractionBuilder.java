@@ -2,13 +2,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractorAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.InteractionCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.InteractionImpl;
-
-import java.util.List;
 
 public final class InteractionBuilder {
     private InteractionType type;
@@ -57,10 +53,7 @@ public final class InteractionBuilder {
         return this;
     }
 
-    public static InteractionComment createInteractionComment(List<Interaction> interactions) {
-        return new InteractionCommentImpl(interactions);
-    }
-
+ 
     public static InteractorAccession createInteractorAccession(String value) {
         return InteractionImpl.createInteractorAccession(value);
     }

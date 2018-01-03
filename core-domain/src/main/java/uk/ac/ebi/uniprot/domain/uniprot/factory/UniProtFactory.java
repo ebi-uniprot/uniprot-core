@@ -20,6 +20,37 @@ import java.util.List;
 
 public enum UniProtFactory {
     INSTANCE;
+    public EvidenceFactory getEvidenceFactory(){
+        return EvidenceFactory.INSTANCE;
+    }
+    
+    public GeneFactory getGeneFactory(){
+        return GeneFactory.INSTANCE;
+    }
+    
+    public OrganismFactory getOrganismFactory(){
+        return OrganismFactory.INSTANCE;
+    }
+    public ProteinDescriptionFactory getProteinDescriptionFactory(){
+        return ProteinDescriptionFactory.INSTANCE;
+    }
+    
+    public TaxonomyFactory getTaxonomyFactory(){
+        return TaxonomyFactory.INSTANCE;
+    }
+    public UniProtDBCrossReferenceFactory getUniProtDBCrossReferenceFactory(){
+        return UniProtDBCrossReferenceFactory.INSTANCE;
+    }
+    
+    public CommentFactory getCommentFactory(){
+        return CommentFactory.INSTANCE;
+    }
+    
+    public FeatureFactory getFeatureFactory(){
+        return FeatureFactory.INSTANCE;
+    }
+    
+    
     public  EvidencedValue createEvidencedValue(String value, List<Evidence> evidences) {
         return new EvidencedValueImpl(value, evidences);
     }

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-abstract class AbstractCitationBuilder {
+abstract class AbstractCitationBuilder<T extends Citation> implements CitationBuilder<T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
     protected CitationXrefs xrefs;

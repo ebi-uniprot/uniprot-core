@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtIsoformId;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIsoformIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DbXRefAttribute;
@@ -27,10 +28,40 @@ public class UniProtDatabaseCrossReferenceImplTest {
         String id ="H25N7.01:pep";
         String description ="-";
         UniProtDatabaseCrossReference xref = new UniProtDatabaseCrossReferenceImpl(type, id, description);
+      
+        verify(xref, val, type, id, description, null, null, null);
+        
+    }
+    @Test
+    public void testUniProtDatabaseCrossReferenceImpl12ByFactory() {
+        // DR GeneDB; H25N7.01:pep; -.
+        String val = "GeneDB; H25N7.01:pep; -.";
+        DatabaseType type =DatabaseType.GENEDB;
+        String id ="H25N7.01:pep";
+        String description ="-";
+        UniProtDatabaseCrossReference xref =UniProtDBCrossReferenceFactory.INSTANCE
+                .createUniProtDatabaseCrossReference(type, id, description);
+      
         verify(xref, val, type, id, description, null, null, null);
         
     }
     
+    
+    @Test
+    public void testUniProtDatabaseCrossReferenceImpl32ByFactory() {
+        // DR GeneDB; H25N7.01:pep; -.
+        String val = "GeneDB; H25N7.01:pep; -.";
+        DatabaseType type =DatabaseType.GENEDB;
+        String id ="H25N7.01:pep";
+        String description ="-";
+        String thirdAttr= null;
+        String fourthAttr = null;
+        String isoform = null;
+        UniProtDatabaseCrossReference xref =UniProtDBCrossReferenceFactory.INSTANCE
+                .createUniProtDatabaseCrossReference(type, id, description, thirdAttr);
+        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
+        
+    }
     @Test
     public void testUniProtDatabaseCrossReferenceImpl32() {
         // DR GeneDB; H25N7.01:pep; -.
@@ -45,6 +76,8 @@ public class UniProtDatabaseCrossReferenceImplTest {
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
         
     }
+   
+    
     @Test
     public void testUniProtDatabaseCrossReferenceImpl33() {
         // DR   GO; GO:0005814; C:centriole; IEA:Ensembl.
@@ -116,6 +149,21 @@ public class UniProtDatabaseCrossReferenceImplTest {
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
         UniProtDatabaseCrossReference xref = new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform);
+        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
+    }
+    
+    @Test
+    public void testUniProtDatabaseCrossReferenceImpl4IsoByFactory() {
+        // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
+        String val = "Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]";
+        DatabaseType type =DatabaseType.ENSEMBL;
+        String id ="ENST00000393119";
+        String description ="ENSP00000376827";
+        String thirdAttr= "ENSG00000011143";
+        String fourthAttr = null;
+        String isoform = "Q9NXB0-1";
+        UniProtDatabaseCrossReference xref =UniProtDBCrossReferenceFactory.INSTANCE
+                .createUniProtDatabaseCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
     

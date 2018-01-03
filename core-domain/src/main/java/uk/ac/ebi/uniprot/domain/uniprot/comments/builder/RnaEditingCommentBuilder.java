@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.List;
 
-public final class RnaEditingCommentBuilder {
+public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingComment>{
     private  RnaEditingLocationType locationType;
     private  List<Position> locations;
     private  CommentNote note;

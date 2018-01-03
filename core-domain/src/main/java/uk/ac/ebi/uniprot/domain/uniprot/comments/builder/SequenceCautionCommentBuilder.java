@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.SequenceCautionCommentImpl
 
 import java.util.List;
 
-public final class SequenceCautionCommentBuilder {
+public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionComment> {
     private  SequenceCautionType sequenceCautionType;
     private  String sequence;
     private  List<String> positions;

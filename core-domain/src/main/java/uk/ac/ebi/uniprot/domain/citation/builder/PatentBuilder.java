@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 import java.util.List;
 
-public final class PatentBuilder extends AbstractCitationBuilder {
+public final class PatentBuilder extends AbstractCitationBuilder<Patent> {
     public static PatentBuilder newInstance() {
         return new PatentBuilder();
     }

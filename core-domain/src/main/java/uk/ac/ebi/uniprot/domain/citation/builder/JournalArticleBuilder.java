@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 import java.util.List;
 
-public final class JournalArticleBuilder extends AbstractCitationBuilder {
+public final class JournalArticleBuilder extends AbstractCitationBuilder<JournalArticle> {
 
     public static JournalArticleBuilder newInstance() {
         return new JournalArticleBuilder();

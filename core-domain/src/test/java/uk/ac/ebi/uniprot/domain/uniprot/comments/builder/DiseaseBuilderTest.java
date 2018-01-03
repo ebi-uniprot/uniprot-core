@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReference;
@@ -18,7 +15,10 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class DiseaseBuilderTest {
     @Test
@@ -117,31 +117,10 @@ public class DiseaseBuilderTest {
         assertEquals(evidences, description.getEvidences());
     }
 
-    @Test
-    public void testCreateDiseaseComment() {
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
-        String val ="some description";
-        List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
-        DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
-        String referenceId = "3124";
-        DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        Disease disease =builder.setDiseaseId(diseaseId)
-                .setAcronym("someAcron")
-                .setDescription(description)
-                .setReference(reference)           
-                .build();
-        CommentNote note = CommentBuilderUtil.createCommentNote(createEvidenceValues());
-        DiseaseComment comment = DiseaseBuilder.createDiseaseComment(disease, note);
-       assertEquals(note, comment.getNote());
-        assertEquals(CommentType.DISEASE, comment.getCommentType());
-        assertEquals(disease, comment.getDisease());
-    }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.from("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.from("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
     private List<EvidencedValue> createEvidenceValues() {

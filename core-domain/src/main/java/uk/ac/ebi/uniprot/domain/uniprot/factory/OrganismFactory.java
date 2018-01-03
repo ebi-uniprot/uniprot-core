@@ -9,20 +9,21 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class OrganismFactory {
-    public final static Pattern ORGANISM_PATTERN=Pattern.compile("([a-zA-Z 0-9]+)((( \\()([a-zA-Z 0-9]+)(\\)))"
+public enum OrganismFactory {
+    INSTANCE;
+    private final static Pattern ORGANISM_PATTERN=Pattern.compile("([a-zA-Z 0-9]+)((( \\()([a-zA-Z 0-9]+)(\\)))"
             + "(( \\()([a-zA-Z 0-9,]+)(\\)))?)?");
-    public static Organism createOrganism(long taxId, String scientificName){
+    public Organism createOrganism(long taxId, String scientificName){
         return createOrganism(taxId, scientificName, "");
     }
-    public static Organism createOrganism(long taxId, String scientificName, String commonName){
+    public Organism createOrganism(long taxId, String scientificName, String commonName){
         return createOrganism(taxId, scientificName, commonName, Collections.emptyList());
     }
-    public static Organism createOrganism(long taxId, String scientificName, String commonName, List<String> synonyms){
+    public Organism createOrganism(long taxId, String scientificName, String commonName, List<String> synonyms){
         return new OrganismImpl(taxId, scientificName, commonName, synonyms);
     }
     
-    public static Organism parse(long taxId, String organismStr){
+    public Organism createOrganismFromOrganismLine(long taxId, String organismStr){
         Matcher matcher = OrganismFactory.ORGANISM_PATTERN.matcher(organismStr);
         if(!matcher.matches()){
             throw new IllegalArgumentException("Organism String cannot be parsed: " + organismStr);

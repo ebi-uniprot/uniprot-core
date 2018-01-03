@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.citation.UnpublishedObservations;
 
 import java.util.List;
 
-public final class UnpublishedObservationsBuilder extends AbstractCitationBuilder {
+public final class UnpublishedObservationsBuilder extends AbstractCitationBuilder<UnpublishedObservations> {
     public static UnpublishedObservationsBuilder newInstance() {
         return new UnpublishedObservationsBuilder();
     }

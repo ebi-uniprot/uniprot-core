@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public final class BookBuilder extends AbstractCitationBuilder {
+public final class BookBuilder extends AbstractCitationBuilder<Book> {
     public static BookBuilder newInstance() {
         return new BookBuilder();
     }

@@ -11,21 +11,22 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.TaxonNodeImpl;
 import java.util.Collections;
 import java.util.List;
 
-public class TaxonomyFactory {
-    public static TaxonId createTaxonId(long taxId){
+public enum TaxonomyFactory {
+    INSTANCE;
+    public TaxonId createTaxonId(long taxId){
         return new TaxonIdImpl(taxId);
     }
-    public static Taxon createTaxon(long taxId, String scientificName){
+    public Taxon createTaxon(long taxId, String scientificName){
         return createTaxon(taxId, scientificName, "");
     }
-    public static Taxon createTaxon(long taxId, String scientificName, String commonName){
+    public Taxon createTaxon(long taxId, String scientificName, String commonName){
         return createTaxon(taxId, scientificName, commonName, Collections.emptyList());
     }
     
-    public static Taxon createTaxon(long taxId, String scientificName, String commonName, List<String> synonyms){
+    public Taxon createTaxon(long taxId, String scientificName, String commonName, List<String> synonyms){
         return new TaxonImpl(taxId, scientificName, commonName, synonyms);
     }
-    public static TaxonNode createTaxonNode(TaxonNode parent, Taxon taxon, TaxonomyRank rank){
+    public TaxonNode createTaxonNode(TaxonNode parent, Taxon taxon, TaxonomyRank rank){
         return new TaxonNodeImpl(parent, taxon, rank);
     }
 }
