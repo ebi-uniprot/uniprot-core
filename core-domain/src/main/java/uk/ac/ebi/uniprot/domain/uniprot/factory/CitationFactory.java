@@ -1,6 +1,15 @@
-package uk.ac.ebi.uniprot.domain.citation.builder;
+package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.CitationBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.CitationXrefsBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedObservationsBuilder;
 
 public enum CitationFactory {
     INSTANCE;

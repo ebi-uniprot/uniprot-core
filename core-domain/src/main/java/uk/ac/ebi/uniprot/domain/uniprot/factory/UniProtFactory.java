@@ -1,21 +1,26 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
+import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIdImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public enum UniProtFactory {
@@ -50,6 +55,9 @@ public enum UniProtFactory {
         return FeatureFactory.INSTANCE;
     }
     
+    public UniProtReferenceFactory getUniProtReferenceFactory(){
+        return UniProtReferenceFactory.INSTANCE;
+    }   
     
     public  EvidencedValue createEvidencedValue(String value, List<Evidence> evidences) {
         return new EvidencedValueImpl(value, evidences);
@@ -57,7 +65,7 @@ public enum UniProtFactory {
     public  UniProtAccession createUniProtAccession(String value){
         return new UniProtAccessionImpl(value);
     }
-    public  UniProtId createUniProtId(String value){
+    public UniProtId createUniProtId(String value){
         return new UniProtIdImpl(value);
     }
     public Organelle createOrganelle(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences){
@@ -72,5 +80,13 @@ public enum UniProtFactory {
     
     public  SourceLine createSourceLine(String value){
         return InternalSectionImpl.createSourceLine(value);
+    }
+    public Keyword createKeyword(String value, List<Evidence> evidences) {
+        return new KeywordImpl(value, evidences);
+    }
+    public EntryAudit createEntryAudit(LocalDate firstPublicDate, LocalDate lastAnnotationUpdateDate,
+        LocalDate lastSequenceUpdateDate, int entryVersion, int sequenceVersion){
+        return new  EntryAuditImpl( firstPublicDate,  lastAnnotationUpdateDate,
+                 lastSequenceUpdateDate,  entryVersion,  sequenceVersion);
     }
 }
