@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
@@ -11,6 +12,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.time.LocalDate;
@@ -161,6 +163,22 @@ public class UniProtFactoryTest {
         assertEquals(entryVersion, entryAudit.getEntryVersion());
         assertEquals(sequenceVersion, entryAudit.getSequenceVersion());
     }
+    @Test
+    public void testCreateSequence(){
+        String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
+        Sequence sequence =UniProtFactory.INSTANCE.createSequence(value);
+        assertEquals(value, sequence.getValue());
+    }
+    
+    @Test
+    public void TestCreateUniProtTaxonId(){
+        long taxId = 9606;
+        List<Evidence> evidences =createEvidences() ;
+        UniProtTaxonId taxonId = UniProtFactory.INSTANCE.createUniProtTaxonId(taxId, evidences);
+        assertEquals(taxId, taxonId.getTaxonId());
+        assertEquals(evidences, taxonId.getEvidences());
+    }
+    
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));

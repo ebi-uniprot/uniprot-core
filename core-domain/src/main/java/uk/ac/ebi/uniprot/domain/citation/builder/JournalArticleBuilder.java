@@ -19,7 +19,7 @@ public final class JournalArticleBuilder extends AbstractCitationBuilder<Journal
     private String lastPage = "";
     private String volume = "";
 
-
+    @Override
     public JournalArticle build() {
         return new JournalArticleImpl(authoringGroups, authors,
                 xrefs, title, publicationDate,

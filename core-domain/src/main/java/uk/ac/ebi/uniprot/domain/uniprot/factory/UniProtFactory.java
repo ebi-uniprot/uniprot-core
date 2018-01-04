@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
@@ -11,82 +12,102 @@ import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIdImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtTaxonIdImpl;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public enum UniProtFactory {
     INSTANCE;
-    public EvidenceFactory getEvidenceFactory(){
+    public EvidenceFactory getEvidenceFactory() {
         return EvidenceFactory.INSTANCE;
     }
-    
-    public GeneFactory getGeneFactory(){
+
+    public GeneFactory getGeneFactory() {
         return GeneFactory.INSTANCE;
     }
-    
-    public OrganismFactory getOrganismFactory(){
+
+    public OrganismFactory getOrganismFactory() {
         return OrganismFactory.INSTANCE;
     }
-    public ProteinDescriptionFactory getProteinDescriptionFactory(){
+
+    public ProteinDescriptionFactory getProteinDescriptionFactory() {
         return ProteinDescriptionFactory.INSTANCE;
     }
-    
-    public TaxonomyFactory getTaxonomyFactory(){
+
+    public TaxonomyFactory getTaxonomyFactory() {
         return TaxonomyFactory.INSTANCE;
     }
-    public UniProtDBCrossReferenceFactory getUniProtDBCrossReferenceFactory(){
+
+    public UniProtDBCrossReferenceFactory getUniProtDBCrossReferenceFactory() {
         return UniProtDBCrossReferenceFactory.INSTANCE;
     }
-    
-    public CommentFactory getCommentFactory(){
+
+    public CommentFactory getCommentFactory() {
         return CommentFactory.INSTANCE;
     }
-    
-    public FeatureFactory getFeatureFactory(){
+
+    public FeatureFactory getFeatureFactory() {
         return FeatureFactory.INSTANCE;
     }
-    
-    public UniProtReferenceFactory getUniProtReferenceFactory(){
+
+    public UniProtReferenceFactory getUniProtReferenceFactory() {
         return UniProtReferenceFactory.INSTANCE;
-    }   
-    
-    public  EvidencedValue createEvidencedValue(String value, List<Evidence> evidences) {
+    }
+
+    public EvidencedValue createEvidencedValue(String value, List<Evidence> evidences) {
         return new EvidencedValueImpl(value, evidences);
     }
-    public  UniProtAccession createUniProtAccession(String value){
+
+    public UniProtAccession createUniProtAccession(String value) {
         return new UniProtAccessionImpl(value);
     }
-    public UniProtId createUniProtId(String value){
+
+    public UniProtId createUniProtId(String value) {
         return new UniProtIdImpl(value);
     }
-    public Organelle createOrganelle(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences){
-        return new OrganelleImpl( geneEncodingType,  value, evidences);
+
+    public Organelle createOrganelle(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
+        return new OrganelleImpl(geneEncodingType, value, evidences);
     }
-    public InternalSection createInternalSection(List<InternalLine> internalLines, List<SourceLine> sourceLines){
+
+    public InternalSection createInternalSection(List<InternalLine> internalLines, List<SourceLine> sourceLines) {
         return new InternalSectionImpl(internalLines, sourceLines);
     }
+
     public InternalLine createInternalLine(InternalLineType type, String value) {
         return InternalSectionImpl.createInternalLine(type, value);
     }
-    
-    public  SourceLine createSourceLine(String value){
+
+    public SourceLine createSourceLine(String value) {
         return InternalSectionImpl.createSourceLine(value);
     }
+
     public Keyword createKeyword(String value, List<Evidence> evidences) {
         return new KeywordImpl(value, evidences);
     }
+
     public EntryAudit createEntryAudit(LocalDate firstPublicDate, LocalDate lastAnnotationUpdateDate,
-        LocalDate lastSequenceUpdateDate, int entryVersion, int sequenceVersion){
-        return new  EntryAuditImpl( firstPublicDate,  lastAnnotationUpdateDate,
-                 lastSequenceUpdateDate,  entryVersion,  sequenceVersion);
+            LocalDate lastSequenceUpdateDate, int entryVersion, int sequenceVersion) {
+        return new EntryAuditImpl(firstPublicDate, lastAnnotationUpdateDate,
+                lastSequenceUpdateDate, entryVersion, sequenceVersion);
+    }
+
+    public Sequence createSequence(String seq) {
+        return new SequenceImpl(seq);
+    }
+
+    public UniProtTaxonId createUniProtTaxonId(long taxId, List<Evidence> evidences) {
+        return new UniProtTaxonIdImpl(taxId, evidences);
     }
 }

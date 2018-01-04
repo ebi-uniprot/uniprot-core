@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-abstract class AbstractCitationBuilder<T extends Citation> implements CitationBuilder<T> {
+public abstract class AbstractCitationBuilder<T extends Citation> implements CitationBuilder<T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
     protected CitationXrefs xrefs;
@@ -26,27 +26,27 @@ abstract class AbstractCitationBuilder<T extends Citation> implements CitationBu
         return new AuthorImpl(name);
     }
 
-    public AbstractCitationBuilder authoringGroups(List<String> val) {
+    public AbstractCitationBuilder<T> authoringGroups(List<String> val) {
         this.authoringGroups = val;
         return this;
     }
 
-    public AbstractCitationBuilder authors(List<Author> val) {
+    public AbstractCitationBuilder<T> authors(List<Author> val) {
         this.authors = val;
         return this;
     }
 
-    public AbstractCitationBuilder citationXrefs(CitationXrefs xrefs) {
+    public AbstractCitationBuilder<T> citationXrefs(CitationXrefs xrefs) {
         this.xrefs = xrefs;
         return this;
     }
 
-    public AbstractCitationBuilder title(String title) {
+    public AbstractCitationBuilder<T> title(String title) {
         this.title = title;
         return this;
     }
 
-    public AbstractCitationBuilder publicationDate(PublicationDate publicationDate) {
+    public AbstractCitationBuilder<T> publicationDate(PublicationDate publicationDate) {
         this.publicationDate = publicationDate;
         return this;
     }

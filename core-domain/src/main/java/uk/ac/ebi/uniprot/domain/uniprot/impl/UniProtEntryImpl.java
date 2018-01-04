@@ -22,6 +22,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentsImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDatabaseCrossReferencesImpl;
 
 import java.util.Collections;
 import java.util.List;
@@ -98,7 +99,11 @@ public class UniProtEntryImpl implements UniProtEntry {
             this.comments = comments;
         else
             this.comments = new CommentsImpl(null);
-        this.references = references;
+        
+        if(references !=null)
+            this.references = references;
+        else
+            this.references = new UniProtReferencesImpl(null);
         if ((genes == null) || genes.isEmpty()) {
             this.genes = Collections.emptyList();
         } else {
@@ -114,7 +119,11 @@ public class UniProtEntryImpl implements UniProtEntry {
         } else {
             this.organismHosts = Collections.unmodifiableList(organismHosts);
         }
-        this.xrefs = xrefs;
+        if(xrefs !=null)
+            this.xrefs = xrefs;
+        else
+            this.xrefs = new UniProtDatabaseCrossReferencesImpl(null);
+
         this.sequence = sequence;
         this.taxonId = taxonId;
         this.internalSection =internalSection;

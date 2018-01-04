@@ -29,8 +29,8 @@ import java.util.List;
 
 public  class FreeTextCommentBuilder<T extends FreeTextComment> implements CommentBuilder<T> {
     
-    public static FreeTextCommentBuilder newInstance(){
-        return new FreeTextCommentBuilder();
+    public static FreeTextCommentBuilder<? extends FreeTextComment> newInstance(){
+        return new FreeTextCommentBuilder<>();
     }
     private CommentType commentType;
     private List<EvidencedValue> texts;
@@ -39,11 +39,11 @@ public  class FreeTextCommentBuilder<T extends FreeTextComment> implements Comme
         return buildFreeTextComment(commentType, texts);
     }
     
-    public FreeTextCommentBuilder setCommentType(CommentType commentType){
+    public FreeTextCommentBuilder<T> setCommentType(CommentType commentType){
         this.commentType  = commentType;
         return this;
     }
-    public FreeTextCommentBuilder setTexts(List<EvidencedValue> texts){
+    public FreeTextCommentBuilder<T> setTexts(List<EvidencedValue> texts){
         this.texts  = texts;
         return this;
     }

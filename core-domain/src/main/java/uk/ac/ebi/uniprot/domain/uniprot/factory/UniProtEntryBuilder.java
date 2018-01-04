@@ -28,12 +28,12 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     public static UniProtEntryBuilder newInstance(){
         return new UniProtEntryBuilder();
     }
-    private  UniProtEntryType entryType;
+    private  UniProtEntryType entryType =UniProtEntryType.UNKNOWN;
     private  UniProtAccession accession;
     private  List<UniProtAccession> secondaryAccessions;
     private  UniProtId uniprotId;
     private  List<Taxon> taxonomies;
-    private  ProteinExistence proteinExistance;
+    private  ProteinExistence proteinExistance =ProteinExistence.UNKNOWN;
     private  EntryAudit entryAudit;
     private  List<Organelle> organelles;
     private  List<Keyword> keywords;
@@ -85,6 +85,11 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
     
+    public UniProtEntryBuilder setAccession(String accession){
+        this.accession = UniProtFactory.INSTANCE.createUniProtAccession(accession);
+        return this;
+    }
+    
     public UniProtEntryBuilder setSecondaryAccessions(List<UniProtAccession> secondaryAccessions){
         this.secondaryAccessions = secondaryAccessions;
         return this;
@@ -92,6 +97,11 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     
     public UniProtEntryBuilder setUniProtId(UniProtId uniprotId){
         this.uniprotId = uniprotId;
+        return this;
+    }
+    
+    public UniProtEntryBuilder setUniProtId(String uniprotId){
+        this.uniprotId =  UniProtFactory.INSTANCE.createUniProtId(uniprotId);
         return this;
     }
     
@@ -146,6 +156,10 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     }
     public UniProtEntryBuilder setSequence(Sequence sequence){
         this.sequence = sequence;
+        return this;
+    }
+    public UniProtEntryBuilder setSequence(String sequence){
+        this.sequence = UniProtFactory.INSTANCE.createSequence(sequence);
         return this;
     }
     public UniProtEntryBuilder setUniProtTaxonId(UniProtTaxonId taxonId){

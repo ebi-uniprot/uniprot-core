@@ -1,7 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import uk.ac.ebi.uniprot.domain.feature.ActSiteFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;
+import uk.ac.ebi.uniprot.domain.feature.ChainFeature;
 import uk.ac.ebi.uniprot.domain.feature.ConflictFeature;
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureDescription;
@@ -10,10 +12,12 @@ import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocationModifier;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.feature.HasAlternativeSequence;
 import uk.ac.ebi.uniprot.domain.feature.HasFeatureId;
 import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
+import uk.ac.ebi.uniprot.domain.feature.TurnFeature;
 import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
 import uk.ac.ebi.uniprot.domain.feature.VariantFeature;
 import uk.ac.ebi.uniprot.domain.feature.impl.ChainFeatureImpl;
@@ -655,5 +659,39 @@ public class FeatureFactoryTest {
          verifyAlterSequence(feature, orginalSequence, alternativeSequences,sReport );
          assertEquals(featureId, feature.getFeatureId());
     }
-
+    @Test
+    public void testCreateFeatures(){
+        List<Feature> features = new ArrayList<>();
+        features.add(createVarSeqFeature());
+        features.add(FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
+                FeatureFactory.INSTANCE.createFeatureLocation(12, 12), 
+                "some desc1"));
+        features.add(FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
+                FeatureFactory.INSTANCE.createFeatureLocation(20, 23), 
+                "some desc2"));
+        features.add(FeatureFactory.INSTANCE.buildSimpleFeatureWithFeatureId(FeatureType.CHAIN,
+                FeatureFactory.INSTANCE.createFeatureLocation(200, 230), 
+                "some desc3", "ft_123"));
+        Features uniFeatures = FeatureFactory.INSTANCE.createFeatures(features);
+        assertEquals(4, uniFeatures.getAllFeatures().size());
+        List<TurnFeature> turnFeatures = uniFeatures.getFeatures(FeatureType.TURN);
+        assertEquals(2, turnFeatures.size());
+        List<ChainFeature> chainFeatures = uniFeatures.getFeatures(FeatureType.CHAIN);
+        assertEquals(1, chainFeatures.size());
+        
+        List<ActSiteFeature> actSiteFeatures = uniFeatures.getFeatures(FeatureType.ACT_SITE);
+        assertEquals(0, actSiteFeatures.size());
+    }
+    private VarSeqFeature createVarSeqFeature(){
+        FeatureLocation location = createFeatureLocation(65, 86);
+        FeatureSequence orginalSequence =FeatureFactory.INSTANCE.createFeatureSequence("RS");
+        List<FeatureSequence> alternativeSequences =Arrays.asList(new FeatureSequence[]{
+                FeatureFactory.INSTANCE.createFeatureSequence("DB"),
+                FeatureFactory.INSTANCE.createFeatureSequence("AA")});
+        List<String> report = Arrays.asList(new String[]{"report1", "report 2"});
+        SequenceReport sReport = FeatureFactory.INSTANCE.createSequenceReport(report);
+        FeatureId featureId =FeatureFactory.INSTANCE.createFeatureId("VRS_112");
+        return FeatureFactory.INSTANCE.buildVarSeqFeature(location,
+                orginalSequence, alternativeSequences, sReport, featureId);
+    }
 }

@@ -15,7 +15,7 @@ import java.util.List;
 public enum UniProtReferenceFactory {
     INSTANCE;
 
-    public  UniProtReferences createUniProtReferences(List<UniProtReference<Citation>> references) {
+    public  UniProtReferences createUniProtReferences(List<UniProtReference<? extends Citation>> references) {
         return new UniProtReferencesImpl(references);
     }
     public <T extends Citation> UniProtReference<T> createUniProtReference(T citation, List<String> referencePositions,

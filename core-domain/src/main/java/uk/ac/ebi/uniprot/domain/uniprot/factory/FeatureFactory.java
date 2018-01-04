@@ -3,17 +3,18 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;
 import uk.ac.ebi.uniprot.domain.feature.ConflictFeature;
+import uk.ac.ebi.uniprot.domain.feature.Feature;
+import uk.ac.ebi.uniprot.domain.feature.FeatureDescription;
+import uk.ac.ebi.uniprot.domain.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocationModifier;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
 import uk.ac.ebi.uniprot.domain.feature.VariantFeature;
-import uk.ac.ebi.uniprot.domain.feature.Feature;
-import uk.ac.ebi.uniprot.domain.feature.FeatureDescription;
-import uk.ac.ebi.uniprot.domain.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.feature.impl.CarbohydFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.ChainFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.ConflictFeatureImpl;
@@ -21,6 +22,7 @@ import uk.ac.ebi.uniprot.domain.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.FeatureLocationImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.FeatureWithAlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.FeatureWithFeatureIdImpl;
+import uk.ac.ebi.uniprot.domain.feature.impl.FeaturesImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.MutagenFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.PeptideFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.ProPepFeatureImpl;
@@ -28,11 +30,15 @@ import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.VarSeqFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.VariantFeatureImpl;
 
-
 import java.util.List;
 
 public enum FeatureFactory {
     INSTANCE;
+    
+    public Features createFeatures(List<Feature> features){
+        return new FeaturesImpl(features);
+    }
+    
     public FeatureLocation createFeatureLocation(Integer start, Integer end) {
         return new FeatureLocationImpl(start, end);
     }

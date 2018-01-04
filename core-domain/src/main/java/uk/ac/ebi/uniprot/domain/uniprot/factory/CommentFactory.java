@@ -3,6 +3,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.APCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.BPCPCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
@@ -18,12 +20,16 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SequenceCautionCommentB
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SubcellularLocationCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.WebResourceCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentNoteImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentsImpl;
 
 import java.util.List;
 
 public enum CommentFactory {
     INSTANCE;
 
+    public Comments createComments(List<Comment> comments){
+        return new CommentsImpl(comments);
+    }
     public <T extends Comment> T createComment(CommentBuilder<T> builder){
         return builder.build();
     }
@@ -39,7 +45,7 @@ public enum CommentFactory {
         return CofactorCommentBuilder.newInstance();
     }
 
-    public FreeTextCommentBuilder createFreeTextCommentBuilder() {
+    public FreeTextCommentBuilder<? extends FreeTextComment> createFreeTextCommentBuilder() {
         return FreeTextCommentBuilder.newInstance();
     }
 
