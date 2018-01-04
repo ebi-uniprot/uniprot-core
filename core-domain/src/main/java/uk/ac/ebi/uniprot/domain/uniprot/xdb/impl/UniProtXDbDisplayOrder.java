@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -35,7 +33,6 @@ public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
     private static boolean init = false;
     private static List<DatabaseType> orderedValues;
     private static UniProtXDbDisplayOrder instance;
-    private final static Logger logger = LoggerFactory.getLogger(UniProtXDbDisplayOrder.class);
 
     public static UniProtXDbDisplayOrder getInstance() {
         if (instance == null) {
@@ -78,9 +75,9 @@ public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
             orderFileReader.close();
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         init = true;
@@ -113,7 +110,7 @@ public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
         try {
             url = new URL(queryUrl);
         } catch (MalformedURLException ex) {
-
+            throw new RuntimeException (ex);
         }
         try {
             urlConnection = url.openConnection();
@@ -121,7 +118,7 @@ public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
             urlConnection.connect();
             reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
         } catch (IOException ex) {
-            logger.warn("could not open dr order file: " + queryUrl);
+            throw new RuntimeException (ex);
         }
         return reader;
     }
@@ -175,13 +172,7 @@ public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
             this.dbName = dbName;
             this.displayOrder = displayOrder;
             this.secondaryOrder = secondaryOrder;
-            init();
         }
-
-        private void init() {
-
-        }
-
         public int getDisplayOrder() {
             return this.displayOrder;
         }
