@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import uk.ac.ebi.uniprot.domain.Builder;
+import uk.ac.ebi.uniprot.domain.common.Builder;
 import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
