@@ -74,7 +74,7 @@ public final class BookBuilder extends AbstractCitationBuilder<Book> {
         private final String publisher;
         private final String address;
 
-        public BookImpl(List<String> authoringGroups, List<Author> authors,
+         BookImpl(List<String> authoringGroups, List<Author> authors,
             CitationXrefs xrefs, String title,
             PublicationDate publicationDate,
             String bookName, List<Author> editors,
