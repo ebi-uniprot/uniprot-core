@@ -110,7 +110,7 @@ public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
         try {
             url = new URL(queryUrl);
         } catch (MalformedURLException ex) {
-            throw new RuntimeException (ex);
+            return null;
         }
         try {
             urlConnection = url.openConnection();
@@ -118,7 +118,7 @@ public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
             urlConnection.connect();
             reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
         } catch (IOException ex) {
-            throw new RuntimeException (ex);
+            return null;
         }
         return reader;
     }
