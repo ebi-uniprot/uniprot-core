@@ -91,7 +91,7 @@ public class MessageDigestUtil {
 
         while (i < in.length) {
             ch = (byte) (in[i] & 0xF0); // Strip offhigh nibble
-            ch = (byte) (ch >>> 4);
+            ch = (byte) (ch >> 4);
             // shift the bits down
             ch = (byte) (ch & 0x0F);
             // must do this is high order bit is on!
