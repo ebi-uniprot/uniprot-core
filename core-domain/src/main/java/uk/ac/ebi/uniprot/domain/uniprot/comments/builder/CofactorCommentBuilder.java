@@ -23,17 +23,17 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
         return new CofactorCommentImpl(molecule, cofactors, note);
     }
 
-    public CofactorCommentBuilder setMolecule(String molecule) {
+    public CofactorCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public CofactorCommentBuilder setCofactors(List<Cofactor> cofactors) {
+    public CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
         this.cofactors = cofactors;
         return this;
     }
 
-    public CofactorCommentBuilder setNote(CommentNote note) {
+    public CofactorCommentBuilder note(CommentNote note) {
         this.note = note;
         return this;
     }

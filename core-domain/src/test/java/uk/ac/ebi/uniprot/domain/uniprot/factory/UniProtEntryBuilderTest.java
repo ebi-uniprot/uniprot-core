@@ -49,14 +49,17 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Field;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FieldType;
+import uk.ac.ebi.uniprot.domain.uniprot.description.AltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.NameType;
+
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Section;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubmissionName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.RecName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.AltNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDatabaseCrossReference;
@@ -284,26 +287,55 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertEquals(proteinDescription, entry.getProteinDescription());
     }
+    private ProteinDescription createProteinDescription() {
+    	List<Evidence> evidences = createEvidences();
+		ProteinName fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
+		List<ProteinName> shortNames = createShortNames();
+		List<ECNumber> ecNumbers = createECNumbers();
+		RecName recName = ProteinDescriptionFactory.INSTANCE.createRecName(fullName, shortNames, ecNumbers);
+		AltName altName = createAltName();
+		List<AltName> altNames = new ArrayList<>();
+		altNames.add(altName);
+		ProteinRecommendedName recommendedName = ProteinDescriptionFactory.INSTANCE.createProteinRecommendedName(recName, altNames);
+		
+		ProteinName fullName1 = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
 
-    private ProteinDescription createProteinDescription(){
-        List<Name> names =new ArrayList<>();
-        List<Field> fields = new ArrayList<>();
-        List<Evidence> evidences = createEvidences();
-        fields.add(ProteinDescriptionFactory.INSTANCE.createField(FieldType.FULL, "val1", evidences));
-        fields.add(ProteinDescriptionFactory.INSTANCE.createField(FieldType.SHORT, "val2", evidences));
-       Name name = ProteinDescriptionFactory.INSTANCE.createName(NameType.RECNAME, fields);
-       List<Field> fields2 = new ArrayList<>();
-       fields2.add(ProteinDescriptionFactory.INSTANCE.createField(FieldType.FULL, "fullVal2", evidences));
-       Name name2 = ProteinDescriptionFactory.INSTANCE.createName(NameType.ALTNAME, fields);
-       names.add(name);
-       names.add(name2);
-        Section section =ProteinDescriptionFactory.INSTANCE.createSection(names);
-        Flag flag =ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.FRAGMENT, evidences);
-        List<Flag> flags = new ArrayList<>();
-        flags.add(flag);
-        ProteinDescription pd =UniProtFactory.INSTANCE.getProteinDescriptionFactory().createProteinDescription(section, flags);
-        return pd;
+		List<ECNumber> ecNumbers1 = createECNumbers();
+		ProteinSubmissionName subName = ProteinDescriptionFactory.INSTANCE.createProteinSubmissionName(fullName1, ecNumbers1);
+		ProteinDescription description = ProteinDescriptionFactory.INSTANCE.createProteinDescription(recommendedName, subName);
+		return description;
     }
+	private AltName createAltName() {
+		AltNameImpl.Builder builder = AltNameImpl.newBuilder();
+		List<Evidence> evidences = createEvidences();
+		ProteinName fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full alt Name", evidences);
+		builder.fullName(fullName)
+				.shortName(ProteinDescriptionFactory.INSTANCE.createProteinName("short name1", evidences))
+				.shortName(ProteinDescriptionFactory.INSTANCE.createProteinName("short name2", evidences))
+				.ecNumber(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.4", evidences))
+				.allergenName(ProteinDescriptionFactory.INSTANCE.createProteinName("allergen", evidences))
+				.biotechName(ProteinDescriptionFactory.INSTANCE.createProteinName("biotech", evidences))
+				.cDAntigenName(ProteinDescriptionFactory.INSTANCE.createProteinName("cd antigen", evidences));
+
+		AltName altName = ProteinDescriptionFactory.INSTANCE.createAltName(builder);
+		return altName;
+	}
+	private List<ProteinName> createShortNames() {
+		List<Evidence> evidences = createEvidences();
+		List<ProteinName> shortNames = new ArrayList<>();
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name1", evidences));
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name2", evidences));
+		return shortNames;
+	}
+
+	private List<ECNumber> createECNumbers() {
+		List<Evidence> evidences = createEvidences();
+		List<ECNumber> ecNumbers = new ArrayList<>();
+		ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.4", evidences));
+		ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.3.4.3", evidences));
+		return ecNumbers;
+	}
+
     @Test
     public void testSetComments() {
         UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
@@ -330,8 +362,8 @@ public class UniProtEntryBuilderTest {
         List< Comment> comments = new ArrayList<>();
         comments.add(commentFactory.createFreeTextCommentBuilder().buildFreeTextComment(CommentType.ALLERGEN, createEvidenceValues()));
         FreeTextCommentBuilder<? extends FreeTextComment> ftcBuilder=commentFactory.createFreeTextCommentBuilder();
-        ftcBuilder.setCommentType(CommentType.FUNCTION)
-        .setTexts(createEvidenceValues());
+        ftcBuilder.commentType(CommentType.FUNCTION)
+        .texts(createEvidenceValues());
         comments.add(commentFactory.createComment(ftcBuilder));
         CofactorReference reference =CofactorCommentBuilder.createCofactorReference(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor =CofactorCommentBuilder.createCofactor("somename", createEvidences(), reference);
@@ -340,9 +372,9 @@ public class UniProtEntryBuilderTest {
         CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         String molecule ="some mol";
         CofactorComment cofactorComment =
-                builder.setMolecule(molecule)
-                .setCofactors(cofactors)
-                .setNote(note)
+                builder.molecule(molecule)
+                .cofactors(cofactors)
+                .note(note)
                 .build();
         comments.add(cofactorComment);
         return commentFactory.createComments(comments);

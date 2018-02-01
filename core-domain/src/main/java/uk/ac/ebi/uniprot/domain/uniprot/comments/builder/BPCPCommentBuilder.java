@@ -40,27 +40,27 @@ public final class BPCPCommentBuilder implements CommentBuilder<BioPhysicoChemic
                 temperatureDependence);
     }
 
-    public BPCPCommentBuilder setAbsorption(Absorption absorption) {
+    public BPCPCommentBuilder absorption(Absorption absorption) {
         this.absorption = absorption;
         return this;
     }
 
-    public BPCPCommentBuilder setKineticParameters(KineticParameters kineticParameters) {
+    public BPCPCommentBuilder kineticParameters(KineticParameters kineticParameters) {
         this.kineticParameters = kineticParameters;
         return this;
     }
 
-    public BPCPCommentBuilder setPHDependence(PHDependence phDependences) {
+    public BPCPCommentBuilder pHDependence(PHDependence phDependences) {
         this.phDependence = phDependences;
         return this;
     }
 
-    public BPCPCommentBuilder setRedoxPotential(RedoxPotential redoxPotential) {
+    public BPCPCommentBuilder redoxPotential(RedoxPotential redoxPotential) {
         this.redoxPotential = redoxPotential;
         return this;
     }
 
-    public BPCPCommentBuilder setTemperatureDependence(TemperatureDependence temperatureDependence) {
+    public BPCPCommentBuilder temperatureDependence(TemperatureDependence temperatureDependence) {
         this.temperatureDependence = temperatureDependence;
         return this;
     }

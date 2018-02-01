@@ -13,7 +13,7 @@ public class WebResourceCommentBuilderTest {
     public void testSetDatabaseName() {
         WebResourceCommentBuilder builder =  WebResourceCommentBuilder.newInstance();
         String databaseName ="someDbName";
-        WebResourceComment comment = builder.setDatabaseName(databaseName)
+        WebResourceComment comment = builder.databaseName(databaseName)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getDatabaseName());
@@ -27,8 +27,8 @@ public class WebResourceCommentBuilderTest {
         WebResourceCommentBuilder builder =  WebResourceCommentBuilder.newInstance();
         String databaseName ="someDbName";
         String databaseUrl ="some url";
-        WebResourceComment comment = builder.setDatabaseName(databaseName)
-                .setDatabaseUrl(databaseUrl)
+        WebResourceComment comment = builder.databaseName(databaseName)
+                .databaseUrl(databaseUrl)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getDatabaseName());
@@ -42,8 +42,8 @@ public class WebResourceCommentBuilderTest {
         WebResourceCommentBuilder builder =  WebResourceCommentBuilder.newInstance();
         String databaseName ="someDbName";
         String databaseFtp ="some ftp";
-        WebResourceComment comment = builder.setDatabaseName(databaseName)
-                .setDatabaseFtp(databaseFtp)
+        WebResourceComment comment = builder.databaseName(databaseName)
+                .databaseFtp(databaseFtp)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getDatabaseName());
@@ -58,9 +58,9 @@ public class WebResourceCommentBuilderTest {
         String databaseName ="someDbName";
         String databaseUrl ="some url";
         String note ="some note";
-        WebResourceComment comment = builder.setDatabaseName(databaseName)
-                .setDatabaseUrl(databaseUrl)
-                .setNote(note)
+        WebResourceComment comment = builder.databaseName(databaseName)
+                .databaseUrl(databaseUrl)
+                .note(note)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getDatabaseName());

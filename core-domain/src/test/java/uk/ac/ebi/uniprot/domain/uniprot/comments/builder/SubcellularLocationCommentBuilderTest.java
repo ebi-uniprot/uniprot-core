@@ -24,7 +24,7 @@ public class SubcellularLocationCommentBuilderTest {
     public void testSetMolecule() {
         String molecule ="some mol";
         SubcellularLocationCommentBuilder builder =SubcellularLocationCommentBuilder.newInstance();
-        SubcellularLocationComment comment =builder.setMolecule(molecule)
+        SubcellularLocationComment comment =builder.molecule(molecule)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
         assertEquals(molecule, comment.getSubcellularMolecule());
@@ -52,8 +52,8 @@ public class SubcellularLocationCommentBuilderTest {
                 null);
         sublocations.add(sublocation2);
         SubcellularLocationCommentBuilder builder =SubcellularLocationCommentBuilder.newInstance();
-        SubcellularLocationComment comment =builder.setMolecule(molecule)
-                .setSubcellularLocations(sublocations)
+        SubcellularLocationComment comment =builder.molecule(molecule)
+                .subcellularLocations(sublocations)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
         assertEquals(molecule, comment.getSubcellularMolecule());
@@ -86,9 +86,9 @@ public class SubcellularLocationCommentBuilderTest {
         CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         
         SubcellularLocationCommentBuilder builder =SubcellularLocationCommentBuilder.newInstance();
-        SubcellularLocationComment comment =builder.setMolecule(molecule)
-                .setSubcellularLocations(sublocations)
-                .setNote(note)
+        SubcellularLocationComment comment =builder.molecule(molecule)
+                .subcellularLocations(sublocations)
+                .note(note)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
         assertEquals(molecule, comment.getSubcellularMolecule());

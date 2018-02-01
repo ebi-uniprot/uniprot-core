@@ -34,7 +34,7 @@ public class DiseaseBuilderTest {
     public void testSetDiseaseId() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
         DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        Disease disease =builder.setDiseaseId(diseaseId)
+        Disease disease =builder.diseaseId(diseaseId)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertNull(disease.getDescription());
@@ -46,8 +46,8 @@ public class DiseaseBuilderTest {
     public void testSetAcronym() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
         DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        Disease disease =builder.setDiseaseId(diseaseId)
-                .setAcronym("someAcron")
+        Disease disease =builder.diseaseId(diseaseId)
+                .acronym("someAcron")
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertNull(disease.getDescription());
@@ -62,9 +62,9 @@ public class DiseaseBuilderTest {
         List<Evidence> evidences =  createEvidences();
         DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
         DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        Disease disease =builder.setDiseaseId(diseaseId)
-                .setAcronym("someAcron")
-                .setDescription(description)
+        Disease disease =builder.diseaseId(diseaseId)
+                .acronym("someAcron")
+                .description(description)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());
@@ -82,10 +82,10 @@ public class DiseaseBuilderTest {
         String referenceId = "3124";
         DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
         DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        Disease disease =builder.setDiseaseId(diseaseId)
-                .setAcronym("someAcron")
-                .setDescription(description)
-                .setReference(reference)           
+        Disease disease =builder.diseaseId(diseaseId)
+                .acronym("someAcron")
+                .description(description)
+                .reference(reference)           
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());

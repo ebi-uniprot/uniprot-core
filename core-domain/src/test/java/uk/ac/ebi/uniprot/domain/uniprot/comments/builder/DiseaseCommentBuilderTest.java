@@ -33,15 +33,15 @@ public class DiseaseCommentBuilderTest {
         String referenceId = "3124";
         DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
         DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        Disease disease =builder.setDiseaseId(diseaseId)
-                .setAcronym("someAcron")
-                .setDescription(description)
-                .setReference(reference)           
+        Disease disease =builder.diseaseId(diseaseId)
+                .acronym("someAcron")
+                .description(description)
+                .reference(reference)           
                 .build();
         DiseaseCommentBuilder commentBuilder = DiseaseCommentBuilder.newInstance();
         
         DiseaseComment comment = 
-                commentBuilder.setDisease(disease)
+                commentBuilder.disease(disease)
                 .build();
        assertEquals(null, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
@@ -58,17 +58,17 @@ public class DiseaseCommentBuilderTest {
         String referenceId = "3124";
         DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
         DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        Disease disease =builder.setDiseaseId(diseaseId)
-                .setAcronym("someAcron")
-                .setDescription(description)
-                .setReference(reference)           
+        Disease disease =builder.diseaseId(diseaseId)
+                .acronym("someAcron")
+                .description(description)
+                .reference(reference)           
                 .build();
         CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         DiseaseCommentBuilder commentBuilder = DiseaseCommentBuilder.newInstance();
         
         DiseaseComment comment = 
-                commentBuilder.setDisease(disease)
-                .setNote(note)
+                commentBuilder.disease(disease)
+                .note(note)
                 .build();
        assertEquals(note, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());

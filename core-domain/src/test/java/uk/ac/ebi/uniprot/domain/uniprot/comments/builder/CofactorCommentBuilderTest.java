@@ -35,7 +35,7 @@ public class CofactorCommentBuilderTest {
         CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
         String molecule ="some mol";
         CofactorComment comment =
-                builder.setMolecule(molecule)
+                builder.molecule(molecule)
                 .build();
         assertEquals(molecule, comment.getMolecule());
         assertEquals(0, comment.getCofactors().size());
@@ -52,8 +52,8 @@ public class CofactorCommentBuilderTest {
         CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
         String molecule ="some mol";
         CofactorComment comment =
-                builder.setMolecule(molecule)
-                .setCofactors(cofactors)
+                builder.molecule(molecule)
+                .cofactors(cofactors)
                 .build();
         assertEquals(molecule, comment.getMolecule());
         assertEquals(1, comment.getCofactors().size());
@@ -72,9 +72,9 @@ public class CofactorCommentBuilderTest {
         CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         String molecule ="some mol";
         CofactorComment comment =
-                builder.setMolecule(molecule)
-                .setCofactors(cofactors)
-                .setNote(note)
+                builder.molecule(molecule)
+                .cofactors(cofactors)
+                .note(note)
                 .build();
         assertEquals(molecule, comment.getMolecule());
         assertEquals(1, comment.getCofactors().size());

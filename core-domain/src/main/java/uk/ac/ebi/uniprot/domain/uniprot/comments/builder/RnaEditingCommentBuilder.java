@@ -21,15 +21,15 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
         return new RnaEditingCommentImpl( locationType, locations,
                  note) ;
     }
-    public RnaEditingCommentBuilder setRnaEditingLocationType(RnaEditingLocationType locationType){
+    public RnaEditingCommentBuilder rnaEditingLocationType(RnaEditingLocationType locationType){
         this.locationType = locationType;
         return this;
     }
-    public RnaEditingCommentBuilder setLocations(List<Position> locations){
+    public RnaEditingCommentBuilder locations(List<Position> locations){
         this.locations = locations;
         return this;
     }
-    public RnaEditingCommentBuilder setNote(CommentNote note){
+    public RnaEditingCommentBuilder note(CommentNote note){
         this.note = note;
         return this;
     }

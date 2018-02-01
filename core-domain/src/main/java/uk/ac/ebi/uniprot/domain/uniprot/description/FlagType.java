@@ -8,7 +8,10 @@ package uk.ac.ebi.uniprot.domain.uniprot.description;
 public enum FlagType {
     PRECURSOR("Precursor"),
     FRAGMENT("Fragment"),
-    FRAGMENTS("Fragments");
+    FRAGMENTS("Fragments"),
+    FRAGMENT_PRECURSOR("Fragment,Precursor"),
+    FRAGMENTS_PRECURSOR("Fragments,Precursor");
+
 
     private String value;
 

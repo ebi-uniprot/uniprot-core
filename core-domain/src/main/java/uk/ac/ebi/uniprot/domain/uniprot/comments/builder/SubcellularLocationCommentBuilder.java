@@ -22,17 +22,17 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
         return  new SubcellularLocationCommentImpl( molecule, 
                  subcellularLocations,  note);
     }
-    public SubcellularLocationCommentBuilder setMolecule(String molecule){
+    public SubcellularLocationCommentBuilder molecule(String molecule){
         this.molecule = molecule;
         return this;
     }
     
-    public SubcellularLocationCommentBuilder setSubcellularLocations(List<SubcellularLocation>  subcellularLocations){
+    public SubcellularLocationCommentBuilder subcellularLocations(List<SubcellularLocation>  subcellularLocations){
         this.subcellularLocations = subcellularLocations;
         return this;
     }
     
-    public SubcellularLocationCommentBuilder setNote(CommentNote note){
+    public SubcellularLocationCommentBuilder note(CommentNote note){
         this.note = note;
         return this;
     }

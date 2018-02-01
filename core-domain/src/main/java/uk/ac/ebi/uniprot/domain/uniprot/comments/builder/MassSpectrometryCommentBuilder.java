@@ -24,27 +24,27 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
                  molWeight,  molWeightError,  note,
                  ranges, evidences);
     }
-    public MassSpectrometryCommentBuilder setMassSpectrometryMethod(MassSpectrometryMethod method){
+    public MassSpectrometryCommentBuilder massSpectrometryMethod(MassSpectrometryMethod method){
         this.method = method;
         return this; 
     }
-    public MassSpectrometryCommentBuilder setMolWeight(Double molWeight){
+    public MassSpectrometryCommentBuilder molWeight(Double molWeight){
         this.molWeight = molWeight;
         return this; 
     }
-    public MassSpectrometryCommentBuilder setMolWeightError(Double molWeightError){
+    public MassSpectrometryCommentBuilder molWeightError(Double molWeightError){
         this.molWeightError = molWeightError;
         return this; 
     }
-    public MassSpectrometryCommentBuilder setNote(String note){
+    public MassSpectrometryCommentBuilder note(String note){
         this.note = note;
         return this; 
     }
-    public MassSpectrometryCommentBuilder setMassSpectrometryRanges(List<MassSpectrometryRange> ranges){
+    public MassSpectrometryCommentBuilder massSpectrometryRanges(List<MassSpectrometryRange> ranges){
         this.ranges = ranges;
         return this; 
     }
-    public MassSpectrometryCommentBuilder setEvidences(List<Evidence> evidences){
+    public MassSpectrometryCommentBuilder evidences(List<Evidence> evidences){
         this.evidences = evidences;
         return this; 
     }

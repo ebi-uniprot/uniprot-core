@@ -34,7 +34,7 @@ public class RnaEditingCommentBuilderTest {
         
         RnaEditingCommentBuilder builder= RnaEditingCommentBuilder.newInstance();
         RnaEditingComment comment =
-        builder.setRnaEditingLocationType(RnaEditingLocationType.Known)
+        builder.rnaEditingLocationType(RnaEditingLocationType.Known)
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
@@ -50,8 +50,8 @@ public class RnaEditingCommentBuilderTest {
         positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
         RnaEditingCommentBuilder builder= RnaEditingCommentBuilder.newInstance();
         RnaEditingComment comment =
-        builder.setRnaEditingLocationType(RnaEditingLocationType.Known)
-        .setLocations(positions)
+        builder.rnaEditingLocationType(RnaEditingLocationType.Known)
+        .locations(positions)
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
@@ -68,9 +68,9 @@ public class RnaEditingCommentBuilderTest {
         CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
         RnaEditingCommentBuilder builder= RnaEditingCommentBuilder.newInstance();
         RnaEditingComment comment =
-        builder.setRnaEditingLocationType(RnaEditingLocationType.Known)
-        .setLocations(positions)
-        .setNote(note)
+        builder.rnaEditingLocationType(RnaEditingLocationType.Known)
+        .locations(positions)
+        .note(note)
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());

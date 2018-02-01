@@ -19,22 +19,22 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
         return new SequenceCautionCommentImpl( sequenceCautionType,  sequence, positions,
                  note) ;
     }
-    public SequenceCautionCommentBuilder setSequenceCautionType(SequenceCautionType sequenceCautionType){
+    public SequenceCautionCommentBuilder sequenceCautionType(SequenceCautionType sequenceCautionType){
         this.sequenceCautionType = sequenceCautionType;
         return this;
     }
     
-    public SequenceCautionCommentBuilder setSequence(String sequence){
+    public SequenceCautionCommentBuilder sequence(String sequence){
         this.sequence = sequence;
         return this;
     }
     
-    public SequenceCautionCommentBuilder setPositions(List<String> positions){
+    public SequenceCautionCommentBuilder positions(List<String> positions){
         this.positions = positions;
         return this;
     }
     
-    public SequenceCautionCommentBuilder setNote(String note){
+    public SequenceCautionCommentBuilder note(String note){
         this.note = note;
         return this;
     }

@@ -39,11 +39,11 @@ public  class FreeTextCommentBuilder<T extends FreeTextComment> implements Comme
         return buildFreeTextComment(commentType, texts);
     }
     
-    public FreeTextCommentBuilder<T> setCommentType(CommentType commentType){
+    public FreeTextCommentBuilder<T> commentType(CommentType commentType){
         this.commentType  = commentType;
         return this;
     }
-    public FreeTextCommentBuilder<T> setTexts(List<EvidencedValue> texts){
+    public FreeTextCommentBuilder<T> texts(List<EvidencedValue> texts){
         this.texts  = texts;
         return this;
     }

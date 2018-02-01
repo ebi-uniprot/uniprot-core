@@ -24,22 +24,22 @@ public final class DiseaseBuilder {
                 reference);
     }
 
-    public DiseaseBuilder setDiseaseId(DiseaseId diseaseId) {
+    public DiseaseBuilder diseaseId(DiseaseId diseaseId) {
         this.diseaseId = diseaseId;
         return this;
     }
 
-    public DiseaseBuilder setAcronym(String acronym) {
+    public DiseaseBuilder acronym(String acronym) {
         this.acronym = acronym;
         return this;
     }
 
-    public DiseaseBuilder setDescription(DiseaseDescription description) {
+    public DiseaseBuilder description(DiseaseDescription description) {
         this.description = description;
         return this;
     }
 
-    public DiseaseBuilder setReference(DiseaseReference reference) {
+    public DiseaseBuilder reference(DiseaseReference reference) {
         this.reference = reference;
         return this;
     }

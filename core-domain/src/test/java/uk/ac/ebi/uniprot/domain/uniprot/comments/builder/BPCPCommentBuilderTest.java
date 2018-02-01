@@ -42,7 +42,7 @@ public class BPCPCommentBuilderTest {
         Absorption absorption =BPCPCommentBuilder.createAbsorption(max, true, note, createEvidences());
         BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
         BioPhysicoChemicalPropertiesComment comment =
-        builder.setAbsorption(absorption)
+        builder.absorption(absorption)
         .build();
         
         assertEquals(absorption, comment.getAbsorption());
@@ -70,8 +70,8 @@ public class BPCPCommentBuilderTest {
         Absorption absorption =BPCPCommentBuilder.createAbsorption(max, true, abNote, createEvidences());
         BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
         BioPhysicoChemicalPropertiesComment comment =
-        builder.setAbsorption(absorption)
-        .setKineticParameters(kp)
+        builder.absorption(absorption)
+        .kineticParameters(kp)
         .build();
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
@@ -97,9 +97,9 @@ public class BPCPCommentBuilderTest {
         Absorption absorption =BPCPCommentBuilder.createAbsorption(max, true, abNote, createEvidences());
         BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
         BioPhysicoChemicalPropertiesComment comment =
-        builder.setAbsorption(absorption)
-        .setKineticParameters(kp)
-        .setPHDependence(BPCPCommentBuilder.createPHDependence(texts))
+        builder.absorption(absorption)
+        .kineticParameters(kp)
+        .pHDependence(BPCPCommentBuilder.createPHDependence(texts))
         .build();
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
@@ -125,10 +125,10 @@ public class BPCPCommentBuilderTest {
         Absorption absorption =BPCPCommentBuilder.createAbsorption(max, true, abNote, createEvidences());
         BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
         BioPhysicoChemicalPropertiesComment comment =
-        builder.setAbsorption(absorption)
-        .setKineticParameters(kp)
-        .setPHDependence(BPCPCommentBuilder.createPHDependence(texts))
-        .setRedoxPotential(BPCPCommentBuilder.createRedoxPotential(texts))
+        builder.absorption(absorption)
+        .kineticParameters(kp)
+        .pHDependence(BPCPCommentBuilder.createPHDependence(texts))
+        .redoxPotential(BPCPCommentBuilder.createRedoxPotential(texts))
         .build();
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
@@ -154,11 +154,11 @@ public class BPCPCommentBuilderTest {
         Absorption absorption =BPCPCommentBuilder.createAbsorption(max, true, abNote, createEvidences());
         BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
         BioPhysicoChemicalPropertiesComment comment =
-        builder.setAbsorption(absorption)
-        .setKineticParameters(kp)
-        .setPHDependence(BPCPCommentBuilder.createPHDependence(texts))
-        .setRedoxPotential(BPCPCommentBuilder.createRedoxPotential(texts))
-        .setTemperatureDependence(BPCPCommentBuilder.createTemperatureDependence(texts))
+        builder.absorption(absorption)
+        .kineticParameters(kp)
+        .pHDependence(BPCPCommentBuilder.createPHDependence(texts))
+        .redoxPotential(BPCPCommentBuilder.createRedoxPotential(texts))
+        .temperatureDependence(BPCPCommentBuilder.createTemperatureDependence(texts))
         .build();
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());

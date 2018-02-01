@@ -27,7 +27,7 @@ public class InteractionBuilderTest {
     @Test
     public void testSetInteractionType() {
         InteractionBuilder builder = InteractionBuilder.newInstance();
-        Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
+        Interaction interaction =builder.interactionType(InteractionType.BINARY)
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertNull(interaction.getInteractionGeneName());
@@ -39,8 +39,8 @@ public class InteractionBuilderTest {
     @Test
     public void testSetGeneName() {
         InteractionBuilder builder = InteractionBuilder.newInstance();
-        Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
-                .setGeneName("gn22")
+        Interaction interaction =builder.interactionType(InteractionType.BINARY)
+                .geneName("gn22")
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
@@ -52,9 +52,9 @@ public class InteractionBuilderTest {
     @Test
     public void testSetNumberOfExperiments() {
         InteractionBuilder builder = InteractionBuilder.newInstance();
-        Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
-                .setGeneName("gn22")
-                .setNumberOfExperiments(3)
+        Interaction interaction =builder.interactionType(InteractionType.BINARY)
+                .geneName("gn22")
+                .numberOfExperiments(3)
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
@@ -67,10 +67,10 @@ public class InteractionBuilderTest {
     @Test
     public void testSetFirstInteractor() {
         InteractionBuilder builder = InteractionBuilder.newInstance();
-        Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
-                .setGeneName("gn22")
-                .setNumberOfExperiments(3)
-                .setFirstInteractor(InteractionBuilder.createInteractorAccession("first1"))
+        Interaction interaction =builder.interactionType(InteractionType.BINARY)
+                .geneName("gn22")
+                .numberOfExperiments(3)
+                .firstInteractor(InteractionBuilder.createInteractorAccession("first1"))
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
@@ -83,11 +83,11 @@ public class InteractionBuilderTest {
     @Test
     public void testSetSecondInteractor() {
         InteractionBuilder builder = InteractionBuilder.newInstance();
-        Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
-                .setGeneName("gn22")
-                .setNumberOfExperiments(3)
-                .setFirstInteractor(InteractionBuilder.createInteractorAccession("first1"))
-                .setSecondInteractor(InteractionBuilder.createInteractorAccession("first2"))
+        Interaction interaction =builder.interactionType(InteractionType.BINARY)
+                .geneName("gn22")
+                .numberOfExperiments(3)
+                .firstInteractor(InteractionBuilder.createInteractorAccession("first1"))
+                .secondInteractor(InteractionBuilder.createInteractorAccession("first2"))
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
@@ -101,12 +101,12 @@ public class InteractionBuilderTest {
     @Test
     public void testSetUniProtAccession() {
         InteractionBuilder builder = InteractionBuilder.newInstance();
-        Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
-                .setGeneName("gn22")
-                .setNumberOfExperiments(3)
-                .setFirstInteractor(InteractionBuilder.createInteractorAccession("first1"))
-                .setSecondInteractor(InteractionBuilder.createInteractorAccession("first2"))
-                .setUniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
+        Interaction interaction =builder.interactionType(InteractionType.BINARY)
+                .geneName("gn22")
+                .numberOfExperiments(3)
+                .firstInteractor(InteractionBuilder.createInteractorAccession("first1"))
+                .secondInteractor(InteractionBuilder.createInteractorAccession("first2"))
+                .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
@@ -120,18 +120,18 @@ public class InteractionBuilderTest {
     @Test
     public void testCreateInteractionComment() {
         InteractionBuilder builder = InteractionCommentBuilder.newInteractionBuilder();
-        Interaction interaction =builder.setInteractionType(InteractionType.BINARY)
-                .setGeneName("gn22")
-                .setNumberOfExperiments(3)
-                .setFirstInteractor(InteractionBuilder.createInteractorAccession("first1"))
-                .setSecondInteractor(InteractionBuilder.createInteractorAccession("first2"))
-                .setUniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
+        Interaction interaction =builder.interactionType(InteractionType.BINARY)
+                .geneName("gn22")
+                .numberOfExperiments(3)
+                .firstInteractor(InteractionBuilder.createInteractorAccession("first1"))
+                .secondInteractor(InteractionBuilder.createInteractorAccession("first2"))
+                .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
                 .build();
         List<Interaction> interactions = Arrays.asList(interaction);
         InteractionCommentBuilder commentBuilder = InteractionCommentBuilder.newInstance();
         
         InteractionComment comment = 
-                commentBuilder.setInteractions(interactions)
+                commentBuilder.interactions(interactions)
                 .build();
         assertEquals(interactions, comment.getInteractions());
         assertEquals(CommentType.INTERACTION, comment.getCommentType());

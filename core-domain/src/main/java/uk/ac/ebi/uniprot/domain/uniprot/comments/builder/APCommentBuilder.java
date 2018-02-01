@@ -29,16 +29,16 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
         return new AlternativeProductsCommentImpl( events, 
                 isoforms,  note  );
     }
-    public APCommentBuilder setEvents( List<APEvent> events){
+    public APCommentBuilder events( List<APEvent> events){
         this.events = events;
         return this;
     }
     
-    public APCommentBuilder setIsoforms( List<APIsoform> isoforms){
+    public APCommentBuilder isoforms( List<APIsoform> isoforms){
         this.isoforms = isoforms;
         return this;
     }
-    public APCommentBuilder setNote( APNote note){
+    public APCommentBuilder note( APNote note){
         this.note = note;
         return this;
     }
@@ -77,32 +77,32 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
                     sequenceIds, isoformSequenceStatus);
         }
 
-        public APIsoformBuilder setIsoformName(IsoformName name) {
+        public APIsoformBuilder isoformName(IsoformName name) {
             this.name = name;
             return this;
         }
 
-        public APIsoformBuilder setIsoformSynonyms(List<IsoformSynonym> synonyms) {
+        public APIsoformBuilder isoformSynonyms(List<IsoformSynonym> synonyms) {
             this.synonyms = synonyms;
             return this;
         }
 
-        public APIsoformBuilder setNote(CommentNote note) {
+        public APIsoformBuilder note(CommentNote note) {
             this.note = note;
             return this;
         }
 
-        public APIsoformBuilder setIsoformIds(List<IsoformId> isoformIds) {
+        public APIsoformBuilder isoformIds(List<IsoformId> isoformIds) {
             this.isoformIds = isoformIds;
             return this;
         }
 
-        public APIsoformBuilder setSequenceIds(List<String> sequenceIds) {
+        public APIsoformBuilder sequenceIds(List<String> sequenceIds) {
             this.sequenceIds = sequenceIds;
             return this;
         }
 
-        public APIsoformBuilder setIsoformSequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
+        public APIsoformBuilder isoformSequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
             this.isoformSequenceStatus = isoformSequenceStatus;
             return this;
         }

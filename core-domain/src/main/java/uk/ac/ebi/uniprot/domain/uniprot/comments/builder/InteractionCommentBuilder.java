@@ -15,7 +15,7 @@ public class InteractionCommentBuilder implements CommentBuilder<InteractionComm
     }
     
     private List<Interaction> interactions;
-    public InteractionCommentBuilder setInteractions(List<Interaction> interactions){
+    public InteractionCommentBuilder interactions(List<Interaction> interactions){
         this.interactions = interactions;
         return this;
     }

@@ -23,32 +23,32 @@ public final class InteractionBuilder {
                 firstInteractor, secondInteractor);
     }
 
-    public InteractionBuilder setInteractionType(InteractionType type) {
+    public InteractionBuilder interactionType(InteractionType type) {
         this.type = type;
         return this;
     }
 
-    public InteractionBuilder setGeneName(String geneName) {
+    public InteractionBuilder geneName(String geneName) {
         this.geneName = geneName;
         return this;
     }
 
-    public InteractionBuilder setNumberOfExperiments(int nbExp) {
+    public InteractionBuilder numberOfExperiments(int nbExp) {
         this.nbExp = nbExp;
         return this;
     }
 
-    public InteractionBuilder setFirstInteractor(InteractorAccession firstInteractor) {
+    public InteractionBuilder firstInteractor(InteractorAccession firstInteractor) {
         this.firstInteractor = firstInteractor;
         return this;
     }
 
-    public InteractionBuilder setSecondInteractor(InteractorAccession secondInteractor) {
+    public InteractionBuilder secondInteractor(InteractorAccession secondInteractor) {
         this.secondInteractor = secondInteractor;
         return this;
     }
 
-    public InteractionBuilder setUniProtAccession(UniProtAccession uniprotAccession) {
+    public InteractionBuilder uniProtAccession(UniProtAccession uniprotAccession) {
         this.uniprotAccession = uniprotAccession;
         return this;
     }

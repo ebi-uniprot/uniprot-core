@@ -15,21 +15,21 @@ public final class WebResourceCommentBuilder implements CommentBuilder<WebResour
     public WebResourceComment build(){
         return new  WebResourceCommentImpl( databaseName,  databaseUrl,  databaseFtp,  note);
     }
-    public WebResourceCommentBuilder setDatabaseName(String databaseName){
+    public WebResourceCommentBuilder databaseName(String databaseName){
         this.databaseName = databaseName;
         return this;
     }
     
-    public WebResourceCommentBuilder setDatabaseUrl(String databaseUrl){
+    public WebResourceCommentBuilder databaseUrl(String databaseUrl){
         this.databaseUrl = databaseUrl;
         return this;
     }
-    public WebResourceCommentBuilder setDatabaseFtp(String databaseFtp){
+    public WebResourceCommentBuilder databaseFtp(String databaseFtp){
         this.databaseFtp = databaseFtp;
         return this;
     }
     
-    public WebResourceCommentBuilder setNote(String note){
+    public WebResourceCommentBuilder note(String note){
         this.note = note;
         return this;
     }

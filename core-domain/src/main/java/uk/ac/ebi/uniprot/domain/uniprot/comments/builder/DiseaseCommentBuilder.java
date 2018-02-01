@@ -14,11 +14,11 @@ public class DiseaseCommentBuilder implements CommentBuilder<DiseaseComment> {
     }
     private Disease disease;
     private CommentNote note;
-    public DiseaseCommentBuilder setDisease(Disease disease){
+    public DiseaseCommentBuilder disease(Disease disease){
         this.disease = disease;
         return this;
     }
-    public DiseaseCommentBuilder setNote(CommentNote note){
+    public DiseaseCommentBuilder note(CommentNote note){
         this.note = note;
         return this;
     }
