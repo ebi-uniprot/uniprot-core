@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.domain.feature;
 
+import java.util.regex.Pattern;
 
 /**
- * Indicates that a {@link uk.ac.ebi.Feature.interfaces.uniprot.oldfeatures.Feature Feature} in an UniProtEntry can have a {@link uk.ac.ebi.kraken.interfaces.uniprot.oldfeatures.FeatureId FeatureId}. If the
+ * Indicates that a {@link uk.ac.ebi.Feature.interfaces.uniprot.Feature Feature} in an UniProtEntry. If the
  * getValue() method of the FeatureId returns the empty String ("")
  * no FeatureId is available for the Feature.
  * <br><br>
@@ -35,5 +36,16 @@ package uk.ac.ebi.uniprot.domain.feature;
  */
 public interface HasFeatureId  {
 	 FeatureId getFeatureId();
-	 boolean isValidFeatureId();
+	
+	 Pattern getFeatureIdPattern();
+	 default boolean isValidFeatureId() {
+		 FeatureId featureId = getFeatureId();
+		 if (featureId == null)
+	            return false;
+	        String val = featureId.getValue();
+	        if (val == null)
+	            return false;
+	        return getFeatureIdPattern().matcher(val).matches();
+	 }
+	 
 }

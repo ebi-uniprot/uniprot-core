@@ -34,16 +34,6 @@ public class VariantFeatureImpl extends FeatureWithAlternativeSequenceImpl imple
     }
 
     @Override
-    public boolean isValidFeatureId() {
-        if (featureId == null)
-            return false;
-        String val = this.featureId.getValue();
-        if (val == null)
-            return false;
-        return FEATURE_ID_PATTERN.matcher(val).matches();
-    }
-
-    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
@@ -67,5 +57,10 @@ public class VariantFeatureImpl extends FeatureWithAlternativeSequenceImpl imple
             return false;
         return true;
     }
+
+	@Override
+	public Pattern getFeatureIdPattern() {
+		return FEATURE_ID_PATTERN;
+	}
 
 }

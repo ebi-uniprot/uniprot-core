@@ -33,16 +33,10 @@ public class VarSeqFeatureImpl extends FeatureWithAlternativeSequenceImpl implem
     public FeatureId getFeatureId() {
        return featureId;
     }
-
     @Override
-    public boolean isValidFeatureId() {
-        if (featureId == null)
-            return false;
-        String val = this.featureId.getValue();
-        if (val == null)
-            return false;
-        return FEATURE_ID_PATTERN.matcher(val).matches();
-    }
+	public Pattern getFeatureIdPattern() {
+		return FEATURE_ID_PATTERN;
+	}
 
     @Override
     public int hashCode() {

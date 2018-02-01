@@ -97,13 +97,8 @@ public class FeatureWithFeatureIdImpl extends FeatureImpl implements Feature, Ha
 
     }
 
-    @Override
-    public boolean isValidFeatureId() {
-        if (featureId == null)
-            return false;
-        String val = this.featureId.getValue();
-        if (val == null)
-            return false;
-        return this.featureIdPattern.matcher(val).matches();
-    }
+	@Override
+	public Pattern getFeatureIdPattern() {
+		return this.featureIdPattern;
+	}
 }
