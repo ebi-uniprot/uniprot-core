@@ -1,11 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
 /**
- * Created by IntelliJ IDEA.
- * User: jerven
- * Date: May 24, 2006
- * Time: 3:34:17 PM
- * To change this template use File | Settings | File Templates.
+ * 
+ * @author jluo
+ *
  */
 public enum InternalLineType {
     CL(1),

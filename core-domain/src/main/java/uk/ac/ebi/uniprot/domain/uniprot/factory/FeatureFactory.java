@@ -72,7 +72,8 @@ public enum FeatureFactory {
         return FeatureWithAlternativeSequenceImpl.createSequenceReport(value);
     }
 
-    public <T extends Feature> T buildSimpleFeature(FeatureType featureType,
+    @SuppressWarnings("unchecked")
+	public <T extends Feature> T buildSimpleFeature(FeatureType featureType,
             FeatureLocation location,
             String description) {
         Feature result = null;
@@ -176,7 +177,8 @@ public enum FeatureFactory {
         return (T) result;
     }
 
-    public <T extends Feature> T buildSimpleFeatureWithFeatureId(FeatureType featureType,
+    @SuppressWarnings("unchecked")
+	public <T extends Feature> T buildSimpleFeatureWithFeatureId(FeatureType featureType,
             FeatureLocation location,
             String description,
             String featureId) {

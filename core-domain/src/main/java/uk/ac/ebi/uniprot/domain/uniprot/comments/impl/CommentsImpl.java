@@ -22,7 +22,8 @@ public class CommentsImpl implements Comments {
         return comments;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public <T extends Comment> List<T> getComments(CommentType type) {
         List< Comment> typedComments = new ArrayList<>();
         for(Comment comment: comments){

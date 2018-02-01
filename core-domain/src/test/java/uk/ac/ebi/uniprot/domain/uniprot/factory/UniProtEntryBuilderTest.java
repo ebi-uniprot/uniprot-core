@@ -358,10 +358,11 @@ public class UniProtEntryBuilderTest {
         assertEquals(comments, entry.getComments());
         
     }
-    private Comments createComments(){
+
+	private Comments createComments(){
         CommentFactory commentFactory =UniProtFactory.INSTANCE.getCommentFactory();
         List< Comment> comments = new ArrayList<>();
-        comments.add(commentFactory.createFreeTextCommentBuilder().buildFreeTextComment(CommentType.ALLERGEN, createEvidenceValues()));
+        comments.add(FreeTextCommentBuilder.buildFreeTextComment(CommentType.ALLERGEN, createEvidenceValues()));
         FreeTextCommentBuilder<? extends FreeTextComment> ftcBuilder=commentFactory.createFreeTextCommentBuilder();
         ftcBuilder.commentType(CommentType.FUNCTION)
         .texts(createEvidenceValues());

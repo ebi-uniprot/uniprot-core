@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.common.Value;
  * <h3>About This Data Structure</h3>
  * <p>
  * Encapsulates the UniProtKB ID of
- * a {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry}.
+ * a {@link UniProtEntry UniProtEntry}.
  * </p>
  * <h3>The Semantics of this Data Structure</h3>
  * <p>

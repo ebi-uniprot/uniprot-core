@@ -72,7 +72,8 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
         return result;
     }
 
-    @Override
+    @SuppressWarnings("rawtypes")
+	@Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

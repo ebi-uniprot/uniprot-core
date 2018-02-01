@@ -1,6 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.builder;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Test;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseId;
@@ -8,17 +17,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class DiseaseBuilderTest {
     @Test

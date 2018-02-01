@@ -23,7 +23,8 @@ public class FeaturesImpl implements Features {
         return features;
     }
 
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public <T extends Feature> List<T> getFeatures(FeatureType type) {
         List< Feature> typedFeatures = new ArrayList<>();
         for(Feature feature: features){

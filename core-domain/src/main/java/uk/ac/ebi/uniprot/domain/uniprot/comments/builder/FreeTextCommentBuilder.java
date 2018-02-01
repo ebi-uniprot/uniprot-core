@@ -48,7 +48,8 @@ public  class FreeTextCommentBuilder<T extends FreeTextComment> implements Comme
         return this;
     }
     
-    public static <S extends FreeTextComment> S buildFreeTextComment(CommentType commentType,
+    @SuppressWarnings("unchecked")
+	public static <S extends FreeTextComment> S buildFreeTextComment(CommentType commentType,
             List<EvidencedValue> texts){
         FreeTextComment comment;
     

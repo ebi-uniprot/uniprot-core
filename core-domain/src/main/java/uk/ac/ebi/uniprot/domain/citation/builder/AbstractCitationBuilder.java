@@ -130,6 +130,7 @@ public abstract class AbstractCitationBuilder<T extends Citation> implements Cit
             result = prime * result + ((xrefs == null) ? 0 : xrefs.hashCode());
             return result;
         }
+        @SuppressWarnings("unchecked")
         @Override
         public boolean equals(Object obj) {
             if (this == obj)
@@ -138,7 +139,8 @@ public abstract class AbstractCitationBuilder<T extends Citation> implements Cit
                 return false;
             if (getClass() != obj.getClass())
                 return false;
-            AbstractCitationImpl other = (AbstractCitationImpl) obj;
+          
+			AbstractCitationImpl other = (AbstractCitationImpl) obj;
             if (authoringGroups == null) {
                 if (other.authoringGroups != null)
                     return false;
