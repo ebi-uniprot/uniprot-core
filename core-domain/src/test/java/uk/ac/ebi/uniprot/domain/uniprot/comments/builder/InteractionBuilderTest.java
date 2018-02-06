@@ -31,7 +31,7 @@ public class InteractionBuilderTest {
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertNull(interaction.getInteractionGeneName());
-        assertNull(interaction.getInteractionUniProtAccession());
+        assertNull(interaction.getInteractorUniProtAccession());
         assertNull(interaction.getFirstInteractor());
         assertNull(interaction.getSecondInteractor());
     }
@@ -44,7 +44,7 @@ public class InteractionBuilderTest {
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
-        assertNull(interaction.getInteractionUniProtAccession());
+        assertNull(interaction.getInteractorUniProtAccession());
         assertNull(interaction.getFirstInteractor());
         assertNull(interaction.getSecondInteractor());
     }
@@ -58,7 +58,7 @@ public class InteractionBuilderTest {
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
-        assertNull(interaction.getInteractionUniProtAccession());
+        assertNull(interaction.getInteractorUniProtAccession());
         assertEquals(3, interaction.getNumberOfExperiments());
         assertNull(interaction.getFirstInteractor());
         assertNull(interaction.getSecondInteractor());
@@ -74,7 +74,7 @@ public class InteractionBuilderTest {
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
-        assertNull(interaction.getInteractionUniProtAccession());
+        assertNull(interaction.getInteractorUniProtAccession());
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals("first1", interaction.getFirstInteractor().getValue());
         assertNull(interaction.getSecondInteractor());
@@ -91,7 +91,7 @@ public class InteractionBuilderTest {
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
-        assertNull(interaction.getInteractionUniProtAccession());
+        assertNull(interaction.getInteractorUniProtAccession());
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals("first1", interaction.getFirstInteractor().getValue());
         
@@ -110,7 +110,7 @@ public class InteractionBuilderTest {
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getInteractionType());
         assertEquals("gn22", interaction.getInteractionGeneName());
-        assertEquals("P12345", interaction.getInteractionUniProtAccession().getValue());
+        assertEquals("P12345", interaction.getInteractorUniProtAccession().getValue());
         assertEquals(3, interaction.getNumberOfExperiments());
         assertEquals("first1", interaction.getFirstInteractor().getValue());
         

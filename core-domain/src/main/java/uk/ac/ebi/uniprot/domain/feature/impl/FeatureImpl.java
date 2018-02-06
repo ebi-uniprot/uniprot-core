@@ -17,23 +17,14 @@ public abstract class FeatureImpl implements Feature {
    public static FeatureDescription createDescription(String description ){
        return new FeatureDescriptionImpl(description);
    }
-   
-   public static FeatureDescription createDescription(List<String> description ){
-       return new FeatureDescriptionImpl(description);
-   }
+
     public FeatureImpl(FeatureType type, FeatureLocation location,        
             String description){
         this.type = type;
         this.location = location;
         this.description = createDescription(description);
     }
-    public FeatureImpl(FeatureType type, FeatureLocation location,        
-            List<String> description){
-        this.type = type;
-        this.location = location;
-        this.description = createDescription(description);
-    }
-    
+ 
     @Override
     public FeatureType getType() {
         return type;
@@ -82,54 +73,47 @@ public abstract class FeatureImpl implements Feature {
     }
     
     static class FeatureDescriptionImpl implements FeatureDescription {
-        private final List<String> description;
+        private final String description;
         
         public FeatureDescriptionImpl(String description){
             if((description ==null) || description.isEmpty()){
-                this.description = Collections.emptyList();
+                this.description = "";
             }else{
                 
-                this.description = Collections.unmodifiableList(Arrays.asList(description));
+                this.description = description;
             }
         }
-        
-        public FeatureDescriptionImpl(List<String> description){
-            if((description ==null) || description.isEmpty()){
-                this.description = Collections.emptyList();
-            }else{
-                this.description = Collections.unmodifiableList(description);
-            }
-        }
-        
+
         @Override
-        public List<String> getDescription() {
+        public String getValue() {
            return description;
         }
 
-        @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + ((description == null) ? 0 : description.hashCode());
-            return result;
-        }
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((description == null) ? 0 : description.hashCode());
+			return result;
+		}
 
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            FeatureDescriptionImpl other = (FeatureDescriptionImpl) obj;
-            if (description == null) {
-                if (other.description != null)
-                    return false;
-            } else if (!description.equals(other.description))
-                return false;
-            return true;
-        }
-        
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			FeatureDescriptionImpl other = (FeatureDescriptionImpl) obj;
+			if (description == null) {
+				if (other.description != null)
+					return false;
+			} else if (!description.equals(other.description))
+				return false;
+			return true;
+		}
+
+     
     }
 }

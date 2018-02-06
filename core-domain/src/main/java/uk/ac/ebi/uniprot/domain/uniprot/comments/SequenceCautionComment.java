@@ -2,7 +2,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import java.util.List;
 
-public interface SequenceCautionComment extends Comment {
+import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
+
+public interface SequenceCautionComment extends Comment, HasEvidences {
 
      String getSequence();
 

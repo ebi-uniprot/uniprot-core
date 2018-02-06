@@ -6,7 +6,7 @@ public interface Interaction {
 
     public InteractionType getInteractionType();
 
-    public UniProtAccession getInteractionUniProtAccession();
+    public UniProtAccession getInteractorUniProtAccession();
 
     public String getInteractionGeneName();
 

@@ -33,7 +33,9 @@ import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
@@ -45,9 +47,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtDatabaseCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeatures;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
@@ -65,16 +69,15 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.FreeTextCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.AltName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ECNumber;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubmissionName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.RecName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.AltNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDatabaseCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDatabaseCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
 public class UniProtEntryBuilderTest {
 
@@ -92,14 +95,14 @@ public class UniProtEntryBuilderTest {
     public void testSetEntryType() {
         UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
         UniProtEntry entry =
-                builder.setEntryType(UniProtEntryType.TREMBL)
+                builder.entryType(UniProtEntryType.TREMBL)
                 .build();
         
         assertEquals(UniProtEntryType.TREMBL, entry.getType());
         
         builder = UniProtEntryBuilder.newInstance();
          entry =
-                builder.setEntryType(UniProtEntryType.SWISSPROT)
+                builder.entryType(UniProtEntryType.SWISSPROT)
                 .build();
          assertEquals(UniProtEntryType.SWISSPROT, entry.getType());
     }
@@ -113,7 +116,7 @@ public class UniProtEntryBuilderTest {
         
         builder = UniProtEntryBuilder.newInstance();
         entry = builder   
-                .setAccession("P12345")
+                .accession("P12345")
                 .build();
         assertNotNull(entry.getPrimaryUniProtAccession());
         assertEquals("P12345", entry.getPrimaryUniProtAccession().getValue());
@@ -128,7 +131,7 @@ public class UniProtEntryBuilderTest {
         UniProtAccession accession =UniProtFactory.INSTANCE.createUniProtAccession("P23456");
         builder = UniProtEntryBuilder.newInstance();
         entry = builder   
-                .setAccession(accession)
+                .accession(accession)
                 .build();
         assertNotNull(entry.getPrimaryUniProtAccession());
         assertEquals(accession, entry.getPrimaryUniProtAccession());
@@ -149,7 +152,7 @@ public class UniProtEntryBuilderTest {
         
         builder = UniProtEntryBuilder.newInstance();
          entry =   builder   
-                 .setSecondaryAccessions(secondaryAccessions)
+                 .secondaryAccessions(secondaryAccessions)
                 .build();
         assertEquals(2, entry.getSecondaryUniProtAccessions().size());
         assertEquals(secondaryAccessions, entry.getSecondaryUniProtAccessions());
@@ -165,7 +168,7 @@ public class UniProtEntryBuilderTest {
         
         builder = UniProtEntryBuilder.newInstance();
         entry = builder   
-                .setUniProtId("P12345_HUMAN")
+                .uniProtId("P12345_HUMAN")
                 .build();
         assertNotNull(entry.getUniProtId());
         assertEquals("P12345_HUMAN", entry.getUniProtId().getValue());
@@ -180,7 +183,7 @@ public class UniProtEntryBuilderTest {
         UniProtId uniprotId =UniProtFactory.INSTANCE.createUniProtId("P12346_HUMAN");
         builder = UniProtEntryBuilder.newInstance();
         entry = builder   
-                .setUniProtId(uniprotId)
+                .uniProtId(uniprotId)
                 .build();
         assertNotNull(entry.getUniProtId());
         assertEquals("P12346_HUMAN", entry.getUniProtId().getValue());
@@ -188,20 +191,20 @@ public class UniProtEntryBuilderTest {
 
 
     @Test
-    public void testSetTaxons() {
+    public void testSetTaxonomyLineage() {
         UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
         UniProtEntry entry =   builder            
                 .build();
-        assertTrue(entry.getTaxonomy().isEmpty());
-        List<Taxon> taxonomies = new ArrayList<>();
-        Taxon taxon= UniProtFactory.INSTANCE.getTaxonomyFactory().createTaxon(9606, "homo sapien");
+        assertTrue(entry.getTaxonomyLineage().isEmpty());
+        List<TaxonName> taxonomies = new ArrayList<>();
+        TaxonName taxon= UniProtFactory.INSTANCE.getTaxonomyFactory().createTaxonName("homo sapien");
         taxonomies.add(taxon);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder     
-                 .setTaxons(taxonomies)
+                 .taxonomyLineage(taxonomies)
                 .build();
-        assertEquals(1, entry.getTaxonomy().size());
-        assertEquals(taxon, entry.getTaxonomy().get(0));
+        assertEquals(1, entry.getTaxonomyLineage().size());
+        assertEquals(taxon, entry.getTaxonomyLineage().get(0));
     }
 
     @Test
@@ -212,7 +215,7 @@ public class UniProtEntryBuilderTest {
         assertEquals(ProteinExistence.UNKNOWN, entry.getProteinExistence());
         builder = UniProtEntryBuilder.newInstance();
          entry =   builder 
-                 .setProteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                 .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                 .build();
         assertEquals(ProteinExistence.PROTEIN_LEVEL, entry.getProteinExistence());
 
@@ -233,7 +236,7 @@ public class UniProtEntryBuilderTest {
                 lastAnnotationUpdateDate, lastSequenceUpdateDate, entryVersion, sequenceVersion);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder     
-                 .setEntryAudit(entryAudit)
+                 .entryAudit(entryAudit)
                 .build();
         assertEquals(entryAudit, entry.getEntryAudit());
     }
@@ -250,7 +253,7 @@ public class UniProtEntryBuilderTest {
         organelles.add(UniProtFactory.INSTANCE.createOrganelle(GeneEncodingType.CYANELLE_PLASTID, "some value", evidences));
         builder = UniProtEntryBuilder.newInstance();
          entry = builder     
-                 .setOrganelles(organelles)
+                 .organelles(organelles)
                 .build();
         assertEquals(2, entry.getOrganelles().size());
         assertEquals(organelles, entry.getOrganelles());
@@ -269,7 +272,7 @@ public class UniProtEntryBuilderTest {
         keywords.add(UniProtFactory.INSTANCE.createKeyword("key3", evidences));
         builder = UniProtEntryBuilder.newInstance();
          entry = builder     
-                 .setKeywords(keywords)
+                 .keywords(keywords)
                 .build();
         assertEquals(3, entry.getKeywords().size());
         assertEquals(keywords, entry.getKeywords());
@@ -284,46 +287,50 @@ public class UniProtEntryBuilderTest {
         ProteinDescription proteinDescription =createProteinDescription();
         builder = UniProtEntryBuilder.newInstance();
          entry = builder  
-                .setProteinDescription(proteinDescription)
+                .proteinDescription(proteinDescription)
                 .build();
         assertEquals(proteinDescription, entry.getProteinDescription());
     }
     private ProteinDescription createProteinDescription() {
     	List<Evidence> evidences = createEvidences();
-		ProteinName fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
-		List<ProteinName> shortNames = createShortNames();
+		Name fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
+		List<Name> shortNames = createShortNames();
 		List<ECNumber> ecNumbers = createECNumbers();
-		RecName recName = ProteinDescriptionFactory.INSTANCE.createRecName(fullName, shortNames, ecNumbers);
-		AltName altName = createAltName();
-		List<AltName> altNames = new ArrayList<>();
-		altNames.add(altName);
-		ProteinRecommendedName recommendedName = ProteinDescriptionFactory.INSTANCE.createProteinRecommendedName(recName, altNames);
-		
-		ProteinName fullName1 = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
+		ProteinRecommendedName recommendedName = ProteinDescriptionFactory.INSTANCE.createProteinRecommendedName(fullName, shortNames, ecNumbers);
+
+		ProteinAlternativeName proteinAltName = createAltName();
+		Name fullName1 = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
 
 		List<ECNumber> ecNumbers1 = createECNumbers();
 		ProteinSubmissionName subName = ProteinDescriptionFactory.INSTANCE.createProteinSubmissionName(fullName1, ecNumbers1);
-		ProteinDescription description = ProteinDescriptionFactory.INSTANCE.createProteinDescription(recommendedName, subName);
+		List<ProteinSubmissionName> subNames = new ArrayList<>();
+		subNames.add(subName);
+		ProteinDescription description = ProteinDescriptionFactory.INSTANCE.createProteinDescription(recommendedName, subNames, proteinAltName);
 		return description;
     }
-	private AltName createAltName() {
-		AltNameImpl.Builder builder = AltNameImpl.newBuilder();
+	private ProteinAlternativeName createAltName() {
 		List<Evidence> evidences = createEvidences();
-		ProteinName fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full alt Name", evidences);
-		builder.fullName(fullName)
-				.shortName(ProteinDescriptionFactory.INSTANCE.createProteinName("short name1", evidences))
-				.shortName(ProteinDescriptionFactory.INSTANCE.createProteinName("short name2", evidences))
-				.ecNumber(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.4", evidences))
-				.allergenName(ProteinDescriptionFactory.INSTANCE.createProteinName("allergen", evidences))
-				.biotechName(ProteinDescriptionFactory.INSTANCE.createProteinName("biotech", evidences))
-				.cDAntigenName(ProteinDescriptionFactory.INSTANCE.createProteinName("cd antigen", evidences));
-
-		AltName altName = ProteinDescriptionFactory.INSTANCE.createAltName(builder);
-		return altName;
+		Name fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full alt Name", evidences);
+		List<Name> shortNames = new ArrayList<>();
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name1", evidences));
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name2", evidences));
+		List<ECNumber> ecNumbers = new ArrayList<>();
+		ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.4", evidences));
+		
+		AltName altName =ProteinDescriptionFactory.INSTANCE.createAltName(fullName, shortNames, ecNumbers);
+		
+		List<AltName> altNames = new ArrayList<>();
+		altNames.add(altName);
+		Name allergenName = ProteinDescriptionFactory.INSTANCE.createProteinName("allergen", evidences);
+		Name biotechName = ProteinDescriptionFactory.INSTANCE.createProteinName("biotech", evidences);
+		List<Name> antigenNames = new ArrayList<>();
+		antigenNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("cd antigen", evidences));
+		ProteinAlternativeName proteinAltName = ProteinDescriptionFactory.INSTANCE.createProteinAlternativeName(altNames, allergenName, biotechName, antigenNames, null);
+		return proteinAltName;
 	}
-	private List<ProteinName> createShortNames() {
+	private List<Name> createShortNames() {
 		List<Evidence> evidences = createEvidences();
-		List<ProteinName> shortNames = new ArrayList<>();
+		List<Name> shortNames = new ArrayList<>();
 		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name1", evidences));
 		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name2", evidences));
 		return shortNames;
@@ -348,7 +355,7 @@ public class UniProtEntryBuilderTest {
         Comments comments = createComments();
         builder = UniProtEntryBuilder.newInstance();
          entry = builder   
-                 .setComments(comments)
+                 .comments(comments)
                 .build();
         assertNotNull( entry.getComments());
         assertEquals(3, entry.getComments().getAllComments().size());
@@ -399,7 +406,7 @@ public class UniProtEntryBuilderTest {
         
         builder = UniProtEntryBuilder.newInstance();
          entry = builder       
-                 .setUniProtReferences(uniReferences)
+                 .uniProtReferences(uniReferences)
                 .build();
         assertNotNull( entry.getReferences());
         assertEquals(2, entry.getReferences().getReferences().size());
@@ -470,7 +477,7 @@ public class UniProtEntryBuilderTest {
         genes.add(gene2);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder   
-                .setGenes(genes)
+                .genes(genes)
                 .build();
         assertEquals(2, entry.getGenes().size());
         assertEquals(gene1, entry.getGenes().get(0));
@@ -485,14 +492,13 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder            
                 .build();
         assertNull(entry.getOrganism());
-        long taxId =9606;
         String scientificName ="Homo sapiens";
         String commonName = "Human";
-        Organism organism =  UniProtFactory.INSTANCE.getOrganismFactory().createOrganism(taxId, scientificName, commonName);
+        Organism organism =  UniProtFactory.INSTANCE.getOrganismFactory().createOrganism(scientificName, commonName);
         
         builder = UniProtEntryBuilder.newInstance();
          entry = builder    
-                 .setOrganism(organism)
+                 .organism(organism)
                 .build();
         assertNotNull(entry.getOrganism());
         assertEquals(organism, entry.getOrganism());
@@ -505,18 +511,19 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder                 
                 .build();
         assertTrue(entry.getOrganismHosts().isEmpty());
-        long taxId =9606;
         String scientificName ="Homo sapiens";
         String commonName = "Human";
-        Organism organism =  UniProtFactory.INSTANCE.getOrganismFactory().createOrganism(taxId, scientificName, commonName);
-        List<Organism> organisms = new ArrayList<>();
-        organisms.add(organism);
+        Organism organism =  UniProtFactory.INSTANCE.getOrganismFactory().createOrganism( scientificName, commonName);
+        List<OrganismHost> organismHosts = new ArrayList<>();
+        organismHosts.add(
+        		UniProtFactory.INSTANCE.getOrganismFactory().createOrganismHost(9606, organism)
+        		);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder   
-                .setOrganismHosts(organisms)
+                .organismHosts(organismHosts)
                 .build();
         assertEquals(1, entry.getOrganismHosts().size());
-        assertEquals(organisms, entry.getOrganismHosts());
+        assertEquals(organismHosts, entry.getOrganismHosts());
     }
 
     @Test
@@ -526,17 +533,17 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getDatabaseCrossReferences());
         assertTrue(entry.getDatabaseCrossReferences().getCrossReferences().isEmpty());
-        UniProtDatabaseCrossReferences xrefs= createDbXref();
+        UniProtDBCrossReferences xrefs= createDbXref();
         builder = UniProtEntryBuilder.newInstance();
          entry = builder       
-                 .setUniProtDatabaseCrossReferences(xrefs)
+                 .uniProtDBCrossReferences(xrefs)
                 .build();
         assertNotNull(entry.getDatabaseCrossReferences());
         assertEquals(6, entry.getDatabaseCrossReferences().getCrossReferences().size());
         
     }
     
-    public UniProtDatabaseCrossReferences createDbXref(){
+    public UniProtDBCrossReferences createDbXref(){
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
         DatabaseType type =DatabaseType.ENSEMBL;
         String id ="ENST00000393119";
@@ -544,8 +551,8 @@ public class UniProtEntryBuilderTest {
         String thirdAttr= "ENSG00000011143";
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
-        List<UniProtDatabaseCrossReference>  xrefs = new ArrayList<>();
-        xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+        List<UniProtDBCrossReference>  xrefs = new ArrayList<>();
+        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
         
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
       
@@ -556,7 +563,7 @@ public class UniProtEntryBuilderTest {
          thirdAttr= "-";
          fourthAttr = "mRNA";
          isoform = null;
-        xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
         type =DatabaseType.EMBL;
         id ="AK000352";
@@ -564,7 +571,7 @@ public class UniProtEntryBuilderTest {
         thirdAttr= "ALT_INIT";
         fourthAttr = "mRNA";
         isoform = null;
-       xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+       xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
        // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
        type =DatabaseType.EMBL;
        id ="AK310815";
@@ -572,7 +579,7 @@ public class UniProtEntryBuilderTest {
        thirdAttr= "NOT_ANNOTATED_CDS";
        fourthAttr = "mRNA";
        isoform = null;
-      xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+      xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
       
    //   DR   HPA; HPA021372; -.
       type =DatabaseType.HPA;
@@ -581,7 +588,7 @@ public class UniProtEntryBuilderTest {
       thirdAttr=  null;
       fourthAttr = null;
       isoform = null;
-     xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+     xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
      //  DR   HPA; HPA021812; -.
      type =DatabaseType.HPA;
      id ="HPA021812";
@@ -589,8 +596,8 @@ public class UniProtEntryBuilderTest {
      thirdAttr=  null;
      fourthAttr = null;
      isoform = null;
-    xrefs.add (new UniProtDatabaseCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
-    return UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDatabaseCrossReferences(xrefs);
+    xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+    return UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReferences(xrefs);
     
     }
 
@@ -604,7 +611,7 @@ public class UniProtEntryBuilderTest {
         Sequence sequence =UniProtFactory.INSTANCE.createSequence(value);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder      
-                 .setSequence(sequence)
+                 .sequence(sequence)
                 .build();
         assertNotNull(entry.getSequence());
         assertEquals(sequence, entry.getSequence());
@@ -621,7 +628,7 @@ public class UniProtEntryBuilderTest {
       
         builder = UniProtEntryBuilder.newInstance();
          entry = builder      
-                 .setSequence(value)
+                 .sequence(value)
                 .build();
         assertNotNull(entry.getSequence());
         assertEquals(value, entry.getSequence().getValue());
@@ -638,7 +645,7 @@ public class UniProtEntryBuilderTest {
         UniProtTaxonId taxonId = UniProtFactory.INSTANCE.createUniProtTaxonId(taxId, evidences);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder 
-                .setUniProtTaxonId(taxonId)
+                .uniProtTaxonId(taxonId)
                 .build();
         assertNotNull(entry.getTaxonId());
         assertEquals(taxId, entry.getTaxonId().getTaxonId());
@@ -654,7 +661,7 @@ public class UniProtEntryBuilderTest {
         InternalSection internalSection =createInternalSection();
         builder = UniProtEntryBuilder.newInstance();
          entry = builder  
-                 .setInternalSection(internalSection)
+                 .internalSection(internalSection)
                 .build();
         assertNotNull(entry.getInternalSection());
         assertEquals(internalSection, entry.getInternalSection());
@@ -674,29 +681,33 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder                 
                 .build();
         assertNotNull(entry.getFeatures());
-        assertTrue(entry.getFeatures().getAllFeatures().isEmpty());
-        Features features = createFeatures();
+        assertTrue(entry.getFeatures().getFeatues().isEmpty());
+        UniProtFeatures features = createFeatures();
         builder = UniProtEntryBuilder.newInstance();
          entry = builder
-                 .setFeatures(features)
+                 .features(features)
                 .build();
         assertNotNull(entry.getFeatures());
-        assertEquals(4, entry.getFeatures().getAllFeatures().size());
+        assertEquals(4, entry.getFeatures().getFeatues().size());
         assertEquals(features, entry.getFeatures());
     }
-    private Features createFeatures(){
-        List<Feature> features = new ArrayList<>();
-        features.add(createVarSeqFeature());
-        features.add(FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
+    private UniProtFeatures createFeatures(){
+        List<UniProtFeature<? extends Feature > > features = new ArrayList<>();
+        List<Evidence> evidences = createEvidences();
+        features.add(FeatureFactory.INSTANCE.createUniProtFeature(createVarSeqFeature(), evidences));
+        features.add(FeatureFactory.INSTANCE.createUniProtFeature(
+        		FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
                 FeatureFactory.INSTANCE.createFeatureLocation(12, 12), 
-                "some desc1"));
-        features.add(FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
+                "some desc1"), evidences));
+        features.add(FeatureFactory.INSTANCE.createUniProtFeature(
+        		FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
                 FeatureFactory.INSTANCE.createFeatureLocation(20, 23), 
-                "some desc2"));
-        features.add(FeatureFactory.INSTANCE.buildSimpleFeatureWithFeatureId(FeatureType.CHAIN,
+                "some desc2"), evidences));
+        features.add(FeatureFactory.INSTANCE.createUniProtFeature(
+        		FeatureFactory.INSTANCE.buildSimpleFeatureWithFeatureId(FeatureType.CHAIN,
                 FeatureFactory.INSTANCE.createFeatureLocation(200, 230), 
-                "some desc3", "ft_123"));
-        return  FeatureFactory.INSTANCE.createFeatures(features);
+                "some desc3", "ft_123"), evidences));
+        return  FeatureFactory.INSTANCE.createUniProtFeatures(features);
     }
     private VarSeqFeature createVarSeqFeature(){
         FeatureLocation location = FeatureFactory.INSTANCE.createFeatureLocation(65, 86);

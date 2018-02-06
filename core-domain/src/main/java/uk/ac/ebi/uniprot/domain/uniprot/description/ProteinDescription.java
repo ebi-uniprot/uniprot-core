@@ -5,16 +5,22 @@ import java.util.List;
 public interface ProteinDescription {
 
 	ProteinRecommendedName getRecommendedName();
-	ProteinSubmissionName getSubmmissonName();
+
+	List<ProteinSubmissionName> getSubmissionNames();
+
+	ProteinAlternativeName getAlternativeName();
+
 	Flag getFlag();
-	List<ProteinRecommendedName> getIncludes();
-	List<ProteinRecommendedName> getContains();
+
+	List<ProteinNameSection> getIncludes();
+
+	List<ProteinNameSection> getContains();
 
 	default boolean isValid() {
-		if(getRecommendedName() !=null) {
+		if (getRecommendedName() != null) {
 			return getRecommendedName().isValid();
-		}else {
-			return ((getSubmmissonName() !=null) && getSubmmissonName().isValid());
+		} else {
+			return getSubmissionNames().stream().anyMatch(val -> val.isValid());
 		}
 	}
 }

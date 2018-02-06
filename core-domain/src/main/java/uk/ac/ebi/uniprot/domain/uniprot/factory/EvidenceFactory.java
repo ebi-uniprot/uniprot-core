@@ -1,11 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import java.time.LocalDate;
+
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 
 public enum EvidenceFactory {
+	
+	
+	
     // private static final List<String> NOT_EVIDENCE_TYPES = Arrays.asList(
     // "PubMed", "Reference", "Ref");
     // private static final List<EvidenceCode> MAPPED_ECO_CODES = Arrays.asList(
@@ -61,6 +66,12 @@ public enum EvidenceFactory {
         return new EvidenceImpl(evidenceType, evidenceCode, attribute);
     }
 
+    
+    public Evidence createEvidence(EvidenceType evidenceType, EvidenceCode evidenceCode,
+            String attribute, LocalDate date){
+    	return new EvidenceImpl( evidenceType,  evidenceCode,
+                 attribute,  date);
+    }
     public EvidenceType convertToEvidenceType(EvidenceCode evidenceCode) {
         EvidenceType type = EvidenceType.NOT_SPECIFIED;
         switch (evidenceCode) {

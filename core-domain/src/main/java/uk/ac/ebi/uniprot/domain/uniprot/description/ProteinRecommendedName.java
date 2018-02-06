@@ -1,11 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
-import java.util.List;
-
-public interface ProteinRecommendedName {
-	RecName getRecName();
-	List<AltName> getAltNames();
+public interface ProteinRecommendedName  extends ProteinName{
 	default boolean isValid() {
-		return ((getRecName() !=null) && getRecName().isValid());
+		return (getFullName() !=null) &&
+				( (getFullName().getValue() !=null)
+						&& !getFullName().getValue().isEmpty());
 	}
 }

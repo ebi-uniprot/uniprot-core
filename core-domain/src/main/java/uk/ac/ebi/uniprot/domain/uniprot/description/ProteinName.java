@@ -1,7 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import java.util.List;
 
-public interface ProteinName  extends EvidencedValue{
-	
+public interface ProteinName {
+	Name getFullName();
+	List<Name> getShortNames();
+	List<ECNumber> getEcNumbers();
 }

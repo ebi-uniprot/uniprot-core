@@ -13,7 +13,7 @@ import java.time.LocalDate;
 // grep "^..EV .*HSSP" $DAT/sptr/trembl.txl
 
 /**
- * The Evidence annotation of the {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry}.
+ * The Evidence annotation of the {@link uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry UniProtEntry}.
  * <br><br>
  * These values can be found in the **EV lines of the flat file on the marked position.
  * <pre class="example"><font color="#AAAAAA"> ...

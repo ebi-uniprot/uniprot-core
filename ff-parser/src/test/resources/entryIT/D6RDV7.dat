@@ -1,0 +1,81 @@
+ID   D6RDV7_HUMAN            Unreviewed;       119 AA.
+AC   D6RDV7;
+DT   13-JUL-2010, integrated into UniProtKB/TrEMBL.
+DT   13-JUL-2010, sequence version 1.
+DT   07-JAN-2015, entry version 23.
+DE   SubName: Full=Neuronal membrane glycoprotein M6-a {ECO:0000313|Ensembl:ENSP00000426984};
+DE   Flags: Fragment;
+GN   Name=GPM6A {ECO:0000313|Ensembl:ENSP00000426984};
+OS   Homo sapiens (Human).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+OC   Catarrhini; Hominidae; Homo.
+OX   NCBI_TaxID=9606 {ECO:0000313|Ensembl:ENSP00000426984, ECO:0000313|Proteomes:UP000005640};
+RN   [1] {ECO:0000313|Ensembl:ENSP00000426984, ECO:0000313|Proteomes:UP000005640}
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RX   PubMed=15815621; DOI=10.1038/nature03466;
+RA   Hillier L.W., Graves T.A., Fulton R.S., Fulton L.A., Pepin K.H.,
+RA   Minx P., Wagner-McPherson C., Layman D., Wylie K., Sekhon M.,
+RA   Becker M.C., Fewell G.A., Delehaunty K.D., Miner T.L., Nash W.E.,
+RA   Kremitzki C., Oddy L., Du H., Sun H., Bradshaw-Cordum H., Ali J.,
+RA   Carter J., Cordes M., Harris A., Isak A., van Brunt A., Nguyen C.,
+RA   Du F., Courtney L., Kalicki J., Ozersky P., Abbott S., Armstrong J.,
+RA   Belter E.A., Caruso L., Cedroni M., Cotton M., Davidson T., Desai A.,
+RA   Elliott G., Erb T., Fronick C., Gaige T., Haakenson W., Haglund K.,
+RA   Holmes A., Harkins R., Kim K., Kruchowski S.S., Strong C.M.,
+RA   Grewal N., Goyea E., Hou S., Levy A., Martinka S., Mead K.,
+RA   McLellan M.D., Meyer R., Randall-Maher J., Tomlinson C.,
+RA   Dauphin-Kohlberg S., Kozlowicz-Reilly A., Shah N.,
+RA   Swearengen-Shahid S., Snider J., Strong J.T., Thompson J., Yoakum M.,
+RA   Leonard S., Pearman C., Trani L., Radionenko M., Waligorski J.E.,
+RA   Wang C., Rock S.M., Tin-Wollam A.-M., Maupin R., Latreille P.,
+RA   Wendl M.C., Yang S.-P., Pohl C., Wallis J.W., Spieth J., Bieri T.A.,
+RA   Berkowicz N., Nelson J.O., Osborne J., Ding L., Meyer R., Sabo A.,
+RA   Shotland Y., Sinha P., Wohldmann P.E., Cook L.L., Hickenbotham M.T.,
+RA   Eldred J., Williams D., Jones T.A., She X., Ciccarelli F.D.,
+RA   Izaurralde E., Taylor J., Schmutz J., Myers R.M., Cox D.R., Huang X.,
+RA   McPherson J.D., Mardis E.R., Clifton S.W., Warren W.C.,
+RA   Chinwalla A.T., Eddy S.R., Marra M.A., Ovcharenko I., Furey T.S.,
+RA   Miller W., Eichler E.E., Bork P., Suyama M., Torrents D.,
+RA   Waterston R.H., Wilson R.K.;
+RT   "Generation and annotation of the DNA sequences of human chromosomes 2
+RT   and 4.";
+RL   Nature 434:724-731(2005).
+RN   [2] {ECO:0000313|Ensembl:ENSP00000426984}
+RP   IDENTIFICATION.
+RG   Ensembl;
+RL   Submitted (JUL-2011) to UniProtKB.
+CC   -!- CAUTION: The sequence shown here is derived from an Ensembl
+CC       automatic analysis pipeline and should be considered as
+CC       preliminary data. {ECO:0000313|Ensembl:ENSP00000426984}.
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see http://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution-NoDerivs License
+CC   -----------------------------------------------------------------------
+DR   EMBL; AC093819; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC097537; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC110794; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; KF457835; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; KF457837; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; KF457840; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   Ensembl; ENST00000512610; ENSP00000426984; ENSG00000150625.
+DR   HGNC; HGNC:4460; GPM6A.
+DR   GeneTree; ENSGT00390000006915; -.
+DR   HOGENOM; HOG000231338; -.
+DR   ChiTaRS; GPM6A; human.
+DR   Proteomes; UP000005640; Chromosome 4.
+DR   Bgee; D6RDV7; -.
+DR   ExpressionAtlas; D6RDV7; baseline and differential.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:InterPro.
+DR   InterPro; IPR001614; Myelin_PLP.
+DR   PANTHER; PTHR11683; PTHR11683; 1.
+DR   Pfam; PF01275; Myelin_PLP; 1.
+DR   PRINTS; PR00214; MYELINPLP.
+PE   4: Predicted;
+KW   Complete proteome {ECO:0000313|Proteomes:UP000005640};
+KW   Reference proteome {ECO:0000313|Proteomes:UP000005640}.
+FT   NON_TER     119    119       {ECO:0000313|Ensembl:ENSP00000426984}.
+SQ   SEQUENCE   119 AA;  13504 MW;  496414D4E6309093 CRC64;
+     MARTAGDTLD VFTMIDIFKY VIYGIAAAFF VYGILLMVEG FFTTGAIKDL YGDFKITTCG
+     RCVSAWFIML TYLFMLAWLG VTAFTSLPVY MYFNLWTICR NTTLVEGANL CLDLRQFGK
+//

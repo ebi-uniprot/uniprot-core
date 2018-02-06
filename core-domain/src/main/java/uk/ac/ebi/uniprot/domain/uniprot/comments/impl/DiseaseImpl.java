@@ -57,7 +57,7 @@ public class DiseaseImpl implements Disease {
     @Override
     public boolean hasDefinedDisease() {
         return (getDiseaseId() != null &&  getDiseaseId().getValue() != null && ! getDiseaseId().getValue().isEmpty()) &&  
-                (getAcronym() != null && getAcronym().isEmpty()) &&
+                (getAcronym() != null && !getAcronym().isEmpty()) &&
                 (getDescription() != null && getDescription().getValue() != null && !getDescription().getValue().isEmpty()) &&
                 (getReference() != null && getReference().getDiseaseReferenceId() != null  && 
                 !getReference().getDiseaseReferenceId().isEmpty() && getReference().getDiseaseReferenceType() != null &&

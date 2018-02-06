@@ -7,38 +7,28 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubmissionName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.RecName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.AltNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameSectionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinAlternativeNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinRecommendedNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSubmissionNameImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.RecNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 public enum ProteinDescriptionFactory {
 	INSTANCE;
 
-	public AltName createAltName( ProteinName fullName,
-		 List<ProteinName> shortNames,
-		 List<ECNumber> ecNumbers) {
-		AltNameImpl.Builder builder = AltNameImpl.newBuilder();
-		builder.fullName(fullName);
-		if(shortNames !=null) {
-			shortNames.forEach(shortName->builder.shortName(shortName));
-		}
-		if(ecNumbers !=null) {
-			ecNumbers.forEach(ecNumber->builder.ecNumber(ecNumber));
-		}
-		return builder.build();
-	}
-	public AltName createAltName(AltNameImpl.Builder builder) {
-		return builder.build();
+	public AltName createAltName(Name fullName, List<Name> shortNames, List<ECNumber> ecNumbers) {
+		return new AltNameImpl(fullName, shortNames, ecNumbers);
+
 	}
 
 	public ECNumber createECNumber(String value, List<Evidence> evidences) {
@@ -49,35 +39,47 @@ public enum ProteinDescriptionFactory {
 		return new FlagImpl(type);
 	}
 
-	public ProteinName createProteinName(String value, List<Evidence> evidences) {
-		return new ProteinNameImpl(value, evidences);
+	public Name createProteinName(String value, List<Evidence> evidences) {
+		return new NameImpl(value, evidences);
 	}
 
-	public RecName createRecName(ProteinName fullName, List<ProteinName> shortNames, List<ECNumber> eCNumbers) {
-		return new RecNameImpl(fullName, shortNames, eCNumbers);
-	}
-
-	public ProteinSubmissionName createProteinSubmissionName(ProteinName fullName, List<ECNumber> eCNumbers) {
+	public ProteinSubmissionName createProteinSubmissionName(Name fullName, List<ECNumber> eCNumbers) {
 		return new ProteinSubmissionNameImpl(fullName, eCNumbers);
 	}
 
-	public ProteinRecommendedName createProteinRecommendedName(RecName recName, List<AltName> altNames) {
-		return new ProteinRecommendedNameImpl(recName, altNames);
+	public ProteinRecommendedName createProteinRecommendedName(Name fullName, List<Name> shortNames,
+			List<ECNumber> ecNumbers) {
+		return new ProteinRecommendedNameImpl(fullName, shortNames, ecNumbers);
+
+	}
+	public ProteinAlternativeName createProteinAlternativeName(List<AltName> altNames) {
+		return createProteinAlternativeName(altNames, null, null, null, null);
+	}
+	public ProteinAlternativeName createProteinAlternativeName(List<AltName> altNames,
+			Name allergenName, Name biotechName, List<Name> cdAntigenNames, List<Name> innNames
+			) {
+		return new ProteinAlternativeNameImpl( altNames,
+				 allergenName,
+				 biotechName,
+				 cdAntigenNames,
+				 innNames)  ;	
+	}
+	public ProteinNameSection createProteinNameSection(ProteinRecommendedName recName, ProteinAlternativeName altName) {
+		return new ProteinNameSectionImpl(recName, altName);
+	}
+	public ProteinDescription createProteinDescription(ProteinRecommendedName recommendedName,
+			List<ProteinSubmissionName> submissionNames, ProteinAlternativeName alternativeName, Flag flag,
+			List<ProteinNameSection> includes, List<ProteinNameSection> contains) {
+		return new ProteinDescriptionImpl(recommendedName, submissionNames, alternativeName, flag, includes, contains);
 	}
 
 	public ProteinDescription createProteinDescription(ProteinRecommendedName recommendedName,
-			ProteinSubmissionName submmissionName, Flag flag, List<ProteinRecommendedName> includes,
-			List<ProteinRecommendedName> contains) {
-		return new ProteinDescriptionImpl(recommendedName, submmissionName, flag, includes, contains);
+			List<ProteinSubmissionName> submissionNames, ProteinAlternativeName alternativeName, Flag flag) {
+		return new ProteinDescriptionImpl(recommendedName, submissionNames, alternativeName, flag);
 	}
 
 	public ProteinDescription createProteinDescription(ProteinRecommendedName recommendedName,
-			ProteinSubmissionName submmissionName, Flag flag) {
-		return new ProteinDescriptionImpl(recommendedName, submmissionName, flag);
-	}
-
-	public ProteinDescription createProteinDescription(ProteinRecommendedName recommendedName,
-			ProteinSubmissionName submmissionName) {
-		return new ProteinDescriptionImpl(recommendedName, submmissionName);
+			List<ProteinSubmissionName> submissionNames, ProteinAlternativeName alternativeName) {
+		return new ProteinDescriptionImpl(recommendedName, submissionNames, alternativeName);
 	}
 }

@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import java.util.List;
+
 import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;
 import uk.ac.ebi.uniprot.domain.feature.ConflictFeature;
@@ -10,7 +12,6 @@ import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocationModifier;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
@@ -22,21 +23,26 @@ import uk.ac.ebi.uniprot.domain.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.FeatureLocationImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.FeatureWithAlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.FeatureWithFeatureIdImpl;
-import uk.ac.ebi.uniprot.domain.feature.impl.FeaturesImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.MutagenFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.PeptideFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.ProPepFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.VarSeqFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.VariantFeatureImpl;
-
-import java.util.List;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeatures;
+import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtFeatureImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtFeaturesImpl;
 
 public enum FeatureFactory {
     INSTANCE;
     
-    public Features createFeatures(List<Feature> features){
-        return new FeaturesImpl(features);
+	public <T extends Feature> UniProtFeature<T> createUniProtFeature(T feature, List<Evidence> evidences){
+		return new UniProtFeatureImpl<>(feature, evidences);
+	}
+    public UniProtFeatures createUniProtFeatures(List<UniProtFeature<? extends Feature>> features){
+        return new UniProtFeaturesImpl(features);
     }
     
     public FeatureLocation createFeatureLocation(Integer start, Integer end) {
@@ -49,10 +55,6 @@ public enum FeatureFactory {
     }
 
     public FeatureDescription createDescription(String description) {
-        return FeatureImpl.createDescription(description);
-    }
-
-    public FeatureDescription createDescription(List<String> description) {
         return FeatureImpl.createDescription(description);
     }
 

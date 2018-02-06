@@ -1,0 +1,609 @@
+ID   RN213_HUMAN             Reviewed;        5207 AA.
+AC   Q63HN8; C9JCP4; D6RI12; F8WKS1; Q658P6; Q69YK7; Q6MZR1; Q8IWF4;
+AC   Q8IZX1; Q8IZX2; Q8N406; Q8TEU0; Q9H6C9; Q9H6H9; Q9H6P3; Q9H8A9;
+AC   Q9HCF4; Q9HCL8;
+DT   20-FEB-2007, integrated into UniProtKB/Swiss-Prot.
+DT   21-MAR-2012, sequence version 3.
+DT   04-FEB-2015, entry version 106.
+DE   RecName: Full=E3 ubiquitin-protein ligase RNF213;
+DE            EC=6.3.2.-;
+DE   AltName: Full=ALK lymphoma oligomerization partner on chromosome 17;
+DE   AltName: Full=Mysterin;
+DE   AltName: Full=RING finger protein 213;
+GN   Name=RNF213; Synonyms=ALO17, C17orf27, KIAA1554, KIAA1618, MYSTR;
+OS   Homo sapiens (Human).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+OC   Catarrhini; Hominidae; Homo.
+OX   NCBI_TaxID=9606;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 1), CATALYTIC ACTIVITY,
+RP   AUTOUBIQUITINATION, SUBCELLULAR LOCATION, TISSUE SPECIFICITY, VARIANTS
+RP   ASP-3962; ASN-4013; GLN-4062; SER-4608; ASN-4863; ASP-4950; VAL-5021;
+RP   GLU-5160 AND GLY-5176, AND VARIANT MYMY2 LYS-4810.
+RX   PubMed=21799892; DOI=10.1371/journal.pone.0022542;
+RA   Liu W., Morito D., Takashima S., Mineharu Y., Kobayashi H., Hitomi T.,
+RA   Hashikata H., Matsuura N., Yamazaki S., Toyoda A., Kikuta K.,
+RA   Takagi Y., Harada K.H., Fujiyama A., Herzig R., Krischek B., Zou L.,
+RA   Kim J.E., Kitakaze M., Miyamoto S., Nagata K., Hashimoto N.,
+RA   Koizumi A.;
+RT   "Identification of RNF213 as a susceptibility gene for moyamoya
+RT   disease and its possible role in vascular development.";
+RL   PLoS ONE 6:E22542-E22542(2011).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 3), AND NUCLEOTIDE
+RP   SEQUENCE [LARGE SCALE MRNA] OF 3021-5207 (ISOFORMS 1/2).
+RC   TISSUE=Endometrium, Lymph node, Melanoma, and Uterus;
+RX   PubMed=17974005; DOI=10.1186/1471-2164-8-399;
+RA   Bechtel S., Rosenfelder H., Duda A., Schmidt C.P., Ernst U.,
+RA   Wellenreuther R., Mehrle A., Schuster C., Bahr A., Blocker H.,
+RA   Heubner D., Hoerlein A., Michel G., Wedler H., Kohrer K.,
+RA   Ottenwalder B., Poustka A., Wiemann S., Schupp I.;
+RT   "The full-ORF clone resource of the German cDNA consortium.";
+RL   BMC Genomics 8:399-399(2007).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RX   PubMed=16625196; DOI=10.1038/nature04689;
+RA   Zody M.C., Garber M., Adams D.J., Sharpe T., Harrow J., Lupski J.R.,
+RA   Nicholson C., Searle S.M., Wilming L., Young S.K., Abouelleil A.,
+RA   Allen N.R., Bi W., Bloom T., Borowsky M.L., Bugalter B.E., Butler J.,
+RA   Chang J.L., Chen C.K., Cook A., Corum B., Cuomo C.A., de Jong P.J.,
+RA   DeCaprio D., Dewar K., FitzGerald M., Gilbert J., Gibson R.,
+RA   Gnerre S., Goldstein S., Grafham D.V., Grocock R., Hafez N.,
+RA   Hagopian D.S., Hart E., Norman C.H., Humphray S., Jaffe D.B.,
+RA   Jones M., Kamal M., Khodiyar V.K., LaButti K., Laird G., Lehoczky J.,
+RA   Liu X., Lokyitsang T., Loveland J., Lui A., Macdonald P., Major J.E.,
+RA   Matthews L., Mauceli E., McCarroll S.A., Mihalev A.H., Mudge J.,
+RA   Nguyen C., Nicol R., O'Leary S.B., Osoegawa K., Schwartz D.C.,
+RA   Shaw-Smith C., Stankiewicz P., Steward C., Swarbreck D.,
+RA   Venkataraman V., Whittaker C.A., Yang X., Zimmer A.R., Bradley A.,
+RA   Hubbard T., Birren B.W., Rogers J., Lander E.S., Nusbaum C.;
+RT   "DNA sequence of human chromosome 17 and analysis of rearrangement in
+RT   the human lineage.";
+RL   Nature 440:1045-1049(2006).
+RN   [4]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORMS 3 AND 4).
+RC   TISSUE=Eye, and Lung;
+RX   PubMed=15489334; DOI=10.1101/gr.2596504;
+RG   The MGC Project Team;
+RA   Gerhard D.S., Wagner L., Feingold E.A., Shenmen C.M., Grouse L.H.,
+RA   Schuler G., Klein S.L., Old S., Rasooly R., Good P., Guyer M.,
+RA   Peck A.M., Derge J.G., Lipman D., Collins F.S., Jang W., Sherry S.,
+RA   Feolo M., Misquitta L., Lee E., Rotmistrovsky K., Greenhut S.F.,
+RA   Schaefer C.F., Buetow K., Bonner T.I., Haussler D., Kent J.,
+RA   Kiekhaus M., Furey T., Brent M., Prange C., Schreiber K., Shapiro N.,
+RA   Bhat N.K., Hopkins R.F., Hsie F., Driscoll T., Soares M.B.,
+RA   Casavant T.L., Scheetz T.E., Brown-stein M.J., Usdin T.B.,
+RA   Toshiyuki S., Carninci P., Piao Y., Dudekula D.B., Ko M.S.,
+RA   Kawakami K., Suzuki Y., Sugano S., Gruber C.E., Smith M.R.,
+RA   Simmons B., Moore T., Waterman R., Johnson S.L., Ruan Y., Wei C.L.,
+RA   Mathavan S., Gunaratne P.H., Wu J., Garcia A.M., Hulyk S.W., Fuh E.,
+RA   Yuan Y., Sneed A., Kowis C., Hodgson A., Muzny D.M., McPherson J.,
+RA   Gibbs R.A., Fahey J., Helton E., Ketteman M., Madan A., Rodrigues S.,
+RA   Sanchez A., Whiting M., Madari A., Young A.C., Wetherby K.D.,
+RA   Granite S.J., Kwong P.N., Brinkley C.P., Pearson R.L., Bouffard G.G.,
+RA   Blakesly R.W., Green E.D., Dickson M.C., Rodriguez A.C., Grimwood J.,
+RA   Schmutz J., Myers R.M., Butterfield Y.S., Griffith M., Griffith O.L.,
+RA   Krzywinski M.I., Liao N., Morin R., Morrin R., Palmquist D.,
+RA   Petrescu A.S., Skalska U., Smailus D.E., Stott J.M., Schnerch A.,
+RA   Schein J.E., Jones S.J., Holt R.A., Baross A., Marra M.A., Clifton S.,
+RA   Makowski K.A., Bosak S., Malek J.;
+RT   "The status, quality, and expansion of the NIH full-length cDNA
+RT   project: the Mammalian Gene Collection (MGC).";
+RL   Genome Res. 14:2121-2127(2004).
+RN   [5]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 1-163 (ISOFORMS 1 AND 2/3), AND
+RP   CHROMOSOMAL TRANSLOCATION WITH ALK.
+RX   PubMed=12112524; DOI=10.1002/gcc.10033;
+RA   Cools J., Wlodarska I., Somers R., Mentens N., Pedeutour F., Maes B.,
+RA   De Wolf-Peeters C., Pauwels P., Hagemeijer A., Marynen P.;
+RT   "Identification of novel fusion partners of ALK, the anaplastic
+RT   lymphoma kinase, in anaplastic large-cell lymphoma and inflammatory
+RT   myofibroblastic tumor.";
+RL   Genes Chromosomes Cancer 34:354-362(2002).
+RN   [6]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] OF 136-1509 AND 3888-5207
+RP   (ISOFORMS 1/2).
+RC   TISSUE=Brain;
+RX   PubMed=10997877; DOI=10.1093/dnares/7.4.271;
+RA   Nagase T., Kikuno R., Nakayama M., Hirosawa M., Ohara O.;
+RT   "Prediction of the coding sequences of unidentified human genes.
+RT   XVIII. The complete sequences of 100 new cDNA clones from brain which
+RT   code for large proteins in vitro.";
+RL   DNA Res. 7:273-281(2000).
+RN   [7]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] OF 3770-5207 (ISOFORMS 1/2).
+RC   TISSUE=Spleen, and Thyroid;
+RX   PubMed=14702039; DOI=10.1038/ng1285;
+RA   Ota T., Suzuki Y., Nishikawa T., Otsuki T., Sugiyama T., Irie R.,
+RA   Wakamatsu A., Hayashi K., Sato H., Nagai K., Kimura K., Makita H.,
+RA   Sekine M., Obayashi M., Nishi T., Shibahara T., Tanaka T., Ishii S.,
+RA   Yamamoto J., Saito K., Kawai Y., Isono Y., Nakamura Y., Nagahari K.,
+RA   Murakami K., Yasuda T., Iwayanagi T., Wagatsuma M., Shiratori A.,
+RA   Sudo H., Hosoiri T., Kaku Y., Kodaira H., Kondo H., Sugawara M.,
+RA   Takahashi M., Kanda K., Yokoi T., Furuya T., Kikkawa E., Omura Y.,
+RA   Abe K., Kamihara K., Katsuta N., Sato K., Tanikawa M., Yamazaki M.,
+RA   Ninomiya K., Ishibashi T., Yamashita H., Murakawa K., Fujimori K.,
+RA   Tanai H., Kimata M., Watanabe M., Hiraoka S., Chiba Y., Ishida S.,
+RA   Ono Y., Takiguchi S., Watanabe S., Yosida M., Hotuta T., Kusano J.,
+RA   Kanehori K., Takahashi-Fujii A., Hara H., Tanase T., Nomura Y.,
+RA   Togiya S., Komai F., Hara R., Takeuchi K., Arita M., Imose N.,
+RA   Musashino K., Yuuki H., Oshima A., Sasaki N., Aotsuka S.,
+RA   Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S.,
+RA   Moriya S., Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O.,
+RA   Nakagawa S., Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H.,
+RA   Hishigaki H., Watanabe T., Sugiyama A., Takemoto M., Kawakami B.,
+RA   Yamazaki M., Watanabe K., Kumagai A., Itakura S., Fukuzumi Y.,
+RA   Fujimori Y., Komiyama M., Tashiro H., Tanigami A., Fujiwara T.,
+RA   Ono T., Yamada K., Fujii Y., Ozaki K., Hirao M., Ohmori Y.,
+RA   Kawabata A., Hikiji T., Kobatake N., Inagaki H., Ikema Y., Okamoto S.,
+RA   Okitani R., Kawakami T., Noguchi S., Itoh T., Shigeta K., Senba T.,
+RA   Matsumura K., Nakajima Y., Mizuno T., Morinaga M., Sasaki M.,
+RA   Togashi T., Oyama M., Hata H., Watanabe M., Komatsu T.,
+RA   Mizushima-Sugano J., Satoh T., Shirai Y., Takahashi Y., Nakagawa K.,
+RA   Okumura K., Nagase T., Nomura N., Kikuchi H., Masuho Y., Yamashita R.,
+RA   Nakai K., Yada T., Nakamura Y., Ohara O., Isogai T., Sugano S.;
+RT   "Complete sequencing and characterization of 21,243 full-length human
+RT   cDNAs.";
+RL   Nat. Genet. 36:40-45(2004).
+RN   [8]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1258, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=18691976; DOI=10.1016/j.molcel.2008.07.007;
+RA   Daub H., Olsen J.V., Bairlein M., Gnad F., Oppermann F.S., Korner R.,
+RA   Greff Z., Keri G., Stemmann O., Mann M.;
+RT   "Kinase-selective enrichment enables quantitative phosphoproteomics of
+RT   the kinome across the cell cycle.";
+RL   Mol. Cell 31:438-448(2008).
+RN   [9]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1258, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=18669648; DOI=10.1073/pnas.0805139105;
+RA   Dephoure N., Zhou C., Villen J., Beausoleil S.A., Bakalarski C.E.,
+RA   Elledge S.J., Gygi S.P.;
+RT   "A quantitative atlas of mitotic phosphorylation.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 105:10762-10767(2008).
+RN   [10]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1258, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Liver;
+RX   PubMed=18318008; DOI=10.1002/pmic.200700884;
+RA   Han G., Ye M., Zhou H., Jiang X., Feng S., Jiang X., Tian R., Wan D.,
+RA   Zou H., Gu J.;
+RT   "Large-scale phosphoproteome analysis of human liver tissue by
+RT   enrichment and fractionation of phosphopeptides with strong anion
+RT   exchange chromatography.";
+RL   Proteomics 8:1346-1361(2008).
+RN   [11]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1258, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=19369195; DOI=10.1074/mcp.M800588-MCP200;
+RA   Oppermann F.S., Gnad F., Olsen J.V., Hornberger R., Greff Z., Keri G.,
+RA   Mann M., Daub H.;
+RT   "Large-scale proteomics analysis of the human kinome.";
+RL   Mol. Cell. Proteomics 8:1751-1764(2009).
+RN   [12]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1258, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Leukemic T-cell;
+RX   PubMed=19690332; DOI=10.1126/scisignal.2000007;
+RA   Mayya V., Lundgren D.H., Hwang S.I., Rezaul K., Wu L., Eng J.K.,
+RA   Rodionov V., Han D.K.;
+RT   "Quantitative phosphoproteomic analysis of T cell receptor signaling
+RT   reveals system-wide modulation of protein-protein interactions.";
+RL   Sci. Signal. 2:RA46-RA46(2009).
+RN   [13]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-217 AND SER-1258, AND
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma;
+RX   PubMed=20068231; DOI=10.1126/scisignal.2000475;
+RA   Olsen J.V., Vermeulen M., Santamaria A., Kumar C., Miller M.L.,
+RA   Jensen L.J., Gnad F., Cox J., Jensen T.S., Nigg E.A., Brunak S.,
+RA   Mann M.;
+RT   "Quantitative phosphoproteomics reveals widespread full
+RT   phosphorylation site occupancy during mitosis.";
+RL   Sci. Signal. 3:RA3-RA3(2010).
+RN   [14]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=21269460; DOI=10.1186/1752-0509-5-17;
+RA   Burkard T.R., Planyavsky M., Kaupe I., Breitwieser F.P.,
+RA   Burckstummer T., Bennett K.L., Superti-Furga G., Colinge J.;
+RT   "Initial characterization of the human central proteome.";
+RL   BMC Syst. Biol. 5:17-17(2011).
+RN   [15]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1258, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=21406692; DOI=10.1126/scisignal.2001570;
+RA   Rigbolt K.T., Prokhorova T.A., Akimov V., Henningsen J.,
+RA   Johansen P.T., Kratchmarova I., Kassem M., Mann M., Olsen J.V.,
+RA   Blagoev B.;
+RT   "System-wide temporal characterization of the proteome and
+RT   phosphoproteome of human embryonic stem cell differentiation.";
+RL   Sci. Signal. 4:RS3-RS3(2011).
+RN   [16]
+RP   VARIANTS GLU-2554; VAL-3891; GLY-3915; THR-4399; MET-4567 AND
+RP   MET-4765, AND VARIANT MYMY2 LYS-4810.
+RX   PubMed=21048783; DOI=10.1038/jhg.2010.132;
+RA   Kamada F., Aoki Y., Narisawa A., Abe Y., Komatsuzaki S., Kikuchi A.,
+RA   Kanno J., Niihori T., Ono M., Ishii N., Owada Y., Fujimura M.,
+RA   Mashimo Y., Suzuki Y., Hata A., Tsuchiya S., Tominaga T.,
+RA   Matsubara Y., Kure S.;
+RT   "A genome-wide association study identifies RNF213 as the first
+RT   Moyamoya disease gene.";
+RL   J. Hum. Genet. 56:34-40(2011).
+CC   -!- FUNCTION: Probable E3 ubiquitin-protein ligase that may play a
+CC       role in angiogenesis. May also have an ATPase activity.
+CC   -!- PATHWAY: Protein modification; protein ubiquitination.
+CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000269|PubMed:21799892}.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Alternative splicing; Named isoforms=4;
+CC       Name=4;
+CC         IsoId=Q63HN8-6; Sequence=VSP_042416, VSP_042420;
+CC         Note=No experimental confirmation available.;
+CC       Name=3;
+CC         IsoId=Q63HN8-5; Sequence=VSP_042419, VSP_042418;
+CC       Name=2;
+CC         IsoId=Q63HN8-4; Sequence=VSP_042417;
+CC         Note=Minor isoform with restricted expression. Gene prediction
+CC         based on partial EST data.;
+CC       Name=1;
+CC         IsoId=Q63HN8-3; Sequence=Displayed;
+CC         Note=Major isoform detected in all tissues examined.;
+CC   -!- TISSUE SPECIFICITY: Widely expressed (at protein level).
+CC       {ECO:0000269|PubMed:21799892}.
+CC   -!- DOMAIN: The RING-type zinc finger domain is required for the
+CC       ubiquitin-protein ligase activity.
+CC   -!- PTM: Autoubiquitinates. {ECO:0000269|PubMed:21799892}.
+CC   -!- DISEASE: Moyamoya disease 2 (MYMY2) [MIM:607151]: A progressive
+CC       cerebral angiopathy characterized by bilateral intracranial
+CC       carotid artery stenosis and telangiectatic vessels in the region
+CC       of the basal ganglia. The abnormal vessels resemble a 'puff of
+CC       smoke' (moyamoya) on cerebral angiogram. Affected individuals can
+CC       develop transient ischemic attacks and/or cerebral infarction, and
+CC       rupture of the collateral vessels can cause intracranial
+CC       hemorrhage. Hemiplegia of sudden onset and epileptic seizures
+CC       constitute the prevailing presentation in childhood, while
+CC       subarachnoid bleeding occurs more frequently in adults.
+CC       {ECO:0000269|PubMed:21048783, ECO:0000269|PubMed:21799892}.
+CC       Note=Disease susceptibility is associated with variations
+CC       affecting the gene represented in this entry.
+CC   -!- DISEASE: Note=A chromosomal aberration involving ALO17 is
+CC       associated with anaplastic large-cell lymphoma (ALCL).
+CC       Translocation t(2;17)(p23;q25) with ALK.
+CC   -!- SIMILARITY: Contains 1 RING-type zinc finger.
+CC       {ECO:0000255|PROSITE-ProRule:PRU00175}.
+CC   -!- SEQUENCE CAUTION:
+CC       Sequence=AAH32220.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=BAB13444.1; Type=Miscellaneous discrepancy; Note=Probable cloning artifact.; Evidence={ECO:0000305};
+CC       Sequence=BAB14708.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=BAB15212.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=BAB15280.1; Type=Erroneous termination; Positions=4257; Note=Translated as Gln.; Evidence={ECO:0000305};
+CC       Sequence=BAB15330.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC       Sequence=CAH10615.1; Type=Frameshift; Positions=211, 213, 221, 266; Evidence={ECO:0000305};
+CC       Sequence=CAH56189.1; Type=Erroneous initiation; Note=Translation N-terminally extended.; Evidence={ECO:0000305};
+CC   -!- WEB RESOURCE: Name=Atlas of Genetics and Cytogenetics in Oncology
+CC       and Haematology;
+CC       URL="http://atlasgeneticsoncology.org/Genes/ALO17ID480.html";
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see http://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution-NoDerivs License
+CC   -----------------------------------------------------------------------
+DR   EMBL; AB537889; BAK53191.1; -; mRNA.
+DR   EMBL; AL832920; CAH10615.1; ALT_FRAME; mRNA.
+DR   EMBL; AL833201; CAH56308.1; -; mRNA.
+DR   EMBL; BX640932; CAE45967.1; -; mRNA.
+DR   EMBL; BX647946; CAH56189.1; ALT_INIT; mRNA.
+DR   EMBL; AC123764; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC124319; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; BC032220; AAH32220.1; ALT_INIT; mRNA.
+DR   EMBL; BC036891; AAH36891.1; -; mRNA.
+DR   EMBL; BC040341; AAH40341.1; -; mRNA.
+DR   EMBL; AF397204; AAN63520.1; -; mRNA.
+DR   EMBL; AF397205; AAN63521.1; -; mRNA.
+DR   EMBL; AB046774; BAB13380.1; -; mRNA.
+DR   EMBL; AB046838; BAB13444.1; ALT_SEQ; mRNA.
+DR   EMBL; AK023871; BAB14708.1; ALT_INIT; mRNA.
+DR   EMBL; AK025676; BAB15212.1; ALT_INIT; mRNA.
+DR   EMBL; AK025914; BAB15280.1; ALT_SEQ; mRNA.
+DR   EMBL; AK026038; BAB15330.1; ALT_INIT; mRNA.
+DR   EMBL; AK074030; BAB84856.1; -; mRNA.
+DR   CCDS; CCDS11772.1; -. [Q63HN8-5]
+DR   CCDS; CCDS58606.1; -. [Q63HN8-3]
+DR   RefSeq; NP_001243000.2; NM_001256071.2.
+DR   RefSeq; NP_066005.2; NM_020954.3. [Q63HN8-5]
+DR   UniGene; Hs.195642; -.
+DR   UniGene; Hs.740662; -.
+DR   UniGene; Hs.745415; -.
+DR   ProteinModelPortal; Q63HN8; -.
+DR   BioGrid; 121705; 18.
+DR   IntAct; Q63HN8; 3.
+DR   DMDM; 380865458; -.
+DR   MaxQB; Q63HN8; -.
+DR   PaxDb; Q63HN8; -.
+DR   PRIDE; Q63HN8; -.
+DR   DNASU; 57674; -.
+DR   Ensembl; ENST00000319921; ENSP00000324392; ENSG00000173821. [Q63HN8-5]
+DR   GeneID; 57674; -.
+DR   KEGG; hsa:57674; -.
+DR   UCSC; uc002jyf.4; human. [Q63HN8-5]
+DR   UCSC; uc021uen.2; human. [Q63HN8-3]
+DR   CTD; 57674; -.
+DR   GeneCards; GC17P078235; -.
+DR   H-InvDB; HIX0014240; -.
+DR   HGNC; HGNC:14539; RNF213.
+DR   HPA; HPA003347; -.
+DR   HPA; HPA026790; -.
+DR   MIM; 607151; phenotype.
+DR   MIM; 613768; gene.
+DR   neXtProt; NX_Q63HN8; -.
+DR   Orphanet; 2573; Moyamoya disease.
+DR   PharmGKB; PA134898812; -.
+DR   PharmGKB; PA162401681; -.
+DR   eggNOG; NOG86922; -.
+DR   GeneTree; ENSGT00630000089884; -.
+DR   HOGENOM; HOG000185147; -.
+DR   HOVERGEN; HBG073493; -.
+DR   InParanoid; Q63HN8; -.
+DR   OMA; FLNQIGL; -.
+DR   TreeFam; TF343131; -.
+DR   UniPathway; UPA00143; -.
+DR   ChiTaRS; RNF213; human.
+DR   GeneWiki; RNF213; -.
+DR   GenomeRNAi; 57674; -.
+DR   PMAP-CutDB; Q9HCF4; -.
+DR   PRO; PR:Q63HN8; -.
+DR   Proteomes; UP000005640; Chromosome 17.
+DR   Bgee; Q63HN8; -.
+DR   CleanEx; HS_KIAA1618; -.
+DR   ExpressionAtlas; Q63HN8; baseline and differential.
+DR   GO; GO:0005737; C:cytoplasm; IDA:UniProtKB.
+DR   GO; GO:0016020; C:membrane; IDA:UniProtKB.
+DR   GO; GO:0005730; C:nucleolus; IDA:HPA.
+DR   GO; GO:0016887; F:ATPase activity; IDA:UniProtKB.
+DR   GO; GO:0016874; F:ligase activity; IEA:UniProtKB-KW.
+DR   GO; GO:0004842; F:ubiquitin-protein transferase activity; IDA:UniProtKB.
+DR   GO; GO:0008270; F:zinc ion binding; IEA:InterPro.
+DR   GO; GO:0006200; P:ATP catabolic process; IDA:UniProtKB.
+DR   GO; GO:0051865; P:protein autoubiquitination; IDA:UniProtKB.
+DR   GO; GO:0016567; P:protein ubiquitination; IDA:UniProtKB.
+DR   Gene3D; 3.30.40.10; -; 1.
+DR   Gene3D; 3.40.50.300; -; 3.
+DR   InterPro; IPR003593; AAA+_ATPase.
+DR   InterPro; IPR027417; P-loop_NTPase.
+DR   InterPro; IPR018957; Znf_C3HC4_RING-type.
+DR   InterPro; IPR001841; Znf_RING.
+DR   InterPro; IPR013083; Znf_RING/FYVE/PHD.
+DR   Pfam; PF00097; zf-C3HC4; 1.
+DR   SMART; SM00382; AAA; 2.
+DR   SMART; SM00184; RING; 1.
+DR   SUPFAM; SSF52540; SSF52540; 3.
+DR   PROSITE; PS50089; ZF_RING_2; 1.
+PE   1: Evidence at protein level;
+KW   Alternative splicing; Chromosomal rearrangement; Coiled coil;
+KW   Complete proteome; Cytoplasm; Disease mutation; Ligase;
+KW   Metal-binding; Phosphoprotein; Proto-oncogene; Reference proteome;
+KW   Ubl conjugation; Ubl conjugation pathway; Zinc; Zinc-finger.
+FT   CHAIN         1   5207       E3 ubiquitin-protein ligase RNF213.
+FT                                /FTId=PRO_0000415917.
+FT   ZN_FING    3997   4036       RING-type. {ECO:0000255|PROSITE-ProRule:
+FT                                PRU00175}.
+FT   COILED      343    374       {ECO:0000255}.
+FT   MOD_RES     217    217       Phosphoserine. {ECO:0000269|PubMed:
+FT                                20068231}.
+FT   MOD_RES    1258   1258       Phosphoserine. {ECO:0000269|PubMed:
+FT                                18318008, ECO:0000269|PubMed:18669648,
+FT                                ECO:0000269|PubMed:18691976}.
+FT   VAR_SEQ       1   4650       Missing (in isoform 4).
+FT                                {ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_042416.
+FT   VAR_SEQ      87     87       E -> EGATSEVLVDAAVDLISDEWEAANAIPSKRRKQDAA
+FT                                PLEAASVPSADCEQ (in isoform 2).
+FT                                {ECO:0000305}.
+FT                                /FTId=VSP_042417.
+FT   VAR_SEQ    1009   1063       SQTSILQGFSYSDLRKFGIVLSAVITKSWPRTADNFNDILK
+FT                                HLLTLADVKHVFRL -> VNNLSSWETDSGSQLCSAMTQLR
+FT                                AMKHPLGLSSSANSEIGKWAPSSLAKGNGAEI (in
+FT                                isoform 3). {ECO:0000303|PubMed:15489334,
+FT                                ECO:0000303|PubMed:17974005}.
+FT                                /FTId=VSP_042418.
+FT   VAR_SEQ    1064   5207       Missing (in isoform 3).
+FT                                {ECO:0000303|PubMed:15489334,
+FT                                ECO:0000303|PubMed:17974005}.
+FT                                /FTId=VSP_042419.
+FT   VAR_SEQ    4651   4660       QEQHQLSSRR -> MTRKSAPTSG (in isoform 4).
+FT                                {ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_042420.
+FT   VARIANT    2554   2554       D -> E (in dbSNP:rs138516230).
+FT                                {ECO:0000269|PubMed:21048783}.
+FT                                /FTId=VAR_067020.
+FT   VARIANT    3891   3891       M -> V (rare variant detected in a
+FT                                sporadic case of Moyamoya disease).
+FT                                {ECO:0000269|PubMed:21048783}.
+FT                                /FTId=VAR_067021.
+FT   VARIANT    3915   3915       E -> G (in dbSNP:rs61740658).
+FT                                {ECO:0000269|PubMed:21048783}.
+FT                                /FTId=VAR_067022.
+FT   VARIANT    3962   3962       N -> D (variant detected in cases of
+FT                                Moyamoya disease in Caucasian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067023.
+FT   VARIANT    4013   4013       D -> N (variant detected in cases of
+FT                                Moyamoya disease in Caucasian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067024.
+FT   VARIANT    4062   4062       R -> Q (variant detected in cases of
+FT                                Moyamoya disease in Caucasian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067025.
+FT   VARIANT    4399   4399       A -> T (in dbSNP:rs148731719).
+FT                                {ECO:0000269|PubMed:21048783}.
+FT                                /FTId=VAR_067026.
+FT   VARIANT    4567   4567       V -> M (rare variant detected in a
+FT                                sporadic case of Moyamoya disease; dbSNP:
+FT                                rs145282452). {ECO:0000269|PubMed:
+FT                                21048783}.
+FT                                /FTId=VAR_067027.
+FT   VARIANT    4608   4608       P -> S (variant detected in cases of
+FT                                Moyamoya disease in Caucasian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067028.
+FT   VARIANT    4765   4765       V -> M (rare variant detected in a
+FT                                sporadic case of Moyamoya disease).
+FT                                {ECO:0000269|PubMed:21048783}.
+FT                                /FTId=VAR_067029.
+FT   VARIANT    4810   4810       R -> K (in MYMY2; very frequent in
+FT                                individuals affected by Moyamoya disease;
+FT                                strongly increases the risk of Moyamoya
+FT                                disease). {ECO:0000269|PubMed:21048783,
+FT                                ECO:0000269|PubMed:21799892}.
+FT                                /FTId=VAR_067030.
+FT   VARIANT    4863   4863       D -> N (variant detected in cases of
+FT                                Moyamoya disease in East Asian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067031.
+FT   VARIANT    4950   4950       E -> D (variant detected in cases of
+FT                                Moyamoya disease in East Asian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067032.
+FT   VARIANT    5021   5021       A -> V (variant detected in cases of
+FT                                Moyamoya disease in East Asian
+FT                                populations; dbSNP:rs138130613).
+FT                                {ECO:0000269|PubMed:21799892}.
+FT                                /FTId=VAR_067033.
+FT   VARIANT    5160   5160       D -> E (variant detected in cases of
+FT                                Moyamoya disease in East Asian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067034.
+FT   VARIANT    5176   5176       E -> G (variant detected in cases of
+FT                                Moyamoya disease in East Asian
+FT                                populations). {ECO:0000269|PubMed:
+FT                                21799892}.
+FT                                /FTId=VAR_067035.
+FT   CONFLICT    270    270       M -> T (in Ref. 4; AAH36891/AAH40341).
+FT                                {ECO:0000305}.
+FT   CONFLICT    321    321       M -> T (in Ref. 4; AAH36891/AAH40341).
+FT                                {ECO:0000305}.
+FT   CONFLICT    369    369       K -> N (in Ref. 4; AAH36891).
+FT                                {ECO:0000305}.
+FT   CONFLICT   1045   1045       N -> D (in Ref. 1; BAK53191 and 6;
+FT                                BAB13444). {ECO:0000305}.
+FT   CONFLICT   1133   1133       Q -> K (in Ref. 6; BAB13444).
+FT                                {ECO:0000305}.
+FT   CONFLICT   1195   1195       V -> M (in Ref. 6; BAB13444).
+FT                                {ECO:0000305}.
+FT   CONFLICT   1272   1272       E -> Q (in Ref. 6; BAB13444).
+FT                                {ECO:0000305}.
+FT   CONFLICT   1331   1331       D -> G (in Ref. 6; BAB13444).
+FT                                {ECO:0000305}.
+FT   CONFLICT   3323   3323       R -> G (in Ref. 2; CAH56189).
+FT                                {ECO:0000305}.
+FT   CONFLICT   4220   4220       E -> G (in Ref. 7; BAB15212).
+FT                                {ECO:0000305}.
+FT   CONFLICT   4571   4571       D -> G (in Ref. 7; BAB15280).
+FT                                {ECO:0000305}.
+FT   CONFLICT   4853   4853       K -> R (in Ref. 7; BAB15212).
+FT                                {ECO:0000305}.
+FT   CONFLICT   4892   4892       N -> S (in Ref. 7; BAB15212).
+FT                                {ECO:0000305}.
+FT   CONFLICT   5139   5139       L -> S (in Ref. 7; BAB15280).
+FT                                {ECO:0000305}.
+FT   CONFLICT   5187   5187       L -> P (in Ref. 7; BAB15330).
+FT                                {ECO:0000305}.
+SQ   SEQUENCE   5207 AA;  591407 MW;  9BA6847099EE6E08 CRC64;
+     MECPSCQHVS KEETPKFCSQ CGERLPPAAP IADSENNNST MASASEGEME CGQELKEEGG
+     PCLFPGSDSW QENPEEPCSK ASWTVQESKK KKRKKKKKGN KSASSELASL PLSPASPCHL
+     TLLSNPWPQD TALPHSQAQQ SGPTGQPSQP PGTATTPLEG DGLSAPTEVG DSPLQAQALG
+     EAGVATGSEA QSSPQFQDHT EGEDQDASIP SGGRGLSQEG TGPPTSAGEG HSRTEDAAQE
+     LLLPESKGGS SEPGTELQTT EQQAGASASM AVDAVAEPAN AVKGAGKEMK EKTQRMKQPP
+     ATTPPFKTHC QEAETKTKDE MAAAEEKVGK NEQGEPEDLK KPEGKNRSAA AVKNEKEQKN
+     QEADVQEVKA STLSPGGGVT VFFHAIISLH FPFNPDLHKV FIRGGEEFGE SKWDSNICEL
+     HYTRDLGHDR VLVEGIVCIS KKHLDKYIPY KYVIYNGESF EYEFIYKHQQ KKGEYVNRCL
+     FIKSSLLGSG DWHQYYDIVY MKPHGRLQKV MNHITDGPRK DLVKGKQIAA ALMLDSTFSI
+     LQTWDTINLN SFFTQFEQFC FVLQQPMIYE GQAQLWTDLQ YREKEVKRYL WQHLKKHVVP
+     LPDGKSTDFL PVDCPVRSKL KTGLIVLFVV EKIELLLEGS LDWLCHLLTS DASSPDEFHR
+     DLSHILGIPQ SWRLYLVNLC QRCMDTRTYT WLGALPVLHC CMELAPRHKD AWRQPEDTWA
+     ALEGLSFSPF REQMLDTSSL LQFMREKQHL LSIDEPLFRS WFSLLPLSHL VMYMENFIEH
+     LGRFPAHILD CLSGIYYRLP GLEQVLNTQD VQDVQNVQNI LEMLLRLLDT YRDKIPEEAL
+     SPSYLTVCLK LHEAICSSTK LLKFYELPAL SAEIVCRMIR LLSLVDSAGQ RDETGNNSVQ
+     TVFQGTLAAT KRWLREVFTK NMLTSSGASF TYVKEIEVWR RLVEIQFPAE HGWKESLLGD
+     MEWRLTKEEP LSQITAYCNS CWDTKGLEDS VAKTFEKCII EAVSSACQSQ TSILQGFSYS
+     DLRKFGIVLS AVITKSWPRT ADNFNDILKH LLTLADVKHV FRLCGTDEKI LANVTEDAKR
+     LIAVADSVLT KVVGDLLSGT ILVGQLELII KHKNQFLDIW QLREKSLSPQ DEQCAVEEAL
+     DWRREELLLL KKEKRCVDSL LKMCGNVKHL IQVDFGVLAV RHSQDLSSKR LNDTVTVRLS
+     TSSNSQRATH YHLSSQVQEM AGKIDLLRDS HIFQLFWREA AEPLSEPKED QEAAELLSEP
+     EEESERHILE LEEVYDYLYQ PSYRKFIKLH QDLKSGEVTL AEIDVIFKDF VNKYTDLDSE
+     LKIMCTVDHQ DQRDWIKDRV EQIKEYHHLH QAVHAAKVIL QVKESLGLNG DFSVLNTLLN
+     FTDNFDDFRR ETLDQINQEL IQAKKLLQDI SEARCKGLQA LSLRKEFICW VREALGGINE
+     LKVFVDLASI SAGENDIDVD RVACFHDAVQ GYASLLFKLD PSVDFSAFMK HLKKLWKALD
+     KDQYLPRKLC DSARNLEWLK TVNESHGSVE RSSLTLATAI NQRGIYVIQA PKGGQKISPD
+     TVLHLILPES PGSHEESREY SLEEVKELLN KLMLMSGKKD RNNTEVERFS EVFCSVQRLS
+     QAFIDLHSAG NMLFRTWIAM AYCSPKQGVS LQMDFGLDLV TELKEGGDVT ELLAALCRQM
+     EHFLDSWKRF VTQKRMEHFY LNFYTAEQLV YLSTELRKQP PSDAALTMLS FIKSNCTLRD
+     VLRASVGCGS EAARYRMRRV MEELPLMLLS EFSLVDKLRI IMEQSMRCLP AFLPDCLDLE
+     TLGHCLAHLA GMGGSPVERC LPRGLQVGQP NLVVCGHSEV LPAALAVYMQ TPSQPLPTYD
+     EVLLCTPATT FEEVALLLRR CLTLGSLGHK VYSLLFADQL SYEVARQAEE LFHNLCTQQH
+     REDYQLVMVC DGDWEHCYLP SAFSQHKVFV TPQAPLEAIQ AYLAGHYRVP KQTLSAAAVF
+     NDRLCVGIVA SERAGVGKSL YVKRLHDKMK MQLNVKNVPL KTIRLIDPQV DESRVLGALL
+     PFLDAQYQKV PVLFHLDVTS SVQTGIWVFL FKLLILQYLM DINGKMWLRN PCHLYIVEIL
+     ERRTSVPSRS SSALRTRVPQ FSFLDIFPKV TCRPPKEVID MELSALRSDT EPGMDLWEFC
+     SETFQRPYQY LRRFNQNQDL DTFQYQEGSV EGTPEECLQH FLFHCGVINP SWSELRNFAR
+     FLNYQLRDCE ASLFCNPSFI GDTLRGFKKF VVTFMIFMAR DFATPSLHTS DQSPGKHMVT
+     MDGVREEDLA PFSLRKRWES EPHPYVFFND DHTTMTFIGF HLQPNINGSV DAISHLTGKV
+     IKRDVMTRDL YQGLLLQRVP FNVDFDKLPR HKKLERLCLT LGIPQATDPD KTYELTTDNM
+     LKILAIEMRF RCGIPVIIMG ETGCGKTRLI KFLSDLRRGG TNADTIKLVK VHGGTTADMI
+     YSRVREAENV AFANKDQHQL DTILFFDEAN TTEAISCIKE VLCDHMVDGQ PLAEDSGLHI
+     IAACNPYRKH SEEMICRLES AGLGYRVSME ETADRLGSIP LRQLVYRVHA LPPSLIPLVW
+     DFGQLSDVAE KLYIQQIVQR LVESISLDEN GTRVITEVLC ASQGFMRKTE DECSFVSLRD
+     VERCVKVFRW FHEHSAMLLA QLNAFLSKSS VSKNHTERDP VLWSLMLAIG VCYHASLEKK
+     DSYRKAIARF FPKPYDDSRL LLDEITRAQD LFLDGVPLRK TIAKNLALKE NVFMMVVCIE
+     LKIPLFLVGK PGSSKSLAKT IVADAMQGPA AYSDLFRSLK QVHLVSFQCS PHSTPQGIIS
+     TFRQCARFQQ GKDLQQYVSV VVLDEVGLAE DSPKMPLKTL HPLLEDGCIE DDPAPHKKVG
+     FVGISNWALD PAKMNRGIFV SRGSPNETEL IESAKGICSS DILVQDRVQG YFASFAKAYE
+     TVCKRQDKEF FGLRDYYSLI KMVFAAAKAS NRKPSPQDIA QAVLRNFSGK DDIQALDIFL
+     ANLPEAKCSE EVSPMQLIKQ NIFGPSQKVP GGEQEDAESR YLLVLTKNYV ALQILQQTFF
+     EGDQQPEIIF GSGFPKDQEY TQLCRNINRV KICMETGKMV LLLNLQNLYE SLYDALNQYY
+     VHLGGQKYVD LGLGTHRVKC RVHPNFRLIV IEEKDVVYKH FPIPLINRLE KHYLDINTVL
+     EKWQKSIVEE LCAWVEKFIN VKAHHFQKRH KYSPSDVFIG YHSDACASVV LQVIERQGPR
+     ALTEELHQKV SEEAKSILLN CATPDAVVRL SAYSLGGFAA EWLSQEYFHR QRHNSFADFL
+     QAHLHTADLE RHAIFTEITT FSRLLTSHDC EILESEVTGR APKPTLLWLQ QFDTEYSFLK
+     EVRNCLTNTA KCKILIFQTD FEDGIRSAQL IASAKYSVIN EINKIRENED RIFVYFITKL
+     SRVGRGTAYV GFHGGLWQSV HIDDLRRSTL MVSDVTRLQH VTISQLFAPG DLPELGLEHR
+     AEDGHEEAME TEASTSGEVA EVAEEAMETE SSEKVGKETS ELGGSDVSIL DTTRLLRSCV
+     QSAVGMLRDQ NESCTRNMRR VVLLLGLLNE DDACHASFLR VSKMRLSVFL KKQEESQFHP
+     LEWLAREACN QDALQEAGTF RHTLWKRVQG AVTPLLASMI SFIDRDGNLE LLTRPDTPPW
+     ARDLWMFIFS DTMLLNIPLV MNNERHKGEM AYIVVQNHMN LSENASNNVP FSWKIKDYLE
+     ELWVQAQYIT DAEGLPKKFV DIFQQTPLGR FLAQLHGEPQ QELLQCYLKD FILLTMRVST
+     EEELKFLQMA LWSCTRKLKA ASEAPEEEVS LPWVHLAYQR FRSRLQNFSR ILTIYPQVLH
+     SLMEARWNHE LAGCEMTLDA FAAMACTEML TRNTLKPSPQ AWLQLVKNLS MPLELICSDE
+     HMQGSGSLAQ AVIREVRAQW SRIFSTALFV EHVLLGTESR VPELQGLVTE HVFLLDKCLR
+     ENSDVKTHGP FEAVMRTLCE CKETASKTLS RFGIQPCSIC LGDAKDPVCL PCDHVHCLRC
+     LRAWFASEQM ICPYCLTALP DEFSPAVSQA HREAIEKHAR FRQMCNSFFV DLVSTICFKD
+     NAPPEKEVIE SLLSLLFVQK GRLRDAAQRH CEHTKSLSPF NDVVDKTPVI RSVILKLLLK
+     YSFHDVKDYI QEYLTLLKKK AFITEDKTEL YMLFINCLED SILEKTSAYS RNDELNHLEE
+     EGRFLKAYSP ASRGREPANE ASVEYLQEVA RIRLCLDRAA DFLSEPEGGP EMAKEKQCYL
+     QQVKQFCIRV ENDWHRVYLV RKLSSQRGME FVQGLSKPGR PHQWVFPKDV VKQQGLRQDH
+     PGQMDRYLVY GDEYKALRDA VAKAVLECKP LGIKTALKAC KTPQSQQSAY FLLTLFREVA
+     ILYRSHNASL HPTPEQCEAV SKFIGECKIL SPPDISRFAT SLVDNSVPLL RAGPSDSNLD
+     GTVTEMAIHA AAVLLCGQNE LLEPLKNLAF SPATMAHAFL PTMPEDLLAQ ARRWKGLERV
+     HWYTCPNGHP CSVGECGRPM EQSICIDCHA PIGGIDHKPR DGFHLVKDKA DRTQTGHVLG
+     NPQRRDVVTC DRGLPPVVFL LIRLLTHLAL LLGASQSSQA LINIIKPPVR DPKGFLQQHI
+     LKDLEQLAKM LGHSADETIG VVHLVLRRLL QEQHQLSSRR LLNFDTELST KEMRNNWEKE
+     IAAVISPELE HLDKTLPTMN NLISQDKRIS SNPVAKIIYG DPVTFLPHLP RKSVVHCSKI
+     WSCRKRITVE YLQHIVEQKN GKERVPILWH FLQKEAELRL VKFLPEILAL QRDLVKQFQN
+     VQQVEYSSIR GFLSKHSSDG LRQLLHNRIT VFLSTWNKLR RSLETNGEIN LPKDYCSTDL
+     DLDTEFEILL PRRRGLGLCA TALVSYLIRL HNEIVYAVEK LSKENNSYSV DAAEVTELHV
+     ISYEVERDLT PLILSNCQYQ VEEGRETVQE FDLEKIQRQI VSRFLQGKPR LSLKGIPTLV
+     YRHDWNYEHL FMDIKNKMAQ DSLPSSVISA ISGQLQSYSD ACEVLSVVEV TLGFLSTAGG
+     DPNMQLNVYT QDILQMGDQT IHVLKALNRC QLKHTIALWQ FLSAHKSEQL LRLHKEPFGE
+     ISSRYKADLS PENAKLLSTF LNQTGLDAFL LELHEMIILK LKNPQTQTEE RFRPQWSLRD
+     TLVSYMQTKE SEILPEMASQ FPEEILLASC VSVWKTAAVL KWNREMR
+//

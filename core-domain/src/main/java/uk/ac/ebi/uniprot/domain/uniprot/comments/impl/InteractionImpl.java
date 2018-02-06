@@ -36,7 +36,7 @@ public class InteractionImpl implements Interaction {
     }
 
     @Override
-    public UniProtAccession getInteractionUniProtAccession() {
+    public UniProtAccession getInteractorUniProtAccession() {
         return uniprotAccession;
     }
 

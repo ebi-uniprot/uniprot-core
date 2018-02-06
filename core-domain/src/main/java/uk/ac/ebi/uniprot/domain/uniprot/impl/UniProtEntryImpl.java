@@ -6,23 +6,26 @@ import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.feature.impl.FeaturesImpl;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtDatabaseCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeatures;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentsImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDatabaseCrossReferencesImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
 
 import java.util.Collections;
 import java.util.List;
@@ -32,7 +35,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     private final UniProtAccession accession;
     private final List<UniProtAccession> secondaryAccessions;
     private final UniProtId uniprotId;
-    private final List<Taxon> taxonomies;
+    private final List<TaxonName> lineage;
     private final ProteinExistence proteinExistance;
     private final EntryAudit entryAudit;
     private final List<Organelle> organelles;
@@ -42,17 +45,17 @@ public class UniProtEntryImpl implements UniProtEntry {
     private final UniProtReferences references;
     private final List<Gene> genes;
     private final Organism organism;
-    private final List<Organism> organismHosts;
-    private final UniProtDatabaseCrossReferences xrefs;
+    private final List<OrganismHost> organismHosts;
+    private final UniProtDBCrossReferences xrefs;
     private final Sequence sequence;
     private final UniProtTaxonId taxonId;
     private final InternalSection internalSection;
-    private final Features features;
+    private final UniProtFeatures features;
     public UniProtEntryImpl(UniProtEntryType entryType,
             UniProtAccession accession,
             List<UniProtAccession> secondaryAccessions,
             UniProtId uniprotId,
-            List<Taxon> taxonomies,
+            List<TaxonName> lineage,
             ProteinExistence proteinExistance,
             EntryAudit entryAudit,
             List<Organelle> organelles,
@@ -61,10 +64,10 @@ public class UniProtEntryImpl implements UniProtEntry {
             Comments comments,
             UniProtReferences references,
             List<Gene> genes,
-            Features features,
+            UniProtFeatures features,
             Organism organism,
-            List<Organism> organismHosts,
-            UniProtDatabaseCrossReferences xrefs,
+            List<OrganismHost> organismHosts,
+            UniProtDBCrossReferences xrefs,
             Sequence sequence,
             UniProtTaxonId taxonId,
             InternalSection internalSection
@@ -77,10 +80,10 @@ public class UniProtEntryImpl implements UniProtEntry {
             this.secondaryAccessions = Collections.unmodifiableList(secondaryAccessions);
         }
         this.uniprotId =uniprotId;
-        if ((taxonomies == null) || taxonomies.isEmpty()) {
-            this.taxonomies = Collections.emptyList();
+        if ((lineage == null) || lineage.isEmpty()) {
+            this.lineage = Collections.emptyList();
         } else {
-            this.taxonomies = Collections.unmodifiableList(taxonomies);
+            this.lineage = Collections.unmodifiableList(lineage);
         }
         this.proteinExistance = proteinExistance;
         this.entryAudit =entryAudit;
@@ -112,7 +115,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         if(features !=null)
             this.features = features;
         else
-            this.features = new FeaturesImpl(null);
+            this.features = new UniProtFeaturesImpl(null);
         this.organism = organism;
         if ((organismHosts == null) || organismHosts.isEmpty()) {
             this.organismHosts = Collections.emptyList();
@@ -122,7 +125,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         if(xrefs !=null)
             this.xrefs = xrefs;
         else
-            this.xrefs = new UniProtDatabaseCrossReferencesImpl(null);
+            this.xrefs = new UniProtDBCrossReferencesImpl(null);
 
         this.sequence = sequence;
         this.taxonId = taxonId;
@@ -144,8 +147,8 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public List<Taxon> getTaxonomy() {
-        return taxonomies;
+    public List<TaxonName> getTaxonomyLineage() {
+        return lineage;
     }
 
     @Override
@@ -199,12 +202,12 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public List<Organism> getOrganismHosts() {
+    public List<OrganismHost> getOrganismHosts() {
         return organismHosts;
     }
 
     @Override
-    public UniProtDatabaseCrossReferences getDatabaseCrossReferences() {
+    public UniProtDBCrossReferences getDatabaseCrossReferences() {
         return xrefs;
     }
 
@@ -220,7 +223,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     @Override
     public Boolean isFragment() {
-        return !features.getFeatures(FeatureType.NON_TER).isEmpty();
+        return !features.getFeaturesByType(FeatureType.NON_TER).isEmpty();
     }
 
     @Override
@@ -228,7 +231,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         return  internalSection;
     }
     @Override
-    public Features getFeatures() {
+    public UniProtFeatures getFeatures() {
        return features;
     }
     @Override
@@ -252,7 +255,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         result = prime * result + ((secondaryAccessions == null) ? 0 : secondaryAccessions.hashCode());
         result = prime * result + ((sequence == null) ? 0 : sequence.hashCode());
         result = prime * result + ((taxonId == null) ? 0 : taxonId.hashCode());
-        result = prime * result + ((taxonomies == null) ? 0 : taxonomies.hashCode());
+        result = prime * result + ((lineage == null) ? 0 : lineage.hashCode());
         result = prime * result + ((uniprotId == null) ? 0 : uniprotId.hashCode());
         result = prime * result + ((xrefs == null) ? 0 : xrefs.hashCode());
         return result;
@@ -345,10 +348,10 @@ public class UniProtEntryImpl implements UniProtEntry {
                 return false;
         } else if (!taxonId.equals(other.taxonId))
             return false;
-        if (taxonomies == null) {
-            if (other.taxonomies != null)
+        if (lineage == null) {
+            if (other.lineage != null)
                 return false;
-        } else if (!taxonomies.equals(other.taxonomies))
+        } else if (!lineage.equals(other.lineage))
             return false;
         if (uniprotId == null) {
             if (other.uniprotId != null)

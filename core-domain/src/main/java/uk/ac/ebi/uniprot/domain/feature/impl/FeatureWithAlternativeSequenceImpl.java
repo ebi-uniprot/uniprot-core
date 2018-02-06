@@ -130,7 +130,7 @@ public abstract class FeatureWithAlternativeSequenceImpl extends FeatureImpl imp
         }
 
         @Override
-        public List<String> getReport() {
+        public List<String> getValue() {
             return report;
         }
 

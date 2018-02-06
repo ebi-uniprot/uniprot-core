@@ -1,5 +1,10 @@
 package uk.ac.ebi.uniprot.domain.taxonomy;
 
-public interface Taxon extends TaxonName  {
+import java.util.List;
+
+public interface Taxon   {
     TaxonId getTaxonId();
+      String getScientificName();
+      String getCommonName();
+      List<String> getSynonyms();
 }

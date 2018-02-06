@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.feature;
 
-import java.util.List;
+import uk.ac.ebi.uniprot.domain.common.Value;
 
-public interface FeatureDescription {
-    List<String> getDescription();
+public interface FeatureDescription extends Value {
 }

@@ -4,7 +4,9 @@ import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 
@@ -22,7 +24,7 @@ public interface UniProtEntry {
     UniProtAccession getPrimaryUniProtAccession();
     List<UniProtAccession> getSecondaryUniProtAccessions();
     UniProtId getUniProtId();
-    List<Taxon> getTaxonomy();
+    List<TaxonName> getTaxonomyLineage();
     ProteinExistence getProteinExistence();
     UniProtEntryType getType();
     EntryAudit getEntryAudit();
@@ -30,12 +32,12 @@ public interface UniProtEntry {
     List<Keyword> getKeywords();
     ProteinDescription getProteinDescription();
      Comments getComments();
-     Features getFeatures();
+     UniProtFeatures getFeatures();
     UniProtReferences getReferences();
      List<Gene> getGenes();
      Organism getOrganism();
-     List<Organism> getOrganismHosts();
-      UniProtDatabaseCrossReferences getDatabaseCrossReferences();
+     List<OrganismHost> getOrganismHosts();
+      UniProtDBCrossReferences getDatabaseCrossReferences();
      Sequence getSequence();
      UniProtTaxonId getTaxonId();
      Boolean isFragment();

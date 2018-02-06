@@ -110,4 +110,5 @@ public enum UniProtFactory {
     public UniProtTaxonId createUniProtTaxonId(long taxId, List<Evidence> evidences) {
         return new UniProtTaxonIdImpl(taxId, evidences);
     }
+    
 }
