@@ -65,7 +65,7 @@ public class EntryConverterTest {
 	public void testQ9NYP9() {
 		String filename = "/entryIT/Q9NYP9.dat";
 		String entryStr= readEntryFromFile(filename);
-		System.out.println(entryStr);
+	//	System.out.println(entryStr);
 		testEntry(entryStr);
 	}
 	

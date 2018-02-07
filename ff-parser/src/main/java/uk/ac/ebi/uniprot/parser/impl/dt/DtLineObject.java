@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.impl.dt;
 
-import uk.ac.ebi.uniprot.validator.dt.DtDateCheck;
-import uk.ac.ebi.uniprot.validator.dt.DtVersionCheck;
-
 import java.time.LocalDate;
+
+import uk.ac.ebi.uniprot.validator.DtDateCheck;
+import uk.ac.ebi.uniprot.validator.DtVersionCheck;
 
 /**
  * Created with IntelliJ IDEA.

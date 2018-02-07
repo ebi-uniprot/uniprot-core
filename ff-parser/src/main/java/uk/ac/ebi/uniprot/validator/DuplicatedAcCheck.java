@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.validator.dt;
+package uk.ac.ebi.uniprot.validator;
 
 
 import javax.validation.Constraint;
@@ -7,11 +7,11 @@ import java.lang.annotation.*;
 
 @Target( { ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = DtDateCheckValidator.class)
+@Constraint(validatedBy = DuplicatedAcCheckValidator.class)
 @Documented
-public @interface DtDateCheck {
+public @interface DuplicatedAcCheck {
 
-    String message() default "Entry's date can not be any earlier than the integration date.";
+    String message() default "The primary sccession is in the secondary accession list";
 
     Class<?>[] groups() default { };
 

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.validator.dt;
+package uk.ac.ebi.uniprot.validator;
 
 import uk.ac.ebi.uniprot.parser.impl.dt.DtLineObject;
 
@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidatorContext;
 /**
  * The entry version's date must not before the integration date.
  */
-public class DtDateCheckValidator implements ConstraintValidator<DtDateCheck, DtLineObject> {
+public class DtVersionCheckValidator implements ConstraintValidator<DtDateCheck, DtLineObject> {
 
 
     @Override
@@ -17,6 +17,6 @@ public class DtDateCheckValidator implements ConstraintValidator<DtDateCheck, Dt
 
     @Override
     public boolean isValid(DtLineObject s, ConstraintValidatorContext context) {
-       return !s.entry_date.isBefore(s.integration_date);
+        return s.seq_version <= s.entry_version;
     }
 }
