@@ -216,8 +216,8 @@ public class CcLineAPCommentParserTest {
 	@Test
 	public void testParserWithEvidences2() {
 		String lines =  "CC   -!- ALTERNATIVE PRODUCTS:\n"
-				  +"CC       Event=Alternative splicing; Named isoforms=6;\n"
-				  +"CC         Comment=Additional isoforms seem to exist.\n"
+				    +"CC       Event=Alternative splicing; Named isoforms=6;\n"
+				    +"CC         Comment=Additional isoforms seem to exist.\n"
                     +"CC         {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
                     +"CC       Name=1 {ECO:0000313|EMBL:BAG16761.1}; Synonyms=A\n"
                     +"CC       {ECO:0000256|HAMAP-Rule:MF_002051, ECO:0000313|PDB:3OW2};\n"
@@ -316,6 +316,7 @@ public class CcLineAPCommentParserTest {
 		CcLineFormater formater  =new CcLineFormater();
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 		String lines = formater.format(ccLineStringEvidence);
+		System.out.println(lines);
 		CcLineObject obj = parser.parse(lines);
 		assertNotNull(obj);
 		
@@ -400,7 +401,7 @@ public class CcLineAPCommentParserTest {
 		        + " variant 10 {ECO:0000313|EMBL:BAG16761.1}, Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n" +
 		        "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n" +
 		        "Name=4; Synonyms=B;\n" +
-		        "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, "
+		        "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477,\n"
 		        + "VSP_000479;\n" +
 		        "Name=5;\n" +
 		        "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n" +
@@ -414,6 +415,85 @@ public class CcLineAPCommentParserTest {
 		String lines = formater.format(ccLineStringEvidence);
 		CcLineObject obj = parser.parse(lines);
 		assertNotNull(obj);
+		
+		
+	}
+	
+	@Test
+	public void testNoHeaderWithEvidence5() {
+	String ccLineStringEvidence =   "ALTERNATIVE PRODUCTS:\n"
+			  +"Event=Alternative splicing; Named isoforms=6;\n"
+			  +" Comment=Additional isoforms seem to exist.\n"
+          +"{ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n"
+          +"Name=1 {ECO:0000313|EMBL:BAG16761.1}; Synonyms=A\n"
+          +"{ECO:0000256|HAMAP-Rule:MF_002051, ECO:0000313|PDB:3OW2};\n"
+          +"IsoId=Q9V8R9-1; Sequence=Displayed;\n"
+          +"Note=Does not exhibit APOBEC1 complementation activity. Ref.4\n"
+          +"sequence is in conflict in positions: 33:I->T. No experimental\n"
+          +"confirmation available. {ECO:0000313|PDB:3OW2};\n"
+          +"Name=2;\n"
+          +" IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479,\n"
+          +"VSP_000480, VSP_000481;\n"
+          +"Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+          +"ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript variant 10\n"
+          +"{ECO:0000313|EMBL:BAG16761.1}, Bim-AD\n"
+          +"{ECO:0000256|HAMAP-Rule:MF_00205}, BimAD {ECO:0000313|PDB:3OW2};\n"
+          +"IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n"
+          +"Name=4; Synonyms=B;\n"
+          +"IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, VSP_000479;\n"
+          +"Name=5;\n"
+          +"IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n"
+          +"Note=No experimental confirmation available.\n"
+          +"{ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"
+          +"Name=6; Synonyms=D;\n"
+          +"IsoId=Q9V8R9-6; Sequence=Described;\n"
+          +"Note=No experimental confirmation.;\n";
+		CcLineFormater formater  =new CcLineFormater();
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		String lines = formater.format(ccLineStringEvidence);
+		CcLineObject obj = parser.parse(lines);
+		assertNotNull(obj);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof AlternativeProducts);
+		AlternativeProducts ap = (AlternativeProducts)cc.object;
+		assertEquals(1, ap.events.size());
+		assertEquals("Alternative splicing", ap.events.get(0));
+		assertEquals(1, ap.comment.size());
+		assertEquals("Additional isoforms seem to exist.", ap.comment.get(0).value);
+		assertEquals("ECO:0000269|PubMed:10433554", ap.comment.get(0).evidences.get(0));
+		assertEquals("ECO:0000303|Ref.6", ap.comment.get(0).evidences.get(1));
+		assertEquals(6, ap.names.size());
+		assertEquals("1", ap.names.get(0).name.value);
+		assertNotNull(ap.names.get(0).name.evidences);
+		assertEquals(1, ap.names.get(0).name.evidences.size());
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", ap.names.get(0).name.evidences.get(0));
+		assertEquals(1, ap.names.get(0).synNames.size());
+		assertEquals("A",  ap.names.get(0).synNames.get(0).value);
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_002051", ap.names.get(0).synNames.get(0).evidences.get(0));
+		assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(0).synNames.get(0).evidences.get(1));
+		assertEquals("Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T. No experimental confirmation available.", ap.names.get(0).note.get(0).value);
+		assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(0).note.get(0).evidences.get(0));
+		
+		
+		assertEquals("Bim-alpha3", ap.names.get(2).name.value);
+		assertNotNull(ap.names.get(2).name.evidences);
+		assertEquals(2, ap.names.get(2).name.evidences.size());
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", ap.names.get(2).name.evidences.get(0));
+		assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(2).name.evidences.get(1));
+		assertEquals(3, ap.names.get(2).synNames.size());
+		assertEquals("BCL2-like 11 transcript variant 10",  ap.names.get(2).synNames.get(0).value);
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", ap.names.get(2).synNames.get(0).evidences.get(0));
+		
+		assertEquals("Bim-AD",  ap.names.get(2).synNames.get(1).value);
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", ap.names.get(2).synNames.get(1).evidences.get(0));
+		
+		assertEquals("BimAD",  ap.names.get(2).synNames.get(2).value);
+		assertEquals("ECO:0000313|PDB:3OW2", ap.names.get(2).synNames.get(2).evidences.get(0));
+		
+
+		assertEquals("No experimental confirmation available.", ap.names.get(4).note.get(0).value);
+		assertEquals("ECO:0000269|PubMed:10433554", ap.names.get(4).note.get(0).evidences.get(0));
 		
 		
 	}

@@ -255,7 +255,7 @@ mode CC_ALTERNATIVE_PRODUCTS_SEQUENCE_VALUE;
 CC_AP_SEMICOLON_SV : ';'                               -> popMode, type (SEMICOLON);
 CC_AP_VALUE_SPACE_SV : ' '                             -> type (SPACE);
 CC_AP_VALUE_COMA_SV : ','                              -> type (COMA);
-CC_AP_VALUE_CHANGE_LINE : '\nCC                       ' CC_AP_VALUE_SPACE_SV+
+CC_AP_VALUE_CHANGE_LINE : '\nCC      ' CC_AP_VALUE_SPACE_SV+
                                                        -> type (CHANGE_OF_LINE);
 CC_AP_DISPLAYED: 'Displayed' ;
 CC_AP_EXTERNAL: 'External';

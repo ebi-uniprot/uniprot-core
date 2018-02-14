@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
+import java.util.AbstractMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
@@ -18,6 +20,11 @@ public class CcLineFormater implements LineFormater {
 	private static final String CC_LINE_PREFIX_2="CC         ";
 	private static final String CC_LINE_FIRST_PREFIX ="CC   -!- ";
 	private static final String BIOPHYCHEMPROPERTIES = "BIOPHYSICOCHEMICAL PROPERTIES:";
+	private static final String AP_COMMENT = "ALTERNATIVE PRODUCTS:";
+	private static final String AP_NAME = "Name=";
+	private static final String AP_EVENT = "Event=";
+	private static final String AP_ISO_ID = "IsoId=";
+	
 	private static Set<String> BIOPHYCHEMPROPERTIES_VALUES =new HashSet<>();
 	static  {
 		BIOPHYCHEMPROPERTIES_VALUES.add(ABSORPTION);
@@ -27,18 +34,33 @@ public class CcLineFormater implements LineFormater {
 		BIOPHYCHEMPROPERTIES_VALUES.add(PH_DEPENDENCE);
 	};
 	
-
+	private static Set<String> APCOMMENT_VALUE =new HashSet<>();
+	static  {
+		APCOMMENT_VALUE.add("Name=");
+		APCOMMENT_VALUE.add("Event=");
+	};
+	
+	
+	
 	@Override
 	public String format(String lines) {
 		String [] tokens= lines.split(LINE_SEPARATOR);
 		StringBuilder sb = new StringBuilder();
 		boolean isBioPhyChem = false;
+		boolean isAPComment =false;
+		boolean isApName = false;
 		for(String token: tokens) {
+			token= token.trim();
 			if(isFirstLineComment(token)){
 				if(isBiophyChemProperty (token)) {
 					isBioPhyChem = true;
 				}else {
 					isBioPhyChem = false;
+				}
+				if(isAPComment (token)) {
+					isAPComment = true;
+				}else {
+					isAPComment = false;
 				}
 				if(!token.startsWith(CC_LINE_FIRST_PREFIX)) {					
 					sb.append(CC_LINE_FIRST_PREFIX + token);					
@@ -56,7 +78,12 @@ public class CcLineFormater implements LineFormater {
 							String val = token.trim();
 							sb.append(CC_LINE_PREFIX_2 + val);
 						}
-					}else
+					}else if(isAPComment) {
+						Map.Entry<String, Boolean > apformated = formatAPComment(token, isApName);
+						sb.append(apformated.getKey());
+						isApName = apformated.getValue();
+					}
+					else
 						sb.append(CC_LINE_PREFIX + token);
 				}else {
 					sb.append( token);
@@ -65,6 +92,30 @@ public class CcLineFormater implements LineFormater {
 			sb.append(LINE_SEPARATOR);
 		}
 		return sb.toString();
+	}
+	
+	private Map.Entry<String, Boolean> formatAPComment(String token, boolean isName ) {
+		boolean isApName = isName;
+		StringBuilder sb = new StringBuilder();
+		if(token.startsWith(AP_NAME)) {
+			sb.append(CC_LINE_PREFIX + token);
+			isApName = true;
+		}else if(token.startsWith(AP_EVENT)) {
+			sb.append(CC_LINE_PREFIX + token);
+		}else {
+			if(isApName) {
+				if(token.startsWith(AP_ISO_ID)){
+					sb.append(CC_LINE_PREFIX_2 + token);
+					isApName =false;
+				}else {
+					sb.append(CC_LINE_PREFIX + token);
+				}
+			}else {
+				String val = token.trim();
+				sb.append(CC_LINE_PREFIX_2 + val);
+			}
+		}
+		return new AbstractMap.SimpleEntry<>(sb.toString(), isApName);
 	}
 	private boolean isFirstLineComment(String token) {
 		if(token.startsWith(CC_LINE_FIRST_PREFIX))
@@ -81,6 +132,13 @@ public class CcLineFormater implements LineFormater {
 			return token.equals(CC_LINE_FIRST_PREFIX +BIOPHYCHEMPROPERTIES );
 		}else {
 			return token.equals( BIOPHYCHEMPROPERTIES );
+		}
+	}
+	private boolean isAPComment(String token) {
+		if(token.startsWith(CC_LINE_FIRST_PREFIX)) {
+			return token.equals(CC_LINE_FIRST_PREFIX +AP_COMMENT );
+		}else {
+			return token.equals( AP_COMMENT );
 		}
 	}
 }
