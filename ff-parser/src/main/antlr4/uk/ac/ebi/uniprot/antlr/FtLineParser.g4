@@ -20,7 +20,8 @@ ft_line: FT_HEADER ft_key loc_start loc_end
 
 //ft_value: SPACE7 ft_text ((SPACE|CHANGE_OF_LINE)evidence)? DOT;
 //ft_no_value_with_evidence: SPACE7 evidence DOT;
-ft_value2: SPACE7 ft_text DOT ;
+ft_value2: (SPACE7|SPACE1) ft_text DOT ;
+
 //((SPACE|CHANGE_OF_LINE) evidence DOT)?;
 
 //ft_empty_text_with_evidence: SPACE7? evidence;

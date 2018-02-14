@@ -33,6 +33,7 @@ FT_KEY_VAR_SEQ:  'VAR_SEQ' {inVarSeq=true;};
 
 NEW_LINE: '\n';
 SPACE7: '       ' {loc==2}?                         -> pushMode(FT_CONTENT);
+SPACE1: ' ' {loc==2}?                         -> pushMode(FT_CONTENT);
 LEFT_B_OUT: '{'   {loc==2}?                         -> type(LEFT_B);
 FTID: '\nFT                                /FTId='  -> pushMode(FTID_MODE);
 
