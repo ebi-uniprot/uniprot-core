@@ -41,7 +41,7 @@ cc_properties_notes : cc_properties_note_text_with_ev
     ((SPACE|CHANGE_OF_LINE) cc_properties_note_text_with_ev)*;
 
 cc_properties_notes_level_2 : cc_properties_note_text_level2_with_ev
-    ((SPACE|CHANGE_OF_LINE_LEVEL2) cc_properties_note_text_level2_with_ev)*;
+    ((SPACE|CHANGE_OF_LINE_LEVEL2|CHANGE_OF_LINE) cc_properties_note_text_level2_with_ev)*;
 
 cc_common: CC_TOPIC_START CC_TOPIC_COMMON (CC_COMMON_COLON_SPACE | CC_COMMON_COLON_CHANGE_OF_LINE)
             cc_common_texts
@@ -75,8 +75,8 @@ cc_biophyiochemical_properties:
                     |cc_biophyiochemical_temperature                 
                     ;
 cc_biophyiochemical_absorption: CC_HEADER_1  CC_BP_ABSORPTION COLON NEW_LINE
-                 CC_HEADER_2 cc_biophyiochemical_absorption_bas
-                 (NEW_LINE CC_HEADER_2 cc_biophyiochemical_absorption_note)?
+                 (CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_absorption_bas
+                 (NEW_LINE (CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_absorption_note)?
                  NEW_LINE;
                 
 cc_biophyiochemical_absorption_bas:  CC_BP_ABS cc_properties_text_level2_with_ev;
@@ -88,9 +88,9 @@ cc_biophyiochemical_temperature:   CC_HEADER_1  CC_BP_TEMPERATURE_DEPENDENCE
 cc_biophyiochemical_redox:   CC_HEADER_1  CC_BP_REDOX_POTENTIAL
                  cc_properties_notes_level_2 NEW_LINE      ;
 cc_biophyiochemical_kinetic: CC_HEADER_1 CC_BP_KINETIC_PARAMETERS COLON NEW_LINE
-                  (CC_HEADER_2 cc_biophyiochemical_kinetic_km NEW_LINE)*
-                  (CC_HEADER_2 cc_biophyiochemical_kinetic_bpmax NEW_LINE)*
-                  (CC_HEADER_2 cc_biophyiochemical_kinetic_note NEW_LINE)?;
+                  ((CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_kinetic_km NEW_LINE)*
+                  ((CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_kinetic_bpmax NEW_LINE)*
+                  ((CC_HEADER_1|CC_HEADER_2) cc_biophyiochemical_kinetic_note NEW_LINE)?;
 cc_biophyiochemical_kinetic_km: CC_BP_KM cc_properties_text_level2_with_ev;
 cc_biophyiochemical_kinetic_bpmax: CC_BP_VMAX cc_properties_text_level2_with_ev;
 cc_biophyiochemical_kinetic_note: CC_BP_NOTE SPACE* cc_properties_notes_level_2;

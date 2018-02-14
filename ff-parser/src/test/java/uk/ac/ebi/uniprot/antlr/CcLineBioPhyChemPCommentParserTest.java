@@ -2,12 +2,14 @@ package uk.ac.ebi.uniprot.antlr;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.BiophysicochemicalProperties;
 
@@ -261,5 +263,84 @@ public class CcLineBioPhyChemPCommentParserTest {
 		assertEquals("19.7 uM for peptide substrate DABCYL-ARSGAKASGC(farnesyl)LVS-EDANS where EDANS is 5-[(2-aminoethyl)amino]naphthalene-1-sulphonic acid fluorophore and DABCYL is 4-{[4-(dimethylamino)phenyl]azo}benzoic acid quencher.", bp.kms.get(0).value);
 
 	}
-	
+	@Test
+	public void testNoHeaderWithEvidence() {
+		String ccLineStringEvidence =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
+				"Absorption:\n" +
+				"  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +							
+				"  Note=The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"
+				+ " the reduced form. {ECO:0000269|PubMed:10433554}. "
+				+ "These absorption peaks are for the tryptophylquinone cofactor. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n" +
+				"Kinetic parameters:\n" +
+				"  KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n" +
+				"  KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n" +
+				"  Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n" +
+				"  Note=The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine)."
+				+ " {ECO:0000256|HAMAP-Rule:MF_00205}. "
+				+ "Another note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");   
+		CcLineFormater formater  =new CcLineFormater();
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		String lines = formater.format(ccLineStringEvidence);
+		CcLineObject obj = parser.parse(lines);
+		assertNotNull(obj);
+	}
+	@Test
+	public void testNoHeaderWithEvidence2() {
+		String ccLineStringEvidence =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
+				"Absorption:\n" +
+				"Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +							
+				"Note=The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"
+				+ " the reduced form. {ECO:0000269|PubMed:10433554}. "
+				+ "These absorption peaks are for the tryptophylquinone cofactor. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n" +
+				"Kinetic parameters:\n" +
+				"KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n" +
+				"KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n" +
+				"Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n" +
+				"Note=The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine)."
+				+ " {ECO:0000256|HAMAP-Rule:MF_00205}. "
+				+ "Another note is very very long. {ECO:0000256|HAMAP-Rule:MF_00205};");   
+		CcLineFormater formater  =new CcLineFormater();
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		String lines = formater.format(ccLineStringEvidence);
+		CcLineObject obj = parser.parse(lines);
+		assertNotNull(obj);
+	}
+	@Test
+	public void testNoHeaderWithEvidence3() {
+
+			String linesNoHeader = "BIOPHYSICOCHEMICAL PROPERTIES:\n"
+					+"pH dependence:\n"
+					+"  Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
+					+"Redox potential:\n"
+					+"  E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+					+"Temperature dependence:\n"
+					+"  Highly active at low temperatures, even at 0 degree Celsius.\n"
+					+"  Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};\n"
+
+					;
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(linesNoHeader);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
+	@Test
+	public void testNoHeaderWithEvidence4() {
+
+			String linesNoHeader = "BIOPHYSICOCHEMICAL PROPERTIES:\n"
+					+"pH dependence:\n"
+					+"  Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
+					+"Redox potential:\n"
+					+"  E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
+					+"Temperature dependence:\n"
+					+"Highly active at low temperatures, even at 0 degree Celsius.\n"
+					+"Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205};\n"
+
+					;
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(linesNoHeader);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
 }
