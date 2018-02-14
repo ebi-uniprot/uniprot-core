@@ -63,7 +63,7 @@ public enum EvidenceFactory {
             }
         }
 
-        return new EvidenceImpl(evidenceType, evidenceCode, attribute);
+        return new EvidenceImpl(evidenceType, evidenceCode, attribute, LocalDate.now(), val);
     }
 
     

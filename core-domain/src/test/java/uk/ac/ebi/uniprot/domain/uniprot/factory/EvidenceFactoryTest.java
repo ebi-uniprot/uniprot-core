@@ -55,6 +55,13 @@ public class EvidenceFactoryTest {
     }
   
     @Test
+    public void testOpinion() {
+    
+    	 String val =	"ECO:0000303|Ref.6";
+         Evidence evidence = EvidenceFactory.INSTANCE.createFromEvidenceLine(val);
+         assertEquals(val, evidence.getValue());    
+    }
+    @Test
     public void testConvertToEvidenceType() {
       EvidenceType type=  EvidenceFactory.INSTANCE.convertToEvidenceType(EvidenceCode.ECO_0000269);    
       assertEquals(EvidenceType.EXPERIMENTAL, type);

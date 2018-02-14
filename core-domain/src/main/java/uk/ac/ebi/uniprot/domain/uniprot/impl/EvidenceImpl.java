@@ -12,6 +12,7 @@ public class EvidenceImpl implements Evidence {
     private static final String COLON = ":";
     private final EvidenceType evidenceType;
     private final EvidenceCode evidenceCode;
+    private final String value;
 
     private final String attribute;
     private final LocalDate date;
@@ -26,6 +27,16 @@ public class EvidenceImpl implements Evidence {
         this.evidenceCode = evidenceCode;
         this.attribute = attribute;
         this.date = date;
+        value = null;
+    }
+    
+    public EvidenceImpl(EvidenceType evidenceType, EvidenceCode evidenceCode,
+            String attribute, LocalDate date, String value){
+        this.evidenceType = evidenceType;
+        this.evidenceCode = evidenceCode;
+        this.attribute = attribute;
+        this.date = date;
+        this.value =value;
     }
     
     @Override
@@ -92,6 +103,9 @@ public class EvidenceImpl implements Evidence {
 
     @Override
     public String getValue() {
+    	if((value !=null) && !value.isEmpty()) {
+    		return value;
+    	}
         StringBuilder sb = new StringBuilder();
         sb.append(evidenceCode.getCodeValue());
         if((attribute !=null) && !attribute.isEmpty()){

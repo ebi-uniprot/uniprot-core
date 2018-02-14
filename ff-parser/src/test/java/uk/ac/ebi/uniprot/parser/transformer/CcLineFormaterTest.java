@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.antlr;
+package uk.ac.ebi.uniprot.parser.transformer;
 
 import static org.junit.Assert.assertEquals;
 
