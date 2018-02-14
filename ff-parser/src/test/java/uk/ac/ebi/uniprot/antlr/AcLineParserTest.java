@@ -68,6 +68,5 @@ public class AcLineParserTest {
 		List<String> expected = Arrays.asList(new String[] { "Q6GZX5-11", "Q6GZX6-10" });
 		assertEquals(expected, obj.secondaryAcc);
 	}
-
 	
 }

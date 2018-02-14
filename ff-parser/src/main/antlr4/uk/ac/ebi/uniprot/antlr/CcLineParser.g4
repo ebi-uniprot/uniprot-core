@@ -138,13 +138,13 @@ cc_subcellular_words: CC_SL_WORD (cc_subcellular_text_separator CC_SL_WORD)*;
 cc_subcellular_text_separator: SPACE | CHANGE_OF_LINE;
 
 cc_alternative_products:
-               CC_TOPIC_START CC_TOPIC_ALTERNATIVE_PRODUCTS COLON NEW_LINE
+               (CC_TOPIC_START) CC_TOPIC_ALTERNATIVE_PRODUCTS COLON NEW_LINE
                cc_alternative_products_event
                cc_alternative_products_name (NEW_LINE cc_alternative_products_name)*
                NEW_LINE;
 cc_alternative_products_event:
-               CC_HEADER_1 cc_alternative_products_event_event SPACE cc_alternative_products_event_namedisoforms
-               (NEW_LINE CC_HEADER_2 cc_alternative_products_event_comment)? NEW_LINE;
+               (CC_HEADER_1)  cc_alternative_products_event_event SPACE cc_alternative_products_event_namedisoforms
+               (NEW_LINE (CC_HEADER_1|CC_HEADER_2) cc_alternative_products_event_comment)? NEW_LINE;
 cc_alternative_products_event_event: CC_AP_EVENT cc_alternative_value
                                     (COMA SPACE cc_alternative_value)* SEMICOLON;
 cc_alternative_products_event_namedisoforms: CC_AP_NAMED_ISOFORMS cc_alternative_value SEMICOLON;
@@ -153,12 +153,12 @@ cc_alternative_products_event_comment: CC_AP_COMMENT cc_properties_notes_level_2
 cc_alternative_value: CC_AP_WORD ((SPACE|CHANGE_OF_LINE) CC_AP_WORD)*;
 
 cc_alternative_value_with_evidence: cc_alternative_value ((SPACE|CHANGE_OF_LINE) evidence)?;
-cc_alternative_products_name: CC_HEADER_1 CC_AP_NAME cc_alternative_value_with_evidence SEMICOLON
+cc_alternative_products_name: (CC_HEADER_1) CC_AP_NAME cc_alternative_value_with_evidence SEMICOLON
                               ((SPACE |(NEW_LINE CC_HEADER_1)) cc_alternative_products_synonyms)?  NEW_LINE
-                              CC_HEADER_2 cc_alternative_products_isoid
-                              (SPACE |(NEW_LINE CC_HEADER_2))
+                              (CC_HEADER_1|CC_HEADER_2) cc_alternative_products_isoid
+                              (SPACE |(NEW_LINE (CC_HEADER_1|CC_HEADER_2)))
                               cc_alternative_products_sequence
-                              (NEW_LINE CC_HEADER_2 cc_alternative_products_note)?
+                              (NEW_LINE (CC_HEADER_1|CC_HEADER_2) cc_alternative_products_note)?
                               ;
 cc_alternative_products_synonyms:  CC_AP_SYNONYMS cc_alternative_value_with_evidence (COMA (SPACE|CHANGE_OF_LINE) cc_alternative_value_with_evidence)* SEMICOLON;
 cc_alternative_products_isoid: CC_AP_ISOID cc_alternative_value (COMA SPACE cc_alternative_value)* SEMICOLON;
