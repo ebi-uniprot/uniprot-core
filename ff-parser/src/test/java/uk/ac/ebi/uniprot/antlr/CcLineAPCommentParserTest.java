@@ -384,6 +384,39 @@ public class CcLineAPCommentParserTest {
 		
 		
 	}
+	@Test
+	public void testNoHeaderWithEvidence4() {
+		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
+		        "Event=Alternative splicing; Named isoforms=6;\n" +
+		        "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
+		        + " Another additional isoforms also seem to exist. {ECO:0000269|PubMed:10433554};\n" +
+		        "Name=1 {ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}; Synonyms=A {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n" +
+		        "IsoId=Q9V8R9-1; Sequence=Displayed;\n" +
+		        "Note=Does not exhibit APOBEC1 complementation activity. Ref.4 sequence is in conflict in positions: 33:I->T."
+		        + " No experimental confirmation available. {ECO:0000313|PDB:3OW2};\n" +
+		        "Name=2;\n" +
+		        "IsoId=Q9V8R9-2; Sequence=VSP_000476, VSP_000477, VSP_000479, VSP_000480, VSP_000481;\n" +
+		        "Name=Bim-alpha3 {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}; Synonyms=BCL2-like 11 transcript"
+		        + " variant 10 {ECO:0000313|EMBL:BAG16761.1}, Bim-AD, BimAD {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};\n" +
+		        "IsoId=Q9V8R9-3; Sequence=VSP_000475, VSP_000478, VSP_000479;\n" +
+		        "Name=4; Synonyms=B;\n" +
+		        "IsoId=Q9V8R9-4; Sequence=VSP_000476, VSP_000477, "
+		        + "VSP_000479;\n" +
+		        "Name=5;\n" +
+		        "IsoId=Q9V8R9-5; Sequence=VSP_000474, VSP_000478;\n" +
+		        "Note=No experimental confirmation available. {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};"
+		        + " Another no experimental confirmation also available. {ECO:0000269|PubMed:1043355, ECO:0000313|EMBL:BAG16761.1};\n" +
+		        "Name=6; Synonyms=D;\n" +
+		        "IsoId=Q9V8R9-6; Sequence=Described;\n" +
+		        "Note=No experimental confirmation.;";
+		CcLineFormater formater  =new CcLineFormater();
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		String lines = formater.format(ccLineStringEvidence);
+		CcLineObject obj = parser.parse(lines);
+		assertNotNull(obj);
+		
+		
+	}
 	
 	
 }
