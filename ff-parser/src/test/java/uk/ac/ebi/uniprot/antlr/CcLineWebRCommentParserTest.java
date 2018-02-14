@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 
 public class CcLineWebRCommentParserTest {
@@ -67,5 +68,24 @@ public class CcLineWebRCommentParserTest {
 		
 	}
 
+	@Test
+	public void testNoHdeader() {
+		String ccLineString = "WEB RESOURCE: Name=GeneReviews;\n"
+				+"URL=\"http://www.genetests.org/query?gene=RP1\";\n"
+		
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineFormater formater  =new CcLineFormater();
+		String lines = formater.format(ccLineString);
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		
+		assertTrue(cc.object instanceof CcLineObject.WebResource);
+		CcLineObject.WebResource wr = (CcLineObject.WebResource) cc.object;
+		assertEquals("GeneReviews", wr.name);
+		assertEquals("http://www.genetests.org/query?gene=RP1", wr.url);
 
+		
+	}
 }

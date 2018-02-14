@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 
 public class CcLineMSCommentParserTest {
@@ -150,6 +151,32 @@ public class CcLineMSCommentParserTest {
 				 +"CC       Evidence={ECO:0000006|PubMed:16629414, ECO:0000006|PubMed:16629415};\n"
 				 ;
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof CcLineObject.MassSpectrometry);
+		CcLineObject.MassSpectrometry ms = (CcLineObject.MassSpectrometry) cc.object;
+
+
+		verify(ms,  3979.9f, 0, "Electrospray", 1, 51, 81);
+	//	assertTrue(ms.ranges.get(0).end_unknown);
+	//	assertEquals("Variant 6.01", ms.note);
+		assertEquals(2, ms.sources.size());
+	
+		assertEquals("ECO:0000006|PubMed:16629414", ms.sources.get(0));
+		assertEquals("ECO:0000006|PubMed:16629415", ms.sources.get(1));
+		assertEquals("ECO:0000006|PubMed:16629414", obj.evidenceInfo.evidences.get(ms).get(0));
+		assertEquals("ECO:0000006|PubMed:16629415", obj.evidenceInfo.evidences.get(ms).get(1));
+	}
+	
+	@Test
+	public void testNoHeader() {
+		String ccLineString = "MASS SPECTROMETRY: Mass=3979.9; Method=Electrospray; Range=51-81;\n"
+				 +"Evidence={ECO:0000006|PubMed:16629414, ECO:0000006|PubMed:16629415};\n"
+				 ;
+		CcLineFormater formater  =new CcLineFormater();
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		String lines = formater.format(ccLineString);
 		CcLineObject obj = parser.parse(lines);
 		assertEquals(1, obj.ccs.size());
 		CcLineObject.CC cc = obj.ccs.get(0);

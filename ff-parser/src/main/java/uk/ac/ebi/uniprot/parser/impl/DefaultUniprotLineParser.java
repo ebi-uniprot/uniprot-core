@@ -85,29 +85,6 @@ public class DefaultUniprotLineParser<T, L extends Lexer, P extends Parser>
         return t;
     }
 
-    @Override
-    public T parseNoHeader(String s) {
-
-        ANTLRInputStream antlrInputStream = new ANTLRInputStream(s);
-        this.lexer.setInputStream(antlrInputStream);
-
-        CommonTokenStream commonTokenStream = new CommonTokenStream(this.lexer);
-        this.parser.setTokenStream(commonTokenStream);
-
-        return processWithParserNoHeader(this.parser, s);
-    }
-
-    private T processWithParserNoHeader(P parser, String s) {
-
-        if (parser instanceof CcLineParser) {
-            ((CcLineParser) parser).cc_lines();
-        } else {
-            throw new RuntimeException("Parser's type : " + parser.getClass() +
-                    " is not recognized or not supported for No header parse.");
-        }
-
-        return listener.getObject();
-    }
 
     protected T processWithParser(P parser, String originString) {
 

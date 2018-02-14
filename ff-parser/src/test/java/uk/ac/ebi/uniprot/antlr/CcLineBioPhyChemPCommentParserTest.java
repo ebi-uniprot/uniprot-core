@@ -343,4 +343,59 @@ public class CcLineBioPhyChemPCommentParserTest {
 			CcLineObject obj = parser.parse(lines);
 			assertNotNull(obj);
 	}
+	
+	@Test
+	public void testNoHeaderWithEvidences() {
+		String linesNoHeader = "BIOPHYSICOCHEMICAL PROPERTIES:\n"
+				+"Absorption:\n"
+				+"Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
+				+"Note=The above maximum is for the oxidized form. Shows a maximal\n"
+				+"peak at 330 nm in the reduced form. These absorption peaks are\n"
+				+"for the tryptophylquinone cofactor. {ECO:0000303|Ref.6,\n"
+				+"ECO:0000269|PubMed:10433554};\n"
+				+"Kinetic parameters:\n"
+				+"KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n"
+				+"KM=688 uM for pyridoxal {ECO:0000313|EMBL:BAG16761.1,\n"
+				+"ECO:0000269|PubMed:10433554};\n"
+				+"Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};\n"
+				+"Note=The enzyme is substrate inhibited at high substrate\n"
+				+"concentrations (Ki=1.08 mM for tyramine).\n"
+				+"{ECO:0000256|HAMAP-Rule:MF_00205};\n"
+				;
+		CcLineFormater formater  =new CcLineFormater();
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		String lines = formater.format(linesNoHeader);
+		CcLineObject obj =parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof BiophysicochemicalProperties);
+		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
+		assertEquals("465 nm", bp.bsorption_abs.value);
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.bsorption_abs.evidences.get(0));
+		assertFalse(bp.bsorption_abs_approximate);
+		assertEquals(1, bp.bsorption_note.size());
+		assertEquals("The above maximum is for the oxidized form. Shows a maximal"
+			      +" peak at 330 nm in the reduced form. These absorption peaks are"
+			      +" for the tryptophylquinone cofactor.", bp.bsorption_note.get(0).value);
+		assertEquals("ECO:0000303|Ref.6", bp.bsorption_note.get(0).evidences.get(0));
+		assertEquals("ECO:0000269|PubMed:10433554", bp.bsorption_note.get(0).evidences.get(1));
+		assertEquals(2, bp.kms.size());
+		
+		assertEquals("5.4 uM for tyramine", bp.kms.get(0).value);
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.kms.get(0).evidences.get(0));
+		
+		assertEquals("688 uM for pyridoxal", bp.kms.get(1).value);
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.kms.get(1).evidences.get(0));
+		assertEquals("ECO:0000269|PubMed:10433554", bp.kms.get(1).evidences.get(1));
+		
+		assertEquals(1, bp.vmaxs.size());
+		
+		assertEquals("17 umol/min/mg enzyme", bp.vmaxs.get(0).value);
+		assertEquals("ECO:0000313|PDB:3OW2", bp.vmaxs.get(0).evidences.get(0));
+		
+		assertEquals("The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).", bp.kp_note.get(0).value);
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.kp_note.get(0).evidences.get(0));
+		
+	}
+
 }

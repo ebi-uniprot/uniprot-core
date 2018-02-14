@@ -9,6 +9,4 @@ package uk.ac.ebi.uniprot.parser;
  */
 public interface UniprotLineParser<T> {
     T parse(String s);
-
-    T parseNoHeader(String s);
 }

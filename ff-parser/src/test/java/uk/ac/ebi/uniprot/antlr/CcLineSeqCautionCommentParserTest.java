@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.SequenceCautionObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.SequenceCautionType;
@@ -110,6 +111,26 @@ public class CcLineSeqCautionCommentParserTest {
 				+"CC       Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};\n"
 				;
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
+		CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
+		assertEquals(1, sc.sequenceCautionObjects.size());
+		verify(sc.sequenceCautionObjects.get(0), "CAA57511.1", 3, 421, SequenceCautionType.Frameshift , "The predicted gene." );
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", obj.evidenceInfo.evidences.get(sc.sequenceCautionObjects.get(0)).get(0));
+		assertEquals("ECO:0000313|Ensembl:ENSP00000409133", obj.evidenceInfo.evidences.get(sc.sequenceCautionObjects.get(0)).get(1));
+		
+	}
+	
+	@Test
+	public void testNoHeader() {
+		String ccLineString = "SEQUENCE CAUTION:\n"
+				+"Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};\n"
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineFormater formater  =new CcLineFormater();
+		String lines = formater.format(ccLineString);
 		CcLineObject obj = parser.parse(lines);
 		assertEquals(1, obj.ccs.size());
 		CcLineObject.CC cc = obj.ccs.get(0);

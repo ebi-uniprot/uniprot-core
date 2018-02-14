@@ -1,12 +1,14 @@
 package uk.ac.ebi.uniprot.antlr;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.RnaEditingLocationEnum;
 
@@ -122,5 +124,18 @@ public class CcLineRnaEdCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof CcLineObject.RnaEditing);
 	
+	}
+	
+	@Test
+	public void testNoHeader2() {
+		String ccLineString = "RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687}"
+                +", 1052 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687};"
+                + " Note=The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense codons.;";
+		
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(ccLineString);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
 	}
 }

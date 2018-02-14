@@ -1,12 +1,14 @@
 package uk.ac.ebi.uniprot.antlr;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.InteractionObject;
 
@@ -216,4 +218,32 @@ public class CcLineInteractionCommentParserTest {
 		verify(ir.interactions.get(0), "EBI-491549", "EBI-7286259", "BCR/ABL fusion", "A1Z199", false, false, 2);
 
 	}
+	@Test
+	public void testNoHeader() {
+		String ccLineString =("INTERACTION:\n" +
+				"Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n" +
+				"Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n" +
+				"Q9VYI0:fne; NbExp=1; IntAct=EBI-123485, EBI-126770;");
+		
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(ccLineString);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
+
+	@Test
+	public void testNoHeader2() {
+		String ccLineString =("INTERACTION:\n" +
+				"Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
+				"O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +
+				"Q6ZWQ9:Myl12a (xeno); NbExp=3; IntAct=EBI-372428, EBI-8034418;");
+		
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(ccLineString);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
+
 }

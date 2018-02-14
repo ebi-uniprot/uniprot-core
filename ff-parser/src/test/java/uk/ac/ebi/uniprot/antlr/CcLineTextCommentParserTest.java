@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.EvidencedString;
 
@@ -50,35 +51,6 @@ public class CcLineTextCommentParserTest {
 		assertEquals(text, vStr.value);
 		assertEquals(evidences, vStr.evidences);
 	}
-	@Test
-	public void testCcWithHeader() {
-		String lines = "-!- FUNCTION: This enzyme is necessary for target cell lysis in cell-mediated immune responses. It cleaves after Lys or Arg. May be involved in apoptosis.\n"
-				+"-!- CAUTION: Exons 1a and 1b of the sequence reported in PubMed:17180578 are of human origin, however exon 2 shows strong similarity to the rat sequence.\n"
-				;
-		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
-		CcLineObject obj = parser.parseNoHeader(lines);
-		assertEquals(2, obj.ccs.size());
-		CcLineObject.CC cc = obj.ccs.get(0);
-		assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
-		
-		assertTrue(cc.object instanceof CcLineObject.FreeText);
-		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
-		assertEquals(1, texts.texts.size());
-		verify(texts.texts.get(0), "This enzyme is necessary for target cell lysis in cell-mediated immune responses. "+
-			    "It cleaves after Lys or Arg. " +
-			  	"May be involved in apoptosis", Collections.emptyList());
-		
-		 cc = obj.ccs.get(1);
-			assertEquals(CcLineObject.CCTopicEnum.CAUTION, cc.topic);
-			assertTrue(cc.object instanceof CcLineObject.FreeText);
-			 texts = (CcLineObject.FreeText) cc.object;
-			assertEquals(1, texts.texts.size());
-			verify(texts.texts.get(0), "Exons 1a and 1b of the sequence reported in " +
-				      "PubMed:17180578 are of human origin, however exon 2 shows strong " +
-				      "similarity to the rat sequence", Collections.emptyList());
-	
-	}
-	
 	@Test
 	public void testDotInSide() {
 		String lines = "CC   -!- SUBUNIT: Interacts with daf-16 and sir-2.1.\n"
@@ -285,5 +257,105 @@ public class CcLineTextCommentParserTest {
 		verify(texts.texts.get(0), "Contains 1 MIT domain",
 				Arrays.asList(new String[]{"ECO:0000255|HAMAP-Rule:MF_03021" }));
 	}
+	@Test
+	public void testNoHeaderWithEvidence() {
+		String ccLineString = "FUNCTION: Transfers the 4'-phosphopantetheine moiety from coenzyme\n"
+				+"A to a Ser of acyl-carrier protein. {ECO:0000006|PubMed:20858735, ECO:0000006}.\n"
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineFormater formater  =new CcLineFormater();
+		String lines = formater.format(ccLineString);
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+		
+		assertTrue(cc.object instanceof CcLineObject.FreeText);
+		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
+		assertEquals(1, texts.texts.size());
+		verify(texts.texts.get(0), "Transfers the 4'-phosphopantetheine moiety from coenzyme A to a Ser of acyl-carrier protein",
+				Arrays.asList(new String[]{"ECO:0000006|PubMed:20858735","ECO:0000006" }));
+	}
+	@Test
+	public void testNoHeader2() {
+		
+		String ccLineString = "CATALYTIC ACTIVITY: Hydrolysis of proteins to small peptides in\n"
+				+"the presence of ATP and magnesium. Alpha-casein is the usual test\n"
+				+"substrate. In the absence of ATP, only oligopeptides shorter than\n"
+				+"five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;\n"
+				+"and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu-\n"
+				+"and -Tyr-|-Trp bonds also occurs).\n"
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineFormater formater  =new CcLineFormater();
+		String lines = formater.format(ccLineString);
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
+		
+		assertTrue(cc.object instanceof CcLineObject.FreeText);
+		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
+		assertEquals(1, texts.texts.size());
+		verify(texts.texts.get(0), "Hydrolysis of proteins to small peptides in " +
+			      "the presence of ATP and magnesium. " +
+				   	"Alpha-casein is the usual test substrate. "+
+				  	"In the absence of ATP, only oligopeptides shorter than " +
+				      "five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec; " +
+				      "and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu- " +
+				      "and -Tyr-|-Trp bonds also occurs)",
+				Collections.emptyList());
+	}
+	@Test
+	public void testNoHeader3() {
+		String ccLineString = "SIMILARITY: Contains 1 MIT domain. {ECO:0000255|HAMAP-\n"
+				+"Rule:MF_03021}."
+				;
+		CcLineFormater formater  =new CcLineFormater();
+		String lines = formater.format(ccLineString);
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertEquals(CcLineObject.CCTopicEnum.SIMILARITY, cc.topic);
+		
+		assertTrue(cc.object instanceof CcLineObject.FreeText);
+		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
+		assertEquals(1, texts.texts.size());
+		verify(texts.texts.get(0), "Contains 1 MIT domain",
+				Arrays.asList(new String[]{"ECO:0000255|HAMAP-Rule:MF_03021" }));
+	}
+	
+	@Test
+	public void testCcWithHeader() {
+		String ccLineString = "FUNCTION: This enzyme is necessary for target cell lysis in cell-mediated immune responses. It cleaves after Lys or Arg. May be involved in apoptosis.\n"
+				+"CAUTION: Exons 1a and 1b of the sequence reported in PubMed:17180578 are of human origin, however exon 2 shows strong similarity to the rat sequence.\n"
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineFormater formater  =new CcLineFormater();
+		String lines = formater.format(ccLineString);
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(2, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertEquals(CcLineObject.CCTopicEnum.FUNCTION, cc.topic);
+		
+		assertTrue(cc.object instanceof CcLineObject.FreeText);
+		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
+		assertEquals(1, texts.texts.size());
+		verify(texts.texts.get(0), "This enzyme is necessary for target cell lysis in cell-mediated immune responses. "+
+			    "It cleaves after Lys or Arg. " +
+			  	"May be involved in apoptosis", Collections.emptyList());
+		
+		 cc = obj.ccs.get(1);
+			assertEquals(CcLineObject.CCTopicEnum.CAUTION, cc.topic);
+			assertTrue(cc.object instanceof CcLineObject.FreeText);
+			 texts = (CcLineObject.FreeText) cc.object;
+			assertEquals(1, texts.texts.size());
+			verify(texts.texts.get(0), "Exons 1a and 1b of the sequence reported in " +
+				      "PubMed:17180578 are of human origin, however exon 2 shows strong " +
+				      "similarity to the rat sequence", Collections.emptyList());
+	
+	}
+	
 }
 

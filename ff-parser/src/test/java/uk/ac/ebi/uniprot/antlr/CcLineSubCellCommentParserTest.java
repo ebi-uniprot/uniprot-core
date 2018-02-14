@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.LocationFlagEnum;
 
@@ -297,6 +298,32 @@ public class CcLineSubCellCommentParserTest {
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 		CcLineObject obj = parser.parse(lines);
 		assertEquals(7, obj.ccs.size());
+	}
+	
+	@Test
+	public void testNoHeader() {
+		String ccLineString = "SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n"
+				+"{ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
+				+"Note=Loosely associated with the inner membrane.\n"
+				+"{ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}."
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineFormater formater  =new CcLineFormater();
+		String lines = formater.format(ccLineString);
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
+		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
+		assertEquals(1, sl.locations.size());
+		
+		verify(sl.locations.get(0).subcellular_location, "Mitochondrion intermembrane space", null );
+		//verify(sl.locations.get(1).subcellular_location, "Secreted",  LocationFlagEnum.By_similarity );
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellular_location).get(0) );
+		assertEquals("ECO:0000269|PubMed:10433554", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellular_location).get(1) );
+		assertEquals("Loosely associated with the inner membrane", sl.note.get(0).value );
+		assertEquals("ECO:0000303|Ref.6", sl.note.get(0).evidences.get(0) );
+		assertEquals("ECO:0000313|PDB:3OW2", sl.note.get(0).evidences.get(1) );
 	}
 	
 }

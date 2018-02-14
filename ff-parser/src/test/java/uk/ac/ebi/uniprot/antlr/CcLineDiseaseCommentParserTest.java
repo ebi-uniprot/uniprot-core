@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 
 public class CcLineDiseaseCommentParserTest {
@@ -73,5 +74,86 @@ public class CcLineDiseaseCommentParserTest {
 			assertEquals("ECO:0000303|Ref.6", obj.evidenceInfo.evidences.get(disease.description).get(2));
 	}
 	
+	@Test
+	public void testNoHeaderWithEvidence() {
+
+		String ccLineStringEvidence=
+				"DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
+						+"characterized by malignant lesions arising from the inner wall of\n"
+						+"the large intestine (the colon) and the rectum. Genetic\n"
+						+"alterations are often associated with progression from\n"
+						+"premalignant lesion (adenoma) to invasive adenocarcinoma. Risk\n"
+						+"factors for cancer of the colon and rectum include colon polyps,\n"
+						+"long-standing ulcerative colitis, and genetic family history.\n"
+						+"{ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554,\n"
+						+"ECO:0000303|Ref.6}. Note=The gene represented in this entry is\n"
+						+"involved in disease pathogenesis. {ECO:0000303|Ref.6,\n"
+						+"ECO:0000313|PDB:3OW2, ECO:0000256|HAMAP-Rule:MF_00205}.\n"
+						;
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(ccLineStringEvidence);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
 	
+	@Test
+	public void testNoHeader2() {
+
+		String ccLineStringEvidence=
+				("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
+						"characterized by malignant lesions arising from the inner wall of " +
+						"the large intestine (the colon) and the rectum. Genetic " +
+						"alterations are often associated with progression from " +
+						"premalignant lesion (adenoma) to invasive adenocarcinoma. Risk " +
+						"factors for cancer of the colon and rectum include colon polyps, " +
+						"long-standing ulcerative colitis, and genetic family history. " +
+						"Note=The gene represented in this " +
+						"entry is involved in disease pathogenesis. Another note.");
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(ccLineStringEvidence);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
+	@Test
+	public void testNoHeader3() {
+		String ccLineStringEvidence =("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
+				"characterized by malignant lesions arising from the inner wall of " +
+				"the large intestine (the colon) and the rectum. Genetic " +
+				"alterations are often associated with progression from " +
+				"premalignant lesion (adenoma) to invasive adenocarcinoma. Risk " +
+				"factors for cancer of the colon and rectum include colon polyps, " +
+				"long-standing ulcerative colitis, and genetic family history. " +
+				"{ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6, " +
+				"ECO:0000313|EMBL:BAG16761.1}. Note=The gene represented in this " +
+				"entry is involved in disease pathogenesis. {ECO:0000256|HAMAP-" +
+				"Rule:MF_00205, ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. Another" +
+				" note. {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6}.");
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(ccLineStringEvidence);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
+	
+	@Test
+	public void testNoHeader4() {
+		String ccLineStringEvidence = "DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome (JP/HHT) [MIM:175050]:"
+	              + " JP/HHT syndrome phenotype consists of the coexistence of juvenile polyposis (JIP) and hereditary"
+	              + " hemorrhagic telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are autosomal"
+	              + " dominant disorders with distinct and non-overlapping clinical features. The former, an inherited"
+	              + " gastrointestinal malignancy predisposition, is caused by mutations in SMAD4 or BMPR1A, and the latter"
+	              + " is a vascular malformation disorder caused by mutations in ENG or ACVRL1. All four genes encode proteins"
+	              + " involved in the transforming-growth-factor-signaling pathway. Although there are reports of patients and"
+	              + " families with phenotypes of both disorders combined, the genetic etiology of this association is unknown. {ECO:0000269|PubMed:15031030}."
+	              + " Note=The disease is caused by mutations affecting the gene represented in this entry.";
+		
+			CcLineFormater formater  =new CcLineFormater();
+			UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+			String lines = formater.format(ccLineStringEvidence);
+			CcLineObject obj = parser.parse(lines);
+			assertNotNull(obj);
+	}
+
 }
