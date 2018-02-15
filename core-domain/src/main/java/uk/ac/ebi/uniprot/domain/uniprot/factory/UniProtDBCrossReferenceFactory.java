@@ -18,8 +18,13 @@ public enum UniProtDBCrossReferenceFactory {
     }
     public UniProtDBCrossReference createUniProtDBCrossReference(DatabaseType type,
             String id, String description, String thirdAttribute){
-        return createUniProtDBCrossReference(type, id, description, thirdAttribute, null, null); 
+        return createUniProtDBCrossReference(type, id, description, thirdAttribute, null); 
     }
+    public UniProtDBCrossReference createUniProtDBCrossReference(DatabaseType type,
+            String id, String description, String thirdAttribute, String fourthAttribute){
+        return createUniProtDBCrossReference(type, id, description, thirdAttribute, fourthAttribute, null); 
+    }
+    
     
     public UniProtDBCrossReference createUniProtDBCrossReference(DatabaseType type,
             String id, String description, String thirdAttribute,
