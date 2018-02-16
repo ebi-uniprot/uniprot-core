@@ -62,7 +62,8 @@ public enum InternalLineType {
 // taxon
     PROSITE(28),
 // PROSITE special case
-    UP(29);
+    UP(29),
+    ZD(23);
   //Complete proteome
 
 
