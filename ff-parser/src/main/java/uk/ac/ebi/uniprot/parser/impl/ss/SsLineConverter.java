@@ -5,8 +5,10 @@ package uk.ac.ebi.uniprot.parser.impl.ss;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceCode;
@@ -16,19 +18,19 @@ import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 
 
-public class SsLineConverter implements Converter<SsLineObject, UniProtSsLineObject> {
+public class SsLineConverter implements Converter<SsLineObject, InternalSection> {
 	private final UniProtFactory factory = UniProtFactory.INSTANCE;
 	@Override
-	public UniProtSsLineObject convert(SsLineObject f) {
-		
-		UniProtSsLineObject uniObject = new UniProtSsLineObject();
+	public InternalSection convert(SsLineObject f) {
+	
 		if(f ==null)
-			return uniObject;
+			return null;
 		List<InternalLine> internalLines = new ArrayList<>();
 		List<SourceLine> sourceLines = new ArrayList<>();
+		List<EvidenceLine> evidenceLines = new ArrayList<>();
 
 		for(SsLineObject.EvLine ev:f.ssEVLines){
-			uniObject.evidences.add(convert(ev));
+			evidenceLines.add(convert(ev));
 		}
 
 		for(SsLineObject.SsLine ia:f.ssIALines){
@@ -37,9 +39,7 @@ public class SsLineConverter implements Converter<SsLineObject, UniProtSsLineObj
 		for(String source:f.ssSourceLines){
 			sourceLines.add(factory.createSourceLine(source));
 		}
-		uniObject.internalLines =internalLines;
-		uniObject.sourceLines = sourceLines;
-		return uniObject;
+		return factory.createInternalSection(internalLines, evidenceLines, sourceLines);
 	}
 	private InternalLine convert(SsLineObject.SsLine ia){
 		return factory.createInternalLine(convertILType(ia.topic), ia.text);
@@ -107,13 +107,15 @@ public class SsLineConverter implements Converter<SsLineObject, UniProtSsLineObj
 		}
 		 throw new IllegalArgumentException("unknown internal line type " + type);
 	}
-	private Evidence convert(SsLineObject.EvLine e){
+	private EvidenceLine convert(SsLineObject.EvLine e){
 		EvidenceType evidenceType = EvidenceType.typeOf(e.db);
 		EvidenceCode evidenceCode = EvidenceCode.typeOf(e.id);
 		String attr = e.attr_1;
 		if("-".equals(attr))
 			attr ="";
-		return EvidenceFactory.INSTANCE.createEvidence(evidenceType, evidenceCode, attr, e.date);
+	
+		Evidence evidence = EvidenceFactory.INSTANCE.createEvidence(evidenceType, evidenceCode, attr);
+		return factory.createEvidenceLine(evidence,  e.date, e.attr_2);
 	
 	}
 	

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
@@ -35,7 +37,6 @@ import uk.ac.ebi.uniprot.parser.impl.ox.OxLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.pe.PeLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.sq.SqLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ss.SsLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.ss.UniProtSsLineObject;
 
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
@@ -113,11 +114,17 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 		}
 		builder.uniProtReferences(citations);
 		
-		UniProtSsLineObject usl = ssLineConverter.convert(f.ss);
+		InternalSection usl = ssLineConverter.convert(f.ss);
+	
 		if(drObjects.ssProsites !=null){
-			usl.internalLines.addAll(drObjects.ssProsites);
+			List<InternalLine> internalLines = new ArrayList<>();
+			internalLines.addAll(drObjects.ssProsites);
+			internalLines.addAll(usl.getInternalLines());
+			builder.internalSection( UniProtFactory.INSTANCE.createInternalSection(internalLines, usl.getEvidenceLines(), usl.getSourceLines()));
+		}else {
+			builder.internalSection(usl);
 		}
-		builder.internalSection( UniProtFactory.INSTANCE.createInternalSection(usl.internalLines, usl.sourceLines));
+
 		
 	//	entry.setEvidences(buildEvidences(ssEvidences));
 		return builder.build();

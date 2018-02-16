@@ -36,7 +36,7 @@ public class InternalSectionImplTest {
         internalLines.add(InternalSectionImpl.createInternalLine(InternalLineType.CX, "value1"));
         internalLines.add(InternalSectionImpl.createInternalLine(InternalLineType.EV, "value2"));
         sourceLines.add(InternalSectionImpl.createSourceLine("some value"));
-        InternalSection is = new InternalSectionImpl(internalLines, sourceLines);
+        InternalSection is = new InternalSectionImpl(internalLines, null, sourceLines);
         assertEquals(internalLines, is.getInternalLines());
         assertEquals(sourceLines, is.getSourceLines());
     }

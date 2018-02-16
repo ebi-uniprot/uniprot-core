@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
-import uk.ac.ebi.uniprot.ffwriter.line.EvidenceLine;
+import uk.ac.ebi.uniprot.ffwriter.line.LineBuilderHelper;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant;
@@ -41,7 +41,7 @@ public abstract class FFLineBuilderAbstr <T> implements FFLineBuilder<T>, FFLine
 	protected StringBuilder addEvidences(StringBuilder sb, HasEvidences he, boolean showEvidence){
 		if(!showEvidence)
 			return sb;
-		sb.append(EvidenceLine.export(he.getEvidences()));
+		sb.append(LineBuilderHelper.export(he.getEvidences()));
 		return sb;
 	
 	}

@@ -672,7 +672,7 @@ public class UniProtEntryBuilderTest {
         internalLines.add(UniProtFactory.INSTANCE.createInternalLine(InternalLineType.HA, "Val2"));
         List<SourceLine> sourceLines = new ArrayList<>();
         sourceLines.add(UniProtFactory.INSTANCE.createSourceLine("source1"));
-        return UniProtFactory.INSTANCE.createInternalSection(internalLines, sourceLines);
+        return UniProtFactory.INSTANCE.createInternalSection(internalLines, null, sourceLines);
     }
 
     @Test

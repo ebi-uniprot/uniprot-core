@@ -1,15 +1,16 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import static org.junit.Assert.*;
-import java.util.List;
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-import uk.ac.ebi.uniprot.parser.impl.ss.SsLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.ss.SsLineObject;
-import uk.ac.ebi.uniprot.parser.impl.ss.UniProtSsLineObject;
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
+import java.util.List;
+
+import org.junit.Test;
+
+import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
+import uk.ac.ebi.uniprot.parser.impl.ss.SsLineConverter;
+import uk.ac.ebi.uniprot.parser.impl.ss.SsLineObject;
 
 public class SsLineConverterTest {
 	private SsLineConverter converter = new SsLineConverter();
@@ -29,22 +30,28 @@ public class SsLineConverterTest {
 		ev2.id = "ECO:0000256";
 		ev2.db ="HAMAP-Rule";
 		ev2.attr_1 ="MF_01417";
-		ev2.attr_2 ="-";
+		ev2.attr_2 ="XAB";
 		ev2.date =  LocalDate.now();
 		obj.ssEVLines.add(ev2);
-		UniProtSsLineObject ssLineObj =converter.convert(obj);
-		List<Evidence> evidences = ssLineObj.evidences;
+		InternalSection is =converter.convert(obj);
+		List<EvidenceLine> evidences = is.getEvidenceLines();
 		assertEquals(2, evidences.size());
-		Evidence evidence1 =evidences.get(0);
-		Evidence evidence2 =evidences.get(1);
-		assertEquals("UP99", evidence1.getAttribute());
-		assertEquals("ECO:0000313|ProtImp:UP99", evidence1.getValue());
-		assertEquals("ProtImp", evidence1.getType().getValue());
-		assertEquals("ECO:0000313", evidence1.getEvidenceCode().getCodeValue());
+		EvidenceLine evidence1 =evidences.get(0);
+		EvidenceLine evidence2 =evidences.get(1);
+		assertEquals("UP99", evidence1.getEvidence().getAttribute());
+		assertEquals("ECO:0000313|ProtImp:UP99", evidence1.getEvidence().getValue());
+		assertEquals("ProtImp", evidence1.getEvidence().getType().getValue());
+		assertEquals("ECO:0000313", evidence1.getEvidence().getEvidenceCode().getCodeValue());
+		assertEquals(ev1.date, evidence1.getCreateDate());
+		assertEquals(ev1.attr_2, evidence1.getCurator());
 		
-		assertEquals("MF_01417", evidence2.getAttribute());
-		assertEquals("ECO:0000256|HAMAP-Rule:MF_01417", evidence2.getValue());
-		assertEquals("HAMAP-Rule", evidence2.getType().getValue());
-		assertEquals("ECO:0000256", evidence2.getEvidenceCode().getCodeValue());
+		
+		assertEquals("MF_01417", evidence2.getEvidence().getAttribute());
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_01417", evidence2.getEvidence().getValue());
+		assertEquals("HAMAP-Rule", evidence2.getEvidence().getType().getValue());
+		assertEquals("ECO:0000256", evidence2.getEvidence().getEvidenceCode().getCodeValue());
+		assertEquals(ev2.date, evidence2.getCreateDate());
+		assertEquals(ev2.attr_2, evidence2.getCurator());
+		
 	}
 }

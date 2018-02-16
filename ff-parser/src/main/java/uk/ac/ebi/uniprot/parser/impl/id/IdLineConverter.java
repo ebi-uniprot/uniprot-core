@@ -13,9 +13,9 @@ public class IdLineConverter implements Converter<IdLineObject, Map.Entry<UniPro
 
 	@Override
 	public Map.Entry<UniProtId, UniProtEntryType> convert(IdLineObject f) {
-		UniProtId id = UniProtFactory.INSTANCE.createUniProtId(f.entryName);
+		UniProtId id = UniProtFactory.INSTANCE.createUniProtId(f.getEntryName());
 		UniProtEntryType type = UniProtEntryType.TREMBL;
-		if(f.reviewed){
+		if(f.getReviewed()){
 			type =UniProtEntryType.SWISSPROT;
 		}
 		return new AbstractMap.SimpleEntry<>(id, type);

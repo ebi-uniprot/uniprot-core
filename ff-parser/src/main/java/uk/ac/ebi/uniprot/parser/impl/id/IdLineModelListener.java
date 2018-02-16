@@ -25,21 +25,21 @@ public class IdLineModelListener extends IdLineParserBaseListener implements Par
     @Override
     public void exitReview_status(@NotNull IdLineParser.Review_statusContext ctx) {
         if (ctx.REVIEW_STATUS_REVIEWED() != null) {
-            object.reviewed = true;
+            object.setReviewed( true);
         }
         if (ctx.REVIEW_STATUS_UNREVIEWED() != null) {
-            object.reviewed = false;
+            object.setReviewed( false);
         }
     }
 
     @Override
     public void exitEntry_name(@NotNull IdLineParser.Entry_nameContext ctx) {
-        object.entryName = ctx.getText();
+    		object.setEntryName(ctx.getText());
     }
 
     @Override
     public void exitLength(@NotNull IdLineParser.LengthContext ctx) {
-        object.sequenceLength = Integer.parseInt(ctx.getText());
+        object.setSequenceLength(Integer.parseInt(ctx.getText()));
     }
 
     public IdLineObject getObject() {

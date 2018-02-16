@@ -18,9 +18,9 @@ public class IdLineParserTest {
 	}
 
 	private void verify(IdLineObject obj, String id, boolean reviewed, int seqlen) {
-		assertEquals(id, obj.entryName);
-		assertEquals(reviewed, obj.reviewed);
-		assertEquals(seqlen, obj.sequenceLength);
+		assertEquals(id, obj.getEntryName());
+		assertEquals(reviewed, obj.getReviewed());
+		assertEquals(seqlen, obj.getSequenceLength());
 	}
 	@Test
 	public void testIsoform() {

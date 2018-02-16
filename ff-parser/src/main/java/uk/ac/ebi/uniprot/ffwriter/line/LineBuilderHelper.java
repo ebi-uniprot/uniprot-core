@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 
-public class EvidenceLine {
+public class LineBuilderHelper {
 //	static final private EvidenceIdComparator comparator =new EvidenceIdComparator();
 	 private final static String SEPARATOR1=",";
 	 private final static String SEPARATOR2=", ";

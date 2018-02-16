@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
@@ -15,6 +16,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceLineImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
@@ -81,14 +83,21 @@ public enum UniProtFactory {
         return new OrganelleImpl(geneEncodingType, value, evidences);
     }
 
-    public InternalSection createInternalSection(List<InternalLine> internalLines, List<SourceLine> sourceLines) {
-        return new InternalSectionImpl(internalLines, sourceLines);
+    public InternalSection createInternalSection(List<InternalLine> internalLines, 
+    		List<EvidenceLine> evidenceLines,
+    		List<SourceLine> sourceLines) {
+        return new InternalSectionImpl(internalLines, evidenceLines, sourceLines);
     }
 
     public InternalLine createInternalLine(InternalLineType type, String value) {
         return InternalSectionImpl.createInternalLine(type, value);
     }
 
+    public EvidenceLine createEvidenceLine(Evidence evidence, LocalDate createDate, String curator) {
+        return new EvidenceLineImpl( evidence, createDate,  curator ) ;
+    }
+
+    
     public SourceLine createSourceLine(String value) {
         return InternalSectionImpl.createSourceLine(value);
     }

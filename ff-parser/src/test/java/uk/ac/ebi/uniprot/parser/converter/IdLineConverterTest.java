@@ -17,9 +17,9 @@ public class IdLineConverterTest {
 	public void testConverter() throws Exception{
 		//ID   001R_FRG3G              Reviewed;         256 AA
 		IdLineObject idObj = new IdLineObject();
-		idObj.reviewed =true;
-		idObj.entryName  ="001R_FRG3G";
-		idObj.sequenceLength =256;
+		idObj.setReviewed(true);
+		idObj.setEntryName("001R_FRG3G");
+		idObj.setSequenceLength (256);
 		 Map.Entry<UniProtId, UniProtEntryType> uniObj = converter.convert(idObj);	
 		
 		 assertEquals("001R_FRG3G", uniObj.getKey().getValue() );
@@ -30,9 +30,10 @@ public class IdLineConverterTest {
 	public void testConverter2() throws Exception{
 		//ID   001R_FRG3G              Reviewed;         256 AA
 		IdLineObject idObj = new IdLineObject();
-		idObj.reviewed =false;
-		idObj.entryName  ="001R_FRG3G";
-		idObj.sequenceLength =256;
+		idObj.setReviewed(false);
+		idObj.setEntryName("001R_FRG3G");
+		idObj.setSequenceLength (256);
+		
 		 Map.Entry<UniProtId, UniProtEntryType> uniObj = converter.convert(idObj);	
 			
 		 assertEquals("001R_FRG3G", uniObj.getKey().getValue() );

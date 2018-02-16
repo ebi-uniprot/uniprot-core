@@ -90,13 +90,12 @@ public class DELineBuildTest {
 		doTest( deLine,  proteinDescription);
 
 	}
-	private List<Evidence> createEvidence(List<String> evIds){
-		 EvidenceFactory evFactory = UniProtFactory.INSTANCE.getEvidenceFactory();
-	return
-	evIds.stream().map(val -> evFactory.createFromEvidenceLine(val))
-	.collect(Collectors.toList());
-	
-}
+
+	private List<Evidence> createEvidence(List<String> evIds) {
+		EvidenceFactory evFactory = UniProtFactory.INSTANCE.getEvidenceFactory();
+		return evIds.stream().map(val -> evFactory.createFromEvidenceLine(val)).collect(Collectors.toList());
+
+	}
 
 	@Test
 	public void test2() {

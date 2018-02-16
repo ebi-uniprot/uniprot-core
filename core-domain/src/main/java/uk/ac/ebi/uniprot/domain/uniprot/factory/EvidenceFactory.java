@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import java.time.LocalDate;
-
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceType;
@@ -63,14 +61,14 @@ public enum EvidenceFactory {
             }
         }
 
-        return new EvidenceImpl(evidenceType, evidenceCode, attribute, LocalDate.now(), val);
+        return new EvidenceImpl(evidenceType, evidenceCode, attribute, val);
     }
 
     
     public Evidence createEvidence(EvidenceType evidenceType, EvidenceCode evidenceCode,
-            String attribute, LocalDate date){
+            String attribute){
     	return new EvidenceImpl( evidenceType,  evidenceCode,
-                 attribute,  date);
+                 attribute);
     }
     public EvidenceType convertToEvidenceType(EvidenceCode evidenceCode) {
         EvidenceType type = EvidenceType.NOT_SPECIFIED;

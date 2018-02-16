@@ -118,7 +118,7 @@ public class UniProtFactoryTest {
         internalLines.add(UniProtFactory.INSTANCE.createInternalLine(InternalLineType.HA, "Val2"));
         List<SourceLine> sourceLines = new ArrayList<>();
         sourceLines.add(UniProtFactory.INSTANCE.createSourceLine("source1"));
-        InternalSection internalSection = UniProtFactory.INSTANCE.createInternalSection(internalLines, sourceLines);
+        InternalSection internalSection = UniProtFactory.INSTANCE.createInternalSection(internalLines, null, sourceLines);
         assertEquals(internalLines, internalSection.getInternalLines());
         assertEquals(sourceLines, internalSection.getSourceLines());
     }

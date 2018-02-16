@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 public enum OrganismFactory {
 	INSTANCE;
 	private final static Pattern ORGANISM_PATTERN = Pattern
-			.compile("([a-zA-Z 0-9]+)((( \\()([a-zA-Z 0-9]+)(\\)))" + "(( \\()([a-zA-Z 0-9,]+)(\\)))?)?");
+			.compile("([a-zA-Z 0-9\\'\\-]+)((( \\()([a-zA-Z 0-9\\'\\-]+)(\\)))" + "(( \\()([a-zA-Z 0-9,\\'\\-]+)(\\)))?)?");
 
 	public Organism createOrganism(String scientificName) {
 		return createOrganism(scientificName, "");

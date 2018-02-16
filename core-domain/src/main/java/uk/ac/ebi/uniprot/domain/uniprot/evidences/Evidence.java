@@ -40,7 +40,6 @@ import java.time.LocalDate;
  * ...</font></pre>
  */
 public interface Evidence extends Comparable<Evidence> {
-	 LocalDate getDate();
 	 EvidenceType getType();
 	 EvidenceCode getEvidenceCode();
 	 String getAttribute();

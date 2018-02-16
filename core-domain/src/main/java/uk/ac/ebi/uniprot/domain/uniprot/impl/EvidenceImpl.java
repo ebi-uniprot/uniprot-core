@@ -15,27 +15,21 @@ public class EvidenceImpl implements Evidence {
     private final String value;
 
     private final String attribute;
-    private final LocalDate date;
-    
+
+
     public EvidenceImpl(EvidenceType evidenceType, EvidenceCode evidenceCode,
             String attribute){
-        this(evidenceType, evidenceCode, attribute, LocalDate.now());
-    }
-    public EvidenceImpl(EvidenceType evidenceType, EvidenceCode evidenceCode,
-            String attribute, LocalDate date){
         this.evidenceType = evidenceType;
         this.evidenceCode = evidenceCode;
         this.attribute = attribute;
-        this.date = date;
         value = null;
     }
     
     public EvidenceImpl(EvidenceType evidenceType, EvidenceCode evidenceCode,
-            String attribute, LocalDate date, String value){
+            String attribute, String value){
         this.evidenceType = evidenceType;
         this.evidenceCode = evidenceCode;
         this.attribute = attribute;
-        this.date = date;
         this.value =value;
     }
     
@@ -44,10 +38,6 @@ public class EvidenceImpl implements Evidence {
         return this.getValue().compareTo(o.getValue());
     }
 
-    @Override
-    public LocalDate getDate() {
-       return date;
-    }
 
     @Override
     public EvidenceType getType() {
