@@ -62,7 +62,7 @@ NEW_LINE: '\n'     ;
 
 CC_COPY_RIGHT:
         'CC   -----------------------------------------------------------------------' NEW_LINE
-        'CC   Copyrighted by the UniProt Consortium, see http://www.uniprot.org/terms' NEW_LINE
+        'CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms' NEW_LINE
         'CC   Distributed under the Creative Commons Attribution-NoDerivs License'     NEW_LINE
         'CC   -----------------------------------------------------------------------' NEW_LINE
         ;

@@ -11,6 +11,7 @@ import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
 
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 
 public class OHLineBuilder extends FFLineBuilderAbstr< List<OrganismHost> >
 	implements FFLineBuilder<List<OrganismHost> > {

@@ -20,10 +20,10 @@ public class CitationXrefsBuilderTest {
         xrefs.add(xref);
         CitationXrefs citationXrefs = CitationXrefsBuilder.newInstance().createCitationXrefs(xrefs);
         assertEquals(1, citationXrefs.getAllXrefs().size());
-        Optional<CitationXref> pubmed = citationXrefs.hasXref(CitationXrefType.PUBMED);
+        Optional<CitationXref> pubmed = citationXrefs.getTyped(CitationXrefType.PUBMED);
         assertTrue(pubmed.isPresent());
-        assertFalse(citationXrefs.hasXref(CitationXrefType.AGRICOLA).isPresent());
-        assertFalse(citationXrefs.hasXref(CitationXrefType.DOI).isPresent());
+        assertFalse(citationXrefs.getTyped(CitationXrefType.AGRICOLA).isPresent());
+        assertFalse(citationXrefs.getTyped(CitationXrefType.DOI).isPresent());
         assertEquals(xref, pubmed.get());
     }
     @Test
@@ -37,12 +37,12 @@ public class CitationXrefsBuilderTest {
         xrefs.add(doi);
         CitationXrefs citationXrefs = CitationXrefsBuilder.newInstance().createCitationXrefs(xrefs);
         assertEquals(3, citationXrefs.getAllXrefs().size());
-        assertTrue(citationXrefs.hasXref(CitationXrefType.PUBMED).isPresent());
-        assertTrue(citationXrefs.hasXref(CitationXrefType.AGRICOLA).isPresent());
-        assertTrue(citationXrefs.hasXref(CitationXrefType.DOI).isPresent());
-        assertEquals(pubmed, citationXrefs.hasXref(CitationXrefType.PUBMED).get());
-        assertEquals(agricola, citationXrefs.hasXref(CitationXrefType.AGRICOLA).get());
-        assertEquals(doi, citationXrefs.hasXref(CitationXrefType.DOI).get());
+        assertTrue(citationXrefs.getTyped(CitationXrefType.PUBMED).isPresent());
+        assertTrue(citationXrefs.getTyped(CitationXrefType.AGRICOLA).isPresent());
+        assertTrue(citationXrefs.getTyped(CitationXrefType.DOI).isPresent());
+        assertEquals(pubmed, citationXrefs.getTyped(CitationXrefType.PUBMED).get());
+        assertEquals(agricola, citationXrefs.getTyped(CitationXrefType.AGRICOLA).get());
+        assertEquals(doi, citationXrefs.getTyped(CitationXrefType.DOI).get());
     }
 
     @Test

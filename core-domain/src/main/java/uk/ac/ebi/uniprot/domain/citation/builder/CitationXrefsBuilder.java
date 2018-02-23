@@ -37,7 +37,7 @@ public class CitationXrefsBuilder {
         }
 
         @Override
-        public Optional<CitationXref> hasXref(CitationXrefType type) {
+        public Optional<CitationXref> getTyped(CitationXrefType type) {
             return xrefs.stream().filter(xref -> xref.getXrefType() == type)
                     .findAny();
         }

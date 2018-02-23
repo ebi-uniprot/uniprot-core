@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
 import uk.ac.ebi.uniprot.parser.impl.id.IdLineObject;
 
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 
 public class IDLineBuilder extends FFLineBuilderAbstr<IdLineObject> implements
 		FFLineBuilder<IdLineObject> {

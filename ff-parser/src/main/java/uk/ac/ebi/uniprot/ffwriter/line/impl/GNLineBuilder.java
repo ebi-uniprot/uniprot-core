@@ -11,6 +11,8 @@ import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineBuilder;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
 
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+
 public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>> implements FFLineBuilder<List<Gene>> {
 	private static final String ORF_NAMES = "ORFNames=";
 	private static final String ORDERED_LOCUS_NAMES = "OrderedLocusNames=";

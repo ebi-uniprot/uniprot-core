@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
 
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+
 public class OCLineBuilder extends FFLineBuilderAbstr< List<TaxonName> > implements FFLineBuilder< List<TaxonName> > {
 	private static final String UNCLASSIFIED = "unclassified";
 	

@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 
 public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>> {
 	private final static String prefix = "**EV ";

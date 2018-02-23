@@ -6,19 +6,19 @@ package uk.ac.ebi.uniprot.domain.uniprot;
  *
  */
 public enum ReferenceCommentType {
-
+	STRAIN("STRAIN"),
     PLASMID("PLASMID"),
-	TISSUE("TISSUE"),
-	TRANSPOSON("TRANSPOSON"),
-	STRAIN("STRAIN");
+    TRANSPOSON("TRANSPOSON"),
+	TISSUE("TISSUE");
 
     private String value;
-
+    
     private ReferenceCommentType(String type){
         this.value = type;
+        
     }
 
-    private String getValue() {
+    public String getValue() {
 		return value;
 	}
 
@@ -28,6 +28,6 @@ public enum ReferenceCommentType {
 				return type;
 			}
 		}
-		throw new IllegalArgumentException("The SampleSource type " + value + " doesn't exist");
+		throw new IllegalArgumentException("The ReferenceComment type " + value + " doesn't exist");
 	}
 }

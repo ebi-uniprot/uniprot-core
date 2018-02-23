@@ -8,11 +8,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 import uk.ac.ebi.uniprot.ffwriter.line.LineBuilderHelper;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
 
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 
-public abstract class FFLineBuilderAbstr <T> implements FFLineBuilder<T>, FFLineConstant {
+public abstract class FFLineBuilderAbstr <T> implements FFLineBuilder<T> {
 	protected abstract FFLine buildLine(T f, boolean showEvidence);
 	final protected  DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy",  Locale.ENGLISH);
 	

@@ -10,6 +10,8 @@ import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+
 public class KWLineBuilder extends FFLineBuilderAbstr<List<Keyword> > implements FFLineBuilder< List<Keyword> > {
 
 	public KWLineBuilder(){

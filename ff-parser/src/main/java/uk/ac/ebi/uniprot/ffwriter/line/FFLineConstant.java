@@ -1,24 +1,24 @@
 package uk.ac.ebi.uniprot.ffwriter.line;
 
-public interface FFLineConstant {
-	final public  String UNIPROT_SWISSPROT = "UniProtKB/Swiss-Prot";
-	final public  String UNIPROT_TREMBL = "UniProtKB/TrEMBL";
-	final public  String UNIPROT = "UniProtKB";
-	final public  String STOP = ".";
-	final public  String COMA = ",";
-	public static  String SEMI_COMA = ";";
-	public static  String SPACE = " ";
-	public static  String EQUAL_SIGN = "=";
-	final public  String SEPARATOR = SPACE;
-	final public  String DASH = "-";
-	final public  String SEPARATOR_SEMICOMA ="; ";
-	final public  String SEPARATOR_COMA =", ";
-	final public  String SEPARATOR_AND =" and ";
-	final public  String SEPARATOR__CAP_AND =" AND ";
-	final public  String COLON =":";
+public final class FFLineConstant {
+	public static final String UNIPROT_SWISSPROT = "UniProtKB/Swiss-Prot";
+	public static final  String UNIPROT_TREMBL = "UniProtKB/TrEMBL";
+	public static final  String UNIPROT = "UniProtKB";
+	public static final  String STOP = ".";
+	public static final  String COMA = ",";
+	public static final  String SEMI_COMA = ";";
+	public static final  String SPACE = " ";
+	public static final  String EQUAL_SIGN = "=";
+	public static final  String SEPARATOR = SPACE;
+	public static final  String DASH = "-";
+	public static final  String SEPARATOR_SEMICOMA ="; ";
+	public static final  String SEPARATOR_COMA =", ";
+	public static final  String SEPARATOR_AND =" and ";
+	public static final  String SEPARATOR__CAP_AND =" AND ";
+	public static final  String COLON =":";
 	
-	public final  int LINE_LENGTH = 75;
-	public final  String DEFAUT_LINESPACE = "   ";
-	public final  String FEATURE_SPACE = "                                ";
-	public final  String[] SEPS =new String[] {SEPARATOR, DASH};
+	public static final  int LINE_LENGTH = 75;
+	public static final  String DEFAUT_LINESPACE = "   ";
+	public static final  String FEATURE_SPACE = "                                ";
+	public static final  String[] SEPS =new String[] {SEPARATOR, DASH};
 }

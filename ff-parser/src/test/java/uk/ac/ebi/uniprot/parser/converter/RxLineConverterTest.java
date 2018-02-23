@@ -24,11 +24,11 @@ public class RxLineConverterTest {
 		rxLine.rxs.add(rx2);
 		RxLineConverter converter = new RxLineConverter();
 		CitationXrefs cxrefs = converter.convert(rxLine);
-		TestCase.assertTrue(cxrefs.hasXref(CitationXrefType.PUBMED).isPresent());
-		TestCase.assertTrue(cxrefs.hasXref(CitationXrefType.DOI).isPresent());
-		TestCase.assertFalse(cxrefs.hasXref(CitationXrefType.AGRICOLA).isPresent());
-		TestCase.assertEquals("15626370",cxrefs.hasXref(CitationXrefType.PUBMED).get().getId());
-		TestCase.assertEquals("10.1016/j.toxicon.2004.10.011", cxrefs.hasXref(CitationXrefType.DOI).get().getId());
+		TestCase.assertTrue(cxrefs.getTyped(CitationXrefType.PUBMED).isPresent());
+		TestCase.assertTrue(cxrefs.getTyped(CitationXrefType.DOI).isPresent());
+		TestCase.assertFalse(cxrefs.getTyped(CitationXrefType.AGRICOLA).isPresent());
+		TestCase.assertEquals("15626370",cxrefs.getTyped(CitationXrefType.PUBMED).get().getId());
+		TestCase.assertEquals("10.1016/j.toxicon.2004.10.011", cxrefs.getTyped(CitationXrefType.DOI).get().getId());
 		
 	}
 }

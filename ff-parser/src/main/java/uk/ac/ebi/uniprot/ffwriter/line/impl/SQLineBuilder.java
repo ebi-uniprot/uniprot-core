@@ -7,7 +7,7 @@ import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-
+import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 
 public class SQLineBuilder extends FFLineBuilderAbstr<Sequence> {
 
