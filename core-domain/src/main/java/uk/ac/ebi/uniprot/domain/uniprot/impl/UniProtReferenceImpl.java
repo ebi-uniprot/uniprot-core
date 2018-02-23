@@ -50,7 +50,7 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
     }
 
     @Override
-    public List<ReferenceComment> getReferenceComments(ReferenceCommentType type) {
+    public List<ReferenceComment> getTypedReferenceComments(ReferenceCommentType type) {
         return this.referenceComments.stream()
                 .filter(val -> val.getType() == type)
                 .collect(Collectors.toList());
@@ -104,5 +104,10 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
             return false;
         return true;
     }
+
+	@Override
+	public List<ReferenceComment> getReferenceComments() {
+		return this.referenceComments;
+	}
 
 }

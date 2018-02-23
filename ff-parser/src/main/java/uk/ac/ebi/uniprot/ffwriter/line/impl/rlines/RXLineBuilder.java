@@ -18,6 +18,8 @@ public class RXLineBuilder implements RLine<CitationXrefs> {
 	@Override
 	public List<String> buildLine(CitationXrefs xrefs, boolean includeFFMarkup, boolean showEvidence) {
 		List<String> lines = new ArrayList<>();
+		if(xrefs ==null)
+			return lines;
 		StringBuilder line = new StringBuilder();
 		line = buildLine(lines, line, xrefs.getTyped(CitationXrefType.PUBMED), includeFFMarkup);
 		line = buildLine(lines, line, xrefs.getTyped(CitationXrefType.AGRICOLA), includeFFMarkup);

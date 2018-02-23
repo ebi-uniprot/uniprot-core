@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface UniProtReference<T extends Citation> extends HasEvidences {
     T getCitation();
-    public List<ReferenceComment> getReferenceComments(ReferenceCommentType type);
+    public List<ReferenceComment> getTypedReferenceComments(ReferenceCommentType type);
+    public List<ReferenceComment> getReferenceComments();
     public List<String> getReferencePositions();
     
 

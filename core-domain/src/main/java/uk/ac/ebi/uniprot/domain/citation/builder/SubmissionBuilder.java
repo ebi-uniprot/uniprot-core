@@ -11,6 +11,7 @@ import java.util.List;
 
 public final class SubmissionBuilder extends AbstractCitationBuilder<Submission> {
     public static SubmissionBuilder newInstance() {
+    	
         return new SubmissionBuilder();
     }
 

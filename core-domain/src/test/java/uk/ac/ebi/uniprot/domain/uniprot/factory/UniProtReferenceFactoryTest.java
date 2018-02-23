@@ -69,7 +69,7 @@ public class UniProtReferenceFactoryTest {
         UniProtReference<Submission> uniReference =UniProtReferenceFactory.INSTANCE.createUniProtReference(submission,
                 referencePositions, refComments, evidences);
         assertEquals(submission, uniReference.getCitation());
-        assertEquals(1, uniReference.getReferenceComments(ReferenceCommentType.STRAIN).size());
+        assertEquals(1, uniReference.getTypedReferenceComments(ReferenceCommentType.STRAIN).size());
         assertEquals(1, uniReference.getReferencePositions().size());
     }
 
