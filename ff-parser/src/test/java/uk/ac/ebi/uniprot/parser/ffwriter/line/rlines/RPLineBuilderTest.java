@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.ffwriter.line.impl.rlines.RPLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.rp.RPLineBuilder;
 
 
 public class RPLineBuilderTest {

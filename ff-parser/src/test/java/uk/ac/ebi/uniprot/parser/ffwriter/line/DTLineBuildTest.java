@@ -14,7 +14,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.DTLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.dt.DTLineBuilder;
 
 public class DTLineBuildTest {
 	UniProtFactory factory = UniProtFactory.INSTANCE;

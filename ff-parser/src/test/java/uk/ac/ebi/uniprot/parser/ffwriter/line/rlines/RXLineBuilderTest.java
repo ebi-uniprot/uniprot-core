@@ -11,7 +11,7 @@ import uk.ac.ebi.uniprot.domain.citation.CitationXref;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.builder.CitationXrefsBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.rlines.RXLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.rx.RXLineBuilder;
 
 
 

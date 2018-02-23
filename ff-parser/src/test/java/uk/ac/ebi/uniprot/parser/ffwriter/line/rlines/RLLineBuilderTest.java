@@ -18,7 +18,7 @@ import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.rlines.RLLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.rl.RLLineBuilder;
 
 public class RLLineBuilderTest {
 	private final RLLineBuilder builder = new RLLineBuilder();

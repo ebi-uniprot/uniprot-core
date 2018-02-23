@@ -20,7 +20,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.GNLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.gn.GNLineBuilder;
 
 
 

@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.ffwriter.line.impl.rlines.RGLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.rg.RGLineBuilder;
 
 public class RGLineBuilderTest {
 	private final RGLineBuilder builder = new RGLineBuilder();

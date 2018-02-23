@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.ffwriter.line.impl.rlines;
+package uk.ac.ebi.uniprot.parser.impl.rx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.citation.CitationXref;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
+import uk.ac.ebi.uniprot.ffwriter.line.RLine;
 
 import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 

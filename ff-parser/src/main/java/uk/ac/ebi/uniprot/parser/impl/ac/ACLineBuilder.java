@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.ffwriter.line.impl;
+package uk.ac.ebi.uniprot.parser.impl.ac;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
+import uk.ac.ebi.uniprot.ffwriter.line.impl.FFLineBuilderAbstr;
 
 import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.rlines.RALineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.ra.RALineBuilder;
 
 
 public class RALineBuilderTest {

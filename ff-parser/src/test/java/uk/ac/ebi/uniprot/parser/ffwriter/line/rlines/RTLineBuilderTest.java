@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.ffwriter.line.impl.rlines.RTLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.rt.RTLineBuilder;
 
 
 public class RTLineBuilderTest {

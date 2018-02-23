@@ -1,9 +1,10 @@
-package uk.ac.ebi.uniprot.ffwriter.line.impl.rlines;
+package uk.ac.ebi.uniprot.parser.impl.rg;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
+import uk.ac.ebi.uniprot.ffwriter.line.RLine;
 
 import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 

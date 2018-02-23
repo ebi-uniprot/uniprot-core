@@ -10,7 +10,7 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
 import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.OCLineBuilder;
+import uk.ac.ebi.uniprot.parser.impl.oc.OCLineBuilder;
 
 
 public class OCLineBuildTest {

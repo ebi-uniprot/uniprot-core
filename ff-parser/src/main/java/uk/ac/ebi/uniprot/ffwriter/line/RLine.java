@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.ffwriter.line.impl.rlines;
+package uk.ac.ebi.uniprot.ffwriter.line;
 
 import java.util.List;
 

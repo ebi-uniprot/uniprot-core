@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.ffwriter.line.impl.rlines;
+package uk.ac.ebi.uniprot.parser.impl.rp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
 import uk.ac.ebi.uniprot.ffwriter.line.LineType;
+import uk.ac.ebi.uniprot.ffwriter.line.RLine;
 
 import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 public class RPLineBuilder
