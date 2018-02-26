@@ -1,26 +1,25 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.builder;
 
+import java.util.List;
+
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.APEvent;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APNote;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoformNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformName;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSynonym;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.AlternativeProductsCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.APIsoformImpl;
-
+import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.AlternativeProductsCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-
-import java.util.List;
 
 public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
     private  List<APEvent> events;
     private  List<APIsoform> isoforms;
-    private  APNote note;
+    private  CommentNote note;
     
     public static APCommentBuilder newInstance(){
         return new APCommentBuilder();
@@ -38,7 +37,7 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
         this.isoforms = isoforms;
         return this;
     }
-    public APCommentBuilder note( APNote note){
+    public APCommentBuilder note( CommentNote note){
         this.note = note;
         return this;
     }
@@ -46,9 +45,7 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
     public static APEvent createEvent(String val) {
         return AlternativeProductsCommentImpl.createEvent(val);
     }
-    public static APNote createAPNote(List<EvidencedValue> texts) {
-        return AlternativeProductsCommentImpl.createAPNote(texts);
-    }
+
     public static IsoformSynonym createIsoformSynonym(String value, List<Evidence> evidences) {
         return APIsoformImpl.createIsoformSynonym(value, evidences);
     }
@@ -59,11 +56,15 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
     public static IsoformId createIsoformId(String value) {
         return APIsoformImpl.createIsoformId(value);
     }
-
+    
+    public static APIsoformNote createIsoformNote(List<EvidencedValue> texts) {
+		return APIsoformImpl.createAPIsoformNote(texts);
+	}
+  
     public static class APIsoformBuilder {
         private IsoformName name;
         private List<IsoformSynonym> synonyms;
-        private CommentNote note;
+        private APIsoformNote note;
         private List<IsoformId> isoformIds;
         private List<String> sequenceIds;
         private IsoformSequenceStatus isoformSequenceStatus;
@@ -87,7 +88,7 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
             return this;
         }
 
-        public APIsoformBuilder note(CommentNote note) {
+        public APIsoformBuilder note(APIsoformNote note) {
             this.note = note;
             return this;
         }

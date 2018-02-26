@@ -7,30 +7,31 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment {
-    private final String molecule;
+    private final Optional<String> molecule;
     private final List<SubcellularLocation>  subcellularLocations;
-    private final CommentNote note;
+    private final Optional<CommentNote> note;
     public SubcellularLocationCommentImpl(String molecule, 
             List<SubcellularLocation>  subcellularLocations, CommentNote note) {
         super(CommentType.SUBCELLULAR_LOCATION);
-        this.molecule =molecule;
+        this.molecule = ((molecule ==null )|| molecule.isEmpty())? Optional.empty() : Optional.of(molecule);
         if ((subcellularLocations == null) || subcellularLocations.isEmpty()) {
             this.subcellularLocations = Collections.emptyList();
         } else {
             this.subcellularLocations = Collections.unmodifiableList(subcellularLocations);
         }
-        this.note = note;
+        this.note = (note ==null )? Optional.empty() : Optional.of(note);
     }
 
     @Override
-    public String getSubcellularMolecule() {
+    public Optional<String> getMolecule() {
        return molecule;
     }
 
     @Override
-    public CommentNote getSubcellularLocationNote() {
+    public Optional<CommentNote> getNote() {
        return note;
     }
 

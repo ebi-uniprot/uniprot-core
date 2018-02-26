@@ -43,7 +43,7 @@ public class DiseaseCommentBuilderTest {
         DiseaseComment comment = 
                 commentBuilder.disease(disease)
                 .build();
-       assertEquals(null, comment.getNote());
+       assertFalse( comment.getNote().isPresent());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
     }
@@ -70,7 +70,7 @@ public class DiseaseCommentBuilderTest {
                 commentBuilder.disease(disease)
                 .note(note)
                 .build();
-       assertEquals(note, comment.getNote());
+       assertEquals(note, comment.getNote().get());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
     }

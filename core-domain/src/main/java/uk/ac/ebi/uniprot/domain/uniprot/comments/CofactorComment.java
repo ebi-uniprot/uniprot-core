@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 
@@ -49,7 +50,7 @@ public interface CofactorComment extends Comment {
 	 * 
 	 * @return molecule
 	 */
-	String getMolecule();
+	Optional<String> getMolecule();
 	/**
 	 * 
 	 * @return list of cofactor
@@ -60,7 +61,11 @@ public interface CofactorComment extends Comment {
 	 * 
 	 * @return cofactor note
 	 */
-	CommentNote getNote();
+	Optional<CommentNote> getNote();
+	
+	default boolean isValid() {
+		return !getCofactors().isEmpty() || getNote().isPresent();
+	}
 
 	
 }

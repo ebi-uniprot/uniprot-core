@@ -1,16 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import java.util.List;
+import java.util.Optional;
 
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 
 public interface SequenceCautionComment extends Comment, HasEvidences {
 
      String getSequence();
-
-     boolean hasNote();
-
-     String getNote();
+     
+     Optional<String> getNote();
 
      SequenceCautionType getSequenceCautionType();
 

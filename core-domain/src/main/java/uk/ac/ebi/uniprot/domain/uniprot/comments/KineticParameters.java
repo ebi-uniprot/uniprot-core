@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface KineticParameters {
-    public List<MaximumVelocity> getMaximumVelocities();
+     List<MaximumVelocity> getMaximumVelocities();
 
-    public List<MichaelisConstant> getMichaelisConstants();
+     List<MichaelisConstant> getMichaelisConstants();
 
-    public KPNote getNote();
-
-    public boolean hasNote();
+     Optional<KPNote> getNote();
 
 }

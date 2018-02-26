@@ -1,16 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
+import java.util.Optional;
+
 public interface SubcellularLocation {
 
-    public SubcellularLocationValue getLocation();
+     SubcellularLocationValue getLocation();
 
-    public boolean hasLocation();
+     Optional<SubcellularLocationValue> getTopology();
 
-    public SubcellularLocationValue getTopology();
+     Optional<SubcellularLocationValue> getOrientation();
 
-    public boolean hasTopology();
-
-    public SubcellularLocationValue getOrientation();
-
-    public boolean hasOrientation();
 }

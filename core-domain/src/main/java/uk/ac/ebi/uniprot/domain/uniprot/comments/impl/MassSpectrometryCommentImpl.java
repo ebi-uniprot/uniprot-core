@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
     public static MassSpectrometryRange buildMassSpectrometryRange(Integer start, Integer end, String isoformId){
@@ -15,8 +16,8 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
     private final MassSpectrometryMethod method;
     private final Double molWeight;
-    private final Double molWeightError;
-    private final String note;
+    private final Optional<Double> molWeightError;
+    private final Optional<String> note;
     private final List<MassSpectrometryRange> ranges;
     private final List<Evidence> evidences;
 
@@ -27,8 +28,9 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
         super(CommentType.MASS_SPECTROMETRY);
         this.method = method;
         this.molWeight = molWeight;
-        this.molWeightError = molWeightError;
-        this.note = note;
+        
+        this.molWeightError =  (molWeightError ==null)? Optional.empty() : Optional.of(molWeightError);
+        this.note = ((note ==null )|| note.isEmpty())? Optional.empty() : Optional.of(note);
         if ((ranges == null) || ranges.isEmpty()) {
             this.ranges = Collections.emptyList();
         } else {
@@ -42,7 +44,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public Double getMolWeightError() {
+    public Optional<Double> getMolWeightError() {
         return molWeightError;
     }
 
@@ -52,7 +54,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public String getNote() {
+    public Optional<String> getNote() {
         return note;
     }
 

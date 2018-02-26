@@ -4,28 +4,28 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.WebResourceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.WebResourceCommentImpl;
 
 public final class WebResourceCommentBuilder implements CommentBuilder<WebResourceComment>{
-    private  String databaseName;
-    private  String databaseUrl;
-    private  String databaseFtp;
+    private  String resourceName;
+    private  String resourceUrl;
+    	private boolean isFtp =false;
     private  String note;
     
     public static WebResourceCommentBuilder newInstance(){
         return new WebResourceCommentBuilder();
     }
     public WebResourceComment build(){
-        return new  WebResourceCommentImpl( databaseName,  databaseUrl,  databaseFtp,  note);
+        return new  WebResourceCommentImpl( resourceName,  resourceUrl,  isFtp,  note);
     }
-    public WebResourceCommentBuilder databaseName(String databaseName){
-        this.databaseName = databaseName;
+    public WebResourceCommentBuilder resourceName(String resourceName){
+        this.resourceName = resourceName;
         return this;
     }
     
-    public WebResourceCommentBuilder databaseUrl(String databaseUrl){
-        this.databaseUrl = databaseUrl;
+    public WebResourceCommentBuilder resourceUrl(String resourceUrl){
+        this.resourceUrl = resourceUrl;
         return this;
     }
-    public WebResourceCommentBuilder databaseFtp(String databaseFtp){
-        this.databaseFtp = databaseFtp;
+    public WebResourceCommentBuilder isFtp(boolean isFtp){
+        this.isFtp = isFtp;
         return this;
     }
     

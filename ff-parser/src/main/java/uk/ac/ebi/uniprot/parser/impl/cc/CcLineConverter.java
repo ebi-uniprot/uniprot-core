@@ -1,5 +1,12 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Absorption;
@@ -57,15 +64,8 @@ import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.CofactorItem;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.EvidencedString;
-import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.LocationFlagEnum;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.LocationValue;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.RnaEditingLocationEnum;
-
-import com.google.common.base.Strings;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class CcLineConverter extends EvidenceCollector implements Converter<CcLineObject, List<Comment>> {
 	// private final DefaultCommentFactory factory = DefaultCommentFactory
@@ -193,7 +193,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		APCommentBuilder builder = APCommentBuilder.newInstance();
 		builder.events(cObj.events.stream().map(val -> APCommentBuilder.createEvent(val)).collect(Collectors.toList()));
 		if (isNotEmpty(cObj.comment)) {
-			builder.note(APCommentBuilder.createAPNote(convert(cObj.comment)));
+			builder.note(CommentFactory.INSTANCE.createCommentNote(convert(cObj.comment)));
 		}
 		builder.isoforms(cObj.names.stream().map(name -> convertAPIsoform(name)).collect(Collectors.toList()));
 		return builder.build();
@@ -205,7 +205,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		builder.isoformName(
 				APCommentBuilder.createIsoformName(name.name.value, EvidenceHelper.convert(name.name.evidences)));
 		if (isNotEmpty(name.note)) {
-			builder.note(CommentFactory.INSTANCE.createCommentNote(convert(name.note)));
+			builder.note(APCommentBuilder.createIsoformNote(convert(name.note)));
 		}
 		builder.isoformSynonyms(name.synNames.stream()
 				.map(syn -> APCommentBuilder.createIsoformSynonym(syn.value, EvidenceHelper.convert(syn.evidences))
@@ -322,16 +322,13 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 
 	private WebResourceComment convertWebResource(CcLineObject.WebResource cObj) {
 		WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
-		String databaseName = "someDbName";
-		String databaseUrl = "some url";
-		String note = "some note";
-		builder.databaseName(cObj.name).note(cObj.note);
-
-		if (cObj.url.startsWith("ftp")) {
-			builder.databaseFtp(cObj.url);
-		} else
-			builder.databaseUrl(cObj.url);
-
+	//	String databaseName = "someDbName";
+	//	String databaseUrl = "some url";
+	//	String note = "some note";
+		builder.resourceName(cObj.name).note(cObj.note)
+		.resourceUrl(cObj.url);
+		if(cObj.url !=null)
+		builder.isFtp(cObj.url.startsWith("ftp"));
 		return builder.build();
 	}
 

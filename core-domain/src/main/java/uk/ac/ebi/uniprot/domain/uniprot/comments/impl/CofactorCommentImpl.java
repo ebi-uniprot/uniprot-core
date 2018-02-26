@@ -7,24 +7,27 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
-    private final String molecule;
+    private final Optional<String> molecule;
     private final  List<Cofactor> cofactors;
-    private final CommentNote note;
+    private final Optional<CommentNote> note;
     public CofactorCommentImpl(String molecule, List<Cofactor> cofactors, CommentNote note) {
         super(CommentType.COFACTOR);
-        this.molecule = molecule;
+        this.molecule = ((molecule ==null )|| molecule.isEmpty())? Optional.empty() : Optional.of(molecule);
         if((cofactors ==null) || cofactors.isEmpty()){
             this.cofactors = Collections.emptyList();
         }else{
             this.cofactors =Collections.unmodifiableList(cofactors);
         }
-        this.note = note;
+        this.note = (note == null)? Optional.empty():  Optional.of(note);
+
+
     }
 
     @Override
-    public String getMolecule() {
+    public Optional<String> getMolecule() {
         return molecule;
     }
 
@@ -34,7 +37,7 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     }
 
     @Override
-    public CommentNote getNote() {
+    public Optional<CommentNote> getNote() {
         return note;
     }
 

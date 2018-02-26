@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class AbsorptionImpl implements Absorption {
     public static AbsorptionNote createAbsorptionNote(List<EvidencedValue> texts) {
@@ -14,13 +15,13 @@ public class AbsorptionImpl implements Absorption {
     }
     private final int max;
     private final boolean approximate;
-    private final AbsorptionNote note;
+    private final Optional<AbsorptionNote> note;
     private final List<Evidence> evidences;
 
     public AbsorptionImpl(int max, boolean approximate, AbsorptionNote note, List<Evidence> evidences) {
         this.max = max;
         this.approximate = approximate;
-        this.note = note;
+        this.note = (note == null)? Optional.empty():  Optional.of(note);
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else
@@ -38,23 +39,35 @@ public class AbsorptionImpl implements Absorption {
     }
 
     @Override
-    public AbsorptionNote getNote() {
+    public Optional<AbsorptionNote> getNote() {
         return note;
     }
 
-    @Override
-    public boolean hasNote() {
-        if ((note == null) || note.getTexts().isEmpty())
-            return false;
-        else
-            return true;
-    }
 
     @Override
     public boolean isApproximation() {
         return this.approximate;
     }
 
+    @Override 
+    public String toString() {
+    	    StringBuilder sb = new StringBuilder();
+        sb.append("\nCC       Absorption:\n");
+        sb.append("CC         Abs(max)=");
+        if (isApproximation()) {
+            sb.append("~");
+        }
+        sb.append(getMax());
+
+        sb.append(" nm;");
+
+        if (getNote().isPresent()) {
+            sb.append("\nCC         Note=").append(getNote().get().toString()).append(";");
+        }
+        
+        return sb.toString();
+
+    }
     @Override
     public int hashCode() {
         final int prime = 31;

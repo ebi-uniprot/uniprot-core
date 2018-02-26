@@ -3,15 +3,19 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseComment;
+
+import java.util.Optional;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 
 public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     private final Disease disease;
-    private final CommentNote note;
+    private final Optional<CommentNote> note;
     public DiseaseCommentImpl(Disease disease, CommentNote note) {
         super(CommentType.DISEASE);  
         this.disease = disease;
-        this.note = note;
+        this.note = (note == null)? Optional.empty():  Optional.of(note);
+
     }
 
     @Override
@@ -25,7 +29,7 @@ public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     }
 
     @Override
-    public CommentNote getNote() {
+    public Optional<CommentNote> getNote() {
         return note;
     }
 

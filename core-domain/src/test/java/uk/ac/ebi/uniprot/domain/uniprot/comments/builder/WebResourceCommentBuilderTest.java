@@ -13,13 +13,13 @@ public class WebResourceCommentBuilderTest {
     public void testSetDatabaseName() {
         WebResourceCommentBuilder builder =  WebResourceCommentBuilder.newInstance();
         String databaseName ="someDbName";
-        WebResourceComment comment = builder.databaseName(databaseName)
+        WebResourceComment comment = builder.resourceName(databaseName)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
-        assertEquals(databaseName, comment.getDatabaseName());
-        assertEquals(null, comment.getDatabaseURL());
-        assertEquals(null, comment.getDatabaseFTP());
-        assertEquals(null, comment.getDatabaseNote());
+        assertEquals(databaseName, comment.getResourceName());
+        assertFalse(comment.getResourceUrl().isPresent());
+        assertFalse(comment.isFtp());
+        assertFalse(null, comment.getNote().isPresent());
     }
 
     @Test
@@ -27,14 +27,14 @@ public class WebResourceCommentBuilderTest {
         WebResourceCommentBuilder builder =  WebResourceCommentBuilder.newInstance();
         String databaseName ="someDbName";
         String databaseUrl ="some url";
-        WebResourceComment comment = builder.databaseName(databaseName)
-                .databaseUrl(databaseUrl)
+        WebResourceComment comment = builder.resourceName(databaseName)
+                .resourceUrl(databaseUrl)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
-        assertEquals(databaseName, comment.getDatabaseName());
-        assertEquals(databaseUrl, comment.getDatabaseURL());
-        assertEquals(null, comment.getDatabaseFTP());
-        assertEquals(null, comment.getDatabaseNote());
+        assertEquals(databaseName, comment.getResourceName());
+        assertEquals(databaseUrl, comment.getResourceUrl().get());
+        assertFalse( comment.isFtp());
+        assertFalse(comment.getNote().isPresent());
     }
 
     @Test
@@ -42,14 +42,15 @@ public class WebResourceCommentBuilderTest {
         WebResourceCommentBuilder builder =  WebResourceCommentBuilder.newInstance();
         String databaseName ="someDbName";
         String databaseFtp ="some ftp";
-        WebResourceComment comment = builder.databaseName(databaseName)
-                .databaseFtp(databaseFtp)
+        WebResourceComment comment = builder.resourceName(databaseName)
+                .resourceUrl(databaseFtp)
+                .isFtp(true)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
-        assertEquals(databaseName, comment.getDatabaseName());
-        assertEquals(null, comment.getDatabaseURL());
-        assertEquals(databaseFtp, comment.getDatabaseFTP());
-        assertEquals(null, comment.getDatabaseNote());
+        assertEquals(databaseName, comment.getResourceName());
+        assertEquals(databaseFtp, comment.getResourceUrl().get());
+        assertTrue( comment.isFtp());
+        assertFalse(comment.getNote().isPresent());
     }
 
     @Test
@@ -58,15 +59,15 @@ public class WebResourceCommentBuilderTest {
         String databaseName ="someDbName";
         String databaseUrl ="some url";
         String note ="some note";
-        WebResourceComment comment = builder.databaseName(databaseName)
-                .databaseUrl(databaseUrl)
+        WebResourceComment comment = builder.resourceName(databaseName)
+                .resourceUrl(databaseUrl)
                 .note(note)
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
-        assertEquals(databaseName, comment.getDatabaseName());
-        assertEquals(databaseUrl, comment.getDatabaseURL());
-        assertEquals(null, comment.getDatabaseFTP());
-        assertEquals(note, comment.getDatabaseNote());
+        assertEquals(databaseName, comment.getResourceName());
+        assertEquals(databaseUrl, comment.getResourceUrl().get());
+        assertFalse( comment.isFtp());
+        assertEquals(note, comment.getNote().get());
     }
 
 }

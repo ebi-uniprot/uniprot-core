@@ -3,14 +3,15 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.builder;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.APEvent;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformName;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSynonym;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
@@ -42,7 +43,7 @@ public class APCommentBuilderTest {
         AlternativeProductsComment comment = builder.events(events).build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(0, comment.getIsoforms().size());
-        assertNull(comment.getNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
     }
 
@@ -58,7 +59,7 @@ public class APCommentBuilderTest {
                 .build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(1, comment.getIsoforms().size());
-        assertNull(comment.getNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
     }
 
@@ -93,7 +94,7 @@ public class APCommentBuilderTest {
         events.add(APCommentBuilder.createEvent("event2"));
         List<APIsoform> apIsoforms =Arrays.asList(createAPIsoform());
         List<EvidencedValue> texts = createEvidenceValues();
-        APNote apNote = APCommentBuilder.createAPNote(texts);
+        CommentNote apNote = CommentFactory.INSTANCE.createCommentNote(texts);
         AlternativeProductsComment comment = builder.events(events)
                 .isoforms(apIsoforms)
                 .note(apNote)
@@ -114,7 +115,7 @@ public class APCommentBuilderTest {
     @Test
     public void testCreateAPNote() {
         List<EvidencedValue> texts = createEvidenceValues();
-        APNote apNote = APCommentBuilder.createAPNote(texts);
+        CommentNote apNote = CommentFactory.INSTANCE.createCommentNote(texts);
         assertEquals(2, apNote.getTexts().size());
     }
 

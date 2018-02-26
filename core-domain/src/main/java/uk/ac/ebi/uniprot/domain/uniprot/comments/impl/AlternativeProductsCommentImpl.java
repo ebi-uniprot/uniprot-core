@@ -1,29 +1,26 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APEvent;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
-
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+
+import uk.ac.ebi.uniprot.domain.uniprot.comments.APEvent;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
+import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
 public class AlternativeProductsCommentImpl extends CommentImpl implements AlternativeProductsComment {
     public static APEvent createEvent(String val){
         return new APEventImpl(val);
     }
-    public static APNote createAPNote(List<EvidencedValue> texts) {
-        return new APNoteImpl(texts);
-    }
   
     private final List<APEvent> events;
     private final List<APIsoform> isoforms;
-    private final APNote note;
+    private final Optional<CommentNote> note;
     public AlternativeProductsCommentImpl(List<APEvent> events, 
-            List<APIsoform> isoforms, APNote note  ) {
+            List<APIsoform> isoforms, CommentNote note  ) {
         super(CommentType.ALTERNATIVE_PRODUCTS);
         if((events ==null) || events.isEmpty()){
             this.events = Collections.emptyList();
@@ -35,7 +32,7 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
         }else{
             this.isoforms =Collections.unmodifiableList(isoforms);
         }
-        this.note = note;
+        this.note = (note == null)? Optional.empty():  Optional.of(note);
     }
 
     @Override
@@ -49,7 +46,7 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
     }
 
     @Override
-    public APNote getNote() {
+    public Optional<CommentNote> getNote() {
         return note;
     }
     
@@ -101,10 +98,5 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
         }
         
     }
-    static class APNoteImpl extends FreeTextImpl implements APNote {
 
-        public APNoteImpl(List<EvidencedValue> texts) {
-            super(texts);    
-        }
-    }
 }

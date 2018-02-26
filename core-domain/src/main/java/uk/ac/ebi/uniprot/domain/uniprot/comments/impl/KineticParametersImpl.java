@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.MichaelisConstant;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class KineticParametersImpl implements KineticParameters {
     public static KPNote createKPNote(List<EvidencedValue> texts) {
@@ -15,7 +16,7 @@ public class KineticParametersImpl implements KineticParameters {
     }
     private final List<MaximumVelocity> velocities;
     private final List<MichaelisConstant> mConstants;
-    private final KPNote note;
+    private final Optional<KPNote> note;
     public KineticParametersImpl(List<MaximumVelocity> velocities, List<MichaelisConstant> mConstants,
             KPNote note){
         if((velocities ==null) || velocities.isEmpty()){
@@ -28,7 +29,7 @@ public class KineticParametersImpl implements KineticParameters {
         }else{
             this.mConstants = Collections.unmodifiableList(mConstants);
         }
-        this.note = note;
+        this.note = (note == null)? Optional.empty():  Optional.of(note);
     }
     @Override
     public List<MaximumVelocity> getMaximumVelocities() {
@@ -41,16 +42,8 @@ public class KineticParametersImpl implements KineticParameters {
     }
 
     @Override
-    public KPNote getNote() {
-       return note;
-    }
-
-    @Override
-    public boolean hasNote() {
-        if ((note == null) || note.getTexts().isEmpty())
-            return false;
-        else
-            return true;
+    public Optional<KPNote> getNote() {
+    		return note;
     }
 
     

@@ -29,7 +29,7 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertNull(comment.getNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(0, comment.getPositions().size());
         assertNull(comment.getSequence());
     }
@@ -43,7 +43,7 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertNull(comment.getNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(0, comment.getPositions().size());
         assertEquals("somesequence", comment.getSequence());
     }
@@ -59,7 +59,7 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertNull(comment.getNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
     }
@@ -76,7 +76,7 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertEquals("some note", comment.getNote());
+        assertEquals("some note", comment.getNote().get());
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
     }

@@ -32,8 +32,8 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertNull(comment.getMolWeight());
-        assertNull(comment.getMolWeightError());
-        assertNull(comment.getNote());
+        assertFalse(comment.getMolWeightError().isPresent());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
@@ -48,8 +48,8 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertNull(comment.getMolWeightError());
-        assertNull(comment.getNote());
+        assertFalse(comment.getMolWeightError().isPresent());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
@@ -65,8 +65,8 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
-        assertNull(comment.getNote());
+        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
+        assertFalse(comment.getNote().isPresent());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
@@ -83,8 +83,8 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
-        assertEquals("someNote", comment.getNote());
+        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
+        assertEquals("someNote", comment.getNote().get());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
@@ -105,8 +105,8 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
-        assertEquals("someNote", comment.getNote());
+        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
+        assertEquals("someNote", comment.getNote().get());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
@@ -129,8 +129,8 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
-        assertEquals("someNote", comment.getNote());
+        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
+        assertEquals("someNote", comment.getNote().get());
         assertEquals(evidences, comment.getEvidences());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());

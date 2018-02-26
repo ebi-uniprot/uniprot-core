@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
+import java.util.Optional;
+
 /**
  * Description of the disease(s) associated with a deficiency of a protein
  * <p>
@@ -59,6 +61,6 @@ public interface DiseaseComment extends Comment{
     /**
      * @return free text description of the manifestation of the disease on the protein containing this comment
      */
-     CommentNote getNote();
+     Optional<CommentNote> getNote();
 
 }

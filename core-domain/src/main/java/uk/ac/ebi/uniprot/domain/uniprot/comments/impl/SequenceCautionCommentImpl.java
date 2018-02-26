@@ -7,12 +7,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
     private final SequenceCautionType sequenceCautionType;
     private final String sequence;
     private final List<String> positions;
-    private final String note;
+    private final Optional<String> note;
     private final List<Evidence> evidences;
     public SequenceCautionCommentImpl(SequenceCautionType sequenceCautionType, String sequence,
             List<String> positions,
@@ -26,7 +27,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
         } else {
             this.positions = Collections.unmodifiableList(positions);
         }
-        this.note = note;
+        this.note = ((note ==null )|| note.isEmpty())? Optional.empty() : Optional.of(note);
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
@@ -40,12 +41,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     }
 
     @Override
-    public boolean hasNote() {
-        return ((note !=null) && !note.isEmpty());
-    }
-
-    @Override
-    public String getNote() {
+    public Optional<String> getNote() {
         return note;
     }
 

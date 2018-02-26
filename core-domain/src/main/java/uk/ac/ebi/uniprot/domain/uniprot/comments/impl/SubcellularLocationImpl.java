@@ -6,53 +6,40 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 public class SubcellularLocationImpl implements SubcellularLocation {
     public static SubcellularLocationValue createSubcellularLocationValue(String value, List<Evidence> evidences){
         return new SubcellularLocationValueImpl(value, evidences);
     }
     private final SubcellularLocationValue location;
-    private final SubcellularLocationValue topology;
-    private final SubcellularLocationValue orientation;
+    private final Optional<SubcellularLocationValue> topology;
+    private final Optional<SubcellularLocationValue> orientation;
     public SubcellularLocationImpl(SubcellularLocationValue location,
             SubcellularLocationValue topology,
             SubcellularLocationValue orientation){
         this.location = location;
-        this.topology = topology;
-        this.orientation = orientation;
+        this.topology = (hasValue(topology))? Optional.of(topology): Optional.empty();
+        this.orientation = (hasValue(orientation))? Optional.of(orientation): Optional.empty();
     }
     @Override
     public SubcellularLocationValue getLocation() {
        return location;
     }
 
-    @Override
-    public boolean hasLocation() {
-       return hasValue(location);
-    }
-
     private boolean hasValue(SubcellularLocationValue val){
         return ((val !=null ) && (val.getValue()!=null) && !val.getValue().isEmpty());
     }
     @Override
-    public SubcellularLocationValue getTopology() {
+    public Optional<SubcellularLocationValue> getTopology() {
         return topology;
     }
 
     @Override
-    public boolean hasTopology() {
-        return hasValue(topology);
-    }
-
-    @Override
-    public SubcellularLocationValue getOrientation() {
+    public Optional<SubcellularLocationValue> getOrientation() {
         return orientation;
     }
 
-    @Override
-    public boolean hasOrientation() {
-        return hasValue(orientation);
-    }
     @Override
     public int hashCode() {
         final int prime = 31;

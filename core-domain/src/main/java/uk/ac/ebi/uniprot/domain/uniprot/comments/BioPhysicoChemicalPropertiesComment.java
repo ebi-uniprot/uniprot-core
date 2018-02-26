@@ -1,22 +1,26 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
+import java.util.Optional;
 
 public interface BioPhysicoChemicalPropertiesComment extends Comment {
 
-	public Absorption getAbsorption();
-	public boolean hasAbsorptionProperty();
+	 Optional<Absorption> getAbsorption();
 	
-	public KineticParameters getKineticParameters();
-	public boolean hasKineticParametersProperty();
+	 Optional<KineticParameters> getKineticParameters();
 
-	public PHDependence getPHDependence();
-	public boolean hasPHDependenceProperty();
+	 Optional<PHDependence> getPHDependence();
 
-	public RedoxPotential getRedoxPotential();
-	public boolean hasRedoxPotentialProperty();
+	 Optional<RedoxPotential> getRedoxPotential();
 
-	public TemperatureDependence getTemperatureDependence();
-	public boolean hasTemperatureDependenceProperty();
+	 Optional<TemperatureDependence> getTemperatureDependence();
+	 
+	 default boolean isValid() {
+		 return getAbsorption().isPresent()
+				 || getKineticParameters().isPresent()
+				 || getPHDependence().isPresent()
+				 || getRedoxPotential().isPresent()
+				 || getTemperatureDependence().isPresent();
+	 }
 
 
 

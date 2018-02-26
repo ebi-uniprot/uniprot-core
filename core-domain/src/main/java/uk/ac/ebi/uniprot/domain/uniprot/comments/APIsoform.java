@@ -2,16 +2,15 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 
 import java.util.List;
+import java.util.Optional;
 
 public interface APIsoform   {
 
-    public IsoformName getName();
-    public boolean hasName();
-    public List<IsoformSynonym> getSynonyms();
-    public CommentNote getNote();
-    public boolean hasNote();
-    public List<IsoformId> getIds();
-    public List<String> getSequenceIds();
-    public IsoformSequenceStatus getIsoformSequenceStatus();
+     IsoformName getName();
+     List<IsoformSynonym> getSynonyms();
+     Optional<APIsoformNote> getNote();
+     List<IsoformId> getIds();
+     List<String> getSequenceIds();
+     IsoformSequenceStatus getIsoformSequenceStatus();
 
 }

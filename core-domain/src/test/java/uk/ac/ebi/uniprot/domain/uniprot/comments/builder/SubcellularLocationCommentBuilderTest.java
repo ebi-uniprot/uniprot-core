@@ -27,8 +27,8 @@ public class SubcellularLocationCommentBuilderTest {
         SubcellularLocationComment comment =builder.molecule(molecule)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
-        assertEquals(molecule, comment.getSubcellularMolecule());
-        assertEquals(null, comment.getSubcellularLocationNote());
+        assertEquals(molecule, comment.getMolecule().get());
+        assertFalse( comment.getNote().isPresent());
         assertEquals(0, comment.getSubcellularLocations().size());
     }
 
@@ -56,8 +56,8 @@ public class SubcellularLocationCommentBuilderTest {
                 .subcellularLocations(sublocations)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
-        assertEquals(molecule, comment.getSubcellularMolecule());
-        assertEquals(null, comment.getSubcellularLocationNote());
+        assertEquals(molecule, comment.getMolecule().get());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
@@ -66,7 +66,7 @@ public class SubcellularLocationCommentBuilderTest {
     @Test
     public void testSetNote() {
         List<SubcellularLocation> sublocations =new ArrayList<>();
-        String molecule ="some mol";
+        String molecule ="";
         String locationVal ="some data";
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
@@ -91,8 +91,8 @@ public class SubcellularLocationCommentBuilderTest {
                 .note(note)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
-        assertEquals(molecule, comment.getSubcellularMolecule());
-        assertEquals(note, comment.getSubcellularLocationNote());
+        assertFalse( comment.getMolecule().isPresent());
+        assertEquals(note, comment.getNote().get());
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
@@ -118,13 +118,13 @@ public class SubcellularLocationCommentBuilderTest {
         SubcellularLocationValue orientation = SubcellularLocationCommentBuilder.createSubcellularLocationValue(orientationVal, evidences);
         SubcellularLocation sublocation= SubcellularLocationCommentBuilder.createSubcellularLocation(location, topology, orientation);
         assertEquals(location, sublocation.getLocation());
-        assertEquals(topology, sublocation.getTopology());
-        assertEquals(orientation, sublocation.getOrientation());
+        assertEquals(topology, sublocation.getTopology().get());
+        assertEquals(orientation, sublocation.getOrientation().get());
         
          sublocation= SubcellularLocationCommentBuilder.createSubcellularLocation(location, topology, null);
         assertEquals(location, sublocation.getLocation());
-        assertEquals(topology, sublocation.getTopology());
-        assertEquals(null, sublocation.getOrientation());
+        assertEquals(topology, sublocation.getTopology().get());
+        assertFalse( sublocation.getOrientation().isPresent());
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();

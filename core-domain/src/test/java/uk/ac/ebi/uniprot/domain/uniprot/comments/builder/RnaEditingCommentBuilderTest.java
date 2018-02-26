@@ -38,7 +38,7 @@ public class RnaEditingCommentBuilderTest {
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertNull(comment.getRnaEditingNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(0, comment.getPositions().size());
     }
 
@@ -55,7 +55,7 @@ public class RnaEditingCommentBuilderTest {
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertNull(comment.getRnaEditingNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(positions, comment.getPositions());
     }
 
@@ -74,7 +74,7 @@ public class RnaEditingCommentBuilderTest {
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertEquals(note, comment.getRnaEditingNote());
+        assertEquals(note, comment.getNote().get());
         assertEquals(positions, comment.getPositions());
     }
 

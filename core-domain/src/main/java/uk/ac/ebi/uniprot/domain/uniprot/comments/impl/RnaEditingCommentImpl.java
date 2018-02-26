@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
     public static Position createPosition(String position, List<Evidence> evidences) {
@@ -16,7 +17,7 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
     }
     private final RnaEditingLocationType locationType;
     private final List<Position> locations;
-    private final CommentNote note;
+    private final Optional<CommentNote> note;
     public RnaEditingCommentImpl(RnaEditingLocationType locationType, List<Position> locations,
             CommentNote note) {
         super(CommentType.RNA_EDITING);
@@ -26,7 +27,7 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
        } else {
            this.locations = Collections.unmodifiableList(locations);
        }
-       this.note = note;
+       this.note = (note == null)? Optional.empty():  Optional.of(note);
     }
 
     @Override
@@ -39,7 +40,7 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
        return locations;
     }
     @Override
-    public CommentNote getRnaEditingNote() {
+    public Optional<CommentNote> getNote() {
        return note;
     }
 

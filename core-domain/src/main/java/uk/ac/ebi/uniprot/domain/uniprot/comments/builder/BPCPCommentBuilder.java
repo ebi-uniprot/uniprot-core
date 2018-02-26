@@ -22,11 +22,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import java.util.List;
 
 public final class BPCPCommentBuilder implements CommentBuilder<BioPhysicoChemicalPropertiesComment> {
-    private Absorption absorption;
-    private KineticParameters kineticParameters;
-    private PHDependence phDependence;
-    private RedoxPotential redoxPotential;
-    private TemperatureDependence temperatureDependence;
+    private Absorption absorption =null;
+    private KineticParameters kineticParameters =null;
+    private PHDependence phDependence =null;
+    private RedoxPotential redoxPotential =null;
+    private TemperatureDependence temperatureDependence =null;
 
     public static BPCPCommentBuilder newInstance() {
         return new BPCPCommentBuilder();

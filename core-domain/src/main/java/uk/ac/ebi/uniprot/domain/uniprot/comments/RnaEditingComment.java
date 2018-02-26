@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -14,5 +15,5 @@ public interface RnaEditingComment  extends Comment {
 
     public List<Position> getPositions();
 
-    public CommentNote getRnaEditingNote();
+    public Optional<CommentNote> getNote();
 }

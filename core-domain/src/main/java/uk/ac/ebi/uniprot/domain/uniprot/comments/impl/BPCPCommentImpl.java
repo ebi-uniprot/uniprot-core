@@ -12,6 +12,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.TemperatureDependence;
 
 import java.util.List;
+import java.util.Optional;
 
 public class BPCPCommentImpl extends CommentImpl
         implements BioPhysicoChemicalPropertiesComment {
@@ -27,11 +28,11 @@ public class BPCPCommentImpl extends CommentImpl
         return new TemperatureDependenceImpl(texts);
     }
 
-    private final Absorption absorption;
-    private final KineticParameters kineticParameters;
-    private final PHDependence phDependence;
-    private final RedoxPotential redoxPotential;
-    private final TemperatureDependence temperatureDependence;
+    private final Optional<Absorption> absorption;
+    private final Optional<KineticParameters> kineticParameters;
+    private final Optional<PHDependence> phDependence;
+    private final Optional<RedoxPotential> redoxPotential;
+    private final Optional<TemperatureDependence> temperatureDependence;
 
     public BPCPCommentImpl(Absorption absorption,
         KineticParameters kineticParameters,
@@ -39,68 +40,39 @@ public class BPCPCommentImpl extends CommentImpl
         RedoxPotential redoxPotential,
         TemperatureDependence temperatureDependence) {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+        this.absorption = (absorption == null)? Optional.empty():  Optional.of(absorption);
+        this.kineticParameters = (kineticParameters == null)? Optional.empty():  Optional.of(kineticParameters);
+        this.phDependence = (phDependence == null)? Optional.empty():  Optional.of(phDependence);
+        this.redoxPotential = (redoxPotential == null)? Optional.empty():  Optional.of(redoxPotential);
+        this.temperatureDependence = (temperatureDependence == null)? Optional.empty():  Optional.of(temperatureDependence);
 
-        this.absorption = absorption;
-        this.kineticParameters = kineticParameters;
-        this.phDependence = phDependence;
-        this.redoxPotential = redoxPotential;
-        this.temperatureDependence = temperatureDependence;
     }
 
     @Override
-    public Absorption getAbsorption() {
+    public Optional<Absorption> getAbsorption() {
         return this.absorption;
     }
 
-    @Override
-    public boolean hasAbsorptionProperty() {
-        if (this.absorption == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     @Override
-    public PHDependence getPHDependence() {
+    public Optional<PHDependence> getPHDependence() {
         return this.phDependence;
 
     }
 
     @Override
-    public boolean hasPHDependenceProperty() {
-        return ((this.phDependence != null) && !this.phDependence.getTexts().isEmpty());
-    }
-
-    @Override
-    public RedoxPotential getRedoxPotential() {
+    public Optional<RedoxPotential> getRedoxPotential() {
         return this.redoxPotential;
     }
 
     @Override
-    public boolean hasRedoxPotentialProperty() {
-        return ((this.redoxPotential != null) && !this.redoxPotential.getTexts().isEmpty());
-
-    }
-
-    @Override
-    public TemperatureDependence getTemperatureDependence() {
+    public Optional<TemperatureDependence> getTemperatureDependence() {
         return this.temperatureDependence;
     }
 
     @Override
-    public boolean hasTemperatureDependenceProperty() {
-        return ((this.temperatureDependence != null) && !this.temperatureDependence.getTexts().isEmpty());
-    }
-
-    @Override
-    public KineticParameters getKineticParameters() {
+    public Optional<KineticParameters> getKineticParameters() {
         return this.kineticParameters;
-    }
-
-    @Override
-    public boolean hasKineticParametersProperty() {
-        return this.kineticParameters != null;
     }
 
     @Override
@@ -157,34 +129,19 @@ public class BPCPCommentImpl extends CommentImpl
         StringBuilder sb = new StringBuilder("");
         // if (commentsCounter>0)
         sb.append("\n");
-        BioPhysicoChemicalPropertiesComment bioPCPropComment = this;
         sb.append("CC   -!- ");
-        sb.append(bioPCPropComment.getCommentType().toDisplayName());
+        sb.append(getCommentType().toDisplayName());
         sb.append(":");
-        if (bioPCPropComment.hasAbsorptionProperty()) {
-            sb.append("\nCC       Absorption:\n");
-            Absorption absorption = bioPCPropComment.getAbsorption();
-
-            sb.append("CC         Abs(max)=");
-            if (absorption.isApproximation()) {
-                sb.append("~");
-            }
-            sb.append(absorption.getMax());
-
-            sb.append(" nm;");
-
-            if (absorption.hasNote()) {
-                sb.append("\nCC         Note=").append(absorption.getNote().toString()).append(";");
-            }
-
+        if (getAbsorption().isPresent()) {
+        		sb.append(getAbsorption().get());
         }
 
-        if (bioPCPropComment.hasKineticParametersProperty()) {
+        if (getKineticParameters().isPresent()) {
             sb.append("\nCC       Kinetic parameters:");
 
-            if (null != bioPCPropComment.getKineticParameters().getMichaelisConstants()) {
+            if (null != getKineticParameters().get().getMichaelisConstants()) {
                 List<MichaelisConstant> michaelisConstants =
-                        bioPCPropComment.getKineticParameters().getMichaelisConstants();
+                        getKineticParameters().get().getMichaelisConstants();
                 System.err.println("michaelisConstants.size() = " + michaelisConstants.size());
                 for (MichaelisConstant michaelisConstant : michaelisConstants) {
                     StringBuilder temp = sb;
@@ -200,11 +157,11 @@ public class BPCPCommentImpl extends CommentImpl
                 }
             }
 
-            if (null != bioPCPropComment.getKineticParameters().getMaximumVelocities()
+            if (null != getKineticParameters().get().getMaximumVelocities()
                     &&
-                    !bioPCPropComment.getKineticParameters().getMaximumVelocities().isEmpty()) {
+                    !getKineticParameters().get().getMaximumVelocities().isEmpty()) {
                 List<MaximumVelocity> maximumVelocities =
-                        bioPCPropComment.getKineticParameters().getMaximumVelocities();
+                        getKineticParameters().get().getMaximumVelocities();
                 for (MaximumVelocity maximumVelocity : maximumVelocities) {
                     sb.append("CC         Vmax=" +
                             maximumVelocity.getVelocity() +
@@ -219,22 +176,22 @@ public class BPCPCommentImpl extends CommentImpl
             }
 
         }
-        if (bioPCPropComment.hasPHDependenceProperty()) {
+        if (getPHDependence().isPresent()) {
             sb.append("\nCC       pH dependence:\nCC         ");
-            sb.append(bioPCPropComment.getPHDependence().toString());
+            sb.append(getPHDependence().get().toString());
             sb.append(";");
 
         }
-        if (bioPCPropComment.hasRedoxPotentialProperty()) {
+        if (getRedoxPotential().isPresent()) {
             sb.append("\nCC       Redox potential:\nCC         ");
-            sb.append(bioPCPropComment.getRedoxPotential().toString());
+            sb.append(getRedoxPotential().get().toString());
             sb.append(";");
 
         }
-        if (bioPCPropComment.hasTemperatureDependenceProperty()) {
+        if (getTemperatureDependence().isPresent()) {
             sb.append("\nCC       Temperature dependence:\n");
             sb.append("CC         " +
-                    bioPCPropComment.getTemperatureDependence().toString() +
+                   getTemperatureDependence().get().toString() +
                     ";");
 
         }

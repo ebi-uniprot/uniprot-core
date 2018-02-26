@@ -37,9 +37,9 @@ public class CofactorCommentBuilderTest {
         CofactorComment comment =
                 builder.molecule(molecule)
                 .build();
-        assertEquals(molecule, comment.getMolecule());
+        assertEquals(molecule, comment.getMolecule().get());
         assertEquals(0, comment.getCofactors().size());
-        assertNull(comment.getNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
     }
 
@@ -55,10 +55,10 @@ public class CofactorCommentBuilderTest {
                 builder.molecule(molecule)
                 .cofactors(cofactors)
                 .build();
-        assertEquals(molecule, comment.getMolecule());
+        assertEquals(molecule, comment.getMolecule().get());
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
-        assertNull(comment.getNote());
+        assertFalse(comment.getNote().isPresent());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
     }
 
@@ -70,17 +70,17 @@ public class CofactorCommentBuilderTest {
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
         CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
-        String molecule ="some mol";
+        String molecule ="";
         CofactorComment comment =
                 builder.molecule(molecule)
                 .cofactors(cofactors)
                 .note(note)
                 .build();
-        assertEquals(molecule, comment.getMolecule());
+        assertFalse( comment.getMolecule().isPresent());
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
         assertNotNull(comment.getNote());
-        assertEquals(note, comment.getNote());
+        assertEquals(note, comment.getNote().get());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
     }
 
