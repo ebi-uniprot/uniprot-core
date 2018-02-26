@@ -86,7 +86,7 @@ public class CcLineConverterTest {
 		WebResourceComment wcomment = (WebResourceComment) comment1;
 		assertEquals("CD40Lbase", wcomment.getResourceName());
 		assertEquals("CD40L defect database", wcomment.getNote().get());
-		assertEquals("http://bioinf.uta.fi/CD40Lbase/", wcomment.getResourceUrl());
+		assertEquals("http://bioinf.uta.fi/CD40Lbase/", wcomment.getResourceUrl().get());
 		assertFalse(wcomment.isFtp());
 		
 	}
