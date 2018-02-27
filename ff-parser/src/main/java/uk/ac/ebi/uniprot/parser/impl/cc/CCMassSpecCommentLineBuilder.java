@@ -39,18 +39,19 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 		
 		sb.append(MASS);
 		sb.append(getSigDig(comment.getMolWeight()));
-		if(comment.getMolWeightError().isPresent()) {
+		if(comment.getMolWeightError().isPresent() &&
+				 Math.abs(comment.getMolWeightError().get()) > 10 * Double.MIN_VALUE){
 			sb.append(SEPARATOR_SEMICOMA);
 			sb.append(MASS_ERROR);
 			
 			sb.append(getSigDig(comment.getMolWeightError().get()));
 		}
-		if(comment.getNote().isPresent()) {
+//		if(comment.getNote().isPresent()) {
 			sb.append(SEPARATOR_SEMICOMA);
 			sb.append(METHOD);
 			sb.append(comment.getMethod().getValue());
 
-		}
+	//	}
 		if ((comment.getRanges() != null) &&(comment.getRanges().size()>0) ){
 			boolean isfirst =true;
 			sb.append(SEPARATOR_SEMICOMA);
@@ -86,7 +87,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 		if(comment.getNote().isPresent()) {
 			sb.append(SPACE);
 			sb.append(NOTE);
-			sb.append(comment.getNote());
+			sb.append(comment.getNote().get());
 			sb.append(SEMI_COMA);
 
 		}

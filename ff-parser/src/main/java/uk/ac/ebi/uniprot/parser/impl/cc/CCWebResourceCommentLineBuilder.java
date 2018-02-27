@@ -34,7 +34,7 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
 		if(comment.getNote().isPresent()) {
 			sb.append(SPACE);
 			sb.append(NOTE);
-			sb.append(comment.getNote());
+			sb.append(comment.getNote().get());
 			sb.append(SEMI_COMA);
 		}
 		if(includeFlatFileMarkings)

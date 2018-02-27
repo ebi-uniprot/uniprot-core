@@ -141,7 +141,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
 
         @Override
         public boolean isStartUnknown() {
-           return start ==null;
+           return (start ==null) || (start ==-1);
         }
 
         @Override
@@ -151,7 +151,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
 
         @Override
         public boolean isEndUnknown() {
-            return end == null;
+            return (end == null) ||(end == -1);
         }
 
         @Override

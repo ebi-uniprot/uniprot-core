@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
+import uk.ac.ebi.uniprot.ffwriter.line.LineBuilderHelper;
 
 /**
  * 	"CC   -!- SEQUENCE CAUTION:\n" +
@@ -15,7 +16,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
  * @author jieluo
  *
  */
-public abstract class CCSequenceCautionCommentLineBuilder extends CCLineBuilderAbstr<SequenceCautionComment> {
+public class CCSequenceCautionCommentLineBuilder extends CCLineBuilderAbstr<SequenceCautionComment> {
 	
 	private boolean isFirstSequenceCauction =true;
 	public void setIsFirstSequenceCaution(boolean isFirstSequenceCauction){
@@ -67,6 +68,12 @@ public abstract class CCSequenceCautionCommentLineBuilder extends CCLineBuilderA
 			 sb.append(SEMI_COMA);
 		 }
 	
+			if (showEvidence && comment.getEvidences().size()>0) {
+				sb.append(SPACE);
+				sb.append("Evidence=");
+				String evStr =  LineBuilderHelper.export(comment.getEvidences()).trim();
+				sb.append(evStr).append(SEMI_COMA);
+			}
 		
 	//	List<String> lls = NewLineWrapperHelper.buildLines(sb, SEPARATOR, linePrefix);
 		lines.add(sb.toString());

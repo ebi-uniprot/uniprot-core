@@ -33,6 +33,9 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
         return this; 
     }
     public MassSpectrometryCommentBuilder molWeightError(Double molWeightError){
+    		if((molWeightError !=null) &&(Math.abs(molWeightError-0.0)<= Double.MIN_VALUE)){
+    			this.molWeightError =null;
+    		}
         this.molWeightError = molWeightError;
         return this; 
     }
