@@ -241,10 +241,10 @@ public enum FeatureFactory {
     }
 
     public ConflictFeature buildConflictFeature(FeatureLocation location,
-            String orginalSequence, List<String> alternativeSequences,
+            String originalSequence, List<String> alternativeSequences,
             List<String> report) {
         return new ConflictFeatureImpl(location,
-                orginalSequence, alternativeSequences,
+        		originalSequence, alternativeSequences,
                 report);
     }
     
@@ -257,50 +257,50 @@ public enum FeatureFactory {
     }
 
     public MutagenFeature buildMutagenFeature(FeatureLocation location,
-            String orginalSequence, List<String> alternativeSequences,
+            String originalSequence, List<String> alternativeSequences,
             List<String> report) {
         return new MutagenFeatureImpl(location,
-                orginalSequence, alternativeSequences,
+                originalSequence, alternativeSequences,
                 report);
     }
     
     public MutagenFeature buildMutagenFeature(FeatureLocation location,
-            FeatureSequence orginalSequence, List<FeatureSequence> alternativeSequences,
+            FeatureSequence originalSequence, List<FeatureSequence> alternativeSequences,
             SequenceReport report) {
         return new MutagenFeatureImpl(location,
-                orginalSequence, alternativeSequences,
+                originalSequence, alternativeSequences,
                 report);
     }
     
     public VariantFeature buildVariantFeature(FeatureLocation location,
-            String orginalSequence, List<String> alternativeSequences,
+            String originalSequence, List<String> alternativeSequences,
             List<String> report, FeatureId featureId) {
         return new VariantFeatureImpl(location,
-                orginalSequence, alternativeSequences,
+                originalSequence, alternativeSequences,
                 report, featureId);
     }
     
     public VariantFeature buildVariantFeature(FeatureLocation location,
-            FeatureSequence orginalSequence, List<FeatureSequence> alternativeSequences,
+            FeatureSequence originalSequence, List<FeatureSequence> alternativeSequences,
             SequenceReport report, FeatureId featureId) {
         return new VariantFeatureImpl(location,
-                orginalSequence, alternativeSequences,
+                originalSequence, alternativeSequences,
                 report, featureId);
     }
     
     public VarSeqFeature buildVarSeqFeature(FeatureLocation location,
-            String orginalSequence, List<String> alternativeSequences,
+            String originalSequence, List<String> alternativeSequences,
             List<String> report, FeatureId featureId) {
         return new VarSeqFeatureImpl(location,
-                orginalSequence, alternativeSequences,
+                originalSequence, alternativeSequences,
                 report, featureId);
     }
     
     public VarSeqFeature buildVarSeqFeature(FeatureLocation location,
-            FeatureSequence orginalSequence, List<FeatureSequence> alternativeSequences,
+            FeatureSequence originalSequence, List<FeatureSequence> alternativeSequences,
             SequenceReport report, FeatureId featureId) {
         return new VarSeqFeatureImpl(location,
-                orginalSequence, alternativeSequences,
+                originalSequence, alternativeSequences,
                 report, featureId);
     }
 }

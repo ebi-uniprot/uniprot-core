@@ -167,6 +167,9 @@ public abstract class FeatureWithAlternativeSequenceImpl extends FeatureImpl imp
         private final String value;
 
         FeatureSequenceImpl(String val) {
+        	  if(val ==null)
+        		  this.value ="";
+        	  else
             this.value = val;
         }
 

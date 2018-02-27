@@ -210,6 +210,19 @@ public class FtLineParserTest {
 		
 	}
 	@Test
+	public void testConflictFeature() {
+		String ftLine =
+				"FT   CONFLICT      1      1       A -> Q (in Ref. 1; BAA37160/BAA37165 and\n" +
+				"FT                                2).\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLine);
+		 assertEquals(1, obj.fts.size());
+		 verify(obj.fts.get(0), FTType.CONFLICT, "1", "1", 
+				 "A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)", null);	  
+		 verifyEvidences(obj, obj.fts.get(0),  null );
+	}
+	
+	@Test
 	public void testMultiFeatures() {
 		 String ftLines = "FT   MUTAGEN       2      2       B->A,N: Less than 1% residual activity.\n"
 	                +"FT                                {ECO:0000313|EMBL:BAG16761.1,\n"

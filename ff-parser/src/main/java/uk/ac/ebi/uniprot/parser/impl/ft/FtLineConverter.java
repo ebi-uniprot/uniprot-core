@@ -26,9 +26,6 @@ public class FtLineConverter extends EvidenceCollector
 	private static final String CONFLICT_REGEX = ", | and ";
 	private static final String MISSING = "Missing";
 	private final FeatureFactory factory = FeatureFactory.INSTANCE;
-	   private static final String BRACKET_RIGHT = ")";
-	    private static final String BRACKET_LEFT = "(";
-	    private static final String SEMICOLON = ";";
 	   private static final String ISOFORM_REGEX =", isoform | and isoform ";
 
 	@Override
