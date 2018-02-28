@@ -19,17 +19,26 @@ public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
 	}
 	@Override
 	public String buildString(InternalSection f) {
+		if(f ==null) {
+			return "";
+		}
 		return buildLine(f, false).toString();
 	}
 	
 	@Override
 	public String buildStringWithEvidence(InternalSection f) {
+		if(f==null)
+			return "";
 		return buildLine(f, true).toString();
 	}
 
 
 	@Override
 	protected FFLine buildLine(InternalSection f, boolean showEvidence) {
+		
+		if(f ==null) {
+			return FFLines.create();
+		}
 		FFLine sourceLines = sourceLineBuilder.buildWithEvidence(f.getSourceLines());
 		FFLine evidenceLines = evidenceLineBuilder.buildWithEvidence(f.getEvidenceLines());		
 		FFLine internalLines = internalLineBuilder.buildWithEvidence(f.getInternalLines());

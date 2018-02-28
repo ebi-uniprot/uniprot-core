@@ -113,7 +113,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 			if (cObj.sequence != null) {
 				builder.sequence(cObj.sequence);
 			}
-			List<Evidence> evidences = evidenceMap.get(cc);
+			List<Evidence> evidences = evidenceMap.get(cObj);
 			builder.evidences(evidences);
 			SequenceCautionComment comment = builder.build();
 			comments.add(comment);

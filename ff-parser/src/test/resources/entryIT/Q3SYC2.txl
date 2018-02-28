@@ -145,10 +145,6 @@ CC       colon, stomach and kidney. {ECO:0000269|PubMed:12621063,
 CC       ECO:0000269|PubMed:12824082}.
 CC   -!- SIMILARITY: Belongs to the diacylglycerol acyltransferase family.
 CC       {ECO:0000305}.
-CC   -----------------------------------------------------------------------
-CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
-CC   Distributed under the Creative Commons Attribution-NoDerivs License
-CC   -----------------------------------------------------------------------
 DR   EMBL; AY157608; AAO23672.1; -; mRNA.
 DR   EMBL; AK026297; BAB15436.1; -; mRNA.
 DR   EMBL; AK128620; BAC87534.1; -; mRNA.
@@ -255,6 +251,19 @@ FT   CONFLICT    142    142       L -> P (in Ref. 2; BAB15436).
 FT                                {ECO:0000305}.
 FT   CONFLICT    267    267       F -> L (in Ref. 2; BAC87534).
 FT                                {ECO:0000305}.
+**
+**   #################    INTERNAL SECTION    ##################
+**EV ECO:0000250; -; XXX; 01-JAN-1900.
+**EV ECO:0000255; -; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:12621063; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:12824082; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:15489334; XXX; 01-JAN-1900.
+**EV ECO:0000303; PubMed:14702039; XXX; 01-JAN-1900.
+**EV ECO:0000303; PubMed:15489334; XXX; 01-JAN-1900.
+**EV ECO:0000305; -; XXX; 01-JAN-1900.
+**CL 11q13.5;
+**ZA SYP, 14-JUL-2006;
+**ZB LYG, 16-MAY-2008;
 SQ   SEQUENCE   334 AA;  38196 MW;  57C4A964BAFA76BD CRC64;
      MVEFAPLFMP WERRLQTLAV LQFVFSFLAL AEICTVGFIA LLFTRFWLLT VLYAAWWYLD
      RDKPRQGGRH IQAIRCWTIW KYMKDYFPIS LVKTAELDPS RNYIAGFHPH GVLAVGAFAN

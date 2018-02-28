@@ -5,6 +5,8 @@ package uk.ac.ebi.uniprot.parser.impl.ss;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
@@ -108,13 +110,23 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
 		 throw new IllegalArgumentException("unknown internal line type " + type);
 	}
 	private EvidenceLine convert(SsLineObject.EvLine e){
-		EvidenceType evidenceType = EvidenceType.typeOf(e.db);
-		EvidenceCode evidenceCode = EvidenceCode.typeOf(e.id);
-		String attr = e.attr_1;
-		if("-".equals(attr))
-			attr ="";
-	
-		Evidence evidence = EvidenceFactory.INSTANCE.createEvidence(evidenceType, evidenceCode, attr);
+		StringBuilder sb = new StringBuilder();
+		sb.append(e.id);
+		if(!Strings.isNullOrEmpty(e.db)) {
+			sb.append("|");
+			sb.append(e.db);
+			if(!Strings.isNullOrEmpty(e.attr_1) ) {
+				sb.append(":").append(e.attr_1);
+			}
+		}
+		Evidence evidence =EvidenceFactory.INSTANCE.createFromEvidenceLine(sb.toString());
+//		EvidenceType evidenceType = EvidenceType.typeOf(e.db);
+//		EvidenceCode evidenceCode = EvidenceCode.typeOf(e.id);
+//		String attr = e.attr_1;
+//		if("-".equals(attr))
+//			attr ="";
+//	
+//		Evidence evidence = EvidenceFactory.INSTANCE.createEvidence(evidenceType, evidenceCode, attr);
 		return factory.createEvidenceLine(evidence,  e.date, e.attr_2);
 	
 	}

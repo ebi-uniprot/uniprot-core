@@ -97,11 +97,11 @@ public class FtLineConverter extends EvidenceCollector
 		if(!Strings.isNullOrEmpty(value ) && matcher.matches()) {
 			String val1 = matcher.group(1);
 			if(!MISSING.equals(val1)) {
-				orginalSequence =matcher.group(3);
-				alternativeSequences.add(matcher.group(5));
+				orginalSequence =matcher.group(3).replaceAll(" ", "");
+				alternativeSequences.add(matcher.group(7).replaceAll(" ", ""));
 			}
 			
-			String[] tokens = matcher.group(8).substring("isoform ".length()).split(ISOFORM_REGEX);
+			String[] tokens = matcher.group(10).substring("isoform ".length()).split(ISOFORM_REGEX);
 			isoforms = Arrays.asList(tokens);
 		}
 		
@@ -143,10 +143,10 @@ public class FtLineConverter extends EvidenceCollector
 			String val1 = matcher.group(1);
 			if(!MISSING.equals(val1)) {
 				orginalSequence =matcher.group(3);
-				alternativeSequences.add(matcher.group(5));
+				alternativeSequences.add(matcher.group(7));
 			}
 			String regex = CONFLICT_REGEX ;
-			String[] tokens = matcher.group(8).split(regex);
+			String[] tokens = matcher.group(10).split(regex);
 			
 			reports = Arrays.asList(tokens);
 		}

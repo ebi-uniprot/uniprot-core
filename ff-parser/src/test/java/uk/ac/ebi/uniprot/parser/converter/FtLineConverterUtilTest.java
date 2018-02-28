@@ -44,10 +44,11 @@ public class FtLineConverterUtilTest {
 		String val = "Missing (in isoform Beta)";
 		Matcher matcher = ftLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
+	
 		assertEquals("Missing", matcher.group(1));
-		assertEquals("isoform Beta", matcher.group(8));
-		String regex =", isoform | and isoform ";
-		String[] tokens =  matcher.group(8).substring("isoform ".length()).split(regex);
+		assertEquals("isoform Beta", matcher.group(10));
+	//	String regex =", isoform | and isoform ";
+	//	String[] tokens =  matcher.group(8).substring("isoform ".length()).split(regex);
 		
 		
 	}
@@ -55,11 +56,15 @@ public class FtLineConverterUtilTest {
 	public void testVarSeq2() {
 		String val = "KIGTTLPEVPT -> RNWHRPCLRCQR (in isoform 2 and isoform 3)";
 		Matcher matcher = ftLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
+	
 		assertTrue(matcher.matches());
+	
 		assertEquals("KIGTTLPEVPT -> RNWHRPCLRCQR", matcher.group(1));
-		assertEquals("KIGTTLPEVPT", matcher.group(3));
-		assertEquals("RNWHRPCLRCQR", matcher.group(5));
-		assertEquals("isoform 2 and isoform 3", matcher.group(8));
+		String original = matcher.group(3).replaceAll(" ", "");
+		String other = matcher.group(7).replaceAll(" ", "");
+		assertEquals("KIGTTLPEVPT", original);
+		assertEquals("RNWHRPCLRCQR", other);
+		assertEquals("isoform 2 and isoform 3", matcher.group(10));
 		
 	}
 	@Test
@@ -67,12 +72,54 @@ public class FtLineConverterUtilTest {
 		String val = "GEARPARAQKPAQL -> V (in isoform SV1, isoform 2, isoform SV5, isoform 8, isoform SV10 and isoform SV11)";
 		Matcher matcher = ftLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
+		String original = matcher.group(3).replaceAll(" ", "");
+		String other = matcher.group(7).replaceAll(" ", "");
 		assertEquals("GEARPARAQKPAQL -> V", matcher.group(1));
-		assertEquals("GEARPARAQKPAQL", matcher.group(3));
-		assertEquals("V", matcher.group(5));
-		assertEquals("isoform SV1, isoform 2, isoform SV5, isoform 8, isoform SV10 and isoform SV11", matcher.group(8));
+		assertEquals("GEARPARAQKPAQL", original);
+		assertEquals("V", other);
+		assertEquals("isoform SV1, isoform 2, isoform SV5, isoform 8, isoform SV10 and isoform SV11", matcher.group(10));
 	
 	}
+	
+	@Test
+	public void testVarSeq4() {
+		String original = 
+				"MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLGVSGAGGALALGPERLSAFVFPGELLL"
+						+ "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAW"
+						+ "ALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS";
+		String val ="MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLGVSGAGGALALGPERLSAFVFPGELLL"
+				+ "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAW"
+				+ "ALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS-> M (in isoform 2)";
+		
+		Matcher matcher = ftLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
+		assertTrue(matcher.matches());
+		assertEquals( original + "-> M", matcher.group(1));
+		String original1 = matcher.group(3).replaceAll(" ", "");
+		String other = matcher.group(7).replaceAll(" ", "");
+		assertEquals(original, original1);
+		assertEquals("M", other);
+		assertEquals("isoform 2", matcher.group(10));
+	}
+	
+	@Test
+	public void testVarSeq5() {
+		String original = 
+				"APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV";
+		String val ="APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV"
+				+ " -> YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN (in isoform 3)";
+		String val1 = "APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV"
+				+ " -> YQASGKSTLGS VGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
+		String other = "YQASGKSTLGSVGNWQGFYFGGKMAETNADSILVEIFSPFTIKIIFWCLMPKYLEKFPQRRLSDLRN";
+		Matcher matcher = ftLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
+		assertTrue(matcher.matches());
+		assertEquals( val1, matcher.group(1));
+		String original1 = matcher.group(3).replaceAll(" ", "");
+		String other1 = matcher.group(7).replaceAll(" ", "");
+		assertEquals(original,  original1);
+		assertEquals(other, other1);
+		assertEquals("isoform 3", matcher.group(10));
+	}
+	
 	
 	@Test
 	public void testVariantMissing() {
@@ -172,7 +219,7 @@ public class FtLineConverterUtilTest {
 		assertEquals("W->D,N,G", matcher.group(1));
 		assertEquals("W", matcher.group(3));
 		assertEquals("D,N,G", matcher.group(5));
-		String [] tokens =matcher.group(5).split("\\,");
+	//	String [] tokens =matcher.group(5).split("\\,");
 		
 		assertEquals("Strongly reduced enzyme activity but does not affect UDP-binding", matcher.group(8));
 
@@ -186,7 +233,7 @@ public class FtLineConverterUtilTest {
 		assertEquals("W -> D,N,G", matcher.group(1));
 		assertEquals("W", matcher.group(3).trim());
 		assertEquals("D,N,G", matcher.group(5).trim());
-		String [] tokens =matcher.group(5).split("\\,");
+	//	String [] tokens =matcher.group(5).split("\\,");
 		
 		assertEquals("Strongly reduced enzyme activity but does not affect UDP-binding", matcher.group(8));
 
@@ -199,9 +246,9 @@ public class FtLineConverterUtilTest {
 		assertEquals("Missing", matcher.group(1));
 		assertEquals(null, matcher.group(3));
 		assertEquals(null, matcher.group(5));
-		assertEquals("3; AA sequence", matcher.group(8));
+		assertEquals("3; AA sequence", matcher.group(10));
 		String regex =", | and ";
-		String[] tokens = matcher.group(8).split(regex);
+		String[] tokens = matcher.group(10).split(regex);
 		assertEquals(1, tokens.length);
 		assertEquals("3; AA sequence", tokens[0]);
 	}
@@ -213,10 +260,10 @@ public class FtLineConverterUtilTest {
 		assertTrue(matcher.matches());
 		assertEquals("S -> G", matcher.group(1));
 		assertEquals("S", matcher.group(3));
-		assertEquals("G", matcher.group(5));
-		assertEquals("4; AAA42118/AAA42303", matcher.group(8));
+		assertEquals("G", matcher.group(7));
+		assertEquals("4; AAA42118/AAA42303", matcher.group(10));
 		String regex =", | and ";
-		String[] tokens = matcher.group(8).split(regex);
+		String[] tokens = matcher.group(10).split(regex);
 		assertEquals(1, tokens.length);
 		assertEquals("4; AAA42118/AAA42303", tokens[0]);
 	
@@ -228,10 +275,10 @@ public class FtLineConverterUtilTest {
 		assertTrue(matcher.matches());
 		assertEquals("L -> V", matcher.group(1));
 		assertEquals("L", matcher.group(3));
-		assertEquals("V", matcher.group(5));
-		assertEquals("3; CAA49505 and 7; AAO89504/AAO89505", matcher.group(8));
+		assertEquals("V", matcher.group(7));
+		assertEquals("3; CAA49505 and 7; AAO89504/AAO89505", matcher.group(10));
 		String regex =", | and ";
-		String[] tokens = matcher.group(8).split(regex);
+		String[] tokens = matcher.group(10).split(regex);
 		assertEquals(2, tokens.length);
 		assertEquals("3; CAA49505", tokens[0]);
 		assertEquals("7; AAO89504/AAO89505", tokens[1]);
@@ -244,10 +291,10 @@ public class FtLineConverterUtilTest {
 		assertTrue(matcher.matches());
 		assertEquals("Q -> K", matcher.group(1));
 		assertEquals("Q", matcher.group(3));
-		assertEquals("K", matcher.group(5));
-		assertEquals("1; AAO59377, 2; ABO40479 and 6; AAH63566", matcher.group(8));
+		assertEquals("K", matcher.group(7));
+		assertEquals("1; AAO59377, 2; ABO40479 and 6; AAH63566", matcher.group(10));
 		String regex =", | and ";
-		String[] tokens = matcher.group(8).split(regex);
+		String[] tokens = matcher.group(10).split(regex);
 		assertEquals(3, tokens.length);
 		assertEquals("1; AAO59377", tokens[0]);
 		assertEquals("2; ABO40479", tokens[1]);
