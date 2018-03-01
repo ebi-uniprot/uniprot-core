@@ -13,15 +13,15 @@ import java.nio.file.Paths;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
 import uk.ac.ebi.uniprot.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.UniProtFlatfileWriter;
+import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
 
 public class UniProtEntryIteratorTest {
 	@Test
 	public void testSingleTxl() {
 		try {
-			UniProtEntryIterator iterator = new UniProtEntryIterator();
+			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A9N0W4.txl";
 			iterator.setInput(filename);
 			assertTrue(iterator.hasNext());
@@ -36,7 +36,7 @@ public class UniProtEntryIteratorTest {
 	@Test
 	public void testSingleTxlRoundTrip() {
 		try {
-			UniProtEntryIterator iterator = new UniProtEntryIterator();
+			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A9N0W4.txl";
 			String entryStr = readFile(filename);
 			iterator.setInput(filename);
@@ -53,7 +53,7 @@ public class UniProtEntryIteratorTest {
 	@Test
 	public void testSingleDat() {
 		try {
-			UniProtEntryIterator iterator = new UniProtEntryIterator();
+			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/Q32K04.dat";
 			iterator.setInput(filename);
 			assertTrue(iterator.hasNext());
@@ -68,7 +68,7 @@ public class UniProtEntryIteratorTest {
 	@Test
 	public void testSingleDatRoundTrip() {
 		try {
-			UniProtEntryIterator iterator = new UniProtEntryIterator();
+			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/Q32K04.dat";
 			String entryStr = readFile(filename);
 			iterator.setInput(filename);
@@ -85,7 +85,7 @@ public class UniProtEntryIteratorTest {
 	@Test
 	public void testMultiDat() {
 		try {
-			UniProtEntryIterator iterator = new UniProtEntryIterator();
+			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
 			iterator.setInput(filename);
 			assertTrue(iterator.hasNext());
@@ -104,7 +104,7 @@ public class UniProtEntryIteratorTest {
 	@Test
 	public void testMultiDatRoundTrip() {
 		try {
-			UniProtEntryIterator iterator = new UniProtEntryIterator();
+			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
 			iterator.setInput(filename);
 			assertTrue(iterator.hasNext());
@@ -134,7 +134,7 @@ public class UniProtEntryIteratorTest {
 	@Test
 	public void testMultiDatGz() {
 		try {
-			UniProtEntryIterator iterator = new UniProtEntryIterator();
+			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat.gz";
 			iterator.setInput(filename);
 			assertTrue(iterator.hasNext());

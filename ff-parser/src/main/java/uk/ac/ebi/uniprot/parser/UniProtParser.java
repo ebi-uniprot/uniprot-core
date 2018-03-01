@@ -1,15 +1,10 @@
 package uk.ac.ebi.uniprot.parser;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.parser.ParseException;
-import uk.ac.ebi.uniprot.parser.UniprotLineParser;
+import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
-
-import java.io.*;
-import java.net.URL;
-import java.util.Iterator;
 
 public final class UniProtParser {
 
@@ -60,9 +55,7 @@ public final class UniProtParser {
         return parse(entryText, false);
     }
 
-    public static UniProtEntry parse(String entryText, boolean ignoreWrongDR) throws UniProtParserException {
-        //	 EntryObjectConverter entryObjectConverter = new EntryObjectConverter();
-        //	 EntryObjectConverter entryObjectConverterIgnoreDR = new EntryObjectConverter(true);
+    public static UniProtEntry parse(String entryText, boolean ignoreWrongDR) {
         try {
             EntryObject parse = entryParser.get().parse(entryText);
             EntryObjectConverter entryConverter = entryObjectConverter.get();
@@ -71,13 +64,16 @@ public final class UniProtParser {
             UniProtEntry convert = entryConverter.convert(parse);
             return convert;
         } catch (ParseException e) {
-            System.err.println(entryText);
             throw new UniProtParserException(e.getDetailedMessage());
         } catch (RuntimeException ee) {
-            System.err.println(entryText);
             throw ee;
         }
 
     }
-
+   
+    public static UniProtEntryIterator parseFile(String filename) {
+    		UniProtEntryIterator iterator =new DefaultUniProtEntryIterator();
+    		iterator.setInput(filename);
+    		return iterator;
+    }
 }
