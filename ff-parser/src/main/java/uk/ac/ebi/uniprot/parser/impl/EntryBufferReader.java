@@ -10,7 +10,7 @@ import java.util.zip.GZIPInputStream;
 
 import uk.ac.ebi.uniprot.parser.EntryReader;
 
-public class EntryBufferedReader implements EntryReader {
+public class EntryBufferReader implements EntryReader {
 	private BufferedReader reader;
 	/**
 	 * Where to split entries
@@ -19,7 +19,7 @@ public class EntryBufferedReader implements EntryReader {
 
 	private boolean available = true;
 
-	public EntryBufferedReader(String fileName) throws FileNotFoundException, IOException {
+	public EntryBufferReader(String fileName) throws FileNotFoundException, IOException {
 		InputStream is = new FileInputStream(fileName);
 
 		if (fileName.endsWith(".gz")) {

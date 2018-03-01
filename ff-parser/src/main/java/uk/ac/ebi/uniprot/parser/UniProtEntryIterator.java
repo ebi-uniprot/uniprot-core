@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.EntryBufferReader2;
-import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader;
+import uk.ac.ebi.uniprot.parser.impl.EntryBufferReader;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
 
@@ -201,7 +201,7 @@ public class UniProtEntryIterator implements Iterator<UniProtEntry>{
     private EntryReader createEntryReader(String fileName)throws FileNotFoundException {
         if(fileName.endsWith(".gz")){
             try{
-            return new EntryBufferedReader(fileName);
+            return new EntryBufferReader(fileName);
             }catch(IOException e ){
                 return  new EntryBufferReader2(fileName);
             }
