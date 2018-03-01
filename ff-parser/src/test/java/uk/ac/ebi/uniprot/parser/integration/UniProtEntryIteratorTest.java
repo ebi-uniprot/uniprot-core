@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
@@ -101,11 +102,11 @@ public class UniProtEntryIteratorTest {
 		}
 	}
 
-	@Test
+	@Ignore
 	public void testMultiDatRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
-			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
+			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat.gz";
 			iterator.setInput(filename);
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();

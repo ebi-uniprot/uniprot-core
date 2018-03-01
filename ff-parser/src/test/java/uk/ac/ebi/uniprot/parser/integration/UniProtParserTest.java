@@ -8,6 +8,9 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
@@ -43,11 +46,15 @@ public class UniProtParserTest {
 		assertTrue(iterator.hasNext());
 		UniProtEntry entry = iterator.next();
 		assertNotNull(entry);
-		assertEquals("A8EZU1", entry.getPrimaryUniProtAccession().getValue());
+		Set<String> accs =new TreeSet<>( Arrays.asList(new String[] {"A8EZU1", "D6RDV7"}));
+		Set<String > expected = new TreeSet<>();
+		expected.add( entry.getPrimaryUniProtAccession().getValue());
+	
 		assertTrue(iterator.hasNext());
 		 entry = iterator.next();
 		assertNotNull(entry);
-		assertEquals("D6RDV7", entry.getPrimaryUniProtAccession().getValue());
+		expected.add( entry.getPrimaryUniProtAccession().getValue());
+		assertEquals(accs, expected);
 		assertFalse(iterator.hasNext());
 	}
 	
