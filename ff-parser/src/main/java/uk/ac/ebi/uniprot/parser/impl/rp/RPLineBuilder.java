@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.parser.impl.rp;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.RLine;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
 public class RPLineBuilder
 	implements RLine <List<String> >{
 	 private final static Pattern RP_BAD_COLON_POSITION_SEPARATION = Pattern.compile(";(\\d+)-");

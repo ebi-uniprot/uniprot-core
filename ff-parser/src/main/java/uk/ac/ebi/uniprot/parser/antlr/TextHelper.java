@@ -1,6 +1,10 @@
-package uk.ac.ebi.uniprot.antlr;
+package uk.ac.ebi.uniprot.parser.antlr;
 
 import com.google.common.base.Preconditions;
+
+import uk.ac.ebi.uniprot.antlr.TextHelperLexer;
+import uk.ac.ebi.uniprot.antlr.TextHelperParser;
+
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.TerminalNode;

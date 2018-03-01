@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.pe.PELineBuilder;
 
 public class PELineBuildTest {

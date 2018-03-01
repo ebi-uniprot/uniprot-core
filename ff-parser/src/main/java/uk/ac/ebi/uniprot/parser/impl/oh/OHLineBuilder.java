@@ -1,18 +1,18 @@
 package uk.ac.ebi.uniprot.parser.impl.oh;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.FFLineBuilderAbstr;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
 public class OHLineBuilder extends FFLineBuilderAbstr< List<OrganismHost> >
 	implements FFLineBuilder<List<OrganismHost> > {

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.ffwriter.line;
+package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
 public final class FFLineConstant {
 	public static final String UNIPROT_SWISSPROT = "UniProtKB/Swiss-Prot";

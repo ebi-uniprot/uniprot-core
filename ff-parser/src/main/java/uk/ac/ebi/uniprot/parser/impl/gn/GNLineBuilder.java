@@ -1,18 +1,18 @@
 package uk.ac.ebi.uniprot.parser.impl.gn;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.FFLineBuilderAbstr;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilder;
 
 public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>> implements FFLineBuilder<List<Gene>> {
 	private static final String ORF_NAMES = "ORFNames=";

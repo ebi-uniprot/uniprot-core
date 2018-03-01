@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.ffwriter.line.impl;
+package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;
@@ -19,10 +19,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.FlatfileWriter;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FlatfileWriter;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.impl.ac.ACLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.cc.CCLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.de.DELineBuilder;

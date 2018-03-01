@@ -14,7 +14,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.og.OGLineBuilder;
 
 

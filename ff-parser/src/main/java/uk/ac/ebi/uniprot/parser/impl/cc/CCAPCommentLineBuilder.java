@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.APEvent;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 /**
  * 

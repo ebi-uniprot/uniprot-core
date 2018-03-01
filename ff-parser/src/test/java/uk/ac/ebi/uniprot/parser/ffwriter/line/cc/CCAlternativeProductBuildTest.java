@@ -21,7 +21,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSynonym;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.APCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.cc.CCAPCommentLineBuilder;
 
 public class CCAlternativeProductBuildTest extends CCBuildTestAbstr {

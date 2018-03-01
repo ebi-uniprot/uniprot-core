@@ -16,8 +16,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.ft.FeatureLineBuilderFactory;
 
 

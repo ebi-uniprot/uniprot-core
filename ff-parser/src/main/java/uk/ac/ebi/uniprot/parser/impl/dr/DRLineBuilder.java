@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.dr;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -9,13 +11,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DbXRefAttribute;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtXDbDisplayOrder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.FFLineBuilderAbstr;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
 public class DRLineBuilder extends FFLineBuilderAbstr<UniProtDBCrossReferences>
 		implements FFLineBuilder<UniProtDBCrossReferences> {

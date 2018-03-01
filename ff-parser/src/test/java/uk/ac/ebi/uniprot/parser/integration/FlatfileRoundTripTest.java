@@ -13,9 +13,9 @@ import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.ffwriter.line.FlatfileWriter;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
+import uk.ac.ebi.uniprot.parser.ffwriter.FlatfileWriter;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;

@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.ac.ACLineBuilder;
 
 

@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.OrganismFactory;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.os.OSLineBuilder;
 
 

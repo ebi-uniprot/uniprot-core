@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEMI_COMA;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEPARATOR_COMA;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
-import uk.ac.ebi.uniprot.ffwriter.line.LineBuilderHelper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 
 /**
  * 	"CC   -!- SEQUENCE CAUTION:\n" +

@@ -1,19 +1,19 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.COLON;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.DASH;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.LINE_LENGTH;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEPARATOR;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SPACE;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.STOP;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.COLON;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DASH;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-import uk.ac.ebi.uniprot.ffwriter.line.LineBuilderHelper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 
 public class MutagenFeatureLineBuilder extends AbstractFeatureLineBuilder<UniProtFeature<MutagenFeature>> {
 	@Override

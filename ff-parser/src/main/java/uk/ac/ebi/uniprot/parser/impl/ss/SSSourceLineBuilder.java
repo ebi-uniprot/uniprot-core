@@ -3,10 +3,10 @@ package uk.ac.ebi.uniprot.parser.impl.ss;
 import java.util.ArrayList;
 import java.util.List;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
 public class SSSourceLineBuilder extends FFLineBuilderAbstr<List<SourceLine> > {
 	private final static String SOURCE_SECTION =

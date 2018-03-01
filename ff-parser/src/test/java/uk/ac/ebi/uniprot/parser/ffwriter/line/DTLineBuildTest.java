@@ -13,7 +13,7 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.dt.DTLineBuilder;
 
 public class DTLineBuildTest {

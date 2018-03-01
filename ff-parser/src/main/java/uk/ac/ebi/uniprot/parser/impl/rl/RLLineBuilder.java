@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.rl;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +17,9 @@ import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
 import uk.ac.ebi.uniprot.domain.citation.UnpublishedObservations;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.RLine;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
 
 public class RLLineBuilder implements RLine<Citation> {
 	private final LineType lineType = LineType.RL;

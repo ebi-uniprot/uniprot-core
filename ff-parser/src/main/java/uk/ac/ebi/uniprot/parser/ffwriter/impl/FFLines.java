@@ -1,7 +1,9 @@
-package uk.ac.ebi.uniprot.ffwriter.line;
+package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 
 public class FFLines {
 	public static FFLine create(List<String> lls){

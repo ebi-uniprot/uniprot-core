@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,9 +12,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 /**
  * 

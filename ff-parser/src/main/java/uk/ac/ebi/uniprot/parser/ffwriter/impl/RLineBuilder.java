@@ -1,4 +1,6 @@
-package uk.ac.ebi.uniprot.ffwriter.line.impl;
+package uk.ac.ebi.uniprot.parser.ffwriter.impl;
+
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +8,9 @@ import java.util.List;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.impl.ra.RALineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rc.RCLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rg.RGLineBuilder;
@@ -17,8 +18,6 @@ import uk.ac.ebi.uniprot.parser.impl.rl.RLLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rp.RPLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rt.RTLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rx.RXLineBuilder;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 
 public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference<? extends Citation>>
 		implements FFLineBuilder<UniProtReference<? extends Citation>> {

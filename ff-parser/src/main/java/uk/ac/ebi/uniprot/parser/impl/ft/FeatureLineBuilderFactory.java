@@ -6,7 +6,7 @@ import java.util.Map;
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 
 
 public class FeatureLineBuilderFactory {

@@ -1,7 +1,9 @@
-package uk.ac.ebi.uniprot.ffwriter.line;
+package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 
 
 public class LineBuilder {
@@ -41,17 +43,7 @@ public class LineBuilder {
 			}
 		}
 	}
-//	private void resetCurrentLine (){
-//		if(currentLine.length()>lineLength){
-//			String temp = LineWrapperHelper.StandardWrapper(currentLine,
-//					lineType, LineWrapperHelper.SPACE, " ", LINE_LENGTH,"\n", "").toString();
-//			String[] temps = temp.split("\n");
-//			for(int i=0; i<temps.length-1; i++)
-//				lines.add(temps[i]);
-//			currentLine = new StringBuilder(temps[temps.length -1]);
-//			
-//		}
-//	}
+
 	private void resetCurrentLine (String separator ){
 		if(currentLine.length()>lineLength){
 			List<String> tempLines = FFLineWrapper.buildLines(currentLine.toString(), 

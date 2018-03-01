@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.parser.impl.ra;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.RLine;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
 
 public class RALineBuilder implements RLine< List<Author> > {
 	private final LineType lineType = LineType.RA;

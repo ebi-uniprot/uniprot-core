@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.rx;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -7,10 +9,8 @@ import java.util.Optional;
 import uk.ac.ebi.uniprot.domain.citation.CitationXref;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.RLine;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
 
 public class RXLineBuilder implements RLine<CitationXrefs> {
 	private final LineType lineType = LineType.RX;

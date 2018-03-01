@@ -1,20 +1,20 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineBuilderHelper;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
 
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.COLON;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.DASH;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.LINE_LENGTH;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEPARATOR;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SPACE;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.STOP;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.COLON;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DASH;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 
 import java.util.ArrayList;
 import java.util.List;

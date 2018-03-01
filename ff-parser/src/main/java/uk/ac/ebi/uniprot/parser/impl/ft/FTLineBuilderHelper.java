@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,10 +13,8 @@ import uk.ac.ebi.uniprot.domain.feature.FeatureLocationModifier;
 import uk.ac.ebi.uniprot.domain.feature.HasAlternativeSequence;
 import uk.ac.ebi.uniprot.domain.feature.HasFeatureId;
 import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
-
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
 
 
 public class FTLineBuilderHelper {

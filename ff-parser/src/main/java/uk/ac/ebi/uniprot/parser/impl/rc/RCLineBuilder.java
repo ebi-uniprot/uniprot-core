@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.parser.impl.rc;
 
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.COMA;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.DEFAUT_LINESPACE;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEPARATOR_AND;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEPARATOR_COMA;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DEFAUT_LINESPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_AND;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.ffwriter.line.LineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.LineBuilderHelper;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.RLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
 
 public class RCLineBuilder implements RLine< List<ReferenceComment> >{
 	private final LineType lineType = LineType.RC;

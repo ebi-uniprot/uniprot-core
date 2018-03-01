@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEMI_COMA;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SEPARATOR;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SPACE;
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.STOP;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.PHDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.TemperatureDependence;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineWrapper;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 /**
  * 

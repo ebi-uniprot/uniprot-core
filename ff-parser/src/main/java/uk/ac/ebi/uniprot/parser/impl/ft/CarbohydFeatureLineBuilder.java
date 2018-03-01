@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.SPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 
 import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;

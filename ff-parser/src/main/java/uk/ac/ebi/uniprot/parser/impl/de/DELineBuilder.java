@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.de;
 
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,15 +15,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLine;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLineBuilder;
-import uk.ac.ebi.uniprot.ffwriter.line.FFLines;
-import uk.ac.ebi.uniprot.ffwriter.line.LineType;
-import uk.ac.ebi.uniprot.ffwriter.line.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
-import static uk.ac.ebi.uniprot.ffwriter.line.FFLineConstant.*;
-
-public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription> implements FFLineBuilder<ProteinDescription> {
+public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription> 
+implements FFLineBuilder<ProteinDescription> {
 
 	private static final String EC = "EC";
 	private static final String SHORT = "Short";
