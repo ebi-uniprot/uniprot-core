@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.parser.antlr;
+package uk.ac.ebi.uniprot.antlr;
 
 import com.google.common.base.Preconditions;
 

@@ -6,8 +6,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import uk.ac.ebi.uniprot.antlr.CcLineParser;
 import uk.ac.ebi.uniprot.antlr.CcLineParser.*;
 import uk.ac.ebi.uniprot.antlr.CcLineParserBaseListener;
+import uk.ac.ebi.uniprot.antlr.TextHelper;
 import uk.ac.ebi.uniprot.parser.ParseTreeObjectExtractor;
-import uk.ac.ebi.uniprot.parser.antlr.TextHelper;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceInfo;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.EvidencedString;
 
