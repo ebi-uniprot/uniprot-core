@@ -86,6 +86,154 @@ public class FlatfileRoundTripTest {
 	}
 
 	
+	@Test
+	public void testA0A176EY13Txl() {
+		
+		String filename = "/entryIT/A0A176EY13.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+
+	@Test
+	public void testA0A1Q9NR16Txl() {
+		
+		String filename = "/entryIT/A0A1Q9NR16.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+
+	@Test
+	public void testA0A1Z5JZG6Txl() {
+		
+		String filename = "/entryIT/A0A1Z5JZG6.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	@Test
+	public void testA0A2D8TK40Txl() {
+		
+		String filename = "/entryIT/A0A2D8TK40.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	@Test
+	public void testA0A2E5TRM0Txl() {
+		
+		String filename = "/entryIT/A0A2E5TRM0.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	@Test
+	public void testA9N0W4Txl() {
+		
+		String filename = "/entryIT/A9N0W4.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testB3E7G1Txl() {
+		
+		String filename = "/entryIT/B3E7G1.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	@Test
+	public void testH0ZNI7Txl() {
+		
+		String filename = "/entryIT/H0ZNI7.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	@Test
+	public void testP55423Txl() {
+		
+		String filename = "/entryIT/P55423.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	@Test
+	public void testQ1MS15Txl() {
+		
+		String filename = "/entryIT/Q1MS15.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testQ66GB9Txl() {
+		
+		String filename = "/entryIT/Q66GB9.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	
+	@Test
+	public void testS7U3X4Txl() {
+		
+		String filename = "/entryIT/S7U3X4.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testA0A0E2CV74Dat() {
+		
+		String filename = "/entryIT/A0A0E2CV74.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testA0A196N885Dat() {
+		
+		String filename = "/entryIT/A0A196N885.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testA8EZU1Dat() {
+		
+		String filename = "/entryIT/A8EZU1.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testQ32K04Dat() {
+		
+		String filename = "/entryIT/Q32K04.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	
+	
+	@Test
+	public void testQ8DPW5Dat() {
+		
+		String filename = "/entryIT/Q8DPW5.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	
+	
+	
 	private void testEntry(String entryToParse, boolean ispublic) {
 		UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
 		EntryObject parse = entryParser.parse(entryToParse);

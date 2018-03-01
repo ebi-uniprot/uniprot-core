@@ -119,8 +119,15 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 		if(drObjects.ssProsites !=null){
 			List<InternalLine> internalLines = new ArrayList<>();
 			internalLines.addAll(drObjects.ssProsites);
-			internalLines.addAll(usl.getInternalLines());
-			builder.internalSection( UniProtFactory.INSTANCE.createInternalSection(internalLines, usl.getEvidenceLines(), usl.getSourceLines()));
+			if(usl !=null)
+				internalLines.addAll(usl.getInternalLines());
+			if(usl !=null)
+				builder.internalSection( UniProtFactory.INSTANCE.createInternalSection(internalLines,
+						usl.getEvidenceLines(), usl.getSourceLines()));
+			else {
+				builder.internalSection( UniProtFactory.INSTANCE.createInternalSection(internalLines,
+						Collections.emptyList(), Collections.emptyList()));
+			}
 		}else {
 			builder.internalSection(usl);
 		}

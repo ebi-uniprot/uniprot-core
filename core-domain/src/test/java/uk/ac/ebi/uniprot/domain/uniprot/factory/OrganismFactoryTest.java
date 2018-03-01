@@ -75,4 +75,41 @@ public class OrganismFactoryTest {
         assertEquals(str, organism.toString());
     }
     
+    
+    @Test
+    public void testCreateWithDot() {
+        String str ="Roseovarius sp. HI0049";
+        String scientificName ="Roseovarius sp. HI0049";
+        Organism organism = OrganismFactory.INSTANCE.createFromOrganismLine(str);
+
+        assertEquals(scientificName, organism.getScientificName());
+        assertEquals("", organism.getCommonName());
+        assertEquals(0, organism.getSynonyms().size());
+        assertEquals(str, organism.toString());
+    }
+    @Test
+    public void testCreateWith_() {
+        String str ="Candidatus Heimdallarchaeota archaeon LC_2";
+        String scientificName ="Candidatus Heimdallarchaeota archaeon LC_2";
+        Organism organism = OrganismFactory.INSTANCE.createFromOrganismLine(str);
+
+        assertEquals(scientificName, organism.getScientificName());
+        assertEquals("", organism.getCommonName());
+        assertEquals(0, organism.getSynonyms().size());
+        assertEquals(str, organism.toString());
+    }
+    
+    @Test
+    public void testCreateWithSlash() {
+    	
+    	   String str ="Salmonella paratyphi B (strain ATCC BAA-1250 / SPB7)";
+           String scientificName ="Salmonella paratyphi B";
+           Organism organism = OrganismFactory.INSTANCE.createFromOrganismLine(str);
+
+           assertEquals(scientificName, organism.getScientificName());
+           assertEquals("strain ATCC BAA-1250 / SPB7", organism.getCommonName());
+           assertEquals(0, organism.getSynonyms().size());
+           assertEquals(str, organism.toString());
+    	
+    }
 }
