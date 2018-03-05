@@ -7,7 +7,6 @@
 		<version>1.0</version>
 		<relativePath>../</relativePath>
 	</parent>
-
 	<version>0.1-SNAPSHOT</version>
 	<artifactId>core-domain</artifactId>
 
@@ -16,21 +15,34 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+<!-- 			<version>1.7.20</version> -->
 		</dependency>
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
+<!-- 			<version>1.7.20</version> -->
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
+<!-- 			<version>1.1.7</version> -->
 		</dependency>
+<!-- 		<dependency> -->
+<!--     <groupId>org.junit.jupiter</groupId> -->
+<!--     <artifactId>junit-jupiter-engine</artifactId> -->
+<!--     <version>5.1.0</version> -->
+<!-- </dependency> -->
+<!-- <dependency> -->
+<!--     <groupId>org.junit.jupiter</groupId> -->
+<!--     <artifactId>junit-jupiter-api</artifactId> -->
+<!--     <version>5.1.0</version> -->
+<!-- </dependency> -->
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
-			<version>4.12</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
@@ -41,6 +53,14 @@
 
 	<build>
 		<plugins>
+<!-- 		<plugin> -->
+<!-- 			<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
+<!-- 				<version>3.7.0</version> -->
+<!-- 				<configuration> -->
+<!-- 					<release>9</release> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

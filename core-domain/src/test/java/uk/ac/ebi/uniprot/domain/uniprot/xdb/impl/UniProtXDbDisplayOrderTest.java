@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
 
 import java.util.List;
 import org.junit.Test;

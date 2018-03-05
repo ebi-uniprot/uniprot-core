@@ -1,7 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
-
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseDisplayOrder;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
+package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
 import java.io.BufferedReader;
 import java.io.File;
