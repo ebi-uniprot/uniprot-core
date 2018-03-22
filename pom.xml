@@ -83,11 +83,27 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-toolchains-plugin</artifactId>
 				<configuration>
-					<release>9</release>
+					<toolchains>
+						<jdk>
+							<version>1.9</version>
+							<vendor>oracle</vendor>
+						</jdk>
+					</toolchains>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>toolchain</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
@@ -127,7 +143,7 @@
 
 
 	<modules>
-		<module>core-util</module>
+<!--  		<module>core-util</module>  -->
 		<module>core-domain</module>
 		<module>ff-parser</module>
 	</modules>

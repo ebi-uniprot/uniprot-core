@@ -5,8 +5,6 @@
  * @author jluo
  *
  */
-module uniprot.util {
+module uniprotUtil {
 	exports uk.ac.ebi.uniprot.util;
-
-	requires junit;
 }
