@@ -119,9 +119,9 @@ class UniProtXDbTypesTest {
 	
 	@Test
 	void testSwiss2dpageType() {
-		Optional<UniProtXDbType> opType = UniProtXDbTypes.INSTANCE.getType("Swiss2dpage");
+		Optional<UniProtXDbType> opType = UniProtXDbTypes.INSTANCE.getType("SWISS-2DPAGE");
 		assertTrue(opType.isPresent());
-		assertEquals("Swiss2dpage", opType.get().getName());
+		assertEquals("SWISS-2DPAGE", opType.get().getName());
 		assertEquals("SWISS-2DPAGE", opType.get().getDisplayName());
 		assertEquals(DatabaseCategory.D2_GEL_DATABASES, opType.get().getCategory());
 		assertEquals("https://world-2dpage.expasy.org/swiss-2dpage/protein/ac=%value", opType.get().getUriLink());
