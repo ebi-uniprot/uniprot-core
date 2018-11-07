@@ -8,7 +8,7 @@ import static junit.framework.TestCase.*;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.kw.KwLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.kw.KwLineObject;
 

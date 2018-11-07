@@ -31,7 +31,7 @@ import uk.ac.ebi.uniprot.domain.feature.impl.VarSeqFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.VariantFeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeatures;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtFeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtFeaturesImpl;
 

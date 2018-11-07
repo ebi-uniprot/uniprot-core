@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class UniProtDBCrossReferencesImplTest {
     @Before
     public void setup(){
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
-        DatabaseType type =DatabaseType.ENSEMBL;
+        String type ="Ensembl";
         String id ="ENST00000393119";
         String description ="ENSP00000376827";
         String thirdAttr= "ENSG00000011143";
@@ -30,7 +29,7 @@ public class UniProtDBCrossReferencesImplTest {
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
       
      
-         type =DatabaseType.EMBL;
+         type ="EMBL";
          id ="DQ185029";
          description ="AAZ94714.1";
          thirdAttr= "-";
@@ -38,7 +37,7 @@ public class UniProtDBCrossReferencesImplTest {
          isoform = null;
         xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
-        type =DatabaseType.EMBL;
+        type ="EMBL";
         id ="AK000352";
         description ="BAA91105.1";
         thirdAttr= "ALT_INIT";
@@ -46,7 +45,7 @@ public class UniProtDBCrossReferencesImplTest {
         isoform = null;
        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
        // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
-       type =DatabaseType.EMBL;
+       type ="EMBL";
        id ="AK310815";
        description ="-";
        thirdAttr= "NOT_ANNOTATED_CDS";
@@ -55,7 +54,7 @@ public class UniProtDBCrossReferencesImplTest {
       xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
       
    //   DR   HPA; HPA021372; -.
-      type =DatabaseType.HPA;
+      type ="HPA";
       id ="HPA021372";
       description ="-";
       thirdAttr=  null;
@@ -63,7 +62,7 @@ public class UniProtDBCrossReferencesImplTest {
       isoform = null;
      xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
      //  DR   HPA; HPA021812; -.
-     type =DatabaseType.HPA;
+     type ="HPA";
      id ="HPA021812";
      description ="-";
      thirdAttr=  null;
@@ -85,19 +84,19 @@ public class UniProtDBCrossReferencesImplTest {
 
     @Test
     public void testGetCrossReferencesByTypeEMBL() {
-        assertEquals(3, uniXrefs.getCrossReferencesByType(DatabaseType.EMBL).size());
+        assertEquals(3, uniXrefs.getCrossReferencesByType("EMBL").size());
     }
     @Test
     public void testGetCrossReferencesByTypeEnsembl() {
-        assertEquals(1, uniXrefs.getCrossReferencesByType(DatabaseType.ENSEMBL).size());
+        assertEquals(1, uniXrefs.getCrossReferencesByType("Ensembl").size());
     }
 
     @Test
     public void testGetCrossReferencesByTypeHPA() {
-        assertEquals(2, uniXrefs.getCrossReferencesByType(DatabaseType.HPA).size());
+        assertEquals(2, uniXrefs.getCrossReferencesByType("HPA").size());
     }
     @Test
     public void testGetCrossReferencesByTypeGO() {
-        assertEquals(0, uniXrefs.getCrossReferencesByType(DatabaseType.GO).size());
+        assertEquals(0, uniXrefs.getCrossReferencesByType("GO").size());
     }
 }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public class UniProtFeatureImpl<T extends Feature> implements UniProtFeature<T> {
 	private final T feature;

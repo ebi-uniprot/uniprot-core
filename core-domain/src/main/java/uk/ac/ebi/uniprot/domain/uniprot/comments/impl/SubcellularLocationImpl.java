@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
 import java.util.List;

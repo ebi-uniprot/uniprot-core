@@ -11,7 +11,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformName;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSynonym;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 

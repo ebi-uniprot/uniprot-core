@@ -21,7 +21,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinAlternativeNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinRecommendedNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSubmissionNameImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public enum ProteinDescriptionFactory {
 	INSTANCE;

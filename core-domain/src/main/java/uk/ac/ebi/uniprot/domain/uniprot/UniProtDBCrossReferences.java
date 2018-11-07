@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-
 import java.util.List;
+
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
 public interface UniProtDBCrossReferences {
     List< UniProtDBCrossReference> getCrossReferences();
-    List<UniProtDBCrossReference >getCrossReferencesByType(DatabaseType type);
+    List<UniProtDBCrossReference >getCrossReferencesByType(UniProtXDbType type);
+    List<UniProtDBCrossReference >getCrossReferencesByType(String dbName);
 }

@@ -4,7 +4,7 @@ import org.junit.Test;
 
 
 import uk.ac.ebi.uniprot.domain.uniprot.comments.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.AlternativeNameSequenceEnum;

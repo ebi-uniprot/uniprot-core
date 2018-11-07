@@ -5,8 +5,7 @@ import uk.ac.ebi.uniprot.domain.gene.GeneName;
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
 
 import java.util.ArrayList;
@@ -169,7 +168,7 @@ public class GeneFactoryTest {
     }
 
     private Evidence createEvidence(String evidenceStr) {
-        return EvidenceFactory.INSTANCE.createFromEvidenceLine(evidenceStr);
+        return UniProtFactory.INSTANCE.createEvidence(evidenceStr);
     }
 
 }

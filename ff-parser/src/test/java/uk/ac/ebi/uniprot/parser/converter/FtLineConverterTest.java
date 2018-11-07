@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.feature.*;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineObject;
 

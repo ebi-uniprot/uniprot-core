@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +32,10 @@ public class KeywordImplTest {
     
     private List<Evidence> createEvidences(){
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(EvidenceType.Ensembl,
-                EvidenceCode.ECO_0000313, "ENSP0001324"));
-        evidences.add(new EvidenceImpl(EvidenceType.PIRNR,
-                EvidenceCode.ECO_0000256, "PIRNR001361"));
+        evidences.add(new EvidenceImpl(
+                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
+        evidences.add(new EvidenceImpl(
+                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
         
         return evidences;
     }

@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.List;

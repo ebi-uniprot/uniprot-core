@@ -14,8 +14,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceLineImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
@@ -31,9 +32,6 @@ import java.util.List;
 
 public enum UniProtFactory {
     INSTANCE;
-    public EvidenceFactory getEvidenceFactory() {
-        return EvidenceFactory.INSTANCE;
-    }
 
     public GeneFactory getGeneFactory() {
         return GeneFactory.INSTANCE;
@@ -120,4 +118,7 @@ public enum UniProtFactory {
         return new UniProtTaxonIdImpl(taxId, evidences);
     }
     
+    public Evidence createEvidence(String val) {
+    	return EvidenceImpl.parseEvidenceLine(val);
+    }
 }

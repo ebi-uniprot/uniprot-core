@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-
 import java.util.List;
 import java.util.Optional;
+
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public interface MassSpectrometryComment extends Comment {
 

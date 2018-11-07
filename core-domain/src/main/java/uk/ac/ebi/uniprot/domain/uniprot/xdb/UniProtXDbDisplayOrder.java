@@ -22,185 +22,172 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author jieluo
  *
  */
-public class UniProtXDbDisplayOrder implements DatabaseDisplayOrder {
-    private static Map<String, DBDisplayOrder> databaseType2DefsNoCase;
-    private static String DR_ORD_FILE = "META-INF/conf/dr_ord";
+public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbType> {
+	INSTANCE;
+	private  Map<String, DBDisplayOrder> databaseType2DefsNoCase;
+	private  String DR_ORD_FILE = "META-INF/conf/dr_ord";
 
-    private static String dr_ord_location = "https://www.ebi.ac.uk/~trembl/generator/dr_ord";
-    private static boolean init = false;
-    private static List<DatabaseType> orderedValues;
-    private static UniProtXDbDisplayOrder instance;
+	private  String dr_ord_location = "https://www.ebi.ac.uk/~trembl/generator/dr_ord";
+	private  boolean init = false;
+	private  List<UniProtXDbType> orderedValues;
 
-    public static UniProtXDbDisplayOrder getInstance() {
-        if (instance == null) {
-            synchronized (UniProtXDbDisplayOrder.class) {
-                if (instance == null) {
-                    synchronized (UniProtXDbDisplayOrder.class) {
-                        instance = new UniProtXDbDisplayOrder();
-                    }
-                }
-            }
-        }
+	UniProtXDbDisplayOrder() {
+		initCache();
+	}
 
-        return instance;
-    }
+	private void initCache() {
+		if (init)
+			return;
+		databaseType2DefsNoCase = new ConcurrentHashMap<>();
+		try {
+			BufferedReader orderFileReader = getReaderFromUrl(dr_ord_location);
+			if (orderFileReader == null) {
+				orderFileReader = getReaderFromFile(DR_ORD_FILE);
+			}
+			String readLine = orderFileReader.readLine();
+			Integer pos = 1;
+			while ((readLine != null)) {
+				readLine = readLine.trim();
+				if (!readLine.startsWith("#")) {
+					DBDisplayOrder def = createDatabaseDef(readLine, pos);
+					databaseType2DefsNoCase.put(def.getDbName().toUpperCase(), def);
+					pos++;
+				}
+				readLine = orderFileReader.readLine();
+			}
+			orderFileReader.close();
 
-    private UniProtXDbDisplayOrder() {
-        initCache();
-    }
+		} catch (FileNotFoundException e) {
+			throw new RuntimeException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
-    private void initCache() {
-        if (init)
-            return;
-        databaseType2DefsNoCase = new ConcurrentHashMap<>();
-        try {
-            BufferedReader orderFileReader = getReaderFromUrl(dr_ord_location);
-            if (orderFileReader == null) {
-                orderFileReader = getReaderFromFile(DR_ORD_FILE);
-            }
-            String readLine = orderFileReader.readLine();
-            Integer pos = 1;
-            while ((readLine != null)) {
-                readLine = readLine.trim();
-                if (!readLine.startsWith("#")) {
-                    DBDisplayOrder def = createDatabaseDef(readLine, pos);
-                    databaseType2DefsNoCase.put(def.getDbName().toUpperCase(), def);
-                    pos++;
-                }
-                readLine = orderFileReader.readLine();
-            }
-            orderFileReader.close();
+		init = true;
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+	}
 
-        init = true;
+	private DBDisplayOrder createDatabaseDef(String line, int pos) {
+		String[] data = line.split(" ");
+		String db = data[0].trim();
+		int secondOrder = 1;
+		if (data.length > 1) {
+			secondOrder = getSecondOrder(data[1]);
+		}
+		return new DBDisplayOrder(db, pos, secondOrder);
+	}
 
-    }
+	private int getSecondOrder(String val) {
+		try {
+			return Integer.parseInt(val);
+		} catch (Exception e) {
 
-    private DBDisplayOrder createDatabaseDef(String line, int pos) {
-        String[] data = line.split(" ");
-        String db = data[0].trim();
-        int secondOrder = 1;
-        if (data.length > 1) {
-            secondOrder = getSecondOrder(data[1]);
-        }
-        return new DBDisplayOrder(db, pos, secondOrder);
-    }
+		}
+		return 1; // use default
+	}
 
-    private int getSecondOrder(String val) {
-        try {
-            return Integer.parseInt(val);
-        } catch (Exception e) {
+	private BufferedReader getReaderFromUrl(String queryUrl) {
+		URLConnection urlConnection = null;
+		URL url = null;
+		BufferedReader reader = null;
+		try {
+			url = new URL(queryUrl);
+		} catch (MalformedURLException ex) {
+			return null;
+		}
+		try {
+			urlConnection = url.openConnection();
+			urlConnection.setUseCaches(true);
+			urlConnection.connect();
+			reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+		} catch (IOException ex) {
+			return null;
+		}
+		return reader;
+	}
 
-        }
-        return 1; // use default
-    }
+	private BufferedReader getReaderFromFile(String filename) {
 
-    private BufferedReader getReaderFromUrl(String queryUrl) {
-        URLConnection urlConnection = null;
-        URL url = null;
-        BufferedReader reader = null;
-        try {
-            url = new URL(queryUrl);
-        } catch (MalformedURLException ex) {
-            return null;
-        }
-        try {
-            urlConnection = url.openConnection();
-            urlConnection.setUseCaches(true);
-            urlConnection.connect();
-            reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-        } catch (IOException ex) {
-            return null;
-        }
-        return reader;
-    }
+		try {
+			InputStream in = UniProtXDbDisplayOrder.class.getClassLoader().getResourceAsStream(filename);
+			if (in == null) {
+				File file = new File((filename));
+				in = new FileInputStream(file);
+			}
+			return new BufferedReader(new InputStreamReader(in));
 
-    private BufferedReader getReaderFromFile(String filename) {
+		} catch (Exception e) {
+			throw new RuntimeException(" Database Cross Reference order file could not open.");
+		}
+	}
 
-        try {
-            InputStream in = UniProtXDbDisplayOrder.class.getClassLoader().getResourceAsStream(filename);
-            if (in == null) {
-                File file = new File((filename));
-                in = new FileInputStream(file);
-            }
-            return new BufferedReader(new InputStreamReader(in));
+	@Override
+	public List<UniProtXDbType> getOrderedDatabases() {
+		if (orderedValues == null) {
+			synchronized (UniProtXDbType.class) {
+				if (orderedValues == null) {
+					synchronized (UniProtXDbType.class) {
+						orderedValues = new CopyOnWriteArrayList<>();
+						for (UniProtXDbType type : UniProtXDbTypes.INSTANCE.getAllDBXRefTypes()) {
+							orderedValues.add(type);
+						}
 
-        } catch (Exception e) {
-            throw new RuntimeException(" Database Cross Reference order file could not open.");
-        }
-    }
+						Collections.sort(orderedValues, new XRefDBOrder());
+					}
+				}
+			}
+		}
 
-    @Override
-    public List<DatabaseType> getOrderedDatabases() {
-        if (orderedValues == null) {
-            synchronized (DatabaseType.class) {
-                if (orderedValues == null) {
-                    synchronized (DatabaseType.class) {
-                        orderedValues = new CopyOnWriteArrayList<>();
-                        for (DatabaseType type : DatabaseType.values()) {
-                            orderedValues.add(type);
-                        }
+		return orderedValues;
+	}
 
-                        Collections.sort(orderedValues, new XRefDBOrder());
-                    }
-                }
-            }
-        }
+	private DBDisplayOrder getXRefDBDef(UniProtXDbType type) {
+		return databaseType2DefsNoCase.get(type.getDisplayName().toUpperCase());
 
-        return orderedValues;
-    }
+	}
 
-    private DBDisplayOrder getXRefDBDef(DatabaseType type) {
-        return databaseType2DefsNoCase.get(type.getName().toUpperCase());
+	private class DBDisplayOrder {
+		private final String dbName;
+		private final int displayOrder;
+		private final int secondaryOrder;
 
-    }
+		public DBDisplayOrder(String dbName, int displayOrder, int secondaryOrder) {
+			this.dbName = dbName;
+			this.displayOrder = displayOrder;
+			this.secondaryOrder = secondaryOrder;
+		}
 
-    private class DBDisplayOrder {
-        private final String dbName;
-        private final int displayOrder;
-        private final int secondaryOrder;
+		public int getDisplayOrder() {
+			return this.displayOrder;
+		}
 
-        public DBDisplayOrder(String dbName, int displayOrder, int secondaryOrder) {
-            this.dbName = dbName;
-            this.displayOrder = displayOrder;
-            this.secondaryOrder = secondaryOrder;
-        }
-        public int getDisplayOrder() {
-            return this.displayOrder;
-        }
+		public int getSecondaryOrder() {
+			return this.secondaryOrder;
+		}
 
-        public int getSecondaryOrder() {
-            return this.secondaryOrder;
-        }
+		public String getDbName() {
+			return this.dbName;
+		}
 
-        public String getDbName() {
-            return this.dbName;
-        }
+	}
 
-    }
+	private class XRefDBOrder implements Comparator<UniProtXDbType> {
+		@Override
+		public int compare(UniProtXDbType o1, UniProtXDbType o2) {
+			DBDisplayOrder dbOrder1 = getXRefDBDef(o1);
+			DBDisplayOrder dbOrder2 = getXRefDBDef(o2);
 
-    private class XRefDBOrder implements Comparator<DatabaseType> {
-        @Override
-        public int compare(DatabaseType o1, DatabaseType o2) {
-            DBDisplayOrder dbOrder1 = getXRefDBDef(o1);
-            DBDisplayOrder dbOrder2 = getXRefDBDef(o2);
+			if (dbOrder1 == null) {
+				return 1;
+			} else if (dbOrder2 == null) {
+				return -1;
+			}
+			int val = dbOrder1.getDisplayOrder() - dbOrder2.getDisplayOrder();
+			if (val == 0)
+				return dbOrder1.getSecondaryOrder() - dbOrder2.getDisplayOrder();
+			else
+				return val;
+		}
 
-            if (dbOrder1 == null) {
-                return 1;
-            } else if (dbOrder2 == null) {
-                return -1;
-            }
-            int val = dbOrder1.getDisplayOrder() - dbOrder2.getDisplayOrder();
-            if (val == 0)
-                return dbOrder1.getSecondaryOrder() - dbOrder2.getDisplayOrder();
-            else
-                return val;
-        }
-
-    }
+	}
 }

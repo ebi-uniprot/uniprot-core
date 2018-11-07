@@ -58,6 +58,6 @@ public interface UniProtEntry {
 	UniProtTaxonId getTaxonId();
 
 	Boolean isFragment();
-
+	
 	InternalSection getInternalSection();
 }

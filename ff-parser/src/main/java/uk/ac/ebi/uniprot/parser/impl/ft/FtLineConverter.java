@@ -15,7 +15,7 @@ import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocationModifier;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;

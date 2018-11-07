@@ -14,7 +14,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSynonym;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.APIsoformImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.AlternativeProductsCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
     private  List<APEvent> events;

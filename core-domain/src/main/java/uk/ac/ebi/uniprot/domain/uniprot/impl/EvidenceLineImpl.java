@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 import java.time.LocalDate;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public class EvidenceLineImpl implements EvidenceLine {
 	private final Evidence evidence;

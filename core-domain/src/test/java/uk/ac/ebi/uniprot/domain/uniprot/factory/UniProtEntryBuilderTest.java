@@ -24,7 +24,6 @@ import uk.ac.ebi.uniprot.domain.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
@@ -34,7 +33,6 @@ import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
@@ -74,8 +72,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubmissionName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
@@ -484,7 +481,7 @@ public class UniProtEntryBuilderTest {
         
     }
     private Evidence createEvidence(String evidenceStr) {
-        return EvidenceFactory.INSTANCE.createFromEvidenceLine(evidenceStr);
+        return UniProtFactory.INSTANCE.createEvidence(evidenceStr);
     }
     @Test
     public void testSetOrganism() {
@@ -545,7 +542,7 @@ public class UniProtEntryBuilderTest {
     
     public UniProtDBCrossReferences createDbXref(){
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
-        DatabaseType type =DatabaseType.ENSEMBL;
+       String type = "Ensembl";
         String id ="ENST00000393119";
         String description ="ENSP00000376827";
         String thirdAttr= "ENSG00000011143";
@@ -557,7 +554,7 @@ public class UniProtEntryBuilderTest {
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
       
      
-         type =DatabaseType.EMBL;
+         type = "EMBL";
          id ="DQ185029";
          description ="AAZ94714.1";
          thirdAttr= "-";
@@ -565,7 +562,7 @@ public class UniProtEntryBuilderTest {
          isoform = null;
         xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
-        type =DatabaseType.EMBL;
+        type ="EMBL";
         id ="AK000352";
         description ="BAA91105.1";
         thirdAttr= "ALT_INIT";
@@ -573,7 +570,7 @@ public class UniProtEntryBuilderTest {
         isoform = null;
        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
        // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
-       type =DatabaseType.EMBL;
+       type = "EMBL";
        id ="AK310815";
        description ="-";
        thirdAttr= "NOT_ANNOTATED_CDS";
@@ -582,7 +579,7 @@ public class UniProtEntryBuilderTest {
       xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
       
    //   DR   HPA; HPA021372; -.
-      type =DatabaseType.HPA;
+      type = "HPA";
       id ="HPA021372";
       description ="-";
       thirdAttr=  null;
@@ -590,7 +587,7 @@ public class UniProtEntryBuilderTest {
       isoform = null;
      xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
      //  DR   HPA; HPA021812; -.
-     type =DatabaseType.HPA;
+     type = "HPA";
      id ="HPA021812";
      description ="-";
      thirdAttr=  null;
@@ -723,8 +720,8 @@ public class UniProtEntryBuilderTest {
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
 }

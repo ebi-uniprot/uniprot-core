@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.AbsorptionNote;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.List;

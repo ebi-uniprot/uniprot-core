@@ -4,8 +4,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -149,8 +149,8 @@ public class MassSpectrometryCommentBuilderTest {
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
 

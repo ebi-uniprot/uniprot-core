@@ -1,13 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import java.util.Collections;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.feature.Features;
-import uk.ac.ebi.uniprot.domain.feature.impl.FeaturesImpl;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
@@ -27,9 +31,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentsImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
 
-import java.util.Collections;
-import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UniProtEntryImpl implements UniProtEntry {
     private final UniProtEntryType entryType;
     private final UniProtAccession accession;
@@ -49,6 +52,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     private final UniProtDBCrossReferences xrefs;
     private final Sequence sequence;
     private final UniProtTaxonId taxonId;
+    @JsonIgnore
     private final InternalSection internalSection;
     private final UniProtFeatures features;
     public UniProtEntryImpl(UniProtEntryType entryType,

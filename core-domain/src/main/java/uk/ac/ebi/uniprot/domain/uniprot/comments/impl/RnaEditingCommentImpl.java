@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Position;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingLocationType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.List;

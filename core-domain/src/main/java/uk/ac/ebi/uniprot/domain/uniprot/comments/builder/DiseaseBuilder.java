@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.DiseaseImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 

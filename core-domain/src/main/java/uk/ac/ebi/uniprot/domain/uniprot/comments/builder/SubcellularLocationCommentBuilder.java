@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.SubcellularLocationCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.SubcellularLocationImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 

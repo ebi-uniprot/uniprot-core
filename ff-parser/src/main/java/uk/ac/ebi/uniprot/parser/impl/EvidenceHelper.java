@@ -6,8 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
-
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 
 public class EvidenceHelper {

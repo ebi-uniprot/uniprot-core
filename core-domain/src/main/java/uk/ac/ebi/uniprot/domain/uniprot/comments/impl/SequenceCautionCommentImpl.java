@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comments.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.List;

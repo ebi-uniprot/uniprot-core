@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.MassSpectrometryCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 

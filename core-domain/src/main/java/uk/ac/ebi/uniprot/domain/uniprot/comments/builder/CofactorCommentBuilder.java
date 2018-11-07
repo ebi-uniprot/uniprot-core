@@ -7,7 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CofactorCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CofactorImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 

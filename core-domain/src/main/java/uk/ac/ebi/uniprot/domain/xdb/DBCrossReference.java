@@ -1,8 +1,11 @@
 package uk.ac.ebi.uniprot.domain.xdb;
 
-public interface DBCrossReference<T extends DatabaseName> {
-    T getDatabase();
+import java.util.List;
+
+import uk.ac.ebi.uniprot.domain.common.Property;
+
+public interface DBCrossReference {
+	String getDatabaseName();
     String getId();
-    String getDescription();
-    
+    List<Property> getProperties();
 }

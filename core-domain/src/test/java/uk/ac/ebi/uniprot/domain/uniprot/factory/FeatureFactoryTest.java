@@ -1,9 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import uk.ac.ebi.uniprot.domain.feature.ActSiteFeature;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.junit.Test;
+
 import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;
-import uk.ac.ebi.uniprot.domain.feature.ChainFeature;
 import uk.ac.ebi.uniprot.domain.feature.ConflictFeature;
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureDescription;
@@ -12,12 +20,10 @@ import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocationModifier;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.feature.HasAlternativeSequence;
 import uk.ac.ebi.uniprot.domain.feature.HasFeatureId;
 import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
-import uk.ac.ebi.uniprot.domain.feature.TurnFeature;
 import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
 import uk.ac.ebi.uniprot.domain.feature.VariantFeature;
 import uk.ac.ebi.uniprot.domain.feature.impl.ChainFeatureImpl;
@@ -54,17 +60,6 @@ import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.TransmemFeatureI
 import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.TurnFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.UnsureFeatureImpl;
 import uk.ac.ebi.uniprot.domain.feature.impl.SimpleFeaturesImpl.ZnFingFeatureImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class FeatureFactoryTest {
 

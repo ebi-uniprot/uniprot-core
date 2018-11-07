@@ -13,7 +13,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
-import uk.ac.ebi.uniprot.domain.uniprot.evidences.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,13 +23,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class UniProtFactoryTest {
-
-    @Test
-    public void testGetEvidenceFactory() {
-        EvidenceFactory componentFactory = UniProtFactory.INSTANCE.getEvidenceFactory();
-        assertNotNull(componentFactory);
-    }
-
     @Test
     public void testGetGeneFactory() {
         GeneFactory componentFactory = UniProtFactory.INSTANCE.getGeneFactory();
@@ -181,8 +174,8 @@ public class UniProtFactoryTest {
     
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
 }

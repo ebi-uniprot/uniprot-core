@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
 public class UniProtDBCrossReferencesImpl implements UniProtDBCrossReferences {
     private final List<UniProtDBCrossReference> xrefs;
@@ -25,10 +25,15 @@ public class UniProtDBCrossReferencesImpl implements UniProtDBCrossReferences {
     }
 
     @Override
-    public List<UniProtDBCrossReference> getCrossReferencesByType(DatabaseType type) {
-        return this.xrefs.stream().filter(val -> (val.getDatabase() == type)).collect(Collectors.toList());
+    public List<UniProtDBCrossReference> getCrossReferencesByType(UniProtXDbType type) {
+    	return getCrossReferencesByType(type.getName());
     }
 
+    @Override
+	public List<UniProtDBCrossReference> getCrossReferencesByType(String dbName) {
+    	 return this.xrefs.stream().filter(val -> dbName.equals(val.getDatabaseName())).collect(Collectors.toList());
+	}
+    
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -53,5 +58,7 @@ public class UniProtDBCrossReferencesImpl implements UniProtDBCrossReferences {
             return false;
         return true;
     }
+
+	
 
 }
