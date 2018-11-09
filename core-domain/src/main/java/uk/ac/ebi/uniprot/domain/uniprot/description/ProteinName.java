@@ -5,5 +5,7 @@ import java.util.List;
 public interface ProteinName {
 	Name getFullName();
 	List<Name> getShortNames();
-	List<ECNumber> getEcNumbers();
+	List<EC> getEcNumbers();
+	
+	 boolean isValid() ;
 }

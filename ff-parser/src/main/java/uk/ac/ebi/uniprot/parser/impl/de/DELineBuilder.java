@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.Flag;
+import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.AltName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ECNumber;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
@@ -174,7 +174,7 @@ implements FFLineBuilder<ProteinDescription> {
 					buildNameLine1(shortName, SHORT, type, deLinePrefix, includeFlatFileMarkings, showEvidence, first));
 			first = false;
 		}
-		for (ECNumber ecNumber : name.getEcNumbers()) {
+		for (EC ecNumber : name.getEcNumbers()) {
 			lines.add(buildNameLine1(ecNumber, EC, type, deLinePrefix, includeFlatFileMarkings, showEvidence, first));
 			first = false;
 		}

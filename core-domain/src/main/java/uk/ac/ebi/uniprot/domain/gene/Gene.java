@@ -4,6 +4,7 @@ package uk.ac.ebi.uniprot.domain.gene;
 
 import java.util.List;
 
+
 /**
  * <h3>About This Data Structure</h3>
  * <p>

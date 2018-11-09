@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.description;
+package uk.ac.ebi.uniprot.domain.uniprot;
 
 /**
  * Contains a list of acceptable flag descriptors found within a DE line

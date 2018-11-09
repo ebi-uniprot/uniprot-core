@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import uk.ac.ebi.uniprot.domain.common.Property;
 import uk.ac.ebi.uniprot.domain.xdb.DBCrossReference;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class DBCrossReferenceImpl implements DBCrossReference {
 
 	 private  String databaseName;

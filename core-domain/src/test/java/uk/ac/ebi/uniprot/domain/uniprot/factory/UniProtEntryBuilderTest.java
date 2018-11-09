@@ -65,13 +65,12 @@ import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.AltName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ECNumber;
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubmissionName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
@@ -290,52 +289,58 @@ public class UniProtEntryBuilderTest {
     }
     private ProteinDescription createProteinDescription() {
     	List<Evidence> evidences = createEvidences();
-		Name fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
+		Name fullName = ProteinDescriptionFactory.INSTANCE.createName("a full Name", evidences);
 		List<Name> shortNames = createShortNames();
-		List<ECNumber> ecNumbers = createECNumbers();
-		ProteinRecommendedName recommendedName = ProteinDescriptionFactory.INSTANCE.createProteinRecommendedName(fullName, shortNames, ecNumbers);
+		List<EC> ecNumbers = createECNumbers();
+		ProteinName recommendedName = ProteinDescriptionFactory.INSTANCE.createProteinName(fullName, shortNames, ecNumbers);
+		Name allergenName = ProteinDescriptionFactory.INSTANCE.createName("allergen", evidences);
+		Name biotechName = ProteinDescriptionFactory.INSTANCE.createName("biotech", evidences);
+		List<Name> antigenNames = new ArrayList<>();
+		antigenNames.add(ProteinDescriptionFactory.INSTANCE.createName("cd antigen", evidences));
+		
+		
+		List<ProteinName> proteinAltName = createAltName();
+		Name fullName1 = ProteinDescriptionFactory.INSTANCE.createName("a full Name", evidences);
 
-		ProteinAlternativeName proteinAltName = createAltName();
-		Name fullName1 = ProteinDescriptionFactory.INSTANCE.createProteinName("a full Name", evidences);
-
-		List<ECNumber> ecNumbers1 = createECNumbers();
-		ProteinSubmissionName subName = ProteinDescriptionFactory.INSTANCE.createProteinSubmissionName(fullName1, ecNumbers1);
-		List<ProteinSubmissionName> subNames = new ArrayList<>();
+		List<EC> ecNumbers1 = createECNumbers();
+		ProteinName subName = ProteinDescriptionFactory.INSTANCE.createProteinName(fullName1, null, ecNumbers1);
+		List<ProteinName> subNames = new ArrayList<>();
 		subNames.add(subName);
-		ProteinDescription description = ProteinDescriptionFactory.INSTANCE.createProteinDescription(recommendedName, subNames, proteinAltName);
-		return description;
+		ProteinDescriptionBuilder builder = ProteinDescriptionBuilder.newInstance();
+		return builder.recommendedName(recommendedName)
+		.alternativeNames(proteinAltName)
+		.submissionNames(subNames)
+		.allergenName(allergenName)
+		.biotechName(biotechName)
+		.cdAntigenNames(antigenNames).build();
+		
     }
-	private ProteinAlternativeName createAltName() {
+	private List<ProteinName> createAltName() {
 		List<Evidence> evidences = createEvidences();
-		Name fullName = ProteinDescriptionFactory.INSTANCE.createProteinName("a full alt Name", evidences);
+		Name fullName = ProteinDescriptionFactory.INSTANCE.createName("a full alt Name", evidences);
 		List<Name> shortNames = new ArrayList<>();
-		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name1", evidences));
-		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name2", evidences));
-		List<ECNumber> ecNumbers = new ArrayList<>();
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createName("short name1", evidences));
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createName("short name2", evidences));
+		List<EC> ecNumbers = new ArrayList<>();
 		ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.4", evidences));
 		
-		AltName altName =ProteinDescriptionFactory.INSTANCE.createAltName(fullName, shortNames, ecNumbers);
+		ProteinName altName =ProteinDescriptionFactory.INSTANCE.createProteinName(fullName, shortNames, ecNumbers);
 		
-		List<AltName> altNames = new ArrayList<>();
+		List<ProteinName> altNames = new ArrayList<>();
 		altNames.add(altName);
-		Name allergenName = ProteinDescriptionFactory.INSTANCE.createProteinName("allergen", evidences);
-		Name biotechName = ProteinDescriptionFactory.INSTANCE.createProteinName("biotech", evidences);
-		List<Name> antigenNames = new ArrayList<>();
-		antigenNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("cd antigen", evidences));
-		ProteinAlternativeName proteinAltName = ProteinDescriptionFactory.INSTANCE.createProteinAlternativeName(altNames, allergenName, biotechName, antigenNames, null);
-		return proteinAltName;
+		return altNames;
 	}
 	private List<Name> createShortNames() {
 		List<Evidence> evidences = createEvidences();
 		List<Name> shortNames = new ArrayList<>();
-		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name1", evidences));
-		shortNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName("short name2", evidences));
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createName("short name1", evidences));
+		shortNames.add(ProteinDescriptionFactory.INSTANCE.createName("short name2", evidences));
 		return shortNames;
 	}
 
-	private List<ECNumber> createECNumbers() {
+	private List<EC> createECNumbers() {
 		List<Evidence> evidences = createEvidences();
-		List<ECNumber> ecNumbers = new ArrayList<>();
+		List<EC> ecNumbers = new ArrayList<>();
 		ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.4", evidences));
 		ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.3.4.3", evidences));
 		return ecNumbers;

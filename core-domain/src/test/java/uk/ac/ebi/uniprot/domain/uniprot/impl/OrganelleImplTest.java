@@ -20,7 +20,7 @@ public class OrganelleImplTest {
         List<Evidence > evidences =createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Plastid; Apicoplast {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
-        assertEquals(expected, organelle.getDisplayedValue(""));
+        assertEquals(expected, organelle.getDisplayed(""));
     }
     
     @Test
@@ -30,7 +30,7 @@ public class OrganelleImplTest {
         List<Evidence > evidences =createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Mitochondrion {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
-        assertEquals(expected, organelle.getDisplayedValue(""));
+        assertEquals(expected, organelle.getDisplayed(""));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class OrganelleImplTest {
         List<Evidence > evidences =createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Hydrogenosome {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
-        assertEquals(expected, organelle.getDisplayedValue(""));
+        assertEquals(expected, organelle.getDisplayed(""));
     }
     
     @Test
@@ -50,7 +50,7 @@ public class OrganelleImplTest {
         List<Evidence > evidences =createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Plastid {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
-        assertEquals(expected, organelle.getDisplayedValue(""));
+        assertEquals(expected, organelle.getDisplayed(""));
     }
     
     @Test
@@ -60,7 +60,7 @@ public class OrganelleImplTest {
         List<Evidence > evidences =createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Plasmid some value {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
-        assertEquals(expected, organelle.getDisplayedValue(""));
+        assertEquals(expected, organelle.getDisplayed(""));
     }
 
     @Test

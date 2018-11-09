@@ -1,31 +1,40 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
+import java.util.Collections;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ProteinNameSectionImpl implements ProteinNameSection {
-	private final ProteinRecommendedName recName;
-	private final ProteinAlternativeName altName;
-	public ProteinNameSectionImpl(ProteinRecommendedName recName, ProteinAlternativeName altName) {
-		this.recName = recName;
-		this.altName = altName;
+	private final ProteinName recommendedName;
+	private final List<ProteinName> alternativeNames;
+	public ProteinNameSectionImpl(ProteinName recommendedName, List<ProteinName> alternativeNames) {
+		
+		this.recommendedName = recommendedName;
+		if((alternativeNames ==null)|| alternativeNames.isEmpty()) {
+			this.alternativeNames =Collections.emptyList();
+		}else {
+			this.alternativeNames = Collections.unmodifiableList(alternativeNames);
+		}
+	
 	}
 	@Override
-	public ProteinRecommendedName getRecommendedName() {
-		return recName;
+	public ProteinName getRecommendedName() {
+		return recommendedName;
 	}
-
 	@Override
-	public ProteinAlternativeName getAlternativeName() {
-		return altName;
+	public List<ProteinName> getAlternativeNames() {
+		return alternativeNames;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((altName == null) ? 0 : altName.hashCode());
-		result = prime * result + ((recName == null) ? 0 : recName.hashCode());
+		result = prime * result + ((alternativeNames == null) ? 0 : alternativeNames.hashCode());
+		result = prime * result + ((recommendedName == null) ? 0 : recommendedName.hashCode());
 		return result;
 	}
 	@Override
@@ -37,17 +46,17 @@ public class ProteinNameSectionImpl implements ProteinNameSection {
 		if (getClass() != obj.getClass())
 			return false;
 		ProteinNameSectionImpl other = (ProteinNameSectionImpl) obj;
-		if (altName == null) {
-			if (other.altName != null)
+		if (alternativeNames == null) {
+			if (other.alternativeNames != null)
 				return false;
-		} else if (!altName.equals(other.altName))
+		} else if (!alternativeNames.equals(other.alternativeNames))
 			return false;
-		if (recName == null) {
-			if (other.recName != null)
+		if (recommendedName == null) {
+			if (other.recommendedName != null)
 				return false;
-		} else if (!recName.equals(other.recName))
+		} else if (!recommendedName.equals(other.recommendedName))
 			return false;
 		return true;
 	}
-
+	
 }

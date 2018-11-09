@@ -3,11 +3,11 @@ package uk.ac.ebi.uniprot.parser.converter;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.ECNumber;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
+import uk.ac.ebi.uniprot.domain.uniprot.Flag;
+import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
@@ -299,7 +299,7 @@ public class DeLineConverterTest {
 		}
 		
 		assertEquals(ecs.size(), proteinName.getEcNumbers().size());
-		for(ECNumber ecNumber:proteinName.getEcNumbers()) {
+		for(EC ecNumber:proteinName.getEcNumbers()) {
 			validateEvidence(evidences.get(ecNumber.getValue()),  ecNumber.getEvidences());
 			assertTrue(ecs.contains(ecNumber.getValue()));
 		}

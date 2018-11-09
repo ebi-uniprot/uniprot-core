@@ -42,5 +42,7 @@ public enum UniProtDBCrossReferenceFactory {
     public UniProtDBCrossReferences createUniProtDBCrossReferences(List<UniProtDBCrossReference> xrefs) {
         return new UniProtDBCrossReferencesImpl(xrefs);
     }
+    
+    
  
 }

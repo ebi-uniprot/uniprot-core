@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
+import uk.ac.ebi.uniprot.domain.uniprot.Flag;
+import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 
 public class FlagImpl implements Flag {
     private final FlagType type;

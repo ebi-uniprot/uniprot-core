@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
+import java.util.List;
+
 public interface ProteinNameSection {
-	ProteinRecommendedName getRecommendedName();
-	ProteinAlternativeName getAlternativeName();
+	ProteinName getRecommendedName();
+	List<ProteinName> getAlternativeNames();
 }

@@ -14,10 +14,12 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import static org.junit.Assert.*;
 
 public class GeneFactoryTest {
-
+	final ObjectMapper objectMapper = new ObjectMapper();
     @Test
     public void testCreateGene() {
         String val = "someGene";
@@ -31,9 +33,19 @@ public class GeneFactoryTest {
 
         List<ORFName> orfNames = new ArrayList<>();
         Gene gene = GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
+        writeJson(gene);
         assertTrue(gene.hasGeneName());
     }
-
+    private void writeJson(Object gene) {
+    	try {
+    		System.out.println(gene.toString());
+    		  String json = objectMapper.writeValueAsString(gene);
+    	        System.out.println(json);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    }
+    
     @Test
     public void testCreateGeneWithSynonym() {
         String val = "someGene";
@@ -59,6 +71,8 @@ public class GeneFactoryTest {
         assertEquals(1, gene.getGeneNameSynonyms().size());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
         assertTrue(gene.getORFNames().isEmpty());
+     
+        writeJson(gene);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -97,6 +111,7 @@ public class GeneFactoryTest {
         assertEquals(1, gene.getOrderedLocusNames().size());
         assertTrue(gene.getGeneNameSynonyms().isEmpty());
         assertTrue(gene.getORFNames().isEmpty());
+        writeJson(gene);
     }
 
     @Test
@@ -119,6 +134,7 @@ public class GeneFactoryTest {
         assertEquals(1, gene.getORFNames().size());
         assertTrue(gene.getGeneNameSynonyms().isEmpty());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
+        writeJson(gene);
     }
 
     @Test
@@ -155,7 +171,6 @@ public class GeneFactoryTest {
         OrderedLocusName geneName = GeneFactory.INSTANCE.createOrderedLocusName(val, evidences);
         assertEquals(val, geneName.getValue());
         assertEquals(0, geneName.getEvidences().size());
-
     }
 
     @Test

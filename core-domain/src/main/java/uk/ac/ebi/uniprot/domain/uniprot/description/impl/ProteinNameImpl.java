@@ -3,17 +3,20 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 import java.util.Collections;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.ECNumber;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ProteinNameImpl implements ProteinName {
 	private final Name fullName;
 	private final List<Name> shortNames;
-	private final List<ECNumber> eCNumbers;
+	private final List<EC> eCNumbers;
 	public ProteinNameImpl(Name fullName,
 			List<Name> shortNames,
-			List<ECNumber> eCNumbers) {
+			List<EC> eCNumbers) {
 		this.fullName = fullName;
 		if((shortNames ==null) || (shortNames.isEmpty())) {
 			this.shortNames = Collections.emptyList();
@@ -36,9 +39,17 @@ public class ProteinNameImpl implements ProteinName {
 	}
 	
 	@Override
-	public List<ECNumber> getEcNumbers() {
+	public List<EC> getEcNumbers() {
 		return eCNumbers;
 	}
+	@JsonIgnore
+	@Override
+	public boolean isValid() {
+		return (getFullName() !=null) &&
+				( (getFullName().getValue() !=null)
+						&& !getFullName().getValue().isEmpty());
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

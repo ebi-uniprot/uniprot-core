@@ -42,3 +42,6 @@ no url, the site is closed
 This url template contains two parameter for this cross reference. The first one is
 **%value** which is cross reference id. The second parameter is **%des** which is
 the first attribute of the cross reference organism id.
+
+# Evudebce
+evidence code[https://www.uniprot.org/help/evidence_table]

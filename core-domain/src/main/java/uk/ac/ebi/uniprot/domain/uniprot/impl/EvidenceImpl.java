@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.xdb.DBCrossReference;
@@ -77,7 +79,7 @@ public class EvidenceImpl implements Evidence {
 	public String toString() {
 		return getValue();
 	}
-
+	@JsonIgnore
 	@Override
 	public String getValue() {
 

@@ -21,7 +21,7 @@ public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
     }
 
     @Override
-    public String getDisplayedValue(String separator) {
+    public String getDisplayed(String separator) {
         StringBuilder sb = new StringBuilder();
         sb.append(getString());
         if (!this.getEvidences().isEmpty()) {

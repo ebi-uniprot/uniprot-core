@@ -2,6 +2,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
 import java.util.EnumSet;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Arrays;
 
 public enum EvidenceCode {
@@ -64,7 +67,7 @@ public enum EvidenceCode {
 		throw new IllegalArgumentException (code + " is not valid Evidence code");
 	}
 	
-	
+	 @JsonValue
 	public String getCode() {
 		return code;
 	}

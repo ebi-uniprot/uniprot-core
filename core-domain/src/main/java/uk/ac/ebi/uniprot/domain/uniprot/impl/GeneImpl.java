@@ -1,20 +1,28 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.gene.GeneName;
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 
-import java.util.Collections;
-import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class GeneImpl implements Gene {
+	@JsonInclude(JsonInclude.Include.NON_NULL)
     private final GeneName geneName;
     private final List<GeneNameSynonym> synonyms;
     private final List<OrderedLocusName> olnNames;
     private final List<ORFName> orfNames;
-
+    private static final String ORF_NAMES = "ORFNames=";
+    private static final String ORDERED_LOCUS_NAMES = "OrderedLocusNames=";
+    private static final String SYNONYMS = "Synonyms=";
+    private static final String NAME = "Name=";
     public GeneImpl(GeneName geneName,
         List<GeneNameSynonym> synonyms,
         List<OrderedLocusName> olnNames,
@@ -62,6 +70,50 @@ public class GeneImpl implements Gene {
         return this.orfNames;
     }
 
+    @Override
+    public String toString() {
+    	StringBuilder sb= new StringBuilder();
+    	boolean hasData = false;
+    	if(this.hasGeneName()) {
+    		sb.append(NAME)
+    		.append(this.geneName.getDisplayed(" "))
+    		.append(";");
+    		hasData = true;
+    	}
+    	if(!this.synonyms.isEmpty()) {
+    		if(hasData) {
+    			sb.append(" ");
+    		}
+    		sb.append(SYNONYMS)
+    		.append(
+    		synonyms.stream().map(val -> val.getDisplayed(" "))
+    		.collect(Collectors.joining(", ")))
+    		.append(";");
+    		hasData = true;
+    	}
+    	if(!this.olnNames.isEmpty()) {
+    		if(hasData) {
+    			sb.append(" ");
+    		}
+    		sb.append(ORDERED_LOCUS_NAMES)
+    		.append(
+    				olnNames.stream().map(val -> val.getDisplayed(" "))
+    		.collect(Collectors.joining(", ")))
+    		.append(";");
+    		hasData = true;
+    	}
+    	if(!this.orfNames.isEmpty()) {
+    		if(hasData) {
+    			sb.append(" ");
+    		}
+    		sb.append(ORF_NAMES)
+    		.append(
+    				orfNames.stream().map(val -> val.getDisplayed(" "))
+    		.collect(Collectors.joining(", ")))
+    		.append(";");
+    	}
+    	return sb.toString();
+    }
     @Override
     public int hashCode() {
         final int prime = 31;
