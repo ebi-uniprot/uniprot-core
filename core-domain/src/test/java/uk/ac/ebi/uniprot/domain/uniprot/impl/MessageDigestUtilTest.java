@@ -5,6 +5,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.util.MessageDigestUtil;
+
 import static org.junit.Assert.*;
 
 public class MessageDigestUtilTest {

@@ -17,7 +17,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubmissionName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -277,7 +277,7 @@ public class DELineBuildTest {
 		ProteinAlternativeName pAltName = null;
 			
 		
-		List<ProteinNameSection> includes =new ArrayList< >();
+		List<ProteinSection> includes =new ArrayList< >();
 		
 		Name includeRecFullName1 = factory.createName("Glutamate N-acetyltransferase", Collections.emptyList());
 		List<Name> includeRecShortNames1 = new ArrayList<>();
@@ -300,7 +300,7 @@ public class DELineBuildTest {
 		includeAltNames.add(includeAltName2);
 		
 		ProteinAlternativeName includePAltName1 = factory.createProteinAlternativeName(includeAltNames, null,  null, null, null);
-		ProteinNameSection include1 = factory.createProteinNameSection(includeRecName1, includePAltName1) ;
+		ProteinSection include1 = factory.createProteinNameSection(includeRecName1, includePAltName1) ;
 		
 		includes.add(include1);
 		
@@ -321,18 +321,18 @@ public class DELineBuildTest {
 		
 		
 		ProteinAlternativeName includePAltName2 = factory.createProteinAlternativeName(includeAltNames2, null,  null, null, null);
-		ProteinNameSection include2 = factory.createProteinNameSection(includeRecName11, includePAltName2) ;
+		ProteinSection include2 = factory.createProteinNameSection(includeRecName11, includePAltName2) ;
 		
 		includes.add(include2);
 		
-		List<ProteinNameSection> contains =new ArrayList<>();
+		List<ProteinSection> contains =new ArrayList<>();
 		Name containRecFullName1 = factory.createName("Arginine biosynthesis bifunctional protein argJ alpha chain", Collections.emptyList());
 		List<Name> containRecShortNames1 = new ArrayList<>();
 		List<EC> containRecEcNumbers1 = new ArrayList<>();;
 		//includeRecEcNumbers1.add(factory.createECNumber("2.3.1.35",  Collections.emptyList()));
 		ProteinRecommendedName containRecName1 = factory.createProteinRecommendedName(containRecFullName1,
 				containRecShortNames1, containRecEcNumbers1);
-		ProteinNameSection contain1 = factory.createProteinNameSection(containRecName1, null) ;
+		ProteinSection contain1 = factory.createProteinNameSection(containRecName1, null) ;
 		contains.add(contain1);
 		
 		Name containRecFullName2 = factory.createName("Arginine biosynthesis bifunctional protein argJ beta chain", Collections.emptyList());
@@ -341,7 +341,7 @@ public class DELineBuildTest {
 		//includeRecEcNumbers1.add(factory.createECNumber("2.3.1.35",  Collections.emptyList()));
 		ProteinRecommendedName containRecName2 = factory.createProteinRecommendedName(containRecFullName2,
 				containRecShortNames2, containRecEcNumbers2);
-		ProteinNameSection contain2 = factory.createProteinNameSection(containRecName2, null) ;
+		ProteinSection contain2 = factory.createProteinNameSection(containRecName2, null) ;
 		contains.add(contain2);
 		
 		Flag flag= null;
@@ -379,7 +379,7 @@ public class DELineBuildTest {
 		ProteinAlternativeName pAltName = null;
 			
 		
-		List<ProteinNameSection> includes =new ArrayList< >();
+		List<ProteinSection> includes =new ArrayList< >();
 		
 		Name includeRecFullName1 = factory.createName("Glutamate N-acetyltransferase",
 				createEvidence(Arrays.asList(new String[]{"ECO:0000269|PubMed:10433554", "ECO:0000313|EMBL:BAG16761.1"})));
@@ -406,7 +406,7 @@ public class DELineBuildTest {
 		includeAltNames.add(includeAltName2);
 		
 		ProteinAlternativeName includePAltName1 = factory.createProteinAlternativeName(includeAltNames, null,  null, null, null);
-		ProteinNameSection include1 = factory.createProteinNameSection(includeRecName1, includePAltName1) ;
+		ProteinSection include1 = factory.createProteinNameSection(includeRecName1, includePAltName1) ;
 		
 		includes.add(include1);
 		
@@ -430,11 +430,11 @@ public class DELineBuildTest {
 		
 		
 		ProteinAlternativeName includePAltName2 = factory.createProteinAlternativeName(includeAltNames2, null,  null, null, null);
-		ProteinNameSection include2 = factory.createProteinNameSection(includeRecName11, includePAltName2) ;
+		ProteinSection include2 = factory.createProteinNameSection(includeRecName11, includePAltName2) ;
 		
 		includes.add(include2);
 		
-		List<ProteinNameSection> contains =new ArrayList<>();
+		List<ProteinSection> contains =new ArrayList<>();
 		Name containRecFullName1 = factory.createName("Arginine biosynthesis bifunctional protein argJ alpha chain", 
 				createEvidence(Arrays.asList(new String[]{"ECO:0000313|EMBL:BAG16761.1"})));
 		List<Name> containRecShortNames1 = new ArrayList<>();
@@ -442,7 +442,7 @@ public class DELineBuildTest {
 		//includeRecEcNumbers1.add(factory.createECNumber("2.3.1.35",  Collections.emptyList()));
 		ProteinRecommendedName containRecName1 = factory.createProteinRecommendedName(containRecFullName1,
 				containRecShortNames1, containRecEcNumbers1);
-		ProteinNameSection contain1 = factory.createProteinNameSection(containRecName1, null) ;
+		ProteinSection contain1 = factory.createProteinNameSection(containRecName1, null) ;
 		contains.add(contain1);
 		
 		Name containRecFullName2 = factory.createName("Arginine biosynthesis bifunctional protein argJ beta chain", 
@@ -452,7 +452,7 @@ public class DELineBuildTest {
 		//includeRecEcNumbers1.add(factory.createECNumber("2.3.1.35",  Collections.emptyList()));
 		ProteinRecommendedName containRecName2 = factory.createProteinRecommendedName(containRecFullName2,
 				containRecShortNames2, containRecEcNumbers2);
-		ProteinNameSection contain2 = factory.createProteinNameSection(containRecName2, null) ;
+		ProteinSection contain2 = factory.createProteinNameSection(containRecName2, null) ;
 		contains.add(contain2);
 		
 		Flag flag= null;

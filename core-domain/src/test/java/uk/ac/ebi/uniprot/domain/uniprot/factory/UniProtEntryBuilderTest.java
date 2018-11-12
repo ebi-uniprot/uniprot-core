@@ -14,11 +14,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
@@ -554,7 +554,7 @@ public class UniProtEntryBuilderTest {
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
         List<UniProtDBCrossReference>  xrefs = new ArrayList<>();
-        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
         
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
       
@@ -565,7 +565,7 @@ public class UniProtEntryBuilderTest {
          thirdAttr= "-";
          fourthAttr = "mRNA";
          isoform = null;
-        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
         type ="EMBL";
         id ="AK000352";
@@ -573,7 +573,7 @@ public class UniProtEntryBuilderTest {
         thirdAttr= "ALT_INIT";
         fourthAttr = "mRNA";
         isoform = null;
-       xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+       xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
        // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
        type = "EMBL";
        id ="AK310815";
@@ -581,7 +581,7 @@ public class UniProtEntryBuilderTest {
        thirdAttr= "NOT_ANNOTATED_CDS";
        fourthAttr = "mRNA";
        isoform = null;
-      xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+      xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
       
    //   DR   HPA; HPA021372; -.
       type = "HPA";
@@ -590,7 +590,7 @@ public class UniProtEntryBuilderTest {
       thirdAttr=  null;
       fourthAttr = null;
       isoform = null;
-     xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+     xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
      //  DR   HPA; HPA021812; -.
      type = "HPA";
      id ="HPA021812";
@@ -598,7 +598,7 @@ public class UniProtEntryBuilderTest {
      thirdAttr=  null;
      fourthAttr = null;
      isoform = null;
-    xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+    xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
     return UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReferences(xrefs);
     
     }

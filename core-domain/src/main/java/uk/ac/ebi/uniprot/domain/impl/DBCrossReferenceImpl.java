@@ -1,30 +1,34 @@
-package uk.ac.ebi.uniprot.domain.xdb.impl;
+package uk.ac.ebi.uniprot.domain.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import uk.ac.ebi.uniprot.domain.common.Property;
-import uk.ac.ebi.uniprot.domain.xdb.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.Property;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class DBCrossReferenceImpl implements DBCrossReference {
 
-	 private  String databaseName;
-	 private  String id;
+	 private final  String databaseName;
+	 private final String id;
 	 private List<Property> properties;
-	public DBCrossReferenceImpl() {
-		properties = Collections.emptyList();
-	}
-	
+//	public DBCrossReferenceImpl() {
+//		properties = Collections.emptyList();
+//	}
+//	
 	public DBCrossReferenceImpl(String databaseName, String id) {
 		this(databaseName, id, Collections.emptyList());
 	}
 	
-	
-	public DBCrossReferenceImpl(String databaseName, String id, List<Property> properties) {
+	@JsonCreator
+	public DBCrossReferenceImpl(@JsonProperty("databaseName")String databaseName,
+			@JsonProperty("id")String id,
+			@JsonProperty("properties")List<Property> properties) {
 		this.databaseName = databaseName;
 		this.id =id;
 		setProperties(properties);
@@ -43,14 +47,6 @@ public class DBCrossReferenceImpl implements DBCrossReference {
 	@Override
 	public List<Property> getProperties() {
 		return properties;
-	}
-
-	public void setDatabaseName(String databaseName) {
-		this.databaseName = databaseName;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public void setProperties(List<Property> properties) {

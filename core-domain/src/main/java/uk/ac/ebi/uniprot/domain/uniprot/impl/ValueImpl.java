@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.domain.common.Value;
+import uk.ac.ebi.uniprot.domain.Value;
 
 public class ValueImpl implements Value {
     private final String value;

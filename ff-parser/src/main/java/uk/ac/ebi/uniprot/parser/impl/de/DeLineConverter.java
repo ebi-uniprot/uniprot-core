@@ -10,7 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubmissionName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -57,10 +57,10 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		List<ProteinSubmissionName> subNames = f.subName.stream().map(val -> convertSubmissionName(val, evidenceMap))
 				.collect(Collectors.toList());
 
-		List<ProteinNameSection> contained = f.containedNames.stream()
+		List<ProteinSection> contained = f.containedNames.stream()
 				.map(val -> convertProteinNameSection(val, evidenceMap)).collect(Collectors.toList());
 
-		List<ProteinNameSection> included = f.includedNames.stream()
+		List<ProteinSection> included = f.includedNames.stream()
 				.map(val -> convertProteinNameSection(val, evidenceMap)).collect(Collectors.toList());
 
 		Flag flag = createFlag(f.flags);
@@ -90,7 +90,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		}
 	}
 
-	private ProteinNameSection convertProteinNameSection(DeLineObject.NameBlock nameBlock,
+	private ProteinSection convertProteinNameSection(DeLineObject.NameBlock nameBlock,
 			Map<Object, List<Evidence>> evidenceMap) {
 		ProteinRecommendedName recName = null;
 		if (nameBlock.recName != null) {

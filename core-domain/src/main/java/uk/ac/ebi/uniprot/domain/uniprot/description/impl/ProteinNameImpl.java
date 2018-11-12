@@ -3,8 +3,10 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
@@ -13,20 +15,22 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 public class ProteinNameImpl implements ProteinName {
 	private final Name fullName;
 	private final List<Name> shortNames;
-	private final List<EC> eCNumbers;
-	public ProteinNameImpl(Name fullName,
-			List<Name> shortNames,
-			List<EC> eCNumbers) {
+	private final List<EC> ecNumbers;
+	@JsonCreator
+	public ProteinNameImpl(
+			@JsonProperty("fullName") Name fullName,
+			@JsonProperty("shortNames") List<Name> shortNames,
+			@JsonProperty("ecNumbers") List<EC> ecNumbers) {
 		this.fullName = fullName;
 		if((shortNames ==null) || (shortNames.isEmpty())) {
 			this.shortNames = Collections.emptyList();
 		}else {
 			this.shortNames = Collections.unmodifiableList(shortNames);
 		}
-		if((eCNumbers ==null) || (eCNumbers.isEmpty())) {
-			this.eCNumbers = Collections.emptyList();
+		if((ecNumbers ==null) || (ecNumbers.isEmpty())) {
+			this.ecNumbers = Collections.emptyList();
 		}else {
-			this.eCNumbers = Collections.unmodifiableList(eCNumbers);
+			this.ecNumbers = Collections.unmodifiableList(ecNumbers);
 		}
 	}
 	@Override
@@ -40,7 +44,7 @@ public class ProteinNameImpl implements ProteinName {
 	
 	@Override
 	public List<EC> getEcNumbers() {
-		return eCNumbers;
+		return ecNumbers;
 	}
 	@JsonIgnore
 	@Override
@@ -54,7 +58,7 @@ public class ProteinNameImpl implements ProteinName {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((eCNumbers == null) ? 0 : eCNumbers.hashCode());
+		result = prime * result + ((ecNumbers == null) ? 0 : ecNumbers.hashCode());
 		result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
 		result = prime * result + ((shortNames == null) ? 0 : shortNames.hashCode());
 		return result;
@@ -68,10 +72,10 @@ public class ProteinNameImpl implements ProteinName {
 		if (getClass() != obj.getClass())
 			return false;
 		ProteinNameImpl other = (ProteinNameImpl) obj;
-		if (eCNumbers == null) {
-			if (other.eCNumbers != null)
+		if (ecNumbers == null) {
+			if (other.ecNumbers != null)
 				return false;
-		} else if (!eCNumbers.equals(other.eCNumbers))
+		} else if (!ecNumbers.equals(other.ecNumbers))
 			return false;
 		if (fullName == null) {
 			if (other.fullName != null)

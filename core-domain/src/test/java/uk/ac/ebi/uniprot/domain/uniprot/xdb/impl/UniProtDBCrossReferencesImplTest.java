@@ -1,11 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,7 +27,7 @@ public class UniProtDBCrossReferencesImplTest {
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
         xrefs = new ArrayList<>();
-        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
         
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
       
@@ -35,7 +38,7 @@ public class UniProtDBCrossReferencesImplTest {
          thirdAttr= "-";
          fourthAttr = "mRNA";
          isoform = null;
-        xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
         type ="EMBL";
         id ="AK000352";
@@ -43,7 +46,7 @@ public class UniProtDBCrossReferencesImplTest {
         thirdAttr= "ALT_INIT";
         fourthAttr = "mRNA";
         isoform = null;
-       xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+       xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
        // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
        type ="EMBL";
        id ="AK310815";
@@ -51,7 +54,7 @@ public class UniProtDBCrossReferencesImplTest {
        thirdAttr= "NOT_ANNOTATED_CDS";
        fourthAttr = "mRNA";
        isoform = null;
-      xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+      xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
       
    //   DR   HPA; HPA021372; -.
       type ="HPA";
@@ -60,7 +63,7 @@ public class UniProtDBCrossReferencesImplTest {
       thirdAttr=  null;
       fourthAttr = null;
       isoform = null;
-     xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
+     xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
      //  DR   HPA; HPA021812; -.
      type ="HPA";
      id ="HPA021812";
@@ -68,8 +71,9 @@ public class UniProtDBCrossReferencesImplTest {
      thirdAttr=  null;
      fourthAttr = null;
      isoform = null;
-    xrefs.add (new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform));
-    uniXrefs = new UniProtDBCrossReferencesImpl(xrefs);
+    xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
+    uniXrefs = new UniProtDBCrossReferencesImpl(xrefs.stream().map(val ->(UniProtDBCrossReferenceImpl)val )
+    		.collect(Collectors.toList()));
     
     }
     @Test
@@ -80,6 +84,12 @@ public class UniProtDBCrossReferencesImplTest {
     @Test
     public void testGetCrossReferences() {
         assertEquals(6, uniXrefs.getCrossReferences().size());
+       
+        
+    }
+    @Test 
+     public void testJsonConversion() {
+    	TestHelper.verifyJson(uniXrefs);
     }
 
     @Test

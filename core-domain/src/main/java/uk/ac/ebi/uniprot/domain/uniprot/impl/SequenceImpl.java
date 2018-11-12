@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.domain.common.MoleculeWeight;
-import uk.ac.ebi.uniprot.domain.common.Sequence;
+import uk.ac.ebi.uniprot.domain.MoleculeWeight;
+import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.util.MessageDigestUtil;
 
 public class SequenceImpl implements Sequence {
     private final String sequence;

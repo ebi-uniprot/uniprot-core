@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import uk.ac.ebi.uniprot.domain.common.EntryId;
+import uk.ac.ebi.uniprot.domain.EntryId;
 
 
 /**

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.common;
+package uk.ac.ebi.uniprot.domain;
 
 public interface Pair<K, V> {
 	K getKey();

@@ -1,14 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public final class EvidenceType {
-	private String name;
-	private String displayName;
-	private String uriLink;
+	private final String name;
+	private final String displayName;
+	private final String uriLink;
 	
-	public EvidenceType() {
-		
-	}
-	public EvidenceType(String name, String displayName, String uriLink) {
+	@JsonCreator
+	public EvidenceType(@JsonProperty("name")String name, 
+			@JsonProperty("displayName")String displayName, 
+			@JsonProperty("uriLink")String uriLink) {
 		this.name = name;
 		this.displayName = displayName;
 		this.uriLink =uriLink;
@@ -16,20 +19,11 @@ public final class EvidenceType {
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	public String getDisplayName() {
 		return displayName;
 	}
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
-	}
 	public String getUriLink() {
 		return uriLink;
-	}
-	public void setUriLink(String uriLink) {
-		this.uriLink = uriLink;
 	}
 	@Override
 	public int hashCode() {

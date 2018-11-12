@@ -5,7 +5,7 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.common.Sequence;
+import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;

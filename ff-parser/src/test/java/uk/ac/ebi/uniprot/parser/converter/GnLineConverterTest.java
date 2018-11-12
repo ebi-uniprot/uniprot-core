@@ -45,12 +45,12 @@ public class GnLineConverterTest {
 		assertTrue(gene.hasGeneName());
 		GeneName gname = gene.getGeneName();
 		assertEquals("Jon99Cii", gname.getValue());
-		assertEquals(3, gene.getGeneNameSynonyms().size());
+		assertEquals(3, gene.getSynonyms().size());
 		List<String> syn = new ArrayList<String>();
 		syn.add("SER1");
 		syn.add("SER5");
 		syn.add("Ser99Da");
-		for(EvidencedValue val: gene.getGeneNameSynonyms()){
+		for(EvidencedValue val: gene.getSynonyms()){
 			validate(val, syn);
 		}
 		assertEquals(0, gene.getOrderedLocusNames().size());
@@ -98,12 +98,12 @@ public class GnLineConverterTest {
 		assertTrue(gene.hasGeneName());
 		GeneName gname = gene.getGeneName();
 		assertEquals("Jon99Cii", gname.getValue());
-		assertEquals(3, gene.getGeneNameSynonyms().size());
+		assertEquals(3, gene.getSynonyms().size());
 		List<String> syn = new ArrayList<String>();
 		syn.add("SER1");
 		syn.add("SER5");
 		syn.add("Ser99Da");
-		for(EvidencedValue val: gene.getGeneNameSynonyms()){
+		for(EvidencedValue val: gene.getSynonyms()){
 			validate(val, syn);
 		}
 		assertEquals(0, gene.getOrderedLocusNames().size());
@@ -115,7 +115,7 @@ public class GnLineConverterTest {
 		
 		assertTrue(gene2.hasGeneName());
 		assertEquals("Jon99Cii2",  gene2.getGeneName().getValue());
-		assertEquals(0, gene2.getGeneNameSynonyms().size());
+		assertEquals(0, gene2.getSynonyms().size());
 		assertEquals(0, gene2.getOrderedLocusNames().size());
 		assertEquals(0, gene2.getORFNames().size());
 	
@@ -170,13 +170,13 @@ public class GnLineConverterTest {
 		Evidence evId = evIDs.get(0);
 	
 		assertEquals("ECO:0000255|HAMAP-Rule:PRU10084", evId.getValue());
-		assertEquals(2, gene.getGeneNameSynonyms().size());
+		assertEquals(2, gene.getSynonyms().size());
 		List<String> syn = new ArrayList<String>();
 		syn.add("beta-lactamase CTX-M-14");
 		syn.add("bla-CTX-M-14a");
-		GeneNameSynonym synName1 = gene.getGeneNameSynonyms().get(0);
-		GeneNameSynonym synName2 = gene.getGeneNameSynonyms().get(1);
-		for(GeneNameSynonym val: gene.getGeneNameSynonyms()){
+		GeneNameSynonym synName1 = gene.getSynonyms().get(0);
+		GeneNameSynonym synName2 = gene.getSynonyms().get(1);
+		for(GeneNameSynonym val: gene.getSynonyms()){
 			validate(val, syn);
 			if(val.getValue().equals("bla-CTX-M-14a")){
 				synName2 =val;

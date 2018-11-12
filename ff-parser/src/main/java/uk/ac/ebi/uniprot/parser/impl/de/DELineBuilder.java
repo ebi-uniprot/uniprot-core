@@ -14,7 +14,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
@@ -77,10 +77,10 @@ implements FFLineBuilder<ProteinDescription> {
 			}
 		}
 
-		for (ProteinNameSection section : description.getIncludes()) {
+		for (ProteinSection section : description.getIncludes()) {
 			deLines.addAll(buildSectionLines(section, INCLUDES, includeFlatFileMarkings, addEvidence));
 		}
-		for (ProteinNameSection section : description.getContains()) {
+		for (ProteinSection section : description.getContains()) {
 			deLines.addAll(buildSectionLines(section, CONTAINS, includeFlatFileMarkings, addEvidence));
 		}
 		if (description.getFlag() != null) {
@@ -182,7 +182,7 @@ implements FFLineBuilder<ProteinDescription> {
 		return lines;
 	}
 
-	private List<String> buildSectionLines(ProteinNameSection section, String sectionType,
+	private List<String> buildSectionLines(ProteinSection section, String sectionType,
 			boolean includeFlatFileMarkings, boolean addEvidence) {
 		List<String> lines = new ArrayList<>();
 		StringBuilder sb1 = new StringBuilder();

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import uk.ac.ebi.uniprot.domain.common.Value;
+import uk.ac.ebi.uniprot.domain.Value;
 
 /**
  * <h3>About This Data Structure</h3>

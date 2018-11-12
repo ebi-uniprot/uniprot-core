@@ -9,13 +9,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ECImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameSectionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public enum ProteinDescriptionFactory {
@@ -39,9 +39,9 @@ public enum ProteinDescriptionFactory {
 
 	}
 
-	public ProteinNameSection createProteinNameSection(ProteinName recommendedName,
+	public ProteinSection createProteinNameSection(ProteinName recommendedName,
 			List<ProteinName> alternativeNames) {
-		return new ProteinNameSectionImpl(recommendedName, alternativeNames);
+		return new ProteinSectionImpl(recommendedName, alternativeNames);
 	}
 
 	public ProteinDescription createProteinDescription(ProteinName recommendedName,

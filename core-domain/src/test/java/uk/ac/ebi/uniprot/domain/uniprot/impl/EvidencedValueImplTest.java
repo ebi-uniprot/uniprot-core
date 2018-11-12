@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.common.TestHelper;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 
@@ -20,7 +20,7 @@ public class EvidencedValueImplTest {
         EvidencedValueImpl evidencedValue =new EvidencedValueImpl(value, evidences); 
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
-        TestHelper.writeJson(evidencedValue);
+        TestHelper.verifyJson(evidencedValue);
     }
     @Test
     public void testTwoEvidences() {
@@ -35,6 +35,6 @@ public class EvidencedValueImplTest {
         EvidencedValueImpl evidencedValue =new EvidencedValueImpl(value, evidences); 
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
-        TestHelper.writeJson(evidencedValue);
+        TestHelper.verifyJson(evidencedValue);
     }
 }

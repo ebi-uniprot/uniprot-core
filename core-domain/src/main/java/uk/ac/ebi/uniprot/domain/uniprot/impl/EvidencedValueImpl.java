@@ -7,13 +7,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class EvidencedValueImpl implements EvidencedValue {
 	private final String value;
 	private final List<Evidence> evidences;
-
-	public EvidencedValueImpl(String value, List<Evidence> evidences) {
+	@JsonCreator
+	public EvidencedValueImpl(
+			@JsonProperty("value") String value, 
+			@JsonProperty("evidences") List<Evidence> evidences) {
 		if (value == null) {
 			this.value = "";
 		} else

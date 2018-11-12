@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import uk.ac.ebi.uniprot.domain.common.Sequence;
+import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;

@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.de.DeLineConverter;
@@ -157,28 +157,28 @@ public class DeLineConverterTest {
 		validate( "Arginine biosynthesis bifunctional protein argJ", null, recName);
 		ProteinAlternativeName altNames = pDesc.getAlternativeName();
 		assertNull(altNames);
-		List<ProteinNameSection> included =pDesc.getIncludes();
+		List<ProteinSection> included =pDesc.getIncludes();
 		TestCase.assertEquals(2, included.size());
-		ProteinNameSection included1= included.get(0);
+		ProteinSection included1= included.get(0);
 		validate( "Glutamate N-acetyltransferase", null, ecs, included1.getRecommendedName());
 		 altNames =included1.getAlternativeName();
 		 assertEquals(2, altNames.getAltNames().size());
 		validate( "Ornithine acetyltransferase", "OATase",altNames.getAltNames().get(0));
 		validate( "Ornithine transacetylase", null, altNames.getAltNames().get(1));
 		
-		ProteinNameSection included2= included.get(1);
+		ProteinSection included2= included.get(1);
 		 altNames =included2.getAlternativeName();
 		 assertEquals(1, altNames.getAltNames().size());
 		validate( "Amino-acid acetyltransferase", null, ecs2, included2.getRecommendedName());
 		validate( "N-acetylglutamate synthase", "AGS", altNames.getAltNames().get(0));
 		
 		
-		List<ProteinNameSection> contained =pDesc.getContains();
+		List<ProteinSection> contained =pDesc.getContains();
 		assertEquals(2, contained.size());
 		
-		ProteinNameSection contained1= contained.get(0);
+		ProteinSection contained1= contained.get(0);
 		validate( "Arginine biosynthesis bifunctional protein argJ alpha chain", null,  contained1.getRecommendedName());
-		ProteinNameSection contained2= contained.get(1);
+		ProteinSection contained2= contained.get(1);
 
 		 validate( "Arginine biosynthesis bifunctional protein argJ beta chain", null, contained2.getRecommendedName());
 		

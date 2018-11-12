@@ -1,33 +1,29 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DBXRefTypeAttributeImpl implements DBXRefTypeAttribute {
-	private  String name;
-	private  String xmlTag;
-	private  String uriLink;
-	public DBXRefTypeAttributeImpl() {
-		
-	}
-	public DBXRefTypeAttributeImpl(String name, String xmlTag, String uriLink) {
+	private final  String name;
+	private final String xmlTag;
+	private final String uriLink;
+
+	@JsonCreator
+	public DBXRefTypeAttributeImpl(
+			@JsonProperty("name")String name, 
+			@JsonProperty("xmlTag")String xmlTag, 
+			@JsonProperty("uriLink")String uriLink) {
 		this.name = name;
 		this.xmlTag = xmlTag;
 		this.uriLink= uriLink;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-	public void setXmlTag(String xmlTag) {
-		this.xmlTag = xmlTag;
-	}
-	public void setUriLink(String uriLink) {
-		this.uriLink = uriLink;
-	}
+	
 	@Override
 	public String getName() {
 		return name;

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.gene.GeneName;
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
@@ -33,17 +34,12 @@ public class GeneFactoryTest {
 
         List<ORFName> orfNames = new ArrayList<>();
         Gene gene = GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
-        writeJson(gene);
+        jsonVerify(gene);
         assertTrue(gene.hasGeneName());
     }
-    private void writeJson(Object gene) {
-    	try {
-    		System.out.println(gene.toString());
-    		  String json = objectMapper.writeValueAsString(gene);
-    	        System.out.println(json);
-    	}catch(Exception e) {
-    		e.printStackTrace();
-    	}
+    private void jsonVerify(Object gene) {
+    	TestHelper.verifyJson(gene);
+    
     }
     
     @Test
@@ -68,11 +64,11 @@ public class GeneFactoryTest {
         Gene gene = GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
         assertTrue(gene.hasGeneName());
         assertEquals(val, gene.getGeneName().getValue());
-        assertEquals(1, gene.getGeneNameSynonyms().size());
+        assertEquals(1, gene.getSynonyms().size());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
         assertTrue(gene.getORFNames().isEmpty());
      
-        writeJson(gene);
+        jsonVerify(gene);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -109,9 +105,9 @@ public class GeneFactoryTest {
         assertFalse(gene.hasGeneName());
 
         assertEquals(1, gene.getOrderedLocusNames().size());
-        assertTrue(gene.getGeneNameSynonyms().isEmpty());
+        assertTrue(gene.getSynonyms().isEmpty());
         assertTrue(gene.getORFNames().isEmpty());
-        writeJson(gene);
+        jsonVerify(gene);
     }
 
     @Test
@@ -132,9 +128,9 @@ public class GeneFactoryTest {
         assertFalse(gene.hasGeneName());
 
         assertEquals(1, gene.getORFNames().size());
-        assertTrue(gene.getGeneNameSynonyms().isEmpty());
+        assertTrue(gene.getSynonyms().isEmpty());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
-        writeJson(gene);
+       // jsonVerify(gene);
     }
 
     @Test
@@ -148,6 +144,8 @@ public class GeneFactoryTest {
         assertEquals(1, geneName.getEvidences().size());
         assertEquals("ECO:0000256|PIRNR:PIRNR001361", geneName.getEvidences().get(0).getValue());
         assertFalse(evidences == geneName.getEvidences());
+        jsonVerify(geneName);
+        
     }
 
     @Test
@@ -162,6 +160,7 @@ public class GeneFactoryTest {
         assertEquals(2, geneName.getEvidences().size());
         assertEquals("ECO:0000269|PubMed:11389730", geneName.getEvidences().get(1).getValue());
         assertFalse(evidences == geneName.getEvidences());
+        jsonVerify(geneName);
     }
 
     @Test
@@ -171,6 +170,7 @@ public class GeneFactoryTest {
         OrderedLocusName geneName = GeneFactory.INSTANCE.createOrderedLocusName(val, evidences);
         assertEquals(val, geneName.getValue());
         assertEquals(0, geneName.getEvidences().size());
+        jsonVerify(geneName);
     }
 
     @Test
@@ -180,6 +180,7 @@ public class GeneFactoryTest {
         ORFName geneName = GeneFactory.INSTANCE.createORFName(val, evidences);
         assertEquals(val, geneName.getValue());
         assertEquals(0, geneName.getEvidences().size());
+        jsonVerify(geneName);
     }
 
     private Evidence createEvidence(String evidenceStr) {

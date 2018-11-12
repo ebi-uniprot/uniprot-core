@@ -84,7 +84,7 @@ public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>> implements FFL
 		}
 
 		// Add Synonyms
-		StringBuilder gSBuilder = addGeneItems(SYNONYMS, gene.getGeneNameSynonyms(), showEvidence);
+		StringBuilder gSBuilder = addGeneItems(SYNONYMS, gene.getSynonyms(), showEvidence);
 		if (gSBuilder != null) {
 			typeBuilders.add(gSBuilder);
 		}
@@ -136,7 +136,7 @@ public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>> implements FFL
 	}
 
 	private boolean hasGene(Gene gene) {
-		return (gene.hasGeneName() || gene.getGeneNameSynonyms().size() > 0 || gene.getOrderedLocusNames().size() > 0
+		return (gene.hasGeneName() || gene.getSynonyms().size() > 0 || gene.getOrderedLocusNames().size() > 0
 				|| gene.getORFNames().size() > 0);
 	}
 

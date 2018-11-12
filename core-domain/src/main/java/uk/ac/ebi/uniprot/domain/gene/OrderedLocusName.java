@@ -1,5 +1,11 @@
 package uk.ac.ebi.uniprot.domain.gene;
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 
 /**
@@ -48,7 +54,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * uniProtEntry.getGenes().add(gene);</div>
  * </p>
  */
-
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.OrderedLocusNameImpl.class, name = "orderedLocusName")
+})
 public interface OrderedLocusName extends EvidencedValue {
 
 }

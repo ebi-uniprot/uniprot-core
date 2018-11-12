@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ProteinDescriptionImpl implements ProteinDescription {
@@ -22,9 +24,8 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 	private final Name biotechName;
 	private final List<Name> cdAntigenNames;
 	private final List<Name> innNames;	
-	private final List<ProteinNameSection> includes;  //dmain
-	private final List<ProteinNameSection> contains;  //component
-	
+	private final List<ProteinSection> includes;  //dmain
+	private final List<ProteinSection> contains;  //component
 	public ProteinDescriptionImpl(ProteinName recommendedName,
 			 List<ProteinName> alternativeNames
 			) {
@@ -39,13 +40,17 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 		this(recommendedName, alternativeNames, submissionNames,
 				null,null, null, null, null, null);
 	}
-	
-	public ProteinDescriptionImpl(ProteinName recommendedName,
-			List<ProteinName> alternativeNames,
-			List<ProteinName> submissionNames,
-			 Name allergenName,
-			Name biotechName, List<Name> cdAntigenNames, List<Name> innNames,
-			List<ProteinNameSection> includes, List<ProteinNameSection> contains){
+	@JsonCreator
+	public ProteinDescriptionImpl(
+			@JsonProperty("recommendedName") ProteinName recommendedName,
+			@JsonProperty("alternativeNames") List<ProteinName> alternativeNames,
+			@JsonProperty("submissionNames") List<ProteinName> submissionNames,
+			@JsonProperty("allergenName") Name allergenName,
+			@JsonProperty("biotechName") Name biotechName, 
+			@JsonProperty("cdAntigenNames") List<Name> cdAntigenNames, 
+			@JsonProperty("innNames") List<Name> innNames,
+			@JsonProperty("includes") List<ProteinSection> includes,
+			@JsonProperty("contains") List<ProteinSection> contains){
 		this.recommendedName = recommendedName;
 		this.alternativeNames  =copyList(alternativeNames);
 		this.submissionNames  =copyList(submissionNames);
@@ -104,12 +109,12 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 	}
 
 	@Override
-	public List<ProteinNameSection> getIncludes() {
+	public List<ProteinSection> getIncludes() {
 		return includes;
 	}
 
 	@Override
-	public List<ProteinNameSection> getContains() {
+	public List<ProteinSection> getContains() {
 		return contains;
 	}
 	@JsonIgnore

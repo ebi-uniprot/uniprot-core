@@ -1,5 +1,6 @@
-package uk.ac.ebi.uniprot.domain.uniprot.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
@@ -29,6 +30,7 @@ public class EvidenceImplTest {
     	 assertEquals(dbName, evidence.getSource().getDatabaseName());
     	 assertEquals(id, evidence.getSource().getId());
     	 }
+    	 TestHelper.verifyJson(evidence);
     }
     @Test
     public void testFromNoAttr() {

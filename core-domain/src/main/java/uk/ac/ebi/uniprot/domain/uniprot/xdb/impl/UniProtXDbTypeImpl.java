@@ -3,43 +3,49 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseCategory;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UniProtXDbTypeImpl implements UniProtXDbType {
-	private String name;
-	private String displayName;
-	private DatabaseCategory category;
-	private String uriLink;
-	private List<DBXRefTypeAttribute> attributes = new ArrayList<>();
+	private final String name;
+	private final String displayName;
+	private final DatabaseCategory category;
+	private final String uriLink;
+	private  final List<DBXRefTypeAttribute> attributes;
 	private static final DBXRefTypeAttribute DEFAULT_ATTRIBUTE = new DBXRefTypeAttributeImpl("Description",
 			"description", null);
 
-	public UniProtXDbTypeImpl() {
-		attributes.add(DEFAULT_ATTRIBUTE);
-	}
-
-	public void setName(String name) {
+	@JsonCreator
+	public UniProtXDbTypeImpl(
+			@JsonProperty("name")String name, 
+			@JsonProperty("displayName")String displayName, 
+			@JsonProperty("category")DatabaseCategory category, 
+			@JsonProperty("uriLink")String uriLink,
+			@JsonProperty("attributes")
+			List<DBXRefTypeAttributeImpl> attributes) {
+		super();
 		this.name = name;
-	}
-
-	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
-	}
-
-	public void setCategory(String category) {
-		this.category = DatabaseCategory.typeOf(category);
-	}
-
-	public void setUriLink(String uriLink) {
+		this.category = category;
 		this.uriLink = uriLink;
+	
+		this.attributes= new ArrayList<>();
+		if((attributes !=null) && !attributes.isEmpty())
+			this.attributes.addAll(attributes);
+		else
+			this.attributes.add(DEFAULT_ATTRIBUTE);
+		
 	}
+
+
 
 	public void setAttributes(List<DBXRefTypeAttributeImpl> attributes) {
 		if ((attributes != null) && (!attributes.isEmpty())) {

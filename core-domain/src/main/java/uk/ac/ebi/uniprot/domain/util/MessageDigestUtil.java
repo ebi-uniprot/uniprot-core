@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.impl;
+package uk.ac.ebi.uniprot.domain.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

@@ -1,12 +1,14 @@
-package uk.ac.ebi.uniprot.domain.common;
+package uk.ac.ebi.uniprot.domain;
 
-public final class Property implements Pair<String, String> {
-	private String key;
-	private String value;
-	public Property() {
-		
-	}
-	public Property(String key, String value) {
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public final class Property implements Pair<String, String>, Comparable<Property>{
+	private final String key;
+	private final String value;
+	@JsonCreator
+	public Property(@JsonProperty("key")String key, 
+			@JsonProperty("value")String value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -19,12 +21,7 @@ public final class Property implements Pair<String, String> {
 	public String getValue() {
 		return value;
 	}
-	public void setKey(String key) {
-		this.key = key;
-	}
-	public void setValue(String value) {
-		this.value = value;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -53,6 +50,10 @@ public final class Property implements Pair<String, String> {
 		} else if (!value.equals(other.value))
 			return false;
 		return true;
+	}
+	@Override
+	public int compareTo(Property o) {
+		return this.key.compareTo(o.getKey());
 	}
 
 }

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.common;
+package uk.ac.ebi.uniprot.domain;
 
 
 public enum MoleculeWeight {

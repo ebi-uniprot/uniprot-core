@@ -13,8 +13,8 @@ public interface ProteinDescription {
 	Name getBiotechName();
 	List<Name> getCdAntigenNames();
 	List<Name> getInnNames();
-	List<ProteinNameSection> getIncludes();
-	List<ProteinNameSection> getContains();
+	List<ProteinSection> getIncludes();
+	List<ProteinSection> getContains();
 	boolean isValid();
 	
 }

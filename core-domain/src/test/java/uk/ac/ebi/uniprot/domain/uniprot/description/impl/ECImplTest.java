@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import uk.ac.ebi.uniprot.domain.common.TestHelper;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
@@ -30,7 +30,7 @@ class ECImplTest {
 		assertEquals(ec, ecObj.getValue());
 		assertTrue(ecObj.isValid());
 		assertEquals(evidences, ecObj.getEvidences());
-		TestHelper.writeJson(ecObj);
+		TestHelper.verifyJson(ecObj);
 	}
 	@Test
 	void testECImplNoEv() {
@@ -41,7 +41,7 @@ class ECImplTest {
 		assertEquals(ec, ecObj.getValue());
 		assertTrue(ecObj.isValid());
 		assertEquals(evidences, ecObj.getEvidences());
-		TestHelper.writeJson(ecObj);
+		TestHelper.verifyJson(ecObj);
 	}
 
 }

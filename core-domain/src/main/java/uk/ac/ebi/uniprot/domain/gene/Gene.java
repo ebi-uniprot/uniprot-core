@@ -2,7 +2,13 @@ package uk.ac.ebi.uniprot.domain.gene;
 
 
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 
 /**
@@ -42,6 +48,14 @@ import java.util.List;
  * uniProtEntry.getGenes().add(gene);</div>
  * </p>
  */
+
+
+
+
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.class, name = "gene")
+})
 
 public interface Gene{
 
@@ -90,7 +104,7 @@ public interface Gene{
      *
      * @return The Gene Name Synonyms of this Gene.
      */
-    public List<GeneNameSynonym> getGeneNameSynonyms();
+    public List<GeneNameSynonym> getSynonyms();
 
 
     /**

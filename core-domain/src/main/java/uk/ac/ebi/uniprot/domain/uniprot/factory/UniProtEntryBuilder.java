@@ -2,9 +2,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import java.util.List;
 
+import uk.ac.ebi.uniprot.domain.Builder;
+import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.common.Builder;
-import uk.ac.ebi.uniprot.domain.common.Sequence;
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.gene.Gene;

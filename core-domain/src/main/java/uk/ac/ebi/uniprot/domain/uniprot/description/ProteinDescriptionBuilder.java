@@ -13,8 +13,8 @@ public class ProteinDescriptionBuilder {
 	private  Name biotechName;
 	private  List<Name> cdAntigenNames;
 	private  List<Name> innNames;	
-	private  List<ProteinNameSection> includes;  //dmain
-	private  List<ProteinNameSection> contains;  //component
+	private  List<ProteinSection> includes;  //dmain
+	private  List<ProteinSection> contains;  //component
 	public static ProteinDescriptionBuilder newInstance() {
 		return new ProteinDescriptionBuilder();
 	}
@@ -55,11 +55,11 @@ public class ProteinDescriptionBuilder {
 		this.innNames = innNames;
 		return this;
 	}
-	public ProteinDescriptionBuilder includes(List<ProteinNameSection> includes) {
+	public ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
 		this.includes = includes;
 		return this;
 	}
-	public ProteinDescriptionBuilder contains(List<ProteinNameSection> contains) {
+	public ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
 		this.contains = contains;
 		return this;
 	}

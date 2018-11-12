@@ -1,18 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.xdb.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.xdb.impl.DBCrossReferenceImpl;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class EvidenceImpl implements Evidence {
 	private static final String PIPE = "|";
 	private static final String COLON = ":";
-	private EvidenceCode evidenceCode;
-	private DBCrossReference source;
+	private final EvidenceCode evidenceCode;
+	private final DBCrossReference source;
 	
 	
 	static final String REFERENCE ="Reference";
@@ -37,15 +40,15 @@ public class EvidenceImpl implements Evidence {
     }
 
 
-	public EvidenceImpl() {
-
+	
+	public EvidenceImpl( EvidenceCode evidenceCode,
+			 String databaseName, String dbId) {
+		this(evidenceCode, new DBCrossReferenceImpl(databaseName, dbId));
+	
 	}
-	public EvidenceImpl(EvidenceCode evidenceCode, String databaseName, String dbId) {
-		this.evidenceCode = evidenceCode;
-		this.source = new DBCrossReferenceImpl(databaseName, dbId);
-	}
-
-	public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference source) {
+	@JsonCreator
+	public EvidenceImpl(@JsonProperty("evidenceCode") EvidenceCode evidenceCode,
+			@JsonProperty("source") DBCrossReference source) {
 		this.evidenceCode = evidenceCode;
 		this.source = source;
 	}
@@ -56,19 +59,19 @@ public class EvidenceImpl implements Evidence {
 	}
 
 
-	public void setEvidenceCode(EvidenceCode evidenceCode) {
-		this.evidenceCode = evidenceCode;
-	}
+//	public void setEvidenceCode(EvidenceCode evidenceCode) {
+//		this.evidenceCode = evidenceCode;
+//	}
 
 	@Override
 	public DBCrossReference getSource() {
 		return source;
 	}
 
-	
-	public void setSource(DBCrossReference source) {
-		this.source = source;
-	}
+//	
+//	public void setSource(DBCrossReference source) {
+//		this.source = source;
+//	}
 
 	@Override
 	public int compareTo(Evidence o) {

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.common;
+package uk.ac.ebi.uniprot.domain;
 
 /**
  * Encapsulates a protein sequence, in particular the sequence annotation in the

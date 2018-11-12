@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.common.Sequence;
+import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.parser.impl.sq.SqLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.sq.SqLineObject;
 

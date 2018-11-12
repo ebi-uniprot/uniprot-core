@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
-
+import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum DatabaseCategory {
 	SEQUENCE_DATABASES("SEQ", "Sequence databases"),
@@ -44,6 +44,7 @@ public enum DatabaseCategory {
 		this.displayName = displayName;
 		this.searchable = searchable;
 	}
+	 @JsonValue
 	  public String getName() {
 	        return name;
 	    }

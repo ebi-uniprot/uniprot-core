@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.domain.common.Sequence;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import uk.ac.ebi.uniprot.domain.Sequence;
 
 import static org.junit.Assert.*;
 

@@ -6,9 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.google.common.base.Strings;
-
-import uk.ac.ebi.uniprot.domain.common.Property;
+import uk.ac.ebi.uniprot.domain.Property;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 
@@ -23,7 +22,7 @@ public class UniProtDBCrossReferenceImplTest {
         String type ="GeneDB";
         String id ="H25N7.01:pep";
         String description ="-";
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description);
+        UniProtDBCrossReference xref =  UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description);
       
         verify(xref, val, type, id, description, null, null, null);
         
@@ -68,7 +67,7 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr);
+        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
         
     }
@@ -84,7 +83,7 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= "IEA:Ensembl";
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr);
+        UniProtDBCrossReference xref =  UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
         
     }
@@ -98,7 +97,7 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform);
+        UniProtDBCrossReference xref =  UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
         
     }
@@ -112,7 +111,7 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= "IEA:Ensembl";
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform);
+        UniProtDBCrossReference xref =  UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
         
     }
@@ -128,7 +127,7 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= "-";
         String fourthAttr = "mRNA";
         String isoform = null;
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform);
+        UniProtDBCrossReference xref =  UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
         
     }
@@ -144,7 +143,7 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= "ENSG00000011143";
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform);
+        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
     
@@ -167,16 +166,16 @@ public class UniProtDBCrossReferenceImplTest {
     private void verify(UniProtDBCrossReference xref, String drVal, String type, String id, String description,
             String thirdAttr, String fourAttr, String isoformId
             ){
-        assertEquals(drVal, xref.toString());
-        assertEquals(type , xref.getDatabaseName());
-        assertEquals(id, xref.getId());
-        assertEquals(description, getValue(xref, 0));
-        assertEquals(isoformId, xref.getIsoformId());
-        assertEquals(thirdAttr, getValue(xref, 1));
-        assertEquals(fourAttr, getValue(xref, 2));
-      
-       
+    	  assertEquals(drVal, xref.toString());
+          assertEquals(type , xref.getDatabaseName());
+          assertEquals(id, xref.getId());
+          assertEquals(description, getValue(xref, 0));
+          assertEquals(isoformId, xref.getIsoformId());
+          assertEquals(thirdAttr, getValue(xref, 1));
+          assertEquals(fourAttr, getValue(xref, 2));
+        TestHelper.verifyJson(xref);
     }
+
     private String getValue(UniProtDBCrossReference xref, int number) {
     	List<Property> properties = xref.getProperties();
     	if(properties.size()< number+1) {
@@ -194,7 +193,7 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform);
+        UniProtDBCrossReference xref =  UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
         verify(xref, val, type, id, description, null, null, null);
         
     }
@@ -211,10 +210,8 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr= "ENSG00000011143";
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
-        
-    
-        
-        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl(type, id, description, thirdAttr, fourthAttr, isoform);
+
+        UniProtDBCrossReference xref =  UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
     

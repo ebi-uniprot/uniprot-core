@@ -9,9 +9,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import uk.ac.ebi.uniprot.domain.common.TestHelper;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
@@ -19,7 +17,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinNameSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public class ProteinDescriptionFactoryTest {
@@ -38,7 +36,7 @@ public class ProteinDescriptionFactoryTest {
 		EC ecNumber = ProteinDescriptionFactory.INSTANCE.createECNumber(val, evidences);
 		assertEquals(val, ecNumber.getValue());
 		assertEquals(evidences, ecNumber.getEvidences());
-		TestHelper.writeJson(ecNumber);
+		TestHelper.verifyJson(ecNumber);
 	}
 
 	@Test
@@ -48,7 +46,7 @@ public class ProteinDescriptionFactoryTest {
 		Name proteinName = ProteinDescriptionFactory.INSTANCE.createName(val, evidences);
 		assertEquals(val, proteinName.getValue());
 		assertEquals(evidences, proteinName.getEvidences());
-		TestHelper.writeJson(proteinName);
+		TestHelper.verifyJson(proteinName);
 	}
 
 	@Test
@@ -63,7 +61,7 @@ public class ProteinDescriptionFactoryTest {
 		assertEquals(ecNumbers, recName.getEcNumbers());
 		assertTrue(recName.isValid());
 		
-		TestHelper.writeJson(recName);
+		TestHelper.verifyJson(recName);
 
 	}
 
@@ -80,7 +78,7 @@ public class ProteinDescriptionFactoryTest {
 		assertFalse(recName.isValid());
 		recName = ProteinDescriptionFactory.INSTANCE.createProteinName(null, shortNames, ecNumbers);
 		assertFalse(recName.isValid());
-		TestHelper.writeJson(recName);
+		TestHelper.verifyJson(recName);
 
 	}
 
@@ -95,7 +93,7 @@ public class ProteinDescriptionFactoryTest {
 		assertEquals(shortNames, altName.getShortNames());
 		assertEquals(ecNumbers, altName.getEcNumbers());
 		
-		TestHelper.writeJson(altName);
+		TestHelper.verifyJson(altName);
 	}
 
 	
@@ -109,7 +107,7 @@ public class ProteinDescriptionFactoryTest {
 		assertEquals(fullName, subName.getFullName());
 		assertEquals(ecNumbers, subName.getEcNumbers());
 		assertTrue(subName.isValid());
-		TestHelper.writeJson(subName);
+		TestHelper.verifyJson(subName);
 	}
 	
 
@@ -155,7 +153,7 @@ public class ProteinDescriptionFactoryTest {
 		assertEquals(antigenNames, description.getCdAntigenNames());
 		assertTrue(description.getInnNames().isEmpty());
 		
-		TestHelper.writeJson(description);
+		TestHelper.verifyJson(description);
 		
 	}
 
@@ -174,15 +172,15 @@ public class ProteinDescriptionFactoryTest {
 		ProteinName subName = ProteinDescriptionFactory.INSTANCE.createProteinName(fullName1, null,
 				ecNumbers1);
 
-		ProteinNameSection included1 = ProteinDescriptionFactory.INSTANCE.createProteinNameSection(recommendedName,
+		ProteinSection included1 = ProteinDescriptionFactory.INSTANCE.createProteinNameSection(recommendedName,
 				null);
-		ProteinNameSection contain1 = ProteinDescriptionFactory.INSTANCE.createProteinNameSection(recommendedName,
+		ProteinSection contain1 = ProteinDescriptionFactory.INSTANCE.createProteinNameSection(recommendedName,
 				null);
-		ProteinNameSection contain2 = ProteinDescriptionFactory.INSTANCE.createProteinNameSection(recommendedName,
+		ProteinSection contain2 = ProteinDescriptionFactory.INSTANCE.createProteinNameSection(recommendedName,
 				proteinAltNames);
-		List<ProteinNameSection> includes = new ArrayList<>();
+		List<ProteinSection> includes = new ArrayList<>();
 		includes.add(included1);
-		List<ProteinNameSection> contains = new ArrayList<>();
+		List<ProteinSection> contains = new ArrayList<>();
 		contains.add(contain1);
 		contains.add(contain2);
 		List<ProteinName> subNames = new ArrayList<>();
@@ -205,7 +203,7 @@ public class ProteinDescriptionFactoryTest {
 		assertEquals(contains, description.getContains());
 		assertTrue(description.isValid());
 		
-		TestHelper.writeJson(description);
+		TestHelper.verifyJson(description);
 
 	}
 	private List<ProteinName> createAltName() {
