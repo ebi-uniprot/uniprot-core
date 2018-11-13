@@ -27,7 +27,7 @@ public class KeywordImplTest {
         List<Evidence> evidences = createEvidences();
         Keyword keyword = new KeywordImpl(val, evidences);
         String expected = "Transmembrane {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
-        assertEquals(expected, keyword.getDisplayed(""));
+        assertEquals(expected, keyword.getDisplayed(" "));
     }
     
     private List<Evidence> createEvidences(){
