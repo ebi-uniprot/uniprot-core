@@ -31,9 +31,7 @@ import uk.ac.ebi.uniprot.domain.gene.GeneName;
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
@@ -42,6 +40,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
@@ -192,8 +192,8 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry =   builder            
                 .build();
         assertTrue(entry.getTaxonomyLineage().isEmpty());
-        List<TaxonName> taxonomies = new ArrayList<>();
-        TaxonName taxon= UniProtFactory.INSTANCE.getTaxonomyFactory().createTaxonName("homo sapien");
+        List<OrganismName> taxonomies = new ArrayList<>();
+        OrganismName taxon= UniProtFactory.INSTANCE.getTaxonomyFactory().createOrganismName("homo sapien");
         taxonomies.add(taxon);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder     
@@ -496,7 +496,7 @@ public class UniProtEntryBuilderTest {
         assertNull(entry.getOrganism());
         String scientificName ="Homo sapiens";
         String commonName = "Human";
-        Organism organism =  UniProtFactory.INSTANCE.getOrganismFactory().createOrganism(scientificName, commonName);
+        OrganismName organism =  UniProtFactory.INSTANCE.getTaxonomyFactory().createOrganismName(scientificName, commonName);
         
         builder = UniProtEntryBuilder.newInstance();
          entry = builder    
@@ -515,10 +515,10 @@ public class UniProtEntryBuilderTest {
         assertTrue(entry.getOrganismHosts().isEmpty());
         String scientificName ="Homo sapiens";
         String commonName = "Human";
-        Organism organism =  UniProtFactory.INSTANCE.getOrganismFactory().createOrganism( scientificName, commonName);
-        List<OrganismHost> organismHosts = new ArrayList<>();
+        OrganismName organism =  UniProtFactory.INSTANCE.getTaxonomyFactory().createOrganismName( scientificName, commonName);
+        List<Organism> organismHosts = new ArrayList<>();
         organismHosts.add(
-        		UniProtFactory.INSTANCE.getOrganismFactory().createOrganismHost(9606, organism)
+        		UniProtFactory.INSTANCE.getTaxonomyFactory().createOrganism(organism, 9606)
         		);
         builder = UniProtEntryBuilder.newInstance();
          entry = builder   

@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.oc.OCLineBuilder;
@@ -21,7 +21,7 @@ public class OCLineBuildTest {
 		String ocLine ="OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;"+
 				"\nOC   Mammalia; Eutheria; Euarchontoglires; Primates; Catarrhini; Hominidae;" +
 				"\nOC   Homo.";
-		List<TaxonName> taxonNames = new ArrayList<>();
+		List<OrganismName> taxonNames = new ArrayList<>();
 		taxonNames.add(TaxonomyFactory.INSTANCE.createTaxonName("Eukaryota"));
 		taxonNames.add(TaxonomyFactory.INSTANCE.createTaxonName("Metazoa"));
 		taxonNames.add(TaxonomyFactory.INSTANCE.createTaxonName("Chordata"));

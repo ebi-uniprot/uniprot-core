@@ -8,10 +8,9 @@ import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
@@ -41,7 +40,7 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private  UniProtAccession accession;
     private  List<UniProtAccession> secondaryAccessions;
     private  UniProtId uniprotId;
-    private  List<TaxonName> lineage;
+    private  List<OrganismName> lineage;
     private  ProteinExistence proteinExistance =ProteinExistence.UNKNOWN;
     private  EntryAudit entryAudit;
     private  List<Organelle> organelles;
@@ -50,8 +49,8 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private  Comments comments;
     private  UniProtReferences references;
     private  List<Gene> genes;
-    private  Organism organism;
-    private  List<OrganismHost> organismHosts;
+    private  OrganismName organism;
+    private  List<Organism> organismHosts;
     private  UniProtDBCrossReferences xrefs;
     private  Sequence sequence;
     private  UniProtTaxonId taxonId;
@@ -114,7 +113,7 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
     
-    public UniProtEntryBuilder taxonomyLineage(List<TaxonName> lineage){
+    public UniProtEntryBuilder taxonomyLineage(List<OrganismName> lineage){
         this.lineage = lineage;
         return this;
     }
@@ -159,11 +158,11 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         this.genes = genes;
         return this;
     }
-    public UniProtEntryBuilder organism(Organism organism){
+    public UniProtEntryBuilder organism(OrganismName organism){
         this.organism = organism;
         return this;
     }
-    public UniProtEntryBuilder organismHosts(List<OrganismHost> organismHosts){
+    public UniProtEntryBuilder organismHosts(List<Organism> organismHosts){
         this.organismHosts = organismHosts;
         return this;
     }

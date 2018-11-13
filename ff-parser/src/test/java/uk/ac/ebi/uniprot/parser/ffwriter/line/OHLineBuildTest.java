@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.OrganismHost;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.OrganismFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.oh.OHLineBuilder;

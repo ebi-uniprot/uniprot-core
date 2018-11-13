@@ -1,49 +1,60 @@
-package uk.ac.ebi.uniprot.domain.uniprot.impl;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OrganismImpl  implements Organism {
-	 private final String scientificName;
-	    private final String commonName;
-	    private final List<String> synonyms;
-    public OrganismImpl( String scientificName, String commonName, List<String> synonyms) {
-    	 this.scientificName = scientificName;
-         this.commonName = commonName;
-         if ((synonyms == null) || synonyms.isEmpty()) {
-             this.synonyms = Collections.emptyList();
-         } else {
-             this.synonyms = Collections.unmodifiableList(synonyms);
-         }
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-         if ((this.scientificName == null) || this.scientificName.isEmpty()) {
-             throw new IllegalArgumentException("Scientific name is not defined.");
-         }
-       
-    }
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+public class TaxonNameImpl implements TaxonName {
+	private final String scientificName;
+	private final String commonName;
+	private final List<String> synonyms;
+
+
+	public TaxonNameImpl(String scientificName) {
+		this(scientificName, null);
+		
+	}
+
+	public TaxonNameImpl(String scientificName, String commonName) {
+		this(scientificName, commonName, Collections.emptyList());
+	}
+
+	@JsonCreator
+	public TaxonNameImpl(@JsonProperty("scientificName") String scientificName,
+			@JsonProperty("commonName") String commonName, 
+			@JsonProperty("synonyms") List<String> synonyms) {
+		this.scientificName = scientificName;
+		this.commonName = commonName;
+
+		if ((synonyms == null) || synonyms.isEmpty()) {
+			this.synonyms = Collections.emptyList();
+		} else {
+			this.synonyms = Collections.unmodifiableList(synonyms);
+		}
+	}
 
 	@Override
 	public String getScientificName() {
 		return scientificName;
 	}
 
-
 	@Override
 	public String getCommonName() {
 		return commonName;
 	}
-
 
 	@Override
 	public List<String> getSynonyms() {
 		return synonyms;
 	}
 
-
-    @Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -61,7 +72,7 @@ public class OrganismImpl  implements Organism {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		OrganismImpl other = (OrganismImpl) obj;
+		TaxonNameImpl other = (TaxonNameImpl) obj;
 		if (commonName == null) {
 			if (other.commonName != null)
 				return false;
@@ -79,7 +90,6 @@ public class OrganismImpl  implements Organism {
 			return false;
 		return true;
 	}
-
 	@Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -97,6 +107,5 @@ public class OrganismImpl  implements Organism {
         }
         return sb.toString();
     }
-
 
 }

@@ -11,8 +11,7 @@ import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
@@ -38,7 +37,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     private final UniProtAccession accession;
     private final List<UniProtAccession> secondaryAccessions;
     private final UniProtId uniprotId;
-    private final List<TaxonName> lineage;
+    private final List<OrganismName> lineage;
     private final ProteinExistence proteinExistance;
     private final EntryAudit entryAudit;
     private final List<Organelle> organelles;
@@ -47,8 +46,8 @@ public class UniProtEntryImpl implements UniProtEntry {
     private final Comments comments;
     private final UniProtReferences references;
     private final List<Gene> genes;
-    private final Organism organism;
-    private final List<OrganismHost> organismHosts;
+    private final OrganismName organism;
+    private final List<Organism> organismHosts;
     private final UniProtDBCrossReferences xrefs;
     private final Sequence sequence;
     private final UniProtTaxonId taxonId;
@@ -59,7 +58,7 @@ public class UniProtEntryImpl implements UniProtEntry {
             UniProtAccession accession,
             List<UniProtAccession> secondaryAccessions,
             UniProtId uniprotId,
-            List<TaxonName> lineage,
+            List<OrganismName> lineage,
             ProteinExistence proteinExistance,
             EntryAudit entryAudit,
             List<Organelle> organelles,
@@ -69,8 +68,8 @@ public class UniProtEntryImpl implements UniProtEntry {
             UniProtReferences references,
             List<Gene> genes,
             UniProtFeatures features,
-            Organism organism,
-            List<OrganismHost> organismHosts,
+            OrganismName organism,
+            List<Organism> organismHosts,
             UniProtDBCrossReferences xrefs,
             Sequence sequence,
             UniProtTaxonId taxonId,
@@ -151,7 +150,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public List<TaxonName> getTaxonomyLineage() {
+    public List<OrganismName> getTaxonomyLineage() {
         return lineage;
     }
 
@@ -201,12 +200,12 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public Organism getOrganism() {
+    public OrganismName getOrganism() {
         return organism;
     }
 
     @Override
-    public List<OrganismHost> getOrganismHosts() {
+    public List<Organism> getOrganismHosts() {
         return organismHosts;
     }
 

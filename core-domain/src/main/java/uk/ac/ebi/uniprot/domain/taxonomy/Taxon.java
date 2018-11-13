@@ -1,10 +1,15 @@
 package uk.ac.ebi.uniprot.domain.taxonomy;
 
-import java.util.List;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
-public interface Taxon   {
-    TaxonId getTaxonId();
-      String getScientificName();
-      String getCommonName();
-      List<String> getSynonyms();
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonImpl.class, name = "taxonImpl")
+})
+public interface Taxon extends TaxonId{
+	TaxonName getName();
 }

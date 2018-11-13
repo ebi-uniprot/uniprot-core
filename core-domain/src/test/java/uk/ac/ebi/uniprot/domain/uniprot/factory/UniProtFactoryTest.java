@@ -30,12 +30,6 @@ public class UniProtFactoryTest {
     }
 
     @Test
-    public void testGetOrganismFactory() {
-        OrganismFactory componentFactory = UniProtFactory.INSTANCE.getOrganismFactory();
-        assertNotNull(componentFactory);
-    }
-
-    @Test
     public void testGetProteinDescriptionFactory() {
         ProteinDescriptionFactory componentFactory = UniProtFactory.INSTANCE.getProteinDescriptionFactory();
         assertNotNull(componentFactory);

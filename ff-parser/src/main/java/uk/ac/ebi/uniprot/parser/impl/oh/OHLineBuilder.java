@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
+import uk.ac.ebi.uniprot.domain.uniprot.OrganismHost;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
@@ -54,7 +54,7 @@ public class OHLineBuilder extends FFLineBuilderAbstr< List<OrganismHost> >
         sb.append(NCBI_TAX_ID);
         sb.append(organismHost.getTaxonId().getTaxonId());
         sb.append("; ");
-        Organism organism = organismHost.getOrganism();
+        OrganismName organism = organismHost.getOrganism();
         if (organism != null) {
             if (organism.getScientificName() != null) {
                 sb.append(organism.getScientificName());

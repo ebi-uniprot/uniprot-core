@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.OrganismFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.os.OSLineBuilder;
@@ -17,7 +17,7 @@ public class OSLineBuildTest {
 	@Test
 	public void test2(){
 		String osLine = "OS   Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB).";
-		Organism organism = factory.createFromOrganismLine("Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB)");
+		OrganismName organism = factory.createFromOrganismLine("Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB)");
 		
 		FFLine ffLine = builder.build(organism);
 
@@ -34,7 +34,7 @@ public class OSLineBuildTest {
 		
 			String osLine ="OS   Methylobacterium extorquens (Methylobacterium dichloromethanicum)\n" +
                            "OS   (Protomonas extorquens).";
-			Organism organism = factory.createFromOrganismLine("Methylobacterium extorquens (Methylobacterium dichloromethanicum) (Protomonas extorquens)");
+			OrganismName organism = factory.createFromOrganismLine("Methylobacterium extorquens (Methylobacterium dichloromethanicum) (Protomonas extorquens)");
 			
 			FFLine ffLine = builder.build(organism);
 

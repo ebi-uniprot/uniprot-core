@@ -5,7 +5,7 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
@@ -13,7 +13,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
-public class OSLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLineBuilder<Organism> {
+public class OSLineBuilder extends FFLineBuilderAbstr<OrganismName> implements FFLineBuilder<OrganismName> {
 ;
 	
 	public OSLineBuilder(){
@@ -21,22 +21,22 @@ public class OSLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLin
 	}
 	
 	@Override
-	protected FFLine buildLine(Organism f, boolean showEvidence){
+	protected FFLine buildLine(OrganismName f, boolean showEvidence){
 		StringBuilder sb = build(f, showEvidence, true );
 		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR, linePrefix);
 		return FFLines.create(lls);
 	}
 	@Override
-	public String buildString(Organism f) {
+	public String buildString(OrganismName f) {
 		return build(f, false, false).toString();
 	}
 	
 	@Override
-	public String buildStringWithEvidence(Organism f) {
+	public String buildStringWithEvidence(OrganismName f) {
 		return build(f, true, false).toString();
 	}
 	
-	private  StringBuilder build(Organism organism, boolean showEvidence, boolean includeFFMarkup) {
+	private  StringBuilder build(OrganismName organism, boolean showEvidence, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkup)
             sb.append(linePrefix);

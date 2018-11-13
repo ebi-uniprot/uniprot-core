@@ -6,7 +6,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.OrganismHost;
 import uk.ac.ebi.uniprot.parser.impl.oh.OhLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.oh.OhLineObject;
 

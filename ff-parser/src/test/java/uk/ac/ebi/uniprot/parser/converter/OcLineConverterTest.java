@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.parser.impl.oc.OcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.oc.OcLineObject;
 
@@ -23,7 +23,7 @@ public class OcLineConverterTest {
 		obj.nodes.add("Vertebrata");
 		obj.nodes.add("Euteleostomi");
 		OcLineConverter converter = new OcLineConverter();
-		 List<TaxonName>  taxons = converter.convert(obj);
+		 List<OrganismName>  taxons = converter.convert(obj);
 		 assertEquals(6, taxons.size());
 		 validate("Eukaryota", taxons, 0);
 		 validate("Metazoa", taxons, 1);
@@ -34,7 +34,7 @@ public class OcLineConverterTest {
 		 
 		 
 	}
-	private void validate(String val,List<TaxonName>  taxons, int pos ){
+	private void validate(String val,List<OrganismName>  taxons, int pos ){
 		assertEquals(val, taxons.get(pos).getValue());
 	}
 }

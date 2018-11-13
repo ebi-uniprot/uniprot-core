@@ -5,8 +5,7 @@ import java.util.List;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 
@@ -25,7 +24,7 @@ public interface UniProtEntry {
 
 	UniProtId getUniProtId();
 
-	List<TaxonName> getTaxonomyLineage();
+	List<OrganismName> getTaxonomyLineage();
 
 	ProteinExistence getProteinExistence();
 
@@ -47,9 +46,9 @@ public interface UniProtEntry {
 
 	List<Gene> getGenes();
 
-	Organism getOrganism();
+	OrganismName getOrganism();
 
-	List<OrganismHost> getOrganismHosts();
+	List<Organism> getOrganismHosts();
 
 	UniProtDBCrossReferences getDatabaseCrossReferences();
 

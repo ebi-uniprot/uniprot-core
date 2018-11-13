@@ -40,10 +40,6 @@ public enum UniProtFactory {
         return GeneFactory.INSTANCE;
     }
 
-    public OrganismFactory getOrganismFactory() {
-        return OrganismFactory.INSTANCE;
-    }
-
     public ProteinDescriptionFactory getProteinDescriptionFactory() {
         return ProteinDescriptionFactory.INSTANCE;
     }
