@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.domain.feature.impl;
 
+import java.util.List;
+import java.util.regex.Pattern;
+
 import uk.ac.ebi.uniprot.domain.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
-
-import java.util.List;
-import java.util.regex.Pattern;
 
 public class VarSeqFeatureImpl extends FeatureWithAlternativeSequenceImpl implements VarSeqFeature {
 

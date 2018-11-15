@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.domain.feature.impl;
 
+import java.util.List;
+
 import uk.ac.ebi.uniprot.domain.feature.ConflictFeature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
-import java.util.List;
 
 public class ConflictFeatureImpl extends FeatureWithAlternativeSequenceImpl implements ConflictFeature {
     public ConflictFeatureImpl( FeatureLocation location,

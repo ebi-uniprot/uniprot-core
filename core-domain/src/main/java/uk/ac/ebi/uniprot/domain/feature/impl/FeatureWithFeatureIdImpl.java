@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.feature.impl;
 
+import java.util.regex.Pattern;
+
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.feature.HasFeatureId;
-
-import java.util.regex.Pattern;
 
 public class FeatureWithFeatureIdImpl extends FeatureImpl implements Feature, HasFeatureId {
     private final FeatureId featureId;

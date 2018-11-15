@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.domain.feature.impl;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureDescription;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public abstract class FeatureImpl implements Feature {
     private final FeatureType type;

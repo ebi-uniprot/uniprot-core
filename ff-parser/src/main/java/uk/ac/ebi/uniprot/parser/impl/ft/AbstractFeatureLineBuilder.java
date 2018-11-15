@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
+import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
 
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.COLON;
@@ -18,8 +19,6 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.feature.Feature;
 
 public abstract class AbstractFeatureLineBuilder<T extends UniProtFeature<? extends Feature>>
 		extends FFLineBuilderAbstr<T> implements FFLineBuilder<T> {

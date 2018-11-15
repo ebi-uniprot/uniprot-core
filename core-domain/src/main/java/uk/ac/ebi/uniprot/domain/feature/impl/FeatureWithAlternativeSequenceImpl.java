@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.domain.feature.impl;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.feature.HasAlternativeSequence;
 import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public abstract class FeatureWithAlternativeSequenceImpl extends FeatureImpl implements HasAlternativeSequence {
     public static FeatureSequence createFeatureSequence(String value) {

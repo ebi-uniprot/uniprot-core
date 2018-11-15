@@ -10,11 +10,11 @@ import uk.ac.ebi.uniprot.domain.feature.ConflictFeature;
 import uk.ac.ebi.uniprot.domain.feature.Feature;
 import uk.ac.ebi.uniprot.domain.feature.FeatureDescription;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocationModifier;
+import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 import uk.ac.ebi.uniprot.domain.feature.HasAlternativeSequence;
 import uk.ac.ebi.uniprot.domain.feature.HasFeatureId;
 import uk.ac.ebi.uniprot.domain.feature.MutagenFeature;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
-import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
 
 
 public class FTLineBuilderHelper {

@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.feature.impl;
 
+import java.util.regex.Pattern;
+
 import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
 import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;
 import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.feature.LinkedSugar;
-
-import java.util.regex.Pattern;
 
 public class CarbohydFeatureImpl  extends FeatureWithFeatureIdImpl implements CarbohydFeature {
     private final CarbohydLinkType carbohydLinkType;
