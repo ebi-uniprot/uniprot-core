@@ -19,13 +19,11 @@ import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.feature.Feature;
-import uk.ac.ebi.uniprot.domain.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.feature.FeatureLocation;
-import uk.ac.ebi.uniprot.domain.feature.FeatureSequence;
-import uk.ac.ebi.uniprot.domain.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.feature.SequenceReport;
-import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.gene.GeneName;
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
@@ -72,6 +70,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureLocationImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
@@ -683,45 +686,48 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder                 
                 .build();
         assertNotNull(entry.getFeatures());
-        assertTrue(entry.getFeatures().getFeatues().isEmpty());
-        UniProtFeatures features = createFeatures();
+        assertTrue(entry.getFeatures().isEmpty());
+        List<Feature> features = createFeatures();
         builder = UniProtEntryBuilder.newInstance();
          entry = builder
                  .features(features)
                 .build();
         assertNotNull(entry.getFeatures());
-        assertEquals(4, entry.getFeatures().getFeatues().size());
+        assertEquals(4, entry.getFeatures().size());
         assertEquals(features, entry.getFeatures());
     }
-    private UniProtFeatures createFeatures(){
-        List<UniProtFeature<? extends Feature > > features = new ArrayList<>();
+    private List<Feature> createFeatures(){
+        List<Feature  > features = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        features.add(FeatureFactory.INSTANCE.createUniProtFeature(createVarSeqFeature(), evidences));
-        features.add(FeatureFactory.INSTANCE.createUniProtFeature(
-        		FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
-                FeatureFactory.INSTANCE.createFeatureLocation(12, 12), 
-                "some desc1"), evidences));
-        features.add(FeatureFactory.INSTANCE.createUniProtFeature(
-        		FeatureFactory.INSTANCE.buildSimpleFeature(FeatureType.TURN,
-                FeatureFactory.INSTANCE.createFeatureLocation(20, 23), 
-                "some desc2"), evidences));
-        features.add(FeatureFactory.INSTANCE.createUniProtFeature(
-        		FeatureFactory.INSTANCE.buildSimpleFeatureWithFeatureId(FeatureType.CHAIN,
-                FeatureFactory.INSTANCE.createFeatureLocation(200, 230), 
-                "some desc3", "ft_123"), evidences));
-        return  FeatureFactory.INSTANCE.createUniProtFeatures(features);
+        features.add(createVarSeqFeature());
+        features.add(new FeatureImpl(FeatureType.TURN,
+        		 new FeatureLocationImpl(12, 12), 
+                "some desc1", evidences));
+        
+        features.add(new FeatureImpl(FeatureType.TURN,
+       		 new FeatureLocationImpl(20, 23), 
+               "some desc2", evidences));
+   
+        features.add(
+        		new FeatureImpl(FeatureType.CHAIN,
+               		 new FeatureLocationImpl(200, 230), 
+                       "some desc3", new FeatureIdImpl("PRO_123"),  evidences));
+        		
+       return features;
     }
-    private VarSeqFeature createVarSeqFeature(){
-        FeatureLocation location = FeatureFactory.INSTANCE.createFeatureLocation(65, 86);
-        FeatureSequence orginalSequence =FeatureFactory.INSTANCE.createFeatureSequence("RS");
-        List<FeatureSequence> alternativeSequences =Arrays.asList(new FeatureSequence[]{
-                FeatureFactory.INSTANCE.createFeatureSequence("DB"),
-                FeatureFactory.INSTANCE.createFeatureSequence("AA")});
-        List<String> report = Arrays.asList(new String[]{"report1", "report 2"});
-        SequenceReport sReport = FeatureFactory.INSTANCE.createSequenceReport(report);
-        FeatureId featureId =FeatureFactory.INSTANCE.createFeatureId("VRS_112");
-        return FeatureFactory.INSTANCE.buildVarSeqFeature(location,
-                orginalSequence, alternativeSequences, sReport, featureId);
+    private Feature createVarSeqFeature(){
+    	FeatureLocation location = new FeatureLocationImpl(65, 86);
+        List<String> value =Arrays.asList("report1", "report 2");
+		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		AlternativeSequence as =new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"),
+				report
+				);
+		FeatureId featureId = 	FeatureIdImpl.newInstance("VSP_112"); 
+		  
+		return new FeatureImpl(FeatureType.VAR_SEQ, location, "Some description",
+				featureId, as, null,
+				createEvidences());
+	
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();

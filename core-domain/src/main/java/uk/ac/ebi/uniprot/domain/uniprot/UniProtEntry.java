@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 
 /**
  *
@@ -40,8 +42,9 @@ public interface UniProtEntry {
 
 	Comments getComments();
 
-	UniProtFeatures getFeatures();
-
+	List<Feature> getFeatures();
+	List<Feature> getFeaturesByType(FeatureType type);
+	
 	UniProtReferences getReferences();
 
 	List<Gene> getGenes();

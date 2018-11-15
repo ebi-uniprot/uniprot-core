@@ -5,10 +5,7 @@ import java.util.List;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.feature.Feature;
-import uk.ac.ebi.uniprot.domain.feature.Features;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
@@ -20,8 +17,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeatures;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
@@ -29,6 +24,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 
@@ -55,7 +51,7 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private  Sequence sequence;
     private  UniProtTaxonId taxonId;
     private  InternalSection internalSection;
-    private  UniProtFeatures features;
+    private  List<Feature> features;
     @Override
     public UniProtEntry build() {
         return new UniProtEntryImpl(
@@ -190,12 +186,9 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         this.internalSection = internalSection;
         return this;
     }
-    public UniProtEntryBuilder features(UniProtFeatures features){
+    public UniProtEntryBuilder features(List<Feature> features){
         this.features = features;
         return this;
     }
-    public UniProtEntryBuilder features(List<UniProtFeature<? extends Feature>> features){
-        this.features = FeatureFactory.INSTANCE.createUniProtFeatures(features);
-        return this;
-    }
+  
 }

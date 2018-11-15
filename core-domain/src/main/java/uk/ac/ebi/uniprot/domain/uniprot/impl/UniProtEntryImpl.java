@@ -2,13 +2,13 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
@@ -21,13 +21,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeatures;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentsImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -53,7 +54,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     private final UniProtTaxonId taxonId;
     @JsonIgnore
     private final InternalSection internalSection;
-    private final UniProtFeatures features;
+    private final List<Feature> features;
     public UniProtEntryImpl(UniProtEntryType entryType,
             UniProtAccession accession,
             List<UniProtAccession> secondaryAccessions,
@@ -67,7 +68,7 @@ public class UniProtEntryImpl implements UniProtEntry {
             Comments comments,
             UniProtReferences references,
             List<Gene> genes,
-            UniProtFeatures features,
+            List<Feature> features,
             OrganismName organism,
             List<Organism> organismHosts,
             UniProtDBCrossReferences xrefs,
@@ -77,29 +78,16 @@ public class UniProtEntryImpl implements UniProtEntry {
             ){
         this.entryType = entryType;
         this.accession = accession;
-        if ((secondaryAccessions == null) || secondaryAccessions.isEmpty()) {
-            this.secondaryAccessions = Collections.emptyList();
-        } else {
-            this.secondaryAccessions = Collections.unmodifiableList(secondaryAccessions);
-        }
+        this.secondaryAccessions = copyList(secondaryAccessions);
+        
         this.uniprotId =uniprotId;
-        if ((lineage == null) || lineage.isEmpty()) {
-            this.lineage = Collections.emptyList();
-        } else {
-            this.lineage = Collections.unmodifiableList(lineage);
-        }
+        this.lineage =copyList(lineage);
+       
         this.proteinExistance = proteinExistance;
         this.entryAudit =entryAudit;
-        if ((organelles == null) || organelles.isEmpty()) {
-            this.organelles = Collections.emptyList();
-        } else {
-            this.organelles = Collections.unmodifiableList(organelles);
-        }
-        if ((keywords == null) || keywords.isEmpty()) {
-            this.keywords = Collections.emptyList();
-        } else {
-            this.keywords = Collections.unmodifiableList(keywords);
-        }
+        this.organelles = copyList(organelles);
+        this.keywords =copyList(keywords);
+       
         this.description = description;
         if(comments !=null)
             this.comments = comments;
@@ -110,21 +98,13 @@ public class UniProtEntryImpl implements UniProtEntry {
             this.references = references;
         else
             this.references = new UniProtReferencesImpl(null);
-        if ((genes == null) || genes.isEmpty()) {
-            this.genes = Collections.emptyList();
-        } else {
-            this.genes = Collections.unmodifiableList(genes);
-        }
-        if(features !=null)
-            this.features = features;
-        else
-            this.features = new UniProtFeaturesImpl(null);
+        this.genes = copyList(genes);
+      
+        this.features = copyList(features);
+       
         this.organism = organism;
-        if ((organismHosts == null) || organismHosts.isEmpty()) {
-            this.organismHosts = Collections.emptyList();
-        } else {
-            this.organismHosts = Collections.unmodifiableList(organismHosts);
-        }
+        this.organismHosts =copyList(organismHosts);
+       
         if(xrefs !=null)
             this.xrefs = xrefs;
         else
@@ -133,6 +113,13 @@ public class UniProtEntryImpl implements UniProtEntry {
         this.sequence = sequence;
         this.taxonId = taxonId;
         this.internalSection =internalSection;
+    }
+    private <T> List<T> copyList(List<T> list){
+    	  if ((list == null) || list.isEmpty()) {
+              return Collections.emptyList();
+          } else {
+              return  Collections.unmodifiableList(list);
+          }
     }
     @Override
     public UniProtAccession getPrimaryUniProtAccession() {
@@ -226,7 +213,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     @Override
     public Boolean isFragment() {
-        return !features.getFeaturesByType(FeatureType.NON_TER).isEmpty();
+        return !getFeaturesByType(FeatureType.NON_TER).isEmpty();
     }
 
     @Override
@@ -234,9 +221,15 @@ public class UniProtEntryImpl implements UniProtEntry {
         return  internalSection;
     }
     @Override
-    public UniProtFeatures getFeatures() {
+    public List<Feature> getFeatures() {
        return features;
     }
+    @Override
+	public List<Feature> getFeaturesByType(FeatureType type) {
+    	return features.stream().filter(feature -> feature.getType() ==type)
+		.collect(Collectors.toList());
+	}
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -368,5 +361,5 @@ public class UniProtEntryImpl implements UniProtEntry {
             return false;
         return true;
     }
-
+	
 }
