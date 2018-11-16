@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryMethod;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.MassSpectrometryCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
 
 public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test

@@ -8,53 +8,53 @@ import java.util.stream.Collectors;
 import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.AbsorptionNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.BioPhysicoChemicalPropertiesComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.KPNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryMethod;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Position;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingLocationType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.APCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.BPCPCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.DiseaseBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.DiseaseCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.InteractionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.InteractionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SequenceCautionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SubcellularLocationCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.WebResourceCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.AbsorptionNote;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReference;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.KPNote;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Position;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
@@ -193,7 +193,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		APCommentBuilder builder = APCommentBuilder.newInstance();
 		builder.events(cObj.events.stream().map(val -> APCommentBuilder.createEvent(val)).collect(Collectors.toList()));
 		if (isNotEmpty(cObj.comment)) {
-			builder.note(CommentFactory.INSTANCE.createCommentNote(convert(cObj.comment)));
+			builder.note(CommentFactory.INSTANCE.createNote(convert(cObj.comment)));
 		}
 		builder.isoforms(cObj.names.stream().map(name -> convertAPIsoform(name)).collect(Collectors.toList()));
 		return builder.build();
@@ -234,7 +234,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		}
 	}
 
-	private BioPhysicoChemicalPropertiesComment convertBiophyChem(CcLineObject.BiophysicochemicalProperties cObj,
+	private BPCPComment convertBiophyChem(CcLineObject.BiophysicochemicalProperties cObj,
 			Map<Object, List<Evidence>> evidences) {
 
 		// has Kinetic parameter
@@ -390,7 +390,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 			commentBuilder.disease(builder.build());
 		}
 		if (isNotEmpty(cObj.note)) {
-			commentBuilder.note(CommentFactory.INSTANCE.createCommentNote(convert(cObj.note)));
+			commentBuilder.note(CommentFactory.INSTANCE.createNote(convert(cObj.note)));
 		}
 		return commentBuilder.build();
 	}
@@ -411,7 +411,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		builder.subcellularLocations(locations);
 
 		if (cObj.note != null && !cObj.note.isEmpty()) {
-			builder.note(CommentFactory.INSTANCE.createCommentNote(convert(cObj.note)));
+			builder.note(CommentFactory.INSTANCE.createNote(convert(cObj.note)));
 		}
 		return builder.build();
 	}
@@ -474,7 +474,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 					.collect(Collectors.toList()));
 		}
 		if (isNotEmpty(cObj.note)) {
-			builder.note(CommentFactory.INSTANCE.createCommentNote(convert(cObj.note, true)));
+			builder.note(CommentFactory.INSTANCE.createNote(convert(cObj.note, true)));
 		}
 		return builder.build();
 	}
@@ -499,7 +499,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 			builder.molecule(cobj.molecule);
 		}
 		if ((cobj.note != null) && (!cobj.note.isEmpty())) {
-			builder.note(CommentFactory.INSTANCE.createCommentNote(convert(cobj.note)));
+			builder.note(CommentFactory.INSTANCE.createNote(convert(cobj.note)));
 
 		}
 		if (cobj.cofactors != null) {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 public class CCFreeTextCommentLineBuilder extends CCLineBuilderAbstr<FreeTextComment> {

@@ -13,13 +13,13 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APEvent;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformId;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSynonym;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.APCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APEvent;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformId;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSynonym;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.cc.CCAPCommentLineBuilder;
@@ -394,7 +394,7 @@ public class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
 		notes.entrySet()
 		.stream().map(entry ->createEvidencedValue(entry.getKey(), entry.getValue()))
 		.collect(Collectors.toList());
-		builder.note(factory.createCommentNote(evidencedValues));
+		builder.note(factory.createNote(evidencedValues));
 
 		return builder;
 	}

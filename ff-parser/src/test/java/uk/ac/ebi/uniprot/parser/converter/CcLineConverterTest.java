@@ -2,8 +2,7 @@ package uk.ac.ebi.uniprot.parser.converter;
 
 import org.junit.Test;
 
-
-import uk.ac.ebi.uniprot.domain.uniprot.comments.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
@@ -264,10 +263,10 @@ public class CcLineConverterTest {
 		
 		Comment comment1 =comments.get(0);
 		assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment1.getCommentType());
-		assertTrue (comment1 instanceof BioPhysicoChemicalPropertiesComment);
+		assertTrue (comment1 instanceof BPCPComment);
 		
-		BioPhysicoChemicalPropertiesComment wcomment 
-		= (BioPhysicoChemicalPropertiesComment) comment1;
+		BPCPComment wcomment 
+		= (BPCPComment) comment1;
 		assertTrue( wcomment.getAbsorption().isPresent());
 		assertFalse(wcomment.getPHDependence().isPresent());
 		assertFalse(wcomment.getRedoxPotential().isPresent());
@@ -323,10 +322,10 @@ public class CcLineConverterTest {
 		
 		Comment comment1 =comments.get(0);
 		assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment1.getCommentType());
-		assertTrue (comment1 instanceof BioPhysicoChemicalPropertiesComment);
+		assertTrue (comment1 instanceof BPCPComment);
 		
-		BioPhysicoChemicalPropertiesComment wcomment 
-		= (BioPhysicoChemicalPropertiesComment) comment1;
+		BPCPComment wcomment 
+		= (BPCPComment) comment1;
 		assertEquals(false, wcomment.getAbsorption().isPresent());
 		assertTrue(wcomment.getPHDependence().isPresent());
 		assertFalse(wcomment.getRedoxPotential().isPresent());

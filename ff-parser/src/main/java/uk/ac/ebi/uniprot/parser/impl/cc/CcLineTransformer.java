@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.parser.impl.cc;
 
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.parser.LineTransformer;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;

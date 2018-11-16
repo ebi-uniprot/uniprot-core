@@ -11,9 +11,8 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl.class, name = "dbxref")
 })
-
-public interface DBCrossReference {
-	String getDatabaseName();
+public interface DBCrossReference <T extends DatabaseType>{
+	T getDatabaseType();
     String getId();
     List<Property> getProperties();
 }

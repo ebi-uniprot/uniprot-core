@@ -10,27 +10,29 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceTypes;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class EvidenceImpl implements Evidence {
 	private static final String PIPE = "|";
 	private static final String COLON = ":";
 	private final EvidenceCode evidenceCode;
-	private final DBCrossReference source;
+	private final DBCrossReference<EvidenceType> source;
 	
 	
-	static final String REFERENCE ="Reference";
+	static final EvidenceType REFERENCE =EvidenceTypes.INSTANCE.getType("Reference");
 	static final String REF_PREFIX ="Ref.";
 	
     public static Evidence parseEvidenceLine(String val) {
         String[] token = val.split("\\|");
         String code = token[0];
-        DBCrossReference xref =null;
+        DBCrossReference<EvidenceType> xref =null;
         if (token.length == 2) {
             String[] tokens2 = token[1].split(":");
             if (tokens2.length == 2) {
-            	xref = new DBCrossReferenceImpl(tokens2[0], tokens2[1]);
+            	xref = new DBCrossReferenceImpl<>(EvidenceTypes.INSTANCE.getType(tokens2[0]), tokens2[1]);
             } else if(tokens2[0].startsWith(REF_PREFIX)) {
-            	xref = new DBCrossReferenceImpl(REFERENCE, tokens2[0]);        
+            	xref = new DBCrossReferenceImpl<>(REFERENCE, tokens2[0]);        
             }else {
             	throw new IllegalArgumentException(val + " is not valid evidence string");
             }
@@ -43,12 +45,12 @@ public class EvidenceImpl implements Evidence {
 	
 	public EvidenceImpl( EvidenceCode evidenceCode,
 			 String databaseName, String dbId) {
-		this(evidenceCode, new DBCrossReferenceImpl(databaseName, dbId));
+		this(evidenceCode, new DBCrossReferenceImpl<>(EvidenceTypes.INSTANCE.getType(databaseName), dbId));
 	
 	}
 	@JsonCreator
 	public EvidenceImpl(@JsonProperty("evidenceCode") EvidenceCode evidenceCode,
-			@JsonProperty("source") DBCrossReference source) {
+			@JsonProperty("source") DBCrossReference<EvidenceType> source) {
 		this.evidenceCode = evidenceCode;
 		this.source = source;
 	}
@@ -58,13 +60,8 @@ public class EvidenceImpl implements Evidence {
 		return evidenceCode;
 	}
 
-
-//	public void setEvidenceCode(EvidenceCode evidenceCode) {
-//		this.evidenceCode = evidenceCode;
-//	}
-
 	@Override
-	public DBCrossReference getSource() {
+	public DBCrossReference<EvidenceType> getSource() {
 		return source;
 	}
 
@@ -90,10 +87,10 @@ public class EvidenceImpl implements Evidence {
 		sb.append(evidenceCode.getCode());
 		if (source != null) {
 			sb.append(PIPE);
-			if (source.getDatabaseName().equals(REFERENCE)) {
+			if (source.getDatabaseType().equals(REFERENCE)) {
 				sb.append(source.getId());
 			} else {
-				sb.append(source.getDatabaseName()).append(COLON).append(source.getId());
+				sb.append(source.getDatabaseType().getDisplayName()).append(COLON).append(source.getId());
 			}
 		}
 

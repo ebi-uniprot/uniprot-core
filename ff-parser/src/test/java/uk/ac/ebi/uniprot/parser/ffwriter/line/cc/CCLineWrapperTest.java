@@ -6,9 +6,9 @@ import java.util.List;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.FreeTextCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
 
 
 public class CCLineWrapperTest extends CCBuildTestAbstr {

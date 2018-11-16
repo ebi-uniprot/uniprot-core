@@ -1,9 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public final class EvidenceType {
+import uk.ac.ebi.uniprot.domain.DatabaseType;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+public final class EvidenceType implements DatabaseType {
 	private final String name;
 	private final String displayName;
 	private final String uriLink;
@@ -14,17 +17,23 @@ public final class EvidenceType {
 			@JsonProperty("uriLink")String uriLink) {
 		this.name = name;
 		this.displayName = displayName;
-		this.uriLink =uriLink;
+		if(uriLink ==null) {
+			this.uriLink = "";
+		}else
+			this.uriLink =uriLink;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public String getDisplayName() {
 		return displayName;
 	}
 	public String getUriLink() {
 		return uriLink;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -34,6 +43,7 @@ public final class EvidenceType {
 		result = prime * result + ((uriLink == null) ? 0 : uriLink.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,5 +70,6 @@ public final class EvidenceType {
 			return false;
 		return true;
 	}
-	
+
+
 }

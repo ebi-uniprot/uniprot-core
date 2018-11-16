@@ -27,7 +27,7 @@ public class EvidenceImplTest {
     		 assertNull(evidence.getSource());
     	 }else {
     		 assertNotNull(evidence.getSource());
-    	 assertEquals(dbName, evidence.getSource().getDatabaseName());
+    	 assertEquals(dbName, evidence.getSource().getDatabaseType().getName());
     	 assertEquals(id, evidence.getSource().getId());
     	 }
     	 TestHelper.verifyJson(evidence);

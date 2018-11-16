@@ -206,5 +206,10 @@
 		"name": "UniProtKB",
 		"displayName": "UniProtKB",
 		"uriLink": "https://www.uniprot.org/uniprot/%value"
+	},
+	{
+		"name": "Reference",
+		"displayName": "Reference",
+		"uriLink": ""
 	}
 ]

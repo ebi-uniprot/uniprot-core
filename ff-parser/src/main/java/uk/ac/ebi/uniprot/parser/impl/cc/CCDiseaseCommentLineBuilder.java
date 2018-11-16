@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComment> {

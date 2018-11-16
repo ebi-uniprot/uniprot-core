@@ -5,8 +5,8 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Position;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Position;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 /**

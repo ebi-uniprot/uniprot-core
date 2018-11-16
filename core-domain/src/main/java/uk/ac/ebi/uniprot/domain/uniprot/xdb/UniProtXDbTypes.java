@@ -4,13 +4,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtXDbTypeImpl;
 
 
 
@@ -26,10 +23,11 @@ public enum UniProtXDbTypes {
 	private void init() {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		try (InputStream is = UniProtXDbTypes.class.getClassLoader().getResourceAsStream(FILENAME);) {
-			List<UniProtXDbTypeImpl> types = objectMapper.readValue(is,
-					new TypeReference<List<UniProtXDbTypeImpl>>() {
+			List<UniProtXDbTypeTemp> temps = objectMapper.readValue(is,
+					new TypeReference<List<UniProtXDbTypeTemp>>() {
 					});
-			types.forEach(val -> this.types.add(val));
+			this.types =temps.stream().map(val -> new UniProtXDbType(val.name, val.displayName, val.category, val.uriLink, val.attributes))
+			.collect(Collectors.toList());
 			typeMap =types.stream().collect(Collectors.toMap(val -> val.getName(), val->val));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -41,7 +39,18 @@ public enum UniProtXDbTypes {
 		return types;
 	}
 	
-	public Optional<UniProtXDbType> getType(String typeName){
-		return Optional.ofNullable(typeMap.get(typeName));
+	public UniProtXDbType getType(String typeName){
+		UniProtXDbType type =typeMap.get(typeName);
+		if(type ==null) {
+			throw new IllegalArgumentException (typeName + " does not exist in UniProt database type list");
+		}
+		return type;
+	}
+	static class UniProtXDbTypeTemp{
+		public String name;
+		public String displayName;
+		public DatabaseCategory category;
+		public String uriLink;
+		public List<DBXRefTypeAttribute> attributes;
 	}
 }

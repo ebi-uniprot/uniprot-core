@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SequenceCautionCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
 
 
 public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {

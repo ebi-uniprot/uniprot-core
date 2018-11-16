@@ -4,10 +4,11 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APEvent;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
+
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APEvent;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 /**
@@ -91,7 +92,7 @@ public class CCAPCommentLineBuilder extends
 			boolean includeFlatFileMarkings, boolean showEvidence) {
 		List<String> lines = new ArrayList<>();
 		if(comment.getNote().isPresent()) {
-			CommentNote note = comment.getNote().get();
+			Note note = comment.getNote().get();
 			StringBuilder asComment = new StringBuilder();
 			if (includeFlatFileMarkings) {
 				asComment.append(CC_PREFIX_INDENT);

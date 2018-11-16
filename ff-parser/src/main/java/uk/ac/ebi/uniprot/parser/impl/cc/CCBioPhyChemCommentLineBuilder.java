@@ -14,14 +14,14 @@ import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.BioPhysicoChemicalPropertiesComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.KineticParameters;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.PHDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.TemperatureDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PHDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 /**
@@ -38,7 +38,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
                  |CC         thermal inactivation by ATP;
  */
 
-public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BioPhysicoChemicalPropertiesComment> {
+public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComment> {
 
 	private static final String TEMPERATURE_DEPENDENCE = "Temperature dependence:";
 	private static final String REDOX_POTENTIAL = "Redox potential:";
@@ -52,7 +52,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BioPhysic
 	private static final String ABS_MAX = "Abs(max)=";
 	private static final String ABSORPTION2 = "Absorption:";
 	@Override
-	protected List<String> buildCommentLines(BioPhysicoChemicalPropertiesComment comment, boolean includeFlatFileMarkings, boolean showEvidence){
+	protected List<String> buildCommentLines(BPCPComment comment, boolean includeFlatFileMarkings, boolean showEvidence){
 		List<String> lines =new ArrayList<>();
 	
 		//first line

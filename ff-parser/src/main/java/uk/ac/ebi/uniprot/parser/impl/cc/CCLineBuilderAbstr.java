@@ -8,7 +8,7 @@ import java.util.List;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;

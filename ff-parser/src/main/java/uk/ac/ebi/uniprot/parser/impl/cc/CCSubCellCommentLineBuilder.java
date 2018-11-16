@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 /**
@@ -71,7 +71,7 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
 			return noteBuilder;
 		noteBuilder.append(NOTE);
 		boolean isfirst =true;
-		CommentNote note =comment.getNote().get();
+		Note note =comment.getNote().get();
 		if(note !=null) {
 		for(EvidencedValue val: note.getTexts()){
 			if(!isfirst)

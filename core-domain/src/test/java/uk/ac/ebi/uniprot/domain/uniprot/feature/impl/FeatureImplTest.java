@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -17,6 +18,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureLocationModifier;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 
 class FeatureImplTest {
@@ -79,7 +81,7 @@ class FeatureImplTest {
 		FeatureLocation location = new FeatureLocationImpl(32, 96);
 		FeatureId featureId = 	FeatureIdImpl.newInstance("VAR_324");
 		AlternativeSequence alterSeq =createAlternativeSequence() ;
-		DBCrossReferenceImpl xref = new DBCrossReferenceImpl("dbSNP", "rs123414");
+		DBCrossReference<FeatureXDbType> xref = new DBCrossReferenceImpl<>(FeatureXDbType.DBSNP, "rs123414");
 		FeatureImpl feature = new FeatureImpl(FeatureType.VARIANT, location, "Some description",
 				featureId, alterSeq, xref,
 				createEvidences());

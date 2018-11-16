@@ -9,34 +9,35 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class DBCrossReferenceImpl implements DBCrossReference {
+public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference <T> {
 
-	 private final  String databaseName;
+	 private final  T databaseType;
 	 private final String id;
 	 private List<Property> properties;
 //	public DBCrossReferenceImpl() {
 //		properties = Collections.emptyList();
 //	}
 //	
-	public DBCrossReferenceImpl(String databaseName, String id) {
-		this(databaseName, id, Collections.emptyList());
+	public DBCrossReferenceImpl(T database, String id) {
+		this(database, id, Collections.emptyList());
 	}
 	
 	@JsonCreator
-	public DBCrossReferenceImpl(@JsonProperty("databaseName")String databaseName,
+	public DBCrossReferenceImpl(@JsonProperty("databaseType")T databaseType,
 			@JsonProperty("id")String id,
 			@JsonProperty("properties")List<Property> properties) {
-		this.databaseName = databaseName;
+		this.databaseType = databaseType;
 		this.id =id;
 		setProperties(properties);
 	}
 	
 	@Override
-	public String getDatabaseName() {
-		return databaseName;
+	public T getDatabaseType() {
+		return databaseType;
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class DBCrossReferenceImpl implements DBCrossReference {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((databaseName == null) ? 0 : databaseName.hashCode());
+		result = prime * result + ((databaseType == null) ? 0 : databaseType.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((properties == null) ? 0 : properties.hashCode());
 		return result;
@@ -77,10 +78,10 @@ public class DBCrossReferenceImpl implements DBCrossReference {
 		if (getClass() != obj.getClass())
 			return false;
 		DBCrossReferenceImpl other = (DBCrossReferenceImpl) obj;
-		if (databaseName == null) {
-			if (other.databaseName != null)
+		if (databaseType == null) {
+			if (other.databaseType != null)
 				return false;
-		} else if (!databaseName.equals(other.databaseName))
+		} else if (!databaseType.equals(other.databaseType))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -95,4 +96,6 @@ public class DBCrossReferenceImpl implements DBCrossReference {
 		return true;
 	}
 
+	
+	
 }

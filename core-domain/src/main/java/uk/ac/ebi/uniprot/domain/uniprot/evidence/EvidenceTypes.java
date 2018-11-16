@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -23,9 +22,11 @@ public enum EvidenceTypes {
 	private void init() {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		try (InputStream is = EvidenceTypes.class.getClassLoader().getResourceAsStream(FILENAME);) {
-			types = objectMapper.readValue(is,
-					new TypeReference<List<EvidenceType>>() {
+			List<EvidenceTypeTemp> temps = objectMapper.readValue(is,
+					new TypeReference<List<EvidenceTypeTemp>>() {
 					});
+			this.types =temps.stream().map(val -> new EvidenceType(val.name, val.displayName, val.uriLink))
+			.collect(Collectors.toList());
 			typeMap =types.stream().collect(Collectors.toMap(val -> val.getName(), val->val));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -36,7 +37,17 @@ public enum EvidenceTypes {
 		return types;
 	}
 	
-	public Optional<EvidenceType> getType(String typeName){
-		return Optional.ofNullable(typeMap.get(typeName));
+	public EvidenceType getType(String typeName){
+		EvidenceType type = typeMap.get(typeName);
+		if(type ==null) {
+			throw new IllegalArgumentException (typeName + " does not exist in Evidence type list");
+		}
+		return type;
+	}
+	 static class EvidenceTypeTemp{
+		  public String name;
+		  public String displayName;
+		  public String uriLink;
+		  
 	}
 }

@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.DiseaseBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.DiseaseCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
 
 
 public class CCDiseaseBuildTest extends CCBuildTestAbstr {	

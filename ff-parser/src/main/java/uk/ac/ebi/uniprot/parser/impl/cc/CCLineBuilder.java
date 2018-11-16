@@ -3,9 +3,9 @@ package uk.ac.ebi.uniprot.parser.impl.cc;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SequenceCautionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;

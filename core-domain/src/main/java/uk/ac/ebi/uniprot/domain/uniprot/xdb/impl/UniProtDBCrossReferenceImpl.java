@@ -14,8 +14,9 @@ import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl implements UniProtDBCrossReference {
+public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDbType> implements UniProtDBCrossReference {
 
     private static final String SEMICOLON = "; ";
 	private static final String DASH = "-";
@@ -24,12 +25,12 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl implements
 
     @JsonCreator
     public UniProtDBCrossReferenceImpl(
-    		@JsonProperty("databaseName") String databaseName,
+    		@JsonProperty("database") UniProtXDbType database,
     		@JsonProperty("id") String id,        
     		@JsonProperty("properties") List<Property> properties,
             @JsonProperty("isoformId") String isoformId, 
             @JsonProperty("evidences")List<Evidence> evidences) {
-    	super(databaseName, id, properties);
+    	super(database, id, properties);
     	
     	this.isoformId = isoformId;
     	if((evidences ==null) || evidences.isEmpty())
@@ -49,7 +50,9 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl implements
 		return evidences;
 	}
 
-	
+	private String getDatabaseName() {
+		return getDatabaseType().getDisplayName();
+	}
 
 	@Override
     public String toString() {

@@ -10,9 +10,9 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReference;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReference;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 

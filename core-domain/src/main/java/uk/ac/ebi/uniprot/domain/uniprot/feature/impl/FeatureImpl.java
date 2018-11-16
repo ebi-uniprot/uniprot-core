@@ -16,6 +16,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class FeatureImpl implements Feature {
 	private final FeatureType type;
@@ -23,7 +24,7 @@ public class FeatureImpl implements Feature {
 	private final FeatureDescription description;
 	private final FeatureId featureId;
 	private final AlternativeSequence alternativeSequence;
-	private final DBCrossReference dbXref;
+	private final DBCrossReference<FeatureXDbType> dbXref;
 	private final List<Evidence> evidences;
 	
 	public static Builder createBuilder() {
@@ -41,7 +42,7 @@ public class FeatureImpl implements Feature {
 	}
 	
 	public FeatureImpl(FeatureType type, FeatureLocation location, String description, FeatureId featureId,
-		AlternativeSequence alternativeSequence, DBCrossReference dbXref, List<Evidence> evidences) {
+		AlternativeSequence alternativeSequence, DBCrossReference<FeatureXDbType> dbXref, List<Evidence> evidences) {
 		this(type, location, new FeatureDescriptionImpl(description),
 				featureId, alternativeSequence, dbXref, evidences
 				);
@@ -52,7 +53,7 @@ public class FeatureImpl implements Feature {
 			@JsonProperty("description") FeatureDescription description, 
 			@JsonProperty("featureId") FeatureId featureId,
 			@JsonProperty("alternativeSequence") AlternativeSequence alternativeSequence, 
-			@JsonProperty("dbXref") DBCrossReference dbXref, 
+			@JsonProperty("dbXref") DBCrossReference<FeatureXDbType> dbXref, 
 			@JsonProperty("evidences") List<Evidence> evidences) {
 			
 			this.type = type;
@@ -110,7 +111,7 @@ public class FeatureImpl implements Feature {
 	}
 
 	@Override
-	public DBCrossReference getDbXref() {
+	public DBCrossReference<FeatureXDbType> getDbXref() {
 		return dbXref;
 	}
 
@@ -177,7 +178,7 @@ public class FeatureImpl implements Feature {
 		private  FeatureDescription description;
 		private  FeatureId featureId;
 		private  AlternativeSequence alternativeSequence;
-		private  DBCrossReference dbXref;
+		private  DBCrossReference<FeatureXDbType> dbXref;
 		private  List<Evidence> evidences;
 		public FeatureImpl build() {
 			if(type ==null) {
@@ -215,7 +216,7 @@ public class FeatureImpl implements Feature {
 			this.alternativeSequence =alternativeSequence;
 			return this;
 		}
-		public Builder dbXref(DBCrossReference dbXref) {
+		public Builder dbXref(DBCrossReference<FeatureXDbType> dbXref) {
 			this.dbXref =dbXref;
 			return this;
 		}

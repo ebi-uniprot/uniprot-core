@@ -36,7 +36,7 @@ public class UniProtDBCrossReferencesImpl implements UniProtDBCrossReferences {
 
     @Override
 	public List<UniProtDBCrossReference> getCrossReferencesByType(String dbName) {
-    	 return this.crossReferences.stream().filter(val -> dbName.equals(val.getDatabaseName())).collect(Collectors.toList());
+    	 return this.crossReferences.stream().filter(val -> dbName.equals(val.getDatabaseType().getName())).collect(Collectors.toList());
 	}
     
     @Override

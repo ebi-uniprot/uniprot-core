@@ -15,7 +15,7 @@ public class UniProtXDbDisplayOrderTest {
     public void testCreateUniProtXDbDisplayOrder() {
         UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
         assertFalse(dorder.getOrderedDatabases().isEmpty());
-        assertTrue(dorder.getOrderedDatabases().contains(UniProtXDbTypes.INSTANCE.getType("EMBL").get()));
+        assertTrue(dorder.getOrderedDatabases().contains(UniProtXDbTypes.INSTANCE.getType("EMBL")));
     }
     @Test
     public void testGetOrderedDatabases() {
@@ -23,8 +23,8 @@ public class UniProtXDbDisplayOrderTest {
         List<UniProtXDbType> dbtypes =dorder.getOrderedDatabases();
        
         assertFalse(dbtypes.isEmpty());
-        assertEquals(UniProtXDbTypes.INSTANCE.getType("EMBL").get(), dbtypes.get(0));
-        assertEquals(UniProtXDbTypes.INSTANCE.getType("CCDS").get(), dbtypes.get(1));
+        assertEquals(UniProtXDbTypes.INSTANCE.getType("EMBL"), dbtypes.get(0));
+        assertEquals(UniProtXDbTypes.INSTANCE.getType("CCDS"), dbtypes.get(1));
     }
 
 }

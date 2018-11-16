@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Position;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingLocationType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.RnaEditingCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Position;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
 
 public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test
@@ -95,7 +95,7 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         noteEvs.add(ev5);
         RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
         builder.rnaEditingLocationType(RnaEditingLocationType.Known);
-        CommentNote cNote = buildNote(note, noteEvs);
+        Note cNote = buildNote(note, noteEvs);
         builder.note(cNote);
         List<Position> positions = new ArrayList<>();
         String p = "156";
@@ -178,7 +178,7 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
 		
 		notes.add(new AbstractMap.SimpleEntry<>(note2, noteEvs2));
 		
-		CommentNote commentNote =buildNote(notes);
+		Note commentNote =buildNote(notes);
         
 		builder.note(commentNote);
 

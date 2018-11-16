@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.InteractionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.InteractionCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 

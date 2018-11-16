@@ -11,34 +11,34 @@ import java.util.List;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.BioPhysicoChemicalPropertiesComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.EnzymeRegulationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.KineticParameters;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.PHDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SimilarityComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.TemperatureDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReference;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.EnzymeRegulationComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PHDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SimilarityComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineTransformer;
 
 public class CcLineTransformerTest {
@@ -236,8 +236,8 @@ public class CcLineTransformerTest {
 				+ " Another active at low temperatures.;");
 		List<Comment> comments = transformer.transformNoHeader(ccLineString);
 		assertEquals(1, comments.size());
-		assertTrue(comments.get(0) instanceof BioPhysicoChemicalPropertiesComment);
-		BioPhysicoChemicalPropertiesComment comment =(BioPhysicoChemicalPropertiesComment) comments.get(0);
+		assertTrue(comments.get(0) instanceof BPCPComment);
+		BPCPComment comment =(BPCPComment) comments.get(0);
 		assertNotNull(comment);
 		assertFalse(comment.getAbsorption().isPresent());
 		assertFalse(comment.getKineticParameters().isPresent());
@@ -280,8 +280,8 @@ public class CcLineTransformerTest {
 				+ " Another active at low temperatures.;");
 		List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
 		assertEquals(1, comments.size());
-		assertTrue(comments.get(0) instanceof BioPhysicoChemicalPropertiesComment);
-		BioPhysicoChemicalPropertiesComment comment =(BioPhysicoChemicalPropertiesComment) comments.get(0);
+		assertTrue(comments.get(0) instanceof BPCPComment);
+		BPCPComment comment =(BPCPComment) comments.get(0);
 		assertNotNull(comment);
 		assertFalse(comment.getAbsorption().isPresent());
 		assertFalse(comment.getKineticParameters().isPresent());
@@ -328,8 +328,8 @@ public class CcLineTransformerTest {
 		
 		List<Comment> comments = transformer.transformNoHeader(ccLineString);
 		assertEquals(1, comments.size());
-		assertTrue(comments.get(0) instanceof BioPhysicoChemicalPropertiesComment);
-		BioPhysicoChemicalPropertiesComment comment =(BioPhysicoChemicalPropertiesComment) comments.get(0);
+		assertTrue(comments.get(0) instanceof BPCPComment);
+		BPCPComment comment =(BPCPComment) comments.get(0);
 		assertNotNull(comment);
 		assertTrue(comment.getAbsorption().isPresent());
 		assertTrue(comment.getKineticParameters().isPresent());
@@ -387,8 +387,8 @@ public class CcLineTransformerTest {
 		
 		List<Comment> comments = transformer.transformNoHeader(ccLineStringEvidence);
 		assertEquals(1, comments.size());
-		assertTrue(comments.get(0) instanceof BioPhysicoChemicalPropertiesComment);
-		BioPhysicoChemicalPropertiesComment comment =(BioPhysicoChemicalPropertiesComment) comments.get(0);
+		assertTrue(comments.get(0) instanceof BPCPComment);
+		BPCPComment comment =(BPCPComment) comments.get(0);
 		assertNotNull(comment);
 		assertTrue(comment.getAbsorption().isPresent());
 		assertTrue(comment.getKineticParameters().isPresent());
@@ -464,7 +464,7 @@ public class CcLineTransformerTest {
 		assertEquals(CofactorReferenceType.CHEBI,cofactor2.getCofactorReference().getCofactorReferenceType() );
 		assertEquals(2, cofactor2.getEvidences().size());
 		assertEquals("ECO:0000255|HAMAP-Rule:MF_00089", cofactor2.getEvidences().get(0).getValue());
-		CommentNote note = comment.getNote().get();
+		Note note = comment.getNote().get();
 		assertNotNull(note);
 		assertEquals(1, note.getTexts().size());
 		EvidencedValue note1 = note.getTexts().get(0);
@@ -504,7 +504,7 @@ public class CcLineTransformerTest {
 		assertEquals(CofactorReferenceType.CHEBI,cofactor3.getCofactorReference().getCofactorReferenceType() );
 		assertEquals(2, cofactor3.getEvidences().size());
 		assertEquals("ECO:0000269|PubMed:16683189", cofactor3.getEvidences().get(1).getValue());
-		CommentNote note = comment.getNote().get();
+		Note note = comment.getNote().get();
 		assertNotNull(note);
 		assertEquals(2, note.getTexts().size());
 		EvidencedValue note1 = note.getTexts().get(0);
@@ -539,7 +539,7 @@ public class CcLineTransformerTest {
         assertEquals(1, cofactor1.getEvidences().size());
         assertEquals("ECO:0000269|PubMed:9060645", cofactor1.getEvidences().get(0).getValue());
       
-        CommentNote note = comment.getNote().get();
+        Note note = comment.getNote().get();
         assertNotNull(note);
         assertEquals(1, note.getTexts().size());
         EvidencedValue note1 = note.getTexts().get(0);
@@ -573,7 +573,7 @@ public class CcLineTransformerTest {
         assertEquals(1, cofactor1.getEvidences().size());
         assertEquals("ECO:0000250", cofactor1.getEvidences().get(0).getValue());
       
-        CommentNote note = comment.getNote().get();
+        Note note = comment.getNote().get();
         assertNotNull(note);
         assertEquals(1, note.getTexts().size());
         EvidencedValue note1 = note.getTexts().get(0);

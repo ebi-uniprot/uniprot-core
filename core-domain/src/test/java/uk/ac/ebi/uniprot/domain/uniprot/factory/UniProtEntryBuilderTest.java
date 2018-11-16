@@ -14,6 +14,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
@@ -29,6 +30,7 @@ import uk.ac.ebi.uniprot.domain.gene.GeneName;
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
@@ -52,17 +54,16 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.FreeTextCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
@@ -375,15 +376,15 @@ public class UniProtEntryBuilderTest {
         CommentFactory commentFactory =UniProtFactory.INSTANCE.getCommentFactory();
         List< Comment> comments = new ArrayList<>();
         comments.add(FreeTextCommentBuilder.buildFreeTextComment(CommentType.ALLERGEN, createEvidenceValues()));
-        FreeTextCommentBuilder<? extends FreeTextComment> ftcBuilder=commentFactory.createFreeTextCommentBuilder();
+        FreeTextCommentBuilder ftcBuilder=commentFactory.createFreeTextCommentBuilder();
         ftcBuilder.commentType(CommentType.FUNCTION)
         .texts(createEvidenceValues());
         comments.add(commentFactory.createComment(ftcBuilder));
-        CofactorReference reference =CofactorCommentBuilder.createCofactorReference(CofactorReferenceType.CHEBI, "CHEBI:324");
+        DBCrossReference<CofactorReferenceType> reference =new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor =CofactorCommentBuilder.createCofactor("somename", createEvidences(), reference);
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder =commentFactory.createCofactorCommentBuilder();
-        CommentNote note = CommentFactory.INSTANCE.createCommentNote(createEvidenceValues());
+        Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
         String molecule ="some mol";
         CofactorComment cofactorComment =
                 builder.molecule(molecule)

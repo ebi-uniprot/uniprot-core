@@ -10,8 +10,8 @@ import java.util.stream.Collectors;
 import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
@@ -79,23 +79,23 @@ public abstract class CCBuildTestAbstr {
 		return UniProtFactory.INSTANCE.createEvidencedValue(val, createEvidence(evIds));
 	}
 	
-	protected CommentNote buildNote(String note, List<String> evids){
+	protected Note buildNote(String note, List<String> evids){
 		if(Strings.isNullOrEmpty(note))
 			return null;
 		List<EvidencedValue> evidencedValues = new ArrayList<>();
 		evidencedValues.add(createEvidencedValue(note, evids));
-		return CommentFactory.INSTANCE.createCommentNote(evidencedValues);
+		return CommentFactory.INSTANCE.createNote(evidencedValues);
 		
 	}
 	
 	
-	protected CommentNote buildNote(List<Map.Entry<String, List<String>>> notes){
+	protected Note buildNote(List<Map.Entry<String, List<String>>> notes){
 		if(!notes.isEmpty()) {
 			List<EvidencedValue> evidencedValues =
 					notes
 					.stream().map(entry ->createEvidencedValue(entry.getKey(), entry.getValue()))
 					.collect(Collectors.toList());
-			return CommentFactory.INSTANCE.createCommentNote(evidencedValues);
+			return CommentFactory.INSTANCE.createNote(evidencedValues);
 		}
 		return null;
 

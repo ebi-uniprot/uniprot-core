@@ -10,8 +10,8 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.MassSpectrometryRange;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 /**
  * 

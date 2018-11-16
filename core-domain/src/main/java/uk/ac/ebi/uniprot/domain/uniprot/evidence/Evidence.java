@@ -15,6 +15,6 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 
 public interface Evidence extends Comparable<Evidence> {
 	EvidenceCode getEvidenceCode();
-	DBCrossReference getSource();
+	DBCrossReference<EvidenceType> getSource();
 	String getValue();
 }

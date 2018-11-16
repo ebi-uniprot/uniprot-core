@@ -1,28 +1,27 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Comments;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.APCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.BPCPCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.DiseaseBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.DiseaseCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.InteractionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.InteractionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SequenceCautionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SubcellularLocationCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.WebResourceCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentNoteImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.impl.CommentsImpl;
-
 import java.util.List;
+
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.NoteImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CommentsImpl;
 
 public enum CommentFactory {
     INSTANCE;
@@ -45,7 +44,7 @@ public enum CommentFactory {
         return CofactorCommentBuilder.newInstance();
     }
 
-    public FreeTextCommentBuilder<? extends FreeTextComment> createFreeTextCommentBuilder() {
+    public FreeTextCommentBuilder createFreeTextCommentBuilder() {
         return FreeTextCommentBuilder.newInstance();
     }
 
@@ -84,7 +83,7 @@ public enum CommentFactory {
     public InteractionCommentBuilder createInteractionCommentBuilder() {
         return InteractionCommentBuilder.newInstance();
     }
-    public CommentNote createCommentNote(List<EvidencedValue> texts) {
-        return new CommentNoteImpl(texts);
+    public Note createNote(List<EvidencedValue> texts) {
+        return new NoteImpl(texts);
     }
 }

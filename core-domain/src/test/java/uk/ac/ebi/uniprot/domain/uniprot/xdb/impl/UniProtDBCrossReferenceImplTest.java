@@ -167,7 +167,7 @@ public class UniProtDBCrossReferenceImplTest {
             String thirdAttr, String fourAttr, String isoformId
             ){
     	  assertEquals(drVal, xref.toString());
-          assertEquals(type , xref.getDatabaseName());
+          assertEquals(type , xref.getDatabaseType().getName());
           assertEquals(id, xref.getId());
           assertEquals(description, getValue(xref, 0));
           assertEquals(isoformId, xref.getIsoformId());

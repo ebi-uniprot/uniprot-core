@@ -3,9 +3,9 @@ package uk.ac.ebi.uniprot.parser.impl.cc;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.InteractionType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 
 /**
  * 

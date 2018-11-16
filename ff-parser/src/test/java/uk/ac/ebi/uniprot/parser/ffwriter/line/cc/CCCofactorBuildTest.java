@@ -7,12 +7,12 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.CofactorCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReference;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 
 
 public class CCCofactorBuildTest extends CCBuildTestAbstr {
@@ -52,7 +52,7 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
 		String noteValue = "Binds 2 divalent ions per subunit (magnesium or cobalt). A second loosely associated metal ion is visible in the crystal structure";
 		List<String> evs3 = new ArrayList<>();
 		evs3.add("ECO:0000255|HAMAP-Rule:MF_00082");
-		CommentNote commentNote =buildNote(noteValue, evs3);
+		Note commentNote =buildNote(noteValue, evs3);
 		builder.note(commentNote);
 
 		CofactorComment comment = builder.build();
@@ -78,7 +78,7 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
 		String noteValue = "Binds 1 zinc ion per NS3 protease domain";
 		List<String> evs3 = new ArrayList<>();
 		//evs3.add("ECO:0000255|HAMAP-Rule:MF_00082");
-		CommentNote commentNote =buildNote(noteValue, evs3);
+		Note commentNote =buildNote(noteValue, evs3);
 		builder.note(commentNote);
 		CofactorComment comment = builder.build();
 		doTest(ccLine, comment);
@@ -137,7 +137,7 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
 		String noteValue = "Binds 2 divalent ions per subunit";
 		List<String> evs3 = new ArrayList<>();
 		evs3.add("ECO:0000255|HAMAP-Rule:MF_00086");
-		CommentNote commentNote =buildNote(noteValue, evs3);
+		Note commentNote =buildNote(noteValue, evs3);
 		builder.note(commentNote);
 		
 		CofactorComment comment = builder.build();
@@ -192,7 +192,7 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
 		
 		notes.add(new AbstractMap.SimpleEntry<>(note2, evs4));
 		
-		CommentNote commentNote =buildNote(notes);
+		Note commentNote =buildNote(notes);
 		builder.note(commentNote);
 		
 		CofactorComment comment = builder.build();

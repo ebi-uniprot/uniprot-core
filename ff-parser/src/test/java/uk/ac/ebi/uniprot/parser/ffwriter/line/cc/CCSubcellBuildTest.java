@@ -9,11 +9,11 @@ import org.junit.Test;
 
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comments.CommentNote;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comments.builder.SubcellularLocationCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
 
 
 public class CCSubcellBuildTest extends CCBuildTestAbstr {
@@ -422,7 +422,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
 		
 		notes.add(new AbstractMap.SimpleEntry<>(note2, evs2));
 		
-		CommentNote commentNote =buildNote(notes);
+		Note commentNote =buildNote(notes);
 
         SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
         builder.note(commentNote);
