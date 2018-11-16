@@ -2,8 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.DatabaseType;
-
 /**
  * 
  * @author jieluo
@@ -11,6 +9,6 @@ import uk.ac.ebi.uniprot.domain.DatabaseType;
  * @time   13:22:56
  *
  */
-public interface DatabaseDisplayOrder<T extends DatabaseType> {
+public interface DatabaseDisplayOrder<T> {
 	 List<T> getOrderedDatabases(); 
 }

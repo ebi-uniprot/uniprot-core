@@ -1,13 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypes;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypeDetail;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypes;
 
 public class UniProtXDbDisplayOrderTest {
 
@@ -20,7 +23,7 @@ public class UniProtXDbDisplayOrderTest {
     @Test
     public void testGetOrderedDatabases() {
         UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
-        List<UniProtXDbType> dbtypes =dorder.getOrderedDatabases();
+        List<UniProtXDbTypeDetail> dbtypes =dorder.getOrderedDatabases();
        
         assertFalse(dbtypes.isEmpty());
         assertEquals(UniProtXDbTypes.INSTANCE.getType("EMBL"), dbtypes.get(0));

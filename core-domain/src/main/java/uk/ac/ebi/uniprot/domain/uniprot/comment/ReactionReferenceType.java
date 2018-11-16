@@ -1,22 +1,28 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public enum ReactionReferenceType {
+import uk.ac.ebi.uniprot.domain.DatabaseType;
+
+public enum ReactionReferenceType implements DatabaseType {
 	CHEBI("ChEBI"),
 	RHEA("Rhea"),
 	UNKNOWN("Unknown");
-	private String displayName;
+	private String name;
+	
 
-	private ReactionReferenceType(String displayName) {
-		this.displayName = displayName;
+	private ReactionReferenceType(String name) {
+		this.name = name;
 	}
-
+	@Override
+	public String getName() {
+		return name;
+	}
 	/**
 	 * String representation of the external source
 	 *
 	 * @return the name of the source
 	 */
 	public String toDisplayName() {
-		return displayName;
+		return name;
 	}
 
 	/**
@@ -34,4 +40,6 @@ public enum ReactionReferenceType {
 		}
 		return ReactionReferenceType.UNKNOWN;
 	}
+
+	
 }

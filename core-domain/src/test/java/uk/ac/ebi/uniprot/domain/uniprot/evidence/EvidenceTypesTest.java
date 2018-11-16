@@ -17,31 +17,31 @@ class EvidenceTypesTest {
 
 	@Test
 	void testGetAllTypes() {
-		List<EvidenceType> types = EvidenceTypes.INSTANCE.getAllTypes();
+		List<EvidenceTypeDetail> types = EvidenceTypes.INSTANCE.getAllTypes();
 		assertEquals(42, types.size());
 	}
 
 	@Test
 	void testGetTypeEMBL() {
-		EvidenceType opType = EvidenceTypes.INSTANCE.getType("EMBL");
+		EvidenceTypeDetail opType = EvidenceTypes.INSTANCE.getType("EMBL");
 		verify(opType, "EMBL", "EMBL", "https://www.ebi.ac.uk/ena/data/view/%value");
 	}
 	
 	@Test
 	void testGetTypeHamapRule() {
-		EvidenceType opType = EvidenceTypes.INSTANCE.getType("HAMAP-Rule");
+		EvidenceTypeDetail opType = EvidenceTypes.INSTANCE.getType("HAMAP-Rule");
 		verify(opType, "HAMAP-Rule", "HAMAP-Rule", "https://www.uniprot.org/unirule/%value");
 	}
 	@Test
 	void testGetTypePubMed() {
-		EvidenceType opType = EvidenceTypes.INSTANCE.getType("PubMed");
+		EvidenceTypeDetail opType = EvidenceTypes.INSTANCE.getType("PubMed");
 		verify(opType, "PubMed", "PubMed", "https://www.uniprot.org/citations/%value");
 	}
 	
 	
 	@Test
 	void testGetTypeReference() {
-		EvidenceType opType = EvidenceTypes.INSTANCE.getType("Reference");
+		EvidenceTypeDetail opType = EvidenceTypes.INSTANCE.getType("Reference");
 		verify(opType,  "Reference", "Reference", "");
 	}
 	
@@ -54,7 +54,7 @@ class EvidenceTypesTest {
 	}
 	
 	
-	private void verify(EvidenceType type,  String name, String displayName, String url) {
+	private void verify(EvidenceTypeDetail type,  String name, String displayName, String url) {
 			assertEquals(name, type.getName());
 			assertEquals(displayName, type.getDisplayName());
 			assertEquals(url, type.getUriLink());

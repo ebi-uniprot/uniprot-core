@@ -12,7 +12,6 @@ public class TestHelper {
 			String json =objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
 			System.out.println(json);
 			T converted =  objectMapper.readValue(json,(Class<T>) obj.getClass());
-			System.out.println(converted.toString());
 			assertEquals(obj, converted);
 			}catch(Exception e) {
 	    		fail(e.getMessage());

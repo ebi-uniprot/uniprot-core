@@ -14,8 +14,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public enum UniProtXDbTypes {
 	INSTANCE;
 	private final String FILENAME = "META-INF/drlineconfiguration.json";
-	private List<UniProtXDbType>  types = new ArrayList<>();
-	private Map<String, UniProtXDbType> typeMap ;
+	private List<UniProtXDbTypeDetail>  types = new ArrayList<>();
+	private Map<String, UniProtXDbTypeDetail> typeMap ;
 	UniProtXDbTypes() {
 		init();
 	}
@@ -23,11 +23,10 @@ public enum UniProtXDbTypes {
 	private void init() {
 		final ObjectMapper objectMapper = new ObjectMapper();
 		try (InputStream is = UniProtXDbTypes.class.getClassLoader().getResourceAsStream(FILENAME);) {
-			List<UniProtXDbTypeTemp> temps = objectMapper.readValue(is,
-					new TypeReference<List<UniProtXDbTypeTemp>>() {
+			types = objectMapper.readValue(is,
+					new TypeReference<List<UniProtXDbTypeDetail>>() {
 					});
-			this.types =temps.stream().map(val -> new UniProtXDbType(val.name, val.displayName, val.category, val.uriLink, val.attributes))
-			.collect(Collectors.toList());
+			
 			typeMap =types.stream().collect(Collectors.toMap(val -> val.getName(), val->val));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
@@ -35,22 +34,16 @@ public enum UniProtXDbTypes {
 
 	}
 
-	public List<UniProtXDbType> getAllDBXRefTypes() {
+	public List<UniProtXDbTypeDetail> getAllDBXRefTypes() {
 		return types;
 	}
 	
-	public UniProtXDbType getType(String typeName){
-		UniProtXDbType type =typeMap.get(typeName);
+	public UniProtXDbTypeDetail getType(String typeName){
+		UniProtXDbTypeDetail type =typeMap.get(typeName);
 		if(type ==null) {
 			throw new IllegalArgumentException (typeName + " does not exist in UniProt database type list");
 		}
 		return type;
 	}
-	static class UniProtXDbTypeTemp{
-		public String name;
-		public String displayName;
-		public DatabaseCategory category;
-		public String uriLink;
-		public List<DBXRefTypeAttribute> attributes;
-	}
+	
 }

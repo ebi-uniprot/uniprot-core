@@ -20,7 +20,7 @@ public class EvidenceImpl implements Evidence {
 	private final DBCrossReference<EvidenceType> source;
 	
 	
-	static final EvidenceType REFERENCE =EvidenceTypes.INSTANCE.getType("Reference");
+	static final EvidenceType REFERENCE =new EvidenceType("Reference");
 	static final String REF_PREFIX ="Ref.";
 	
     public static Evidence parseEvidenceLine(String val) {
@@ -30,7 +30,7 @@ public class EvidenceImpl implements Evidence {
         if (token.length == 2) {
             String[] tokens2 = token[1].split(":");
             if (tokens2.length == 2) {
-            	xref = new DBCrossReferenceImpl<>(EvidenceTypes.INSTANCE.getType(tokens2[0]), tokens2[1]);
+            	xref = new DBCrossReferenceImpl<>(new EvidenceType(tokens2[0]), tokens2[1]);
             } else if(tokens2[0].startsWith(REF_PREFIX)) {
             	xref = new DBCrossReferenceImpl<>(REFERENCE, tokens2[0]);        
             }else {
@@ -45,7 +45,7 @@ public class EvidenceImpl implements Evidence {
 	
 	public EvidenceImpl( EvidenceCode evidenceCode,
 			 String databaseName, String dbId) {
-		this(evidenceCode, new DBCrossReferenceImpl<>(EvidenceTypes.INSTANCE.getType(databaseName), dbId));
+		this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceType(databaseName), dbId));
 	
 	}
 	@JsonCreator
@@ -90,7 +90,10 @@ public class EvidenceImpl implements Evidence {
 			if (source.getDatabaseType().equals(REFERENCE)) {
 				sb.append(source.getId());
 			} else {
-				sb.append(source.getDatabaseType().getDisplayName()).append(COLON).append(source.getId());
+				if(source.getDatabaseType().getDetail() !=null)
+					sb.append(source.getDatabaseType().getDetail().getDisplayName()).append(COLON).append(source.getId());
+				else
+					sb.append(source.getDatabaseType().getName()).append(COLON).append(source.getId());
 			}
 		}
 

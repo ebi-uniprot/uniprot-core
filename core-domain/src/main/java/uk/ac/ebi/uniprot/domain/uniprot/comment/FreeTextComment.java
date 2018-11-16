@@ -12,7 +12,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextCommentImpl.class, name = "FreeTextCommentImpl")
 })
-
 public interface FreeTextComment extends Comment, HasFreeText {
 	
 }

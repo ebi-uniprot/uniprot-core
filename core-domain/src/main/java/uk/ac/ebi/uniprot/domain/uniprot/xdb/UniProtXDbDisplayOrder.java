@@ -22,14 +22,14 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author jieluo
  *
  */
-public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbType> {
+public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTypeDetail> {
 	INSTANCE;
 	private  Map<String, DBDisplayOrder> databaseType2DefsNoCase;
 	private  String DR_ORD_FILE = "META-INF/conf/dr_ord";
 
 	private  String dr_ord_location = "https://www.ebi.ac.uk/~trembl/generator/dr_ord";
 	private  boolean init = false;
-	private  List<UniProtXDbType> orderedValues;
+	private  List<UniProtXDbTypeDetail> orderedValues;
 
 	UniProtXDbDisplayOrder() {
 		initCache();
@@ -122,13 +122,13 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
 	}
 
 	@Override
-	public List<UniProtXDbType> getOrderedDatabases() {
+	public List<UniProtXDbTypeDetail> getOrderedDatabases() {
 		if (orderedValues == null) {
 			synchronized (UniProtXDbType.class) {
 				if (orderedValues == null) {
 					synchronized (UniProtXDbType.class) {
 						orderedValues = new CopyOnWriteArrayList<>();
-						for (UniProtXDbType type : UniProtXDbTypes.INSTANCE.getAllDBXRefTypes()) {
+						for (UniProtXDbTypeDetail type : UniProtXDbTypes.INSTANCE.getAllDBXRefTypes()) {
 							orderedValues.add(type);
 						}
 
@@ -141,8 +141,8 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
 		return orderedValues;
 	}
 
-	private DBDisplayOrder getXRefDBDef(UniProtXDbType type) {
-		return databaseType2DefsNoCase.get(type.getDisplayName().toUpperCase());
+	private DBDisplayOrder getXRefDBDef(UniProtXDbTypeDetail type) {
+		return databaseType2DefsNoCase.get(type.getName().toUpperCase());
 
 	}
 
@@ -171,9 +171,9 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
 
 	}
 
-	private class XRefDBOrder implements Comparator<UniProtXDbType> {
+	private class XRefDBOrder implements Comparator<UniProtXDbTypeDetail> {
 		@Override
-		public int compare(UniProtXDbType o1, UniProtXDbType o2) {
+		public int compare(UniProtXDbTypeDetail o1, UniProtXDbTypeDetail o2) {
 			DBDisplayOrder dbOrder1 = getXRefDBDef(o1);
 			DBDisplayOrder dbOrder2 = getXRefDBDef(o2);
 

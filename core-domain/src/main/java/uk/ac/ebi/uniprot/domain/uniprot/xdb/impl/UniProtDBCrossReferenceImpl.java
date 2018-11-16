@@ -51,7 +51,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
 	}
 
 	private String getDatabaseName() {
-		return getDatabaseType().getDisplayName();
+		return getDatabaseType().getName();
 	}
 
 	@Override

@@ -43,11 +43,11 @@ public enum UniProtDBCrossReferenceFactory {
     public UniProtDBCrossReference createUniProtDBCrossReference(String databaseName,
             String id, String description, String thirdAttribute,
             String fourthAttribute, String isoformId, List<Evidence> evidences){
-    	UniProtXDbType opType =UniProtXDbTypes.INSTANCE.getType(databaseName);
+    	UniProtXDbType opType =new UniProtXDbType(databaseName);
     	List<Property> properties = new ArrayList<>();
     
     		
-    		List<DBXRefTypeAttribute> attributes = opType.getAttributes();    	
+    		List<DBXRefTypeAttribute> attributes = opType.getDetail().getAttributes();    	
    			addProperty(properties, attributes, 0, description);
    			addProperty(properties, attributes, 1, thirdAttribute);
    			addProperty(properties, attributes, 2, fourthAttribute);
