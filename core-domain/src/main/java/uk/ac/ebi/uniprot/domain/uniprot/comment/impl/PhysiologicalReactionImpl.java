@@ -17,7 +17,8 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
 	private final PhysiologicalDirectionType directionType;
 	private final DBCrossReference<ReactionReferenceType> reactionReference;
 	private final List<Evidence> evidences;
-	  @JsonCreator
+
+	@JsonCreator
 	public PhysiologicalReactionImpl(@JsonProperty("directionType") PhysiologicalDirectionType directionType,
 			@JsonProperty("reactionReference") DBCrossReference<ReactionReferenceType> reactionReference,
 			@JsonProperty("evidences") List<Evidence> evidences
@@ -28,8 +29,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
 			this.evidences = Collections.emptyList();
 		}else {
 			this.evidences = Collections.unmodifiableList(evidences);
-		}
-		
+		}		
 	}
 	
 	@Override

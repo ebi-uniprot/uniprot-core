@@ -1,27 +1,31 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public abstract class CommentImpl implements Comment {
 
-    private final CommentType type;
-
-    public CommentImpl(CommentType type) {
-        this.type = type;
+    private final CommentType commentType;
+	@JsonCreator
+    public CommentImpl(@JsonProperty("commentType") CommentType commentType) {
+        this.commentType = commentType;
       
     }
 
     @Override
     public CommentType getCommentType() {
-       return type;
+       return commentType;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
+        result = prime * result + ((commentType == null) ? 0 : commentType.hashCode());
         return result;
     }
 
@@ -34,7 +38,7 @@ public abstract class CommentImpl implements Comment {
         if (getClass() != obj.getClass())
             return false;
         CommentImpl other = (CommentImpl) obj;
-        if (type != other.type)
+        if (commentType != other.commentType)
             return false;
         return true;
     }
