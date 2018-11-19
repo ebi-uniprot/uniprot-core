@@ -2,32 +2,41 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
-    private final Optional<String> molecule;
+    private final String molecule;
     private final  List<Cofactor> cofactors;
-    private final Optional<Note> note;
-    public CofactorCommentImpl(String molecule, List<Cofactor> cofactors, Note note) {
+    private final Note note;
+	@JsonCreator
+    public CofactorCommentImpl(@JsonProperty("molecule") String molecule, 
+    		@JsonProperty("cofactors")List<Cofactor> cofactors, 
+    		@JsonProperty("note") Note note) {
         super(CommentType.COFACTOR);
-        this.molecule = ((molecule ==null )|| molecule.isEmpty())? Optional.empty() : Optional.of(molecule);
+        if(Strings.isNullOrEmpty(molecule))
+        	this.molecule =null;
+        else
+        	this.molecule =molecule;
         if((cofactors ==null) || cofactors.isEmpty()){
             this.cofactors = Collections.emptyList();
         }else{
             this.cofactors =Collections.unmodifiableList(cofactors);
         }
-        this.note = (note == null)? Optional.empty():  Optional.of(note);
-
-
+        this.note =note;
     }
 
     @Override
-    public Optional<String> getMolecule() {
+    public String getMolecule() {
         return molecule;
     }
 
@@ -37,9 +46,15 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     }
 
     @Override
-    public Optional<Note> getNote() {
+    public Note getNote() {
         return note;
     }
+	@JsonIgnore
+    @Override
+	public boolean isValid() {
+		return !getCofactors().isEmpty() || (note !=null);
+	}
+
 
     @Override
     public int hashCode() {
@@ -78,4 +93,5 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         return true;
     }
 
+	
 }

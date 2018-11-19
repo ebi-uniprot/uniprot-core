@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PHDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AbsorptionImpl;
@@ -23,7 +23,7 @@ import java.util.List;
 public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
     private Absorption absorption =null;
     private KineticParameters kineticParameters =null;
-    private PHDependence phDependence =null;
+    private PhDependence phDependence =null;
     private RedoxPotential redoxPotential =null;
     private TemperatureDependence temperatureDependence =null;
 
@@ -49,7 +49,7 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
         return this;
     }
 
-    public BPCPCommentBuilder pHDependence(PHDependence phDependences) {
+    public BPCPCommentBuilder pHDependence(PhDependence phDependences) {
         this.phDependence = phDependences;
         return this;
     }
@@ -64,7 +64,7 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
         return this;
     }
 
-    public static PHDependence createPHDependence(List<EvidencedValue> texts) {
+    public static PhDependence createPHDependence(List<EvidencedValue> texts) {
         return BPCPCommentImpl.createPHDependence(texts);
     }
 

@@ -2,25 +2,27 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEvent;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
-
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AlternativeProductsCommentImpl extends CommentImpl implements AlternativeProductsComment {
-    public static APEvent createEvent(String val){
-        return new APEventImpl(val);
-    }
-  
-    private final List<APEvent> events;
+ 
+    private final List<APEventType> events;
     private final List<APIsoform> isoforms;
-    private final Optional<Note> note;
-    public AlternativeProductsCommentImpl(List<APEvent> events, 
-            List<APIsoform> isoforms, Note note  ) {
+    private final Note note;
+	@JsonCreator
+    public AlternativeProductsCommentImpl(
+    		@JsonProperty("events") List<APEventType> events, 
+    		@JsonProperty("isoforms") List<APIsoform> isoforms, 
+    		@JsonProperty("note") Note note  ) {
         super(CommentType.ALTERNATIVE_PRODUCTS);
         if((events ==null) || events.isEmpty()){
             this.events = Collections.emptyList();
@@ -32,11 +34,11 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
         }else{
             this.isoforms =Collections.unmodifiableList(isoforms);
         }
-        this.note = (note == null)? Optional.empty():  Optional.of(note);
+        this.note = note;
     }
 
     @Override
-    public List<APEvent> getEvents() {
+    public List<APEventType> getEvents() {
        return events;
     }
 
@@ -46,7 +48,7 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
     }
 
     @Override
-    public Optional<Note> getNote() {
+    public Note getNote() {
         return note;
     }
     
@@ -90,13 +92,5 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
     }
 
 
-
-    static class APEventImpl extends ValueImpl implements APEvent{
-
-        public APEventImpl(String value) {
-            super(value);          
-        }
-        
-    }
 
 }

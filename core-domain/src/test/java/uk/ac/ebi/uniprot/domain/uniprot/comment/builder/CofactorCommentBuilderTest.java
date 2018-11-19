@@ -38,9 +38,9 @@ public class CofactorCommentBuilderTest {
         CofactorComment comment =
                 builder.molecule(molecule)
                 .build();
-        assertEquals(molecule, comment.getMolecule().get());
+        assertEquals(molecule, comment.getMolecule());
         assertEquals(0, comment.getCofactors().size());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getNote() !=null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
     }
 
@@ -48,7 +48,7 @@ public class CofactorCommentBuilderTest {
     public void testSetCofactors() {
         String name ="someName";
         DBCrossReference<CofactorReferenceType> reference =new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor =CofactorCommentBuilder.createCofactor(name, createEvidences(), reference);
+        Cofactor cofactor =CofactorCommentBuilder.createCofactor(name,reference,  createEvidences());
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
         String molecule ="some mol";
@@ -56,10 +56,10 @@ public class CofactorCommentBuilderTest {
                 builder.molecule(molecule)
                 .cofactors(cofactors)
                 .build();
-        assertEquals(molecule, comment.getMolecule().get());
+        assertEquals(molecule, comment.getMolecule());
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getNote() !=null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
     }
 
@@ -67,7 +67,7 @@ public class CofactorCommentBuilderTest {
     public void testSetNote() {
         String name ="someName";
         DBCrossReference<CofactorReferenceType> reference =new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor =CofactorCommentBuilder.createCofactor(name, createEvidences(), reference);
+        Cofactor cofactor =CofactorCommentBuilder.createCofactor(name, reference, createEvidences());
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
         Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
@@ -77,11 +77,11 @@ public class CofactorCommentBuilderTest {
                 .cofactors(cofactors)
                 .note(note)
                 .build();
-        assertFalse( comment.getMolecule().isPresent());
+        assertFalse( comment.getMolecule() !=null);
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
         assertNotNull(comment.getNote());
-        assertEquals(note, comment.getNote().get());
+        assertEquals(note, comment.getNote());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
     }
 
@@ -98,7 +98,7 @@ public class CofactorCommentBuilderTest {
     public void testCreateCofactor() {
         String name ="someName";
         DBCrossReference<CofactorReferenceType> reference =new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor =CofactorCommentBuilder.createCofactor(name, createEvidences(), reference);
+        Cofactor cofactor =CofactorCommentBuilder.createCofactor(name, reference, createEvidences());
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(2, cofactor.getEvidences().size());

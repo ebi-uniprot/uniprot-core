@@ -7,7 +7,7 @@ import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
-import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
+import uk.ac.ebi.uniprot.domain.uniprot.FreeText;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
@@ -135,7 +135,7 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
 			return lines;
 	}
 
-	protected String  buildFreeText(HasFreeText depend, boolean showEvidence, String separator, String end) {
+	protected String  buildFreeText(FreeText depend, boolean showEvidence, String separator, String end) {
         boolean isfirst =true;
         StringBuilder sb =new StringBuilder();
         for(EvidencedValue val : depend.getTexts()){

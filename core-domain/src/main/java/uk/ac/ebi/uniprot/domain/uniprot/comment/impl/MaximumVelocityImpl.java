@@ -6,13 +6,20 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MaximumVelocityImpl implements MaximumVelocity {
     private final float velocity;
     private final String unit;
     private final String enzyme;
     private final List<Evidence> evidences;
-
-    public MaximumVelocityImpl(float velocity, String unit, String enzyme, List<Evidence> evidences) {
+    @JsonCreator
+    public MaximumVelocityImpl(@JsonProperty("velocity")  float velocity, 
+    		@JsonProperty("unit") String unit, 
+    		@JsonProperty("enzyme") String enzyme, 
+    		@JsonProperty("evidences") List<Evidence> evidences) {
         this.velocity = velocity;
         this.unit = unit;
         this.enzyme = enzyme;
@@ -39,7 +46,7 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     }
 
     @Override
-    public String getVelocityUnit() {
+    public String getUnit() {
         return unit;
     }
 

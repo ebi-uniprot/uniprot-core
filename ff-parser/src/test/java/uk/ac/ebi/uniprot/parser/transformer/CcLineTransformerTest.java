@@ -34,7 +34,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PHDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SimilarityComment;
@@ -242,7 +242,7 @@ public class CcLineTransformerTest {
 		assertFalse(comment.getAbsorption().isPresent());
 		assertFalse(comment.getKineticParameters().isPresent());
 		assertTrue(comment.getPHDependence().isPresent());
-		PHDependence phd = comment.getPHDependence().get();
+		PhDependence phd = comment.getPHDependence().get();
 		assertEquals(2, phd.getTexts().size());
 		assertEquals("Optimum pH is 8-10.", phd.getTexts().get(0).getValue());
 		assertEquals(0, phd.getTexts().get(0).getEvidences().size());
@@ -286,7 +286,7 @@ public class CcLineTransformerTest {
 		assertFalse(comment.getAbsorption().isPresent());
 		assertFalse(comment.getKineticParameters().isPresent());
 		assertTrue(comment.getPHDependence().isPresent());
-		PHDependence phd = comment.getPHDependence().get();
+		PhDependence phd = comment.getPHDependence().get();
 		assertEquals(2, phd.getTexts().size());
 		assertEquals("Optimum pH is 8-10.", phd.getTexts().get(0).getValue());
 		assertEquals(1, phd.getTexts().get(0).getEvidences().size());
@@ -358,7 +358,7 @@ public class CcLineTransformerTest {
 		MaximumVelocity mv =kp.getMaximumVelocities().get(0);
 		assertEquals(17.0f, mv.getVelocity(), 0.00001f);
 	//	assertEquals(MaximumVelocityUnit.MICROMOL_PER_MINUTE_AND_MILLIGRAM,  mv.getUnit());
-		assertEquals("umol/min/mg",  mv.getVelocityUnit());
+		assertEquals("umol/min/mg",  mv.getUnit());
 		assertEquals("enzyme", mv.getEnzyme());
 		assertEquals(0, mv.getEvidences().size());
 		assertEquals(2, kp.getNote().get().getTexts().size());
@@ -423,7 +423,7 @@ public class CcLineTransformerTest {
 		MaximumVelocity mv =kp.getMaximumVelocities().get(0);
 		assertEquals(17.0f, mv.getVelocity(), 0.00001f);
 	//	assertEquals(MaximumVelocityUnit.MICROMOL_PER_MINUTE_AND_MILLIGRAM,  mv.getUnit());
-		assertEquals("umol/min/mg",  mv.getVelocityUnit());
+		assertEquals("umol/min/mg",  mv.getUnit());
 		assertEquals("enzyme", mv.getEnzyme());
 		assertEquals(1, mv.getEvidences().size());
 		assertEquals("ECO:0000313|PDB:3OW2", 

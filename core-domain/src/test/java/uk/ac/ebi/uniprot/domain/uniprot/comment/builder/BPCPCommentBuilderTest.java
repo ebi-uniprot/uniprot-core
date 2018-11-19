@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PHDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
@@ -45,12 +45,12 @@ public class BPCPCommentBuilderTest {
         builder.absorption(absorption)
         .build();
         
-        assertEquals(absorption, comment.getAbsorption().get());
+        assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
-        assertFalse(comment.getKineticParameters().isPresent());
-        assertFalse( comment.getPHDependence().isPresent());
-        assertFalse( comment.getRedoxPotential().isPresent());
-        assertFalse( comment.getTemperatureDependence().isPresent());
+        assertTrue(comment.getKineticParameters() ==null);
+        assertFalse( comment.getPhDependence() !=null);
+        assertFalse( comment.getRedoxPotential() !=null);
+        assertFalse( comment.getTemperatureDependence() !=null);
     }
 
     @Test
@@ -73,12 +73,12 @@ public class BPCPCommentBuilderTest {
         builder.absorption(absorption)
         .kineticParameters(kp)
         .build();
-        assertEquals(absorption, comment.getAbsorption().get());
+        assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
         assertNotNull(comment.getKineticParameters());
-        assertFalse( comment.getPHDependence().isPresent());
-        assertFalse( comment.getRedoxPotential().isPresent());
-        assertFalse( comment.getTemperatureDependence().isPresent());
+        assertFalse( comment.getPhDependence() !=null);
+        assertFalse( comment.getRedoxPotential()!=null);
+        assertFalse( comment.getTemperatureDependence()!=null);
     }
 
     @Test
@@ -101,12 +101,12 @@ public class BPCPCommentBuilderTest {
         .kineticParameters(kp)
         .pHDependence(BPCPCommentBuilder.createPHDependence(texts))
         .build();
-        assertEquals(absorption, comment.getAbsorption().get());
+        assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
-        assertTrue(comment.getKineticParameters().isPresent());
-        assertTrue( comment.getPHDependence().isPresent());
-        assertFalse( comment.getRedoxPotential().isPresent());
-        assertFalse( comment.getTemperatureDependence().isPresent());
+        assertTrue(comment.getKineticParameters()!=null);
+        assertTrue( comment.getPhDependence()!=null);
+        assertFalse( comment.getRedoxPotential()!=null);
+        assertFalse( comment.getTemperatureDependence()!=null);
     }
 
     @Test
@@ -130,12 +130,12 @@ public class BPCPCommentBuilderTest {
         .pHDependence(BPCPCommentBuilder.createPHDependence(texts))
         .redoxPotential(BPCPCommentBuilder.createRedoxPotential(texts))
         .build();
-        assertEquals(absorption, comment.getAbsorption().get());
+        assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
-        assertTrue(comment.getKineticParameters().isPresent());
-        assertTrue( comment.getPHDependence().isPresent());
-        assertTrue( comment.getRedoxPotential().isPresent());
-        assertFalse( comment.getTemperatureDependence().isPresent());
+        assertTrue(comment.getKineticParameters()!=null);
+        assertTrue( comment.getPhDependence()!=null);
+        assertTrue( comment.getRedoxPotential()!=null);
+        assertFalse( comment.getTemperatureDependence()!=null);
     }
 
     @Test
@@ -160,10 +160,10 @@ public class BPCPCommentBuilderTest {
         .redoxPotential(BPCPCommentBuilder.createRedoxPotential(texts))
         .temperatureDependence(BPCPCommentBuilder.createTemperatureDependence(texts))
         .build();
-        assertEquals(absorption, comment.getAbsorption().get());
+        assertEquals(absorption, comment.getAbsorption());
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
         assertNotNull(comment.getKineticParameters());
-        assertNotNull( comment.getPHDependence());
+        assertNotNull( comment.getPhDependence());
         assertNotNull( comment.getRedoxPotential());
         assertNotNull( comment.getTemperatureDependence());
     }
@@ -171,7 +171,7 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testCreatePHDependence() {
         List<EvidencedValue> texts = createEvidenceValues();
-       PHDependence phDependence =BPCPCommentBuilder.createPHDependence(texts);
+       PhDependence phDependence =BPCPCommentBuilder.createPHDependence(texts);
         assertEquals(2, phDependence.getTexts().size());
         assertEquals("value1", phDependence.getTexts().get(0).getValue());
         assertEquals("value2", phDependence.getTexts().get(1).getValue());
@@ -221,7 +221,7 @@ public class BPCPCommentBuilderTest {
         Note note =CommentFactory.INSTANCE.createNote(texts);
         Absorption absorption =BPCPCommentBuilder.createAbsorption(max, note, Collections.emptyList());
         assertEquals(max, absorption.getMax());
-        assertFalse(absorption.isApproximation());
+        assertFalse(absorption.isApproximate());
         assertNotNull(absorption.getNote());
         assertEquals(0, absorption.getEvidences().size());
     }
@@ -233,7 +233,7 @@ public class BPCPCommentBuilderTest {
         Note note =CommentFactory.INSTANCE.createNote(texts);
         Absorption absorption =BPCPCommentBuilder.createAbsorption(max, true, note, createEvidences());
         assertEquals(max, absorption.getMax());
-        assertTrue(absorption.isApproximation());
+        assertTrue(absorption.isApproximate());
         assertNotNull(absorption.getNote());
         assertEquals(2, absorption.getEvidences().size());
     }
@@ -246,7 +246,7 @@ public class BPCPCommentBuilderTest {
         
         MaximumVelocity maxVelocity =BPCPCommentBuilder.createMaximumVelocity(velocity, unit, enzyme, createEvidences());
         assertEquals(velocity, maxVelocity.getVelocity(), Float.MIN_VALUE);
-        assertEquals(unit, maxVelocity.getVelocityUnit());
+        assertEquals(unit, maxVelocity.getUnit());
         assertEquals(enzyme, maxVelocity.getEnzyme());
         assertEquals(2, maxVelocity.getEvidences().size());
     }
@@ -272,7 +272,7 @@ public class BPCPCommentBuilderTest {
         KineticParameters kp =BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
         assertEquals(0, kp.getMaximumVelocities().size());
         assertEquals(0, kp.getMichaelisConstants().size());
-        assertEquals(note, kp.getNote().get());
+        assertEquals(note, kp.getNote());
     }
 
     @Test
@@ -286,7 +286,7 @@ public class BPCPCommentBuilderTest {
         KineticParameters kp =BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(0, kp.getMichaelisConstants().size());
-        assertEquals(note, kp.getNote().get());
+        assertEquals(note, kp.getNote());
     }
     @Test
     public void testCreateKineticParametersWithVelocityConstantNote() {
@@ -300,7 +300,7 @@ public class BPCPCommentBuilderTest {
         KineticParameters kp =BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
-        assertEquals(note, kp.getNote().get());
+        assertEquals(note, kp.getNote());
     }
    
     private List<Evidence> createEvidences() {

@@ -13,13 +13,13 @@ import java.util.Locale;
 import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
-import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
+import uk.ac.ebi.uniprot.domain.uniprot.FreeText;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PHDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
@@ -129,7 +129,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 		return lines;
 	}
 	
-	private List<String> buildNote(HasFreeText note, boolean includeFlatFileMarkings, boolean showEvidence) {
+	private List<String> buildNote(FreeText note, boolean includeFlatFileMarkings, boolean showEvidence) {
 	    StringBuilder noteBuilder = new StringBuilder();
         if (includeFlatFileMarkings)
             noteBuilder.append(CC_PREFIX_INDENT);
@@ -192,7 +192,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 				val = val.replace(",", "");
 				vm.append(val);
 				vm.append(SPACE);
-				vm.append(maximumVelocity.getVelocityUnit());
+				vm.append(maximumVelocity.getUnit());
 				vm.append(SPACE);
 				if(!Strings.isNullOrEmpty(maximumVelocity.getEnzyme()))
 					vm.append(maximumVelocity.getEnzyme());
@@ -222,7 +222,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 
 	
 	
-	private List<String>  buildPHDepLine(PHDependence depend, boolean includeFlatFileMarkings, boolean showEvidence) {    
+	private List<String>  buildPHDepLine(PhDependence depend, boolean includeFlatFileMarkings, boolean showEvidence) {    
 	    return buildDependence(depend, P_H_DEPENDENCE, includeFlatFileMarkings, showEvidence);	
 	}
 	private List<String>  buildRedoxLine(RedoxPotential redox, boolean includeFlatFileMarkings, boolean showEvidence) {
@@ -232,7 +232,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
         return buildDependence(temp, TEMPERATURE_DEPENDENCE, includeFlatFileMarkings, showEvidence);   
     }
 
-	private List<String>  buildDependence(HasFreeText depend, String prefix,  boolean includeFlatFileMarkings, boolean showEvidence) {
+	private List<String>  buildDependence(FreeText depend, String prefix,  boolean includeFlatFileMarkings, boolean showEvidence) {
 	    List<String> lines =new ArrayList<>();
         lines.add(buildStart(prefix, includeFlatFileMarkings ).toString());
         StringBuilder noteBuilder = new StringBuilder();

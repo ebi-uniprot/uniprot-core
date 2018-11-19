@@ -20,7 +20,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PHDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
@@ -60,7 +60,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		phEvs.add(ev1);
 		BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
 		
-		PHDependence phDep =buildPHDependence(phValue, phEvs);
+		PhDependence phDep =buildPHDependence(phValue, phEvs);
 		builder.pHDependence(phDep);
 		String redoxValue = "E(0) is -448 mV.";
 		List<String> redoxEvs = new ArrayList<>();
@@ -103,7 +103,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		String phValue = "Optimum pH is 8-10.";
 		List<String> phEvs = new ArrayList<>();
 	//	phEvs.add(ev1);
-		PHDependence phDep =buildPHDependence(phValue, phEvs);
+		PhDependence phDep =buildPHDependence(phValue, phEvs);
 		builder.pHDependence(phDep);
 
 		
@@ -341,7 +341,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		List<Map.Entry<String, List<String>>> phDeps = new ArrayList<>();
 		phDeps.add(new AbstractMap.SimpleEntry<>(phValue, phEvs));
 		phDeps.add(new AbstractMap.SimpleEntry<>(phValue2, phEvs));
-		PHDependence phDep =buildPHDependence(phDeps);
+		PhDependence phDep =buildPHDependence(phDeps);
 
 		builder.pHDependence(phDep);
 		String redoxValue = "E(0) is -448 mV.";
@@ -529,14 +529,14 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		
 	}
 	
-	PHDependence buildPHDependence(String value, List<String> evs){
+	PhDependence buildPHDependence(String value, List<String> evs){
 		List<EvidencedValue> evidencedValues =new ArrayList<>();
 		evidencedValues.add(createEvidencedValue(value, evs));
 		return BPCPCommentBuilder.createPHDependence(evidencedValues);
 
 		
 	}
-	PHDependence buildPHDependence(List<Map.Entry<String, List<String>>> notes){
+	PhDependence buildPHDependence(List<Map.Entry<String, List<String>>> notes){
 		if(!notes.isEmpty()) {
 			List<EvidencedValue> evidencedValues =
 					notes

@@ -381,7 +381,7 @@ public class UniProtEntryBuilderTest {
         .texts(createEvidenceValues());
         comments.add(commentFactory.createComment(ftcBuilder));
         DBCrossReference<CofactorReferenceType> reference =new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor =CofactorCommentBuilder.createCofactor("somename", createEvidences(), reference);
+        Cofactor cofactor =CofactorCommentBuilder.createCofactor("somename",reference,  createEvidences() );
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder =commentFactory.createCofactorCommentBuilder();
         Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());

@@ -1,27 +1,25 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import java.util.Optional;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.BPCPCommentImpl.class, name = "BPCPCommentImpl")
+})
 public interface BPCPComment extends Comment {
 
-	 Optional<Absorption> getAbsorption();
+	 Absorption getAbsorption();
 	
-	 Optional<KineticParameters> getKineticParameters();
+	 KineticParameters getKineticParameters();
 
-	 Optional<PHDependence> getPHDependence();
+	 PhDependence getPhDependence();
 
-	 Optional<RedoxPotential> getRedoxPotential();
+	 RedoxPotential getRedoxPotential();
 
-	 Optional<TemperatureDependence> getTemperatureDependence();
-	 
-	 default boolean isValid() {
-		 return getAbsorption().isPresent()
-				 || getKineticParameters().isPresent()
-				 || getPHDependence().isPresent()
-				 || getRedoxPotential().isPresent()
-				 || getTemperatureDependence().isPresent();
-	 }
-
-
+	 TemperatureDependence getTemperatureDependence();
 
 }

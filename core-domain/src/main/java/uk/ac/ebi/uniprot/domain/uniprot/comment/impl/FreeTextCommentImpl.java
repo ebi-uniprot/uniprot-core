@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
 import java.util.EnumSet;
 import java.util.List;

@@ -8,20 +8,26 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CofactorImpl implements Cofactor {
    
     private final String name;
     private final List<Evidence> evidences;
-    private final DBCrossReference<CofactorReferenceType>  reference;
-
-    public CofactorImpl(String name, List<Evidence> evidences, DBCrossReference<CofactorReferenceType>  reference) {
+    private final DBCrossReference<CofactorReferenceType>  cofactorReference;
+	@JsonCreator
+    public CofactorImpl(@JsonProperty("name") String name, 
+    		@JsonProperty("cofactorReference") DBCrossReference<CofactorReferenceType> cofactorReference,
+    		@JsonProperty("evidences") List<Evidence> evidences) {
         this.name = name;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
             this.evidences = Collections.unmodifiableList(evidences);
         }
-        this.reference = reference;
+        this.cofactorReference = cofactorReference;
     }
 
     @Override
@@ -36,7 +42,7 @@ public class CofactorImpl implements Cofactor {
 
     @Override
     public DBCrossReference<CofactorReferenceType>  getCofactorReference() {
-        return reference;
+        return cofactorReference;
     }
 
     @Override
@@ -45,7 +51,7 @@ public class CofactorImpl implements Cofactor {
         int result = 1;
         result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((reference == null) ? 0 : reference.hashCode());
+        result = prime * result + ((cofactorReference == null) ? 0 : cofactorReference.hashCode());
         return result;
     }
 
@@ -68,10 +74,10 @@ public class CofactorImpl implements Cofactor {
                 return false;
         } else if (!name.equals(other.name))
             return false;
-        if (reference == null) {
-            if (other.reference != null)
+        if (cofactorReference == null) {
+            if (other.cofactorReference != null)
                 return false;
-        } else if (!reference.equals(other.reference))
+        } else if (!cofactorReference.equals(other.cofactorReference))
             return false;
         return true;
     }

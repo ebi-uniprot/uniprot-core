@@ -1,25 +1,33 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import java.util.Collections;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AbsorptionImpl implements Absorption {
 
     private final int max;
     private final boolean approximate;
-    private final Optional<Note> note;
+    private final Note note;
     private final List<Evidence> evidences;
-
-    public AbsorptionImpl(int max, boolean approximate, Note note, List<Evidence> evidences) {
+    public AbsorptionImpl( int max, Note note,  List<Evidence> evidences) {
+    	this(max, false, note, evidences);
+    }
+	@JsonCreator
+    public AbsorptionImpl(@JsonProperty("max")  int max, 
+    		@JsonProperty("approximate") boolean approximate, 
+    		@JsonProperty("note") Note note, 
+    		@JsonProperty("evidences") List<Evidence> evidences) {
         this.max = max;
         this.approximate = approximate;
-        this.note = (note == null)? Optional.empty():  Optional.of(note);
+        this.note =note;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else
@@ -37,13 +45,13 @@ public class AbsorptionImpl implements Absorption {
     }
 
     @Override
-    public Optional<Note> getNote() {
+    public Note getNote() {
         return note;
     }
 
 
     @Override
-    public boolean isApproximation() {
+    public boolean isApproximate() {
         return this.approximate;
     }
 
@@ -52,15 +60,15 @@ public class AbsorptionImpl implements Absorption {
     	    StringBuilder sb = new StringBuilder();
         sb.append("\nCC       Absorption:\n");
         sb.append("CC         Abs(max)=");
-        if (isApproximation()) {
+        if (isApproximate()) {
             sb.append("~");
         }
         sb.append(getMax());
 
         sb.append(" nm;");
 
-        if (getNote().isPresent()) {
-            sb.append("\nCC         Note=").append(getNote().get().toString()).append(";");
+        if ((getNote() !=null) && getNote().isValid() ){
+            sb.append("\nCC         Note=").append(getNote().toString()).append(";");
         }
         
         return sb.toString();

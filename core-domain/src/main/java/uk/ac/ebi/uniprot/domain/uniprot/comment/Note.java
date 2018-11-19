@@ -6,13 +6,14 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
+import uk.ac.ebi.uniprot.domain.uniprot.FreeText;
 
 @JsonTypeInfo(use = NAME, include = PROPERTY)
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.NoteImpl.class, name = "NoteImpl")
 })
 
-public interface Note extends HasFreeText {
+public interface Note extends FreeText {
+	boolean isValid();
 
 }

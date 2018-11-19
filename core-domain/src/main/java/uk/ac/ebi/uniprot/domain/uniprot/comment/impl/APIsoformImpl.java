@@ -2,23 +2,21 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformId;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSynonym;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class APIsoformImpl implements APIsoform {
-	public static IsoformSynonym createIsoformSynonym(String value, List<Evidence> evidences) {
-		return new IsoformSynonymImpl(value, evidences);
-	}
 
 	public static IsoformName createIsoformName(String value, List<Evidence> evidences) {
 		return new IsoformNameImpl(value, evidences);
@@ -29,54 +27,53 @@ public class APIsoformImpl implements APIsoform {
 	}
 
 	private final IsoformName name;
-	private final List<IsoformSynonym> synonyms;
-	private final Optional<Note> note;
+	private final List<IsoformName> synonyms;
+	private final Note note;
 	private final List<IsoformId> isoformIds;
 	private final List<String> sequenceIds;
 	private final IsoformSequenceStatus isoformSequenceStatus;
-
-	public APIsoformImpl(IsoformName name, List<IsoformSynonym> synonyms, Note note,
-			List<IsoformId> isoformIds, List<String> sequenceIds, IsoformSequenceStatus isoformSequenceStatus) {
+	@JsonCreator
+	public APIsoformImpl(@JsonProperty("name") IsoformName name, 
+			@JsonProperty("synonyms")List<IsoformName> synonyms, 
+			@JsonProperty("note")Note note, 
+			@JsonProperty("isoformIds")List<IsoformId> isoformIds,
+			@JsonProperty("sequenceIds") List<String> sequenceIds, 
+			@JsonProperty("value")IsoformSequenceStatus isoformSequenceStatus) {
 		this.name = name;
-		if ((synonyms == null) || synonyms.isEmpty()) {
-			this.synonyms = Collections.emptyList();
-		} else {
-			this.synonyms = Collections.unmodifiableList(synonyms);
-		}
-		this.note = (note == null) ? Optional.empty() : Optional.of(note);
-		if ((isoformIds == null) || isoformIds.isEmpty()) {
-			this.isoformIds = Collections.emptyList();
-		} else {
-			this.isoformIds = Collections.unmodifiableList(isoformIds);
-		}
-		if ((sequenceIds == null) || sequenceIds.isEmpty()) {
-			this.sequenceIds = Collections.emptyList();
-		} else {
-			this.sequenceIds = Collections.unmodifiableList(sequenceIds);
-		}
+		this.synonyms =copyList(synonyms);
+		this.note = note;
+		this.isoformIds = copyList(isoformIds);
+		this.sequenceIds = copyList(sequenceIds);
+		
 		if (isoformSequenceStatus == null) {
 			this.isoformSequenceStatus = IsoformSequenceStatus.DESCRIBED;
 		} else
 			this.isoformSequenceStatus = isoformSequenceStatus;
 	}
-
+	private <T> List<T> copyList(List<T> value){
+		if ((value == null) || value.isEmpty()) {
+			return  Collections.emptyList();
+		} else {
+			return  Collections.unmodifiableList(value);
+		}
+	}
 	@Override
 	public IsoformName getName() {
 		return name;
 	}
 
 	@Override
-	public List<IsoformSynonym> getSynonyms() {
+	public List<IsoformName> getSynonyms() {
 		return synonyms;
 	}
 
 	@Override
-	public Optional<Note> getNote() {
+	public Note getNote() {
 		return note;
 	}
 
 	@Override
-	public List<IsoformId> getIds() {
+	public List<IsoformId> getIsoformIds() {
 		return isoformIds;
 	}
 
@@ -142,20 +139,19 @@ public class APIsoformImpl implements APIsoform {
 		return true;
 	}
 
-	static class IsoformSynonymImpl extends EvidencedValueImpl implements IsoformSynonym {
-		public IsoformSynonymImpl(String value, List<Evidence> evidences) {
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	public static class IsoformNameImpl extends EvidencedValueImpl implements IsoformName {
+		@JsonCreator
+		public IsoformNameImpl(@JsonProperty("value") String value,
+				@JsonProperty("evidences") List<Evidence> evidences) {
 			super(value, evidences);
 		}
 	}
 
-	static class IsoformNameImpl extends EvidencedValueImpl implements IsoformName {
-		public IsoformNameImpl(String value, List<Evidence> evidences) {
-			super(value, evidences);
-		}
-	}
-
-	static class IsoformIdImpl extends ValueImpl implements IsoformId {
-		public IsoformIdImpl(String value) {
+	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+	public static class IsoformIdImpl extends ValueImpl implements IsoformId {
+		@JsonCreator
+		public IsoformIdImpl(@JsonProperty("value") String value) {
 			super(value);
 
 		}

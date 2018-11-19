@@ -9,6 +9,6 @@ import java.util.List;
  * @time   13:21:10
  *
  */
-public interface HasFreeText {
+public interface FreeText {
     List<EvidencedValue> getTexts();
 }

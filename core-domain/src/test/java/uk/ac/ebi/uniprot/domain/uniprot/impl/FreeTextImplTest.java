@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +15,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
 class FreeTextImplTest {
 

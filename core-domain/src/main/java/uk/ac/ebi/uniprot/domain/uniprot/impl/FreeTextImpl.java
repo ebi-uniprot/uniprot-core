@@ -1,7 +1,7 @@
-package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.HasFreeText;
+import uk.ac.ebi.uniprot.domain.uniprot.FreeText;
 
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public  class FreeTextImpl implements HasFreeText{
+public  class FreeTextImpl implements FreeText{
    private final List<EvidencedValue> texts;
 	@JsonCreator
    public FreeTextImpl(@JsonProperty("texts") List<EvidencedValue> texts){

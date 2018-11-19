@@ -1,7 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
 import java.util.List;
-import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * 
@@ -45,12 +50,17 @@ import java.util.Optional;
  * @see Comment
  * @version 1.0
  */
+
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorCommentImpl.class, name = "CofactorCommentImpl")
+})
 public interface CofactorComment extends Comment {
 	/**
 	 * 
 	 * @return molecule
 	 */
-	Optional<String> getMolecule();
+	String getMolecule();
 	/**
 	 * 
 	 * @return list of cofactor
@@ -61,11 +71,8 @@ public interface CofactorComment extends Comment {
 	 * 
 	 * @return cofactor note
 	 */
-	Optional<Note> getNote();
+	Note getNote();
 	
-	default boolean isValid() {
-		return !getCofactors().isEmpty() || getNote().isPresent();
-	}
-
+	 boolean isValid() ;
 	
 }

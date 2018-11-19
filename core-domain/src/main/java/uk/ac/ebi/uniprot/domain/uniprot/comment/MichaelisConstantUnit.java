@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum MichaelisConstantUnit {
 
 	MOL ("M"),
@@ -22,9 +24,9 @@ public enum MichaelisConstantUnit {
 		throw new RuntimeException("unknown Michaelis Constant Unit: " + unit);
 	}
 	
-	
+	 @JsonValue
  	public String getName() {
-		return name();
+		return name;
 	}
 
     /**

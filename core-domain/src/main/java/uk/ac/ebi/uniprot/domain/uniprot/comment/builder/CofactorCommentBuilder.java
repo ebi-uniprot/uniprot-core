@@ -40,8 +40,8 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
 
  
 
-    public static Cofactor createCofactor(String name, List<Evidence> evidences, DBCrossReference<CofactorReferenceType>  reference) {
-        return new CofactorImpl(name, evidences, reference);
+    public static Cofactor createCofactor(String name, DBCrossReference<CofactorReferenceType>  reference, List<Evidence> evidences ) {
+        return new CofactorImpl(name, reference, evidences);
     }
 
 }
