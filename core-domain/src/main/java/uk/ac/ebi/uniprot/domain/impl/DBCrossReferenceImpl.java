@@ -18,11 +18,8 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
 	 private final  T databaseType;
 	 private final String id;
 	 private List<Property> properties;
-//	public DBCrossReferenceImpl() {
-//		properties = Collections.emptyList();
-//	}
-//	
-	public DBCrossReferenceImpl(T database, String id) {
+
+	public DBCrossReferenceImpl( T database,  String id) {
 		this(database, id, Collections.emptyList());
 	}
 	

@@ -6,12 +6,11 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-
+import uk.ac.ebi.uniprot.domain.Value;
 @JsonTypeInfo(use = NAME, include = PROPERTY)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationImpl.SubcellularLocationValueImpl.class, name = "SubcellularLocationValueImpl")
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionImpl.InteractorImpl.class, name = "InteractorImpl")
 })
-public interface SubcellularLocationValue extends EvidencedValue{
+public interface Interactor extends Value {
 
 }

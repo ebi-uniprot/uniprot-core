@@ -13,6 +13,7 @@ import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ReactionImpl implements Reaction {
 
@@ -20,12 +21,11 @@ public class ReactionImpl implements Reaction {
 	private final List<DBCrossReference<ReactionReferenceType>> reactionReferences;
 	private final ECNumber ecNumber;
 	private final List<Evidence> evidences;
-	
-	  @JsonCreator
-	public ReactionImpl(@JsonProperty("name")  String name,
-			@JsonProperty("reactionReferences") List<DBCrossReference<ReactionReferenceType>> reactionReferences, 
-			@JsonProperty("ecNumber") ECNumber ecNumber,
-			@JsonProperty("evidences") List<Evidence> evidences) {
+
+	@JsonCreator
+	public ReactionImpl(@JsonProperty("name") String name,
+			@JsonProperty("reactionReferences") List<DBCrossReference<ReactionReferenceType>> reactionReferences,
+			@JsonProperty("ecNumber") ECNumber ecNumber, @JsonProperty("evidences") List<Evidence> evidences) {
 		this.name = name;
 		if ((reactionReferences == null) || reactionReferences.isEmpty()) {
 			this.reactionReferences = Collections.emptyList();
@@ -64,7 +64,8 @@ public class ReactionImpl implements Reaction {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Reaction=").append(name).append(";");
-		sb.append(" Xref=").append(reactionReferences.stream().map(this::getReferenceString).collect(Collectors.joining(", ")))
+		sb.append(" Xref=")
+				.append(reactionReferences.stream().map(this::getReferenceString).collect(Collectors.joining(", ")))
 				.append(";");
 		if ((ecNumber != null) && ecNumber.isValid()) {
 			sb.append(" EC=").append(ecNumber.getValue()).append(";");

@@ -1,16 +1,20 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public interface MassSpectrometryRange  {
-    public final String UNKNOWN = "unknown";
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
-    public Integer getStart();
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-    public boolean isStartUnknown();
-    public Integer getEnd();
+import uk.ac.ebi.uniprot.domain.Range;
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryRangeImpl.class, name = "MassSpectrometryRangeImpl")
+})
+public interface MassSpectrometryRange {
+	Range getRange();
 
-    public boolean isEndUnknown();
+	boolean hasIsoformId();
 
-    public boolean hasIsoformId();
-
-    public String getIsoformId();
+	String getIsoformId();
 }

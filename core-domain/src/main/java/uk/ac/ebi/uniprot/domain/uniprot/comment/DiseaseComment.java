@@ -1,6 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import java.util.Optional;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * Description of the disease(s) associated with a deficiency of a protein
@@ -44,6 +48,10 @@ import java.util.Optional;
  * @see Comment
  * @version 1.0
  */
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseCommentImpl.class, name = "DiseaseCommentImpl")
+})
 public interface DiseaseComment extends Comment{
     /**
      * @return the definition of the disease
@@ -61,6 +69,6 @@ public interface DiseaseComment extends Comment{
     /**
      * @return free text description of the manifestation of the disease on the protein containing this comment
      */
-     Optional<Note> getNote();
+     Note getNote();
 
 }

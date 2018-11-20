@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-
+import uk.ac.ebi.uniprot.domain.DatabaseType;
 
 /**
  * Enumeration of the possible external sources that have a references to diseases.
@@ -10,7 +10,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment;
  * @see DiseaseReference
  * @version 1.0
  */
-public enum DiseaseReferenceType {
+public enum DiseaseReferenceType implements DatabaseType{
     MIM("MIM"),
     NONE("");
 
@@ -45,4 +45,9 @@ public enum DiseaseReferenceType {
 
         throw new IllegalArgumentException("The disease reference type: " + value + " doesn't exist");
     }
+
+	@Override
+	public String getName() {
+		return displayName;
+	}
 }

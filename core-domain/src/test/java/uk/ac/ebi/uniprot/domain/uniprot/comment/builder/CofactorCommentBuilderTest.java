@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
@@ -42,6 +43,7 @@ public class CofactorCommentBuilderTest {
         assertEquals(0, comment.getCofactors().size());
         assertFalse(comment.getNote() !=null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -61,6 +63,7 @@ public class CofactorCommentBuilderTest {
         assertEquals(cofactor, comment.getCofactors().get(0));
         assertFalse(comment.getNote() !=null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -83,6 +86,7 @@ public class CofactorCommentBuilderTest {
         assertNotNull(comment.getNote());
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test

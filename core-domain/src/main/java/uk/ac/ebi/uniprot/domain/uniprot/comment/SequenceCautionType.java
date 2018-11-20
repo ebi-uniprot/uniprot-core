@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * User: Emilio Salazar
  * Date: 14-May-2007
@@ -29,6 +31,7 @@ public enum SequenceCautionType {
      *
      * @return the name of this enum constant
      */
+    @JsonValue
     public String toDisplayName() {
         return value;
     }

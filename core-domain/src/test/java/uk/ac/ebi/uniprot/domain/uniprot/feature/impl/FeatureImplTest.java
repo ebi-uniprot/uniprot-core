@@ -9,14 +9,15 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.PositionModifier;
+import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureLocationModifier;
+
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
@@ -25,8 +26,8 @@ class FeatureImplTest {
 
 	@Test
 	void testSimple() {
-		FeatureLocation location = new FeatureLocationImpl(32, 50, FeatureLocationModifier.EXACT,
-				FeatureLocationModifier.UNSURE);
+		Range location = new Range(32, 50, PositionModifier.EXACT,
+				PositionModifier.UNSURE);
 		FeatureImpl feature = new FeatureImpl(FeatureType.ACT_SITE, location, "Some description", createEvidences());
 		assertEquals(location, feature.getLocation());
 		assertEquals("Some description", feature.getDescription().getValue());
@@ -39,7 +40,7 @@ class FeatureImplTest {
 	
 	@Test
 	void testWithFeatureId() {
-		FeatureLocation location = new FeatureLocationImpl(32, 96);
+		Range location = new Range(32, 96);
 		FeatureId featureId = 	FeatureIdImpl.newInstance("PRO_324");
 		FeatureImpl feature = new FeatureImpl(FeatureType.CHAIN, location, "Some chain description",
 				featureId,
@@ -58,7 +59,7 @@ class FeatureImplTest {
 	
 	@Test
 	void testWithFeatureIdAndAlternativeSequence() {
-		FeatureLocation location = new FeatureLocationImpl(32, 96);
+		Range location = new Range(32, 96);
 		FeatureId featureId = 	FeatureIdImpl.newInstance("VSP_324");
 		AlternativeSequence alterSeq =createAlternativeSequence() ;
 		FeatureImpl feature = new FeatureImpl(FeatureType.VAR_SEQ, location, "Some description",
@@ -78,7 +79,7 @@ class FeatureImplTest {
 	
 	@Test
 	void testWithFeatureIdAndAlternativeSequenceAndXref() {
-		FeatureLocation location = new FeatureLocationImpl(32, 96);
+		Range location = new Range(32, 96);
 		FeatureId featureId = 	FeatureIdImpl.newInstance("VAR_324");
 		AlternativeSequence alterSeq =createAlternativeSequence() ;
 		DBCrossReference<FeatureXDbType> xref = new DBCrossReferenceImpl<>(FeatureXDbType.DBSNP, "rs123414");
@@ -99,8 +100,8 @@ class FeatureImplTest {
 
 	@Test
 	void testWithAlternativeSequence() {
-		FeatureLocation location = new FeatureLocationImpl(null, 96, FeatureLocationModifier.UNKOWN,
-				FeatureLocationModifier.OUTSIDE_KNOWN_SEQUENCE
+		Range location = new Range(null, 96, PositionModifier.UNKOWN,
+				PositionModifier.OUTSIDE
 				);
 		FeatureId featureId = 	null;
 		AlternativeSequence alterSeq =createAlternativeSequence() ;

@@ -1,42 +1,45 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
-import java.util.List;
-import java.util.Optional;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SubcellularLocationImpl implements SubcellularLocation {
     public static SubcellularLocationValue createSubcellularLocationValue(String value, List<Evidence> evidences){
         return new SubcellularLocationValueImpl(value, evidences);
     }
     private final SubcellularLocationValue location;
-    private final Optional<SubcellularLocationValue> topology;
-    private final Optional<SubcellularLocationValue> orientation;
-    public SubcellularLocationImpl(SubcellularLocationValue location,
-            SubcellularLocationValue topology,
-            SubcellularLocationValue orientation){
+    private final SubcellularLocationValue topology;
+    private final SubcellularLocationValue orientation;
+    @JsonCreator
+    public SubcellularLocationImpl(
+    		@JsonProperty("location") SubcellularLocationValue location,
+    		@JsonProperty("topology") SubcellularLocationValue topology,
+    		@JsonProperty("orientation") SubcellularLocationValue orientation){
         this.location = location;
-        this.topology = (hasValue(topology))? Optional.of(topology): Optional.empty();
-        this.orientation = (hasValue(orientation))? Optional.of(orientation): Optional.empty();
+        this.topology =topology;
+        this.orientation = orientation;
     }
     @Override
     public SubcellularLocationValue getLocation() {
        return location;
     }
 
-    private boolean hasValue(SubcellularLocationValue val){
-        return ((val !=null ) && (val.getValue()!=null) && !val.getValue().isEmpty());
-    }
     @Override
-    public Optional<SubcellularLocationValue> getTopology() {
+    public SubcellularLocationValue getTopology() {
         return topology;
     }
 
     @Override
-    public Optional<SubcellularLocationValue> getOrientation() {
+    public SubcellularLocationValue getOrientation() {
         return orientation;
     }
 
@@ -75,10 +78,12 @@ public class SubcellularLocationImpl implements SubcellularLocation {
             return false;
         return true;
     }
-
-    static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue{
-
-        public SubcellularLocationValueImpl(String value, List<Evidence> evidences) {
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue{
+    	 @JsonCreator
+        public SubcellularLocationValueImpl(
+        		@JsonProperty("value") String value, 
+        		@JsonProperty("evidences")List<Evidence> evidences) {
             super(value, evidences);
         }
 

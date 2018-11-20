@@ -10,10 +10,11 @@ import java.util.List;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseId;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -32,19 +33,20 @@ public class DiseaseBuilderTest {
     @Test
     public void testSetDiseaseId() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
+        String diseaseId = "someId";
         Disease disease =builder.diseaseId(diseaseId)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertNull(disease.getDescription());
         assertNull(disease.getReference());
         assertNull(disease.getAcronym());
+        TestHelper.verifyJson(disease);
     }
 
     @Test
     public void testSetAcronym() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
+        String diseaseId = "someId";
         Disease disease =builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .build();
@@ -52,6 +54,7 @@ public class DiseaseBuilderTest {
         assertNull(disease.getDescription());
         assertNull(disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
+        TestHelper.verifyJson(disease);
     }
 
     @Test
@@ -60,7 +63,7 @@ public class DiseaseBuilderTest {
         String val ="some description";
         List<Evidence> evidences =  createEvidences();
         DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
+        String diseaseId = "someId";
         Disease disease =builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
@@ -69,6 +72,7 @@ public class DiseaseBuilderTest {
         assertEquals(description, disease.getDescription());
         assertNull(disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
+        TestHelper.verifyJson(disease);
     }
 
     @Test
@@ -79,8 +83,8 @@ public class DiseaseBuilderTest {
         DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
-        DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
+        DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
+        String diseaseId = "someId";
         Disease disease =builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
@@ -90,21 +94,17 @@ public class DiseaseBuilderTest {
         assertEquals(description, disease.getDescription());
         assertEquals(reference, disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
-    }
-
-    @Test
-    public void testCreateDiseaseId() {
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
-        assertEquals("someId", diseaseId.getValue());
+        TestHelper.verifyJson(disease);
     }
 
     @Test
     public void testCreateDiseaseReference() {
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
-        DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
-        assertEquals(referenceType, reference.getDiseaseReferenceType());
-        assertEquals(referenceId, reference.getDiseaseReferenceId());
+        DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
+    
+        assertEquals(referenceType, reference.getDatabaseType());
+        assertEquals(referenceId, reference.getId());
     }
 
     @Test
@@ -114,6 +114,7 @@ public class DiseaseBuilderTest {
         DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
         assertEquals(val, description.getValue());
         assertEquals(evidences, description.getEvidences());
+        TestHelper.verifyJson(description);
     }
 
     private List<Evidence> createEvidences() {

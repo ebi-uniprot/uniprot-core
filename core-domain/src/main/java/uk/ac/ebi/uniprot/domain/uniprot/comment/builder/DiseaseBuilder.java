@@ -1,9 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseId;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -11,10 +10,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.List;
 
 public final class DiseaseBuilder {
-    private DiseaseId diseaseId;
+    private String diseaseId;
     private String acronym;
     private DiseaseDescription description;
-    private DiseaseReference reference;
+    private DBCrossReference<DiseaseReferenceType>  reference;
 
     public static DiseaseBuilder newInstance(){
         return new DiseaseBuilder();
@@ -24,7 +23,7 @@ public final class DiseaseBuilder {
                 reference);
     }
 
-    public DiseaseBuilder diseaseId(DiseaseId diseaseId) {
+    public DiseaseBuilder diseaseId(String diseaseId) {
         this.diseaseId = diseaseId;
         return this;
     }
@@ -39,17 +38,9 @@ public final class DiseaseBuilder {
         return this;
     }
 
-    public DiseaseBuilder reference(DiseaseReference reference) {
+    public DiseaseBuilder reference(DBCrossReference<DiseaseReferenceType>  reference) {
         this.reference = reference;
         return this;
-    }
-
-    public static DiseaseId createDiseaseId(String val) {
-        return DiseaseImpl.createDiseaseId(val);
-    }
-
-    public static DiseaseReference createDiseaseReference(DiseaseReferenceType referenceType, String referenceId) {
-        return DiseaseImpl.createDiseaseReference(referenceType, referenceId);
     }
 
     public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {

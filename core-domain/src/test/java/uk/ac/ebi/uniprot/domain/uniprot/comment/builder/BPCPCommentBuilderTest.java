@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
@@ -51,6 +52,7 @@ public class BPCPCommentBuilderTest {
         assertFalse( comment.getPhDependence() !=null);
         assertFalse( comment.getRedoxPotential() !=null);
         assertFalse( comment.getTemperatureDependence() !=null);
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -79,6 +81,7 @@ public class BPCPCommentBuilderTest {
         assertFalse( comment.getPhDependence() !=null);
         assertFalse( comment.getRedoxPotential()!=null);
         assertFalse( comment.getTemperatureDependence()!=null);
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -107,6 +110,7 @@ public class BPCPCommentBuilderTest {
         assertTrue( comment.getPhDependence()!=null);
         assertFalse( comment.getRedoxPotential()!=null);
         assertFalse( comment.getTemperatureDependence()!=null);
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -136,6 +140,7 @@ public class BPCPCommentBuilderTest {
         assertTrue( comment.getPhDependence()!=null);
         assertTrue( comment.getRedoxPotential()!=null);
         assertFalse( comment.getTemperatureDependence()!=null);
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -166,6 +171,7 @@ public class BPCPCommentBuilderTest {
         assertNotNull( comment.getPhDependence());
         assertNotNull( comment.getRedoxPotential());
         assertNotNull( comment.getTemperatureDependence());
+        TestHelper.verifyJson(comment);
     }
 
     @Test

@@ -1,19 +1,25 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Optional;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     private final Disease disease;
-    private final Optional<Note> note;
-    public DiseaseCommentImpl(Disease disease, Note note) {
+    private final Note note;
+	@JsonCreator
+    public DiseaseCommentImpl(
+    		@JsonProperty("disease")Disease disease, 
+    		@JsonProperty("note")Note note) {
         super(CommentType.DISEASE);  
         this.disease = disease;
-        this.note = (note == null)? Optional.empty():  Optional.of(note);
+        this.note =note;
 
     }
 
@@ -21,14 +27,14 @@ public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     public Disease getDisease() {
        return disease;
     }
-
+	@JsonIgnore
     @Override
     public boolean hasDefinedDisease() {
         return ((disease !=null) && disease.hasDefinedDisease());
     }
 
     @Override
-    public Optional<Note> getNote() {
+    public Note getNote() {
         return note;
     }
 

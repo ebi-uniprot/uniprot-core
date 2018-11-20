@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractorAccession;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionImpl;
 
 public final class InteractionBuilder {
@@ -11,8 +11,8 @@ public final class InteractionBuilder {
     private UniProtAccession uniprotAccession;
     private String geneName;
     private int nbExp;
-    private InteractorAccession firstInteractor;
-    private InteractorAccession secondInteractor;
+    private Interactor firstInteractor;
+    private Interactor secondInteractor;
 
     public static InteractionBuilder newInstance(){
         return new InteractionBuilder();
@@ -38,12 +38,12 @@ public final class InteractionBuilder {
         return this;
     }
 
-    public InteractionBuilder firstInteractor(InteractorAccession firstInteractor) {
+    public InteractionBuilder firstInteractor(Interactor firstInteractor) {
         this.firstInteractor = firstInteractor;
         return this;
     }
 
-    public InteractionBuilder secondInteractor(InteractorAccession secondInteractor) {
+    public InteractionBuilder secondInteractor(Interactor secondInteractor) {
         this.secondInteractor = secondInteractor;
         return this;
     }
@@ -54,7 +54,7 @@ public final class InteractionBuilder {
     }
 
  
-    public static InteractorAccession createInteractorAccession(String value) {
-        return InteractionImpl.createInteractorAccession(value);
+    public static Interactor createInteractor(String value) {
+        return InteractionImpl.createInteractor(value);
     }
 }

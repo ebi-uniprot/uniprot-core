@@ -20,22 +20,12 @@ public enum MassSpectrometryMethod {
         return value;
     }
 
-    public static MassSpectrometryMethod toType(String stringRepresentation) {
-        MassSpectrometryMethod result = MassSpectrometryMethod.UNKNOWN;
-
-        if (stringRepresentation.equals("Electrospray")) {
-            result = MassSpectrometryMethod.ELECTROSPRAY;
-        } else if (stringRepresentation.equals("FAB")) {
-            result = MassSpectrometryMethod.FAB;
-        } else if (stringRepresentation.equals("LSI")) {
-            result = MassSpectrometryMethod.LSI;
-        } else if (stringRepresentation.equals("MALDI")) {
-            result = MassSpectrometryMethod.MALDI;
-        } else if (stringRepresentation.equals("Plasma desorption")) {
-            result = MassSpectrometryMethod.PLASMA_DESORPTION;
-        } else if (stringRepresentation.equals("SELDI")) {
-            result = MassSpectrometryMethod.SELDI;
-        }
-        return result;
+    public static MassSpectrometryMethod toType(String type) {
+       for( MassSpectrometryMethod method: MassSpectrometryMethod.values()) {
+    	   if(method.getValue().equals(type))
+    		   return method;
+       }
+       return  MassSpectrometryMethod.UNKNOWN;
+     
     }
 }

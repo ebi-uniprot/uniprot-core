@@ -1,62 +1,70 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractorAccession;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class InteractionImpl implements Interaction {
-    public static InteractorAccession createInteractorAccession(String value){
-        return new InteractorAccessionImpl(value);
+    public static Interactor createInteractor(String value){
+        return new InteractorImpl(value);
     }
     private final InteractionType type;
-    private final UniProtAccession uniprotAccession;
+    private final UniProtAccession uniProtAccession;
     private final String geneName;
-    private final int nbExp;
-    private final InteractorAccession firstInteractor;
-    private final InteractorAccession secondInteractor;
-   
-    public InteractionImpl(InteractionType type, UniProtAccession uniprotAccession,
-            String geneName, int nbExp,
-            InteractorAccession firstInteractor, InteractorAccession secondInteractor){
+    private final int numberOfExperiments;
+    private final Interactor firstInteractor;
+    private final Interactor secondInteractor;
+    @JsonCreator
+    public InteractionImpl(
+    		@JsonProperty("type") InteractionType type, 
+    		@JsonProperty("uniProtAccession") UniProtAccession uniProtAccession,
+    		@JsonProperty("geneName") String geneName, 
+    		@JsonProperty("numberOfExperiments") int numberOfExperiments,
+    		@JsonProperty("firstInteractor") Interactor firstInteractor, 
+    		@JsonProperty("secondInteractor") Interactor secondInteractor){
         this.type =type;
-        this.uniprotAccession = uniprotAccession;
+        this.uniProtAccession = uniProtAccession;
         this.geneName = geneName;
-        this.nbExp = nbExp;
+        this.numberOfExperiments = numberOfExperiments;
         this.firstInteractor = firstInteractor;
         this.secondInteractor = secondInteractor;
         
     }
 
     @Override
-    public InteractionType getInteractionType() {
+    public InteractionType getType() {
         return type;
     }
 
     @Override
-    public UniProtAccession getInteractorUniProtAccession() {
-        return uniprotAccession;
+    public UniProtAccession getUniProtAccession() {
+        return uniProtAccession;
     }
 
     @Override
-    public String getInteractionGeneName() {
+    public String getGeneName() {
         return geneName;
     }
 
     @Override
     public int getNumberOfExperiments() {
-        return nbExp;
+        return numberOfExperiments;
     }
 
     @Override
-    public InteractorAccession getFirstInteractor() {
+    public Interactor getFirstInteractor() {
        return firstInteractor;
     }
 
     @Override
-    public InteractorAccession getSecondInteractor() {
+    public Interactor getSecondInteractor() {
         return secondInteractor;
     }
 
@@ -66,10 +74,10 @@ public class InteractionImpl implements Interaction {
         int result = 1;
         result = prime * result + ((firstInteractor == null) ? 0 : firstInteractor.hashCode());
         result = prime * result + ((geneName == null) ? 0 : geneName.hashCode());
-        result = prime * result + nbExp;
+        result = prime * result + numberOfExperiments;
         result = prime * result + ((secondInteractor == null) ? 0 : secondInteractor.hashCode());
         result = prime * result + ((type == null) ? 0 : type.hashCode());
-        result = prime * result + ((uniprotAccession == null) ? 0 : uniprotAccession.hashCode());
+        result = prime * result + ((uniProtAccession == null) ? 0 : uniProtAccession.hashCode());
         return result;
     }
 
@@ -92,7 +100,7 @@ public class InteractionImpl implements Interaction {
                 return false;
         } else if (!geneName.equals(other.geneName))
             return false;
-        if (nbExp != other.nbExp)
+        if (numberOfExperiments != other.numberOfExperiments)
             return false;
         if (secondInteractor == null) {
             if (other.secondInteractor != null)
@@ -101,17 +109,17 @@ public class InteractionImpl implements Interaction {
             return false;
         if (type != other.type)
             return false;
-        if (uniprotAccession == null) {
-            if (other.uniprotAccession != null)
+        if (uniProtAccession == null) {
+            if (other.uniProtAccession != null)
                 return false;
-        } else if (!uniprotAccession.equals(other.uniprotAccession))
+        } else if (!uniProtAccession.equals(other.uniProtAccession))
             return false;
         return true;
     }
-
-    static class InteractorAccessionImpl extends ValueImpl implements InteractorAccession{
-
-        public InteractorAccessionImpl(String value) {
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+   public static class InteractorImpl extends ValueImpl implements Interactor{
+	   @JsonCreator
+        public InteractorImpl(@JsonProperty("value") String value) {
             super(value);
         }
     }

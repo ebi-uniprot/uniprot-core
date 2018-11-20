@@ -9,18 +9,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class FeatureImpl implements Feature {
 	private final FeatureType type;
-	private final FeatureLocation location;
+	private final Range location;
 	private final FeatureDescription description;
 	private final FeatureId featureId;
 	private final AlternativeSequence alternativeSequence;
@@ -30,18 +30,18 @@ public class FeatureImpl implements Feature {
 	public static Builder createBuilder() {
 		return new Builder();
 	}
-	public FeatureImpl(FeatureType type, FeatureLocation location, String description, List<Evidence> evidences) {
+	public FeatureImpl(FeatureType type, Range location, String description, List<Evidence> evidences) {
 		this(type, location, description, null, evidences);
 		
 	}
 	
-	public FeatureImpl(FeatureType type, FeatureLocation location, String description, FeatureId featureId,
+	public FeatureImpl(FeatureType type, Range location, String description, FeatureId featureId,
 			List<Evidence> evidences) {
 		this(type, location, description, featureId, null, null, evidences);
 		
 	}
 	
-	public FeatureImpl(FeatureType type, FeatureLocation location, String description, FeatureId featureId,
+	public FeatureImpl(FeatureType type, Range location, String description, FeatureId featureId,
 		AlternativeSequence alternativeSequence, DBCrossReference<FeatureXDbType> dbXref, List<Evidence> evidences) {
 		this(type, location, new FeatureDescriptionImpl(description),
 				featureId, alternativeSequence, dbXref, evidences
@@ -49,7 +49,7 @@ public class FeatureImpl implements Feature {
 	}
 	@JsonCreator
 	public FeatureImpl(@JsonProperty("type") FeatureType type,
-			@JsonProperty("locatioin") FeatureLocation location, 
+			@JsonProperty("locatioin") Range location, 
 			@JsonProperty("description") FeatureDescription description, 
 			@JsonProperty("featureId") FeatureId featureId,
 			@JsonProperty("alternativeSequence") AlternativeSequence alternativeSequence, 
@@ -80,7 +80,7 @@ public class FeatureImpl implements Feature {
 	}
 
 	@Override
-	public FeatureLocation getLocation() {
+	public Range getLocation() {
 		return location;
 	}
 
@@ -174,7 +174,7 @@ public class FeatureImpl implements Feature {
 	}
 	public static final class Builder {
 		private  FeatureType type;
-		private  FeatureLocation location;
+		private  Range location;
 		private  FeatureDescription description;
 		private  FeatureId featureId;
 		private  AlternativeSequence alternativeSequence;
@@ -195,7 +195,7 @@ public class FeatureImpl implements Feature {
 			this.type =type;
 			return this;
 		}
-		public Builder location(FeatureLocation location) {
+		public Builder location(Range location) {
 			this.location =location;
 			return this;
 		}

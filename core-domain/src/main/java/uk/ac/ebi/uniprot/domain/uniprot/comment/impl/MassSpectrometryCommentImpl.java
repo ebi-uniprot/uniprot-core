@@ -1,36 +1,39 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import java.util.Collections;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
-    public static MassSpectrometryRange buildMassSpectrometryRange(Integer start, Integer end, String isoformId){
-        return new MassSpectrometryRangeImpl( start,  end,  isoformId);
-    }
     private final MassSpectrometryMethod method;
     private final Double molWeight;
-    private final Optional<Double> molWeightError;
-    private final Optional<String> note;
+    private final Double molWeightError;
+    private final String note;
     private final List<MassSpectrometryRange> ranges;
     private final List<Evidence> evidences;
-
-    public MassSpectrometryCommentImpl(MassSpectrometryMethod method,
-        Double molWeight, Double molWeightError, String note,
-        List<MassSpectrometryRange> ranges,
-        List<Evidence> evidences) {
+	 @JsonCreator
+    public MassSpectrometryCommentImpl(
+    		@JsonProperty("method") MassSpectrometryMethod method,
+    		@JsonProperty("molWeight") Double molWeight, 
+    		@JsonProperty("molWeightError") Double molWeightError, 
+    		@JsonProperty("note") String note,
+    		@JsonProperty("ranges") List<MassSpectrometryRange> ranges,
+    		@JsonProperty("evidences") List<Evidence> evidences) {
         super(CommentType.MASS_SPECTROMETRY);
         this.method = method;
         this.molWeight = molWeight;
         
-        this.molWeightError =  (molWeightError ==null)? Optional.empty() : Optional.of(molWeightError);
-        this.note = ((note ==null )|| note.isEmpty())? Optional.empty() : Optional.of(note);
+        this.molWeightError =  molWeightError;
+        this.note = note ;
         if ((ranges == null) || ranges.isEmpty()) {
             this.ranges = Collections.emptyList();
         } else {
@@ -44,7 +47,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public Optional<Double> getMolWeightError() {
+    public Double getMolWeightError() {
         return molWeightError;
     }
 
@@ -54,7 +57,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public Optional<String> getNote() {
+    public String getNote() {
         return note;
     }
 
@@ -125,80 +128,5 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
         return true;
     }
 
-    static class MassSpectrometryRangeImpl implements MassSpectrometryRange {
-        private final Integer start;
-        private final Integer end;
-        private final String isoformId;
-        public MassSpectrometryRangeImpl(Integer start, Integer end, String isoformId){
-            this.start = start;
-            this.end =end;
-            this.isoformId = isoformId;
-        }
-        @Override
-        public Integer getStart() {
-            return start;
-        }
-
-        @Override
-        public boolean isStartUnknown() {
-           return (start ==null) || (start ==-1);
-        }
-
-        @Override
-        public Integer getEnd() {
-            return end;
-        }
-
-        @Override
-        public boolean isEndUnknown() {
-            return (end == null) ||(end == -1);
-        }
-
-        @Override
-        public boolean hasIsoformId() {
-            return ((isoformId !=null) && !isoformId.isEmpty());
-        }
-
-        @Override
-        public String getIsoformId() {
-            return isoformId;
-        }
-        @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + ((end == null) ? 0 : end.hashCode());
-            result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
-            result = prime * result + ((start == null) ? 0 : start.hashCode());
-            return result;
-        }
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            MassSpectrometryRangeImpl other = (MassSpectrometryRangeImpl) obj;
-            if (end == null) {
-                if (other.end != null)
-                    return false;
-            } else if (!end.equals(other.end))
-                return false;
-            if (isoformId == null) {
-                if (other.isoformId != null)
-                    return false;
-            } else if (!isoformId.equals(other.isoformId))
-                return false;
-            if (start == null) {
-                if (other.start != null)
-                    return false;
-            } else if (!start.equals(other.start))
-                return false;
-            return true;
-        }
-
-    }
-
+   
 }

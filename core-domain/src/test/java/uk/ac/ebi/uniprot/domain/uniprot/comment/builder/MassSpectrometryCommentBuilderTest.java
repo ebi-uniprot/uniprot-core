@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
@@ -33,11 +34,12 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertNull(comment.getMolWeight());
-        assertFalse(comment.getMolWeightError().isPresent());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getMolWeightError() !=null);
+        assertFalse(comment.getNote() !=null);
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -49,11 +51,12 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertFalse(comment.getMolWeightError().isPresent());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getMolWeightError() !=null);
+        assertFalse(comment.getNote() !=null);
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -66,11 +69,12 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
-        assertFalse(comment.getNote().isPresent());
+        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
+        assertFalse(comment.getNote() !=null);
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -84,11 +88,12 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
-        assertEquals("someNote", comment.getNote().get());
+        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
+        assertEquals("someNote", comment.getNote());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -106,11 +111,12 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
-        assertEquals("someNote", comment.getNote().get());
+        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
+        assertEquals("someNote", comment.getNote());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -130,11 +136,12 @@ public class MassSpectrometryCommentBuilderTest {
         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
         assertEquals(0.234, comment.getMolWeight().doubleValue(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError().get().doubleValue(), Double.MIN_VALUE);
-        assertEquals("someNote", comment.getNote().get());
+        assertEquals(0.123, comment.getMolWeightError().doubleValue(), Double.MIN_VALUE);
+        assertEquals("someNote", comment.getNote());
         assertEquals(evidences, comment.getEvidences());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -143,8 +150,8 @@ public class MassSpectrometryCommentBuilderTest {
         int end = 34;
         String isoformId ="some value";
         MassSpectrometryRange range = MassSpectrometryCommentBuilder.createMassSpectrometryRange(start, end, isoformId);
-        assertEquals(start, range.getStart().intValue());
-        assertEquals(end, range.getEnd().intValue());
+        assertEquals(start, range.getRange().getStart().getValue().intValue());
+        assertEquals(end, range.getRange().getEnd().getValue().intValue());
         assertEquals(isoformId, range.getIsoformId());
        
     }

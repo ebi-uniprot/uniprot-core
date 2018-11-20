@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * Enumerates all comment types in UniProt.
  * Important!!! The order which is here must
@@ -88,6 +90,7 @@ public enum CommentType {
      *
      * @return the name of this enum constant
      */
+    @JsonValue
     public String toDisplayName() {
         return value;
     }

@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
 public enum CofactorReferenceType implements DatabaseType{
@@ -10,6 +12,7 @@ public enum CofactorReferenceType implements DatabaseType{
 	private CofactorReferenceType(String displayName) {
 		this.displayName = displayName;
 	}
+	 @JsonValue
 	@Override
 	public String getName() {
 		return this.displayName;

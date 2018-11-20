@@ -33,7 +33,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Position;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
@@ -479,7 +479,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		return builder.build();
 	}
 
-	private Position convertRNAEditingPosition(int pos, Map<Object, List<Evidence>> evidences) {
+	private RnaEdPosition convertRNAEditingPosition(int pos, Map<Object, List<Evidence>> evidences) {
 		String spos = "" + pos;
 		return RnaEditingCommentBuilder.createPosition(spos, evidences.get(spos));
 

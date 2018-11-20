@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
@@ -18,9 +19,10 @@ public class WebResourceCommentBuilderTest {
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getResourceName());
-        assertFalse(comment.getResourceUrl().isPresent());
+        assertEquals("", comment.getResourceUrl());
         assertFalse(comment.isFtp());
-        assertFalse(null, comment.getNote().isPresent());
+        assertEquals("", comment.getNote());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -33,9 +35,10 @@ public class WebResourceCommentBuilderTest {
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getResourceName());
-        assertEquals(databaseUrl, comment.getResourceUrl().get());
+        assertEquals(databaseUrl, comment.getResourceUrl());
         assertFalse( comment.isFtp());
-        assertFalse(comment.getNote().isPresent());
+        assertEquals("", comment.getNote());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -49,9 +52,10 @@ public class WebResourceCommentBuilderTest {
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getResourceName());
-        assertEquals(databaseFtp, comment.getResourceUrl().get());
+        assertEquals(databaseFtp, comment.getResourceUrl());
         assertTrue( comment.isFtp());
-        assertFalse(comment.getNote().isPresent());
+        assertEquals("", comment.getNote());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -66,9 +70,10 @@ public class WebResourceCommentBuilderTest {
                 .build();
         assertEquals(CommentType.WEBRESOURCE, comment.getCommentType());
         assertEquals(databaseName, comment.getResourceName());
-        assertEquals(databaseUrl, comment.getResourceUrl().get());
+        assertEquals(databaseUrl, comment.getResourceUrl());
         assertFalse( comment.isFtp());
-        assertEquals(note, comment.getNote().get());
+        assertEquals(note, comment.getNote());
+        TestHelper.verifyJson(comment);
     }
 
 }

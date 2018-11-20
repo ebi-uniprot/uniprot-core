@@ -1,24 +1,30 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import java.util.Collections;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
     private final SequenceCautionType sequenceCautionType;
     private final String sequence;
     private final List<String> positions;
-    private final Optional<String> note;
+    private final String note;
     private final List<Evidence> evidences;
-    public SequenceCautionCommentImpl(SequenceCautionType sequenceCautionType, String sequence,
-            List<String> positions,
-            String note,
-            List<Evidence> evidences) {
+    
+	@JsonCreator
+    public SequenceCautionCommentImpl(@JsonProperty("sequenceCautionType") SequenceCautionType sequenceCautionType, 
+    		@JsonProperty("sequence") String sequence,
+    		@JsonProperty("positions") List<String> positions,
+    		@JsonProperty("note")String note,
+    		@JsonProperty("evidences") List<Evidence> evidences) {
         super(CommentType.SEQUENCE_CAUTION);
         this.sequenceCautionType = sequenceCautionType;
         this.sequence =sequence;
@@ -27,7 +33,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
         } else {
             this.positions = Collections.unmodifiableList(positions);
         }
-        this.note = ((note ==null )|| note.isEmpty())? Optional.empty() : Optional.of(note);
+        this.note = note ;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
@@ -41,7 +47,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     }
 
     @Override
-    public Optional<String> getNote() {
+    public String getNote() {
         return note;
     }
 

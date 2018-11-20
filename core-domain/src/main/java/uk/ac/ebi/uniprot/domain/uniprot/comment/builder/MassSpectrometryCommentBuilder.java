@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryRangeImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
@@ -52,6 +53,6 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
         return this; 
     }
     public static MassSpectrometryRange createMassSpectrometryRange(Integer start, Integer end, String isoformId){
-        return MassSpectrometryCommentImpl.buildMassSpectrometryRange( start,  end,  isoformId);
+        return new MassSpectrometryRangeImpl( start,  end,  isoformId);
     }
 }

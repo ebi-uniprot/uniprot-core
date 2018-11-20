@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
@@ -44,6 +45,7 @@ public class APCommentBuilderTest {
         assertEquals(0, comment.getIsoforms().size());
      //   assertFalse(comment.getNote().isPresent());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -60,6 +62,7 @@ public class APCommentBuilderTest {
         assertEquals(1, comment.getIsoforms().size());
     //    assertFalse(comment.getNote().isPresent());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
     private APIsoform createAPIsoform(){
@@ -102,6 +105,7 @@ public class APCommentBuilderTest {
         assertEquals(1, comment.getIsoforms().size());
         assertNotNull(comment.getNote());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
+        TestHelper.verifyJson(comment);
     }
 
   

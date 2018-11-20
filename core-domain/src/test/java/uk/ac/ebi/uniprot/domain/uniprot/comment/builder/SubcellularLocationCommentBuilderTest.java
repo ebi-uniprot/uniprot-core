@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
@@ -27,8 +28,8 @@ public class SubcellularLocationCommentBuilderTest {
         SubcellularLocationComment comment =builder.molecule(molecule)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
-        assertEquals(molecule, comment.getMolecule().get());
-        assertFalse( comment.getNote().isPresent());
+        assertEquals(molecule, comment.getMolecule());
+        assertFalse( comment.getNote() !=null);
         assertEquals(0, comment.getSubcellularLocations().size());
     }
 
@@ -56,11 +57,12 @@ public class SubcellularLocationCommentBuilderTest {
                 .subcellularLocations(sublocations)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
-        assertEquals(molecule, comment.getMolecule().get());
-        assertFalse(comment.getNote().isPresent());
+        assertEquals(molecule, comment.getMolecule());
+        assertFalse(comment.getNote() !=null);
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -91,11 +93,12 @@ public class SubcellularLocationCommentBuilderTest {
                 .note(note)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
-        assertFalse( comment.getMolecule().isPresent());
-        assertEquals(note, comment.getNote().get());
+        assertEquals( "", comment.getMolecule());
+        assertEquals(note, comment.getNote());
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -105,6 +108,7 @@ public class SubcellularLocationCommentBuilderTest {
         SubcellularLocationValue slv = SubcellularLocationCommentBuilder.createSubcellularLocationValue(value, evidences);
         assertEquals(value, slv.getValue());
         assertEquals(evidences, slv.getEvidences());
+        TestHelper.verifyJson(slv);
     }
 
     @Test
@@ -118,13 +122,17 @@ public class SubcellularLocationCommentBuilderTest {
         SubcellularLocationValue orientation = SubcellularLocationCommentBuilder.createSubcellularLocationValue(orientationVal, evidences);
         SubcellularLocation sublocation= SubcellularLocationCommentBuilder.createSubcellularLocation(location, topology, orientation);
         assertEquals(location, sublocation.getLocation());
-        assertEquals(topology, sublocation.getTopology().get());
-        assertEquals(orientation, sublocation.getOrientation().get());
+        assertEquals(topology, sublocation.getTopology());
+        assertEquals(orientation, sublocation.getOrientation());
+        TestHelper.verifyJson(sublocation);
         
          sublocation= SubcellularLocationCommentBuilder.createSubcellularLocation(location, topology, null);
         assertEquals(location, sublocation.getLocation());
-        assertEquals(topology, sublocation.getTopology().get());
-        assertFalse( sublocation.getOrientation().isPresent());
+        assertEquals(topology, sublocation.getTopology());
+        assertFalse( sublocation.getOrientation() !=null);
+        TestHelper.verifyJson(sublocation);
+        
+        
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();

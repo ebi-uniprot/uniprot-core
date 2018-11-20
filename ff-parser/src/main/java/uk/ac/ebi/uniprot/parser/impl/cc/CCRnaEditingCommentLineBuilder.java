@@ -5,7 +5,7 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Position;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
@@ -28,7 +28,7 @@ public class CCRnaEditingCommentLineBuilder extends
 		}
 		addCommentTypeName(comment, sb);
 		int positionCount = 0;
-		for (Position aPosition : comment.getPositions()) {
+		for (RnaEdPosition aPosition : comment.getPositions()) {
 			if (aPosition.getPosition() != null
 					&& aPosition.getPosition().trim().length() >= 0) {
 				if (positionCount == 0) {

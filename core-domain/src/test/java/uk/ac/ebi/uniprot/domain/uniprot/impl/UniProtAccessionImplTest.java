@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 
 import org.junit.Test;
@@ -14,6 +15,7 @@ public class UniProtAccessionImplTest {
         UniProtAccession accession = new UniProtAccessionImpl(val);
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
+        TestHelper.verifyJson(accession);
     }
 
     @Test
@@ -23,6 +25,7 @@ public class UniProtAccessionImplTest {
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
         assertTrue(accession.isValidAccession());
+        TestHelper.verifyJson(accession);
     }
     @Test
     public void testValidAccessionLong() {
@@ -31,6 +34,7 @@ public class UniProtAccessionImplTest {
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
         assertTrue(accession.isValidAccession());
+        TestHelper.verifyJson(accession);
     }
     @Test
     public void testValidAccessionLongIsoform() {
@@ -39,6 +43,7 @@ public class UniProtAccessionImplTest {
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
         assertTrue(accession.isValidAccession());
+        TestHelper.verifyJson(accession);
     }
     @Test
     public void testValidAccessionSimpleIsoform() {

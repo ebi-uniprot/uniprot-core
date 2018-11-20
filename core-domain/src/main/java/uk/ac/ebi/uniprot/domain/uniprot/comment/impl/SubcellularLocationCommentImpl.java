@@ -2,36 +2,49 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment {
-    private final Optional<String> molecule;
+    private final String molecule;
     private final List<SubcellularLocation>  subcellularLocations;
-    private final Optional<Note> note;
-    public SubcellularLocationCommentImpl(String molecule, 
-            List<SubcellularLocation>  subcellularLocations, Note note) {
+    private final Note note;
+    
+    @JsonCreator
+    public SubcellularLocationCommentImpl(
+    		@JsonProperty("molecule") String molecule, 
+    		@JsonProperty("subcellularLocations") List<SubcellularLocation>  subcellularLocations,
+    		@JsonProperty("note") Note note) {
         super(CommentType.SUBCELLULAR_LOCATION);
-        this.molecule = ((molecule ==null )|| molecule.isEmpty())? Optional.empty() : Optional.of(molecule);
+        if(Strings.isNullOrEmpty(molecule)) {
+        	this.molecule ="";
+        }else {
+        	this.molecule = molecule;
+        }
+       
         if ((subcellularLocations == null) || subcellularLocations.isEmpty()) {
             this.subcellularLocations = Collections.emptyList();
         } else {
             this.subcellularLocations = Collections.unmodifiableList(subcellularLocations);
         }
-        this.note = (note ==null )? Optional.empty() : Optional.of(note);
+        this.note = note;
     }
 
     @Override
-    public Optional<String> getMolecule() {
+    public String getMolecule() {
        return molecule;
     }
 
     @Override
-    public Optional<Note> getNote() {
+    public Note getNote() {
        return note;
     }
 

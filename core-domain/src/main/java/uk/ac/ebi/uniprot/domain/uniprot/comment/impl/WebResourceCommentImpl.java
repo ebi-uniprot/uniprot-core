@@ -1,43 +1,60 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Optional;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
-    private final String resourceName;
-    private final Optional<String> resourceUrl;
-    private boolean isFtp;
-    private final Optional<String> note;
-    public WebResourceCommentImpl(String resourceName, String resourceUrl, boolean isFtp, String note) {
+	private final String resourceName;
+    private final String resourceUrl;
+    private final boolean ftp;
+    private final String note;
+    @JsonCreator
+    public WebResourceCommentImpl(
+    		@JsonProperty("resourceName") String resourceName, 
+    		@JsonProperty("resourceUrl") String resourceUrl, 
+    		@JsonProperty("ftp")  boolean ftp, 
+    		@JsonProperty("note") String note) {
         super(CommentType.WEBRESOURCE);
         this.resourceName = resourceName;
-        this.resourceUrl = ((resourceUrl ==null )|| resourceUrl.isEmpty())? Optional.empty() : Optional.of(resourceUrl);
-        this.isFtp = isFtp;
-        this.note = ((note ==null )|| note.isEmpty())? Optional.empty() : Optional.of(note);
+        if(Strings.isNullOrEmpty(resourceUrl)) {
+        	this.resourceUrl = "";
+        }else {
+        	this.resourceUrl =resourceUrl;
+        }
+    
+        this.ftp = ftp;
+        if(Strings.isNullOrEmpty(note)) {
+        	this.note = "";
+        }else {
+        	this.note =note;
+        }
     }
 	@Override
 	public String getResourceName() {
 		return resourceName;
 	}
 	@Override
-	public Optional<String> getNote() {
+	public String getNote() {
 		return note;
 	}
 	@Override
-	public Optional<String> getResourceUrl() {
+	public String getResourceUrl() {
 		return resourceUrl;
 	}
 	@Override
 	public boolean isFtp() {
-		return isFtp;
+		return ftp;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + (isFtp ? 1231 : 1237);
+		result = prime * result + (ftp ? 1231 : 1237);
 		result = prime * result + ((note == null) ? 0 : note.hashCode());
 		result = prime * result + ((resourceName == null) ? 0 : resourceName.hashCode());
 		result = prime * result + ((resourceUrl == null) ? 0 : resourceUrl.hashCode());
@@ -52,7 +69,7 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
 		if (getClass() != obj.getClass())
 			return false;
 		WebResourceCommentImpl other = (WebResourceCommentImpl) obj;
-		if (isFtp != other.isFtp)
+		if (ftp != other.ftp)
 			return false;
 		if (note == null) {
 			if (other.note != null)
@@ -71,6 +88,5 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
 			return false;
 		return true;
 	}
-
 
 }

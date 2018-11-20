@@ -1,13 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseId;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReference;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
@@ -32,8 +34,8 @@ public class DiseaseCommentBuilderTest {
         DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
-        DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
+        DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
+        String diseaseId = "someId";
         Disease disease =builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
@@ -44,9 +46,10 @@ public class DiseaseCommentBuilderTest {
         DiseaseComment comment = 
                 commentBuilder.disease(disease)
                 .build();
-       assertFalse( comment.getNote().isPresent());
+       assertEquals(null, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -57,8 +60,8 @@ public class DiseaseCommentBuilderTest {
         DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
-        DiseaseReference reference =DiseaseBuilder.createDiseaseReference(referenceType, referenceId);
-        DiseaseId diseaseId = DiseaseBuilder.createDiseaseId("someId");
+        DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
+        String diseaseId = "someId";
         Disease disease =builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
@@ -71,9 +74,10 @@ public class DiseaseCommentBuilderTest {
                 commentBuilder.disease(disease)
                 .note(note)
                 .build();
-       assertEquals(note, comment.getNote().get());
+       assertEquals(note, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
+        TestHelper.verifyJson(comment);
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();

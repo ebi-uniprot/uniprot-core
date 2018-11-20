@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
@@ -30,9 +31,10 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getNote() !=null);
         assertEquals(0, comment.getPositions().size());
         assertNull(comment.getSequence());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -44,9 +46,10 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getNote() !=null);
         assertEquals(0, comment.getPositions().size());
         assertEquals("somesequence", comment.getSequence());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -60,9 +63,10 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getNote() !=null);
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -77,9 +81,10 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertEquals("some note", comment.getNote().get());
+        assertEquals("some note", comment.getNote() );
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
+        TestHelper.verifyJson(comment);
     }
 
 }

@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Position;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
@@ -38,13 +39,14 @@ public class RnaEditingCommentBuilderTest {
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getNote() !=null);
         assertEquals(0, comment.getPositions().size());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
     public void testSetLocations() {
-        List<Position> positions = new ArrayList<>();
+        List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         positions.add(RnaEditingCommentBuilder.createPosition("123", evidences));
         positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
@@ -55,13 +57,14 @@ public class RnaEditingCommentBuilderTest {
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertFalse(comment.getNote().isPresent());
+        assertFalse(comment.getNote() !=null);
         assertEquals(positions, comment.getPositions());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
     public void testSetNote() {
-        List<Position> positions = new ArrayList<>();
+        List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         positions.add(RnaEditingCommentBuilder.createPosition("123", evidences));
         positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
@@ -74,16 +77,18 @@ public class RnaEditingCommentBuilderTest {
         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertEquals(note, comment.getNote().get());
+        assertEquals(note, comment.getNote());
         assertEquals(positions, comment.getPositions());
+        TestHelper.verifyJson(comment);
     }
 
     @Test
     public void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
-       Position position =RnaEditingCommentBuilder.createPosition("123", evidences);
+       RnaEdPosition position =RnaEditingCommentBuilder.createPosition("123", evidences);
        assertEquals("123", position.getPosition());
        assertEquals(evidences, position.getEvidences());
+       TestHelper.verifyJson(position);
     }
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
