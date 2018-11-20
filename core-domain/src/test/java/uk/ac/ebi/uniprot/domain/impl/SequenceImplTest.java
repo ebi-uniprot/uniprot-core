@@ -1,18 +1,21 @@
-package uk.ac.ebi.uniprot.domain.uniprot.impl;
+package uk.ac.ebi.uniprot.domain.impl;
 
-import org.junit.Before;
-import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 
 import static org.junit.Assert.*;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 public class SequenceImplTest {
 
-    private Sequence sequence;
-    private String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
-    @Before 
-    public void setup(){
+    private static Sequence sequence;
+    private  static String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
+    @BeforeAll
+    public static void setup(){
         sequence = new SequenceImpl(value);
     }
     @Test
@@ -23,17 +26,17 @@ public class SequenceImplTest {
 
     @Test
     public void testGetMolecularWeight() {
-        assertEquals(4544, sequence.getMolecularWeight());
+        assertEquals(4544, sequence.getMolWeight());
     }
 
     @Test
     public void testGetCRC64() {
-        assertEquals("0C69420967F56414", sequence.getCRC64());
+        assertEquals("0C69420967F56414", sequence.getCrc64());
     }
 
     @Test
     public void testGetMD5() {
-        assertEquals("CFA0179DAE1A227203E07C673627B28F", sequence.getMD5());
+        assertEquals("CFA0179DAE1A227203E07C673627B28F", sequence.getMd5());
     }
 
     @Test
@@ -49,4 +52,8 @@ public class SequenceImplTest {
         assertEquals("STPSRRSSRRGRVTP", subSeq.getValue());
     }
 
+    @Test
+    public void testToJson() {
+    	TestHelper.verifyJson(sequence);
+    }
 }

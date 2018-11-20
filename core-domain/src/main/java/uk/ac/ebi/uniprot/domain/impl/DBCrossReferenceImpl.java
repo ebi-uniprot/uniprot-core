@@ -74,6 +74,7 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+		@SuppressWarnings("rawtypes")
 		DBCrossReferenceImpl other = (DBCrossReferenceImpl) obj;
 		if (databaseType == null) {
 			if (other.databaseType != null)

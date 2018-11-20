@@ -1,5 +1,11 @@
 package uk.ac.ebi.uniprot.domain;
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 /**
  * Encapsulates a protein sequence, in particular the sequence annotation in the
  * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} and
@@ -25,6 +31,10 @@ package uk.ac.ebi.uniprot.domain;
  * ...
  * </font></pre>
  */
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.impl.SequenceImpl.class, name = "Sequence")
+})
 public interface Sequence {
 
 	/**
@@ -59,7 +69,7 @@ public interface Sequence {
 	 * </font></pre>
 	 * @return The molecular weight of this sequence.
 	 */
-	public int getMolecularWeight();
+	public int getMolWeight();
 
 	
 
@@ -88,9 +98,9 @@ public interface Sequence {
 	 * </font></pre>
 	 * @return The crc64 hashcode of this sequence.
 	 */
-	public String getCRC64();
+	public String getCrc64();
 
-	public String getMD5();
+	public String getMd5();
 	
 
 	/**

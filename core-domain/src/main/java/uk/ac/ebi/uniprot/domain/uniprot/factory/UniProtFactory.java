@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
@@ -25,7 +26,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtTaxonIdImpl;

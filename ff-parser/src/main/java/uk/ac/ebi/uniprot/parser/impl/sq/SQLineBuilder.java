@@ -43,7 +43,7 @@ public class SQLineBuilder extends FFLineBuilderAbstr<Sequence> {
 		sq.append("SEQUENCE   ");
 		sq.append(f.getLength());
 		sq.append(" AA;  ");
-		sq.append(f.getMolecularWeight());
+		sq.append(f.getMolWeight());
 		sq.append(" MW;  ");
 		sq.append(f.getCRC64());
 		sq.append(" CRC64;");

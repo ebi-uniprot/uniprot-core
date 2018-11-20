@@ -27,7 +27,7 @@ public class SqLineConverterTest {
 		
 		Sequence seq = converter.convert(obj);
 		TestCase.assertEquals(256, seq.getLength());
-		TestCase.assertEquals(29735, seq.getMolecularWeight());
+		TestCase.assertEquals(29735, seq.getMolWeight());
 		TestCase.assertEquals("B4840739BF7D4121", seq.getCRC64());
 		TestCase.assertEquals(sequence, seq.getValue());
 		
