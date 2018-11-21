@@ -11,6 +11,7 @@ import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.Patent;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class PatentImpl extends AbstractCitationImpl implements Patent {
     private final String patentNumber;
@@ -22,7 +23,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
 			@JsonProperty("patentNumber") 
     		String patentNumber) {
         super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.patentNumber = resetNull( patentNumber);
+        this.patentNumber = Utils.resetNull( patentNumber);
     }
 
     @Override

@@ -12,6 +12,7 @@ import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public abstract class AbstractCitationImpl implements Citation {
 	private final CitationType citationType;
@@ -29,27 +30,15 @@ public abstract class AbstractCitationImpl implements Citation {
 			@JsonProperty("title")  String title, 
 			@JsonProperty("publicationDate")  PublicationDate publicationDate) {
 		this.citationType = citationType;
-		this.authoringGroup =copyList(authoringGroup);
+		this.authoringGroup =Utils.unmodifierList(authoringGroup);
 
-		this.authors =copyList(authors);
+		this.authors =Utils.unmodifierList(authors);
 		
 		this.citationXrefs = citationXrefs;
-		this.title = resetNull(title);
+		this.title = Utils.resetNull(title);
 		this.publicationDate = publicationDate;
 	}
 
-	protected <T> List<T> copyList(List<T> list){
-		if((list ==null) || (list.isEmpty())) {
-			return Collections.emptyList();
-		}else
-			return Collections.unmodifiableList(list);
-	}
-	protected String resetNull(String  s) {
-		if(s ==null)
-			return "";
-		else
-			return s;
-	}
 	@Override
 	public CitationXrefs getCitationXrefs() {
 		return citationXrefs;

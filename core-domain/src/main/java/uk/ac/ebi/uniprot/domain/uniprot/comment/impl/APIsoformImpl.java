@@ -15,6 +15,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class APIsoformImpl implements APIsoform {
 
@@ -40,23 +41,17 @@ public class APIsoformImpl implements APIsoform {
 			@JsonProperty("sequenceIds") List<String> sequenceIds, 
 			@JsonProperty("value")IsoformSequenceStatus isoformSequenceStatus) {
 		this.name = name;
-		this.synonyms =copyList(synonyms);
+		this.synonyms =Utils.unmodifierList(synonyms);
 		this.note = note;
-		this.isoformIds = copyList(isoformIds);
-		this.sequenceIds = copyList(sequenceIds);
+		this.isoformIds = Utils.unmodifierList(isoformIds);
+		this.sequenceIds = Utils.unmodifierList(sequenceIds);
 		
 		if (isoformSequenceStatus == null) {
 			this.isoformSequenceStatus = IsoformSequenceStatus.DESCRIBED;
 		} else
 			this.isoformSequenceStatus = isoformSequenceStatus;
 	}
-	private <T> List<T> copyList(List<T> value){
-		if ((value == null) || value.isEmpty()) {
-			return  Collections.emptyList();
-		} else {
-			return  Collections.unmodifiableList(value);
-		}
-	}
+
 	@Override
 	public IsoformName getName() {
 		return name;

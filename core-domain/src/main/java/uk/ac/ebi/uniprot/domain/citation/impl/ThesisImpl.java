@@ -11,6 +11,7 @@ import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)  
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     private final String institute;
@@ -22,8 +23,8 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
 			@JsonProperty("title") String title, @JsonProperty("publicationDate") PublicationDate publicationDate,
 			 @JsonProperty("institute") String institute,  @JsonProperty("address") String address) {
         super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.institute = this.resetNull(institute);
-        this.address = this.resetNull(address);
+        this.institute = Utils.resetNull(institute);
+        this.address = Utils.resetNull(address);
     }
 
     @Override

@@ -11,6 +11,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class InternalSectionImpl implements InternalSection {
 
@@ -22,17 +23,11 @@ public class InternalSectionImpl implements InternalSection {
     public InternalSectionImpl(@JsonProperty("internalLines")  List<InternalLine> internalLines, 
     		@JsonProperty("evidenceLines")  List<EvidenceLine> evidenceLines,
     		@JsonProperty("sourceLines")  List<SourceLine> sourceLines){
-    	this.internalLines =copyList(internalLines);
-    	this.evidenceLines =copyList(evidenceLines);
-    	this.sourceLines =copyList(sourceLines);
+    	this.internalLines =Utils.unmodifierList(internalLines);
+    	this.evidenceLines =Utils.unmodifierList(evidenceLines);
+    	this.sourceLines =Utils.unmodifierList(sourceLines);
     }
-    private <T> List<T> copyList(List<T> value){
-    	if ((value == null) || value.isEmpty()) {
-           return  Collections.emptyList();
-        } else {
-            return  Collections.unmodifiableList(value);
-        }
-    }
+   
     @Override 
     public List<InternalLine> getInternalLines() {
        return internalLines;

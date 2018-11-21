@@ -31,6 +31,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -81,15 +82,15 @@ public class UniProtEntryImpl implements UniProtEntry {
             ){
         this.entryType = entryType;
         this.accession = accession;
-        this.secondaryAccessions = copyList(secondaryAccessions);
+        this.secondaryAccessions = Utils.unmodifierList(secondaryAccessions);
         
         this.uniprotId =uniprotId;
-        this.lineage =copyList(lineage);
+        this.lineage =Utils.unmodifierList(lineage);
        
         this.proteinExistance = proteinExistance;
         this.entryAudit =entryAudit;
-        this.organelles = copyList(organelles);
-        this.keywords =copyList(keywords);
+        this.organelles = Utils.unmodifierList(organelles);
+        this.keywords =Utils.unmodifierList(keywords);
        
         this.description = description;
         if(comments !=null)
@@ -101,12 +102,12 @@ public class UniProtEntryImpl implements UniProtEntry {
             this.references = references;
         else
             this.references = new UniProtReferencesImpl(null);
-        this.genes = copyList(genes);
+        this.genes = Utils.unmodifierList(genes);
       
-        this.features = copyList(features);
+        this.features = Utils.unmodifierList(features);
        
         this.organism = organism;
-        this.organismHosts =copyList(organismHosts);
+        this.organismHosts =Utils.unmodifierList(organismHosts);
        
         if(xrefs !=null)
             this.xrefs = xrefs;
@@ -118,13 +119,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         this.flag = flag;
         this.internalSection =internalSection;
     }
-    private <T> List<T> copyList(List<T> list){
-    	  if ((list == null) || list.isEmpty()) {
-              return Collections.emptyList();
-          } else {
-              return  Collections.unmodifiableList(list);
-          }
-    }
+  
     @Override
     public UniProtAccession getPrimaryUniProtAccession() {
        return accession;

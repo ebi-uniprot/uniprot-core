@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,6 +13,7 @@ import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class GeneImpl implements Gene {
@@ -33,22 +33,15 @@ public class GeneImpl implements Gene {
     		@JsonProperty("orderedLocusNames") List<OrderedLocusName> orderedLocusNames,
     		@JsonProperty("orfNames")  List<ORFName> orfNames) {
         this.geneName = geneName;
-        this.synonyms = copyList(synonyms);
-        this.orderedLocusNames = copyList(orderedLocusNames);
+        this.synonyms = Utils.unmodifierList(synonyms);
+        this.orderedLocusNames = Utils.unmodifierList(orderedLocusNames);
         
-        this.orfNames = copyList(orfNames);
+        this.orfNames = Utils.unmodifierList(orfNames);
 
         if(!hasGeneName() && !this.synonyms.isEmpty()){
             throw new IllegalArgumentException("There should be synonyms without gene name.");
         }
     }
-	
-	private <T> List<T> copyList(List<T> value){
-		   if((value !=null) && !value.isEmpty())
-	            return Collections.unmodifiableList(value);
-	        else
-	           return Collections.emptyList();
-	}
 
     @Override
     public boolean hasGeneName() {

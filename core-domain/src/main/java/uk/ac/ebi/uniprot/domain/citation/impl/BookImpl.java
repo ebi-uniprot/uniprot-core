@@ -11,6 +11,7 @@ import uk.ac.ebi.uniprot.domain.citation.Book;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class BookImpl extends AbstractCitationImpl implements Book {
@@ -32,13 +33,13 @@ public class BookImpl extends AbstractCitationImpl implements Book {
 			@JsonProperty("address") String address) {
 		super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
 		this.bookName = bookName;
-		this.editors = copyList(editors);
+		this.editors = Utils.unmodifierList(editors);
 		
-		this.firstPage = resetNull(firstPage);
-		this.lastPage = resetNull(lastPage);
-		this.volume =  resetNull(volume);
-		this.publisher =  resetNull(publisher);
-		this.address =  resetNull(address);
+		this.firstPage = Utils.resetNull(firstPage);
+		this.lastPage = Utils.resetNull(lastPage);
+		this.volume =  Utils.resetNull(volume);
+		this.publisher =  Utils.resetNull(publisher);
+		this.address =  Utils.resetNull(address);
 	}
 	
 

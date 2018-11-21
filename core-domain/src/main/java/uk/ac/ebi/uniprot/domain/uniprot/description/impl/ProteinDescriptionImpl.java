@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -13,6 +11,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ProteinDescriptionImpl implements ProteinDescription {
@@ -52,26 +51,16 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 			@JsonProperty("includes") List<ProteinSection> includes,
 			@JsonProperty("contains") List<ProteinSection> contains){
 		this.recommendedName = recommendedName;
-		this.alternativeNames  =copyList(alternativeNames);
-		this.submissionNames  =copyList(submissionNames);
+		this.alternativeNames  =Utils.unmodifierList(alternativeNames);
+		this.submissionNames  =Utils.unmodifierList(submissionNames);
 
 		this.allergenName = allergenName;
 		this.biotechName =biotechName;
-		this.cdAntigenNames  =copyList(cdAntigenNames);
-		this.innNames  =copyList(innNames);
-		this.includes  =copyList(includes);
-		this.contains  =copyList(contains);		
+		this.cdAntigenNames  =Utils.unmodifierList(cdAntigenNames);
+		this.innNames  =Utils.unmodifierList(innNames);
+		this.includes  =Utils.unmodifierList(includes);
+		this.contains  =Utils.unmodifierList(contains);		
 	}
-
-	 private <T> List<T> copyList(List<T> value) {
-		 if((value ==null) || value.isEmpty()) {
-			 return Collections.emptyList();
-		 }else {
-			 return new ArrayList<>(value);
-		 }
-	   }
-	 
-	 
 
 	@Override
 	public ProteinName getRecommendedName() {

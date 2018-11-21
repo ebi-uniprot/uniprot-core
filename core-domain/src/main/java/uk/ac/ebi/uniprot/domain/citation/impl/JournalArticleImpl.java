@@ -12,6 +12,7 @@ import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.Journal;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class JournalArticleImpl extends AbstractCitationImpl implements JournalArticle {
     
@@ -40,9 +41,9 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
 			@JsonProperty("volume") String volume) {
         super(CitationType.JOURNAL_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
         this.journal = journal;
-        this.firstPage = resetNull(firstPage);
-		this.lastPage = resetNull(lastPage);
-		this.volume =  resetNull(volume);
+        this.firstPage = Utils.resetNull(firstPage);
+		this.lastPage = Utils.resetNull(lastPage);
+		this.volume =  Utils.resetNull(volume);
 
     }
 	

@@ -5,6 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,17 +28,12 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
     		@JsonProperty("referenceComments") List<ReferenceComment> referenceComments,
     		@JsonProperty("evidences") List<Evidence> evidences) {
         this.citation = citation;
-        this.referencePositions =copyList(referencePositions);
-        this.referenceComments =copyList(referenceComments);
-        this.evidences =copyList(evidences);
+        this.referencePositions =Utils.unmodifierList(referencePositions);
+        this.referenceComments =Utils.unmodifierList(referenceComments);
+        this.evidences =Utils.unmodifierList(evidences);
 
     }
-	private <T> List<T> copyList(List<T> list){
-		if((list ==null) || (list.isEmpty())) {
-			return Collections.emptyList();
-		}else
-			return Collections.unmodifiableList(list);
-	}
+
     @Override
     public List<Evidence> getEvidences() {
         return evidences;

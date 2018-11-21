@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class EvidencedValueImpl implements EvidencedValue {
 	private final String value;
@@ -18,14 +18,8 @@ public class EvidencedValueImpl implements EvidencedValue {
 	public EvidencedValueImpl(
 			@JsonProperty("value") String value, 
 			@JsonProperty("evidences") List<Evidence> evidences) {
-		if (value == null) {
-			this.value = "";
-		} else
-			this.value = value;
-		if ((evidences != null) && !evidences.isEmpty())
-			this.evidences = Collections.unmodifiableList(evidences);
-		else
-			this.evidences = Collections.emptyList();
+		this.value = Utils.resetNull(value);
+		this.evidences =Utils.unmodifierList(evidences);		
 	}
 
 	@Override
