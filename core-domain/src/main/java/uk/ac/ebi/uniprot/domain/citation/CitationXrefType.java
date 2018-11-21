@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
-public enum CitationXrefType {
+import uk.ac.ebi.uniprot.domain.DatabaseType;
+
+public enum CitationXrefType implements DatabaseType {
 
     PUBMED("PubMed"),
     DOI("DOI"),
@@ -12,13 +14,13 @@ public enum CitationXrefType {
         this.value = type;
     }
 
-    public String getValue() {
+    public String getName() {
         return value;
     }
 
     public static CitationXrefType typeOf(String value) {
         for (CitationXrefType citXrefType : CitationXrefType.values()) {
-            if (citXrefType.getValue().equalsIgnoreCase(value)) {
+            if (citXrefType.getName().equalsIgnoreCase(value)) {
                 return citXrefType;
             }
         }

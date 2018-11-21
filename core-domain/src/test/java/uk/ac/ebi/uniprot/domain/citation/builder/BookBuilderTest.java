@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Book;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
@@ -133,6 +134,8 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         assertEquals("324C", citation.getLastPage());
         assertEquals("3", citation.getVolume());
         assertEquals("London Press", citation.getPublisher());
+        
+        TestHelper.verifyJson(citation);
     }
 
     @Test

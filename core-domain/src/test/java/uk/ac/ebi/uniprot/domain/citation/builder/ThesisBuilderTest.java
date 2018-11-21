@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
 
@@ -21,6 +22,7 @@ public class ThesisBuilderTest  extends AbstractCitationBuilderTest{
         assertEquals(institute, citation.getInstitute());
         assertEquals(address, citation.getAddress());
         this.verifyCitation(citation, CitationType.THESIS);
+        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -31,6 +33,7 @@ public class ThesisBuilderTest  extends AbstractCitationBuilderTest{
         Thesis citation = builder.build();
         assertEquals(CitationType.THESIS, citation.getCitationType());
         assertEquals(institute, citation.getInstitute());
+        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -41,6 +44,7 @@ public class ThesisBuilderTest  extends AbstractCitationBuilderTest{
         Thesis citation = builder.build();
         assertEquals(CitationType.THESIS, citation.getCitationType());
         assertEquals(address, citation.getAddress());
+        TestHelper.verifyJson(citation);
     }
 
 }

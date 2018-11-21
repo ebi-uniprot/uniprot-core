@@ -33,7 +33,7 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
 			if (act.getInteractionType().equals(InteractionType.SELF)) {
 				sb.append("Self");
 			} else {
-				sb.append(act.getInteractorUniProtAccession().getValue());
+				sb.append(act.getInteractorUniProtAccession().getName());
 				sb.append(":");
 				sb.append(act.getInteractionGeneName());
 			}

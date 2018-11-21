@@ -3,13 +3,12 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.CitationBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.CitationXrefsBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedObservationsBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
 
 public enum CitationFactory {
     INSTANCE;
@@ -42,12 +41,8 @@ public enum CitationFactory {
        return ThesisBuilder.newInstance();
    }
    
-   public UnpublishedObservationsBuilder createUnpublishedObservationsBuilder(){
-       return UnpublishedObservationsBuilder.newInstance();
+   public UnpublishedBuilder createUnpublishedObservationsBuilder(){
+       return UnpublishedBuilder.newInstance();
    }
-   
-   
-   public CitationXrefsBuilder createCitationXrefsBuilder(){
-       return CitationXrefsBuilder.newInstance();
-   }
+
 }

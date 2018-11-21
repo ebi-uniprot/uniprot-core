@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
 import uk.ac.ebi.uniprot.domain.citation.Locator;
@@ -15,6 +16,7 @@ public class ElectronicArticleBuilderTest  extends  AbstractCitationBuilderTest{
         String locStr ="Some location";
        Locator locator = ElectronicArticleBuilder.createLocator(locStr);
        assertEquals(locStr, locator.getValue());
+       TestHelper.verifyJson(locator);
     }
 
     @Test
@@ -23,6 +25,7 @@ public class ElectronicArticleBuilderTest  extends  AbstractCitationBuilderTest{
         this.builderCitationParamters(builder);
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
+        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -33,7 +36,8 @@ public class ElectronicArticleBuilderTest  extends  AbstractCitationBuilderTest{
         builder.journalName(journalName);
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
-        assertEquals(journalName, citation.getJournalName());    
+        assertEquals(journalName, citation.getJournal().getName());  
+        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -45,8 +49,9 @@ public class ElectronicArticleBuilderTest  extends  AbstractCitationBuilderTest{
         .locator("Some locator");
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
-        assertEquals(journalName, citation.getJournalName());    
+        assertEquals(journalName, citation.getJournal().getName());    
         assertEquals("Some locator", citation.getLocator().getValue());
+        TestHelper.verifyJson(citation);
     }
 
 }

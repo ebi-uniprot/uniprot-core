@@ -72,22 +72,22 @@ public class CcLineTransformerTest {
 		AlternativeProductsComment comment =(AlternativeProductsComment) comments.get(0);
 
 		assertEquals(1, comment.getEvents().size());
-		assertEquals("Alternative splicing", comment.getEvents().get(0).getValue());
+		assertEquals("Alternative splicing", comment.getEvents().get(0).getName());
 		assertEquals(1, comment.getNote().get().getTexts().size());
-		assertEquals("Additional isoforms seem to exist.", comment.getNote().get().getTexts().get(0).getValue());
+		assertEquals("Additional isoforms seem to exist.", comment.getNote().get().getTexts().get(0).getName());
 		assertEquals(6, comment.getIsoforms().size());
 		APIsoform isoform3= comment.getIsoforms().get(2);
 		assertEquals("Bim-alpha3", isoform3.getName().getValue());
 		assertEquals(3, isoform3.getSynonyms().size());
 		assertEquals("Bim-AD", isoform3.getSynonyms().get(1).getValue());
 		assertEquals(1, isoform3.getIds().size());
-		assertEquals("Q9V8R9-3", isoform3.getIds().get(0).getValue());
+		assertEquals("Q9V8R9-3", isoform3.getIds().get(0).getName());
 		assertEquals(3, isoform3.getSequenceIds().size());
 		assertEquals("VSP_000478", isoform3.getSequenceIds().get(1));
 		assertFalse(isoform3.getNote().isPresent());
 		APIsoform isoform5= comment.getIsoforms().get(4);
 		assertEquals(1, isoform5.getNote().get().getTexts().size());
-		assertEquals("No experimental confirmation available.", isoform5.getNote().get().getTexts().get(0).getValue());
+		assertEquals("No experimental confirmation available.", isoform5.getNote().get().getTexts().get(0).getName());
 	}
 	@Test
 	public void testAPCommentWithEvidence() {
@@ -119,13 +119,13 @@ public class CcLineTransformerTest {
 		AlternativeProductsComment comment =(AlternativeProductsComment) comments.get(0);
 		
 		assertEquals(1, comment.getEvents().size());
-		assertEquals("Alternative splicing", comment.getEvents().get(0).getValue());
+		assertEquals("Alternative splicing", comment.getEvents().get(0).getName());
 		assertEquals(2, comment.getNote().get().getTexts().size());
-		assertEquals("Additional isoforms seem to exist.", comment.getNote().get().getTexts().get(0).getValue());
+		assertEquals("Additional isoforms seem to exist.", comment.getNote().get().getTexts().get(0).getName());
 		assertEquals(2, comment.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals("Another additional isoforms also seem to exist.", comment.getNote().get().getTexts().get(1).getValue());
+		assertEquals("Another additional isoforms also seem to exist.", comment.getNote().get().getTexts().get(1).getName());
 		assertEquals(1, comment.getNote().get().getTexts().get(1).getEvidences().size());
-		assertEquals("ECO:0000269|PubMed:10433554", comment.getNote().get().getTexts().get(1).getEvidences().get(0).getValue());
+		assertEquals("ECO:0000269|PubMed:10433554", comment.getNote().get().getTexts().get(1).getEvidences().get(0).getName());
 		assertEquals(6, comment.getIsoforms().size());
 		APIsoform isoform1= comment.getIsoforms().get(0);
 		assertEquals("1", isoform1.getName().getValue());
@@ -140,20 +140,20 @@ public class CcLineTransformerTest {
 		assertEquals(3, isoform3.getSynonyms().size());
 		assertEquals("Bim-AD", isoform3.getSynonyms().get(1).getValue());
 		assertEquals(1, isoform3.getIds().size());
-		assertEquals("Q9V8R9-3", isoform3.getIds().get(0).getValue());
+		assertEquals("Q9V8R9-3", isoform3.getIds().get(0).getName());
 		assertEquals(3, isoform3.getSequenceIds().size());
 		assertEquals("VSP_000478", isoform3.getSequenceIds().get(1));
 		assertFalse(isoform3.getNote().isPresent());
 		APIsoform isoform5= comment.getIsoforms().get(4);
 		assertEquals(2, isoform5.getNote().get().getTexts().size());
-		assertEquals("No experimental confirmation available.", isoform5.getNote().get().getTexts().get(0).getValue());
+		assertEquals("No experimental confirmation available.", isoform5.getNote().get().getTexts().get(0).getName());
 		assertEquals(2, isoform5.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals("ECO:0000269|PubMed:10433554", isoform5.getNote().get().getTexts().get(0).getEvidences().get(0).getValue());
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(0).getEvidences().get(1).getValue());
-		assertEquals("Another no experimental confirmation also available.", isoform5.getNote().get().getTexts().get(1).getValue());
+		assertEquals("ECO:0000269|PubMed:10433554", isoform5.getNote().get().getTexts().get(0).getEvidences().get(0).getName());
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(0).getEvidences().get(1).getName());
+		assertEquals("Another no experimental confirmation also available.", isoform5.getNote().get().getTexts().get(1).getName());
 		assertEquals(2, isoform5.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals("ECO:0000269|PubMed:1043355", isoform5.getNote().get().getTexts().get(1).getEvidences().get(0).getValue());
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(1).getEvidences().get(1).getValue());
+		assertEquals("ECO:0000269|PubMed:1043355", isoform5.getNote().get().getTexts().get(1).getEvidences().get(0).getName());
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(1).getEvidences().get(1).getName());
 	}
 
 	@Test
@@ -186,13 +186,13 @@ public class CcLineTransformerTest {
 		AlternativeProductsComment comment =(AlternativeProductsComment) comments.get(0);
 		
 		assertEquals(1, comment.getEvents().size());
-		assertEquals("Alternative splicing", comment.getEvents().get(0).getValue());
+		assertEquals("Alternative splicing", comment.getEvents().get(0).getName());
 		assertEquals(2, comment.getNote().get().getTexts().size());
-		assertEquals("Additional isoforms seem to exist.", comment.getNote().get().getTexts().get(0).getValue());
+		assertEquals("Additional isoforms seem to exist.", comment.getNote().get().getTexts().get(0).getName());
 		assertEquals(2, comment.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals("Another additional isoforms also seem to exist.", comment.getNote().get().getTexts().get(1).getValue());
+		assertEquals("Another additional isoforms also seem to exist.", comment.getNote().get().getTexts().get(1).getName());
 		assertEquals(1, comment.getNote().get().getTexts().get(1).getEvidences().size());
-		assertEquals("ECO:0000269|PubMed:10433554", comment.getNote().get().getTexts().get(1).getEvidences().get(0).getValue());
+		assertEquals("ECO:0000269|PubMed:10433554", comment.getNote().get().getTexts().get(1).getEvidences().get(0).getName());
 		assertEquals(6, comment.getIsoforms().size());
 		APIsoform isoform1= comment.getIsoforms().get(0);
 		assertEquals("1", isoform1.getName().getValue());
@@ -207,20 +207,20 @@ public class CcLineTransformerTest {
 		assertEquals(3, isoform3.getSynonyms().size());
 		assertEquals("Bim-AD", isoform3.getSynonyms().get(1).getValue());
 		assertEquals(1, isoform3.getIds().size());
-		assertEquals("Q9V8R9-3", isoform3.getIds().get(0).getValue());
+		assertEquals("Q9V8R9-3", isoform3.getIds().get(0).getName());
 		assertEquals(3, isoform3.getSequenceIds().size());
 		assertEquals("VSP_000478", isoform3.getSequenceIds().get(1));
 		assertFalse(isoform3.getNote().isPresent());
 		APIsoform isoform5= comment.getIsoforms().get(4);
 		assertEquals(2, isoform5.getNote().get().getTexts().size());
-		assertEquals("No experimental confirmation available.", isoform5.getNote().get().getTexts().get(0).getValue());
+		assertEquals("No experimental confirmation available.", isoform5.getNote().get().getTexts().get(0).getName());
 		assertEquals(2, isoform5.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals("ECO:0000269|PubMed:10433554", isoform5.getNote().get().getTexts().get(0).getEvidences().get(0).getValue());
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(0).getEvidences().get(1).getValue());
-		assertEquals("Another no experimental confirmation also available.", isoform5.getNote().get().getTexts().get(1).getValue());
+		assertEquals("ECO:0000269|PubMed:10433554", isoform5.getNote().get().getTexts().get(0).getEvidences().get(0).getName());
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(0).getEvidences().get(1).getName());
+		assertEquals("Another no experimental confirmation also available.", isoform5.getNote().get().getTexts().get(1).getName());
 		assertEquals(2, isoform5.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals("ECO:0000269|PubMed:1043355", isoform5.getNote().get().getTexts().get(1).getEvidences().get(0).getValue());
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(1).getEvidences().get(1).getValue());
+		assertEquals("ECO:0000269|PubMed:1043355", isoform5.getNote().get().getTexts().get(1).getEvidences().get(0).getName());
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", isoform5.getNote().get().getTexts().get(1).getEvidences().get(1).getName());
 		
 	}
 	
@@ -342,7 +342,7 @@ public class CcLineTransformerTest {
 		assertEquals(1, absorption.getNote().get().getTexts().size());
 		String val1 = "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the reduced form.";
 	//	String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
-		assertEquals(val1, absorption.getNote().get().getTexts().get(0).getValue());
+		assertEquals(val1, absorption.getNote().get().getTexts().get(0).getName());
 		assertEquals(0, absorption.getNote().get().getTexts().get(0).getEvidences().size());
 	//	assertEquals(val2, absorption.getNote().getTexts().get(1).getValue());
 		
@@ -363,8 +363,8 @@ public class CcLineTransformerTest {
 		assertEquals(0, mv.getEvidences().size());
 		assertEquals(2, kp.getNote().get().getTexts().size());
 		assertEquals("The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).",
-				kp.getNote().get().getTexts().get(0).getValue());
-		assertEquals("Another note is very very long.", kp.getNote().get().getTexts().get(1).getValue());
+				kp.getNote().get().getTexts().get(0).getName());
+		assertEquals("Another note is very very long.", kp.getNote().get().getTexts().get(1).getName());
 //		BioPhysicoChemicalPropertiesComment comment2 =   CommentHelper.translateToComment(
 //				ccLineString, CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
 //		assertEquals(comment2, comment);
@@ -401,14 +401,14 @@ public class CcLineTransformerTest {
 		assertEquals(2, absorption.getNote().get().getTexts().size());
 		String val1 = "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in the reduced form.";
 		String val2 = "These absorption peaks are for the tryptophylquinone cofactor.";
-		assertEquals(val1, absorption.getNote().get().getTexts().get(0).getValue());
+		assertEquals(val1, absorption.getNote().get().getTexts().get(0).getName());
 		assertEquals(1, absorption.getNote().get().getTexts().get(0).getEvidences().size());
 		assertEquals("ECO:0000269|PubMed:10433554", 
-				absorption.getNote().get().getTexts().get(0).getEvidences().get(0).getValue());
-		assertEquals(val2, absorption.getNote().get().getTexts().get(1).getValue());
+				absorption.getNote().get().getTexts().get(0).getEvidences().get(0).getName());
+		assertEquals(val2, absorption.getNote().get().getTexts().get(1).getName());
 		assertEquals(2, absorption.getNote().get().getTexts().get(1).getEvidences().size());
 		assertEquals("ECO:0000303|Ref.6", 
-				absorption.getNote().get().getTexts().get(1).getEvidences().get(1).getValue());
+				absorption.getNote().get().getTexts().get(1).getEvidences().get(1).getName());
 		
 		KineticParameters kp =comment.getKineticParameters().get();
 		assertEquals(2, kp.getMichaelisConstants().size());
@@ -429,9 +429,9 @@ public class CcLineTransformerTest {
 		assertEquals("ECO:0000313|PDB:3OW2", 
 				mv.getEvidences().get(0).getValue());
 		assertEquals(2, kp.getNote().get().getTexts().size());
-		assertEquals("Another note is very very long.", kp.getNote().get().getTexts().get(1).getValue());
+		assertEquals("Another note is very very long.", kp.getNote().get().getTexts().get(1).getName());
 		assertEquals(1, kp.getNote().get().getTexts().get(1).getEvidences().size());
-		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", kp.getNote().get().getTexts().get(1).getEvidences().get(0).getValue());
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", kp.getNote().get().getTexts().get(1).getEvidences().get(0).getName());
 //		BioPhysicoChemicalPropertiesComment comment2 =   CommentHelper.translateToComment(
 //				ccLineStringEvidence, CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
 //		assertEquals(comment2, comment);
@@ -614,9 +614,9 @@ public class CcLineTransformerTest {
 		assertEquals(description, comment.getDisease().getDescription().getValue());
 		assertEquals(0, comment.getDisease().getDescription().getEvidences().size());
 		assertEquals(1, comment.getNote().get().getTexts().size());
-		assertEquals(note, comment.getNote().get().getTexts().get(0).getValue());
+		assertEquals(note, comment.getNote().get().getTexts().get(0).getName());
 		assertEquals(0, comment.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals(diseaseId, comment.getDisease().getDiseaseId().getValue());
+		assertEquals(diseaseId, comment.getDisease().getDiseaseId().getName());
 		assertEquals(acronyn, comment.getDisease().getAcronym());
 		assertEquals("114500", comment.getDisease().getReference().getDiseaseReferenceId());
 		assertEquals(DiseaseReferenceType.MIM, comment.getDisease().getReference().getDiseaseReferenceType());
@@ -658,13 +658,13 @@ public class CcLineTransformerTest {
 		assertEquals(3, comment.getDisease().getDescription().getEvidences().size());
 		assertEquals("ECO:0000303|Ref.6", comment.getDisease().getDescription().getEvidences().get(1).getValue());
 		assertEquals(2, comment.getNote().get().getTexts().size());
-		assertEquals(note1, comment.getNote().get().getTexts().get(0).getValue());
+		assertEquals(note1, comment.getNote().get().getTexts().get(0).getName());
 		assertEquals(3, comment.getNote().get().getTexts().get(0).getEvidences().size());
-		assertEquals("ECO:0000313|PDB:3OW2", comment.getNote().get().getTexts().get(0).getEvidences().get(2).getValue());
-		assertEquals(note2, comment.getNote().get().getTexts().get(1).getValue());
+		assertEquals("ECO:0000313|PDB:3OW2", comment.getNote().get().getTexts().get(0).getEvidences().get(2).getName());
+		assertEquals(note2, comment.getNote().get().getTexts().get(1).getName());
 		assertEquals(2, comment.getNote().get().getTexts().get(1).getEvidences().size());
-		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", comment.getNote().get().getTexts().get(1).getEvidences().get(0).getValue());
-		assertEquals(diseaseId, comment.getDisease().getDiseaseId().getValue());
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", comment.getNote().get().getTexts().get(1).getEvidences().get(0).getName());
+		assertEquals(diseaseId, comment.getDisease().getDiseaseId().getName());
 		assertEquals(acronyn, comment.getDisease().getAcronym());
 		assertEquals("114500", comment.getDisease().getReference().getDiseaseReferenceId());
 		assertEquals(DiseaseReferenceType.MIM, comment.getDisease().getReference().getDiseaseReferenceType());
@@ -704,7 +704,7 @@ public class CcLineTransformerTest {
                + " involved in the transforming-growth-factor-signaling pathway. Although there are reports of patients and"
                + " families with phenotypes of both disorders combined, the genetic etiology of this association is unknown.";
       String diseaseNote = "The disease is caused by mutations affecting the gene represented in this entry";
-       assertEquals(disease.getDiseaseId().getValue(), diseaseId);
+       assertEquals(disease.getDiseaseId().getName(), diseaseId);
        assertEquals(disease.getAcronym(), diseaseAcronym);
        assertEquals(disease.getDescription().getValue(), diseaseDescription);
 
@@ -712,7 +712,7 @@ public class CcLineTransformerTest {
        assertEquals(diseaseReference.getDiseaseReferenceType().toDisplayName(), diseaseReferenceType);
        assertEquals(diseaseReference.getDiseaseReferenceId(), diseaseReferenceId);
 
-       assertEquals(comment.getNote().get().getTexts().get(0).getValue(), diseaseNote);
+       assertEquals(comment.getNote().get().getTexts().get(0).getName(), diseaseNote);
       
    }
    @Test
@@ -738,7 +738,7 @@ public class CcLineTransformerTest {
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(InteractionType.BINARY, interaction2.getInteractionType());
 		assertEquals(1, interaction2.getNumberOfExperiments());
-		assertEquals("Q9W158", interaction2.getInteractorUniProtAccession().getValue());
+		assertEquals("Q9W158", interaction2.getInteractorUniProtAccession().getName());
 		assertEquals("CG4612", interaction2.getInteractionGeneName());
 		assertEquals("EBI-123485", interaction2.getFirstInteractor().getValue());
 		assertEquals("EBI-89895", interaction2.getSecondInteractor().getValue() );
@@ -746,7 +746,7 @@ public class CcLineTransformerTest {
 		Interaction interaction3 = comment.getInteractions().get(2);
 		assertEquals(InteractionType.BINARY, interaction3.getInteractionType());
 		assertEquals(1, interaction3.getNumberOfExperiments());
-		assertEquals("Q9VYI0", interaction3.getInteractorUniProtAccession().getValue());
+		assertEquals("Q9VYI0", interaction3.getInteractorUniProtAccession().getName());
 		assertEquals("fne", interaction3.getInteractionGeneName());
 		assertEquals("EBI-123485", interaction3.getFirstInteractor().getValue());
 		assertEquals("EBI-126770", interaction3.getSecondInteractor().getValue() );
@@ -766,7 +766,7 @@ public class CcLineTransformerTest {
 		Interaction interaction1 = comment.getInteractions().get(0);
 		assertEquals(InteractionType.BINARY, interaction1.getInteractionType());
 		assertEquals(1, interaction1.getNumberOfExperiments());
-		assertEquals("Q9W1K5-1", interaction1.getInteractorUniProtAccession().getValue());
+		assertEquals("Q9W1K5-1", interaction1.getInteractorUniProtAccession().getName());
 		assertEquals("CG11299", interaction1.getInteractionGeneName());
 		assertEquals("EBI-133844", interaction1.getFirstInteractor().getValue());
 		assertEquals("EBI-212772", interaction1.getSecondInteractor().getValue() );
@@ -774,7 +774,7 @@ public class CcLineTransformerTest {
 		Interaction interaction2 = comment.getInteractions().get(1);
 		assertEquals(InteractionType.BINARY, interaction2.getInteractionType());
 		assertEquals(4, interaction2.getNumberOfExperiments());
-		assertEquals("O96017", interaction2.getInteractorUniProtAccession().getValue());
+		assertEquals("O96017", interaction2.getInteractorUniProtAccession().getName());
 		assertEquals("CHEK2", interaction2.getInteractionGeneName());
 		assertEquals("EBI-372428", interaction2.getFirstInteractor().getValue());
 		assertEquals("EBI-1180783", interaction2.getSecondInteractor().getValue() );
@@ -782,7 +782,7 @@ public class CcLineTransformerTest {
 		Interaction interaction3 = comment.getInteractions().get(2);
 		assertEquals(InteractionType.XENO, interaction3.getInteractionType());
 		assertEquals(3, interaction3.getNumberOfExperiments());
-		assertEquals("Q6ZWQ9", interaction3.getInteractorUniProtAccession().getValue());
+		assertEquals("Q6ZWQ9", interaction3.getInteractorUniProtAccession().getName());
 		assertEquals("Myl12a", interaction3.getInteractionGeneName());
 		assertEquals("EBI-372428", interaction3.getFirstInteractor().getValue());
 		assertEquals("EBI-8034418", interaction3.getSecondInteractor().getValue() );
@@ -804,7 +804,7 @@ public class CcLineTransformerTest {
         assertEquals(2, comment.getPositions().get(0).getEvidences().size());
         assertEquals(1, comment.getNote().get().getTexts().size());
         assertEquals("The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense codons",
-                comment.getNote().get().getTexts().get(0).getValue());
+                comment.getNote().get().getTexts().get(0).getName());
         assertTrue( comment.getNote().isPresent());
         
     }

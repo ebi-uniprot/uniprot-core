@@ -22,16 +22,16 @@ import uk.ac.ebi.uniprot.domain.citation.Patent;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
-import uk.ac.ebi.uniprot.domain.citation.UnpublishedObservations;
+import uk.ac.ebi.uniprot.domain.citation.Unpublished;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.CitationXrefsBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedObservationsBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
+import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
@@ -511,7 +511,7 @@ public class RLineBuildTest {
 				"RT   study of speciation using DNA sequence data.\";\n" +
 				"RL   Unpublished observations (JAN-2012).";
 		
-		UnpublishedObservationsBuilder uoBuilder = UnpublishedObservationsBuilder.newInstance();
+		UnpublishedBuilder uoBuilder = UnpublishedBuilder.newInstance();
 		
 		List<String > authors =Arrays.asList(new String[] { "Arctander P.", "Fjeldsaa J."});
 		uoBuilder.authors(buildAuthors(authors));
@@ -524,7 +524,7 @@ public class RLineBuildTest {
 	
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");		
-		UniProtReference<UnpublishedObservations> uniRef= 
+		UniProtReference<Unpublished> uniRef= 
 		factory.createUniProtReference(uoBuilder.build(), referencePositions, Collections.emptyList(), Collections.emptyList());
 		
 		doTest(rlines, uniRef, 5);
@@ -549,7 +549,7 @@ public class RLineBuildTest {
 }
 	
 	private CitationXrefs buildCitationXref(String pubmed, String doi, String agricolaId ){
-	CitationXrefsBuilder builder =CitationXrefsBuilder.newInstance();
+	CitationXrefsImpl builder =CitationXrefsImpl.newInstance();
 	List<CitationXref> xrefs = new ArrayList<>();
 	if(pubmed !=null)
 		xrefs.add(builder.createCitationXref(CitationXrefType.PUBMED, pubmed));

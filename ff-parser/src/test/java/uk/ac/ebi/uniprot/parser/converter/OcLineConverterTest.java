@@ -35,6 +35,6 @@ public class OcLineConverterTest {
 		 
 	}
 	private void validate(String val,List<OrganismName>  taxons, int pos ){
-		assertEquals(val, taxons.get(pos).getValue());
+		assertEquals(val, taxons.get(pos).getName());
 	}
 }

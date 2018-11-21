@@ -1,7 +1,10 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
-
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * The RL line for a journal citation includes the journal abbreviation, the volume number, the page range and the year. The format for such an RL line is:
@@ -16,10 +19,13 @@ package uk.ac.ebi.uniprot.domain.citation;
  *
  * RL   Int. J. Parasitol. 0:0-0(2005).
  */
-
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.JournalArticleImpl.class, name = "JournalArticleImpl")
+})
 public interface JournalArticle extends Citation{
 
-    public String getJournalName();
+    public Journal getJournal();
     public String getFirstPage();
 	public String getLastPage();
     public String getVolume();

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
@@ -17,8 +18,9 @@ public class SubmissionBuilderTest extends AbstractCitationBuilderTest{
         
         builder.submittedToDatabase(SubmissionDatabase.PDB);
         Submission citation = builder.build();
-        assertEquals(SubmissionDatabase.PDB, citation.getSubmittedToDatabase());
+        assertEquals(SubmissionDatabase.PDB, citation.getSubmissionDatabase());
         verifyCitation(citation, CitationType.SUBMISSION);   
+        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -27,7 +29,8 @@ public class SubmissionBuilderTest extends AbstractCitationBuilderTest{
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         Submission citation = builder.build();
         assertEquals(CitationType.SUBMISSION, citation.getCitationType());
-        assertEquals(SubmissionDatabase.EMBL_GENBANK_DDBJ, citation.getSubmittedToDatabase());
+        assertEquals(SubmissionDatabase.EMBL_GENBANK_DDBJ, citation.getSubmissionDatabase());
+        TestHelper.verifyJson(citation);
     }
 
 }

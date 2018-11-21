@@ -14,7 +14,7 @@ import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedObservationsBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
 import uk.ac.ebi.uniprot.parser.Converter;
 
 public class RlLineConverter implements Converter<RlLineObject, AbstractCitationBuilder< Citation>> {
@@ -152,8 +152,8 @@ public class RlLineConverter implements Converter<RlLineObject, AbstractCitation
 			 builder.address(thesis.country);
 		return builder;
 	}
-	private UnpublishedObservationsBuilder convert(RlLineObject.Unpublished unpub){
-		UnpublishedObservationsBuilder builder = UnpublishedObservationsBuilder.newInstance();
+	private UnpublishedBuilder convert(RlLineObject.Unpublished unpub){
+		UnpublishedBuilder builder = UnpublishedBuilder.newInstance();
 		builder.publicationDate(AbstractCitationBuilder.createPublicationDate(unpub.month +"-"+unpub.year));
 		return builder;
 	}

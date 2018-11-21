@@ -41,8 +41,8 @@ public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>
 			sb.append(line.getEvidence().getECOCode().getCodeValue());
 			sb.append(SEPARATOR_SEMICOMA);
 			if ((!line.getEvidence().getAttribute().isEmpty()) && !line.getEvidence().getAttribute().equals("-")) {
-				if (!line.getEvidence().getType().getValue().isEmpty()) {
-					sb.append(line.getEvidence().getType().getValue());
+				if (!line.getEvidence().getType().getName().isEmpty()) {
+					sb.append(line.getEvidence().getType().getName());
 					sb.append(":");
 				}
 				sb.append(line.getEvidence().getAttribute());

@@ -74,7 +74,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<UniProtDBCrossReferences>
 		addEvidences(sb, reference, showEvidence);
 
 		if (reference.getIsoformId().isPresent()) {
-			sb.append(" [").append(reference.getIsoformId().get().getValue()).append("]");
+			sb.append(" [").append(reference.getIsoformId().get().getName()).append("]");
 		}
 		return sb.toString();
 	}
@@ -90,7 +90,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<UniProtDBCrossReferences>
 
 	private StringBuilder append(StringBuilder sb, Optional<DbXRefAttribute> opAttr, boolean includeFFMarkings) {
 		if (opAttr.isPresent()) {
-			return append(sb, opAttr.get().getValue(), includeFFMarkings);
+			return append(sb, opAttr.get().getName(), includeFFMarkings);
 		} else
 			return sb;
 
@@ -105,9 +105,9 @@ public class DRLineBuilder extends FFLineBuilderAbstr<UniProtDBCrossReferences>
 			sb.append(part).append(" ");
 		}
 		sb.append(" ");
-		sb.append(embl.getThirdAttribute().get().getValue());
+		sb.append(embl.getThirdAttribute().get().getName());
 		sb.append(" ");
-		sb.append(embl.getFourthAttribute().get().getValue());
+		sb.append(embl.getFourthAttribute().get().getName());
 		return sb.toString();
 	}
 

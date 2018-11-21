@@ -54,7 +54,7 @@ public class RXLineBuilder implements RLine<CitationXrefs> {
 
 	private String getString(CitationXref xref) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(xref.getXrefType().getValue()).append(EQUAL_SIGN).append(xref.getId());
+		sb.append(xref.getXrefType().getName()).append(EQUAL_SIGN).append(xref.getId());
 		return sb.toString();
 	}
 }

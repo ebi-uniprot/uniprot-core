@@ -56,7 +56,7 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
 	private String createDiseaseString(Disease disease) {
 		String diseaseString = "";
 
-		diseaseString += disease.getDiseaseId().getValue() + " "
+		diseaseString += disease.getDiseaseId().getName() + " "
 				+ "(" + disease.getAcronym() + ") "
 				+ "[" + disease.getReference().getDiseaseReferenceType().toDisplayName() + ":" + disease.getReference().getDiseaseReferenceId()+ "]: "
 				+ disease.getDescription().getValue();

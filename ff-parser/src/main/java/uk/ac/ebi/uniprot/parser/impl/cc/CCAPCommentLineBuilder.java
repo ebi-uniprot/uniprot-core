@@ -70,7 +70,7 @@ public class CCAPCommentLineBuilder extends
 		List<APEvent> events = comment.getEvents();
 		for (int iii = 0; iii < events.size(); iii++) {
 			APEvent event = events.get(iii);
-			altProd.append(event.getValue());
+			altProd.append(event.getName());
 			if (iii < events.size() - 1) {
 				altProd.append(SEPARATOR_COMA);
 			} else {
@@ -175,7 +175,7 @@ public class CCAPCommentLineBuilder extends
 		isoform.append(ISO_ID);
 		for (int i = 0; i < alternativeProductsIsoform.getIds().size(); i++) {
 			isoform.append(alternativeProductsIsoform.getIds().get(i)
-					.getValue());
+					.getName());
 			addSeparator(isoform, SEMI_COMA, SEPARATOR_COMA,
 					(i == (alternativeProductsIsoform.getIds().size() - 1)));
 

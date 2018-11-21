@@ -12,7 +12,7 @@ import uk.ac.ebi.uniprot.domain.citation.Patent;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
-import uk.ac.ebi.uniprot.domain.citation.UnpublishedObservations;
+import uk.ac.ebi.uniprot.domain.citation.Unpublished;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.CitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
@@ -20,7 +20,7 @@ import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedObservationsBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 
 import uk.ac.ebi.uniprot.parser.impl.rl.RlLineConverter;
@@ -68,7 +68,7 @@ public class RlLineConverterTest {
 		assertEquals(CitationType.SUBMISSION, submission.getCitationType());
 
 		assertEquals("OCT-1995", submission.getPublicationDate().getValue());
-		assertEquals(SubmissionDatabase.EMBL_GENBANK_DDBJ, submission.getSubmittedToDatabase());
+		assertEquals(SubmissionDatabase.EMBL_GENBANK_DDBJ, submission.getSubmissionDatabase());
 	}
 	@Test
 	public void testThesis(){
@@ -170,10 +170,10 @@ public class RlLineConverterTest {
 
 	
 		CitationBuilder builder = converter.convert(rlObject);
-		assertTrue(builder instanceof UnpublishedObservationsBuilder);
-		UnpublishedObservations ea =((UnpublishedObservationsBuilder) builder).build();
+		assertTrue(builder instanceof UnpublishedBuilder);
+		Unpublished ea =((UnpublishedBuilder) builder).build();
 		
-		assertEquals(CitationType.UNPUBLISHED_OBSERVATIONS, ea.getCitationType());
+		assertEquals(CitationType.UNPUBLISHED, ea.getCitationType());
 		assertEquals("OCT-1978", ea.getPublicationDate().getValue());
 	}
 }

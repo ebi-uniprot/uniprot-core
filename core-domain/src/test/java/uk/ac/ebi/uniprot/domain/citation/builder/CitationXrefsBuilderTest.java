@@ -1,8 +1,12 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationXref;
+
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
+import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,53 +19,55 @@ public class CitationXrefsBuilderTest {
 
     @Test
     public void testCreateCitationXrefsPubmed() {
-        List<CitationXref> xrefs = new ArrayList<>();
-        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.PUBMED, "somepID1");
+    	  List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
+    	  DBCrossReference<CitationXrefType> xref= new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "somepID1");
         xrefs.add(xref);
-        CitationXrefs citationXrefs = CitationXrefsBuilder.newInstance().createCitationXrefs(xrefs);
-        assertEquals(1, citationXrefs.getAllXrefs().size());
-        Optional<CitationXref> pubmed = citationXrefs.getTyped(CitationXrefType.PUBMED);
+        CitationXrefs citationXrefs = new CitationXrefsImpl(xrefs);
+        assertEquals(1, citationXrefs.getXrefs().size());
+        Optional<DBCrossReference<CitationXrefType>> pubmed = citationXrefs.getTyped(CitationXrefType.PUBMED);
         assertTrue(pubmed.isPresent());
         assertFalse(citationXrefs.getTyped(CitationXrefType.AGRICOLA).isPresent());
         assertFalse(citationXrefs.getTyped(CitationXrefType.DOI).isPresent());
         assertEquals(xref, pubmed.get());
+        TestHelper.verifyJson(citationXrefs);
     }
     @Test
     public void testCreateCitationXrefsAll() {
-        List<CitationXref> xrefs = new ArrayList<>();
-        CitationXref pubmed= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.PUBMED, "somepID1");
+        List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
+        DBCrossReference<CitationXrefType> pubmed= new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "somepID1");
         xrefs.add(pubmed);
-        CitationXref agricola= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.AGRICOLA, "someID1");
-        CitationXref doi= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.DOI, "someDoiID2");
+        DBCrossReference<CitationXrefType> agricola= new DBCrossReferenceImpl<>(CitationXrefType.AGRICOLA, "someID1");
+        DBCrossReference<CitationXrefType> doi= new DBCrossReferenceImpl<>(CitationXrefType.DOI, "someDoiID2");
         xrefs.add(agricola);
         xrefs.add(doi);
-        CitationXrefs citationXrefs = CitationXrefsBuilder.newInstance().createCitationXrefs(xrefs);
-        assertEquals(3, citationXrefs.getAllXrefs().size());
+        CitationXrefs citationXrefs =new CitationXrefsImpl(xrefs);
+        assertEquals(3, citationXrefs.getXrefs().size());
         assertTrue(citationXrefs.getTyped(CitationXrefType.PUBMED).isPresent());
         assertTrue(citationXrefs.getTyped(CitationXrefType.AGRICOLA).isPresent());
         assertTrue(citationXrefs.getTyped(CitationXrefType.DOI).isPresent());
         assertEquals(pubmed, citationXrefs.getTyped(CitationXrefType.PUBMED).get());
         assertEquals(agricola, citationXrefs.getTyped(CitationXrefType.AGRICOLA).get());
         assertEquals(doi, citationXrefs.getTyped(CitationXrefType.DOI).get());
+        TestHelper.verifyJson(citationXrefs);
     }
 
     @Test
     public void testCreateArgicolaCitationXref() {
-        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.AGRICOLA, "someID1");
+    	DBCrossReference<CitationXrefType> xref= new DBCrossReferenceImpl<>(CitationXrefType.AGRICOLA, "someID1");
         verifyXref(xref, CitationXrefType.AGRICOLA, "someID1");
     }
-    private void verifyXref(CitationXref xref, CitationXrefType type, String id){
-        assertEquals(type, xref.getXrefType());
+    private void verifyXref(DBCrossReference<CitationXrefType> xref, CitationXrefType type, String id){
+        assertEquals(type, xref.getDatabaseType());
         assertEquals( id, xref.getId());
     }
     @Test
     public void testCreateDOICitationXref() {
-        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.DOI, "someDoiID2");
+    	DBCrossReference<CitationXrefType> xref= new DBCrossReferenceImpl<>(CitationXrefType.DOI, "someDoiID2");
         verifyXref(xref, CitationXrefType.DOI, "someDoiID2");
     }
     @Test
     public void testCreatePubMedCitationXref() {
-        CitationXref xref= CitationXrefsBuilder.newInstance().createCitationXref(CitationXrefType.PUBMED, "somepID1");
+    	DBCrossReference<CitationXrefType> xref= new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "somepID1");
         verifyXref(xref, CitationXrefType.PUBMED, "somepID1");
     }
 }

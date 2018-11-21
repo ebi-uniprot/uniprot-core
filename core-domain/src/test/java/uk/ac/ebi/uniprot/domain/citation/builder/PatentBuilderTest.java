@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.Patent;
 
@@ -19,6 +20,7 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
         assertEquals(CitationType.PATENT, citation.getCitationType());
         assertEquals(pnumber, citation.getPatentNumber());
         this.verifyCitation(citation, CitationType.PATENT);
+        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -29,6 +31,7 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
         Patent citation = builder.build();
         assertEquals(CitationType.PATENT, citation.getCitationType());
         assertEquals(pnumber, citation.getPatentNumber());
+        TestHelper.verifyJson(citation);
     }
 
 }

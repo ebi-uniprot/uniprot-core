@@ -270,13 +270,13 @@ public class DrLineConverterTest {
 		assertEquals(second, xref.getDescription());
 		if(third !=null){
 			assertTrue(xref.getThirdAttribute().isPresent());
-			assertEquals(third, xref.getThirdAttribute().get().getValue());
+			assertEquals(third, xref.getThirdAttribute().get().getName());
 		}else {
 			assertFalse(xref.getThirdAttribute().isPresent());
 		}
 		if(fourth !=null){
 			assertTrue(xref.getFourthAttribute().isPresent());
-			assertEquals(fourth, xref.getFourthAttribute().get().getValue());
+			assertEquals(fourth, xref.getFourthAttribute().get().getName());
 		}else {
 			assertFalse(xref.getFourthAttribute().isPresent());
 		}

@@ -10,7 +10,7 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.citation.CitationXref;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.builder.CitationXrefsBuilder;
+import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
 import uk.ac.ebi.uniprot.parser.impl.rx.RXLineBuilder;
 
 
@@ -78,7 +78,7 @@ public class RXLineBuilderTest {
 		assertEquals(expected, lines.get(0));
 	}
 	private CitationXrefs buildCitationXref(String pubmed, String doi, String agricolaId ){
-		CitationXrefsBuilder builder =CitationXrefsBuilder.newInstance();
+		CitationXrefsImpl builder =CitationXrefsImpl.newInstance();
 		List<CitationXref> xrefs = new ArrayList<>();
 		if(pubmed !=null)
 			xrefs.add(builder.createCitationXref(CitationXrefType.PUBMED, pubmed));

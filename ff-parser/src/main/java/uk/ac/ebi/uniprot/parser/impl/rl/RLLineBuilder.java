@@ -16,7 +16,7 @@ import uk.ac.ebi.uniprot.domain.citation.Patent;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
-import uk.ac.ebi.uniprot.domain.citation.UnpublishedObservations;
+import uk.ac.ebi.uniprot.domain.citation.Unpublished;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
@@ -45,7 +45,7 @@ public class RLLineBuilder implements RLine<Citation> {
 
 		case THESIS:
 			return thesis(citation, includeFFMarkup);
-		case UNPUBLISHED_OBSERVATIONS:
+		case UNPUBLISHED:
 			return unpublished_observations(citation, includeFFMarkup);
 		case UNKNOWN:
 			throw new IllegalArgumentException("You specified that you wanted to write an unknown citation type."
@@ -159,13 +159,13 @@ public class RLLineBuilder implements RLine<Citation> {
 		String date = submission.getPublicationDate().getValue();
 		result.append(date);
 
-		if ((submission.getSubmittedToDatabase().equals(SubmissionDatabase.SWISS_PROT))
-				|| (submission.getSubmittedToDatabase().equals(SubmissionDatabase.UNIPROTKB))) {
+		if ((submission.getSubmissionDatabase().equals(SubmissionDatabase.SWISS_PROT))
+				|| (submission.getSubmissionDatabase().equals(SubmissionDatabase.UNIPROTKB))) {
 			result.append(") to ");
 		} else {
 			result.append(") to the ");
 		}
-		result.append(submission.getSubmittedToDatabase().getValue());
+		result.append(submission.getSubmissionDatabase().getValue());
 		result.append(STOP);
 		List<String> lines = new ArrayList<>();
 		lines.add(result.toString());
@@ -177,7 +177,7 @@ public class RLLineBuilder implements RLine<Citation> {
 		StringBuilder result = new StringBuilder();
 		if (includeFFMarkup)
 			result.append(linePrefix);
-		UnpublishedObservations observations = (UnpublishedObservations) citation;
+		Unpublished observations = (Unpublished) citation;
 		result.append("Unpublished observations (");
 		String date = observations.getPublicationDate().getValue();
 		result.append(date);

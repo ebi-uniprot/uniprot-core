@@ -1,7 +1,13 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * A variation of the RL line format is used for papers found in books or other types of publication, which are then cited using the following format:
@@ -22,6 +28,10 @@ import java.util.List;
  *
  *
  */
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.BookImpl.class, name = "BookImpl")
+})
 public interface Book extends Citation {
     
     public String getBookName();

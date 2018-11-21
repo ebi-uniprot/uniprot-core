@@ -45,7 +45,7 @@ public class OCLineBuilder extends FFLineBuilderAbstr< List<OrganismName> > impl
 				if(!isFirst){
 					sb.append(SEPARATOR_SEMICOMA);
 				}
-				sb.append(taxon.getValue());
+				sb.append(taxon.getName());
 				isFirst =false;
 			}
 		}else{

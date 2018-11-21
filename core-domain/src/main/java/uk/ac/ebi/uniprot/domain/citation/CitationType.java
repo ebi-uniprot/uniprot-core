@@ -9,7 +9,7 @@ public enum CitationType {
 	PATENT("patent"),
 	SUBMISSION("submission", "Unpublished/no plans to publish"),
 	THESIS("thesis"),
-	UNPUBLISHED_OBSERVATIONS("unpublished observations"),
+	UNPUBLISHED("unpublished"),
 	UNKNOWN("default as unknown");
 
 	private String value;
