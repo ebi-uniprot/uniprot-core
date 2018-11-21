@@ -10,8 +10,6 @@ import java.util.List;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
@@ -21,13 +19,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public class ProteinDescriptionFactoryTest {
-	@Test
-	public void testCreateFlag() {
-		Flag flag = ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.FRAGMENT);
-		assertEquals(FlagType.FRAGMENT, flag.getFlagType());
-		flag = ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.FRAGMENT_PRECURSOR);
-		assertEquals(FlagType.FRAGMENT_PRECURSOR, flag.getFlagType());
-	}
+
 
 	@Test
 	public void testCreateECNumber() {

@@ -349,7 +349,7 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder            
                 .build();
         assertNotNull( entry.getComments());
-        assertTrue(entry.getComments().getAllComments().isEmpty());
+        assertTrue(entry.getComments().getComments().isEmpty());
       
         Comments comments = createComments();
         builder = UniProtEntryBuilder.newInstance();
@@ -357,10 +357,10 @@ public class UniProtEntryBuilderTest {
                  .comments(comments)
                 .build();
         assertNotNull( entry.getComments());
-        assertEquals(3, entry.getComments().getAllComments().size());
-        assertEquals(1, entry.getComments().getComments(CommentType.FUNCTION).size());
-        assertEquals(1, entry.getComments().getComments(CommentType.COFACTOR).size());
-        assertEquals(0, entry.getComments().getComments(CommentType.DISEASE).size());
+        assertEquals(3, entry.getComments().getComments().size());
+        assertEquals(1, entry.getComments().getCommentByType(CommentType.FUNCTION).size());
+        assertEquals(1, entry.getComments().getCommentByType(CommentType.COFACTOR).size());
+        assertEquals(0, entry.getComments().getCommentByType(CommentType.DISEASE).size());
         assertEquals(comments, entry.getComments());
         
     }

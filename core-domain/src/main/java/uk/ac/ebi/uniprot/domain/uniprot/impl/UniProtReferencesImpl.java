@@ -9,10 +9,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class UniProtReferencesImpl implements UniProtReferences {
     private final List<UniProtReference<? extends Citation>> references;
-
-    public UniProtReferencesImpl(List<UniProtReference<? extends Citation>> references) {
+    @JsonCreator
+    public UniProtReferencesImpl(@JsonProperty("references") List<UniProtReference<? extends Citation>> references) {
         if ((references == null) || references.isEmpty()) {
             this.references = Collections.emptyList();
         } else {
@@ -24,7 +29,7 @@ public class UniProtReferencesImpl implements UniProtReferences {
     public List<UniProtReference<? extends Citation>> getReferences() {
         return references;
     }
-
+	@JsonIgnore
     @Override
     public List<UniProtReference<? extends Citation>> getReferencesByType(CitationType type) {
         List<UniProtReference<? extends Citation>> typedReferences = new ArrayList<>();

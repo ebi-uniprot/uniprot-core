@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
@@ -51,6 +52,8 @@ public class UniProtReferenceFactoryTest {
         assertEquals(references, uniReferences.getReferences());
         assertEquals(1, uniReferences.getReferencesByType(CitationType.SUBMISSION).size());
         assertEquals(subReference, uniReferences.getReferencesByType(CitationType.SUBMISSION).get(0));
+        TestHelper.verifyJson(uniReferences);
+       
     }
 
     @Test
@@ -71,6 +74,8 @@ public class UniProtReferenceFactoryTest {
         assertEquals(submission, uniReference.getCitation());
         assertEquals(1, uniReference.getTypedReferenceComments(ReferenceCommentType.STRAIN).size());
         assertEquals(1, uniReference.getReferencePositions().size());
+        
+        TestHelper.verifyJson(uniReference);
     }
 
     @Test
@@ -82,6 +87,7 @@ public class UniProtReferenceFactoryTest {
         assertEquals(type, refComment.getType());
         assertEquals(value, refComment.getValue());
         assertEquals(evidences, refComment.getEvidences());
+        TestHelper.verifyJson(refComment);
     }
 
     @Test

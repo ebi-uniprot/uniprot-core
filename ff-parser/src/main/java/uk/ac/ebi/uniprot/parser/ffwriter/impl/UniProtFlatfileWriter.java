@@ -188,7 +188,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
     private static FFLine buildComment(UniProtEntry entry, boolean showEvidence){
     	FFLine ccLines = FFLines.create();
     	for (CommentType commentType : CommentType.values()) {
-    		List<Comment> comments = entry.getComments().getComments(commentType);
+    		List<Comment> comments = entry.getComments().getCommentByType(commentType);
     		if(!comments.isEmpty()){
     			if(showEvidence)
     				ccLines.add(ccLineBuilder.buildWithEvidence(comments));

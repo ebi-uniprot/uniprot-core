@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
-
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CommentsImpl implements Comments {
     private final List<Comment> comments;
-    public CommentsImpl(List<Comment> comments){
+	@JsonCreator
+    public CommentsImpl(@JsonProperty("comments")  List<Comment> comments){
         if ((comments == null) || comments.isEmpty()) {
             this.comments = Collections.emptyList();
         } else {
@@ -18,13 +24,13 @@ public class CommentsImpl implements Comments {
         }
     }
     @Override
-    public List<Comment> getAllComments() {
+    public List<Comment> getComments() {
         return comments;
     }
-
+	@JsonIgnore
     @SuppressWarnings("unchecked")
 	@Override
-    public <T extends Comment> List<T> getComments(CommentType type) {
+    public <T extends Comment> List<T> getCommentByType(CommentType type) {
         List< Comment> typedComments = new ArrayList<>();
         for(Comment comment: comments){
             if(comment.getCommentType() == type){

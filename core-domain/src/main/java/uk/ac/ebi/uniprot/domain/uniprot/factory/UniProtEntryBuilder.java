@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
+import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
@@ -52,6 +53,7 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private  UniProtTaxonId taxonId;
     private  InternalSection internalSection;
     private  List<Feature> features;
+    private  FlagType flag;
     @Override
     public UniProtEntry build() {
         return new UniProtEntryImpl(
@@ -74,6 +76,7 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
                  xrefs,
                  sequence,
                  taxonId,
+                 flag,
                  internalSection
                 );
 
@@ -188,6 +191,10 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     }
     public UniProtEntryBuilder features(List<Feature> features){
         this.features = features;
+        return this;
+    }
+    public UniProtEntryBuilder flag(FlagType flag){
+        this.flag = flag;
         return this;
     }
   
