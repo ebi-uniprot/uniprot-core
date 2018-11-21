@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 
 import java.time.LocalDate;
@@ -25,6 +26,7 @@ public class EntryAuditImplTest {
         assertEquals(lastSequenceUpdateDate, entryAudit.getLastSequenceUpdateDate());
         assertEquals(entryVersion, entryAudit.getEntryVersion());
         assertEquals(sequenceVersion, entryAudit.getSequenceVersion());
+        TestHelper.verifyJson(entryAudit);
     }
 
 }

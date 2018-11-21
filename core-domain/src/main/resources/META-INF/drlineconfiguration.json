@@ -475,6 +475,13 @@
 		"category": "PROTEOMIC",
 		"uriLink": "http://repository.topdownproteomics.org/Proteoforms?query=%value"	
 	},
+	{
+		"name": "jPOST",
+		"displayName": "jPOST",
+		"category": "PROTEOMIC",
+		"uriLink": "http://globe.jpostdb.org/protein?id=%value"	
+	},
+	
 	
 	{
 		"name": "DNASU",

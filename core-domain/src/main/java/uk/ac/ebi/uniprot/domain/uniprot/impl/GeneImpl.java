@@ -30,25 +30,25 @@ public class GeneImpl implements Gene {
     public GeneImpl(
     		@JsonProperty("geneName") GeneName geneName,
     		@JsonProperty("synonyms") List<GeneNameSynonym> synonyms,
-    		@JsonProperty("orderedLocusNames") List<OrderedLocusName> olnNames,
+    		@JsonProperty("orderedLocusNames") List<OrderedLocusName> orderedLocusNames,
     		@JsonProperty("orfNames")  List<ORFName> orfNames) {
         this.geneName = geneName;
-        if((synonyms !=null) && !synonyms.isEmpty())
-            this.synonyms = Collections.unmodifiableList(synonyms);
-        else
-            this.synonyms = Collections.emptyList();
-        if((olnNames !=null) && !olnNames.isEmpty())
-            this.orderedLocusNames = Collections.unmodifiableList(olnNames);
-        else
-            this.orderedLocusNames =Collections.emptyList();
-        if((orfNames !=null) && !orfNames.isEmpty())
-            this.orfNames = Collections.unmodifiableList(orfNames);
-        else
-            this.orfNames = Collections.emptyList();
+        this.synonyms = copyList(synonyms);
+        this.orderedLocusNames = copyList(orderedLocusNames);
+        
+        this.orfNames = copyList(orfNames);
+
         if(!hasGeneName() && !this.synonyms.isEmpty()){
             throw new IllegalArgumentException("There should be synonyms without gene name.");
         }
     }
+	
+	private <T> List<T> copyList(List<T> value){
+		   if((value !=null) && !value.isEmpty())
+	            return Collections.unmodifiableList(value);
+	        else
+	           return Collections.emptyList();
+	}
 
     @Override
     public boolean hasGeneName() {
@@ -71,7 +71,7 @@ public class GeneImpl implements Gene {
     }
 
     @Override
-    public List<ORFName> getORFNames() {
+    public List<ORFName> getOrfNames() {
         return this.orfNames;
     }
 
@@ -161,6 +161,7 @@ public class GeneImpl implements Gene {
             return false;
         return true;
     }
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public static class ORFNameImpl extends EvidencedValueImpl implements ORFName {
     	@JsonCreator
         public ORFNameImpl(@JsonProperty("value") String value, 
@@ -169,7 +170,7 @@ public class GeneImpl implements Gene {
         }
     }
     
-    
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public static class OrderedLocusNameImpl extends EvidencedValueImpl implements OrderedLocusName {
     	@JsonCreator
         public OrderedLocusNameImpl(@JsonProperty("value") String value, 
@@ -177,7 +178,7 @@ public class GeneImpl implements Gene {
             super(value, evidences);      
         }
     }
-    
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public static class GeneNameSynonymImpl extends EvidencedValueImpl implements GeneNameSynonym {
     	@JsonCreator
         public GeneNameSynonymImpl(@JsonProperty("value") String value, 
@@ -185,7 +186,7 @@ public class GeneImpl implements Gene {
             super(value, evidences);      
         }
     }
-    
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     public static class GeneNameImpl extends EvidencedValueImpl implements GeneName {
     	@JsonCreator
         public GeneNameImpl(@JsonProperty("value") String value, 

@@ -1,13 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import uk.ac.ebi.uniprot.domain.Value;
 
-/**
- * Created by IntelliJ IDEA.
- * User: jerven
- * Date: May 24, 2006
- * Time: 3:32:38 PM
- * To change this template use File | Settings | File Templates.
- */
+
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.SourceLineImpl.class, name = "SourceLineImpl")
+})
 public interface SourceLine extends Value {
 }

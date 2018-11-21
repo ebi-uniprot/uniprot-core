@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-
-import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
@@ -22,15 +23,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceLineImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalLineImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.SourceLineImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtTaxonIdImpl;
-
-import java.time.LocalDate;
-import java.util.List;
 
 public enum UniProtFactory {
     INSTANCE;
@@ -86,16 +86,16 @@ public enum UniProtFactory {
     }
 
     public InternalLine createInternalLine(InternalLineType type, String value) {
-        return InternalSectionImpl.createInternalLine(type, value);
+        return new InternalLineImpl(type, value);
     }
 
-    public EvidenceLine createEvidenceLine(Evidence evidence, LocalDate createDate, String curator) {
+    public EvidenceLine createEvidenceLine(String evidence, LocalDate createDate, String curator) {
         return new EvidenceLineImpl( evidence, createDate,  curator ) ;
     }
 
     
     public SourceLine createSourceLine(String value) {
-        return InternalSectionImpl.createSourceLine(value);
+        return new SourceLineImpl(value);
     }
 
     public Keyword createKeyword(String value, List<Evidence> evidences) {

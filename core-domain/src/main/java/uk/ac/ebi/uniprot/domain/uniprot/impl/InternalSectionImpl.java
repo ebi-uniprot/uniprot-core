@@ -1,47 +1,39 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-
 import java.util.Collections;
 import java.util.List;
 
-public class InternalSectionImpl implements InternalSection {
-    public static InternalLine createInternalLine(InternalLineType type, String value) {
-        return new InternalLineImpl(type, value);
-    }
-    public static SourceLine createSourceLine(String value){
-        return new SourceLineImpl(value);
-    }
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-    
+import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
+import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+public class InternalSectionImpl implements InternalSection {
+
+   
     private final List<InternalLine> internalLines;
     private final List<EvidenceLine> evidenceLines;
     private final List<SourceLine> sourceLines;
-    public InternalSectionImpl(List<InternalLine> internalLines, 
-    		List<EvidenceLine> evidenceLines,
-    		List<SourceLine> sourceLines){
-        if ((internalLines == null) || internalLines.isEmpty()) {
-            this.internalLines = Collections.emptyList();
+    @JsonCreator
+    public InternalSectionImpl(@JsonProperty("internalLines")  List<InternalLine> internalLines, 
+    		@JsonProperty("evidenceLines")  List<EvidenceLine> evidenceLines,
+    		@JsonProperty("sourceLines")  List<SourceLine> sourceLines){
+    	this.internalLines =copyList(internalLines);
+    	this.evidenceLines =copyList(evidenceLines);
+    	this.sourceLines =copyList(sourceLines);
+    }
+    private <T> List<T> copyList(List<T> value){
+    	if ((value == null) || value.isEmpty()) {
+           return  Collections.emptyList();
         } else {
-            this.internalLines = Collections.unmodifiableList(internalLines);
-        }
-        if ((evidenceLines == null) || evidenceLines.isEmpty()) {
-            this.evidenceLines = Collections.emptyList();
-        } else {
-            this.evidenceLines = Collections.unmodifiableList(evidenceLines);
-        }
-        
-        if ((sourceLines == null) || sourceLines.isEmpty()) {
-            this.sourceLines = Collections.emptyList();
-        } else {
-            this.sourceLines = Collections.unmodifiableList(sourceLines);
+            return  Collections.unmodifiableList(value);
         }
     }
-    @Override
+    @Override 
     public List<InternalLine> getInternalLines() {
        return internalLines;
     }
@@ -92,46 +84,4 @@ public class InternalSectionImpl implements InternalSection {
 		return true;
 	}
 
-	static class InternalLineImpl extends ValueImpl implements InternalLine{
-        private final InternalLineType type;
-        public InternalLineImpl(InternalLineType type, String value) {
-            super(value);
-            this.type = type;
-        }
-
-        @Override
-        public InternalLineType getInternalLineType() {
-            return type;
-        }
-
-        @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = super.hashCode();
-            result = prime * result + ((type == null) ? 0 : type.hashCode());
-            return result;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (!super.equals(obj))
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            InternalLineImpl other = (InternalLineImpl) obj;
-            if (type != other.type)
-                return false;
-            return true;
-        }
-
-    }
-    static class SourceLineImpl extends ValueImpl implements SourceLine{
-
-        public SourceLineImpl(String value) {
-            super(value);
-        }
-        
-    }
 }

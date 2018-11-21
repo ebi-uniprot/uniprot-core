@@ -210,10 +210,10 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
     			return drLines;
     		}
         for (InternalLine line :internalSection.getInternalLines()) {
-            if (InternalLineType.PROSITE==line.getInternalLineType()){
+            if (InternalLineType.PROSITE==line.getType()){
             	StringBuilder sb =new StringBuilder();
                 sb.append("**   ");
-                sb.append(line.getInternalLineType());
+                sb.append(line.getType());
                 sb.append("; ");
                 sb.append(line.getValue());
                 drLines.add(sb.toString());

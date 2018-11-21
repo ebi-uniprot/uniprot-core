@@ -96,7 +96,7 @@ public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>> implements FFL
 		}
 
 		// add orfnames
-		StringBuilder gORFBuilder = addGeneItems(ORF_NAMES, gene.getORFNames(), showEvidence);
+		StringBuilder gORFBuilder = addGeneItems(ORF_NAMES, gene.getOrfNames(), showEvidence);
 		if (gORFBuilder != null) {
 			typeBuilders.add(gORFBuilder);
 		}
@@ -137,7 +137,7 @@ public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>> implements FFL
 
 	private boolean hasGene(Gene gene) {
 		return (gene.hasGeneName() || gene.getSynonyms().size() > 0 || gene.getOrderedLocusNames().size() > 0
-				|| gene.getORFNames().size() > 0);
+				|| gene.getOrfNames().size() > 0);
 	}
 
 }

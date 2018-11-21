@@ -1,18 +1,35 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
+import uk.ac.ebi.uniprot.domain.util.LocalDateDeserializer;
+import uk.ac.ebi.uniprot.domain.util.LocalDateSerializer;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public final class EntryAuditImpl implements EntryAudit {
+	@JsonDeserialize(using = LocalDateDeserializer.class)  
+	@JsonSerialize(using = LocalDateSerializer.class)  
     private final LocalDate firstPublicDate;
+	@JsonDeserialize(using = LocalDateDeserializer.class)  
+	@JsonSerialize(using = LocalDateSerializer.class)  
     private final LocalDate lastAnnotationUpdateDate;
+	@JsonDeserialize(using = LocalDateDeserializer.class)  
+	@JsonSerialize(using = LocalDateSerializer.class)  
     private final LocalDate lastSequenceUpdateDate;
     private final int entryVersion;
     private final int sequenceVersion;
-
-    public EntryAuditImpl(LocalDate firstPublicDate, LocalDate lastAnnotationUpdateDate,
-        LocalDate lastSequenceUpdateDate, int entryVersion, int sequenceVersion) {
+	@JsonCreator
+    public EntryAuditImpl(@JsonProperty("firstPublicDate")  LocalDate firstPublicDate, 
+    		@JsonProperty("lastAnnotationUpdateDate") LocalDate lastAnnotationUpdateDate,
+    		@JsonProperty("lastSequenceUpdateDate")  LocalDate lastSequenceUpdateDate, 
+    		@JsonProperty("entryVersion")  int entryVersion, 
+    		@JsonProperty("sequenceVersion")  int sequenceVersion) {
         this.firstPublicDate = firstPublicDate;
         this.lastAnnotationUpdateDate = lastAnnotationUpdateDate;
         this.lastSequenceUpdateDate = lastSequenceUpdateDate;

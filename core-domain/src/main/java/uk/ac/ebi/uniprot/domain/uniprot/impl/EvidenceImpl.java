@@ -11,7 +11,6 @@ import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceTypes;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class EvidenceImpl implements Evidence {
 	private static final String PIPE = "|";

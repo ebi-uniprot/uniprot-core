@@ -31,10 +31,10 @@ public class SSInternalLineBuilder extends FFLineBuilderAbstr<List<InternalLine>
 		List<String> lines =new ArrayList<>();
 		for (InternalLine line : internalLines) {
 
-			if (InternalLineType.PROSITE != line.getInternalLineType()) {
+			if (InternalLineType.PROSITE != line.getType()) {
 				StringBuilder starStar =new StringBuilder();
 				starStar.append("**");
-				starStar.append(line.getInternalLineType());
+				starStar.append(line.getType());
 				starStar.append(" ");
 				starStar.append(line.getValue());
 				lines.add(starStar.toString());

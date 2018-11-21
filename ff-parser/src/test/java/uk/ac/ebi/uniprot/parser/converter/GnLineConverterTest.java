@@ -55,10 +55,10 @@ public class GnLineConverterTest {
 		}
 		assertEquals(0, gene.getOrderedLocusNames().size());
 		
-		assertEquals(1, gene.getORFNames().size());
+		assertEquals(1, gene.getOrfNames().size());
 		List<String> orf = new ArrayList<String>();
 		orf.add("CG7877");
-		validate(gene.getORFNames().get(0), orf);
+		validate(gene.getOrfNames().get(0), orf);
 	}
 	@Test
 	public void test2(){
@@ -108,16 +108,16 @@ public class GnLineConverterTest {
 		}
 		assertEquals(0, gene.getOrderedLocusNames().size());
 		
-		assertEquals(1, gene.getORFNames().size());
+		assertEquals(1, gene.getOrfNames().size());
 		List<String> orf = new ArrayList<String>();
 		orf.add("CG7877");
-		validate(gene.getORFNames().get(0), orf);
+		validate(gene.getOrfNames().get(0), orf);
 		
 		assertTrue(gene2.hasGeneName());
 		assertEquals("Jon99Cii2",  gene2.getGeneName().getValue());
 		assertEquals(0, gene2.getSynonyms().size());
 		assertEquals(0, gene2.getOrderedLocusNames().size());
-		assertEquals(0, gene2.getORFNames().size());
+		assertEquals(0, gene2.getOrfNames().size());
 	
 		
 	}
@@ -200,11 +200,11 @@ public class GnLineConverterTest {
 		
 		assertEquals(0, gene.getOrderedLocusNames().size());
 		
-		assertEquals(1, gene.getORFNames().size());
+		assertEquals(1, gene.getOrfNames().size());
 		List<String> orf = new ArrayList<String>();
 		orf.add("ETN48_p0088");
-		validate(gene.getORFNames().get(0), orf);
-		ORFName orfName = gene.getORFNames().get(0);
+		validate(gene.getOrfNames().get(0), orf);
+		ORFName orfName = gene.getOrfNames().get(0);
 		evIDs =orfName.getEvidences();
 		assertEquals(1, evIDs.size());
 		 evId = evIDs.get(0);

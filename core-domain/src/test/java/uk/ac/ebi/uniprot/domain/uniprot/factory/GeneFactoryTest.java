@@ -1,5 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.junit.Test;
+
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.gene.GeneName;
@@ -7,20 +18,8 @@ import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import static org.junit.Assert.*;
 
 public class GeneFactoryTest {
-	final ObjectMapper objectMapper = new ObjectMapper();
     @Test
     public void testCreateGene() {
         String val = "someGene";
@@ -34,14 +33,11 @@ public class GeneFactoryTest {
 
         List<ORFName> orfNames = new ArrayList<>();
         Gene gene = GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
-        jsonVerify(gene);
         assertTrue(gene.hasGeneName());
+        TestHelper.verifyJson(gene);
+        
     }
-    private void jsonVerify(Object gene) {
-    	TestHelper.verifyJson(gene);
-    
-    }
-    
+  
     @Test
     public void testCreateGeneWithSynonym() {
         String val = "someGene";
@@ -66,9 +62,9 @@ public class GeneFactoryTest {
         assertEquals(val, gene.getGeneName().getValue());
         assertEquals(1, gene.getSynonyms().size());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
-        assertTrue(gene.getORFNames().isEmpty());
+        assertTrue(gene.getOrfNames().isEmpty());
      
-        jsonVerify(gene);
+        TestHelper.verifyJson(gene);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -106,8 +102,8 @@ public class GeneFactoryTest {
 
         assertEquals(1, gene.getOrderedLocusNames().size());
         assertTrue(gene.getSynonyms().isEmpty());
-        assertTrue(gene.getORFNames().isEmpty());
-        jsonVerify(gene);
+        assertTrue(gene.getOrfNames().isEmpty());
+        TestHelper.verifyJson(gene);
     }
 
     @Test
@@ -127,10 +123,10 @@ public class GeneFactoryTest {
         Gene gene = GeneFactory.INSTANCE.createGene(null, synonyms, olnNames, orfNames);
         assertFalse(gene.hasGeneName());
 
-        assertEquals(1, gene.getORFNames().size());
+        assertEquals(1, gene.getOrfNames().size());
         assertTrue(gene.getSynonyms().isEmpty());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
-       // jsonVerify(gene);
+        TestHelper.verifyJson(gene);
     }
 
     @Test
@@ -144,7 +140,7 @@ public class GeneFactoryTest {
         assertEquals(1, geneName.getEvidences().size());
         assertEquals("ECO:0000256|PIRNR:PIRNR001361", geneName.getEvidences().get(0).getValue());
         assertFalse(evidences == geneName.getEvidences());
-        jsonVerify(geneName);
+        TestHelper.verifyJson(geneName);
         
     }
 
@@ -160,7 +156,7 @@ public class GeneFactoryTest {
         assertEquals(2, geneName.getEvidences().size());
         assertEquals("ECO:0000269|PubMed:11389730", geneName.getEvidences().get(1).getValue());
         assertFalse(evidences == geneName.getEvidences());
-        jsonVerify(geneName);
+        TestHelper.verifyJson(geneName);
     }
 
     @Test
@@ -170,7 +166,7 @@ public class GeneFactoryTest {
         OrderedLocusName geneName = GeneFactory.INSTANCE.createOrderedLocusName(val, evidences);
         assertEquals(val, geneName.getValue());
         assertEquals(0, geneName.getEvidences().size());
-        jsonVerify(geneName);
+        TestHelper.verifyJson(geneName);
     }
 
     @Test
@@ -180,7 +176,7 @@ public class GeneFactoryTest {
         ORFName geneName = GeneFactory.INSTANCE.createORFName(val, evidences);
         assertEquals(val, geneName.getValue());
         assertEquals(0, geneName.getEvidences().size());
-        jsonVerify(geneName);
+        TestHelper.verifyJson(geneName);
     }
 
     private Evidence createEvidence(String evidenceStr) {

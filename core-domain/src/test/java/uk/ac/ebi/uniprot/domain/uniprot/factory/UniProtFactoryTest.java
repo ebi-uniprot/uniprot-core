@@ -115,7 +115,7 @@ public class UniProtFactoryTest {
         InternalLineType type = InternalLineType.CP;
         String value ="some values";
         InternalLine internalLine =UniProtFactory.INSTANCE.createInternalLine(type, value);
-        assertEquals(type, internalLine.getInternalLineType());
+        assertEquals(type, internalLine.getType());
         assertEquals(value, internalLine.getValue());
     }
 

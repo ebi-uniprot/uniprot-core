@@ -133,6 +133,6 @@ public interface Gene{
      *
      * @return The ORF Names of this Gene.
      */
-    public List<ORFName> getORFNames();
+    public List<ORFName> getOrfNames();
 
 }
