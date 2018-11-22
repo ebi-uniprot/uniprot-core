@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.util;
+package uk.ac.ebi.uniprot.domain.util.json;
 
 import java.io.IOException;
 

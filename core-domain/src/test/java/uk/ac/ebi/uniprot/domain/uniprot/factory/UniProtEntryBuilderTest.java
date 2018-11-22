@@ -712,11 +712,11 @@ public class UniProtEntryBuilderTest {
     private Feature createVarSeqFeature(){
     	Range location = new Range(65, 86);
         List<String> value =Arrays.asList("report1", "report 2");
-		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
 		AlternativeSequence as =new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"),
 				report
 				);
-		FeatureId featureId = 	FeatureIdImpl.newInstance("VSP_112"); 
+		FeatureId featureId = 	FeatureFactory.INSTANCE.createFeatureId("VSP_112"); 
 		  
 		return new FeatureImpl(FeatureType.VAR_SEQ, location, "Some description",
 				featureId, as, null,

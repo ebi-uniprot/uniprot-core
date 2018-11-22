@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
@@ -9,11 +8,11 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AlternativeSequenceImpl implements AlternativeSequence {
@@ -23,28 +22,13 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 	private static final Set<FeatureType> ALTERNATIVE_SEQUENCE_SET = EnumSet.of(FeatureType.CONFLICT,
 			FeatureType.MUTAGEN, FeatureType.VARIANT, FeatureType.VAR_SEQ);
 
-	public static SequenceReport createReport(List<String> value) {
-		return new SequenceReportImpl(value);
-	}
-
-	public static SequenceReport createReport(String value) {
-		List<String> values = new ArrayList<>();
-		if (!Strings.isNullOrEmpty(value)) {
-			values.add(value);
-		}
-		return new SequenceReportImpl(values);
-	}
-
 	@JsonCreator
 	public AlternativeSequenceImpl(@JsonProperty("originalSequence") String originalSequence,
 			@JsonProperty("alternativeSequences") List<String> alternativeSequences,
 			@JsonProperty("report") SequenceReport report) {
 		this.originalSequence = originalSequence;
-		if (alternativeSequences == null || alternativeSequences.isEmpty()) {
-			this.alternativeSequences = Collections.emptyList();
-		} else {
-			this.alternativeSequences = Collections.unmodifiableList(alternativeSequences);
-		}
+		this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
+	
 		this.report = report;
 	}
 

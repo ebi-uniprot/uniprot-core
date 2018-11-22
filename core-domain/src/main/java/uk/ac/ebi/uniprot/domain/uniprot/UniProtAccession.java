@@ -40,7 +40,7 @@ import uk.ac.ebi.uniprot.domain.EntryId;
  */
 @JsonTypeInfo(use = NAME, include = PROPERTY)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl.class, name = "UniProtAccessionImpl")
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl.class, name = "UniProtAccession")
 })
 public interface UniProtAccession extends EntryId {
     boolean isValidAccession();

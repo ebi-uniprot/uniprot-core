@@ -10,8 +10,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.util.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.domain.util.LocalDateSerializer;
+import uk.ac.ebi.uniprot.domain.util.json.LocalDateDeserializer;
+import uk.ac.ebi.uniprot.domain.util.json.LocalDateSerializer;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class EvidenceLineImpl implements EvidenceLine {
 	private final String evidence;

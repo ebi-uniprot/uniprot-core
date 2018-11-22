@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * 
  * @author jieluo
@@ -28,8 +30,9 @@ public enum ProteinExistence {
 		this.value = type;
 		this.displayName = displayName;
 	}
+	 @JsonValue
 	public String getValue() {
-		return value.toString();
+		return value;
 	}
 
 	public static ProteinExistence typeOf(String value) {

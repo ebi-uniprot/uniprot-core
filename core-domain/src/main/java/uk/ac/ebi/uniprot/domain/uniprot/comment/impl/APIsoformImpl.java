@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;

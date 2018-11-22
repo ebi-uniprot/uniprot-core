@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -21,6 +22,7 @@ public class OrganelleImplTest {
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Plastid; Apicoplast {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
+        TestHelper.verifyJson(organelle);
     }
     
     @Test
@@ -31,6 +33,7 @@ public class OrganelleImplTest {
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Mitochondrion {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
+        TestHelper.verifyJson(organelle);
     }
 
     @Test
@@ -41,6 +44,7 @@ public class OrganelleImplTest {
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Hydrogenosome {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
+        TestHelper.verifyJson(organelle);
     }
     
     @Test
@@ -51,6 +55,7 @@ public class OrganelleImplTest {
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Plastid {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
+        TestHelper.verifyJson(organelle);
     }
     
     @Test
@@ -61,6 +66,7 @@ public class OrganelleImplTest {
         Organelle organelle = new OrganelleImpl(type, val, evidences);
         String expected = "Plasmid some value {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
+        TestHelper.verifyJson(organelle);
     }
 
     @Test
@@ -69,9 +75,10 @@ public class OrganelleImplTest {
         String val ="";
         List<Evidence > evidences =null;
         Organelle organelle = new OrganelleImpl(type, val, evidences);
-        assertEquals(type, organelle.getType());
+        assertEquals(type, organelle.getGeneEncodingType());
         assertEquals(val, organelle.getValue());
         assertTrue(organelle.getEvidences().isEmpty());
+        TestHelper.verifyJson(organelle);
     }
     private List<Evidence> createEvidences(){
         List<Evidence> evidences = new ArrayList<>();

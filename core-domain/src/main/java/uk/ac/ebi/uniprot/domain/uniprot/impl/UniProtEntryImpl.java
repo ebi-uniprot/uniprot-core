@@ -1,10 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -55,9 +53,9 @@ public class UniProtEntryImpl implements UniProtEntry {
     private final Sequence sequence;
     private final UniProtTaxonId taxonId;
     private final FlagType flag;
-    @JsonIgnore
-    private final InternalSection internalSection;
     private final List<Feature> features;
+    private final InternalSection internalSection;
+ 
     public UniProtEntryImpl(UniProtEntryType entryType,
             UniProtAccession accession,
             List<UniProtAccession> secondaryAccessions,
@@ -103,9 +101,8 @@ public class UniProtEntryImpl implements UniProtEntry {
         else
             this.references = new UniProtReferencesImpl(null);
         this.genes = Utils.unmodifierList(genes);
-      
         this.features = Utils.unmodifierList(features);
-       
+      
         this.organism = organism;
         this.organismHosts =Utils.unmodifierList(organismHosts);
        
@@ -223,11 +220,10 @@ public class UniProtEntryImpl implements UniProtEntry {
     public List<Feature> getFeatures() {
        return features;
     }
-    @Override
-	public List<Feature> getFeaturesByType(FeatureType type) {
-    	return features.stream().filter(feature -> feature.getType() ==type)
+    public List<Feature> getFeaturesByType(FeatureType type) {
+		return features.stream().filter(feature -> feature.getType() ==type)
 		.collect(Collectors.toList());
-	}
+	} 
     @Override
 	public FlagType getFlag() {
 		return flag;

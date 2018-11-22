@@ -14,6 +14,7 @@ import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
@@ -41,7 +42,7 @@ class FeatureImplTest {
 	@Test
 	void testWithFeatureId() {
 		Range location = new Range(32, 96);
-		FeatureId featureId = 	FeatureIdImpl.newInstance("PRO_324");
+		FeatureId featureId = 	FeatureFactory.INSTANCE.createFeatureId("PRO_324");
 		FeatureImpl feature = new FeatureImpl(FeatureType.CHAIN, location, "Some chain description",
 				featureId,
 				createEvidences());
@@ -60,7 +61,7 @@ class FeatureImplTest {
 	@Test
 	void testWithFeatureIdAndAlternativeSequence() {
 		Range location = new Range(32, 96);
-		FeatureId featureId = 	FeatureIdImpl.newInstance("VSP_324");
+		FeatureId featureId = FeatureFactory.INSTANCE.createFeatureId("VSP_324");
 		AlternativeSequence alterSeq =createAlternativeSequence() ;
 		FeatureImpl feature = new FeatureImpl(FeatureType.VAR_SEQ, location, "Some description",
 				featureId, alterSeq, null,
@@ -80,7 +81,7 @@ class FeatureImplTest {
 	@Test
 	void testWithFeatureIdAndAlternativeSequenceAndXref() {
 		Range location = new Range(32, 96);
-		FeatureId featureId = 	FeatureIdImpl.newInstance("VAR_324");
+		FeatureId featureId = FeatureFactory.INSTANCE.createFeatureId("VAR_324");
 		AlternativeSequence alterSeq =createAlternativeSequence() ;
 		DBCrossReference<FeatureXDbType> xref = new DBCrossReferenceImpl<>(FeatureXDbType.DBSNP, "rs123414");
 		FeatureImpl feature = new FeatureImpl(FeatureType.VARIANT, location, "Some description",
@@ -122,7 +123,7 @@ class FeatureImplTest {
 	
 	private AlternativeSequence createAlternativeSequence() {
 		List<String> value =Arrays.asList("some report", "another report");
-		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
 		AlternativeSequence as =new AlternativeSequenceImpl("AB", Arrays.asList("DC", "SDGASS"),
 				report
 				);

@@ -7,16 +7,20 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
     private final GeneEncodingType geneEncodingType;
 
-    public OrganelleImpl(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
+    public OrganelleImpl(@JsonProperty("geneEncodingType") GeneEncodingType geneEncodingType, 
+    		@JsonProperty("value") String value, 
+			@JsonProperty("evidences") List<Evidence> evidences) {
         super(value, evidences);
         this.geneEncodingType = geneEncodingType;
     }
 
     @Override
-    public GeneEncodingType getType() {
+    public GeneEncodingType getGeneEncodingType() {
         return geneEncodingType;
     }
 
@@ -39,17 +43,17 @@ public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
     private String getString() {
 
         StringBuilder sb = new StringBuilder();
-        switch (getType()) {
+        switch (getGeneEncodingType()) {
 
             case HYDROGENOSOME:
             case MITOCHONDRION:
             case NUCLEOMORPH:
             case PLASTID:
-                sb.append(getType().getValue());
+                sb.append(getGeneEncodingType().getName());
                 break;
 
             case PLASMID:
-                sb.append(getType().getValue());
+                sb.append(getGeneEncodingType().getName());
                 if ((getValue() != null) && !getValue().isEmpty()) {
                     sb.append(" ");
                     sb.append(getValue());
@@ -61,7 +65,7 @@ public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
             case NON_PHOTOSYNTHETIC_PLASTID:
             case CHROMATOPHORE_PLASTID:
                 sb.append("Plastid; ");
-                sb.append(getType().getValue());
+                sb.append(getGeneEncodingType().getName());
                 break;
             case UNKOWN:
                 break;

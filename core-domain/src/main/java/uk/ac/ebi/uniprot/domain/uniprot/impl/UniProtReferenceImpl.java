@@ -1,13 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.util.Utils;
-
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -15,6 +7,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
+import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class UniProtReferenceImpl<T extends Citation> implements UniProtReference<T> {
     private final T citation;
@@ -69,6 +68,7 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
 		result = prime * result + ((referencePositions == null) ? 0 : referencePositions.hashCode());
 		return result;
 	}
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

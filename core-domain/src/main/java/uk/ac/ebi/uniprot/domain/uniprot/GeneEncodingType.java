@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * 
  * @author jieluo
@@ -21,23 +23,23 @@ public enum GeneEncodingType {
     NON_PHOTOSYNTHETIC_PLASTID("Non-photosynthetic plastid"),
     CHROMATOPHORE_PLASTID("Organellar chromatophore");
 
-	private String value;
+	private String name;
 
-	private GeneEncodingType(String type) {
-		this.value = type;
+	private GeneEncodingType(String name) {
+		this.name = name;
+	}
+	 @JsonValue
+	public String getName() {
+		return this.name;
 	}
 
-	public String getValue() {
-		return this.value;
-	}
-
-	public static GeneEncodingType typeOf (String value) {
+	public static GeneEncodingType typeOf (String name) {
 		for (GeneEncodingType geneEncodingType : GeneEncodingType.values()) {
-			if (geneEncodingType.getValue().equalsIgnoreCase(value)) {
+			if (geneEncodingType.getName().equalsIgnoreCase(name)) {
 				return geneEncodingType;
 			}
 		}
-		throw new IllegalArgumentException("the gene Encoding Type with the description "+value+" doesn't exist");
+		throw new IllegalArgumentException("the gene Encoding Type with the description "+name+" doesn't exist");
 	}
 
 }

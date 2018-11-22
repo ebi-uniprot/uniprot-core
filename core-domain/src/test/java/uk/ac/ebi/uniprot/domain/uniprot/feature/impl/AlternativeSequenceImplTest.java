@@ -9,6 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 
@@ -17,7 +18,7 @@ class AlternativeSequenceImplTest {
 	@Test
 	void testFull() {
 		List<String> value =Arrays.asList("some report", "another report");
-		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
 		AlternativeSequence as =new AlternativeSequenceImpl("AB", Arrays.asList("DC", "SDGASS"),
 				report
 				);
@@ -30,7 +31,7 @@ class AlternativeSequenceImplTest {
 	@Test
 	void testMissing() {
 		List<String> value =Arrays.asList("some report", "another report");
-		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
 		AlternativeSequence as =new AlternativeSequenceImpl("AB", Collections.emptyList(),
 				report
 				);
@@ -44,7 +45,7 @@ class AlternativeSequenceImplTest {
 	@Test
 	void testReport() {
 		String value ="some report";
-		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
 		assertEquals(1, report.getValue().size());
 		assertEquals(value, report.getValue().get(0));
 		TestHelper.verifyJson(report);
@@ -52,14 +53,14 @@ class AlternativeSequenceImplTest {
 	@Test
 	void testReportMulti() {
 		List<String> value =Arrays.asList("some report", "another report");
-		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
 		assertEquals(value, report.getValue());
 		TestHelper.verifyJson(report);
 	}
 	@Test
 	void testReportEmpty() {
 		String value ="";
-		SequenceReport report = AlternativeSequenceImpl.createReport(value);
+		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
 		assertEquals(0, report.getValue().size());
 		TestHelper.verifyJson(report);
 	}

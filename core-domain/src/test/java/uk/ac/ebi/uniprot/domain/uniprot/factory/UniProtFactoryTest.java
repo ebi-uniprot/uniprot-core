@@ -93,7 +93,7 @@ public class UniProtFactoryTest {
         String value="p1";
         List<Evidence> evidences = createEvidences();
         Organelle organelle= UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
-        assertEquals(geneEncodingType, organelle.getType());
+        assertEquals(geneEncodingType, organelle.getGeneEncodingType());
         assertEquals(value, organelle.getValue());
         assertEquals(evidences, organelle.getEvidences());
     }

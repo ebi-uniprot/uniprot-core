@@ -23,9 +23,6 @@ public class FeatureIdImpl implements FeatureId {
 		FEATUREID_REGEX_MAP.put(FeatureType.VAR_SEQ, Pattern.compile("VSP_(\\d+)"));
 		FEATUREID_REGEX_MAP.put(FeatureType.VARIANT, Pattern.compile("VAR_(\\d+)"));
 	};
-	public static FeatureIdImpl newInstance(String value) {
-		return new FeatureIdImpl(value);
-	}
 	private final String value;
 	@JsonCreator
 	public FeatureIdImpl(@JsonProperty("value") String value) {

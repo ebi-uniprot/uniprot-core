@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.util.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.domain.util.LocalDateSerializer;
+import uk.ac.ebi.uniprot.domain.util.json.LocalDateDeserializer;
+import uk.ac.ebi.uniprot.domain.util.json.LocalDateSerializer;
 
 import java.time.LocalDate;
 
