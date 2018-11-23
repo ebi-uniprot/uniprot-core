@@ -8,7 +8,6 @@ import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.CitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
@@ -18,6 +17,7 @@ import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
 import uk.ac.ebi.uniprot.parser.Converter;
 
 public class RlLineConverter implements Converter<RlLineObject, AbstractCitationBuilder< Citation>> {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public AbstractCitationBuilder< Citation> convert(RlLineObject f) {
 		if(f.reference instanceof RlLineObject.JournalArticle){

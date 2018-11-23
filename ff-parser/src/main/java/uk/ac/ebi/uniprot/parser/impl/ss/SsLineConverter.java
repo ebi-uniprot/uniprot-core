@@ -12,10 +12,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.ECOCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 
@@ -119,15 +115,7 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
 				sb.append(":").append(e.attr_1);
 			}
 		}
-		Evidence evidence =EvidenceFactory.INSTANCE.createFromEvidenceLine(sb.toString());
-//		EvidenceType evidenceType = EvidenceType.typeOf(e.db);
-//		EvidenceCode evidenceCode = EvidenceCode.typeOf(e.id);
-//		String attr = e.attr_1;
-//		if("-".equals(attr))
-//			attr ="";
-//	
-//		Evidence evidence = EvidenceFactory.INSTANCE.createEvidence(evidenceType, evidenceCode, attr);
-		return factory.createEvidenceLine(evidence,  e.date, e.attr_2);
+		return factory.createEvidenceLine(sb.toString(),  e.date, e.attr_2);
 	
 	}
 	

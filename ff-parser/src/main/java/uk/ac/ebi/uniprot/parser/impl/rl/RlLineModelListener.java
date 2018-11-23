@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.parser.impl.rl;
 
-import org.antlr.v4.runtime.misc.NotNull;
+//import org.antlr.v4.runtime.misc.NotNull;
 import uk.ac.ebi.uniprot.parser.ParseTreeObjectExtractor;
 import uk.ac.ebi.uniprot.antlr.RlLineParser;
 import uk.ac.ebi.uniprot.antlr.RlLineParserBaseListener;
 
 import java.util.List;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Created with IntelliJ IDEA.

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
@@ -25,18 +26,25 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 	private final List<Name> innNames;	
 	private final List<ProteinSection> includes;  //dmain
 	private final List<ProteinSection> contains;  //component
+	private final Flag flag;
 	public ProteinDescriptionImpl(ProteinName recommendedName,
 			 List<ProteinName> alternativeNames
 			) {
 		this(recommendedName, alternativeNames, null);
 	}
 	
+	public ProteinDescriptionImpl(ProteinName recommendedName,
+			 List<ProteinName> alternativeNames, Flag flag
+			) {
+		this(recommendedName, alternativeNames,  null, flag);
+	}
 	
 	public ProteinDescriptionImpl(ProteinName recommendedName,
 			 List<ProteinName> alternativeNames,
-			List<ProteinName> submissionNames
+			List<ProteinName> submissionNames,
+			 Flag flag
 			) {
-		this(recommendedName, alternativeNames, submissionNames,
+		this(recommendedName, alternativeNames, submissionNames, flag,
 				null,null, null, null, null, null);
 	}
 	@JsonCreator
@@ -44,6 +52,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 			@JsonProperty("recommendedName") ProteinName recommendedName,
 			@JsonProperty("alternativeNames") List<ProteinName> alternativeNames,
 			@JsonProperty("submissionNames") List<ProteinName> submissionNames,
+			@JsonProperty("flag")  Flag flag,
 			@JsonProperty("allergenName") Name allergenName,
 			@JsonProperty("biotechName") Name biotechName, 
 			@JsonProperty("cdAntigenNames") List<Name> cdAntigenNames, 
@@ -53,7 +62,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 		this.recommendedName = recommendedName;
 		this.alternativeNames  =Utils.unmodifierList(alternativeNames);
 		this.submissionNames  =Utils.unmodifierList(submissionNames);
-
+		this.flag = flag;
 		this.allergenName = allergenName;
 		this.biotechName =biotechName;
 		this.cdAntigenNames  =Utils.unmodifierList(cdAntigenNames);
@@ -106,6 +115,10 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 	public List<ProteinSection> getContains() {
 		return contains;
 	}
+	@Override
+	public Flag getFlag() {
+		return flag;
+	}
 	@JsonIgnore
 	@Override
 	public boolean isValid() {
@@ -115,7 +128,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 			return getSubmissionNames().stream().anyMatch(val -> val.isValid());
 		}
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -125,13 +138,13 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 		result = prime * result + ((biotechName == null) ? 0 : biotechName.hashCode());
 		result = prime * result + ((cdAntigenNames == null) ? 0 : cdAntigenNames.hashCode());
 		result = prime * result + ((contains == null) ? 0 : contains.hashCode());
+		result = prime * result + ((flag == null) ? 0 : flag.hashCode());
 		result = prime * result + ((includes == null) ? 0 : includes.hashCode());
 		result = prime * result + ((innNames == null) ? 0 : innNames.hashCode());
 		result = prime * result + ((recommendedName == null) ? 0 : recommendedName.hashCode());
 		result = prime * result + ((submissionNames == null) ? 0 : submissionNames.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -167,6 +180,11 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 				return false;
 		} else if (!contains.equals(other.contains))
 			return false;
+		if (flag == null) {
+			if (other.flag != null)
+				return false;
+		} else if (!flag.equals(other.flag))
+			return false;
 		if (includes == null) {
 			if (other.includes != null)
 				return false;
@@ -189,5 +207,6 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 			return false;
 		return true;
 	}
+	
 	
 }

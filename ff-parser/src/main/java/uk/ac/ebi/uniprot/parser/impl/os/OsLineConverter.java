@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.parser.impl.os;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.OrganismFactory;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 
 public class OsLineConverter implements Converter<OsLineObject, OrganismName> {
@@ -10,7 +10,7 @@ public class OsLineConverter implements Converter<OsLineObject, OrganismName> {
 	@Override
 	public OrganismName convert(OsLineObject f) {
 		String value = f.organism_species;
-		return OrganismFactory.INSTANCE.createFromOrganismLine(value);
+		return TaxonomyFactory.INSTANCE.createFromOrganismLine(value);
 	}
 
 }

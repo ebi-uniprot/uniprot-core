@@ -3,6 +3,7 @@ OG   Plasmid R6-5, Plasmid IncFII R100 (NR1), and
 OG   Plasmid IncFII R1-19 (R1 drd-19).
 */
 lexer grammar OgLineLexer;
+options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
 
 OG_HEADER: 'OG   ';
 HYDROGENOSOME: 'Hydrogenosome';
@@ -24,11 +25,13 @@ LEFT_B: '{'                                              -> pushMode (EVIDENCE_M
 CHANGE_OF_LINE: '\nOG   ';
 SPACE: ' '  ;
 AND: 'and';
+NEW_LINE: '\n';
 
 mode PLASMID_VALUE_MODE;
 DOT_NEW_LINE_V: '.\n'                    -> type (DOT_NEW_LINE), popMode;
 COMA: ','                                -> popMode;
 PL_SPACE: ' '                            -> type (SPACE);
+CHANGE_OF_LINE_OG: '\nOG   '      {setType(CHANGE_OF_LINE);replaceChangeOfLine();};
 LEFT_BRACKET_V: '{'                      -> type (LEFT_B), pushMode (EVIDENCE_MODE);
 PLASMID_VALUE: PLASMID_WORD (PL_SPACE PLASMID_WORD)*;
 fragment PLASMID_WORD: LD ((LD|DOT)* LD)? ;

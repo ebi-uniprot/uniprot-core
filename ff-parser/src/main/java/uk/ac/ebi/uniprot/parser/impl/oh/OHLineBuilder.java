@@ -6,55 +6,57 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.OrganismHost;
+
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
-public class OHLineBuilder extends FFLineBuilderAbstr< List<OrganismHost> >
-	implements FFLineBuilder<List<OrganismHost> > {
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+
+public class OHLineBuilder extends FFLineBuilderAbstr< List<Organism> >
+	implements FFLineBuilder<List<Organism> > {
 	private static final String NCBI_TAX_ID = "NCBI_TaxID=";
 	public OHLineBuilder(){
 		super(LineType.OH);
 	}
 	@Override
-	protected FFLine buildLine(List<OrganismHost> f, boolean showEvidence) {
+	protected FFLine buildLine(List<Organism> f, boolean showEvidence) {
 		List<String> lls =new ArrayList<>();
-		for(OrganismHost oh:f){
+		for(Organism oh:f){
 			lls.add(build(oh, showEvidence, true).toString());
 		}
 		return FFLines.create(lls);
 	}
 	@Override
-	public String buildString(List<OrganismHost> f) {
+	public String buildString(List<Organism> f) {
 		StringBuilder sb =new StringBuilder();
-		for(OrganismHost oh:f){
+		for(Organism oh:f){
 			sb.append(build(oh, false, false));
 		}
 		return sb.toString();
 	}
 	
 	@Override
-	public String buildStringWithEvidence(List<OrganismHost> f) {
+	public String buildStringWithEvidence(List<Organism> f) {
 		StringBuilder sb =new StringBuilder();
-		for(OrganismHost oh:f){
+		for(Organism oh:f){
 			sb.append(build(oh, true, false));
 		}
 		return sb.toString();
 	}
 	
-	private  StringBuilder build(OrganismHost organismHost, boolean showEvidence, boolean includeFFMarkup) {
+	private  StringBuilder build(Organism organismHost, boolean showEvidence, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkup)
             sb.append(linePrefix);
   
         sb.append(NCBI_TAX_ID);
-        sb.append(organismHost.getTaxonId().getTaxonId());
+        sb.append(organismHost.getTaxonId());
         sb.append("; ");
-        OrganismName organism = organismHost.getOrganism();
+        OrganismName organism = organismHost.getName();
         if (organism != null) {
             if (organism.getScientificName() != null) {
                 sb.append(organism.getScientificName());

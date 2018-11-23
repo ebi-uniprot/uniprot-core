@@ -14,7 +14,6 @@ import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
-import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
@@ -27,6 +26,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CommentsImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
@@ -58,7 +58,6 @@ public class UniProtEntryImpl implements UniProtEntry {
 	private final UniProtReferences references;
 	private final UniProtDBCrossReferences databaseCrossReferences;
 	private final Sequence sequence;
-	private final FlagType flag;
 
 	private final InternalSection internalSection;
 	private final EntryInactiveReason inactiveReason;
@@ -70,7 +69,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 		this(UniProtEntryType.UNKNOWN, primaryAccession, null, uniProtId,
 				null, null, null, null, null,null,
 				null,null, null, null, null, null,
-				null, null, null, null, null, inactiveReason );
+				null, null, null, null, inactiveReason );
 	}
 
 	public UniProtEntryImpl(UniProtEntryType entryType,
@@ -92,12 +91,11 @@ public class UniProtEntryImpl implements UniProtEntry {
 			UniProtReferences references,
 			UniProtDBCrossReferences databaseCrossReferences,
 			Sequence sequence,
-			FlagType flag,
 			InternalSection internalSection) {
 		this(entryType, primaryAccession, secondaryAccessions, uniProtId,
 				entryAudit, taxonId, organism, organismHosts, taxonomyLineage,proteinExistence,
 				proteinDescription,genes, comments, features, organelles, keywords,
-				references, databaseCrossReferences, sequence, flag, internalSection, null );
+				references, databaseCrossReferences, sequence, internalSection, null );
 
 	}
 
@@ -115,7 +113,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 			@JsonProperty("features") List<Feature> features, @JsonProperty("organelles") List<Organelle> organelles,
 			@JsonProperty("keywords") List<Keyword> keywords, @JsonProperty("references") UniProtReferences references,
 			@JsonProperty("databaseCrossReferences") UniProtDBCrossReferences databaseCrossReferences,
-			@JsonProperty("sequence") Sequence sequence, @JsonProperty("flag") FlagType flag,
+			@JsonProperty("sequence") Sequence sequence, 
 			@JsonProperty("internalSection") InternalSection internalSection,
 			@JsonProperty("inactiveReason") EntryInactiveReason inactiveReason) {
 		this.entryType = entryType;
@@ -149,7 +147,6 @@ public class UniProtEntryImpl implements UniProtEntry {
 
 		this.sequence = sequence;
 
-		this.flag = flag;
 		this.internalSection = internalSection;
 		this.inactiveReason = inactiveReason;
 	}
@@ -254,10 +251,6 @@ public class UniProtEntryImpl implements UniProtEntry {
 		return sequence;
 	}
 
-	@Override
-	public FlagType getFlag() {
-		return flag;
-	}
 
 	@Override
 	public InternalSection getInternalSection() {
@@ -289,7 +282,6 @@ public class UniProtEntryImpl implements UniProtEntry {
 		result = prime * result + ((entryAudit == null) ? 0 : entryAudit.hashCode());
 		result = prime * result + ((entryType == null) ? 0 : entryType.hashCode());
 		result = prime * result + ((features == null) ? 0 : features.hashCode());
-		result = prime * result + ((flag == null) ? 0 : flag.hashCode());
 		result = prime * result + ((genes == null) ? 0 : genes.hashCode());
 		result = prime * result + ((inactiveReason == null) ? 0 : inactiveReason.hashCode());
 		result = prime * result + ((internalSection == null) ? 0 : internalSection.hashCode());
@@ -339,8 +331,6 @@ public class UniProtEntryImpl implements UniProtEntry {
 			if (other.features != null)
 				return false;
 		} else if (!features.equals(other.features))
-			return false;
-		if (flag != other.flag)
 			return false;
 		if (genes == null) {
 			if (other.genes != null)

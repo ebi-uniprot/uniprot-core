@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
@@ -36,17 +37,16 @@ public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>
 			return FFLines.create(lines);
 		for (EvidenceLine line : evidences) {
 			StringBuilder sb = new StringBuilder();
+			Evidence evidence = line.toEvidence();
 			sb.append(prefix);
 
-			sb.append(line.getEvidence().getECOCode().getCodeValue());
+			sb.append(evidence.getEvidenceCode().getCode());
 			sb.append(SEPARATOR_SEMICOMA);
-			if ((!line.getEvidence().getAttribute().isEmpty()) && !line.getEvidence().getAttribute().equals("-")) {
-				if (!line.getEvidence().getType().getName().isEmpty()) {
-					sb.append(line.getEvidence().getType().getName());
-					sb.append(":");
-				}
-				sb.append(line.getEvidence().getAttribute());
-			} else {
+			if(evidence.getSource() !=null) {
+				sb.append(evidence.getSource().getDatabaseType().getName())
+				.append(":")
+				.append(evidence.getSource().getId());
+			}else {
 				sb.append("-");
 			}
 			sb.append(SEPARATOR_SEMICOMA);

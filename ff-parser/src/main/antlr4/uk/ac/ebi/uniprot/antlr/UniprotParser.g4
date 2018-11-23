@@ -38,7 +38,7 @@ reference:
         rl;
 
 sq: SQ_LINE SEQUENCE_LINE+;
-copyright: CC_COPY_RIGHT;
+copyright: CC_COPY_RIGHT|CC_COPY_RIGHT_NEW|CC_COPY_RIGHT_OLD;
 
 id: ID_LINE;
 ac: AC_LINE+;

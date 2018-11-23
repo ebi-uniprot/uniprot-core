@@ -22,9 +22,10 @@ plasmid_names: (plasmid_name
                 (COMA (SPACE | CHANGE_OF_LINE) plasmid_name )*  COMA (SPACE | CHANGE_OF_LINE)
                     AND (SPACE | CHANGE_OF_LINE))? plasmid_name;
 
-plasmid_name : (PLASMID|(PLASMID SPACE PLASMID_VALUE)) ((SPACE|CHANGE_OF_LINE)evidence)?;
+plasmid_name : PLASMID ((SPACE|CHANGE_OF_LINE) PLASMID_VALUE)? ((SPACE|CHANGE_OF_LINE) evidence)?;
 
 //evidence: LEFT_B  EV_TAG (EV_SEPARATOR EV_TAG)* RIGHT_B;
 
 evidence: LEFT_B EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* RIGHT_B;
+
 

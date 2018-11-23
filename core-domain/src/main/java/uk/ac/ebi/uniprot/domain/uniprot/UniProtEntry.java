@@ -69,8 +69,6 @@ public interface UniProtEntry {
 
 	Sequence getSequence();
 
-	FlagType getFlag();
-
 	InternalSection getInternalSection();
 
 	Boolean isFragment();

@@ -10,7 +10,7 @@ cc_line: (cc_common | cc_web_resource|cc_biophyiochemical
           |cc_interaction |cc_subcellular_location
           |cc_alternative_products|cc_sequence_caution
           |cc_mass_spectrometry |cc_rna_editing
-          |cc_disease|cc_cofactor);
+          |cc_disease|cc_cofactor|cc_catalytic_activity);
 
 evidence: LEFT_B  EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* RIGHT_B;
 
@@ -248,19 +248,21 @@ cc_rna_edigint_note: CC_RE_NOTE cc_properties_notes;
 
 cc_disease:
     CC_TOPIC_START CC_TOPIC_DISEASE SPACE
-     (cc_disease_name  (SPACE|CHANGE_OF_LINE)
-      cc_disease_abbr_min  (SPACE|CHANGE_OF_LINE))?
+     (cc_disease_name_abbr  (SPACE|CHANGE_OF_LINE)
+      cc_disease_mim (SPACE|CHANGE_OF_LINE))?
      ((cc_disease_description (SPACE|CHANGE_OF_LINE) cc_disease_note)
        |cc_disease_description
        |cc_disease_note)
      NEW_LINE;
 
-cc_disease_name: cc_disease_text;
-cc_disease_abbr_min: CC_D_ABBR_MIM;
+cc_disease_name_abbr: cc_disease_text;
+cc_disease_mim: CC_D_MIM;
 
-cc_disease_description: cc_disease_text  (DOT (SPACE|CHANGE_OF_LINE)evidence)? DOT;
+cc_disease_name:  (CC_D_WORD DOT? (SPACE|CHANGE_OF_LINE) )* CC_D_WORD;
+cc_disease_description: cc_disease_text_d  (DOT (SPACE|CHANGE_OF_LINE)evidence)? DOT;
 cc_disease_note: CC_D_NOTE  cc_common_texts;
 cc_disease_text: ((CC_D_WORD|cc_common_text_in_bracket) DOT? (SPACE|CHANGE_OF_LINE) )* (CC_D_WORD|cc_common_text_in_bracket);
+cc_disease_text_d: ((CC_D_WORD|cc_common_text_in_bracket|CC_D_WORD_D) DOT? (SPACE|CHANGE_OF_LINE) )* (CC_D_WORD|cc_common_text_in_bracket|CC_D_WORD_D);
 
 cc_cofactor: CC_TOPIC_START CC_TOPIC_COFACTOR ((CC_COF_COLONSPACE cc_cofactor_molecule)? COLON) NEW_LINE
                          (
@@ -281,3 +283,40 @@ cc_cofactor_line:
 cc_cofactor_name: CC_COF_NAME cc_properties_text_level2 SEMICOLON;
 cc_cofactor_xref: CC_COF_XREF cc_properties_text_level2 SEMICOLON;
 cc_cofactor_evidence: CC_COF_EV_START EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* EV_END SEMICOLON;
+
+/*
+CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-
+CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,
+CC         ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;
+CC         EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,
+CC         ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971,
+CC         ECO:0000269|PubMed:9473059};
+CC       PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;
+CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};
+*/
+cc_catalytic_activity:
+           CC_TOPIC_START CC_TOPIC_CATALYTIC_ACTIVITY COLON NEW_LINE
+           (cc_cat_act_reaction_line cc_cat_act_pd_lines?)
+           ;
+           
+cc_cat_act_reaction_line:
+           CC_HEADER_1 cc_cat_act_reaction ((SPACE|CHANGE_OF_LINE_LEVEL2)
+            cc_cat_act_xref)?
+             ((SPACE|CHANGE_OF_LINE_LEVEL2) cc_cat_act_ec)?
+           ((SPACE|CHANGE_OF_LINE_LEVEL2) cc_cat_act_evidence)?
+           NEW_LINE;
+cc_cat_act_reaction: CC_CAT_ACT_REACTION cc_properties_text_level2 SEMICOLON;
+cc_cat_act_xref: CC_CAT_ACT_XREF cc_properties_text_level2 SEMICOLON;
+cc_cat_act_ec: CC_CAT_ACT_EC cc_properties_text_level2 SEMICOLON;
+cc_cat_act_evidence: CC_CAT_ACT_EV_START EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* EV_END SEMICOLON;
+ 
+cc_cat_act_pd_lines: cc_cat_act_pd_line+;
+
+cc_cat_act_pd_line:
+           CC_HEADER_1 cc_cat_act_pd (SPACE|CHANGE_OF_LINE_LEVEL2)
+            cc_cat_act_pd_xref
+           ((SPACE|CHANGE_OF_LINE_LEVEL2) cc_cat_act_pd_evidence)?
+           NEW_LINE;         
+cc_cat_act_pd: CC_CAT_ACT_PD cc_properties_text_level2 SEMICOLON;
+cc_cat_act_pd_xref: CC_CAT_ACT_XREF cc_properties_text_level2 SEMICOLON;
+cc_cat_act_pd_evidence: CC_CAT_ACT_EV_START EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* EV_END SEMICOLON;

@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
@@ -43,8 +44,8 @@ public enum ProteinDescriptionFactory {
 	}
 
 	public ProteinDescription createProteinDescription(ProteinName recommendedName, List<ProteinName> alternativeNames,
-			List<ProteinName> submissionNames) {
-		return new ProteinDescriptionImpl(recommendedName, alternativeNames, submissionNames);
+			List<ProteinName> submissionNames, Flag flag) {
+		return new ProteinDescriptionImpl(recommendedName, alternativeNames, submissionNames, flag);
 	}
 
 	public ProteinDescription createProteinDescription(ProteinDescriptionBuilder builder) {

@@ -11,7 +11,7 @@ import uk.ac.ebi.uniprot.parser.Converter;
 public class OcLineConverter implements Converter<OcLineObject,  List<OrganismName>> {
 	@Override
 	public List<OrganismName> convert(OcLineObject f) {
-		return f.nodes.stream().map(val -> TaxonomyFactory.INSTANCE.createTaxonName(val))
+		return f.nodes.stream().map(val -> TaxonomyFactory.INSTANCE.createOrganismName(val))
 				.collect(Collectors.toList());
 		
 	}

@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -11,11 +12,13 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public class ProteinDescriptionFactoryTest {
@@ -102,6 +105,45 @@ public class ProteinDescriptionFactoryTest {
 		TestHelper.verifyJson(subName);
 	}
 	
+	@Test
+	public void testCreateProteinDescriptionWithFlag() {
+		List<Evidence> evidences = createEvidences();
+			Name allergenName = ProteinDescriptionFactory.INSTANCE.createName("allergen", evidences);
+			Name biotechName = ProteinDescriptionFactory.INSTANCE.createName("biotech", evidences);
+			List<Name> antigenNames = new ArrayList<>();
+			antigenNames.add(ProteinDescriptionFactory.INSTANCE.createName("cd antigen", evidences));
+		
+		Name fullName = ProteinDescriptionFactory.INSTANCE.createName("a full Name", evidences);
+		List<Name> shortNames = createShortNames();
+		List<EC> ecNumbers = createECNumbers();
+		ProteinName recommendedName = ProteinDescriptionFactory.INSTANCE.createProteinName(fullName, shortNames, ecNumbers);
+
+		List<ProteinName> proteinAltNames = createAltName();
+		Name fullName1 = ProteinDescriptionFactory.INSTANCE.createName("a full Name", evidences);
+
+		List<EC> ecNumbers1 = createECNumbers();
+		ProteinName subName = ProteinDescriptionFactory.INSTANCE.createProteinName(fullName1, null, ecNumbers1);
+		List<ProteinName> subNames = new ArrayList<>();
+		subNames.add(subName);
+		ProteinDescriptionBuilder builder = ProteinDescriptionBuilder.newInstance() ;
+		ProteinDescription description = 
+		builder.recommendedName(recommendedName)
+		.submissionNames(subNames)
+		.alternativeNames(proteinAltNames)
+		.flag(new FlagImpl(FlagType.PRECURSOR))
+		.build();
+
+		assertEquals(recommendedName, description.getRecommendedName());
+		assertEquals(subNames, description.getSubmissionNames());
+		assertEquals(proteinAltNames, description.getAlternativeNames());
+	
+		assertEquals(FlagType.PRECURSOR, description.getFlag().getType());
+		
+		TestHelper.verifyJson(description);
+		
+	}
+
+	
 
 	@Test
 	public void testCreateProteinDescription() {
@@ -144,6 +186,7 @@ public class ProteinDescriptionFactoryTest {
 		assertEquals(biotechName, description.getBiotechName());
 		assertEquals(antigenNames, description.getCdAntigenNames());
 		assertTrue(description.getInnNames().isEmpty());
+		assertNull(description.getFlag());
 		
 		TestHelper.verifyJson(description);
 		

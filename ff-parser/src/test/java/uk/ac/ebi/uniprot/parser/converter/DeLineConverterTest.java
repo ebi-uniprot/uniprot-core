@@ -4,8 +4,8 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;

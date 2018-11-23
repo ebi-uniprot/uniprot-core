@@ -5,13 +5,13 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 
 public class OSLineBuilder extends FFLineBuilderAbstr<OrganismName> implements FFLineBuilder<OrganismName> {
 ;

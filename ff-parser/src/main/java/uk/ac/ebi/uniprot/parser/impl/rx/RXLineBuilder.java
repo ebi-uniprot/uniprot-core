@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationXref;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
@@ -31,7 +31,7 @@ public class RXLineBuilder implements RLine<CitationXrefs> {
 		return lines;
 	}
 
-	private StringBuilder buildLine(List<String> lines, StringBuilder line, Optional<CitationXref> xref,
+	private StringBuilder buildLine(List<String> lines, StringBuilder line, Optional<DBCrossReference<CitationXrefType>> xref,
 			boolean includeFFMarkup) {
 		if (xref.isPresent()) {
 			if ((line.length() > 0) && ((getString(xref.get()).length() + line.length()) >= LINE_LENGTH - 1)) {
@@ -52,9 +52,9 @@ public class RXLineBuilder implements RLine<CitationXrefs> {
 			return line;
 	}
 
-	private String getString(CitationXref xref) {
+	private String getString(DBCrossReference<CitationXrefType> xref) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(xref.getXrefType().getName()).append(EQUAL_SIGN).append(xref.getId());
+		sb.append(xref.getDatabaseType().getName()).append(EQUAL_SIGN).append(xref.getId());
 		return sb.toString();
 	}
 }

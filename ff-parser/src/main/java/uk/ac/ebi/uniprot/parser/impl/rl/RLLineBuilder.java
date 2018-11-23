@@ -60,7 +60,7 @@ public class RLLineBuilder implements RLine<Citation> {
 
 		if (includeFFMarkup)
 			result.append(linePrefix);
-		result.append(journalArticle.getJournalName());
+		result.append(journalArticle.getJournal().getName());
 		result.append(SPACE);
 		result.append(journalArticle.getVolume());
 		result.append(":");
@@ -87,12 +87,12 @@ public class RLLineBuilder implements RLine<Citation> {
 		ElectronicArticle electronicArticle = (ElectronicArticle) citation;
 		if (includeFFMarkup)
 			result.append(linePrefix);
-		if (electronicArticle.getJournalName().startsWith(" ")) {
+		if (electronicArticle.getJournal().getName().startsWith(" ")) {
 			result.append("(er)");
-			result.append(electronicArticle.getJournalName());
+			result.append(electronicArticle.getJournal().getName());
 		} else {
 			result.append("(er) ");
-			result.append(electronicArticle.getJournalName());
+			result.append(electronicArticle.getJournal().getName());
 		}
 		if ((electronicArticle.getLocator() != null) && (!electronicArticle.getLocator().getValue().equals(""))) {
 			result.append(" ");
@@ -165,7 +165,7 @@ public class RLLineBuilder implements RLine<Citation> {
 		} else {
 			result.append(") to the ");
 		}
-		result.append(submission.getSubmissionDatabase().getValue());
+		result.append(submission.getSubmissionDatabase().getName());
 		result.append(STOP);
 		List<String> lines = new ArrayList<>();
 		lines.add(result.toString());

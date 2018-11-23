@@ -71,20 +71,20 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 	private Flag createFlag(List<FlagType> flags) {
 		if (flags.contains(FlagType.Fragment)) {
 			if (flags.contains(FlagType.Precursor)) {
-				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.FlagType.FRAGMENT_PRECURSOR);
+				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.description.FlagType.FRAGMENT_PRECURSOR);
 			} else {
-				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.FlagType.FRAGMENT);
+				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.description.FlagType.FRAGMENT);
 			}
 		} else if (flags.contains(FlagType.Fragments)) {
 			if (flags.contains(FlagType.Precursor)) {
-				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.FlagType.FRAGMENTS_PRECURSOR);
+				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.description.FlagType.FRAGMENTS_PRECURSOR);
 			} else {
-				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.FlagType.FRAGMENTS);
+				return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.description.FlagType.FRAGMENTS);
 			}
 		} else if (flags.contains(FlagType.Precursor)) {
-			return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.FlagType.PRECURSOR);
+			return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.description.FlagType.PRECURSOR);
 		} else if (flags.contains(FlagType.Precursor_Fragment)) {
-			return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.FlagType.FRAGMENT_PRECURSOR);
+			return factory.createFlag(uk.ac.ebi.uniprot.domain.uniprot.description.FlagType.FRAGMENT_PRECURSOR);
 		} else {
 			return null;
 		}

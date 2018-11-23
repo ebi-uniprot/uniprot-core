@@ -14,9 +14,9 @@ tokens { CC_TOPIC_START, SPACE, SEMICOLON, COMA,
 
 CC_HEADER : 'CC   ';
 CC_TOPIC_START  : '-!- ';
-CC_TOPIC_COMMON : ('ALLERGEN'|'BIOTECHNOLOGY'|'CATALYTIC ACTIVITY'|'CAUTION'
+CC_TOPIC_COMMON : ('ALLERGEN'|'BIOTECHNOLOGY'|'CAUTION'
                 |'DEVELOPMENTAL STAGE'|'DISRUPTION PHENOTYPE'|'DOMAIN'
-                |'ENZYME REGULATION'|'FUNCTION'|'INDUCTION'|'MISCELLANEOUS'
+                |'ACTIVITY REGULATION'|'FUNCTION'|'INDUCTION'|'MISCELLANEOUS'
                 |'PATHWAY'|'PHARMACEUTICAL'|'POLYMORPHISM'|'PTM'|'SIMILARITY'
                 |'SUBUNIT'|'TISSUE SPECIFICITY'|'TOXIC DOSE'
                 )
@@ -41,6 +41,9 @@ CC_TOPIC_DISEASE:
                  'DISEASE:'                           -> pushMode ( CC_DISEASE );
 CC_TOPIC_COFACTOR:
                  'COFACTOR'                           -> pushMode ( CC_COFACTOR );
+                 
+CC_TOPIC_CATALYTIC_ACTIVITY:
+                 'CATALYTIC ACTIVITY'                -> pushMode ( CC_CATALYTIC_ACTIVITY );                 
 
 
 //the common mode for most of the CC lines;
@@ -434,11 +437,13 @@ CC_D_CHANGE_OF_LINE : '\nCC       '       {setType(CHANGE_OF_LINE); replaceChang
 CC_D_LEFT_B : '{'                               -> type(LEFT_B) ,pushMode(EVIDENCE_MODE);
 
 CC_D_WORD: CC_D_L ((CC_D_L|'.')* CC_D_L)?;
-CC_D_ABBR_MIM: CC_D_ABBR (CC_D_SPACE|CC_D_CHANGE_OF_LINE) CC_D_MIM;
-fragment CC_D_ABBR: '(' CC_D_WORD ((CC_D_SPACE|CC_D_CHANGE_OF_LINE) CC_D_WORD)* ')';
-fragment CC_D_MIM: '[MIM:' INTEGER ']:';
+CC_D_MIM: CC_D_MIM_FRAG;
+CC_D_WORD_D: CC_D_D ((CC_D_D|'.')* CC_D_D)?;
+//fragment CC_D_ABBR: '(' CC_D_WORD ((CC_D_SPACE|CC_D_CHANGE_OF_LINE) CC_D_WORD)* ')';
+fragment CC_D_MIM_FRAG: '[MIM:' INTEGER ']:';
 fragment INTEGER: [1-9][0-9]*             ;
-fragment CC_D_L: ~[ .\n\r\t={];
+fragment CC_D_L: ~[ .\n\r\t={\[];
+fragment CC_D_D: ~[ .\n\r\t={];
 fragment CC_D_COMA: ','     ;
 /*
 mode CC_D_NOTE_VALUE;
@@ -485,4 +490,32 @@ CC_COF_MOL_CHANGE_LINE: '\nCC       '           {setType(CHANGE_OF_LINE);replace
 CC_COF_MOL_WORD: CC_COF_WMOL_ORD_LETTER+         -> type(CC_COF_WORD);
 CC_COF_MOL_SPACE: ' '         -> type(SPACE);
 fragment CC_COF_WMOL_ORD_LETTER: ~[ :.;\n\r\t];
+
+
+
+
+mode CC_CATALYTIC_ACTIVITY;
+
+CC_CAT_ACT_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
+CC_CAT_ACT_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
+CC_CAT_ACT_SEMICOLON : ';'                               -> type (SEMICOLON);
+CC_CAT_ACT_COLON : ':'                               -> type (COLON);
+CC_CAT_ACT_SPACE : ' '                               -> type (SPACE);
+CC_CAT_ACT_COMA : ','                               -> type (COMA);
+CC_CAT_ACT_DOT : '.'                            -> type (DOT);
+CC_CAT_ACT_NEW_LINE: '\n'                             -> type (NEW_LINE);
+CC_CAT_ACT_HEADER_1 : 'CC       '                  ->  type (CC_HEADER_1) ;
+CC_CAT_ACT_HEADER_2 : 'CC         '                  ->  type (CC_HEADER_2) ;
+CC_CAT_ACT_CHANGE_LINE_1: '\nCC         '           {setType(CHANGE_OF_LINE_LEVEL2);replaceChangeOfLine();};
+CC_CAT_ACT_REACTION: 'Reaction='                     -> pushMode ( CC_PROPERTIES_TEXT_MODE );
+CC_CAT_ACT_XREF: 'Xref='                    -> pushMode ( CC_PROPERTIES_TEXT_MODE );
+CC_CAT_ACT_EC: 'EC='                    -> pushMode ( CC_PROPERTIES_TEXT_MODE );
+CC_CAT_ACT_EV_START: 'Evidence={'                       -> pushMode ( EV_EVIDENCE_MODE );
+CC_CAT_ACT_PD: 'PhysiologicalDirection='           -> pushMode ( CC_PROPERTIES_TEXT_MODE );
+CC_CAT_ACT_WORD: CC_CAT_ACT_WORD_LETTER+ ;
+fragment CC_CAT_ACT_WORD_LETTER: ~[ :.;=\n\r\t{];
+
+
+
+
 

@@ -58,11 +58,11 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
 		List<Organelle> organelles =new ArrayList<>();
 		for (Organelle organelle : f) {
 			if(isPlasmid){
-				if(organelle.getType() ==GeneEncodingType.PLASMID){
+				if(organelle.getGeneEncodingType() ==GeneEncodingType.PLASMID){
 					organelles.add(organelle);
 				}
 			}else{
-				if(organelle.getType() !=GeneEncodingType.PLASMID){
+				if(organelle.getGeneEncodingType() !=GeneEncodingType.PLASMID){
 					organelles.add(organelle);
 				}
 			}
@@ -91,17 +91,17 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
 	 private  String toSwissprotString(Organelle organelle) {
 
 	        StringBuilder sb = new StringBuilder();
-	        switch (organelle.getType()) {
+	        switch (organelle.getGeneEncodingType()) {
 	          
 	            case HYDROGENOSOME:
 	            case MITOCHONDRION:
 	            case NUCLEOMORPH:
 	            case PLASTID:
-	                sb.append(organelle.getType().getValue());
+	                sb.append(organelle.getGeneEncodingType().getName());
 	                break;
 	          
 	            case PLASMID:
-	                sb.append(organelle.getType().getValue());
+	                sb.append(organelle.getGeneEncodingType().getName());
 	                if (!(organelle.getValue() == null || organelle.getValue().equals(""))) {
 	                    sb.append(" ");
 	                    sb.append(organelle.getValue());
@@ -113,7 +113,7 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
 	            case NON_PHOTOSYNTHETIC_PLASTID:
 	            case CHROMATOPHORE_PLASTID:
 	                sb.append("Plastid; ");
-	                sb.append(organelle.getType().getValue());
+	                sb.append(organelle.getGeneEncodingType().getName());
 	                break;
 	            case UNKOWN:
 	                break;

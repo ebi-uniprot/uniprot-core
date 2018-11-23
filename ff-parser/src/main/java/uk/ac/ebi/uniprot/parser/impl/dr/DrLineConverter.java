@@ -9,7 +9,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
@@ -58,45 +57,27 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
 
 		if (drline.ssLineValue != null)
 			return;
-		DatabaseType type = DatabaseType.getDatabaseType(drline.DbName);
-		if (type == DatabaseType.UNKNOWN) {
-			if (this.ignoreWrongDR)
-				return;
-			else
-				throw new DatabaseTypeNotExistException(drline.DbName);
-		}
+		
 		String id = drline.attributes.get(0);
 		String description = drline.attributes.get(1);
+		
 		String thirdAttribute = null;
 		String fourthAttribute = null;
 		String isoformId = null;
 		List<Evidence> evidences = null;
-		if (type.getNumberOfAttribute() >= 3) {
-			if(drline.attributes.size()<3) {
-				if(ignoreWrongDR)
-					return ;
-				else
-					thirdAttribute ="-";
-			}else {
-				thirdAttribute = drline.attributes.get(2);
-			}
-		}
-		if (type.getNumberOfAttribute() >= 4) {
-			if(drline.attributes.size()<4) {
-				if(ignoreWrongDR)
-					return ;
-				else
-					fourthAttribute ="-";
-			}else
-				fourthAttribute = drline.attributes.get(3);
-		}
 		
-		
+		if(drline.attributes.size()>2) {
+			thirdAttribute =drline.attributes.get(2);
+		}
+		if(drline.attributes.size()>3) {
+			fourthAttribute =drline.attributes.get(3);
+		}
+	
 		evidences = evidenceMap.get(drline);
 		if ((drline.isoform != null) && (!drline.isoform.isEmpty())) {
 			isoformId = drline.isoform;
 		}
-		uniProtDrObjects.drObjects.add(factory.createUniProtDBCrossReference(type, id, description, thirdAttribute,
+		uniProtDrObjects.drObjects.add(factory.createUniProtDBCrossReference(drline.DbName, id, description, thirdAttribute,
 				fourthAttribute, isoformId, evidences));
 	}
 }

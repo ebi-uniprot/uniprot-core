@@ -8,19 +8,21 @@ public class ProteinDescriptionBuilder {
 	private  ProteinName recommendedName;
 	private  List<ProteinName> alternativeNames;
 	private  List<ProteinName> submissionNames;
-	
+	private  Flag flag;  
 	private  Name allergenName;
 	private  Name biotechName;
 	private  List<Name> cdAntigenNames;
 	private  List<Name> innNames;	
 	private  List<ProteinSection> includes;  //dmain
 	private  List<ProteinSection> contains;  //component
+	
+
 	public static ProteinDescriptionBuilder newInstance() {
 		return new ProteinDescriptionBuilder();
 	}
 	public ProteinDescription  build() {
 		return new ProteinDescriptionImpl( recommendedName,
-				 alternativeNames, submissionNames,
+				 alternativeNames, submissionNames, flag,
 				  allergenName,
 				 biotechName, cdAntigenNames,  innNames,
 				includes,  contains);
@@ -39,6 +41,10 @@ public class ProteinDescriptionBuilder {
 		return this;
 	}
 	
+	public ProteinDescriptionBuilder flag(Flag flag) {
+		this.flag = flag;
+		return this;
+	}
 	public ProteinDescriptionBuilder allergenName(Name allergenName) {
 		this.allergenName = allergenName;
 		return this;
