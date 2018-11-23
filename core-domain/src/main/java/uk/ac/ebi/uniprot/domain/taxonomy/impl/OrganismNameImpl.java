@@ -12,6 +12,7 @@ import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class OrganismNameImpl extends TaxonNameImpl implements OrganismName{
+	
 	public OrganismNameImpl(String scientificName) {
 		this(scientificName, null);
 		

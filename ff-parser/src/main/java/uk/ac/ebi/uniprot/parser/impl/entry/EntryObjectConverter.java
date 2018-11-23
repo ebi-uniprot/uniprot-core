@@ -78,7 +78,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         builder.uniProtId(ids.getKey())
         .entryType(ids.getValue());
 		UniProtAcLineObject acLineObj =acLineConverter.convert(f.ac);
-		builder.accession(acLineObj.getPrimaryAccession())
+		builder.primaryAccession(acLineObj.getPrimaryAccession())
 		.secondaryAccessions(acLineObj.getSecondAccessions())
 		.entryAudit(dtLineConverter.convert(f.dt));
 		if(f.cc !=null)
@@ -112,7 +112,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 		for(EntryObject.ReferenceObject refObj: f.ref){
 			citations.add(refObjConverter.convert(refObj));
 		}
-		builder.uniProtReferences(citations);
+		builder.references(citations);
 		
 		InternalSection usl = ssLineConverter.convert(f.ss);
 	

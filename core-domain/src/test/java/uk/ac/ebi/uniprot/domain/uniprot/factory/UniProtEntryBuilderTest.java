@@ -17,6 +17,7 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
@@ -40,7 +41,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
@@ -71,6 +71,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 
 public class UniProtEntryBuilderTest {
 
@@ -91,13 +92,15 @@ public class UniProtEntryBuilderTest {
                 builder.entryType(UniProtEntryType.TREMBL)
                 .build();
         
-        assertEquals(UniProtEntryType.TREMBL, entry.getType());
+        assertEquals(UniProtEntryType.TREMBL, entry.getEntryType());
         
         builder = UniProtEntryBuilder.newInstance();
          entry =
                 builder.entryType(UniProtEntryType.SWISSPROT)
                 .build();
-         assertEquals(UniProtEntryType.SWISSPROT, entry.getType());
+         assertEquals(UniProtEntryType.SWISSPROT, entry.getEntryType());
+         assertTrue(entry.isActive());
+         TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -105,14 +108,14 @@ public class UniProtEntryBuilderTest {
         UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
         UniProtEntry entry =   builder            
                 .build();
-        assertNull(entry.getPrimaryUniProtAccession());
+        assertNull(entry.getPrimaryAccession());
         
         builder = UniProtEntryBuilder.newInstance();
         entry = builder   
-                .accession("P12345")
+                .primaryAccession("P12345")
                 .build();
-        assertNotNull(entry.getPrimaryUniProtAccession());
-        assertEquals("P12345", entry.getPrimaryUniProtAccession().getValue());
+        assertNotNull(entry.getPrimaryAccession());
+        assertEquals("P12345", entry.getPrimaryAccession().getValue());
     }
 
     @Test
@@ -120,15 +123,16 @@ public class UniProtEntryBuilderTest {
         UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
         UniProtEntry entry =   builder            
                 .build();
-        assertNull(entry.getPrimaryUniProtAccession());
+        assertNull(entry.getPrimaryAccession());
         UniProtAccession accession =UniProtFactory.INSTANCE.createUniProtAccession("P23456");
         builder = UniProtEntryBuilder.newInstance();
         entry = builder   
-                .accession(accession)
+                .primaryAccession(accession)
                 .build();
-        assertNotNull(entry.getPrimaryUniProtAccession());
-        assertEquals(accession, entry.getPrimaryUniProtAccession());
-        assertEquals("P23456", entry.getPrimaryUniProtAccession().getValue());
+        assertNotNull(entry.getPrimaryAccession());
+        assertEquals(accession, entry.getPrimaryAccession());
+        assertEquals("P23456", entry.getPrimaryAccession().getValue());
+        TestHelper.verifyJson(entry);
     }
 
     
@@ -137,7 +141,7 @@ public class UniProtEntryBuilderTest {
         UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
         UniProtEntry entry = builder            
                 .build();
-        assertTrue(entry.getSecondaryUniProtAccessions().isEmpty());
+        assertTrue(entry.getSecondaryAccessions().isEmpty());
         
         List<UniProtAccession> secondaryAccessions = new ArrayList<>();
         secondaryAccessions.add(UniProtFactory.INSTANCE.createUniProtAccession("P23456"));
@@ -147,8 +151,9 @@ public class UniProtEntryBuilderTest {
          entry =   builder   
                  .secondaryAccessions(secondaryAccessions)
                 .build();
-        assertEquals(2, entry.getSecondaryUniProtAccessions().size());
-        assertEquals(secondaryAccessions, entry.getSecondaryUniProtAccessions());
+        assertEquals(2, entry.getSecondaryAccessions().size());
+        assertEquals(secondaryAccessions, entry.getSecondaryAccessions());
+        TestHelper.verifyJson(entry);
         
     }
 
@@ -165,6 +170,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getUniProtId());
         assertEquals("P12345_HUMAN", entry.getUniProtId().getValue());
+        TestHelper.verifyJson(entry);
     }
     
     @Test
@@ -180,6 +186,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getUniProtId());
         assertEquals("P12346_HUMAN", entry.getUniProtId().getValue());
+        TestHelper.verifyJson(entry);
     }
 
 
@@ -198,6 +205,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertEquals(1, entry.getTaxonomyLineage().size());
         assertEquals(taxon, entry.getTaxonomyLineage().get(0));
+        TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -211,7 +219,7 @@ public class UniProtEntryBuilderTest {
                  .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                 .build();
         assertEquals(ProteinExistence.PROTEIN_LEVEL, entry.getProteinExistence());
-
+        TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -232,6 +240,7 @@ public class UniProtEntryBuilderTest {
                  .entryAudit(entryAudit)
                 .build();
         assertEquals(entryAudit, entry.getEntryAudit());
+        TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -250,6 +259,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertEquals(2, entry.getOrganelles().size());
         assertEquals(organelles, entry.getOrganelles());
+        TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -269,6 +279,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertEquals(3, entry.getKeywords().size());
         assertEquals(keywords, entry.getKeywords());
+        TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -283,6 +294,7 @@ public class UniProtEntryBuilderTest {
                 .proteinDescription(proteinDescription)
                 .build();
         assertEquals(proteinDescription, entry.getProteinDescription());
+        TestHelper.verifyJson(entry);
     }
     private ProteinDescription createProteinDescription() {
     	List<Evidence> evidences = createEvidences();
@@ -310,6 +322,7 @@ public class UniProtEntryBuilderTest {
 		.allergenName(allergenName)
 		.biotechName(biotechName)
 		.cdAntigenNames(antigenNames).build();
+		
 		
     }
 	private List<ProteinName> createAltName() {
@@ -362,6 +375,7 @@ public class UniProtEntryBuilderTest {
         assertEquals(1, entry.getComments().getCommentByType(CommentType.COFACTOR).size());
         assertEquals(0, entry.getComments().getCommentByType(CommentType.DISEASE).size());
         assertEquals(comments, entry.getComments());
+        TestHelper.verifyJson(entry);
         
     }
 
@@ -405,11 +419,12 @@ public class UniProtEntryBuilderTest {
         
         builder = UniProtEntryBuilder.newInstance();
          entry = builder       
-                 .uniProtReferences(uniReferences)
+                 .references(uniReferences)
                 .build();
         assertNotNull( entry.getReferences());
         assertEquals(2, entry.getReferences().getReferences().size());
         assertEquals(uniReferences, entry.getReferences());
+        TestHelper.verifyJson(entry);
         
     }
     private UniProtReferences createUniProtReferences(){
@@ -480,6 +495,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertEquals(2, entry.getGenes().size());
         assertEquals(gene1, entry.getGenes().get(0));
+        TestHelper.verifyJson(entry);
         
     }
     private Evidence createEvidence(String evidenceStr) {
@@ -501,6 +517,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getOrganism());
         assertEquals(organism, entry.getOrganism());
+        TestHelper.verifyJson(entry);
         
     }
 
@@ -523,6 +540,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertEquals(1, entry.getOrganismHosts().size());
         assertEquals(organismHosts, entry.getOrganismHosts());
+        TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -539,6 +557,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getDatabaseCrossReferences());
         assertEquals(6, entry.getDatabaseCrossReferences().getCrossReferences().size());
+        TestHelper.verifyJson(entry);
         
     }
     
@@ -615,6 +634,7 @@ public class UniProtEntryBuilderTest {
         assertNotNull(entry.getSequence());
         assertEquals(sequence, entry.getSequence());
         assertEquals(value, entry.getSequence().getValue());
+        TestHelper.verifyJson(entry);
     }
     
     @Test
@@ -631,6 +651,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getSequence());
         assertEquals(value, entry.getSequence().getValue());
+        TestHelper.verifyJson(entry);
     }
 
     @Test
@@ -648,6 +669,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getTaxonId());
         assertEquals(taxId, entry.getTaxonId().getTaxonId());
+        TestHelper.verifyJson(entry);
         
     }
 
@@ -664,6 +686,7 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getInternalSection());
         assertEquals(internalSection, entry.getInternalSection());
+        TestHelper.verifyJson(entry);
     }
     private InternalSection createInternalSection(){
         List<InternalLine> internalLines = new ArrayList<>();
@@ -689,6 +712,7 @@ public class UniProtEntryBuilderTest {
         assertNotNull(entry.getFeatures());
         assertEquals(4, entry.getFeatures().size());
         assertEquals(features, entry.getFeatures());
+        TestHelper.verifyJson(entry);
     }
     private List<Feature> createFeatures(){
         List<Feature  > features = new ArrayList<>();

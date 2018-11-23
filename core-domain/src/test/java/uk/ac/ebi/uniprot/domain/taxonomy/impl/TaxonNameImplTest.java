@@ -17,7 +17,7 @@ class TaxonNameImplTest {
 		String scientificName = "Homo sapiens";
 		TaxonName organism = new TaxonNameImpl(scientificName, null, null);
 		assertEquals(scientificName, organism.getScientificName());
-		assertEquals(null, organism.getCommonName());
+		assertEquals("", organism.getCommonName());
 		assertEquals(0, organism.getSynonyms().size());
 		assertEquals("Homo sapiens", organism.toString());
 		TestHelper.verifyJson(organism);

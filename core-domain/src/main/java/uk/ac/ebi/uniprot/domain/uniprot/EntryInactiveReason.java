@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.comment;
+package uk.ac.ebi.uniprot.domain.uniprot;
 
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
 import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(use = NAME, include = PROPERTY)
 @JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CommentsImpl.class, name = "Comments")
+  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.EntryInactiveReasonImpl.class, name = "EntryInactiveReason")
 })
-public interface Comments {
-    List<Comment> getComments();
-    <T extends Comment> List<T> getCommentByType(CommentType type);
+public interface EntryInactiveReason {
+	InactiveReasonType getInactiveReasonType();
+	List<String> getMergeDemergeTo();
 }

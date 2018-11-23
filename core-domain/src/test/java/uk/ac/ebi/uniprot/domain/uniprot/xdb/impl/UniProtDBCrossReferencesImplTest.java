@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 
 import java.util.ArrayList;
 import java.util.List;

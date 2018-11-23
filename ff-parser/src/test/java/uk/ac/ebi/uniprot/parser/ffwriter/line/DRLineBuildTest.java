@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.dr.DRLineBuilder;
 

@@ -7,8 +7,10 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class TaxonNameImpl implements TaxonName {
 	private final String scientificName;
@@ -29,14 +31,10 @@ public class TaxonNameImpl implements TaxonName {
 	public TaxonNameImpl(@JsonProperty("scientificName") String scientificName,
 			@JsonProperty("commonName") String commonName, 
 			@JsonProperty("synonyms") List<String> synonyms) {
-		this.scientificName = scientificName;
-		this.commonName = commonName;
-
-		if ((synonyms == null) || synonyms.isEmpty()) {
-			this.synonyms = Collections.emptyList();
-		} else {
-			this.synonyms = Collections.unmodifiableList(synonyms);
-		}
+		this.scientificName = Utils.resetNull(scientificName);
+		this.commonName =  Utils.resetNull(commonName);
+		this.synonyms =Utils.unmodifierList(synonyms);
+	
 	}
 
 	@Override
@@ -95,7 +93,7 @@ public class TaxonNameImpl implements TaxonName {
         StringBuilder sb = new StringBuilder();
         sb.append(getScientificName());
         String commonName = getCommonName();
-        if ((commonName != null) && !commonName.isEmpty()) {
+        if(!Strings.isNullOrEmpty(commonName)) {
             sb.append(" (")
                     .append(commonName).append(")");
         }

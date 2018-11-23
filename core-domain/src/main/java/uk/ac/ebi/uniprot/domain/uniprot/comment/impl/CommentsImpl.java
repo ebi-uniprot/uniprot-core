@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -12,16 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CommentsImpl implements Comments {
     private final List<Comment> comments;
 	@JsonCreator
     public CommentsImpl(@JsonProperty("comments")  List<Comment> comments){
-        if ((comments == null) || comments.isEmpty()) {
-            this.comments = Collections.emptyList();
-        } else {
-            this.comments = Collections.unmodifiableList(comments);
-        }
+		this.comments = Utils.unmodifierList(comments);
     }
     @Override
     public List<Comment> getComments() {

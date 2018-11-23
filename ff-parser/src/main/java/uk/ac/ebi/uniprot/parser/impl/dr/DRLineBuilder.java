@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DbXRefAttribute;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;

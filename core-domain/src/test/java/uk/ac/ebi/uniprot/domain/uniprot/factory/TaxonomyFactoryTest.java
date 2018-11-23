@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
@@ -28,6 +29,7 @@ public class TaxonomyFactoryTest {
         Taxon taxonByF = TaxonomyFactory.INSTANCE.createTaxon(scientificName, taxId);
         Taxon taxon = new TaxonImpl(new TaxonNameImpl(scientificName), taxId);
         assertEquals(taxon, taxonByF);
+        TestHelper.verifyJson(taxon);
     }
 
     @Test
@@ -40,6 +42,7 @@ public class TaxonomyFactoryTest {
         
         Taxon taxon = new TaxonImpl(name, taxId);
         assertEquals(taxon, taxonByF);
+        TestHelper.verifyJson(taxon);
     }
 
 
@@ -63,6 +66,7 @@ public class TaxonomyFactoryTest {
        OrganismName organism = TaxonomyFactory.INSTANCE.createFromOrganismLine( str);
        assertEquals(str, organism.getScientificName());
        assertEquals(str, organism.toString());    
+       TestHelper.verifyJson(organism);
     }
 
     @Test
@@ -73,6 +77,7 @@ public class TaxonomyFactoryTest {
         assertEquals("Human", organism.getCommonName());
         assertEquals(0, organism.getSynonyms().size());
         assertEquals(str, organism.toString());
+        TestHelper.verifyJson(organism);
     }
 
     @Test
@@ -84,6 +89,7 @@ public class TaxonomyFactoryTest {
         assertEquals("Human", organism.getCommonName());
         assertEquals(2, organism.getSynonyms().size());
         assertEquals(str, organism.toString());
+        TestHelper.verifyJson(organism);
     }
 
     @Test
@@ -93,7 +99,7 @@ public class TaxonomyFactoryTest {
        OrganismName organism = TaxonomyFactory.INSTANCE.createOrganismName( scientificName);
        OrganismName organismImpl = new OrganismNameImpl(scientificName);
        assertEquals(organismImpl, organism); 
-   
+       TestHelper.verifyJson(organism);
     }
 
     @Test

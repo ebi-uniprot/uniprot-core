@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * 
  * @author jieluo
@@ -18,7 +20,7 @@ public enum UniProtEntryType {
     private UniProtEntryType(String type) {
         this.value = type;
     }
-  
+	 @JsonValue
     public String getValue() {
         return value.toString();
     }

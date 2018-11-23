@@ -1,6 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
+import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
+
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
@@ -10,6 +16,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 
 /**
  *
@@ -18,49 +25,56 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
  * @time 18:41:20
  *
  */
+@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonSubTypes({
+		@JsonSubTypes.Type(value = uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl.class, name = "UniProtEntry") })
 public interface UniProtEntry {
+	UniProtEntryType getEntryType();
 
-	UniProtAccession getPrimaryUniProtAccession();
+	UniProtAccession getPrimaryAccession();
 
-	List<UniProtAccession> getSecondaryUniProtAccessions();
+	List<UniProtAccession> getSecondaryAccessions();
 
 	UniProtId getUniProtId();
 
-	List<OrganismName> getTaxonomyLineage();
-
-	ProteinExistence getProteinExistence();
-
-	UniProtEntryType getType();
-
 	EntryAudit getEntryAudit();
 
-	List<Organelle> getOrganelles();
-
-	List<Keyword> getKeywords();
-
-	ProteinDescription getProteinDescription();
-
-	Comments getComments();
-
-	List<Feature> getFeatures();
-	List<Feature> getFeaturesByType(FeatureType type);
-	
-	UniProtReferences getReferences();
-
-	List<Gene> getGenes();
+	UniProtTaxonId getTaxonId();
 
 	OrganismName getOrganism();
 
 	List<Organism> getOrganismHosts();
 
+	List<OrganismName> getTaxonomyLineage();
+
+	ProteinExistence getProteinExistence();
+
+	ProteinDescription getProteinDescription();
+
+	List<Gene> getGenes();
+
+	Comments getComments();
+
+	List<Feature> getFeatures();
+
+	List<Feature> getFeaturesByType(FeatureType type);
+
+	List<Organelle> getOrganelles();
+
+	List<Keyword> getKeywords();
+
+	UniProtReferences getReferences();
+
 	UniProtDBCrossReferences getDatabaseCrossReferences();
 
 	Sequence getSequence();
 
-	UniProtTaxonId getTaxonId();
+	FlagType getFlag();
+
+	InternalSection getInternalSection();
 
 	Boolean isFragment();
-	
-	InternalSection getInternalSection();
-	FlagType getFlag();
+
+	EntryInactiveReason getInactiveReason();
+	boolean isActive();
 }
