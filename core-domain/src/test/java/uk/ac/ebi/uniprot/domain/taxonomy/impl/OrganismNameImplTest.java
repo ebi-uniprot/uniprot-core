@@ -19,7 +19,7 @@ public class OrganismNameImplTest {
 		String scientificName = "Homo sapiens";
 		OrganismName organism = new OrganismNameImpl(scientificName, null, null);
 		assertEquals(scientificName, organism.getScientificName());
-		assertEquals(null, organism.getCommonName());
+		assertEquals("", organism.getCommonName());
 		assertEquals(0, organism.getSynonyms().size());
 		assertEquals("Homo sapiens", organism.toString());
 		assertTrue(organism.isValid());
