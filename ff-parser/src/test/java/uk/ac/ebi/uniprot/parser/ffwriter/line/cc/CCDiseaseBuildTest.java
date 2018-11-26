@@ -12,6 +12,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 
 public class CCDiseaseBuildTest extends CCBuildTestAbstr {	
@@ -283,10 +284,10 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
 	private Disease buildDisease(String diseaseId, String acronym,
 			String description, DiseaseReferenceType  type, String refId, List<String> evs){
 		DiseaseBuilder builder = DiseaseCommentBuilder.newDiseaseBuilder();
-		builder.diseaseId(DiseaseBuilder.createDiseaseId(diseaseId));
+		builder.diseaseId(diseaseId);
 		builder.acronym(acronym);
 		builder.description(DiseaseBuilder.createDiseaseDescription(description, createEvidence(evs)));
-		builder.reference(DiseaseBuilder.createDiseaseReference(type, refId));
+		builder.reference(UniProtFactory.INSTANCE.createDBCrossReference(type, refId));
 		return builder.build();
 		
 	}

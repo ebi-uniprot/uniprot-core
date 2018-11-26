@@ -3,14 +3,13 @@ package uk.ac.ebi.uniprot.parser.converter;
 import junit.framework.TestCase;
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.Flag;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAlternativeName;
+
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecommendedName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.de.DeLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.de.DeLineObject;
@@ -54,20 +53,20 @@ public class DeLineConverterTest {
 		deObject.altName.add(createName("Anchorin CII"));
 		deObject.flags.add(DeLineObject.FlagType.Precursor);
 		ProteinDescription pDesc = converter.convert(deObject);
-		ProteinRecommendedName recName =pDesc.getRecommendedName();
+		ProteinName recName =pDesc.getRecommendedName();
 
-		validate( "Annexin A5", "Annexin-5", recName);
-		ProteinAlternativeName altNames = pDesc.getAlternativeName();
-		assertEquals(7, altNames.getAltNames().size());
-		validate( "Annexin V",  null, altNames.getAltNames().get(0));
-		validate( "Lipocortin V",  null,altNames.getAltNames().get(1));
-		validate( "Placental anticoagulant protein I", "PAP-I",altNames.getAltNames().get(2));
-		validate( "PP4",  null, altNames.getAltNames().get(3));
-		validate( "Thromboplastin inhibitor",  null, altNames.getAltNames().get(4));
-		validate( "Vascular anticoagulant-alpha", "VAC-alpha", altNames.getAltNames().get(5));
-		validate( "Anchorin CII",  null, altNames.getAltNames().get(6));
+		validate( "Annexin A5", "Annexin-5", recName);;
+		List<ProteinName> altNames = pDesc.getAlternativeNames();
+		assertEquals(7, altNames.size());
+		validate( "Annexin V",  null, altNames.get(0));
+		validate( "Lipocortin V",  null,altNames.get(1));
+		validate( "Placental anticoagulant protein I", "PAP-I",altNames.get(2));
+		validate( "PP4",  null, altNames.get(3));
+		validate( "Thromboplastin inhibitor",  null, altNames.get(4));
+		validate( "Vascular anticoagulant-alpha", "VAC-alpha", altNames.get(5));
+		validate( "Anchorin CII",  null, altNames.get(6));
 		Flag flag =pDesc.getFlag();
-		TestCase.assertEquals(FlagType.PRECURSOR, flag.getFlagType());
+		TestCase.assertEquals(FlagType.PRECURSOR, flag.getType());
 	}
 	
 	@Test
@@ -89,19 +88,19 @@ public class DeLineConverterTest {
 		ecs.add("1.1.1.2");
 		deObject.altName.add(createName("Anchorin CII", new ArrayList<String>(), ecs));
 		ProteinDescription pDesc = converter.convert(deObject);
-		ProteinRecommendedName recName =pDesc.getRecommendedName();
+		ProteinName recName =pDesc.getRecommendedName();
 
 		
 		validate( "Annexin A5", "Annexin-5", recName);
-		ProteinAlternativeName altNames = pDesc.getAlternativeName();
-		assertEquals(7, altNames.getAltNames().size());
-		validate( "Annexin V",  null, altNames.getAltNames().get(0));
-		validate( "Lipocortin V",  null,  altNames.getAltNames().get(1));
-		validate( "Placental anticoagulant protein I", "PAP-I",  altNames.getAltNames().get(2));
-		validate( "PP4",  null,  altNames.getAltNames().get(3));
-		validate( "Thromboplastin inhibitor",  null, altNames.getAltNames().get(4));
-		validate( "Vascular anticoagulant-alpha", "VAC-alpha",  altNames.getAltNames().get(5));
-		validate( "Anchorin CII",  null, ecs,  altNames.getAltNames().get(6));
+		List<ProteinName> altNames = pDesc.getAlternativeNames();
+		assertEquals(7, altNames.size());
+		validate( "Annexin V",  null, altNames.get(0));
+		validate( "Lipocortin V",  null,  altNames.get(1));
+		validate( "Placental anticoagulant protein I", "PAP-I",  altNames.get(2));
+		validate( "PP4",  null,  altNames.get(3));
+		validate( "Thromboplastin inhibitor",  null, altNames.get(4));
+		validate( "Vascular anticoagulant-alpha", "VAC-alpha",  altNames.get(5));
+		validate( "Anchorin CII",  null, ecs,  altNames.get(6));
 		Flag flag =pDesc.getFlag();
 		assertNull(flag);
 	}
@@ -152,25 +151,25 @@ public class DeLineConverterTest {
 		deObject.containedNames.add(conName2);
 		ProteinDescription pDesc = converter.convert(deObject);
 		
-		ProteinRecommendedName recName =pDesc.getRecommendedName();
+		ProteinName recName =pDesc.getRecommendedName();
 
 		validate( "Arginine biosynthesis bifunctional protein argJ", null, recName);
-		ProteinAlternativeName altNames = pDesc.getAlternativeName();
+		List<ProteinName> altNames = pDesc.getAlternativeNames();
 		assertNull(altNames);
 		List<ProteinSection> included =pDesc.getIncludes();
 		TestCase.assertEquals(2, included.size());
 		ProteinSection included1= included.get(0);
 		validate( "Glutamate N-acetyltransferase", null, ecs, included1.getRecommendedName());
-		 altNames =included1.getAlternativeName();
-		 assertEquals(2, altNames.getAltNames().size());
-		validate( "Ornithine acetyltransferase", "OATase",altNames.getAltNames().get(0));
-		validate( "Ornithine transacetylase", null, altNames.getAltNames().get(1));
+		 altNames =included1.getAlternativeNames();
+		 assertEquals(2, altNames.size());
+		validate( "Ornithine acetyltransferase", "OATase",altNames.get(0));
+		validate( "Ornithine transacetylase", null, altNames.get(1));
 		
 		ProteinSection included2= included.get(1);
-		 altNames =included2.getAlternativeName();
-		 assertEquals(1, altNames.getAltNames().size());
+		 altNames =included2.getAlternativeNames();
+		 assertEquals(1, altNames.size());
 		validate( "Amino-acid acetyltransferase", null, ecs2, included2.getRecommendedName());
-		validate( "N-acetylglutamate synthase", "AGS", altNames.getAltNames().get(0));
+		validate( "N-acetylglutamate synthase", "AGS", altNames.get(0));
 		
 		
 		List<ProteinSection> contained =pDesc.getContains();
@@ -253,7 +252,7 @@ public class DeLineConverterTest {
 		evs.add("ECO:0000269|PubMed:15208023");
 		deObject.getEvidenceInfo().evidences.put(DeLineObject.FlagType.Precursor, evs);
 		ProteinDescription pDesc = converter.convert(deObject);
-		ProteinRecommendedName recName =pDesc.getRecommendedName();
+		ProteinName recName =pDesc.getRecommendedName();
 		
 		List<String> ecs = new ArrayList<>();
 
@@ -261,16 +260,16 @@ public class DeLineConverterTest {
 		
 		validate( "Annexin A5", "Annexin-5", ecs, recName, evidences );
 		
-		ProteinAlternativeName altNames = pDesc.getAlternativeName();
-		validate( "Annexin V",  null, ecs, altNames.getAltNames().get(0), evidences);
-		validate( "Lipocortin V",  null, ecs, altNames.getAltNames().get(1), evidences);
-		validate( "Placental anticoagulant protein I", "PAP-I", ecs, altNames.getAltNames().get(2), evidences);
-		validate( "PP4",  null, ecs, altNames.getAltNames().get(3), evidences);
-		validate( "Thromboplastin inhibitor",  null, ecs, altNames.getAltNames().get(4), evidences );
+		List<ProteinName> altNames = pDesc.getAlternativeNames();
+		validate( "Annexin V",  null, ecs, altNames.get(0), evidences);
+		validate( "Lipocortin V",  null, ecs, altNames.get(1), evidences);
+		validate( "Placental anticoagulant protein I", "PAP-I", ecs, altNames.get(2), evidences);
+		validate( "PP4",  null, ecs, altNames.get(3), evidences);
+		validate( "Thromboplastin inhibitor",  null, ecs, altNames.get(4), evidences );
 	
 		Flag flag =pDesc.getFlag();
 
-		TestCase.assertEquals(FlagType.PRECURSOR, flag.getFlagType());
+		TestCase.assertEquals(FlagType.PRECURSOR, flag.getType());
 		
 		
 	}

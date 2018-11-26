@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.parser.impl.os.OsLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.os.OsLineObject;
 

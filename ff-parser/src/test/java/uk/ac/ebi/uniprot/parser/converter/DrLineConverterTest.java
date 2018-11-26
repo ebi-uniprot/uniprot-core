@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DatabaseType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.parser.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.parser.impl.dr.DrLineConverter;
@@ -27,7 +26,7 @@ public class DrLineConverterTest {
 		UniProtDrObjects drObjects= converter.convert(obj);
 		List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
 		assertEquals(1, xrefs.size());
-		validate( xrefs.get(0), DatabaseType.EMBL,
+		validate( xrefs.get(0), "EMBL",
 				"AY548484", "AAT09660.1", "someValue", "Genomic_DNA");
 	}
 	
@@ -54,19 +53,19 @@ public class DrLineConverterTest {
 		UniProtDrObjects drObjects= converter.convert(obj);
 		List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
 		assertEquals(7, xrefs.size());
-		validate( xrefs.get(0), DatabaseType.EMBL,
+		validate( xrefs.get(0), "EMBL",
 				"AY548484", "AAT09660.1", "-", "Genomic_DNA");
-		validate( xrefs.get(1), DatabaseType.REFSEQ,
+		validate( xrefs.get(1), "REFSEQ",
 				"YP_031579.1", "NC_005946.1", null, null);
-		validate( xrefs.get(2), DatabaseType.GENEID,
+		validate( xrefs.get(2), "GENEID",
 				"2947773", "-", null, null);
-		validate( xrefs.get(3), DatabaseType.PROTCLUSTDB,
+		validate( xrefs.get(3), "PROTCLUSTDB",
 				"CLSP2511514", "-", null, null);
-		validate( xrefs.get(4), DatabaseType.GO,
+		validate( xrefs.get(4), "GO",
 				"GO:0006355", "P:regulation of transcription, DNA-dependent", "IEA:UniProtKB-KW", null);
-		validate( xrefs.get(5), DatabaseType.GO,
+		validate( xrefs.get(5), "GO",
 				"GO:0046782", "P:regulation of viral transcription", "IEA:InterPro", null );
-		validate( xrefs.get(6), DatabaseType.INTERPRO,
+		validate( xrefs.get(6), "INTERPRO",
 				"IPR007031", "Poxvirus_VLTF3", null, null );
 	}
 	
@@ -120,20 +119,20 @@ public class DrLineConverterTest {
 		UniProtDrObjects drObjects= converter2.convert(obj);
 		List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
 		assertEquals(6, xrefs.size());
-	//	validate( xrefs.get(0), DatabaseType.EMBL,
+	//	validate( xrefs.get(0), "EMBL,
 	//			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
 
-		validate( xrefs.get(0), DatabaseType.REFSEQ,
+		validate( xrefs.get(0), "REFSEQ",
 				"YP_031579.1", "NC_005946.1", null, null);
-		validate( xrefs.get(1), DatabaseType.GENEID,
+		validate( xrefs.get(1), "GENEID",
 				"2947773", "-", null, null);
-		validate( xrefs.get(2), DatabaseType.PROTCLUSTDB,
+		validate( xrefs.get(2), "PROTCLUSTDB",
 				"CLSP2511514", "-", null, null);
-		validate( xrefs.get(3), DatabaseType.GO,
+		validate( xrefs.get(3), "GO",
 				"GO:0006355", "P:regulation of transcription, DNA-dependent", "IEA:UniProtKB-KW", null);
-		validate( xrefs.get(4), DatabaseType.GO,
+		validate( xrefs.get(4), "GO",
 				"GO:0046782", "P:regulation of viral transcription", "IEA:InterPro", null );
-		validate( xrefs.get(5), DatabaseType.INTERPRO,
+		validate( xrefs.get(5), "INTERPRO",
 				"IPR007031", "Poxvirus_VLTF3", null, null );
 	}
 	
@@ -161,20 +160,20 @@ public class DrLineConverterTest {
 		UniProtDrObjects drObjects= converter2.convert(obj);
 		List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
 		assertEquals(5, xrefs.size());
-	//	validate( xrefs.get(0), DatabaseType.EMBL,
+	//	validate( xrefs.get(0), "EMBL,
 	//			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
 
-		validate( xrefs.get(0), DatabaseType.REFSEQ,
+		validate( xrefs.get(0), "REFSEQ",
 				"YP_031579.1", "NC_005946.1", null, null);
-		validate( xrefs.get(1), DatabaseType.GENEID,
+		validate( xrefs.get(1), "GENEID",
 				"2947773", "-", null, null);
-		validate( xrefs.get(2), DatabaseType.PROTCLUSTDB,
+		validate( xrefs.get(2), "PROTCLUSTDB",
 				"CLSP2511514", "-", null, null);
-		validate( xrefs.get(3), DatabaseType.GO,
+		validate( xrefs.get(3), "GO",
 				"GO:0006355", "P:regulation of transcription, DNA-dependent", "IEA:UniProtKB-KW", null);
-	//	validate( xrefs.get(4), DatabaseType.GO,
+	//	validate( xrefs.get(4), "GO,
 	//			"GO:0046782", "P:regulation of viral transcription", "IEA:InterPro", null );
-		validate( xrefs.get(4), DatabaseType.INTERPRO,
+		validate( xrefs.get(4), "INTERPRO",
 				"IPR007031", "Poxvirus_VLTF3", null, null );
 	}
 	
@@ -203,20 +202,20 @@ public class DrLineConverterTest {
 		UniProtDrObjects drObjects= converter2.convert(obj);
 		List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
 		assertEquals(6, xrefs.size());
-	//	validate( xrefs.get(0), DatabaseType.EMBL,
+	//	validate( xrefs.get(0), "EMBL,
 	//			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
 
-		validate( xrefs.get(0), DatabaseType.REFSEQ,
+		validate( xrefs.get(0), "REFSEQ",
 				"YP_031579.1", "NC_005946.1", null, null);
-		validate( xrefs.get(1), DatabaseType.GENEID,
+		validate( xrefs.get(1), "GENEID",
 				"2947773", "-", null, null);
-		validate( xrefs.get(2), DatabaseType.PROTCLUSTDB,
+		validate( xrefs.get(2), "PROTCLUSTDB",
 				"CLSP2511514", "-", null, null);
-		validate( xrefs.get(3), DatabaseType.GO,
+		validate( xrefs.get(3), "GO",
 				"GO:0006355", "P:regulation of transcription, DNA-dependent", "IEA:UniProtKB-KW", null);
-		validate( xrefs.get(4), DatabaseType.GO,
+		validate( xrefs.get(4), "GO",
 				"GO:0046782", "P:regulation of viral transcription", "IEA:InterPro", null );
-		validate( xrefs.get(5), DatabaseType.INTERPRO,
+		validate( xrefs.get(5), "INTERPRO",
 				"IPR007031", "Poxvirus_VLTF3", null, null );
 	}
 	
@@ -247,11 +246,11 @@ public class DrLineConverterTest {
 		UniProtDBCrossReference xref1 =xrefs.get(0);
 		UniProtDBCrossReference xref2=xrefs.get(1);
 		UniProtDBCrossReference xref3=xrefs.get(2);
-		validate(xref1 , DatabaseType.EMBL,
+		validate(xref1 , "EMBL",
 				"CP001509", "ACT41999.1", "-", "Genomic_DNA");
-		validate(xref2 , DatabaseType.EMBL,
+		validate(xref2 , "EMBL",
 				"AM946981", "CAQ30614.1", "-", "Genomic_DNA");
-		validate( xref3, DatabaseType.GENEID,
+		validate( xref3, "GENEID",
 				"2947773", "-", null, null);
 		List<Evidence> eviIds1 = xref1.getEvidences();
 		List<Evidence> eviIds2 = xref2.getEvidences();
@@ -263,22 +262,22 @@ public class DrLineConverterTest {
 		assertEquals("ECO:0000269|PubMed:26711274", eviIds2.get(0).getValue());
 		
 	}
-	private void validate(UniProtDBCrossReference xref, DatabaseType type,
+	private void validate(UniProtDBCrossReference xref, String type,
 			String first, String second,
 			String third, String fourth){
 		assertEquals(first, xref.getId());
-		assertEquals(second, xref.getDescription());
+		assertEquals(second, xref.getProperties().get(0).getValue());
 		if(third !=null){
-			assertTrue(xref.getThirdAttribute().isPresent());
-			assertEquals(third, xref.getThirdAttribute().get().getName());
+			assertTrue(xref.getProperties().size()>=2);
+			assertEquals(third, xref.getProperties().get(1).getValue());
 		}else {
-			assertFalse(xref.getThirdAttribute().isPresent());
+			assertFalse(xref.getProperties().size()>=2);
 		}
 		if(fourth !=null){
-			assertTrue(xref.getFourthAttribute().isPresent());
-			assertEquals(fourth, xref.getFourthAttribute().get().getName());
+			assertTrue(xref.getProperties().size()>=3);
+			assertEquals(fourth, xref.getProperties().get(2).getValue());
 		}else {
-			assertFalse(xref.getFourthAttribute().isPresent());
+			assertFalse(xref.getProperties().size()>=3);
 		}
 	}
 	private DrLineObject.DrObject creatDrObject(String dbname, String first, String second,

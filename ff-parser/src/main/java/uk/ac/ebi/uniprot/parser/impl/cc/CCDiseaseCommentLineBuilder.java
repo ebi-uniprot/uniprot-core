@@ -31,12 +31,12 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
 		}
 
 		//append the note
-		if(comment.getNote().isPresent()) {
+		if(isValidNote(comment.getNote())) {
 			if(needSpace)
 				sb.append(SPACE);
 			sb.append(NOTE);
 			boolean isfirst =true;
-			for(EvidencedValue val: comment.getNote().get().getTexts()){
+			for(EvidencedValue val: comment.getNote().getTexts()){
 				if(!isfirst)
 					sb.append(SPACE);
 				sb.append(val.getValue());
@@ -56,9 +56,9 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
 	private String createDiseaseString(Disease disease) {
 		String diseaseString = "";
 
-		diseaseString += disease.getDiseaseId().getName() + " "
+		diseaseString += disease.getDiseaseId() + " "
 				+ "(" + disease.getAcronym() + ") "
-				+ "[" + disease.getReference().getDiseaseReferenceType().toDisplayName() + ":" + disease.getReference().getDiseaseReferenceId()+ "]: "
+				+ "[" + disease.getReference().getDatabaseType().toDisplayName() + ":" + disease.getReference().getId()+ "]: "
 				+ disease.getDescription().getValue();
 
 		return diseaseString;

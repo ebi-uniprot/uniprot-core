@@ -9,8 +9,10 @@ public   final class  Position implements Comparable<Position> {
 	private final PositionModifier modifier;
 	
 	public Position(Integer value) {
-		this(value, PositionModifier.EXACT );
+		this(value, getValueModifier(value));
+	
 	}
+
 	@JsonCreator
 	public Position(@JsonProperty("value") Integer value, 
 			@JsonProperty("modifier")PositionModifier modifier) {
@@ -20,6 +22,15 @@ public   final class  Position implements Comparable<Position> {
 		}else
 		
 			this.modifier = modifier;
+	}
+	private static PositionModifier getValueModifier(Integer value) {
+			PositionModifier modifier = PositionModifier.EXACT;
+			if(value ==null) {
+				modifier = PositionModifier.UNKOWN;			
+			}else if(value.intValue()<0) {
+				modifier = PositionModifier.UNKOWN;		
+			}
+			return modifier;
 	}
 	public Integer getValue() {
 		return value;

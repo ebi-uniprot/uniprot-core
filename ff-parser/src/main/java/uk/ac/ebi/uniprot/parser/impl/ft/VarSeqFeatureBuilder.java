@@ -9,21 +9,21 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.feature.VarSeqFeature;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 
 public class VarSeqFeatureBuilder 
-extends AbstractFeatureLineBuilder<UniProtFeature<VarSeqFeature>> {
+extends AbstractFeatureLineBuilder {
 	
 	@Override
-	protected List<String> buildLines(UniProtFeature<VarSeqFeature> f, boolean includeFFMarkings, 
+	protected List<String> buildLines(Feature f, boolean includeFFMarkings, 
 			boolean addEvidence) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(FTLineBuilderHelper.buildFeatureCommon(f.getFeature(), includeFFMarkings));
-		StringBuilder extra =FTLineBuilderHelper.buildExtra(f.getFeature());
+		sb.append(FTLineBuilderHelper.buildFeatureCommon(f, includeFFMarkings));
+		StringBuilder extra =FTLineBuilderHelper.buildExtra(f);
 		String evIds ="";
 		if(addEvidence){
 			evIds = LineBuilderHelper.export(f.getEvidences());
@@ -36,7 +36,7 @@ extends AbstractFeatureLineBuilder<UniProtFeature<VarSeqFeature>> {
 		}
 		sb.append(extra);
 		List<String> lines = new ArrayList<>();
-		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f.getFeature() ,includeFFMarkings);
+		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f ,includeFFMarkings);
 		for(int i=0; i<lines2.size(); i++){
 			if(i== (lines2.size()-1)){
 				sb =new StringBuilder(lines2.get(i));
@@ -44,10 +44,10 @@ extends AbstractFeatureLineBuilder<UniProtFeature<VarSeqFeature>> {
 				lines.add(lines2.get(i));
 			}
 		}
-		if((f.getFeature().getReport() !=null) &&
-		  (f.getFeature().getReport().getValue().size() > 0)) {
+		if((f.getAlternativeSequence().getReport() !=null) &&
+		  (f.getAlternativeSequence().getReport().getValue().size() > 0)) {
 			sb.append(" (");
-			sb.append(getStringIsoformsVarSplicFeature(f.getFeature()));
+			sb.append(getStringIsoformsVarSplicFeature(f));
 			sb.append(")");
 
 		}
@@ -64,20 +64,20 @@ extends AbstractFeatureLineBuilder<UniProtFeature<VarSeqFeature>> {
 			lines.addAll(lines3);
 		else
 			lines.add(sb.toString());
-		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f.getFeature(), includeFFMarkings);
+		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f, includeFFMarkings);
 		if(featureId.length()>0){
 			lines.add(featureId.toString());
 		}
 		return lines;
 	}	
-	private String getStringIsoformsVarSplicFeature(VarSeqFeature feature) {
+	private String getStringIsoformsVarSplicFeature(Feature feature) {
 		
 	        StringBuilder temp = new StringBuilder();
-	        int numberReports = feature.getReport().getValue().size();
+	        int numberReports = feature.getAlternativeSequence().getReport().getValue().size();
 	        if (numberReports == 0) return "";
 
 	        int count = 0;
-	        for (String isoform : feature.getReport().getValue()) {
+	        for (String isoform : feature.getAlternativeSequence().getReport().getValue()) {
 	            if (count == 0) {
 	                temp.append("in ");
 	            } else {

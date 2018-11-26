@@ -7,8 +7,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
-import uk.ac.ebi.uniprot.domain.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.COLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DASH;
@@ -20,33 +19,33 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractFeatureLineBuilder<T extends UniProtFeature<? extends Feature>>
-		extends FFLineBuilderAbstr<T> implements FFLineBuilder<T> {
+public abstract class AbstractFeatureLineBuilder
+		extends FFLineBuilderAbstr<Feature> implements FFLineBuilder<Feature> {
 	public AbstractFeatureLineBuilder() {
 		super(LineType.FT);
 	}
 
 	@Override
-	public String buildString(T f) {
+	public String buildString(Feature f) {
 		List<String> lines = buildLines(f, false, false);
 		return FFLines.create(lines).toString();
 	}
 
 	@Override
-	public String buildStringWithEvidence(T f) {
+	public String buildStringWithEvidence(Feature f) {
 		List<String> lines = buildLines(f, false, true);
 		return FFLines.create(lines).toString();
 	}
 
 	@Override
-	protected FFLine buildLine(T f, boolean showEvidence) {
+	protected FFLine buildLine(Feature f, boolean showEvidence) {
 		List<String> lines = buildLines(f, true, showEvidence);
 		return FFLines.create(lines);
 	}
 
-	protected List<String> buildLines(T f, boolean includeFFMarkings, boolean addEvidence) {
+	protected List<String> buildLines(Feature f, boolean includeFFMarkings, boolean addEvidence) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(FTLineBuilderHelper.buildFeatureCommon(f.getFeature(), includeFFMarkings));
+		sb.append(FTLineBuilderHelper.buildFeatureCommon(f, includeFFMarkings));
 		StringBuilder extra = buildExtra(f);
 		String evIds = "";
 		if (addEvidence) {
@@ -73,7 +72,7 @@ public abstract class AbstractFeatureLineBuilder<T extends UniProtFeature<? exte
 			sb.append(evIds);
 			sb.append(STOP);
 		}
-		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f.getFeature(), includeFFMarkings);
+		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f, includeFFMarkings);
 		List<String> lines = new ArrayList<>();
 		if (includeFFMarkings) {
 			String[] seps = { SEPARATOR, DASH, COLON };
@@ -89,8 +88,8 @@ public abstract class AbstractFeatureLineBuilder<T extends UniProtFeature<? exte
 
 	}
 
-	protected StringBuilder buildExtra(T f) {
-		return FTLineBuilderHelper.buildExtra(f.getFeature());
+	protected StringBuilder buildExtra(Feature f) {
+		return FTLineBuilderHelper.buildExtra(f);
 	}
 
 }

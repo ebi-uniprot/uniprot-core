@@ -25,11 +25,11 @@ public class CcLineSubCellCommentParserTest {
 		assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
 		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
 		assertEquals(3, sl.locations.size());
-		verify(sl.locations.get(0).subcellular_location, "Cytoplasm", null );
-		verify(sl.locations.get(1).subcellular_location, "Endoplasmic reticulum membrane", null );
+		verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", null );
+		verify(sl.locations.get(1).subcellularLocation, "Endoplasmic reticulum membrane", null );
 		verify(sl.locations.get(1).topology, "Peripheral membrane protein", null );
 		
-		verify(sl.locations.get(2).subcellular_location, "Golgi apparatus membrane", null );
+		verify(sl.locations.get(2).subcellularLocation, "Golgi apparatus membrane", null );
 		verify(sl.locations.get(2).topology, "Peripheral membrane protein", null );
 	}
 	private void verify(CcLineObject.LocationValue lv, String value, LocationFlagEnum flag) {
@@ -53,9 +53,9 @@ public class CcLineSubCellCommentParserTest {
 		assertEquals(2, sl.locations.size());
 		
 		
-		verify(sl.locations.get(0).subcellular_location, "Cell membrane", null );
-		verify(sl.locations.get(0).topology, "Peripheral membrane protein", LocationFlagEnum.By_similarity );
-		verify(sl.locations.get(1).subcellular_location, "Secreted",  LocationFlagEnum.By_similarity );
+		verify(sl.locations.get(0).subcellularLocation, "Cell membrane", null );
+		verify(sl.locations.get(0).topology, "Peripheral membrane protein", LocationFlagEnum.BY_SIMILARITY );
+		verify(sl.locations.get(1).subcellularLocation, "Secreted",  LocationFlagEnum.BY_SIMILARITY );
 
 	}
 	
@@ -74,7 +74,7 @@ public class CcLineSubCellCommentParserTest {
 		assertEquals("Isoform 2", sl.molecule);
 		
 		
-		verify(sl.locations.get(0).subcellular_location, "Cytoplasm", LocationFlagEnum.Probable );
+		verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", LocationFlagEnum.PROBABLE );
 		//verify(sl.locations.get(0).topology, "Peripheral membrane protein", LocationFlagEnum.By_similarity );
 		//verify(sl.locations.get(1).subcellular_location, "Secreted",  LocationFlagEnum.By_similarity );
 
@@ -148,7 +148,7 @@ public class CcLineSubCellCommentParserTest {
 		assertEquals("Isoform UL12.5", sl.molecule);
 		
 		
-		verify(sl.locations.get(0).subcellular_location, "Host mitochondrion", null );
+		verify(sl.locations.get(0).subcellularLocation, "Host mitochondrion", null );
 		//verify(sl.locations.get(0).topology, "Peripheral membrane protein", LocationFlagEnum.By_similarity );
 		//verify(sl.locations.get(1).subcellular_location, "Secreted",  LocationFlagEnum.By_similarity );
 
@@ -210,8 +210,8 @@ public class CcLineSubCellCommentParserTest {
 		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
 		assertEquals(1, sl.locations.size());
 		
-		verify(sl.locations.get(0).subcellular_location, "Mitochondrion inner membrane", null );
-		verify(sl.locations.get(0).topology, "Multi-pass membrane protein", LocationFlagEnum.By_similarity );
+		verify(sl.locations.get(0).subcellularLocation, "Mitochondrion inner membrane", null );
+		verify(sl.locations.get(0).topology, "Multi-pass membrane protein", LocationFlagEnum.BY_SIMILARITY );
 		//verify(sl.locations.get(1).subcellular_location, "Secreted",  LocationFlagEnum.By_similarity );
 		assertEquals("ECO:0000002|PubMed:1234213", obj.evidenceInfo.evidences.get(sl.locations.get(0).topology).get(0) );
 
@@ -231,10 +231,10 @@ public class CcLineSubCellCommentParserTest {
 		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
 		assertEquals(1, sl.locations.size());
 		
-		verify(sl.locations.get(0).subcellular_location, "Mitochondrion intermembrane space", null );
+		verify(sl.locations.get(0).subcellularLocation, "Mitochondrion intermembrane space", null );
 		//verify(sl.locations.get(1).subcellular_location, "Secreted",  LocationFlagEnum.By_similarity );
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellular_location).get(0) );
-		assertEquals("ECO:0000269|PubMed:10433554", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellular_location).get(1) );
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(0) );
+		assertEquals("ECO:0000269|PubMed:10433554", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(1) );
 		assertEquals("Loosely associated with the inner membrane", sl.note.get(0).value );
 		assertEquals("ECO:0000303|Ref.6", sl.note.get(0).evidences.get(0) );
 		assertEquals("ECO:0000313|PDB:3OW2", sl.note.get(0).evidences.get(1) );
@@ -254,8 +254,8 @@ public class CcLineSubCellCommentParserTest {
 		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
 		assertEquals(1, sl.locations.size());
 		
-		verify(sl.locations.get(0).subcellular_location, "Mitochondrion inner membrane", null );
-		verify(sl.locations.get(0).topology, "Multi-pass membrane protein",  LocationFlagEnum.By_similarity );
+		verify(sl.locations.get(0).subcellularLocation, "Mitochondrion inner membrane", null );
+		verify(sl.locations.get(0).topology, "Multi-pass membrane protein",  LocationFlagEnum.BY_SIMILARITY );
 		assertEquals("ECO:0000002|PubMed:1234213", obj.evidenceInfo.evidences.get(sl.locations.get(0)).get(0) );
 
 	}
@@ -317,10 +317,10 @@ public class CcLineSubCellCommentParserTest {
 		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
 		assertEquals(1, sl.locations.size());
 		
-		verify(sl.locations.get(0).subcellular_location, "Mitochondrion intermembrane space", null );
+		verify(sl.locations.get(0).subcellularLocation, "Mitochondrion intermembrane space", null );
 		//verify(sl.locations.get(1).subcellular_location, "Secreted",  LocationFlagEnum.By_similarity );
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellular_location).get(0) );
-		assertEquals("ECO:0000269|PubMed:10433554", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellular_location).get(1) );
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(0) );
+		assertEquals("ECO:0000269|PubMed:10433554", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(1) );
 		assertEquals("Loosely associated with the inner membrane", sl.note.get(0).value );
 		assertEquals("ECO:0000303|Ref.6", sl.note.get(0).evidences.get(0) );
 		assertEquals("ECO:0000313|PDB:3OW2", sl.note.get(0).evidences.get(1) );

@@ -47,10 +47,10 @@ public class CCRnaEditingCommentLineBuilder extends
 		//	sb = addEvidence(comment, sb, showEvidence, "");
 		}
 		sb.append(SEMI_COMA);
-		if(comment.getNote().isPresent()) {
+		if(isValidNote(comment.getNote())) {
 			sb.append(SPACE);
 			sb.append(NOTE);
-	        String freeTextStr= buildFreeText(comment.getNote().get(), showEvidence, STOP, SEMI_COMA);
+	        String freeTextStr= buildFreeText(comment.getNote(), showEvidence, STOP, SEMI_COMA);
 	        sb.append(freeTextStr);   
 		}
 		if (includeFFMarkings) {

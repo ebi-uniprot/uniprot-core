@@ -31,7 +31,7 @@ public class CcLineMSCommentParserTest {
 	
 	private void verify(CcLineObject.MassSpectrometry ms, float mass, float mass_error, String method, int rangeSize, int start, int end) {
 		assertEquals(mass, ms.mass, 0.000001f);
-		assertEquals(mass_error, ms.mass_error, 0.000001f);
+		assertEquals(mass_error, ms.massError, 0.000001f);
 		assertEquals(method, ms.method);
 		assertEquals(rangeSize, ms.ranges.size());
 		if(ms.ranges.size()>0) {
@@ -52,7 +52,7 @@ public class CcLineMSCommentParserTest {
 		CcLineObject.MassSpectrometry ms = (CcLineObject.MassSpectrometry) cc.object;
 
 		verify(ms,  13822, 0, "MALDI", 1, 19, 140);
-		assertEquals("P15522-2", ms.ranges.get(0).range_isoform);
+		assertEquals("P15522-2", ms.ranges.get(0).rangeIsoform);
 		assertEquals(1, ms.sources.size());
 	
 		assertEquals("ECO:0000006|PubMed:16629414", ms.sources.get(0));
@@ -93,7 +93,7 @@ public class CcLineMSCommentParserTest {
 
 
 		verify(ms,  9571, 0, "Electrospray", 1, 1, 0);
-		assertTrue(ms.ranges.get(0).end_unknown);
+		assertTrue(ms.ranges.get(0).endUnknown);
 		assertEquals(1, ms.sources.size());
 	
 		assertEquals("ECO:0000006|PubMed:16629414", ms.sources.get(0));

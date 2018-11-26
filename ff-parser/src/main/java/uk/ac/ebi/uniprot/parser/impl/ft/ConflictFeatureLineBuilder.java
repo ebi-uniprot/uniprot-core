@@ -10,20 +10,20 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.feature.ConflictFeature;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 
 public class ConflictFeatureLineBuilder 
-extends AbstractFeatureLineBuilder<UniProtFeature<ConflictFeature>> {
+extends AbstractFeatureLineBuilder {
 	
 	@Override
-	protected List<String> buildLines(UniProtFeature<ConflictFeature> f, boolean includeFFMarkings, 
+	protected List<String> buildLines(Feature f, boolean includeFFMarkings, 
 			boolean addEvidence) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(FTLineBuilderHelper.buildFeatureCommon(f.getFeature(), includeFFMarkings));
-		StringBuilder extra =FTLineBuilderHelper.buildExtra(f.getFeature());
+		sb.append(FTLineBuilderHelper.buildFeatureCommon(f, includeFFMarkings));
+		StringBuilder extra =FTLineBuilderHelper.buildExtra(f);
 		String evIds ="";
 		if(addEvidence){
 			evIds = LineBuilderHelper.export(f.getEvidences());
@@ -35,7 +35,7 @@ extends AbstractFeatureLineBuilder<UniProtFeature<ConflictFeature>> {
 		}
 		sb.append(extra);
 		List<String> lines = new ArrayList<>();
-		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f.getFeature(),  includeFFMarkings);
+		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f,  includeFFMarkings);
 		for(int i=0; i<lines2.size(); i++){
 			if(i== (lines2.size()-1)){
 				sb =new StringBuilder(lines2.get(i));
@@ -44,7 +44,7 @@ extends AbstractFeatureLineBuilder<UniProtFeature<ConflictFeature>> {
 			}
 		}
 		sb.append(" (");
-		sb.append(getStringConflictReports(f.getFeature()));
+		sb.append(getStringConflictReports(f));
 		sb.append(")");
 		sb.append(STOP);
 		if(evIds.length()>0){
@@ -59,20 +59,20 @@ extends AbstractFeatureLineBuilder<UniProtFeature<ConflictFeature>> {
 			lines.addAll(lines3);
 		else
 			lines.add(sb.toString());
-		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f.getFeature(), includeFFMarkings);
+		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f, includeFFMarkings);
 		if(featureId.length()>0){
 			lines.add(featureId.toString());
 		}
 		return lines;
 	}
-	 private String getStringConflictReports(ConflictFeature feature) {
+	 private String getStringConflictReports(Feature feature) {
 		 
 	        StringBuilder temp = new StringBuilder();
 	        boolean first = true;
-	        if((feature.getReport() ==null) || (feature.getReport().getValue().isEmpty())) {
-	        		return "";
-	        }
-	        int size = feature.getReport().getValue().size();
+	        if(feature.getAlternativeSequence().getReport().getValue().isEmpty())
+	        	return "";
+
+	        int size = feature.getAlternativeSequence().getReport().getValue().size();
 	        for(int i =0; i<size; i++) {
 	        		if(i==0) {
 	        			temp.append("in Ref. ");
@@ -81,7 +81,7 @@ extends AbstractFeatureLineBuilder<UniProtFeature<ConflictFeature>> {
 	        		}else {
 	        			temp.append(", ");
 	        		}
-	        		 temp.append(feature.getReport().getValue().get(i));
+	        		 temp.append(feature.getAlternativeSequence().getReport().getValue().get(i));
 	        }
 	        
 	        return temp.toString();

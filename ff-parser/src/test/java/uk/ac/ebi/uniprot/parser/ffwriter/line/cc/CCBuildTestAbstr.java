@@ -14,7 +14,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
@@ -71,8 +70,8 @@ public abstract class CCBuildTestAbstr {
 	
 	}
 	protected List<Evidence> createEvidence(List<String> evIds) {
-		EvidenceFactory evFactory = UniProtFactory.INSTANCE.getEvidenceFactory();
-		return evIds.stream().map(val -> evFactory.createFromEvidenceLine(val)).collect(Collectors.toList());
+		
+		return evIds.stream().map(val -> UniProtFactory.INSTANCE.createEvidence(val)).collect(Collectors.toList());
 
 	}
 	protected EvidencedValue createEvidencedValue(String val, List<String> evIds){

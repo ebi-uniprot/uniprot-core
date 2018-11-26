@@ -74,7 +74,7 @@ public class CcLineRnaEdCommentParserTest {
 		assertTrue(cc.object instanceof CcLineObject.RnaEditing);
 		CcLineObject.RnaEditing re = (CcLineObject.RnaEditing) cc.object;
 		assertEquals(0, re.locations.size());
-		assertEquals(RnaEditingLocationEnum.Undetermined, re.locationEnum);
+		assertEquals(RnaEditingLocationEnum.UNDETERMINED, re.locationEnum);
 		assertEquals("Partially edited. 11 sites are edited by Adar.", re.note.get(0).value);
 	}
 	@Test

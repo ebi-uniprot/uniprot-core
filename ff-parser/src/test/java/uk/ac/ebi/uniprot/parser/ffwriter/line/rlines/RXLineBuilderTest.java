@@ -1,16 +1,17 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.rlines;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationXref;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
+import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.impl.rx.RXLineBuilder;
 
 
@@ -78,15 +79,15 @@ public class RXLineBuilderTest {
 		assertEquals(expected, lines.get(0));
 	}
 	private CitationXrefs buildCitationXref(String pubmed, String doi, String agricolaId ){
-		CitationXrefsImpl builder =CitationXrefsImpl.newInstance();
-		List<CitationXref> xrefs = new ArrayList<>();
+
+		List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
 		if(pubmed !=null)
-			xrefs.add(builder.createCitationXref(CitationXrefType.PUBMED, pubmed));
+			xrefs.add(UniProtFactory.INSTANCE.createDBCrossReference(CitationXrefType.PUBMED, pubmed));
 		if(doi !=null)
-		xrefs.add(builder.createCitationXref(CitationXrefType.DOI, doi));
+		xrefs.add(UniProtFactory.INSTANCE.createDBCrossReference(CitationXrefType.DOI, doi));
 		if(agricolaId !=null)
-			xrefs.add(builder.createCitationXref(CitationXrefType.AGRICOLA, agricolaId));
-		return builder.createCitationXrefs(xrefs);
+			xrefs.add(UniProtFactory.INSTANCE.createDBCrossReference(CitationXrefType.AGRICOLA, agricolaId));
+		return AbstractCitationBuilder.createCitationXrefs(xrefs);
 		
 	}
 }

@@ -94,18 +94,18 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
     	FFLine entryLines = FFLines.create();
     	if(types.contains(LineType.ID)) {
     		IdLineObject idlineObject = new IdLineObject(entry.getUniProtId().getValue(), 
-    				entry.getType() == UniProtEntryType.SWISSPROT,
+    				entry.getEntryType() == UniProtEntryType.SWISSPROT,
     				 entry.getSequence().getLength()) ;
     		entryLines.add(idLineBuilder.build(idlineObject));
     	}
     	if(types.contains(LineType.AC)){
     		List<UniProtAccession> acc = new ArrayList<UniProtAccession>();
-    		acc.add(entry.getPrimaryUniProtAccession());
-    		acc.addAll(entry.getSecondaryUniProtAccessions());
+    		acc.add(entry.getPrimaryAccession());
+    		acc.addAll(entry.getSecondaryAccessions());
     		entryLines.add(acLineBuilder.buildWithEvidence(acc));
     	}
     	if(types.contains(LineType.DT)){
-    		Map.Entry<EntryAudit, UniProtEntryType> dt = new AbstractMap.SimpleEntry<>(entry.getEntryAudit(), entry.getType());
+    		Map.Entry<EntryAudit, UniProtEntryType> dt = new AbstractMap.SimpleEntry<>(entry.getEntryAudit(), entry.getEntryType());
     		entryLines.add(dtLineBuilder.buildWithEvidence(dt));
     	}
     	if(types.contains(LineType.DE))
@@ -150,7 +150,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
     	if(types.contains(LineType.KW))
     		entryLines.add(kwLineBuilder.buildWithEvidence(entry.getKeywords()));
     	if(types.contains(LineType.FT))
-    		entryLines.add(ftLineBuilder.buildWithEvidence(entry.getFeatures().getFeatues()));
+    		entryLines.add(ftLineBuilder.buildWithEvidence(entry.getFeatures()));
     	if(types.contains(LineType.STAR_STAR))
          	entryLines.add(ssLineBuilder.buildWithEvidence(entry.getInternalSection()));
     	if(types.contains(LineType.SQ))

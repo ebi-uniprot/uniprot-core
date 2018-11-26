@@ -5,7 +5,7 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEvent;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
@@ -67,9 +67,9 @@ public class CCAPCommentLineBuilder extends
 			altProd.append(this.linePrefix);
 		}
 		altProd.append(EVENT2);
-		List<APEvent> events = comment.getEvents();
+		List<APEventType> events = comment.getEvents();
 		for (int iii = 0; iii < events.size(); iii++) {
-			APEvent event = events.get(iii);
+			APEventType event = events.get(iii);
 			altProd.append(event.getName());
 			if (iii < events.size() - 1) {
 				altProd.append(SEPARATOR_COMA);
@@ -91,8 +91,8 @@ public class CCAPCommentLineBuilder extends
 			AlternativeProductsComment comment,
 			boolean includeFlatFileMarkings, boolean showEvidence) {
 		List<String> lines = new ArrayList<>();
-		if(comment.getNote().isPresent()) {
-			Note note = comment.getNote().get();
+		if (isValidNote(comment.getNote())) {
+			Note note = comment.getNote();
 			StringBuilder asComment = new StringBuilder();
 			if (includeFlatFileMarkings) {
 				asComment.append(CC_PREFIX_INDENT);
@@ -165,7 +165,7 @@ public class CCAPCommentLineBuilder extends
 			APIsoform alternativeProductsIsoform,
 			boolean includeFlatFileMarkings, boolean showEvidence) {
 		List<String> lines = new ArrayList<>();
-		if (alternativeProductsIsoform.getIds().isEmpty()) {
+		if (alternativeProductsIsoform.getIsoformIds().isEmpty()) {
 			return lines;
 		}
 		StringBuilder isoform = new StringBuilder();
@@ -173,11 +173,11 @@ public class CCAPCommentLineBuilder extends
 			isoform.append(CC_PREFIX_INDENT);
 		}
 		isoform.append(ISO_ID);
-		for (int i = 0; i < alternativeProductsIsoform.getIds().size(); i++) {
-			isoform.append(alternativeProductsIsoform.getIds().get(i)
-					.getName());
+		for (int i = 0; i < alternativeProductsIsoform.getIsoformIds().size(); i++) {
+			isoform.append(alternativeProductsIsoform.getIsoformIds().get(i)
+					.getValue());
 			addSeparator(isoform, SEMI_COMA, SEPARATOR_COMA,
-					(i == (alternativeProductsIsoform.getIds().size() - 1)));
+					(i == (alternativeProductsIsoform.getIsoformIds().size() - 1)));
 
 		}
 
@@ -220,14 +220,14 @@ public class CCAPCommentLineBuilder extends
 			APIsoform alternativeProductsIsoform,
 			boolean includeFlatFileMarkings, boolean showEvidence) {
 		List<String> lines = new ArrayList<>();
-		if(!alternativeProductsIsoform.getNote().isPresent()) {
+		if(!isValidNote(alternativeProductsIsoform.getNote())) {
 			return lines;
 		}
 		StringBuilder asComment = new StringBuilder();
 		if (includeFlatFileMarkings)
 			asComment.append(CC_PREFIX_INDENT);
 		asComment.append("Note=");
-		String freeTextStr= buildFreeText(alternativeProductsIsoform.getNote().get(), showEvidence, STOP, SEMI_COMA);
+		String freeTextStr= buildFreeText(alternativeProductsIsoform.getNote(), showEvidence, STOP, SEMI_COMA);
         asComment.append(freeTextStr);    
 		if (includeFlatFileMarkings) {
 			List<String> lls = FFLineWrapper.buildLines(asComment.toString(),

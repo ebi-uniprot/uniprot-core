@@ -7,12 +7,12 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 
 @JsonTypeInfo(use = NAME, include = PROPERTY)
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.description.impl.ECImpl.class, name = "ecImpl")
 })
-public interface EC  extends ECNumber, HasEvidences{
+public interface EC  extends ECNumber, EvidencedValue{
 
 }

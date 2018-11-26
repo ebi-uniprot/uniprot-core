@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.parser.converter;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineConverter;
@@ -46,20 +47,20 @@ public class CcLineConverterTest {
 		
 		Comment comment1 =comments.get(0);
 		assertEquals(CommentType.FUNCTION, comment1.getCommentType());
-		assertTrue (comment1 instanceof FunctionComment);
+		assertTrue (comment1 instanceof FreeTextComment);
 		
-		FunctionComment fcomment = (FunctionComment) comment1;
+		FreeTextComment fcomment = (FreeTextComment) comment1;
 		assertEquals("This enzyme is necessary for target cell lysis in cell-mediated immune responses."
 				+ " It cleaves after Lys or Arg. May be involved in apoptosis.",
-				fcomment.getTexts().get(0).getName());
+				fcomment.getTexts().get(0).getValue());
 	//	assertEquals(CommentStatus.EXPERIMENTAL, fcomment.getCommentStatus());
 		Comment comment2 =comments.get(1);
 		assertEquals(CommentType.DOMAIN, comment2.getCommentType());
-		assertTrue (comment2 instanceof DomainComment);
+		assertTrue (comment2 instanceof FreeTextComment);
 		
-		DomainComment dcomment = (DomainComment) comment2;
+		FreeTextComment dcomment = (FreeTextComment) comment2;
 		assertEquals("The di-lysine motif may confer endoplasmic reticulum localization (By similarity)",
-				dcomment.getTexts().get(0).getName());
+				dcomment.getTexts().get(0).getValue());
 	}
 	@Test
 	public void testWebResource(){
@@ -84,8 +85,8 @@ public class CcLineConverterTest {
 		
 		WebResourceComment wcomment = (WebResourceComment) comment1;
 		assertEquals("CD40Lbase", wcomment.getResourceName());
-		assertEquals("CD40L defect database", wcomment.getNote().get());
-		assertEquals("http://bioinf.uta.fi/CD40Lbase/", wcomment.getResourceUrl().get());
+		assertEquals("CD40L defect database", wcomment.getNote());
+		assertEquals("http://bioinf.uta.fi/CD40Lbase/", wcomment.getResourceUrl());
 		assertFalse(wcomment.isFtp());
 		
 	}
@@ -120,7 +121,7 @@ public class CcLineConverterTest {
 		RnaEditingComment wcomment = (RnaEditingComment) comment1;
 		
 		assertEquals("The initiator methionine is created by RNA editing",
-				wcomment.getNote().get().getTexts().get(0).getName());
+				wcomment.getNote().getTexts().get(0).getValue());
 		assertEquals(RnaEditingLocationType.Known, wcomment.getLocationType());
 		assertEquals(6, wcomment.getPositions().size());
 		assertEquals("1", wcomment.getPositions().get(0).getPosition());
@@ -141,7 +142,7 @@ public class CcLineConverterTest {
 		mrange.start =19;
 		mrange.end = 140;
 		wr.ranges.add(mrange);
-        mrange.range_isoform ="P15522-2";
+        mrange.rangeIsoform ="P15522-2";
 		wr.sources.add("ECO:0000269|PubMed:15208022");
 		cc1.object =wr;
 		ccLineO.ccs.add(cc1);
@@ -156,15 +157,15 @@ public class CcLineConverterTest {
 		MassSpectrometryComment wcomment = (MassSpectrometryComment) comment1;
 		 
 		assertEquals(13822.0,wcomment.getMolWeight(),0.0001);
-		assertTrue( wcomment.getMolWeightError().isPresent());
-		assertEquals(0,wcomment.getMolWeightError().get(),0.0001);
+		assertTrue( wcomment.getMolWeightError() !=null);
+		assertEquals(0,wcomment.getMolWeightError(),0.0001);
 	//	assertEquals(null, wcomment.getNote());
 		List<MassSpectrometryRange> ranges=wcomment.getRanges();
 		assertEquals(1, ranges.size());
 		MassSpectrometryRange range = ranges.get(0);
 		assertEquals("P15522-2", range.getIsoformId());
-		assertEquals(19, range.getStart().intValue());
-		assertEquals(140, range.getEnd().intValue());
+		assertEquals(19, range.getRange().getStart().getValue().intValue());
+		assertEquals(140, range.getRange().getEnd().getValue().intValue());
 		List<Evidence> sources = wcomment.getEvidences();
 		assertEquals(1, sources.size());
 		Evidence source = sources.get(0);
@@ -185,12 +186,12 @@ public class CcLineConverterTest {
 		CcLineObject.SequenceCaution sc =new CcLineObject.SequenceCaution();
 		CcLineObject.SequenceCautionObject sco1 =new CcLineObject.SequenceCautionObject();
 		sco1.sequence ="CAI12537.1";
-		sco1.type = CcLineObject.SequenceCautionType.Erroneous_gene_model_prediction;
+		sco1.type = CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION;
 		sc.sequenceCautionObjects.add(sco1);
 		
 		CcLineObject.SequenceCautionObject sco2 =new CcLineObject.SequenceCautionObject();
 		sco2.sequence ="CAI39742.1";
-		sco2.type = CcLineObject.SequenceCautionType.Erroneous_gene_model_prediction;
+		sco2.type = CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION;
 		sco2.positions.add(388);
 		sco2.positions.add(399);
 		sc.sequenceCautionObjects.add(sco2);
@@ -251,10 +252,10 @@ public class CcLineConverterTest {
 		wr.kms.add(new EvidencedString("0.47 mM for acetyl phosphate", new ArrayList<String>()));
 		String temDe =	"Optimum temperature is 65 degrees Celsius. Protected from " +
 			      "thermal inactivation by ATP";
-		wr.temperature_dependence.add(new EvidencedString(temDe, new ArrayList<String>()));
+		wr.temperatureDependence.add(new EvidencedString(temDe, new ArrayList<String>()));
 			
-		wr.bsorption_abs = new EvidencedString ("3 nm", new ArrayList<String>());
-		wr.bsorption_note.add(new EvidencedString("foo bar foo bar", new ArrayList<String>()));
+		wr.bsorptionAbs = new EvidencedString ("3 nm", new ArrayList<String>());
+		wr.bsorptionNote.add(new EvidencedString("foo bar foo bar", new ArrayList<String>()));
 		cc1.object =wr;
 		ccLineO.ccs.add(cc1);
 	
@@ -267,11 +268,11 @@ public class CcLineConverterTest {
 		
 		BPCPComment wcomment 
 		= (BPCPComment) comment1;
-		assertTrue( wcomment.getAbsorption().isPresent());
-		assertFalse(wcomment.getPHDependence().isPresent());
-		assertFalse(wcomment.getRedoxPotential().isPresent());
-		assertTrue(wcomment.getTemperatureDependence().isPresent());
-		KineticParameters kp =wcomment.getKineticParameters().get();
+		assertTrue( wcomment.getAbsorption() !=null);
+		assertFalse(wcomment.getPhDependence() !=null);
+		assertFalse(wcomment.getRedoxPotential() !=null);
+		assertTrue(wcomment.getTemperatureDependence() !=null);
+		KineticParameters kp =wcomment.getKineticParameters();
 		assertEquals(0, kp.getMaximumVelocities().size());
 		assertEquals(4, kp.getMichaelisConstants().size());
 		List<MichaelisConstant>  mcs =kp.getMichaelisConstants();
@@ -285,10 +286,10 @@ public class CcLineConverterTest {
 		assertEquals(MichaelisConstantUnit.MILLI_MOL, mc3.getUnit());
 		assertEquals("acetate", mc3.getSubstrate());
 		assertEquals("Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP",
-				wcomment.getTemperatureDependence().get().getTexts().get(0).getName());
-		Absorption ab =wcomment.getAbsorption().get();
+				wcomment.getTemperatureDependence().getTexts().get(0).getValue());
+		Absorption ab =wcomment.getAbsorption();
 		assertEquals(3, ab.getMax());
-		assertEquals("foo bar foo bar", ab.getNote().get().getTexts().get(0).getName());
+		assertEquals("foo bar foo bar", ab.getNote().getTexts().get(0).getValue());
 	}
 	
 	@Test
@@ -309,10 +310,10 @@ public class CcLineConverterTest {
 				new CcLineObject.BiophysicochemicalProperties();
 		wr.kms.add(new EvidencedString("71 uM for ATP", new ArrayList<String>()));
 		wr.kms.add(new EvidencedString("98 uM for ADP", new ArrayList<String>()));
-		wr.ph_dependence.add(new EvidencedString("Optimum pH is 7.75", new ArrayList<String>()));
+		wr.phDependence.add(new EvidencedString("Optimum pH is 7.75", new ArrayList<String>()));
 		String tempDe ="Optimum temperature is 65 degrees Celsius. Protected from " +
 			      "thermal inactivation by ATP";
-		wr.temperature_dependence.add(new EvidencedString(tempDe, new ArrayList<String>()));
+		wr.temperatureDependence.add(new EvidencedString(tempDe, new ArrayList<String>()));
 				
 		cc1.object =wr;
 		ccLineO.ccs.add(cc1);
@@ -326,11 +327,11 @@ public class CcLineConverterTest {
 		
 		BPCPComment wcomment 
 		= (BPCPComment) comment1;
-		assertEquals(false, wcomment.getAbsorption().isPresent());
-		assertTrue(wcomment.getPHDependence().isPresent());
-		assertFalse(wcomment.getRedoxPotential().isPresent());
-		assertTrue(wcomment.getTemperatureDependence().isPresent());
-		KineticParameters kp =wcomment.getKineticParameters().get();
+		assertEquals(false, wcomment.getAbsorption() !=null);
+		assertTrue(wcomment.getPhDependence() !=null);
+		assertFalse(wcomment.getRedoxPotential() !=null);
+		assertTrue(wcomment.getTemperatureDependence() !=null);
+		KineticParameters kp =wcomment.getKineticParameters();
 		assertEquals(0, kp.getMaximumVelocities().size());
 		assertEquals(2, kp.getMichaelisConstants().size());
 		List<MichaelisConstant>  mcs =kp.getMichaelisConstants();
@@ -343,9 +344,9 @@ public class CcLineConverterTest {
 		assertEquals(98, mc3.getConstant(), 0.0001);
 		assertEquals(MichaelisConstantUnit.MICRO_MOL, mc3.getUnit());
 		assertEquals("ADP", mc3.getSubstrate());
-		assertEquals("Optimum pH is 7.75", wcomment.getPHDependence().get().getTexts().get(0).getName());
+		assertEquals("Optimum pH is 7.75", wcomment.getPhDependence().getTexts().get(0).getValue());
 		assertEquals("Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP",
-				wcomment.getTemperatureDependence().get().getTexts().get(0).getName());
+				wcomment.getTemperatureDependence().getTexts().get(0).getValue());
 	}
 	
 	@Test
@@ -376,7 +377,7 @@ public class CcLineConverterTest {
 		alName1.name =new EvidencedString("1", new ArrayList<String>());
 		alName1.synNames.add(new EvidencedString("AIRE-1", new ArrayList<String>()));
 		alName1.isoId.add("O43918-1");
-		alName1.sequence_enum = AlternativeNameSequenceEnum.Displayed;
+		alName1.sequenceEnum = AlternativeNameSequenceEnum.DISPLAYED;
 		
 		CcLineObject.AlternativeProductName alName2 = new 
 				CcLineObject.AlternativeProductName();
@@ -385,15 +386,15 @@ public class CcLineConverterTest {
 		alName2.isoId.add("O43918-2");
 		String alNameNote ="Major isoform found in 66-78% of cDNA clones";
 		alName2.note.add(new EvidencedString(alNameNote, new ArrayList<String>()));
-		alName2.sequence_FTId.add("VSP_004089");
+		alName2.sequenceFTId.add("VSP_004089");
 		
 		CcLineObject.AlternativeProductName alName3 = new 
 				CcLineObject.AlternativeProductName();
 		alName3.name =new EvidencedString("3", new ArrayList<String>());
 		alName3.synNames.add(new EvidencedString("AIRE-3", new ArrayList<String>()));
 		alName3.isoId.add("O43918-3");
-		alName3.sequence_FTId.add("VSP_004089");
-		alName3.sequence_FTId.add("VSP_004090");
+		alName3.sequenceFTId.add("VSP_004089");
+		alName3.sequenceFTId.add("VSP_004090");
 		
 		wr.names.add(alName1);
 		wr.names.add(alName2);
@@ -410,55 +411,55 @@ public class CcLineConverterTest {
 		
 		AlternativeProductsComment wcomment 
 		= (AlternativeProductsComment) comment1;
-		List<APEvent> events =wcomment.getEvents();
+		List<APEventType> events =wcomment.getEvents();
 		List<APIsoform> isoforms =wcomment.getIsoforms();
 		assertEquals(1, events.size());
-		APEvent event = events.get(0);
+		APEventType event = events.get(0);
 		assertEquals("Alternative splicing", event.getName());
 		assertEquals("Additional isoforms seem to exist. "
 				+ "Experimental confirmation may be lacking for some isoforms", 
-				wcomment.getNote().get().getTexts().get(0).getName());
+				wcomment.getNote().getTexts().get(0).getValue());
 		assertEquals(3, isoforms.size());
 		APIsoform isoform1 =isoforms.get(0);
 		APIsoform isoform2 =isoforms.get(1);
 		APIsoform isoform3 =isoforms.get(2);
 		assertEquals("1", isoform1.getName().getValue());
-		List<IsoformSynonym> syns1 =isoform1.getSynonyms();
+		List<IsoformName> syns1 =isoform1.getSynonyms();
 		assertEquals(1, syns1.size());
 		assertEquals(0, isoform1.getSequenceIds().size());
-		assertEquals("AIRE-1", syns1.get(0).getName());
+		assertEquals("AIRE-1", syns1.get(0).getValue());
 		assertEquals(IsoformSequenceStatus.DISPLAYED, isoform1.getIsoformSequenceStatus());
-		assertFalse(isoform1.getNote().isPresent());
-		List<IsoformId> ids1 = isoform1.getIds();
+		assertFalse(isoform1.getNote() !=null);
+		List<IsoformId> ids1 = isoform1.getIsoformIds();
 		assertEquals(1, ids1.size());
 		assertEquals("O43918-1", ids1.get(0).getValue());
 		
 		assertEquals("2", isoform2.getName().getValue());
-		List<IsoformSynonym> syns2 =isoform2.getSynonyms();
+		List<IsoformName> syns2 =isoform2.getSynonyms();
 		assertEquals(1, syns2.size());
-		assertEquals("AIRE-2", syns2.get(0).getName());
+		assertEquals("AIRE-2", syns2.get(0).getValue());
 		List<String> seqIds2 =isoform2.getSequenceIds();
 		assertEquals(1, seqIds2.size());
 		assertEquals("VSP_004089", seqIds2.get(0));
 	//	assertEquals(IsoformSequenceStatus.DISPLAYED, isoform2.getIsoformSequenceStatus());
-		assertTrue(isoform2.getNote().isPresent());
+		assertTrue(isoform2.getNote() !=null);
 		assertEquals("Major isoform found in 66-78% of cDNA clones", 
-				isoform2.getNote().get().getTexts().get(0).getName());
-		List<IsoformId> ids2 = isoform2.getIds();
+				isoform2.getNote().getTexts().get(0).getValue());
+		List<IsoformId> ids2 = isoform2.getIsoformIds();
 		assertEquals(1, ids2.size());
 		assertEquals("O43918-2", ids2.get(0).getValue());
 		
 		assertEquals("3", isoform3.getName().getValue());
-		List<IsoformSynonym> syns3 =isoform3.getSynonyms();
+		List<IsoformName> syns3 =isoform3.getSynonyms();
 		assertEquals(1, syns3.size());
-		assertEquals("AIRE-3", syns3.get(0).getName());
+		assertEquals("AIRE-3", syns3.get(0).getValue());
 		List<String> seqIds3 =isoform3.getSequenceIds();
 		assertEquals(2, seqIds3.size());
 		assertEquals("VSP_004089", seqIds3.get(0));
 		assertEquals("VSP_004090", seqIds3.get(1));
 	//	assertEquals(IsoformSequenceStatus.DISPLAYED, isoform2.getIsoformSequenceStatus());
-		assertFalse(isoform3.getNote().isPresent());
-		List<IsoformId> ids3 = isoform3.getIds();
+		assertFalse(isoform3.getNote() !=null);
+		List<IsoformId> ids3 = isoform3.getIsoformIds();
 		assertEquals(1, ids3.size());
 		assertEquals("O43918-3", ids3.get(0).getValue());
 	}
@@ -516,21 +517,21 @@ public class CcLineConverterTest {
 		Interaction inter3 = interactions.get(2);
 		assertEquals("EBI-133844", inter1.getFirstInteractor().getValue());
 		assertEquals("EBI-212772", inter1.getSecondInteractor().getValue());
-		assertEquals("Q9W1K5-1", inter1.getInteractorUniProtAccession().getName());
-		assertEquals("CG11299",inter1.getInteractionGeneName());
+		assertEquals("Q9W1K5-1", inter1.getUniProtAccession().getValue());
+		assertEquals("CG11299",inter1.getGeneName());
 		assertEquals(1,inter1.getNumberOfExperiments());
-		assertEquals(InteractionType.BINARY ,inter1.getInteractionType());
+		assertEquals(InteractionType.BINARY ,inter1.getType());
 		assertEquals("EBI-123485", inter2.getFirstInteractor().getValue());
 		assertEquals("EBI-123484", inter2.getSecondInteractor().getValue());
-		assertEquals(InteractionType.SELF ,inter2.getInteractionType());
+		assertEquals(InteractionType.SELF ,inter2.getType());
 		assertEquals(1,inter1.getNumberOfExperiments());
 		
 		assertEquals("EBI-133844", inter3.getFirstInteractor().getValue());
 		assertEquals("EBI-212775", inter3.getSecondInteractor().getValue());
-		assertEquals("Q8C1S0", inter3.getInteractorUniProtAccession().getName());
-		assertEquals("CG112992",inter3.getInteractionGeneName());
+		assertEquals("Q8C1S0", inter3.getUniProtAccession().getValue());
+		assertEquals("CG112992",inter3.getGeneName());
 		assertEquals(1,inter3.getNumberOfExperiments());
-		assertEquals(InteractionType.XENO ,inter3.getInteractionType());
+		assertEquals(InteractionType.XENO ,inter3.getType());
 		
 	}
 	@Test
@@ -570,16 +571,16 @@ public class CcLineConverterTest {
 		
 		DiseaseComment diseaseComment = (DiseaseComment) comment1;
 		assertTrue(diseaseComment.hasDefinedDisease());
-		assertEquals("Kleefstra syndrome", diseaseComment.getDisease().getDiseaseId().getName());
+		assertEquals("Kleefstra syndrome", diseaseComment.getDisease().getDiseaseId());
 		assertEquals("KLESTS", diseaseComment.getDisease().getAcronym());
 		assertEquals(disease.description,
 				diseaseComment.getDisease().getDescription().getValue());
-		DiseaseReference diseaseRef = diseaseComment.getDisease().getReference();
+		DBCrossReference<DiseaseReferenceType> diseaseRef = diseaseComment.getDisease().getReference();
 		assertNotNull(diseaseRef);
-		assertEquals(DiseaseReferenceType.MIM, diseaseRef.getDiseaseReferenceType());
-		assertEquals("610253", diseaseRef.getDiseaseReferenceId());
+		assertEquals(DiseaseReferenceType.MIM, diseaseRef.getDatabaseType());
+		assertEquals("610253", diseaseRef.getId());
 		assertEquals("The disease is caused by mutations affecting the gene represented in this entry (PubMed:16826528)", 
-				diseaseComment.getNote().get().getTexts().get(0).getName());
+				diseaseComment.getNote().getTexts().get(0).getValue());
 	
 	}
 	
@@ -614,7 +615,7 @@ public class CcLineConverterTest {
 //		assertNotNull(diseaseRef);
 //		assertEquals(DiseaseReferenceType.NONE, diseaseRef.getDiseaseReferenceType());
 		assertEquals("Frequently mutated in a variety of human cancers (PubMed:15155950).", 
-				diseaseComment.getNote().get().getTexts().get(0).getName());
+				diseaseComment.getNote().getTexts().get(0).getValue());
 	
 	}
 }

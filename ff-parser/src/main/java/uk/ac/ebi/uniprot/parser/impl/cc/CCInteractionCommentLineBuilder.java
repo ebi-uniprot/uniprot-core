@@ -30,14 +30,14 @@ public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<Interact
 			StringBuilder sb = new StringBuilder();
 			if (includeFlatFileMarkings)
 				sb.append(this.linePrefix);
-			if (act.getInteractionType().equals(InteractionType.SELF)) {
+			if (act.getType().equals(InteractionType.SELF)) {
 				sb.append("Self");
 			} else {
-				sb.append(act.getInteractorUniProtAccession().getName());
+				sb.append(act.getUniProtAccession().getValue());
 				sb.append(":");
-				sb.append(act.getInteractionGeneName());
+				sb.append(act.getGeneName());
 			}
-			if (act.getInteractionType().equals(InteractionType.XENO)) {
+			if (act.getType().equals(InteractionType.XENO)) {
 				sb.append(" (xeno)");
 			}
 			sb.append("; NbExp=");

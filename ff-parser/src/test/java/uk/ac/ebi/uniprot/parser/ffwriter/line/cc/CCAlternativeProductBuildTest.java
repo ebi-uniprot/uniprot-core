@@ -13,12 +13,12 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEvent;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformId;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSynonym;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
@@ -387,7 +387,7 @@ public class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
 	private APCommentBuilder buildComment(List<String> events,
 			Map<String, List<String>> notes) {
 		APCommentBuilder builder = APCommentBuilder.newInstance();
-		List<APEvent> apEvents = events.stream().map(val -> APCommentBuilder.createEvent(val))
+		List<APEventType> apEvents = events.stream().map(val -> APEventType.typeOf(val))
 				.collect(Collectors.toList());
 		builder.events(apEvents);
 		List<EvidencedValue> evidencedValues =
@@ -406,8 +406,8 @@ public class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
 			APCommentBuilder.APIsoformBuilder builder = APCommentBuilder.APIsoformBuilder.newInstance();
 			builder.isoformName(APCommentBuilder.createIsoformName(name, createEvidence(nameEvs)));
 
-			List<IsoformSynonym> isoSynoyms = synonyms.entrySet().stream()
-					.map(entry -> APCommentBuilder.createIsoformSynonym(entry.getKey(), createEvidence(entry.getValue())))
+			List<IsoformName> isoSynoyms = synonyms.entrySet().stream()
+					.map(entry -> APCommentBuilder.createIsoformName(entry.getKey(), createEvidence(entry.getValue())))
 					.collect(Collectors.toList());
 			builder.isoformSynonyms(isoSynoyms);
 			if(!notes.isEmpty()) {
@@ -415,7 +415,7 @@ public class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
 					notes
 					.stream().map(entry ->createEvidencedValue(entry.getKey(), entry.getValue()))
 					.collect(Collectors.toList());
-			builder.note(APCommentBuilder.createIsoformNote(evidencedValues));
+			builder.note(CommentFactory.INSTANCE.createNote(evidencedValues));
 			}
 		
 

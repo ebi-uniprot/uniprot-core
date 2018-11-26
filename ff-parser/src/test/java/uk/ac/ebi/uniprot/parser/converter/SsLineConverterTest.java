@@ -38,18 +38,18 @@ public class SsLineConverterTest {
 		assertEquals(2, evidences.size());
 		EvidenceLine evidence1 =evidences.get(0);
 		EvidenceLine evidence2 =evidences.get(1);
-		assertEquals("UP99", evidence1.getEvidence().getAttribute());
-		assertEquals("ECO:0000313|ProtImp:UP99", evidence1.getEvidence().getValue());
-		assertEquals("ProtImp", evidence1.getEvidence().getType().getName());
-		assertEquals("ECO:0000313", evidence1.getEvidence().getECOCode().getCodeValue());
+		assertEquals("UP99", evidence1.toEvidence().getSource().getId());
+		assertEquals("ECO:0000313|ProtImp:UP99", evidence1.getEvidence());
+		assertEquals("ProtImp", evidence1.toEvidence().getSource().getDatabaseType().getName());
+		assertEquals("ECO:0000313", evidence1.toEvidence().getEvidenceCode().getName());
 		assertEquals(ev1.date, evidence1.getCreateDate());
 		assertEquals(ev1.attr_2, evidence1.getCurator());
 		
 		
-		assertEquals("MF_01417", evidence2.getEvidence().getAttribute());
-		assertEquals("ECO:0000256|HAMAP-Rule:MF_01417", evidence2.getEvidence().getValue());
-		assertEquals("HAMAP-Rule", evidence2.getEvidence().getType().getName());
-		assertEquals("ECO:0000256", evidence2.getEvidence().getECOCode().getCodeValue());
+		assertEquals("MF_01417", evidence2.toEvidence().getSource().getId());
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_01417", evidence2.getEvidence());
+		assertEquals("HAMAP-Rule", evidence2.toEvidence().getSource().getDatabaseType().getName());
+		assertEquals("ECO:0000256", evidence2.toEvidence().getEvidenceCode().getName());
 		assertEquals(ev2.date, evidence2.getCreateDate());
 		assertEquals(ev2.attr_2, evidence2.getCurator());
 		

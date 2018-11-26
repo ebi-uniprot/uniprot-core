@@ -33,7 +33,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 		assertEquals("1.3 mM for L,L-SDAP (in the presence of Zn(2+) at 25 degrees Celsius and at pH 7.6)", bp.kms.get(0).value);
 		assertEquals(1, bp.vmaxs.size());
 		assertEquals("1.9 mmol/min/mg enzyme", bp.vmaxs.get(0).value);
-		assertEquals("Optimum pH is 7.75.", bp.ph_dependence.get(0).value);
+		assertEquals("Optimum pH is 7.75.", bp.phDependence.get(0).value);
 	}
 	
 	
@@ -54,8 +54,8 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals(null, bp.bsorption_abs);
-		assertEquals(0, bp.bsorption_note.size());
+		assertEquals(null, bp.bsorptionAbs);
+		assertEquals(0, bp.bsorptionNote.size());
 		assertEquals(4, bp.kms.size());
 		assertEquals("71 uM for ATP", bp.kms.get(0).value);
 		assertEquals("98 uM for ADP", bp.kms.get(1).value);
@@ -63,7 +63,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 		assertEquals("0.47 mM for acetyl phosphate", bp.kms.get(3).value);
 		assertEquals(0, bp.vmaxs.size());
 
-		assertEquals("Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP.", bp.temperature_dependence.get(0).value);
+		assertEquals("Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP.", bp.temperatureDependence.get(0).value);
 	}
 	
 	@Test
@@ -84,18 +84,18 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals(null, bp.bsorption_abs);
-		assertEquals(0, bp.bsorption_note.size());
+		assertEquals(null, bp.bsorptionAbs);
+		assertEquals(0, bp.bsorptionNote.size());
 		assertEquals(4, bp.kms.size());
 		assertEquals("71 uM for ATP", bp.kms.get(0).value);
 		assertEquals("98 uM for ADP", bp.kms.get(1).value);
 		assertEquals("1.5 mM for acetate", bp.kms.get(2).value);
 		assertEquals("0.47 mM for acetyl phosphate", bp.kms.get(3).value);
 		assertEquals(0, bp.vmaxs.size());
-		assertEquals("Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP.", bp.temperature_dependence.get(0).value);
-		assertEquals("ECO:0000269|PubMed:10433555", bp.temperature_dependence.get(0).evidences.get(0));
-		assertEquals("2 thermal inactivation by ATP.", bp.temperature_dependence.get(1).value);
-		assertEquals("ECO:0000269|PubMed:10433556", bp.temperature_dependence.get(1).evidences.get(0));
+		assertEquals("Optimum temperature is 65 degrees Celsius. Protected from thermal inactivation by ATP.", bp.temperatureDependence.get(0).value);
+		assertEquals("ECO:0000269|PubMed:10433555", bp.temperatureDependence.get(0).evidences.get(0));
+		assertEquals("2 thermal inactivation by ATP.", bp.temperatureDependence.get(1).value);
+		assertEquals("ECO:0000269|PubMed:10433556", bp.temperatureDependence.get(1).evidences.get(0));
 	}
 	  
 	@Test
@@ -109,8 +109,8 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals("578 nm", bp.bsorption_abs.value);
-		assertEquals(0, bp.bsorption_note.size());
+		assertEquals("578 nm", bp.bsorptionAbs.value);
+		assertEquals(0, bp.bsorptionNote.size());
 		assertEquals(0, bp.kms.size());
 		assertEquals(0, bp.vmaxs.size());
 
@@ -128,10 +128,10 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals("596 nm", bp.bsorption_abs.value);
-		assertTrue(bp.bsorption_abs_approximate);
-		assertEquals(1, bp.bsorption_note.size());
-		assertEquals("In the presence of anions, the maximum absorption shifts to about 575 nm.", bp.bsorption_note.get(0).value);
+		assertEquals("596 nm", bp.bsorptionAbs.value);
+		assertTrue(bp.bsorptionAbsApproximate);
+		assertEquals(1, bp.bsorptionNote.size());
+		assertEquals("In the presence of anions, the maximum absorption shifts to about 575 nm.", bp.bsorptionNote.get(0).value);
 		assertEquals(0, bp.kms.size());
 		assertEquals(0, bp.vmaxs.size());
 
@@ -149,12 +149,12 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals("596 nm", bp.bsorption_abs.value);
-		assertEquals("ECO:0000313", bp.bsorption_abs.evidences.get(0));
-		assertTrue(bp.bsorption_abs_approximate);
-		assertEquals(1, bp.bsorption_note.size());
-		assertEquals("In the presence of anions, the maximum absorption shifts to about 575 nm.", bp.bsorption_note.get(0).value);
-		assertEquals("ECO:0000314", bp.bsorption_note.get(0).evidences.get(0));
+		assertEquals("596 nm", bp.bsorptionAbs.value);
+		assertEquals("ECO:0000313", bp.bsorptionAbs.evidences.get(0));
+		assertTrue(bp.bsorptionAbsApproximate);
+		assertEquals(1, bp.bsorptionNote.size());
+		assertEquals("In the presence of anions, the maximum absorption shifts to about 575 nm.", bp.bsorptionNote.get(0).value);
+		assertEquals("ECO:0000314", bp.bsorptionNote.get(0).evidences.get(0));
 		assertEquals(0, bp.kms.size());
 		assertEquals(0, bp.vmaxs.size());
 
@@ -184,15 +184,15 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals("465 nm", bp.bsorption_abs.value);
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.bsorption_abs.evidences.get(0));
-		assertFalse(bp.bsorption_abs_approximate);
-		assertEquals(1, bp.bsorption_note.size());
+		assertEquals("465 nm", bp.bsorptionAbs.value);
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.bsorptionAbs.evidences.get(0));
+		assertFalse(bp.bsorptionAbsApproximate);
+		assertEquals(1, bp.bsorptionNote.size());
 		assertEquals("The above maximum is for the oxidized form. Shows a maximal"
 			      +" peak at 330 nm in the reduced form. These absorption peaks are"
-			      +" for the tryptophylquinone cofactor.", bp.bsorption_note.get(0).value);
-		assertEquals("ECO:0000303|Ref.6", bp.bsorption_note.get(0).evidences.get(0));
-		assertEquals("ECO:0000269|PubMed:10433554", bp.bsorption_note.get(0).evidences.get(1));
+			      +" for the tryptophylquinone cofactor.", bp.bsorptionNote.get(0).value);
+		assertEquals("ECO:0000303|Ref.6", bp.bsorptionNote.get(0).evidences.get(0));
+		assertEquals("ECO:0000269|PubMed:10433554", bp.bsorptionNote.get(0).evidences.get(1));
 		assertEquals(2, bp.kms.size());
 		
 		assertEquals("5.4 uM for tyramine", bp.kms.get(0).value);
@@ -207,8 +207,8 @@ public class CcLineBioPhyChemPCommentParserTest {
 		assertEquals("17 umol/min/mg enzyme", bp.vmaxs.get(0).value);
 		assertEquals("ECO:0000313|PDB:3OW2", bp.vmaxs.get(0).evidences.get(0));
 		
-		assertEquals("The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).", bp.kp_note.get(0).value);
-		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.kp_note.get(0).evidences.get(0));
+		assertEquals("The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).", bp.kpNote.get(0).value);
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.kpNote.get(0).evidences.get(0));
 		
 	}
 
@@ -231,15 +231,15 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals("Optimum pH is 8-10.", bp.ph_dependence.get(0).value);	
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.ph_dependence.get(0).evidences.get(0));
+		assertEquals("Optimum pH is 8-10.", bp.phDependence.get(0).value);	
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.phDependence.get(0).evidences.get(0));
 	
-		assertEquals("E(0) is -448 mV.", bp.rdox_potential.get(0).value);	
-		assertEquals("ECO:0000303|Ref.6", bp.rdox_potential.get(0).evidences.get(0));
-		assertEquals("ECO:0000313|PDB:3OW2", bp.rdox_potential.get(0).evidences.get(1));
+		assertEquals("E(0) is -448 mV.", bp.rdoxPotential.get(0).value);	
+		assertEquals("ECO:0000303|Ref.6", bp.rdoxPotential.get(0).evidences.get(0));
+		assertEquals("ECO:0000313|PDB:3OW2", bp.rdoxPotential.get(0).evidences.get(1));
 		
-		assertEquals("Highly active at low temperatures, even at 0 degree Celsius. Thermolabile.", bp.temperature_dependence.get(0).value);	
-		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.temperature_dependence.get(0).evidences.get(0));
+		assertEquals("Highly active at low temperatures, even at 0 degree Celsius. Thermolabile.", bp.temperatureDependence.get(0).value);	
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.temperatureDependence.get(0).evidences.get(0));
 	
 	  }
 	@Test
@@ -370,15 +370,15 @@ public class CcLineBioPhyChemPCommentParserTest {
 		CcLineObject.CC cc = obj.ccs.get(0);
 		assertTrue(cc.object instanceof BiophysicochemicalProperties);
 		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
-		assertEquals("465 nm", bp.bsorption_abs.value);
-		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.bsorption_abs.evidences.get(0));
-		assertFalse(bp.bsorption_abs_approximate);
-		assertEquals(1, bp.bsorption_note.size());
+		assertEquals("465 nm", bp.bsorptionAbs.value);
+		assertEquals("ECO:0000313|EMBL:BAG16761.1", bp.bsorptionAbs.evidences.get(0));
+		assertFalse(bp.bsorptionAbsApproximate);
+		assertEquals(1, bp.bsorptionNote.size());
 		assertEquals("The above maximum is for the oxidized form. Shows a maximal"
 			      +" peak at 330 nm in the reduced form. These absorption peaks are"
-			      +" for the tryptophylquinone cofactor.", bp.bsorption_note.get(0).value);
-		assertEquals("ECO:0000303|Ref.6", bp.bsorption_note.get(0).evidences.get(0));
-		assertEquals("ECO:0000269|PubMed:10433554", bp.bsorption_note.get(0).evidences.get(1));
+			      +" for the tryptophylquinone cofactor.", bp.bsorptionNote.get(0).value);
+		assertEquals("ECO:0000303|Ref.6", bp.bsorptionNote.get(0).evidences.get(0));
+		assertEquals("ECO:0000269|PubMed:10433554", bp.bsorptionNote.get(0).evidences.get(1));
 		assertEquals(2, bp.kms.size());
 		
 		assertEquals("5.4 uM for tyramine", bp.kms.get(0).value);
@@ -393,8 +393,8 @@ public class CcLineBioPhyChemPCommentParserTest {
 		assertEquals("17 umol/min/mg enzyme", bp.vmaxs.get(0).value);
 		assertEquals("ECO:0000313|PDB:3OW2", bp.vmaxs.get(0).evidences.get(0));
 		
-		assertEquals("The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).", bp.kp_note.get(0).value);
-		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.kp_note.get(0).evidences.get(0));
+		assertEquals("The enzyme is substrate inhibited at high substrate concentrations (Ki=1.08 mM for tyramine).", bp.kpNote.get(0).value);
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_00205", bp.kpNote.get(0).evidences.get(0));
 		
 	}
 

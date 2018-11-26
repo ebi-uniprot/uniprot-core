@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 import uk.ac.ebi.uniprot.domain.uniprot.FreeText;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
@@ -154,4 +155,7 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         return sb.toString();
     }
     
+	protected boolean isValidNote(Note note) {
+		return (note !=null) && note.isValid();
+	}
 }

@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import org.junit.Test;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
-import static junit.framework.TestCase.*;
+import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.citation.Book;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
@@ -21,8 +22,6 @@ import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
-import uk.ac.ebi.uniprot.parser.UniprotLineParser;
-
 import uk.ac.ebi.uniprot.parser.impl.rl.RlLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.rl.RlLineObject;
 
@@ -49,7 +48,7 @@ public class RlLineConverterTest {
 		assertEquals("331", journal.getLastPage());
 		assertEquals("168", journal.getVolume());
 		assertEquals("1983", journal.getPublicationDate().getValue());
-		assertEquals("J. Mol. Biol.", journal.getJournalName());
+		assertEquals("J. Mol. Biol.", journal.getJournal().getName());
 		
 	}
 	@Test
@@ -154,7 +153,7 @@ public class RlLineConverterTest {
 		assertTrue(builder instanceof ElectronicArticleBuilder);
 		ElectronicArticle ea =((ElectronicArticleBuilder) builder).build();
 		assertEquals(CitationType.ELECTRONIC_ARTICLE, ea.getCitationType());
-		assertEquals("Plant Gene Register", ea.getJournalName());
+		assertEquals("Plant Gene Register", ea.getJournal().getName());
 		assertEquals("PGR98-023", ea.getLocator().getValue());
 		
 	}

@@ -10,18 +10,18 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.feature.VariantFeature;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 public class VariantFeatureLineBuilder 
-extends AbstractFeatureLineBuilder<UniProtFeature<VariantFeature>> {
+extends AbstractFeatureLineBuilder{
 	@Override
-	protected List<String> buildLines(UniProtFeature<VariantFeature> f, boolean includeFFMarkings, 
+	protected List<String> buildLines(Feature f, boolean includeFFMarkings, 
 			boolean addEvidence) {
 		StringBuilder sb = new StringBuilder();
-		sb.append(FTLineBuilderHelper.buildFeatureCommon(f.getFeature(), includeFFMarkings));
-		StringBuilder extra =FTLineBuilderHelper.buildExtra(f.getFeature());
+		sb.append(FTLineBuilderHelper.buildFeatureCommon(f, includeFFMarkings));
+		StringBuilder extra =FTLineBuilderHelper.buildExtra(f);
 		String evIds ="";
 		if(addEvidence){
 			evIds = LineBuilderHelper.export(f.getEvidences());
@@ -33,7 +33,7 @@ extends AbstractFeatureLineBuilder<UniProtFeature<VariantFeature>> {
 		}
 		sb.append(extra);
 		List<String> lines = new ArrayList<>();
-		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f.getFeature(), includeFFMarkings );
+		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f, includeFFMarkings );
 		for(int i=0; i<lines2.size(); i++){
 			if(i== (lines2.size()-1)){
 				sb =new StringBuilder(lines2.get(i));
@@ -41,7 +41,7 @@ extends AbstractFeatureLineBuilder<UniProtFeature<VariantFeature>> {
 				lines.add(lines2.get(i));
 			}
 		}
-		String report = getReports(f.getFeature());
+		String report = getReports(f);
 		if (!report.isEmpty()) {
 		    sb.append(" (");
 		    sb.append(report);
@@ -61,18 +61,18 @@ extends AbstractFeatureLineBuilder<UniProtFeature<VariantFeature>> {
 			lines.addAll(lines3);
 		else
 			lines.add(sb.toString());
-		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f.getFeature(), includeFFMarkings);
+		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f, includeFFMarkings);
 		if(featureId.length()>0){
 			lines.add(featureId.toString());
 		}
 		return lines;
 	}	
-	private String getReports(VariantFeature feature) {
+	private String getReports(Feature feature) {
 
 		StringBuilder temp = new StringBuilder();
 		boolean first = true;
 
-		for (String c : feature.getReport().getValue()) {
+		for (String c : feature.getAlternativeSequence().getReport().getValue()) {
 			if (first) {
 				first = false;
 			} else {

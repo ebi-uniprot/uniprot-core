@@ -4,12 +4,14 @@ import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
+import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ECImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameImpl;
@@ -50,5 +52,8 @@ public enum ProteinDescriptionFactory {
 
 	public ProteinDescription createProteinDescription(ProteinDescriptionBuilder builder) {
 		return builder.build();
+	}
+	public Flag createFlag(FlagType type) {
+		return new FlagImpl(type);
 	}
 }

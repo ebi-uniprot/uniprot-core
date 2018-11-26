@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
 import uk.ac.ebi.uniprot.parser.impl.EvidenceInfo;
-import uk.ac.ebi.uniprot.parser.impl.HasEvidence;
+import uk.ac.ebi.uniprot.parser.impl.HasEvidenceInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  * <p/>
  * User: wudong, Date: 03/09/13, Time: 16:35
  */
-public class CcLineObject implements HasEvidence {
+public class CcLineObject implements HasEvidenceInfo {
 
     public List<CC> ccs = new ArrayList<>();
     public EvidenceInfo evidenceInfo = new EvidenceInfo();

@@ -14,7 +14,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.ss.SSEvidenceLineBuilder;
@@ -28,11 +27,11 @@ public class SSLineBuildTest {
 	public void testEvidenceLines() {
 		String ssLines = "**EV ECO:0000250; -; XXX; 01-JAN-1900.\n"
 				+"**EV ECO:0000313; Ensembl:ENSP00000483257; -; 05-JUN-2015.";
-		Evidence evidence1 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000250");
+		String evidence1 = "ECO:0000250";
 		List<EvidenceLine> evidenceLines = new ArrayList<>();
 		evidenceLines.add(
 		factory.createEvidenceLine(evidence1, LocalDate.of(1900, 1, 1), "XXX"));
-		Evidence evidence2 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000313|Ensembl:ENSP00000483257");
+		String evidence2 = "ECO:0000313|Ensembl:ENSP00000483257";
 		evidenceLines.add(
 				factory.createEvidenceLine(evidence2, LocalDate.of(2015, 6, 5), "-"));
 		SSEvidenceLineBuilder builder = new SSEvidenceLineBuilder();
@@ -95,14 +94,14 @@ public class SSLineBuildTest {
                 +"**DG dg-000-000-614_P;\n"
                 +"**ZD YOK, 19-NOV-2004;"
                 ;
-		Evidence evidence1 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000313|ProtImp:UP123");
+		String evidence1 = "ECO:0000313|ProtImp:UP123";
 		List<EvidenceLine> evidenceLines = new ArrayList<>();
 		evidenceLines.add(
 		factory.createEvidenceLine(evidence1, LocalDate.of(2006, 11, 7), "-"));
-		Evidence evidence2 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|HAMAP-Rule:MF_01417");
+		String evidence2 = "ECO:0000256|HAMAP-Rule:MF_01417";
 		evidenceLines.add(
 				factory.createEvidenceLine(evidence2, LocalDate.of(2010, 10, 1), "-"));
-		Evidence evidence3 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|SAAS:SAAS022644_004_000329");
+		String evidence3 = "ECO:0000256|SAAS:SAAS022644_004_000329";
 		evidenceLines.add(
 				factory.createEvidenceLine(evidence3, LocalDate.of(2014, 2, 11), "-"));
 		List<InternalLine> internalLines = new ArrayList<>();
@@ -134,14 +133,14 @@ public class SSLineBuildTest {
                 +"**DG dg-000-000-614_P;\n"
                 +"**ZD YOK, 19-NOV-2004;"
                 ;
-		Evidence evidence1 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000313|ProtImp:UP123");
+		String evidence1 = "ECO:0000313|ProtImp:UP123";
 		List<EvidenceLine> evidenceLines = new ArrayList<>();
 		evidenceLines.add(
 		factory.createEvidenceLine(evidence1, LocalDate.of(2006, 11, 7), "-"));
-		Evidence evidence2 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|HAMAP-Rule:MF_01417");
+		String evidence2 = "ECO:0000256|HAMAP-Rule:MF_01417";
 		evidenceLines.add(
 				factory.createEvidenceLine(evidence2, LocalDate.of(2010, 10, 1), "-"));
-		Evidence evidence3 = EvidenceFactory.INSTANCE.createFromEvidenceLine("ECO:0000256|SAAS:SAAS022644_004_000329");
+		String evidence3 = "ECO:0000256|SAAS:SAAS022644_004_000329";
 		evidenceLines.add(
 				factory.createEvidenceLine(evidence3, LocalDate.of(2014, 2, 11), "-"));
 		List<InternalLine> internalLines = new ArrayList<>();

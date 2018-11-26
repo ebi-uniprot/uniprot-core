@@ -1,21 +1,18 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 
-import uk.ac.ebi.uniprot.domain.feature.CarbohydFeature;
-import uk.ac.ebi.uniprot.domain.feature.CarbohydLinkType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
 public class CarbohydFeatureLineBuilder 
-extends AbstractFeatureLineBuilder<UniProtFeature<CarbohydFeature>> {
+extends AbstractFeatureLineBuilder {
 	@Override
-	protected StringBuilder buildExtra(UniProtFeature<CarbohydFeature> uniprotFeature){
+	protected StringBuilder buildExtra(Feature feature){
 		StringBuilder sb =new StringBuilder();
-		CarbohydFeature feature = uniprotFeature.getFeature();
-		if (feature.getCarbohydLinkType() != CarbohydLinkType.UNKNOWN) {
-		    sb.append(feature.getCarbohydLinkType().getValue());
-		    sb.append(SPACE);
-		    sb.append(feature.getLinkedSugar().getValue());
-		}
+
+//		if (feature.getCarbohydLinkType() != CarbohydLinkType.UNKNOWN) {
+//		    sb.append(feature.getCarbohydLinkType().getValue());
+//		    sb.append(SPACE);
+//		    sb.append(feature.getLinkedSugar().getValue());
+//		}
 		StringBuilder descr =FTLineBuilderHelper.getDescriptionString(feature);
 
 		if((sb.length() >0) &&(descr.length()>0)){

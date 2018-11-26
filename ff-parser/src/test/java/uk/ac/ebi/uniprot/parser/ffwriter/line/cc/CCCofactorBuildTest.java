@@ -7,12 +7,13 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 
 public class CCCofactorBuildTest extends CCBuildTestAbstr {
@@ -203,8 +204,8 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
 	
 	
 	private Cofactor buildCofactor(String name, CofactorReferenceType type, String refId, List<String> evids){
-		CofactorReference coRef =CofactorCommentBuilder.createCofactorReference(type, refId);
-		return CofactorCommentBuilder.createCofactor(name, createEvidence(evids), coRef);
+		 DBCrossReference<CofactorReferenceType> coRef =UniProtFactory.INSTANCE.createDBCrossReference(type, refId);
+		return CofactorCommentBuilder.createCofactor(name,  coRef, createEvidence(evids));
 	
 	}
 

@@ -28,7 +28,7 @@ public class UniProtParserTest {
 		String entryStr = readEntryFromFile(filename);
 		UniProtEntry entry =UniProtParser.parse(entryStr);
 		assertNotNull(entry);
-		assertEquals("Q32K04", entry.getPrimaryUniProtAccession().getValue());
+		assertEquals("Q32K04", entry.getPrimaryAccession().getValue());
 	}
 	@Test
 	public void testParseWithIgnore() {
@@ -36,7 +36,7 @@ public class UniProtParserTest {
 		String entryStr = readEntryFromFile(filename);
 		UniProtEntry entry =UniProtParser.parse(entryStr);
 		assertNotNull(entry);
-		assertEquals("A0A176EY13", entry.getPrimaryUniProtAccession().getValue());
+		assertEquals("A0A176EY13", entry.getPrimaryAccession().getValue());
 	}
 	
 	@Test
@@ -48,12 +48,12 @@ public class UniProtParserTest {
 		assertNotNull(entry);
 		Set<String> accs =new TreeSet<>( Arrays.asList(new String[] {"A8EZU1", "D6RDV7"}));
 		Set<String > expected = new TreeSet<>();
-		expected.add( entry.getPrimaryUniProtAccession().getValue());
+		expected.add( entry.getPrimaryAccession().getValue());
 	
 		assertTrue(iterator.hasNext());
 		 entry = iterator.next();
 		assertNotNull(entry);
-		expected.add( entry.getPrimaryUniProtAccession().getValue());
+		expected.add( entry.getPrimaryAccession().getValue());
 		assertEquals(accs, expected);
 		assertFalse(iterator.hasNext());
 	}

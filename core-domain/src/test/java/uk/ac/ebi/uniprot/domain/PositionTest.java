@@ -16,6 +16,12 @@ class PositionTest {
 	}
 
 	@Test
+	void testPositionMinus() {
+		Position position = new Position(-12);
+		verify(position,  -12, PositionModifier.UNKOWN);
+		
+	}
+	@Test
 	void testPositionPositionModifier() {
 		Position position = new Position(12, PositionModifier.UNSURE);
 		verify(position,  12, PositionModifier.UNSURE);

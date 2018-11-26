@@ -7,6 +7,8 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 
@@ -60,11 +62,11 @@ public class CCSequenceCautionCommentLineBuilder extends CCLineBuilderAbstr<Sequ
 			 }
 			 needSpace =true;
 		 }
-		 if(comment.getNote().isPresent()) {
+		 if(!Strings.isNullOrEmpty(comment.getNote())) {
 			 if(needSpace)
 				 sb.append(SPACE);
 			 sb.append(NOTE);
-			 sb.append(comment.getNote().get());
+			 sb.append(comment.getNote());
 			 sb.append(SEMI_COMA);
 		 }
 	

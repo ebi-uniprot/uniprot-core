@@ -7,10 +7,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.feature.*;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.PositionModifier;
+import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineObject;
 
@@ -47,36 +49,36 @@ public class FtLineConverterTest {
 		ft4.ft_text ="NAD";
 		fobj.fts.add(ft4);
 		
-		List<UniProtFeature<? extends Feature>> features = converter.convert(fobj);
+		List<Feature> features = converter.convert(fobj);
 		assertEquals(4, features.size());
-		Feature feature1 = features.get(0).getFeature();
-		Feature feature2 = features.get(1).getFeature();
-		Feature feature3 = features.get(2).getFeature();
-		Feature feature4 = features.get(3).getFeature();
-		assertTrue(feature1 instanceof HelixFeature);
-		assertTrue(feature2 instanceof SignalFeature);
-		assertTrue(feature3 instanceof NpBindFeature);
-		assertTrue(feature4 instanceof NpBindFeature);
-		validateLocation(feature1.getFeatureLocation(),
-				33, 83, FeatureLocationModifier.EXACT, FeatureLocationModifier.EXACT);
+		Feature feature1 = features.get(0);
+		Feature feature2 = features.get(1);
+		Feature feature3 = features.get(2);
+		Feature feature4 = features.get(3);
+		assertEquals(FeatureType.HELIX, feature1.getType());
+		assertEquals(FeatureType.SIGNAL, feature2.getType());
+		assertEquals(FeatureType.NP_BIND, feature3.getType());
+		assertEquals(FeatureType.NP_BIND, feature4.getType());
+		validateLocation(feature1.getLocation(),
+				33, 83, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.HELIX, feature1.getType());
 		
-		validateLocation(feature2.getFeatureLocation(),
-				1, 34, FeatureLocationModifier.OUTSIDE_KNOWN_SEQUENCE, FeatureLocationModifier.EXACT);
+		validateLocation(feature2.getLocation(),
+				1, 34, PositionModifier.OUTSIDE, PositionModifier.EXACT);
 		assertEquals(FeatureType.SIGNAL, feature2.getType());
 
 		
-		validateLocation(feature3.getFeatureLocation(),
-				1, 17, FeatureLocationModifier.EXACT, FeatureLocationModifier.OUTSIDE_KNOWN_SEQUENCE);
+		validateLocation(feature3.getLocation(),
+				1, 17, PositionModifier.EXACT, PositionModifier.OUTSIDE);
 		assertEquals(FeatureType.NP_BIND, feature3.getType());
 
-		assertEquals(((NpBindFeature)feature3).getDescription().getValue(), "NAD (By similarity)");
+		assertEquals(feature3.getDescription().getValue(), "NAD (By similarity)");
 		
-		validateLocation(feature4.getFeatureLocation(),
-				1, 17, FeatureLocationModifier.EXACT, FeatureLocationModifier.OUTSIDE_KNOWN_SEQUENCE);
+		validateLocation(feature4.getLocation(),
+				1, 17, PositionModifier.EXACT, PositionModifier.OUTSIDE);
 		assertEquals(FeatureType.NP_BIND, feature4.getType());
 
-		assertEquals(((NpBindFeature)feature4).getDescription().getValue(), "NAD");
+		assertEquals(feature4.getDescription().getValue(), "NAD");
 		
 		
 	}
@@ -95,22 +97,21 @@ public class FtLineConverterTest {
 		ft.location_end ="119";
 		ft.ft_text ="C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity";
 		fobj.fts.add(ft);
-		List<UniProtFeature<? extends Feature>> features = converter.convert(fobj);
+		List<Feature> features = converter.convert(fobj);
 		assertEquals(1, features.size());
-		Feature feature1 = features.get(0).getFeature();
-		validateLocation(feature1.getFeatureLocation(),
-				119, 119, FeatureLocationModifier.EXACT, FeatureLocationModifier.EXACT);
+		Feature feature1 = features.get(0);
+		validateLocation(feature1.getLocation(),
+				119, 119, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.MUTAGEN, feature1.getType());
 
-		assertTrue(feature1 instanceof MutagenFeature);
-		MutagenFeature mFeature = (MutagenFeature) feature1;
+
 		assertEquals("Loss of cADPr hydrolase and ADP-ribosyl cyclase activity",
-				mFeature.getReport().getValue().get(0));
+				feature1.getAlternativeSequence().getReport().getValue().get(0));
 		List<String> altSeq = new ArrayList<String>();
 		altSeq.add("R");
 		altSeq.add("E");
 		altSeq.add("A");
-		validateAltSeq(mFeature, "C", altSeq );
+		validateAltSeq(feature1, "C", altSeq );
 	
 	}
 	
@@ -132,21 +133,19 @@ public class FtLineConverterTest {
 		ft.ft_text ="TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)";
 		ft.ftId = "VSP_004370";
 		fobj.fts.add(ft);
-		List<UniProtFeature<? extends Feature>> features = converter.convert(fobj);
+		List<Feature> features = converter.convert(fobj);
 		assertEquals(1, features.size());
-		Feature feature1 = features.get(0).getFeature();
-		validateLocation(feature1.getFeatureLocation(),
-				33, 83, FeatureLocationModifier.EXACT, FeatureLocationModifier.EXACT);
+		Feature feature1 = features.get(0);
+		validateLocation(feature1.getLocation(),
+				33, 83, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.VAR_SEQ, feature1.getType());
 ;
-		assertTrue(feature1 instanceof VarSeqFeature);
-		VarSeqFeature mFeature = (VarSeqFeature) feature1;
-		assertEquals(1, mFeature.getReport().getValue().size());
-		assertEquals("2", mFeature.getReport().getValue().get(0));
-		assertEquals("VSP_004370", mFeature.getFeatureId().getValue());
+		assertEquals(1, feature1.getAlternativeSequence().getReport().getValue().size());
+		assertEquals("2", feature1.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("VSP_004370", feature1.getFeatureId().getValue());
 		List<String> altSeq = new ArrayList<String>();
 		altSeq.add("SECLTYGKQPLTSFHPFTSQMPP");
-		validateAltSeq(mFeature, "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG", altSeq );
+		validateAltSeq(feature1, "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG", altSeq );
 	
 	}
 
@@ -166,20 +165,18 @@ public class FtLineConverterTest {
 		ft.ft_text ="V -> I (in HH2; dbSNP:rs55642501)";
 		ft.ftId = "VAR_030972";
 		fobj.fts.add(ft);
-		List<UniProtFeature<? extends Feature>> features = converter.convert(fobj);
+		List<Feature> features = converter.convert(fobj);
 		assertEquals(1, features.size());
-		Feature feature1 = features.get(0).getFeature();
-		validateLocation(feature1.getFeatureLocation(),
-				102, 102, FeatureLocationModifier.EXACT, FeatureLocationModifier.EXACT);
+		Feature feature1 = features.get(0);
+		validateLocation(feature1.getLocation(),
+				102, 102, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.VARIANT, feature1.getType());
 
-		assertTrue(feature1 instanceof VariantFeature);
-		VariantFeature mFeature = (VariantFeature) feature1;
-		assertEquals("in HH2; dbSNP:rs55642501", mFeature.getReport().getValue().get(0));
-		assertEquals("VAR_030972", mFeature.getFeatureId().getValue());
+		assertEquals("in HH2; dbSNP:rs55642501", feature1.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("VAR_030972", feature1.getFeatureId().getValue());
 		List<String> altSeq = new ArrayList<String>();
 		altSeq.add("I");
-		validateAltSeq(mFeature, "V", altSeq );
+		validateAltSeq(feature1, "V", altSeq );
 	
 	}
 	
@@ -225,20 +222,20 @@ public class FtLineConverterTest {
 		ft4.ft_text ="NAD";
 		fobj.fts.add(ft4);
 		
-		List<UniProtFeature<? extends Feature>> features = converter.convert(fobj);
+		List<Feature> features = converter.convert(fobj);
 		assertEquals(4, features.size());
-		UniProtFeature<? extends Feature> unfeature1 = features.get(0);
-		UniProtFeature<? extends Feature> unfeature2 = features.get(1);
-		UniProtFeature<? extends Feature> unfeature3 = features.get(2);
-		UniProtFeature<? extends Feature> unfeature4 = features.get(3);
-		Feature feature1= unfeature1.getFeature();
-		Feature feature2= unfeature2.getFeature();
-		Feature feature3= unfeature3.getFeature();
-		Feature feature4= unfeature4.getFeature();
-		assertTrue(feature1 instanceof HelixFeature);
-		assertTrue(feature2 instanceof SignalFeature);
-		assertTrue(feature3 instanceof NpBindFeature);
-		assertTrue(feature4 instanceof NpBindFeature);
+		Feature unfeature1 = features.get(0);
+		Feature unfeature2 = features.get(1);
+		Feature unfeature3 = features.get(2);
+		Feature unfeature4 = features.get(3);
+		Feature feature1= unfeature1;
+		Feature feature2= unfeature2;
+		Feature feature3= unfeature3;
+		Feature feature4= unfeature4;
+		assertEquals(FeatureType.HELIX, feature1.getType());
+		assertEquals(FeatureType.SIGNAL, feature1.getType());
+		assertEquals(FeatureType.NP_BIND, feature1.getType());
+		assertEquals(FeatureType.NP_BIND, feature1.getType());
 		
 		List<Evidence> eviIds = unfeature1.getEvidences();
 		assertEquals(2, eviIds.size());
@@ -261,25 +258,25 @@ public class FtLineConverterTest {
 		eviIds = unfeature4.getEvidences();
 		assertEquals(0, eviIds.size());
 		
-		validateLocation(feature1.getFeatureLocation(),
-				33, 83, FeatureLocationModifier.EXACT, FeatureLocationModifier.EXACT);
+		validateLocation(feature1.getLocation(),
+				33, 83, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.HELIX, feature1.getType());
 
-		validateLocation(feature2.getFeatureLocation(),
-				1, 34, FeatureLocationModifier.OUTSIDE_KNOWN_SEQUENCE, FeatureLocationModifier.EXACT);
+		validateLocation(feature2.getLocation(),
+				1, 34, PositionModifier.OUTSIDE, PositionModifier.EXACT);
 		assertEquals(FeatureType.SIGNAL, feature2.getType());
 
-		assertEquals(((SignalFeature)feature2).getDescription().getValue(), "Potential");
+		assertEquals(feature2.getDescription().getValue(), "Potential");
 		
-		validateLocation(feature3.getFeatureLocation(),
-				1, 17, FeatureLocationModifier.EXACT, FeatureLocationModifier.OUTSIDE_KNOWN_SEQUENCE);
+		validateLocation(feature3.getLocation(),
+				1, 17, PositionModifier.EXACT, PositionModifier.OUTSIDE);
 		assertEquals(FeatureType.NP_BIND, feature3.getType());
-		assertEquals(((NpBindFeature)feature3).getDescription().getValue(), "NAD (By similarity)");
+		assertEquals(feature3.getDescription().getValue(), "NAD (By similarity)");
 		
-		validateLocation(feature4.getFeatureLocation(),
-				1, 17, FeatureLocationModifier.EXACT, FeatureLocationModifier.OUTSIDE_KNOWN_SEQUENCE);
+		validateLocation(feature4.getLocation(),
+				1, 17, PositionModifier.EXACT, PositionModifier.OUTSIDE);
 		assertEquals(FeatureType.NP_BIND, feature4.getType());
-		assertEquals(((NpBindFeature)feature4).getDescription().getValue(), "NAD");
+		assertEquals(feature4.getDescription().getValue(), "NAD");
 		
 		
 	}
@@ -297,23 +294,22 @@ public class FtLineConverterTest {
 		fobj.evidenceInfo.evidences.put(ft, evIds);
 		fobj.fts.add(ft);
 		
-		List<UniProtFeature<? extends Feature>> features = converter.convert(fobj);
+		List<Feature> features = converter.convert(fobj);
 		assertEquals(1, features.size());
-		UniProtFeature<? extends Feature> unFeature1 = features.get(0);
-		Feature feature1 = unFeature1.getFeature();
-		assertTrue(feature1 instanceof ActSiteFeature);
-		
+		Feature unFeature1 = features.get(0);
+		Feature feature1 = unFeature1;
+		assertEquals(FeatureType.ACT_SITE, feature1.getType());
 		
 		List<Evidence> eviIds = unFeature1.getEvidences();
 		assertEquals(1, eviIds.size());
 		Evidence eviId = eviIds.get(0);
-		assertEquals(EvidenceType.PROSITE_PRORULE, eviId.getType());
+		assertEquals("PROSITE-ProRule", eviId.getSource().getDatabaseType().getName());
 		assertEquals("ECO:0000255|PROSITE-ProRule:PRU10088", eviId.getValue());
 	
 	
 		
-		validateLocation(feature1.getFeatureLocation(),
-				150, 150, FeatureLocationModifier.EXACT, FeatureLocationModifier.EXACT);
+		validateLocation(feature1.getLocation(),
+				150, 150, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.ACT_SITE, feature1.getType());
 	
 	}
@@ -331,44 +327,40 @@ public class FtLineConverterTest {
 		fobj.evidenceInfo.evidences.put(ft, evIds);
 		fobj.fts.add(ft);
 		
-		List<UniProtFeature<? extends Feature>> features = converter.convert(fobj);
+		List<Feature> features = converter.convert(fobj);
 		assertEquals(1, features.size());
-		UniProtFeature<? extends Feature> unFeature = features.get(0);
-		Feature feature1 = unFeature.getFeature();
-		assertTrue(feature1 instanceof ActSiteFeature);
-		
+		Feature unFeature = features.get(0);
+		Feature feature1 = unFeature;
+		assertEquals(FeatureType.ACT_SITE, feature1.getType());
 		
 		List<Evidence> eviIds = unFeature.getEvidences();
 		assertEquals(1, eviIds.size());
-		assertEquals(EvidenceType.HAMAP_RULE, eviIds.get(0).getType());
+		assertEquals("HAMAP-Rule", eviIds.get(0).getSource().getDatabaseType().getName());
 		assertEquals("ECO:0000255|HAMAP-Rule:PRU10088", eviIds.get(0).getValue());
 	
 	
 		
-		validateLocation(feature1.getFeatureLocation(),
-				150, 150, FeatureLocationModifier.EXACT, FeatureLocationModifier.EXACT);
+		validateLocation(feature1.getLocation(),
+				150, 150, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.ACT_SITE, feature1.getType());
 	
 	
 	}
 	
 	
-	private void validateAltSeq(HasAlternativeSequence as, String val, List<String> target ){
-		assertEquals(val, as.getOriginalSequence().getValue());
-		List<FeatureSequence>  altSeq =as.getAlternativeSequences();
-		assertEquals(target.size(), altSeq.size());
-		for(FeatureSequence fs:altSeq){
-			target.contains(fs.getValue());
-		}
+	private void validateAltSeq(Feature as, String val, List<String> target ){
+		assertEquals(val, as.getAlternativeSequence().getOriginalSequence());
+		List<String>  altSeq =as.getAlternativeSequence().getAlternativeSequences();
+		assertEquals(target, altSeq);
 		
 	}
-	private void validateLocation(FeatureLocation floc, int start, int end, 
-			FeatureLocationModifier startF, FeatureLocationModifier endF ){
-		assertEquals(floc.getStartModifier(), startF);
-		assertEquals(floc.getEndModifier(), endF);
-		if(!startF.equals(FeatureLocationModifier.UNKOWN))
-			assertEquals(floc.getStart().intValue(), start);
-		if(!startF.equals(FeatureLocationModifier.UNKOWN))
-		assertEquals(floc.getEnd().intValue(), end);
+	private void validateLocation(Range floc, int start, int end, 
+			PositionModifier startF, PositionModifier endF ){
+		assertEquals(floc.getStart().getModifier(), startF);
+		assertEquals(floc.getEnd().getModifier(), endF);
+		if(startF !=PositionModifier.UNKOWN)
+			assertEquals(floc.getStart().getValue().intValue(), start);
+		if(startF != PositionModifier.UNKOWN)
+		assertEquals(floc.getEnd().getValue().intValue(), end);
 	}
 }

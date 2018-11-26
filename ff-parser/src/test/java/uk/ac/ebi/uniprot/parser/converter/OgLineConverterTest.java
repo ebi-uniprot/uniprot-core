@@ -95,7 +95,7 @@ public class OgLineConverterTest {
 		Organelle org2 = orgs.get(1);
 		Organelle org3 = orgs.get(2);
 		for(Organelle org:orgs){
-			if(org.getType() == GeneEncodingType.HYDROGENOSOME){
+			if(org.getGeneEncodingType() == GeneEncodingType.HYDROGENOSOME){
 				org1= org;
 			}else{
 				if(org.getValue().equals("R6-5"))
@@ -104,10 +104,10 @@ public class OgLineConverterTest {
 					org3 =org;
 			}
 		}
-		assertEquals(GeneEncodingType.HYDROGENOSOME, org1.getType());
-		assertEquals(GeneEncodingType.PLASMID, org2.getType());
+		assertEquals(GeneEncodingType.HYDROGENOSOME, org1.getGeneEncodingType());
+		assertEquals(GeneEncodingType.PLASMID, org2.getGeneEncodingType());
 		
-		assertEquals(GeneEncodingType.PLASMID, org3.getType());
+		assertEquals(GeneEncodingType.PLASMID, org3.getGeneEncodingType());
 		assertEquals("R6-5", org2.getValue());
 		assertEquals("IncFII R100 (NR1)", org3.getValue());
 		
@@ -134,7 +134,7 @@ public class OgLineConverterTest {
 		boolean found =false;
 		boolean plasmidValueFound =false;
 		for(Organelle org:orgs){
-			if(org.getType() ==type){
+			if(org.getGeneEncodingType() ==type){
 				found =true;
 				if(type == GeneEncodingType.PLASMID){
 					if(value.equals(org.getValue())){

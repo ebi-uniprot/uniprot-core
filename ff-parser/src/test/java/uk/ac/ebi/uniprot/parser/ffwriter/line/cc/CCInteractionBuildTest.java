@@ -108,8 +108,8 @@ public class CCInteractionBuildTest extends CCBuildTestAbstr {
 		InteractionBuilder builder = InteractionCommentBuilder.newInteractionBuilder();
 
 		builder.interactionType(type);
-		builder.firstInteractor(InteractionBuilder.createInteractorAccession(firstAcc));
-		builder.secondInteractor(InteractionBuilder.createInteractorAccession(secAcc));
+		builder.firstInteractor(InteractionBuilder.createInteractor(firstAcc));
+		builder.secondInteractor(InteractionBuilder.createInteractor(secAcc));
 		builder.uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession(uniProtAcc));
 		builder.geneName(geneName);
 		builder.numberOfExperiments(nExperments);

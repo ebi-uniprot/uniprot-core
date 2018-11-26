@@ -10,9 +10,12 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Strings;
+
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReference;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 
@@ -39,10 +42,10 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
         StringBuilder firstLine = new StringBuilder();
         // if(includeFFMarkings)
         firstLine.append(buildStart(comment, includeFFMarkings));
-        if(comment.getMolecule().isPresent()) {
+        if(!Strings.isNullOrEmpty(comment.getMolecule())) {
             // if(includeFFMarkings)
             firstLine.append(SPACE);
-            firstLine.append(comment.getMolecule().get()).append(":");
+            firstLine.append(comment.getMolecule()).append(":");
         }
         if (firstLine.length() > 0)
             lines.add(firstLine.toString());
@@ -51,9 +54,9 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
             if (includeFFMarkings)
                 sb.append(this.linePrefix);
             sb.append(NAME).append(cofactor.getName()).append(SEPARATOR_SEMICOMA);
-            CofactorReference coRef = cofactor.getCofactorReference();
-            sb.append(XREF).append(coRef.getCofactorReferenceType().toDisplayName())
-                    .append(":").append(coRef.getReferenceId())
+            DBCrossReference<CofactorReferenceType> coRef = cofactor.getCofactorReference();
+            sb.append(XREF).append(coRef.getDatabaseType().toDisplayName())
+                    .append(":").append(coRef.getId())
                     .append(SEMI_COMA);
             if (!cofactor.getEvidences().isEmpty()) {
                 sb.append(SPACE);
@@ -68,12 +71,12 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
                 lines.add(sb.toString());
 
         }
-        if(comment.getNote().isPresent()) {
+        if(isValidNote(comment.getNote())) {
             StringBuilder sb = new StringBuilder();
             if (includeFFMarkings)
                 sb.append(this.linePrefix);
             sb.append(NOTE);
-            String freeTextStr= buildFreeText(comment.getNote().get(), showEvidence, STOP, SEMI_COMA);
+            String freeTextStr= buildFreeText(comment.getNote(), showEvidence, STOP, SEMI_COMA);
             sb.append(freeTextStr);        
             if (includeFFMarkings)
                 lines.addAll(FFLineWrapper.buildLines(sb.toString(), SEPS, linePrefix, LINE_LENGTH));

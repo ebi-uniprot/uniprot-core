@@ -12,7 +12,6 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.EvidenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.kw.KWLineBuilder;
@@ -43,8 +42,8 @@ public class KWLineBuildTest {
 		assertEquals(deLine, resultString);
 	}
 	private List<Evidence> createEvidence(List<String> evIds) {
-		EvidenceFactory evFactory = UniProtFactory.INSTANCE.getEvidenceFactory();
-		return evIds.stream().map(val -> evFactory.createFromEvidenceLine(val)).collect(Collectors.toList());
+
+		return evIds.stream().map(val -> UniProtFactory.INSTANCE.createEvidence(val)).collect(Collectors.toList());
 
 	}
 

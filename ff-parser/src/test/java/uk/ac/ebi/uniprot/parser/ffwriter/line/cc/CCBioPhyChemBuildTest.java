@@ -13,17 +13,17 @@ import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AbsorptionNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.KPNote;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 
 public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 	@Test
@@ -167,7 +167,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		String kpNoteStr = "The enzyme is substrate inhibited at high substrate "
 				+ "concentrations (Ki=1.08 mM for tyramine).";
 		List<String> kpNoteEvs =new ArrayList<>();
-		KPNote kpNote =buildKPNote(kpNoteStr, kpNoteEvs);
+		Note kpNote =buildNote(kpNoteStr, kpNoteEvs);
 		List<MaximumVelocity> velocities = new ArrayList<>();
 		float velocity1 = 17f;
 		String enzyme1= "enzyme";
@@ -259,7 +259,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 				+ "concentrations (Ki=1.08 mM for tyramine).";
 		List<String> kpNoteEvs =new ArrayList<>();
 		kpNoteEvs.add(ev5);
-		KPNote kpNote =buildKPNote(kpNoteStr, kpNoteEvs);
+		Note kpNote =buildNote(kpNoteStr, kpNoteEvs);
 		List<MaximumVelocity> velocities = new ArrayList<>();
 		float velocity1 = 17f;
 		String enzyme1= "enzyme";
@@ -460,7 +460,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		
 		notes.add(new AbstractMap.SimpleEntry<>(kpNote2, kpNoteEvs2));
 		
-		KPNote kpNote =buildKPNote(notes);
+		Note kpNote =buildNote(notes);
 
 		List<MaximumVelocity> velocities = new ArrayList<>();
 		float velocity1 = 17f;
@@ -505,11 +505,11 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 	
 	Absorption buildAbsorption(int max, boolean isApprox, List<String> evs, 
 			String note, List<String> noteEvs){
-		AbsorptionNote abNote = null;
+	Note abNote = null;
 		if(!Strings.isNullOrEmpty(note)) {
 			List<EvidencedValue> evidencedValues =new ArrayList<>();
 			evidencedValues.add(createEvidencedValue(note, noteEvs));
-			abNote = BPCPCommentBuilder.createAbsorptionNote(evidencedValues);
+			abNote = CommentFactory.INSTANCE.createNote(evidencedValues);
 		}
 		return BPCPCommentBuilder.createAbsorption(max, isApprox, abNote, createEvidence(evs));
 		
@@ -517,13 +517,13 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 	
 	Absorption buildAbsorption(int max, boolean isApprox, List<String> evs, 
 			List<Map.Entry<String, List<String>>> notes){
-		AbsorptionNote abNote = null;
+		Note abNote = null;
 		if(!notes.isEmpty()) {
 			List<EvidencedValue> evidencedValues =
 					notes
 					.stream().map(entry ->createEvidencedValue(entry.getKey(), entry.getValue()))
 					.collect(Collectors.toList());
-			abNote = BPCPCommentBuilder.createAbsorptionNote(evidencedValues);
+			abNote = CommentFactory.INSTANCE.createNote(evidencedValues);
 		}
 		return BPCPCommentBuilder.createAbsorption(max, isApprox, abNote, createEvidence(evs));
 		
@@ -581,24 +581,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		return null;
 	}
 	
-	KPNote buildKPNote(String note, List<String> noteEvs){
-		List<EvidencedValue> evidencedValues =new ArrayList<>();
-		evidencedValues.add(createEvidencedValue(note, noteEvs));
-		return BPCPCommentBuilder.createKPNote(evidencedValues);
 
-	}
-	
-	KPNote buildKPNote(List<Map.Entry<String, List<String>>> notes){
-		if(!notes.isEmpty()) {
-			List<EvidencedValue> evidencedValues =
-					notes
-					.stream().map(entry ->createEvidencedValue(entry.getKey(), entry.getValue()))
-					.collect(Collectors.toList());
-			return BPCPCommentBuilder.createKPNote(evidencedValues);
-		}
-		return null;
-
-	}
 	MichaelisConstant buildMichaelisConstant(float constant, MichaelisConstantUnit unit,
 			String substrate, List<String> evs){
 		return BPCPCommentBuilder.createMichaelisConstant(constant, unit, substrate, createEvidence(evs));

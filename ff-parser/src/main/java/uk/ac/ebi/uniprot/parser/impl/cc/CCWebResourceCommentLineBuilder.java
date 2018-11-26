@@ -7,6 +7,8 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
@@ -31,10 +33,10 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
 		sb.append(NAME);
 		sb.append(comment.getResourceName());
 		sb.append(SEMI_COMA);
-		if(comment.getNote().isPresent()) {
+		if(!Strings.isNullOrEmpty(comment.getNote()) ){
 			sb.append(SPACE);
 			sb.append(NOTE);
-			sb.append(comment.getNote().get());
+			sb.append(comment.getNote());
 			sb.append(SEMI_COMA);
 		}
 		if(includeFlatFileMarkings)
@@ -42,7 +44,7 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
 		else{
 			lines.add(sb.toString());
 		}
-		if(comment.getResourceUrl().isPresent()) {
+		if(!Strings.isNullOrEmpty(comment.getResourceUrl())) {
 			sb = new StringBuilder();
 			if (includeFlatFileMarkings)
 				sb.append(linePrefix);
@@ -50,7 +52,7 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
 				sb.append("FTP=\"");
 			else
 				sb.append("URL=\"");
-			sb.append(comment.getResourceUrl().get());
+			sb.append(comment.getResourceUrl());
 			sb.append("\";");
 			lines.add(sb.toString());
 		}

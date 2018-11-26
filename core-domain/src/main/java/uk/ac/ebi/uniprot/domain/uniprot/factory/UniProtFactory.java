@@ -1,9 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.DatabaseType;
+import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
@@ -131,5 +136,13 @@ public enum UniProtFactory {
 			 UniProtId uniProtId,
 			 EntryInactiveReason inactiveReason) {
     	return new UniProtEntryImpl(primaryAccession, uniProtId, inactiveReason);
+    }
+    
+    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id){
+    	return createDBCrossReference(databaseType, id, Collections.emptyList());
+    }
+    
+    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id, List<Property> properties){
+    	return new DBCrossReferenceImpl<>(databaseType, id, properties);
     }
 }

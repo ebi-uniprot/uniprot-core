@@ -3,14 +3,13 @@ package uk.ac.ebi.uniprot.parser.impl.ft;
 import java.util.EnumMap;
 import java.util.Map;
 
-import uk.ac.ebi.uniprot.domain.feature.Feature;
-import uk.ac.ebi.uniprot.domain.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtFeature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 
 
 public class FeatureLineBuilderFactory {
-	private static Map<FeatureType, FFLineBuilder<? extends UniProtFeature<? extends Feature> > > featureBuilders 
+	private static Map<FeatureType, FFLineBuilder< Feature> > featureBuilders 
 	= new EnumMap<>(FeatureType.class);
 	static{
 		featureBuilders.put(FeatureType.CARBOHYD,
@@ -25,16 +24,10 @@ public class FeatureLineBuilderFactory {
 				new VarSeqFeatureBuilder());
 		
 	};
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private static final FFLineBuilder<UniProtFeature<? extends Feature>> defaultBuilder
+
+	private static final FFLineBuilder< Feature> defaultBuilder
 	= new SimpleFeatureLineBuilder();
-	@SuppressWarnings("unchecked")
-	public static FFLineBuilder<UniProtFeature<? extends Feature>> create(Feature feature){
-		FFLineBuilder<? extends UniProtFeature<? extends Feature> > builder = 
-				featureBuilders.get(feature.getType());
-		if(builder !=null)
-			return (FFLineBuilder<UniProtFeature<? extends Feature>>) builder;
-		else
-			return defaultBuilder;
+	public static FFLineBuilder< Feature> create(Feature feature){
+		return featureBuilders.getOrDefault(feature.getType(), defaultBuilder);
 	}
 }

@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.uniprot.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.OrganismFactory;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.os.OSLineBuilder;
 
@@ -13,7 +13,7 @@ import uk.ac.ebi.uniprot.parser.impl.os.OSLineBuilder;
 
 public class OSLineBuildTest {
 	OSLineBuilder builder = new OSLineBuilder();
-	private final OrganismFactory factory =OrganismFactory.INSTANCE;
+	private final TaxonomyFactory factory =TaxonomyFactory.INSTANCE;
 	@Test
 	public void test2(){
 		String osLine = "OS   Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB).";

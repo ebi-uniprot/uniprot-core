@@ -40,8 +40,8 @@ public class CcLineAPCommentParserTest {
 		assertEquals("1",ap.names.get(0).name.value);
 		assertEquals(1,ap.names.get(0).isoId.size());
 		assertEquals("O43918-1",ap.names.get(0).isoId.get(0));
-		assertEquals(AlternativeNameSequenceEnum.Displayed, ap.names.get(0).sequence_enum);
-		assertTrue(ap.names.get(0).sequence_FTId.isEmpty());
+		assertEquals(AlternativeNameSequenceEnum.DISPLAYED, ap.names.get(0).sequenceEnum);
+		assertTrue(ap.names.get(0).sequenceFTId.isEmpty());
 		assertEquals(1, ap.names.get(0).synNames.size());
 		assertEquals("AIRE-1", ap.names.get(0).synNames.get(0).value);
 
@@ -49,18 +49,18 @@ public class CcLineAPCommentParserTest {
 		assertEquals(1,ap.names.get(1).isoId.size());
 		assertEquals("O43918-2",ap.names.get(1).isoId.get(0));
 
-		assertEquals(1, ap.names.get(1).sequence_FTId.size());
-		assertEquals("VSP_004089", ap.names.get(1).sequence_FTId.get(0));
+		assertEquals(1, ap.names.get(1).sequenceFTId.size());
+		assertEquals("VSP_004089", ap.names.get(1).sequenceFTId.get(0));
 		assertEquals(1, ap.names.get(1).synNames.size());
 		assertEquals("AIRE-2", ap.names.get(1).synNames.get(0).value);
 		
 		assertEquals("3",ap.names.get(2).name.value);
 		assertEquals(1,ap.names.get(2).isoId.size());
 		assertEquals("O43918-3",ap.names.get(2).isoId.get(0));
-		assertEquals(null, ap.names.get(2).sequence_enum);
-		assertEquals(2, ap.names.get(2).sequence_FTId.size());
-		assertEquals("VSP_004089", ap.names.get(2).sequence_FTId.get(0));
-		assertEquals("VSP_004090", ap.names.get(2).sequence_FTId.get(1));
+		assertEquals(null, ap.names.get(2).sequenceEnum);
+		assertEquals(2, ap.names.get(2).sequenceFTId.size());
+		assertEquals("VSP_004089", ap.names.get(2).sequenceFTId.get(0));
+		assertEquals("VSP_004090", ap.names.get(2).sequenceFTId.get(1));
 		assertEquals(1, ap.names.get(2).synNames.size());
 		assertEquals("AIRE-3", ap.names.get(2).synNames.get(0).value);
 		
@@ -88,17 +88,17 @@ public class CcLineAPCommentParserTest {
 		assertEquals("alpha",ap.names.get(0).name.value);
 		assertEquals(1,ap.names.get(0).isoId.size());
 		assertEquals("P12544-1",ap.names.get(0).isoId.get(0));
-		assertEquals(AlternativeNameSequenceEnum.Displayed, ap.names.get(0).sequence_enum);
-		assertTrue(ap.names.get(0).sequence_FTId.isEmpty());
+		assertEquals(AlternativeNameSequenceEnum.DISPLAYED, ap.names.get(0).sequenceEnum);
+		assertTrue(ap.names.get(0).sequenceFTId.isEmpty());
 		assertEquals(0, ap.names.get(0).synNames.size());
 
 		assertEquals("beta",ap.names.get(1).name.value);
 		assertEquals(1,ap.names.get(1).isoId.size());
 		assertEquals("P12544-2",ap.names.get(1).isoId.get(0));
 
-		assertEquals(2, ap.names.get(1).sequence_FTId.size());
-		assertEquals("VSP_038571", ap.names.get(1).sequence_FTId.get(0));
-		assertEquals("VSP_038572", ap.names.get(1).sequence_FTId.get(1));
+		assertEquals(2, ap.names.get(1).sequenceFTId.size());
+		assertEquals("VSP_038571", ap.names.get(1).sequenceFTId.get(0));
+		assertEquals("VSP_038572", ap.names.get(1).sequenceFTId.get(1));
 		assertEquals(0, ap.names.get(1).synNames.size());
 
 	
@@ -132,7 +132,7 @@ public class CcLineAPCommentParserTest {
 		assertTrue(cc.object instanceof AlternativeProducts);
 		AlternativeProducts ap = (AlternativeProducts)cc.object;
 		assertEquals(6, ap.names.size());
-		assertEquals(5, ap.names.get(1).sequence_FTId.size());
+		assertEquals(5, ap.names.get(1).sequenceFTId.size());
 		
 	}
 	

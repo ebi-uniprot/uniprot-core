@@ -1,10 +1,14 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPS;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
@@ -38,8 +42,8 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
 		addCommentTypeName(comment, sb);
 		 //Add molecule
 		 boolean needSpace =false;
-		if(comment.getMolecule().isPresent()) {
-            sb.append(comment.getMolecule().get()).append(":");
+		if(!Strings.isNullOrEmpty(comment.getMolecule())) {
+            sb.append(comment.getMolecule()).append(":");
             needSpace =true;
         }
         StringBuilder locations = buildLocations(comment, comment.getSubcellularLocations(), showEvidence);
@@ -52,7 +56,7 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
         //Add note  
         StringBuilder notes =buildNote(comment, showEvidence);
         if(notes.length()>0){
-        	if((needSpace) &&(comment.getNote().isPresent()))
+        	if((needSpace) &&(isValidNote(comment.getNote())))
         		sb.append(SPACE);
         	sb.append(notes);
         }
@@ -67,11 +71,11 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
 	
 	private StringBuilder buildNote(SubcellularLocationComment comment, boolean showEvidence){
 		StringBuilder noteBuilder =new StringBuilder();
-		if(!comment.getNote().isPresent())
+		if(!isValidNote(comment.getNote()))
 			return noteBuilder;
 		noteBuilder.append(NOTE);
 		boolean isfirst =true;
-		Note note =comment.getNote().get();
+		Note note =comment.getNote();
 		if(note !=null) {
 		for(EvidencedValue val: note.getTexts()){
 			if(!isfirst)
@@ -96,7 +100,7 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
             if (aLocation != null) {
             	if(locationCount>0)
             		builder.append(". ");
-            	builder.append(buildLocation(comment, Optional.of(aLocation.getLocation()), "",   showEvidence ));
+            	builder.append(buildLocation(comment, aLocation.getLocation(), "",   showEvidence ));
             	builder.append(buildLocation(comment, aLocation.getTopology(), "; ",   showEvidence ));
             	builder.append(buildLocation(comment, aLocation.getOrientation(), "; ",   showEvidence ));  
             	locationCount ++;
@@ -106,10 +110,9 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
         	builder.append(STOP);   
         return builder;
     }
-	private StringBuilder buildLocation(Comment comment, Optional<SubcellularLocationValue> oplocation, String prefix,  boolean showEvidence ){
+	private StringBuilder buildLocation(Comment comment, SubcellularLocationValue location, String prefix,  boolean showEvidence ){
 		StringBuilder sb = new StringBuilder();
-		if(oplocation.isPresent()) {
-			SubcellularLocationValue location = oplocation.get();
+		if(isValidLocationValue(location)) {
 			 sb.append(prefix);
 			 sb.append(location.getValue());
 			
@@ -126,7 +129,10 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
 		 return sb;
 		
 	}
-	
+	private boolean isValidLocationValue(SubcellularLocationValue location) {
+		return ( location !=null)
+				&& !Strings.isNullOrEmpty(location.getValue());
+	}
 	
 
 }

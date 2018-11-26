@@ -10,6 +10,9 @@ import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Strings;
+
+import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
@@ -39,12 +42,12 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 		
 		sb.append(MASS);
 		sb.append(getSigDig(comment.getMolWeight()));
-		if(comment.getMolWeightError().isPresent() &&
-				 Math.abs(comment.getMolWeightError().get()) > 10 * Double.MIN_VALUE){
+		if((comment.getMolWeightError() !=null) &&
+				 Math.abs(comment.getMolWeightError()) > 10 * Double.MIN_VALUE){
 			sb.append(SEPARATOR_SEMICOMA);
 			sb.append(MASS_ERROR);
 			
-			sb.append(getSigDig(comment.getMolWeightError().get()));
+			sb.append(getSigDig(comment.getMolWeightError()));
 		}
 //		if(comment.getNote().isPresent()) {
 			sb.append(SEPARATOR_SEMICOMA);
@@ -60,18 +63,18 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 				if(!isfirst)
 					sb.append(SEPARATOR_COMA);
 
-				if (range.isStartUnknown()) {
+				if (range.getRange().getStart().getModifier() == PositionModifier.UNKOWN) {
 					sb.append("?");
 				} else {
-					sb.append(range.getStart());
+					sb.append(range.getRange().getStart().getValue());
 
 				}
 				sb.append("-");
 
-				if (range.isEndUnknown()) {
+				if (range.getRange().getEnd().getModifier() == PositionModifier.UNKOWN) {
 					sb.append("?");
 				} else {
-					sb.append(range.getEnd());
+					sb.append(range.getRange().getEnd().getValue());
 
 				}
 
@@ -84,10 +87,10 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 			}
 			sb.append(SEMI_COMA);
 		}
-		if(comment.getNote().isPresent()) {
+		if(!Strings.isNullOrEmpty(comment.getNote())) {
 			sb.append(SPACE);
 			sb.append(NOTE);
-			sb.append(comment.getNote().get());
+			sb.append(comment.getNote());
 			sb.append(SEMI_COMA);
 
 		}

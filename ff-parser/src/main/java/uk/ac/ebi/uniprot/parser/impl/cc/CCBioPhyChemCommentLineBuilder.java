@@ -59,20 +59,20 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 	//	if(includeFlatFileMarkings)
 			lines.add(buildStart(comment, includeFlatFileMarkings));
 
-		if (comment.getAbsorption().isPresent()) {
-			lines.addAll( buildAbsorptionLine(comment.getAbsorption().get(), includeFlatFileMarkings, showEvidence) );
+		if (comment.getAbsorption() !=null) {
+			lines.addAll( buildAbsorptionLine(comment.getAbsorption(), includeFlatFileMarkings, showEvidence) );
 		}
-		if (comment.getKineticParameters().isPresent()) {
-			lines.addAll(buildKineticLine(comment.getKineticParameters().get(), includeFlatFileMarkings, showEvidence) );
+		if (comment.getKineticParameters() !=null) {
+			lines.addAll(buildKineticLine(comment.getKineticParameters(), includeFlatFileMarkings, showEvidence) );
 		}
-		if (comment.getPHDependence().isPresent()) {
-			lines.addAll( buildPHDepLine(comment.getPHDependence().get(),  includeFlatFileMarkings,  showEvidence));
+		if (comment.getPhDependence()!=null) {
+			lines.addAll( buildPHDepLine(comment.getPhDependence(),  includeFlatFileMarkings,  showEvidence));
 		}
-		if (comment.getRedoxPotential().isPresent()) {
-			lines.addAll( buildRedoxLine(comment.getRedoxPotential().get(),  includeFlatFileMarkings,  showEvidence));
+		if (comment.getRedoxPotential() !=null) {
+			lines.addAll( buildRedoxLine(comment.getRedoxPotential(),  includeFlatFileMarkings,  showEvidence));
 		}
-		if (comment.getTemperatureDependence().isPresent()) {
-			lines.addAll( buildTempLine(comment.getTemperatureDependence().get(),  includeFlatFileMarkings,  showEvidence));
+		if (comment.getTemperatureDependence() !=null) {
+			lines.addAll( buildTempLine(comment.getTemperatureDependence(),  includeFlatFileMarkings,  showEvidence));
 		}
 		
 
@@ -114,16 +114,15 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 		if (includeFlatFileMarkings)
 			sb.append(CC_PREFIX_INDENT);
 		sb.append(ABS_MAX);
-		if (absorption.isApproximation()) {
+		if (absorption.isApproximate()) {
 			sb.append("~");
 		}
 		sb.append(absorption.getMax());
 
 		sb.append(NM);
 		lines.addAll(addEvidences(sb, absorption, includeFlatFileMarkings, showEvidence, SEMI_COMA, SEMI_COMA ));     
-
-		if (absorption.getNote().isPresent()) {
-		    lines.addAll(buildNote(absorption.getNote().get(), includeFlatFileMarkings, showEvidence));
+		if(isValidNote(absorption.getNote())) {
+		    lines.addAll(buildNote(absorption.getNote(), includeFlatFileMarkings, showEvidence));
 			
 		}
 		return lines;
@@ -199,9 +198,8 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 				lines.addAll(addEvidences(vm, maximumVelocity, includeFlatFileMarkings, showEvidence,  SEMI_COMA, SEMI_COMA));
 			}
 		}
-	
-		if ( kps.getNote().isPresent()) {
-		    lines.addAll(buildNote(kps.getNote().get(), includeFlatFileMarkings, showEvidence));
+		if(isValidNote(kps.getNote())) {
+		    lines.addAll(buildNote(kps.getNote(), includeFlatFileMarkings, showEvidence));
 			
 		}
 		return lines;

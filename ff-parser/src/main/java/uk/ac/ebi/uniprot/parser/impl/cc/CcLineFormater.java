@@ -4,8 +4,9 @@ import java.util.AbstractMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import uk.ac.ebi.kraken.ffwriter.line.LineFormater;
-import uk.ac.ebi.kraken.interfaces.uniprot.comments.CommentType;
+
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.parser.LineFormater;
 
 public class CcLineFormater implements LineFormater {
 

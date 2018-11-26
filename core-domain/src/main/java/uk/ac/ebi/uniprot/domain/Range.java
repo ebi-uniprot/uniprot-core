@@ -8,6 +8,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public final class Range {
 	private final Position start;
 	private final Position end;
+	public static Range create(Integer start, Integer end) {
+		return new Range(start, end);
+	}
+	
 	public Range (Integer start, Integer end) {
 		this(new Position(start), new Position(end));
 	}
