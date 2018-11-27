@@ -21,7 +21,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
 					CommentType.DEVELOPMENTAL_STAGE,
 					CommentType.DISRUPTION_PHENOTYPE,
 					CommentType.DOMAIN,
-					CommentType.ENZYME_REGULATION,
+					CommentType.ACTIVITY_REGULATION,
 					CommentType.FUNCTION,
 					CommentType.INDUCTION,
 					CommentType.INDUCTION,

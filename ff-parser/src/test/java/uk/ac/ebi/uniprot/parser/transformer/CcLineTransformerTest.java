@@ -821,7 +821,7 @@ public class CcLineTransformerTest {
 	}
     @Test
 	public void testTextOnly1() {
-		String ccLineString = "ENZYME REGULATION: Inactivated by the serine"
+		String ccLineString = "ACTIVITY REGULATION: Inactivated by the serine"
 				+ " protease inhibitor diisopropylfluorophosphate.";
 		 List<Comment> comments = transformer.transformNoHeader(ccLineString);
 			assertEquals(1, comments.size());
@@ -830,7 +830,7 @@ public class CcLineTransformerTest {
 			
 			FreeTextComment comment =(FreeTextComment) comments.get(0);
 			assertNotNull(comment);
-			assertEquals(CommentType.ENZYME_REGULATION, comment.getCommentType());
+			assertEquals(CommentType.ACTIVITY_REGULATION, comment.getCommentType());
 	}
 
 	@Test

@@ -240,7 +240,7 @@ public class FtLineTransformerTest {
 		assertEquals(FeatureType.CARBOHYD, feature.getType());
 	//	assertEquals(CarbohydLinkType.NITROGEN, feature.getCarbohydLinkType());
 	//	assertEquals("(GlcNAc...)", feature.getLinkedSugar().getValue());
-		assertEquals("by host", feature.getDescription().getValue());
+		assertEquals("N-linked (GlcNAc...); by host", feature.getDescription().getValue());
 		
 	}
 	@Test
@@ -262,7 +262,7 @@ public class FtLineTransformerTest {
 
 //		assertEquals(CarbohydLinkType.OXYGEN, feature.getCarbohydLinkType());
 //		assertEquals("(GalNAc...)", feature.getLinkedSugar().getValue());
-		assertEquals("", feature.getDescription().getValue());
+		assertEquals("O-linked (GalNAc...)", feature.getDescription().getValue());
 
 	
 	}

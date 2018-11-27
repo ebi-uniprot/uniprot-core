@@ -155,7 +155,7 @@ public class DeLineConverterTest {
 
 		validate( "Arginine biosynthesis bifunctional protein argJ", null, recName);
 		List<ProteinName> altNames = pDesc.getAlternativeNames();
-		assertNull(altNames);
+		assertTrue(altNames.isEmpty());
 		List<ProteinSection> included =pDesc.getIncludes();
 		TestCase.assertEquals(2, included.size());
 		ProteinSection included1= included.get(0);

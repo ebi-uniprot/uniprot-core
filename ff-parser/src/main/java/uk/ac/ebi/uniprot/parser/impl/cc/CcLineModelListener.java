@@ -73,7 +73,7 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
     public void exitCc_common(CcLineParser.Cc_commonContext ctx) {
         CcLineObject.CC ccCommon = new CcLineObject.CC();
         TerminalNode terminalNode = ctx.CC_TOPIC_COMMON();
-        ccCommon.topic = CcLineObject.CCTopicEnum.fromSting(terminalNode.getText());
+        ccCommon.topic = CcLineObject.CCTopicEnum.fromString(terminalNode.getText());
 
         CcLineObject.FreeText ftext = new CcLineObject.FreeText();
 

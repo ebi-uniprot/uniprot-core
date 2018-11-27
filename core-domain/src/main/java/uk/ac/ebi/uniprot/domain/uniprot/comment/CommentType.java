@@ -46,7 +46,7 @@ public enum CommentType {
     FUNCTION("FUNCTION","function"),
     CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY","catalytic activity"),
     COFACTOR("COFACTOR", "cofactor"),
-    ENZYME_REGULATION("ENZYME REGULATION", "enzyme regulation"),
+    ACTIVITY_REGULATION("ACTIVITY REGULATION", "activity regulation"),
     BIOPHYSICOCHEMICAL_PROPERTIES("BIOPHYSICOCHEMICAL PROPERTIES", "biophysicochemical properties"),
     PATHWAY("PATHWAY", "pathway"),
     SUBUNIT("SUBUNIT", "subunit"),

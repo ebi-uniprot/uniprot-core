@@ -397,7 +397,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	@Test
 	public void testEnxymeRegulation() {
 		String ccLine =
-			   ("CC   -!- ENZYME REGULATION: The activity of this enzyme is controlled by\n" +
+			   ("CC   -!- ACTIVITY REGULATION: The activity of this enzyme is controlled by\n" +
 				"CC       adenylation under conditions of abundant glutamine. The fully\n" +
 				"CC       adenylated enzyme complex is inactive (By similarity).");
 		String text ="The activity of this enzyme is controlled by "
@@ -406,7 +406,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		//	evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
 		//	evs.add("ECO:0000313|Ensembl:ENSP00000409133");
-		FreeTextComment comment = buildComment(CommentType.ENZYME_REGULATION, text,
+		FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text,
 					evs);
 			doTest(ccLine, comment);
 	}
@@ -414,7 +414,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	@Test
 	public void testEnxymeRegulationWithEvidence() {
 		String ccLine =
-			   ("CC   -!- ENZYME REGULATION: The activity of this enzyme is controlled by\n" +
+			   ("CC   -!- ACTIVITY REGULATION: The activity of this enzyme is controlled by\n" +
 				"CC       adenylation under conditions of abundant glutamine. The fully\n" +
 				"CC       adenylated enzyme complex is inactive (By similarity).\n" +
 				"CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
@@ -425,7 +425,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 			evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
 			evs.add("ECO:0000313|Ensembl:ENSP00000409133");
-			FreeTextComment comment = buildComment(CommentType.ENZYME_REGULATION, text,
+			FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text,
 					evs);
 			doTest(ccLine, comment);
 	}

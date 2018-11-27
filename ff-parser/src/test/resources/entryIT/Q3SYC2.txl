@@ -2,9 +2,9 @@ ID   MOGT2_HUMAN             Reviewed;         334 AA.
 AC   Q3SYC2; A8K7I3; Q3SYC1; Q6ZQZ2; Q86UH6; Q9H630;
 DT   05-SEP-2006, integrated into UniProtKB/Swiss-Prot.
 DT   05-SEP-2006, sequence version 2.
-DT   27-SEP-2017, entry version 100.
+DT   05-DEC-2018, entry version 103.
 DE   RecName: Full=2-acylglycerol O-acyltransferase 2;
-DE            EC=2.3.1.22;
+DE            EC=2.3.1.22 {ECO:0000269|PubMed:12621063, ECO:0000269|PubMed:27184406};
 DE   AltName: Full=Acyl-CoA:monoacylglycerol acyltransferase 2;
 DE            Short=MGAT2;
 DE            Short=hMGAT2;
@@ -20,8 +20,8 @@ OC   Catarrhini; Hominidae; Homo.
 OX   NCBI_TaxID=9606;
 RN   [1]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 1), ALTERNATIVE SPLICING (ISOFORM
-RP   3), FUNCTION, SUBCELLULAR LOCATION, BIOPHYSICOCHEMICAL PROPERTIES, AND
-RP   TISSUE SPECIFICITY.
+RP   3), FUNCTION, SUBCELLULAR LOCATION, BIOPHYSICOCHEMICAL PROPERTIES,
+RP   TISSUE SPECIFICITY, AND CATALYTIC ACTIVITY.
 RC   TISSUE=Intestine;
 RX   PubMed=12621063; DOI=10.1074/jbc.M301633200;
 RA   Yen C.-L.E., Farese R.V. Jr.;
@@ -111,26 +111,40 @@ RA   Lockwood J.F., Cao J., Burn P., Shi Y.;
 RT   "Human intestinal monoacylglycerol acyltransferase: differential
 RT   features in tissue expression and activity.";
 RL   Am. J. Physiol. 285:E927-E937(2003).
+RN   [6]
+RP   FUNCTION, CATALYTIC ACTIVITY, AND SUBCELLULAR LOCATION.
+RX   PubMed=27184406; DOI=10.1016/j.bbrc.2016.05.071;
+RA   Brandt C., McFie P.J., Stone S.J.;
+RT   "Biochemical characterization of human acyl coenzyme A: 2-
+RT   monoacylglycerol acyltransferase-3 (MGAT3).";
+RL   Biochem. Biophys. Res. Commun. 475:264-270(2016).
 CC   -!- FUNCTION: Catalyzes the formation of diacylglycerol from 2-
 CC       monoacylglycerol and fatty acyl-CoA. Has a preference toward
 CC       monoacylglycerols containing unsaturated fatty acids in an order
 CC       of C18:3 > C18:2 > C18:1 > C18:0. Plays a central role in
 CC       absorption of dietary fat in the small intestine by catalyzing the
 CC       resynthesis of triacylglycerol in enterocytes. May play a role in
-CC       diet-induced obesity. {ECO:0000269|PubMed:12621063}.
-CC   -!- CATALYTIC ACTIVITY: Acyl-CoA + 2-acylglycerol = CoA +
-CC       diacylglycerol.
-CC   -!- ENZYME REGULATION: Inhibited by oleic acid and sphingosine, while
-CC       it is stimulated by phosphatidylcholine, phosphatidylserine and
-CC       phosphatidic acid. {ECO:0000250}.
+CC       diet-induced obesity. {ECO:0000269|PubMed:12621063,
+CC       ECO:0000269|PubMed:27184406}.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=a 2-acylglycerol + an acyl-CoA = a 1,2-diacyl-sn-glycerol
+CC         + CoA; Xref=Rhea:RHEA:32947, ChEBI:CHEBI:17389,
+CC         ChEBI:CHEBI:17815, ChEBI:CHEBI:57287, ChEBI:CHEBI:58342;
+CC         EC=2.3.1.22; Evidence={ECO:0000269|PubMed:12621063,
+CC         ECO:0000269|PubMed:27184406};
+CC   -!- ACTIVITY REGULATION: Inhibited by oleic acid and sphingosine,
+CC       while it is stimulated by phosphatidylcholine, phosphatidylserine
+CC       and phosphatidic acid. {ECO:0000250}.
 CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:
 CC       Kinetic parameters:
 CC         KM=45 uM for sn-1-monooleoylglycerol
 CC         {ECO:0000269|PubMed:12621063};
 CC   -!- PATHWAY: Glycerolipid metabolism; triacylglycerol biosynthesis.
+CC       {ECO:0000269|PubMed:27184406}.
 CC   -!- SUBCELLULAR LOCATION: Endoplasmic reticulum membrane
-CC       {ECO:0000269|PubMed:12621063}; Multi-pass membrane protein
-CC       {ECO:0000269|PubMed:12621063}.
+CC       {ECO:0000269|PubMed:12621063, ECO:0000269|PubMed:27184406}; Multi-
+CC       pass membrane protein {ECO:0000269|PubMed:12621063}. Cytoplasm,
+CC       perinuclear region {ECO:0000269|PubMed:27184406}.
 CC   -!- ALTERNATIVE PRODUCTS:
 CC       Event=Alternative splicing; Named isoforms=3;
 CC       Name=1;
@@ -169,6 +183,9 @@ DR   DMDM; 114150036; -.
 DR   PaxDb; Q3SYC2; -.
 DR   PeptideAtlas; Q3SYC2; -.
 DR   PRIDE; Q3SYC2; -.
+DR   ProteomicsDB; 61855; -.
+DR   ProteomicsDB; 61856; -. [Q3SYC2-2]
+DR   ProteomicsDB; 61857; -. [Q3SYC2-3]
 DR   Ensembl; ENST00000198801; ENSP00000198801; ENSG00000166391. [Q3SYC2-1]
 DR   Ensembl; ENST00000525093; ENSP00000436537; ENSG00000166391. [Q3SYC2-3]
 DR   Ensembl; ENST00000526712; ENSP00000436283; ENSG00000166391. [Q3SYC2-2]
@@ -187,7 +204,7 @@ DR   OpenTargets; ENSG00000166391; -.
 DR   PharmGKB; PA134936582; -.
 DR   eggNOG; KOG0831; Eukaryota.
 DR   eggNOG; ENOG410XTG3; LUCA.
-DR   GeneTree; ENSGT00750000117391; -.
+DR   GeneTree; ENSGT00940000153475; -.
 DR   HOGENOM; HOG000179738; -.
 DR   HOVERGEN; HBG065791; -.
 DR   InParanoid; Q3SYC2; -.
@@ -204,13 +221,14 @@ DR   GeneWiki; MOGAT2; -.
 DR   GenomeRNAi; 80168; -.
 DR   PRO; PR:Q3SYC2; -.
 DR   Proteomes; UP000005640; Chromosome 11.
-DR   Bgee; ENSG00000166391; -.
+DR   Bgee; ENSG00000166391; Expressed in 61 organ(s), highest expression level in right lobe of liver.
 DR   CleanEx; HS_MOGAT2; -.
 DR   Genevisible; Q3SYC2; HS.
 DR   GO; GO:0005783; C:endoplasmic reticulum; IDA:MGI.
 DR   GO; GO:0005789; C:endoplasmic reticulum membrane; TAS:Reactome.
 DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
-DR   GO; GO:0003846; F:2-acylglycerol O-acyltransferase activity; TAS:Reactome.
+DR   GO; GO:1990578; C:perinuclear endoplasmic reticulum membrane; IDA:UniProtKB.
+DR   GO; GO:0003846; F:2-acylglycerol O-acyltransferase activity; IDA:UniProtKB.
 DR   GO; GO:0016407; F:acetyltransferase activity; IEA:Ensembl.
 DR   GO; GO:0006651; P:diacylglycerol biosynthetic process; IEA:Ensembl.
 DR   GO; GO:0006071; P:glycerol metabolic process; IEA:UniProtKB-KW.
@@ -219,7 +237,7 @@ DR   GO; GO:0019432; P:triglyceride biosynthetic process; TAS:Reactome.
 DR   InterPro; IPR007130; DAGAT.
 DR   Pfam; PF03982; DAGAT; 1.
 PE   1: Evidence at protein level;
-KW   Acyltransferase; Alternative splicing; Complete proteome;
+KW   Acyltransferase; Alternative splicing; Complete proteome; Cytoplasm;
 KW   Endoplasmic reticulum; Glycerol metabolism; Lipid biosynthesis;
 KW   Lipid metabolism; Membrane; Polymorphism; Reference proteome;
 KW   Transferase; Transmembrane; Transmembrane helix.
@@ -253,17 +271,18 @@ FT   CONFLICT    267    267       F -> L (in Ref. 2; BAC87534).
 FT                                {ECO:0000305}.
 **
 **   #################    INTERNAL SECTION    ##################
-**EV ECO:0000250; -; XXX; 01-JAN-1900.
+**EV ECO:0000250; -; XXX; 04-NOV-2018.
 **EV ECO:0000255; -; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:12621063; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:12824082; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:12621063; CRC; 04-NOV-2018.
+**EV ECO:0000269; PubMed:12824082; XXX; 04-NOV-2018.
 **EV ECO:0000269; PubMed:15489334; XXX; 01-JAN-1900.
+**EV ECO:0000269; PubMed:27184406; CRC; 04-NOV-2018.
 **EV ECO:0000303; PubMed:14702039; XXX; 01-JAN-1900.
 **EV ECO:0000303; PubMed:15489334; XXX; 01-JAN-1900.
 **EV ECO:0000305; -; XXX; 01-JAN-1900.
 **CL 11q13.5;
 **ZA SYP, 14-JUL-2006;
-**ZB LYG, 16-MAY-2008;
+**ZB LYG, 16-MAY-2008; CRC, 08-OCT-2018;
 SQ   SEQUENCE   334 AA;  38196 MW;  57C4A964BAFA76BD CRC64;
      MVEFAPLFMP WERRLQTLAV LQFVFSFLAL AEICTVGFIA LLFTRFWLLT VLYAAWWYLD
      RDKPRQGGRH IQAIRCWTIW KYMKDYFPIS LVKTAELDPS RNYIAGFHPH GVLAVGAFAN

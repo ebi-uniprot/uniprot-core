@@ -158,13 +158,13 @@
 		]
 	},
 	{
-		"name": "Mint",
+		"name": "MINT",
 		"displayName": "MINT",
 		"category": "PPI",
 		"uriLink": "https://mint.bio.uniroma2.it/index.php/results-interactions/?id=%value"
 	},
 	{
-		"name": "StringXref",
+		"name": "STRING",
 		"displayName": "STRING",
 		"category": "PPI",
 		"uriLink": "https://string-db.org/network/%value"
@@ -605,7 +605,7 @@
 		"uriLink": "http://www.genedb.org/gene/%value"		
 	},
 	{
-		"name": "GeneId",
+		"name": "GeneID",
 		"displayName": "GeneID",
 		"category": "GMA",
 		"uriLink": "https://www.ncbi.nlm.nih.gov/gene/%value"	
@@ -1260,6 +1260,9 @@
 		"category": "FMD",
 		"uriLink": "http://www.cathdb.info/version/latest/superfamily/%value",
 		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
 			{	"name": "MatchStatus",
 				"xmlTag":"match status"			
 			}

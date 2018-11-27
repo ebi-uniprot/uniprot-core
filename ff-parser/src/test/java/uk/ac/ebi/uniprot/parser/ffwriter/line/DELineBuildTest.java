@@ -53,9 +53,9 @@ public class DELineBuildTest {
 	private void doTest(String deLine, ProteinDescription pd) {
 		FFLine ffLine = builder.buildWithEvidence(pd);
 		String resultString = ffLine.toString();
-		// System.out.println(resultString);
-		// System.out.println("\n");
-		// System.out.println(deLine);
+//		 System.out.println(resultString);
+//		 System.out.println("\n");
+//		 System.out.println(deLine);
 		assertEquals(deLine, resultString);
 	}
 
@@ -228,7 +228,7 @@ public class DELineBuildTest {
 		submissionNames.add(factory.createProteinName(fullName3, null, ecNumbers3));
 		Flag flag = factory.createFlag(FlagType.FRAGMENT);
 
-		ProteinDescription proteinDescription = factory.createProteinDescription(null, submissionNames, null, flag);
+		ProteinDescription proteinDescription = factory.createProteinDescription(null, null, submissionNames, flag);
 		String deLine = "DE   SubName: Full=Expressed protein {ECO:0000313|EMBL:BAG16761.1};\n"
 				+ "DE   SubName: Full=cDNA clone:001-021-F08, full insert sequence {ECO:0000313|EMBL:BAG16761.2};\n"
 				+ "DE            EC=2.3.1.35 {ECO:0000269|PubMed:10433554};\n"

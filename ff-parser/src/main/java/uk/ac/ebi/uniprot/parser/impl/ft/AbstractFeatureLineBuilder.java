@@ -92,4 +92,9 @@ public abstract class AbstractFeatureLineBuilder
 		return FTLineBuilderHelper.buildExtra(f);
 	}
 
+	protected boolean hasAltSequenceReport(Feature f) {
+		return f.hasAlternativeSequence() && (f.getAlternativeSequence() !=null)
+				&& (f.getAlternativeSequence().getReport() !=null) &&
+				  (f.getAlternativeSequence().getReport().getValue().size() > 0);
+	}
 }

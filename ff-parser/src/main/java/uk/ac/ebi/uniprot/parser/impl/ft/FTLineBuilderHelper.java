@@ -99,7 +99,7 @@ public class FTLineBuilderHelper {
 
 		String end = getModifierString(feature.getLocation().getStart().getModifier(), true);
 		if (isValidPosition(feature.getLocation().getEnd())) {
-			start += feature.getLocation().getEnd().getValue();
+			end += feature.getLocation().getEnd().getValue();
 		}
 
 		int currentLength = temp.toString().length();
@@ -191,7 +191,7 @@ public class FTLineBuilderHelper {
 	}
 
 	private static boolean hasAlternativeSequence(AlternativeSequence altSequence) {
-		return !Strings.isNullOrEmpty(altSequence.getOriginalSequence())
+		return (altSequence !=null) && !Strings.isNullOrEmpty(altSequence.getOriginalSequence())
 				&& !altSequence.getAlternativeSequences().isEmpty();
 	}
 

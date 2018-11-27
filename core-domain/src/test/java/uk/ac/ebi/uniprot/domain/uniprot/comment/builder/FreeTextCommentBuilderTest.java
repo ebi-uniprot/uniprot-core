@@ -78,8 +78,8 @@ public class FreeTextCommentBuilderTest {
     @Test
     public void testBuildEnzymeRegulationComment() {
         List<EvidencedValue> texts= createEvidenceValues();
-        FreeTextComment comment = FreeTextCommentBuilder.buildFreeTextComment(CommentType.ENZYME_REGULATION, texts);
-        assertEquals(CommentType.ENZYME_REGULATION, comment.getCommentType());
+        FreeTextComment comment = FreeTextCommentBuilder.buildFreeTextComment(CommentType.ACTIVITY_REGULATION, texts);
+        assertEquals(CommentType.ACTIVITY_REGULATION, comment.getCommentType());
         TestHelper.verifyJson(comment);
     }
     

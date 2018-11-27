@@ -142,7 +142,7 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
 	}
 
 	private DBDisplayOrder getXRefDBDef(UniProtXDbTypeDetail type) {
-		return databaseType2DefsNoCase.get(type.getName().toUpperCase());
+		return databaseType2DefsNoCase.get(type.getDisplayName().toUpperCase());
 
 	}
 

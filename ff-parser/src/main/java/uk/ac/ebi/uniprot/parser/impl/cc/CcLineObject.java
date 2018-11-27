@@ -126,7 +126,7 @@ public class CcLineObject implements HasEvidenceInfo {
         DISEASE,
         DISRUPTION_PHENOTYPE,
         DOMAIN,
-        ENZYME_REGULATION,
+        ACTIVITY_REGULATION,
         FUNCTION,
         INDUCTION,
         MISCELLANEOUS,
@@ -148,11 +148,11 @@ public class CcLineObject implements HasEvidenceInfo {
 
         RNA_EDITING;
 
-        public static CCTopicEnum fromSting(String s) {
+        public static CCTopicEnum fromString(String s) {
             String replace = s.replace(' ', '_');
-            if (replace.equals("ACTIVITY_REGULATION")) {
-                replace = "ENZYME_REGULATION";
-            }
+//            if (replace.equals("ACTIVITY_REGULATION")) {
+//                replace = "ENZYME_REGULATION";
+//            }
             return CCTopicEnum.valueOf(replace);
         }
     }

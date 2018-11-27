@@ -195,7 +195,7 @@ public class CcLineTextCommentParserTest {
 	@Test
 	public void testLineWrapper() {
 		
-		String lines = "CC   -!- CATALYTIC ACTIVITY:\n"
+		String lines = "CC   -!- ACTIVITY REGULATION:\n"
 				+"CC       5-carboxyamino-1-(5-phospho-D-ribosyl)imidazole =\n"
 				+"CC       5-amino-1-(5-phospho-D-ribosyl)imidazole-4-carboxylate.\n"
 				+"CC       {ECO:0000256|PIRNR:PIRNR001338}.\n"
@@ -204,7 +204,7 @@ public class CcLineTextCommentParserTest {
 		CcLineObject obj = parser.parse(lines);
 		assertEquals(1, obj.ccs.size());
 		CcLineObject.CC cc = obj.ccs.get(0);
-		assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
+		assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.topic);
 		
 		assertTrue(cc.object instanceof CcLineObject.FreeText);
 		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
@@ -215,7 +215,7 @@ public class CcLineTextCommentParserTest {
 	@Test
 	public void testLineWrapper2() {
 		
-		String lines = "CC   -!- CATALYTIC ACTIVITY: Hydrolysis of proteins to small peptides in\n"
+		String lines = "CC   -!- ACTIVITY REGULATION: Hydrolysis of proteins to small peptides in\n"
 				+"CC       the presence of ATP and magnesium. Alpha-casein is the usual test\n"
 				+"CC       substrate. In the absence of ATP, only oligopeptides shorter than\n"
 				+"CC       five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;\n"
@@ -226,7 +226,7 @@ public class CcLineTextCommentParserTest {
 		CcLineObject obj = parser.parse(lines);
 		assertEquals(1, obj.ccs.size());
 		CcLineObject.CC cc = obj.ccs.get(0);
-		assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
+		assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.topic);
 		
 		assertTrue(cc.object instanceof CcLineObject.FreeText);
 		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;
@@ -279,7 +279,7 @@ public class CcLineTextCommentParserTest {
 	@Test
 	public void testNoHeader2() {
 		
-		String ccLineString = "CATALYTIC ACTIVITY: Hydrolysis of proteins to small peptides in\n"
+		String ccLineString = "ACTIVITY REGULATION: Hydrolysis of proteins to small peptides in\n"
 				+"the presence of ATP and magnesium. Alpha-casein is the usual test\n"
 				+"substrate. In the absence of ATP, only oligopeptides shorter than\n"
 				+"five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;\n"
@@ -292,7 +292,7 @@ public class CcLineTextCommentParserTest {
 		CcLineObject obj = parser.parse(lines);
 		assertEquals(1, obj.ccs.size());
 		CcLineObject.CC cc = obj.ccs.get(0);
-		assertEquals(CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY, cc.topic);
+		assertEquals(CcLineObject.CCTopicEnum.ACTIVITY_REGULATION, cc.topic);
 		
 		assertTrue(cc.object instanceof CcLineObject.FreeText);
 		CcLineObject.FreeText texts = (CcLineObject.FreeText) cc.object;

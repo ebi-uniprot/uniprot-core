@@ -643,8 +643,8 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		case DOMAIN:
 			type = CommentType.DOMAIN;
 			break;
-		case ENZYME_REGULATION:
-			type = CommentType.ENZYME_REGULATION;
+		case ACTIVITY_REGULATION:
+			type = CommentType.ACTIVITY_REGULATION;
 			break;
 		case FUNCTION:
 			type = CommentType.FUNCTION;

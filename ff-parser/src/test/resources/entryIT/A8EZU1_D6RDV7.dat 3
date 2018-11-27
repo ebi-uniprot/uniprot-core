@@ -1,0 +1,160 @@
+ID   YBEY_RICCK              Reviewed;         172 AA.
+AC   A8EZU1;
+DT   15-JAN-2008, integrated into UniProtKB/Swiss-Prot.
+DT   13-NOV-2007, sequence version 1.
+DT   28-FEB-2018, entry version 63.
+DE   RecName: Full=Endoribonuclease YbeY {ECO:0000255|HAMAP-Rule:MF_00009};
+DE            EC=3.1.-.- {ECO:0000255|HAMAP-Rule:MF_00009};
+GN   Name=ybeY {ECO:0000255|HAMAP-Rule:MF_00009};
+GN   OrderedLocusNames=A1E_04765;
+OS   Rickettsia canadensis (strain McKiel).
+OC   Bacteria; Proteobacteria; Alphaproteobacteria; Rickettsiales;
+OC   Rickettsiaceae; Rickettsieae; Rickettsia; belli group.
+OX   NCBI_TaxID=293613;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RC   STRAIN=McKiel;
+RA   Madan A., Fahey J., Helton E., Ketteman M., Madan A., Rodrigues S.,
+RA   Sanchez A., Whiting M., Dasch G., Eremeeva M.;
+RT   "Complete genome sequence of Rickettsia canadensis.";
+RL   Submitted (SEP-2007) to the EMBL/GenBank/DDBJ databases.
+CC   -!- FUNCTION: Single strand-specific metallo-endoribonuclease involved
+CC       in late-stage 70S ribosome quality control and in maturation of
+CC       the 3' terminus of the 16S rRNA. {ECO:0000255|HAMAP-
+CC       Rule:MF_00009}.
+CC   -!- COFACTOR:
+CC       Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000255|HAMAP-
+CC         Rule:MF_00009};
+CC       Note=Binds 1 zinc ion. {ECO:0000255|HAMAP-Rule:MF_00009};
+CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000255|HAMAP-Rule:MF_00009}.
+CC   -!- SIMILARITY: Belongs to the endoribonuclease YbeY family.
+CC       {ECO:0000255|HAMAP-Rule:MF_00009}.
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution-NoDerivs License
+CC   -----------------------------------------------------------------------
+DR   EMBL; CP000409; ABV73874.1; -; Genomic_DNA.
+DR   RefSeq; WP_012149069.1; NC_009879.1.
+DR   ProteinModelPortal; A8EZU1; -.
+DR   SMR; A8EZU1; -.
+DR   STRING; 293613.A1E_04765; -.
+DR   EnsemblBacteria; ABV73874; ABV73874; A1E_04765.
+DR   KEGG; rcm:A1E_04765; -.
+DR   eggNOG; ENOG4105KGE; Bacteria.
+DR   eggNOG; COG0319; LUCA.
+DR   HOGENOM; HOG000132869; -.
+DR   KO; K07042; -.
+DR   OMA; LGYDHMN; -.
+DR   OrthoDB; POG091H029S; -.
+DR   BioCyc; RCAN293613:G1G6U-965-MONOMER; -.
+DR   Proteomes; UP000007056; Chromosome.
+DR   GO; GO:0005737; C:cytoplasm; IEA:UniProtKB-SubCell.
+DR   GO; GO:0004519; F:endonuclease activity; IEA:UniProtKB-KW.
+DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
+DR   GO; GO:0004222; F:metalloendopeptidase activity; IEA:InterPro.
+DR   GO; GO:0006364; P:rRNA processing; IEA:UniProtKB-KW.
+DR   Gene3D; 3.40.390.30; -; 1.
+DR   HAMAP; MF_00009; Endoribonucl_YbeY; 1.
+DR   InterPro; IPR023091; MetalPrtase_cat_dom_sf_prd.
+DR   InterPro; IPR002036; YbeY.
+DR   InterPro; IPR020549; YbeY_CS.
+DR   Pfam; PF02130; UPF0054; 1.
+DR   TIGRFAMs; TIGR00043; TIGR00043; 1.
+DR   PROSITE; PS01306; UPF0054; 1.
+PE   3: Inferred from homology;
+KW   Complete proteome; Cytoplasm; Endonuclease; Hydrolase; Metal-binding;
+KW   Nuclease; Ribosome biogenesis; rRNA processing; Zinc.
+FT   CHAIN         1    172       Endoribonuclease YbeY.
+FT                                /FTId=PRO_1000000738.
+FT   METAL       136    136       Zinc; catalytic. {ECO:0000255|HAMAP-Rule:
+FT                                MF_00009}.
+FT   METAL       140    140       Zinc; catalytic. {ECO:0000255|HAMAP-Rule:
+FT                                MF_00009}.
+FT   METAL       146    146       Zinc; catalytic. {ECO:0000255|HAMAP-Rule:
+FT                                MF_00009}.
+SQ   SEQUENCE   172 AA;  20300 MW;  914F463ED4CF260D CRC64;
+     MINVEIIRNY DKWREHKQIN KALIKKVTQN VLLRFDNFSK IKQFELSILL TNTAEILTLN
+     KQFRNIDKAT NVLSFPSNKL NWQDLCFSNV SPKLELLIGY DYMHLGDIAF CYEVIYNESY
+     EQQKTSENHF IHLLIHSILH LIGFDHQNDT EANIMENLEI EILSYFGIAS PY
+//
+ID   D6RDV7_HUMAN            Unreviewed;       119 AA.
+AC   D6RDV7;
+DT   13-JUL-2010, integrated into UniProtKB/TrEMBL.
+DT   13-JUL-2010, sequence version 1.
+DT   07-JAN-2015, entry version 23.
+DE   SubName: Full=Neuronal membrane glycoprotein M6-a {ECO:0000313|Ensembl:ENSP00000426984};
+DE   Flags: Fragment;
+GN   Name=GPM6A {ECO:0000313|Ensembl:ENSP00000426984};
+OS   Homo sapiens (Human).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+OC   Catarrhini; Hominidae; Homo.
+OX   NCBI_TaxID=9606 {ECO:0000313|Ensembl:ENSP00000426984, ECO:0000313|Proteomes:UP000005640};
+RN   [1] {ECO:0000313|Ensembl:ENSP00000426984, ECO:0000313|Proteomes:UP000005640}
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RX   PubMed=15815621; DOI=10.1038/nature03466;
+RA   Hillier L.W., Graves T.A., Fulton R.S., Fulton L.A., Pepin K.H.,
+RA   Minx P., Wagner-McPherson C., Layman D., Wylie K., Sekhon M.,
+RA   Becker M.C., Fewell G.A., Delehaunty K.D., Miner T.L., Nash W.E.,
+RA   Kremitzki C., Oddy L., Du H., Sun H., Bradshaw-Cordum H., Ali J.,
+RA   Carter J., Cordes M., Harris A., Isak A., van Brunt A., Nguyen C.,
+RA   Du F., Courtney L., Kalicki J., Ozersky P., Abbott S., Armstrong J.,
+RA   Belter E.A., Caruso L., Cedroni M., Cotton M., Davidson T., Desai A.,
+RA   Elliott G., Erb T., Fronick C., Gaige T., Haakenson W., Haglund K.,
+RA   Holmes A., Harkins R., Kim K., Kruchowski S.S., Strong C.M.,
+RA   Grewal N., Goyea E., Hou S., Levy A., Martinka S., Mead K.,
+RA   McLellan M.D., Meyer R., Randall-Maher J., Tomlinson C.,
+RA   Dauphin-Kohlberg S., Kozlowicz-Reilly A., Shah N.,
+RA   Swearengen-Shahid S., Snider J., Strong J.T., Thompson J., Yoakum M.,
+RA   Leonard S., Pearman C., Trani L., Radionenko M., Waligorski J.E.,
+RA   Wang C., Rock S.M., Tin-Wollam A.-M., Maupin R., Latreille P.,
+RA   Wendl M.C., Yang S.-P., Pohl C., Wallis J.W., Spieth J., Bieri T.A.,
+RA   Berkowicz N., Nelson J.O., Osborne J., Ding L., Meyer R., Sabo A.,
+RA   Shotland Y., Sinha P., Wohldmann P.E., Cook L.L., Hickenbotham M.T.,
+RA   Eldred J., Williams D., Jones T.A., She X., Ciccarelli F.D.,
+RA   Izaurralde E., Taylor J., Schmutz J., Myers R.M., Cox D.R., Huang X.,
+RA   McPherson J.D., Mardis E.R., Clifton S.W., Warren W.C.,
+RA   Chinwalla A.T., Eddy S.R., Marra M.A., Ovcharenko I., Furey T.S.,
+RA   Miller W., Eichler E.E., Bork P., Suyama M., Torrents D.,
+RA   Waterston R.H., Wilson R.K.;
+RT   "Generation and annotation of the DNA sequences of human chromosomes 2
+RT   and 4.";
+RL   Nature 434:724-731(2005).
+RN   [2] {ECO:0000313|Ensembl:ENSP00000426984}
+RP   IDENTIFICATION.
+RG   Ensembl;
+RL   Submitted (JUL-2011) to UniProtKB.
+CC   -!- CAUTION: The sequence shown here is derived from an Ensembl
+CC       automatic analysis pipeline and should be considered as
+CC       preliminary data. {ECO:0000313|Ensembl:ENSP00000426984}.
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution-NoDerivs License
+CC   -----------------------------------------------------------------------
+DR   EMBL; AC093819; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC097537; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AC110794; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; KF457835; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; KF457837; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; KF457840; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   Ensembl; ENST00000512610; ENSP00000426984; ENSG00000150625.
+DR   HGNC; HGNC:4460; GPM6A.
+DR   GeneTree; ENSGT00390000006915; -.
+DR   HOGENOM; HOG000231338; -.
+DR   ChiTaRS; GPM6A; human.
+DR   Proteomes; UP000005640; Chromosome 4.
+DR   Bgee; D6RDV7; -.
+DR   ExpressionAtlas; D6RDV7; baseline and differential.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:InterPro.
+DR   InterPro; IPR001614; Myelin_PLP.
+DR   PANTHER; PTHR11683; PTHR11683; 1.
+DR   Pfam; PF01275; Myelin_PLP; 1.
+DR   PRINTS; PR00214; MYELINPLP.
+PE   4: Predicted;
+KW   Complete proteome {ECO:0000313|Proteomes:UP000005640};
+KW   Reference proteome {ECO:0000313|Proteomes:UP000005640}.
+FT   NON_TER     119    119       {ECO:0000313|Ensembl:ENSP00000426984}.
+SQ   SEQUENCE   119 AA;  13504 MW;  496414D4E6309093 CRC64;
+     MARTAGDTLD VFTMIDIFKY VIYGIAAAFF VYGILLMVEG FFTTGAIKDL YGDFKITTCG
+     RCVSAWFIML TYLFMLAWLG VTAFTSLPVY MYFNLWTICR NTTLVEGANL CLDLRQFGK
+//

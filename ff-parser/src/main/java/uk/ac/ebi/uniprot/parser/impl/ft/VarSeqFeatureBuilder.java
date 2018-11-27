@@ -44,8 +44,7 @@ extends AbstractFeatureLineBuilder {
 				lines.add(lines2.get(i));
 			}
 		}
-		if((f.getAlternativeSequence().getReport() !=null) &&
-		  (f.getAlternativeSequence().getReport().getValue().size() > 0)) {
+		if(hasAltSequenceReport(f)) {
 			sb.append(" (");
 			sb.append(getStringIsoformsVarSplicFeature(f));
 			sb.append(")");

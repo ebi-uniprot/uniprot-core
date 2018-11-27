@@ -26,8 +26,8 @@ public class FTBuildTestAbstr {
 
 		FFLine ffLine = builder.buildWithEvidence(feature);
 		String resultString = ffLine.toString();
-		System.out.println(resultString);
-		System.out.println(ftLine);
+		System.out.println(resultString );
+		System.out.println(ftLine );
 		assertEquals(ftLine, resultString);
 	}
 
@@ -62,7 +62,7 @@ public class FTBuildTestAbstr {
 
 	Feature createFeature(FeatureType type, Range location, String description, String ftId,
 			AlternativeSequence alternativeSequence, List<String> evs) {
-		return factory.createFeature(type, location, description, factory.createFeatureId(ftId), createEvidence(evs));
+		return factory.createFeature(type, location, description, factory.createFeatureId(ftId), alternativeSequence, createEvidence(evs));
 	}
 
 	AlternativeSequence createAlternativeSequence(String originalSequence, List<String> alternativeSequences,
