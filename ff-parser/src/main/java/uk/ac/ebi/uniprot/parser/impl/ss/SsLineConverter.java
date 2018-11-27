@@ -108,7 +108,7 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
 	private EvidenceLine convert(SsLineObject.EvLine e){
 		StringBuilder sb = new StringBuilder();
 		sb.append(e.id);
-		if(!Strings.isNullOrEmpty(e.db)) {
+		if(isValidDb(e.db)) {
 			sb.append("|");
 			sb.append(e.db);
 			if(!Strings.isNullOrEmpty(e.attr_1) ) {
@@ -118,6 +118,8 @@ public class SsLineConverter implements Converter<SsLineObject, InternalSection>
 		return factory.createEvidenceLine(sb.toString(),  e.date, e.attr_2);
 	
 	}
-	
+	private boolean isValidDb(String db) {
+		return !Strings.isNullOrEmpty(db) && !db.equals("-");
+	}
 	
 }

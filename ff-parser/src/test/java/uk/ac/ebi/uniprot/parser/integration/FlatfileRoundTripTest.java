@@ -245,6 +245,7 @@ public class FlatfileRoundTripTest {
 		
 		assertNotNull(converted);
 		String convertedEntryStr =writer.write(converted, ispublic);
+		System.out.println(convertedEntryStr);
 		assertEquals(entryToParse, convertedEntryStr +"\n");
 
 	}

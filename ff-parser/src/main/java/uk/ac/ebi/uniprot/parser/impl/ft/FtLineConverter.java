@@ -109,7 +109,7 @@ public class FtLineConverter extends EvidenceCollector
 		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
 				factory.createReport(isoforms));
 		
-		return factory.createFeature( type,  location, ft.ft_text, factory.createFeatureId(ft.ftId),
+		return factory.createFeature( type,  location, "", factory.createFeatureId(ft.ftId),
 				altSeq,  evidences);
 	}
 
@@ -134,7 +134,7 @@ public class FtLineConverter extends EvidenceCollector
 		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
 				factory.createReport(reports));
 		DBCrossReference<FeatureXDbType> dbXref =null;
-		return factory.createFeature( type,  location, ft.ft_text,factory.createFeatureId(ft.ftId),
+		return factory.createFeature( type,  location, "",factory.createFeatureId(ft.ftId),
 				altSeq, dbXref,  evidences);
 
 	}
@@ -161,7 +161,7 @@ public class FtLineConverter extends EvidenceCollector
 		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
 				factory.createReport(reports));
 		
-		return factory.createFeature( type,  location, ft.ft_text, null,
+		return factory.createFeature( type,  location, "", null,
 				altSeq,  evidences);
 	}
 
@@ -185,7 +185,7 @@ public class FtLineConverter extends EvidenceCollector
 		}
 		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
 				factory.createReport(reports));
-		 	return factory.createFeature( type,  location, ft.ft_text, null,
+		 	return factory.createFeature( type,  location, "", null,
 				altSeq,  evidences);
 	}
 

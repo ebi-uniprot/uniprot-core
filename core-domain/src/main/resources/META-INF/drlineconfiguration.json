@@ -304,7 +304,7 @@
 		]	
 	},
 	{
-		"name": "Tcdb",
+		"name": "TCDB",
 		"displayName": "TCDB",
 		"category": "PFAM",
 		"uriLink": "http://www.tcdb.org/search/result.php?tc=%value",
@@ -1249,6 +1249,9 @@
 		"category": "FMD",
 		"uriLink": "https://www.ncbi.nlm.nih.gov/Structure/cdd/cddsrv.cgi?uid=%value",
 		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
 			{	"name": "MatchStatus",
 				"xmlTag":"match status"			
 			}
