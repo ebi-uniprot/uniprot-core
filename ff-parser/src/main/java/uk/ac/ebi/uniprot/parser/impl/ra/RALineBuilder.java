@@ -25,9 +25,9 @@ public class RALineBuilder implements RLine< List<Author> > {
 			tokens.add(author.getValue());
 		}	
 		if(includeFFMarkup)
-			return FFLineWrapper.buildLine(tokens, COMA, SPACE, SEMI_COMA,linePrefix, LINE_LENGTH, includeFFMarkup);
+			return FFLineWrapper.buildLine(tokens, COMA, SPACE, SEMICOLON,linePrefix, LINE_LENGTH, includeFFMarkup);
 		else{
-			return FFLineWrapper.buildLine(tokens, COMA, SPACE, SEMI_COMA, "", LINE_LENGTH, includeFFMarkup);
+			return FFLineWrapper.buildLine(tokens, COMA, SPACE, SEMICOLON, "", LINE_LENGTH, includeFFMarkup);
 		}
 		
 	}

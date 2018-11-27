@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_COMA;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_SEMICOMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_SEMICOLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPS;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 
@@ -44,20 +44,20 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 		sb.append(getSigDig(comment.getMolWeight()));
 		if((comment.getMolWeightError() !=null) &&
 				 Math.abs(comment.getMolWeightError()) > 10 * Double.MIN_VALUE){
-			sb.append(SEPARATOR_SEMICOMA);
+			sb.append(SEPARATOR_SEMICOLON);
 			sb.append(MASS_ERROR);
 			
 			sb.append(getSigDig(comment.getMolWeightError()));
 		}
 //		if(comment.getNote().isPresent()) {
-			sb.append(SEPARATOR_SEMICOMA);
+			sb.append(SEPARATOR_SEMICOLON);
 			sb.append(METHOD);
 			sb.append(comment.getMethod().getValue());
 
 	//	}
 		if ((comment.getRanges() != null) &&(comment.getRanges().size()>0) ){
 			boolean isfirst =true;
-			sb.append(SEPARATOR_SEMICOMA);
+			sb.append(SEPARATOR_SEMICOLON);
 			sb.append(RANGE2);
 			for (MassSpectrometryRange range : comment.getRanges()) {
 				if(!isfirst)
@@ -85,13 +85,13 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 				}
 				isfirst = false;
 			}
-			sb.append(SEMI_COMA);
+			sb.append(SEMICOLON);
 		}
 		if(!Strings.isNullOrEmpty(comment.getNote())) {
 			sb.append(SPACE);
 			sb.append(NOTE);
 			sb.append(comment.getNote());
-			sb.append(SEMI_COMA);
+			sb.append(SEMICOLON);
 
 		}
 		if(!comment.getEvidences().isEmpty())
@@ -106,7 +106,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 				sb.append(comment.getEvidences().get(i).getValue());
 			}
 			sb.append("}");
-			sb.append(SEMI_COMA);
+			sb.append(SEMICOLON);
 		} 
 		if(includeFlatFileMarkings){
 			lines.addAll(FFLineWrapper.buildLines(sb.toString(), SEPS, this.linePrefix, LINE_LENGTH));

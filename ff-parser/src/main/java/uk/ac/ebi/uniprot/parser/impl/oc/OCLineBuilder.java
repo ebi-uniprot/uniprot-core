@@ -21,7 +21,7 @@ public class OCLineBuilder extends FFLineBuilderAbstr< List<OrganismName> > impl
 	@Override
 	protected FFLine buildLine(List<OrganismName> f, boolean showEvidence){
 		StringBuilder sb = build(f, showEvidence, true );
-		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR_SEMICOMA, linePrefix);
+		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR_SEMICOLON, linePrefix);
 		return FFLines.create(lls);
 	}
 	@Override
@@ -43,7 +43,7 @@ public class OCLineBuilder extends FFLineBuilderAbstr< List<OrganismName> > impl
 			boolean isFirst =true;
 			for (OrganismName taxon:f){
 				if(!isFirst){
-					sb.append(SEPARATOR_SEMICOMA);
+					sb.append(SEPARATOR_SEMICOLON);
 				}
 				sb.append(taxon.getScientificName());
 				isFirst =false;

@@ -53,7 +53,7 @@ public class KWLineBuilder extends FFLineBuilderAbstr<List<Keyword> > implements
 			if (f.size() == counter) {
 				item.append(STOP);
 			}else{
-				item.append(SEMI_COMA);
+				item.append(SEMICOLON);
 			}
 			if(isFirst){
 				sb.append(item);

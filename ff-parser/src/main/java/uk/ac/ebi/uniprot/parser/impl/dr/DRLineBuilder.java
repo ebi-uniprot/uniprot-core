@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.parser.impl.dr;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 
 import java.util.ArrayList;
@@ -86,7 +86,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<UniProtDBCrossReferences>
 	private StringBuilder append(StringBuilder sb, String value, boolean includeFFMarkings) {
 
 		if (includeFFMarkings)
-			sb.append(SEMI_COMA);
+			sb.append(SEMICOLON);
 		sb.append(SPACE);
 		sb.append(value);
 		return sb;

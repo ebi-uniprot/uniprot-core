@@ -27,7 +27,7 @@ public class RGLineBuilder implements RLine< List<String> > {
 			if(count>0)
 				line.append(SPACE);
 			sb.append(authoringGroup);
-			sb.append(SEMI_COMA);	
+			sb.append(SEMICOLON);	
 			if(includeFFMarkup)
 				lines.add(sb.toString());
 			else

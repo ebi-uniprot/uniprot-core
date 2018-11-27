@@ -6,12 +6,12 @@ public final class FFLineConstant {
 	public static final  String UNIPROT = "UniProtKB";
 	public static final  String STOP = ".";
 	public static final  String COMA = ",";
-	public static final  String SEMI_COMA = ";";
+	public static final  String SEMICOLON = ";";
 	public static final  String SPACE = " ";
 	public static final  String EQUAL_SIGN = "=";
 	public static final  String SEPARATOR = SPACE;
 	public static final  String DASH = "-";
-	public static final  String SEPARATOR_SEMICOMA ="; ";
+	public static final  String SEPARATOR_SEMICOLON ="; ";
 	public static final  String SEPARATOR_COMA =", ";
 	public static final  String SEPARATOR_AND =" and ";
 	public static final  String SEPARATOR__CAP_AND =" AND ";

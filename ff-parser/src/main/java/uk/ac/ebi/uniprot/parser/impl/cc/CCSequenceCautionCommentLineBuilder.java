@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_COMA;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 
@@ -38,13 +38,13 @@ public class CCSequenceCautionCommentLineBuilder extends CCLineBuilderAbstr<Sequ
 		boolean needSpace =false;
 		if((comment.getSequence() !=null)
 				&&(!comment.getSequence().isEmpty())){
-			sb.append("Sequence=").append(comment.getSequence()).append(SEMI_COMA);
+			sb.append("Sequence=").append(comment.getSequence()).append(SEMICOLON);
 			needSpace =true;
 		}
 		if(comment.getSequenceCautionType() !=null){
 			if(needSpace)
 				sb.append(SPACE);
-			sb.append("Type=").append(comment.getSequenceCautionType().toDisplayName()).append(SEMI_COMA);
+			sb.append("Type=").append(comment.getSequenceCautionType().toDisplayName()).append(SEMICOLON);
 			needSpace =true;
 		}
 		 if ((comment.getPositions() != null) && (comment.getPositions().size() > 0)) {
@@ -54,7 +54,7 @@ public class CCSequenceCautionCommentLineBuilder extends CCLineBuilderAbstr<Sequ
 			 for (int i=0;i<comment.getPositions().size();i++){
 				 sb.append(comment.getPositions().get(i));
 				 if ((i+1)==comment.getPositions().size()){
-					 sb.append(SEMI_COMA);
+					 sb.append(SEMICOLON);
 				 }else{
 					 sb.append(SEPARATOR_COMA);
 				 }
@@ -67,14 +67,14 @@ public class CCSequenceCautionCommentLineBuilder extends CCLineBuilderAbstr<Sequ
 				 sb.append(SPACE);
 			 sb.append(NOTE);
 			 sb.append(comment.getNote());
-			 sb.append(SEMI_COMA);
+			 sb.append(SEMICOLON);
 		 }
 	
 			if (showEvidence && comment.getEvidences().size()>0) {
 				sb.append(SPACE);
 				sb.append("Evidence=");
 				String evStr =  LineBuilderHelper.export(comment.getEvidences()).trim();
-				sb.append(evStr).append(SEMI_COMA);
+				sb.append(evStr).append(SEMICOLON);
 			}
 		
 	//	List<String> lls = NewLineWrapperHelper.buildLines(sb, SEPARATOR, linePrefix);

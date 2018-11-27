@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
@@ -120,7 +120,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 		sb.append(absorption.getMax());
 
 		sb.append(NM);
-		lines.addAll(addEvidences(sb, absorption, includeFlatFileMarkings, showEvidence, SEMI_COMA, SEMI_COMA ));     
+		lines.addAll(addEvidences(sb, absorption, includeFlatFileMarkings, showEvidence, SEMICOLON, SEMICOLON ));     
 		if(isValidNote(absorption.getNote())) {
 		    lines.addAll(buildNote(absorption.getNote(), includeFlatFileMarkings, showEvidence));
 			
@@ -133,7 +133,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
         if (includeFlatFileMarkings)
             noteBuilder.append(CC_PREFIX_INDENT);
         noteBuilder.append(NOTE);
-        String freeTextStr= buildFreeText(note, showEvidence, STOP, SEMI_COMA);
+        String freeTextStr= buildFreeText(note, showEvidence, STOP, SEMICOLON);
         noteBuilder.append(freeTextStr);          
         if (includeFlatFileMarkings) {
             return FFLineWrapper.buildLines(noteBuilder, SEPARATOR, CC_PREFIX_INDENT);
@@ -169,7 +169,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 				km.append(FOR);
 				if(!Strings.isNullOrEmpty(michaelisConstant.getSubstrate()))
 				km.append(michaelisConstant.getSubstrate());    
-				lines.addAll(addEvidences(km, michaelisConstant, includeFlatFileMarkings, showEvidence, SEMI_COMA, ";" ));
+				lines.addAll(addEvidences(km, michaelisConstant, includeFlatFileMarkings, showEvidence, SEMICOLON, ";" ));
 
 			}
 		}
@@ -195,7 +195,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 				vm.append(SPACE);
 				if(!Strings.isNullOrEmpty(maximumVelocity.getEnzyme()))
 					vm.append(maximumVelocity.getEnzyme());
-				lines.addAll(addEvidences(vm, maximumVelocity, includeFlatFileMarkings, showEvidence,  SEMI_COMA, SEMI_COMA));
+				lines.addAll(addEvidences(vm, maximumVelocity, includeFlatFileMarkings, showEvidence,  SEMICOLON, SEMICOLON));
 			}
 		}
 		if(isValidNote(kps.getNote())) {
@@ -236,7 +236,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
         StringBuilder noteBuilder = new StringBuilder();
         if (includeFlatFileMarkings)
             noteBuilder.append(CC_PREFIX_INDENT);
-        String freeTextStr= buildFreeText(depend, showEvidence, STOP, SEMI_COMA);
+        String freeTextStr= buildFreeText(depend, showEvidence, STOP, SEMICOLON);
         noteBuilder.append(freeTextStr);
         if (includeFlatFileMarkings) {
             lines.addAll(FFLineWrapper.buildLines(noteBuilder, SEPARATOR, CC_PREFIX_INDENT));

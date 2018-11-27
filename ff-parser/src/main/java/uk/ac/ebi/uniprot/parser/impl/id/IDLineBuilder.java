@@ -64,7 +64,7 @@ public class IDLineBuilder extends FFLineBuilderAbstr<IdLineObject> implements
 		for (int iii = sb.length(); iii < ID_LENGTH; iii++) {
 			sb.append(SINGLE_SPACE);
 		}
-		sb.append(reviewType).append(SEMI_COMA);
+		sb.append(reviewType).append(SEMICOLON);
 		int lengthlength = ((new Integer(seqLength)).toString()).length();
 		for (int iii = lengthlength; iii < extraSpace; iii++) {
 			sb.append(SINGLE_SPACE);

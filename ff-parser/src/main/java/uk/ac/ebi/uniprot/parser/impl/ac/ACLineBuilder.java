@@ -31,7 +31,7 @@ public class ACLineBuilder extends FFLineBuilderAbstr< List<UniProtAccession> > 
 	@Override
 	protected FFLine buildLine(List<UniProtAccession> f, boolean showEvidence) {
 		StringBuilder sb = build(f, true );
-		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR_SEMICOMA, linePrefix);
+		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR_SEMICOLON, linePrefix);
 		return FFLines.create(lls);
 	}
 	private StringBuilder build(List<UniProtAccession> f,  boolean includeFFMarkup){
@@ -43,12 +43,12 @@ public class ACLineBuilder extends FFLineBuilderAbstr< List<UniProtAccession> > 
 		boolean isFirst =true;
 		for(UniProtAccession ac:f){
 			if(!isFirst){
-				sb.append(SEPARATOR_SEMICOMA);
+				sb.append(SEPARATOR_SEMICOLON);
 			}
 			sb.append(ac.getValue());
 			isFirst =false;
 		}
-		sb.append(SEMI_COMA);
+		sb.append(SEMICOLON);
 		return sb;
 	}
 }

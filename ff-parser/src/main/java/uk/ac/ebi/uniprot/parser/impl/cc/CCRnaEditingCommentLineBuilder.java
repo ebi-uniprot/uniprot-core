@@ -46,11 +46,11 @@ public class CCRnaEditingCommentLineBuilder extends
 			sb.append(comment.getLocationType().name());
 		//	sb = addEvidence(comment, sb, showEvidence, "");
 		}
-		sb.append(SEMI_COMA);
+		sb.append(SEMICOLON);
 		if(isValidNote(comment.getNote())) {
 			sb.append(SPACE);
 			sb.append(NOTE);
-	        String freeTextStr= buildFreeText(comment.getNote(), showEvidence, STOP, SEMI_COMA);
+	        String freeTextStr= buildFreeText(comment.getNote(), showEvidence, STOP, SEMICOLON);
 	        sb.append(freeTextStr);   
 		}
 		if (includeFFMarkings) {

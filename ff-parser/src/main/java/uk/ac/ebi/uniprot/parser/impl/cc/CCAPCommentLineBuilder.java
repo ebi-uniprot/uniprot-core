@@ -74,14 +74,14 @@ public class CCAPCommentLineBuilder extends
 			if (iii < events.size() - 1) {
 				altProd.append(SEPARATOR_COMA);
 			} else {
-				altProd.append(SEMI_COMA);
+				altProd.append(SEMICOLON);
 			}
 		}
 
 		if (comment.getIsoforms().size() > 0) {
 			altProd.append(NAMED_ISOFORMS);
 			altProd.append(comment.getIsoforms().size());
-			altProd.append(SEMI_COMA);
+			altProd.append(SEMICOLON);
 		}
 		return altProd;
 
@@ -98,7 +98,7 @@ public class CCAPCommentLineBuilder extends
 				asComment.append(CC_PREFIX_INDENT);
 			}
 			asComment.append(COMMENT2);
-			String freeTextStr= buildFreeText(note, showEvidence, STOP, SEMI_COMA);
+			String freeTextStr= buildFreeText(note, showEvidence, STOP, SEMICOLON);
 			asComment.append(freeTextStr);       
 		
 			if (includeFlatFileMarkings) {
@@ -127,7 +127,7 @@ public class CCAPCommentLineBuilder extends
 		altProd = addEvidence(alternativeProductsIsoform.getName(), altProd,
 				showEvidence, "");
 
-		altProd.append(SEMI_COMA);
+		altProd.append(SEMICOLON);
 		if (!alternativeProductsIsoform.getSynonyms().isEmpty()) {
 			altProd.append(SYNONYMS);
 			for (int i = 0; i < alternativeProductsIsoform.getSynonyms().size(); i++) {
@@ -137,7 +137,7 @@ public class CCAPCommentLineBuilder extends
 						.get(i), altProd, showEvidence, "");
 				addSeparator(
 						altProd,
-						SEMI_COMA,
+						SEMICOLON,
 						SEPARATOR_COMA,
 						(i == (alternativeProductsIsoform.getSynonyms().size() - 1)));
 			}
@@ -176,7 +176,7 @@ public class CCAPCommentLineBuilder extends
 		for (int i = 0; i < alternativeProductsIsoform.getIsoformIds().size(); i++) {
 			isoform.append(alternativeProductsIsoform.getIsoformIds().get(i)
 					.getValue());
-			addSeparator(isoform, SEMI_COMA, SEPARATOR_COMA,
+			addSeparator(isoform, SEMICOLON, SEPARATOR_COMA,
 					(i == (alternativeProductsIsoform.getIsoformIds().size() - 1)));
 
 		}
@@ -188,7 +188,7 @@ public class CCAPCommentLineBuilder extends
 					.size(); i++) {
 				isoform.append(alternativeProductsIsoform.getSequenceIds()
 						.get(i));
-				addSeparator(isoform, SEMI_COMA, SEPARATOR_COMA,
+				addSeparator(isoform, SEMICOLON, SEPARATOR_COMA,
 						(i == (alternativeProductsIsoform.getSequenceIds()
 								.size() - 1)));
 			}
@@ -197,7 +197,7 @@ public class CCAPCommentLineBuilder extends
 					.getIsoformSequenceStatus().getValue();
 			status = status.substring(0, 1).toUpperCase() + status.substring(1);
 			isoform.append(status);
-			isoform.append(SEMI_COMA);
+			isoform.append(SEMICOLON);
 
 		}
 		if (isoform.length() > 0) {
@@ -227,7 +227,7 @@ public class CCAPCommentLineBuilder extends
 		if (includeFlatFileMarkings)
 			asComment.append(CC_PREFIX_INDENT);
 		asComment.append("Note=");
-		String freeTextStr= buildFreeText(alternativeProductsIsoform.getNote(), showEvidence, STOP, SEMI_COMA);
+		String freeTextStr= buildFreeText(alternativeProductsIsoform.getNote(), showEvidence, STOP, SEMICOLON);
         asComment.append(freeTextStr);    
 		if (includeFlatFileMarkings) {
 			List<String> lls = FFLineWrapper.buildLines(asComment.toString(),

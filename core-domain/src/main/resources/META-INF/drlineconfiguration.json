@@ -1197,7 +1197,17 @@
 		"category": "OTHER",
 		"uriLink": "http://research.bioinformatics.udel.edu/pro/entry/%value"	
 	},
-	
+	{
+		"name": "Bgee",
+		"displayName": "Bgee",
+		"category": "GEP",
+		"uriLink": "https://bgee.org/?page=gene&gene_id=%value"	,
+		"attributes": [		
+			{	"name": "ExpressionPatterns",
+				"xmlTag":"expression patterns"			
+			}
+		]
+	},
 	{
 		"name": "CleanEx",
 		"displayName": "CleanEx",

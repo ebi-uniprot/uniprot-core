@@ -130,7 +130,7 @@ public class GNLineBuilder extends FFLineBuilderAbstr<List<Gene>> implements FFL
 		if (count < totalNumber) {
 			sb.append(SEPARATOR_COMA);
 		} else {
-			sb.append(SEMI_COMA);
+			sb.append(SEMICOLON);
 		}
 		return sb;
 	}

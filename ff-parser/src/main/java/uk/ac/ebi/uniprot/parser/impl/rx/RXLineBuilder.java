@@ -46,7 +46,7 @@ public class RXLineBuilder implements RLine<CitationXrefs> {
 			}
 			line.append(getString(xref.get()));
 
-			line.append(SEMI_COMA);
+			line.append(SEMICOLON);
 			return line;
 		} else
 			return line;

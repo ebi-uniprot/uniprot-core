@@ -38,7 +38,7 @@ public class PELineBuilder extends FFLineBuilderAbstr<ProteinExistence> {
 		if(includeFFMark)
 			pe.append(linePrefix);
 		pe.append(f.getDisplayName());
-		pe.append(SEMI_COMA);
+		pe.append(SEMICOLON);
 		lines.add(pe.toString());
 		return FFLines.create(lines);
 	}

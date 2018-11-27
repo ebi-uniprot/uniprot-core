@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_SEMICOMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_SEMICOLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPS;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
@@ -53,16 +53,16 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
             StringBuilder sb = new StringBuilder();
             if (includeFFMarkings)
                 sb.append(this.linePrefix);
-            sb.append(NAME).append(cofactor.getName()).append(SEPARATOR_SEMICOMA);
+            sb.append(NAME).append(cofactor.getName()).append(SEPARATOR_SEMICOLON);
             DBCrossReference<CofactorReferenceType> coRef = cofactor.getCofactorReference();
             sb.append(XREF).append(coRef.getDatabaseType().toDisplayName())
                     .append(":").append(coRef.getId())
-                    .append(SEMI_COMA);
+                    .append(SEMICOLON);
             if (!cofactor.getEvidences().isEmpty()) {
                 sb.append(SPACE);
                 sb.append(EVIDENCE);
                 String evStr = LineBuilderHelper.export(cofactor.getEvidences()).trim();
-                sb.append(evStr).append(SEMI_COMA);
+                sb.append(evStr).append(SEMICOLON);
             }
             if (includeFFMarkings) {
                 List<String> lls = FFLineWrapper.buildLines(sb.toString(), SEPS, CC_PREFIX_INDENT, LINE_LENGTH);
@@ -76,7 +76,7 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
             if (includeFFMarkings)
                 sb.append(this.linePrefix);
             sb.append(NOTE);
-            String freeTextStr= buildFreeText(comment.getNote(), showEvidence, STOP, SEMI_COMA);
+            String freeTextStr= buildFreeText(comment.getNote(), showEvidence, STOP, SEMICOLON);
             sb.append(freeTextStr);        
             if (includeFFMarkings)
                 lines.addAll(FFLineWrapper.buildLines(sb.toString(), SEPS, linePrefix, LINE_LENGTH));

@@ -1,0 +1,121 @@
+package uk.ac.ebi.uniprot.parser.impl.cc;
+
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_COMA;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
+
+
+public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<CatalyticActivityComment> {
+	private static final String EVIDENCE = "Evidence=";
+	private static final String XREF = "Xref=";
+	private static final String EC = "EC=";
+	private static final String PHYSIO_DIRECTION = "PhysiologicalDirection=";
+	private static final String REACTION = "Reaction=";
+	// CC Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-
+	// CC rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,
+	// CC ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;
+	// CC EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,
+	// CC ECO:0000269|PubMed:10480878, ECO:0000269|PubMed:11021971,
+	// CC ECO:0000269|PubMed:9473059};
+	// CC PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18886;
+	// CC Evidence={ECO:0000255|HAMAP-Rule:MF_00956};
+
+	private String convertReactionReference(DBCrossReference<ReactionReferenceType> rs) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(rs.getDatabaseType().toDisplayName()).append(FFLineConstant.COLON).append(rs.getId());
+
+		return sb.toString();
+	}
+
+	@Override
+	protected List<String> buildCommentLines(CatalyticActivityComment comment, boolean includeFFMarkings,
+			boolean showEvidence) {
+		List<String> lines = new ArrayList<>();
+		// first line
+		StringBuilder firstLine = new StringBuilder();
+
+		firstLine.append(buildStart(comment, includeFFMarkings));
+		if (firstLine.length() > 0)
+			lines.add(firstLine.toString());
+		Reaction reaction = comment.getReaction();
+		StringBuilder sb = new StringBuilder();
+		if (includeFFMarkings)
+			sb.append(this.linePrefix);
+		sb.append(REACTION).append(reaction.getName()).append(FFLineConstant.SEMICOLON);
+		List<DBCrossReference<ReactionReferenceType>> xrefs = reaction.getReactionReferences();
+	//	List<String> words = new ArrayList<>();
+		if (!xrefs.isEmpty()) {
+		//	words =xrefs.stream().map(val -> val.getId()).filter(val->val.contains("-")).collect(Collectors.toList());
+			sb.append(FFLineConstant.SPACE)
+			.append(XREF).append(xrefs.stream().map(this::convertReactionReference)
+					.collect(Collectors.joining(FFLineConstant.SEPARATOR_COMA))).append(FFLineConstant.SEMICOLON);
+		}
+		if((reaction.getEcNumber() !=null) && reaction.getEcNumber().isValid()) {
+			sb.append(FFLineConstant.SPACE).append(EC).append(reaction.getEcNumber().getValue()).append(FFLineConstant.SEMICOLON);
+		}
+		if (!reaction.getEvidences().isEmpty()) {
+			sb.append(FFLineConstant.SPACE);
+			sb.append(EVIDENCE);
+			sb.append("{");
+			for (int i = 0; i < reaction.getEvidences().size(); i++) {
+				if (i > 0)
+					sb.append(SEPARATOR_COMA);
+			
+				sb.append(reaction.getEvidences().get(i).getValue());
+			}
+			sb.append("}");
+			sb.append(SEMICOLON);
+		}
+		if (includeFFMarkings) {
+			List<String> lls = FFLineWrapper.buildLines(sb.toString(),FFLineConstant.SEPS, CC_PREFIX_INDENT,
+					FFLineConstant.LINE_LENGTH);
+			lines.addAll(lls);
+		} else
+			lines.add(sb.toString());
+
+		for (PhysiologicalReaction direction : comment.getPhysiologicalReactions()) {
+			StringBuilder sb2 = new StringBuilder();
+			if (includeFFMarkings)
+				sb2.append(this.linePrefix);
+			sb2.append(PHYSIO_DIRECTION).append(direction.getDirectionType().toDisplayName())
+					.append(FFLineConstant.SEPARATOR_SEMICOLON);
+
+			sb2.append(XREF).append(convertReactionReference(direction.getReactionReference()))
+					.append(FFLineConstant.SEMICOLON);
+			if (!direction.getEvidences().isEmpty()) {
+				sb2.append(FFLineConstant.SPACE);
+				sb2.append(EVIDENCE);
+				sb.append("{");
+				for (int i = 0; i < direction.getEvidences().size(); i++) {
+					if (i > 0)
+						sb.append(SEPARATOR_COMA);
+				
+					sb.append(direction.getEvidences().get(i).getValue());
+				}
+				sb.append("}");
+				sb.append(SEMICOLON);
+			}
+			if (includeFFMarkings) {
+				List<String> lls = FFLineWrapper.buildLines(sb2.toString(), FFLineConstant.SEPS, CC_PREFIX_INDENT,
+						FFLineConstant.LINE_LENGTH);
+				lines.addAll(lls);
+			} else
+				lines.add(sb2.toString());
+
+		}
+
+		return lines;
+	}
+
+}

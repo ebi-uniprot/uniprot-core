@@ -35,6 +35,8 @@ public class CCLineBuilderFactory {
 				new CCWebResourceCommentLineBuilder());
 		commentBuilders.put(CommentType.COFACTOR,
 				new CCCofactorCommentLineBuilder());
+		commentBuilders.put(CommentType.CATALYTIC_ACTIVITY,
+				new CatalyticActivityCCLineBuilder());
 		
 	};
 	private static final FFLineBuilder<FreeTextComment> defaultBuilder

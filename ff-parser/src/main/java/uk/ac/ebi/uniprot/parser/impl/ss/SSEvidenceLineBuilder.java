@@ -41,7 +41,7 @@ public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>
 			sb.append(prefix);
 
 			sb.append(evidence.getEvidenceCode().getCode());
-			sb.append(SEPARATOR_SEMICOMA);
+			sb.append(SEPARATOR_SEMICOLON);
 			if(evidence.getSource() !=null) {
 				sb.append(evidence.getSource().getDatabaseType().getName())
 				.append(":")
@@ -49,13 +49,13 @@ public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>
 			}else {
 				sb.append("-");
 			}
-			sb.append(SEPARATOR_SEMICOMA);
+			sb.append(SEPARATOR_SEMICOLON);
 			if (line.getCurator() == null) {
 				sb.append(DEFAULT_ORIG_NAME);
 			} else
 				sb.append(line.getCurator());
 
-			sb.append(SEPARATOR_SEMICOMA);
+			sb.append(SEPARATOR_SEMICOLON);
 			sb.append(dateFormatter.format(line.getCreateDate()).toUpperCase());
 			sb.append(STOP);
 			lines.add(sb.toString());

@@ -96,7 +96,7 @@ implements FFLineBuilder<ProteinDescription> {
 			} else if (flagType == FlagType.FRAGMENTS_PRECURSOR) {
 				sb.append("Fragments; Precursor;");
 			} else {
-				sb.append(flagType.getValue()).append(SEMI_COMA);
+				sb.append(flagType.getValue()).append(SEMICOLON);
 			}
 			deLines.add(sb.toString());
 		}
@@ -160,7 +160,7 @@ implements FFLineBuilder<ProteinDescription> {
 			sb.append(DE_LINE_SPACE);
 		sb.append(valueType).append(EQUAL_SIGN).append(value.getValue());
 		addEvidences(sb, value, showEvidence);
-		sb.append(SEMI_COMA);
+		sb.append(SEMICOLON);
 		return sb.toString();
 
 	}

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMI_COMA;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
 
@@ -32,12 +32,12 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
 		sb.append(": ");
 		sb.append(NAME);
 		sb.append(comment.getResourceName());
-		sb.append(SEMI_COMA);
+		sb.append(SEMICOLON);
 		if(!Strings.isNullOrEmpty(comment.getNote()) ){
 			sb.append(SPACE);
 			sb.append(NOTE);
 			sb.append(comment.getNote());
-			sb.append(SEMI_COMA);
+			sb.append(SEMICOLON);
 		}
 		if(includeFlatFileMarkings)
 			lines.addAll(FFLineWrapper.buildLines(sb, SEPARATOR, linePrefix));
