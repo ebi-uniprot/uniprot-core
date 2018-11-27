@@ -2,7 +2,7 @@ ID   CAPP_STRR6              Reviewed;         898 AA.
 AC   Q8DPW5;
 DT   24-MAY-2004, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAR-2003, sequence version 1.
-DT   28-FEB-2018, entry version 80.
+DT   05-DEC-2018, entry version 83.
 DE   RecName: Full=Phosphoenolpyruvate carboxylase {ECO:0000255|HAMAP-Rule:MF_00595};
 DE            Short=PEPC {ECO:0000255|HAMAP-Rule:MF_00595};
 DE            Short=PEPCase {ECO:0000255|HAMAP-Rule:MF_00595};
@@ -29,9 +29,11 @@ RL   J. Bacteriol. 183:5709-5717(2001).
 CC   -!- FUNCTION: Forms oxaloacetate, a four-carbon dicarboxylic acid
 CC       source for the tricarboxylic acid cycle. {ECO:0000255|HAMAP-
 CC       Rule:MF_00595}.
-CC   -!- CATALYTIC ACTIVITY: Phosphate + oxaloacetate = H(2)O +
-CC       phosphoenolpyruvate + HCO(3)(-). {ECO:0000255|HAMAP-
-CC       Rule:MF_00595}.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=oxaloacetate + phosphate = hydrogencarbonate +
+CC         phosphoenolpyruvate; Xref=Rhea:RHEA:28370, ChEBI:CHEBI:16452,
+CC         ChEBI:CHEBI:17544, ChEBI:CHEBI:43474, ChEBI:CHEBI:58702;
+CC         EC=4.1.1.31; Evidence={ECO:0000255|HAMAP-Rule:MF_00595};
 CC   -!- COFACTOR:
 CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-
 CC         Rule:MF_00595};
@@ -39,7 +41,7 @@ CC   -!- SIMILARITY: Belongs to the PEPCase type 1 family.
 CC       {ECO:0000255|HAMAP-Rule:MF_00595}.
 CC   -----------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
-CC   Distributed under the Creative Commons Attribution-NoDerivs License
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
 CC   -----------------------------------------------------------------------
 DR   EMBL; AE007317; AAK99778.1; -; Genomic_DNA.
 DR   PIR; F97993; F97993.
@@ -58,11 +60,13 @@ DR   eggNOG; COG2352; LUCA.
 DR   HOGENOM; HOG000238647; -.
 DR   KO; K01595; -.
 DR   OMA; PWVFGWT; -.
-DR   BioCyc; SPNE171101:G1FZH-1009-MONOMER; -.
+DR   BioCyc; SPNE171101:SPR0974-MONOMER; -.
 DR   Proteomes; UP000000586; Chromosome.
 DR   GO; GO:0005829; C:cytosol; IBA:GO_Central.
+DR   GO; GO:0000287; F:magnesium ion binding; IEA:UniProtKB-UniRule.
 DR   GO; GO:0008964; F:phosphoenolpyruvate carboxylase activity; IBA:GO_Central.
-DR   GO; GO:0015977; P:carbon fixation; IEA:UniProtKB-KW.
+DR   GO; GO:0015977; P:carbon fixation; IEA:UniProtKB-UniRule.
+DR   GO; GO:0006107; P:oxaloacetate metabolic process; IEA:UniProtKB-UniRule.
 DR   GO; GO:0006099; P:tricarboxylic acid cycle; IEA:InterPro.
 DR   HAMAP; MF_00595; PEPcase_type1; 1.
 DR   InterPro; IPR021135; PEP_COase.

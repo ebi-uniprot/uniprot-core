@@ -27,7 +27,7 @@ public enum UniProtXDbTypes {
 					new TypeReference<List<UniProtXDbTypeDetail>>() {
 					});
 			
-			typeMap =types.stream().collect(Collectors.toMap(val -> val.getName(), val->val));
+			typeMap =types.stream().collect(Collectors.toMap(val -> val.getDisplayName(), val->val));
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

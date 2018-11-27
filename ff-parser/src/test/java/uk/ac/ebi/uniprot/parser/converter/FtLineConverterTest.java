@@ -233,9 +233,9 @@ public class FtLineConverterTest {
 		Feature feature3= unfeature3;
 		Feature feature4= unfeature4;
 		assertEquals(FeatureType.HELIX, feature1.getType());
-		assertEquals(FeatureType.SIGNAL, feature1.getType());
-		assertEquals(FeatureType.NP_BIND, feature1.getType());
-		assertEquals(FeatureType.NP_BIND, feature1.getType());
+		assertEquals(FeatureType.SIGNAL, feature2.getType());
+		assertEquals(FeatureType.NP_BIND, feature3.getType());
+		assertEquals(FeatureType.NP_BIND, feature4.getType());
 		
 		List<Evidence> eviIds = unfeature1.getEvidences();
 		assertEquals(2, eviIds.size());

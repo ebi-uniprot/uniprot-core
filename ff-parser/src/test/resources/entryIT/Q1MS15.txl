@@ -2,7 +2,7 @@ ID   RISB_LAWIP              Reviewed;         157 AA.
 AC   Q1MS15;
 DT   15-JAN-2008, integrated into UniProtKB/Swiss-Prot.
 DT   30-MAY-2006, sequence version 1.
-DT   28-MAR-2018, entry version 78.
+DT   05-DEC-2018, entry version 80.
 DE   RecName: Full=6,7-dimethyl-8-ribityllumazine synthase {ECO:0000255|HAMAP-Rule:MF_00178};
 DE            Short=DMRL synthase {ECO:0000255|HAMAP-Rule:MF_00178};
 DE            Short=LS {ECO:0000255|HAMAP-Rule:MF_00178};
@@ -26,10 +26,13 @@ CC       ribityllumazine by condensation of 5-amino-6-(D-
 CC       ribitylamino)uracil with 3,4-dihydroxy-2-butanone 4-phosphate.
 CC       This is the penultimate step in the biosynthesis of riboflavin.
 CC       {ECO:0000255|HAMAP-Rule:MF_00178}.
-CC   -!- CATALYTIC ACTIVITY: 1-deoxy-L-glycero-tetrulose 4-phosphate + 5-
-CC       amino-6-(D-ribitylamino)uracil = 6,7-dimethyl-8-(D-
-CC       ribityl)lumazine + 2 H(2)O + phosphate. {ECO:0000255|HAMAP-
-CC       Rule:MF_00178}.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=(2S)-2-hydroxy-3-oxobutyl phosphate + 5-amino-6-(D-
+CC         ribitylamino)uracil = 6,7-dimethyl-8-(1-D-ribityl)lumazine +
+CC         H(+) + 2 H2O + phosphate; Xref=Rhea:RHEA:26152,
+CC         ChEBI:CHEBI:15377, ChEBI:CHEBI:15378, ChEBI:CHEBI:15934,
+CC         ChEBI:CHEBI:43474, ChEBI:CHEBI:58201, ChEBI:CHEBI:58830;
+CC         EC=2.5.1.78; Evidence={ECO:0000255|HAMAP-Rule:MF_00178};
 CC   -!- PATHWAY: Cofactor biosynthesis; riboflavin biosynthesis;
 CC       riboflavin from 2-hydroxy-3-oxobutyl phosphate and 5-amino-6-(D-
 CC       ribitylamino)uracil: step 1/2. {ECO:0000255|HAMAP-Rule:MF_00178}.
@@ -50,8 +53,8 @@ DR   BioCyc; LINT363253:G1GJC-173-MONOMER; -.
 DR   UniPathway; UPA00275; UER00404.
 DR   Proteomes; UP000002430; Chromosome.
 DR   GO; GO:0009349; C:riboflavin synthase complex; IEA:InterPro.
-DR   GO; GO:0000906; F:6,7-dimethyl-8-ribityllumazine synthase activity; IEA:UniProtKB-EC.
-DR   GO; GO:0009231; P:riboflavin biosynthetic process; IEA:UniProtKB-UniPathway.
+DR   GO; GO:0000906; F:6,7-dimethyl-8-ribityllumazine synthase activity; IEA:UniProtKB-UniRule.
+DR   GO; GO:0009231; P:riboflavin biosynthetic process; IEA:UniProtKB-UniRule.
 DR   CDD; cd09209; Lumazine_synthase-I; 1.
 DR   Gene3D; 3.40.50.960; -; 1.
 DR   HAMAP; MF_00178; Lumazine_synth; 1.
