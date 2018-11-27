@@ -264,27 +264,27 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testCATALYTIC() {
-		String ccLine =("CC   -!- CATALYTIC ACTIVITY: ATP + L-glutamate + NH(3) = ADP + phosphate +\n" +
+	public void testActivityRegulation() {
+		String ccLine =("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate +\n" +
 				"CC       L-glutamine.");
 		String text ="ATP + L-glutamate + NH(3) = ADP + phosphate + L-glutamine.";
 		List<String> evs = new ArrayList<>();
 		//	evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
 		//	evs.add("ECO:0000313|Ensembl:ENSP00000409133");
-		FreeTextComment comment = buildComment(CommentType.CATALYTIC_ACTIVITY, text,
+		FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text,
 					evs);
 			doTest(ccLine, comment);
 	}
 	
 	@Test
-	public void testCATALYTICWithEvidence() {
-		String ccLine =("CC   -!- CATALYTIC ACTIVITY: ATP + L-glutamate + NH(3) = ADP + phosphate +\n" +
+	public void testActivityRegulationWithEvidence() {
+		String ccLine =("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate +\n" +
 				"CC       L-glutamine. {ECO:0000313|Ensembl:ENSP00000409133}.");
 		String text ="ATP + L-glutamate + NH(3) = ADP + phosphate + L-glutamine.";
 		List<String> evs = new ArrayList<>();
 		//	evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
 			evs.add("ECO:0000313|Ensembl:ENSP00000409133");
-			FreeTextComment comment = buildComment(CommentType.CATALYTIC_ACTIVITY, text,
+			FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text,
 					evs);
 			doTest(ccLine, comment);
 	}

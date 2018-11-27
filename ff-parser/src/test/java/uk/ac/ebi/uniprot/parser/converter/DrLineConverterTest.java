@@ -159,7 +159,7 @@ public class DrLineConverterTest {
 		DrLineConverter converter2 = new DrLineConverter(true);
 		UniProtDrObjects drObjects= converter2.convert(obj);
 		List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
-		assertEquals(5, xrefs.size());
+		assertEquals(6, xrefs.size());
 	//	validate( xrefs.get(0), "EMBL,
 	//			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
 
@@ -173,7 +173,7 @@ public class DrLineConverterTest {
 				"GO:0006355", "P:regulation of transcription, DNA-dependent", "IEA:UniProtKB-KW", null);
 	//	validate( xrefs.get(4), "GO,
 	//			"GO:0046782", "P:regulation of viral transcription", "IEA:InterPro", null );
-		validate( xrefs.get(4), "INTERPRO",
+		validate( xrefs.get(5), "InterPro",
 				"IPR007031", "Poxvirus_VLTF3", null, null );
 	}
 	

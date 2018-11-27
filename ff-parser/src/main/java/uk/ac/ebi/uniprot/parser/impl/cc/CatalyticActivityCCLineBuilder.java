@@ -96,15 +96,15 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
 			if (!direction.getEvidences().isEmpty()) {
 				sb2.append(FFLineConstant.SPACE);
 				sb2.append(EVIDENCE);
-				sb.append("{");
+				sb2.append("{");
 				for (int i = 0; i < direction.getEvidences().size(); i++) {
 					if (i > 0)
-						sb.append(SEPARATOR_COMA);
+						sb2.append(SEPARATOR_COMA);
 				
-					sb.append(direction.getEvidences().get(i).getValue());
+					sb2.append(direction.getEvidences().get(i).getValue());
 				}
-				sb.append("}");
-				sb.append(SEMICOLON);
+				sb2.append("}");
+				sb2.append(SEMICOLON);
 			}
 			if (includeFFMarkings) {
 				List<String> lls = FFLineWrapper.buildLines(sb2.toString(), FFLineConstant.SEPS, CC_PREFIX_INDENT,

@@ -92,9 +92,9 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
         String evi = "ECO:0000269|PubMed:18456808";
         List<String> evs = new ArrayList<>();
         evs.add(evi);
-        FreeTextComment comment = buildComment(CommentType.CATALYTIC_ACTIVITY, text, evs);
+        FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text, evs);
 
-        String expected = "CC   -!- CATALYTIC ACTIVITY: Release of protein hormones and neuropeptides"
+        String expected = "CC   -!- ACTIVITY REGULATION: Release of protein hormones and neuropeptides"
                 + "\nCC       from their precursors, generally by hydrolysis of -Lys-"
                 + "\nCC       Arg-|- bonds. {ECO:0000269|PubMed:18456808}.";
         doTest(expected, comment);
@@ -107,8 +107,8 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
         String evi = "ECO:0000269|PubMed:18456808";
         List<String> evs = new ArrayList<>();
         evs.add(evi);
-        FreeTextComment comment = buildComment(CommentType.CATALYTIC_ACTIVITY, text, evs);
-        String expected = "CC   -!- CATALYTIC ACTIVITY: Hydrolysis of -Arg-|-Xaa- and -Lys-|-"
+        FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text, evs);
+        String expected = "CC   -!- ACTIVITY REGULATION: Hydrolysis of -Arg-|-Xaa- and -Lys-|-"
                 + "\nCC       Xaa- bonds in oligopeptides, even when P1' residue is proline."
                 + "\nCC       {ECO:0000269|PubMed:18456808}.";
         doTest(expected, comment);
@@ -122,7 +122,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
                         + " shorter than five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec; and"
                         + " Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu- and -Tyr-|-Trp bonds also occurs).";
         String expected =
-                "CC   -!- CATALYTIC ACTIVITY: Hydrolysis of proteins to small peptides in"
+                "CC   -!- ACTIVITY REGULATION: Hydrolysis of proteins to small peptides in"
                         + "\nCC       the presence of ATP and magnesium. Alpha-casein is the usual test"
                         + "\nCC       substrate. In the absence of ATP, only oligopeptides shorter than"
                         + "\nCC       five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;"
@@ -133,7 +133,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
         String evi = "ECO:0000255|HAMAP-Rule:MF_00444";
         List<String> evs = new ArrayList<>();
         evs.add(evi);
-        FreeTextComment comment = buildComment(CommentType.CATALYTIC_ACTIVITY, text, evs);
+        FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text, evs);
         doTest(expected, comment);
     }
 

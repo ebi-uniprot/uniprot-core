@@ -53,7 +53,7 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
 	}
 
 	private void addDrLine(DrLineObject.DrObject drline, UniProtDrObjects uniProtDrObjects,
-			Map<Object, List<Evidence>> evidenceMap) throws DatabaseTypeNotExistException {
+			Map<Object, List<Evidence>> evidenceMap) {
 
 		if (drline.ssLineValue != null)
 			return;
@@ -77,7 +77,12 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
 		if ((drline.isoform != null) && (!drline.isoform.isEmpty())) {
 			isoformId = drline.isoform;
 		}
+		try {
 		uniProtDrObjects.drObjects.add(factory.createUniProtDBCrossReference(drline.DbName, id, description, thirdAttribute,
 				fourthAttribute, isoformId, evidences));
+		}catch (Exception e) {
+			if(!ignoreWrongDR)
+			throw new DatabaseTypeNotExistException(drline.DbName);
+		}
 	}
 }

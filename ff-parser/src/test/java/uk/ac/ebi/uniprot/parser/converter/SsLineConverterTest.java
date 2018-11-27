@@ -41,7 +41,7 @@ public class SsLineConverterTest {
 		assertEquals("UP99", evidence1.toEvidence().getSource().getId());
 		assertEquals("ECO:0000313|ProtImp:UP99", evidence1.getEvidence());
 		assertEquals("ProtImp", evidence1.toEvidence().getSource().getDatabaseType().getName());
-		assertEquals("ECO:0000313", evidence1.toEvidence().getEvidenceCode().getName());
+		assertEquals("ECO:0000313", evidence1.toEvidence().getEvidenceCode().getCode());
 		assertEquals(ev1.date, evidence1.getCreateDate());
 		assertEquals(ev1.attr_2, evidence1.getCurator());
 		
@@ -49,7 +49,7 @@ public class SsLineConverterTest {
 		assertEquals("MF_01417", evidence2.toEvidence().getSource().getId());
 		assertEquals("ECO:0000256|HAMAP-Rule:MF_01417", evidence2.getEvidence());
 		assertEquals("HAMAP-Rule", evidence2.toEvidence().getSource().getDatabaseType().getName());
-		assertEquals("ECO:0000256", evidence2.toEvidence().getEvidenceCode().getName());
+		assertEquals("ECO:0000256", evidence2.toEvidence().getEvidenceCode().getCode());
 		assertEquals(ev2.date, evidence2.getCreateDate());
 		assertEquals(ev2.attr_2, evidence2.getCurator());
 		
