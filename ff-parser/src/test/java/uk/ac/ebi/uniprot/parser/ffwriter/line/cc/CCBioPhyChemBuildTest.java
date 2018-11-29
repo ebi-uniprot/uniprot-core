@@ -169,7 +169,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		List<String> kpNoteEvs =new ArrayList<>();
 		Note kpNote =buildNote(kpNoteStr, kpNoteEvs);
 		List<MaximumVelocity> velocities = new ArrayList<>();
-		float velocity1 = 17f;
+		double velocity1 = 17;
 		String enzyme1= "enzyme";
 		List<String> mvEvs1 =new ArrayList<>();
 		MaximumVelocity  vel1 = buildMaximumVelocity( velocity1, "umol/min/mg",
@@ -178,14 +178,14 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		
 		List<MichaelisConstant> constants = new ArrayList<>();
 		
-		float constant1 = 5.4f;
+		double constant1 = 5.4;
 		String substrate1 ="tyramine";
 		List<String> consEvs = new ArrayList<>();
 		MichaelisConstant constan1= buildMichaelisConstant( constant1, MichaelisConstantUnit.MICRO_MOL,
 				 substrate1, consEvs);
 		constants.add(constan1);
 		
-		float constant2 = 688f;
+		double constant2 = 688;
 		String substrate2 ="pyridoxal";
 		List<String> consEvs2 = new ArrayList<>();
 		MichaelisConstant constan2= buildMichaelisConstant( constant2, MichaelisConstantUnit.MICRO_MOL,
@@ -261,7 +261,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		kpNoteEvs.add(ev5);
 		Note kpNote =buildNote(kpNoteStr, kpNoteEvs);
 		List<MaximumVelocity> velocities = new ArrayList<>();
-		float velocity1 = 17f;
+		double velocity1 = 17f;
 		String enzyme1= "enzyme";
 		List<String> mvEvs1 =new ArrayList<>();
 		mvEvs1.add(ev4);
@@ -272,7 +272,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		
 		List<MichaelisConstant> constants = new ArrayList<>();
 		
-		float constant1 = 5.4f;
+		double constant1 = 5.4;
 		String substrate1 ="tyramine";
 		List<String> consEvs = new ArrayList<>();
 		consEvs.add(ev1);
@@ -280,7 +280,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 				 substrate1, consEvs);
 		constants.add(constan1);
 		
-		float constant2 = 688f;
+		double constant2 = 688f;
 		String substrate2 ="pyridoxal";
 		List<String> consEvs2 = new ArrayList<>();
 		consEvs2.add(ev1);
@@ -463,7 +463,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		Note kpNote =buildNote(notes);
 
 		List<MaximumVelocity> velocities = new ArrayList<>();
-		float velocity1 = 17f;
+		double velocity1 = 17;
 		String enzyme1= "enzyme";
 		List<String> mvEvs1 =new ArrayList<>();
 		mvEvs1.add(ev4);
@@ -473,7 +473,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 		
 		List<MichaelisConstant> constants = new ArrayList<>();
 		
-		float constant1 = 5.4f;
+		double constant1 = 5.4;
 		String substrate1 ="tyramine";
 		List<String> consEvs = new ArrayList<>();
 		consEvs.add(ev1);
@@ -481,7 +481,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 				 substrate1, consEvs);
 		constants.add(constan1);
 		
-		float constant2 = 688f;
+		double constant2 = 688f;
 		String substrate2 ="pyridoxal";
 		List<String> consEvs2 = new ArrayList<>();
 		consEvs2.add(ev1);
@@ -582,11 +582,11 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 	}
 	
 
-	MichaelisConstant buildMichaelisConstant(float constant, MichaelisConstantUnit unit,
+	MichaelisConstant buildMichaelisConstant(double constant, MichaelisConstantUnit unit,
 			String substrate, List<String> evs){
 		return BPCPCommentBuilder.createMichaelisConstant(constant, unit, substrate, createEvidence(evs));
 	}
-	MaximumVelocity buildMaximumVelocity(float velocity, String unit,
+	MaximumVelocity buildMaximumVelocity(double velocity, String unit,
 			String enzyme,  List<String> evs){
 		return BPCPCommentBuilder.createMaximumVelocity(velocity, unit, enzyme, createEvidence(evs));
 
