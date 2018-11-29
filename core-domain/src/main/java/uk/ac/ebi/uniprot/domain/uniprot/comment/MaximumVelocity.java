@@ -12,7 +12,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MaximumVelocityImpl.class, name = "MaximumVelocityImpl")
 })
 public interface MaximumVelocity extends HasEvidences {
-	public float getVelocity();
+	public double getVelocity();
 	public String getEnzyme();
 	public String getUnit();
 

@@ -15,7 +15,7 @@ public interface MichaelisConstant  extends HasEvidences {
 
     public static final MichaelisConstantUnit NORMALIZED_UNIT = MichaelisConstantUnit.NANO_MOL;
 
-    public float getConstant();
+    public double getConstant();
 
     public MichaelisConstantUnit getUnit();
 

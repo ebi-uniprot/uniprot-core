@@ -86,12 +86,12 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
         return new AbsorptionImpl(max, approximate, note, evidences);
     }
 
-    public static MaximumVelocity createMaximumVelocity(float velocity, String unit, String enzyme,
+    public static MaximumVelocity createMaximumVelocity(double velocity, String unit, String enzyme,
             List<Evidence> evidences) {
         return new MaximumVelocityImpl(velocity, unit, enzyme, evidences);
     }
 
-    public static MichaelisConstant createMichaelisConstant(float constant, MichaelisConstantUnit unit,
+    public static MichaelisConstant createMichaelisConstant(double constant, MichaelisConstantUnit unit,
             String substrate,
             List<Evidence> evidences) {
         return new MichaelisConstantImpl(constant, unit, substrate, evidences);

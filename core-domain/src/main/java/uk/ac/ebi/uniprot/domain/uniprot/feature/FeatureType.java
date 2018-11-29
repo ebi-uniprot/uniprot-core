@@ -86,7 +86,7 @@ public enum FeatureType {
     }
     public static FeatureType typeOf(String value) {
         for (FeatureType featureType : FeatureType.values()) {
-            if (featureType.getValue().equals(value)) {
+            if (featureType.name().equalsIgnoreCase(value)) {
                 return featureType;
             }
         }

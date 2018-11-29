@@ -11,12 +11,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MaximumVelocityImpl implements MaximumVelocity {
-    private final float velocity;
+    private final double velocity;
     private final String unit;
     private final String enzyme;
     private final List<Evidence> evidences;
     @JsonCreator
-    public MaximumVelocityImpl(@JsonProperty("velocity")  float velocity, 
+    public MaximumVelocityImpl(@JsonProperty("velocity")  double velocity, 
     		@JsonProperty("unit") String unit, 
     		@JsonProperty("enzyme") String enzyme, 
     		@JsonProperty("evidences") List<Evidence> evidences) {
@@ -36,7 +36,7 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     }
 
     @Override
-    public float getVelocity() {
+    public double getVelocity() {
         return velocity;
     }
 
@@ -50,44 +50,48 @@ public class MaximumVelocityImpl implements MaximumVelocity {
         return unit;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((enzyme == null) ? 0 : enzyme.hashCode());
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-        result = prime * result + ((unit == null) ? 0 : unit.hashCode());
-        result = prime * result + Float.floatToIntBits(velocity);
-        return result;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((enzyme == null) ? 0 : enzyme.hashCode());
+		result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
+		result = prime * result + ((unit == null) ? 0 : unit.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(velocity);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        MaximumVelocityImpl other = (MaximumVelocityImpl) obj;
-        if (enzyme == null) {
-            if (other.enzyme != null)
-                return false;
-        } else if (!enzyme.equals(other.enzyme))
-            return false;
-        if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        if (unit == null) {
-            if (other.unit != null)
-                return false;
-        } else if (!unit.equals(other.unit))
-            return false;
-        if (Float.floatToIntBits(velocity) != Float.floatToIntBits(other.velocity))
-            return false;
-        return true;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MaximumVelocityImpl other = (MaximumVelocityImpl) obj;
+		if (enzyme == null) {
+			if (other.enzyme != null)
+				return false;
+		} else if (!enzyme.equals(other.enzyme))
+			return false;
+		if (evidences == null) {
+			if (other.evidences != null)
+				return false;
+		} else if (!evidences.equals(other.evidences))
+			return false;
+		if (unit == null) {
+			if (other.unit != null)
+				return false;
+		} else if (!unit.equals(other.unit))
+			return false;
+		if (Double.doubleToLongBits(velocity) != Double.doubleToLongBits(other.velocity))
+			return false;
+		return true;
+	}
+
+   
 
 }

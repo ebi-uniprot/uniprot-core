@@ -55,7 +55,13 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
 			this.properties.addAll(properties);
 		}
 	}
-
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(this.databaseType.getName()).append(":").append(id);
+		
+		return sb.toString();
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
