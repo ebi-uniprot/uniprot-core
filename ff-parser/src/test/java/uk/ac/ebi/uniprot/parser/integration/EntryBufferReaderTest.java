@@ -10,14 +10,14 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.parser.impl.EntryBufferReader;
+import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader;
 
 public class EntryBufferReaderTest {
 	@Test
 	public void testSimple() {
 		String filename = "src/test/resources/entryIT/entryReader2.dat";
 
-		try (EntryBufferReader reader = new EntryBufferReader(filename);) {
+		try (EntryBufferedReader reader = new EntryBufferedReader(filename);) {
 			verify("test1", reader, false);
 			verify("test2", reader, false);
 			verify("test3", reader, false);
@@ -31,7 +31,7 @@ public class EntryBufferReaderTest {
 	@Test
 	public void testGzFile() {
 		String filename = "src/test/resources/entryIT/entryReader2.dat.gz";
-		try (EntryBufferReader reader = new EntryBufferReader(filename);) {
+		try (EntryBufferedReader reader = new EntryBufferedReader(filename);) {
 
 			verify("test1", reader, false);
 			verify("test2", reader, false);
@@ -46,7 +46,7 @@ public class EntryBufferReaderTest {
 	@Test
 	public void test2Entries() {
 		String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
-		try (EntryBufferReader reader = new EntryBufferReader(filename);) {
+		try (EntryBufferedReader reader = new EntryBufferedReader(filename);) {
 			String entry1 = readFile("src/test/resources/entryIT/A8EZU1.dat");
 			verify(entry1, reader, true);
 			String entry2 = readFile("src/test/resources/entryIT/D6RDV7.dat");
@@ -60,7 +60,7 @@ public class EntryBufferReaderTest {
 	@Test
 	public void testGz2Entries() {
 		String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat.gz";
-		try (EntryBufferReader reader = new EntryBufferReader(filename);) {
+		try (EntryBufferedReader reader = new EntryBufferedReader(filename);) {
 			String entry1 = readFile("src/test/resources/entryIT/A8EZU1.dat");
 			verify(entry1, reader, true);
 			String entry2 = readFile("src/test/resources/entryIT/D6RDV7.dat");
@@ -71,7 +71,7 @@ public class EntryBufferReaderTest {
 		}
 	}
 
-	private void verify(String data, EntryBufferReader reader, boolean hasEnd) throws IOException {
+	private void verify(String data, EntryBufferedReader reader, boolean hasEnd) throws IOException {
 		if (data == null) {
 			assertNull(reader.next());
 			return;

@@ -202,12 +202,12 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 	private EntryReader createEntryReader(String fileName) throws FileNotFoundException {
 		if (fileName.endsWith(".gz")) {
 			try {
-				return new EntryBufferReader(fileName);
+				return new EntryBufferedReader(fileName);
 			} catch (IOException e) {
-				return new EntryBufferReader2(fileName);
+				return new EntryBufferedReader2(fileName);
 			}
 		} else {
-			return new EntryBufferReader2(fileName);
+			return new EntryBufferedReader2(fileName);
 		}
 	}
 

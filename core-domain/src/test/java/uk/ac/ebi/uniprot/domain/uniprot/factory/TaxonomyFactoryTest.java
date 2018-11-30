@@ -1,9 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -78,6 +83,7 @@ public class TaxonomyFactoryTest {
         assertEquals(0, organism.getSynonyms().size());
         assertEquals(str, organism.toString());
         TestHelper.verifyJson(organism);
+
     }
 
     @Test
@@ -90,6 +96,7 @@ public class TaxonomyFactoryTest {
         assertEquals(2, organism.getSynonyms().size());
         assertEquals(str, organism.toString());
         TestHelper.verifyJson(organism);
+
     }
 
     @Test
@@ -120,6 +127,8 @@ public class TaxonomyFactoryTest {
         OrganismName organism =  TaxonomyFactory.INSTANCE.createOrganismName( scientificName, commonName, synonyms);
         OrganismName organismImpl = new OrganismNameImpl(scientificName, commonName, synonyms);
         assertEquals(organismImpl, organism); 
+        TestHelper.verifyJson(organism);
+
       
     }
     
@@ -134,6 +143,7 @@ public class TaxonomyFactoryTest {
         assertEquals("", organism.getCommonName());
         assertEquals(0, organism.getSynonyms().size());
         assertEquals(str, organism.toString());
+
     }
     @Test
     public void testCreateWith_() {
@@ -145,19 +155,40 @@ public class TaxonomyFactoryTest {
         assertEquals("", organism.getCommonName());
         assertEquals(0, organism.getSynonyms().size());
         assertEquals(str, organism.toString());
+
     }
     
     @Test
-    public void testCreateWithSlash() {
+	public void testCreateWithSlash() {
     	
     	   String str ="Salmonella paratyphi B (strain ATCC BAA-1250 / SPB7)";
-           String scientificName ="Salmonella paratyphi B";
+      
            OrganismName organism = TaxonomyFactory.INSTANCE.createFromOrganismLine(str);
 
-           assertEquals(scientificName, organism.getScientificName());
-           assertEquals("strain ATCC BAA-1250 / SPB7", organism.getCommonName());
+           assertEquals(str, organism.getScientificName());
            assertEquals(0, organism.getSynonyms().size());
            assertEquals(str, organism.toString());
+        
+ 
+    }
+    @Test
+    public void testMultiBrackets() {
+    	String str= "Magnaporthe oryzae (strain 70-15 / ATCC MYA-4617 / FGSC 8958) (Rice blast fungus) (Pyricularia oryzae)";
+    	  OrganismName organism = TaxonomyFactory.INSTANCE.createFromOrganismLine(str);
+    	  
+    	assertEquals("Magnaporthe oryzae (strain 70-15 / ATCC MYA-4617 / FGSC 8958)",organism.getScientificName());
+    	assertEquals("Rice blast fungus",organism.getCommonName());
+    	assertEquals(Arrays.asList("Pyricularia oryzae"),organism.getSynonyms());
     	
     }
+@Test
+public void testMultiBrackets2() {
+	String str= "Synechococcus sp. (strain JA-2-3B'a(2-13)) (Cyanobacteria bacterium Yellowstone B-Prime)";
+	  OrganismName organism = TaxonomyFactory.INSTANCE.createFromOrganismLine(str);
+	  assertEquals("Synechococcus sp. (strain JA-2-3B'a(2-13))",organism.getScientificName());
+  	assertEquals("Cyanobacteria bacterium Yellowstone B-Prime",organism.getCommonName());
+  	assertTrue(organism.getSynonyms().isEmpty());
+	
+}
+  
 }

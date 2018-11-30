@@ -19,9 +19,9 @@ import java.nio.channels.FileChannel;
  * <p/>
  * User: wudong, Date: 07/05/2013, Time: 11:27
  */
-public class EntryBufferReader2 implements EntryReader  {
+public class EntryBufferedReader2 implements EntryReader  {
 
-	private static final Logger logger = LoggerFactory.getLogger(EntryBufferReader2.class);
+	private static final Logger logger = LoggerFactory.getLogger(EntryBufferedReader2.class);
 
 	private long entryStartPosition = 0;
 	private long entryEndPosition = 0;
@@ -36,7 +36,7 @@ public class EntryBufferReader2 implements EntryReader  {
 	final private int size = 1024 * 1024 * (1024 * 2 - 10);
 	//2G-10M, to make it less than Integer.Max_value while still a page aligned size
 
-	public EntryBufferReader2(String fileName) throws FileNotFoundException {
+	public EntryBufferedReader2(String fileName) throws FileNotFoundException {
 	     raFile = new RandomAccessFile(fileName, "r");
 		channel = raFile.getChannel();
 	}
