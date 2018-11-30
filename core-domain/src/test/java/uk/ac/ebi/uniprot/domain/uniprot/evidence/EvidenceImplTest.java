@@ -5,11 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 
-import org.junit.Test;
-
 import com.google.common.base.Strings;
 
 import static org.junit.Assert.*;
+
+import org.junit.jupiter.api.Test;
 
 public class EvidenceImplTest {
 
@@ -92,5 +92,11 @@ public class EvidenceImplTest {
                 );
         int val = evidence.compareTo(evidence2);
         assertTrue(val>0);
+    }
+    @Test
+    void testHGNC() {
+    	 String val ="ECO:0000312|HGNC:HGNC:5217";
+         Evidence evidence = EvidenceImpl.parseEvidenceLine(val);
+         verify(evidence, val, EvidenceCode.ECO_0000312, "HGNC", "HGNC:5217");
     }
 }

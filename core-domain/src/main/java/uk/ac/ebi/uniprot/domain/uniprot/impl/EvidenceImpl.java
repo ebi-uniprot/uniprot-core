@@ -21,20 +21,24 @@ public class EvidenceImpl implements Evidence {
 	
 	static final EvidenceType REFERENCE =new EvidenceType("Reference");
 	static final String REF_PREFIX ="Ref.";
-	
+
     public static Evidence parseEvidenceLine(String val) {
         String[] token = val.split("\\|");
         String code = token[0];
         DBCrossReference<EvidenceType> xref =null;
         if (token.length == 2) {
-            String[] tokens2 = token[1].split(":");
-            if (tokens2.length == 2) {
-            	xref = new DBCrossReferenceImpl<>(new EvidenceType(tokens2[0]), tokens2[1]);
-            } else if(tokens2[0].startsWith(REF_PREFIX)) {
-            	xref = new DBCrossReferenceImpl<>(REFERENCE, tokens2[0]);        
-            }else {
-            	throw new IllegalArgumentException(val + " is not valid evidence string");
-            }
+        	int index = token[1].indexOf(':');
+        	if(index ==-1) {
+        		if (token[1].startsWith(REF_PREFIX)) {
+                	xref = new DBCrossReferenceImpl<>(REFERENCE, token[1]);      
+        		}else {
+        			throw new IllegalArgumentException(val + " is not valid evidence string");
+        		}
+        	}else {
+        		String type = token[1].substring(0, index);
+        		String id = token[1].substring(index+1);
+        		xref = new DBCrossReferenceImpl<>(new EvidenceType(type), id);
+        	}
         }
         EvidenceCode evidenceCode = EvidenceCode.codeOf(code);
         return new EvidenceImpl(evidenceCode, xref);
