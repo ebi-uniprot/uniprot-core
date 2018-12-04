@@ -228,24 +228,48 @@ KW   Cell cycle; Cell division; Centromere; Chromosome; Complete proteome;
 KW   Mitosis; Nucleus; Phosphoprotein; Reference proteome.
 FT   CHAIN         1    233       Protein Mis18-alpha.
 FT                                /FTId=PRO_0000079515.
-FT   MOD_RES      36     36       Phosphoserine. {ECO:0000269|PubMed:
-FT                                20068231}.
-FT   MOD_RES     233    233       Phosphoserine. {ECO:0000269|PubMed:
-FT                                18669648}.
+FT   DOMAIN       80    178       Mis18. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01129}.
+FT   METAL        85     85       Zinc. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01129}.
+FT   METAL        88     88       Zinc. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01129}.
+FT   METAL       141    141       Zinc. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01129}.
+FT   METAL       144    144       Zinc. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01129}.
+FT   MOD_RES      36     36       Phosphoserine.
+FT                                {ECO:0000244|PubMed:20068231,
+FT                                ECO:0000244|PubMed:23186163}.
+FT   MOD_RES      39     39       Phosphoserine.
+FT                                {ECO:0000244|PubMed:23186163}.
+FT   MOD_RES      40     40       Phosphoserine.
+FT                                {ECO:0000244|PubMed:23186163}.
+FT   MOD_RES     233    233       Phosphoserine.
+FT                                {ECO:0000244|PubMed:18669648}.
+FT   CROSSLNK    162    162       Glycyl lysine isopeptide (Lys-Gly)
+FT                                (interchain with G-Cter in SUMO2).
+FT                                {ECO:0000244|PubMed:28112733}.
+FT   MUTAGEN      82     82       V->E: Abolishes interaction with OIP5;
+FT                                when associated with D-176.
+FT                                {ECO:0000269|PubMed:26921242}.
 FT   MUTAGEN      85     85       C->A: Abolishes location at the
-FT                                centromere. {ECO:0000269|PubMed:
-FT                                17199038}.
+FT                                centromere.
+FT                                {ECO:0000269|PubMed:17199038}.
 FT   MUTAGEN      88     88       C->A: Abolishes location at the
-FT                                centromere. {ECO:0000269|PubMed:
-FT                                17199038}.
-FT   MUTAGEN     134    134       C->A: No effect. {ECO:0000269|PubMed:
-FT                                17199038}.
+FT                                centromere.
+FT                                {ECO:0000269|PubMed:17199038}.
+FT   MUTAGEN     134    134       C->A: No effect.
+FT                                {ECO:0000269|PubMed:17199038}.
 FT   MUTAGEN     141    141       C->A: Abolishes location at the
-FT                                centromere. {ECO:0000269|PubMed:
-FT                                17199038}.
+FT                                centromere.
+FT                                {ECO:0000269|PubMed:17199038}.
 FT   MUTAGEN     144    144       C->A: Abolishes location at the
-FT                                centromere. {ECO:0000269|PubMed:
-FT                                17199038}.
+FT                                centromere.
+FT                                {ECO:0000269|PubMed:17199038}.
+FT   MUTAGEN     176    176       Y->D: Abolishes interaction with OIP5;
+FT                                when associated with E-82.
+FT                                {ECO:0000269|PubMed:26921242}.
 SQ   SEQUENCE   233 AA;  25863 MW;  A07522806C4B6221 CRC64;
      MAGVRSLRCS RGCAGGCECG DKGKCSDSSL LGKRLSEDSS RHQLLQKWAS MWSSMSEDAS
      VADMERAQLE EEAAAAEERP LVFLCSGCRR PLGDSLSWVA SQEDTNCILL RCVSCNVSVD

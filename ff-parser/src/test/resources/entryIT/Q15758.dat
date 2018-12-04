@@ -472,31 +472,63 @@ KW   Receptor; Reference proteome; Symport; Transmembrane;
 KW   Transmembrane helix; Transport.
 FT   CHAIN         1    541       Neutral amino acid transporter B(0).
 FT                                /FTId=PRO_0000202082.
-FT   TOPO_DOM      1     52       Cytoplasmic. {ECO:0000255}.
-FT   TRANSMEM     53     73       Helical. {ECO:0000255}.
-FT   TRANSMEM     99    119       Helical. {ECO:0000255}.
-FT   TRANSMEM    133    153       Helical. {ECO:0000255}.
-FT   TOPO_DOM    154    224       Extracellular. {ECO:0000255}.
-FT   TRANSMEM    225    245       Helical. {ECO:0000255}.
-FT   TRANSMEM    266    286       Helical. {ECO:0000255}.
-FT   TRANSMEM    306    326       Helical. {ECO:0000255}.
-FT   TRANSMEM    336    356       Helical. {ECO:0000255}.
-FT   TRANSMEM    377    397       Helical. {ECO:0000255}.
-FT   TRANSMEM    399    419       Helical. {ECO:0000255}.
-FT   TRANSMEM    426    446       Helical. {ECO:0000255}.
-FT   MOD_RES       1      1       N-acetylmethionine. {ECO:0000244|PubMed:
-FT                                19413330, ECO:0000244|PubMed:22814378}.
-FT   MOD_RES     493    493       Phosphoserine. {ECO:0000244|PubMed:
-FT                                21406692, ECO:0000244|PubMed:23186163}.
-FT   MOD_RES     494    494       Phosphothreonine. {ECO:0000244|PubMed:
-FT                                23186163}.
-FT   MOD_RES     503    503       Phosphoserine. {ECO:0000244|PubMed:
-FT                                19690332}.
-FT   MOD_RES     535    535       Phosphoserine. {ECO:0000244|PubMed:
-FT                                17081983, ECO:0000244|PubMed:18669648,
-FT                                ECO:0000244|PubMed:19690332}.
-FT   MOD_RES     539    539       Phosphoserine. {ECO:0000244|PubMed:
-FT                                23186163}.
+FT   TOPO_DOM      1     51       Cytoplasmic. {ECO:0000305}.
+FT   TRANSMEM     52     81       Helical; Name=1.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM     82     94       Extracellular. {ECO:0000305}.
+FT   TRANSMEM     95    116       Helical; Name=2.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    117    130       Cytoplasmic. {ECO:0000305}.
+FT   TRANSMEM    131    153       Helical; Name=3.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    154    224       Extracellular. {ECO:0000305}.
+FT   TRANSMEM    225    248       Helical; Name=4.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    249    257       Cytoplasmic. {ECO:0000305}.
+FT   TRANSMEM    258    285       Helical; Name=5.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    286    306       Extracellular. {ECO:0000305}.
+FT   TRANSMEM    307    328       Helical; Name=6.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    329    333       Cytoplasmic. {ECO:0000305}.
+FT   INTRAMEM    334    364       Discontinuously helical.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    365    373       Cytoplasmic. {ECO:0000305}.
+FT   TRANSMEM    374    400       Helical; Name=7.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    401    413       Extracellular. {ECO:0000305}.
+FT   INTRAMEM    414    447       Discontinuously helical.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    448    460       Extracellular. {ECO:0000305}.
+FT   TRANSMEM    461    482       Helical; Name=8.
+FT                                {ECO:0000305|PubMed:29872227}.
+FT   TOPO_DOM    483    541       Cytoplasmic. {ECO:0000305}.
+FT   METAL       382    382       Sodium 1; via carbonyl oxygen.
+FT                                {ECO:0000250|UniProtKB:O59010}.
+FT   METAL       384    384       Sodium 2; via carbonyl oxygen.
+FT                                {ECO:0000250|UniProtKB:P43003}.
+FT   METAL       386    386       Sodium 1. {ECO:0000250|UniProtKB:O59010}.
+FT   METAL       471    471       Sodium 1; via carbonyl oxygen.
+FT                                {ECO:0000250|UniProtKB:O59010}.
+FT   METAL       475    475       Sodium 1. {ECO:0000250|UniProtKB:O59010}.
+FT   MOD_RES       1      1       N-acetylmethionine.
+FT                                {ECO:0000244|PubMed:19413330,
+FT                                ECO:0000244|PubMed:22814378}.
+FT   MOD_RES     493    493       Phosphoserine.
+FT                                {ECO:0000244|PubMed:21406692,
+FT                                ECO:0000244|PubMed:23186163}.
+FT   MOD_RES     494    494       Phosphothreonine.
+FT                                {ECO:0000244|PubMed:23186163}.
+FT   MOD_RES     503    503       Phosphoserine.
+FT                                {ECO:0000244|PubMed:19690332}.
+FT   MOD_RES     535    535       Phosphoserine.
+FT                                {ECO:0000244|PubMed:17081983,
+FT                                ECO:0000244|PubMed:18669648,
+FT                                ECO:0000244|PubMed:19690332,
+FT                                ECO:0000244|PubMed:20068231,
+FT                                ECO:0000244|PubMed:23186163}.
+FT   MOD_RES     539    539       Phosphoserine.
+FT                                {ECO:0000244|PubMed:23186163}.
 FT   CARBOHYD    163    163       N-linked (GlcNAc...) asparagine.
 FT                                {ECO:0000255}.
 FT   CARBOHYD    212    212       N-linked (GlcNAc...) asparagine.
@@ -509,8 +541,8 @@ FT                                RDQVRRCLRANLLVLLTVVAVVAGVALGLGVSGAGGALALG
 FT                                PERLSAFVFPGELLLRLLRMIILPLVVCSLIGGAASLDPGA
 FT                                LGRLGAWALLFFLVTTLLASALGVGLALALQPGAASAAINA
 FT                                SVGAAGSAENAPSKEVLDSFLDLARNIFPSNLVSAAFRS
-FT                                -> M (in isoform 2). {ECO:0000303|PubMed:
-FT                                14702039}.
+FT                                -> M (in isoform 2).
+FT                                {ECO:0000303|PubMed:14702039}.
 FT                                /FTId=VSP_046354.
 FT   VARIANT      17     17       P -> A (in dbSNP:rs3027956).
 FT                                /FTId=VAR_020439.

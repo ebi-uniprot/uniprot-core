@@ -1,0 +1,411 @@
+ID   ACE_MOUSE               Reviewed;        1312 AA.
+AC   P09470; P22967; Q6GTS2;
+DT   01-JUL-1989, integrated into UniProtKB/Swiss-Prot.
+DT   30-AUG-2005, sequence version 3.
+DT   07-NOV-2018, entry version 175.
+DE   RecName: Full=Angiotensin-converting enzyme;
+DE            Short=ACE;
+DE            EC=3.2.1.-;
+DE            EC=3.4.15.1;
+DE   AltName: Full=Dipeptidyl carboxypeptidase I;
+DE   AltName: Full=Kininase II;
+DE   AltName: CD_antigen=CD143;
+DE   Contains:
+DE     RecName: Full=Angiotensin-converting enzyme, soluble form;
+DE   Flags: Precursor;
+GN   Name=Ace; Synonyms=Dcp1;
+OS   Mus musculus (Mouse).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia; Myomorpha;
+OC   Muroidea; Muridae; Murinae; Mus; Mus.
+OX   NCBI_TaxID=10090;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM SOMATIC).
+RX   PubMed=2545691;
+RA   Bernstein K.E., Martin B.M., Edwards A.S., Bernstein E.A.;
+RT   "Mouse angiotensin-converting enzyme is a protein composed of two
+RT   homologous domains.";
+RL   J. Biol. Chem. 264:11945-11951(1989).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM TESTIS-SPECIFIC), AND PARTIAL
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RX   PubMed=2164636; DOI=10.1128/MCB.10.8.4294;
+RA   Howard T.E., Shai S.-Y., Langford K.G., Martin B.M., Bernstein K.E.;
+RT   "Transcription of testicular angiotensin-converting enzyme (ACE) is
+RT   initiated within the 12th intron of the somatic ACE gene.";
+RL   Mol. Cell. Biol. 10:4294-4302(1990).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM SOMATIC).
+RC   STRAIN=FVB/N; TISSUE=Mammary gland;
+RX   PubMed=15489334; DOI=10.1101/gr.2596504;
+RG   The MGC Project Team;
+RT   "The status, quality, and expansion of the NIH full-length cDNA
+RT   project: the Mammalian Gene Collection (MGC).";
+RL   Genome Res. 14:2121-2127(2004).
+RN   [4]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 1-332 (ISOFORM SOMATIC), AND PARTIAL
+RP   PROTEIN SEQUENCE.
+RX   PubMed=2841312;
+RA   Bernstein K.E., Martin B.M., Bernstein E.A., Linton J., Striker L.,
+RA   Striker G.;
+RT   "The isolation of angiotensin-converting enzyme cDNA.";
+RL   J. Biol. Chem. 263:11021-11024(1988).
+RN   [5]
+RP   PROTEIN SEQUENCE OF 35-54.
+RC   TISSUE=Kidney;
+RX   PubMed=2835538; DOI=10.1038/ki.1988.48;
+RA   Bernstein K.E., Martin B.M., Striker L., Striker G.;
+RT   "Partial protein sequence of mouse and bovine kidney angiotensin
+RT   converting enzyme.";
+RL   Kidney Int. 33:652-655(1988).
+RN   [6]
+RP   FUNCTION.
+RX   PubMed=7753170; DOI=10.1038/375146a0;
+RA   Krege J.H., John S.W., Langenbach L.L., Hodgin J.B., Hagaman J.R.,
+RA   Bachman E.S., Jennette J.C., O'Brien D.A., Smithies O.;
+RT   "Male-female differences in fertility and blood pressure in ACE-
+RT   deficient mice.";
+RL   Nature 375:146-148(1995).
+RN   [7]
+RP   FUNCTION, AND DISRUPTION PHENOTYPE.
+RX   PubMed=8642790;
+RA   Esther C.R. Jr., Howard T.E., Marino E.M., Goddard J.M.,
+RA   Capecchi M.R., Bernstein K.E.;
+RT   "Mice lacking angiotensin-converting enzyme have low blood pressure,
+RT   renal pathology, and reduced male fertility.";
+RL   Lab. Invest. 74:953-965(1996).
+RN   [8]
+RP   FUNCTION, ACTIVITY REGULATION, AND MUTAGENESIS OF HIS-993; GLU-994 AND
+RP   HIS-997.
+RX   PubMed=15665832; DOI=10.1038/nm1179;
+RA   Kondoh G., Tojo H., Nakatani Y., Komazawa N., Murata C., Yamagata K.,
+RA   Maeda Y., Kinoshita T., Okabe M., Taguchi R., Takeda J.;
+RT   "Angiotensin-converting enzyme is a GPI-anchored protein releasing
+RT   factor crucial for fertilization.";
+RL   Nat. Med. 11:160-166(2005).
+RN   [9]
+RP   GLYCOSYLATION [LARGE SCALE ANALYSIS] AT ASN-151.
+RC   STRAIN=C57BL/6J; TISSUE=Plasma;
+RX   PubMed=16944957; DOI=10.1021/pr060186m;
+RA   Ghesquiere B., Van Damme J., Martens L., Vandekerckhove J.,
+RA   Gevaert K.;
+RT   "Proteome-wide characterization of N-glycosylation events by diagonal
+RT   chromatography.";
+RL   J. Proteome Res. 5:2438-2447(2006).
+RN   [10]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Brain cortex;
+RX   PubMed=17114649; DOI=10.1074/mcp.M600046-MCP200;
+RA   Munton R.P., Tweedie-Cullen R., Livingstone-Zatchej M., Weinandy F.,
+RA   Waidelich M., Longo D., Gehrig P., Potthast F., Rutishauser D.,
+RA   Gerrits B., Panse C., Schlapbach R., Mansuy I.M.;
+RT   "Qualitative and quantitative analyses of protein phosphorylation in
+RT   naive and stimulated mouse synaptosomal preparations.";
+RL   Mol. Cell. Proteomics 6:283-293(2007).
+RN   [11]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-1305, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Brain, Brown adipose tissue, Heart, Kidney, Liver, Lung,
+RC   Pancreas, Spleen, and Testis;
+RX   PubMed=21183079; DOI=10.1016/j.cell.2010.12.001;
+RA   Huttlin E.L., Jedrychowski M.P., Elias J.E., Goswami T., Rad R.,
+RA   Beausoleil S.A., Villen J., Haas W., Sowa M.E., Gygi S.P.;
+RT   "A tissue-specific atlas of mouse protein phosphorylation and
+RT   expression.";
+RL   Cell 143:1174-1189(2010).
+RN   [12]
+RP   SUBCELLULAR LOCATION.
+RX   PubMed=23535237; DOI=10.1152/ajpcell.00364.2012;
+RA   Xiao L., Haack K.K., Zucker I.H.;
+RT   "Angiotensin II regulates ACE and ACE2 in neurons through p38 mitogen-
+RT   activated protein kinase and extracellular signal-regulated kinase 1/2
+RT   signaling.";
+RL   Am. J. Physiol. 304:C1073-C1079(2013).
+CC   -!- FUNCTION: Converts angiotensin I to angiotensin II by release of
+CC       the terminal His-Leu, this results in an increase of the
+CC       vasoconstrictor activity of angiotensin. Also able to inactivate
+CC       bradykinin, a potent vasodilator. Has also a glycosidase activity
+CC       which releases GPI-anchored proteins from the membrane by cleaving
+CC       the mannose linkage in the GPI moiety. This GPIase activity seems
+CC       to be crucial for the egg-binding ability of the sperm.
+CC       {ECO:0000269|PubMed:15665832, ECO:0000269|PubMed:7753170,
+CC       ECO:0000269|PubMed:8642790}.
+CC   -!- COFACTOR:
+CC       Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};
+CC       Note=Binds 2 Zn(2+) ions per subunit. Isoform Testis-specific only
+CC       binds 1 Zn(2+) ion per subunit. {ECO:0000250};
+CC   -!- COFACTOR:
+CC       Name=chloride; Xref=ChEBI:CHEBI:17996; Evidence={ECO:0000250};
+CC       Note=Binds 3 chloride ions per subunit. {ECO:0000250};
+CC   -!- ACTIVITY REGULATION: Peptidase activity is specifically inhibited
+CC       by lisinopril, captopril and enalaprilat. In contrast, GPIase
+CC       activity is nearly insensitive to captopril.
+CC       {ECO:0000269|PubMed:15665832}.
+CC   -!- SUBCELLULAR LOCATION: Angiotensin-converting enzyme, soluble form:
+CC       Secreted {ECO:0000250}.
+CC   -!- SUBCELLULAR LOCATION: Cell membrane {ECO:0000269|PubMed:23535237};
+CC       Single-pass type I membrane protein {ECO:0000269|PubMed:23535237}.
+CC       Cytoplasm {ECO:0000269|PubMed:23535237}. Note=Detected in both
+CC       cell membrane and cytoplasm in neurons.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Alternative splicing; Named isoforms=2;
+CC       Name=Somatic;
+CC         IsoId=P09470-1; Sequence=Displayed;
+CC       Name=Testis-specific; Synonyms=ACE-T;
+CC         IsoId=P09470-2, P22967-1;
+CC         Sequence=VSP_037638, VSP_037639;
+CC   -!- TISSUE SPECIFICITY: Testis-specific isoform is expressed in
+CC       spermatocytes, adult testis.
+CC   -!- INDUCTION: Expression is thought to be subject to hormonal
+CC       regulation by androgens.
+CC   -!- PTM: Phosphorylated by CK2 on Ser-1305; which allows membrane
+CC       retention. {ECO:0000250}.
+CC   -!- DISRUPTION PHENOTYPE: Low blood pressure, elevated serum
+CC       potassium, anemia, and renal defects. Male mice have reduced
+CC       fertility. {ECO:0000269|PubMed:8642790}.
+CC   -!- SIMILARITY: Belongs to the peptidase M2 family. {ECO:0000305}.
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   -----------------------------------------------------------------------
+DR   EMBL; J04946; AAA37147.1; -; mRNA.
+DR   EMBL; J04947; AAA37148.1; -; mRNA.
+DR   EMBL; M55333; AAA37149.1; -; mRNA.
+DR   EMBL; M61094; AAA37150.1; -; Genomic_DNA.
+DR   EMBL; BC040404; AAH40404.1; -; mRNA.
+DR   EMBL; J03940; AAA37146.1; -; mRNA.
+DR   CCDS; CCDS25543.1; -. [P09470-1]
+DR   CCDS; CCDS25544.1; -. [P09470-2]
+DR   PIR; A34171; A34171.
+DR   PIR; A35655; A35655.
+DR   RefSeq; NP_033728.1; NM_009598.2. [P09470-2]
+DR   RefSeq; NP_997507.1; NM_207624.5. [P09470-1]
+DR   UniGene; Mm.754; -.
+DR   ProteinModelPortal; P09470; -.
+DR   SMR; P09470; -.
+DR   BioGrid; 197920; 1.
+DR   IntAct; P09470; 3.
+DR   MINT; P09470; -.
+DR   STRING; 10090.ENSMUSP00000001963; -.
+DR   BindingDB; P09470; -.
+DR   ChEMBL; CHEMBL2994; -.
+DR   MEROPS; M02.001; -.
+DR   iPTMnet; P09470; -.
+DR   PhosphoSitePlus; P09470; -.
+DR   PaxDb; P09470; -.
+DR   PeptideAtlas; P09470; -.
+DR   PRIDE; P09470; -.
+DR   Ensembl; ENSMUST00000001963; ENSMUSP00000001963; ENSMUSG00000020681. [P09470-1]
+DR   Ensembl; ENSMUST00000001964; ENSMUSP00000001964; ENSMUSG00000020681. [P09470-2]
+DR   GeneID; 11421; -.
+DR   KEGG; mmu:11421; -.
+DR   UCSC; uc007lxu.2; mouse. [P09470-1]
+DR   UCSC; uc007lxw.2; mouse. [P09470-2]
+DR   CTD; 1636; -.
+DR   MGI; MGI:87874; Ace.
+DR   eggNOG; KOG3690; Eukaryota.
+DR   eggNOG; ENOG410XPJ3; LUCA.
+DR   GeneTree; ENSGT00520000055576; -.
+DR   HOGENOM; HOG000007838; -.
+DR   HOVERGEN; HBG000264; -.
+DR   InParanoid; P09470; -.
+DR   KO; K01283; -.
+DR   OMA; GWTTSNK; -.
+DR   OrthoDB; EOG091G033S; -.
+DR   PhylomeDB; P09470; -.
+DR   TreeFam; TF312861; -.
+DR   Reactome; R-MMU-2022377; Metabolism of Angiotensinogen to Angiotensins.
+DR   ChiTaRS; Ace; mouse.
+DR   PRO; PR:P09470; -.
+DR   Proteomes; UP000000589; Chromosome 11.
+DR   Bgee; ENSMUSG00000020681; Expressed in 215 organ(s), highest expression level in jejunum.
+DR   ExpressionAtlas; P09470; baseline and differential.
+DR   Genevisible; P09470; MM.
+DR   GO; GO:0009925; C:basal plasma membrane; ISO:MGI.
+DR   GO; GO:0031526; C:brush border membrane; ISO:MGI.
+DR   GO; GO:0005737; C:cytoplasm; IDA:UniProtKB.
+DR   GO; GO:0005768; C:endosome; ISO:MGI.
+DR   GO; GO:0009897; C:external side of plasma membrane; ISO:MGI.
+DR   GO; GO:0070062; C:extracellular exosome; ISO:MGI.
+DR   GO; GO:0005615; C:extracellular space; ISO:MGI.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
+DR   GO; GO:0005764; C:lysosome; ISO:MGI.
+DR   GO; GO:0005886; C:plasma membrane; IDA:UniProtKB.
+DR   GO; GO:0097225; C:sperm midpiece; ISO:MGI.
+DR   GO; GO:0031982; C:vesicle; ISO:MGI.
+DR   GO; GO:0003779; F:actin binding; ISO:MGI.
+DR   GO; GO:0031711; F:bradykinin receptor binding; ISO:MGI.
+DR   GO; GO:0004180; F:carboxypeptidase activity; IEA:UniProtKB-KW.
+DR   GO; GO:0031404; F:chloride ion binding; ISO:MGI.
+DR   GO; GO:0008239; F:dipeptidyl-peptidase activity; IBA:GO_Central.
+DR   GO; GO:0008144; F:drug binding; ISO:MGI.
+DR   GO; GO:0004175; F:endopeptidase activity; ISO:MGI.
+DR   GO; GO:0008238; F:exopeptidase activity; ISO:MGI.
+DR   GO; GO:0070573; F:metallodipeptidase activity; ISO:MGI.
+DR   GO; GO:0008237; F:metallopeptidase activity; IDA:UniProtKB.
+DR   GO; GO:0051019; F:mitogen-activated protein kinase binding; ISO:MGI.
+DR   GO; GO:0031434; F:mitogen-activated protein kinase kinase binding; ISO:MGI.
+DR   GO; GO:0008233; F:peptidase activity; IMP:MGI.
+DR   GO; GO:0008241; F:peptidyl-dipeptidase activity; IDA:UniProtKB.
+DR   GO; GO:0008240; F:tripeptidyl-peptidase activity; ISO:MGI.
+DR   GO; GO:0008270; F:zinc ion binding; ISO:MGI.
+DR   GO; GO:0050435; P:amyloid-beta metabolic process; ISO:MGI.
+DR   GO; GO:0060978; P:angiogenesis involved in coronary vascular morphogenesis; ISO:MGI.
+DR   GO; GO:0031100; P:animal organ regeneration; ISO:MGI.
+DR   GO; GO:0050482; P:arachidonic acid secretion; ISO:MGI.
+DR   GO; GO:0010815; P:bradykinin catabolic process; ISO:MGI.
+DR   GO; GO:0071838; P:cell proliferation in bone marrow; IMP:BHF-UCL.
+DR   GO; GO:0042755; P:eating behavior; ISO:MGI.
+DR   GO; GO:0009792; P:embryo development ending in birth or egg hatching; ISO:MGI.
+DR   GO; GO:0060047; P:heart contraction; IMP:MGI.
+DR   GO; GO:0042447; P:hormone catabolic process; IDA:BHF-UCL.
+DR   GO; GO:0001822; P:kidney development; IMP:MGI.
+DR   GO; GO:0048286; P:lung alveolus development; ISO:MGI.
+DR   GO; GO:0097756; P:negative regulation of blood vessel diameter; ISO:MGI.
+DR   GO; GO:0090281; P:negative regulation of calcium ion import; ISO:MGI.
+DR   GO; GO:1903597; P:negative regulation of gap junction assembly; IMP:BHF-UCL.
+DR   GO; GO:0010629; P:negative regulation of gene expression; IMP:BHF-UCL.
+DR   GO; GO:0046325; P:negative regulation of glucose import; ISO:MGI.
+DR   GO; GO:0032091; P:negative regulation of protein binding; IMP:BHF-UCL.
+DR   GO; GO:0035814; P:negative regulation of renal sodium excretion; ISO:MGI.
+DR   GO; GO:0002446; P:neutrophil mediated immunity; IMP:MGI.
+DR   GO; GO:0043171; P:peptide catabolic process; ISO:MGI.
+DR   GO; GO:0006518; P:peptide metabolic process; ISO:MGI.
+DR   GO; GO:0043065; P:positive regulation of apoptotic process; ISO:MGI.
+DR   GO; GO:0045777; P:positive regulation of blood pressure; ISO:MGI.
+DR   GO; GO:0050729; P:positive regulation of inflammatory response; ISO:MGI.
+DR   GO; GO:0050769; P:positive regulation of neurogenesis; ISO:MGI.
+DR   GO; GO:2000170; P:positive regulation of peptidyl-cysteine S-nitrosylation; IMP:BHF-UCL.
+DR   GO; GO:1900086; P:positive regulation of peptidyl-tyrosine autophosphorylation; IMP:BHF-UCL.
+DR   GO; GO:0032092; P:positive regulation of protein binding; IMP:BHF-UCL.
+DR   GO; GO:0061098; P:positive regulation of protein tyrosine kinase activity; IMP:BHF-UCL.
+DR   GO; GO:0003084; P:positive regulation of systemic arterial blood pressure; IMP:MGI.
+DR   GO; GO:0010608; P:posttranscriptional regulation of gene expression; IMP:BHF-UCL.
+DR   GO; GO:0060177; P:regulation of angiotensin metabolic process; ISO:MGI.
+DR   GO; GO:0008217; P:regulation of blood pressure; IDA:BHF-UCL.
+DR   GO; GO:1902033; P:regulation of hematopoietic stem cell proliferation; IMP:BHF-UCL.
+DR   GO; GO:0014910; P:regulation of smooth muscle cell migration; ISO:MGI.
+DR   GO; GO:0003081; P:regulation of systemic arterial blood pressure by renin-angiotensin; ISO:MGI.
+DR   GO; GO:0032496; P:response to lipopolysaccharide; ISO:MGI.
+DR   GO; GO:0019233; P:sensory perception of pain; ISO:MGI.
+DR   GO; GO:0007283; P:spermatogenesis; IMP:MGI.
+DR   GO; GO:0042310; P:vasoconstriction; ISO:MGI.
+DR   CDD; cd06461; M2_ACE; 2.
+DR   InterPro; IPR001548; Peptidase_M2.
+DR   PANTHER; PTHR10514; PTHR10514; 2.
+DR   Pfam; PF01401; Peptidase_M2; 2.
+DR   PRINTS; PR00791; PEPDIPTASEA.
+DR   PROSITE; PS00142; ZINC_PROTEASE; 2.
+PE   1: Evidence at protein level;
+KW   Alternative splicing; Carboxypeptidase; Cell membrane;
+KW   Complete proteome; Cytoplasm; Direct protein sequencing;
+KW   Disulfide bond; Glycoprotein; Hydrolase; Membrane; Metal-binding;
+KW   Metalloprotease; Phosphoprotein; Protease; Reference proteome; Repeat;
+KW   Secreted; Signal; Transmembrane; Transmembrane helix; Zinc.
+FT   SIGNAL        1     34       {ECO:0000269|PubMed:2835538}.
+FT   CHAIN        35   1312       Angiotensin-converting enzyme.
+FT                                /FTId=PRO_0000028539.
+FT   CHAIN        35   1237       Angiotensin-converting enzyme, soluble
+FT                                form.
+FT                                /FTId=PRO_0000028540.
+FT   PROPEP     1238   1312       Removed in secreted form. {ECO:0000250}.
+FT                                /FTId=PRO_0000028541.
+FT   TOPO_DOM     35   1264       Extracellular. {ECO:0000255}.
+FT   TRANSMEM   1265   1281       Helical. {ECO:0000255}.
+FT   TOPO_DOM   1282   1312       Cytoplasmic. {ECO:0000255}.
+FT   REGION       35    635       Peptidase M2 1.
+FT   REGION      636   1237       Peptidase M2 2.
+FT   ACT_SITE    396    396       1. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU10095}.
+FT   ACT_SITE    994    994       2.
+FT   METAL       395    395       Zinc 1; catalytic. {ECO:0000250}.
+FT   METAL       399    399       Zinc 1; catalytic. {ECO:0000250}.
+FT   METAL       423    423       Zinc 1; catalytic. {ECO:0000250}.
+FT   METAL       993    993       Zinc 2; catalytic.
+FT   METAL       997    997       Zinc 2; catalytic.
+FT   METAL      1021   1021       Zinc 2; catalytic. {ECO:0000250}.
+FT   BINDING     236    236       Chloride 1. {ECO:0000250}.
+FT   BINDING     534    534       Chloride 1. {ECO:0000250}.
+FT   BINDING     796    796       Chloride 2. {ECO:0000250}.
+FT   BINDING     834    834       Chloride 3. {ECO:0000250}.
+FT   BINDING    1095   1095       Chloride 2. {ECO:0000250}.
+FT   BINDING    1099   1099       Chloride 2. {ECO:0000250}.
+FT   BINDING    1132   1132       Chloride 3. {ECO:0000250}.
+FT   MOD_RES    1305   1305       Phosphoserine.
+FT                                {ECO:0000244|PubMed:21183079}.
+FT   CARBOHYD     59     59       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD     79     79       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    116    116       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    151    151       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000269|PubMed:16944957}.
+FT   CARBOHYD    165    165       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    323    323       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    514    514       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    682    682       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    700    700       N-linked (GlcNAc...) (complex)
+FT                                asparagine. {ECO:0000250}.
+FT   CARBOHYD    719    719       N-linked (GlcNAc...) (complex)
+FT                                asparagine. {ECO:0000250}.
+FT   CARBOHYD    765    765       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    947    947       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD   1196   1196       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   DISULFID    162    170       {ECO:0000250}.
+FT   DISULFID    762    768       {ECO:0000250}.
+FT   DISULFID    962    980       {ECO:0000250}.
+FT   DISULFID   1148   1160       {ECO:0000250}.
+FT   VAR_SEQ       1    580       Missing (in isoform Testis-specific).
+FT                                {ECO:0000303|PubMed:2164636}.
+FT                                /FTId=VSP_037638.
+FT   VAR_SEQ     581    646       GCSRPWQEVLKDLVGSDALDAKALLEYFQPVSQWLEEQNQR
+FT                                NGEVLGWPENQWRPPLPDNYPEGID -> MGQGWATPGLPS
+FT                                FLFLLLCCGHHLLVLSQVATDHVTANQGITNQATTRSQTTT
+FT                                HQATIDQTTQIPN (in isoform Testis-
+FT                                specific). {ECO:0000303|PubMed:2164636}.
+FT                                /FTId=VSP_037639.
+FT   MUTAGEN     993    993       H->K: Abolishes peptidase activity but no
+FT                                effect on GPIase activity; when
+FT                                associated with K-997.
+FT                                {ECO:0000269|PubMed:15665832}.
+FT   MUTAGEN     994    994       E->D: Abolishes peptidase activity but no
+FT                                effect on GPIase activity.
+FT                                {ECO:0000269|PubMed:15665832}.
+FT   MUTAGEN     997    997       H->K: Abolishes peptidase activity but no
+FT                                effect on GPIase activity; when
+FT                                associated with K-993.
+FT                                {ECO:0000269|PubMed:15665832}.
+FT   CONFLICT    568    568       A -> T (in Ref. 1; AAA37147).
+FT                                {ECO:0000305}.
+SQ   SEQUENCE   1312 AA;  150918 MW;  7DF9F5BE91762DFF CRC64;
+     MGAASGQRGR WPLSPPLLML SLLVLLLQPS PAPALDPGLQ PGNFSPDEAG AQLFAESYNS
+     SAEVVMFQST VASWAHDTNI TEENARRQEE AALVSQEFAE VWGKKAKELY ESIWQNFTDS
+     KLRRIIGSIR TLGPANLPLA QRQQYNSLLS NMSRIYSTGK VCFPNKTATC WSLDPELTNI
+     LASSRSYAKL LFAWEGWHDA VGIPLKPLYQ DFTAISNEAY RQDDFSDTGA FWRSWYESPS
+     FEESLEHIYH QLEPLYLNLH AYVRRALHRR YGDKYVNLRG PIPAHLLGDM WAQSWENIYD
+     MVVPFPDKPN LDVTSTMVQK GWNATHMFRV SEEFFTSLGL SPMPPEFWAE SMLEKPTDGR
+     EVVCHASAWD FYNRKDFRIK QCTRVTMEQL ATVHHEMGHV QYYLQYKDLH VSLRRGANPG
+     FHEAIGDVLA LSVSTPAHLH KIGLLDHVTN DIESDINYLL KMALEKIAFL PFGYLVDQWR
+     WGVFSGRTPP SRYNFDWWYL RTKYQGICPP VARNETHFDA GAKFHIPNVT PYIRYFVSFV
+     LQFQFHQALC KEAGHQGPLH QCDIYQSAQA GAKLKQVLQA GCSRPWQEVL KDLVGSDALD
+     AKALLEYFQP VSQWLEEQNQ RNGEVLGWPE NQWRPPLPDN YPEGIDLETD EAKADRFVEE
+     YDRTAQVLLN EYAEANWQYN TNITIEGSKI LLEKSTEVSN HTLKYGTRAK TFDVSNFQNS
+     SIKRIIKKLQ NLDRAVLPPK ELEEYNQILL DMETTYSLSN ICYTNGTCMP LEPDLTNMMA
+     TSRKYEELLW AWKSWRDKVG RAILPFFPKY VEFSNKIAKL NGYTDAGDSW RSLYESDNLE
+     QDLEKLYQEL QPLYLNLHAY VRRSLHRHYG SEYINLDGPI PAHLLGNMWA QTWSNIYDLV
+     APFPSAPNID ATEAMIKQGW TPRRIFKEAD NFFTSLGLLP VPPEFWNKSM LEKPTDGREV
+     VCHPSAWDFY NGKDFRIKQC TSVNMEDLVI AHHEMGHIQY FMQYKDLPVT FREGANPGFH
+     EAIGDIMALS VSTPKHLYSL NLLSTEGSGY EYDINFLMKM ALDKIAFIPF SYLIDQWRWR
+     VFDGSITKEN YNQEWWSLRL KYQGLCPPVP RSQGDFDPGS KFHVPANVPY VRYFVSFIIQ
+     FQFHEALCRA AGHTGPLHKC DIYQSKEAGK LLADAMKLGY SKPWPEAMKL ITGQPNMSAS
+     AMMNYFKPLT EWLVTENRRH GETLGWPEYN WAPNTARAEG STAESNRVNF LGLYLEPQQA
+     RVGQWVLLFL GVALLVATVG LAHRLYNIRN HHSLRRPHRG PQFGSEVELR HS
+//

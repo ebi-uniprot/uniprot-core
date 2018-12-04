@@ -91,7 +91,7 @@ public class FtLineConverter extends EvidenceCollector
 	private Feature convertVarSeqFeature(FeatureType type, Range location, FtLineObject.FT ft,
 			 List<Evidence> evidences) {
 		String value = ft.ft_text;
-		
+		value = fixVarSeqSpace(value);
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> isoforms = new ArrayList<>();
@@ -104,13 +104,66 @@ public class FtLineConverter extends EvidenceCollector
 			}
 			
 			String[] tokens = matcher.group(10).substring("isoform ".length()).split(ISOFORM_REGEX);
-			isoforms = Arrays.asList(tokens);
+			for(String token: tokens) {
+				int index = token.indexOf(' ');
+				if((index>0) && (token.charAt(index-1)== '-')) {
+					String temp = token.substring(0, index) + token.substring(index+1);
+					token = temp;
+				}
+				isoforms.add(token);
+			}
 		}
 		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
 				factory.createReport(isoforms));
 		
 		return factory.createFeature( type,  location, "", factory.createFeatureId(ft.ftId),
 				altSeq,  evidences);
+	}
+
+	private String fixVarSeqSpace(String value) {
+		String temp =value;
+		int index = temp.indexOf("(in isoform");
+		if(index !=-1) {
+			if(temp.charAt(index -1) != ' ') {
+				String val = temp.substring(0, index) + " " + temp.substring(index);
+				temp =val;
+			}
+		}
+		int spaceLocation =-1;
+		do {
+			 spaceLocation = getSpaceLocation(temp, index);
+			 if(spaceLocation ==-1)
+				 break;
+			 String val = temp.substring(0, spaceLocation) + temp.substring(spaceLocation+1);
+			 temp = val;
+			 index -=1;
+		}while (spaceLocation !=-1);
+		
+		return temp;
+	}
+	
+	private int getSpaceLocation(String value, int index) {
+		for (int i =0 ;i<index; i ++) {
+			if(isCapital(value.charAt(i))) {
+				if((i+2)<index) {
+					if((value.charAt(i+1) ==' ') && isCapital(value.charAt(i+2))){
+						return i+1;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+	
+	private boolean isCapital(char c) {
+		return c>='A' && c <='Z';
+	}
+	public boolean isSequenceLetter(String se) {
+		for (int i = 0; i < se.length(); i++) {
+			if (se.charAt(i) > 'Z' || se.charAt(i) < 'A')
+				return false;
+		}
+		return true;
 	}
 
 	private Feature convertVariantFeature(FeatureType type, Range location, FtLineObject.FT ft,

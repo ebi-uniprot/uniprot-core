@@ -415,7 +415,7 @@
 		"uriLink": "https://world-2dpage.expasy.org/swiss-2dpage/protein/ac=%value"	
 	},
 	{
-		"name": "UCD-2DPAG",
+		"name": "UCD-2DPAGE",
 		"displayName": "UCD-2DPAGE",
 		"category": "2DG",
 		"uriLink": "https://proteomics-portal.ucd.ie/cgi-bin/2d/2d.cgi?%value"	

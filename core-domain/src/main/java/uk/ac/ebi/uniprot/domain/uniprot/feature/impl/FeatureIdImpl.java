@@ -17,7 +17,7 @@ public class FeatureIdImpl implements FeatureId {
 	private static final Map<FeatureType, Pattern> FEATUREID_REGEX_MAP = new EnumMap<>(FeatureType.class);
 	static {
 		FEATUREID_REGEX_MAP.put(FeatureType.CHAIN, Pattern.compile("PRO_(\\d+)"));
-		FEATUREID_REGEX_MAP.put(FeatureType.CARBOHYD, Pattern.compile("PRO_(\\d+)"));
+		FEATUREID_REGEX_MAP.put(FeatureType.CARBOHYD, Pattern.compile("CAR_(\\d+)"));
 		FEATUREID_REGEX_MAP.put(FeatureType.PEPTIDE, Pattern.compile("PRO_(\\d+)"));
 		FEATUREID_REGEX_MAP.put(FeatureType.PROPEP, Pattern.compile("PRO_(\\d+)"));
 		FEATUREID_REGEX_MAP.put(FeatureType.VAR_SEQ, Pattern.compile("VSP_(\\d+)"));

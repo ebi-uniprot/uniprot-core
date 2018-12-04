@@ -36,8 +36,8 @@ KW   Transmembrane helix {ECO:0000256|SAM:Phobius}.
 FT   TRANSMEM    116    142       Helical. {ECO:0000256|SAM:Phobius}.
 FT   TRANSMEM    154    177       Helical. {ECO:0000256|SAM:Phobius}.
 FT   TRANSMEM    189    217       Helical. {ECO:0000256|SAM:Phobius}.
-FT   DOMAIN        3     24       zinc_ribbon_2. {ECO:0000259|Pfam:
-FT                                PF13240}.
+FT   DOMAIN        3     24       zinc_ribbon_2.
+FT                                {ECO:0000259|Pfam:PF13240}.
 **
 **   #################    INTERNAL SECTION    ##################
 **EV ECO:0000256; SAM:Phobius; -; 07-APR-2017.

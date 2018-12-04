@@ -92,9 +92,9 @@ implements FFLineBuilder<ProteinDescription> {
 			Flag flag = description.getFlag();
 			FlagType flagType = flag.getType();
 			if (flagType == FlagType.FRAGMENT_PRECURSOR) {
-				sb.append("Fragment; Precursor;");
+				sb.append("Precursor; Fragment;");
 			} else if (flagType == FlagType.FRAGMENTS_PRECURSOR) {
-				sb.append("Fragments; Precursor;");
+				sb.append("Precursor; Fragments;");
 			} else {
 				sb.append(flagType.getValue()).append(SEMICOLON);
 			}
@@ -126,7 +126,7 @@ implements FFLineBuilder<ProteinDescription> {
 		for (Name name : cdAntigenNames) {
 			lines.add(buildNameLine1(name, "CD_antigen", ALT_NAME, deLinePrefix, includeFlatFileMarkings, showEvidence,
 					isFirst));
-			isFirst = false;
+			isFirst = true;
 		}
 
 		List<Name> innNames = pd.getInnNames();
@@ -134,7 +134,7 @@ implements FFLineBuilder<ProteinDescription> {
 		for (Name name : innNames) {
 			lines.add(buildNameLine1(name, "INN", ALT_NAME, deLinePrefix, includeFlatFileMarkings, showEvidence,
 					isFirst));
-			isFirst = false;
+			isFirst = true;
 		}
 		return lines;
 	}

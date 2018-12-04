@@ -1,0 +1,106 @@
+ID   AHPF_STAA8              Reviewed;         507 AA.
+AC   O05204; Q2G0Z7;
+DT   15-DEC-1998, integrated into UniProtKB/Swiss-Prot.
+DT   01-JUL-1997, sequence version 1.
+DT   07-NOV-2018, entry version 123.
+DE   RecName: Full=Alkyl hydroperoxide reductase subunit F;
+DE            EC=1.8.1.-;
+GN   Name=ahpF; OrderedLocusNames=SAOUHSC_00364;
+OS   Staphylococcus aureus (strain NCTC 8325).
+OC   Bacteria; Firmicutes; Bacilli; Bacillales; Staphylococcaceae;
+OC   Staphylococcus.
+OX   NCBI_TaxID=93061;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RA   Jones E.C., Francis K.P., Stewart G.S.A.B.;
+RL   Submitted (MAR-1997) to the EMBL/GenBank/DDBJ databases.
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RC   STRAIN=NCTC 8325;
+RA   Gillaspy A.F., Worrell V., Orvis J., Roe B.A., Dyer D.W.,
+RA   Iandolo J.J.;
+RT   "The Staphylococcus aureus NCTC 8325 genome.";
+RL   (In) Fischetti V., Novick R., Ferretti J., Portnoy D., Rood J. (eds.);
+RL   Gram positive pathogens, 2nd edition, pp.381-412, ASM Press,
+RL   Washington D.C. (2006).
+CC   -!- FUNCTION: Serves to protect the cell against DNA damage by alkyl
+CC       hydroperoxides. It can use either NADH or NADPH as electron donor
+CC       for direct reduction of redox dyes or of alkyl hydroperoxides when
+CC       combined with the AhpC protein (By similarity). {ECO:0000250}.
+CC   -!- COFACTOR:
+CC       Name=FAD; Xref=ChEBI:CHEBI:57692; Evidence={ECO:0000250};
+CC       Note=Binds 1 FAD per subunit. {ECO:0000250};
+CC   -!- SUBUNIT: Homodimer. {ECO:0000250}.
+CC   -!- MISCELLANEOUS: The active site is a redox-active disulfide bond.
+CC   -!- SIMILARITY: Belongs to the class-II pyridine nucleotide-disulfide
+CC       oxidoreductase family. {ECO:0000305}.
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   -----------------------------------------------------------------------
+DR   EMBL; U92441; AAB51152.1; -; Genomic_DNA.
+DR   EMBL; CP000253; ABD29530.1; -; Genomic_DNA.
+DR   RefSeq; WP_000930486.1; NZ_LS483365.1.
+DR   RefSeq; YP_498953.1; NC_007795.1.
+DR   ProteinModelPortal; O05204; -.
+DR   SMR; O05204; -.
+DR   STRING; 93061.SAOUHSC_00364; -.
+DR   PRIDE; O05204; -.
+DR   EnsemblBacteria; ABD29530; ABD29530; SAOUHSC_00364.
+DR   GeneID; 3919783; -.
+DR   KEGG; sao:SAOUHSC_00364; -.
+DR   PATRIC; fig|93061.5.peg.334; -.
+DR   eggNOG; ENOG4108JU3; Bacteria.
+DR   eggNOG; COG3634; LUCA.
+DR   HOGENOM; HOG000169462; -.
+DR   KO; K03387; -.
+DR   OMA; VPLGHEF; -.
+DR   BioCyc; SAUR93061:G1G5Y-339-MONOMER; -.
+DR   PRO; PR:O05204; -.
+DR   Proteomes; UP000008816; Chromosome.
+DR   GO; GO:0005623; C:cell; IEA:GOC.
+DR   GO; GO:0008785; F:alkyl hydroperoxide reductase activity; IEA:InterPro.
+DR   GO; GO:0009055; F:electron transfer activity; IEA:InterPro.
+DR   GO; GO:0050660; F:flavin adenine dinucleotide binding; IEA:InterPro.
+DR   GO; GO:0051287; F:NAD binding; IEA:InterPro.
+DR   GO; GO:0015035; F:protein disulfide oxidoreductase activity; IEA:InterPro.
+DR   GO; GO:0045454; P:cell redox homeostasis; IEA:InterPro.
+DR   GO; GO:0000302; P:response to reactive oxygen species; IEA:InterPro.
+DR   Gene3D; 3.50.50.60; -; 2.
+DR   InterPro; IPR012081; Alkyl_hydroperoxide_Rdtase_suF.
+DR   InterPro; IPR036188; FAD/NAD-bd_sf.
+DR   InterPro; IPR023753; FAD/NAD-binding_dom.
+DR   InterPro; IPR002109; Glutaredoxin.
+DR   InterPro; IPR008255; Pyr_nucl-diS_OxRdtase_2_AS.
+DR   InterPro; IPR000103; Pyridine_nuc-diS_OxRdtase_2.
+DR   InterPro; IPR012336; Thioredoxin-like_fold.
+DR   InterPro; IPR036249; Thioredoxin-like_sf.
+DR   Pfam; PF07992; Pyr_redox_2; 1.
+DR   Pfam; PF13192; Thioredoxin_3; 1.
+DR   PIRSF; PIRSF000238; AhpF; 1.
+DR   PRINTS; PR00469; PNDRDTASEII.
+DR   SUPFAM; SSF51905; SSF51905; 1.
+DR   SUPFAM; SSF52833; SSF52833; 2.
+DR   TIGRFAMs; TIGR03140; AhpF; 1.
+DR   PROSITE; PS51354; GLUTAREDOXIN_2; 1.
+DR   PROSITE; PS00573; PYRIDINE_REDOX_2; 1.
+PE   3: Inferred from homology;
+KW   Complete proteome; Disulfide bond; FAD; Flavoprotein; NAD; NADP;
+KW   Oxidoreductase; Redox-active center; Reference proteome.
+FT   CHAIN         1    507       Alkyl hydroperoxide reductase subunit F.
+FT                                /FTId=PRO_0000166784.
+FT   NP_BIND     207    222       FAD (ADP part). {ECO:0000250}.
+FT   NP_BIND     347    361       NAD or NADP. {ECO:0000250}.
+FT   NP_BIND     467    477       FAD (pyrimidine part). {ECO:0000250}.
+FT   DISULFID    335    338       Redox-active. {ECO:0000250}.
+SQ   SEQUENCE   507 AA;  54721 MW;  EDED04232731D21E CRC64;
+     MLNADLKQQL KQLLELMEGN VEFVASLGSD DKSKELKDLL TEITDMSPRL SLSEKSLKRT
+     PSFSVNRPGE ETGVTFAGIP LGHEFNSLVL AILQVSGRAP KEKQSIIDQI KKLEGSFHFE
+     TFISLTCQKC PDVVQALNLM SVINPNITHS MIDGAVFREE SENIMAVPAV FLNGEEFGNG
+     RMTIQDILSK LGSTADASEF ENKEPYDVLI VGGGPASGSA AIYTARKGLR TGIVADRIGG
+     QVNDTAGIEN FITVKETTGS EFSSNLAAHI DQYDIDAMTG IRATDIEKTD EAIKVTLENG
+     AVLESKTVII ATGAGWRKLN IPGEEQLINK GVAFCPHCDG PLFENKDVAV IGGGNSGVEA
+     AIDLAGIVNH VTLFEFASEL KADNVLQDRL RSLSNVDIKT NAKTTEVVGE DHVTGIRYED
+     MNTGEEHLLN LDGIFVQIGL LPNTSWLNDA VELNERGEIV IDRNNNTNVP GIFAAGDVTD
+     QKNKQIIISM GAGANAALNA FDYIIRN
+//

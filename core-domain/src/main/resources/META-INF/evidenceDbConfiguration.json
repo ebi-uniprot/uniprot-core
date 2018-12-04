@@ -211,5 +211,25 @@
 		"name": "Reference",
 		"displayName": "Reference",
 		"uriLink": ""
+	},
+	{
+		"name": "dictyBase",
+		"displayName": "dictyBase",
+		"uriLink": "http://dictybase.org/gene/%value"
+	},
+	{
+		"name": "MIM",
+		"displayName": "MIM",
+		"uriLink": "http://www.omim.org/entry/%value"
+	},
+	{
+		"name": "EcoGene",
+		"displayName": "EcoGene",
+		"uriLink": "http://www.ecogene.org/geneInfo.php?eg_id=%value"		
+	},
+	{
+		"name": "TubercuList",
+		"displayName": "TubercuList",
+		"uriLink": "https://mycobrowser.epfl.ch/genes/%value"
 	}
 ]

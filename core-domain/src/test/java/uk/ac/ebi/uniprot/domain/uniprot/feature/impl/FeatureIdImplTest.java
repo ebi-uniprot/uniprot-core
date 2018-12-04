@@ -23,24 +23,43 @@ class FeatureIdImplTest {
 		TestHelper.verifyJson(featureId);
 	}
 	@Test
-	void testIsValid() {
+	void testIsValidPRO() {
 		String value = "PRO_123";
 		FeatureIdImpl featureId = new FeatureIdImpl(value);
 		assertTrue(featureId.isValid(FeatureType.CHAIN));
 		assertTrue(featureId.isValid(FeatureType.PEPTIDE));
 		assertTrue(featureId.isValid(FeatureType.PROPEP));
 		assertFalse(featureId.isValid(FeatureType.VARIANT));
+		assertFalse(featureId.isValid(FeatureType.CARBOHYD));
 		
-		value = "VAR_123";
-		featureId = new FeatureIdImpl(value);
+	}
+	
+	@Test
+	void testIsValidVAR() {
+		String value ="VAR_123";
+		FeatureIdImpl featureId = new FeatureIdImpl(value);
 		assertFalse(featureId.isValid(FeatureType.PROPEP));
 		assertTrue(featureId.isValid(FeatureType.VARIANT));
 		
-		value = "VSP_123";
-		featureId = new FeatureIdImpl(value);
+	}
+	
+	@Test
+	void testIsValidVSP() {
+		String value ="VSP_123";
+		FeatureIdImpl featureId = new FeatureIdImpl(value);
 		assertFalse(featureId.isValid(FeatureType.PROPEP));
 		assertFalse(featureId.isValid(FeatureType.VARIANT));
 		assertTrue(featureId.isValid(FeatureType.VAR_SEQ));
+		
+	}
+	@Test
+	void testIsValidCAR() {
+		String value = "CAR_000083";
+		FeatureIdImpl featureId = new FeatureIdImpl(value);
+		
+		assertFalse(featureId.isValid(FeatureType.PROPEP));
+		assertFalse(featureId.isValid(FeatureType.VARIANT));
+		assertTrue(featureId.isValid(FeatureType.CARBOHYD));
 	}
 
 }

@@ -2,10 +2,13 @@ package uk.ac.ebi.uniprot.parser.integration;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Set;
+import java.util.TreeSet;
 
 import org.junit.Test;
 
@@ -84,7 +87,34 @@ public class FlatfileRoundTripITTest {
 		// System.out.println(entryStr);
 		testEntry(entryStr, true);
 	}
-
+	@Test
+	public void testP14592() {
+		String filename = "/entryIT/P14592.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testP50930() {
+		String filename = "/entryIT/P50930.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testQ9S9U6() {
+		String filename = "/entryIT/Q9S9U6.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testP84716() {
+		String filename = "/entryIT/P84716.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
 	
 	@Test
 	public void testA0A176EY13Txl() {
@@ -232,6 +262,201 @@ public class FlatfileRoundTripITTest {
 		testEntry(entryStr, true);
 	}
 	
+	@Test
+	public void testA4K2U9Dat() {
+		
+		String filename = "/entryIT/A4K2U9.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testP15711Dat() {
+		
+		String filename = "/entryIT/P15711.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testQ13362Dat() {
+		
+		String filename = "/entryIT/Q13362.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	
+	@Test
+	public void testP04403Dat() {		
+		String filename = "/entryIT/P04403.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testP0DMV6Dat() {		
+		String filename = "/entryIT/P0DMV6.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testA8AP56Dat() {		
+		String filename = "/entryIT/A8AP56.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+
+
+	@Test
+	public void testQ80WC7Dat() {		
+		String filename = "/entryIT/Q80WC7.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	
+	@Test
+	public void testO05204Dat() {		
+		String filename = "/entryIT/O05204.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	
+	@Test
+	public void testQ54R84Dat() {		
+		String filename = "/entryIT/Q54R84.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testP35626Dat() {		
+		String filename = "/entryIT/P35626.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}	
+	
+	@Test
+	public void testQ9T4R0Dat() {		
+		String filename = "/entryIT/Q9T4R0.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}	
+	@Test
+	public void testQ04664Dat() {		
+		String filename = "/entryIT/Q04664.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}		
+	
+	@Test
+	public void testQ9G0S9Dat() {		
+		String filename = "/entryIT/Q9G0S9.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}	
+	
+	@Test
+	public void testQ96SD1Dat() {		
+		String filename = "/entryIT/Q96SD1.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}	
+	@Test
+	public void testP03395Dat() {		
+		String filename = "/entryIT/P03395.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	
+	@Test
+	public void testP55301Dat() {		
+		String filename = "/entryIT/P55301.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	
+	@Test
+	public void testQ64524Dat() {		
+		String filename = "/entryIT/Q64524.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, true);
+	}
+	@Test
+	public void testP13813Dat() {		
+		String filename = "/entryIT/P13813.dat";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testQ9CQV8Dat() {		
+		String filename = "/entryIT/Q9CQV8.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testP09230Dat() {		
+		String filename = "/entryIT/P09230.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testP0CH48Dat() {		
+		String filename = "/entryIT/P0CH48.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testP09919Dat() {		
+		String filename = "/entryIT/P09919.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testP58928Dat() {		
+		String filename = "/entryIT/P58928.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testQ9FK72Dat() {		
+		String filename = "/entryIT/Q9FK72.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
+	
+	@Test
+	public void testQ00731Dat() {		
+		String filename = "/entryIT/Q00731.txl";
+		String entryStr = readEntryFromFile(filename);
+		// System.out.println(entryStr);
+		testEntry(entryStr, false);
+	}
 	
 	
 	private void testEntry(String entryToParse, boolean ispublic) {
@@ -246,11 +471,83 @@ public class FlatfileRoundTripITTest {
 		assertNotNull(converted);
 		String convertedEntryStr =writer.write(converted, ispublic);
 		System.out.println(convertedEntryStr);
-		assertEquals(entryToParse, convertedEntryStr +"\n");
+		EntryObject parse2 =entryParser.parse(convertedEntryStr);
+		
+		UniProtEntry converted2 =  entryObjectConverter.convert(parse2);
+		assertEquals(converted, converted2);
+//		
+	//	System.out.println(convertedEntryStr);
+//		String diff = compareFF(entryToParse, convertedEntryStr +"\n");
+//		System.out.println(diff);
+//		assertTrue(diff.isEmpty());
+//		assertEquals(entryToParse, convertedEntryStr +"\n");
 
 	}
 	
 	
+	
+	private String compareFF(String expected, String returned) {
+        String[] expected2 = expected.split("\n");
+        String[] returned2 = returned.split("\n");
+        if (expected2.length != returned2.length) {
+            System.out.println("number of line is different: " + expected2.length + "\t" + returned2.length);
+        }
+        int j = 0;
+        String value = "";
+        Set<String> drReturned = new TreeSet<>();
+        Set<String> drExpected = new TreeSet<>();
+        int returnLength = returned2.length;
+        for (int i = 0; i < expected2.length; i++) {
+            if (expected2[i].startsWith("DR   ")) {
+                drReturned.add(returned2[j]);
+                drExpected.add(expected2[i]);
+
+            } else if (j >= returnLength) {
+                System.err.println(expected2[i]);
+            } else if (!expected2[i].equals(returned2[j])) {
+                boolean found = false;
+                int found1 = find(returned2, expected2[i], j);
+                if (found1 != -1) {
+                    found = true;
+                    j = found1;
+                }
+                if (!found) {
+                    value += "Expected:" + expected2[i] + "\n";
+                    value += "Parsed==:" + returned2[j] + "\n";
+
+                    System.err.println("Expected:" + expected2[i]);
+                    System.err.println("Parsed==:" + returned2[j]);
+                }
+
+                if (j >= returned2.length)
+                    break;
+
+            }
+            j++;
+        }
+
+        drReturned.removeAll(drExpected);
+        if (drReturned.size() != 0) {
+            System.err.println(drReturned.toString());
+        }
+        return value;
+
+    }
+	
+	 private int find(String[] returned2, String value, int j) {
+	        int start = j - 6;
+	        if (start < 0)
+	            start = 0;
+	        int end = j + 6;
+	        if (end >= returned2.length) {
+	            end = returned2.length - 1;
+	        }
+	        for (int i = 0; i < returned2.length; i++) {
+	            if (value.equals(returned2[i]))
+	                return i;
+	        }
+	        return -1;
+	    }
 	private String readEntryFromFile(String filename) {
 		URL url = getClass().getResource(filename);
 		CharSource charSource = Resources.asCharSource(url, Charset.defaultCharset());

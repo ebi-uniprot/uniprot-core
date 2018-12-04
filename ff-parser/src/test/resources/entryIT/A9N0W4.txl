@@ -45,10 +45,10 @@ PE   3: Inferred from homology;
 KW   Organic radical.
 FT   CHAIN         1    127       Autonomous glycyl radical cofactor.
 FT                                /FTId=PRO_1000083732.
-FT   DOMAIN        5    127       Glycine radical. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00806}.
-FT   MOD_RES     102    102       Glycine radical. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00806}.
+FT   DOMAIN        5    127       Glycine radical. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00806}.
+FT   MOD_RES     102    102       Glycine radical. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00806}.
 **
 **   #################    INTERNAL SECTION    ##################
 **EV ECO:0000255; HAMAP-Rule:MF_00806; XXX; 06-NOV-2015.

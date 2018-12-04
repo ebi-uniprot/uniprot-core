@@ -50,7 +50,7 @@ public class MutagenFeatureLineBuilder extends AbstractFeatureLineBuilder{
 			sb.append(evIds);
 			sb.append(STOP);
 		}
-		String[] seps = { SEPARATOR, DASH, COLON };
+		String[] seps = { SEPARATOR, DASH };
 		List<String> lines3 = FFLineWrapper.buildLines(sb.toString(), seps, FTLineBuilderHelper.FT_LINE_PREFIX_2,
 				LINE_LENGTH);
 		if (includeFFMarkings)

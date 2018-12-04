@@ -126,9 +126,12 @@ public class DeLineModelListener extends DeLineParserBaseListener implements Par
         }
         List<DeLineParser.EcContext> ec = ctx.ec();
         for (DeLineParser.EcContext ecContext : ec) {
-            String text = ecContext.EC_NAME_VALUE().getText();
-            block.recName.ecs.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+            processECs(ecContext, block.recName);
         }
+//        for (DeLineParser.EcContext ecContext : ec) {
+//            String text = ecContext.EC_NAME_VALUE().getText();
+//            block.recName.ecs.add(object.getEvidenceInfo().retrieveEvidenceString(text));
+//        }
     }
 
     @Override

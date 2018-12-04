@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.google.common.base.Strings;
+
 
 public class FFLineWrapper {
 	private final static String[] NOT_WRAPPED= {"->", "-->", "- ", "EC ", "TC ", "ECO:"};
@@ -242,10 +244,34 @@ public class FFLineWrapper {
 	        if((index ==-1)||(index==(length-1)))
 	            break;
 	        String found = isInNotWrapped(notWrapped, index);
+	        String digit = getDigit(val, index);
+	        
 	        if(found !=null){
 	            start1 += found.length();
 	            continue;
-	        }else if(isSpecialCharacter(val.charAt(index+1))){
+	        }else if(digit !=null) {	        	
+	        	  String dashSp = DASH+ digit;	        	  
+	        	  start1=index;
+	        	 start1 += digit.length();
+	        	  List<Integer> found2 = notWrapped.get(dashSp);
+	        	  if(found2==null){
+		                found2 = new ArrayList<>();
+		                notWrapped.put(dashSp, found2);
+		            }
+		            found2.add(index);
+	        	  
+	        }else if (isSpaceBeforeDash(val, index)) {
+	        	 String dashSp =" "+ DASH;
+		            start1+=1;
+		            List<Integer> found2 = notWrapped.get(dashSp);
+		            if(found2==null){
+		                found2 = new ArrayList<>();
+		                notWrapped.put(dashSp, found2);
+		            }
+		            found2.add(index);
+	        }
+	        
+	        else if(isSpecialCharacter(val.charAt(index+1))){
 	            String dashSp = DASH+ val.charAt(index+1);
 	            start1+=2;
 	            List<Integer> found2 = notWrapped.get(dashSp);
@@ -260,6 +286,62 @@ public class FFLineWrapper {
      
 	    }while(index !=-1);
 	}
+	
+	private static boolean isSpaceBeforeDash(String val, int index) {
+		if(index <=0)
+			return false;
+		if(val.charAt(index-1) ==' ') {
+			if(val.length()>index+1) {
+				if(val.charAt(index+1) ==' ') {
+					return false;
+				}
+				else return true;
+			}else
+				return true;
+		}
+		return false;
+	}
+	private static String getDigit(String val, int index) {
+		int nextIndex =-1;
+		if(val.indexOf(' ', index) !=-1) {
+			nextIndex =val.indexOf(' ', index);
+		}
+		if(val.indexOf(',', index) !=-1) {
+			int nextIndex2 =val.indexOf(',', index);
+			if(nextIndex ==-1) {
+				nextIndex = nextIndex2;
+			}else
+				nextIndex = Math.min(nextIndex, nextIndex2);
+		}
+		
+		if(val.indexOf(';', index) !=-1) {
+			int nextIndex2 =val.indexOf(';', index);
+			if(nextIndex ==-1) {
+				nextIndex = nextIndex2;
+			}else
+				nextIndex = Math.min(nextIndex, nextIndex2);
+		}
+		if(val.indexOf('.', index) !=-1) {
+			int nextIndex2 =val.indexOf('.', index);
+			if(nextIndex ==-1) {
+				nextIndex = nextIndex2;
+			}else
+				nextIndex = Math.min(nextIndex, nextIndex2);
+		}
+		if(nextIndex ==-1)
+			return null;
+
+	
+		String sub = val.substring(index+1, nextIndex);
+		for(int i =0; i< sub.length(); i++) {
+			char c = sub.charAt(i);
+			if(!Character.isDigit(c))
+				return null;
+		}
+		return sub;
+	}
+	
+
 	private static String isInNotWrapped(Map<String, List<Integer>  >notWrapped, int index){
 	    for(Map.Entry<String, List<Integer> > entry: notWrapped.entrySet()){
 	        if(entry.getValue().stream().anyMatch(val -> val.intValue() == index))

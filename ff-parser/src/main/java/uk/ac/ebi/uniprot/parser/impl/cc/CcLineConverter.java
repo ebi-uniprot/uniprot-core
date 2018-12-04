@@ -121,7 +121,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 			List<String> positions = cObj.positions.stream().map(val -> val.toString()).collect(Collectors.toList());
 
 			if ((cObj.positions.size() == 0) && (cObj.positionValue != null)) {
-				positions.addAll(cObj.positions.stream().map(val -> val.toString()).collect(Collectors.toList()));
+				positions.add(cObj.positionValue);
 			}
 			builder.positions(positions);
 			if (cObj.sequence != null) {
@@ -318,7 +318,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		String unit = kmStr.substring(0, index).trim();
 		kmStr = kmStr.substring(index + 5).trim();
 		double value = Double.parseDouble(val);
-		return BPCPCommentBuilder.createMichaelisConstant((float) value, MichaelisConstantUnit.convert(unit), kmStr,
+		return BPCPCommentBuilder.createMichaelisConstant( value, MichaelisConstantUnit.convert(unit), kmStr,
 				EvidenceHelper.convert(kmEvStr.evidences));
 	}
 
@@ -332,7 +332,7 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		String unit = vmaxStr.substring(0, index).trim();
 		vmaxStr = vmaxStr.substring(index + 1).trim();
 		double value = Double.parseDouble(val);
-		return BPCPCommentBuilder.createMaximumVelocity((float) value, unit, vmaxStr,
+		return BPCPCommentBuilder.createMaximumVelocity( value, unit, vmaxStr,
 				EvidenceHelper.convert(vmaxEvStr.evidences));
 
 	}
@@ -445,8 +445,8 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 	private MassSpectrometryComment convertMassSpectrometry(CcLineObject.MassSpectrometry cObj,
 			Map<Object, List<Evidence>> evidenceMap) {
 		MassSpectrometryCommentBuilder builder = MassSpectrometryCommentBuilder.newInstance();
-		builder.massSpectrometryMethod(MassSpectrometryMethod.toType(cObj.method)).molWeight((double) cObj.mass)
-				.molWeightError((double) cObj.massError);
+		builder.massSpectrometryMethod(MassSpectrometryMethod.toType(cObj.method)).molWeight( cObj.mass)
+				.molWeightError(cObj.massError);
 
 		if (!Strings.isNullOrEmpty(cObj.note)) {
 			builder.note(cObj.note);

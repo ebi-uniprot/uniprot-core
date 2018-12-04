@@ -248,8 +248,8 @@ public class CcLineObject implements HasEvidenceInfo {
     }
 
     public static class MassSpectrometry {
-        public float mass;
-        public float massError;
+        public double mass;
+        public double massError;
         public String method;
         public List<MassSpectrometryRange> ranges = new ArrayList<>();
         public String note;

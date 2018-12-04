@@ -1,10 +1,13 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
+
 import uk.ac.ebi.uniprot.parser.impl.EvidenceInfo;
 import uk.ac.ebi.uniprot.parser.impl.HasEvidenceInfo;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,7 +17,8 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class FtLineObject implements HasEvidenceInfo{
-
+	private static final Set<FTType> ALTERNATIVE_SEQUENCE_SET = EnumSet.of(FTType.CONFLICT,
+			FTType.MUTAGEN, FTType.VARIANT, FTType.VAR_SEQ);
 	public List<FT> fts = new  ArrayList<FT>();
 	public EvidenceInfo evidenceInfo = new EvidenceInfo();
 
@@ -32,8 +36,9 @@ public class FtLineObject implements HasEvidenceInfo{
 
 		public String ft_text;
 		public String ftId;
+		
 	}
-
+	
 	public static enum FTType {
 		INIT_MET,SIGNAL,PROPEP,TRANSIT,CHAIN,PEPTIDE,TOPO_DOM,TRANSMEM,
 		INTRAMEM,DOMAIN,REPEAT,CA_BIND,ZN_FING,DNA_BIND,NP_BIND,
@@ -41,5 +46,8 @@ public class FtLineObject implements HasEvidenceInfo{
 		NON_STD,MOD_RES,LIPID,CARBOHYD,DISULFID,CROSSLNK,
 		VAR_SEQ,VARIANT,MUTAGEN,UNSURE,CONFLICT,NON_CONS,
 		NON_TER,HELIX,STRAND,TURN
+	}
+	public static boolean hasAltSeq(FTType type) {
+		return ALTERNATIVE_SEQUENCE_SET.contains(type);
 	}
 }

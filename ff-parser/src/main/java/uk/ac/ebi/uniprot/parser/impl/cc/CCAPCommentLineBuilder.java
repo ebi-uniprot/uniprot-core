@@ -229,9 +229,10 @@ public class CCAPCommentLineBuilder extends
 		asComment.append("Note=");
 		String freeTextStr= buildFreeText(alternativeProductsIsoform.getNote(), showEvidence, STOP, SEMICOLON);
         asComment.append(freeTextStr);    
+        String [] seps =new String[] {SEPARATOR};
 		if (includeFlatFileMarkings) {
 			List<String> lls = FFLineWrapper.buildLines(asComment.toString(),
-					SEPS, CC_PREFIX_INDENT, LINE_LENGTH);
+					seps, CC_PREFIX_INDENT, LINE_LENGTH);
 			lines.addAll(lls);
 		} else
 			lines.add(asComment.toString());

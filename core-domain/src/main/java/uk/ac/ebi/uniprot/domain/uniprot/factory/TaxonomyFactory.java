@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import uk.ac.ebi.uniprot.domain.Pair;
+import uk.ac.ebi.uniprot.domain.impl.PairImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
@@ -20,6 +22,9 @@ import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonNodeImpl;
 
 public enum TaxonomyFactory {
 	INSTANCE;
+	private static final List<String>  STRAINS =Arrays.asList(
+			" (strain", " (isolate"
+			);
 	private static final String STRAIN = " (strain";
 	public final static Pattern ORGANISM_PATTERN = Pattern
 			.compile("([a-zA-Z 0-9\\'\\-\\._/]+)((( \\()([a-zA-Z 0-9\\'\\-\\._/]+)(\\)))"
@@ -95,9 +100,10 @@ public enum TaxonomyFactory {
 		int strainStart = -1;
 		int start = 0;
 		int startBracketIndex = -1;
-		if (rest.contains(STRAIN)) {
-			strainStart = rest.indexOf(STRAIN);
-			start = getEndBlacket(rest, strainStart + STRAIN.length());
+		Pair<String, Integer> pair= containStrain(rest);
+		if (pair !=null) {
+			strainStart = pair.getValue();
+			start = getEndBlacket(rest, strainStart + pair.getKey().length());
 			if (start == -1) {
 				return TaxonomyFactory.INSTANCE.createOrganismName(value);
 			}
@@ -132,6 +138,20 @@ public enum TaxonomyFactory {
 		}
 	}
 	
+	private Pair<String, Integer> containStrain(String value) {
+		int index = value.indexOf(" (");
+		if(index ==-1) {
+			return null;
+		}
+		String subStr = value.substring(index);
+		
+		for(String str: STRAINS) {
+			if(subStr.startsWith(str)) {
+				return new PairImpl<>(str, index);
+			}
+		}
+		return null;
+	}
 	 private int getEndBlacket(String val, int start) {
 	        char endC = ')';
 	        char startC = '(';

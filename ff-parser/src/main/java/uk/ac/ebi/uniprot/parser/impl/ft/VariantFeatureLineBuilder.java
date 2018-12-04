@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.COLON;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DASH;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
@@ -53,7 +52,7 @@ extends AbstractFeatureLineBuilder{
 			sb.append(STOP);
 		}
 		
-		String[] seps = {SEPARATOR, DASH, COLON};
+		String[] seps = {SEPARATOR, DASH};
 		
 		List<String> lines3 =FFLineWrapper.buildLines(sb.toString(),  seps, 
 				FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);

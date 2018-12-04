@@ -7,8 +7,10 @@ import java.util.List;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.ft.FtLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineObject;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineObject.FTType;
 
@@ -75,6 +77,57 @@ public class FtLineParserTest {
 		 assertEquals(1, obj.fts.size());
 		 verify(obj.fts.get(0), FTType.VAR_SEQ, "33", "83", 
 				 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL-> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)", "VSP_004370");	 
+	}
+	
+	@Test 
+	public void testVarSeq() {
+		String ftLines ="FT   VAR_SEQ       1     31       MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n" + 
+				"FT                                KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n" + 
+				"FT                                SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK\n" + 
+				"FT                                (in isoform 4).\n" + 
+				"FT                                {ECO:0000303|PubMed:14702039}.\n" + 
+				"FT                                /FTId=VSP_043645.\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLines);
+		 assertEquals(1, obj.fts.size());
+		 System.out.println(obj.fts.get(0).ft_text);
+		 String desc ="MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV"
+				 + "SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK(in isoform 4)";
+		 System.out.println(desc);
+		// verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");	
+		 FtLineConverter converter = new FtLineConverter();
+		 List<Feature> features = converter.convert(obj);
+		 assertEquals(1, features.size());
+		 Feature  feature = features.get(0);
+		 assertEquals("MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR", feature.getAlternativeSequence().getOriginalSequence());
+			
+		 assertEquals("MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTVSAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK", feature.getAlternativeSequence().getAlternativeSequences().get(0));
+			
+	}
+	
+	@Test 
+	public void testVarSeq2() {
+		String ftLines ="FT   VAR_SEQ       1      1       M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA\n" + 
+				"FT                                SPSRRGSASRAGPGRASETM (in isoform L-VEGF-\n" + 
+				"FT                                1). {ECO:0000305}.\n" + 
+				"FT                                /FTId=VSP_038746.\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLines);
+		 assertEquals(1, obj.fts.size());
+		 System.out.println(obj.fts.get(0).ft_text);
+		 String desc ="M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA"
+				 + "SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1). {ECO:0000305}";
+		 System.out.println(desc);
+		// verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");	
+		 FtLineConverter converter = new FtLineConverter();
+		 List<Feature> features = converter.convert(obj);
+		 assertEquals(1, features.size());
+		 Feature  feature = features.get(0);
+		 assertEquals("M", feature.getAlternativeSequence().getOriginalSequence());
+			
+		 assertEquals("MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPASPSRRGSASRAGPGRASETM", feature.getAlternativeSequence().getAlternativeSequences().get(0));
+		 assertEquals("L-VEGF-1", feature.getAlternativeSequence().getReport().getValue().get(0));
+			
 	}
 	
 	@Test
@@ -221,6 +274,23 @@ public class FtLineParserTest {
 				 "A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)", null);	  
 		 verifyEvidences(obj, obj.fts.get(0),  null );
 	}
+	
+	@Test
+	public void testConflictFeature2() {
+		String ftLine =
+				"FT   CONFLICT    149    176       KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLST\n" + 
+				"FT                                VS (in Ref. 4; CAA78385). {ECO:0000305}.\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLine);
+		 assertEquals(1, obj.fts.size());
+		 System.out.println(obj.fts.get(0).ft_text);
+		 verify(obj.fts.get(0), FTType.CONFLICT, "149", "176", 
+				 "KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLSTVS (in Ref. 4; CAA78385)", null);	  
+		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList("ECO:0000305") );
+	}
+	
+	
+	
 	
 	@Test
 	public void testMultiFeatures() {

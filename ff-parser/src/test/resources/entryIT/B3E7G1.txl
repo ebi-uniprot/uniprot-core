@@ -64,14 +64,14 @@ KW   Complete proteome; DNA-binding; Metal-binding; Nickel;
 KW   Reference proteome; Transcription; Transcription regulation.
 FT   CHAIN         1    139       Putative nickel-responsive regulator.
 FT                                /FTId=PRO_1000125826.
-FT   METAL        79     79       Nickel. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00476}.
-FT   METAL        90     90       Nickel. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00476}.
-FT   METAL        92     92       Nickel. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00476}.
-FT   METAL        98     98       Nickel. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00476}.
+FT   METAL        79     79       Nickel. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00476}.
+FT   METAL        90     90       Nickel. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00476}.
+FT   METAL        92     92       Nickel. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00476}.
+FT   METAL        98     98       Nickel. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00476}.
 **
 **   #################    INTERNAL SECTION    ##################
 **EV ECO:0000255; HAMAP-Rule:MF_00476; XXX; 06-NOV-2015.

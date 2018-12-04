@@ -75,7 +75,7 @@ public abstract class AbstractFeatureLineBuilder
 		StringBuilder featureId = FTLineBuilderHelper.getFeatureId(f, includeFFMarkings);
 		List<String> lines = new ArrayList<>();
 		if (includeFFMarkings) {
-			String[] seps = { SEPARATOR, DASH, COLON };
+			String[] seps = { SEPARATOR, DASH };
 			lines.addAll(
 					FFLineWrapper.buildLines(sb.toString(), seps, FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH));
 		} else {

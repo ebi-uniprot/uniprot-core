@@ -387,14 +387,30 @@ KW   Metal-binding; Phosphoprotein; Proto-oncogene; Reference proteome;
 KW   Ubl conjugation; Ubl conjugation pathway; Zinc; Zinc-finger.
 FT   CHAIN         1   5207       E3 ubiquitin-protein ligase RNF213.
 FT                                /FTId=PRO_0000415917.
-FT   ZN_FING    3997   4036       RING-type. {ECO:0000255|PROSITE-ProRule:
-FT                                PRU00175}.
+FT   ZN_FING    3997   4036       RING-type. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU00175}.
 FT   COILED      343    374       {ECO:0000255}.
-FT   MOD_RES     217    217       Phosphoserine. {ECO:0000269|PubMed:
-FT                                20068231}.
-FT   MOD_RES    1258   1258       Phosphoserine. {ECO:0000269|PubMed:
-FT                                18318008, ECO:0000269|PubMed:18669648,
-FT                                ECO:0000269|PubMed:18691976}.
+FT   MOD_RES     208    208       Phosphoserine.
+FT                                {ECO:0000244|PubMed:24275569}.
+FT   MOD_RES     217    217       Phosphoserine.
+FT                                {ECO:0000244|PubMed:20068231,
+FT                                ECO:0000244|PubMed:23186163,
+FT                                ECO:0000244|PubMed:24275569}.
+FT   MOD_RES    1258   1258       Phosphoserine.
+FT                                {ECO:0000244|PubMed:18318008,
+FT                                ECO:0000244|PubMed:18669648,
+FT                                ECO:0000244|PubMed:18691976,
+FT                                ECO:0000244|PubMed:19369195,
+FT                                ECO:0000244|PubMed:19690332,
+FT                                ECO:0000244|PubMed:20068231,
+FT                                ECO:0000244|PubMed:21406692,
+FT                                ECO:0000244|PubMed:23186163,
+FT                                ECO:0000244|PubMed:24275569}.
+FT   MOD_RES    2273   2273       Phosphoserine.
+FT                                {ECO:0000244|PubMed:23186163}.
+FT   CROSSLNK   1151   1151       Glycyl lysine isopeptide (Lys-Gly)
+FT                                (interchain with G-Cter in SUMO2).
+FT                                {ECO:0000244|PubMed:25218447}.
 FT   VAR_SEQ       1   4650       Missing (in isoform 4).
 FT                                {ECO:0000303|PubMed:15489334}.
 FT                                /FTId=VSP_042416.
@@ -415,6 +431,16 @@ FT                                /FTId=VSP_042419.
 FT   VAR_SEQ    4651   4660       QEQHQLSSRR -> MTRKSAPTSG (in isoform 4).
 FT                                {ECO:0000303|PubMed:15489334}.
 FT                                /FTId=VSP_042420.
+FT   VARIANT     529    529       Missing (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075635.
+FT   VARIANT    1622   1622       A -> V (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:25956231}.
+FT                                /FTId=VAR_075636.
 FT   VARIANT    2554   2554       D -> E (in dbSNP:rs138516230).
 FT                                {ECO:0000269|PubMed:21048783}.
 FT                                /FTId=VAR_067020.
@@ -425,34 +451,134 @@ FT                                /FTId=VAR_067021.
 FT   VARIANT    3915   3915       E -> G (in dbSNP:rs61740658).
 FT                                {ECO:0000269|PubMed:21048783}.
 FT                                /FTId=VAR_067022.
+FT   VARIANT    3922   3922       R -> Q (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075637.
+FT   VARIANT    3933   3933       V -> M (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:25956231}.
+FT                                /FTId=VAR_075638.
 FT   VARIANT    3962   3962       N -> D (variant detected in cases of
 FT                                Moyamoya disease in Caucasian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT                                populations).
+FT                                {ECO:0000269|PubMed:21799892}.
 FT                                /FTId=VAR_067023.
-FT   VARIANT    4013   4013       D -> N (variant detected in cases of
-FT                                Moyamoya disease in Caucasian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT   VARIANT    3997   3997       C -> Y (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075639.
+FT   VARIANT    4007   4007       P -> R (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:23110205}.
+FT                                /FTId=VAR_075640.
+FT   VARIANT    4013   4013       D -> N (in MYMY2; variant detected in
+FT                                cases of Moyamoya disease in Caucasian
+FT                                and Asian populations; inhibitory effect
+FT                                on angiogenic activity of vascular
+FT                                endothelial cells).
+FT                                {ECO:0000269|PubMed:21799892,
+FT                                ECO:0000269|PubMed:25278557,
+FT                                ECO:0000269|PubMed:27736983}.
 FT                                /FTId=VAR_067024.
+FT   VARIANT    4019   4019       R -> C (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population; associated with K-
+FT                                4042 in cases of Moyamoya disease in
+FT                                Slovakian and Czech populations;
+FT                                inhibitory effect on angiogenic activity
+FT                                of vascular endothelial cells).
+FT                                {ECO:0000269|PubMed:25278557,
+FT                                ECO:0000269|PubMed:27736983}.
+FT                                /FTId=VAR_075641.
+FT   VARIANT    4042   4042       E -> K (rare variant associated with C-
+FT                                4019 in cases of Moyamoya disease in
+FT                                Slovakian and Czech populations).
+FT                                {ECO:0000269|PubMed:27736983}.
+FT                                /FTId=VAR_079573.
 FT   VARIANT    4062   4062       R -> Q (variant detected in cases of
 FT                                Moyamoya disease in Caucasian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT                                populations).
+FT                                {ECO:0000269|PubMed:21799892}.
 FT                                /FTId=VAR_067025.
-FT   VARIANT    4399   4399       A -> T (in dbSNP:rs148731719).
-FT                                {ECO:0000269|PubMed:21048783}.
+FT   VARIANT    4076   4076       I -> V (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075642.
+FT   VARIANT    4115   4115       Missing (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075643.
+FT   VARIANT    4118   4118       S -> F (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:26198278}.
+FT                                /FTId=VAR_075644.
+FT   VARIANT    4131   4131       R -> C (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:25956231}.
+FT                                /FTId=VAR_075645.
+FT   VARIANT    4146   4146       V -> A (rare variant detected in cases of
+FT                                Moyamoya disease in Slovakian and Czech
+FT                                populations; inhibitory effect on
+FT                                angiogenic activity of vascular
+FT                                endothelial cells).
+FT                                {ECO:0000269|PubMed:27736983}.
+FT                                /FTId=VAR_079574.
+FT   VARIANT    4185   4185       K -> T (found in a heterozygous family
+FT                                with heterogeneous intracerebral
+FT                                vasculopathy).
+FT                                {ECO:0000269|PubMed:25043520}.
+FT                                /FTId=VAR_075646.
+FT   VARIANT    4237   4237       D -> E (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075647.
+FT   VARIANT    4367   4367       Q -> L (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:23110205}.
+FT                                /FTId=VAR_075648.
+FT   VARIANT    4399   4399       A -> T (in MYMY2; dbSNP:rs148731719).
+FT                                {ECO:0000269|PubMed:21048783,
+FT                                ECO:0000269|PubMed:23110205}.
 FT                                /FTId=VAR_067026.
 FT   VARIANT    4567   4567       V -> M (rare variant detected in a
-FT                                sporadic case of Moyamoya disease; dbSNP:
-FT                                rs145282452). {ECO:0000269|PubMed:
-FT                                21048783}.
+FT                                sporadic case of Moyamoya disease;
+FT                                dbSNP:rs145282452).
+FT                                {ECO:0000269|PubMed:21048783}.
 FT                                /FTId=VAR_067027.
+FT   VARIANT    4586   4586       T -> P (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:23110205}.
+FT                                /FTId=VAR_075649.
 FT   VARIANT    4608   4608       P -> S (variant detected in cases of
 FT                                Moyamoya disease in Caucasian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT                                populations).
+FT                                {ECO:0000269|PubMed:21799892}.
 FT                                /FTId=VAR_067028.
+FT   VARIANT    4631   4631       L -> V (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:23110205}.
+FT                                /FTId=VAR_075650.
+FT   VARIANT    4677   4677       W -> L (rare polymorphism).
+FT                                {ECO:0000269|PubMed:27736983}.
+FT                                /FTId=VAR_079575.
+FT   VARIANT    4732   4732       K -> T (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075651.
 FT   VARIANT    4765   4765       V -> M (rare variant detected in a
 FT                                sporadic case of Moyamoya disease).
 FT                                {ECO:0000269|PubMed:21048783}.
@@ -460,34 +586,69 @@ FT                                /FTId=VAR_067029.
 FT   VARIANT    4810   4810       R -> K (in MYMY2; very frequent in
 FT                                individuals affected by Moyamoya disease;
 FT                                strongly increases the risk of Moyamoya
-FT                                disease). {ECO:0000269|PubMed:21048783,
-FT                                ECO:0000269|PubMed:21799892}.
+FT                                disease; induces genomic instability;
+FT                                shows decreased ATPase activity, possibly
+FT                                caused by stabilization of the oligomeric
+FT                                state). {ECO:0000269|PubMed:21048783,
+FT                                ECO:0000269|PubMed:21799892,
+FT                                ECO:0000269|PubMed:23110205,
+FT                                ECO:0000269|PubMed:23994138,
+FT                                ECO:0000269|PubMed:25278557,
+FT                                ECO:0000269|PubMed:25956231,
+FT                                ECO:0000269|PubMed:26126547}.
 FT                                /FTId=VAR_067030.
 FT   VARIANT    4863   4863       D -> N (variant detected in cases of
 FT                                Moyamoya disease in East Asian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT                                populations).
+FT                                {ECO:0000269|PubMed:21799892}.
 FT                                /FTId=VAR_067031.
 FT   VARIANT    4950   4950       E -> D (variant detected in cases of
 FT                                Moyamoya disease in East Asian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT                                populations and rare variant detected in
+FT                                a sporadic case of Moyamoya disease).
+FT                                {ECO:0000269|PubMed:21799892,
+FT                                ECO:0000269|PubMed:23110205}.
 FT                                /FTId=VAR_067032.
 FT   VARIANT    5021   5021       A -> V (variant detected in cases of
 FT                                Moyamoya disease in East Asian
-FT                                populations; dbSNP:rs138130613).
-FT                                {ECO:0000269|PubMed:21799892}.
+FT                                populations and rare variant detected in
+FT                                a sporadic case of Moyamoya disease;
+FT                                dbSNP:rs138130613).
+FT                                {ECO:0000269|PubMed:21799892,
+FT                                ECO:0000269|PubMed:23110205}.
 FT                                /FTId=VAR_067033.
+FT   VARIANT    5136   5136       M -> I (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in East
+FT                                Asian population).
+FT                                {ECO:0000269|PubMed:23110205}.
+FT                                /FTId=VAR_075652.
 FT   VARIANT    5160   5160       D -> E (variant detected in cases of
 FT                                Moyamoya disease in East Asian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT                                populations).
+FT                                {ECO:0000269|PubMed:21799892}.
 FT                                /FTId=VAR_067034.
+FT   VARIANT    5163   5163       V -> I (rare variant detected in a
+FT                                sporadic case of Moyamoya disease in
+FT                                Caucasian population).
+FT                                {ECO:0000269|PubMed:25278557}.
+FT                                /FTId=VAR_075653.
 FT   VARIANT    5176   5176       E -> G (variant detected in cases of
 FT                                Moyamoya disease in East Asian
-FT                                populations). {ECO:0000269|PubMed:
-FT                                21799892}.
+FT                                populations).
+FT                                {ECO:0000269|PubMed:21799892}.
 FT                                /FTId=VAR_067035.
+FT   MUTAGEN    2426   2426       K->A: Decreased ATPase activity.
+FT                                {ECO:0000269|PubMed:24658080}.
+FT   MUTAGEN    2488   2488       E->A: Decreased ATPase activity.
+FT                                {ECO:0000269|PubMed:24658080}.
+FT   MUTAGEN    2488   2488       E->Q: Loss of ATPase hydrolysis.
+FT                                Stabilization of the oligomeric state.
+FT                                Inhibited angiogenesis.
+FT                                {ECO:0000269|PubMed:26126547}.
+FT   MUTAGEN    2775   2775       K->A: Decreased ATPase activity.
+FT                                {ECO:0000269|PubMed:24658080}.
+FT   MUTAGEN    2845   2845       E->A: Decreased ATPase activity.
+FT                                {ECO:0000269|PubMed:24658080}.
 FT   CONFLICT    270    270       M -> T (in Ref. 4; AAH36891/AAH40341).
 FT                                {ECO:0000305}.
 FT   CONFLICT    321    321       M -> T (in Ref. 4; AAH36891/AAH40341).

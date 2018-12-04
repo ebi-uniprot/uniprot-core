@@ -13,6 +13,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
 public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>> {
+	private static final String REFERENCE = "Reference";
 	private final static String prefix = "**EV ";
 	private final static String DEFAULT_ORIG_NAME = "-";
 
@@ -43,9 +44,11 @@ public class SSEvidenceLineBuilder extends FFLineBuilderAbstr<List<EvidenceLine>
 			sb.append(evidence.getEvidenceCode().getCode());
 			sb.append(SEPARATOR_SEMICOLON);
 			if(evidence.getSource() !=null) {
-				sb.append(evidence.getSource().getDatabaseType().getName())
-				.append(":")
-				.append(evidence.getSource().getId());
+				if(!evidence.getSource().getDatabaseType().getName().equals(REFERENCE)) {
+					sb.append(evidence.getSource().getDatabaseType().getName())
+					.append(":");
+				}
+				sb.append(evidence.getSource().getId());
 			}else {
 				sb.append("-");
 			}

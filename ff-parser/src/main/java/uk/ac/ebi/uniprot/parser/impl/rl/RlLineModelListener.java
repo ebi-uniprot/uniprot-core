@@ -71,11 +71,14 @@ public class RlLineModelListener extends RlLineParserBaseListener implements Par
 		}
 
 		book.title = ctx.book_name().getText();
-
+	
+		if(ctx.BOOK_YEAR() !=null) {
 		String text = ctx.BOOK_YEAR().getText();
 		//it should be in format (1985).\n
 		book.year = Integer.parseInt(text.substring(1, text.length() - 3));
-
+		}else {
+			System.out.println(book.title);
+		}
 		RlLineParser.Book_pageContext book_pageContext = ctx.book_page();
 		RlLineParser.Book_abstract_pageContext book_abstract_pageContext = ctx.book_abstract_page();
 
