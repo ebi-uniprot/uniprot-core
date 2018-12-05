@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.parser.impl.rc;
 
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.COMA;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DEFAUT_LINESPACE;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_AND;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_COMA;
 import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
@@ -20,44 +19,43 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
 
 public class RCLineBuilder implements RLine<List<ReferenceComment>> {
 	private final LineType lineType = LineType.RC;
-	private final String linePrefix = lineType + DEFAUT_LINESPACE;
-	private static ReferenceCommentType[] order = { ReferenceCommentType.STRAIN, ReferenceCommentType.PLASMID,
-			ReferenceCommentType.TRANSPOSON, ReferenceCommentType.TISSUE };
+	 private final String linePrefix = lineType + DEFAUT_LINESPACE;
+	 private static ReferenceCommentType[] order = { ReferenceCommentType.STRAIN,
+			 ReferenceCommentType.PLASMID, ReferenceCommentType.TRANSPOSON,
+			 ReferenceCommentType.TISSUE };
 
-	public List<String> buildLine(List<ReferenceComment> f, boolean includeFFMarkup, boolean showEvidence) {
-		if (!includeFFMarkup)
+	public List<String> buildLine(List<ReferenceComment> f,
+			boolean includeFFMarkup, boolean showEvidence) {
+		if(!includeFFMarkup)
 			return buildLineStr(f);
-		if (f.isEmpty()) {
+		if(f.isEmpty()){
 			return new ArrayList<>();
 		}
-		LineBuilder lineBuilder = new LineBuilder(linePrefix, lineType);
+		LineBuilder lineBuilder =new LineBuilder(linePrefix, lineType);
 		List<StringBuilder> typeBuilders = new ArrayList<StringBuilder>();
 		boolean first = true;
 
 		// iterator over the types in order
 		for (ReferenceCommentType stype : order) {
 			List<ReferenceComment> referenceComments = getReferenceComment(f, stype);
-			if (referenceComments.isEmpty())
+			if(referenceComments.isEmpty())
 				continue;
 			int counter = 0;
 			first = true;
-			boolean hasComma = false;
 			StringBuilder typeBuilder = new StringBuilder();
-			for (ReferenceComment referenceComment : referenceComments) {
+			for(ReferenceComment referenceComment: referenceComments) {
 
 				StringBuilder item = new StringBuilder();
 				String separator;
 
 				counter++;
-				if (first) {
-					separator = SPACE;
-					hasComma = false;
-				} else if (referenceComments.size() == counter) {
-					separator = SEPARATOR_AND;
-					hasComma = true;
-				} else {
-					separator = SPACE;
-					hasComma = true;
+				if(first) {
+					separator =SPACE;
+				}
+				else if (referenceComments.size() == counter) {
+					separator =COMA+SEPARATOR_AND;
+				}else{
+					separator =SEPARATOR_COMA;
 				}
 
 				if (first) {
@@ -66,61 +64,36 @@ public class RCLineBuilder implements RLine<List<ReferenceComment>> {
 					first = false;
 				}
 				item.append(referenceComment.getValue());
-				int count = 0;
-				if (hasComma) {
-					typeBuilder.append(COMA);
-					count = 1;
-				}
-
-				if (typeBuilder.length() + item.length() + count > (LINE_LENGTH - 5)) {
-					if (separator.equals(SEPARATOR_AND)) {
-						int length = typeBuilder.length() + count + " and".length();
-						if (length <= LINE_LENGTH - 5) {
-							typeBuilder.append(" and");
-							typeBuilders.add(typeBuilder);
-							typeBuilder = new StringBuilder();
-						} else {
-							typeBuilders.add(typeBuilder);
-							typeBuilder = new StringBuilder();
-							typeBuilder.append("and ");
-						}
-					} else {
-						typeBuilders.add(typeBuilder);
-						typeBuilder = new StringBuilder();
-					}
-
-				} else {
-					if (typeBuilder.length() != 0)
-						typeBuilder.append(separator);
-				}
-
+				
 				if (showEvidence) {
-
+			
 					item.append(LineBuilderHelper.export(referenceComment.getEvidences()));
-
+				
 				}
-
+				if(typeBuilder.length() !=0)
+					typeBuilder.append(separator);
 				typeBuilder.append(item);
-				// lineBuilder.addItem(item.toString(), separator);
+				//    lineBuilder.addItem(item.toString(), separator);
 			}
-			if (typeBuilder.length() != 0)
+			if(typeBuilder.length() !=0)
 				typeBuilder.append(";");
 			typeBuilders.add(typeBuilder);
 
 		}
 
-		for (StringBuilder typeBuilder : typeBuilders) {
+		for(StringBuilder typeBuilder:typeBuilders){
 			lineBuilder.addItem(typeBuilder.toString(), SPACE);
 		}
 		lineBuilder.finish("");
 		return lineBuilder.getLines();
 	}
-
+	
+	
 	private List<String> buildLineStr(List<ReferenceComment> f) {
-		if (f.isEmpty()) {
+		if(f.isEmpty()){
 			return new ArrayList<>();
 		}
-		// LineBuilder lineBuilder =new LineBuilder(linePrefix, lineType);
+	//	LineBuilder lineBuilder =new LineBuilder(linePrefix, lineType);
 		List<StringBuilder> typeBuilders = new ArrayList<StringBuilder>();
 		boolean first = true;
 
@@ -128,23 +101,24 @@ public class RCLineBuilder implements RLine<List<ReferenceComment>> {
 
 		for (ReferenceCommentType stype : order) {
 			List<ReferenceComment> referenceComments = getReferenceComment(f, stype);
-			if (referenceComments.isEmpty())
+			if(referenceComments.isEmpty())
 				continue;
 			int counter = 0;
 			first = true;
 			StringBuilder typeBuilder = new StringBuilder();
-			for (ReferenceComment referenceComment : referenceComments) {
+			for(ReferenceComment referenceComment: referenceComments) {
 
 				StringBuilder item = new StringBuilder();
 				String separator;
 
 				counter++;
-				if (first) {
-					separator = SPACE;
-				} else if (referenceComments.size() == counter) {
-					separator = COMA + SEPARATOR_AND;
-				} else {
-					separator = SEPARATOR_COMA;
+				if(first) {
+					separator =SPACE;
+				}
+				else if (referenceComments.size() == counter) {
+					separator =COMA+SEPARATOR_AND;
+				}else{
+					separator =SEPARATOR_COMA;
 				}
 
 				if (first) {
@@ -154,32 +128,34 @@ public class RCLineBuilder implements RLine<List<ReferenceComment>> {
 				}
 				item.append(referenceComment.getValue());
 
-				if (typeBuilder.length() != 0)
+				if(typeBuilder.length() !=0)
 					typeBuilder.append(separator);
 				typeBuilder.append(item);
-				// lineBuilder.addItem(item.toString(), separator);
+				//    lineBuilder.addItem(item.toString(), separator);
 			}
-			if (typeBuilder.length() != 0)
+			if(typeBuilder.length() !=0)
 				typeBuilder.append(";");
 			typeBuilders.add(typeBuilder);
 
 		}
 
 		StringBuilder lineBuilder = new StringBuilder();
-		int count = 0;
-		for (StringBuilder typeBuilder : typeBuilders) {
-			if (count > 0)
+		int count =0;
+		for(StringBuilder typeBuilder:typeBuilders){
+			if(count>0)
 				lineBuilder.append(SPACE);
 			lineBuilder.append(typeBuilder.toString());
 		}
 		List<String> lines = new ArrayList<>();
 		lines.add(lineBuilder.toString());
-		return lines;
+		return  lines;
 	}
+	
 
-	private List<ReferenceComment> getReferenceComment(List<ReferenceComment> sss, ReferenceCommentType stype) {
-		return sss.stream().filter(val -> val.getType() == stype).collect(Collectors.toList());
-
+	private List<ReferenceComment> getReferenceComment(List<ReferenceComment> sss, ReferenceCommentType stype){
+		return
+				sss.stream().filter(val -> val.getType() ==stype)
+				.collect(Collectors.toList());
+		
 	}
-
 }

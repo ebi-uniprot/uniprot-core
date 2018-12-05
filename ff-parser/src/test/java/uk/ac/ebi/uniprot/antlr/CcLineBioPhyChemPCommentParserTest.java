@@ -38,6 +38,26 @@ public class CcLineBioPhyChemPCommentParserTest {
 	
 	
 	@Test
+	public void testSmallVmaxValue() {
+		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" + 
+				"CC       Kinetic parameters:\n" + 
+				"CC         KM=0.3913 uM for FAM fluorophore-coupled RNA substrate and a\n" + 
+				"CC         quencher-coupled DNA primer {ECO:0000269|PubMed:26779609};\n" + 
+				"CC         Vmax=0.000197 umol/sec/ug enzyme {ECO:0000269|PubMed:26779609};\n";
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineObject obj =parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof BiophysicochemicalProperties);
+		BiophysicochemicalProperties bp = (BiophysicochemicalProperties)cc.object;
+		assertEquals(1, bp.kms.size());
+		assertEquals("0.3913 uM for FAM fluorophore-coupled RNA substrate and a quencher-coupled DNA primer", bp.kms.get(0).value);
+		assertEquals(1, bp.vmaxs.size());
+		assertEquals("0.000197 umol/sec/ug enzyme", bp.vmaxs.get(0).value);
+	}
+	
+	
+	@Test
 	public void testProperty2() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Kinetic parameters:\n"

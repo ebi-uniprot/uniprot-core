@@ -30,7 +30,7 @@ class FeatureIdImplTest {
 		assertTrue(featureId.isValid(FeatureType.PEPTIDE));
 		assertTrue(featureId.isValid(FeatureType.PROPEP));
 		assertFalse(featureId.isValid(FeatureType.VARIANT));
-		assertFalse(featureId.isValid(FeatureType.CARBOHYD));
+		assertTrue(featureId.isValid(FeatureType.CARBOHYD));
 		
 	}
 	
