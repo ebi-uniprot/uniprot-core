@@ -56,10 +56,11 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
                 "CC   -!- FUNCTION: Non-catalytic subunit of the queuine tRNA-"
                         + "\nCC       ribosyltransferase (TGT) that catalyzes the base-exchange of a"
                         + "\nCC       guanine (G) residue with queuine (Q) at position 34 (anticodon"
-                        + "\nCC       wobble position) in tRNAs with GU(N) anticodons (tRNA-Asp, -Asn, -"
-                        + "\nCC       His and -Tyr), resulting in the hypermodified nucleoside queuosine"
-                        + "\nCC       (7-(((4,5-cis-dihydroxy-2-cyclopenten-1-yl)amino)methyl)-7-"
-                        + "\nCC       deazaguanosine). {ECO:0000256|HAMAP-Rule:MF_03043}.";
+                        + "\nCC       wobble position) in tRNAs with GU(N) anticodons (tRNA-Asp, -Asn,"
+                        + "\nCC       -His and -Tyr), resulting in the hypermodified nucleoside"
+                        + "\nCC       queuosine (7-(((4,5-cis-dihydroxy-2-cyclopenten-1-"
+                        + "\nCC       yl)amino)methyl)-7-deazaguanosine). {ECO:0000256|HAMAP-"
+                        + "\nCC       Rule:MF_03043}.";
         doTest(expected, comment);
     }
 

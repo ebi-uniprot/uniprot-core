@@ -53,9 +53,9 @@ public class DELineBuildTest {
 	private void doTest(String deLine, ProteinDescription pd) {
 		FFLine ffLine = builder.buildWithEvidence(pd);
 		String resultString = ffLine.toString();
-//		 System.out.println(resultString);
-//		 System.out.println("\n");
-//		 System.out.println(deLine);
+		 System.out.println(resultString);
+		 System.out.println("\n");
+		 System.out.println(deLine);
 		assertEquals(deLine, resultString);
 	}
 
@@ -128,7 +128,7 @@ public class DELineBuildTest {
 				+ "DE   AltName: Full=Pluripoietin;\n" + "DE   AltName: CD_antigen=CD156c;\n"
 				+ "DE   AltName: INN=Lenograstim;\n" +
 
-				"DE   Flags: Fragment; Precursor;";
+				"DE   Flags: Precursor; Fragment;";
 
 		doTest(deLine, proteinDescription);
 
@@ -175,7 +175,7 @@ public class DELineBuildTest {
 				+ "DE   AltName: Full=Pluripoietin {ECO:0000256|HAMAP-Rule:MF_00205};\n"
 				+ "DE   AltName: CD_antigen=CD156c;\n" + "DE   AltName: INN=Lenograstim {ECO:0000313|PDB:3OW2};\n" +
 
-				"DE   Flags: Fragment; Precursor;";
+				"DE   Flags: Precursor; Fragment;";
 
 		doTest(deLine, proteinDescription);
 

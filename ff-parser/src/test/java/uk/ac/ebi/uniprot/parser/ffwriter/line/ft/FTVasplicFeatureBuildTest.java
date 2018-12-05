@@ -214,8 +214,9 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 				+ "FT                                ELQNKIKLTVLEGDILDEPFLKRACQDVSVVIHTACIIDVF\n"
 				+ "FT                                GVTHRQSIMNVNVKGRVAWGGDKARWGNEDQKEGQEGKRSL\n"
 				+ "FT                                SIEHLLCSGPSDFADHYQLGELKAAIFSFIDEKTRTEQ\n"
-				+ "FT                                (in isoform 2). {ECO:0000269|PubMed:\n"
-				+ "FT                                10433554, ECO:0000313|EMBL:BAG16761.1}.\n"
+				+ "FT                                (in isoform 2).\n"
+				+ "FT                                {ECO:0000269|PubMed:10433554,\n"
+				+ "FT                                ECO:0000313|EMBL:BAG16761.1}.\n"
 				+ "FT                                /FTId=VSP_037399.";
 		String ftLineString = "VAR_SEQ 103 222 GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEE"
 				+ "EPLENTWPTPYPYSKKLAEKAVLAANGWNLKNGDTLYTCAL" + "RPTYIYGEGGPFLSASINEALNNNGILSSVGK -> FSTVN"

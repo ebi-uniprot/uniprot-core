@@ -80,6 +80,7 @@ public class EntryBufferReaderTest {
 		if (!hasEnd)
 			expected = data + "\n//\n";
 		String entry = reader.next();
+		System.out.println(entry);
 		assertEquals(expected, entry);
 	}
 

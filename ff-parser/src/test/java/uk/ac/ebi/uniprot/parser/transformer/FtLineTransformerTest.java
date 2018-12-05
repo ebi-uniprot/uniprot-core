@@ -162,7 +162,7 @@ public class FtLineTransformerTest {
 	@Test
 	public void testVarSeq() {
 
-		String lines = "VAR_SEQ 239 239 E -> ERDVIRSVRLPRE (in isoform PLEC- 0, isoform 1C,"
+		String lines = "VAR_SEQ 239 239 E -> ERDVIRSVRLPRE (in isoform PLEC-0, isoform 1C,"
 				+ " isoform 2A and isoform 3A).\n/FTId=VSP_005049.";
 		
 		
@@ -183,7 +183,7 @@ public class FtLineTransformerTest {
 		assertEquals("ERDVIRSVRLPRE", feature.getAlternativeSequence().getAlternativeSequences().get(0));
 		assertEquals(4, feature.getAlternativeSequence().getReport().getValue().size());
 		assertEquals(
-				"PLEC- 0",
+				"PLEC-0",
 				feature.getAlternativeSequence().getReport().getValue().get(0));
 		
 		assertEquals(
