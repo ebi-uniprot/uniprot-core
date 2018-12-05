@@ -1,16 +1,21 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.cc;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 
 
 public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
-	//SequenceCautionCCLineBuilder  ccLineBuilder = new SequenceCautionCCLineBuilder();
+	CCSequenceCautionCommentLineBuilder builder = new CCSequenceCautionCommentLineBuilder();
 	@Test
 	public void testSequenceCauction() {
 		String ccLine =
@@ -129,7 +134,7 @@ public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
 				);
 		doTest(ccLine, comment);
 		doTestString(ccLineString, comment);	
-		doTestStringEv(ccLineStringEvidence, comment);
+		//doTestStringEv(ccLineStringEvidence, comment);
 	}
 	
 	
@@ -149,25 +154,25 @@ public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
 		return builder.build();
 
 	}
-//	private void doTest(String ccLine, SequenceCautionComment comment){
-//		FFLine ffLine = ccLineBuilder.buildWithEvidence(comment);
-//		String resultString = ffLine.toString();
-//		System.out.println(resultString);
-//		System.out.println(ccLine);
-//		assertEquals(ccLine, resultString);
-//	}
-//	private void doTestString(String ccLine, SequenceCautionComment comment){
-//		String value = ccLineBuilder.buildString(comment);
-//		
-//		System.out.println(value);
-//		assertEquals(ccLine, value);
-//	}
-//	
-//	private void doTestStringEv(String ccLine, SequenceCautionComment comment){
-//		String value = ccLineBuilder.buildStringWithEvidence(comment);
-//		
-//		System.out.println(value);
-//		assertEquals(ccLine, value);
-//	}
-//	
+	private void doTest(String ccLine, SequenceCautionComment comment){
+		FFLine ffLine = builder.buildWithEvidence(comment);
+		String resultString = ffLine.toString();
+		System.out.println(resultString);
+		System.out.println(ccLine);
+		assertEquals(ccLine, resultString);
+	}
+	private void doTestString(String ccLine, SequenceCautionComment comment){
+		String value = builder.buildString(comment);
+		
+		System.out.println(value);
+		assertEquals(ccLine, value);
+	}
+	
+	private void doTestStringEv(String ccLine, SequenceCautionComment comment){
+		String value = builder.buildStringWithEvidence(comment);
+		
+		System.out.println(value);
+		assertEquals(ccLine, value);
+	}
+	
 }
