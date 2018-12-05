@@ -38,7 +38,7 @@ import uk.ac.ebi.uniprot.domain.EntryId;
  * ...
  * &lt;/entry&gt;</font></pre>
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl.class, name = "UniProtAccession")
 })

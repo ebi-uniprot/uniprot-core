@@ -46,7 +46,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
  * @see DiseaseComment
  * @version 1.0
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl.class, name = "DiseaseImpl")
 })

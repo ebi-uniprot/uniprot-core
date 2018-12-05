@@ -16,7 +16,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * @see Disease
  * @version 1.0
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl.DiseaseDescriptionImpl.class, name = "DiseaseDescriptionImpl")
 })

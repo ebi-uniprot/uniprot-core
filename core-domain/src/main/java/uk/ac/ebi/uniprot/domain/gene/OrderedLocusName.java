@@ -54,7 +54,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * uniProtEntry.getGenes().add(gene);</div>
  * </p>
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.OrderedLocusNameImpl.class, name = "orderedLocusName")
 })

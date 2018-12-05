@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 
 
-@JsonTypeInfo(use = NAME, include = PROPERTY)
+@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.class, name = "gene")
 })
