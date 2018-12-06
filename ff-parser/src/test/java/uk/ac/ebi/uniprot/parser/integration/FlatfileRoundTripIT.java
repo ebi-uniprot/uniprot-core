@@ -6,6 +6,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -16,6 +18,7 @@ import org.jboss.logging.Logger;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
 import uk.ac.ebi.uniprot.parser.UniProtParser;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.ffwriter.FlatfileWriter;
@@ -23,6 +26,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader;
+import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader2;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
 
@@ -43,7 +47,74 @@ public class FlatfileRoundTripIT {
 		// if (args.length == 2) {
 		// test.setIsFileWithPublic(args[1].equals("T"));
 		// }
-		test.roundtrip(args[0]);
+		test.testIterator(args[0]);
+	}
+	
+	private void testIterator(String filename) throws Exception{
+		UniProtEntryIterator iterator = new  DefaultUniProtEntryIterator();
+		iterator.setInput(filename);
+		LocalTime time = LocalTime.now();
+		System.out.println("using EntryBufferedReader");
+		System.out.println(time.toString());
+		int count =0;
+		while(iterator.hasNext()) {
+			UniProtEntry entry = iterator.next();
+			count++;
+			if(count%10000 ==0) {
+				System.out.println( LocalTime.now().toString() +"\t" + count);
+			}
+		}
+		LocalTime end = LocalTime.now();
+		System.out.println(end);
+		Duration duration = Duration.between(time, end);
+	
+		System.out.println(duration.toString());
+	
+	}
+	private void compareFileReader(String filename) throws Exception{
+		EntryBufferedReader2 reader = new EntryBufferedReader2(filename);
+		String entry = null;
+		LocalTime time = LocalTime.now();
+		System.out.println("using EntryBufferedReader");
+		System.out.println(time.toString());
+		int count =0;
+		while ((entry = reader.next()) != null) {
+			//EntryObject parse = entryParser.parse(entry);
+		//	UniProtEntry converted = entryObjectConverter.convert(parse);
+		//	assertNotNull(converted);
+			count++;
+			if(count%10000 ==0) {
+				System.out.println( LocalTime.now().toString() +"\t" + count);
+			}
+		}
+		reader.close();
+		
+	
+		LocalTime end = LocalTime.now();
+		System.out.println(end);
+		Duration duration = Duration.between(time, end);
+	
+		System.out.println(duration.toString());
+		
+		EntryBufferedReader2 reader2 = new EntryBufferedReader2(filename);
+		LocalTime start = LocalTime.now();
+		System.out.println("using EntryBufferedReader2");
+		System.out.println(start.toString());
+		count =0;
+		while ((entry = reader2.next()) != null) {
+//			EntryObject parse = entryParser.parse(entry);
+//			UniProtEntry converted = entryObjectConverter.convert(parse);
+//			assertNotNull(converted);
+			count++;
+			if(count%10000 ==0) {
+				System.out.println( LocalTime.now().toString() +"\t" + count);
+			}
+		}
+		reader2.close();
+		end = LocalTime.now();
+		System.out.println(end);
+		Duration duration2 = Duration.between(start, end);
+		System.out.println(duration2.toString());
 	}
 
 	private void roundtrip(String filename) throws IOException {

@@ -64,7 +64,7 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
 		if((reaction.getEcNumber() !=null) && reaction.getEcNumber().isValid()) {
 			sb.append(FFLineConstant.SPACE).append(EC).append(reaction.getEcNumber().getValue()).append(FFLineConstant.SEMICOLON);
 		}
-		if (!reaction.getEvidences().isEmpty()) {
+		if (!reaction.getEvidences().isEmpty() && showEvidence) {
 			sb.append(FFLineConstant.SPACE);
 			sb.append(EVIDENCE);
 			sb.append("{");
@@ -93,7 +93,7 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
 
 			sb2.append(XREF).append(convertReactionReference(direction.getReactionReference()))
 					.append(FFLineConstant.SEMICOLON);
-			if (!direction.getEvidences().isEmpty()) {
+			if (!direction.getEvidences().isEmpty() && showEvidence) {
 				sb2.append(FFLineConstant.SPACE);
 				sb2.append(EVIDENCE);
 				sb2.append("{");

@@ -45,7 +45,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 	private CountDownLatch parsingJobCountDownLatch;
 
 	public DefaultUniProtEntryIterator() {
-		this(0, 1000, 50000);
+		this(4, 5000, 50000);
 	}
 
 	public DefaultUniProtEntryIterator(int number_of_thread, int entryQueuesize, int ffQueueSize) {

@@ -27,10 +27,12 @@ public interface GrammarFactory<L extends Lexer, P extends Parser> {
     public static enum GrammarFactoryEnum {
         Uniprot, Ac, Id, Dt, Kw, Dr, Sq, Gn, Pe, Os, Og, Rn, Rt, Rp, Ra, Rg, Rc, Rx, De, Rl, Ft, Oc, Ox, Oh, Cc, Ss;
 
-        private GrammarFactory factory;
+        @SuppressWarnings("rawtypes")
+		private GrammarFactory factory;
 
-        private GrammarFactory createFactory() {
-            final String name = this.name();
+        @SuppressWarnings("rawtypes")
+		private GrammarFactory createFactory() {
+     //       final String name = this.name();
 
             //final String lexerName = packageName + "." + name + (name.equals("Uniprot")?"":"Line") + "Lexer";
             //final String parserName = packageName + "." + name + (name.equals("Uniprot")?"":"Line") +"Parser";
@@ -167,7 +169,8 @@ public interface GrammarFactory<L extends Lexer, P extends Parser> {
             };
         }
 
-        public synchronized GrammarFactory getFactory() {
+        @SuppressWarnings("rawtypes")
+		public synchronized GrammarFactory getFactory() {
             if (factory == null) {
                 factory = createFactory();
             }
