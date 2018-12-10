@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class FeatureIdImpl implements FeatureId {
 	
@@ -33,7 +34,7 @@ public class FeatureIdImpl implements FeatureId {
 	private final String value;
 	@JsonCreator
 	public FeatureIdImpl(@JsonProperty("value") String value) {
-		this.value = value;
+		this.value = Utils.resetNull(value);
 	}
 	
 	@Override

@@ -26,7 +26,7 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 	public AlternativeSequenceImpl(@JsonProperty("originalSequence") String originalSequence,
 			@JsonProperty("alternativeSequences") List<String> alternativeSequences,
 			@JsonProperty("report") SequenceReport report) {
-		this.originalSequence = originalSequence;
+		this.originalSequence = Utils.resetNull(originalSequence);
 		this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
 	
 		this.report = report;

@@ -5,12 +5,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class FeatureDescriptionImpl implements FeatureDescription {
 	private final String value;
 	@JsonCreator
 	public FeatureDescriptionImpl(@JsonProperty("value") String value) {
-		this.value = value;
+		this.value = Utils.resetNull(value);
+	
 	}
 	@Override
 	public String getValue() {
