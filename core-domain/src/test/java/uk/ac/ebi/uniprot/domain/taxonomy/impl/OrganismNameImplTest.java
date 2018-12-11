@@ -1,16 +1,13 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import static org.junit.Assert.*;
 
 public class OrganismNameImplTest {
 

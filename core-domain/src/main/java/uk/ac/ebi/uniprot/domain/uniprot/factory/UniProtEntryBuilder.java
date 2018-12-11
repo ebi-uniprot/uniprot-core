@@ -1,25 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
@@ -27,6 +14,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
+
+import java.util.List;
 
 public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     public static UniProtEntryBuilder newInstance(){

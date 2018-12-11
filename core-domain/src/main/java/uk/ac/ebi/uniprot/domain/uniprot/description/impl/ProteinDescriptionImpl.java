@@ -1,32 +1,25 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import java.util.Collections;
+import java.util.List;
+
+
 public class ProteinDescriptionImpl implements ProteinDescription {
-	private final ProteinName recommendedName;
-	private final List<ProteinName> alternativeNames;
-	private final List<ProteinName> submissionNames;
+	private ProteinName recommendedName;
+	private List<ProteinName> alternativeNames;
+	private List<ProteinName> submissionNames;
 	
-	private final Name allergenName;
-	private final Name biotechName;
-	private final List<Name> cdAntigenNames;
-	private final List<Name> innNames;	
-	private final List<ProteinSection> includes;  //dmain
-	private final List<ProteinSection> contains;  //component
-	private final Flag flag;
+	private Name allergenName;
+	private Name biotechName;
+	private List<Name> cdAntigenNames;
+	private List<Name> innNames;
+	private List<ProteinSection> includes;  //dmain
+	private List<ProteinSection> contains;  //component
+	private Flag flag;
+
 	public ProteinDescriptionImpl(ProteinName recommendedName,
 			 List<ProteinName> alternativeNames
 			) {
@@ -47,18 +40,27 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 		this(recommendedName, alternativeNames, submissionNames, flag,
 				null,null, null, null, null, null);
 	}
-	@JsonCreator
+
+	private ProteinDescriptionImpl(){
+		this.alternativeNames = Collections.emptyList();
+		this.submissionNames = Collections.emptyList();
+		this.cdAntigenNames = Collections.emptyList();
+		this.innNames = Collections.emptyList();
+		this.includes = Collections.emptyList();
+		this.contains = Collections.emptyList();
+	}
+
 	public ProteinDescriptionImpl(
-			@JsonProperty("recommendedName") ProteinName recommendedName,
-			@JsonProperty("alternativeNames") List<ProteinName> alternativeNames,
-			@JsonProperty("submissionNames") List<ProteinName> submissionNames,
-			@JsonProperty("flag")  Flag flag,
-			@JsonProperty("allergenName") Name allergenName,
-			@JsonProperty("biotechName") Name biotechName, 
-			@JsonProperty("cdAntigenNames") List<Name> cdAntigenNames, 
-			@JsonProperty("innNames") List<Name> innNames,
-			@JsonProperty("includes") List<ProteinSection> includes,
-			@JsonProperty("contains") List<ProteinSection> contains){
+			ProteinName recommendedName,
+			List<ProteinName> alternativeNames,
+			List<ProteinName> submissionNames,
+			Flag flag,
+			Name allergenName,
+			Name biotechName,
+			List<Name> cdAntigenNames,
+			List<Name> innNames,
+			List<ProteinSection> includes,
+			List<ProteinSection> contains){
 		this.recommendedName = recommendedName;
 		this.alternativeNames  =Utils.unmodifierList(alternativeNames);
 		this.submissionNames  =Utils.unmodifierList(submissionNames);
@@ -119,7 +121,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 	public Flag getFlag() {
 		return flag;
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean isValid() {
 		if (getRecommendedName() != null) {

@@ -1,11 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
 
 import static org.junit.Assert.*;
 

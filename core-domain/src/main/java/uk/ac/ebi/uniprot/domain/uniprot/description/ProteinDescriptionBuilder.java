@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
+
+import java.util.List;
 
 public class ProteinDescriptionBuilder {
 	private  ProteinName recommendedName;

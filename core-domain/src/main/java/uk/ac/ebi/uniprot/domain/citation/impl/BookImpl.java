@@ -1,36 +1,36 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Book;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class BookImpl extends AbstractCitationImpl implements Book {
-	private final String bookName;
-	private final List<Author> editors;
-	private final String firstPage;
-	private final String lastPage;
-	private final String volume;
-	private final String publisher;
-	private final String address;
+import java.util.Collections;
+import java.util.List;
 
-	@JsonCreator
-	public BookImpl(@JsonProperty("authoringGroup") List<String> authoringGroup,
-			@JsonProperty("authors") List<Author> authors, @JsonProperty("citationXrefs") CitationXrefs citationXrefs,
-			@JsonProperty("title") String title, @JsonProperty("publicationDate") PublicationDate publicationDate,
-			@JsonProperty("bookName") String bookName, @JsonProperty("editors") List<Author> editors,
-			@JsonProperty("firstPage") String firstPage, @JsonProperty("lastPage") String lastPage,
-			@JsonProperty("volume") String volume, @JsonProperty("publisher") String publisher,
-			@JsonProperty("address") String address) {
+
+public class BookImpl extends AbstractCitationImpl implements Book {
+	private String bookName;
+	private List<Author> editors;
+	private String firstPage;
+	private String lastPage;
+	private String volume;
+	private String publisher;
+	private String address;
+
+	private BookImpl(){
+		super(CitationType.BOOK, Collections.emptyList(), Collections.emptyList(),
+				null, null, null);
+		this.editors = Collections.emptyList();
+		this.bookName = "";
+		this.firstPage = "";
+		this.lastPage = "";
+		this.volume = "";
+		this.publisher = "";
+		this.address = "";
+	}
+
+	public BookImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+			String title, PublicationDate publicationDate, String bookName, List<Author> editors,
+			String firstPage, String lastPage, String volume, String publisher, String address) {
 		super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
 		this.bookName = bookName;
 		this.editors = Utils.unmodifierList(editors);

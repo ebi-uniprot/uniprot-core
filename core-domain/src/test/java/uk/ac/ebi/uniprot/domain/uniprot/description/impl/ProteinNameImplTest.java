@@ -1,14 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
@@ -16,6 +8,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 class ProteinNameImplTest {
 

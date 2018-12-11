@@ -1,21 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 

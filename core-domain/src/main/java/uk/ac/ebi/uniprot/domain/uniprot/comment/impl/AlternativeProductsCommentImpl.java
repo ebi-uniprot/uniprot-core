@@ -1,28 +1,27 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AlternativeProductsCommentImpl extends CommentImpl implements AlternativeProductsComment {
  
-    private final List<APEventType> events;
-    private final List<APIsoform> isoforms;
-    private final Note note;
-	@JsonCreator
+    private List<APEventType> events;
+    private List<APIsoform> isoforms;
+    private Note note;
+
+    private AlternativeProductsCommentImpl(){
+        super(CommentType.ALTERNATIVE_PRODUCTS);
+        this.events = Collections.emptyList();
+        this.isoforms = Collections.emptyList();
+    }
+
     public AlternativeProductsCommentImpl(
-    		@JsonProperty("events") List<APEventType> events, 
-    		@JsonProperty("isoforms") List<APIsoform> isoforms, 
-    		@JsonProperty("note") Note note  ) {
+    		List<APEventType> events,
+    		List<APIsoform> isoforms,
+    		Note note  ) {
         super(CommentType.ALTERNATIVE_PRODUCTS);
         if((events ==null) || events.isEmpty()){
             this.events = Collections.emptyList();

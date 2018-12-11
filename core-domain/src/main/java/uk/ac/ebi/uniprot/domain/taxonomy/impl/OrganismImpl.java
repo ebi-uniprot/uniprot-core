@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 
 public class OrganismImpl implements Organism {
-	private final OrganismName name;
-	private final long taxonId;
+	private OrganismName name;
+	private long taxonId;
 
-	@JsonCreator
-	public OrganismImpl(@JsonProperty("name") OrganismName name, @JsonProperty("taxonId") long taxonId) {
+	private OrganismImpl(){
+
+	}
+
+	public OrganismImpl(OrganismName name, long taxonId) {
 		this.name = name;
 		this.taxonId = taxonId;
 	}

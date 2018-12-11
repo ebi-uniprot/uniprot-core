@@ -1,20 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.PhysiologicalReactionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ReactionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
+import java.util.List;
 
 public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityComment> {
 

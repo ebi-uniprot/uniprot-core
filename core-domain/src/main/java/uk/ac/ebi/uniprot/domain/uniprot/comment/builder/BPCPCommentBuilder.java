@@ -1,21 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AbsorptionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.BPCPCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.KineticParametersImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MaximumVelocityImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MichaelisConstantImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;

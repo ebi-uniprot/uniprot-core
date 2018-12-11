@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.domain.gene;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 
 /**
@@ -53,10 +47,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * </p>
  *
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
-@JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.ORFNameImpl.class, name = "orfName")
-})
 public interface ORFName extends EvidencedValue {
 
 }

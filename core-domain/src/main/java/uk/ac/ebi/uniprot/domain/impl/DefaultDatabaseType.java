@@ -1,17 +1,18 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DatabaseType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public final class DefaultDatabaseType implements DatabaseType {
-	private final String name;
-	@JsonCreator
-	public DefaultDatabaseType(@JsonProperty("name") String name) {
+	private String name;
+
+	private DefaultDatabaseType(){
+
+	}
+
+	public DefaultDatabaseType(String name) {
 		this.name = name;
 	}
+
 	@Override
 	public String getName() {
 		return name;

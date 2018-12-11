@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public final class Property implements Pair<String, String>, Comparable<Property>{
-	private final String key;
-	private final String value;
-	@JsonCreator
-	public Property(@JsonProperty("key")String key, 
-			@JsonProperty("value")String value) {
+	private String key;
+	private String value;
+
+	private Property(){
+
+	}
+	public Property(String key, String value) {
 		this.key = key;
 		this.value = value;
 	}

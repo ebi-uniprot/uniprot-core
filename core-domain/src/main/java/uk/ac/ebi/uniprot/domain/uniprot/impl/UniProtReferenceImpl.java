@@ -1,36 +1,33 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UniProtReferenceImpl<T extends Citation> implements UniProtReference<T> {
-    private final T citation;
-    private final List<String> referencePositions;
-    private final List<ReferenceComment> referenceComments;
-    private final List<Evidence> evidences;
-    @JsonCreator
-    public UniProtReferenceImpl(
-    		@JsonProperty("citation") T citation, 
-    		@JsonProperty("referencePositions") List<String> referencePositions,
-    		@JsonProperty("referenceComments") List<ReferenceComment> referenceComments,
-    		@JsonProperty("evidences") List<Evidence> evidences) {
+    private T citation;
+    private List<String> referencePositions;
+    private List<ReferenceComment> referenceComments;
+    private List<Evidence> evidences;
+
+    private UniProtReferenceImpl(){
+    	this.referencePositions = Collections.emptyList();
+		this.referenceComments = Collections.emptyList();
+		this.evidences = Collections.emptyList();
+	}
+    public UniProtReferenceImpl(T citation, List<String> referencePositions, List<ReferenceComment> referenceComments,
+    		List<Evidence> evidences) {
         this.citation = citation;
         this.referencePositions =Utils.unmodifierList(referencePositions);
         this.referenceComments =Utils.unmodifierList(referenceComments);
         this.evidences =Utils.unmodifierList(evidences);
-
     }
 
     @Override
@@ -42,7 +39,7 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
     public T getCitation() {
         return citation;
     }
-	@JsonIgnore
+
     @Override
     public List<ReferenceComment> getTypedReferenceComments(ReferenceCommentType type) {
         return this.referenceComments.stream()

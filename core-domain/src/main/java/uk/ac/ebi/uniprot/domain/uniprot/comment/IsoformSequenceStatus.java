@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * User: mkleen@ebi.ac.uk
  * Date: 28-Nov-2005
@@ -18,6 +20,7 @@ public enum IsoformSequenceStatus {
 		this.value = type;
 	}
 
+	@JsonValue
 	public String getValue() {
 		return this.value;
 	}

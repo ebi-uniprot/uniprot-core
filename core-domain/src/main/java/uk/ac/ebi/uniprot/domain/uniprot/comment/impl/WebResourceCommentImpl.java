@@ -1,24 +1,26 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
-	private final String resourceName;
-    private final String resourceUrl;
-    private final boolean ftp;
-    private final String note;
-    @JsonCreator
+	private String resourceName;
+    private String resourceUrl;
+    private boolean ftp;
+    private String note;
+
+    private WebResourceCommentImpl(){
+		super(CommentType.WEBRESOURCE);
+		this.note = "";
+		this.resourceName = "";
+		this.resourceUrl = "";
+	}
     public WebResourceCommentImpl(
-    		@JsonProperty("resourceName") String resourceName, 
-    		@JsonProperty("resourceUrl") String resourceUrl, 
-    		@JsonProperty("ftp")  boolean ftp, 
-    		@JsonProperty("note") String note) {
+    		String resourceName,
+    		String resourceUrl,
+    		boolean ftp,
+    		String note) {
         super(CommentType.WEBRESOURCE);
         this.resourceName = resourceName;
         if(Strings.isNullOrEmpty(resourceUrl)) {

@@ -1,32 +1,30 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+
 public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference <T> {
 
-	 private final  T databaseType;
-	 private final String id;
+	 private T databaseType;
+	 private String id;
 	 private List<Property> properties;
+
+	 private DBCrossReferenceImpl(){
+	 	this.properties = Collections.emptyList();
+	 }
 
 	public DBCrossReferenceImpl( T database,  String id) {
 		this(database, id, Collections.emptyList());
 	}
 	
-	@JsonCreator
-	public DBCrossReferenceImpl(@JsonProperty("databaseType")T databaseType,
-			@JsonProperty("id")String id,
-			@JsonProperty("properties")List<Property> properties) {
+
+	public DBCrossReferenceImpl(T databaseType, String id, List<Property> properties) {
 		this.databaseType = databaseType;
 		this.id =id;
 		setProperties(properties);

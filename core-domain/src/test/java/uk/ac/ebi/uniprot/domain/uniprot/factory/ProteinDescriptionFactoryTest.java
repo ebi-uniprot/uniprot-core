@@ -1,25 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import static org.junit.Assert.*;
 
 public class ProteinDescriptionFactoryTest {
 

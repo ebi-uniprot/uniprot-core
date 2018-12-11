@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class AlternativeSequenceImplTest {
 

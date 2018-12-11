@@ -1,31 +1,31 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 public class ReactionImpl implements Reaction {
 
-	private final String name;
-	private final List<DBCrossReference<ReactionReferenceType>> reactionReferences;
-	private final ECNumber ecNumber;
-	private final List<Evidence> evidences;
+	private String name;
+	private List<DBCrossReference<ReactionReferenceType>> reactionReferences;
+	private ECNumber ecNumber;
+	private List<Evidence> evidences;
 
-	@JsonCreator
-	public ReactionImpl(@JsonProperty("name") String name,
-			@JsonProperty("reactionReferences") List<DBCrossReference<ReactionReferenceType>> reactionReferences,
-			@JsonProperty("ecNumber") ECNumber ecNumber, @JsonProperty("evidences") List<Evidence> evidences) {
+	private ReactionImpl(){
+		this.evidences = Collections.emptyList();
+		this.reactionReferences = Collections.emptyList();
+	}
+
+	public ReactionImpl(String name,
+			List<DBCrossReference<ReactionReferenceType>> reactionReferences,
+			ECNumber ecNumber, List<Evidence> evidences) {
 		this.name = name;
 		if ((reactionReferences == null) || reactionReferences.isEmpty()) {
 			this.reactionReferences = Collections.emptyList();

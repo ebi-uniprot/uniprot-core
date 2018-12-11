@@ -1,9 +1,6 @@
 package uk.ac.ebi.uniprot.domain.util;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.util.json.JsonUtils;

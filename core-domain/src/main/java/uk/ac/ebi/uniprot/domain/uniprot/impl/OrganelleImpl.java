@@ -4,17 +4,18 @@ import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
-    private final GeneEncodingType geneEncodingType;
+    private GeneEncodingType geneEncodingType;
 
-    public OrganelleImpl(@JsonProperty("geneEncodingType") GeneEncodingType geneEncodingType, 
-    		@JsonProperty("value") String value, 
-			@JsonProperty("evidences") List<Evidence> evidences) {
+    private OrganelleImpl(){
+        super("", Collections.emptyList());
+    }
+
+    public OrganelleImpl(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         super(value, evidences);
         this.geneEncodingType = geneEncodingType;
     }

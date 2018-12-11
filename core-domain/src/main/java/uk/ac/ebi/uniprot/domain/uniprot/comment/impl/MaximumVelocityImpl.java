@@ -6,20 +6,19 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MaximumVelocityImpl implements MaximumVelocity {
-    private final double velocity;
-    private final String unit;
-    private final String enzyme;
-    private final List<Evidence> evidences;
-    @JsonCreator
-    public MaximumVelocityImpl(@JsonProperty("velocity")  double velocity, 
-    		@JsonProperty("unit") String unit, 
-    		@JsonProperty("enzyme") String enzyme, 
-    		@JsonProperty("evidences") List<Evidence> evidences) {
+    private double velocity;
+    private String unit;
+    private String enzyme;
+    private List<Evidence> evidences;
+
+	private MaximumVelocityImpl(){
+		this.evidences = Collections.emptyList();
+	}
+    public MaximumVelocityImpl(double velocity,
+    		String unit,
+    		String enzyme,
+    		List<Evidence> evidences) {
         this.velocity = velocity;
         this.unit = unit;
         this.enzyme = enzyme;

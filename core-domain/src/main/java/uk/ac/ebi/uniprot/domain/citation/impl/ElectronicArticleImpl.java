@@ -1,40 +1,22 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.citation.*;
+
+import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
-import uk.ac.ebi.uniprot.domain.citation.Journal;
-import uk.ac.ebi.uniprot.domain.citation.Locator;
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
-	private final Journal journal;
-	private final Locator locator;
+	private Journal journal;
+	private Locator locator;
+
+	private ElectronicArticleImpl(){
+		super(CitationType.ELECTRONIC_ARTICLE, Collections.emptyList(),Collections.emptyList(),null,"",null);
+	}
 
 	public ElectronicArticleImpl( List<String> authoringGroup, List<Author> authors,  CitationXrefs citationXrefs,
-			String title,  PublicationDate publicationDate,
-			 String journalName,  Locator locator) {
-		this(authoringGroup, authors, citationXrefs, title, publicationDate,
-				new JournalImpl(journalName), locator);
-	
-
-	}
-	
-	@JsonCreator
-	public ElectronicArticleImpl(
-			@JsonProperty("authoringGroup") List<String> authoringGroup,
-			@JsonProperty("authors") List<Author> authors, @JsonProperty("citationXrefs") CitationXrefs citationXrefs,
-			@JsonProperty("title") String title, @JsonProperty("publicationDate") PublicationDate publicationDate,
-			@JsonProperty("journal") Journal journal, @JsonProperty("locator")  Locator locator) {
+			String title,  PublicationDate publicationDate, String journalName,  Locator locator) {
 		super(CitationType.ELECTRONIC_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
-		this.journal = journal;
+		this.journal = new JournalImpl(journalName);
 		this.locator = locator;
 	}
 
@@ -78,11 +60,15 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
 			return false;
 		return true;
 	}
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 	public static class LocatorImpl implements Locator {
-		private final String value;
-		@JsonCreator
-		public LocatorImpl(@JsonProperty("value")  String value) {
+		private String value;
+
+		private LocatorImpl() {
+			this.value = "";
+		}
+
+		public LocatorImpl(String value) {
 			this.value = value;
 		}
 

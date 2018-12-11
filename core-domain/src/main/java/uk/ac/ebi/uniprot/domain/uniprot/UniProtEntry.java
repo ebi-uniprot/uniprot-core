@@ -1,13 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
@@ -18,6 +10,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 
+import java.util.List;
+
 /**
  *
  * @author jieluo
@@ -25,9 +19,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
  * @time 18:41:20
  *
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
-@JsonSubTypes({
-		@JsonSubTypes.Type(value = uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl.class, name = "UniProtEntry") })
 public interface UniProtEntry {
 	UniProtEntryType getEntryType();
 

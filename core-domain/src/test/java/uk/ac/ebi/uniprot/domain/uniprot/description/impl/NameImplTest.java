@@ -1,19 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class NameImplTest {
 

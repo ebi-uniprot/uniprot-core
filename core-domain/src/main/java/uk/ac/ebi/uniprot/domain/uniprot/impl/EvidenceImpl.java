@@ -1,22 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class EvidenceImpl implements Evidence {
 	private static final String PIPE = "|";
 	private static final String COLON = ":";
-	private final EvidenceCode evidenceCode;
-	private final DBCrossReference<EvidenceType> source;
+	private EvidenceCode evidenceCode;
+	private DBCrossReference<EvidenceType> source;
 	
 	
 	static final EvidenceType REFERENCE =new EvidenceType("Reference");
@@ -51,9 +46,11 @@ public class EvidenceImpl implements Evidence {
 		this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceType(databaseName), dbId));
 	
 	}
-	@JsonCreator
-	public EvidenceImpl(@JsonProperty("evidenceCode") EvidenceCode evidenceCode,
-			@JsonProperty("source") DBCrossReference<EvidenceType> source) {
+	private EvidenceImpl(){
+
+	}
+
+	public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceType> source) {
 		this.evidenceCode = evidenceCode;
 		this.source = source;
 	}
@@ -82,7 +79,7 @@ public class EvidenceImpl implements Evidence {
 	public String toString() {
 		return getValue();
 	}
-	@JsonIgnore
+
 	@Override
 	public String getValue() {
 

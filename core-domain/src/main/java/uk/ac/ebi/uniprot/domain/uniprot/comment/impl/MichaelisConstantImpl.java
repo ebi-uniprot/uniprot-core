@@ -4,23 +4,24 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MichaelisConstantImpl implements MichaelisConstant {
-    private final double constant;
-    private final MichaelisConstantUnit unit;
-    private final String substrate;
-    private final List<Evidence> evidences;
-    @JsonCreator
-    public MichaelisConstantImpl(@JsonProperty("constant") double constant, 
-    		@JsonProperty("unit") MichaelisConstantUnit unit, 
-    		@JsonProperty("substrate")  String substrate,
-    		@JsonProperty("evidences")  List<Evidence> evidences) {
+    private double constant;
+    private MichaelisConstantUnit unit;
+    private String substrate;
+    private List<Evidence> evidences;
+
+	private MichaelisConstantImpl(){
+		this.evidences = Collections.emptyList();
+	}
+
+    public MichaelisConstantImpl(double constant,
+    		MichaelisConstantUnit unit,
+    		String substrate,
+    		List<Evidence> evidences) {
         this.constant = constant;
         this.unit = unit;
         this.substrate = substrate;

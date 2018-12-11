@@ -1,16 +1,16 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.citation.Author;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class AuthorImpl implements Author {
-    private final String value;
-    @JsonCreator
-    public AuthorImpl(@JsonProperty("value") String value){
+    private String value;
+
+    private AuthorImpl(){
+        this.value = "";
+    }
+
+    public AuthorImpl(String value){
         this.value = value;
     }
     @Override

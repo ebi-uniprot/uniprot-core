@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
 import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
+
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EntryInactiveReasonImplTest {
 

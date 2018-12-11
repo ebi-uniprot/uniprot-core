@@ -1,12 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
@@ -15,6 +9,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public enum UniProtDBCrossReferenceFactory {
     INSTANCE;

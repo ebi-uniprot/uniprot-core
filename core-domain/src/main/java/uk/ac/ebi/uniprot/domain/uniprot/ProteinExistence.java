@@ -22,11 +22,11 @@ public enum ProteinExistence {
 	public String getDisplayName() {
 		return displayName;
 	}
-	private ProteinExistence(String type) {
+	ProteinExistence(String type) {
 		this.value = type;
 		this.displayName =type;
 	}
-	private ProteinExistence(String type, String displayName) {
+	ProteinExistence(String type, String displayName) {
 		this.value = type;
 		this.displayName = displayName;
 	}

@@ -1,14 +1,12 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
 
-import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
-
-import static org.junit.Assert.*;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+
+import static org.junit.Assert.assertEquals;
 
 public class SequenceImplTest {
 

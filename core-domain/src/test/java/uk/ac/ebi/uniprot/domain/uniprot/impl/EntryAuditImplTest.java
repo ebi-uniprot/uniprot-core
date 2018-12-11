@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 
 import java.time.LocalDate;
 import java.time.Month;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class EntryAuditImplTest {
 

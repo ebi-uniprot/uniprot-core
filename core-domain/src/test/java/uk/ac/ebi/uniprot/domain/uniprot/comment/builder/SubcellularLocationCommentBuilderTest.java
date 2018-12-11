@@ -1,13 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
@@ -15,9 +11,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class SubcellularLocationCommentBuilderTest {
 

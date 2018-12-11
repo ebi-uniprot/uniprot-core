@@ -1,12 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode.Category;
 
 import java.util.EnumSet;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode.Category;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EvidenceCodeTest {
 

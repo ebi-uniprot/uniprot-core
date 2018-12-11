@@ -1,13 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
@@ -16,12 +9,13 @@ import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
 
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class FeatureImplTest {
 

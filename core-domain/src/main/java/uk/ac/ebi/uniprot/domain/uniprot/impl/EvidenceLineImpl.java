@@ -1,29 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.time.LocalDate;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.util.json.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.domain.util.json.LocalDateSerializer;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.time.LocalDate;
+
 public class EvidenceLineImpl implements EvidenceLine {
-	private final String evidence;
-	@JsonDeserialize(using = LocalDateDeserializer.class)  
-	@JsonSerialize(using = LocalDateSerializer.class)  
-	private final LocalDate createDate;
-	private final String curator;
-	
-	@JsonCreator
-	public EvidenceLineImpl(@JsonProperty("evidence") String evidence, 
-			@JsonProperty("createDate") LocalDate createDate, 
-			@JsonProperty("curator") String curator ) {
+	private String evidence;
+	private LocalDate createDate;
+	private String curator;
+
+	private EvidenceLineImpl() {
+		curator = "";
+		evidence = "";
+	}
+
+	public EvidenceLineImpl(String evidence, LocalDate createDate, String curator ) {
 		this.evidence = evidence;
 		this.createDate = createDate;
 		if(curator ==null) {
@@ -31,6 +23,7 @@ public class EvidenceLineImpl implements EvidenceLine {
 		}
 		this.curator = curator;
 	}
+
 	@Override
 	public String getEvidence() {
 		return evidence;

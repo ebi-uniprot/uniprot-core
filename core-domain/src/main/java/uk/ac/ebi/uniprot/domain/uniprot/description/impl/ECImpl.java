@@ -1,23 +1,22 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class ECImpl extends ECNumberImpl implements EC {
-	private final List<Evidence> evidences;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
-	@JsonCreator
-	public ECImpl(@JsonProperty("value") String value, @JsonProperty("evidences") List<Evidence> evidences) {
+public class ECImpl extends ECNumberImpl implements EC {
+	private List<Evidence> evidences;
+
+	private ECImpl(){
+		super("");
+		this.evidences = Collections.emptyList();
+	}
+	public ECImpl(String value,List<Evidence> evidences) {
 		super(value);
 		if ((evidences == null) || evidences.isEmpty()) {
 			this.evidences = Collections.emptyList();

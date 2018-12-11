@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseCommentImpl;
 
 public class DiseaseCommentBuilder implements CommentBuilder<DiseaseComment> {

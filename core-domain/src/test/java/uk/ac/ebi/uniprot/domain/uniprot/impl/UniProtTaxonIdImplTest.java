@@ -1,16 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UniProtTaxonIdImplTest {
 

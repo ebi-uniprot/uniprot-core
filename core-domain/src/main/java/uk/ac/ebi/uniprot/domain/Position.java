@@ -1,21 +1,20 @@
 package uk.ac.ebi.uniprot.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public   final class  Position implements Comparable<Position> {
-	private final Integer value;
-	private final PositionModifier modifier;
-	
+	private Integer value;
+	private PositionModifier modifier;
+
+	private Position(){
+
+	}
+
 	public Position(Integer value) {
 		this(value, getValueModifier(value));
 	
 	}
 
-	@JsonCreator
-	public Position(@JsonProperty("value") Integer value, 
-			@JsonProperty("modifier")PositionModifier modifier) {
+
+	public Position(Integer value, PositionModifier modifier) {
 		this.value = value;
 		if(value ==null) {
 			this.modifier =PositionModifier.UNKOWN;

@@ -1,23 +1,25 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
 import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
 import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
+
 public class EntryInactiveReasonImpl implements EntryInactiveReason {
-	private final InactiveReasonType inactiveReasonType;
-	private final List<String> mergeDemergeTo;
-	public EntryInactiveReasonImpl(
-			@JsonProperty("inactiveReasonType") InactiveReasonType inactiveReasonType,
-			@JsonProperty("mergeDemergeTo") List<String> mergeDemergeTo) {
+	private InactiveReasonType inactiveReasonType;
+	private List<String> mergeDemergeTo;
+
+	private EntryInactiveReasonImpl(){
+		this.mergeDemergeTo = Collections.emptyList();
+	}
+
+	public EntryInactiveReasonImpl(InactiveReasonType inactiveReasonType, List<String> mergeDemergeTo) {
 		this.inactiveReasonType = inactiveReasonType;
 		this.mergeDemergeTo = Utils.unmodifierList(mergeDemergeTo);
 	}
+
 	@Override
 	public InactiveReasonType getInactiveReasonType() {
 		return inactiveReasonType;

@@ -1,28 +1,23 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DatabaseType;
-@JsonInclude(JsonInclude.Include.NON_NULL)
+
 public final class UniProtXDbType implements DatabaseType{
-	private final String name;
+	private String name;
 	
-	@JsonCreator
-	public UniProtXDbType(
-			@JsonProperty("name")String name ) {
-		
+	private UniProtXDbType(){
+
+	}
+
+	public UniProtXDbType(String name ) {
 		this.name = name;
-	
 	}
 
 	@Override
 	public String getName() {
 		return name;
 	}
-	@JsonIgnore
+
 	public UniProtXDbTypeDetail getDetail() {
 		return UniProtXDbTypes.INSTANCE.getType(name);
 	}

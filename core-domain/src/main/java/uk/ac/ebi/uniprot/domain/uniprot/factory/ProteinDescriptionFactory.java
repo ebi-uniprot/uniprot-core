@@ -1,22 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ECImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
+import java.util.List;
 
 public enum ProteinDescriptionFactory {
 	INSTANCE;

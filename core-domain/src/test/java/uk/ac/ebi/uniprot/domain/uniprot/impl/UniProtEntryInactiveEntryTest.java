@@ -1,18 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
-import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class UniProtEntryInactiveEntryTest {
 

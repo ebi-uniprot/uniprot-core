@@ -17,7 +17,7 @@ public enum UniProtEntryType {
 
     private String value;
 
-    private UniProtEntryType(String type) {
+    UniProtEntryType(String type) {
         this.value = type;
     }
 	 @JsonValue

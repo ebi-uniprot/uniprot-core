@@ -1,30 +1,29 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
-    private final SequenceCautionType sequenceCautionType;
-    private final String sequence;
-    private final List<String> positions;
-    private final String note;
-    private final List<Evidence> evidences;
+    private SequenceCautionType sequenceCautionType;
+    private String sequence;
+    private List<String> positions;
+    private String note;
+    private List<Evidence> evidences;
     
-	@JsonCreator
-    public SequenceCautionCommentImpl(@JsonProperty("sequenceCautionType") SequenceCautionType sequenceCautionType, 
-    		@JsonProperty("sequence") String sequence,
-    		@JsonProperty("positions") List<String> positions,
-    		@JsonProperty("note")String note,
-    		@JsonProperty("evidences") List<Evidence> evidences) {
+	private SequenceCautionCommentImpl(){
+		super(CommentType.SEQUENCE_CAUTION);
+		this.evidences = Collections.emptyList();
+		this.positions = Collections.emptyList();
+	}
+
+    public SequenceCautionCommentImpl(SequenceCautionType sequenceCautionType, String sequence,
+			List<String> positions, String note, List<Evidence> evidences) {
         super(CommentType.SEQUENCE_CAUTION);
         this.sequenceCautionType = sequenceCautionType;
         this.sequence =sequence;

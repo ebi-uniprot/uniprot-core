@@ -5,14 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment {
 	private static final Set<CommentType> VALID_COMMENT_TYPES =
 			EnumSet.of(CommentType.ALLERGEN, CommentType.BIOTECHNOLOGY,
@@ -35,14 +32,14 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
 					CommentType.TISSUE_SPECIFICITY,
 					CommentType.TOXIC_DOSE
 					);
-	
-	public static boolean isFreeTextCommentType (CommentType type) {
-		return VALID_COMMENT_TYPES.contains(type);
-	}
-    private final CommentType commentType;
-    @JsonCreator
-    public FreeTextCommentImpl(@JsonProperty("commentType") CommentType type,
-    		@JsonProperty("texts") List<EvidencedValue> texts) {
+
+    private  CommentType commentType;
+
+    private FreeTextCommentImpl(){
+        super(Collections.emptyList());
+    }
+    public FreeTextCommentImpl(CommentType type,
+    		List<EvidencedValue> texts) {
         super(texts);
         this.commentType = type;
        
@@ -58,6 +55,11 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
         result = prime * result + ((commentType == null) ? 0 : commentType.hashCode());
         return result;
     }
+
+    public static boolean isFreeTextCommentType (CommentType type) {
+        return VALID_COMMENT_TYPES.contains(type);
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

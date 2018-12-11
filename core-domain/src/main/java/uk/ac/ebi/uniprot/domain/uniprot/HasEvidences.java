@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
+import java.util.List;
 /**
  * 
  * @author jieluo

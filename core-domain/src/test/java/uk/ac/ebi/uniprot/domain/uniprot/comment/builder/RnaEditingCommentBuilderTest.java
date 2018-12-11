@@ -1,13 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
@@ -15,7 +11,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 

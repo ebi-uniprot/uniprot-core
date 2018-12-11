@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class FeatureDescriptionImpl implements FeatureDescription {
-	private final String value;
-	@JsonCreator
-	public FeatureDescriptionImpl(@JsonProperty("value") String value) {
+	private String value;
+
+	private FeatureDescriptionImpl(){
+		value = "";
+	}
+
+	public FeatureDescriptionImpl(String value) {
 		this.value = value;
 	}
 	@Override

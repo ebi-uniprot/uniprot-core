@@ -1,11 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import java.util.EnumSet;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonValue;
 
 import java.util.Arrays;
+import java.util.EnumSet;
+import java.util.List;
 
 public enum EvidenceCode {
 	ECO_0000269("ECO:0000269", "Experimental", "Literature reference",

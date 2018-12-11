@@ -1,10 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FeatureDescriptionImplTest {
 

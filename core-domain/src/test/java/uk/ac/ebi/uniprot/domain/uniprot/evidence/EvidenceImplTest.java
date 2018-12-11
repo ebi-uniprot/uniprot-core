@@ -1,15 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
+import com.google.common.base.Strings;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 
-import com.google.common.base.Strings;
-
 import static org.junit.Assert.*;
-
-import org.junit.jupiter.api.Test;
 
 public class EvidenceImplTest {
 

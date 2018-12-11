@@ -1,9 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 

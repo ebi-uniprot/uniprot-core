@@ -1,28 +1,27 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class PhysiologicalReactionImpl implements PhysiologicalReaction {
-	private final PhysiologicalDirectionType directionType;
-	private final DBCrossReference<ReactionReferenceType> reactionReference;
-	private final List<Evidence> evidences;
 
-	@JsonCreator
-	public PhysiologicalReactionImpl(@JsonProperty("directionType") PhysiologicalDirectionType directionType,
-			@JsonProperty("reactionReference") DBCrossReference<ReactionReferenceType> reactionReference,
-			@JsonProperty("evidences") List<Evidence> evidences
-			) {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class PhysiologicalReactionImpl implements PhysiologicalReaction {
+	private PhysiologicalDirectionType directionType;
+	private DBCrossReference<ReactionReferenceType> reactionReference;
+	private List<Evidence> evidences;
+
+	private PhysiologicalReactionImpl(){
+		this.evidences = Collections.emptyList();
+	}
+
+	public PhysiologicalReactionImpl(PhysiologicalDirectionType directionType,
+			DBCrossReference<ReactionReferenceType> reactionReference,
+			List<Evidence> evidences) {
 		this.directionType = directionType;
 		this.reactionReference =reactionReference;
 		if((evidences ==null) || evidences.isEmpty()) {

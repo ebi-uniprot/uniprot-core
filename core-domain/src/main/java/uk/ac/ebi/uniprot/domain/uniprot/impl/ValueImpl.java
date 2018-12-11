@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.Value;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class ValueImpl implements Value {
-    private final String value;
-    @JsonCreator
-    public ValueImpl(@JsonProperty("value") String value){
+    private String value;
+
+    private ValueImpl(){
+
+    }
+    public ValueImpl(String value){
         this.value = value;
     }
 

@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 /**
  * Encapsulates a single gene coding of the {@link UniProtEntry UniProtEntry}.
  * The gene coding for a protein originates from the mitochondria, the chloroplast, the cyanelle, the nucleomorph or a plasmid.
@@ -21,10 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * ...
  * </font></pre>
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
-@JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl.class, name = "OrganelleImpl")
-})
+
 public interface Organelle extends EvidencedValue  {
      GeneEncodingType getGeneEncodingType();
 }

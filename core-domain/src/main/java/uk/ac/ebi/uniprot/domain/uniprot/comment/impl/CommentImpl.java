@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public abstract class CommentImpl implements Comment {
 
-    private final CommentType commentType;
-	@JsonCreator
-    public CommentImpl(@JsonProperty("commentType") CommentType commentType) {
+    private CommentType commentType;
+
+    private CommentImpl(){
+
+    }
+
+    public CommentImpl(CommentType commentType) {
         this.commentType = commentType;
       
     }

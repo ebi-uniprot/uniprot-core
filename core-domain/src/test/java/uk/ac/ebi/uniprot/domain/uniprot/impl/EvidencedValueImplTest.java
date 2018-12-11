@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 
-import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class EvidencedValueImplTest {
 

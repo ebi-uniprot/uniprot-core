@@ -1,17 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class InternalLineImpl extends ValueImpl implements InternalLine {
-	 private final InternalLineType type;
-	 @JsonCreator
-     public InternalLineImpl(@JsonProperty("type") InternalLineType type,
-    		 @JsonProperty("value") String value) {
+	 private InternalLineType type;
+
+	 private InternalLineImpl(){
+		 super(null);
+	 }
+     public InternalLineImpl(InternalLineType type, String value) {
          super(value);
          this.type = type;
      }

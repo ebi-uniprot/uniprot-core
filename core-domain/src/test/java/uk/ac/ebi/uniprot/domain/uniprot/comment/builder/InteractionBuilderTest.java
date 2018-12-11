@@ -1,18 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 

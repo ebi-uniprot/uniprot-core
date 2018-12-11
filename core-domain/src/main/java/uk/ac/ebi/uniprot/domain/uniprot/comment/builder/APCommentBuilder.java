@@ -1,17 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformId;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AlternativeProductsCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
+import java.util.List;
 
 public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
     private  List<APEventType> events;

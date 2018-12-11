@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.domain.util.json;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+
+import java.io.IOException;
 
 public class EvidenceDeserializer extends StdDeserializer<Evidence>  {
 	/**

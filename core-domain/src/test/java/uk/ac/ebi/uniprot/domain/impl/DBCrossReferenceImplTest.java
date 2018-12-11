@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.Property;
+import uk.ac.ebi.uniprot.domain.TestHelper;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.TestHelper;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DBCrossReferenceImplTest {
 

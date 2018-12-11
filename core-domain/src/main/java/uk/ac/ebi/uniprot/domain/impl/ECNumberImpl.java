@@ -1,18 +1,17 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import java.util.regex.Pattern;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.ECNumber;
+
+import java.util.regex.Pattern;
 
 public class ECNumberImpl implements ECNumber {
 	private static final Pattern EC_PATTERN =Pattern.compile("\\d{1,2}(\\.(\\-|n?\\d{1,3})){3}");
-	private final String value;
-	@JsonCreator
-	public ECNumberImpl(@JsonProperty("value")String value) {
+	private String value;
+
+	private ECNumberImpl(){
+		this.value = "";
+	}
+	public ECNumberImpl(String value) {
 		this.value = value;
 	}
 	
@@ -20,7 +19,7 @@ public class ECNumberImpl implements ECNumber {
 	public String getValue() {
 		return value;
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean isValid() {
 		return EC_PATTERN.matcher(value).matches();

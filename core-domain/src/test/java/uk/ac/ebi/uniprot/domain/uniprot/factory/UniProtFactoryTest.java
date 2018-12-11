@@ -1,26 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class UniProtFactoryTest {
     @Test

@@ -1,47 +1,29 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
-	public static PhDependence createPHDependence(List<EvidencedValue> texts) {
-		return new PhDependenceImpl(texts);
-	}
 
-	public static RedoxPotential createRedoxPotential(List<EvidencedValue> texts) {
-		return new RedoxPotentialImpl(texts);
-	}
+	private Absorption absorption;
+	private KineticParameters kineticParameters;
+	private PhDependence phDependence;
+	private RedoxPotential redoxPotential;
+	private TemperatureDependence temperatureDependence;
 
-	public static TemperatureDependence createTemperatureDependence(List<EvidencedValue> texts) {
-		return new TemperatureDependenceImpl(texts);
+	private BPCPCommentImpl(){
+		super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
 	}
-
-	private final Absorption absorption;
-	private final KineticParameters kineticParameters;
-	private final PhDependence phDependence;
-	private final RedoxPotential redoxPotential;
-	private final TemperatureDependence temperatureDependence;
-	@JsonCreator
-	public BPCPCommentImpl(@JsonProperty("absorption")Absorption absorption, 
-			@JsonProperty("kineticParameters") KineticParameters kineticParameters,
-			@JsonProperty("phDependence") PhDependence phDependence,
-			@JsonProperty("redoxPotential") RedoxPotential redoxPotential,
-			@JsonProperty("temperatureDependence")TemperatureDependence temperatureDependence) {
+	public BPCPCommentImpl(Absorption absorption,
+			KineticParameters kineticParameters,
+			PhDependence phDependence,
+			RedoxPotential redoxPotential,
+			TemperatureDependence temperatureDependence) {
 		super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
 		this.absorption = absorption;
 		this.kineticParameters = kineticParameters;
@@ -192,24 +174,49 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
 
 		return sb.toString();
 	}
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+	public static PhDependence createPHDependence(List<EvidencedValue> texts) {
+		return new PhDependenceImpl(texts);
+	}
+
+	public static RedoxPotential createRedoxPotential(List<EvidencedValue> texts) {
+		return new RedoxPotentialImpl(texts);
+	}
+
+	public static TemperatureDependence createTemperatureDependence(List<EvidencedValue> texts) {
+		return new TemperatureDependenceImpl(texts);
+	}
+
+
 	public static class RedoxPotentialImpl extends FreeTextImpl implements RedoxPotential {
-		@JsonCreator
-		public RedoxPotentialImpl(@JsonProperty("texts") List<EvidencedValue> texts) {
+
+		private RedoxPotentialImpl(){
+			super(Collections.emptyList());
+		}
+
+		public RedoxPotentialImpl(List<EvidencedValue> texts) {
 			super(texts);
 		}
 	}
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 	public static class PhDependenceImpl extends FreeTextImpl implements PhDependence {
-		@JsonCreator
-		public PhDependenceImpl(@JsonProperty("texts") List<EvidencedValue> texts) {
+
+		private PhDependenceImpl(){
+			super(Collections.emptyList());
+		}
+
+		public PhDependenceImpl(List<EvidencedValue> texts) {
 			super(texts);
 		}
 	}
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 	public static class TemperatureDependenceImpl extends FreeTextImpl implements TemperatureDependence {
-		@JsonCreator
-		public TemperatureDependenceImpl( @JsonProperty("texts")  List<EvidencedValue> texts) {
+
+		private TemperatureDependenceImpl(){
+			super(Collections.emptyList());
+		}
+
+		public TemperatureDependenceImpl(List<EvidencedValue> texts) {
 			super(texts);
 		}
 	}

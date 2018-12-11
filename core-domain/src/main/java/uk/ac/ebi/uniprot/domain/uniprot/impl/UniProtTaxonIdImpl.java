@@ -1,24 +1,24 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class UniProtTaxonIdImpl implements UniProtTaxonId {
-    private final long taxonId;
-    private final List<Evidence> evidences;
-	@JsonCreator
-    public UniProtTaxonIdImpl(@JsonProperty("taxonId") long taxonId,
-    		@JsonProperty("evidences")List<Evidence> evidences) {
+    private long taxonId;
+    private List<Evidence> evidences;
+
+    private UniProtTaxonIdImpl(){
+		this.evidences = Collections.emptyList();
+	}
+
+    public UniProtTaxonIdImpl(long taxonId, List<Evidence> evidences) {
         this.taxonId = taxonId;
         this.evidences = Utils.unmodifierList(evidences);
-       ;
     }
 
     @Override

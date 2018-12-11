@@ -1,11 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
+import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
@@ -15,9 +12,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class UniProtReferenceFactoryTest {
 

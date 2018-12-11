@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import static org.junit.Assert.assertEquals;
 
 class TaxonNameImplTest {
 

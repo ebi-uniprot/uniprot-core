@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextCommentImpl;
+
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
 
 public  class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {

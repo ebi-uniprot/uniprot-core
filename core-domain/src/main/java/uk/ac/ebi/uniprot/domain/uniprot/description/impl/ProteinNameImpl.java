@@ -1,26 +1,25 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
+
 public class ProteinNameImpl implements ProteinName {
-	private final Name fullName;
-	private final List<Name> shortNames;
-	private final List<EC> ecNumbers;
-	@JsonCreator
+	private Name fullName;
+	private List<Name> shortNames;
+	private List<EC> ecNumbers;
+
+	private ProteinNameImpl(){
+		shortNames = Collections.emptyList();
+		ecNumbers = Collections.emptyList();
+	}
 	public ProteinNameImpl(
-			@JsonProperty("fullName") Name fullName,
-			@JsonProperty("shortNames") List<Name> shortNames,
-			@JsonProperty("ecNumbers") List<EC> ecNumbers) {
+			Name fullName,
+			List<Name> shortNames,
+			List<EC> ecNumbers) {
 		this.fullName = fullName;
 		if((shortNames ==null) || (shortNames.isEmpty())) {
 			this.shortNames = Collections.emptyList();
@@ -46,7 +45,7 @@ public class ProteinNameImpl implements ProteinName {
 	public List<EC> getEcNumbers() {
 		return ecNumbers;
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean isValid() {
 		return (getFullName() !=null) &&

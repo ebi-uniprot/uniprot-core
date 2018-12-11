@@ -1,46 +1,18 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryInactiveReasonImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceLineImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalLineImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.SourceLineImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIdImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtTaxonIdImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
+
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
 
 public enum UniProtFactory {
     INSTANCE;

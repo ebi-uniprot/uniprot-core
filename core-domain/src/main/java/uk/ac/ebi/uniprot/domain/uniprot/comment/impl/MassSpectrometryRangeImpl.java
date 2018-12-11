@@ -1,25 +1,24 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
-	private final Range range;
-	private final String isoformId;
+	private Range range;
+	private String isoformId;
+
+	private MassSpectrometryRangeImpl(){
+		this.isoformId = "";
+	}
 
 	public MassSpectrometryRangeImpl(Integer start, Integer end, String isoformId) {
 		this(new Range(start, end), isoformId);
 	}
 
-	@JsonCreator
-	public MassSpectrometryRangeImpl(@JsonProperty("range") Range range, @JsonProperty("isoformId") String isoformId) {
+
+	public MassSpectrometryRangeImpl(Range range, String isoformId) {
 		this.range = range;
 		if (Strings.isNullOrEmpty(isoformId)) {
 			this.isoformId = "";
@@ -32,7 +31,7 @@ public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
 		return range;
 	}
 
-	@JsonIgnore
+
 	@Override
 	public boolean hasIsoformId() {
 		return ((isoformId != null) && !isoformId.isEmpty());

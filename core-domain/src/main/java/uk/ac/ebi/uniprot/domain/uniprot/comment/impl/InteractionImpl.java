@@ -1,34 +1,32 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class InteractionImpl implements Interaction {
-    public static Interactor createInteractor(String value){
-        return new InteractorImpl(value);
+
+    private InteractionType type;
+    private UniProtAccession uniProtAccession;
+    private String geneName;
+    private int numberOfExperiments;
+    private Interactor firstInteractor;
+    private Interactor secondInteractor;
+
+    private InteractionImpl(){
+
     }
-    private final InteractionType type;
-    private final UniProtAccession uniProtAccession;
-    private final String geneName;
-    private final int numberOfExperiments;
-    private final Interactor firstInteractor;
-    private final Interactor secondInteractor;
-    @JsonCreator
+
     public InteractionImpl(
-    		@JsonProperty("type") InteractionType type, 
-    		@JsonProperty("uniProtAccession") UniProtAccession uniProtAccession,
-    		@JsonProperty("geneName") String geneName, 
-    		@JsonProperty("numberOfExperiments") int numberOfExperiments,
-    		@JsonProperty("firstInteractor") Interactor firstInteractor, 
-    		@JsonProperty("secondInteractor") Interactor secondInteractor){
+    		InteractionType type,
+    		UniProtAccession uniProtAccession,
+    		String geneName,
+    		int numberOfExperiments,
+    		Interactor firstInteractor,
+    		Interactor secondInteractor){
         this.type =type;
         this.uniProtAccession = uniProtAccession;
         this.geneName = geneName;
@@ -116,10 +114,18 @@ public class InteractionImpl implements Interaction {
             return false;
         return true;
     }
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+    public static Interactor createInteractor(String value){
+        return new InteractorImpl(value);
+    }
+
    public static class InteractorImpl extends ValueImpl implements Interactor{
-	   @JsonCreator
-        public InteractorImpl(@JsonProperty("value") String value) {
+
+        private InteractorImpl(){
+            super(null);
+        }
+
+        public InteractorImpl(String value) {
             super(value);
         }
     }

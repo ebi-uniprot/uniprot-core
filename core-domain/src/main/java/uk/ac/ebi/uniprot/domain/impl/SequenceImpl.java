@@ -1,21 +1,21 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.MoleculeWeight;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.util.MessageDigestUtil;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class SequenceImpl implements Sequence {
-    private final String value;
-    private final int length;
-    private final int molWeight;
-    private final String crc64;
-    private final String md5;
-	@JsonCreator
-    public SequenceImpl(@JsonProperty("value") String sequence){
+    private String value;
+    private int length;
+    private int molWeight;
+    private String crc64;
+    private String md5;
+
+    private SequenceImpl(){
+        this.value ="";
+    }
+
+    public SequenceImpl(String sequence){
         if(sequence ==null){
             this.value ="";
         }else

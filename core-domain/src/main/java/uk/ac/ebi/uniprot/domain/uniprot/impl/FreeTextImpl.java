@@ -6,15 +6,15 @@ import uk.ac.ebi.uniprot.domain.uniprot.FreeText;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public  class FreeTextImpl implements FreeText{
-   private final List<EvidencedValue> texts;
-	@JsonCreator
-   public FreeTextImpl(@JsonProperty("texts") List<EvidencedValue> texts){
+   private List<EvidencedValue> texts;
+
+   private FreeTextImpl(){
+       this.texts = Collections.emptyList();
+   }
+
+   public FreeTextImpl(List<EvidencedValue> texts){
        if((texts ==null) || texts.isEmpty()){
            this.texts = Collections.emptyList();
        }else{

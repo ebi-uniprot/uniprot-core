@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 /**
  * Description of the disease(s) associated with a deficiency of a protein
  * <p>
@@ -48,10 +42,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * @see Comment
  * @version 1.0
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
-@JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseCommentImpl.class, name = "DiseaseCommentImpl")
-})
+
 public interface DiseaseComment extends Comment{
     /**
      * @return the definition of the disease

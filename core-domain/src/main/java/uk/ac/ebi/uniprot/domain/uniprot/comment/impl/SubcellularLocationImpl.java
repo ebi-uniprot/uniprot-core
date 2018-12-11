@@ -1,29 +1,28 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class SubcellularLocationImpl implements SubcellularLocation {
-    public static SubcellularLocationValue createSubcellularLocationValue(String value, List<Evidence> evidences){
-        return new SubcellularLocationValueImpl(value, evidences);
+
+    private SubcellularLocationValue location;
+    private SubcellularLocationValue topology;
+    private SubcellularLocationValue orientation;
+
+    private SubcellularLocationImpl(){
+
     }
-    private final SubcellularLocationValue location;
-    private final SubcellularLocationValue topology;
-    private final SubcellularLocationValue orientation;
-    @JsonCreator
+
     public SubcellularLocationImpl(
-    		@JsonProperty("location") SubcellularLocationValue location,
-    		@JsonProperty("topology") SubcellularLocationValue topology,
-    		@JsonProperty("orientation") SubcellularLocationValue orientation){
+    		SubcellularLocationValue location,
+    		SubcellularLocationValue topology,
+    		SubcellularLocationValue orientation){
         this.location = location;
         this.topology =topology;
         this.orientation = orientation;
@@ -78,12 +77,18 @@ public class SubcellularLocationImpl implements SubcellularLocation {
             return false;
         return true;
     }
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+    public static SubcellularLocationValue createSubcellularLocationValue(String value, List<Evidence> evidences){
+        return new SubcellularLocationValueImpl(value, evidences);
+    }
+
     public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue{
-    	 @JsonCreator
-        public SubcellularLocationValueImpl(
-        		@JsonProperty("value") String value, 
-        		@JsonProperty("evidences")List<Evidence> evidences) {
+
+        private SubcellularLocationValueImpl(){
+            super(null, Collections.emptyList());
+        }
+
+        public SubcellularLocationValueImpl(String value, List<Evidence> evidences) {
             super(value, evidences);
         }
 

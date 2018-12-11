@@ -1,31 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
+
+import java.util.Collections;
+import java.util.List;
+
 public class FeatureImpl implements Feature {
-	private final FeatureType type;
-	private final Range location;
-	private final FeatureDescription description;
-	private final FeatureId featureId;
-	private final AlternativeSequence alternativeSequence;
-	private final DBCrossReference<FeatureXDbType> dbXref;
-	private final List<Evidence> evidences;
+	private FeatureType type;
+	private Range location;
+	private FeatureDescription description;
+	private FeatureId featureId;
+	private AlternativeSequence alternativeSequence;
+	private DBCrossReference<FeatureXDbType> dbXref;
+	private List<Evidence> evidences;
 	
 	public static Builder createBuilder() {
 		return new Builder();
@@ -47,14 +37,18 @@ public class FeatureImpl implements Feature {
 				featureId, alternativeSequence, dbXref, evidences
 				);
 	}
-	@JsonCreator
-	public FeatureImpl(@JsonProperty("type") FeatureType type,
-			@JsonProperty("locatioin") Range location, 
-			@JsonProperty("description") FeatureDescription description, 
-			@JsonProperty("featureId") FeatureId featureId,
-			@JsonProperty("alternativeSequence") AlternativeSequence alternativeSequence, 
-			@JsonProperty("dbXref") DBCrossReference<FeatureXDbType> dbXref, 
-			@JsonProperty("evidences") List<Evidence> evidences) {
+
+	private FeatureImpl(){
+		evidences = Collections.emptyList();
+	}
+
+	public FeatureImpl(FeatureType type,
+			Range location,
+			FeatureDescription description,
+			FeatureId featureId,
+			AlternativeSequence alternativeSequence,
+			DBCrossReference<FeatureXDbType> dbXref,
+			List<Evidence> evidences) {
 			
 			this.type = type;
 			this.location = location;
@@ -93,7 +87,7 @@ public class FeatureImpl implements Feature {
 	public FeatureId getFeatureId() {
 		return featureId;
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean hasFeatureId() {
 		return FeatureIdImpl.hasFeatureId(type);
@@ -104,7 +98,7 @@ public class FeatureImpl implements Feature {
 	public AlternativeSequence getAlternativeSequence() {
 		return alternativeSequence;
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean hasAlternativeSequence() {
 		return AlternativeSequenceImpl.hasAlternativeSequence(type);

@@ -5,22 +5,23 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CofactorImpl implements Cofactor {
    
-    private final String name;
-    private final List<Evidence> evidences;
-    private final DBCrossReference<CofactorReferenceType>  cofactorReference;
-	@JsonCreator
-    public CofactorImpl(@JsonProperty("name") String name, 
-    		@JsonProperty("cofactorReference") DBCrossReference<CofactorReferenceType> cofactorReference,
-    		@JsonProperty("evidences") List<Evidence> evidences) {
+    private String name;
+    private List<Evidence> evidences;
+    private DBCrossReference<CofactorReferenceType>  cofactorReference;
+
+    private CofactorImpl(){
+        this.evidences = Collections.emptyList();
+    }
+
+    public CofactorImpl(String name,
+    		DBCrossReference<CofactorReferenceType> cofactorReference,
+    		List<Evidence> evidences) {
         this.name = name;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();

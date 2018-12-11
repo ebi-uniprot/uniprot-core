@@ -1,16 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class FlagImpl implements Flag {
-	private final FlagType type;
-	@JsonCreator
-	public FlagImpl(@JsonProperty("type") FlagType type) {
+	private FlagType type;
+
+	private FlagImpl(){
+
+	}
+
+	public FlagImpl(FlagType type) {
 		this.type = type;
 	}
 	@Override

@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)    
+
 public class PublicationDateImpl implements PublicationDate {
-	 private final String value;
-     @JsonCreator
-     public PublicationDateImpl(@JsonProperty("value")  String value){
+	private String value;
+
+    private PublicationDateImpl(){
+
+    }
+    public PublicationDateImpl(String value){
          this.value = value;
-     }
+    }
+
     @Override
     public String getValue() {
        return value;

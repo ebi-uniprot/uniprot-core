@@ -1,32 +1,26 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
-	public static RnaEdPosition createPosition(String position, List<Evidence> evidences) {
-		return new RnaEdPositionImpl(position, evidences);
+
+	private RnaEditingLocationType locationType;
+	private List<RnaEdPosition> positions;
+	private Note note;
+
+	private RnaEditingCommentImpl(){
+		super(CommentType.RNA_EDITING);
+		this.positions = Collections.emptyList();
 	}
 
-	private final RnaEditingLocationType locationType;
-	private final List<RnaEdPosition> positions;
-	private final Note note;
-
-	@JsonCreator
-	public RnaEditingCommentImpl(@JsonProperty("locationType") RnaEditingLocationType locationType,
-			@JsonProperty("positions") List<RnaEdPosition> positions, @JsonProperty("note") Note note) {
+	public RnaEditingCommentImpl(RnaEditingLocationType locationType,
+			List<RnaEdPosition> positions,Note note) {
 		super(CommentType.RNA_EDITING);
 		this.locationType = locationType;
 		if ((positions == null) || positions.isEmpty()) {
@@ -86,14 +80,20 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
 		return true;
 	}
 
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
-	public static class RnaEdPositionImpl implements RnaEdPosition {
-		private final String position;
-		private final List<Evidence> evidences;
+	public static RnaEdPosition createPosition(String position, List<Evidence> evidences) {
+		return new RnaEdPositionImpl(position, evidences);
+	}
 
-		@JsonCreator
-		public RnaEdPositionImpl(@JsonProperty("position") String position,
-				@JsonProperty("evidences") List<Evidence> evidences) {
+
+	public static class RnaEdPositionImpl implements RnaEdPosition {
+		private String position;
+		private List<Evidence> evidences;
+
+		private RnaEdPositionImpl(){
+			this.evidences = Collections.emptyList();
+		}
+
+		public RnaEdPositionImpl(String position, List<Evidence> evidences) {
 			this.position = position;
 			if ((evidences == null) || evidences.isEmpty()) {
 				this.evidences = Collections.emptyList();

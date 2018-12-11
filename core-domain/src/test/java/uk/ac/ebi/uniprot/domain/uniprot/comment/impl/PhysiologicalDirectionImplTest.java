@@ -1,12 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
@@ -14,6 +8,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 

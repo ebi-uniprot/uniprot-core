@@ -1,11 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.Month;
-
-import org.junit.jupiter.api.Test;
 
 class EvidenceLineImplTest {
 

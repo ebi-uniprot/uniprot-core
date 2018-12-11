@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class UniProtDBCrossReferenceImplTest {
 

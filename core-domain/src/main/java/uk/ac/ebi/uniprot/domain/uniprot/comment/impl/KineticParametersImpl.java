@@ -1,25 +1,26 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class KineticParametersImpl implements KineticParameters {
-    private final List<MaximumVelocity> maximumVelocities;
-    private final List<MichaelisConstant> michaelisConstants;
-    private final Note note;
-    @JsonCreator
-    public KineticParametersImpl(@JsonProperty("maximumVelocities")  List<MaximumVelocity> maximumVelocities,
-    		@JsonProperty("michaelisConstants") List<MichaelisConstant> michaelisConstants,
-    		@JsonProperty("note")  Note note){
+    private List<MaximumVelocity> maximumVelocities;
+    private List<MichaelisConstant> michaelisConstants;
+    private Note note;
+
+	private KineticParametersImpl(){
+		this.maximumVelocities = Collections.emptyList();
+		this.michaelisConstants = Collections.emptyList();
+	}
+    public KineticParametersImpl(List<MaximumVelocity> maximumVelocities,
+    		List<MichaelisConstant> michaelisConstants,
+    		Note note){
         if((maximumVelocities ==null) || maximumVelocities.isEmpty()){
             this.maximumVelocities = Collections.emptyList();
         }else{

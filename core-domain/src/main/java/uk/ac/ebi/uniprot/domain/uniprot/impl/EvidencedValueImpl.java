@@ -1,23 +1,22 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class EvidencedValueImpl implements EvidencedValue {
-	private final String value;
-	private final List<Evidence> evidences;
-	@JsonCreator
-	public EvidencedValueImpl(
-			@JsonProperty("value") String value, 
-			@JsonProperty("evidences") List<Evidence> evidences) {
+	private String value;
+	private List<Evidence> evidences;
+
+	private EvidencedValueImpl(){
+		this.evidences = Collections.emptyList();
+	}
+
+	public EvidencedValueImpl(String value, List<Evidence> evidences) {
 		this.value = Utils.resetNull(value);
 		this.evidences =Utils.unmodifierList(evidences);		
 	}

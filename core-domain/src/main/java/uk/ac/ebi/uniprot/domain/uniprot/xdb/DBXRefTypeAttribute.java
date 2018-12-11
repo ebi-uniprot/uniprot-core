@@ -1,23 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public final class DBXRefTypeAttribute {
-	private final  String name;
-	private final String xmlTag;
-	private final String uriLink;
+	private String name;
+	private String xmlTag;
+	private String uriLink;
 
-	@JsonCreator
-	public DBXRefTypeAttribute(
-			@JsonProperty("name")String name, 
-			@JsonProperty("xmlTag")String xmlTag, 
-			@JsonProperty("uriLink")String uriLink) {
+	private DBXRefTypeAttribute(){
+
+	}
+
+	public DBXRefTypeAttribute(String name, String xmlTag, String uriLink) {
 		this.name = name;
 		this.xmlTag = xmlTag;
 		this.uriLink= uriLink;

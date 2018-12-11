@@ -3,29 +3,22 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class UniProtXDbTypeDetail {
-	private final String name;
-	private final String displayName;
-	private final DatabaseCategory category;
-	private final String uriLink;
-	private  final List<DBXRefTypeAttribute> attributes;
+	private String name;
+	private String displayName;
+	private DatabaseCategory category;
+	private String uriLink;
+	private List<DBXRefTypeAttribute> attributes;
 	private static final DBXRefTypeAttribute DEFAULT_ATTRIBUTE = new DBXRefTypeAttribute("Description",
 			"description", null);
 
-	@JsonCreator
-	public UniProtXDbTypeDetail(
-			@JsonProperty("name")String name, 
-			@JsonProperty("displayName")String displayName, 
-			@JsonProperty("category")DatabaseCategory category, 
-			@JsonProperty("uriLink")String uriLink,
-			@JsonProperty("attributes")
-			List<DBXRefTypeAttribute> attributes) {
+	private UniProtXDbTypeDetail(){
+		this.attributes= new ArrayList<>();
+		this.attributes.add(DEFAULT_ATTRIBUTE);
+	}
+
+	public UniProtXDbTypeDetail(String name, String displayName, DatabaseCategory category,
+			String uriLink, List<DBXRefTypeAttribute> attributes) {
 		super();
 		this.name = name;
 		this.displayName = displayName;

@@ -1,19 +1,18 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonNode;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonNodeImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TaxonNodeImplTest {
 

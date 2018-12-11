@@ -1,27 +1,18 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonNode;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
+import uk.ac.ebi.uniprot.domain.taxonomy.*;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismNameImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonNameImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonNodeImpl;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class TaxonomyFactoryTest {
 

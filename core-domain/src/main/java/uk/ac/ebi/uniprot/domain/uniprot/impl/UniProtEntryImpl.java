@@ -1,32 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CommentsImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
@@ -34,34 +14,47 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 public class UniProtEntryImpl implements UniProtEntry {
-	private final UniProtEntryType entryType;
-	private final UniProtAccession primaryAccession;
-	private final List<UniProtAccession> secondaryAccessions;
-	private final UniProtId uniProtId;
-	private final EntryAudit entryAudit;
+	private UniProtEntryType entryType;
+	private UniProtAccession primaryAccession;
+	private List<UniProtAccession> secondaryAccessions;
+	private UniProtId uniProtId;
+	private EntryAudit entryAudit;
 
-	private final UniProtTaxonId taxonId;
-	private final OrganismName organism;
-	private final List<Organism> organismHosts;
-	private final List<OrganismName> taxonomyLineage;
-	private final ProteinExistence proteinExistence;
+	private UniProtTaxonId taxonId;
+	private OrganismName organism;
+	private List<Organism> organismHosts;
+	private List<OrganismName> taxonomyLineage;
+	private ProteinExistence proteinExistence;
 
-	private final ProteinDescription proteinDescription;
-	private final List<Gene> genes;
-	private final Comments comments;
-	private final List<Feature> features;
-	private final List<Organelle> organelles;
+	private ProteinDescription proteinDescription;
+	private List<Gene> genes;
+	private Comments comments;
+	private List<Feature> features;
+	private List<Organelle> organelles;
 
-	private final List<Keyword> keywords;
-	private final UniProtReferences references;
-	private final UniProtDBCrossReferences databaseCrossReferences;
-	private final Sequence sequence;
+	private List<Keyword> keywords;
+	private UniProtReferences references;
+	private UniProtDBCrossReferences databaseCrossReferences;
+	private Sequence sequence;
 
-	private final InternalSection internalSection;
-	private final EntryInactiveReason inactiveReason;
+	private InternalSection internalSection;
+	private EntryInactiveReason inactiveReason;
 
+	private UniProtEntryImpl(){
+		secondaryAccessions = Collections.emptyList();
+		organismHosts = Collections.emptyList();
+		taxonomyLineage = Collections.emptyList();
+		genes = Collections.emptyList();
+		features = Collections.emptyList();
+		organelles = Collections.emptyList();
+		keywords = Collections.emptyList();
+	}
 
 	public UniProtEntryImpl( UniProtAccession primaryAccession,
 			 UniProtId uniProtId,
@@ -99,23 +92,22 @@ public class UniProtEntryImpl implements UniProtEntry {
 
 	}
 
-	@JsonCreator
-	public UniProtEntryImpl(@JsonProperty("entryType") UniProtEntryType entryType,
-			@JsonProperty("primaryAccession") UniProtAccession primaryAccession,
-			@JsonProperty("secondaryAccessions") List<UniProtAccession> secondaryAccessions,
-			@JsonProperty("uniProtId") UniProtId uniProtId, @JsonProperty("entryAudit") EntryAudit entryAudit,
-			@JsonProperty("taxonId") UniProtTaxonId taxonId, @JsonProperty("organism") OrganismName organism,
-			@JsonProperty("organismHosts") List<Organism> organismHosts,
-			@JsonProperty("taxonomyLineage") List<OrganismName> taxonomyLineage,
-			@JsonProperty("proteinExistence") ProteinExistence proteinExistence,
-			@JsonProperty("proteinDescription") ProteinDescription proteinDescription,
-			@JsonProperty("genes") List<Gene> genes, @JsonProperty("comments") Comments comments,
-			@JsonProperty("features") List<Feature> features, @JsonProperty("organelles") List<Organelle> organelles,
-			@JsonProperty("keywords") List<Keyword> keywords, @JsonProperty("references") UniProtReferences references,
-			@JsonProperty("databaseCrossReferences") UniProtDBCrossReferences databaseCrossReferences,
-			@JsonProperty("sequence") Sequence sequence, 
-			@JsonProperty("internalSection") InternalSection internalSection,
-			@JsonProperty("inactiveReason") EntryInactiveReason inactiveReason) {
+	public UniProtEntryImpl(UniProtEntryType entryType,
+			UniProtAccession primaryAccession,
+			List<UniProtAccession> secondaryAccessions,
+			UniProtId uniProtId, EntryAudit entryAudit,
+			UniProtTaxonId taxonId, OrganismName organism,
+			List<Organism> organismHosts,
+			List<OrganismName> taxonomyLineage,
+			ProteinExistence proteinExistence,
+			ProteinDescription proteinDescription,
+			List<Gene> genes, Comments comments,
+			List<Feature> features, List<Organelle> organelles,
+			List<Keyword> keywords, UniProtReferences references,
+			UniProtDBCrossReferences databaseCrossReferences,
+			Sequence sequence,
+			InternalSection internalSection,
+			EntryInactiveReason inactiveReason) {
 		this.entryType = entryType;
 		this.primaryAccession = primaryAccession;
 		this.secondaryAccessions = Utils.unmodifierList(secondaryAccessions);
@@ -221,7 +213,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 		return features;
 	}
 
-	@JsonIgnore
+
 	public List<Feature> getFeaturesByType(FeatureType type) {
 		return features.stream().filter(feature -> feature.getType() == type).collect(Collectors.toList());
 	}
@@ -257,7 +249,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 		return internalSection;
 	}
 
-	@JsonIgnore
+
 	@Override
 	public Boolean isFragment() {
 		return !getFeaturesByType(FeatureType.NON_TER).isEmpty();
@@ -267,7 +259,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 	public EntryInactiveReason getInactiveReason() {
 		return inactiveReason;
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean isActive() {
 		return inactiveReason ==null;

@@ -1,26 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformId;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class APIsoformImplTest {
 

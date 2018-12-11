@@ -1,19 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.Sequence;
@@ -22,56 +9,30 @@ import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
+import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
-import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class UniProtEntryBuilderTest {
 

@@ -1,23 +1,24 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
+
 public class CatalyticActivityCommentImpl extends CommentImpl implements CatalyticActivityComment {
-	private final Reaction reaction;
-	private final List<PhysiologicalReaction>  physiologicalReactions;
-	@JsonCreator
-	public CatalyticActivityCommentImpl(@JsonProperty("reaction") Reaction reaction,
-			@JsonProperty("physiologicalReactions") List<PhysiologicalReaction>  physiologicalReactions) {
+	private Reaction reaction;
+	private List<PhysiologicalReaction>  physiologicalReactions;
+
+	private CatalyticActivityCommentImpl(){
+		super(CommentType.CATALYTIC_ACTIVITY);
+		this.physiologicalReactions = Collections.emptyList();
+	}
+
+	public CatalyticActivityCommentImpl(Reaction reaction,
+			List<PhysiologicalReaction>  physiologicalReactions) {
 		super(CommentType.CATALYTIC_ACTIVITY);
 		this.reaction = reaction;
 		if ((physiologicalReactions == null) || physiologicalReactions.isEmpty()) {

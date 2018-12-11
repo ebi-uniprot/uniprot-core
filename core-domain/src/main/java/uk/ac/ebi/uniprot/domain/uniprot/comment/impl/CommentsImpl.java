@@ -1,29 +1,29 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class CommentsImpl implements Comments {
-    private final List<Comment> comments;
-	@JsonCreator
-    public CommentsImpl(@JsonProperty("comments")  List<Comment> comments){
+    private List<Comment> comments;
+
+    private CommentsImpl(){
+        this.comments = Collections.emptyList();
+    }
+
+    public CommentsImpl(List<Comment> comments){
 		this.comments = Utils.unmodifierList(comments);
     }
     @Override
     public List<Comment> getComments() {
         return comments;
     }
-	@JsonIgnore
+
     @SuppressWarnings("unchecked")
 	@Override
     public <T extends Comment> List<T> getCommentByType(CommentType type) {

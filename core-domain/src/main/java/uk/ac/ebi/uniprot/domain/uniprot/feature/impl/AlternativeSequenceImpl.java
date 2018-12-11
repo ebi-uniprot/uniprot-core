@@ -1,31 +1,30 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import java.util.Collections;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
+
+
 public class AlternativeSequenceImpl implements AlternativeSequence {
-	private final String originalSequence;
-	private final List<String> alternativeSequences;
-	private final SequenceReport report;
+	private String originalSequence;
+	private List<String> alternativeSequences;
+	private SequenceReport report;
 	private static final Set<FeatureType> ALTERNATIVE_SEQUENCE_SET = EnumSet.of(FeatureType.CONFLICT,
 			FeatureType.MUTAGEN, FeatureType.VARIANT, FeatureType.VAR_SEQ);
 
-	@JsonCreator
-	public AlternativeSequenceImpl(@JsonProperty("originalSequence") String originalSequence,
-			@JsonProperty("alternativeSequences") List<String> alternativeSequences,
-			@JsonProperty("report") SequenceReport report) {
+	private AlternativeSequenceImpl(){
+		this.alternativeSequences = Collections.emptyList();
+	}
+
+	public AlternativeSequenceImpl(String originalSequence,
+			List<String> alternativeSequences,
+			SequenceReport report) {
 		this.originalSequence = originalSequence;
 		this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
 	
@@ -92,12 +91,14 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 
 
 
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
-	public static class SequenceReportImpl implements SequenceReport {
-		private final List<String> value;
 
-		@JsonCreator
-		public SequenceReportImpl(@JsonProperty("value") List<String> value) {
+	public static class SequenceReportImpl implements SequenceReport {
+		private List<String> value;
+
+		private SequenceReportImpl(){
+			this.value = Collections.emptyList();
+		}
+		public SequenceReportImpl(List<String> value) {
 			if (value == null || value.isEmpty()) {
 				this.value = Collections.emptyList();
 			} else {

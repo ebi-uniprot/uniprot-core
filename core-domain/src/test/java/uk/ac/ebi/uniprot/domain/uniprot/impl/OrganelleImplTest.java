@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
@@ -8,9 +9,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class OrganelleImplTest {
 

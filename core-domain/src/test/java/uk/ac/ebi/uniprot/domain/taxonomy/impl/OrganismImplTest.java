@@ -1,12 +1,11 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrganismImplTest {
 

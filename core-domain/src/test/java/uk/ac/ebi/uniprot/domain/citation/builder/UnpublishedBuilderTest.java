@@ -1,10 +1,9 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.Unpublished;
-
-import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

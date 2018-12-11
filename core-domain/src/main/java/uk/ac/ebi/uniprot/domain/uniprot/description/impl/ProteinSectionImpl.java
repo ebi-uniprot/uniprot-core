@@ -1,22 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ProteinSectionImpl implements ProteinSection {
-	private final ProteinName recommendedName;
-	private final List<ProteinName> alternativeNames;
-	@JsonCreator
-	public ProteinSectionImpl(
-			@JsonProperty("recommendedName") ProteinName recommendedName,
-			@JsonProperty("alternativeNames") List<ProteinName> alternativeNames) {
+	private ProteinName recommendedName;
+	private List<ProteinName> alternativeNames;
+
+	private ProteinSectionImpl(){
+		this.alternativeNames = Collections.emptyList();
+	}
+
+	public ProteinSectionImpl(ProteinName recommendedName,List<ProteinName> alternativeNames) {
 		
 		this.recommendedName = recommendedName;
 		if((alternativeNames ==null)|| alternativeNames.isEmpty()) {

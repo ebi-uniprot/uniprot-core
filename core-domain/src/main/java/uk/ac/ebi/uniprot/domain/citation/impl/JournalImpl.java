@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.citation.Journal;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class JournalImpl implements Journal {
-	private final String name;
-	@JsonCreator
-	public JournalImpl(@JsonProperty("name") String name) {
+	private String name;
+
+	private JournalImpl(){
+
+	}
+
+	public JournalImpl(String name) {
 		this.name = name;
 	}
 	@Override

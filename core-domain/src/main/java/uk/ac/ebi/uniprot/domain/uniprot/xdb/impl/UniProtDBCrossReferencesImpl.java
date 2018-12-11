@@ -1,24 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class UniProtDBCrossReferencesImpl implements UniProtDBCrossReferences {
-    private final List<UniProtDBCrossReference> crossReferences;
-  
-	@JsonCreator
-    public UniProtDBCrossReferencesImpl(
-    		@JsonProperty("crossReferences") List<UniProtDBCrossReferenceImpl> xrefs) {
+    private List<UniProtDBCrossReference> crossReferences;
+
+    private UniProtDBCrossReferencesImpl(){
+        this.crossReferences = Collections.emptyList();
+    }
+
+    public UniProtDBCrossReferencesImpl(List<UniProtDBCrossReferenceImpl> xrefs) {
         if ((xrefs == null) || xrefs.isEmpty()) {
             this.crossReferences = Collections.emptyList();
         } else {
@@ -30,12 +27,12 @@ public class UniProtDBCrossReferencesImpl implements UniProtDBCrossReferences {
     public List<UniProtDBCrossReference> getCrossReferences() {
         return this.crossReferences;
     }
-	@JsonIgnore
+
     @Override
     public List<UniProtDBCrossReference> getCrossReferencesByType(UniProtXDbType type) {
     	return getCrossReferencesByType(type.getName());
     }
-	@JsonIgnore
+
     @Override
 	public List<UniProtDBCrossReference> getCrossReferencesByType(String dbName) {
     	 return this.crossReferences.stream().filter(val -> dbName.equals(val.getDatabaseType().getName())).collect(Collectors.toList());

@@ -1,21 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.citation.Author;
+import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
+import uk.ac.ebi.uniprot.domain.citation.builder.*;
 
 import java.util.Arrays;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class CitationFactoryTest {
 

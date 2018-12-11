@@ -1,13 +1,8 @@
 package uk.ac.ebi.uniprot.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public final class Range {
-	private final Position start;
-	private final Position end;
+	private Position start;
+	private Position end;
 	public static Range create(Integer start, Integer end) {
 		return new Range(start, end);
 	}
@@ -20,9 +15,12 @@ public final class Range {
 		
 		this(new Position(start, sModifier), new Position(end, eModifier));
 	}
-	@JsonCreator
-	public Range(@JsonProperty("start")  Position start, 
-			@JsonProperty("end")  Position end) {
+
+	private Range(){
+
+	}
+
+	public Range(Position start, Position end) {
 		this.start = start;
 		this.end =end;
 	}

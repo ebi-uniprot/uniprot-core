@@ -1,35 +1,33 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 public class DiseaseImpl implements Disease {
 
 	public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {
 		return new DiseaseDescriptionImpl(val, evidences);
 	}
 
-	private final String diseaseId;
-	private final String acronym;
-	private final DiseaseDescription description;
-	private final DBCrossReference<DiseaseReferenceType> reference;
-	@JsonCreator
-	public DiseaseImpl(@JsonProperty("diseaseId") String diseaseId, 
-			@JsonProperty("acronym")String acronym,
-			@JsonProperty("description")DiseaseDescription description,
-			@JsonProperty("reference") DBCrossReference<DiseaseReferenceType> reference) {
+	private String diseaseId;
+	private String acronym;
+	private DiseaseDescription description;
+	private DBCrossReference<DiseaseReferenceType> reference;
+
+	private DiseaseImpl(){
+
+	}
+
+	public DiseaseImpl(String diseaseId, String acronym, DiseaseDescription description,
+			DBCrossReference<DiseaseReferenceType> reference) {
 		this.diseaseId = diseaseId;
 		this.acronym = acronym;
 		this.description = description;
@@ -55,7 +53,7 @@ public class DiseaseImpl implements Disease {
 	public DBCrossReference<DiseaseReferenceType> getReference() {
 		return reference;
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean hasDefinedDisease() {
 		return (!Strings.isNullOrEmpty(diseaseId) && (getAcronym() != null && !getAcronym().isEmpty())
@@ -118,11 +116,13 @@ public class DiseaseImpl implements Disease {
 	}
 
 
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
 	public static class DiseaseDescriptionImpl extends EvidencedValueImpl implements DiseaseDescription {
-		@JsonCreator
-		public DiseaseDescriptionImpl(@JsonProperty("value") String value,
-				@JsonProperty("evidences") List<Evidence> evidences) {
+
+		private DiseaseDescriptionImpl(){
+			super(null, Collections.emptyList());
+		}
+
+		public DiseaseDescriptionImpl(String value,List<Evidence> evidences) {
 			super(value, evidences);
 
 		}

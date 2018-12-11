@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
 public enum CofactorReferenceType implements DatabaseType{

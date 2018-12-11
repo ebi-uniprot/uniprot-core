@@ -4,18 +4,19 @@ import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class ReferenceCommentImpl extends EvidencedValueImpl implements ReferenceComment {
-    private final ReferenceCommentType type;
-    @JsonCreator
-    public ReferenceCommentImpl(@JsonProperty("type") ReferenceCommentType type, 
-    		@JsonProperty("value") String value, 
-    		@JsonProperty("evidences") List<Evidence> evidences) {
+    private ReferenceCommentType type;
+
+    private ReferenceCommentImpl(){
+        super("", Collections.emptyList());
+    }
+
+    public ReferenceCommentImpl(ReferenceCommentType type,
+    		String value,
+    		List<Evidence> evidences) {
         super(value, evidences);
         this.type = type;
     }

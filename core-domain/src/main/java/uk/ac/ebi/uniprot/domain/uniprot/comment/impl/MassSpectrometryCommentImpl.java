@@ -1,33 +1,32 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
-    private final MassSpectrometryMethod method;
-    private final Double molWeight;
-    private final Double molWeightError;
-    private final String note;
-    private final List<MassSpectrometryRange> ranges;
-    private final List<Evidence> evidences;
-	 @JsonCreator
-    public MassSpectrometryCommentImpl(
-    		@JsonProperty("method") MassSpectrometryMethod method,
-    		@JsonProperty("molWeight") Double molWeight, 
-    		@JsonProperty("molWeightError") Double molWeightError, 
-    		@JsonProperty("note") String note,
-    		@JsonProperty("ranges") List<MassSpectrometryRange> ranges,
-    		@JsonProperty("evidences") List<Evidence> evidences) {
+    private MassSpectrometryMethod method;
+    private Double molWeight;
+    private Double molWeightError;
+    private String note;
+    private List<MassSpectrometryRange> ranges;
+    private List<Evidence> evidences;
+
+    private MassSpectrometryCommentImpl(){
+        super(CommentType.MASS_SPECTROMETRY);
+        this.ranges = Collections.emptyList();
+        this.evidences = Collections.emptyList();
+    }
+
+    public MassSpectrometryCommentImpl(MassSpectrometryMethod method, Double molWeight,
+    		Double molWeightError, String note, List<MassSpectrometryRange> ranges,
+    		List<Evidence> evidences) {
         super(CommentType.MASS_SPECTROMETRY);
         this.method = method;
         this.molWeight = molWeight;

@@ -1,27 +1,22 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.util.Utils;
+
+import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.Patent;
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
-import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class PatentImpl extends AbstractCitationImpl implements Patent {
     private final String patentNumber;
-	@JsonCreator
-    public PatentImpl(
-    		@JsonProperty("authoringGroup") List<String> authoringGroup,
-			@JsonProperty("authors") List<Author> authors, @JsonProperty("citationXrefs") CitationXrefs citationXrefs,
-			@JsonProperty("title") String title, @JsonProperty("publicationDate") PublicationDate publicationDate,
-			@JsonProperty("patentNumber") 
-    		String patentNumber) {
+
+	private PatentImpl() {
+		super(CitationType.PATENT, Collections.emptyList(), Collections.emptyList(),
+				null, null, null);
+		this.patentNumber = "";
+	}
+
+    public PatentImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+			String title, PublicationDate publicationDate, String patentNumber) {
         super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
         this.patentNumber = Utils.resetNull( patentNumber);
     }

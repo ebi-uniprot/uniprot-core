@@ -1,27 +1,28 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
 public class InternalSectionImpl implements InternalSection {
 
    
-    private final List<InternalLine> internalLines;
-    private final List<EvidenceLine> evidenceLines;
-    private final List<SourceLine> sourceLines;
-    @JsonCreator
-    public InternalSectionImpl(@JsonProperty("internalLines")  List<InternalLine> internalLines, 
-    		@JsonProperty("evidenceLines")  List<EvidenceLine> evidenceLines,
-    		@JsonProperty("sourceLines")  List<SourceLine> sourceLines){
+    private List<InternalLine> internalLines;
+    private List<EvidenceLine> evidenceLines;
+    private List<SourceLine> sourceLines;
+
+	private InternalSectionImpl(){
+		this.internalLines = Collections.emptyList();
+		this.evidenceLines = Collections.emptyList();
+		this.sourceLines = Collections.emptyList();
+	}
+
+    public InternalSectionImpl( List<InternalLine> internalLines, List<EvidenceLine> evidenceLines,
+    		List<SourceLine> sourceLines){
     	this.internalLines =Utils.unmodifierList(internalLines);
     	this.evidenceLines =Utils.unmodifierList(evidenceLines);
     	this.sourceLines =Utils.unmodifierList(sourceLines);

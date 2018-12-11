@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.util.json;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kjetland.jackson.jsonSchema.JsonSchemaGenerator;
+
+import java.io.IOException;
 
 public class JsonUtils {
 	public static String getJsonString(Object obj, boolean isPretty) {

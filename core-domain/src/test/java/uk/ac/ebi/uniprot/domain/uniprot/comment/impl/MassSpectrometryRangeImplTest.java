@@ -1,13 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MassSpectrometryRangeImplTest {
 

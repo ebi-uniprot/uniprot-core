@@ -1,16 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypeDetail;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypes;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class UniProtXDbDisplayOrderTest {
 

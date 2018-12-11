@@ -1,13 +1,9 @@
 package uk.ac.ebi.uniprot.domain.util;
 
 
-
-
 import org.junit.Test;
 
-import uk.ac.ebi.uniprot.domain.util.MessageDigestUtil;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MessageDigestUtilTest {
 

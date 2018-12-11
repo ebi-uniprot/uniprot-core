@@ -1,22 +1,24 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
+import com.google.common.base.Strings;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
+import uk.ac.ebi.uniprot.domain.util.Utils;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.Strings;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
-import uk.ac.ebi.uniprot.domain.util.Utils;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class TaxonNameImpl implements TaxonName {
-	private final String scientificName;
-	private final String commonName;
-	private final List<String> synonyms;
+	private String scientificName;
+	private String commonName;
+	private List<String> synonyms;
 
+	private TaxonNameImpl() {
+		this.scientificName = "";
+		this.commonName =  "";
+		this.synonyms =Collections.emptyList();
+	}
 
 	public TaxonNameImpl(String scientificName) {
 		this(scientificName, null);
@@ -27,10 +29,7 @@ public class TaxonNameImpl implements TaxonName {
 		this(scientificName, commonName, Collections.emptyList());
 	}
 
-	@JsonCreator
-	public TaxonNameImpl(@JsonProperty("scientificName") String scientificName,
-			@JsonProperty("commonName") String commonName, 
-			@JsonProperty("synonyms") List<String> synonyms) {
+	public TaxonNameImpl(String scientificName, String commonName, List<String> synonyms) {
 		this.scientificName = Utils.resetNull(scientificName);
 		this.commonName =  Utils.resetNull(commonName);
 		this.synonyms =Utils.unmodifierList(synonyms);

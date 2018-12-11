@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import java.util.Arrays;
-import java.util.List;
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.*;
 

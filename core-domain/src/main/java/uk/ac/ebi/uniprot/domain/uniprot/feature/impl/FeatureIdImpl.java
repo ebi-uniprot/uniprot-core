@@ -1,17 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+
 import java.util.EnumMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class FeatureIdImpl implements FeatureId {
 	
 	private static final Map<FeatureType, Pattern> FEATUREID_REGEX_MAP = new EnumMap<>(FeatureType.class);
@@ -23,9 +18,12 @@ public class FeatureIdImpl implements FeatureId {
 		FEATUREID_REGEX_MAP.put(FeatureType.VAR_SEQ, Pattern.compile("VSP_(\\d+)"));
 		FEATUREID_REGEX_MAP.put(FeatureType.VARIANT, Pattern.compile("VAR_(\\d+)"));
 	};
-	private final String value;
-	@JsonCreator
-	public FeatureIdImpl(@JsonProperty("value") String value) {
+	private String value;
+
+	private FeatureIdImpl(){
+		this.value = "";
+	}
+	public FeatureIdImpl(String value) {
 		this.value = value;
 	}
 	
@@ -37,7 +35,7 @@ public class FeatureIdImpl implements FeatureId {
 	public static boolean hasFeatureId(FeatureType type) {
 		return FEATUREID_REGEX_MAP.containsKey(type);
 	}
-	@JsonIgnore
+
 	@Override
 	public boolean isValid(FeatureType type) {
 		Pattern pattern = FEATUREID_REGEX_MAP.get(type);

@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.domain;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 /**
  * Encapsulates a protein sequence, in particular the sequence annotation in the
  * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} and
@@ -31,10 +25,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  * ...
  * </font></pre>
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
-@JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.impl.SequenceImpl.class, name = "Sequence")
-})
 public interface Sequence {
 
 	/**

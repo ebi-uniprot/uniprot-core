@@ -1,42 +1,23 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CommentsImplTest {
 

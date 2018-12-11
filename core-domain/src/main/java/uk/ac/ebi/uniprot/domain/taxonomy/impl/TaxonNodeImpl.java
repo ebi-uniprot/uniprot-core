@@ -1,32 +1,30 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonNode;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonNode;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class TaxonNodeImpl implements TaxonNode {
-    private final TaxonNode parent;
-    private final Taxon taxon;
-    private final TaxonomyRank rank;
-    @JsonCreator
-    public TaxonNodeImpl(@JsonProperty("parent") TaxonNode parent,
-    		@JsonProperty("taxon")Taxon taxon, 
-    		@JsonProperty("rank") TaxonomyRank rank) {
+    private TaxonNode parent;
+    private Taxon taxon;
+    private TaxonomyRank rank;
+
+    private TaxonNodeImpl(){
+
+	}
+
+    public TaxonNodeImpl(TaxonNode parent,
+    		Taxon taxon,
+    		TaxonomyRank rank) {
         this.parent =parent;
         this.taxon = taxon;
         this.rank = rank;
-
     }
-    @JsonIgnore
+	
     @Override
     public List<Taxon> getTaxonLineage() {
         List<Taxon> names = new ArrayList<>();

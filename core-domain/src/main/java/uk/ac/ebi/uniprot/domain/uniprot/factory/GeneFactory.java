@@ -1,18 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
+import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.GeneNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.GeneNameSynonymImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.ORFNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.OrderedLocusNameImpl;
+
+import java.util.List;
 
 public enum GeneFactory {
     INSTANCE;

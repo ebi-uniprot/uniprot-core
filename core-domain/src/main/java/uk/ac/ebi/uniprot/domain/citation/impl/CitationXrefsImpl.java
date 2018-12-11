@@ -3,21 +3,20 @@ package uk.ac.ebi.uniprot.domain.citation.impl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CitationXrefsImpl implements CitationXrefs {
-	private final List<DBCrossReference<CitationXrefType>> xrefs;
+	private List<DBCrossReference<CitationXrefType>> xrefs;
 
-	@JsonCreator
-	public CitationXrefsImpl(@JsonProperty("xrefs") List<DBCrossReference<CitationXrefType>> xrefs) {
+	private CitationXrefsImpl(){
+		this.xrefs = Collections.emptyList();
+	}
+
+	public CitationXrefsImpl(List<DBCrossReference<CitationXrefType>> xrefs) {
 		if ((xrefs == null) || xrefs.isEmpty()) {
 			this.xrefs = Collections.emptyList();
 		} else
@@ -29,7 +28,7 @@ public class CitationXrefsImpl implements CitationXrefs {
 		return xrefs;
 	}
 
-	@JsonIgnore
+
 	@Override
 	public Optional<DBCrossReference<CitationXrefType>> getTyped(CitationXrefType type) {
 		return xrefs.stream().filter(xref -> xref.getDatabaseType() == type).findAny();
