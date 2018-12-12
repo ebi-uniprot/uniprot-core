@@ -6,7 +6,6 @@ import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class JournalArticleImpl extends AbstractCitationImpl implements JournalArticle {
     
     private Journal journal;

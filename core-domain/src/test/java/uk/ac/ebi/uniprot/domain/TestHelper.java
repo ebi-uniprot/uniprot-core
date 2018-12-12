@@ -2,20 +2,17 @@ package uk.ac.ebi.uniprot.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.jsontype.impl.AsExistingPropertyTypeSerializer;
-import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
-import com.fasterxml.jackson.databind.jsontype.impl.TypeNameIdResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.citation.impl.*;
 import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.impl.DefaultDatabaseType;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.*;
@@ -25,6 +22,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl;
@@ -33,6 +31,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
 import uk.ac.ebi.uniprot.domain.util.json.LocalDateDeserializer;
@@ -182,7 +181,27 @@ public class TestHelper {
 		mod.registerSubtypes(new NamedType(SubcellularLocationCommentImpl.class, "SubcellularLocation"));
 		mod.registerSubtypes(new NamedType(WebResourceCommentImpl.class, "WebResource"));
 
+        mod.registerSubtypes(new NamedType(DefaultDatabaseType.class, "DefaultDatabase"));
+        mod.registerSubtypes(new NamedType(EvidenceType.class, "Evidence"));
+        mod.registerSubtypes(new NamedType(UniProtXDbType.class, "UniProtXDb"));
+        mod.registerSubtypes(new NamedType(FeatureXDbType.class, "FeatureXDb"));
+        mod.registerSubtypes(new NamedType(CofactorReferenceType.class, "CofactorReference"));
+        mod.registerSubtypes(new NamedType(ReactionReferenceType.class, "ReactionReference"));
+
+        mod.registerSubtypes(new NamedType(BookImpl.class, "Book"));
+        mod.registerSubtypes(new NamedType(ElectronicArticleImpl.class, "ElectronicArticle"));
+        mod.registerSubtypes(new NamedType(JournalArticleImpl.class,"JournalArticle"));
+        mod.registerSubtypes(new NamedType(PatentImpl.class, "Patent"));
+        mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
+        mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
+        mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
 /*
+
+
+@JsonSubTypes({
+
+})
+
 
 ./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.BookImpl.class, name = "BookImpl"),
 ./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl.class, name = "ElectronicArticleImpl"),
