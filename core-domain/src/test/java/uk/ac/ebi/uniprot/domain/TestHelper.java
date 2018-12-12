@@ -2,9 +2,15 @@ package uk.ac.ebi.uniprot.domain;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.jsontype.impl.AsExistingPropertyTypeSerializer;
+import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
+import com.fasterxml.jackson.databind.jsontype.impl.TypeNameIdResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.citation.impl.*;
@@ -46,10 +52,18 @@ public class TestHelper {
 		objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
 		objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 
+		//TypeNameIdResolver idResolver = TypeNameIdResolver();
+		//StdTypeResolverBuilder typeResolver = new StdTypeResolverBuilder();////setDefaultTyping
+
+
+		//typeResolver.init(JsonTypeInfo.Id.NAME, null);
+		//typeResolver.inclusion(JsonTypeInfo.As.PROPERTY);
+		//typeResolver.typeProperty("type");
+		//objectMapper.setDefaultTyping(typeResolver);
+
 		SimpleModule mod = new SimpleModule();
 		mod.addSerializer(LocalDate.class, new LocalDateSerializer());
 		mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
-
 
 		mod.addAbstractTypeMapping(UniProtEntry.class, UniProtEntryImpl.class);
 
@@ -80,7 +94,6 @@ public class TestHelper {
 		mod.addAbstractTypeMapping(OrderedLocusName.class, GeneImpl.OrderedLocusNameImpl.class);
 		mod.addAbstractTypeMapping(ORFName.class, GeneImpl.ORFNameImpl.class);
 		mod.addAbstractTypeMapping(EvidencedValue.class, EvidencedValueImpl.class);
-
 
 		mod.addAbstractTypeMapping(Comments.class, CommentsImpl.class);
 		mod.addAbstractTypeMapping(AlternativeProductsComment.class, AlternativeProductsCommentImpl.class);
@@ -119,12 +132,10 @@ public class TestHelper {
 		mod.addAbstractTypeMapping(PhDependence.class, BPCPCommentImpl.PhDependenceImpl.class);
 		mod.addAbstractTypeMapping(SubcellularLocationComment.class, SubcellularLocationCommentImpl.class);
 
-
 		mod.addAbstractTypeMapping(ReferenceComment.class,ReferenceCommentImpl.class);
 		mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
 		mod.addAbstractTypeMapping(Locator.class, ElectronicArticleImpl.LocatorImpl.class);
 		mod.addAbstractTypeMapping(ElectronicArticle.class,ElectronicArticleImpl.class);
-
 
 		mod.addAbstractTypeMapping(CitationXrefs.class, CitationXrefsImpl.class);
 		mod.addAbstractTypeMapping(Submission.class, SubmissionImpl.class);
@@ -157,6 +168,20 @@ public class TestHelper {
 		mod.addAbstractTypeMapping(FeatureId.class, FeatureIdImpl.class);
 		mod.addAbstractTypeMapping(FeatureDescription.class, FeatureDescriptionImpl.class);
 		mod.addAbstractTypeMapping(Feature.class, FeatureImpl.class);
+
+		mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
+		mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
+		mod.registerSubtypes(new NamedType(CatalyticActivityCommentImpl.class, "CatalyticActivity"));
+		mod.registerSubtypes(new NamedType(CofactorCommentImpl.class, "Cofactor"));
+		mod.registerSubtypes(new NamedType(DiseaseCommentImpl.class, "Disease"));
+		mod.registerSubtypes(new NamedType(FreeTextCommentImpl.class, "FreeText"));
+		mod.registerSubtypes(new NamedType(InteractionCommentImpl.class, "Interaction"));
+		mod.registerSubtypes(new NamedType(MassSpectrometryCommentImpl.class, "MassSpectrometry"));
+		mod.registerSubtypes(new NamedType(RnaEditingCommentImpl.class, "RnaEditing"));
+		mod.registerSubtypes(new NamedType(SequenceCautionCommentImpl.class, "SequenceCaution"));
+		mod.registerSubtypes(new NamedType(SubcellularLocationCommentImpl.class, "SubcellularLocation"));
+		mod.registerSubtypes(new NamedType(WebResourceCommentImpl.class, "WebResource"));
+
 /*
 
 ./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.BookImpl.class, name = "BookImpl"),
@@ -194,7 +219,7 @@ public class TestHelper {
 ./uniprot/feature/FeatureDescription.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl.class, name = "FeatureDescriptionImpl")
 ./uniprot/feature/Feature.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl.class, name = "FeatureImpl")
 
-*/
+		*/
 		
 		
 		
@@ -210,4 +235,48 @@ public class TestHelper {
 	    		fail(e.getMessage());
 	    	}
 	}
+
+/*	public class CustomTypeResolverBuilder extends ObjectMapper.DefaultTypeResolverBuilder {
+
+		public CustomTypeResolverBuilder(){
+			super(ObjectMapper.DefaultTyping.OBJECT_AND_NON_CONCRETE);
+		}
+
+		@Override
+		public boolean useForType(JavaType t)
+		{
+
+			if (t.isTypeOrSubTypeOf(Comment.class)) {
+
+				while(t.isReferenceType()) {
+					t = t.getReferencedType();
+				}
+				return true;
+			}
+
+			return false;
+		}
+	}
+
+	public class CustomTypeNameIdResolver extends TypeNameIdResolver {
+
+		public CustomTypeNameIdResolver(){
+
+		}
+
+		@Override
+		public boolean useForType(JavaType t)
+		{
+
+			if (t.isTypeOrSubTypeOf(Comment.class)) {
+
+				while(t.isReferenceType()) {
+					t = t.getReferencedType();
+				}
+				return true;
+			}
+
+			return false;
+		}
+	}*/
 }
