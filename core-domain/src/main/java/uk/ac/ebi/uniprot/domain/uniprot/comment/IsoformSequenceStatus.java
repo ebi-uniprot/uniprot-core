@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * User: mkleen@ebi.ac.uk
  * Date: 28-Nov-2005
  * Time: 11:24:21
  */
-public enum IsoformSequenceStatus {
+public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> {
 
 	DISPLAYED ("displayed"),
 	EXTERNAL ("external"),
@@ -20,7 +20,6 @@ public enum IsoformSequenceStatus {
 		this.value = type;
 	}
 
-	@JsonValue
 	public String getValue() {
 		return this.value;
 	}
@@ -33,4 +32,8 @@ public enum IsoformSequenceStatus {
 		}
 		throw new IllegalArgumentException("the IsoformSequenceStatus with the description " + value + " doesn't exist");
 	}
-}
+
+	@Override
+	public String toDisplayName() {
+		return value;
+	}}

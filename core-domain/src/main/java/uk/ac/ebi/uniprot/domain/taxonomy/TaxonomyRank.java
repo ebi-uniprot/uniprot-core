@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.taxonomy;
 
-public enum TaxonomyRank {
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
+public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
     FORMA("forma"),
     VARIETAS("varietas"),
     SUBSPECIES("subspecies"),
@@ -38,6 +40,11 @@ public enum TaxonomyRank {
         this.name = name;
     }
     public String getName(){
+        return name;
+    }
+
+    @Override
+    public String toDisplayName() {
         return name;
     }
 }

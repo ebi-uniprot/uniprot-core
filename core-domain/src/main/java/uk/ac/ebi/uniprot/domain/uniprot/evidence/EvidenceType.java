@@ -5,6 +5,9 @@ import uk.ac.ebi.uniprot.domain.DatabaseType;
 public final class EvidenceType implements DatabaseType {
 	private String name;
 
+	private EvidenceType(){
+	}
+
 	public EvidenceType(String name) {
 		this.name = name;
 	}

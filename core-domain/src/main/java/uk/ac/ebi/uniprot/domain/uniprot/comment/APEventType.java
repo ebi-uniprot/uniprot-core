@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
-public enum APEventType {
+public enum APEventType implements EnumDisplay<APEventType> {
 	ALTERNATIVE_PROMOTER_USAGE("Alternative promoter usage"),
 	ALTERNATIVE_SPLICING("Alternative splicing"),
 	ALTERNATIVE_INITIATION("Alternative initiation"),
@@ -12,7 +12,7 @@ public enum APEventType {
 	APEventType(String name){
 		this.name= name;
 	}
-	 @JsonValue
+
 	public String getName() {
 		return name;
 	}
@@ -25,4 +25,9 @@ public enum APEventType {
 
 	        throw new IllegalArgumentException("The AP event type: " + value + " doesn't exist");
 	    }
+
+	@Override
+	public String toDisplayName() {
+		return name;
+	}
 }

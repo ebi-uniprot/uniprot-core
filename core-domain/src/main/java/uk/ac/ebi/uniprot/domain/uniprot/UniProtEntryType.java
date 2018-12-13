@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * 
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * @time   18:41:43
  *
  */
-public enum UniProtEntryType {
+public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
 
     SWISSPROT("Swiss-Prot"),
     TREMBL("TrEMBL"),
@@ -20,7 +20,7 @@ public enum UniProtEntryType {
     UniProtEntryType(String type) {
         this.value = type;
     }
-	 @JsonValue
+
     public String getValue() {
         return value.toString();
     }
@@ -33,4 +33,8 @@ public enum UniProtEntryType {
         }
         throw new IllegalArgumentException("the entry type " + value + " doesn't exist");
     }
-}
+
+    @Override
+    public String toDisplayName() {
+        return value;
+    }}

@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
-public enum CofactorReferenceType implements DatabaseType{
+public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorReferenceType> {
 	CHEBI("ChEBI"),
 	NONE("");
 	private String displayName;
@@ -11,7 +11,7 @@ public enum CofactorReferenceType implements DatabaseType{
 	private CofactorReferenceType(String displayName) {
 		this.displayName = displayName;
 	}
-	 @JsonValue
+
 	@Override
 	public String getName() {
 		return this.displayName;

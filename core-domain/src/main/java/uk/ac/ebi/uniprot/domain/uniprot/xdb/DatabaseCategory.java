@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
-public enum DatabaseCategory {
+public enum DatabaseCategory implements EnumDisplay<DatabaseCategory> {
 	SEQUENCE_DATABASES("SEQ", "Sequence databases"),
 	D3_STRUCTURE_DATABASES("3DS", "3D structure databases"),
 	PROTEIN_PROTEIN_INTERACTION_DATABASES("PPI", "Protein-protein interaction databases"),
@@ -24,8 +24,7 @@ public enum DatabaseCategory {
 	
 	PROTEOMES_DATABASES("PRM", "Proteomes databases", false),
 	
-	UNKNOWN("UNK", "Unknown", false)
-	;
+	UNKNOWN("UNK", "Unknown", false);
 	
 	
 	
@@ -44,7 +43,7 @@ public enum DatabaseCategory {
 		this.displayName = displayName;
 		this.searchable = searchable;
 	}
-	 @JsonValue
+
 	  public String getName() {
 	        return name;
 	    }
@@ -61,5 +60,10 @@ public enum DatabaseCategory {
 			}
 		}
 		throw new IllegalArgumentException("the database category " + value + " doesn't exist");	
+	}
+
+	@Override
+	public String toDisplayName() {
+		return this.name;
 	}
 }

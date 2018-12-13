@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
 /**
  * Contains a list of acceptable flag descriptors found within a DE line
  *
  * current valid flags are Precursor, Fragment, Fragments
  */
-public enum FlagType {
+public enum FlagType implements EnumDisplay<FlagType> {
     PRECURSOR("Precursor"),
     FRAGMENT("Fragment"),
     FRAGMENTS("Fragments"),
@@ -59,4 +61,8 @@ public enum FlagType {
         }
         return false;
     }
-}
+
+    @Override
+    public String toDisplayName() {
+        return value;
+    }}

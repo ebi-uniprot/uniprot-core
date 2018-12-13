@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * User: Emilio Salazar
  * Date: 14-May-2007
  */
-public enum SequenceCautionType {
+public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
 
     FRAMESHIFT("Frameshift"),
     ERRONEOUS_INITIATION("Erroneous initiation"),
@@ -31,7 +31,6 @@ public enum SequenceCautionType {
      *
      * @return the name of this enum constant
      */
-    @JsonValue
     public String toDisplayName() {
         return value;
     }

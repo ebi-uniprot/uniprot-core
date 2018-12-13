@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-public enum EvidenceCode {
+public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
 	ECO_0000269("ECO:0000269", "Experimental", "Literature reference",
 			Arrays.asList("x Publication(s) with 'Manual assertion based on experiment in'"),
 			EnumSet.of(Category.EXPERMIENTAL, Category.MANUAL)),
@@ -66,12 +66,15 @@ public enum EvidenceCode {
 		throw new IllegalArgumentException (code + " is not valid Evidence code");
 	}
 	
-	 @JsonValue
+
 	public String getCode() {
 		return code;
 	}
 
-
+	@Override
+	public String toDisplayName() {
+		return getCode();
+	}
 
 	public String getName() {
 		return name;

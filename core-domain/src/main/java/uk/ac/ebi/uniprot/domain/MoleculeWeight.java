@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain;
 
 
-public enum MoleculeWeight {
+public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
 
     A(710788),
     B(1146532),
@@ -54,5 +54,10 @@ public enum MoleculeWeight {
         weight += 5000;
         weight = weight / 10000;
         return (int) weight;
+    }
+
+    @Override
+    public String toDisplayName() {
+        return this.name();
     }
 }

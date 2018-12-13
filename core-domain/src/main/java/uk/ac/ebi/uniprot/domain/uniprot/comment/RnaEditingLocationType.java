@@ -1,12 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
 /**
  * Created by IntelliJ IDEA.
  * User: spatient
  * Date: 03-Feb-2009
  * Time: 17:21:39
  */
-public enum RnaEditingLocationType {
+public enum RnaEditingLocationType implements EnumDisplay<RnaEditingLocationType> {
 
     Not_applicable,
     Undetermined,
@@ -24,4 +26,7 @@ public enum RnaEditingLocationType {
         return Unknown;
     }
 
-}
+    @Override
+    public String toDisplayName() {
+        return name();
+    }}

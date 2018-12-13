@@ -6,8 +6,6 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.util.json.EvidenceDeserializer;
 import uk.ac.ebi.uniprot.domain.util.json.EvidenceSerializer;
 
-@JsonDeserialize(using = EvidenceDeserializer.class)  
-@JsonSerialize(using = EvidenceSerializer.class)  
 public interface Evidence extends Comparable<Evidence> {
 	EvidenceCode getEvidenceCode();
 	DBCrossReference<EvidenceType> getSource();

@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
-public enum MichaelisConstantUnit {
+public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> {
 
 	MOL ("M"),
 	MILLI_MOL ("mM"),
@@ -23,12 +23,15 @@ public enum MichaelisConstantUnit {
 		}
 		throw new RuntimeException("unknown Michaelis Constant Unit: " + unit);
 	}
-	
-	 @JsonValue
+
  	public String getName() {
 		return name;
 	}
 
+	@Override
+	public String toDisplayName() {
+		return getName();
+	}
     /**
      * Added for beans - just use this rather than toDisplayNameString?
      * @return String - the display name

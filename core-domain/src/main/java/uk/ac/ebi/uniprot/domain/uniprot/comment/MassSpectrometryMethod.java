@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public enum MassSpectrometryMethod {
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
+public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod> {
     //[Electrospray, FAB, LSI, MALDI, Plasma desorption, SELDI, Unknown]
     ELECTROSPRAY("Electrospray"),
     FAB("FAB"),
@@ -27,5 +29,10 @@ public enum MassSpectrometryMethod {
        }
        return  MassSpectrometryMethod.UNKNOWN;
      
+    }
+
+    @Override
+    public String toDisplayName() {
+        return value;
     }
 }

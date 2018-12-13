@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
-public enum ReactionReferenceType implements DatabaseType {
+public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionReferenceType> {
 	CHEBI("ChEBI"),
 	RHEA("Rhea"),
 	UNKNOWN("Unknown");

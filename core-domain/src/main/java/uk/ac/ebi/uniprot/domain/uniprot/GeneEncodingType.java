@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * 
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * @time   18:40:27
  *
  */
-public enum GeneEncodingType {
+public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
 
     UNKOWN ("unknown"),
     HYDROGENOSOME("Hydrogenosome"),
@@ -28,7 +28,7 @@ public enum GeneEncodingType {
 	private GeneEncodingType(String name) {
 		this.name = name;
 	}
-	 @JsonValue
+
 	public String getName() {
 		return this.name;
 	}
@@ -42,4 +42,8 @@ public enum GeneEncodingType {
 		throw new IllegalArgumentException("the gene Encoding Type with the description "+name+" doesn't exist");
 	}
 
+	@Override
+	public String toDisplayName() {
+		return name;
+	}
 }

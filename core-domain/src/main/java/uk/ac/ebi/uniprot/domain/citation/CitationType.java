@@ -1,7 +1,9 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
 
-public enum CitationType {
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
+public enum CitationType implements EnumDisplay<CitationType> {
 
 	JOURNAL_ARTICLE("journal article"),
 	BOOK("book"),
@@ -15,8 +17,7 @@ public enum CitationType {
 	private String value;
 	private String displayName;
 
-	CitationType(String value,
-                     String displayName) {
+	CitationType(String value, String displayName) {
 		this.value = value;
 		this.displayName = displayName;
 	}
@@ -52,5 +53,9 @@ public enum CitationType {
 		throw new IllegalArgumentException("The citation with the description " + value + " doesn't exist");
 	}
 
+	@Override
+	public String toDisplayName() {
+		return value;
+	}
 }
 

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * Enumerates all comment types in UniProt.
@@ -39,7 +39,7 @@ CC   -!- SEQUENCE CAUTION: Text.
 CC   -!- WEB RESOURCE: Text.
  *
  */
-public enum CommentType {
+public enum CommentType implements EnumDisplay<CommentType> {
 
 
 
@@ -90,7 +90,6 @@ public enum CommentType {
      *
      * @return the name of this enum constant
      */
-    @JsonValue
     public String toDisplayName() {
         return value;
     }

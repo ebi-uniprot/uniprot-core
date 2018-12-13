@@ -16,7 +16,7 @@ public class EvidenceDeserializer extends StdDeserializer<Evidence>  {
 	private static final long serialVersionUID = 1L;
 
 
-	protected EvidenceDeserializer() {
+	public EvidenceDeserializer() {
         super(Evidence.class);
     }
 

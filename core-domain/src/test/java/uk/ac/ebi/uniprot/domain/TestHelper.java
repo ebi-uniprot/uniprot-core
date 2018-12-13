@@ -1,13 +1,19 @@
 package uk.ac.ebi.uniprot.domain;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.core.Version;
+import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.cfg.MapperConfig;
+import com.fasterxml.jackson.databind.cfg.PackageVersion;
+import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
+import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.util.ClassUtil;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.citation.impl.*;
 import uk.ac.ebi.uniprot.domain.gene.*;
@@ -22,7 +28,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl;
@@ -31,13 +37,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
 import uk.ac.ebi.uniprot.domain.util.json.LocalDateDeserializer;
 import uk.ac.ebi.uniprot.domain.util.json.LocalDateSerializer;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -50,21 +56,16 @@ public class TestHelper {
 		objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
 		objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-
-		//TypeNameIdResolver idResolver = TypeNameIdResolver();
-		//StdTypeResolverBuilder typeResolver = new StdTypeResolverBuilder();////setDefaultTyping
-
-
-		//typeResolver.init(JsonTypeInfo.Id.NAME, null);
-		//typeResolver.inclusion(JsonTypeInfo.As.PROPERTY);
-		//typeResolver.typeProperty("type");
-		//objectMapper.setDefaultTyping(typeResolver);
+        objectMapper.setAnnotationIntrospector(new CustomAnnotationIntrospector());
 
 		SimpleModule mod = new SimpleModule();
 		mod.addSerializer(LocalDate.class, new LocalDateSerializer());
 		mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
 
-		mod.addAbstractTypeMapping(UniProtEntry.class, UniProtEntryImpl.class);
+        //mod.addSerializer(Evidence.class, new EvidenceSerializer());
+        //mod.addDeserializer(Evidence.class, new EvidenceDeserializer());
+
+        mod.addAbstractTypeMapping(UniProtEntry.class, UniProtEntryImpl.class);
 
 		mod.addAbstractTypeMapping(UniProtAccession.class, UniProtAccessionImpl.class);
 		mod.addAbstractTypeMapping(UniProtId.class,UniProtIdImpl.class);
@@ -93,6 +94,7 @@ public class TestHelper {
 		mod.addAbstractTypeMapping(OrderedLocusName.class, GeneImpl.OrderedLocusNameImpl.class);
 		mod.addAbstractTypeMapping(ORFName.class, GeneImpl.ORFNameImpl.class);
 		mod.addAbstractTypeMapping(EvidencedValue.class, EvidencedValueImpl.class);
+        mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
 
 		mod.addAbstractTypeMapping(Comments.class, CommentsImpl.class);
 		mod.addAbstractTypeMapping(AlternativeProductsComment.class, AlternativeProductsCommentImpl.class);
@@ -168,6 +170,8 @@ public class TestHelper {
 		mod.addAbstractTypeMapping(FeatureDescription.class, FeatureDescriptionImpl.class);
 		mod.addAbstractTypeMapping(Feature.class, FeatureImpl.class);
 
+		mod.addAbstractTypeMapping(DatabaseType.class,DefaultDatabaseType.class);
+
 		mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
 		mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
 		mod.registerSubtypes(new NamedType(CatalyticActivityCommentImpl.class, "CatalyticActivity"));
@@ -181,13 +185,6 @@ public class TestHelper {
 		mod.registerSubtypes(new NamedType(SubcellularLocationCommentImpl.class, "SubcellularLocation"));
 		mod.registerSubtypes(new NamedType(WebResourceCommentImpl.class, "WebResource"));
 
-        mod.registerSubtypes(new NamedType(DefaultDatabaseType.class, "DefaultDatabase"));
-        mod.registerSubtypes(new NamedType(EvidenceType.class, "Evidence"));
-        mod.registerSubtypes(new NamedType(UniProtXDbType.class, "UniProtXDb"));
-        mod.registerSubtypes(new NamedType(FeatureXDbType.class, "FeatureXDb"));
-        mod.registerSubtypes(new NamedType(CofactorReferenceType.class, "CofactorReference"));
-        mod.registerSubtypes(new NamedType(ReactionReferenceType.class, "ReactionReference"));
-
         mod.registerSubtypes(new NamedType(BookImpl.class, "Book"));
         mod.registerSubtypes(new NamedType(ElectronicArticleImpl.class, "ElectronicArticle"));
         mod.registerSubtypes(new NamedType(JournalArticleImpl.class,"JournalArticle"));
@@ -195,54 +192,8 @@ public class TestHelper {
         mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
         mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
         mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
-/*
 
 
-@JsonSubTypes({
-
-})
-
-
-./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.BookImpl.class, name = "BookImpl"),
-./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl.class, name = "ElectronicArticleImpl"),
-./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.JournalArticleImpl.class, name = "JournalArticleImpl"),
-./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.PatentImpl.class, name = "PatentImpl"),
-./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.SubmissionImpl.class, name = "SubmissionImpl"),
-./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.ThesisImpl.class, name = "ThesisImpl"),
-./citation/Citation.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.citation.impl.UnpublishedImpl.class, name = "UnpublishedImpl")
-
-./DatabaseType.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.impl.DefaultDatabaseType.class, name = "DefaultDatabaseType"),
-./DatabaseType.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType.class, name = "EvidenceType"),
-./DatabaseType.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType.class, name = "UniProtXDbType"),
-./DatabaseType.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType.class, name = "FeatureXDbType"),
-./DatabaseType.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType.class, name = "CofactorReferenceType"),
-./DatabaseType.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType.class, name = "ReactionReferenceType")
-
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AlternativeProductsCommentImpl.class, name = "APComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.BPCPCommentImpl.class, name = "BPCPComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl.class, name = "CatalyticActivityComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorCommentImpl.class, name = "CofactorComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseCommentImpl.class, name = "DiseaseComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextCommentImpl.class, name = "FreeTextComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionCommentImpl.class, name = "InteractionComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryCommentImpl.class, name = "MassSpectrometryComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl.class, name = "RnaEditingComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SequenceCautionCommentImpl.class, name = "SequenceCautionComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationCommentImpl.class, name = "SubcellularLocationComment"),
-./uniprot/comment/Comment.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.WebResourceCommentImpl.class, name = "WebResourceComment")
-
-
-./uniprot/feature/SequenceReport.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl.SequenceReportImpl.class, name = "SequenceReportImpl")
-./uniprot/feature/AlternativeSequence.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl.class, name = "AlternativeSequenceImpl")
-./uniprot/feature/FeatureId.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl.class, name = "FeatureIdImpl")
-./uniprot/feature/FeatureDescription.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl.class, name = "FeatureDescriptionImpl")
-./uniprot/feature/Feature.java:  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl.class, name = "FeatureImpl")
-
-		*/
-		
-		
-		
-		
 		objectMapper.registerModule(mod);
 
 		try {
@@ -255,47 +206,37 @@ public class TestHelper {
 	    	}
 	}
 
-/*	public class CustomTypeResolverBuilder extends ObjectMapper.DefaultTypeResolverBuilder {
+	public static class CustomAnnotationIntrospector extends AnnotationIntrospector {
 
-		public CustomTypeResolverBuilder(){
-			super(ObjectMapper.DefaultTyping.OBJECT_AND_NON_CONCRETE);
+        @Override
+        public Version version() {
+            return PackageVersion.VERSION;
+        }
+
+        @Override
+        public TypeResolverBuilder<?> findTypeResolver(MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
+            if (baseType.isTypeOrSubTypeOf(Comment.class)
+					//|| (baseType.isTypeOrSubTypeOf(DatabaseType.class) && !baseType.hasRawClass(EvidenceType.class))
+                    || baseType.isTypeOrSubTypeOf(Citation.class)){
+                StdTypeResolverBuilder typeResolverBuilder = new StdTypeResolverBuilder();
+                typeResolverBuilder.init(JsonTypeInfo.Id.NAME, null);
+                typeResolverBuilder.typeProperty("type");
+                typeResolverBuilder.inclusion(JsonTypeInfo.As.PROPERTY);
+                return typeResolverBuilder;
+            }
+            return super.findTypeResolver(config, ac, baseType);
+        }
+
+		public String[] findEnumValues(Class<?> enumType, Enum<?>[] enumValues, String[] names) {
+			return Arrays.stream(enumValues).map(en -> {
+				EnumDisplay<?> jsonEnum = (EnumDisplay<?>) en;
+				return jsonEnum.toDisplayName();
+			}).toArray(String[]::new);
 		}
 
-		@Override
-		public boolean useForType(JavaType t)
-		{
-
-			if (t.isTypeOrSubTypeOf(Comment.class)) {
-
-				while(t.isReferenceType()) {
-					t = t.getReferencedType();
-				}
-				return true;
-			}
-
-			return false;
-		}
-	}
-
-	public class CustomTypeNameIdResolver extends TypeNameIdResolver {
-
-		public CustomTypeNameIdResolver(){
-
+		public Enum<?> findDefaultEnumValue(Class<Enum<?>> enumCls) {
+			return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
 		}
 
-		@Override
-		public boolean useForType(JavaType t)
-		{
-
-			if (t.isTypeOrSubTypeOf(Comment.class)) {
-
-				while(t.isReferenceType()) {
-					t = t.getReferencedType();
-				}
-				return true;
-			}
-
-			return false;
-		}
-	}*/
+    }
 }

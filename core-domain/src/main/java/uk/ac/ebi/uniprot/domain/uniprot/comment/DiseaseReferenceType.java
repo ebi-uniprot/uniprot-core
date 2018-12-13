@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * Enumeration of the possible external sources that have a references to diseases.
@@ -10,7 +11,7 @@ import uk.ac.ebi.uniprot.domain.DatabaseType;
  * @see DiseaseReference
  * @version 1.0
  */
-public enum DiseaseReferenceType implements DatabaseType{
+public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseReferenceType> {
     MIM("MIM"),
     NONE("");
 

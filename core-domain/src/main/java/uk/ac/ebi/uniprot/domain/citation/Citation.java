@@ -17,7 +17,6 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
  * <p/>
  * To build a citation for use in you program @link uk.ac.ebi.kraken.interfaces.factories.DefaultCitationFactory
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY, property = "type")
 public interface Citation  {
 
     public CitationXrefs getCitationXrefs();

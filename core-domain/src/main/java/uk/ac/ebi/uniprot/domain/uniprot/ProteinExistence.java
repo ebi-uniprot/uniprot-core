@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * 
  * @author jieluo
  *
  */
-public enum ProteinExistence {
+public enum ProteinExistence implements EnumDisplay<ProteinExistence> {
 
     PROTEIN_LEVEL ("Evidence at protein level", "1: Evidence at protein level"),
     TRANSCRIPT_LEVEL("Evidence at transcript level", "2: Evidence at transcript level"),
@@ -19,7 +19,7 @@ public enum ProteinExistence {
 	private String value;
 	private String displayName;
 
-	public String getDisplayName() {
+	public String toDisplayName() {
 		return displayName;
 	}
 	ProteinExistence(String type) {
@@ -30,7 +30,7 @@ public enum ProteinExistence {
 		this.value = type;
 		this.displayName = displayName;
 	}
-	 @JsonValue
+
 	public String getValue() {
 		return value;
 	}

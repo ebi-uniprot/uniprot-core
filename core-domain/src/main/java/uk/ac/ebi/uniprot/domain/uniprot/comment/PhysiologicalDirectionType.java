@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public enum PhysiologicalDirectionType {
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
+public enum PhysiologicalDirectionType implements EnumDisplay<PhysiologicalDirectionType> {
 //left-to-right, right-to-left
 	LEFT_TO_RIGHT("left-to-right"),
 	RIGHT_TO_LEFT("right-to-left");

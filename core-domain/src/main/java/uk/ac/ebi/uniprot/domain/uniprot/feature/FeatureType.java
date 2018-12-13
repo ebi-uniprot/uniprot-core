@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-public enum FeatureType {
+public enum FeatureType implements EnumDisplay<FeatureType> {
 	  /**
      * Enumerates all features types in UniProt. Important!!! The order which is here must the order existing in the
      * file cc_ord which is placed in /ebi/sp/misc1/pc/sprot/various/ft_ord
@@ -91,5 +93,10 @@ public enum FeatureType {
             }
         }
         throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
+    }
+
+    @Override
+    public String toDisplayName() {
+        return getValue();
     }
 }

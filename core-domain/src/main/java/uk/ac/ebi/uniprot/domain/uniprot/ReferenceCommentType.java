@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
 /**
  * 
  * @author jluo
  *
  */
-public enum ReferenceCommentType {
+public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
 	STRAIN("STRAIN"),
     PLASMID("PLASMID"),
     TRANSPOSON("TRANSPOSON"),
@@ -29,5 +31,10 @@ public enum ReferenceCommentType {
 			}
 		}
 		throw new IllegalArgumentException("The ReferenceComment type " + value + " doesn't exist");
+	}
+
+	@Override
+	public String toDisplayName() {
+		return value;
 	}
 }

@@ -1,7 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-public enum InactiveReasonType {
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
+public enum InactiveReasonType implements EnumDisplay<InactiveReasonType> {
 	DELETED,
 	MERGED,
-	DEMERGED,
+	DEMERGED;
+
+	@Override
+	public String toDisplayName() {
+		return name();
+	}
 }

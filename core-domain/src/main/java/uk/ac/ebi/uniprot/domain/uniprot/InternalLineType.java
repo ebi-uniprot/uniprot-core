@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
 /**
  * 
  * @author jluo
  *
  */
-public enum InternalLineType {
+public enum InternalLineType implements EnumDisplay<InternalLineType> {
     CL(1),
 //Chromosomal location of a gene.
     CP(2),
@@ -84,5 +86,10 @@ public enum InternalLineType {
             }
         }
         throw new IllegalArgumentException("unknown position " + position);
+    }
+
+    @Override
+    public String toDisplayName() {
+        return name();
     }
 }

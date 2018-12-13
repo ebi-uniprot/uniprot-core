@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
-public enum SubmissionDatabase {
+public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
 
 	PDB("PDB data bank"),
 	PIR("PIR data bank"),
@@ -16,7 +16,7 @@ public enum SubmissionDatabase {
 	private SubmissionDatabase(String name) {
 		this.name = name;
 	}
-	   @JsonValue
+
 	public String getName() {
 		return name;
 	}
@@ -28,5 +28,10 @@ public enum SubmissionDatabase {
 			}
 		}
 		throw new IllegalArgumentException("the feature with the description " + name + " doesn't exist");
+	}
+
+	@Override
+	public String toDisplayName() {
+		return getName();
 	}
 }
