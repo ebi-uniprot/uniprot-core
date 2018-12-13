@@ -42,7 +42,7 @@ public class UniProtParserTest {
 	@Test
 	public void testParseFile() {
 		String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
-		UniProtEntryIterator iterator = UniProtParser.parseFile(filename);
+		UniProtEntryIterator iterator = UniProtParser.parseFile(filename, "", "");
 		assertTrue(iterator.hasNext());
 		UniProtEntry entry = iterator.next();
 		assertNotNull(entry);

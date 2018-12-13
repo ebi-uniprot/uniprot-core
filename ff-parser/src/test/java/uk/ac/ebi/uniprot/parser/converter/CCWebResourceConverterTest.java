@@ -15,7 +15,7 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 
 public class CCWebResourceConverterTest {
-	private final CcLineConverter converter = new CcLineConverter();
+	private final CcLineConverter converter = new CcLineConverter(null);
 	
 	@Test
 	public void testWebResource(){

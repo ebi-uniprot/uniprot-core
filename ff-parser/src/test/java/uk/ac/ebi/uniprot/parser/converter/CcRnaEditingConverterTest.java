@@ -17,7 +17,7 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.EvidencedString;
 
 public class CcRnaEditingConverterTest {
-	private final CcLineConverter converter = new CcLineConverter();
+	private final CcLineConverter converter = new CcLineConverter(null);
 	@Test
 	public void testRNAEditing(){
 		//CC   -!- RNA EDITING: Modified_positions=1, 56, 89, 103, 126, 164;

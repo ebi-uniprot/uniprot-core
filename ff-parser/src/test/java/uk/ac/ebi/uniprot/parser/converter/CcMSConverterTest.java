@@ -16,7 +16,7 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 
 public class CcMSConverterTest {
-	private final CcLineConverter converter = new CcLineConverter();
+	private final CcLineConverter converter = new CcLineConverter(null);
 	@Test
 	public void testMassSpectrometry(){
 		//CC   -!- MASS SPECTROMETRY: Mass=13822; Method=MALDI; Range=19-140 (P15522-

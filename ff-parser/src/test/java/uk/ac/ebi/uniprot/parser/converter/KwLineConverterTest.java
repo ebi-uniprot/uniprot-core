@@ -7,13 +7,14 @@ import static junit.framework.TestCase.*;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.kw.KwLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.kw.KwLineObject;
 
 public class KwLineConverterTest {
-	private final KwLineConverter converter =new  KwLineConverter();
+	private final KwLineConverter converter =new  KwLineConverter(new KeywordServiceImpl(""));
 	@Test
 	public void test(){
 		//KW   Activator; Complete proteome; Reference proteome; Transcription

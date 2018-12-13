@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
@@ -21,7 +22,7 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.EvidencedString;
 
 public class CcDiseaseConverterTest {
-	private final CcLineConverter converter = new CcLineConverter();
+	private final CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""));
 	@Test
 	public void testFull() {
 		/*

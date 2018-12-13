@@ -22,7 +22,7 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.EvidencedString;
 
 public class CcBPCPConverterTest {
-	private final CcLineConverter converter = new CcLineConverter();
+	private final CcLineConverter converter = new CcLineConverter(null);
 	@Test
 	public void testBPCP() {
 		CcLineObject ccLineO = new CcLineObject();	

@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.parser.DatabaseTypeNotExistException;
+import uk.ac.ebi.uniprot.parser.exception.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.parser.impl.dr.DrLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.dr.DrLineObject;
 import uk.ac.ebi.uniprot.parser.impl.dr.UniProtDrObjects;

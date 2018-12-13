@@ -43,9 +43,12 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 	final private BlockingQueue<String> ffQueue;
 
 	private CountDownLatch parsingJobCountDownLatch;
+	
+	private String keywordFile;
+	private String diseaseFile;
 
 	public DefaultUniProtEntryIterator() {
-		this(4, 5000, 50000);
+		this(1, 5000, 50000);
 	}
 
 	public DefaultUniProtEntryIterator(int number_of_thread, int entryQueuesize, int ffQueueSize) {
@@ -137,7 +140,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 			this.countDown = countDown;
 
 			this.parser = new DefaultUniprotLineParserFactory().createEntryParser();
-			this.converter = new EntryObjectConverter(false);
+			this.converter = new EntryObjectConverter(keywordFile, diseaseFile, false);
 		}
 
 		public void finish() {
@@ -210,8 +213,10 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 			return new EntryBufferedReader2(fileName);
 		}
 	}
-
-	public void setInput(String fileName) {
+	@Override
+	public void setInput(String fileName, String keywordFile, String diseaseFile) {
+		this.keywordFile =keywordFile;
+		this.diseaseFile = diseaseFile;
 		try {
 			setInput2(fileName);
 		} catch (FileNotFoundException e) {

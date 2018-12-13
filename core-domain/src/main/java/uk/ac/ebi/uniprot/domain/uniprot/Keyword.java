@@ -11,4 +11,5 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl.class, name = "KeywordImpl")
 })
 public interface Keyword extends EvidencedValue {
+	String getId();
 }

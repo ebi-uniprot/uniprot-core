@@ -7,6 +7,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
+import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
+import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
+import uk.ac.ebi.uniprot.cv.keyword.KeywordService;
+import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
@@ -41,14 +45,13 @@ import uk.ac.ebi.uniprot.parser.impl.ss.SsLineConverter;
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
 	private final  AcLineConverter acLineConverter = new AcLineConverter();
-	private final  CcLineConverter ccLineConverter = new CcLineConverter();
 	private final  DeLineConverter deLineConverter = new DeLineConverter();
 	
 	private final  DtLineConverter dtLineConverter = new DtLineConverter();
 	private final  FtLineConverter ftLineConverter = new FtLineConverter();
 	private final  GnLineConverter gnLineConverter = new GnLineConverter();
 	private final  IdLineConverter idLineConverter = new IdLineConverter();
-	private final  KwLineConverter kwLineConverter = new KwLineConverter();
+	
 	private final  OcLineConverter ocLineConverter = new OcLineConverter();
 	private final  OgLineConverter ogLineConverter = new OgLineConverter();
 	
@@ -62,14 +65,18 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 	
 	private final ReferenceObjectConverter refObjConverter = new ReferenceObjectConverter();
 	private final DrLineConverter drLineConverter;
-
-	public EntryObjectConverter(){
-		drLineConverter = new DrLineConverter();
+	private final  KwLineConverter kwLineConverter;
+	private final  CcLineConverter ccLineConverter ;
+	
+	
+	public EntryObjectConverter(String keywordFile, String diseaseFile, boolean ignoreWrong){
+		drLineConverter = new DrLineConverter(ignoreWrong);
+		KeywordService  keywordService = new KeywordServiceImpl(keywordFile);
+		DiseaseService diseaseService = new DiseaseServiceImpl(diseaseFile);
+		kwLineConverter = new KwLineConverter(keywordService, ignoreWrong);
+		ccLineConverter =new CcLineConverter(diseaseService, ignoreWrong);
 	}
-	public EntryObjectConverter(boolean ignoreWrongDR){
-		drLineConverter = new DrLineConverter(ignoreWrongDR);
-	}
-
+	
 	@Override
 	public UniProtEntry convert(EntryObject f) {
 		clear();

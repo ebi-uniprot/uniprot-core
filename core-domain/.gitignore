@@ -8,6 +8,6 @@ target
 /*/.project
 /*/.classpath
 /*/parser.failed.log
-
+.DS_Store
 
 /.idea

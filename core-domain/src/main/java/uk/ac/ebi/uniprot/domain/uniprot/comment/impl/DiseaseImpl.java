@@ -22,24 +22,38 @@ public class DiseaseImpl implements Disease {
 	}
 
 	private final String diseaseId;
+	private final String diseaseAccession;
 	private final String acronym;
 	private final DiseaseDescription description;
 	private final DBCrossReference<DiseaseReferenceType> reference;
+	
+	public static final String DEFAULT_ACCESSION ="DI-00000";
 	@JsonCreator
 	public DiseaseImpl(@JsonProperty("diseaseId") String diseaseId, 
+			@JsonProperty("diseaseAccession") String diseaseAccession, 
 			@JsonProperty("acronym")String acronym,
 			@JsonProperty("description")DiseaseDescription description,
 			@JsonProperty("reference") DBCrossReference<DiseaseReferenceType> reference) {
 		this.diseaseId = diseaseId;
+		if(Strings.isNullOrEmpty(diseaseAccession)) {
+			this.diseaseAccession =DEFAULT_ACCESSION;
+		}else
+			this.diseaseAccession = diseaseAccession;
 		this.acronym = acronym;
 		this.description = description;
 		this.reference = reference;
 	}
 
+
 	@Override
 	public String getDiseaseId() {
 		return diseaseId;
 	}
+	@Override
+	public String getDiseaseAccession() {
+		return diseaseAccession;
+	}
+
 
 	@Override
 	public String getAcronym() {
@@ -128,5 +142,6 @@ public class DiseaseImpl implements Disease {
 		}
 
 	}
+
 
 }

@@ -130,8 +130,9 @@ public class UniProtFactoryTest {
     public void testCreateKeyword() {
         String value="p1";
         List<Evidence> evidences = createEvidences();
-        Keyword keyword = UniProtFactory.INSTANCE.createKeyword(value, evidences);
+        Keyword keyword = UniProtFactory.INSTANCE.createKeyword("KW-001", value, evidences);
         assertEquals(value, keyword.getValue());
+        assertEquals("KW-001", keyword.getId());
         assertEquals(evidences, keyword.getEvidences());
     }
 

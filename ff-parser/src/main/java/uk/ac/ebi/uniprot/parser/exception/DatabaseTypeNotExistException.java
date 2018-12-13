@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.parser;
+package uk.ac.ebi.uniprot.parser.exception;
 
 public class DatabaseTypeNotExistException extends RuntimeException {
 	

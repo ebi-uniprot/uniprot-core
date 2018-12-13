@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
@@ -17,7 +18,7 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 
 public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	private static UniprotLineParser<CcLineObject> parser ;
-	 private final CcLineConverter converter = new CcLineConverter();
+	 private final CcLineConverter converter =  new CcLineConverter(new DiseaseServiceImpl(""));
 	 @BeforeAll
 	 public static void setup() {
 		 parser = new DefaultUniprotLineParserFactory().createCcLineParser();

@@ -23,7 +23,7 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.AlternativeNameSequenceEnum
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.EvidencedString;
 
 public class CcAPConverterTest {
-	private final CcLineConverter converter = new CcLineConverter();
+	private final CcLineConverter converter = new CcLineConverter(null);
 	@Test
 	public void testAlternatProduct(){
 		//CC   -!- ALTERNATIVE PRODUCTS:

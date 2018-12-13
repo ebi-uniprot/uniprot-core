@@ -34,8 +34,9 @@ class DiseaseCommentImplTest {
 	        String referenceId = "3124";
 	        DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
 	        String diseaseId = "someId";
+	        String diseaseAc =  "I-00742";
 	        Disease disease =new DiseaseImpl(
-	        		 diseaseId, "someAcron", description, reference);
+	        		 diseaseId, diseaseAc, "someAcron", description, reference);
 	    		
 	        Note note =new NoteImpl(createEvidenceValues());
 	        

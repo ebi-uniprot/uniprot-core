@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import com.google.common.base.Strings;
 
+import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
@@ -71,6 +72,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
+import uk.ac.ebi.uniprot.parser.exception.ParseDiseaseException;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.CAPhysioDirection;
@@ -84,6 +86,16 @@ import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.RnaEditingLocationEnum;
 public class CcLineConverter extends EvidenceCollector implements Converter<CcLineObject, List<Comment>> {
 	// private final DefaultCommentFactory factory = DefaultCommentFactory
 	// .getInstance();
+	private final DiseaseService diseaseService;
+	private final boolean ignoreWrong;
+	public CcLineConverter(DiseaseService diseaseService) {
+		this(diseaseService, true);
+	}
+	
+	public CcLineConverter(DiseaseService diseaseService, boolean ignoreWrong) {
+		this.diseaseService = diseaseService;
+		this.ignoreWrong= ignoreWrong;
+	}
 	private final static String STOP = ".";
 
 	@Override
@@ -386,7 +398,12 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 		 DiseaseBuilder builder = DiseaseCommentBuilder.newDiseaseBuilder();
 		if (!Strings.isNullOrEmpty(cObj.name)) {
 			builder.diseaseId(cObj.name);
-
+			uk.ac.ebi.uniprot.cv.disease.Disease disease = diseaseService.getById(cObj.name);
+			if(disease !=null) {
+				builder.diseaseAc(disease.getAccession());
+			}else if(!ignoreWrong) {
+				throw new ParseDiseaseException (cObj.name + " does not match any humdisease entry");
+			}
 			if (!Strings.isNullOrEmpty(cObj.abbr)) {
 				builder.acronym(cObj.abbr);
 
