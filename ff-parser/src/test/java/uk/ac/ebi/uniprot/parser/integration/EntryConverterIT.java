@@ -17,7 +17,7 @@ import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
 
-public class EntryConverterTest {
+public class EntryConverterIT {
 	@Test
 	public void testA0A0A0MSM0() {
 		String filename = "/entryIT/A0A0A0MSM0.dat";

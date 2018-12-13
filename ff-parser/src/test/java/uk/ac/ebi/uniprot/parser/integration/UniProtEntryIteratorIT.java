@@ -18,7 +18,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
 
-public class UniProtEntryIteratorTest {
+public class UniProtEntryIteratorIT {
 	@Test
 	public void testSingleTxl() {
 		try {

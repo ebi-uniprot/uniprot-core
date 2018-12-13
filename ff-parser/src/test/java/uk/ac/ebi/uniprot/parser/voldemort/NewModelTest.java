@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
@@ -50,7 +51,7 @@ public class NewModelTest {
 	        }
 	    }
 
-
+	    @Disabled
 	    @Test
 	    public void testStoreName() throws Exception {
 	        assertThat(savedAccessions,notNullValue());
@@ -66,6 +67,7 @@ public class NewModelTest {
 //	    	 assertTrue(entry.isPresent());
 //	    	 assertEquals(entry.get(), entryMap.get(accession));
 //	    }
+	    @Disabled
 	    @Test
 	    public void testSavedEntries() throws Exception {
 	        assertThat(savedAccessions,notNullValue());
