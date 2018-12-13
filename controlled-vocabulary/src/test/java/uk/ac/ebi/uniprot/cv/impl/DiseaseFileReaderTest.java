@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ import uk.ac.ebi.uniprot.cv.disease.DiseaseCache;
 class DiseaseFileReaderTest {
     private static final DiseaseFileReader reader = new DiseaseFileReader();
 
-    
+    @Disabled
     @Test
     void testParseDefaultFile() {
     	List<Disease> diseases =reader.parse(DiseaseCache.FTP_LOCATION);

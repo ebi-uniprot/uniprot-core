@@ -3,6 +3,8 @@ package uk.ac.ebi.uniprot.cv.impl;
 
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +18,7 @@ class KeywordFileReaderTest {
 
     private final KeywordFileReader parser = new KeywordFileReader();
 
-    
+    @Disabled
     @Test
     void testParseDefaultFile() {
     	List<KeywordDetail> keywords =parser.parse(KeywordCache.FTP_LOCATION);
