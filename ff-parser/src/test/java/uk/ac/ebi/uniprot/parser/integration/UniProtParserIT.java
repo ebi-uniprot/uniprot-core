@@ -21,7 +21,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
 import uk.ac.ebi.uniprot.parser.UniProtParser;
 
-public class UniProtParserTest {
+public class UniProtParserIT {
 	@Test
 	public void testParse() {
 		String filename = "/entryIT/Q32K04.dat";
