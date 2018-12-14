@@ -2,11 +2,11 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.citation.Submission;
+import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
@@ -17,41 +17,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class UniProtReferenceFactoryTest {
-
-    @Test
-    public void testCreateUniProtReferences() {
-        List<UniProtReference<? extends Citation>> references = new ArrayList<>();
-        List<Evidence> evidences = createEvidences();
-        List<String>  referencePositions =
-                Arrays.asList("Some position");
-        Submission submission =
-                UniProtReferenceFactory.INSTANCE.getCitationFactory()
-                .createSubmissionBuilder()
-                .submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
-                .build();
-        UniProtReference<Submission> subReference =UniProtReferenceFactory.INSTANCE.createUniProtReference(submission,
-                referencePositions, null, evidences);
-    
-        JournalArticle ja =
-                UniProtReferenceFactory.INSTANCE.getCitationFactory()
-                .createJournalArticleBuilder()
-                .journalName("some name")
-                .title("some title")
-                .build();
-        
-        UniProtReference<JournalArticle> jaReference =UniProtReferenceFactory.INSTANCE.createUniProtReference(ja,
-                referencePositions, null, evidences);
-        references.add(subReference);
-        references.add(jaReference);
-        UniProtReferences uniReferences= UniProtReferenceFactory.INSTANCE.createUniProtReferences(references);
-        assertNotNull(uniReferences);
-        assertEquals(2, uniReferences.getReferences().size());
-        assertEquals(references, uniReferences.getReferences());
-        assertEquals(1, uniReferences.getReferencesByType(CitationType.SUBMISSION).size());
-        assertEquals(subReference, uniReferences.getReferencesByType(CitationType.SUBMISSION).get(0));
-        TestHelper.verifyJson(uniReferences);
-       
-    }
 
     @Test
     public void testCreateUniProtReference() {
@@ -66,7 +31,7 @@ public class UniProtReferenceFactoryTest {
         List<ReferenceComment> refComments = new ArrayList<>();
         refComments.add(UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtReference<Submission> uniReference =UniProtReferenceFactory.INSTANCE.createUniProtReference(submission,
+        UniProtReference uniReference =UniProtReferenceFactory.INSTANCE.createUniProtReference(submission,
                 referencePositions, refComments, evidences);
         assertEquals(submission, uniReference.getCitation());
         assertEquals(1, uniReference.getTypedReferenceComments(ReferenceCommentType.STRAIN).size());

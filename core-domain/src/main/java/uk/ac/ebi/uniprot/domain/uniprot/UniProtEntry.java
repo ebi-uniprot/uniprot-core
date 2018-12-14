@@ -1,14 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
 import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
 import java.util.List;
 
@@ -44,7 +47,9 @@ public interface UniProtEntry {
 
 	List<Gene> getGenes();
 
-	Comments getComments();
+	List<Comment> getComments();
+
+	<T extends Comment> List<T> getCommentByType(CommentType type);
 
 	List<Feature> getFeatures();
 
@@ -54,9 +59,15 @@ public interface UniProtEntry {
 
 	List<Keyword> getKeywords();
 
-	UniProtReferences getReferences();
+	List<UniProtReference> getReferences();
 
-	UniProtDBCrossReferences getDatabaseCrossReferences();
+	List<UniProtReference> getReferencesByType(CitationType type);
+
+	List<UniProtDBCrossReference> getDatabaseCrossReferences();
+
+	List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type);
+
+	List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName);
 
 	Sequence getSequence();
 
@@ -65,5 +76,6 @@ public interface UniProtEntry {
 	Boolean isFragment();
 
 	EntryInactiveReason getInactiveReason();
+
 	boolean isActive();
 }

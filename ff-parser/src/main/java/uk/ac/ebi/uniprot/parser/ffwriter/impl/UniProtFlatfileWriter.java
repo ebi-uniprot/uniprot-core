@@ -1,22 +1,6 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
@@ -40,6 +24,8 @@ import uk.ac.ebi.uniprot.parser.impl.ox.OXLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.pe.PELineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.sq.SQLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.ss.SSLineBuilder;
+
+import java.util.*;
 
 
 public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
@@ -131,7 +117,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
     			(types.contains(LineType.RG)) ||
     			(types.contains(LineType.RX))) {
     		int citationNum =0;
-    		for( UniProtReference<? extends Citation> reference:entry.getReferences().getReferences()){
+    		for( UniProtReference reference:entry.getReferences()){
     			citationNum ++;
     			rLineBuilder.setRN(citationNum);
     			entryLines.add(rLineBuilder.buildWithEvidence(reference));
@@ -188,7 +174,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
     private static FFLine buildComment(UniProtEntry entry, boolean showEvidence){
     	FFLine ccLines = FFLines.create();
     	for (CommentType commentType : CommentType.values()) {
-    		List<Comment> comments = entry.getComments().getCommentByType(commentType);
+    		List<Comment> comments = entry.getCommentByType(commentType);
     		if(!comments.isEmpty()){
     			if(showEvidence)
     				ccLines.add(ccLineBuilder.buildWithEvidence(comments));

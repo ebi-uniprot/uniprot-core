@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UniProtReferenceImpl<T extends Citation> implements UniProtReference<T> {
-    private T citation;
+public class UniProtReferenceImpl implements UniProtReference {
+    private Citation citation;
     private List<String> referencePositions;
     private List<ReferenceComment> referenceComments;
     private List<Evidence> evidences;
@@ -22,7 +22,7 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
 		this.referenceComments = Collections.emptyList();
 		this.evidences = Collections.emptyList();
 	}
-    public UniProtReferenceImpl(T citation, List<String> referencePositions, List<ReferenceComment> referenceComments,
+    public UniProtReferenceImpl(Citation citation, List<String> referencePositions, List<ReferenceComment> referenceComments,
     		List<Evidence> evidences) {
         this.citation = citation;
         this.referencePositions =Utils.unmodifierList(referencePositions);
@@ -36,7 +36,7 @@ public class UniProtReferenceImpl<T extends Citation> implements UniProtReferenc
     }
 
     @Override
-    public T getCitation() {
+    public Citation getCitation() {
         return citation;
     }
 

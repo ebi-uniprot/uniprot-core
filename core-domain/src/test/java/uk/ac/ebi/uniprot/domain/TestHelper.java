@@ -36,9 +36,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
 import uk.ac.ebi.uniprot.domain.util.json.LocalDateDeserializer;
 import uk.ac.ebi.uniprot.domain.util.json.LocalDateSerializer;
 
@@ -96,7 +94,6 @@ public class TestHelper {
 		mod.addAbstractTypeMapping(EvidencedValue.class, EvidencedValueImpl.class);
         mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
 
-		mod.addAbstractTypeMapping(Comments.class, CommentsImpl.class);
 		mod.addAbstractTypeMapping(AlternativeProductsComment.class, AlternativeProductsCommentImpl.class);
 		mod.addAbstractTypeMapping(APIsoform.class, APIsoformImpl.class);
 		mod.addAbstractTypeMapping(IsoformName.class, APIsoformImpl.IsoformNameImpl.class);
@@ -150,7 +147,6 @@ public class TestHelper {
 
 		mod.addAbstractTypeMapping(UniProtReference.class, UniProtReferenceImpl.class);
 		mod.addAbstractTypeMapping(InternalLine.class, InternalLineImpl.class);
-		mod.addAbstractTypeMapping(UniProtReferences.class, UniProtReferencesImpl.class);
 		mod.addAbstractTypeMapping(EvidenceLine.class, EvidenceLineImpl.class);
 		mod.addAbstractTypeMapping(InternalSection.class, InternalSectionImpl.class);
 		mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
@@ -161,7 +157,6 @@ public class TestHelper {
 
 		mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
 		mod.addAbstractTypeMapping(UniProtDBCrossReference.class, UniProtDBCrossReferenceImpl.class);
-		mod.addAbstractTypeMapping(UniProtDBCrossReferences.class, UniProtDBCrossReferencesImpl.class);
 
 		mod.addAbstractTypeMapping(AlternativeSequence.class, AlternativeSequenceImpl.class);
 		mod.addAbstractTypeMapping(SequenceReport.class, AlternativeSequenceImpl.SequenceReportImpl.class);

@@ -1,17 +1,18 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CommentsImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferencesImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
@@ -34,13 +35,13 @@ public class UniProtEntryImpl implements UniProtEntry {
 
 	private ProteinDescription proteinDescription;
 	private List<Gene> genes;
-	private Comments comments;
+	private List<Comment> comments;
 	private List<Feature> features;
 	private List<Organelle> organelles;
 
 	private List<Keyword> keywords;
-	private UniProtReferences references;
-	private UniProtDBCrossReferences databaseCrossReferences;
+	private List<UniProtReference> references;
+	private List<UniProtDBCrossReference> databaseCrossReferences;
 	private Sequence sequence;
 
 	private InternalSection internalSection;
@@ -51,6 +52,9 @@ public class UniProtEntryImpl implements UniProtEntry {
 		organismHosts = Collections.emptyList();
 		taxonomyLineage = Collections.emptyList();
 		genes = Collections.emptyList();
+		comments = Collections.emptyList();
+		references = Collections.emptyList();
+		databaseCrossReferences = Collections.emptyList();
 		features = Collections.emptyList();
 		organelles = Collections.emptyList();
 		keywords = Collections.emptyList();
@@ -77,12 +81,12 @@ public class UniProtEntryImpl implements UniProtEntry {
 			ProteinExistence proteinExistence,
 			ProteinDescription proteinDescription,
 			List<Gene> genes,
-			Comments comments,
+			List<Comment> comments,
 			List<Feature> features,
 			List<Organelle> organelles,
 			List<Keyword> keywords,
-			UniProtReferences references,
-			UniProtDBCrossReferences databaseCrossReferences,
+			List<UniProtReference> references,
+			List<UniProtDBCrossReference> databaseCrossReferences,
 			Sequence sequence,
 			InternalSection internalSection) {
 		this(entryType, primaryAccession, secondaryAccessions, uniProtId,
@@ -101,10 +105,10 @@ public class UniProtEntryImpl implements UniProtEntry {
 			List<OrganismName> taxonomyLineage,
 			ProteinExistence proteinExistence,
 			ProteinDescription proteinDescription,
-			List<Gene> genes, Comments comments,
+			List<Gene> genes, List<Comment> comments,
 			List<Feature> features, List<Organelle> organelles,
-			List<Keyword> keywords, UniProtReferences references,
-			UniProtDBCrossReferences databaseCrossReferences,
+			List<Keyword> keywords, List<UniProtReference> references,
+			List<UniProtDBCrossReference> databaseCrossReferences,
 			Sequence sequence,
 			InternalSection internalSection,
 			EntryInactiveReason inactiveReason) {
@@ -120,25 +124,13 @@ public class UniProtEntryImpl implements UniProtEntry {
 		this.proteinExistence = proteinExistence;
 		this.proteinDescription = proteinDescription;
 		this.genes = Utils.unmodifierList(genes);
-		if (comments != null)
-			this.comments = comments;
-		else
-			this.comments = new CommentsImpl(null);
+		this.comments = Utils.unmodifierList(comments);
 		this.features = Utils.unmodifierList(features);
 		this.organelles = Utils.unmodifierList(organelles);
 		this.keywords = Utils.unmodifierList(keywords);
-		if (references != null)
-			this.references = references;
-		else
-			this.references = new UniProtReferencesImpl(null);
-
-		if (databaseCrossReferences != null)
-			this.databaseCrossReferences = databaseCrossReferences;
-		else
-			this.databaseCrossReferences = new UniProtDBCrossReferencesImpl(null);
-
+		this.references = Utils.unmodifierList(references);
+		this.databaseCrossReferences = Utils.unmodifierList(databaseCrossReferences);
 		this.sequence = sequence;
-
 		this.internalSection = internalSection;
 		this.inactiveReason = inactiveReason;
 	}
@@ -204,8 +196,17 @@ public class UniProtEntryImpl implements UniProtEntry {
 	}
 
 	@Override
-	public Comments getComments() {
+	public List<Comment> getComments() {
 		return comments;
+	}
+
+	@Override
+	public <T extends Comment> List<T> getCommentByType(CommentType type) {
+		List<Comment> typedComments = comments.stream()
+				.filter(val -> val.getCommentType().equals(type))
+				.collect(Collectors.toList());
+
+		return (List<T>) typedComments;
 	}
 
 	@Override
@@ -215,7 +216,9 @@ public class UniProtEntryImpl implements UniProtEntry {
 
 
 	public List<Feature> getFeaturesByType(FeatureType type) {
-		return features.stream().filter(feature -> feature.getType() == type).collect(Collectors.toList());
+		return features.stream()
+				.filter(feature -> feature.getType().equals(type))
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -229,13 +232,32 @@ public class UniProtEntryImpl implements UniProtEntry {
 	}
 
 	@Override
-	public UniProtReferences getReferences() {
+	public List<UniProtReference> getReferences() {
 		return references;
 	}
 
 	@Override
-	public UniProtDBCrossReferences getDatabaseCrossReferences() {
+	public List<UniProtReference> getReferencesByType(CitationType type) {
+		return this.references.stream()
+				.filter(val -> val.getCitation().getCitationType().equals(type))
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<UniProtDBCrossReference> getDatabaseCrossReferences() {
 		return databaseCrossReferences;
+	}
+
+	@Override
+	public List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type) {
+		return getDatabaseCrossReferencesByType(type.getName());
+	}
+
+	@Override
+	public List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName) {
+		return this.databaseCrossReferences.stream()
+				.filter(val -> dbName.equals(val.getDatabaseType().getName()))
+				.collect(Collectors.toList());
 	}
 
 	@Override

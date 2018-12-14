@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
@@ -24,7 +24,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -320,29 +320,26 @@ public class UniProtEntryBuilderTest {
     @Test
     public void testSetComments() {
         UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
-        UniProtEntry entry = builder            
-                .build();
+        UniProtEntry entry = builder.build();
         assertNotNull( entry.getComments());
-        assertTrue(entry.getComments().getComments().isEmpty());
-      
-        Comments comments = createComments();
+        assertTrue(entry.getComments().isEmpty());
+
+        List<Comment> comments = createComments();
         builder = UniProtEntryBuilder.newInstance();
-         entry = builder   
-                 .comments(comments)
-                .build();
+         entry = builder.comments(comments).build();
         assertNotNull( entry.getComments());
-        assertEquals(3, entry.getComments().getComments().size());
-        assertEquals(1, entry.getComments().getCommentByType(CommentType.FUNCTION).size());
-        assertEquals(1, entry.getComments().getCommentByType(CommentType.COFACTOR).size());
-        assertEquals(0, entry.getComments().getCommentByType(CommentType.DISEASE).size());
+        assertEquals(3, entry.getComments().size());
+        assertEquals(1, entry.getCommentByType(CommentType.FUNCTION).size());
+        assertEquals(1, entry.getCommentByType(CommentType.COFACTOR).size());
+        assertEquals(0, entry.getCommentByType(CommentType.DISEASE).size());
         assertEquals(comments, entry.getComments());
         TestHelper.verifyJson(entry);
         
     }
 
-	private Comments createComments(){
+	private List<Comment> createComments(){
         CommentFactory commentFactory =UniProtFactory.INSTANCE.getCommentFactory();
-        List< Comment> comments = new ArrayList<>();
+        List<Comment> comments = new ArrayList<>();
         comments.add(FreeTextCommentBuilder.buildFreeTextComment(CommentType.ALLERGEN, createEvidenceValues()));
         FreeTextCommentBuilder ftcBuilder=commentFactory.createFreeTextCommentBuilder();
         ftcBuilder.commentType(CommentType.FUNCTION)
@@ -360,7 +357,7 @@ public class UniProtEntryBuilderTest {
                 .note(note)
                 .build();
         comments.add(cofactorComment);
-        return commentFactory.createComments(comments);
+        return comments;
     }
     private List<EvidencedValue> createEvidenceValues(){
         List<EvidencedValue>  evidencedValues = new ArrayList<>();
@@ -375,22 +372,25 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder            
                 .build();
         assertNotNull( entry.getReferences());
-        assertTrue(entry.getReferences().getReferences().isEmpty());
-        UniProtReferences  uniReferences =createUniProtReferences();
+        assertTrue(entry.getReferences().isEmpty());
+        List<UniProtReference>  uniReferences =createUniProtReferences();
         
         builder = UniProtEntryBuilder.newInstance();
          entry = builder       
                  .references(uniReferences)
                 .build();
         assertNotNull( entry.getReferences());
-        assertEquals(2, entry.getReferences().getReferences().size());
+        assertEquals(2, entry.getReferences().size());
+        assertEquals(1, entry.getReferencesByType(CitationType.JOURNAL_ARTICLE).size());
+        assertEquals(1, entry.getReferencesByType(CitationType.SUBMISSION).size());
+        assertEquals(0, entry.getReferencesByType(CitationType.BOOK).size());
         assertEquals(uniReferences, entry.getReferences());
         TestHelper.verifyJson(entry);
         
     }
-    private UniProtReferences createUniProtReferences(){
+    private List<UniProtReference> createUniProtReferences(){
         UniProtReferenceFactory factory = UniProtFactory.INSTANCE.getUniProtReferenceFactory();
-        List<UniProtReference<? extends Citation>> references = new ArrayList<>();
+        List<UniProtReference> references = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         List<String>  referencePositions =
                 Arrays.asList("Some position");
@@ -399,7 +399,7 @@ public class UniProtEntryBuilderTest {
                 .createSubmissionBuilder()
                 .submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
                 .build();
-        UniProtReference<Submission> subReference =factory.createUniProtReference(submission,
+        UniProtReference subReference =factory.createUniProtReference(submission,
                 referencePositions, null, evidences);
     
         JournalArticle ja =
@@ -409,11 +409,11 @@ public class UniProtEntryBuilderTest {
                 .title("some title")
                 .build();
         
-        UniProtReference<JournalArticle> jaReference =factory.createUniProtReference(ja,
+        UniProtReference jaReference =factory.createUniProtReference(ja,
                 referencePositions, null, evidences);
         references.add(subReference);
         references.add(jaReference);
-        return  factory.createUniProtReferences(references);
+        return  references;
     }
 
     @Test
@@ -510,21 +510,24 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder                 
                 .build();
         assertNotNull(entry.getDatabaseCrossReferences());
-        assertTrue(entry.getDatabaseCrossReferences().getCrossReferences().isEmpty());
-        UniProtDBCrossReferences xrefs= createDbXref();
+        assertTrue(entry.getDatabaseCrossReferences().isEmpty());
+        List<UniProtDBCrossReference> xrefs= createDbXref();
         builder = UniProtEntryBuilder.newInstance();
          entry = builder       
                  .uniProtDBCrossReferences(xrefs)
                 .build();
         assertNotNull(entry.getDatabaseCrossReferences());
-        assertEquals(6, entry.getDatabaseCrossReferences().getCrossReferences().size());
+        assertEquals(6, entry.getDatabaseCrossReferences().size());
+        assertEquals(2, entry.getDatabaseCrossReferencesByType(new UniProtXDbType("HPA")).size());
+        assertEquals(3, entry.getDatabaseCrossReferencesByType("EMBL").size());
+        assertEquals(1, entry.getDatabaseCrossReferencesByType("Ensembl").size());
         TestHelper.verifyJson(entry);
         
     }
     
-    public UniProtDBCrossReferences createDbXref(){
+    public List<UniProtDBCrossReference> createDbXref(){
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
-       String type = "Ensembl";
+        String type = "Ensembl";
         String id ="ENST00000393119";
         String description ="ENSP00000376827";
         String thirdAttr= "ENSG00000011143";
@@ -532,16 +535,16 @@ public class UniProtEntryBuilderTest {
         String isoform = "Q9NXB0-1";
         List<UniProtDBCrossReference>  xrefs = new ArrayList<>();
         xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
-        
+
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
-      
-     
-         type = "EMBL";
-         id ="DQ185029";
-         description ="AAZ94714.1";
-         thirdAttr= "-";
-         fourthAttr = "mRNA";
-         isoform = null;
+
+
+        type = "EMBL";
+        id ="DQ185029";
+        description ="AAZ94714.1";
+        thirdAttr= "-";
+        fourthAttr = "mRNA";
+        isoform = null;
         xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
         // DR   EMBL; AK000352; BAA91105.1; ALT_INIT; mRNA.
         type ="EMBL";
@@ -550,33 +553,34 @@ public class UniProtEntryBuilderTest {
         thirdAttr= "ALT_INIT";
         fourthAttr = "mRNA";
         isoform = null;
-       xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
-       // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
-       type = "EMBL";
-       id ="AK310815";
-       description ="-";
-       thirdAttr= "NOT_ANNOTATED_CDS";
-       fourthAttr = "mRNA";
-       isoform = null;
-      xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
-      
-   //   DR   HPA; HPA021372; -.
-      type = "HPA";
-      id ="HPA021372";
-      description ="-";
-      thirdAttr=  null;
-      fourthAttr = null;
-      isoform = null;
-     xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
-     //  DR   HPA; HPA021812; -.
-     type = "HPA";
-     id ="HPA021812";
-     description ="-";
-     thirdAttr=  null;
-     fourthAttr = null;
-     isoform = null;
-    xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
-    return UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReferences(xrefs);
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
+        // DR   EMBL; AK310815; -; NOT_ANNOTATED_CDS; mRNA.
+        type = "EMBL";
+        id ="AK310815";
+        description ="-";
+        thirdAttr= "NOT_ANNOTATED_CDS";
+        fourthAttr = "mRNA";
+        isoform = null;
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
+
+        //   DR   HPA; HPA021372; -.
+        type = "HPA";
+        id ="HPA021372";
+        description ="-";
+        thirdAttr=  null;
+        fourthAttr = null;
+        isoform = null;
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
+        //  DR   HPA; HPA021812; -.
+        type = "HPA";
+        id ="HPA021812";
+        description ="-";
+        thirdAttr=  null;
+        fourthAttr = null;
+        isoform = null;
+        xrefs.add ( UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform));
+
+        return xrefs;
     
     }
 

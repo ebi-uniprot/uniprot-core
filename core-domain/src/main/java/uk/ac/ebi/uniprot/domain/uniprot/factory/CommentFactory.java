@@ -2,10 +2,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CommentsImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.NoteImpl;
 
 import java.util.List;
@@ -13,9 +11,7 @@ import java.util.List;
 public enum CommentFactory {
     INSTANCE;
 
-    public Comments createComments(List<Comment> comments){
-        return new CommentsImpl(comments);
-    }
+
     public <T extends Comment> T createComment(CommentBuilder<T> builder){
         return builder.build();
     }

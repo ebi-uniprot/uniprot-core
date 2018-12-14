@@ -2,18 +2,15 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
 
 import java.util.List;
 
@@ -33,12 +30,12 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private  ProteinExistence proteinExistence =ProteinExistence.UNKNOWN;
     private  ProteinDescription proteinDescription;
     private  List<Gene> genes;
-    private  Comments comments;
+    private  List<Comment> comments;
     private  List<Feature> features;
     private  List<Organelle> organelles;
     private  List<Keyword> keywords;
-    private  UniProtReferences references;
-    private  UniProtDBCrossReferences databaseCrossReferences;
+    private List<UniProtReference> references;
+    private List<UniProtDBCrossReference> databaseCrossReferences;
     private  Sequence sequence;
     private  InternalSection internalSection; 
    
@@ -47,7 +44,7 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return new UniProtEntryImpl(
                  entryType,
                  primaryAccession,
-                secondaryAccessions,
+                 secondaryAccessions,
                  uniProtId,
                  entryAudit,
                  taxonId,
@@ -124,20 +121,14 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         this.proteinDescription = proteinDescription;
         return this;
     }
-    public UniProtEntryBuilder comments(Comments comments){
+
+    public UniProtEntryBuilder comments(List<Comment> comments){
         this.comments = comments;
         return this;
     }
-    public UniProtEntryBuilder comments(List<Comment> comments){
-        this.comments = CommentFactory.INSTANCE.createComments(comments);
-        return this;
-    }
-    public UniProtEntryBuilder references(UniProtReferences references){
+
+    public UniProtEntryBuilder references(List<UniProtReference> references){
         this.references = references;
-        return this;
-    }
-    public UniProtEntryBuilder references(List<UniProtReference<? extends Citation>> references){
-        this.references = UniProtReferenceFactory.INSTANCE.createUniProtReferences(references);
         return this;
     }
     public UniProtEntryBuilder genes(List<Gene> genes){
@@ -152,12 +143,9 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         this.organismHosts = organismHosts;
         return this;
     }
-    public UniProtEntryBuilder uniProtDBCrossReferences(UniProtDBCrossReferences xrefs){
-        this.databaseCrossReferences = xrefs;
-        return this;
-    }
+
     public UniProtEntryBuilder uniProtDBCrossReferences(List<UniProtDBCrossReference>  xrefs){
-        this.databaseCrossReferences = UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReferences(xrefs);
+        this.databaseCrossReferences = xrefs;
         return this;
     }
     public UniProtEntryBuilder sequence(Sequence sequence){

@@ -1,17 +1,15 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.impl.dr.DRLineBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
-import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
-import uk.ac.ebi.uniprot.parser.impl.dr.DRLineBuilder;
+import static org.junit.Assert.assertEquals;
 
 public class DRLineBuildTest {
 	DRLineBuilder builder = new DRLineBuilder();
@@ -24,8 +22,7 @@ public class DRLineBuildTest {
 		List<UniProtDBCrossReference> xrefs = new ArrayList<>();
 		xrefs.add(factory.createUniProtDBCrossReference("EMBL", "U12141", "AAA99664.1", "-", "Genomic_DNA"));
 		xrefs.add(factory.createUniProtDBCrossReference("MINT", "MINT-1356407", "-"));
-		UniProtDBCrossReferences uniprotXrefs = factory.createUniProtDBCrossReferences(xrefs);
-		FFLine ffLine = builder.build(uniprotXrefs);
+		FFLine ffLine = builder.build(xrefs);
 		String resultString = ffLine.toString();
 		System.out.println(resultString);
 		System.out.println("\n");
@@ -111,9 +108,8 @@ public class DRLineBuildTest {
 		
 		xrefs.add(factory.createUniProtDBCrossReference("Pfam", "PF00534", "Glycos_transf_1", "1"));
 	//	xrefs.add(factory.createUniProtDBCrossReference("NMPDR", "fig|4932.3.peg.5426", "-"));
-		
-		UniProtDBCrossReferences uniprotXrefs = factory.createUniProtDBCrossReferences(xrefs);
-		FFLine ffLine = builder.build(uniprotXrefs);
+
+		FFLine ffLine = builder.build(xrefs);
 		String resultString = ffLine.toString();
 		System.out.println(resultString);
 		System.out.println("\n");
@@ -146,8 +142,7 @@ public class DRLineBuildTest {
 			xrefs.add(factory.createUniProtDBCrossReference("Pfam", "PF00016", "RuBisCO_large", "1"));
 			xrefs.add(factory.createUniProtDBCrossReference("Pfam", "PF02788", "RuBisCO_large_N", "1"));
 			xrefs.add(factory.createUniProtDBCrossReference("PROSITE", "PS00157", "RUBISCO_LARGE", "1", null,"P21235-2"));
-			UniProtDBCrossReferences uniprotXrefs = factory.createUniProtDBCrossReferences(xrefs);
-			FFLine ffLine = builder.build(uniprotXrefs);
+			FFLine ffLine = builder.build(xrefs);
 			String resultString = ffLine.toString();
 			System.out.println(resultString);
 			System.out.println("\n");

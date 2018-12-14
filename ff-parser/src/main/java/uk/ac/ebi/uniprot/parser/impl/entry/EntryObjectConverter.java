@@ -1,19 +1,6 @@
 package uk.ac.ebi.uniprot.parser.impl.entry;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
@@ -37,6 +24,8 @@ import uk.ac.ebi.uniprot.parser.impl.ox.OxLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.pe.PeLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.sq.SqLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ss.SsLineConverter;
+
+import java.util.*;
 
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
@@ -108,7 +97,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 		builder.uniProtTaxonId(oxLineConverter.convert(f.ox));
 		builder.proteinExistence(peLineConverter.convert(f.pe));
 		builder.sequence(sqLineConverter.convert(f.sq));
-		List<UniProtReference<? extends Citation>> citations = new ArrayList<>();
+		List<UniProtReference> citations = new ArrayList<>();
 		for(EntryObject.ReferenceObject refObj: f.ref){
 			citations.add(refObjConverter.convert(refObj));
 		}

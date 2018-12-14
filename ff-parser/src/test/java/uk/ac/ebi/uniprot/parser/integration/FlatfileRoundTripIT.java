@@ -1,23 +1,19 @@
 package uk.ac.ebi.uniprot.parser.integration;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.parser.UniProtParser;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
 import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.*;
+
+import static org.junit.Assert.assertNotNull;
 
 
 public class FlatfileRoundTripIT {
@@ -181,7 +177,7 @@ public class FlatfileRoundTripIT {
 	    }
 
 	    void accessCrossReference(UniProtEntry entry) {
-	        List<UniProtDBCrossReference> emblCrossReferences = entry.getDatabaseCrossReferences().getCrossReferencesByType("EMBL");
+	        List<UniProtDBCrossReference> emblCrossReferences = entry.getDatabaseCrossReferencesByType("EMBL");
 	        for (UniProtDBCrossReference embl : emblCrossReferences) {
 	            String db = embl.getDatabaseType().getName();
 	            String emblPrimaryId = embl.getId();
@@ -191,14 +187,14 @@ public class FlatfileRoundTripIT {
 
 	            System.out.println(db + ": " + emblPrimaryId + "; " + emblProteinId + "; " + param3 + "; " + param4);
 	        }
-	        List<UniProtDBCrossReference> refseqCrossReference = entry.getDatabaseCrossReferences().getCrossReferencesByType("RefSeq");
+	        List<UniProtDBCrossReference> refseqCrossReference = entry.getDatabaseCrossReferencesByType("RefSeq");
 	        for (UniProtDBCrossReference rs : refseqCrossReference) {
 	            String db = rs.getDatabaseType().getName();
 	            String rsId = rs.getId();
 	            String descriptoin = rs.getProperties().get(0).getValue();
 	            System.out.println(db + ": " + rsId + "; " + descriptoin);
 	        }
-	        Collection<UniProtDBCrossReference> allReferences = entry.getDatabaseCrossReferences().getCrossReferences();
+	        Collection<UniProtDBCrossReference> allReferences = entry.getDatabaseCrossReferences();
 	        for (UniProtDBCrossReference xref : allReferences) {
 	           String dbName = xref.getDatabaseType().getName();
 	            String primaryId = xref.getId();
