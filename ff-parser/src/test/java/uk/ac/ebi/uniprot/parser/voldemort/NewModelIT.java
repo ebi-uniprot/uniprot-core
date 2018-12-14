@@ -20,7 +20,7 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
 
-public class NewModelTest {
+public class NewModelIT {
 	  private static List<String> savedAccessions;
 	  private static Map<String, UniProtEntry > entryMap = new HashMap<>();
 	    private static NewUniProtInMemoryStore voldemortInMemoryEntryStore;
@@ -28,7 +28,7 @@ public class NewModelTest {
 
 	    @BeforeAll
 	    public static void loadData() throws Exception{
-	        URL resourcePath = NewModelTest.class.getClassLoader().getResource("entryIT/sp.dat");
+	        URL resourcePath = NewModelIT.class.getClassLoader().getResource("entryIT/sp.dat");
 	        assert resourcePath != null;
 	     
 	        DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
