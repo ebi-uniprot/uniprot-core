@@ -21,33 +21,22 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     private static final String SEMICOLON = "; ";
 	private static final String DASH = "-";
     private final String isoformId;
-    private final List<Evidence> evidences ;
-
+ 
     @JsonCreator
     public UniProtDBCrossReferenceImpl(
     		@JsonProperty("database") UniProtXDbType database,
     		@JsonProperty("id") String id,        
     		@JsonProperty("properties") List<Property> properties,
-            @JsonProperty("isoformId") String isoformId, 
-            @JsonProperty("evidences")List<Evidence> evidences) {
+            @JsonProperty("isoformId") String isoformId) {
     	super(database, id, properties);
     	
     	this.isoformId = isoformId;
-    	if((evidences ==null) || evidences.isEmpty())
-			this.evidences =Collections.emptyList();
-		else {
-			this.evidences = new ArrayList<>();
-			this.evidences.addAll(evidences);
-		}
+    	
     }
   
  
     public String getIsoformId() {
 		return isoformId;
-	}
-
-	public List<Evidence> getEvidences() {
-		return evidences;
 	}
 
 	private String getDatabaseName() {
@@ -74,6 +63,33 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         }
         return sb.toString();
     }
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		UniProtDBCrossReferenceImpl other = (UniProtDBCrossReferenceImpl) obj;
+		if (isoformId == null) {
+			if (other.isoformId != null)
+				return false;
+		} else if (!isoformId.equals(other.isoformId))
+			return false;
+		return true;
+	}
 
 	
 

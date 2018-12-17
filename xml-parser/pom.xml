@@ -30,11 +30,6 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>uk.ac.ebi.uniprot</groupId>
-			<artifactId>controlled-vocabulary</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.jvnet.jaxb2_commons</groupId>
 			<artifactId>jaxb2-basics</artifactId>
 			<version>${jvnet.jaxb2.version}</version>

@@ -75,8 +75,6 @@ public class DRLineBuilder extends FFLineBuilderAbstr<UniProtDBCrossReferences>
 		if (includeFFMarkings)
 			sb.append(".");
 
-		addEvidences(sb, reference, showEvidence);
-
 		if (!Strings.isNullOrEmpty(reference.getIsoformId())) {
 			sb.append(" [").append(reference.getIsoformId()).append("]");
 		}

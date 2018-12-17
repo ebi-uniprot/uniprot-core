@@ -7,11 +7,10 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 @JsonTypeInfo(use = NAME, include = PROPERTY)
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl.class, name = "UniProtDBCrossReference")
 })
-public interface UniProtDBCrossReference extends DBCrossReference<UniProtXDbType>, HasEvidences {
+public interface UniProtDBCrossReference extends DBCrossReference<UniProtXDbType> {
 	String getIsoformId();
 }

@@ -31,17 +31,10 @@ public enum UniProtDBCrossReferenceFactory {
             String id, String description, String thirdAttribute, String fourthAttribute){
         return createUniProtDBCrossReference(type, id, description, thirdAttribute, fourthAttribute, null); 
     }
-    
-    
-    public UniProtDBCrossReference createUniProtDBCrossReference(String type,
-            String id, String description, String thirdAttribute,
-            String fourthAttribute, String isoformId){
-        return createUniProtDBCrossReference(type, id, description, thirdAttribute, fourthAttribute, isoformId, null);
-    }
-    
+
     public UniProtDBCrossReference createUniProtDBCrossReference(String databaseName,
             String id, String description, String thirdAttribute,
-            String fourthAttribute, String isoformId, List<Evidence> evidences){
+            String fourthAttribute, String isoformId){
     	UniProtXDbType opType =new UniProtXDbType(databaseName);
     	List<Property> properties = new ArrayList<>();
     
@@ -52,7 +45,7 @@ public enum UniProtDBCrossReferenceFactory {
    			addProperty(properties, attributes, 2, fourthAttribute);
     	
         return new  UniProtDBCrossReferenceImpl( opType,
-                 id, properties,  isoformId,  evidences);
+                 id, properties,  isoformId);
     }
     
     private void addProperty(List<Property> properties, List<DBXRefTypeAttribute> attributes, int number, String value) {
