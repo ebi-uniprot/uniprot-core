@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain;
 
-import com.fasterxml.jackson.annotation.*;
+/*import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -13,41 +13,14 @@ import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.util.ClassUtil;
-import uk.ac.ebi.uniprot.domain.citation.*;
-import uk.ac.ebi.uniprot.domain.citation.impl.*;
-import uk.ac.ebi.uniprot.domain.gene.*;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.impl.DefaultDatabaseType;
-import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
-import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.*;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.*;
-import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.util.json.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.domain.util.json.LocalDateSerializer;
+import com.fasterxml.jackson.databind.util.ClassUtil;*/
 
-import java.time.LocalDate;
-import java.util.Arrays;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+/*import uk.ac.ebi.uniprot.domain.util.property.LocalDateDeserializer;
+import uk.ac.ebi.uniprot.domain.util.property.LocalDateSerializer;*/
 
 public class TestHelper {
 	public static  <T> void verifyJson(T obj  ) {
+/*
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 
@@ -199,9 +172,10 @@ public class TestHelper {
 			}catch(Exception e) {
 	    		fail(e.getMessage());
 	    	}
+*/
 	}
 
-	public static class CustomAnnotationIntrospector extends AnnotationIntrospector {
+/*	public static class CustomAnnotationIntrospector extends AnnotationIntrospector {
 
         @Override
         public Version version() {
@@ -233,5 +207,5 @@ public class TestHelper {
 			return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
 		}
 
-    }
+    }*/
 }

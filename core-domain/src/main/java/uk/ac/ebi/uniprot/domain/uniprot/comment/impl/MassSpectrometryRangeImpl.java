@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 
@@ -20,7 +19,7 @@ public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
 
 	public MassSpectrometryRangeImpl(Range range, String isoformId) {
 		this.range = range;
-		if (Strings.isNullOrEmpty(isoformId)) {
+		if (isoformId == null || isoformId.isEmpty()) {
 			this.isoformId = "";
 		} else
 			this.isoformId = isoformId;

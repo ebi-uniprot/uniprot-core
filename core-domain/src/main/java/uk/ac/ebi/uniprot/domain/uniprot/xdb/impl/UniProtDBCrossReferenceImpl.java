@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
-import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -65,7 +65,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         }
         sb.append(".");
 
-        if (!Strings.isNullOrEmpty(isoformId )) {
+        if (isoformId != null && !isoformId.isEmpty()) {
             sb.append(" [").append(isoformId).append("]");
         }
         return sb.toString();

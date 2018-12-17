@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
@@ -25,7 +24,7 @@ public class SubcellularLocationCommentImpl extends CommentImpl implements Subce
     		List<SubcellularLocation>  subcellularLocations,
     		Note note) {
         super(CommentType.SUBCELLULAR_LOCATION);
-        if(Strings.isNullOrEmpty(molecule)) {
+        if(molecule == null || molecule.isEmpty()) {
         	this.molecule ="";
         }else {
         	this.molecule = molecule;

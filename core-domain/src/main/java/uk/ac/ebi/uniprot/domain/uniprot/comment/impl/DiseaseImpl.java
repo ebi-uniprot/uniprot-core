@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
@@ -8,7 +7,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 public class DiseaseImpl implements Disease {
@@ -56,7 +54,7 @@ public class DiseaseImpl implements Disease {
 
 	@Override
 	public boolean hasDefinedDisease() {
-		return (!Strings.isNullOrEmpty(diseaseId) && (getAcronym() != null && !getAcronym().isEmpty())
+		return (diseaseId != null && !diseaseId.isEmpty() && (getAcronym() != null && !getAcronym().isEmpty())
 				&& isValidDescription() && isValidReference());
 	}
 
@@ -66,7 +64,7 @@ public class DiseaseImpl implements Disease {
 	}
 
 	private boolean isValidReference() {
-		return (getReference() != null && !Strings.isNullOrEmpty(getReference().getId())
+		return (getReference() != null && getReference().getId() != null && !getReference().getId().isEmpty()
 				&& getReference().getDatabaseType() != DiseaseReferenceType.NONE);
 	}
 

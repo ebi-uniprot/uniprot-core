@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.util.json;
+package uk.ac.ebi.uniprot.json.parser.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -1,13 +1,7 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import java.util.List;
-
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
 
 /**
  * The basic type containing the common values that are present in each and every

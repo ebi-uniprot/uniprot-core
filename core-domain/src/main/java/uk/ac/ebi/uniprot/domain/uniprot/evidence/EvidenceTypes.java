@@ -1,9 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypes;
+import uk.ac.ebi.uniprot.domain.util.property.PropertyArray;
+import uk.ac.ebi.uniprot.domain.util.property.PropertyObject;
 
-import java.io.InputStream;
+import java.io.File;
+import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,16 +23,27 @@ public enum EvidenceTypes {
 	}
 
 	private void init() {
-		final ObjectMapper objectMapper = new ObjectMapper();
-		try (InputStream is = EvidenceTypes.class.getClassLoader().getResourceAsStream(FILENAME);) {
-			types = objectMapper.readValue(is,
-					new TypeReference<List<EvidenceTypeDetail>>() {
-					});
-			typeMap =types.stream().collect(Collectors.toMap(val -> val.getName(), val->val));
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		try{
+			URL filePath = UniProtXDbTypes.class.getClassLoader().getResource(FILENAME);
+			if(filePath != null) {
+				File file = new File(filePath.toURI());
+				String source = new String(Files.readAllBytes(file.toPath()));
+				PropertyArray jsonArray = new PropertyArray(source);
 
+				jsonArray.forEach(item -> {
+					PropertyObject dbTypeDetail = (PropertyObject) item;
+					String name = dbTypeDetail.getString("name");
+					String displayName = dbTypeDetail.getString("displayName");
+					String uriLink = dbTypeDetail.getString("uriLink");
+					types.add(new EvidenceTypeDetail(name, displayName, uriLink));
+				});
+			}else {
+				throw new RuntimeException("Unable to find property file "+FILENAME);
+			}
+			typeMap =types.stream().collect(Collectors.toMap(EvidenceTypeDetail::getName, val->val));
+		} catch (Exception e) {
+			throw new RuntimeException("Unable to load property file",e);
+		}
 	}
 	public List<EvidenceTypeDetail> getAllTypes() {
 		return types;

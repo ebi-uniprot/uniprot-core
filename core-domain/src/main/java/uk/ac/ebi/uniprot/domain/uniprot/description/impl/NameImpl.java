@@ -1,11 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,6 +19,6 @@ public class NameImpl extends EvidencedValueImpl implements Name {
 
 	@Override
 	public boolean isValid() {
-		return !Strings.isNullOrEmpty(getValue());
+		return getValue() != null && !getValue().isEmpty();
 	}
 }

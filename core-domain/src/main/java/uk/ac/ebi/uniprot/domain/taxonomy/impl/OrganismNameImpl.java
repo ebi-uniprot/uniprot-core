@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 
 import java.util.Collections;
@@ -28,7 +27,7 @@ public class OrganismNameImpl extends TaxonNameImpl implements OrganismName{
 
 	@Override
 	public boolean isValid() {
-		return !Strings.isNullOrEmpty(getScientificName());
+		return getScientificName() != null && !getScientificName().isEmpty();
   
 	}
 

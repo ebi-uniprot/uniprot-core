@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
@@ -51,7 +50,7 @@ public enum UniProtDBCrossReferenceFactory {
     }
     
     private void addProperty(List<Property> properties, List<DBXRefTypeAttribute> attributes, int number, String value) {
-    	if(Strings.isNullOrEmpty(value))
+    	if(value == null || value.isEmpty())
     		return ;
     	if(attributes.size()< number+1) {
     		return ;

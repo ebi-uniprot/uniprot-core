@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -32,7 +31,7 @@ public final class FeatureBuilder {
 	}
 	
 	public static SequenceReport createReport(String value) {
-		if(Strings.isNullOrEmpty(value))
+		if(value == null || value.isEmpty())
 			return new SequenceReportImpl(Collections.emptyList());
 		else
 			return new SequenceReportImpl(Arrays.asList(value));

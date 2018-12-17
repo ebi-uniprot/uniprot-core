@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 

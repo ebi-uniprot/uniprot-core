@@ -1,10 +1,8 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -92,7 +90,7 @@ public class TaxonNameImpl implements TaxonName {
         StringBuilder sb = new StringBuilder();
         sb.append(getScientificName());
         String commonName = getCommonName();
-        if(!Strings.isNullOrEmpty(commonName)) {
+        if(commonName != null && !commonName.isEmpty()) {
             sb.append(" (")
                     .append(commonName).append(")");
         }

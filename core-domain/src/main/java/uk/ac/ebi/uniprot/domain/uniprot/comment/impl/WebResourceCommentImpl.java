@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 
@@ -23,14 +22,14 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
     		String note) {
         super(CommentType.WEBRESOURCE);
         this.resourceName = resourceName;
-        if(Strings.isNullOrEmpty(resourceUrl)) {
+        if(resourceUrl == null || resourceUrl.isEmpty()) {
         	this.resourceUrl = "";
         }else {
         	this.resourceUrl =resourceUrl;
         }
     
         this.ftp = ftp;
-        if(Strings.isNullOrEmpty(note)) {
+        if(note == null || note.isEmpty()) {
         	this.note = "";
         }else {
         	this.note =note;

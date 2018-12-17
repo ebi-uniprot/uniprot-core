@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import com.google.common.base.Strings;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
@@ -19,7 +18,7 @@ public class EvidenceImplTest {
     void verify(Evidence evidence, String expected, EvidenceCode type,  String dbName, String id) {
     	 assertEquals(expected, evidence.getValue());    
     	 assertEquals(type, evidence.getEvidenceCode());
-    	 if(Strings.isNullOrEmpty(dbName)) {
+    	 if(dbName == null || dbName.isEmpty()) {
     		 assertNull(evidence.getSource());
     	 }else {
     		 assertNotNull(evidence.getSource());

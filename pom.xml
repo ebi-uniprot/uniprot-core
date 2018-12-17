@@ -128,5 +128,6 @@
 <!--  		<module>core-util</module>  -->
 		<module>core-domain</module>
 		<module>ff-parser</module>
+		<module>json-parser</module>
 	</modules>
 </project>

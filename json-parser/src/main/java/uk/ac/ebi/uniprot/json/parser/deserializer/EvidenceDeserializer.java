@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.util.json;
+package uk.ac.ebi.uniprot.json.parser.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 
 import java.io.IOException;
 
-public class EvidenceDeserializer extends StdDeserializer<Evidence>  {
+public class EvidenceDeserializer extends StdDeserializer<Evidence> {
 	/**
 	 * 
 	 */

@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
@@ -23,7 +22,7 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     		List<Cofactor> cofactors,
     		Note note) {
         super(CommentType.COFACTOR);
-        if(Strings.isNullOrEmpty(molecule))
+        if(molecule == null || molecule.isEmpty())
         	this.molecule =null;
         else
         	this.molecule =molecule;
