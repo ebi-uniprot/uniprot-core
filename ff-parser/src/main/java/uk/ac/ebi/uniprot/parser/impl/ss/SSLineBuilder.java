@@ -35,23 +35,24 @@ public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
 
 	@Override
 	protected FFLine buildLine(InternalSection f, boolean showEvidence) {
-		
+		List<String> lines = new ArrayList<>();
 		if(f ==null) {
-			return FFLines.create();
+			return FFLines.create(lines);
 		}
 		FFLine sourceLines = sourceLineBuilder.buildWithEvidence(f.getSourceLines());
 		FFLine evidenceLines = evidenceLineBuilder.buildWithEvidence(f.getEvidenceLines());		
 		FFLine internalLines = internalLineBuilder.buildWithEvidence(f.getInternalLines());
 		evidenceLines.add(internalLines);
 		
-		List<String> lines = new ArrayList<>();
-		if(sourceLines.isEmpty() && evidenceLines.isEmpty()){
-			return FFLines.create(lines);
-		}
+	
+//		if(sourceLines.isEmpty() && evidenceLines.isEmpty()){
+//			return FFLines.create(lines);
+//		}
 		lines.add(START_LINE);
 		lines.addAll(sourceLines.lines());
+		lines.add(INTERNAL_SECTION);
 		if(!evidenceLines.isEmpty()){
-			lines.add(INTERNAL_SECTION);
+		
 			lines.addAll(evidenceLines.lines());
 		}
 		return FFLines.create(lines);

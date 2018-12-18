@@ -66,12 +66,12 @@ KW   Complete proteome; Cytoplasm; Endonuclease; Hydrolase; Metal-binding;
 KW   Nuclease; Ribosome biogenesis; rRNA processing; Zinc.
 FT   CHAIN         1    172       Endoribonuclease YbeY.
 FT                                /FTId=PRO_1000000738.
-FT   METAL       136    136       Zinc; catalytic. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00009}.
-FT   METAL       140    140       Zinc; catalytic. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00009}.
-FT   METAL       146    146       Zinc; catalytic. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00009}.
+FT   METAL       136    136       Zinc; catalytic. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00009}.
+FT   METAL       140    140       Zinc; catalytic. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00009}.
+FT   METAL       146    146       Zinc; catalytic. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00009}.
 SQ   SEQUENCE   172 AA;  20300 MW;  914F463ED4CF260D CRC64;
      MINVEIIRNY DKWREHKQIN KALIKKVTQN VLLRFDNFSK IKQFELSILL TNTAEILTLN
      KQFRNIDKAT NVLSFPSNKL NWQDLCFSNV SPKLELLIGY DYMHLGDIAF CYEVIYNESY

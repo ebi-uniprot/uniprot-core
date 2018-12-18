@@ -80,8 +80,8 @@ public enum UniProtFactory {
         return new SourceLineImpl(value);
     }
 
-    public Keyword createKeyword(String value, List<Evidence> evidences) {
-        return new KeywordImpl(value, evidences);
+    public Keyword createKeyword(String id, String value, List<Evidence> evidences) {
+        return new KeywordImpl(id, value, evidences);
     }
 
     public EntryAudit createEntryAudit(LocalDate firstPublicDate, LocalDate lastAnnotationUpdateDate,
@@ -101,6 +101,16 @@ public enum UniProtFactory {
     public Evidence createEvidence(String val) {
     	return EvidenceImpl.parseEvidenceLine(val);
     }
+    public Evidence createEvidence(EvidenceCode evidenceCode,
+			 String databaseName, String dbId) {
+    	return new  EvidenceImpl(evidenceCode, databaseName, dbId);
+    }
+
+    public Evidence createEvidence(EvidenceCode evidenceCode,
+    		DBCrossReference<EvidenceType> source) {
+   	return new  EvidenceImpl(evidenceCode, source);
+   }
+
     public EntryInactiveReason createInactiveReason(InactiveReasonType inactiveReasonType, List<String> mergeDemergeTo) {
     	return new EntryInactiveReasonImpl(inactiveReasonType, mergeDemergeTo);
     }

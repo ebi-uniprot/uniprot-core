@@ -16,17 +16,24 @@ public class DiseaseImpl implements Disease {
 	}
 
 	private String diseaseId;
+    private String diseaseAccession;
 	private String acronym;
 	private DiseaseDescription description;
 	private DBCrossReference<DiseaseReferenceType> reference;
+    public static final String DEFAULT_ACCESSION ="DI-00000";
 
 	private DiseaseImpl(){
 
 	}
 
-	public DiseaseImpl(String diseaseId, String acronym, DiseaseDescription description,
+	public DiseaseImpl(String diseaseId, String diseaseAccession, String acronym, DiseaseDescription description,
 			DBCrossReference<DiseaseReferenceType> reference) {
-		this.diseaseId = diseaseId;
+        this.diseaseId = diseaseId;
+        if (diseaseAccession == null || diseaseAccession.isEmpty()) {
+            this.diseaseAccession = DEFAULT_ACCESSION;
+        } else {
+            this.diseaseAccession = diseaseAccession;
+        }
 		this.acronym = acronym;
 		this.description = description;
 		this.reference = reference;
@@ -36,6 +43,11 @@ public class DiseaseImpl implements Disease {
 	public String getDiseaseId() {
 		return diseaseId;
 	}
+	@Override
+	public String getDiseaseAccession() {
+		return diseaseAccession;
+	}
+
 
 	@Override
 	public String getAcronym() {

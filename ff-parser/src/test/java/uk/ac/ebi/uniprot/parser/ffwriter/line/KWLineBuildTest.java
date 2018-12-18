@@ -26,11 +26,11 @@ public class KWLineBuildTest {
 				+ "KW   Zinc-finger.";
 
 		List<Keyword> keywords = new ArrayList<>();
-		keywords.add(factory.createKeyword("Complete proteome", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Metal-binding", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Repeat", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Virus reference strain", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Zinc-finger", Collections.emptyList()));
+		keywords.add(factory.createKeyword("KW-0181", "Complete proteome", Collections.emptyList()));
+		keywords.add(factory.createKeyword("KW-0479", "Metal-binding", Collections.emptyList()));
+		keywords.add(factory.createKeyword("KW-0677", "Repeat", Collections.emptyList()));
+		keywords.add(factory.createKeyword("", "Virus reference strain", Collections.emptyList()));
+		keywords.add(factory.createKeyword("KW-0863", "Zinc-finger", Collections.emptyList()));
 		doTest(kwLine, keywords);
 	}
 	private void doTest(String deLine, List<Keyword> genes) {
@@ -56,15 +56,15 @@ public class KWLineBuildTest {
 	 + "KW   ECO:0000303|Ref.6};\n"
 	 + "KW   Zinc-finger {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}.";
 	 List<Keyword> keywords = new ArrayList<>();
-		keywords.add(factory.createKeyword("Complete proteome",
+		keywords.add(factory.createKeyword("", "Complete proteome",
 				createEvidence(Arrays.asList(new String[] {"ECO:0000269|PubMed:10433554", "ECO:0000313|EMBL:BAG16761.1"}))));
-		keywords.add(factory.createKeyword("Metal-binding", 
+		keywords.add(factory.createKeyword("", "Metal-binding", 
 				createEvidence(Arrays.asList(new String[] {}))));
-		keywords.add(factory.createKeyword("Repeat",
+		keywords.add(factory.createKeyword("", "Repeat",
 				createEvidence(Arrays.asList(new String[] {"ECO:0000303|Ref.6", "ECO:0000313|EMBL:BAG16761.1"}))));
-		keywords.add(factory.createKeyword("Virus reference strain", 
+		keywords.add(factory.createKeyword("", "Virus reference strain", 
 				createEvidence(Arrays.asList(new String[] {"ECO:0000256|HAMAP-Rule:MF_00205", "ECO:0000303|Ref.6"}))));
-		keywords.add(factory.createKeyword("Zinc-finger", 
+		keywords.add(factory.createKeyword("", "Zinc-finger", 
 				createEvidence(Arrays.asList(new String[] {"ECO:0000256|HAMAP-Rule:MF_00205", "ECO:0000313|PDB:3OW2"}))));
 		doTest(kwLine, keywords);
 	 }
@@ -75,15 +75,15 @@ public class KWLineBuildTest {
 				+ "KW   Lipoprotein; Membrane; Repeat; Signal; Sporozoite.";
 
 		List<Keyword> keywords = new ArrayList<>();
-		keywords.add(factory.createKeyword("Cell membrane", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Complete proteome", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Glycoprotein", Collections.emptyList()));
-		keywords.add(factory.createKeyword("GPI-anchor", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Lipoprotein", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Membrane", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Repeat", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Signal", Collections.emptyList()));
-		keywords.add(factory.createKeyword("Sporozoite", Collections.emptyList()));
+		keywords.add(factory.createKeyword("", "Cell membrane", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","Complete proteome", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","Glycoprotein", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","GPI-anchor", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","Lipoprotein", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","Membrane", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","Repeat", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","Signal", Collections.emptyList()));
+		keywords.add(factory.createKeyword("","Sporozoite", Collections.emptyList()));
 		doTest(kwLine, keywords);
 
 	}
@@ -100,23 +100,23 @@ public class KWLineBuildTest {
 				+ "KW   ECO:0000313|Ensembl:ENSP0012134}; Seed storage protein; Signal;\n"
 				+ "KW   Storage protein.";
 		 List<Keyword> keywords = new ArrayList<>();
-			keywords.add(factory.createKeyword("3D-structure",
+			keywords.add(factory.createKeyword("", "3D-structure",
 					createEvidence(Arrays.asList(new String[] {"ECO:0000313", "ECO:0000313|EMBL:EAW66463.1"}))));
-			keywords.add(factory.createKeyword("Allergen", 
+			keywords.add(factory.createKeyword("","Allergen", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000313|EMBL:EAW66464.1"}))));
-			keywords.add(factory.createKeyword("Direct protein sequencing",
+			keywords.add(factory.createKeyword("","Direct protein sequencing",
 					createEvidence(Arrays.asList(new String[] {"ECO:0000313|EMBL:EAW66463.1", "ECO:0000313|Ensembl:ENSP0012134"}))));
-			keywords.add(factory.createKeyword("Disulfide bond", 
+			keywords.add(factory.createKeyword("","Disulfide bond", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000313|EMBL:EAW66463.1", "ECO:0000313|Ensembl:ENSP0012134"}))));
-			keywords.add(factory.createKeyword("Polymorphism", 
+			keywords.add(factory.createKeyword("","Polymorphism", 
 					createEvidence(Arrays.asList(new String[] {}))));
-			keywords.add(factory.createKeyword("Pyrrolidone carboxylic acid", 
+			keywords.add(factory.createKeyword("","Pyrrolidone carboxylic acid", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000313|EMBL:EAW66463.1", "ECO:0000313|Ensembl:ENSP0012134"}))));
-			keywords.add(factory.createKeyword("Seed storage protein", 
+			keywords.add(factory.createKeyword("","Seed storage protein", 
 					createEvidence(Arrays.asList(new String[] {}))));
-			keywords.add(factory.createKeyword("Signal", 
+			keywords.add(factory.createKeyword("","Signal", 
 					createEvidence(Arrays.asList(new String[] {}))));
-			keywords.add(factory.createKeyword("Storage protein", 
+			keywords.add(factory.createKeyword("", "Storage protein", 
 					createEvidence(Arrays.asList(new String[] {}))));
 			doTest(kwLine, keywords);
 	}
@@ -135,21 +135,21 @@ public class KWLineBuildTest {
 				+ "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842}.";
 
 		 List<Keyword> keywords = new ArrayList<>();
-			keywords.add(factory.createKeyword("Disulfide bond", 
+			keywords.add(factory.createKeyword("", "Disulfide bond", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000256|SAAS:SAAS000777_004_000331"}))));
-			keywords.add(factory.createKeyword("Fusion of virus membrane with host membrane", 
+			keywords.add(factory.createKeyword("", "Fusion of virus membrane with host membrane", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000256|SAAS:SAAS000777_004_001688"}))));
-			keywords.add(factory.createKeyword("Host-virus interaction", 
+			keywords.add(factory.createKeyword("", "Host-virus interaction", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000256|SAAS:SAAS000777_004_000688"}))));
-			keywords.add(factory.createKeyword("Viral attachment to host cell", 
+			keywords.add(factory.createKeyword("", "Viral attachment to host cell", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000256|SAAS:SAAS000777_004_000923"}))));
-			keywords.add(factory.createKeyword("Viral envelope protein", 
+			keywords.add(factory.createKeyword("", "Viral envelope protein", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000313|EMBL:AAY20056.1"}))));
-			keywords.add(factory.createKeyword("Viral penetration into host cytoplasm", 
+			keywords.add(factory.createKeyword("", "Viral penetration into host cytoplasm", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000256|SAAS:SAAS000777_004_001402"}))));
-			keywords.add(factory.createKeyword("Virion", 
+			keywords.add(factory.createKeyword("", "Virion", 
 					createEvidence(Arrays.asList(new String[] {}))));
-			keywords.add(factory.createKeyword("Virus entry into host cell", 
+			keywords.add(factory.createKeyword("", "Virus entry into host cell", 
 					createEvidence(Arrays.asList(new String[] {"ECO:0000256|SAAS:SAAS000777_004_000842"}))));
 			doTest(kwLine, keywords);
 	}

@@ -75,10 +75,10 @@ FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
 FT   REGION       83     85       5-amino-6-(D-ribitylamino)uracil binding.
 FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
 FT   REGION       88     89       1-deoxy-L-glycero-tetrulose 4-phosphate
-FT                                binding. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00178}.
-FT   ACT_SITE     91     91       Proton donor. {ECO:0000255|HAMAP-Rule:
-FT                                MF_00178}.
+FT                                binding. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00178}.
+FT   ACT_SITE     91     91       Proton donor. {ECO:0000255|HAMAP-
+FT                                Rule:MF_00178}.
 FT   BINDING      25     25       5-amino-6-(D-ribitylamino)uracil.
 FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
 FT   BINDING     116    116       5-amino-6-(D-ribitylamino)uracil; via

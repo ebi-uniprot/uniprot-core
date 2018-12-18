@@ -58,7 +58,7 @@ public class KWLineBuilder extends FFLineBuilderAbstr<List<Keyword> > implements
 			if(isFirst){
 				sb.append(item);
 				isFirst =false;
-			}else if(sb.length() +item.length()>=(LINE_LENGTH -1)){
+			}else if(sb.length() +item.length()>=(LINE_LENGTH )){
 				sb.append(separator);
 				lines.add(sb.toString().trim());
 				sb= new StringBuilder();

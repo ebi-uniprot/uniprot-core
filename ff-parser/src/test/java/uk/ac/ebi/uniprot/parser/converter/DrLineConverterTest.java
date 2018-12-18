@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.parser.DatabaseTypeNotExistException;
+import uk.ac.ebi.uniprot.parser.exception.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.parser.impl.dr.DrLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.dr.DrLineObject;
 import uk.ac.ebi.uniprot.parser.impl.dr.UniProtDrObjects;
@@ -234,12 +234,8 @@ public class DrLineConverterTest {
 		obj.drObjects.add(obj1);
 		obj.drObjects.add(obj2);
 		obj.drObjects.add(obj3);
-		List<String> evIds = new ArrayList<String>();
-		evIds.add("ECO:0000269|PubMed:26711273");
-		obj.evidenceInfo.evidences.put(obj1, evIds);
-		evIds = new ArrayList<String>();
-		evIds.add("ECO:0000269|PubMed:26711274");
-		obj.evidenceInfo.evidences.put(obj2, evIds);
+		
+	
 		UniProtDrObjects drObjects= converter.convert(obj);
 		List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
 		assertEquals(3, xrefs.size());
@@ -252,14 +248,8 @@ public class DrLineConverterTest {
 				"AM946981", "CAQ30614.1", "-", "Genomic_DNA");
 		validate( xref3, "GENEID",
 				"2947773", "-", null, null);
-		List<Evidence> eviIds1 = xref1.getEvidences();
-		List<Evidence> eviIds2 = xref2.getEvidences();
-		List<Evidence> eviIds3 = xref3.getEvidences();
-		assertEquals(1, eviIds1.size());
-		assertEquals(1, eviIds2.size());
-		assertEquals(0, eviIds3.size());
-		assertEquals("ECO:0000269|PubMed:26711273", eviIds1.get(0).getValue());
-		assertEquals("ECO:0000269|PubMed:26711274", eviIds2.get(0).getValue());
+	
+	
 		
 	}
 	private void validate(UniProtDBCrossReference xref, String type,

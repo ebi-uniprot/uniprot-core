@@ -14,8 +14,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentB
 public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
     public void testMASSSPEC() {
-        String ccLine = "CC   -!- MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray; Range=167-\n" +
-                "CC       186; Note=Monophosphorylated;\n" +
+        String ccLine = "CC   -!- MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray;\n" +
+                "CC       Range=167-186; Note=Monophosphorylated;\n" +
                 "CC       Evidence={ECO:0000303|PubMed:16629414};";
 
         String ccLineString =

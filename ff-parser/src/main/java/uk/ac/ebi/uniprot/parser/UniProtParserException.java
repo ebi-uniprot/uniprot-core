@@ -3,6 +3,11 @@ package uk.ac.ebi.uniprot.parser;
 public class UniProtParserException extends RuntimeException {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * <em class="text">
      * Static value to indicate that an Exception was thrown,
      * and the line number where it occured is unknown.

@@ -150,8 +150,23 @@ public class CommentTransformerTest {
 					+ "PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18832; "
 					+ "Evidence={ECO:0000255|HAMAP-Rule:MF_00952};"
 					;
-    	  testComment(ccLine, CommentType.CATALYTIC_ACTIVITY);			
+    	  testComment(ccLine, CommentType.CATALYTIC_ACTIVITY, true);			
     }
+    
+    @Test
+    public void testCatalyticActivityNotShowEvidence() {
+    	
+    	String ccLineNoEvidence =  "CATALYTIC ACTIVITY:\n"
+				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
+				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
+				+ "ChEBI:CHEBI:58349, ChEBI:CHEBI:57964, ChEBI:CHEBI:57783;"
+				+ " EC=1.1.1.271;\n"
+					+ "PhysiologicalDirection=right-to-left; Xref=Rhea:RHEA:18898;\n"
+					+ "PhysiologicalDirection=left-to-right; Xref=Rhea:RHEA:18832;";
+					;
+    	  testComment(ccLineNoEvidence, CommentType.CATALYTIC_ACTIVITY, false);			
+    }
+    
     private void testComment(String tString, CommentType type) {
         testComment(tString, type, false);
     }
@@ -172,7 +187,9 @@ public class CommentTransformerTest {
             converted = fbuilder.buildStringWithEvidence(comment);
         else
             converted = fbuilder.buildString(comment);
-
+        System.out.println(tString);
+        
+        System.out.println(converted);
         assertEquals(tString, converted);
     }
 

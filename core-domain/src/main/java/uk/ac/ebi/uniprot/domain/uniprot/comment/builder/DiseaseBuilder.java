@@ -11,6 +11,7 @@ import java.util.List;
 
 public final class DiseaseBuilder {
     private String diseaseId;
+    private String diseaseAc;
     private String acronym;
     private DiseaseDescription description;
     private DBCrossReference<DiseaseReferenceType>  reference;
@@ -19,12 +20,17 @@ public final class DiseaseBuilder {
         return new DiseaseBuilder();
     }
     public Disease build() {
-        return new DiseaseImpl(diseaseId, acronym, description,
+        return new DiseaseImpl(diseaseId, diseaseAc, acronym, description,
                 reference);
     }
 
     public DiseaseBuilder diseaseId(String diseaseId) {
         this.diseaseId = diseaseId;
+        return this;
+    }
+    
+    public DiseaseBuilder diseaseAc(String diseaseAc) {
+        this.diseaseAc = diseaseAc;
         return this;
     }
 

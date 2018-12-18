@@ -1,0 +1,131 @@
+ID   CPSE_STRA3              Reviewed;         449 AA.
+AC   Q04664; Q8VL98; Q8VSS5; Q9JN35;
+DT   01-OCT-1994, integrated into UniProtKB/Swiss-Prot.
+DT   17-JAN-2003, sequence version 3.
+DT   05-JUL-2017, entry version 107.
+DE   RecName: Full=Galactosyl transferase CpsE;
+DE            EC=2.7.8.-;
+GN   Name=cpsE; OrderedLocusNames=gbs1244;
+OS   Streptococcus agalactiae serotype III (strain NEM316).
+OC   Bacteria; Firmicutes; Bacilli; Lactobacillales; Streptococcaceae;
+OC   Streptococcus.
+OX   NCBI_TaxID=211110;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RC   STRAIN=COH1 / Serotype III;
+RX   PubMed=8355611; DOI=10.1111/j.1365-2958.1993.tb01631.x;
+RA   Rubens C.E., Heggen L.M., Haft R.F., Wessels M.R.;
+RT   "Identification of cpsD, a gene essential for type III capsule
+RT   expression in group B streptococci.";
+RL   Mol. Microbiol. 8:843-855(1993).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], AND SEQUENCE REVISION.
+RC   STRAIN=COH1 / Serotype III;
+RX   PubMed=10913080; DOI=10.1128/JB.182.16.4466-4477.2000;
+RA   Chaffin D.O., Beres S.B., Yim H.H., Rubens C.E.;
+RT   "The serotype of type Ia and III group B streptococci is determined by
+RT   the polymerase gene within the polycistronic capsule operon.";
+RL   J. Bacteriol. 182:4466-4477(2000).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RC   STRAIN=4-61 / Serotype III, 4-62 / Serotype III,
+RC   GB00/009 / Serotype III, GB00/031 / Serotype III, M781 / Serotype III,
+RC   NCDC SS620 / Serotype III, SG94/1041 / Serotype III,
+RC   SG95/545 / Serotype III, SG96/039 / Serotype III,
+RC   SG96/585 / Serotype III, SG97/122 / Serotype III,
+RC   SG98/192 / Serotype III, SG98/367 / Serotype III,
+RC   SG99/056 / Serotype III, and SG99/143 / Serotype III;
+RX   PubMed=11773119; DOI=10.1128/JCM.40.1.216-226.2002;
+RA   Kong F., Gowan S., Martin D., James G., Gilbert G.L.;
+RT   "Serotype identification of Group B Streptococci by PCR and
+RT   sequencing.";
+RL   J. Clin. Microbiol. 40:216-226(2002).
+RN   [4]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RC   STRAIN=NEM316;
+RX   PubMed=12354221; DOI=10.1046/j.1365-2958.2002.03126.x;
+RA   Glaser P., Rusniok C., Buchrieser C., Chevalier F., Frangeul L.,
+RA   Msadek T., Zouine M., Couve E., Lalioui L., Poyart C., Trieu-Cuot P.,
+RA   Kunst F.;
+RT   "Genome sequence of Streptococcus agalactiae, a pathogen causing
+RT   invasive neonatal disease.";
+RL   Mol. Microbiol. 45:1499-1513(2002).
+CC   -!- FUNCTION: Galactosyl transferase is essential for the assembly of
+CC       the group B streptococci (GBS) type III capsular polysaccharide.
+CC       May be involved in the formation of either or both galactosidic
+CC       bonds by catalyzing the addition of galactose to an
+CC       oligosaccharide precursor or to a lipid intermediate. Type III
+CC       capsular polysaccharide consists of a linear backbone with short
+CC       side chains ending in residues of N-acetylneuraminic acid or
+CC       sialic acid. The presence of sialic acid on the surface of the
+CC       organism inhibits activation of the alternative pathway of
+CC       complement and is thought to be an important element in the
+CC       virulence function of the capsule.
+CC   -!- SUBCELLULAR LOCATION: Cell membrane; Multi-pass membrane protein.
+CC   -!- SIMILARITY: Belongs to the bacterial sugar transferase family.
+CC       {ECO:0000305}.
+CC   -!- CAUTION: Was originally called CpsD. {ECO:0000305|PubMed:8355611}.
+CC   -!- SEQUENCE CAUTION:
+CC       Sequence=CAD46903.1; Type=Erroneous initiation; Evidence={ECO:0000305};
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   -----------------------------------------------------------------------
+DR   EMBL; AF163833; AAD53066.1; -; Genomic_DNA.
+DR   EMBL; AF332896; AAL57072.1; -; Genomic_DNA.
+DR   EMBL; AF332897; AAL57079.1; -; Genomic_DNA.
+DR   EMBL; AF332898; AAL57085.1; -; Genomic_DNA.
+DR   EMBL; AF332899; AAL57091.1; -; Genomic_DNA.
+DR   EMBL; AF332900; AAL57097.1; -; Genomic_DNA.
+DR   EMBL; AF363032; AAL56269.1; -; Genomic_DNA.
+DR   EMBL; AF363033; AAL56273.1; -; Genomic_DNA.
+DR   EMBL; AF363034; AAL56277.1; -; Genomic_DNA.
+DR   EMBL; AF363035; AAL56281.1; -; Genomic_DNA.
+DR   EMBL; AF363039; AAL56297.1; -; Genomic_DNA.
+DR   EMBL; AF363040; AAL56301.1; -; Genomic_DNA.
+DR   EMBL; AF363055; AAL56361.1; -; Genomic_DNA.
+DR   EMBL; AF363056; AAL56368.1; -; Genomic_DNA.
+DR   EMBL; AF381031; AAL57286.1; -; Genomic_DNA.
+DR   EMBL; AF367973; AAL56403.1; -; Genomic_DNA.
+DR   EMBL; AL766849; CAD46903.1; ALT_INIT; Genomic_DNA.
+DR   PIR; T44643; T44643.
+DR   SMR; Q04664; -.
+DR   EnsemblBacteria; CAD46903; CAD46903; CAD46903.
+DR   KEGG; san:cpsE; -.
+DR   eggNOG; ENOG4105D3Q; Bacteria.
+DR   eggNOG; COG2148; LUCA.
+DR   HOGENOM; HOG000004334; -.
+DR   Proteomes; UP000000823; Chromosome.
+DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
+DR   GO; GO:0005886; C:plasma membrane; IEA:UniProtKB-SubCell.
+DR   GO; GO:0016740; F:transferase activity; IEA:UniProtKB-KW.
+DR   GO; GO:0009405; P:pathogenesis; IEA:UniProtKB-KW.
+DR   GO; GO:0000271; P:polysaccharide biosynthetic process; IEA:UniProtKB-KW.
+DR   InterPro; IPR003362; Bact_transf.
+DR   InterPro; IPR017475; EPS_sugar_tfrase.
+DR   Pfam; PF02397; Bac_transf; 1.
+DR   TIGRFAMs; TIGR03025; EPS_sugtrans; 1.
+PE   3: Inferred from homology;
+KW   Capsule biogenesis/degradation; Cell membrane; Complete proteome;
+KW   Exopolysaccharide synthesis; Membrane; Transferase; Transmembrane;
+KW   Transmembrane helix; Virulence.
+FT   CHAIN         1    449       Galactosyl transferase CpsE.
+FT                                /FTId=PRO_0000166463.
+FT   TRANSMEM      5     22       Helical. {ECO:0000255}.
+FT   TRANSMEM     27     46       Helical. {ECO:0000255}.
+FT   TRANSMEM     59     78       Helical. {ECO:0000255}.
+FT   TRANSMEM     88    107       Helical. {ECO:0000255}.
+FT   TRANSMEM    258    280       Helical. {ECO:0000255}.
+FT   VARIANT     262    262       T -> M (in strain: SG96/585 / Serotype
+FT                                III).
+FT   VARIANT     370    370       V -> A (in strain: COH1 / Serotype III).
+SQ   SEQUENCE   449 AA;  52378 MW;  A958FE1E0DA01338 CRC64;
+     MIQTVVVYFS ASLTLTLITP NFKSNKDLLF VLLIHYIVFY LSDFYRDFWS RGYLEEFKMV
+     LKYSFYYIFI SSSLFFIFKN SFTTTRLSFF TFIAMNSILL YLLNSFLKYY RKYSYAKFSR
+     DTKVVLITNK DSLSKMTFRN KYDHNYIAVC ILDSSEKDCY DLKHNSLRII NKDALTSELT
+     CLTVDQAFIN IPIELFGKYQ IQDIINDIEA MGVIVNVNVE ALSFDNIGEK RIQTFEGYSV
+     ITYSMKFYKY SHLIAKRFLD ITGAIIGLLI CGIVAIFLVP QIRKDGGPAI FSQNRVGRNG
+     RIFRFYKFRS MRVDAEQIKK DLLVHNQMTG LMFKLEDDPR ITKIGKFIRK TSIDELPQFY
+     NVLKGDMSLV GTRPPTVDEY EKYNSTQKRR LSFKPGITGL WQISGRNNIT DFDEIVKLDV
+     QYINEWSIWS DIKIILLTLK VVLLGTGAK
+//

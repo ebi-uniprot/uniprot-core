@@ -25,7 +25,7 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 	public AlternativeSequenceImpl(String originalSequence,
 			List<String> alternativeSequences,
 			SequenceReport report) {
-		this.originalSequence = originalSequence;
+		this.originalSequence = Utils.resetNull(originalSequence);
 		this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
 	
 		this.report = report;

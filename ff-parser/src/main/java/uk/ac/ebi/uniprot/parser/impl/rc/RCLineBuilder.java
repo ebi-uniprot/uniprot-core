@@ -17,7 +17,7 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.LineBuilderHelper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLine;
 
-public class RCLineBuilder implements RLine< List<ReferenceComment> >{
+public class RCLineBuilder implements RLine<List<ReferenceComment>> {
 	private final LineType lineType = LineType.RC;
 	 private final String linePrefix = lineType + DEFAUT_LINESPACE;
 	 private static ReferenceCommentType[] order = { ReferenceCommentType.STRAIN,
@@ -158,5 +158,4 @@ public class RCLineBuilder implements RLine< List<ReferenceComment> >{
 				.collect(Collectors.toList());
 		
 	}
-
 }

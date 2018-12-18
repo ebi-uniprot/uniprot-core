@@ -147,8 +147,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 	private List<String>  buildKineticLine(KineticParameters kps, boolean includeFlatFileMarkings, boolean showEvidence) {
 		List<String> lines =new ArrayList<>();
 		lines.add(buildStart(KINETIC_PARAMETERS, includeFlatFileMarkings ).toString());
-		NumberFormat nf = NumberFormat.getNumberInstance(Locale.ENGLISH);
-		NumberFormat vmaxnf = NumberFormat.getNumberInstance(Locale.ENGLISH);
+	
 		if (null != kps.getMichaelisConstants()) {
 			List<MichaelisConstant> michaelisConstants = kps.getMichaelisConstants();
 			for (MichaelisConstant michaelisConstant : michaelisConstants) {
@@ -156,7 +155,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 				if (includeFlatFileMarkings)
 					km.append(CC_PREFIX_INDENT);
 				km.append(KM2);
-				String val = nf.format(michaelisConstant.getConstant());
+				String val = getSigDig(michaelisConstant.getConstant());
 				String val2 = "" +michaelisConstant.getConstant();
 				if(val.contains(STOP)){
 					val =val2;
@@ -183,7 +182,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 				if (includeFlatFileMarkings)
 					vm.append(CC_PREFIX_INDENT);
 				vm.append(VMAX);
-				String val = vmaxnf.format(maximumVelocity.getVelocity());
+				String val =getSigDig(maximumVelocity.getVelocity());
 				String val2 = "" +maximumVelocity.getVelocity();
 				if(val.contains(STOP)){
 					val =val2;
@@ -218,7 +217,18 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 	}
 	
 
-	
+	public static String getSigDig(Double number){
+		String temp = number.toString();
+		if (temp.indexOf(".") > 0){
+			while (temp.endsWith("0")){
+				temp = temp.substring(0, temp.length()-1);
+			}
+			if (temp.endsWith(".")){
+				temp = temp.substring(0, temp.length()-1);
+			}
+		}
+		return temp;
+	}
 	
 	private List<String>  buildPHDepLine(PhDependence depend, boolean includeFlatFileMarkings, boolean showEvidence) {    
 	    return buildDependence(depend, P_H_DEPENDENCE, includeFlatFileMarkings, showEvidence);	

@@ -34,6 +34,7 @@ public class FtLineModelListener extends FtLineParserBaseListener implements Par
 
 	@Override
 	public void exitFt_line(@NotNull FtLineParser.Ft_lineContext ctx) {
+		ft.ft_text = updateAltSeqText(ft.ft_text);
 		object.fts.add(ft);
 		ft = null;
 	}
@@ -84,4 +85,58 @@ public class FtLineModelListener extends FtLineParserBaseListener implements Par
 	public FtLineObject getObject() {
 		return object;
 	}
+	
+	private String updateAltSeqText(String text) {
+		if(!FtLineObject.hasAltSeq(ft.type))
+			return text;
+		return fixVarSeqSpace(text);
+	}
+	
+	private String fixVarSeqSpace(String value) {
+		String temp =value;
+		int index = firstNonCapital(value);
+		if(index ==-1)
+			return value;
+		int spaceLocation =-1;
+		do {
+			 spaceLocation = getSpaceLocation(temp, index);
+			 if(spaceLocation ==-1)
+				 break;
+			 String val = temp.substring(0, spaceLocation) + temp.substring(spaceLocation+1);
+			 temp = val;
+			 index -=1;
+		}while (spaceLocation !=-1);
+		
+		return temp;
+	}
+	
+	private int getSpaceLocation(String value, int index) {
+		for (int i =0 ;i<index; i ++) {
+			if(isCapital(value.charAt(i))) {
+				if((i+2)<index) {
+					if((value.charAt(i+1) ==' ') && isCapital(value.charAt(i+2))){
+						return i+1;
+					}
+				}
+			}
+		}
+		return -1;
+	}
+	
+	private boolean isCapital(char c) {
+		return c>='A' && c <='Z';
+	}
+	private int firstNonCapital(String val) {
+		for(int i=0; i< val.length(); i++) {
+			char c = val.charAt(i);
+			if(isCapital(c))
+				continue;
+			if((c ==' ') || (c =='-') || (c =='>')) {
+				continue;
+			}
+			return i;
+		}
+		return -1;
+	}
+	
 }

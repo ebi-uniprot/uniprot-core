@@ -12,7 +12,11 @@ import com.google.common.base.Strings;
 public class ParseException extends RuntimeException{
 
 
-    private final String originalString;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final String originalString;
 	private final int currentLineNumber;
 	private final int currentCharPosition;
 

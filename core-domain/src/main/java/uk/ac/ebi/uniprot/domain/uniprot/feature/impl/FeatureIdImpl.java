@@ -3,20 +3,27 @@ package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 
+import java.util.Arrays;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
 public class FeatureIdImpl implements FeatureId {
 	
-	private static final Map<FeatureType, Pattern> FEATUREID_REGEX_MAP = new EnumMap<>(FeatureType.class);
+	private final static  Map<FeatureType, List<Pattern> > FEATUREID_REGEX_MAP = new EnumMap<>(FeatureType.class);
+	private final static Pattern PRO_PATTERN = Pattern.compile("PRO_(\\d+)");
+	private final static Pattern CAR_PATTERN = Pattern.compile("CAR_(\\d+)");
+	private final static Pattern VSP_PATTERN = Pattern.compile("VSP_(\\d+)");
+	private final static Pattern VAR_PATTERN = Pattern.compile("VAR_(\\d+)");
+
 	static {
-		FEATUREID_REGEX_MAP.put(FeatureType.CHAIN, Pattern.compile("PRO_(\\d+)"));
-		FEATUREID_REGEX_MAP.put(FeatureType.CARBOHYD, Pattern.compile("PRO_(\\d+)"));
-		FEATUREID_REGEX_MAP.put(FeatureType.PEPTIDE, Pattern.compile("PRO_(\\d+)"));
-		FEATUREID_REGEX_MAP.put(FeatureType.PROPEP, Pattern.compile("PRO_(\\d+)"));
-		FEATUREID_REGEX_MAP.put(FeatureType.VAR_SEQ, Pattern.compile("VSP_(\\d+)"));
-		FEATUREID_REGEX_MAP.put(FeatureType.VARIANT, Pattern.compile("VAR_(\\d+)"));
+		FEATUREID_REGEX_MAP.put(FeatureType.CHAIN, Arrays.asList(PRO_PATTERN));
+		FEATUREID_REGEX_MAP.put(FeatureType.CARBOHYD, Arrays.asList(PRO_PATTERN, CAR_PATTERN, VSP_PATTERN));
+		FEATUREID_REGEX_MAP.put(FeatureType.PEPTIDE,  Arrays.asList(PRO_PATTERN));
+		FEATUREID_REGEX_MAP.put(FeatureType.PROPEP, Arrays.asList(PRO_PATTERN));
+		FEATUREID_REGEX_MAP.put(FeatureType.VAR_SEQ, Arrays.asList(VSP_PATTERN));
+		FEATUREID_REGEX_MAP.put(FeatureType.VARIANT,  Arrays.asList(VAR_PATTERN));
 	};
 	private String value;
 
@@ -24,7 +31,7 @@ public class FeatureIdImpl implements FeatureId {
 		this.value = "";
 	}
 	public FeatureIdImpl(String value) {
-		this.value = value;
+		this.value = Utils.resetNull(value);
 	}
 	
 	@Override
@@ -38,12 +45,12 @@ public class FeatureIdImpl implements FeatureId {
 
 	@Override
 	public boolean isValid(FeatureType type) {
-		Pattern pattern = FEATUREID_REGEX_MAP.get(type);
-		if (pattern == null)
+		List<Pattern> patterns = FEATUREID_REGEX_MAP.get(type);
+		if (patterns == null)
 			return true;
 		if (value == null)
 			return false;
-		return pattern.matcher(value).matches();
+		return patterns.stream().anyMatch(val -> val.matcher(value).matches());
 	}
 
 	@Override

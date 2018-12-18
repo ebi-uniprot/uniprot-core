@@ -16,7 +16,7 @@ class EvidenceTypesTest {
 	@Test
 	void testGetAllTypes() {
 		List<EvidenceTypeDetail> types = EvidenceTypes.INSTANCE.getAllTypes();
-		assertEquals(42, types.size());
+		assertEquals(46, types.size());
 	}
 
 	@Test

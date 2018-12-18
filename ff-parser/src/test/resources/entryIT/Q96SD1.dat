@@ -1,0 +1,680 @@
+ID   DCR1C_HUMAN             Reviewed;         692 AA.
+AC   Q96SD1; D3DRT6; Q1HCL2; Q5JSR4; Q5JSR5; Q5JSR7; Q5JSR8; Q5JSR9;
+AC   Q5JSS0; Q5JSS7; Q6PK14; Q8N101; Q8N132; Q8TBW9; Q9BVW9; Q9HAM4;
+DT   19-JUL-2005, integrated into UniProtKB/Swiss-Prot.
+DT   19-JUL-2005, sequence version 2.
+DT   07-NOV-2018, entry version 134.
+DE   RecName: Full=Protein artemis;
+DE            EC=3.1.-.-;
+DE   AltName: Full=DNA cross-link repair 1C protein;
+DE   AltName: Full=Protein A-SCID;
+DE   AltName: Full=SNM1 homolog C;
+DE            Short=hSNM1C;
+DE   AltName: Full=SNM1-like protein;
+GN   Name=DCLRE1C; Synonyms=ARTEMIS, ASCID, SCIDA, SNM1C;
+OS   Homo sapiens (Human).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+OC   Catarrhini; Hominidae; Homo.
+OX   NCBI_TaxID=9606;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 1), FUNCTION, TISSUE SPECIFICITY,
+RP   AND INVOLVEMENT IN RSSCID.
+RX   PubMed=11336668; DOI=10.1016/S0092-8674(01)00309-9;
+RA   Moshous D., Callebaut I., de Chasseval R., Corneo B.,
+RA   Cavazzana-Calvo M., le Deist F., Tezcan I., Sanal O., Bertrand Y.,
+RA   Philippe N., Fischer A., de Villartay J.-P.;
+RT   "Artemis, a novel DNA double-strand break repair/V(D)J recombination
+RT   protein, is mutated in human severe combined immune deficiency.";
+RL   Cell 105:177-186(2001).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS 2 AND 3), FUNCTION, SUBCELLULAR
+RP   LOCATION, AND INVOLVEMENT IN SCIDA.
+RX   PubMed=12055248; DOI=10.4049/jimmunol.168.12.6323;
+RA   Li L., Moshous D., Zhou Y., Wang J., Xie G., Salido E., Hu D.,
+RA   de Villartay J.-P., Cowan M.J.;
+RT   "A founder mutation in Artemis, an SNM1-like protein, causes SCID in
+RT   Athabascan-speaking native Americans.";
+RL   J. Immunol. 168:6323-6329(2002).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 3), AND VARIANT
+RP   ARG-171.
+RC   TISSUE=Embryo;
+RX   PubMed=14702039; DOI=10.1038/ng1285;
+RA   Ota T., Suzuki Y., Nishikawa T., Otsuki T., Sugiyama T., Irie R.,
+RA   Wakamatsu A., Hayashi K., Sato H., Nagai K., Kimura K., Makita H.,
+RA   Sekine M., Obayashi M., Nishi T., Shibahara T., Tanaka T., Ishii S.,
+RA   Yamamoto J., Saito K., Kawai Y., Isono Y., Nakamura Y., Nagahari K.,
+RA   Murakami K., Yasuda T., Iwayanagi T., Wagatsuma M., Shiratori A.,
+RA   Sudo H., Hosoiri T., Kaku Y., Kodaira H., Kondo H., Sugawara M.,
+RA   Takahashi M., Kanda K., Yokoi T., Furuya T., Kikkawa E., Omura Y.,
+RA   Abe K., Kamihara K., Katsuta N., Sato K., Tanikawa M., Yamazaki M.,
+RA   Ninomiya K., Ishibashi T., Yamashita H., Murakawa K., Fujimori K.,
+RA   Tanai H., Kimata M., Watanabe M., Hiraoka S., Chiba Y., Ishida S.,
+RA   Ono Y., Takiguchi S., Watanabe S., Yosida M., Hotuta T., Kusano J.,
+RA   Kanehori K., Takahashi-Fujii A., Hara H., Tanase T.-O., Nomura Y.,
+RA   Togiya S., Komai F., Hara R., Takeuchi K., Arita M., Imose N.,
+RA   Musashino K., Yuuki H., Oshima A., Sasaki N., Aotsuka S.,
+RA   Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S.,
+RA   Moriya S., Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O.,
+RA   Nakagawa S., Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H.,
+RA   Hishigaki H., Watanabe T., Sugiyama A., Takemoto M., Kawakami B.,
+RA   Yamazaki M., Watanabe K., Kumagai A., Itakura S., Fukuzumi Y.,
+RA   Fujimori Y., Komiyama M., Tashiro H., Tanigami A., Fujiwara T.,
+RA   Ono T., Yamada K., Fujii Y., Ozaki K., Hirao M., Ohmori Y.,
+RA   Kawabata A., Hikiji T., Kobatake N., Inagaki H., Ikema Y., Okamoto S.,
+RA   Okitani R., Kawakami T., Noguchi S., Itoh T., Shigeta K., Senba T.,
+RA   Matsumura K., Nakajima Y., Mizuno T., Morinaga M., Sasaki M.,
+RA   Togashi T., Oyama M., Hata H., Watanabe M., Komatsu T.,
+RA   Mizushima-Sugano J., Satoh T., Shirai Y., Takahashi Y., Nakagawa K.,
+RA   Okumura K., Nagase T., Nomura N., Kikuchi H., Masuho Y., Yamashita R.,
+RA   Nakai K., Yada T., Nakamura Y., Ohara O., Isogai T., Sugano S.;
+RT   "Complete sequencing and characterization of 21,243 full-length human
+RT   cDNAs.";
+RL   Nat. Genet. 36:40-45(2004).
+RN   [4]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], AND VARIANTS VAL-140; ARG-153;
+RP   ARG-171; ARG-243; CYS-320 AND MET-329.
+RG   NIEHS SNPs program;
+RL   Submitted (APR-2006) to the EMBL/GenBank/DDBJ databases.
+RN   [5]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RX   PubMed=15164054; DOI=10.1038/nature02462;
+RA   Deloukas P., Earthrowl M.E., Grafham D.V., Rubenfield M., French L.,
+RA   Steward C.A., Sims S.K., Jones M.C., Searle S., Scott C., Howe K.,
+RA   Hunt S.E., Andrews T.D., Gilbert J.G.R., Swarbreck D., Ashurst J.L.,
+RA   Taylor A., Battles J., Bird C.P., Ainscough R., Almeida J.P.,
+RA   Ashwell R.I.S., Ambrose K.D., Babbage A.K., Bagguley C.L., Bailey J.,
+RA   Banerjee R., Bates K., Beasley H., Bray-Allen S., Brown A.J.,
+RA   Brown J.Y., Burford D.C., Burrill W., Burton J., Cahill P., Camire D.,
+RA   Carter N.P., Chapman J.C., Clark S.Y., Clarke G., Clee C.M., Clegg S.,
+RA   Corby N., Coulson A., Dhami P., Dutta I., Dunn M., Faulkner L.,
+RA   Frankish A., Frankland J.A., Garner P., Garnett J., Gribble S.,
+RA   Griffiths C., Grocock R., Gustafson E., Hammond S., Harley J.L.,
+RA   Hart E., Heath P.D., Ho T.P., Hopkins B., Horne J., Howden P.J.,
+RA   Huckle E., Hynds C., Johnson C., Johnson D., Kana A., Kay M.,
+RA   Kimberley A.M., Kershaw J.K., Kokkinaki M., Laird G.K., Lawlor S.,
+RA   Lee H.M., Leongamornlert D.A., Laird G., Lloyd C., Lloyd D.M.,
+RA   Loveland J., Lovell J., McLaren S., McLay K.E., McMurray A.,
+RA   Mashreghi-Mohammadi M., Matthews L., Milne S., Nickerson T.,
+RA   Nguyen M., Overton-Larty E., Palmer S.A., Pearce A.V., Peck A.I.,
+RA   Pelan S., Phillimore B., Porter K., Rice C.M., Rogosin A., Ross M.T.,
+RA   Sarafidou T., Sehra H.K., Shownkeen R., Skuce C.D., Smith M.,
+RA   Standring L., Sycamore N., Tester J., Thorpe A., Torcasso W.,
+RA   Tracey A., Tromans A., Tsolas J., Wall M., Walsh J., Wang H.,
+RA   Weinstock K., West A.P., Willey D.L., Whitehead S.L., Wilming L.,
+RA   Wray P.W., Young L., Chen Y., Lovering R.C., Moschonas N.K.,
+RA   Siebert R., Fechtel K., Bentley D., Durbin R.M., Hubbard T.,
+RA   Doucette-Stamm L., Beck S., Smith D.R., Rogers J.;
+RT   "The DNA sequence and comparative analysis of human chromosome 10.";
+RL   Nature 429:375-381(2004).
+RN   [6]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RA   Mural R.J., Istrail S., Sutton G.G., Florea L., Halpern A.L.,
+RA   Mobarry C.M., Lippert R., Walenz B., Shatkay H., Dew I., Miller J.R.,
+RA   Flanigan M.J., Edwards N.J., Bolanos R., Fasulo D., Halldorsson B.V.,
+RA   Hannenhalli S., Turner R., Yooseph S., Lu F., Nusskern D.R.,
+RA   Shue B.C., Zheng X.H., Zhong F., Delcher A.L., Huson D.H.,
+RA   Kravitz S.A., Mouchard L., Reinert K., Remington K.A., Clark A.G.,
+RA   Waterman M.S., Eichler E.E., Adams M.D., Hunkapiller M.W., Myers E.W.,
+RA   Venter J.C.;
+RL   Submitted (SEP-2005) to the EMBL/GenBank/DDBJ databases.
+RN   [7]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORMS 3 AND 4), NUCLEOTIDE
+RP   SEQUENCE [LARGE SCALE MRNA] OF 401-692 (ISOFORMS 1/2/3), AND VARIANT
+RP   ARG-243.
+RC   TISSUE=Cervix carcinoma, Lung carcinoma, and Skeletal muscle;
+RX   PubMed=15489334; DOI=10.1101/gr.2596504;
+RG   The MGC Project Team;
+RT   "The status, quality, and expansion of the NIH full-length cDNA
+RT   project: the Mammalian Gene Collection (MGC).";
+RL   Genome Res. 14:2121-2127(2004).
+RN   [8]
+RP   FUNCTION, INTERACTION WITH PRKDC, PHOSPHORYLATION BY PRKDC, AND
+RP   MUTAGENESIS OF ASP-165.
+RX   PubMed=11955432; DOI=10.1016/S0092-8674(02)00671-2;
+RA   Ma Y., Pannicke U., Schwarz K., Lieber M.R.;
+RT   "Hairpin opening and overhang processing by an Artemis/DNA-dependent
+RT   protein kinase complex in nonhomologous end joining and V(D)J
+RT   recombination.";
+RL   Cell 108:781-794(2002).
+RN   [9]
+RP   DNA REPAIR METALLO-BETA-LACTAMASE FAMILY.
+RX   PubMed=12177301; DOI=10.1093/nar/gkf470;
+RA   Callebaut I., Moshous D., Mornon J.-P., de Villartay J.-P.;
+RT   "Metallo-beta-lactamase fold within nucleic acids processing enzymes:
+RT   the beta-CASP family.";
+RL   Nucleic Acids Res. 30:3592-3601(2002).
+RN   [10]
+RP   FUNCTION, SUBCELLULAR LOCATION, MUTAGENESIS OF ASP-17; HIS-33; HIS-35;
+RP   ASP-37; HIS-38; HIS-115; ASP-136; ASP-165 AND HIS-319, AND
+RP   PHOSPHORYLATION BY PRKDC.
+RX   PubMed=15071507; DOI=10.1038/sj.emboj.7600206;
+RA   Pannicke U., Ma Y., Hopfner K.-P., Niewolik D., Lieber M.R.,
+RA   Schwarz K.;
+RT   "Functional and biochemical dissection of the structure-specific
+RT   nuclease ARTEMIS.";
+RL   EMBO J. 23:1987-1997(2004).
+RN   [11]
+RP   FUNCTION, MUTAGENESIS OF SER-516; SER-534; SER-538; SER-548; SER-553;
+RP   SER-561 AND SER-562, PHOSPHORYLATION BY ATM, AND PHOSPHORYLATION AT
+RP   SER-645.
+RX   PubMed=15468306; DOI=10.1002/eji.200425455;
+RA   Poinsignon C., de Chasseval R., Soubeyrand S., Moshous D., Fischer A.,
+RA   Hache R.J.G., de Villartay J.-P.;
+RT   "Phosphorylation of Artemis following irradiation-induced DNA
+RT   damage.";
+RL   Eur. J. Immunol. 34:3146-3155(2004).
+RN   [12]
+RP   FUNCTION, INTERACTION WITH PRKDC, AND MUTAGENESIS OF ASP-17; HIS-33;
+RP   HIS-35; ASP-37; HIS-38; HIS-115; ASP-136; ASP-165 AND HIS-319.
+RX   PubMed=14744996; DOI=10.1084/jem.20031142;
+RA   Poinsignon C., Moshous D., Callebaut I., de Chasseval R., Villey I.,
+RA   de Villartay J.-P.;
+RT   "The metallo-beta-lactamase/beta-CASP domain of Artemis constitutes
+RT   the catalytic core for V(D)J recombination.";
+RL   J. Exp. Med. 199:315-321(2004).
+RN   [13]
+RP   FUNCTION, AND INTERACTION WITH PRKDC.
+RX   PubMed=15574326; DOI=10.1016/j.molcel.2004.11.017;
+RA   Ma Y., Lu H., Tippin B., Goodman M.F., Shimazaki N., Koiwai O.,
+RA   Hsieh C.-L., Schwarz K., Lieber M.R.;
+RT   "A biochemically defined system for mammalian nonhomologous DNA end
+RT   joining.";
+RL   Mol. Cell 16:701-713(2004).
+RN   [14]
+RP   FUNCTION, INTERACTION WITH TP53BP1, MUTAGENESIS OF ASP-37, AND
+RP   PHOSPHORYLATION BY ATM.
+RX   PubMed=15574327; DOI=10.1016/j.molcel.2004.10.029;
+RA   Riballo E., Kuehne M., Rief N., Doherty A., Smith G.C.M., Recio M.-J.,
+RA   Reis C., Dahm K., Fricke A., Krempler A., Parker A.R., Jackson S.P.,
+RA   Gennery A., Jeggo P.A., Loebrich M.;
+RT   "A pathway of double-strand break rejoining dependent upon ATM,
+RT   Artemis, and proteins locating to gamma-H2AX foci.";
+RL   Mol. Cell 16:715-724(2004).
+RN   [15]
+RP   FUNCTION, INTERACTION WITH ATM; BRCA1; THE MRN COMPLEX AND PRKDC, AND
+RP   PHOSPHORYLATION BY ATM; ATR AND PRKDC.
+RX   PubMed=15456891; DOI=10.1128/MCB.24.20.9207-9220.2004;
+RA   Zhang X., Succi J., Feng Z., Prithivirajsingh S., Story M.D.,
+RA   Legerski R.J.;
+RT   "Artemis is a phosphorylation target of ATM and ATR and is involved in
+RT   the G2/M DNA damage checkpoint response.";
+RL   Mol. Cell. Biol. 24:9207-9220(2004).
+RN   [16]
+RP   INTERACTION WITH THE MRN COMPLEX, PHOSPHORYLATION BY ATM, AND
+RP   PHOSPHORYLATION AT SER-645.
+RX   PubMed=15723659; DOI=10.1111/j.1349-7006.2005.00019.x;
+RA   Chen L., Morio T., Minegishi Y., Nakada S., Nagasawa M., Komatsu K.,
+RA   Chessa L., Villa A., Lecis D., Delia D., Mizutani S.;
+RT   "Ataxia-telangiectasia-mutated dependent phosphorylation of Artemis in
+RT   response to DNA damage.";
+RL   Cancer Sci. 96:134-141(2005).
+RN   [17]
+RP   FUNCTION, PHOSPHORYLATION BY PRKDC, AND PHOSPHORYLATION IN RESPONSE TO
+RP   DNA DAMAGE.
+RX   PubMed=15811628; DOI=10.1016/j.dnarep.2005.02.001;
+RA   Wang J., Pluth J.M., Cooper P.K., Cowan M.J., Chen D.J., Yannone S.M.;
+RT   "Artemis deficiency confers a DNA double-strand break repair defect
+RT   and Artemis phosphorylation status is altered by DNA damage and cell
+RT   cycle progression.";
+RL   DNA Repair 4:556-570(2005).
+RN   [18]
+RP   FUNCTION, AND INTERACTION WITH PRKDC.
+RX   PubMed=15936993; DOI=10.1016/j.dnarep.2005.04.013;
+RA   Ma Y., Schwarz K., Lieber M.R.;
+RT   "The Artemis:DNA-PKcs endonuclease cleaves DNA loops, flaps, and
+RT   gaps.";
+RL   DNA Repair 4:845-851(2005).
+RN   [19]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Leukemic T-cell;
+RX   PubMed=19690332; DOI=10.1126/scisignal.2000007;
+RA   Mayya V., Lundgren D.H., Hwang S.-I., Rezaul K., Wu L., Eng J.K.,
+RA   Rodionov V., Han D.K.;
+RT   "Quantitative phosphoproteomic analysis of T cell receptor signaling
+RT   reveals system-wide modulation of protein-protein interactions.";
+RL   Sci. Signal. 2:RA46-RA46(2009).
+RN   [20]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Cervix carcinoma, and Erythroleukemia;
+RX   PubMed=23186163; DOI=10.1021/pr300630k;
+RA   Zhou H., Di Palma S., Preisinger C., Peng M., Polat A.N., Heck A.J.,
+RA   Mohammed S.;
+RT   "Toward a comprehensive characterization of a human cancer cell
+RT   phosphoproteome.";
+RL   J. Proteome Res. 12:260-271(2013).
+RN   [21]
+RP   VARIANTS RSSCID VAL-118 AND GLU-135.
+RX   PubMed=12406895; DOI=10.1182/blood-2002-01-0187;
+RA   Noordzij J.G., Verkaik N.S., van der Burg M., van Veelen L.R.,
+RA   de Bruin-Versteeg S., Wiegant W., Vossen J.M.J.J., Weemaes C.M.R.,
+RA   de Groot R., Zdzienicka M.Z., van Gent D.C., van Dongen J.J.M.;
+RT   "Radiosensitive SCID patients with Artemis gene mutations show a
+RT   complete B-cell differentiation arrest at the pre-B-cell receptor
+RT   checkpoint in bone marrow.";
+RL   Blood 101:1446-1452(2003).
+RN   [22]
+RP   INVOLVEMENT IN RSSCID.
+RX   PubMed=12921762; DOI=10.1016/S1521-6616(03)00095-0;
+RA   Kobayashi N., Agematsu K., Nagumo H., Yasui K., Katsuyama Y.,
+RA   Yoshizawa K., Ota M., Yachie A., Komiyama A.;
+RT   "Expansion of clonotype-restricted HLA-identical maternal CD4+ T cells
+RT   in a patient with severe combined immunodeficiency and a homozygous
+RT   mutation in the Artemis gene.";
+RL   Clin. Immunol. 108:159-166(2003).
+RN   [23]
+RP   INVOLVEMENT IN RSSCID.
+RX   PubMed=12592555; DOI=10.1007/s00439-002-0897-x;
+RA   Kobayashi N., Agematsu K., Sugita K., Sako M., Nonoyama S., Yachie A.,
+RA   Kumaki S., Tsuchiya S., Ochs H.D., Sugita K., Fukushima Y.,
+RA   Komiyama A.;
+RT   "Novel Artemis gene mutations of radiosensitive severe combined
+RT   immunodeficiency in Japanese families.";
+RL   Hum. Genet. 112:348-352(2003).
+RN   [24]
+RP   INVOLVEMENT IN RSSCID.
+RX   PubMed=12569164; DOI=10.1172/JCI16774;
+RA   Moshous D., Pannetier C., de Chasseval R., le Deist F.,
+RA   Cavazzana-Calvo M., Romana S., Macintyre E., Canioni D., Brousse N.,
+RA   Fischer A., Casanova J.-L., de Villartay J.-P.;
+RT   "Partial T and B lymphocyte immunodeficiency and predisposition to
+RT   lymphoma in patients with hypomorphic mutations in Artemis.";
+RL   J. Clin. Invest. 111:381-387(2003).
+RN   [25]
+RP   VARIANT OMENN SYNDROME ASP-35.
+RX   PubMed=15731174; DOI=10.1182/blood-2004-12-4861;
+RA   Ege M., Ma Y., Manfras B., Kalwak K., Lu H., Lieber M.R., Schwarz K.,
+RA   Pannicke U.;
+RT   "Omenn syndrome due to ARTEMIS mutations.";
+RL   Blood 105:4179-4186(2005).
+CC   -!- FUNCTION: Required for V(D)J recombination, the process by which
+CC       exons encoding the antigen-binding domains of immunoglobulins and
+CC       T-cell receptor proteins are assembled from individual V, (D), and
+CC       J gene segments. V(D)J recombination is initiated by the lymphoid
+CC       specific RAG endonuclease complex, which generates site specific
+CC       DNA double strand breaks (DSBs). These DSBs present two types of
+CC       DNA end structures: hairpin sealed coding ends and phosphorylated
+CC       blunt signal ends. These ends are independently repaired by the
+CC       non homologous end joining (NHEJ) pathway to form coding and
+CC       signal joints respectively. This protein exhibits single-strand
+CC       specific 5'-3' exonuclease activity in isolation and acquires
+CC       endonucleolytic activity on 5' and 3' hairpins and overhangs when
+CC       in a complex with PRKDC. The latter activity is required
+CC       specifically for the resolution of closed hairpins prior to the
+CC       formation of the coding joint. May also be required for the repair
+CC       of complex DSBs induced by ionizing radiation, which require
+CC       substantial end-processing prior to religation by NHEJ.
+CC       {ECO:0000269|PubMed:11336668, ECO:0000269|PubMed:11955432,
+CC       ECO:0000269|PubMed:12055248, ECO:0000269|PubMed:14744996,
+CC       ECO:0000269|PubMed:15071507, ECO:0000269|PubMed:15456891,
+CC       ECO:0000269|PubMed:15468306, ECO:0000269|PubMed:15574326,
+CC       ECO:0000269|PubMed:15574327, ECO:0000269|PubMed:15811628,
+CC       ECO:0000269|PubMed:15936993}.
+CC   -!- SUBUNIT: Interacts with ATM, BRCA1, PRKDC and TP53BP1. Also
+CC       exhibits ATM- and phosphorylation-dependent interaction with the
+CC       MRN complex, composed of MRE11, RAD50, and NBN.
+CC       {ECO:0000269|PubMed:11955432, ECO:0000269|PubMed:14744996,
+CC       ECO:0000269|PubMed:15456891, ECO:0000269|PubMed:15574326,
+CC       ECO:0000269|PubMed:15574327, ECO:0000269|PubMed:15723659,
+CC       ECO:0000269|PubMed:15936993}.
+CC   -!- INTERACTION:
+CC       P49917:LIG4; NbExp=16; IntAct=EBI-11694104, EBI-847896;
+CC       P78527:PRKDC; NbExp=4; IntAct=EBI-11694104, EBI-352053;
+CC   -!- SUBCELLULAR LOCATION: Nucleus {ECO:0000269|PubMed:12055248,
+CC       ECO:0000269|PubMed:15071507}.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Alternative splicing; Named isoforms=4;
+CC       Name=1;
+CC         IsoId=Q96SD1-1; Sequence=Displayed;
+CC       Name=2; Synonyms=SCIDA;
+CC         IsoId=Q96SD1-2; Sequence=VSP_014888;
+CC       Name=3;
+CC         IsoId=Q96SD1-3; Sequence=VSP_014889, VSP_014890;
+CC       Name=4;
+CC         IsoId=Q96SD1-4; Sequence=VSP_014891, VSP_014892;
+CC   -!- TISSUE SPECIFICITY: Ubiquitously expressed, with highest levels in
+CC       the kidney, lung, pancreas and placenta (at the mRNA level).
+CC       Expression is not increased in thymus or bone marrow, sites of
+CC       V(D)J recombination. {ECO:0000269|PubMed:11336668}.
+CC   -!- PTM: Phosphorylation on undefined residues by PRKDC may stimulate
+CC       endonucleolytic activity on 5' and 3' hairpins and overhangs.
+CC       PRKDC must remain present, even after phosphorylation, for
+CC       efficient hairpin opening. Also phosphorylated by ATM in response
+CC       to ionizing radiation (IR) and by ATR in response to ultraviolet
+CC       (UV) radiation. {ECO:0000269|PubMed:11955432,
+CC       ECO:0000269|PubMed:15071507, ECO:0000269|PubMed:15456891,
+CC       ECO:0000269|PubMed:15468306, ECO:0000269|PubMed:15574327,
+CC       ECO:0000269|PubMed:15723659, ECO:0000269|PubMed:15811628}.
+CC   -!- DISEASE: Severe combined immunodeficiency autosomal recessive T-
+CC       cell-negative/B-cell-negative/NK-cell-positive with sensitivity to
+CC       ionizing radiation (RSSCID) [MIM:602450]: A form of severe
+CC       combined immunodeficiency, a genetically and clinically
+CC       heterogeneous group of rare congenital disorders characterized by
+CC       impairment of both humoral and cell-mediated immunity, leukopenia,
+CC       and low or absent antibody levels. Patients present in infancy
+CC       with recurrent, persistent infections by opportunistic organisms.
+CC       The common characteristic of all types of SCID is absence of T-
+CC       cell-mediated cellular immunity due to a defect in T-cell
+CC       development. Individuals affected by RS-SCID show defects in the
+CC       DNA repair machinery necessary for coding joint formation and the
+CC       completion of V(D)J recombination. A subset of cells from such
+CC       patients show increased radiosensitivity.
+CC       {ECO:0000269|PubMed:11336668, ECO:0000269|PubMed:12406895,
+CC       ECO:0000269|PubMed:12569164, ECO:0000269|PubMed:12592555,
+CC       ECO:0000269|PubMed:12921762}. Note=The disease is caused by
+CC       mutations affecting the gene represented in this entry.
+CC   -!- DISEASE: Severe combined immunodeficiency Athabaskan type (SCIDA)
+CC       [MIM:602450]: A variety of SCID with sensitivity to ionizing
+CC       radiation. A founder mutation has been detected in Athabascan-
+CC       speaking native Americans, being inherited as an autosomal
+CC       recessive trait. Affected individuals exhibit clinical symptoms
+CC       and defects in DNA repair comparable to those seen in RS-SCID.
+CC       {ECO:0000269|PubMed:12055248}. Note=The disease is caused by
+CC       mutations affecting the gene represented in this entry.
+CC   -!- DISEASE: Omenn syndrome (OS) [MIM:603554]: Severe immunodeficiency
+CC       characterized by the presence of activated, anergic, oligoclonal
+CC       T-cells, hypereosinophilia, and high IgE levels.
+CC       {ECO:0000269|PubMed:15731174}. Note=The disease is caused by
+CC       mutations affecting the gene represented in this entry.
+CC   -!- SIMILARITY: Belongs to the DNA repair metallo-beta-lactamase
+CC       (DRMBL) family. {ECO:0000305}.
+CC   -!- WEB RESOURCE: Name=DCLRE1Cbase; Note=DCLRE1C mutation db;
+CC       URL="http://structure.bmc.lu.se/idbase/DCLRE1Cbase/";
+CC   -!- WEB RESOURCE: Name=NIEHS-SNPs;
+CC       URL="http://egp.gs.washington.edu/data/dclre1c/";
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   -----------------------------------------------------------------------
+DR   EMBL; AJ296101; CAC37570.1; -; mRNA.
+DR   EMBL; AF395747; AAM53255.1; -; mRNA.
+DR   EMBL; AF395748; AAM53256.1; -; mRNA.
+DR   EMBL; AF395749; AAM53257.1; -; mRNA.
+DR   EMBL; AF395750; AAM53258.1; -; mRNA.
+DR   EMBL; AF395751; AAM53259.1; -; mRNA.
+DR   EMBL; AF395752; AAM53260.1; -; mRNA.
+DR   EMBL; AK021422; BAB13820.1; -; mRNA.
+DR   EMBL; DQ504427; ABF47101.1; -; Genomic_DNA.
+DR   EMBL; AC069544; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AL360083; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; CH471072; EAW86248.1; -; Genomic_DNA.
+DR   EMBL; CH471072; EAW86250.1; -; Genomic_DNA.
+DR   EMBL; CH471072; EAW86251.1; -; Genomic_DNA.
+DR   EMBL; BC000863; AAH00863.1; -; mRNA.
+DR   EMBL; BC009185; AAH09185.1; -; mRNA.
+DR   EMBL; BC022254; AAH22254.1; -; mRNA.
+DR   CCDS; CCDS31149.1; -. [Q96SD1-1]
+DR   CCDS; CCDS31150.1; -. [Q96SD1-2]
+DR   CCDS; CCDS7105.1; -. [Q96SD1-3]
+DR   RefSeq; NP_001029027.1; NM_001033855.2. [Q96SD1-1]
+DR   RefSeq; NP_001029029.1; NM_001033857.2. [Q96SD1-2]
+DR   RefSeq; NP_001029030.1; NM_001033858.2. [Q96SD1-2]
+DR   RefSeq; NP_001276005.1; NM_001289076.1. [Q96SD1-3]
+DR   RefSeq; NP_001276006.1; NM_001289077.1. [Q96SD1-2]
+DR   RefSeq; NP_001276007.1; NM_001289078.1. [Q96SD1-3]
+DR   RefSeq; NP_001276008.1; NM_001289079.1. [Q96SD1-2]
+DR   RefSeq; NP_071932.2; NM_022487.3. [Q96SD1-3]
+DR   RefSeq; XP_006717554.1; XM_006717491.3. [Q96SD1-3]
+DR   RefSeq; XP_011517918.1; XM_011519616.1. [Q96SD1-3]
+DR   RefSeq; XP_011517919.1; XM_011519617.1. [Q96SD1-3]
+DR   RefSeq; XP_011517921.1; XM_011519619.1. [Q96SD1-2]
+DR   RefSeq; XP_016872046.1; XM_017016557.1. [Q96SD1-3]
+DR   RefSeq; XP_016872047.1; XM_017016558.1. [Q96SD1-2]
+DR   UniGene; Hs.655932; -.
+DR   UniGene; Hs.656065; -.
+DR   UniGene; Hs.737284; -.
+DR   PDB; 3W1B; X-ray; 2.40 A; B=485-495.
+DR   PDB; 3W1G; X-ray; 2.55 A; B=485-495.
+DR   PDB; 4HTP; X-ray; 2.25 A; C/E=485-495.
+DR   PDBsum; 3W1B; -.
+DR   PDBsum; 3W1G; -.
+DR   PDBsum; 4HTP; -.
+DR   ProteinModelPortal; Q96SD1; -.
+DR   SMR; Q96SD1; -.
+DR   BioGrid; 122170; 36.
+DR   CORUM; Q96SD1; -.
+DR   IntAct; Q96SD1; 3.
+DR   STRING; 9606.ENSP00000367527; -.
+DR   BindingDB; Q96SD1; -.
+DR   iPTMnet; Q96SD1; -.
+DR   PhosphoSitePlus; Q96SD1; -.
+DR   BioMuta; DCLRE1C; -.
+DR   DMDM; 71153325; -.
+DR   EPD; Q96SD1; -.
+DR   MaxQB; Q96SD1; -.
+DR   PaxDb; Q96SD1; -.
+DR   PeptideAtlas; Q96SD1; -.
+DR   PRIDE; Q96SD1; -.
+DR   ProteomicsDB; 78103; -.
+DR   ProteomicsDB; 78104; -. [Q96SD1-2]
+DR   ProteomicsDB; 78105; -. [Q96SD1-3]
+DR   ProteomicsDB; 78106; -. [Q96SD1-4]
+DR   Ensembl; ENST00000357717; ENSP00000350349; ENSG00000152457. [Q96SD1-3]
+DR   Ensembl; ENST00000378246; ENSP00000367492; ENSG00000152457. [Q96SD1-3]
+DR   Ensembl; ENST00000378249; ENSP00000367496; ENSG00000152457. [Q96SD1-3]
+DR   Ensembl; ENST00000378254; ENSP00000367502; ENSG00000152457. [Q96SD1-2]
+DR   Ensembl; ENST00000378255; ENSP00000367503; ENSG00000152457. [Q96SD1-2]
+DR   Ensembl; ENST00000378258; ENSP00000367506; ENSG00000152457. [Q96SD1-2]
+DR   Ensembl; ENST00000378278; ENSP00000367527; ENSG00000152457. [Q96SD1-1]
+DR   Ensembl; ENST00000378289; ENSP00000367538; ENSG00000152457. [Q96SD1-4]
+DR   Ensembl; ENST00000396817; ENSP00000380030; ENSG00000152457. [Q96SD1-2]
+DR   GeneID; 64421; -.
+DR   KEGG; hsa:64421; -.
+DR   UCSC; uc001inl.5; human. [Q96SD1-1]
+DR   CTD; 64421; -.
+DR   DisGeNET; 64421; -.
+DR   EuPathDB; HostDB:ENSG00000152457.17; -.
+DR   GeneCards; DCLRE1C; -.
+DR   HGNC; HGNC:17642; DCLRE1C.
+DR   HPA; HPA069295; -.
+DR   MalaCards; DCLRE1C; -.
+DR   MIM; 602450; phenotype.
+DR   MIM; 603554; phenotype.
+DR   MIM; 605988; gene.
+DR   neXtProt; NX_Q96SD1; -.
+DR   OpenTargets; ENSG00000152457; -.
+DR   Orphanet; 39041; Omenn syndrome.
+DR   Orphanet; 275; Severe combined immunodeficiency due to DCLRE1C deficiency.
+DR   PharmGKB; PA27176; -.
+DR   eggNOG; KOG1361; Eukaryota.
+DR   eggNOG; COG1236; LUCA.
+DR   GeneTree; ENSGT00530000063183; -.
+DR   HOVERGEN; HBG081421; -.
+DR   InParanoid; Q96SD1; -.
+DR   KO; K10887; -.
+DR   OMA; CYSTHAS; -.
+DR   OrthoDB; EOG091G0TAU; -.
+DR   PhylomeDB; Q96SD1; -.
+DR   TreeFam; TF329572; -.
+DR   Reactome; R-HSA-5693571; Nonhomologous End-Joining (NHEJ).
+DR   SIGNOR; Q96SD1; -.
+DR   ChiTaRS; DCLRE1C; human.
+DR   GenomeRNAi; 64421; -.
+DR   PRO; PR:Q96SD1; -.
+DR   Proteomes; UP000005640; Chromosome 10.
+DR   Bgee; ENSG00000152457; Expressed in 235 organ(s), highest expression level in buccal mucosa cell.
+DR   ExpressionAtlas; Q96SD1; baseline and differential.
+DR   Genevisible; Q96SD1; HS.
+DR   GO; GO:0005794; C:Golgi apparatus; IDA:HPA.
+DR   GO; GO:0070419; C:nonhomologous end joining complex; IDA:UniProtKB.
+DR   GO; GO:0000784; C:nuclear chromosome, telomeric region; IBA:GO_Central.
+DR   GO; GO:0005654; C:nucleoplasm; IDA:HPA.
+DR   GO; GO:0035312; F:5'-3' exodeoxyribonuclease activity; IBA:GO_Central.
+DR   GO; GO:0008409; F:5'-3' exonuclease activity; IDA:MGI.
+DR   GO; GO:0003684; F:damaged DNA binding; IBA:GO_Central.
+DR   GO; GO:0004519; F:endonuclease activity; TAS:Reactome.
+DR   GO; GO:0000014; F:single-stranded DNA endodeoxyribonuclease activity; IDA:MGI.
+DR   GO; GO:0002250; P:adaptive immune response; IEA:UniProtKB-KW.
+DR   GO; GO:0030183; P:B cell differentiation; IEA:Ensembl.
+DR   GO; GO:0006303; P:double-strand break repair via nonhomologous end joining; IBA:GO_Central.
+DR   GO; GO:0036297; P:interstrand cross-link repair; IBA:GO_Central.
+DR   GO; GO:0031848; P:protection from non-homologous end joining at telomere; IBA:GO_Central.
+DR   GO; GO:0010212; P:response to ionizing radiation; IEA:Ensembl.
+DR   GO; GO:0033151; P:V(D)J recombination; IEA:Ensembl.
+DR   Gene3D; 3.60.15.10; -; 1.
+DR   InterPro; IPR011084; DRMBL.
+DR   InterPro; IPR001279; Metallo-B-lactamas.
+DR   InterPro; IPR036866; RibonucZ/Hydroxyglut_hydro.
+DR   Pfam; PF07522; DRMBL; 1.
+DR   Pfam; PF12706; Lactamase_B_2; 1.
+DR   SUPFAM; SSF56281; SSF56281; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Adaptive immunity; Alternative splicing;
+KW   Complete proteome; Disease mutation; DNA damage; DNA recombination;
+KW   DNA repair; Endonuclease; Exonuclease; Hydrolase; Immunity; Magnesium;
+KW   Nuclease; Nucleus; Phosphoprotein; Polymorphism; Reference proteome;
+KW   SCID.
+FT   CHAIN         1    692       Protein artemis.
+FT                                /FTId=PRO_0000209122.
+FT   MOD_RES     380    380       Phosphothreonine.
+FT                                {ECO:0000250|UniProtKB:Q8K4J0}.
+FT   MOD_RES     385    385       Phosphoserine.
+FT                                {ECO:0000250|UniProtKB:Q8K4J0}.
+FT   MOD_RES     645    645       Phosphoserine; by ATM.
+FT                                {ECO:0000269|PubMed:15468306,
+FT                                ECO:0000269|PubMed:15723659}.
+FT   VAR_SEQ       1    120       Missing (in isoform 2).
+FT                                {ECO:0000303|PubMed:12055248}.
+FT                                /FTId=VSP_014888.
+FT   VAR_SEQ       1    115       Missing (in isoform 3).
+FT                                {ECO:0000303|PubMed:12055248,
+FT                                ECO:0000303|PubMed:14702039,
+FT                                ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_014889.
+FT   VAR_SEQ     116    121       CPGSVM -> MKHQER (in isoform 3).
+FT                                {ECO:0000303|PubMed:12055248,
+FT                                ECO:0000303|PubMed:14702039,
+FT                                ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_014890.
+FT   VAR_SEQ     386    434       EEEDDYLFDDPLPIPLRHKVPYPETFHPEVFSMTAVSEKQP
+FT                                EKLRQTPG -> GSHSVTQARMRWCHHDSLYPLTPGIKRSS
+FT                                CLSLLTSWITGAYRHAQLMI (in isoform 4).
+FT                                {ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_014891.
+FT   VAR_SEQ     435    692       Missing (in isoform 4).
+FT                                {ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_014892.
+FT   VARIANT      35     35       H -> D (in Omenn syndrome;
+FT                                dbSNP:rs121908159).
+FT                                {ECO:0000269|PubMed:15731174}.
+FT                                /FTId=VAR_023077.
+FT   VARIANT     118    118       G -> V (in RSSCID).
+FT                                {ECO:0000269|PubMed:12406895}.
+FT                                /FTId=VAR_023078.
+FT   VARIANT     135    135       G -> E (in RSSCID).
+FT                                {ECO:0000269|PubMed:12406895}.
+FT                                /FTId=VAR_023079.
+FT   VARIANT     140    140       A -> V (in dbSNP:rs41297016).
+FT                                {ECO:0000269|Ref.4}.
+FT                                /FTId=VAR_060689.
+FT   VARIANT     153    153       G -> R (in dbSNP:rs41297018).
+FT                                {ECO:0000269|Ref.4}.
+FT                                /FTId=VAR_060690.
+FT   VARIANT     171    171       P -> R (in dbSNP:rs35441642).
+FT                                {ECO:0000269|PubMed:14702039,
+FT                                ECO:0000269|Ref.4}.
+FT                                /FTId=VAR_048892.
+FT   VARIANT     243    243       H -> R (in dbSNP:rs12768894).
+FT                                {ECO:0000269|PubMed:15489334,
+FT                                ECO:0000269|Ref.4}.
+FT                                /FTId=VAR_048893.
+FT   VARIANT     320    320       S -> C (in dbSNP:rs41298896).
+FT                                {ECO:0000269|Ref.4}.
+FT                                /FTId=VAR_048894.
+FT   VARIANT     329    329       L -> M (in dbSNP:rs41299658).
+FT                                {ECO:0000269|Ref.4}.
+FT                                /FTId=VAR_060691.
+FT   MUTAGEN      17     17       D->N,A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN      33     33       H->A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN      35     35       H->A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN      37     37       D->N,A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507,
+FT                                ECO:0000269|PubMed:15574327}.
+FT   MUTAGEN      38     38       H->A: Reduces PRKDC-dependent
+FT                                endonuclease activity, although V(D)J
+FT                                recombination is largely normal.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN     115    115       H->A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN     136    136       D->N,A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN     165    165       D->N,A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:11955432,
+FT                                ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN     319    319       H->A: Abolishes PRKDC-dependent
+FT                                endonuclease activity and V(D)J
+FT                                recombination.
+FT                                {ECO:0000269|PubMed:14744996,
+FT                                ECO:0000269|PubMed:15071507}.
+FT   MUTAGEN     516    516       S->A: Reduced IR induced phosphorylation;
+FT                                when associated with A-534; A-538; A-548;
+FT                                A-553; A-561 and A-562.
+FT                                {ECO:0000269|PubMed:15468306}.
+FT   MUTAGEN     534    534       S->A: Reduced IR induced phosphorylation;
+FT                                when associated with A-516; A-538; A-548;
+FT                                A-553; A-561 and A-562.
+FT                                {ECO:0000269|PubMed:15468306}.
+FT   MUTAGEN     538    538       S->A: Reduced IR induced phosphorylation;
+FT                                when associated with A-516; A-534; A-548;
+FT                                A-553; A-561 and A-562.
+FT                                {ECO:0000269|PubMed:15468306}.
+FT   MUTAGEN     548    548       S->A: Reduced IR induced phosphorylation;
+FT                                when associated with A-516; A-534; A-538;
+FT                                A-553; A-561 and A-562.
+FT                                {ECO:0000269|PubMed:15468306}.
+FT   MUTAGEN     553    553       S->A: Reduced IR induced phosphorylation;
+FT                                when associated with A-516; A-534; A-538;
+FT                                A-548; A-561 and A-562.
+FT                                {ECO:0000269|PubMed:15468306}.
+FT   MUTAGEN     561    561       S->A: Reduced IR induced phosphorylation;
+FT                                when associated with A-516; A-534; A-538;
+FT                                A-548; A-553 and A-562.
+FT                                {ECO:0000269|PubMed:15468306}.
+FT   MUTAGEN     562    562       S->A: Reduced IR induced phosphorylation;
+FT                                when associated with A-516; A-534; A-538;
+FT                                A-548; A-553 and A-561.
+FT                                {ECO:0000269|PubMed:15468306}.
+FT   CONFLICT    560    560       L -> V (in Ref. 1; CAC37570 and 2;
+FT                                AAM53255/AAM53256/AAM53257/AAM53258/
+FT                                AAM53259/AAM53260). {ECO:0000305}.
+FT   HELIX       489    491       {ECO:0000244|PDB:4HTP}.
+SQ   SEQUENCE   692 AA;  78436 MW;  24B857F5B473637B CRC64;
+     MSSFEGQMAE YPTISIDRFD RENLRARAYF LSHCHKDHMK GLRAPTLKRR LECSLKVYLY
+     CSPVTKELLL TSPKYRFWKK RIISIEIETP TQISLVDEAS GEKEEIVVTL LPAGHCPGSV
+     MFLFQGNNGT VLYTGDFRLA QGEAARMELL HSGGRVKDIQ SVYLDTTFCD PRFYQIPSRE
+     ECLSGVLELV RSWITRSPYH VVWLNCKAAY GYEYLFTNLS EELGVQVHVN KLDMFRNMPE
+     ILHHLTTDRN TQIHACRHPK AEEYFQWSKL PCGITSRNRI PLHIISIKPS TMWFGERSRK
+     TNVIVRTGES SYRACFSFHS SYSEIKDFLS YLCPVNAYPN VIPVGTTMDK VVEILKPLCR
+     SSQSTEPKYK PLGKLKRART VHRDSEEEDD YLFDDPLPIP LRHKVPYPET FHPEVFSMTA
+     VSEKQPEKLR QTPGCCRAEC MQSSRFTNFV DCEESNSESE EEVGIPASLQ GDLGSVLHLQ
+     KADGDVPQWE VFFKRNDEIT DESLENFPSS TVAGGSQSPK LFSDSDGEST HISSQNSSQS
+     THITEQGSQG WDSQSDTVLL SSQERNSGDI TSLDKADYRP TIKENIPASL MEQNVICPKD
+     TYSDLKSRDK DVTIVPSTGE PTTLSSETHI PEEKSLLNLS TNADSQSSSD FEVPSTPEAE
+     LPKREHLQYL YEKLATGESI AVKKRKCSLL DT
+//

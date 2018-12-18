@@ -45,6 +45,8 @@ public interface Disease {
      * @return disease id (ID)
      */
      String getDiseaseId();
+     
+     String getDiseaseAccession();
 
     /**
      * @return disease acronym (AR)

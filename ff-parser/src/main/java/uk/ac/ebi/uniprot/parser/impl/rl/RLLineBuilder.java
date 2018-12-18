@@ -244,7 +244,8 @@ public class RLLineBuilder implements RLine<Citation> {
 
 			if (!Strings.isNullOrEmpty(book.getFirstPage())
 					&& book.getFirstPage().toUpperCase().startsWith("ABSTRACT#")) {
-				temp.append(", ").append(book.getFirstPage());
+				temp.append(", ");
+				temp.append(book.getFirstPage());
 			} else {
 				temp.append(", pp.");
 				if (!Strings.isNullOrEmpty(book.getVolume())) {

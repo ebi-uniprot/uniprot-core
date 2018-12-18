@@ -16,8 +16,9 @@ public class KeywordImplTest {
     @Test
     public void testKeywordImpl() {
         String val = "Transmembrane";
+        String id = "KW-0812";
         List<Evidence> evidences = createEvidences();
-        Keyword keyword = new KeywordImpl(val, evidences);
+        Keyword keyword = new KeywordImpl(id, val, evidences);
         assertEquals(val, keyword.getValue());
         assertEquals(2, keyword.getEvidences().size());
         TestHelper.verifyJson(keyword);
@@ -25,8 +26,9 @@ public class KeywordImplTest {
     @Test
     public void testGetDisplayedValue(){
         String val = "Transmembrane";
+        String id = "KW-0812";
         List<Evidence> evidences = createEvidences();
-        Keyword keyword = new KeywordImpl(val, evidences);
+        Keyword keyword = new KeywordImpl(id, val, evidences);
         String expected = "Transmembrane {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, keyword.getDisplayed(" "));
         TestHelper.verifyJson(keyword);

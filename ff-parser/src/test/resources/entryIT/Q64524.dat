@@ -1,0 +1,412 @@
+ID   H2B2E_MOUSE             Reviewed;         126 AA.
+AC   Q64524;
+DT   11-JUL-2006, integrated into UniProtKB/Swiss-Prot.
+DT   23-JAN-2007, sequence version 3.
+DT   07-NOV-2018, entry version 164.
+DE   RecName: Full=Histone H2B type 2-E;
+DE   AltName: Full=H2b 613;
+GN   Name=Hist2h2be;
+OS   Mus musculus (Mouse).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia; Myomorpha;
+OC   Muroidea; Muridae; Murinae; Mus; Mus.
+OX   NCBI_TaxID=10090;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RC   STRAIN=ES;
+RX   PubMed=8858345; DOI=10.1101/gr.6.8.702;
+RA   Wang Z.-F., Tisovec R., Debry R.W., Frey M.R., Matera A.G.,
+RA   Marzluff W.F.;
+RT   "Characterization of the 55-kb mouse histone gene cluster on
+RT   chromosome 3.";
+RL   Genome Res. 6:702-714(1996).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
+RX   PubMed=12408966; DOI=10.1006/geno.2002.6850;
+RA   Marzluff W.F., Gongidi P., Woods K.R., Jin J., Maltais L.J.;
+RT   "The human and mouse replication-dependent histone genes.";
+RL   Genomics 80:487-498(2002).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA].
+RC   STRAIN=C57BL/6J, and NOD;
+RC   TISSUE=Adrenal gland, Kidney, Liver, Lung, Muellerian duct, Ovary, and
+RC   Urinary bladder;
+RX   PubMed=16141072; DOI=10.1126/science.1112014;
+RA   Carninci P., Kasukawa T., Katayama S., Gough J., Frith M.C., Maeda N.,
+RA   Oyama R., Ravasi T., Lenhard B., Wells C., Kodzius R., Shimokawa K.,
+RA   Bajic V.B., Brenner S.E., Batalov S., Forrest A.R., Zavolan M.,
+RA   Davis M.J., Wilming L.G., Aidinis V., Allen J.E.,
+RA   Ambesi-Impiombato A., Apweiler R., Aturaliya R.N., Bailey T.L.,
+RA   Bansal M., Baxter L., Beisel K.W., Bersano T., Bono H., Chalk A.M.,
+RA   Chiu K.P., Choudhary V., Christoffels A., Clutterbuck D.R.,
+RA   Crowe M.L., Dalla E., Dalrymple B.P., de Bono B., Della Gatta G.,
+RA   di Bernardo D., Down T., Engstrom P., Fagiolini M., Faulkner G.,
+RA   Fletcher C.F., Fukushima T., Furuno M., Futaki S., Gariboldi M.,
+RA   Georgii-Hemming P., Gingeras T.R., Gojobori T., Green R.E.,
+RA   Gustincich S., Harbers M., Hayashi Y., Hensch T.K., Hirokawa N.,
+RA   Hill D., Huminiecki L., Iacono M., Ikeo K., Iwama A., Ishikawa T.,
+RA   Jakt M., Kanapin A., Katoh M., Kawasawa Y., Kelso J., Kitamura H.,
+RA   Kitano H., Kollias G., Krishnan S.P., Kruger A., Kummerfeld S.K.,
+RA   Kurochkin I.V., Lareau L.F., Lazarevic D., Lipovich L., Liu J.,
+RA   Liuni S., McWilliam S., Madan Babu M., Madera M., Marchionni L.,
+RA   Matsuda H., Matsuzawa S., Miki H., Mignone F., Miyake S., Morris K.,
+RA   Mottagui-Tabar S., Mulder N., Nakano N., Nakauchi H., Ng P.,
+RA   Nilsson R., Nishiguchi S., Nishikawa S., Nori F., Ohara O.,
+RA   Okazaki Y., Orlando V., Pang K.C., Pavan W.J., Pavesi G., Pesole G.,
+RA   Petrovsky N., Piazza S., Reed J., Reid J.F., Ring B.Z., Ringwald M.,
+RA   Rost B., Ruan Y., Salzberg S.L., Sandelin A., Schneider C.,
+RA   Schoenbach C., Sekiguchi K., Semple C.A., Seno S., Sessa L., Sheng Y.,
+RA   Shibata Y., Shimada H., Shimada K., Silva D., Sinclair B.,
+RA   Sperling S., Stupka E., Sugiura K., Sultana R., Takenaka Y., Taki K.,
+RA   Tammoja K., Tan S.L., Tang S., Taylor M.S., Tegner J., Teichmann S.A.,
+RA   Ueda H.R., van Nimwegen E., Verardo R., Wei C.L., Yagi K.,
+RA   Yamanishi H., Zabarovsky E., Zhu S., Zimmer A., Hide W., Bult C.,
+RA   Grimmond S.M., Teasdale R.D., Liu E.T., Brusic V., Quackenbush J.,
+RA   Wahlestedt C., Mattick J.S., Hume D.A., Kai C., Sasaki D., Tomaru Y.,
+RA   Fukuda S., Kanamori-Katayama M., Suzuki M., Aoki J., Arakawa T.,
+RA   Iida J., Imamura K., Itoh M., Kato T., Kawaji H., Kawagashira N.,
+RA   Kawashima T., Kojima M., Kondo S., Konno H., Nakano K., Ninomiya N.,
+RA   Nishio T., Okada M., Plessy C., Shibata K., Shiraki T., Suzuki S.,
+RA   Tagami M., Waki K., Watahiki A., Okamura-Oho Y., Suzuki H., Kawai J.,
+RA   Hayashizaki Y.;
+RT   "The transcriptional landscape of the mammalian genome.";
+RL   Science 309:1559-1563(2005).
+RN   [4]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (HIST2H2BE).
+RC   TISSUE=Olfactory epithelium;
+RX   PubMed=15489334; DOI=10.1101/gr.2596504;
+RG   The MGC Project Team;
+RT   "The status, quality, and expansion of the NIH full-length cDNA
+RT   project: the Mammalian Gene Collection (MGC).";
+RL   Genome Res. 14:2121-2127(2004).
+RN   [5]
+RP   PHOSPHORYLATION AT SER-15.
+RX   PubMed=15197225; DOI=10.1084/jem.20032247;
+RA   Fernandez-Capetillo O., Allis C.D., Nussenzweig A.;
+RT   "Phosphorylation of histone H2B at DNA double-strand breaks.";
+RL   J. Exp. Med. 199:1671-1677(2004).
+RN   [6]
+RP   PHOSPHORYLATION AT SER-15.
+RX   PubMed=16039583; DOI=10.1016/j.immuni.2005.05.007;
+RA   Odegard V.H., Kim S.T., Anderson S.M., Shlomchik M.J., Schatz D.G.;
+RT   "Histone modifications associated with somatic hypermutation.";
+RL   Immunity 23:101-110(2005).
+RN   [7]
+RP   PHOSPHORYLATION AT SER-37.
+RX   PubMed=20647423; DOI=10.1126/science.1191241;
+RA   Bungard D., Fuerth B.J., Zeng P.Y., Faubert B., Maas N.L., Viollet B.,
+RA   Carling D., Thompson C.B., Jones R.G., Berger S.L.;
+RT   "Signaling kinase AMPK activates stress-promoted transcription via
+RT   histone H2B phosphorylation.";
+RL   Science 329:1201-1205(2010).
+RN   [8]
+RP   CROTONYLATION AT LYS-6; LYS-12; LYS-13; LYS-16; LYS-17; LYS-21; LYS-24
+RP   AND LYS-35.
+RX   PubMed=21925322; DOI=10.1016/j.cell.2011.08.008;
+RA   Tan M., Luo H., Lee S., Jin F., Yang J.S., Montellier E., Buchou T.,
+RA   Cheng Z., Rousseaux S., Rajagopal N., Lu Z., Ye Z., Zhu Q.,
+RA   Wysocka J., Ye Y., Khochbin S., Ren B., Zhao Y.;
+RT   "Identification of 67 histone marks and histone lysine crotonylation
+RT   as a new type of histone modification.";
+RL   Cell 146:1016-1028(2011).
+RN   [9]
+RP   SUCCINYLATION AT LYS-121.
+RX   PubMed=22389435; DOI=10.1074/mcp.M111.015875;
+RA   Xie Z., Dai J., Dai L., Tan M., Cheng Z., Wu Y., Boeke J.D., Zhao Y.;
+RT   "Lysine succinylation and lysine malonylation in histones.";
+RL   Mol. Cell. Proteomics 11:100-107(2012).
+RN   [10]
+RP   HYDROXYBUTYRYLATION AT LYS-6; LYS-13; LYS-21; LYS-24; LYS-25; LYS-35;
+RP   LYS-44; LYS-47; LYS-58; LYS-86; LYS-109; LYS-117 AND LYS-121.
+RX   PubMed=24681537; DOI=10.1038/nchembio.1497;
+RA   Dai L., Peng C., Montellier E., Lu Z., Chen Y., Ishii H.,
+RA   Debernardi A., Buchou T., Rousseaux S., Jin F., Sabari B.R., Deng Z.,
+RA   Allis C.D., Ren B., Khochbin S., Zhao Y.;
+RT   "Lysine 2-hydroxyisobutyrylation is a widely distributed active
+RT   histone mark.";
+RL   Nat. Chem. Biol. 10:365-370(2014).
+RN   [11]
+RP   HYDROXYBUTYRYLATION AT LYS-6; LYS-12; LYS-21; LYS-35; LYS-109 AND
+RP   LYS-117.
+RX   PubMed=27105115; DOI=10.1016/j.molcel.2016.03.036;
+RA   Xie Z., Zhang D., Chung D., Tang Z., Huang H., Dai L., Qi S., Li J.,
+RA   Colak G., Chen Y., Xia C., Peng C., Ruan H., Kirkey M., Wang D.,
+RA   Jensen L.M., Kwon O.K., Lee S., Pletcher S.D., Tan M., Lombard D.B.,
+RA   White K.P., Zhao H., Li J., Roeder R.G., Yang X., Zhao Y.;
+RT   "Metabolic regulation of gene expression by histone lysine beta-
+RT   hydroxybutyrylation.";
+RL   Mol. Cell 62:194-206(2016).
+CC   -!- FUNCTION: Core component of nucleosome. Nucleosomes wrap and
+CC       compact DNA into chromatin, limiting DNA accessibility to the
+CC       cellular machineries which require DNA as a template. Histones
+CC       thereby play a central role in transcription regulation, DNA
+CC       repair, DNA replication and chromosomal stability. DNA
+CC       accessibility is regulated via a complex set of post-translational
+CC       modifications of histones, also called histone code, and
+CC       nucleosome remodeling.
+CC   -!- SUBUNIT: The nucleosome is a histone octamer containing two
+CC       molecules each of H2A, H2B, H3 and H4 assembled in one H3-H4
+CC       heterotetramer and two H2A-H2B heterodimers. The octamer wraps
+CC       approximately 147 bp of DNA.
+CC   -!- SUBCELLULAR LOCATION: Nucleus. Chromosome.
+CC   -!- PTM: Monoubiquitination at Lys-35 (H2BK34Ub) by the MSL1/MSL2
+CC       dimer is required for histone H3 'Lys-4' (H3K4me) and 'Lys-79'
+CC       (H3K79me) methylation and transcription activation at specific
+CC       gene loci, such as HOXA9 and MEIS1 loci. Similarly,
+CC       monoubiquitination at Lys-121 (H2BK120Ub) by the RNF20/40 complex
+CC       gives a specific tag for epigenetic transcriptional activation and
+CC       is also prerequisite for histone H3 'Lys-4' and 'Lys-79'
+CC       methylation. It also functions cooperatively with the FACT dimer
+CC       to stimulate elongation by RNA polymerase II. H2BK120Ub also acts
+CC       as a regulator of mRNA splicing: deubiquitination by USP49 is
+CC       required for efficient cotranscriptional splicing of a large set
+CC       of exons (By similarity). {ECO:0000250|UniProtKB:P33778}.
+CC   -!- PTM: Phosphorylated on Ser-15 (H2BS14ph) by STK4/MST1 during
+CC       apoptosis; which facilitates apoptotic chromatin condensation.
+CC       Also phosphorylated on Ser-15 in response to DNA double strand
+CC       breaks (DSBs), and in correlation with somatic hypermutation and
+CC       immunoglobulin class-switch recombination. Phosphorylation at Ser-
+CC       37 (H2BS36ph) by AMPK in response to stress promotes
+CC       transcription. {ECO:0000269|PubMed:15197225,
+CC       ECO:0000269|PubMed:16039583, ECO:0000269|PubMed:20647423}.
+CC   -!- PTM: Crotonylation (Kcr) is specifically present in male germ
+CC       cells and marks testis-specific genes in post-meiotic cells,
+CC       including X-linked genes that escape sex chromosome inactivation
+CC       in haploid cells. Crotonylation marks active promoters and
+CC       enhancers and confers resistance to transcriptional repressors. It
+CC       is also associated with post-meiotically activated genes on
+CC       autosomes. {ECO:0000269|PubMed:21925322}.
+CC   -!- PTM: Hydroxybutyrylation of histones is induced by starvation.
+CC       {ECO:0000269|PubMed:27105115}.
+CC   -!- SIMILARITY: Belongs to the histone H2B family. {ECO:0000305}.
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   -----------------------------------------------------------------------
+DR   EMBL; U62673; AAB04769.1; -; Genomic_DNA.
+DR   EMBL; AY158940; AAO06250.1; -; Genomic_DNA.
+DR   EMBL; AK078533; BAC37326.1; -; mRNA.
+DR   EMBL; AK090189; BAC41128.1; -; mRNA.
+DR   EMBL; AK143398; BAE25363.1; -; mRNA.
+DR   EMBL; AK162494; BAE36945.1; -; mRNA.
+DR   EMBL; AK167546; BAE39612.1; -; mRNA.
+DR   EMBL; AK168767; BAE40603.1; -; mRNA.
+DR   EMBL; AK170749; BAE42000.1; -; mRNA.
+DR   EMBL; BC047137; AAH47137.1; -; mRNA.
+DR   CCDS; CCDS17635.1; -.
+DR   RefSeq; NP_835586.2; NM_178214.4.
+DR   UniGene; Mm.439791; -.
+DR   ProteinModelPortal; Q64524; -.
+DR   SMR; Q64524; -.
+DR   BioGrid; 235109; 6.
+DR   STRING; 10090.ENSMUSP00000088287; -.
+DR   iPTMnet; Q64524; -.
+DR   PhosphoSitePlus; Q64524; -.
+DR   MaxQB; Q64524; -.
+DR   PaxDb; Q64524; -.
+DR   PeptideAtlas; Q64524; -.
+DR   PRIDE; Q64524; -.
+DR   Ensembl; ENSMUST00000090781; ENSMUSP00000088287; ENSMUSG00000068854.
+DR   GeneID; 319190; -.
+DR   KEGG; mmu:319190; -.
+DR   UCSC; uc008qmj.1; mouse.
+DR   CTD; 8349; -.
+DR   MGI; MGI:2448415; Hist2h2be.
+DR   eggNOG; KOG1744; Eukaryota.
+DR   eggNOG; ENOG4111NV5; LUCA.
+DR   GeneTree; ENSGT00760000118976; -.
+DR   HOGENOM; HOG000231213; -.
+DR   HOVERGEN; HBG007774; -.
+DR   InParanoid; Q64524; -.
+DR   KO; K11252; -.
+DR   OMA; RETYAVY; -.
+DR   OrthoDB; EOG091G0XGD; -.
+DR   PhylomeDB; Q64524; -.
+DR   TreeFam; TF300212; -.
+DR   Reactome; R-MMU-171306; Packaging Of Telomere Ends.
+DR   Reactome; R-MMU-201722; Formation of the beta-catenin:TCF transactivating complex.
+DR   Reactome; R-MMU-212300; PRC2 methylates histones and DNA.
+DR   Reactome; R-MMU-2299718; Condensation of Prophase Chromosomes.
+DR   Reactome; R-MMU-2559580; Oxidative Stress Induced Senescence.
+DR   Reactome; R-MMU-2559582; Senescence-Associated Secretory Phenotype (SASP).
+DR   Reactome; R-MMU-2559586; DNA Damage/Telomere Stress Induced Senescence.
+DR   Reactome; R-MMU-3214815; HDACs deacetylate histones.
+DR   Reactome; R-MMU-3214847; HATs acetylate histones.
+DR   Reactome; R-MMU-427359; SIRT1 negatively regulates rRNA expression.
+DR   Reactome; R-MMU-427413; NoRC negatively regulates rRNA expression.
+DR   Reactome; R-MMU-5250924; B-WICH complex positively regulates rRNA expression.
+DR   Reactome; R-MMU-5578749; Transcriptional regulation by small RNAs.
+DR   Reactome; R-MMU-5625886; Activated PKN1 stimulates transcription of AR (androgen receptor) regulated genes KLK2 and KLK3.
+DR   Reactome; R-MMU-5693565; Recruitment and ATM-mediated phosphorylation of repair and signaling proteins at DNA double strand breaks.
+DR   Reactome; R-MMU-5693571; Nonhomologous End-Joining (NHEJ).
+DR   Reactome; R-MMU-606279; Deposition of new CENPA-containing nucleosomes at the centromere.
+DR   Reactome; R-MMU-69473; G2/M DNA damage checkpoint.
+DR   Reactome; R-MMU-73728; RNA Polymerase I Promoter Opening.
+DR   Reactome; R-MMU-73777; RNA Polymerase I Chain Elongation.
+DR   Reactome; R-MMU-8866654; E3 ubiquitin ligases ubiquitinate target proteins.
+DR   Reactome; R-MMU-8936459; RUNX1 regulates genes involved in megakaryocyte differentiation and platelet function.
+DR   Reactome; R-MMU-9018519; Estrogen-dependent gene expression.
+DR   PRO; PR:Q64524; -.
+DR   Proteomes; UP000000589; Chromosome 3.
+DR   Bgee; ENSMUSG00000068854; Expressed in 231 organ(s), highest expression level in olfactory epithelium.
+DR   CleanEx; MM_HIST2H2BE; -.
+DR   Genevisible; Q64524; MM.
+DR   GO; GO:0005829; C:cytosol; ISO:MGI.
+DR   GO; GO:0005615; C:extracellular space; ISO:MGI.
+DR   GO; GO:0005654; C:nucleoplasm; ISO:MGI.
+DR   GO; GO:0000786; C:nucleosome; IEA:UniProtKB-KW.
+DR   GO; GO:0005634; C:nucleus; ISO:MGI.
+DR   GO; GO:0003677; F:DNA binding; IBA:GO_Central.
+DR   GO; GO:0001530; F:lipopolysaccharide binding; ISO:MGI.
+DR   GO; GO:0046982; F:protein heterodimerization activity; IEA:InterPro.
+DR   GO; GO:0019731; P:antibacterial humoral response; ISO:MGI.
+DR   GO; GO:0061844; P:antimicrobial humoral immune response mediated by antimicrobial peptide; ISO:MGI.
+DR   GO; GO:0050829; P:defense response to Gram-negative bacterium; ISO:MGI.
+DR   GO; GO:0050830; P:defense response to Gram-positive bacterium; ISO:MGI.
+DR   GO; GO:0002227; P:innate immune response in mucosa; ISO:MGI.
+DR   GO; GO:0031640; P:killing of cells of other organism; ISO:MGI.
+DR   GO; GO:0010804; P:negative regulation of tumor necrosis factor-mediated signaling pathway; ISO:MGI.
+DR   GO; GO:0006334; P:nucleosome assembly; IBA:GO_Central.
+DR   Gene3D; 1.10.20.10; -; 1.
+DR   InterPro; IPR009072; Histone-fold.
+DR   InterPro; IPR007125; Histone_H2A/H2B/H3.
+DR   InterPro; IPR000558; Histone_H2B.
+DR   PANTHER; PTHR23428; PTHR23428; 1.
+DR   Pfam; PF00125; Histone; 1.
+DR   PRINTS; PR00621; HISTONEH2B.
+DR   SMART; SM00427; H2B; 1.
+DR   SUPFAM; SSF47113; SSF47113; 1.
+DR   PROSITE; PS00357; HISTONE_H2B; 1.
+PE   1: Evidence at protein level;
+KW   Acetylation; Chromosome; Complete proteome; DNA-binding;
+KW   Hydroxylation; Isopeptide bond; Methylation; Nucleosome core; Nucleus;
+KW   Phosphoprotein; Reference proteome; Ubl conjugation.
+FT   INIT_MET      1      1       Removed. {ECO:0000250|UniProtKB:P23527}.
+FT   CHAIN         2    126       Histone H2B type 2-E.
+FT                                /FTId=PRO_0000244836.
+FT   MOD_RES       2      2       N-acetylproline.
+FT                                {ECO:0000250|UniProtKB:P23527}.
+FT   MOD_RES       6      6       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES       6      6       N6-(beta-hydroxybutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:27105115}.
+FT   MOD_RES       6      6       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES       6      6       N6-butyryllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:P33778}.
+FT   MOD_RES       6      6       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      12     12       N6-(beta-hydroxybutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:27105115}.
+FT   MOD_RES      12     12       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      12     12       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      13     13       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      13     13       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      13     13       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      15     15       Phosphoserine; by STK4/MST1.
+FT                                {ECO:0000269|PubMed:15197225,
+FT                                ECO:0000269|PubMed:16039583}.
+FT   MOD_RES      16     16       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      16     16       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      17     17       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      17     17       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      21     21       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      21     21       N6-(beta-hydroxybutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:27105115}.
+FT   MOD_RES      21     21       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      21     21       N6-butyryllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:P33778}.
+FT   MOD_RES      21     21       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      24     24       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      24     24       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:P33778}.
+FT   MOD_RES      24     24       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      25     25       N6-(2-hydroxyisobutyryl)lysine.
+FT                                {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      35     35       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      35     35       N6-(beta-hydroxybutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:27105115}.
+FT   MOD_RES      35     35       N6-crotonyllysine; alternate.
+FT                                {ECO:0000269|PubMed:21925322}.
+FT   MOD_RES      35     35       N6-succinyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      37     37       Phosphoserine; by AMPK.
+FT                                {ECO:0000269|PubMed:20647423}.
+FT   MOD_RES      44     44       N6-(2-hydroxyisobutyryl)lysine.
+FT                                {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      47     47       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      47     47       N6-methyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      58     58       N6,N6-dimethyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES      58     58       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      80     80       Dimethylated arginine.
+FT                                {ECO:0000250|UniProtKB:Q96A08}.
+FT   MOD_RES      86     86       N6,N6,N6-trimethyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q96A08}.
+FT   MOD_RES      86     86       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES      86     86       N6-acetyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q96A08}.
+FT   MOD_RES      87     87       Omega-N-methylarginine.
+FT                                {ECO:0000250|UniProtKB:Q96A08}.
+FT   MOD_RES      93     93       Omega-N-methylarginine.
+FT                                {ECO:0000250|UniProtKB:Q96A08}.
+FT   MOD_RES     109    109       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES     109    109       N6-(beta-hydroxybutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:27105115}.
+FT   MOD_RES     109    109       N6-methyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES     116    116       Phosphothreonine.
+FT                                {ECO:0000250|UniProtKB:Q00729}.
+FT   MOD_RES     117    117       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES     117    117       N6-(beta-hydroxybutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:27105115}.
+FT   MOD_RES     117    117       N6-methylated lysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q00729}.
+FT   MOD_RES     117    117       N6-succinyllysine; alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   MOD_RES     121    121       N6-(2-hydroxyisobutyryl)lysine;
+FT                                alternate. {ECO:0000269|PubMed:24681537}.
+FT   MOD_RES     121    121       N6-succinyllysine; alternate.
+FT                                {ECO:0000269|PubMed:22389435}.
+FT   CROSSLNK      6      6       Glycyl lysine isopeptide (Lys-Gly)
+FT                                (interchain with G-Cter in SUMO2);
+FT                                alternate.
+FT                                {ECO:0000250|UniProtKB:P58876}.
+FT   CROSSLNK     21     21       Glycyl lysine isopeptide (Lys-Gly)
+FT                                (interchain with G-Cter in SUMO2);
+FT                                alternate.
+FT                                {ECO:0000250|UniProtKB:Q5QNW6}.
+FT   CROSSLNK     35     35       Glycyl lysine isopeptide (Lys-Gly)
+FT                                (interchain with G-Cter in ubiquitin);
+FT                                alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+FT   CROSSLNK    121    121       Glycyl lysine isopeptide (Lys-Gly)
+FT                                (interchain with G-Cter in ubiquitin);
+FT                                alternate.
+FT                                {ECO:0000250|UniProtKB:Q16778}.
+SQ   SEQUENCE   126 AA;  13993 MW;  1448CB31A490A447 CRC64;
+     MPELAKSAPA PKKGSKKAVT KAQKKDGKKR KRSRKESYSI YVYKVLKQVH PDTGISSKAM
+     GIMNSFVNDI FERIANEASR LAHYNKRSTI TSREIQTSVR LLLPGELAKH AVSEGTKAVT
+     KYTSAK
+//

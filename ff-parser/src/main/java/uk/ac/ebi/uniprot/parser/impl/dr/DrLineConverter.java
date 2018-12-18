@@ -10,7 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
-import uk.ac.ebi.uniprot.parser.DatabaseTypeNotExistException;
+import uk.ac.ebi.uniprot.parser.exception.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
 
@@ -64,7 +64,6 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
 		String thirdAttribute = null;
 		String fourthAttribute = null;
 		String isoformId = null;
-		List<Evidence> evidences = null;
 		
 		if(drline.attributes.size()>2) {
 			thirdAttribute =drline.attributes.get(2);
@@ -72,14 +71,12 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
 		if(drline.attributes.size()>3) {
 			fourthAttribute =drline.attributes.get(3);
 		}
-	
-		evidences = evidenceMap.get(drline);
 		if ((drline.isoform != null) && (!drline.isoform.isEmpty())) {
 			isoformId = drline.isoform;
 		}
 		try {
 		uniProtDrObjects.drObjects.add(factory.createUniProtDBCrossReference(drline.DbName, id, description, thirdAttribute,
-				fourthAttribute, isoformId, evidences));
+				fourthAttribute, isoformId));
 		}catch (Exception e) {
 			if(!ignoreWrongDR)
 			throw new DatabaseTypeNotExistException(drline.DbName);

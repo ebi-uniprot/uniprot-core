@@ -231,9 +231,9 @@ public class UniProtEntryBuilderTest {
         assertTrue(entry.getKeywords().isEmpty());
         List<Keyword> keywords = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        keywords.add(UniProtFactory.INSTANCE.createKeyword("key1", evidences));
-        keywords.add(UniProtFactory.INSTANCE.createKeyword("key2", evidences));
-        keywords.add(UniProtFactory.INSTANCE.createKeyword("key3", evidences));
+        keywords.add(UniProtFactory.INSTANCE.createKeyword("KW-001", "key1", evidences));
+        keywords.add(UniProtFactory.INSTANCE.createKeyword("KW-002", "key2", evidences));
+        keywords.add(UniProtFactory.INSTANCE.createKeyword("KW-003",  "key3", evidences));
         builder = UniProtEntryBuilder.newInstance();
          entry = builder     
                  .keywords(keywords)

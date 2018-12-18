@@ -62,9 +62,14 @@ public class RlLineConverter implements Converter<RlLineObject, AbstractCitation
 
 		 if(b.volume !=null)
 			 builder.volume("" + b.volume);
+		 
 		 if((b.page_start ==null) &&(b.page_end ==null) &&
 				 b.pageString !=null){
+			 builder.firstPage(b.pageString);
+			 builder.bookName(b.title);
+		 }else if (b.pageString !=null) {
 			 builder.bookName(b.title +", " + b.pageString);
+			
 		 }else
 			 builder.bookName(b.title);
 

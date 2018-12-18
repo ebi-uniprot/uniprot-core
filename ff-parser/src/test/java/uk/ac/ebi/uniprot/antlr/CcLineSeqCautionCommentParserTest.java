@@ -3,10 +3,17 @@ package uk.ac.ebi.uniprot.antlr;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineFormater;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject.SequenceCautionObject;
@@ -39,6 +46,16 @@ public class CcLineSeqCautionCommentParserTest {
 		}
 		assertEquals(note, obj.note);
 	}
+	
+	private void verify(SequenceCautionObject obj, String seq, String positionValue, SequenceCautionType type, String note) {
+		assertEquals(seq, obj.sequence);
+	
+		assertEquals(type, obj.type);
+		assertEquals(positionValue, obj.positionValue);
+	
+		assertEquals(note, obj.note);
+	}
+	
 	@Test
 	public void testAllFields() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n"
@@ -142,4 +159,29 @@ public class CcLineSeqCautionCommentParserTest {
 		assertEquals("ECO:0000313|Ensembl:ENSP00000409133", obj.evidenceInfo.evidences.get(sc.sequenceCautionObjects.get(0)).get(1));
 		
 	}
+	
+	@Test
+	public void testPositionSeveral() {
+		String lines = "CC   -!- SEQUENCE CAUTION:\n" + 
+				"CC       Sequence=CAA39814.1; Type=Frameshift; Positions=Several; Evidence={ECO:0000305};\n"
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof CcLineObject.SequenceCaution);
+		CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
+		assertEquals(1, sc.sequenceCautionObjects.size());
+		verify(sc.sequenceCautionObjects.get(0), "CAA39814.1", "Several", SequenceCautionType.FRAMESHIFT,  null);
+		 CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""));
+		 List<Comment> comments =converter.convert(obj);
+		 assertEquals(1, comments.size());
+		 assertEquals(CommentType.SEQUENCE_CAUTION, comments.get(0).getCommentType());
+		 SequenceCautionComment comment = (SequenceCautionComment) comments.get(0);
+		 assertEquals("Several", comment.getPositions().get(0));
+		 assertEquals("CAA39814.1", comment.getSequence());
+		 assertEquals(uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType.FRAMESHIFT, comment.getSequenceCautionType());
+	}
+	
+	
 }

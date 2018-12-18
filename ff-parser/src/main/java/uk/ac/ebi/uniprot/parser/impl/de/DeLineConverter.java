@@ -43,7 +43,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		}
 		Name allergenName = null;
 		if ((f.alt_Allergen != null) && (!f.alt_Allergen.isEmpty())) {
-			biotechName = convertName(f.alt_Allergen, evidenceMap);
+			allergenName = convertName(f.alt_Allergen, evidenceMap);
 		}
 		List<ProteinName> subNames = f.subName.stream().map(val -> convertSubmissionName(val, evidenceMap))
 				.collect(Collectors.toList());
@@ -128,16 +128,20 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		List<Name> shortNames = val.shortNames.stream()
 				.map(shortName -> factory.createName(shortName, evidenceMap.get(shortName)))
 				.collect(Collectors.toList());
-		List<EC> ecNumbers = val.ecs.stream().map(ec -> {
-			DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
-			ecEvidence.ecValue = ec;
-			ecEvidence.nameECBelong = val;
-			return factory.createECNumber(ec, evidenceMap.get(ecEvidence));
-		}).collect(Collectors.toList());
+		List<EC> ecNumbers = val.ecs.stream().map(ec ->
+			createEC(ec, val, evidenceMap))
+			.collect(Collectors.toList());
 		return factory.createProteinName(fullName, shortNames, ecNumbers);
 
 	}
 
+	private EC createEC(String ec, DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
+		DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
+		ecEvidence.ecValue = ec;
+		ecEvidence.nameECBelong = val;
+		List<Evidence> evidences = evidenceMap.get(ecEvidence);
+		return factory.createECNumber(ec, evidences);
+	}
 	private ProteinName convertSubmissionName(DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
 		Name fullName = null;
 		if ((val.fullName != null) || (!val.fullName.isEmpty())) {

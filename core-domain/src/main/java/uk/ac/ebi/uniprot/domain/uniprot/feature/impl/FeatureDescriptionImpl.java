@@ -10,7 +10,7 @@ public class FeatureDescriptionImpl implements FeatureDescription {
 	}
 
 	public FeatureDescriptionImpl(String value) {
-		this.value = value;
+		this.value = Utils.resetNull(value);
 	}
 	@Override
 	public String getValue() {

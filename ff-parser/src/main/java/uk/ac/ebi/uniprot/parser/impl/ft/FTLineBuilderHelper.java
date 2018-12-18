@@ -37,7 +37,7 @@ public class FTLineBuilderHelper {
 	public static StringBuilder getDescriptionString(Feature feature) {
 		StringBuilder sb = new StringBuilder();
 		FeatureDescription description = feature.getDescription();
-		if ((description != null) && !description.getValue().isEmpty()) {
+		if ((description != null) && !Strings.isNullOrEmpty(description.getValue())) {
 			sb.append(description.getValue());
 		}
 		return sb;
@@ -97,7 +97,7 @@ public class FTLineBuilderHelper {
 			start += feature.getLocation().getStart().getValue();
 		}
 
-		String end = getModifierString(feature.getLocation().getStart().getModifier(), true);
+		String end = getModifierString(feature.getLocation().getEnd().getModifier(), true);
 		if (isValidPosition(feature.getLocation().getEnd())) {
 			end += feature.getLocation().getEnd().getValue();
 		}
@@ -289,7 +289,7 @@ public class FTLineBuilderHelper {
 			if (i == (lines2.size() - 1)) {
 				sb = new StringBuilder(lines2.get(i));
 			} else {
-				lines.add(lines2.get(i));
+				lines.add(lines2.get(i).trim());
 			}
 		}
 		return sb;
