@@ -3,11 +3,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,14 +14,13 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
 
     private static final String SEMICOLON = "; ";
 	private static final String DASH = "-";
-    private final String isoformId;
+    private String isoformId;
 
 	private UniProtDBCrossReferenceImpl(){
 		super(null, "", Collections.emptyList());
 	}
 
-    public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties,
-            String isoformId, List<Evidence> evidences) {
+    public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId) {
     	super(database, id, properties);
     	this.isoformId = isoformId;
     }

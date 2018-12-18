@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.Collections;
 import java.util.List;
 
 public class KeywordImpl extends EvidencedValueImpl implements Keyword {
@@ -11,9 +12,10 @@ public class KeywordImpl extends EvidencedValueImpl implements Keyword {
     public static final String DEFAULT_ACCESSION ="KW-00000";
 
 	private KeywordImpl(){
-		this("", Collections.emptyList());
+		this("","", Collections.emptyList());
 	}
-	public KeywordImpl(String value, List<Evidence> evidences)  {
+
+	public KeywordImpl(String id,String value, List<Evidence> evidences)  {
         super(value, evidences);
         if(id == null || id.isEmpty()) {
         	this.id = DEFAULT_ACCESSION;

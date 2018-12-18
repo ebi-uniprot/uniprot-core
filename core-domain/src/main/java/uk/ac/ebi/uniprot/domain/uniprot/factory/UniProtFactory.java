@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 
 import java.time.LocalDate;
@@ -102,7 +104,7 @@ public enum UniProtFactory {
     	return EvidenceImpl.parseEvidenceLine(val);
     }
     public Evidence createEvidence(EvidenceCode evidenceCode,
-			 String databaseName, String dbId) {
+                                   String databaseName, String dbId) {
     	return new  EvidenceImpl(evidenceCode, databaseName, dbId);
     }
 
