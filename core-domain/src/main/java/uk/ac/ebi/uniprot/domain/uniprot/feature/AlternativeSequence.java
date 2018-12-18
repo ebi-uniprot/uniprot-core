@@ -31,9 +31,11 @@ import java.util.List;
  *  &lt;sequence length="365" mass="40846" checksum="8667AFF3F06C4932" modified="1993-04-01"&gt;
  * ...
  * </font></pre>
- * */
+ */
 public interface AlternativeSequence {
-	public String getOriginalSequence();
-	public List<String> getAlternativeSequences();
-	public SequenceReport getReport();
+    public String getOriginalSequence();
+
+    public List<String> getAlternativeSequences();
+
+    public SequenceReport getReport();
 }

@@ -12,7 +12,7 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testBuildAll() {
         PatentBuilder builder = PatentBuilder.newInstance();
-        String pnumber ="Some Number";
+        String pnumber = "Some Number";
         builder.patentNumber(pnumber);
         this.builderCitationParamters(builder);
         Patent citation = builder.build();
@@ -25,7 +25,7 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testPatentNumber() {
         PatentBuilder builder = PatentBuilder.newInstance();
-        String pnumber ="Some Number";
+        String pnumber = "Some Number";
         builder.patentNumber(pnumber);
         Patent citation = builder.build();
         assertEquals(CitationType.PATENT, citation.getCitationType());

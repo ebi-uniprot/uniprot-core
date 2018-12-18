@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * Contains a list of acceptable flag descriptors found within a DE line
- *
+ * <p>
  * current valid flags are Precursor, Fragment, Fragments
  */
 public enum FlagType implements EnumDisplay<FlagType> {
@@ -19,10 +19,6 @@ public enum FlagType implements EnumDisplay<FlagType> {
 
     FlagType(String value) {
         this.value = value;
-    }
-
-    public String getValue() {
-        return value;
     }
 
     public static FlagType typeOf(String value) {
@@ -49,6 +45,7 @@ public enum FlagType implements EnumDisplay<FlagType> {
 
     /**
      * Check whether a value would be a valid value to be turned into FlagType
+     *
      * @param value
      * @return
      */
@@ -62,7 +59,12 @@ public enum FlagType implements EnumDisplay<FlagType> {
         return false;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @Override
     public String toDisplayName() {
         return value;
-    }}
+    }
+}

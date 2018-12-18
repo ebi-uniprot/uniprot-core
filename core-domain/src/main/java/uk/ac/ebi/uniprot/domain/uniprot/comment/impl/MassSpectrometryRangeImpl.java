@@ -5,71 +5,71 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 
 
 public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
-	private Range range;
-	private String isoformId;
+    private Range range;
+    private String isoformId;
 
-	private MassSpectrometryRangeImpl(){
-		this.isoformId = "";
-	}
+    private MassSpectrometryRangeImpl() {
+        this.isoformId = "";
+    }
 
-	public MassSpectrometryRangeImpl(Integer start, Integer end, String isoformId) {
-		this(new Range(start, end), isoformId);
-	}
-
-
-	public MassSpectrometryRangeImpl(Range range, String isoformId) {
-		this.range = range;
-		if (isoformId == null || isoformId.isEmpty()) {
-			this.isoformId = "";
-		} else
-			this.isoformId = isoformId;
-	}
-
-	@Override
-	public Range getRange() {
-		return range;
-	}
+    public MassSpectrometryRangeImpl(Integer start, Integer end, String isoformId) {
+        this(new Range(start, end), isoformId);
+    }
 
 
-	@Override
-	public boolean hasIsoformId() {
-		return ((isoformId != null) && !isoformId.isEmpty());
-	}
+    public MassSpectrometryRangeImpl(Range range, String isoformId) {
+        this.range = range;
+        if (isoformId == null || isoformId.isEmpty()) {
+            this.isoformId = "";
+        } else
+            this.isoformId = isoformId;
+    }
 
-	@Override
-	public String getIsoformId() {
-		return isoformId;
-	}
+    @Override
+    public Range getRange() {
+        return range;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
-		result = prime * result + ((range == null) ? 0 : range.hashCode());
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MassSpectrometryRangeImpl other = (MassSpectrometryRangeImpl) obj;
-		if (isoformId == null) {
-			if (other.isoformId != null)
-				return false;
-		} else if (!isoformId.equals(other.isoformId))
-			return false;
-		if (range == null) {
-			if (other.range != null)
-				return false;
-		} else if (!range.equals(other.range))
-			return false;
-		return true;
-	}
+    @Override
+    public boolean hasIsoformId() {
+        return ((isoformId != null) && !isoformId.isEmpty());
+    }
+
+    @Override
+    public String getIsoformId() {
+        return isoformId;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
+        result = prime * result + ((range == null) ? 0 : range.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        MassSpectrometryRangeImpl other = (MassSpectrometryRangeImpl) obj;
+        if (isoformId == null) {
+            if (other.isoformId != null)
+                return false;
+        } else if (!isoformId.equals(other.isoformId))
+            return false;
+        if (range == null) {
+            if (other.range != null)
+                return false;
+        } else if (!range.equals(other.range))
+            return false;
+        return true;
+    }
 
 }

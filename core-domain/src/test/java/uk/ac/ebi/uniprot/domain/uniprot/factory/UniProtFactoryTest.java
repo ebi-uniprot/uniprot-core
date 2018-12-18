@@ -58,31 +58,32 @@ public class UniProtFactoryTest {
     @Test
     public void testCreateEvidencedValue() {
         List<Evidence> evidences = createEvidences();
-        String value ="some value";
-        EvidencedValue  evidencedValue =UniProtFactory.INSTANCE.createEvidencedValue(value, evidences);
+        String value = "some value";
+        EvidencedValue evidencedValue = UniProtFactory.INSTANCE.createEvidencedValue(value, evidences);
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
     }
 
     @Test
     public void testCreateUniProtAccession() {
-        String value ="P12345";
-        UniProtAccession accession =UniProtFactory.INSTANCE.createUniProtAccession(value);
+        String value = "P12345";
+        UniProtAccession accession = UniProtFactory.INSTANCE.createUniProtAccession(value);
         assertEquals(value, accession.getValue());
     }
+
     @Test
     public void testCreateUniProtId() {
-        String value ="P12345_HUMAN";
-        UniProtId uniprotId =UniProtFactory.INSTANCE.createUniProtId(value);
+        String value = "P12345_HUMAN";
+        UniProtId uniprotId = UniProtFactory.INSTANCE.createUniProtId(value);
         assertEquals(value, uniprotId.getValue());
     }
 
     @Test
     public void testCreateOrganelle() {
         GeneEncodingType geneEncodingType = GeneEncodingType.CHROMATOPHORE_PLASTID;
-        String value="p1";
+        String value = "p1";
         List<Evidence> evidences = createEvidences();
-        Organelle organelle= UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
+        Organelle organelle = UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
         assertEquals(geneEncodingType, organelle.getGeneEncodingType());
         assertEquals(value, organelle.getValue());
         assertEquals(evidences, organelle.getEvidences());
@@ -95,7 +96,8 @@ public class UniProtFactoryTest {
         internalLines.add(UniProtFactory.INSTANCE.createInternalLine(InternalLineType.HA, "Val2"));
         List<SourceLine> sourceLines = new ArrayList<>();
         sourceLines.add(UniProtFactory.INSTANCE.createSourceLine("source1"));
-        InternalSection internalSection = UniProtFactory.INSTANCE.createInternalSection(internalLines, null, sourceLines);
+        InternalSection internalSection = UniProtFactory.INSTANCE
+                .createInternalSection(internalLines, null, sourceLines);
         assertEquals(internalLines, internalSection.getInternalLines());
         assertEquals(sourceLines, internalSection.getSourceLines());
     }
@@ -103,22 +105,22 @@ public class UniProtFactoryTest {
     @Test
     public void testCreateInternalLine() {
         InternalLineType type = InternalLineType.CP;
-        String value ="some values";
-        InternalLine internalLine =UniProtFactory.INSTANCE.createInternalLine(type, value);
+        String value = "some values";
+        InternalLine internalLine = UniProtFactory.INSTANCE.createInternalLine(type, value);
         assertEquals(type, internalLine.getType());
         assertEquals(value, internalLine.getValue());
     }
 
     @Test
     public void testCreateSourceLine() {
-        String value ="some values";
-        SourceLine sourceLine =UniProtFactory.INSTANCE.createSourceLine(value);
+        String value = "some values";
+        SourceLine sourceLine = UniProtFactory.INSTANCE.createSourceLine(value);
         assertEquals(value, sourceLine.getValue());
     }
 
     @Test
     public void testCreateKeyword() {
-        String value="p1";
+        String value = "p1";
         List<Evidence> evidences = createEvidences();
         Keyword keyword = UniProtFactory.INSTANCE.createKeyword("KW-001", value, evidences);
         assertEquals(value, keyword.getValue());
@@ -131,32 +133,33 @@ public class UniProtFactoryTest {
         LocalDate firstPublicDate = LocalDate.of(2011, 10, 18);
         LocalDate lastAnnotationUpdateDate = LocalDate.of(2013, 9, 2);
         LocalDate lastSequenceUpdateDate = LocalDate.of(2014, 3, 22);
-        int entryVersion =12;
-        int sequenceVersion =5;
-        EntryAudit entryAudit = UniProtFactory.INSTANCE.createEntryAudit(firstPublicDate, lastAnnotationUpdateDate, 
-                lastSequenceUpdateDate, entryVersion, sequenceVersion);
+        int entryVersion = 12;
+        int sequenceVersion = 5;
+        EntryAudit entryAudit = UniProtFactory.INSTANCE.createEntryAudit(firstPublicDate, lastAnnotationUpdateDate,
+                                                                         lastSequenceUpdateDate, entryVersion, sequenceVersion);
         assertEquals(firstPublicDate, entryAudit.getFirstPublicDate());
         assertEquals(lastAnnotationUpdateDate, entryAudit.getLastAnnotationUpdateDate());
         assertEquals(lastSequenceUpdateDate, entryAudit.getLastSequenceUpdateDate());
         assertEquals(entryVersion, entryAudit.getEntryVersion());
         assertEquals(sequenceVersion, entryAudit.getSequenceVersion());
     }
+
     @Test
-    public void testCreateSequence(){
+    public void testCreateSequence() {
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
-        Sequence sequence =UniProtFactory.INSTANCE.createSequence(value);
+        Sequence sequence = UniProtFactory.INSTANCE.createSequence(value);
         assertEquals(value, sequence.getValue());
     }
-    
+
     @Test
-    public void TestCreateUniProtTaxonId(){
+    public void TestCreateUniProtTaxonId() {
         long taxId = 9606;
-        List<Evidence> evidences =createEvidences() ;
+        List<Evidence> evidences = createEvidences();
         UniProtTaxonId taxonId = UniProtFactory.INSTANCE.createUniProtTaxonId(taxId, evidences);
         assertEquals(taxId, taxonId.getTaxonId());
         assertEquals(evidences, taxonId.getEvidences());
     }
-    
+
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));

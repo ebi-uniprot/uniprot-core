@@ -68,7 +68,7 @@ import java.util.regex.Pattern;
  * myString = new JSONObject()
  *         .put(&quot;JSON&quot;, &quot;Hello, World!&quot;).toString();
  * </pre>
- *
+ * <p>
  * produces the string <code>{"JSON": "Hello, World"}</code>.
  * <p>
  * The texts produced by the <code>toString</code> methods strictly conform to
@@ -92,59 +92,15 @@ import java.util.regex.Pattern;
  */
 public class PropertyObject {
     /**
-     * JSONObject.NULL is equivalent to the value that JavaScript calls null,
-     * whilst Java's null is equivalent to the value that JavaScript calls
-     * undefined.
+     * It is sometimes more convenient and less ambiguous to have a
+     * <code>NULL</code> object than to use Java's <code>null</code> value.
+     * <code>JSONObject.NULL.equals(null)</code> returns <code>true</code>.
+     * <code>JSONObject.NULL.toString()</code> returns <code>"null"</code>.
      */
-    private static final class Null {
-
-        /**
-         * There is only intended to be a single instance of the NULL object,
-         * so the clone method returns itself.
-         *
-         * @return NULL.
-         */
-        @Override
-        protected final Object clone() {
-            return this;
-        }
-
-        /**
-         * A Null object is equal to the null value and to itself.
-         *
-         * @param object
-         *            An object to test for nullness.
-         * @return true if the object parameter is the JSONObject.NULL object or
-         *         null.
-         */
-        @Override
-        public boolean equals(Object object) {
-            return object == null || object == this;
-        }
-        /**
-         * A Null object is equal to the null value and to itself.
-         *
-         * @return always returns 0.
-         */
-        @Override
-        public int hashCode() {
-            return 0;
-        }
-
-        /**
-         * Get the "null" string value.
-         *
-         * @return The string "null".
-         */
-        @Override
-        public String toString() {
-            return "null";
-        }
-    }
-    
+    public static final Object NULL = new Null();
     /**
-     *  Regular Expression Pattern that matches JSON Numbers. This is primarily used for
-     *  output to guarantee that we are always writing valid JSON. 
+     * Regular Expression Pattern that matches JSON Numbers. This is primarily used for
+     * output to guarantee that we are always writing valid JSON.
      */
     static final Pattern NUMBER_PATTERN = Pattern.compile("-?(?:0|[1-9]\\d*)(?:\\.\\d+)?(?:[eE][+-]?\\d+)?");
 
@@ -154,21 +110,13 @@ public class PropertyObject {
     private final Map<String, Object> map;
 
     /**
-     * It is sometimes more convenient and less ambiguous to have a
-     * <code>NULL</code> object than to use Java's <code>null</code> value.
-     * <code>JSONObject.NULL.equals(null)</code> returns <code>true</code>.
-     * <code>JSONObject.NULL.toString()</code> returns <code>"null"</code>.
-     */
-    public static final Object NULL = new Null();
-
-    /**
      * Construct an empty JSONObject.
      */
     public PropertyObject() {
-        // HashMap is used on purpose to ensure that elements are unordered by 
+        // HashMap is used on purpose to ensure that elements are unordered by
         // the specification.
-        // JSON tends to be a portable transfer format to allows the container 
-        // implementations to rearrange their items for a faster element 
+        // JSON tends to be a portable transfer format to allows the container
+        // implementations to rearrange their items for a faster element
         // retrieval based on associative access.
         // Therefore, an implementation mustn't rely on the order of the item.
         this.map = new HashMap<String, Object>();
@@ -179,10 +127,8 @@ public class PropertyObject {
      * strings is used to identify the keys that should be copied. Missing keys
      * are ignored.
      *
-     * @param jo
-     *            A JSONObject.
-     * @param names
-     *            An array of strings.
+     * @param jo    A JSONObject.
+     * @param names An array of strings.
      */
     public PropertyObject(PropertyObject jo, String[] names) {
         this(names.length);
@@ -197,11 +143,9 @@ public class PropertyObject {
     /**
      * Construct a JSONObject from a JSONTokener.
      *
-     * @param x
-     *            A JSONTokener object containing the source string.
-     * @throws PropertyException
-     *             If there is a syntax error in the source string or a
-     *             duplicated key.
+     * @param x A JSONTokener object containing the source string.
+     * @throws PropertyException If there is a syntax error in the source string or a
+     *                           duplicated key.
      */
     public PropertyObject(PropertyTokener x) throws PropertyException {
         this();
@@ -211,16 +155,16 @@ public class PropertyObject {
         if (x.nextClean() != '{') {
             throw x.syntaxError("A JSONObject text must begin with '{'");
         }
-        for (;;) {
+        for (; ; ) {
             c = x.nextClean();
             switch (c) {
-            case 0:
-                throw x.syntaxError("A JSONObject text must end with '}'");
-            case '}':
-                return;
-            default:
-                x.back();
-                key = x.nextValue().toString();
+                case 0:
+                    throw x.syntaxError("A JSONObject text must end with '}'");
+                case '}':
+                    return;
+                default:
+                    x.back();
+                    key = x.nextValue().toString();
             }
 
             // The key is followed by ':'.
@@ -229,9 +173,9 @@ public class PropertyObject {
             if (c != ':') {
                 throw x.syntaxError("Expected a ':' after a key");
             }
-            
+
             // Use syntaxError(..) to include error location
-            
+
             if (key != null) {
                 // Check if key exists
                 if (this.opt(key) != null) {
@@ -240,7 +184,7 @@ public class PropertyObject {
                 }
                 // Only add value if non-null
                 Object value = x.nextValue();
-                if (value!=null) {
+                if (value != null) {
                     this.put(key, value);
                 }
             }
@@ -248,17 +192,17 @@ public class PropertyObject {
             // Pairs are separated by ','.
 
             switch (x.nextClean()) {
-            case ';':
-            case ',':
-                if (x.nextClean() == '}') {
+                case ';':
+                case ',':
+                    if (x.nextClean() == '}') {
+                        return;
+                    }
+                    x.back();
+                    break;
+                case '}':
                     return;
-                }
-                x.back();
-                break;
-            case '}':
-                return;
-            default:
-                throw x.syntaxError("Expected a ',' or '}'");
+                default:
+                    throw x.syntaxError("Expected a ',' or '}'");
             }
         }
     }
@@ -266,23 +210,20 @@ public class PropertyObject {
     /**
      * Construct a JSONObject from a Map.
      *
-     * @param m
-     *            A map object that can be used to initialize the contents of
-     *            the JSONObject.
-     * @throws PropertyException
-     *            If a value in the map is non-finite number.
-     * @throws NullPointerException
-     *            If a key in the map is <code>null</code>
+     * @param m A map object that can be used to initialize the contents of
+     *          the JSONObject.
+     * @throws PropertyException    If a value in the map is non-finite number.
+     * @throws NullPointerException If a key in the map is <code>null</code>
      */
     public PropertyObject(Map<?, ?> m) {
         if (m == null) {
             this.map = new HashMap<String, Object>();
         } else {
             this.map = new HashMap<String, Object>(m.size());
-        	for (final Entry<?, ?> e : m.entrySet()) {
-        	    if(e.getKey() == null) {
-        	        throw new NullPointerException("Null key.");
-        	    }
+            for (final Entry<?, ?> e : m.entrySet()) {
+                if (e.getKey() == null) {
+                    throw new NullPointerException("Null key.");
+                }
                 final Object value = e.getValue();
                 if (value != null) {
                     this.map.put(String.valueOf(e.getKey()), wrap(value));
@@ -296,229 +237,31 @@ public class PropertyObject {
         this.populateMap(bean);
     }
 
-
-
     /**
-     * Get the value object associated with a key.
-     *
-     * @param key
-     *            A key string.
-     * @return The object associated with the key.
-     * @throws PropertyException
-     *             if the key is not found.
-     */
-    public Object get(String key) throws PropertyException {
-        if (key == null) {
-            throw new PropertyException("Null key.");
-        }
-        Object object = this.opt(key);
-        if (object == null) {
-            throw new PropertyException("JSONObject[" + quote(key) + "] not found.");
-        }
-        return object;
-    }
-
-
-    /**
-     * Get the Number value associated with a key.
-     *
-     * @param key
-     *            A key string.
-     * @return The numeric value.
-     * @throws PropertyException
-     *             if the key is not found or if the value is not a Number
-     *             object and cannot be converted to a number.
-     */
-    public Number getNumber(String key) throws PropertyException {
-        Object object = this.get(key);
-        try {
-            if (object instanceof Number) {
-                return (Number)object;
-            }
-            return stringToNumber(object.toString());
-        } catch (Exception e) {
-            throw new PropertyException("JSONObject[" + quote(key)
-                    + "] is not a number.", e);
-        }
-    }
-
-    /**
-     * Get the JSONArray value associated with a key.
-     *
-     * @param key
-     *            A key string.
-     * @return A JSONArray which is the value.
-     * @throws PropertyException
-     *             if the key is not found or if the value is not a JSONArray.
-     */
-    public PropertyArray getJSONArray(String key) throws PropertyException {
-        Object object = this.get(key);
-        if (object instanceof PropertyArray) {
-            return (PropertyArray) object;
-        }
-        throw new PropertyException("JSONObject[" + quote(key)
-                + "] is not a JSONArray.");
-    }
-
-    /**
-     * Get the JSONObject value associated with a key.
-     *
-     * @param key
-     *            A key string.
-     * @return A JSONObject which is the value.
-     * @throws PropertyException
-     *             if the key is not found or if the value is not a JSONObject.
-     */
-    public PropertyObject getJSONObject(String key) throws PropertyException {
-        Object object = this.get(key);
-        if (object instanceof PropertyObject) {
-            return (PropertyObject) object;
-        }
-        throw new PropertyException("JSONObject[" + quote(key)
-                + "] is not a JSONObject.");
-    }
-
-
-    /**
-     * Get the string associated with a key.
-     *
-     * @param key
-     *            A key string.
-     * @return A string which is the value.
-     * @throws PropertyException
-     *             if there is no string value for the key.
-     */
-    public String getString(String key) throws PropertyException {
-        Object object = this.get(key);
-        if (object instanceof String) {
-            return (String) object;
-        }
-        throw new PropertyException("JSONObject[" + quote(key) + "] not a string.");
-    }
-
-    /**
-     * Determine if the JSONObject contains a specific key.
-     *
-     * @param key
-     *            A key string.
-     * @return true if the key exists in the JSONObject.
-     */
-    public boolean has(String key) {
-        return this.map.containsKey(key);
-    }
-
-
-    /**
-     * Determine if the value associated with the key is <code>null</code> or if there is no
-     * value.
-     *
-     * @param key
-     *            A key string.
-     * @return true if there is no value associated with the key or if the value
-     *        is the JSONObject.NULL object.
-     */
-    public boolean isNull(String key) {
-        return PropertyObject.NULL.equals(this.opt(key));
-    }
-
-    /**
-     * Get an enumeration of the keys of the JSONObject. Modifying this key Set will also
-     * modify the JSONObject. Use with caution.
-     *
-     * @see Set#iterator()
-     *
-     * @return An iterator of the keys.
-     */
-    public Iterator<String> keys() {
-        return this.keySet().iterator();
-    }
-
-    /**
-     * Get a set of keys of the JSONObject. Modifying this key Set will also modify the
-     * JSONObject. Use with caution.
-     *
-     * @see Map#keySet()
-     *
-     * @return A keySet.
-     */
-    public Set<String> keySet() {
-        return this.map.keySet();
-    }
-
-    /**
-     * Get a set of entries of the JSONObject. These are raw values and may not
-     * match what is returned by the JSONObject get* and opt* functions. Modifying
-     * the returned EntrySet or the Entry objects contained therein will modify the
-     * backing JSONObject. This does not return a clone or a read-only view.
-     *
-     * Use with caution.
-     *
-     * @see Map#entrySet()
-     *
-     * @return An Entry Set
-     */
-    protected Set<Entry<String, Object>> entrySet() {
-        return this.map.entrySet();
-    }
-
-    /**
-     * Get the number of keys stored in the JSONObject.
-     *
-     * @return The number of keys in the JSONObject.
-     */
-    public int length() {
-        return this.map.size();
-    }
-
-    /**
-     * Check if JSONObject is empty.
-     *
-     * @return true if JSONObject is empty, otherwise false.
-     */
-    public boolean isEmpty() {
-        return this.map.isEmpty();
-    }
-
-
-
-    /**
-     * Get an optional value associated with a key.
-     *
-     * @param key
-     *            A key string.
-     * @return An object which is the value, or null if there is no value.
-     */
-    public Object opt(String key) {
-        return key == null ? null : this.map.get(key);
-    }
-
-
-
-    /**
-     * @param val value to convert
+     * @param val          value to convert
      * @param defaultValue default value to return is the conversion doesn't work or is null.
      * @return BigDecimal conversion of the original value, or the defaultValue if unable
-     *          to convert.
+     * to convert.
      */
     static BigDecimal objectToBigDecimal(Object val, BigDecimal defaultValue) {
         if (NULL.equals(val)) {
             return defaultValue;
         }
-        if (val instanceof BigDecimal){
+        if (val instanceof BigDecimal) {
             return (BigDecimal) val;
         }
-        if (val instanceof BigInteger){
+        if (val instanceof BigInteger) {
             return new BigDecimal((BigInteger) val);
         }
-        if (val instanceof Double || val instanceof Float){
+        if (val instanceof Double || val instanceof Float) {
             final double d = ((Number) val).doubleValue();
-            if(Double.isNaN(d)) {
+            if (Double.isNaN(d)) {
                 return defaultValue;
             }
             return new BigDecimal(((Number) val).doubleValue());
         }
         if (val instanceof Long || val instanceof Integer
-                || val instanceof Short || val instanceof Byte){
+                || val instanceof Short || val instanceof Byte) {
             return new BigDecimal(((Number) val).longValue());
         }
         // don't check if it's a string in case of unchecked Number subclasses
@@ -530,333 +273,13 @@ public class PropertyObject {
     }
 
     /**
-     * Get an optional JSONArray associated with a key. It returns null if there
-     * is no such key, or if its value is not a JSONArray.
-     *
-     * @param key
-     *            A key string.
-     * @return A JSONArray which is the value.
-     */
-    public PropertyArray optJSONArray(String key) {
-        Object o = this.opt(key);
-        return o instanceof PropertyArray ? (PropertyArray) o : null;
-    }
-
-
-    /**
-     * Get an optional long value associated with a key, or the default if there
-     * is no such key or if the value is not a number. If the value is a string,
-     * an attempt will be made to evaluate it as a number.
-     *
-     * @param key
-     *            A key string.
-     * @param defaultValue
-     *            The default.
-     * @return An object which is the value.
-     */
-    public long optLong(String key, long defaultValue) {
-        final Number val = this.optNumber(key, null);
-        if (val == null) {
-            return defaultValue;
-        }
-
-        return val.longValue();
-    }
-
-    /**
-     * Get an optional {@link Number} value associated with a key, or <code>null</code>
-     * if there is no such key or if the value is not a number. If the value is a string,
-     * an attempt will be made to evaluate it as a number ({@link BigDecimal}). This method
-     * would be used in cases where type coercion of the number value is unwanted.
-     *
-     * @param key
-     *            A key string.
-     * @return An object which is the value.
-     */
-    public Number optNumber(String key) {
-        return this.optNumber(key, null);
-    }
-
-    /**
-     * Get an optional {@link Number} value associated with a key, or the default if there
-     * is no such key or if the value is not a number. If the value is a string,
-     * an attempt will be made to evaluate it as a number. This method
-     * would be used in cases where type coercion of the number value is unwanted.
-     *
-     * @param key
-     *            A key string.
-     * @param defaultValue
-     *            The default.
-     * @return An object which is the value.
-     */
-    public Number optNumber(String key, Number defaultValue) {
-        Object val = this.opt(key);
-        if (NULL.equals(val)) {
-            return defaultValue;
-        }
-        if (val instanceof Number){
-            return (Number) val;
-        }
-
-        try {
-            return stringToNumber(val.toString());
-        } catch (Exception e) {
-            return defaultValue;
-        }
-    }
-
-    /**
-     * Get an optional string associated with a key. It returns the defaultValue
-     * if there is no such key.
-     *
-     * @param key
-     *            A key string.
-     * @param defaultValue
-     *            The default.
-     * @return A string which is the value.
-     */
-    public String optString(String key, String defaultValue) {
-        Object object = this.opt(key);
-        return NULL.equals(object) ? defaultValue : object.toString();
-    }
-
-    /**
-     * Populates the internal map of the JSONObject with the bean properties. The
-     * bean can not be recursive.
-     *
-     * @see PropertyObject#PropertyObject(Object)
-     *
-     * @param bean
-     *            the bean
-     */
-    private void populateMap(Object bean) {
-        Class<?> klass = bean.getClass();
-
-        // If klass is a System class then set includeSuperClass to false.
-
-        boolean includeSuperClass = klass.getClassLoader() != null;
-
-        Method[] methods = includeSuperClass ? klass.getMethods() : klass.getDeclaredMethods();
-        for (final Method method : methods) {
-            final int modifiers = method.getModifiers();
-            if (Modifier.isPublic(modifiers)
-                    && !Modifier.isStatic(modifiers)
-                    && method.getParameterTypes().length == 0
-                    && !method.isBridge()
-                    && method.getReturnType() != Void.TYPE
-                    && isValidMethodName(method.getName())) {
-                final String key = null;//getKeyNameFromMethod(method);
-                if (key != null && !key.isEmpty()) {
-                    try {
-                        final Object result = method.invoke(bean);
-                        if (result != null) {
-                            this.map.put(key, wrap(result));
-                            // we don't use the result anywhere outside of wrap
-                            // if it's a resource we should be sure to close it
-                            // after calling toString
-                            if (result instanceof Closeable) {
-                                try {
-                                    ((Closeable) result).close();
-                                } catch (IOException ignore) {
-                                }
-                            }
-                        }
-                    } catch (IllegalAccessException ignore) {
-                    } catch (IllegalArgumentException ignore) {
-                    } catch (InvocationTargetException ignore) {
-                    }
-                }
-            }
-        }
-    }
-
-    private boolean isValidMethodName(String name) {
-        return !"getClass".equals(name) && !"getDeclaringClass".equals(name);
-    }
-
-
-    /**
-     * Put a key/boolean pair in the JSONObject.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            A boolean which is the value.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, boolean value) throws PropertyException {
-        return this.put(key, value ? Boolean.TRUE : Boolean.FALSE);
-    }
-
-    /**
-     * Put a key/value pair in the JSONObject, where the value will be a
-     * JSONArray which is produced from a Collection.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            A Collection value.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, Collection<?> value) throws PropertyException {
-        return this.put(key, new PropertyArray(value));
-    }
-
-    /**
-     * Put a key/double pair in the JSONObject.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            A double which is the value.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, double value) throws PropertyException {
-        return this.put(key, Double.valueOf(value));
-    }
-
-    /**
-     * Put a key/float pair in the JSONObject.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            A float which is the value.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, float value) throws PropertyException {
-        return this.put(key, Float.valueOf(value));
-    }
-
-    /**
-     * Put a key/int pair in the JSONObject.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            An int which is the value.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, int value) throws PropertyException {
-        return this.put(key, Integer.valueOf(value));
-    }
-
-    /**
-     * Put a key/long pair in the JSONObject.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            A long which is the value.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, long value) throws PropertyException {
-        return this.put(key, Long.valueOf(value));
-    }
-
-    /**
-     * Put a key/value pair in the JSONObject, where the value will be a
-     * JSONObject which is produced from a Map.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            A Map value.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, Map<?, ?> value) throws PropertyException {
-        return this.put(key, new PropertyObject(value));
-    }
-
-    /**
-     * Put a key/value pair in the JSONObject. If the value is <code>null</code>, then the
-     * key will be removed from the JSONObject if it is present.
-     *
-     * @param key
-     *            A key string.
-     * @param value
-     *            An object which is the value. It should be of one of these
-     *            types: Boolean, Double, Integer, JSONArray, JSONObject, Long,
-     *            String, or the JSONObject.NULL object.
-     * @return this.
-     * @throws PropertyException
-     *            If the value is non-finite number.
-     * @throws NullPointerException
-     *            If the key is <code>null</code>.
-     */
-    public PropertyObject put(String key, Object value) throws PropertyException {
-        if (key == null) {
-            throw new NullPointerException("Null key.");
-        }
-        if (value != null) {
-            testValidity(value);
-            this.map.put(key, value);
-        } else {
-            this.remove(key);
-        }
-        return this;
-    }
-
-    /**
-     * Put a key/value pair in the JSONObject, but only if the key and the value
-     * are both non-null, and only if there is not already a member with that
-     * name.
-     *
-     * @param key
-     *            key to insert into
-     * @param value
-     *            value to insert
-     * @return this.
-     * @throws PropertyException
-     *             if the key is a duplicate
-     */
-    public PropertyObject putOnce(String key, Object value) throws PropertyException {
-        if (key != null && value != null) {
-            if (this.opt(key) != null) {
-                throw new PropertyException("Duplicate key \"" + key + "\"");
-            }
-            return this.put(key, value);
-        }
-        return this;
-    }
-
-    /**
      * Produce a string in double quotes with backslash sequences in all the
      * right places. A backslash will be inserted within &lt;/, producing
      * &lt;\/, allowing JSON text to be delivered in HTML. In JSON text, a
      * string cannot contain a control character or an unescaped quote or
      * backslash.
      *
-     * @param string
-     *            A String
+     * @param string A String
      * @return A String correctly formatted for insertion in a JSON text.
      */
     public static String quote(String string) {
@@ -888,102 +311,46 @@ public class PropertyObject {
             b = c;
             c = string.charAt(i);
             switch (c) {
-            case '\\':
-            case '"':
-                w.write('\\');
-                w.write(c);
-                break;
-            case '/':
-                if (b == '<') {
+                case '\\':
+                case '"':
                     w.write('\\');
-                }
-                w.write(c);
-                break;
-            case '\b':
-                w.write("\\b");
-                break;
-            case '\t':
-                w.write("\\t");
-                break;
-            case '\n':
-                w.write("\\n");
-                break;
-            case '\f':
-                w.write("\\f");
-                break;
-            case '\r':
-                w.write("\\r");
-                break;
-            default:
-                if (c < ' ' || (c >= '\u0080' && c < '\u00a0')
-                        || (c >= '\u2000' && c < '\u2100')) {
-                    w.write("\\u");
-                    hhhh = Integer.toHexString(c);
-                    w.write("0000", 0, 4 - hhhh.length());
-                    w.write(hhhh);
-                } else {
                     w.write(c);
-                }
+                    break;
+                case '/':
+                    if (b == '<') {
+                        w.write('\\');
+                    }
+                    w.write(c);
+                    break;
+                case '\b':
+                    w.write("\\b");
+                    break;
+                case '\t':
+                    w.write("\\t");
+                    break;
+                case '\n':
+                    w.write("\\n");
+                    break;
+                case '\f':
+                    w.write("\\f");
+                    break;
+                case '\r':
+                    w.write("\\r");
+                    break;
+                default:
+                    if (c < ' ' || (c >= '\u0080' && c < '\u00a0')
+                            || (c >= '\u2000' && c < '\u2100')) {
+                        w.write("\\u");
+                        hhhh = Integer.toHexString(c);
+                        w.write("0000", 0, 4 - hhhh.length());
+                        w.write(hhhh);
+                    } else {
+                        w.write(c);
+                    }
             }
         }
         w.write('"');
         return w;
-    }
-
-    /**
-     * Remove a name and its value, if present.
-     *
-     * @param key
-     *            The name to be removed.
-     * @return The value that was associated with the name, or null if there was
-     *         no value.
-     */
-    public Object remove(String key) {
-        return this.map.remove(key);
-    }
-
-    /**
-     * Determine if two JSONObjects are similar.
-     * They must contain the same set of names which must be associated with
-     * similar values.
-     *
-     * @param other The other JSONObject
-     * @return true if they are equal
-     */
-    public boolean similar(Object other) {
-        try {
-            if (!(other instanceof PropertyObject)) {
-                return false;
-            }
-            if (!this.keySet().equals(((PropertyObject)other).keySet())) {
-                return false;
-            }
-            for (final Entry<String,?> entry : this.entrySet()) {
-                String name = entry.getKey();
-                Object valueThis = entry.getValue();
-                Object valueOther = ((PropertyObject)other).get(name);
-                if(valueThis == valueOther) {
-                	continue;
-                }
-                if(valueThis == null) {
-                	return false;
-                }
-                if (valueThis instanceof PropertyObject) {
-                    if (!((PropertyObject)valueThis).similar(valueOther)) {
-                        return false;
-                    }
-                } else if (valueThis instanceof PropertyArray) {
-                    if (!((PropertyArray)valueThis).similar(valueOther)) {
-                        return false;
-                    }
-                } else if (!valueThis.equals(valueOther)) {
-                    return false;
-                }
-            }
-            return true;
-        } catch (Throwable exception) {
-            return false;
-        }
     }
 
     /**
@@ -1005,7 +372,7 @@ public class PropertyObject {
      * @param val value to convert
      * @return Number representation of the value.
      * @throws NumberFormatException thrown if the value is not a valid number. A public
-     *      caller should catch this and wrap it in a {@link PropertyException} if applicable.
+     *                               caller should catch this and wrap it in a {@link PropertyException} if applicable.
      */
     protected static Number stringToNumber(final String val) throws NumberFormatException {
         char initial = val.charAt(0);
@@ -1014,7 +381,7 @@ public class PropertyObject {
             if (isDecimalNotation(val)) {
                 // quick dirty way to see if we need a BigDecimal instead of a Double
                 // this only handles some cases of overflow or underflow
-                if (val.length()>14) {
+                if (val.length() > 14) {
                     return new BigDecimal(val);
                 }
                 final Double d = Double.valueOf(val);
@@ -1050,26 +417,24 @@ public class PropertyObject {
             // long lived. Which is the better tradeoff? This is closer to what's
             // in stringToValue.
             BigInteger bi = new BigInteger(val);
-            if(bi.bitLength()<=31){
+            if (bi.bitLength() <= 31) {
                 return Integer.valueOf(bi.intValue());
             }
-            if(bi.bitLength()<=63){
+            if (bi.bitLength() <= 63) {
                 return Long.valueOf(bi.longValue());
             }
             return bi;
         }
-        throw new NumberFormatException("val ["+val+"] is not a valid number.");
+        throw new NumberFormatException("val [" + val + "] is not a valid number.");
     }
 
     /**
      * Try to convert a string into a number, boolean, or null. If the string
      * can't be converted, return the string.
      *
-     * @param string
-     *            A String. can not be null.
+     * @param string A String. can not be null.
      * @return A simple JSON value.
-     * @throws NullPointerException
-     *             Thrown if the string is null.
+     * @throws NullPointerException Thrown if the string is null.
      */
     // Changes to this method must be copied to the corresponding method in
     // the XML class to keep full support for Android
@@ -1123,10 +488,8 @@ public class PropertyObject {
     /**
      * Throw an exception if the object is a NaN or infinite number.
      *
-     * @param o
-     *            The object to test.
-     * @throws PropertyException
-     *             If o is a non-finite number.
+     * @param o The object to test.
+     * @throws PropertyException If o is a non-finite number.
      */
     public static void testValidity(Object o) throws PropertyException {
         if (o != null) {
@@ -1152,8 +515,7 @@ public class PropertyObject {
      * one of the java packages, turn it into a string. And if it doesn't, try
      * to wrap it in a JSONObject. If the wrapping fails, then null is returned.
      *
-     * @param object
-     *            The object to wrap
+     * @param object The object to wrap
      * @return The wrapped value
      */
     public static Object wrap(Object object) {
@@ -1202,6 +564,438 @@ public class PropertyObject {
         }
     }
 
+    /**
+     * Get the value object associated with a key.
+     *
+     * @param key A key string.
+     * @return The object associated with the key.
+     * @throws PropertyException if the key is not found.
+     */
+    public Object get(String key) throws PropertyException {
+        if (key == null) {
+            throw new PropertyException("Null key.");
+        }
+        Object object = this.opt(key);
+        if (object == null) {
+            throw new PropertyException("JSONObject[" + quote(key) + "] not found.");
+        }
+        return object;
+    }
+
+    /**
+     * Get the Number value associated with a key.
+     *
+     * @param key A key string.
+     * @return The numeric value.
+     * @throws PropertyException if the key is not found or if the value is not a Number
+     *                           object and cannot be converted to a number.
+     */
+    public Number getNumber(String key) throws PropertyException {
+        Object object = this.get(key);
+        try {
+            if (object instanceof Number) {
+                return (Number) object;
+            }
+            return stringToNumber(object.toString());
+        } catch (Exception e) {
+            throw new PropertyException("JSONObject[" + quote(key)
+                                                + "] is not a number.", e);
+        }
+    }
+
+    /**
+     * Get the JSONArray value associated with a key.
+     *
+     * @param key A key string.
+     * @return A JSONArray which is the value.
+     * @throws PropertyException if the key is not found or if the value is not a JSONArray.
+     */
+    public PropertyArray getJSONArray(String key) throws PropertyException {
+        Object object = this.get(key);
+        if (object instanceof PropertyArray) {
+            return (PropertyArray) object;
+        }
+        throw new PropertyException("JSONObject[" + quote(key)
+                                            + "] is not a JSONArray.");
+    }
+
+    /**
+     * Get the JSONObject value associated with a key.
+     *
+     * @param key A key string.
+     * @return A JSONObject which is the value.
+     * @throws PropertyException if the key is not found or if the value is not a JSONObject.
+     */
+    public PropertyObject getJSONObject(String key) throws PropertyException {
+        Object object = this.get(key);
+        if (object instanceof PropertyObject) {
+            return (PropertyObject) object;
+        }
+        throw new PropertyException("JSONObject[" + quote(key)
+                                            + "] is not a JSONObject.");
+    }
+
+    /**
+     * Get the string associated with a key.
+     *
+     * @param key A key string.
+     * @return A string which is the value.
+     * @throws PropertyException if there is no string value for the key.
+     */
+    public String getString(String key) throws PropertyException {
+        Object object = this.get(key);
+        if (object instanceof String) {
+            return (String) object;
+        }
+        throw new PropertyException("JSONObject[" + quote(key) + "] not a string.");
+    }
+
+    /**
+     * Determine if the JSONObject contains a specific key.
+     *
+     * @param key A key string.
+     * @return true if the key exists in the JSONObject.
+     */
+    public boolean has(String key) {
+        return this.map.containsKey(key);
+    }
+
+    /**
+     * Determine if the value associated with the key is <code>null</code> or if there is no
+     * value.
+     *
+     * @param key A key string.
+     * @return true if there is no value associated with the key or if the value
+     * is the JSONObject.NULL object.
+     */
+    public boolean isNull(String key) {
+        return PropertyObject.NULL.equals(this.opt(key));
+    }
+
+    /**
+     * Get an enumeration of the keys of the JSONObject. Modifying this key Set will also
+     * modify the JSONObject. Use with caution.
+     *
+     * @return An iterator of the keys.
+     * @see Set#iterator()
+     */
+    public Iterator<String> keys() {
+        return this.keySet().iterator();
+    }
+
+    /**
+     * Get a set of keys of the JSONObject. Modifying this key Set will also modify the
+     * JSONObject. Use with caution.
+     *
+     * @return A keySet.
+     * @see Map#keySet()
+     */
+    public Set<String> keySet() {
+        return this.map.keySet();
+    }
+
+    /**
+     * Get the number of keys stored in the JSONObject.
+     *
+     * @return The number of keys in the JSONObject.
+     */
+    public int length() {
+        return this.map.size();
+    }
+
+    /**
+     * Check if JSONObject is empty.
+     *
+     * @return true if JSONObject is empty, otherwise false.
+     */
+    public boolean isEmpty() {
+        return this.map.isEmpty();
+    }
+
+    /**
+     * Get an optional value associated with a key.
+     *
+     * @param key A key string.
+     * @return An object which is the value, or null if there is no value.
+     */
+    public Object opt(String key) {
+        return key == null ? null : this.map.get(key);
+    }
+
+    /**
+     * Get an optional JSONArray associated with a key. It returns null if there
+     * is no such key, or if its value is not a JSONArray.
+     *
+     * @param key A key string.
+     * @return A JSONArray which is the value.
+     */
+    public PropertyArray optJSONArray(String key) {
+        Object o = this.opt(key);
+        return o instanceof PropertyArray ? (PropertyArray) o : null;
+    }
+
+    /**
+     * Get an optional long value associated with a key, or the default if there
+     * is no such key or if the value is not a number. If the value is a string,
+     * an attempt will be made to evaluate it as a number.
+     *
+     * @param key          A key string.
+     * @param defaultValue The default.
+     * @return An object which is the value.
+     */
+    public long optLong(String key, long defaultValue) {
+        final Number val = this.optNumber(key, null);
+        if (val == null) {
+            return defaultValue;
+        }
+
+        return val.longValue();
+    }
+
+    /**
+     * Get an optional {@link Number} value associated with a key, or <code>null</code>
+     * if there is no such key or if the value is not a number. If the value is a string,
+     * an attempt will be made to evaluate it as a number ({@link BigDecimal}). This method
+     * would be used in cases where type coercion of the number value is unwanted.
+     *
+     * @param key A key string.
+     * @return An object which is the value.
+     */
+    public Number optNumber(String key) {
+        return this.optNumber(key, null);
+    }
+
+    /**
+     * Get an optional {@link Number} value associated with a key, or the default if there
+     * is no such key or if the value is not a number. If the value is a string,
+     * an attempt will be made to evaluate it as a number. This method
+     * would be used in cases where type coercion of the number value is unwanted.
+     *
+     * @param key          A key string.
+     * @param defaultValue The default.
+     * @return An object which is the value.
+     */
+    public Number optNumber(String key, Number defaultValue) {
+        Object val = this.opt(key);
+        if (NULL.equals(val)) {
+            return defaultValue;
+        }
+        if (val instanceof Number) {
+            return (Number) val;
+        }
+
+        try {
+            return stringToNumber(val.toString());
+        } catch (Exception e) {
+            return defaultValue;
+        }
+    }
+
+    /**
+     * Get an optional string associated with a key. It returns the defaultValue
+     * if there is no such key.
+     *
+     * @param key          A key string.
+     * @param defaultValue The default.
+     * @return A string which is the value.
+     */
+    public String optString(String key, String defaultValue) {
+        Object object = this.opt(key);
+        return NULL.equals(object) ? defaultValue : object.toString();
+    }
+
+    /**
+     * Put a key/boolean pair in the JSONObject.
+     *
+     * @param key   A key string.
+     * @param value A boolean which is the value.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, boolean value) throws PropertyException {
+        return this.put(key, value ? Boolean.TRUE : Boolean.FALSE);
+    }
+
+    /**
+     * Put a key/value pair in the JSONObject, where the value will be a
+     * JSONArray which is produced from a Collection.
+     *
+     * @param key   A key string.
+     * @param value A Collection value.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, Collection<?> value) throws PropertyException {
+        return this.put(key, new PropertyArray(value));
+    }
+
+    /**
+     * Put a key/double pair in the JSONObject.
+     *
+     * @param key   A key string.
+     * @param value A double which is the value.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, double value) throws PropertyException {
+        return this.put(key, Double.valueOf(value));
+    }
+
+    /**
+     * Put a key/float pair in the JSONObject.
+     *
+     * @param key   A key string.
+     * @param value A float which is the value.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, float value) throws PropertyException {
+        return this.put(key, Float.valueOf(value));
+    }
+
+    /**
+     * Put a key/int pair in the JSONObject.
+     *
+     * @param key   A key string.
+     * @param value An int which is the value.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, int value) throws PropertyException {
+        return this.put(key, Integer.valueOf(value));
+    }
+
+    /**
+     * Put a key/long pair in the JSONObject.
+     *
+     * @param key   A key string.
+     * @param value A long which is the value.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, long value) throws PropertyException {
+        return this.put(key, Long.valueOf(value));
+    }
+
+    /**
+     * Put a key/value pair in the JSONObject, where the value will be a
+     * JSONObject which is produced from a Map.
+     *
+     * @param key   A key string.
+     * @param value A Map value.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, Map<?, ?> value) throws PropertyException {
+        return this.put(key, new PropertyObject(value));
+    }
+
+    /**
+     * Put a key/value pair in the JSONObject. If the value is <code>null</code>, then the
+     * key will be removed from the JSONObject if it is present.
+     *
+     * @param key   A key string.
+     * @param value An object which is the value. It should be of one of these
+     *              types: Boolean, Double, Integer, JSONArray, JSONObject, Long,
+     *              String, or the JSONObject.NULL object.
+     * @return this.
+     * @throws PropertyException    If the value is non-finite number.
+     * @throws NullPointerException If the key is <code>null</code>.
+     */
+    public PropertyObject put(String key, Object value) throws PropertyException {
+        if (key == null) {
+            throw new NullPointerException("Null key.");
+        }
+        if (value != null) {
+            testValidity(value);
+            this.map.put(key, value);
+        } else {
+            this.remove(key);
+        }
+        return this;
+    }
+
+    /**
+     * Put a key/value pair in the JSONObject, but only if the key and the value
+     * are both non-null, and only if there is not already a member with that
+     * name.
+     *
+     * @param key   key to insert into
+     * @param value value to insert
+     * @return this.
+     * @throws PropertyException if the key is a duplicate
+     */
+    public PropertyObject putOnce(String key, Object value) throws PropertyException {
+        if (key != null && value != null) {
+            if (this.opt(key) != null) {
+                throw new PropertyException("Duplicate key \"" + key + "\"");
+            }
+            return this.put(key, value);
+        }
+        return this;
+    }
+
+    /**
+     * Remove a name and its value, if present.
+     *
+     * @param key The name to be removed.
+     * @return The value that was associated with the name, or null if there was
+     * no value.
+     */
+    public Object remove(String key) {
+        return this.map.remove(key);
+    }
+
+    /**
+     * Determine if two JSONObjects are similar.
+     * They must contain the same set of names which must be associated with
+     * similar values.
+     *
+     * @param other The other JSONObject
+     * @return true if they are equal
+     */
+    public boolean similar(Object other) {
+        try {
+            if (!(other instanceof PropertyObject)) {
+                return false;
+            }
+            if (!this.keySet().equals(((PropertyObject) other).keySet())) {
+                return false;
+            }
+            for (final Entry<String, ?> entry : this.entrySet()) {
+                String name = entry.getKey();
+                Object valueThis = entry.getValue();
+                Object valueOther = ((PropertyObject) other).get(name);
+                if (valueThis == valueOther) {
+                    continue;
+                }
+                if (valueThis == null) {
+                    return false;
+                }
+                if (valueThis instanceof PropertyObject) {
+                    if (!((PropertyObject) valueThis).similar(valueOther)) {
+                        return false;
+                    }
+                } else if (valueThis instanceof PropertyArray) {
+                    if (!((PropertyArray) valueThis).similar(valueOther)) {
+                        return false;
+                    }
+                } else if (!valueThis.equals(valueOther)) {
+                    return false;
+                }
+            }
+            return true;
+        } catch (Throwable exception) {
+            return false;
+        }
+    }
 
     /**
      * Returns a java.util.Map containing all of the entries in this object.
@@ -1228,5 +1022,123 @@ public class PropertyObject {
             results.put(entry.getKey(), value);
         }
         return results;
+    }
+
+    /**
+     * Get a set of entries of the JSONObject. These are raw values and may not
+     * match what is returned by the JSONObject get* and opt* functions. Modifying
+     * the returned EntrySet or the Entry objects contained therein will modify the
+     * backing JSONObject. This does not return a clone or a read-only view.
+     * <p>
+     * Use with caution.
+     *
+     * @return An Entry Set
+     * @see Map#entrySet()
+     */
+    protected Set<Entry<String, Object>> entrySet() {
+        return this.map.entrySet();
+    }
+
+    /**
+     * Populates the internal map of the JSONObject with the bean properties. The
+     * bean can not be recursive.
+     *
+     * @param bean the bean
+     * @see PropertyObject#PropertyObject(Object)
+     */
+    private void populateMap(Object bean) {
+        Class<?> klass = bean.getClass();
+
+        // If klass is a System class then set includeSuperClass to false.
+
+        boolean includeSuperClass = klass.getClassLoader() != null;
+
+        Method[] methods = includeSuperClass ? klass.getMethods() : klass.getDeclaredMethods();
+        for (final Method method : methods) {
+            final int modifiers = method.getModifiers();
+            if (Modifier.isPublic(modifiers)
+                    && !Modifier.isStatic(modifiers)
+                    && method.getParameterTypes().length == 0
+                    && !method.isBridge()
+                    && method.getReturnType() != Void.TYPE
+                    && isValidMethodName(method.getName())) {
+                final String key = null;//getKeyNameFromMethod(method);
+                if (key != null && !key.isEmpty()) {
+                    try {
+                        final Object result = method.invoke(bean);
+                        if (result != null) {
+                            this.map.put(key, wrap(result));
+                            // we don't use the result anywhere outside of wrap
+                            // if it's a resource we should be sure to close it
+                            // after calling toString
+                            if (result instanceof Closeable) {
+                                try {
+                                    ((Closeable) result).close();
+                                } catch (IOException ignore) {
+                                }
+                            }
+                        }
+                    } catch (IllegalAccessException ignore) {
+                    } catch (IllegalArgumentException ignore) {
+                    } catch (InvocationTargetException ignore) {
+                    }
+                }
+            }
+        }
+    }
+
+    private boolean isValidMethodName(String name) {
+        return !"getClass".equals(name) && !"getDeclaringClass".equals(name);
+    }
+
+    /**
+     * JSONObject.NULL is equivalent to the value that JavaScript calls null,
+     * whilst Java's null is equivalent to the value that JavaScript calls
+     * undefined.
+     */
+    private static final class Null {
+
+        /**
+         * A Null object is equal to the null value and to itself.
+         *
+         * @param object An object to test for nullness.
+         * @return true if the object parameter is the JSONObject.NULL object or
+         * null.
+         */
+        @Override
+        public boolean equals(Object object) {
+            return object == null || object == this;
+        }
+
+        /**
+         * A Null object is equal to the null value and to itself.
+         *
+         * @return always returns 0.
+         */
+        @Override
+        public int hashCode() {
+            return 0;
+        }
+
+        /**
+         * Get the "null" string value.
+         *
+         * @return The string "null".
+         */
+        @Override
+        public String toString() {
+            return "null";
+        }
+
+        /**
+         * There is only intended to be a single instance of the NULL object,
+         * so the clone method returns itself.
+         *
+         * @return NULL.
+         */
+        @Override
+        protected final Object clone() {
+            return this;
+        }
     }
 }

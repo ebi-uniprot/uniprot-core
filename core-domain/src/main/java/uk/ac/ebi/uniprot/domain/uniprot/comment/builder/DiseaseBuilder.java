@@ -14,21 +14,26 @@ public final class DiseaseBuilder {
     private String diseaseAc;
     private String acronym;
     private DiseaseDescription description;
-    private DBCrossReference<DiseaseReferenceType>  reference;
+    private DBCrossReference<DiseaseReferenceType> reference;
 
-    public static DiseaseBuilder newInstance(){
+    public static DiseaseBuilder newInstance() {
         return new DiseaseBuilder();
     }
+
+    public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {
+        return DiseaseImpl.createDiseaseDescription(val, evidences);
+    }
+
     public Disease build() {
         return new DiseaseImpl(diseaseId, diseaseAc, acronym, description,
-                reference);
+                               reference);
     }
 
     public DiseaseBuilder diseaseId(String diseaseId) {
         this.diseaseId = diseaseId;
         return this;
     }
-    
+
     public DiseaseBuilder diseaseAc(String diseaseAc) {
         this.diseaseAc = diseaseAc;
         return this;
@@ -44,13 +49,9 @@ public final class DiseaseBuilder {
         return this;
     }
 
-    public DiseaseBuilder reference(DBCrossReference<DiseaseReferenceType>  reference) {
+    public DiseaseBuilder reference(DBCrossReference<DiseaseReferenceType> reference) {
         this.reference = reference;
         return this;
-    }
-
-    public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {
-        return DiseaseImpl.createDiseaseDescription(val, evidences);
     }
 
 }

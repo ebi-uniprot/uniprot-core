@@ -9,7 +9,7 @@ public class UniProtAccessionImpl extends ValueImpl implements UniProtAccession 
             "([O,P,Q][0-9][A-Z, 0-9]{3}[0-9]|[A-N,R-Z]([0-9][A-Z][A-Z, 0-9]{2}){1,2}[0-9])(-\\d+)*";
     private static final Pattern UNIPROT_ACC_PATTERN = Pattern.compile(UNIPROT_ACC_REX, Pattern.CASE_INSENSITIVE);
 
-    private UniProtAccessionImpl(){
+    private UniProtAccessionImpl() {
         super(null);
     }
 

@@ -22,19 +22,19 @@ public class RnaEditingCommentBuilderTest {
         RnaEditingCommentBuilder builder2 = RnaEditingCommentBuilder.newInstance();
         assertNotNull(builder1);
         assertNotNull(builder2);
-        assertFalse(builder1== builder2);
+        assertFalse(builder1 == builder2);
     }
 
     @Test
     public void testSetRnaEditingLocationType() {
-        
-        RnaEditingCommentBuilder builder= RnaEditingCommentBuilder.newInstance();
+
+        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
         RnaEditingComment comment =
-        builder.rnaEditingLocationType(RnaEditingLocationType.Known)
-        .build();
+                builder.rnaEditingLocationType(RnaEditingLocationType.Known)
+                        .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertFalse(comment.getNote() !=null);
+        assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
         TestHelper.verifyJson(comment);
     }
@@ -45,14 +45,14 @@ public class RnaEditingCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         positions.add(RnaEditingCommentBuilder.createPosition("123", evidences));
         positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
-        RnaEditingCommentBuilder builder= RnaEditingCommentBuilder.newInstance();
+        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
         RnaEditingComment comment =
-        builder.rnaEditingLocationType(RnaEditingLocationType.Known)
-        .locations(positions)
-        .build();
+                builder.rnaEditingLocationType(RnaEditingLocationType.Known)
+                        .locations(positions)
+                        .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
-        assertFalse(comment.getNote() !=null);
+        assertFalse(comment.getNote() != null);
         assertEquals(positions, comment.getPositions());
         TestHelper.verifyJson(comment);
     }
@@ -64,12 +64,12 @@ public class RnaEditingCommentBuilderTest {
         positions.add(RnaEditingCommentBuilder.createPosition("123", evidences));
         positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
         Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
-        RnaEditingCommentBuilder builder= RnaEditingCommentBuilder.newInstance();
+        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
         RnaEditingComment comment =
-        builder.rnaEditingLocationType(RnaEditingLocationType.Known)
-        .locations(positions)
-        .note(note)
-        .build();
+                builder.rnaEditingLocationType(RnaEditingLocationType.Known)
+                        .locations(positions)
+                        .note(note)
+                        .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertEquals(note, comment.getNote());
@@ -80,17 +80,19 @@ public class RnaEditingCommentBuilderTest {
     @Test
     public void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
-       RnaEdPosition position =RnaEditingCommentBuilder.createPosition("123", evidences);
-       assertEquals("123", position.getPosition());
-       assertEquals(evidences, position.getEvidences());
-       TestHelper.verifyJson(position);
+        RnaEdPosition position = RnaEditingCommentBuilder.createPosition("123", evidences);
+        assertEquals("123", position.getPosition());
+        assertEquals(evidences, position.getEvidences());
+        TestHelper.verifyJson(position);
     }
+
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
         evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
+
     private List<EvidencedValue> createEvidenceValues() {
         List<EvidencedValue> evidencedValues = new ArrayList<>();
         evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));

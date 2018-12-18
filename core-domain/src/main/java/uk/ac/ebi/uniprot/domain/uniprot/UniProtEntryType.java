@@ -3,11 +3,9 @@ package uk.ac.ebi.uniprot.domain.uniprot;
 import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
- * 
  * @author jieluo
- * @date   17 Jan 2017
- * @time   18:41:43
- *
+ * @date 17 Jan 2017
+ * @time 18:41:43
  */
 public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
 
@@ -21,10 +19,6 @@ public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
         this.value = type;
     }
 
-    public String getValue() {
-        return value.toString();
-    }
-
     public static UniProtEntryType typeOf(String value) {
         for (UniProtEntryType entryType : UniProtEntryType.values()) {
             if (entryType.getValue().equals(value)) {
@@ -34,7 +28,12 @@ public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
         throw new IllegalArgumentException("the entry type " + value + " doesn't exist");
     }
 
+    public String getValue() {
+        return value.toString();
+    }
+
     @Override
     public String toDisplayName() {
         return value;
-    }}
+    }
+}

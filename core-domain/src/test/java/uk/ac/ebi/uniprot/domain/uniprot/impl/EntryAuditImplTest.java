@@ -20,7 +20,7 @@ public class EntryAuditImplTest {
         int sequenceVersion = 5;
 
         EntryAudit entryAudit = new EntryAuditImpl(firstPublicDate, lastAnnotationUpdateDate,
-                lastSequenceUpdateDate, entryVersion, sequenceVersion);
+                                                   lastSequenceUpdateDate, entryVersion, sequenceVersion);
         assertEquals(firstPublicDate, entryAudit.getFirstPublicDate());
         assertEquals(lastAnnotationUpdateDate, entryAudit.getLastAnnotationUpdateDate());
         assertEquals(lastSequenceUpdateDate, entryAudit.getLastSequenceUpdateDate());

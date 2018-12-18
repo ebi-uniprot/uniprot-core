@@ -13,39 +13,35 @@ import java.util.stream.Collectors;
 public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDbType> implements UniProtDBCrossReference {
 
     private static final String SEMICOLON = "; ";
-	private static final String DASH = "-";
+    private static final String DASH = "-";
     private String isoformId;
 
-	private UniProtDBCrossReferenceImpl(){
-		super(null, "", Collections.emptyList());
-	}
+    private UniProtDBCrossReferenceImpl() {
+        super(null, "", Collections.emptyList());
+    }
 
     public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId) {
-    	super(database, id, properties);
-    	this.isoformId = isoformId;
+        super(database, id, properties);
+        this.isoformId = isoformId;
     }
-  
- 
+
+
     public String getIsoformId() {
-		return isoformId;
-	}
+        return isoformId;
+    }
 
-	private String getDatabaseName() {
-		return getDatabaseType().getName();
-	}
-
-	@Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getDatabaseName()).append(SEMICOLON);
         sb.append(getId()).append(SEMICOLON);
-        if(this.getProperties().isEmpty()) {
-        	sb.append(DASH);
-        }else {
-        	sb.append(
-        	this.getProperties().stream()
-        	.map(val ->val.getValue())
-        	.collect(Collectors.joining(SEMICOLON)));
+        if (this.getProperties().isEmpty()) {
+            sb.append(DASH);
+        } else {
+            sb.append(
+                    this.getProperties().stream()
+                            .map(val -> val.getValue())
+                            .collect(Collectors.joining(SEMICOLON)));
         }
         sb.append(".");
 
@@ -55,36 +51,34 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         return sb.toString();
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
+        return result;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
-		return result;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        UniProtDBCrossReferenceImpl other = (UniProtDBCrossReferenceImpl) obj;
+        if (isoformId == null) {
+            if (other.isoformId != null)
+                return false;
+        } else if (!isoformId.equals(other.isoformId))
+            return false;
+        return true;
+    }
+
+    private String getDatabaseName() {
+        return getDatabaseType().getName();
+    }
 
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		UniProtDBCrossReferenceImpl other = (UniProtDBCrossReferenceImpl) obj;
-		if (isoformId == null) {
-			if (other.isoformId != null)
-				return false;
-		} else if (!isoformId.equals(other.isoformId))
-			return false;
-		return true;
-	}
-
-
-
-  
-   
-	
 }

@@ -9,31 +9,36 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingComment>{
-    private  RnaEditingLocationType locationType;
-    private  List<RnaEdPosition> locations;
-    private  Note note;
-    
-    public static RnaEditingCommentBuilder newInstance(){
+public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingComment> {
+    private RnaEditingLocationType locationType;
+    private List<RnaEdPosition> locations;
+    private Note note;
+
+    public static RnaEditingCommentBuilder newInstance() {
         return new RnaEditingCommentBuilder();
     }
-    public RnaEditingComment build(){
-        return new RnaEditingCommentImpl( locationType, locations,
-                 note) ;
+
+    public static RnaEdPosition createPosition(String position, List<Evidence> evidences) {
+        return RnaEditingCommentImpl.createPosition(position, evidences);
     }
-    public RnaEditingCommentBuilder rnaEditingLocationType(RnaEditingLocationType locationType){
+
+    public RnaEditingComment build() {
+        return new RnaEditingCommentImpl(locationType, locations,
+                                         note);
+    }
+
+    public RnaEditingCommentBuilder rnaEditingLocationType(RnaEditingLocationType locationType) {
         this.locationType = locationType;
         return this;
     }
-    public RnaEditingCommentBuilder locations(List<RnaEdPosition> locations){
+
+    public RnaEditingCommentBuilder locations(List<RnaEdPosition> locations) {
         this.locations = locations;
         return this;
     }
-    public RnaEditingCommentBuilder note(Note note){
+
+    public RnaEditingCommentBuilder note(Note note) {
         this.note = note;
         return this;
-    }
-    public static RnaEdPosition createPosition(String position, List<Evidence> evidences) {
-        return RnaEditingCommentImpl.createPosition(position, evidences);
     }
 }

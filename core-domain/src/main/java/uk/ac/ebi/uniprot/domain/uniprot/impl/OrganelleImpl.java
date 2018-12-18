@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
     private GeneEncodingType geneEncodingType;
 
-    private OrganelleImpl(){
+    private OrganelleImpl() {
         super("", Collections.emptyList());
     }
 
@@ -39,6 +39,28 @@ public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
                     .append("}");
         }
         return sb.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((geneEncodingType == null) ? 0 : geneEncodingType.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        OrganelleImpl other = (OrganelleImpl) obj;
+        if (geneEncodingType != other.geneEncodingType)
+            return false;
+        return true;
     }
 
     private String getString() {
@@ -75,27 +97,5 @@ public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
         return sb.toString();
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((geneEncodingType == null) ? 0 : geneEncodingType.hashCode());
-        return result;
-    }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        OrganelleImpl other = (OrganelleImpl) obj;
-        if (geneEncodingType != other.geneEncodingType)
-            return false;
-        return true;
-    }
-    
-    
 }

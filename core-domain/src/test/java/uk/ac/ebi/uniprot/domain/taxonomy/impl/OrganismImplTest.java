@@ -9,16 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrganismImplTest {
 
-	@Test
-	void testOrganismImpl() {
-		String scientificName = "Homo sapiens";
-		String commonName = "Human";
-		OrganismName name = new OrganismNameImpl(scientificName, commonName, null);
+    @Test
+    void testOrganismImpl() {
+        String scientificName = "Homo sapiens";
+        String commonName = "Human";
+        OrganismName name = new OrganismNameImpl(scientificName, commonName, null);
 
-		Organism organism = new OrganismImpl(name, 9606l);
-		assertEquals(9606l, organism.getTaxonId());
-		assertEquals(name, organism.getName());
-		TestHelper.verifyJson(organism);
-	}
+        Organism organism = new OrganismImpl(name, 9606l);
+        assertEquals(9606l, organism.getTaxonId());
+        assertEquals(name, organism.getName());
+        TestHelper.verifyJson(organism);
+    }
 
 }

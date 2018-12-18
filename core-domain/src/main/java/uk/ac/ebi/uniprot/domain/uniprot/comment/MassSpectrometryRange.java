@@ -3,9 +3,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment;
 import uk.ac.ebi.uniprot.domain.Range;
 
 public interface MassSpectrometryRange {
-	Range getRange();
+    Range getRange();
 
-	boolean hasIsoformId();
+    boolean hasIsoformId();
 
-	String getIsoformId();
+    String getIsoformId();
 }

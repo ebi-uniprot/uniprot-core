@@ -7,10 +7,10 @@ import static org.junit.Assert.assertNotEquals;
 
 public class ValueImplTest {
 
-    
+
     @Test
     public void testGetValue() {
-        String val ="Some Value";
+        String val = "Some Value";
         ValueImpl valImpl = new ValueImpl(val);
         assertEquals(val, valImpl.getValue());
         ValueImpl valImpl2 = new ValueImpl(val);

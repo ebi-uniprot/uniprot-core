@@ -11,15 +11,17 @@ import static org.junit.Assert.assertEquals;
 public class SequenceImplTest {
 
     private static Sequence sequence;
-    private  static String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
+    private static String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
+
     @BeforeAll
-    public static void setup(){
+    public static void setup() {
         sequence = new SequenceImpl(value);
     }
+
     @Test
     public void testGetLength() {
         assertEquals(40, sequence.getLength());
-      
+
     }
 
     @Test
@@ -44,14 +46,14 @@ public class SequenceImplTest {
 
     @Test
     public void testSubSequence() {
-        int start =5;
-        int end =20;
+        int start = 5;
+        int end = 20;
         Sequence subSeq = sequence.subSequence(start, end);
         assertEquals("STPSRRSSRRGRVTP", subSeq.getValue());
     }
 
     @Test
     public void testToJson() {
-    	TestHelper.verifyJson(sequence);
+        TestHelper.verifyJson(sequence);
     }
 }

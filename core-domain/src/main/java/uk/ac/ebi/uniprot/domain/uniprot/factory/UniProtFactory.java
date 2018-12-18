@@ -63,9 +63,9 @@ public enum UniProtFactory {
         return new OrganelleImpl(geneEncodingType, value, evidences);
     }
 
-    public InternalSection createInternalSection(List<InternalLine> internalLines, 
-    		List<EvidenceLine> evidenceLines,
-    		List<SourceLine> sourceLines) {
+    public InternalSection createInternalSection(List<InternalLine> internalLines,
+                                                 List<EvidenceLine> evidenceLines,
+                                                 List<SourceLine> sourceLines) {
         return new InternalSectionImpl(internalLines, evidenceLines, sourceLines);
     }
 
@@ -74,10 +74,10 @@ public enum UniProtFactory {
     }
 
     public EvidenceLine createEvidenceLine(String evidence, LocalDate createDate, String curator) {
-        return new EvidenceLineImpl( evidence, createDate,  curator ) ;
+        return new EvidenceLineImpl(evidence, createDate, curator);
     }
 
-    
+
     public SourceLine createSourceLine(String value) {
         return new SourceLineImpl(value);
     }
@@ -87,9 +87,9 @@ public enum UniProtFactory {
     }
 
     public EntryAudit createEntryAudit(LocalDate firstPublicDate, LocalDate lastAnnotationUpdateDate,
-            LocalDate lastSequenceUpdateDate, int entryVersion, int sequenceVersion) {
+                                       LocalDate lastSequenceUpdateDate, int entryVersion, int sequenceVersion) {
         return new EntryAuditImpl(firstPublicDate, lastAnnotationUpdateDate,
-                lastSequenceUpdateDate, entryVersion, sequenceVersion);
+                                  lastSequenceUpdateDate, entryVersion, sequenceVersion);
     }
 
     public Sequence createSequence(String seq) {
@@ -99,34 +99,36 @@ public enum UniProtFactory {
     public UniProtTaxonId createUniProtTaxonId(long taxId, List<Evidence> evidences) {
         return new UniProtTaxonIdImpl(taxId, evidences);
     }
-    
+
     public Evidence createEvidence(String val) {
-    	return EvidenceImpl.parseEvidenceLine(val);
+        return EvidenceImpl.parseEvidenceLine(val);
     }
+
     public Evidence createEvidence(EvidenceCode evidenceCode,
                                    String databaseName, String dbId) {
-    	return new  EvidenceImpl(evidenceCode, databaseName, dbId);
+        return new EvidenceImpl(evidenceCode, databaseName, dbId);
     }
 
     public Evidence createEvidence(EvidenceCode evidenceCode,
-    		DBCrossReference<EvidenceType> source) {
-   	return new  EvidenceImpl(evidenceCode, source);
-   }
+                                   DBCrossReference<EvidenceType> source) {
+        return new EvidenceImpl(evidenceCode, source);
+    }
 
     public EntryInactiveReason createInactiveReason(InactiveReasonType inactiveReasonType, List<String> mergeDemergeTo) {
-    	return new EntryInactiveReasonImpl(inactiveReasonType, mergeDemergeTo);
+        return new EntryInactiveReasonImpl(inactiveReasonType, mergeDemergeTo);
     }
+
     public UniProtEntry createInactiveEntry(UniProtAccession primaryAccession,
-			 UniProtId uniProtId,
-			 EntryInactiveReason inactiveReason) {
-    	return new UniProtEntryImpl(primaryAccession, uniProtId, inactiveReason);
+                                            UniProtId uniProtId,
+                                            EntryInactiveReason inactiveReason) {
+        return new UniProtEntryImpl(primaryAccession, uniProtId, inactiveReason);
     }
-    
-    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id){
-    	return createDBCrossReference(databaseType, id, Collections.emptyList());
+
+    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id) {
+        return createDBCrossReference(databaseType, id, Collections.emptyList());
     }
-    
-    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id, List<Property> properties){
-    	return new DBCrossReferenceImpl<>(databaseType, id, properties);
+
+    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id, List<Property> properties) {
+        return new DBCrossReferenceImpl<>(databaseType, id, properties);
     }
 }

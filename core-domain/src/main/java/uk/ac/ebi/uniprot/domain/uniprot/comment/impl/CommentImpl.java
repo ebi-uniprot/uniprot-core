@@ -7,18 +7,18 @@ public abstract class CommentImpl implements Comment {
 
     private CommentType commentType;
 
-    private CommentImpl(){
+    private CommentImpl() {
 
     }
 
     public CommentImpl(CommentType commentType) {
         this.commentType = commentType;
-      
+
     }
 
     @Override
     public CommentType getCommentType() {
-       return commentType;
+        return commentType;
     }
 
     @Override

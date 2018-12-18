@@ -9,16 +9,16 @@ import java.util.List;
 public class PatentImpl extends AbstractCitationImpl implements Patent {
     private final String patentNumber;
 
-	private PatentImpl() {
-		super(CitationType.PATENT, Collections.emptyList(), Collections.emptyList(),
-				null, null, null);
-		this.patentNumber = "";
-	}
+    private PatentImpl() {
+        super(CitationType.PATENT, Collections.emptyList(), Collections.emptyList(),
+              null, null, null);
+        this.patentNumber = "";
+    }
 
     public PatentImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
-			String title, PublicationDate publicationDate, String patentNumber) {
+                      String title, PublicationDate publicationDate, String patentNumber) {
         super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.patentNumber = Utils.resetNull( patentNumber);
+        this.patentNumber = Utils.resetNull(patentNumber);
     }
 
     @Override
@@ -26,30 +26,30 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
         return patentNumber;
     }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((patentNumber == null) ? 0 : patentNumber.hashCode());
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + ((patentNumber == null) ? 0 : patentNumber.hashCode());
+        return result;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PatentImpl other = (PatentImpl) obj;
-		if (patentNumber == null) {
-			if (other.patentNumber != null)
-				return false;
-		} else if (!patentNumber.equals(other.patentNumber))
-			return false;
-		return true;
-	}
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        PatentImpl other = (PatentImpl) obj;
+        if (patentNumber == null) {
+            if (other.patentNumber != null)
+                return false;
+        } else if (!patentNumber.equals(other.patentNumber))
+            return false;
+        return true;
+    }
+
 
 }

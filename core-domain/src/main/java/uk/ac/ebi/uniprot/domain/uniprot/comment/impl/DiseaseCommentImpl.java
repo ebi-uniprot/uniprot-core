@@ -9,25 +9,25 @@ public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     private Disease disease;
     private Note note;
 
-    private DiseaseCommentImpl(){
+    private DiseaseCommentImpl() {
         super(CommentType.DISEASE);
     }
 
     public DiseaseCommentImpl(Disease disease, Note note) {
-        super(CommentType.DISEASE);  
+        super(CommentType.DISEASE);
         this.disease = disease;
-        this.note =note;
+        this.note = note;
 
     }
 
     @Override
     public Disease getDisease() {
-       return disease;
+        return disease;
     }
 
     @Override
     public boolean hasDefinedDisease() {
-        return ((disease !=null) && disease.hasDefinedDisease());
+        return ((disease != null) && disease.hasDefinedDisease());
     }
 
     @Override

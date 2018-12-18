@@ -10,26 +10,26 @@ import java.util.List;
 
 public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment {
     private String molecule;
-    private List<SubcellularLocation>  subcellularLocations;
+    private List<SubcellularLocation> subcellularLocations;
     private Note note;
 
-    private SubcellularLocationCommentImpl(){
+    private SubcellularLocationCommentImpl() {
         super(CommentType.SUBCELLULAR_LOCATION);
         this.molecule = "";
         this.subcellularLocations = Collections.emptyList();
     }
 
     public SubcellularLocationCommentImpl(
-    		String molecule,
-    		List<SubcellularLocation>  subcellularLocations,
-    		Note note) {
+            String molecule,
+            List<SubcellularLocation> subcellularLocations,
+            Note note) {
         super(CommentType.SUBCELLULAR_LOCATION);
-        if(molecule == null || molecule.isEmpty()) {
-        	this.molecule ="";
-        }else {
-        	this.molecule = molecule;
+        if (molecule == null || molecule.isEmpty()) {
+            this.molecule = "";
+        } else {
+            this.molecule = molecule;
         }
-       
+
         if ((subcellularLocations == null) || subcellularLocations.isEmpty()) {
             this.subcellularLocations = Collections.emptyList();
         } else {
@@ -40,12 +40,12 @@ public class SubcellularLocationCommentImpl extends CommentImpl implements Subce
 
     @Override
     public String getMolecule() {
-       return molecule;
+        return molecule;
     }
 
     @Override
     public Note getNote() {
-       return note;
+        return note;
     }
 
     @Override

@@ -18,17 +18,17 @@ public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod
         this.value = type;
     }
 
-    public String getValue() {
-        return value;
+    public static MassSpectrometryMethod toType(String type) {
+        for (MassSpectrometryMethod method : MassSpectrometryMethod.values()) {
+            if (method.getValue().equals(type))
+                return method;
+        }
+        return MassSpectrometryMethod.UNKNOWN;
+
     }
 
-    public static MassSpectrometryMethod toType(String type) {
-       for( MassSpectrometryMethod method: MassSpectrometryMethod.values()) {
-    	   if(method.getValue().equals(type))
-    		   return method;
-       }
-       return  MassSpectrometryMethod.UNKNOWN;
-     
+    public String getValue() {
+        return value;
     }
 
     @Override

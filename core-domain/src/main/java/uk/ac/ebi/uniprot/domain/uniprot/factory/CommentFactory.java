@@ -12,9 +12,10 @@ public enum CommentFactory {
     INSTANCE;
 
 
-    public <T extends Comment> T createComment(CommentBuilder<T> builder){
+    public <T extends Comment> T createComment(CommentBuilder<T> builder) {
         return builder.build();
     }
+
     public APCommentBuilder createAPCommentBuilder() {
         return APCommentBuilder.newInstance();
     }
@@ -54,6 +55,7 @@ public enum CommentFactory {
     public DiseaseCommentBuilder createDiseaseCommentBuilder() {
         return DiseaseCommentBuilder.newInstance();
     }
+
     public DiseaseBuilder createDiseaseBuilder() {
         return DiseaseBuilder.newInstance();
     }
@@ -66,6 +68,7 @@ public enum CommentFactory {
     public InteractionCommentBuilder createInteractionCommentBuilder() {
         return InteractionCommentBuilder.newInstance();
     }
+
     public Note createNote(List<EvidencedValue> texts) {
         return new NoteImpl(texts);
     }

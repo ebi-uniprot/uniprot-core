@@ -12,15 +12,15 @@ public final class EntryAuditImpl implements EntryAudit {
     private int entryVersion;
     private int sequenceVersion;
 
-    private EntryAuditImpl(){
+    private EntryAuditImpl() {
 
     }
 
     public EntryAuditImpl(LocalDate firstPublicDate,
-    		LocalDate lastAnnotationUpdateDate,
-    		LocalDate lastSequenceUpdateDate,
-    		int entryVersion,
-    		int sequenceVersion) {
+                          LocalDate lastAnnotationUpdateDate,
+                          LocalDate lastSequenceUpdateDate,
+                          int entryVersion,
+                          int sequenceVersion) {
         this.firstPublicDate = firstPublicDate;
         this.lastAnnotationUpdateDate = lastAnnotationUpdateDate;
         this.lastSequenceUpdateDate = lastSequenceUpdateDate;

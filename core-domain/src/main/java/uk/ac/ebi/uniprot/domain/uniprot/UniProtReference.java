@@ -6,8 +6,11 @@ import java.util.List;
 
 public interface UniProtReference extends HasEvidences {
     Citation getCitation();
+
     public List<ReferenceComment> getTypedReferenceComments(ReferenceCommentType type);
+
     public List<ReferenceComment> getReferenceComments();
+
     public List<String> getReferencePositions();
-   
+
 }

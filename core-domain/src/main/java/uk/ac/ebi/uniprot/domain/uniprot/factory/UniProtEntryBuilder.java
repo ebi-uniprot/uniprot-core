@@ -15,159 +15,172 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import java.util.List;
 
 public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
-    public static UniProtEntryBuilder newInstance(){
-        return new UniProtEntryBuilder();
-    }
-    private  UniProtEntryType entryType =UniProtEntryType.UNKNOWN;
-    private  UniProtAccession primaryAccession;
-    private  List<UniProtAccession> secondaryAccessions;
-    private  UniProtId uniProtId;
-    private  EntryAudit entryAudit;
-    private  UniProtTaxonId taxonId;
-    private  OrganismName organism;
-    private  List<Organism> organismHosts;
-    private  List<OrganismName> taxonomyLineage;
-    private  ProteinExistence proteinExistence =ProteinExistence.UNKNOWN;
-    private  ProteinDescription proteinDescription;
-    private  List<Gene> genes;
-    private  List<Comment> comments;
-    private  List<Feature> features;
-    private  List<Organelle> organelles;
-    private  List<Keyword> keywords;
+    private UniProtEntryType entryType = UniProtEntryType.UNKNOWN;
+    private UniProtAccession primaryAccession;
+    private List<UniProtAccession> secondaryAccessions;
+    private UniProtId uniProtId;
+    private EntryAudit entryAudit;
+    private UniProtTaxonId taxonId;
+    private OrganismName organism;
+    private List<Organism> organismHosts;
+    private List<OrganismName> taxonomyLineage;
+    private ProteinExistence proteinExistence = ProteinExistence.UNKNOWN;
+    private ProteinDescription proteinDescription;
+    private List<Gene> genes;
+    private List<Comment> comments;
+    private List<Feature> features;
+    private List<Organelle> organelles;
+    private List<Keyword> keywords;
     private List<UniProtReference> references;
     private List<UniProtDBCrossReference> databaseCrossReferences;
-    private  Sequence sequence;
-    private  InternalSection internalSection; 
-   
+    private Sequence sequence;
+    private InternalSection internalSection;
+
+    public static UniProtEntryBuilder newInstance() {
+        return new UniProtEntryBuilder();
+    }
+
     @Override
     public UniProtEntry build() {
         return new UniProtEntryImpl(
-                 entryType,
-                 primaryAccession,
-                 secondaryAccessions,
-                 uniProtId,
-                 entryAudit,
-                 taxonId,
-                 organism,
-                 organismHosts,
-                 taxonomyLineage,
-                 proteinExistence,
-                 proteinDescription,
-                 genes,
-                 comments,
-                 features,
-                 organelles,
-                 keywords,
-                 references,
-                 databaseCrossReferences,
-                 sequence,
-                 internalSection
-                );
+                entryType,
+                primaryAccession,
+                secondaryAccessions,
+                uniProtId,
+                entryAudit,
+                taxonId,
+                organism,
+                organismHosts,
+                taxonomyLineage,
+                proteinExistence,
+                proteinDescription,
+                genes,
+                comments,
+                features,
+                organelles,
+                keywords,
+                references,
+                databaseCrossReferences,
+                sequence,
+                internalSection
+        );
 
     }
 
-    public UniProtEntryBuilder entryType(UniProtEntryType entryType){
+    public UniProtEntryBuilder entryType(UniProtEntryType entryType) {
         this.entryType = entryType;
         return this;
     }
-    
-    public UniProtEntryBuilder primaryAccession(UniProtAccession accession){
+
+    public UniProtEntryBuilder primaryAccession(UniProtAccession accession) {
         this.primaryAccession = accession;
         return this;
     }
-    
-    public UniProtEntryBuilder primaryAccession(String accession){
+
+    public UniProtEntryBuilder primaryAccession(String accession) {
         this.primaryAccession = UniProtFactory.INSTANCE.createUniProtAccession(accession);
         return this;
     }
-    
-    public UniProtEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions){
+
+    public UniProtEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions) {
         this.secondaryAccessions = secondaryAccessions;
         return this;
     }
-    
-    public UniProtEntryBuilder uniProtId(UniProtId uniProtId){
+
+    public UniProtEntryBuilder uniProtId(UniProtId uniProtId) {
         this.uniProtId = uniProtId;
         return this;
     }
-    
-    public UniProtEntryBuilder uniProtId(String uniProtId){
-        this.uniProtId =  UniProtFactory.INSTANCE.createUniProtId(uniProtId);
+
+    public UniProtEntryBuilder uniProtId(String uniProtId) {
+        this.uniProtId = UniProtFactory.INSTANCE.createUniProtId(uniProtId);
         return this;
     }
-    
-    public UniProtEntryBuilder taxonomyLineage(List<OrganismName> taxonomyLineage){
+
+    public UniProtEntryBuilder taxonomyLineage(List<OrganismName> taxonomyLineage) {
         this.taxonomyLineage = taxonomyLineage;
         return this;
     }
-    public UniProtEntryBuilder proteinExistence(ProteinExistence proteinExistence){
+
+    public UniProtEntryBuilder proteinExistence(ProteinExistence proteinExistence) {
         this.proteinExistence = proteinExistence;
         return this;
     }
-    
-    public UniProtEntryBuilder entryAudit(EntryAudit entryAudit){
+
+    public UniProtEntryBuilder entryAudit(EntryAudit entryAudit) {
         this.entryAudit = entryAudit;
         return this;
     }
-    public UniProtEntryBuilder organelles(List<Organelle> organelles){
+
+    public UniProtEntryBuilder organelles(List<Organelle> organelles) {
         this.organelles = organelles;
         return this;
     }
-    public UniProtEntryBuilder keywords(List<Keyword> keywords){
+
+    public UniProtEntryBuilder keywords(List<Keyword> keywords) {
         this.keywords = keywords;
         return this;
     }
-    public UniProtEntryBuilder proteinDescription(ProteinDescription proteinDescription){
+
+    public UniProtEntryBuilder proteinDescription(ProteinDescription proteinDescription) {
         this.proteinDescription = proteinDescription;
         return this;
     }
 
-    public UniProtEntryBuilder comments(List<Comment> comments){
+    public UniProtEntryBuilder comments(List<Comment> comments) {
         this.comments = comments;
         return this;
     }
 
-    public UniProtEntryBuilder references(List<UniProtReference> references){
+    public UniProtEntryBuilder references(List<UniProtReference> references) {
         this.references = references;
         return this;
     }
-    public UniProtEntryBuilder genes(List<Gene> genes){
+
+    public UniProtEntryBuilder genes(List<Gene> genes) {
         this.genes = genes;
         return this;
     }
-    public UniProtEntryBuilder organism(OrganismName organism){
+
+    public UniProtEntryBuilder organism(OrganismName organism) {
         this.organism = organism;
         return this;
     }
-    public UniProtEntryBuilder organismHosts(List<Organism> organismHosts){
+
+    public UniProtEntryBuilder organismHosts(List<Organism> organismHosts) {
         this.organismHosts = organismHosts;
         return this;
     }
 
-    public UniProtEntryBuilder uniProtDBCrossReferences(List<UniProtDBCrossReference>  xrefs){
+    public UniProtEntryBuilder uniProtDBCrossReferences(List<UniProtDBCrossReference> xrefs) {
         this.databaseCrossReferences = xrefs;
         return this;
     }
-    public UniProtEntryBuilder sequence(Sequence sequence){
+
+    public UniProtEntryBuilder sequence(Sequence sequence) {
         this.sequence = sequence;
         return this;
     }
-    public UniProtEntryBuilder sequence(String sequence){
+
+    public UniProtEntryBuilder sequence(String sequence) {
         this.sequence = UniProtFactory.INSTANCE.createSequence(sequence);
         return this;
     }
-    public UniProtEntryBuilder uniProtTaxonId(UniProtTaxonId taxonId){
+
+    public UniProtEntryBuilder uniProtTaxonId(UniProtTaxonId taxonId) {
         this.taxonId = taxonId;
         return this;
     }
-    public UniProtEntryBuilder internalSection(InternalSection internalSection){
+
+    public UniProtEntryBuilder internalSection(InternalSection internalSection) {
         this.internalSection = internalSection;
         return this;
     }
-    public UniProtEntryBuilder features(List<Feature> features){
+
+    public UniProtEntryBuilder features(List<Feature> features) {
         this.features = features;
         return this;
     }
 
-  
+
 }

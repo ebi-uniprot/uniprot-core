@@ -3,19 +3,21 @@ package uk.ac.ebi.uniprot.domain.citation.impl;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 public class PublicationDateImpl implements PublicationDate {
-	private String value;
+    private String value;
 
-    private PublicationDateImpl(){
+    private PublicationDateImpl() {
 
     }
-    public PublicationDateImpl(String value){
-         this.value = value;
+
+    public PublicationDateImpl(String value) {
+        this.value = value;
     }
 
     @Override
     public String getValue() {
-       return value;
+        return value;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -23,6 +25,7 @@ public class PublicationDateImpl implements PublicationDate {
         result = prime * result + ((value == null) ? 0 : value.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -39,5 +42,5 @@ public class PublicationDateImpl implements PublicationDate {
             return false;
         return true;
     }
-    
+
 }

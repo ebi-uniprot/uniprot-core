@@ -7,11 +7,11 @@ import java.util.List;
 
 public interface SequenceCautionComment extends Comment, HasEvidences {
 
-     String getSequence();
-     
-     String getNote();
+    String getSequence();
 
-     SequenceCautionType getSequenceCautionType();
+    String getNote();
 
-     List<String> getPositions();
+    SequenceCautionType getSequenceCautionType();
+
+    List<String> getPositions();
 }

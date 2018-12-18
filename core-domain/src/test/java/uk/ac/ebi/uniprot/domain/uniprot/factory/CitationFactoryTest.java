@@ -15,30 +15,30 @@ public class CitationFactoryTest {
     @Test
     public void testCreateCitation() {
         JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
-        String title ="some title";
+        String title = "some title";
         builder.title(title)
-        .publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"))
-        .authoringGroups(Arrays.asList(new String[]{"T1", "T2" }))
-        .authors(Arrays.asList(new Author[] {JournalArticleBuilder.createAuthor("Tom"),
-                JournalArticleBuilder.createAuthor("John")               
-        }
-        ));
-        String journalName ="Nature";
+                .publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"))
+                .authoringGroups(Arrays.asList(new String[]{"T1", "T2"}))
+                .authors(Arrays.asList(new Author[]{JournalArticleBuilder.createAuthor("Tom"),
+                                                    JournalArticleBuilder.createAuthor("John")
+                                       }
+                ));
+        String journalName = "Nature";
         builder.journalName(journalName)
-        .firstPage("213")
-        .lastPage("223")
-        .volume("2");
-        
+                .firstPage("213")
+                .lastPage("223")
+                .volume("2");
+
         JournalArticle ja = builder.build();
-        
-        JournalArticle ja2 =CitationFactory.INSTANCE.createCitation(builder);
+
+        JournalArticle ja2 = CitationFactory.INSTANCE.createCitation(builder);
         assertEquals(ja, ja2);
     }
 
     @Test
     public void testCreateBookBuilder() {
-       BookBuilder builder =CitationFactory.INSTANCE.createBookBuilder();
-       assertNotNull(builder);
+        BookBuilder builder = CitationFactory.INSTANCE.createBookBuilder();
+        assertNotNull(builder);
     }
 
     @Test
@@ -77,5 +77,5 @@ public class CitationFactoryTest {
         assertNotNull(builder);
     }
 
-  
+
 }

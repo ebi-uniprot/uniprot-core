@@ -16,9 +16,14 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     private List<Cofactor> cofactors;
     private Note note;
 
-    public static CofactorCommentBuilder newInstance(){
+    public static CofactorCommentBuilder newInstance() {
         return new CofactorCommentBuilder();
     }
+
+    public static Cofactor createCofactor(String name, DBCrossReference<CofactorReferenceType> reference, List<Evidence> evidences) {
+        return new CofactorImpl(name, reference, evidences);
+    }
+
     public CofactorComment build() {
         return new CofactorCommentImpl(molecule, cofactors, note);
     }
@@ -36,12 +41,6 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     public CofactorCommentBuilder note(Note note) {
         this.note = note;
         return this;
-    }
-
- 
-
-    public static Cofactor createCofactor(String name, DBCrossReference<CofactorReferenceType>  reference, List<Evidence> evidences ) {
-        return new CofactorImpl(name, reference, evidences);
     }
 
 }

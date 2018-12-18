@@ -15,79 +15,86 @@ import java.util.Collections;
 import java.util.List;
 
 public final class FeatureBuilder {
-	public static FeatureBuilder newInstance() {
-		return new FeatureBuilder();
-	}
-	
-	public static FeatureId createFeatureId(String value) {
-		return new FeatureIdImpl(value);
-	}
-	public static FeatureDescription createFeatureDescription(String value) {
-		return new FeatureDescriptionImpl(value);
-	}
-	
-	public static SequenceReport createReport(List<String> value) {
-		return new SequenceReportImpl(value);
-	}
-	
-	public static SequenceReport createReport(String value) {
-		if(value == null || value.isEmpty())
-			return new SequenceReportImpl(Collections.emptyList());
-		else
-			return new SequenceReportImpl(Arrays.asList(value));
-	}
-	public static AlternativeSequence createAlternativeSequence(String originalSequence,
-			List<String> alternativeSequences,SequenceReport report) {
-		return new AlternativeSequenceImpl(originalSequence, alternativeSequences, report);
-	}
-	
-	public static boolean hasAlternativeSequence(FeatureType featureType) {
-		return AlternativeSequenceImpl.hasAlternativeSequence(featureType);
-	}
-	public FeatureImpl.Builder newFeatureBuilder(){
-		return FeatureImpl.createBuilder();
-	}
-	
-	
-	
-	private FeatureType type;
-	private Range location;
-	private FeatureDescription description;
-	private FeatureId featureId;
-	private AlternativeSequence alternativeSequence;
-	private DBCrossReference<FeatureXDbType> dbXref;
-	private List<Evidence> evidences;
-	
-	public FeatureBuilder featureType(FeatureType type) {
-		this.type = type;
-		return this;
-	}
-	
-	public Feature build() {
-		return new FeatureImpl(type, location, description, featureId, alternativeSequence, dbXref, evidences);
-	}
-	public FeatureBuilder location(Range location) {
-		this.location = location;
-		return this;
-	}
-	public FeatureBuilder description(FeatureDescription description) {
-		this.description = description;
-		return this;
-	}
-	public FeatureBuilder featureId(FeatureId featureId) {
-		this.featureId = featureId;
-		return this;
-	}
-	public FeatureBuilder alternativeSequence(AlternativeSequence alternativeSequence) {
-		this.alternativeSequence = alternativeSequence;
-		return this;
-	}
-	public FeatureBuilder dbXref(DBCrossReference<FeatureXDbType> dbXref) {
-		this.dbXref = dbXref;
-		return this;
-	}
-	public FeatureBuilder evidences(List<Evidence> evidences) {
-		this.evidences = evidences;
-		return this;
-	}
+    private FeatureType type;
+    private Range location;
+    private FeatureDescription description;
+    private FeatureId featureId;
+    private AlternativeSequence alternativeSequence;
+    private DBCrossReference<FeatureXDbType> dbXref;
+    private List<Evidence> evidences;
+
+    public static FeatureBuilder newInstance() {
+        return new FeatureBuilder();
+    }
+
+    public static FeatureId createFeatureId(String value) {
+        return new FeatureIdImpl(value);
+    }
+
+    public static FeatureDescription createFeatureDescription(String value) {
+        return new FeatureDescriptionImpl(value);
+    }
+
+    public static SequenceReport createReport(List<String> value) {
+        return new SequenceReportImpl(value);
+    }
+
+    public static SequenceReport createReport(String value) {
+        if (value == null || value.isEmpty())
+            return new SequenceReportImpl(Collections.emptyList());
+        else
+            return new SequenceReportImpl(Arrays.asList(value));
+    }
+
+    public static AlternativeSequence createAlternativeSequence(String originalSequence,
+                                                                List<String> alternativeSequences, SequenceReport report) {
+        return new AlternativeSequenceImpl(originalSequence, alternativeSequences, report);
+    }
+
+    public static boolean hasAlternativeSequence(FeatureType featureType) {
+        return AlternativeSequenceImpl.hasAlternativeSequence(featureType);
+    }
+
+    public FeatureImpl.Builder newFeatureBuilder() {
+        return FeatureImpl.createBuilder();
+    }
+
+    public FeatureBuilder featureType(FeatureType type) {
+        this.type = type;
+        return this;
+    }
+
+    public Feature build() {
+        return new FeatureImpl(type, location, description, featureId, alternativeSequence, dbXref, evidences);
+    }
+
+    public FeatureBuilder location(Range location) {
+        this.location = location;
+        return this;
+    }
+
+    public FeatureBuilder description(FeatureDescription description) {
+        this.description = description;
+        return this;
+    }
+
+    public FeatureBuilder featureId(FeatureId featureId) {
+        this.featureId = featureId;
+        return this;
+    }
+
+    public FeatureBuilder alternativeSequence(AlternativeSequence alternativeSequence) {
+        this.alternativeSequence = alternativeSequence;
+        return this;
+    }
+
+    public FeatureBuilder dbXref(DBCrossReference<FeatureXDbType> dbXref) {
+        this.dbXref = dbXref;
+        return this;
+    }
+
+    public FeatureBuilder evidences(List<Evidence> evidences) {
+        this.evidences = evidences;
+        return this;
+    }
 }

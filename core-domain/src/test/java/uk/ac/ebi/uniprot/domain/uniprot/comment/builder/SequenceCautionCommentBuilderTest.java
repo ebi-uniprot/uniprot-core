@@ -30,7 +30,7 @@ public class SequenceCautionCommentBuilderTest {
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertFalse(comment.getNote() !=null);
+        assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
         assertNull(comment.getSequence());
         TestHelper.verifyJson(comment);
@@ -41,11 +41,11 @@ public class SequenceCautionCommentBuilderTest {
         SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
-                .sequence("somesequence")
+                        .sequence("somesequence")
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertFalse(comment.getNote() !=null);
+        assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
         assertEquals("somesequence", comment.getSequence());
         TestHelper.verifyJson(comment);
@@ -57,12 +57,12 @@ public class SequenceCautionCommentBuilderTest {
         SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
-                .sequence("somesequence")
-                .positions(positions)
+                        .sequence("somesequence")
+                        .positions(positions)
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertFalse(comment.getNote() !=null);
+        assertFalse(comment.getNote() != null);
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
         TestHelper.verifyJson(comment);
@@ -74,13 +74,13 @@ public class SequenceCautionCommentBuilderTest {
         SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
-                .sequence("somesequence")
-                .positions(positions)
-                .note("some note")
+                        .sequence("somesequence")
+                        .positions(positions)
+                        .note("some note")
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
-        assertEquals("some note", comment.getNote() );
+        assertEquals("some note", comment.getNote());
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
         TestHelper.verifyJson(comment);

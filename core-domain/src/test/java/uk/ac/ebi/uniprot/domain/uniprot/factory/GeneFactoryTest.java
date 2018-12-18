@@ -28,9 +28,9 @@ public class GeneFactoryTest {
         Gene gene = GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
         assertTrue(gene.hasGeneName());
         TestHelper.verifyJson(gene);
-        
+
     }
-  
+
     @Test
     public void testCreateGeneWithSynonym() {
         String val = "someGene";
@@ -56,7 +56,7 @@ public class GeneFactoryTest {
         assertEquals(1, gene.getSynonyms().size());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
         assertTrue(gene.getOrfNames().isEmpty());
-     
+
         TestHelper.verifyJson(gene);
     }
 
@@ -134,7 +134,7 @@ public class GeneFactoryTest {
         assertEquals("ECO:0000256|PIRNR:PIRNR001361", geneName.getEvidences().get(0).getValue());
         assertFalse(evidences == geneName.getEvidences());
         TestHelper.verifyJson(geneName);
-        
+
     }
 
     @Test

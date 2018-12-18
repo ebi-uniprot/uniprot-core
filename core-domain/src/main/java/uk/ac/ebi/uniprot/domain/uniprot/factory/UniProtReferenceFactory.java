@@ -14,17 +14,18 @@ public enum UniProtReferenceFactory {
     INSTANCE;
 
     public UniProtReference createUniProtReference(Citation citation, List<String> referencePositions,
-            List<ReferenceComment> referenceComments,
-            List<Evidence> evidences) {
+                                                   List<ReferenceComment> referenceComments,
+                                                   List<Evidence> evidences) {
         return new UniProtReferenceImpl(citation, referencePositions, referenceComments, evidences);
     }
-    public ReferenceComment createReferenceComment(ReferenceCommentType type, String value, List<Evidence> evidences){
+
+    public ReferenceComment createReferenceComment(ReferenceCommentType type, String value, List<Evidence> evidences) {
         return new ReferenceCommentImpl(type, value, evidences);
     }
-    
-    public CitationFactory getCitationFactory(){
-       return CitationFactory.INSTANCE;
+
+    public CitationFactory getCitationFactory() {
+        return CitationFactory.INSTANCE;
     }
-    
+
 }
 

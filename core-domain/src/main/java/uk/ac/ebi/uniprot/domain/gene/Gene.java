@@ -29,9 +29,9 @@ import java.util.List;
  * <div class="codeexample"> {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} entry = getEntryFromParserOrAPI();
  * List<{@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes = entry.getGenes();
  * for ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene : genes) {
- *     for (ORFName orfName : gene.getORFNames()) {
- *         System.out.println(orfName);
- *     }
+ * for (ORFName orfName : gene.getORFNames()) {
+ * System.out.println(orfName);
+ * }
  * }</div>
  * </p>
  * <p>
@@ -43,9 +43,7 @@ import java.util.List;
  */
 
 
-
-
-public interface Gene{
+public interface Gene {
 
     /**
      * Indicates whether this Gene has a Gene name. Use this method
@@ -102,6 +100,7 @@ public interface Gene{
      * GN   OrderedLocusNames=<font color="#000000">CPn_0505</font>, <font color="#000000">CP_0248</font>, <font color="#000000">CPj0505</font>, <font color="#000000">CpB0526</font>;
      * OS   Chlamydia pneumoniae (Chlamydophila pneumoniae).
      * ...</font></pre>
+     *
      * @return The Ordered Locus Names of this Gene.
      */
 

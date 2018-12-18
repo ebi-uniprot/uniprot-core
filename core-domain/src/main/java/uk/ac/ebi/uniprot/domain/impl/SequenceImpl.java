@@ -11,21 +11,21 @@ public class SequenceImpl implements Sequence {
     private String crc64;
     private String md5;
 
-    private SequenceImpl(){
-        this.value ="";
+    private SequenceImpl() {
+        this.value = "";
     }
 
-    public SequenceImpl(String sequence){
-        if(sequence ==null){
-            this.value ="";
-        }else
+    public SequenceImpl(String sequence) {
+        if (sequence == null) {
+            this.value = "";
+        } else
             this.value = sequence;
         this.length = this.value.length();
-        this.molWeight =MoleculeWeight.calcMolecularWeight(this.value);
-        this.crc64  = MessageDigestUtil.getCrc64(value);
-        this.md5 =MessageDigestUtil.getDigest(value, "MD5");
+        this.molWeight = MoleculeWeight.calcMolecularWeight(this.value);
+        this.crc64 = MessageDigestUtil.getCrc64(value);
+        this.md5 = MessageDigestUtil.getDigest(value, "MD5");
     }
-   
+
     @Override
     public int getLength() {
         return length;
@@ -35,10 +35,10 @@ public class SequenceImpl implements Sequence {
     public int getMolWeight() {
         return this.molWeight;
     }
-    
+
     @Override
     public String getCrc64() {
-       return this.crc64;
+        return this.crc64;
     }
 
     @Override
@@ -48,13 +48,13 @@ public class SequenceImpl implements Sequence {
 
     @Override
     public String getValue() {
-       return value;
+        return value;
     }
 
     @Override
     public Sequence subSequence(int start, int end) {
         String subsequence = this.value.substring(start, end);
-         return new SequenceImpl(subsequence);
+        return new SequenceImpl(subsequence);
     }
 
     @Override
@@ -81,5 +81,5 @@ public class SequenceImpl implements Sequence {
             return false;
         return true;
     }
-   
+
 }
