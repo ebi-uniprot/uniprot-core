@@ -33,7 +33,7 @@ public class GeneTest {
 
                 "\"synonyms\":[{\"value\":\"some Syn\"," +
                 "\"evidences\":[{\"evidenceCode\":\"ECO_0000256\",\"source\":{\"databaseType\":{\"name\":\"PIRNR\"},\"id\":\"PIRNR001361\"}}," +
-                               "{\"evidenceCode\":\"ECO_0000269\",\"source\":{\"databaseType\":{\"name\":\"PubMed\"},\"id\":\"11389730\"}}]}]," +
+                               "{\"evidenceCode\":\"ECO_0000269\",\"source\":{\"databaseType\":{\"name\":\"PubMed\"},\"id\":\"11389731\"}}]}]," +
 
                 "\"orderedLocusNames\":[{\"value\":\"some locus\"," +
                 "\"evidences\":[{\"evidenceCode\":\"ECO_0000256\",\"source\":{\"databaseType\":{\"name\":\"PIRNR\"},\"id\":\"PIRNR001362\"}}]}]," +
