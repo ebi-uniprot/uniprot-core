@@ -48,7 +48,28 @@ public class JsonParserConfig {
 
     private static final ObjectMapper objectMapper;
 
+
+    private static final ObjectMapper simpleMapper;
+
     static {
+        /**
+         * BEGIN: simple mapper
+         */
+        ObjectMapper simpleObjMapper = new ObjectMapper();
+        simpleObjMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+
+        simpleObjMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        simpleObjMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
+        simpleObjMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        SimpleModule simpleMod = new SimpleModule();
+        simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
+        simpleObjMapper.registerModule(simpleMod);
+        simpleMapper = simpleObjMapper;
+        /**
+         * END: simple mapper
+         */
+
+
         ObjectMapper objMapper = new ObjectMapper();
         objMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 
@@ -199,6 +220,9 @@ public class JsonParserConfig {
         return objectMapper;
     }
 
+    public static ObjectMapper getJsonSimpleObjectMapper(){
+        return simpleMapper;
+    }
 
     private static class CustomAnnotationIntrospector extends AnnotationIntrospector {
 
