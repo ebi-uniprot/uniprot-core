@@ -16,29 +16,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InteractionCommentImplTest {
 
-	@Test
-	void testInteractionCommentImpl() {
-		List<Interaction> interactions = new ArrayList<>();
-		 InteractionBuilder builder = InteractionBuilder.newInstance();
-	        Interaction interaction =builder.interactionType(InteractionType.BINARY)
-	                .geneName("gn22")
-	                .numberOfExperiments(3)
-	                .firstInteractor(InteractionBuilder.createInteractor("first1"))
-	                .secondInteractor(InteractionBuilder.createInteractor("first2"))
-	                .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
-	                .build();
-	        interactions.add(interaction);
-	        Interaction interaction2 = new InteractionImpl(	InteractionType.SELF, 
-	        		null, "some gene name", 12, 
-	        		InteractionBuilder.createInteractor("first 1"),
-	        		InteractionBuilder.createInteractor("second 2"));
-	       interactions.add(interaction2);
-	       
-	       InteractionComment comment =new  InteractionCommentImpl(interactions);
-	       assertEquals(interactions, comment.getInteractions());
-	       assertEquals(CommentType.INTERACTION, comment.getCommentType());
-	       TestHelper.verifyJson(comment);
-	        
-	}
+    @Test
+    void testInteractionCommentImpl() {
+        List<Interaction> interactions = new ArrayList<>();
+        InteractionBuilder builder = InteractionBuilder.newInstance();
+        Interaction interaction = builder.interactionType(InteractionType.BINARY)
+                .geneName("gn22")
+                .numberOfExperiments(3)
+                .firstInteractor(InteractionBuilder.createInteractor("first1"))
+                .secondInteractor(InteractionBuilder.createInteractor("first2"))
+                .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
+                .build();
+        interactions.add(interaction);
+        Interaction interaction2 = new InteractionImpl(InteractionType.SELF,
+                                                       null, "some gene name", 12,
+                                                       InteractionBuilder.createInteractor("first 1"),
+                                                       InteractionBuilder.createInteractor("second 2"));
+        interactions.add(interaction2);
+
+        InteractionComment comment = new InteractionCommentImpl(interactions);
+        assertEquals(interactions, comment.getInteractions());
+        assertEquals(CommentType.INTERACTION, comment.getCommentType());
+        TestHelper.verifyJson(comment);
+
+    }
 
 }

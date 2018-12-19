@@ -2,14 +2,14 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 public interface BPCPComment extends Comment {
 
-	 Absorption getAbsorption();
-	
-	 KineticParameters getKineticParameters();
+    Absorption getAbsorption();
 
-	 PhDependence getPhDependence();
+    KineticParameters getKineticParameters();
 
-	 RedoxPotential getRedoxPotential();
+    PhDependence getPhDependence();
 
-	 TemperatureDependence getTemperatureDependence();
+    RedoxPotential getRedoxPotential();
+
+    TemperatureDependence getTemperatureDependence();
 
 }

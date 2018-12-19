@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
 
 public class UniProtIdImpl extends ValueImpl implements UniProtId {
 
-    private UniProtIdImpl(){
+    private UniProtIdImpl() {
         super(null);
     }
 

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 
 public enum FeatureType implements EnumDisplay<FeatureType> {
-	  /**
+    /**
      * Enumerates all features types in UniProt. Important!!! The order which is here must the order existing in the
      * file cc_ord which is placed in /ebi/sp/misc1/pc/sprot/various/ft_ord
      */
@@ -57,10 +57,25 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
     private final FeatureCategory category;
 
     FeatureType(String value,
-        String displayName, FeatureCategory category) {
+                String displayName, FeatureCategory category) {
         this.value = value;
         this.displayName = displayName;
         this.category = category;
+    }
+
+    public static List<FeatureType> getFeatureTypes(FeatureCategory category) {
+        return Arrays.stream(FeatureType.values())
+                .filter(val -> val.getCategory() == category)
+                .collect(Collectors.toList());
+    }
+
+    public static FeatureType typeOf(String value) {
+        for (FeatureType featureType : FeatureType.values()) {
+            if (featureType.name().equalsIgnoreCase(value)) {
+                return featureType;
+            }
+        }
+        throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
     }
 
     public String getValue() {
@@ -75,24 +90,8 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         return displayName;
     }
 
-    
-    
     public FeatureCategory getCategory() {
         return category;
-    }
-
-    public static List<FeatureType> getFeatureTypes(FeatureCategory category){
-        return Arrays.stream(FeatureType.values())
-        .filter(val -> val.getCategory()== category)
-        .collect(Collectors.toList());
-    }
-    public static FeatureType typeOf(String value) {
-        for (FeatureType featureType : FeatureType.values()) {
-            if (featureType.name().equalsIgnoreCase(value)) {
-                return featureType;
-            }
-        }
-        throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
     }
 
     @Override

@@ -5,20 +5,20 @@ import uk.ac.ebi.uniprot.domain.citation.impl.JournalArticleImpl;
 
 public final class JournalArticleBuilder extends AbstractCitationBuilder<JournalArticle> {
 
-    public static JournalArticleBuilder newInstance() {
-        return new JournalArticleBuilder();
-    }
-
     private String journalName;
     private String firstPage = "";
     private String lastPage = "";
     private String volume = "";
 
+    public static JournalArticleBuilder newInstance() {
+        return new JournalArticleBuilder();
+    }
+
     @Override
     public JournalArticle build() {
         return new JournalArticleImpl(authoringGroups, authors,
-                xrefs, title, publicationDate,
-                journalName, firstPage, lastPage, volume);
+                                      xrefs, title, publicationDate,
+                                      journalName, firstPage, lastPage, volume);
     }
 
     public JournalArticleBuilder journalName(String journalName) {

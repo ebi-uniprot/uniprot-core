@@ -15,17 +15,17 @@ public abstract class AbstractCitationBuilder<T extends Citation> implements Cit
     protected CitationXrefs xrefs;
     protected String title = "";
     protected PublicationDate publicationDate;
-    
-    public static PublicationDate createPublicationDate(String date){
+
+    public static PublicationDate createPublicationDate(String date) {
         return new PublicationDateImpl(date);
     }
 
-    
-    public static Author createAuthor(String name){
+
+    public static Author createAuthor(String name) {
         return new AuthorImpl(name);
     }
-    
-    public static CitationXrefs createCitationXrefs(List<DBCrossReference<CitationXrefType>> xrefs){
+
+    public static CitationXrefs createCitationXrefs(List<DBCrossReference<CitationXrefType>> xrefs) {
         return new CitationXrefsImpl(xrefs);
     }
 

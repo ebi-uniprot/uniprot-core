@@ -16,24 +16,28 @@ public class InteractionImpl implements Interaction {
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
-    private InteractionImpl(){
+    private InteractionImpl() {
 
     }
 
     public InteractionImpl(
-    		InteractionType type,
-    		UniProtAccession uniProtAccession,
-    		String geneName,
-    		int numberOfExperiments,
-    		Interactor firstInteractor,
-    		Interactor secondInteractor){
-        this.type =type;
+            InteractionType type,
+            UniProtAccession uniProtAccession,
+            String geneName,
+            int numberOfExperiments,
+            Interactor firstInteractor,
+            Interactor secondInteractor) {
+        this.type = type;
         this.uniProtAccession = uniProtAccession;
         this.geneName = geneName;
         this.numberOfExperiments = numberOfExperiments;
         this.firstInteractor = firstInteractor;
         this.secondInteractor = secondInteractor;
-        
+
+    }
+
+    public static Interactor createInteractor(String value) {
+        return new InteractorImpl(value);
     }
 
     @Override
@@ -58,7 +62,7 @@ public class InteractionImpl implements Interaction {
 
     @Override
     public Interactor getFirstInteractor() {
-       return firstInteractor;
+        return firstInteractor;
     }
 
     @Override
@@ -115,13 +119,9 @@ public class InteractionImpl implements Interaction {
         return true;
     }
 
-    public static Interactor createInteractor(String value){
-        return new InteractorImpl(value);
-    }
+    public static class InteractorImpl extends ValueImpl implements Interactor {
 
-   public static class InteractorImpl extends ValueImpl implements Interactor{
-
-        private InteractorImpl(){
+        private InteractorImpl() {
             super(null);
         }
 

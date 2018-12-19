@@ -38,11 +38,6 @@ public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
         this.weight = weight;
     }
 
-    public int getWeight() {
-        return weight;
-    }
-
-
     public static int calcMolecularWeight(String sequence) {
 
         long weight = 0;
@@ -54,6 +49,10 @@ public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
         weight += 5000;
         weight = weight / 10000;
         return (int) weight;
+    }
+
+    public int getWeight() {
+        return weight;
     }
 
     @Override

@@ -37,9 +37,9 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         this.builderCitationParamters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName);
-        builder.editors(Arrays.asList(new Author[] {AbstractCitationBuilder.createAuthor("David"),
-                AbstractCitationBuilder.createAuthor("Charlie")               
-        }
+        builder.editors(Arrays.asList(new Author[]{AbstractCitationBuilder.createAuthor("David"),
+                                                   AbstractCitationBuilder.createAuthor("Charlie")
+                                      }
         ));
         Book citation = builder.build();
         this.verifyCitation(citation, CitationType.BOOK);
@@ -54,9 +54,9 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         this.builderCitationParamters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName);
-        builder.editors(Arrays.asList(new Author[] {AbstractCitationBuilder.createAuthor("David"),
-                AbstractCitationBuilder.createAuthor("Charlie")               
-        }
+        builder.editors(Arrays.asList(new Author[]{AbstractCitationBuilder.createAuthor("David"),
+                                                   AbstractCitationBuilder.createAuthor("Charlie")
+                                      }
         ));
         builder.firstPage("234");
         Book citation = builder.build();
@@ -73,12 +73,12 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         this.builderCitationParamters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-        .editors(Arrays.asList(new Author[] {AbstractCitationBuilder.createAuthor("David"),
-                AbstractCitationBuilder.createAuthor("Charlie")               
-        }
-        ))
-        .firstPage("234")
-        .lastPage("324C");
+                .editors(Arrays.asList(new Author[]{AbstractCitationBuilder.createAuthor("David"),
+                                                    AbstractCitationBuilder.createAuthor("Charlie")
+                                       }
+                ))
+                .firstPage("234")
+                .lastPage("324C");
         Book citation = builder.build();
         this.verifyCitation(citation, CitationType.BOOK);
         assertEquals(bookName, citation.getBookName());
@@ -94,13 +94,13 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         this.builderCitationParamters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-        .editors(Arrays.asList(new Author[] {AbstractCitationBuilder.createAuthor("David"),
-                AbstractCitationBuilder.createAuthor("Charlie")               
-        }
-        ))
-        .firstPage("234")
-        .lastPage("324C")
-        .volume("3");
+                .editors(Arrays.asList(new Author[]{AbstractCitationBuilder.createAuthor("David"),
+                                                    AbstractCitationBuilder.createAuthor("Charlie")
+                                       }
+                ))
+                .firstPage("234")
+                .lastPage("324C")
+                .volume("3");
         Book citation = builder.build();
         this.verifyCitation(citation, CitationType.BOOK);
         assertEquals(bookName, citation.getBookName());
@@ -117,14 +117,14 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         this.builderCitationParamters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-        .editors(Arrays.asList(new Author[] {AbstractCitationBuilder.createAuthor("David"),
-                AbstractCitationBuilder.createAuthor("Charlie")               
-        }
-        ))
-        .firstPage("234")
-        .lastPage("324C")
-        .volume("3")
-        .publisher("London Press");
+                .editors(Arrays.asList(new Author[]{AbstractCitationBuilder.createAuthor("David"),
+                                                    AbstractCitationBuilder.createAuthor("Charlie")
+                                       }
+                ))
+                .firstPage("234")
+                .lastPage("324C")
+                .volume("3")
+                .publisher("London Press");
         Book citation = builder.build();
         this.verifyCitation(citation, CitationType.BOOK);
         assertEquals(bookName, citation.getBookName());
@@ -134,7 +134,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         assertEquals("324C", citation.getLastPage());
         assertEquals("3", citation.getVolume());
         assertEquals("London Press", citation.getPublisher());
-        
+
         TestHelper.verifyJson(citation);
     }
 
@@ -144,15 +144,15 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         this.builderCitationParamters(builder);
         String bookName = "Some book name";
         builder.bookName(bookName)
-        .editors(Arrays.asList(new Author[] {AbstractCitationBuilder.createAuthor("David"),
-                AbstractCitationBuilder.createAuthor("Charlie")               
-        }
-        ))
-        .firstPage("234")
-        .lastPage("324C")
-        .volume("3")
-        .publisher("London Press")
-        .address("London");
+                .editors(Arrays.asList(new Author[]{AbstractCitationBuilder.createAuthor("David"),
+                                                    AbstractCitationBuilder.createAuthor("Charlie")
+                                       }
+                ))
+                .firstPage("234")
+                .lastPage("324C")
+                .volume("3")
+                .publisher("London Press")
+                .address("London");
         Book citation = builder.build();
         this.verifyCitation(citation, CitationType.BOOK);
         assertEquals(bookName, citation.getBookName());

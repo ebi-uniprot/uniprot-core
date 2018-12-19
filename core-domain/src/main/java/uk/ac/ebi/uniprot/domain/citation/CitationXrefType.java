@@ -11,12 +11,8 @@ public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefTy
 
     private String value;
 
-    private CitationXrefType(String type){
+    private CitationXrefType(String type) {
         this.value = type;
-    }
-
-    public String getName() {
-        return value;
     }
 
     public static CitationXrefType typeOf(String value) {
@@ -26,6 +22,10 @@ public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefTy
             }
         }
         throw new IllegalArgumentException("the citation cross-reference type " + value + " doesn't exist");
+    }
+
+    public String getName() {
+        return value;
     }
 
     @Override

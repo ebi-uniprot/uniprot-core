@@ -9,13 +9,13 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
  * <p>
  * A disease is defined using the following:
  * <ul>
- *  <li>ID = disease unique name</li>
- *  <li>AR = disease acronym</li>
- *  <li>DE = disease description</li>
- *  <li>DR = cross-reference to an external source that characterizes the disease</li>
+ * <li>ID = disease unique name</li>
+ * <li>AR = disease acronym</li>
+ * <li>DE = disease description</li>
+ * <li>DR = cross-reference to an external source that characterizes the disease</li>
  * </ul>
  * <p>
- *
+ * <p>
  * Flat file example of a disease with a denefintion:
  * <p>
  * CC -!- DISEASE: <mark>Deafness, autosomal recessive, 12 (DFNB12) [MIM:601386]:</br>
@@ -27,35 +27,36 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
  * <p>
  * Where:
  * <ul>
- *   <ul>ID - Deafness, autosomal recessive, 12</ul>
- *   <ul>AR - DFNB12</ul>
- *   <ul>DE - A form of non-syndromic sensorineural hearing loss. Sensorineural deafness results from damage to the
- *   neural receptors of the inner ear, the nerve pathways to the brain, or the area of the brain that receives sound
- *   information</ul>
- *   <ul>DR - MIM:601386</ul>
+ * <ul>ID - Deafness, autosomal recessive, 12</ul>
+ * <ul>AR - DFNB12</ul>
+ * <ul>DE - A form of non-syndromic sensorineural hearing loss. Sensorineural deafness results from damage to the
+ * neural receptors of the inner ear, the nerve pathways to the brain, or the area of the brain that receives sound
+ * information</ul>
+ * <ul>DR - MIM:601386</ul>
  * </ul>
  *
  * @author Francesco Fazzini
  * @author Ricardo Antunes
- * @see DiseaseComment
  * @version 1.0
+ * @see DiseaseComment
  */
 public interface Disease {
     /**
      * @return disease id (ID)
      */
-     String getDiseaseId();
-     
-     String getDiseaseAccession();
+    String getDiseaseId();
+
+    String getDiseaseAccession();
 
     /**
      * @return disease acronym (AR)
      */
-     String getAcronym();
+    String getAcronym();
 
-     DiseaseDescription getDescription();
+    DiseaseDescription getDescription();
 
-     DBCrossReference<DiseaseReferenceType>  getReference();
+    DBCrossReference<DiseaseReferenceType> getReference();
+
     boolean hasDefinedDisease();
 
 }

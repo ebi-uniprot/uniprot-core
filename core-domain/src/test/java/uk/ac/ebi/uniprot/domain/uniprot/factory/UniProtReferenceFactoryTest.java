@@ -22,21 +22,23 @@ public class UniProtReferenceFactoryTest {
     public void testCreateUniProtReference() {
         Submission submission =
                 UniProtReferenceFactory.INSTANCE.getCitationFactory()
-                .createSubmissionBuilder()
-                .submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
-                .build();
-        List<String>  referencePositions =
+                        .createSubmissionBuilder()
+                        .submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
+                        .build();
+        List<String> referencePositions =
                 Arrays.asList("Some position");
         List<Evidence> evidences = createEvidences();
         List<ReferenceComment> refComments = new ArrayList<>();
-        refComments.add(UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
-        refComments.add(UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
-        UniProtReference uniReference =UniProtReferenceFactory.INSTANCE.createUniProtReference(submission,
-                referencePositions, refComments, evidences);
+        refComments.add(UniProtReferenceFactory.INSTANCE
+                                .createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
+        refComments.add(UniProtReferenceFactory.INSTANCE
+                                .createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
+        UniProtReference uniReference = UniProtReferenceFactory.INSTANCE.createUniProtReference(submission,
+                                                                                                referencePositions, refComments, evidences);
         assertEquals(submission, uniReference.getCitation());
         assertEquals(1, uniReference.getTypedReferenceComments(ReferenceCommentType.STRAIN).size());
         assertEquals(1, uniReference.getReferencePositions().size());
-        
+
         TestHelper.verifyJson(uniReference);
     }
 
@@ -44,8 +46,8 @@ public class UniProtReferenceFactoryTest {
     public void testCreateReferenceComment() {
         List<Evidence> evidences = createEvidences();
         ReferenceCommentType type = ReferenceCommentType.STRAIN;
-        String value ="S2";
-        ReferenceComment refComment =UniProtReferenceFactory.INSTANCE.createReferenceComment(type, value, evidences);
+        String value = "S2";
+        ReferenceComment refComment = UniProtReferenceFactory.INSTANCE.createReferenceComment(type, value, evidences);
         assertEquals(type, refComment.getType());
         assertEquals(value, refComment.getValue());
         assertEquals(evidences, refComment.getEvidences());
@@ -54,9 +56,10 @@ public class UniProtReferenceFactoryTest {
 
     @Test
     public void testGetCitationFactory() {
-       CitationFactory citationFactory= UniProtReferenceFactory.INSTANCE.getCitationFactory();
-       assertNotNull(citationFactory);
+        CitationFactory citationFactory = UniProtReferenceFactory.INSTANCE.getCitationFactory();
+        assertNotNull(citationFactory);
     }
+
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));

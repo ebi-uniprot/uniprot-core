@@ -10,7 +10,7 @@ public class UniProtIdImplTest {
 
     @Test
     public void testUniProtIdImpl() {
-        String val ="P12345_HUMAN";
+        String val = "P12345_HUMAN";
         UniProtId uniprotId = new UniProtIdImpl(val);
         assertEquals(val, uniprotId.getValue());
         TestHelper.verifyJson(uniprotId);

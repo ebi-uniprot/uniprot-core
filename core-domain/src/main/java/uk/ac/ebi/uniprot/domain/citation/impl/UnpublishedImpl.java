@@ -9,13 +9,13 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
 
     private UnpublishedImpl() {
         super(CitationType.UNPUBLISHED, Collections.emptyList(), Collections.emptyList(),
-                null, null, null);
+              null, null, null);
     }
 
     public UnpublishedImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
-			String title, PublicationDate publicationDate) {
+                           String title, PublicationDate publicationDate) {
         super(CitationType.UNPUBLISHED, authoringGroup, authors, citationXrefs, title, publicationDate);
     }
-    
+
 
 }

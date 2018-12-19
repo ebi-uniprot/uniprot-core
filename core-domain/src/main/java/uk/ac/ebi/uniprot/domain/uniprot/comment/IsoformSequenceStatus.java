@@ -9,31 +9,32 @@ import uk.ac.ebi.uniprot.domain.EnumDisplay;
  */
 public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> {
 
-	DISPLAYED ("displayed"),
-	EXTERNAL ("external"),
-	NOT_DESCRIBED ("not described"),
-	DESCRIBED ("described");
+    DISPLAYED("displayed"),
+    EXTERNAL("external"),
+    NOT_DESCRIBED("not described"),
+    DESCRIBED("described");
 
-	private String value;
+    private String value;
 
-	private IsoformSequenceStatus(String type) {
-		this.value = type;
-	}
+    private IsoformSequenceStatus(String type) {
+        this.value = type;
+    }
 
-	public String getValue() {
-		return this.value;
-	}
+    public static IsoformSequenceStatus typeOf(String value) {
+        for (IsoformSequenceStatus status : IsoformSequenceStatus.values()) {
+            if (status.getValue().equals(value)) {
+                return status;
+            }
+        }
+        throw new IllegalArgumentException("the IsoformSequenceStatus with the description " + value + " doesn't exist");
+    }
 
-		public static IsoformSequenceStatus typeOf(String value) {
-		for (IsoformSequenceStatus status : IsoformSequenceStatus.values()) {
-			if (status.getValue().equals(value)) {
-				return status;
-			}
-		}
-		throw new IllegalArgumentException("the IsoformSequenceStatus with the description " + value + " doesn't exist");
-	}
+    public String getValue() {
+        return this.value;
+    }
 
-	@Override
-	public String toDisplayName() {
-		return value;
-	}}
+    @Override
+    public String toDisplayName() {
+        return value;
+    }
+}

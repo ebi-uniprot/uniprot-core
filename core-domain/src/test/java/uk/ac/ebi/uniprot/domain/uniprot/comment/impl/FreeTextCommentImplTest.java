@@ -17,43 +17,43 @@ import static org.junit.Assert.assertEquals;
 
 class FreeTextCommentImplTest {
 
-	@Test
-	void testNoEvidence() {
-		List<EvidencedValue> texts = createEvidenceValues();
-		FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.ALLERGEN, texts);
-		assertEquals(CommentType.ALLERGEN, comment.getCommentType());
-		assertEquals(texts, comment.getTexts());
-		TestHelper.verifyJson(comment);
-	}
+    @Test
+    void testNoEvidence() {
+        List<EvidencedValue> texts = createEvidenceValues();
+        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.ALLERGEN, texts);
+        assertEquals(CommentType.ALLERGEN, comment.getCommentType());
+        assertEquals(texts, comment.getTexts());
+        TestHelper.verifyJson(comment);
+    }
 
-	@Test
-	void testWithEvidence() {
-		List<EvidencedValue> texts = createEvidenceValues2();
-		FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, texts);
-		assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
-		assertEquals(texts, comment.getTexts());
-		TestHelper.verifyJson(comment);
-	}
+    @Test
+    void testWithEvidence() {
+        List<EvidencedValue> texts = createEvidenceValues2();
+        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, texts);
+        assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
+        assertEquals(texts, comment.getTexts());
+        TestHelper.verifyJson(comment);
+    }
 
-	private List<EvidencedValue> createEvidenceValues2() {
-		List<Evidence> evidences = new ArrayList<>();
-		evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-		evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
+    private List<EvidencedValue> createEvidenceValues2() {
+        List<Evidence> evidences = new ArrayList<>();
+        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
+        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
 
-		List<Evidence> evidences2 = new ArrayList<>();
-		evidences2.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
+        List<Evidence> evidences2 = new ArrayList<>();
+        evidences2.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
 
-		List<EvidencedValue> evidencedValues = new ArrayList<>();
-		evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", evidences));
-		evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", evidences2));
-		return evidencedValues;
-	}
+        List<EvidencedValue> evidencedValues = new ArrayList<>();
+        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", evidences));
+        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", evidences2));
+        return evidencedValues;
+    }
 
-	private List<EvidencedValue> createEvidenceValues() {
-		List<EvidencedValue> evidencedValues = new ArrayList<>();
-		evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
-		evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
-		return evidencedValues;
-	}
+    private List<EvidencedValue> createEvidenceValues() {
+        List<EvidencedValue> evidencedValues = new ArrayList<>();
+        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
+        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
+        return evidencedValues;
+    }
 
 }

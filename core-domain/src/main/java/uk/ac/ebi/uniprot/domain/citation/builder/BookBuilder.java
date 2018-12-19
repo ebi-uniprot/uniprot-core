@@ -8,10 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class BookBuilder extends AbstractCitationBuilder<Book> {
-    public static BookBuilder newInstance() {
-        return new BookBuilder();
-    }
-
     private String bookName;
     private List<Author> editors = new ArrayList<>();
     private String firstPage = "";
@@ -20,11 +16,15 @@ public final class BookBuilder extends AbstractCitationBuilder<Book> {
     private String publisher = "";
     private String address = "";
 
+    public static BookBuilder newInstance() {
+        return new BookBuilder();
+    }
+
     public Book build() {
         return new BookImpl(authoringGroups, authors,
-                xrefs, title, publicationDate,
-                bookName, editors, firstPage, lastPage, volume,
-                publisher, address);
+                            xrefs, title, publicationDate,
+                            bookName, editors, firstPage, lastPage, volume,
+                            publisher, address);
     }
 
     public BookBuilder bookName(String bookName) {

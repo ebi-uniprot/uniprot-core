@@ -1,43 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by Wieser (EBI) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:element name="drlines">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name ="dbCrossReference" maxOccurs="unbounded">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="property" maxOccurs="unbounded">
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="element" minOccurs="0" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:attribute name="tostring" type="xs:string" use="optional"/>
-												<xs:attribute name="value"    type="xs:string" use="required"/>
-												<xs:attribute name="parsing"    type="xs:string" use="optional"/>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-									<xs:attribute name="name" 	 type="xs:string"  use="required"/>
-									<xs:attribute name="type" 	 type="xs:string"  use="required"/>
-									<xs:attribute name="default" type="xs:string"  use="optional"/>
-									<xs:attribute name="link"     type="xs:string" use="optional"/>
-									<xs:attribute name="xmlTag"     type="xs:string" use="optional"/>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+    <xs:element name="drlines">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="dbCrossReference" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="property" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="element" minOccurs="0" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:attribute name="tostring" type="xs:string" use="optional"/>
+                                                <xs:attribute name="value" type="xs:string" use="required"/>
+                                                <xs:attribute name="parsing" type="xs:string" use="optional"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required"/>
+                                    <xs:attribute name="type" type="xs:string" use="required"/>
+                                    <xs:attribute name="default" type="xs:string" use="optional"/>
+                                    <xs:attribute name="link" type="xs:string" use="optional"/>
+                                    <xs:attribute name="xmlTag" type="xs:string" use="optional"/>
 
-								</xs:complexType>
-							</xs:element>
-						</xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
                         <xs:attribute name="accField" type="xs:string" use="optional"/>
 
                         <xs:attribute name="type" type="xs:string" use="required"/>
-						<xs:attribute name="toDisplayName" type="xs:string" use="required"/>
-						<xs:attribute name="toName" type="xs:string" use="required"/>
-						<xs:attribute name="toExpasyRef" type="xs:string" use="optional"/>
-						<xs:attribute name="deprecated" default="false" type="xs:boolean" use="optional"/>
-						<xs:attribute name="category"     type="xs:string" use="optional"/>
-					</xs:complexType>
-				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
+                        <xs:attribute name="toDisplayName" type="xs:string" use="required"/>
+                        <xs:attribute name="toName" type="xs:string" use="required"/>
+                        <xs:attribute name="toExpasyRef" type="xs:string" use="optional"/>
+                        <xs:attribute name="deprecated" default="false" type="xs:boolean" use="optional"/>
+                        <xs:attribute name="category" type="xs:string" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

@@ -5,6 +5,5 @@ package uk.ac.ebi.uniprot.domain;
  */
 public interface EntryId extends Value {
 
-   
-    
+
 }

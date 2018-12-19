@@ -14,13 +14,18 @@ public final class InteractionBuilder {
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
-    public static InteractionBuilder newInstance(){
+    public static InteractionBuilder newInstance() {
         return new InteractionBuilder();
     }
+
+    public static Interactor createInteractor(String value) {
+        return InteractionImpl.createInteractor(value);
+    }
+
     public Interaction build() {
         return new InteractionImpl(type, uniprotAccession,
-                geneName, nbExp,
-                firstInteractor, secondInteractor);
+                                   geneName, nbExp,
+                                   firstInteractor, secondInteractor);
     }
 
     public InteractionBuilder interactionType(InteractionType type) {
@@ -51,10 +56,5 @@ public final class InteractionBuilder {
     public InteractionBuilder uniProtAccession(UniProtAccession uniprotAccession) {
         this.uniprotAccession = uniprotAccession;
         return this;
-    }
-
- 
-    public static Interactor createInteractor(String value) {
-        return InteractionImpl.createInteractor(value);
     }
 }

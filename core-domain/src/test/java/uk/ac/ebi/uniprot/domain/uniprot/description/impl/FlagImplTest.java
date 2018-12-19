@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlagImplTest {
 
-	@Test
-	void testFlagImpl() {
-		FlagType type = FlagType.FRAGMENT;
-		Flag flag = new FlagImpl(type);
-		assertEquals(type, flag.getType());
-		TestHelper.verifyJson(flag);
-		
-	}
+    @Test
+    void testFlagImpl() {
+        FlagType type = FlagType.FRAGMENT;
+        Flag flag = new FlagImpl(type);
+        assertEquals(type, flag.getType());
+        TestHelper.verifyJson(flag);
+
+    }
 
 }

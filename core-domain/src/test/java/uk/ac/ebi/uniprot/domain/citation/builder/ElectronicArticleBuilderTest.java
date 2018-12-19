@@ -8,14 +8,14 @@ import uk.ac.ebi.uniprot.domain.citation.Locator;
 
 import static org.junit.Assert.assertEquals;
 
-public class ElectronicArticleBuilderTest  extends  AbstractCitationBuilderTest{
+public class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testCreateLocator() {
-        String locStr ="Some location";
-       Locator locator = ElectronicArticleBuilder.createLocator(locStr);
-       assertEquals(locStr, locator.getValue());
-       TestHelper.verifyJson(locator);
+        String locStr = "Some location";
+        Locator locator = ElectronicArticleBuilder.createLocator(locStr);
+        assertEquals(locStr, locator.getValue());
+        TestHelper.verifyJson(locator);
     }
 
     @Test
@@ -31,11 +31,11 @@ public class ElectronicArticleBuilderTest  extends  AbstractCitationBuilderTest{
     public void testAddJournalName() {
         ElectronicArticleBuilder builder = ElectronicArticleBuilder.newInstance();
         this.builderCitationParamters(builder);
-        String journalName ="Nature";
+        String journalName = "Nature";
         builder.journalName(journalName);
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
-        assertEquals(journalName, citation.getJournal().getName());  
+        assertEquals(journalName, citation.getJournal().getName());
         TestHelper.verifyJson(citation);
     }
 
@@ -43,12 +43,12 @@ public class ElectronicArticleBuilderTest  extends  AbstractCitationBuilderTest{
     public void testAddLocator() {
         ElectronicArticleBuilder builder = ElectronicArticleBuilder.newInstance();
         this.builderCitationParamters(builder);
-        String journalName ="Nature";
+        String journalName = "Nature";
         builder.journalName(journalName)
-        .locator("Some locator");
+                .locator("Some locator");
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
-        assertEquals(journalName, citation.getJournal().getName());    
+        assertEquals(journalName, citation.getJournal().getName());
         assertEquals("Some locator", citation.getLocator().getValue());
         TestHelper.verifyJson(citation);
     }

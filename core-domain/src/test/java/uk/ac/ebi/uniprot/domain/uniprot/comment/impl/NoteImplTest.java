@@ -17,29 +17,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NoteImplTest {
 
-	@Test
-	void testNoteImpl() {
-		List<EvidencedValue> texts =new ArrayList<>();
-		List<Evidence> evidences =new ArrayList<>();
+    @Test
+    void testNoteImpl() {
+        List<EvidencedValue> texts = new ArrayList<>();
+        List<Evidence> evidences = new ArrayList<>();
         evidences.add(new EvidenceImpl(
-        		EvidenceCode.ECO_0000313,  "Ensembl", "ENSP0001324"
-                ));
+                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"
+        ));
         evidences.add(new EvidenceImpl(
-        		EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
-                ));
-		texts.add(new EvidencedValueImpl("value 1", evidences ));
-		texts.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
-		
-		NoteImpl note = new NoteImpl(texts);
-		assertEquals(texts, note.getTexts());
-		TestHelper.verifyJson(note);
-	}
-	@Test
-	void testNoteImplEmpty() {
-		List<EvidencedValue> texts =new ArrayList<>();
-		NoteImpl note = new NoteImpl(texts);
-		assertEquals(texts, note.getTexts());
-		TestHelper.verifyJson(note);
-	}
+                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
+        ));
+        texts.add(new EvidencedValueImpl("value 1", evidences));
+        texts.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
+
+        NoteImpl note = new NoteImpl(texts);
+        assertEquals(texts, note.getTexts());
+        TestHelper.verifyJson(note);
+    }
+
+    @Test
+    void testNoteImplEmpty() {
+        List<EvidencedValue> texts = new ArrayList<>();
+        NoteImpl note = new NoteImpl(texts);
+        assertEquals(texts, note.getTexts());
+        TestHelper.verifyJson(note);
+    }
 
 }

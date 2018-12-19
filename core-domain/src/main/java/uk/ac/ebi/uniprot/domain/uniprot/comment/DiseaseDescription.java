@@ -7,8 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  *
  * @author Francesco Fazzini
  * @author Ricardo Antunes
- * @see Disease
  * @version 1.0
+ * @see Disease
  */
-public interface DiseaseDescription extends EvidencedValue{
+public interface DiseaseDescription extends EvidencedValue {
 }

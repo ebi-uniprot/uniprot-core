@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.util.ClassUtil;*/
 import uk.ac.ebi.uniprot.domain.util.property.LocalDateSerializer;*/
 
 public class TestHelper {
-	public static  <T> void verifyJson(T obj  ) {
+    public static <T> void verifyJson(T obj) {
 /*
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
@@ -173,7 +173,7 @@ public class TestHelper {
 	    		fail(e.getMessage());
 	    	}
 */
-	}
+    }
 
 /*	public static class CustomAnnotationIntrospector extends AnnotationIntrospector {
 

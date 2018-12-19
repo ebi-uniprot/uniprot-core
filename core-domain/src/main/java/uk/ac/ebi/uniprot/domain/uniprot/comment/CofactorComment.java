@@ -3,19 +3,18 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment;
 import java.util.List;
 
 /**
- * 
  * Description of A cofactor: any non-protein substance required for an enzyme to be catalytically active
  * <p>
- *
+ * <p>
  * The CC COFACTOR annotation has following format:
- *   <ul>
- *       <li>CC   -!- COFACTOR:( <molecule>:)?</li>
- *       <li>(CC       Name=<cofactor>; Xref=<database>:<identifier>;( Evidence={<evidence>};)?)+ </li>
- *       <li>(CC       Note=<free text>;)? </li>
- *   </ul>
+ * <ul>
+ * <li>CC   -!- COFACTOR:( <molecule>:)?</li>
+ * <li>(CC       Name=<cofactor>; Xref=<database>:<identifier>;( Evidence={<evidence>};)?)+ </li>
+ * <li>(CC       Note=<free text>;)? </li>
+ * </ul>
  *
  * <p>
- *
+ * <p>
  * Here are some examples of cofactor comment in flatfile format
  *
  * <p>
@@ -39,30 +38,28 @@ import java.util.List;
  * CC       Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};
  * CC       Note=Binds 1 zinc ion per NS3 protease domain.;
  * </i>
- * 
+ *
  * @author jieluo
- * @see Comment
  * @version 1.0
+ * @see Comment
  */
 
 public interface CofactorComment extends Comment {
-	/**
-	 * 
-	 * @return molecule
-	 */
-	String getMolecule();
-	/**
-	 * 
-	 * @return list of cofactor
-	 */
-	List<Cofactor> getCofactors();
+    /**
+     * @return molecule
+     */
+    String getMolecule();
 
-	/**
-	 * 
-	 * @return cofactor note
-	 */
-	Note getNote();
-	
-	 boolean isValid() ;
-	
+    /**
+     * @return list of cofactor
+     */
+    List<Cofactor> getCofactors();
+
+    /**
+     * @return cofactor note
+     */
+    Note getNote();
+
+    boolean isValid();
+
 }

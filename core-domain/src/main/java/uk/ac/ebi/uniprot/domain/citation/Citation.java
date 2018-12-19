@@ -11,7 +11,7 @@ import java.util.List;
  * <p/>
  * To build a citation for use in you program @link uk.ac.ebi.kraken.interfaces.factories.DefaultCitationFactory
  */
-public interface Citation  {
+public interface Citation {
 
     public CitationXrefs getCitationXrefs();
 

@@ -34,12 +34,14 @@ public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
     KINGDOM("kingdom"),
     SUPERKINGDOM("superkingdom"),
     NO_RANK("no rank");
-    
+
     private final String name;
-    TaxonomyRank(String name){
+
+    TaxonomyRank(String name) {
         this.name = name;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 

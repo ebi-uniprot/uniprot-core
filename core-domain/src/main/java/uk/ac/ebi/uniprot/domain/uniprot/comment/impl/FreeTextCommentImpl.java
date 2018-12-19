@@ -11,53 +11,56 @@ import java.util.List;
 import java.util.Set;
 
 public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment {
-	private static final Set<CommentType> VALID_COMMENT_TYPES =
-			EnumSet.of(CommentType.ALLERGEN, CommentType.BIOTECHNOLOGY,
-					CommentType.CATALYTIC_ACTIVITY,
-					CommentType.CAUTION,
-					CommentType.DEVELOPMENTAL_STAGE,
-					CommentType.DISRUPTION_PHENOTYPE,
-					CommentType.DOMAIN,
-					CommentType.ACTIVITY_REGULATION,
-					CommentType.FUNCTION,
-					CommentType.INDUCTION,
-					CommentType.INDUCTION,
-					CommentType.MISCELLANEOUS,
-					CommentType.PATHWAY,
-					CommentType.PHARMACEUTICAL,
-					CommentType.POLYMORPHISM,
-					CommentType.PTM,
-					CommentType.SIMILARITY,
-					CommentType.SUBUNIT,
-					CommentType.TISSUE_SPECIFICITY,
-					CommentType.TOXIC_DOSE
-					);
+    private static final Set<CommentType> VALID_COMMENT_TYPES =
+            EnumSet.of(CommentType.ALLERGEN, CommentType.BIOTECHNOLOGY,
+                       CommentType.CATALYTIC_ACTIVITY,
+                       CommentType.CAUTION,
+                       CommentType.DEVELOPMENTAL_STAGE,
+                       CommentType.DISRUPTION_PHENOTYPE,
+                       CommentType.DOMAIN,
+                       CommentType.ACTIVITY_REGULATION,
+                       CommentType.FUNCTION,
+                       CommentType.INDUCTION,
+                       CommentType.INDUCTION,
+                       CommentType.MISCELLANEOUS,
+                       CommentType.PATHWAY,
+                       CommentType.PHARMACEUTICAL,
+                       CommentType.POLYMORPHISM,
+                       CommentType.PTM,
+                       CommentType.SIMILARITY,
+                       CommentType.SUBUNIT,
+                       CommentType.TISSUE_SPECIFICITY,
+                       CommentType.TOXIC_DOSE
+            );
 
-    private  CommentType commentType;
+    private CommentType commentType;
 
-    private FreeTextCommentImpl(){
+    private FreeTextCommentImpl() {
         super(Collections.emptyList());
     }
+
     public FreeTextCommentImpl(CommentType type,
-    		List<EvidencedValue> texts) {
+                               List<EvidencedValue> texts) {
         super(texts);
         this.commentType = type;
-       
+
     }
+
+    public static boolean isFreeTextCommentType(CommentType type) {
+        return VALID_COMMENT_TYPES.contains(type);
+    }
+
     @Override
     public CommentType getCommentType() {
         return commentType;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
         result = prime * result + ((commentType == null) ? 0 : commentType.hashCode());
         return result;
-    }
-
-    public static boolean isFreeTextCommentType (CommentType type) {
-        return VALID_COMMENT_TYPES.contains(type);
     }
 
     @Override

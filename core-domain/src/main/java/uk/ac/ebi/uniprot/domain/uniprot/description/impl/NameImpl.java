@@ -9,16 +9,16 @@ import java.util.List;
 
 public class NameImpl extends EvidencedValueImpl implements Name {
 
-	private NameImpl(){
-		super("", Collections.emptyList());
-	}
+    private NameImpl() {
+        super("", Collections.emptyList());
+    }
 
-	public NameImpl(String value, List<Evidence> evidences) {
-		super(value, evidences);
-	}
+    public NameImpl(String value, List<Evidence> evidences) {
+        super(value, evidences);
+    }
 
-	@Override
-	public boolean isValid() {
-		return getValue() != null && !getValue().isEmpty();
-	}
+    @Override
+    public boolean isValid() {
+        return getValue() != null && !getValue().isEmpty();
+    }
 }

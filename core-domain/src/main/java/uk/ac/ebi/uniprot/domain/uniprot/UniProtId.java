@@ -46,6 +46,6 @@ import uk.ac.ebi.uniprot.domain.Value;
  * UniProtId id = entry.getUniProtId();</div>
  * </p>
  */
-public interface UniProtId extends Value{
+public interface UniProtId extends Value {
 
 }

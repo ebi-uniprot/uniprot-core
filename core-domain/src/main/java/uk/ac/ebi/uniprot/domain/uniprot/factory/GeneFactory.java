@@ -12,35 +12,35 @@ import java.util.List;
 
 public enum GeneFactory {
     INSTANCE;
-    public Gene createGene(GeneName geneName, List<GeneNameSynonym>  synonyms,
-            List<OrderedLocusName> olnNames,
-            List<ORFName> orfNames
-            ){
-    	
-        return new GeneImpl(geneName,synonyms, olnNames, orfNames);
+
+    public Gene createGene(GeneName geneName, List<GeneNameSynonym> synonyms,
+                           List<OrderedLocusName> olnNames,
+                           List<ORFName> orfNames
+    ) {
+
+        return new GeneImpl(geneName, synonyms, olnNames, orfNames);
     }
 
-    public GeneName createGeneName(String val,  List<Evidence> evidences){
-      return new GeneNameImpl(val, evidences);
-      
+    public GeneName createGeneName(String val, List<Evidence> evidences) {
+        return new GeneNameImpl(val, evidences);
+
     }
-    
-    public GeneNameSynonym createGeneNameSynonym(String val,  List<Evidence> evidences){
+
+    public GeneNameSynonym createGeneNameSynonym(String val, List<Evidence> evidences) {
         return new GeneNameSynonymImpl(val, evidences);
-        
-      }
-      
-    
-    
-    public OrderedLocusName createOrderedLocusName(String val,  List<Evidence> evidences){
+
+    }
+
+
+    public OrderedLocusName createOrderedLocusName(String val, List<Evidence> evidences) {
         return new OrderedLocusNameImpl(val, evidences);
-        
-      }
-    
-    public ORFName createORFName(String val,  List<Evidence> evidences){
+
+    }
+
+    public ORFName createORFName(String val, List<Evidence> evidences) {
         return new ORFNameImpl(val, evidences);
-        
-      }
-    
-   
+
+    }
+
+
 }

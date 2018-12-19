@@ -32,9 +32,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * <div class="codeexample"> {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} entry = getEntryFromParserOrAPI();
  * List<{@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes = entry.getGenes();
  * for ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene : genes) {
- *     for (ORFName orfName : gene.getORFNames()) {
- *         System.out.println(orfName);
- *     }
+ * for (ORFName orfName : gene.getORFNames()) {
+ * System.out.println(orfName);
+ * }
  * }</div>
  * </p>
  * <p>
@@ -45,7 +45,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * gene.getORFNames().add(orf);
  * uniProtEntry.getGenes().add(gene);</div>
  * </p>
- *
  */
 public interface ORFName extends EvidencedValue {
 

@@ -9,18 +9,18 @@ import java.util.List;
 
 public class NoteImpl extends FreeTextImpl implements Note {
 
-	private NoteImpl(){
-		super(Collections.emptyList());
-	}
+    private NoteImpl() {
+        super(Collections.emptyList());
+    }
 
     public NoteImpl(List<EvidencedValue> texts) {
-        super(texts);   
+        super(texts);
     }
 
 
-	@Override
-	public boolean isValid() {
-		return !getTexts().isEmpty();
-	}
+    @Override
+    public boolean isValid() {
+        return !getTexts().isEmpty();
+    }
 
 }

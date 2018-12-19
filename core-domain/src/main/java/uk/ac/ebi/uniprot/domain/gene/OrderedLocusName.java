@@ -34,9 +34,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * <div class="codeexample"> {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} entry = getEntryFromParserOrAPI();
  * List<{@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes = entry.getGenes();
  * for ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene : genes) {
- *     for (OrderedLocusName olName : gene.getOrderedLocusNames()) {
- *         System.out.println(olName);
- *     }
+ * for (OrderedLocusName olName : gene.getOrderedLocusNames()) {
+ * System.out.println(olName);
+ * }
  * }</div>
  * </p>
  * <p>

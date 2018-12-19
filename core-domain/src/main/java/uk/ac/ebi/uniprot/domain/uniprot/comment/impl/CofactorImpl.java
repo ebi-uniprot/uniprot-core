@@ -5,23 +5,22 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class CofactorImpl implements Cofactor {
-   
+
     private String name;
     private List<Evidence> evidences;
-    private DBCrossReference<CofactorReferenceType>  cofactorReference;
+    private DBCrossReference<CofactorReferenceType> cofactorReference;
 
-    private CofactorImpl(){
+    private CofactorImpl() {
         this.evidences = Collections.emptyList();
     }
 
     public CofactorImpl(String name,
-    		DBCrossReference<CofactorReferenceType> cofactorReference,
-    		List<Evidence> evidences) {
+                        DBCrossReference<CofactorReferenceType> cofactorReference,
+                        List<Evidence> evidences) {
         this.name = name;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
@@ -42,7 +41,7 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
-    public DBCrossReference<CofactorReferenceType>  getCofactorReference() {
+    public DBCrossReference<CofactorReferenceType> getCofactorReference() {
         return cofactorReference;
     }
 
@@ -83,5 +82,5 @@ public class CofactorImpl implements Cofactor {
         return true;
     }
 
-    
+
 }

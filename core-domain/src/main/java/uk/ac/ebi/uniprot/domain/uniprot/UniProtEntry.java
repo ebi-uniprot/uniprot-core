@@ -16,66 +16,64 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import java.util.List;
 
 /**
- *
  * @author jieluo
  * @date 17 Jan 2017
  * @time 18:41:20
- *
  */
 public interface UniProtEntry {
-	UniProtEntryType getEntryType();
+    UniProtEntryType getEntryType();
 
-	UniProtAccession getPrimaryAccession();
+    UniProtAccession getPrimaryAccession();
 
-	List<UniProtAccession> getSecondaryAccessions();
+    List<UniProtAccession> getSecondaryAccessions();
 
-	UniProtId getUniProtId();
+    UniProtId getUniProtId();
 
-	EntryAudit getEntryAudit();
+    EntryAudit getEntryAudit();
 
-	UniProtTaxonId getTaxonId();
+    UniProtTaxonId getTaxonId();
 
-	OrganismName getOrganism();
+    OrganismName getOrganism();
 
-	List<Organism> getOrganismHosts();
+    List<Organism> getOrganismHosts();
 
-	List<OrganismName> getTaxonomyLineage();
+    List<OrganismName> getTaxonomyLineage();
 
-	ProteinExistence getProteinExistence();
+    ProteinExistence getProteinExistence();
 
-	ProteinDescription getProteinDescription();
+    ProteinDescription getProteinDescription();
 
-	List<Gene> getGenes();
+    List<Gene> getGenes();
 
-	List<Comment> getComments();
+    List<Comment> getComments();
 
-	<T extends Comment> List<T> getCommentByType(CommentType type);
+    <T extends Comment> List<T> getCommentByType(CommentType type);
 
-	List<Feature> getFeatures();
+    List<Feature> getFeatures();
 
-	List<Feature> getFeaturesByType(FeatureType type);
+    List<Feature> getFeaturesByType(FeatureType type);
 
-	List<Organelle> getOrganelles();
+    List<Organelle> getOrganelles();
 
-	List<Keyword> getKeywords();
+    List<Keyword> getKeywords();
 
-	List<UniProtReference> getReferences();
+    List<UniProtReference> getReferences();
 
-	List<UniProtReference> getReferencesByType(CitationType type);
+    List<UniProtReference> getReferencesByType(CitationType type);
 
-	List<UniProtDBCrossReference> getDatabaseCrossReferences();
+    List<UniProtDBCrossReference> getDatabaseCrossReferences();
 
-	List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type);
+    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type);
 
-	List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName);
+    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName);
 
-	Sequence getSequence();
+    Sequence getSequence();
 
-	InternalSection getInternalSection();
+    InternalSection getInternalSection();
 
-	Boolean isFragment();
+    Boolean isFragment();
 
-	EntryInactiveReason getInactiveReason();
+    EntryInactiveReason getInactiveReason();
 
-	boolean isActive();
+    boolean isActive();
 }

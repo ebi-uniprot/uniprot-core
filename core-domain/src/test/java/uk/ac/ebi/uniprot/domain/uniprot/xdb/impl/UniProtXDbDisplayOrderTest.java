@@ -17,11 +17,12 @@ public class UniProtXDbDisplayOrderTest {
         assertFalse(dorder.getOrderedDatabases().isEmpty());
         assertTrue(dorder.getOrderedDatabases().contains(UniProtXDbTypes.INSTANCE.getType("EMBL")));
     }
+
     @Test
     public void testGetOrderedDatabases() {
         UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
-        List<UniProtXDbTypeDetail> dbtypes =dorder.getOrderedDatabases();
-       
+        List<UniProtXDbTypeDetail> dbtypes = dorder.getOrderedDatabases();
+
         assertFalse(dbtypes.isEmpty());
         assertEquals(UniProtXDbTypes.INSTANCE.getType("EMBL"), dbtypes.get(0));
         assertEquals(UniProtXDbTypes.INSTANCE.getType("CCDS"), dbtypes.get(1));

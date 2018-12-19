@@ -8,8 +8,8 @@ import uk.ac.ebi.uniprot.domain.EnumDisplay;
  *
  * @author Francesco Fazzini
  * @author Ricardo Antunes
- * @see DiseaseReference
  * @version 1.0
+ * @see DiseaseReference
  */
 public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseReferenceType> {
     MIM("MIM"),
@@ -19,15 +19,6 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
 
     private DiseaseReferenceType(String displayName) {
         this.displayName = displayName;
-    }
-
-    /**
-     * String representation of the external source
-     *
-     * @return the name of the source
-     */
-    public String toDisplayName() {
-        return displayName;
     }
 
     /**
@@ -47,8 +38,17 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
         throw new IllegalArgumentException("The disease reference type: " + value + " doesn't exist");
     }
 
-	@Override
-	public String getName() {
-		return displayName;
-	}
+    /**
+     * String representation of the external source
+     *
+     * @return the name of the source
+     */
+    public String toDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public String getName() {
+        return displayName;
+    }
 }

@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JournalImplTest {
 
-	@Test
-	void testJournalImpl() {
-		Journal journal =new JournalImpl("Nature");
-		assertEquals("Nature", journal.getName());
-		TestHelper.verifyJson(journal);
-	}
+    @Test
+    void testJournalImpl() {
+        Journal journal = new JournalImpl("Nature");
+        assertEquals("Nature", journal.getName());
+        TestHelper.verifyJson(journal);
+    }
 
 }

@@ -6,8 +6,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 
 import java.util.List;
 
-public interface Reaction extends HasEvidences{
-	String getName();
-	List<DBCrossReference<ReactionReferenceType>> getReactionReferences();
-	ECNumber getEcNumber();
+public interface Reaction extends HasEvidences {
+    String getName();
+
+    List<DBCrossReference<ReactionReferenceType>> getReactionReferences();
+
+    ECNumber getEcNumber();
 }

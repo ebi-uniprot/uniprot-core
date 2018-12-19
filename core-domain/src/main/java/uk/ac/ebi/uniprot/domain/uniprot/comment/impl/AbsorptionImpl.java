@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,18 +13,19 @@ public class AbsorptionImpl implements Absorption {
     private boolean approximate;
     private Note note;
     private List<Evidence> evidences;
-    public AbsorptionImpl( int max, Note note,  List<Evidence> evidences) {
-    	this(max, false, note, evidences);
+
+    public AbsorptionImpl(int max, Note note, List<Evidence> evidences) {
+        this(max, false, note, evidences);
     }
 
-    private AbsorptionImpl(){
+    private AbsorptionImpl() {
         this.evidences = Collections.emptyList();
     }
 
     public AbsorptionImpl(int max, boolean approximate, Note note, List<Evidence> evidences) {
         this.max = max;
         this.approximate = approximate;
-        this.note =note;
+        this.note = note;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else
@@ -53,9 +53,9 @@ public class AbsorptionImpl implements Absorption {
         return this.approximate;
     }
 
-    @Override 
+    @Override
     public String toString() {
-    	    StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder();
         sb.append("\nCC       Absorption:\n");
         sb.append("CC         Abs(max)=");
         if (isApproximate()) {
@@ -65,13 +65,14 @@ public class AbsorptionImpl implements Absorption {
 
         sb.append(" nm;");
 
-        if ((getNote() !=null) && getNote().isValid() ){
+        if ((getNote() != null) && getNote().isValid()) {
             sb.append("\nCC         Note=").append(getNote().toString()).append(";");
         }
-        
+
         return sb.toString();
 
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -108,5 +109,5 @@ public class AbsorptionImpl implements Absorption {
             return false;
         return true;
     }
-    
+
 }

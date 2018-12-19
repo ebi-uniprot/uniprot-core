@@ -10,7 +10,7 @@ public final class UnpublishedBuilder extends AbstractCitationBuilder<Unpublishe
 
     public Unpublished build() {
         return new UnpublishedImpl(authoringGroups, authors,
-                xrefs, title, publicationDate);
+                                   xrefs, title, publicationDate);
     }
 
 

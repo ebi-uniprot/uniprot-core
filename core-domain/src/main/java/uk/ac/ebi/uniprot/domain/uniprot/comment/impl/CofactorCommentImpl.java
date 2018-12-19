@@ -13,25 +13,25 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     private List<Cofactor> cofactors;
     private Note note;
 
-    private CofactorCommentImpl(){
+    private CofactorCommentImpl() {
         super(CommentType.COFACTOR);
         this.cofactors = Collections.emptyList();
     }
 
     public CofactorCommentImpl(String molecule,
-    		List<Cofactor> cofactors,
-    		Note note) {
+                               List<Cofactor> cofactors,
+                               Note note) {
         super(CommentType.COFACTOR);
-        if(molecule == null || molecule.isEmpty())
-        	this.molecule =null;
+        if (molecule == null || molecule.isEmpty())
+            this.molecule = null;
         else
-        	this.molecule =molecule;
-        if((cofactors ==null) || cofactors.isEmpty()){
+            this.molecule = molecule;
+        if ((cofactors == null) || cofactors.isEmpty()) {
             this.cofactors = Collections.emptyList();
-        }else{
-            this.cofactors =Collections.unmodifiableList(cofactors);
+        } else {
+            this.cofactors = Collections.unmodifiableList(cofactors);
         }
-        this.note =note;
+        this.note = note;
     }
 
     @Override
@@ -50,9 +50,9 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     }
 
     @Override
-	public boolean isValid() {
-		return !getCofactors().isEmpty() || (note !=null);
-	}
+    public boolean isValid() {
+        return !getCofactors().isEmpty() || (note != null);
+    }
 
 
     @Override
@@ -92,5 +92,5 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         return true;
     }
 
-	
+
 }

@@ -6,7 +6,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,21 +17,21 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     private List<MassSpectrometryRange> ranges;
     private List<Evidence> evidences;
 
-    private MassSpectrometryCommentImpl(){
+    private MassSpectrometryCommentImpl() {
         super(CommentType.MASS_SPECTROMETRY);
         this.ranges = Collections.emptyList();
         this.evidences = Collections.emptyList();
     }
 
     public MassSpectrometryCommentImpl(MassSpectrometryMethod method, Double molWeight,
-    		Double molWeightError, String note, List<MassSpectrometryRange> ranges,
-    		List<Evidence> evidences) {
+                                       Double molWeightError, String note, List<MassSpectrometryRange> ranges,
+                                       List<Evidence> evidences) {
         super(CommentType.MASS_SPECTROMETRY);
         this.method = method;
         this.molWeight = molWeight;
-        
-        this.molWeightError =  molWeightError;
-        this.note = note ;
+
+        this.molWeightError = molWeightError;
+        this.note = note;
         if ((ranges == null) || ranges.isEmpty()) {
             this.ranges = Collections.emptyList();
         } else {
@@ -127,5 +126,5 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
         return true;
     }
 
-   
+
 }

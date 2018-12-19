@@ -22,14 +22,14 @@ public class DiseaseBuilderTest {
         DiseaseBuilder builder2 = DiseaseBuilder.newInstance();
         assertNotNull(builder1);
         assertNotNull(builder2);
-        assertFalse(builder1== builder2);
+        assertFalse(builder1 == builder2);
     }
-    
+
     @Test
     public void testSetDiseaseId() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
         String diseaseId = "someId";
-        Disease disease =builder.diseaseId(diseaseId)
+        Disease disease = builder.diseaseId(diseaseId)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertNull(disease.getDescription());
@@ -42,7 +42,7 @@ public class DiseaseBuilderTest {
     public void testSetAcronym() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
         String diseaseId = "someId";
-        Disease disease =builder.diseaseId(diseaseId)
+        Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
@@ -55,11 +55,11 @@ public class DiseaseBuilderTest {
     @Test
     public void testSetDescription() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
-        String val ="some description";
-        List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
+        String val = "some description";
+        List<Evidence> evidences = createEvidences();
+        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val, evidences);
         String diseaseId = "someId";
-        Disease disease =builder.diseaseId(diseaseId)
+        Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
                 .build();
@@ -73,17 +73,17 @@ public class DiseaseBuilderTest {
     @Test
     public void testSetReference() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
-        String val ="some description";
-        List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
+        String val = "some description";
+        List<Evidence> evidences = createEvidences();
+        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val, evidences);
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
         String diseaseId = "someId";
-        Disease disease =builder.diseaseId(diseaseId)
+        Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
-                .reference(reference)           
+                .reference(reference)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());
@@ -97,16 +97,16 @@ public class DiseaseBuilderTest {
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
-    
+
         assertEquals(referenceType, reference.getDatabaseType());
         assertEquals(referenceId, reference.getId());
     }
 
     @Test
     public void testCreateDiseaseDescription() {
-        String val ="some description";
-        List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
+        String val = "some description";
+        List<Evidence> evidences = createEvidences();
+        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val, evidences);
         assertEquals(val, description.getValue());
         assertEquals(evidences, description.getEvidences());
         TestHelper.verifyJson(description);
@@ -118,5 +118,5 @@ public class DiseaseBuilderTest {
         evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
         return evidences;
     }
-  
+
 }

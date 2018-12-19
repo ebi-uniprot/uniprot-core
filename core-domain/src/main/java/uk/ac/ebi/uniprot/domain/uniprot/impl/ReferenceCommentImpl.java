@@ -10,13 +10,13 @@ import java.util.List;
 public class ReferenceCommentImpl extends EvidencedValueImpl implements ReferenceComment {
     private ReferenceCommentType type;
 
-    private ReferenceCommentImpl(){
+    private ReferenceCommentImpl() {
         super("", Collections.emptyList());
     }
 
     public ReferenceCommentImpl(ReferenceCommentType type,
-    		String value,
-    		List<Evidence> evidences) {
+                                String value,
+                                List<Evidence> evidences) {
         super(value, evidences);
         this.type = type;
     }

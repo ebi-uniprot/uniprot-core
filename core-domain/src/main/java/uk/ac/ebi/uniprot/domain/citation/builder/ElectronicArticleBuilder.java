@@ -7,12 +7,12 @@ import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl.LocatorImpl;
 
 
 public final class ElectronicArticleBuilder extends AbstractCitationBuilder<ElectronicArticle> {
+    private String journalName;
+    private Locator locator;
+
     public static ElectronicArticleBuilder newInstance() {
         return new ElectronicArticleBuilder();
     }
-
-    private String journalName;
-    private Locator locator;
 
     public static Locator createLocator(String locator) {
         return new LocatorImpl(locator);
@@ -20,8 +20,8 @@ public final class ElectronicArticleBuilder extends AbstractCitationBuilder<Elec
 
     public ElectronicArticle build() {
         return new ElectronicArticleImpl(authoringGroups, authors,
-                xrefs, title, publicationDate,
-                journalName, locator);
+                                         xrefs, title, publicationDate,
+                                         journalName, locator);
     }
 
     public ElectronicArticleBuilder journalName(String journalName) {
@@ -34,5 +34,5 @@ public final class ElectronicArticleBuilder extends AbstractCitationBuilder<Elec
         return this;
     }
 
-   
+
 }

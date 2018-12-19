@@ -5,7 +5,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,21 +14,26 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
 
-    private SubcellularLocationImpl(){
+    private SubcellularLocationImpl() {
 
     }
 
     public SubcellularLocationImpl(
-    		SubcellularLocationValue location,
-    		SubcellularLocationValue topology,
-    		SubcellularLocationValue orientation){
+            SubcellularLocationValue location,
+            SubcellularLocationValue topology,
+            SubcellularLocationValue orientation) {
         this.location = location;
-        this.topology =topology;
+        this.topology = topology;
         this.orientation = orientation;
     }
+
+    public static SubcellularLocationValue createSubcellularLocationValue(String value, List<Evidence> evidences) {
+        return new SubcellularLocationValueImpl(value, evidences);
+    }
+
     @Override
     public SubcellularLocationValue getLocation() {
-       return location;
+        return location;
     }
 
     @Override
@@ -51,6 +55,7 @@ public class SubcellularLocationImpl implements SubcellularLocation {
         result = prime * result + ((topology == null) ? 0 : topology.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -78,13 +83,9 @@ public class SubcellularLocationImpl implements SubcellularLocation {
         return true;
     }
 
-    public static SubcellularLocationValue createSubcellularLocationValue(String value, List<Evidence> evidences){
-        return new SubcellularLocationValueImpl(value, evidences);
-    }
+    public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue {
 
-    public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue{
-
-        private SubcellularLocationValueImpl(){
+        private SubcellularLocationValueImpl() {
             super(null, Collections.emptyList());
         }
 
@@ -92,6 +93,6 @@ public class SubcellularLocationImpl implements SubcellularLocation {
             super(value, evidences);
         }
 
-      
+
     }
 }

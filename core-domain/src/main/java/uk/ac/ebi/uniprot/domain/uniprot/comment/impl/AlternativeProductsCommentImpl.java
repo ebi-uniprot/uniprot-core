@@ -2,57 +2,55 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class AlternativeProductsCommentImpl extends CommentImpl implements AlternativeProductsComment {
- 
+
     private List<APEventType> events;
     private List<APIsoform> isoforms;
     private Note note;
 
-    private AlternativeProductsCommentImpl(){
+    private AlternativeProductsCommentImpl() {
         super(CommentType.ALTERNATIVE_PRODUCTS);
         this.events = Collections.emptyList();
         this.isoforms = Collections.emptyList();
     }
 
     public AlternativeProductsCommentImpl(
-    		List<APEventType> events,
-    		List<APIsoform> isoforms,
-    		Note note  ) {
+            List<APEventType> events,
+            List<APIsoform> isoforms,
+            Note note) {
         super(CommentType.ALTERNATIVE_PRODUCTS);
-        if((events ==null) || events.isEmpty()){
+        if ((events == null) || events.isEmpty()) {
             this.events = Collections.emptyList();
-        }else{
-            this.events =Collections.unmodifiableList(events);
+        } else {
+            this.events = Collections.unmodifiableList(events);
         }
-        if((isoforms ==null) || isoforms.isEmpty()){
+        if ((isoforms == null) || isoforms.isEmpty()) {
             this.isoforms = Collections.emptyList();
-        }else{
-            this.isoforms =Collections.unmodifiableList(isoforms);
+        } else {
+            this.isoforms = Collections.unmodifiableList(isoforms);
         }
         this.note = note;
     }
 
     @Override
     public List<APEventType> getEvents() {
-       return events;
+        return events;
     }
 
     @Override
     public List<APIsoform> getIsoforms() {
-       return isoforms;
+        return isoforms;
     }
 
     @Override
     public Note getNote() {
         return note;
     }
-    
-    
-    
+
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -89,7 +87,6 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
             return false;
         return true;
     }
-
 
 
 }
