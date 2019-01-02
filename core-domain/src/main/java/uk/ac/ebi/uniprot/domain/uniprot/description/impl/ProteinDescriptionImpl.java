@@ -26,7 +26,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 	private final List<Name> innNames;	
 	private final List<ProteinSection> includes;  //dmain
 	private final List<ProteinSection> contains;  //component
-	private final Flag flag;
+	private Flag flag;
 	public ProteinDescriptionImpl(ProteinName recommendedName,
 			 List<ProteinName> alternativeNames
 			) {
@@ -118,6 +118,9 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 	@Override
 	public Flag getFlag() {
 		return flag;
+	}
+	public void setFlag(Flag flag) {
+		this.flag= flag;
 	}
 	@JsonIgnore
 	@Override

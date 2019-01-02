@@ -15,16 +15,16 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
     private final MassSpectrometryMethod method;
-    private final Double molWeight;
-    private final Double molWeightError;
+    private final Float molWeight;
+    private final Float molWeightError;
     private final String note;
     private final List<MassSpectrometryRange> ranges;
     private final List<Evidence> evidences;
 	 @JsonCreator
     public MassSpectrometryCommentImpl(
     		@JsonProperty("method") MassSpectrometryMethod method,
-    		@JsonProperty("molWeight") Double molWeight, 
-    		@JsonProperty("molWeightError") Double molWeightError, 
+    		@JsonProperty("molWeight") Float molWeight, 
+    		@JsonProperty("molWeightError") Float molWeightError, 
     		@JsonProperty("note") String note,
     		@JsonProperty("ranges") List<MassSpectrometryRange> ranges,
     		@JsonProperty("evidences") List<Evidence> evidences) {
@@ -47,12 +47,12 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public Double getMolWeightError() {
+    public Float getMolWeightError() {
         return molWeightError;
     }
 
     @Override
-    public Double getMolWeight() {
+    public Float getMolWeight() {
         return molWeight;
     }
 

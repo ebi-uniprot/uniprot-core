@@ -65,9 +65,8 @@ public class FTBuildTestAbstr {
 		return factory.createFeature(type, location, description, factory.createFeatureId(ftId), alternativeSequence, createEvidence(evs));
 	}
 
-	AlternativeSequence createAlternativeSequence(String originalSequence, List<String> alternativeSequences,
-			List<String> report) {
-		return factory.createAlternativeSequence(originalSequence, alternativeSequences, factory.createReport(report));
+	AlternativeSequence createAlternativeSequence(String originalSequence, List<String> alternativeSequences){
+		return factory.createAlternativeSequence(originalSequence, alternativeSequences);
 	}
 
 	protected List<Evidence> createEvidence(List<String> evIds) {

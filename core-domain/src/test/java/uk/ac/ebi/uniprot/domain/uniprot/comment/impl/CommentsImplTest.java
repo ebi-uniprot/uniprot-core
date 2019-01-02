@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +22,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
@@ -30,7 +30,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
@@ -109,16 +108,16 @@ class CommentsImplTest {
 	}
 	
 	private DiseaseComment createDiseaseComment() {
-        String val ="some description";
+        String description ="some description";
         List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
+     
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
         String diseaseId = "someId";
         String diseaseAc = "DI-00742";
         Disease disease =new DiseaseImpl(
-        		 diseaseId,diseaseAc,  "someAcron", description, reference);
+        		 diseaseId,diseaseAc,  "someAcron", description, reference, evidences);
     		
         Note note =new NoteImpl(createEvidenceValues());
         

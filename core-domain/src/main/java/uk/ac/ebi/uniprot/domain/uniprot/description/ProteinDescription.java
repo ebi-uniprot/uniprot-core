@@ -26,5 +26,6 @@ public interface ProteinDescription {
 	List<ProteinSection> getContains();
 	boolean isValid();
 	Flag getFlag();
+	void setFlag(Flag flag);
 	
 }

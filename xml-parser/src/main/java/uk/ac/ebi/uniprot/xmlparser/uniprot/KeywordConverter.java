@@ -10,14 +10,14 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 
 public class KeywordConverter implements Converter<KeywordType, Keyword> {
-	private final EvidenceReferenceMapper evRefMapper;
+	private final EvidenceIndexMapper evRefMapper;
 	private final ObjectFactory xmlUniprotFactory;
 
-	public KeywordConverter(EvidenceReferenceMapper evRefMapper) {
+	public KeywordConverter(EvidenceIndexMapper evRefMapper) {
 		this(evRefMapper, new ObjectFactory());
 	}
 
-	public KeywordConverter(EvidenceReferenceMapper evRefMapper,
+	public KeywordConverter(EvidenceIndexMapper evRefMapper,
 			ObjectFactory xmlUniprotFactory) {
 		this.evRefMapper = evRefMapper;
 		this.xmlUniprotFactory = xmlUniprotFactory;

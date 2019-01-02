@@ -45,5 +45,5 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 public interface AlternativeSequence {
 	public String getOriginalSequence();
 	public List<String> getAlternativeSequences();
-	public SequenceReport getReport();
+	//public SequenceReport getReport();
 }

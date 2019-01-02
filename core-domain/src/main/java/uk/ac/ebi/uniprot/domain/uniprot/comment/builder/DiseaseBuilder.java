@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -13,15 +12,16 @@ public final class DiseaseBuilder {
     private String diseaseId;
     private String diseaseAc;
     private String acronym;
-    private DiseaseDescription description;
+    private String description;
     private DBCrossReference<DiseaseReferenceType>  reference;
+    private List<Evidence> evidences;
 
     public static DiseaseBuilder newInstance(){
         return new DiseaseBuilder();
     }
     public Disease build() {
         return new DiseaseImpl(diseaseId, diseaseAc, acronym, description,
-                reference);
+                reference, evidences);
     }
 
     public DiseaseBuilder diseaseId(String diseaseId) {
@@ -39,7 +39,7 @@ public final class DiseaseBuilder {
         return this;
     }
 
-    public DiseaseBuilder description(DiseaseDescription description) {
+    public DiseaseBuilder description(String description) {
         this.description = description;
         return this;
     }
@@ -49,8 +49,8 @@ public final class DiseaseBuilder {
         return this;
     }
 
-    public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {
-        return DiseaseImpl.createDiseaseDescription(val, evidences);
+    public DiseaseBuilder evidences(List<Evidence> evidences) {
+        this.evidences = evidences;
+        return this;
     }
-
 }

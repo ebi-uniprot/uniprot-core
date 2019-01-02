@@ -21,7 +21,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 
 class FeatureImplTest {
 
@@ -122,11 +121,7 @@ class FeatureImplTest {
 	}
 	
 	private AlternativeSequence createAlternativeSequence() {
-		List<String> value =Arrays.asList("some report", "another report");
-		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
-		AlternativeSequence as =new AlternativeSequenceImpl("AB", Arrays.asList("DC", "SDGASS"),
-				report
-				);
+		AlternativeSequence as =new AlternativeSequenceImpl("AB", Arrays.asList("DC", "SDGASS"));
 		return as;
 	}
 	private List<Evidence> createEvidences() {

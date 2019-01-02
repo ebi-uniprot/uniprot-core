@@ -416,8 +416,8 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 				String descr = cObj.description;
 				if (!descr.endsWith("."))
 					descr += ".";
-				builder.description(
-				DiseaseBuilder.createDiseaseDescription(descr, evidences.get(cObj.description)));
+				builder.description(descr)
+				.evidences( evidences.get(cObj.description));
 
 			}
 			commentBuilder.disease(builder.build());

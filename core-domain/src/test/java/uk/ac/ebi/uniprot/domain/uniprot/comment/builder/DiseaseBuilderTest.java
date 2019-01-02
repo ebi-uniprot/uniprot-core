@@ -14,7 +14,6 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -60,13 +59,14 @@ public class DiseaseBuilderTest {
     @Test
     public void testSetDescription() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
-        String val ="some description";
+        String description ="some description";
         List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
+      
         String diseaseId = "someId";
         Disease disease =builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
+                .evidences(evidences)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());
@@ -78,9 +78,9 @@ public class DiseaseBuilderTest {
     @Test
     public void testSetReference() {
         DiseaseBuilder builder = DiseaseBuilder.newInstance();
-        String val ="some description";
+        String description ="some description";
         List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
+    
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
@@ -88,7 +88,8 @@ public class DiseaseBuilderTest {
         Disease disease =builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
-                .reference(reference)           
+                .reference(reference)        
+                .evidences(evidences)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());
@@ -107,15 +108,6 @@ public class DiseaseBuilderTest {
         assertEquals(referenceId, reference.getId());
     }
 
-    @Test
-    public void testCreateDiseaseDescription() {
-        String val ="some description";
-        List<Evidence> evidences =  createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
-        assertEquals(val, description.getValue());
-        assertEquals(evidences, description.getEvidences());
-        TestHelper.verifyJson(description);
-    }
 
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();

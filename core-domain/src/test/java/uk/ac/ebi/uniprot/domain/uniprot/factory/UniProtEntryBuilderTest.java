@@ -66,7 +66,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
@@ -735,11 +734,7 @@ public class UniProtEntryBuilderTest {
     }
     private Feature createVarSeqFeature(){
     	Range location = new Range(65, 86);
-        List<String> value =Arrays.asList("report1", "report 2");
-		SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
-		AlternativeSequence as =new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"),
-				report
-				);
+		AlternativeSequence as =new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
 		FeatureId featureId = 	FeatureFactory.INSTANCE.createFeatureId("VSP_112"); 
 		  
 		return new FeatureImpl(FeatureType.VAR_SEQ, location, "Some description",

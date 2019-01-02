@@ -63,7 +63,7 @@ public class CcLineMSCommentParserTest {
 	public void testMultiRange() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=514.2; Method=Electrospray; Range=51-54,\n"
 				 +"CC       71-74, 91-94, 132-135, 148-151; Note=The measured mass is that of\n"
-				+"CC       RPGW-amide; Evidence={ECO:0000006|PubMed:16629414};\n";
+				+"CC       RPGW-amide.; Evidence={ECO:0000006|PubMed:16629414};\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 		CcLineObject obj = parser.parse(lines);
 		assertEquals(1, obj.ccs.size());
@@ -72,7 +72,7 @@ public class CcLineMSCommentParserTest {
 		CcLineObject.MassSpectrometry ms = (CcLineObject.MassSpectrometry) cc.object;
 
 		verify(ms,  514.2, 0, "Electrospray", 5, 51, 54);
-		assertEquals("The measured mass is that of RPGW-amide", ms.note);
+		assertEquals("The measured mass is that of RPGW-amide.", ms.note);
 		assertEquals(1, ms.sources.size());
 	
 		assertEquals("ECO:0000006|PubMed:16629414", ms.sources.get(0));

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
@@ -11,8 +12,8 @@ import java.util.List;
 
 public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryComment>{
     private  MassSpectrometryMethod method;
-    private  Double molWeight;
-    private  Double molWeightError;
+    private  Float molWeight;
+    private  Float molWeightError;
     private  String note;
     private  List<MassSpectrometryRange> ranges;
     private  List<Evidence> evidences;
@@ -29,12 +30,12 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
         this.method = method;
         return this; 
     }
-    public MassSpectrometryCommentBuilder molWeight(Double molWeight){
+    public MassSpectrometryCommentBuilder molWeight(Float molWeight){
         this.molWeight = molWeight;
         return this; 
     }
-    public MassSpectrometryCommentBuilder molWeightError(Double molWeightError){
-    		if((molWeightError !=null) &&(Math.abs(molWeightError-0.0)<= Double.MIN_VALUE)){
+    public MassSpectrometryCommentBuilder molWeightError(Float molWeightError){
+    		if((molWeightError !=null) &&(Math.abs(molWeightError-0.0)<= Float.MIN_VALUE)){
     			this.molWeightError =null;
     		}
         this.molWeightError = molWeightError;
@@ -54,5 +55,8 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
     public static MassSpectrometryRange createMassSpectrometryRange(Integer start, Integer end, String isoformId){
         return new MassSpectrometryRangeImpl( start,  end,  isoformId);
+    }
+    public static MassSpectrometryRange createMassSpectrometryRange(Range range, String isoformId){
+        return new MassSpectrometryRangeImpl( range,  isoformId);
     }
 }

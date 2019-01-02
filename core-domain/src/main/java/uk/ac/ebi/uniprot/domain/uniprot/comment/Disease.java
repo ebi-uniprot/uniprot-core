@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 
 /**
  * Container used to represent the definition of the disease.
@@ -50,7 +51,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 @JsonSubTypes({
   @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl.class, name = "DiseaseImpl")
 })
-public interface Disease {
+public interface Disease extends HasEvidences{
     /**
      * @return disease id (ID)
      */
@@ -63,7 +64,7 @@ public interface Disease {
      */
      String getAcronym();
 
-     DiseaseDescription getDescription();
+     String getDescription();
 
      DBCrossReference<DiseaseReferenceType>  getReference();
     boolean hasDefinedDisease();

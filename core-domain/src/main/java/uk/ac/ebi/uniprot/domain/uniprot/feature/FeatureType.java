@@ -90,6 +90,11 @@ public enum FeatureType {
                 return featureType;
             }
         }
+        for (FeatureType featureType : FeatureType.values()) {
+            if (featureType.getValue().equalsIgnoreCase(value)) {
+                return featureType;
+            }
+        }
         throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
     }
 }

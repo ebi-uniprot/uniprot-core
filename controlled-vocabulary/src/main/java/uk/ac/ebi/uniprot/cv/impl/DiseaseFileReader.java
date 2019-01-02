@@ -99,6 +99,9 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
 			if(COPYRIGHT_LINES.contains(line)) {
 				i++;
 				continue;
+			}else if(line.trim().isEmpty()) {
+				i++;
+				continue;
 			}
 			// For terminating line no need to complete loop
 			if (line.equals("//")) {

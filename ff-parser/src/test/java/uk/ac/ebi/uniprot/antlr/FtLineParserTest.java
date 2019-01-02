@@ -126,7 +126,7 @@ public class FtLineParserTest {
 		 assertEquals("M", feature.getAlternativeSequence().getOriginalSequence());
 			
 		 assertEquals("MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPASPSRRGSASRAGPGRASETM", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-		 assertEquals("L-VEGF-1", feature.getAlternativeSequence().getReport().getValue().get(0));
+		 assertEquals("in isoform L-VEGF-1", feature.getDescription().getValue());
 			
 	}
 	

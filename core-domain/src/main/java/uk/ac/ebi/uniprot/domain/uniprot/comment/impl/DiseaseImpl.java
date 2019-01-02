@@ -10,30 +10,29 @@ import com.google.common.base.Strings;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class DiseaseImpl implements Disease {
 
-	public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {
-		return new DiseaseDescriptionImpl(val, evidences);
-	}
 
 	private final String diseaseId;
 	private final String diseaseAccession;
 	private final String acronym;
-	private final DiseaseDescription description;
+	private final String description;
 	private final DBCrossReference<DiseaseReferenceType> reference;
+	private final List<Evidence> evidences;
 	
 	public static final String DEFAULT_ACCESSION ="DI-00000";
 	@JsonCreator
 	public DiseaseImpl(@JsonProperty("diseaseId") String diseaseId, 
 			@JsonProperty("diseaseAccession") String diseaseAccession, 
 			@JsonProperty("acronym")String acronym,
-			@JsonProperty("description")DiseaseDescription description,
-			@JsonProperty("reference") DBCrossReference<DiseaseReferenceType> reference) {
+			@JsonProperty("description")String description,
+			@JsonProperty("reference") DBCrossReference<DiseaseReferenceType> reference,
+			@JsonProperty("evidences") List<Evidence> evidences
+			) {
 		this.diseaseId = diseaseId;
 		if(Strings.isNullOrEmpty(diseaseAccession)) {
 			this.diseaseAccession =DEFAULT_ACCESSION;
@@ -42,6 +41,7 @@ public class DiseaseImpl implements Disease {
 		this.acronym = acronym;
 		this.description = description;
 		this.reference = reference;
+		this.evidences = Utils.unmodifierList(evidences);		
 	}
 
 
@@ -61,7 +61,7 @@ public class DiseaseImpl implements Disease {
 	}
 
 	@Override
-	public DiseaseDescription getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
@@ -77,8 +77,7 @@ public class DiseaseImpl implements Disease {
 	}
 
 	private boolean isValidDescription() {
-		return getDescription() != null && getDescription().getValue() != null
-				&& !getDescription().getValue().isEmpty();
+		return !Strings.isNullOrEmpty(description);
 	}
 
 	private boolean isValidReference() {
@@ -86,18 +85,26 @@ public class DiseaseImpl implements Disease {
 				&& getReference().getDatabaseType() != DiseaseReferenceType.NONE);
 	}
 
-	
-	
+
+	@Override
+	public List<Evidence> getEvidences() {
+		return evidences;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((acronym == null) ? 0 : acronym.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((diseaseAccession == null) ? 0 : diseaseAccession.hashCode());
 		result = prime * result + ((diseaseId == null) ? 0 : diseaseId.hashCode());
+		result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
 		result = prime * result + ((reference == null) ? 0 : reference.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -118,10 +125,20 @@ public class DiseaseImpl implements Disease {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
+		if (diseaseAccession == null) {
+			if (other.diseaseAccession != null)
+				return false;
+		} else if (!diseaseAccession.equals(other.diseaseAccession))
+			return false;
 		if (diseaseId == null) {
 			if (other.diseaseId != null)
 				return false;
 		} else if (!diseaseId.equals(other.diseaseId))
+			return false;
+		if (evidences == null) {
+			if (other.evidences != null)
+				return false;
+		} else if (!evidences.equals(other.evidences))
 			return false;
 		if (reference == null) {
 			if (other.reference != null)
@@ -132,16 +149,6 @@ public class DiseaseImpl implements Disease {
 	}
 
 
-	@JsonInclude(JsonInclude.Include.NON_EMPTY)
-	public static class DiseaseDescriptionImpl extends EvidencedValueImpl implements DiseaseDescription {
-		@JsonCreator
-		public DiseaseDescriptionImpl(@JsonProperty("value") String value,
-				@JsonProperty("evidences") List<Evidence> evidences) {
-			super(value, evidences);
-
-		}
-
-	}
 
 
 }

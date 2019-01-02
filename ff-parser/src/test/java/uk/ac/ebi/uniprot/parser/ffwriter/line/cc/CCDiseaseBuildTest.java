@@ -286,7 +286,8 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
 		DiseaseBuilder builder = DiseaseCommentBuilder.newDiseaseBuilder();
 		builder.diseaseId(diseaseId);
 		builder.acronym(acronym);
-		builder.description(DiseaseBuilder.createDiseaseDescription(description, createEvidence(evs)));
+		builder.description(description)
+		.evidences(createEvidence(evs));
 		builder.reference(UniProtFactory.INSTANCE.createDBCrossReference(type, refId));
 		return builder.build();
 		

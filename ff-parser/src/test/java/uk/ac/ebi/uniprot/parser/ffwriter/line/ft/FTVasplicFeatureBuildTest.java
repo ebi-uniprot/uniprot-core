@@ -29,10 +29,10 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 		report.add("Beta");
 		Range location = Range.create(167, 229);
 		String featureId = "VSP_005610";
-
+		String description ="in isoform Alpha and isoform Beta";
 		List<String> evs = new ArrayList<>();
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VAR_SEQ, location, "", featureId, altSeq, evs);
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -67,8 +67,9 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		evs.add(ev1);
 		evs.add(ev2);
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VAR_SEQ, location, "", featureId, altSeq, evs);
+		String description ="in isoform Alpha and isoform Beta";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -98,8 +99,9 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		// evs.add(ev1);
 		// evs.add(ev2);
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VAR_SEQ, location, "", featureId, altSeq, evs);
+		String description ="in isoform Long";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -125,8 +127,9 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		// evs.add(ev1);
 		// evs.add(ev2);
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VAR_SEQ, location, "", featureId, altSeq, evs);
+		String description ="in isoform Long";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -158,8 +161,9 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		evs.add(ev1);
 		evs.add(ev2);
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VAR_SEQ, location, "", featureId, altSeq, evs);
+		String description ="in isoform Long";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -199,8 +203,9 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		// evs.add(ev1);
 		// evs.add(ev2);
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VAR_SEQ, location, "", featureId, altSeq, evs);
+		String description ="in isoform 2";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -249,8 +254,9 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		evs.add(ev1);
 		evs.add(ev2);
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VAR_SEQ, location, "", featureId, altSeq, evs);
+		String description ="in isoform 2";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VAR_SEQ, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);

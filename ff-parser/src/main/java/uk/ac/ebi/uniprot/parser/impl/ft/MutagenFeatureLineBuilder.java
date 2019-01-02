@@ -21,7 +21,7 @@ public class MutagenFeatureLineBuilder extends AbstractFeatureLineBuilder{
 			boolean addEvidence) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(FTLineBuilderHelper.buildFeatureCommon(f, includeFFMarkings));
-		StringBuilder extra = FTLineBuilderHelper.buildExtra(f);
+	//	StringBuilder extra = FTLineBuilderHelper.buildExtra(f);
 		String evIds = "";
 		if (addEvidence) {
 			evIds = LineBuilderHelper.export(f.getEvidences());
@@ -33,7 +33,7 @@ public class MutagenFeatureLineBuilder extends AbstractFeatureLineBuilder{
 		} else {
 			sb.append(SPACE);
 		}
-		sb.append(extra);
+	//	sb.append(extra);
 		List<String> lines = new ArrayList<>();
 		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f, includeFFMarkings);
 		for (int i = 0; i < lines2.size(); i++) {
@@ -65,18 +65,18 @@ public class MutagenFeatureLineBuilder extends AbstractFeatureLineBuilder{
 	}
 
 	private String getReports(Feature feature) {
-
-		StringBuilder temp = new StringBuilder();
-		boolean first = true;
-
-		for (String c : feature.getAlternativeSequence().getReport().getValue()) {
-			if (first) {
-				first = false;
-			} else {
-				temp.append("; ");
-			}
-			temp.append(c);
-		}
-		return temp.toString();
+		return feature.getDescription().getValue();
+//		StringBuilder temp = new StringBuilder();
+//		boolean first = true;
+//
+//		for (String c : feature.getAlternativeSequence().getReport().getValue()) {
+//			if (first) {
+//				first = false;
+//			} else {
+//				temp.append("; ");
+//			}
+//			temp.append(c);
+//		}
+//		return temp.toString();
 	}
 }

@@ -56,6 +56,9 @@ public   final class  Position implements Comparable<Position> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		if(PositionModifier.UNKOWN == modifier) {
+			return  prime * result + ((modifier == null) ? 0 : modifier.hashCode());
+		}
 		result = prime * result + ((modifier == null) ? 0 : modifier.hashCode());
 		result = prime * result + ((value == null) ? 0 : value.hashCode());
 		return result;
@@ -71,6 +74,8 @@ public   final class  Position implements Comparable<Position> {
 		Position other = (Position) obj;
 		if (modifier != other.modifier)
 			return false;
+		if(PositionModifier.UNKOWN == modifier)
+			return true;
 		if (value == null) {
 			if (other.value != null)
 				return false;

@@ -15,7 +15,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
@@ -27,16 +26,16 @@ class DiseaseCommentImplTest {
 	@Test
 	void testDiseaseCommentImpl() {
 
-	        String val ="some description";
+	        String description ="some description";
 	        List<Evidence> evidences =  createEvidences();
-	        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val,evidences);
+	    
 	        DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
 	        String referenceId = "3124";
 	        DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
 	        String diseaseId = "someId";
 	        String diseaseAc =  "I-00742";
 	        Disease disease =new DiseaseImpl(
-	        		 diseaseId, diseaseAc, "someAcron", description, reference);
+	        		 diseaseId, diseaseAc, "someAcron", description, reference, evidences);
 	    		
 	        Note note =new NoteImpl(createEvidenceValues());
 	        

@@ -1,0 +1,61 @@
+package uk.ac.ebi.uniprot.xmlparser.uniprot;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
+import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+public class EvidencedValueConverter implements Converter<EvidencedStringType, EvidencedValue> {
+
+	private static final String STOP = ".";
+	private final EvidenceIndexMapper evRefMapper;
+	private final ObjectFactory xmlUniprotFactory;
+	private final boolean text2Xml;
+
+	public EvidencedValueConverter(EvidenceIndexMapper evRefMapper) {
+		this(evRefMapper, new ObjectFactory(), false);
+	}
+
+	public EvidencedValueConverter(EvidenceIndexMapper evRefMapper,
+			ObjectFactory xmlUniprotFactory, boolean text2Xml) {
+		this.evRefMapper = evRefMapper;
+		this.xmlUniprotFactory = xmlUniprotFactory;
+		this.text2Xml = text2Xml;
+
+	}
+
+	@Override
+	public EvidencedValue fromXml(EvidencedStringType xmlObj) {
+		String value =xmlObj.getValue();
+		if(text2Xml) {
+			value = XmlTextHelper.removeIfPostfix(value, STOP);
+		}
+		List<Evidence> evidences = null;
+		if(! xmlObj.getEvidence().isEmpty()){
+			evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
+		}else
+			evidences = new ArrayList<>();
+		return UniProtFactory.INSTANCE.createEvidencedValue(value, evidences);
+	}
+
+	@Override
+	public EvidencedStringType toXml(EvidencedValue uniObj) {
+		 EvidencedStringType textType = xmlUniprotFactory.createEvidencedStringType();
+		  if(this.text2Xml){
+			  textType.setValue(XmlTextHelper.addIfNoPostfix(uniObj.getValue(), STOP));       
+		  }else{
+			  textType.setValue(uniObj.getValue());       
+		  }
+         if(!uniObj.getEvidences().isEmpty()){
+      		List<Integer> evs = evRefMapper.writeEvidences(uniObj.getEvidences());
+      		textType.getEvidence().addAll(evs);
+         }  
+         return textType;
+	}
+
+}

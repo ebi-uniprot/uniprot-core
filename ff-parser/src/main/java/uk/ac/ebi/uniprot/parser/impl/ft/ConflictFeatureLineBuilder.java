@@ -23,7 +23,7 @@ extends AbstractFeatureLineBuilder {
 			boolean addEvidence) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(FTLineBuilderHelper.buildFeatureCommon(f, includeFFMarkings));
-		StringBuilder extra =FTLineBuilderHelper.buildExtra(f);
+	//	StringBuilder extra =FTLineBuilderHelper.buildExtra(f);
 		String evIds ="";
 		if(addEvidence){
 			evIds = LineBuilderHelper.export(f.getEvidences());
@@ -33,7 +33,7 @@ extends AbstractFeatureLineBuilder {
 		}else{
 			sb.append(SPACE);
 		}
-		sb.append(extra);
+	//	sb.append(extra);
 		List<String> lines = new ArrayList<>();
 		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f,  includeFFMarkings);
 		for(int i=0; i<lines2.size(); i++){
@@ -66,25 +66,25 @@ extends AbstractFeatureLineBuilder {
 		return lines;
 	}
 	 private String getStringConflictReports(Feature feature) {
-		 
-	        StringBuilder temp = new StringBuilder();
-	        boolean first = true;
-	        if(feature.getAlternativeSequence().getReport().getValue().isEmpty())
-	        	return "";
-
-	        int size = feature.getAlternativeSequence().getReport().getValue().size();
-	        for(int i =0; i<size; i++) {
-	        		if(i==0) {
-	        			temp.append("in Ref. ");
-	        		}else if (i==(size-1)) {
-	        			temp.append(" and ");
-	        		}else {
-	        			temp.append(", ");
-	        		}
-	        		 temp.append(feature.getAlternativeSequence().getReport().getValue().get(i));
-	        }
-	        
-	        return temp.toString();
+		 return feature.getDescription().getValue();
+//	        StringBuilder temp = new StringBuilder();
+//	        boolean first = true;
+//	        if(feature.getAlternativeSequence().getReport().getValue().isEmpty())
+//	        	return "";
+//
+//	        int size = feature.getAlternativeSequence().getReport().getValue().size();
+//	        for(int i =0; i<size; i++) {
+//	        		if(i==0) {
+//	        			temp.append("in Ref. ");
+//	        		}else if (i==(size-1)) {
+//	        			temp.append(" and ");
+//	        		}else {
+//	        			temp.append(", ");
+//	        		}
+//	        		 temp.append(feature.getAlternativeSequence().getReport().getValue().get(i));
+//	        }
+//	        
+//	        return temp.toString();
 	    }
 
 }

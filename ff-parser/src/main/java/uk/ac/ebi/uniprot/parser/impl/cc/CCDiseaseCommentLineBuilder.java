@@ -26,7 +26,7 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
 		boolean needSpace =false;
 		if(comment.hasDefinedDisease()) {
 			sb.append(createDiseaseString(comment.getDisease()));
-			sb =addEvidence(comment.getDisease().getDescription(), sb, showEvidence, STOP);
+			sb =addEvidence(comment.getDisease(), sb, showEvidence, STOP);
 			needSpace =true;
 		}
 
@@ -59,7 +59,7 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
 		diseaseString += disease.getDiseaseId() + " "
 				+ "(" + disease.getAcronym() + ") "
 				+ "[" + disease.getReference().getDatabaseType().toDisplayName() + ":" + disease.getReference().getId()+ "]: "
-				+ disease.getDescription().getValue();
+				+ disease.getDescription();
 
 		return diseaseString;
 	}

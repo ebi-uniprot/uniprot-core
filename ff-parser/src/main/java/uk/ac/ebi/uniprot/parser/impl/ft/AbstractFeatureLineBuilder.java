@@ -93,8 +93,8 @@ public abstract class AbstractFeatureLineBuilder
 	}
 
 	protected boolean hasAltSequenceReport(Feature f) {
-		return f.hasAlternativeSequence() && (f.getAlternativeSequence() !=null)
-				&& (f.getAlternativeSequence().getReport() !=null) &&
-				  (f.getAlternativeSequence().getReport().getValue().size() > 0);
+		return f.hasAlternativeSequence() && (f.getAlternativeSequence() !=null);
+			//	&& (f.getAlternativeSequence().getReport() !=null) &&
+			//	  (f.getAlternativeSequence().getReport().getValue().size() > 0);
 	}
 }

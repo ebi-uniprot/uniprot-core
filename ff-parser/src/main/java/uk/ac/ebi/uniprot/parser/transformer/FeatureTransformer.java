@@ -1,22 +1,21 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.stream.Collectors;
 
+import uk.ac.ebi.uniprot.domain.Pair;
 import uk.ac.ebi.uniprot.domain.Position;
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
+import uk.ac.ebi.uniprot.domain.impl.PairImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.SequenceReport;
 
 final public class FeatureTransformer {
 	private static final String FTID = "/FTId=";
@@ -81,20 +80,25 @@ final public class FeatureTransformer {
 		if (!FeatureBuilder.hasAlternativeSequence(featureType)) {
 			builder.description(FeatureBuilder.createFeatureDescription(value));
 		} else {
-			builder.alternativeSequence(updateFeatureDescription(featureType, value));
+			
+			Pair<String, AlternativeSequence> pair= updateFeatureDescription(featureType, value);
+			builder.alternativeSequence(pair.getValue());
+			builder.description(FeatureBuilder.createFeatureDescription(pair.getKey()));
 		}
 
 		return builder.build();
 	}
 
-	private AlternativeSequence updateFeatureDescription(FeatureType type, String text) {
-		SequenceReport seqReport = null;
+	private Pair<String, AlternativeSequence> updateFeatureDescription(FeatureType type, String text) {
+	
+		String description ="";
 		if (type == FeatureType.CONFLICT) {
 			int index = text.indexOf(BRACKET_LEFT);
 			if (index == -1) {
 				text = text.substring(0, text.length() - 1);
 			} else {
 				String reportString = text.substring(index + 1, text.length() - 1).trim();
+				description = reportString;
 				if(reportString.startsWith(IN_REF)) {
 					reportString =reportString.substring(IN_REF.length());
 					String [] tokens = reportString.split(", ");
@@ -106,9 +110,9 @@ final public class FeatureTransformer {
 					for(int i=0; i< tokens2.length; i ++) {
 						reports.add(tokens2[i]);
 					}
-					seqReport = FeatureBuilder.createReport(reports);
+				
 				}else {
-					seqReport =FeatureBuilder.createReport(reportString);
+					
 				}
 				text = text.substring(0, index).trim();
 			}
@@ -123,8 +127,8 @@ final public class FeatureTransformer {
 				reportString = text.substring(index + 2, text.length() - 1);
 			} else
 				reportString = text.substring(index + 2, text.length());
-			seqReport = FeatureBuilder.createReport(reportString);
 			text = text.substring(0, index).trim();
+			description = reportString;
 		} else if (type == FeatureType.VARIANT) {
 			int index = text.indexOf(BRACKET_LEFT);
 			if (index == -1) {
@@ -132,9 +136,8 @@ final public class FeatureTransformer {
 			} else {
 
 				String reportString = text.substring(index + 1, text.length() - 1);
-
+				description = reportString;
 				reportString = reportString.replaceAll(LINE_END, " ");
-				seqReport = FeatureBuilder.createReport(reportString);
 				text = text.substring(0, index);
 			}
 		} else if (type == FeatureType.VAR_SEQ) {
@@ -142,20 +145,19 @@ final public class FeatureTransformer {
 			if (index == -1) {
 				text = text.substring(0, text.length());
 			}
-
+			description = text.substring(index + 1, text.length() - 1);
 			text = text.replaceAll("\\(in", BRACKET_LEFT);
 			String reportString = text.substring(index + 1, text.length() - 1);
 
 			reportString = reportString.replaceAll(LINE_END, "");
 			reportString = reportString.replaceAll(" and ", COMMA);
 			reportString = reportString.replaceAll("isoform ", "");
-			seqReport = FeatureBuilder.createReport(
-					Arrays.stream(reportString.split(COMMA)).map(val -> val.trim()).collect(Collectors.toList()));
+			
 			text = text.substring(0, index).trim();
 		}
 
 		if (text.equalsIgnoreCase(MISSING) || text.startsWith(MISSING)) {
-			return FeatureBuilder.createAlternativeSequence("", Collections.emptyList(), seqReport);
+			return new PairImpl<>(description,  FeatureBuilder.createAlternativeSequence("", Collections.emptyList()));
 		}
 
 		int index = text.indexOf("->");
@@ -167,7 +169,7 @@ final public class FeatureTransformer {
 		}
 		String original = text.substring(0, index).trim().replaceAll("\\s*", "");
 
-		return FeatureBuilder.createAlternativeSequence(original, altSeq, seqReport);
+		return new PairImpl<>(description, FeatureBuilder.createAlternativeSequence(original, altSeq));
 
 	}
 

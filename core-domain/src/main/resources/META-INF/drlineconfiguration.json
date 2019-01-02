@@ -1445,8 +1445,8 @@
 			{	"name": "GoEvidenceType",
 				"xmlTag":"evidence"			
 			},
-			{	"name": "GoEvidenceSource",
-				"xmlTag":"source"			
+			{	"name": "Project",
+				"xmlTag":"project"			
 			}			
 		]
 	},

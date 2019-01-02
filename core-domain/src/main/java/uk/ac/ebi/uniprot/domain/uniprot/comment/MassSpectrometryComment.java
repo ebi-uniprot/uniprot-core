@@ -15,9 +15,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 })
 public interface MassSpectrometryComment extends Comment {
 
-	public Double getMolWeight();
+	public Float getMolWeight();
 
-	public Double getMolWeightError();
+	public Float getMolWeightError();
 
 	public String getNote();
 

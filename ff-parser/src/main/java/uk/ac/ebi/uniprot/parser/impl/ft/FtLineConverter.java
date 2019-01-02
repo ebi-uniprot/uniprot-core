@@ -96,27 +96,30 @@ public class FtLineConverter extends EvidenceCollector
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> isoforms = new ArrayList<>();
 		Matcher matcher = ftLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(value);
+		String description ="";
 		if(!Strings.isNullOrEmpty(value ) && matcher.matches()) {
 			String val1 = matcher.group(1);
 			if(!MISSING.equals(val1)) {
 				originalSequence =matcher.group(3).replaceAll(" ", "");
 				alternativeSequences.add(matcher.group(7).replaceAll(" ", ""));
 			}
-			
+			 description ="in "+ matcher.group(10);
 			String[] tokens = matcher.group(10).substring("isoform ".length()).split(ISOFORM_REGEX);
 			for(String token: tokens) {
 				int index = token.indexOf(' ');
 				if((index>0) && (token.charAt(index-1)== '-')) {
 					String temp = token.substring(0, index) + token.substring(index+1);
+					description = description.replace(token, temp);
+					
 					token = temp;
 				}
 				isoforms.add(token);
 			}
 		}
-		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
-				factory.createReport(isoforms));
+		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences);
+		//	factory.createReport(isoforms));
 		
-		return factory.createFeature( type,  location, "", factory.createFeatureId(ft.ftId),
+		return factory.createFeature( type,  location, description, factory.createFeatureId(ft.ftId),
 				altSeq,  evidences);
 	}
 
@@ -173,7 +176,7 @@ public class FtLineConverter extends EvidenceCollector
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> reports = new ArrayList<>();
-		
+		String description ="";
 		if(!Strings.isNullOrEmpty(value ) && matcher.matches()) {
 			String val1 = matcher.group(1);
 			if(!MISSING.equals(val1)) {
@@ -181,13 +184,13 @@ public class FtLineConverter extends EvidenceCollector
 				alternativeSequences.add(matcher.group(5));
 			}
 			if(matcher.group(8) !=null)
-			reports.add( matcher.group(8) );
+			description =matcher.group(8) ;
 		}
 		
-		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
-				factory.createReport(reports));
+		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences);
+		//		factory.createReport(reports));
 		DBCrossReference<FeatureXDbType> dbXref =null;
-		return factory.createFeature( type,  location, "",factory.createFeatureId(ft.ftId),
+		return factory.createFeature( type,  location, description,factory.createFeatureId(ft.ftId),
 				altSeq, dbXref,  evidences);
 
 	}
@@ -199,7 +202,7 @@ public class FtLineConverter extends EvidenceCollector
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> reports = new ArrayList<>();
-		
+		String description ="";
 		if(matcher.matches()) {
 			String val1 = matcher.group(1);
 			if(!MISSING.equals(val1)) {
@@ -207,14 +210,15 @@ public class FtLineConverter extends EvidenceCollector
 				alternativeSequences.add(matcher.group(7));
 			}
 			String regex = CONFLICT_REGEX ;
-			String[] tokens = matcher.group(10).split(regex);
 			
+			String[] tokens = matcher.group(10).split(regex);
+			description ="in Ref. "+  matcher.group(10);
 			reports = Arrays.asList(tokens);
 		}
-		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
-				factory.createReport(reports));
+		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences);
+			//	factory.createReport(reports));
 		
-		return factory.createFeature( type,  location, "", null,
+		return factory.createFeature( type,  location, description, null,
 				altSeq,  evidences);
 	}
 
@@ -225,7 +229,7 @@ public class FtLineConverter extends EvidenceCollector
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> reports = new ArrayList<>();
-		
+		String description ="";
 		if(!Strings.isNullOrEmpty(value ) && matcher.matches()) {
 			String val1 = matcher.group(1);
 			if(!MISSING.equals(val1)) {
@@ -235,10 +239,11 @@ public class FtLineConverter extends EvidenceCollector
 				alternativeSequences = Arrays.asList(tokens);
 			}
 			reports.add (matcher.group(8));
+			description = matcher.group(8);
 		}
-		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences,
-				factory.createReport(reports));
-		 	return factory.createFeature( type,  location, "", null,
+		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences);
+			//	factory.createReport(reports));
+		 	return factory.createFeature( type,  location, description, null,
 				altSeq,  evidences);
 	}
 

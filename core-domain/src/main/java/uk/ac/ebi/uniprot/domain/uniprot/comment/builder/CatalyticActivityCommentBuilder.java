@@ -2,8 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
