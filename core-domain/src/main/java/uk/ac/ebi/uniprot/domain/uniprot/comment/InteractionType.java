@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public enum InteractionType {
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
+public enum InteractionType implements EnumDisplay<InteractionType> {
     SELF,
     XENO,
     BINARY,
@@ -22,4 +24,8 @@ public enum InteractionType {
         return "";
     }
 
+    @Override
+    public String toDisplayName() {
+        return name();
+    }
 }

@@ -1,12 +1,12 @@
-package uk.ac.ebi.uniprot.domain.util.json;
-
-import java.io.IOException;
-import java.time.LocalDate;
+package uk.ac.ebi.uniprot.json.parser.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+
+import java.io.IOException;
+import java.time.LocalDate;
 
 public class LocalDateDeserializer extends StdDeserializer<LocalDate>  {
 	/**
@@ -15,7 +15,7 @@ public class LocalDateDeserializer extends StdDeserializer<LocalDate>  {
 	private static final long serialVersionUID = 1L;
 
 
-	protected LocalDateDeserializer() {
+	public LocalDateDeserializer() {
         super(LocalDate.class);
     }
 

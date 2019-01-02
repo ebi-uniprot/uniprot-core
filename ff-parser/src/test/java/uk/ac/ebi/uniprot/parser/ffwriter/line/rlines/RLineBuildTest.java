@@ -1,36 +1,12 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.rlines;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Book;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.Patent;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.Thesis;
-import uk.ac.ebi.uniprot.domain.citation.Unpublished;
-import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
@@ -39,6 +15,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtReferenceFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLineBuilder;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertEquals;
 
 public class RLineBuildTest {
 	/*
@@ -79,7 +63,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-		UniProtReference<JournalArticle> uniRef = factory.createUniProtReference(jaBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(jaBuilder.build(), referencePositions,
 				referenceComments, Collections.emptyList());
 
 		doTest(rlines, uniRef, 1);
@@ -151,7 +135,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-		UniProtReference<JournalArticle> uniRef = factory.createUniProtReference(jaBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(jaBuilder.build(), referencePositions,
 				referenceComments, createEvidence(evs));
 
 		doTest(rlines, uniRef, 1);
@@ -186,7 +170,7 @@ public class RLineBuildTest {
 		referenceComments.addAll(buildReferenceComments(transponsons, ReferenceCommentType.TRANSPOSON));
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-		UniProtReference<Submission> uniRef = factory.createUniProtReference(smBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(smBuilder.build(), referencePositions,
 				referenceComments, Collections.emptyList());
 
 		doTest(rlines, uniRef, 2);
@@ -253,7 +237,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-		UniProtReference<Submission> uniRef = factory.createUniProtReference(smBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(smBuilder.build(), referencePositions,
 				referenceComments, Collections.emptyList());
 
 		doTest(rlines, uniRef, 2);
@@ -282,7 +266,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
-		UniProtReference<Book> uniRef = factory.createUniProtReference(bkBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(bkBuilder.build(), referencePositions,
 				Collections.emptyList(), Collections.emptyList());
 
 		doTest(rlines, uniRef, 1);
@@ -311,7 +295,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
-		UniProtReference<Book> uniRef = factory.createUniProtReference(bkBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(bkBuilder.build(), referencePositions,
 				Collections.emptyList(), Collections.emptyList());
 
 		doTest(rlines, uniRef, 5);
@@ -342,7 +326,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
-		UniProtReference<Book> uniRef = factory.createUniProtReference(bkBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(bkBuilder.build(), referencePositions,
 				Collections.emptyList(), Collections.emptyList());
 
 		doTest(rlines, uniRef, 5);
@@ -373,7 +357,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
-		UniProtReference<Thesis> uniRef = factory.createUniProtReference(thBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(thBuilder.build(), referencePositions,
 				Collections.emptyList(), Collections.emptyList());
 
 		doTest(rlines, uniRef, 5);
@@ -400,7 +384,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
-		UniProtReference<Patent> uniRef = factory.createUniProtReference(paBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(paBuilder.build(), referencePositions,
 				Collections.emptyList(), Collections.emptyList());
 
 		doTest(rlines, uniRef, 5);
@@ -426,7 +410,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
-		UniProtReference<ElectronicArticle> uniRef = factory.createUniProtReference(eaBuilder.build(),
+		UniProtReference uniRef = factory.createUniProtReference(eaBuilder.build(),
 				referencePositions, Collections.emptyList(), Collections.emptyList());
 
 		doTest(rlines, uniRef, 5);
@@ -451,7 +435,7 @@ public class RLineBuildTest {
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
-		UniProtReference<Unpublished> uniRef = factory.createUniProtReference(uoBuilder.build(), referencePositions,
+		UniProtReference uniRef = factory.createUniProtReference(uoBuilder.build(), referencePositions,
 				Collections.emptyList(), Collections.emptyList());
 
 		doTest(rlines, uniRef, 5);
@@ -493,7 +477,7 @@ public class RLineBuildTest {
 		return authors;
 	}
 
-	private void doTest(String rlines, UniProtReference<? extends Citation> citation, int num) {
+	private void doTest(String rlines, UniProtReference citation, int num) {
 		builder.setRN(num);
 		FFLine ffLine = builder.buildWithEvidence(citation);
 		String resultString = ffLine.toString();

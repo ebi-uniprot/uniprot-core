@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.domain.gene;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 
 /**
@@ -38,9 +32,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * <div class="codeexample"> {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} entry = getEntryFromParserOrAPI();
  * List<{@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene}> genes = entry.getGenes();
  * for ({@link uk.ac.ebi.uniprot.domain.gene.kraken.interfaces.uniprot.Gene Gene} gene : genes) {
- *     for (ORFName orfName : gene.getORFNames()) {
- *         System.out.println(orfName);
- *     }
+ * for (ORFName orfName : gene.getORFNames()) {
+ * System.out.println(orfName);
+ * }
  * }</div>
  * </p>
  * <p>
@@ -51,12 +45,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
  * gene.getORFNames().add(orf);
  * uniProtEntry.getGenes().add(gene);</div>
  * </p>
- *
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl.ORFNameImpl.class, name = "orfName")
-})
 public interface ORFName extends EvidencedValue {
 
 }

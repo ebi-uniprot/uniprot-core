@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public enum MassSpectrometryMethod {
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
+public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod> {
     //[Electrospray, FAB, LSI, MALDI, Plasma desorption, SELDI, Unknown]
     ELECTROSPRAY("Electrospray"),
     FAB("FAB"),
@@ -16,16 +18,21 @@ public enum MassSpectrometryMethod {
         this.value = type;
     }
 
+    public static MassSpectrometryMethod toType(String type) {
+        for (MassSpectrometryMethod method : MassSpectrometryMethod.values()) {
+            if (method.getValue().equals(type))
+                return method;
+        }
+        return MassSpectrometryMethod.UNKNOWN;
+
+    }
+
     public String getValue() {
         return value;
     }
 
-    public static MassSpectrometryMethod toType(String type) {
-       for( MassSpectrometryMethod method: MassSpectrometryMethod.values()) {
-    	   if(method.getValue().equals(type))
-    		   return method;
-       }
-       return  MassSpectrometryMethod.UNKNOWN;
-     
+    @Override
+    public String toDisplayName() {
+        return value;
     }
 }

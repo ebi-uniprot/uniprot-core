@@ -1,88 +1,93 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
 /**
- * 
  * @author jluo
- *
  */
-public enum InternalLineType {
+public enum InternalLineType implements EnumDisplay<InternalLineType> {
     CL(1),
-//Chromosomal location of a gene.
+    //Chromosomal location of a gene.
     CP(2),
-// Complete proteome.
+    // Complete proteome.
     CX(3),
-// Complete proteome.
+    // Complete proteome.
     DR(4),
-// cross ref.
+    // cross ref.
     DG(5),
-// Descendant groups
+    // Descendant groups
     GO(6),
-// GO stuff
+    // GO stuff
     EV(7),
-// Evidence tag description.                  
+    // Evidence tag description.
     HA(8),
-// unirule 
+    // unirule
     HR(9),
-// unirule removed
+    // unirule removed
     HW(10),
-// unirule warning
+    // unirule warning
     HU(11),
-// unirule unsolved
+    // unirule unsolved
     HP(12),
-// Unirule preannotation
+    // Unirule preannotation
     ID(13),
-// Machine suggested entry name (TrEMBL).
+    // Machine suggested entry name (TrEMBL).
     IS(14),
-// next IsoId
+    // next IsoId
     NI(15),
-// XXXXX (proposed new ID)
+    // XXXXX (proposed new ID)
     PM(16),
-// Pattern matches (TrEMBL only).
+    // Pattern matches (TrEMBL only).
     SO(17),
-// Source of entries from non-standard data source.
+    // Source of entries from non-standard data source.
     YY(18),
-// Important comments (generally from Amos).
+    // Important comments (generally from Amos).
     ZA(19),
-// First curated by (Initials, date);
+    // First curated by (Initials, date);
     ZB(20),
-// Update by ...
+    // Update by ...
     ZC(21),
-// Followup person.
+    // Followup person.
     ZR(22),
-// To be revisited (Amos).
+    // To be revisited (Amos).
     ZZ(23),
-// Miscelanous
+    // Miscelanous
     ET(24),
-// Tagged
+    // Tagged
     PE(25),
-// Tagged
+    // Tagged
     RU(26),
-// rulebase id
+    // rulebase id
     TX(27),
-// taxon
+    // taxon
     PROSITE(28),
-// PROSITE special case
+    // PROSITE special case
     UP(29),
     ZD(23);
-  //Complete proteome
+    //Complete proteome
 
 
     int position;
 
-    InternalLineType(int pos){
+    InternalLineType(int pos) {
         this.position = pos;
+    }
+
+    public static InternalLineType getTypeByPosition(int position) {
+        for (InternalLineType type : values()) {
+            if (type.getPosition() == position) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("unknown position " + position);
     }
 
     public int getPosition() {
         return position;
     }
 
-    public static InternalLineType getTypeByPosition(int position){
-        for (InternalLineType type:values()){
-            if (type.getPosition()==position){
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("unknown position " + position);
+    @Override
+    public String toDisplayName() {
+        return name();
     }
 }

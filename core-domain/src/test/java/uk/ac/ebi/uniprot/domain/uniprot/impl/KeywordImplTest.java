@@ -1,16 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 
-
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class KeywordImplTest {
 
@@ -24,8 +23,9 @@ public class KeywordImplTest {
         assertEquals(2, keyword.getEvidences().size());
         TestHelper.verifyJson(keyword);
     }
+
     @Test
-    public void testGetDisplayedValue(){
+    public void testGetDisplayedValue() {
         String val = "Transmembrane";
         String id = "KW-0812";
         List<Evidence> evidences = createEvidences();
@@ -34,14 +34,14 @@ public class KeywordImplTest {
         assertEquals(expected, keyword.getDisplayed(" "));
         TestHelper.verifyJson(keyword);
     }
-    
-    private List<Evidence> createEvidences(){
+
+    private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(new EvidenceImpl(
                 EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
         evidences.add(new EvidenceImpl(
                 EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
-        
+
         return evidences;
     }
 }

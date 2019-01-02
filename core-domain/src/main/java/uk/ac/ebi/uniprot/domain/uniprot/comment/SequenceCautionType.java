@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import com.fasterxml.jackson.annotation.JsonValue;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * User: Emilio Salazar
  * Date: 14-May-2007
  */
-public enum SequenceCautionType {
+public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
 
     FRAMESHIFT("Frameshift"),
     ERRONEOUS_INITIATION("Erroneous initiation"),
@@ -14,13 +14,23 @@ public enum SequenceCautionType {
     ERRONEOUS_PREDICTION("Erroneous gene model prediction"),
     ERRONEOUS_TRANSLATION("Erroneous translation"),
     MISCELLANEOUS_DISCREPANCY("Miscellaneous discrepancy"),
-    UNKNOWN ("unknown");
+    UNKNOWN("unknown");
 
 
     private String value;
 
     SequenceCautionType(String value) {
         this.value = value;
+    }
+
+    public static SequenceCautionType typeOf(String value) {
+        for (SequenceCautionType sequenceCautionType : SequenceCautionType.values()) {
+            if (sequenceCautionType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
+                return sequenceCautionType;
+            }
+        }
+
+        throw new IllegalArgumentException("The comment type: " + value + " doesn't exist");
     }
 
     /**
@@ -31,20 +41,7 @@ public enum SequenceCautionType {
      *
      * @return the name of this enum constant
      */
-    @JsonValue
     public String toDisplayName() {
         return value;
-    }
-
-
-
-    public static SequenceCautionType typeOf(String value) {
-        for (SequenceCautionType sequenceCautionType : SequenceCautionType.values()) {
-            if (sequenceCautionType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
-                return sequenceCautionType;
-            }
-        }
-
-        throw new IllegalArgumentException("The comment type: " + value + " doesn't exist");
     }
 }

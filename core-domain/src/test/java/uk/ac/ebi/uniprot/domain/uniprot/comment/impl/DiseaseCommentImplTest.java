@@ -17,14 +17,15 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
+
 class DiseaseCommentImplTest {
 
-	@Test
-	void testDiseaseCommentImpl() {
+    @Test
+    void testDiseaseCommentImpl() {
+
 
 	        String description ="some description";
 	        List<Evidence> evidences =  createEvidences();
@@ -57,4 +58,5 @@ class DiseaseCommentImplTest {
 	        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
 	        return evidencedValues;
 	    }
+
 }

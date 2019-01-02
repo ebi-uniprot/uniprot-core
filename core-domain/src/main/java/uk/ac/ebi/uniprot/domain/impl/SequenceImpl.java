@@ -1,31 +1,31 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.MoleculeWeight;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.util.MessageDigestUtil;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class SequenceImpl implements Sequence {
-    private final String value;
-    private final int length;
-    private final int molWeight;
-    private final String crc64;
-    private final String md5;
-	@JsonCreator
-    public SequenceImpl(@JsonProperty("value") String sequence){
-        if(sequence ==null){
-            this.value ="";
-        }else
+    private String value;
+    private int length;
+    private int molWeight;
+    private String crc64;
+    private String md5;
+
+    private SequenceImpl() {
+        this.value = "";
+    }
+
+    public SequenceImpl(String sequence) {
+        if (sequence == null) {
+            this.value = "";
+        } else
             this.value = sequence;
         this.length = this.value.length();
-        this.molWeight =MoleculeWeight.calcMolecularWeight(this.value);
-        this.crc64  = MessageDigestUtil.getCrc64(value);
-        this.md5 =MessageDigestUtil.getDigest(value, "MD5");
+        this.molWeight = MoleculeWeight.calcMolecularWeight(this.value);
+        this.crc64 = MessageDigestUtil.getCrc64(value);
+        this.md5 = MessageDigestUtil.getDigest(value, "MD5");
     }
-   
+
     @Override
     public int getLength() {
         return length;
@@ -35,10 +35,10 @@ public class SequenceImpl implements Sequence {
     public int getMolWeight() {
         return this.molWeight;
     }
-    
+
     @Override
     public String getCrc64() {
-       return this.crc64;
+        return this.crc64;
     }
 
     @Override
@@ -48,13 +48,13 @@ public class SequenceImpl implements Sequence {
 
     @Override
     public String getValue() {
-       return value;
+        return value;
     }
 
     @Override
     public Sequence subSequence(int start, int end) {
         String subsequence = this.value.substring(start, end);
-         return new SequenceImpl(subsequence);
+        return new SequenceImpl(subsequence);
     }
 
     @Override
@@ -81,5 +81,5 @@ public class SequenceImpl implements Sequence {
             return false;
         return true;
     }
-   
+
 }

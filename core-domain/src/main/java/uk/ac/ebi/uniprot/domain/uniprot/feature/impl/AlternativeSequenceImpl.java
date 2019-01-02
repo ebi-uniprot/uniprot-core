@@ -1,54 +1,55 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
+
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import java.util.Collections;
+
+
+
 public class AlternativeSequenceImpl implements AlternativeSequence {
-	private final String originalSequence;
-	private final List<String> alternativeSequences;
 
-	private static final Set<FeatureType> ALTERNATIVE_SEQUENCE_SET = EnumSet.of(FeatureType.CONFLICT,
-			FeatureType.MUTAGEN, FeatureType.VARIANT, FeatureType.VAR_SEQ);
+    private static final Set<FeatureType> ALTERNATIVE_SEQUENCE_SET = EnumSet.of(FeatureType.CONFLICT,
+                                                                                FeatureType.MUTAGEN, FeatureType.VARIANT, FeatureType.VAR_SEQ);
+    private String originalSequence;
+    private List<String> alternativeSequences;
 
-	@JsonCreator
-	public AlternativeSequenceImpl(@JsonProperty("originalSequence") String originalSequence,
-			@JsonProperty("alternativeSequences") List<String> alternativeSequences) {
-		this.originalSequence = Utils.resetNull(originalSequence);
-		this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
-	
-	//	this.report = report;
-	}
+    private AlternativeSequenceImpl() {
+        this.alternativeSequences = Collections.emptyList();
+    }
 
-	@Override
-	public String getOriginalSequence() {
-		return this.originalSequence;
-	}
 
-	@Override
-	public List<String> getAlternativeSequences() {
-		return this.alternativeSequences;
-	}
+    public AlternativeSequenceImpl(String originalSequence,
+                                   List<String> alternativeSequences
+                                   ) {
+        this.originalSequence = Utils.resetNull(originalSequence);
+        this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
 
-//	@Override
-//	public SequenceReport getReport() {
-//		return report;
-//	}
+    }
 
-	public static boolean hasAlternativeSequence(FeatureType type) {
-		return ALTERNATIVE_SEQUENCE_SET.contains(type);
-	}
-	
-	
+
+    public static boolean hasAlternativeSequence(FeatureType type) {
+        return ALTERNATIVE_SEQUENCE_SET.contains(type);
+    }
+
+
+    @Override
+    public String getOriginalSequence() {
+        return this.originalSequence;
+    }
+
+
+    @Override
+    public List<String> getAlternativeSequences() {
+        return this.alternativeSequences;
+    }
+
 
 	@Override
 	public int hashCode() {
@@ -56,9 +57,9 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 		int result = 1;
 		result = prime * result + ((alternativeSequences == null) ? 0 : alternativeSequences.hashCode());
 		result = prime * result + ((originalSequence == null) ? 0 : originalSequence.hashCode());
-		
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -79,10 +80,8 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
 				return false;
 		} else if (!originalSequence.equals(other.originalSequence))
 			return false;
-	
 		return true;
 	}
-
 
 
 }

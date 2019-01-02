@@ -1,19 +1,12 @@
 package uk.ac.ebi.uniprot.parser.voldemort;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-
-
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.util.json.JsonUtils;
 import voldemort.store.StorageEngine;
 import voldemort.store.Store;
 import voldemort.store.memory.InMemoryStorageEngine;
 import voldemort.versioning.Versioned;
+
+import java.util.*;
 
 public class NewUniProtInMemoryStore {
 	   private final String storeName;
@@ -43,7 +36,7 @@ public class NewUniProtInMemoryStore {
 	        return entry.getPrimaryAccession().getValue();
 	    }
 	    private String getString(UniProtEntry entry) {
-	    	return JsonUtils.getJsonString(entry, false);
+	    	return null;//JsonUtils.getJsonString(entry, false);
 	    }
 	    public void updateEntry(UniProtEntry entry) {
 	        String id = getStoreId(entry);
@@ -71,7 +64,7 @@ public class NewUniProtInMemoryStore {
 	    }
 
 	    private UniProtEntry convertEntry(String string) {
-	    	return JsonUtils.convertJsonToObject(string, UniProtEntry.class);
+	    	return null;//JsonUtils.convertJsonToObject(string, UniProtEntry.class);
 	    }
 	    public List<UniProtEntry> getEntries(Iterable<String> acc) {
 	    	 System.out.println("Getting entry list :" + acc);

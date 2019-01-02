@@ -1,31 +1,32 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
+
 public class InteractionCommentImpl extends CommentImpl implements InteractionComment {
-    private final List<Interaction> interactions;
-    @JsonCreator
-    public InteractionCommentImpl(@JsonProperty("interactions") List<Interaction> interactions) {
+    private List<Interaction> interactions;
+
+    private InteractionCommentImpl() {
         super(CommentType.INTERACTION);
-        if((interactions ==null) || interactions.isEmpty()){
+        this.interactions = Collections.emptyList();
+    }
+
+    public InteractionCommentImpl(List<Interaction> interactions) {
+        super(CommentType.INTERACTION);
+        if ((interactions == null) || interactions.isEmpty()) {
             this.interactions = Collections.emptyList();
-        }else{
-            this.interactions =Collections.unmodifiableList(interactions);
+        } else {
+            this.interactions = Collections.unmodifiableList(interactions);
         }
     }
 
     @Override
     public List<Interaction> getInteractions() {
-       return interactions;
+        return interactions;
     }
 
     @Override

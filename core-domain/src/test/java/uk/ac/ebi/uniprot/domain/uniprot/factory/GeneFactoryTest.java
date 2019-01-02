@@ -1,23 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.gene.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import static org.junit.Assert.*;
 
 public class GeneFactoryTest {
     @Test
@@ -35,9 +28,9 @@ public class GeneFactoryTest {
         Gene gene = GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
         assertTrue(gene.hasGeneName());
         TestHelper.verifyJson(gene);
-        
+
     }
-  
+
     @Test
     public void testCreateGeneWithSynonym() {
         String val = "someGene";
@@ -63,7 +56,7 @@ public class GeneFactoryTest {
         assertEquals(1, gene.getSynonyms().size());
         assertTrue(gene.getOrderedLocusNames().isEmpty());
         assertTrue(gene.getOrfNames().isEmpty());
-     
+
         TestHelper.verifyJson(gene);
     }
 
@@ -141,7 +134,7 @@ public class GeneFactoryTest {
         assertEquals("ECO:0000256|PIRNR:PIRNR001361", geneName.getEvidences().get(0).getValue());
         assertFalse(evidences == geneName.getEvidences());
         TestHelper.verifyJson(geneName);
-        
+
     }
 
     @Test

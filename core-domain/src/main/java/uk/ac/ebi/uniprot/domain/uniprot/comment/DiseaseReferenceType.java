@@ -1,16 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 /**
  * Enumeration of the possible external sources that have a references to diseases.
  *
  * @author Francesco Fazzini
  * @author Ricardo Antunes
- * @see DiseaseReference
  * @version 1.0
+ * @see DiseaseReference
  */
-public enum DiseaseReferenceType implements DatabaseType{
+public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseReferenceType> {
     MIM("MIM"),
     NONE("");
 
@@ -18,15 +19,6 @@ public enum DiseaseReferenceType implements DatabaseType{
 
     private DiseaseReferenceType(String displayName) {
         this.displayName = displayName;
-    }
-
-    /**
-     * String representation of the external source
-     *
-     * @return the name of the source
-     */
-    public String toDisplayName() {
-        return displayName;
     }
 
     /**
@@ -46,8 +38,17 @@ public enum DiseaseReferenceType implements DatabaseType{
         throw new IllegalArgumentException("The disease reference type: " + value + " doesn't exist");
     }
 
-	@Override
-	public String getName() {
-		return displayName;
-	}
+    /**
+     * String representation of the external source
+     *
+     * @return the name of the source
+     */
+    public String toDisplayName() {
+        return displayName;
+    }
+
+    @Override
+    public String getName() {
+        return displayName;
+    }
 }

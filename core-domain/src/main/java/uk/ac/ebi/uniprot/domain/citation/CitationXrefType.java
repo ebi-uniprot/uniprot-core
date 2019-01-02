@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
-public enum CitationXrefType implements DatabaseType {
+public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefType> {
 
     PUBMED("PubMed"),
     DOI("DOI"),
@@ -10,12 +11,8 @@ public enum CitationXrefType implements DatabaseType {
 
     private String value;
 
-    private CitationXrefType(String type){
+    private CitationXrefType(String type) {
         this.value = type;
-    }
-
-    public String getName() {
-        return value;
     }
 
     public static CitationXrefType typeOf(String value) {
@@ -27,5 +24,13 @@ public enum CitationXrefType implements DatabaseType {
         throw new IllegalArgumentException("the citation cross-reference type " + value + " doesn't exist");
     }
 
+    public String getName() {
+        return value;
+    }
+
+    @Override
+    public String toDisplayName() {
+        return getName();
+    }
 
 }

@@ -1,27 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 /**
  * Description of the disease(s) associated with a deficiency of a protein
  * <p>
- *
+ * <p>
  * The CC DISEASE annotation has two possible representations:
- *   <ul>
- *       <li>Disease comments with a characterized disease referenced from an external source</li>
- *       <li>Disease comments with no characterized disease</li>
- *   </ul>
+ * <ul>
+ * <li>Disease comments with a characterized disease referenced from an external source</li>
+ * <li>Disease comments with no characterized disease</li>
+ * </ul>
  *
  * <p>
- *
+ * <p>
  * Both representations are followed by a {@link DiseaseNote} that is entry specific
  *
  * <p>
- *
+ * <p>
  * Flat file example of the first type:</br>
  * <i>
  * CC   -!- DISEASE: Deafness, autosomal recessive, 12 (DFNB12) [MIM:601386]:
@@ -45,18 +39,15 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  *
  * @author Francesco Fazzini
  * @author Ricardo Antunes
- * @see Comment
  * @version 1.0
+ * @see Comment
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseCommentImpl.class, name = "DiseaseCommentImpl")
-})
-public interface DiseaseComment extends Comment{
+
+public interface DiseaseComment extends Comment {
     /**
      * @return the definition of the disease
      */
-     Disease getDisease();
+    Disease getDisease();
 
     /**
      * Helper method that verifies whether the {link Disease} object has been populated with a defined disease,
@@ -64,11 +55,11 @@ public interface DiseaseComment extends Comment{
      *
      * @return true if the disease object has a defined disease, false otherwise
      */
-     boolean hasDefinedDisease();
-    
+    boolean hasDefinedDisease();
+
     /**
      * @return free text description of the manifestation of the disease on the protein containing this comment
      */
-     Note getNote();
+    Note getNote();
 
 }

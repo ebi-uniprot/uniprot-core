@@ -1,38 +1,37 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import java.util.Collections;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+import java.util.Collections;
+import java.util.List;
+
 public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
-    private final String molecule;
-    private final  List<Cofactor> cofactors;
-    private final Note note;
-	@JsonCreator
-    public CofactorCommentImpl(@JsonProperty("molecule") String molecule, 
-    		@JsonProperty("cofactors")List<Cofactor> cofactors, 
-    		@JsonProperty("note") Note note) {
+    private String molecule;
+    private List<Cofactor> cofactors;
+    private Note note;
+
+    private CofactorCommentImpl() {
         super(CommentType.COFACTOR);
-        if(Strings.isNullOrEmpty(molecule))
-        	this.molecule =null;
+        this.cofactors = Collections.emptyList();
+    }
+
+    public CofactorCommentImpl(String molecule,
+                               List<Cofactor> cofactors,
+                               Note note) {
+        super(CommentType.COFACTOR);
+        if (molecule == null || molecule.isEmpty())
+            this.molecule = null;
         else
-        	this.molecule =molecule;
-        if((cofactors ==null) || cofactors.isEmpty()){
+            this.molecule = molecule;
+        if ((cofactors == null) || cofactors.isEmpty()) {
             this.cofactors = Collections.emptyList();
-        }else{
-            this.cofactors =Collections.unmodifiableList(cofactors);
+        } else {
+            this.cofactors = Collections.unmodifiableList(cofactors);
         }
-        this.note =note;
+        this.note = note;
     }
 
     @Override
@@ -49,11 +48,11 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     public Note getNote() {
         return note;
     }
-	@JsonIgnore
+
     @Override
-	public boolean isValid() {
-		return !getCofactors().isEmpty() || (note !=null);
-	}
+    public boolean isValid() {
+        return !getCofactors().isEmpty() || (note != null);
+    }
 
 
     @Override
@@ -93,5 +92,5 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         return true;
     }
 
-	
+
 }

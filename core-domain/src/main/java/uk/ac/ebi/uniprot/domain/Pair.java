@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain;
 
 public interface Pair<K, V> {
-	K getKey();
-	V getValue();
+    K getKey();
+
+    V getValue();
 }

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+
 import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
@@ -11,15 +12,16 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
+
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 
 
-
 public enum FeatureFactory {
     INSTANCE;
+
 	public Feature createFeature(FeatureType type, Range location, String description, List<Evidence> evidences) {
 		return new FeatureImpl(type, location, description, evidences);
 	}
@@ -53,4 +55,5 @@ public enum FeatureFactory {
 	public FeatureImpl.Builder newFeatureBuilder(){
 		return FeatureImpl.createBuilder();
 	}
+
 }

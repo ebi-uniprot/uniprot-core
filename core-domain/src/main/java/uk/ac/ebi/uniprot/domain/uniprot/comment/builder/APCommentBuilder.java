@@ -1,51 +1,49 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformId;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AlternativeProductsCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.List;
+
 public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
-    private  List<APEventType> events;
-    private  List<APIsoform> isoforms;
-    private  Note note;
-    
-    public static APCommentBuilder newInstance(){
+    private List<APEventType> events;
+    private List<APIsoform> isoforms;
+    private Note note;
+
+    public static APCommentBuilder newInstance() {
         return new APCommentBuilder();
     }
-    public AlternativeProductsComment build(){
-        return new AlternativeProductsCommentImpl( events, 
-                isoforms,  note  );
-    }
-    public APCommentBuilder events( List<APEventType> events){
-        this.events = events;
-        return this;
-    }
-    
-    public APCommentBuilder isoforms( List<APIsoform> isoforms){
-        this.isoforms = isoforms;
-        return this;
-    }
-    public APCommentBuilder note( Note note){
-        this.note = note;
-        return this;
-    }
-    
- 
+
     public static IsoformName createIsoformName(String value, List<Evidence> evidences) {
         return APIsoformImpl.createIsoformName(value, evidences);
     }
+
     public static IsoformId createIsoformId(String value) {
         return APIsoformImpl.createIsoformId(value);
     }
+
+    public AlternativeProductsComment build() {
+        return new AlternativeProductsCommentImpl(events,
+                                                  isoforms, note);
+    }
+
+    public APCommentBuilder events(List<APEventType> events) {
+        this.events = events;
+        return this;
+    }
+
+    public APCommentBuilder isoforms(List<APIsoform> isoforms) {
+        this.isoforms = isoforms;
+        return this;
+    }
+
+    public APCommentBuilder note(Note note) {
+        this.note = note;
+        return this;
+    }
+
     public static class APIsoformBuilder {
         private IsoformName name;
         private List<IsoformName> synonyms;
@@ -54,13 +52,14 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
         private List<String> sequenceIds;
         private IsoformSequenceStatus isoformSequenceStatus;
 
-        public static APIsoformBuilder newInstance(){
+        public static APIsoformBuilder newInstance() {
             return new APIsoformBuilder();
         }
+
         public APIsoform build() {
             return new APIsoformImpl(name, synonyms,
-                    note, isoformIds,
-                    sequenceIds, isoformSequenceStatus);
+                                     note, isoformIds,
+                                     sequenceIds, isoformSequenceStatus);
         }
 
         public APIsoformBuilder isoformName(IsoformName name) {

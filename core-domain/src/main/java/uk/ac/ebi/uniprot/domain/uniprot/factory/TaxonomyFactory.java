@@ -1,62 +1,52 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+import uk.ac.ebi.uniprot.domain.Pair;
+import uk.ac.ebi.uniprot.domain.impl.PairImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.*;
+import uk.ac.ebi.uniprot.domain.taxonomy.impl.*;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import uk.ac.ebi.uniprot.domain.Pair;
-import uk.ac.ebi.uniprot.domain.impl.PairImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxon;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonName;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonNode;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismNameImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonNameImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonNodeImpl;
-
 public enum TaxonomyFactory {
-	INSTANCE;
-	private static final List<String>  STRAINS =Arrays.asList(
-			" (strain", " (isolate"
-			);
-	private static final String STRAIN = " (strain";
-	public final static Pattern ORGANISM_PATTERN = Pattern
-			.compile("([a-zA-Z 0-9\\'\\-\\._/]+)((( \\()([a-zA-Z 0-9\\'\\-\\._/]+)(\\)))"
-					+ "(( \\()([a-zA-Z 0-9,\\'\\-\\._/]+)(\\)))?)*");
+    INSTANCE;
+    public final static Pattern ORGANISM_PATTERN = Pattern
+            .compile("([a-zA-Z 0-9\\'\\-\\._/]+)((( \\()([a-zA-Z 0-9\\'\\-\\._/]+)(\\)))"
+                             + "(( \\()([a-zA-Z 0-9,\\'\\-\\._/]+)(\\)))?)*");
+    private static final List<String> STRAINS = Arrays.asList(
+            " (strain", " (isolate"
+    );
+    private static final String STRAIN = " (strain";
 
-	public TaxonName createTaxonName(String name) {
-		return new TaxonNameImpl(name);
-	}
+    public TaxonName createTaxonName(String name) {
+        return new TaxonNameImpl(name);
+    }
 
-	public TaxonName createTaxonName(String scientificName, String commonName) {
-		return createTaxonName(scientificName, commonName, Collections.emptyList());
-	}
+    public TaxonName createTaxonName(String scientificName, String commonName) {
+        return createTaxonName(scientificName, commonName, Collections.emptyList());
+    }
 
-	public TaxonName createTaxonName(String scientificName, String commonName, List<String> synonyms) {
-		return new TaxonNameImpl(scientificName, commonName, synonyms);
-	}
+    public TaxonName createTaxonName(String scientificName, String commonName, List<String> synonyms) {
+        return new TaxonNameImpl(scientificName, commonName, synonyms);
+    }
 
-	public OrganismName createOrganismName(String scientificName) {
-		return createOrganismName(scientificName, null);
-	}
+    public OrganismName createOrganismName(String scientificName) {
+        return createOrganismName(scientificName, null);
+    }
 
-	public OrganismName createOrganismName(String scientificName, String commonName) {
-		return createOrganismName(scientificName, commonName, Collections.emptyList());
-	}
+    public OrganismName createOrganismName(String scientificName, String commonName) {
+        return createOrganismName(scientificName, commonName, Collections.emptyList());
+    }
 
-	public OrganismName createOrganismName(String scientificName, String commonName, List<String> synonyms) {
-		return new OrganismNameImpl(scientificName, commonName, synonyms);
-	}
+    public OrganismName createOrganismName(String scientificName, String commonName, List<String> synonyms) {
+        return new OrganismNameImpl(scientificName, commonName, synonyms);
+    }
 
-	public Organism createOrganism(OrganismName name, long taxId) {
-		return new OrganismImpl(name, taxId);
-	}
+    public Organism createOrganism(OrganismName name, long taxId) {
+        return new OrganismImpl(name, taxId);
+    }
 
 //	public OrganismName createFromOrganismLine(String organismStr) {
 //		Matcher matcher = TaxonomyFactory.ORGANISM_PATTERN.matcher(organismStr);
@@ -78,115 +68,119 @@ public enum TaxonomyFactory {
 //		return createOrganismName(scientificName, commonName, synonyms);
 //	}
 
-	public OrganismName createFromOrganismLine(String organismName) {
-		String value = organismName;
-		if ((value.endsWith(".") && (value.charAt(value.length() - 2) != ')'))
-				|| (value.charAt(value.length() - 1) != ')')) {
-			return TaxonomyFactory.INSTANCE.createOrganismName(value);
+    public OrganismName createFromOrganismLine(String organismName) {
+        String value = organismName;
+        if ((value.endsWith(".") && (value.charAt(value.length() - 2) != ')'))
+                || (value.charAt(value.length() - 1) != ')')) {
+            return TaxonomyFactory.INSTANCE.createOrganismName(value);
 
-		}
-		if ((value.endsWith(".") && (value.charAt(value.length() - 2) == ')'))
-				|| (value.charAt(value.length() - 1) == ')')) {
-			if (value.indexOf(" (") == -1) {
-				return TaxonomyFactory.INSTANCE.createOrganismName(value);
+        }
+        if ((value.endsWith(".") && (value.charAt(value.length() - 2) == ')'))
+                || (value.charAt(value.length() - 1) == ')')) {
+            if (value.indexOf(" (") == -1) {
+                return TaxonomyFactory.INSTANCE.createOrganismName(value);
 
-			}
-		}
-		if (value.endsWith(".")) {
-			value = value.substring(0, value.length() - 1);
-		}
+            }
+        }
+        if (value.endsWith(".")) {
+            value = value.substring(0, value.length() - 1);
+        }
 
-		String rest = value.trim();
-		int strainStart = -1;
-		int start = 0;
-		int startBracketIndex = -1;
-		Pair<String, Integer> pair= containStrain(rest);
-		if (pair !=null) {
-			strainStart = pair.getValue();
-			start = getEndBlacket(rest, strainStart + pair.getKey().length());
-			if (start == -1) {
-				return TaxonomyFactory.INSTANCE.createOrganismName(value);
-			}
+        String rest = value.trim();
+        int strainStart = -1;
+        int start = 0;
+        int startBracketIndex = -1;
+        Pair<String, Integer> pair = containStrain(rest);
+        if (pair != null) {
+            strainStart = pair.getValue();
+            start = getEndBlacket(rest, strainStart + pair.getKey().length());
+            if (start == -1) {
+                return TaxonomyFactory.INSTANCE.createOrganismName(value);
+            }
 
-		}
-		startBracketIndex = rest.indexOf("(", start + 1);
-		if (startBracketIndex == -1) {
-			return TaxonomyFactory.INSTANCE.createOrganismName(value);
-		}
-		String scientificName = rest.substring(0, startBracketIndex).trim();
+        }
+        startBracketIndex = rest.indexOf("(", start + 1);
+        if (startBracketIndex == -1) {
+            return TaxonomyFactory.INSTANCE.createOrganismName(value);
+        }
+        String scientificName = rest.substring(0, startBracketIndex).trim();
 
-		int endBracketIndex =getEndBlacket(rest, startBracketIndex +1);
-		if (endBracketIndex == -1) {
-			throw new IllegalArgumentException("organism name: " + organismName + " is not right");
-		}
-		String commonName = rest.substring(startBracketIndex + 1, endBracketIndex).trim();
-		rest = rest.substring(endBracketIndex + 1).trim();
-		String synonym = null;
-		if (!rest.isEmpty()) {
-			startBracketIndex = rest.indexOf("(");
-			if (startBracketIndex == -1) {
-				throw new IllegalArgumentException("organism name: " + organismName + " is not right");
-			}
-			endBracketIndex =getEndBlacket(rest, startBracketIndex +1);
-			if (endBracketIndex == -1) {
-				throw new IllegalArgumentException("organism name: " + organismName + " is not right");
-			}
-			synonym = rest.substring(startBracketIndex + 1, endBracketIndex).trim();
-			return TaxonomyFactory.INSTANCE.createOrganismName(scientificName, commonName, Arrays.asList(synonym.split(", ")));
-		} else {
-			return TaxonomyFactory.INSTANCE.createOrganismName(scientificName, commonName, Collections.emptyList());
-		}
-	}
-	
-	private Pair<String, Integer> containStrain(String value) {
-		int index = value.indexOf(" (");
-		if(index ==-1) {
-			return null;
-		}
-		String subStr = value.substring(index);
-		
-		for(String str: STRAINS) {
-			if(subStr.startsWith(str)) {
-				return new PairImpl<>(str, index);
-			}
-		}
-		return null;
-	}
-	 private int getEndBlacket(String val, int start) {
-	        char endC = ')';
-	        char startC = '(';
-	        String value = val;
-	        if (value.endsWith(".")) {
-	            value = value.substring(0, value.length() - 1);
-	        }
-	        if (value.charAt(value.length() - 1) != endC)
-	            return -1;
-	        int countStart=0; 
-	        int countEnd =0;
-	        for(int i=start; i< value.length(); i++) {
-	        	if (value.charAt(i) ==endC) {
-	        		if(countStart ==countEnd)
-	        			return i;
-	        		else
-	        			countEnd ++;
-	        	}else if (value.charAt(i) ==startC) {
-	        		countStart++;
-	        	}
-	        }
-	      
-	        return -1;
+        int endBracketIndex = getEndBlacket(rest, startBracketIndex + 1);
+        if (endBracketIndex == -1) {
+            throw new IllegalArgumentException("organism name: " + organismName + " is not right");
+        }
+        String commonName = rest.substring(startBracketIndex + 1, endBracketIndex).trim();
+        rest = rest.substring(endBracketIndex + 1).trim();
+        String synonym = null;
+        if (!rest.isEmpty()) {
+            startBracketIndex = rest.indexOf("(");
+            if (startBracketIndex == -1) {
+                throw new IllegalArgumentException("organism name: " + organismName + " is not right");
+            }
+            endBracketIndex = getEndBlacket(rest, startBracketIndex + 1);
+            if (endBracketIndex == -1) {
+                throw new IllegalArgumentException("organism name: " + organismName + " is not right");
+            }
+            synonym = rest.substring(startBracketIndex + 1, endBracketIndex).trim();
+            return TaxonomyFactory.INSTANCE
+                    .createOrganismName(scientificName, commonName, Arrays.asList(synonym.split(", ")));
+        } else {
+            return TaxonomyFactory.INSTANCE.createOrganismName(scientificName, commonName, Collections.emptyList());
+        }
+    }
 
-	    }
+    public Taxon createTaxon(TaxonName name, long taxonId) {
+        return new TaxonImpl(name, taxonId);
+    }
 
-	public Taxon createTaxon(TaxonName name, long taxonId) {
-		return new TaxonImpl(name, taxonId);
-	}
+    public Taxon createTaxon(String name, long taxonId) {
+        return new TaxonImpl(createTaxonName(name), taxonId);
+    }
 
-	public Taxon createTaxon(String name, long taxonId) {
-		return new TaxonImpl(createTaxonName(name), taxonId);
-	};
+    public TaxonNode createTaxonNode(TaxonNode parent, Taxon taxon, TaxonomyRank rank) {
+        return new TaxonNodeImpl(parent, taxon, rank);
+    }
 
-	public TaxonNode createTaxonNode(TaxonNode parent, Taxon taxon, TaxonomyRank rank) {
-		return new TaxonNodeImpl(parent, taxon, rank);
-	}
+    private Pair<String, Integer> containStrain(String value) {
+        int index = value.indexOf(" (");
+        if (index == -1) {
+            return null;
+        }
+        String subStr = value.substring(index);
+
+        for (String str : STRAINS) {
+            if (subStr.startsWith(str)) {
+                return new PairImpl<>(str, index);
+            }
+        }
+        return null;
+    }
+
+    ;
+
+    private int getEndBlacket(String val, int start) {
+        char endC = ')';
+        char startC = '(';
+        String value = val;
+        if (value.endsWith(".")) {
+            value = value.substring(0, value.length() - 1);
+        }
+        if (value.charAt(value.length() - 1) != endC)
+            return -1;
+        int countStart = 0;
+        int countEnd = 0;
+        for (int i = start; i < value.length(); i++) {
+            if (value.charAt(i) == endC) {
+                if (countStart == countEnd)
+                    return i;
+                else
+                    countEnd++;
+            } else if (value.charAt(i) == startC) {
+                countStart++;
+            }
+        }
+
+        return -1;
+
+    }
 }

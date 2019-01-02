@@ -1,12 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
  * Indicates that a {@link uk.ac.ebi.Feature.interfaces.uniprot.oldfeatures.Feature Feature} in an UniProtEntry can have an alternative sequence ({@link uk.ac.ebi.kraken.interfaces.uniprot.oldfeatures.SubSequence SubSequence}).
@@ -37,13 +31,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
  *  &lt;sequence length="365" mass="40846" checksum="8667AFF3F06C4932" modified="1993-04-01"&gt;
  * ...
  * </font></pre>
- * */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
-@JsonSubTypes({
-  @JsonSubTypes.Type(value=uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl.class, name = "AlternativeSequenceImpl")
-})
+ */
 public interface AlternativeSequence {
+
 	public String getOriginalSequence();
 	public List<String> getAlternativeSequences();
 	//public SequenceReport getReport();
+
 }

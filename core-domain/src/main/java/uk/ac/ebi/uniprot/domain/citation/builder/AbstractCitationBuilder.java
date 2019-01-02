@@ -1,17 +1,13 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractCitationBuilder<T extends Citation> implements CitationBuilder<T> {
     protected List<String> authoringGroups = new ArrayList<>();
@@ -19,17 +15,17 @@ public abstract class AbstractCitationBuilder<T extends Citation> implements Cit
     protected CitationXrefs xrefs;
     protected String title = "";
     protected PublicationDate publicationDate;
-    
-    public static PublicationDate createPublicationDate(String date){
+
+    public static PublicationDate createPublicationDate(String date) {
         return new PublicationDateImpl(date);
     }
 
-    
-    public static Author createAuthor(String name){
+
+    public static Author createAuthor(String name) {
         return new AuthorImpl(name);
     }
-    
-    public static CitationXrefs createCitationXrefs(List<DBCrossReference<CitationXrefType>> xrefs){
+
+    public static CitationXrefs createCitationXrefs(List<DBCrossReference<CitationXrefType>> xrefs) {
         return new CitationXrefsImpl(xrefs);
     }
 

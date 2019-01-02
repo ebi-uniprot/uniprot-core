@@ -1,21 +1,6 @@
 package uk.ac.ebi.uniprot.parser.integration;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-
 import org.jboss.logging.Logger;
-
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
@@ -29,6 +14,16 @@ import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader;
 import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader2;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.time.Duration;
+import java.time.LocalTime;
+import java.util.*;
+
+import static org.junit.Assert.assertNotNull;
 
 public class FlatfileRoundTripIT {
 	Logger log = Logger.getLogger(FlatfileRoundTripIT.class);
@@ -49,7 +44,7 @@ public class FlatfileRoundTripIT {
 		// }
 		test.roundtrip(args[0]);
 	}
-	
+
 	private void testIterator(String filename) throws Exception{
 		UniProtEntryIterator iterator = new  DefaultUniProtEntryIterator();
 		iterator.setInput(filename, "", "");
@@ -67,9 +62,9 @@ public class FlatfileRoundTripIT {
 		LocalTime end = LocalTime.now();
 		System.out.println(end);
 		Duration duration = Duration.between(time, end);
-	
+
 		System.out.println(duration.toString());
-	
+
 	}
 	private void compareFileReader(String filename) throws Exception{
 		EntryBufferedReader2 reader = new EntryBufferedReader2(filename);
@@ -88,14 +83,14 @@ public class FlatfileRoundTripIT {
 			}
 		}
 		reader.close();
-		
-	
+
+
 		LocalTime end = LocalTime.now();
 		System.out.println(end);
 		Duration duration = Duration.between(time, end);
-	
+
 		System.out.println(duration.toString());
-		
+
 		EntryBufferedReader2 reader2 = new EntryBufferedReader2(filename);
 		LocalTime start = LocalTime.now();
 		System.out.println("using EntryBufferedReader2");
@@ -144,7 +139,7 @@ public class FlatfileRoundTripIT {
 		assertNotNull(converted);
 		String convertedEntryStr = ffWriter.write(converted, isPublic);
 		EntryObject parse2 =null;
-		
+
 		try {
 
 			 parse2 = entryParser.parse(convertedEntryStr);
@@ -158,8 +153,8 @@ public class FlatfileRoundTripIT {
 		boolean b = converted2.equals(converted);
 		if (!b) {
 			System.out.println(entryStr);
-			
-			
+
+
 			System.out.println( converted.getPrimaryAccession().getValue());
 		}
 		return b;
@@ -175,7 +170,7 @@ public class FlatfileRoundTripIT {
 			if (++count % 100 == 0)
 				System.out.println("Number of entries parsed: " + count);
 		}
-		
+
 	}
 
 	public void setIsFileWithPublic(boolean hasEvidence) {
@@ -321,8 +316,7 @@ public class FlatfileRoundTripIT {
 	}
 
 	void accessCrossReference(UniProtEntry entry) {
-		List<UniProtDBCrossReference> emblCrossReferences = entry.getDatabaseCrossReferences()
-				.getCrossReferencesByType("EMBL");
+		List<UniProtDBCrossReference> emblCrossReferences = entry.getDatabaseCrossReferencesByType("EMBL");
 		for (UniProtDBCrossReference embl : emblCrossReferences) {
 			String db = embl.getDatabaseType().getName();
 			String emblPrimaryId = embl.getId();
@@ -332,15 +326,14 @@ public class FlatfileRoundTripIT {
 
 			System.out.println(db + ": " + emblPrimaryId + "; " + emblProteinId + "; " + param3 + "; " + param4);
 		}
-		List<UniProtDBCrossReference> refseqCrossReference = entry.getDatabaseCrossReferences()
-				.getCrossReferencesByType("RefSeq");
+		List<UniProtDBCrossReference> refseqCrossReference = entry.getDatabaseCrossReferencesByType("RefSeq");
 		for (UniProtDBCrossReference rs : refseqCrossReference) {
 			String db = rs.getDatabaseType().getName();
 			String rsId = rs.getId();
 			String descriptoin = rs.getProperties().get(0).getValue();
 			System.out.println(db + ": " + rsId + "; " + descriptoin);
 		}
-		Collection<UniProtDBCrossReference> allReferences = entry.getDatabaseCrossReferences().getCrossReferences();
+		Collection<UniProtDBCrossReference> allReferences = entry.getDatabaseCrossReferences();
 		for (UniProtDBCrossReference xref : allReferences) {
 			String dbName = xref.getDatabaseType().getName();
 			String primaryId = xref.getId();

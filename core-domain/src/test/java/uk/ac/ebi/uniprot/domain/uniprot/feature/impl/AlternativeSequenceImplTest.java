@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

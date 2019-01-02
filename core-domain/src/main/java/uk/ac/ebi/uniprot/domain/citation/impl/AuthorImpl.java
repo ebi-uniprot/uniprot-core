@@ -1,22 +1,24 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import uk.ac.ebi.uniprot.domain.citation.Author;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+
 public class AuthorImpl implements Author {
-    private final String value;
-    @JsonCreator
-    public AuthorImpl(@JsonProperty("value") String value){
+    private String value;
+
+    private AuthorImpl() {
+        this.value = "";
+    }
+
+    public AuthorImpl(String value) {
         this.value = value;
     }
+
     @Override
     public String getValue() {
         return value;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -24,6 +26,7 @@ public class AuthorImpl implements Author {
         result = prime * result + ((value == null) ? 0 : value.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -40,6 +43,7 @@ public class AuthorImpl implements Author {
             return false;
         return true;
     }
+
     @Override
     public String toString() {
         return value;

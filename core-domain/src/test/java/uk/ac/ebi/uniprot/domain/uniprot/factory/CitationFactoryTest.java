@@ -1,51 +1,44 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.citation.Author;
+import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
+import uk.ac.ebi.uniprot.domain.citation.builder.*;
 
 import java.util.Arrays;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class CitationFactoryTest {
 
     @Test
     public void testCreateCitation() {
         JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
-        String title ="some title";
+        String title = "some title";
         builder.title(title)
-        .publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"))
-        .authoringGroups(Arrays.asList(new String[]{"T1", "T2" }))
-        .authors(Arrays.asList(new Author[] {JournalArticleBuilder.createAuthor("Tom"),
-                JournalArticleBuilder.createAuthor("John")               
-        }
-        ));
-        String journalName ="Nature";
+                .publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"))
+                .authoringGroups(Arrays.asList(new String[]{"T1", "T2"}))
+                .authors(Arrays.asList(new Author[]{JournalArticleBuilder.createAuthor("Tom"),
+                                                    JournalArticleBuilder.createAuthor("John")
+                                       }
+                ));
+        String journalName = "Nature";
         builder.journalName(journalName)
-        .firstPage("213")
-        .lastPage("223")
-        .volume("2");
-        
+                .firstPage("213")
+                .lastPage("223")
+                .volume("2");
+
         JournalArticle ja = builder.build();
-        
-        JournalArticle ja2 =CitationFactory.INSTANCE.createCitation(builder);
+
+        JournalArticle ja2 = CitationFactory.INSTANCE.createCitation(builder);
         assertEquals(ja, ja2);
     }
 
     @Test
     public void testCreateBookBuilder() {
-       BookBuilder builder =CitationFactory.INSTANCE.createBookBuilder();
-       assertNotNull(builder);
+        BookBuilder builder = CitationFactory.INSTANCE.createBookBuilder();
+        assertNotNull(builder);
     }
 
     @Test
@@ -84,5 +77,5 @@ public class CitationFactoryTest {
         assertNotNull(builder);
     }
 
-  
+
 }

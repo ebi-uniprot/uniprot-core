@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
@@ -19,8 +13,13 @@ import uk.ac.ebi.uniprot.parser.impl.rp.RPLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rt.RTLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rx.RXLineBuilder;
 
-public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference<? extends Citation>>
-		implements FFLineBuilder<UniProtReference<? extends Citation>> {
+import java.util.ArrayList;
+import java.util.List;
+
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DEFAUT_LINESPACE;
+
+public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
+		implements FFLineBuilder<UniProtReference> {
 	private final static RPLineBuilder rpLineBuilder = new RPLineBuilder();
 	private final static RCLineBuilder rcLineBuilder = new RCLineBuilder();
 	private final static RXLineBuilder rxLineBuilder = new RXLineBuilder();
@@ -39,21 +38,21 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference<? extends 
 	}
 
 	@Override
-	public String buildString(UniProtReference<? extends Citation> f) {
+	public String buildString(UniProtReference f) {
 		return buildLine(f, false, false).toString();
 	}
 
 	@Override
-	public String buildStringWithEvidence(UniProtReference<? extends Citation> f) {
+	public String buildStringWithEvidence(UniProtReference f) {
 		return buildLine(f, false, true).toString();
 	}
 
 	@Override
-	protected FFLine buildLine(UniProtReference<? extends Citation> f, boolean showEvidence) {
+	protected FFLine buildLine(UniProtReference f, boolean showEvidence) {
 		return buildLine(f, true, showEvidence);
 	}
 
-	private FFLine buildLine(UniProtReference<? extends Citation> f, boolean includeFFMarkup, boolean showEvidence) {
+	private FFLine buildLine(UniProtReference f, boolean includeFFMarkup, boolean showEvidence) {
 		List<String> lines = new ArrayList<>();
 		// RN LINE
 

@@ -1,12 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
+import uk.ac.ebi.uniprot.domain.EnumDisplay;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-public enum FeatureType {
-	  /**
+public enum FeatureType implements EnumDisplay<FeatureType> {
+    /**
      * Enumerates all features types in UniProt. Important!!! The order which is here must the order existing in the
      * file cc_ord which is placed in /ebi/sp/misc1/pc/sprot/various/ft_ord
      */
@@ -55,11 +57,13 @@ public enum FeatureType {
     private final FeatureCategory category;
 
     FeatureType(String value,
-        String displayName, FeatureCategory category) {
+                String displayName, FeatureCategory category) {
         this.value = value;
         this.displayName = displayName;
         this.category = category;
     }
+
+   
 
     public String getValue() {
         return value;
@@ -69,15 +73,10 @@ public enum FeatureType {
         return name();
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    
-    
     public FeatureCategory getCategory() {
         return category;
     }
+
 
     public static List<FeatureType> getFeatureTypes(FeatureCategory category){
         return Arrays.stream(FeatureType.values())
@@ -96,5 +95,15 @@ public enum FeatureType {
             }
         }
         throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
+
     }
+
+
+    public String getDisplayName() {
+    	return displayName;
+    }
+	@Override
+	public String toDisplayName() {
+		return displayName;
+	}
 }

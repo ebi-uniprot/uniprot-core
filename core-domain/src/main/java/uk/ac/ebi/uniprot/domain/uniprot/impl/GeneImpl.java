@@ -1,44 +1,42 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
+import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class GeneImpl implements Gene {
-	@JsonInclude(JsonInclude.Include.NON_NULL)
-    private final GeneName geneName;
-    private final List<GeneNameSynonym> synonyms;
-    private final List<OrderedLocusName> orderedLocusNames;
-    private final List<ORFName> orfNames;
+
     private static final String ORF_NAMES = "ORFNames=";
     private static final String ORDERED_LOCUS_NAMES = "OrderedLocusNames=";
     private static final String SYNONYMS = "Synonyms=";
     private static final String NAME = "Name=";
-	@JsonCreator
+    private GeneName geneName;
+    private List<GeneNameSynonym> synonyms;
+    private List<OrderedLocusName> orderedLocusNames;
+    private List<ORFName> orfNames;
+
+    private GeneImpl() {
+        synonyms = new ArrayList<>();
+        orderedLocusNames = new ArrayList<>();
+        orfNames = new ArrayList<>();
+    }
+
     public GeneImpl(
-    		@JsonProperty("geneName") GeneName geneName,
-    		@JsonProperty("synonyms") List<GeneNameSynonym> synonyms,
-    		@JsonProperty("orderedLocusNames") List<OrderedLocusName> orderedLocusNames,
-    		@JsonProperty("orfNames")  List<ORFName> orfNames) {
+            GeneName geneName,
+            List<GeneNameSynonym> synonyms,
+            List<OrderedLocusName> orderedLocusNames,
+            List<ORFName> orfNames) {
         this.geneName = geneName;
         this.synonyms = Utils.unmodifierList(synonyms);
         this.orderedLocusNames = Utils.unmodifierList(orderedLocusNames);
-        
+
         this.orfNames = Utils.unmodifierList(orfNames);
 
-        if(!hasGeneName() && !this.synonyms.isEmpty()){
+        if (!hasGeneName() && !this.synonyms.isEmpty()) {
             throw new IllegalArgumentException("There should be synonyms without gene name.");
         }
     }
@@ -70,48 +68,49 @@ public class GeneImpl implements Gene {
 
     @Override
     public String toString() {
-    	StringBuilder sb= new StringBuilder();
-    	boolean hasData = false;
-    	if(this.hasGeneName()) {
-    		sb.append(NAME)
-    		.append(this.geneName.getDisplayed(" "))
-    		.append(";");
-    		hasData = true;
-    	}
-    	if(!this.synonyms.isEmpty()) {
-    		if(hasData) {
-    			sb.append(" ");
-    		}
-    		sb.append(SYNONYMS)
-    		.append(
-    		synonyms.stream().map(val -> val.getDisplayed(" "))
-    		.collect(Collectors.joining(", ")))
-    		.append(";");
-    		hasData = true;
-    	}
-    	if(!this.orderedLocusNames.isEmpty()) {
-    		if(hasData) {
-    			sb.append(" ");
-    		}
-    		sb.append(ORDERED_LOCUS_NAMES)
-    		.append(
-    				orderedLocusNames.stream().map(val -> val.getDisplayed(" "))
-    		.collect(Collectors.joining(", ")))
-    		.append(";");
-    		hasData = true;
-    	}
-    	if(!this.orfNames.isEmpty()) {
-    		if(hasData) {
-    			sb.append(" ");
-    		}
-    		sb.append(ORF_NAMES)
-    		.append(
-    				orfNames.stream().map(val -> val.getDisplayed(" "))
-    		.collect(Collectors.joining(", ")))
-    		.append(";");
-    	}
-    	return sb.toString();
+        StringBuilder sb = new StringBuilder();
+        boolean hasData = false;
+        if (this.hasGeneName()) {
+            sb.append(NAME)
+                    .append(this.geneName.getDisplayed(" "))
+                    .append(";");
+            hasData = true;
+        }
+        if (!this.synonyms.isEmpty()) {
+            if (hasData) {
+                sb.append(" ");
+            }
+            sb.append(SYNONYMS)
+                    .append(
+                            synonyms.stream().map(val -> val.getDisplayed(" "))
+                                    .collect(Collectors.joining(", ")))
+                    .append(";");
+            hasData = true;
+        }
+        if (!this.orderedLocusNames.isEmpty()) {
+            if (hasData) {
+                sb.append(" ");
+            }
+            sb.append(ORDERED_LOCUS_NAMES)
+                    .append(
+                            orderedLocusNames.stream().map(val -> val.getDisplayed(" "))
+                                    .collect(Collectors.joining(", ")))
+                    .append(";");
+            hasData = true;
+        }
+        if (!this.orfNames.isEmpty()) {
+            if (hasData) {
+                sb.append(" ");
+            }
+            sb.append(ORF_NAMES)
+                    .append(
+                            orfNames.stream().map(val -> val.getDisplayed(" "))
+                                    .collect(Collectors.joining(", ")))
+                    .append(";");
+        }
+        return sb.toString();
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -154,37 +153,49 @@ public class GeneImpl implements Gene {
             return false;
         return true;
     }
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+
     public static class ORFNameImpl extends EvidencedValueImpl implements ORFName {
-    	@JsonCreator
-        public ORFNameImpl(@JsonProperty("value") String value, 
-    			@JsonProperty("evidences") List<Evidence> evidences) {
-            super(value, evidences);      
+
+        private ORFNameImpl() {
+            super(null, null);
+        }
+
+        public ORFNameImpl(String value, List<Evidence> evidences) {
+            super(value, evidences);
         }
     }
-    
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+
+
     public static class OrderedLocusNameImpl extends EvidencedValueImpl implements OrderedLocusName {
-    	@JsonCreator
-        public OrderedLocusNameImpl(@JsonProperty("value") String value, 
-    			@JsonProperty("evidences") List<Evidence> evidences) {
-            super(value, evidences);      
+
+        private OrderedLocusNameImpl() {
+            super(null, null);
+        }
+
+        public OrderedLocusNameImpl(String value, List<Evidence> evidences) {
+            super(value, evidences);
         }
     }
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+
     public static class GeneNameSynonymImpl extends EvidencedValueImpl implements GeneNameSynonym {
-    	@JsonCreator
-        public GeneNameSynonymImpl(@JsonProperty("value") String value, 
-    			@JsonProperty("evidences") List<Evidence> evidences) {
-            super(value, evidences);      
+
+        private GeneNameSynonymImpl() {
+            super(null, null);
+        }
+
+        public GeneNameSynonymImpl(String value, List<Evidence> evidences) {
+            super(value, evidences);
         }
     }
-    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+
     public static class GeneNameImpl extends EvidencedValueImpl implements GeneName {
-    	@JsonCreator
-        public GeneNameImpl(@JsonProperty("value") String value, 
-    			@JsonProperty("evidences") List<Evidence> evidences) {
-            super(value, evidences);      
+
+        private GeneNameImpl() {
+            super(null, null);
+        }
+
+        public GeneNameImpl(String value, List<Evidence> evidences) {
+            super(value, evidences);
         }
     }
 }

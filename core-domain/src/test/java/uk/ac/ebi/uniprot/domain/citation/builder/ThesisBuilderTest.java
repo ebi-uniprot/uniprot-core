@@ -1,20 +1,19 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
-public class ThesisBuilderTest  extends AbstractCitationBuilderTest{
+public class ThesisBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testBuildAll() {
         ThesisBuilder builder = ThesisBuilder.newInstance();
-        String institute ="Cambridge University";
-        String address ="Cambridge";
+        String institute = "Cambridge University";
+        String address = "Cambridge";
         builder.institute(institute);
         builder.address(address);
         this.builderCitationParamters(builder);
@@ -28,7 +27,7 @@ public class ThesisBuilderTest  extends AbstractCitationBuilderTest{
     @Test
     public void testInstitute() {
         ThesisBuilder builder = ThesisBuilder.newInstance();
-        String institute ="Cambridge University";
+        String institute = "Cambridge University";
         builder.institute(institute);
         Thesis citation = builder.build();
         assertEquals(CitationType.THESIS, citation.getCitationType());
@@ -39,7 +38,7 @@ public class ThesisBuilderTest  extends AbstractCitationBuilderTest{
     @Test
     public void testAddress() {
         ThesisBuilder builder = ThesisBuilder.newInstance();
-        String address ="Cambridge";
+        String address = "Cambridge";
         builder.address(address);
         Thesis citation = builder.build();
         assertEquals(CitationType.THESIS, citation.getCitationType());

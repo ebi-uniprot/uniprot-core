@@ -1,78 +1,79 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.As.PROPERTY;
-import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
-
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
 import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comments;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReferences;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
+
+import java.util.List;
 
 /**
- *
  * @author jieluo
  * @date 17 Jan 2017
  * @time 18:41:20
- *
  */
-@JsonTypeInfo(use = NAME, include = PROPERTY)
-@JsonSubTypes({
-		@JsonSubTypes.Type(value = uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl.class, name = "UniProtEntry") })
 public interface UniProtEntry {
-	UniProtEntryType getEntryType();
+    UniProtEntryType getEntryType();
 
-	UniProtAccession getPrimaryAccession();
+    UniProtAccession getPrimaryAccession();
 
-	List<UniProtAccession> getSecondaryAccessions();
+    List<UniProtAccession> getSecondaryAccessions();
 
-	UniProtId getUniProtId();
+    UniProtId getUniProtId();
 
-	EntryAudit getEntryAudit();
+    EntryAudit getEntryAudit();
 
-	UniProtTaxonId getTaxonId();
+    UniProtTaxonId getTaxonId();
 
-	OrganismName getOrganism();
+    OrganismName getOrganism();
 
-	List<Organism> getOrganismHosts();
+    List<Organism> getOrganismHosts();
 
-	List<OrganismName> getTaxonomyLineage();
+    List<OrganismName> getTaxonomyLineage();
 
-	ProteinExistence getProteinExistence();
+    ProteinExistence getProteinExistence();
 
-	ProteinDescription getProteinDescription();
+    ProteinDescription getProteinDescription();
 
-	List<Gene> getGenes();
+    List<Gene> getGenes();
 
-	Comments getComments();
+    List<Comment> getComments();
 
-	List<Feature> getFeatures();
+    <T extends Comment> List<T> getCommentByType(CommentType type);
 
-	List<Feature> getFeaturesByType(FeatureType type);
+    List<Feature> getFeatures();
 
-	List<Organelle> getOrganelles();
+    List<Feature> getFeaturesByType(FeatureType type);
 
-	List<Keyword> getKeywords();
+    List<Organelle> getOrganelles();
 
-	UniProtReferences getReferences();
+    List<Keyword> getKeywords();
 
-	UniProtDBCrossReferences getDatabaseCrossReferences();
+    List<UniProtReference> getReferences();
 
-	Sequence getSequence();
+    List<UniProtReference> getReferencesByType(CitationType type);
 
-	InternalSection getInternalSection();
+    List<UniProtDBCrossReference> getDatabaseCrossReferences();
 
-	Boolean isFragment();
+    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(UniProtXDbType type);
 
-	EntryInactiveReason getInactiveReason();
-	boolean isActive();
+    List<UniProtDBCrossReference> getDatabaseCrossReferencesByType(String dbName);
+
+    Sequence getSequence();
+
+    InternalSection getInternalSection();
+
+    Boolean isFragment();
+
+    EntryInactiveReason getInactiveReason();
+
+    boolean isActive();
 }

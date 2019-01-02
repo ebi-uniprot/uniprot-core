@@ -1,13 +1,12 @@
-package uk.ac.ebi.uniprot.domain.util.json;
-
-import java.io.IOException;
+package uk.ac.ebi.uniprot.json.parser.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
+import java.io.IOException;
 
 public class EvidenceSerializer extends StdSerializer<Evidence> {
 

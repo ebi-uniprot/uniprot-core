@@ -1,9 +1,6 @@
 package uk.ac.ebi.uniprot.parser.impl.entry;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
@@ -22,7 +19,10 @@ import uk.ac.ebi.uniprot.parser.impl.rp.RpLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.rt.RtLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.rx.RxLineConverter;
 
-public class ReferenceObjectConverter extends EvidenceCollector implements Converter<EntryObject.ReferenceObject, UniProtReference<Citation>> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ReferenceObjectConverter extends EvidenceCollector implements Converter<EntryObject.ReferenceObject, UniProtReference> {
 	private final  RaLineConverter raLineConverter = new RaLineConverter();
 	private final  RcLineConverter rcLineConverter = new RcLineConverter();
 	private final  RgLineConverter rgLineConverter = new RgLineConverter();
@@ -33,7 +33,7 @@ public class ReferenceObjectConverter extends EvidenceCollector implements Conve
 	private final  RxLineConverter rxLineConverter = new RxLineConverter();
 	
 	@Override
-	public UniProtReference<Citation> convert(ReferenceObject f) {
+	public UniProtReference convert(ReferenceObject f) {
 		AbstractCitationBuilder<Citation> builder = rlLineConverter.convert(f.rl);
 		if(f.ra !=null){
 			List<Author> authors =raLineConverter.convert(f.ra);
@@ -61,7 +61,7 @@ public class ReferenceObjectConverter extends EvidenceCollector implements Conve
 			
 			referenceComments =rcLineConverter.convert(f.rc);
 		}
-		UniProtReference<Citation> uniprotReference = UniProtReferenceFactory.INSTANCE.createUniProtReference(builder.build(),
+		UniProtReference uniprotReference = UniProtReferenceFactory.INSTANCE.createUniProtReference(builder.build(),
 				referencePositions, referenceComments, rnLineConverter.convert(f.rn));
 		
 		updateEvidences();
