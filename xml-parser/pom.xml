@@ -135,10 +135,8 @@
 										<extensionArg>-verbose</extensionArg>
 										<extensionArg>-Xequals</extensionArg>
 										<extensionArg>-XhashCode</extensionArg>
-										<!-- uniprot.episide file is used by AA to reuse jaxb classes in 
-											UniRule model -->
-										<extensionArg>-episode</extensionArg>
-										<extensionArg>${project.build.outputDirectory}/META-INF/uniprot.episode</extensionArg>
+<!-- 										<extensionArg>-episode</extensionArg> -->
+<!-- 										<extensionArg>${project.build.outputDirectory}/META-INF/uniprot.episode</extensionArg> -->
 									</extensionArgs>
 								</xsdOption>
 							
