@@ -14,10 +14,9 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.LocationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 
-public class SCCommentConverter implements Converter<CommentType, SequenceCautionComment> {
+public class SCCommentConverter implements CommentConverter< SequenceCautionComment> {
 
 	private final ObjectFactory xmlUniprotFactory;
 	private final SCConflictConverter conflictConverter;

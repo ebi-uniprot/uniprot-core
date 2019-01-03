@@ -9,9 +9,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilde
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 
-public class WRCommentConverter implements Converter<CommentType, WebResourceComment> {
+public class WRCommentConverter implements CommentConverter<WebResourceComment> {
 	private final ObjectFactory xmlUniprotFactory;
 
 	public WRCommentConverter() {

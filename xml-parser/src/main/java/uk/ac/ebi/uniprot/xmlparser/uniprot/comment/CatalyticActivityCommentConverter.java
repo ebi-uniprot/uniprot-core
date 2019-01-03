@@ -9,10 +9,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 
-public class CatalyticActivityCommentConverter implements Converter<CommentType, CatalyticActivityComment> {
+public class CatalyticActivityCommentConverter implements CommentConverter<CatalyticActivityComment> {
 	private final ObjectFactory xmlUniprotFactory;
 	private final CAReactionConverter reactionConverter;
 	private final CAPhysioReactionConverter physioReactionConverter;

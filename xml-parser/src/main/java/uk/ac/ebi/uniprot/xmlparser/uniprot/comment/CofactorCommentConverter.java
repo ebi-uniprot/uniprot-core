@@ -11,11 +11,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.MoleculeType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
 
-public class CofactorCommentConverter implements Converter<CommentType, CofactorComment> {
+public class CofactorCommentConverter implements CommentConverter< CofactorComment> {
 	private final ObjectFactory xmlUniprotFactory;
 	private final CofactorConverter cofactorConverter;
 	private final EvidencedValueConverter evValueConverter;

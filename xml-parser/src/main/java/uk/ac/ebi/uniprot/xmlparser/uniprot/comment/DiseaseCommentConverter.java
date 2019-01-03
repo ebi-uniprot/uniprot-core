@@ -12,11 +12,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
 
-public class DiseaseCommentConverter implements Converter<CommentType, DiseaseComment> {
+public class DiseaseCommentConverter implements CommentConverter< DiseaseComment> {
 	private final ObjectFactory xmlUniprotFactory;
 	private final DiseaseConverter diseaseConverter;
 	private final EvidencedValueConverter evValueConverter;

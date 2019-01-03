@@ -9,11 +9,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
 
-public class RnaEditingCommentConverter implements Converter<CommentType, RnaEditingComment> {
+public class RnaEditingCommentConverter implements CommentConverter<RnaEditingComment> {
 
 	private final ObjectFactory xmlUniprotFactory;
 	private final RnaEdPositionConverter positionConverter;

@@ -48,11 +48,11 @@ public class BPCPCommentBuilderTest {
     public void testSetKineticParameters() {
 
         List<MaximumVelocity> velocities = new ArrayList<>();
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(BPCPCommentBuilder
-                               .createMichaelisConstant(2.1f, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
+                               .createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
         List<EvidencedValue> texts = createEvidenceValues();
         Note note = CommentFactory.INSTANCE.createNote(texts);
         KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
@@ -77,11 +77,11 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testSetPHDependence() {
         List<MaximumVelocity> velocities = new ArrayList<>();
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(BPCPCommentBuilder
-                               .createMichaelisConstant(2.1f, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
+                               .createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
         List<EvidencedValue> texts = createEvidenceValues();
         Note note = CommentFactory.INSTANCE.createNote(texts);
         KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
@@ -107,11 +107,11 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testSetRedoxPotential() {
         List<MaximumVelocity> velocities = new ArrayList<>();
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(BPCPCommentBuilder
-                               .createMichaelisConstant(2.1f, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
+                               .createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
         List<EvidencedValue> texts = createEvidenceValues();
         Note note = CommentFactory.INSTANCE.createNote(texts);
         KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
@@ -138,11 +138,11 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testSetTemperatureDependence() {
         List<MaximumVelocity> velocities = new ArrayList<>();
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
+        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(BPCPCommentBuilder
-                               .createMichaelisConstant(2.1f, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
+                               .createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
         List<EvidencedValue> texts = createEvidenceValues();
         Note note = CommentFactory.INSTANCE.createNote(texts);
         KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);

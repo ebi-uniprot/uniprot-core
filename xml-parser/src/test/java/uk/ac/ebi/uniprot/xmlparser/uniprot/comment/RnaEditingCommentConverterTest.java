@@ -25,53 +25,52 @@ class RnaEditingCommentConverterTest {
 
 	@Test
 	void testPositionConverter() {
-		//Modified_positions=320 {ECO:0000269|PubMed:10574461, ECO:0000269|PubMed:11230166
+		// Modified_positions=320 {ECO:0000269|PubMed:10574461,
+		// ECO:0000269|PubMed:11230166
 		String pos = "320";
-		RnaEdPosition position =
-		RnaEditingCommentBuilder.createPosition(pos,
+		RnaEdPosition position = RnaEditingCommentBuilder.createPosition(pos,
 				Arrays.asList(UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:10574461"),
 						UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:11230166")));
 		RnaEdPositionConverter converter = new RnaEdPositionConverter(new EvidenceIndexMapper());
-		
+
 		LocationType xmlLocation = converter.toXml(position);
-		
-		 System.out.println(UniProtXmlTestHelper.toXmlString(xmlLocation, LocationType.class, "location"));
-		 RnaEdPosition converted = converter.fromXml(xmlLocation);
-		 assertEquals(position, converted);
+
+		System.out.println(UniProtXmlTestHelper.toXmlString(xmlLocation, LocationType.class, "location"));
+		RnaEdPosition converted = converter.fromXml(xmlLocation);
+		assertEquals(position, converted);
 	}
-	
+
 	@Test
 	void test() {
 		String pos = "320";
-		RnaEdPosition position =
-				RnaEditingCommentBuilder.createPosition(pos,
-						Arrays.asList(UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:10574461"),
-								UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:11230166"),
-								UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:15731336")));
+		RnaEdPosition position = RnaEditingCommentBuilder.createPosition(pos,
+				Arrays.asList(UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:10574461"),
+						UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:11230166"),
+						UniProtFactory.INSTANCE.createEvidence("ECO:0000269|PubMed:15731336")));
 		RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
 		builder.locations(Arrays.asList(position));
 		builder.note(createNote("Partially edited. Editing appears to be brain-specific",
-				Arrays.asList("ECO:0000269|PubMed:15731336")
-				));
+				Arrays.asList("ECO:0000269|PubMed:15731336")));
 		RnaEditingComment comment = builder.build();
 		RnaEditingCommentConverter converter = new RnaEditingCommentConverter(new EvidenceIndexMapper());
-		
-		CommentType xmlComment =converter.toXml(comment);
+
+		CommentType xmlComment = converter.toXml(comment);
 		System.out.println(UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
-		RnaEditingComment converted =converter.fromXml(xmlComment);
+		RnaEditingComment converted = converter.fromXml(xmlComment);
 		assertEquals(comment, converted);
 	}
+
 	private Note createNote(String val, List<String> evids) {
-        List<EvidencedValue> texts = new ArrayList<>();
-        texts.add(
-        UniProtFactory.INSTANCE.createEvidencedValue(val, createEvidence(evids)));
-        return CommentFactory.INSTANCE.createNote(texts);
-    }
-	 private List<Evidence> createEvidence(List<String> evids) {
-	        List<Evidence> evidences = new ArrayList<>();
-	        for (String ev : evids) {
-	            evidences.add( UniProtFactory.INSTANCE.createEvidence(ev));
-	        }
-	        return evidences;
-	    }
+		List<EvidencedValue> texts = new ArrayList<>();
+		texts.add(UniProtFactory.INSTANCE.createEvidencedValue(val, createEvidence(evids)));
+		return CommentFactory.INSTANCE.createNote(texts);
+	}
+
+	private List<Evidence> createEvidence(List<String> evids) {
+		List<Evidence> evidences = new ArrayList<>();
+		for (String ev : evids) {
+			evidences.add(UniProtFactory.INSTANCE.createEvidence(ev));
+		}
+		return evidences;
+	}
 }

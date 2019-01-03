@@ -12,10 +12,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 
-public class MSCommentConverter implements Converter<CommentType, MassSpectrometryComment> {
+public class MSCommentConverter implements CommentConverter< MassSpectrometryComment> {
 	private final ObjectFactory xmlUniprotFactory;
 	private final MSRangeConverter rangeConverter;
 	private final EvidenceIndexMapper evRefMapper;
