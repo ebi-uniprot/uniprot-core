@@ -29,7 +29,7 @@ public class CcLineMSCommentParserTest {
 		assertEquals("ECO:0000006|PubMed:16629414", obj.evidenceInfo.evidences.get(ms).get(0));
 	}
 	
-	private void verify(CcLineObject.MassSpectrometry ms, double mass, double mass_error, String method, int rangeSize, int start, int end) {
+	private void verify(CcLineObject.MassSpectrometry ms, float mass, float mass_error, String method, int rangeSize, int start, int end) {
 		assertEquals(mass, ms.mass, 0.000001f);
 		assertEquals(mass_error, ms.massError, 0.000001f);
 		assertEquals(method, ms.method);
@@ -71,7 +71,7 @@ public class CcLineMSCommentParserTest {
 		assertTrue(cc.object instanceof CcLineObject.MassSpectrometry);
 		CcLineObject.MassSpectrometry ms = (CcLineObject.MassSpectrometry) cc.object;
 
-		verify(ms,  514.2, 0, "Electrospray", 5, 51, 54);
+		verify(ms,  514.2f, 0, "Electrospray", 5, 51, 54);
 		assertEquals("The measured mass is that of RPGW-amide.", ms.note);
 		assertEquals(1, ms.sources.size());
 	
@@ -135,7 +135,7 @@ public class CcLineMSCommentParserTest {
 		CcLineObject.MassSpectrometry ms = (CcLineObject.MassSpectrometry) cc.object;
 
 
-		verify(ms,  1200.8, 2.0E-4, "MALDI", 1, 24, 33);
+		verify(ms,  1200.8f, 2.0E-4f, "MALDI", 1, 24, 33);
 	//	assertTrue(ms.ranges.get(0).end_unknown);
 	//	assertEquals("Variant 6.01", ms.note);
 		assertEquals(1, ms.sources.size());
@@ -158,7 +158,7 @@ public class CcLineMSCommentParserTest {
 		CcLineObject.MassSpectrometry ms = (CcLineObject.MassSpectrometry) cc.object;
 
 
-		verify(ms,  3979.9, 0, "Electrospray", 1, 51, 81);
+		verify(ms,  3979.9f, 0, "Electrospray", 1, 51, 81);
 	//	assertTrue(ms.ranges.get(0).end_unknown);
 	//	assertEquals("Variant 6.01", ms.note);
 		assertEquals(2, ms.sources.size());
@@ -184,7 +184,7 @@ public class CcLineMSCommentParserTest {
 		CcLineObject.MassSpectrometry ms = (CcLineObject.MassSpectrometry) cc.object;
 
 
-		verify(ms,  3979.9, 0, "Electrospray", 1, 51, 81);
+		verify(ms,  3979.9f, 0, "Electrospray", 1, 51, 81);
 	//	assertTrue(ms.ranges.get(0).end_unknown);
 	//	assertEquals("Variant 6.01", ms.note);
 		assertEquals(2, ms.sources.size());
