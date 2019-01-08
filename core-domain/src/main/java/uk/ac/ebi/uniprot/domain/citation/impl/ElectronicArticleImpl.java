@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 
 import java.util.Collections;
@@ -13,10 +14,12 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         super(CitationType.ELECTRONIC_ARTICLE, Collections.emptyList(), Collections.emptyList(), null, "", null);
     }
 
-    public ElectronicArticleImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+    public ElectronicArticleImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                                  String title, PublicationDate publicationDate, String journalName, Locator locator) {
         super(CitationType.ELECTRONIC_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.journal = new JournalImpl(journalName);
+        if(journalName != null) {
+            this.journal = new JournalImpl(journalName);
+        }
         this.locator = locator;
     }
 

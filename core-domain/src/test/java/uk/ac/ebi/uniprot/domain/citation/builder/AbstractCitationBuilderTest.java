@@ -2,14 +2,12 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class AbstractCitationBuilderTest {
 
@@ -27,12 +25,18 @@ public class AbstractCitationBuilderTest {
         TestHelper.verifyJson(pubDate);
     }
 
-
-    void builderCitationParamters(AbstractCitationBuilder<?> builder) {
+    void buildCitationParameters(AbstractCitationBuilder<?> builder) {
         String title = "Some title";
         builder.title(title).publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"))
-                .authoringGroups(Arrays.asList(new String[]{"T1", "T2"})).authors(Arrays.asList(new Author[]{
-                AbstractCitationBuilder.createAuthor("Tom"), AbstractCitationBuilder.createAuthor("John")}));
+                .authoringGroups(Arrays.asList("T1", "T2"))
+                .authors(Arrays.asList(
+                        AbstractCitationBuilder.createAuthor("Tom"),
+                        AbstractCitationBuilder.createAuthor("John")))
+                .citationXrefs(Arrays.asList(
+                        new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "somepID1"),
+                        new DBCrossReferenceImpl<>(CitationXrefType.AGRICOLA, "someID1"),
+                        new DBCrossReferenceImpl<>(CitationXrefType.DOI, "someDoiID2")
+                ));
     }
 
     void verifyCitation(Citation citation, CitationType citationType) {
@@ -45,5 +49,11 @@ public class AbstractCitationBuilderTest {
         assertEquals("T1", citation.getAuthoringGroup().get(0));
         assertEquals(citationType, citation.getCitationType());
 
+        assertTrue(citation.hasCitationXrefs());
+        assertNotNull(citation.getCitationXrefs());
+        assertEquals(3, citation.getCitationXrefs().size());
+        assertTrue(citation.getCitationXrefsByType(CitationXrefType.PUBMED).isPresent());
+        assertTrue(citation.getCitationXrefsByType(CitationXrefType.AGRICOLA).isPresent());
+        assertTrue(citation.getCitationXrefsByType(CitationXrefType.DOI).isPresent());
     }
 }

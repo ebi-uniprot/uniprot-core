@@ -1,0 +1,111 @@
+package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+/**
+ *
+ * @author lgonzales
+ */
+public class AlternativeProductsCommentTest {
+
+    @Test
+    public void testAlternativeProductsCommentSimple() {
+
+        AlternativeProductsComment comment = APCommentBuilder.newInstance().build();
+        ValidateJson.verifyJsonRoundTripParser(comment);
+
+        JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
+        assertNotNull(jsonNode.get("commentType"));
+        assertEquals("ALTERNATIVE PRODUCTS",jsonNode.get("commentType").asText());
+    }
+
+    @Test
+    public void testAlternativeProductsCommentComplete() {
+        AlternativeProductsComment comment = getAlternativeProductsComment();
+        ValidateJson.verifyJsonRoundTripParser(comment);
+        ValidateJson.verifyEmptyFields(comment);
+
+        JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
+        assertNotNull(jsonNode.get("commentType"));
+        assertEquals("ALTERNATIVE PRODUCTS",jsonNode.get("commentType").asText());
+
+        assertNotNull(jsonNode.get("events"));
+        assertEquals(1,jsonNode.get("events").size());
+        assertEquals("Alternative initiation",jsonNode.get("events").get(0).asText());
+
+        assertNotNull(jsonNode.get("isoforms"));
+        assertEquals(1,jsonNode.get("isoforms").size());
+        JsonNode isoforms = jsonNode.get("isoforms").get(0);
+
+        assertNotNull(isoforms.get("name"));
+        ValidateJson.validateValueEvidence(isoforms.get("name"),"name","ECO:0000255","PROSITE-ProRule","PRU10028");
+
+        assertNotNull(isoforms.get("synonyms"));
+        assertEquals(1,isoforms.get("synonyms").size());
+        ValidateJson.validateValueEvidence(isoforms.get("synonyms").get(0),"syn value","ECO:0000255","PROSITE-ProRule","PRU10028");
+
+        assertNotNull(isoforms.get("note"));
+        assertNotNull(isoforms.get("note").get("texts"));
+        assertEquals(1,isoforms.get("note").get("texts").size());
+        JsonNode noteIsoform = isoforms.get("note").get("texts").get(0);
+        ValidateJson.validateValueEvidence(noteIsoform,"value1","ECO:0000255","PROSITE-ProRule","PRU10028");
+
+        assertNotNull(isoforms.get("isoformIds"));
+        assertEquals(1,isoforms.get("isoformIds").size());
+        assertEquals("isoID1",isoforms.get("isoformIds").get(0).asText());
+
+        assertNotNull(isoforms.get("sequenceIds"));
+        assertEquals(1,isoforms.get("sequenceIds").size());
+        assertEquals("SequenceID",isoforms.get("sequenceIds").get(0).asText());
+
+        assertNotNull(isoforms.get("isoformSequenceStatus"));
+        assertEquals("described",isoforms.get("isoformSequenceStatus").asText());
+
+        assertNotNull(jsonNode.get("note"));
+        assertNotNull(jsonNode.get("note").get("texts"));
+        assertEquals(1,jsonNode.get("note").get("texts").size());
+        JsonNode note = jsonNode.get("note").get("texts").get(0);
+        ValidateJson.validateValueEvidence(note,"value1","ECO:0000255","PROSITE-ProRule","PRU10028");
+
+    }
+
+    public static AlternativeProductsComment getAlternativeProductsComment() {
+        List<Evidence> evidences = Collections.singletonList(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        List<IsoformName> isoformSynonyms = Collections.singletonList(APCommentBuilder.createIsoformName("syn value", evidences));
+        List<EvidencedValue> evidencedValues = Collections.singletonList(UniProtFactory.INSTANCE.createEvidencedValue("value1", evidences));
+        Note note = CommentFactory.INSTANCE.createNote(evidencedValues);
+        List<IsoformId> isoformIds = Collections.singletonList(APCommentBuilder.createIsoformId("isoID1"));
+        IsoformName name = APCommentBuilder.createIsoformName("name", evidences);
+        APCommentBuilder.APIsoformBuilder isoformBuilder = APCommentBuilder.APIsoformBuilder.newInstance();
+        APIsoform apIsoform = isoformBuilder.isoformName(name)
+                .isoformSynonyms(isoformSynonyms)
+                .isoformIds(isoformIds)
+                .isoformSequenceStatus(IsoformSequenceStatus.DESCRIBED)
+                .note(note)
+                .sequenceIds(Collections.singletonList("SequenceID"))
+                .build();
+
+        List<APEventType> events = Collections.singletonList(APEventType.ALTERNATIVE_INITIATION);
+        List<APIsoform> isoforms = Collections.singletonList(apIsoform);
+
+
+        return APCommentBuilder.newInstance()
+                .events(events)
+                .isoforms(isoforms)
+                .note(note)
+                .build();
+    }
+}

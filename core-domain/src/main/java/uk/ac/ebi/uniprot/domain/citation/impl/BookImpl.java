@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
@@ -28,11 +29,11 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         this.address = "";
     }
 
-    public BookImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+    public BookImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                     String title, PublicationDate publicationDate, String bookName, List<Author> editors,
                     String firstPage, String lastPage, String volume, String publisher, String address) {
         super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.bookName = bookName;
+        this.bookName = Utils.resetNull(bookName);
         this.editors = Utils.unmodifierList(editors);
 
         this.firstPage = Utils.resetNull(firstPage);

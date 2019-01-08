@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
@@ -17,7 +18,7 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         this.address = "";
     }
 
-    public ThesisImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+    public ThesisImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                       String title, PublicationDate publicationDate, String institute, String address) {
         super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
         this.institute = Utils.resetNull(institute);

@@ -14,7 +14,7 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
         PatentBuilder builder = PatentBuilder.newInstance();
         String pnumber = "Some Number";
         builder.patentNumber(pnumber);
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         Patent citation = builder.build();
         assertEquals(CitationType.PATENT, citation.getCitationType());
         assertEquals(pnumber, citation.getPatentNumber());

@@ -4,7 +4,6 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
@@ -310,7 +309,7 @@ public class RLineBuildTest {
 				+ "RL   research, abstract#501708527, Madison (1998).";
 
 		BookBuilder bkBuilder = BookBuilder.newInstance();
-		List<String> authors = Arrays.asList(new String[] { "Arctander P.", "Fjeldsaa J." });
+		List<String> authors = Arrays.asList("Arctander P.", "Fjeldsaa J.");
 
 		List<String> editors = Arrays.asList(new String[] {});
 		String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
@@ -343,7 +342,7 @@ public class RLineBuildTest {
 
 		ThesisBuilder thBuilder = ThesisBuilder.newInstance();
 
-		List<String> authors = Arrays.asList(new String[] { "Arctander P.", "Fjeldsaa J." });
+		List<String> authors = Arrays.asList("Arctander P.", "Fjeldsaa J.");
 
 		String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
 		thBuilder.authors(buildAuthors(authors));
@@ -373,7 +372,7 @@ public class RLineBuildTest {
 
 		PatentBuilder paBuilder = PatentBuilder.newInstance();
 
-		List<String> authors = Arrays.asList(new String[] { "Arctander P.", "Fjeldsaa J." });
+		List<String> authors = Arrays.asList("Arctander P.", "Fjeldsaa J.");
 		paBuilder.authors(buildAuthors(authors));
 		String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
 		paBuilder.patentNumber("WO0149833");
@@ -457,7 +456,7 @@ public class RLineBuildTest {
 		return sss;
 	}
 
-	private CitationXrefs buildCitationXref(String pubmed, String doi, String agricolaId) {
+	private List<DBCrossReference<CitationXrefType>> buildCitationXref(String pubmed, String doi, String agricolaId) {
 		List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
 		if (pubmed != null)
 			xrefs.add(UniProtFactory.INSTANCE.createDBCrossReference(CitationXrefType.PUBMED, pubmed));
@@ -465,7 +464,7 @@ public class RLineBuildTest {
 			xrefs.add(UniProtFactory.INSTANCE.createDBCrossReference(CitationXrefType.DOI, doi));
 		if (agricolaId != null)
 			xrefs.add(UniProtFactory.INSTANCE.createDBCrossReference(CitationXrefType.AGRICOLA, agricolaId));
-		return AbstractCitationBuilder.createCitationXrefs(xrefs);
+		return xrefs;
 
 	}
 

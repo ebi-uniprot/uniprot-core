@@ -64,7 +64,7 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
 		// RC Line rLine.append(RCLineNew.exportWithEvidenceTag(citation));
 		lines.addAll(rcLineBuilder.buildLine(f.getReferenceComments(), includeFFMarkup, showEvidence));
 		// RX line rLine.append(RXLineNew.export(citation));
-		lines.addAll(rxLineBuilder.buildLine(f.getCitation().getCitationXrefs(), includeFFMarkup, showEvidence));
+		lines.addAll(rxLineBuilder.buildLine(f.getCitation(), includeFFMarkup, showEvidence));
 		// RG line rLine.append(RGLineNew.export(citation));
 		lines.addAll(rgLineBuilder.buildLine(f.getCitation().getAuthoringGroup(), includeFFMarkup, showEvidence));
 		// RA line rLine.append(RALineNew.export(citation));

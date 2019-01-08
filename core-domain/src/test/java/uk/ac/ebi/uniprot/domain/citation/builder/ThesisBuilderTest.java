@@ -16,7 +16,7 @@ public class ThesisBuilderTest extends AbstractCitationBuilderTest {
         String address = "Cambridge";
         builder.institute(institute);
         builder.address(address);
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         Thesis citation = builder.build();
         assertEquals(institute, citation.getInstitute());
         assertEquals(address, citation.getAddress());

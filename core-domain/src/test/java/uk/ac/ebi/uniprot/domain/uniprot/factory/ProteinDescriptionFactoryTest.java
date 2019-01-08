@@ -120,6 +120,7 @@ public class ProteinDescriptionFactoryTest {
         ProteinDescription description =
                 builder.recommendedName(recommendedName)
                         .submissionNames(subNames)
+                        .cdAntigenNames(antigenNames)
                         .alternativeNames(proteinAltNames)
                         .flag(new FlagImpl(FlagType.PRECURSOR))
                         .build();
@@ -127,6 +128,7 @@ public class ProteinDescriptionFactoryTest {
         assertEquals(recommendedName, description.getRecommendedName());
         assertEquals(subNames, description.getSubmissionNames());
         assertEquals(proteinAltNames, description.getAlternativeNames());
+        assertEquals(antigenNames, description.getCdAntigenNames());
 
         assertEquals(FlagType.PRECURSOR, description.getFlag().getType());
 

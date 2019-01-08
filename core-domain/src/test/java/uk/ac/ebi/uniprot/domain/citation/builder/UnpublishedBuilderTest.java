@@ -29,7 +29,7 @@ public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testBuildAll() {
         UnpublishedBuilder builder = UnpublishedBuilder.newInstance();
-        builderCitationParamters(builder);
+        buildCitationParameters(builder);
         Unpublished citation = builder.build();
         verifyCitation(citation, CitationType.UNPUBLISHED);
         TestHelper.verifyJson(citation);

@@ -21,7 +21,7 @@ public class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testBuildCitation() {
         ElectronicArticleBuilder builder = ElectronicArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
         TestHelper.verifyJson(citation);
@@ -30,7 +30,7 @@ public class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testAddJournalName() {
         ElectronicArticleBuilder builder = ElectronicArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName);
         ElectronicArticle citation = builder.build();
@@ -42,7 +42,7 @@ public class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testAddLocator() {
         ElectronicArticleBuilder builder = ElectronicArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName)
                 .locator("Some locator");

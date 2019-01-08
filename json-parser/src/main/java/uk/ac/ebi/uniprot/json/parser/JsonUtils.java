@@ -5,8 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kjetland.jackson.jsonSchema.JsonSchemaGenerator;
 
 import java.io.IOException;
-
+/**
+ *
+ * @author lgonzales
+ */
 public class JsonUtils {
+
 	public static String getJsonString(Object obj, boolean isPretty) {
 		final ObjectMapper objectMapper = JsonParserConfig.getJsonObjectMapper();
     	try {
@@ -27,6 +31,7 @@ public class JsonUtils {
     		throw new RuntimeException(e);
     	}
 	}
+
 	public static <T> String getJsonSchema(Class<T> clazz) {
 	    ObjectMapper mapper = JsonParserConfig.getJsonObjectMapper();
 	    JsonSchemaGenerator jsonSchemaGenerator = new JsonSchemaGenerator(mapper);

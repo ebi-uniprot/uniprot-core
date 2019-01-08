@@ -39,11 +39,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.json.parser.deserializer.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.json.parser.serializer.LocalDateSerializer;
+import uk.ac.ebi.uniprot.json.parser.serializer.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-
+/**
+ *
+ * @author lgonzales
+ */
 public class JsonParserConfig {
 
     private static final ObjectMapper objectMapper;
@@ -61,8 +64,22 @@ public class JsonParserConfig {
         simpleObjMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         simpleObjMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
         simpleObjMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        simpleObjMapper.setAnnotationIntrospector(new SimpleAnnotationIntrospector());
+
         SimpleModule simpleMod = new SimpleModule();
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
+        simpleMod.addSerializer(UniProtAccessionImpl.class, new UniProtAccessionSerializer());
+        simpleMod.addSerializer(UniProtIdImpl.class, new UniProtIdSerializer());
+        simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
+        simpleMod.addSerializer(InteractionImpl.InteractorImpl.class, new InteractorSerializer());
+        simpleMod.addSerializer(APIsoformImpl.IsoformIdImpl.class,new IsoformIdImplSerializer());
+        simpleMod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
+        simpleMod.addSerializer(ECNumberImpl.class,new ECNumberSerializer());
+        simpleMod.addSerializer(FlagImpl.class, new FlagSerializer());
+        simpleMod.addSerializer(PublicationDateImpl.class,new PublicationDateSerializer());
+        simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class,new LocatorSerializer());
+        simpleMod.addSerializer(JournalImpl.class,new JournalSerializer());
+
         simpleObjMapper.registerModule(simpleMod);
         simpleMapper = simpleObjMapper;
         /**
@@ -82,8 +99,8 @@ public class JsonParserConfig {
         mod.addSerializer(LocalDate.class, new LocalDateSerializer());
         mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
 
-        //mod.addSerializer(Evidence.class, new EvidenceSerializer());
-        //mod.addDeserializer(Evidence.class, new EvidenceDeserializer());
+        //mod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
+        //mod.addDeserializer(EvidenceImpl.class, new EvidenceDeserializer());
 
         mod.addAbstractTypeMapping(UniProtEntry.class, UniProtEntryImpl.class);
 
@@ -157,7 +174,6 @@ public class JsonParserConfig {
         mod.addAbstractTypeMapping(Locator.class, ElectronicArticleImpl.LocatorImpl.class);
         mod.addAbstractTypeMapping(ElectronicArticle.class,ElectronicArticleImpl.class);
 
-        mod.addAbstractTypeMapping(CitationXrefs.class, CitationXrefsImpl.class);
         mod.addAbstractTypeMapping(Submission.class, SubmissionImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);
         mod.addAbstractTypeMapping(Patent.class, PatentImpl.class);
@@ -224,12 +240,7 @@ public class JsonParserConfig {
         return simpleMapper;
     }
 
-    private static class CustomAnnotationIntrospector extends AnnotationIntrospector {
-
-        @Override
-        public Version version() {
-            return PackageVersion.VERSION;
-        }
+    private static class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
 
         @Override
         public TypeResolverBuilder<?> findTypeResolver(MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
@@ -245,16 +256,26 @@ public class JsonParserConfig {
             return super.findTypeResolver(config, ac, baseType);
         }
 
-		public String[] findEnumValues(Class<?> enumType, Enum<?>[] enumValues, String[] names) {
-			return Arrays.stream(enumValues).map(en -> {
-				EnumDisplay<?> jsonEnum = (EnumDisplay<?>) en;
-				return jsonEnum.toDisplayName();
-			}).toArray(String[]::new);
-		}
+    }
 
-		public Enum<?> findDefaultEnumValue(Class<Enum<?>> enumCls) {
-			return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
-		}
+
+    private static class SimpleAnnotationIntrospector extends AnnotationIntrospector {
+
+        @Override
+        public Version version() {
+            return PackageVersion.VERSION;
+        }
+
+        public String[] findEnumValues(Class<?> enumType, Enum<?>[] enumValues, String[] names) {
+            return Arrays.stream(enumValues).map(en -> {
+                EnumDisplay<?> jsonEnum = (EnumDisplay<?>) en;
+                return jsonEnum.toDisplayName();
+            }).toArray(String[]::new);
+        }
+
+        public Enum<?> findDefaultEnumValue(Class<Enum<?>> enumCls) {
+            return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
+        }
 
     }
 }

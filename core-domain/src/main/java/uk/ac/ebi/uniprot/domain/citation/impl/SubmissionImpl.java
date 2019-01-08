@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 
 import java.util.Collections;
@@ -14,7 +15,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
               null, null, null);
     }
 
-    public SubmissionImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+    public SubmissionImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                           String title, PublicationDate publicationDate, SubmissionDatabase submissionDatabase) {
         super(CitationType.SUBMISSION, authoringGroup, authors, citationXrefs, title, publicationDate);
         this.submissionDatabase = submissionDatabase;

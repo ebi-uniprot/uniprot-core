@@ -13,7 +13,7 @@ public class SubmissionBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testBuildAll() {
         SubmissionBuilder builder = SubmissionBuilder.newInstance();
-        builderCitationParamters(builder);
+        buildCitationParameters(builder);
 
         builder.submittedToDatabase(SubmissionDatabase.PDB);
         Submission citation = builder.build();

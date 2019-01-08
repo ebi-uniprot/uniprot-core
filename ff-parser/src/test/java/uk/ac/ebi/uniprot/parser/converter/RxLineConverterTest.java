@@ -1,13 +1,15 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
 import junit.framework.TestCase;
-
 import org.junit.Test;
-
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
+import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
 import uk.ac.ebi.uniprot.parser.impl.rx.RxLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.rx.RxLineObject;
+
+import java.util.List;
 
 public class RxLineConverterTest {
 	@Test
@@ -23,12 +25,14 @@ public class RxLineConverterTest {
 		rx2.value ="10.1016/j.toxicon.2004.10.011";
 		rxLine.rxs.add(rx2);
 		RxLineConverter converter = new RxLineConverter();
-		CitationXrefs cxrefs = converter.convert(rxLine);
-		TestCase.assertTrue(cxrefs.getTyped(CitationXrefType.PUBMED).isPresent());
-		TestCase.assertTrue(cxrefs.getTyped(CitationXrefType.DOI).isPresent());
-		TestCase.assertFalse(cxrefs.getTyped(CitationXrefType.AGRICOLA).isPresent());
-		TestCase.assertEquals("15626370",cxrefs.getTyped(CitationXrefType.PUBMED).get().getId());
-		TestCase.assertEquals("10.1016/j.toxicon.2004.10.011", cxrefs.getTyped(CitationXrefType.DOI).get().getId());
+		List<DBCrossReference<CitationXrefType>> cxrefs = converter.convert(rxLine);
+		Citation citation = BookBuilder.newInstance().citationXrefs(cxrefs).build();
+
+		TestCase.assertTrue(citation.getCitationXrefsByType(CitationXrefType.PUBMED).isPresent());
+		TestCase.assertTrue(citation.getCitationXrefsByType(CitationXrefType.DOI).isPresent());
+		TestCase.assertFalse(citation.getCitationXrefsByType(CitationXrefType.AGRICOLA).isPresent());
+		TestCase.assertEquals("15626370",citation.getCitationXrefsByType(CitationXrefType.PUBMED).get().getId());
+		TestCase.assertEquals("10.1016/j.toxicon.2004.10.011", citation.getCitationXrefsByType(CitationXrefType.DOI).get().getId());
 		
 	}
 }

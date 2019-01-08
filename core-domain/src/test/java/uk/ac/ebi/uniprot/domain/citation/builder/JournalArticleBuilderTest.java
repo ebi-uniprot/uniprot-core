@@ -12,7 +12,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testBuildCitation() {
         JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         JournalArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
         TestHelper.verifyJson(citation);
@@ -21,7 +21,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testAddJournalName() {
         JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName);
         JournalArticle citation = builder.build();
@@ -34,7 +34,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testAddFirstPage() {
         JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName)
                 .firstPage("213");
@@ -48,7 +48,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testAddLastPage() {
         JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName)
                 .firstPage("213")
@@ -64,7 +64,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
     public void testAddVolume() {
         JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
-        this.builderCitationParamters(builder);
+        this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName)
                 .firstPage("213")

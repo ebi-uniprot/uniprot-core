@@ -1,0 +1,81 @@
+package uk.ac.ebi.uniprot.json.parser.uniprot;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtEntryBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.json.parser.JsonParserConfig;
+import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+import uk.ac.ebi.uniprot.json.parser.uniprot.comment.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.Assert.fail;
+/**
+ *
+ * @author lgonzales
+ */
+public class UniProtEntryIT {
+
+    private static Logger logger = LoggerFactory.getLogger(UniProtEntryIT.class);
+
+    @Test
+    public void testUniProtEntryComplete() {
+        List<Comment> comments = new ArrayList<>();
+        comments.add(AlternativeProductsCommentTest.getAlternativeProductsComment());
+        comments.add(BPCPCommentTest.getBpcpComment());
+        comments.add(CatalyticActivityCommentTest.getCatalyticActivityComment());
+        comments.add(CofactorCommentTest.getCofactorComment());
+        comments.add(DiseaseCommentTest.getDiseaseComment());
+        comments.add(FreeTextCommentTest.getFreeTextComment());
+        comments.add(InteractionCommentTest.getInteractionComment());
+        comments.add(MassSpectrometryCommentTest.getMassSpectrometryComment());
+        comments.add(RnaEditingCommentTest.getRnaEditingComment());
+        comments.add(SequenceCautionCommentTest.getSequenceCautionComment());
+        comments.add(SubcellularLocationCommentTest.getSubcellularLocationComment());
+        comments.add(WebResourceCommentTest.getWebResourceComment());
+
+        UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
+        UniProtEntry entry = builder.primaryAccession(UniProtAccessionTest.getUniProtAccession())
+                .secondaryAccessions(Collections.singletonList(UniProtFactory.INSTANCE.createUniProtAccession("P12345")))
+                .entryAudit(EntryAuditTest.getEntryAudit())
+                .uniProtId("UniProt ID")
+                .entryType(UniProtEntryType.SWISSPROT)
+                .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                .proteinDescription(ProteinDescriptionTest.getProteinDescription())
+                .genes(Collections.singletonList(GeneTest.createCompleteGene()))
+                .uniProtTaxonId(TaxonomyTest.getUniProtTaxonId())
+                .organism(TaxonomyTest.getOrganismName())
+                .organismHosts(Collections.singletonList(TaxonomyTest.getOrganism()))
+                .taxonomyLineage(Collections.singletonList(TaxonomyTest.getOrganismName()))
+                .comments(comments)
+                .features(null)
+                .internalSection(InternalSectionTest.getInternalSection())
+                .keywords(Collections.singletonList(KeywordTest.getKeyword()))
+                .organelles(Collections.singletonList(OrganelleTest.getOrganelle()))
+                .references(null)
+                .uniProtDBCrossReferences(null)
+                .sequence("")
+                .build();
+
+        ValidateJson.verifyJsonRoundTripParser(entry);
+        //ValidateJson.verifyEmptyFields(entry); TODO: uncomment it
+
+        try {
+            ObjectMapper mapper = JsonParserConfig.getJsonSimpleObjectMapper();
+            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+            System.out.println(json);
+        }catch(Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+}

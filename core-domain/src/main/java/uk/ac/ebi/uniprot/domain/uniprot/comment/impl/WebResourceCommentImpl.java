@@ -10,10 +10,7 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
     private String note;
 
     private WebResourceCommentImpl() {
-        super(CommentType.WEBRESOURCE);
-        this.note = "";
-        this.resourceName = "";
-        this.resourceUrl = "";
+        this(null,null,false,null);
     }
 
     public WebResourceCommentImpl(

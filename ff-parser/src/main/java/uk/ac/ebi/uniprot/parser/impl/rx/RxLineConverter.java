@@ -1,23 +1,21 @@
 package uk.ac.ebi.uniprot.parser.impl.rx;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.parser.Converter;
 
-public class RxLineConverter implements Converter<RxLineObject, CitationXrefs> {
+import java.util.ArrayList;
+import java.util.List;
+
+public class RxLineConverter implements Converter<RxLineObject, List<DBCrossReference<CitationXrefType>>> {
 	@Override
-	public CitationXrefs convert(RxLineObject f) {
+	public List<DBCrossReference<CitationXrefType>> convert(RxLineObject f) {
 		List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
 		
 		if((f==null)||(f.rxs ==null) ||(f.rxs.isEmpty()))
-			return new CitationXrefsImpl(xrefs);
+			return xrefs;
 		for (RxLineObject.RX rx: f.rxs){
 			
 			if(rx.type == RxLineObject.DB.PubMed){
@@ -29,7 +27,7 @@ public class RxLineConverter implements Converter<RxLineObject, CitationXrefs> {
 				xrefs.add(new DBCrossReferenceImpl<>(CitationXrefType.AGRICOLA, rx.value));
 			}
 		}
-	 	return new CitationXrefsImpl(xrefs);
+	 	return xrefs;
 	}
 	
 

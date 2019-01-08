@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 
 import java.util.Collections;
@@ -12,7 +13,7 @@ public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished
               null, null, null);
     }
 
-    public UnpublishedImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+    public UnpublishedImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                            String title, PublicationDate publicationDate) {
         super(CitationType.UNPUBLISHED, authoringGroup, authors, citationXrefs, title, publicationDate);
     }

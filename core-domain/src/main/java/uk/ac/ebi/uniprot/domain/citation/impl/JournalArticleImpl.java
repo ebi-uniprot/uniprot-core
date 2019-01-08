@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
@@ -21,11 +22,13 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         this.volume = "";
     }
 
-    public JournalArticleImpl(List<String> authoringGroup, List<Author> authors, CitationXrefs citationXrefs,
+    public JournalArticleImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                               String title, PublicationDate publicationDate, String journalName,
                               String firstPage, String lastPage, String volume) {
         super(CitationType.JOURNAL_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.journal = new JournalImpl(journalName);
+        if(journalName != null) {
+            this.journal = new JournalImpl(journalName);
+        }
         this.firstPage = Utils.resetNull(firstPage);
         this.lastPage = Utils.resetNull(lastPage);
         this.volume = Utils.resetNull(volume);
