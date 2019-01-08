@@ -30,7 +30,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
@@ -139,7 +142,6 @@ public class JsonParserConfig {
         mod.addAbstractTypeMapping(IsoformId.class, APIsoformImpl.IsoformIdImpl.class);
         mod.addAbstractTypeMapping(FreeText.class,FreeTextImpl.class);
         mod.addAbstractTypeMapping(PhysiologicalReaction.class, PhysiologicalReactionImpl.class);
-        mod.addAbstractTypeMapping(DiseaseDescription.class, DiseaseImpl.DiseaseDescriptionImpl.class);
         mod.addAbstractTypeMapping(Absorption.class, AbsorptionImpl.class);
         mod.addAbstractTypeMapping(SequenceCautionComment.class, SequenceCautionCommentImpl.class);
         mod.addAbstractTypeMapping(MassSpectrometryComment.class, MassSpectrometryCommentImpl.class);
@@ -197,7 +199,6 @@ public class JsonParserConfig {
         mod.addAbstractTypeMapping(UniProtDBCrossReference.class, UniProtDBCrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(AlternativeSequence.class, AlternativeSequenceImpl.class);
-        mod.addAbstractTypeMapping(SequenceReport.class, AlternativeSequenceImpl.SequenceReportImpl.class);
 
         mod.addAbstractTypeMapping(FeatureId.class, FeatureIdImpl.class);
         mod.addAbstractTypeMapping(FeatureDescription.class, FeatureDescriptionImpl.class);

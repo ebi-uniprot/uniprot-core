@@ -50,9 +50,9 @@ public class MassSpectrometryCommentTest {
         assertNotNull(jsonNode.get("method"));
         assertEquals("LSI",jsonNode.get("method").asText());
         assertNotNull(jsonNode.get("molWeight"));
-        assertEquals(2.1d,jsonNode.get("molWeight").asDouble(),0d);
+        assertEquals(2.1f,jsonNode.get("molWeight").asDouble(),0.1d);
         assertNotNull(jsonNode.get("molWeightError"));
-        assertEquals(1.2d,jsonNode.get("molWeightError").asDouble(),0d);
+        assertEquals(1.2f,jsonNode.get("molWeightError").asDouble(),0.1d);
         assertNotNull(jsonNode.get("note"));
         assertEquals("note value",jsonNode.get("note").asText());
 
@@ -89,8 +89,8 @@ public class MassSpectrometryCommentTest {
 
         return MassSpectrometryCommentBuilder.newInstance()
                 .massSpectrometryMethod(MassSpectrometryMethod.LSI)
-                .molWeight(2.1d)
-                .molWeightError(1.2d)
+                .molWeight(2.1f)
+                .molWeightError(1.2f)
                 .note("note value")
                 .massSpectrometryRanges(range)
                 .evidences(createEvidences())

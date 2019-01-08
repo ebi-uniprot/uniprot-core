@@ -5,7 +5,10 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -57,7 +60,11 @@ public class DiseaseCommentTest {
         assertNotNull(disease.get("acronym"));
         assertEquals("someAcron",disease.get("acronym").asText());
         assertNotNull(disease.get("description"));
-        ValidateJson.validateValueEvidence(disease.get("description"),"some description","ECO:0000256","PIRNR","PIRNR001362");
+        assertEquals("some description",disease.get("description").asText());
+
+        assertNotNull(disease.get("evidences"));
+        assertEquals(1,disease.get("evidences").size());
+        ValidateJson.validateEvidence(disease.get("evidences").get(0),"ECO:0000256","PIRNR","PIRNR001362");
 
         assertNotNull(jsonNode.get("note"));
         assertNotNull(jsonNode.get("note").get("texts"));
@@ -68,14 +75,14 @@ public class DiseaseCommentTest {
 
     public static DiseaseComment getDiseaseComment() {
         DiseaseBuilder builder = DiseaseCommentBuilder.newDiseaseBuilder();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription("some description", createEvidences());
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, "3124");
 
         Disease disease = builder.diseaseId("Disease Id")
                 .acronym("someAcron")
-                .description(description)
+                .description("some description")
                 .reference(reference)
                 .diseaseAc("Disease AC")
+                .evidences(createEvidences())
                 .build();
 
         Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());

@@ -5,20 +5,23 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.util.Utils;
+
 import java.util.List;
 
 public class DiseaseImpl implements Disease {
 
-
-	private final String diseaseId;
-	private final String diseaseAccession;
-	private final String acronym;
-	private final String description;
-	private final DBCrossReference<DiseaseReferenceType> reference;
-	private final List<Evidence> evidences;
+	private String diseaseId;
+	private String diseaseAccession;
+	private String acronym;
+	private String description;
+	private DBCrossReference<DiseaseReferenceType> reference;
+	private List<Evidence> evidences;
 	
 	public static final String DEFAULT_ACCESSION ="DI-00000";
-	
+
+	private DiseaseImpl(){
+		this(null,null,null,null,null,null);
+	}
     public DiseaseImpl(String diseaseId, String diseaseAccession, String acronym, String description,
                        DBCrossReference<DiseaseReferenceType> reference, List<Evidence> evidences) {
         this.diseaseId = diseaseId;
