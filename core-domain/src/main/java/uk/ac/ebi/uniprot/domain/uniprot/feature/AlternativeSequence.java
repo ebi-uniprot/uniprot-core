@@ -33,9 +33,9 @@ import java.util.List;
  * </font></pre>
  */
 public interface AlternativeSequence {
-    public String getOriginalSequence();
 
-    public List<String> getAlternativeSequences();
+	public String getOriginalSequence();
+	public List<String> getAlternativeSequences();
+	//public SequenceReport getReport();
 
-    public SequenceReport getReport();
 }

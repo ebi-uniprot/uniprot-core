@@ -60,12 +60,12 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                     if (token.startsWith("Mass_error")) {
                         String mWERR = token.substring(indexEq + 1, token.length());
                         if (mWERR.length() > 0)
-                        	builder.molWeightError(Double.parseDouble(mWERR));
+                        	builder.molWeightError(Float.parseFloat(mWERR));
                         continue;
                     }
                     if (token.startsWith("Mass")) {
                         String mw = token.substring(indexEq + 1, token.length());
-                        builder.molWeight(Double.parseDouble(mw));
+                        builder.molWeight(Float.parseFloat(mw));
                         continue;
                     }
                     if (token.startsWith("Note")) {

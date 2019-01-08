@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
@@ -9,15 +10,17 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryComment> {
-    private MassSpectrometryMethod method;
-    private Double molWeight;
-    private Double molWeightError;
-    private String note;
-    private List<MassSpectrometryRange> ranges;
-    private List<Evidence> evidences;
 
-    public static MassSpectrometryCommentBuilder newInstance() {
+public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryComment>{
+    private  MassSpectrometryMethod method;
+    private  Float molWeight;
+    private  Float molWeightError;
+    private  String note;
+    private  List<MassSpectrometryRange> ranges;
+    private  List<Evidence> evidences;
+ 
+    public static MassSpectrometryCommentBuilder newInstance(){
+
         return new MassSpectrometryCommentBuilder();
     }
 
@@ -36,15 +39,16 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
         return this;
     }
 
-    public MassSpectrometryCommentBuilder molWeight(Double molWeight) {
+    public MassSpectrometryCommentBuilder molWeight(Float molWeight){
+
         this.molWeight = molWeight;
         return this;
     }
 
-    public MassSpectrometryCommentBuilder molWeightError(Double molWeightError) {
-        if ((molWeightError != null) && (Math.abs(molWeightError - 0.0) <= Double.MIN_VALUE)) {
-            this.molWeightError = null;
-        }
+    public MassSpectrometryCommentBuilder molWeightError(Float molWeightError){
+    		if((molWeightError !=null) &&(Math.abs(molWeightError-0.0)<= Float.MIN_VALUE)){
+    			this.molWeightError =null;
+    		}
         this.molWeightError = molWeightError;
         return this;
     }
@@ -62,5 +66,8 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     public MassSpectrometryCommentBuilder evidences(List<Evidence> evidences) {
         this.evidences = evidences;
         return this;
+    }
+    public static MassSpectrometryRange createMassSpectrometryRange(Range range, String isoformId){
+        return new MassSpectrometryRangeImpl( range,  isoformId);
     }
 }

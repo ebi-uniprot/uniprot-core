@@ -66,6 +66,8 @@ public final class Position implements Comparable<Position> {
         Position other = (Position) obj;
         if (modifier != other.modifier)
             return false;
+        if(modifier ==PositionModifier.UNKOWN )
+        	return true;
         if (value == null) {
             if (other.value != null)
                 return false;
@@ -83,6 +85,7 @@ public final class Position implements Comparable<Position> {
         }
         return modifier;
     }
+
 
 
 }

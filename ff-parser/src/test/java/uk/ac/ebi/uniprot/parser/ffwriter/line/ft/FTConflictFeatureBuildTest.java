@@ -24,9 +24,10 @@ public class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> report = new ArrayList<>();
 		report.add("1; BAA37160/BAA37165");
 		report.add("2");
+		String description = "in Ref. 1; BAA37160/BAA37165 and 2";
 		List<String> evs = new ArrayList<>();
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.CONFLICT, location, "", "", altSeq, evs);
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.CONFLICT, location, description, "", altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -57,9 +58,11 @@ public class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		evs.add(ev1);
 		evs.add(ev2);
+		
+		String description = "in Ref. 1; BAA37160/BAA37165 and 2";
 
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.CONFLICT, location, "", "", altSeq, evs);
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.CONFLICT, location, description, "", altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -82,9 +85,9 @@ public class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
 		report.add("2; ABO40479");
 		report.add("6; AAH63566");
 		List<String> evs = new ArrayList<>();
-
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.CONFLICT, location, "", "", altSeq, evs);
+		String description ="in Ref. 1; BAA37160/BAA37165, 2; ABO40479 and 6; AAH63566";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.CONFLICT, location, description, "", altSeq, evs);
 
 
 		doTest(ftLine, feature);

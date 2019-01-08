@@ -40,8 +40,8 @@ public class DiseaseCommentTransformerTest {
         String diseaseId = "Colorectal cancer";
         String acronyn = "CRC";
         assertNotNull(comment);
-        assertEquals(description, comment.getDisease().getDescription().getValue());
-        assertEquals(0, comment.getDisease().getDescription().getEvidences().size());
+        assertEquals(description, comment.getDisease().getDescription());
+        assertEquals(0, comment.getDisease().getEvidences().size());
         assertEquals(1, comment.getNote().getTexts().size());
         assertEquals(note, comment.getNote().getTexts().get(0).getValue());
         assertEquals(0, comment.getNote().getTexts().get(0).getEvidences().size());
@@ -80,9 +80,9 @@ public class DiseaseCommentTransformerTest {
         String diseaseId = "Colorectal cancer";
         String acronyn = "CRC";
         assertNotNull(comment);
-        assertEquals(description, comment.getDisease().getDescription().getValue());
-        assertEquals(3, comment.getDisease().getDescription().getEvidences().size());
-        assertEquals("ECO:0000303|Ref.6", comment.getDisease().getDescription().getEvidences().get(1).getValue());
+        assertEquals(description, comment.getDisease().getDescription());
+        assertEquals(3, comment.getDisease().getEvidences().size());
+        assertEquals("ECO:0000303|Ref.6", comment.getDisease().getEvidences().get(1).getValue());
         assertEquals(2, comment.getNote().getTexts().size());
         assertEquals(note1, comment.getNote().getTexts().get(0).getValue());
         assertEquals(3, comment.getNote().getTexts().get(0).getEvidences().size());
@@ -124,7 +124,7 @@ public class DiseaseCommentTransformerTest {
 
         assertEquals(disease.getDiseaseId(), diseaseId);
         assertEquals(disease.getAcronym(), diseaseAcronym);
-        assertEquals(disease.getDescription().getValue(), diseaseDescription);
+        assertEquals(disease.getDescription(), diseaseDescription);
 
         DBCrossReference<DiseaseReferenceType> diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
@@ -166,7 +166,7 @@ public class DiseaseCommentTransformerTest {
 
         assertEquals(disease.getDiseaseId(), diseaseId);
         assertEquals(disease.getAcronym(), diseaseAcronym);
-        assertEquals(disease.getDescription().getValue(), diseaseDescription);
+        assertEquals(disease.getDescription(), diseaseDescription);
 
         DBCrossReference<DiseaseReferenceType> diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
@@ -207,14 +207,14 @@ public class DiseaseCommentTransformerTest {
         assertEquals(comment.getCommentType(), CommentType.DISEASE);
 
 
-        List<Evidence> evidenceIds = comment.getDisease().getDescription().getEvidences();
+        List<Evidence> evidenceIds = comment.getDisease().getEvidences();
         assertEquals(evidenceIds.size(), 0);
 
         Disease disease = comment.getDisease();
 
         assertEquals(disease.getDiseaseId(), diseaseId);
         assertEquals(disease.getAcronym(), diseaseAcronym);
-        assertEquals(disease.getDescription().getValue(), diseaseDescription);
+        assertEquals(disease.getDescription(), diseaseDescription);
 
         DBCrossReference<DiseaseReferenceType>  diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
@@ -264,7 +264,7 @@ public class DiseaseCommentTransformerTest {
 
         assertEquals(disease.getDiseaseId(), diseaseId);
         assertEquals(disease.getAcronym(), diseaseAcronym);
-        assertEquals(disease.getDescription().getValue(), diseaseDescription);
+        assertEquals(disease.getDescription(), diseaseDescription);
 
         DBCrossReference<DiseaseReferenceType>  diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);
@@ -305,7 +305,7 @@ public class DiseaseCommentTransformerTest {
         String diseaseNote = "The disease is caused by mutations affecting the gene represented in this entry";
         assertEquals(disease.getDiseaseId(), diseaseId);
         assertEquals(disease.getAcronym(), diseaseAcronym);
-        assertEquals(disease.getDescription().getValue(), diseaseDescription);
+        assertEquals(disease.getDescription(), diseaseDescription);
 
         DBCrossReference<DiseaseReferenceType>  diseaseReference = disease.getReference();
         assertEquals(diseaseReference.getDatabaseType().getName(), diseaseReferenceType);

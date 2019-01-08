@@ -5,7 +5,15 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
+
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
@@ -21,9 +29,10 @@ public class DiseaseCommentBuilderTest {
     @Test
     public void testSetDisease() {
         DiseaseBuilder builder = DiseaseCommentBuilder.newDiseaseBuilder();
-        String val = "some description";
-        List<Evidence> evidences = createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val, evidences);
+
+        String description ="some description";
+        List<Evidence> evidences =  createEvidences();
+
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
@@ -31,7 +40,9 @@ public class DiseaseCommentBuilderTest {
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(description)
-                .reference(reference)
+
+                .reference(reference)         
+                .evidences(evidences)
                 .build();
         DiseaseCommentBuilder commentBuilder = DiseaseCommentBuilder.newInstance();
 
@@ -47,9 +58,10 @@ public class DiseaseCommentBuilderTest {
     @Test
     public void testSetNote() {
         DiseaseBuilder builder = DiseaseCommentBuilder.newDiseaseBuilder();
-        String val = "some description";
-        List<Evidence> evidences = createEvidences();
-        DiseaseDescription description = DiseaseBuilder.createDiseaseDescription(val, evidences);
+
+        String description ="some description";
+        List<Evidence> evidences =  createEvidences();
+
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);
@@ -58,6 +70,8 @@ public class DiseaseCommentBuilderTest {
                 .acronym("someAcron")
                 .description(description)
                 .reference(reference)
+
+                .evidences(evidences)
                 .build();
         Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
         DiseaseCommentBuilder commentBuilder = DiseaseCommentBuilder.newInstance();

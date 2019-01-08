@@ -24,9 +24,9 @@ public class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
 		report.add("Less than 1% residual activity");
 		Range location = Range.create(2, 2);
 		List<String> evs = new ArrayList<>();
-
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.MUTAGEN, location, "", "", altSeq, evs);
+		String description = "Less than 1% residual activity";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.MUTAGEN, location, description, "", altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -54,9 +54,9 @@ public class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		evs.add(ev1);
 		evs.add(ev2);
-
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.MUTAGEN, location, "", "", altSeq, evs);
+		String description = "Less than 1% residual activity";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.MUTAGEN, location, description, "", altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);

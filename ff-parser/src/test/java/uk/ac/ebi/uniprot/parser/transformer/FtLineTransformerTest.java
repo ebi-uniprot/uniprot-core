@@ -71,9 +71,9 @@ public class FtLineTransformerTest {
 		assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
 		assertEquals("ESHP", feature.getAlternativeSequence().getAlternativeSequences().get(0)
 				);
-		assertEquals(1,feature.getAlternativeSequence().getReport().getValue().size());
-		assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
-
+	//	assertEquals(1,feature.getAlternativeSequence().getReport().getValue().size());
+	//	assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("in Ref. 1; AAA98633", feature.getDescription().getValue());
 	}
 
 	@Test
@@ -95,10 +95,10 @@ public class FtLineTransformerTest {
 		assertEquals("K", feature.getAlternativeSequence().getOriginalSequence());
 		assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
 		assertEquals("R", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-		assertEquals(
-				"Does not affect E-cadherin/CDH1 repression; when associated with R-16",
-				feature.getAlternativeSequence().getReport().getValue().get(0));
-
+//		assertEquals(
+//				"Does not affect E-cadherin/CDH1 repression; when associated with R-16",
+//				feature.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("Does not affect E-cadherin/CDH1 repression; when associated with R-16", feature.getDescription().getValue());
 	}
 	
 	
@@ -124,11 +124,11 @@ public class FtLineTransformerTest {
 		assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
 		assertEquals("R", feature.getAlternativeSequence().getAlternativeSequences().get(0));
 	
-		assertEquals(
-				"in GS; dbSNP:rs28936387",
-				feature.getAlternativeSequence().getReport().getValue().get(0));
+//		assertEquals(
+//				"in GS; dbSNP:rs28936387",
+//				feature.getAlternativeSequence().getReport().getValue().get(0));
 		assertEquals("VAR_007115", feature.getFeatureId().getValue());
-
+		assertEquals("in GS; dbSNP:rs28936387", feature.getDescription().getValue());
 	
 	}
 	
@@ -152,10 +152,10 @@ public class FtLineTransformerTest {
 		assertEquals(0, feature.getAlternativeSequence().getAlternativeSequences().size());
 	//	assertEquals("R", cFeature.getAlternativeSequences().get(0).getValue());
 	
-		assertEquals(
-				"in GS",
-				feature.getAlternativeSequence().getReport().getValue().get(0));
-
+//		assertEquals(
+//				"in GS",
+//				feature.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("in GS", feature.getDescription().getValue());
 		 assertEquals("VAR_007118", feature.getFeatureId().getValue());
 	}
 	
@@ -181,15 +181,15 @@ public class FtLineTransformerTest {
 		assertEquals("E", feature.getAlternativeSequence().getOriginalSequence());
 		assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
 		assertEquals("ERDVIRSVRLPRE", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-		assertEquals(4, feature.getAlternativeSequence().getReport().getValue().size());
-		assertEquals(
-				"PLEC-0",
-				feature.getAlternativeSequence().getReport().getValue().get(0));
-		
-		assertEquals(
-				"2A",
-				feature.getAlternativeSequence().getReport().getValue().get(2));
-
+//		assertEquals(4, feature.getAlternativeSequence().getReport().getValue().size());
+//		assertEquals(
+//				"PLEC-0",
+//				feature.getAlternativeSequence().getReport().getValue().get(0));
+//		
+//		assertEquals(
+//				"2A",
+//				feature.getAlternativeSequence().getReport().getValue().get(2));
+		assertEquals("in isoform PLEC-0, isoform 1C, isoform 2A and isoform 3A", feature.getDescription().getValue());
 		 assertEquals("VSP_005049", feature.getFeatureId().getValue());
 	}
 	
@@ -213,11 +213,11 @@ public class FtLineTransformerTest {
 		//assertEquals("E", cFeature.getOriginalSequence().getValue());
 		assertEquals(0, feature.getAlternativeSequence().getAlternativeSequences().size());
 		//assertEquals("ERDVIRSVRLPRE", cFeature.getAlternativeSequences().get(0).getValue());
-		assertEquals(1, feature.getAlternativeSequence().getReport().getValue().size());
-		assertEquals(
-				"PLEC-1H",
-				feature.getAlternativeSequence().getReport().getValue().get(0));
-		
+//		assertEquals(1, feature.getAlternativeSequence().getReport().getValue().size());
+//		assertEquals(
+//				"PLEC-1H",
+//				feature.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("in isoform PLEC-1H", feature.getDescription().getValue());
 		 assertEquals("VSP_005040", feature.getFeatureId().getValue());
 	}
 	//

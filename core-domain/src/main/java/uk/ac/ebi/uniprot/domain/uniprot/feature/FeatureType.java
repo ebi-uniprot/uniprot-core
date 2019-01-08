@@ -63,20 +63,7 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         this.category = category;
     }
 
-    public static List<FeatureType> getFeatureTypes(FeatureCategory category) {
-        return Arrays.stream(FeatureType.values())
-                .filter(val -> val.getCategory() == category)
-                .collect(Collectors.toList());
-    }
-
-    public static FeatureType typeOf(String value) {
-        for (FeatureType featureType : FeatureType.values()) {
-            if (featureType.name().equalsIgnoreCase(value)) {
-                return featureType;
-            }
-        }
-        throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
-    }
+   
 
     public String getValue() {
         return value;
@@ -86,16 +73,37 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         return name();
     }
 
-    public String getDisplayName() {
-        return displayName;
-    }
-
     public FeatureCategory getCategory() {
         return category;
     }
 
-    @Override
-    public String toDisplayName() {
-        return getValue();
+
+    public static List<FeatureType> getFeatureTypes(FeatureCategory category){
+        return Arrays.stream(FeatureType.values())
+        .filter(val -> val.getCategory()== category)
+        .collect(Collectors.toList());
     }
+    public static FeatureType typeOf(String value) {
+        for (FeatureType featureType : FeatureType.values()) {
+            if (featureType.name().equalsIgnoreCase(value)) {
+                return featureType;
+            }
+        }
+        for (FeatureType featureType : FeatureType.values()) {
+            if (featureType.getValue().equalsIgnoreCase(value)) {
+                return featureType;
+            }
+        }
+        throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
+
+    }
+
+
+    public String getDisplayName() {
+    	return displayName;
+    }
+	@Override
+	public String toDisplayName() {
+		return displayName;
+	}
 }

@@ -254,7 +254,7 @@ class UniProtXDbTypesTest {
                         null);
         verifyAttribute(opType.getAttributes().get(1), "GoEvidenceType", "evidence",
                         null);
-        verifyAttribute(opType.getAttributes().get(2), "GoEvidenceSource", "source",
+        verifyAttribute(opType.getAttributes().get(2), "Project", "project",
                         null);
     }
 
@@ -277,4 +277,5 @@ class UniProtXDbTypesTest {
         assertEquals(link, attr.getUriLink());
 
     }
+
 }

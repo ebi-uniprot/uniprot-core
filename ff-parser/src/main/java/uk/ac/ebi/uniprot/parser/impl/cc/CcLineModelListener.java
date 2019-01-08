@@ -169,13 +169,13 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         CcLineParser.Cc_mass_spectrometry_massContext ccMassSpectrometryMassContext =
                 ctx.cc_mass_spectrometry_mass();
         String text = ccMassSpectrometryMassContext.CC_MS_V_NUMBER().getText();
-        ms.mass = Double.parseDouble(text);
+        ms.mass = Float.parseFloat(text);
 
         CcLineParser.Cc_mass_spectrometry_mass_errorContext ccMassSpectrometryMassErrorContext =
                 ctx.cc_mass_spectrometry_mass_error();
         if (ccMassSpectrometryMassErrorContext != null) {
             String text1 = ccMassSpectrometryMassErrorContext.CC_MS_V_NUMBER().getText();
-            ms.massError = Double.parseDouble(text1);
+            ms.massError =  Float.parseFloat(text1);
         }
 
         CcLineParser.Cc_mass_spectrometry_mass_methodContext ccMassSpectrometryMassMethodContext =

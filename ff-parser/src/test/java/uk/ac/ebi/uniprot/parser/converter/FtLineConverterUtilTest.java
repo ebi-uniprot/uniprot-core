@@ -47,10 +47,20 @@ public class FtLineConverterUtilTest {
 	
 		assertEquals("Missing", matcher.group(1));
 		assertEquals("isoform Beta", matcher.group(10));
+		printMatcher(matcher);
 	//	String regex =", isoform | and isoform ";
 	//	String[] tokens =  matcher.group(8).substring("isoform ".length()).split(regex);
 		
 		
+	}
+	private void printMatcher(Matcher matcher) {
+		if(matcher.matches()) {
+			for(int i=0 ;i<= matcher.groupCount(); i++) {
+				System.out.println(i +"\t" + matcher.group(i));
+			}
+		}else {
+			System.out.println("NOT MATCHED");
+		}
 	}
 	@Test
 	public void testVarSeq2() {
@@ -65,6 +75,7 @@ public class FtLineConverterUtilTest {
 		assertEquals("KIGTTLPEVPT", original);
 		assertEquals("RNWHRPCLRCQR", other);
 		assertEquals("isoform 2 and isoform 3", matcher.group(10));
+		printMatcher(matcher);
 		
 	}
 	@Test
@@ -251,6 +262,7 @@ public class FtLineConverterUtilTest {
 		String[] tokens = matcher.group(10).split(regex);
 		assertEquals(1, tokens.length);
 		assertEquals("3; AA sequence", tokens[0]);
+		printMatcher(matcher);
 	}
 	
 	@Test
@@ -299,5 +311,6 @@ public class FtLineConverterUtilTest {
 		assertEquals("1; AAO59377", tokens[0]);
 		assertEquals("2; ABO40479", tokens[1]);
 		assertEquals("6; AAH63566", tokens[2]);
+		printMatcher(matcher);
 	}
 }

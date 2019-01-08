@@ -1,20 +1,26 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
+
+import java.util.List;
+
+
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl.SequenceReportImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 public final class FeatureBuilder {
+
     private FeatureType type;
     private Range location;
     private FeatureDescription description;
@@ -35,20 +41,10 @@ public final class FeatureBuilder {
         return new FeatureDescriptionImpl(value);
     }
 
-    public static SequenceReport createReport(List<String> value) {
-        return new SequenceReportImpl(value);
-    }
-
-    public static SequenceReport createReport(String value) {
-        if (value == null || value.isEmpty())
-            return new SequenceReportImpl(Collections.emptyList());
-        else
-            return new SequenceReportImpl(Arrays.asList(value));
-    }
 
     public static AlternativeSequence createAlternativeSequence(String originalSequence,
-                                                                List<String> alternativeSequences, SequenceReport report) {
-        return new AlternativeSequenceImpl(originalSequence, alternativeSequences, report);
+                                                                List<String> alternativeSequences) {
+        return new AlternativeSequenceImpl(originalSequence, alternativeSequences);
     }
 
     public static boolean hasAlternativeSequence(FeatureType featureType) {

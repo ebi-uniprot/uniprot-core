@@ -1,16 +1,15 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineConverter;
@@ -106,7 +105,7 @@ public class FtLineConverterTest {
 
 
 		assertEquals("Loss of cADPr hydrolase and ADP-ribosyl cyclase activity",
-				feature1.getAlternativeSequence().getReport().getValue().get(0));
+				feature1.getDescription().getValue());
 		List<String> altSeq = new ArrayList<String>();
 		altSeq.add("R");
 		altSeq.add("E");
@@ -139,9 +138,9 @@ public class FtLineConverterTest {
 		validateLocation(feature1.getLocation(),
 				33, 83, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.VAR_SEQ, feature1.getType());
-;
-		assertEquals(1, feature1.getAlternativeSequence().getReport().getValue().size());
-		assertEquals("2", feature1.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("in isoform 2", feature1.getDescription().getValue());
+//		assertEquals(1, feature1.getAlternativeSequence().getReport().getValue().size());
+//		assertEquals("2", feature1.getAlternativeSequence().getReport().getValue().get(0));
 		assertEquals("VSP_004370", feature1.getFeatureId().getValue());
 		List<String> altSeq = new ArrayList<String>();
 		altSeq.add("SECLTYGKQPLTSFHPFTSQMPP");
@@ -172,7 +171,7 @@ public class FtLineConverterTest {
 				102, 102, PositionModifier.EXACT, PositionModifier.EXACT);
 		assertEquals(FeatureType.VARIANT, feature1.getType());
 
-		assertEquals("in HH2; dbSNP:rs55642501", feature1.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("in HH2; dbSNP:rs55642501", feature1.getDescription().getValue());
 		assertEquals("VAR_030972", feature1.getFeatureId().getValue());
 		List<String> altSeq = new ArrayList<String>();
 		altSeq.add("I");

@@ -29,7 +29,7 @@ public class FlatfileRoundTripITIT {
 	public void testA0A0A0MSM0() {
 		String filename = "/entryIT/A0A0A0MSM0.dat";
 		String entryStr = readEntryFromFile(filename);
-		System.out.println(entryStr);
+
 		testEntry(entryStr, true);
 	}
 
@@ -37,7 +37,7 @@ public class FlatfileRoundTripITIT {
 	public void testD6RDV7() {
 		String filename = "/entryIT/D6RDV7.dat";
 		String entryStr = readEntryFromFile(filename);
-		System.out.println(entryStr);
+
 		testEntry(entryStr, true);
 	}
 
@@ -45,7 +45,7 @@ public class FlatfileRoundTripITIT {
 	public void testQ15758() {
 		String filename = "/entryIT/Q15758.dat";
 		String entryStr = readEntryFromFile(filename);
-		System.out.println(entryStr);
+	
 		testEntry(entryStr, true);
 	}
 	
@@ -53,7 +53,7 @@ public class FlatfileRoundTripITIT {
 	public void testQ15758Txl() {
 		String filename = "/entryIT/Q15758.txl";
 		String entryStr = readEntryFromFile(filename);
-		System.out.println(entryStr);
+
 		testEntry(entryStr, false);
 	}
 
@@ -61,7 +61,7 @@ public class FlatfileRoundTripITIT {
 	public void testQ3SYC2() {
 		String filename = "/entryIT/Q3SYC2.dat";
 		String entryStr = readEntryFromFile(filename);
-		System.out.println(entryStr);
+
 		testEntry(entryStr, true);
 	}
 
@@ -69,7 +69,7 @@ public class FlatfileRoundTripITIT {
 	public void testQ3SYC2Txl() {
 		String filename = "/entryIT/Q3SYC2.txl";
 		String entryStr = readEntryFromFile(filename);
-		System.out.println(entryStr);
+
 		testEntry(entryStr, false);
 	}
 
@@ -77,7 +77,7 @@ public class FlatfileRoundTripITIT {
 	public void testQ63HN8() {
 		String filename = "/entryIT/Q63HN8.dat";
 		String entryStr = readEntryFromFile(filename);
-		System.out.println(entryStr);
+
 		testEntry(entryStr, true);
 	}
 
@@ -518,7 +518,7 @@ public class FlatfileRoundTripITIT {
 		
 		assertNotNull(converted);
 		String convertedEntryStr =writer.write(converted, ispublic);
-		System.out.println(convertedEntryStr);
+	//	System.out.println(convertedEntryStr);
 	
 		String diff = compareFF(entryToParse, convertedEntryStr +"\n");
 		System.out.println(diff);

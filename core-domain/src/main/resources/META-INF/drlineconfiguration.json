@@ -1,1508 +1,1484 @@
 [
-  {
-    "name": "EMBL",
-    "displayName": "EMBL",
-    "category": "SEQ",
-    "uriLink": "https://www.ebi.ac.uk/ena/data/view/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "https://www.ebi.ac.uk/ena/data/view/%value"
-      },
-      {
-        "name": "Status",
-        "xmlTag": "status"
-      },
-      {
-        "name": "MoleculeType",
-        "xmlTag": "molecule type"
-      }
-    ]
-  },
-  {
-    "name": "CCDS",
-    "displayName": "CCDS",
-    "category": "SEQ",
-    "uriLink": "http://www.ncbi.nlm.nih.gov/CCDS/CcdsBrowse.cgi?REQUEST=CCDS&GO=MainBrowse&DATA=%value"
-  },
-  {
-    "name": "PIR",
-    "displayName": "PIR",
-    "category": "SEQ",
-    "uriLink": "http://pir.georgetown.edu/cgi-bin/nbrfget?uid=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      }
-    ]
-  },
-  {
-    "name": "RefSeq",
-    "displayName": "RefSeq",
-    "category": "SEQ",
-    "uriLink": "https://www.ncbi.nlm.nih.gov/protein/%value",
-    "attributes": [
-      {
-        "name": "NucleotideSequenceId",
-        "xmlTag": "nucleotide sequence ID",
-        "uriLink": "https://www.ncbi.nlm.nih.gov/nuccore/%value"
-      }
-    ]
-  },
-  {
-    "name": "UniGene",
-    "displayName": "UniGene",
-    "category": "SEQ",
-    "uriLink": "https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?ORG=%value&CID=%value"
-  },
-  {
-    "name": "PDB",
-    "displayName": "PDB",
-    "category": "3DS",
-    "uriLink": "https://www.ebi.ac.uk/pdbe/entry/pdb/%value",
-    "attributes": [
-      {
-        "name": "Method",
-        "xmlTag": "method"
-      },
-      {
-        "name": "Resolution",
-        "xmlTag": "resolution"
-      },
-      {
-        "name": "Chains",
-        "xmlTag": "chains"
-      }
-    ]
-  },
-  {
-    "name": "PDBsum",
-    "displayName": "PDBsum",
-    "category": "3DS",
-    "uriLink": "https://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/pdbsum/GetPage.pl?pdbcode=%value"
-  },
-  {
-    "name": "DisProt",
-    "displayName": "DisProt",
-    "category": "3DS",
-    "uriLink": "http://www.disprot.org/%value"
-  },
-  {
-    "name": "ProteinModelPortal",
-    "displayName": "ProteinModelPortal",
-    "category": "3DS",
-    "uriLink": "https://www.proteinmodelportal.org/query/uniprot/%value"
-  },
-  {
-    "name": "SMR",
-    "displayName": "SMR",
-    "category": "3DS",
-    "uriLink": "http://swissmodel.expasy.org/repository/smr.php?sptr_ac=%value"
-  },
-  {
-    "name": "BioGrid",
-    "displayName": "BioGrid",
-    "category": "PPI",
-    "uriLink": "http://thebiogrid.org/%value",
-    "attributes": [
-      {
-        "name": "Interactions",
-        "xmlTag": "interactions"
-      }
-    ]
-  },
-  {
-    "name": "ComplexPortal",
-    "displayName": "ComplexPortal",
-    "category": "PPI",
-    "uriLink": "https://www.ebi.ac.uk/complexportal/complex/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      }
-    ]
-  },
-  {
-    "name": "CORUM",
-    "displayName": "CORUM",
-    "category": "PPI",
-    "uriLink": "http://mips.helmholtz-muenchen.de/corum/#?uniprotID=%value"
-  },
-  {
-    "name": "DIP",
-    "displayName": "DIP",
-    "category": "PPI",
-    "uriLink": "http://dip.doe-mbi.ucla.edu/dip/Browse.cgi?ID=%value"
-  },
-  {
-    "name": "ELM",
-    "displayName": "ELM",
-    "category": "PPI",
-    "uriLink": "http://elm.eu.org/instances.html?q=%value"
-  },
-  {
-    "name": "IntAct",
-    "displayName": "IntAct",
-    "category": "PPI",
-    "uriLink": "https://www.ebi.ac.uk/intact/interactors/id:%value",
-    "attributes": [
-      {
-        "name": "Interactions",
-        "xmlTag": "interactions"
-      }
-    ]
-  },
-  {
-    "name": "MINT",
-    "displayName": "MINT",
-    "category": "PPI",
-    "uriLink": "https://mint.bio.uniroma2.it/index.php/results-interactions/?id=%value"
-  },
-  {
-    "name": "STRING",
-    "displayName": "STRING",
-    "category": "PPI",
-    "uriLink": "https://string-db.org/network/%value"
-  },
-  {
-    "name": "BindingDB",
-    "displayName": "BindingDB",
-    "category": "CHEMISTRY",
-    "uriLink": "http://www.bindingdb.org/uniprot/%value"
-  },
-  {
-    "name": "ChEMBL",
-    "displayName": "ChEMBL",
-    "category": "CHEMISTRY",
-    "uriLink": "https://www.ebi.ac.uk/chembldb/target/inspect/%value"
-  },
-  {
-    "name": "DrugBank",
-    "displayName": "DrugBank",
-    "category": "CHEMISTRY",
-    "uriLink": "https://www.drugbank.ca/drugs/%value",
-    "attributes": [
-      {
-        "name": "GenericName",
-        "xmlTag": "generic name"
-      }
-    ]
-  },
-  {
-    "name": "GuidetoPHARMACOLOGY",
-    "displayName": "GuidetoPHARMACOLOGY",
-    "category": "CHEMISTRY",
-    "uriLink": "http://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=%value"
-  },
-  {
-    "name": "SwissLipids",
-    "displayName": "SwissLipids",
-    "category": "CHEMISTRY",
-    "uriLink": "http://www.swisslipids.org/#/entity/%value/"
-  },
-  {
-    "name": "Allergome",
-    "displayName": "Allergome",
-    "category": "PFAM",
-    "uriLink": "http://www.allergome.org/script/dettaglio.php?id_molecule=%value",
-    "attributes": [
-      {
-        "name": "AllergenName",
-        "xmlTag": "allergen name"
-      }
-    ]
-  },
-  {
-    "name": "CAZy",
-    "displayName": "CAZy",
-    "category": "PFAM",
-    "uriLink": "http://www.cazy.org/%value.html",
-    "attributes": [
-      {
-        "name": "FamilyName",
-        "xmlTag": "family name"
-      }
-    ]
-  },
-  {
-    "name": "ESTHER",
-    "displayName": "ESTHER",
-    "category": "PFAM",
-    "uriLink": "http://bioweb.supagro.inra.fr/ESTHER/gene_locus?name=%value&class=Gene_locus",
-    "attributes": [
-      {
-        "name": "FamilyName",
-        "xmlTag": "family name"
-      }
-    ]
-  },
-  {
-    "name": "IMGT_GENE-DB",
-    "displayName": "IMGT_GENE-DB",
-    "category": "PFAM",
-    "uriLink": "http://www.imgt.org/IMGT_GENE-DB/GENElect?query=2+%value&species=Homo+sapiens"
-  },
-  {
-    "name": "MEROPS",
-    "displayName": "MEROPS",
-    "category": "PFAM",
-    "uriLink": "https://www.ebi.ac.uk/merops/cgi-bin/pepsum?mid=%value"
-  },
-  {
-    "name": "MoonDB",
-    "displayName": "MoonDB",
-    "category": "PFAM",
-    "uriLink": "http://moondb.hb.univ-amu.fr/protein/%value",
-    "attributes": [
-      {
-        "name": "Type",
-        "xmlTag": "type"
-      }
-    ]
-  },
-  {
-    "name": "MoonProt",
-    "displayName": "MoonProt",
-    "category": "PFAM",
-    "uriLink": "http://moonlightingproteins.org/proteins/?q=%value"
-  },
-  {
-    "name": "mycoCLAP",
-    "displayName": "mycoCLAP",
-    "category": "PFAM",
-    "uriLink": "https://mycoclap.fungalgenomics.ca/mycoCLAP/clap/GeneView/%value"
-  },
-  {
-    "name": "PeroxiBase",
-    "displayName": "PeroxiBase",
-    "category": "PFAM",
-    "uriLink": "http://peroxibase.toulouse.inra.fr/display_perox/view_perox/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      }
-    ]
-  },
-  {
-    "name": "REBASE",
-    "displayName": "REBASE",
-    "category": "PFAM",
-    "uriLink": "http://rebase.neb.com/rebase/enz/%value.html",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      }
-    ]
-  },
-  {
-    "name": "TCDB",
-    "displayName": "TCDB",
-    "category": "PFAM",
-    "uriLink": "http://www.tcdb.org/search/result.php?tc=%value",
-    "attributes": [
-      {
-        "name": "FamilyName",
-        "xmlTag": "family name"
-      }
-    ]
-  },
-  {
-    "name": "UniLectin",
-    "displayName": "UniLectin",
-    "category": "PFAM",
-    "uriLink": "https://www.unilectin.eu/curated/protein?id=%value"
-  },
-  {
-    "name": "CarbonylDB",
-    "displayName": "CarbonylDB",
-    "category": "PTM",
-    "uriLink": "http://digbio.missouri.edu/CarbonylDB/index.php/detail/protein/%value"
-  },
-  {
-    "name": "DEPOD",
-    "displayName": "DEPOD",
-    "category": "PTM",
-    "uriLink": "http://depod.bioss.uni-freiburg.de/showp.php?AC=%value"
-  },
-  {
-    "name": "GlyConnect",
-    "displayName": "GlyConnect",
-    "category": "PTM",
-    "uriLink": "https://glyconnect.expasy.org/browser/proteins/%value"
-  },
-  {
-    "name": "iPTMnet",
-    "displayName": "iPTMnet",
-    "category": "PTM",
-    "uriLink": "https://research.bioinformatics.udel.edu/iptmnet/entry/%value"
-  },
-  {
-    "name": "PhosphoSitePlus",
-    "displayName": "PhosphoSitePlus",
-    "category": "PTM",
-    "uriLink": "https://www.phosphosite.org/uniprotAccAction?id=%value"
-  },
-  {
-    "name": "SwissPalm",
-    "displayName": "SwissPalm",
-    "category": "PTM",
-    "uriLink": "https://swisspalm.org/proteins/%value"
-  },
-  {
-    "name": "UniCarbKB",
-    "displayName": "UniCarbKB",
-    "category": "PTM",
-    "uriLink": "http://www.unicarbkb.org/proteinsummary/%value/annotated"
-  },
-  {
-    "name": "BioMuta",
-    "displayName": "BioMuta",
-    "category": "PMD",
-    "uriLink": "https://hive.biochemistry.gwu.edu/tools/biomuta/biomuta.php?gene=%value"
-  },
-  {
-    "name": "DMDM",
-    "displayName": "DMDM",
-    "category": "PMD",
-    "uriLink": "http://bioinf.umbc.edu/dmdm/gene_prot_page.php?search_type=protein&id=%value"
-  },
-  {
-    "name": "dbSNP",
-    "displayName": "dbSNP",
-    "category": "PMD",
-    "uriLink": "https://www.ncbi.nlm.nih.gov/snp/%value"
-  },
-  {
-    "name": "COMPLUYEAST-2DPAGE",
-    "displayName": "COMPLUYEAST-2DPAGE",
-    "category": "2DG",
-    "uriLink": "http://compluyeast2dpage.dacya.ucm.es/cgi-bin/2d/2d.cgi?ac=%value"
-  },
-  {
-    "name": "DOSAC-COBS-2DPAGE",
-    "displayName": "DOSAC-COBS-2DPAGE",
-    "category": "2DG",
-    "uriLink": "http://www.dosac.unipa.it/cgi-bin/2d/2d.cgi?ac=%value"
-  },
-  {
-    "name": "OGP",
-    "displayName": "OGP",
-    "category": "2DG",
-    "uriLink": "http://usc_ogp_2ddatabase.cesga.es/cgi-bin/2d/2d.cgi?%value"
-  },
-  {
-    "name": "REPRODUCTION-2DPAGE",
-    "displayName": "REPRODUCTION-2DPAGE",
-    "category": "2DG",
-    "uriLink": "http://reprod.njmu.edu.cn/cgi-bin/2d/2d.cgi?%value"
-  },
-  {
-    "name": "SWISS-2DPAGE",
-    "displayName": "SWISS-2DPAGE",
-    "category": "2DG",
-    "uriLink": "https://world-2dpage.expasy.org/swiss-2dpage/protein/ac=%value"
-  },
-  {
-    "name": "UCD-2DPAGE",
-    "displayName": "UCD-2DPAGE",
-    "category": "2DG",
-    "uriLink": "https://proteomics-portal.ucd.ie/cgi-bin/2d/2d.cgi?%value"
-  },
-  {
-    "name": "World-2DPAGE",
-    "displayName": "World-2DPAGE",
-    "category": "2DG",
-    "uriLink": "https://world-2dpage.expasy.org/repository/protein/ac=%value"
-  },
-  {
-    "name": "EPD",
-    "displayName": "EPD",
-    "category": "PROTEOMIC",
-    "uriLink": "https://www.peptracker.com/epd/analytics/?protein_id=%value"
-  },
-  {
-    "name": "MaxQB",
-    "displayName": "MaxQB",
-    "category": "PROTEOMIC",
-    "uriLink": "http://maxqb.biochem.mpg.de/mxdb/protein/show/%value"
-  },
-  {
-    "name": "PaxDb",
-    "displayName": "PaxDb",
-    "category": "PROTEOMIC",
-    "uriLink": "https://pax-db.org/#!protein/%value"
-  },
-  {
-    "name": "PeptideAtlas",
-    "displayName": "PeptideAtlas",
-    "category": "PROTEOMIC",
-    "uriLink": "https://db.systemsbiology.net/sbeams/cgi/PeptideAtlas/Search?action=GO&search_key=%value"
-  },
-  {
-    "name": "PRIDE",
-    "displayName": "PRIDE",
-    "category": "PROTEOMIC",
-    "uriLink": "https://www.ebi.ac.uk/pride/archive/simpleSearch?q=%value"
-  },
-  {
-    "name": "ProMEX",
-    "displayName": "ProMEX",
-    "category": "PROTEOMIC",
-    "uriLink": "http://promex.pph.univie.ac.at/promex/?ac=%value"
-  },
-  {
-    "name": "ProteomicsDB",
-    "displayName": "ProteomicsDB",
-    "category": "PROTEOMIC",
-    "uriLink": "https://www.proteomicsdb.org/proteomicsdb/#human/proteinDetails/%value"
-  },
-  {
-    "name": "TopDownProteomics",
-    "displayName": "TopDownProteomics",
-    "category": "PROTEOMIC",
-    "uriLink": "http://repository.topdownproteomics.org/Proteoforms?query=%value"
-  },
-  {
-    "name": "jPOST",
-    "displayName": "jPOST",
-    "category": "PROTEOMIC",
-    "uriLink": "http://globe.jpostdb.org/protein?id=%value"
-  },
-  {
-    "name": "DNASU",
-    "displayName": "DNASU",
-    "category": "PAM",
-    "uriLink": "https://dnasu.org/DNASU/AdvancedSearchOptions.do?geneName=%value"
-  },
-  {
-    "name": "Ensembl",
-    "displayName": "Ensembl",
-    "category": "GMA",
-    "uriLink": "https://www.ensembl.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "https://www.ensembl.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "https://www.ensembl.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "EnsemblBacteria",
-    "displayName": "EnsemblBacteria",
-    "category": "GMA",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "EnsemblFungi",
-    "displayName": "EnsemblFungi",
-    "category": "GMA",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "EnsemblMetazoa",
-    "displayName": "EnsemblMetazoa",
-    "category": "GMA",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "EnsemblPlants",
-    "displayName": "EnsemblPlants",
-    "category": "GMA",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "EnsemblProtists",
-    "displayName": "EnsemblProtists",
-    "category": "GMA",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "http://www.ensemblgenomes.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "GeneDB",
-    "displayName": "GeneDB",
-    "category": "GMA",
-    "uriLink": "http://www.genedb.org/gene/%value"
-  },
-  {
-    "name": "GeneID",
-    "displayName": "GeneID",
-    "category": "GMA",
-    "uriLink": "https://www.ncbi.nlm.nih.gov/gene/%value"
-  },
-  {
-    "name": "Gramene",
-    "displayName": "Gramene",
-    "category": "GMA",
-    "uriLink": "http://ensembl.gramene.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "http://ensembl.gramene.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "http://ensembl.gramene.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "KEGG",
-    "displayName": "KEGG",
-    "category": "GMA",
-    "uriLink": "https://www.genome.jp/dbget-bin/www_bget?%value"
-  },
-  {
-    "name": "PATRIC",
-    "displayName": "PATRIC",
-    "category": "GMA",
-    "uriLink": "https://www.patricbrc.org/view/Feature/%value",
-    "attributes": [
-      {
-        "name": "GeneDesignation",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "UCSC",
-    "displayName": "UCSC",
-    "category": "GMA",
-    "uriLink": "https://genome.ucsc.edu/cgi-bin/hgLinkIn?resource=uniprot&id=%acc",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "VectorBase",
-    "displayName": "VectorBase",
-    "category": "GMA",
-    "uriLink": "https://www.vectorbase.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "https://www.vectorbase.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "https://www.vectorbase.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "WBParaSite",
-    "displayName": "WBParaSite",
-    "category": "GMA",
-    "uriLink": "https://parasite.wormbase.org/id/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "https://parasite.wormbase.org/id/%value"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "https://parasite.wormbase.org/id/%value"
-      }
-    ]
-  },
-  {
-    "name": "ArachnoServer",
-    "displayName": "ArachnoServer",
-    "category": "ORG",
-    "uriLink": "http://www.arachnoserver.org/toxincard.html?id=%value",
-    "attributes": [
-      {
-        "name": "ToxinName",
-        "xmlTag": "toxin name"
-      }
-    ]
-  },
-  {
-    "name": "Araport",
-    "displayName": "Araport",
-    "category": "ORG",
-    "uriLink": "https://apps.araport.org/thalemine/portal.do?externalids=%value"
-  },
-  {
-    "name": "CGD",
-    "displayName": "CGD",
-    "category": "ORG",
-    "uriLink": "http://www.candidagenome.org/cgi-bin/locus.pl?dbid=%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "ConoServer",
-    "displayName": "ConoServer",
-    "category": "ORG",
-    "uriLink": "http://www.conoserver.org/?page=card&table=protein&id=%value",
-    "attributes": [
-      {
-        "name": "ToxinName",
-        "xmlTag": "toxin name"
-      }
-    ]
-  },
-  {
-    "name": "CTD",
-    "displayName": "CTD",
-    "category": "ORG",
-    "uriLink": "http://ctdbase.org/detail.go?type=gene&db=GENE&acc=%value"
-  },
-  {
-    "name": "dictyBase",
-    "displayName": "dictyBase",
-    "category": "ORG",
-    "uriLink": "http://dictybase.org/gene/%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "DisGeNET",
-    "displayName": "DisGeNET",
-    "category": "ORG",
-    "uriLink": "http://disgenet.org/search?q=%value"
-  },
-  {
-    "name": "EchoBASE",
-    "displayName": "EchoBASE",
-    "category": "ORG",
-    "uriLink": "https://www.york.ac.uk/res/thomas/Gene.cfm?recordID=%value"
-  },
-  {
-    "name": "EcoGene",
-    "displayName": "EcoGene",
-    "category": "ORG",
-    "uriLink": "http://www.ecogene.org/geneInfo.php?eg_id=%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "euHCVdb",
-    "displayName": "euHCVdb",
-    "category": "ORG",
-    "uriLink": "https://euhcvdb.ibcp.fr/euHCVdb/do/displayHCVEntry?primaryAC=%value"
-  },
-  {
-    "name": "EuPathDB",
-    "displayName": "EuPathDB",
-    "category": "ORG",
-    "uriLink": "http://www.eupathdb.org/gene/%value"
-  },
-  {
-    "name": "FlyBase",
-    "displayName": "FlyBase",
-    "category": "ORG",
-    "uriLink": "http://flybase.org/reports/%value.html",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "GeneCards",
-    "displayName": "GeneCards",
-    "category": "ORG",
-    "uriLink": "https://www.genecards.org/cgi-bin/carddisp.pl?gene=%value"
-  },
-  {
-    "name": "GeneReviews",
-    "displayName": "GeneReviews",
-    "category": "ORG",
-    "uriLink": "https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=%value"
-  },
-  {
-    "name": "H-InvDB",
-    "displayName": "H-InvDB",
-    "category": "ORG",
-    "uriLink": "http://h-invitational.jp/hinv/spsoup/locus_view?hix_id=%value"
-  },
-  {
-    "name": "HGNC",
-    "displayName": "HGNC",
-    "category": "ORG",
-    "uriLink": "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "HPA",
-    "displayName": "HPA",
-    "category": "ORG",
-    "uriLink": "http://www.proteinatlas.org/tissue_profile.php?antibody_id=%value"
-  },
-  {
-    "name": "LegioList",
-    "displayName": "LegioList",
-    "category": "ORG",
-    "uriLink": "http://genolist.pasteur.fr/LegioList/genome.cgi?external_query+%value"
-  },
-  {
-    "name": "Leproma",
-    "displayName": "Leproma",
-    "category": "ORG",
-    "uriLink": "https://mycobrowser.epfl.ch/genes/%value"
-  },
-  {
-    "name": "MaizeGDB",
-    "displayName": "MaizeGDB",
-    "category": "ORG",
-    "uriLink": "https://www.maizegdb.org/data_center/gene_product?id=%value"
-  },
-  {
-    "name": "MalaCards",
-    "displayName": "MalaCards",
-    "category": "ORG",
-    "uriLink": "https://www.malacards.org/search/eliteGene/%value"
-  },
-  {
-    "name": "MGI",
-    "displayName": "MGI",
-    "category": "ORG",
-    "uriLink": "http://www.informatics.jax.org/marker/%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "MIM",
-    "displayName": "MIM",
-    "category": "ORG",
-    "uriLink": "http://www.omim.org/entry/%value"
-  },
-  {
-    "name": "neXtProt",
-    "displayName": "neXtProt",
-    "category": "ORG",
-    "uriLink": "https://www.nextprot.org/entry/%value"
-  },
-  {
-    "name": "OpenTargets",
-    "displayName": "OpenTargets",
-    "category": "ORG",
-    "uriLink": "https://www.targetvalidation.org/target/%value/associations"
-  },
-  {
-    "name": "Orphanet",
-    "displayName": "Orphanet",
-    "category": "ORG",
-    "uriLink": "https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=GB&Expert=%value",
-    "attributes": [
-      {
-        "name": "Disease",
-        "xmlTag": "disease"
-      }
-    ]
-  },
-  {
-    "name": "PharmGKB",
-    "displayName": "PharmGKB",
-    "category": "ORG",
-    "uriLink": "https://www.pharmgkb.org/gene/%value"
-  },
-  {
-    "name": "PomBase",
-    "displayName": "PomBase",
-    "category": "ORG",
-    "uriLink": "https://www.pombase.org/spombe/result/%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "PseudoCAP",
-    "displayName": "PseudoCAP",
-    "category": "ORG",
-    "uriLink": "http://www.pseudomonas.com/feature/show?locus_tag=%value"
-  },
-  {
-    "name": "RGD",
-    "displayName": "RGD",
-    "category": "ORG",
-    "uriLink": "https://rgd.mcw.edu/rgdweb/report/gene/main.html?id=%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "SGD",
-    "displayName": "SGD",
-    "category": "ORG",
-    "uriLink": "https://www.yeastgenome.org/locus/%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "TAIR",
-    "displayName": "TAIR",
-    "category": "ORG",
-    "uriLink": "https://www.arabidopsis.org/servlets/TairObject?accession=%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "TubercuList",
-    "displayName": "TubercuList",
-    "category": "ORG",
-    "uriLink": "https://mycobrowser.epfl.ch/genes/%value"
-  },
-  {
-    "name": "VGNC",
-    "displayName": "VGNC",
-    "category": "ORG",
-    "uriLink": "https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "WormBase",
-    "displayName": "WormBase",
-    "category": "ORG",
-    "uriLink": "https://wormbase.org/species/c_elegans/cds/%value",
-    "attributes": [
-      {
-        "name": "ProteinId",
-        "xmlTag": "protein sequence ID",
-        "uriLink": "http://www.wormbase.org/db/seq/protein?name=%value;class=Protein"
-      },
-      {
-        "name": "GeneId",
-        "xmlTag": "gene ID",
-        "uriLink": "http://www.wormbase.org/db/gene/gene?name=%value;class=Gene"
-      },
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "Xenbase",
-    "displayName": "Xenbase",
-    "category": "ORG",
-    "uriLink": "http://www.xenbase.org/gene/showgene.do?method=display&geneId=%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "ZFIN",
-    "displayName": "ZFIN",
-    "category": "ORG",
-    "uriLink": "http://zfin.org/%value",
-    "attributes": [
-      {
-        "name": "GeneName",
-        "xmlTag": "gene designation"
-      }
-    ]
-  },
-  {
-    "name": "eggNOG",
-    "displayName": "eggNOG",
-    "category": "PLG",
-    "uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%acc&target_nogs=%value",
-    "attributes": [
-      {
-        "name": "ToxonomicScope",
-        "xmlTag": "taxonomic scope"
-      }
-    ]
-  },
-  {
-    "name": "GeneTree",
-    "displayName": "GeneTree",
-    "category": "PLG",
-    "uriLink": "http://www.ensembl.org/Multi/GeneTree/Image?gt=%value"
-  },
-  {
-    "name": "HOGENOM",
-    "displayName": "HOGENOM",
-    "category": "PLG",
-    "uriLink": "http://doua.prabi.fr/cgi-bin/view-tree-srs.pl?query=%value&db=HOGENOM6"
-  },
-  {
-    "name": "HOVERGEN",
-    "displayName": "HOVERGEN",
-    "category": "PLG",
-    "uriLink": "http://doua.prabi.fr/cgi-bin/view-tree-srs.pl?query=%value&db=HOVERGEN"
-  },
-  {
-    "name": "InParanoid",
-    "displayName": "InParanoid",
-    "category": "PLG",
-    "uriLink": "http://inparanoid.sbc.su.se/cgi-bin/gene_search.cgi?id=%value"
-  },
-  {
-    "name": "KO",
-    "displayName": "KO",
-    "category": "PLG",
-    "uriLink": "https://www.genome.jp/dbget-bin/www_bget?ko:%value"
-  },
-  {
-    "name": "OMA",
-    "displayName": "OMA",
-    "category": "PLG",
-    "uriLink": "http://omabrowser.org/cgi-bin/gateway.pl?f=DisplayGroup&p1=%acc",
-    "attributes": [
-      {
-        "name": "Fingerprint",
-        "xmlTag": "fingerprint"
-      }
-    ]
-  },
-  {
-    "name": "OrthoDB",
-    "displayName": "OrthoDB",
-    "category": "PLG",
-    "uriLink": "https://www.orthodb.org/?query=%value"
-  },
-  {
-    "name": "PhylomeDB",
-    "displayName": "PhylomeDB",
-    "category": "PLG",
-    "uriLink": "http://phylomedb.org/?q=search_tree&seqid=%value"
-  },
-  {
-    "name": "TreeFam",
-    "displayName": "TreeFam",
-    "category": "PLG",
-    "uriLink": "http://www.treefam.org/family/%value"
-  },
-  {
-    "name": "BioCyc",
-    "displayName": "BioCyc",
-    "category": "EAP",
-    "uriLink": "http://biocyc.org/getid?id=%value"
-  },
-  {
-    "name": "BRENDA",
-    "displayName": "BRENDA",
-    "category": "EAP",
-    "uriLink": "https://www.brenda-enzymes.org/enzyme.php?ecno=%value&UniProtAcc=%acc",
-    "attributes": [
-      {
-        "name": "OrganismId",
-        "xmlTag": "organism ID"
-      }
-    ]
-  },
-  {
-    "name": "Reactome",
-    "displayName": "Reactome",
-    "category": "EAP",
-    "uriLink": "https://www.reactome.org/PathwayBrowser/#%value&FLG=%acc",
-    "attributes": [
-      {
-        "name": "PathwayName",
-        "xmlTag": "pathway name"
-      }
-    ]
-  },
-  {
-    "name": "SABIO-RK",
-    "displayName": "SABIO-RK",
-    "category": "EAP",
-    "uriLink": "http://sabiork.h-its.org/newSearch?q=UniProtKB_AC:%value"
-  },
-  {
-    "name": "SignaLink",
-    "displayName": "SignaLink",
-    "category": "EAP",
-    "uriLink": "http://signalink.org/protein/%value"
-  },
-  {
-    "name": "SIGNOR",
-    "displayName": "SIGNOR",
-    "category": "EAP",
-    "uriLink": "https://signor.uniroma2.it/relation_result.php?id=%value"
-  },
-  {
-    "name": "UniPathway",
-    "displayName": "UniPathway",
-    "category": "EAP",
-    "uriLink": "",
-    "attributes": [
-      {
-        "name": "RectionId",
-        "xmlTag": "reaction ID"
-      }
-    ]
-  },
-  {
-    "name": "ChiTaRS",
-    "displayName": "ChiTaRS",
-    "category": "OTHER",
-    "uriLink": "http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%value",
-    "attributes": [
-      {
-        "name": "OrganismName",
-        "xmlTag": "organism name"
-      }
-    ]
-  },
-  {
-    "name": "EvolutionaryTrace",
-    "displayName": "EvolutionaryTrace",
-    "category": "OTHER",
-    "uriLink": "http://mammoth.bcm.tmc.edu/cgi-bin/report_maker_ls/uniprotTraceServerResults.pl?identifier=%value"
-  },
-  {
-    "name": "GeneWiki",
-    "displayName": "GeneWiki",
-    "category": "OTHER",
-    "uriLink": "https://en.wikipedia.org/wiki/%value"
-  },
-  {
-    "name": "GenomeRNAi",
-    "displayName": "GenomeRNAi",
-    "category": "OTHER",
-    "uriLink": "http://genomernai.org/genedetails/%value"
-  },
-  {
-    "name": "PMAP-CutDB",
-    "displayName": "PMAP-CutDB",
-    "category": "OTHER",
-    "uriLink": "http://substrate.burnham.org/lookup/uniprot/%value"
-  },
-  {
-    "name": "PRO",
-    "displayName": "PRO",
-    "category": "OTHER",
-    "uriLink": "http://research.bioinformatics.udel.edu/pro/entry/%value"
-  },
-  {
-    "name": "Bgee",
-    "displayName": "Bgee",
-    "category": "GEP",
-    "uriLink": "https://bgee.org/?page=gene&gene_id=%value",
-    "attributes": [
-      {
-        "name": "ExpressionPatterns",
-        "xmlTag": "expression patterns"
-      }
-    ]
-  },
-  {
-    "name": "CleanEx",
-    "displayName": "CleanEx",
-    "category": "GEP",
-    "uriLink": "https://cleanex.vital-it.ch/cgi-bin/get_doc?db=cleanex&format=nice&entry=%value"
-  },
-  {
-    "name": "CollecTF",
-    "displayName": "CollecTF",
-    "category": "GEP",
-    "uriLink": "http://www.collectf.org/%value"
-  },
-  {
-    "name": "ExpressionAtlas",
-    "displayName": "ExpressionAtlas",
-    "category": "GEP",
-    "uriLink": "https://www.ebi.ac.uk/gxa/query?geneQuery=%value",
-    "attributes": [
-      {
-        "name": "ExpressionPatterns",
-        "xmlTag": "expression patterns"
-      }
-    ]
-  },
-  {
-    "name": "Genevisible",
-    "displayName": "Genevisible",
-    "category": "GEP",
-    "uriLink": "https://genevisible.com/tissues/%des/UniProt/%value",
-    "attributes": [
-      {
-        "name": "OrganismId",
-        "xmlTag": "organism ID"
-      }
-    ]
-  },
-  {
-    "name": "CDD",
-    "displayName": "CDD",
-    "category": "FMD",
-    "uriLink": "https://www.ncbi.nlm.nih.gov/Structure/cdd/cddsrv.cgi?uid=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "Gene3D",
-    "displayName": "Gene3D",
-    "category": "FMD",
-    "uriLink": "http://www.cathdb.info/version/latest/superfamily/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "HAMAP",
-    "displayName": "HAMAP",
-    "category": "FMD",
-    "uriLink": "https://hamap.expasy.org/signature/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "InterPro",
-    "displayName": "InterPro",
-    "category": "FMD",
-    "uriLink": "https://www.ebi.ac.uk/interpro/entry/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      }
-    ]
-  },
-  {
-    "name": "PANTHER",
-    "displayName": "PANTHER",
-    "category": "FMD",
-    "uriLink": "http://www.pantherdb.org/panther/family.do?clsAccession=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "Pfam",
-    "displayName": "Pfam",
-    "category": "FMD",
-    "uriLink": "http://pfam.xfam.org/family/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "PIRSF",
-    "displayName": "PIRSF",
-    "category": "FMD",
-    "uriLink": "https://pir.georgetown.edu/cgi-bin/ipcSF?id=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "PRINTS",
-    "displayName": "PRINTS",
-    "category": "FMD",
-    "uriLink": "http://umber.sbs.man.ac.uk/cgi-bin/dbbrowser/sprint/searchprintss.cgi?display_opts=Prints&category=None&queryform=false&prints_accn=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      }
-    ]
-  },
-  {
-    "name": "ProDom",
-    "displayName": "ProDom",
-    "category": "FMD",
-    "uriLink": "http://prodom.prabi.fr/prodom/current/cgi-bin/request.pl?question=SPTR&query=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "SFLD",
-    "displayName": "SFLD",
-    "category": "FMD",
-    "uriLink": "http://sfld.rbvi.ucsf.edu/django/lookup/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "SMART",
-    "displayName": "SMART",
-    "category": "FMD",
-    "uriLink": "http://smart.embl.de/smart/do_annotation.pl?DOMAIN=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "SUPFAM",
-    "displayName": "SUPFAM",
-    "category": "FMD",
-    "uriLink": "http://supfam.org/SUPERFAMILY/cgi-bin/scop.cgi?ipid=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "TIGRFAMs",
-    "displayName": "TIGRFAMs",
-    "category": "FMD",
-    "uriLink": "http://tigrfams.jcvi.org/cgi-bin/HmmReportPage.cgi?acc=%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "PROSITE",
-    "displayName": "PROSITE",
-    "category": "FMD",
-    "uriLink": "https://prosite.expasy.org/doc/%value",
-    "attributes": [
-      {
-        "name": "EntryName",
-        "xmlTag": "entry name"
-      },
-      {
-        "name": "MatchStatus",
-        "xmlTag": "match status"
-      }
-    ]
-  },
-  {
-    "name": "GO",
-    "displayName": "GO",
-    "category": "OTG",
-    "uriLink": "https://prosite.expasy.org/doc/%value",
-    "attributes": [
-      {
-        "name": "GoTerm",
-        "xmlTag": "term"
-      },
-      {
-        "name": "GoEvidenceType",
-        "xmlTag": "evidence"
-      },
-      {
-        "name": "GoEvidenceSource",
-        "xmlTag": "source"
-      }
-    ]
-  },
-  {
-    "name": "Proteomes",
-    "displayName": "Proteomes",
-    "category": "PRM",
-    "uriLink": "https://www.uniprot.org/proteomes/%value",
-    "attributes": [
-      {
-        "name": "Component",
-        "xmlTag": "component"
-      }
-    ]
-  },
-  {
-    "name": "GlycoProtDB",
-    "displayName": "GlycoProtDB",
-    "category": "UNK",
-    "uriLink": "http://acgg.asia/db/gpdb/id/%value"
-  },
-  {
-    "name": "ProtClustDB",
-    "displayName": "ProtClustDB",
-    "category": "UNK",
-    "uriLink": ""
-  },
-  {
-    "name": "PathwayCommons",
-    "displayName": "PathwayCommons",
-    "category": "UNK",
-    "uriLink": "http://www.pathwaycommons.org/search?type=Pathway&q=%value"
-  }
+	{
+		"name": "EMBL",
+		"displayName": "EMBL",
+		"category": "SEQ",
+		"uriLink": "https://www.ebi.ac.uk/ena/data/view/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"https://www.ebi.ac.uk/ena/data/view/%value"			
+			},
+			{
+				"name": "Status",
+				"xmlTag":"status"
+			},
+			{
+				"name": "MoleculeType",
+				"xmlTag":"molecule type"
+			}
+		]
+	},
+	{
+		"name": "CCDS",
+		"displayName": "CCDS",
+		"category": "SEQ",
+		"uriLink": "http://www.ncbi.nlm.nih.gov/CCDS/CcdsBrowse.cgi?REQUEST=CCDS&GO=MainBrowse&DATA=%value"
+	},
+	{
+		"name": "PIR",
+		"displayName": "PIR",
+		"category": "SEQ",
+		"uriLink": "http://pir.georgetown.edu/cgi-bin/nbrfget?uid=%value",
+		"attributes": [
+			{
+				"name": "EntryName",
+				"xmlTag":"entry name" 
+			}		
+		]
+	},
+	{
+		"name": "RefSeq",
+		"displayName": "RefSeq",
+		"category": "SEQ",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/protein/%value",
+		"attributes": [
+			{
+				"name": "NucleotideSequenceId",
+				"xmlTag":"nucleotide sequence ID",
+				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%value"		
+			
+			}
+		]
+	},
+	{
+		"name": "UniGene",
+		"displayName": "UniGene",
+		"category": "SEQ",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?ORG=%value&CID=%value"
+	},
+	{
+		"name": "PDB",
+		"displayName": "PDB",
+		"category": "3DS",
+		"uriLink": "https://www.ebi.ac.uk/pdbe/entry/pdb/%value",
+		"attributes": [
+			{
+				"name": "Method",
+				"xmlTag":"method"		
+			},
+			{
+				"name": "Resolution",
+				"xmlTag":"resolution"
+			},
+			{
+				"name": "Chains",
+				"xmlTag":"chains"
+			}
+		]
+	},
+	{
+		"name": "PDBsum",
+		"displayName": "PDBsum",
+		"category": "3DS",
+		"uriLink": "https://www.ebi.ac.uk/thornton-srv/databases/cgi-bin/pdbsum/GetPage.pl?pdbcode=%value"		
+	},
+	{
+		"name": "DisProt",
+		"displayName": "DisProt",
+		"category": "3DS",
+		"uriLink": "http://www.disprot.org/%value"		
+	},
+	{
+		"name": "ProteinModelPortal",
+		"displayName": "ProteinModelPortal",
+		"category": "3DS",
+		"uriLink": "https://www.proteinmodelportal.org/query/uniprot/%value"
+	},
+	{
+		"name": "SMR",
+		"displayName": "SMR",
+		"category": "3DS",
+		"uriLink": "http://swissmodel.expasy.org/repository/smr.php?sptr_ac=%value"
+	},
+	
+	{
+		"name": "BioGrid",
+		"displayName": "BioGrid",
+		"category": "PPI",
+		"uriLink": "http://thebiogrid.org/%value",
+		"attributes": [
+			{
+				"name": "Interactions",
+				"xmlTag":"interactions"		
+			}			
+		]
+	},
+	{
+		"name": "ComplexPortal",
+		"displayName": "ComplexPortal",
+		"category": "PPI",
+		"uriLink": "https://www.ebi.ac.uk/complexportal/complex/%value",
+		"attributes": [
+			{
+				"name": "EntryName",
+				"xmlTag":"entry name"		
+			}			
+		]
+	},
+	{
+		"name": "CORUM",
+		"displayName": "CORUM",
+		"category": "PPI",
+		"uriLink": "http://mips.helmholtz-muenchen.de/corum/#?uniprotID=%value"
+	},
+	{
+		"name": "DIP",
+		"displayName": "DIP",
+		"category": "PPI",
+		"uriLink": "http://dip.doe-mbi.ucla.edu/dip/Browse.cgi?ID=%value"
+	},
+	{
+		"name": "ELM",
+		"displayName": "ELM",
+		"category": "PPI",
+		"uriLink": "http://elm.eu.org/instances.html?q=%value"
+	},
+	{
+		"name": "IntAct",
+		"displayName": "IntAct",
+		"category": "PPI",
+		"uriLink": "https://www.ebi.ac.uk/intact/interactors/id:%value",
+		"attributes": [
+			{
+				"name": "Interactions",
+				"xmlTag":"interactions"		
+			}			
+		]
+	},
+	{
+		"name": "MINT",
+		"displayName": "MINT",
+		"category": "PPI",
+		"uriLink": "https://mint.bio.uniroma2.it/index.php/results-interactions/?id=%value"
+	},
+	{
+		"name": "STRING",
+		"displayName": "STRING",
+		"category": "PPI",
+		"uriLink": "https://string-db.org/network/%value"
+	},
+	
+	{
+		"name": "BindingDB",
+		"displayName": "BindingDB",
+		"category": "CHEMISTRY",
+		"uriLink": "http://www.bindingdb.org/uniprot/%value"
+	},
+	{
+		"name": "ChEMBL",
+		"displayName": "ChEMBL",
+		"category": "CHEMISTRY",
+		"uriLink": "https://www.ebi.ac.uk/chembldb/target/inspect/%value"
+	},
+	{
+		"name": "DrugBank",
+		"displayName": "DrugBank",
+		"category": "CHEMISTRY",
+		"uriLink": "https://www.drugbank.ca/drugs/%value",
+		"attributes": [
+			{
+				"name": "GenericName",
+				"xmlTag":"generic name"		
+			}			
+		]
+	},
+	{
+		"name": "GuidetoPHARMACOLOGY",
+		"displayName": "GuidetoPHARMACOLOGY",
+		"category": "CHEMISTRY",
+		"uriLink": "http://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=%value"		
+	},
+	{
+		"name": "SwissLipids",
+		"displayName": "SwissLipids",
+		"category": "CHEMISTRY",
+		"uriLink": "http://www.swisslipids.org/#/entity/%value/"		
+	},
+	
+	{
+		"name": "Allergome",
+		"displayName": "Allergome",
+		"category": "PFAM",
+		"uriLink": "http://www.allergome.org/script/dettaglio.php?id_molecule=%value",
+		"attributes": [
+			{
+				"name": "AllergenName",
+				"xmlTag":"allergen name"		
+			}			
+		]	
+	},
+	{
+		"name": "CAZy",
+		"displayName": "CAZy",
+		"category": "PFAM",
+		"uriLink": "http://www.cazy.org/%value.html",
+		"attributes": [
+			{
+				"name": "FamilyName",
+				"xmlTag":"family name"		
+			}			
+		]	
+	},
+	{
+		"name": "ESTHER",
+		"displayName": "ESTHER",
+		"category": "PFAM",
+		"uriLink": "http://bioweb.supagro.inra.fr/ESTHER/gene_locus?name=%value&class=Gene_locus",
+		"attributes": [
+			{
+				"name": "FamilyName",
+				"xmlTag":"family name"		
+			}			
+		]	
+	},
+	{
+		"name": "IMGT_GENE-DB",
+		"displayName": "IMGT_GENE-DB",
+		"category": "PFAM",
+		"uriLink": "http://www.imgt.org/IMGT_GENE-DB/GENElect?query=2+%value&species=Homo+sapiens"
+	},
+	{
+		"name": "MEROPS",
+		"displayName": "MEROPS",
+		"category": "PFAM",
+		"uriLink": "https://www.ebi.ac.uk/merops/cgi-bin/pepsum?mid=%value"
+	},
+	{
+		"name": "MoonDB",
+		"displayName": "MoonDB",
+		"category": "PFAM",
+		"uriLink": "http://moondb.hb.univ-amu.fr/protein/%value",
+		"attributes": [
+			{
+				"name": "Type",
+				"xmlTag":"type"		
+			}			
+		]	
+	},
+	{
+		"name": "MoonProt",
+		"displayName": "MoonProt",
+		"category": "PFAM",
+		"uriLink": "http://moonlightingproteins.org/proteins/?q=%value"		
+	},
+	{
+		"name": "mycoCLAP",
+		"displayName": "mycoCLAP",
+		"category": "PFAM",
+		"uriLink": "https://mycoclap.fungalgenomics.ca/mycoCLAP/clap/GeneView/%value"
+	},
+	{
+		"name": "PeroxiBase",
+		"displayName": "PeroxiBase",
+		"category": "PFAM",
+		"uriLink": "http://peroxibase.toulouse.inra.fr/display_perox/view_perox/%value",
+		"attributes": [
+			{
+				"name": "EntryName",
+				"xmlTag":"entry name"		
+			}			
+		]	
+	},
+	{
+		"name": "REBASE",
+		"displayName": "REBASE",
+		"category": "PFAM",
+		"uriLink": "http://rebase.neb.com/rebase/enz/%value.html",
+		"attributes": [
+			{
+				"name": "EntryName",
+				"xmlTag":"entry name"		
+			}			
+		]	
+	},
+	{
+		"name": "TCDB",
+		"displayName": "TCDB",
+		"category": "PFAM",
+		"uriLink": "http://www.tcdb.org/search/result.php?tc=%value",
+		"attributes": [
+			{
+				"name": "FamilyName",
+				"xmlTag":"family name"		
+			}			
+		]	
+	},
+	{
+		"name": "UniLectin",
+		"displayName": "UniLectin",
+		"category": "PFAM",
+		"uriLink": "https://www.unilectin.eu/curated/protein?id=%value"
+	},	
+	
+	{
+		"name": "CarbonylDB",
+		"displayName": "CarbonylDB",
+		"category": "PTM",
+		"uriLink": "http://digbio.missouri.edu/CarbonylDB/index.php/detail/protein/%value"
+	},
+	{
+		"name": "DEPOD",
+		"displayName": "DEPOD",
+		"category": "PTM",
+		"uriLink": "http://depod.bioss.uni-freiburg.de/showp.php?AC=%value"
+	},
+	{
+		"name": "GlyConnect",
+		"displayName": "GlyConnect",
+		"category": "PTM",
+		"uriLink": "https://glyconnect.expasy.org/browser/proteins/%value"
+	},
+	{
+		"name": "iPTMnet",
+		"displayName": "iPTMnet",
+		"category": "PTM",
+		"uriLink": "https://research.bioinformatics.udel.edu/iptmnet/entry/%value"
+	},
+	{
+		"name": "PhosphoSitePlus",
+		"displayName": "PhosphoSitePlus",
+		"category": "PTM",
+		"uriLink": "https://www.phosphosite.org/uniprotAccAction?id=%value"
+	},
+	{
+		"name": "SwissPalm",
+		"displayName": "SwissPalm",
+		"category": "PTM",
+		"uriLink": "https://swisspalm.org/proteins/%value"
+	},
+	{
+		"name": "UniCarbKB",
+		"displayName": "UniCarbKB",
+		"category": "PTM",
+		"uriLink": "http://www.unicarbkb.org/proteinsummary/%value/annotated"
+	},
+	
+	{
+		"name": "BioMuta",
+		"displayName": "BioMuta",
+		"category": "PMD",
+		"uriLink": "https://hive.biochemistry.gwu.edu/tools/biomuta/biomuta.php?gene=%value"
+	},
+	{
+		"name": "DMDM",
+		"displayName": "DMDM",
+		"category": "PMD",
+		"uriLink": "http://bioinf.umbc.edu/dmdm/gene_prot_page.php?search_type=protein&id=%value"	
+	},
+	{
+		"name": "dbSNP",
+		"displayName": "dbSNP",
+		"category": "PMD",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/snp/%value"	
+	},
+	
+	{
+		"name": "COMPLUYEAST-2DPAGE",
+		"displayName": "COMPLUYEAST-2DPAGE",
+		"category": "2DG",
+		"uriLink": "http://compluyeast2dpage.dacya.ucm.es/cgi-bin/2d/2d.cgi?ac=%value"	
+	},
+	{
+		"name": "DOSAC-COBS-2DPAGE",
+		"displayName": "DOSAC-COBS-2DPAGE",
+		"category": "2DG",
+		"uriLink": "http://www.dosac.unipa.it/cgi-bin/2d/2d.cgi?ac=%value"	
+	},
+	{
+		"name": "OGP",
+		"displayName": "OGP",
+		"category": "2DG",
+		"uriLink": "http://usc_ogp_2ddatabase.cesga.es/cgi-bin/2d/2d.cgi?%value"	
+	},
+	{
+		"name": "REPRODUCTION-2DPAGE",
+		"displayName": "REPRODUCTION-2DPAGE",
+		"category": "2DG",	
+		"uriLink": "http://reprod.njmu.edu.cn/cgi-bin/2d/2d.cgi?%value"	
+	},
+	{
+		"name": "SWISS-2DPAGE",
+		"displayName": "SWISS-2DPAGE",
+		"category": "2DG",
+		"uriLink": "https://world-2dpage.expasy.org/swiss-2dpage/protein/ac=%value"	
+	},
+	{
+		"name": "UCD-2DPAGE",
+		"displayName": "UCD-2DPAGE",
+		"category": "2DG",
+		"uriLink": "https://proteomics-portal.ucd.ie/cgi-bin/2d/2d.cgi?%value"	
+	},
+	{
+		"name": "World-2DPAGE",
+		"displayName": "World-2DPAGE",
+		"category": "2DG",
+		"uriLink": "https://world-2dpage.expasy.org/repository/protein/ac=%value"	
+	},
+	
+	{
+		"name": "EPD",
+		"displayName": "EPD",
+		"category": "PROTEOMIC",
+		"uriLink": "https://www.peptracker.com/epd/analytics/?protein_id=%value"	
+	},
+	{
+		"name": "MaxQB",
+		"displayName": "MaxQB",
+		"category": "PROTEOMIC",
+		"uriLink": "http://maxqb.biochem.mpg.de/mxdb/protein/show/%value"	
+	},
+	{
+		"name": "PaxDb",
+		"displayName": "PaxDb",
+		"category": "PROTEOMIC",
+		"uriLink": "https://pax-db.org/#!protein/%value"	
+	},
+	{
+		"name": "PeptideAtlas",
+		"displayName": "PeptideAtlas",
+		"category": "PROTEOMIC",
+		"uriLink": "https://db.systemsbiology.net/sbeams/cgi/PeptideAtlas/Search?action=GO&search_key=%value"	
+	},
+	{
+		"name": "PRIDE",
+		"displayName": "PRIDE",
+		"category": "PROTEOMIC",
+		"uriLink": "https://www.ebi.ac.uk/pride/archive/simpleSearch?q=%value"	
+	},
+	{
+		"name": "ProMEX",
+		"displayName": "ProMEX",
+		"category": "PROTEOMIC",
+		"uriLink": "http://promex.pph.univie.ac.at/promex/?ac=%value"	
+	},
+	{
+		"name": "ProteomicsDB",
+		"displayName": "ProteomicsDB",
+		"category": "PROTEOMIC",
+		"uriLink": "https://www.proteomicsdb.org/proteomicsdb/#human/proteinDetails/%value"	
+	},
+	{
+		"name": "TopDownProteomics",
+		"displayName": "TopDownProteomics",
+		"category": "PROTEOMIC",
+		"uriLink": "http://repository.topdownproteomics.org/Proteoforms?query=%value"	
+	},
+	{
+		"name": "jPOST",
+		"displayName": "jPOST",
+		"category": "PROTEOMIC",
+		"uriLink": "http://globe.jpostdb.org/protein?id=%value"	
+	},
+	
+	
+	{
+		"name": "DNASU",
+		"displayName": "DNASU",
+		"category": "PAM",
+		"uriLink": "https://dnasu.org/DNASU/AdvancedSearchOptions.do?geneName=%value"	
+	},
+	
+	{
+		"name": "Ensembl",
+		"displayName": "Ensembl",
+		"category": "GMA",
+		"uriLink": "https://www.ensembl.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"https://www.ensembl.org/id/%value"			
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"https://www.ensembl.org/id/%value"			
+			}
+		]
+	},
+	{
+		"name": "EnsemblBacteria",
+		"displayName": "EnsemblBacteria",
+		"category": "GMA",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			}
+		]
+	},
+	{
+		"name": "EnsemblFungi",
+		"displayName": "EnsemblFungi",
+		"category": "GMA",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			}
+		]
+	},
+	{
+		"name": "EnsemblMetazoa",
+		"displayName": "EnsemblMetazoa",
+		"category": "GMA",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			}
+		]
+	},
+	{
+		"name": "EnsemblPlants",
+		"displayName": "EnsemblPlants",
+		"category": "GMA",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			}
+		]
+	},
+	{
+		"name": "EnsemblProtists",
+		"displayName": "EnsemblProtists",
+		"category": "GMA",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"http://www.ensemblgenomes.org/id/%value"		
+			}
+		]
+	},
+	{
+		"name": "GeneDB",
+		"displayName": "GeneDB",
+		"category": "GMA",
+		"uriLink": "http://www.genedb.org/gene/%value"		
+	},
+	{
+		"name": "GeneID",
+		"displayName": "GeneID",
+		"category": "GMA",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/gene/%value"	
+	},
+	{
+		"name": "Gramene",
+		"displayName": "Gramene",
+		"category": "GMA",
+		"uriLink": "http://ensembl.gramene.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://ensembl.gramene.org/id/%value"
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"http://ensembl.gramene.org/id/%value"	
+			}
+		]
+	},
+	{
+		"name": "KEGG",
+		"displayName": "KEGG",
+		"category": "GMA",
+		"uriLink": "https://www.genome.jp/dbget-bin/www_bget?%value"		
+	},
+	{
+		"name": "PATRIC",
+		"displayName": "PATRIC",
+		"category": "GMA",
+		"uriLink": "https://www.patricbrc.org/view/Feature/%value",
+		"attributes": [
+			{
+				"name": "GeneDesignation",
+				"xmlTag":"gene designation"
+			}
+		]		
+	},
+	{
+		"name": "UCSC",
+		"displayName": "UCSC",
+		"category": "GMA",	
+		"uriLink": "https://genome.ucsc.edu/cgi-bin/hgLinkIn?resource=uniprot&id=%acc", 
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"
+			}
+		]		
+	},
+	{
+		"name": "VectorBase",
+		"displayName": "VectorBase",
+		"category": "GMA",
+		"uriLink": "https://www.vectorbase.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"https://www.vectorbase.org/id/%value"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"https://www.vectorbase.org/id/%value"		
+			}
+		]
+	},
+	{
+		"name": "WBParaSite",
+		"displayName": "WBParaSite",
+		"category": "GMA",
+		"uriLink": "https://parasite.wormbase.org/id/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"https://parasite.wormbase.org/id/%value"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"https://parasite.wormbase.org/id/%value"	
+			}
+		]
+	},
+	
+	{
+		"name": "ArachnoServer",
+		"displayName": "ArachnoServer",
+		"category": "ORG",
+		"uriLink": "http://www.arachnoserver.org/toxincard.html?id=%value",
+		"attributes": [
+			{
+				"name": "ToxinName",
+				"xmlTag":"toxin name"			
+			}
+		]
+	},
+	{
+		"name": "Araport",
+		"displayName": "Araport",
+		"category": "ORG",
+		"uriLink": "https://apps.araport.org/thalemine/portal.do?externalids=%value"
+	},
+	{
+		"name": "CGD",
+		"displayName": "CGD",
+		"category": "ORG",
+		"uriLink": "http://www.candidagenome.org/cgi-bin/locus.pl?dbid=%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "ConoServer",
+		"displayName": "ConoServer",
+		"category": "ORG",
+		"uriLink": "http://www.conoserver.org/?page=card&table=protein&id=%value",
+		"attributes": [
+			{
+				"name": "ToxinName",
+				"xmlTag":"toxin name"			
+			}
+		]
+	},
+	{
+		"name": "CTD",
+		"displayName": "CTD",
+		"category": "ORG",
+		"uriLink": "http://ctdbase.org/detail.go?type=gene&db=GENE&acc=%value"
+	},
+	{
+		"name": "dictyBase",
+		"displayName": "dictyBase",
+		"category": "ORG",
+		"uriLink": "http://dictybase.org/gene/%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "DisGeNET",
+		"displayName": "DisGeNET",
+		"category": "ORG",
+		"uriLink": "http://disgenet.org/search?q=%value"
+	},
+	{
+		"name": "EchoBASE",
+		"displayName": "EchoBASE",
+		"category": "ORG",
+		"uriLink": "https://www.york.ac.uk/res/thomas/Gene.cfm?recordID=%value"
+	},
+	{
+		"name": "EcoGene",
+		"displayName": "EcoGene",
+		"category": "ORG",
+		"uriLink": "http://www.ecogene.org/geneInfo.php?eg_id=%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "euHCVdb",
+		"displayName": "euHCVdb",
+		"category": "ORG",
+		"uriLink": "https://euhcvdb.ibcp.fr/euHCVdb/do/displayHCVEntry?primaryAC=%value"
+	},
+	{
+		"name": "EuPathDB",
+		"displayName": "EuPathDB",
+		"category": "ORG",
+		"uriLink": "http://www.eupathdb.org/gene/%value"
+	},
+	{
+		"name": "FlyBase",
+		"displayName": "FlyBase",
+		"category": "ORG",
+		"uriLink": "http://flybase.org/reports/%value.html",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "GeneCards",
+		"displayName": "GeneCards",
+		"category": "ORG",
+		"uriLink": "https://www.genecards.org/cgi-bin/carddisp.pl?gene=%value"
+	},
+	{
+		"name": "GeneReviews",
+		"displayName": "GeneReviews",
+		"category": "ORG",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=%value"
+	},
+	{
+		"name": "H-InvDB",
+		"displayName": "H-InvDB",
+		"category": "ORG",
+		"uriLink": "http://h-invitational.jp/hinv/spsoup/locus_view?hix_id=%value"
+	},
+	{
+		"name": "HGNC",
+		"displayName": "HGNC",
+		"category": "ORG",
+		"uriLink": "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "HPA",
+		"displayName": "HPA",
+		"category": "ORG",
+		"uriLink": "http://www.proteinatlas.org/tissue_profile.php?antibody_id=%value"
+	},
+	{
+		"name": "LegioList",
+		"displayName": "LegioList",
+		"category": "ORG",
+		"uriLink": "http://genolist.pasteur.fr/LegioList/genome.cgi?external_query+%value"
+	},
+	{
+		"name": "Leproma",
+		"displayName": "Leproma",
+		"category": "ORG",
+		"uriLink": "https://mycobrowser.epfl.ch/genes/%value"
+	},
+	{
+		"name": "MaizeGDB",
+		"displayName": "MaizeGDB",
+		"category": "ORG",
+		"uriLink": "https://www.maizegdb.org/data_center/gene_product?id=%value"
+	},
+	{
+		"name": "MalaCards",
+		"displayName": "MalaCards",
+		"category": "ORG",
+		"uriLink": "https://www.malacards.org/search/eliteGene/%value"
+	},
+	{
+		"name": "MGI",
+		"displayName": "MGI",
+		"category": "ORG",
+		"uriLink": "http://www.informatics.jax.org/marker/%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "MIM",
+		"displayName": "MIM",
+		"category": "ORG",
+		"uriLink": "http://www.omim.org/entry/%value"
+	},
+	{
+		"name": "neXtProt",
+		"displayName": "neXtProt",
+		"category": "ORG",
+		"uriLink": "https://www.nextprot.org/entry/%value"
+	},
+	{
+		"name": "OpenTargets",
+		"displayName": "OpenTargets",
+		"category": "ORG",
+		"uriLink": "https://www.targetvalidation.org/target/%value/associations"
+	},
+	{
+		"name": "Orphanet",
+		"displayName": "Orphanet",
+		"category": "ORG",
+		"uriLink": "https://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=GB&Expert=%value",
+		"attributes": [
+			{
+				"name": "Disease",
+				"xmlTag":"disease"			
+			}
+		]
+	},
+	{
+		"name": "PharmGKB",
+		"displayName": "PharmGKB",
+		"category": "ORG",
+		"uriLink": "https://www.pharmgkb.org/gene/%value"
+	},
+	{
+		"name": "PomBase",
+		"displayName": "PomBase",
+		"category": "ORG",
+		"uriLink": "https://www.pombase.org/spombe/result/%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "PseudoCAP",
+		"displayName": "PseudoCAP",
+		"category": "ORG",
+		"uriLink": "http://www.pseudomonas.com/feature/show?locus_tag=%value"
+	},
+	{
+		"name": "RGD",
+		"displayName": "RGD",
+		"category": "ORG",
+		"uriLink": "https://rgd.mcw.edu/rgdweb/report/gene/main.html?id=%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "SGD",
+		"displayName": "SGD",
+		"category": "ORG",
+		"uriLink": "https://www.yeastgenome.org/locus/%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "TAIR",
+		"displayName": "TAIR",
+		"category": "ORG",
+		"uriLink": "https://www.arabidopsis.org/servlets/TairObject?accession=%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "TubercuList",
+		"displayName": "TubercuList",
+		"category": "ORG",
+		"uriLink": "https://mycobrowser.epfl.ch/genes/%value"
+	},
+	{
+		"name": "VGNC",
+		"displayName": "VGNC",
+		"category": "ORG",
+		"uriLink": "https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/%value",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "WormBase",
+		"displayName": "WormBase",
+		"category": "ORG",
+		"uriLink": "https://wormbase.org/species/c_elegans/cds/%value",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://www.wormbase.org/db/seq/protein?name=%value;class=Protein"		
+			},
+			{
+				"name": "GeneId",
+				"xmlTag":"gene ID",
+				"uriLink":"http://www.wormbase.org/db/gene/gene?name=%value;class=Gene"		
+			},
+			{	"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "Xenbase",
+		"displayName": "Xenbase",
+		"category": "ORG",
+		"uriLink": "http://www.xenbase.org/gene/showgene.do?method=display&geneId=%value",
+		"attributes": [		
+			{	"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	{
+		"name": "ZFIN",
+		"displayName": "ZFIN",
+		"category": "ORG",
+		"uriLink": "http://zfin.org/%value",
+		"attributes": [		
+			{	"name": "GeneName",
+				"xmlTag":"gene designation"			
+			}
+		]
+	},
+	
+	{
+		"name": "eggNOG",
+		"displayName": "eggNOG",
+		"category": "PLG",
+		"uriLink": "http://eggnogdb.embl.de/#/app/results?seqid=%acc&target_nogs=%value",
+		"attributes": [		
+			{	"name": "ToxonomicScope",
+				"xmlTag":"taxonomic scope"			
+			}
+		]
+	},
+	{
+		"name": "GeneTree",
+		"displayName": "GeneTree",
+		"category": "PLG",
+		"uriLink": "http://www.ensembl.org/Multi/GeneTree/Image?gt=%value"
+	},
+	{
+		"name": "HOGENOM",
+		"displayName": "HOGENOM",
+		"category": "PLG",
+		"uriLink": "http://doua.prabi.fr/cgi-bin/view-tree-srs.pl?query=%value&db=HOGENOM6"
+	},
+	{
+		"name": "HOVERGEN",
+		"displayName": "HOVERGEN",
+		"category": "PLG",
+		"uriLink": "http://doua.prabi.fr/cgi-bin/view-tree-srs.pl?query=%value&db=HOVERGEN"
+	},
+	{
+		"name": "InParanoid",
+		"displayName": "InParanoid",
+		"category": "PLG",
+		"uriLink": "http://inparanoid.sbc.su.se/cgi-bin/gene_search.cgi?id=%value"
+	},
+	{
+		"name": "KO",
+		"displayName": "KO",
+		"category": "PLG",
+		"uriLink": "https://www.genome.jp/dbget-bin/www_bget?ko:%value"
+	},
+	{
+		"name": "OMA",
+		"displayName": "OMA",
+		"category": "PLG",
+		"uriLink": "http://omabrowser.org/cgi-bin/gateway.pl?f=DisplayGroup&p1=%acc",
+		"attributes": [		
+			{	"name": "Fingerprint",
+				"xmlTag":"fingerprint"			
+			}
+		]
+	},
+	{
+		"name": "OrthoDB",
+		"displayName": "OrthoDB",
+		"category": "PLG",
+		"uriLink": "https://www.orthodb.org/?query=%value"
+	},
+	{
+		"name": "PhylomeDB",
+		"displayName": "PhylomeDB",
+		"category": "PLG",
+		"uriLink": "http://phylomedb.org/?q=search_tree&seqid=%value"
+	},
+	{
+		"name": "TreeFam",
+		"displayName": "TreeFam",
+		"category": "PLG",
+		"uriLink": "http://www.treefam.org/family/%value"
+	},
+	
+	{
+		"name": "BioCyc",
+		"displayName": "BioCyc",
+		"category": "EAP",
+		"uriLink": "http://biocyc.org/getid?id=%value"
+	},
+	{
+		"name": "BRENDA",
+		"displayName": "BRENDA",
+		"category": "EAP",
+		"uriLink": "https://www.brenda-enzymes.org/enzyme.php?ecno=%value&UniProtAcc=%acc",
+		"attributes": [		
+			{	"name": "OrganismId",
+				"xmlTag":"organism ID"			
+			}
+		]
+	},
+	{
+		"name": "Reactome",
+		"displayName": "Reactome",
+		"category": "EAP",
+		"uriLink": "https://www.reactome.org/PathwayBrowser/#%value&FLG=%acc",
+		"attributes": [		
+			{	"name": "PathwayName",
+				"xmlTag":"pathway name"			
+			}
+		]
+	},
+	{
+		"name": "SABIO-RK",
+		"displayName": "SABIO-RK",
+		"category": "EAP",
+		"uriLink": "http://sabiork.h-its.org/newSearch?q=UniProtKB_AC:%value"
+	},
+	{
+		"name": "SignaLink",
+		"displayName": "SignaLink",
+		"category": "EAP",
+		"uriLink": "http://signalink.org/protein/%value"
+	},
+	{
+		"name": "SIGNOR",
+		"displayName": "SIGNOR",
+		"category": "EAP",
+		"uriLink": "https://signor.uniroma2.it/relation_result.php?id=%value"
+	},
+	{
+		"name": "UniPathway",
+		"displayName": "UniPathway",
+		"category": "EAP",
+		"uriLink": "",
+		"attributes": [		
+			{	"name": "RectionId",
+				"xmlTag":"reaction ID"			
+			}
+		]
+	},
+	
+	{
+		"name": "ChiTaRS",
+		"displayName": "ChiTaRS",
+		"category": "OTHER",
+		"uriLink": "http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%value",
+		"attributes": [		
+			{	"name": "OrganismName",
+				"xmlTag":"organism name"			
+			}
+		]
+	},
+	{
+		"name": "EvolutionaryTrace",
+		"displayName": "EvolutionaryTrace",
+		"category": "OTHER",
+		"uriLink": "http://mammoth.bcm.tmc.edu/cgi-bin/report_maker_ls/uniprotTraceServerResults.pl?identifier=%value"	
+	},
+	{
+		"name": "GeneWiki",
+		"displayName": "GeneWiki",
+		"category": "OTHER",
+		"uriLink": "https://en.wikipedia.org/wiki/%value"	
+	},
+	{
+		"name": "GenomeRNAi",
+		"displayName": "GenomeRNAi",
+		"category": "OTHER",
+		"uriLink": "http://genomernai.org/genedetails/%value"	
+	},
+	{
+		"name": "PMAP-CutDB",
+		"displayName": "PMAP-CutDB",
+		"category": "OTHER",
+		"uriLink": "http://substrate.burnham.org/lookup/uniprot/%value"	
+	},
+	{
+		"name": "PRO",
+		"displayName": "PRO",
+		"category": "OTHER",
+		"uriLink": "http://research.bioinformatics.udel.edu/pro/entry/%value"	
+	},
+	{
+		"name": "Bgee",
+		"displayName": "Bgee",
+		"category": "GEP",
+		"uriLink": "https://bgee.org/?page=gene&gene_id=%value"	,
+		"attributes": [		
+			{	"name": "ExpressionPatterns",
+				"xmlTag":"expression patterns"			
+			}
+		]
+	},
+	{
+		"name": "CleanEx",
+		"displayName": "CleanEx",
+		"category": "GEP",
+		"uriLink": "https://cleanex.vital-it.ch/cgi-bin/get_doc?db=cleanex&format=nice&entry=%value"	
+	},
+	{
+		"name": "CollecTF",
+		"displayName": "CollecTF",
+		"category": "GEP",
+		"uriLink": "http://www.collectf.org/%value"	
+	},
+	{
+		"name": "ExpressionAtlas",
+		"displayName": "ExpressionAtlas",
+		"category": "GEP",
+		"uriLink": "https://www.ebi.ac.uk/gxa/query?geneQuery=%value",
+		"attributes": [		
+			{	"name": "ExpressionPatterns",
+				"xmlTag":"expression patterns"			
+			}
+		]
+	},
+	{
+		"name": "Genevisible",
+		"displayName": "Genevisible",
+		"category": "GEP",
+		"uriLink": "https://genevisible.com/tissues/%des/UniProt/%value",
+		"attributes": [		
+			{	"name": "OrganismId",
+				"xmlTag":"organism ID"			
+			}
+		]
+	},
+	
+	{
+		"name": "CDD",
+		"displayName": "CDD",
+		"category": "FMD",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/Structure/cdd/cddsrv.cgi?uid=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "Gene3D",
+		"displayName": "Gene3D",
+		"category": "FMD",
+		"uriLink": "http://www.cathdb.info/version/latest/superfamily/%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "HAMAP",
+		"displayName": "HAMAP",
+		"category": "FMD",
+		"uriLink": "https://hamap.expasy.org/signature/%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "InterPro",
+		"displayName": "InterPro",
+		"category": "FMD",
+		"uriLink": "https://www.ebi.ac.uk/interpro/entry/%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			}
+		]
+	},
+	{
+		"name": "PANTHER",
+		"displayName": "PANTHER",
+		"category": "FMD",
+		"uriLink": "http://www.pantherdb.org/panther/family.do?clsAccession=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "Pfam",
+		"displayName": "Pfam",
+		"category": "FMD",
+		"uriLink": "http://pfam.xfam.org/family/%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "PIRSF",
+		"displayName": "PIRSF",
+		"category": "FMD",
+		"uriLink": "https://pir.georgetown.edu/cgi-bin/ipcSF?id=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "PRINTS",
+		"displayName": "PRINTS",
+		"category": "FMD",
+		"uriLink": "http://umber.sbs.man.ac.uk/cgi-bin/dbbrowser/sprint/searchprintss.cgi?display_opts=Prints&category=None&queryform=false&prints_accn=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			}
+		]
+	},
+	{
+		"name": "ProDom",
+		"displayName": "ProDom",
+		"category": "FMD",
+		"uriLink": "http://prodom.prabi.fr/prodom/current/cgi-bin/request.pl?question=SPTR&query=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "SFLD",
+		"displayName": "SFLD",
+		"category": "FMD",
+		"uriLink": "http://sfld.rbvi.ucsf.edu/django/lookup/%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "SMART",
+		"displayName": "SMART",
+		"category": "FMD",
+		"uriLink": "http://smart.embl.de/smart/do_annotation.pl?DOMAIN=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "SUPFAM",
+		"displayName": "SUPFAM",
+		"category": "FMD",
+		"uriLink": "http://supfam.org/SUPERFAMILY/cgi-bin/scop.cgi?ipid=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "TIGRFAMs",
+		"displayName": "TIGRFAMs",
+		"category": "FMD",
+		"uriLink": "http://tigrfams.jcvi.org/cgi-bin/HmmReportPage.cgi?acc=%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},
+	{
+		"name": "PROSITE",
+		"displayName": "PROSITE",
+		"category": "FMD",
+		"uriLink": "https://prosite.expasy.org/doc/%value",
+		"attributes": [		
+			{	"name": "EntryName",
+				"xmlTag":"entry name"			
+			},
+			{	"name": "MatchStatus",
+				"xmlTag":"match status"			
+			}
+		]
+	},	
+	{
+		"name": "GO",
+		"displayName": "GO",
+		"category": "OTG",
+		"uriLink": "https://prosite.expasy.org/doc/%value",
+		"attributes": [		
+			{	"name": "GoTerm",
+				"xmlTag":"term"			
+			},
+			{	"name": "GoEvidenceType",
+				"xmlTag":"evidence"			
+			},
+			{	"name": "Project",
+				"xmlTag":"project"			
+			}			
+		]
+	},
+	{
+		"name": "Proteomes",
+		"displayName": "Proteomes",
+		"category": "PRM",
+		"uriLink": "https://www.uniprot.org/proteomes/%value",
+		"attributes": [		
+			{	"name": "Component",
+				"xmlTag":"component"			
+			}		
+		]
+	},
+	{
+		"name": "GlycoProtDB",
+		"displayName": "GlycoProtDB",
+		"category": "UNK",
+		"uriLink": "http://acgg.asia/db/gpdb/id/%value"
+	},
+	{
+		"name": "ProtClustDB",
+		"displayName": "ProtClustDB",
+		"category": "UNK",
+		"uriLink": ""
+	},
+	{
+		"name": "PathwayCommons",
+		"displayName": "PathwayCommons",
+		"category": "UNK",
+		"uriLink": "http://www.pathwaycommons.org/search?type=Pathway&q=%value"
+	}
+	
+	
 ]

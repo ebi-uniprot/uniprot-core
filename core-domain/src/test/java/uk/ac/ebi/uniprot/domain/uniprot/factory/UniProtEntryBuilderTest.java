@@ -32,6 +32,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+
 import static org.junit.Assert.*;
 
 public class UniProtEntryBuilderTest {
@@ -718,18 +719,15 @@ public class UniProtEntryBuilderTest {
         return features;
     }
 
-    private Feature createVarSeqFeature() {
-        Range location = new Range(65, 86);
-        List<String> value = Arrays.asList("report1", "report 2");
-        SequenceReport report = FeatureFactory.INSTANCE.createReport(value);
-        AlternativeSequence as = new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"),
-                                                             report
-        );
-        FeatureId featureId = FeatureFactory.INSTANCE.createFeatureId("VSP_112");
-
-        return new FeatureImpl(FeatureType.VAR_SEQ, location, "Some description",
-                               featureId, as, null,
-                               createEvidences());
+    private Feature createVarSeqFeature(){
+    	Range location = new Range(65, 86);
+		AlternativeSequence as =new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
+		FeatureId featureId = 	FeatureFactory.INSTANCE.createFeatureId("VSP_112"); 
+		  
+		return new FeatureImpl(FeatureType.VAR_SEQ, location, "Some description",
+				featureId, as, null,
+				createEvidences());
+	
 
     }
 

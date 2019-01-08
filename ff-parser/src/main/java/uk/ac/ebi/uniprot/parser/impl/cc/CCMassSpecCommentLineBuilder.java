@@ -116,7 +116,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
 		return lines;
 	}
 	
-	public static String getSigDig(Double number){
+	public static String getSigDig(Float number){
 		String temp = number.toString();
 		if (temp.indexOf(".") > 0){
 			while (temp.endsWith("0")){

@@ -21,7 +21,7 @@ extends AbstractFeatureLineBuilder {
 			boolean addEvidence) {
 		StringBuilder sb = new StringBuilder();
 		sb.append(FTLineBuilderHelper.buildFeatureCommon(f, includeFFMarkings));
-		StringBuilder extra =FTLineBuilderHelper.buildExtra(f);
+	//	StringBuilder extra =FTLineBuilderHelper.buildExtra(f);
 		String evIds ="";
 		if(addEvidence){
 			evIds = LineBuilderHelper.export(f.getEvidences());
@@ -32,7 +32,7 @@ extends AbstractFeatureLineBuilder {
 		}else{
 			sb.append(SPACE);
 		}
-		sb.append(extra);
+	//	sb.append(extra);
 		List<String> lines = new ArrayList<>();
 		List<String> lines2 = FTLineBuilderHelper.addAlternativeSequence(sb, f ,includeFFMarkings);
 		for(int i=0; i<lines2.size(); i++){
@@ -68,27 +68,27 @@ extends AbstractFeatureLineBuilder {
 		return lines;
 	}	
 	private String getStringIsoformsVarSplicFeature(Feature feature) {
-		
-	        StringBuilder temp = new StringBuilder();
-	        int numberReports = feature.getAlternativeSequence().getReport().getValue().size();
-	        if (numberReports == 0) return "";
-
-	        int count = 0;
-	        for (String isoform : feature.getAlternativeSequence().getReport().getValue()) {
-	            if (count == 0) {
-	                temp.append("in ");
-	            } else {
-	                if (count < numberReports - 1) {
-	                    temp.append(", ");
-	                } else {
-	                    temp.append(" and ");
-	                }
-	            }
-	            temp.append("isoform ");
-	            temp.append(isoform);
-	            count++;
-
-	        }
-	        return temp.toString();
+		return feature.getDescription().getValue();
+//	        StringBuilder temp = new StringBuilder();
+//	        int numberReports = feature.getAlternativeSequence().getReport().getValue().size();
+//	        if (numberReports == 0) return "";
+//
+//	        int count = 0;
+//	        for (String isoform : feature.getAlternativeSequence().getReport().getValue()) {
+//	            if (count == 0) {
+//	                temp.append("in ");
+//	            } else {
+//	                if (count < numberReports - 1) {
+//	                    temp.append(", ");
+//	                } else {
+//	                    temp.append(" and ");
+//	                }
+//	            }
+//	            temp.append("isoform ");
+//	            temp.append(isoform);
+//	            count++;
+//
+//	        }
+//	        return temp.toString();
 	    }
 }

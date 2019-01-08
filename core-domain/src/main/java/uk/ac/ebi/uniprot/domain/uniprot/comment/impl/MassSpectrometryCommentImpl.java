@@ -10,9 +10,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
+
+
     private MassSpectrometryMethod method;
-    private Double molWeight;
-    private Double molWeightError;
+    private Float molWeight;
+    private Float molWeightError;
     private String note;
     private List<MassSpectrometryRange> ranges;
     private List<Evidence> evidences;
@@ -23,9 +25,10 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
         this.evidences = Collections.emptyList();
     }
 
-    public MassSpectrometryCommentImpl(MassSpectrometryMethod method, Double molWeight,
-                                       Double molWeightError, String note, List<MassSpectrometryRange> ranges,
+    public MassSpectrometryCommentImpl(MassSpectrometryMethod method, Float molWeight,
+                                       Float molWeightError, String note, List<MassSpectrometryRange> ranges,
                                        List<Evidence> evidences) {
+
         super(CommentType.MASS_SPECTROMETRY);
         this.method = method;
         this.molWeight = molWeight;
@@ -45,12 +48,12 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public Double getMolWeightError() {
+    public Float getMolWeightError() {
         return molWeightError;
     }
 
     @Override
-    public Double getMolWeight() {
+    public Float getMolWeight() {
         return molWeight;
     }
 

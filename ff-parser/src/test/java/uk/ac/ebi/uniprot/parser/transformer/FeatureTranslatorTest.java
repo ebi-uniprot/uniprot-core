@@ -102,9 +102,9 @@ public class FeatureTranslatorTest {
         assertEquals("GLTA", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
         assertEquals("ESHP", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-        assertEquals(1, feature.getAlternativeSequence().getReport().getValue().size());
-        assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
-      //  assertEquals("AAA98633", feature.getAlternativeSequence().getReport().getValue().get(1));
+     //   assertEquals(1, feature.getAlternativeSequence().getReport().getValue().size());
+    //    assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
+        assertEquals("in Ref. 1; AAA98633", feature.getDescription().getValue());
 
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
@@ -133,10 +133,10 @@ public class FeatureTranslatorTest {
         assertEquals("GLTA", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
         assertEquals("ESHP", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-        assertEquals(2, feature.getAlternativeSequence().getReport().getValue().size());
-        assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
-        assertEquals("3; AA432", feature.getAlternativeSequence().getReport().getValue().get(1));
-
+       // assertEquals(2, feature.getAlternativeSequence().getReport().getValue().size());
+      //  assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
+     //   assertEquals("3; AA432", feature.getAlternativeSequence().getReport().getValue().get(1));
+        assertEquals("in Ref. 1; AAA98633 and 3; AA432", feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
 
@@ -165,11 +165,11 @@ public class FeatureTranslatorTest {
         assertEquals("GLTA", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
         assertEquals("ESHP", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-        assertEquals(3, feature.getAlternativeSequence().getReport().getValue().size());
-        assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
-        assertEquals("3; AA432", feature.getAlternativeSequence().getReport().getValue().get(1));
-        assertEquals("4; AB321", feature.getAlternativeSequence().getReport().getValue().get(2));
-
+//        assertEquals(3, feature.getAlternativeSequence().getReport().getValue().size());
+//        assertEquals("1; AAA98633", feature.getAlternativeSequence().getReport().getValue().get(0));
+//        assertEquals("3; AA432", feature.getAlternativeSequence().getReport().getValue().get(1));
+//        assertEquals("4; AB321", feature.getAlternativeSequence().getReport().getValue().get(2));
+        assertEquals("in Ref. 1; AAA98633, 3; AA432 and 4; AB321", feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
 
@@ -198,10 +198,10 @@ public class FeatureTranslatorTest {
         assertEquals("K", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
         assertEquals("R", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-        assertEquals(
-                "Does not affect E-cadherin/CDH1 repression; when associated with R-16",
-                feature.getAlternativeSequence().getReport().getValue().get(0));
-
+     //   assertEquals(
+    //            "Does not affect E-cadherin/CDH1 repression; when associated with R-16",
+    //            feature.getAlternativeSequence().getReport().getValue().get(0));
+        assertEquals("Does not affect E-cadherin/CDH1 repression; when associated with R-16", feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
 
@@ -229,10 +229,10 @@ public class FeatureTranslatorTest {
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
         assertEquals("R", feature.getAlternativeSequence().getAlternativeSequences().get(0));
 
-        assertEquals(
-                "in GS; dbSNP:rs28936387",
-                feature.getAlternativeSequence().getReport().getValue().get(0));
-
+     //   assertEquals(
+     //           "in GS; dbSNP:rs28936387",
+    //            feature.getAlternativeSequence().getReport().getValue().get(0));
+        assertEquals("in GS; dbSNP:rs28936387", feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
 
@@ -258,10 +258,10 @@ public class FeatureTranslatorTest {
         assertEquals(FeatureType.VARIANT, feature.getType());
         assertEquals(0, feature.getAlternativeSequence().getAlternativeSequences().size());
 
-        assertEquals(
-                "in GS",
-                feature.getAlternativeSequence().getReport().getValue().get(0));
-
+//        assertEquals(
+//                "in GS",
+//                feature.getAlternativeSequence().getReport().getValue().get(0));
+        assertEquals("in GS", feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
 
@@ -289,15 +289,14 @@ public class FeatureTranslatorTest {
         assertEquals("E", feature.getAlternativeSequence().getOriginalSequence());
         assertEquals(1, feature.getAlternativeSequence().getAlternativeSequences().size());
         assertEquals("ERDVIRSVRLPRE", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-        assertEquals(4, feature.getAlternativeSequence().getReport().getValue().size());
-        assertEquals(
-                "PLEC- 0",
-                feature.getAlternativeSequence().getReport().getValue().get(0));
-
-        assertEquals(
-                "2A",
-                feature.getAlternativeSequence().getReport().getValue().get(2));
-
+      //  assertEquals(4, feature.getAlternativeSequence().getReport().getValue().size());
+     //   assertEquals(
+     //           "PLEC- 0",
+     //           feature.getAlternativeSequence().getReport().getValue().get(0));
+//        assertEquals(
+//                "2A",
+//                feature.getAlternativeSequence().getReport().getValue().get(2));
+        assertEquals("in isoform PLEC- 0, isoform 1C, isoform 2A and isoform 3A", feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
 
@@ -323,11 +322,11 @@ public class FeatureTranslatorTest {
         assertEquals(FeatureType.VAR_SEQ, feature.getType());
      
         assertEquals(0, feature.getAlternativeSequence().getAlternativeSequences().size());
-        assertEquals(1, feature.getAlternativeSequence().getReport().getValue().size());
-        assertEquals(
-                "PLEC-1H",
-                feature.getAlternativeSequence().getReport().getValue().get(0));
-
+//        assertEquals(1, feature.getAlternativeSequence().getReport().getValue().size());
+//        assertEquals(
+//                "PLEC-1H",
+//                feature.getAlternativeSequence().getReport().getValue().get(0));
+        assertEquals("in isoform PLEC-1H", feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory
                 .create(feature);
 

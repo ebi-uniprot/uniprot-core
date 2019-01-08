@@ -25,5 +25,7 @@ public interface ProteinDescription {
     boolean isValid();
 
     Flag getFlag();
+    
+    void setFlag(Flag flag);
 
 }

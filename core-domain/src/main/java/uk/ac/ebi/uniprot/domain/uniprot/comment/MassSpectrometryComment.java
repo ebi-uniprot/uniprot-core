@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface MassSpectrometryComment extends Comment {
 
-    public Double getMolWeight();
+	public Float getMolWeight();
 
-    public Double getMolWeightError();
+	public Float getMolWeightError();
 
     public String getNote();
 

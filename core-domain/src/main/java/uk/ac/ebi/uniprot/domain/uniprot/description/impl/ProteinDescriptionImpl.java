@@ -8,6 +8,7 @@ import java.util.List;
 
 
 public class ProteinDescriptionImpl implements ProteinDescription {
+
     private ProteinName recommendedName;
     private List<ProteinName> alternativeNames;
     private List<ProteinName> submissionNames;
@@ -83,10 +84,12 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         return submissionNames;
     }
 
+
     @Override
     public List<ProteinName> getAlternativeNames() {
         return alternativeNames;
     }
+
 
     @Override
     public Name getAllergenName() {
@@ -123,6 +126,9 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         return flag;
     }
 
+    public void setFlag(Flag flag) {
+		this.flag= flag;
+	}
     @Override
     public boolean isValid() {
         if (getRecommendedName() != null) {

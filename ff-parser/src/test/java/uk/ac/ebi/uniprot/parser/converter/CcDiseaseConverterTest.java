@@ -63,8 +63,8 @@ public class CcDiseaseConverterTest {
 		assertEquals("Kleefstra syndrome", diseaseComment.getDisease().getDiseaseId());
 		assertEquals("KLESTS", diseaseComment.getDisease().getAcronym());
 		assertEquals(disease.description,
-				diseaseComment.getDisease().getDescription().getValue());
-		assertEquals(0, diseaseComment.getDisease().getDescription().getEvidences().size());
+				diseaseComment.getDisease().getDescription());
+		assertEquals(0, diseaseComment.getDisease().getEvidences().size());
 		DBCrossReference<DiseaseReferenceType> diseaseRef = diseaseComment.getDisease().getReference();
 		assertNotNull(diseaseRef);
 		assertEquals(DiseaseReferenceType.MIM, diseaseRef.getDatabaseType());
@@ -105,9 +105,9 @@ public class CcDiseaseConverterTest {
 		assertEquals("Kleefstra syndrome", diseaseComment.getDisease().getDiseaseId());
 		assertEquals("KLESTS", diseaseComment.getDisease().getAcronym());
 		assertEquals(disease.description,
-				diseaseComment.getDisease().getDescription().getValue());
-		assertEquals(2, diseaseComment.getDisease().getDescription().getEvidences().size());
-		assertEquals("ECO:0000269|PubMed:10433554", diseaseComment.getDisease().getDescription().getEvidences().get(0).getValue());
+				diseaseComment.getDisease().getDescription());
+		assertEquals(2, diseaseComment.getDisease().getEvidences().size());
+		assertEquals("ECO:0000269|PubMed:10433554", diseaseComment.getDisease().getEvidences().get(0).getValue());
 		DBCrossReference<DiseaseReferenceType> diseaseRef = diseaseComment.getDisease().getReference();
 		assertNotNull(diseaseRef);
 		assertEquals(DiseaseReferenceType.MIM, diseaseRef.getDatabaseType());

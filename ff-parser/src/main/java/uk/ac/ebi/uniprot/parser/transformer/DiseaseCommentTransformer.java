@@ -9,7 +9,6 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
@@ -65,7 +64,8 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
         	builder.diseaseId(populateDiseaseId(firstPart));
         	builder.acronym(populateDiseaseAcronym(firstPart));
         	builder.reference(populateDiseaseReference(firstPart));
-        	builder.description(populateDiseaseDescription(description));
+        	populateDiseaseDescription(builder, description);
+        
         	return builder.build();
 
         }
@@ -123,14 +123,15 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
      *            - the annotation with the definition of disease
      * @return the disease description
      */
-    private DiseaseDescription populateDiseaseDescription(String diseaseString) {
+    private void populateDiseaseDescription(DiseaseBuilder builder, String diseaseString) {
      
         String descriptionString = diseaseString;
         List<Evidence> evidences = new ArrayList<>();
         descriptionString = CommentTransformerHelper.stripEvidences(descriptionString, evidences);
         // remove trailing full stop
-        
-       return  DiseaseBuilder.createDiseaseDescription(descriptionString, evidences);
+        builder.description(descriptionString)
+        .evidences(evidences);
+    
     }
 
     /**

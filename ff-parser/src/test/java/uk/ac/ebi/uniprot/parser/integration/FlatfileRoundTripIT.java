@@ -129,6 +129,7 @@ public class FlatfileRoundTripIT {
 				System.out.println("parsed entries:" + totalCount + " failed: " + failedCount);
 			}
 		}
+		System.out.println("total parsed entries:" + totalCount + " failed: " + failedCount);
 		reader.close();
 
 	}

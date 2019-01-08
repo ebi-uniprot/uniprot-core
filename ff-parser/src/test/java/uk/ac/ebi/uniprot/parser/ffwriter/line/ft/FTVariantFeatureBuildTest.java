@@ -31,9 +31,9 @@ public class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
 		String featureId = "VAR_038685";
 
 		List<String> evs = new ArrayList<>();
-
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VARIANT, location, "", featureId, altSeq, evs);
+		String description ="in a breast cancer sample; somatic mutation; dbSNP:rs35514614";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VARIANT, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
@@ -67,8 +67,9 @@ public class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
 		List<String> evs = new ArrayList<>();
 		evs.add(ev1);
 		evs.add(ev2);
-		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences, report);
-		Feature feature = createFeature(FeatureType.VARIANT, location, "", featureId, altSeq, evs);
+		String description ="in a breast cancer sample; somatic mutation; dbSNP:rs35514614";
+		AlternativeSequence altSeq = createAlternativeSequence(originalSequence, alternativeSequences);
+		Feature feature = createFeature(FeatureType.VARIANT, location, description, featureId, altSeq, evs);
 
 		doTest(ftLine, feature);
 		doTestString(ftLineString, feature);
