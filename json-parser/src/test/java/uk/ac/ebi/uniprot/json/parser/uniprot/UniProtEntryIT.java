@@ -1,12 +1,11 @@
 package uk.ac.ebi.uniprot.json.parser.uniprot;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
@@ -18,7 +17,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
+
 /**
  *
  * @author lgonzales
@@ -26,6 +26,20 @@ import static org.junit.Assert.fail;
 public class UniProtEntryIT {
 
     private static Logger logger = LoggerFactory.getLogger(UniProtEntryIT.class);
+
+    @Test
+    public void testInactiveUniProtEntryComplete() {
+        List<String> mergeDemergeTo = Collections.singletonList("merge id");
+        EntryInactiveReason inactiveReason = UniProtFactory.INSTANCE.createInactiveReason(InactiveReasonType.MERGED,mergeDemergeTo);
+        UniProtId uniProtId = UniProtFactory.INSTANCE.createUniProtId("uniprot id");
+        UniProtAccession accession = UniProtFactory.INSTANCE.createUniProtAccession("accession value");
+
+        UniProtEntry inactiveEntry = UniProtFactory.INSTANCE.createInactiveEntry(accession, uniProtId, inactiveReason);
+        ValidateJson.verifyJsonRoundTripParser(inactiveEntry);
+        JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(inactiveEntry);
+        assertNotNull(jsonNode.get("primaryAccession"));
+        assertEquals("accession value",jsonNode.get("primaryAccession").asText());
+    }
 
     @Test
     public void testUniProtEntryComplete() {
@@ -57,17 +71,17 @@ public class UniProtEntryIT {
                 .organismHosts(Collections.singletonList(TaxonomyTest.getOrganism()))
                 .taxonomyLineage(Collections.singletonList(TaxonomyTest.getOrganismName()))
                 .comments(comments)
-                .features(null)
+                .features(Collections.singletonList(FeatureTest.getFeature()))
                 .internalSection(InternalSectionTest.getInternalSection())
                 .keywords(Collections.singletonList(KeywordTest.getKeyword()))
                 .organelles(Collections.singletonList(OrganelleTest.getOrganelle()))
-                .references(null)
-                .uniProtDBCrossReferences(null)
-                .sequence("")
+                .references(UniProtReferenceTest.getUniProtReferences())
+                .uniProtDBCrossReferences(Collections.singletonList(UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
+                .sequence(SequenceTest.getSequence())
                 .build();
 
         ValidateJson.verifyJsonRoundTripParser(entry);
-        //ValidateJson.verifyEmptyFields(entry); TODO: uncomment it
+        ValidateJson.verifyEmptyFields(entry);
 
         try {
             ObjectMapper mapper = JsonParserConfig.getJsonSimpleObjectMapper();

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -59,7 +60,7 @@ public class ValidateJson {
     private static <T> void verifyEmptyFields(T obj, String propertyName) {
         try {
             if (obj == null) {
-                fail("object can not be null in the complete test");
+                fail(propertyName+ " can not be null in the complete test");
             }else{
                 if(obj instanceof String){
                     if(((String) obj).isEmpty()){
@@ -108,6 +109,9 @@ public class ValidateJson {
     private static <T> boolean isJsonField(Field field, T object) {
         boolean result = true;
         if(field.getName().equals("properties") && object instanceof DBCrossReferenceImpl){
+            result = false;
+        }
+        if(field.getName().equals("inactiveReason") && object instanceof UniProtEntryImpl){
             result = false;
         }
         return result;

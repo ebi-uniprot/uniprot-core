@@ -40,6 +40,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.json.parser.deserializer.LocalDateDeserializer;
 import uk.ac.ebi.uniprot.json.parser.serializer.*;
@@ -82,6 +83,9 @@ public class JsonParserConfig {
         simpleMod.addSerializer(PublicationDateImpl.class,new PublicationDateSerializer());
         simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class,new LocatorSerializer());
         simpleMod.addSerializer(JournalImpl.class,new JournalSerializer());
+        simpleMod.addSerializer(UniProtXDbType.class,new UniProtXDbTypeSerializer());
+        simpleMod.addSerializer(FeatureDescriptionImpl.class,new FeatureDescriptionSerializer());
+        simpleMod.addSerializer(FeatureIdImpl.class,new FeatureIdSerializer());
 
         simpleObjMapper.registerModule(simpleMod);
         simpleMapper = simpleObjMapper;
