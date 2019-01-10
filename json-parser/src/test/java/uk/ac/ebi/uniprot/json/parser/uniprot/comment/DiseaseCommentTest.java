@@ -4,20 +4,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
-
-import java.util.ArrayList;
-import java.util.List;
+import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -82,25 +77,15 @@ public class DiseaseCommentTest {
                 .description("some description")
                 .reference(reference)
                 .diseaseAc("Disease AC")
-                .evidences(createEvidences())
+                .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001362"))
                 .build();
 
-        Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
+        Note note = CommentFactory.INSTANCE.createNote(
+                CreateUtils.createEvidencedValueList("value2","ECO:0000256|PIRNR:PIRNR001362"));
         return DiseaseCommentBuilder.newInstance()
                 .disease(disease)
                 .note(note)
                 .build();
     }
 
-    private static List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001362"));
-        return evidences;
-    }
-
-    private static List<EvidencedValue> createEvidenceValues() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", createEvidences()));
-        return evidencedValues;
-    }
 }

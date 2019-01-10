@@ -11,12 +11,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityComment
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.PhysiologicalReactionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ReactionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -94,7 +92,7 @@ public class CatalyticActivityCommentTest {
 
 
     private static List<PhysiologicalReaction> createPhyReactions() {
-        List<Evidence> evidences = Collections.singletonList(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000313|Ensembl:ENSP0001324");
 
         List<PhysiologicalReaction> phyReactions = new ArrayList<>();
         phyReactions.add(new PhysiologicalReactionImpl(PhysiologicalDirectionType.RIGHT_TO_LEFT,
@@ -105,10 +103,7 @@ public class CatalyticActivityCommentTest {
     }
 
     private static Reaction createReaction() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
-        ));
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
         String name = "some reaction";
         List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
         references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));

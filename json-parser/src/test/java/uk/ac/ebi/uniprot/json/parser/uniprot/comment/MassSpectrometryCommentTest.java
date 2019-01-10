@@ -7,11 +7,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryRangeImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -93,14 +91,9 @@ public class MassSpectrometryCommentTest {
                 .molWeightError(1.2f)
                 .note("note value")
                 .massSpectrometryRanges(range)
-                .evidences(createEvidences())
+                .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                 .build();
     }
 
-    private static List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-        return evidences;
-    }
 
 }

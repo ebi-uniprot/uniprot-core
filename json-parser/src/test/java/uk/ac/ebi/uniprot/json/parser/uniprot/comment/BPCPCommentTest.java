@@ -7,8 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -114,10 +114,8 @@ public class BPCPCommentTest {
     }
 
     public static BPCPComment getBpcpComment() {
-        List<Evidence> evidences = Collections.singletonList(
-                UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        List<EvidencedValue> texts = Collections.singletonList(
-                UniProtFactory.INSTANCE.createEvidencedValue("value1", evidences));
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10028");
+        List<EvidencedValue> texts = CreateUtils.createEvidencedValueList("value1", "ECO:0000255|PROSITE-ProRule:PRU10028");
         Note note = CommentFactory.INSTANCE.createNote(texts);
 
         Absorption absorption = BPCPCommentBuilder.createAbsorption(10, true, note, evidences);

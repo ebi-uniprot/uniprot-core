@@ -7,7 +7,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtReferenceFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.citation.*;
@@ -78,19 +77,15 @@ public class UniProtReferenceTest {
     }
 
     private static UniProtReference getUniProtReference(Citation citation) {
-        Evidence evidence = createEvidence("ECO:0000269|PubMed:11389730");
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         ReferenceComment referenceComment = UniProtReferenceFactory.INSTANCE.createReferenceComment(
                 ReferenceCommentType.PLASMID,
                 "reference comment value",
-                Collections.singletonList(evidence));
+                evidences);
 
         return UniProtReferenceFactory.INSTANCE.createUniProtReference(citation,
                 Collections.singletonList("position 1"),
                 Collections.singletonList(referenceComment),
-                Collections.singletonList(evidence));
-    }
-
-    private static Evidence createEvidence(String evidenceStr) {
-        return UniProtFactory.INSTANCE.createEvidence(evidenceStr);
+                evidences);
     }
 }

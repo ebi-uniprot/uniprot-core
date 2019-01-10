@@ -3,12 +3,8 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -48,13 +44,9 @@ public class KeywordTest {
     }
 
     static Keyword getKeyword() {
-        return UniProtFactory.INSTANCE.createKeyword("KW-11111","keyword value",createEvidences());
+        return UniProtFactory.INSTANCE.createKeyword("KW-11111","keyword value",
+                CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"));
     }
 
-    private static List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10025"));
-        return evidences;
-    }
 
 }

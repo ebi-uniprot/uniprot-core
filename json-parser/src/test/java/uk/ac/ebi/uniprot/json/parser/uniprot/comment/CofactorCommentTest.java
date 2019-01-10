@@ -12,10 +12,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -96,14 +95,10 @@ public class CofactorCommentTest {
 
 
     private static List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-        return evidences;
+        return CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
     }
 
     private static List<EvidencedValue> createEvidenceValues() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", createEvidences()));
-        return evidencedValues;
+        return CreateUtils.createEvidencedValueList("value2","ECO:0000256|PIRNR:PIRNR001361");
     }
 }

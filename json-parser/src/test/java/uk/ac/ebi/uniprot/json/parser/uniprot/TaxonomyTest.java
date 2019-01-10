@@ -7,7 +7,6 @@ import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtTaxonIdImpl;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
@@ -102,7 +101,7 @@ public class TaxonomyTest {
     }
 
     public static UniProtTaxonId getUniProtTaxonId() {
-        List<Evidence> evidences = Collections.singletonList(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001363"));
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001363");
         return new UniProtTaxonIdImpl(9606, evidences);
     }
 

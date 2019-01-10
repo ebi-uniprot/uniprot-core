@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
 import java.util.Collections;
 import java.util.List;
@@ -83,7 +84,7 @@ public class AlternativeProductsCommentTest {
     }
 
     public static AlternativeProductsComment getAlternativeProductsComment() {
-        List<Evidence> evidences = Collections.singletonList(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
+        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10028");
         List<IsoformName> isoformSynonyms = Collections.singletonList(APCommentBuilder.createIsoformName("syn value", evidences));
         List<EvidencedValue> evidencedValues = Collections.singletonList(UniProtFactory.INSTANCE.createEvidencedValue("value1", evidences));
         Note note = CommentFactory.INSTANCE.createNote(evidencedValues);

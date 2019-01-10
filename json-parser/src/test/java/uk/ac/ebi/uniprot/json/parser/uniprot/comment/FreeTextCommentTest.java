@@ -2,16 +2,11 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
-
-import java.util.ArrayList;
-import java.util.List;
+import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -56,19 +51,9 @@ public class FreeTextCommentTest {
     public static FreeTextComment getFreeTextComment(){
         return FreeTextCommentBuilder.newInstance()
                 .commentType(CommentType.DISRUPTION_PHENOTYPE)
-                .texts(createEvidenceValues())
+                .texts(CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001360"))
                 .build();
     }
 
-    private static List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001360"));
-        return evidences;
-    }
 
-    private static List<EvidencedValue> createEvidenceValues() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value", createEvidences()));
-        return evidencedValues;
-    }
 }
