@@ -21,13 +21,8 @@ public class EvidenceImpl implements Evidence {
 
     }
 
-
     private EvidenceImpl() {
 
-    }
-
-    private EvidenceImpl(String value) {
-        System.out.println("LEO LEO LEO LEO");
     }
 
     public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceType> source) {
