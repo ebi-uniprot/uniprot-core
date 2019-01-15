@@ -9,7 +9,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.json.parser.JsonParserConfig;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.comment.*;
 
@@ -84,7 +83,7 @@ public class UniProtEntryIT {
         ValidateJson.verifyEmptyFields(entry);
 
         try {
-            ObjectMapper mapper = JsonParserConfig.getJsonSimpleObjectMapper();
+            ObjectMapper mapper = UniprotJsonConfig.getInstance().getPrettyObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
             System.out.println(json);
         }catch(Exception e) {
