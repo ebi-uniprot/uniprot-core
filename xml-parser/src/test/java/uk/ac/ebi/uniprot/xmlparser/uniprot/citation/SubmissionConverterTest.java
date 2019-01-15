@@ -6,25 +6,25 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import uk.ac.ebi.uniprot.domain.citation.Book;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.citation.Submission;
+import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
 
-class BookConverterTest {
+class SubmissionConverterTest {
 
 	@Test
 	void test() {
-		Book citation = create();
-		BookConverter converter = new BookConverter();
+		Submission citation = create();
+		SubmissionConverter converter = new SubmissionConverter();
 		CitationType xmlCitation = converter.toXml(citation);
 		System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
-		Book converted = converter.fromXml(xmlCitation);
+		Submission converted = converter.fromXml(xmlCitation);
 		assertEquals(citation, converted);
 	}
-	
 	@Test
 	void testCitationConverter() {
 	
@@ -36,18 +36,14 @@ class BookConverterTest {
 		assertEquals(citation, converted);
 	}
 	
-	private Book create() {
-		BookBuilder builder = BookBuilder.newInstance();
-		String bookName = "Some book name";
-		String title = "Some article title";
-		String date = "2009";
-		builder.bookName(bookName)
-				.editors(Arrays.asList(AbstractCitationBuilder.createAuthor("David"),
-						AbstractCitationBuilder.createAuthor("Charlie")))
-				.firstPage("234").lastPage("324C").volume("3").publisher("London Press").address("London").title(title)
+	private Submission create() {
+		SubmissionBuilder builder = SubmissionBuilder.newInstance();
+		String title = "Protein research";
+		String date = "JAN-2018";
+		builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ).title(title)
+				.authors(Arrays.asList(AbstractCitationBuilder.createAuthor("Sulson J.E."),
+						AbstractCitationBuilder.createAuthor("JWaterston R.")))
 				.publicationDate(AbstractCitationBuilder.createPublicationDate(date));
-		;
-		Book book = builder.build();
-		return book;
+		return builder.build();
 	}
 }

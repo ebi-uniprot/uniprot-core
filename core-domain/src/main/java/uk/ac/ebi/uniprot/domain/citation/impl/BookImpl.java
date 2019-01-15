@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class BookImpl extends AbstractCitationImpl implements Book {
-    private String bookName;
+	private String bookName;
     private List<Author> editors;
     private String firstPage;
     private String lastPage;

@@ -31,7 +31,7 @@ public class SubmissionConverter  implements Converter<CitationType, Submission>
 	public CitationType toXml(Submission uniObj) {
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
-		xmlCitation.setType("submission");
+		xmlCitation.setType(uniObj.getCitationType().getValue());
 		xmlCitation.setDb(uniObj.getSubmissionDatabase().getName());
 		return xmlCitation;
 	}
