@@ -26,7 +26,6 @@ public class CatalyticActivityCommentImpl extends CommentImpl implements Catalyt
         } else {
             this.physiologicalReactions = Collections.unmodifiableList(physiologicalReactions);
         }
-
     }
 
     @Override
@@ -69,5 +68,4 @@ public class CatalyticActivityCommentImpl extends CommentImpl implements Catalyt
             return false;
         return true;
     }
-
 }

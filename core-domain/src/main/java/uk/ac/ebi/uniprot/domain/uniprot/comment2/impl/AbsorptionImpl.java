@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.AbsorptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -13,22 +14,25 @@ public class AbsorptionImpl implements Absorption {
     private Note note;
     private List<Evidence> evidences;
 
-    public AbsorptionImpl(int max, Note note, List<Evidence> evidences) {
-        this(max, false, note, evidences);
-    }
-
     private AbsorptionImpl() {
         this.evidences = Collections.emptyList();
     }
 
-    public AbsorptionImpl(int max, boolean approximate, Note note, List<Evidence> evidences) {
-        this.max = max;
-        this.approximate = approximate;
-        this.note = note;
-        if ((evidences == null) || evidences.isEmpty()) {
+    public AbsorptionImpl(int max, Note note, List<Evidence> evidences) {
+        this(new AbsorptionBuilder()
+                     .max(max)
+                     .approximate(false)
+                     .note(note).evidences(evidences));
+    }
+
+    public AbsorptionImpl(AbsorptionBuilder builder) {
+        this.max = builder.getMax();
+        this.approximate = builder.isApproximate();
+        this.note = builder.getNote();
+        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
             this.evidences = Collections.emptyList();
         } else
-            this.evidences = Collections.unmodifiableList(evidences);
+            this.evidences = Collections.unmodifiableList(builder.getEvidences());
     }
 
     @Override

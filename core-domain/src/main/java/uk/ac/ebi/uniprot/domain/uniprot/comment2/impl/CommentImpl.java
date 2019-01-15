@@ -4,16 +4,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 
 public abstract class CommentImpl implements Comment {
-
     private CommentType commentType;
 
     private CommentImpl() {
-
     }
 
     public CommentImpl(CommentType commentType) {
         this.commentType = commentType;
-
     }
 
     @Override
@@ -42,5 +39,4 @@ public abstract class CommentImpl implements Comment {
             return false;
         return true;
     }
-
 }

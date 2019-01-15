@@ -2,8 +2,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.APCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
@@ -130,7 +130,6 @@ public class APIsoformImpl implements APIsoform {
 
 
     public static class IsoformNameImpl extends EvidencedValueImpl implements IsoformName {
-
         private IsoformNameImpl() {
             super("", Collections.emptyList());
         }

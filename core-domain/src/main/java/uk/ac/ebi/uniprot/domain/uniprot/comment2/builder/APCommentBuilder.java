@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.impl.APIsoformImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.impl.AlternativeProductsCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValueBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,13 +146,6 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
 
         public IsoformSequenceStatus getIsoformSequenceStatus() {
             return isoformSequenceStatus;
-        }
-    }
-
-    public static class IsoformNameBuilder extends AbstractEvidencedValueBuilder<IsoformNameBuilder> {
-        @Override
-        protected IsoformNameBuilder createInstance() {
-            return new IsoformNameBuilder();
         }
     }
 }

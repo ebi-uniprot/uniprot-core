@@ -3,7 +3,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder;
 import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,18 +12,18 @@ import java.util.List;
  *
  * @author Edd
  */
-public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedValueBuilder<B>> implements Builder2<B, EvidencedValue> {
-    private String value;
-    private List<Evidence> evidences = new ArrayList<>();
+public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue> implements Builder2<B, E> {
+    protected String value;
+    protected List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public EvidencedValue build() {
-        return new EvidencedValueImpl(value, evidences);
+    public E build() {
+        return createConcreteInstance();
     }
 
     @Override
-    public B from(EvidencedValue instance) {
-        return  createInstance()
+    public B from(E instance) {
+        return  createBuilderInstance()
                 .evidences(instance.getEvidences())
                 .value(instance.getValue());
     }
@@ -52,5 +51,6 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
         return evidences;
     }
 
-    protected abstract B createInstance();
+    protected abstract B createBuilderInstance();
+    protected abstract E createConcreteInstance();
 }

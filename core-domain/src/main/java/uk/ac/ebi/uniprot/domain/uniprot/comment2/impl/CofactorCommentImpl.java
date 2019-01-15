@@ -53,7 +53,6 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         return !getCofactors().isEmpty() || (note != null);
     }
 
-
     @Override
     public int hashCode() {
         final int prime = 31;
