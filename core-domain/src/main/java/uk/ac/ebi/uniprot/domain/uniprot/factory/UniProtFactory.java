@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.DatabaseType;
-import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -13,9 +10,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
 
+// TODO: 15/01/19 remove this class? we will rely only on builders
 public enum UniProtFactory {
     INSTANCE;
 
@@ -124,11 +121,11 @@ public enum UniProtFactory {
         return new UniProtEntryImpl(primaryAccession, uniProtId, inactiveReason);
     }
 
-    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id) {
-        return createDBCrossReference(databaseType, id, Collections.emptyList());
-    }
-
-    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id, List<Property> properties) {
-        return new DBCrossReferenceImpl<>(databaseType, id, properties);
-    }
+//    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id) {
+//        return createDBCrossReference(databaseType, id, Collections.emptyList());
+//    }
+//
+//    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id, List<Property> properties) {
+//        return new DBCrossReferenceImpl<>(databaseType, id, properties);
+//    }
 }
