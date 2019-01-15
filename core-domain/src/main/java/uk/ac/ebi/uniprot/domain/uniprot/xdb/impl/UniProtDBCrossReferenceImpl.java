@@ -3,8 +3,10 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,14 +17,21 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     private static final String SEMICOLON = "; ";
     private static final String DASH = "-";
     private String isoformId;
+    private List<Evidence> evidences;
 
     private UniProtDBCrossReferenceImpl() {
         super(null, "", Collections.emptyList());
+        evidences = Collections.emptyList();
     }
 
     public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId) {
+    	this(database, id, properties, isoformId, Collections.emptyList());
+    }
+    
+    public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId, List<Evidence> evidences) {
         super(database, id, properties);
         this.isoformId = isoformId;
+        this.evidences =Utils.unmodifierList(evidences);
     }
 
 
@@ -30,6 +39,12 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         return isoformId;
     }
 
+    @Override
+	public List<Evidence> getEvidences() {
+		return evidences;
+	}
+
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -80,5 +95,6 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         return getDatabaseType().getName();
     }
 
+	
 
 }

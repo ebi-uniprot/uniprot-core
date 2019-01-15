@@ -46,6 +46,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 	
 	private String keywordFile;
 	private String diseaseFile;
+	private String accessionGoPubmedFile;
 
 	public DefaultUniProtEntryIterator() {
 		this(1, 5000, 50000);
@@ -140,7 +141,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 			this.countDown = countDown;
 
 			this.parser = new DefaultUniprotLineParserFactory().createEntryParser();
-			this.converter = new EntryObjectConverter(keywordFile, diseaseFile, false);
+			this.converter = new EntryObjectConverter(keywordFile, diseaseFile, accessionGoPubmedFile, false);
 		}
 
 		public void finish() {
@@ -214,9 +215,10 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 		}
 	}
 	@Override
-	public void setInput(String fileName, String keywordFile, String diseaseFile) {
+	public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile) {
 		this.keywordFile =keywordFile;
 		this.diseaseFile = diseaseFile;
+		this.accessionGoPubmedFile =accessionGoPubmedFile;
 		try {
 			setInput2(fileName);
 		} catch (FileNotFoundException e) {

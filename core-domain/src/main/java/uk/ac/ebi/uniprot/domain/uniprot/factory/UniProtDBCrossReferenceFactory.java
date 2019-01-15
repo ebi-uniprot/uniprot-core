@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.factory;
 
 import uk.ac.ebi.uniprot.domain.Property;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
@@ -41,6 +42,11 @@ public enum UniProtDBCrossReferenceFactory {
 
         return new UniProtDBCrossReferenceImpl(opType,
                                                id, properties, isoformId);
+    }
+    
+    public UniProtDBCrossReference createUniProtDBCrossReference(UniProtXDbType database, String id, 
+    		List<Property> properties, String isoformId, List<Evidence> evidences) {
+    	return new UniProtDBCrossReferenceImpl(database, id, properties, isoformId, evidences);
     }
 
     private void addProperty(List<Property> properties, List<DBXRefTypeAttribute> attributes, int number, String value) {

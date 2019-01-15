@@ -32,7 +32,7 @@ public class NewModelIT {
 	        assert resourcePath != null;
 	     
 	        DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
-	        iterator.setInput(resourcePath.getPath(), "", "");
+	        iterator.setInput(resourcePath.getPath(), "", "", "");
 	        int count =0;
 	        int start=0;
 	        voldemortInMemoryEntryStore =new NewUniProtInMemoryStore(storeName);

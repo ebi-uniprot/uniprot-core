@@ -1,14 +1,18 @@
 package uk.ac.ebi.uniprot.parser.impl.entry;
 
+
+
 import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordService;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
+
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.ac.AcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ac.UniProtAcLineObject;
@@ -30,9 +34,21 @@ import uk.ac.ebi.uniprot.parser.impl.pe.PeLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.sq.SqLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ss.SsLineConverter;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Strings;
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
+	  private static final Logger logger = LoggerFactory.getLogger(EntryObjectConverter.class);
 	private final  AcLineConverter acLineConverter = new AcLineConverter();
 	private final  DeLineConverter deLineConverter = new DeLineConverter();
 	
@@ -56,16 +72,62 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 	private final DrLineConverter drLineConverter;
 	private final  KwLineConverter kwLineConverter;
 	private final  CcLineConverter ccLineConverter ;
+	private Map<String,Map<String,List<Evidence>>> accessionGoEvidences = new HashMap<>();
 
 
-	public EntryObjectConverter(String keywordFile, String diseaseFile, boolean ignoreWrong){
+	public EntryObjectConverter(String keywordFile, String diseaseFile, String goPubmedFile, boolean ignoreWrong){
 		drLineConverter = new DrLineConverter(ignoreWrong);
 		KeywordService  keywordService = new KeywordServiceImpl(keywordFile);
 		DiseaseService diseaseService = new DiseaseServiceImpl(diseaseFile);
 		kwLineConverter = new KwLineConverter(keywordService, ignoreWrong);
 		ccLineConverter =new CcLineConverter(diseaseService, ignoreWrong);
+		initAccessionGoEvidenceMap(goPubmedFile);
+		
 	}
 
+	private void initAccessionGoEvidenceMap(String goPubmedFile) {
+		if(Strings.isNullOrEmpty(goPubmedFile)) {
+			 logger.warn("Go pubmed file is not defined");
+		}
+		 try (BufferedReader br = Files.newBufferedReader(Paths.get(goPubmedFile), StandardCharsets.UTF_8)) {
+	            for (String line = null; (line = br.readLine()) != null;) {
+	                String[] splitedLine = line.split("\t");
+	                if(splitedLine.length >= 7){
+	                    String accession = splitedLine[0];
+	                    String goId = splitedLine[1];
+	                    String evidenceValue = splitedLine[6].replace("PMID","ECO:0000269|PubMed");
+	                    Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evidenceValue);
+	                    addEvidence(accession,goId,evidence);
+	                }else{
+	                    logger.warn("unable to parse line: '" + line+ "' at file "+goPubmedFile);
+	                }
+	            }
+	        } catch (IOException e) {
+	            logger.warn("Error while loading Go pubmed file file on path: " + goPubmedFile, e);
+	        }
+	}
+	
+	 private void addEvidence(String accession,String goTerm, Evidence evidence){
+	        if(accessionGoEvidences.containsKey(accession)){
+	            Map<String,List<Evidence>> accessionTerms = accessionGoEvidences.get(accession);
+	            if(accessionTerms.containsKey(goTerm)){
+	                List<Evidence> evidenceIds = accessionTerms.get(goTerm);
+	                evidenceIds.add(evidence);
+	            }else{
+	                List<Evidence> evidenceIds = new ArrayList<>();
+	                evidenceIds.add(evidence);
+	                accessionTerms.put(goTerm,evidenceIds);
+	            }
+	        }else{
+	            List<Evidence> evidenceIds = new ArrayList<>();
+	            evidenceIds.add(evidence);
+
+	            Map<String,List<Evidence>> term = new HashMap<>();
+	            term.put(goTerm,evidenceIds);
+
+	            accessionGoEvidences.put(accession,term);
+	        }
+	    }
 	@Override
 	public UniProtEntry convert(EntryObject f) {
 		clear();
@@ -81,7 +143,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 			builder.comments(ccLineConverter.convert(f.cc));
 		builder.proteinDescription(deLineConverter.convert(f.de));
 		UniProtDrObjects drObjects = drLineConverter.convert(f.dr);
-		builder.uniProtDBCrossReferences(drObjects.drObjects);
+		builder.uniProtDBCrossReferences(addGoEvidence(f.ac.primaryAcc, drObjects.drObjects));
 		
 		if(f.ft !=null){
 			builder.features(ftLineConverter.convert(f.ft));
@@ -133,7 +195,29 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 		return builder.build();
 	
 	}
+	private List<UniProtDBCrossReference> addGoEvidence(String accession, List<UniProtDBCrossReference> dbRefs ){
+		Map<String,List<Evidence>> goEvidenceMap = accessionGoEvidences.get(accession);
+		if(goEvidenceMap ==null) {
+			return dbRefs;
+		}
+		return dbRefs.stream()
+		.map(val -> convert(val, goEvidenceMap))
+		.collect(Collectors.toList());
 
+	}
+	private UniProtDBCrossReference convert( UniProtDBCrossReference xref, Map<String,List<Evidence>> goEvidenceMap) {
+		if(xref.getDatabaseType().getName().equals("GO") ) {
+			String id =xref.getId();
+			List<Evidence> evidences =goEvidenceMap.get(id);
+			if((evidences ==null) || (evidences.isEmpty())) {
+				return xref;
+			}
+			return UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(xref.getDatabaseType(),
+					xref.getId(), xref.getProperties(), xref.getIsoformId(), evidences);
+		}
+		return xref;
+	}
+	
 	private void clear(){
 		ccLineConverter.clear();
 		deLineConverter.clear();

@@ -512,7 +512,7 @@ public class FlatfileRoundTripITIT {
 		EntryObject parse = entryParser.parse(entryToParse);
 		assertNotNull(parse);
 
-		EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", true);
+		EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", true);
 		UniProtEntry converted = entryObjectConverter.convert(parse);
 		FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
 		
