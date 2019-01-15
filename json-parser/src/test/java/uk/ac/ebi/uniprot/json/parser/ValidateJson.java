@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
+import uk.ac.ebi.uniprot.json.parser.uniprot.UniprotJsonConfig;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -23,7 +24,7 @@ public class ValidateJson {
 
     public static <T> void verifyJsonRoundTripParser(T obj) {
         try {
-            ObjectMapper mapper = JsonParserConfig.getJsonObjectMapper();
+            ObjectMapper mapper = UniprotJsonConfig.getInstance().getObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
             //logger.info(json);
             T converted =  mapper.readValue(json,(Class<T>) obj.getClass());
@@ -37,7 +38,7 @@ public class ValidateJson {
     public static <T> JsonNode getJsonNodeFromSerializeOnlyMapper(T obj) {
         JsonNode jsonNode = null;
         try {
-            ObjectMapper mapper = JsonParserConfig.getJsonSimpleObjectMapper();
+            ObjectMapper mapper = UniprotJsonConfig.getInstance().getPrettyObjectMapper();
             String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
             logger.info(jsonString);
             jsonNode =  mapper.reader().readTree(jsonString);

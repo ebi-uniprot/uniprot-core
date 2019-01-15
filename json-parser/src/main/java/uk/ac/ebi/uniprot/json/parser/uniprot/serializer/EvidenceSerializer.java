@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.json.parser.serializer;
+package uk.ac.ebi.uniprot.json.parser.uniprot.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -23,8 +23,12 @@ public class EvidenceSerializer extends StdSerializer<EvidenceImpl> {
 	public void serialize(EvidenceImpl evidence, JsonGenerator gen, SerializerProvider sp) throws IOException, JsonProcessingException {
         gen.writeStartObject();
         gen.writeStringField("evidenceCode",evidence.getEvidenceCode().getCode());
-		gen.writeStringField("source",evidence.getSource().getDatabaseType().getName());
-		gen.writeStringField("id",evidence.getSource().getId());
+        if(evidence.getSource() != null) {
+        	if(evidence.getSource().getDatabaseType() != null) {
+				gen.writeStringField("source", evidence.getSource().getDatabaseType().getName());
+			}
+			gen.writeStringField("id",evidence.getSource().getId());
+		}
 		gen.writeEndObject();
 	}
 }
