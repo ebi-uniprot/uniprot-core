@@ -1,38 +1,37 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
-import uk.ac.ebi.uniprot.domain.citation.Patent;
-import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
+import uk.ac.ebi.uniprot.domain.citation.Unpublished;
+import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 
-public class PatentConverter implements Converter<CitationType, Patent> {
+public class UnpublishedConverter implements Converter<CitationType, Unpublished> {
 
 	private final ObjectFactory xmlUniprotFactory;
 
-	public PatentConverter() {
+	public UnpublishedConverter() {
 		this(new ObjectFactory());
 	}
 
-	public PatentConverter(ObjectFactory xmlUniprotFactory) {
+	public UnpublishedConverter(ObjectFactory xmlUniprotFactory) {
 		this.xmlUniprotFactory = xmlUniprotFactory;
 	}
 
 	@Override
-	public Patent fromXml(CitationType xmlObj) {
-		PatentBuilder builder =PatentBuilder.newInstance();
+	public Unpublished fromXml(CitationType xmlObj) {
+		UnpublishedBuilder builder =UnpublishedBuilder.newInstance();
 		CitationConverterHelper.updateFromXmlCitaiton(xmlObj, builder);	
-		builder.patentNumber(xmlObj.getNumber());
 		return builder.build();
 	}
 
 	@Override
-	public CitationType toXml(Patent uniObj) {
+	public CitationType toXml(Unpublished uniObj) {
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
-		xmlCitation.setType("patent");
-		xmlCitation.setNumber(uniObj.getPatentNumber());
+		xmlCitation.setType("unpublished observations");
 		return xmlCitation;
 	}
+
 
 }

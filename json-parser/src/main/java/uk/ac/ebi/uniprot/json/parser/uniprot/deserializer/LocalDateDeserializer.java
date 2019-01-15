@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.json.parser.deserializer;
+package uk.ac.ebi.uniprot.json.parser.uniprot.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;

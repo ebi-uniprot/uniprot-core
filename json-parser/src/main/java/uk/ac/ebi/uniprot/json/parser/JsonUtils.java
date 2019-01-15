@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.json.parser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kjetland.jackson.jsonSchema.JsonSchemaGenerator;
+import uk.ac.ebi.uniprot.json.parser.uniprot.UniprotJsonConfig;
 
 import java.io.IOException;
 /**
@@ -12,7 +13,7 @@ import java.io.IOException;
 public class JsonUtils {
 
 	public static String getJsonString(Object obj, boolean isPretty) {
-		final ObjectMapper objectMapper = JsonParserConfig.getJsonObjectMapper();
+		final ObjectMapper objectMapper = UniprotJsonConfig.getInstance().getObjectMapper();
     	try {
     		if(isPretty)
     			return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
@@ -24,7 +25,7 @@ public class JsonUtils {
     	}
     }
 	public static <T> T convertJsonToObject(String json, Class<T> clazz){
-		ObjectMapper mapper = JsonParserConfig.getJsonObjectMapper();
+		ObjectMapper mapper = UniprotJsonConfig.getInstance().getObjectMapper();
 		try {
 			return mapper.readValue(json, clazz);
 		}catch(Exception e) {
@@ -33,7 +34,7 @@ public class JsonUtils {
 	}
 
 	public static <T> String getJsonSchema(Class<T> clazz) {
-	    ObjectMapper mapper = JsonParserConfig.getJsonObjectMapper();
+	    ObjectMapper mapper = UniprotJsonConfig.getInstance().getObjectMapper();
 	    JsonSchemaGenerator jsonSchemaGenerator = new JsonSchemaGenerator(mapper);
 	    JsonNode jsonSchema = jsonSchemaGenerator.generateJsonSchema(clazz);
 	    try {

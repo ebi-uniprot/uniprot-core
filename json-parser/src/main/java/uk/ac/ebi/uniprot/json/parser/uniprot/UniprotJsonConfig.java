@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.json.parser;
+package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.core.Version;
@@ -42,8 +42,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.json.parser.deserializer.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.json.parser.serializer.*;
+import uk.ac.ebi.uniprot.json.parser.JsonConfig;
+import uk.ac.ebi.uniprot.json.parser.uniprot.deserializer.LocalDateDeserializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.*;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -51,49 +52,26 @@ import java.util.Arrays;
  *
  * @author lgonzales
  */
-public class JsonParserConfig {
+public class UniprotJsonConfig implements JsonConfig {
 
-    private static final ObjectMapper objectMapper;
+    private static UniprotJsonConfig INSTANCE;
 
+    private final ObjectMapper objectMapper;
+    private final ObjectMapper prettyMapper;
 
-    private static final ObjectMapper simpleMapper;
+    private UniprotJsonConfig(){
+        this.objectMapper = initObjectMapper();
+        this.prettyMapper = initPrettyObjectMapper();
+    }
 
-    static {
-        /**
-         * BEGIN: simple mapper
-         */
-        ObjectMapper simpleObjMapper = new ObjectMapper();
-        simpleObjMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+    public static UniprotJsonConfig getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new UniprotJsonConfig();
+        }
+        return INSTANCE;
+    }
 
-        simpleObjMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        simpleObjMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
-        simpleObjMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-        simpleObjMapper.setAnnotationIntrospector(new SimpleAnnotationIntrospector());
-
-        SimpleModule simpleMod = new SimpleModule();
-        simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
-        simpleMod.addSerializer(UniProtAccessionImpl.class, new UniProtAccessionSerializer());
-        simpleMod.addSerializer(UniProtIdImpl.class, new UniProtIdSerializer());
-        simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
-        simpleMod.addSerializer(InteractionImpl.InteractorImpl.class, new InteractorSerializer());
-        simpleMod.addSerializer(APIsoformImpl.IsoformIdImpl.class,new IsoformIdImplSerializer());
-        simpleMod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
-        simpleMod.addSerializer(ECNumberImpl.class,new ECNumberSerializer());
-        simpleMod.addSerializer(FlagImpl.class, new FlagSerializer());
-        simpleMod.addSerializer(PublicationDateImpl.class,new PublicationDateSerializer());
-        simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class,new LocatorSerializer());
-        simpleMod.addSerializer(JournalImpl.class,new JournalSerializer());
-        simpleMod.addSerializer(UniProtXDbType.class,new UniProtXDbTypeSerializer());
-        simpleMod.addSerializer(FeatureDescriptionImpl.class,new FeatureDescriptionSerializer());
-        simpleMod.addSerializer(FeatureIdImpl.class,new FeatureIdSerializer());
-
-        simpleObjMapper.registerModule(simpleMod);
-        simpleMapper = simpleObjMapper;
-        /**
-         * END: simple mapper
-         */
-
-
+    private ObjectMapper initObjectMapper() {
         ObjectMapper objMapper = new ObjectMapper();
         objMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 
@@ -105,9 +83,6 @@ public class JsonParserConfig {
         SimpleModule mod = new SimpleModule();
         mod.addSerializer(LocalDate.class, new LocalDateSerializer());
         mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
-
-        //mod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
-        //mod.addDeserializer(EvidenceImpl.class, new EvidenceDeserializer());
 
         mod.addAbstractTypeMapping(UniProtEntry.class, UniProtEntryImpl.class);
 
@@ -126,7 +101,7 @@ public class JsonParserConfig {
 
         mod.addAbstractTypeMapping(ProteinDescription.class, ProteinDescriptionImpl.class);
         mod.addAbstractTypeMapping(ProteinName.class, ProteinNameImpl.class);
-        mod.addAbstractTypeMapping(ProteinSection.class,ProteinSectionImpl.class);
+        mod.addAbstractTypeMapping(ProteinSection.class, ProteinSectionImpl.class);
         mod.addAbstractTypeMapping(Name.class, NameImpl.class);
         mod.addAbstractTypeMapping(EC.class, ECImpl.class);
         mod.addAbstractTypeMapping(ECNumber.class, ECNumberImpl.class);
@@ -234,15 +209,47 @@ public class JsonParserConfig {
 
         objMapper.registerModule(mod);
 
-        objectMapper = objMapper;
+        return objMapper;
     }
 
-    public static ObjectMapper getJsonObjectMapper(){
-        return objectMapper;
+    private ObjectMapper initPrettyObjectMapper() {
+        ObjectMapper prettyObjMapper = new ObjectMapper();
+        prettyObjMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+
+        prettyObjMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        prettyObjMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
+        prettyObjMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        prettyObjMapper.setAnnotationIntrospector(new SimpleAnnotationIntrospector());
+
+        SimpleModule simpleMod = new SimpleModule();
+        simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
+        simpleMod.addSerializer(UniProtAccessionImpl.class, new UniProtAccessionSerializer());
+        simpleMod.addSerializer(UniProtIdImpl.class, new UniProtIdSerializer());
+        simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
+        simpleMod.addSerializer(InteractionImpl.InteractorImpl.class, new InteractorSerializer());
+        simpleMod.addSerializer(APIsoformImpl.IsoformIdImpl.class,new IsoformIdImplSerializer());
+        simpleMod.addSerializer(EvidenceImpl.class, new EvidenceSerializer());
+        simpleMod.addSerializer(ECNumberImpl.class,new ECNumberSerializer());
+        simpleMod.addSerializer(FlagImpl.class, new FlagSerializer());
+        simpleMod.addSerializer(PublicationDateImpl.class,new PublicationDateSerializer());
+        simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class,new LocatorSerializer());
+        simpleMod.addSerializer(JournalImpl.class,new JournalSerializer());
+        simpleMod.addSerializer(UniProtXDbType.class,new UniProtXDbTypeSerializer());
+        simpleMod.addSerializer(FeatureDescriptionImpl.class,new FeatureDescriptionSerializer());
+        simpleMod.addSerializer(FeatureIdImpl.class,new FeatureIdSerializer());
+
+        prettyObjMapper.registerModule(simpleMod);
+        return prettyObjMapper;
     }
 
-    public static ObjectMapper getJsonSimpleObjectMapper(){
-        return simpleMapper;
+    @Override
+    public ObjectMapper getPrettyObjectMapper() {
+        return this.prettyMapper;
+    }
+
+    @Override
+    public ObjectMapper getObjectMapper() {
+        return this.objectMapper;
     }
 
     private static class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
