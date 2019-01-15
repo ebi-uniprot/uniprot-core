@@ -27,8 +27,8 @@ public final class InteractionBuilder implements Builder2<InteractionBuilder, In
                 .geneName(instance.getGeneName())
                 .interactionType(instance.getType())
                 .numberOfExperiments(instance.getNumberOfExperiments())
-                .firstInteractor(instance.getFirstInteractor())
-                .secondInteractor(instance.getSecondInteractor());
+                .firstInteractor(instance.getFirstInteractor().getValue())
+                .secondInteractor(instance.getSecondInteractor().getValue());
     }
 
     public InteractionBuilder interactionType(InteractionType type) {
@@ -46,13 +46,13 @@ public final class InteractionBuilder implements Builder2<InteractionBuilder, In
         return this;
     }
 
-    public InteractionBuilder firstInteractor(Interactor firstInteractor) {
-        this.firstInteractor = firstInteractor;
+    public InteractionBuilder firstInteractor(String firstInteractor) {
+        this.firstInteractor = new InteractionImpl.InteractorImpl(firstInteractor);
         return this;
     }
 
-    public InteractionBuilder secondInteractor(Interactor secondInteractor) {
-        this.secondInteractor = secondInteractor;
+    public InteractionBuilder secondInteractor(String secondInteractor) {
+        this.secondInteractor = new InteractionImpl.InteractorImpl(secondInteractor);
         return this;
     }
 

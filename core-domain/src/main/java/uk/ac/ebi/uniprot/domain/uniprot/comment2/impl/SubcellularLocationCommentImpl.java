@@ -6,10 +6,12 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.SubcellularLocationCommentBuilder;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment {
+public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment, Serializable {
+    private static final long serialVersionUID = 2604926464422437467L;
     private String molecule;
     private Note note;
     private List<SubcellularLocation> subcellularLocations;

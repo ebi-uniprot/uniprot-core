@@ -4,7 +4,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.WebResourceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.WebResourceCommentBuilder;
 
-public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
+import java.io.Serializable;
+
+public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment, Serializable {
+    private static final long serialVersionUID = 4210670354612233111L;
     private String resourceName;
     private String resourceUrl;
     private boolean ftp;

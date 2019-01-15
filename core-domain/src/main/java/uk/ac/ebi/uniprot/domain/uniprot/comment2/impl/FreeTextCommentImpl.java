@@ -5,12 +5,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.*;
 
-public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment {
+public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment, Serializable {
     private static final Set<CommentType> VALID_COMMENT_TYPES =
             EnumSet.of(CommentType.ALLERGEN, CommentType.BIOTECHNOLOGY,
                        CommentType.CATALYTIC_ACTIVITY,
@@ -32,7 +30,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
                        CommentType.TISSUE_SPECIFICITY,
                        CommentType.TOXIC_DOSE
             );
-
+    private static final long serialVersionUID = 3533544505832084104L;
     private CommentType commentType;
 
     private FreeTextCommentImpl() {
@@ -43,7 +41,6 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
                                List<EvidencedValue> texts) {
         super(texts);
         this.commentType = type;
-
     }
 
     public static boolean isFreeTextCommentType(CommentType type) {
@@ -56,26 +53,16 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((commentType == null) ? 0 : commentType.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        FreeTextCommentImpl that = (FreeTextCommentImpl) o;
+        return commentType == that.commentType;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        FreeTextCommentImpl other = (FreeTextCommentImpl) obj;
-        if (commentType != other.commentType)
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), commentType);
     }
-
-
 }

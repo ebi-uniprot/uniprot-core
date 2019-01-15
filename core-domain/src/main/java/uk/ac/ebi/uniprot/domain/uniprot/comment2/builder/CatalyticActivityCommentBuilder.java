@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
-
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();
 
@@ -50,6 +49,11 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
 
     public CatalyticActivityCommentBuilder physiologicalReactions(List<PhysiologicalReaction> physiologicalReactions) {
         this.physiologicalReactions.addAll(physiologicalReactions);
+        return this;
+    }
+
+    public CatalyticActivityCommentBuilder addPhysiologicalReaction(PhysiologicalReaction physiologicalReaction) {
+        this.physiologicalReactions.add(physiologicalReaction);
         return this;
     }
 }

@@ -6,10 +6,12 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.SequenceCautionCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
+public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment, Serializable {
+    private static final long serialVersionUID = 948798817799733755L;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private List<String> positions;

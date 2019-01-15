@@ -4,10 +4,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class NoteImpl extends FreeTextImpl implements Note {
+public class NoteImpl extends FreeTextImpl implements Note, Serializable {
+
+    private static final long serialVersionUID = -739875852324982307L;
 
     private NoteImpl() {
         super(Collections.emptyList());
@@ -17,10 +20,8 @@ public class NoteImpl extends FreeTextImpl implements Note {
         super(texts);
     }
 
-
     @Override
     public boolean isValid() {
         return !getTexts().isEmpty();
     }
-
 }

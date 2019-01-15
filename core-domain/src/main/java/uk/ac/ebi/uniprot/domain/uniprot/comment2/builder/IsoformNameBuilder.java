@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValue
  *
  * @author Edd
  */
-public class IsoformNameBuilder  extends AbstractEvidencedValueBuilder<IsoformNameBuilder, IsoformName> {
+public class IsoformNameBuilder extends AbstractEvidencedValueBuilder<IsoformNameBuilder, IsoformName> {
     @Override
     protected IsoformNameBuilder createBuilderInstance() {
         return new IsoformNameBuilder();

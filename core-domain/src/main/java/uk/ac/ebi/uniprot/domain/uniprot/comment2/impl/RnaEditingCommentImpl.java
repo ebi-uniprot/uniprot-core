@@ -4,16 +4,19 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.RnaEditingCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 
-public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
+public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment, Serializable {
+    private static final long serialVersionUID = 7875885904317295953L;
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions;
     private Note note;
 
-    private RnaEditingCommentImpl() {
+    public RnaEditingCommentImpl() {
         super(CommentType.RNA_EDITING);
         this.positions = Collections.emptyList();
     }
@@ -45,37 +48,19 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((locationType == null) ? 0 : locationType.hashCode());
-        result = prime * result + ((positions == null) ? 0 : positions.hashCode());
-        result = prime * result + ((note == null) ? 0 : note.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        RnaEditingCommentImpl that = (RnaEditingCommentImpl) o;
+        return locationType == that.locationType &&
+                Objects.equals(positions, that.positions) &&
+                Objects.equals(note, that.note);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        RnaEditingCommentImpl other = (RnaEditingCommentImpl) obj;
-        if (locationType != other.locationType)
-            return false;
-        if (positions == null) {
-            if (other.positions != null)
-                return false;
-        } else if (!positions.equals(other.positions))
-            return false;
-        if (note == null) {
-            if (other.note != null)
-                return false;
-        } else if (!note.equals(other.note))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), locationType, positions, note);
     }
 
     public static class RnaEdPositionImpl implements RnaEdPosition {
@@ -106,34 +91,17 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
         }
 
         @Override
-        public int hashCode() {
-            final int prime = 31;
-            int result = 1;
-            result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-            result = prime * result + ((position == null) ? 0 : position.hashCode());
-            return result;
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            RnaEdPositionImpl that = (RnaEdPositionImpl) o;
+            return Objects.equals(position, that.position) &&
+                    Objects.equals(evidences, that.evidences);
         }
 
         @Override
-        public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
-            RnaEdPositionImpl other = (RnaEdPositionImpl) obj;
-            if (evidences == null) {
-                if (other.evidences != null)
-                    return false;
-            } else if (!evidences.equals(other.evidences))
-                return false;
-            if (position == null) {
-                if (other.position != null)
-                    return false;
-            } else if (!position.equals(other.position))
-                return false;
-            return true;
+        public int hashCode() {
+            return Objects.hash(position, evidences);
         }
     }
 }

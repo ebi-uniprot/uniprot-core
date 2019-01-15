@@ -3,10 +3,13 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
-public class MaximumVelocityImpl implements MaximumVelocity {
+public class MaximumVelocityImpl implements MaximumVelocity, Serializable {
+    private static final long serialVersionUID = -1145888231924505152L;
     private double velocity;
     private String unit;
     private String enzyme;
@@ -51,46 +54,18 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((enzyme == null) ? 0 : enzyme.hashCode());
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-        result = prime * result + ((unit == null) ? 0 : unit.hashCode());
-        long temp;
-        temp = Double.doubleToLongBits(velocity);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MaximumVelocityImpl that = (MaximumVelocityImpl) o;
+        return Double.compare(that.velocity, velocity) == 0 &&
+                Objects.equals(unit, that.unit) &&
+                Objects.equals(enzyme, that.enzyme) &&
+                Objects.equals(evidences, that.evidences);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        MaximumVelocityImpl other = (MaximumVelocityImpl) obj;
-        if (enzyme == null) {
-            if (other.enzyme != null)
-                return false;
-        } else if (!enzyme.equals(other.enzyme))
-            return false;
-        if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        if (unit == null) {
-            if (other.unit != null)
-                return false;
-        } else if (!unit.equals(other.unit))
-            return false;
-        if (Double.doubleToLongBits(velocity) != Double.doubleToLongBits(other.velocity))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(velocity, unit, enzyme, evidences);
     }
-
-
 }

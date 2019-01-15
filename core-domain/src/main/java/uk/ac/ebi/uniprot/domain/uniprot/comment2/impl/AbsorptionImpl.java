@@ -5,10 +5,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.AbsorptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
-public class AbsorptionImpl implements Absorption {
+public class AbsorptionImpl implements Absorption, Serializable {
+    private static final long serialVersionUID = 4220133788671556930L;
     private int max;
     private boolean approximate;
     private Note note;
@@ -56,57 +59,18 @@ public class AbsorptionImpl implements Absorption {
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\nCC       Absorption:\n");
-        sb.append("CC         Abs(max)=");
-        if (isApproximate()) {
-            sb.append("~");
-        }
-        sb.append(getMax());
-
-        sb.append(" nm;");
-
-        if ((getNote() != null) && getNote().isValid()) {
-            sb.append("\nCC         Note=").append(getNote().toString()).append(";");
-        }
-        return sb.toString();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbsorptionImpl that = (AbsorptionImpl) o;
+        return max == that.max &&
+                approximate == that.approximate &&
+                Objects.equals(note, that.note) &&
+                Objects.equals(evidences, that.evidences);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (approximate ? 1231 : 1237);
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-        result = prime * result + max;
-        result = prime * result + ((note == null) ? 0 : note.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        AbsorptionImpl other = (AbsorptionImpl) obj;
-        if (approximate != other.approximate)
-            return false;
-        if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        if (max != other.max)
-            return false;
-        if (note == null) {
-            if (other.note != null)
-                return false;
-        } else if (!note.equals(other.note))
-            return false;
-        return true;
+        return Objects.hash(max, approximate, note, evidences);
     }
 }

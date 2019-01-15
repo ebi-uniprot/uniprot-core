@@ -13,13 +13,6 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     private List<Cofactor> cofactors = new ArrayList<>();
     private Note note;
 
-//    public static CofactorCommentBuilder newInstance() {
-//        return new CofactorCommentBuilder();
-//    }
-//
-//    public static Cofactor createCofactor(String name, DBCrossReference<CofactorReferenceType> reference, List<Evidence> evidences) {
-//        return new CofactorImpl(name, reference, evidences);
-//    }
     public CofactorComment build() {
         return new CofactorCommentImpl(this);
     }

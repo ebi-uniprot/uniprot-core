@@ -2,33 +2,26 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.SubcellularLocationBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class SubcellularLocationImpl implements SubcellularLocation {
-
+public class SubcellularLocationImpl implements SubcellularLocation, Serializable {
+    private static final long serialVersionUID = 4440937370586066129L;
     private SubcellularLocationValue location;
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
 
-    private SubcellularLocationImpl() {
+    private SubcellularLocationImpl() {}
 
-    }
-
-    public SubcellularLocationImpl(
-            SubcellularLocationValue location,
-            SubcellularLocationValue topology,
-            SubcellularLocationValue orientation) {
-        this.location = location;
-        this.topology = topology;
-        this.orientation = orientation;
-    }
-
-    public static SubcellularLocationValue createSubcellularLocationValue(String value, List<Evidence> evidences) {
-        return new SubcellularLocationValueImpl(value, evidences);
+    public SubcellularLocationImpl(SubcellularLocationBuilder builder) {
+        this.location = builder.getLocation();
+        this.topology = builder.getTopology();
+        this.orientation = builder.getOrientation();
     }
 
     @Override
@@ -84,7 +77,6 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     }
 
     public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue {
-
         private SubcellularLocationValueImpl() {
             super(null, Collections.emptyList());
         }
@@ -92,7 +84,5 @@ public class SubcellularLocationImpl implements SubcellularLocation {
         public SubcellularLocationValueImpl(String value, List<Evidence> evidences) {
             super(value, evidences);
         }
-
-
     }
 }

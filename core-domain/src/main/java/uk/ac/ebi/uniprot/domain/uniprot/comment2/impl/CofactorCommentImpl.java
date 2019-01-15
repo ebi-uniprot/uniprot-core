@@ -6,10 +6,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.CofactorCommentBuilder;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
-public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
+public class CofactorCommentImpl extends CommentImpl implements CofactorComment, Serializable {
+    private static final long serialVersionUID = 995432515780526740L;
     private String molecule;
     private List<Cofactor> cofactors;
     private Note note;
@@ -54,39 +57,18 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((cofactors == null) ? 0 : cofactors.hashCode());
-        result = prime * result + ((molecule == null) ? 0 : molecule.hashCode());
-        result = prime * result + ((note == null) ? 0 : note.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        CofactorCommentImpl that = (CofactorCommentImpl) o;
+        return Objects.equals(molecule, that.molecule) &&
+                Objects.equals(cofactors, that.cofactors) &&
+                Objects.equals(note, that.note);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CofactorCommentImpl other = (CofactorCommentImpl) obj;
-        if (cofactors == null) {
-            if (other.cofactors != null)
-                return false;
-        } else if (!cofactors.equals(other.cofactors))
-            return false;
-        if (molecule == null) {
-            if (other.molecule != null)
-                return false;
-        } else if (!molecule.equals(other.molecule))
-            return false;
-        if (note == null) {
-            if (other.note != null)
-                return false;
-        } else if (!note.equals(other.note))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), molecule, cofactors, note);
     }
 }

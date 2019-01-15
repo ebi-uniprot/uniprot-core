@@ -4,10 +4,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.InteractionComment;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
-public class InteractionCommentImpl extends CommentImpl implements InteractionComment {
+public class InteractionCommentImpl extends CommentImpl implements InteractionComment, Serializable {
+    private static final long serialVersionUID = -3211342661702807042L;
     private List<Interaction> interactions;
 
     private InteractionCommentImpl() {
@@ -30,28 +33,16 @@ public class InteractionCommentImpl extends CommentImpl implements InteractionCo
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((interactions == null) ? 0 : interactions.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        InteractionCommentImpl that = (InteractionCommentImpl) o;
+        return Objects.equals(interactions, that.interactions);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        InteractionCommentImpl other = (InteractionCommentImpl) obj;
-        if (interactions == null) {
-            if (other.interactions != null)
-                return false;
-        } else if (!interactions.equals(other.interactions))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), interactions);
     }
-
 }
