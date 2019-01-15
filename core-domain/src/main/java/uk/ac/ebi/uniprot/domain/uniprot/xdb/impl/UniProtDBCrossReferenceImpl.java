@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 
 import uk.ac.ebi.uniprot.domain.Property;
+import uk.ac.ebi.uniprot.domain.citation2.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
@@ -21,7 +22,10 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId) {
-        super(database, id, properties);
+        super(new DBCrossReferenceBuilder<UniProtXDbType>()
+                      .databaseType(database)
+                      .id(id)
+                      .properties(properties));
         this.isoformId = isoformId;
     }
 

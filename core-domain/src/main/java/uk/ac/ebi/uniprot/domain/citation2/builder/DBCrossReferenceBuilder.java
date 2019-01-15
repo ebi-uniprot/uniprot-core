@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation2.builder;
 
+import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
@@ -13,7 +14,7 @@ import java.util.List;
  *
  * @author Edd
  */
-public class DBCrossReferenceBuilder<T extends DatabaseType> implements Builder<DBCrossReferenceBuilder<T>, DBCrossReference<T>> {
+public class DBCrossReferenceBuilder<T extends DatabaseType> implements Builder2<DBCrossReferenceBuilder<T>, DBCrossReference<T>> {
     private T databaseType;
     private String id;
     private List<Property> properties = new ArrayList<>();

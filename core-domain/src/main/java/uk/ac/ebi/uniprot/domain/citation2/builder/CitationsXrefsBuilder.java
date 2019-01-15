@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation2.builder;
 
+import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation2.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation2.CitationXrefs;
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author Edd
  */
-public class CitationsXrefsBuilder implements Builder<CitationsXrefsBuilder, CitationXrefs> {
+public class CitationsXrefsBuilder implements Builder2<CitationsXrefsBuilder, CitationXrefs> {
     private List<DBCrossReference<CitationXrefType>> xRefs;
 
     @Override
