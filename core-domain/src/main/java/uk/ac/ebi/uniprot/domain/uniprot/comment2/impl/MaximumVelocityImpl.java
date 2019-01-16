@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.MaximumVelocityBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,17 +18,14 @@ public class MaximumVelocityImpl implements MaximumVelocity {
         this.evidences = Collections.emptyList();
     }
 
-    public MaximumVelocityImpl(double velocity,
-                               String unit,
-                               String enzyme,
-                               List<Evidence> evidences) {
-        this.velocity = velocity;
-        this.unit = unit;
-        this.enzyme = enzyme;
-        if ((evidences == null) || evidences.isEmpty()) {
+    public MaximumVelocityImpl(MaximumVelocityBuilder builder) {
+        this.velocity = builder.getVelocity();
+        this.unit = builder.getUnit();
+        this.enzyme = builder.getEnzyme();
+        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(evidences);
+            this.evidences = Collections.unmodifiableList(builder.getEvidences());
         }
     }
 

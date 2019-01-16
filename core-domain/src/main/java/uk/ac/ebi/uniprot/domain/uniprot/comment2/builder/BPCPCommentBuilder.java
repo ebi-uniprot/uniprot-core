@@ -58,7 +58,12 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
 
     @Override
     public BPCPCommentBuilder from(BPCPComment instance) {
-        return null;
+        return new BPCPCommentBuilder()
+                .kineticParameters(instance.getKineticParameters())
+                .absorption(instance.getAbsorption())
+                .phDependence(instance.getPhDependence())
+                .redoxPotential(instance.getRedoxPotential())
+                .temperatureDependence(instance.getTemperatureDependence());
     }
 
     public BPCPCommentBuilder absorption(Absorption absorption) {
@@ -71,8 +76,8 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
         return this;
     }
 
-    public BPCPCommentBuilder pHDependence(PhDependence phDependences) {
-        this.phDependence = phDependences;
+    public BPCPCommentBuilder phDependence(PhDependence phDependence) {
+        this.phDependence = phDependence;
         return this;
     }
 
