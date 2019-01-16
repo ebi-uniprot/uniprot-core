@@ -5,10 +5,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
-import java.io.Serializable;
 import java.util.*;
 
-public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment, Serializable {
+public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment {
     private static final Set<CommentType> VALID_COMMENT_TYPES =
             EnumSet.of(CommentType.ALLERGEN, CommentType.BIOTECHNOLOGY,
                        CommentType.CATALYTIC_ACTIVITY,
@@ -30,7 +29,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
                        CommentType.TISSUE_SPECIFICITY,
                        CommentType.TOXIC_DOSE
             );
-    private static final long serialVersionUID = 3533544505832084104L;
+
     private CommentType commentType;
 
     private FreeTextCommentImpl() {

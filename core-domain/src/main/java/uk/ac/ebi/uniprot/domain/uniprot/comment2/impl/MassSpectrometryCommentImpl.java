@@ -7,13 +7,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.MassSpectrometryCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment, Serializable {
-    private static final long serialVersionUID = -4441298318373124611L;
+public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
     private MassSpectrometryMethod method;
     private Double molWeight;
     private Double molWeightError;

@@ -2,16 +2,14 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 
-public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment, Serializable {
-    private static final long serialVersionUID = 7875885904317295953L;
+public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions;
     private Note note;

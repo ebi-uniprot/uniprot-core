@@ -5,13 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.AbsorptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class AbsorptionImpl implements Absorption, Serializable {
-    private static final long serialVersionUID = 4220133788671556930L;
+public class AbsorptionImpl implements Absorption {
     private int max;
     private boolean approximate;
     private Note note;

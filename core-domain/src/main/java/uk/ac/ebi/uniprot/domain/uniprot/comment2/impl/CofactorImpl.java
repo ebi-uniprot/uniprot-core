@@ -6,13 +6,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.CofactorBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CofactorImpl implements Cofactor, Serializable {
-    private static final long serialVersionUID = -117992467062656339L;
+public class CofactorImpl implements Cofactor {
     private String name;
     private List<Evidence> evidences;
     private DBCrossReference<CofactorReferenceType> cofactorReference;

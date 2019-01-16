@@ -7,13 +7,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.PhysiologicalReactionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class PhysiologicalReactionImpl implements PhysiologicalReaction, Serializable {
-    private static final long serialVersionUID = -8105451459738897020L;
+public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     private PhysiologicalDirectionType directionType;
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences;

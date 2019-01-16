@@ -3,13 +3,11 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class MaximumVelocityImpl implements MaximumVelocity, Serializable {
-    private static final long serialVersionUID = -1145888231924505152L;
+public class MaximumVelocityImpl implements MaximumVelocity {
     private double velocity;
     private String unit;
     private String enzyme;

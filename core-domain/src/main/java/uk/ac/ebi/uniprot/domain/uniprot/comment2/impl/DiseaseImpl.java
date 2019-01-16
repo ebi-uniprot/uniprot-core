@@ -6,12 +6,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.DiseaseBuilder;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class DiseaseImpl implements Disease, Serializable {
+public class DiseaseImpl implements Disease {
     private static final String DEFAULT_ACCESSION = "DI-00000";
-    private static final long serialVersionUID = 1820481290326522627L;
+
     private String diseaseId;
     private String diseaseAccession;
     private String acronym;

@@ -4,13 +4,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.InteractionComment;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class InteractionCommentImpl extends CommentImpl implements InteractionComment, Serializable {
-    private static final long serialVersionUID = -3211342661702807042L;
+public class InteractionCommentImpl extends CommentImpl implements InteractionComment {
     private List<Interaction> interactions;
 
     private InteractionCommentImpl() {

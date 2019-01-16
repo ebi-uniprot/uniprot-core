@@ -6,13 +6,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.CofactorCommentBuilder;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CofactorCommentImpl extends CommentImpl implements CofactorComment, Serializable {
-    private static final long serialVersionUID = 995432515780526740L;
+public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
     private String molecule;
     private List<Cofactor> cofactors;
     private Note note;

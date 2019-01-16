@@ -3,12 +3,10 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.MassSpectrometryRange;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 
-public class MassSpectrometryRangeImpl implements MassSpectrometryRange, Serializable {
-    private static final long serialVersionUID = -3326686606682828833L;
+public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
     private Range range;
     private String isoformId;
 

@@ -4,14 +4,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 
-public class NoteImpl extends FreeTextImpl implements Note, Serializable {
-
-    private static final long serialVersionUID = -739875852324982307L;
-
+public class NoteImpl extends FreeTextImpl implements Note {
     private NoteImpl() {
         super(Collections.emptyList());
     }

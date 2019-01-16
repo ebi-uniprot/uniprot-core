@@ -7,13 +7,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class APIsoformImpl implements APIsoform, Serializable {
-    private static final long serialVersionUID = -1951765529613305766L;
+public class APIsoformImpl implements APIsoform {
     private IsoformName name;
     private List<IsoformName> synonyms;
     private Note note;

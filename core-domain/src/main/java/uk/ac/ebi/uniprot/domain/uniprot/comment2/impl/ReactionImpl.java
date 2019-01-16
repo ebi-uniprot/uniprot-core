@@ -7,15 +7,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.ReactionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 
-public class ReactionImpl implements Reaction, Serializable {
-    private static final long serialVersionUID = 6812355712639887613L;
+public class ReactionImpl implements Reaction {
     private String name;
     private List<DBCrossReference<ReactionReferenceType>> reactionReferences;
     private ECNumber ecNumber;

@@ -7,12 +7,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.Interactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.InteractionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 
-public class InteractionImpl implements Interaction, Serializable {
-    private static final long serialVersionUID = -2880637974549256982L;
+public class InteractionImpl implements Interaction {
     private InteractionType type;
     private UniProtAccession uniProtAccession;
     private String geneName;

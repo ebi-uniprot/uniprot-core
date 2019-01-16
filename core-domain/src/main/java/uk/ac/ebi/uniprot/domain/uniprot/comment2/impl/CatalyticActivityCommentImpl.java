@@ -5,13 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Reaction;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class CatalyticActivityCommentImpl extends CommentImpl implements CatalyticActivityComment, Serializable {
-    private static final long serialVersionUID = 759525607607007001L;
+public class CatalyticActivityCommentImpl extends CommentImpl implements CatalyticActivityComment {
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions;
 

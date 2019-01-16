@@ -6,12 +6,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.SubcellularLocationBuil
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
-public class SubcellularLocationImpl implements SubcellularLocation, Serializable {
-    private static final long serialVersionUID = 4440937370586066129L;
+public class SubcellularLocationImpl implements SubcellularLocation {
     private SubcellularLocationValue location;
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
@@ -40,40 +39,18 @@ public class SubcellularLocationImpl implements SubcellularLocation, Serializabl
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((location == null) ? 0 : location.hashCode());
-        result = prime * result + ((orientation == null) ? 0 : orientation.hashCode());
-        result = prime * result + ((topology == null) ? 0 : topology.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubcellularLocationImpl that = (SubcellularLocationImpl) o;
+        return Objects.equals(location, that.location) &&
+                Objects.equals(topology, that.topology) &&
+                Objects.equals(orientation, that.orientation);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        SubcellularLocationImpl other = (SubcellularLocationImpl) obj;
-        if (location == null) {
-            if (other.location != null)
-                return false;
-        } else if (!location.equals(other.location))
-            return false;
-        if (orientation == null) {
-            if (other.orientation != null)
-                return false;
-        } else if (!orientation.equals(other.orientation))
-            return false;
-        if (topology == null) {
-            if (other.topology != null)
-                return false;
-        } else if (!topology.equals(other.topology))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(location, topology, orientation);
     }
 
     public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue {

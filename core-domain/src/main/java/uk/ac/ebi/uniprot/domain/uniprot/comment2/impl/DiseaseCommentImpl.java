@@ -5,11 +5,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment, Serializable {
-    private static final long serialVersionUID = 287089488618585939L;
+public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     private Disease disease;
     private Note note;
 

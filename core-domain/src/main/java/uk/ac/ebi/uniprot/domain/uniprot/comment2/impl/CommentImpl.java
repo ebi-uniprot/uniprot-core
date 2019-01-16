@@ -3,11 +3,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment2.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.CommentType;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public abstract class CommentImpl implements Comment, Serializable {
-    private static final long serialVersionUID = -3281390443701600649L;
+public abstract class CommentImpl implements Comment {
     private CommentType commentType;
 
     public CommentImpl() {

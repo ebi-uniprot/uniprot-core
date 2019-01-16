@@ -6,13 +6,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.KineticParametersBuilder;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class KineticParametersImpl implements KineticParameters, Serializable {
-    private static final long serialVersionUID = 4386488028155291095L;
+public class KineticParametersImpl implements KineticParameters {
     private List<MaximumVelocity> maximumVelocities;
     private List<MichaelisConstant> michaelisConstants;
     private Note note;

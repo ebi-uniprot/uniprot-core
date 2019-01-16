@@ -5,13 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment2.MichaelisConstantUnit;
 import uk.ac.ebi.uniprot.domain.uniprot.comment2.builder.MichaelisConstantBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class MichaelisConstantImpl implements MichaelisConstant, Serializable {
-    private static final long serialVersionUID = -5135464577730195201L;
+public class MichaelisConstantImpl implements MichaelisConstant {
     private double constant;
     private MichaelisConstantUnit unit;
     private String substrate;
