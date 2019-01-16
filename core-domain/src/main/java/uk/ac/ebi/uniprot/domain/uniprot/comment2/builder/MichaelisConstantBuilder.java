@@ -20,9 +20,6 @@ public final class MichaelisConstantBuilder implements Builder2<MichaelisConstan
     private String substrate;
     private List<Evidence> evidences = new ArrayList<>();
 
-    private MichaelisConstantBuilder() {
-    }
-
     public MichaelisConstantBuilder constant(double constant) {
         this.constant = constant;
         return this;

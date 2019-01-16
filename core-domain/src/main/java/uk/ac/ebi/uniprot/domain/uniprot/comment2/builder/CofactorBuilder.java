@@ -20,9 +20,6 @@ public final class CofactorBuilder implements Builder2<CofactorBuilder, Cofactor
     private List<Evidence> evidences = new ArrayList<>();
     private DBCrossReference<CofactorReferenceType> cofactorReference;
 
-    private CofactorBuilder() {
-    }
-
     public CofactorBuilder name(String name) {
         this.name = name;
         return this;

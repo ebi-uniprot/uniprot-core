@@ -20,9 +20,6 @@ public final class KineticParametersBuilder implements Builder2<KineticParameter
     private List<MichaelisConstant> michaelisConstants = new ArrayList<>();
     private Note note;
 
-    private KineticParametersBuilder() {
-    }
-
     public KineticParametersBuilder maximumVelocities(List<MaximumVelocity> maximumVelocities) {
         this.maximumVelocities.addAll(maximumVelocities);
         return this;
