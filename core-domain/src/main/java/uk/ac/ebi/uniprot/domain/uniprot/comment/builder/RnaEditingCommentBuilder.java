@@ -5,40 +5,55 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingComment> {
+public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
     private RnaEditingLocationType locationType;
-    private List<RnaEdPosition> locations;
+    private List<RnaEdPosition> positions = new ArrayList<>();
     private Note note;
 
-    public static RnaEditingCommentBuilder newInstance() {
-        return new RnaEditingCommentBuilder();
-    }
-
-    public static RnaEdPosition createPosition(String position, List<Evidence> evidences) {
-        return RnaEditingCommentImpl.createPosition(position, evidences);
-    }
-
     public RnaEditingComment build() {
-        return new RnaEditingCommentImpl(locationType, locations,
-                                         note);
+        return new RnaEditingCommentImpl(this);
     }
 
-    public RnaEditingCommentBuilder rnaEditingLocationType(RnaEditingLocationType locationType) {
+    @Override
+    public RnaEditingCommentBuilder from(RnaEditingComment instance) {
+        return new RnaEditingCommentBuilder()
+                .positions(instance.getPositions())
+                .locationType(instance.getLocationType());
+    }
+
+    public RnaEditingCommentBuilder locationType(RnaEditingLocationType locationType) {
         this.locationType = locationType;
         return this;
     }
 
-    public RnaEditingCommentBuilder locations(List<RnaEdPosition> locations) {
-        this.locations = locations;
+    public RnaEditingCommentBuilder positions(List<RnaEdPosition> position) {
+        this.positions.addAll(position);
+        return this;
+    }
+
+    public RnaEditingCommentBuilder addPosition(RnaEdPosition position) {
+        this.positions.add(position);
         return this;
     }
 
     public RnaEditingCommentBuilder note(Note note) {
         this.note = note;
         return this;
+    }
+
+    public RnaEditingLocationType getLocationType() {
+        return locationType;
+    }
+
+    public List<RnaEdPosition> getPositions() {
+        return positions;
+    }
+
+    public Note getNote() {
+        return note;
     }
 }

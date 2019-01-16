@@ -4,21 +4,19 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionCommentImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class InteractionCommentBuilder implements CommentBuilder<InteractionComment> {
-    private List<Interaction> interactions;
-
-    public static InteractionCommentBuilder newInstance() {
-        return new InteractionCommentBuilder();
-    }
-
-    public static InteractionBuilder newInteractionBuilder() {
-        return InteractionBuilder.newInstance();
-    }
+public class InteractionCommentBuilder implements CommentBuilder<InteractionCommentBuilder, InteractionComment> {
+    private List<Interaction> interactions = new ArrayList<>();
 
     public InteractionCommentBuilder interactions(List<Interaction> interactions) {
-        this.interactions = interactions;
+        this.interactions.addAll(interactions);
+        return this;
+    }
+
+    public InteractionCommentBuilder addInteraction(Interaction interaction) {
+        this.interactions.add(interaction);
         return this;
     }
 
@@ -27,4 +25,9 @@ public class InteractionCommentBuilder implements CommentBuilder<InteractionComm
         return new InteractionCommentImpl(interactions);
     }
 
+    @Override
+    public InteractionCommentBuilder from(InteractionComment instance) {
+        return new InteractionCommentBuilder()
+                .interactions(instance.getInteractions());
+    }
 }

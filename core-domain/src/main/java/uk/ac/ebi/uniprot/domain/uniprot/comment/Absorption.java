@@ -8,6 +8,4 @@ public interface Absorption extends HasEvidences {
     boolean isApproximate();
 
     Note getNote();
-
-
 }

@@ -22,7 +22,8 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum type.
      */
     public static ReactionReferenceType typeOf(String value) {
-        for (ReactionReferenceType referenceType : ReactionReferenceType.values()) {
+        for (ReactionReferenceType referenceType : ReactionReferenceType
+                .values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
             }

@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
 
 /**
  * Container used to represent the definition of the disease.
@@ -41,8 +40,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
  * @version 1.0
  * @see DiseaseComment
  */
-
-public interface Disease extends HasEvidences{
+public interface Disease {
     /**
      * @return disease id (ID)
      */
@@ -55,8 +53,7 @@ public interface Disease extends HasEvidences{
      */
     String getAcronym();
 
-
-     String getDescription();
+    DiseaseDescription getDescription();
 
     DBCrossReference<DiseaseReferenceType> getReference();
 

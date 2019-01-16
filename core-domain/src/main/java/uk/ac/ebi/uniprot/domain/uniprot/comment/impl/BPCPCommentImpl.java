@@ -2,13 +2,14 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
-
     private Absorption absorption;
     private KineticParameters kineticParameters;
     private PhDependence phDependence;
@@ -19,30 +20,14 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
     }
 
-    public BPCPCommentImpl(Absorption absorption,
-                           KineticParameters kineticParameters,
-                           PhDependence phDependence,
-                           RedoxPotential redoxPotential,
-                           TemperatureDependence temperatureDependence) {
+    public BPCPCommentImpl(BPCPCommentBuilder builder) {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
-        this.absorption = absorption;
-        this.kineticParameters = kineticParameters;
-        this.phDependence = phDependence;
-        this.redoxPotential = redoxPotential;
-        this.temperatureDependence = temperatureDependence;
+        this.absorption = builder.getAbsorption();
+        this.kineticParameters = builder.getKineticParameters();
+        this.phDependence = builder.getPhDependence();
+        this.redoxPotential = builder.getRedoxPotential();
+        this.temperatureDependence = builder.getTemperatureDependence();
 
-    }
-
-    public static PhDependence createPHDependence(List<EvidencedValue> texts) {
-        return new PhDependenceImpl(texts);
-    }
-
-    public static RedoxPotential createRedoxPotential(List<EvidencedValue> texts) {
-        return new RedoxPotentialImpl(texts);
-    }
-
-    public static TemperatureDependence createTemperatureDependence(List<EvidencedValue> texts) {
-        return new TemperatureDependenceImpl(texts);
     }
 
     @Override
@@ -53,7 +38,6 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
     @Override
     public PhDependence getPhDependence() {
         return this.phDependence;
-
     }
 
     @Override
@@ -72,52 +56,22 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((absorption == null) ? 0 : absorption.hashCode());
-        result = prime * result + ((kineticParameters == null) ? 0 : kineticParameters.hashCode());
-        result = prime * result + ((phDependence == null) ? 0 : phDependence.hashCode());
-        result = prime * result + ((redoxPotential == null) ? 0 : redoxPotential.hashCode());
-        result = prime * result + ((temperatureDependence == null) ? 0 : temperatureDependence.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        BPCPCommentImpl that = (BPCPCommentImpl) o;
+        return Objects.equals(absorption, that.absorption) &&
+                Objects.equals(kineticParameters, that.kineticParameters) &&
+                Objects.equals(phDependence, that.phDependence) &&
+                Objects.equals(redoxPotential, that.redoxPotential) &&
+                Objects.equals(temperatureDependence, that.temperatureDependence);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        BPCPCommentImpl other = (BPCPCommentImpl) obj;
-        if (absorption == null) {
-            if (other.absorption != null)
-                return false;
-        } else if (!absorption.equals(other.absorption))
-            return false;
-        if (kineticParameters == null) {
-            if (other.kineticParameters != null)
-                return false;
-        } else if (!kineticParameters.equals(other.kineticParameters))
-            return false;
-        if (phDependence == null) {
-            if (other.phDependence != null)
-                return false;
-        } else if (!phDependence.equals(other.phDependence))
-            return false;
-        if (redoxPotential == null) {
-            if (other.redoxPotential != null)
-                return false;
-        } else if (!redoxPotential.equals(other.redoxPotential))
-            return false;
-        if (temperatureDependence == null) {
-            if (other.temperatureDependence != null)
-                return false;
-        } else if (!temperatureDependence.equals(other.temperatureDependence))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects
+                .hash(super.hashCode(), absorption, kineticParameters, phDependence, redoxPotential, temperatureDependence);
     }
 
     @Override
@@ -219,6 +173,4 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
             super(texts);
         }
     }
-
-
 }

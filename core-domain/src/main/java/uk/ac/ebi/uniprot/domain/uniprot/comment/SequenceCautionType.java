@@ -24,7 +24,8 @@ public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     }
 
     public static SequenceCautionType typeOf(String value) {
-        for (SequenceCautionType sequenceCautionType : SequenceCautionType.values()) {
+        for (SequenceCautionType sequenceCautionType : SequenceCautionType
+                .values()) {
             if (sequenceCautionType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
                 return sequenceCautionType;
             }

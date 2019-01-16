@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class NoteImpl extends FreeTextImpl implements Note {
-
     private NoteImpl() {
         super(Collections.emptyList());
     }

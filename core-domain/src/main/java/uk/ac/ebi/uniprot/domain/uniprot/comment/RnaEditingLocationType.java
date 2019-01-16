@@ -16,7 +16,8 @@ public enum RnaEditingLocationType implements EnumDisplay<RnaEditingLocationType
     Known;
 
     public static RnaEditingLocationType getType(String locationType) {
-        for (RnaEditingLocationType type : RnaEditingLocationType.values()) {
+        for (RnaEditingLocationType type : RnaEditingLocationType
+                .values()) {
             if (type.name().equals(locationType)) {
                 return type;
             } else if (locationType != null && locationType.length() > 0 && Character.isDigit(locationType.charAt(0))) {

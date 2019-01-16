@@ -1,10 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MaximumVelocityBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class MaximumVelocityImpl implements MaximumVelocity {
     private double velocity;
@@ -16,17 +18,14 @@ public class MaximumVelocityImpl implements MaximumVelocity {
         this.evidences = Collections.emptyList();
     }
 
-    public MaximumVelocityImpl(double velocity,
-                               String unit,
-                               String enzyme,
-                               List<Evidence> evidences) {
-        this.velocity = velocity;
-        this.unit = unit;
-        this.enzyme = enzyme;
-        if ((evidences == null) || evidences.isEmpty()) {
+    public MaximumVelocityImpl(MaximumVelocityBuilder builder) {
+        this.velocity = builder.getVelocity();
+        this.unit = builder.getUnit();
+        this.enzyme = builder.getEnzyme();
+        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(evidences);
+            this.evidences = Collections.unmodifiableList(builder.getEvidences());
         }
     }
 
@@ -51,46 +50,18 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((enzyme == null) ? 0 : enzyme.hashCode());
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-        result = prime * result + ((unit == null) ? 0 : unit.hashCode());
-        long temp;
-        temp = Double.doubleToLongBits(velocity);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MaximumVelocityImpl that = (MaximumVelocityImpl) o;
+        return Double.compare(that.velocity, velocity) == 0 &&
+                Objects.equals(unit, that.unit) &&
+                Objects.equals(enzyme, that.enzyme) &&
+                Objects.equals(evidences, that.evidences);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        MaximumVelocityImpl other = (MaximumVelocityImpl) obj;
-        if (enzyme == null) {
-            if (other.enzyme != null)
-                return false;
-        } else if (!enzyme.equals(other.enzyme))
-            return false;
-        if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        if (unit == null) {
-            if (other.unit != null)
-                return false;
-        } else if (!unit.equals(other.unit))
-            return false;
-        if (Double.doubleToLongBits(velocity) != Double.doubleToLongBits(other.velocity))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(velocity, unit, enzyme, evidences);
     }
-
-
 }

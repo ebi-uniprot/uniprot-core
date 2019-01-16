@@ -3,6 +3,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 
+import java.util.Objects;
+
 
 public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
     private Range range;
@@ -30,7 +32,6 @@ public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
         return range;
     }
 
-
     @Override
     public boolean hasIsoformId() {
         return ((isoformId != null) && !isoformId.isEmpty());
@@ -42,34 +43,16 @@ public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
-        result = prime * result + ((range == null) ? 0 : range.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MassSpectrometryRangeImpl that = (MassSpectrometryRangeImpl) o;
+        return Objects.equals(range, that.range) &&
+                Objects.equals(isoformId, that.isoformId);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        MassSpectrometryRangeImpl other = (MassSpectrometryRangeImpl) obj;
-        if (isoformId == null) {
-            if (other.isoformId != null)
-                return false;
-        } else if (!isoformId.equals(other.isoformId))
-            return false;
-        if (range == null) {
-            if (other.range != null)
-                return false;
-        } else if (!range.equals(other.range))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(range, isoformId);
     }
-
 }
