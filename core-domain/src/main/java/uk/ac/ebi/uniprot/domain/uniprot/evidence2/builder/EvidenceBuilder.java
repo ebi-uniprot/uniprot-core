@@ -1,8 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder;
 
 import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceImpl;
 
 /**
  * Created 16/01/19
@@ -16,12 +19,16 @@ public class EvidenceBuilder implements Builder2<EvidenceBuilder, Evidence> {
 
     @Override
     public Evidence build() {
-        return null;
+        return new EvidenceImpl(evidenceCode, databaseName, databaseId);
     }
 
     @Override
     public EvidenceBuilder from(Evidence instance) {
-        return new EvidenceBuilder(); // TODO: 16/01/19 HERE
+        DBCrossReference<EvidenceType> source = instance.getSource();
+        return new EvidenceBuilder()
+                .evidenceCode(instance.getEvidenceCode())
+                .databaseId(source.getId())
+                .databaseName(source.getDatabaseType().getName());
     }
 
     public EvidenceBuilder evidenceCode(EvidenceCode evidenceCode) {

@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;

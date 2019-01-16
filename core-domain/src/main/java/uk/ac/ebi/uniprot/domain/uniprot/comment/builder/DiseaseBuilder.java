@@ -6,9 +6,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
-import java.util.List;
 
 public final class DiseaseBuilder implements Builder2<DiseaseBuilder, Disease> {
     private String diseaseId;
@@ -56,6 +53,11 @@ public final class DiseaseBuilder implements Builder2<DiseaseBuilder, Disease> {
 
     public DiseaseBuilder description(DiseaseDescription description) {
         this.description = description;
+        return this;
+    }
+
+    public DiseaseBuilder description(String description) {
+        this.description = new DiseaseDescriptionBuilder().value(description).build();
         return this;
     }
 

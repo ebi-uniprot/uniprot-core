@@ -5,7 +5,6 @@ import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidencedValueBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +13,8 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.*;
+import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidenceValues;
+import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidences;
 
 public class APCommentBuilderTest {
     @Test
@@ -24,7 +25,6 @@ public class APCommentBuilderTest {
         assertNotNull(builder2);
         assertNotSame(builder1, builder2);
     }
-
 
     @Test
     public void testSetEvents() {
@@ -195,21 +195,6 @@ public class APCommentBuilderTest {
                         .isoformSequenceStatus(IsoformSequenceStatus.DISPLAYED)
                         .sequenceIds(singletonList("someSeqId"))
                         .build();
-    }
-
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        // TODO: 16/01/19 HERE
-//        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-//        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-        return evidences;
-    }
-
-    private List<EvidencedValue> createEvidenceValues() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(new EvidencedValueBuilder().value("value1").evidences(emptyList()).build());
-        evidencedValues.add(new EvidencedValueBuilder().value("value2").evidences(emptyList()).build());
-        return evidencedValues;
     }
 
     private static IsoformName createIsoformName(String name, List<Evidence> evidences) {
