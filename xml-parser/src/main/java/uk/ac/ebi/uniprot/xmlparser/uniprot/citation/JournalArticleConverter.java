@@ -37,9 +37,7 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
 	public CitationType toXml(JournalArticle uniObj) {
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
-
-
-		 xmlCitation.setType("journal article");
+		xmlCitation.setType(uniObj.getCitationType().getValue());
 		 xmlCitation.setName(uniObj.getJournal().getName());
 		 xmlCitation.setFirst(pageConverter.toXml(uniObj.getFirstPage()));
 		 xmlCitation.setLast(pageConverter.toXml(uniObj.getLastPage()));

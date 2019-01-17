@@ -3,7 +3,10 @@ package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
+
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -11,13 +14,25 @@ class OrganismImplTest {
 
     @Test
     void testOrganismImpl() {
+
         String scientificName = "Homo sapiens";
         String commonName = "Human";
-        OrganismName name = new OrganismNameImpl(scientificName, commonName, null);
+        List<String> lineages = Collections.singletonList("lineage");
+        List<String> synonyms = Collections.singletonList("synonym");
+        OrganismBuilder builder = new OrganismBuilder()
+                .taxonId(9606L)
+                .scientificName(scientificName)
+                .commonName(commonName)
+                .synonyms(synonyms)
+                .lineage(lineages);
 
-        Organism organism = new OrganismImpl(name, 9606l);
-        assertEquals(9606l, organism.getTaxonId());
-        assertEquals(name, organism.getName());
+        Organism organism = new OrganismImpl(builder);
+
+        assertEquals(9606L, organism.getTaxonId());
+        assertEquals(scientificName, organism.getScientificName());
+        assertEquals(commonName, organism.getCommonName());
+        assertEquals(lineages, organism.getLineage());
+        assertEquals(synonyms, organism.getSynonyms());
         TestHelper.verifyJson(organism);
     }
 

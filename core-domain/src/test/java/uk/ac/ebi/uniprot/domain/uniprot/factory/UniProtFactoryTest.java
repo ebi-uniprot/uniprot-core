@@ -26,12 +26,6 @@ public class UniProtFactoryTest {
     }
 
     @Test
-    public void testGetTaxonomyFactory() {
-        TaxonomyFactory componentFactory = UniProtFactory.INSTANCE.getTaxonomyFactory();
-        assertNotNull(componentFactory);
-    }
-
-    @Test
     public void testGetUniProtDBCrossReferenceFactory() {
         UniProtDBCrossReferenceFactory componentFactory = UniProtFactory.INSTANCE.getUniProtDBCrossReferenceFactory();
         assertNotNull(componentFactory);
@@ -149,15 +143,6 @@ public class UniProtFactoryTest {
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
         Sequence sequence = UniProtFactory.INSTANCE.createSequence(value);
         assertEquals(value, sequence.getValue());
-    }
-
-    @Test
-    public void TestCreateUniProtTaxonId() {
-        long taxId = 9606;
-        List<Evidence> evidences = createEvidences();
-        UniProtTaxonId taxonId = UniProtFactory.INSTANCE.createUniProtTaxonId(taxId, evidences);
-        assertEquals(taxId, taxonId.getTaxonId());
-        assertEquals(evidences, taxonId.getEvidences());
     }
 
     private List<Evidence> createEvidences() {

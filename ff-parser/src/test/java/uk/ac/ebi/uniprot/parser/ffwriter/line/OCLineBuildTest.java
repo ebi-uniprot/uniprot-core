@@ -1,16 +1,13 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.impl.oc.OCLineBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
-import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
-import uk.ac.ebi.uniprot.parser.impl.oc.OCLineBuilder;
+import static org.junit.Assert.assertEquals;
 
 
 public class OCLineBuildTest {
@@ -21,20 +18,20 @@ public class OCLineBuildTest {
 		String ocLine ="OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;"+
 				"\nOC   Mammalia; Eutheria; Euarchontoglires; Primates; Catarrhini; Hominidae;" +
 				"\nOC   Homo.";
-		List<OrganismName> taxonNames = new ArrayList<>();
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Eukaryota"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Metazoa"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Chordata"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Craniata"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Vertebrata"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Euteleostomi"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Mammalia"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Eutheria"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Euarchontoglires"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Primates"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Catarrhini"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Hominidae"));
-		taxonNames.add(TaxonomyFactory.INSTANCE.createOrganismName("Homo"));
+		List<String> taxonNames = new ArrayList<>();
+		taxonNames.add("Eukaryota");
+		taxonNames.add("Metazoa");
+		taxonNames.add("Chordata");
+		taxonNames.add("Craniata");
+		taxonNames.add("Vertebrata");
+		taxonNames.add("Euteleostomi");
+		taxonNames.add("Mammalia");
+		taxonNames.add("Eutheria");
+		taxonNames.add("Euarchontoglires");
+		taxonNames.add("Primates");
+		taxonNames.add("Catarrhini");
+		taxonNames.add("Hominidae");
+		taxonNames.add("Homo");
 		FFLine ffLine = builder.build(taxonNames);
 		String resultString = ffLine.toString();
 		assertEquals(ocLine, resultString);

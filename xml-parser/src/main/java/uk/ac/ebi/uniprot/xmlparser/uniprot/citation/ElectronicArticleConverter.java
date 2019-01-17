@@ -32,7 +32,7 @@ public class ElectronicArticleConverter implements Converter<CitationType, Elect
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
 
-		 xmlCitation.setType("online journal article");
+		 xmlCitation.setType(uniObj.getCitationType().getValue());
 		 xmlCitation.setName(uniObj.getJournal().getName());
 		 xmlCitation.setLocator(uniObj.getLocator().getValue());
 		return xmlCitation;

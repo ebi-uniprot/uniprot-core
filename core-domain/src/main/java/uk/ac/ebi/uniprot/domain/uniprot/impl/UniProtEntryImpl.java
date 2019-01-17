@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
@@ -27,10 +27,9 @@ public class UniProtEntryImpl implements UniProtEntry {
     private UniProtId uniProtId;
     private EntryAudit entryAudit;
 
-    private UniProtTaxonId taxonId;
-    private OrganismName organism;
-    private List<Organism> organismHosts;
-    private List<OrganismName> taxonomyLineage;
+    private Organism organism;
+    private List<OrganismHost> organismHosts;
+
     private ProteinExistence proteinExistence;
 
     private ProteinDescription proteinDescription;
@@ -50,7 +49,6 @@ public class UniProtEntryImpl implements UniProtEntry {
     private UniProtEntryImpl() {
         secondaryAccessions = Collections.emptyList();
         organismHosts = Collections.emptyList();
-        taxonomyLineage = Collections.emptyList();
         genes = Collections.emptyList();
         comments = Collections.emptyList();
         references = Collections.emptyList();
@@ -64,8 +62,8 @@ public class UniProtEntryImpl implements UniProtEntry {
                             UniProtId uniProtId,
                             EntryInactiveReason inactiveReason) {
         this(UniProtEntryType.UNKNOWN, primaryAccession, null, uniProtId,
-             null, null, null, null, null, null,
-             null, null, null, null, null, null,
+             null, null, null, null, null,
+             null, null, null, null, null,
              null, null, null, null, inactiveReason);
     }
 
@@ -74,10 +72,8 @@ public class UniProtEntryImpl implements UniProtEntry {
                             List<UniProtAccession> secondaryAccessions,
                             UniProtId uniProtId,
                             EntryAudit entryAudit,
-                            UniProtTaxonId taxonId,
-                            OrganismName organism,
-                            List<Organism> organismHosts,
-                            List<OrganismName> taxonomyLineage,
+                            Organism organism,
+                            List<OrganismHost> organismHosts,
                             ProteinExistence proteinExistence,
                             ProteinDescription proteinDescription,
                             List<Gene> genes,
@@ -90,7 +86,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                             Sequence sequence,
                             InternalSection internalSection) {
         this(entryType, primaryAccession, secondaryAccessions, uniProtId,
-             entryAudit, taxonId, organism, organismHosts, taxonomyLineage, proteinExistence,
+             entryAudit, organism, organismHosts, proteinExistence,
              proteinDescription, genes, comments, features, organelles, keywords,
              references, databaseCrossReferences, sequence, internalSection, null);
 
@@ -100,9 +96,8 @@ public class UniProtEntryImpl implements UniProtEntry {
                             UniProtAccession primaryAccession,
                             List<UniProtAccession> secondaryAccessions,
                             UniProtId uniProtId, EntryAudit entryAudit,
-                            UniProtTaxonId taxonId, OrganismName organism,
-                            List<Organism> organismHosts,
-                            List<OrganismName> taxonomyLineage,
+                            Organism organism,
+                            List<OrganismHost> organismHosts,
                             ProteinExistence proteinExistence,
                             ProteinDescription proteinDescription,
                             List<Gene> genes, List<Comment> comments,
@@ -117,10 +112,8 @@ public class UniProtEntryImpl implements UniProtEntry {
         this.secondaryAccessions = Utils.unmodifierList(secondaryAccessions);
         this.uniProtId = uniProtId;
         this.entryAudit = entryAudit;
-        this.taxonId = taxonId;
         this.organism = organism;
         this.organismHosts = Utils.unmodifierList(organismHosts);
-        this.taxonomyLineage = Utils.unmodifierList(taxonomyLineage);
         this.proteinExistence = proteinExistence;
         this.proteinDescription = proteinDescription;
         this.genes = Utils.unmodifierList(genes);
@@ -161,23 +154,13 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public UniProtTaxonId getTaxonId() {
-        return taxonId;
-    }
-
-    @Override
-    public OrganismName getOrganism() {
+    public Organism getOrganism() {
         return organism;
     }
 
     @Override
-    public List<Organism> getOrganismHosts() {
+    public List<OrganismHost> getOrganismHosts() {
         return organismHosts;
-    }
-
-    @Override
-    public List<OrganismName> getTaxonomyLineage() {
-        return taxonomyLineage;
     }
 
     @Override
@@ -309,8 +292,6 @@ public class UniProtEntryImpl implements UniProtEntry {
         result = prime * result + ((references == null) ? 0 : references.hashCode());
         result = prime * result + ((secondaryAccessions == null) ? 0 : secondaryAccessions.hashCode());
         result = prime * result + ((sequence == null) ? 0 : sequence.hashCode());
-        result = prime * result + ((taxonId == null) ? 0 : taxonId.hashCode());
-        result = prime * result + ((taxonomyLineage == null) ? 0 : taxonomyLineage.hashCode());
         result = prime * result + ((uniProtId == null) ? 0 : uniProtId.hashCode());
         return result;
     }
@@ -407,16 +388,6 @@ public class UniProtEntryImpl implements UniProtEntry {
             if (other.sequence != null)
                 return false;
         } else if (!sequence.equals(other.sequence))
-            return false;
-        if (taxonId == null) {
-            if (other.taxonId != null)
-                return false;
-        } else if (!taxonId.equals(other.taxonId))
-            return false;
-        if (taxonomyLineage == null) {
-            if (other.taxonomyLineage != null)
-                return false;
-        } else if (!taxonomyLineage.equals(other.taxonomyLineage))
             return false;
         if (uniProtId == null) {
             if (other.uniProtId != null)

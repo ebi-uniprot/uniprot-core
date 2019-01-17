@@ -30,7 +30,7 @@ public class PatentConverter implements Converter<CitationType, Patent> {
 	public CitationType toXml(Patent uniObj) {
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
-		xmlCitation.setType("patent");
+		xmlCitation.setType(uniObj.getCitationType().getValue());
 		xmlCitation.setNumber(uniObj.getPatentNumber());
 		return xmlCitation;
 	}

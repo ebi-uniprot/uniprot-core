@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
@@ -20,10 +20,8 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
     private List<UniProtAccession> secondaryAccessions;
     private UniProtId uniProtId;
     private EntryAudit entryAudit;
-    private UniProtTaxonId taxonId;
-    private OrganismName organism;
-    private List<Organism> organismHosts;
-    private List<OrganismName> taxonomyLineage;
+    private Organism organism;
+    private List<OrganismHost> organismHosts;
     private ProteinExistence proteinExistence = ProteinExistence.UNKNOWN;
     private ProteinDescription proteinDescription;
     private List<Gene> genes;
@@ -48,10 +46,8 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
                 secondaryAccessions,
                 uniProtId,
                 entryAudit,
-                taxonId,
                 organism,
                 organismHosts,
-                taxonomyLineage,
                 proteinExistence,
                 proteinDescription,
                 genes,
@@ -97,11 +93,6 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public UniProtEntryBuilder taxonomyLineage(List<OrganismName> taxonomyLineage) {
-        this.taxonomyLineage = taxonomyLineage;
-        return this;
-    }
-
     public UniProtEntryBuilder proteinExistence(ProteinExistence proteinExistence) {
         this.proteinExistence = proteinExistence;
         return this;
@@ -142,12 +133,12 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
         return this;
     }
 
-    public UniProtEntryBuilder organism(OrganismName organism) {
+    public UniProtEntryBuilder organism(Organism organism) {
         this.organism = organism;
         return this;
     }
 
-    public UniProtEntryBuilder organismHosts(List<Organism> organismHosts) {
+    public UniProtEntryBuilder organismHosts(List<OrganismHost> organismHosts) {
         this.organismHosts = organismHosts;
         return this;
     }
@@ -164,11 +155,6 @@ public final class UniProtEntryBuilder implements Builder<UniProtEntry> {
 
     public UniProtEntryBuilder sequence(String sequence) {
         this.sequence = UniProtFactory.INSTANCE.createSequence(sequence);
-        return this;
-    }
-
-    public UniProtEntryBuilder uniProtTaxonId(UniProtTaxonId taxonId) {
-        this.taxonId = taxonId;
         return this;
     }
 

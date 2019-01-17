@@ -59,7 +59,7 @@ public class BookConverter implements Converter<CitationType, Book> {
 	public CitationType toXml(Book uniObj) {
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
-		xmlCitation.setType("book");
+		xmlCitation.setType(uniObj.getCitationType().getValue());
 		xmlCitation.setName(uniObj.getBookName());
 		xmlCitation.setCity(uniObj.getAddress());
 		setEditorsToXml(uniObj, xmlCitation);
