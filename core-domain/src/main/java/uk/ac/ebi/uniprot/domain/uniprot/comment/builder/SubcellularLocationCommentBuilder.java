@@ -13,10 +13,6 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
     private Note note;
     private List<SubcellularLocation> subcellularLocations = new ArrayList<>();
 
-    public static SubcellularLocationCommentBuilder newInstance() {
-        return new SubcellularLocationCommentBuilder();
-    }
-
     public SubcellularLocationComment build() {
         return new SubcellularLocationCommentImpl(this);
     }

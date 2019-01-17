@@ -10,8 +10,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidenceValues;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class DiseaseCommentBuilderTest {
 
@@ -28,7 +28,7 @@ public class DiseaseCommentBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder().value(description).evidences(evidences).build())
+                .description(new DiseaseDescriptionBuilder(description, evidences).build())
                 .reference(reference)         
                 .build();
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
@@ -55,10 +55,10 @@ public class DiseaseCommentBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder().value(description).evidences(evidences).build())
+                .description(new DiseaseDescriptionBuilder(description, evidences).build())
                 .reference(reference)
                 .build();
-        Note note = new NoteBuilder(createEvidenceValues()).build();
+        Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
 
         DiseaseComment comment =

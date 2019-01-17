@@ -2,25 +2,23 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class SubcellularLocationCommentBuilderTest {
 
     @Test
     public void testSetMolecule() {
         String molecule = "some mol";
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         SubcellularLocationComment comment = builder.molecule(molecule)
                 .build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
@@ -37,18 +35,18 @@ public class SubcellularLocationCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
         String orientationVal = "some orient";
-        SubcellularLocation sublocation = SubcellularLocationCommentBuilder.createSubcellularLocation(
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue(locationVal, evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue(topologyVal, evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue(orientationVal, evidences));
-
+        SubcellularLocation sublocation = new SubcellularLocationBuilder()
+                .location(new SubcellularLocationValueBuilder(locationVal, evidences).build())
+                .topology(new SubcellularLocationValueBuilder(topologyVal, evidences).build())
+                .orientation(new SubcellularLocationValueBuilder(orientationVal, evidences).build())
+                .build();
         sublocations.add(sublocation);
-        SubcellularLocation sublocation2 = SubcellularLocationCommentBuilder.createSubcellularLocation(
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue("val1", evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue("val2", evidences),
-                null);
+        SubcellularLocation sublocation2 = new SubcellularLocationBuilder()
+                .location(new SubcellularLocationValueBuilder("val1", evidences).build())
+                .topology(new SubcellularLocationValueBuilder("val2", evidences).build())
+                .build();
         sublocations.add(sublocation2);
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         SubcellularLocationComment comment = builder.molecule(molecule)
                 .subcellularLocations(sublocations)
                 .build();
@@ -69,21 +67,22 @@ public class SubcellularLocationCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
         String orientationVal = "some orient";
-        SubcellularLocation sublocation = SubcellularLocationCommentBuilder.createSubcellularLocation(
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue(locationVal, evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue(topologyVal, evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue(orientationVal, evidences));
+        SubcellularLocation sublocation = new SubcellularLocationBuilder()
+                .location(new SubcellularLocationValueBuilder(locationVal, evidences).build())
+                .topology(new SubcellularLocationValueBuilder(topologyVal, evidences).build())
+                .orientation(new SubcellularLocationValueBuilder(orientationVal, evidences).build())
+                .build();
 
         sublocations.add(sublocation);
-        SubcellularLocation sublocation2 = SubcellularLocationCommentBuilder.createSubcellularLocation(
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue("val1", evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue("val2", evidences),
-                null);
+        SubcellularLocation sublocation2 = new SubcellularLocationBuilder()
+                .location(new SubcellularLocationValueBuilder("val1", evidences).build())
+                .topology(new SubcellularLocationValueBuilder("val2", evidences).build())
+                .build();
         sublocations.add(sublocation2);
 
-        Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
+        Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
 
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         SubcellularLocationComment comment = builder.molecule(molecule)
                 .subcellularLocations(sublocations)
                 .note(note)
@@ -101,8 +100,7 @@ public class SubcellularLocationCommentBuilderTest {
     public void testCreateSubcellularLocationValue() {
         String value = "some data";
         List<Evidence> evidences = createEvidences();
-        SubcellularLocationValue slv = SubcellularLocationCommentBuilder
-                .createSubcellularLocationValue(value, evidences);
+        SubcellularLocationValue slv = new SubcellularLocationValueBuilder(value, evidences).build();
         assertEquals(value, slv.getValue());
         assertEquals(evidences, slv.getEvidences());
         TestHelper.verifyJson(slv);
@@ -114,39 +112,24 @@ public class SubcellularLocationCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
         String orientationVal = "some orient";
-        SubcellularLocationValue location = SubcellularLocationCommentBuilder
-                .createSubcellularLocationValue(locationVal, evidences);
-        SubcellularLocationValue topology = SubcellularLocationCommentBuilder
-                .createSubcellularLocationValue(topologyVal, evidences);
-        SubcellularLocationValue orientation = SubcellularLocationCommentBuilder
-                .createSubcellularLocationValue(orientationVal, evidences);
-        SubcellularLocation sublocation = SubcellularLocationCommentBuilder
-                .createSubcellularLocation(location, topology, orientation);
+        SubcellularLocationValue location = new SubcellularLocationValueBuilder(locationVal, evidences).build();
+        SubcellularLocationValue topology = new SubcellularLocationValueBuilder(topologyVal, evidences).build();
+        SubcellularLocationValue orientation = new SubcellularLocationValueBuilder(orientationVal, evidences).build();
+        SubcellularLocation sublocation = new SubcellularLocationBuilder()
+                .location(location)
+                .topology(topology)
+                .orientation(orientation)
+                .build();
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertEquals(orientation, sublocation.getOrientation());
         TestHelper.verifyJson(sublocation);
 
-        sublocation = SubcellularLocationCommentBuilder.createSubcellularLocation(location, topology, null);
+        sublocation = new SubcellularLocationBuilder()
+                .location(location).topology(topology).build();
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertFalse(sublocation.getOrientation() != null);
         TestHelper.verifyJson(sublocation);
-
-
-    }
-
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-        return evidences;
-    }
-
-    private List<EvidencedValue> createEvidenceValues() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
-        return evidencedValues;
     }
 }

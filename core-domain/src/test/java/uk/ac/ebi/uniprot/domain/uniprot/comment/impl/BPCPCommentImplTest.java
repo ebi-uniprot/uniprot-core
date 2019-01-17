@@ -2,42 +2,34 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ImplTestHelper.createNote;
 
 class BPCPCommentImplTest {
-
     @Test
     void testCreatePHDependence() {
-        PhDependence obj = BPCPCommentImpl.createPHDependence(createEvidenceValues("ph dep 1", "ph dep2"));
+        PhDependence obj = new PhDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
         TestHelper.verifyJson(obj);
-
     }
 
     @Test
     void testCreateRedoxPotential() {
-        RedoxPotential obj = BPCPCommentImpl
-                .createRedoxPotential(createEvidenceValues("red potential 1", "red potential 2"));
+        RedoxPotential obj = new RedoxPotentialBuilder(createEvidenceValuesWithoutEvidences()).build();
         TestHelper.verifyJson(obj);
-
     }
 
     @Test
     void testCreateTemperatureDependence() {
-        TemperatureDependence obj = BPCPCommentImpl
-                .createTemperatureDependence(createEvidenceValues("temp 1", "temp2"));
+        TemperatureDependence obj = new TemperatureDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
         TestHelper.verifyJson(obj);
     }
 
@@ -45,14 +37,16 @@ class BPCPCommentImplTest {
     void testBPCPCommentImpl() {
         Absorption absorption = createAbsorption();
         KineticParameters kineticParameters = createKineticParameters();
-        PhDependence phDependence = BPCPCommentImpl.createPHDependence(createEvidenceValues("ph dep 1", "ph dep2"));
-        RedoxPotential redoxPotential = BPCPCommentImpl
-                .createRedoxPotential(createEvidenceValues("red potential 1", "red potential 2"));
-        TemperatureDependence temperatureDependence = BPCPCommentImpl
-                .createTemperatureDependence(createEvidenceValues("temp 1", "temp2"));
-        BPCPComment comment =
-                new BPCPCommentImpl(absorption, kineticParameters, phDependence,
-                                    redoxPotential, temperatureDependence);
+        PhDependence phDependence = new PhDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
+        RedoxPotential redoxPotential = new RedoxPotentialBuilder(createEvidenceValuesWithoutEvidences()).build();
+        TemperatureDependence temperatureDependence = new TemperatureDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
+        BPCPComment comment = new BPCPCommentBuilder()
+                .absorption(absorption)
+                .kineticParameters(kineticParameters)
+                .phDependence(phDependence)
+                .temperatureDependence(temperatureDependence)
+                .redoxPotential(redoxPotential)
+                .build();
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(kineticParameters, comment.getKineticParameters());
@@ -68,11 +62,14 @@ class BPCPCommentImplTest {
         KineticParameters kineticParameters = null;
         PhDependence phDependence = null;
         RedoxPotential redoxPotential = null;
-        TemperatureDependence temperatureDependence = BPCPCommentImpl
-                .createTemperatureDependence(createEvidenceValues("temp 1", "temp2"));
-        BPCPComment comment =
-                new BPCPCommentImpl(absorption, kineticParameters, phDependence,
-                                    redoxPotential, temperatureDependence);
+        TemperatureDependence temperatureDependence = new TemperatureDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
+        BPCPComment comment = new BPCPCommentBuilder()
+                .absorption(absorption)
+                .kineticParameters(kineticParameters)
+                .phDependence(phDependence)
+                .temperatureDependence(temperatureDependence)
+                .redoxPotential(redoxPotential)
+                .build();
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(kineticParameters, comment.getKineticParameters());
@@ -89,9 +86,13 @@ class BPCPCommentImplTest {
         PhDependence phDependence = null;
         RedoxPotential redoxPotential = null;
         TemperatureDependence temperatureDependence = null;
-        BPCPComment comment =
-                new BPCPCommentImpl(absorption, kineticParameters, phDependence,
-                                    redoxPotential, temperatureDependence);
+        BPCPComment comment = new BPCPCommentBuilder()
+                .absorption(absorption)
+                .kineticParameters(kineticParameters)
+                .phDependence(phDependence)
+                .temperatureDependence(temperatureDependence)
+                .redoxPotential(redoxPotential)
+                .build();
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(kineticParameters, comment.getKineticParameters());
@@ -106,13 +107,16 @@ class BPCPCommentImplTest {
     void testBPCPCommentImplOnlyKPhDependence() {
         Absorption absorption = null;
         KineticParameters kineticParameters = null;
-        PhDependence phDependence = BPCPCommentImpl.createPHDependence(createEvidenceValues("ph dep 1", "ph dep2"));
+        PhDependence phDependence = new PhDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
         TemperatureDependence temperatureDependence = null;
-        ;
         RedoxPotential redoxPotential = null;
-        BPCPComment comment =
-                new BPCPCommentImpl(absorption, kineticParameters, phDependence,
-                                    redoxPotential, temperatureDependence);
+        BPCPComment comment = new BPCPCommentBuilder()
+                .absorption(absorption)
+                .kineticParameters(kineticParameters)
+                .phDependence(phDependence)
+                .temperatureDependence(temperatureDependence)
+                .redoxPotential(redoxPotential)
+                .build();
         assertEquals(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, comment.getCommentType());
         assertEquals(absorption, comment.getAbsorption());
         assertEquals(kineticParameters, comment.getKineticParameters());
@@ -126,7 +130,11 @@ class BPCPCommentImplTest {
     private Absorption createAbsorption() {
         Note note = createNote();
         List<Evidence> evidences = createEvidences();
-        return new AbsorptionImpl(32, note, evidences);
+        return new AbsorptionBuilder()
+                .evidences(evidences)
+                .note(note)
+                .max(32)
+                .build();
     }
 
     private KineticParameters createKineticParameters() {
@@ -135,55 +143,39 @@ class BPCPCommentImplTest {
         List<MichaelisConstant> mConstants = createConstants();
         Note note = createNote();
 
-        return BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
-
+        return new KineticParametersBuilder().maximumVelocities(velocities).michaelisConstants(mConstants).note(note)
+                .build();
     }
 
     private List<MaximumVelocity> createVelocities() {
         List<MaximumVelocity> velocities = new ArrayList<>();
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
+        velocities.add(new MaximumVelocityBuilder()
+                               .velocity(1.0)
+                               .unit("unit1")
+                               .enzyme("enzyme1")
+                               .evidences(createEvidences())
+                               .build());
+        velocities.add(new MaximumVelocityBuilder()
+                               .velocity(1.32)
+                               .unit("unit2")
+                               .enzyme("enzyme2")
+                               .evidences(createEvidences())
+                               .build());
         return velocities;
     }
 
     private List<MichaelisConstant> createConstants() {
         List<MichaelisConstant> mConstants = new ArrayList<>();
-        float constant = 2.13f;
+        double constant = 2.13;
         MichaelisConstantUnit unit = MichaelisConstantUnit.MG_ML_2;
         String substrate = "some value";
-        MichaelisConstant mconstant = new MichaelisConstantImpl(constant, unit, substrate, createEvidences());
+        MichaelisConstant mconstant = new MichaelisConstantBuilder()
+                .constant(constant)
+                .unit(unit)
+                .substrate(substrate)
+                .evidences(createEvidences())
+                .build();
         mConstants.add(mconstant);
         return mConstants;
     }
-
-    private Note createNote() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", createEvidences()));
-        Note note = CommentFactory.INSTANCE.createNote(evidencedValues);
-        return note;
-    }
-
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
-        return evidences;
-    }
-
-    private List<EvidencedValue> createEvidenceValues(String val1, String val2) {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
-
-        List<Evidence> evidences2 = new ArrayList<>();
-        evidences2.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", evidences));
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", evidences2));
-        return evidencedValues;
-    }
-
-
 }

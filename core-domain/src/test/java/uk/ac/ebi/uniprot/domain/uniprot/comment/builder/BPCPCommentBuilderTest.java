@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidenceValues;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class BPCPCommentBuilderTest {
     @Test
@@ -27,7 +27,7 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testSetAbsorption() {
         int max = 21;
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         Absorption absorption = new AbsorptionBuilder()
                 .max(max)
@@ -55,7 +55,7 @@ public class BPCPCommentBuilderTest {
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         KineticParameters kp = createKineticParameters(velocities, mConstants, note);
         int max = 21;
@@ -101,7 +101,7 @@ public class BPCPCommentBuilderTest {
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         KineticParameters kp = createKineticParameters(velocities, mConstants, note);
         int max = 21;
@@ -130,7 +130,7 @@ public class BPCPCommentBuilderTest {
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         KineticParameters kp = createKineticParameters(velocities, mConstants, note);
         int max = 21;
@@ -160,7 +160,7 @@ public class BPCPCommentBuilderTest {
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(createMichaelisConstant(2.1, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         KineticParameters kp = createKineticParameters(velocities, mConstants, note);
         int max = 21;
@@ -186,7 +186,7 @@ public class BPCPCommentBuilderTest {
 
     @Test
     public void testCreatePHDependence() {
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         PhDependence phDependence = new PhDependenceBuilder(texts).build();
         assertEquals(2, phDependence.getTexts().size());
         assertEquals("value1", phDependence.getTexts().get(0).getValue());
@@ -195,7 +195,7 @@ public class BPCPCommentBuilderTest {
 
     @Test
     public void testCreateRedoxPotential() {
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         RedoxPotential redoxPotential = new RedoxPotentialBuilder(texts).build();
         assertEquals(2, redoxPotential.getTexts().size());
         assertEquals("value1", redoxPotential.getTexts().get(0).getValue());
@@ -204,7 +204,7 @@ public class BPCPCommentBuilderTest {
 
     @Test
     public void testCreateTemperatureDependence() {
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         TemperatureDependence temDependence = new TemperatureDependenceBuilder(texts).build();
         assertEquals(2, temDependence.getTexts().size());
         assertEquals("value1", temDependence.getTexts().get(0).getValue());
@@ -213,7 +213,7 @@ public class BPCPCommentBuilderTest {
 
     @Test
     public void testCreateAbsorptionNote() {
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         assertEquals(2, note.getTexts().size());
         assertEquals("value1", note.getTexts().get(0).getValue());
@@ -223,7 +223,7 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testCreateKPNote() {
 
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         assertEquals(2, note.getTexts().size());
         assertEquals("value1", note.getTexts().get(0).getValue());
@@ -233,7 +233,7 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testCreateAbsorption1() {
         int max = 21;
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         Absorption absorption = createAbsorption(max, false, note, Collections.emptyList());
         assertEquals(max, absorption.getMax());
@@ -245,7 +245,7 @@ public class BPCPCommentBuilderTest {
     @Test
     public void testCreateAbsorption2() {
         int max = 21;
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         Absorption absorption = createAbsorption(max, true, note, createEvidences());
         assertEquals(max, absorption.getMax());
@@ -284,7 +284,7 @@ public class BPCPCommentBuilderTest {
     public void testCreateKineticParametersWithNote() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         List<MichaelisConstant> mConstants = new ArrayList<>();
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         KineticParameters kp = createKineticParameters(velocities, mConstants, note);
         assertEquals(0, kp.getMaximumVelocities().size());
@@ -298,7 +298,7 @@ public class BPCPCommentBuilderTest {
         velocities.add(createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         KineticParameters kp = createKineticParameters(velocities, mConstants, note);
         assertEquals(2, kp.getMaximumVelocities().size());
@@ -313,7 +313,7 @@ public class BPCPCommentBuilderTest {
         velocities.add(createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
         List<MichaelisConstant> mConstants = new ArrayList<>();
         mConstants.add(createMichaelisConstant(2.1f, MichaelisConstantUnit.MICRO_MOL, "sub1", createEvidences()));
-        List<EvidencedValue> texts = createEvidenceValues();
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         KineticParameters kp = createKineticParameters(velocities, mConstants, note);
         assertEquals(2, kp.getMaximumVelocities().size());

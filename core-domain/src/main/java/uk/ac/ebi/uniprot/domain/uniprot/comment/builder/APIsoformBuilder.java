@@ -29,17 +29,17 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
         return null;
     }
 
-    public APIsoformBuilder isoformName(IsoformName name) {
+    public APIsoformBuilder name(IsoformName name) {
         this.name = name;
         return this;
     }
 
-    public APIsoformBuilder isoformSynonyms(List<IsoformName> synonyms) {
+    public APIsoformBuilder synonyms(List<IsoformName> synonyms) {
         this.synonyms.addAll(synonyms);
         return this;
     }
 
-    public APIsoformBuilder addIsoformSynonym(IsoformName synonym) {
+    public APIsoformBuilder addSynonym(IsoformName synonym) {
         this.synonyms.add(synonym);
         return this;
     }
@@ -49,12 +49,12 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
         return this;
     }
 
-    public APIsoformBuilder isoformIds(List<String> isoformIds) {
+    public APIsoformBuilder ids(List<String> isoformIds) {
         isoformIds.stream().map(APIsoformImpl.IsoformIdImpl::new).forEach(this.isoformIds::add);
         return this;
     }
 
-    public APIsoformBuilder addIsoformId(String isoformId) {
+    public APIsoformBuilder addId(String isoformId) {
         this.isoformIds.add(new APIsoformImpl.IsoformIdImpl(isoformId));
         return this;
     }
@@ -69,7 +69,7 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
         return this;
     }
 
-    public APIsoformBuilder isoformSequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
+    public APIsoformBuilder sequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
         this.isoformSequenceStatus = isoformSequenceStatus;
         return this;
     }
@@ -82,7 +82,7 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
         return synonyms;
     }
 
-    public List<IsoformId> getIsoformIds() {
+    public List<IsoformId> getIds() {
         return isoformIds;
     }
 
@@ -94,7 +94,7 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
         return note;
     }
 
-    public IsoformSequenceStatus getIsoformSequenceStatus() {
+    public IsoformSequenceStatus getSequenceStatus() {
         return isoformSequenceStatus;
     }
 }

@@ -9,10 +9,6 @@ public final class WebResourceCommentBuilder implements CommentBuilder<WebResour
     private boolean isFtp = false;
     private String note;
 
-    public static WebResourceCommentBuilder newInstance() {
-        return new WebResourceCommentBuilder();
-    }
-
     public WebResourceComment build() {
         return new WebResourceCommentImpl(this);
     }

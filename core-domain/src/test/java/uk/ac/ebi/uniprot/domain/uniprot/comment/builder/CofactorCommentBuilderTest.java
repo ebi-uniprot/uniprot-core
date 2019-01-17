@@ -11,8 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidenceValues;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class CofactorCommentBuilderTest {
     @Test
@@ -65,7 +65,7 @@ public class CofactorCommentBuilderTest {
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
-        Note note = new NoteBuilder(createEvidenceValues()).build();
+        Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
         String molecule = "";
         CofactorComment comment =
                 builder.molecule(molecule)
@@ -103,7 +103,7 @@ public class CofactorCommentBuilderTest {
     private Cofactor createCofactor(String name, DBCrossReference<CofactorReferenceType> reference, List<Evidence> evidences) {
         return new CofactorBuilder()
                 .name(name)
-                .cofactorReference(reference)
+                .reference(reference)
                 .evidences(evidences)
                 .build();
     }

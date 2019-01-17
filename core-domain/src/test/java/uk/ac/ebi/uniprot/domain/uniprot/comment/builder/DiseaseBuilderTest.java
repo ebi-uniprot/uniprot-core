@@ -11,7 +11,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.List;
 
 import static org.junit.Assert.*;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BuilderTestHelper.createEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class DiseaseBuilderTest {
     @Test
@@ -61,7 +61,7 @@ public class DiseaseBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder().value(description).evidences(evidences).build())
+                .description(new DiseaseDescriptionBuilder(description, evidences).build())
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());
@@ -84,7 +84,7 @@ public class DiseaseBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder().value(description).evidences(evidences).build())
+                .description(new DiseaseDescriptionBuilder(description, evidences).build())
                 .reference(reference)        
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());

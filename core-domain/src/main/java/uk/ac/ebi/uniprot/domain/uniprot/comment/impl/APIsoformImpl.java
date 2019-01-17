@@ -29,13 +29,13 @@ public class APIsoformImpl implements APIsoform {
         this.name = builder.getName();
         this.synonyms = Utils.unmodifierList(builder.getSynonyms());
         this.note = builder.getNote();
-        this.isoformIds = Utils.unmodifierList(builder.getIsoformIds());
+        this.isoformIds = Utils.unmodifierList(builder.getIds());
         this.sequenceIds = Utils.unmodifierList(builder.getSequenceIds());
 
-        if (builder.getIsoformSequenceStatus() == null) {
+        if (builder.getSequenceStatus() == null) {
             this.isoformSequenceStatus = IsoformSequenceStatus.DESCRIBED;
         } else
-            this.isoformSequenceStatus = builder.getIsoformSequenceStatus();
+            this.isoformSequenceStatus = builder.getSequenceStatus();
     }
 
     @Override

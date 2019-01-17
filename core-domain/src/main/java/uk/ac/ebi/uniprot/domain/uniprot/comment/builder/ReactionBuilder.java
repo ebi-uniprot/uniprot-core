@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ReactionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
         return this;
     }
 
-    public ReactionBuilder reactionReferences(List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
+    public ReactionBuilder references(List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
         this.reactionReferences.addAll(reactionReferences);
         return this;
     }
@@ -62,7 +62,7 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
                 .ecNumber(instance.getEcNumber())
                 .evidences(instance.getEvidences())
                 .name(instance.getName())
-                .reactionReferences(instance.getReactionReferences());
+                .references(instance.getReactionReferences());
     }
 
     public String getName() {

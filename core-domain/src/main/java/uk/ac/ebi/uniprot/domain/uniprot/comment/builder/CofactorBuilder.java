@@ -35,7 +35,7 @@ public final class CofactorBuilder implements Builder2<CofactorBuilder, Cofactor
         return this;
     }
 
-    public CofactorBuilder cofactorReference(DBCrossReference<CofactorReferenceType> cofactorReference) {
+    public CofactorBuilder reference(DBCrossReference<CofactorReferenceType> cofactorReference) {
         this.cofactorReference = cofactorReference;
         return this;
     }
@@ -50,7 +50,7 @@ public final class CofactorBuilder implements Builder2<CofactorBuilder, Cofactor
         return new CofactorBuilder()
                 .name(instance.getName())
                 .evidences(instance.getEvidences())
-                .cofactorReference(instance.getCofactorReference());
+                .reference(instance.getCofactorReference());
     }
 
     public String getName() {

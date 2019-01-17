@@ -2,35 +2,32 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class RnaEditingCommentBuilderTest {
-
     @Test
     public void testNewInstance() {
-        RnaEditingCommentBuilder builder1 = RnaEditingCommentBuilder.newInstance();
-        RnaEditingCommentBuilder builder2 = RnaEditingCommentBuilder.newInstance();
+        RnaEditingCommentBuilder builder1 = new RnaEditingCommentBuilder();
+        RnaEditingCommentBuilder builder2 = new RnaEditingCommentBuilder();
         assertNotNull(builder1);
         assertNotNull(builder2);
         assertFalse(builder1 == builder2);
     }
 
     @Test
-    public void testSetRnaEditingLocationType() {
+    public void testSetlocationType() {
 
-        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
-                builder.rnaEditingLocationType(RnaEditingLocationType.Known)
+                builder.locationType(RnaEditingLocationType.Known)
                         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
@@ -40,15 +37,15 @@ public class RnaEditingCommentBuilderTest {
     }
 
     @Test
-    public void testSetLocations() {
+    public void testSetpositions() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        positions.add(RnaEditingCommentBuilder.createPosition("123", evidences));
-        positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
-        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
+        positions.add(new RnaEditingPositionBuilder("123", evidences).build());
+        positions.add(new RnaEditingPositionBuilder("432", evidences).build());
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
-                builder.rnaEditingLocationType(RnaEditingLocationType.Known)
-                        .locations(positions)
+                builder.locationType(RnaEditingLocationType.Known)
+                        .positions(positions)
                         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
@@ -61,13 +58,13 @@ public class RnaEditingCommentBuilderTest {
     public void testSetNote() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        positions.add(RnaEditingCommentBuilder.createPosition("123", evidences));
-        positions.add(RnaEditingCommentBuilder.createPosition("432", evidences));
-        Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
-        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
+        positions.add(new RnaEditingPositionBuilder("123", evidences).build());
+        positions.add(new RnaEditingPositionBuilder("432", evidences).build());
+        Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
-                builder.rnaEditingLocationType(RnaEditingLocationType.Known)
-                        .locations(positions)
+                builder.locationType(RnaEditingLocationType.Known)
+                        .positions(positions)
                         .note(note)
                         .build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
@@ -80,23 +77,9 @@ public class RnaEditingCommentBuilderTest {
     @Test
     public void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
-        RnaEdPosition position = RnaEditingCommentBuilder.createPosition("123", evidences);
+        RnaEdPosition position = new RnaEditingPositionBuilder("123", evidences).build();
         assertEquals("123", position.getPosition());
         assertEquals(evidences, position.getEvidences());
         TestHelper.verifyJson(position);
-    }
-
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-        return evidences;
-    }
-
-    private List<EvidencedValue> createEvidenceValues() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
-        return evidencedValues;
     }
 }

@@ -13,9 +13,17 @@ import java.util.List;
  *
  * @author Edd
  */
-public class RnaEdPositionBuilder implements Builder2<RnaEdPositionBuilder, RnaEdPosition> {
+public class RnaEditingPositionBuilder implements Builder2<RnaEditingPositionBuilder, RnaEdPosition> {
     private String position;
     private List<Evidence> evidences = new ArrayList<>();
+
+    private RnaEditingPositionBuilder() {
+    }
+
+    public RnaEditingPositionBuilder(String position, List<Evidence> evidences) {
+        this.position = position;
+        this.evidences.addAll(evidences);
+    }
 
     @Override
     public RnaEdPosition build() {
@@ -23,23 +31,23 @@ public class RnaEdPositionBuilder implements Builder2<RnaEdPositionBuilder, RnaE
     }
 
     @Override
-    public RnaEdPositionBuilder from(RnaEdPosition instance) {
-        return new RnaEdPositionBuilder()
+    public RnaEditingPositionBuilder from(RnaEdPosition instance) {
+        return new RnaEditingPositionBuilder()
                 .evidences(instance.getEvidences())
                 .position(instance.getPosition());
     }
 
-    public RnaEdPositionBuilder position(String position) {
+    public RnaEditingPositionBuilder position(String position) {
         this.position = position;
         return this;
     }
 
-    public RnaEdPositionBuilder evidences(List<Evidence> evidences) {
+    public RnaEditingPositionBuilder evidences(List<Evidence> evidences) {
         this.evidences.addAll(evidences);
         return this;
     }
 
-    public RnaEdPositionBuilder addEvidence(Evidence evidence) {
+    public RnaEditingPositionBuilder addEvidence(Evidence evidence) {
         this.evidences.add(evidence);
         return this;
     }

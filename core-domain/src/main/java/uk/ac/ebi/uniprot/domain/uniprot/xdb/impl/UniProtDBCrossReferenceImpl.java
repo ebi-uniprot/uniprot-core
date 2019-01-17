@@ -21,7 +21,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     private List<Evidence> evidences;
 
     private UniProtDBCrossReferenceImpl() {
-        super(null, "", Collections.emptyList());
+        super(new DBCrossReferenceBuilder<>());
         evidences = Collections.emptyList();
     }
 
@@ -43,9 +43,9 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     @Override
-	public List<Evidence> getEvidences() {
-		return evidences;
-	}
+    public List<Evidence> getEvidences() {
+        return evidences;
+    }
 
 
     @Override

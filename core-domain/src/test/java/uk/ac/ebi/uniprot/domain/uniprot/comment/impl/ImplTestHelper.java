@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.TestHelper;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.IsoformNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
@@ -14,12 +14,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Collections.emptyList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
-class NoteImplTest {
-
-    @Test
-    void testNoteImpl() {
+/**
+ * Created 17/01/19
+ *
+ * @author Edd
+ */
+public class ImplTestHelper {
+    static Note createNote() {
         List<EvidencedValue> texts = new ArrayList<>();
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(new EvidenceBuilder()
@@ -35,17 +38,14 @@ class NoteImplTest {
                         .build());
         texts.add(new EvidencedValueBuilder("value 1", evidences).build());
         texts.add(new EvidencedValueBuilder("value2", emptyList()).build());
-
-        Note note = new NoteBuilder(texts).build();
-        assertEquals(texts, note.getTexts());
-        TestHelper.verifyJson(note);
+        return new NoteBuilder(texts).build();
     }
 
-    @Test
-    void testNoteImplEmpty() {
-        List<EvidencedValue> texts = new ArrayList<>();
-        Note note = new NoteBuilder(texts).build();
-        assertEquals(texts, note.getTexts());
-        TestHelper.verifyJson(note);
+    static List<IsoformName> createSynonyms() {
+        List<IsoformName> synonyms = new ArrayList<>();
+        List<Evidence> evidences = createEvidences();
+        synonyms.add(new IsoformNameBuilder("Syn 1", evidences).build());
+        synonyms.add(new IsoformNameBuilder("Syn 2", evidences).build());
+        return synonyms;
     }
 }

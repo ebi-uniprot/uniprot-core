@@ -14,7 +14,6 @@ class MassSpectrometryRangeImplTest {
     void testMassSpectrometryRangeImplIntIntString() {
         MassSpectrometryRange range = new MassSpectrometryRangeImpl(23, 25, "P1232");
         verify(range, new Range(23, 25), "P1232");
-        ;
     }
 
     @Test

@@ -9,7 +9,6 @@ public final class Range {
     }
 
     public Range(Integer start, Integer end, PositionModifier sModifier, PositionModifier eModifier) {
-
         this(new Position(start, sModifier), new Position(end, eModifier));
     }
 

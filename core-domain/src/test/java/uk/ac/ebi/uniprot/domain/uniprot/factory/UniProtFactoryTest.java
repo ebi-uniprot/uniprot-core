@@ -37,11 +37,11 @@ public class UniProtFactoryTest {
         assertNotNull(componentFactory);
     }
 
-    @Test
-    public void testGetCommentFactory() {
-        CommentFactory componentFactory = UniProtFactory.INSTANCE.getCommentFactory();
-        assertNotNull(componentFactory);
-    }
+//    @Test
+//    public void testGetCommentFactory() {
+//        CommentFactory componentFactory = UniProtFactory.INSTANCE.getCommentFactory();
+//        assertNotNull(componentFactory);
+//    }
 
     @Test
     public void testGetFeatureFactory() {

@@ -4,39 +4,32 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.citation2.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.ReactionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 class ReactionImplTest {
-
     @Test
     void testFull() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"
-        ));
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
-        ));
+        List<Evidence> evidences = createEvidences();
         String name = "some reaction";
         List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:123"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:323"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));
+        references.add(xref(ReactionReferenceType.RHEA, "RHEA:123"));
+        references.add(xref(ReactionReferenceType.RHEA, "RHEA:323"));
+        references.add(xref(ReactionReferenceType.CHEBI, "ChEBI:3243"));
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
-        Reaction reaction = new ReactionImpl(name, references, ecNumber,
-                                             evidences);
+        Reaction reaction = new ReactionBuilder()
+                .name(name).references(references).ecNumber(ecNumber).evidences(evidences).build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(ecNumber, reaction.getEcNumber());
@@ -46,21 +39,10 @@ class ReactionImplTest {
 
     @Test
     void testNameAndEvidence() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"
-        ));
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
-        ));
+        List<Evidence> evidences = createEvidences();
         String name = "some reaction";
-//        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-//        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:123"));
-//        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:323"));
-//        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));
-//        ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
-        Reaction reaction = new ReactionImpl(name, null, null,
-                                             evidences);
+        Reaction reaction = new ReactionBuilder()
+                .name(name).evidences(evidences).build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
@@ -70,21 +52,11 @@ class ReactionImplTest {
 
     @Test
     void testNameAndEvidenceAndEC() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"
-        ));
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
-        ));
+        List<Evidence> evidences = createEvidences();
         String name = "some reaction";
-//        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-//        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:123"));
-//        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:323"));
-//        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
-        Reaction reaction = new ReactionImpl(name, null, ecNumber,
-                                             evidences);
+        Reaction reaction = new ReactionBuilder()
+                .name(name).ecNumber(ecNumber).evidences(evidences).build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(ecNumber, reaction.getEcNumber());
@@ -94,25 +66,26 @@ class ReactionImplTest {
 
     @Test
     void testNameAndEvidenceAndReferences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"
-        ));
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
-        ));
+        List<Evidence> evidences = createEvidences();
         String name = "some reaction";
         List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:123"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:323"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));
+        references.add(xref(ReactionReferenceType.RHEA, "RHEA:123"));
+        references.add(xref(ReactionReferenceType.RHEA, "RHEA:323"));
+        references.add(xref(ReactionReferenceType.CHEBI, "ChEBI:3243"));
 
-        Reaction reaction = new ReactionImpl(name, references, null,
-                                             evidences);
+        Reaction reaction = new ReactionBuilder()
+                .references(references).evidences(evidences).build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
         assertEquals(references, reaction.getReactionReferences());
         TestHelper.verifyJson(reaction);
+    }
+
+    private DBCrossReference<ReactionReferenceType> xref(ReactionReferenceType type, String id) {
+        return new DBCrossReferenceBuilder<ReactionReferenceType>()
+                .databaseType(type)
+                .id(id)
+                .build();
     }
 }

@@ -15,10 +15,6 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     private List<String> positions = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
 
-    public static SequenceCautionCommentBuilder newInstance() {
-        return new SequenceCautionCommentBuilder();
-    }
-
     public SequenceCautionComment build() {
         return new SequenceCautionCommentImpl(this);
     }
