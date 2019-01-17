@@ -16,7 +16,8 @@ public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefTy
     }
 
     public static CitationXrefType typeOf(String value) {
-        for (CitationXrefType citXrefType : CitationXrefType.values()) {
+        for (CitationXrefType citXrefType : CitationXrefType
+                .values()) {
             if (citXrefType.getName().equalsIgnoreCase(value)) {
                 return citXrefType;
             }

@@ -3,22 +3,27 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.impl.JournalArticleImpl;
 
-public final class JournalArticleBuilder extends AbstractCitationBuilder<JournalArticle> {
-
+public final class JournalArticleBuilder extends AbstractCitationBuilder<JournalArticleBuilder, JournalArticle> {
     private String journalName;
     private String firstPage = "";
     private String lastPage = "";
     private String volume = "";
 
-    public static JournalArticleBuilder newInstance() {
-        return new JournalArticleBuilder();
+    @Override
+    public JournalArticle build() {
+        return new JournalArticleImpl(this);
     }
 
     @Override
-    public JournalArticle build() {
-        return new JournalArticleImpl(authoringGroups, authors,
-                                      xrefs, title, publicationDate,
-                                      journalName, firstPage, lastPage, volume);
+    public JournalArticleBuilder from(JournalArticle instance) {
+        JournalArticleBuilder builder = new JournalArticleBuilder();
+        init(builder, instance);
+        return builder
+                .journalName(instance.getJournal().getName())
+                .firstPage(instance.getFirstPage())
+                .lastPage(instance.getLastPage())
+                .volume(instance.getVolume());
+
     }
 
     public JournalArticleBuilder journalName(String journalName) {
@@ -42,5 +47,24 @@ public final class JournalArticleBuilder extends AbstractCitationBuilder<Journal
         return this;
     }
 
+    public String getJournalName() {
+        return journalName;
+    }
 
+    public String getFirstPage() {
+        return firstPage;
+    }
+
+    public String getLastPage() {
+        return lastPage;
+    }
+
+    public String getVolume() {
+        return volume;
+    }
+
+    @Override
+    protected JournalArticleBuilder getThis() {
+        return this;
+    }
 }

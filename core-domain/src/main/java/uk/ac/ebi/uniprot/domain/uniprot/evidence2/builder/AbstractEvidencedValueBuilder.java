@@ -30,17 +30,17 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
 
     public B value(String value) {
         this.value = value;
-        return (B) this;
+        return getThis();
     }
 
     public B evidences(List<Evidence> evidences) {
         this.evidences.addAll(evidences);
-        return (B) this;
+        return getThis();
     }
 
     public B addEvidence(Evidence evidence) {
         this.evidences.add(evidence);
-        return (B) this;
+        return getThis();
     }
 
     public String getValue() {
@@ -53,4 +53,5 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
 
     protected abstract B createBuilderInstance();
     protected abstract E createConcreteInstance();
+    protected abstract B getThis();
 }

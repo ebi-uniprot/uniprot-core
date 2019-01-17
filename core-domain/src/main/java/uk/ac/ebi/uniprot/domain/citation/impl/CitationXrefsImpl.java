@@ -1,8 +1,8 @@
-package uk.ac.ebi.uniprot.domain.citation2.impl;
+package uk.ac.ebi.uniprot.domain.citation.impl;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation2.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation2.CitationXrefs;
+import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
+import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 
 import java.util.Collections;
 import java.util.List;

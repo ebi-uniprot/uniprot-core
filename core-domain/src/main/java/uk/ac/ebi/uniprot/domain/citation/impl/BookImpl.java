@@ -1,7 +1,9 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.citation.Author;
+import uk.ac.ebi.uniprot.domain.citation.Book;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
+import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
@@ -29,11 +31,10 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         this.address = "";
     }
 
-    public BookImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                    String title, PublicationDate publicationDate, String bookName, List<Author> editors,
-                    String firstPage, String lastPage, String volume, String publisher, String address) {
-        super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.bookName = Utils.resetNull(bookName);
+    public BookImpl(BookBuilder builder) {
+        super(CitationType.BOOK, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
+              builder.getTitle(), builder.getPublicationDate());
+        this.bookName = builder.getBookName();
         this.editors = Utils.unmodifierList(editors);
 
         this.firstPage = Utils.resetNull(firstPage);
@@ -42,7 +43,6 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         this.publisher = Utils.resetNull(publisher);
         this.address = Utils.resetNull(address);
     }
-
 
     @Override
     public String getBookName() {
@@ -139,6 +139,4 @@ public class BookImpl extends AbstractCitationImpl implements Book {
             return false;
         return true;
     }
-
-
 }

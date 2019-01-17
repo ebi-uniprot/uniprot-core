@@ -3,16 +3,18 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 import uk.ac.ebi.uniprot.domain.citation.Patent;
 import uk.ac.ebi.uniprot.domain.citation.impl.PatentImpl;
 
-public final class PatentBuilder extends AbstractCitationBuilder<Patent> {
+public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, Patent> {
     private String patentNumber;
 
-    public static PatentBuilder newInstance() {
-        return new PatentBuilder();
+    public Patent build() {
+        return new PatentImpl(this);
     }
 
-    public Patent build() {
-        return new PatentImpl(authoringGroups, authors,
-                              xrefs, title, publicationDate, patentNumber);
+    @Override
+    public PatentBuilder from(Patent instance) {
+        PatentBuilder builder = new PatentBuilder();
+        init(builder, instance);
+        return builder.patentNumber(instance.getPatentNumber());
     }
 
     public PatentBuilder patentNumber(String patentNumber) {
@@ -20,4 +22,12 @@ public final class PatentBuilder extends AbstractCitationBuilder<Patent> {
         return this;
     }
 
+    public String getPatentNumber() {
+        return patentNumber;
+    }
+
+    @Override
+    protected PatentBuilder getThis() {
+        return this;
+    }
 }

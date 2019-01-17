@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
+import uk.ac.ebi.uniprot.domain.citation.Patent;
+import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
-import java.util.List;
 
 public class PatentImpl extends AbstractCitationImpl implements Patent {
     private final String patentNumber;
@@ -16,10 +16,10 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
         this.patentNumber = "";
     }
 
-    public PatentImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                      String title, PublicationDate publicationDate, String patentNumber) {
-        super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.patentNumber = Utils.resetNull(patentNumber);
+    public PatentImpl(PatentBuilder builder) {
+        super(CitationType.PATENT, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
+              builder.getTitle(), builder.getPublicationDate());
+        this.patentNumber = Utils.resetNull(builder.getPatentNumber());
     }
 
     @Override
@@ -51,6 +51,4 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
             return false;
         return true;
     }
-
-
 }

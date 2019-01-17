@@ -28,4 +28,9 @@ public class EvidencedValueBuilder extends AbstractEvidencedValueBuilder<Evidenc
     protected EvidencedValue createConcreteInstance() {
         return new EvidencedValueImpl(value, evidences);
     }
+
+    @Override
+    protected EvidencedValueBuilder getThis() {
+        return this;
+    }
 }

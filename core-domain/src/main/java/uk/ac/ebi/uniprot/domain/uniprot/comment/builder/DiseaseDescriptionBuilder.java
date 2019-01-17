@@ -29,4 +29,9 @@ public class DiseaseDescriptionBuilder extends AbstractEvidencedValueBuilder<Dis
     protected DiseaseDescription createConcreteInstance() {
         return new DiseaseDescriptionImpl(value, evidences);
     }
+
+    @Override
+    protected DiseaseDescriptionBuilder getThis() {
+        return this;
+    }
 }

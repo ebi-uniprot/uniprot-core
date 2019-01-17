@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.impl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.citation2.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;

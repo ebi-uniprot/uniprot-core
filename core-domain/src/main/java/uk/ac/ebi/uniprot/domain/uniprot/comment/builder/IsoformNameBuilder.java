@@ -29,4 +29,9 @@ public class IsoformNameBuilder extends AbstractEvidencedValueBuilder<IsoformNam
     protected IsoformName createConcreteInstance() {
         return new APIsoformImpl.IsoformNameImpl(value, evidences);
     }
+
+    @Override
+    protected IsoformNameBuilder getThis() {
+        return this;
+    }
 }

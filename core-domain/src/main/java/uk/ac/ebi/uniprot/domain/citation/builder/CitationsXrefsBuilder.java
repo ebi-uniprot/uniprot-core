@@ -1,11 +1,12 @@
-package uk.ac.ebi.uniprot.domain.citation2.builder;
+package uk.ac.ebi.uniprot.domain.citation.builder;
 
 import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation2.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation2.CitationXrefs;
-import uk.ac.ebi.uniprot.domain.citation2.impl.CitationXrefsImpl;
+import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
+import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
+import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  * @author Edd
  */
 public class CitationsXrefsBuilder implements Builder2<CitationsXrefsBuilder, CitationXrefs> {
-    private List<DBCrossReference<CitationXrefType>> xRefs;
+    private List<DBCrossReference<CitationXrefType>> xRefs = new ArrayList<>();
 
     @Override
     public CitationXrefs build() {
@@ -31,7 +32,7 @@ public class CitationsXrefsBuilder implements Builder2<CitationsXrefsBuilder, Ci
         return this;
     }
 
-    public CitationsXrefsBuilder addXRefs(DBCrossReference<CitationXrefType> xRef) {
+    public CitationsXrefsBuilder addXRef(DBCrossReference<CitationXrefType> xRef) {
         this.xRefs.add(xRef);
         return this;
     }

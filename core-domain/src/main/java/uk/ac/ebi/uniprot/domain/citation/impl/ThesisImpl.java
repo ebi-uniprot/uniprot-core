@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.citation.CitationType;
+import uk.ac.ebi.uniprot.domain.citation.Thesis;
+import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
-import java.util.List;
 
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     private String institute;
@@ -18,11 +18,11 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         this.address = "";
     }
 
-    public ThesisImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                      String title, PublicationDate publicationDate, String institute, String address) {
-        super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.institute = Utils.resetNull(institute);
-        this.address = Utils.resetNull(address);
+    public ThesisImpl(ThesisBuilder builder) {
+        super(CitationType.THESIS, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
+              builder.getTitle(), builder.getPublicationDate());
+        this.institute = Utils.resetNull(builder.getInstitute());
+        this.address = Utils.resetNull(builder.getAddress());
     }
 
     @Override

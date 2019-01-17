@@ -3,15 +3,20 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 import uk.ac.ebi.uniprot.domain.citation.Unpublished;
 import uk.ac.ebi.uniprot.domain.citation.impl.UnpublishedImpl;
 
-public final class UnpublishedBuilder extends AbstractCitationBuilder<Unpublished> {
-    public static UnpublishedBuilder newInstance() {
-        return new UnpublishedBuilder();
-    }
-
+public final class UnpublishedBuilder extends AbstractCitationBuilder<UnpublishedBuilder, Unpublished> {
     public Unpublished build() {
-        return new UnpublishedImpl(authoringGroups, authors,
-                                   xrefs, title, publicationDate);
+        return new UnpublishedImpl(this);
     }
 
+    @Override
+    public UnpublishedBuilder from(Unpublished instance) {
+        UnpublishedBuilder builder = new UnpublishedBuilder();
+        init(builder, instance);
+        return builder;
+    }
 
+    @Override
+    protected UnpublishedBuilder getThis() {
+        return this;
+    }
 }

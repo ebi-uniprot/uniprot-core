@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-
 import java.util.List;
-import java.util.Optional;
 
 /**
  * The basic type containing the common values that are present in each and every
@@ -16,22 +13,20 @@ import java.util.Optional;
  */
 public interface Citation {
 
-    List<DBCrossReference<CitationXrefType>> getCitationXrefs();
+    public CitationXrefs getCitationXrefs();
 
-    Optional<DBCrossReference<CitationXrefType>> getCitationXrefsByType(CitationXrefType type);
+    public boolean hasCitationXrefs();
 
-    boolean hasCitationXrefs();
+    public List<String> getAuthoringGroup();
 
-    List<String> getAuthoringGroup();
+    public List<Author> getAuthors();
 
-    List<Author> getAuthors();
+    public CitationType getCitationType();
 
-    CitationType getCitationType();
+    public String getTitle();
 
-    String getTitle();
+    public boolean hasTitle();
 
-    boolean hasTitle();
-
-    PublicationDate getPublicationDate();
+    public PublicationDate getPublicationDate();
 
 }
