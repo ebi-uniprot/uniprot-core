@@ -1,23 +1,30 @@
 package uk.ac.ebi.uniprot.parser.impl.oh;
 
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
+import uk.ac.ebi.uniprot.parser.Converter;
+import uk.ac.ebi.uniprot.parser.impl.OrganismNameLineParser;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.parser.Converter;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
 
+public class OhLineConverter implements Converter<OhLineObject, List<OrganismHost> > {
 
-public class OhLineConverter implements Converter<OhLineObject, List<Organism> > {
-	//private DefaultUniProtFactory factory =DefaultUniProtFactory.getInstance();
 	@Override
-	public List<Organism> convert(OhLineObject f) {
-		List<Organism> hosts =new ArrayList<>();
+	public List<OrganismHost> convert(OhLineObject f) {
+		List<OrganismHost> hosts =new ArrayList<>();
 		for(OhLineObject.OhValue oh: f.hosts){
-			OrganismName organismName = TaxonomyFactory.INSTANCE.createFromOrganismLine(oh.hostname);
-			Organism organismHost = TaxonomyFactory.INSTANCE.createOrganism(organismName, oh.tax_id);
-			hosts.add(organismHost);
+			OrganismName organismName = OrganismNameLineParser.createFromOrganismLine(oh.hostname);
+			OrganismHostBuilder organismHostBuilder = new OrganismHostBuilder()
+					.taxonId(oh.tax_id)
+					.scientificName(organismName.getScientificName())
+					.commonName(organismName.getCommonName());
+			if(organismName.getSynonyms() != null){
+				organismHostBuilder.synonyms(organismName.getSynonyms());
+			}
+			hosts.add(organismHostBuilder.build());
 		}
 		return hosts;
 	}

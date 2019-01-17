@@ -1,19 +1,28 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-public class OrganismImpl implements Organism {
-    private OrganismName name;
+import java.util.List;
+import java.util.Objects;
+
+public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
+
+    private static final long serialVersionUID = 3285422222944186108L;
     private long taxonId;
+    private List<Evidence> evidences;
+    private List<String> lineage;
 
     private OrganismImpl() {
-
+        this(new OrganismBuilder());
     }
 
-    public OrganismImpl(OrganismName name, long taxonId) {
-        this.name = name;
-        this.taxonId = taxonId;
+    public OrganismImpl(OrganismBuilder builder) {
+        super(builder);
+        this.taxonId = builder.getTaxonId();
+        this.evidences = builder.getEvidences();
+        this.lineage = builder.getLineage();
     }
 
     @Override
@@ -22,36 +31,46 @@ public class OrganismImpl implements Organism {
     }
 
     @Override
-    public OrganismName getName() {
-        return name;
+    public List<String> getLineage() {
+        return lineage;
+    }
+
+    @Override
+    public List<Evidence> getEvidences() {
+        return evidences;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        if(getTaxonId() > 0) {
+            sb.append(getTaxonId());
+            sb.append(" ");
+        }
+        sb.append(super.toString());
+        List<String> lineage = this.getLineage();
+        if (!lineage.isEmpty()) {
+            sb.append(" (")
+                    .append(String.join(", ", lineage))
+                    .append(")");
+        }
+        return sb.toString();
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        OrganismImpl organism = (OrganismImpl) o;
+        return taxonId == organism.taxonId &&
+                Objects.equals(evidences, organism.evidences) &&
+                Objects.equals(lineage, organism.lineage);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + (int) (taxonId ^ (taxonId >>> 32));
-        return result;
+        return Objects.hash(super.hashCode(), taxonId, evidences, lineage);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        OrganismImpl other = (OrganismImpl) obj;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (taxonId != other.taxonId)
-            return false;
-        return true;
-    }
-
 }

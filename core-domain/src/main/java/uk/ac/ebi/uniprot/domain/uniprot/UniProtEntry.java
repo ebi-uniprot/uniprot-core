@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
@@ -31,13 +31,9 @@ public interface UniProtEntry {
 
     EntryAudit getEntryAudit();
 
-    UniProtTaxonId getTaxonId();
+    Organism getOrganism();
 
-    OrganismName getOrganism();
-
-    List<Organism> getOrganismHosts();
-
-    List<OrganismName> getTaxonomyLineage();
+    List<OrganismHost> getOrganismHosts();
 
     ProteinExistence getProteinExistence();
 

@@ -1,44 +1,49 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.impl.OrganismNameLineParser;
+import uk.ac.ebi.uniprot.parser.impl.oh.OHLineBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.TaxonomyFactory;
-import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
-import uk.ac.ebi.uniprot.parser.impl.oh.OHLineBuilder;
+import static org.junit.Assert.assertEquals;
 
 
 
 public class OHLineBuildTest {
 	OHLineBuilder builder = new OHLineBuilder();
-	private final TaxonomyFactory factory =TaxonomyFactory.INSTANCE;
 	@Test
 	public void testOGHydrogenosome(){
 		String ohLine ="OH   NCBI_TaxID=9606; Homo sapiens (Human).\n" +
                        "OH   NCBI_TaxID=77231; Epomops franqueti (Franquet's epauleted bat).\n" +
                         "OH   NCBI_TaxID=77243; Myonycteris torquata (Little collared fruit bat).";
-		List<Organism> hosts = new ArrayList<>();
+		List<OrganismHost> hosts = new ArrayList<>();
 
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Homo sapiens (Human)"), 9606l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Homo sapiens (Human)"))
+						.taxonId(9606L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Epomops franqueti (Franquet's epauleted bat)"), 77231l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Epomops franqueti (Franquet's epauleted bat)"))
+						.taxonId(77231L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Myonycteris torquata (Little collared fruit bat)"), 77243l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Myonycteris torquata (Little collared fruit bat)"))
+						.taxonId(77243L)
+						.build()
 				);
 		verify(ohLine, hosts);
 	}
-	 private void verify(String ogLine, List<Organism> hosts ){
+	 private void verify(String ogLine, List<OrganismHost> hosts ){
 		  
          FFLine ffLine = builder.build(hosts);
          String resultString = ffLine.toString();
@@ -55,23 +60,31 @@ public class OHLineBuildTest {
                        "OH   NCBI_TaxID=77231; Epomops franqueti (Franquet's epauleted bat).\n" +
                        "OH   NCBI_TaxID=9685; Felis catus (Cat) (Felis silvestris catus).\n" +
                         "OH   NCBI_TaxID=77243; Myonycteris torquata (Little collared fruit bat).";
-		List<Organism> hosts = new ArrayList<>();
+		List<OrganismHost> hosts = new ArrayList<>();
 
 		hosts.add(
-				factory.createOrganism( 
-						factory.createFromOrganismLine("Homo sapiens (Human)"), 9606l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Homo sapiens (Human)"))
+						.taxonId(9606L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Epomops franqueti (Franquet's epauleted bat)"), 77231l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Epomops franqueti (Franquet's epauleted bat)"))
+						.taxonId(77231L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Felis catus (Cat) (Felis silvestris catus)"), 9685l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Felis catus (Cat) (Felis silvestris catus)"))
+						.taxonId(9685L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Myonycteris torquata (Little collared fruit bat)"), 77243l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Myonycteris torquata (Little collared fruit bat)"))
+						.taxonId(77243L)
+						.build()
 				);
 		verify(ohLine, hosts);
 		
@@ -85,37 +98,51 @@ public class OHLineBuildTest {
                 "OH   NCBI_TaxID=10090; Mus musculus (Mouse).\n" +
                 "OH   NCBI_TaxID=29092; Microtus agrestis (Short-tailed field vole).\n" +
                 "OH   NCBI_TaxID=447135; Myodes glareolus (Bank vole) (Clethrionomys glareolus).";
-		List<Organism> hosts = new ArrayList<>();
+		List<OrganismHost> hosts = new ArrayList<>();
 
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Homo sapiens (Human)"), 9606l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Homo sapiens (Human)"))
+						.taxonId(9606L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Felis catus (Cat) (Felis silvestris catus)"), 9685l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Felis catus (Cat) (Felis silvestris catus)"))
+						.taxonId(9685L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Loxodonta africana (African elephant)"), 9785l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Loxodonta africana (African elephant)"))
+						.taxonId(9785L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Bos taurus (Bovine)"), 9913l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Bos taurus (Bovine)"))
+						.taxonId(9913L)
+						.build()
 				);
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Mus musculus (Mouse)"), 10090l)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Mus musculus (Mouse)"))
+						.taxonId(10090L)
+						.build()
 				);
 		
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Microtus agrestis (Short-tailed field vole)"), 29092)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Microtus agrestis (Short-tailed field vole)"))
+						.taxonId(29092L)
+						.build()
 				);
 		
 		hosts.add(
-				factory.createOrganism(
-						factory.createFromOrganismLine("Myodes glareolus (Bank vole) (Clethrionomys glareolus)"), 447135)
+				new OrganismHostBuilder()
+						.from(OrganismNameLineParser.createFromOrganismLine("Myodes glareolus (Bank vole) (Clethrionomys glareolus)"))
+						.taxonId(447135L)
+						.build()
 				);
 		verify(ohLine, hosts);
 	}

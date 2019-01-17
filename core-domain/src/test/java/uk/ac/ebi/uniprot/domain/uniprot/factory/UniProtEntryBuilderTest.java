@@ -12,14 +12,19 @@ import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
@@ -31,7 +36,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 
 import static org.junit.Assert.*;
 
@@ -148,25 +152,6 @@ public class UniProtEntryBuilderTest {
                 .build();
         assertNotNull(entry.getUniProtId());
         assertEquals("P12346_HUMAN", entry.getUniProtId().getValue());
-        TestHelper.verifyJson(entry);
-    }
-
-
-    @Test
-    public void testSetTaxonomyLineage() {
-        UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
-        UniProtEntry entry = builder
-                .build();
-        assertTrue(entry.getTaxonomyLineage().isEmpty());
-        List<OrganismName> taxonomies = new ArrayList<>();
-        OrganismName taxon = UniProtFactory.INSTANCE.getTaxonomyFactory().createOrganismName("homo sapien");
-        taxonomies.add(taxon);
-        builder = UniProtEntryBuilder.newInstance();
-        entry = builder
-                .taxonomyLineage(taxonomies)
-                .build();
-        assertEquals(1, entry.getTaxonomyLineage().size());
-        assertEquals(taxon, entry.getTaxonomyLineage().get(0));
         TestHelper.verifyJson(entry);
     }
 
@@ -353,10 +338,13 @@ public class UniProtEntryBuilderTest {
         UniProtEntry entry = builder
                 .build();
         assertNull(entry.getOrganism());
+        long taxId = 9606;
         String scientificName = "Homo sapiens";
         String commonName = "Human";
-        OrganismName organism = UniProtFactory.INSTANCE.getTaxonomyFactory()
-                .createOrganismName(scientificName, commonName);
+        Organism organism = new OrganismBuilder()
+                .taxonId(taxId)
+                .scientificName(scientificName)
+                .commonName(commonName).build();
 
         builder = UniProtEntryBuilder.newInstance();
         entry = builder
@@ -376,11 +364,12 @@ public class UniProtEntryBuilderTest {
         assertTrue(entry.getOrganismHosts().isEmpty());
         String scientificName = "Homo sapiens";
         String commonName = "Human";
-        OrganismName organism = UniProtFactory.INSTANCE.getTaxonomyFactory()
-                .createOrganismName(scientificName, commonName);
-        List<Organism> organismHosts = new ArrayList<>();
+        OrganismHost organismHost = new OrganismHostBuilder()
+                .scientificName(scientificName)
+                .commonName(commonName).build();
+        List<OrganismHost> organismHosts = new ArrayList<>();
         organismHosts.add(
-                UniProtFactory.INSTANCE.getTaxonomyFactory().createOrganism(organism, 9606)
+                organismHost
         );
         builder = UniProtEntryBuilder.newInstance();
         entry = builder
@@ -510,25 +499,6 @@ public class UniProtEntryBuilderTest {
         assertNotNull(entry.getSequence());
         assertEquals(value, entry.getSequence().getValue());
         TestHelper.verifyJson(entry);
-    }
-
-    @Test
-    public void testSetUniProtTaxonId() {
-        UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
-        UniProtEntry entry = builder
-                .build();
-        assertNull(entry.getTaxonId());
-        long taxId = 9606;
-        List<Evidence> evidences = createEvidences();
-        UniProtTaxonId taxonId = UniProtFactory.INSTANCE.createUniProtTaxonId(taxId, evidences);
-        builder = UniProtEntryBuilder.newInstance();
-        entry = builder
-                .uniProtTaxonId(taxonId)
-                .build();
-        assertNotNull(entry.getTaxonId());
-        assertEquals(taxId, entry.getTaxonId().getTaxonId());
-        TestHelper.verifyJson(entry);
-
     }
 
     @Test

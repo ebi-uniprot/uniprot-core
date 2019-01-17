@@ -1,9 +1,5 @@
 package uk.ac.ebi.uniprot.parser.impl.oc;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
-
-import java.util.List;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
@@ -11,7 +7,12 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
-public class OCLineBuilder extends FFLineBuilderAbstr< List<OrganismName> > implements FFLineBuilder< List<OrganismName> > {
+import java.util.List;
+
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR_SEMICOLON;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
+
+public class OCLineBuilder extends FFLineBuilderAbstr< List<String> > implements FFLineBuilder< List<String> > {
 	private static final String UNCLASSIFIED = "unclassified";
 	
 	public OCLineBuilder(){
@@ -19,33 +20,33 @@ public class OCLineBuilder extends FFLineBuilderAbstr< List<OrganismName> > impl
 	}
 	
 	@Override
-	protected FFLine buildLine(List<OrganismName> f, boolean showEvidence){
+	protected FFLine buildLine(List<String> f, boolean showEvidence){
 		StringBuilder sb = build(f, showEvidence, true );
 		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR_SEMICOLON, linePrefix);
 		return FFLines.create(lls);
 	}
 	@Override
-	public String buildString(List<OrganismName> f) {
+	public String buildString(List<String> f) {
 		return build(f, false, false).toString();
 	}
 	
 	@Override
-	public String buildStringWithEvidence(List<OrganismName> f) {
+	public String buildStringWithEvidence(List<String> f) {
 		return build(f, true, false).toString();
 	}
 	
-	private StringBuilder build(List<OrganismName> f, boolean showEvidence, boolean includeFFMarkup){
+	private StringBuilder build(List<String> f, boolean showEvidence, boolean includeFFMarkup){
 		StringBuilder sb = new StringBuilder();
 		if(includeFFMarkup){
 			sb.append(linePrefix);
 		}
 		if ((f.size() != 0)) {
 			boolean isFirst =true;
-			for (OrganismName taxon:f){
+			for (String taxon:f){
 				if(!isFirst){
 					sb.append(SEPARATOR_SEMICOLON);
 				}
-				sb.append(taxon.getScientificName());
+				sb.append(taxon);
 				isFirst =false;
 			}
 		}else{

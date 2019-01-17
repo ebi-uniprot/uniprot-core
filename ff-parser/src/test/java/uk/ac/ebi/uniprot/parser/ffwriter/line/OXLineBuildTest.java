@@ -1,17 +1,12 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.ox.OXLineBuilder;
+
+import static org.junit.Assert.assertEquals;
 
 
 
@@ -21,7 +16,7 @@ public class OXLineBuildTest {
 	public void test(){
 		String oxLine ="OX   NCBI_TaxID=9606;";
 		
-		UniProtTaxonId taxId =UniProtFactory.INSTANCE.createUniProtTaxonId(9606, Collections.emptyList());
+		Organism taxId = new OrganismBuilder().taxonId(9606).build();
 		
 		FFLine ffLine = builder.build(taxId);
 		

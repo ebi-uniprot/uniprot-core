@@ -1,19 +1,19 @@
 package uk.ac.ebi.uniprot.parser.impl.os;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 
-public class OSLineBuilder extends FFLineBuilderAbstr<OrganismName> implements FFLineBuilder<OrganismName> {
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
+
+public class OSLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLineBuilder<Organism> {
 ;
 	
 	public OSLineBuilder(){
@@ -21,22 +21,22 @@ public class OSLineBuilder extends FFLineBuilderAbstr<OrganismName> implements F
 	}
 	
 	@Override
-	protected FFLine buildLine(OrganismName f, boolean showEvidence){
+	protected FFLine buildLine(Organism f, boolean showEvidence){
 		StringBuilder sb = build(f, showEvidence, true );
 		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR, linePrefix);
 		return FFLines.create(lls);
 	}
 	@Override
-	public String buildString(OrganismName f) {
+	public String buildString(Organism f) {
 		return build(f, false, false).toString();
 	}
 	
 	@Override
-	public String buildStringWithEvidence(OrganismName f) {
+	public String buildStringWithEvidence(Organism f) {
 		return build(f, true, false).toString();
 	}
 	
-	private  StringBuilder build(OrganismName organism, boolean showEvidence, boolean includeFFMarkup) {
+	private  StringBuilder build(Organism organism, boolean showEvidence, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkup)
             sb.append(linePrefix);
