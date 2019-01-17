@@ -1,5 +1,14 @@
 package uk.ac.ebi.uniprot.domain.taxonomy;
 
-public interface Organism extends TaxonId {
-    OrganismName getName();
+import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
+
+import java.io.Serializable;
+import java.util.List;
+
+public interface Organism extends OrganismName, HasEvidences, Serializable {
+
+    long getTaxonId();
+
+    List<String> getLineage();
+
 }

@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
 import uk.ac.ebi.uniprot.domain.citation.Patent;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -31,7 +30,7 @@ public class PatentConverter implements Converter<CitationType, Patent> {
 	public CitationType toXml(Patent uniObj) {
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
-		xmlCitation.setType("patent");
+		xmlCitation.setType(uniObj.getCitationType().getValue());
 		xmlCitation.setNumber(uniObj.getPatentNumber());
 		return xmlCitation;
 	}

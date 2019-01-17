@@ -1,5 +1,13 @@
 package uk.ac.ebi.uniprot.domain.taxonomy;
 
-public interface OrganismName extends TaxonName {
-    boolean isValid();
+import java.io.Serializable;
+import java.util.List;
+
+public interface OrganismName extends Serializable {
+
+    String getScientificName();
+
+    String getCommonName();
+
+    List<String> getSynonyms();
 }

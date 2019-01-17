@@ -82,8 +82,10 @@ public class CitationConverterHelper {
 			}
 
 		}
-		xmlCitation.setTitle(citation.getTitle());
-		xmlCitation.setDate(citation.getPublicationDate().getValue());
+		if(!Strings.isNullOrEmpty(citation.getTitle()))
+			xmlCitation.setTitle(citation.getTitle());
+		if((citation.getPublicationDate() !=null ) && !Strings.isNullOrEmpty(citation.getPublicationDate().getValue()))
+			xmlCitation.setDate(citation.getPublicationDate().getValue());
 		// Authors and Consortium
 		NameListType authorsAndConsortiumList = xmlUniprotFactory.createNameListType();
 		if ((citation.getAuthors() != null) && !citation.getAuthors().isEmpty()) {

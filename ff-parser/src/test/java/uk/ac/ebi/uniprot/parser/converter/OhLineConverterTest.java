@@ -1,14 +1,12 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import java.util.List;
-
 import junit.framework.TestCase;
-
 import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.parser.impl.oh.OhLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.oh.OhLineObject;
+
+import java.util.List;
 
 public class OhLineConverterTest {
 	@Test
@@ -20,14 +18,12 @@ public class OhLineConverterTest {
 		ohV.hostname ="Pan troglodytes (Chimpanzee)";
 		ohO.hosts.add(ohV);
 		OhLineConverter converter = new OhLineConverter();
-		List<Organism> ohs=converter.convert(ohO);
+		List<OrganismHost> ohs=converter.convert(ohO);
 		TestCase.assertEquals(1, ohs.size());
-		Organism oh = ohs.get(0);
+		OrganismHost oh = ohs.get(0);
 		TestCase.assertEquals(9598, oh.getTaxonId());
 		
-		TestCase.assertEquals("Pan troglodytes",
-				oh.getName().getScientificName());
-		TestCase.assertEquals("Chimpanzee",
-				oh.getName().getCommonName());
+		TestCase.assertEquals("Pan troglodytes", oh.getScientificName());
+		TestCase.assertEquals("Chimpanzee", oh.getCommonName());
 	}
 }

@@ -24,10 +24,6 @@ public enum UniProtFactory {
         return ProteinDescriptionFactory.INSTANCE;
     }
 
-    public TaxonomyFactory getTaxonomyFactory() {
-        return TaxonomyFactory.INSTANCE;
-    }
-
     public UniProtDBCrossReferenceFactory getUniProtDBCrossReferenceFactory() {
         return UniProtDBCrossReferenceFactory.INSTANCE;
     }
@@ -91,10 +87,6 @@ public enum UniProtFactory {
 
     public Sequence createSequence(String seq) {
         return new SequenceImpl(seq);
-    }
-
-    public UniProtTaxonId createUniProtTaxonId(long taxId, List<Evidence> evidences) {
-        return new UniProtTaxonIdImpl(taxId, evidences);
     }
 
     public Evidence createEvidence(String val) {

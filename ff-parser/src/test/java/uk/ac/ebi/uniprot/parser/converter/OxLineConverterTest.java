@@ -1,18 +1,16 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import static junit.framework.TestCase.assertEquals;
+import junit.framework.TestCase;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.parser.impl.ox.OxLineConverter;
+import uk.ac.ebi.uniprot.parser.impl.ox.OxLineObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.TestCase;
-
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtTaxonId;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.parser.impl.ox.OxLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.ox.OxLineObject;
+import static junit.framework.TestCase.assertEquals;
 
 public class OxLineConverterTest {
 	@Test
@@ -21,7 +19,7 @@ public class OxLineConverterTest {
 		OxLineObject osO = new OxLineObject();
 		osO.taxonomy_id =9606;
 		OxLineConverter converter = new OxLineConverter();
-		UniProtTaxonId taxId =converter.convert(osO);
+		Organism taxId =converter.convert(osO);
 		TestCase.assertEquals(9606, taxId.getTaxonId());	
 	}
 	@Test
@@ -36,7 +34,7 @@ public class OxLineConverterTest {
 		
 		
 		OxLineConverter converter = new OxLineConverter();
-		UniProtTaxonId taxId =converter.convert(osO);
+		Organism taxId =converter.convert(osO);
 		TestCase.assertEquals(9606, taxId.getTaxonId());	
 		List<Evidence> eviIds = taxId.getEvidences();
 		assertEquals(2, eviIds.size());

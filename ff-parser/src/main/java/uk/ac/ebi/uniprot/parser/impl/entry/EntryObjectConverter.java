@@ -1,12 +1,14 @@
 package uk.ac.ebi.uniprot.parser.impl.entry;
 
 
-
+import com.google.common.base.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordService;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
-
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
@@ -41,11 +43,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Strings;
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
 	  private static final Logger logger = LoggerFactory.getLogger(EntryObjectConverter.class);
@@ -154,16 +151,17 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 		if(f.kw !=null){
 			builder.keywords(kwLineConverter.convert(f.kw));
 		}
-		builder.taxonomyLineage(ocLineConverter.convert(f.oc));
 		if(f.og !=null){
 			builder.organelles(ogLineConverter.convert(f.og));
 		}
 		if(f.oh !=null){
 			builder.organismHosts(ohLineConverter.convert(f.oh));
 		}
-
-		builder.organism(osLineConverter.convert(f.os));
-		builder.uniProtTaxonId(oxLineConverter.convert(f.ox));
+		OrganismBuilder organismBuilder = new OrganismBuilder();
+		organismBuilder.from(oxLineConverter.convert(f.ox));
+		organismBuilder.from(osLineConverter.convert(f.os));
+		organismBuilder.lineage(ocLineConverter.convert(f.oc));
+		builder.organism(organismBuilder.build());
 		builder.proteinExistence(peLineConverter.convert(f.pe));
 		builder.sequence(sqLineConverter.convert(f.sq));
 		List<UniProtReference> citations = new ArrayList<>();

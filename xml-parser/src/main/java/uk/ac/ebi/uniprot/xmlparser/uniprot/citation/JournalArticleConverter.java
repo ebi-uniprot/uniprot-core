@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
 
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -29,7 +28,7 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
 		builder.firstPage(pageConverter.fromXml(xmlObj.getFirst()));
 		builder.lastPage(pageConverter.fromXml(xmlObj.getLast()));
 		builder.volume(xmlObj.getVolume());
-		builder.publicationDate(AbstractCitationBuilder.createPublicationDate(xmlObj.getDate()));
+
 
 		return builder.build();
 	}
@@ -38,14 +37,12 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
 	public CitationType toXml(JournalArticle uniObj) {
 		CitationType xmlCitation = xmlUniprotFactory.createCitationType();
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
-
-
-		 xmlCitation.setType("journal article");
+		xmlCitation.setType(uniObj.getCitationType().getValue());
 		 xmlCitation.setName(uniObj.getJournal().getName());
 		 xmlCitation.setFirst(pageConverter.toXml(uniObj.getFirstPage()));
 		 xmlCitation.setLast(pageConverter.toXml(uniObj.getLastPage()));
 		 xmlCitation.setVolume(uniObj.getVolume());
-		 xmlCitation.setDate(uniObj.getPublicationDate().getValue());
+
 		return xmlCitation;
 	}
 
