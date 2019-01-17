@@ -19,41 +19,41 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
     protected String title = "";
     protected PublicationDate publicationDate;
 
-    public AbstractCitationBuilder<B, T> authoringGroups(List<String> groups) {
+    public B authoringGroups(List<String> groups) {
         this.authoringGroups.addAll(groups);
-        return this;
+        return (B) this;
     }
 
-    public AbstractCitationBuilder<B, T> addAuthorGroup(String group) {
+    public B addAuthorGroup(String group) {
         this.authoringGroups.add(group);
-        return this;
+        return (B) this;
     }
 
-    public AbstractCitationBuilder<B, T> authors(List<String> authors) {
+    public B authors(List<String> authors) {
         this.authors = authors.stream()
                 .map(AuthorImpl::new)
                 .collect(Collectors.toList());
-        return this;
+        return (B) this;
     }
 
-    public AbstractCitationBuilder<B, T> addAuthor(String author) {
+    public B addAuthor(String author) {
         this.authors.add(new AuthorImpl(author));
-        return this;
+        return (B) this;
     }
 
-    public AbstractCitationBuilder<B, T> citationXrefs(CitationXrefs xrefs) {
+    public B citationXrefs(CitationXrefs xrefs) {
         this.xrefs = xrefs;
-        return this;
+        return (B) this;
     }
 
-    public AbstractCitationBuilder<B, T> title(String title) {
+    public B title(String title) {
         this.title = title;
-        return this;
+        return (B) this;
     }
 
-    public AbstractCitationBuilder<B, T> publicationDate(String publicationDate) {
+    public B publicationDate(String publicationDate) {
         this.publicationDate = new PublicationDateImpl(publicationDate);
-        return this;
+        return (B) this;
     }
 
     public List<String> getAuthoringGroups() {
