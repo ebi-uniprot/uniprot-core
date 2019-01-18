@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Value;
+import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
@@ -14,24 +15,28 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 class AbstractCitationBuilderTest {
     private static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;
+    private static final String TITLE = "Some title";
+    private static final String PUBLICATION_DATE = "2015-MAY";
+    private static final List<String> GROUPS = asList("T1", "T2");
+    private static final List<String> AUTHORS = asList("Tom", "John");
+    private static final DBCrossReference<CitationXrefType> XREF1 = new DBCrossReferenceBuilder<CitationXrefType>()
+            .databaseType(CitationXrefType.PUBMED)
+            .id("id1")
+            .build();
+    private static final DBCrossReference<CitationXrefType> XREF2 = new DBCrossReferenceBuilder<CitationXrefType>()
+            .databaseType(CitationXrefType.AGRICOLA)
+            .id("id2")
+            .build();
 
     @Test
-    void check() {
-        DBCrossReference<CitationXrefType> xRef1 = new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(CitationXrefType.PUBMED)
-                .id("id1")
-                .build();
-        DBCrossReference<CitationXrefType> xRef2 = new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(CitationXrefType.AGRICOLA)
-                .id("id2")
-                .build();
+    void checkAbstractCitationCreationIsAsExpected() {
         CitationXrefs xrefs = new CitationsXrefsBuilder()
-                .addXRef(xRef1)
-                .addXRef(xRef2)
+                .addXRef(XREF1)
+                .addXRef(XREF2)
                 .build();
 
         String title = "a title";
@@ -52,7 +57,35 @@ class AbstractCitationBuilderTest {
         assertThat(citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()), is(authors));
         assertThat(citation.getCitationType(), is(CITATION_TYPE));
         assertThat(citation.hasCitationXrefs(), is(true));
-        assertThat(citation.getCitationXrefs().getXrefs(), contains(xRef1, xRef2));
+        assertThat(citation.getCitationXrefs().getXrefs(), contains(XREF1, XREF2));
+    }
+
+    void buildCitationParameters(AbstractCitationBuilder<?, ?> builder) {
+        builder
+                .title(TITLE)
+                .publicationDate(PUBLICATION_DATE)
+                .authoringGroups(GROUPS)
+                .authors(AUTHORS)
+                .citationXrefs(new CitationsXrefsBuilder()
+                                       .addXRef(new DBCrossReferenceBuilder<CitationXrefType>()
+                                                        .databaseType(CitationXrefType.PUBMED)
+                                                        .id("id1")
+                                                        .build())
+                                       .addXRef(new DBCrossReferenceBuilder<CitationXrefType>()
+                                                        .databaseType(CitationXrefType.AGRICOLA)
+                                                        .id("id2")
+                                                        .build())
+                                       .build());
+    }
+
+    void verifyCitation(Citation citation, CitationType citationType) {
+        assertThat(citation.getTitle(), is(TITLE));
+        assertThat(citation.getPublicationDate().getValue(), is(PUBLICATION_DATE));
+        assertThat(citation.getAuthoringGroup(), is(GROUPS));
+        assertThat(citation.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()), is(AUTHORS));
+        assertThat(citation.getCitationType(), is(citationType));
+        assertThat(citation.hasCitationXrefs(), is(true));
+        assertThat(citation.getCitationXrefs().getXrefs(), contains(XREF1, XREF2));
     }
 
     private static class TestableCitationBuilder extends AbstractCitationBuilder<TestableCitationBuilder, TestableCitation> {

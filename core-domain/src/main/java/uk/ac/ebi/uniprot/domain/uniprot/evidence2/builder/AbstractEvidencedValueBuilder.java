@@ -24,7 +24,7 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     @Override
     public B from(E instance) {
         evidences.clear();
-        return  this
+        return this
                 .evidences(instance.getEvidences())
                 .value(instance.getValue());
     }
@@ -53,5 +53,6 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     }
 
     protected abstract E createConcreteInstance();
+
     protected abstract B getThis();
 }

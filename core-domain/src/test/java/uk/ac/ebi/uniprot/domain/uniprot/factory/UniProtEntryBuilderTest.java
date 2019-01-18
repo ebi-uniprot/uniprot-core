@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
+import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
@@ -664,16 +666,14 @@ public class UniProtEntryBuilderTest {
         List<String> referencePositions =
                 Arrays.asList("Some position");
         Submission submission =
-                factory.getCitationFactory()
-                        .createSubmissionBuilder()
+                new SubmissionBuilder()
                         .submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
                         .build();
         UniProtReference subReference = factory.createUniProtReference(submission,
                                                                        referencePositions, null, evidences);
 
         JournalArticle ja =
-                factory.getCitationFactory()
-                        .createJournalArticleBuilder()
+                new JournalArticleBuilder()
                         .journalName("some name")
                         .title("some title")
                         .build();

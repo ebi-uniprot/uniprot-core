@@ -22,10 +22,5 @@ public enum UniProtReferenceFactory {
     public ReferenceComment createReferenceComment(ReferenceCommentType type, String value, List<Evidence> evidences) {
         return new ReferenceCommentImpl(type, value, evidences);
     }
-
-    public CitationFactory getCitationFactory() {
-        return CitationFactory.INSTANCE;
-    }
-
 }
 
