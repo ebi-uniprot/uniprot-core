@@ -47,7 +47,8 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
 	private FeatureConverter featureConverter;
 	private SequenceConverter sequenceConverter;
 	private FlagUpdater flagUpdater;
-
+	private OrganismConverter organismConverter;
+	private OrganismHostConverter organismHostConverter;
 	public UniProtEntryConverter() {
 		init();
 	}
@@ -65,6 +66,8 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
 		this.featureConverter = new FeatureConverter(evRefMapper, xmlUniprotFactory);
 		this.sequenceConverter = new SequenceConverter(xmlUniprotFactory);
 		flagUpdater = new FlagUpdater();
+		this.organismConverter =new OrganismConverter(evRefMapper, xmlUniprotFactory);
+		this.organismHostConverter =new OrganismHostConverter(xmlUniprotFactory);
 	}
 
 	@Override
@@ -73,6 +76,13 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
 		evRefMapper.reset(evidenceIdMap);
 		UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
 		updateMetaDataFromXml(xmlEntry, builder);
+		builder.organism(organismConverter.fromXml(xmlEntry.getOrganism()));
+		if(!xmlEntry.getOrganismHost().isEmpty()) {
+			builder.organismHosts(
+			xmlEntry.getOrganismHost().stream()
+			.map(organismHostConverter::fromXml)
+			.collect(Collectors.toList()));
+		}
 		ProteinDescription proteinDescription =descriptionConverter.fromXml(xmlEntry.getProtein());
 		builder.proteinDescription(flagUpdater.fromXml(proteinDescription, xmlEntry.getSequence()));
 		builder.genes(xmlEntry.getGene().stream().map(geneConverter::fromXml).collect(Collectors.toList()));
@@ -94,6 +104,8 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
 		evRefMapper.reset(Collections.emptyList());
 		Entry xmlEntry = xmlUniprotFactory.createEntry();
 		updateMetaDataToXml(xmlEntry, entry);
+		xmlEntry.setOrganism(organismConverter.toXml(entry.getOrganism()));
+		entry.getOrganismHosts().forEach(val -> xmlEntry.getOrganismHost().add(organismHostConverter.toXml(val)));
 		xmlEntry.setProtein(descriptionConverter.toXml(entry.getProteinDescription()));
 		entry.getGenes().forEach(gene -> xmlEntry.getGene().add(geneConverter.toXml(gene)));
 		entry.getOrganelles().forEach(organelle -> xmlEntry.getGeneLocation().add(organelleConverter.toXml(organelle)));

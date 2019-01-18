@@ -19,6 +19,10 @@ import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
 import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
@@ -91,6 +95,8 @@ class UniProtEntryConverterTest {
                 .primaryAccession("P12345")
                 .secondaryAccessions(secondaryAccessions)
                 .uniProtId("P12345_HUMAN")
+                .organism(createOrganism())
+                .organismHosts(createOrganismHosts())
                 .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                 .entryAudit(entryAudit)
                 .organelles(organelles)
@@ -109,7 +115,35 @@ class UniProtEntryConverterTest {
         assertEquals(entry, converted);
 	      
 	}
-	
+	private Organism createOrganism() {
+		OrganismBuilder builder =new OrganismBuilder();
+		builder.scientificName("Homo sapiens")
+		.commonName("Human")
+		.taxonId(9606l)
+		.lineage(Arrays.asList("Eukaryota", "Metazoa", "Chordata", 		
+		"Craniata", "Vertebrata", "Euteleostomi",
+		"Mammalia", "Eutheria", "Euarchontoglires", "Primates", "Haplorrhini",
+		"Catarrhini", "Hominidae", "Homo"
+				))
+		.evidences(createEvidences());
+
+		return builder.build();
+	}
+	private List<OrganismHost> createOrganismHosts(){
+		List<OrganismHost> hosts = new ArrayList<>();
+		hosts.add  (new OrganismHostBuilder().taxonId(29095l)
+		.scientificName("Akodon azarae")
+		.commonName("Azara's grass mouse")
+		.build());
+		//56211; Calomys laucha (Small vesper mouse).
+		hosts.add  (new OrganismHostBuilder().taxonId(56211l)
+				.scientificName("Calomys laucha")
+				.commonName("Small vesper mouse")
+				.build());
+		
+		return hosts;
+		
+	}
 	private Gene createGene() {
 		String val = "someGene";
         List<Evidence> evidences = Arrays.asList(new Evidence[]{
