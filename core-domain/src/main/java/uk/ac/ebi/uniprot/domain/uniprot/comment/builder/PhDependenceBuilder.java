@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class PhDependenceBuilder extends AbstractFreeTextBuilder<PhDependenceBuilder, PhDependence> {
     public PhDependenceBuilder(List<EvidencedValue> evidencedValues) {
-        this.evidencedValues = evidencedValues;
+        this.evidencedValues.addAll(evidencedValues);
     }
 
     @Override
-    protected PhDependenceBuilder createBuilderInstance(List<EvidencedValue> evidencedValues) {
-        return new PhDependenceBuilder(evidencedValues);
+    protected PhDependenceBuilder getThis() {
+        return this;
     }
 
     @Override

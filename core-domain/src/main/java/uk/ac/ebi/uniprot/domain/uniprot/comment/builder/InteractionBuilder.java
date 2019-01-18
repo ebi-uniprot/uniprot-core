@@ -22,7 +22,7 @@ public final class InteractionBuilder implements Builder2<InteractionBuilder, In
 
     @Override
     public InteractionBuilder from(Interaction instance) {
-        return new InteractionBuilder()
+        return this
                 .uniProtAccession(instance.getUniProtAccession())
                 .geneName(instance.getGeneName())
                 .interactionType(instance.getType())

@@ -20,12 +20,7 @@ public class DiseaseDescriptionBuilder extends AbstractEvidencedValueBuilder<Dis
         this.evidences = evidences;
     }
 
-    @Override
-    protected DiseaseDescriptionBuilder createBuilderInstance() {
-        return new DiseaseDescriptionBuilder();
-    }
-
-    @Override
+   @Override
     protected DiseaseDescription createConcreteInstance() {
         return new DiseaseDescriptionImpl(value, evidences);
     }

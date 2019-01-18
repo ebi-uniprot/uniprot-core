@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Value;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created 15/01/19
@@ -26,7 +28,16 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
 
     @Override
     public APIsoformBuilder from(APIsoform instance) {
-        return null;
+        synonyms.clear();
+        isoformIds.clear();
+        sequenceIds.clear();
+        return this
+                .sequenceIds(instance.getSequenceIds())
+                .ids(instance.getIsoformIds().stream().map(Value::getValue).collect(Collectors.toList()))
+                .note(instance.getNote())
+                .synonyms(instance.getSynonyms())
+                .sequenceStatus(instance.getIsoformSequenceStatus())
+                .name(instance.getName());
     }
 
     public APIsoformBuilder name(IsoformName name) {

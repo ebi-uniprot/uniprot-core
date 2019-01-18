@@ -21,7 +21,9 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
 
     @Override
     public SequenceCautionCommentBuilder from(SequenceCautionComment instance) {
-        return new SequenceCautionCommentBuilder()
+        positions.clear();
+        evidences.clear();
+        return this
                 .sequenceCautionType(instance.getSequenceCautionType())
                 .sequence(instance.getSequence())
                 .evidences(instance.getEvidences())

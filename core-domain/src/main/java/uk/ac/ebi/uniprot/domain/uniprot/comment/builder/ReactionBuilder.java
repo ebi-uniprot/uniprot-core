@@ -58,7 +58,9 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
 
     @Override
     public ReactionBuilder from(Reaction instance) {
-        return new ReactionBuilder()
+        evidences.clear();
+        reactionReferences.clear();
+        return this
                 .ecNumber(instance.getEcNumber())
                 .evidences(instance.getEvidences())
                 .name(instance.getName())

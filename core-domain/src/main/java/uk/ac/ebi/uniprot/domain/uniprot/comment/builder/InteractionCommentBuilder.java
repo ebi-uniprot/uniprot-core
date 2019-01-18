@@ -27,7 +27,8 @@ public class InteractionCommentBuilder implements CommentBuilder<InteractionComm
 
     @Override
     public InteractionCommentBuilder from(InteractionComment instance) {
-        return new InteractionCommentBuilder()
+        interactions.clear();
+        return this
                 .interactions(instance.getInteractions());
     }
 }

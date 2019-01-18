@@ -15,7 +15,7 @@ public final class WebResourceCommentBuilder implements CommentBuilder<WebResour
 
     @Override
     public WebResourceCommentBuilder from(WebResourceComment instance) {
-        return new WebResourceCommentBuilder()
+        return this
                 .isFtp(instance.isFtp())
                 .note(instance.getNote())
                 .resourceName(instance.getResourceName())

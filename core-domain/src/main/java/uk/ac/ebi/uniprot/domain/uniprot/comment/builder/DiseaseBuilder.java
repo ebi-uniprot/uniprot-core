@@ -16,21 +16,13 @@ public final class DiseaseBuilder implements Builder2<DiseaseBuilder, Disease> {
     private DiseaseDescription description;
     private DBCrossReference<DiseaseReferenceType> reference;
 
-//    public static DiseaseBuilder newInstance() {
-//        return new DiseaseBuilder();
-//    }
-//
-//    public static DiseaseDescription createDiseaseDescription(String val, List<Evidence> evidences) {
-//        return DiseaseImpl.createDiseaseDescription(val, evidences);
-//    }
-
     public Disease build() {
         return new DiseaseImpl(this);
     }
 
     @Override
     public DiseaseBuilder from(Disease instance) {
-        return new DiseaseBuilder()
+        return this
                 .acronym(instance.getAcronym())
                 .description(instance.getDescription())
                 .diseaseAc(instance.getDiseaseAccession())

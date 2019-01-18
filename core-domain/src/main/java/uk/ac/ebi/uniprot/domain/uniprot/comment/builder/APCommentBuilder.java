@@ -20,7 +20,9 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
 
     @Override
     public APCommentBuilder from(AlternativeProductsComment instance) {
-        return new APCommentBuilder()
+        events.clear();
+        isoforms.clear();
+        return this
                 .events(instance.getEvents())
                 .isoforms(instance.getIsoforms())
                 .note(instance.getNote());

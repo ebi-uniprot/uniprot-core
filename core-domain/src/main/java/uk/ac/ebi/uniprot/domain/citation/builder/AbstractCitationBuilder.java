@@ -76,8 +76,8 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return publicationDate;
     }
 
-    protected void init(AbstractCitationBuilder<B, T> builder, T instance) {
-        builder.citationXrefs(instance.getCitationXrefs())
+    protected void init(T instance) {
+        this.citationXrefs(instance.getCitationXrefs())
                 .title(instance.getTitle())
                 .publicationDate(instance.getPublicationDate().getValue())
                 .authors(instance.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()))

@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class NoteBuilder extends AbstractFreeTextBuilder<NoteBuilder, Note> {
     public NoteBuilder(List<EvidencedValue> evidencedValues) {
-        this.evidencedValues = evidencedValues;
+        this.evidencedValues.addAll(evidencedValues);
     }
 
     @Override
-    protected NoteBuilder createBuilderInstance(List<EvidencedValue> evidencedValues) {
-        return new NoteBuilder(evidencedValues);
+    protected NoteBuilder getThis() {
+        return this;
     }
 
     @Override

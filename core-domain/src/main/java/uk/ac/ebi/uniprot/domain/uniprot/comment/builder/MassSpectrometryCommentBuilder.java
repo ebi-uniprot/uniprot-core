@@ -23,7 +23,9 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
 
     @Override
     public MassSpectrometryCommentBuilder from(MassSpectrometryComment instance) {
-        return new MassSpectrometryCommentBuilder()
+        ranges.clear();
+        evidences.clear();
+        return this
                 .molWeight(instance.getMolWeight())
                 .molWeightError(instance.getMolWeightError())
                 .evidences(instance.getEvidences())

@@ -12,9 +12,8 @@ public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, 
 
     @Override
     public PatentBuilder from(Patent instance) {
-        PatentBuilder builder = new PatentBuilder();
-        init(builder, instance);
-        return builder.patentNumber(instance.getPatentNumber());
+        init(instance);
+        return this.patentNumber(instance.getPatentNumber());
     }
 
     public PatentBuilder patentNumber(String patentNumber) {

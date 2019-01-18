@@ -52,7 +52,9 @@ public final class KineticParametersBuilder implements Builder2<KineticParameter
 
     @Override
     public KineticParametersBuilder from(KineticParameters instance) {
-        return new KineticParametersBuilder()
+        maximumVelocities.clear();
+        michaelisConstants.clear();
+        return this
                 .maximumVelocities(instance.getMaximumVelocities())
                 .michaelisConstants(instance.getMichaelisConstants())
                 .note(instance.getNote());

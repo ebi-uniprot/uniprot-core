@@ -12,24 +12,6 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();
 
-//    public static CatalyticActivityCommentBuilder newInstance() {
-//        return new CatalyticActivityCommentBuilder();
-//    }
-
-//    public static Reaction createReaction(String name,
-//                                          List<DBCrossReference<ReactionReferenceType>> reactionReferences,
-//                                          ECNumber ecNumber, List<Evidence> evidences) {
-//        return new ReactionImpl(name, reactionReferences, ecNumber, evidences);
-//
-//    }
-//
-//    public static PhysiologicalReaction createPhysiologicalReaction(PhysiologicalDirectionType directionType,
-//                                                                    DBCrossReference<ReactionReferenceType> reactionReference,
-//                                                                    List<Evidence> evidences) {
-//
-//        return new PhysiologicalReactionImpl(directionType, reactionReference, evidences);
-//    }
-
     @Override
     public CatalyticActivityComment build() {
         return new CatalyticActivityCommentImpl(reaction, physiologicalReactions);
@@ -37,7 +19,8 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
 
     @Override
     public CatalyticActivityCommentBuilder from(CatalyticActivityComment instance) {
-        return new CatalyticActivityCommentBuilder()
+        physiologicalReactions.clear();
+        return this
                 .physiologicalReactions(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());
     }

@@ -32,7 +32,8 @@ public class RnaEditingPositionBuilder implements Builder2<RnaEditingPositionBui
 
     @Override
     public RnaEditingPositionBuilder from(RnaEdPosition instance) {
-        return new RnaEditingPositionBuilder()
+        evidences.clear();
+        return this
                 .evidences(instance.getEvidences())
                 .position(instance.getPosition());
     }

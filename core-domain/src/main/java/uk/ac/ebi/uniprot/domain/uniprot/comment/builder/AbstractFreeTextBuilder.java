@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeText;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  * @author Edd
  */
 public abstract class AbstractFreeTextBuilder<B extends AbstractFreeTextBuilder<B, F>, F extends FreeText> implements Builder2<AbstractFreeTextBuilder, F> {
-    protected List<EvidencedValue> evidencedValues;
+    protected List<EvidencedValue> evidencedValues = new ArrayList<>();
 
     @Override
     public F build() {
@@ -21,9 +22,11 @@ public abstract class AbstractFreeTextBuilder<B extends AbstractFreeTextBuilder<
 
     @Override
     public B from(F instance) {
-        return createBuilderInstance(instance.getTexts());
+        this.evidencedValues.clear();
+        this.evidencedValues.addAll(instance.getTexts());
+        return getThis();
     }
 
-    protected abstract B createBuilderInstance(List<EvidencedValue> evidencedValues);
+    protected abstract B getThis();
     protected abstract F createConcreteInstance();
 }

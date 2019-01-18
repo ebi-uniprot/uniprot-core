@@ -8,10 +8,9 @@ import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import static org.junit.Assert.assertEquals;
 
 public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
-
     @Test
     public void testBuildCitation() {
-        JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
+        JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         JournalArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
@@ -20,7 +19,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testAddJournalName() {
-        JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
+        JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName);
@@ -30,10 +29,9 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         TestHelper.verifyJson(citation);
     }
 
-
     @Test
     public void testAddFirstPage() {
-        JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
+        JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName)
@@ -47,7 +45,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testAddLastPage() {
-        JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
+        JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName)
@@ -63,7 +61,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testAddVolume() {
-        JournalArticleBuilder builder = JournalArticleBuilder.newInstance();
+        JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
         builder.journalName(journalName)
@@ -78,5 +76,4 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         assertEquals("2", citation.getVolume());
         TestHelper.verifyJson(citation);
     }
-
 }

@@ -10,9 +10,8 @@ public final class UnpublishedBuilder extends AbstractCitationBuilder<Unpublishe
 
     @Override
     public UnpublishedBuilder from(Unpublished instance) {
-        UnpublishedBuilder builder = new UnpublishedBuilder();
-        init(builder, instance);
-        return builder;
+        init(instance);
+        return this;
     }
 
     @Override

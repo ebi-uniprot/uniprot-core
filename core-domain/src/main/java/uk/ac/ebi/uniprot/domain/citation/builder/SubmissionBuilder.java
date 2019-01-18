@@ -13,9 +13,9 @@ public final class SubmissionBuilder extends AbstractCitationBuilder<SubmissionB
 
     @Override
     public SubmissionBuilder from(Submission instance) {
-        SubmissionBuilder builder = new SubmissionBuilder();
-        init(builder, instance);
-        return builder.submittedToDatabase(instance.getSubmissionDatabase());
+        init(instance);
+        return this
+                .submittedToDatabase(instance.getSubmissionDatabase());
     }
 
     public SubmissionBuilder submittedToDatabase(SubmissionDatabase submissionDb) {

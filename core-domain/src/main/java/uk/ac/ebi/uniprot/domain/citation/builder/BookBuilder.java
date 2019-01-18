@@ -24,9 +24,8 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
 
     @Override
     public BookBuilder from(Book instance) {
-        BookBuilder bookBuilder = new BookBuilder();
-        init(bookBuilder, instance);
-        return bookBuilder
+        init(instance);
+        return this
                 .address(instance.getAddress())
                 .bookName(instance.getBookName())
                 .editors(instance.getEditors().stream().map(Author::getValue).collect(Collectors.toList()))

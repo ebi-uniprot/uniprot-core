@@ -52,7 +52,8 @@ public final class MichaelisConstantBuilder implements Builder2<MichaelisConstan
 
     @Override
     public MichaelisConstantBuilder from(MichaelisConstant instance) {
-        return new MichaelisConstantBuilder()
+        evidences.clear();
+        return this
                 .evidences(instance.getEvidences())
                 .constant(instance.getConstant())
                 .substrate(instance.getSubstrate())

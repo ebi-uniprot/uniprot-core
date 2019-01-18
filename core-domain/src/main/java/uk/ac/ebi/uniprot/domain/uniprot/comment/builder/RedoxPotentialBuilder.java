@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class RedoxPotentialBuilder extends AbstractFreeTextBuilder<RedoxPotentialBuilder, RedoxPotential> {
     public RedoxPotentialBuilder(List<EvidencedValue> evidencedValues) {
-        this.evidencedValues = evidencedValues;
+        this.evidencedValues.addAll(evidencedValues);
     }
 
     @Override
-    protected RedoxPotentialBuilder createBuilderInstance(List<EvidencedValue> evidencedValues) {
-        return new RedoxPotentialBuilder(evidencedValues);
+    protected RedoxPotentialBuilder getThis() {
+        return this;
     }
 
     @Override

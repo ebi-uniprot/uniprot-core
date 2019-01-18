@@ -24,7 +24,8 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBui
 
     @Override
     public FreeTextCommentBuilder from(FreeTextComment instance) {
-        return new FreeTextCommentBuilder()
+        texts.clear();
+        return this
                 .commentType(instance.getCommentType())
                 .texts(instance.getTexts());
     }

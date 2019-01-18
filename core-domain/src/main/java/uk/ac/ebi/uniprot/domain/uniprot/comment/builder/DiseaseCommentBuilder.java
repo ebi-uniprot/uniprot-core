@@ -16,7 +16,7 @@ public class DiseaseCommentBuilder implements CommentBuilder<DiseaseCommentBuild
 
     @Override
     public DiseaseCommentBuilder from(DiseaseComment instance) {
-        return new DiseaseCommentBuilder()
+        return this
                 .disease(instance.getDisease())
                 .note(instance.getNote());
     }

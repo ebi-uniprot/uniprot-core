@@ -9,7 +9,6 @@ import uk.ac.ebi.uniprot.domain.TestHelper;
 import static org.junit.Assert.assertEquals;
 
 public class SequenceImplTest {
-
     private static Sequence sequence;
     private static String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
 

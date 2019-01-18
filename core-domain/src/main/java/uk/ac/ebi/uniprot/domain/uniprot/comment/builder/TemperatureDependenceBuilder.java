@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class TemperatureDependenceBuilder extends AbstractFreeTextBuilder<TemperatureDependenceBuilder, TemperatureDependence> {
     public TemperatureDependenceBuilder(List<EvidencedValue> evidencedValues) {
-        this.evidencedValues = evidencedValues;
+        this.evidencedValues.addAll(evidencedValues);
     }
 
     @Override
-    protected TemperatureDependenceBuilder createBuilderInstance(List<EvidencedValue> evidencedValues) {
-        return new TemperatureDependenceBuilder(evidencedValues);
+    protected TemperatureDependenceBuilder getThis() {
+        return this;
     }
 
     @Override

@@ -19,7 +19,8 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
 
     @Override
     public SubcellularLocationCommentBuilder from(SubcellularLocationComment instance) {
-        return new SubcellularLocationCommentBuilder()
+        subcellularLocations.clear();
+        return this
                 .molecule(instance.getMolecule())
                 .subcellularLocations(instance.getSubcellularLocations())
                 .note(instance.getNote());

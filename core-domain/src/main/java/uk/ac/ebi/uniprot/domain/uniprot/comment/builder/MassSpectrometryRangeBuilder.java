@@ -30,7 +30,7 @@ public final class MassSpectrometryRangeBuilder implements Builder2<MassSpectrom
 
     @Override
     public MassSpectrometryRangeBuilder from(MassSpectrometryRange instance) {
-        return new MassSpectrometryRangeBuilder()
+        return this
                 .isoformId(instance.getIsoformId())
                 .range(instance.getRange());
     }

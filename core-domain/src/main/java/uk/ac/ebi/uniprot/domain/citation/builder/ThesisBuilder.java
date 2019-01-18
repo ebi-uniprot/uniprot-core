@@ -13,9 +13,9 @@ public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, 
 
     @Override
     public ThesisBuilder from(Thesis instance) {
-        ThesisBuilder builder = new ThesisBuilder();
-        init(builder, instance);
-        return builder.institute(instance.getInstitute())
+        init(instance);
+        return this
+                .institute(instance.getInstitute())
                 .address(instance.getAddress());
     }
 

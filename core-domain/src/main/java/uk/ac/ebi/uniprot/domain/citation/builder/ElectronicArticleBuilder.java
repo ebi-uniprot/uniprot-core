@@ -14,9 +14,8 @@ public final class ElectronicArticleBuilder extends AbstractCitationBuilder<Elec
 
     @Override
     public ElectronicArticleBuilder from(ElectronicArticle instance) {
-        ElectronicArticleBuilder builder = new ElectronicArticleBuilder();
-        init(builder, instance);
-        return builder
+        init(instance);
+        return this
                 .journalName(instance.getJournal().getName())
                 .locator(instance.getLocator().getValue());
     }

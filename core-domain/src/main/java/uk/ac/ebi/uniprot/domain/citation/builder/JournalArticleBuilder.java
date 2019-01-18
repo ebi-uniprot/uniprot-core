@@ -16,9 +16,8 @@ public final class JournalArticleBuilder extends AbstractCitationBuilder<Journal
 
     @Override
     public JournalArticleBuilder from(JournalArticle instance) {
-        JournalArticleBuilder builder = new JournalArticleBuilder();
-        init(builder, instance);
-        return builder
+        init(instance);
+        return this
                 .journalName(instance.getJournal().getName())
                 .firstPage(instance.getFirstPage())
                 .lastPage(instance.getLastPage())

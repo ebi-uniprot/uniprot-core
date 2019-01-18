@@ -47,7 +47,8 @@ public final class PhysiologicalReactionBuilder implements Builder2<Physiologica
 
     @Override
     public PhysiologicalReactionBuilder from(PhysiologicalReaction instance) {
-        return new PhysiologicalReactionBuilder()
+        evidences.clear();
+        return this
                 .evidences(instance.getEvidences())
                 .directionType(instance.getDirectionType())
                 .reactionReference(instance.getReactionReference());

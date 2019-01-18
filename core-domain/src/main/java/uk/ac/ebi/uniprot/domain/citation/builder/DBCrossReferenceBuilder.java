@@ -26,7 +26,7 @@ public class DBCrossReferenceBuilder<T extends DatabaseType> implements Builder2
 
     @Override
     public DBCrossReferenceBuilder<T> from(DBCrossReference<T> instance) {
-        return new DBCrossReferenceBuilder<T>()
+        return this
                 .properties(instance.getProperties())
                 .id(instance.getId())
                 .databaseType(instance.getDatabaseType());

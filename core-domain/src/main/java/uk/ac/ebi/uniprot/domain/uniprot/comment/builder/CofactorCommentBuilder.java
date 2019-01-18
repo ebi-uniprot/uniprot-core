@@ -19,7 +19,8 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
 
     @Override
     public CofactorCommentBuilder from(CofactorComment instance) {
-        return new CofactorCommentBuilder()
+        cofactors.clear();
+        return this
                 .cofactors(instance.getCofactors())
                 .molecule(instance.getMolecule())
                 .note(instance.getNote());

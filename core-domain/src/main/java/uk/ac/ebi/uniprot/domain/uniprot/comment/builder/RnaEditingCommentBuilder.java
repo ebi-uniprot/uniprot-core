@@ -20,7 +20,8 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
 
     @Override
     public RnaEditingCommentBuilder from(RnaEditingComment instance) {
-        return new RnaEditingCommentBuilder()
+        positions.clear();
+        return this
                 .positions(instance.getPositions())
                 .locationType(instance.getLocationType());
     }

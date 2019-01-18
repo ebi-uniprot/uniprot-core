@@ -8,10 +8,9 @@ import uk.ac.ebi.uniprot.domain.citation.Patent;
 import static org.junit.Assert.assertEquals;
 
 public class PatentBuilderTest extends AbstractCitationBuilderTest {
-
     @Test
     public void testBuildAll() {
-        PatentBuilder builder = PatentBuilder.newInstance();
+        PatentBuilder builder = new PatentBuilder();
         String pnumber = "Some Number";
         builder.patentNumber(pnumber);
         this.buildCitationParameters(builder);
@@ -24,7 +23,7 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testPatentNumber() {
-        PatentBuilder builder = PatentBuilder.newInstance();
+        PatentBuilder builder = new PatentBuilder();
         String pnumber = "Some Number";
         builder.patentNumber(pnumber);
         Patent citation = builder.build();
@@ -32,5 +31,4 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
         assertEquals(pnumber, citation.getPatentNumber());
         TestHelper.verifyJson(citation);
     }
-
 }

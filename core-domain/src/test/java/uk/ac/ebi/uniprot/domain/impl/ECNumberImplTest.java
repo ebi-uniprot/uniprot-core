@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ECNumberImplTest {
-
     @Test
     void testIsValid() {
         String ec = "4.6.1.2";
@@ -22,8 +21,6 @@ class ECNumberImplTest {
 
     private void verify(String ec, boolean valid) {
         ECNumberImpl ecnumber = new ECNumberImpl(ec);
-
-
         assertEquals(valid, ecnumber.isValid());
     }
 }

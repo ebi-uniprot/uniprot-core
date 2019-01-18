@@ -21,11 +21,6 @@ public class SubcellularLocationValueBuilder extends AbstractEvidencedValueBuild
     }
 
     @Override
-    protected SubcellularLocationValueBuilder createBuilderInstance() {
-        return new SubcellularLocationValueBuilder();
-    }
-
-    @Override
     protected SubcellularLocationValue createConcreteInstance() {
         return new SubcellularLocationImpl.SubcellularLocationValueImpl(value, evidences);
     }

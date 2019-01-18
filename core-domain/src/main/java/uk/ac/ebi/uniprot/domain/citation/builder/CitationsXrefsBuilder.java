@@ -24,7 +24,7 @@ public class CitationsXrefsBuilder implements Builder2<CitationsXrefsBuilder, Ci
 
     @Override
     public CitationsXrefsBuilder from(CitationXrefs instance) {
-        return new CitationsXrefsBuilder().xRefs(instance.getXrefs());
+        return this.xRefs(instance.getXrefs());
     }
 
     public CitationsXrefsBuilder xRefs(List<DBCrossReference<CitationXrefType>> xRefs) {
