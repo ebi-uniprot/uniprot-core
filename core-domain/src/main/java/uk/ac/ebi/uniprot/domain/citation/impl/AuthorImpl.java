@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.domain.citation.impl;
 
 import uk.ac.ebi.uniprot.domain.citation.Author;
 
-
 public class AuthorImpl implements Author {
     private String value;
 
@@ -48,5 +47,4 @@ public class AuthorImpl implements Author {
     public String toString() {
         return value;
     }
-
 }

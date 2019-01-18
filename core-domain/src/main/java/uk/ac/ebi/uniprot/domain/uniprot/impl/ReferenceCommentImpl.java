@@ -2,10 +2,12 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class ReferenceCommentImpl extends EvidencedValueImpl implements ReferenceComment {
     private ReferenceCommentType type;
@@ -27,25 +29,16 @@ public class ReferenceCommentImpl extends EvidencedValueImpl implements Referenc
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        ReferenceCommentImpl that = (ReferenceCommentImpl) o;
+        return type == that.type;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ReferenceCommentImpl other = (ReferenceCommentImpl) obj;
-        if (type != other.type)
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), type);
     }
-
 }

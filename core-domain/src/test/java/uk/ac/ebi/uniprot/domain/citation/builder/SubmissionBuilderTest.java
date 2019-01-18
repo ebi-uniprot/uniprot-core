@@ -9,10 +9,9 @@ import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import static org.junit.Assert.assertEquals;
 
 public class SubmissionBuilderTest extends AbstractCitationBuilderTest {
-
     @Test
     public void testBuildAll() {
-        SubmissionBuilder builder = SubmissionBuilder.newInstance();
+        SubmissionBuilder builder = new SubmissionBuilder();
         buildCitationParameters(builder);
 
         builder.submittedToDatabase(SubmissionDatabase.PDB);
@@ -24,12 +23,11 @@ public class SubmissionBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testSubmittedToDatabase() {
-        SubmissionBuilder builder = SubmissionBuilder.newInstance();
+        SubmissionBuilder builder = new SubmissionBuilder();
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         Submission citation = builder.build();
         assertEquals(CitationType.SUBMISSION, citation.getCitationType());
         assertEquals(SubmissionDatabase.EMBL_GENBANK_DDBJ, citation.getSubmissionDatabase());
         TestHelper.verifyJson(citation);
     }
-
 }

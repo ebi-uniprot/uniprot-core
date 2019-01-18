@@ -29,7 +29,8 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum type.
      */
     public static DiseaseReferenceType typeOf(String value) {
-        for (DiseaseReferenceType referenceType : DiseaseReferenceType.values()) {
+        for (DiseaseReferenceType referenceType : DiseaseReferenceType
+                .values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
             }

@@ -78,5 +78,4 @@ public class EvidencedValueImpl implements EvidencedValue {
         }
         return sb.toString();
     }
-
 }

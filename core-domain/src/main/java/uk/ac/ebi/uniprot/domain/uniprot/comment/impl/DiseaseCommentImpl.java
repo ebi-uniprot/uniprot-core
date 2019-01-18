@@ -5,6 +5,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 
+import java.util.Objects;
+
 public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     private Disease disease;
     private Note note;
@@ -36,34 +38,17 @@ public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((disease == null) ? 0 : disease.hashCode());
-        result = prime * result + ((note == null) ? 0 : note.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DiseaseCommentImpl that = (DiseaseCommentImpl) o;
+        return Objects.equals(disease, that.disease) &&
+                Objects.equals(note, that.note);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        DiseaseCommentImpl other = (DiseaseCommentImpl) obj;
-        if (disease == null) {
-            if (other.disease != null)
-                return false;
-        } else if (!disease.equals(other.disease))
-            return false;
-        if (note == null) {
-            if (other.note != null)
-                return false;
-        } else if (!note.equals(other.note))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), disease, note);
     }
-
 }

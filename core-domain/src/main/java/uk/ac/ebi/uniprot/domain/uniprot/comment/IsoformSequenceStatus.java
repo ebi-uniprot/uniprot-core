@@ -21,7 +21,8 @@ public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> 
     }
 
     public static IsoformSequenceStatus typeOf(String value) {
-        for (IsoformSequenceStatus status : IsoformSequenceStatus.values()) {
+        for (IsoformSequenceStatus status : IsoformSequenceStatus
+                .values()) {
             if (status.getValue().equals(value)) {
                 return status;
             }

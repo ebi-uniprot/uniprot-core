@@ -81,7 +81,8 @@ public enum CommentType implements EnumDisplay<CommentType> {
     }
 
     public static CommentType dbTypeOf(String value) {
-        for (CommentType commentType : CommentType.values()) {
+        for (CommentType commentType : CommentType
+                .values()) {
             if (commentType.toString().equalsIgnoreCase(value)) {
                 return commentType;
             }
@@ -91,7 +92,8 @@ public enum CommentType implements EnumDisplay<CommentType> {
     }
 
     public static CommentType typeOf(String value) {
-        for (CommentType commentType : CommentType.values()) {
+        for (CommentType commentType : CommentType
+                .values()) {
             if (commentType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
                 return commentType;
             }

@@ -21,7 +21,8 @@ public enum PhysiologicalDirectionType implements EnumDisplay<PhysiologicalDirec
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum type.
      */
     public static PhysiologicalDirectionType typeOf(String value) {
-        for (PhysiologicalDirectionType referenceType : PhysiologicalDirectionType.values()) {
+        for (PhysiologicalDirectionType referenceType : PhysiologicalDirectionType
+                .values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
             }

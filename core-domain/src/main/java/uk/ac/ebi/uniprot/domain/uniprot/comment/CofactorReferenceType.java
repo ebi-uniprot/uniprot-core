@@ -20,7 +20,8 @@ public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorR
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum type.
      */
     public static CofactorReferenceType typeOf(String value) {
-        for (CofactorReferenceType referenceType : CofactorReferenceType.values()) {
+        for (CofactorReferenceType referenceType : CofactorReferenceType
+                .values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
             }

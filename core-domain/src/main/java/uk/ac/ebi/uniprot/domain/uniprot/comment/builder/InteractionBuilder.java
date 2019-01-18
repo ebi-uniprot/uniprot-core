@@ -1,31 +1,34 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 
-public final class InteractionBuilder {
+public final class InteractionBuilder implements Builder2<InteractionBuilder, Interaction> {
     private InteractionType type;
-    private UniProtAccession uniprotAccession;
+    private UniProtAccession uniProtAccession;
     private String geneName;
-    private int nbExp;
+    private int numberOfExperiments;
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
-    public static InteractionBuilder newInstance() {
-        return new InteractionBuilder();
-    }
-
-    public static Interactor createInteractor(String value) {
-        return InteractionImpl.createInteractor(value);
-    }
-
     public Interaction build() {
-        return new InteractionImpl(type, uniprotAccession,
-                                   geneName, nbExp,
-                                   firstInteractor, secondInteractor);
+        return new InteractionImpl(this);
+    }
+
+    @Override
+    public InteractionBuilder from(Interaction instance) {
+        return this
+                .uniProtAccession(instance.getUniProtAccession())
+                .geneName(instance.getGeneName())
+                .interactionType(instance.getType())
+                .numberOfExperiments(instance.getNumberOfExperiments())
+                .firstInteractor(instance.getFirstInteractor().getValue())
+                .secondInteractor(instance.getSecondInteractor().getValue());
     }
 
     public InteractionBuilder interactionType(InteractionType type) {
@@ -39,22 +42,51 @@ public final class InteractionBuilder {
     }
 
     public InteractionBuilder numberOfExperiments(int nbExp) {
-        this.nbExp = nbExp;
+        this.numberOfExperiments = nbExp;
         return this;
     }
 
-    public InteractionBuilder firstInteractor(Interactor firstInteractor) {
-        this.firstInteractor = firstInteractor;
+    public InteractionBuilder firstInteractor(String firstInteractor) {
+        this.firstInteractor = new InteractionImpl.InteractorImpl(firstInteractor);
         return this;
     }
 
-    public InteractionBuilder secondInteractor(Interactor secondInteractor) {
-        this.secondInteractor = secondInteractor;
+    public InteractionBuilder secondInteractor(String secondInteractor) {
+        this.secondInteractor = new InteractionImpl.InteractorImpl(secondInteractor);
         return this;
     }
 
     public InteractionBuilder uniProtAccession(UniProtAccession uniprotAccession) {
-        this.uniprotAccession = uniprotAccession;
+        this.uniProtAccession = uniprotAccession;
         return this;
+    }
+
+    public InteractionBuilder uniProtAccession(String uniProtAccession) {
+        this.uniProtAccession = new UniProtAccessionImpl(uniProtAccession);
+        return this;
+    }
+
+    public InteractionType getType() {
+        return type;
+    }
+
+    public UniProtAccession getUniProtAccession() {
+        return uniProtAccession;
+    }
+
+    public String getGeneName() {
+        return geneName;
+    }
+
+    public int getNumberOfExperiments() {
+        return numberOfExperiments;
+    }
+
+    public Interactor getFirstInteractor() {
+        return firstInteractor;
+    }
+
+    public Interactor getSecondInteractor() {
+        return secondInteractor;
     }
 }

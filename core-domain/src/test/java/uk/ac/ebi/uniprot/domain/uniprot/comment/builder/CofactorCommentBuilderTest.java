@@ -4,24 +4,21 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class CofactorCommentBuilderTest {
     @Test
     public void testNewInstance() {
-        CofactorCommentBuilder builder1 = CofactorCommentBuilder.newInstance();
-        CofactorCommentBuilder builder2 = CofactorCommentBuilder.newInstance();
+        CofactorCommentBuilder builder1 = new CofactorCommentBuilder();
+        CofactorCommentBuilder builder2 = new CofactorCommentBuilder();
         assertNotNull(builder1);
         assertNotNull(builder2);
         assertFalse(builder1 == builder2);
@@ -29,7 +26,7 @@ public class CofactorCommentBuilderTest {
 
     @Test
     public void testSetMolecule() {
-        CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
+        CofactorCommentBuilder builder = new CofactorCommentBuilder();
         String molecule = "some mol";
         CofactorComment comment =
                 builder.molecule(molecule)
@@ -45,9 +42,9 @@ public class CofactorCommentBuilderTest {
     public void testSetCofactors() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor = CofactorCommentBuilder.createCofactor(name, reference, createEvidences());
+        Cofactor cofactor = createCofactor(name, reference, createEvidences());
         List<Cofactor> cofactors = Arrays.asList(cofactor);
-        CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
+        CofactorCommentBuilder builder = new CofactorCommentBuilder();
         String molecule = "some mol";
         CofactorComment comment =
                 builder.molecule(molecule)
@@ -65,10 +62,10 @@ public class CofactorCommentBuilderTest {
     public void testSetNote() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor = CofactorCommentBuilder.createCofactor(name, reference, createEvidences());
+        Cofactor cofactor = createCofactor(name, reference, createEvidences());
         List<Cofactor> cofactors = Arrays.asList(cofactor);
-        CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
-        Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
+        CofactorCommentBuilder builder = new CofactorCommentBuilder();
+        Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
         String molecule = "";
         CofactorComment comment =
                 builder.molecule(molecule)
@@ -97,23 +94,17 @@ public class CofactorCommentBuilderTest {
     public void testCreateCofactor() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor = CofactorCommentBuilder.createCofactor(name, reference, createEvidences());
+        Cofactor cofactor = createCofactor(name, reference, createEvidences());
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(2, cofactor.getEvidences().size());
     }
 
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-        return evidences;
-    }
-
-    private List<EvidencedValue> createEvidenceValues() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
-        return evidencedValues;
+    private Cofactor createCofactor(String name, DBCrossReference<CofactorReferenceType> reference, List<Evidence> evidences) {
+        return new CofactorBuilder()
+                .name(name)
+                .reference(reference)
+                .evidences(evidences)
+                .build();
     }
 }

@@ -1,47 +1,37 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public abstract class AbstractCitationImpl implements Citation {
     private CitationType citationType;
     private List<String> authoringGroup;
     private List<Author> authors;
-    private List<DBCrossReference<CitationXrefType>> citationXrefs;
+    private CitationXrefs citationXrefs;
     private String title;
     private PublicationDate publicationDate;
 
     private AbstractCitationImpl() {
         this.authors = Collections.emptyList();
         this.authoringGroup = Collections.emptyList();
-        this.citationXrefs = Collections.emptyList();
     }
 
     public AbstractCitationImpl(CitationType citationType, List<String> authoringGroup, List<Author> authors,
-                                List<DBCrossReference<CitationXrefType>> citationXrefs, String title, PublicationDate publicationDate) {
+                                CitationXrefs citationXrefs, String title, PublicationDate publicationDate) {
         this.citationType = citationType;
         this.authoringGroup = Utils.unmodifierList(authoringGroup);
-
         this.authors = Utils.unmodifierList(authors);
-
-        this.citationXrefs = Utils.unmodifierList(citationXrefs);
+        this.citationXrefs = citationXrefs;
         this.title = Utils.resetNull(title);
         this.publicationDate = publicationDate;
     }
 
     @Override
-    public List<DBCrossReference<CitationXrefType>> getCitationXrefs() {
+    public CitationXrefs getCitationXrefs() {
         return citationXrefs;
-    }
-
-    @Override
-    public Optional<DBCrossReference<CitationXrefType>> getCitationXrefsByType(CitationXrefType type) {
-        return citationXrefs.stream().filter(xref -> xref.getDatabaseType() == type).findAny();
     }
 
     @Override
@@ -130,6 +120,4 @@ public abstract class AbstractCitationImpl implements Citation {
             return false;
         return true;
     }
-
-
 }

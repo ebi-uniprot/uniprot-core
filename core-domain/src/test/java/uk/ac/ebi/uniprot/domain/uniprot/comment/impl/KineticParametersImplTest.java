@@ -2,30 +2,28 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.KineticParametersBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MaximumVelocityBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MichaelisConstantBuilder;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
+import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
+import static uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ImplTestHelper.createNote;
 
 class KineticParametersImplTest {
-
     @Test
     void testMaximumVelocity() {
-        float velocity = 1.02f;
+        double velocity = 1.02;
         String unit = "some unit";
         String enzyme = "some enzyme";
 
-        MaximumVelocity maxVelocity = new MaximumVelocityImpl(velocity, unit, enzyme, createEvidences());
+        MaximumVelocity maxVelocity = new MaximumVelocityBuilder()
+                .velocity(velocity).unit(unit).enzyme(enzyme).evidences(createEvidences()).build();
         assertEquals(velocity, maxVelocity.getVelocity(), Float.MIN_VALUE);
         assertEquals(unit, maxVelocity.getUnit());
         assertEquals(enzyme, maxVelocity.getEnzyme());
@@ -35,11 +33,12 @@ class KineticParametersImplTest {
 
     @Test
     void testMaximumVelocitNoEvidence() {
-        float velocity = 1.02f;
+        double velocity = 1.02;
         String unit = "some unit";
         String enzyme = "some enzyme";
 
-        MaximumVelocity maxVelocity = new MaximumVelocityImpl(velocity, unit, enzyme, null);
+        MaximumVelocity maxVelocity = new MaximumVelocityBuilder()
+                .velocity(velocity).unit(unit).enzyme(enzyme).build();
         assertEquals(velocity, maxVelocity.getVelocity(), Float.MIN_VALUE);
         assertEquals(unit, maxVelocity.getUnit());
         assertEquals(enzyme, maxVelocity.getEnzyme());
@@ -49,10 +48,10 @@ class KineticParametersImplTest {
 
     @Test
     void testMichaelisConstantImpl() {
-        float constant = 2.13f;
+        double constant = 2.13;
         MichaelisConstantUnit unit = MichaelisConstantUnit.MG_ML_2;
         String substrate = "some value";
-        MichaelisConstant mconstant = new MichaelisConstantImpl(constant, unit, substrate, createEvidences());
+        MichaelisConstant mconstant = new MichaelisConstantBuilder().constant(constant).unit(unit).substrate(substrate).build();
         assertEquals(constant, mconstant.getConstant(), Float.MIN_VALUE);
         assertEquals(unit, mconstant.getUnit());
         assertEquals(substrate, mconstant.getSubstrate());
@@ -66,7 +65,7 @@ class KineticParametersImplTest {
         float constant = 2.13f;
         MichaelisConstantUnit unit = MichaelisConstantUnit.MG_ML_2;
         String substrate = "some value";
-        MichaelisConstant mconstant = new MichaelisConstantImpl(constant, unit, substrate, null);
+        MichaelisConstant mconstant = new MichaelisConstantBuilder().constant(constant).unit(unit).substrate(substrate).build();
         assertEquals(constant, mconstant.getConstant(), Float.MIN_VALUE);
         assertEquals(unit, mconstant.getUnit());
         assertEquals(substrate, mconstant.getSubstrate());
@@ -82,7 +81,8 @@ class KineticParametersImplTest {
         List<MichaelisConstant> mConstants = createConstants();
         Note note = createNote();
 
-        KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
+        KineticParameters kp = new KineticParametersBuilder()
+                .maximumVelocities(velocities).michaelisConstants(mConstants).note(note).build();
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
@@ -96,7 +96,8 @@ class KineticParametersImplTest {
         List<MichaelisConstant> mConstants = createConstants();
         Note note = null;
 
-        KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
+        KineticParameters kp = new KineticParametersBuilder()
+                .maximumVelocities(velocities).michaelisConstants(mConstants).note(note).build();
         assertEquals(0, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
@@ -110,7 +111,8 @@ class KineticParametersImplTest {
         List<MichaelisConstant> mConstants = createConstants();
         Note note = null;
 
-        KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
+        KineticParameters kp =new KineticParametersBuilder()
+                .maximumVelocities(velocities).michaelisConstants(mConstants).note(note).build();
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
@@ -124,7 +126,8 @@ class KineticParametersImplTest {
         List<MichaelisConstant> mConstants = null;
         Note note = createNote();
 
-        KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
+        KineticParameters kp = new KineticParametersBuilder()
+                .maximumVelocities(velocities).michaelisConstants(mConstants).note(note).build();
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(0, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
@@ -133,33 +136,17 @@ class KineticParametersImplTest {
 
     private List<MaximumVelocity> createVelocities() {
         List<MaximumVelocity> velocities = new ArrayList<>();
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
-        velocities.add(BPCPCommentBuilder.createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
+        velocities.add(new MaximumVelocityBuilder()
+                               .velocity(1.0).unit("unit1").enzyme("enzyme1").evidences(createEvidences()).build());
+        velocities.add(new MaximumVelocityBuilder()
+                               .velocity(1.321).unit("unit2").enzyme("enzyme2").evidences(createEvidences()).build());
         return velocities;
     }
 
     private List<MichaelisConstant> createConstants() {
-        List<MichaelisConstant> mConstants = new ArrayList<>();
-        float constant = 2.13f;
+        double constant = 2.13;
         MichaelisConstantUnit unit = MichaelisConstantUnit.MG_ML_2;
         String substrate = "some value";
-        MichaelisConstant mconstant = new MichaelisConstantImpl(constant, unit, substrate, createEvidences());
-        mConstants.add(mconstant);
-        return mConstants;
-    }
-
-    private Note createNote() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value1", Collections.emptyList()));
-        evidencedValues.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", createEvidences()));
-        Note note = CommentFactory.INSTANCE.createNote(evidencedValues);
-        return note;
-    }
-
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-        evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
-        return evidences;
+        return singletonList(new MichaelisConstantBuilder().constant(constant).unit(unit).substrate(substrate).build());
     }
 }

@@ -3,7 +3,6 @@ package uk.ac.ebi.uniprot.domain.citation;
 import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
-
     PDB("PDB data bank"),
     PIR("PIR data bank"),
     SWISS_PROT("Swiss-Prot"),
@@ -18,7 +17,8 @@ public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
     }
 
     public static SubmissionDatabase typeOf(String name) {
-        for (SubmissionDatabase submissionDatabase : SubmissionDatabase.values()) {
+        for (SubmissionDatabase submissionDatabase : SubmissionDatabase
+                .values()) {
             if (submissionDatabase.getName().equals(name)) {
                 return submissionDatabase;
             }

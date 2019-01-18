@@ -18,7 +18,8 @@ public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> 
     }
 
     public static MichaelisConstantUnit convert(String unit) {
-        for (MichaelisConstantUnit value : MichaelisConstantUnit.values()) {
+        for (MichaelisConstantUnit value : MichaelisConstantUnit
+                .values()) {
             if (value.name.equals(unit)) {
                 return value;
             }

@@ -1,32 +1,33 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
+import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
-import java.util.List;
+import static java.util.Collections.emptyList;
 
-public final class DiseaseBuilder {
+public final class DiseaseBuilder implements Builder2<DiseaseBuilder, Disease> {
     private String diseaseId;
     private String diseaseAc;
     private String acronym;
-
-    private String description;
-    private DBCrossReference<DiseaseReferenceType>  reference;
-    private List<Evidence> evidences;
-
-
-    public static DiseaseBuilder newInstance() {
-        return new DiseaseBuilder();
-    }
-
+    private DiseaseDescription description;
+    private DBCrossReference<DiseaseReferenceType> reference;
 
     public Disease build() {
-        return new DiseaseImpl(diseaseId, diseaseAc, acronym, description,
-                reference, evidences);
+        return new DiseaseImpl(this);
+    }
 
+    @Override
+    public DiseaseBuilder from(Disease instance) {
+        return this
+                .acronym(instance.getAcronym())
+                .description(instance.getDescription())
+                .diseaseAc(instance.getDiseaseAccession())
+                .diseaseId(instance.getDiseaseId())
+                .reference(instance.getReference());
     }
 
     public DiseaseBuilder diseaseId(String diseaseId) {
@@ -44,8 +45,13 @@ public final class DiseaseBuilder {
         return this;
     }
 
-    public DiseaseBuilder description(String description) {
+    public DiseaseBuilder description(DiseaseDescription description) {
         this.description = description;
+        return this;
+    }
+
+    public DiseaseBuilder description(String description) {
+        this.description = new DiseaseDescriptionBuilder(description, emptyList()).build();
         return this;
     }
 
@@ -54,10 +60,23 @@ public final class DiseaseBuilder {
         return this;
     }
 
-
-    public DiseaseBuilder evidences(List<Evidence> evidences) {
-        this.evidences = evidences;
-        return this;
+    public String getDiseaseId() {
+        return diseaseId;
     }
 
+    public String getDiseaseAc() {
+        return diseaseAc;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public DiseaseDescription getDescription() {
+        return description;
+    }
+
+    public DBCrossReference<DiseaseReferenceType> getReference() {
+        return reference;
+    }
 }

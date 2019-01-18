@@ -47,5 +47,4 @@ public class ValueImpl implements Value {
             return false;
         return true;
     }
-
 }

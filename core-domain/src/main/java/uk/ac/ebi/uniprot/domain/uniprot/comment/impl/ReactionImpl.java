@@ -4,15 +4,16 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.ReactionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
 public class ReactionImpl implements Reaction {
-
     private String name;
     private List<DBCrossReference<ReactionReferenceType>> reactionReferences;
     private ECNumber ecNumber;
@@ -23,20 +24,18 @@ public class ReactionImpl implements Reaction {
         this.reactionReferences = Collections.emptyList();
     }
 
-    public ReactionImpl(String name,
-                        List<DBCrossReference<ReactionReferenceType>> reactionReferences,
-                        ECNumber ecNumber, List<Evidence> evidences) {
-        this.name = name;
-        if ((reactionReferences == null) || reactionReferences.isEmpty()) {
+    public ReactionImpl(ReactionBuilder builder) {
+        this.name = builder.getName();
+        if ((builder.getReactionReferences() == null) || builder.getReactionReferences().isEmpty()) {
             this.reactionReferences = Collections.emptyList();
         } else {
-            this.reactionReferences = Collections.unmodifiableList(reactionReferences);
+            this.reactionReferences = Collections.unmodifiableList(builder.getReactionReferences());
         }
-        this.ecNumber = ecNumber;
-        if ((evidences == null) || evidences.isEmpty()) {
+        this.ecNumber = builder.getEcNumber();
+        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(evidences);
+            this.evidences = Collections.unmodifiableList(builder.getEvidences());
         }
     }
 
@@ -80,50 +79,22 @@ public class ReactionImpl implements Reaction {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((ecNumber == null) ? 0 : ecNumber.hashCode());
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((reactionReferences == null) ? 0 : reactionReferences.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReactionImpl reaction = (ReactionImpl) o;
+        return Objects.equals(name, reaction.name) &&
+                Objects.equals(reactionReferences, reaction.reactionReferences) &&
+                Objects.equals(ecNumber, reaction.ecNumber) &&
+                Objects.equals(evidences, reaction.evidences);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ReactionImpl other = (ReactionImpl) obj;
-        if (ecNumber == null) {
-            if (other.ecNumber != null)
-                return false;
-        } else if (!ecNumber.equals(other.ecNumber))
-            return false;
-        if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (reactionReferences == null) {
-            if (other.reactionReferences != null)
-                return false;
-        } else if (!reactionReferences.equals(other.reactionReferences))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(name, reactionReferences, ecNumber, evidences);
     }
 
     private String getReferenceString(DBCrossReference<ReactionReferenceType> ref) {
         return ref.getDatabaseType().getName() + ":" + ref.getId();
     }
-
 }

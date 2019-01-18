@@ -5,16 +5,20 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseCommentImpl;
 
-public class DiseaseCommentBuilder implements CommentBuilder<DiseaseComment> {
+public class DiseaseCommentBuilder implements CommentBuilder<DiseaseCommentBuilder, DiseaseComment> {
     private Disease disease;
     private Note note;
 
-    public static DiseaseCommentBuilder newInstance() {
-        return new DiseaseCommentBuilder();
+    @Override
+    public DiseaseComment build() {
+        return new DiseaseCommentImpl(disease, note);
     }
 
-    public static DiseaseBuilder newDiseaseBuilder() {
-        return DiseaseBuilder.newInstance();
+    @Override
+    public DiseaseCommentBuilder from(DiseaseComment instance) {
+        return this
+                .disease(instance.getDisease())
+                .note(instance.getNote());
     }
 
     public DiseaseCommentBuilder disease(Disease disease) {
@@ -26,10 +30,4 @@ public class DiseaseCommentBuilder implements CommentBuilder<DiseaseComment> {
         this.note = note;
         return this;
     }
-
-    @Override
-    public DiseaseComment build() {
-        return new DiseaseCommentImpl(disease, note);
-    }
-
 }

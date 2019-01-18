@@ -1,61 +1,33 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 
-import java.util.EnumSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
+import static uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextCommentImpl.isFreeTextCommentType;
 
-public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
-    private static final Set<CommentType> VALID_COMMENT_TYPES =
-            EnumSet.of(CommentType.ALLERGEN, CommentType.BIOTECHNOLOGY,
-                       CommentType.CATALYTIC_ACTIVITY,
-                       CommentType.CAUTION,
-                       CommentType.DEVELOPMENTAL_STAGE,
-                       CommentType.DISRUPTION_PHENOTYPE,
-                       CommentType.DOMAIN,
-                       CommentType.ACTIVITY_REGULATION,
-                       CommentType.FUNCTION,
-                       CommentType.INDUCTION,
-                       CommentType.INDUCTION,
-                       CommentType.MISCELLANEOUS,
-                       CommentType.PATHWAY,
-                       CommentType.PHARMACEUTICAL,
-                       CommentType.POLYMORPHISM,
-                       CommentType.PTM,
-                       CommentType.SIMILARITY,
-                       CommentType.SUBUNIT,
-                       CommentType.TISSUE_SPECIFICITY,
-                       CommentType.TOXIC_DOSE
-            );
+public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
     private CommentType commentType;
-    private List<EvidencedValue> texts;
+    private List<EvidencedValue> texts = new ArrayList<>();
 
-    public static boolean isFreeTextCommentType(CommentType type) {
-        return VALID_COMMENT_TYPES.contains(type);
-    }
-
-    public static FreeTextCommentBuilder newInstance() {
-        return new FreeTextCommentBuilder();
-    }
-
-    public static FreeTextComment buildFreeTextComment(CommentType commentType,
-                                                       List<EvidencedValue> texts) {
+    @Override
+    public FreeTextComment build() {
         if (!isFreeTextCommentType(commentType)) {
             throw new IllegalArgumentException(commentType + " is not free text comment");
         }
         return new FreeTextCommentImpl(commentType, texts);
-
     }
 
     @Override
-    public FreeTextComment build() {
-        return buildFreeTextComment(commentType, texts);
+    public FreeTextCommentBuilder from(FreeTextComment instance) {
+        texts.clear();
+        return this
+                .commentType(instance.getCommentType())
+                .texts(instance.getTexts());
     }
 
     public FreeTextCommentBuilder commentType(CommentType commentType) {
@@ -64,8 +36,12 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
     }
 
     public FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
-        this.texts = texts;
+        this.texts.addAll(texts);
         return this;
     }
 
+    public FreeTextCommentBuilder addText(EvidencedValue text) {
+        this.texts.add(text);
+        return this;
+    }
 }

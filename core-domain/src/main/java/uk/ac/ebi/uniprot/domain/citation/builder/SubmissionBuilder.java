@@ -4,17 +4,18 @@ import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.impl.SubmissionImpl;
 
-public final class SubmissionBuilder extends AbstractCitationBuilder<Submission> {
+public final class SubmissionBuilder extends AbstractCitationBuilder<SubmissionBuilder, Submission> {
     private SubmissionDatabase submissionDb;
 
-    public static SubmissionBuilder newInstance() {
-
-        return new SubmissionBuilder();
+    public Submission build() {
+        return new SubmissionImpl(this);
     }
 
-    public Submission build() {
-        return new SubmissionImpl(authoringGroups, authors,
-                                  xrefs, title, publicationDate, submissionDb);
+    @Override
+    public SubmissionBuilder from(Submission instance) {
+        init(instance);
+        return this
+                .submittedToDatabase(instance.getSubmissionDatabase());
     }
 
     public SubmissionBuilder submittedToDatabase(SubmissionDatabase submissionDb) {
@@ -22,4 +23,12 @@ public final class SubmissionBuilder extends AbstractCitationBuilder<Submission>
         return this;
     }
 
+    public SubmissionDatabase getSubmissionDb() {
+        return submissionDb;
+    }
+
+    @Override
+    protected SubmissionBuilder getThis() {
+        return this;
+    }
 }

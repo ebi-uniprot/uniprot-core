@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.List;
 
 public interface MassSpectrometryComment extends Comment {
 
-	public Float getMolWeight();
+    public Double getMolWeight();
 
-	public Float getMolWeightError();
+    public Double getMolWeightError();
 
     public String getNote();
 
@@ -17,5 +17,4 @@ public interface MassSpectrometryComment extends Comment {
     public MassSpectrometryMethod getMethod();
 
     public List<Evidence> getEvidences();
-
 }

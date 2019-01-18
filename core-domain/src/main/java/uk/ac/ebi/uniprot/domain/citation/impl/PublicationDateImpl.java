@@ -42,5 +42,4 @@ public class PublicationDateImpl implements PublicationDate {
             return false;
         return true;
     }
-
 }

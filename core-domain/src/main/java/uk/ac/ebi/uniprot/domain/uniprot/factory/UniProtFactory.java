@@ -29,9 +29,9 @@ public enum UniProtFactory {
         return UniProtDBCrossReferenceFactory.INSTANCE;
     }
 
-    public CommentFactory getCommentFactory() {
-        return CommentFactory.INSTANCE;
-    }
+//    public CommentFactory getCommentFactory() {
+//        return CommentFactory.INSTANCE;
+//    }
 
     public FeatureFactory getFeatureFactory() {
         return FeatureFactory.INSTANCE;

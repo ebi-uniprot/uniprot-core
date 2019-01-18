@@ -19,7 +19,8 @@ public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod
     }
 
     public static MassSpectrometryMethod toType(String type) {
-        for (MassSpectrometryMethod method : MassSpectrometryMethod.values()) {
+        for (MassSpectrometryMethod method : MassSpectrometryMethod
+                .values()) {
             if (method.getValue().equals(type))
                 return method;
         }

@@ -11,7 +11,7 @@ public class WebResourceCommentBuilderTest {
 
     @Test
     public void testSetDatabaseName() {
-        WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
+        WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         WebResourceComment comment = builder.resourceName(databaseName)
                 .build();
@@ -25,7 +25,7 @@ public class WebResourceCommentBuilderTest {
 
     @Test
     public void testSetDatabaseUrl() {
-        WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
+        WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseUrl = "some url";
         WebResourceComment comment = builder.resourceName(databaseName)
@@ -41,7 +41,7 @@ public class WebResourceCommentBuilderTest {
 
     @Test
     public void testSetDatabaseFtp() {
-        WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
+        WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseFtp = "some ftp";
         WebResourceComment comment = builder.resourceName(databaseName)
@@ -58,7 +58,7 @@ public class WebResourceCommentBuilderTest {
 
     @Test
     public void testSetNote() {
-        WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
+        WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseUrl = "some url";
         String note = "some note";
@@ -73,5 +73,4 @@ public class WebResourceCommentBuilderTest {
         assertEquals(note, comment.getNote());
         TestHelper.verifyJson(comment);
     }
-
 }

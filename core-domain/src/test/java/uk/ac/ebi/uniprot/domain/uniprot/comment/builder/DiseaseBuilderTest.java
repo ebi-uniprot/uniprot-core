@@ -6,19 +6,18 @@ import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class DiseaseBuilderTest {
     @Test
     public void testNewInstance() {
-        DiseaseBuilder builder1 = DiseaseBuilder.newInstance();
-        DiseaseBuilder builder2 = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder1 = new DiseaseBuilder();
+        DiseaseBuilder builder2 = new DiseaseBuilder();
         assertNotNull(builder1);
         assertNotNull(builder2);
         assertFalse(builder1 == builder2);
@@ -26,7 +25,7 @@ public class DiseaseBuilderTest {
 
     @Test
     public void testSetDiseaseId() {
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .build();
@@ -39,7 +38,7 @@ public class DiseaseBuilderTest {
 
     @Test
     public void testSetAcronym() {
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
@@ -53,7 +52,7 @@ public class DiseaseBuilderTest {
 
     @Test
     public void testSetDescription() {
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
 
         String description ="some description";
         List<Evidence> evidences =  createEvidences();
@@ -62,8 +61,7 @@ public class DiseaseBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(description)
-                .evidences(evidences)
+                .description(new DiseaseDescriptionBuilder(description, evidences).build())
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());
@@ -74,7 +72,7 @@ public class DiseaseBuilderTest {
 
     @Test
     public void testSetReference() {
-        DiseaseBuilder builder = DiseaseBuilder.newInstance();
+        DiseaseBuilder builder = new DiseaseBuilder();
 
         String description ="some description";
         List<Evidence> evidences =  createEvidences();
@@ -86,9 +84,8 @@ public class DiseaseBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(description)
+                .description(new DiseaseDescriptionBuilder(description, evidences).build())
                 .reference(reference)        
-                .evidences(evidences)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(description, disease.getDescription());
@@ -106,14 +103,4 @@ public class DiseaseBuilderTest {
         assertEquals(referenceType, reference.getDatabaseType());
         assertEquals(referenceId, reference.getId());
     }
-
-
-
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-        return evidences;
-    }
-
 }

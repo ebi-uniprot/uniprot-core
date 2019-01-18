@@ -9,13 +9,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
-
     @Test
     public void testBuildWithTitlePublication() {
-        UnpublishedBuilder builder = UnpublishedBuilder.newInstance();
+        UnpublishedBuilder builder = new UnpublishedBuilder();
         String title = "Some title";
         builder.title(title)
-                .publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"));
+                .publicationDate("2015-MAY");
         Unpublished citation = builder.build();
         assertEquals(title, citation.getTitle());
         assertEquals("2015-MAY", citation.getPublicationDate().getValue());
@@ -28,13 +27,10 @@ public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     public void testBuildAll() {
-        UnpublishedBuilder builder = UnpublishedBuilder.newInstance();
+        UnpublishedBuilder builder = new UnpublishedBuilder();
         buildCitationParameters(builder);
         Unpublished citation = builder.build();
         verifyCitation(citation, CitationType.UNPUBLISHED);
         TestHelper.verifyJson(citation);
-
-
     }
-
 }

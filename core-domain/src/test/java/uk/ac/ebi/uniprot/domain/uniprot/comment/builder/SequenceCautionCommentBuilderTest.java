@@ -15,8 +15,8 @@ public class SequenceCautionCommentBuilderTest {
 
     @Test
     public void testNewInstance() {
-        SequenceCautionCommentBuilder builder1 = SequenceCautionCommentBuilder.newInstance();
-        SequenceCautionCommentBuilder builder2 = SequenceCautionCommentBuilder.newInstance();
+        SequenceCautionCommentBuilder builder1 = new SequenceCautionCommentBuilder();
+        SequenceCautionCommentBuilder builder2 = new SequenceCautionCommentBuilder();
         assertNotNull(builder1);
         assertNotNull(builder2);
         assertFalse(builder1 == builder2);
@@ -24,7 +24,7 @@ public class SequenceCautionCommentBuilderTest {
 
     @Test
     public void testSetSequenceCautionType() {
-        SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
+        SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                         .build();
@@ -38,7 +38,7 @@ public class SequenceCautionCommentBuilderTest {
 
     @Test
     public void testSetSequence() {
-        SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
+        SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                         .sequence("somesequence")
@@ -54,7 +54,7 @@ public class SequenceCautionCommentBuilderTest {
     @Test
     public void testSetPositions() {
         List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
-        SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
+        SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                         .sequence("somesequence")
@@ -71,7 +71,7 @@ public class SequenceCautionCommentBuilderTest {
     @Test
     public void testSetNote() {
         List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
-        SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
+        SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                         .sequence("somesequence")
@@ -85,5 +85,4 @@ public class SequenceCautionCommentBuilderTest {
         assertEquals("somesequence", comment.getSequence());
         TestHelper.verifyJson(comment);
     }
-
 }

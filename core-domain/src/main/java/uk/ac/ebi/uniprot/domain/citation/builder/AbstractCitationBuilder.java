@@ -1,55 +1,88 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.Value;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
+import uk.ac.ebi.uniprot.domain.citation.CitationXrefs;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public abstract class AbstractCitationBuilder<T extends Citation> implements CitationBuilder<T> {
+public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<B, T>, T extends Citation> implements CitationBuilder<B, T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
-    protected List<DBCrossReference<CitationXrefType>> xrefs;
+    protected CitationXrefs xrefs;
     protected String title = "";
     protected PublicationDate publicationDate;
 
-    public static PublicationDate createPublicationDate(String date) {
-        return new PublicationDateImpl(date);
+    public B authoringGroups(List<String> groups) {
+        this.authoringGroups.addAll(groups);
+        return getThis();
     }
 
-
-    public static Author createAuthor(String name) {
-        return new AuthorImpl(name);
+    public B addAuthorGroup(String group) {
+        this.authoringGroups.add(group);
+        return getThis();
     }
 
-
-    public AbstractCitationBuilder<T> authoringGroups(List<String> val) {
-        this.authoringGroups = val;
-        return this;
+    public B authors(List<String> authors) {
+        this.authors = authors.stream()
+                .map(AuthorImpl::new)
+                .collect(Collectors.toList());
+        return getThis();
     }
 
-    public AbstractCitationBuilder<T> authors(List<Author> val) {
-        this.authors = val;
-        return this;
+    public B addAuthor(String author) {
+        this.authors.add(new AuthorImpl(author));
+        return getThis();
     }
 
-    public AbstractCitationBuilder<T> citationXrefs(List<DBCrossReference<CitationXrefType>> xrefs) {
+    public B citationXrefs(CitationXrefs xrefs) {
         this.xrefs = xrefs;
-        return this;
+        return getThis();
     }
 
-    public AbstractCitationBuilder<T> title(String title) {
+    public B title(String title) {
         this.title = title;
-        return this;
+        return getThis();
     }
 
-    public AbstractCitationBuilder<T> publicationDate(PublicationDate publicationDate) {
-        this.publicationDate = publicationDate;
-        return this;
+    public B publicationDate(String publicationDate) {
+        this.publicationDate = new PublicationDateImpl(publicationDate);
+        return getThis();
     }
+
+    public List<String> getAuthoringGroups() {
+        return authoringGroups;
+    }
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public CitationXrefs getXrefs() {
+        return xrefs;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public PublicationDate getPublicationDate() {
+        return publicationDate;
+    }
+
+    protected void init(T instance) {
+        this.citationXrefs(instance.getCitationXrefs())
+                .title(instance.getTitle())
+                .publicationDate(instance.getPublicationDate().getValue())
+                .authors(instance.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()))
+                .authoringGroups(instance.getAuthoringGroup());
+    }
+    
+    protected abstract B getThis();
 }

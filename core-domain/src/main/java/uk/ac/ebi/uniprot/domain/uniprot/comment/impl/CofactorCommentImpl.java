@@ -4,9 +4,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
     private String molecule;
@@ -18,20 +20,18 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         this.cofactors = Collections.emptyList();
     }
 
-    public CofactorCommentImpl(String molecule,
-                               List<Cofactor> cofactors,
-                               Note note) {
+    public CofactorCommentImpl(CofactorCommentBuilder builder) {
         super(CommentType.COFACTOR);
-        if (molecule == null || molecule.isEmpty())
+        if (builder.getMolecule() == null || builder.getMolecule().isEmpty())
             this.molecule = null;
         else
-            this.molecule = molecule;
+            this.molecule = builder.getMolecule();
         if ((cofactors == null) || cofactors.isEmpty()) {
             this.cofactors = Collections.emptyList();
         } else {
-            this.cofactors = Collections.unmodifiableList(cofactors);
+            this.cofactors = Collections.unmodifiableList(builder.getCofactors());
         }
-        this.note = note;
+        this.note = builder.getNote();
     }
 
     @Override
@@ -54,43 +54,19 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         return !getCofactors().isEmpty() || (note != null);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        CofactorCommentImpl that = (CofactorCommentImpl) o;
+        return Objects.equals(molecule, that.molecule) &&
+                Objects.equals(cofactors, that.cofactors) &&
+                Objects.equals(note, that.note);
+    }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((cofactors == null) ? 0 : cofactors.hashCode());
-        result = prime * result + ((molecule == null) ? 0 : molecule.hashCode());
-        result = prime * result + ((note == null) ? 0 : note.hashCode());
-        return result;
+        return Objects.hash(super.hashCode(), molecule, cofactors, note);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        CofactorCommentImpl other = (CofactorCommentImpl) obj;
-        if (cofactors == null) {
-            if (other.cofactors != null)
-                return false;
-        } else if (!cofactors.equals(other.cofactors))
-            return false;
-        if (molecule == null) {
-            if (other.molecule != null)
-                return false;
-        } else if (!molecule.equals(other.molecule))
-            return false;
-        if (note == null) {
-            if (other.note != null)
-                return false;
-        } else if (!note.equals(other.note))
-            return false;
-        return true;
-    }
-
-
 }

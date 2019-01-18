@@ -1,14 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.FreeTextImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment {
     private static final Set<CommentType> VALID_COMMENT_TYPES =
@@ -43,7 +39,6 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
                                List<EvidencedValue> texts) {
         super(texts);
         this.commentType = type;
-
     }
 
     public static boolean isFreeTextCommentType(CommentType type) {
@@ -56,26 +51,16 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((commentType == null) ? 0 : commentType.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        FreeTextCommentImpl that = (FreeTextCommentImpl) o;
+        return commentType == that.commentType;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        FreeTextCommentImpl other = (FreeTextCommentImpl) obj;
-        if (commentType != other.commentType)
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), commentType);
     }
-
-
 }

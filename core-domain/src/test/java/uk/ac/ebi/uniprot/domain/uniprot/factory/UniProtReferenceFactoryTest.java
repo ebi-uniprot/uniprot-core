@@ -4,6 +4,7 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
+import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
@@ -14,15 +15,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class UniProtReferenceFactoryTest {
 
     @Test
     public void testCreateUniProtReference() {
         Submission submission =
-                UniProtReferenceFactory.INSTANCE.getCitationFactory()
-                        .createSubmissionBuilder()
+                new SubmissionBuilder()
                         .submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
                         .build();
         List<String> referencePositions =
@@ -52,12 +51,6 @@ public class UniProtReferenceFactoryTest {
         assertEquals(value, refComment.getValue());
         assertEquals(evidences, refComment.getEvidences());
         TestHelper.verifyJson(refComment);
-    }
-
-    @Test
-    public void testGetCitationFactory() {
-        CitationFactory citationFactory = UniProtReferenceFactory.INSTANCE.getCitationFactory();
-        assertNotNull(citationFactory);
     }
 
     private List<Evidence> createEvidences() {

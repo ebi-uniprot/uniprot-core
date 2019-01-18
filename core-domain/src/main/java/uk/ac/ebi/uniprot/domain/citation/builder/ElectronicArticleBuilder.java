@@ -1,27 +1,23 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
 import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
-import uk.ac.ebi.uniprot.domain.citation.Locator;
 import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl;
-import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl.LocatorImpl;
 
 
-public final class ElectronicArticleBuilder extends AbstractCitationBuilder<ElectronicArticle> {
+public final class ElectronicArticleBuilder extends AbstractCitationBuilder<ElectronicArticleBuilder, ElectronicArticle> {
     private String journalName;
-    private Locator locator;
-
-    public static ElectronicArticleBuilder newInstance() {
-        return new ElectronicArticleBuilder();
-    }
-
-    public static Locator createLocator(String locator) {
-        return new LocatorImpl(locator);
-    }
+    private String locator;
 
     public ElectronicArticle build() {
-        return new ElectronicArticleImpl(authoringGroups, authors,
-                                         xrefs, title, publicationDate,
-                                         journalName, locator);
+        return new ElectronicArticleImpl(this);
+    }
+
+    @Override
+    public ElectronicArticleBuilder from(ElectronicArticle instance) {
+        init(instance);
+        return this
+                .journalName(instance.getJournal().getName())
+                .locator(instance.getLocator().getValue());
     }
 
     public ElectronicArticleBuilder journalName(String journalName) {
@@ -30,9 +26,20 @@ public final class ElectronicArticleBuilder extends AbstractCitationBuilder<Elec
     }
 
     public ElectronicArticleBuilder locator(String locator) {
-        this.locator = createLocator(locator);
+        this.locator = locator;
         return this;
     }
 
+    public String getJournalName() {
+        return journalName;
+    }
 
+    public String getLocator() {
+        return locator;
+    }
+
+    @Override
+    protected ElectronicArticleBuilder getThis() {
+        return this;
+    }
 }

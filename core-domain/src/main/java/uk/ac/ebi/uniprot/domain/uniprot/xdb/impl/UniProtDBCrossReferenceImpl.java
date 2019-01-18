@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 
 import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.citation2.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
@@ -21,7 +21,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     private List<Evidence> evidences;
 
     private UniProtDBCrossReferenceImpl() {
-        super(null, "", Collections.emptyList());
+        super(new DBCrossReferenceBuilder<>());
         evidences = Collections.emptyList();
     }
 
@@ -43,9 +43,9 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     @Override
-	public List<Evidence> getEvidences() {
-		return evidences;
-	}
+    public List<Evidence> getEvidences() {
+        return evidences;
+    }
 
 
     @Override

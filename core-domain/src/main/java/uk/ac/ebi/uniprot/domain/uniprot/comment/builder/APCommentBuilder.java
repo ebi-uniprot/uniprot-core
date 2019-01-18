@@ -1,41 +1,50 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AlternativeProductsCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
-    private List<APEventType> events;
-    private List<APIsoform> isoforms;
+public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
+    private List<APEventType> events = new ArrayList<>();
+    private List<APIsoform> isoforms = new ArrayList<>();
     private Note note;
 
-    public static APCommentBuilder newInstance() {
-        return new APCommentBuilder();
-    }
-
-    public static IsoformName createIsoformName(String value, List<Evidence> evidences) {
-        return APIsoformImpl.createIsoformName(value, evidences);
-    }
-
-    public static IsoformId createIsoformId(String value) {
-        return APIsoformImpl.createIsoformId(value);
-    }
-
     public AlternativeProductsComment build() {
-        return new AlternativeProductsCommentImpl(events,
-                                                  isoforms, note);
+        return new AlternativeProductsCommentImpl(this);
+    }
+
+    @Override
+    public APCommentBuilder from(AlternativeProductsComment instance) {
+        events.clear();
+        isoforms.clear();
+        return this
+                .events(instance.getEvents())
+                .isoforms(instance.getIsoforms())
+                .note(instance.getNote());
     }
 
     public APCommentBuilder events(List<APEventType> events) {
-        this.events = events;
+        this.events.addAll(events);
+        return this;
+    }
+
+    public APCommentBuilder addEvent(APEventType event) {
+        this.events.add(event);
         return this;
     }
 
     public APCommentBuilder isoforms(List<APIsoform> isoforms) {
-        this.isoforms = isoforms;
+        this.isoforms.addAll(isoforms);
+        return this;
+    }
+
+    public APCommentBuilder addIsoform(APIsoform isoform) {
+        this.isoforms.add(isoform);
         return this;
     }
 
@@ -44,53 +53,15 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
         return this;
     }
 
-    public static class APIsoformBuilder {
-        private IsoformName name;
-        private List<IsoformName> synonyms;
-        private Note note;
-        private List<IsoformId> isoformIds;
-        private List<String> sequenceIds;
-        private IsoformSequenceStatus isoformSequenceStatus;
-
-        public static APIsoformBuilder newInstance() {
-            return new APIsoformBuilder();
-        }
-
-        public APIsoform build() {
-            return new APIsoformImpl(name, synonyms,
-                                     note, isoformIds,
-                                     sequenceIds, isoformSequenceStatus);
-        }
-
-        public APIsoformBuilder isoformName(IsoformName name) {
-            this.name = name;
-            return this;
-        }
-
-        public APIsoformBuilder isoformSynonyms(List<IsoformName> synonyms) {
-            this.synonyms = synonyms;
-            return this;
-        }
-
-        public APIsoformBuilder note(Note note) {
-            this.note = note;
-            return this;
-        }
-
-        public APIsoformBuilder isoformIds(List<IsoformId> isoformIds) {
-            this.isoformIds = isoformIds;
-            return this;
-        }
-
-        public APIsoformBuilder sequenceIds(List<String> sequenceIds) {
-            this.sequenceIds = sequenceIds;
-            return this;
-        }
-
-        public APIsoformBuilder isoformSequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
-            this.isoformSequenceStatus = isoformSequenceStatus;
-            return this;
-        }
+    public List<APEventType> getEvents() {
+        return events;
     }
 
+    public List<APIsoform> getIsoforms() {
+        return isoforms;
+    }
+
+    public Note getNote() {
+        return note;
+    }
 }

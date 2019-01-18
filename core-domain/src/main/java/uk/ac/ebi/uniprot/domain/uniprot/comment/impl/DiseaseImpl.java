@@ -2,40 +2,36 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.util.Utils;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 
-import java.util.List;
+import java.util.Objects;
 
 public class DiseaseImpl implements Disease {
+    private static final String DEFAULT_ACCESSION = "DI-00000";
 
-	private String diseaseId;
-	private String diseaseAccession;
-	private String acronym;
-	private String description;
-	private DBCrossReference<DiseaseReferenceType> reference;
-	private List<Evidence> evidences;
-	
-	public static final String DEFAULT_ACCESSION ="DI-00000";
+    private String diseaseId;
+    private String diseaseAccession;
+    private String acronym;
+    private DiseaseDescription description;
+    private DBCrossReference<DiseaseReferenceType> reference;
 
-	private DiseaseImpl(){
-		this(null,null,null,null,null,null);
-	}
-    public DiseaseImpl(String diseaseId, String diseaseAccession, String acronym, String description,
-                       DBCrossReference<DiseaseReferenceType> reference, List<Evidence> evidences) {
-        this.diseaseId = diseaseId;
-        if (diseaseAccession == null || diseaseAccession.isEmpty()) {
-            this.diseaseAccession = DEFAULT_ACCESSION;
-        } else {
-            this.diseaseAccession = diseaseAccession;
-        }
-        this.acronym = acronym;
-        this.description = description;
-        this.reference = reference;
-        this.evidences =Utils.unmodifierList(evidences);
+    private DiseaseImpl() {
+
     }
 
+    public DiseaseImpl(DiseaseBuilder builder) {
+        this.diseaseId = builder.getDiseaseId();
+        if (builder.getDiseaseAc() == null || builder.getDiseaseAc().isEmpty()) {
+            this.diseaseAccession = DEFAULT_ACCESSION;
+        } else {
+            this.diseaseAccession = builder.getDiseaseAc();
+        }
+        this.acronym = builder.getAcronym();
+        this.description = builder.getDescription();
+        this.reference = builder.getReference();
+    }
 
     @Override
     public String getDiseaseId() {
@@ -54,7 +50,7 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
-    public String getDescription() {
+    public DiseaseDescription getDescription() {
         return description;
     }
 
@@ -63,69 +59,36 @@ public class DiseaseImpl implements Disease {
         return reference;
     }
 
-
     @Override
     public boolean hasDefinedDisease() {
         return (diseaseId != null && !diseaseId.isEmpty() && (getAcronym() != null && !getAcronym().isEmpty())
                 && isValidDescription() && isValidReference());
     }
 
-	private boolean isValidDescription() {
-		return description !=null && !description.isEmpty();
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DiseaseImpl disease = (DiseaseImpl) o;
+        return Objects.equals(diseaseId, disease.diseaseId) &&
+                Objects.equals(diseaseAccession, disease.diseaseAccession) &&
+                Objects.equals(acronym, disease.acronym) &&
+                Objects.equals(description, disease.description) &&
+                Objects.equals(reference, disease.reference);
+    }
 
-	@Override
-	public List<Evidence> getEvidences() {
-		return evidences;
-	}
-	 private boolean isValidReference() {
-	        return (getReference() != null && getReference().getId() != null && !getReference().getId().isEmpty()
-	                && getReference().getDatabaseType() != DiseaseReferenceType.NONE);
-	    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(diseaseId, diseaseAccession, acronym, description, reference);
+    }
 
+    private boolean isValidDescription() {
+        return getDescription() != null && getDescription().getValue() != null
+                && !getDescription().getValue().isEmpty();
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DiseaseImpl other = (DiseaseImpl) obj;
-		if (acronym == null) {
-			if (other.acronym != null)
-				return false;
-		} else if (!acronym.equals(other.acronym))
-			return false;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (diseaseAccession == null) {
-			if (other.diseaseAccession != null)
-				return false;
-		} else if (!diseaseAccession.equals(other.diseaseAccession))
-			return false;
-		if (diseaseId == null) {
-			if (other.diseaseId != null)
-				return false;
-		} else if (!diseaseId.equals(other.diseaseId))
-			return false;
-		if (evidences == null) {
-			if (other.evidences != null)
-				return false;
-		} else if (!evidences.equals(other.evidences))
-			return false;
-		if (reference == null) {
-			if (other.reference != null)
-				return false;
-		} else if (!reference.equals(other.reference))
-			return false;
-		return true;
-	}
-
-
-
+    private boolean isValidReference() {
+        return (getReference() != null && getReference().getId() != null && !getReference().getId().isEmpty()
+                && getReference().getDatabaseType() != DiseaseReferenceType.NONE);
+    }
 }

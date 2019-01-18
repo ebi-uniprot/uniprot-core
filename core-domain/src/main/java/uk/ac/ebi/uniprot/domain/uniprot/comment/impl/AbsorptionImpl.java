@@ -2,34 +2,38 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.AbsorptionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class AbsorptionImpl implements Absorption {
-
     private int max;
     private boolean approximate;
     private Note note;
     private List<Evidence> evidences;
 
-    public AbsorptionImpl(int max, Note note, List<Evidence> evidences) {
-        this(max, false, note, evidences);
-    }
-
     private AbsorptionImpl() {
         this.evidences = Collections.emptyList();
     }
 
-    public AbsorptionImpl(int max, boolean approximate, Note note, List<Evidence> evidences) {
-        this.max = max;
-        this.approximate = approximate;
-        this.note = note;
-        if ((evidences == null) || evidences.isEmpty()) {
+    public AbsorptionImpl(int max, Note note, List<Evidence> evidences) {
+        this(new AbsorptionBuilder()
+                     .max(max)
+                     .approximate(false)
+                     .note(note).evidences(evidences));
+    }
+
+    public AbsorptionImpl(AbsorptionBuilder builder) {
+        this.max = builder.getMax();
+        this.approximate = builder.isApproximate();
+        this.note = builder.getNote();
+        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
             this.evidences = Collections.emptyList();
         } else
-            this.evidences = Collections.unmodifiableList(evidences);
+            this.evidences = Collections.unmodifiableList(builder.getEvidences());
     }
 
     @Override
@@ -47,67 +51,24 @@ public class AbsorptionImpl implements Absorption {
         return note;
     }
 
-
     @Override
     public boolean isApproximate() {
         return this.approximate;
     }
 
     @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("\nCC       Absorption:\n");
-        sb.append("CC         Abs(max)=");
-        if (isApproximate()) {
-            sb.append("~");
-        }
-        sb.append(getMax());
-
-        sb.append(" nm;");
-
-        if ((getNote() != null) && getNote().isValid()) {
-            sb.append("\nCC         Note=").append(getNote().toString()).append(";");
-        }
-
-        return sb.toString();
-
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbsorptionImpl that = (AbsorptionImpl) o;
+        return max == that.max &&
+                approximate == that.approximate &&
+                Objects.equals(note, that.note) &&
+                Objects.equals(evidences, that.evidences);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (approximate ? 1231 : 1237);
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-        result = prime * result + max;
-        result = prime * result + ((note == null) ? 0 : note.hashCode());
-        return result;
+        return Objects.hash(max, approximate, note, evidences);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        AbsorptionImpl other = (AbsorptionImpl) obj;
-        if (approximate != other.approximate)
-            return false;
-        if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        if (max != other.max)
-            return false;
-        if (note == null) {
-            if (other.note != null)
-                return false;
-        } else if (!note.equals(other.note))
-            return false;
-        return true;
-    }
-
 }

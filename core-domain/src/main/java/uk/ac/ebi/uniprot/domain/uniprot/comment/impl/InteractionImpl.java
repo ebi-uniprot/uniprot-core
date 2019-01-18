@@ -4,11 +4,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
+
+import java.util.Objects;
 
 
 public class InteractionImpl implements Interaction {
-
     private InteractionType type;
     private UniProtAccession uniProtAccession;
     private String geneName;
@@ -20,24 +22,13 @@ public class InteractionImpl implements Interaction {
 
     }
 
-    public InteractionImpl(
-            InteractionType type,
-            UniProtAccession uniProtAccession,
-            String geneName,
-            int numberOfExperiments,
-            Interactor firstInteractor,
-            Interactor secondInteractor) {
-        this.type = type;
-        this.uniProtAccession = uniProtAccession;
-        this.geneName = geneName;
-        this.numberOfExperiments = numberOfExperiments;
-        this.firstInteractor = firstInteractor;
-        this.secondInteractor = secondInteractor;
-
-    }
-
-    public static Interactor createInteractor(String value) {
-        return new InteractorImpl(value);
+    public InteractionImpl(InteractionBuilder builder) {
+        this.type = builder.getType();
+        this.uniProtAccession = builder.getUniProtAccession();
+        this.geneName = builder.getGeneName();
+        this.numberOfExperiments = builder.getNumberOfExperiments();
+        this.firstInteractor = builder.getFirstInteractor();
+        this.secondInteractor = builder.getSecondInteractor();
     }
 
     @Override
@@ -71,56 +62,24 @@ public class InteractionImpl implements Interaction {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((firstInteractor == null) ? 0 : firstInteractor.hashCode());
-        result = prime * result + ((geneName == null) ? 0 : geneName.hashCode());
-        result = prime * result + numberOfExperiments;
-        result = prime * result + ((secondInteractor == null) ? 0 : secondInteractor.hashCode());
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        result = prime * result + ((uniProtAccession == null) ? 0 : uniProtAccession.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        InteractionImpl that = (InteractionImpl) o;
+        return numberOfExperiments == that.numberOfExperiments &&
+                type == that.type &&
+                Objects.equals(uniProtAccession, that.uniProtAccession) &&
+                Objects.equals(geneName, that.geneName) &&
+                Objects.equals(firstInteractor, that.firstInteractor) &&
+                Objects.equals(secondInteractor, that.secondInteractor);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        InteractionImpl other = (InteractionImpl) obj;
-        if (firstInteractor == null) {
-            if (other.firstInteractor != null)
-                return false;
-        } else if (!firstInteractor.equals(other.firstInteractor))
-            return false;
-        if (geneName == null) {
-            if (other.geneName != null)
-                return false;
-        } else if (!geneName.equals(other.geneName))
-            return false;
-        if (numberOfExperiments != other.numberOfExperiments)
-            return false;
-        if (secondInteractor == null) {
-            if (other.secondInteractor != null)
-                return false;
-        } else if (!secondInteractor.equals(other.secondInteractor))
-            return false;
-        if (type != other.type)
-            return false;
-        if (uniProtAccession == null) {
-            if (other.uniProtAccession != null)
-                return false;
-        } else if (!uniProtAccession.equals(other.uniProtAccession))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(type, uniProtAccession, geneName, numberOfExperiments, firstInteractor, secondInteractor);
     }
 
     public static class InteractorImpl extends ValueImpl implements Interactor {
-
         private InteractorImpl() {
             super(null);
         }

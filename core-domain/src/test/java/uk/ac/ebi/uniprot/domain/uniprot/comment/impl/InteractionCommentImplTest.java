@@ -15,30 +15,28 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class InteractionCommentImplTest {
-
     @Test
     void testInteractionCommentImpl() {
         List<Interaction> interactions = new ArrayList<>();
-        InteractionBuilder builder = InteractionBuilder.newInstance();
-        Interaction interaction = builder.interactionType(InteractionType.BINARY)
+        interactions.add(new InteractionBuilder()
+                .interactionType(InteractionType.BINARY)
                 .geneName("gn22")
                 .numberOfExperiments(3)
-                .firstInteractor(InteractionBuilder.createInteractor("first1"))
-                .secondInteractor(InteractionBuilder.createInteractor("first2"))
+                .firstInteractor("first1")
+                .secondInteractor("first2")
                 .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
-                .build();
-        interactions.add(interaction);
-        Interaction interaction2 = new InteractionImpl(InteractionType.SELF,
-                                                       null, "some gene name", 12,
-                                                       InteractionBuilder.createInteractor("first 1"),
-                                                       InteractionBuilder.createInteractor("second 2"));
-        interactions.add(interaction2);
+                .build());
+        interactions.add(new InteractionBuilder()
+                .interactionType(InteractionType.SELF)
+                .geneName("some gene name")
+                .numberOfExperiments(12)
+                .firstInteractor("first3")
+                .secondInteractor("first4")
+                .build());
 
         InteractionComment comment = new InteractionCommentImpl(interactions);
         assertEquals(interactions, comment.getInteractions());
         assertEquals(CommentType.INTERACTION, comment.getCommentType());
         TestHelper.verifyJson(comment);
-
     }
-
 }

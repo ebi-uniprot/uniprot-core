@@ -36,7 +36,8 @@ public enum CitationType implements EnumDisplay<CitationType> {
     }
 
     public static CitationType typeOf(String value) {
-        for (CitationType citationType : CitationType.values()) {
+        for (CitationType citationType : CitationType
+                .values()) {
 
             if (citationType.getValue().equals(value)) {
                 return citationType;

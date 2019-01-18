@@ -1,31 +1,29 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public final class CofactorCommentBuilder implements CommentBuilder<CofactorComment> {
+public final class CofactorCommentBuilder implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {
     private String molecule;
-    private List<Cofactor> cofactors;
+    private List<Cofactor> cofactors = new ArrayList<>();
     private Note note;
 
-    public static CofactorCommentBuilder newInstance() {
-        return new CofactorCommentBuilder();
-    }
-
-    public static Cofactor createCofactor(String name, DBCrossReference<CofactorReferenceType> reference, List<Evidence> evidences) {
-        return new CofactorImpl(name, reference, evidences);
-    }
-
     public CofactorComment build() {
-        return new CofactorCommentImpl(molecule, cofactors, note);
+        return new CofactorCommentImpl(this);
+    }
+
+    @Override
+    public CofactorCommentBuilder from(CofactorComment instance) {
+        cofactors.clear();
+        return this
+                .cofactors(instance.getCofactors())
+                .molecule(instance.getMolecule())
+                .note(instance.getNote());
     }
 
     public CofactorCommentBuilder molecule(String molecule) {
@@ -34,7 +32,7 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     }
 
     public CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
-        this.cofactors = cofactors;
+        this.cofactors.addAll(cofactors);
         return this;
     }
 
@@ -43,4 +41,15 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
         return this;
     }
 
+    public String getMolecule() {
+        return molecule;
+    }
+
+    public List<Cofactor> getCofactors() {
+        return cofactors;
+    }
+
+    public Note getNote() {
+        return note;
+    }
 }

@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain;
 
 // TODO: 11/01/19 this should be moved out into a higher level package structure
+
 /**
  * The contract for all builders to adhere to, and also implement a
  * {@code from} method to create a builder whose values are copied from a specified instance.
