@@ -16,6 +16,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
@@ -52,6 +53,10 @@ class ProteinDescriptionConverterTest {
 		System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, ProteinType.class, "protein"));
 		ProteinDescription converted = converter.fromXml(xmlObj);
 		assertEquals(description, converted);
+		List<DbReferenceType> dbReferences = converter.toXmlDbReferences(description);
+		dbReferences.forEach( val -> System.out.println(
+		UniProtXmlTestHelper.toXmlString(val, DbReferenceType.class, "dbReference"))
+		);
 	}
 
 	@Test

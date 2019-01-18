@@ -33,7 +33,7 @@ public class EvidencedValueConverter implements Converter<EvidencedStringType, E
 	public EvidencedValue fromXml(EvidencedStringType xmlObj) {
 		String value =xmlObj.getValue();
 		if(text2Xml) {
-			value = XmlTextHelper.removeIfPostfix(value, STOP);
+			value = XmlConverterHelper.removeIfPostfix(value, STOP);
 		}
 		List<Evidence> evidences = null;
 		if(! xmlObj.getEvidence().isEmpty()){
@@ -47,7 +47,7 @@ public class EvidencedValueConverter implements Converter<EvidencedStringType, E
 	public EvidencedStringType toXml(EvidencedValue uniObj) {
 		 EvidencedStringType textType = xmlUniprotFactory.createEvidencedStringType();
 		  if(this.text2Xml){
-			  textType.setValue(XmlTextHelper.addIfNoPostfix(uniObj.getValue(), STOP));       
+			  textType.setValue(XmlConverterHelper.addIfNoPostfix(uniObj.getValue(), STOP));       
 		  }else{
 			  textType.setValue(uniObj.getValue());       
 		  }

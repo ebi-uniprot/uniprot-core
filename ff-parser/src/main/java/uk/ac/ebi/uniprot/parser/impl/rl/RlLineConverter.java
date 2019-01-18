@@ -16,10 +16,10 @@ import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
 import uk.ac.ebi.uniprot.parser.Converter;
 
-public class RlLineConverter implements Converter<RlLineObject, AbstractCitationBuilder< Citation>> {
+public class RlLineConverter implements Converter<RlLineObject, AbstractCitationBuilder<? extends AbstractCitationBuilder<?,?>,? extends Citation>> {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
-	public AbstractCitationBuilder< Citation> convert(RlLineObject f) {
+	public AbstractCitationBuilder<? extends AbstractCitationBuilder<?,?>,? extends Citation> convert(RlLineObject f) {
 		if(f.reference instanceof RlLineObject.JournalArticle){
 			return (AbstractCitationBuilder) convert((RlLineObject.JournalArticle) f.reference);
 		}else if(f.reference instanceof RlLineObject.Book){

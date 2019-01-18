@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.impl.SubmissionImpl;
 
-public final class SubmissionBuilder extends AbstractCitationBuilder<Submission> {
+public final class SubmissionBuilder extends AbstractCitationBuilder<SubmissionBuilder, Submission> {
     private SubmissionDatabase submissionDb;
 
     public static SubmissionBuilder newInstance() {
@@ -21,5 +21,10 @@ public final class SubmissionBuilder extends AbstractCitationBuilder<Submission>
         this.submissionDb = submissionDb;
         return this;
     }
+
+	@Override
+	protected SubmissionBuilder getThis() {
+		return this;
+	}
 
 }

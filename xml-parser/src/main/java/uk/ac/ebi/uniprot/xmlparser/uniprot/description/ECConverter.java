@@ -5,6 +5,7 @@ import java.util.List;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
@@ -38,6 +39,19 @@ public class ECConverter implements Converter<EvidencedStringType, EC> {
 				evStrType.getEvidence().addAll(ev);
 		}
 		return evStrType;
+	}
+	public DbReferenceType toXmlDbReference(EC uniObj) {
+		DbReferenceType xmlDbRef = xmlUniprotFactory.createDbReferenceType();
+
+        xmlDbRef.setId(uniObj.getValue());
+        xmlDbRef.setType("EC");
+
+        if (!uniObj.getEvidences().isEmpty()) {
+			List<Integer> ev = evRefMapper.writeEvidences(uniObj.getEvidences());
+			if (!ev.isEmpty())
+				xmlDbRef.getEvidence().addAll(ev);
+		}
+        return xmlDbRef;
 	}
 
 }

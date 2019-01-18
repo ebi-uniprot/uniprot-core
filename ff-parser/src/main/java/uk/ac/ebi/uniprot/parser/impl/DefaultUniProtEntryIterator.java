@@ -20,10 +20,8 @@ import com.google.common.util.concurrent.Uninterruptibles;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.parser.EntryReader;
 import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
+import uk.ac.ebi.uniprot.parser.UniProtParser;
 import uk.ac.ebi.uniprot.parser.UniProtParserException;
-import uk.ac.ebi.uniprot.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
 
 /**
  * Created by wudong on 15/04/2014.
@@ -132,17 +130,16 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 		private final BlockingQueue<UniProtEntry> queue;
 		private final CountDownLatch countDown;
 		private final AtomicBoolean not_finished = new AtomicBoolean(false);
-		private UniprotLineParser<EntryObject> parser;
-		private EntryObjectConverter converter;
+		private UniProtParser parser;
+	//	private UniprotLineParser<EntryObject> parser;
+	//	private EntryObjectConverter converter;
 
 		public ParsingTask(BlockingQueue<String> ffQueue, BlockingQueue<UniProtEntry> queue, CountDownLatch countDown) {
 			this.ffQueue = ffQueue;
 			this.queue = queue;
 			this.countDown = countDown;
-
-			this.parser = new DefaultUniprotLineParserFactory().createEntryParser();
-			this.converter = new EntryObjectConverter(keywordFile, diseaseFile, accessionGoPubmedFile, false);
-		}
+			this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, false);
+				}
 
 		public void finish() {
 			not_finished.compareAndSet(false, true);
@@ -162,8 +159,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
 				if (poll != null) {
 					try {
-						EntryObject parse = parser.parse(poll);
-						UniProtEntry convert = converter.convert(parse);
+						UniProtEntry convert = parser.parse(poll);
 						// using put to block current thread if wait is necessary.
 						queue.put(convert);
 						counter++;

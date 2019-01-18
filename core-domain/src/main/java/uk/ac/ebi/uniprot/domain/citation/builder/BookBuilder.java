@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Book;
 import uk.ac.ebi.uniprot.domain.citation.impl.BookImpl;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public final class BookBuilder extends AbstractCitationBuilder<Book> {
+public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book> {
     private String bookName;
     private List<Author> editors = new ArrayList<>();
     private String firstPage = "";
@@ -61,5 +61,10 @@ public final class BookBuilder extends AbstractCitationBuilder<Book> {
         this.address = address;
         return this;
     }
+
+	@Override
+	protected BookBuilder getThis() {
+		return this;
+	}
 
 }

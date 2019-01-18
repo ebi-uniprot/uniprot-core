@@ -7,13 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 public final class EvidenceIndexMapper {
 	private Map<Evidence, Integer> evidenceToIndexMap = new HashMap<>();
-	private Map<Integer, Evidence> indexToEvidenceMap = new HashMap<>();
+	private Map<Integer, Evidence> indexToEvidenceMap = new TreeMap<>();
 	private final Comparator<Integer> comparator = (o1, o2) -> o1.compareTo(o2);
 
 	public EvidenceIndexMapper() {
@@ -37,7 +38,9 @@ public final class EvidenceIndexMapper {
 			index++;
 		}
 	}
-
+	public Map<Integer, Evidence>  getIndexToEvidenceMap(){
+		return indexToEvidenceMap;
+	}
 	public void reset(Map<Evidence, Integer> evidences) {
 		this.evidenceToIndexMap.clear();
 		this.indexToEvidenceMap.clear();

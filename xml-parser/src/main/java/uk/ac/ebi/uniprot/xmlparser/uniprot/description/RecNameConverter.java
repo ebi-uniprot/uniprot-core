@@ -1,14 +1,17 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
+import java.util.List;
+
 import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.RecommendedName;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 
-public class RecNameConverter implements Converter<RecommendedName, ProteinName> {
+public class RecNameConverter implements Converter<RecommendedName, ProteinName>,ToXmlDbReferences<ProteinName> {
 	private final NameConverter nameConverter;
 	private final ECConverter ecConverter;
 	private final ObjectFactory xmlUniprotFactory;
@@ -40,5 +43,9 @@ public class RecNameConverter implements Converter<RecommendedName, ProteinName>
 		uniObj.getEcNumbers().forEach(val -> recName.getEcNumber().add(ecConverter.toXml(val)));
 		return recName;
 	}
-
+	
+	public List<DbReferenceType> toXmlDbReferences(ProteinName uniObj) {
+		return uniObj.getEcNumbers().stream().map(ecConverter::toXmlDbReference)
+		.collect(Collectors.toList());
+	}
 }

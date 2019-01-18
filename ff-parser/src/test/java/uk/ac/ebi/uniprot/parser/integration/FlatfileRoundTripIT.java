@@ -4,7 +4,7 @@ import org.jboss.logging.Logger;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
-import uk.ac.ebi.uniprot.parser.UniProtParser;
+import uk.ac.ebi.uniprot.parser.UniProtParserHelper;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.UniProtFlatfileWriter;
@@ -210,7 +210,7 @@ public class FlatfileRoundTripIT {
 
 	public String testEntry(String entryText, String prevEntry, Writer writer, Writer writer2, Writer writer3) {
 		try {
-			UniProtEntry entry = UniProtParser.parse(entryText, true);
+			UniProtEntry entry = UniProtParserHelper.parse(entryText, true);
 			assertNotNull(entry);
 			String currentAcc = entry.getPrimaryAccession().getValue();
 			if (currentAcc.equals("A8G1C8"))

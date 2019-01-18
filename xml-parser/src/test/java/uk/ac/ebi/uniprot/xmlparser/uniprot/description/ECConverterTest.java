@@ -14,7 +14,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType.Conflict;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
 
 class ECConverterTest {
 
@@ -33,6 +36,8 @@ class ECConverterTest {
 		assertEquals(Arrays.asList(1, 2), xmlObj.getEvidence());
 		EC converted = converter.fromXml(xmlObj);
 		assertEquals(ecObj, converted);
+		DbReferenceType dbReference = converter.toXmlDbReference(ecObj);
+		 System.out.println(UniProtXmlTestHelper.toXmlString(dbReference, DbReferenceType.class, "dbReference"));
 	}
 
 }

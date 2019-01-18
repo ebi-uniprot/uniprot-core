@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl.LocatorImpl;
 
 
-public final class ElectronicArticleBuilder extends AbstractCitationBuilder<ElectronicArticle> {
+public final class ElectronicArticleBuilder extends AbstractCitationBuilder<ElectronicArticleBuilder, ElectronicArticle> {
     private String journalName;
     private Locator locator;
 
@@ -33,6 +33,11 @@ public final class ElectronicArticleBuilder extends AbstractCitationBuilder<Elec
         this.locator = createLocator(locator);
         return this;
     }
+
+	@Override
+	protected ElectronicArticleBuilder getThis() {
+		return this;
+	}
 
 
 }

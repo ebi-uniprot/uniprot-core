@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 import uk.ac.ebi.uniprot.domain.citation.Thesis;
 import uk.ac.ebi.uniprot.domain.citation.impl.ThesisImpl;
 
-public final class ThesisBuilder extends AbstractCitationBuilder<Thesis> {
+public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, Thesis> {
 
     private String institute;
     private String address;
@@ -26,5 +26,10 @@ public final class ThesisBuilder extends AbstractCitationBuilder<Thesis> {
         this.address = address;
         return this;
     }
+
+	@Override
+	protected ThesisBuilder getThis() {
+		return this;
+	}
 
 }

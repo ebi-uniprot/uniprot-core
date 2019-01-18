@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.impl.JournalArticleImpl;
 
-public final class JournalArticleBuilder extends AbstractCitationBuilder<JournalArticle> {
+public final class JournalArticleBuilder extends AbstractCitationBuilder<JournalArticleBuilder, JournalArticle> {
 
     private String journalName;
     private String firstPage = "";
@@ -14,7 +14,6 @@ public final class JournalArticleBuilder extends AbstractCitationBuilder<Journal
         return new JournalArticleBuilder();
     }
 
-    @Override
     public JournalArticle build() {
         return new JournalArticleImpl(authoringGroups, authors,
                                       xrefs, title, publicationDate,
@@ -41,6 +40,11 @@ public final class JournalArticleBuilder extends AbstractCitationBuilder<Journal
         this.volume = volume;
         return this;
     }
+
+	@Override
+	protected JournalArticleBuilder getThis() {
+		return this;
+	}
 
 
 }

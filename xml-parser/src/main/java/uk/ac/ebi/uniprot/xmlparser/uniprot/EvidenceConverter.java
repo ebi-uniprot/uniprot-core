@@ -13,9 +13,18 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SourceType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 
 public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
-	private final ObjectFactory xmlUniprotFactory = new ObjectFactory();
-	private final EvidenceXrefConverter xrefConverter = new EvidenceXrefConverter();
+	private final ObjectFactory xmlUniprotFactory ;
+	private final EvidenceXrefConverter xrefConverter ;
 
+	public EvidenceConverter() {
+		this(new ObjectFactory());
+	}
+	public EvidenceConverter(ObjectFactory xmlUniprotFactory) {
+		this.xmlUniprotFactory = xmlUniprotFactory;
+		this.xrefConverter =new EvidenceXrefConverter(xmlUniprotFactory);
+		
+	}
+	
 	@Override
 	public Evidence fromXml(EvidenceType xmlObj) {
 		EvidenceCode evCode = EvidenceCode.codeOf(xmlObj.getType());

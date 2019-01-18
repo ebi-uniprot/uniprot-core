@@ -25,7 +25,7 @@ public class AbstractCitationBuilderTest {
         TestHelper.verifyJson(pubDate);
     }
 
-    void buildCitationParameters(AbstractCitationBuilder<?> builder) {
+    void buildCitationParameters(AbstractCitationBuilder<? extends AbstractCitationBuilder<?,?>,? extends Citation> builder) {
         String title = "Some title";
         builder.title(title).publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"))
                 .authoringGroups(Arrays.asList("T1", "T2"))
