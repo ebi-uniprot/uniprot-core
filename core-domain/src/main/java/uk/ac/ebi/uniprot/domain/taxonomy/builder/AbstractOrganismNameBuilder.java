@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.builder;
 
+import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B,T>,T extends OrganismName> {
+public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B,T>,T extends OrganismName>
+        implements Builder2<B,T> {
 
     private String scientificName = "";
     private String commonName = "";
@@ -45,7 +47,9 @@ public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismName
         return synonyms;
     }
 
+    @Override
     public B from(OrganismName organismName){
+        synonyms.clear();
         this.scientificName = organismName.getScientificName();
         this.commonName = organismName.getCommonName();
         if(organismName.getSynonyms() != null){

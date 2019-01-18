@@ -11,6 +11,7 @@ public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
 
     SWISSPROT("Swiss-Prot"),
     TREMBL("TrEMBL"),
+    INACTIVE("Inactive"),
     UNKNOWN("UNKNOWN");
 
     private String value;

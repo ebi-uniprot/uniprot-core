@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
@@ -110,7 +111,12 @@ public enum UniProtFactory {
     public UniProtEntry createInactiveEntry(UniProtAccession primaryAccession,
                                             UniProtId uniProtId,
                                             EntryInactiveReason inactiveReason) {
-        return new UniProtEntryImpl(primaryAccession, uniProtId, inactiveReason);
+        return new UniProtEntryBuilder()
+                .primaryAccession(primaryAccession)
+                .uniProtId(uniProtId)
+                .inactive()
+                .inactiveReason(inactiveReason)
+                .build();
     }
 
 //    public <T extends DatabaseType> DBCrossReference<T> createDBCrossReference(T databaseType, String id) {

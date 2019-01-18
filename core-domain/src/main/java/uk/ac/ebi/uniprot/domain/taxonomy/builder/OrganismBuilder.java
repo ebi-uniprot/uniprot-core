@@ -50,6 +50,8 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
 
 
     public OrganismBuilder from(Organism instance) {
+        evidences.clear();
+        lineage.clear();
         this.taxonId(instance.getTaxonId());
         this.evidences(instance.getEvidences());
         this.scientificName(instance.getScientificName());
