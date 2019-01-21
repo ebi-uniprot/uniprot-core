@@ -35,13 +35,13 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         super(CitationType.BOOK, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
               builder.getTitle(), builder.getPublicationDate());
         this.bookName = builder.getBookName();
-        this.editors = Utils.unmodifierList(editors);
+        this.editors = Utils.unmodifierList(builder.getEditors());
 
-        this.firstPage = Utils.resetNull(firstPage);
-        this.lastPage = Utils.resetNull(lastPage);
-        this.volume = Utils.resetNull(volume);
-        this.publisher = Utils.resetNull(publisher);
-        this.address = Utils.resetNull(address);
+        this.firstPage = Utils.resetNull(builder.getFirstPage());
+        this.lastPage = Utils.resetNull(builder.getLastPage());
+        this.volume = Utils.resetNull(builder.getVolume());
+        this.publisher = Utils.resetNull(builder.getPublisher());
+        this.address = Utils.resetNull(builder.getAddress());
     }
 
     @Override

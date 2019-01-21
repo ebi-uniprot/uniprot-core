@@ -4,13 +4,6 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
@@ -261,73 +254,6 @@ public class UniProtEntryBuilderTest {
 //        TestHelper.verifyJson(entry);
 //
 //    }
-
-    @Test
-    public void testSetUniProtReferences() {
-        UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
-        UniProtEntry entry = builder
-                .build();
-        assertNotNull(entry.getReferences());
-        assertTrue(entry.getReferences().isEmpty());
-        List<UniProtReference> uniReferences = createUniProtReferences();
-
-        builder = UniProtEntryBuilder.newInstance();
-        entry = builder
-                .references(uniReferences)
-                .build();
-        assertNotNull(entry.getReferences());
-        assertEquals(2, entry.getReferences().size());
-        assertEquals(1, entry.getReferencesByType(CitationType.JOURNAL_ARTICLE).size());
-        assertEquals(1, entry.getReferencesByType(CitationType.SUBMISSION).size());
-        assertEquals(0, entry.getReferencesByType(CitationType.BOOK).size());
-        assertEquals(uniReferences, entry.getReferences());
-        TestHelper.verifyJson(entry);
-
-    }
-
-    @Test
-    public void testSetGenes() {
-        UniProtEntryBuilder builder = UniProtEntryBuilder.newInstance();
-        UniProtEntry entry = builder
-                .build();
-        assertTrue(entry.getGenes().isEmpty());
-        GeneFactory geneFactory = UniProtFactory.INSTANCE.getGeneFactory();
-        String val = "someGene";
-        List<Evidence> evidences = Arrays.asList(new Evidence[]{
-                createEvidence("ECO:0000256|PIRNR:PIRNR001361")
-        });
-        GeneName geneName = geneFactory.createGeneName(val, evidences);
-        List<GeneNameSynonym> synonyms = new ArrayList<>();
-
-        List<OrderedLocusName> olnNames = new ArrayList<>();
-
-        List<ORFName> orfNames = new ArrayList<>();
-        Gene gene1 = geneFactory.createGene(geneName, synonyms, olnNames, orfNames);
-
-        List<GeneNameSynonym> synonyms2 = new ArrayList<>();
-        List<OrderedLocusName> olnNames2 = new ArrayList<>();
-        String val2 = "someSyn";
-        List<Evidence> evidences2 = Arrays.asList(new Evidence[]{
-                createEvidence("ECO:0000256|PIRNR:PIRNR001361"),
-                createEvidence("ECO:0000269|PubMed:11389730")
-        });
-        OrderedLocusName olnName = geneFactory.createOrderedLocusName(val2, evidences2);
-        olnNames2.add(olnName);
-        List<ORFName> orfNames2 = new ArrayList<>();
-
-        Gene gene2 = geneFactory.createGene(null, synonyms2, olnNames2, orfNames2);
-        List<Gene> genes = new ArrayList<>();
-        genes.add(gene1);
-        genes.add(gene2);
-        builder = UniProtEntryBuilder.newInstance();
-        entry = builder
-                .genes(genes)
-                .build();
-        assertEquals(2, entry.getGenes().size());
-        assertEquals(gene1, entry.getGenes().get(0));
-        TestHelper.verifyJson(entry);
-
-    }
 
     @Test
     public void testSetOrganism() {
@@ -627,31 +553,6 @@ public class UniProtEntryBuilderTest {
         return evidencedValues;
     }
 
-    private List<UniProtReference> createUniProtReferences() {
-        UniProtReferenceFactory factory = UniProtFactory.INSTANCE.getUniProtReferenceFactory();
-        List<UniProtReference> references = new ArrayList<>();
-        List<Evidence> evidences = createEvidences();
-        List<String> referencePositions =
-                Arrays.asList("Some position");
-        Submission submission =
-                new SubmissionBuilder()
-                        .submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
-                        .build();
-        UniProtReference subReference = factory.createUniProtReference(submission,
-                                                                       referencePositions, null, evidences);
-
-        JournalArticle ja =
-                new JournalArticleBuilder()
-                        .journalName("some name")
-                        .title("some title")
-                        .build();
-
-        UniProtReference jaReference = factory.createUniProtReference(ja,
-                                                                      referencePositions, null, evidences);
-        references.add(subReference);
-        references.add(jaReference);
-        return references;
-    }
 
     private Evidence createEvidence(String evidenceStr) {
         return UniProtFactory.INSTANCE.createEvidence(evidenceStr);

@@ -17,10 +17,6 @@ import java.util.List;
 public enum UniProtFactory {
     INSTANCE;
 
-    public GeneFactory getGeneFactory() {
-        return GeneFactory.INSTANCE;
-    }
-
     public ProteinDescriptionFactory getProteinDescriptionFactory() {
         return ProteinDescriptionFactory.INSTANCE;
     }
@@ -35,10 +31,6 @@ public enum UniProtFactory {
 
     public FeatureFactory getFeatureFactory() {
         return FeatureFactory.INSTANCE;
-    }
-
-    public UniProtReferenceFactory getUniProtReferenceFactory() {
-        return UniProtReferenceFactory.INSTANCE;
     }
 
     public EvidencedValue createEvidencedValue(String value, List<Evidence> evidences) {

@@ -20,7 +20,7 @@ public class EvidencedValueBuilder extends AbstractEvidencedValueBuilder<Evidenc
     }
 
     @Override
-    protected EvidencedValue createConcreteInstance() {
+    public EvidencedValue build() {
         return new EvidencedValueImpl(value, evidences);
     }
 

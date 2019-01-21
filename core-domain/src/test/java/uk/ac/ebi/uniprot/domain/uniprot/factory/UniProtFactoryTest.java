@@ -13,11 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class UniProtFactoryTest {
-    @Test
-    public void testGetGeneFactory() {
-        GeneFactory componentFactory = UniProtFactory.INSTANCE.getGeneFactory();
-        assertNotNull(componentFactory);
-    }
+
 
     @Test
     public void testGetProteinDescriptionFactory() {
@@ -43,11 +39,7 @@ public class UniProtFactoryTest {
         assertNotNull(componentFactory);
     }
 
-    @Test
-    public void testGetUniProtReferenceFactory() {
-        UniProtReferenceFactory componentFactory = UniProtFactory.INSTANCE.getUniProtReferenceFactory();
-        assertNotNull(componentFactory);
-    }
+
 
     @Test
     public void testCreateEvidencedValue() {

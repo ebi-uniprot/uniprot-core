@@ -14,7 +14,7 @@ public class ReferenceCommentBuilder extends AbstractEvidencedValueBuilder<Refer
     private ReferenceCommentType type;
 
     @Override
-    protected ReferenceComment createConcreteInstance() {
+    public ReferenceComment build() {
         return new ReferenceCommentImpl(type, value, evidences);
     }
 

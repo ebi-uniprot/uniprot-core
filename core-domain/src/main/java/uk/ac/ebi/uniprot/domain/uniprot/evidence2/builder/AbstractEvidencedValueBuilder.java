@@ -17,11 +17,6 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     protected List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public E build() {
-        return createConcreteInstance();
-    }
-
-    @Override
     public B from(E instance) {
         evidences.clear();
         return this
@@ -51,8 +46,6 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     public List<Evidence> getEvidences() {
         return evidences;
     }
-
-    protected abstract E createConcreteInstance();
 
     protected abstract B getThis();
 }
