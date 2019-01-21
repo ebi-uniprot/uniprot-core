@@ -17,8 +17,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class AbstractEvidencedValueBuilderTest {
 
 
-    private static final String DB_ID_1 = "dbId1";
-    private static final String DB_NAME_1 = "database Name 1";
+    private static final String DB_ID_1 = "PIR_ID";
+    private static final String DB_NAME_1 = "PIR";
     private static final String VALUE_1 = "the value 1";
     private static final Evidence EVIDENCE_1 = new EvidenceBuilder()
             .evidenceCode(EvidenceCode.ECO_0000213)
@@ -26,8 +26,8 @@ public class AbstractEvidencedValueBuilderTest {
             .databaseName(DB_NAME_1)
             .build();
 
-    private static final String DB_ID_2 = "dbId2";
-    private static final String DB_NAME_2 = "database Name 2";
+    private static final String DB_ID_2 = "PDB_ID";
+    private static final String DB_NAME_2 = "PDB";
     private static final String VALUE_2 = "the value 2";
     private static final Evidence EVIDENCE_2 = new EvidenceBuilder()
             .evidenceCode(EvidenceCode.ECO_0000213)
