@@ -27,7 +27,7 @@ public class UnpublishedTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(citation);
         assertNotNull(jsonNode.get("citationType"));
-        assertEquals("unpublished", jsonNode.get("citationType").asText());
+        assertEquals("unpublished observations", jsonNode.get("citationType").asText());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class UnpublishedTest {
         CitationUtil.validateCitation(jsonNode);
 
         assertNotNull(jsonNode.get("citationType"));
-        assertEquals("unpublished", jsonNode.get("citationType").asText());
+        assertEquals("unpublished observations", jsonNode.get("citationType").asText());
 
     }
 

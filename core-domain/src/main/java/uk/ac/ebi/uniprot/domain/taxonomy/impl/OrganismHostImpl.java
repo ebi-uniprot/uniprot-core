@@ -14,6 +14,10 @@ public class OrganismHostImpl extends AbstractOrganismNameImpl implements Organi
     private static final long serialVersionUID = 6516703868320522667L;
     private long taxonId;
 
+    private OrganismHostImpl(){
+        this(new OrganismHostBuilder());
+    }
+
     public OrganismHostImpl(OrganismHostBuilder builder){
         super(builder);
         this.taxonId = builder.getTaxonId();

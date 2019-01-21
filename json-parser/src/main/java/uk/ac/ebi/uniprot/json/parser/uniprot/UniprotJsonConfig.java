@@ -22,8 +22,10 @@ import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.DefaultDatabaseType;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.*;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.*;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismHostImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.*;
@@ -91,13 +93,8 @@ public class UniprotJsonConfig implements JsonConfig {
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(EntryAudit.class, EntryAuditImpl.class);
 
-        mod.addAbstractTypeMapping(UniProtTaxonId.class,UniProtTaxonIdImpl.class);
-        mod.addAbstractTypeMapping(TaxonNode.class, TaxonNodeImpl.class);
-        mod.addAbstractTypeMapping(Taxon.class, TaxonImpl.class);
-        mod.addAbstractTypeMapping(TaxonName.class, TaxonNameImpl.class);
-
         mod.addAbstractTypeMapping(Organism.class, OrganismImpl.class);
-        mod.addAbstractTypeMapping(OrganismName.class, OrganismNameImpl.class);
+        mod.addAbstractTypeMapping(OrganismHost.class, OrganismHostImpl.class);
 
         mod.addAbstractTypeMapping(ProteinDescription.class, ProteinDescriptionImpl.class);
         mod.addAbstractTypeMapping(ProteinName.class, ProteinNameImpl.class);

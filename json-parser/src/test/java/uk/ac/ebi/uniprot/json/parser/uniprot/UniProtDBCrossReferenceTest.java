@@ -52,6 +52,10 @@ public class UniProtDBCrossReferenceTest {
         assertNotNull(jsonNode.get("isoformId"));
         assertEquals("Q9NXB0-1",jsonNode.get("isoformId").asText());
 
+        assertNotNull(jsonNode.get("evidences"));
+        assertEquals(1,jsonNode.get("evidences").size());
+        ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000269","PubMed","11389730");
+
         assertNotNull(jsonNode.get("properties"));
         assertEquals(2,jsonNode.get("properties").size());
 
@@ -76,6 +80,7 @@ public class UniProtDBCrossReferenceTest {
                 "description value",
                 "third value",
                 "fourth value",
-                "Q9NXB0-1");
+                "Q9NXB0-1",
+        CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730"));
     }
 }
