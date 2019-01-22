@@ -2,15 +2,15 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 
 import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDbType> implements UniProtDBCrossReference {
@@ -21,7 +21,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     private List<Evidence> evidences;
 
     private UniProtDBCrossReferenceImpl() {
-        super(new DBCrossReferenceBuilder<>());
+        super(null, "", Collections.emptyList());
         evidences = Collections.emptyList();
     }
 
@@ -30,10 +30,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId, List<Evidence> evidences) {
-        super(new DBCrossReferenceBuilder<UniProtXDbType>()
-                      .databaseType(database)
-                      .id(id)
-                      .properties(properties));
+        super(database, id, properties);
         this.isoformId = isoformId;
         this.evidences = Utils.unmodifierList(evidences);
     }
@@ -47,7 +44,6 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         return evidences;
     }
 
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -58,7 +54,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         } else {
             sb.append(
                     this.getProperties().stream()
-                            .map(val -> val.getValue())
+                            .map(Property::getValue)
                             .collect(Collectors.joining(SEMICOLON)));
         }
         sb.append(".");
@@ -70,28 +66,18 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((isoformId == null) ? 0 : isoformId.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        UniProtDBCrossReferenceImpl that = (UniProtDBCrossReferenceImpl) o;
+        return Objects.equals(isoformId, that.isoformId) &&
+                Objects.equals(evidences, that.evidences);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UniProtDBCrossReferenceImpl other = (UniProtDBCrossReferenceImpl) obj;
-        if (isoformId == null) {
-            if (other.isoformId != null)
-                return false;
-        } else if (!isoformId.equals(other.isoformId))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), isoformId, evidences);
     }
 
     private String getDatabaseName() {
