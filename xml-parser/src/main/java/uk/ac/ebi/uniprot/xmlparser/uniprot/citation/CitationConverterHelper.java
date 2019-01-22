@@ -23,7 +23,7 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PersonType;
 
 public class CitationConverterHelper {
 	public static <T extends Citation> void updateFromXmlCitaiton(CitationType xmlCitation,
-			AbstractCitationBuilder<T> builder) {
+			AbstractCitationBuilder<? extends AbstractCitationBuilder<?,?>,? extends Citation> builder) {
 		if (!xmlCitation.getDbReference().isEmpty()) {
 			builder.citationXrefs(
 					xmlCitation.getDbReference().stream().map(val -> fromXml(val)).collect(Collectors.toList()));

@@ -10,6 +10,7 @@ import javax.xml.namespace.QName;
 
 public class UniProtXmlTestHelper {
 	public static final String TARGET_PACKAGE ="uk.ac.ebi.uniprot.xml.jaxb.uniprot";
+	@SuppressWarnings("unchecked")
 	public static <T>  String toXmlString(T obj, Class<T>  clazz, String element) {
 		 try {
 	            StringWriter stringWriter = new StringWriter();
@@ -17,7 +18,8 @@ public class UniProtXmlTestHelper {
 	            Marshaller marshaller = jc.createMarshaller();
 	            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 	            marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
-	            JAXBElement jbe = new JAXBElement(new QName("http://uniprot.org/uniprot", element),
+	            @SuppressWarnings("rawtypes")
+				JAXBElement jbe = new JAXBElement(new QName("http://uniprot.org/uniprot", element),
 	                    clazz, obj);
 	            marshaller.marshal(jbe, stringWriter);
 	            stringWriter.close();

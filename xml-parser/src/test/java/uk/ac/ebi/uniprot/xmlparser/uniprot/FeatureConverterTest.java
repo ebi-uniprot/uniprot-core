@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -188,6 +189,28 @@ class FeatureConverterTest {
 		Feature converted = converter.fromXml(xmlObj);
 		assertEquals(feature, converted);
 	}
+	
+	@Test
+	void testConflict2() {
+	//	FT   CONFLICT    658    658       C -> S (in Ref. 2; AAI71654).
+	//	FT                                {ECO:0000305}.
+		
+		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+		FeatureConverter converter = new FeatureConverter(evRefMapper);
+		AlternativeSequence altSeq = FeatureFactory.INSTANCE.createAlternativeSequence("C", Arrays.asList("S"));
+		String description = "in Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724";
+		String description2 = "In Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724.";
+		String ftid = "";
+
+		Feature feature = createFeature(FeatureType.CONFLICT, 658, 658, description, ftid, altSeq);
+		uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+		System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj,
+				uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType.class, "feature"));
+		verify(xmlObj, 658, 658, description2, null, "C", Arrays.asList(1, 2));
+		Feature converted = converter.fromXml(xmlObj);
+		assertEquals(feature, converted);
+	}
+	
 	@Test
 	void testMUTAGEN() {
 	//FT   MUTAGEN     188    188       G->R: In hot2-1; reduced tolerance to
@@ -235,6 +258,29 @@ class FeatureConverterTest {
 		assertEquals(feature, converted);
 	}
 	
+	@Test
+	void testConflictDescription() {
+		String description = "in Ref. 2; AAI71654";
+		List<Integer> result =FeatureConverter.extractConflictReference(description);
+		List<Integer> expected = Arrays.asList(2);
+		assertEquals(result, expected );
+		description ="in Ref. 4; BAC42427 and 5; AAO64895";
+		result =FeatureConverter.extractConflictReference(description);
+		assertEquals(result, Arrays.asList(4, 5));
+		
+		description ="Missing (in Ref. 2; DAA06033, 3; CAM19021 and 4; AAI00306)";
+		result =FeatureConverter.extractConflictReference(description);
+		assertEquals(result, Arrays.asList(2, 3, 4));
+		
+		description ="Missing (in Ref. 1; AAZ04665 and 2; BAC33489/BAE29479/BAE29537/BAE41744/BAE34065)";
+		result =FeatureConverter.extractConflictReference(description);
+		assertEquals(result, Arrays.asList(1, 2));
+		description ="In Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724";
+		result =FeatureConverter.extractConflictReference(description);
+		assertEquals(result, Arrays.asList(1, 3, 4));
+		
+		
+	}
 	
 	private Feature createFeature(FeatureType type, int start, int end, String description, String ftid,
 			AlternativeSequence altSeq) {

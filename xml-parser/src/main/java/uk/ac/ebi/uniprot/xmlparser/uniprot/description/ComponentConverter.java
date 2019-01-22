@@ -1,14 +1,17 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.Component;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 
-public class ComponentConverter implements Converter<Component, ProteinSection> {
+public class ComponentConverter implements Converter<Component, ProteinSection> ,ToXmlDbReferences<ProteinSection> {
 	private final RecNameConverter recNameConverter;
 	private final AltNameConverter altNameConverter;
 	private final ObjectFactory xmlUniprotFactory;
@@ -39,6 +42,20 @@ public class ComponentConverter implements Converter<Component, ProteinSection> 
 		uniObj.getAlternativeNames().forEach(val -> component.getAlternativeName().add(altNameConverter.toXml(val)));		
 		return component;
 
+	}
+	@Override
+	public List<DbReferenceType> toXmlDbReferences(ProteinSection t) {
+		List<DbReferenceType> result = new ArrayList<>();
+		result.addAll(recNameConverter.toXmlDbReferences(t.getRecommendedName()));
+		t.getAlternativeNames().forEach(val -> {
+			altNameConverter.toXmlDbReferences(val)
+			.forEach(dbType -> {
+				if(!result.contains(dbType)) {
+					result.add(dbType);
+				}
+			});	
+		});
+		return result;
 	}
 
 }

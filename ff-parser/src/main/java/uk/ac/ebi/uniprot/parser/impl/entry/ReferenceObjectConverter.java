@@ -34,7 +34,7 @@ public class ReferenceObjectConverter extends EvidenceCollector implements Conve
 	
 	@Override
 	public UniProtReference convert(ReferenceObject f) {
-		AbstractCitationBuilder<Citation> builder = rlLineConverter.convert(f.rl);
+		AbstractCitationBuilder<? extends AbstractCitationBuilder<?,?>,? extends Citation> builder = rlLineConverter.convert(f.rl);
 		if(f.ra !=null){
 			List<Author> authors =raLineConverter.convert(f.ra);
 			builder.authors(authors);

@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public enum UniProtDBCrossReferenceFactory {
@@ -31,6 +32,14 @@ public enum UniProtDBCrossReferenceFactory {
     public UniProtDBCrossReference createUniProtDBCrossReference(String databaseName,
                                                                  String id, String description, String thirdAttribute,
                                                                  String fourthAttribute, String isoformId) {
+
+        return createUniProtDBCrossReference(databaseName, id, description, thirdAttribute, fourthAttribute,
+                isoformId, Collections.emptyList());
+    }
+
+    public UniProtDBCrossReference createUniProtDBCrossReference(String databaseName, String id, String description,
+                                                                 String thirdAttribute, String fourthAttribute,
+                                                                 String isoformId,List<Evidence> evidences) {
         UniProtXDbType opType = new UniProtXDbType(databaseName);
         List<Property> properties = new ArrayList<>();
 
@@ -41,7 +50,7 @@ public enum UniProtDBCrossReferenceFactory {
         addProperty(properties, attributes, 2, fourthAttribute);
 
         return new UniProtDBCrossReferenceImpl(opType,
-                                               id, properties, isoformId);
+                id, properties, isoformId,evidences);
     }
     
     public UniProtDBCrossReference createUniProtDBCrossReference(UniProtXDbType database, String id, 

@@ -19,14 +19,14 @@ import com.google.common.io.Resources;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
-import uk.ac.ebi.uniprot.parser.UniProtParser;
+import uk.ac.ebi.uniprot.parser.UniProtParserHelper;
 
 public class UniProtParserIT {
 	@Test
 	public void testParse() {
 		String filename = "/entryIT/Q32K04.dat";
 		String entryStr = readEntryFromFile(filename);
-		UniProtEntry entry =UniProtParser.parse(entryStr);
+		UniProtEntry entry =UniProtParserHelper.parse(entryStr);
 		assertNotNull(entry);
 		assertEquals("Q32K04", entry.getPrimaryAccession().getValue());
 	}
@@ -34,7 +34,7 @@ public class UniProtParserIT {
 	public void testParseWithIgnore() {
 		String filename = "/entryIT/A0A176EY13.txl";
 		String entryStr = readEntryFromFile(filename);
-		UniProtEntry entry =UniProtParser.parse(entryStr);
+		UniProtEntry entry =UniProtParserHelper.parse(entryStr);
 		assertNotNull(entry);
 		assertEquals("A0A176EY13", entry.getPrimaryAccession().getValue());
 	}
@@ -42,7 +42,7 @@ public class UniProtParserIT {
 	@Test
 	public void testParseFile() {
 		String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
-		UniProtEntryIterator iterator = UniProtParser.parseFile(filename, "", "", "");
+		UniProtEntryIterator iterator = UniProtParserHelper.parseFile(filename, "", "", "");
 		assertTrue(iterator.hasNext());
 		UniProtEntry entry = iterator.next();
 		assertNotNull(entry);

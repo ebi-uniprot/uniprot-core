@@ -1,14 +1,19 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 
-public class ProteinDescriptionConverter implements Converter<ProteinType, ProteinDescription> {
+public class ProteinDescriptionConverter implements Converter<ProteinType, ProteinDescription>,
+ToXmlDbReferences<ProteinDescription> {
 	private final RecNameConverter recNameConverter;
 	private final AltNameConverter altNameConverter;
 	private final SubNameConverter subNameConverter;
@@ -17,6 +22,29 @@ public class ProteinDescriptionConverter implements Converter<ProteinType, Prote
 	private final ComponentConverter componentConverter;
 	private final ObjectFactory xmlUniprotFactory;
 
+	public ProteinDescriptionConverter(
+			EvidenceIndexMapper evRefMapper,
+			ObjectFactory xmlUniprotFactory) {
+		 this.nameConverter = new NameConverter(evRefMapper, xmlUniprotFactory);
+		ECConverter ecConverter = new ECConverter(evRefMapper, xmlUniprotFactory);
+		this.recNameConverter =new RecNameConverter(nameConverter, ecConverter, xmlUniprotFactory);
+		this.altNameConverter = new AltNameConverter(nameConverter, ecConverter, xmlUniprotFactory);
+		this.subNameConverter =new SubNameConverter(nameConverter, ecConverter, xmlUniprotFactory);
+		this.domainConverter =new DomainConverter(
+				new RecNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
+				new AltNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
+				xmlUniprotFactory
+				);
+		this.componentConverter =new ComponentConverter(
+				new RecNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
+				new AltNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
+				xmlUniprotFactory
+				);
+		this.xmlUniprotFactory = xmlUniprotFactory;
+		
+	}
+	
+	
 	public ProteinDescriptionConverter(RecNameConverter recNameConverter, AltNameConverter altNameConverter,
 			SubNameConverter subNameConverter, NameConverter nameConverter) {
 		this(recNameConverter, altNameConverter, subNameConverter, nameConverter, new ObjectFactory());
@@ -112,6 +140,50 @@ public class ProteinDescriptionConverter implements Converter<ProteinType, Prote
 		
 
 		return proteinType;
+	}
+
+
+	@Override
+	public List<DbReferenceType> toXmlDbReferences(ProteinDescription uniObj) {
+		List<DbReferenceType> result = new ArrayList<>();
+		if (uniObj.getRecommendedName() != null) {
+			result.addAll(recNameConverter.toXmlDbReferences(uniObj.getRecommendedName()));
+		}
+		uniObj.getAlternativeNames().forEach(val -> {
+			altNameConverter.toXmlDbReferences(val)
+			.forEach(dbType -> {
+				if(!result.contains(dbType)) {
+					result.add(dbType);
+				}
+			});	
+		});
+		
+		uniObj.getSubmissionNames().forEach(val -> {
+			altNameConverter.toXmlDbReferences(val)
+			.forEach(dbType -> {
+				if(!result.contains(dbType)) {
+					result.add(dbType);
+				}
+			});	
+		});
+		uniObj.getContains().forEach(val -> {
+			componentConverter.toXmlDbReferences(val)
+			.forEach(dbType -> {
+				if(!result.contains(dbType)) {
+					result.add(dbType);
+				}
+			});	
+		});
+		
+		uniObj.getIncludes().forEach(val -> {
+			domainConverter.toXmlDbReferences(val)
+			.forEach(dbType -> {
+				if(!result.contains(dbType)) {
+					result.add(dbType);
+				}
+			});	
+		});
+		return result;
 	}
 
 }

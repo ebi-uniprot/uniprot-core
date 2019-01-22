@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.base.Strings;
@@ -23,12 +24,12 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 	private final FeatureLocationConverter locationConverter;
 
 	public FeatureConverter(EvidenceIndexMapper evRefMapper) {
-		this(new FeatureLocationConverter(), evRefMapper, new ObjectFactory());
+		this( evRefMapper, new ObjectFactory());
 	}
 
-	public FeatureConverter(FeatureLocationConverter locationConverter, EvidenceIndexMapper evRefMapper,
+	public FeatureConverter( EvidenceIndexMapper evRefMapper,
 			ObjectFactory xmlUniprotFactory) {
-		this.locationConverter = locationConverter;
+		this.locationConverter = new FeatureLocationConverter(xmlUniprotFactory);
 		this.evRefMapper = evRefMapper;
 		this.xmlUniprotFactory = xmlUniprotFactory;
 
@@ -42,28 +43,27 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 		if (xmlObj.getDescription() != null) {
 			description = xmlObj.getDescription();
 			if (AlternativeSequenceImpl.hasAlternativeSequence(type)) {
-				description = XmlTextHelper.removeIfPostfix(description, STOP);
-				if(type != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)
-					description = XmlTextHelper.lowercaseFirstLetter(description);
+				description = XmlConverterHelper.removeIfPostfix(description, STOP);
+				if (type != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)
+					description = XmlConverterHelper.lowercaseFirstLetter(description);
 			}
 		}
-	
+
 		Range location = locationConverter.fromXml(xmlObj.getLocation());
 		List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
 		String ftid = xmlObj.getId();
 		FeatureId featureId = null;
-		if(!Strings.isNullOrEmpty(ftid)) {
+		if (!Strings.isNullOrEmpty(ftid)) {
 			featureId = FeatureFactory.INSTANCE.createFeatureId(ftid);
 		}
-		AlternativeSequence altSeq =null;
-		if(!Strings.isNullOrEmpty(xmlObj.getOriginal())) {
+		AlternativeSequence altSeq = null;
+		if (!Strings.isNullOrEmpty(xmlObj.getOriginal())) {
 			altSeq = FeatureFactory.INSTANCE.createAlternativeSequence(xmlObj.getOriginal(), xmlObj.getVariation());
 		}
-		
-		return FeatureFactory.INSTANCE.createFeature(type, location, description, featureId, altSeq,  evidences);
+
+		return FeatureFactory.INSTANCE.createFeature(type, location, description, featureId, altSeq, evidences);
 	}
 
-	
 	@Override
 	public FeatureType toXml(Feature uniObj) {
 		FeatureType xmlFeature = xmlUniprotFactory.createFeatureType();
@@ -77,12 +77,12 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 			xmlFeature.setId(uniObj.getFeatureId().getValue());
 		}
 		if ((uniObj.getDescription() != null) && !uniObj.getDescription().getValue().isEmpty()) {
-			String val =uniObj.getDescription().getValue();
+			String val = uniObj.getDescription().getValue();
 			if (AlternativeSequenceImpl.hasAlternativeSequence(uniObj.getType())) {
-				val  = XmlTextHelper.addIfNoPostfix(val, STOP);
-				
-				if(uniObj.getType() != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)
-					val = XmlTextHelper.uppercaseFirstLetter(val);
+				val = XmlConverterHelper.addIfNoPostfix(val, STOP);
+
+				if (uniObj.getType() != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)
+					val = XmlConverterHelper.uppercaseFirstLetter(val);
 			}
 			xmlFeature.setDescription(val);
 		}
@@ -92,12 +92,44 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 			if (!evs.isEmpty())
 				xmlFeature.getEvidence().addAll(evs);
 		}
-		if(uniObj.getAlternativeSequence() !=null) {
-			AlternativeSequence altSeq = uniObj.getAlternativeSequence() ;
+		if (uniObj.getAlternativeSequence() != null) {
+			AlternativeSequence altSeq = uniObj.getAlternativeSequence();
 			xmlFeature.setOriginal(altSeq.getOriginalSequence());
 			xmlFeature.getVariation().addAll(altSeq.getAlternativeSequences());
 		}
+		updateConflictFeature(xmlFeature, uniObj);
 		return xmlFeature;
 	}
 
+	private void updateConflictFeature(FeatureType featureType, Feature feature) {
+		if (feature.getType() != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.CONFLICT) {
+			return;
+		}
+		if ((feature.getDescription() == null) || Strings.isNullOrEmpty(feature.getDescription().getValue())) {
+			return;
+		}
+		String description = feature.getDescription().getValue();
+		List<Integer> refs = extractConflictReference(description);
+		StringBuilder sb = new StringBuilder();
+		for (Integer reference : refs) {
+			sb.append(reference);
+			sb.append(" ");
+
+		}
+		featureType.setRef(sb.toString().trim());
+	}
+
+	public static List<Integer> extractConflictReference(String description) {
+		List<Integer> refs = new ArrayList<>();
+		String[] tokens = description.split("; ");
+		for (String token : tokens) {
+			int index = token.lastIndexOf(" ");
+			String val = token;
+			if (index != -1) {
+				val = token.substring(index + 1);
+				refs.add(Integer.parseInt(val));
+			}
+		}
+		return refs;
+	}
 }

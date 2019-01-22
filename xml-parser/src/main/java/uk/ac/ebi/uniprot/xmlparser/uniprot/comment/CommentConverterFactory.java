@@ -71,10 +71,10 @@ public enum CommentConverterFactory {
    		}
    	}
     
-    public InteractionCommentConverter createInteractinoCommentConverter() {
+    public InteractionCommentConverter createInteractionCommentConverter() {
     	return new InteractionCommentConverter();
     }
-    public InteractionCommentConverter createInteractinoCommentConverter(ObjectFactory xmlUniprotFactory) {
+    public InteractionCommentConverter createInteractionCommentConverter(ObjectFactory xmlUniprotFactory) {
     	return new InteractionCommentConverter(xmlUniprotFactory);
     }
 }

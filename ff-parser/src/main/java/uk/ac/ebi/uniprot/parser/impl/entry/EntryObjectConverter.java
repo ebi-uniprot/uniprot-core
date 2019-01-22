@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordService;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -158,9 +159,11 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 			builder.organismHosts(ohLineConverter.convert(f.oh));
 		}
 		OrganismBuilder organismBuilder = new OrganismBuilder();
-		organismBuilder.from(oxLineConverter.convert(f.ox));
 		organismBuilder.from(osLineConverter.convert(f.os));
-		organismBuilder.lineage(ocLineConverter.convert(f.oc));
+		Organism oxLineOrganism = oxLineConverter.convert(f.ox);
+		organismBuilder.taxonId(oxLineOrganism.getTaxonId())
+		.evidences(oxLineOrganism.getEvidences())
+		.lineage(ocLineConverter.convert(f.oc));
 		builder.organism(organismBuilder.build());
 		builder.proteinExistence(peLineConverter.convert(f.pe));
 		builder.sequence(sqLineConverter.convert(f.sq));
