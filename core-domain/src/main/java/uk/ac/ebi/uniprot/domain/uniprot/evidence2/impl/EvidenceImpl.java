@@ -7,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceType;
 
+import java.util.Objects;
+
 public class EvidenceImpl implements Evidence {
     static final EvidenceType REFERENCE = new EvidenceType("Reference");
     static final String REF_PREFIX = "Ref.";
@@ -18,13 +20,9 @@ public class EvidenceImpl implements Evidence {
     public EvidenceImpl(EvidenceCode evidenceCode,
                         String databaseName, String dbId) {
         this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceType(databaseName), dbId));
-
     }
 
-
-    private EvidenceImpl() {
-
-    }
+    private EvidenceImpl() {}
 
     private EvidenceImpl(String value) {
         System.out.println("LEO LEO LEO LEO");
@@ -33,28 +31,6 @@ public class EvidenceImpl implements Evidence {
     public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceType> source) {
         this.evidenceCode = evidenceCode;
         this.source = source;
-    }
-
-    public static Evidence parseEvidenceLine(String val) {
-        String[] token = val.split("\\|");
-        String code = token[0];
-        DBCrossReference<EvidenceType> xref = null;
-        if (token.length == 2) {
-            int index = token[1].indexOf(':');
-            if (index == -1) {
-                if (token[1].startsWith(REF_PREFIX)) {
-                    xref = new DBCrossReferenceImpl<>(REFERENCE, token[1]);
-                } else {
-                    throw new IllegalArgumentException(val + " is not valid evidence string");
-                }
-            } else {
-                String type = token[1].substring(0, index);
-                String id = token[1].substring(index + 1);
-                xref = new DBCrossReferenceImpl<>(new EvidenceType(type), id);
-            }
-        }
-        EvidenceCode evidenceCode = EvidenceCode.codeOf(code);
-        return new EvidenceImpl(evidenceCode, xref);
     }
 
     @Override
@@ -66,11 +42,6 @@ public class EvidenceImpl implements Evidence {
     public DBCrossReference<EvidenceType> getSource() {
         return source;
     }
-
-//	
-//	public void setSource(DBCrossReference source) {
-//		this.source = source;
-//	}
 
     @Override
     public int compareTo(Evidence o) {
@@ -84,7 +55,6 @@ public class EvidenceImpl implements Evidence {
 
     @Override
     public String getValue() {
-
         StringBuilder sb = new StringBuilder();
         sb.append(evidenceCode.getCode());
         if (source != null) {
@@ -104,32 +74,16 @@ public class EvidenceImpl implements Evidence {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((evidenceCode == null) ? 0 : evidenceCode.hashCode());
-        result = prime * result + ((source == null) ? 0 : source.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EvidenceImpl evidence = (EvidenceImpl) o;
+        return evidenceCode == evidence.evidenceCode &&
+                Objects.equals(source, evidence.source);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        EvidenceImpl other = (EvidenceImpl) obj;
-        if (evidenceCode != other.evidenceCode)
-            return false;
-        if (source == null) {
-            if (other.source != null)
-                return false;
-        } else if (!source.equals(other.source))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(evidenceCode, source);
     }
-
-
 }

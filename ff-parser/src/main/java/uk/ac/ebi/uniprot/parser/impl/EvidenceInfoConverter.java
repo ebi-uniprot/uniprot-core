@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.parser.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.parser.Converter;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.parser.Converter;
 
 public class EvidenceInfoConverter extends EvidenceCollector implements Converter<EvidenceInfo, Map<Object, List<Evidence>> > {
 	@Override
@@ -19,6 +19,4 @@ public class EvidenceInfoConverter extends EvidenceCollector implements Converte
 		 }
 		 return evidences;
 	}
-
-	
 }

@@ -25,6 +25,7 @@ public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuil
 
     @Override
     public UniProtDBCrossReferenceBuilder from(UniProtDBCrossReference instance) {
+        evidences.clear();
         return super.from(instance)
                 .evidences(instance.getEvidences())
                 .isoformId(instance.getIsoformId());
