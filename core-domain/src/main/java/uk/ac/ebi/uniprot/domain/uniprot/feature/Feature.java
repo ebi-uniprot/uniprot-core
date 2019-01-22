@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.HasEvidences;
 
 public interface Feature extends HasEvidences {
     FeatureType getType();

@@ -13,6 +13,6 @@ public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuild
 
     @Override
     public GeneName build() {
-        return new GeneImpl.GeneNameImpl(value,evidences);
+        return new GeneImpl.GeneNameImpl(value, evidences);
     }
 }

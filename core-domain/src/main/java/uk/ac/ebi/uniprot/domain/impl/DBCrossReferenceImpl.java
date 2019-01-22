@@ -3,32 +3,30 @@ package uk.ac.ebi.uniprot.domain.impl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 
 public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference<T> {
-    private T databaseType;
-    private String id;
-    private List<Property> properties;
+    protected T databaseType;
+    protected String id;
+    protected List<Property> properties;
 
     private DBCrossReferenceImpl() {
         this.properties = Collections.emptyList();
     }
 
     public DBCrossReferenceImpl(T database, String id) {
-        this(new DBCrossReferenceBuilder<T>()
-                     .databaseType(database)
-                     .id(id));
+        this(database, id, Collections.emptyList());
     }
 
-    public DBCrossReferenceImpl(DBCrossReferenceBuilder<T> builder) {
-        this.databaseType = builder.getDatabaseType();
-        this.id = builder.getId();
-        setProperties(Collections.unmodifiableList(builder.getProperties()));
+    public DBCrossReferenceImpl(T databaseType, String id, List<Property> properties) {
+        this.databaseType = databaseType;
+        this.id = id;
+        setProperties(properties);
     }
 
     @Override
@@ -64,42 +62,17 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((databaseType == null) ? 0 : databaseType.hashCode());
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((properties == null) ? 0 : properties.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DBCrossReferenceImpl<?> that = (DBCrossReferenceImpl<?>) o;
+        return Objects.equals(databaseType, that.databaseType) &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(properties, that.properties);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        @SuppressWarnings("rawtypes")
-        DBCrossReferenceImpl other = (DBCrossReferenceImpl) obj;
-        if (databaseType == null) {
-            if (other.databaseType != null)
-                return false;
-        } else if (!databaseType.equals(other.databaseType))
-            return false;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        if (properties == null) {
-            if (other.properties != null)
-                return false;
-        } else if (!properties.equals(other.properties))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(databaseType, id, properties);
     }
-
-
 }

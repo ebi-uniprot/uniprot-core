@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
+import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ReactionImpl;
@@ -34,6 +35,11 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
 
     public ReactionBuilder addReactionReference(DBCrossReference<ReactionReferenceType> reactionReference) {
         this.reactionReferences.add(reactionReference);
+        return this;
+    }
+
+    public ReactionBuilder ecNumber(String ecNumber) {
+        this.ecNumber = new ECNumberImpl(ecNumber);
         return this;
     }
 

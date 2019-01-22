@@ -1,25 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+
+import static org.junit.Assert.*;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 
 class FeatureImplTest {
@@ -56,17 +46,4 @@ class FeatureImplTest {
         assertNull(feature.getDbXref());
         TestHelper.verifyJson(feature);
     }
-
-
-	private AlternativeSequence createAlternativeSequence() {
-		AlternativeSequence as =new AlternativeSequenceImpl("AB", Arrays.asList("DC", "SDGASS"));
-		return as;
-	}
-	private List<Evidence> createEvidences() {
-		List<Evidence> evidences = new ArrayList<>();
-		evidences.add(  UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-		evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
-		return evidences;
-	}
-
 }

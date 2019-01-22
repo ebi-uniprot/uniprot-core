@@ -1,71 +1,22 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
-import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created 10/01/19
  *
  * @author Edd
  */
-public class DBCrossReferenceBuilder<T extends DatabaseType> implements Builder2<DBCrossReferenceBuilder<T>, DBCrossReference<T>> {
-    private T databaseType;
-    private String id;
-    private List<Property> properties = new ArrayList<>();
-
+public class DBCrossReferenceBuilder<T extends DatabaseType> extends AbstractDBCrossReferenceBuilder<DBCrossReferenceBuilder<T>, T, DBCrossReference<T>> {
     @Override
     public DBCrossReference<T> build() {
-        return new DBCrossReferenceImpl<>(this);
+        return new DBCrossReferenceImpl<>(databaseType, id, properties);
     }
 
     @Override
-    public DBCrossReferenceBuilder<T> from(DBCrossReference<T> instance) {
-        return this
-                .properties(instance.getProperties())
-                .id(instance.getId())
-                .databaseType(instance.getDatabaseType());
-    }
-
-    public DBCrossReferenceBuilder<T> databaseType(T type) {
-        this.databaseType = type;
+    protected DBCrossReferenceBuilder<T> getThis() {
         return this;
-    }
-
-    public DBCrossReferenceBuilder<T> id(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public DBCrossReferenceBuilder<T> properties(List<Property> properties) {
-        this.properties.addAll(properties);
-        return this;
-    }
-
-    public DBCrossReferenceBuilder<T> addProperty(Property property) {
-        this.properties.add(property);
-        return this;
-    }
-
-    public DBCrossReferenceBuilder<T> addProperty(String key, String value) {
-        this.properties.add(new Property(key, value));
-        return this;
-    }
-
-    public T getDatabaseType() {
-        return databaseType;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public List<Property> getProperties() {
-        return properties;
     }
 }

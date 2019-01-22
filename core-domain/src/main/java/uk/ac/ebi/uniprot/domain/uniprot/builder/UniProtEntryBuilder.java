@@ -16,35 +16,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * A staged builder that guides a user when creating a {@link UniProtEntry} instance. For example, the accession
+ * must be supplied first, after which the ID must be added. After this, one chooses the entry type. Many fields
+ * can be set for the usual Swiss-Prot/TrEMBL entry types. However, inactive entries have only a single field
+ * available for setting; the inactive reason.
  *
  * @author lgonzales
  */
 public class UniProtEntryBuilder {
 
+    public EntryBuilder from(UniProtEntry instance) {
+        return new EntryBuilder(instance.getPrimaryAccession()).from(instance);
+    }
 
-    public UniprotIdBuilder primaryAccession(UniProtAccession primaryAccession){
+    public UniProtIdBuilder primaryAccession(UniProtAccession primaryAccession) {
         return new EntryBuilder(primaryAccession);
     }
 
-
-    public interface UniprotIdBuilder{
-
+    public interface UniProtIdBuilder {
         EntryTypeBuilder uniProtId(UniProtId uniProtId);
     }
 
-    public interface EntryTypeBuilder{
-
+    public interface EntryTypeBuilder {
         ActiveEntryBuilder trembl();
 
         ActiveEntryBuilder swissProt();
 
         InactiveEntryBuilder inactive();
-
     }
 
-    public interface ActiveEntryBuilder extends Builder2<EntryBuilder,UniProtEntry> {
-
+    public interface ActiveEntryBuilder extends Builder2<EntryBuilder, UniProtEntry> {
         ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession);
 
         ActiveEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions);
@@ -92,17 +93,13 @@ public class UniProtEntryBuilder {
         ActiveEntryBuilder sequence(Sequence sequence);
 
         ActiveEntryBuilder internalSection(InternalSection internalSection);
-
     }
 
-    public interface InactiveEntryBuilder extends Builder2<EntryBuilder,UniProtEntry>{
-
+    public interface InactiveEntryBuilder extends Builder2<EntryBuilder, UniProtEntry> {
         InactiveEntryBuilder inactiveReason(EntryInactiveReason inactiveReason);
-
     }
 
-    private class EntryBuilder extends UniProtEntryBuilder implements UniprotIdBuilder,ActiveEntryBuilder,InactiveEntryBuilder,EntryTypeBuilder{
-
+    private class EntryBuilder extends UniProtEntryBuilder implements UniProtIdBuilder, ActiveEntryBuilder, InactiveEntryBuilder, EntryTypeBuilder {
         private UniProtAccession primaryAccession;
         private UniProtEntryType entryType = null;
         private List<UniProtAccession> secondaryAccessions = new ArrayList<>();
@@ -123,7 +120,7 @@ public class UniProtEntryBuilder {
         private InternalSection internalSection = null;
         private EntryInactiveReason inactiveReason = null;
 
-        private EntryBuilder(UniProtAccession primaryAccession){
+        private EntryBuilder(UniProtAccession primaryAccession) {
             this.primaryAccession = primaryAccession;
         }
 
@@ -304,8 +301,8 @@ public class UniProtEntryBuilder {
         @Override
         public UniProtEntry build() {
             return new UniProtEntryImpl(entryType, primaryAccession, secondaryAccessions, uniProtId, entryAudit, organism,
-                    organismHosts, proteinExistence, proteinDescription, genes, comments, features, organelles, keywords,
-                    references, databaseCrossReferences, sequence, internalSection, inactiveReason);
+                                        organismHosts, proteinExistence, proteinDescription, genes, comments, features, organelles, keywords,
+                                        references, databaseCrossReferences, sequence, internalSection, inactiveReason);
         }
 
         @Override
@@ -314,17 +311,17 @@ public class UniProtEntryBuilder {
             this.primaryAccession = instance.getPrimaryAccession();
             this.secondaryAccessions = instance.getSecondaryAccessions();
             this.uniProtId = instance.getUniProtId();
-            this.entryAudit= instance.getEntryAudit();
-            this.organism= instance.getOrganism();
-            this.organismHosts= instance.getOrganismHosts();
-            this.proteinExistence= instance.getProteinExistence();
-            this.proteinDescription= instance.getProteinDescription();
-            this.genes= instance.getGenes();
-            this.comments= instance.getComments();
-            this.features= instance.getFeatures();
-            this.organelles= instance.getOrganelles();
-            this.keywords= instance.getKeywords();
-            this.references= instance.getReferences();
+            this.entryAudit = instance.getEntryAudit();
+            this.organism = instance.getOrganism();
+            this.organismHosts = instance.getOrganismHosts();
+            this.proteinExistence = instance.getProteinExistence();
+            this.proteinDescription = instance.getProteinDescription();
+            this.genes = instance.getGenes();
+            this.comments = instance.getComments();
+            this.features = instance.getFeatures();
+            this.organelles = instance.getOrganelles();
+            this.keywords = instance.getKeywords();
+            this.references = instance.getReferences();
             this.databaseCrossReferences = instance.getDatabaseCrossReferences();
             this.sequence = instance.getSequence();
             this.internalSection = instance.getInternalSection();
@@ -332,5 +329,4 @@ public class UniProtEntryBuilder {
             return this;
         }
     }
-
 }
