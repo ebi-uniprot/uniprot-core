@@ -12,7 +12,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.exception.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 
 public class DrLineConverter extends EvidenceCollector implements Converter<DrLineObject, UniProtDrObjects> {
 	private final UniProtDBCrossReferenceFactory factory = UniProtDBCrossReferenceFactory.INSTANCE;
@@ -32,7 +32,7 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
 		UniProtDrObjects uniProtDrObjects = new UniProtDrObjects();
 		if (f == null)
 			return uniProtDrObjects;
-		Map<Object, List<Evidence>> evidences = EvidenceHelper.convert(f.getEvidenceInfo());
+		Map<Object, List<Evidence>> evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll(evidences.values());
 		for (DrLineObject.DrObject drline : f.drObjects) {
 			if (drline.ssLineValue != null)

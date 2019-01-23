@@ -12,7 +12,7 @@ import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.parser.impl.gn.GnLineObject.GnName;
 import uk.ac.ebi.uniprot.parser.impl.gn.GnLineObject.GnObject;
@@ -29,7 +29,7 @@ public class GnLineConverter extends EvidenceCollector implements
 			List<ORFName> orfNames = new ArrayList<>();
 			List<OrderedLocusName> olnNames = new ArrayList<>();
 			for (GnName gn : gno.names) {
-				Map<Object, List<Evidence>> evidenceMap = EvidenceHelper
+				Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper
 						.convert(gn.getEvidenceInfo());
 				this.addAll(evidenceMap.values());
 				switch (gn.type) {

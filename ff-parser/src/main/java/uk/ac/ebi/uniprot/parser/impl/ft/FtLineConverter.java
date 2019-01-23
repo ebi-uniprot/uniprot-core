@@ -21,7 +21,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 
 public class FtLineConverter extends EvidenceCollector
 		implements Converter<FtLineObject, List<Feature>> {
@@ -33,7 +33,7 @@ public class FtLineConverter extends EvidenceCollector
 	@Override
 	public List< Feature> convert(FtLineObject f) {
 		List< Feature> features = new ArrayList<>();
-		Map<Object, List<Evidence>> evidenceMap = EvidenceHelper.convert(f.getEvidenceInfo());
+		Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll(evidenceMap.values());
 		for (FtLineObject.FT ft : f.fts) {
 			FeatureType featureType = convert(ft.type);

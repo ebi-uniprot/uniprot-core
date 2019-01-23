@@ -15,7 +15,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 import uk.ac.ebi.uniprot.parser.impl.de.DeLineObject.FlagType;
 
 public class DeLineConverter extends EvidenceCollector implements Converter<DeLineObject, ProteinDescription> {
@@ -23,7 +23,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 
 	@Override
 	public ProteinDescription convert(DeLineObject f) {
-		Map<Object, List<Evidence>> evidenceMap = EvidenceHelper.convert(f.getEvidenceInfo());
+		Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll(evidenceMap.values());
 		// ProteinDescription pd = factory.buildProteinDescription();
 		ProteinName recName = null;
