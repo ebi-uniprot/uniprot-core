@@ -11,7 +11,6 @@ import java.util.Objects;
 
 public class EvidenceImpl implements Evidence {
     static final EvidenceType REFERENCE = new EvidenceType("Reference");
-    static final String REF_PREFIX = "Ref.";
     private static final String PIPE = "|";
     private static final String COLON = ":";
     private EvidenceCode evidenceCode;

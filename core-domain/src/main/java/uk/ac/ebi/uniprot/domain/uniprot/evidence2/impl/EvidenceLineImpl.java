@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class EvidenceLineImpl implements EvidenceLine {
     private String evidence;
@@ -41,45 +42,21 @@ public class EvidenceLineImpl implements EvidenceLine {
 
     @Override
     public Evidence toEvidence() {
-        return EvidenceImpl.parseEvidenceLine(evidence);
+        return EvidenceHelper.parseEvidenceLine(evidence);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EvidenceLineImpl that = (EvidenceLineImpl) o;
+        return Objects.equals(evidence, that.evidence) &&
+                Objects.equals(createDate, that.createDate) &&
+                Objects.equals(curator, that.curator);
     }
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((curator == null) ? 0 : curator.hashCode());
-        result = prime * result + ((createDate == null) ? 0 : createDate.hashCode());
-        result = prime * result + ((evidence == null) ? 0 : evidence.hashCode());
-        return result;
+        return Objects.hash(evidence, createDate, curator);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        EvidenceLineImpl other = (EvidenceLineImpl) obj;
-        if (curator == null) {
-            if (other.curator != null)
-                return false;
-        } else if (!curator.equals(other.curator))
-            return false;
-        if (createDate == null) {
-            if (other.createDate != null)
-                return false;
-        } else if (!createDate.equals(other.createDate))
-            return false;
-        if (evidence == null) {
-            if (other.evidence != null)
-                return false;
-        } else if (!evidence.equals(other.evidence))
-            return false;
-        return true;
-    }
-
-
 }

@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.taxonomy.builder;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;

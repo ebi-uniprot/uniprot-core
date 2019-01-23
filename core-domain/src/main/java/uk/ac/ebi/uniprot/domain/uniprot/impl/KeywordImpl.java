@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.Collections;
 import java.util.List;
