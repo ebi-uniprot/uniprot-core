@@ -11,6 +11,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 22/01/19
  *
@@ -39,7 +41,7 @@ public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuil
     }
 
     public UniProtDBCrossReferenceBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

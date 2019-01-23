@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationCommentI
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public final class SubcellularLocationCommentBuilder implements CommentBuilder<SubcellularLocationCommentBuilder, SubcellularLocationComment> {
     private String molecule;
     private Note note;
@@ -37,7 +39,7 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
     }
 
     public SubcellularLocationCommentBuilder subcellularLocations(List<SubcellularLocation> subcellularLocations) {
-        this.subcellularLocations.addAll(subcellularLocations);
+        nonNullAddAll(subcellularLocations, this.subcellularLocations);
         return this;
     }
 

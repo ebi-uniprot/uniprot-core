@@ -6,8 +6,10 @@ import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B,T>,T extends OrganismName>
-        implements Builder2<B,T> {
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
+public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
+        implements Builder2<B, T> {
 
     private String scientificName = "";
     private String commonName = "";
@@ -26,7 +28,7 @@ public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismName
     }
 
     public B synonyms(List<String> synonyms) {
-        this.synonyms.addAll(synonyms);
+        nonNullAddAll(synonyms, this.synonyms);
         return getThis();
     }
 
@@ -48,13 +50,11 @@ public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismName
     }
 
     @Override
-    public B from(OrganismName organismName){
+    public B from(OrganismName organismName) {
         synonyms.clear();
         this.scientificName = organismName.getScientificName();
         this.commonName = organismName.getCommonName();
-        if(organismName.getSynonyms() != null){
-            this.synonyms.addAll(organismName.getSynonyms());
-        }
+        nonNullAddAll(organismName.getSynonyms(), this.synonyms);
         return getThis();
     }
 }

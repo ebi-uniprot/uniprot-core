@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.util;
 
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class Utils {
             return value;
     }
 
-    public static <T> void nonNullAddAll(List<? extends T> source, List<T> target) {
+    public static <T> void nonNullAddAll(Collection<? extends T> source, Collection<T> target) {
         if (source != null) {
             target.addAll(source);
         }

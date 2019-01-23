@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
     private SequenceCautionType sequenceCautionType;
     private String sequence;
@@ -42,7 +44,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     }
 
     public SequenceCautionCommentBuilder positions(List<String> positions) {
-        this.positions.addAll(positions);
+        nonNullAddAll(positions, this.positions);
         return this;
     }
 
@@ -57,7 +59,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     }
 
     public SequenceCautionCommentBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

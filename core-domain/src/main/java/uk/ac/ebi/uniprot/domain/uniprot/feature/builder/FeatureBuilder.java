@@ -12,6 +12,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 22/01/19
  *
@@ -90,7 +92,7 @@ public class FeatureBuilder implements Builder2<FeatureBuilder, Feature> {
     }
 
     public FeatureBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

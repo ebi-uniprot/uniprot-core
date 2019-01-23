@@ -12,6 +12,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 15/01/19
  *
@@ -29,7 +31,7 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
     }
 
     public ReactionBuilder references(List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
-        this.reactionReferences.addAll(reactionReferences);
+        nonNullAddAll(reactionReferences, this.reactionReferences);
         return this;
     }
 
@@ -49,7 +51,7 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
     }
 
     public ReactionBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

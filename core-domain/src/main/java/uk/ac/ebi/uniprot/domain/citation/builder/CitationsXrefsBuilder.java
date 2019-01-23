@@ -9,6 +9,8 @@ import uk.ac.ebi.uniprot.domain.citation.impl.CitationXrefsImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 10/01/19
  *
@@ -28,7 +30,7 @@ public class CitationsXrefsBuilder implements Builder2<CitationsXrefsBuilder, Ci
     }
 
     public CitationsXrefsBuilder xRefs(List<DBCrossReference<CitationXrefType>> xRefs) {
-        this.xRefs.addAll(xRefs);
+        nonNullAddAll(xRefs, this.xRefs);
         return this;
     }
 

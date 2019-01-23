@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 15/01/19
  *
@@ -46,7 +48,7 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder synonyms(List<IsoformName> synonyms) {
-        this.synonyms.addAll(synonyms);
+        nonNullAddAll(synonyms, this.synonyms);
         return this;
     }
 
@@ -71,7 +73,7 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder sequenceIds(List<String> sequenceIds) {
-        this.sequenceIds.addAll(sequenceIds);
+        nonNullAddAll(sequenceIds, this.sequenceIds);
         return this;
     }
 

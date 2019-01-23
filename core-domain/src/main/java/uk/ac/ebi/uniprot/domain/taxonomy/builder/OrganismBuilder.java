@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  *
  * @author lgonzales
@@ -24,7 +26,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     }
 
     public OrganismBuilder lineage(List<String> lineage) {
-        this.lineage.addAll(lineage);
+        nonNullAddAll(lineage, this.lineage);
         return this;
     }
 
@@ -34,7 +36,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     }
 
     public OrganismBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

@@ -7,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 22/01/19
  *
@@ -34,7 +36,7 @@ public class AlternativeSequenceBuilder implements Builder2<AlternativeSequenceB
     }
 
     public AlternativeSequenceBuilder alternatives(List<String> alternativeSequences) {
-        this.alternativeSequences.addAll(alternativeSequences);
+        nonNullAddAll(alternativeSequences, this.alternativeSequences);
         return this;
     }
 

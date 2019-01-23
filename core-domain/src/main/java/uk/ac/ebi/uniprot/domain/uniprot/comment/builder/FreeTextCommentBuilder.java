@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextCommentImpl.isFreeTextCommentType;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
     private CommentType commentType;
@@ -36,7 +37,7 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBui
     }
 
     public FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
-        this.texts.addAll(texts);
+        nonNullAddAll(texts, this.texts);
         return this;
     }
 
