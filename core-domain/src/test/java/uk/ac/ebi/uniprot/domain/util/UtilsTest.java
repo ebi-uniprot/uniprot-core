@@ -14,10 +14,10 @@ class UtilsTest {
     @Test
     void testResetNull() {
         String value = null;
-        String result = Utils.resetNull(value);
+        String result = Utils.nullToEmpty(value);
         assertEquals("", result);
         value = "some value";
-        result = Utils.resetNull(value);
+        result = Utils.nullToEmpty(value);
         assertTrue(value == result);
     }
 
@@ -25,15 +25,15 @@ class UtilsTest {
     void testUnmodifierList() {
         List<String> list = null;
 
-        List<String> result = Utils.unmodifierList(list);
+        List<String> result = Utils.nonNullUnmodifiableList(list);
         assertTrue(result.isEmpty());
 
         list = Collections.emptyList();
-        result = Utils.unmodifierList(list);
+        result = Utils.nonNullUnmodifiableList(list);
         assertTrue(result.isEmpty());
 
         list = Arrays.asList("val1", "val2");
-        result = Utils.unmodifierList(list);
+        result = Utils.nonNullUnmodifiableList(list);
         assertEquals(list, result);
 
     }

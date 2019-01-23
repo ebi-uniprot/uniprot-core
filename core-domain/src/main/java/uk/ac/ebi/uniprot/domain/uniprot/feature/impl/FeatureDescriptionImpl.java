@@ -11,7 +11,7 @@ public class FeatureDescriptionImpl implements FeatureDescription {
     }
 
     public FeatureDescriptionImpl(String value) {
-        this.value = Utils.resetNull(value);
+        this.value = Utils.nullToEmpty(value);
     }
 
     @Override

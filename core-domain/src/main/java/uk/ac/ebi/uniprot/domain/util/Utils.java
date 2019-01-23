@@ -6,14 +6,20 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Utils {
-    public static String resetNull(String value) {
+    public static String nullToEmpty(String value) {
         if (value == null)
             return "";
         else
             return value;
     }
 
-    public static <T> List<T> unmodifierList(List<T> value) {
+    public static <T> void nonNullAddAll(List<? extends T> source, List<T> target) {
+        if (source != null) {
+            target.addAll(source);
+        }
+    }
+
+    public static <T> List<T> nonNullUnmodifiableList(List<T> value) {
         if ((value == null) || value.isEmpty()) {
             return Collections.emptyList();
         } else {

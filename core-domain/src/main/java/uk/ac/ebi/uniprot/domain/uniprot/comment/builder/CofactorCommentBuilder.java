@@ -14,7 +14,7 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     private Note note;
 
     public CofactorComment build() {
-        return new CofactorCommentImpl(this);
+        return new CofactorCommentImpl(molecule, cofactors, note);
     }
 
     @Override

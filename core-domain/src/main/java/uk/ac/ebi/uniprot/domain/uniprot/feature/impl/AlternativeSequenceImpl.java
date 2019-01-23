@@ -28,8 +28,8 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
     public AlternativeSequenceImpl(String originalSequence,
                                    List<String> alternativeSequences
                                    ) {
-        this.originalSequence = Utils.resetNull(originalSequence);
-        this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
+        this.originalSequence = Utils.nullToEmpty(originalSequence);
+        this.alternativeSequences = Utils.nonNullUnmodifiableList(alternativeSequences);
 
     }
 

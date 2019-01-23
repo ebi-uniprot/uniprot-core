@@ -19,7 +19,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     public PatentImpl(PatentBuilder builder) {
         super(CitationType.PATENT, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
               builder.getTitle(), builder.getPublicationDate());
-        this.patentNumber = Utils.resetNull(builder.getPatentNumber());
+        this.patentNumber = Utils.nullToEmpty(builder.getPatentNumber());
     }
 
     @Override

@@ -17,8 +17,8 @@ public class EvidencedValueImpl implements EvidencedValue {
     }
 
     public EvidencedValueImpl(String value, List<Evidence> evidences) {
-        this.value = Utils.resetNull(value);
-        this.evidences = Utils.unmodifierList(evidences);
+        this.value = Utils.nullToEmpty(value);
+        this.evidences = Utils.nonNullUnmodifiableList(evidences);
     }
 
     @Override

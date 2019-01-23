@@ -21,8 +21,8 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     public ThesisImpl(ThesisBuilder builder) {
         super(CitationType.THESIS, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
               builder.getTitle(), builder.getPublicationDate());
-        this.institute = Utils.resetNull(builder.getInstitute());
-        this.address = Utils.resetNull(builder.getAddress());
+        this.institute = Utils.nullToEmpty(builder.getInstitute());
+        this.address = Utils.nullToEmpty(builder.getAddress());
     }
 
     @Override

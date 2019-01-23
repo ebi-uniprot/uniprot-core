@@ -22,10 +22,10 @@ public abstract class AbstractCitationImpl implements Citation {
     public AbstractCitationImpl(CitationType citationType, List<String> authoringGroup, List<Author> authors,
                                 CitationXrefs citationXrefs, String title, PublicationDate publicationDate) {
         this.citationType = citationType;
-        this.authoringGroup = Utils.unmodifierList(authoringGroup);
-        this.authors = Utils.unmodifierList(authors);
+        this.authoringGroup = Utils.nonNullUnmodifiableList(authoringGroup);
+        this.authors = Utils.nonNullUnmodifiableList(authors);
         this.citationXrefs = citationXrefs;
-        this.title = Utils.resetNull(title);
+        this.title = Utils.nullToEmpty(title);
         this.publicationDate = publicationDate;
     }
 

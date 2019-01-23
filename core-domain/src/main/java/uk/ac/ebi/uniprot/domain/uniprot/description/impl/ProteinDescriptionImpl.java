@@ -63,15 +63,15 @@ public class ProteinDescriptionImpl implements ProteinDescription {
             List<ProteinSection> includes,
             List<ProteinSection> contains) {
         this.recommendedName = recommendedName;
-        this.alternativeNames = Utils.unmodifierList(alternativeNames);
-        this.submissionNames = Utils.unmodifierList(submissionNames);
+        this.alternativeNames = Utils.nonNullUnmodifiableList(alternativeNames);
+        this.submissionNames = Utils.nonNullUnmodifiableList(submissionNames);
         this.flag = flag;
         this.allergenName = allergenName;
         this.biotechName = biotechName;
-        this.cdAntigenNames = Utils.unmodifierList(cdAntigenNames);
-        this.innNames = Utils.unmodifierList(innNames);
-        this.includes = Utils.unmodifierList(includes);
-        this.contains = Utils.unmodifierList(contains);
+        this.cdAntigenNames = Utils.nonNullUnmodifiableList(cdAntigenNames);
+        this.innNames = Utils.nonNullUnmodifiableList(innNames);
+        this.includes = Utils.nonNullUnmodifiableList(includes);
+        this.contains = Utils.nonNullUnmodifiableList(contains);
     }
 
     @Override

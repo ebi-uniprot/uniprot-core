@@ -35,7 +35,7 @@ public class FeatureIdImpl implements FeatureId {
     }
 
     public FeatureIdImpl(String value) {
-        this.value = Utils.resetNull(value);
+        this.value = Utils.nullToEmpty(value);
     }
 
     public static boolean hasFeatureId(FeatureType type) {

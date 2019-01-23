@@ -32,7 +32,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId, List<Evidence> evidences) {
         super(database, id, properties);
         this.isoformId = isoformId;
-        this.evidences = Utils.unmodifierList(evidences);
+        this.evidences = Utils.nonNullUnmodifiableList(evidences);
     }
 
     public String getIsoformId() {

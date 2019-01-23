@@ -33,7 +33,7 @@ class CofactorImplTest {
         String name = "Some cofactor";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "ChEBI:213");
         List<Evidence> evidences = Collections.emptyList();
-        Cofactor cofactor = new CofactorBuilder().name(name).reference(reference).evidences(createEvidences()).build();
+        Cofactor cofactor = new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(evidences, cofactor.getEvidences());

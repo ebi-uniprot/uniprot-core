@@ -15,7 +15,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     private Note note;
 
     public AlternativeProductsComment build() {
-        return new AlternativeProductsCommentImpl(this);
+        return new AlternativeProductsCommentImpl(events, isoforms, note);
     }
 
     @Override
