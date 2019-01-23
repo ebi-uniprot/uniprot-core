@@ -1,11 +1,12 @@
-package uk.ac.ebi.uniprot.domain.uniprot.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,7 +35,7 @@ class FreeTextImplTest {
                 EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
         ));
         texts.add(new EvidencedValueImpl("value 1", evidences));
-        texts.add(UniProtFactory.INSTANCE.createEvidencedValue("value2", Collections.emptyList()));
+        texts.add(new EvidencedValueImpl("value2", Collections.emptyList()));
         FreeTextImpl freeText = new FreeTextImpl(texts);
         assertEquals(texts, freeText.getTexts());
         TestHelper.verifyJson(freeText);

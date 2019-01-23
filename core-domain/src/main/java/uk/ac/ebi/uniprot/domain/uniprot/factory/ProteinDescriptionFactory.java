@@ -11,11 +11,11 @@ public enum ProteinDescriptionFactory {
 
 
     public EC createECNumber(String value, List<Evidence> evidences) {
-        return new ECImpl(value, evidences);
+        return null;//new ECImpl(value, evidences);
     }
 
     public Name createName(String value, List<Evidence> evidences) {
-        return new NameImpl(value, evidences);
+        return null;//new NameImpl(value, evidences);
     }
 
     public ProteinName createProteinName(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {

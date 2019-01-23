@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl;
 
 import org.junit.jupiter.api.Test;
 

@@ -2,6 +2,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
+import java.util.List;
+
 public final class UniProtXDbType implements DatabaseType {
     private String name;
 
@@ -20,6 +22,15 @@ public final class UniProtXDbType implements DatabaseType {
 
     public UniProtXDbTypeDetail getDetail() {
         return UniProtXDbTypes.INSTANCE.getType(name);
+    }
+
+    public DBXRefTypeAttribute getAttribute(int position) {
+        DBXRefTypeAttribute toReturn = null;
+        List<DBXRefTypeAttribute> attributes = UniProtXDbTypes.INSTANCE.getType(name).getAttributes();
+        if (attributes.size() > position) {
+            toReturn = attributes.get(position);
+        }
+        return toReturn;
     }
 
     @Override

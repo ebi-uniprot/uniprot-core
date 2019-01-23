@@ -7,7 +7,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,20 +18,20 @@ class InteractionCommentImplTest {
     void testInteractionCommentImpl() {
         List<Interaction> interactions = new ArrayList<>();
         interactions.add(new InteractionBuilder()
-                .interactionType(InteractionType.BINARY)
-                .geneName("gn22")
-                .numberOfExperiments(3)
-                .firstInteractor("first1")
-                .secondInteractor("first2")
-                .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
-                .build());
+                                 .interactionType(InteractionType.BINARY)
+                                 .geneName("gn22")
+                                 .numberOfExperiments(3)
+                                 .firstInteractor("first1")
+                                 .secondInteractor("first2")
+                                 .uniProtAccession("P12345")
+                                 .build());
         interactions.add(new InteractionBuilder()
-                .interactionType(InteractionType.SELF)
-                .geneName("some gene name")
-                .numberOfExperiments(12)
-                .firstInteractor("first3")
-                .secondInteractor("first4")
-                .build());
+                                 .interactionType(InteractionType.SELF)
+                                 .geneName("some gene name")
+                                 .numberOfExperiments(12)
+                                 .firstInteractor("first3")
+                                 .secondInteractor("first4")
+                                 .build());
 
         InteractionComment comment = new InteractionCommentImpl(interactions);
         assertEquals(interactions, comment.getInteractions());

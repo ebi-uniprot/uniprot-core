@@ -2,8 +2,10 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 
 import java.util.Arrays;
 import java.util.List;
@@ -107,7 +109,7 @@ public class InteractionBuilderTest {
                 .numberOfExperiments(3)
                 .firstInteractor("first1")
                 .secondInteractor("first2")
-                .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
+                .uniProtAccession("P12345")
                 .build();
         assertEquals(InteractionType.BINARY, interaction.getType());
         assertEquals("gn22", interaction.getGeneName());
@@ -127,7 +129,7 @@ public class InteractionBuilderTest {
                 .numberOfExperiments(3)
                 .firstInteractor("first1")
                 .secondInteractor("first2")
-                .uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession("P12345"))
+                .uniProtAccession("P12345")
                 .build();
         List<Interaction> interactions = Arrays.asList(interaction);
         InteractionCommentBuilder commentBuilder = new InteractionCommentBuilder();

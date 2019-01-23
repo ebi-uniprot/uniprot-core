@@ -1,7 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.builder;
 
+import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
@@ -31,11 +33,6 @@ public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuil
                 .isoformId(instance.getIsoformId());
     }
 
-    @Override
-    protected UniProtDBCrossReferenceBuilder getThis() {
-        return this;
-    }
-
     public UniProtDBCrossReferenceBuilder isoformId(String isoformId) {
         this.isoformId = isoformId;
         return this;
@@ -48,6 +45,18 @@ public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuil
 
     public UniProtDBCrossReferenceBuilder evidence(Evidence evidence) {
         this.evidences.add(evidence);
+        return this;
+    }
+
+    public UniProtDBCrossReferenceBuilder addProperty(DBXRefTypeAttribute attribute, String value) {
+        if (value != null && !value.isEmpty() && attribute != null) {
+            this.properties.add(new Property(attribute.getName(), value));
+        }
+        return this;
+    }
+
+    @Override
+    protected UniProtDBCrossReferenceBuilder getThis() {
         return this;
     }
 }

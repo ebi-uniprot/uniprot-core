@@ -3,8 +3,9 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 
 import java.util.List;
 
@@ -20,27 +21,14 @@ public class UniProtDBCrossReferenceImplTest {
         String type = "GeneDB";
         String id = "H25N7.01:pep";
         String description = "-";
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description);
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .build();
 
         verify(xref, val, type, id, description, null, null, null);
-
     }
-
-    @Test
-    public void testUniProtDatabaseCrossReferenceImpl12ByFactory() {
-        // DR GeneDB; H25N7.01:pep; -.
-        String val = "GeneDB; H25N7.01:pep; -.";
-        String type = "GeneDB";
-        String id = "H25N7.01:pep";
-        String description = "-";
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description);
-
-        verify(xref, val, type, id, description, null, null, null);
-
-    }
-
 
     @Test
     public void testUniProtDatabaseCrossReferenceImpl32ByFactory() {
@@ -52,8 +40,11 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr);
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .build();
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
 
     }
@@ -68,10 +59,15 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr);
-        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
 
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .addProperty(dbType.getAttribute(1), thirdAttr)
+                .build();
+
+        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
 
 
@@ -85,10 +81,15 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = "IEA:Ensembl";
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr);
-        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
 
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .addProperty(dbType.getAttribute(1), thirdAttr)
+                .build();
+
+        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
 
     @Test
@@ -101,8 +102,15 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
+
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .addProperty(dbType.getAttribute(1), thirdAttr)
+                .isoformId(isoform)
+                .build();
+
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
 
     }
@@ -117,10 +125,16 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = "IEA:Ensembl";
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
-        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
 
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .addProperty(dbType.getAttribute(1), thirdAttr)
+                .isoformId(isoform)
+                .build();
+
+        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
 
 
@@ -134,10 +148,17 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = "-";
         String fourthAttr = "mRNA";
         String isoform = null;
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
-        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
 
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .addProperty(dbType.getAttribute(1), thirdAttr)
+                .addProperty(dbType.getAttribute(2), fourthAttr)
+                .isoformId(isoform)
+                .build();
+
+        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
 
 
@@ -151,23 +172,16 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = "ENSG00000011143";
         String fourthAttr = null;
         String isoform = "Q9NXB0-1";
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
-        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
-    }
 
-    @Test
-    public void testUniProtDatabaseCrossReferenceImpl4IsoByFactory() {
-        // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
-        String val = "Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]";
-        String type = "Ensembl";
-        String id = "ENST00000393119";
-        String description = "ENSP00000376827";
-        String thirdAttr = "ENSG00000011143";
-        String fourthAttr = null;
-        String isoform = "Q9NXB0-1";
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .addProperty(dbType.getAttribute(1), thirdAttr)
+                .addProperty(dbType.getAttribute(2), fourthAttr)
+                .isoformId(isoform)
+                .build();
+
         verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
     }
 
@@ -181,31 +195,22 @@ public class UniProtDBCrossReferenceImplTest {
         String thirdAttr = null;
         String fourthAttr = null;
         String isoform = null;
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
+
+        UniProtXDbType dbType = new UniProtXDbType(type);
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder()
+                .databaseType(dbType)
+                .addProperty(dbType.getAttribute(0), description)
+                .addProperty(dbType.getAttribute(1), thirdAttr)
+                .addProperty(dbType.getAttribute(2), fourthAttr)
+                .isoformId(isoform)
+                .build();
+
         verify(xref, val, type, id, description, null, null, null);
 
     }
 
-    @Test
-    public void testUniProtDatabaseCrossReferenceImpl40Iso() {
-        // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
-        String val = "Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]";
-        String type = "Ensembl";
-        String id = "ENST00000393119";
-        String description = "ENSP00000376827";
-        String thirdAttr = "ENSG00000011143";
-        String fourthAttr = null;
-        String isoform = "Q9NXB0-1";
-
-        UniProtDBCrossReference xref = UniProtDBCrossReferenceFactory.INSTANCE
-                .createUniProtDBCrossReference(type, id, description, thirdAttr, fourthAttr, isoform);
-        verify(xref, val, type, id, description, thirdAttr, fourthAttr, isoform);
-    }
-
     private void verify(UniProtDBCrossReference xref, String drVal, String type, String id, String description,
-                        String thirdAttr, String fourAttr, String isoformId
-    ) {
+                        String thirdAttr, String fourAttr, String isoformId) {
         assertEquals(drVal, xref.toString());
         assertEquals(type, xref.getDatabaseType().getName());
         assertEquals(id, xref.getId());
@@ -223,6 +228,4 @@ public class UniProtDBCrossReferenceImplTest {
         } else
             return properties.get(number).getValue();
     }
-
-
 }

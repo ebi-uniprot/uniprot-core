@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 
@@ -31,7 +30,7 @@ class FeatureImplTest {
     @Test
     void testWithFeatureId() {
         Range location = new Range(32, 96);
-        FeatureId featureId = FeatureFactory.INSTANCE.createFeatureId("PRO_324");
+        FeatureId featureId = new FeatureIdImpl("PRO_324");
         FeatureImpl feature = new FeatureImpl(FeatureType.CHAIN, location, "Some chain description",
                                               featureId,
                                               createEvidences());
