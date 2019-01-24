@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 
 public class LineBuilderHelper {
