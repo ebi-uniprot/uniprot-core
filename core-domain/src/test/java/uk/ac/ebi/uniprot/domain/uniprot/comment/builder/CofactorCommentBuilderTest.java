@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Collections.singletonList;
 import static org.junit.Assert.*;
 import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
@@ -43,7 +44,7 @@ public class CofactorCommentBuilderTest {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
-        List<Cofactor> cofactors = Arrays.asList(cofactor);
+        List<Cofactor> cofactors = singletonList(cofactor);
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
         String molecule = "some mol";
         CofactorComment comment =

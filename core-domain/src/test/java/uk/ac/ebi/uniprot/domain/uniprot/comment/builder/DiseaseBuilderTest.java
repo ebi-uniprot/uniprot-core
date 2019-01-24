@@ -5,6 +5,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
@@ -54,17 +55,16 @@ public class DiseaseBuilderTest {
     public void testSetDescription() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
-        String description ="some description";
         List<Evidence> evidences =  createEvidences();
 
-
         String diseaseId = "someId";
+        DiseaseDescription diseaseDescription = new DiseaseDescriptionBuilder("some description", evidences).build();
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder(description, evidences).build())
+                .description(diseaseDescription)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
-        assertEquals(description, disease.getDescription());
+        assertEquals(diseaseDescription, disease.getDescription());
         assertNull(disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
         TestHelper.verifyJson(disease);
@@ -74,21 +74,19 @@ public class DiseaseBuilderTest {
     public void testSetReference() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
-        String description ="some description";
         List<Evidence> evidences =  createEvidences();
-
-        String val = "some description";
 
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, referenceId);
         String diseaseId = "someId";
+        DiseaseDescription diseaseDescription = new DiseaseDescriptionBuilder("some description", evidences).build();
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder(description, evidences).build())
+                .description(diseaseDescription)
                 .reference(reference)        
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
-        assertEquals(description, disease.getDescription());
+        assertEquals(diseaseDescription, disease.getDescription());
         assertEquals(reference, disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
         TestHelper.verifyJson(disease);

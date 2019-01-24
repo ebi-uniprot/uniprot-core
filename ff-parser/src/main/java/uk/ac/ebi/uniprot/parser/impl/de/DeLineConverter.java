@@ -1,29 +1,23 @@
 package uk.ac.ebi.uniprot.parser.impl.de;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 import uk.ac.ebi.uniprot.parser.impl.de.DeLineObject.FlagType;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DeLineConverter extends EvidenceCollector implements Converter<DeLineObject, ProteinDescription> {
 	private final ProteinDescriptionFactory factory = ProteinDescriptionFactory.INSTANCE;
 
 	@Override
 	public ProteinDescription convert(DeLineObject f) {
-		Map<Object, List<Evidence>> evidenceMap = EvidenceHelper.convert(f.getEvidenceInfo());
+		Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll(evidenceMap.values());
 		// ProteinDescription pd = factory.buildProteinDescription();
 		ProteinName recName = null;

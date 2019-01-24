@@ -1,16 +1,16 @@
 package uk.ac.ebi.uniprot.parser.impl.og;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class OgLineConverter extends EvidenceCollector implements
 		Converter<OgLineObject, List<Organelle>> {
@@ -19,7 +19,7 @@ public class OgLineConverter extends EvidenceCollector implements
 	@Override
 	public List<Organelle> convert(OgLineObject f) {
 		List<Organelle> organelles = new ArrayList<Organelle>();
-		Map<Object, List<Evidence>> evidenceMap = EvidenceHelper.convert(f
+		Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f
 				.getEvidenceInfo());
 		this.addAll(evidenceMap.values());
 		for (OgLineObject.OgEnum ogEnum : f.ogs) {

@@ -26,7 +26,7 @@ public class EvidenceHelper {
                               .build());
         evidences.add(new EvidenceBuilder()
                               .databaseName("PIRNR")
-                              .databaseName("PIRNR001361")
+                              .databaseId("PIRNR001361")
                               .evidenceCode(EvidenceCode.ECO_0000256)
                               .build());
         return evidences;

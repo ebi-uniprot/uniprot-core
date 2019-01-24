@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,7 +16,7 @@ public class OxLineConverter extends EvidenceCollector implements Converter<OxLi
 	@Override
 	public Organism convert(OxLineObject f) {
 	
-		Map<Object, List<Evidence> > evidences = EvidenceHelper.convert(f.getEvidenceInfo());
+		Map<Object, List<Evidence> > evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll( evidences.values());
 		return new OrganismBuilder()
 				.taxonId(f.taxonomy_id)

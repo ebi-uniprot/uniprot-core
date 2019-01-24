@@ -1,15 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidenceBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,29 +23,25 @@ class ProteinSectionImplTest {
     @Test
     void testFull() {
         List<Evidence> evidences = createEvidences();
-        Name fullName = new NameImpl("a full Name", evidences);
+        Name fullName = new NameBuilder().value("a full Name").evidences(evidences).build();
         List<Name> shortNames = createShortNames();
-        ProteinName recName = new ProteinNameBuilder().setFullName(fullName).setShortNames(shortNames).setEcNumbers(null).createProteinNameImpl();
+        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
         List<ProteinName> altNames = createAltName();
-        ProteinSectionImpl section = new ProteinSectionBuilder().setRecommendedName(recName).setAlternativeNames(altNames).createProteinSectionImpl();
+        ProteinSection section = new ProteinSectionBuilder().recommendedName(recName).alternativeNames(altNames).build();
         assertEquals(recName, section.getRecommendedName());
         assertEquals(altNames, section.getAlternativeNames());
-
-        TestHelper.verifyJson(section);
     }
 
     @Test
     void testOnlyRecName() {
         List<Evidence> evidences = createEvidences();
-        Name fullName = new NameImpl("a full Name", evidences);
+        Name fullName = new NameBuilder().value("a full Name").evidences(evidences).build();
         List<Name> shortNames = createShortNames();
-        ProteinName recName = new ProteinNameBuilder().setFullName(fullName).setShortNames(shortNames).setEcNumbers(null).createProteinNameImpl();
+        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
         List<ProteinName> altNames = null;
-        ProteinSectionImpl section = new ProteinSectionBuilder().setRecommendedName(recName).setAlternativeNames(altNames).createProteinSectionImpl();
+        ProteinSection section = new ProteinSectionBuilder().recommendedName(recName).alternativeNames(altNames).build();
         assertEquals(recName, section.getRecommendedName());
         assertEquals(0, section.getAlternativeNames().size());
-
-        TestHelper.verifyJson(section);
     }
 
     private List<Name> createShortNames() {
@@ -57,22 +55,30 @@ class ProteinSectionImplTest {
     private List<ProteinName> createAltName() {
         List<ProteinName> alternativeNames = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        Name fullName = ProteinDescriptionFactory.INSTANCE.createName("a full alt Name", evidences);
+        Name fullName = new NameBuilder().value("a full alt Name").evidences(evidences).build();
         List<Name> shortNames = new ArrayList<>();
-        shortNames.add(ProteinDescriptionFactory.INSTANCE.createName("short name1", evidences));
-        shortNames.add(ProteinDescriptionFactory.INSTANCE.createName("short name2", evidences));
+        shortNames.add(new NameBuilder().value("short name1").evidences(evidences).build());
+        shortNames.add(new NameBuilder().value("short name2").evidences(evidences).build());
         List<EC> ecNumbers = new ArrayList<>();
-        ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.4", evidences));
+        ecNumbers.add(new ECBuilder().value("1.2.3.4").evidences( evidences).build());
 
-        alternativeNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName(fullName, shortNames, ecNumbers));
+        alternativeNames.add(new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build());
 
         return alternativeNames;
     }
 
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10028"));
-        evidences.add(UniProtFactory.INSTANCE.createEvidence("ECO:0000256|PIRNR:PIRNR001361"));
+        evidences.add(new EvidenceBuilder()
+                .evidenceCode(EvidenceCode.ECO_0000255)
+                .databaseName("PROSITE-ProRule")
+                .databaseId("PRU10028")
+                .build());
+        evidences.add(new EvidenceBuilder()
+                .evidenceCode(EvidenceCode.ECO_0000256)
+                .databaseName("PIRNR")
+                .databaseId("PIRNR001361")
+                .build());
         return evidences;
     }
 }

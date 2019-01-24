@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.Property;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 10/01/19
  *
@@ -43,7 +45,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
     }
 
     public B properties(List<Property> properties) {
-        this.properties.addAll(properties);
+        nonNullAddAll(properties, this.properties);
         return getThis();
     }
 

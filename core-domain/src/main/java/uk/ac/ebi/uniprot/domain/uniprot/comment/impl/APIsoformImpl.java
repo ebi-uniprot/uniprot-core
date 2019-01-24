@@ -27,10 +27,10 @@ public class APIsoformImpl implements APIsoform {
 
     public APIsoformImpl(APIsoformBuilder builder) {
         this.name = builder.getName();
-        this.synonyms = Utils.unmodifierList(builder.getSynonyms());
+        this.synonyms = Utils.nonNullUnmodifiableList(builder.getSynonyms());
         this.note = builder.getNote();
-        this.isoformIds = Utils.unmodifierList(builder.getIds());
-        this.sequenceIds = Utils.unmodifierList(builder.getSequenceIds());
+        this.isoformIds = Utils.nonNullUnmodifiableList(builder.getIds());
+        this.sequenceIds = Utils.nonNullUnmodifiableList(builder.getSequenceIds());
 
         if (builder.getSequenceStatus() == null) {
             this.isoformSequenceStatus = IsoformSequenceStatus.DESCRIBED;

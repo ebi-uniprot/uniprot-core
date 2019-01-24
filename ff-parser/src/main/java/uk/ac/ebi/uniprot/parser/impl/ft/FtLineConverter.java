@@ -1,27 +1,18 @@
 package uk.ac.ebi.uniprot.parser.impl.ft;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
+
+import java.util.*;
+import java.util.regex.Matcher;
 
 public class FtLineConverter extends EvidenceCollector
 		implements Converter<FtLineObject, List<Feature>> {
@@ -33,7 +24,7 @@ public class FtLineConverter extends EvidenceCollector
 	@Override
 	public List< Feature> convert(FtLineObject f) {
 		List< Feature> features = new ArrayList<>();
-		Map<Object, List<Evidence>> evidenceMap = EvidenceHelper.convert(f.getEvidenceInfo());
+		Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll(evidenceMap.values());
 		for (FtLineObject.FT ft : f.fts) {
 			FeatureType featureType = convert(ft.type);

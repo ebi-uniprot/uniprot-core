@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
@@ -27,9 +27,9 @@ public class UniProtReferenceImpl implements UniProtReference {
 
     public UniProtReferenceImpl(UniProtReferenceBuilder builder) {
         this.citation = builder.getCitation();
-        this.referencePositions = Utils.unmodifierList(builder.getPositions());
-        this.referenceComments = Utils.unmodifierList(builder.getComments());
-        this.evidences = Utils.unmodifierList(builder.getEvidences());
+        this.referencePositions = Utils.nonNullUnmodifiableList(builder.getPositions());
+        this.referenceComments = Utils.nonNullUnmodifiableList(builder.getComments());
+        this.evidences = Utils.nonNullUnmodifiableList(builder.getEvidences());
     }
 
     @Override

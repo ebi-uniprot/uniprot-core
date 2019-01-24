@@ -9,6 +9,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions = new ArrayList<>();
@@ -32,7 +34,7 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
     }
 
     public RnaEditingCommentBuilder positions(List<RnaEdPosition> position) {
-        this.positions.addAll(position);
+        nonNullAddAll(position, this.positions);
         return this;
     }
 

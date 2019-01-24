@@ -9,13 +9,15 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AlternativeProductsCommentI
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
     private List<APEventType> events = new ArrayList<>();
     private List<APIsoform> isoforms = new ArrayList<>();
     private Note note;
 
     public AlternativeProductsComment build() {
-        return new AlternativeProductsCommentImpl(this);
+        return new AlternativeProductsCommentImpl(events, isoforms, note);
     }
 
     @Override
@@ -29,7 +31,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     }
 
     public APCommentBuilder events(List<APEventType> events) {
-        this.events.addAll(events);
+        nonNullAddAll(events, this.events);
         return this;
     }
 
@@ -39,7 +41,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     }
 
     public APCommentBuilder isoforms(List<APIsoform> isoforms) {
-        this.isoforms.addAll(isoforms);
+        nonNullAddAll(isoforms, this.isoforms);
         return this;
     }
 

@@ -4,11 +4,13 @@ import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtReferenceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
  * Created 18/01/19
@@ -44,7 +46,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder positions(List<String> referencePositions) {
-        this.referencePositions.addAll(referencePositions);
+        nonNullAddAll(referencePositions, this.referencePositions);
         return this;
     }
 
@@ -54,7 +56,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder comments(List<ReferenceComment> referenceComments) {
-        this.referenceComments.addAll(referenceComments);
+        nonNullAddAll(referenceComments, this.referenceComments);
         return this;
     }
 
@@ -64,7 +66,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

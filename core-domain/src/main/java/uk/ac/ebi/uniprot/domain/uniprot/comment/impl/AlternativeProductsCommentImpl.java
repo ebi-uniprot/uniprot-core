@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,19 +17,22 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
         this.isoforms = Collections.emptyList();
     }
 
-    public AlternativeProductsCommentImpl(APCommentBuilder builder) {
+    public AlternativeProductsCommentImpl(
+            List<APEventType> events,
+            List<APIsoform> isoforms,
+            Note note) {
         super(CommentType.ALTERNATIVE_PRODUCTS);
-        if ((builder.getEvents() == null) || builder.getEvents().isEmpty()) {
+        if ((events == null) || events.isEmpty()) {
             this.events = Collections.emptyList();
         } else {
             this.events = Collections.unmodifiableList(events);
         }
-        if ((builder.getIsoforms() == null) || builder.getIsoforms().isEmpty()) {
+        if ((isoforms == null) || isoforms.isEmpty()) {
             this.isoforms = Collections.emptyList();
         } else {
             this.isoforms = Collections.unmodifiableList(isoforms);
         }
-        this.note = builder.getNote();
+        this.note = note;
     }
 
     @Override

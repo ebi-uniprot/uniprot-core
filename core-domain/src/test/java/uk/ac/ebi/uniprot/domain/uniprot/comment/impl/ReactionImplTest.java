@@ -74,7 +74,10 @@ class ReactionImplTest {
         references.add(xref(ReactionReferenceType.CHEBI, "ChEBI:3243"));
 
         Reaction reaction = new ReactionBuilder()
-                .references(references).evidences(evidences).build();
+                .name(name)
+                .references(references)
+                .evidences(evidences)
+                .build();
         assertEquals(evidences, reaction.getEvidences());
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());

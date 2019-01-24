@@ -4,14 +4,13 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static uk.ac.ebi.uniprot.domain.uniprot.EvidenceHelper.createEvidences;
 
 public class OrganelleImplTest {
 
@@ -21,7 +20,7 @@ public class OrganelleImplTest {
         String val = "";
         List<Evidence> evidences = createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
-        String expected = "Plastid; Apicoplast {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected = "Plastid; Apicoplast {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
         TestHelper.verifyJson(organelle);
     }
@@ -32,7 +31,7 @@ public class OrganelleImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
-        String expected = "Mitochondrion {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected = "Mitochondrion {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
         TestHelper.verifyJson(organelle);
     }
@@ -43,7 +42,7 @@ public class OrganelleImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
-        String expected = "Hydrogenosome {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected = "Hydrogenosome {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
         TestHelper.verifyJson(organelle);
     }
@@ -54,7 +53,7 @@ public class OrganelleImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
-        String expected = "Plastid {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected = "Plastid {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
         TestHelper.verifyJson(organelle);
     }
@@ -65,7 +64,7 @@ public class OrganelleImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         Organelle organelle = new OrganelleImpl(type, val, evidences);
-        String expected = "Plasmid some value {ECO:0000313|Ensembl:ENSP0001324, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected = "Plasmid some value {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, organelle.getDisplayed(""));
         TestHelper.verifyJson(organelle);
     }
@@ -80,15 +79,5 @@ public class OrganelleImplTest {
         assertEquals(val, organelle.getValue());
         assertTrue(organelle.getEvidences().isEmpty());
         TestHelper.verifyJson(organelle);
-    }
-
-    private List<Evidence> createEvidences() {
-        List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
-
-        return evidences;
     }
 }

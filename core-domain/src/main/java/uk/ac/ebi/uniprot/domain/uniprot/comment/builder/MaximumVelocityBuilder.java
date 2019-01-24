@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 16/01/19
  *
@@ -50,7 +52,7 @@ public class MaximumVelocityBuilder implements Builder2<MaximumVelocityBuilder, 
     }
 
     public MaximumVelocityBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

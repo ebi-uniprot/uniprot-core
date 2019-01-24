@@ -8,13 +8,15 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorCommentImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public final class CofactorCommentBuilder implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {
     private String molecule;
     private List<Cofactor> cofactors = new ArrayList<>();
     private Note note;
 
     public CofactorComment build() {
-        return new CofactorCommentImpl(this);
+        return new CofactorCommentImpl(molecule, cofactors, note);
     }
 
     @Override
@@ -32,7 +34,7 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     }
 
     public CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
-        this.cofactors.addAll(cofactors);
+        nonNullAddAll(cofactors, this.cofactors);
         return this;
     }
 

@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
 
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
-
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
 
 
@@ -28,8 +27,8 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
     public AlternativeSequenceImpl(String originalSequence,
                                    List<String> alternativeSequences
                                    ) {
-        this.originalSequence = Utils.resetNull(originalSequence);
-        this.alternativeSequences = Utils.unmodifierList(alternativeSequences);
+        this.originalSequence = Utils.nullToEmpty(originalSequence);
+        this.alternativeSequences = Utils.nonNullUnmodifiableList(alternativeSequences);
 
     }
 

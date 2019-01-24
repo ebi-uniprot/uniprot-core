@@ -1,11 +1,9 @@
 package uk.ac.ebi.uniprot.parser;
 
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+
 import java.util.Collection;
 import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
-
 
 public interface HasEvidence {
 	void clear();

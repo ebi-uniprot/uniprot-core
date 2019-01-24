@@ -1,21 +1,17 @@
 package uk.ac.ebi.uniprot.parser.impl.gn;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
+import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 import uk.ac.ebi.uniprot.parser.impl.gn.GnLineObject.GnName;
 import uk.ac.ebi.uniprot.parser.impl.gn.GnLineObject.GnObject;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class GnLineConverter extends EvidenceCollector implements
 		Converter<GnLineObject, List<Gene>> {
@@ -29,7 +25,7 @@ public class GnLineConverter extends EvidenceCollector implements
 			List<ORFName> orfNames = new ArrayList<>();
 			List<OrderedLocusName> olnNames = new ArrayList<>();
 			for (GnName gn : gno.names) {
-				Map<Object, List<Evidence>> evidenceMap = EvidenceHelper
+				Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper
 						.convert(gn.getEvidenceInfo());
 				this.addAll(evidenceMap.values());
 				switch (gn.type) {

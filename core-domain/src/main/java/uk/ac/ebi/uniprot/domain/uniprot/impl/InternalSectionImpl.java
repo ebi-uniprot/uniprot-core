@@ -24,9 +24,9 @@ public class InternalSectionImpl implements InternalSection {
 
     public InternalSectionImpl(List<InternalLine> internalLines, List<EvidenceLine> evidenceLines,
                                List<SourceLine> sourceLines) {
-        this.internalLines = Utils.unmodifierList(internalLines);
-        this.evidenceLines = Utils.unmodifierList(evidenceLines);
-        this.sourceLines = Utils.unmodifierList(sourceLines);
+        this.internalLines = Utils.nonNullUnmodifiableList(internalLines);
+        this.evidenceLines = Utils.nonNullUnmodifiableList(evidenceLines);
+        this.sourceLines = Utils.nonNullUnmodifiableList(sourceLines);
     }
 
     @Override

@@ -43,10 +43,6 @@ public class ProteinNameBuilder implements Builder2<ProteinNameBuilder, ProteinN
         return this;
     }
 
-    public ProteinNameImpl createProteinNameImpl() {
-        return new ProteinNameImpl(fullName, shortNames, ecNumbers);
-    }
-
     @Override
     public ProteinName build() {
         return new ProteinNameImpl(fullName, shortNames, ecNumbers);

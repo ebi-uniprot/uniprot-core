@@ -7,11 +7,13 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionCommentImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public class InteractionCommentBuilder implements CommentBuilder<InteractionCommentBuilder, InteractionComment> {
     private List<Interaction> interactions = new ArrayList<>();
 
     public InteractionCommentBuilder interactions(List<Interaction> interactions) {
-        this.interactions.addAll(interactions);
+        nonNullAddAll(interactions, this.interactions);
         return this;
     }
 

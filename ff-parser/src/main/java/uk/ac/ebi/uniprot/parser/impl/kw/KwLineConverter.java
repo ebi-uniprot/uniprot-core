@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.parser.impl.kw;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import uk.ac.ebi.uniprot.cv.keyword.KeywordService;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.exception.ParseKeywordException;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
+import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class KwLineConverter extends EvidenceCollector implements Converter<KwLineObject, List<Keyword> > {
 	private final KeywordService keywordService;
@@ -28,7 +28,7 @@ public class KwLineConverter extends EvidenceCollector implements Converter<KwLi
 	
 	@Override
 	public List<Keyword> convert(KwLineObject f) {
-		Map<Object, List<Evidence> > evidences = EvidenceHelper.convert(f.getEvidenceInfo());
+		Map<Object, List<Evidence> > evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll( evidences.values());
 		List<Keyword> keywords =new ArrayList<>();
 		for(String kw: f.keywords){

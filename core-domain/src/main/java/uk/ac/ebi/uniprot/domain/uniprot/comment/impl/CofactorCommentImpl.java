@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,18 +19,20 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         this.cofactors = Collections.emptyList();
     }
 
-    public CofactorCommentImpl(CofactorCommentBuilder builder) {
+    public CofactorCommentImpl(String molecule,
+                               List<Cofactor> cofactors,
+                               Note note) {
         super(CommentType.COFACTOR);
-        if (builder.getMolecule() == null || builder.getMolecule().isEmpty())
-            this.molecule = null;
+        if(molecule == null || molecule.isEmpty())
+            this.molecule =null;
         else
-            this.molecule = builder.getMolecule();
-        if ((cofactors == null) || cofactors.isEmpty()) {
+            this.molecule =molecule;
+        if((cofactors ==null) || cofactors.isEmpty()){
             this.cofactors = Collections.emptyList();
-        } else {
-            this.cofactors = Collections.unmodifiableList(builder.getCofactors());
+        }else{
+            this.cofactors =Collections.unmodifiableList(cofactors);
         }
-        this.note = builder.getNote();
+        this.note =note;
     }
 
     @Override

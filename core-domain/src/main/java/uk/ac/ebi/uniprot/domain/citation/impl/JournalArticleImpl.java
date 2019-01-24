@@ -27,9 +27,9 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         super(CitationType.JOURNAL_ARTICLE, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
               builder.getTitle(), builder.getPublicationDate());
         this.journal = new JournalImpl(builder.getJournalName());
-        this.firstPage = Utils.resetNull(builder.getFirstPage());
-        this.lastPage = Utils.resetNull(builder.getLastPage());
-        this.volume = Utils.resetNull(builder.getVolume());
+        this.firstPage = Utils.nullToEmpty(builder.getFirstPage());
+        this.lastPage = Utils.nullToEmpty(builder.getLastPage());
+        this.volume = Utils.nullToEmpty(builder.getVolume());
     }
 
     @Override

@@ -4,11 +4,12 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidenceBuilder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,17 +18,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class ECImplTest {
 
     @Test
-    void testECImpl() {
+    void testECImplComplete() {
         String ec = "4.6.1.2";
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"
-        ));
-        evidences.add(new EvidenceImpl(
-                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
-        ));
+        evidences.add(new EvidenceBuilder().evidenceCode(EvidenceCode.ECO_0000313)
+                        .databaseName("Ensembl").databaseId("ENSP0001324").build());
+        evidences.add(
+                new EvidenceBuilder().evidenceCode(EvidenceCode.ECO_0000256)
+                        .databaseName("PIRNR").databaseId("PIRNR001361").build());
 
-        EC ecObj = new ECBuilder().setValue(ec).setEvidences(evidences).createECImpl();
+        EC ecObj = new ECBuilder().value(ec).evidences(evidences).build();
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
         assertEquals(evidences, ecObj.getEvidences());
@@ -35,14 +35,13 @@ class ECImplTest {
     }
 
     @Test
-    void testECImplNoEv() {
+    void testECImplWithoutEvidences() {
         String ec = "4.6.1.2";
-        List<Evidence> evidences = new ArrayList<>();
 
-        EC ecObj = new ECBuilder().setValue(ec).setEvidences(evidences).createECImpl();
+        EC ecObj = new ECBuilder().value(ec).build();
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
-        assertEquals(evidences, ecObj.getEvidences());
+        assertEquals(Collections.emptyList(), ecObj.getEvidences());
         TestHelper.verifyJson(ecObj);
     }
 

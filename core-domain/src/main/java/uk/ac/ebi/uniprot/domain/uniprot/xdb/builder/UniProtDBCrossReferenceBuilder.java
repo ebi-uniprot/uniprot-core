@@ -1,13 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.builder;
 
+import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
  * Created 22/01/19
@@ -25,14 +29,10 @@ public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuil
 
     @Override
     public UniProtDBCrossReferenceBuilder from(UniProtDBCrossReference instance) {
+        evidences.clear();
         return super.from(instance)
                 .evidences(instance.getEvidences())
                 .isoformId(instance.getIsoformId());
-    }
-
-    @Override
-    protected UniProtDBCrossReferenceBuilder getThis() {
-        return this;
     }
 
     public UniProtDBCrossReferenceBuilder isoformId(String isoformId) {
@@ -41,12 +41,24 @@ public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuil
     }
 
     public UniProtDBCrossReferenceBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 
     public UniProtDBCrossReferenceBuilder evidence(Evidence evidence) {
         this.evidences.add(evidence);
+        return this;
+    }
+
+    public UniProtDBCrossReferenceBuilder addProperty(DBXRefTypeAttribute attribute, String value) {
+        if (value != null && !value.isEmpty() && attribute != null) {
+            this.properties.add(new Property(attribute.getName(), value));
+        }
+        return this;
+    }
+
+    @Override
+    protected UniProtDBCrossReferenceBuilder getThis() {
         return this;
     }
 }

@@ -51,7 +51,7 @@ class KineticParametersImplTest {
         double constant = 2.13;
         MichaelisConstantUnit unit = MichaelisConstantUnit.MG_ML_2;
         String substrate = "some value";
-        MichaelisConstant mconstant = new MichaelisConstantBuilder().constant(constant).unit(unit).substrate(substrate).build();
+        MichaelisConstant mconstant = new MichaelisConstantBuilder().evidences(createEvidences()).constant(constant).unit(unit).substrate(substrate).build();
         assertEquals(constant, mconstant.getConstant(), Float.MIN_VALUE);
         assertEquals(unit, mconstant.getUnit());
         assertEquals(substrate, mconstant.getSubstrate());

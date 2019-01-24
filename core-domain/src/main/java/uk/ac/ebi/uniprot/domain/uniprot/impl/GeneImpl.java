@@ -32,10 +32,10 @@ public class GeneImpl implements Gene {
             List<OrderedLocusName> orderedLocusNames,
             List<ORFName> orfNames) {
         this.geneName = geneName;
-        this.synonyms = Utils.unmodifierList(synonyms);
-        this.orderedLocusNames = Utils.unmodifierList(orderedLocusNames);
+        this.synonyms = Utils.nonNullUnmodifiableList(synonyms);
+        this.orderedLocusNames = Utils.nonNullUnmodifiableList(orderedLocusNames);
 
-        this.orfNames = Utils.unmodifierList(orfNames);
+        this.orfNames = Utils.nonNullUnmodifiableList(orfNames);
 
         if (!hasGeneName() && !this.synonyms.isEmpty()) {
             throw new IllegalArgumentException("There should be synonyms without gene name.");

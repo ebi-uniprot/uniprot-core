@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImp
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();
@@ -31,7 +33,7 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
     }
 
     public CatalyticActivityCommentBuilder physiologicalReactions(List<PhysiologicalReaction> physiologicalReactions) {
-        this.physiologicalReactions.addAll(physiologicalReactions);
+        nonNullAddAll(physiologicalReactions, this.physiologicalReactions);
         return this;
     }
 

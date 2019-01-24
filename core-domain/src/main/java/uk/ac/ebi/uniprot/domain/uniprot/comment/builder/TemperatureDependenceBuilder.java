@@ -6,6 +6,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 16/01/19
  *
@@ -13,7 +15,7 @@ import java.util.List;
  */
 public class TemperatureDependenceBuilder extends AbstractFreeTextBuilder<TemperatureDependenceBuilder, TemperatureDependence> {
     public TemperatureDependenceBuilder(List<EvidencedValue> evidencedValues) {
-        this.evidencedValues.addAll(evidencedValues);
+        nonNullAddAll(evidencedValues, this.evidencedValues);
     }
 
     @Override
