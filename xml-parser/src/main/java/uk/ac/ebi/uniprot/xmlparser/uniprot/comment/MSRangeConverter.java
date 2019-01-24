@@ -45,7 +45,11 @@ public class MSRangeConverter implements Converter<LocationType, MassSpectrometr
 	public LocationType toXml(MassSpectrometryRange uniObj) {
 		if (uniObj != null) {
 			LocationType locationXML = xmlUniprotFactory.createLocationType();
-			if(uniObj.getRange().getStart().equals(uniObj.getRange().getEnd())) {
+			if(uniObj.getRange().getStart().getModifier() ==PositionModifier.UNKOWN) {
+				locationXML.setBegin(toXml(uniObj.getRange().getStart()));
+				locationXML.setEnd(toXml(uniObj.getRange().getEnd()));
+			}
+			else if(uniObj.getRange().getStart().equals(uniObj.getRange().getEnd())) {
 				locationXML.setPosition(toXml(uniObj.getRange().getStart()));
 			}	
 			else {

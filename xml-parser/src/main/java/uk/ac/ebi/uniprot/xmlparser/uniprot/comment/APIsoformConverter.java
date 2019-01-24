@@ -130,7 +130,9 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
 	private IsoformType.Name isoformNameToXml(IsoformName name) {
 		IsoformType.Name xmlName = xmlUniprotFactory.createIsoformTypeName();
 		xmlName.setValue(name.getValue());
-		xmlName.getEvidence().addAll(evRefMapper.writeEvidences(name.getEvidences()));
+		if((name.getEvidences() !=null) && !name.getEvidences().isEmpty()) {
+			xmlName.getEvidence().addAll(evRefMapper.writeEvidences(name.getEvidences()));
+		}
 		return xmlName;
 	}
 }

@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.GregorianCalendar;
 
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
@@ -49,7 +50,10 @@ final class XmlConverterHelper {
 	public static XMLGregorianCalendar dateToXml(LocalDate date) {
 		try {
 			GregorianCalendar gcal = GregorianCalendar.from(date.atStartOfDay(ZoneId.systemDefault()));
-			return DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+			
+			XMLGregorianCalendar xmlCal= DatatypeFactory.newInstance().newXMLGregorianCalendar(gcal);
+			xmlCal.setTimezone(DatatypeConstants.FIELD_UNDEFINED);
+		return xmlCal;
 		} catch (DatatypeConfigurationException e) {
 			throw new RuntimeException(e);
 		}
@@ -57,4 +61,6 @@ final class XmlConverterHelper {
 	public static LocalDate dateFromXml(XMLGregorianCalendar xmlDate) {
 		return xmlDate.toGregorianCalendar().toZonedDateTime().toLocalDate();
 	}
+	
+	
 }

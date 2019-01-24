@@ -3,7 +3,6 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -73,6 +72,32 @@ class FeatureConverterTest {
 		// FT /FTId=VAR_015450.
 	}
 	
+	
+	@Test
+	void testVariantNoId() {
+
+		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+		FeatureConverter converter = new FeatureConverter(evRefMapper);
+		AlternativeSequence altSeq = FeatureFactory.INSTANCE.createAlternativeSequence("T", Arrays.asList("I"));
+		String description = "in CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785";
+		String description2 = "In CSTNU; reduces catalytic activity and affinity for pyridoxal phosphate; dbSNP:rs28941785.";
+		String ftid = null;
+
+		Feature feature = createFeature(FeatureType.VARIANT, 67, 67, description, ftid, altSeq);
+		uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+		System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj,
+				uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType.class, "feature"));
+		verify(xmlObj, 67, 67, description2, ftid, "T", Arrays.asList(1, 2));
+		Feature converted = converter.fromXml(xmlObj);
+		assertEquals(feature, converted);
+
+		// FT VARIANT 67 67 T -> I (in CSTNU; reduces catalytic
+		// FT activity and affinity for pyridoxal
+		// FT phosphate; dbSNP:rs28941785).
+		// FT /FTId=VAR_015450.
+	}
+
+	
 	private void verify(uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType xmlObj,
 			int start, int end, String description,  String ftid, String original,
 			
@@ -99,7 +124,7 @@ class FeatureConverterTest {
 		// FT /FTId=VSP_006306.
 		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
 		FeatureConverter converter = new FeatureConverter(evRefMapper);
-		AlternativeSequence altSeq = null;
+		AlternativeSequence altSeq = FeatureFactory.INSTANCE.createAlternativeSequence("", Collections.emptyList());
 		String description = "in isoform 2";
 		String description2 = "In isoform 2.";
 		String ftid = "VSP_006306";
@@ -212,6 +237,28 @@ class FeatureConverterTest {
 	}
 	
 	@Test
+	void testMissing() {
+	//	FT   CONFLICT    658    658       Missing (in Ref. 2; AAI71654).
+	//	FT                                {ECO:0000305}.
+		
+		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+		FeatureConverter converter = new FeatureConverter(evRefMapper);
+		AlternativeSequence altSeq = FeatureFactory.INSTANCE.createAlternativeSequence("", Collections.emptyList());
+		String description = "in Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724";
+		String description2 = "In Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724.";
+		String ftid = "";
+
+		Feature feature = createFeature(FeatureType.CONFLICT, 658, 658, description, ftid, altSeq);
+		uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+		System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj,
+				uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType.class, "feature"));
+		verify(xmlObj, 658, 658, description2, null, null, Arrays.asList(1, 2));
+		Feature converted = converter.fromXml(xmlObj);
+		assertEquals(feature, converted);
+	}
+	
+	
+	@Test
 	void testMUTAGEN() {
 	//FT   MUTAGEN     188    188       G->R: In hot2-1; reduced tolerance to
 	//	FT                                abiotic stresses such as salt, drought
@@ -257,7 +304,23 @@ class FeatureConverterTest {
 		Feature converted = converter.fromXml(xmlObj);
 		assertEquals(feature, converted);
 	}
-	
+	@Test
+	void testConflictDescriptionParser() {
+		String description = "in Ref. 2; AAI71654";
+		parseDescription(description);
+		parseDescription("in Ref. 4; BAC42427 and 5; AAO64895");
+		parseDescription("Missing (in Ref. 2; DAA06033, 3; CAM19021 and 4; AAI00306)");
+		parseDescription("Missing (in Ref. 1; AAZ04665 and 2; BAC33489/BAE29479/BAE29537/BAE41744/BAE34065)");
+		parseDescription("In Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724");
+		parseDescription( "in Ref. 1");
+		parseDescription( "in Ref. 1 and 3");
+		
+	}
+	private void parseDescription(String description) {
+		String regex =", | and ";
+		String[] tokens = description.split(regex);
+		System.out.println(Arrays.asList(tokens));
+	}
 	@Test
 	void testConflictDescription() {
 		String description = "in Ref. 2; AAI71654";
@@ -278,9 +341,45 @@ class FeatureConverterTest {
 		description ="In Ref. 1; BAB69494/BAB69495, 3; BAC32031 and 4; AAI16724";
 		result =FeatureConverter.extractConflictReference(description);
 		assertEquals(result, Arrays.asList(1, 3, 4));
-		
+
 		
 	}
+	@Test
+	void testConflictDescriptionSingle() {
+		String description = "in Ref. 1";
+		List<Integer> result =FeatureConverter.extractConflictReference(description);
+		List<Integer> expected = Arrays.asList(1);
+		assertEquals(result, expected );
+	}
+	
+	
+	@Test
+	void testConflictDescriptionTwo() {
+		String description = "in Ref. 1 and 3";
+		List<Integer> result =FeatureConverter.extractConflictReference(description);
+		List<Integer> expected = Arrays.asList(1, 3);
+		assertEquals(result, expected );
+	}
+	
+	@Test
+	void testCARBOHYD() {
+	//	FT   CARBOHYD     96     96       N-linked (GlcNAc...) asparagine; by host.
+	//	FT                                {ECO:0000255}.
+		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+		FeatureConverter converter = new FeatureConverter(evRefMapper);
+		AlternativeSequence altSeq = null;
+		String description = "N-linked (GlcNAc...) asparagine; by host";
+		String ftid = null;
+
+		Feature feature = createFeature(FeatureType.CARBOHYD, 96, 96, description, ftid, altSeq);
+		uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+		System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj,
+				uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType.class, "feature"));
+		verify(xmlObj, 96,96, description, ftid, null, Arrays.asList(1, 2));
+		Feature converted = converter.fromXml(xmlObj);
+		assertEquals(feature, converted);
+	}
+	
 	
 	private Feature createFeature(FeatureType type, int start, int end, String description, String ftid,
 			AlternativeSequence altSeq) {

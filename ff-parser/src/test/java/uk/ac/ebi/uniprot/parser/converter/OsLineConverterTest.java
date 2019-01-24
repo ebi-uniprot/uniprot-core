@@ -36,5 +36,16 @@ public class OsLineConverterTest {
 		
 		
 	}
-	
+	@Test
+	public void testVirus() {
+		//OS   Frog virus 3 (isolate Goorha) (FV-3).
+		OsLineObject osO = new OsLineObject();
+		osO.organism_species ="Frog virus 3 (isolate Goorha) (FV-3)";
+		OsLineConverter converter = new OsLineConverter();
+		OrganismName org =converter.convert(osO);
+		TestCase.assertEquals("Frog virus 3 (isolate Goorha)", org.getScientificName());
+		TestCase.assertEquals("FV-3", org.getCommonName());
+		TestCase.assertEquals(0, org.getSynonyms().size());	
+		
+	}
 }

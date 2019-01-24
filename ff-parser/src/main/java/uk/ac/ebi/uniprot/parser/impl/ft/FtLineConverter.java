@@ -95,7 +95,7 @@ public class FtLineConverter extends EvidenceCollector
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> isoforms = new ArrayList<>();
-		Matcher matcher = ftLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(value);
+		Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(value);
 		String description ="";
 		if(!Strings.isNullOrEmpty(value ) && matcher.matches()) {
 			String val1 = matcher.group(1);
@@ -172,7 +172,7 @@ public class FtLineConverter extends EvidenceCollector
 	private Feature convertVariantFeature(FeatureType type, Range location, FtLineObject.FT ft,
 			List<Evidence> evidences) {
 		String value = ft.ft_text;
-		Matcher matcher = ftLineConverterUtil.VAIANT_DESC_PATTERN.matcher(value);
+		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(value);
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> reports = new ArrayList<>();
@@ -183,8 +183,8 @@ public class FtLineConverter extends EvidenceCollector
 				originalSequence =matcher.group(3);
 				alternativeSequences.add(matcher.group(5));
 			}
-			if(matcher.group(8) !=null)
-			description =matcher.group(8) ;
+			if(matcher.group(9) !=null)
+			description =matcher.group(9) ;
 		}
 		
 		AlternativeSequence altSeq =factory.createAlternativeSequence(originalSequence, alternativeSequences);
@@ -198,7 +198,7 @@ public class FtLineConverter extends EvidenceCollector
 	private Feature convertConflictFeature(FeatureType type, Range location, FtLineObject.FT ft,
 			 List<Evidence> evidences) {
 		String value = ft.ft_text;
-		Matcher matcher = ftLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(value);
+		Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(value);
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> reports = new ArrayList<>();
@@ -225,7 +225,7 @@ public class FtLineConverter extends EvidenceCollector
 	private Feature convertMutagenFeature(FeatureType type, Range location, FtLineObject.FT ft,
 			 List<Evidence> evidences) {
 		String value = ft.ft_text;
-		Matcher matcher = ftLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(value);
+		Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(value);
 		String originalSequence="";
 		List<String> alternativeSequences =new ArrayList<>();
 		List<String> reports = new ArrayList<>();

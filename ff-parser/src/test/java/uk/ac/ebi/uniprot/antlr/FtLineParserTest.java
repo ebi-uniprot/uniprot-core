@@ -290,6 +290,68 @@ public class FtLineParserTest {
 	}
 	
 	
+	@Test
+	public void testConflictFeatureWithSlash() {
+		String ftLine =
+				"FT   CONFLICT    430    432       ALL -> DLV (in Ref. 1; BAA85929/BAA85930/\n" + 
+				"FT                                BAA85931). {ECO:0000305}.\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLine);
+		 assertEquals(1, obj.fts.size());
+		 System.out.println(obj.fts.get(0).ft_text);
+		 verify(obj.fts.get(0), FTType.CONFLICT, "430", "432", 
+				 "ALL -> DLV (in Ref. 1; BAA85929/BAA85930/BAA85931)", null);	  
+		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList("ECO:0000305") );
+	}
+	
+	@Test
+	public void testVariantWithMulti() {
+		String ftLine =
+				"FT   VARIANT     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" + 
+				"FT                                LKVPVVQKVTKRLGVTSPD.\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLine);
+		 assertEquals(1, obj.fts.size());
+		 System.out.println(obj.fts.get(0).ft_text);
+		 verify(obj.fts.get(0), FTType.VARIANT, "267", "294", 
+				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);	  
+	}
+	@Test
+	public void testVariantWithMulti2() {
+		String ftLine =
+				"FT   VARIANT     157    224       EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n" + 
+				"FT                                PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n" +
+				"FT                                (in strain 168 and its derivatives, non\n"+
+				"FT                                surfactin-producing strains).\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLine);
+		 assertEquals(1, obj.fts.size());
+		 System.out.println(obj.fts.get(0).ft_text);
+		 verify(obj.fts.get(0), FTType.VARIANT, "267", "294", 
+				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);	  
+	}
+	
+	
+	
+	
+	
+	
+	
+	@Test
+	public void testVarSeqWithMulti() {
+		String ftLine =
+				"FT   VAR_SEQ     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" + 
+				"FT                                LKVPVVQKVTKRLGVTSPD.\n";
+		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
+		 FtLineObject obj = parser.parse(ftLine);
+		 assertEquals(1, obj.fts.size());
+		 System.out.println(obj.fts.get(0).ft_text);
+		 verify(obj.fts.get(0), FTType.VAR_SEQ, "267", "294", 
+				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);	  
+	
+	}
+	
+	
 	
 	
 	@Test

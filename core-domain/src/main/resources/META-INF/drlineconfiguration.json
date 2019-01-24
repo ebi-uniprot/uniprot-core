@@ -653,8 +653,8 @@
 		"uriLink": "https://genome.ucsc.edu/cgi-bin/hgLinkIn?resource=uniprot&id=%acc", 
 		"attributes": [
 			{
-				"name": "GeneName",
-				"xmlTag":"gene designation"
+				"name": "OrganismName",
+				"xmlTag":"organism name"
 			}
 		]		
 	},
@@ -879,7 +879,13 @@
 		"name": "MIM",
 		"displayName": "MIM",
 		"category": "ORG",
-		"uriLink": "http://www.omim.org/entry/%value"
+		"uriLink": "http://www.omim.org/entry/%value",
+		"attributes": [
+			{
+				"name": "type",
+				"xmlTag":"type"			
+			}
+		]
 	},
 	{
 		"name": "neXtProt",

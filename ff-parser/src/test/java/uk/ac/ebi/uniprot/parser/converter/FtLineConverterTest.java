@@ -148,6 +148,41 @@ public class FtLineConverterTest {
 	
 	}
 
+	
+	@Test 
+	public void testVarSeq2() throws Exception {
+		/**
+		 *  
+		 "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL
+	                 |FT                                DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in
+	                 |FT                                isoform 2).
+	                 |FT                                /FTId=VSP_004370.
+		 */
+	
+		FtLineObject fobj  =new FtLineObject();
+		FtLineObject.FT ft = new FtLineObject.FT ();
+		ft.type =FtLineObject.FTType.VAR_SEQ;
+		ft.location_start ="33";
+		ft.location_end ="83";
+		ft.ft_text ="TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP(in isoform 2)";
+		ft.ftId = "VSP_004370";
+		fobj.fts.add(ft);
+		List<Feature> features = converter.convert(fobj);
+		assertEquals(1, features.size());
+		Feature feature1 = features.get(0);
+		validateLocation(feature1.getLocation(),
+				33, 83, PositionModifier.EXACT, PositionModifier.EXACT);
+		assertEquals(FeatureType.VAR_SEQ, feature1.getType());
+		assertEquals("in isoform 2", feature1.getDescription().getValue());
+//		assertEquals(1, feature1.getAlternativeSequence().getReport().getValue().size());
+//		assertEquals("2", feature1.getAlternativeSequence().getReport().getValue().get(0));
+		assertEquals("VSP_004370", feature1.getFeatureId().getValue());
+		List<String> altSeq = new ArrayList<String>();
+		altSeq.add("SECLTYGKQPLTSFHPFTSQMPP");
+		validateAltSeq(feature1, "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG", altSeq );
+	
+	}
+
 
 	@Test 
 	public void testVariant() throws Exception {
@@ -178,6 +213,68 @@ public class FtLineConverterTest {
 		validateAltSeq(feature1, "V", altSeq );
 	
 	}
+	
+	@Test 
+	public void testVariant2() throws Exception {
+			/**
+			 * FT   VARIANT     102    102       V -> I (in HH2; dbSNP:rs55642501).
+		FT                                /FTId=VAR_030972.                       /FTId=VSP_004370.
+		 */
+	
+		FtLineObject fobj  =new FtLineObject();
+		FtLineObject.FT ft = new FtLineObject.FT ();
+		ft.type =FtLineObject.FTType.VARIANT;
+		ft.location_start ="102";
+		ft.location_end ="102";
+		ft.ft_text ="V -> I(in HH2; dbSNP:rs55642501)";
+		ft.ftId = "VAR_030972";
+		fobj.fts.add(ft);
+		List<Feature> features = converter.convert(fobj);
+		assertEquals(1, features.size());
+		Feature feature1 = features.get(0);
+		validateLocation(feature1.getLocation(),
+				102, 102, PositionModifier.EXACT, PositionModifier.EXACT);
+		assertEquals(FeatureType.VARIANT, feature1.getType());
+
+		assertEquals("in HH2; dbSNP:rs55642501", feature1.getDescription().getValue());
+		assertEquals("VAR_030972", feature1.getFeatureId().getValue());
+		List<String> altSeq = new ArrayList<String>();
+		altSeq.add("I");
+		validateAltSeq(feature1, "V", altSeq );
+	
+	}
+	
+	
+	@Test 
+	public void testVariantNoText() throws Exception {
+			/**
+				"FT   VARIANT     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" + 
+				"FT                                LKVPVVQKVTKRLGVTSPD.\n";
+		 */
+	
+		FtLineObject fobj  =new FtLineObject();
+		FtLineObject.FT ft = new FtLineObject.FT ();
+		ft.type =FtLineObject.FTType.VARIANT;
+		ft.location_start ="267";
+		ft.location_end ="294";
+		ft.ft_text ="ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD";
+		ft.ftId = "";
+		fobj.fts.add(ft);
+		List<Feature> features = converter.convert(fobj);
+		assertEquals(1, features.size());
+		Feature feature1 = features.get(0);
+		validateLocation(feature1.getLocation(),
+				267, 294, PositionModifier.EXACT, PositionModifier.EXACT);
+		assertEquals(FeatureType.VARIANT, feature1.getType());
+
+		assertEquals("", feature1.getDescription().getValue());
+		assertEquals("", feature1.getFeatureId().getValue());
+		List<String> altSeq = new ArrayList<String>();
+		altSeq.add("ITAVTLPPDLKVPVVQKVTKRLGVTSPD");
+		validateAltSeq(feature1, "ASAIILRSQLIVALAQKLSRTVGVNKAV", altSeq );
+	
+	}
+	
 	
 	@Test
 	public void testEvidence(){

@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
@@ -183,7 +184,21 @@ ToXmlDbReferences<ProteinDescription> {
 				}
 			});	
 		});
-		return result;
+		
+		List<DbReferenceType> filtered =new ArrayList<>();
+		for (DbReferenceType db : result) {
+			Optional<DbReferenceType> opDb = filtered.stream().
+					filter(val -> val.getId().equals(db.getId())).findFirst();
+			if(opDb.isPresent()) {
+				for(Integer ev: db.getEvidence()) {
+					if(!opDb.get().getEvidence().contains(ev)) {
+						opDb.get().getEvidence().add(ev);
+					}
+				}
+			}else {
+				filtered.add(db);
+			}
+		}
+		return filtered;
 	}
-
 }
