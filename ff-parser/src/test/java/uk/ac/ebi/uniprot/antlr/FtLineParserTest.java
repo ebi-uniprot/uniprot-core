@@ -327,8 +327,9 @@ public class FtLineParserTest {
 		 FtLineObject obj = parser.parse(ftLine);
 		 assertEquals(1, obj.fts.size());
 		 System.out.println(obj.fts.get(0).ft_text);
-		 verify(obj.fts.get(0), FTType.VARIANT, "267", "294", 
-				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);	  
+		 verify(obj.fts.get(0), FTType.VARIANT, "157", "224", 
+				 "EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVDPGYKMAVCAAHPDFPEDITMVSYEELL"
+				 + " -> GRQRLIASA(in strain 168 and its derivatives, non surfactin-producing strains)", null);	  
 	}
 	
 	
