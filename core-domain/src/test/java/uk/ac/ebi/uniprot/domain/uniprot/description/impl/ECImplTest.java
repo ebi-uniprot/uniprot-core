@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
@@ -26,7 +27,7 @@ class ECImplTest {
                 EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"
         ));
 
-        EC ecObj = new ECImpl(ec, evidences);
+        EC ecObj = new ECBuilder().setValue(ec).setEvidences(evidences).createECImpl();
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
         assertEquals(evidences, ecObj.getEvidences());
@@ -38,7 +39,7 @@ class ECImplTest {
         String ec = "4.6.1.2";
         List<Evidence> evidences = new ArrayList<>();
 
-        EC ecObj = new ECImpl(ec, evidences);
+        EC ecObj = new ECBuilder().setValue(ec).setEvidences(evidences).createECImpl();
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
         assertEquals(evidences, ecObj.getEvidences());

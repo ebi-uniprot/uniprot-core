@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.Collections;
 import java.util.List;
@@ -12,8 +12,7 @@ public class ECImpl extends ECNumberImpl implements EC {
     private List<Evidence> evidences;
 
     private ECImpl() {
-        super("");
-        this.evidences = Collections.emptyList();
+        this("",null);
     }
 
     public ECImpl(String value, List<Evidence> evidences) {

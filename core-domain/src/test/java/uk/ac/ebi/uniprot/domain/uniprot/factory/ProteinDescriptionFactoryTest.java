@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.factory;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.FlagBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
@@ -122,7 +122,7 @@ public class ProteinDescriptionFactoryTest {
                         .submissionNames(subNames)
                         .cdAntigenNames(antigenNames)
                         .alternativeNames(proteinAltNames)
-                        .flag(new FlagImpl(FlagType.PRECURSOR))
+                        .flag(new FlagBuilder().setType(FlagType.PRECURSOR).createFlagImpl())
                         .build();
 
         assertEquals(recommendedName, description.getRecommendedName());

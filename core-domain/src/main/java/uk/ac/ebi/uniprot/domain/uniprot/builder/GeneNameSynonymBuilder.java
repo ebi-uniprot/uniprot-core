@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
  *
  * @author lgonzales
  */
-public class GeneNameSynonymBuilder  extends AbstractEvidencedValueBuilder<GeneNameSynonymBuilder, GeneNameSynonym> {
+public class GeneNameSynonymBuilder extends AbstractEvidencedValueBuilder<GeneNameSynonymBuilder, GeneNameSynonym> {
 
     @Override
     protected GeneNameSynonymBuilder getThis() {

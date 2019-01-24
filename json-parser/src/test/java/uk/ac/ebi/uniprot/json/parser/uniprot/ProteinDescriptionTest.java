@@ -3,7 +3,8 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.FlagBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
@@ -157,11 +158,11 @@ public class ProteinDescriptionTest {
         innNames.add(ProteinDescriptionFactory.INSTANCE.createName("inn antigen", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU100212")));
 
         List<ProteinSection> includes = new ArrayList<>();
-        ProteinSectionImpl sectionInclude = new ProteinSectionImpl(getRecommendedName("includes"), createAltName("includes"));
+        ProteinSectionImpl sectionInclude = new ProteinSectionBuilder().setRecommendedName(getRecommendedName("includes")).setAlternativeNames(createAltName("includes")).createProteinSectionImpl();
         includes.add(sectionInclude);
 
         List<ProteinSection> contains = new ArrayList<>();
-        ProteinSectionImpl sectionContains = new ProteinSectionImpl(getRecommendedName("contains"), createAltName("contains"));
+        ProteinSectionImpl sectionContains = new ProteinSectionBuilder().setRecommendedName(getRecommendedName("contains")).setAlternativeNames(createAltName("contains")).createProteinSectionImpl();
         contains.add(sectionContains);
 
         ProteinDescriptionBuilder builder = ProteinDescriptionBuilder.newInstance();
@@ -170,7 +171,7 @@ public class ProteinDescriptionTest {
                 .alternativeNames(proteinAltNames)
                 .biotechName(biotechName)
                 .cdAntigenNames(antigenNames)
-                .flag(new FlagImpl(FlagType.FRAGMENT))
+                .flag(new FlagBuilder().setType(FlagType.FRAGMENT).createFlagImpl())
                 .includes(includes)
                 .contains(contains)
                 .innNames(innNames)

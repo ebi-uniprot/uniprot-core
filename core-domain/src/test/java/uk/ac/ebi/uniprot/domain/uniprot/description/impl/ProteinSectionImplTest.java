@@ -5,6 +5,8 @@ import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
@@ -21,9 +23,9 @@ class ProteinSectionImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = createShortNames();
-        ProteinName recName = new ProteinNameImpl(fullName, shortNames, null);
+        ProteinName recName = new ProteinNameBuilder().setFullName(fullName).setShortNames(shortNames).setEcNumbers(null).createProteinNameImpl();
         List<ProteinName> altNames = createAltName();
-        ProteinSectionImpl section = new ProteinSectionImpl(recName, altNames);
+        ProteinSectionImpl section = new ProteinSectionBuilder().setRecommendedName(recName).setAlternativeNames(altNames).createProteinSectionImpl();
         assertEquals(recName, section.getRecommendedName());
         assertEquals(altNames, section.getAlternativeNames());
 
@@ -35,9 +37,9 @@ class ProteinSectionImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = createShortNames();
-        ProteinName recName = new ProteinNameImpl(fullName, shortNames, null);
+        ProteinName recName = new ProteinNameBuilder().setFullName(fullName).setShortNames(shortNames).setEcNumbers(null).createProteinNameImpl();
         List<ProteinName> altNames = null;
-        ProteinSectionImpl section = new ProteinSectionImpl(recName, altNames);
+        ProteinSectionImpl section = new ProteinSectionBuilder().setRecommendedName(recName).setAlternativeNames(altNames).createProteinSectionImpl();
         assertEquals(recName, section.getRecommendedName());
         assertEquals(0, section.getAlternativeNames().size());
 
