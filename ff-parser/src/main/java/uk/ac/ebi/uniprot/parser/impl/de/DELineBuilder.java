@@ -1,24 +1,18 @@
 package uk.ac.ebi.uniprot.parser.impl.de;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.EQUAL_SIGN;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 
 public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription> 
 implements FFLineBuilder<ProteinDescription> {

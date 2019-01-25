@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.HasEvidences;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
+import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
-import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
-import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
-import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.DEFAUT_LINESPACE;
 
 public abstract class FFLineBuilderAbstr <T> implements FFLineBuilder<T> {
 	protected abstract FFLine buildLine(T f, boolean showEvidence);
