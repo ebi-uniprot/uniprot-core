@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.taxonomy;
 
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
+
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.HasEvidences;
 
 import java.io.Serializable;
 import java.util.List;
