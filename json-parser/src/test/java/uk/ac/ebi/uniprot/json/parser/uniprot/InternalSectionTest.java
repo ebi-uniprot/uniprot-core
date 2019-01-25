@@ -2,11 +2,15 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EvidenceLineBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
+import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalLineBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.SourceLineBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidenceLineBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.time.LocalDate;
@@ -59,20 +63,15 @@ public class InternalSectionTest {
     }
 
     static InternalSection getInternalSection() {
-        InternalLine internalLine = new InternalLineBuilder()
-                .type(InternalLineType.DR)
-                .value("line value")
-                .build();
+        InternalLine internalLine = new InternalLineBuilder(InternalLineType.DR,"line value").build();
 
         EvidenceLine evidenceLine = new EvidenceLineBuilder()
                 .evidence("evidence value")
-                .createDate(LocalDate.of(2018,12,25))
+                .creationDate(LocalDate.of(2018,12,25))
                 .curator("curator value")
                 .build();
 
-        SourceLine sourceLine = new SourceLineBuilder()
-                .value("source line value")
-                .build();
+        SourceLine sourceLine = new SourceLineBuilder("source line value").build();
 
         return new InternalSectionBuilder()
                 .addEvidenceLine(evidenceLine)
