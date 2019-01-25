@@ -10,6 +10,4 @@ public class OcLineConverter implements Converter<OcLineObject,  List<String>> {
 	public List<String> convert(OcLineObject f) {
 		return f.nodes;
 	}
-	
-
 }

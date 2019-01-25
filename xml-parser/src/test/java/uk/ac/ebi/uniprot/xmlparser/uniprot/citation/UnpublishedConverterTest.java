@@ -35,7 +35,7 @@ class UnpublishedConverterTest {
 	private Unpublished create() {
 		UnpublishedBuilder builder = UnpublishedBuilder.newInstance();
 		String title = "Some title";
-		builder.title(title).publicationDate(UnpublishedBuilder.createPublicationDate("2015-MAY"));
+		builder.title(title).publicationDate(UnpublishedBuilder.createPublicationDate("MAY-2005"));
 		return builder.build();
 	}
 }

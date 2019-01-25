@@ -8,8 +8,8 @@ import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,8 +75,8 @@ public class CatalyticActivityCommentTransformer implements CommentTransformer<C
 		}
 		List<Evidence> evidences= new ArrayList<>();
 		if (!Strings.isNullOrEmpty(evidence)) {
-			evidences =
-					EvidenceConverterHelper.convert(Arrays.stream(evidence.split(", ")).collect(Collectors.toList()));
+            evidences =
+                    EvidenceHelper.parseEvidenceLines(Arrays.stream(evidence.split(", ")).collect(Collectors.toList()));
 		}
 		return CatalyticActivityCommentBuilder.createPhysiologicalReaction(PhysiologicalDirectionType.typeOf(name), reference, evidences);
 	}
@@ -93,8 +93,9 @@ public class CatalyticActivityCommentTransformer implements CommentTransformer<C
 		}
 		List<Evidence> evidences= new ArrayList<>();
 		if (!Strings.isNullOrEmpty(evidence)) {
-	
-					evidences = EvidenceConverterHelper.convert(Arrays.stream(evidence.split(", ")).collect(Collectors.toList()));
+
+            evidences = EvidenceHelper
+                    .parseEvidenceLines(Arrays.stream(evidence.split(", ")).collect(Collectors.toList()));
 		}
 		return CatalyticActivityCommentBuilder.createReaction(name, references, ecNumber, evidences);
 	}

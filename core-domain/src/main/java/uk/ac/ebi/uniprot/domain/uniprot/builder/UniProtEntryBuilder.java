@@ -36,18 +36,18 @@ public class UniProtEntryBuilder {
     }
 
     public interface UniProtIdBuilder {
-        EntryTypeBuilder uniProtId(UniProtId uniProtId);
+        Status uniProtId(UniProtId uniProtId);
     }
 
-    public interface EntryTypeBuilder {
-        ActiveEntryBuilder trembl();
-
-        ActiveEntryBuilder swissProt();
+    public interface Status {
+        ActiveEntryBuilder active();
 
         InactiveEntryBuilder inactive();
     }
 
     public interface ActiveEntryBuilder extends Builder2<EntryBuilder, UniProtEntry> {
+        ActiveEntryBuilder entryType(UniProtEntryType entryType);
+
         ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession);
 
         ActiveEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions);
@@ -101,7 +101,7 @@ public class UniProtEntryBuilder {
         InactiveEntryBuilder inactiveReason(EntryInactiveReason inactiveReason);
     }
 
-    private class EntryBuilder extends UniProtEntryBuilder implements UniProtIdBuilder, ActiveEntryBuilder, InactiveEntryBuilder, EntryTypeBuilder {
+    private class EntryBuilder extends UniProtEntryBuilder implements UniProtIdBuilder, ActiveEntryBuilder, InactiveEntryBuilder, Status {
         private UniProtAccession primaryAccession;
         private UniProtEntryType entryType = null;
         private List<UniProtAccession> secondaryAccessions = new ArrayList<>();
@@ -121,31 +121,27 @@ public class UniProtEntryBuilder {
         private Sequence sequence = null;
         private InternalSection internalSection = null;
         private EntryInactiveReason inactiveReason = null;
+        private boolean active = false;
 
         private EntryBuilder(UniProtAccession primaryAccession) {
             this.primaryAccession = primaryAccession;
         }
 
         @Override
-        public EntryTypeBuilder uniProtId(UniProtId uniProtId) {
+        public Status uniProtId(UniProtId uniProtId) {
             this.uniProtId = uniProtId;
             return this;
         }
 
         @Override
-        public ActiveEntryBuilder trembl() {
-            this.entryType = UniProtEntryType.TREMBL;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder swissProt() {
-            this.entryType = UniProtEntryType.SWISSPROT;
+        public ActiveEntryBuilder active() {
+            this.active = true;
             return this;
         }
 
         @Override
         public InactiveEntryBuilder inactive() {
+            this.active = false;
             this.entryType = UniProtEntryType.INACTIVE;
             return this;
         }
@@ -153,6 +149,15 @@ public class UniProtEntryBuilder {
         @Override
         public InactiveEntryBuilder inactiveReason(EntryInactiveReason inactiveReason) {
             this.inactiveReason = inactiveReason;
+            return this;
+        }
+
+        @Override
+        public ActiveEntryBuilder entryType(UniProtEntryType entryType) {
+            if (active && entryType == UniProtEntryType.INACTIVE) {
+                throw new IllegalArgumentException("Cannot set an active entry to be inactive.");
+            }
+            this.entryType = entryType;
             return this;
         }
 

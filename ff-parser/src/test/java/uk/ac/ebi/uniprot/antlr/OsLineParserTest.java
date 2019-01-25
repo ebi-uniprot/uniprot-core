@@ -66,4 +66,13 @@ public class OsLineParserTest {
 		assertEquals("Aeromonas sp. E6(2011)", obj.organism_species);
 	
 	}
+	
+	@Test
+	public void testVirus() {
+		String osLines = "OS   Frog virus 3 (isolate Goorha) (FV-3).\n"
+				;
+		UniprotLineParser<OsLineObject> parser = new DefaultUniprotLineParserFactory().createOsLineParser();
+		OsLineObject obj = parser.parse(osLines);
+		assertEquals("Frog virus 3 (isolate Goorha) (FV-3)", obj.organism_species);
+	}
 }

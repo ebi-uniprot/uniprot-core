@@ -2,6 +2,8 @@ package uk.ac.ebi.uniprot.parser.impl.ft;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.antlr.FtLineParser;
 import uk.ac.ebi.uniprot.parser.ParseTreeObjectExtractor;
 import uk.ac.ebi.uniprot.antlr.FtLineParserBaseListener;
@@ -62,8 +64,8 @@ public class FtLineModelListener extends FtLineParserBaseListener implements Par
 	@Override
 	public void exitFt_text(@NotNull FtLineParser.Ft_textContext ctx) {
 		String text= ctx.getText();
-		String[] values =EvidenceInfo.splitEvidenceString(text);
-		ft.ft_text =  values[0];
+		String[] values =EvidenceInfo.splitEvidenceString(text);		
+		ft.ft_text =   values[0];;
 
 		if (values.length == 2) {
 			String evidenceStr = values[1];

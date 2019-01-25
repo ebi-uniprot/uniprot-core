@@ -152,5 +152,17 @@ public class RcLineParserTest {
 				Arrays.asList(new String[] {"MCA 2997", "Plasmid pMR3, Mitochondrial"}), null);
 
 	}
+    @Test
+    public void testContentChangeLineWithSlash() {
+        String rcLines = "RC   STRAIN=ATCC 15692 / DSM 22644 / CIP 104116 / JCM 14847 / LMG 12228 /\n"
+                + "RC   1C / PRS 101 / PAO1;\n";
+        UniprotLineParser<RcLineObject> parser = new DefaultUniprotLineParserFactory().createRcLineParser();
+        RcLineObject obj = parser.parse(rcLines);
+        assertEquals(1, obj.rcs.size());
+        verify(obj.rcs.get(0), RcTokenEnum.STRAIN,
+                Arrays.asList("ATCC 15692 / DSM 22644 / CIP 104116 / JCM 14847 / LMG 12228 / 1C / PRS 101 / PAO1"),
+                null);
+
+    }
 }
 

@@ -8,9 +8,8 @@ class OrderedLocusNameBuilderTest extends AbstractEvidencedValueBuilderTest {
 
     @Test
     void checkOrderedLocusNameBuilderCreationIsAsExpected() {
-        OrderedLocusNameBuilder builder = new OrderedLocusNameBuilder();
-        buildEvidencedValueParameters(builder);
-        OrderedLocusName orfName = builder.build();
+        OrderedLocusName orfName = new OrderedLocusNameBuilder((getValue()), getEvidenceList())
+                .addEvidence(getEvidence()).build();
 
         verifyEvidencedValue(orfName);
     }

@@ -73,22 +73,52 @@ public abstract class RememberLastTokenLexer extends Lexer {
         }
 //		this.setText(" ");
     }
+    
+    
+    public void replaceChangeOfLineForFT() {
+        if (lastToken != null) {
+            String text1 = lastToken.getText();
+            if (text1.endsWith("/")) {
+            	this.setText("");
+            }else if (text1.endsWith("-")) {
+                int index = this._input.index();
+                String text = this._input.getText(Interval.of(index, index+3));
+
+                // Do not add a blank after a hyphen that is not preceded by a
+                // blank and not followed by and/or.
+                //
+                if ((text.startsWith("and ") || text.startsWith("or "))
+                     || text1.endsWith(" -")){
+                    this.setText(" ");
+                }else{
+                    this.setText("");
+                }
+            } else {
+                this.setText(" ");
+            }
+        }
+//		this.setText(" ");
+    }
 
     public void replaceChangeOfLine(boolean seq) {
 		if (!seq) {
-			replaceChangeOfLine();
+			replaceChangeOfLineForFT();
 		} else {
 			if (isSequenceLetter(lastToken.getText())) {
 				this.setText("");
 			} else {
-				this.setText(" ");
+				replaceChangeOfLineForFT();
 			}
 		}
 	}
 
 	public boolean isSequenceLetter(String se) {
-		for (int i = 0; i < se.length(); i++) {
-			if (se.charAt(i) > 'Z' || se.charAt(i) < 'A')
+		String val = se;
+		if(val.contains("-> ")) {
+			val = val.substring(val.indexOf("-> ") +3);
+		}
+		for (int i = 0; i < val.length(); i++) {
+			if (val.charAt(i) > 'Z' || val.charAt(i) < 'A')
 				return false;
 		}
 		return true;

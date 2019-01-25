@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.parser.impl.ft;
 
 import java.util.regex.Pattern;
 
-public class ftLineConverterUtil {
+public class FtLineConverterUtil {
 	private static String CARBOHYD_DESC ="([NOSC]-linked) ([^;]+)((; )(.+))?" ;
 	public final static Pattern CARBOHYD_DESC_PATTERN = Pattern.compile(CARBOHYD_DESC);
 	
@@ -10,7 +10,7 @@ public class ftLineConverterUtil {
 	public final static Pattern VAR_SEQ_DESC_PATTERN = Pattern.compile(VAR_SEQ_DESC);
 	
 	
-	private static String VARIANT_DESC ="(Missing|(([A-Z]+)( -\\> )([A-Z]+)))(( \\()(.+)?(\\)))?";
+	private static String VARIANT_DESC ="(Missing|(([A-Z]+)( -\\> )([A-Z]+)))((( )?\\()(.+)?(\\)))?";
 	public final static Pattern VAIANT_DESC_PATTERN = Pattern.compile(VARIANT_DESC);
 	
 	

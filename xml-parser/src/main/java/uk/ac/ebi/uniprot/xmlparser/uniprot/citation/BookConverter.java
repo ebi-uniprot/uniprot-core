@@ -3,6 +3,8 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Book;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
@@ -61,21 +63,24 @@ public class BookConverter implements Converter<CitationType, Book> {
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
 		xmlCitation.setType(uniObj.getCitationType().getValue());
 		xmlCitation.setName(uniObj.getBookName());
-		xmlCitation.setCity(uniObj.getAddress());
+		if(!Strings.isNullOrEmpty(uniObj.getAddress()))
+			xmlCitation.setCity(uniObj.getAddress());
 		setEditorsToXml(uniObj, xmlCitation);
-
-		xmlCitation.setVolume(uniObj.getVolume());
+		if(!Strings.isNullOrEmpty(uniObj.getVolume()))
+			xmlCitation.setVolume(uniObj.getVolume());
 		setFirstPageToXml(uniObj, xmlCitation); // todo replace with citationXML.setFirst
 		xmlCitation.setLast(pageConverter.toXml(uniObj.getLastPage()));
-		xmlCitation.setPublisher(uniObj.getPublisher());
+		if(!Strings.isNullOrEmpty(uniObj.getPublisher()))
+			xmlCitation.setPublisher(uniObj.getPublisher());
 		return xmlCitation;
 	}
 
 	private void setFirstPageToXml(Book citation, CitationType citationXML) {
-		String first = pageConverter.toXml(citation.getFirstPage());
-
-		if (first == null) {
-
+		String first = citation.getFirstPage();
+		 first = pageConverter.toXml(citation.getFirstPage());
+		
+		if (first == null)  {
+			if(citation.getFirstPage() ==null) {
 			int abstractIndex = citation.getBookName().indexOf("abstract");
 			if (abstractIndex > -1) {
 				int nextSpace = citation.getBookName().indexOf(' ', abstractIndex);
@@ -92,6 +97,9 @@ public class BookConverter implements Converter<CitationType, Book> {
 					}
 					citationXML.setName(bookNameWithoutAbstract);
 				}
+			}
+			}else {
+				citationXML.setFirst(citation.getFirstPage());
 			}
 
 		} else {

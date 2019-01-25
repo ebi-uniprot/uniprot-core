@@ -8,9 +8,7 @@ class ORFNameBuilderTest extends AbstractEvidencedValueBuilderTest {
 
     @Test
     void checkORFNameBuilderCreationIsAsExpected() {
-        ORFNameBuilder builder = new ORFNameBuilder();
-        buildEvidencedValueParameters(builder);
-        ORFName orfName = builder.build();
+        ORFName orfName = new ORFNameBuilder((getValue()), getEvidenceList()).addEvidence(getEvidence()).build();
 
         verifyEvidencedValue(orfName);
     }

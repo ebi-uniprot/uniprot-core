@@ -69,7 +69,7 @@ public class EvidenceImpl implements Evidence {
 
     @Override
     public int compareTo(Evidence o) {
-        return this.getValue().compareTo(o.getValue());
+        return this.getValue().compareToIgnoreCase(o.getValue());
     }
 
     @Override

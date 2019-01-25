@@ -1,18 +1,17 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.builder.AbstractValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.SourceLineImpl;
 
 /**
- * @author lgonzales
+ * Created 24/01/19
+ *
+ * @author Edd
  */
-public class SourceLineBuilder implements Builder2<SourceLineBuilder, SourceLine> {
-    private String value;
-
-    public SourceLineBuilder value(String value) {
-        this.value = value;
-        return this;
+public class SourceLineBuilder extends AbstractValueBuilder<SourceLineBuilder, SourceLine> {
+    public SourceLineBuilder(String value) {
+        super(value);
     }
 
     @Override
@@ -21,8 +20,7 @@ public class SourceLineBuilder implements Builder2<SourceLineBuilder, SourceLine
     }
 
     @Override
-    public SourceLineBuilder from(SourceLine instance) {
-        this.value(instance.getValue());
+    protected SourceLineBuilder getThis() {
         return this;
     }
 }
