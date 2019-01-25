@@ -1,17 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
 
 public class InternalSectionImpl implements InternalSection {
-
-
     private List<InternalLine> internalLines;
     private List<EvidenceLine> evidenceLines;
     private List<SourceLine> sourceLines;

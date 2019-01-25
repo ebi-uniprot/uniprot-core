@@ -28,5 +28,4 @@ public class OhLineConverter implements Converter<OhLineObject, List<OrganismHos
 		}
 		return hosts;
 	}
-
 }

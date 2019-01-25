@@ -8,9 +8,8 @@ class GeneNameSynonymBuilderTest extends AbstractEvidencedValueBuilderTest {
 
     @Test
     void checkGeneNameSynonymBuilderCreationIsAsExpected() {
-        GeneNameSynonymBuilder builder = new GeneNameSynonymBuilder();
-        buildEvidencedValueParameters(builder);
-        GeneNameSynonym orfName = builder.build();
+        GeneNameSynonym orfName = new GeneNameSynonymBuilder(getValue(), getEvidenceList())
+                .addEvidence(getEvidence()).build();
 
         verifyEvidencedValue(orfName);
     }

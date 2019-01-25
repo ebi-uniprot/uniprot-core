@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 public class RnLineConverter extends EvidenceCollector implements Converter<RnLineObject, List<Evidence>> {
-
     @Override
     public List<Evidence> convert(RnLineObject f) {
         Map<Object, List<Evidence>> evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
