@@ -1,16 +1,13 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingPositionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 
 
 public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditingComment> {
@@ -51,33 +48,33 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
             annotation = annotation.substring(0, noteIndex);
         }
         String[] tokens = annotation.split(";");
-        RnaEditingCommentBuilder builder =RnaEditingCommentBuilder.newInstance();
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         for (String token : tokens) {
             token = token.trim();
             if (token.startsWith(MODIFIED_POSITIONS)) {
                 token = token.substring(MODIFIED_POSITIONS.length());
                 List<String> poses = splitPosition(token);
                 RnaEditingLocationType type = getLocationType(poses);
-                builder.rnaEditingLocationType(type);
+                builder.locationType(type);
                 if (type != RnaEditingLocationType.Known) {
                     continue;
                 }
                 List<RnaEdPosition> positions = new ArrayList<>();
                 for (String pos : poses) {
-                    pos = pos.trim();                 
+                    pos = pos.trim();
                     List<Evidence> evidences = new ArrayList<>();
                     pos = CommentTransformerHelper.stripEvidences(pos, evidences);
-                    
-                    RnaEdPosition position =RnaEditingCommentBuilder.createPosition(pos, evidences);
+
+                    RnaEdPosition position = new RnaEditingPositionBuilder(pos, evidences).build();
                     positions.add(position);
                 }
-                builder.locations(positions);
+                builder.positions(positions);
             }
         }
         if (noteStr != null) {
-        	Note note =
-        	CommentFactory.INSTANCE.createNote(CommentTransformerHelper.parseEvidencedValues(noteStr, true));
-        	builder.note(note);
+            Note note =
+                    new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(noteStr, true)).build();
+            builder.note(note);
         }
         return builder.build();
     }

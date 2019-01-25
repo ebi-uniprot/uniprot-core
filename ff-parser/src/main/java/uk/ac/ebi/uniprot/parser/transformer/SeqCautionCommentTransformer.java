@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SeqCautionCommentTransformer implements CommentTransformer<SequenceCautionComment> {
 
@@ -31,7 +31,7 @@ public class SeqCautionCommentTransformer implements CommentTransformer<Sequence
 	public SequenceCautionComment transform(CommentType commenType, String annotation) {
 		annotation = CommentTransformerHelper.stripTrailing(annotation, ";");
 		String[] tokens = annotation.split(";");
-		SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
+		SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
 		for (String token : tokens) {
 			token = token.trim();
 			if (token.startsWith(SEQUENCE)) {

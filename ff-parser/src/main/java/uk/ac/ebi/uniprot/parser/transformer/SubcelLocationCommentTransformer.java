@@ -1,15 +1,17 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class SubcelLocationCommentTransformer implements
@@ -27,7 +29,7 @@ public class SubcelLocationCommentTransformer implements
 
         if (annotation == null)
             return null;
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         int moleculeEndIndex;
 
         String preNote;
@@ -38,8 +40,8 @@ public class SubcelLocationCommentTransformer implements
             if (splitByNote.length > 1) {
                 preNote = splitByNote[0].trim();
                 String noteStr = splitByNote[1].trim();
-                builder.note(CommentFactory.INSTANCE.createNote(CommentTransformerHelper
-                        .parseEvidencedValues(noteStr, true, '.')));
+                builder.note(new NoteBuilder(CommentTransformerHelper
+                                                     .parseEvidencedValues(noteStr, true, '.')).build());
             } else {
                 preNote = annotation;
             }
@@ -56,8 +58,8 @@ public class SubcelLocationCommentTransformer implements
         }
 
         List<SubcellularLocation> locations = populateLocations(preNote);
-       builder.subcellularLocations(locations);
-       return builder.build();
+        builder.subcellularLocations(locations);
+        return builder.build();
 
     }
 
@@ -71,7 +73,7 @@ public class SubcelLocationCommentTransformer implements
             if (aSubcellularLocation.trim().length() == 0) {
                 continue;
             }
-            locations.add( populateLocation(aSubcellularLocation));
+            locations.add(populateLocation(aSubcellularLocation));
 
         }
         return locations;
@@ -80,23 +82,23 @@ public class SubcelLocationCommentTransformer implements
     private SubcellularLocation populateLocation(String subcellularLocationsStrings) {
         String[] locationElements = subcellularLocationsStrings.split(";");
         SubcellularLocationValue location = populateValue(locationElements[0]);
-        SubcellularLocationValue topology = null; 
+        SubcellularLocationValue topology = null;
         SubcellularLocationValue orientation = null;
         if (locationElements.length > 1) {
-        	topology =populateValue(locationElements[1]);
+            topology = populateValue(locationElements[1]);
         }
         if (locationElements.length > 2) {
-        	orientation =populateValue(locationElements[2]);
+            orientation = populateValue(locationElements[2]);
         }
-        return SubcellularLocationCommentBuilder.createSubcellularLocation(location, topology, orientation);
+        return new SubcellularLocationBuilder()
+                .location(location).topology(topology).orientation(orientation).build();
     }
 
     private SubcellularLocationValue populateValue(String value) {
-
         value = CommentTransformerHelper.stripTrailing(value, ".").trim();
         List<Evidence> evidences = new ArrayList<>();
         value = CommentTransformerHelper.stripEvidences(value, evidences);
         value = CommentTransformerHelper.stripTrailing(value, ".");
-        return SubcellularLocationCommentBuilder.createSubcellularLocationValue(value, evidences);
+        return new SubcellularLocationValueBuilder(value, evidences).build();
     }
 }

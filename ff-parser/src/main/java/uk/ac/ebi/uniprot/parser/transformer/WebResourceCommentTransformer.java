@@ -18,7 +18,7 @@ public class WebResourceCommentTransformer implements CommentTransformer<WebReso
 	public WebResourceComment transform(CommentType type, String annotation) {
 		annotation = CommentTransformerHelper.stripTrailing(annotation, ".");
 		String[] tokens = annotation.split(";");
-		WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
+		WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
 
 		for (String token : tokens) {
 			token = token.trim();
@@ -63,5 +63,4 @@ public class WebResourceCommentTransformer implements CommentTransformer<WebReso
 		}
 		return builder.build();
 	}
-
 }
