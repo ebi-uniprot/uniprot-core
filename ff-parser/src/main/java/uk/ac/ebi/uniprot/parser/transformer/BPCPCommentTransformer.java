@@ -1,24 +1,13 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 
 
 public class BPCPCommentTransformer implements
@@ -48,7 +37,7 @@ public class BPCPCommentTransformer implements
         annotation = CommentTransformerHelper.stripTrailing(annotation, ".");
 
         StringTokenizer st = new StringTokenizer(annotation, "\n");
-        BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
+        BPCPCommentBuilder builder = new BPCPCommentBuilder();
         while (st.hasMoreTokens()) {
             String token = st.nextToken();
             switchTopic(token, st, builder);
@@ -57,7 +46,7 @@ public class BPCPCommentTransformer implements
     }
 
     private void switchTopic(String line, StringTokenizer lines,
-    		 BPCPCommentBuilder builder) {
+                             BPCPCommentBuilder builder) {
 
         if (line.equals(KINETIC_PARAMETERS)) {
             List<String> tokens = getTypeLines(lines, builder);
@@ -83,7 +72,7 @@ public class BPCPCommentTransformer implements
     }
 
     private List<String> getTypeLines(StringTokenizer lines,
-    		 BPCPCommentBuilder builder) {
+                                      BPCPCommentBuilder builder) {
         List<String> tokenlines = new ArrayList<>();
         while (lines.hasMoreTokens()) {
             String line = lines.nextToken();
@@ -105,10 +94,10 @@ public class BPCPCommentTransformer implements
     }
 
     public Absorption buildAbsorption(List<String> lines) {
-       List<Evidence > evidences =new ArrayList<>();
-       int max=0;
-       boolean approximate =false;
-       Note note =null;
+        List<Evidence> evidences = new ArrayList<>();
+        int max = 0;
+        boolean approximate = false;
+        Note note = null;
         for (String line : lines) {
             line = line.trim();
             if (line.startsWith(ABS_MAX)) {
@@ -119,18 +108,18 @@ public class BPCPCommentTransformer implements
                 String val = unitSection.substring(0, unitSection.indexOf(' '));
                 approximate = val.startsWith("~");
                 if (approximate) {
-                	max = Integer.parseInt(val.substring(1));
+                    max = Integer.parseInt(val.substring(1));
                 } else {
-                    max =Integer.parseInt(val);
+                    max = Integer.parseInt(val);
                 }
             } else if (line.startsWith(NOTE2)) {
                 String comment = line.substring(5, line.length());
-    
+
                 List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(comment, false);
-                note = CommentFactory.INSTANCE.createNote(evValues);
+                note = new NoteBuilder(evValues).build();
             }
         }
-        return BPCPCommentBuilder.createAbsorption(max, approximate, note, evidences);
+        return new AbsorptionBuilder().max(max).approximate(approximate).note(note).evidences(evidences).build();
     }
 
     public PhDependence buildPHDependence(List<String> lines) {
@@ -138,7 +127,8 @@ public class BPCPCommentTransformer implements
         for (String line : lines) {
             sb.append(line).append(" ");
         }
-        return BPCPCommentBuilder.createPHDependence(CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false));
+        return new PhDependenceBuilder(CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
+                .build();
     }
 
     public RedoxPotential buildRedoxPotential(List<String> lines) {
@@ -146,7 +136,8 @@ public class BPCPCommentTransformer implements
         for (String line : lines) {
             sb.append(line).append(" ");
         }
-        return BPCPCommentBuilder.createRedoxPotential(CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false));
+        return new RedoxPotentialBuilder(CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
+                .build();
     }
 
     public TemperatureDependence buildTemperatureDependence(List<String> lines) {
@@ -154,13 +145,16 @@ public class BPCPCommentTransformer implements
         for (String line : lines) {
             sb.append(line).append(" ");
         }
-        return BPCPCommentBuilder.createTemperatureDependence(CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false));
+
+        return new TemperatureDependenceBuilder(
+                CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
+                .build();
     }
 
     public MichaelisConstant buildMichaelisConstant(String line) {
         List<Evidence> evidences = new ArrayList<>();
         line = CommentTransformerHelper.stripEvidences(line,
-        		evidences);
+                                                       evidences);
         if (line.endsWith(";"))
             line = line.substring(0, line.length() - 1);
         StringTokenizer st = new StringTokenizer(line.substring(3), " ");
@@ -179,12 +173,16 @@ public class BPCPCommentTransformer implements
             commentRestline.append(" ");
         }
         String commentStr = commentRestline.toString().trim();
-        return BPCPCommentBuilder.createMichaelisConstant(value, MichaelisConstantUnit.convert(unit),
-        		commentStr, evidences);
+        return new MichaelisConstantBuilder()
+                .constant(value)
+                .unit(MichaelisConstantUnit.convert(unit))
+                .substrate(commentStr)
+                .evidences(evidences)
+                .build();
     }
 
     public MaximumVelocity buildMaximumVelocity(String line) {
-    	   List<Evidence> evidences = new ArrayList<>();
+        List<Evidence> evidences = new ArrayList<>();
         line = CommentTransformerHelper.stripEvidences(line, evidences);
         if (line.endsWith(";"))
             line = line.substring(0, line.length() - 1);
@@ -203,25 +201,26 @@ public class BPCPCommentTransformer implements
     }
 
     public KineticParameters buildKineticParameters(List<String> lines) {
-    	List<MaximumVelocity> velocities =new ArrayList<>();
+        List<MaximumVelocity> velocities = new ArrayList<>();
         List<MichaelisConstant> mConstants = new ArrayList<>();
-        Note note =null;
+        Note note = null;
         for (String line : lines) {
             line = line.trim();
             if (line.startsWith(KM2)) {
-            	mConstants.add(buildMichaelisConstant(line));
+                mConstants.add(buildMichaelisConstant(line));
 
             } else if (line.startsWith(NOTE2)) {
                 String commentStr = line.substring(5, line.length());
-                note= CommentFactory.INSTANCE.createNote(CommentTransformerHelper.parseEvidencedValues(commentStr, false));
+                note = CommentFactory.INSTANCE
+                        .createNote(CommentTransformerHelper.parseEvidencedValues(commentStr, false));
             } else if (line.startsWith(VMAX)) {
-            	velocities.add(buildMaximumVelocity(line));
+                velocities.add(buildMaximumVelocity(line));
 
             } else {
                 throw new RuntimeException();
             }
         }
-        
+
         return BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
     }
 
