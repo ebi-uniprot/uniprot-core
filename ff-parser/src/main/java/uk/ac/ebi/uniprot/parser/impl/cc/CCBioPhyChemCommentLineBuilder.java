@@ -1,28 +1,14 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.SPACE;
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.STOP;
+import com.google.common.base.Strings;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.HasEvidences;
+import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import com.google.common.base.Strings;
-
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
-import uk.ac.ebi.uniprot.domain.uniprot.FreeText;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
-import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
 
 /**
  * 
@@ -204,7 +190,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 		return lines;
 	}
 	private List<String> addEvidences(StringBuilder sb, HasEvidences he, boolean includeFlatFileMarkings,
-			boolean showEvidence, String postfix, String postfixNoEvidence){
+									  boolean showEvidence, String postfix, String postfixNoEvidence){
 		List<String> lines =new ArrayList<>();
 		sb =addEvidence(he, sb, showEvidence, postfix, postfixNoEvidence);
 		
