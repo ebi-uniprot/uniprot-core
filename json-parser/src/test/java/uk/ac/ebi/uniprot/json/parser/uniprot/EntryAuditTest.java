@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryAuditBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.time.LocalDate;
@@ -36,7 +36,13 @@ public class EntryAuditTest {
         LocalDate lastSequenceUpdateDate = LocalDate.of(2017, Month.JANUARY, 21);
         int entryVersion = 20;
         int sequenceVersion = 5;
-        return UniProtFactory.INSTANCE.createEntryAudit(firstPublicDate,lastAnnotationUpdateDate,lastSequenceUpdateDate,entryVersion,sequenceVersion);
+        return new EntryAuditBuilder()
+                .firstPublic(firstPublicDate)
+                .lastAnnotationUpdate(lastAnnotationUpdateDate)
+                .lastSequenceUpdate(lastSequenceUpdateDate)
+                .entryVersion(entryVersion)
+                .sequenceVersion(sequenceVersion)
+                .build();
     }
 
 }

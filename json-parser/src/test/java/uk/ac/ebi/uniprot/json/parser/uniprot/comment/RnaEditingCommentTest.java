@@ -6,14 +6,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingPositionBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
-
-import java.util.Collections;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -26,8 +23,7 @@ public class RnaEditingCommentTest {
     @Test
     public void testRnaEditingSimple() {
 
-        RnaEditingComment comment = RnaEditingCommentBuilder.newInstance()
-                .build();
+        RnaEditingComment comment = new RnaEditingCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -68,15 +64,14 @@ public class RnaEditingCommentTest {
     }
 
     public static RnaEditingComment getRnaEditingComment(){
-        Note note = CommentFactory.INSTANCE.createNote(
-                CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001361"));
-        List<RnaEdPosition> rnaEdPositions = Collections.singletonList(
-                RnaEditingCommentImpl.createPosition("rna position",
-                        CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361")));
+        Note note = new NoteBuilder(
+                CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001361")).build();
+        RnaEdPosition rnaEdPositions = new RnaEditingPositionBuilder("rna position",
+                CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361")).build();
 
-        return RnaEditingCommentBuilder.newInstance()
-                .rnaEditingLocationType(RnaEditingLocationType.Known)
-                .locations(rnaEdPositions)
+        return new RnaEditingCommentBuilder()
+                .locationType(RnaEditingLocationType.Known)
+                .addPosition(rnaEdPositions)
                 .note(note)
                 .build();
     }

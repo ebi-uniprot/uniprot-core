@@ -2,15 +2,14 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.PhysiologicalReactionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ReactionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhysiologicalReactionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.ReactionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
@@ -29,7 +28,7 @@ public class CatalyticActivityCommentTest {
     @Test
     public void testCatalyticActivitySimple() {
 
-        CatalyticActivityComment comment = CatalyticActivityCommentBuilder.newInstance().build();
+        CatalyticActivityComment comment = new CatalyticActivityCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -84,7 +83,7 @@ public class CatalyticActivityCommentTest {
     }
 
     public static CatalyticActivityComment getCatalyticActivityComment() {
-        return CatalyticActivityCommentBuilder.newInstance()
+        return new CatalyticActivityCommentBuilder()
                     .physiologicalReactions(createPhyReactions())
                     .reaction(createReaction())
                     .build();
@@ -95,19 +94,29 @@ public class CatalyticActivityCommentTest {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000313|Ensembl:ENSP0001324");
 
         List<PhysiologicalReaction> phyReactions = new ArrayList<>();
-        phyReactions.add(new PhysiologicalReactionImpl(PhysiologicalDirectionType.RIGHT_TO_LEFT,
-                new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:313"),
-                evidences
-        ));
+        phyReactions.add(new PhysiologicalReactionBuilder()
+                .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
+                .reactionReference(new DBCrossReferenceBuilder<ReactionReferenceType>()
+                        .databaseType(ReactionReferenceType.RHEA)
+                        .id("RHEA:313")
+                        .build())
+                .evidences(evidences)
+                .build());
         return phyReactions;
     }
 
     private static Reaction createReaction() {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
         String name = "some reaction";
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
-        return new ReactionImpl(name, references, ecNumber, evidences);
+        return new ReactionBuilder()
+                .name(name)
+                .addReactionReference(new DBCrossReferenceBuilder<ReactionReferenceType>()
+                        .databaseType(ReactionReferenceType.CHEBI)
+                        .id("ChEBI:3243")
+                        .build())
+                .ecNumber(ecNumber)
+                .evidences(evidences)
+                .build();
     }
 }

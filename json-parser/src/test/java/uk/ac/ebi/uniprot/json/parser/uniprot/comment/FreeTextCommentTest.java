@@ -19,7 +19,7 @@ public class FreeTextCommentTest {
     @Test
     public void testFreeTextSimple() {
 
-        FreeTextComment comment = FreeTextCommentBuilder.newInstance()
+        FreeTextComment comment = new FreeTextCommentBuilder()
                 .commentType(CommentType.DISRUPTION_PHENOTYPE)
                 .build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -49,7 +49,7 @@ public class FreeTextCommentTest {
     }
 
     public static FreeTextComment getFreeTextComment(){
-        return FreeTextCommentBuilder.newInstance()
+        return new FreeTextCommentBuilder()
                 .commentType(CommentType.DISRUPTION_PHENOTYPE)
                 .texts(CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001360"))
                 .build();

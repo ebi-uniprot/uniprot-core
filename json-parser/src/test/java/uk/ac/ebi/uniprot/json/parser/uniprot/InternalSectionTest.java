@@ -3,12 +3,13 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.EvidenceLineBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalLineBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalSectionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.SourceLineBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -20,7 +21,7 @@ public class InternalSectionTest {
 
     @Test
     public void testInternalSectionSimple() {
-        InternalSection internalSection= UniProtFactory.INSTANCE.createInternalSection(null,null,null);
+        InternalSection internalSection = new InternalSectionBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(internalSection);
     }
     @Test
@@ -58,18 +59,26 @@ public class InternalSectionTest {
     }
 
     static InternalSection getInternalSection() {
-        List<InternalLine> internalLines = Collections.singletonList(
-                UniProtFactory.INSTANCE.createInternalLine(InternalLineType.DR,"line value")
-        );
-        List<EvidenceLine> evidenceLines = Collections.singletonList(
-                UniProtFactory.INSTANCE.createEvidenceLine("evidence value",
-                        LocalDate.of(2018,12,25),"curator value")
-        );
-        List<SourceLine> sourceLines = Collections.singletonList(
-                UniProtFactory.INSTANCE.createSourceLine("source line value")
-        );
+        InternalLine internalLine = new InternalLineBuilder()
+                .type(InternalLineType.DR)
+                .value("line value")
+                .build();
 
-        return UniProtFactory.INSTANCE.createInternalSection(internalLines,evidenceLines,sourceLines);
+        EvidenceLine evidenceLine = new EvidenceLineBuilder()
+                .evidence("evidence value")
+                .createDate(LocalDate.of(2018,12,25))
+                .curator("curator value")
+                .build();
+
+        SourceLine sourceLine = new SourceLineBuilder()
+                .value("source line value")
+                .build();
+
+        return new InternalSectionBuilder()
+                .addEvidenceLine(evidenceLine)
+                .addInternalLine(internalLine)
+                .addSourceLine(sourceLine)
+                .build();
     }
 
 }
