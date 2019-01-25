@@ -23,9 +23,7 @@ public class EvidenceImpl implements Evidence {
 
     private EvidenceImpl() {}
 
-    private EvidenceImpl(String value) {
-        System.out.println("LEO LEO LEO LEO");
-    }
+    private EvidenceImpl(String value) {}
 
     public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceType> source) {
         this.evidenceCode = evidenceCode;
@@ -44,7 +42,7 @@ public class EvidenceImpl implements Evidence {
 
     @Override
     public int compareTo(Evidence o) {
-        return this.getValue().compareTo(o.getValue());
+        return this.getValue().compareToIgnoreCase(o.getValue());
     }
 
     @Override
