@@ -1,16 +1,18 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidencedValueBuilder;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLine;
 
 public class CommentTransformerHelper {
     private static final CommentTransformer<FreeTextComment> DEAFULT_BUILDER = new FreeTextCommentTranslator();
@@ -80,7 +82,7 @@ public class CommentTransformerHelper {
             String ev = line.substring(line.lastIndexOf('{') + 1, line.lastIndexOf('}'));
             String[] tokens = ev.split(",");
             for(String token: tokens) {
-            	 evidences.add(UniProtFactory.INSTANCE.createEvidence(token.trim()));
+            	 evidences.add(parseEvidenceLine(token.trim()));
             }
         } else {
             return line;
@@ -135,8 +137,6 @@ public class CommentTransformerHelper {
         if (trimEndFullStop && (val.endsWith("."))) {
             val = val.substring(0, val.length() - 1).trim();
         }
-        return UniProtFactory.INSTANCE.createEvidencedValue(val, evidences);
+        return new EvidencedValueBuilder(val, evidences).build();
     }
-
-   
 }

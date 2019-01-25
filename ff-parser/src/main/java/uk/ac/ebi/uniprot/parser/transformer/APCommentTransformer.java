@@ -1,20 +1,19 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APIsoformBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.IsoformNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import static java.util.Arrays.asList;
 
 
 public class APCommentTransformer implements
@@ -51,27 +50,27 @@ public class APCommentTransformer implements
     }
 
     @Override
-    public  AlternativeProductsComment transform(CommentType commentType, String annotation) {
+    public AlternativeProductsComment transform(CommentType commentType, String annotation) {
         annotation = CommentTransformerHelper.stripTrailing(annotation, ".");
         if (annotation == null || annotation.length() <= 0) {
             throw new IllegalArgumentException();
         }
         annotation = CommentTransformerHelper.trimCommentHeader(annotation, COMMENT_TYPE);
         String[] tokens = annotation.split(";");
-    	APCommentBuilder.APIsoformBuilder isoformBuilder = null; 
+        APIsoformBuilder isoformBuilder = null;
         List<APEventType> events = new ArrayList<>();
-        APCommentBuilder builder = APCommentBuilder.newInstance();
+        APCommentBuilder builder = new APCommentBuilder();
         List<APIsoform> apIsoforms = new ArrayList<>();
         for (int i = 0; i < tokens.length; i++) {
 
             String token = tokens[i].trim();
             if (token.startsWith(EVENT)) {
-           
+
                 String val = token.substring(EVENT.length());
                 String[] eventTokens = val.split(",");
                 for (String eventToken : eventTokens) {
-                	events.add(APEventType.typeOf(eventToken));
-                  
+                    events.add(APEventType.typeOf(eventToken));
+
                 }
                 builder.events(events);
                 continue;
@@ -97,47 +96,44 @@ public class APCommentTransformer implements
                     }
                     j++;
                 } while (test && j < tokens.length);
-                builder.note(CommentFactory.INSTANCE.createNote(evValues));
+                builder.note(new NoteBuilder(evValues).build());
                 continue;
             }
-        
+
             if (token.startsWith(NAME)) {
-            	if(isoformBuilder !=null) {
-            		 apIsoforms.add(isoformBuilder.build());
-            		
-            	}
-            	isoformBuilder =APCommentBuilder.APIsoformBuilder.newInstance();
+                if (isoformBuilder != null) {
+                    apIsoforms.add(isoformBuilder.build());
+
+                }
+                isoformBuilder = new APIsoformBuilder();
                 String label = token.substring(NAME.length());
-                List<Evidence> evidences =new ArrayList<>();
+                List<Evidence> evidences = new ArrayList<>();
                 String value = CommentTransformerHelper.stripEvidences(label,
-                        evidences);
-                isoformBuilder.isoformName(APCommentBuilder.createIsoformName(value, evidences));
+                                                                       evidences);
+                isoformBuilder.name(new IsoformNameBuilder(value, evidences).build());
 
             } else if (token.startsWith(SYNONYMS)) {
                 String label = token.substring(SYNONYMS.length());
-                isoformBuilder.isoformSynonyms(buildSynonyms(label));
+                isoformBuilder.synonyms(buildSynonyms(label));
             } else if (token.startsWith(ISOID)) {
                 String label = token.substring(ISOID.length());
-                isoformBuilder.isoformIds(
-                Arrays.stream(label.split(","))
-                .map(val->APCommentBuilder.createIsoformId(val) )
-                .collect(Collectors.toList()));
+                isoformBuilder.ids(asList(label.split(",")));
             } else if (token.startsWith(SEQUENCE)) {
                 String label = token.substring(SEQUENCE.length()).trim();
                 if (label.equalsIgnoreCase(IsoformSequenceStatus.DISPLAYED
-                        .getValue())) {
-                	isoformBuilder.isoformSequenceStatus(IsoformSequenceStatus.DISPLAYED);
-   
+                                                   .getValue())) {
+                    isoformBuilder.sequenceStatus(IsoformSequenceStatus.DISPLAYED);
+
                 } else if (label.equalsIgnoreCase(IsoformSequenceStatus.NOT_DESCRIBED.getValue())) {
-                	isoformBuilder.isoformSequenceStatus(IsoformSequenceStatus.NOT_DESCRIBED);
+                    isoformBuilder.sequenceStatus(IsoformSequenceStatus.NOT_DESCRIBED);
                 } else if (label.equalsIgnoreCase(IsoformSequenceStatus.EXTERNAL.getValue())) {
-                	isoformBuilder.isoformSequenceStatus(IsoformSequenceStatus.EXTERNAL);
+                    isoformBuilder.sequenceStatus(IsoformSequenceStatus.EXTERNAL);
 
                 } else {
-                	isoformBuilder.sequenceIds(
-                	  Arrays.stream(label.split(","))
-                	  .map(val -> val.trim())
-                	  .collect(Collectors.toList()));
+                    isoformBuilder.sequenceIds(
+                            Arrays.stream(label.split(","))
+                                    .map(String::trim)
+                                    .collect(Collectors.toList()));
                 }
             } else if (token.startsWith(NOTE)) {
                 String val = token.substring(NOTE.length());
@@ -156,14 +152,12 @@ public class APCommentTransformer implements
                     }
                     j++;
                 }
-                isoformBuilder.note(CommentFactory.INSTANCE.createNote(evValues));
-                
+                isoformBuilder.note(new NoteBuilder(evValues).build());
             }
-           
         }
-        if(isoformBuilder !=null) {
-   		 apIsoforms.add(isoformBuilder.build());
-   		
+        if (isoformBuilder != null) {
+            apIsoforms.add(isoformBuilder.build());
+
         }
         builder.isoforms(apIsoforms);
         return builder.build();
@@ -184,7 +178,7 @@ public class APCommentTransformer implements
                 syn = syn.trim();
                 List<Evidence> evidences = new ArrayList<>();
                 String synName = CommentTransformerHelper.stripEvidences(syn, evidences);
-                synonyms.add(APCommentBuilder.createIsoformName(synName, evidences));
+                synonyms.add(new IsoformNameBuilder(synName, evidences).build());
             }
             return synonyms;
         }
@@ -202,7 +196,7 @@ public class APCommentTransformer implements
             temp = temp.substring(index + 1).trim();
             List<Evidence> evidences = new ArrayList<>();
             String synName = CommentTransformerHelper.stripEvidences(syn, evidences);
-            synonyms.add(APCommentBuilder.createIsoformName(synName, evidences));
+            synonyms.add(new IsoformNameBuilder(synName, evidences).build());
 
 
             evInd1 = temp.indexOf('{');
@@ -220,9 +214,9 @@ public class APCommentTransformer implements
                 break;
         }
         if (!temp.isEmpty()) {
-        	 List<Evidence> evidences = new ArrayList<>();
-             String synName = CommentTransformerHelper.stripEvidences(temp, evidences);
-             synonyms.add(APCommentBuilder.createIsoformName(synName, evidences));
+            List<Evidence> evidences = new ArrayList<>();
+            String synName = CommentTransformerHelper.stripEvidences(temp, evidences);
+            synonyms.add(new IsoformNameBuilder(synName, evidences).build());
         }
         return synonyms;
     }
@@ -242,5 +236,4 @@ public class APCommentTransformer implements
             return true;
         }
     }
-
 }
