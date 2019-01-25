@@ -16,7 +16,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<B, T>, T extends Citation> implements CitationBuilder<B, T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
-    protected CitationXrefs xrefs;
+    protected List<DBCrossReference<CitationXrefType>> xrefs;
     protected String title = "";
     protected PublicationDate publicationDate;
 
@@ -52,14 +52,13 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return getThis();
     }
 
-    public B citationXrefs(CitationXrefs xrefs) {
-        this.xrefs = xrefs;
-        return getThis();
-    }
+//    public B citationXrefs(CitationXrefs xrefs) {
+//        this.xrefs = xrefs;
+//        return getThis();
+//    }
 
     public B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
-        this.xrefs = new CitationsXrefsBuilder()
-                .xRefs(citationXrefs).build();
+        this.xrefs = citationXrefs;
         return getThis();
     }
 
@@ -81,7 +80,7 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return authors;
     }
 
-    public CitationXrefs getXrefs() {
+    public List<DBCrossReference<CitationXrefType>> getXrefs() {
         return xrefs;
     }
 

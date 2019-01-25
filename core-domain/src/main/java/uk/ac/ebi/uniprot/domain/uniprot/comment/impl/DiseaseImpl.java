@@ -5,7 +5,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
+import java.util.List;
 import java.util.Objects;
 
 public class DiseaseImpl implements Disease {
@@ -16,9 +18,9 @@ public class DiseaseImpl implements Disease {
     private String acronym;
     private DiseaseDescription description;
     private DBCrossReference<DiseaseReferenceType> reference;
+    private List<Evidence> evidences;
 
     private DiseaseImpl() {
-
     }
 
     public DiseaseImpl(DiseaseBuilder builder) {
@@ -31,8 +33,13 @@ public class DiseaseImpl implements Disease {
         this.acronym = builder.getAcronym();
         this.description = builder.getDescription();
         this.reference = builder.getReference();
+        this.evidences = builder.getEvidences();
     }
 
+    @Override
+    public List<Evidence> getEvidences() {
+        return evidences;
+    }
     @Override
     public String getDiseaseId() {
         return diseaseId;

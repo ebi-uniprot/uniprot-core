@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.HasEvidences;
 
 /**
  * Container used to represent the definition of the disease.
@@ -40,7 +41,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
  * @version 1.0
  * @see DiseaseComment
  */
-public interface Disease {
+public interface Disease extends HasEvidences {
     /**
      * @return disease id (ID)
      */

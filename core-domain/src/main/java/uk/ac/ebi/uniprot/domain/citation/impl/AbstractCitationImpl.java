@@ -1,16 +1,18 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractCitationImpl implements Citation {
     private CitationType citationType;
     private List<String> authoringGroup;
     private List<Author> authors;
-    private CitationXrefs citationXrefs;
+    private List<DBCrossReference<CitationXrefType>> citationXrefs;
     private String title;
     private PublicationDate publicationDate;
 
@@ -20,7 +22,7 @@ public abstract class AbstractCitationImpl implements Citation {
     }
 
     public AbstractCitationImpl(CitationType citationType, List<String> authoringGroup, List<Author> authors,
-                                CitationXrefs citationXrefs, String title, PublicationDate publicationDate) {
+                                List<DBCrossReference<CitationXrefType>> citationXrefs, String title, PublicationDate publicationDate) {
         this.citationType = citationType;
         this.authoringGroup = Utils.nonNullUnmodifiableList(authoringGroup);
         this.authors = Utils.nonNullUnmodifiableList(authors);
@@ -30,8 +32,13 @@ public abstract class AbstractCitationImpl implements Citation {
     }
 
     @Override
-    public CitationXrefs getCitationXrefs() {
+    public List<DBCrossReference<CitationXrefType>> getCitationXrefs() {
         return citationXrefs;
+    }
+
+    @Override
+    public Optional<DBCrossReference<CitationXrefType>> getCitationXrefsByType(CitationXrefType type) {
+        return citationXrefs.stream().filter(xref -> xref.getDatabaseType() == type).findAny();
     }
 
     @Override
