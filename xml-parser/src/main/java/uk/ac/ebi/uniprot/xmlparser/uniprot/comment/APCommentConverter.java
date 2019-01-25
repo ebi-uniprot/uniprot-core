@@ -54,7 +54,7 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
 		if (comment == null)
 			return null;
 		CommentType commentXML = xmlUniprotFactory.createCommentType();
-		commentXML.setType(comment.getCommentType().toDisplayName().toLowerCase());
+		commentXML.setType(comment.getCommentType().toXmlDisplayName());
 
 		if (comment.getEvents() != null) {
 			comment.getEvents().forEach(event -> commentXML.getEvent().add(eventToXml(event)));

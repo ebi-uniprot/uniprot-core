@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
 import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
@@ -22,7 +24,8 @@ public class ElectronicArticleConverter implements Converter<CitationType, Elect
 	public ElectronicArticle fromXml(CitationType xmlObj) {
 		ElectronicArticleBuilder builder =ElectronicArticleBuilder.newInstance();
 		CitationConverterHelper.updateFromXmlCitaiton(xmlObj, builder);
-		builder.journalName(xmlObj.getName());
+		if(xmlObj.getName() !=null)
+			builder.journalName(xmlObj.getName());
 		builder.locator(xmlObj.getLocator());
 		return builder.build();
 	}
@@ -33,7 +36,8 @@ public class ElectronicArticleConverter implements Converter<CitationType, Elect
 		CitationConverterHelper.updateToXmlCitatation(xmlUniprotFactory, xmlCitation, uniObj);
 
 		 xmlCitation.setType(uniObj.getCitationType().getValue());
-		 xmlCitation.setName(uniObj.getJournal().getName());
+		 if((uniObj.getJournal() != null) && !Strings.isNullOrEmpty( uniObj.getJournal().getName()))
+			 xmlCitation.setName(uniObj.getJournal().getName());
 		 xmlCitation.setLocator(uniObj.getLocator().getValue());
 		return xmlCitation;
 	}

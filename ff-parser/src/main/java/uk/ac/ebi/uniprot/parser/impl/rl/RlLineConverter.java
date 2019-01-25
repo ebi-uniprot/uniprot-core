@@ -109,7 +109,7 @@ public class RlLineConverter implements Converter<RlLineObject, AbstractCitation
 			builder.journalName("Worm Breeder's Gazette");
 			builder.locator(line.substring(line.lastIndexOf(" ") + 1, line.length() ));
 		} else {
-			builder.journalName(line);
+			builder.locator(ep.title);
 		}
 		return builder;
 	}

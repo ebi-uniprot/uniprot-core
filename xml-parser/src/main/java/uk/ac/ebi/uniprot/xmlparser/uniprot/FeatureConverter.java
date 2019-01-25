@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.google.common.base.Strings;
@@ -59,6 +60,8 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 		AlternativeSequence altSeq = null;
 		if (!Strings.isNullOrEmpty(xmlObj.getOriginal())) {
 			altSeq = FeatureFactory.INSTANCE.createAlternativeSequence(xmlObj.getOriginal(), xmlObj.getVariation());
+		}else if(AlternativeSequenceImpl.hasAlternativeSequence(type)){
+			altSeq = FeatureFactory.INSTANCE.createAlternativeSequence("", Collections.emptyList());
 		}
 
 		return FeatureFactory.INSTANCE.createFeature(type, location, description, featureId, altSeq, evidences);
@@ -73,7 +76,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 			xmlFeature.setType(uniObj.getType().getValue());
 		}
 		xmlFeature.setLocation(locationConverter.toXml(uniObj.getLocation()));
-		if (uniObj.getFeatureId() != null) {
+		if ((uniObj.getFeatureId() != null) && !Strings.isNullOrEmpty(uniObj.getFeatureId().getValue())) {
 			xmlFeature.setId(uniObj.getFeatureId().getValue());
 		}
 		if ((uniObj.getDescription() != null) && !uniObj.getDescription().getValue().isEmpty()) {
@@ -94,8 +97,10 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 		}
 		if (uniObj.getAlternativeSequence() != null) {
 			AlternativeSequence altSeq = uniObj.getAlternativeSequence();
-			xmlFeature.setOriginal(altSeq.getOriginalSequence());
-			xmlFeature.getVariation().addAll(altSeq.getAlternativeSequences());
+			if(!Strings.isNullOrEmpty(altSeq.getOriginalSequence()))
+				xmlFeature.setOriginal(altSeq.getOriginalSequence());
+			if(!altSeq.getAlternativeSequences().isEmpty())
+				xmlFeature.getVariation().addAll(altSeq.getAlternativeSequences());
 		}
 		updateConflictFeature(xmlFeature, uniObj);
 		return xmlFeature;
@@ -120,16 +125,23 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 	}
 
 	public static List<Integer> extractConflictReference(String description) {
+		String regex =", | and ";
 		List<Integer> refs = new ArrayList<>();
-		String[] tokens = description.split("; ");
-		for (String token : tokens) {
-			int index = token.lastIndexOf(" ");
-			String val = token;
-			if (index != -1) {
-				val = token.substring(index + 1);
-				refs.add(Integer.parseInt(val));
+		String[] tokens = description.split(regex);
+		for(int i=0; i<tokens.length; i++) {
+			String token = tokens[i].trim();
+			int index = token.lastIndexOf(";");
+			if(index !=-1) {
+				token = token.substring(0, index).trim();
 			}
+			index = token.lastIndexOf(" ");
+			if(index !=-1) {
+				token = token.substring(index+1).trim();
+			}
+			refs.add(Integer.parseInt(token));
+			
 		}
+	
 		return refs;
 	}
 }

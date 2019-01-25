@@ -47,7 +47,7 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
 	private static final String FAILED_ENTRY_FILE_PREV = "failed_entries";
 	private static final int MAX_RETRY = 3;
 	private static final String XML_FILEEXT = ".xml";
-
+	public static final String TARGET_PACKAGE ="uk.ac.ebi.uniprot.xml.jaxb.uniprot";
 	private final int BOLK_SIZE = 20;
 
 	private String failedFileName;
@@ -56,7 +56,7 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
 		this.keywordFile = keywordFile;
 		this.diseaseFile = diseaseFile;
 		this.nthread = nthread;
-		tempFilePref = "uniprot" + LocalTime.now().toNanoOfDay();
+		tempFilePref = "uniprot" + LocalTime.now().toNanoOfDay()/1000000;
 		xmlBuildStats = new UniProtXmlBuildStats(60 * 5);
 	}
 
@@ -78,6 +78,13 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
 		}
 		if (xmlBuildStats.getFailedCounter().getCount() > 0) {
 			outputFiles.addAll(retryBuild(failedEntryFile));
+		}else {
+			File file = new File(failedEntryFile);
+			try {
+				Files.deleteIfExists(file.toPath());
+			} catch (IOException e) {
+				LOGGER.warn("File: " + failedEntryFile + " cannot be deleted");
+			}
 		}
 
 		mergeFiles(xmlFile, outputFiles);
@@ -346,7 +353,7 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
 
 		private Marshaller initXmlMarshaller() {
 			try {
-				JAXBContext jaxbContext = JAXBContext.newInstance("uk.ac.ebi.kraken.xml.jaxb.uniprot");
+				JAXBContext jaxbContext = JAXBContext.newInstance(TARGET_PACKAGE);
 				Marshaller marshaller = jaxbContext.createMarshaller();
 				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 				marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);

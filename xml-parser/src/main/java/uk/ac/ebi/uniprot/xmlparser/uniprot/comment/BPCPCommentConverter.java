@@ -67,6 +67,7 @@ public class BPCPCommentConverter implements CommentConverter< BPCPComment> {
 		if (comment == null)
 			return null;
 		CommentType commentXML = xmlUniprotFactory.createCommentType();
+		commentXML.setType(comment.getCommentType().toXmlDisplayName());
 		// Absorption
 		if ((comment.getAbsorption() != null) && (comment.getAbsorption().getMax() != 0)) {
 			commentXML.setAbsorption(absorptionConverter.toXml(comment.getAbsorption()));

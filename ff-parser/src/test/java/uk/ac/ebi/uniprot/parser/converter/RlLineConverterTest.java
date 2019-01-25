@@ -157,6 +157,26 @@ public class RlLineConverterTest {
 		assertEquals("PGR98-023", ea.getLocator().getValue());
 		
 	}
+	
+	@Test
+	public void testElectronicArticle2(){
+		// "RL   (er) J. Am. Chem. Soc. 121:9223-9224(1999).\n";
+		RlLineObject rlObject = new RlLineObject();
+		RlLineObject.EPub th = new RlLineObject.EPub();
+		th.title ="J. Am. Chem. Soc. 121:9223-9224(1999)";
+		
+		rlObject.reference = th;
+
+		
+		CitationBuilder builder = converter.convert(rlObject);
+		assertTrue(builder instanceof ElectronicArticleBuilder);
+		ElectronicArticle ea =((ElectronicArticleBuilder) builder).build();
+		assertEquals(CitationType.ELECTRONIC_ARTICLE, ea.getCitationType());
+		//assertEquals("Plant Gene Register", ea.getJournal().getName());
+		assertEquals("J. Am. Chem. Soc. 121:9223-9224(1999)", ea.getLocator().getValue());
+		
+	}
+	
 	@Test
 	public void testUnpublished(){
 		// "RL   Unpublished observations (OCT-1978).\n";

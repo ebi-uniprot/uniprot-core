@@ -22,6 +22,7 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PersonType;
 
 public class CitationConverterHelper {
+	private static final PublicationDateConverter dateConverter = new PublicationDateConverter();
 	public static <T extends Citation> void updateFromXmlCitaiton(CitationType xmlCitation,
 			AbstractCitationBuilder<? extends AbstractCitationBuilder<?,?>,? extends Citation> builder) {
 		if (!xmlCitation.getDbReference().isEmpty()) {
@@ -34,7 +35,7 @@ public class CitationConverterHelper {
 		}
 
 		if (!Strings.isNullOrEmpty(xmlCitation.getDate())) {
-			builder.publicationDate(AbstractCitationBuilder.createPublicationDate(xmlCitation.getDate()));
+			builder.publicationDate(dateConverter.fromXml(xmlCitation.getDate()));
 		}
 		builder.authors(authorsFromXml(xmlCitation.getAuthorList()));
 		builder.authoringGroups(authoringGroupfromXml(xmlCitation.getAuthorList()));
@@ -85,17 +86,19 @@ public class CitationConverterHelper {
 		if(!Strings.isNullOrEmpty(citation.getTitle()))
 			xmlCitation.setTitle(citation.getTitle());
 		if((citation.getPublicationDate() !=null ) && !Strings.isNullOrEmpty(citation.getPublicationDate().getValue()))
-			xmlCitation.setDate(citation.getPublicationDate().getValue());
+			xmlCitation.setDate(
+					dateConverter.toXml(citation.getPublicationDate()));
 		// Authors and Consortium
 		NameListType authorsAndConsortiumList = xmlUniprotFactory.createNameListType();
-		if ((citation.getAuthors() != null) && !citation.getAuthors().isEmpty()) {
-			citation.getAuthors().stream().map(val -> toXmlAuthor(xmlUniprotFactory, val))
-					.forEach(val -> authorsAndConsortiumList.getConsortiumOrPerson().add(val));
-		}
 		if ((citation.getAuthoringGroup() != null) && !citation.getAuthoringGroup().isEmpty()) {
 			citation.getAuthoringGroup().stream().map(val -> toXmlAuthoringGroup(xmlUniprotFactory, val))
 					.forEach(val -> authorsAndConsortiumList.getConsortiumOrPerson().add(val));
 		}
+		if ((citation.getAuthors() != null) && !citation.getAuthors().isEmpty()) {
+			citation.getAuthors().stream().map(val -> toXmlAuthor(xmlUniprotFactory, val))
+					.forEach(val -> authorsAndConsortiumList.getConsortiumOrPerson().add(val));
+		}
+		
 		if (!authorsAndConsortiumList.getConsortiumOrPerson().isEmpty()) {
 			xmlCitation.setAuthorList(authorsAndConsortiumList);
 		}
@@ -124,7 +127,7 @@ public class CitationConverterHelper {
 	private static DbReferenceType toXml(ObjectFactory xmlUniprotFactory, DBCrossReference<CitationXrefType> xref) {
 		DbReferenceType dbReferenceType = xmlUniprotFactory.createDbReferenceType();
 		dbReferenceType.setId(xref.getId());
-		dbReferenceType.setType(xref.getDatabaseType().name());
+		dbReferenceType.setType(xref.getDatabaseType().getName());
 		return dbReferenceType;
 	}
 

@@ -98,6 +98,17 @@ public class RlLineParserTest {
 		verify((RlLineObject.EPub) obj.reference,
 				"Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002)");
 	}
+	
+	@Test
+	public void testEpub3() {
+		String rgLines = "RL   (er) J. Am. Chem. Soc. 121:9223-9224(1999).\n";
+		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
+		RlLineObject obj = parser.parse(rgLines);
+		assertTrue( obj.reference instanceof RlLineObject.EPub);
+		verify((RlLineObject.EPub) obj.reference,
+				"J. Am. Chem. Soc. 121:9223-9224(1999)");
+	}
+	
 	private void verify(RlLineObject.EPub epub, String title) {
 		assertEquals(title, epub.title);
 	}

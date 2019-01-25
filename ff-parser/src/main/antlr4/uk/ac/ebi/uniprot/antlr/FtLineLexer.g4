@@ -27,9 +27,11 @@ FT_KEY:
       'INTRAMEM'|'DOMAIN'|'REPEAT'|'CA_BIND'|'ZN_FING'|'DNA_BIND'|'NP_BIND'|
       'REGION'|'COILED'|'MOTIF'|'COMPBIAS'|'ACT_SITE'|'METAL'|'BINDING'|'SITE'|
       'NON_STD'|'MOD_RES'|'LIPID'|'CARBOHYD'|'DISULFID'|'CROSSLNK'|
-      'VARIANT'|'MUTAGEN'|'UNSURE'|'CONFLICT'|'NON_CONS'|
+      'MUTAGEN'|'UNSURE'|'CONFLICT'|'NON_CONS'|
       'NON_TER'|'HELIX'|'STRAND'|'TURN';
 FT_KEY_VAR_SEQ:  'VAR_SEQ' {inVarSeq=true;};
+FT_KEY_VARIANT:  'VARIANT' {inVarSeq=true;};
+
 
 NEW_LINE: '\n';
 SPACE7: '       ' {loc==2}?                         -> pushMode(FT_CONTENT);

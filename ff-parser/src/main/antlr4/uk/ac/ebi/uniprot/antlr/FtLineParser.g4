@@ -17,7 +17,7 @@ ft_line: FT_HEADER ft_key loc_start loc_end
          ;
 ft_value2: (SPACE7|SPACE1) ft_text DOT ;
 
-ft_key: FT_KEY|FT_KEY_VAR_SEQ;
+ft_key: FT_KEY|FT_KEY_VAR_SEQ|FT_KEY_VARIANT;
 ft_id: FTID FTID_VALUE DOT;
 
 ft_text: FT_LINE DOT? (CHANGE_OF_LINE FT_LINE DOT?)*;
