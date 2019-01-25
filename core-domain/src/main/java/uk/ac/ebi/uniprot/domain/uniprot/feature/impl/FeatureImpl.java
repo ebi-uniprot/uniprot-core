@@ -102,7 +102,7 @@ public class FeatureImpl implements Feature {
 
     @Override
     public boolean hasAlternativeSequence() {
-        return AlternativeSequenceImpl.hasAlternativeSequence(type);
+        return AlternativeSequenceHelper.hasAlternativeSequence(type);
     }
 
     @Override

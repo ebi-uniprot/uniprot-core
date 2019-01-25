@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequenceHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
@@ -43,7 +44,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 		String description = "";
 		if (xmlObj.getDescription() != null) {
 			description = xmlObj.getDescription();
-			if (AlternativeSequenceImpl.hasAlternativeSequence(type)) {
+			if (AlternativeSequenceHelper.hasAlternativeSequence(type)) {
 				description = XmlConverterHelper.removeIfPostfix(description, STOP);
 				if (type != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)
 					description = XmlConverterHelper.lowercaseFirstLetter(description);
@@ -60,7 +61,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 		AlternativeSequence altSeq = null;
 		if (!Strings.isNullOrEmpty(xmlObj.getOriginal())) {
 			altSeq = FeatureFactory.INSTANCE.createAlternativeSequence(xmlObj.getOriginal(), xmlObj.getVariation());
-		}else if(AlternativeSequenceImpl.hasAlternativeSequence(type)){
+		}else if(AlternativeSequenceHelper.hasAlternativeSequence(type)){
 			altSeq = FeatureFactory.INSTANCE.createAlternativeSequence("", Collections.emptyList());
 		}
 
@@ -81,7 +82,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 		}
 		if ((uniObj.getDescription() != null) && !uniObj.getDescription().getValue().isEmpty()) {
 			String val = uniObj.getDescription().getValue();
-			if (AlternativeSequenceImpl.hasAlternativeSequence(uniObj.getType())) {
+			if (AlternativeSequenceHelper.hasAlternativeSequence(uniObj.getType())) {
 				val = XmlConverterHelper.addIfNoPostfix(val, STOP);
 
 				if (uniObj.getType() != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)

@@ -7,8 +7,10 @@ import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.impl.PairImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequenceHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
 
 import java.util.ArrayList;
@@ -76,19 +78,18 @@ final public class FeatureTransformer {
         if (value.endsWith(".")) {
             value = value.substring(0, value.length() - 1);
         }
-        if (!FeatureBuilder.hasAlternativeSequence(featureType)) {
-            builder.description(new FeatureDescriptionBuilderFeatureBuilder.createFeatureDescription(value));
+        if (!AlternativeSequenceHelper.hasAlternativeSequence(featureType)) {
+            builder.description(value);
         } else {
             Pair<String, AlternativeSequence> pair = updateFeatureDescription(featureType, value);
             builder.alternativeSequence(pair.getValue());
-            builder.description(FeatureBuilder.createFeatureDescription(pair.getKey()));
+            builder.description(pair.getKey());
         }
 
         return builder.build();
     }
 
     private Pair<String, AlternativeSequence> updateFeatureDescription(FeatureType type, String text) {
-
         String description = "";
         if (type == FeatureType.CONFLICT) {
             int index = text.indexOf(BRACKET_LEFT);
@@ -155,7 +156,8 @@ final public class FeatureTransformer {
         }
 
         if (text.equalsIgnoreCase(MISSING) || text.startsWith(MISSING)) {
-            return new PairImpl<>(description, FeatureBuilder.createAlternativeSequence("", Collections.emptyList()));
+            return new PairImpl<>(description, new AlternativeSequenceBuilder()
+                    .original("").alternatives(Collections.emptyList()).build());
         }
 
         int index = text.indexOf("->");
@@ -167,14 +169,14 @@ final public class FeatureTransformer {
         }
         String original = text.substring(0, index).trim().replaceAll("\\s*", "");
 
-        return new PairImpl<>(description, FeatureBuilder.createAlternativeSequence(original, altSeq));
+        return new PairImpl<>(description, new AlternativeSequenceBuilder().original(original).alternatives(altSeq)
+                .build());
     }
 
     public static Range convertFeatureLocation(String locationStart, String locationEnd) {
         Position start = convertPosition(locationStart, '<');
         Position end = convertPosition(locationEnd, '>');
         return new Range(start, end);
-
     }
 
     private static Position convertPosition(String location, char outside) {
