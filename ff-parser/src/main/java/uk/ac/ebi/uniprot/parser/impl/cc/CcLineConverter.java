@@ -4,6 +4,8 @@ import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
+import uk.ac.ebi.uniprot.domain.Range;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
@@ -12,10 +14,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.PhysiologicalReactionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ReactionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.exception.ParseDiseaseException;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
@@ -27,6 +29,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLines;
 
 public class CcLineConverter extends EvidenceCollector implements Converter<CcLineObject, List<Comment>> {
     // private final DefaultCommentFactory factory = DefaultCommentFactory
@@ -178,17 +182,17 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 
     private APIsoform convertAPIsoform(CcLineObject.AlternativeProductName name) {
         APIsoformBuilder builder = new APIsoformBuilder();
-        builder.name(new IsoformNameBuilder(name.name.value, EvidenceConverterHelper.convert(name.name.evidences))
+        builder.name(new IsoformNameBuilder(name.name.value, parseEvidenceLines(name.name.evidences))
                              .build());
         if (isNotEmpty(name.note)) {
             builder.note(new NoteBuilder(convert(name.note)).build());
         }
         builder
-                .synonyms(name.synNames.stream().map(syn -> new IsoformNameBuilder(syn.value, EvidenceConverterHelper
-                        .convert(syn.evidences))
-                        .build()
+                .synonyms(name.synNames.stream()
+                                  .map(syn -> new IsoformNameBuilder(syn.value, parseEvidenceLines(syn.evidences))
+                                          .build()
 
-                ).collect(Collectors.toList()))
+                                  ).collect(Collectors.toList()))
                 .ids(name.isoId)
                 .sequenceIds(name.sequenceFTId)
                 .sequenceStatus(convertIsoformSequenceStatus(name.sequenceEnum));
@@ -261,11 +265,12 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
             if (isNotEmpty(cObj.bsorptionNote)) {
                 note = new NoteBuilder(convert(cObj.bsorptionNote)).build();
             }
-            new AbsorptionBuilder()
-                    .max()
-            Absorption absorption = BPCPCommentBuilder.createAbsorption(Integer.parseInt(abs),
-                                                                        cObj.bsorptionAbsApproximate, note, EvidenceConverterHelper
-                                                                                .convert(cObj.bsorptionAbs.evidences));
+            Absorption absorption = new AbsorptionBuilder()
+                    .max(Integer.parseInt(abs))
+                    .note(note)
+                    .approximate(cObj.bsorptionAbsApproximate)
+                    .evidences(parseEvidenceLines(cObj.bsorptionAbs.evidences))
+                    .build();
 
             builder.absorption(absorption);
 
@@ -284,8 +289,12 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         String unit = kmStr.substring(0, index).trim();
         kmStr = kmStr.substring(index + 5).trim();
         double value = Double.parseDouble(val);
-        return BPCPCommentBuilder.createMichaelisConstant(value, MichaelisConstantUnit.convert(unit), kmStr,
-                                                          EvidenceConverterHelper.convert(kmEvStr.evidences));
+        return new MichaelisConstantBuilder()
+                .evidences(parseEvidenceLines(kmEvStr.evidences))
+                .constant(value)
+                .unit(MichaelisConstantUnit.convert(unit))
+                .substrate(kmStr)
+                .build();
     }
 
     private MaximumVelocity convertMaximumVelocity(EvidencedString vmaxEvStr) {
@@ -298,17 +307,18 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         String unit = vmaxStr.substring(0, index).trim();
         vmaxStr = vmaxStr.substring(index + 1).trim();
         double value = Double.parseDouble(val);
-        return BPCPCommentBuilder.createMaximumVelocity(value, unit, vmaxStr,
-                                                        EvidenceConverterHelper.convert(vmaxEvStr.evidences));
-
+        return new MaximumVelocityBuilder()
+                .enzyme(vmaxStr)
+                .evidences(parseEvidenceLines(vmaxEvStr.evidences))
+                .unit(unit)
+                .velocity(value)
+                .build();
     }
 
     private WebResourceComment convertWebResource(CcLineObject.WebResource cObj) {
-        WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
-        //	String databaseName = "someDbName";
-        //	String databaseUrl = "some url";
-        //	String note = "some note";
-        builder.resourceName(cObj.name).note(cObj.note)
+        WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
+        builder.resourceName(cObj.name)
+                .note(cObj.note)
                 .resourceUrl(cObj.url);
         if (cObj.url != null)
             builder.isFtp(cObj.url.startsWith("ftp"));
@@ -319,10 +329,10 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 
         List<Interaction> interactions = new ArrayList<>();
         for (CcLineObject.InteractionObject io : cObj.interactions) {
-            InteractionBuilder builder = InteractionCommentBuilder.newInteractionBuilder();
+            InteractionBuilder builder = new InteractionBuilder();
 
             if (!io.isSelf) {
-                builder.uniProtAccession(UniProtFactory.INSTANCE.createUniProtAccession(io.spAc));
+                builder.uniProtAccession(io.spAc);
             }
             if (!Strings.isNullOrEmpty(io.gene)) {
                 builder.geneName(io.gene);
@@ -334,22 +344,21 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
             } else {
                 builder.interactionType(InteractionType.BINARY);
             }
-            builder.firstInteractor(InteractionBuilder.createInteractor(io.firstId));
+            builder.firstInteractor(io.firstId);
             if (!Strings.isNullOrEmpty(io.secondId)) {
-                builder.secondInteractor(InteractionBuilder.createInteractor(io.secondId));
+                builder.secondInteractor(io.secondId);
             }
             builder.numberOfExperiments(io.nbexp);
 
             interactions.add(builder.build());
         }
-        InteractionCommentBuilder commentBuilder = InteractionCommentBuilder.newInstance();
-        return commentBuilder.interactions(interactions).build();
+        return new InteractionCommentBuilder().interactions(interactions).build();
     }
 
     private DiseaseComment convertDisease(CcLineObject.Disease cObj,
                                           Map<Object, List<Evidence>> evidences) {
-        DiseaseCommentBuilder commentBuilder = DiseaseCommentBuilder.newInstance();
-        DiseaseBuilder builder = DiseaseCommentBuilder.newDiseaseBuilder();
+        DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
+        DiseaseBuilder builder = new DiseaseBuilder();
         if (!Strings.isNullOrEmpty(cObj.name)) {
             builder.diseaseId(cObj.name);
             uk.ac.ebi.uniprot.cv.disease.Disease disease = diseaseService.getById(cObj.name);
@@ -363,15 +372,16 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 
             }
             if (!Strings.isNullOrEmpty(cObj.mim)) {
-                builder.reference(UniProtFactory.INSTANCE.createDBCrossReference(DiseaseReferenceType.MIM, cObj.mim));
-
+                new DBCrossReferenceBuilder<>()
+                        .databaseType(DiseaseReferenceType.MIM)
+                        .id(cObj.mim)
+                        .build();
             }
             if (!Strings.isNullOrEmpty(cObj.description)) {
                 String descr = cObj.description;
                 if (!descr.endsWith("."))
                     descr += ".";
-                builder.description(descr)
-                        .evidences(evidences.get(cObj.description));
+                builder.description(new DiseaseDescriptionBuilder(descr, evidences.get(cObj.description)).build());
 
             }
             commentBuilder.disease(builder.build());
@@ -384,17 +394,17 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 
     private SubcellularLocationComment convertSubcellularLocation(CcLineObject.SubcullarLocation cObj,
                                                                   Map<Object, List<Evidence>> evidences) {
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         if (cObj.molecule != null) {
             builder.molecule(cObj.molecule);
         }
         List<SubcellularLocation> locations = new ArrayList<SubcellularLocation>();
         for (CcLineObject.LocationObject lo : cObj.locations) {
-            locations.add(
-                    SubcellularLocationCommentBuilder
-                            .createSubcellularLocation(createSubcellularLocationValue(lo.subcellularLocation, evidences)
-                                    , createSubcellularLocationValue(lo.topology, evidences), createSubcellularLocationValue(lo.orientation, evidences)));
-
+            locations.add(new SubcellularLocationBuilder()
+                                  .location(createSubcellularLocationValue(lo.subcellularLocation, evidences))
+                                  .topology(createSubcellularLocationValue(lo.topology, evidences))
+                                  .orientation(createSubcellularLocationValue(lo.orientation, evidences))
+                                  .build());
         }
         builder.subcellularLocations(locations);
 
@@ -410,26 +420,27 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         if ((locationValue == null) || locationValue.value.isEmpty()) {
             return null;
         }
-        return SubcellularLocationCommentBuilder
-                .createSubcellularLocationValue(locationValue.value, evidenceMap.get(locationValue));
-
+        return new SubcellularLocationValueBuilder(locationValue.value, evidenceMap.get(locationValue)).build();
     }
 
     private MassSpectrometryComment convertMassSpectrometry(CcLineObject.MassSpectrometry cObj,
                                                             Map<Object, List<Evidence>> evidenceMap) {
-        MassSpectrometryCommentBuilder builder = MassSpectrometryCommentBuilder.newInstance();
-        builder.massSpectrometryMethod(MassSpectrometryMethod.toType(cObj.method)).molWeight(cObj.mass)
-                .molWeightError(cObj.massError);
+        MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
+        Float mass = cObj.mass;
+        Float massError = cObj.massError;
+        builder.method(MassSpectrometryMethod.toType(cObj.method))
+                .molWeight(mass.doubleValue())
+                .molWeightError(massError.doubleValue());
 
         if (!Strings.isNullOrEmpty(cObj.note)) {
             builder.note(cObj.note);
         }
 
-        builder.evidences(cObj.sources.stream().map(val -> UniProtFactory.INSTANCE.createEvidence(val))
+        builder.evidences(cObj.sources.stream().map(EvidenceHelper::parseEvidenceLine)
                                   .collect(Collectors.toList()));
 
-        builder.massSpectrometryRanges(
-                cObj.ranges.stream().map(mrange -> convertMassSpectrometryRange(mrange)).collect(Collectors.toList()));
+        builder.ranges(
+                cObj.ranges.stream().map(this::convertMassSpectrometryRange).collect(Collectors.toList()));
         return builder.build();
     }
 
@@ -444,22 +455,24 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
             end = -1;
         } else
             end = mrange.end;
-        return MassSpectrometryCommentBuilder.createMassSpectrometryRange(start, end, mrange.rangeIsoform);
-
+        return new MassSpectrometryRangeBuilder()
+                .range(new Range(start, end))
+                .isoformId(mrange.rangeIsoform)
+                .build();
     }
 
     private RnaEditingComment convertRNAEditing(CcLineObject.RnaEditing cObj, Map<Object, List<Evidence>> evidences) {
-        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         if (cObj.locations.isEmpty()) {
             if (cObj.locationEnum == RnaEditingLocationEnum.UNDETERMINED) {
-                builder.rnaEditingLocationType(RnaEditingLocationType.Undetermined);
+                builder.locationType(RnaEditingLocationType.Undetermined);
 
             } else if (cObj.locationEnum == RnaEditingLocationEnum.NOT_APPLICABLE) {
-                builder.rnaEditingLocationType(RnaEditingLocationType.Not_applicable);
+                builder.locationType(RnaEditingLocationType.Not_applicable);
             }
         } else {
-            builder.rnaEditingLocationType(RnaEditingLocationType.Known);
-            builder.locations(cObj.locations.stream().map(pos -> convertRNAEditingPosition(pos, evidences))
+            builder.locationType(RnaEditingLocationType.Known);
+            builder.positions(cObj.locations.stream().map(pos -> convertRNAEditingPosition(pos, evidences))
                                       .collect(Collectors.toList()));
         }
         if (isNotEmpty(cObj.note)) {
@@ -470,15 +483,16 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 
     private RnaEdPosition convertRNAEditingPosition(int pos, Map<Object, List<Evidence>> evidences) {
         String spos = "" + pos;
-        return RnaEditingCommentBuilder.createPosition(spos, evidences.get(spos));
-
+        return new RnaEditingPositionBuilder(spos, evidences.get(spos)).build();
     }
 
     private FreeTextComment convertTextOnly(CommentType commentType, CcLineObject.FreeText cObj,
                                             Map<Object, List<Evidence>> evidences) {
         List<EvidencedValue> texts = convert(cObj.texts);
-        return FreeTextCommentBuilder.buildFreeTextComment(commentType, texts);
-
+        return new FreeTextCommentBuilder()
+                .commentType(commentType)
+                .texts(texts)
+                .build();
     }
 
     private CofactorComment convertCofactor(CcLineObject.StructuredCofactor cobj,
@@ -512,8 +526,10 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         int index = val.indexOf(':');
         String type = val.substring(0, index);
         String id = val.substring(index + 1);
-        return UniProtFactory.INSTANCE.createDBCrossReference(CofactorReferenceType.typeOf(type), id);
-
+        return new DBCrossReferenceBuilder<CofactorReferenceType>()
+                .id(id)
+                .databaseType(CofactorReferenceType.typeOf(type))
+                .build();
     }
 
 
@@ -526,9 +542,8 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         if (trimTrailStop) {
             evVal = stripTrailing(evStr.value.trim(), STOP);
         }
-        List<Evidence> evidences = EvidenceConverterHelper.convert(evStr.evidences);
-        return UniProtFactory.INSTANCE.createEvidencedValue(evVal, evidences);
-
+        List<Evidence> evidences = parseEvidenceLines(evStr.evidences);
+        return new EvidencedValueBuilder(evVal, evidences).build();
     }
 
     private String stripTrailing(String val, String trail) {
@@ -560,10 +575,11 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         if (capd.xref != null)
             reactionReference = convertReactionReference(capd.xref);
 
-        return new PhysiologicalReactionImpl(PhysiologicalDirectionType.typeOf(capd.name),
-                                             reactionReference, evidences.get(capd)
-        );
-
+        return new PhysiologicalReactionBuilder()
+                .directionType(PhysiologicalDirectionType.typeOf(capd.name))
+                .reactionReference(reactionReference)
+                .evidences(evidences.get(capd))
+                .build();
     }
 
     private Reaction convertReaction(CAReaction caReaction, Map<Object, List<Evidence>> evidences) {
@@ -576,8 +592,12 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         if (caReaction.ec != null) {
             ecNumber = new ECNumberImpl(caReaction.ec);
         }
-        return new ReactionImpl(caReaction.name, xrefs, ecNumber, evidences.get(caReaction));
-
+        return new ReactionBuilder()
+                .name(caReaction.name)
+                .references(xrefs)
+                .ecNumber(ecNumber)
+                .evidences(evidences.get(caReaction))
+                .build();
     }
 
     private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
