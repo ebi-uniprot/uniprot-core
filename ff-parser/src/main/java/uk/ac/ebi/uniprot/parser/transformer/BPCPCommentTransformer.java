@@ -58,7 +58,7 @@ public class BPCPCommentTransformer implements
 
         } else if (line.equals(P_H_DEPENDENCE)) {
             List<String> tokens = getTypeLines(lines, builder);
-            builder.pHDependence(buildPHDependence(tokens));
+            builder.phDependence(buildPHDependence(tokens));
 
         } else if (line.equals(REDOX_POTENTIAL)) {
             List<String> tokens = getTypeLines(lines, builder);
@@ -153,8 +153,7 @@ public class BPCPCommentTransformer implements
 
     public MichaelisConstant buildMichaelisConstant(String line) {
         List<Evidence> evidences = new ArrayList<>();
-        line = CommentTransformerHelper.stripEvidences(line,
-                                                       evidences);
+        line = CommentTransformerHelper.stripEvidences(line, evidences);
         if (line.endsWith(";"))
             line = line.substring(0, line.length() - 1);
         StringTokenizer st = new StringTokenizer(line.substring(3), " ");
@@ -197,7 +196,7 @@ public class BPCPCommentTransformer implements
             commentRestline.append(" ");
         }
         String commentStr = commentRestline.toString().trim();
-        return BPCPCommentBuilder.createMaximumVelocity(value, unit, commentStr, evidences);
+        return new MaximumVelocityBuilder().velocity(value).unit(unit).enzyme(commentStr).evidences(evidences).build();
     }
 
     public KineticParameters buildKineticParameters(List<String> lines) {
@@ -210,9 +209,9 @@ public class BPCPCommentTransformer implements
                 mConstants.add(buildMichaelisConstant(line));
 
             } else if (line.startsWith(NOTE2)) {
-                String commentStr = line.substring(5, line.length());
-                note = CommentFactory.INSTANCE
-                        .createNote(CommentTransformerHelper.parseEvidencedValues(commentStr, false));
+                String commentStr = line.substring(5);
+                note = new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(commentStr, false))
+                        .build();
             } else if (line.startsWith(VMAX)) {
                 velocities.add(buildMaximumVelocity(line));
 
@@ -221,7 +220,10 @@ public class BPCPCommentTransformer implements
             }
         }
 
-        return BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
+        return new KineticParametersBuilder()
+                .maximumVelocities(velocities)
+                .michaelisConstants(mConstants)
+                .note(note)
+                .build();
     }
-
 }

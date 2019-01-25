@@ -1,20 +1,21 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 
 public class CofactorCommentTransformer implements CommentTransformer<CofactorComment> {
@@ -23,7 +24,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
     private static final String COLON = ":";
     private static final String SEMI_COLON = ";";
     private static final String EVIDENCE = "Evidence=";
- 
+
     private static final CommentType COMMENT_TYPE = CommentType.COFACTOR;
 
     private static final String COFACTOR_NAME = "Name=";
@@ -58,13 +59,16 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
                 String dbType = ref.substring(0, dbTypeSeperator);
                 String xref = ref.substring(dbTypeSeperator + 1, ref.length());
                 DBCrossReference<CofactorReferenceType> reference
-                =UniProtFactory.INSTANCE.createDBCrossReference(CofactorReferenceType.typeOf(dbType), xref);
+                        = new DBCrossReferenceBuilder<CofactorReferenceType>()
+                        .databaseType(CofactorReferenceType.typeOf(dbType))
+                        .id(xref)
+                        .build();
                 List<Evidence> evidences = new ArrayList<>();
-                
+
                 if (evidence != null) {
                     CommentTransformerHelper.stripEvidences(evidence, evidences);
                 }
-                Cofactor cofactor = CofactorCommentBuilder.createCofactor(name, reference, evidences);
+                Cofactor cofactor = new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
                 cofactors.add(cofactor);
             }
         }
@@ -74,7 +78,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
 
     @Override
     public CofactorComment transform(String annotation) {
-   
+
         annotation = CommentTransformerHelper.trimCommentHeader(annotation, COMMENT_TYPE);
         return transform(COMMENT_TYPE, annotation);
     }
@@ -83,16 +87,16 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
     public CofactorComment transform(CommentType type, String annotation) {
         annotation = CommentTransformerHelper.trimCommentHeader(annotation, COMMENT_TYPE);
         Matcher matcher = COFACTOR_PATTERN.matcher(annotation);
-        CofactorCommentBuilder builder =  CofactorCommentBuilder.newInstance();
+        CofactorCommentBuilder builder = new CofactorCommentBuilder();
         if (matcher.matches()) {
             int separatorIndex;
 
             // extract note
             if ((separatorIndex = annotation.indexOf(NOTE)) != -1) {
-            	 String noteStr = annotation.substring(separatorIndex + NOTE.length(), annotation.length());
-            	builder.note(CommentFactory.INSTANCE
-            			.createNote(CommentTransformerHelper.parseEvidencedValues(noteStr, true)));
-              
+                String noteStr = annotation.substring(separatorIndex + NOTE.length(), annotation.length());
+                builder.note(new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(noteStr, true))
+                                     .build());
+
 
                 // remove the note from the original annotation
                 annotation = annotation.substring(0, separatorIndex).trim();
@@ -108,14 +112,14 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
 
             // extract molecule
             if (annotation.trim().length() > 0) {
-            	builder.molecule(extractCofactorMolecule(annotation));
-               
+                builder.molecule(extractCofactorMolecule(annotation));
+
             }
             return builder.build();
         } else {
             throw new IllegalArgumentException("Unable to convert annotation to COFACTOR comment: " + annotation);
         }
-       
+
     }
 
 }
