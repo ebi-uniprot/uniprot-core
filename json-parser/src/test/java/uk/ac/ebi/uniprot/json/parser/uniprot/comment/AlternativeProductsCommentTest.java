@@ -2,12 +2,14 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APIsoformBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.IsoformNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidencedValueBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
@@ -25,7 +27,7 @@ public class AlternativeProductsCommentTest {
     @Test
     public void testAlternativeProductsCommentSimple() {
 
-        AlternativeProductsComment comment = APCommentBuilder.newInstance().build();
+        AlternativeProductsComment comment = new APCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -85,16 +87,16 @@ public class AlternativeProductsCommentTest {
 
     public static AlternativeProductsComment getAlternativeProductsComment() {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10028");
-        List<IsoformName> isoformSynonyms = Collections.singletonList(APCommentBuilder.createIsoformName("syn value", evidences));
-        List<EvidencedValue> evidencedValues = Collections.singletonList(UniProtFactory.INSTANCE.createEvidencedValue("value1", evidences));
-        Note note = CommentFactory.INSTANCE.createNote(evidencedValues);
-        List<IsoformId> isoformIds = Collections.singletonList(APCommentBuilder.createIsoformId("isoID1"));
-        IsoformName name = APCommentBuilder.createIsoformName("name", evidences);
-        APCommentBuilder.APIsoformBuilder isoformBuilder = APCommentBuilder.APIsoformBuilder.newInstance();
-        APIsoform apIsoform = isoformBuilder.isoformName(name)
-                .isoformSynonyms(isoformSynonyms)
-                .isoformIds(isoformIds)
-                .isoformSequenceStatus(IsoformSequenceStatus.DESCRIBED)
+        List<IsoformName> isoformSynonyms = Collections.singletonList(new IsoformNameBuilder("syn value", evidences).build());
+        List<EvidencedValue> evidencedValues = Collections.singletonList(new EvidencedValueBuilder("value1", evidences).build());
+        Note note = new NoteBuilder(evidencedValues).build();
+        List<String> isoformIds = Collections.singletonList("isoID1");
+        IsoformName name = new IsoformNameBuilder("name", evidences).build();
+        APIsoformBuilder isoformBuilder = new APIsoformBuilder();
+        APIsoform apIsoform = isoformBuilder.name(name)
+                .synonyms(isoformSynonyms)
+                .ids(isoformIds)
+                .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
                 .note(note)
                 .sequenceIds(Collections.singletonList("SequenceID"))
                 .build();
@@ -103,7 +105,7 @@ public class AlternativeProductsCommentTest {
         List<APIsoform> isoforms = Collections.singletonList(apIsoform);
 
 
-        return APCommentBuilder.newInstance()
+        return new APCommentBuilder()
                 .events(events)
                 .isoforms(isoforms)
                 .note(note)

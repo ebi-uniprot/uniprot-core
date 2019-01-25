@@ -29,6 +29,9 @@ public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, 
 
     @Override
     public InternalSectionBuilder from(InternalSection instance) {
+        this.evidenceLines(instance.getEvidenceLines());
+        this.internalLines(instance.getInternalLines());
+        this.sourceLines(instance.getSourceLines());
         return this;
     }
 

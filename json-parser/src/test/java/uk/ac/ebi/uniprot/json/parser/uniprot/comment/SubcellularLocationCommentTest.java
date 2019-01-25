@@ -5,9 +5,11 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
@@ -25,7 +27,7 @@ public class SubcellularLocationCommentTest {
     @Test
     public void testSubcellularLocationSimple() {
 
-        SubcellularLocationComment comment = SubcellularLocationCommentBuilder.newInstance().build();
+        SubcellularLocationComment comment = new SubcellularLocationCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -73,15 +75,16 @@ public class SubcellularLocationCommentTest {
 
     public static SubcellularLocationComment getSubcellularLocationComment(){
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
-        SubcellularLocation sublocation = SubcellularLocationCommentBuilder.createSubcellularLocation(
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue("location value", evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue("topology value", evidences),
-                SubcellularLocationCommentBuilder.createSubcellularLocationValue("orientation value", evidences));
+        SubcellularLocation sublocation = new SubcellularLocationBuilder()
+                .location(new SubcellularLocationValueBuilder("location value",evidences).build())
+                .orientation(new SubcellularLocationValueBuilder("orientation value",evidences).build())
+                .topology(new SubcellularLocationValueBuilder("topology value",evidences).build())
+                .build();
 
         List<SubcellularLocation> subcellularLocations = Collections.singletonList(sublocation);
-        Note note = CommentFactory.INSTANCE.createNote(
-                CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001361"));
-        return SubcellularLocationCommentBuilder.newInstance()
+        Note note = new NoteBuilder(
+                CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001361")).build();
+        return new SubcellularLocationCommentBuilder()
                 .molecule("molecule value")
                 .subcellularLocations(subcellularLocations)
                 .note(note)

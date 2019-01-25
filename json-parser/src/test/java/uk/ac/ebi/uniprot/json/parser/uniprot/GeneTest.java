@@ -3,12 +3,10 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.gene.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -55,28 +53,28 @@ public class GeneTest {
 
     public static Gene createCompleteGene(){
         List<Evidence> geneNameEvidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001360");
-        GeneName geneName = GeneFactory.INSTANCE.createGeneName("some Gene", geneNameEvidences);
+        GeneName geneName = new GeneNameBuilder().value("some Gene").evidences(geneNameEvidences).build();
 
-        List<GeneNameSynonym> synonyms = new ArrayList<>();
         List<Evidence> synEvidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
-        GeneNameSynonym synonym = GeneFactory.INSTANCE.createGeneNameSynonym("some Syn", synEvidences);
-        synonyms.add(synonym);
+        GeneNameSynonym synonym = new GeneNameSynonymBuilder().value("some Syn").evidences(synEvidences).build();
 
-        List<OrderedLocusName> olnNames = new ArrayList<>();
         List<Evidence> olnNameEvidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001362");
-        OrderedLocusName olnName = GeneFactory.INSTANCE.createOrderedLocusName("some locus", olnNameEvidences);
-        olnNames.add(olnName);
+        OrderedLocusName olnName = new OrderedLocusNameBuilder().value("some locus").evidences(olnNameEvidences).build();
 
-        List<ORFName> orfNames = new ArrayList<>();
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
-        orfNames.add(GeneFactory.INSTANCE.createORFName("some orf", evidences));
+        ORFName orfName = new ORFNameBuilder().value("some orf").evidences(evidences).build();
 
-        return GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
+        return new GeneBuilder()
+                .geneName(geneName)
+                .addSynonyms(synonym)
+                .addOrderedLocusNames(olnName)
+                .addOrfNames(orfName)
+                .build();
     }
 
     private Gene createSimpleGene() {
-        GeneName geneName = GeneFactory.INSTANCE.createGeneName("someGene", Collections.emptyList());
-        return GeneFactory.INSTANCE.createGene(geneName, Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
+        GeneName geneName = new GeneNameBuilder().value("someGene").build();
+        return new GeneBuilder().geneName(geneName).build();
     }
 
 }

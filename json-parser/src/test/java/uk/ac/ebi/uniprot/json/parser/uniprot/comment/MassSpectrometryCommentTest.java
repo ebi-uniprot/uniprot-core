@@ -2,16 +2,14 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryRangeImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryRangeBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
-
-import java.util.Collections;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -24,7 +22,7 @@ public class MassSpectrometryCommentTest {
     @Test
     public void testInteractionSimple() {
 
-        MassSpectrometryComment comment = MassSpectrometryCommentBuilder.newInstance()
+        MassSpectrometryComment comment = new MassSpectrometryCommentBuilder()
                 .build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
@@ -82,15 +80,18 @@ public class MassSpectrometryCommentTest {
     }
 
     public static MassSpectrometryComment getMassSpectrometryComment(){
-        List<MassSpectrometryRange> range = Collections.singletonList(
-               new MassSpectrometryRangeImpl(1,7,"isoformId value"));
+        Range range = Range.create(1,7);
+        MassSpectrometryRange massSpectrometryRange = new MassSpectrometryRangeBuilder()
+                .range(range)
+                .isoformId("isoformId value")
+                .build();
 
-        return MassSpectrometryCommentBuilder.newInstance()
-                .massSpectrometryMethod(MassSpectrometryMethod.LSI)
-                .molWeight(2.1f)
-                .molWeightError(1.2f)
+        return new MassSpectrometryCommentBuilder()
+                .method(MassSpectrometryMethod.LSI)
+                .molWeight(2.1D)
+                .molWeightError(1.2D)
                 .note("note value")
-                .massSpectrometryRanges(range)
+                .addRange(massSpectrometryRange)
                 .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                 .build();
     }

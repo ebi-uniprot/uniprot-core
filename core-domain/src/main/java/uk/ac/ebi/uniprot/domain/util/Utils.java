@@ -20,6 +20,11 @@ public class Utils {
         }
     }
 
+    public static <T> void nonNullAdd(T source, Collection<T> target) {
+        if (source != null) {
+            target.add(source);
+        }
+    }
     public static <T> List<T> nonNullUnmodifiableList(List<T> value) {
         if ((value == null) || value.isEmpty()) {
             return Collections.emptyList();

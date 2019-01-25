@@ -16,7 +16,7 @@ public class WebResourceCommentTest {
     @Test
     public void testWebResourceSimple() {
 
-        WebResourceComment comment = WebResourceCommentBuilder.newInstance().build();
+        WebResourceComment comment = new WebResourceCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -50,7 +50,7 @@ public class WebResourceCommentTest {
     }
 
     public static WebResourceComment getWebResourceComment(){
-        return WebResourceCommentBuilder.newInstance()
+        return new WebResourceCommentBuilder()
                 .resourceName("resource name")
                 .resourceUrl("resource URL")
                 .isFtp(true)

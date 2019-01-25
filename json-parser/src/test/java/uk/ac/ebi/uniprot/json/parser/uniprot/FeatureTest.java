@@ -4,14 +4,16 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -25,8 +27,8 @@ public class FeatureTest {
 
     @Test
     public void testFeatureSimple() {
-        Feature feature = FeatureBuilder.newInstance()
-                .featureType(FeatureType.CHAIN)
+        Feature feature = new FeatureBuilder()
+                .type(FeatureType.CHAIN)
                 .build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -90,20 +92,25 @@ public class FeatureTest {
     }
 
     static Feature getFeature(){
-        AlternativeSequence alternativeSequence = FeatureFactory.INSTANCE
-            .createAlternativeSequence("original value", Collections.singletonList("alternative value"));
-        FeatureDescription description = FeatureFactory.INSTANCE.createFeatureDescription("description value");
-        DBCrossReference<FeatureXDbType> xrefs = new DBCrossReferenceImpl<>(FeatureXDbType.DBSNP,"db id");
-        FeatureId featureId = FeatureFactory.INSTANCE.createFeatureId("id value");
+        AlternativeSequence alternativeSequence = new AlternativeSequenceBuilder()
+                .original("original value")
+                .alternative("alternative value")
+                .build();
+
+        DBCrossReference<FeatureXDbType> xrefs = new DBCrossReferenceBuilder<FeatureXDbType>()
+                .databaseType(FeatureXDbType.DBSNP)
+                .id("db id")
+                .build();
+
         Range location = Range.create(2,8);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
-        return FeatureBuilder.newInstance()
-                .featureType(FeatureType.CHAIN)
+        return new FeatureBuilder()
+                .type(FeatureType.CHAIN)
                 .alternativeSequence(alternativeSequence)
                 .dbXref(xrefs)
-                .description(description)
+                .description("description value")
                 .evidences(evidences)
-                .featureId(featureId)
+                .featureId("id value")
                 .location(location)
                 .build();
     }

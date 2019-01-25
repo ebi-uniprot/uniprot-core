@@ -10,9 +10,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilde
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
-import java.util.Collections;
-import java.util.List;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 /**
@@ -24,7 +21,7 @@ public class InteractionCommentTest {
     @Test
     public void testInteractionSimple() {
 
-        InteractionComment comment = InteractionCommentBuilder.newInstance()
+        InteractionComment comment = new InteractionCommentBuilder()
                 .build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
@@ -64,18 +61,17 @@ public class InteractionCommentTest {
     }
 
     public static InteractionComment getInteractionComment(){
-        List<Interaction> interactions = Collections.singletonList(
-                InteractionBuilder.newInstance()
+        Interaction interaction = new InteractionBuilder()
                 .interactionType(InteractionType.BINARY)
                 .geneName("gene name")
                 .numberOfExperiments(10)
-                .firstInteractor(InteractionBuilder.createInteractor("first"))
-                .secondInteractor(InteractionBuilder.createInteractor("second"))
+                .firstInteractor("first")
+                .secondInteractor("second")
                 .uniProtAccession(new UniProtAccessionImpl("P12345"))
-                .build());
+                .build();
 
-        return InteractionCommentBuilder.newInstance()
-                .interactions(interactions)
+        return new InteractionCommentBuilder()
+                .addInteraction(interaction)
                 .build();
     }
 }

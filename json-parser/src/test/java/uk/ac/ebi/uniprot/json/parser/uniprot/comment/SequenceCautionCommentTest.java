@@ -21,7 +21,7 @@ public class SequenceCautionCommentTest {
     @Test
     public void testSequenceCautionSimple() {
 
-        SequenceCautionComment comment = SequenceCautionCommentBuilder.newInstance().build();
+        SequenceCautionComment comment = new SequenceCautionCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -63,7 +63,7 @@ public class SequenceCautionCommentTest {
 
 
     public static SequenceCautionComment getSequenceCautionComment(){
-        return SequenceCautionCommentBuilder.newInstance()
+        return new SequenceCautionCommentBuilder()
                 .sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                 .sequence("sequence")
                 .positions(Collections.singletonList("position"))

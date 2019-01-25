@@ -2,15 +2,13 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -23,7 +21,7 @@ public class BPCPCommentTest {
     @Test
     public void testBPCPCommentSimple() {
 
-        BPCPComment comment = BPCPCommentBuilder.newInstance().build();
+        BPCPComment comment = new BPCPCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -116,24 +114,36 @@ public class BPCPCommentTest {
     public static BPCPComment getBpcpComment() {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10028");
         List<EvidencedValue> texts = CreateUtils.createEvidencedValueList("value1", "ECO:0000255|PROSITE-ProRule:PRU10028");
-        Note note = CommentFactory.INSTANCE.createNote(texts);
-
-        Absorption absorption = BPCPCommentBuilder.createAbsorption(10, true, note, evidences);
-
-        List<MaximumVelocity> velocities = Collections.singletonList(
-                BPCPCommentBuilder.createMaximumVelocity(1.0f, "unit1", "enzyme1", evidences));
-        List<MichaelisConstant> mConstants = Collections.singletonList(
-                BPCPCommentBuilder.createMichaelisConstant(2.1f, MichaelisConstantUnit.MICRO_MOL, "sub1", evidences));
-
-        KineticParameters kp = BPCPCommentBuilder.createKineticParameters(velocities, mConstants, note);
-
-
-        BPCPCommentBuilder builder = BPCPCommentBuilder.newInstance();
-        return builder.absorption(absorption)
+        Note note = new NoteBuilder(texts).build();
+        Absorption absorption = new AbsorptionBuilder()
+                .max(10)
+                .approximate(true)
+                .note(note)
+                .evidences(evidences)
+                .build();
+        MaximumVelocity velocity = new MaximumVelocityBuilder()
+                .velocity(1.0F)
+                .unit("unit1")
+                .enzyme("enzyme1")
+                .evidences(evidences)
+                .build();
+        MichaelisConstant mConstant = new MichaelisConstantBuilder()
+                .constant(2.1F)
+                .unit(MichaelisConstantUnit.MICRO_MOL)
+                .substrate("sub1")
+                .evidences(evidences)
+                .build();
+        KineticParameters kp = new KineticParametersBuilder()
+                .addMaximumVelocitie(velocity)
+                .addMichaelisConstant(mConstant)
+                .note(note)
+                .build();
+        return new BPCPCommentBuilder()
+                .absorption(absorption)
                 .kineticParameters(kp)
-                .pHDependence(BPCPCommentBuilder.createPHDependence(texts))
-                .redoxPotential(BPCPCommentBuilder.createRedoxPotential(texts))
-                .temperatureDependence(BPCPCommentBuilder.createTemperatureDependence(texts))
+                .phDependence(new PhDependenceBuilder(texts).build())
+                .redoxPotential(new RedoxPotentialBuilder(texts).build())
+                .temperatureDependence(new TemperatureDependenceBuilder(texts).build())
                 .build();
     }
 

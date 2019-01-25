@@ -3,15 +3,16 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 
@@ -29,7 +30,7 @@ public class CofactorCommentTest {
     @Test
     public void testCofactorSimple() {
 
-        CofactorComment comment = CofactorCommentBuilder.newInstance().build();
+        CofactorComment comment = new CofactorCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
@@ -78,16 +79,20 @@ public class CofactorCommentTest {
     }
 
     public static CofactorComment getCofactorComment() {
-        CofactorReferenceType type = CofactorReferenceType.CHEBI;
-        String referenceId = "CHEBI:314";
-        DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(type, referenceId);
-
-        Cofactor cofactor = CofactorCommentBuilder.createCofactor("Cofactor Name", reference, createEvidences());
+        DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceBuilder<CofactorReferenceType>()
+                .databaseType(CofactorReferenceType.CHEBI)
+                .id("ChEBI:3243")
+                .build();
+        Cofactor cofactor = new CofactorBuilder()
+                .name("Cofactor Name")
+                .reference(reference)
+                .evidences(createEvidences())
+                .build();
         List<Cofactor> cofactors = Collections.singletonList(cofactor);
 
-        Note note = CommentFactory.INSTANCE.createNote(createEvidenceValues());
-        return CofactorCommentBuilder.newInstance()
-                .cofactors(cofactors)
+        Note note = new NoteBuilder(createEvidenceValues()).build();
+        return new CofactorCommentBuilder()
+                .addCofactor(cofactor)
                 .molecule("molecule")
                 .note(note)
                 .build();

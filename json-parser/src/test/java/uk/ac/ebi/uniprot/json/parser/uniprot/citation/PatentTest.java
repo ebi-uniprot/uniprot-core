@@ -2,12 +2,12 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.citation;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.Patent;
-import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.util.Collections;
@@ -22,7 +22,7 @@ public class PatentTest {
 
     @Test
     public void testPatentSimple() {
-        Citation citation =  PatentBuilder.newInstance().build();
+        Citation citation =  new PatentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(citation);
@@ -48,13 +48,16 @@ public class PatentTest {
     }
 
     public static Patent getPatent(){
-        return PatentBuilder.newInstance()
+        DBCrossReference<CitationXrefType> xref = new DBCrossReferenceBuilder<CitationXrefType>()
+                .databaseType(CitationXrefType.PUBMED)
+                .id("somepID1").build();
+        return new PatentBuilder()
                 .patentNumber("patent number")
-                .publicationDate(AbstractCitationBuilder.createPublicationDate("date value"))
-                .authoringGroups(Collections.singletonList("auth group"))
-                .authors(Collections.singletonList(AbstractCitationBuilder.createAuthor("author Leo")))
+                .publicationDate("date value")
+                .addAuthorGroup("auth group")
+                .addAuthor("author Leo")
                 .title("Leo book tittle")
-                .citationXrefs(Collections.singletonList(new DBCrossReferenceImpl<>(CitationXrefType.PUBMED, "somepID1")))
+                .citationXrefs(Collections.singletonList(xref))
                 .build();
     }
 }
