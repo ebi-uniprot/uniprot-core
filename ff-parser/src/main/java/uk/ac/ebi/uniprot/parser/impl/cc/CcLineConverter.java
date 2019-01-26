@@ -8,10 +8,10 @@ import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
@@ -381,7 +381,8 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
                 String descr = cObj.description;
                 if (!descr.endsWith("."))
                     descr += ".";
-                builder.description(new DiseaseDescriptionBuilder(descr, evidences.get(cObj.description)).build());
+                builder.description(descr)
+                        .evidences(evidences.get(cObj.description));
 
             }
             commentBuilder.disease(builder.build());
