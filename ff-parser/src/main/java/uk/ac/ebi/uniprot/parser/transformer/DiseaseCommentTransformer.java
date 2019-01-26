@@ -5,7 +5,6 @@ import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
@@ -124,7 +123,8 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
         List<Evidence> evidences = new ArrayList<>();
         descriptionString = CommentTransformerHelper.stripEvidences(descriptionString, evidences);
         // remove trailing full stop
-        builder.description(new DiseaseDescriptionBuilder(descriptionString, evidences).build());
+        builder.description(descriptionString)
+                .evidences(evidences);
     }
 
     /**
