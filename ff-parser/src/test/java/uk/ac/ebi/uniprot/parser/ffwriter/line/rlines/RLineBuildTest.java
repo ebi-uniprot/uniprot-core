@@ -9,9 +9,6 @@ import uk.ac.ebi.uniprot.domain.citation.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtReferenceFactory;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.RLineBuilder;
 
@@ -33,7 +30,6 @@ public class RLineBuildTest {
 	 * "RL   Virology 323:70-84(2004).\n" +
 	 */
 	RLineBuilder builder = new RLineBuilder();
-	UniProtReferenceFactory factory = UniProtReferenceFactory.INSTANCE;
 
 	@Test
 	public void testJournalArticle() {
@@ -44,7 +40,7 @@ public class RLineBuildTest {
 				+ "RT   \"Comparative genomic analyses of frog virus 3, type species of the\n"
 				+ "RT   genus Ranavirus (family Iridoviridae).\";\n" + "RL   Virology 323:70-84(2004).";
 
-		JournalArticleBuilder jaBuilder = JournalArticleBuilder.newInstance();
+		JournalArticleBuilder jaBuilder = new JournalArticleBuilder();
 		List<String> authors = Arrays
 				.asList(new String[] { "Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K." });
 		jaBuilder.authors(buildAuthors(authors));
@@ -53,7 +49,7 @@ public class RLineBuildTest {
 		jaBuilder.title(title);
 		jaBuilder.citationXrefs(buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
 		jaBuilder.journalName("Virology").firstPage("70").lastPage("84").volume("323")
-				.publicationDate(AbstractCitationBuilder.createPublicationDate("2004"));
+				.publicationDate("2004");
 
 		List<String> plasmids = new ArrayList<>(Arrays.asList(new String[] { "pSd11_G1246", "pSd12_G1263",
 				"pSd13_G1271", "pSd2_G1252", "pSd3_G1281", "pSd4_G1190", "pSd5_G1213" }));
@@ -93,7 +89,7 @@ public class RLineBuildTest {
 		evs.add(ev2);
 		evs.add(ev3);
 
-		JournalArticleBuilder jaBuilder = JournalArticleBuilder.newInstance();
+		JournalArticleBuilder jaBuilder = new JournalArticleBuilder();
 		List<String> authors = Arrays
 				.asList(new String[] { "Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K." });
 		jaBuilder.authors(buildAuthors(authors));
@@ -102,7 +98,7 @@ public class RLineBuildTest {
 		jaBuilder.title(title);
 		jaBuilder.citationXrefs(buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
 		jaBuilder.journalName("Virology").firstPage("70").lastPage("84").volume("323")
-				.publicationDate(AbstractCitationBuilder.createPublicationDate("2004"));
+				.publicationDate("2004");
 
 		List<ReferenceComment> referenceComments = new ArrayList<>();
 		String ss1 = "pSd11_G1246";
@@ -149,12 +145,12 @@ public class RLineBuildTest {
 				+ "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
 				+ "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia\n"
 				+ "RT   coli in Europe.\";\n" + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
-		SubmissionBuilder smBuilder = SubmissionBuilder.newInstance();
+		SubmissionBuilder smBuilder = new SubmissionBuilder();
 		List<String> authors = new ArrayList<>(
 				Arrays.asList(new String[] { "Tan W.G.H.", "Barkman T.J.", "Chinchar V.G." }));
 		String title = "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
 		smBuilder.authors(buildAuthors(authors)).title(title)
-				.publicationDate(AbstractCitationBuilder.createPublicationDate("FEB-2004"));
+				.publicationDate("FEB-2004");
 
 		smBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
 		List<ReferenceComment> referenceComments = new ArrayList<>();
@@ -197,7 +193,7 @@ public class RLineBuildTest {
 		List<String> authors = Arrays.asList(new String[] { "Tan W.G.H.", "Barkman T.J.", "Chinchar V.G." });
 		String title = "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
 		smBuilder.authors(buildAuthors(authors)).title(title)
-				.publicationDate(AbstractCitationBuilder.createPublicationDate("FEB-2004"));
+				.publicationDate("FEB-2004");
 
 		smBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
 		List<ReferenceComment> referenceComments = new ArrayList<>();
@@ -261,7 +257,7 @@ public class RLineBuildTest {
 		bkBuilder.editors(buildAuthors(editors));
 		bkBuilder.title(title);
 		bkBuilder.bookName("CONSERVATION GENETICS").firstPage("205").lastPage("227").publisher("Birkhaeuser Verlag")
-				.address("Basel").publicationDate(AbstractCitationBuilder.createPublicationDate("1994"));
+				.address("Basel").publicationDate("1994");
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
@@ -290,7 +286,7 @@ public class RLineBuildTest {
 		bkBuilder.editors(buildAuthors(editors));
 		bkBuilder.title(title);
 		bkBuilder.bookName("CONSERVATION GENETICS").firstPage("205").lastPage("227").publisher("Birkhaeuser Verlag")
-				.address("Basel").publicationDate(AbstractCitationBuilder.createPublicationDate("1994"));
+				.address("Basel").publicationDate("1994");
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
@@ -321,7 +317,7 @@ public class RLineBuildTest {
 				// .lastPage("227")
 				.publisher("Madison")
 				// .address("Basel")
-				.publicationDate(AbstractCitationBuilder.createPublicationDate("1998"));
+				.publicationDate("1998");
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
@@ -349,7 +345,7 @@ public class RLineBuildTest {
 
 		thBuilder.title(title);
 
-		thBuilder.publicationDate(AbstractCitationBuilder.createPublicationDate("2002"));
+		thBuilder.publicationDate("2002");
 		String institute = "Department of Fakultaet fuer Biologie, Universitaet Heidelberg";
 		thBuilder.institute(institute);
 		thBuilder.address("Heidelberg, Germany");
@@ -379,7 +375,7 @@ public class RLineBuildTest {
 
 		paBuilder.title(title);
 
-		paBuilder.publicationDate(AbstractCitationBuilder.createPublicationDate("12-JUL-2001"));
+		paBuilder.publicationDate("12-JUL-2001");
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
@@ -422,7 +418,7 @@ public class RLineBuildTest {
 				+ "RT   study of speciation using DNA sequence data.\";\n"
 				+ "RL   Unpublished observations (JAN-2012).";
 
-		UnpublishedBuilder uoBuilder = UnpublishedBuilder.newInstance();
+		UnpublishedBuilder uoBuilder = new UnpublishedBuilder();
 
 		List<String> authors = Arrays.asList(new String[] { "Arctander P.", "Fjeldsaa J." });
 		uoBuilder.authors(buildAuthors(authors));
@@ -430,7 +426,7 @@ public class RLineBuildTest {
 
 		uoBuilder.title(title);
 
-		uoBuilder.publicationDate(AbstractCitationBuilder.createPublicationDate("JAN-2012"));
+		uoBuilder.publicationDate("JAN-2012");
 
 		List<String> referencePositions = new ArrayList<>();
 		referencePositions.add("NUCLEOTIDE SEQUENCE");
@@ -468,6 +464,7 @@ public class RLineBuildTest {
 
 	}
 
+	// TODO: 26/01/19 Here
 	private List<Author> buildAuthors(List<String> names) {
 		List<Author> authors = new ArrayList<>();
 		for (String name : names) {
