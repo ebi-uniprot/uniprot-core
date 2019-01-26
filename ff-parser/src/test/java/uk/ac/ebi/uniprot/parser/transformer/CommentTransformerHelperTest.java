@@ -1,18 +1,18 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 
 import static org.junit.Assert.assertEquals;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLine;
 
 public class CommentTransformerHelperTest {
-   
+
     public void testSemiComma() {
         String value =
                 "A chromosomal aberration involving BCL2 has been found in chronic lymphatic leukemia."
@@ -209,7 +209,7 @@ public class CommentTransformerHelperTest {
     private void verify(List<Evidence> evIds, List<String> evs) {
         List<Evidence> newEvIds = new ArrayList<>();
         for (String ev : evs) {
-            newEvIds.add(UniProtFactory.INSTANCE.createEvidence(ev));
+            newEvIds.add(parseEvidenceLine(ev));
         }
         assertEquals(newEvIds, evIds);
     }

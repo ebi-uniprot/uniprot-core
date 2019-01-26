@@ -1,20 +1,20 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.gene.GeneName;
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
 import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 import uk.ac.ebi.uniprot.parser.impl.gn.GnLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.gn.GnLineObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GnLineConverterTest {
 	private final GnLineConverter converter = new GnLineConverter();

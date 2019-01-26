@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.cc;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CCLineWrapperTest extends CCBuildTestAbstr {
@@ -141,7 +140,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
     private FreeTextComment buildComment(CommentType type, String text,  List<String> evs) {
     	List<EvidencedValue> evidencedValues = new ArrayList<>();
 		evidencedValues.add(createEvidencedValue(text, evs));
-    		FreeTextCommentBuilder builder = FreeTextCommentBuilder.newInstance();
+    		FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
     		builder.commentType(type)
     		.texts(evidencedValues);
     		return builder.build();

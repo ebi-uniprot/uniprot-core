@@ -1,15 +1,16 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.cc;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.junit.Test;
-
 import com.google.common.base.Strings;
-
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryRangeBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
@@ -21,19 +22,19 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         String ccLineString =
                 "MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray; Range=167-186; Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
-        
-    
+
+
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Monophosphorylated";
-        Float molWeight = 2189.4f;
-        Float molWeightError = 0.0f;
+        Double molWeight = 2189.4d;
+        Double molWeightError = 0.0;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
-                MassSpectrometryMethod.ELECTROSPRAY,
-                note, evidences, true);
+                                                              MassSpectrometryMethod.ELECTROSPRAY,
+                                                              note, evidences, true);
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         ranges.add(buildRange(167, 186, ""));
-        builder.massSpectrometryRanges(ranges);
+        builder.ranges(ranges);
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -52,14 +53,14 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Allele D, with 6 phosphate groups";
-        Float molWeight = 22629f;
-        Float molWeightError = 1.6f;
+        Double molWeight = 22629d;
+        Double molWeightError = 1.6;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
-                MassSpectrometryMethod.ELECTROSPRAY,
-                note, evidences, true);
+                                                              MassSpectrometryMethod.ELECTROSPRAY,
+                                                              note, evidences, true);
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         ranges.add(buildRange(16, 214, "P04653-1"));
-        builder.massSpectrometryRanges(ranges);
+        builder.ranges(ranges);
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -80,14 +81,14 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Allele D, with 6 phosphate groups";
-        Float molWeight = 22629f;
-        Float molWeightError = 1.6f;
+        Double molWeight = 22629d;
+        Double molWeightError = 1.6;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
-                MassSpectrometryMethod.ELECTROSPRAY,
-                note, evidences, false);
+                                                              MassSpectrometryMethod.ELECTROSPRAY,
+                                                              note, evidences, false);
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         ranges.add(buildRange(16, 214, "P04653-1"));
-        builder.massSpectrometryRanges(ranges);
+        builder.ranges(ranges);
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -106,14 +107,14 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "";
-        Float molWeight = 3260f;
-        Float molWeightError = null;
+        Double molWeight = 3260d;
+        Double molWeightError = null;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
-                MassSpectrometryMethod.MALDI,
-                note, evidences, false);
+                                                              MassSpectrometryMethod.MALDI,
+                                                              note, evidences, false);
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         ranges.add(buildRange(-1, -1, ""));
-        builder.massSpectrometryRanges(ranges);
+        builder.ranges(ranges);
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -131,37 +132,36 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Monophosphorylated";
-        Float molWeight = 871.3f;
-        Float molWeightError = null;
+        Double molWeight = 871.3;
+        Double molWeightError = null;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
-                MassSpectrometryMethod.ELECTROSPRAY,
-                note, evidences, true);
+                                                              MassSpectrometryMethod.ELECTROSPRAY,
+                                                              note, evidences, true);
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         ranges.add(buildRange(35, 42, ""));
         ranges.add(buildRange(101, 108, "P04653-1"));
         ranges.add(buildRange(145, 152, ""));
         ranges.add(buildRange(189, 196, ""));
-        builder.massSpectrometryRanges(ranges);
+        builder.ranges(ranges);
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
     }
 
-    MassSpectrometryCommentBuilder buildComment(float molWeight, Float molWeightError,
-            MassSpectrometryMethod method,
-            String note, List<String> evs, boolean setSources) {
-        MassSpectrometryCommentBuilder builder =MassSpectrometryCommentBuilder.newInstance();
+    MassSpectrometryCommentBuilder buildComment(Double molWeight, Double molWeightError,
+                                                MassSpectrometryMethod method,
+                                                String note, List<String> evs, boolean setSources) {
+        MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
         builder.evidences(createEvidence(evs));
         builder.molWeight(molWeight);
         builder.molWeightError(molWeightError);
-        builder.massSpectrometryMethod(method);
-        if(!Strings.isNullOrEmpty(note))
-        	builder.note(note);
+        builder.method(method);
+        if (!Strings.isNullOrEmpty(note))
+            builder.note(note);
         return builder;
     }
 
     MassSpectrometryRange buildRange(int start, int end, String isoform) {
-    	return MassSpectrometryCommentBuilder.createMassSpectrometryRange(start, end, isoform);
-   
+        return new MassSpectrometryRangeBuilder().range(new Range(start, end)).isoformId(isoform).build();
     }
 }
