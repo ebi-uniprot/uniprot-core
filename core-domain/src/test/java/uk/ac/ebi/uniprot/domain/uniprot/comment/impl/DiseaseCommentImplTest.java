@@ -6,7 +6,6 @@ import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.List;
@@ -32,7 +31,8 @@ class DiseaseCommentImplTest {
                 .diseaseId(diseaseId)
                 .diseaseAc(diseaseAc)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder(description, evidences).build())
+                .evidences(evidences)
+                .description(description)
                 .reference(reference).build();
         Note note = createNote();
 

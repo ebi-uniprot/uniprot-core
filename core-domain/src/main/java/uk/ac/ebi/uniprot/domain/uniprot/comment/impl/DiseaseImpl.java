@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
@@ -16,7 +15,7 @@ public class DiseaseImpl implements Disease {
     private String diseaseId;
     private String diseaseAccession;
     private String acronym;
-    private DiseaseDescription description;
+    private String description;
     private DBCrossReference<DiseaseReferenceType> reference;
     private List<Evidence> evidences;
 
@@ -57,7 +56,7 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
-    public DiseaseDescription getDescription() {
+    public String getDescription() {
         return description;
     }
 
@@ -90,8 +89,7 @@ public class DiseaseImpl implements Disease {
     }
 
     private boolean isValidDescription() {
-        return getDescription() != null && getDescription().getValue() != null
-                && !getDescription().getValue().isEmpty();
+        return description !=null && !description.isEmpty();
     }
 
     private boolean isValidReference() {

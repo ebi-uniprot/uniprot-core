@@ -54,7 +54,7 @@ public interface Disease extends HasEvidences {
      */
     String getAcronym();
 
-    DiseaseDescription getDescription();
+    String getDescription();
 
     DBCrossReference<DiseaseReferenceType> getReference();
 

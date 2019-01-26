@@ -5,7 +5,6 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
@@ -58,10 +57,11 @@ public class DiseaseBuilderTest {
         List<Evidence> evidences =  createEvidences();
 
         String diseaseId = "someId";
-        DiseaseDescription diseaseDescription = new DiseaseDescriptionBuilder("some description", evidences).build();
+        String diseaseDescription = "some description";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(diseaseDescription)
+                .evidences(evidences)
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());
         assertEquals(diseaseDescription, disease.getDescription());
@@ -79,10 +79,11 @@ public class DiseaseBuilderTest {
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(DiseaseReferenceType.MIM, referenceId);
         String diseaseId = "someId";
-        DiseaseDescription diseaseDescription = new DiseaseDescriptionBuilder("some description", evidences).build();
+        String diseaseDescription = "some description";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
                 .description(diseaseDescription)
+                .evidences(evidences)
                 .reference(reference)        
                 .build();
         assertEquals(diseaseId, disease.getDiseaseId());

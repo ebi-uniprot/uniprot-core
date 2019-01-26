@@ -19,8 +19,8 @@ public class DiseaseCommentBuilderTest {
     public void testSetDisease() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
-        String description ="some description";
-        List<Evidence> evidences =  createEvidences();
+        String description = "some description";
+        List<Evidence> evidences = createEvidences();
 
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
@@ -28,8 +28,9 @@ public class DiseaseCommentBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder(description, evidences).build())
-                .reference(reference)         
+                .evidences(evidences)
+                .description(description)
+                .reference(reference)
                 .build();
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
 
@@ -46,8 +47,8 @@ public class DiseaseCommentBuilderTest {
     public void testSetNote() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
-        String description ="some description";
-        List<Evidence> evidences =  createEvidences();
+        String description = "some description";
+        List<Evidence> evidences = createEvidences();
 
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
@@ -55,7 +56,8 @@ public class DiseaseCommentBuilderTest {
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
                 .acronym("someAcron")
-                .description(new DiseaseDescriptionBuilder(description, evidences).build())
+                .evidences(evidences)
+                .description(description)
                 .reference(reference)
                 .build();
         Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
