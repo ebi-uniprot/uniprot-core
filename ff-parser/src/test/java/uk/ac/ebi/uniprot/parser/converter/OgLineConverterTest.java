@@ -1,19 +1,18 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
+import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.parser.impl.og.OgLineConverter;
+import uk.ac.ebi.uniprot.parser.impl.og.OgLineObject;
+import uk.ac.ebi.uniprot.parser.impl.og.OgLineObject.OgEnum;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.parser.impl.og.OgLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.og.OgLineObject;
-import uk.ac.ebi.uniprot.parser.impl.og.OgLineObject.OgEnum;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 public class OgLineConverterTest {
 	private final OgLineConverter converter = new OgLineConverter();

@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
+import org.junit.Test;
+import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.parser.impl.kw.KwLineConverter;
+import uk.ac.ebi.uniprot.parser.impl.kw.KwLineObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.*;
-
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.parser.impl.kw.KwLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.kw.KwLineObject;
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 
 public class KwLineConverterTest {
 	private final KwLineConverter converter =new  KwLineConverter(new KeywordServiceImpl(""));

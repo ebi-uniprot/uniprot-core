@@ -45,7 +45,7 @@ public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuil
         return this;
     }
 
-    public UniProtDBCrossReferenceBuilder evidence(Evidence evidence) {
+    public UniProtDBCrossReferenceBuilder addEvidence(Evidence evidence) {
         this.evidences.add(evidence);
         return this;
     }

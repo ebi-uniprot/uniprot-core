@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import static junit.framework.TestCase.assertEquals;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.parser.impl.rn.RnLineConverter;
+import uk.ac.ebi.uniprot.parser.impl.rn.RnLineObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.parser.impl.rn.RnLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.rn.RnLineObject;
+import static junit.framework.TestCase.assertEquals;
 
 public class RnLineConverterTest {
 	@Test

@@ -14,7 +14,7 @@ public class CCWebResourceBuildTest extends CCBuildTestAbstr {
         String ccLineString = ("WEB RESOURCE: Name=Worthington enzyme manual;\n" +
                 "URL=\"http://www.worthington-biochem.com/STDH/\";");
         doTest(ccLine);
-        WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
+        WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         builder.resourceName("Worthington enzyme manual")
         .resourceUrl("http://www.worthington-biochem.com/STDH/");
         

@@ -1,19 +1,19 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.cc;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Test;
-
 import com.google.common.base.Strings;
-
+import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
+
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class CCSubcellBuildTest extends CCBuildTestAbstr {
@@ -27,14 +27,14 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         String molecule = "";
         String note = "Loosely associated with the inner membrane";
         List<String> evs = new ArrayList<>();
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         builder.note(buildNote(note, evs));
 
 
         List<SubcellularLocation> subcellularLocations = new ArrayList<>();
 
         String location = "Mitochondrion intermembrane space";
- 
+
         List<String> locationEvs = new ArrayList<>();
 
         String orient = "";
@@ -81,10 +81,10 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         evs.add(ev4);
 
 
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         builder.note(buildNote(note, evs));
 
-        
+
         List<SubcellularLocation> subcellularLocations = new ArrayList<>();
 
         String location = "Mitochondrion intermembrane space";
@@ -92,7 +92,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         locationEvs.add(ev1);
         locationEvs.add(ev2);
         String orient = "";
-  
+
         List<String> orientEvs = new ArrayList<>();
         String top = "";
         List<String> topEvs = new ArrayList<>();
@@ -116,15 +116,15 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         String ccLineString = "SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass "
                 + "membrane protein (By similarity).";
 
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
-     //   builder.note(buildNote(note, evs));
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
+        //   builder.note(buildNote(note, evs));
         List<SubcellularLocation> subcellularLocations = new ArrayList<>();
 
         String location = "Mitochondrion inner membrane";
         List<String> locationEvs = new ArrayList<>();
 
         String orient = "Multi-pass membrane protein (By similarity)";
- 
+
         List<String> orientEvs = new ArrayList<>();
         String top = "";
         List<String> topEvs = new ArrayList<>();
@@ -158,8 +158,8 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         // String ev4 ="ECO:0000313|PDB:3OW2";
         // String ev5 ="ECO:0000256|HAMAP-Rule:MF_00205";
 
-        
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
 
 
         List<SubcellularLocation> subcellularLocations = new ArrayList<>();
@@ -198,7 +198,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         String ev3 = "ECO:0000303|Ref.6";
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         //   builder.note(buildNote(note, evs));
 
         List<SubcellularLocation> subcellularLocations = new ArrayList<>();
@@ -244,13 +244,13 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         List<String> evs = new ArrayList<>();
 
 
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
-           builder.note(buildNote(note, evs));
-           builder.molecule(molecule);
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
+        builder.note(buildNote(note, evs));
+        builder.molecule(molecule);
         List<SubcellularLocation> subcellularLocations = new ArrayList<>();
 
         String location = "Virion membrane";
-    
+
         List<String> locationEvs = new ArrayList<>();
 
         String orient = "Single-pass type I membrane sdssds protein (By similarity)";
@@ -335,8 +335,8 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         evs.add(ev5);
 
-        
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         builder.note(buildNote(note, evs));
         builder.molecule(molecule);
 
@@ -406,25 +406,25 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
         // String ev5 ="ECO:0000256|HAMAP-Rule:MF_00205";
         String molecule = "";
         String note = "Loosely associated with the inner membrane";
-  
+
         List<String> evs = new ArrayList<>();
         evs.add(ev3);
         evs.add(ev4);
 
-        
+
         String note2 = "Another note";
 
         List<String> evs2 = new ArrayList<>();
         evs2.add(ev3);
-        
-        List<Map.Entry<String, List<String>>> notes = new ArrayList<>();
-		notes.add(new AbstractMap.SimpleEntry<>(note, evs));
-		
-		notes.add(new AbstractMap.SimpleEntry<>(note2, evs2));
-		
-		Note commentNote =buildNote(notes);
 
-        SubcellularLocationCommentBuilder builder = SubcellularLocationCommentBuilder.newInstance();
+        List<Map.Entry<String, List<String>>> notes = new ArrayList<>();
+        notes.add(new AbstractMap.SimpleEntry<>(note, evs));
+
+        notes.add(new AbstractMap.SimpleEntry<>(note2, evs2));
+
+        Note commentNote = buildNote(notes);
+
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         builder.note(commentNote);
         builder.molecule(molecule);
 
@@ -453,18 +453,20 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     SubcellularLocation buildSubLocation(
-            String location,  List<String> locationEvs,
-            String orient,  List<String> orientEvs,
+            String location, List<String> locationEvs,
+            String orient, List<String> orientEvs,
             String top, List<String> topEvs) {
-        return SubcellularLocationCommentBuilder.createSubcellularLocation(buildLocationValue(location, locationEvs),
-        		buildLocationValue(top, topEvs), buildLocationValue(orient, orientEvs));
+        return new SubcellularLocationBuilder()
+                .location(buildLocationValue(location, locationEvs))
+                .topology(buildLocationValue(top, topEvs))
+                .orientation(buildLocationValue(orient, orientEvs)).build();
 
     }
 
     SubcellularLocationValue buildLocationValue(String value, List<String> evs) {
-    	if(Strings.isNullOrEmpty(value))
-    		return null;
-    	return SubcellularLocationCommentBuilder.createSubcellularLocationValue(value, createEvidence(evs));
-   
+        if (Strings.isNullOrEmpty(value))
+            return null;
+        return new SubcellularLocationValueBuilder(value, createEvidence(evs)).build();
+
     }
 }

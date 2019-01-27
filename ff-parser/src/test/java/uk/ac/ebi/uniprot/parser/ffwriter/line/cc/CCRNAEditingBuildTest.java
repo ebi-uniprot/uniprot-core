@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.cc;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingPositionBuilder;
+
+import java.util.AbstractMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test
@@ -20,9 +20,9 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         String ccLineString = ("RNA EDITING: Modified_positions=393, 431, 452, 495;");
 
 
-        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
-        builder.rnaEditingLocationType(RnaEditingLocationType.Known);
-      
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
+        builder.locationType(RnaEditingLocationType.Known);
+
         List<RnaEdPosition> positions = new ArrayList<>();
         String p = "393";
         List<String> pEvs = new ArrayList<>();
@@ -43,7 +43,7 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         pEvs = new ArrayList<>();
         RnaEdPosition position4 = buildPosition(p, pEvs);
         positions.add(position4);
-        builder.locations(positions);
+        builder.positions(positions);
         RnaEditingComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -93,8 +93,8 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         List<String> noteEvs = new ArrayList<>();
         noteEvs.add(ev4);
         noteEvs.add(ev5);
-        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
-        builder.rnaEditingLocationType(RnaEditingLocationType.Known);
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
+        builder.locationType(RnaEditingLocationType.Known);
         Note cNote = buildNote(note, noteEvs);
         builder.note(cNote);
         List<RnaEdPosition> positions = new ArrayList<>();
@@ -117,7 +117,7 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         RnaEdPosition position3 = buildPosition(p, pEvs);
         positions.add(position3);
 
-        builder.locations(positions);
+        builder.positions(positions);
         RnaEditingComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -171,16 +171,16 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         List<String> noteEvs2 = new ArrayList<>();
         noteEvs2.add(ev4);
         noteEvs2.add(ev5);
-        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
-        builder.rnaEditingLocationType(RnaEditingLocationType.Known);
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
+        builder.locationType(RnaEditingLocationType.Known);
         List<Map.Entry<String, List<String>>> notes = new ArrayList<>();
-		notes.add(new AbstractMap.SimpleEntry<>(note, noteEvs));
-		
-		notes.add(new AbstractMap.SimpleEntry<>(note2, noteEvs2));
-		
-		Note commentNote =buildNote(notes);
-        
-		builder.note(commentNote);
+        notes.add(new AbstractMap.SimpleEntry<>(note, noteEvs));
+
+        notes.add(new AbstractMap.SimpleEntry<>(note2, noteEvs2));
+
+        Note commentNote = buildNote(notes);
+
+        builder.note(commentNote);
 
         List<RnaEdPosition> positions = new ArrayList<>();
         String p = "156";
@@ -202,15 +202,14 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
         RnaEdPosition position3 = buildPosition(p, pEvs);
         positions.add(position3);
 
-        builder.locations(positions);
+        builder.positions(positions);
         RnaEditingComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
         doTestStringEv(ccLineStringEvidence, comment);
     }
 
-    RnaEdPosition buildPosition(String p, List<String> evs) {
-    		return RnaEditingCommentBuilder.createPosition(p, createEvidence(evs));
-
+    private RnaEdPosition buildPosition(String p, List<String> evs) {
+        return new RnaEditingPositionBuilder(p, createEvidence(evs)).build();
     }
 }

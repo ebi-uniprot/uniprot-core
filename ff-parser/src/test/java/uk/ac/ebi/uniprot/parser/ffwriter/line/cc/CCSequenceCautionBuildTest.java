@@ -1,17 +1,16 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.cc;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
@@ -143,7 +142,7 @@ public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
 			SequenceCautionType type, List<String> positions, String note,
 			List<String> evs){
 		
-		SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
+		SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
 		
 		builder.sequenceCautionType(type)
 		.sequence(sequence)

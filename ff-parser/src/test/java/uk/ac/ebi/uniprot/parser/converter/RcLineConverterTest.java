@@ -1,17 +1,15 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import junit.framework.TestCase;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.rc.RcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.rc.RcLineObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RcLineConverterTest {
 	@Test

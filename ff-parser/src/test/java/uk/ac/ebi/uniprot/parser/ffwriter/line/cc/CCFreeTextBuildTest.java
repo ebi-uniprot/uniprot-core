@@ -1,18 +1,17 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.line.cc;
 
+import org.junit.Ignore;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.junit.Ignore;
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
 
 public class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
@@ -806,7 +805,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
     	List<EvidencedValue> evidencedValues =
     	evidencedTexts.stream().map(val -> createEvidencedValue(val.getKey(), val.getValue()))
     	.collect(Collectors.toList());
-    	FreeTextCommentBuilder builder = FreeTextCommentBuilder.newInstance();
+    	FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
 		builder.commentType(type)
 		.texts(evidencedValues);
 		return builder.build();
