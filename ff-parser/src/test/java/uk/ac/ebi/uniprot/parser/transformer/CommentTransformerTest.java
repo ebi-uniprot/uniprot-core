@@ -1,17 +1,16 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Ignore;
 import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.impl.cc.CCLineBuilderFactory;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class CommentTransformerTest {
     @Test

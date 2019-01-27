@@ -1,19 +1,18 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineObject;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CcMSConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null);

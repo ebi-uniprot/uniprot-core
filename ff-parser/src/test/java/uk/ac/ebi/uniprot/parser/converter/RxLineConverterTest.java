@@ -26,7 +26,7 @@ public class RxLineConverterTest {
 		rxLine.rxs.add(rx2);
 		RxLineConverter converter = new RxLineConverter();
 		List<DBCrossReference<CitationXrefType>> cxrefs = converter.convert(rxLine);
-		Citation citation = BookBuilder.newInstance().citationXrefs(cxrefs).build();
+		Citation citation = new BookBuilder().citationXrefs(cxrefs).build();
 
 		TestCase.assertTrue(citation.getCitationXrefsByType(CitationXrefType.PUBMED).isPresent());
 		TestCase.assertTrue(citation.getCitationXrefsByType(CitationXrefType.DOI).isPresent());

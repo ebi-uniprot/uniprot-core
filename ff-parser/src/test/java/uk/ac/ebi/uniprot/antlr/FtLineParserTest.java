@@ -1,18 +1,17 @@
 package uk.ac.ebi.uniprot.antlr;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineObject;
 import uk.ac.ebi.uniprot.parser.impl.ft.FtLineObject.FTType;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class FtLineParserTest {
 	@Test
@@ -25,13 +24,7 @@ public class FtLineParserTest {
 		 assertEquals(1, obj.fts.size());
 		 verify(obj.fts.get(0), FTType.CHAIN, "20", "873", "104 kDa microneme/rhoptry antigen", "PRO_0000232680");		 
 	}
-	private void verify(FtLineObject.FT ft, FTType type, String start, String end, String description, String ftid) {
-		assertEquals(type, ft.type);
-		assertEquals(start, ft.location_start);
-		assertEquals(end, ft.location_end);
-		assertEquals(description, ft.ft_text);
-		assertEquals(ftid, ft.ftId);	
-	}
+
 	@Test
 	public void testHelix() {
 		 String ftLines = "FT   HELIX      33     83\n"
@@ -39,9 +32,9 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.HELIX, "33", "83", null, null);	 
+		 verify(obj.fts.get(0), FTType.HELIX, "33", "83", null, null);
 	}
-	
+
 	@Test
 	public void testMutagenMultiLineText() {
 		 String ftLines = "FT   MUTAGEN     119    119       C->R,E,A: Loss of cADPr hydrolase and\n"
@@ -50,8 +43,9 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.MUTAGEN, "119", "119", "C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity", null);	 
+		 verify(obj.fts.get(0), FTType.MUTAGEN, "119", "119", "C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity", null);
 	}
+	
 	@Test
 	public void testVarSeqMultiLineText() {
 		 String ftLines = "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
@@ -62,9 +56,10 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.VAR_SEQ, "33", "83", 
-				 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)", "VSP_004370");	 
+		 verify(obj.fts.get(0), FTType.VAR_SEQ, "33", "83",
+				 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)", "VSP_004370");
 	}
+
 	@Test
 	public void testVarSeqWraper1() {
 		 String ftLines = "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
@@ -75,17 +70,17 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.VAR_SEQ, "33", "83", 
-				 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL-> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)", "VSP_004370");	 
+		 verify(obj.fts.get(0), FTType.VAR_SEQ, "33", "83",
+				 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL-> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)", "VSP_004370");
 	}
-	
-	@Test 
+
+	@Test
 	public void testVarSeq() {
-		String ftLines ="FT   VAR_SEQ       1     31       MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n" + 
-				"FT                                KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n" + 
-				"FT                                SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK\n" + 
-				"FT                                (in isoform 4).\n" + 
-				"FT                                {ECO:0000303|PubMed:14702039}.\n" + 
+		String ftLines ="FT   VAR_SEQ       1     31       MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n" +
+				"FT                                KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n" +
+				"FT                                SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK\n" +
+				"FT                                (in isoform 4).\n" +
+				"FT                                {ECO:0000303|PubMed:14702039}.\n" +
 				"FT                                /FTId=VSP_043645.\n";
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
@@ -94,22 +89,22 @@ public class FtLineParserTest {
 		 String desc ="MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV"
 				 + "SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK(in isoform 4)";
 		 System.out.println(desc);
-		// verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");	
+		// verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
 		 FtLineConverter converter = new FtLineConverter();
 		 List<Feature> features = converter.convert(obj);
 		 assertEquals(1, features.size());
 		 Feature  feature = features.get(0);
 		 assertEquals("MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR", feature.getAlternativeSequence().getOriginalSequence());
-			
+
 		 assertEquals("MPNKNKKEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTVSAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK", feature.getAlternativeSequence().getAlternativeSequences().get(0));
-			
+
 	}
 	
-	@Test 
+	@Test
 	public void testVarSeq2() {
-		String ftLines ="FT   VAR_SEQ       1      1       M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA\n" + 
-				"FT                                SPSRRGSASRAGPGRASETM (in isoform L-VEGF-\n" + 
-				"FT                                1). {ECO:0000305}.\n" + 
+		String ftLines ="FT   VAR_SEQ       1      1       M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA\n" +
+				"FT                                SPSRRGSASRAGPGRASETM (in isoform L-VEGF-\n" +
+				"FT                                1). {ECO:0000305}.\n" +
 				"FT                                /FTId=VSP_038746.\n";
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
@@ -118,16 +113,16 @@ public class FtLineParserTest {
 		 String desc ="M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA"
 				 + "SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1). {ECO:0000305}";
 		 System.out.println(desc);
-		// verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");	
+		// verify(obj.fts.get(0), FTType.VAR_SEQ, "1", "31",  desc, "VSP_043645");
 		 FtLineConverter converter = new FtLineConverter();
 		 List<Feature> features = converter.convert(obj);
 		 assertEquals(1, features.size());
 		 Feature  feature = features.get(0);
 		 assertEquals("M", feature.getAlternativeSequence().getOriginalSequence());
-			
+
 		 assertEquals("MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPASPSRRGSASRAGPGRASETM", feature.getAlternativeSequence().getAlternativeSequences().get(0));
 		 assertEquals("in isoform L-VEGF-1", feature.getDescription().getValue());
-			
+
 	}
 	
 	@Test
@@ -144,14 +139,15 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(4, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.VAR_SEQ, "33", "83", 
-				 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)", "VSP_004370");	 
-		 verify(obj.fts.get(1), FTType.MUTAGEN, "119", "119", 
-				 "C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity", null);	 
-		 verify(obj.fts.get(2), FTType.HELIX, "33", "83",  null, null);	 
-		 verify(obj.fts.get(3), FTType.TURN, "3", "33",  null, null);	 
-		 
+		 verify(obj.fts.get(0), FTType.VAR_SEQ, "33", "83",
+				 "TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPLDGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)", "VSP_004370");
+		 verify(obj.fts.get(1), FTType.MUTAGEN, "119", "119",
+				 "C->R,E,A: Loss of cADPr hydrolase and ADP-ribosyl cyclase activity", null);
+		 verify(obj.fts.get(2), FTType.HELIX, "33", "83",  null, null);
+		 verify(obj.fts.get(3), FTType.TURN, "3", "33",  null, null);
+
 	}
+	
 	@Test
 	public void testWithPotential() {
 		 String ftLines = "FT   CARBOHYD     61     61       N-linked (GlcNAc...); by host\n"
@@ -160,9 +156,10 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.CARBOHYD, "61", "61", 
-				 "N-linked (GlcNAc...); by host (Potential)", null);	 	 
+		 verify(obj.fts.get(0), FTType.CARBOHYD, "61", "61",
+				 "N-linked (GlcNAc...); by host (Potential)", null);
 	}
+
 	@Test
 	public void testUnknown() {
 		 String ftLines = "FT   TRANSIT       1      ?       Mitochondrion (Potential).\n"
@@ -172,12 +169,13 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(2, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.TRANSIT, "1", "?", 
-				 "Mitochondrion (Potential)", null);	 
-		
-		 verify(obj.fts.get(1), FTType.CHAIN, "?", "610", 
-				 "Protein ABC1 homolog, mitochondrial", "PRO_0000000261");	 	 
+		 verify(obj.fts.get(0), FTType.TRANSIT, "1", "?",
+				 "Mitochondrion (Potential)", null);
+
+		 verify(obj.fts.get(1), FTType.CHAIN, "?", "610",
+				 "Protein ABC1 homolog, mitochondrial", "PRO_0000000261");
 	}
+
 	@Test
 	public void testWithEvidence() {
 		 String ftLines = "FT   METAL       186    186       Calcium; via carbonyl oxygen. {ECO:0000006|PubMed:20858735,\n"
@@ -186,16 +184,11 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.METAL, "186", "186", 
-				 "Calcium; via carbonyl oxygen", null);	  
+		 verify(obj.fts.get(0), FTType.METAL, "186", "186",
+				 "Calcium; via carbonyl oxygen", null);
 		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006|PubMed:23640942"}) );
 	}
-	
-	private void verifyEvidences( FtLineObject obj, Object name, List<String> evidences) {
-		List<String> expected = obj.evidenceInfo.evidences.get(name);
-		assertEquals(expected, evidences);
-		
-	}
+
 	@Test
 	public void testWithEvidence2() {
 		 String ftLines = "FT   HELIX      33     83       {ECO:0000313|EMBL:BAG16761.1}.\n"
@@ -203,8 +196,8 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.HELIX, "33", "83", 
-				 "", null);	  
+		 verify(obj.fts.get(0), FTType.HELIX, "33", "83",
+				 "", null);
 		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList(new String[] {"ECO:0000313|EMBL:BAG16761.1"}) );
 	}
 	
@@ -216,13 +209,14 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(2, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.REGION, "237", "240", 
-				 "Sulfate 1 binding", null);	  
+		 verify(obj.fts.get(0), FTType.REGION, "237", "240",
+				 "Sulfate 1 binding", null);
 		 verifyEvidences(obj, obj.fts.get(0),  null );
-		 verify(obj.fts.get(1), FTType.REGION, "275", "277", 
-				 "Phosphate 2 binding", null);	  
+		 verify(obj.fts.get(1), FTType.REGION, "275", "277",
+				 "Phosphate 2 binding", null);
 		 verifyEvidences(obj, obj.fts.get(1),  Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}) );
 	}
+
 	@Test
 	public void testWithEvidence4() {
 		 String ftLines = "FT   TRANSMEM     57     77       Helical; (Potential). {ECO:0000257|HAMAP-\n"
@@ -231,11 +225,12 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77", 
-				 "Helical; (Potential)", null);	  
+		 verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77",
+				 "Helical; (Potential)", null);
 		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList(new String[] {"ECO:0000257|HAMAP-Rule:MF_03021"}) );
-		
+
 	}
+	
 	@Test
 	public void testWithEvidence5() {
 		 String ftLines = "FT   TRANSMEM     57     77       Helical; (Potential). {ECO:0000257|\n"
@@ -244,11 +239,12 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77", 
-				 "Helical; (Potential)", null);	  
+		 verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77",
+				 "Helical; (Potential)", null);
 		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList(new String[] {"ECO:0000257|HAMAP-Rule:MF_03021"}) );
-		
+
 	}
+
 	@Test
 	public void testWithEvidence6() {
 		 String ftLines = "FT   TRANSMEM     57     77       Helical; (Potential). {ECO:\n"
@@ -257,11 +253,12 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77", 
-				 "Helical; (Potential)", null);	  
+		 verify(obj.fts.get(0), FTType.TRANSMEM, "57", "77",
+				 "Helical; (Potential)", null);
 		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList(new String[] {"ECO:0000257|HAMAP-Rule:MF_03021"}) );
-		
+
 	}
+
 	@Test
 	public void testConflictFeature() {
 		String ftLine =
@@ -270,56 +267,56 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLine);
 		 assertEquals(1, obj.fts.size());
-		 verify(obj.fts.get(0), FTType.CONFLICT, "1", "1", 
-				 "A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)", null);	  
+		 verify(obj.fts.get(0), FTType.CONFLICT, "1", "1",
+				 "A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)", null);
 		 verifyEvidences(obj, obj.fts.get(0),  null );
 	}
-	
+
 	@Test
 	public void testConflictFeature2() {
 		String ftLine =
-				"FT   CONFLICT    149    176       KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLST\n" + 
+				"FT   CONFLICT    149    176       KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLST\n" +
 				"FT                                VS (in Ref. 4; CAA78385). {ECO:0000305}.\n";
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLine);
 		 assertEquals(1, obj.fts.size());
 		 System.out.println(obj.fts.get(0).ft_text);
-		 verify(obj.fts.get(0), FTType.CONFLICT, "149", "176", 
-				 "KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLSTVS (in Ref. 4; CAA78385)", null);	  
+		 verify(obj.fts.get(0), FTType.CONFLICT, "149", "176",
+				 "KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLSTVS (in Ref. 4; CAA78385)", null);
 		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList("ECO:0000305") );
 	}
-	
-	
+
 	@Test
 	public void testConflictFeatureWithSlash() {
 		String ftLine =
-				"FT   CONFLICT    430    432       ALL -> DLV (in Ref. 1; BAA85929/BAA85930/\n" + 
+				"FT   CONFLICT    430    432       ALL -> DLV (in Ref. 1; BAA85929/BAA85930/\n" +
 				"FT                                BAA85931). {ECO:0000305}.\n";
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLine);
 		 assertEquals(1, obj.fts.size());
 		 System.out.println(obj.fts.get(0).ft_text);
-		 verify(obj.fts.get(0), FTType.CONFLICT, "430", "432", 
-				 "ALL -> DLV (in Ref. 1; BAA85929/BAA85930/BAA85931)", null);	  
+		 verify(obj.fts.get(0), FTType.CONFLICT, "430", "432",
+				 "ALL -> DLV (in Ref. 1; BAA85929/BAA85930/BAA85931)", null);
 		 verifyEvidences(obj, obj.fts.get(0),  Arrays.asList("ECO:0000305") );
 	}
 	
 	@Test
 	public void testVariantWithMulti() {
 		String ftLine =
-				"FT   VARIANT     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" + 
+				"FT   VARIANT     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" +
 				"FT                                LKVPVVQKVTKRLGVTSPD.\n";
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLine);
 		 assertEquals(1, obj.fts.size());
 		 System.out.println(obj.fts.get(0).ft_text);
-		 verify(obj.fts.get(0), FTType.VARIANT, "267", "294", 
-				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);	  
+		 verify(obj.fts.get(0), FTType.VARIANT, "267", "294",
+				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);
 	}
+	
 	@Test
 	public void testVariantWithMulti2() {
 		String ftLine =
-				"FT   VARIANT     157    224       EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n" + 
+				"FT   VARIANT     157    224       EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n" +
 				"FT                                PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n" +
 				"FT                                (in strain 168 and its derivatives, non\n"+
 				"FT                                surfactin-producing strains).\n";
@@ -327,34 +324,25 @@ public class FtLineParserTest {
 		 FtLineObject obj = parser.parse(ftLine);
 		 assertEquals(1, obj.fts.size());
 		 System.out.println(obj.fts.get(0).ft_text);
-		 verify(obj.fts.get(0), FTType.VARIANT, "157", "224", 
+		 verify(obj.fts.get(0), FTType.VARIANT, "157", "224",
 				 "EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVDPGYKMAVCAAHPDFPEDITMVSYEELL"
-				 + " -> GRQRLIASA(in strain 168 and its derivatives, non surfactin-producing strains)", null);	  
+				 + " -> GRQRLIASA(in strain 168 and its derivatives, non surfactin-producing strains)", null);
 	}
-	
-	
-	
-	
-	
-	
 	
 	@Test
 	public void testVarSeqWithMulti() {
 		String ftLine =
-				"FT   VAR_SEQ     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" + 
+				"FT   VAR_SEQ     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" +
 				"FT                                LKVPVVQKVTKRLGVTSPD.\n";
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLine);
 		 assertEquals(1, obj.fts.size());
 		 System.out.println(obj.fts.get(0).ft_text);
-		 verify(obj.fts.get(0), FTType.VAR_SEQ, "267", "294", 
-				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);	  
-	
+		 verify(obj.fts.get(0), FTType.VAR_SEQ, "267", "294",
+				 "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", null);
+
 	}
-	
-	
-	
-	
+
 	@Test
 	public void testMultiFeatures() {
 		 String ftLines = "FT   MUTAGEN       2      2       B->A,N: Less than 1% residual activity.\n"
@@ -536,7 +524,21 @@ public class FtLineParserTest {
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
 		 FtLineObject obj = parser.parse(ftLines);
 		 assertEquals(84, obj.fts.size());
-		
-		
+
+
+	}
+	
+	private void verify(FtLineObject.FT ft, FTType type, String start, String end, String description, String ftid) {
+		assertEquals(type, ft.type);
+		assertEquals(start, ft.location_start);
+		assertEquals(end, ft.location_end);
+		assertEquals(description, ft.ft_text);
+		assertEquals(ftid, ft.ftId);
+	}
+	
+	private void verifyEvidences( FtLineObject obj, Object name, List<String> evidences) {
+		List<String> expected = obj.evidenceInfo.evidences.get(name);
+		assertEquals(expected, evidences);
+
 	}
 }

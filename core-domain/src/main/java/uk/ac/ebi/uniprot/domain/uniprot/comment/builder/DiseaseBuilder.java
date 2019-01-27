@@ -10,6 +10,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public final class DiseaseBuilder implements Builder2<DiseaseBuilder, Disease> {
     private String diseaseId;
     private String diseaseAc;
@@ -44,7 +46,7 @@ public final class DiseaseBuilder implements Builder2<DiseaseBuilder, Disease> {
     }
 
     public DiseaseBuilder evidences(List<Evidence> evidences) {
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
         return this;
     }
 

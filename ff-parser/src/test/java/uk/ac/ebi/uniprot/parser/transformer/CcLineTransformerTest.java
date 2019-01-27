@@ -1,45 +1,13 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.parser.impl.cc.CcLineTransformer;
 
 import java.util.List;
 
-import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
-import uk.ac.ebi.uniprot.parser.impl.cc.CcLineTransformer;
+import static org.junit.Assert.*;
 
 public class CcLineTransformerTest {
 	private CcLineTransformer transformer =new CcLineTransformer();

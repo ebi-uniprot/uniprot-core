@@ -108,7 +108,7 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
         evs.add(ev3);
         String note = "The gene represented in this entry is involved in disease pathogenesis";
         List<String> noteEvs = new ArrayList<>();
-        DiseaseCommentBuilder builder = DiseaseCommentBuilder.newInstance();
+        DiseaseCommentBuilder builder = new DiseaseCommentBuilder();
         builder.note(buildNote(note, noteEvs));
         String diseaseId = "Colorectal cancer";
         String acronyn = "CRC";
@@ -178,7 +178,7 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
         noteEvs.add(ev3);
         noteEvs.add(ev4);
         noteEvs.add(ev5);
-        DiseaseCommentBuilder builder = DiseaseCommentBuilder.newInstance();
+        DiseaseCommentBuilder builder = new DiseaseCommentBuilder();
         builder.note(buildNote(note, noteEvs));
         String diseaseId = "Colorectal cancer";
         String acronyn = "CRC";
@@ -249,7 +249,7 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
         noteEvs.add(ev3);
         noteEvs.add(ev4);
         noteEvs.add(ev5);
-        DiseaseCommentBuilder builder = DiseaseCommentBuilder.newInstance();
+        DiseaseCommentBuilder builder = new DiseaseCommentBuilder();
         List<Map.Entry<String, List<String>>> notes = new ArrayList<>();
         notes.add(new AbstractMap.SimpleEntry<>(note, noteEvs));
         String note2 = "Another note";
