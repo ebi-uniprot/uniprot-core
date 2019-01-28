@@ -8,8 +8,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
- *
  * @author lgonzales
  */
 public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBuilder, ProteinDescription> {
@@ -31,7 +32,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder alternativeNames(List<ProteinName> alternativeNames) {
-        this.alternativeNames = alternativeNames;
+        nonNullAddAll(alternativeNames, this.alternativeNames);
         return this;
     }
 
@@ -41,12 +42,14 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder flag(FlagType flag) {
-        this.flag = new FlagImpl(flag);
+        if (flag != null) {
+            this.flag = new FlagImpl(flag);
+        }
         return this;
     }
 
     public ProteinDescriptionBuilder submissionNames(List<ProteinName> submissionNames) {
-        this.submissionNames = submissionNames;
+        nonNullAddAll(submissionNames, this.submissionNames);
         return this;
     }
 
@@ -66,7 +69,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
-        this.cdAntigenNames = cdAntigenNames;
+        nonNullAddAll(cdAntigenNames, this.cdAntigenNames);
         return this;
     }
 
@@ -76,7 +79,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder innNames(List<Name> innNames) {
-        this.innNames = innNames;
+        nonNullAddAll(innNames, this.innNames);
         return this;
     }
 
@@ -86,7 +89,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
-        this.includes = includes;
+        nonNullAddAll(includes, this.includes);
         return this;
     }
 
@@ -96,7 +99,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
-        this.contains = contains;
+        nonNullAddAll(contains, this.contains);
         return this;
     }
 
@@ -108,8 +111,8 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     @Override
     public ProteinDescription build() {
         return new ProteinDescriptionImpl(recommendedName, alternativeNames,
-                 submissionNames, flag, allergenName, biotechName, cdAntigenNames,
-                 innNames, includes, contains);
+                                          submissionNames, flag, allergenName, biotechName, cdAntigenNames,
+                                          innNames, includes, contains);
     }
 
     @Override

@@ -372,10 +372,10 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
 
             }
             if (!Strings.isNullOrEmpty(cObj.mim)) {
-                new DBCrossReferenceBuilder<>()
-                        .databaseType(DiseaseReferenceType.MIM)
-                        .id(cObj.mim)
-                        .build();
+                builder.reference(new DBCrossReferenceBuilder<DiseaseReferenceType>()
+                                          .databaseType(DiseaseReferenceType.MIM)
+                                          .id(cObj.mim)
+                                          .build());
             }
             if (!Strings.isNullOrEmpty(cObj.description)) {
                 String descr = cObj.description;

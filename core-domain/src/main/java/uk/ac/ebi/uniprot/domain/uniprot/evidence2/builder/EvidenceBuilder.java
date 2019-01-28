@@ -19,7 +19,11 @@ public class EvidenceBuilder implements Builder2<EvidenceBuilder, Evidence> {
 
     @Override
     public Evidence build() {
-        return new EvidenceImpl(evidenceCode, databaseName, databaseId);
+        if (databaseName == null && databaseId == null) {
+            return new EvidenceImpl(evidenceCode, null);
+        } else {
+            return new EvidenceImpl(evidenceCode, databaseName, databaseId);
+        }
     }
 
     @Override

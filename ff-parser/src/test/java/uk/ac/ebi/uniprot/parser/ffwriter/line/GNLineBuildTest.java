@@ -161,10 +161,10 @@ public class GNLineBuildTest {
 
         genes.add(
                 new GeneBuilder()
-                        .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .geneName(geneName1)
+                        .synonyms(synonyms1)
+                        .orderedLocusNames(olnNames1)
+                        .orfNames(orfNames1)
                         .build());
 
 
@@ -243,10 +243,10 @@ public class GNLineBuildTest {
 
         genes.add(
                 new GeneBuilder()
-                        .geneName(geneName)
-                        .synonyms(synonyms)
-                        .orderedLocusNames(olnNames)
-                        .orfNames(orfNames)
+                        .geneName(geneName1)
+                        .synonyms(synonyms1)
+                        .orderedLocusNames(olnNames1)
+                        .orfNames(orfNames1)
                         .build());
 
 

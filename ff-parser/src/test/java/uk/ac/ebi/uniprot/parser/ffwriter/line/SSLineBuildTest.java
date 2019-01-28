@@ -141,7 +141,7 @@ public class SSLineBuildTest {
                 createEvidenceLine(evidence2, LocalDate.of(2010, 10, 1), "-"));
         String evidence3 = "ECO:0000256|SAAS:SAAS022644_004_000329";
 
-        createEvidenceLine(evidence3, LocalDate.of(2014, 2, 11), "-");
+        evidenceLines.add(createEvidenceLine(evidence3, LocalDate.of(2014, 2, 11), "-"));
         List<InternalLine> internalLines = new ArrayList<>();
         internalLines.add(
                 createInternalLine(InternalLineType.DG, "dg-000-000-614_P;"));

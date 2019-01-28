@@ -226,7 +226,7 @@ public class FtLineConverter extends EvidenceCollector
                 .location(location)
                 .evidences(evidences)
                 .alternativeSequence(altSeq)
-                .description(ft.ft_text)
+                .description(description)
                 .build();
     }
 
@@ -257,10 +257,10 @@ public class FtLineConverter extends EvidenceCollector
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
-                .featureId(ft.ftId)
+//                .featureId(ft.ftId)
                 .evidences(evidences)
                 .alternativeSequence(altSeq)
-                .description(ft.ft_text)
+                .description(description)
                 .build();
     }
 
@@ -269,7 +269,6 @@ public class FtLineConverter extends EvidenceCollector
         FeatureBuilder featureBuilder = new FeatureBuilder()
                 .type(type)
                 .location(location)
-                .featureId(ft.ftId)
                 .evidences(evidences)
                 .description(ft.ft_text);
 
