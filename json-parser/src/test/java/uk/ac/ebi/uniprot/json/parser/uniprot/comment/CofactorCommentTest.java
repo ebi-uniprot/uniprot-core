@@ -81,7 +81,7 @@ public class CofactorCommentTest {
     public static CofactorComment getCofactorComment() {
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceBuilder<CofactorReferenceType>()
                 .databaseType(CofactorReferenceType.CHEBI)
-                .id("ChEBI:3243")
+                .id("CHEBI:314")
                 .build();
         Cofactor cofactor = new CofactorBuilder()
                 .name("Cofactor Name")

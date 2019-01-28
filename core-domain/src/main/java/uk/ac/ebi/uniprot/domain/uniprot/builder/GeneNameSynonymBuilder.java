@@ -11,6 +11,11 @@ import java.util.List;
  * @author lgonzales
  */
 public class GeneNameSynonymBuilder extends AbstractEvidencedValueBuilder<GeneNameSynonymBuilder, GeneNameSynonym> {
+
+    public GeneNameSynonymBuilder(){
+
+    }
+
     public GeneNameSynonymBuilder(String syn, List<Evidence> evidences) {
         this.value = syn;
         this.evidences.addAll(evidences);

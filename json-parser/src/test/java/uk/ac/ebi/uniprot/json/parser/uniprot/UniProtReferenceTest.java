@@ -6,13 +6,13 @@ import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtReferenceFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.ReferenceCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.citation.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -26,10 +26,7 @@ public class UniProtReferenceTest {
 
     @Test
     public void testUniProtReferenceSimple() {
-        UniProtReference uniprotReference = UniProtReferenceFactory.INSTANCE.createUniProtReference(null,
-                null,
-                null,
-                null);
+        UniProtReference uniprotReference = new UniProtReferenceBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(uniprotReference);
     }
 
@@ -78,14 +75,17 @@ public class UniProtReferenceTest {
 
     private static UniProtReference getUniProtReference(Citation citation) {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
-        ReferenceComment referenceComment = UniProtReferenceFactory.INSTANCE.createReferenceComment(
-                ReferenceCommentType.PLASMID,
-                "reference comment value",
-                evidences);
+        ReferenceComment referenceComment = new ReferenceCommentBuilder()
+                .type(ReferenceCommentType.PLASMID)
+                .value("reference comment value")
+                .evidences(evidences)
+                .build();
 
-        return UniProtReferenceFactory.INSTANCE.createUniProtReference(citation,
-                Collections.singletonList("position 1"),
-                Collections.singletonList(referenceComment),
-                evidences);
+        return new UniProtReferenceBuilder()
+                .citation(citation)
+                .addComment(referenceComment)
+                .addPositions("position 1")
+                .evidences(evidences)
+                .build();
     }
 }

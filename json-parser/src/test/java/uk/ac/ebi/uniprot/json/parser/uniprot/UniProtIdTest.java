@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +15,7 @@ public class UniProtIdTest {
 
     @Test
     public void testUniProtAccession() {
-        UniProtId uniProtId = UniProtFactory.INSTANCE.createUniProtId("uniprot id");
+        UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();
         ValidateJson.verifyJsonRoundTripParser(uniProtId);
         ValidateJson.verifyEmptyFields(uniProtId);
 

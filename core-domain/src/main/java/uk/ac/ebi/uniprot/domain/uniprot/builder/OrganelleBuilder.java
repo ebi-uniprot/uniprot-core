@@ -16,6 +16,10 @@ import java.util.List;
 public class OrganelleBuilder extends AbstractEvidencedValueBuilder<OrganelleBuilder, Organelle> {
     private GeneEncodingType geneEncodingType;
 
+    public OrganelleBuilder(){
+
+    }
+
     public OrganelleBuilder(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         this.geneEncodingType = geneEncodingType;
         this.value = value;
@@ -25,6 +29,11 @@ public class OrganelleBuilder extends AbstractEvidencedValueBuilder<OrganelleBui
     @Override
     public Organelle build() {
         return new OrganelleImpl(geneEncodingType, value, evidences);
+    }
+
+    public OrganelleBuilder geneEncodingType(GeneEncodingType geneEncodingType) {
+        this.geneEncodingType = geneEncodingType;
+        return this;
     }
 
     @Override

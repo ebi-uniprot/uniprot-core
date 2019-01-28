@@ -2,9 +2,10 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
+import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
@@ -57,7 +58,7 @@ public class UniProtDBCrossReferenceTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000269","PubMed","11389730");
 
         assertNotNull(jsonNode.get("properties"));
-        assertEquals(2,jsonNode.get("properties").size());
+        assertEquals(1,jsonNode.get("properties").size());
 
         JsonNode property = jsonNode.get("properties").get(0);
         assertNotNull(property.get("key"));
@@ -66,21 +67,16 @@ public class UniProtDBCrossReferenceTest {
         assertNotNull(property.get("value"));
         assertEquals("description value",property.get("value").asText());
 
-        property = jsonNode.get("properties").get(1);
-        assertNotNull(property.get("key"));
-        assertEquals("GeneId",property.get("key").asText());
-
-        assertNotNull(property.get("value"));
-        assertEquals("third value",property.get("value").asText());
     }
 
     static UniProtDBCrossReference getUniProtDBCrossReference() {
-        return UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference("Ensembl",
-                "id value",
-                "description value",
-                "third value",
-                "fourth value",
-                "Q9NXB0-1",
-        CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730"));
+        Property property = new Property("ProteinId","description value");
+        return new UniProtDBCrossReferenceBuilder()
+                .id("id value")
+                .isoformId("Q9NXB0-1")
+                .addProperty(property)
+                .databaseType(new UniProtXDbType("Ensembl"))
+                .addEvidence( CreateUtils.createEvidence("ECO:0000269|PubMed:11389730"))
+                .build();
     }
 }

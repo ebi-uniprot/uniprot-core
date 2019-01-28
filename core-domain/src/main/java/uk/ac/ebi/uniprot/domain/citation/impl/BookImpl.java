@@ -6,7 +6,6 @@ import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-import java.util.Collections;
 import java.util.List;
 
 
@@ -20,15 +19,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     private String address;
 
     private BookImpl() {
-        super(CitationType.BOOK, Collections.emptyList(), Collections.emptyList(),
-              null, null, null);
-        this.editors = Collections.emptyList();
-        this.bookName = "";
-        this.firstPage = "";
-        this.lastPage = "";
-        this.volume = "";
-        this.publisher = "";
-        this.address = "";
+        this(new BookBuilder());
     }
 
     public BookImpl(BookBuilder builder) {

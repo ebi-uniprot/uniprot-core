@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;
@@ -39,7 +39,7 @@ public class SequenceTest {
     }
 
     static Sequence getSequence() {
-        return UniProtFactory.INSTANCE.createSequence("SAPSQDFMRF");
+        return new SequenceBuilder("SAPSQDFMRF").build();
     }
 
 }

@@ -77,7 +77,7 @@ public class ValidateJson {
                     }
                 }else if(obj instanceof Collection){
                     if(((Collection) obj).isEmpty()){
-                        fail(obj.getClass()+" must not be empty");
+                        fail(propertyName+" must not be empty");
                     }else {
                         ((Collection) obj).forEach(item -> verifyEmptyFields(item,propertyName));
                     }

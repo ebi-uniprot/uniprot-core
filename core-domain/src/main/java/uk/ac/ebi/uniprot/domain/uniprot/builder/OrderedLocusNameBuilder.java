@@ -11,6 +11,11 @@ import java.util.List;
  * @author lgonzales
  */
 public class OrderedLocusNameBuilder extends AbstractEvidencedValueBuilder<OrderedLocusNameBuilder, OrderedLocusName> {
+
+    public OrderedLocusNameBuilder(){
+
+    }
+
     public OrderedLocusNameBuilder(String oln, List<Evidence> evidences) {
         this.value = oln;
         this.evidences.addAll(evidences);

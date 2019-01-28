@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;
@@ -25,6 +25,6 @@ public class UniProtAccessionTest {
     }
 
     static UniProtAccession getUniProtAccession() {
-        return UniProtFactory.INSTANCE.createUniProtAccession("P21802");
+        return new UniProtAccessionBuilder("P21802").build();
     }
 }

@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;
@@ -16,7 +16,7 @@ public class KeywordTest {
 
     @Test
     public void testKeywordSimple() {
-        Keyword keyword = UniProtFactory.INSTANCE.createKeyword(null,null,null);
+        Keyword keyword = new KeywordBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(keyword);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(keyword);
@@ -44,8 +44,11 @@ public class KeywordTest {
     }
 
     static Keyword getKeyword() {
-        return UniProtFactory.INSTANCE.createKeyword("KW-11111","keyword value",
-                CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"));
+        return new KeywordBuilder()
+                .id("KW-11111")
+                .value("keyword value")
+                .evidences(CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"))
+                .build();
     }
 
 

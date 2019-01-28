@@ -3,14 +3,9 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.FlagBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.*;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,12 +19,13 @@ public class ProteinDescriptionTest {
 
     @Test
     public void testProteinDescriptionSimple() {
-        Name recommendedName = new NameImpl("protein name", Collections.emptyList());
-
-        ProteinDescriptionBuilder descriptionBuilder = ProteinDescriptionBuilder.newInstance();
-        descriptionBuilder.recommendedName(ProteinDescriptionFactory.INSTANCE.createProteinName(recommendedName,Collections.emptyList(),Collections.emptyList()));
-
-        ProteinDescription proteinDescription = descriptionBuilder.build();
+        Name fullName = new NameBuilder().value("protein name").build();
+        ProteinName recommendedName = new ProteinNameBuilder()
+                .fullName(fullName)
+                .build();
+        ProteinDescription proteinDescription = new ProteinDescriptionBuilder()
+                .recommendedName(recommendedName)
+                .build();
         ValidateJson.verifyJsonRoundTripParser(proteinDescription);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(proteinDescription);
@@ -142,39 +138,35 @@ public class ProteinDescriptionTest {
 
 
     static ProteinDescription getProteinDescription(){
-
-        Name allergenName = ProteinDescriptionFactory.INSTANCE.createName("allergen", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10023"));
-
-        Name biotechName = ProteinDescriptionFactory.INSTANCE.createName("biotech", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10024"));
-
-        List<Name> antigenNames = new ArrayList<>();
-        antigenNames.add(ProteinDescriptionFactory.INSTANCE.createName("cd antigen", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025")));
+        Name allergenName = createName("allergen","PRU10023");
+        Name biotechName = createName("biotech","PRU10024");
+        Name antigenName = createName("cd antigen","PRU10025");
 
         ProteinName recommendedName = getRecommendedName("");
         List<ProteinName> proteinAltNames = createAltName("");
         List<ProteinName> subNames = getSubmissionName();
 
-        List<Name> innNames = new ArrayList<>();
-        innNames.add(ProteinDescriptionFactory.INSTANCE.createName("inn antigen", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU100212")));
+        Name innName = createName("inn antigen","PRU100212");
 
-        List<ProteinSection> includes = new ArrayList<>();
-        ProteinSectionImpl sectionInclude = new ProteinSectionBuilder().setRecommendedName(getRecommendedName("includes")).setAlternativeNames(createAltName("includes")).createProteinSectionImpl();
-        includes.add(sectionInclude);
+        ProteinSection include = new ProteinSectionBuilder()
+                .recommendedName(getRecommendedName("includes"))
+                .alternativeNames(createAltName("includes"))
+                .build();
 
-        List<ProteinSection> contains = new ArrayList<>();
-        ProteinSectionImpl sectionContains = new ProteinSectionBuilder().setRecommendedName(getRecommendedName("contains")).setAlternativeNames(createAltName("contains")).createProteinSectionImpl();
-        contains.add(sectionContains);
+        ProteinSection contain = new ProteinSectionBuilder()
+                .recommendedName(getRecommendedName("contains"))
+                .alternativeNames(createAltName("contains"))
+                .build();
 
-        ProteinDescriptionBuilder builder = ProteinDescriptionBuilder.newInstance();
-
-        return builder.allergenName(allergenName)
+        return new ProteinDescriptionBuilder()
+                .allergenName(allergenName)
                 .alternativeNames(proteinAltNames)
                 .biotechName(biotechName)
-                .cdAntigenNames(antigenNames)
-                .flag(new FlagBuilder().setType(FlagType.FRAGMENT).createFlagImpl())
-                .includes(includes)
-                .contains(contains)
-                .innNames(innNames)
+                .addCdAntigenNames(antigenName)
+                .flag(FlagType.FRAGMENT)
+                .addIncludes(include)
+                .addContains(contain)
+                .addInnNames(innName)
                 .recommendedName(recommendedName)
                 .submissionNames(subNames)
                 .build();
@@ -182,46 +174,58 @@ public class ProteinDescriptionTest {
     }
 
     private static ProteinName getRecommendedName(String from) {
-        Name fullName = ProteinDescriptionFactory.INSTANCE.createName(from+"rec full Name", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10026"));
-        List<Name> shortNames = createShortNames(from+"recommended");
+        Name fullName = createName(from+"rec full Name","PRU10026");
+        List<Name> shortNames = createNameList(from+"recommended short name","PRU10020");
         List<EC> ecNumbers = createECNumbers("1.2.3.4",10);
-        return ProteinDescriptionFactory.INSTANCE
-                .createProteinName(fullName, shortNames, ecNumbers);
+
+        return new ProteinNameBuilder()
+                .fullName(fullName)
+                .shortNames(shortNames)
+                .ecNumbers(ecNumbers)
+                .build();
     }
 
     private static List<ProteinName> getSubmissionName() {
-        Name fullName1 = ProteinDescriptionFactory.INSTANCE.createName("sub full Name", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10027"));
-
+        Name fullName1 = createName("sub full Name","PRU10027");
         List<EC> ecNumbers1 = createECNumbers("1.2.3.5",11);
-        List<Name> shortNames1 = createShortNames("submission");
-        ProteinName subName = ProteinDescriptionFactory.INSTANCE.createProteinName(fullName1, shortNames1, ecNumbers1);
-        List<ProteinName> subNames = new ArrayList<>();
-        subNames.add(subName);
-        return subNames;
+        List<Name> shortNames1 = createNameList("submission short name","PRU10020");
+
+        ProteinName subName = new ProteinNameBuilder()
+                .fullName(fullName1)
+                .shortNames(shortNames1)
+                .ecNumbers(ecNumbers1)
+                .build();
+        return Collections.singletonList(subName);
     }
 
     private static List<ProteinName> createAltName(String from) {
-        List<ProteinName> alternativeNames = new ArrayList<>();
-        Name fullName = ProteinDescriptionFactory.INSTANCE.createName(from+"a full alt Name", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10022"));
-        List<Name> shortNames = new ArrayList<>();
-        shortNames.add(ProteinDescriptionFactory.INSTANCE.createName(from+"short alt name1", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10028")));
-        List<EC> ecNumbers = new ArrayList<>();
-        ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber("1.2.3.3", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10029")));
+        Name fullName = createName(from+"a full alt Name","PRU10022");
+        List<Name> shortNames = createNameList(from+"short alt name1","PRU10028");
+        List<EC> ecNumbers = createECNumbers("1.2.3.3",9);
 
-        alternativeNames.add(ProteinDescriptionFactory.INSTANCE.createProteinName(fullName, shortNames, ecNumbers));
-
-        return alternativeNames;
+        ProteinName alternativeName = new ProteinNameBuilder()
+                .fullName(fullName)
+                .shortNames(shortNames)
+                .ecNumbers(ecNumbers)
+                .build();
+        return Collections.singletonList(alternativeName);
     }
 
-    private static List<Name> createShortNames(String from) {
-        List<Name> shortNames = new ArrayList<>();
-        shortNames.add(ProteinDescriptionFactory.INSTANCE.createName(from+" short name", CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10020")));
-        return shortNames;
+    private static List<Name> createNameList(String value,String id) {
+        return Collections.singletonList(createName(value,id));
+    }
+
+    private static Name createName(String value,String id) {
+        return new NameBuilder()
+                .value(value)
+                .addEvidence(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:"+id))
+                .build();
     }
 
     private static List<EC> createECNumbers(String ec,int index) {
-        List<EC> ecNumbers = new ArrayList<>();
-        ecNumbers.add(ProteinDescriptionFactory.INSTANCE.createECNumber(ec, CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU1002"+index)));
-        return ecNumbers;
+        return Collections.singletonList(new ECBuilder()
+                .value(ec)
+                .addEvidence(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:PRU1002"+index))
+                .build());
     }
 }

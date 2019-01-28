@@ -6,14 +6,12 @@ import uk.ac.ebi.uniprot.domain.citation.Journal;
 import uk.ac.ebi.uniprot.domain.citation.Locator;
 import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
 
-import java.util.Collections;
-
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
     private Journal journal;
     private Locator locator;
 
     private ElectronicArticleImpl() {
-        super(CitationType.ELECTRONIC_ARTICLE, Collections.emptyList(), Collections.emptyList(), null, "", null);
+        this(new ElectronicArticleBuilder());
     }
 
     public ElectronicArticleImpl(ElectronicArticleBuilder builder) {
@@ -68,7 +66,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         private String value;
 
         private LocatorImpl() {
-            this.value = "";
+
         }
 
         public LocatorImpl(String value) {

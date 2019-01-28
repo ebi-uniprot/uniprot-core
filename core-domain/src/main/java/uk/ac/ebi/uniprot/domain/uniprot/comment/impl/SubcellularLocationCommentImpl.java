@@ -16,9 +16,7 @@ public class SubcellularLocationCommentImpl extends CommentImpl implements Subce
     private List<SubcellularLocation> subcellularLocations;
 
     private SubcellularLocationCommentImpl() {
-        super(CommentType.SUBCELLULAR_LOCATION);
-        this.molecule = "";
-        this.subcellularLocations = Collections.emptyList();
+        this(new SubcellularLocationCommentBuilder());
     }
 
     public SubcellularLocationCommentImpl(SubcellularLocationCommentBuilder builder) {

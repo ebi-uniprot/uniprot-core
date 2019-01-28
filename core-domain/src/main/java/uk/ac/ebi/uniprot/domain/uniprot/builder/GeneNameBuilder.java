@@ -9,6 +9,10 @@ import java.util.List;
 
 public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuilder, GeneName> {
 
+    public GeneNameBuilder(){
+
+    }
+
     public GeneNameBuilder(String name, List<Evidence> evidences) {
         this.value = name;
         this.evidences.addAll(evidences);

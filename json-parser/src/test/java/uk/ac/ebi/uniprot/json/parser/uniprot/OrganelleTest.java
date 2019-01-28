@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.OrganelleBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;
@@ -18,7 +18,7 @@ public class OrganelleTest {
 
     @Test
     public void testOrganelleSimple() {
-        Organelle organelle = UniProtFactory.INSTANCE.createOrganelle(null,null,null);
+        Organelle organelle = new OrganelleBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(organelle);
     }
 
@@ -42,8 +42,11 @@ public class OrganelleTest {
     }
 
     static Organelle getOrganelle() {
-        return UniProtFactory.INSTANCE.createOrganelle(GeneEncodingType.CYANELLE_PLASTID,"organelle value",
-                CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"));
+        return new OrganelleBuilder()
+                .geneEncodingType(GeneEncodingType.CYANELLE_PLASTID)
+                .value("organelle value")
+                .addEvidence(CreateUtils.createEvidence("ECO:0000255|PROSITE-ProRule:PRU10025"))
+                .build();
     }
 
 }

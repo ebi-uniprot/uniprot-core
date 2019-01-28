@@ -13,6 +13,10 @@ import java.util.List;
  */
 public class ORFNameBuilder extends AbstractEvidencedValueBuilder<ORFNameBuilder, ORFName> {
 
+    public ORFNameBuilder(){
+
+    }
+
     public ORFNameBuilder(String orf, List<Evidence> evidences) {
         this.value = orf;
         this.evidences.addAll(evidences);

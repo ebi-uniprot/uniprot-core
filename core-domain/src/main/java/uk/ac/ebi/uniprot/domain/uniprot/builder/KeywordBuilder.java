@@ -15,6 +15,10 @@ import java.util.List;
 public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder, Keyword> {
     private String id;
 
+    public KeywordBuilder(){
+
+    }
+
     public KeywordBuilder(String id, String value, List<Evidence> evidences) {
         this.id = id;
         this.value = value;
