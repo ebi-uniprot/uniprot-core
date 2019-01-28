@@ -7,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValue
 
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * Created 15/01/19
  *
@@ -17,7 +19,7 @@ public class SubcellularLocationValueBuilder extends AbstractEvidencedValueBuild
 
     public SubcellularLocationValueBuilder(String value, List<Evidence> evidences) {
         this.value = value;
-        this.evidences = evidences;
+        nonNullAddAll(evidences, this.evidences);
     }
 
     @Override

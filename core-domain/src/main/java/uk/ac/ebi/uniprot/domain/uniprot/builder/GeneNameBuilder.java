@@ -7,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuilder, GeneName> {
 
     public GeneNameBuilder(){
@@ -15,7 +17,7 @@ public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuild
 
     public GeneNameBuilder(String name, List<Evidence> evidences) {
         this.value = name;
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
     }
 
     @Override

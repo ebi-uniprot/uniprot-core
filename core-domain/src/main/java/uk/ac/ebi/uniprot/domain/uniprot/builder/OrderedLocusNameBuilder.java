@@ -7,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+
 /**
  * @author lgonzales
  */
@@ -18,7 +20,7 @@ public class OrderedLocusNameBuilder extends AbstractEvidencedValueBuilder<Order
 
     public OrderedLocusNameBuilder(String oln, List<Evidence> evidences) {
         this.value = oln;
-        this.evidences.addAll(evidences);
+        nonNullAddAll(evidences, this.evidences);
     }
 
     @Override
