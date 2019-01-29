@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.List;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
+
+import java.util.List;
 
 public class WRCommentConverter implements CommentConverter<WebResourceComment> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -26,7 +25,7 @@ public class WRCommentConverter implements CommentConverter<WebResourceComment> 
 	public WebResourceComment fromXml(CommentType xmlObject) {
 		if(xmlObject ==null)
 			return null;
-		WebResourceCommentBuilder builder = WebResourceCommentBuilder.newInstance();
+		WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
 		
 		if (xmlObject.getName() != null) {
 			builder.resourceName(xmlObject.getName());

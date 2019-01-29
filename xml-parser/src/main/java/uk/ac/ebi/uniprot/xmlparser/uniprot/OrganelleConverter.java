@@ -3,8 +3,8 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot;
 import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.GeneLocationBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneLocationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.StatusType;
@@ -45,7 +45,7 @@ public class OrganelleConverter implements Converter<GeneLocationType, GeneLocat
 			}
 
 		}
-		return UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
+		return new GeneLocationBuilder(geneEncodingType, value, evidences).build();
 	}
 
 	@Override

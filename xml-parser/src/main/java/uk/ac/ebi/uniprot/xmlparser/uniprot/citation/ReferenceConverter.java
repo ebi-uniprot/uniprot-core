@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtReferenceFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtReferenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SourceDataType;
@@ -27,10 +27,12 @@ public class ReferenceConverter implements Converter<ReferenceType, UniProtRefer
 
 	@Override
 	public UniProtReference fromXml(ReferenceType xmlObj) {
-		return UniProtReferenceFactory.INSTANCE.createUniProtReference(
-				citationConverter.fromXml(xmlObj.getCitation()),
-				xmlObj.getScope(), rcConverter.fromXml(xmlObj.getSource()),
-				evRefMapper.parseEvidenceIds(xmlObj.getEvidence()));
+		return new UniProtReferenceBuilder()
+				.citation(citationConverter.fromXml(xmlObj.getCitation()))
+				.evidences(evRefMapper.parseEvidenceIds(xmlObj.getEvidence()))
+				.positions(xmlObj.getScope())
+				.comments(rcConverter.fromXml(xmlObj.getSource()))
+				.build();
 	}
 
 	@Override

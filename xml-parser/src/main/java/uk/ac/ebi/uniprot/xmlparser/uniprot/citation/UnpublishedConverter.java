@@ -20,7 +20,7 @@ public class UnpublishedConverter implements Converter<CitationType, Unpublished
 
 	@Override
 	public Unpublished fromXml(CitationType xmlObj) {
-		UnpublishedBuilder builder =UnpublishedBuilder.newInstance();
+		UnpublishedBuilder builder =new UnpublishedBuilder();
 		CitationConverterHelper.updateFromXmlCitaiton(xmlObj, builder);	
 		return builder.build();
 	}

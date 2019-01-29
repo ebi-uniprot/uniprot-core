@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RedoxPotentialBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
+
+import java.util.stream.Collectors;
 
 public class BPCPRedoxPotentialConverter implements Converter<CommentType.RedoxPotential, RedoxPotential> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -27,8 +27,8 @@ public class BPCPRedoxPotentialConverter implements Converter<CommentType.RedoxP
 	public RedoxPotential fromXml(CommentType.RedoxPotential xmlObj) {
 		if (xmlObj == null)
 			return null;
-		return BPCPCommentBuilder.createRedoxPotential(
-				xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList()));
+		return new RedoxPotentialBuilder(
+				xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList())).build();
 	}
 
 	@Override

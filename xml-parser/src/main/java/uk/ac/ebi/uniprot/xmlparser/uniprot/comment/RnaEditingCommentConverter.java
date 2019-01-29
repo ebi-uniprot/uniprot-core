@@ -1,16 +1,16 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
+
+import java.util.stream.Collectors;
 
 public class RnaEditingCommentConverter implements CommentConverter<RnaEditingComment> {
 
@@ -32,19 +32,18 @@ public class RnaEditingCommentConverter implements CommentConverter<RnaEditingCo
 	public RnaEditingComment fromXml(CommentType xmlObj) {
 		if (xmlObj == null)
 			return null;
-		RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.newInstance();
+		RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
 		if (xmlObj.getLocation() != null && !xmlObj.getLocation().isEmpty()) {
-			builder.locations(
+			builder.positions(
 					xmlObj.getLocation().stream().map(positionConverter::fromXml).collect(Collectors.toList()));
 		}
 		if (xmlObj.getLocationType() != null) {
-			builder.rnaEditingLocationType(RnaEditingLocationType.getType(xmlObj.getLocationType()));
+			builder.locationType(RnaEditingLocationType.getType(xmlObj.getLocationType()));
 		}
 
 		// Note
 		if (!xmlObj.getText().isEmpty()) {
-			Note note = CommentFactory.INSTANCE
-					.createNote(xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList()));
+			Note note = new NoteBuilder(xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList())).build();
 			builder.note(note);
 		}
 		return builder.build();

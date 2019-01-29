@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
@@ -10,6 +7,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityComment
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CatalyticActivityCommentConverter implements CommentConverter<CatalyticActivityComment> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -32,7 +32,7 @@ public class CatalyticActivityCommentConverter implements CommentConverter<Catal
 		List<PhysiologicalReaction> physioReactions = xmlObj.getPhysiologicalReaction().stream()
 				.map(physioReactionConverter::fromXml).collect(Collectors.toList());
 
-		CatalyticActivityCommentBuilder builder = CatalyticActivityCommentBuilder.newInstance();
+		CatalyticActivityCommentBuilder builder = new CatalyticActivityCommentBuilder();
 		return builder.reaction(reaction).physiologicalReactions(physioReactions).build();
 
 	}

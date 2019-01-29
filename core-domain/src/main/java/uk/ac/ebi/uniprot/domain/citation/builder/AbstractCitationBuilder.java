@@ -76,6 +76,11 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return getThis();
     }
 
+    public B publicationDate(PublicationDate publicationDate) {
+        this.publicationDate = publicationDate;
+        return getThis();
+    }
+
     public List<String> getAuthoringGroups() {
         return authoringGroups;
     }

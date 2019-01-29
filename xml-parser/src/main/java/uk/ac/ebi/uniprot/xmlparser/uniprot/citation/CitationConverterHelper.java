@@ -1,25 +1,19 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.AuthorBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.*;
 
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ConsortiumType;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.NameListType;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PersonType;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CitationConverterHelper {
 	private static final PublicationDateConverter dateConverter = new PublicationDateConverter();
@@ -111,7 +105,7 @@ public class CitationConverterHelper {
 	}
 
 	public static Author fromXmlAuthor(PersonType personType) {
-		return AbstractCitationBuilder.createAuthor(personType.getName());
+		return new AuthorBuilder(personType.getName()).build();
 	}
 
 	public static ConsortiumType toXmlAuthoringGroup(ObjectFactory xmlUniprotFactory, String uniObj) {
@@ -133,7 +127,7 @@ public class CitationConverterHelper {
 
 	private static DBCrossReference<CitationXrefType> fromXml(DbReferenceType xmlRef) {
 		CitationXrefType type = CitationXrefType.typeOf(xmlRef.getType());
-		return UniProtFactory.INSTANCE.createDBCrossReference(type, xmlRef.getId());
+		return new DBCrossReferenceBuilder<CitationXrefType>().databaseType(type).id(xmlRef.getId()).build();
 
 	}
 }

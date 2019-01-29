@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.TemperatureDependenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
+
+import java.util.stream.Collectors;
 
 public class BPCPTempDependenceConverter implements Converter<CommentType.TemperatureDependence, TemperatureDependence> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -27,8 +27,8 @@ public class BPCPTempDependenceConverter implements Converter<CommentType.Temper
 	public TemperatureDependence fromXml(CommentType.TemperatureDependence xmlObj) {
 		if (xmlObj == null)
 			return null;
-		return BPCPCommentBuilder.createTemperatureDependence(
-				xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList()));
+		return new TemperatureDependenceBuilder(
+				xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList())).build();
 	}
 
 	@Override

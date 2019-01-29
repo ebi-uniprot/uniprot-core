@@ -4,7 +4,7 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.FlagBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SequenceType;
 import uk.ac.ebi.uniprot.xmlparser.Updater;
 
@@ -20,16 +20,16 @@ public class FlagUpdater implements Updater<SequenceType, ProteinDescription> {
 		if(xmlObject.isPrecursor() !=null && xmlObject.isPrecursor()){
 			
 			if(SINGLE.equals(frag)){
-				flag = ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.FRAGMENT_PRECURSOR);
+				flag = new FlagBuilder(FlagType.FRAGMENT_PRECURSOR).build();
 			}else if (MULTIPLE.equals(frag)){
-				flag = ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.FRAGMENTS_PRECURSOR);
+				flag = new FlagBuilder(FlagType.FRAGMENTS_PRECURSOR).build();
 			}else {
-				flag = ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.PRECURSOR);
+				flag = new FlagBuilder(FlagType.PRECURSOR).build();
 			}		
 		}else if (SINGLE.equals(frag)){
-			flag = ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.FRAGMENT);
+			flag = new FlagBuilder(FlagType.FRAGMENT).build();
 		}else if (MULTIPLE.equals(frag)){
-			flag = ProteinDescriptionFactory.INSTANCE.createFlag(FlagType.FRAGMENTS);
+			flag = new FlagBuilder(FlagType.FRAGMENTS).build();
 		}
 		if(flag !=null) {
 			modelObject.setFlag(flag);

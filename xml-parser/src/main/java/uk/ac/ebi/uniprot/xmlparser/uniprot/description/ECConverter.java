@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+
+import java.util.List;
 
 public class ECConverter implements Converter<EvidencedStringType, EC> {
 	private final EvidenceIndexMapper evRefMapper;
@@ -26,7 +26,7 @@ public class ECConverter implements Converter<EvidencedStringType, EC> {
 	@Override
 	public EC fromXml(EvidencedStringType xmlObj) {
 		 List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-		 return ProteinDescriptionFactory.INSTANCE.createECNumber(xmlObj.getValue(), evidences);
+		 return new ECBuilder().value(xmlObj.getValue()).evidences(evidences).build();
 	}
 
 	@Override

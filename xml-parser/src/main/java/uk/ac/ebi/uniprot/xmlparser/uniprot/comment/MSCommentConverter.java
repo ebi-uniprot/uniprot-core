@@ -1,18 +1,17 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class MSCommentConverter implements CommentConverter< MassSpectrometryComment> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -33,19 +32,19 @@ public class MSCommentConverter implements CommentConverter< MassSpectrometryCom
 	public MassSpectrometryComment fromXml(CommentType xmlObj) {
 		if (xmlObj == null)
 			return null;
-		MassSpectrometryCommentBuilder builder = MassSpectrometryCommentBuilder.newInstance();
+		MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
 
 		if (xmlObj.getMethod() != null)
-			builder.massSpectrometryMethod(MassSpectrometryMethod.toType(xmlObj.getMethod()));
+			builder.method(MassSpectrometryMethod.toType(xmlObj.getMethod()));
 
 		if (xmlObj.getError() != null)
-			builder.molWeightError(Float.parseFloat(xmlObj.getError()));
+			builder.molWeightError(Double.parseDouble(xmlObj.getError()));
 
 		if (xmlObj.getMass() != null)
-			builder.molWeight(xmlObj.getMass());
+			builder.molWeight(xmlObj.getMass().doubleValue());
 
 		// Ranges
-		builder.massSpectrometryRanges(
+		builder.ranges(
 				xmlObj.getLocation().stream().map(rangeConverter::fromXml).collect(Collectors.toList()));
 
 		// Note
@@ -78,7 +77,7 @@ public class MSCommentConverter implements CommentConverter< MassSpectrometryCom
 
 		// Error
 		if((uniObj.getMolWeightError() !=null) &&  (uniObj.getMolWeightError() > 0))
-			commentXML.setError(Float.toString(uniObj.getMolWeightError()));
+			commentXML.setError(Double.toString(uniObj.getMolWeightError()));
 
 		// Ranges
 		if (uniObj.getRanges() != null) {

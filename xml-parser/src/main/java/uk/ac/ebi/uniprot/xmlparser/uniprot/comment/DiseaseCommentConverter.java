@@ -1,19 +1,19 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DiseaseCommentConverter implements CommentConverter< DiseaseComment> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -38,7 +38,7 @@ public class DiseaseCommentConverter implements CommentConverter< DiseaseComment
 		if (xmlComment == null)
 			return null;
 
-		DiseaseCommentBuilder builder = DiseaseCommentBuilder.newInstance();
+		DiseaseCommentBuilder builder = new DiseaseCommentBuilder();
 
 		// We do not want to se disease as null in kraken objects, but as empty.
 		// Control vocabulary checks are based only on name and id.
@@ -54,15 +54,15 @@ public class DiseaseCommentConverter implements CommentConverter< DiseaseComment
 
 		}
 		if (!xmlComment.getText().isEmpty()) {
-			Note note = CommentFactory.INSTANCE.createNote(
-					xmlComment.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList()));
+			Note note = new NoteBuilder(
+					xmlComment.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList())).build();
 			builder.note(note);
 		}
 		return builder.build();
 	}
 
 	private Disease diseaseSetEvidence(Disease disease, List<Evidence> evidences) {
-		DiseaseBuilder builder = DiseaseBuilder.newInstance();
+		DiseaseBuilder builder = new DiseaseBuilder();
 		builder.acronym(disease.getAcronym()).description(disease.getDescription())
 				.diseaseAc(disease.getDiseaseAccession()).diseaseId(disease.getDiseaseId())
 				.reference(disease.getReference()).evidences(evidences);

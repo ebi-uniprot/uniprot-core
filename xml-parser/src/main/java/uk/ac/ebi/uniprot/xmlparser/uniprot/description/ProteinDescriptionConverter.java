@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProteinDescriptionConverter implements Converter<ProteinType, ProteinDescription>,
 ToXmlDbReferences<ProteinDescription> {
@@ -66,7 +66,7 @@ ToXmlDbReferences<ProteinDescription> {
 
 	@Override
 	public ProteinDescription fromXml(ProteinType xmlObj) {
-		ProteinDescriptionBuilder builder =ProteinDescriptionBuilder.newInstance();
+		ProteinDescriptionBuilder builder =new ProteinDescriptionBuilder();
 		if(xmlObj.getRecommendedName() !=null) {
 			builder.recommendedName(recNameConverter.fromXml(xmlObj.getRecommendedName()));
 		}

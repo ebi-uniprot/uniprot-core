@@ -1,23 +1,18 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
+import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtReferenceFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.ReferenceCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SourceDataType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+
+import java.util.*;
 
 public class ReferenceCommentConverter implements Converter<SourceDataType, List<ReferenceComment>> {
 	private final EvidenceIndexMapper evRefMapper;
@@ -47,19 +42,19 @@ public class ReferenceCommentConverter implements Converter<SourceDataType, List
 			ReferenceComment rc = null;
 			if (o instanceof SourceDataType.Plasmid) {
 				SourceDataType.Plasmid plasmid = (SourceDataType.Plasmid) o;
-				rc = UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.PLASMID,
+				rc = createReferenceComment(ReferenceCommentType.PLASMID,
 						plasmid.getValue(), evRefMapper.parseEvidenceIds(plasmid.getEvidence()));
 			} else if (o instanceof SourceDataType.Strain) {
 				SourceDataType.Strain strain = (SourceDataType.Strain) o;
-				rc = UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.STRAIN,
+				rc = createReferenceComment(ReferenceCommentType.STRAIN,
 						strain.getValue(), evRefMapper.parseEvidenceIds(strain.getEvidence()));
 			} else if (o instanceof SourceDataType.Tissue) {
 				SourceDataType.Tissue tissue = (SourceDataType.Tissue) o;
-				rc = UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.TISSUE,
+				rc = createReferenceComment(ReferenceCommentType.TISSUE,
 						tissue.getValue(), evRefMapper.parseEvidenceIds(tissue.getEvidence()));
 			} else if (o instanceof SourceDataType.Transposon) {
 				SourceDataType.Transposon transposon = (SourceDataType.Transposon) o;
-				rc = UniProtReferenceFactory.INSTANCE.createReferenceComment(ReferenceCommentType.TRANSPOSON,
+				rc = createReferenceComment(ReferenceCommentType.TRANSPOSON,
 						transposon.getValue(), evRefMapper.parseEvidenceIds(transposon.getEvidence()));
 			}
 			if (rc != null)
@@ -67,6 +62,14 @@ public class ReferenceCommentConverter implements Converter<SourceDataType, List
 
 		}
 		return rcList;
+	}
+
+	private ReferenceComment createReferenceComment(ReferenceCommentType type, String value, List<Evidence> evidences) {
+		return new ReferenceCommentBuilder()
+				.type(type)
+				.value(value)
+				.evidences(evidences)
+				.build();
 	}
 
 	@Override

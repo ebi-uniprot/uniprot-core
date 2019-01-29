@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhDependenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
+
+import java.util.stream.Collectors;
 
 public class BPCPPhDependenceConverter implements Converter<CommentType.PhDependence, PhDependence> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -27,8 +27,8 @@ public class BPCPPhDependenceConverter implements Converter<CommentType.PhDepend
 	public PhDependence fromXml(CommentType.PhDependence xmlObj) {
 		if (xmlObj == null)
 			return null;
-		return BPCPCommentBuilder.createPHDependence(
-				xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList()));
+		return new PhDependenceBuilder(
+				xmlObj.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList())).build();
 
 	}
 
