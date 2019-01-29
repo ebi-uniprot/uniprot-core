@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -37,7 +38,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder addAlternativeNames(ProteinName alternativeNames) {
-        this.alternativeNames.add(alternativeNames);
+        nonNullAdd(alternativeNames, this.alternativeNames);
         return this;
     }
 
@@ -54,7 +55,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder addSubmissionNames(ProteinName submissionNames) {
-        this.submissionNames.add(submissionNames);
+        nonNullAdd(submissionNames, this.submissionNames);
         return this;
     }
 
@@ -74,7 +75,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder addCdAntigenNames(Name cdAntigen) {
-        this.cdAntigenNames.add(cdAntigen);
+        nonNullAdd(cdAntigen, this.cdAntigenNames);
         return this;
     }
 
@@ -84,7 +85,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder addInnNames(Name innNames) {
-        this.innNames.add(innNames);
+        nonNullAdd(innNames, this.innNames);
         return this;
     }
 
@@ -94,7 +95,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder addIncludes(ProteinSection includes) {
-        this.includes.add(includes);
+        nonNullAdd(includes, this.includes);
         return this;
     }
 
@@ -104,7 +105,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder addContains(ProteinSection contains) {
-        this.contains.add(contains);
+        nonNullAdd(contains, this.contains);
         return this;
     }
 

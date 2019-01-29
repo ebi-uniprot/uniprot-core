@@ -37,4 +37,8 @@ public class Utils {
         Scanner s = new Scanner(configFile).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
+
+    public static boolean nullOrEmpty(String value) {
+        return value == null || value.isEmpty();
+    }
 }

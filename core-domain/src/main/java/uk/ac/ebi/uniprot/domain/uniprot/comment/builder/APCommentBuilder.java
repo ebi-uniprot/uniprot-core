@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AlternativeProductsCommentI
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
@@ -36,7 +37,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     }
 
     public APCommentBuilder addEvent(APEventType event) {
-        this.events.add(event);
+        nonNullAdd(event, this.events);
         return this;
     }
 
@@ -46,7 +47,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     }
 
     public APCommentBuilder addIsoform(APIsoform isoform) {
-        this.isoforms.add(isoform);
+        nonNullAdd(isoform, this.isoforms);
         return this;
     }
 

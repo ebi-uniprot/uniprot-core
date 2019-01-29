@@ -6,6 +6,7 @@ import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
@@ -33,7 +34,7 @@ public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismName
     }
 
     public B addSynonyms(String synonym) {
-        this.synonyms.add(synonym);
+        nonNullAdd(synonym, this.synonyms);
         return getThis();
     }
 

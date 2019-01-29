@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -33,7 +34,7 @@ public final class CofactorBuilder implements Builder2<CofactorBuilder, Cofactor
     }
 
     public CofactorBuilder addEvidence(Evidence evidence) {
-        this.evidences.add(evidence);
+        nonNullAdd(evidence, this.evidences);
         return this;
     }
 

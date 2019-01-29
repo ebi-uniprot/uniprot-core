@@ -2,7 +2,10 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Value;
-import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.citation.Author;
+import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
+import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
 
@@ -11,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<B, T>, T extends Citation> implements CitationBuilder<B, T> {
@@ -26,7 +30,7 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
     }
 
     public B addAuthorGroup(String group) {
-        this.authoringGroups.add(group);
+        nonNullAdd(group, this.authoringGroups);
         return getThis();
     }
 
@@ -48,7 +52,7 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
     }
 
     public B addAuthor(Author author) {
-        this.authors.add(author);
+        nonNullAdd(author, this.authors);
         return getThis();
     }
 

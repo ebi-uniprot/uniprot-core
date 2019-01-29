@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.KineticParametersImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -28,7 +29,7 @@ public final class KineticParametersBuilder implements Builder2<KineticParameter
     }
 
     public KineticParametersBuilder addMaximumVelocitie(MaximumVelocity maximumVelocity) {
-        this.maximumVelocities.add(maximumVelocity);
+        nonNullAdd(maximumVelocity, this.maximumVelocities);
         return this;
     }
 
@@ -38,7 +39,7 @@ public final class KineticParametersBuilder implements Builder2<KineticParameter
     }
 
     public KineticParametersBuilder addMichaelisConstant(MichaelisConstant michaelisConstant) {
-        this.michaelisConstants.add(michaelisConstant);
+        nonNullAdd(michaelisConstant, this.michaelisConstants);
         return this;
     }
 

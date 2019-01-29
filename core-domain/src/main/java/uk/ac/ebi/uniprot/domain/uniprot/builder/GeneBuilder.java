@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -26,7 +27,7 @@ public class GeneBuilder implements Builder2<GeneBuilder,Gene> {
     }
 
     public GeneBuilder addSynonyms(GeneNameSynonym synonym) {
-        this.synonyms.add(synonym);
+        nonNullAdd(synonym, this.synonyms);
         return this;
     }
 
@@ -38,7 +39,7 @@ public class GeneBuilder implements Builder2<GeneBuilder,Gene> {
     }
 
     public GeneBuilder addOrderedLocusNames(OrderedLocusName orderedLocusName) {
-        this.orderedLocusNames.add(orderedLocusName);
+        nonNullAdd(orderedLocusName, this.orderedLocusNames);
         return this;
     }
 
@@ -50,7 +51,7 @@ public class GeneBuilder implements Builder2<GeneBuilder,Gene> {
     }
 
     public GeneBuilder addOrfNames(ORFName orfName) {
-        this.orfNames.add(orfName);
+        nonNullAdd(orfName, this.orfNames);
         return this;
     }
     public GeneBuilder orfNames(List<ORFName> orfNames) {

@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
@@ -39,7 +40,7 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
     }
 
     public RnaEditingCommentBuilder addPosition(RnaEdPosition position) {
-        this.positions.add(position);
+        nonNullAdd(position, this.positions);
         return this;
     }
 

@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -41,7 +42,7 @@ public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, 
     }
 
     public InternalSectionBuilder addInternalLine(InternalLine internalLine) {
-        this.internalLines.add(internalLine);
+        nonNullAdd(internalLine, this.internalLines);
         return this;
     }
 
@@ -51,7 +52,7 @@ public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, 
     }
 
     public InternalSectionBuilder addEvidenceLine(EvidenceLine evidenceLine) {
-        this.evidenceLines.add(evidenceLine);
+        nonNullAdd(evidenceLine, this.evidenceLines);
         return this;
     }
 
@@ -61,7 +62,7 @@ public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, 
     }
 
     public InternalSectionBuilder addSourceLine(SourceLine sourceLine) {
-        this.sourceLines.add(sourceLine);
+        nonNullAdd(sourceLine, this.sourceLines);
         return this;
     }
 }

@@ -9,6 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
@@ -65,7 +66,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder addRange(MassSpectrometryRange range) {
-        this.ranges.add(range);
+        nonNullAdd(range, this.ranges);
         return this;
     }
 
@@ -75,7 +76,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder addEvidence(Evidence evidence) {
-        this.evidences.add(evidence);
+        nonNullAdd(evidence, this.evidences);
         return this;
     }
 

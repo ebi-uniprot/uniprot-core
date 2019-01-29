@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -37,7 +38,7 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     }
 
     public B addEvidence(Evidence evidence) {
-        this.evidences.add(evidence);
+        nonNullAdd(evidence, this.evidences);
         return getThis();
     }
 

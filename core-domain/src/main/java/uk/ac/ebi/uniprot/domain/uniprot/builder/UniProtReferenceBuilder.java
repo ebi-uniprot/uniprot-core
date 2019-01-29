@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtReferenceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -51,7 +52,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder addPositions(String referencePosition) {
-        this.referencePositions.add(referencePosition);
+        nonNullAdd(referencePosition, this.referencePositions);
         return this;
     }
 
@@ -61,7 +62,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder addComment(ReferenceComment referenceComment) {
-        this.referenceComments.add(referenceComment);
+        nonNullAdd(referenceComment, this.referenceComments);
         return this;
     }
 
@@ -71,7 +72,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder evidence(Evidence evidence) {
-        this.evidences.add(evidence);
+        nonNullAdd(evidence, this.evidences);
         return this;
     }
 

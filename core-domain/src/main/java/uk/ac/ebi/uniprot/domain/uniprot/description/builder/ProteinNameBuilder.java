@@ -9,6 +9,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
+
 /**
  *
  * @author lgonzales
@@ -30,7 +32,7 @@ public class ProteinNameBuilder implements Builder2<ProteinNameBuilder, ProteinN
     }
 
     public ProteinNameBuilder addShortNames(Name shortNames) {
-        this.shortNames.add(shortNames);
+        nonNullAdd(shortNames, this.shortNames);
         return this;
     }
     public ProteinNameBuilder ecNumbers(List<EC> ecNumbers) {
@@ -39,7 +41,7 @@ public class ProteinNameBuilder implements Builder2<ProteinNameBuilder, ProteinN
     }
 
     public ProteinNameBuilder addEcNumbers(EC ecNumbers) {
-        this.ecNumbers.add(ecNumbers);
+        nonNullAdd(ecNumbers, this.ecNumbers);
         return this;
     }
 

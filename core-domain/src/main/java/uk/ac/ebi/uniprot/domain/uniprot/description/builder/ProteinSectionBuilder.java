@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
+
 public class ProteinSectionBuilder implements Builder2<ProteinSectionBuilder, ProteinSection> {
 
     private ProteinName recommendedName;
@@ -24,7 +26,7 @@ public class ProteinSectionBuilder implements Builder2<ProteinSectionBuilder, Pr
     }
 
     public ProteinSectionBuilder addAlternativeNames(ProteinName alternativeNames) {
-        this.alternativeNames.add(alternativeNames);
+        nonNullAdd(alternativeNames, this.alternativeNames);
         return this;
     }
 

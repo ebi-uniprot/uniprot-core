@@ -15,6 +15,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
 
 /**
@@ -163,7 +164,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession) {
-            this.secondaryAccessions.add(secondaryAccession);
+            nonNullAdd(secondaryAccession, this.secondaryAccessions);
             return this;
         }
 
@@ -187,7 +188,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addOrganismHost(OrganismHost organismHost) {
-            this.organismHosts.add(organismHost);
+            nonNullAdd(organismHost, this.organismHosts);
             return this;
         }
 
@@ -211,7 +212,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addGene(Gene gene) {
-            this.genes.add(gene);
+            nonNullAdd(gene, this.genes);
             return this;
         }
 
@@ -223,7 +224,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addComment(Comment comment) {
-            this.comments.add(comment);
+            nonNullAdd(comment, this.comments);
             return this;
         }
 
@@ -235,7 +236,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addFeature(Feature feature) {
-            this.features.add(feature);
+            nonNullAdd(feature, this.features);
             return this;
         }
 
@@ -247,7 +248,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addOrganelle(Organelle organelle) {
-            this.organelles.add(organelle);
+            nonNullAdd(organelle, this.organelles);
             return this;
         }
 
@@ -259,7 +260,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addKeyword(Keyword keyword) {
-            this.keywords.add(keyword);
+            nonNullAdd(keyword, this.keywords);
             return this;
         }
 
@@ -271,7 +272,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addReference(UniProtReference reference) {
-            this.references.add(reference);
+            nonNullAdd(reference, this.references);
             return this;
         }
 
@@ -283,7 +284,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addDatabaseCrossReference(UniProtDBCrossReference databaseCrossReference) {
-            this.databaseCrossReferences.add(databaseCrossReference);
+            nonNullAdd(databaseCrossReference, this.databaseCrossReferences);
             return this;
         }
 
