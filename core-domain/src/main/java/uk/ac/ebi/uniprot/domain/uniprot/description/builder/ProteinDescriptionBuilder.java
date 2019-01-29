@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * @author lgonzales
@@ -33,7 +33,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder alternativeNames(List<ProteinName> alternativeNames) {
-        nonNullAddAll(alternativeNames, this.alternativeNames);
+        this.alternativeNames = nonNullList(alternativeNames);
         return this;
     }
 
@@ -50,7 +50,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder submissionNames(List<ProteinName> submissionNames) {
-        nonNullAddAll(submissionNames, this.submissionNames);
+        this.submissionNames = nonNullList(submissionNames);
         return this;
     }
 
@@ -70,7 +70,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
-        nonNullAddAll(cdAntigenNames, this.cdAntigenNames);
+        this.cdAntigenNames = nonNullList(cdAntigenNames);
         return this;
     }
 
@@ -80,7 +80,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder innNames(List<Name> innNames) {
-        nonNullAddAll(innNames, this.innNames);
+        this.innNames = nonNullList(innNames);
         return this;
     }
 
@@ -90,7 +90,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
-        nonNullAddAll(includes, this.includes);
+        this.includes = nonNullList(includes);
         return this;
     }
 
@@ -100,7 +100,7 @@ public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBui
     }
 
     public ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
-        nonNullAddAll(contains, this.contains);
+        this.contains = nonNullList(contains);
         return this;
     }
 

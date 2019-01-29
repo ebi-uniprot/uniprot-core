@@ -7,7 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  *
@@ -21,7 +21,7 @@ public class ORFNameBuilder extends AbstractEvidencedValueBuilder<ORFNameBuilder
 
     public ORFNameBuilder(String orf, List<Evidence> evidences) {
         this.value = orf;
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
     }
 
     @Override

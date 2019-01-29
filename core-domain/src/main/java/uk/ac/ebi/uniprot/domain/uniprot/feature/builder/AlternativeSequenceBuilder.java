@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 22/01/19
@@ -37,7 +37,7 @@ public class AlternativeSequenceBuilder implements Builder2<AlternativeSequenceB
     }
 
     public AlternativeSequenceBuilder alternatives(List<String> alternativeSequences) {
-        nonNullAddAll(alternativeSequences, this.alternativeSequences);
+        this.alternativeSequences = nonNullList(alternativeSequences);
         return this;
     }
 

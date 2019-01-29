@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 15/01/19
@@ -24,7 +24,7 @@ public final class KineticParametersBuilder implements Builder2<KineticParameter
     private Note note;
 
     public KineticParametersBuilder maximumVelocities(List<MaximumVelocity> maximumVelocities) {
-        nonNullAddAll(maximumVelocities, this.maximumVelocities);
+        this.maximumVelocities = nonNullList(maximumVelocities);
         return this;
     }
 
@@ -34,7 +34,7 @@ public final class KineticParametersBuilder implements Builder2<KineticParameter
     }
 
     public KineticParametersBuilder michaelisConstants(List<MichaelisConstant> michaelisConstants) {
-        nonNullAddAll(michaelisConstants, this.michaelisConstants);
+        this.michaelisConstants = nonNullList(michaelisConstants);
         return this;
     }
 

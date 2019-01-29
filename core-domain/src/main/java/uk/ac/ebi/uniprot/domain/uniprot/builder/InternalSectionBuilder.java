@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 24/01/19
@@ -37,7 +37,7 @@ public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, 
     }
 
     public InternalSectionBuilder internalLines(List<InternalLine> internalLines) {
-        nonNullAddAll(internalLines, this.internalLines);
+        this.internalLines = nonNullList(internalLines);
         return this;
     }
 
@@ -47,7 +47,7 @@ public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, 
     }
 
     public InternalSectionBuilder evidenceLines(List<EvidenceLine> evidenceLines) {
-        nonNullAddAll(evidenceLines, this.evidenceLines);
+        this.evidenceLines = nonNullList(evidenceLines);
         return this;
     }
 
@@ -57,7 +57,7 @@ public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, 
     }
 
     public InternalSectionBuilder sourceLines(List<SourceLine> sourceLines) {
-        nonNullAddAll(sourceLines, this.sourceLines);
+        this.sourceLines = nonNullList(sourceLines);
         return this;
     }
 

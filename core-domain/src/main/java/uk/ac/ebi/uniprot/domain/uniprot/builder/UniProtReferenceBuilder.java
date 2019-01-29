@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 18/01/19
@@ -47,7 +47,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder positions(List<String> referencePositions) {
-        nonNullAddAll(referencePositions, this.referencePositions);
+        this.referencePositions = nonNullList(referencePositions);
         return this;
     }
 
@@ -57,7 +57,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder comments(List<ReferenceComment> referenceComments) {
-        nonNullAddAll(referenceComments, this.referenceComments);
+        this.referenceComments = nonNullList(referenceComments);
         return this;
     }
 
@@ -67,7 +67,7 @@ public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder
     }
 
     public UniProtReferenceBuilder evidences(List<Evidence> evidences) {
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
         return this;
     }
 

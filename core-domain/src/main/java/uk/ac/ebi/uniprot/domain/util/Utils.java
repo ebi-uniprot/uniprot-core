@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.util;
 
 import java.io.InputStream;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
@@ -14,13 +14,15 @@ public class Utils {
             return value;
     }
 
-    public static <T> void nonNullAddAll(Collection<? extends T> source, Collection<T> target) {
+    public static <T> List<T> nonNullList(List<T> source) {
         if (source != null) {
-            target.addAll(source);
+            return new ArrayList<>(source);
+        } else {
+            return new ArrayList<>();
         }
     }
 
-    public static <T> void nonNullAdd(T source, Collection<T> target) {
+    public static <T> void nonNullAdd(T source, List<T> target) {
         if (source != null) {
             target.add(source);
         }

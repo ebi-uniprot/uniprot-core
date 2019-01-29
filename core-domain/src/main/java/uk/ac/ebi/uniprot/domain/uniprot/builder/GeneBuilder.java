@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  *
@@ -33,7 +33,7 @@ public class GeneBuilder implements Builder2<GeneBuilder,Gene> {
 
     public GeneBuilder synonyms(List<GeneNameSynonym> synonyms) {
         if(synonyms != null) {
-            nonNullAddAll(synonyms, this.synonyms);
+            this.synonyms = nonNullList(synonyms);
         }
         return this;
     }
@@ -45,7 +45,7 @@ public class GeneBuilder implements Builder2<GeneBuilder,Gene> {
 
     public GeneBuilder orderedLocusNames(List<OrderedLocusName> orderedLocusNames) {
         if(orderedLocusNames != null) {
-            nonNullAddAll(orderedLocusNames, this.orderedLocusNames);
+            this.orderedLocusNames = nonNullList(orderedLocusNames);
         }
         return this;
     }
@@ -56,7 +56,7 @@ public class GeneBuilder implements Builder2<GeneBuilder,Gene> {
     }
     public GeneBuilder orfNames(List<ORFName> orfNames) {
         if(orfNames != null) {
-            nonNullAddAll(orfNames, this.orfNames);
+            this.orfNames = nonNullList(orfNames);
         }
         return this;
     }

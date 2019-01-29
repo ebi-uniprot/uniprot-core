@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 15/01/19
@@ -32,7 +32,7 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
     }
 
     public ReactionBuilder references(List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
-        nonNullAddAll(reactionReferences, this.reactionReferences);
+        this.reactionReferences = nonNullList(reactionReferences);
         return this;
     }
 
@@ -52,7 +52,7 @@ public final class ReactionBuilder implements Builder2<ReactionBuilder, Reaction
     }
 
     public ReactionBuilder evidences(List<Evidence> evidences) {
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
         return this;
     }
 

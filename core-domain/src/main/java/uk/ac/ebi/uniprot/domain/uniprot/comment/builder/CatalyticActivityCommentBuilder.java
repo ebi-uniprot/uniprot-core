@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
     private Reaction reaction;
@@ -34,7 +34,7 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
     }
 
     public CatalyticActivityCommentBuilder physiologicalReactions(List<PhysiologicalReaction> physiologicalReactions) {
-        nonNullAddAll(physiologicalReactions, this.physiologicalReactions);
+        this.physiologicalReactions = nonNullList(physiologicalReactions);
         return this;
     }
 

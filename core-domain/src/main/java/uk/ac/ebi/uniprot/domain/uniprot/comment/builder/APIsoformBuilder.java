@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 15/01/19
@@ -49,7 +49,7 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder synonyms(List<IsoformName> synonyms) {
-        nonNullAddAll(synonyms, this.synonyms);
+        this.synonyms = nonNullList(synonyms);
         return this;
     }
 
@@ -74,7 +74,7 @@ public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder sequenceIds(List<String> sequenceIds) {
-        nonNullAddAll(sequenceIds, this.sequenceIds);
+        this.sequenceIds = nonNullList(sequenceIds);
         return this;
     }
 

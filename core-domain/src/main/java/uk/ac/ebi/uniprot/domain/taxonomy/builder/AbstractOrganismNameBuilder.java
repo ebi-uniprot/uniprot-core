@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
         implements Builder2<B, T> {
@@ -29,7 +29,7 @@ public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismName
     }
 
     public B synonyms(List<String> synonyms) {
-        nonNullAddAll(synonyms, this.synonyms);
+        this.synonyms = nonNullList(synonyms);
         return getThis();
     }
 
@@ -52,10 +52,9 @@ public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismName
 
     @Override
     public B from(OrganismName organismName) {
-        synonyms.clear();
         this.scientificName = organismName.getScientificName();
         this.commonName = organismName.getCommonName();
-        nonNullAddAll(organismName.getSynonyms(), this.synonyms);
+        this.synonyms = nonNullList(organismName.getSynonyms());
         return getThis();
     }
 }

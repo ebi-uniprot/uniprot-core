@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 14/01/19
@@ -33,7 +33,7 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     }
 
     public B evidences(List<Evidence> evidences) {
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
         return getThis();
     }
 

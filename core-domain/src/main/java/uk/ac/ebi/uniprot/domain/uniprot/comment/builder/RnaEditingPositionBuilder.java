@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 16/01/19
@@ -25,7 +25,7 @@ public class RnaEditingPositionBuilder implements Builder2<RnaEditingPositionBui
 
     public RnaEditingPositionBuilder(String position, List<Evidence> evidences) {
         this.position = position;
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = this.evidences = nonNullList(evidences);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class RnaEditingPositionBuilder implements Builder2<RnaEditingPositionBui
     }
 
     public RnaEditingPositionBuilder evidences(List<Evidence> evidences) {
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
         return this;
     }
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public final class SubcellularLocationCommentBuilder implements CommentBuilder<SubcellularLocationCommentBuilder, SubcellularLocationComment> {
     private String molecule;
@@ -40,7 +40,7 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
     }
 
     public SubcellularLocationCommentBuilder subcellularLocations(List<SubcellularLocation> subcellularLocations) {
-        nonNullAddAll(subcellularLocations, this.subcellularLocations);
+        this.subcellularLocations = nonNullList(subcellularLocations);
         return this;
     }
 

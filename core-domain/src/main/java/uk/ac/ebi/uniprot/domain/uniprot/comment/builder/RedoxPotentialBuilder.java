@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 16/01/19
@@ -15,7 +15,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
  */
 public class RedoxPotentialBuilder extends AbstractFreeTextBuilder<RedoxPotentialBuilder, RedoxPotential> {
     public RedoxPotentialBuilder(List<EvidencedValue> evidencedValues) {
-        nonNullAddAll(evidencedValues, this.evidencedValues);
+        this.evidencedValues = nonNullList(evidencedValues);
     }
 
     @Override

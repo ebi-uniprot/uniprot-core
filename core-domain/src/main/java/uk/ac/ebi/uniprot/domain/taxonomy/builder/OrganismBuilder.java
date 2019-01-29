@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  *
@@ -27,7 +27,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     }
 
     public OrganismBuilder lineage(List<String> lineage) {
-        nonNullAddAll(lineage, this.lineage);
+        this.lineage = nonNullList(lineage);
         return this;
     }
 
@@ -37,7 +37,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     }
 
     public OrganismBuilder evidences(List<Evidence> evidences) {
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
         return this;
     }
 

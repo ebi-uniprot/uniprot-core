@@ -9,6 +9,8 @@ import uk.ac.ebi.uniprot.domain.util.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
+
 /**
  *
  * @author lgonzales
@@ -23,7 +25,7 @@ public class EntryInactiveReasonBuilder implements Builder2<EntryInactiveReasonB
     }
 
     public EntryInactiveReasonBuilder mergeDemergeTo(List<String> mergeDemergeTo) {
-        Utils.nonNullAddAll(mergeDemergeTo,this.mergeDemergeTo);
+        this.mergeDemergeTo = nonNullList(mergeDemergeTo);
         return this;
     }
 

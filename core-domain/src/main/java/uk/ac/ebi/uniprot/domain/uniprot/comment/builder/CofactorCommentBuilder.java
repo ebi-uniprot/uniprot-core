@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public final class CofactorCommentBuilder implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {
     private String molecule;
@@ -40,7 +40,7 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     }
 
     public CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
-        nonNullAddAll(cofactors, this.cofactors);
+        this.cofactors = nonNullList(cofactors);
         return this;
     }
 

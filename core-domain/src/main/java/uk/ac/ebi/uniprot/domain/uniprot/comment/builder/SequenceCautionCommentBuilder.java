@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
     private SequenceCautionType sequenceCautionType;
@@ -45,7 +45,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     }
 
     public SequenceCautionCommentBuilder positions(List<String> positions) {
-        nonNullAddAll(positions, this.positions);
+        this.positions = nonNullList(positions);
         return this;
     }
 
@@ -60,7 +60,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     }
 
     public SequenceCautionCommentBuilder evidences(List<Evidence> evidences) {
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
         return this;
     }
 

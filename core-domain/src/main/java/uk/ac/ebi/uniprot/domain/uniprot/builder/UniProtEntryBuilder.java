@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * A staged builder that guides a user when creating a {@link UniProtEntry} instance. For example, the accession
@@ -170,7 +170,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions) {
-            nonNullAddAll(secondaryAccessions, this.secondaryAccessions);
+            this.secondaryAccessions = nonNullList(secondaryAccessions);
             return this;
         }
 
@@ -194,7 +194,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder organismHosts(List<OrganismHost> organismHosts) {
-            nonNullAddAll(organismHosts, this.organismHosts);
+            this.organismHosts = nonNullList(organismHosts);
             return this;
         }
 
@@ -218,7 +218,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder genes(List<Gene> genes) {
-            nonNullAddAll(genes, this.genes);
+            this.genes = nonNullList(genes);
             return this;
         }
 
@@ -230,7 +230,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder comments(List<Comment> comments) {
-            nonNullAddAll(comments, this.comments);
+            this.comments = nonNullList(comments);
             return this;
         }
 
@@ -242,7 +242,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder features(List<Feature> features) {
-            nonNullAddAll(features, this.features);
+            this.features = nonNullList(features);
             return this;
         }
 
@@ -254,7 +254,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder organelles(List<Organelle> organelles) {
-            nonNullAddAll(organelles, this.organelles);
+            this.organelles = nonNullList(organelles);
             return this;
         }
 
@@ -266,7 +266,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder keywords(List<Keyword> keywords) {
-            nonNullAddAll(keywords, this.keywords);
+            this.keywords = nonNullList(keywords);
             return this;
         }
 
@@ -278,7 +278,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder references(List<UniProtReference> references) {
-            nonNullAddAll(references, this.references);
+            this.references = nonNullList(references);
             return this;
         }
 
@@ -290,7 +290,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder databaseCrossReferences(List<UniProtDBCrossReference> databaseCrossReferences) {
-            nonNullAddAll(databaseCrossReferences, this.databaseCrossReferences);
+            this.databaseCrossReferences = nonNullList(databaseCrossReferences);
             return this;
         }
 

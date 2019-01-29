@@ -7,7 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * @author lgonzales
@@ -20,7 +20,7 @@ public class GeneNameSynonymBuilder extends AbstractEvidencedValueBuilder<GeneNa
 
     public GeneNameSynonymBuilder(String syn, List<Evidence> evidences) {
         this.value = syn;
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
     }
 
     @Override

@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 15/01/19
@@ -18,7 +18,7 @@ public class EvidencedValueBuilder extends AbstractEvidencedValueBuilder<Evidenc
 
     public EvidencedValueBuilder(String value, List<Evidence> evidences) {
         this.value = value;
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
     }
 
     @Override

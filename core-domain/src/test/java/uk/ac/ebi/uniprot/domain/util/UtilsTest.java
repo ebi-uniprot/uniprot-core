@@ -2,12 +2,14 @@ package uk.ac.ebi.uniprot.domain.util;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 class UtilsTest {
 
@@ -32,9 +34,21 @@ class UtilsTest {
         result = Utils.nonNullUnmodifiableList(list);
         assertTrue(result.isEmpty());
 
-        list = Arrays.asList("val1", "val2");
+        list = asList("val1", "val2");
         result = Utils.nonNullUnmodifiableList(list);
         assertEquals(list, result);
+
+    }
+
+    @Test
+    void canSetList() {
+        List<String> first = asList("one", "two");
+        List<String> second = new ArrayList<>(asList("three", "four"));
+
+        nonNullList(first);
+
+        System.out.println(first);
+        System.out.println(second);
 
     }
 

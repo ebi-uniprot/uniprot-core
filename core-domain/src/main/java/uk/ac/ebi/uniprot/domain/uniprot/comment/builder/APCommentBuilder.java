@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
     private List<APEventType> events = new ArrayList<>();
@@ -32,7 +32,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     }
 
     public APCommentBuilder events(List<APEventType> events) {
-        nonNullAddAll(events, this.events);
+        this.events = nonNullList(events);
         return this;
     }
 
@@ -42,7 +42,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     }
 
     public APCommentBuilder isoforms(List<APIsoform> isoforms) {
-        nonNullAddAll(isoforms, this.isoforms);
+        this.isoforms = nonNullList(isoforms);
         return this;
     }
 

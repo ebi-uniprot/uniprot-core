@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 23/01/19
@@ -25,7 +25,7 @@ public class OrganelleBuilder extends AbstractEvidencedValueBuilder<OrganelleBui
     public OrganelleBuilder(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         this.geneEncodingType = geneEncodingType;
         this.value = value;
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<B, T>, T extends Citation> implements CitationBuilder<B, T> {
     protected List<String> authoringGroups = new ArrayList<>();
@@ -25,7 +25,7 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
     protected PublicationDate publicationDate;
 
     public B authoringGroups(List<String> groups) {
-        nonNullAddAll(groups, this.authoringGroups);
+        this.authoringGroups = nonNullList(groups);
         return getThis();
     }
 
@@ -34,12 +34,12 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return getThis();
     }
 
-    public B authors(Collection<Author> authors) {
-        nonNullAddAll(authors, this.authors);
+    public B authors(List<Author> authors) {
+        this.authors = nonNullList(authors);
         return getThis();
     }
 
-    public B authors(List<String> authors) {
+    public B authors(Collection<String> authors) {
         this.authors.addAll(authors.stream()
                                     .map(AuthorImpl::new)
                                     .collect(Collectors.toList()));

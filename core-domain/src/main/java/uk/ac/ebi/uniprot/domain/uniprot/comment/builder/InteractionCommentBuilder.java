@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public class InteractionCommentBuilder implements CommentBuilder<InteractionCommentBuilder, InteractionComment> {
     private List<Interaction> interactions = new ArrayList<>();
 
     public InteractionCommentBuilder interactions(List<Interaction> interactions) {
-        nonNullAddAll(interactions, this.interactions);
+        this.interactions = nonNullList(interactions);
         return this;
     }
 

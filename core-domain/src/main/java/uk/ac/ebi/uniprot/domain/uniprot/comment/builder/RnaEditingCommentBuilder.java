@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
     private RnaEditingLocationType locationType;
@@ -34,8 +34,8 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
         return this;
     }
 
-    public RnaEditingCommentBuilder positions(List<RnaEdPosition> position) {
-        nonNullAddAll(position, this.positions);
+    public RnaEditingCommentBuilder positions(List<RnaEdPosition> positions) {
+        this.positions = nonNullList(positions);
         return this;
     }
 

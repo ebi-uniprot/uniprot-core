@@ -7,7 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 23/01/19
@@ -24,7 +24,7 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
     public KeywordBuilder(String id, String value, List<Evidence> evidences) {
         this.id = id;
         this.value = value;
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
     }
 
     @Override

@@ -7,7 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValue
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
  * Created 15/01/19
@@ -19,7 +19,7 @@ public class IsoformNameBuilder extends AbstractEvidencedValueBuilder<IsoformNam
 
     public IsoformNameBuilder(String value, List<Evidence> evidences) {
         this.value = value;
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
     }
 
     @Override

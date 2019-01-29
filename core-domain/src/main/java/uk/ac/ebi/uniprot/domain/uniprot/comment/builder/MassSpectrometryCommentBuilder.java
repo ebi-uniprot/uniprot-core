@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAddAll;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
     private MassSpectrometryMethod method;
@@ -61,7 +61,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder ranges(List<MassSpectrometryRange> ranges) {
-        nonNullAddAll(ranges, this.ranges);
+        this.ranges = nonNullList(ranges);
         return this;
     }
 
@@ -71,7 +71,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder evidences(List<Evidence> evidences) {
-        nonNullAddAll(evidences, this.evidences);
+        this.evidences = nonNullList(evidences);
         return this;
     }
 
