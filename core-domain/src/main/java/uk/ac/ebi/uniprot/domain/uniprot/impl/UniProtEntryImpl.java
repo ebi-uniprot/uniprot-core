@@ -36,7 +36,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     private List<Gene> genes;
     private List<Comment> comments;
     private List<Feature> features;
-    private List<Organelle> organelles;
+    private List<GeneLocation> geneLocations;
 
     private List<Keyword> keywords;
     private List<UniProtReference> references;
@@ -54,7 +54,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         references = Collections.emptyList();
         databaseCrossReferences = Collections.emptyList();
         features = Collections.emptyList();
-        organelles = Collections.emptyList();
+        geneLocations = Collections.emptyList();
         keywords = Collections.emptyList();
     }
 
@@ -79,7 +79,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                             List<Gene> genes,
                             List<Comment> comments,
                             List<Feature> features,
-                            List<Organelle> organelles,
+                            List<GeneLocation> geneLocations,
                             List<Keyword> keywords,
                             List<UniProtReference> references,
                             List<UniProtDBCrossReference> databaseCrossReferences,
@@ -87,7 +87,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                             InternalSection internalSection) {
         this(entryType, primaryAccession, secondaryAccessions, uniProtId,
              entryAudit, organism, organismHosts, proteinExistence,
-             proteinDescription, genes, comments, features, organelles, keywords,
+             proteinDescription, genes, comments, features, geneLocations, keywords,
              references, databaseCrossReferences, sequence, internalSection, null);
 
     }
@@ -101,7 +101,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                             ProteinExistence proteinExistence,
                             ProteinDescription proteinDescription,
                             List<Gene> genes, List<Comment> comments,
-                            List<Feature> features, List<Organelle> organelles,
+                            List<Feature> features, List<GeneLocation> geneLocations,
                             List<Keyword> keywords, List<UniProtReference> references,
                             List<UniProtDBCrossReference> databaseCrossReferences,
                             Sequence sequence,
@@ -119,7 +119,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         this.genes = Utils.nonNullUnmodifiableList(genes);
         this.comments = Utils.nonNullUnmodifiableList(comments);
         this.features = Utils.nonNullUnmodifiableList(features);
-        this.organelles = Utils.nonNullUnmodifiableList(organelles);
+        this.geneLocations = Utils.nonNullUnmodifiableList(geneLocations);
         this.keywords = Utils.nonNullUnmodifiableList(keywords);
         this.references = Utils.nonNullUnmodifiableList(references);
         this.databaseCrossReferences = Utils.nonNullUnmodifiableList(databaseCrossReferences);
@@ -205,8 +205,8 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public List<Organelle> getOrganelles() {
-        return organelles;
+    public List<GeneLocation> getGeneLocations() {
+        return geneLocations;
     }
 
     @Override
@@ -283,7 +283,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         result = prime * result + ((inactiveReason == null) ? 0 : inactiveReason.hashCode());
         result = prime * result + ((internalSection == null) ? 0 : internalSection.hashCode());
         result = prime * result + ((keywords == null) ? 0 : keywords.hashCode());
-        result = prime * result + ((organelles == null) ? 0 : organelles.hashCode());
+        result = prime * result + ((geneLocations == null) ? 0 : geneLocations.hashCode());
         result = prime * result + ((organism == null) ? 0 : organism.hashCode());
         result = prime * result + ((organismHosts == null) ? 0 : organismHosts.hashCode());
         result = prime * result + ((primaryAccession == null) ? 0 : primaryAccession.hashCode());
@@ -347,10 +347,10 @@ public class UniProtEntryImpl implements UniProtEntry {
                 return false;
         } else if (!keywords.equals(other.keywords))
             return false;
-        if (organelles == null) {
-            if (other.organelles != null)
+        if (geneLocations == null) {
+            if (other.geneLocations != null)
                 return false;
-        } else if (!organelles.equals(other.organelles))
+        } else if (!geneLocations.equals(other.geneLocations))
             return false;
         if (organism == null) {
             if (other.organism != null)

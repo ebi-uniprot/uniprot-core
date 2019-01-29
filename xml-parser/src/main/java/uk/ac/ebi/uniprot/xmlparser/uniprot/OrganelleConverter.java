@@ -1,11 +1,8 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import java.util.List;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneLocationType;
@@ -13,7 +10,9 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.StatusType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
 
-public class OrganelleConverter implements Converter<GeneLocationType, Organelle> {
+import java.util.List;
+
+public class OrganelleConverter implements Converter<GeneLocationType, GeneLocation> {
 	private final EvidenceIndexMapper evRefMapper;
 	private final ObjectFactory xmlUniprotFactory;
 
@@ -27,7 +26,7 @@ public class OrganelleConverter implements Converter<GeneLocationType, Organelle
 	}
 
 	@Override
-	public Organelle fromXml(GeneLocationType xmlObj) {
+	public GeneLocation fromXml(GeneLocationType xmlObj) {
 		GeneEncodingType geneEncodingType = GeneEncodingType.typeOf(xmlObj.getType());
 		String value = "";
 		List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
@@ -50,7 +49,7 @@ public class OrganelleConverter implements Converter<GeneLocationType, Organelle
 	}
 
 	@Override
-	public GeneLocationType toXml(Organelle organelle) {
+	public GeneLocationType toXml(GeneLocation organelle) {
 		GeneLocationType geneLocationXML = xmlUniprotFactory.createGeneLocationType();
 		geneLocationXML.setType(organelle.getGeneEncodingType().getName().toLowerCase());
 		if (organelle.getGeneEncodingType() == GeneEncodingType.PLASMID) {

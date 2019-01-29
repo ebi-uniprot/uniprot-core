@@ -5,15 +5,12 @@ import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 
-import java.util.Collections;
-
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
 
     private SubmissionDatabase submissionDatabase;
 
     private SubmissionImpl() {
-        super(CitationType.SUBMISSION, Collections.emptyList(), Collections.emptyList(),
-              null, null, null);
+        this(new SubmissionBuilder());
     }
 
     public SubmissionImpl(SubmissionBuilder builder) {

@@ -5,17 +5,12 @@ import uk.ac.ebi.uniprot.domain.citation.Thesis;
 import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-import java.util.Collections;
-
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     private String institute;
     private String address;
 
     private ThesisImpl() {
-        super(CitationType.THESIS, Collections.emptyList(), Collections.emptyList(),
-              null, null, null);
-        this.institute = "";
-        this.address = "";
+        this(new ThesisBuilder());
     }
 
     public ThesisImpl(ThesisBuilder builder) {

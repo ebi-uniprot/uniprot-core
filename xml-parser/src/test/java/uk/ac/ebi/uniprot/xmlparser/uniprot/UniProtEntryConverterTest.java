@@ -1,58 +1,22 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
+import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.*;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescriptionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.FeatureFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.*;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
@@ -62,6 +26,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.Entry;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UniProtEntryConverterTest {
 
@@ -78,7 +50,7 @@ class UniProtEntryConverterTest {
         int sequenceVersion = 5;
         EntryAudit entryAudit = UniProtFactory.INSTANCE.createEntryAudit(firstPublicDate,
                                                                          lastAnnotationUpdateDate, lastSequenceUpdateDate, entryVersion, sequenceVersion);
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         organelles.add(UniProtFactory.INSTANCE.createOrganelle(GeneEncodingType.APICOPLAST_PLASTID, null, evidences));
         organelles.add(UniProtFactory.INSTANCE

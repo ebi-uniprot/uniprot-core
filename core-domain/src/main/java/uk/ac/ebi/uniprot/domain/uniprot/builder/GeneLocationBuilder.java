@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.OrganelleImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneLocationImpl;
 
 import java.util.List;
 
@@ -15,31 +15,31 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class OrganelleBuilder extends AbstractEvidencedValueBuilder<OrganelleBuilder, Organelle> {
+public class GeneLocationBuilder extends AbstractEvidencedValueBuilder<GeneLocationBuilder, GeneLocation> {
     private GeneEncodingType geneEncodingType;
 
-    public OrganelleBuilder(){
+    public GeneLocationBuilder(){
 
     }
 
-    public OrganelleBuilder(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
+    public GeneLocationBuilder(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         this.geneEncodingType = geneEncodingType;
         this.value = value;
         this.evidences = nonNullList(evidences);
     }
 
     @Override
-    public Organelle build() {
-        return new OrganelleImpl(geneEncodingType, value, evidences);
+    public GeneLocation build() {
+        return new GeneLocationImpl(geneEncodingType, value, evidences);
     }
 
-    public OrganelleBuilder geneEncodingType(GeneEncodingType geneEncodingType) {
+    public GeneLocationBuilder geneEncodingType(GeneEncodingType geneEncodingType) {
         this.geneEncodingType = geneEncodingType;
         return this;
     }
 
     @Override
-    protected OrganelleBuilder getThis() {
+    protected GeneLocationBuilder getThis() {
         return this;
     }
 }

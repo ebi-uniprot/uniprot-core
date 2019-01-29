@@ -158,7 +158,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
             activeEntryBuilder.keywords(kwLineConverter.convert(f.kw));
         }
         if (f.og != null) {
-            activeEntryBuilder.organelles(ogLineConverter.convert(f.og));
+            activeEntryBuilder.geneLocations(ogLineConverter.convert(f.og));
         }
         if (f.oh != null) {
             activeEntryBuilder.organismHosts(ohLineConverter.convert(f.oh));

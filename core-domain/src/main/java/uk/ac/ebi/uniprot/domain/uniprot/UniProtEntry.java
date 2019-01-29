@@ -49,7 +49,7 @@ public interface UniProtEntry {
 
     List<Feature> getFeaturesByType(FeatureType type);
 
-    List<Organelle> getOrganelles();
+    List<GeneLocation> getGeneLocations();
 
     List<Keyword> getKeywords();
 

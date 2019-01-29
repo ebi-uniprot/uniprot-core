@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.parser.converter;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.parser.impl.og.OgLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.og.OgLineObject;
@@ -24,7 +24,7 @@ public class OgLineConverterTest {
 		ogObj.plasmidNames.add("R6-5");
 		ogObj.plasmidNames.add("IncFII R100 (NR1)");
 		ogObj.plasmidNames.add("IncFII R1-19 (R1 drd-19)");
-		 List<Organelle> orgs = converter.convert(ogObj);
+		 List<GeneLocation> orgs = converter.convert(ogObj);
 		 assertEquals(3, orgs.size());
 		 testExist(GeneEncodingType.PLASMID, "R6-5", orgs);
 		 testExist(GeneEncodingType.PLASMID, "IncFII R100 (NR1)", orgs);
@@ -54,7 +54,7 @@ public class OgLineConverterTest {
 		ogObj.ogs.add(OgEnum.PLASTID_CYANELLE);
 		ogObj.ogs.add(OgEnum.PLASTID_NON_PHOTOSYNTHETIC);
 		ogObj.plasmidNames.add("R6-5");
-		List<Organelle> orgs = converter.convert(ogObj);
+		List<GeneLocation> orgs = converter.convert(ogObj);
 		 assertEquals(10, orgs.size());
 		 testExist(GeneEncodingType.PLASMID, "R6-5", orgs);
 		 testExist(GeneEncodingType.HYDROGENOSOME, "", orgs);
@@ -88,12 +88,12 @@ public class OgLineConverterTest {
 		evs = new ArrayList<>();
 		evs.add("ECO:0000256|RuleBase:RU000681");		
 		ogObj.getEvidenceInfo().evidences.put("IncFII R100 (NR1)", evs);
-		List<Organelle> orgs = converter.convert(ogObj);
+		List<GeneLocation> orgs = converter.convert(ogObj);
 		assertEquals(3, orgs.size());
-		Organelle org1 = orgs.get(0);
-		Organelle org2 = orgs.get(1);
-		Organelle org3 = orgs.get(2);
-		for(Organelle org:orgs){
+		GeneLocation org1 = orgs.get(0);
+		GeneLocation org2 = orgs.get(1);
+		GeneLocation org3 = orgs.get(2);
+		for(GeneLocation org:orgs){
 			if(org.getGeneEncodingType() == GeneEncodingType.HYDROGENOSOME){
 				org1= org;
 			}else{
@@ -129,10 +129,10 @@ public class OgLineConverterTest {
 		assertEquals("ECO:0000256|RuleBase:RU000681", evId.getValue());
 	
 	}
-	private void testExist(GeneEncodingType type, String value,List<Organelle> orgs ){
+	private void testExist(GeneEncodingType type, String value,List<GeneLocation> orgs ){
 		boolean found =false;
 		boolean plasmidValueFound =false;
-		for(Organelle org:orgs){
+		for(GeneLocation org:orgs){
 			if(org.getGeneEncodingType() ==type){
 				found =true;
 				if(type == GeneEncodingType.PLASMID){

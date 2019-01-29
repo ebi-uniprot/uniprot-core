@@ -77,9 +77,9 @@ public class UniProtEntryBuilder {
 
         ActiveEntryBuilder features(List<Feature> features);
 
-        ActiveEntryBuilder addOrganelle(Organelle organelle);
+        ActiveEntryBuilder addGeneLocation(GeneLocation geneLocation);
 
-        ActiveEntryBuilder organelles(List<Organelle> organelles);
+        ActiveEntryBuilder geneLocations(List<GeneLocation> geneLocations);
 
         ActiveEntryBuilder addKeyword(Keyword keyword);
 
@@ -115,7 +115,7 @@ public class UniProtEntryBuilder {
         private List<Gene> genes = new ArrayList<>();
         private List<Comment> comments = new ArrayList<>();
         private List<Feature> features = new ArrayList<>();
-        private List<Organelle> organelles = new ArrayList<>();
+        private List<GeneLocation> geneLocations = new ArrayList<>();
         private List<Keyword> keywords = new ArrayList<>();
         private List<UniProtReference> references = new ArrayList<>();
         private List<UniProtDBCrossReference> databaseCrossReferences = new ArrayList<>();
@@ -247,14 +247,14 @@ public class UniProtEntryBuilder {
         }
 
         @Override
-        public ActiveEntryBuilder addOrganelle(Organelle organelle) {
-            nonNullAdd(organelle, this.organelles);
+        public ActiveEntryBuilder addGeneLocation(GeneLocation geneLocation) {
+            nonNullAdd(geneLocation, this.geneLocations);
             return this;
         }
 
         @Override
-        public ActiveEntryBuilder organelles(List<Organelle> organelles) {
-            this.organelles = nonNullList(organelles);
+        public ActiveEntryBuilder geneLocations(List<GeneLocation> geneLocations) {
+            this.geneLocations = nonNullList(geneLocations);
             return this;
         }
 
@@ -309,7 +309,7 @@ public class UniProtEntryBuilder {
         @Override
         public UniProtEntry build() {
             return new UniProtEntryImpl(entryType, primaryAccession, secondaryAccessions, uniProtId, entryAudit, organism,
-                                        organismHosts, proteinExistence, proteinDescription, genes, comments, features, organelles, keywords,
+                                        organismHosts, proteinExistence, proteinDescription, genes, comments, features, geneLocations, keywords,
                                         references, databaseCrossReferences, sequence, internalSection, inactiveReason);
         }
 
@@ -327,7 +327,7 @@ public class UniProtEntryBuilder {
             this.genes = instance.getGenes();
             this.comments = instance.getComments();
             this.features = instance.getFeatures();
-            this.organelles = instance.getOrganelles();
+            this.geneLocations = instance.getGeneLocations();
             this.keywords = instance.getKeywords();
             this.references = instance.getReferences();
             this.databaseCrossReferences = instance.getDatabaseCrossReferences();

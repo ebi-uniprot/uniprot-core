@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.parser.impl.og;
 
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.OrganelleBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.GeneLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class OgLineConverter extends EvidenceCollector implements Converter<OgLineObject, List<Organelle>> {
+public class OgLineConverter extends EvidenceCollector implements Converter<OgLineObject, List<GeneLocation>> {
     @Override
-    public List<Organelle> convert(OgLineObject f) {
-        List<Organelle> organelles = new ArrayList<>();
+    public List<GeneLocation> convert(OgLineObject f) {
+        List<GeneLocation> organelles = new ArrayList<>();
         Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f
                                                                                           .getEvidenceInfo());
         this.addAll(evidenceMap.values());
@@ -57,13 +57,13 @@ public class OgLineConverter extends EvidenceCollector implements Converter<OgLi
                     break;
 
             }
-            Organelle org = new OrganelleBuilder(type, "", evidenceMap.get(ogEnum)).build();
+            GeneLocation org = new GeneLocationBuilder(type, "", evidenceMap.get(ogEnum)).build();
 
             organelles.add(org);
         }
 
         for (String val : f.plasmidNames) {
-            Organelle org = new OrganelleBuilder(GeneEncodingType.PLASMID, val, evidenceMap.get(val)).build();
+            GeneLocation org = new GeneLocationBuilder(GeneEncodingType.PLASMID, val, evidenceMap.get(val)).build();
             organelles.add(org);
         }
 

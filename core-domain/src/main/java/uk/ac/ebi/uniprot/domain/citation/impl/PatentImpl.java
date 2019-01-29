@@ -5,15 +5,11 @@ import uk.ac.ebi.uniprot.domain.citation.Patent;
 import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-import java.util.Collections;
-
 public class PatentImpl extends AbstractCitationImpl implements Patent {
     private final String patentNumber;
 
     private PatentImpl() {
-        super(CitationType.PATENT, Collections.emptyList(), Collections.emptyList(),
-              null, null, null);
-        this.patentNumber = "";
+        this(new PatentBuilder());
     }
 
     public PatentImpl(PatentBuilder builder) {

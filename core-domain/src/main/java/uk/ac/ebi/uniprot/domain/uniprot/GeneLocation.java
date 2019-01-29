@@ -18,6 +18,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
  * </font></pre>
  */
 
-public interface Organelle extends EvidencedValue {
+public interface GeneLocation extends EvidencedValue {
     GeneEncodingType getGeneEncodingType();
 }

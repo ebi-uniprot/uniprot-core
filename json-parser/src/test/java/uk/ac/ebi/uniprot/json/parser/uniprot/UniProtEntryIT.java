@@ -83,7 +83,7 @@ public class UniProtEntryIT {
                 .features(Collections.singletonList(FeatureTest.getFeature()))
                 .internalSection(InternalSectionTest.getInternalSection())
                 .keywords(Collections.singletonList(KeywordTest.getKeyword()))
-                .organelles(Collections.singletonList(OrganelleTest.getOrganelle()))
+                .geneLocations(Collections.singletonList(GeneLocationTest.getGeneLocation()))
                 .references(UniProtReferenceTest.getUniProtReferences())
                 .databaseCrossReferences(Collections.singletonList(UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
                 .sequence(SequenceTest.getSequence())

@@ -6,8 +6,6 @@ import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
-import java.util.Collections;
-
 public class JournalArticleImpl extends AbstractCitationImpl implements JournalArticle {
 
     private Journal journal;
@@ -16,11 +14,7 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
     private String volume;
 
     private JournalArticleImpl() {
-        super(CitationType.JOURNAL_ARTICLE, Collections.emptyList(), Collections.emptyList(),
-              null, null, null);
-        this.firstPage = "";
-        this.lastPage = "";
-        this.volume = "";
+        this(new JournalArticleBuilder());
     }
 
     public JournalArticleImpl(JournalArticleBuilder builder) {

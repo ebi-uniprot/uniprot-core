@@ -101,7 +101,7 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{
     	if(types.contains(LineType.OS))
     		entryLines.add(osLineBuilder.buildWithEvidence(entry.getOrganism()));
     	if(types.contains(LineType.OG))
-    	entryLines.add(ogLineBuilder.buildWithEvidence(entry.getOrganelles()));
+    	entryLines.add(ogLineBuilder.buildWithEvidence(entry.getGeneLocations()));
     	if(types.contains(LineType.OC))
     		entryLines.add(ocLineBuilder.buildWithEvidence(entry.getOrganism().getLineage()));
     	if(types.contains(LineType.OX))

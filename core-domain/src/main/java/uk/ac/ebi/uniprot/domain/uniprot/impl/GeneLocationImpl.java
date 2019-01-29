@@ -1,21 +1,21 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
+public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation {
     private GeneEncodingType geneEncodingType;
 
-    private OrganelleImpl() {
+    private GeneLocationImpl() {
         super("", Collections.emptyList());
     }
 
-    public OrganelleImpl(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
+    public GeneLocationImpl(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         super(value, evidences);
         this.geneEncodingType = geneEncodingType;
     }
@@ -57,7 +57,7 @@ public class OrganelleImpl extends EvidencedValueImpl implements Organelle {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        OrganelleImpl other = (OrganelleImpl) obj;
+        GeneLocationImpl other = (GeneLocationImpl) obj;
         if (geneEncodingType != other.geneEncodingType)
             return false;
         return true;

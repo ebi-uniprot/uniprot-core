@@ -2,8 +2,8 @@ package uk.ac.ebi.uniprot.parser.ffwriter.line;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.OrganelleBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.GeneLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
@@ -26,13 +26,13 @@ public class OGLineBuildTest {
         GeneEncodingType type = GeneEncodingType.HYDROGENOSOME;
 
 
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         organelles.add(createOrganelle(type, Collections.emptyList()));
 
         doTestOrganelle(ogLine, organelles);
     }
 
-    private void doTestOrganelle(String ogLine, List<Organelle> organelles) {
+    private void doTestOrganelle(String ogLine, List<GeneLocation> organelles) {
 
         FFLine ffLine = builder.buildWithEvidence(organelles);
         String resultString = ffLine.toString();
@@ -47,9 +47,9 @@ public class OGLineBuildTest {
     public void testOGMitochondrion() {
         String ogLine = "OG   Mitochondrion.";
         GeneEncodingType type = GeneEncodingType.MITOCHONDRION;
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -59,9 +59,9 @@ public class OGLineBuildTest {
     public void testOGNucleomorph() {
         String ogLine = "OG   Nucleomorph.";
         GeneEncodingType type = GeneEncodingType.NUCLEOMORPH;
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -71,9 +71,9 @@ public class OGLineBuildTest {
     public void testOGPlastid() {
         String ogLine = "OG   Plastid.";
         GeneEncodingType type = GeneEncodingType.PLASTID;
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -83,9 +83,9 @@ public class OGLineBuildTest {
     public void testOGPlastidApicoplast() {
         String ogLine = "OG   Plastid; Apicoplast.";
         GeneEncodingType type = GeneEncodingType.APICOPLAST_PLASTID;
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -95,9 +95,9 @@ public class OGLineBuildTest {
     public void testOGPlastidChloroplast() {
         String ogLine = "OG   Plastid; Chloroplast.";
         GeneEncodingType type = GeneEncodingType.CHLOROPLAST_PLASTID;
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -107,9 +107,9 @@ public class OGLineBuildTest {
     public void testOGPlastidCyanelle() {
         String ogLine = "OG   Plastid; Cyanelle.";
         GeneEncodingType type = GeneEncodingType.CYANELLE_PLASTID;
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -119,9 +119,9 @@ public class OGLineBuildTest {
     public void testOGPlastidNonPhotosyntheticPlastid() {
         String ogLine = "OG   Plastid; Non-photosynthetic plastid.";
         GeneEncodingType type = GeneEncodingType.NON_PHOTOSYNTHETIC_PLASTID;
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -130,9 +130,9 @@ public class OGLineBuildTest {
     @Test
     public void testOGPlasmidname() {
         String ogLine = "OG   Plasmid name.";
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
-        Organelle og = createPlasmid("name", evs);
+        GeneLocation og = createPlasmid("name", evs);
         organelles.add(og);
         doTestOrganelle(ogLine, organelles);
     }
@@ -142,11 +142,11 @@ public class OGLineBuildTest {
         String ogLine =
                 "OG   Plastid; Chloroplast.\n" +
                         "OG   Plasmid IncFII R100 (NR1), Plasmid IncW R388, and Plasmid pLMO20.";
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         GeneEncodingType type = GeneEncodingType.CHLOROPLAST_PLASTID;
 
         List<String> evs = new ArrayList<>();
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
         List<String> evs1 = new ArrayList<>();
         organelles.add(createPlasmid("IncFII R100 (NR1)", evs1));
@@ -164,7 +164,7 @@ public class OGLineBuildTest {
     public void testOGPlasmids() {
         String ogLine = "OG   Plasmid R1 (R7268), Plasmid IncF::IncFIA::IncFIB::IncI1-ly,\n" +
                 "OG   Plasmid p013.1IncR, Plasmid pUD16, and Plasmid IncF::IncL/M.";
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs1 = new ArrayList<>();
         organelles.add(createPlasmid("R1 (R7268)", evs1));
         List<String> evs2 = new ArrayList<>();
@@ -191,14 +191,14 @@ public class OGLineBuildTest {
         String ev3 = "ECO:0000303|Ref.6";
         String ev4 = "ECO:0000313|PDB:3OW2";
         String ev5 = "ECO:0000256|HAMAP-Rule:MF_00205";
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
         evs.add(ev1);
         evs.add(ev2);
         evs.add(ev3);
         evs.add(ev4);
         evs.add(ev5);
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
         organelles.add(org);
 
         doTestOrganelle(ogLine, organelles);
@@ -220,7 +220,7 @@ public class OGLineBuildTest {
         String ev3 = "ECO:0000303|Ref.6";
         String ev4 = "ECO:0000313|PDB:3OW2";
         String ev5 = "ECO:0000256|HAMAP-Rule:MF_00205";
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         GeneEncodingType type = GeneEncodingType.CHLOROPLAST_PLASTID;
 
         List<String> evs = new ArrayList<>();
@@ -229,7 +229,7 @@ public class OGLineBuildTest {
         evs.add(ev3);
         evs.add(ev4);
         evs.add(ev5);
-        Organelle org = createOrganelle(type, evs);
+        GeneLocation org = createOrganelle(type, evs);
 
         organelles.add(org);
         List<String> evs1 = new ArrayList<>();
@@ -261,7 +261,7 @@ public class OGLineBuildTest {
         String ev3 = "ECO:0000303|Ref.6";
         String ev4 = "ECO:0000313|PDB:3OW2";
         String ev5 = "ECO:0000256|HAMAP-Rule:MF_00205";
-        List<Organelle> organelles = new ArrayList<>();
+        List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs1 = new ArrayList<>();
         evs1.add(ev1);
         organelles.add(createPlasmid("R1 (R7268)", evs1));
@@ -283,12 +283,12 @@ public class OGLineBuildTest {
         doTestOrganelle(ogLine, organelles);
     }
 
-    private Organelle createPlasmid(String value, List<String> evs) {
-        return new OrganelleBuilder(GeneEncodingType.PLASMID, value, createEvidence(evs)).build();
+    private GeneLocation createPlasmid(String value, List<String> evs) {
+        return new GeneLocationBuilder(GeneEncodingType.PLASMID, value, createEvidence(evs)).build();
     }
 
-    private Organelle createOrganelle(GeneEncodingType type, List<String> evs) {
-        return new OrganelleBuilder(type, "", createEvidence(evs)).build();
+    private GeneLocation createOrganelle(GeneEncodingType type, List<String> evs) {
+        return new GeneLocationBuilder(type, "", createEvidence(evs)).build();
     }
 
     private List<Evidence> createEvidence(List<String> evIds) {

@@ -1,12 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.og;
 
-import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
@@ -14,15 +9,20 @@ import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLines;
 
-public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
-	implements FFLineBuilder<List<Organelle> > {
+import java.util.ArrayList;
+import java.util.List;
+
+import static uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineConstant.*;
+
+public class OGLineBuilder extends FFLineBuilderAbstr< List<GeneLocation> >
+	implements FFLineBuilder<List<GeneLocation> > {
 
 	final private static String SEPARATOR_AND1 ="and ";
 	public OGLineBuilder(){
 		super(LineType.OG);
 	}
 	@Override
-	protected FFLine buildLine(List<Organelle> f, boolean showEvidence) {
+	protected FFLine buildLine(List<GeneLocation> f, boolean showEvidence) {
 		List<String> lls =new ArrayList<>();
 		String[] seps = new String[] {SEPARATOR_COMA, SEPARATOR_AND};	
 		List<String> lls1 = FFLineWrapper.buildLines(buildOrganelles(f, showEvidence, true, false ).toString(),
@@ -35,7 +35,7 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
 		return FFLines.create(lls);
 	}
 	@Override
-	public String buildString(List<Organelle> f) {
+	public String buildString(List<GeneLocation> f) {
 		StringBuilder sb = buildOrganelles(f, false, false, false);
 		StringBuilder plasmid = buildOrganelles(f, false, false, true);
 		if(plasmid.length() >0){
@@ -45,7 +45,7 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
 	}
 	
 	@Override
-	public String buildStringWithEvidence(List<Organelle> f) {
+	public String buildStringWithEvidence(List<GeneLocation> f) {
 		StringBuilder sb = buildOrganelles(f, true, false, false);
 		StringBuilder plasmid = buildOrganelles(f, true, false, true);
 		if(plasmid.length() >0){
@@ -54,9 +54,9 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
 		return sb.toString();
 	}
 	
-	private StringBuilder buildOrganelles(List<Organelle> f, boolean showEvidence, boolean includeFFMarkup, boolean isPlasmid){
-		List<Organelle> organelles =new ArrayList<>();
-		for (Organelle organelle : f) {
+	private StringBuilder buildOrganelles(List<GeneLocation> f, boolean showEvidence, boolean includeFFMarkup, boolean isPlasmid){
+		List<GeneLocation> organelles =new ArrayList<>();
+		for (GeneLocation organelle : f) {
 			if(isPlasmid){
 				if(organelle.getGeneEncodingType() ==GeneEncodingType.PLASMID){
 					organelles.add(organelle);
@@ -74,7 +74,7 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
     	if (includeFFMarkup)
     		og.append(linePrefix);
     	int inc=0;
-    	for (Organelle organelle : organelles) {
+    	for (GeneLocation organelle : organelles) {
     		if((inc>0)&&(inc ==(size-1)))
     			og.append(SEPARATOR_AND1);
     		og.append(toSwissprotString(organelle));
@@ -88,7 +88,7 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<Organelle> >
 		return og;
 	}
 	
-	 private  String toSwissprotString(Organelle organelle) {
+	 private  String toSwissprotString(GeneLocation organelle) {
 
 	        StringBuilder sb = new StringBuilder();
 	        switch (organelle.getGeneEncodingType()) {

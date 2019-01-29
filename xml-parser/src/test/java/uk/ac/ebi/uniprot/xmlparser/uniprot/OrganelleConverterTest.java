@@ -1,17 +1,16 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneLocationType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.Organelle;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneLocationType;
+import static org.junit.Assert.assertEquals;
 
 class OrganelleConverterTest {
 
@@ -20,12 +19,12 @@ class OrganelleConverterTest {
 		  GeneEncodingType geneEncodingType = GeneEncodingType.PLASMID;
 	        String value = "pBgh";
 	        List<Evidence> evidences = createEvidences();
-	        Organelle organelle = UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
+	        GeneLocation organelle = UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
 	        OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
 	        GeneLocationType xml = converter.toXml(organelle);
 	        System.out.println(UniProtXmlTestHelper.toXmlString(xml, GeneLocationType.class, "geneLocation"));
 	        
-	        Organelle converted = converter.fromXml(xml);
+	        GeneLocation converted = converter.fromXml(xml);
 	        assertEquals(organelle, converted);
 	        
 	}
@@ -35,12 +34,12 @@ class OrganelleConverterTest {
 		  GeneEncodingType geneEncodingType = GeneEncodingType.MITOCHONDRION;
 	        String value = "";
 	        List<Evidence> evidences = createEvidences();
-	        Organelle organelle = UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
+	        GeneLocation organelle = UniProtFactory.INSTANCE.createOrganelle(geneEncodingType, value, evidences);
 	        OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
 	        GeneLocationType xml = converter.toXml(organelle);
 	        System.out.println(UniProtXmlTestHelper.toXmlString(xml, GeneLocationType.class, "geneLocation"));
 	        
-	        Organelle converted = converter.fromXml(xml);
+	        GeneLocation converted = converter.fromXml(xml);
 	        assertEquals(organelle, converted);
 	        
 	}
