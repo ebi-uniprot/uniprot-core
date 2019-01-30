@@ -38,6 +38,7 @@ class MSCommentConverterTest {
 
     @Test
     void test() {
+        // TODO: 30/01/19 change commenttype MASS to be a float, not a double
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         Range range = new Range(26, 54);
         Evidence evidence = parseEvidenceLine("ECO:0000269|PubMed:22887697");

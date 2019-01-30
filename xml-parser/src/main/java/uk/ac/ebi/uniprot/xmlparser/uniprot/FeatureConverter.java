@@ -6,8 +6,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequenceHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureIdBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
@@ -52,6 +54,10 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         Range location = locationConverter.fromXml(xmlObj.getLocation());
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         String ftid = xmlObj.getId();
+        FeatureId featureId = null;
+        if (!Strings.isNullOrEmpty(ftid)) {
+            featureId = new FeatureIdBuilder(ftid).build();
+        }
         AlternativeSequence altSeq = null;
         if (!Strings.isNullOrEmpty(xmlObj.getOriginal())) {
             altSeq = new AlternativeSequenceBuilder()
@@ -68,8 +74,8 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
+                .featureId(featureId)
                 .description(description)
-                .featureId(ftid)
                 .alternativeSequence(altSeq)
                 .evidences(evidences)
                 .build();

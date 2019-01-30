@@ -1,13 +1,16 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
+import com.google.common.base.Strings;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureIdBuilder;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -397,11 +400,15 @@ class FeatureConverterTest {
 
     private Feature createFeature(FeatureType type, int start, int end, String description, String ftid,
                                   AlternativeSequence altSeq, List<Evidence> evidences) {
+        FeatureId featureId = null;
+        if(!Strings.isNullOrEmpty(ftid)) {
+            featureId = new FeatureIdBuilder(ftid).build();
+        }
         return new FeatureBuilder()
                 .type(type)
                 .location(new Range(start, end))
                 .description(description)
-                .featureId(ftid)
+                .featureId(featureId)
                 .alternativeSequence(altSeq)
                 .evidences(evidences)
                 .build();
