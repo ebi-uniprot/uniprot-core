@@ -30,14 +30,18 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
     @Override
     public Evidence fromXml(EvidenceType xmlObj) {
         EvidenceCode evCode = EvidenceCode.codeOf(xmlObj.getType());
-        DBCrossReference<uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceType> xref = null;
+
+        EvidenceBuilder evidenceBuilder = new EvidenceBuilder()
+                .evidenceCode(evCode);
         if (xmlObj.getSource() != null) {
-            xref = xrefConverter.fromXml(xmlObj.getSource());
+            DBCrossReference<uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceType> xref =
+                    xrefConverter.fromXml(xmlObj.getSource());
+            evidenceBuilder
+                    .databaseId(xref.getId())
+                    .databaseName(xref.getDatabaseType().getName());
         }
-        return new EvidenceBuilder()
-                .evidenceCode(evCode)
-                .databaseId(xref.getId())
-                .databaseName(xref.getDatabaseType().getName())
+
+        return evidenceBuilder
                 .build();
     }
 
@@ -72,7 +76,7 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
             if (xmlObj.getDbReference() != null) {
                 return new DBCrossReferenceBuilder<uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceType>()
                         .databaseType(new uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceType(xmlObj.getDbReference()
-                                                                                                         .getType()))
+                                                                                                          .getType()))
                         .id(xmlObj.getDbReference().getId())
                         .build();
             } else {
