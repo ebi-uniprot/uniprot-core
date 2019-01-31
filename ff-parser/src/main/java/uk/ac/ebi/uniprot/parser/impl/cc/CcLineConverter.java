@@ -430,8 +430,8 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         Float mass = cObj.mass;
         Float massError = cObj.massError;
         builder.method(MassSpectrometryMethod.toType(cObj.method))
-                .molWeight(mass.doubleValue())
-                .molWeightError(massError.doubleValue());
+                .molWeight(mass)
+                .molWeightError(massError);
 
         if (!Strings.isNullOrEmpty(cObj.note)) {
             builder.note(cObj.note);

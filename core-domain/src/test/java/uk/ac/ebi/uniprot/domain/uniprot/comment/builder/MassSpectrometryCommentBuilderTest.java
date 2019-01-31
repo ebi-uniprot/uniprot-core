@@ -47,12 +47,12 @@ public class MassSpectrometryCommentBuilderTest {
         MassSpectrometryComment comment =
 
                 builder.method(MassSpectrometryMethod.ELECTROSPRAY)
-                        .molWeight(0.234)
+                        .molWeight(0.234f)
                         .build();
 
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
 
-        assertEquals(0.234, comment.getMolWeight(), Float.MIN_VALUE);
+        assertEquals(0.234f, comment.getMolWeight(), Float.MIN_VALUE);
         assertFalse(comment.getMolWeightError() != null);
         assertFalse(comment.getNote() != null);
 
@@ -67,14 +67,14 @@ public class MassSpectrometryCommentBuilderTest {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
 
         MassSpectrometryComment comment = builder.method(MassSpectrometryMethod.ELECTROSPRAY)
-                .molWeight(0.234)
-                .molWeightError(0.123)
+                .molWeight(0.234f)
+                .molWeightError(0.123f)
                 .build();
 
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
 
-        assertEquals(0.234, comment.getMolWeight(), Float.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError(), Double.MIN_VALUE);
+        assertEquals(0.234f, comment.getMolWeight(), Float.MIN_VALUE);
+        assertEquals(0.123f, comment.getMolWeightError(), Double.MIN_VALUE);
         assertFalse(comment.getNote() != null);
 
         assertEquals(0, comment.getEvidences().size());
@@ -88,13 +88,13 @@ public class MassSpectrometryCommentBuilderTest {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
         MassSpectrometryComment comment =
                 builder.method(MassSpectrometryMethod.ELECTROSPRAY)
-                        .molWeight(0.234)
-                        .molWeightError(0.123)
+                        .molWeight(0.234f)
+                        .molWeightError(0.123f)
                         .note("someNote")
                         .build();
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
-        assertEquals(0.234, comment.getMolWeight(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError(), Double.MIN_VALUE);
+        assertEquals(0.234f, comment.getMolWeight(), Double.MIN_VALUE);
+        assertEquals(0.123f, comment.getMolWeightError(), Double.MIN_VALUE);
         assertEquals("someNote", comment.getNote());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
@@ -111,15 +111,15 @@ public class MassSpectrometryCommentBuilderTest {
         MassSpectrometryComment comment =
 
                 builder.method(MassSpectrometryMethod.ELECTROSPRAY)
-                        .molWeight(0.234)
-                        .molWeightError(0.123)
+                        .molWeight(0.234f)
+                        .molWeightError(0.123f)
                         .note("someNote")
                         .ranges(ranges)
                         .build();
 
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
-        assertEquals(0.234, comment.getMolWeight(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError(), Double.MIN_VALUE);
+        assertEquals(0.234f, comment.getMolWeight(), Double.MIN_VALUE);
+        assertEquals(0.123f, comment.getMolWeightError(), Double.MIN_VALUE);
         assertEquals("someNote", comment.getNote());
         assertEquals(0, comment.getEvidences().size());
         assertEquals(ranges, comment.getRanges());
@@ -137,16 +137,16 @@ public class MassSpectrometryCommentBuilderTest {
         MassSpectrometryComment comment =
 
                 builder.method(MassSpectrometryMethod.ELECTROSPRAY)
-                        .molWeight(0.234)
-                        .molWeightError(0.123)
+                        .molWeight(0.234f)
+                        .molWeightError(0.123f)
                         .note("someNote")
                         .ranges(ranges)
                         .evidences(evidences)
                         .build();
 
         assertEquals(MassSpectrometryMethod.ELECTROSPRAY, comment.getMethod());
-        assertEquals(0.234, comment.getMolWeight(), Double.MIN_VALUE);
-        assertEquals(0.123, comment.getMolWeightError(), Double.MIN_VALUE);
+        assertEquals(0.234f, comment.getMolWeight(), Double.MIN_VALUE);
+        assertEquals(0.123f, comment.getMolWeightError(), Double.MIN_VALUE);
         assertEquals("someNote", comment.getNote());
         assertEquals(evidences, comment.getEvidences());
         assertEquals(ranges, comment.getRanges());

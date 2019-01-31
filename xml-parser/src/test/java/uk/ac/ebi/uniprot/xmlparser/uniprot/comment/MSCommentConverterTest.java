@@ -46,7 +46,7 @@ class MSCommentConverterTest {
         MassSpectrometryRange msRange = createMassSpectrometryRange(range, isoformId);
         ranges.add(msRange);
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
-        MassSpectrometryComment comment = builder.molWeight(3042.79)
+        MassSpectrometryComment comment = builder.molWeight(3042.79f)
                 .method(MassSpectrometryMethod.ELECTROSPRAY)
                 .ranges(ranges)
                 .note("Monoisotopic mass.")
@@ -69,8 +69,8 @@ class MSCommentConverterTest {
         MassSpectrometryRange msRange = createMassSpectrometryRange(range, isoformId);
         ranges.add(msRange);
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
-        MassSpectrometryComment comment = builder.molWeight(3042.79)
-                .molWeightError(0.023)
+        MassSpectrometryComment comment = builder.molWeight(3042.79f)
+                .molWeightError(0.023f)
                 .method(MassSpectrometryMethod.ELECTROSPRAY)
                 .ranges(ranges)
                 .note("Monoisotopic mass.")
@@ -90,5 +90,4 @@ class MSCommentConverterTest {
                 .isoformId(isoformId)
                 .build();
     }
-
 }

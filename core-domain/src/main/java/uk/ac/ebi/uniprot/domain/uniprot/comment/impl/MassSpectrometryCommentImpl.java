@@ -13,8 +13,8 @@ import java.util.Objects;
 
 public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
     private MassSpectrometryMethod method;
-    private Double molWeight;
-    private Double molWeightError;
+    private Float molWeight;
+    private Float molWeightError;
     private String note;
     private List<MassSpectrometryRange> ranges;
     private List<Evidence> evidences;
@@ -45,12 +45,12 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public Double getMolWeightError() {
+    public Float getMolWeightError() {
         return molWeightError;
     }
 
     @Override
-    public Double getMolWeight() {
+    public Float getMolWeight() {
         return molWeight;
     }
 
