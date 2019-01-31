@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.Position;
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.impl.PairImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequenceHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;

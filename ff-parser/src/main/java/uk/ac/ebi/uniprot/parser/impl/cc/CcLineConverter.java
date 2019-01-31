@@ -14,10 +14,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidencedValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.exception.ParseDiseaseException;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLines;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLines;
 
 public class CcLineConverter extends EvidenceCollector implements Converter<CcLineObject, List<Comment>> {
     // private final DefaultCommentFactory factory = DefaultCommentFactory

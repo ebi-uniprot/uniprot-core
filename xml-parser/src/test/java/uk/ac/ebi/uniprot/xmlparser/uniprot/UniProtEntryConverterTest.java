@@ -23,9 +23,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinDescriptionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
@@ -46,7 +46,7 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLine;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.*;
 
 class UniProtEntryConverterTest {

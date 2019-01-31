@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.parser.impl.de;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.Converter;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceConverterHelper;

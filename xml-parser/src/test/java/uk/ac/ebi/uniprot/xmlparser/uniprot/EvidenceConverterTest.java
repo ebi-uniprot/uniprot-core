@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidenceType;
 
 import static org.junit.Assert.*;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLine;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 public class EvidenceConverterTest {
 	private final EvidenceConverter converter = new EvidenceConverter();

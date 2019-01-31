@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 

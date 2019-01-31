@@ -4,7 +4,7 @@ import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

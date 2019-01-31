@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
 
 import java.util.ArrayList;

@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.List;

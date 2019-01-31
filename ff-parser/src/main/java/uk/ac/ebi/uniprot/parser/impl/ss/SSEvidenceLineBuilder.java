@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.ss;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineBuilderAbstr;

@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.parser.transformer;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ac.ebi.uniprot.parser.impl.cc.CcLineTransformer;
 
 import java.util.List;

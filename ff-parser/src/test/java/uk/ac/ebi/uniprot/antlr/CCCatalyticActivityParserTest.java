@@ -4,7 +4,7 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.EvidenceInfo;

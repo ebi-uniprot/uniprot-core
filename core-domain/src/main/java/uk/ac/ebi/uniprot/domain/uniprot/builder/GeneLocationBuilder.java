@@ -2,8 +2,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
 import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneLocationImpl;
 
 import java.util.List;

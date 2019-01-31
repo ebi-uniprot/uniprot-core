@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ReferenceCommentImpl;
 
 /**

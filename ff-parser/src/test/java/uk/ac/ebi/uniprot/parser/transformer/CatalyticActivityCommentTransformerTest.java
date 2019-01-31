@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 import java.util.stream.Collectors;

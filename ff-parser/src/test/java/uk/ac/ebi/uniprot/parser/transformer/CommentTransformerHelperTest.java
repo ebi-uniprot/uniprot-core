@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.parser.transformer;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLine;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 public class CommentTransformerHelperTest {
 

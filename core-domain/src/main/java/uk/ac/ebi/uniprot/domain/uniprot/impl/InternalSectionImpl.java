@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;

@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 import uk.ac.ebi.uniprot.domain.Builder2;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;

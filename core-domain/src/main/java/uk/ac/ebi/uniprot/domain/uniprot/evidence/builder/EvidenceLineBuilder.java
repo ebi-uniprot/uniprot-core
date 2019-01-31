@@ -1,8 +1,8 @@
-package uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder;
+package uk.ac.ebi.uniprot.domain.uniprot.evidence.builder;
 
 import uk.ac.ebi.uniprot.domain.Builder2;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceLineImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceLineImpl;
 
 import java.time.LocalDate;
 

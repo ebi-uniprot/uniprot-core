@@ -1,8 +1,8 @@
-package uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder;
+package uk.ac.ebi.uniprot.domain.uniprot.evidence.builder;
 
 import uk.ac.ebi.uniprot.domain.Builder2;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 import java.util.ArrayList;
 import java.util.List;

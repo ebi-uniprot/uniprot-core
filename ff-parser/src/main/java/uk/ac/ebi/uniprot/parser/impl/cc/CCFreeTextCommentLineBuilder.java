@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.parser.impl.cc;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;

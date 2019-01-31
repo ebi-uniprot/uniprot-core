@@ -1,20 +1,17 @@
 package uk.ac.ebi.uniprot.parser.converter;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.parser.exception.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.parser.impl.dr.DrLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.dr.DrLineObject;
 import uk.ac.ebi.uniprot.parser.impl.dr.UniProtDrObjects;
+
+import java.util.List;
+
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.*;
 
 public class DrLineConverterTest {
 	final private DrLineConverter converter = new DrLineConverter();

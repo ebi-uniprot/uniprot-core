@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.parser.impl.cc;
 
 import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.HasEvidences;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;

@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SubcellularLocationType;

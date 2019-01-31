@@ -8,12 +8,12 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceHelper.parseEvidenceLine;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 /**
  * Created 30/01/19

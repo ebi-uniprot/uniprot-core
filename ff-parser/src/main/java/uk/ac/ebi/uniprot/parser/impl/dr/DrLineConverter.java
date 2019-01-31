@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.parser.impl.dr;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalLineBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.parser.Converter;

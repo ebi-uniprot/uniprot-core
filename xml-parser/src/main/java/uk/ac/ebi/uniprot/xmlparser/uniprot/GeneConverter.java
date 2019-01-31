@@ -2,8 +2,8 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
 import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.HasEvidences;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneNameType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

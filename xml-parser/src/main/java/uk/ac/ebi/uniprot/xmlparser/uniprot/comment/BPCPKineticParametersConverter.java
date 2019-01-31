@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.KineticParametersBuilder
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MaximumVelocityBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MichaelisConstantBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType.Kinetics;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

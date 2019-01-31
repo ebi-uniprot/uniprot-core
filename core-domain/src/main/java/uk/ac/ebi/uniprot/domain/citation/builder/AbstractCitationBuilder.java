@@ -56,11 +56,6 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return getThis();
     }
 
-//    public B citationXrefs(CitationXrefs xrefs) {
-//        this.xrefs = xrefs;
-//        return getThis();
-//    }
-
     public B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
         this.xrefs = citationXrefs;
         return getThis();

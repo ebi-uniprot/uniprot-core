@@ -1,16 +1,16 @@
-package uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.evidence.impl;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidenceBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidenceImpl.REFERENCE;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceImpl.REFERENCE;
 
 /**
  * Created 22/01/19

@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PhysiologicalReactionType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;

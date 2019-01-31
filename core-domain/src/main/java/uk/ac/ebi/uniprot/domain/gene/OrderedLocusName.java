@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.gene;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 /**
  * <h3>About This Data Structure</h3>

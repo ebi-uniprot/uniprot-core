@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MaximumVelocityBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.List;
