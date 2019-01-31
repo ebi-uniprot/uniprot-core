@@ -166,7 +166,6 @@ DR   GenomeRNAi; 157; -.
 DR   PRO; PR:P35626; -.
 DR   Proteomes; UP000005640; Chromosome 22.
 DR   Bgee; ENSG00000100077; Expressed in 200 organ(s), highest expression level in Brodmann (1909) area 23.
-DR   CleanEx; HS_ADRBK2; -.
 DR   ExpressionAtlas; P35626; baseline and differential.
 DR   Genevisible; P35626; HS.
 DR   GO; GO:0005829; C:cytosol; TAS:Reactome.

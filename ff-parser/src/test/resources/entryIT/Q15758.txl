@@ -423,7 +423,6 @@ DR   GenomeRNAi; 6510; -.
 DR   PRO; PR:Q15758; -.
 DR   Proteomes; UP000005640; Chromosome 19.
 DR   Bgee; ENSG00000105281; Expressed in 220 organ(s), highest expression level in urinary bladder.
-DR   CleanEx; HS_SLC1A5; -.
 DR   ExpressionAtlas; Q15758; baseline and differential.
 DR   Genevisible; Q15758; HS.
 DR   GO; GO:0070062; C:extracellular exosome; HDA:UniProtKB.

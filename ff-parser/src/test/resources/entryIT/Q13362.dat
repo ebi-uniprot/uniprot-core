@@ -435,7 +435,6 @@ DR   PMAP-CutDB; Q13362; -.
 DR   PRO; PR:Q13362; -.
 DR   Proteomes; UP000005640; Chromosome 14.
 DR   Bgee; ENSG00000078304; Expressed in 232 organ(s), highest expression level in sperm.
-DR   CleanEx; HS_PPP2R5C; -.
 DR   ExpressionAtlas; Q13362; baseline and differential.
 DR   Genevisible; Q13362; HS.
 DR   GO; GO:0000775; C:chromosome, centromeric region; IDA:UniProtKB.

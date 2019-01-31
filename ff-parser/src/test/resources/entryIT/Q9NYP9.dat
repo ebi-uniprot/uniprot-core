@@ -210,7 +210,6 @@ DR   GenomeRNAi; 54069; -.
 DR   PRO; PR:Q9NYP9; -.
 DR   Proteomes; UP000005640; Chromosome 21.
 DR   Bgee; Q9NYP9; -.
-DR   CleanEx; HS_C21orf45; -.
 DR   GO; GO:0000775; C:chromosome, centromeric region; IEA:UniProtKB-SubCell.
 DR   GO; GO:0005737; C:cytoplasm; IDA:HPA.
 DR   GO; GO:0005654; C:nucleoplasm; IDA:HPA.

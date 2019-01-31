@@ -13,6 +13,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+// TODO: 31/01/19 this class has been disable because the entryIT/sp.dat does not exist and therefore fails
 @Disabled
 public class NewModelIT {
 	  private static List<String> savedAccessions;
