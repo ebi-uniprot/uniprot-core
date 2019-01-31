@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
@@ -10,7 +10,7 @@ import java.util.List;
 
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 
-public class ProteinSectionBuilder implements Builder2<ProteinSectionBuilder, ProteinSection> {
+public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, ProteinSection> {
 
     private ProteinName recommendedName;
     private List<ProteinName> alternativeNames = new ArrayList<>();

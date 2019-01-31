@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
@@ -15,7 +15,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue> implements Builder2<B, E> {
+public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue> implements Builder<B, E> {
     protected String value;
     protected List<Evidence> evidences = new ArrayList<>();
 

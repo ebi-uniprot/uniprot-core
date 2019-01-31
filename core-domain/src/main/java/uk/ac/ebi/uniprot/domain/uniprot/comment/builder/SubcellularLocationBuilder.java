@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationImpl;
@@ -10,7 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationImpl;
  *
  * @author Edd
  */
-public final class SubcellularLocationBuilder implements Builder2<SubcellularLocationBuilder, SubcellularLocation> {
+public final class SubcellularLocationBuilder implements Builder<SubcellularLocationBuilder, SubcellularLocation> {
     private SubcellularLocationValue location;
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;

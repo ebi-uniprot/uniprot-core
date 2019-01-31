@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Value;
 
 /**
@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.Value;
  *
  * @author Edd
  */
-public abstract class AbstractValueBuilder<B extends AbstractValueBuilder<B, T>, T extends Value> implements Builder2<B, T> {
+public abstract class AbstractValueBuilder<B extends AbstractValueBuilder<B, T>, T extends Value> implements Builder<B, T> {
     protected String value;
 
     public AbstractValueBuilder(String value) {

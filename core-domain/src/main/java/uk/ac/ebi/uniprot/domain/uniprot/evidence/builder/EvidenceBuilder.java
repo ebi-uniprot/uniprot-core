@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
@@ -12,7 +12,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceImpl;
  *
  * @author Edd
  */
-public class EvidenceBuilder implements Builder2<EvidenceBuilder, Evidence> {
+public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
     private EvidenceCode evidenceCode;
     private String databaseName;
     private String databaseId;

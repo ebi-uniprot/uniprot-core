@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MaximumVelocityImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -16,7 +16,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class MaximumVelocityBuilder implements Builder2<MaximumVelocityBuilder, MaximumVelocity> {
+public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, MaximumVelocity> {
     private double velocity;
     private String unit;
     private String enzyme;

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
@@ -10,7 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
  *
  * @author Edd
  */
-public class FlagBuilder implements Builder2<FlagBuilder, Flag> {
+public class FlagBuilder implements Builder<FlagBuilder, Flag> {
     private FlagType flagType;
 
     @Override

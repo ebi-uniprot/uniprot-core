@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
@@ -46,7 +46,7 @@ public class UniProtEntryBuilder {
         InactiveEntryBuilder inactive();
     }
 
-    public interface ActiveEntryBuilder extends Builder2<EntryBuilder, UniProtEntry> {
+    public interface ActiveEntryBuilder extends Builder<EntryBuilder, UniProtEntry> {
         ActiveEntryBuilder entryType(UniProtEntryType entryType);
 
         ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession);
@@ -98,7 +98,7 @@ public class UniProtEntryBuilder {
         ActiveEntryBuilder internalSection(InternalSection internalSection);
     }
 
-    public interface InactiveEntryBuilder extends Builder2<EntryBuilder, UniProtEntry> {
+    public interface InactiveEntryBuilder extends Builder<EntryBuilder, UniProtEntry> {
         InactiveEntryBuilder inactiveReason(EntryInactiveReason inactiveReason);
     }
 

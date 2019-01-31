@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
@@ -16,7 +16,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
  *
  * @author lgonzales
  */
-public class ProteinNameBuilder implements Builder2<ProteinNameBuilder, ProteinName> {
+public class ProteinNameBuilder implements Builder<ProteinNameBuilder, ProteinName> {
 
     private Name fullName;
     private List<Name> shortNames = new ArrayList<>();

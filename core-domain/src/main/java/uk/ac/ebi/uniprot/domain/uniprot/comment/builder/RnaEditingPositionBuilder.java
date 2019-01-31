@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -16,7 +16,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class RnaEditingPositionBuilder implements Builder2<RnaEditingPositionBuilder, RnaEdPosition> {
+public class RnaEditingPositionBuilder implements Builder<RnaEditingPositionBuilder, RnaEdPosition> {
     private String position;
     private List<Evidence> evidences = new ArrayList<>();
 

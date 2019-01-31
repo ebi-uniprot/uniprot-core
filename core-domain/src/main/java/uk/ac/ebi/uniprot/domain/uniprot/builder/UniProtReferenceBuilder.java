@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
@@ -18,7 +18,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class UniProtReferenceBuilder implements Builder2<UniProtReferenceBuilder, UniProtReference> {
+public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder, UniProtReference> {
     private Citation citation;
     private List<String> referencePositions = new ArrayList<>();
     private List<ReferenceComment> referenceComments = new ArrayList<>();

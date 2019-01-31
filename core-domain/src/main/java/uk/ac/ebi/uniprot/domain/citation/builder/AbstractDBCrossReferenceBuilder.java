@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
@@ -19,7 +19,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
         B extends AbstractDBCrossReferenceBuilder<B, T, D>,
         T extends DatabaseType,
         D extends DBCrossReference<T>>
-        implements Builder2<B, D> {
+        implements Builder<B, D> {
     protected T databaseType;
     protected String id;
     protected List<Property> properties = new ArrayList<>();

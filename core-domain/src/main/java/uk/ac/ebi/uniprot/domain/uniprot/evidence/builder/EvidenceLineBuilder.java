@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceLineImpl;
 
@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author Edd
  */
-public class EvidenceLineBuilder implements Builder2<EvidenceLineBuilder, EvidenceLine> {
+public class EvidenceLineBuilder implements Builder<EvidenceLineBuilder, EvidenceLine> {
     private String evidence;
     private LocalDate createDate;
     private String curator;

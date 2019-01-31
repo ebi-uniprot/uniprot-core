@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -20,7 +20,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class FeatureBuilder implements Builder2<FeatureBuilder, Feature> {
+public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
     private FeatureType type;
     private Range location;
     private FeatureDescription description;

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
@@ -18,7 +18,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public final class CofactorBuilder implements Builder2<CofactorBuilder, Cofactor> {
+public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor> {
     private String name;
     private List<Evidence> evidences = new ArrayList<>();
     private DBCrossReference<CofactorReferenceType> cofactorReference;
