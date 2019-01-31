@@ -13,7 +13,9 @@ DisProt 1
 ProteinModelPortal 1
 SMR 1
 BioGrid 1
+ComplexPortal 1
 DIP 1
+ELM 1
 IntAct 1
 MINT 1
 STRING 1
@@ -32,6 +34,7 @@ mycoCLAP 1
 PeroxiBase 1
 REBASE 1
 TCDB 1
+GlyConnect 1
 DEPOD 1
 iPTMnet 1
 PhosphoSitePlus 1
@@ -53,6 +56,7 @@ PaxDb 1
 PeptideAtlas 1
 PRIDE 1
 ProMEX 1
+ProteomicsDB 1
 TopDownProteomics 1
 DNASU 1
 Ensembl 1
