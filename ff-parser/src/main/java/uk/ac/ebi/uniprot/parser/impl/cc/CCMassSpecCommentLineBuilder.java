@@ -38,7 +38,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
         sb.append(MASS);
         sb.append(getSigDig(comment.getMolWeight()));
         if ((comment.getMolWeightError() != null) &&
-                Math.abs(comment.getMolWeightError()) > 10 * Double.MIN_VALUE) {
+                Math.abs(comment.getMolWeightError()) > 10 * Float.MIN_VALUE) {
             sb.append(SEPARATOR_SEMICOLON);
             sb.append(MASS_ERROR);
 
@@ -111,7 +111,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
         return lines;
     }
 
-    public static String getSigDig(Double number) {
+    public static String getSigDig(Float number) {
         String temp = number.toString();
         if (temp.indexOf(".") > 0) {
             while (temp.endsWith("0")) {

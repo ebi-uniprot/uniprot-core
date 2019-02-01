@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 

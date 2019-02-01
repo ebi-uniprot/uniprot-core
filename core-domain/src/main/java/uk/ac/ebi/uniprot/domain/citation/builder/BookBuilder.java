@@ -6,6 +6,7 @@ import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.BookImpl;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,20 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
     }
 
     public BookBuilder editors(List<String> editors) {
-        this.editors = editors.stream().map(AuthorImpl::new).collect(Collectors.toList());
+        List<Author> newEditors = new ArrayList<>();
+        if (editors != null) {
+            newEditors = editors.stream().map(AuthorImpl::new).collect(Collectors.toList());
+        }
+        this.editors = newEditors;
+        return this;
+    }
+
+    public BookBuilder editors(Collection<Author> editors) {
+        List<Author> newEditors = new ArrayList<>();
+        if (editors != null) {
+            newEditors.addAll(editors);
+        }
+        this.editors = newEditors;
         return this;
     }
 

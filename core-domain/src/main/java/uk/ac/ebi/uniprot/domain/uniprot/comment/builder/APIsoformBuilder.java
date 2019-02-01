@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Value;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
@@ -17,7 +17,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class APIsoformBuilder implements Builder2<APIsoformBuilder, APIsoform> {
+public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     private IsoformName name;
     private List<IsoformName> synonyms = new ArrayList<>();
     private List<IsoformId> isoformIds = new ArrayList<>();

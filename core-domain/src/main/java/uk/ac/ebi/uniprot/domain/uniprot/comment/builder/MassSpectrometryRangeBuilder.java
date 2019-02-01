@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryRangeImpl;
@@ -10,7 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryRangeImpl;
  *
  * @author Edd
  */
-public final class MassSpectrometryRangeBuilder implements Builder2<MassSpectrometryRangeBuilder, MassSpectrometryRange> {
+public final class MassSpectrometryRangeBuilder implements Builder<MassSpectrometryRangeBuilder, MassSpectrometryRange> {
     private Range range;
     private String isoformId;
 

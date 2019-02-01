@@ -13,7 +13,10 @@ DisProt 1
 ProteinModelPortal 1
 SMR 1
 BioGrid 1
+ComplexPortal 1
+CORUM 1
 DIP 1
+ELM 1
 IntAct 1
 MINT 1
 STRING 1
@@ -27,12 +30,16 @@ CAZy 1
 ESTHER 1
 IMGT_GENE-DB 1
 MEROPS 1
+MoonDB 1
 MoonProt 1
 mycoCLAP 1
 PeroxiBase 1
 REBASE 1
 TCDB 1
+UniLectin 1
+CarbonylDB 1
 DEPOD 1
+GlyConnect 1
 iPTMnet 1
 PhosphoSitePlus 1
 SwissPalm 1
@@ -48,11 +55,13 @@ SWISS-2DPAGE 1
 UCD-2DPAGE 1
 World-2DPAGE 1
 EPD 1
+jPOST 1
 MaxQB 1
 PaxDb 1
 PeptideAtlas 1
 PRIDE 1
 ProMEX 1
+ProteomicsDB 1
 TopDownProteomics 1
 DNASU 1
 Ensembl 1
@@ -102,6 +111,7 @@ RGD 2
 SGD 2
 TAIR 1
 TubercuList 1
+VGNC 2
 WormBase 1
 Xenbase 2
 ZFIN 2
@@ -130,7 +140,6 @@ PMAP-CutDB 1
 PRO 1
 Proteomes 1
 Bgee 1
-CleanEx 1
 CollecTF 1
 ExpressionAtlas 1
 Genevisible 1

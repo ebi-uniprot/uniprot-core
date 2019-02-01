@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
-        implements Builder2<B, T> {
+        implements Builder<B, T> {
 
     private String scientificName = "";
     private String commonName = "";

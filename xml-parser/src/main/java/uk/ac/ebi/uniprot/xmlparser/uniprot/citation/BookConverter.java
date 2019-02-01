@@ -1,10 +1,6 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Book;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
@@ -13,6 +9,9 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.NameListType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PersonType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class BookConverter implements Converter<CitationType, Book> {
 
@@ -30,7 +29,7 @@ public class BookConverter implements Converter<CitationType, Book> {
 
 	@Override
 	public Book fromXml(CitationType xmlObj) {
-		BookBuilder builder = BookBuilder.newInstance();
+		BookBuilder builder = new BookBuilder();
 		CitationConverterHelper.updateFromXmlCitaiton(xmlObj, builder);
 		builder.address(xmlObj.getCity());
 		builder.bookName(xmlObj.getName());

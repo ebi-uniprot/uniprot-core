@@ -1,18 +1,16 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.KeywordType;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.KeywordType;
+import static org.junit.Assert.assertEquals;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceHelper.createEvidences;
 
 class KeywordConverterTest {
 	  @Test
@@ -22,7 +20,7 @@ class KeywordConverterTest {
 	        List<Evidence> evidences = createEvidences();
 	        EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper(evidences);
 	        KeywordConverter converter = new KeywordConverter(evRefMapper);
-	        Keyword keyword = UniProtFactory.INSTANCE.createKeyword(id, val, evidences);
+	        Keyword keyword = new KeywordBuilder(id, val, evidences).build();
 	        KeywordType xmlObj = converter.toXml(keyword);
 	        
 	        assertEquals(id, xmlObj.getId());
@@ -32,16 +30,5 @@ class KeywordConverterTest {
 	        
 	        Keyword converted = converter.fromXml(xmlObj);
 	        assertEquals(keyword, converted);
-	    }
-	  
-	    private List<Evidence> createEvidences(){
-	        List<Evidence> evidences = new ArrayList<>();
-	        evidences.add(UniProtFactory.INSTANCE.createEvidence(
-	                EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
-	        evidences.add(UniProtFactory.INSTANCE.createEvidence(
-	                EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-	       
-	        
-	        return evidences;
 	    }
 }

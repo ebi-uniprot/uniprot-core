@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
@@ -18,7 +18,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public final class KineticParametersBuilder implements Builder2<KineticParametersBuilder, KineticParameters> {
+public final class KineticParametersBuilder implements Builder<KineticParametersBuilder, KineticParameters> {
     private List<MaximumVelocity> maximumVelocities = new ArrayList<>();
     private List<MichaelisConstant> michaelisConstants = new ArrayList<>();
     private Note note;

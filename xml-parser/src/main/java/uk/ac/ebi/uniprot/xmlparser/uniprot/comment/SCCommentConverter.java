@@ -1,11 +1,6 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
@@ -15,6 +10,10 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.LocationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SCCommentConverter implements CommentConverter< SequenceCautionComment> {
 
@@ -39,7 +38,7 @@ public class SCCommentConverter implements CommentConverter< SequenceCautionComm
 		if (xmlObj == null)
 			return null;
 
-		SequenceCautionCommentBuilder builder = SequenceCautionCommentBuilder.newInstance();
+		SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
 		CommentType.Conflict conflict = xmlObj.getConflict();
 		SequenceCautionType scType = SequenceCautionType.UNKNOWN;
 		if (conflict != null) {

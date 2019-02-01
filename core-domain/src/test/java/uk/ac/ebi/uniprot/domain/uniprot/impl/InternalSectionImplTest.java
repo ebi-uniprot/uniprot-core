@@ -9,8 +9,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalLineBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.SourceLineBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidenceLineBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceLineBuilder;
 
 import java.time.LocalDate;
 import java.time.Month;

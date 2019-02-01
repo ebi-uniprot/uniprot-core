@@ -235,7 +235,6 @@ DR   ChiTaRS; Vegfa; mouse.
 DR   PRO; PR:Q00731; -.
 DR   Proteomes; UP000000589; Chromosome 17.
 DR   Bgee; ENSMUSG00000023951; Expressed in 307 organ(s), highest expression level in lung.
-DR   CleanEx; MM_VEGFA; -.
 DR   ExpressionAtlas; Q00731; baseline and differential.
 DR   Genevisible; Q00731; MM.
 DR   GO; GO:0005604; C:basement membrane; ISO:MGI.

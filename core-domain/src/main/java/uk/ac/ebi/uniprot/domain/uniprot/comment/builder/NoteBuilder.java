@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.NoteImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 import java.util.List;
 

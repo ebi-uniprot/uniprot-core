@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.parser.converter;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 import uk.ac.ebi.uniprot.parser.impl.ss.SsLineConverter;
 import uk.ac.ebi.uniprot.parser.impl.ss.SsLineObject;
 

@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AbsorptionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author Edd
  */
-public class AbsorptionBuilder implements Builder2<AbsorptionBuilder, Absorption> {
+public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption> {
     private int max;
     private boolean approximate;
     private Note note;

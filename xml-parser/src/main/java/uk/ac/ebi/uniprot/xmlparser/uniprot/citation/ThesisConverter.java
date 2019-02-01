@@ -20,7 +20,7 @@ public class ThesisConverter implements Converter<CitationType, Thesis> {
 
 	@Override
 	public Thesis fromXml(CitationType xmlObj) {
-		ThesisBuilder builder = ThesisBuilder.newInstance();
+		ThesisBuilder builder = new ThesisBuilder();
 		CitationConverterHelper.updateFromXmlCitaiton(xmlObj, builder);
 		builder.institute(xmlObj.getInstitute());
 		builder.address(xmlObj.getCountry());

@@ -56,11 +56,6 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return getThis();
     }
 
-//    public B citationXrefs(CitationXrefs xrefs) {
-//        this.xrefs = xrefs;
-//        return getThis();
-//    }
-
     public B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
         this.xrefs = citationXrefs;
         return getThis();
@@ -73,6 +68,11 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
 
     public B publicationDate(String publicationDate) {
         this.publicationDate = new PublicationDateImpl(publicationDate);
+        return getThis();
+    }
+
+    public B publicationDate(PublicationDate publicationDate) {
+        this.publicationDate = publicationDate;
         return getThis();
     }
 

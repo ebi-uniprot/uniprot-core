@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 
 public class NameBuilder extends AbstractEvidencedValueBuilder<NameBuilder, Name> {
 

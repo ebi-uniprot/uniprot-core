@@ -4,7 +4,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +14,8 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
     private MassSpectrometryMethod method;
-    private Double molWeight;
-    private Double molWeightError;
+    private Float molWeight;
+    private Float molWeightError;
     private String note;
     private List<MassSpectrometryRange> ranges = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
@@ -42,13 +42,13 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
         return this;
     }
 
-    public MassSpectrometryCommentBuilder molWeight(Double molWeight) {
+    public MassSpectrometryCommentBuilder molWeight(Float molWeight) {
         this.molWeight = molWeight;
         return this;
     }
 
-    public MassSpectrometryCommentBuilder molWeightError(Double molWeightError) {
-        if ((molWeightError != null) && (Math.abs(molWeightError - 0.0) <= Double.MIN_VALUE)) {
+    public MassSpectrometryCommentBuilder molWeightError(Float molWeightError) {
+        if ((molWeightError != null) && (Math.abs(molWeightError - 0.0) <= Float.MIN_VALUE)) {
             this.molWeightError = null;
         }
         this.molWeightError = molWeightError;
@@ -84,11 +84,11 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
         return method;
     }
 
-    public Double getMolWeight() {
+    public Float getMolWeight() {
         return molWeight;
     }
 
-    public Double getMolWeightError() {
+    public Float getMolWeightError() {
         return molWeightError;
     }
 

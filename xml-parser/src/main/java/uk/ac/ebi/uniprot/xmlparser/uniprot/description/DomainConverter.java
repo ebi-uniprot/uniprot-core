@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.Domain;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class DomainConverter implements Converter<Domain, ProteinSection> ,ToXmlDbReferences<ProteinSection> {
 	private final RecNameConverter recNameConverter;
@@ -24,15 +24,14 @@ public class DomainConverter implements Converter<Domain, ProteinSection> ,ToXml
 		this.altNameConverter = altNameConverter;
 		this.xmlUniprotFactory = xmlUniprotFactory;
 	}
-	
+
 	@Override
 	public ProteinSection fromXml(Domain xmlObj) {
-		return ProteinDescriptionFactory.INSTANCE.createProteinNameSection(
-				recNameConverter.fromXml(xmlObj.getRecommendedName()),
-				xmlObj.getAlternativeName().stream()
-				.map(altNameConverter::fromXml).collect(Collectors.toList())
-				);
-
+		return new ProteinSectionBuilder()
+				.recommendedName(recNameConverter.fromXml(xmlObj.getRecommendedName()))
+				.alternativeNames(xmlObj.getAlternativeName().stream()
+										  .map(altNameConverter::fromXml).collect(Collectors.toList()))
+				.build();
 	}
 
 	@Override

@@ -1,21 +1,16 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.google.common.base.Strings;
-
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.MoleculeType;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtDBCrossReferenceFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.DBXRefTypeAttribute;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.GoEvidences;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypeDetail;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypes;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.*;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.MoleculeType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PropertyType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+import java.util.List;
+import java.util.Optional;
 
 public class UniProtCrossReferenceConverter implements Converter<DbReferenceType, UniProtDBCrossReference> {
 	private static final String GO = "GO";
@@ -60,10 +55,15 @@ public class UniProtCrossReferenceConverter implements Converter<DbReferenceType
 				}
 			}
 		}
-		
-		return UniProtDBCrossReferenceFactory.INSTANCE.createUniProtDBCrossReference(databaseName, id,
-				description, thirdAttribute, fourthAttribute, isoformId);
-		
+
+		UniProtXDbType type = new UniProtXDbType(databaseName);
+		return new UniProtDBCrossReferenceBuilder().databaseType(type)
+				.isoformId(isoformId)
+				.id(id)
+				.addProperty(type.getAttribute(0), description)
+				.addProperty(type.getAttribute(1), thirdAttribute)
+				.addProperty(type.getAttribute(2), fourthAttribute)
+				.build();
 	}
 	private String getGOThirdAttribute(DbReferenceType xmlObj, UniProtXDbTypeDetail xdbType) {
 		String evXmlTag =  xdbType.getAttributes().get(1).getXmlTag();

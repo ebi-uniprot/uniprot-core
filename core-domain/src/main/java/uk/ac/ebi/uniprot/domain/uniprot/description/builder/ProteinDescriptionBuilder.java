@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
@@ -14,7 +14,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 /**
  * @author lgonzales
  */
-public class ProteinDescriptionBuilder implements Builder2<ProteinDescriptionBuilder, ProteinDescription> {
+public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuilder, ProteinDescription> {
 
     private ProteinName recommendedName;
     private List<ProteinName> alternativeNames = new ArrayList<>();

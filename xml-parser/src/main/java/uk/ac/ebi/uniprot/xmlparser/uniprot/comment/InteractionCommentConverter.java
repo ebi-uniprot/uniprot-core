@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class InteractionCommentConverter implements Converter<List<CommentType>, InteractionComment> {
 	private final InteractionConverter interactionConverter;
@@ -25,7 +25,7 @@ public class InteractionCommentConverter implements Converter<List<CommentType>,
 	public InteractionComment fromXml(List<CommentType> xmlObj) {
 		if ((xmlObj == null) || xmlObj.isEmpty())
 			return null;
-		InteractionCommentBuilder builder = InteractionCommentBuilder.newInstance();
+		InteractionCommentBuilder builder = new InteractionCommentBuilder();
 		return builder.interactions(xmlObj.stream().map(interactionConverter::fromXml).collect(Collectors.toList()))
 				.build();
 	}

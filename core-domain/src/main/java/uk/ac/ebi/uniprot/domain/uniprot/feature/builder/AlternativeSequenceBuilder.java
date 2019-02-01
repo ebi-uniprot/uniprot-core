@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 
@@ -15,7 +15,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class AlternativeSequenceBuilder implements Builder2<AlternativeSequenceBuilder, AlternativeSequence> {
+public class AlternativeSequenceBuilder implements Builder<AlternativeSequenceBuilder, AlternativeSequence> {
     private String originalSequence;
     private List<String> alternativeSequences = new ArrayList<>();
 

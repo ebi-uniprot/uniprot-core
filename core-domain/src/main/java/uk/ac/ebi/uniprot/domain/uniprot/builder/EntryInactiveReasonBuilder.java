@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
 import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryInactiveReasonImpl;
@@ -15,7 +15,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author lgonzales
  */
-public class EntryInactiveReasonBuilder implements Builder2<EntryInactiveReasonBuilder, EntryInactiveReason> {
+public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReasonBuilder, EntryInactiveReason> {
     private InactiveReasonType inactiveReasonType;
     private List<String> mergeDemergeTo = new ArrayList<>();
 

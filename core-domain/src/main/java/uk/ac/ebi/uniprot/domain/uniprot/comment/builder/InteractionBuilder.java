@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 
-public final class InteractionBuilder implements Builder2<InteractionBuilder, Interaction> {
+public final class InteractionBuilder implements Builder<InteractionBuilder, Interaction> {
     private InteractionType type;
     private UniProtAccession uniProtAccession;
     private String geneName;

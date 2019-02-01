@@ -9,9 +9,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidenceBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

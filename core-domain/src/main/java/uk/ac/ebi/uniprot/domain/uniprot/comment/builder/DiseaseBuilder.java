@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
-public final class DiseaseBuilder implements Builder2<DiseaseBuilder, Disease> {
+public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     private String diseaseId;
     private String diseaseAc;
     private String acronym;

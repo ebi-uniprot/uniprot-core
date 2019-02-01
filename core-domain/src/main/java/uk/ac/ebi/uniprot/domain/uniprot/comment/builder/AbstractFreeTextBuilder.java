@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeText;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public abstract class AbstractFreeTextBuilder<B extends AbstractFreeTextBuilder<B, F>, F extends FreeText> implements Builder2<AbstractFreeTextBuilder, F> {
+public abstract class AbstractFreeTextBuilder<B extends AbstractFreeTextBuilder<B, F>, F extends FreeText> implements Builder<AbstractFreeTextBuilder, F> {
     protected List<EvidencedValue> evidencedValues = new ArrayList<>();
 
     @Override

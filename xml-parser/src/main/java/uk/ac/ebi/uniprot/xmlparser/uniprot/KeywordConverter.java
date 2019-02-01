@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.KeywordType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+import java.util.List;
 
 public class KeywordConverter implements Converter<KeywordType, Keyword> {
 	private final EvidenceIndexMapper evRefMapper;
@@ -27,7 +27,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
 	public Keyword fromXml(KeywordType xmlObj) {
 		 String keywordValue = xmlObj.getValue();
 		 List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-		 return UniProtFactory.INSTANCE.createKeyword(xmlObj.getId(), keywordValue, evidences);
+		 return new KeywordBuilder(xmlObj.getId(), keywordValue, evidences).build();
 	}
 
 	@Override

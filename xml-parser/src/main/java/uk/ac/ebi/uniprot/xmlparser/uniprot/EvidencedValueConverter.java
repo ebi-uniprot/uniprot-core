@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.uniprot.EvidencedValue;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EvidencedValueConverter implements Converter<EvidencedStringType, EvidencedValue> {
 
@@ -40,7 +40,7 @@ public class EvidencedValueConverter implements Converter<EvidencedStringType, E
 			evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
 		}else
 			evidences = new ArrayList<>();
-		return UniProtFactory.INSTANCE.createEvidencedValue(value, evidences);
+		return new EvidencedValueBuilder(value, evidences).build();
 	}
 
 	@Override

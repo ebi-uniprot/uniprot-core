@@ -2,13 +2,16 @@ package uk.ac.ebi.uniprot.parser.impl.ss;
 
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.uniprot.*;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
+import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalLineBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.SourceLineBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.EvidenceLineBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceLineBuilder;
 import uk.ac.ebi.uniprot.parser.Converter;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
 
 import java.util.ArrayList;
 import java.util.List;

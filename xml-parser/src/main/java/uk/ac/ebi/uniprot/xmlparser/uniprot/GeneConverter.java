@@ -1,20 +1,16 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
-import uk.ac.ebi.uniprot.domain.uniprot.HasEvidences;
+import uk.ac.ebi.uniprot.domain.gene.*;
+import uk.ac.ebi.uniprot.domain.uniprot.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.GeneFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneNameType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GeneConverter implements Converter<GeneType, Gene> {
 	private final EvidenceIndexMapper evRefMapper;
@@ -49,20 +45,25 @@ public class GeneConverter implements Converter<GeneType, Gene> {
 			String name = geneNameType.getValue();
 			List<Evidence> evidences = evRefMapper.parseEvidenceIds(geneNameType.getEvidence());
 			if (geneNameType.getType().equalsIgnoreCase(geneNameXMLTag)) {
-				geneName = GeneFactory.INSTANCE.createGeneName(name, evidences);
+				geneName = new GeneNameBuilder(name, evidences).build();
 
 			} else if (geneNameType.getType().equalsIgnoreCase(geneNameSynonymXMLTag)) {
-				synonyms.add(GeneFactory.INSTANCE.createGeneNameSynonym(name, evidences));
+				synonyms.add(new GeneNameSynonymBuilder(name, evidences).build());
 
 			} else if (geneNameType.getType().equalsIgnoreCase(orderedLocusNameXMLTag)) {
-				olnNames.add(GeneFactory.INSTANCE.createOrderedLocusName(name, evidences));
+				olnNames.add(new OrderedLocusNameBuilder(name, evidences).build());
 
 			} else if (geneNameType.getType().equalsIgnoreCase(orfNameXMLTag)) {
-				orfNames.add(GeneFactory.INSTANCE.createORFName(name, evidences));
+				orfNames.add(new ORFNameBuilder(name, evidences).build());
 			}
 		}
 
-		return GeneFactory.INSTANCE.createGene(geneName, synonyms, olnNames, orfNames);
+		return new GeneBuilder()
+				.orfNames(orfNames)
+				.geneName(geneName)
+				.synonyms(synonyms)
+				.orderedLocusNames(olnNames)
+				.build();
 
 	}
 

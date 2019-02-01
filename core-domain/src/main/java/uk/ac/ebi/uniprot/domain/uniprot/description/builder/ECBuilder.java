@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.builder;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ECImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 
 /**
  *

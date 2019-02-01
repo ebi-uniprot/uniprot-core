@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
+
 import java.util.List;
 
 public interface InternalSection {

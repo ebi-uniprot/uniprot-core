@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MichaelisConstantImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public final class MichaelisConstantBuilder implements Builder2<MichaelisConstantBuilder, MichaelisConstant> {
+public final class MichaelisConstantBuilder implements Builder<MichaelisConstantBuilder, MichaelisConstant> {
     private double constant;
     private MichaelisConstantUnit unit;
     private String substrate;

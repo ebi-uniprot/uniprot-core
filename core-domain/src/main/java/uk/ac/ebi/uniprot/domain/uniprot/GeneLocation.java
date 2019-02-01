@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 /**
  * Encapsulates a single gene coding of the {@link UniProtEntry UniProtEntry}.

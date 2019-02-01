@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.evidence2;
+package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
 import java.util.List;
 

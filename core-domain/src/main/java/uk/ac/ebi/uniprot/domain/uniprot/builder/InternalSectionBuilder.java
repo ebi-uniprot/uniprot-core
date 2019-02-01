@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidenceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public class InternalSectionBuilder implements Builder2<InternalSectionBuilder, InternalSection> {
+public class InternalSectionBuilder implements Builder<InternalSectionBuilder, InternalSection> {
     private List<InternalLine> internalLines = new ArrayList<>();
     private List<EvidenceLine> evidenceLines = new ArrayList<>();
     private List<SourceLine> sourceLines = new ArrayList<>();

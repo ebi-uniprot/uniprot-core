@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
 import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.builder.AbstractEvidencedValueBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
 import java.util.List;

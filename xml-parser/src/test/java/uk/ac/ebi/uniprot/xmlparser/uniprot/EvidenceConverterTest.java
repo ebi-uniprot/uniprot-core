@@ -1,14 +1,11 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidenceType;
+
+import static org.junit.Assert.*;
+import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 public class EvidenceConverterTest {
 	private final EvidenceConverter converter = new EvidenceConverter();
@@ -21,7 +18,7 @@ public class EvidenceConverterTest {
 		String attribute = "1234143";
 		String typeStr = "PubMed";
 
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -37,7 +34,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000255";
 		String attribute = "";
 		String typeStr = "";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -54,7 +51,7 @@ public class EvidenceConverterTest {
 		String attribute = "DatabaseId";
 		String typeStr = "DatabaseName";
 
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -70,7 +67,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000250";
 		String attribute = "Accession";
 		String typeStr = "UniProtKB";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -85,7 +82,7 @@ public class EvidenceConverterTest {
 		String evIdStr = "ECO:0000303|Ref.3";
 		String ecoCode = "ECO:0000303";
 
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		assertEquals(ecoCode, xmlObj.getType());
@@ -103,7 +100,7 @@ public class EvidenceConverterTest {
 		String attribute = "x";
 		String typeStr = "PubMed";
 
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -119,7 +116,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000269";
 		String attribute = "123";
 		String typeStr = "PubMed";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -133,7 +130,7 @@ public class EvidenceConverterTest {
 		// **EV ECO:0000269; Ref.1; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000269|Ref.1";
 		String ecoCode = "ECO:0000269";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify2(xmlObj, ecoCode, 1);
@@ -149,7 +146,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000305";
 		String attribute = "x";
 		String typeStr = "PubMed";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -165,7 +162,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000305";
 		String attribute = "";
 		String typeStr = "";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -181,7 +178,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000313";
 		String attribute = "BAG16761.1";
 		String typeStr = "EMBL";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -197,7 +194,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000256";
 		String attribute = "MF_00205";
 		String typeStr = "HAMAP-Rule";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -213,7 +210,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000255";
 		String attribute = "MF_00205";
 		String typeStr = "HAMAP-Rule";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -231,7 +228,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000313";
 		String attribute = "ENSMUSP00000067691";
 		String typeStr = "Ensembl";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -248,7 +245,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000256";
 		String attribute = "PIRNR000477";
 		String typeStr = "PIRNR";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -264,7 +261,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000255";
 		String attribute = "";
 		String typeStr = "";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);
@@ -280,7 +277,7 @@ public class EvidenceConverterTest {
 		String ecoCode = "ECO:0000313";
 		String attribute = "UP000006470";
 		String typeStr = "ProtImp";
-		Evidence evidence = UniProtFactory.INSTANCE.createEvidence(evIdStr);
+		Evidence evidence = parseEvidenceLine(evIdStr);
 		EvidenceType xmlObj = converter.toXml(evidence);
 		assertNotNull(xmlObj);
 		verify1(xmlObj, ecoCode, typeStr, attribute);

@@ -1,18 +1,17 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.comment;
 
-import java.util.stream.Collectors;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.CommentFactory;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.MoleculeType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidencedValueConverter;
+
+import java.util.stream.Collectors;
 
 public class CofactorCommentConverter implements CommentConverter< CofactorComment> {
 	private final ObjectFactory xmlUniprotFactory;
@@ -34,7 +33,7 @@ public class CofactorCommentConverter implements CommentConverter< CofactorComme
 		if (xmlComment == null)
 			return null;
 
-		CofactorCommentBuilder builder = CofactorCommentBuilder.newInstance();
+		CofactorCommentBuilder builder = new CofactorCommentBuilder();
 
 		// Molecule
 		if (xmlComment.getMolecule() != null) {
@@ -43,8 +42,8 @@ public class CofactorCommentConverter implements CommentConverter< CofactorComme
 
 		// cofactor note
 		if (!xmlComment.getText().isEmpty()) {
-			Note note = CommentFactory.INSTANCE.createNote(
-					xmlComment.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList()));
+			Note note = new NoteBuilder(
+					xmlComment.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList())).build();
 			builder.note(note);
 		}
 		if (!xmlComment.getCofactor().isEmpty()) {

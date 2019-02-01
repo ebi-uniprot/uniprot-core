@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.impl.EvidencedValueImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
 
 import java.util.Collections;
 import java.util.List;

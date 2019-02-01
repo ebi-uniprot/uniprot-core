@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
 
@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author Edd
  */
-public class EntryAuditBuilder implements Builder2<EntryAuditBuilder, EntryAudit> {
+public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit> {
     private LocalDate firstPublicDate;
     private LocalDate lastAnnotationUpdateDate;
     private LocalDate lastSequenceUpdateDate;

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.parser.ffwriter.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
 import java.util.Comparator;

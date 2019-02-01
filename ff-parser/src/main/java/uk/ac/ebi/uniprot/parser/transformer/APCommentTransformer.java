@@ -5,8 +5,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APIsoformBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.IsoformNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.EvidencedValue;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -249,7 +249,6 @@ DR   Reactome; R-MMU-9018519; Estrogen-dependent gene expression.
 DR   PRO; PR:Q64524; -.
 DR   Proteomes; UP000000589; Chromosome 3.
 DR   Bgee; ENSMUSG00000068854; Expressed in 231 organ(s), highest expression level in olfactory epithelium.
-DR   CleanEx; MM_HIST2H2BE; -.
 DR   Genevisible; Q64524; MM.
 DR   GO; GO:0005829; C:cytosol; ISO:MGI.
 DR   GO; GO:0005615; C:extracellular space; ISO:MGI.

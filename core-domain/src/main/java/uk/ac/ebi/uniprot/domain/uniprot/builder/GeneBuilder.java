@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
@@ -14,7 +14,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author lgonzales
  */
-public class GeneBuilder implements Builder2<GeneBuilder,Gene> {
+public class GeneBuilder implements Builder<GeneBuilder,Gene> {
 
     private GeneName geneName = null;
     private List<GeneNameSynonym> synonyms = new ArrayList<>();

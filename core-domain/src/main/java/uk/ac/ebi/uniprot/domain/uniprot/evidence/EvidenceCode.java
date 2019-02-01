@@ -59,7 +59,8 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     }
 
     public static EvidenceCode codeOf(String code) {
-        for (EvidenceCode eCode : EvidenceCode.values()) {
+        for (EvidenceCode eCode : EvidenceCode
+                .values()) {
             if (code.equals(eCode.getCode()))
                 return eCode;
         }

@@ -1,28 +1,27 @@
 package uk.ac.ebi.uniprot.parser.integration;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.IOException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.Set;
-import java.util.TreeSet;
-
-
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
-
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
+
+import java.io.IOException;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class FlatfileRoundTripITIT {
 	@Test
@@ -525,6 +524,16 @@ public class FlatfileRoundTripITIT {
 		
 		EntryObject parse2 =entryParser.parse(convertedEntryStr);
 		UniProtEntry converted2 =  entryObjectConverter.convert(parse2);
+
+		List<UniProtDBCrossReference> originalDBXrefs = converted.getDatabaseCrossReferences();
+		List<UniProtDBCrossReference> convertedDBXrefs = converted2.getDatabaseCrossReferences();
+		assertEquals(originalDBXrefs.size(), convertedDBXrefs.size());
+		for (int i = 0; i < originalDBXrefs.size(); i++) {
+			UniProtDBCrossReference origXref = originalDBXrefs.get(i);
+			UniProtDBCrossReference convertedXref = convertedDBXrefs.get(i);
+			assertEquals("DBXref at index " + i + " differs", origXref, convertedXref);
+		}
+
 		assertEquals(converted, converted2);
 		
 	

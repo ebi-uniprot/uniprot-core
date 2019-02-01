@@ -17,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTypeDetail> {
     INSTANCE;
     private Map<String, DBDisplayOrder> databaseType2DefsNoCase;
-    private String DR_ORD_FILE = "META-INF/conf/dr_ord";
+    private String DR_ORD_FILE = "META-INF/dr_ord";
 
     private String dr_ord_location = "https://www.ebi.ac.uk/~trembl/generator/dr_ord";
     private boolean init = false;

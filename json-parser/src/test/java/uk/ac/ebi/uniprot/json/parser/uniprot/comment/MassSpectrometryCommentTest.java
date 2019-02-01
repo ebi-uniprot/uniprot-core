@@ -88,8 +88,8 @@ public class MassSpectrometryCommentTest {
 
         return new MassSpectrometryCommentBuilder()
                 .method(MassSpectrometryMethod.LSI)
-                .molWeight(2.1D)
-                .molWeightError(1.2D)
+                .molWeight(2.1f)
+                .molWeightError(1.2f)
                 .note("note value")
                 .addRange(massSpectrometryRange)
                 .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))

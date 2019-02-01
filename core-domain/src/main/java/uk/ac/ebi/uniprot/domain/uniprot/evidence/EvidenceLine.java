@@ -1,6 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot;
-
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
 import java.time.LocalDate;
 

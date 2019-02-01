@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.List;
 import java.util.Objects;

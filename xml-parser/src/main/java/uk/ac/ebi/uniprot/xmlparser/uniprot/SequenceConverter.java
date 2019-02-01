@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
 import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.UniProtFactory;
+import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SequenceType;
 import uk.ac.ebi.uniprot.xmlparser.Converter;
@@ -21,7 +21,7 @@ public class SequenceConverter implements Converter<SequenceType, Sequence> {
 	public Sequence fromXml(SequenceType xmlObj) {
 		String sequence = xmlObj.getValue();
 		sequence = sequence.replaceAll(" ", "");
-		return UniProtFactory.INSTANCE.createSequence(sequence);
+		return new SequenceBuilder(sequence).build();
 	}
 
 	@Override

@@ -226,7 +226,6 @@ DR   GenomeRNAi; 80168; -.
 DR   PRO; PR:Q3SYC2; -.
 DR   Proteomes; UP000005640; Chromosome 11.
 DR   Bgee; ENSG00000166391; Expressed in 61 organ(s), highest expression level in right lobe of liver.
-DR   CleanEx; HS_MOGAT2; -.
 DR   Genevisible; Q3SYC2; HS.
 DR   GO; GO:0005783; C:endoplasmic reticulum; IDA:MGI.
 DR   GO; GO:0005789; C:endoplasmic reticulum membrane; TAS:Reactome.

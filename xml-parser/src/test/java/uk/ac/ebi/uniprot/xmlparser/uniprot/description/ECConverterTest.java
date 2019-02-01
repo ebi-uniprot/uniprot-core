@@ -1,23 +1,21 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.factory.ProteinDescriptionFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.EvidenceImpl;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType.Conflict;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
-import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
-import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
+import static org.junit.Assert.assertEquals;
 
 class ECConverterTest {
 
@@ -25,10 +23,18 @@ class ECConverterTest {
 	void test() {
 		String ec = "4.6.1.2";
 		List<Evidence> evidences = new ArrayList<>();
-		evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000313, "Ensembl", "ENSP0001324"));
-		evidences.add(new EvidenceImpl(EvidenceCode.ECO_0000256, "PIRNR", "PIRNR001361"));
+		evidences.add(new EvidenceBuilder()
+							   .databaseName("Ensembl")
+							   .databaseId("ENSP0001324")
+							   .evidenceCode(EvidenceCode.ECO_0000313)
+							   .build());
+		evidences.add(new EvidenceBuilder()
+							   .databaseName("PIRNR")
+							   .databaseName("PIRNR001361")
+							   .evidenceCode(EvidenceCode.ECO_0000256)
+							   .build());
 
-		EC ecObj = ProteinDescriptionFactory.INSTANCE.createECNumber(ec, evidences);
+		EC ecObj = new ECBuilder().value(ec).evidences(evidences).build();
 		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
 		ECConverter converter = new ECConverter(evRefMapper);
 		EvidencedStringType xmlObj = converter.toXml(ecObj);

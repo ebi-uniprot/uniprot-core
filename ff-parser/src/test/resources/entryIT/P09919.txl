@@ -250,7 +250,6 @@ DR   GenomeRNAi; 1440; -.
 DR   PRO; PR:P09919; -.
 DR   Proteomes; UP000005640; Chromosome 17.
 DR   Bgee; ENSG00000108342; Expressed in 128 organ(s), highest expression level in smooth muscle tissue.
-DR   CleanEx; HS_CSF3; -.
 DR   ExpressionAtlas; P09919; baseline and differential.
 DR   Genevisible; P09919; HS.
 DR   GO; GO:0005576; C:extracellular region; TAS:Reactome.

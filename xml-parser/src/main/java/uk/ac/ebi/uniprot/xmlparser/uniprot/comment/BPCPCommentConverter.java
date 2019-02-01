@@ -32,7 +32,7 @@ public class BPCPCommentConverter implements CommentConverter< BPCPComment> {
 	public BPCPComment fromXml(CommentType xmlObj) {
 		if(xmlObj == null)
 			return null;
-		BPCPCommentBuilder builder =BPCPCommentBuilder.newInstance();
+		BPCPCommentBuilder builder =new BPCPCommentBuilder();
 		
 		 //Absorption
         if(xmlObj.getAbsorption() != null){
@@ -45,7 +45,7 @@ public class BPCPCommentConverter implements CommentConverter< BPCPComment> {
         
         //PHdependencies
         if(xmlObj.getPhDependence() != null){
-        	builder.pHDependence(phDependenceConverter.fromXml(xmlObj.getPhDependence()));
+        	builder.phDependence(phDependenceConverter.fromXml(xmlObj.getPhDependence()));
         }
 
         //RedoxPotential

@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.PhysiologicalReactionImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence2.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
  *
  * @author Edd
  */
-public final class PhysiologicalReactionBuilder implements Builder2<PhysiologicalReactionBuilder, PhysiologicalReaction> {
+public final class PhysiologicalReactionBuilder implements Builder<PhysiologicalReactionBuilder, PhysiologicalReaction> {
     private PhysiologicalDirectionType directionType;
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences = new ArrayList<>();

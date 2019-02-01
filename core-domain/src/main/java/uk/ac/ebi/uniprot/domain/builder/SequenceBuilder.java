@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.builder;
 
-import uk.ac.ebi.uniprot.domain.Builder2;
+import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
 
@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
  *
  * @author Edd
  */
-public class SequenceBuilder implements Builder2<SequenceBuilder, Sequence> {
+public class SequenceBuilder implements Builder<SequenceBuilder, Sequence> {
     private String sequence;
     private Integer molWeight;
 

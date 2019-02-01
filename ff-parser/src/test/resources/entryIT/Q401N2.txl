@@ -193,7 +193,6 @@ DR   GenomeRNAi; 353174; -.
 DR   PRO; PR:Q401N2; -.
 DR   Proteomes; UP000005640; Chromosome 17.
 DR   Bgee; ENSG00000186919; Expressed in 92 organ(s), highest expression level in right hemisphere of cerebellum.
-DR   CleanEx; HS_ZACN; -.
 DR   Genevisible; Q401N2; HS.
 DR   GO; GO:0005887; C:integral component of plasma membrane; IBA:GO_Central.
 DR   GO; GO:0043005; C:neuron projection; IBA:GO_Central.

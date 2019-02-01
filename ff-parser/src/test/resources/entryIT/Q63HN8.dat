@@ -356,7 +356,6 @@ DR   PMAP-CutDB; Q9HCF4; -.
 DR   PRO; PR:Q63HN8; -.
 DR   Proteomes; UP000005640; Chromosome 17.
 DR   Bgee; Q63HN8; -.
-DR   CleanEx; HS_KIAA1618; -.
 DR   ExpressionAtlas; Q63HN8; baseline and differential.
 DR   GO; GO:0005737; C:cytoplasm; IDA:UniProtKB.
 DR   GO; GO:0016020; C:membrane; IDA:UniProtKB.

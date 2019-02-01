@@ -1,17 +1,15 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.citation;
 
+import com.google.common.base.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.citation.builder.PublicationDateBuilder;
+import uk.ac.ebi.uniprot.xmlparser.Converter;
+
 import java.text.ParseException;
 import java.util.Date;
 import java.util.regex.Pattern;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Strings;
-
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
-import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
-import uk.ac.ebi.uniprot.xmlparser.Converter;
 
 public class PublicationDateConverter implements Converter<String, PublicationDate> {
 	private static final Logger logger = LoggerFactory.getLogger(PublicationDateConverter.class);
@@ -25,19 +23,19 @@ public class PublicationDateConverter implements Converter<String, PublicationDa
 				if (PublicationDateFormatter.DAY_DIGITMONTH_YEAR.isValidDate(xmlDate)) {
 					Date date = PublicationDateFormatter.DAY_DIGITMONTH_YEAR.convertStringToDate(xmlDate);
 					String newDate = PublicationDateFormatter.DAY_THREE_LETTER_MONTH_YEAR.convertDateToString(date);
-					return AbstractCitationBuilder.createPublicationDate(newDate.toUpperCase());
+					return new PublicationDateBuilder(newDate.toUpperCase()).build();
 				} else if (PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate(xmlDate)) {
 					Date date = PublicationDateFormatter.YEAR_DIGIT_MONTH.convertStringToDate(xmlDate);
 					String newDate = PublicationDateFormatter.THREE_LETTER_MONTH_YEAR.convertDateToString(date);
-					return AbstractCitationBuilder.createPublicationDate(newDate.toUpperCase());
+					return new PublicationDateBuilder(newDate.toUpperCase()).build();
 				}
 			} catch (ParseException e) {
 				logger.error("Error in citation. Origin of error [" + e.getMessage() + ']');
 			}
 
-			return AbstractCitationBuilder.createPublicationDate(xmlDate.toUpperCase());
+			return new PublicationDateBuilder(xmlDate.toUpperCase()).build();
 		} else {
-			return AbstractCitationBuilder.createPublicationDate("0");
+			return new PublicationDateBuilder("0").build();
 		}
 	}
 

@@ -27,8 +27,8 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Monophosphorylated";
-        Double molWeight = 2189.4d;
-        Double molWeightError = 0.0;
+        Float molWeight = 2189.4f;
+        Float molWeightError = 0.0f;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
                                                               MassSpectrometryMethod.ELECTROSPRAY,
                                                               note, evidences, true);
@@ -53,8 +53,8 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Allele D, with 6 phosphate groups";
-        Double molWeight = 22629d;
-        Double molWeightError = 1.6;
+        Float molWeight = 22629f;
+        Float molWeightError = 1.6f;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
                                                               MassSpectrometryMethod.ELECTROSPRAY,
                                                               note, evidences, true);
@@ -81,8 +81,8 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Allele D, with 6 phosphate groups";
-        Double molWeight = 22629d;
-        Double molWeightError = 1.6;
+        Float molWeight = 22629f;
+        Float molWeightError = 1.6f;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
                                                               MassSpectrometryMethod.ELECTROSPRAY,
                                                               note, evidences, false);
@@ -107,8 +107,8 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "";
-        Double molWeight = 3260d;
-        Double molWeightError = null;
+        Float molWeight = 3260f;
+        Float molWeightError = null;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
                                                               MassSpectrometryMethod.MALDI,
                                                               note, evidences, false);
@@ -132,8 +132,8 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
         String note = "Monophosphorylated";
-        Double molWeight = 871.3;
-        Double molWeightError = null;
+        Float molWeight = 871.3f;
+        Float molWeightError = null;
         MassSpectrometryCommentBuilder builder = buildComment(molWeight, molWeightError,
                                                               MassSpectrometryMethod.ELECTROSPRAY,
                                                               note, evidences, true);
@@ -148,7 +148,7 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         doTestString(ccLineString, comment);
     }
 
-    MassSpectrometryCommentBuilder buildComment(Double molWeight, Double molWeightError,
+    MassSpectrometryCommentBuilder buildComment(Float molWeight, Float molWeightError,
                                                 MassSpectrometryMethod method,
                                                 String note, List<String> evs, boolean setSources) {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
