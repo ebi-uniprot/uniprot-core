@@ -36,6 +36,10 @@ public class SequenceImpl implements Sequence {
         return this.molWeight;
     }
 
+    public void setMolWeight(int molWeight) {
+        this.molWeight = molWeight;
+    }
+
     @Override
     public String getCrc64() {
         return this.crc64;
