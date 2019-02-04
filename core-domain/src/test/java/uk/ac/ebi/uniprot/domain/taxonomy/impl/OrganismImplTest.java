@@ -3,7 +3,6 @@ package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -19,14 +18,8 @@ class OrganismImplTest {
         String commonName = "Human";
         List<String> lineages = Collections.singletonList("lineage");
         List<String> synonyms = Collections.singletonList("synonym");
-        OrganismBuilder builder = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName(scientificName)
-                .commonName(commonName)
-                .synonyms(synonyms)
-                .lineage(lineages);
 
-        Organism organism = new OrganismImpl(builder);
+        Organism organism = new OrganismImpl(lineages, 9606L, null, scientificName, commonName, synonyms);
 
         assertEquals(9606L, organism.getTaxonId());
         assertEquals(scientificName, organism.getScientificName());

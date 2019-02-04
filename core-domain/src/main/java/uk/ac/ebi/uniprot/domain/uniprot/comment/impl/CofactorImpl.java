@@ -3,7 +3,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -19,14 +18,16 @@ public class CofactorImpl implements Cofactor {
         this.evidences = Collections.emptyList();
     }
 
-    public CofactorImpl(CofactorBuilder builder) {
-        this.name = builder.getName();
-        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
+    public CofactorImpl(String name,
+                        DBCrossReference<CofactorReferenceType> cofactorReference,
+                        List<Evidence> evidences) {
+        this.name = name;
+        if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(builder.getEvidences());
+            this.evidences = Collections.unmodifiableList(evidences);
         }
-        this.cofactorReference = builder.getCofactorReference();
+        this.cofactorReference = cofactorReference;
     }
 
     @Override

@@ -19,7 +19,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     private List<Evidence> evidences = new ArrayList<>();
 
     public SequenceCautionComment build() {
-        return new SequenceCautionCommentImpl(this);
+        return new SequenceCautionCommentImpl(sequenceCautionType, sequence, positions, note, evidences);
     }
 
     @Override
@@ -67,25 +67,5 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     public SequenceCautionCommentBuilder addEvidence(Evidence evidence) {
         nonNullAdd(evidence, this.evidences);
         return this;
-    }
-
-    public SequenceCautionType getSequenceCautionType() {
-        return sequenceCautionType;
-    }
-
-    public String getSequence() {
-        return sequence;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public List<String> getPositions() {
-        return positions;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

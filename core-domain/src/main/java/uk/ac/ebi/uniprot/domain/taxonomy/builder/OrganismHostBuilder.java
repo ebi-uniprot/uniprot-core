@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismHostImpl;
 
 public class OrganismHostBuilder extends AbstractOrganismNameBuilder<OrganismHostBuilder, OrganismHost> {
-
     private long taxonId;
 
     public OrganismHostBuilder taxonId(long taxonId) {
@@ -12,11 +11,9 @@ public class OrganismHostBuilder extends AbstractOrganismNameBuilder<OrganismHos
         return this;
     }
 
-
     public OrganismHost build() {
-        return new OrganismHostImpl(this);
+        return new OrganismHostImpl(taxonId, scientificName, commonName, synonyms);
     }
-
 
     public OrganismHostBuilder from(OrganismHost instance) {
         this.taxonId(instance.getTaxonId());
@@ -25,11 +22,6 @@ public class OrganismHostBuilder extends AbstractOrganismNameBuilder<OrganismHos
         this.synonyms(instance.getSynonyms());
         return this;
     }
-
-    public long getTaxonId() {
-        return taxonId;
-    }
-
 
     @Override
     protected OrganismHostBuilder getThis() {

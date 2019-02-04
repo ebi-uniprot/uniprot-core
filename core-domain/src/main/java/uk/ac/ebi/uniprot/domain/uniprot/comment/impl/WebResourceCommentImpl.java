@@ -2,9 +2,10 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
 
 import java.util.Objects;
+
+import static uk.ac.ebi.uniprot.domain.util.Utils.nullToEmpty;
 
 public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
     private String resourceName;
@@ -13,24 +14,18 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
     private String note;
 
     private WebResourceCommentImpl() {
-        this(new WebResourceCommentBuilder());
+        this(null, null, false, null);
     }
 
-    public WebResourceCommentImpl(WebResourceCommentBuilder builder) {
+    public WebResourceCommentImpl(String resourceName,
+                                  String resourceUrl,
+                                  boolean ftp,
+                                  String note) {
         super(CommentType.WEBRESOURCE);
-        this.resourceName = builder.getResourceName();
-        if (builder.getResourceUrl() == null || builder.getResourceUrl().isEmpty()) {
-            this.resourceUrl = "";
-        } else {
-            this.resourceUrl = builder.getResourceUrl();
-        }
-
-        this.ftp = builder.isFtp();
-        if (builder.getNote() == null || builder.getNote().isEmpty()) {
-            this.note = "";
-        } else {
-            this.note = builder.getNote();
-        }
+        this.resourceName = nullToEmpty(resourceName);
+        this.resourceUrl = nullToEmpty(resourceUrl);
+        this.ftp = ftp;
+        this.note = nullToEmpty(note);
     }
 
     @Override

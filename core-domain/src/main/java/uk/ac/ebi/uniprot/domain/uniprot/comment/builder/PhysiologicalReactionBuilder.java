@@ -45,7 +45,7 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
     }
 
     public PhysiologicalReactionImpl build() {
-        return new PhysiologicalReactionImpl(this);
+        return new PhysiologicalReactionImpl(directionType, reactionReference, evidences);
     }
 
     @Override
@@ -55,17 +55,5 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
                 .evidences(instance.getEvidences())
                 .directionType(instance.getDirectionType())
                 .reactionReference(instance.getReactionReference());
-    }
-
-    public PhysiologicalDirectionType getDirectionType() {
-        return directionType;
-    }
-
-    public DBCrossReference<ReactionReferenceType> getReactionReference() {
-        return reactionReference;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

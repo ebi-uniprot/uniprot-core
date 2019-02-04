@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -14,20 +13,21 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
     private List<RnaEdPosition> positions;
     private Note note;
 
-    public RnaEditingCommentImpl() {
+    private RnaEditingCommentImpl() {
         super(CommentType.RNA_EDITING);
         this.positions = Collections.emptyList();
     }
 
-    public RnaEditingCommentImpl(RnaEditingCommentBuilder builder) {
+    public RnaEditingCommentImpl(RnaEditingLocationType locationType,
+                                 List<RnaEdPosition> positions, Note note) {
         super(CommentType.RNA_EDITING);
-        this.locationType = builder.getLocationType();
-        if ((builder.getPositions() == null) || builder.getPositions().isEmpty()) {
+        this.locationType = locationType;
+        if ((positions == null) || positions.isEmpty()) {
             this.positions = Collections.emptyList();
         } else {
-            this.positions = Collections.unmodifiableList(builder.getPositions());
+            this.positions = Collections.unmodifiableList(positions);
         }
-        this.note = builder.getNote();
+        this.note = note;
     }
 
     @Override

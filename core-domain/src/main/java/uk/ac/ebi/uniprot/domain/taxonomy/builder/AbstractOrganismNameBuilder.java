@@ -11,10 +11,9 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
         implements Builder<B, T> {
-
-    private String scientificName = "";
-    private String commonName = "";
-    private List<String> synonyms = new ArrayList<>();
+    protected String scientificName = "";
+    protected String commonName = "";
+    protected List<String> synonyms = new ArrayList<>();
 
     protected abstract B getThis();
 

@@ -12,11 +12,9 @@ import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
 import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
 
 /**
- *
  * @author lgonzales
  */
 public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder, Organism> {
-
     private long taxonId;
     private List<Evidence> evidences = new ArrayList<>();
     private List<String> lineage = new ArrayList<>();
@@ -48,9 +46,8 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
 
 
     public Organism build() {
-        return new OrganismImpl(this);
+        return new OrganismImpl(lineage, taxonId, evidences, scientificName, commonName, synonyms);
     }
-
 
     public OrganismBuilder from(Organism instance) {
         evidences.clear();
@@ -62,18 +59,6 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
         this.synonyms(instance.getSynonyms());
         this.lineage(instance.getLineage());
         return this;
-    }
-
-    public long getTaxonId() {
-        return taxonId;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
-    }
-
-    public List<String> getLineage() {
-        return lineage;
     }
 
     @Override

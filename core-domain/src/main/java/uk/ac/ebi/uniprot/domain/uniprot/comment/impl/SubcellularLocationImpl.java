@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
 
@@ -17,10 +16,13 @@ public class SubcellularLocationImpl implements SubcellularLocation {
 
     private SubcellularLocationImpl() {}
 
-    public SubcellularLocationImpl(SubcellularLocationBuilder builder) {
-        this.location = builder.getLocation();
-        this.topology = builder.getTopology();
-        this.orientation = builder.getOrientation();
+    public SubcellularLocationImpl(
+            SubcellularLocationValue location,
+            SubcellularLocationValue topology,
+            SubcellularLocationValue orientation){
+        this.location = location;
+        this.topology =topology;
+        this.orientation = orientation;
     }
 
     @Override

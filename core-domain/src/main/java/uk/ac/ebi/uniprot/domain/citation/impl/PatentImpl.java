@@ -1,21 +1,24 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.Patent;
-import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
+
+import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 public class PatentImpl extends AbstractCitationImpl implements Patent {
     private final String patentNumber;
 
     private PatentImpl() {
-        this(new PatentBuilder());
+        this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
-    public PatentImpl(PatentBuilder builder) {
-        super(CitationType.PATENT, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
-              builder.getTitle(), builder.getPublicationDate());
-        this.patentNumber = Utils.nullToEmpty(builder.getPatentNumber());
+    public PatentImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
+                      String title, PublicationDate publicationDate, String patentNumber) {
+        super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
+        this.patentNumber = Utils.nullToEmpty(patentNumber);
     }
 
     @Override

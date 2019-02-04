@@ -76,26 +76,6 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         return getThis();
     }
 
-    public List<String> getAuthoringGroups() {
-        return authoringGroups;
-    }
-
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public List<DBCrossReference<CitationXrefType>> getXrefs() {
-        return xrefs;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public PublicationDate getPublicationDate() {
-        return publicationDate;
-    }
-
     protected void init(T instance) {
         this.citationXrefs(instance.getCitationXrefs())
                 .title(instance.getTitle())

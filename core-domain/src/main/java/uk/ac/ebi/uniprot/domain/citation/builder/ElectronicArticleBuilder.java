@@ -9,7 +9,9 @@ public final class ElectronicArticleBuilder extends AbstractCitationBuilder<Elec
     private String locator;
 
     public ElectronicArticle build() {
-        return new ElectronicArticleImpl(this);
+        return new ElectronicArticleImpl(authoringGroups, authors, xrefs, title,
+                                         publicationDate, journalName,
+                                         new ElectronicArticleImpl.LocatorImpl(locator));
     }
 
     @Override
@@ -28,14 +30,6 @@ public final class ElectronicArticleBuilder extends AbstractCitationBuilder<Elec
     public ElectronicArticleBuilder locator(String locator) {
         this.locator = locator;
         return this;
-    }
-
-    public String getJournalName() {
-        return journalName;
-    }
-
-    public String getLocator() {
-        return locator;
     }
 
     @Override

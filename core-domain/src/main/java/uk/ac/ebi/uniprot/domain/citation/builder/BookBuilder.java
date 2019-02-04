@@ -20,7 +20,8 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
     private String address = "";
 
     public Book build() {
-        return new BookImpl(this);
+        return new BookImpl(authoringGroups, authors, xrefs, title, publicationDate, bookName, editors,
+                            firstPage, lastPage, volume, publisher, address);
     }
 
     @Override
@@ -87,34 +88,6 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
     public BookBuilder address(String address) {
         this.address = address;
         return this;
-    }
-
-    public String getBookName() {
-        return bookName;
-    }
-
-    public List<Author> getEditors() {
-        return editors;
-    }
-
-    public String getFirstPage() {
-        return firstPage;
-    }
-
-    public String getLastPage() {
-        return lastPage;
-    }
-
-    public String getVolume() {
-        return volume;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public String getAddress() {
-        return address;
     }
 
     @Override

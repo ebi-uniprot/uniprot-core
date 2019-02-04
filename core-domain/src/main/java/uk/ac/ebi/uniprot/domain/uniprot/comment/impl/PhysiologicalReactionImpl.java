@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhysiologicalReactionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -20,13 +19,15 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
         this.evidences = Collections.emptyList();
     }
 
-    public PhysiologicalReactionImpl(PhysiologicalReactionBuilder builder) {
-        this.directionType = builder.getDirectionType();
-        this.reactionReference = builder.getReactionReference();
-        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
+    public PhysiologicalReactionImpl(PhysiologicalDirectionType directionType,
+                                     DBCrossReference<ReactionReferenceType> reactionReference,
+                                     List<Evidence> evidences) {
+        this.directionType = directionType;
+        this.reactionReference = reactionReference;
+        if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(builder.getEvidences());
+            this.evidences = Collections.unmodifiableList(evidences);
         }
     }
 

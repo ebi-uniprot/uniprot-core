@@ -50,7 +50,7 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
 
     @Override
     public KineticParameters build() {
-        return new KineticParametersImpl(this);
+        return new KineticParametersImpl(maximumVelocities, michaelisConstants, note);
     }
 
     @Override
@@ -61,17 +61,5 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
                 .maximumVelocities(instance.getMaximumVelocities())
                 .michaelisConstants(instance.getMichaelisConstants())
                 .note(instance.getNote());
-    }
-
-    public List<MaximumVelocity> getMaximumVelocities() {
-        return maximumVelocities;
-    }
-
-    public List<MichaelisConstant> getMichaelisConstants() {
-        return michaelisConstants;
-    }
-
-    public Note getNote() {
-        return note;
     }
 }

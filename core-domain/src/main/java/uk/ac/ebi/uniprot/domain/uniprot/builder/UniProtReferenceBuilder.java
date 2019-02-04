@@ -26,7 +26,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
 
     @Override
     public UniProtReference build() {
-        return new UniProtReferenceImpl(this);
+        return new UniProtReferenceImpl(citation, referencePositions, referenceComments, evidences);
     }
 
     @Override
@@ -74,21 +74,5 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     public UniProtReferenceBuilder evidence(Evidence evidence) {
         nonNullAdd(evidence, this.evidences);
         return this;
-    }
-
-    public Citation getCitation() {
-        return citation;
-    }
-
-    public List<String> getPositions() {
-        return referencePositions;
-    }
-
-    public List<ReferenceComment> getComments() {
-        return referenceComments;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

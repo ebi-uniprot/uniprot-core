@@ -17,7 +17,7 @@ public final class InteractionBuilder implements Builder<InteractionBuilder, Int
     private Interactor secondInteractor;
 
     public Interaction build() {
-        return new InteractionImpl(this);
+        return new InteractionImpl(type, uniProtAccession, geneName, numberOfExperiments, firstInteractor, secondInteractor);
     }
 
     @Override
@@ -64,29 +64,5 @@ public final class InteractionBuilder implements Builder<InteractionBuilder, Int
     public InteractionBuilder uniProtAccession(String uniProtAccession) {
         this.uniProtAccession = new UniProtAccessionImpl(uniProtAccession);
         return this;
-    }
-
-    public InteractionType getType() {
-        return type;
-    }
-
-    public UniProtAccession getUniProtAccession() {
-        return uniProtAccession;
-    }
-
-    public String getGeneName() {
-        return geneName;
-    }
-
-    public int getNumberOfExperiments() {
-        return numberOfExperiments;
-    }
-
-    public Interactor getFirstInteractor() {
-        return firstInteractor;
-    }
-
-    public Interactor getSecondInteractor() {
-        return secondInteractor;
     }
 }

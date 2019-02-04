@@ -17,7 +17,7 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
     private List<SubcellularLocation> subcellularLocations = new ArrayList<>();
 
     public SubcellularLocationComment build() {
-        return new SubcellularLocationCommentImpl(this);
+        return new SubcellularLocationCommentImpl(molecule, subcellularLocations, note);
     }
 
     @Override
@@ -47,17 +47,5 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
     public SubcellularLocationCommentBuilder addSubcellularLocation(SubcellularLocation subcellularLocation) {
         nonNullAdd(subcellularLocation, this.subcellularLocations);
         return this;
-    }
-
-    public String getMolecule() {
-        return molecule;
-    }
-
-    public Note getNote() {
-        return note;
-    }
-
-    public List<SubcellularLocation> getSubcellularLocations() {
-        return subcellularLocations;
     }
 }

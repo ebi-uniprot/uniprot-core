@@ -1,10 +1,12 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.Journal;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
+
+import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 public class JournalArticleImpl extends AbstractCitationImpl implements JournalArticle {
 
@@ -14,16 +16,19 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
     private String volume;
 
     private JournalArticleImpl() {
-        this(new JournalArticleBuilder());
+        this(emptyList(), emptyList(), emptyList(), null, null, null, null, null, null);
     }
 
-    public JournalArticleImpl(JournalArticleBuilder builder) {
-        super(CitationType.JOURNAL_ARTICLE, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
-              builder.getTitle(), builder.getPublicationDate());
-        this.journal = new JournalImpl(builder.getJournalName());
-        this.firstPage = Utils.nullToEmpty(builder.getFirstPage());
-        this.lastPage = Utils.nullToEmpty(builder.getLastPage());
-        this.volume = Utils.nullToEmpty(builder.getVolume());
+    public JournalArticleImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
+                              String title, PublicationDate publicationDate, String journalName,
+                              String firstPage, String lastPage, String volume) {
+        super(CitationType.JOURNAL_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
+        if (journalName != null) {
+            this.journal = new JournalImpl(journalName);
+        }
+        this.firstPage = Utils.nullToEmpty(firstPage);
+        this.lastPage = Utils.nullToEmpty(lastPage);
+        this.volume = Utils.nullToEmpty(volume);
     }
 
     @Override

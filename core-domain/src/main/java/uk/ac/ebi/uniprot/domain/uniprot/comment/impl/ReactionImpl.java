@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.ReactionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -24,18 +23,20 @@ public class ReactionImpl implements Reaction {
         this.reactionReferences = Collections.emptyList();
     }
 
-    public ReactionImpl(ReactionBuilder builder) {
-        this.name = builder.getName();
-        if ((builder.getReactionReferences() == null) || builder.getReactionReferences().isEmpty()) {
+    public ReactionImpl(String name,
+                        List<DBCrossReference<ReactionReferenceType>> reactionReferences,
+                        ECNumber ecNumber, List<Evidence> evidences) {
+        this.name = name;
+        if ((reactionReferences == null) || reactionReferences.isEmpty()) {
             this.reactionReferences = Collections.emptyList();
         } else {
-            this.reactionReferences = Collections.unmodifiableList(builder.getReactionReferences());
+            this.reactionReferences = Collections.unmodifiableList(reactionReferences);
         }
-        this.ecNumber = builder.getEcNumber();
-        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
+        this.ecNumber = ecNumber;
+        if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(builder.getEvidences());
+            this.evidences = Collections.unmodifiableList(evidences);
         }
     }
 

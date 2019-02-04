@@ -31,7 +31,7 @@ public final class SubcellularLocationBuilder implements Builder<SubcellularLoca
     }
 
     public SubcellularLocationImpl build() {
-        return new SubcellularLocationImpl(this);
+        return new SubcellularLocationImpl(location, topology, orientation);
     }
 
     @Override
@@ -40,17 +40,5 @@ public final class SubcellularLocationBuilder implements Builder<SubcellularLoca
                 .location(instance.getLocation())
                 .orientation(instance.getOrientation())
                 .topology(instance.getTopology());
-    }
-
-    public SubcellularLocationValue getLocation() {
-        return location;
-    }
-
-    public SubcellularLocationValue getTopology() {
-        return topology;
-    }
-
-    public SubcellularLocationValue getOrientation() {
-        return orientation;
     }
 }

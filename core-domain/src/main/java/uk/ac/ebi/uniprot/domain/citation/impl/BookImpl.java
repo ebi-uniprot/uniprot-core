@@ -1,16 +1,16 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Book;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.List;
 
+import static java.util.Collections.emptyList;
+
 
 public class BookImpl extends AbstractCitationImpl implements Book {
-	private String bookName;
+    private String bookName;
     private List<Author> editors;
     private String firstPage;
     private String lastPage;
@@ -19,20 +19,20 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     private String address;
 
     private BookImpl() {
-        this(new BookBuilder());
+        this(emptyList(), emptyList(), emptyList(), null, null, null, emptyList(), null, null, null, null, null);
     }
 
-    public BookImpl(BookBuilder builder) {
-        super(CitationType.BOOK, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
-              builder.getTitle(), builder.getPublicationDate());
-        this.bookName = builder.getBookName();
-        this.editors = Utils.nonNullUnmodifiableList(builder.getEditors());
-
-        this.firstPage = Utils.nullToEmpty(builder.getFirstPage());
-        this.lastPage = Utils.nullToEmpty(builder.getLastPage());
-        this.volume = Utils.nullToEmpty(builder.getVolume());
-        this.publisher = Utils.nullToEmpty(builder.getPublisher());
-        this.address = Utils.nullToEmpty(builder.getAddress());
+    public BookImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
+                    String title, PublicationDate publicationDate, String bookName, List<Author> editors,
+                    String firstPage, String lastPage, String volume, String publisher, String address) {
+        super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
+        this.bookName = Utils.nullToEmpty(bookName);
+        this.editors = Utils.nonNullUnmodifiableList(editors);
+        this.firstPage = Utils.nullToEmpty(firstPage);
+        this.lastPage = Utils.nullToEmpty(lastPage);
+        this.volume = Utils.nullToEmpty(volume);
+        this.publisher = Utils.nullToEmpty(publisher);
+        this.address = Utils.nullToEmpty(address);
     }
 
     @Override

@@ -1,24 +1,27 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
-import uk.ac.ebi.uniprot.domain.citation.Journal;
-import uk.ac.ebi.uniprot.domain.citation.Locator;
-import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.*;
+
+import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
     private Journal journal;
     private Locator locator;
 
     private ElectronicArticleImpl() {
-        this(new ElectronicArticleBuilder());
+        this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
-    public ElectronicArticleImpl(ElectronicArticleBuilder builder) {
-        super(CitationType.ELECTRONIC_ARTICLE, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
-              builder.getTitle(), builder.getPublicationDate());
-        this.journal = new JournalImpl(builder.getJournalName());
-        this.locator = new LocatorImpl(builder.getLocator());
+    public ElectronicArticleImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
+                                 String title, PublicationDate publicationDate, String journalName, Locator locator) {
+        super(CitationType.ELECTRONIC_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
+        if (journalName != null) {
+            this.journal = new JournalImpl(journalName);
+        }
+        this.locator = locator;
     }
 
     @Override

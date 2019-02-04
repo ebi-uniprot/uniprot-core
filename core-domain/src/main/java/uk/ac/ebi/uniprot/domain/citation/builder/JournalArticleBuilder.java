@@ -11,7 +11,8 @@ public final class JournalArticleBuilder extends AbstractCitationBuilder<Journal
 
     @Override
     public JournalArticle build() {
-        return new JournalArticleImpl(this);
+        return new JournalArticleImpl(authoringGroups, authors, xrefs, title, publicationDate, journalName,
+                                      firstPage, lastPage, volume);
     }
 
     @Override
@@ -44,22 +45,6 @@ public final class JournalArticleBuilder extends AbstractCitationBuilder<Journal
     public JournalArticleBuilder volume(String volume) {
         this.volume = volume;
         return this;
-    }
-
-    public String getJournalName() {
-        return journalName;
-    }
-
-    public String getFirstPage() {
-        return firstPage;
-    }
-
-    public String getLastPage() {
-        return lastPage;
-    }
-
-    public String getVolume() {
-        return volume;
     }
 
     @Override

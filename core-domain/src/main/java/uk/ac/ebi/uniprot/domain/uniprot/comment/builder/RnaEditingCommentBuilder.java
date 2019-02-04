@@ -18,7 +18,7 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
     private Note note;
 
     public RnaEditingComment build() {
-        return new RnaEditingCommentImpl(this);
+        return new RnaEditingCommentImpl(locationType, positions, note);
     }
 
     @Override
@@ -47,17 +47,5 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
     public RnaEditingCommentBuilder note(Note note) {
         this.note = note;
         return this;
-    }
-
-    public RnaEditingLocationType getLocationType() {
-        return locationType;
-    }
-
-    public List<RnaEdPosition> getPositions() {
-        return positions;
-    }
-
-    public Note getNote() {
-        return note;
     }
 }

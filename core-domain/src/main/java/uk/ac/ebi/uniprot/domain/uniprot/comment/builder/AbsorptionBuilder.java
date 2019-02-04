@@ -22,7 +22,7 @@ public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption>
 
     @Override
     public Absorption build() {
-        return new AbsorptionImpl(this);
+        return new AbsorptionImpl(max, approximate, note, evidences);
     }
 
     @Override
@@ -53,21 +53,5 @@ public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption>
     public AbsorptionBuilder evidences(List<Evidence> evidences) {
         this.evidences = evidences;
         return this;
-    }
-
-    public int getMax() {
-        return max;
-    }
-
-    public boolean isApproximate() {
-        return approximate;
-    }
-
-    public Note getNote() {
-        return note;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

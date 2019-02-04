@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.citation.impl.UnpublishedImpl;
 
 public final class UnpublishedBuilder extends AbstractCitationBuilder<UnpublishedBuilder, Unpublished> {
     public Unpublished build() {
-        return new UnpublishedImpl(this);
+        return new UnpublishedImpl(authoringGroups, authors, xrefs, title, publicationDate);
     }
 
     @Override

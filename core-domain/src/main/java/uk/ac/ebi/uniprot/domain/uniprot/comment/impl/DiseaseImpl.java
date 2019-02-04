@@ -3,8 +3,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,25 +20,28 @@ public class DiseaseImpl implements Disease {
     private List<Evidence> evidences;
 
     private DiseaseImpl() {
+        this(null, null, null, null, null, null);
     }
 
-    public DiseaseImpl(DiseaseBuilder builder) {
-        this.diseaseId = builder.getDiseaseId();
-        if (builder.getDiseaseAc() == null || builder.getDiseaseAc().isEmpty()) {
+    public DiseaseImpl(String diseaseId, String diseaseAccession, String acronym, String description,
+                       DBCrossReference<DiseaseReferenceType> reference, List<Evidence> evidences) {
+        this.diseaseId = diseaseId;
+        if (diseaseAccession == null || diseaseAccession.isEmpty()) {
             this.diseaseAccession = DEFAULT_ACCESSION;
         } else {
-            this.diseaseAccession = builder.getDiseaseAc();
+            this.diseaseAccession = diseaseAccession;
         }
-        this.acronym = builder.getAcronym();
-        this.description = builder.getDescription();
-        this.reference = builder.getReference();
-        this.evidences = builder.getEvidences();
+        this.acronym = acronym;
+        this.description = description;
+        this.reference = reference;
+        this.evidences = Utils.nonNullUnmodifiableList(evidences);
     }
 
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
     }
+
     @Override
     public String getDiseaseId() {
         return diseaseId;
@@ -89,7 +92,7 @@ public class DiseaseImpl implements Disease {
     }
 
     private boolean isValidDescription() {
-        return description !=null && !description.isEmpty();
+        return description != null && !description.isEmpty();
     }
 
     private boolean isValidReference() {

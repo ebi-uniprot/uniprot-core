@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APIsoformBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
@@ -25,17 +24,22 @@ public class APIsoformImpl implements APIsoform {
         synonyms = Collections.emptyList();
     }
 
-    public APIsoformImpl(APIsoformBuilder builder) {
-        this.name = builder.getName();
-        this.synonyms = Utils.nonNullUnmodifiableList(builder.getSynonyms());
-        this.note = builder.getNote();
-        this.isoformIds = Utils.nonNullUnmodifiableList(builder.getIds());
-        this.sequenceIds = Utils.nonNullUnmodifiableList(builder.getSequenceIds());
+    public APIsoformImpl(IsoformName name,
+                         List<IsoformName> synonyms,
+                         Note note,
+                         List<IsoformId> isoformIds,
+                         List<String> sequenceIds,
+                         IsoformSequenceStatus isoformSequenceStatus) {
+        this.name = name;
+        this.synonyms = Utils.nonNullUnmodifiableList(synonyms);
+        this.note = note;
+        this.isoformIds = Utils.nonNullUnmodifiableList(isoformIds);
+        this.sequenceIds = Utils.nonNullUnmodifiableList(sequenceIds);
 
-        if (builder.getSequenceStatus() == null) {
+        if (isoformSequenceStatus == null) {
             this.isoformSequenceStatus = IsoformSequenceStatus.DESCRIBED;
         } else
-            this.isoformSequenceStatus = builder.getSequenceStatus();
+            this.isoformSequenceStatus = isoformSequenceStatus;
     }
 
     @Override

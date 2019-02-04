@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -25,22 +24,24 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
         this.evidences = Collections.emptyList();
     }
 
-    public MassSpectrometryCommentImpl(MassSpectrometryCommentBuilder builder) {
+    public MassSpectrometryCommentImpl(MassSpectrometryMethod method, Float molWeight,
+                                       Float molWeightError, String note, List<MassSpectrometryRange> ranges,
+                                       List<Evidence> evidences) {
         super(CommentType.MASS_SPECTROMETRY);
-        this.method = builder.getMethod();
-        this.molWeight = builder.getMolWeight();
+        this.method = method;
+        this.molWeight = molWeight;
 
-        this.molWeightError = builder.getMolWeightError();
-        this.note = builder.getNote();
-        if ((builder.getRanges() == null) || builder.getRanges().isEmpty()) {
+        this.molWeightError = molWeightError;
+        this.note = note;
+        if ((ranges == null) || ranges.isEmpty()) {
             this.ranges = Collections.emptyList();
         } else {
-            this.ranges = Collections.unmodifiableList(builder.getRanges());
+            this.ranges = Collections.unmodifiableList(ranges);
         }
-        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
+        if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(builder.getEvidences());
+            this.evidences = Collections.unmodifiableList(evidences);
         }
     }
 

@@ -8,7 +8,7 @@ public final class SubmissionBuilder extends AbstractCitationBuilder<SubmissionB
     private SubmissionDatabase submissionDb;
 
     public Submission build() {
-        return new SubmissionImpl(this);
+        return new SubmissionImpl(authoringGroups, authors, xrefs, title, publicationDate, submissionDb);
     }
 
     @Override
@@ -21,10 +21,6 @@ public final class SubmissionBuilder extends AbstractCitationBuilder<SubmissionB
     public SubmissionBuilder submittedToDatabase(SubmissionDatabase submissionDb) {
         this.submissionDb = submissionDb;
         return this;
-    }
-
-    public SubmissionDatabase getSubmissionDb() {
-        return submissionDb;
     }
 
     @Override

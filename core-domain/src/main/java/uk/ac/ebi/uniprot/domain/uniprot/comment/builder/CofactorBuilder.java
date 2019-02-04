@@ -45,7 +45,7 @@ public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor>
 
     @Override
     public Cofactor build() {
-        return new CofactorImpl(this);
+        return new CofactorImpl(name, cofactorReference, evidences);
     }
 
     @Override
@@ -55,17 +55,5 @@ public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor>
                 .name(instance.getName())
                 .evidences(instance.getEvidences())
                 .reference(instance.getCofactorReference());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
-    }
-
-    public DBCrossReference<CofactorReferenceType> getCofactorReference() {
-        return cofactorReference;
     }
 }

@@ -24,7 +24,7 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, M
 
     @Override
     public MaximumVelocity build() {
-        return new MaximumVelocityImpl(this);
+        return new MaximumVelocityImpl(velocity, unit, enzyme, evidences);
     }
 
     @Override
@@ -60,21 +60,5 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, M
     public MaximumVelocityBuilder addEvidence(Evidence evidence) {
         nonNullAdd(evidence, this.evidences);
         return this;
-    }
-
-    public double getVelocity() {
-        return velocity;
-    }
-
-    public String getUnit() {
-        return unit;
-    }
-
-    public String getEnzyme() {
-        return enzyme;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

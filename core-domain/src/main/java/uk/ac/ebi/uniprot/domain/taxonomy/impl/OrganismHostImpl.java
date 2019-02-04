@@ -1,12 +1,11 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
- *
  * @author lgonzales
  */
 public class OrganismHostImpl extends AbstractOrganismNameImpl implements OrganismHost {
@@ -14,13 +13,13 @@ public class OrganismHostImpl extends AbstractOrganismNameImpl implements Organi
     private static final long serialVersionUID = 6516703868320522667L;
     private long taxonId;
 
-    private OrganismHostImpl(){
-        this(new OrganismHostBuilder());
+    private OrganismHostImpl() {
+        this(-1, null, null, null);
     }
 
-    public OrganismHostImpl(OrganismHostBuilder builder){
-        super(builder);
-        this.taxonId = builder.getTaxonId();
+    public OrganismHostImpl(long taxonId, String scientificName, String commonName, List<String> synonyms) {
+        super(scientificName, commonName, synonyms);
+        this.taxonId = taxonId;
     }
 
     @Override

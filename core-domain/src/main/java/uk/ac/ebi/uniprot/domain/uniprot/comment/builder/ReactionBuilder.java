@@ -62,7 +62,7 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
     }
 
     public ReactionImpl build() {
-        return new ReactionImpl(this);
+        return new ReactionImpl(name, reactionReferences, ecNumber, evidences);
     }
 
     @Override
@@ -74,21 +74,5 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
                 .evidences(instance.getEvidences())
                 .name(instance.getName())
                 .references(instance.getReactionReferences());
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ECNumber getEcNumber() {
-        return ecNumber;
-    }
-
-    public List<DBCrossReference<ReactionReferenceType>> getReactionReferences() {
-        return reactionReferences;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

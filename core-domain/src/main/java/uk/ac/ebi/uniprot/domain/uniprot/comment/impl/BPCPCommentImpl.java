@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.BPCPCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 import java.util.Collections;
@@ -19,14 +18,17 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
     }
 
-    public BPCPCommentImpl(BPCPCommentBuilder builder) {
+    public BPCPCommentImpl(Absorption absorption,
+                           KineticParameters kineticParameters,
+                           PhDependence phDependence,
+                           RedoxPotential redoxPotential,
+                           TemperatureDependence temperatureDependence) {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
-        this.absorption = builder.getAbsorption();
-        this.kineticParameters = builder.getKineticParameters();
-        this.phDependence = builder.getPhDependence();
-        this.redoxPotential = builder.getRedoxPotential();
-        this.temperatureDependence = builder.getTemperatureDependence();
-
+        this.absorption = absorption;
+        this.kineticParameters = kineticParameters;
+        this.phDependence = phDependence;
+        this.redoxPotential = redoxPotential;
+        this.temperatureDependence = temperatureDependence;
     }
 
     @Override

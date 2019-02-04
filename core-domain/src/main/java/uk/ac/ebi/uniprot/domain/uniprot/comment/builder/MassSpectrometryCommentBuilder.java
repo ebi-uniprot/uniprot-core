@@ -21,7 +21,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     private List<Evidence> evidences = new ArrayList<>();
 
     public MassSpectrometryComment build() {
-        return new MassSpectrometryCommentImpl(this);
+        return new MassSpectrometryCommentImpl(method, molWeight, molWeightError, note, ranges, evidences);
     }
 
     @Override
@@ -78,29 +78,5 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     public MassSpectrometryCommentBuilder addEvidence(Evidence evidence) {
         nonNullAdd(evidence, this.evidences);
         return this;
-    }
-
-    public MassSpectrometryMethod getMethod() {
-        return method;
-    }
-
-    public Float getMolWeight() {
-        return molWeight;
-    }
-
-    public Float getMolWeightError() {
-        return molWeightError;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public List<MassSpectrometryRange> getRanges() {
-        return ranges;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

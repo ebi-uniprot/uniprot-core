@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.KineticParametersBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -20,18 +19,20 @@ public class KineticParametersImpl implements KineticParameters {
         this.michaelisConstants = Collections.emptyList();
     }
 
-    public KineticParametersImpl(KineticParametersBuilder builder) {
-        if ((builder.getMaximumVelocities() == null) || builder.getMaximumVelocities().isEmpty()) {
+    public KineticParametersImpl(List<MaximumVelocity> maximumVelocities,
+                                 List<MichaelisConstant> michaelisConstants,
+                                 Note note) {
+        if ((maximumVelocities == null) || maximumVelocities.isEmpty()) {
             this.maximumVelocities = Collections.emptyList();
         } else {
-            this.maximumVelocities = Collections.unmodifiableList(builder.getMaximumVelocities());
+            this.maximumVelocities = Collections.unmodifiableList(maximumVelocities);
         }
-        if ((builder.getMichaelisConstants() == null) || builder.getMichaelisConstants().isEmpty()) {
+        if ((michaelisConstants == null) || michaelisConstants.isEmpty()) {
             this.michaelisConstants = Collections.emptyList();
         } else {
-            this.michaelisConstants = Collections.unmodifiableList(builder.getMichaelisConstants());
+            this.michaelisConstants = Collections.unmodifiableList(michaelisConstants);
         }
-        this.note = builder.getNote();
+        this.note = note;
     }
 
     @Override

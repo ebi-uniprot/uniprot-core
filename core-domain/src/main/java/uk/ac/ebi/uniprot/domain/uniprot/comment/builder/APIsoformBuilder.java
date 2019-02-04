@@ -26,7 +26,12 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     private IsoformSequenceStatus isoformSequenceStatus;
 
     public APIsoform build() {
-        return new APIsoformImpl(this);
+        return new APIsoformImpl(name,
+                                 synonyms,
+                                 note,
+                                 isoformIds,
+                                 sequenceIds,
+                                 isoformSequenceStatus);
     }
 
     @Override
@@ -86,29 +91,5 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     public APIsoformBuilder sequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
         this.isoformSequenceStatus = isoformSequenceStatus;
         return this;
-    }
-
-    public IsoformName getName() {
-        return name;
-    }
-
-    public List<IsoformName> getSynonyms() {
-        return synonyms;
-    }
-
-    public List<IsoformId> getIds() {
-        return isoformIds;
-    }
-
-    public List<String> getSequenceIds() {
-        return sequenceIds;
-    }
-
-    public Note getNote() {
-        return note;
-    }
-
-    public IsoformSequenceStatus getSequenceStatus() {
-        return isoformSequenceStatus;
     }
 }

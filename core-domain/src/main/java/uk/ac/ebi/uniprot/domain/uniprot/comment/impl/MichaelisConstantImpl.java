@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MichaelisConstantBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -19,14 +18,17 @@ public class MichaelisConstantImpl implements MichaelisConstant {
         this.evidences = Collections.emptyList();
     }
 
-    public MichaelisConstantImpl(MichaelisConstantBuilder builder) {
-        this.constant = builder.getConstant();
-        this.unit = builder.getUnit();
-        this.substrate = builder.getSubstrate();
-        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
+    public MichaelisConstantImpl(double constant,
+                                 MichaelisConstantUnit unit,
+                                 String substrate,
+                                 List<Evidence> evidences) {
+        this.constant = constant;
+        this.unit = unit;
+        this.substrate = substrate;
+        if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(builder.getEvidences());
+            this.evidences = Collections.unmodifiableList(evidences);
         }
     }
 

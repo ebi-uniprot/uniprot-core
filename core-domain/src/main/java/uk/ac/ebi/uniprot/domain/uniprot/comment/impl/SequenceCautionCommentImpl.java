@@ -3,7 +3,6 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.Collections;
@@ -23,20 +22,21 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
         this.positions = Collections.emptyList();
     }
 
-    public SequenceCautionCommentImpl(SequenceCautionCommentBuilder builder) {
+    public SequenceCautionCommentImpl(SequenceCautionType sequenceCautionType, String sequence,
+                                      List<String> positions, String note, List<Evidence> evidences) {
         super(CommentType.SEQUENCE_CAUTION);
-        this.sequenceCautionType = builder.getSequenceCautionType();
-        this.sequence = builder.getSequence();
-        if ((builder.getPositions() == null) || builder.getPositions().isEmpty()) {
+        this.sequenceCautionType = sequenceCautionType;
+        this.sequence = sequence;
+        if ((positions == null) || positions.isEmpty()) {
             this.positions = Collections.emptyList();
         } else {
-            this.positions = Collections.unmodifiableList(builder.getPositions());
+            this.positions = Collections.unmodifiableList(positions);
         }
-        this.note = builder.getNote();
-        if ((builder.getEvidences() == null) || builder.getEvidences().isEmpty()) {
+        this.note = note;
+        if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
-            this.evidences = Collections.unmodifiableList(builder.getEvidences());
+            this.evidences = Collections.unmodifiableList(evidences);
         }
     }
 

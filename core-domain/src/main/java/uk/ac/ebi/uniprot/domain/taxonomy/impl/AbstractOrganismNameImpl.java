@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.AbstractOrganismNameBuilder;
 
 import java.util.List;
 import java.util.Objects;
 
+import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullUnmodifiableList;
+import static uk.ac.ebi.uniprot.domain.util.Utils.nullToEmpty;
+
 /**
- *
- *
  * @author lgonzales
  */
 public abstract class AbstractOrganismNameImpl implements OrganismName {
@@ -18,10 +18,13 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
     private String commonName;
     private List<String> synonyms;
 
-    AbstractOrganismNameImpl(AbstractOrganismNameBuilder builder){
-        scientificName = builder.getScientificName();
-        commonName = builder.getCommonName();
-        synonyms = builder.getSynonyms();
+    AbstractOrganismNameImpl() {
+    }
+
+    AbstractOrganismNameImpl(String scientificName, String commonName, List<String> synonyms) {
+        this.scientificName = nullToEmpty(scientificName);
+        this.commonName = nullToEmpty(commonName);
+        this.synonyms = nonNullUnmodifiableList(synonyms);
     }
 
     public String getScientificName() {

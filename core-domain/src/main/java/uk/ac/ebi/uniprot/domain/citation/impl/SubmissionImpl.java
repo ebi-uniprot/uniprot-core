@@ -1,22 +1,24 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.*;
+
+import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
 
     private SubmissionDatabase submissionDatabase;
 
     private SubmissionImpl() {
-        this(new SubmissionBuilder());
+        this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
-    public SubmissionImpl(SubmissionBuilder builder) {
-        super(CitationType.SUBMISSION, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
-              builder.getTitle(), builder.getPublicationDate());
-        this.submissionDatabase = builder.getSubmissionDb();
+    public SubmissionImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
+                          String title, PublicationDate publicationDate, SubmissionDatabase submissionDatabase) {
+        super(CitationType.SUBMISSION, authoringGroup, authors, citationXrefs, title, publicationDate);
+        this.submissionDatabase = submissionDatabase;
     }
 
     @Override

@@ -22,7 +22,7 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     private List<Evidence> evidences = new ArrayList<>();
 
     public Disease build() {
-        return new DiseaseImpl(this);
+        return new DiseaseImpl(diseaseId, diseaseAc, acronym, description, reference, evidences);
     }
 
     @Override
@@ -69,29 +69,5 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     public DiseaseBuilder reference(DBCrossReference<DiseaseReferenceType> reference) {
         this.reference = reference;
         return this;
-    }
-
-    public String getDiseaseId() {
-        return diseaseId;
-    }
-
-    public String getDiseaseAc() {
-        return diseaseAc;
-    }
-
-    public String getAcronym() {
-        return acronym;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public DBCrossReference<DiseaseReferenceType> getReference() {
-        return reference;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }

@@ -10,7 +10,7 @@ public final class WebResourceCommentBuilder implements CommentBuilder<WebResour
     private String note;
 
     public WebResourceComment build() {
-        return new WebResourceCommentImpl(this);
+        return new WebResourceCommentImpl(resourceName, resourceUrl, isFtp, note);
     }
 
     @Override
@@ -40,21 +40,5 @@ public final class WebResourceCommentBuilder implements CommentBuilder<WebResour
     public WebResourceCommentBuilder note(String note) {
         this.note = note;
         return this;
-    }
-
-    public String getResourceName() {
-        return resourceName;
-    }
-
-    public String getResourceUrl() {
-        return resourceUrl;
-    }
-
-    public boolean isFtp() {
-        return isFtp;
-    }
-
-    public String getNote() {
-        return note;
     }
 }

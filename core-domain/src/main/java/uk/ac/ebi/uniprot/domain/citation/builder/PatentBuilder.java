@@ -7,7 +7,7 @@ public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, 
     private String patentNumber;
 
     public Patent build() {
-        return new PatentImpl(this);
+        return new PatentImpl(authoringGroups, authors, xrefs, title, publicationDate, patentNumber);
     }
 
     @Override
@@ -19,10 +19,6 @@ public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, 
     public PatentBuilder patentNumber(String patentNumber) {
         this.patentNumber = patentNumber;
         return this;
-    }
-
-    public String getPatentNumber() {
-        return patentNumber;
     }
 
     @Override

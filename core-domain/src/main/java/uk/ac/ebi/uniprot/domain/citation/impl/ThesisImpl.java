@@ -1,23 +1,26 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.citation.Thesis;
-import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.util.Utils;
+
+import java.util.List;
+
+import static java.util.Collections.emptyList;
 
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     private String institute;
     private String address;
 
     private ThesisImpl() {
-        this(new ThesisBuilder());
+        this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
-    public ThesisImpl(ThesisBuilder builder) {
-        super(CitationType.THESIS, builder.getAuthoringGroups(), builder.getAuthors(), builder.getXrefs(),
-              builder.getTitle(), builder.getPublicationDate());
-        this.institute = Utils.nullToEmpty(builder.getInstitute());
-        this.address = Utils.nullToEmpty(builder.getAddress());
+    public ThesisImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
+                      String title, PublicationDate publicationDate, String institute, String address) {
+        super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
+        this.institute = Utils.nullToEmpty(institute);
+        this.address = Utils.nullToEmpty(address);
     }
 
     @Override

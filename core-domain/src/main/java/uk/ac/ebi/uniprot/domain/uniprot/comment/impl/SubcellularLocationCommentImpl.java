@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
 
 import java.util.Collections;
 import java.util.List;
@@ -16,23 +15,27 @@ public class SubcellularLocationCommentImpl extends CommentImpl implements Subce
     private List<SubcellularLocation> subcellularLocations;
 
     private SubcellularLocationCommentImpl() {
-        this(new SubcellularLocationCommentBuilder());
+        super(CommentType.SUBCELLULAR_LOCATION);
+        this.molecule = "";
+        this.subcellularLocations = Collections.emptyList();
     }
 
-    public SubcellularLocationCommentImpl(SubcellularLocationCommentBuilder builder) {
+    public SubcellularLocationCommentImpl(String molecule,
+                                          List<SubcellularLocation> subcellularLocations,
+                                          Note note) {
         super(CommentType.SUBCELLULAR_LOCATION);
-        if (builder.getMolecule() == null || builder.getMolecule().isEmpty()) {
+        if (molecule == null || molecule.isEmpty()) {
             this.molecule = "";
         } else {
-            this.molecule = builder.getMolecule();
+            this.molecule = molecule;
         }
 
-        if ((builder.getSubcellularLocations() == null) || builder.getSubcellularLocations().isEmpty()) {
+        if ((subcellularLocations == null) || subcellularLocations.isEmpty()) {
             this.subcellularLocations = Collections.emptyList();
         } else {
-            this.subcellularLocations = Collections.unmodifiableList(builder.getSubcellularLocations());
+            this.subcellularLocations = Collections.unmodifiableList(subcellularLocations);
         }
-        this.note = builder.getNote();
+        this.note = note;
     }
 
     @Override

@@ -4,7 +4,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
 import java.util.Objects;
@@ -22,13 +21,18 @@ public class InteractionImpl implements Interaction {
 
     }
 
-    public InteractionImpl(InteractionBuilder builder) {
-        this.type = builder.getType();
-        this.uniProtAccession = builder.getUniProtAccession();
-        this.geneName = builder.getGeneName();
-        this.numberOfExperiments = builder.getNumberOfExperiments();
-        this.firstInteractor = builder.getFirstInteractor();
-        this.secondInteractor = builder.getSecondInteractor();
+    public InteractionImpl(InteractionType type,
+                           UniProtAccession uniProtAccession,
+                           String geneName,
+                           int numberOfExperiments,
+                           Interactor firstInteractor,
+                           Interactor secondInteractor) {
+        this.type = type;
+        this.uniProtAccession = uniProtAccession;
+        this.geneName = geneName;
+        this.numberOfExperiments = numberOfExperiments;
+        this.firstInteractor = firstInteractor;
+        this.secondInteractor = secondInteractor;
     }
 
     @Override

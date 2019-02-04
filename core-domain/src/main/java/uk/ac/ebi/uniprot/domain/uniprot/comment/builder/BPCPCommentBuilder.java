@@ -11,7 +11,7 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
     private TemperatureDependence temperatureDependence = null;
 
     public BPCPComment build() {
-        return new BPCPCommentImpl(this);
+        return new BPCPCommentImpl(absorption, kineticParameters, phDependence, redoxPotential, temperatureDependence);
     }
 
     @Override
@@ -47,25 +47,5 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
     public BPCPCommentBuilder temperatureDependence(TemperatureDependence temperatureDependence) {
         this.temperatureDependence = temperatureDependence;
         return this;
-    }
-
-    public Absorption getAbsorption() {
-        return absorption;
-    }
-
-    public KineticParameters getKineticParameters() {
-        return kineticParameters;
-    }
-
-    public PhDependence getPhDependence() {
-        return phDependence;
-    }
-
-    public RedoxPotential getRedoxPotential() {
-        return redoxPotential;
-    }
-
-    public TemperatureDependence getTemperatureDependence() {
-        return temperatureDependence;
     }
 }

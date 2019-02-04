@@ -10,8 +10,8 @@ import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
 /**
- *
  * @author lgonzales
  */
 public class OrganimsTest {
@@ -26,9 +26,9 @@ public class OrganimsTest {
         ValidateJson.verifyJsonRoundTripParser(organism);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(organism);
-        assertEquals(9606,jsonNode.get("taxonId").asInt());
+        assertEquals(9606, jsonNode.get("taxonId").asInt());
         assertNotNull(jsonNode.get("scientificName"));
-        assertEquals("scientific name",jsonNode.get("scientificName").asText());
+        assertEquals("scientific name", jsonNode.get("scientificName").asText());
     }
 
     @Test
@@ -38,22 +38,22 @@ public class OrganimsTest {
         ValidateJson.verifyEmptyFields(organism);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(organism);
-        assertEquals(9606,jsonNode.get("taxonId").asInt());
+        assertEquals(9606, jsonNode.get("taxonId").asInt());
         assertNotNull(jsonNode.get("scientificName"));
-        assertEquals("scientific name",jsonNode.get("scientificName").asText());
+        assertEquals("scientific name", jsonNode.get("scientificName").asText());
         assertNotNull(jsonNode.get("commonName"));
-        assertEquals("common name",jsonNode.get("commonName").asText());
+        assertEquals("common name", jsonNode.get("commonName").asText());
         assertNotNull(jsonNode.get("synonyms"));
-        assertEquals(1,jsonNode.get("synonyms").size());
-        assertEquals("synonyms 1",jsonNode.get("synonyms").get(0).asText());
+        assertEquals(1, jsonNode.get("synonyms").size());
+        assertEquals("synonyms 1", jsonNode.get("synonyms").get(0).asText());
 
         assertNotNull(jsonNode.get("lineage"));
-        assertEquals(1,jsonNode.get("lineage").size());
-        assertEquals("lineage 1",jsonNode.get("lineage").get(0).asText());
+        assertEquals(1, jsonNode.get("lineage").size());
+        assertEquals("lineage 1", jsonNode.get("lineage").get(0).asText());
 
         assertNotNull(jsonNode.get("evidences"));
-        assertEquals(1,jsonNode.get("evidences").size());
-        ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000256","PIRNR","PIRNR001363");
+        assertEquals(1, jsonNode.get("evidences").size());
+        ValidateJson.validateEvidence(jsonNode.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001363");
     }
 
     public static Organism getOrganism() {

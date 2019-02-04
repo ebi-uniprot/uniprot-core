@@ -50,7 +50,7 @@ public final class MichaelisConstantBuilder implements Builder<MichaelisConstant
 
     @Override
     public MichaelisConstant build() {
-        return new MichaelisConstantImpl(this);
+        return new MichaelisConstantImpl(constant, unit, substrate, evidences);
     }
 
     @Override
@@ -61,21 +61,5 @@ public final class MichaelisConstantBuilder implements Builder<MichaelisConstant
                 .constant(instance.getConstant())
                 .substrate(instance.getSubstrate())
                 .unit(instance.getUnit());
-    }
-
-    public double getConstant() {
-        return constant;
-    }
-
-    public MichaelisConstantUnit getUnit() {
-        return unit;
-    }
-
-    public String getSubstrate() {
-        return substrate;
-    }
-
-    public List<Evidence> getEvidences() {
-        return evidences;
     }
 }
