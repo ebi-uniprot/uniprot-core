@@ -11,6 +11,7 @@ import uk.ac.ebi.uniprot.domain.impl.SequenceImpl;
  */
 public class SequenceBuilder implements Builder<SequenceBuilder, Sequence> {
     private String sequence;
+    private Integer molWeight;
 
     public SequenceBuilder(String sequence) {
         this.sequence = sequence;
@@ -18,7 +19,16 @@ public class SequenceBuilder implements Builder<SequenceBuilder, Sequence> {
 
     @Override
     public Sequence build() {
-        return new SequenceImpl(sequence);
+        SequenceImpl sequenceImpl = new SequenceImpl(sequence);
+        if(molWeight != null){
+            sequenceImpl.setMolWeight(this.molWeight);
+        }
+        return sequenceImpl;
+    }
+
+    public SequenceBuilder molWeight(int molWeight) {
+        this.molWeight = molWeight;
+        return this;
     }
 
     @Override
