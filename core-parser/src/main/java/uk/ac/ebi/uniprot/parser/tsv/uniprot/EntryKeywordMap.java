@@ -1,0 +1,46 @@
+package uk.ac.ebi.uniprot.parser.tsv.uniprot;
+
+import uk.ac.ebi.uniprot.domain.Value;
+import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
+
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class EntryKeywordMap implements NamedValueMap {
+    private final List<Keyword> keywords;
+    public static final List<String> FIELDS =
+            Arrays.asList(
+                    "keyword", "keywordid"
+            );
+
+    public EntryKeywordMap(List<Keyword> keywords) {
+        if (keywords == null) {
+            this.keywords = Collections.emptyList();
+        } else {
+            this.keywords = Collections.unmodifiableList(keywords);
+        }
+    }
+
+    @Override
+    public Map<String, String> attributeValues() {
+        if (keywords.isEmpty()) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, String> map = new HashMap<>();
+        String kwValue =
+                keywords.stream().map(Value::getValue).collect(Collectors.joining(";"));
+        map.put(FIELDS.get(0), kwValue);
+        String kwIds =
+                keywords.stream().map(Keyword::getId).filter(val -> val != null && !val.isEmpty())
+                        .collect(Collectors.joining("; "));
+        map.put(FIELDS.get(1), kwIds);
+        return map;
+    }
+
+    public static boolean contains(List<String> fields) {
+        return fields.stream().anyMatch(FIELDS::contains);
+    }
+
+}
