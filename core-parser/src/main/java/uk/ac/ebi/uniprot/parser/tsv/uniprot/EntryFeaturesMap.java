@@ -148,7 +148,8 @@ public class EntryFeaturesMap implements NamedValueMap {
         if (FEATURE_HAS_ALTERNATIVE_SEQ.contains(feature.getType().name())) {
             sb.append(" ").append(getAlternativeSequence(feature));
         }
-        if (feature.getDescription() != null && feature.getDescription().getValue() != null) {
+        if (feature.getDescription() != null && feature.getDescription().getValue() != null &&
+                !feature.getDescription().getValue().isEmpty()) {
             if (feature.getType().equals(FeatureType.MUTAGEN))
                 sb.append(":");
             sb.append(" ");

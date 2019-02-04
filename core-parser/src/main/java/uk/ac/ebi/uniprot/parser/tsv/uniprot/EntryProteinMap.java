@@ -44,9 +44,7 @@ public class EntryProteinMap implements NamedValueMap {
             map.put(FIELDS.get(1), ecs);
         }
         String fragment = getFragment();
-        if (!fragment.isEmpty()) {
-            map.put(FIELDS.get(2), fragment);
-        }
+        map.put(FIELDS.get(2), fragment);
         return map;
     }
 

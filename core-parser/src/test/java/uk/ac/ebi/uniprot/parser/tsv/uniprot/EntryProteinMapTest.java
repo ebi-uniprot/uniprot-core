@@ -83,6 +83,7 @@ class EntryProteinMapTest {
 		alternativeName.add(createProteinName("altr name 2", shortNames2, Collections.emptyList()));
 		builder.alternativeNames(alternativeName);
 		builder.allergenName(createName("someAller"));
+		builder.flag(FlagType.PRECURSOR);
 		ProteinDescription protein = builder.build();
 		EntryProteinMap downloadable = new EntryProteinMap(protein);
 		Map<String, String> result = downloadable.attributeValues();
@@ -114,6 +115,7 @@ class EntryProteinMapTest {
 		builder.alternativeNames(alternativeName);
 		builder.allergenName(createName("someAller"));
 		builder.biotechName(createName("some biote"));
+		builder.flag(FlagType.FRAGMENTS_PRECURSOR);
 		ProteinDescription protein = builder.build();
 		EntryProteinMap downloadable = new EntryProteinMap(protein);
 		Map<String, String> result = downloadable.attributeValues();
@@ -145,6 +147,7 @@ class EntryProteinMapTest {
 		cdAntigenName.add(createName("some antig1"));
 		cdAntigenName.add(createName("some antig2"));
 		builder.cdAntigenNames(cdAntigenName);
+		builder.flag(FlagType.FRAGMENTS_PRECURSOR);
 		ProteinDescription protein = builder.build();
 		EntryProteinMap downloadable = new EntryProteinMap(protein);
 		Map<String, String> result = downloadable.attributeValues();
@@ -177,6 +180,7 @@ class EntryProteinMapTest {
 		inns.add(createName("some antig1"));
 		inns.add(createName("some antig2"));
 		builder.innNames(inns);
+		builder.flag(FlagType.FRAGMENTS_PRECURSOR);
 		ProteinDescription protein = builder.build();
 		EntryProteinMap downloadable = new EntryProteinMap(protein);
 		Map<String, String> result = downloadable.attributeValues();
