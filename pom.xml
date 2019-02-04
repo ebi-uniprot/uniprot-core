@@ -126,6 +126,7 @@
 	<modules>
 <!--  		<module>core-util</module>  -->
 		<module>core-domain</module>
+		<module>core-parser</module>
 		<module>ff-parser</module>
         <module>xml-parser</module>
         <module>controlled-vocabulary</module>
