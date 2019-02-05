@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.Position;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 
 import java.util.*;
@@ -252,15 +254,71 @@ public class EntryCommentsMap implements NamedValueMap {
 	private void updateCofactorComments(Map<String, String> map, CommentType type, List<CofactorComment> cfComments) {
 		if ((cfComments == null) || cfComments.isEmpty())
 			return;
-		String result = cfComments.stream().map(CofactorComment::toString).collect(Collectors.joining("; "));
+		String result = cfComments.stream().map(this::mapCofactorCommentToString).collect(Collectors.joining("; "));
 		map.put("cc:cofactor", result);
+	}
+
+	private String mapCofactorCommentToString(CofactorComment cofactorComment) {
+		String result = "";
+		if(cofactorComment.getMolecule() != null && !cofactorComment.getMolecule().isEmpty()) {
+			result += cofactorComment.getMolecule();
+		}
+		if(cofactorComment.getCofactors() != null && !cofactorComment.getCofactors().isEmpty()) {
+			result += cofactorComment.getCofactors().stream().map(cofactor -> {
+				String cofactorString = "";
+				if(cofactor.getName() != null && !cofactor.getName().isEmpty()){
+					cofactorString += " "+cofactor.getName();
+				}
+				if(cofactor.getCofactorReference() != null){
+					cofactorString +=" "+cofactor.getCofactorReference().getDatabaseType().getName();
+					cofactorString +=" "+cofactor.getCofactorReference().getId();
+				}
+				return cofactorString;
+			}).collect(Collectors.joining("; "));
+		}
+		if(cofactorComment.getNote() != null) {
+			result += EntryMapUtil.getNoteString(cofactorComment.getNote());
+		}
+		return result;
 	}
 
 	private void updateDiseaseComments(Map<String, String> map, CommentType type, List<DiseaseComment> dsComments) {
 		if ((dsComments == null) || dsComments.isEmpty())
 			return;
-		String result = dsComments.stream().map(DiseaseComment::toString).collect(Collectors.joining("; "));
+		String result = dsComments.stream().map(this::mapDiseaseCommentToString).collect(Collectors.joining("; "));
 		map.put("cc:disease", result);
+	}
+
+	private  String mapDiseaseCommentToString(DiseaseComment diseaseComment) {
+		String result = "";
+		if(diseaseComment.getDisease() != null){
+			Disease disease = diseaseComment.getDisease();
+			if(disease.getDiseaseId() != null && !disease.getDiseaseId().isEmpty()){
+				result += " "+disease.getDiseaseId();
+			}
+			if(disease.getDiseaseAccession() != null && !disease.getDiseaseAccession().isEmpty()){
+				result += " "+disease.getDiseaseAccession();
+			}
+			if(disease.getAcronym() != null && !disease.getAcronym().isEmpty()){
+				result += " "+disease.getAcronym();
+			}
+			if(disease.getDescription() != null && !disease.getDescription().isEmpty()){
+				result += " "+disease.getDescription();
+			}
+			if(disease.getReference() != null){
+				DBCrossReference<DiseaseReferenceType> reference = disease.getReference();
+				if(reference.getDatabaseType() != null) {
+					result += " " + reference.getDatabaseType().getName();
+				}
+				if(reference.getId() != null && !reference.getId().isEmpty()) {
+					result += " " + reference.getId();
+				}
+			}
+		}
+		if(diseaseComment.getNote() != null) {
+			result += EntryMapUtil.getNoteString(diseaseComment.getNote());
+		}
+		return result;
 	}
 
 	private void updateInterActComments(Map<String, String> map, CommentType type, List<InteractionComment> iaComments) {
@@ -281,15 +339,81 @@ public class EntryCommentsMap implements NamedValueMap {
 	private void updateMassSpecComments(Map<String, String> map, CommentType type, List<MassSpectrometryComment> msComments) {
 		if ((msComments == null) || msComments.isEmpty())
 			return;
-		String result = msComments.stream().map(MassSpectrometryComment::toString).collect(Collectors.joining(";  "));
+		String result = msComments.stream().map(this::mapMassSpectrometryCommentToString).collect(Collectors.joining(";  "));
 		map.put("cc:mass_spectrometry", result);
+	}
+
+	private String mapMassSpectrometryCommentToString(MassSpectrometryComment massSpectrometryComment) {
+		String result = "";
+		if(massSpectrometryComment.getMolWeight() != null){
+			result += " "+massSpectrometryComment.getMolWeight();
+		}
+		if(massSpectrometryComment.getMolWeightError() != null){
+			result += " "+massSpectrometryComment.getMolWeightError();
+		}
+		if(massSpectrometryComment.getMethod() != null){
+			result += " "+massSpectrometryComment.getMethod().getValue();
+		}
+		if(massSpectrometryComment.getRanges() != null && !massSpectrometryComment.getRanges().isEmpty()){
+			result += " "+massSpectrometryComment.getRanges().stream().map(this::mapMassSpectrometryRangeToString)
+					.collect(Collectors.joining("; "));
+		}
+		if(massSpectrometryComment.getNote() != null && !massSpectrometryComment.getNote().isEmpty()){
+			result += " "+massSpectrometryComment.getNote();
+		}
+		if(massSpectrometryComment.getEvidences() != null && !massSpectrometryComment.getEvidences().isEmpty()){
+			result += " "+EntryMapUtil.evidencesToString(massSpectrometryComment.getEvidences());
+		}
+		return result;
+	}
+
+	private String mapMassSpectrometryRangeToString(MassSpectrometryRange massSpectrometryRange) {
+		String range = "";
+		if(massSpectrometryRange.getRange() != null){
+			Position start = massSpectrometryRange.getRange().getStart();
+			if(start != null){
+				range += start.getValue();
+			}
+			Position end = massSpectrometryRange.getRange().getEnd();
+			if(end != null){
+				range += end.getValue();
+			}
+		}
+		return range;
 	}
 
 	private void updateRnaEdComments(Map<String, String> map, CommentType type, List<RnaEditingComment> reComments) {
 		if ((reComments == null) || reComments.isEmpty())
 			return;
-		String result = reComments.stream().map(RnaEditingComment::toString).collect(Collectors.joining(";  "));
+		String result = reComments.stream()
+				.map(this::mapRnaEditingCommentToString)
+				.collect(Collectors.joining(";  "));
 		map.put("cc:rna_editing", result);
+	}
+
+	private  String mapRnaEditingCommentToString(RnaEditingComment rnaEditingComment) {
+		String result = "";
+		if(rnaEditingComment.getLocationType() != null){
+			result += " "+rnaEditingComment.getLocationType().name();
+		}
+		if(rnaEditingComment.getPositions() != null){
+			result += " "+rnaEditingComment.getPositions().stream()
+					.map(this::mapRnaEdPositionToString)
+					.collect(Collectors.joining("; "));
+		}
+
+		if(rnaEditingComment.getNote() != null){
+			result += " "+EntryMapUtil.getNoteString(rnaEditingComment.getNote());
+		}
+		return result;
+	}
+
+	private String mapRnaEdPositionToString(RnaEdPosition rnaEdPosition) {
+		String rnaPositionString = rnaEdPosition.getPosition();
+		if(rnaEdPosition.getPosition() != null && !rnaEdPosition.getPosition().isEmpty()){
+			rnaPositionString += " "+EntryMapUtil.evidencesToString(rnaEdPosition.getEvidences());
+		}
+		return rnaPositionString;
 	}
 
 	private void updateSeqCautionComments(Map<String, String> map, CommentType type,
