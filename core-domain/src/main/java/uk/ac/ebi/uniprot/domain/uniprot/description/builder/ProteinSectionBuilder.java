@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
 
 public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, ProteinSection> {
 

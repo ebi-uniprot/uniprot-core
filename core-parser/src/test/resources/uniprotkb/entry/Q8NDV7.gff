@@ -1,0 +1,39 @@
+##gff-version 3
+##sequence-region Q8NDV7 1 1962
+Q8NDV7	UniProtKB	Chain	1	1962	.	.	.	ID=PRO_0000081980;Note=Trinucleotide repeat-containing gene 6A protein	
+Q8NDV7	UniProtKB	Domain	1781	1853	.	.	.	Note=RRM	
+Q8NDV7	UniProtKB	Region	1	932	.	.	.	Note=Interaction with argonaute family proteins	
+Q8NDV7	UniProtKB	Region	254	503	.	.	.	Note=Sufficient for interaction with AGO1%2C AGO3 and AGO4	
+Q8NDV7	UniProtKB	Region	270	346	.	.	.	Note=Sufficient for interaction with AGO2	
+Q8NDV7	UniProtKB	Region	318	399	.	.	.	Note=Sufficient for interaction with AGO2	
+Q8NDV7	UniProtKB	Region	340	439	.	.	.	Note=Sufficient for interaction with AGO2	
+Q8NDV7	UniProtKB	Region	409	495	.	.	.	Note=Sufficient for interaction with AGO2	
+Q8NDV7	UniProtKB	Region	502	751	.	.	.	Note=Sufficient for interaction with AGO2	
+Q8NDV7	UniProtKB	Region	566	1343	.	.	.	Note=Sufficient for interaction with AGO1 and AGO4	
+Q8NDV7	UniProtKB	Region	1074	1144	.	.	.	Note=Sufficient for interaction with AGO2	
+Q8NDV7	UniProtKB	Region	1604	1622	.	.	.	Note=PABPC1-interacting motif-2 (PAM2)	
+Q8NDV7	UniProtKB	Region	1670	1962	.	.	.	Note=Sufficient for interaction with AGO2	
+Q8NDV7	UniProtKB	Coiled coil	7	54	.	.	.	Ontology_term=ECO:0000255;evidence=ECO:0000255	
+Q8NDV7	UniProtKB	Compositional bias	93	127	.	.	.	Note=Gln-rich	
+Q8NDV7	UniProtKB	Compositional bias	192	365	.	.	.	Note=Ser-rich	
+Q8NDV7	UniProtKB	Modified residue	1470	1470	.	.	.	Note=Phosphothreonine;Ontology_term=ECO:0000244;evidence=ECO:0000244|PubMed:18669648;Dbxref=PMID:18669648	
+Q8NDV7	UniProtKB	Modified residue	1585	1585	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000244;evidence=ECO:0000244|PubMed:19690332;Dbxref=PMID:19690332	
+Q8NDV7	UniProtKB	Modified residue	1869	1869	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000244;evidence=ECO:0000244|PubMed:20068231;Dbxref=PMID:20068231	
+Q8NDV7	UniProtKB	Alternative sequence	1	1801	.	.	.	ID=VSP_013292;Note=In isoform 4. Missing;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:15489334;Dbxref=PMID:15489334	
+Q8NDV7	UniProtKB	Alternative sequence	1	1232	.	.	.	ID=VSP_037287;Note=In isoform 3. Missing;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:17974005;Dbxref=PMID:17974005	
+Q8NDV7	UniProtKB	Alternative sequence	1	253	.	.	.	ID=VSP_013294;Note=In isoform 2. Missing;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:11950943;Dbxref=PMID:11950943	
+Q8NDV7	UniProtKB	Alternative sequence	1	54	.	.	.	ID=VSP_013295;Note=In isoform 5. MRELEAKATKDVERNLSRDLVQEEEQLMEEKKKKKDDKKKKEAAQKKATEQKIK->MAYFGGTLYWLIFSTPFLLLGL;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:9225980;Dbxref=PMID:9225980	
+Q8NDV7	UniProtKB	Alternative sequence	1280	1328	.	.	.	ID=VSP_037288;Note=In isoform 3 and isoform 6. Missing;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:17974005;Dbxref=PMID:17974005	
+Q8NDV7	UniProtKB	Alternative sequence	1611	1962	.	.	.	ID=VSP_037289;Note=In isoform 3. Missing;Ontology_term=ECO:0000303;evidence=ECO:0000303|PubMed:17974005;Dbxref=PMID:17974005	
+Q8NDV7	UniProtKB	Natural variant	185	185	.	.	.	ID=VAR_057251;Note=N->K;Dbxref=dbSNP:rs11639856	
+Q8NDV7	UniProtKB	Natural variant	592	592	.	.	.	ID=VAR_057252;Note=A->T;Dbxref=dbSNP:rs6497759	
+Q8NDV7	UniProtKB	Natural variant	788	788	.	.	.	ID=VAR_057253;Note=P->S;Dbxref=dbSNP:rs3803716	
+Q8NDV7	UniProtKB	Natural variant	1268	1268	.	.	.	ID=VAR_057254;Note=E->K;Dbxref=dbSNP:rs2112782	
+Q8NDV7	UniProtKB	Mutagenesis	313	313	.	.	.	Note=Does not impair interaction with AGO2%3B when associated with A-345%3B A-370%3B A-420 and A-483. W->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:19324964;Dbxref=PMID:19324964	
+Q8NDV7	UniProtKB	Mutagenesis	345	345	.	.	.	Note=Does not impair interaction with AGO2%3B when associated with A-313%3B A-370%3B A-420 and A-483. W->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:19324964;Dbxref=PMID:19324964	
+Q8NDV7	UniProtKB	Mutagenesis	370	370	.	.	.	Note=Does not impair interaction with AGO2%3B when associated with A-313%3B A-345%3B A-420 and A-483. W->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:19324964;Dbxref=PMID:19324964	
+Q8NDV7	UniProtKB	Mutagenesis	420	420	.	.	.	Note=Does not impair interaction with AGO2%3B when associated with A-313%3B A-345%3B A-370 and A-483. W->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:19324964;Dbxref=PMID:19324964	
+Q8NDV7	UniProtKB	Mutagenesis	483	483	.	.	.	Note=Does not impair interaction with AGO2%3B when associated with A-313%3B A-345%3B A-370 and A-420. W->A;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:19324964;Dbxref=PMID:19324964	
+Q8NDV7	UniProtKB	Sequence conflict	31	34	.	.	.	Note=KKKK->TEKE;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q8NDV7	UniProtKB	Sequence conflict	1375	1375	.	.	.	Note=V->VV;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q8NDV7	UniProtKB	Sequence conflict	1704	1704	.	.	.	Note=S->F;Ontology_term=ECO:0000305;evidence=ECO:0000305	

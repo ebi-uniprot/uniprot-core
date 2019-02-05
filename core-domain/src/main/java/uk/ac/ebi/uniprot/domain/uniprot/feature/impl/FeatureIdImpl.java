@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Arrays;
 import java.util.EnumMap;

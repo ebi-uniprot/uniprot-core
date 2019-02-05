@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
 
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
  * Created 15/01/19

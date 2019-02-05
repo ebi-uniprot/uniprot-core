@@ -8,8 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
  * Created 16/01/19

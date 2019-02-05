@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;

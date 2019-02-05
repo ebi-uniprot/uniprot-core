@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
 import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryInactiveReasonImpl;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
  *
@@ -30,7 +30,7 @@ public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReasonBu
     }
 
     public EntryInactiveReasonBuilder addMergeDemergeTo(String mergeDemergeTo) {
-        Utils.nonNullAdd(mergeDemergeTo,this.mergeDemergeTo);
+        Utils.nonNullAdd(mergeDemergeTo, this.mergeDemergeTo);
         return this;
     }
 

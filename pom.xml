@@ -131,5 +131,6 @@
         <module>xml-parser</module>
         <module>controlled-vocabulary</module>
 		<module>json-parser</module>
+		<module>core-common</module>
 	</modules>
 </project>
