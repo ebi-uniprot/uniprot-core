@@ -29,16 +29,9 @@ public class UniProtGffParser {
     private static final String ATTRIBUTE_SEPARATE = ";";
     private static final String LINE_SEPARATOR = "\n";
 
-    public static String getGFFheader() {
-        return GFF_HEADER;
-    }
-
-    public static String getEntryHeader(UniProtEntry entry) {
-        return ENTRY_PREFIX + entry.getPrimaryAccession().getValue() + " 1 " +
-                entry.getSequence().getLength();
-    }
-
     public static String convert(UniProtEntry entry) {
+        // Note: the trailing '\t' character at the end of the line is strange, but is there to conform to the
+        //       way the current uniprot.org produces GFF files, as of 06/02/2019
         String lines = entry.getFeatures().stream().filter(UniProtGffParser::isPrintable)
                 .map(f -> convert(f, entry)).collect(Collectors.joining("\t" + LINE_SEPARATOR));
 
@@ -47,13 +40,12 @@ public class UniProtGffParser {
                 lines + "\t";
     }
 
-    public static String convert(Feature feature, UniProtEntry entry) {
-        String accession = entry.getPrimaryAccession().getValue(); // 1: seqid
-        String type = FeatureLabel.getLabelFromName(feature.getType().getName()); // 3: type
-        int start = feature.getLocation().getStart().getValue(); // 4: start
-        int end = feature.getLocation().getEnd().getValue(); // 5: end
-        String score = EMPTY_COLUMN, strand = EMPTY_COLUMN, phase = EMPTY_COLUMN; // 6,7,8: empty score, strand and
-        // phase
+    private static String convert(Feature feature, UniProtEntry entry) {
+        String accession = entry.getPrimaryAccession().getValue();                      // 1: seqid
+        String type = FeatureLabel.getLabelFromName(feature.getType().getName());       // 3: type
+        int start = feature.getLocation().getStart().getValue();                        // 4: start
+        int end = feature.getLocation().getEnd().getValue();                            // 5: end
+        String score = EMPTY_COLUMN, strand = EMPTY_COLUMN, phase = EMPTY_COLUMN;       // 6,7,8: empty score, strand and phase
         // 9: attributes
         String attributes = getFeatureAttributes(feature);
 
@@ -62,137 +54,7 @@ public class UniProtGffParser {
                            attributes);
     }
 
-    public static String getFeatureAttributes(Feature feature) {
-        StringBuilder attributesBuilder = new StringBuilder();
-        FeatureType featureType = feature.getType();
-        String descriptionValue = capitaliseFirstLetter(feature.getDescription().getValue());
-
-        // id
-        if (feature.hasFeatureId()) {
-            String featureId = feature.getFeatureId().getValue();
-            if (!nullOrEmpty(featureId)) {
-                appendAttributes("ID", escape(featureId), attributesBuilder);
-            }
-        }
-
-        // note
-        StringBuilder note = new StringBuilder();
-        boolean descriptionAddedToNote = false;
-
-        /// note - isoforms
-        if (featureType.equals(VAR_SEQ)) {
-            String isoforms = capitaliseFirstLetter(feature.getDescription().getValue().trim());
-            if (!nullOrEmpty(isoforms)) {
-                note.append(isoforms);
-                note.append(".");
-                descriptionAddedToNote = true;
-            }
-        }
-
-        // note - variant report
-        if (featureType.equals(VARIANT)) {
-            String description = descriptionValue;
-            description = description.replaceAll("[Ii]n dbSNP:.+$", "");
-            description = description.replaceAll("; dbSNP:.+$", "");
-            descriptionValue = description;
-            if (!nullOrEmpty(description)) {
-                if (note.length() > 0) {
-                    note.append(" ");
-                }
-                description = description.substring(0, 1).toUpperCase() + description.substring(1);
-                note.append(description);
-                note.append(".");
-                descriptionAddedToNote = true;
-            }
-        }
-
-        // note - mutagen report
-        if (featureType.equals(MUTAGEN)) {
-            if (!nullOrEmpty(descriptionValue)) {
-                if (note.length() > 0) {
-                    note.append(" ");
-                }
-                note.append(descriptionValue);
-                note.append(".");
-                descriptionAddedToNote = true;
-            }
-        }
-
-        // note - carbohyd report
-        if (featureType.equals(CARBOHYD)) {
-            if (!nullOrEmpty(descriptionValue)) {
-                if (note.length() > 0) {
-                    note.append(" ");
-                }
-                note.append(descriptionValue);
-                note.append(".");
-                descriptionAddedToNote = true;
-            }
-        }
-
-        // note - description
-        else if (!nullOrEmpty(descriptionValue) && !descriptionValue.startsWith("In Ref") && !descriptionAddedToNote) {
-            if (note.length() > 0) {
-                note.append(" ");
-            }
-            note.append(descriptionValue);
-            note.append(".");
-        }
-
-        // note - alternativeSequence
-        if (feature.hasAlternativeSequence()) {
-            if (note.length() > 0) {
-                note.append(" ");
-            }
-            FTLineBuilderHelper.addAlternativeSequence(note, feature, false);
-            if (!(featureType.equals(MUTAGEN))) {
-                // change all to arrows without space before and after
-                replaceArrow(note);
-            }
-        }
-
-        String noteStr = note.toString();
-
-        // check any ending dot
-        if (noteStr != null && noteStr.length() > 0 && noteStr.charAt(noteStr.length() - 1) == '.') {
-            noteStr = noteStr.substring(0, noteStr.length() - 1);
-        }
-
-        if (noteStr.length() > 0) {
-            appendAttributes("Note", escape(noteStr), attributesBuilder);
-        }
-
-        // Dbxref
-        StringBuilder dbxref = new StringBuilder();
-
-        // Dbxref - dbSNP
-        gatherVariantDbXref(feature, dbxref);
-
-        // Dbxref - PMID
-        // Ontology_term
-        // evidence
-        gatherEvidenceAttributes(feature, dbxref, attributesBuilder);
-
-        if (dbxref.length() > 0) {
-            appendAttributes("Dbxref", dbxref.toString(), attributesBuilder);
-        }
-
-        // empty attributes
-        if (attributesBuilder.length() == 0)
-            attributesBuilder.append('.');
-
-        return attributesBuilder.toString();
-    }
-
-    private static String capitaliseFirstLetter(String value) {
-        if (!nullOrEmpty(value)) {
-            return value.substring(0, 1).toUpperCase() + value.substring(1);
-        } else {
-            return value;
-        }
-    }
-
-    static void gatherEvidenceAttributes(Feature feature, StringBuilder xrefs, StringBuilder attributes) {
+    private static void gatherEvidenceAttributes(Feature feature, StringBuilder xrefs, StringBuilder attributes) {
         List<Evidence> evidences = feature.getEvidences();
 
         // Do we need remove duplicate evidence code, or just repeat e.g. Q8WWI5
@@ -230,7 +92,7 @@ public class UniProtGffParser {
         }
     }
 
-    static StringBuilder gatherVariantDbXref(Feature feature, StringBuilder dbxrefDbSNP) {
+    private static void gatherVariantDbXref(Feature feature, StringBuilder dbxrefDbSNP) {
         FeatureType featureType = feature.getType();
         if (featureType.equals(VARIANT)) {
             String r = feature.getDescription().getValue();
@@ -243,17 +105,16 @@ public class UniProtGffParser {
                 dbxrefDbSNP.append(escape(match.group()));
             }
         }
-        return dbxrefDbSNP;
     }
 
-    static void appendAttributes(String key, String value, StringBuilder builder) {
+    private static void appendAttributes(String key, String value, StringBuilder builder) {
         if (builder.length() > 0) {
             builder.append(ATTRIBUTE_SEPARATE);
         }
         builder.append(key).append('=').append(value);
     }
 
-    static void replaceArrow(StringBuilder sb) {
+    private static void replaceArrow(StringBuilder sb) {
         String replacement = "->";
         Pattern pattern = Pattern.compile(" -> ");
         Matcher m = pattern.matcher(sb);
@@ -264,30 +125,111 @@ public class UniProtGffParser {
         }
     }
 
-    static String getStringIsoformsVarSplicFeature(Feature feature) {
-//        StringBuilder result = new StringBuilder("Not implemented ");
-        return capitaliseFirstLetter(feature.getDescription().getValue().trim());
-//        int numberReports = feature.getVarsplicIsoforms().size();
-//        if (numberReports == 0)
-//            return "";
-//
-//        int count = 0;
-//        for (VarsplicIsoform isoform : feature.getVarsplicIsoforms()) {
-//            if (count == 0) {
-//                result.append("In ");
-//            } else {
-//                if (count < numberReports - 1) {
-//                    result.append(", ");
-//                } else {
-//                    result.append(" and ");
-//                }
-//            }
-//            result.append("isoform ");
-//            result.append(isoform.getValue());
-//            count++;
-//
-//        }
-//        return result.toString();
+    private static String getGFFheader() {
+        return GFF_HEADER;
+    }
+
+    private static String getEntryHeader(UniProtEntry entry) {
+        return ENTRY_PREFIX + entry.getPrimaryAccession().getValue() + " 1 " +
+                entry.getSequence().getLength();
+    }
+
+    private static String getFeatureAttributes(Feature feature) {
+        StringBuilder attributesBuilder = new StringBuilder();
+        String descriptionValue = capitaliseFirstLetter(feature.getDescription().getValue());
+
+        // id
+        if (feature.hasFeatureId()) {
+            String featureId = feature.getFeatureId().getValue();
+            if (!nullOrEmpty(featureId)) {
+                appendAttributes("ID", escape(featureId), attributesBuilder);
+            }
+        }
+
+        // note
+        String noteStr = createNote(feature, descriptionValue);
+
+        // check any ending dot
+        if (noteStr.length() > 0) {
+            if (noteStr.charAt(noteStr.length() - 1) == '.') {
+                noteStr = noteStr.substring(0, noteStr.length() - 1);
+            }
+            appendAttributes("Note", escape(noteStr), attributesBuilder);
+        }
+
+        // Dbxref
+        StringBuilder dbxrefBuilder = new StringBuilder();
+
+        // Dbxref - dbSNP
+        gatherVariantDbXref(feature, dbxrefBuilder);
+
+        // Dbxref - PMID
+        // Ontology_term
+        // evidence
+        gatherEvidenceAttributes(feature, dbxrefBuilder, attributesBuilder);
+
+        if (dbxrefBuilder.length() > 0) {
+            appendAttributes("Dbxref", dbxrefBuilder.toString(), attributesBuilder);
+        }
+
+        // empty attributes
+        if (attributesBuilder.length() == 0)
+            attributesBuilder.append('.');
+
+        return attributesBuilder.toString();
+    }
+
+    private static String createNote(Feature feature, String descriptionValue) {
+        StringBuilder note = new StringBuilder();
+        FeatureType featureType = feature.getType();
+        if (!nullOrEmpty(descriptionValue)) {
+            if (featureType.equals(VARIANT)) {
+                updateNoteForVariant(descriptionValue, note);
+            } else if (featureType.equals(VAR_SEQ) ||
+                    featureType.equals(MUTAGEN) ||
+                    featureType.equals(CARBOHYD) ||
+                    !descriptionValue.startsWith("In Ref")) {
+                addNoteSpaceIfRequired(note);
+                note.append(descriptionValue);
+                note.append(".");
+            }
+        }
+
+        // note - alternativeSequence
+        if (feature.hasAlternativeSequence()) {
+            addNoteSpaceIfRequired(note);
+            FTLineBuilderHelper.addAlternativeSequence(note, feature, false);
+            if (!(featureType.equals(MUTAGEN))) {
+                // change all to arrows without space before and after
+                replaceArrow(note);
+            }
+        }
+        return note.toString();
+    }
+
+    private static void updateNoteForVariant(String descriptionValue, StringBuilder note) {
+        descriptionValue = descriptionValue.replaceAll("[Ii]n dbSNP:.+$", "");
+        descriptionValue = descriptionValue.replaceAll("; dbSNP:.+$", "");
+        if (!nullOrEmpty(descriptionValue)) {
+            addNoteSpaceIfRequired(note);
+            descriptionValue = descriptionValue.substring(0, 1).toUpperCase() + descriptionValue.substring(1);
+            note.append(descriptionValue);
+            note.append(".");
+        }
+    }
+
+    private static void addNoteSpaceIfRequired(StringBuilder note) {
+        if (note.length() > 0) {
+            note.append(" ");
+        }
+    }
+
+    private static String capitaliseFirstLetter(String value) {
+        if (!nullOrEmpty(value)) {
+            return value.substring(0, 1).toUpperCase() + value.substring(1);
+        } else {
+            return value;
+        }
     }
 
     private static String escape(String text) {
