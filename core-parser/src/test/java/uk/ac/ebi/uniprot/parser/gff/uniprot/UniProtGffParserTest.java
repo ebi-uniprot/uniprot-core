@@ -16,9 +16,8 @@ import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 /**
  * Created 05/02/19
@@ -38,7 +37,7 @@ class UniProtGffParserTest {
         String gffAsString = readEntryFromFile(gffPath)
                 .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
         System.out.println(entryGff);
-        assertThat(entryGff, is(gffAsString));
+        verify(entryGff, gffAsString);
     }
 
     @Test
@@ -51,8 +50,22 @@ class UniProtGffParserTest {
         String gffAsString = readEntryFromFile(gffPath)
                 .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
         System.out.println(entryGff);
-        assertThat(entryGff, is(gffAsString));
+        verify(entryGff, gffAsString);
     }
+
+    private void verify(String entryGff, String gffAsString) {
+        String[] givenGff = entryGff.split("\n");
+        String[] expectedGff = gffAsString.split("\n");
+        for (int i = 0; i < Math.min(givenGff.length, expectedGff.length); i++) {
+            if (!givenGff[i].equals(expectedGff[i])) {
+                System.out.println("");
+                System.out.println("Given:    " + givenGff[i]);
+                System.out.println("Expected: " + expectedGff[i]);
+                fail();
+            }
+        }
+    }
+
 
     private UniProtEntry readEntry(String path) {
         UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();

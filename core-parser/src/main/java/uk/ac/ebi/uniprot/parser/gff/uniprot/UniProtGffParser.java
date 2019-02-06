@@ -39,11 +39,9 @@ public class UniProtGffParser {
     }
 
     public static String convert(UniProtEntry entry) {
-        // should no tab in the end of each line
         String lines = entry.getFeatures().stream().filter(UniProtGffParser::isPrintable)
                 .map(f -> convert(f, entry)).collect(Collectors.joining("\t" + LINE_SEPARATOR));
 
-        // should no tab in the end of each line
         return getGFFheader() + LINE_SEPARATOR +
                 getEntryHeader(entry) + LINE_SEPARATOR +
                 lines + "\t";
@@ -79,21 +77,24 @@ public class UniProtGffParser {
 
         // note
         StringBuilder note = new StringBuilder();
+        boolean descriptionAddedToNote = false;
 
         /// note - isoforms
         if (featureType.equals(VAR_SEQ)) {
-            String isoforms = getStringIsoformsVarSplicFeature(feature);
+            String isoforms = capitaliseFirstLetter(feature.getDescription().getValue().trim());
             if (!nullOrEmpty(isoforms)) {
                 note.append(isoforms);
                 note.append(".");
+                descriptionAddedToNote = true;
             }
         }
 
         // note - variant report
         if (featureType.equals(VARIANT)) {
             String description = descriptionValue;
-            description = description.replaceAll("in dbSNP:.+$", "");
+            description = description.replaceAll("[Ii]n dbSNP:.+$", "");
             description = description.replaceAll("; dbSNP:.+$", "");
+            descriptionValue = description;
             if (!nullOrEmpty(description)) {
                 if (note.length() > 0) {
                     note.append(" ");
@@ -101,6 +102,7 @@ public class UniProtGffParser {
                 description = description.substring(0, 1).toUpperCase() + description.substring(1);
                 note.append(description);
                 note.append(".");
+                descriptionAddedToNote = true;
             }
         }
 
@@ -112,62 +114,32 @@ public class UniProtGffParser {
                 }
                 note.append(descriptionValue);
                 note.append(".");
+                descriptionAddedToNote = true;
             }
         }
 
-        if (featureType.equals(CONFLICT)) {
-            System.out.println("here");
-        }
         // note - carbohyd report
         if (featureType.equals(CARBOHYD)) {
-//            CarbohydFeature carbo = (CarbohydFeature) feature;
-//            StringBuilder sb = new StringBuilder();
-//            if (carbo.getCarbohydLinkType() != CarbohydLinkType.UNKNOWN) {
-//                sb.append(carbo.getCarbohydLinkType().getValue());
-//                sb.append(" ");
-//                sb.append(carbo.getLinkedSugar().getValue());
-//            }
-//            StringBuilder descr = FTLineBuilderHelper.getDescriptionString(feature);
-//            if ((sb.length() > 0) && (descr.length() > 0)) {
-//                sb.append("; ");
-//                sb.append(descr);
-//            }
-//
-//            String description = sb.toString();
-//
-//            if (!nullOrEmpty(description)) {
-//                if (note.length() > 0) {
-//                    note.append(" ");
-//                }
-//                note.append(description);
-//                note.append(".");
-//            }
-        }
-
-        // note - description
-        else if (!nullOrEmpty(descriptionValue)) {
             if (!nullOrEmpty(descriptionValue)) {
                 if (note.length() > 0) {
                     note.append(" ");
                 }
                 note.append(descriptionValue);
                 note.append(".");
+                descriptionAddedToNote = true;
             }
         }
 
+        // note - description
+        else if (!nullOrEmpty(descriptionValue) && !descriptionValue.startsWith("In Ref") && !descriptionAddedToNote) {
+            if (note.length() > 0) {
+                note.append(" ");
+            }
+            note.append(descriptionValue);
+            note.append(".");
+        }
+
         // note - alternativeSequence
-//        if (feature.hasAlternativeSequence()) {
-//            HasAlternativeSequence featurewithAlternativeSequence = (HasAlternativeSequence) feature;
-//            if (note.length() > 0) {
-//                note.append(" ");
-//            }
-//            FTLineBuilderHelper.addAlternativeSequence(note, featurewithAlternativeSequence, false);
-//
-//            if (!(featureType.equals(MUTAGEN))) {
-//                // change all to arrows without space before and after
-//                replaceArrow(note);
-//            }
-//        }
         if (feature.hasAlternativeSequence()) {
             if (note.length() > 0) {
                 note.append(" ");
@@ -294,7 +266,7 @@ public class UniProtGffParser {
 
     static String getStringIsoformsVarSplicFeature(Feature feature) {
 //        StringBuilder result = new StringBuilder("Not implemented ");
-        return feature.getDescription().getValue().trim();
+        return capitaliseFirstLetter(feature.getDescription().getValue().trim());
 //        int numberReports = feature.getVarsplicIsoforms().size();
 //        if (numberReports == 0)
 //            return "";
