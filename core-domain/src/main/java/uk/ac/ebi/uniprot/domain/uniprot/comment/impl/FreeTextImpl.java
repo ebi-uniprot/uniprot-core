@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeText;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
@@ -25,6 +26,11 @@ public class FreeTextImpl implements FreeText {
 
     public List<EvidencedValue> getTexts() {
         return texts;
+    }
+
+    @Override
+    public boolean hasTexts() {
+        return Utils.notEmpty(this.texts);
     }
 
     @Override

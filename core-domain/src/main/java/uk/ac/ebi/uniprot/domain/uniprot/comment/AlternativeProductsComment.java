@@ -8,4 +8,10 @@ public interface AlternativeProductsComment extends Comment {
     public List<APIsoform> getIsoforms();
 
     public Note getNote();
+
+    boolean hasEvents();
+
+    boolean hasIsoforms();
+
+    boolean hasNote();
 }

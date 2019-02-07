@@ -41,6 +41,21 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     }
 
     @Override
+    public boolean hasLocation() {
+        return this.location != null;
+    }
+
+    @Override
+    public boolean hasTopology() {
+        return this.topology != null;
+    }
+
+    @Override
+    public boolean hasOrientation() {
+        return this.orientation != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

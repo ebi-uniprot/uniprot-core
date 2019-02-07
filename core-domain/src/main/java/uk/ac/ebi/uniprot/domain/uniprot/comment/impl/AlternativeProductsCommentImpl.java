@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 
 import java.util.Collections;
@@ -48,6 +49,21 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
     @Override
     public Note getNote() {
         return note;
+    }
+
+    @Override
+    public boolean hasEvents() {
+        return Utils.notEmpty(this.events);
+    }
+
+    @Override
+    public boolean hasIsoforms() {
+        return Utils.notEmpty(this.isoforms);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
     }
 
     @Override

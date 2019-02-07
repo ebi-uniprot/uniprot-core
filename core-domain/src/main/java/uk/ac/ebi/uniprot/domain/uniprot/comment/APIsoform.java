@@ -17,4 +17,16 @@ public interface APIsoform {
 
     IsoformSequenceStatus getIsoformSequenceStatus();
 
+    boolean hasName();
+
+    boolean hasSynonyms();
+
+    boolean hasNote();
+
+    boolean hasIsoformIds();
+
+    boolean hasSequenceIds();
+
+    boolean hasIsoformSequenceStatus();
+
 }

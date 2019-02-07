@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
@@ -51,6 +52,21 @@ public class SubcellularLocationCommentImpl extends CommentImpl implements Subce
     @Override
     public List<SubcellularLocation> getSubcellularLocations() {
         return subcellularLocations;
+    }
+
+    @Override
+    public boolean hasMolecule() {
+        return Utils.notEmpty(this.molecule);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
+    public boolean hasSubcellularLocations() {
+        return Utils.notEmpty(this.subcellularLocations);
     }
 
     @Override

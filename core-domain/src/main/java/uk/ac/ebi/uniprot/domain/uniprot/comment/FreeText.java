@@ -12,4 +12,6 @@ import java.util.List;
  */
 public interface FreeText {
     List<EvidencedValue> getTexts();
+
+    boolean hasTexts();
 }

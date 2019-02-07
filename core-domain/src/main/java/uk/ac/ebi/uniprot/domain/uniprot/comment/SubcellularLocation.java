@@ -8,4 +8,10 @@ public interface SubcellularLocation {
 
     SubcellularLocationValue getOrientation();
 
+    boolean hasLocation();
+
+    boolean hasTopology();
+
+    boolean hasOrientation();
+
 }

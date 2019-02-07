@@ -73,6 +73,36 @@ public class APIsoformImpl implements APIsoform {
     }
 
     @Override
+    public boolean hasName() {
+        return this.name != null;
+    }
+
+    @Override
+    public boolean hasSynonyms() {
+        return Utils.notEmpty(this.synonyms);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
+    public boolean hasIsoformIds() {
+        return Utils.notEmpty(this.isoformIds);
+    }
+
+    @Override
+    public boolean hasSequenceIds() {
+        return Utils.notEmpty(this.sequenceIds);
+    }
+
+    @Override
+    public boolean hasIsoformSequenceStatus() {
+        return this.isoformSequenceStatus != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
