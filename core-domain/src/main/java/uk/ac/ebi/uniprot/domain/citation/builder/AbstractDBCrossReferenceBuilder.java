@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.Property;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.*;
+import static uk.ac.ebi.uniprot.common.Utils.*;
 
 /**
  * Created 10/01/19

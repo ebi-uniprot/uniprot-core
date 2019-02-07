@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
@@ -13,7 +14,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;

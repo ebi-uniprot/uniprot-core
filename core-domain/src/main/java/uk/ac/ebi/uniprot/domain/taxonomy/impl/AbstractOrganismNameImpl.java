@@ -5,8 +5,8 @@ import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import java.util.List;
 import java.util.Objects;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullUnmodifiableList;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nullToEmpty;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullUnmodifiableList;
+import static uk.ac.ebi.uniprot.common.Utils.nullToEmpty;
 
 /**
  * @author lgonzales

@@ -9,8 +9,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
     private RnaEditingLocationType locationType;

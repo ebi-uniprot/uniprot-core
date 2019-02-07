@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
 import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;

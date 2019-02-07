@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.util;
+package uk.ac.ebi.uniprot.common;
 
 import java.math.BigDecimal;
 

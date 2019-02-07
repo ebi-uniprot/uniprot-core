@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 public class FeatureDescriptionImpl implements FeatureDescription {
     private String value;

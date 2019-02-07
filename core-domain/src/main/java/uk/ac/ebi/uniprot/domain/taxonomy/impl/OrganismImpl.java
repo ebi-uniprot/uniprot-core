@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static java.util.Collections.emptyList;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullUnmodifiableList;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullUnmodifiableList;
 
 public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     private static final long serialVersionUID = 3285422222944186108L;

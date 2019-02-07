@@ -11,6 +11,11 @@
     <version>0.1-SNAPSHOT</version>
     <artifactId>core-domain</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>uk.ac.ebi.uniprot</groupId>
+            <artifactId>core-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
        	<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
