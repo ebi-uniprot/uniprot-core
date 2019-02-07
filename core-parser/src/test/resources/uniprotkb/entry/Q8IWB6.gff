@@ -1,0 +1,30 @@
+##gff-version 3
+##sequence-region Q8IWB6 1 1497
+Q8IWB6	UniProtKB	Chain	1	1497	.	.	.	ID=PRO_0000246995;Note=Inactive serine/threonine-protein kinase TEX14	
+Q8IWB6	UniProtKB	Repeat	27	54	.	.	.	Note=ANK 1	
+Q8IWB6	UniProtKB	Repeat	55	84	.	.	.	Note=ANK 2	
+Q8IWB6	UniProtKB	Repeat	88	117	.	.	.	Note=ANK 3	
+Q8IWB6	UniProtKB	Domain	227	518	.	.	.	Note=Protein kinase;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00159	
+Q8IWB6	UniProtKB	Nucleotide binding	233	241	.	.	.	Note=ATP;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00159	
+Q8IWB6	UniProtKB	Motif	795	801	.	.	.	Note=GPPX3Y	
+Q8IWB6	UniProtKB	Motif	852	860	.	.	.	Note=D-box	
+Q8IWB6	UniProtKB	Binding site	273	273	.	.	.	Note=ATP;Ontology_term=ECO:0000255;evidence=ECO:0000255|PROSITE-ProRule:PRU00159	
+Q8IWB6	UniProtKB	Modified residue	175	175	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:F1M5M3	
+Q8IWB6	UniProtKB	Modified residue	437	437	.	.	.	Note=Phosphoserine%3B by PLK1;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
+Q8IWB6	UniProtKB	Modified residue	567	567	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:F1M5M3	
+Q8IWB6	UniProtKB	Modified residue	665	665	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:F1M5M3	
+Q8IWB6	UniProtKB	Modified residue	1106	1106	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
+Q8IWB6	UniProtKB	Modified residue	1404	1404	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
+Q8IWB6	UniProtKB	Modified residue	1459	1459	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
+Q8IWB6	UniProtKB	Modified residue	1496	1496	.	.	.	Note=Phosphoserine;Ontology_term=ECO:0000250;evidence=ECO:0000250|UniProtKB:Q7M6U3	
+Q8IWB6	UniProtKB	Alternative sequence	213	218	.	.	.	ID=VSP_019868;Note=In isoform 2 and isoform 3. Missing;Ontology_term=ECO:0000303,ECO:0000303;evidence=ECO:0000303|PubMed:11279525,ECO:0000303|PubMed:17974005;Dbxref=PMID:11279525,PMID:17974005	
+Q8IWB6	UniProtKB	Alternative sequence	1064	1103	.	.	.	ID=VSP_019869;Note=In isoform 3. Missing;Ontology_term=ECO:0000303,ECO:0000303;evidence=ECO:0000303|PubMed:11279525,ECO:0000303|PubMed:17974005;Dbxref=PMID:11279525,PMID:17974005	
+Q8IWB6	UniProtKB	Natural variant	88	88	.	.	.	ID=VAR_041388;Note=D->G;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=dbSNP:rs56292204,PMID:17344846	
+Q8IWB6	UniProtKB	Natural variant	321	321	.	.	.	ID=VAR_041389;Note=In a gastric adenocarcinoma sample%3B somatic mutation. K->E;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
+Q8IWB6	UniProtKB	Natural variant	443	443	.	.	.	ID=VAR_041390;Note=S->C;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
+Q8IWB6	UniProtKB	Natural variant	559	559	.	.	.	ID=VAR_041391;Note=I->M;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:17344846;Dbxref=PMID:17344846	
+Q8IWB6	UniProtKB	Mutagenesis	614	618	.	.	.	Note=In PBD-1%3B reduced ability to interact with PLK1. SSPST->AAPAA;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22405274;Dbxref=PMID:22405274	
+Q8IWB6	UniProtKB	Mutagenesis	726	728	.	.	.	Note=In PBD-5%3B reduced ability to interact with PLK1. STT->AAA;Ontology_term=ECO:0000269;evidence=ECO:0000269|PubMed:22405274;Dbxref=PMID:22405274	
+Q8IWB6	UniProtKB	Sequence conflict	1326	1326	.	.	.	Note=H->R;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q8IWB6	UniProtKB	Sequence conflict	1387	1387	.	.	.	Note=L->P;Ontology_term=ECO:0000305;evidence=ECO:0000305	
+Q8IWB6	UniProtKB	Beta strand	797	800	.	.	.	Ontology_term=ECO:0000244;evidence=ECO:0000244|PDB:3WUT	

@@ -24,7 +24,7 @@ import static org.junit.Assert.fail;
  *
  * @author Edd
  */
-class UniProtGffParserTest {
+class UniProtGffParserIT {
     private static final String TEST_FILE_PATH = "/uniprotkb/entry/";
 
     @Test
@@ -44,6 +44,19 @@ class UniProtGffParserTest {
     void validateOutputForP21802() {
         String entryPath = TEST_FILE_PATH + "P21802.dat";
         String gffPath = TEST_FILE_PATH + "P21802.gff";
+        UniProtEntry entry = readEntry(entryPath);
+        String entryGff = UniProtGffParser.convert(entry);
+
+        String gffAsString = readEntryFromFile(gffPath)
+                .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
+        System.out.println(entryGff);
+        verify(entryGff, gffAsString);
+    }
+
+    @Test
+    void validateOutputForQ8IWB6() {
+        String entryPath = TEST_FILE_PATH + "Q8IWB6.dat";
+        String gffPath = TEST_FILE_PATH + "Q8IWB6.gff";
         UniProtEntry entry = readEntry(entryPath);
         String entryGff = UniProtGffParser.convert(entry);
 
