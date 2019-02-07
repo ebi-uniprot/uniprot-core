@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 
 import java.util.Objects;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nullToEmpty;
+import static uk.ac.ebi.uniprot.common.Utils.nullToEmpty;
 
 public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
     private String resourceName;

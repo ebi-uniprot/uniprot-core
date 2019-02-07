@@ -10,8 +10,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullList;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     private String diseaseId;

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import uk.ac.ebi.uniprot.domain.util.Utils;
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.util.property.PropertyArray;
 import uk.ac.ebi.uniprot.domain.util.property.PropertyObject;
 

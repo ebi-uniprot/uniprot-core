@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinNameImpl;
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.util.Utils.nonNullAdd;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
 
 
 /**

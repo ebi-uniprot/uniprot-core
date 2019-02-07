@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.util;
+package uk.ac.ebi.uniprot.common;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -13,7 +13,8 @@ public class Utils {
         else
             return value;
     }
-
+            // uk.ac.ebi.uniprot.common.Utils
+    // import static uk.ac.ebi.uniprot.domain.util.Utils
     public static <T> List<T> nonNullList(List<T> source) {
         if (source != null) {
             return new ArrayList<>(source);
