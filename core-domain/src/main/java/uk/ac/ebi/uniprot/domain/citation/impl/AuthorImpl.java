@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 public class AuthorImpl implements Author {
     private String value;

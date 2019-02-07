@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 public class PublicationDateImpl implements PublicationDate {
     private String value;

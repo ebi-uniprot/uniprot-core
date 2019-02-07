@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.List;
 import java.util.Objects;

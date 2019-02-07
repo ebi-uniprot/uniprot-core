@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;

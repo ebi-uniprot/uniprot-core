@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.regex.Pattern;
 
