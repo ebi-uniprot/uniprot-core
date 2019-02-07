@@ -22,6 +22,24 @@ public interface ProteinDescription {
 
     List<ProteinSection> getContains();
 
+    boolean hasRecommendedName();
+
+    boolean hasAlternativeNames();
+
+    boolean hasSubmissionNames();
+
+    boolean hasAllergenName();
+
+    boolean hasBiotechName();
+
+    boolean hasCdAntigenNames();
+
+    boolean hasInnNames();
+
+    boolean hasIncludes();
+
+    boolean hasContains();
+
     boolean isValid();
 
     Flag getFlag();

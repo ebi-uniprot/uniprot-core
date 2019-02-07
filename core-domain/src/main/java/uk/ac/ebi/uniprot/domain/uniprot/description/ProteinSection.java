@@ -6,4 +6,8 @@ public interface ProteinSection {
     ProteinName getRecommendedName();
 
     List<ProteinName> getAlternativeNames();
+
+    boolean hasRecommendedName();
+
+    boolean hasAlternativeNames();
 }

@@ -14,4 +14,10 @@ public interface UniProtReference extends HasEvidences {
 
     public List<String> getReferencePositions();
 
+    boolean hasCitation();
+
+    boolean hasReferenceComments();
+
+    boolean hastReferencePositions();
+
 }

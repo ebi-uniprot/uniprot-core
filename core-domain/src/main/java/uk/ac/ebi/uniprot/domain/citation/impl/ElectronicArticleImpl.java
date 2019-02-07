@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.citation.impl;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.List;
 
@@ -79,6 +80,11 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         @Override
         public String getValue() {
             return value;
+        }
+
+        @Override
+        public boolean hasValue() {
+            return Utils.notEmpty(this.value);
         }
 
         @Override

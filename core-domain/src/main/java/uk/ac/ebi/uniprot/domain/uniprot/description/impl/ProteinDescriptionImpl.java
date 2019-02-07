@@ -122,6 +122,51 @@ public class ProteinDescriptionImpl implements ProteinDescription {
     }
 
     @Override
+    public boolean hasRecommendedName() {
+        return this.recommendedName != null;
+    }
+
+    @Override
+    public boolean hasAlternativeNames() {
+        return Utils.notEmpty(this.alternativeNames);
+    }
+
+    @Override
+    public boolean hasSubmissionNames() {
+        return Utils.notEmpty(this.submissionNames);
+    }
+
+    @Override
+    public boolean hasAllergenName() {
+        return this.allergenName != null;
+    }
+
+    @Override
+    public boolean hasBiotechName() {
+        return this.biotechName != null;
+    }
+
+    @Override
+    public boolean hasCdAntigenNames() {
+        return Utils.notEmpty(this.cdAntigenNames);
+    }
+
+    @Override
+    public boolean hasInnNames() {
+        return Utils.notEmpty(this.innNames);
+    }
+
+    @Override
+    public boolean hasIncludes() {
+        return Utils.notEmpty(this.includes);
+    }
+
+    @Override
+    public boolean hasContains() {
+        return Utils.notEmpty(this.contains);
+    }
+
+    @Override
     public Flag getFlag() {
         return flag;
     }

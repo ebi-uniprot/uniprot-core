@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -33,6 +34,11 @@ public class CofactorImpl implements Cofactor {
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

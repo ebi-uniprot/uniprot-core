@@ -43,6 +43,11 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public String getDiseaseId() {
         return diseaseId;
     }

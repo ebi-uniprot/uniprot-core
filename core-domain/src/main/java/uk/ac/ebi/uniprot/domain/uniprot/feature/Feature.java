@@ -13,11 +13,17 @@ public interface Feature extends HasEvidences {
 
     FeatureId getFeatureId();
 
-    boolean hasFeatureId();
-
     AlternativeSequence getAlternativeSequence();
+
+    DBCrossReference<FeatureXDbType> getDbXref();
+
+    boolean hastLocation();
+
+    boolean hasDescription();
+
+    boolean hasFeatureId();
 
     boolean hasAlternativeSequence();
 
-    DBCrossReference<FeatureXDbType> getDbXref();
+    boolean hasDbXref();
 }

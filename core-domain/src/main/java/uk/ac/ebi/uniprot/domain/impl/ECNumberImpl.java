@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
 import uk.ac.ebi.uniprot.domain.ECNumber;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.regex.Pattern;
 
@@ -19,6 +20,11 @@ public class ECNumberImpl implements ECNumber {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
     }
 
     @Override

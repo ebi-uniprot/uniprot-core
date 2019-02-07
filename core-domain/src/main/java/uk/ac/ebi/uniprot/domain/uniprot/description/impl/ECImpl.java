@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -27,6 +28,11 @@ public class ECImpl extends ECNumberImpl implements EC {
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

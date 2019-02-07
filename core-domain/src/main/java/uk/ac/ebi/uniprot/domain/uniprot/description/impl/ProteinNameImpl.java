@@ -50,6 +50,21 @@ public class ProteinNameImpl implements ProteinName {
     }
 
     @Override
+    public boolean hasFullName() {
+        return this.fullName != null;
+    }
+
+    @Override
+    public boolean hasShortNames() {
+        return this.shortNames != null;
+    }
+
+    @Override
+    public boolean hasEcNumbers() {
+        return this.ecNumbers != null;
+    }
+
+    @Override
     public boolean isValid() {
         return (getFullName() != null) &&
                 ((getFullName().getValue() != null)

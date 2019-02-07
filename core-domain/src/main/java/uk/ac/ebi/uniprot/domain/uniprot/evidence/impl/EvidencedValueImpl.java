@@ -27,8 +27,18 @@ public class EvidencedValueImpl implements EvidencedValue {
     }
 
     @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
+    }
+
+    @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

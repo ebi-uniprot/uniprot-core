@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface HasEvidences {
     public List<Evidence> getEvidences();
+    
+    boolean hasEvidences();
 }

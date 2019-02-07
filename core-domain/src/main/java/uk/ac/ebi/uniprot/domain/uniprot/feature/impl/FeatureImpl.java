@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -60,13 +61,14 @@ public class FeatureImpl implements Feature {
         }
     }
 
-    public static Builder createBuilder() {
-        return new Builder();
-    }
-
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override
@@ -91,7 +93,7 @@ public class FeatureImpl implements Feature {
 
     @Override
     public boolean hasFeatureId() {
-        return FeatureIdImpl.hasFeatureId(type);
+        return this.featureId != null && FeatureIdImpl.hasFeatureId(type);
     }
 
 
@@ -106,8 +108,23 @@ public class FeatureImpl implements Feature {
     }
 
     @Override
+    public boolean hasDbXref() {
+        return this.dbXref != null;
+    }
+
+    @Override
     public DBCrossReference<FeatureXDbType> getDbXref() {
         return dbXref;
+    }
+
+    @Override
+    public boolean hastLocation() {
+        return this.location != null;
+    }
+
+    @Override
+    public boolean hasDescription() {
+        return this.description != null && this.description.hasValue();
     }
 
     @Override
@@ -166,66 +183,5 @@ public class FeatureImpl implements Feature {
         if (type != other.type)
             return false;
         return true;
-    }
-
-    public static final class Builder {
-        private FeatureType type;
-        private Range location;
-        private FeatureDescription description;
-        private FeatureId featureId;
-        private AlternativeSequence alternativeSequence;
-        private DBCrossReference<FeatureXDbType> dbXref;
-        private List<Evidence> evidences;
-
-        public FeatureImpl build() {
-            if (type == null) {
-                throw new RuntimeException("Feature Type is not set");
-            }
-            if (location == null) {
-                throw new RuntimeException("Feature location is not set");
-            }
-            return new FeatureImpl(type, location, description, featureId, alternativeSequence,
-                                   dbXref, evidences);
-        }
-
-        public Builder type(FeatureType type) {
-            this.type = type;
-            return this;
-        }
-
-        public Builder location(Range location) {
-            this.location = location;
-            return this;
-        }
-
-        public Builder description(FeatureDescription description) {
-            this.description = description;
-            return this;
-        }
-
-        public Builder description(String description) {
-            this.description = new FeatureDescriptionImpl(description);
-            return this;
-        }
-
-        public Builder featureId(FeatureId featureId) {
-            this.featureId = featureId;
-            return this;
-        }
-
-        public Builder alternativeSequence(AlternativeSequence alternativeSequence) {
-            this.alternativeSequence = alternativeSequence;
-            return this;
-        }
-
-        public Builder dbXref(DBCrossReference<FeatureXDbType> dbXref) {
-            this.dbXref = dbXref;
-            return this;
-        }
-
-        public Builder evidences(List<Evidence> evidences) {
-            this.evidences = evidences;
-            return this;
-        }
     }
 }

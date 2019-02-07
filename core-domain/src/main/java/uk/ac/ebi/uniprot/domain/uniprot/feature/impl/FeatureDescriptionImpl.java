@@ -20,6 +20,11 @@ public class FeatureDescriptionImpl implements FeatureDescription {
     }
 
     @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;

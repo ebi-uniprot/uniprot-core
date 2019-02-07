@@ -48,6 +48,11 @@ public class FeatureIdImpl implements FeatureId {
     }
 
     @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
+    }
+
+    @Override
     public boolean isValid(FeatureType type) {
         List<Pattern> patterns = FEATUREID_REGEX_MAP.get(type);
         if (patterns == null)

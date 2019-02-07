@@ -9,5 +9,11 @@ public interface ProteinName {
 
     List<EC> getEcNumbers();
 
+    boolean hasFullName();
+
+    boolean hasShortNames();
+
+    boolean hasEcNumbers();
+
     boolean isValid();
 }

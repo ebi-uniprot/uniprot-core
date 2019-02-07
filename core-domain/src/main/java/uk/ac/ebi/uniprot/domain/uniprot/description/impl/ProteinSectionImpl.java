@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 import java.util.Collections;
 import java.util.List;
@@ -33,6 +34,16 @@ public class ProteinSectionImpl implements ProteinSection {
     @Override
     public List<ProteinName> getAlternativeNames() {
         return alternativeNames;
+    }
+
+    @Override
+    public boolean hasRecommendedName() {
+        return this.recommendedName != null;
+    }
+
+    @Override
+    public boolean hasAlternativeNames() {
+        return Utils.notEmpty(this.alternativeNames);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.util.Utils;
 
 public class PublicationDateImpl implements PublicationDate {
     private String value;
@@ -16,6 +17,11 @@ public class PublicationDateImpl implements PublicationDate {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
     }
 
     @Override

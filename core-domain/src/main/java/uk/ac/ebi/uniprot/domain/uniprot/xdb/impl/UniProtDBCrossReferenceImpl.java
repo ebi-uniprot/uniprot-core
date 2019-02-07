@@ -45,6 +45,11 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getDatabaseName()).append(SEMICOLON);
