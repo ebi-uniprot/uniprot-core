@@ -26,11 +26,11 @@ public class UniProtGffParser {
     private static final String FEATURE_SOURCE = "UniProtKB";
     private static final String EMPTY_COLUMN = ".";
     private static final String COLUMN_SEPARATOR = "\t";
-    private static final String ATTRIBUTE_SEPARATE = ";";
+    private static final String ATTRIBUTE_SEPARATOR = ";";
     private static final String LINE_SEPARATOR = "\n";
 
     public static String convert(UniProtEntry entry) {
-        // Note: the trailing '\t' character at the end of the line is strange, but is there to conform to the
+        // Note: the trailing '/t' character at the end of the line is strange, but is there to conform to the
         //       way the current uniprot.org produces GFF files, as of 06/02/2019
         String lines = entry.getFeatures().stream().filter(UniProtGffParser::isPrintable)
                 .map(f -> convert(f, entry)).collect(Collectors.joining("\t" + LINE_SEPARATOR));
@@ -85,9 +85,7 @@ public class UniProtGffParser {
                 .map(p -> "PMID:" + escape(p)).collect(Collectors.joining(","));
 
         if (!nullOrEmpty(pubmed)) {
-            if (xrefs.length() > 0) {
-                xrefs.append(",");
-            }
+            ifBuilderNonEmptyThenAppend(xrefs, ",");
             xrefs.append(pubmed);
         }
     }
@@ -99,18 +97,14 @@ public class UniProtGffParser {
             Pattern pattern = Pattern.compile("(dbSNP:\\w+)");
             Matcher match = pattern.matcher(r);
             while (match.find()) {
-                if (dbxrefDbSNP.length() > 0) {
-                    dbxrefDbSNP.append(",");
-                }
+                ifBuilderNonEmptyThenAppend(dbxrefDbSNP, ",");
                 dbxrefDbSNP.append(escape(match.group()));
             }
         }
     }
 
     private static void appendAttributes(String key, String value, StringBuilder builder) {
-        if (builder.length() > 0) {
-            builder.append(ATTRIBUTE_SEPARATE);
-        }
+        ifBuilderNonEmptyThenAppend(builder, ATTRIBUTE_SEPARATOR);
         builder.append(key).append('=').append(value);
     }
 
@@ -189,7 +183,7 @@ public class UniProtGffParser {
                     featureType.equals(MUTAGEN) ||
                     featureType.equals(CARBOHYD) ||
                     !descriptionValue.startsWith("In Ref")) {
-                addNoteSpaceIfRequired(note);
+                ifBuilderNonEmptyThenAppendSpace(note);
                 note.append(descriptionValue);
                 note.append(".");
             }
@@ -197,7 +191,7 @@ public class UniProtGffParser {
 
         // note - alternativeSequence
         if (feature.hasAlternativeSequence()) {
-            addNoteSpaceIfRequired(note);
+            ifBuilderNonEmptyThenAppendSpace(note);
             FTLineBuilderHelper.addAlternativeSequence(note, feature, false);
             if (!(featureType.equals(MUTAGEN))) {
                 // change all to arrows without space before and after
@@ -211,16 +205,20 @@ public class UniProtGffParser {
         descriptionValue = descriptionValue.replaceAll("[Ii]n dbSNP:.+$", "");
         descriptionValue = descriptionValue.replaceAll("; dbSNP:.+$", "");
         if (!nullOrEmpty(descriptionValue)) {
-            addNoteSpaceIfRequired(note);
+            ifBuilderNonEmptyThenAppendSpace(note);
             descriptionValue = descriptionValue.substring(0, 1).toUpperCase() + descriptionValue.substring(1);
             note.append(descriptionValue);
             note.append(".");
         }
     }
 
-    private static void addNoteSpaceIfRequired(StringBuilder note) {
-        if (note.length() > 0) {
-            note.append(" ");
+    private static void ifBuilderNonEmptyThenAppendSpace(StringBuilder stringBuilder) {
+        ifBuilderNonEmptyThenAppend(stringBuilder, " ");
+    }
+
+    private static void ifBuilderNonEmptyThenAppend(StringBuilder stringBuilder, String toAdd) {
+        if (stringBuilder.length() > 0) {
+            stringBuilder.append(toAdd);
         }
     }
 
