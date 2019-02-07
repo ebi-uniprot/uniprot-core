@@ -125,12 +125,12 @@
 
 	<modules>
 <!--  		<module>core-util</module>  -->
+		<module>core-common</module>
 		<module>core-domain</module>
 		<module>ff-parser</module>
 		<module>core-parser</module>
         <module>xml-parser</module>
         <module>controlled-vocabulary</module>
 		<module>json-parser</module>
-		<module>core-common</module>
 	</modules>
 </project>
