@@ -6,7 +6,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.parser.UniProtParser;
 import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtParser;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +24,9 @@ class EntryMapTest {
 	
 	@BeforeAll
 	static void setup() throws Exception {
-	    UniProtParser parser = new DefaultUniProtParser("","","",true);
+
+		URL url = EntryMapTest.class.getResource("/uniprot/keywlist.txt");
+	    UniProtParser parser = new DefaultUniProtParser(url.getPath(),"","",true);
 
 
 		InputStream is = EntryMapTest.class.getResourceAsStream("/uniprot/Q15758.dat" );
