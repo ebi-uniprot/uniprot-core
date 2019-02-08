@@ -3,9 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>core-parent</artifactId>
         <groupId>uk.ac.ebi.uniprot</groupId>
+        <artifactId>core-parent</artifactId>
         <version>1.0</version>
+        <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -36,7 +37,6 @@
             <artifactId>mbknor-jackson-jsonschema_2.12</artifactId>
             <version>${mbknor-jackson-jsonschema.version}</version>
         </dependency>
-
 
 
         <!-- test dependencies -->
