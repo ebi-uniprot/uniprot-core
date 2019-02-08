@@ -1,6 +1,8 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ebi.uniprot.scorer.uniprotkb.Consensus;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
@@ -28,20 +30,16 @@ public class AlternativeProductsCommentScored extends CommentScoredAbstr {
     @Override
     public double score() {
         double score = 0;
-        score +=
-                comment.getIsoforms().stream()
-                        .filter(this::hasEvidence)
-                        .collect(Collectors.toList()).size() * 3;
-
+        score += comment.getIsoforms().stream()
+                .filter(this::hasEvidence)
+                .collect(Collectors.toList()).size() * 3;
         return score;
     }
 
-    private boolean hasEvidence(AlternativeProductsIsoform isoform) {
-        List<EvidenceId> evidences = new ArrayList<>();
-        evidences.addAll(isoform.getName().getEvidenceIds());
-        isoform.getSynonyms().forEach(val -> evidences.addAll(val.getEvidenceIds()));
-        isoform.getNote().getTexts().forEach(val -> evidences.addAll(val.getEvidenceIds()));
-
+    private boolean hasEvidence(APIsoform isoform) {
+        List<Evidence> evidences = new ArrayList<>(isoform.getName().getEvidences());
+        isoform.getSynonyms().forEach(val -> evidences.addAll(val.getEvidences()));
+        isoform.getNote().getTexts().forEach(val -> evidences.addAll(val.getEvidences()));
         return ScoreUtil.hasEvidence(evidences, evidenceTypes);
     }
 

@@ -1,8 +1,10 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ebi.uniprot.scorer.uniprotkb.Consensus;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreStatus;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
@@ -58,15 +60,15 @@ public abstract class CommentScoredAbstr implements CommentScored {
         } else {
             return PRESENCE;
         }
-
     }
 
-    ScoreStatus getCommentScoreStatus(TextOnlyComment comment,
-            EvidenceCode defaultCode) {
-        List<CommentText> texts = comment.getTexts();
+
+    ScoreStatus getCommentScoreStatus(FreeTextComment comment,
+                                      EvidenceCode defaultCode) {
+        List<EvidencedValue> texts = comment.getTexts();
         Collection<ScoreStatus> types = new HashSet<>();
         if (!texts.isEmpty()) {
-            for (CommentText text : texts) {
+            for (EvidencedValue text : texts) {
                 types.addAll(ScoreUtil.getECOStatusTypes(text));
             }
         } else {
@@ -84,14 +86,14 @@ public abstract class CommentScoredAbstr implements CommentScored {
      * of the text. If the resulting list of evidences contains an EXP (ECO:0000269) evidence, then the annotation is
      * considered "experimental".
      */
-    private boolean hasNonExperimental(TextOnlyComment comment) {
-        List<CommentText> texts = comment.getTexts();
+    private boolean hasNonExperimental(FreeTextComment comment) {
+        List<EvidencedValue> texts = comment.getTexts();
         boolean hasNonEx = false;
 
         if (!texts.isEmpty()) {
-            CommentText lastText = null;
+            EvidencedValue lastText = null;
             for (int i = 0; i < texts.size(); i++) {
-                CommentText text = texts.get(i);
+                EvidencedValue text = texts.get(i);
                 if (hasNonExperimental(text.getValue(), i < (texts.size() - 1)))
                     hasNonEx = true;
                 lastText = text;
@@ -101,7 +103,7 @@ public abstract class CommentScoredAbstr implements CommentScored {
             }
         } else {
 
-            if (hasNonExperimental(comment.getValue(), false)
+            if (hasNonExperimental(comment.getCommentType().getValue(), false)
                     && !isNonExperimental(comment))
                 hasNonEx = true;
         }
@@ -117,14 +119,12 @@ public abstract class CommentScoredAbstr implements CommentScored {
     private boolean hasNonExperimental(String description, boolean ignoreEnds) {
         String val = description;
         if (val.endsWith(".")) {
-            val = val.substring(0, val.length());
+            val = val.substring(0, val.length() - 1);
         }
         if (!ignoreEnds
                 && (val.endsWith(BY_SIMILARITY) || val.endsWith(POTENTIAL) || val
-                        .endsWith(PROBABLE)))
+                .endsWith(PROBABLE)))
             return false;
         return val.contains(BY_SIMILARITY) || val.contains(POTENTIAL) || val.contains(PROBABLE);
-
     }
-
 }
