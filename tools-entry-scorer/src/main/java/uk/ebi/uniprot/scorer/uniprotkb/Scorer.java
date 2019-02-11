@@ -2,15 +2,12 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.parser.UniProtEntryIterator;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
 
-import java.io.*;
-import java.util.*;
-
-import static uk.ac.ebi.uniprot.common.Utils.nullOrEmpty;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 14:29:39 To change this template use File | Settings
@@ -40,37 +37,37 @@ public class Scorer {
         setScores.put(SetScore.Type.TOTAL_SCORE, new SetScore(SetScore.Type.TOTAL_SCORE));
     }
 
-    public static void main(String[] args) throws IOException {
-
-        OutputStream out = null;
-        List<EvidenceType> evidenceTypes = null;
-        ScoreConfigure configure = ScoreConfigureImpl.fromCommandLine(args);
-        if (!configure.validate()) {
-            LOG.error(configure.getUsage());
-            System.exit(1);
-        }
-
-        String inputFilePath = configure.getInputFile();
-
-        if (!nullOrEmpty(configure.getOutputFile())) {
-            out = new FileOutputStream(configure.getOutputFile());
-        } else {
-            out = System.out;
-        }
-
-        LOG.info("InputFile: {}", inputFilePath);
-
-        evidenceTypes = convertEvidenceTypes(configure.getEvidences());
-        UniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(16, 10000, 50000);
-        entryIterator.setInput(inputFilePath, null, null, null);
-
-        Scorer scorer = new Scorer();
-        scorer.score(entryIterator, out, evidenceTypes);
-
-        if (out != null)
-            out.close();
-
-    }
+//    public static void main(String[] args) throws IOException {
+//
+//        OutputStream out = null;
+//        List<EvidenceType> evidenceTypes = null;
+//        ScoreConfigure configure = ScoreConfigureImpl.fromCommandLine(args);
+//        if (!configure.validate()) {
+//            LOG.error(configure.getUsage());
+//            System.exit(1);
+//        }
+//
+//        String inputFilePath = configure.getInputFile();
+//
+//        if (!nullOrEmpty(configure.getOutputFile())) {
+//            out = new FileOutputStream(configure.getOutputFile());
+//        } else {
+//            out = System.out;
+//        }
+//
+//        LOG.info("InputFile: {}", inputFilePath);
+//
+//        evidenceTypes = convertEvidenceTypes(configure.getEvidences());
+//        UniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(16, 10000, 50000);
+//        entryIterator.setInput(inputFilePath, null, null, null);
+//
+//        Scorer scorer = new Scorer();
+//        scorer.score(entryIterator, out, evidenceTypes);
+//
+//        if (out != null)
+//            out.close();
+//
+//    }
 
     private static List<EvidenceType> convertEvidenceTypes(List<String> evidences) {
         if ((evidences == null) || (evidences.isEmpty())) {
@@ -119,40 +116,40 @@ public class Scorer {
         setScores.get(SetScore.Type.TOTAL_SCORE).addScore(score.totalScore);
     }
 
-    public SetScore score(Iterator<UniProtEntry> is, OutputStream out, List<EvidenceType> evidenceTypes)
-            throws IOException {
-
-        int counter = 0;
-
-        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out))) {
-            writer.write("accession, description, gene, comment, xref, goxref,  keyword, feature, citation, total");
-            writer.newLine();
-
-            while (is.hasNext()) {
-                UniProtEntry entry = is.next();
-                LOG.debug("****************************************************************");
-                EntryScore scored = new UniProtEntryScored(entry, evidenceTypes).getEntryScore();
-                addScore(scored);
-                writer.write(scored.toString());
-                writer.newLine();
-
-                if (++counter % 100 == 0) {
-                    writer.flush();
-                    LOG.info("{} entries processed", counter);
-                }
-                LOG.debug("{} score is {}", scored.accession, scored.totalScore);
-            }
-            writer.newLine();
-            writer.newLine();
-            writer.write("type,count, sum, mean, std, max, min");
-            writer.newLine();
-            for (SetScore setScore : setScores.values()) {
-                writer.write(setScore.toString());
-                writer.newLine();
-            }
-
-            writer.flush();
-            return setScores.get(SetScore.Type.TOTAL_SCORE);
-        }
-    }
+//    public SetScore score(Iterator<UniProtEntry> is, OutputStream out, List<EvidenceType> evidenceTypes)
+//            throws IOException {
+//
+//        int counter = 0;
+//
+//        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out))) {
+//            writer.write("accession, description, gene, comment, xref, goxref,  keyword, feature, citation, total");
+//            writer.newLine();
+//
+//            while (is.hasNext()) {
+//                UniProtEntry entry = is.next();
+//                LOG.debug("****************************************************************");
+//                EntryScore scored = new UniProtEntryScored(entry, evidenceTypes).getEntryScore();
+//                addScore(scored);
+//                writer.write(scored.toString());
+//                writer.newLine();
+//
+//                if (++counter % 100 == 0) {
+//                    writer.flush();
+//                    LOG.info("{} entries processed", counter);
+//                }
+//                LOG.debug("{} score is {}", scored.accession, scored.totalScore);
+//            }
+//            writer.newLine();
+//            writer.newLine();
+//            writer.write("type,count, sum, mean, std, max, min");
+//            writer.newLine();
+//            for (SetScore setScore : setScores.values()) {
+//                writer.write(setScore.toString());
+//                writer.newLine();
+//            }
+//
+//            writer.flush();
+//            return setScores.get(SetScore.Type.TOTAL_SCORE);
+//        }
+//    }
 }

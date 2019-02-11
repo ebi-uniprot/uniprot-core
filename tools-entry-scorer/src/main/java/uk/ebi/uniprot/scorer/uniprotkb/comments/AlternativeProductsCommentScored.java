@@ -39,7 +39,9 @@ public class AlternativeProductsCommentScored extends CommentScoredAbstr {
     private boolean hasEvidence(APIsoform isoform) {
         List<Evidence> evidences = new ArrayList<>(isoform.getName().getEvidences());
         isoform.getSynonyms().forEach(val -> evidences.addAll(val.getEvidences()));
-        isoform.getNote().getTexts().forEach(val -> evidences.addAll(val.getEvidences()));
+        if (isoform.getNote() != null) {
+            isoform.getNote().getTexts().forEach(val -> evidences.addAll(val.getEvidences()));
+        }
         return ScoreUtil.hasEvidence(evidences, evidenceTypes);
     }
 

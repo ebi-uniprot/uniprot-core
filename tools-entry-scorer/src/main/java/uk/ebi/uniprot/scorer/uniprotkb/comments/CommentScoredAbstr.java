@@ -62,7 +62,6 @@ public abstract class CommentScoredAbstr implements CommentScored {
         }
     }
 
-
     ScoreStatus getCommentScoreStatus(FreeTextComment comment,
                                       EvidenceCode defaultCode) {
         List<EvidencedValue> texts = comment.getTexts();
@@ -71,8 +70,6 @@ public abstract class CommentScoredAbstr implements CommentScored {
             for (EvidencedValue text : texts) {
                 types.addAll(ScoreUtil.getECOStatusTypes(text));
             }
-        } else {
-            types.addAll(ScoreUtil.getECOStatusTypes(comment));
         }
         if (types.isEmpty() || hasNonExperimental(comment)) {
             types.add(ScoreUtil.convert(defaultCode));
@@ -91,29 +88,15 @@ public abstract class CommentScoredAbstr implements CommentScored {
         boolean hasNonEx = false;
 
         if (!texts.isEmpty()) {
-            EvidencedValue lastText = null;
             for (int i = 0; i < texts.size(); i++) {
                 EvidencedValue text = texts.get(i);
-                if (hasNonExperimental(text.getValue(), i < (texts.size() - 1)))
+                if (hasNonExperimental(text.getValue(), i < (texts.size() - 1))) {
                     hasNonEx = true;
-                lastText = text;
+                }
             }
-            if (isNonExperimental(lastText)) {
-                hasNonEx = false;
-            }
-        } else {
-
-            if (hasNonExperimental(comment.getCommentType().getValue(), false)
-                    && !isNonExperimental(comment))
-                hasNonEx = true;
         }
-        return hasNonEx;
-    }
 
-    private boolean isNonExperimental(HasCommentStatus comment) {
-        return (comment.getCommentStatus() == CommentStatus.BY_SIMILARITY)
-                || (comment.getCommentStatus() == CommentStatus.POTENTIAL)
-                || (comment.getCommentStatus() == CommentStatus.PROBABLE);
+        return hasNonEx;
     }
 
     private boolean hasNonExperimental(String description, boolean ignoreEnds) {
@@ -121,10 +104,9 @@ public abstract class CommentScoredAbstr implements CommentScored {
         if (val.endsWith(".")) {
             val = val.substring(0, val.length() - 1);
         }
-        if (!ignoreEnds
-                && (val.endsWith(BY_SIMILARITY) || val.endsWith(POTENTIAL) || val
-                .endsWith(PROBABLE)))
+        if (!ignoreEnds && (val.endsWith(BY_SIMILARITY) || val.endsWith(POTENTIAL) || val.endsWith(PROBABLE))) {
             return false;
+        }
         return val.contains(BY_SIMILARITY) || val.contains(POTENTIAL) || val.contains(PROBABLE);
     }
 }

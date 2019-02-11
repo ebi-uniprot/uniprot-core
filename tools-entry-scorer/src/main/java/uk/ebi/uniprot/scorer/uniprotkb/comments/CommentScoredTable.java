@@ -6,8 +6,7 @@ import uk.ebi.uniprot.scorer.uniprotkb.Consensus;
 
 import java.util.EnumMap;
 
-import static uk.ebi.uniprot.scorer.uniprotkb.Consensus.NUMBER;
-import static uk.ebi.uniprot.scorer.uniprotkb.Consensus.PRESENCE;
+import static uk.ebi.uniprot.scorer.uniprotkb.Consensus.*;
 
 public class CommentScoredTable {
     private static EnumMap<CommentType, CommentScoredInfo> commentMap = new EnumMap<>(

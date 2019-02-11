@@ -20,8 +20,12 @@ public class ScoreUtil {
     }
 
     public static Collection<ScoreStatus> getECOStatusTypes(HasEvidences he) {
+        return getECOStatusTypes(he.getEvidences());
+    }
+
+    public static Collection<ScoreStatus> getECOStatusTypes(List<Evidence> evidences) {
         Collection<ScoreStatus> types = new HashSet<>();
-        for (Evidence evidence : he.getEvidences()) {
+        for (Evidence evidence : evidences) {
             types.add(convert(evidence.getEvidenceCode()));
         }
         return types;
