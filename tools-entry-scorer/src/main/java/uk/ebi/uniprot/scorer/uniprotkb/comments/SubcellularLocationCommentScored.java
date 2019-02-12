@@ -13,6 +13,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
+import static java.util.Objects.nonNull;
+
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:15:13 To change this template use File | Settings
  * | File Templates.
@@ -52,14 +54,14 @@ public class SubcellularLocationCommentScored extends CommentScoredAbstr {
 
     private boolean hasEvidence(SubcellularLocation loc) {
         List<Evidence> evidences = new ArrayList<>();
-        if (loc.getLocation() != null) {
+        if (nonNull(loc.getLocation())) {
             evidences.addAll(loc.getLocation().getEvidences());
         }
-        if (loc.getOrientation() != null) {
+        if (nonNull(loc.getOrientation())) {
             evidences.addAll(loc.getOrientation().getEvidences());
         }
-        if (loc.getTopology() != null) {
-            evidences.addAll(loc.getOrientation().getEvidences());
+        if (nonNull(loc.getTopology())) {
+            evidences.addAll(loc.getTopology().getEvidences());
         }
         return ScoreUtil.hasEvidence(evidences, evidenceTypes);
     }
@@ -74,11 +76,19 @@ public class SubcellularLocationCommentScored extends CommentScoredAbstr {
 
     private List<Evidence> getEvidences(SubcellularLocationComment comment) {
         List<Evidence> evidences = new ArrayList<>();
-        comment.getNote().getTexts().forEach(f -> evidences.addAll(f.getEvidences()));
+        if (nonNull(comment.getNote())) {
+            comment.getNote().getTexts().forEach(f -> evidences.addAll(f.getEvidences()));
+        }
         comment.getSubcellularLocations().forEach(l -> {
-            evidences.addAll(l.getLocation().getEvidences());
-            evidences.addAll(l.getOrientation().getEvidences());
-            evidences.addAll(l.getTopology().getEvidences());
+            if (nonNull(l.getLocation())) {
+                evidences.addAll(l.getLocation().getEvidences());
+            }
+            if (nonNull(l.getOrientation())) {
+                evidences.addAll(l.getOrientation().getEvidences());
+            }
+            if (nonNull(l.getTopology())) {
+                evidences.addAll(l.getTopology().getEvidences());
+            }
         });
         return evidences;
     }

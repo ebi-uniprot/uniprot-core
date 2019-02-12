@@ -2,7 +2,7 @@ package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 
 import org.junit.Test;
-import uk.ac.ebi.kraken.interfaces.uniprot.comments.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 
 public class SubcellularScoredTest extends CommentScoreTestBase {
     @Test

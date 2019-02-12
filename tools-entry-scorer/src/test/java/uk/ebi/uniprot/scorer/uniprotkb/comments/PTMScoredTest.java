@@ -1,7 +1,7 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 import org.junit.Test;
-import uk.ac.ebi.kraken.interfaces.uniprot.comments.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 
 public class PTMScoredTest extends CommentScoreTestBase {
     @Test
@@ -33,13 +33,13 @@ public class PTMScoredTest extends CommentScoreTestBase {
 
     @Test
     public void shouldWithEv3Score20() throws Exception {
-        String line = "CC   -!- PTM: Ubiquitinated (Probable). Degraded by the proteasome. {ECO:0000257}.";
+        String line = "CC   -!- PTM: Ubiquitinated (Probable). Degraded by the proteasome. {ECO:0000256}.";
         verify(CommentType.PTM, line, 2.0, false);
     }
 
     @Test
     public void shouldWithEv4Score20() throws Exception {
-        String line = "CC   -!- PTM: Degraded by the proteasome. {ECO:0000257}.";
+        String line = "CC   -!- PTM: Degraded by the proteasome. {ECO:0000256}.";
         verify(CommentType.PTM, line, 2.0, false);
     }
 }

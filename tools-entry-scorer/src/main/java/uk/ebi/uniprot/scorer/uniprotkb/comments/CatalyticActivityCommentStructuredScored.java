@@ -52,10 +52,9 @@ public class CatalyticActivityCommentStructuredScored extends CommentScoredAbstr
 
     private ScoreStatus getScoreStatus(CatalyticActivityComment comment,
                                        EvidenceCode defaultCode) {
-
         Collection<ScoreStatus> types = new HashSet<>();
-        for (Evidence evId : getEvidences(comment)) {
-            types.add(ScoreUtil.convert(evId.getEvidenceCode()));
+        for (Evidence evidence : getEvidences(comment)) {
+            types.add(ScoreUtil.convert(evidence.getEvidenceCode()));
         }
         if (types.isEmpty()) {
             types.add(ScoreUtil.convert(defaultCode));

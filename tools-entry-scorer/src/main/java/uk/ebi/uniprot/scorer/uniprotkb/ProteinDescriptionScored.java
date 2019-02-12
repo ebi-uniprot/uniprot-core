@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.isNull;
 import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
@@ -32,6 +33,10 @@ public class ProteinDescriptionScored implements HasScore {
     @Override
     public double score() {
         double score = 0;
+
+        if (isNull(description)) {
+            return score;
+        }
 
         // EC numbers avoid duplicate ECs
         int distinctECNumbersSize = getDistinctECs(description).size();
@@ -68,9 +73,11 @@ public class ProteinDescriptionScored implements HasScore {
     }
 
     private void addECs(List<ProteinName> proteinNames, Set<EC> ecs) {
-        ecs.addAll(proteinNames.stream().map(ProteinName::getEcNumbers).filter(Objects::nonNull).flatMap(Collection::stream)
+        ecs.addAll(proteinNames.stream().map(ProteinName::getEcNumbers).filter(Objects::nonNull)
+                           .flatMap(Collection::stream)
                            .collect(Collectors.toSet()));
     }
+
     private void addECs(ProteinName proteinName, Set<EC> ecs) {
         ecs.addAll(nonNullList(proteinName.getEcNumbers()));
     }

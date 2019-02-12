@@ -1,7 +1,7 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 import org.junit.Test;
-import uk.ac.ebi.kraken.interfaces.uniprot.comments.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 
 public class SubunitScoredTest extends CommentScoreTestBase {
     @Test
@@ -18,7 +18,7 @@ public class SubunitScoredTest extends CommentScoreTestBase {
 
     @Test
     public void test3() throws Exception {
-        String line = ("CC   -!- SUBUNIT: Homodimer. {ECO:0000257}.");
+        String line = ("CC   -!- SUBUNIT: Homodimer. {ECO:0000256}.");
         verify(CommentType.SUBUNIT, line, 3.0, false);
     }
 }
