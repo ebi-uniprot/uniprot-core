@@ -10,6 +10,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
+
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:34:03 To change this template use File | Settings
  * | File Templates.
@@ -66,11 +68,11 @@ public class ProteinDescriptionScored implements HasScore {
     }
 
     private void addECs(List<ProteinName> proteinNames, Set<EC> ecs) {
-        ecs.addAll(proteinNames.stream().map(ProteinName::getEcNumbers).flatMap(Collection::stream)
+        ecs.addAll(proteinNames.stream().map(ProteinName::getEcNumbers).filter(Objects::nonNull).flatMap(Collection::stream)
                            .collect(Collectors.toSet()));
     }
     private void addECs(ProteinName proteinName, Set<EC> ecs) {
-        ecs.addAll(proteinName.getEcNumbers());
+        ecs.addAll(nonNullList(proteinName.getEcNumbers()));
     }
 
 
