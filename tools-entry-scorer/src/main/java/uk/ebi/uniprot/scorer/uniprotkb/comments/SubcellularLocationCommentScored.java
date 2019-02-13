@@ -67,30 +67,7 @@ public class SubcellularLocationCommentScored extends CommentScoredAbstr {
     }
 
     private Collection<ScoreStatus> getScoreStatusTypes(SubcellularLocationValue slocVal) {
-        Collection<ScoreStatus> types = new HashSet<>(ScoreUtil.getECOStatusTypes(slocVal));
-        if (types.isEmpty()) {
-            types.addAll(ScoreUtil.getECOStatusTypes(getEvidences(comment)));
-        }
-        return types;
-    }
-
-    private List<Evidence> getEvidences(SubcellularLocationComment comment) {
-        List<Evidence> evidences = new ArrayList<>();
-        if (nonNull(comment.getNote())) {
-            comment.getNote().getTexts().forEach(f -> evidences.addAll(f.getEvidences()));
-        }
-        comment.getSubcellularLocations().forEach(l -> {
-            if (nonNull(l.getLocation())) {
-                evidences.addAll(l.getLocation().getEvidences());
-            }
-            if (nonNull(l.getOrientation())) {
-                evidences.addAll(l.getOrientation().getEvidences());
-            }
-            if (nonNull(l.getTopology())) {
-                evidences.addAll(l.getTopology().getEvidences());
-            }
-        });
-        return evidences;
+        return new HashSet<>(ScoreUtil.getECOStatusTypes(slocVal));
     }
 
     private ScoreStatus getCommentScoreStatus(SubcellularLocation loc) {

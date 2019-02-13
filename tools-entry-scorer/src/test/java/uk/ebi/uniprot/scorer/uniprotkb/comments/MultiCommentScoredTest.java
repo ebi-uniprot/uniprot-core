@@ -11,7 +11,7 @@ public class MultiCommentScoredTest extends CommentScoreTestBase {
                 "CC   -!- SIMILARITY: Belongs to the MHC class I family.\n" +
                 "CC   -!- SIMILARITY: Contains 1 Ig-like C1-type (immunoglobulin-like)\n" +
                 "CC       domain.";
-        verifyMulti(line, 6.0, false);
+        verifyMulti(line, 6.0, true);
 
     }
 
@@ -36,13 +36,13 @@ public class MultiCommentScoredTest extends CommentScoreTestBase {
                 "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00956};\n"+
                 "CC       PhysiologicalDirection=right-to-left; Xref=Rhea:RHEA:18898;\n" +
                 "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00957};\n" +
-                "CC   -!- SUBCELLULAR LOCATION: Virion membrane; Multi-pass membrane\n" +          // 2.0
+                "CC   -!- SUBCELLULAR LOCATION: Virion membrane; Multi-pass membrane\n" +          // 2.0    but should be 4.0
                 "CC       protein. Host endoplasmic reticulum membrane; Multi-pass membrane2\n" +
                 "CC       protein {ECO:0000256|HAMAP-Rule:MF_01146}.\n" +
                 "CC   -!- SIMILARITY: Contains 1 RdRp catalytic domain.\n" +
                 "CC   -!- SIMILARITY: Contains 1 helicase ATP-binding domain.\n" +
                 "CC   -!- SIMILARITY: Contains 1 helicase C-terminal domain.";
-        verifyMulti(line, 10.0, false);
+        verifyMulti(line, 10.0, true);
 
     }
 
@@ -69,7 +69,7 @@ public class MultiCommentScoredTest extends CommentScoreTestBase {
                 "CC   -!- SIMILARITY: Contains 1 RdRp catalytic domain. {ECO:0000256|PubMed:16629414}.\n" +
                 "CC   -!- SIMILARITY: Contains 1 helicase ATP-binding domain. {ECO:0000256|PubMed:16629414}.\n" +
                 "CC   -!- SIMILARITY: Contains 1 helicase C-terminal domain. {ECO:0000256|PubMed:16629414}.";
-        verifyMulti(line, 5.0, false);
+        verifyMulti(line, 5.0, true);
 
     }
 
