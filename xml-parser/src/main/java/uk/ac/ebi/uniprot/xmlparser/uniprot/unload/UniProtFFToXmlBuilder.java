@@ -1,12 +1,19 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.unload;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.Writer;
+import com.codahale.metrics.Timer;
+import com.sun.xml.bind.marshaller.DataWriter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.EntryBufferedReader2;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.Entry;
+import uk.ac.ebi.uniprot.xmlparser.DefaultXmlFileMerger;
+import uk.ac.ebi.uniprot.xmlparser.XmlBuildStats;
+import uk.ac.ebi.uniprot.xmlparser.XmlBuilder;
+import uk.ac.ebi.uniprot.xmlparser.XmlFileMerger;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.Duration;
@@ -19,22 +26,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.codahale.metrics.Timer;
-import com.sun.xml.bind.marshaller.DataWriter;
-
-import uk.ac.ebi.uniprot.parser.impl.EntryBufferedReader2;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.Entry;
-import uk.ac.ebi.uniprot.xmlparser.DefaultXmlFileMerger;
-import uk.ac.ebi.uniprot.xmlparser.XmlBuildStats;
-import uk.ac.ebi.uniprot.xmlparser.XmlBuilder;
-import uk.ac.ebi.uniprot.xmlparser.XmlFileMerger;
 
 public class UniProtFFToXmlBuilder implements XmlBuilder {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UniProtFFToXmlBuilder.class);

@@ -2,10 +2,10 @@ package uk.ac.ebi.uniprot.parser.gff.uniprot;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
+import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

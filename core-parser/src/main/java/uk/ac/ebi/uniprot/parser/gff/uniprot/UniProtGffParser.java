@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.parser.impl.ft.FTLineBuilderHelper;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FTLineBuilderHelper;
 
 import java.util.List;
 import java.util.Objects;
