@@ -53,6 +53,16 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     }
 
     @Override
+    public boolean hasDirectionType() {
+        return this.directionType != null;
+    }
+
+    @Override
+    public boolean hasReactionReference() {
+        return this.reactionReference != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

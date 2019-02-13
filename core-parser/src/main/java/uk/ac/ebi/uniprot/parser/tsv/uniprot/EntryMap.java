@@ -1,20 +1,13 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import uk.ac.ebi.uniprot.parser.tsv.uniprot.comment.EntryCommentsMap;
+
+import java.util.*;
 
 public class EntryMap implements NamedValueMap {
     private final UniProtEntry entry;
     private final List<String> fields;
-
 
     public static final List<String> FIELDS = Arrays.asList("accession", "id", "score", "protein_existence");
 

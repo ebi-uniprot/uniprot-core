@@ -5,4 +5,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 
 public interface UniProtDBCrossReference extends DBCrossReference<UniProtXDbType>, HasEvidences {
     String getIsoformId();
+
+    boolean hasIsoformId();
 }

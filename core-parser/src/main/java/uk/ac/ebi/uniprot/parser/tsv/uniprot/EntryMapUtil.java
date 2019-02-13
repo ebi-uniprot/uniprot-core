@@ -8,14 +8,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class EntryMapUtil {
-    static String evidencesToString(List<Evidence> evidences) {
+public class EntryMapUtil {
+    public static String evidencesToString(List<Evidence> evidences) {
         if ((evidences == null) || evidences.isEmpty())
             return "";
         return evidences.stream().map(Evidence::toString).collect(Collectors.joining(", ", "{", "}"));
     }
 
-    static String convertOrganism(OrganismName organism) {
+    public static String convertOrganism(OrganismName organism) {
         StringBuilder sb = new StringBuilder();
         if (organism.getScientificName() != null && !organism.getScientificName().isEmpty()) {
             sb.append(organism.getScientificName());
@@ -32,12 +32,12 @@ class EntryMapUtil {
         return sb.toString();
     }
 
-    static String getNoteString(Note note) {
+    public static String getNoteString(Note note) {
         return " Note=" + note.getTexts().stream().map(EntryMapUtil::evidencedValueToString)
                 .collect(Collectors.joining("; "));
     }
 
-    static String evidencedValueToString(EvidencedValue evidencedValue) {
+    public static String evidencedValueToString(EvidencedValue evidencedValue) {
         String result = evidencedValue.getValue();
         if(evidencedValue.getEvidences() != null && !evidencedValue.getEvidences().isEmpty()){
             result += " "+evidencesToString(evidencedValue.getEvidences());

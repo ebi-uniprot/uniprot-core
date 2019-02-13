@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
@@ -42,6 +43,21 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
     @Override
     public List<Property> getProperties() {
         return properties;
+    }
+
+    @Override
+    public boolean hasDatabaseType() {
+        return this.databaseType != null;
+    }
+
+    @Override
+    public boolean hasId() {
+        return Utils.notEmpty(this.id);
+    }
+
+    @Override
+    public boolean hasProperties() {
+        return Utils.notEmpty(this.properties);
     }
 
     public void setProperties(List<Property> properties) {

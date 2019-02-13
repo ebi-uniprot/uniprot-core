@@ -67,6 +67,21 @@ public class ReactionImpl implements Reaction {
     }
 
     @Override
+    public boolean hasName() {
+        return Utils.notEmpty(name);
+    }
+
+    @Override
+    public boolean hasReactionReferences() {
+        return Utils.notEmpty(this.reactionReferences);
+    }
+
+    @Override
+    public boolean hasEcNumber() {
+        return ecNumber != null;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Reaction=").append(name).append(";");

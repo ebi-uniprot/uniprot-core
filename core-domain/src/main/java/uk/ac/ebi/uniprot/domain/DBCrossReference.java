@@ -8,4 +8,11 @@ public interface DBCrossReference<T extends DatabaseType> {
     String getId();
 
     List<Property> getProperties();
+
+    boolean hasDatabaseType();
+
+    boolean hasId();
+
+    boolean hasProperties();
+
 }

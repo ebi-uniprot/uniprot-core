@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -59,20 +58,20 @@ public class EntryProteinMap implements NamedValueMap {
     private String getProteinName() {
         StringBuilder sb = new StringBuilder();
         if (protein.getRecommendedName() != null) {
-            sb.append(getDownloadStringFromName(protein.getRecommendedName()));
+            sb.append(convertProteinNameToString(protein.getRecommendedName()));
         }
         if ((protein.getAlternativeNames() != null) && !protein.getAlternativeNames().isEmpty()) {
             if (sb.length() > 0) {
                 sb.append(SPACE);
             }
             sb.append(protein.getAlternativeNames().stream()
-                              .map(val -> BLACKET_LEFT + getDownloadStringFromName(val) + BLACKET_RIGHT)
+                              .map(val -> BLACKET_LEFT + convertProteinNameToString(val) + BLACKET_RIGHT)
                               .collect(Collectors.joining(SPACE)));
         }
         if ((protein.getSubmissionNames() != null) && !protein.getSubmissionNames().isEmpty()) {
-            sb.append(getDownloadStringFromName(protein.getSubmissionNames().get(0)));
+            sb.append(convertProteinNameToString(protein.getSubmissionNames().get(0)));
             String data = protein.getSubmissionNames().stream().skip(1)
-                    .map(val -> BLACKET_LEFT + getDownloadStringFromName(val) + BLACKET_RIGHT)
+                    .map(val -> BLACKET_LEFT + convertProteinNameToString(val) + BLACKET_RIGHT)
                     .collect(Collectors.joining(SPACE));
             if (data != null && !data.isEmpty()) {
                 sb.append(SPACE).append(data);
@@ -100,14 +99,14 @@ public class EntryProteinMap implements NamedValueMap {
 
         if ((protein.getContains() != null) && !protein.getContains().isEmpty()) {
             sb.append(SPACE).append(SQUARE_BLACKET_LEFT).append(CLEAVED_INTO).append(SPACE)
-                    .append(protein.getContains().stream().map(this::getDownloadStringFromSection)
+                    .append(protein.getContains().stream().map(this::convertProteinSectionToString)
                                     .collect(Collectors.joining(SEMICOLON)))
                     .append(SPACE).append(SQUARE_BLACKET_RIGHT);
         }
 
         if ((protein.getIncludes() != null) && !protein.getIncludes().isEmpty()) {
             sb.append(SPACE).append(SQUARE_BLACKET_LEFT).append(INCLUDES).append(SPACE)
-                    .append(protein.getIncludes().stream().map(this::getDownloadStringFromSection)
+                    .append(protein.getIncludes().stream().map(this::convertProteinSectionToString)
                                     .collect(Collectors.joining(SEMICOLON)))
                     .append(SPACE).append(SQUARE_BLACKET_RIGHT);
         }
@@ -117,22 +116,22 @@ public class EntryProteinMap implements NamedValueMap {
     private String getECNumber() {
         Set<String> ecs = new TreeSet<>();
         if (protein.getRecommendedName() != null) {
-            ecs.addAll(getEcFromProteinName(protein.getRecommendedName()));
+            ecs.addAll(convertProteinNameEcNumbersToString(protein.getRecommendedName()));
         }
         if ((protein.getAlternativeNames() != null) && !protein.getAlternativeNames().isEmpty()) {
-            protein.getAlternativeNames().forEach(val -> ecs.addAll(getEcFromProteinName(val)));
+            protein.getAlternativeNames().forEach(val -> ecs.addAll(convertProteinNameEcNumbersToString(val)));
         }
         if ((protein.getSubmissionNames() != null) && !protein.getSubmissionNames().isEmpty()) {
-            protein.getSubmissionNames().forEach(val -> ecs.addAll(getEcFromProteinName(val)));
+            protein.getSubmissionNames().forEach(val -> ecs.addAll(convertProteinNameEcNumbersToString(val)));
 
         }
 
         if ((protein.getIncludes() != null) && !protein.getIncludes().isEmpty()) {
-            protein.getIncludes().forEach(val -> ecs.addAll(getEcFromSection(val)));
+            protein.getIncludes().forEach(val -> ecs.addAll(convertProteinSectionEcNumbersToString(val)));
         }
 
         if ((protein.getContains() != null) && !protein.getContains().isEmpty()) {
-            protein.getContains().forEach(val -> ecs.addAll(getEcFromSection(val)));
+            protein.getContains().forEach(val -> ecs.addAll(convertProteinSectionEcNumbersToString(val)));
         }
         if (ecs.isEmpty()) {
             return "";
@@ -141,39 +140,24 @@ public class EntryProteinMap implements NamedValueMap {
         }
     }
 
-    private String getDownloadStringFromProteinName(ProteinDescription pname) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getDownloadStringFromName(pname.getRecommendedName()));
-        if ((pname.getAlternativeNames() != null) && !pname.getAlternativeNames().isEmpty()) {
-            if (sb.length() > 0) {
-                sb.append(SPACE);
-            }
-            sb.append(pname.getAlternativeNames().stream()
-                              .map(val -> BLACKET_LEFT + getDownloadStringFromName(val) + BLACKET_RIGHT)
-                              .collect(Collectors.joining(SPACE)));
-        }
-
-        return sb.toString();
-    }
-
-    private String getDownloadStringFromSection(ProteinSection section) {
+    private String convertProteinSectionToString(ProteinSection section) {
         StringBuilder sb = new StringBuilder();
         if(section.getRecommendedName() != null){
-            sb.append(getDownloadStringFromName(section.getRecommendedName()));
+            sb.append(convertProteinNameToString(section.getRecommendedName()));
         }
         if(section.getAlternativeNames() != null && !section.getAlternativeNames().isEmpty()){
             if (sb.length() > 0) {
                 sb.append(SPACE);
             }
             String alternativeNames = section.getAlternativeNames().stream()
-                    .map(val -> BLACKET_LEFT + getDownloadStringFromName(val) + BLACKET_RIGHT)
+                    .map(val -> BLACKET_LEFT + convertProteinNameToString(val) + BLACKET_RIGHT)
                     .collect(Collectors.joining(SPACE));
             sb.append(alternativeNames);
         }
         return sb.toString();
     }
 
-    private String getDownloadStringFromName(ProteinName name) {
+    private String convertProteinNameToString(ProteinName name) {
         StringBuilder sb = new StringBuilder();
         sb.append(name.getFullName().getValue());
         String sname = name.getShortNames().stream().map(Name::getValue)
@@ -189,22 +173,22 @@ public class EntryProteinMap implements NamedValueMap {
         return sb.toString();
     }
 
-    private List<String> getEcFromSection(ProteinSection section) {
+    private List<String> convertProteinSectionEcNumbersToString(ProteinSection section) {
         List<String> ec = new ArrayList<>();
         if(section.getRecommendedName() != null){
-            ec.addAll(getEcFromProteinName(section.getRecommendedName()));
+            ec.addAll(convertProteinNameEcNumbersToString(section.getRecommendedName()));
         }
         if(section.getAlternativeNames() != null){
             List<String> ecs = new ArrayList<>();
             for (ProteinName proteinName:section.getAlternativeNames()) {
-                ecs.addAll(getEcFromProteinName(proteinName));
+                ecs.addAll(convertProteinNameEcNumbersToString(proteinName));
             }
             ec.addAll(ecs);
         }
         return ec;
     }
 
-    private List<String> getEcFromProteinName(ProteinName name) {
+    private List<String> convertProteinNameEcNumbersToString(ProteinName name) {
         return name.getEcNumbers().stream().map(EC::getValue).collect(Collectors.toList());
     }
 
