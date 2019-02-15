@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 
 public class FeatureScoredTest {
 
-    public static final FtLineTransformer TRANSFORMER = new FtLineTransformer();
+    private static final FtLineTransformer TRANSFORMER = new FtLineTransformer();
 
     @Test
     public void shouldModResScore3() throws Exception {

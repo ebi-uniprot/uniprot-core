@@ -29,7 +29,7 @@ public class GeneScored implements HasScore {
         double score = 0;
 
         // 2 for a genename
-        if (gene.getGeneName().getValue().length() > 0
+        if (gene.getGeneName() != null && gene.getGeneName().getValue().length() > 0
                 && ScoreUtil.hasEvidence(gene.getGeneName().getEvidences(), evidenceTypes)) {
             score += 2;
         }
