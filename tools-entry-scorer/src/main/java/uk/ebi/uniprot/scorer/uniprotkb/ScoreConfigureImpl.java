@@ -13,8 +13,17 @@ public class ScoreConfigureImpl implements ScoreConfigure {
     @Parameter(names = "-e", description = "a list of evidence types")
     private List<String> evidences = new ArrayList<>();
 
-    @Parameter(names = "-f", description = "input entries file")
+    @Parameter(required = true, names = "-f", description = "input entries file")
     private String inputFile = null;
+
+    @Parameter(required = true, names = "-k", description = "input entries file")
+    private String keywordFile = null;
+
+    @Parameter(required = true, names = "-d", description = "input entries file")
+    private String diseaseFile = null;
+
+    @Parameter(required = true, names = "-g", description = "input entries file")
+    private String goFile = null;
 
     @Parameter(names = "-o", description = "output file")
     private String outputfile = null;
@@ -42,6 +51,21 @@ public class ScoreConfigureImpl implements ScoreConfigure {
         jCommander.usage(out);
 
         return out.toString();
+    }
+
+    @Override
+    public String getKeywordFile() {
+        return keywordFile;
+    }
+
+    @Override
+    public String getDiseaseFile() {
+        return diseaseFile;
+    }
+
+    @Override
+    public String getGOFile() {
+        return goFile;
     }
 
     @Override

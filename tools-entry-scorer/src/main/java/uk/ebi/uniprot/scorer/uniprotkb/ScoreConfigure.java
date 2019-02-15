@@ -8,4 +8,7 @@ public interface ScoreConfigure {
     List<String> getEvidences();
     boolean validate();
     String getUsage();
+    String getKeywordFile();
+    String getDiseaseFile();
+    String getGOFile();
 }
