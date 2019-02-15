@@ -75,7 +75,7 @@ public class UniProtReferenceImpl implements UniProtReference {
     }
 
     @Override
-    public boolean hastReferencePositions() {
+    public boolean hasReferencePositions() {
         return Utils.notEmpty(this.referencePositions);
     }
 

@@ -72,4 +72,29 @@ public interface UniProtEntry {
     EntryInactiveReason getInactiveReason();
 
     boolean isActive();
+
+    boolean hasSecondaryAccessions();
+
+    boolean hasOrganism();
+
+    boolean hasOrganismHosts();
+
+    boolean hasProteinExistence();
+
+    boolean hasProteinDescription();
+
+    boolean hasGenes();
+
+    boolean hasComments();
+
+    boolean hasFeatures();
+
+    boolean hasGeneLocations();
+
+    boolean hasKeywords();
+
+    boolean hasReferences();
+
+    boolean hasDatabaseCrossReferences();
+
 }
