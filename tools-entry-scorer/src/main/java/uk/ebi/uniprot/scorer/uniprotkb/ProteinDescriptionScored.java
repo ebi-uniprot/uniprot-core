@@ -11,6 +11,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
@@ -79,7 +80,9 @@ public class ProteinDescriptionScored implements HasScore {
     }
 
     private void addECs(ProteinName proteinName, Set<EC> ecs) {
-        ecs.addAll(nonNullList(proteinName.getEcNumbers()));
+        if (nonNull(proteinName)) {
+            ecs.addAll(nonNullList(proteinName.getEcNumbers()));
+        }
     }
 
 
