@@ -174,6 +174,12 @@ public class ProteinDescriptionImpl implements ProteinDescription {
     public void setFlag(Flag flag) {
 		this.flag= flag;
 	}
+
+    @Override
+    public boolean hasFlag() {
+        return this.flag != null;
+    }
+
     @Override
     public boolean isValid() {
         if (getRecommendedName() != null) {

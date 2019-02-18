@@ -46,4 +46,6 @@ public interface ProteinDescription {
     
     void setFlag(Flag flag);
 
+    boolean hasFlag();
+
 }
