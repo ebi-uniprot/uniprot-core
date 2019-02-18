@@ -34,4 +34,10 @@ public interface Citation {
 
     PublicationDate getPublicationDate();
 
+    boolean hasAuthoringGroup();
+
+    boolean hasAuthors();
+
+    boolean hasPublicationDate();
+
 }

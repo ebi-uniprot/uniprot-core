@@ -22,6 +22,14 @@ public interface JournalArticle extends Citation {
     public String getLastPage();
 
     public String getVolume();
+
+    boolean hasJournal();
+
+    boolean hasFirstPage();
+
+    boolean hasLastPage();
+
+    boolean hasVolume();
 }
 
 

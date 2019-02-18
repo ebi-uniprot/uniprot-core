@@ -36,6 +36,16 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     }
 
     @Override
+    public boolean hasLocator() {
+        return this.locator != null;
+    }
+
+    @Override
+    public boolean hasJournal() {
+        return this.journal != null ;
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();

@@ -34,6 +34,16 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     }
 
     @Override
+    public boolean hasInstitute() {
+        return Utils.notEmpty(this.institute);
+    }
+
+    @Override
+    public boolean hasAddress() {
+        return Utils.notEmpty(this.address);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();

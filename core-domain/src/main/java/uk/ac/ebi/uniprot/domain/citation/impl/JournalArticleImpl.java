@@ -52,6 +52,26 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
     }
 
     @Override
+    public boolean hasJournal() {
+        return this.journal != null;
+    }
+
+    @Override
+    public boolean hasFirstPage() {
+        return Utils.notEmpty(this.firstPage);
+    }
+
+    @Override
+    public boolean hasLastPage() {
+        return Utils.notEmpty(this.lastPage);
+    }
+
+    @Override
+    public boolean hasVolume() {
+        return Utils.notEmpty(this.volume);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();

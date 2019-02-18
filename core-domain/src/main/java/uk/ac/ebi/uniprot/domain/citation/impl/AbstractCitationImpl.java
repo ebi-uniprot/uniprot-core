@@ -68,12 +68,28 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean hasTitle() {
-        return ((title != null) && !title.isEmpty());
+        return Utils.notEmpty(this.title);
     }
 
     @Override
     public PublicationDate getPublicationDate() {
         return publicationDate;
+    }
+
+
+    @Override
+    public boolean hasAuthoringGroup(){
+        return Utils.notEmpty(this.authoringGroup);
+    }
+
+    @Override
+    public boolean hasAuthors(){
+        return Utils.notEmpty(this.authors);
+    }
+
+    @Override
+    public boolean hasPublicationDate(){
+        return this.publicationDate != null;
     }
 
     @Override

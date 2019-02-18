@@ -8,4 +8,8 @@ public interface Thesis extends Citation {
     public String getInstitute();
 
     public String getAddress();
+
+    boolean hasInstitute();
+
+    boolean hasAddress();
 }

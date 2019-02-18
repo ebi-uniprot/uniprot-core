@@ -27,6 +27,11 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     }
 
     @Override
+    public boolean hasPatentNumber() {
+        return Utils.notEmpty(this.patentNumber);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();

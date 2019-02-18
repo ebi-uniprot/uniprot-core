@@ -14,4 +14,8 @@ public interface ElectronicArticle extends Citation {
     public Locator getLocator();
 
     public Journal getJournal();
+
+    boolean hasLocator();
+
+    boolean hasJournal();
 }

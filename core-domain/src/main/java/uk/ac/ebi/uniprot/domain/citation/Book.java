@@ -36,4 +36,18 @@ public interface Book extends Citation {
 
     public String getAddress();
 
+    boolean hasBookName();
+
+    boolean hasEditors();
+
+    boolean hasFirstPage();
+
+    boolean hasLastPage();
+
+    boolean hasVolume();
+
+    boolean hasPublisher();
+
+    boolean hasAddress();
+
 }
