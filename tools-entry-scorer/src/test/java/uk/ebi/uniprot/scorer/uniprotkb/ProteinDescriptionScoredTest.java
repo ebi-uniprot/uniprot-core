@@ -36,16 +36,18 @@ public class ProteinDescriptionScoredTest {
 
     @Test
     public void shouldSubnameScore3() {
-        String description = "DE   SubName: Full=Glutamate synthase large chain {ECO:0000269|PubMed:10433554};\n" +
-                "DE            EC=1.4.1.13 {ECO:0000269|PubMed:10433554};";
+        String description =
+                "DE   SubName: Full=Glutamate synthase large chain. {ECO:0000269|PubMed:10433554};\n" +
+                "DE            EC=1.4.1.13 {ECO:0000269|PubMed:10433554};\n";
         testDescription(description, 3.0, Consensus.COMPLEX);
     }
 
     @Test
     public void shouldSubName2Score3() {
-        String description = "DE   SubName: Full=Catalytic activity: beta-D-glucuronoside + H2O = D-glucuronate + "
-                + "alcohol. {ECO:0000269|PubMed:10433554};\n" +
-                "DE            EC=3.2.1.31 {ECO:0000269|PubMed:10433554};\n";
+        String description =
+                "DE   SubName: Full=Catalytic activity: beta-D-glucuronoside + H2O = D-glucuronate + "
+                        + "alcohol. {ECO:0000269|PubMed:10433554};\n" +
+                        "DE            EC=3.2.1.31 {ECO:0000269|PubMed:10433554};\n";
 
         testDescription(description, 3.0, Consensus.COMPLEX);
 
@@ -67,13 +69,14 @@ public class ProteinDescriptionScoredTest {
     @Test
     public void shouldDEwithFlagsScore14() {
 
-        String description = "DE   RecName: Full=A disintegrin and metalloproteinase domain 10;\n" +
-                "DE            Short=ADAM 10;\n" +
-                "DE            EC=3.4.24.81;\n" +
-                "DE   AltName: Full=Mammalian disintegrin-metalloprotease;\n" +
-                "DE   AltName: Full=Kuzbanian protein homolog;\n" +
-                "DE   AltName: CD_antigen=CD156c;\n" +
-                "DE   Flags:\n Precursor; Fragment;\n";
+        String description =
+                "DE   RecName: Full=A disintegrin and metalloproteinase domain 10;\n" +
+                        "DE            Short=ADAM 10;\n" +
+                        "DE            EC=3.4.24.81;\n" +
+                        "DE   AltName: Full=Mammalian disintegrin-metalloprotease;\n" +
+                        "DE   AltName: Full=Kuzbanian protein homolog;\n" +
+                        "DE   AltName: CD_antigen=CD156c;\n" +
+                        "DE   Flags: Precursor; Fragment;\n";
 
         testDescription(description, 14.0, Consensus.COMPLEX);
     }
@@ -145,11 +148,12 @@ public class ProteinDescriptionScoredTest {
     @Test
     public void shouldDescriptionScore9() {
 
-        String description = "DE   RecName: Fuel=Interleukin-2;\n" +
-                "DE            Short=IL-2;\n" +
-                "DE   AltName: Full=T-cell growth factor;\n" +
-                "DE            Short=TCGF; \n" +
-                "DE   AltName: INN=Aldesleukin;\n";
+        String description =
+                "DE   RecName: Full=Interleukin-2;\n" +
+                        "DE            Short=IL-2;\n" +
+                        "DE   AltName: Full=T-cell growth factor;\n" +
+                        "DE            Short=TCGF;\n" +
+                        "DE   AltName: INN=Aldesleukin;\n";
         testDescription(description, 9.0, Consensus.COMPLEX);
     }
 
@@ -158,10 +162,10 @@ public class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   Includes:\n" +
-                "DE     RecName: Full=Phosphoribosylaminoimidazolecarboxamide formyltransferase;\n" +
-                "DE              EC=2.1.2.3;\n" +
-                "DE     AltName: Full=5-aminoimidazole-4-carboxamide ribonucleotide formyltransferase;\n" +
-                "DE     AltName: Full=AICAR transformylase;\n";
+                        "DE     RecName: Full=Phosphoribosylaminoimidazolecarboxamide formyltransferase;\n" +
+                        "DE              EC=2.1.2.3;\n" +
+                        "DE     AltName: Full=5-aminoimidazole-4-carboxamide ribonucleotide formyltransferase;\n" +
+                        "DE     AltName: Full=AICAR transformylase;\n";
         testDescription(description, 3.0, Consensus.COMPLEX);
 
     }
@@ -194,31 +198,32 @@ public class ProteinDescriptionScoredTest {
     public void shouldRecName2Score9() {
         String description =
                 "DE   RecName: Full=Interleukin-2;\n" +
-                "DE            Short=IL-2;\n" +
-                "DE   AltName: Full=T-cell growth factor;\n" +
-                "DE            Short=TCGF; \n" +
-                "DE   AltName: INN=Aldesleukin;\n";
+                        "DE            Short=IL-2;\n" +
+                        "DE   AltName: Full=T-cell growth factor;\n" +
+                        "DE            Short=TCGF;\n" +
+                        "DE   AltName: INN=Aldesleukin;\n";
         testDescription(description, 9.0, Consensus.COMPLEX);
     }
 
     @Test
     public void shouldDeWithECScore17() {
-        String description = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" +
-                "DE   Includes:\n" +
-                "DE     RecName: Full=Glutamate N-acetyltransferase;\n" +
-                "DE              EC=2.3.1.35;\n" +
-                "DE     AltName: Full=Ornithine acetyltransferase;\n" +
-                "DE              Short=OATase;\n" +
-                "DE     AltName: Full=Ornithine transacetylase;\n" +
-                "DE     EC=2.3.1.1;\n " +
-                "DE   Includes:\n" +
-                "DE     RecName: Full=Amino-acid acetyltransferase;\n" +
-                "DE              EC=2.3.1.4;\n" +
-                "DE     AltName: Full=N-acetylglutamate synthase;\n" +
-                "DE              Short=AGS;\n" +
-                "DE   Contains:\n" +
-                "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n" +
-                "DE     EC=2.3.1.56;\n";
+        String description =
+                "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" +
+                        "DE   Includes:\n" +
+                        "DE     RecName: Full=Glutamate N-acetyltransferase;\n" +
+                        "DE              EC=2.3.1.35;\n" +
+                        "DE     AltName: Full=Ornithine acetyltransferase;\n" +
+                        "DE              Short=OATase;\n" +
+                        "DE     AltName: Full=Ornithine transacetylase;\n" +
+                        "DE              EC=2.3.1.1;\n" +
+                        "DE   Includes:\n" +
+                        "DE     RecName: Full=Amino-acid acetyltransferase;\n" +
+                        "DE              EC=2.3.1.4;\n" +
+                        "DE     AltName: Full=N-acetylglutamate synthase;\n" +
+                        "DE              Short=AGS;\n" +
+                        "DE   Contains:\n" +
+                        "DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;\n" +
+                        "DE              EC=2.3.1.56;\n";
 
         testDescription(description, 17.0, Consensus.COMPLEX);
     }
@@ -285,8 +290,8 @@ public class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   RecName: Full=Ammonium transporter 1 member 1;\n" +
-                "DE            Short=AtAMT1;1;\n" +
-                "DE   Flags:\n Precursor;\n";
+                        "DE            Short=AtAMT1;1;\n" +
+                        "DE   Flags: Precursor;\n";
 
         testDescription(description, 5.0, Consensus.COMPLEX);
     }
@@ -296,9 +301,9 @@ public class ProteinDescriptionScoredTest {
 
         String description =
                 "DE   RecName: Full=9.5 days embryo parthenogenote cDNA, RIKEN full-length enriched"
-                + " library, clone:B130014N10 product:LIM homeobox transcription factor 1 alpha, full insert sequence;\n"
-                +
-                "DE            Short=LIM homeobox transcription factor 1 alpha;\n";
+                        + " library, clone:B130014N10 product:LIM homeobox transcription factor 1 alpha, full insert sequence;\n"
+                        +
+                        "DE            Short=LIM homeobox transcription factor 1 alpha;\n";
         testDescription(description, 5.0, Consensus.COMPLEX);
 
     }
