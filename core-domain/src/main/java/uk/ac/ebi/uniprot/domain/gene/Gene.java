@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.gene;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -43,7 +44,7 @@ import java.util.List;
  */
 
 
-public interface Gene {
+public interface Gene extends Serializable {
 
     /**
      * Indicates whether this Gene has a Gene name. Use this method

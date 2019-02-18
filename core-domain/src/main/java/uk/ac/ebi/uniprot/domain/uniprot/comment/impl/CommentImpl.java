@@ -6,6 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import java.util.Objects;
 
 public abstract class CommentImpl implements Comment {
+    private static final long serialVersionUID = 4940248496275660209L;
     private CommentType commentType;
 
     public CommentImpl() {

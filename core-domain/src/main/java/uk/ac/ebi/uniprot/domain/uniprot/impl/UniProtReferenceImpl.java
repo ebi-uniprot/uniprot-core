@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UniProtReferenceImpl implements UniProtReference {
+    private static final long serialVersionUID = 4132545544902388006L;
     private Citation citation;
     private List<String> referencePositions;
     private List<ReferenceComment> referenceComments;

@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface ProteinSection {
+public interface ProteinSection extends Serializable {
     ProteinName getRecommendedName();
 
     List<ProteinName> getAlternativeNames();

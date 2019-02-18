@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractCitationImpl implements Citation {
+    private static final long serialVersionUID = -2752460607884626559L;
     private CitationType citationType;
     private List<String> authoringGroup;
     private List<Author> authors;

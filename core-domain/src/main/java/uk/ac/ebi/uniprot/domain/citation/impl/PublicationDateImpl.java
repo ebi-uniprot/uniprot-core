@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 public class PublicationDateImpl implements PublicationDate {
+    private static final long serialVersionUID = 3232437573866835411L;
     private String value;
 
     private PublicationDateImpl() {

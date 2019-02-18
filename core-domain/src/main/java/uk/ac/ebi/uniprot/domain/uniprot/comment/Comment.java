@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public interface Comment {
+import java.io.Serializable;
+
+public interface Comment extends Serializable {
     public CommentType getCommentType();
 
 }

@@ -17,6 +17,7 @@ public class FeatureIdImpl implements FeatureId {
     private final static Pattern CAR_PATTERN = Pattern.compile("CAR_(\\d+)");
     private final static Pattern VSP_PATTERN = Pattern.compile("VSP_(\\d+)");
     private final static Pattern VAR_PATTERN = Pattern.compile("VAR_(\\d+)");
+    private static final long serialVersionUID = 2993129119240452004L;
 
     static {
         FEATUREID_REGEX_MAP.put(FeatureType.CHAIN, Arrays.asList(PRO_PATTERN));

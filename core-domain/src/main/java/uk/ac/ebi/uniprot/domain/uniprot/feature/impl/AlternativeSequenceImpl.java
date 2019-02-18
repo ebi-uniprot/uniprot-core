@@ -9,6 +9,7 @@ import java.util.List;
 
 
 public class AlternativeSequenceImpl implements AlternativeSequence {
+    private static final long serialVersionUID = 804707478075935286L;
     private String originalSequence;
     private List<String> alternativeSequences;
 

@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProteinNameImpl implements ProteinName {
+    private static final long serialVersionUID = -891860106987264257L;
     private Name fullName;
     private List<Name> shortNames;
     private List<EC> ecNumbers;

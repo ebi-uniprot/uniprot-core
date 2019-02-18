@@ -9,6 +9,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class PatentImpl extends AbstractCitationImpl implements Patent {
+    private static final long serialVersionUID = 7708555945786333862L;
     private final String patentNumber;
 
     private PatentImpl() {

@@ -10,6 +10,7 @@ import java.util.Objects;
 
 
 public class FreeTextImpl implements FreeText {
+    private static final long serialVersionUID = -4309930597833279389L;
     private List<EvidencedValue> texts;
 
     private FreeTextImpl() {

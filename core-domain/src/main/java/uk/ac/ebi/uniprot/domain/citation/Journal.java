@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
-public interface Journal {
+import java.io.Serializable;
+
+public interface Journal extends Serializable {
     String getName();
 }

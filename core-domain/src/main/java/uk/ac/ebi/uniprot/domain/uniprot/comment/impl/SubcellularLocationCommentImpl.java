@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment {
+    private static final long serialVersionUID = 955858123969540661L;
     private String molecule;
     private Note note;
     private List<SubcellularLocation> subcellularLocations;

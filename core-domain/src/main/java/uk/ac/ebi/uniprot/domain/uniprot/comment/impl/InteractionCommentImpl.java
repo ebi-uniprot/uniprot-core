@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class InteractionCommentImpl extends CommentImpl implements InteractionComment {
+    private static final long serialVersionUID = 460447737850135638L;
     private List<Interaction> interactions;
 
     private InteractionCommentImpl() {

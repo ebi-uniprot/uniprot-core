@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class AlternativeProductsCommentImpl extends CommentImpl implements AlternativeProductsComment {
+    private static final long serialVersionUID = -8166142214330716494L;
     private List<APEventType> events;
     private List<APIsoform> isoforms;
     private Note note;

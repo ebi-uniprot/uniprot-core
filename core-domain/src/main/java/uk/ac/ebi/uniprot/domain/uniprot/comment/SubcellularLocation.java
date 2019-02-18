@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-public interface SubcellularLocation {
+import java.io.Serializable;
+
+public interface SubcellularLocation extends Serializable {
 
     SubcellularLocationValue getLocation();
 

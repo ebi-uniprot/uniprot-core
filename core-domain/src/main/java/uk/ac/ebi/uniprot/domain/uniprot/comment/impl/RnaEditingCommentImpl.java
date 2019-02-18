@@ -10,6 +10,7 @@ import java.util.Objects;
 
 
 public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
+    private static final long serialVersionUID = -5382803114400917004L;
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions;
     private Note note;

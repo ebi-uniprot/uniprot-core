@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
-public interface Flag {
+import java.io.Serializable;
+
+public interface Flag extends Serializable {
     FlagType getType();
 }

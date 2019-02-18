@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class DiseaseImpl implements Disease {
     private static final String DEFAULT_ACCESSION = "DI-00000";
+    private static final long serialVersionUID = 6827893775979818439L;
 
     private String diseaseId;
     private String diseaseAccession;

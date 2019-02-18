@@ -10,6 +10,7 @@ import static java.util.Collections.emptyList;
 
 
 public class BookImpl extends AbstractCitationImpl implements Book {
+    private static final long serialVersionUID = 7240686919749710678L;
     private String bookName;
     private List<Author> editors;
     private String firstPage;

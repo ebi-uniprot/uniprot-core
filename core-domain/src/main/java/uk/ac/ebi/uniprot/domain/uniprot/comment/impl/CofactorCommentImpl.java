@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
+    private static final long serialVersionUID = -2902168556405341703L;
     private String molecule;
     private List<Cofactor> cofactors;
     private Note note;

@@ -9,6 +9,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
+    private static final long serialVersionUID = -8487467468767628311L;
     private String institute;
     private String address;
 

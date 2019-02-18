@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ECImpl extends ECNumberImpl implements EC {
+    private static final long serialVersionUID = -5418175231477354719L;
     private List<Evidence> evidences;
 
     private ECImpl() {

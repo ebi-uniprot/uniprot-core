@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CofactorImpl implements Cofactor {
+    private static final long serialVersionUID = -1446627008409869566L;
     private String name;
     private List<Evidence> evidences;
     private DBCrossReference<CofactorReferenceType> cofactorReference;

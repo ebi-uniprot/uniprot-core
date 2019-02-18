@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class EntryInactiveReasonImpl implements EntryInactiveReason {
+    private static final long serialVersionUID = 1358481260367130982L;
     private InactiveReasonType inactiveReasonType;
     private List<String> mergeDemergeTo;
 

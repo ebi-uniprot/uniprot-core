@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
+    private static final long serialVersionUID = -8649046279103961092L;
     private Absorption absorption;
     private KineticParameters kineticParameters;
     private PhDependence phDependence;

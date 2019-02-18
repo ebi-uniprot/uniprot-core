@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class FeatureImpl implements Feature {
+    private static final long serialVersionUID = -5308576363211194641L;
     private FeatureType type;
     private Range location;
     private FeatureDescription description;

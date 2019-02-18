@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 
 
 public class UniProtEntryImpl implements UniProtEntry {
+    private static final long serialVersionUID = 3240727057252439286L;
     private UniProtEntryType entryType;
     private UniProtAccession primaryAccession;
     private List<UniProtAccession> secondaryAccessions;

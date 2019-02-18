@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class ECNumberImpl implements ECNumber {
     private static final Pattern EC_PATTERN = Pattern.compile("\\d{1,2}(\\.(\\-|n?\\d{1,3})){3}");
+    private static final long serialVersionUID = -9050725609382601827L;
     private String value;
 
     private ECNumberImpl() {

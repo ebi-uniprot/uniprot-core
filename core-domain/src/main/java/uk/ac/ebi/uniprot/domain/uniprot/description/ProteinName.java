@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface ProteinName {
+public interface ProteinName extends Serializable {
     Name getFullName();
 
     List<Name> getShortNames();

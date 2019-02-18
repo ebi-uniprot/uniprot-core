@@ -8,7 +8,7 @@ import java.util.List;
 
 
 public class ProteinDescriptionImpl implements ProteinDescription {
-
+    private static final long serialVersionUID = 5376504049731368821L;
     private ProteinName recommendedName;
     private List<ProteinName> alternativeNames;
     private List<ProteinName> submissionNames;

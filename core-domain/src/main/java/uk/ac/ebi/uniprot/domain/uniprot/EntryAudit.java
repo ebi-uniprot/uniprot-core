@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public interface EntryAudit {
+public interface EntryAudit extends Serializable {
 
     LocalDate getFirstPublicDate();
 

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class SubcellularLocationImpl implements SubcellularLocation {
+    private static final long serialVersionUID = -1217106303846658373L;
     private SubcellularLocationValue location;
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;

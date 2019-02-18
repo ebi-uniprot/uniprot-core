@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
+    private static final long serialVersionUID = 7080239485468338483L;
     private MassSpectrometryMethod method;
     private Float molWeight;
     private Float molWeightError;

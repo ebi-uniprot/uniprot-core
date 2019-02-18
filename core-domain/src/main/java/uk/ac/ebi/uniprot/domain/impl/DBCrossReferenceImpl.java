@@ -12,6 +12,7 @@ import java.util.Objects;
 
 
 public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference<T> {
+    private static final long serialVersionUID = 4318477387676269483L;
     protected T databaseType;
     protected String id;
     protected List<Property> properties;

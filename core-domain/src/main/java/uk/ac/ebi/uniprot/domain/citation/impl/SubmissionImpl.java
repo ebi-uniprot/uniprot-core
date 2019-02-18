@@ -8,7 +8,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
-
+    private static final long serialVersionUID = 7406371948424303592L;
     private SubmissionDatabase submissionDatabase;
 
     private SubmissionImpl() {

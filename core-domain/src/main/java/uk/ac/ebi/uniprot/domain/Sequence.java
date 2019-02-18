@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain;
 
+import java.io.Serializable;
+
 /**
  * Encapsulates a protein sequence, in particular the sequence annotation in the
  * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} and
@@ -25,7 +27,7 @@ package uk.ac.ebi.uniprot.domain;
  * ...
  * </font></pre>
  */
-public interface Sequence {
+public interface Sequence extends Serializable {
 
     /**
      * Returns the length of this sequence. This should usually be the number of characters

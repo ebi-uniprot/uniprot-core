@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CatalyticActivityCommentImpl extends CommentImpl implements CatalyticActivityComment {
+    private static final long serialVersionUID = 166685624467020599L;
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions;
 

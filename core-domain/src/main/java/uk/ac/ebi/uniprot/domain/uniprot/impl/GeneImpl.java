@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GeneImpl implements Gene {
-
+    private static final long serialVersionUID = 6903566846628575244L;
     private static final String ORF_NAMES = "ORFNames=";
     private static final String ORDERED_LOCUS_NAMES = "OrderedLocusNames=";
     private static final String SYNONYMS = "Synonyms=";

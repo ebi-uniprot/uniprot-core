@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MichaelisConstantImpl implements MichaelisConstant {
+    private static final long serialVersionUID = 7764704734751950354L;
     private double constant;
     private MichaelisConstantUnit unit;
     private String substrate;

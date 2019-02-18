@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class APIsoformImpl implements APIsoform {
+    private static final long serialVersionUID = -6908166238877018418L;
     private IsoformName name;
     private List<IsoformName> synonyms;
     private Note note;

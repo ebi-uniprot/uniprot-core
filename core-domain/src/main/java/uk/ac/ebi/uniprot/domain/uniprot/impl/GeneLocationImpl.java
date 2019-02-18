@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation {
+    private static final long serialVersionUID = -3156758801647353702L;
     private GeneEncodingType geneEncodingType;
 
     private GeneLocationImpl() {

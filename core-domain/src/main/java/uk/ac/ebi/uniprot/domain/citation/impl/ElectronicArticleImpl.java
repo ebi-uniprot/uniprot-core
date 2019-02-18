@@ -9,6 +9,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
+    private static final long serialVersionUID = -8389378286532442748L;
     private Journal journal;
     private Locator locator;
 

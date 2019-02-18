@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class InternalSectionImpl implements InternalSection {
+    private static final long serialVersionUID = 3250758805630819227L;
     private List<InternalLine> internalLines;
     private List<EvidenceLine> evidenceLines;
     private List<SourceLine> sourceLines;

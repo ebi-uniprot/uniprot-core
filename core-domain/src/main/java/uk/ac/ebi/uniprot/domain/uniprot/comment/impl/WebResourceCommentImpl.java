@@ -8,6 +8,7 @@ import java.util.Objects;
 import static uk.ac.ebi.uniprot.common.Utils.nullToEmpty;
 
 public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
+    private static final long serialVersionUID = -2748929647045369784L;
     private String resourceName;
     private String resourceUrl;
     private boolean ftp;

@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
 
 public class FeatureDescriptionImpl implements FeatureDescription {
+    private static final long serialVersionUID = -1958668003264920501L;
     private String value;
 
     private FeatureDescriptionImpl() {

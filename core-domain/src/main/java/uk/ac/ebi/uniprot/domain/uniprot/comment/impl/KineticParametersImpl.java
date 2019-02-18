@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class KineticParametersImpl implements KineticParameters {
+    private static final long serialVersionUID = 6933033384155525116L;
     private List<MaximumVelocity> maximumVelocities;
     private List<MichaelisConstant> michaelisConstants;
     private Note note;

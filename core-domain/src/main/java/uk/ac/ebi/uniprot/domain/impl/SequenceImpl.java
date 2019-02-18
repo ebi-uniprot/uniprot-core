@@ -5,6 +5,7 @@ import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.util.MessageDigestUtil;
 
 public class SequenceImpl implements Sequence {
+    private static final long serialVersionUID = 8906599014658129082L;
     private String value;
     private int length;
     private int molWeight;

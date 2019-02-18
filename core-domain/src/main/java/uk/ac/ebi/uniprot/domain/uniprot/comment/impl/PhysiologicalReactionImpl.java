@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class PhysiologicalReactionImpl implements PhysiologicalReaction {
+    private static final long serialVersionUID = -3913438195830117987L;
     private PhysiologicalDirectionType directionType;
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences;

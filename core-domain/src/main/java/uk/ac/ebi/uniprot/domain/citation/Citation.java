@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.citation;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
  * <p/>
  * To build a citation for use in you program @link uk.ac.ebi.kraken.interfaces.factories.DefaultCitationFactory
  */
-public interface Citation {
+public interface Citation extends Serializable {
 
     List<DBCrossReference<CitationXrefType>> getCitationXrefs();
 

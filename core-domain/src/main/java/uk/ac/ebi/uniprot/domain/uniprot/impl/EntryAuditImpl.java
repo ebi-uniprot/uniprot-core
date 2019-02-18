@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
 import java.time.LocalDate;
 
 public final class EntryAuditImpl implements EntryAudit {
-
+    private static final long serialVersionUID = -232879461828356252L;
     private LocalDate firstPublicDate;
     private LocalDate lastAnnotationUpdateDate;
     private LocalDate lastSequenceUpdateDate;

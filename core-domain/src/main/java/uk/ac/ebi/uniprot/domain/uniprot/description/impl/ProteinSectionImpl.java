@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProteinSectionImpl implements ProteinSection {
+    private static final long serialVersionUID = 909950964614052681L;
     private ProteinName recommendedName;
     private List<ProteinName> alternativeNames;
 

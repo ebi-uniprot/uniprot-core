@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 
 public class AuthorImpl implements Author {
+    private static final long serialVersionUID = -3113315529380049309L;
     private String value;
 
     private AuthorImpl() {

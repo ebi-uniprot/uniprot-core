@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 
 public class ReactionImpl implements Reaction {
+    private static final long serialVersionUID = 7533995250813372108L;
     private String name;
     private List<DBCrossReference<ReactionReferenceType>> reactionReferences;
     private ECNumber ecNumber;

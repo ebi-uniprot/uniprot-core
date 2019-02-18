@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import java.util.Objects;
 
 public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
+    private static final long serialVersionUID = 1934540834096516974L;
     private Disease disease;
     private Note note;
 

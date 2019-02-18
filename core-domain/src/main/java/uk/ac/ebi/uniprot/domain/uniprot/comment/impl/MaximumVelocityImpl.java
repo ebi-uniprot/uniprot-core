@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MaximumVelocityImpl implements MaximumVelocity {
+    private static final long serialVersionUID = -5733295713214255112L;
     private double velocity;
     private String unit;
     private String enzyme;

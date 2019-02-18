@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
+    private static final long serialVersionUID = 4628964374292908502L;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private List<String> positions;

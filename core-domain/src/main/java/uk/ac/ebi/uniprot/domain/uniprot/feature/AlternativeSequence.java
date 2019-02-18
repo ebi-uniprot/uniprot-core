@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ import java.util.List;
  * ...
  * </font></pre>
  */
-public interface AlternativeSequence {
+public interface AlternativeSequence extends Serializable {
 
 	public String getOriginalSequence();
 	public List<String> getAlternativeSequences();

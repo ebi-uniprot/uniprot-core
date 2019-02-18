@@ -11,6 +11,7 @@ import java.util.Objects;
 public class KeywordImpl extends EvidencedValueImpl implements Keyword {
 
     public static final String DEFAULT_ACCESSION = "KW-00000";
+    private static final long serialVersionUID = -8858878734008282808L;
     private String id;
 
     private KeywordImpl() {

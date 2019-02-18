@@ -9,7 +9,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class JournalArticleImpl extends AbstractCitationImpl implements JournalArticle {
-
+    private static final long serialVersionUID = -1925700851366460680L;
     private Journal journal;
     private String firstPage;
     private String lastPage;

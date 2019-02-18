@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class AbsorptionImpl implements Absorption {
+    private static final long serialVersionUID = -7439273402053104732L;
     private int max;
     private boolean approximate;
     private Note note;

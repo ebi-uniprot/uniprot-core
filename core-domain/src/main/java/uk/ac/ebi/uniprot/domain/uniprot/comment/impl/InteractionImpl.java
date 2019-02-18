@@ -10,6 +10,7 @@ import java.util.Objects;
 
 
 public class InteractionImpl implements Interaction {
+    private static final long serialVersionUID = -1102213995267310387L;
     private InteractionType type;
     private UniProtAccession uniProtAccession;
     private String geneName;

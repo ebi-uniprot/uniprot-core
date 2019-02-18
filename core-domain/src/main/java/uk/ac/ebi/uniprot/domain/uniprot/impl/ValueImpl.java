@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Value;
 
 public class ValueImpl implements Value {
+    private static final long serialVersionUID = 1046531902098372084L;
     private String value;
 
     private ValueImpl() {
