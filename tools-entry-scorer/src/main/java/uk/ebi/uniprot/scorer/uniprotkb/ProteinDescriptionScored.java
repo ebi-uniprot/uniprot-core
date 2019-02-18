@@ -39,7 +39,7 @@ public class ProteinDescriptionScored implements HasScore {
             return score;
         }
 
-        // EC numbers avoid duplicate ECs
+        // distinct EC numbers
         int distinctECNumbersSize = getDistinctECs(description).size();
 
         score += distinctECNumbersSize * 3;
@@ -60,6 +60,7 @@ public class ProteinDescriptionScored implements HasScore {
 
     private Set<EC> getDistinctECs(ProteinDescription description) {
         Set<EC> ecs = new HashSet<>();
+        addECs(description.getSubmissionNames(), ecs);
         addECs(description.getRecommendedName(), ecs);
         addECs(description.getAlternativeNames(), ecs);
         description.getContains().forEach(proteinSection -> {

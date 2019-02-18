@@ -20,7 +20,8 @@ public class ProteinDescriptionScoredTest {
     @Test
     public void shouldSubNameScore6() {
 
-        String description = "DE   SubName: Full=Type IIS restriction enzyme Eco57I EC=3.1.21.4;\n" +
+        String description = "DE   SubName: Full=Type IIS restriction enzyme Eco57I;\n" +
+                "DE            EC=3.1.21.4;\n" +
                 "DE            EC=2.1.1.72;\n";
         testDescription(description, 6.0, Consensus.COMPLEX);
 
@@ -63,7 +64,6 @@ public class ProteinDescriptionScoredTest {
                 "DE   AltName: INN=Aldesleukin;\n";
 
         testDescription(description, 9.0, Consensus.COMPLEX);
-
     }
 
     @Test
@@ -311,7 +311,7 @@ public class ProteinDescriptionScoredTest {
     private void testDescription(String description, double score, Consensus consensus) {
         ProteinDescription proteinDescription = parseLines(description);
         ProteinDescriptionScored scored = new ProteinDescriptionScored(proteinDescription);
-        assertEquals(scored.score(), score, 0.0001);
+        assertEquals(score, scored.score(), 0.0001);
         assertEquals(consensus, scored.consensus());
     }
 
