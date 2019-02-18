@@ -8,11 +8,15 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ebi.uniprot.scorer.uniprotkb.comments.CommentScored;
 import uk.ebi.uniprot.scorer.uniprotkb.comments.CommentScoredFactory;
+import uk.ebi.uniprot.scorer.uniprotkb.features.FeatureScored;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:33:09 To change this template use File | Settings
@@ -66,7 +70,7 @@ public class UniProtEntryScored implements HasScore {
         this.score.keywordScore = scoreKeywords();
 
         // FEATURES
-//        this.score.featureScore = scoreFeatures();
+        this.score.featureScore = scoreFeatures();
 
         // JOURNAL ARTICLES
         this.score.citiationScore = 0;
@@ -128,24 +132,25 @@ public class UniProtEntryScored implements HasScore {
         return gscore;
     }
 
-//    private double scoreFeatures() {
-//        double oldscore = 0;
-//        double localScore = 0;
-//        boolean isSP = (entry.getEntryType() == UniProtEntryType.SWISSPROT);
-//        for (FeatureType type : FeatureType.values()) {
-//            List<HasScore> scoredList = new ArrayList<>();
-//            for (Feature feature : entry.getFeatures(type)) {
-//                FeatureScored scored = new FeatureScored(feature, evidenceTypes);
-//                scored.setIsSwissProt(isSP);
-//                scoredList.add(scored);
-//            }
-//            oldscore = localScore;
-//            localScore += this.scoreList(scoredList);
-//            if (Math.abs(oldscore - localScore) > 0.001)
-//                LOG.debug("Feature score for [{}] {}", type, localScore - oldscore);
-//        }
-//        return localScore;
-//    }
+    private double scoreFeatures() {
+        double oldscore = 0;
+        double localScore = 0;
+        boolean isSP = (entry.getEntryType() == UniProtEntryType.SWISSPROT);
+        for (FeatureType type : FeatureType.values()) {
+            List<HasScore> scoredList = new ArrayList<>();
+            for (Feature feature : entry.getFeatures().stream().filter(f -> f.getType().equals(type))
+                    .collect(Collectors.toList())) {
+                FeatureScored scored = new FeatureScored(feature, evidenceTypes);
+                scored.setIsSwissProt(isSP);
+                scoredList.add(scored);
+            }
+            oldscore = localScore;
+            localScore += this.scoreList(scoredList);
+            if (Math.abs(oldscore - localScore) > 0.001)
+                LOG.debug("Feature score for [{}] {}", type, localScore - oldscore);
+        }
+        return localScore;
+    }
 
 //    private double scoreGo() {
 //        double localScore = 0;
