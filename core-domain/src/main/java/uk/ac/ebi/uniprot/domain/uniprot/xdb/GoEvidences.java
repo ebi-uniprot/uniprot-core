@@ -19,7 +19,7 @@ public enum GoEvidences {
     private Map<String, String> defaultMappingFromEco = new HashMap<>();
     private Map<String, String> otherMapping = new HashMap<>();
 
-    private GoEvidences() {
+    GoEvidences() {
         init();
     }
 

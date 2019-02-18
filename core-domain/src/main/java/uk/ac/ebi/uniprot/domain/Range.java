@@ -57,11 +57,8 @@ public final class Range {
         } else if (!end.equals(other.end))
             return false;
         if (start == null) {
-            if (other.start != null)
-                return false;
-        } else if (!start.equals(other.start))
-            return false;
-        return true;
+            return other.start == null;
+        } else return start.equals(other.start);
     }
 
 

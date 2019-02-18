@@ -70,11 +70,8 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         } else if (!journal.equals(other.journal))
             return false;
         if (locator == null) {
-            if (other.locator != null)
-                return false;
-        } else if (!locator.equals(other.locator))
-            return false;
-        return true;
+            return other.locator == null;
+        } else return locator.equals(other.locator);
     }
 
     public static class LocatorImpl implements Locator {
@@ -117,11 +114,8 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
                 return false;
             LocatorImpl other = (LocatorImpl) obj;
             if (value == null) {
-                if (other.value != null)
-                    return false;
-            } else if (!value.equals(other.value))
-                return false;
-            return true;
+                return other.value == null;
+            } else return value.equals(other.value);
         }
 
     }

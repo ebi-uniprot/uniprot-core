@@ -97,7 +97,7 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     }
 
 
-    public static enum Category {
+    public enum Category {
         EXPERMIENTAL, MANUAL, AUTOMATIC
     }
 }

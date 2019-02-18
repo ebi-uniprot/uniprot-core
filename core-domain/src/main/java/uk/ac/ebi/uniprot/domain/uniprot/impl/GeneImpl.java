@@ -148,11 +148,8 @@ public class GeneImpl implements Gene {
         } else if (!orfNames.equals(other.orfNames))
             return false;
         if (synonyms == null) {
-            if (other.synonyms != null)
-                return false;
-        } else if (!synonyms.equals(other.synonyms))
-            return false;
-        return true;
+            return other.synonyms == null;
+        } else return synonyms.equals(other.synonyms);
     }
 
     public static class ORFNameImpl extends EvidencedValueImpl implements ORFName {

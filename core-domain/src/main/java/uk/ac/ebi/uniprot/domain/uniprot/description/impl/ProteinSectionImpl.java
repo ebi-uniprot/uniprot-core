@@ -71,11 +71,8 @@ public class ProteinSectionImpl implements ProteinSection {
         } else if (!alternativeNames.equals(other.alternativeNames))
             return false;
         if (recommendedName == null) {
-            if (other.recommendedName != null)
-                return false;
-        } else if (!recommendedName.equals(other.recommendedName))
-            return false;
-        return true;
+            return other.recommendedName == null;
+        } else return recommendedName.equals(other.recommendedName);
     }
 
 }

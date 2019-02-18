@@ -102,11 +102,8 @@ public class ProteinNameImpl implements ProteinName {
         } else if (!fullName.equals(other.fullName))
             return false;
         if (shortNames == null) {
-            if (other.shortNames != null)
-                return false;
-        } else if (!shortNames.equals(other.shortNames))
-            return false;
-        return true;
+            return other.shortNames == null;
+        } else return shortNames.equals(other.shortNames);
     }
 
 }

@@ -11,9 +11,9 @@ package uk.ac.ebi.uniprot.domain.citation;
  */
 public interface ElectronicArticle extends Citation {
 
-    public Locator getLocator();
+    Locator getLocator();
 
-    public Journal getJournal();
+    Journal getJournal();
 
     boolean hasLocator();
 

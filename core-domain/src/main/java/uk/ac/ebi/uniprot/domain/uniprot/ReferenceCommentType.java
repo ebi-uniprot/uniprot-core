@@ -13,7 +13,7 @@ public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
 
     private String value;
 
-    private ReferenceCommentType(String type) {
+    ReferenceCommentType(String type) {
         this.value = type;
 
     }

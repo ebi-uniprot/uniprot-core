@@ -91,9 +91,7 @@ public final class EntryAuditImpl implements EntryAudit {
                 return false;
         } else if (!lastSequenceUpdateDate.equals(other.lastSequenceUpdateDate))
             return false;
-        if (sequenceVersion != other.sequenceVersion)
-            return false;
-        return true;
+        return sequenceVersion == other.sequenceVersion;
     }
 
 }

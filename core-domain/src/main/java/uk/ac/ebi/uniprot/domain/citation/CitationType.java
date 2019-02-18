@@ -22,7 +22,7 @@ public enum CitationType implements EnumDisplay<CitationType> {
         this.displayName = displayName;
     }
 
-    private CitationType(String type) {
+    CitationType(String type) {
         this(type, type);
     }
 

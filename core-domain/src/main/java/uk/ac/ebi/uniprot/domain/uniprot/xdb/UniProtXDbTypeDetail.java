@@ -92,11 +92,8 @@ public class UniProtXDbTypeDetail {
         } else if (!name.equals(other.name))
             return false;
         if (uriLink == null) {
-            if (other.uriLink != null)
-                return false;
-        } else if (!uriLink.equals(other.uriLink))
-            return false;
-        return true;
+            return other.uriLink == null;
+        } else return uriLink.equals(other.uriLink);
     }
 
 

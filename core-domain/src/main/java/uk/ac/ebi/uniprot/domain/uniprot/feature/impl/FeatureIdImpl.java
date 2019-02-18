@@ -28,7 +28,6 @@ public class FeatureIdImpl implements FeatureId {
         FEATUREID_REGEX_MAP.put(FeatureType.VARIANT, Arrays.asList(VAR_PATTERN));
     }
 
-    ;
     private String value;
 
     private FeatureIdImpl() {
@@ -81,11 +80,8 @@ public class FeatureIdImpl implements FeatureId {
             return false;
         FeatureIdImpl other = (FeatureIdImpl) obj;
         if (value == null) {
-            if (other.value != null)
-                return false;
-        } else if (!value.equals(other.value))
-            return false;
-        return true;
+            return other.value == null;
+        } else return value.equals(other.value);
     }
 
 }

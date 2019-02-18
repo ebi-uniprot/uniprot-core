@@ -50,10 +50,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
             return false;
         PatentImpl other = (PatentImpl) obj;
         if (patentNumber == null) {
-            if (other.patentNumber != null)
-                return false;
-        } else if (!patentNumber.equals(other.patentNumber))
-            return false;
-        return true;
+            return other.patentNumber == null;
+        } else return patentNumber.equals(other.patentNumber);
     }
 }

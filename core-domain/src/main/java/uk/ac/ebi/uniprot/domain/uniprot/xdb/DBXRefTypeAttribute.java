@@ -57,11 +57,8 @@ public final class DBXRefTypeAttribute {
         } else if (!uriLink.equals(other.uriLink))
             return false;
         if (xmlTag == null) {
-            if (other.xmlTag != null)
-                return false;
-        } else if (!xmlTag.equals(other.xmlTag))
-            return false;
-        return true;
+            return other.xmlTag == null;
+        } else return xmlTag.equals(other.xmlTag);
     }
 
 }

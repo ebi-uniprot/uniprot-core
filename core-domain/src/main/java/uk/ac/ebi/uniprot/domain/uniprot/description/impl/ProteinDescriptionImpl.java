@@ -261,11 +261,8 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         } else if (!recommendedName.equals(other.recommendedName))
             return false;
         if (submissionNames == null) {
-            if (other.submissionNames != null)
-                return false;
-        } else if (!submissionNames.equals(other.submissionNames))
-            return false;
-        return true;
+            return other.submissionNames == null;
+        } else return submissionNames.equals(other.submissionNames);
     }
 
 

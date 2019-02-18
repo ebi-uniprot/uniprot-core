@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 public interface WebResourceComment extends Comment {
-    public String ONLINE_INFORMATION_XMLTAG = "online information";
+    String ONLINE_INFORMATION_XMLTAG = "online information";
 
     String getResourceName();
 

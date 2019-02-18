@@ -5,12 +5,12 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 
 public interface MichaelisConstant extends HasEvidences {
 
-    public static final MichaelisConstantUnit NORMALIZED_UNIT = MichaelisConstantUnit.NANO_MOL;
+    MichaelisConstantUnit NORMALIZED_UNIT = MichaelisConstantUnit.NANO_MOL;
 
-    public double getConstant();
+    double getConstant();
 
-    public MichaelisConstantUnit getUnit();
+    MichaelisConstantUnit getUnit();
 
-    public String getSubstrate();
+    String getSubstrate();
 
 }
