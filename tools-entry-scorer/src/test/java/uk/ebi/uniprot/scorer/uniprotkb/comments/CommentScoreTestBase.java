@@ -39,14 +39,6 @@ class CommentScoreTestBase {
         scored.setIsSwissProt(isSp);
         assertEquals(expectedScore, scored.score(), 0.001);
     }
-//
-//    protected void verifyMulti(String line, double expectedScore, boolean isSp) throws Exception{
-//        SwissProtEntryText text = new SwissProtEntryText();
-//        text.insertCCLine(line);
-//        UniProtEntry entry = UniProtParser.parse(text.getText(), DefaultUniProtFactory.getInstance());
-//        UniProtEntryScored scored = new UniProtEntryScored(entry);
-//        assertEquals(expectedScore, scored.getEntryScore().getCommentScore(), 0.001);
-//    }
 
     void verifyMulti(String line, double expectedScore, boolean isSp) throws Exception {
         List<Comment> comments = ccLineTransformer.transformNoHeader(line);
