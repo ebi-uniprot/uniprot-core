@@ -507,7 +507,7 @@ CC_CAT_ACT_NEW_LINE: '\n'                             -> type (NEW_LINE);
 CC_CAT_ACT_HEADER_1 : 'CC       '                  ->  type (CC_HEADER_1) ;
 CC_CAT_ACT_HEADER_2 : 'CC         '                  ->  type (CC_HEADER_2) ;
 CC_CAT_ACT_CHANGE_LINE_1: '\nCC         '           {setType(CHANGE_OF_LINE_LEVEL2);replaceChangeOfLine();};
-CC_CAT_ACT_REACTION: 'Reaction='                     -> pushMode ( CC_PROPERTIES_TEXT_MODE );
+CC_CAT_ACT_REACTION: 'Reaction='                     -> pushMode ( CC_PROPERTIES_TEXT2_MODE );
 CC_CAT_ACT_XREF: 'Xref='                    -> pushMode ( CC_PROPERTIES_TEXT_MODE );
 CC_CAT_ACT_EC: 'EC='                    -> pushMode ( CC_PROPERTIES_TEXT_MODE );
 CC_CAT_ACT_EV_START: 'Evidence={'                       -> pushMode ( EV_EVIDENCE_MODE );
@@ -515,7 +515,13 @@ CC_CAT_ACT_PD: 'PhysiologicalDirection='           -> pushMode ( CC_PROPERTIES_T
 CC_CAT_ACT_WORD: CC_CAT_ACT_WORD_LETTER+ ;
 fragment CC_CAT_ACT_WORD_LETTER: ~[ :.;=\n\r\t{];
 
-
+mode CC_PROPERTIES_TEXT2_MODE;
+CC_PROPERTIES_TEXT2_END : ';'                                -> type (SEMICOLON), popMode;
+CC_PROPERTIES_TEXT2_CHANGE_LINE_1: '\nCC         '           {setType(CHANGE_OF_LINE_LEVEL2);replaceChangeOfLine();};
+CC_PROPERTIES_TEXT2_CHANGE_LINE_2: '\nCC       '             {setType(CHANGE_OF_LINE);replaceChangeOfLine();};
+CC_PROPERTIES_TEXT2:                   CC_PROPERTIES_TEXT2_LETTER+ (CC_PROPERTIES_TEXT2_SPACE CC_PROPERTIES_TEXT2_LETTER+)*;
+CC_PROPERTIES_TEXT2_SPACE: ' '                               -> type (SPACE);
+fragment CC_PROPERTIES_TEXT2_LETTER: ~[ ;\n\t\r];
 
 
 
