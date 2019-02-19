@@ -6,7 +6,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
@@ -50,7 +50,7 @@ public class DescriptionHelper {
     }
 
     public static ProteinName createProteinName(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
-        return new ProteinNameBuilder()
+        return new ProteinRecNameBuilder()
                 .fullName(fullName)
                 .shortNames(shortNames)
                 .ecNumbers(ecNumbers)

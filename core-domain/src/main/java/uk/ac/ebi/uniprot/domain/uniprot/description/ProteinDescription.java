@@ -5,19 +5,11 @@ import java.util.List;
 
 public interface ProteinDescription extends Serializable {
 
-    ProteinName getRecommendedName();
+	ProteinRecName getRecommendedName();
 
-    List<ProteinName> getAlternativeNames();
+    List<ProteinAltName> getAlternativeNames();
 
-    List<ProteinName> getSubmissionNames();
-
-    Name getAllergenName();
-
-    Name getBiotechName();
-
-    List<Name> getCdAntigenNames();
-
-    List<Name> getInnNames();
+    List<ProteinSubName> getSubmissionNames();
 
     List<ProteinSection> getIncludes();
 
@@ -29,14 +21,6 @@ public interface ProteinDescription extends Serializable {
 
     boolean hasSubmissionNames();
 
-    boolean hasAllergenName();
-
-    boolean hasBiotechName();
-
-    boolean hasCdAntigenNames();
-
-    boolean hasInnNames();
-
     boolean hasIncludes();
 
     boolean hasContains();
@@ -46,7 +30,5 @@ public interface ProteinDescription extends Serializable {
     Flag getFlag();
     
     void setFlag(Flag flag);
-
-    boolean hasFlag();
 
 }

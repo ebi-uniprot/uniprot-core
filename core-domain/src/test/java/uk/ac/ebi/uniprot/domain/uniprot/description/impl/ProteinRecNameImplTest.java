@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-class ProteinNameImplTest {
+class ProteinRecNameImplTest {
 
     @Test
     void testFull() {
@@ -24,7 +24,7 @@ class ProteinNameImplTest {
         Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
+        ProteinRecName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(shortNames, recName.getShortNames());
         assertEquals(ecNumbers, recName.getEcNumbers());
@@ -40,7 +40,7 @@ class ProteinNameImplTest {
         //	Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinName recName = new ProteinNameBuilder().fullName(null).shortNames(shortNames).ecNumbers(ecNumbers).build();
+        ProteinRecName recName = new ProteinRecNameBuilder().fullName(null).shortNames(shortNames).ecNumbers(ecNumbers).build();
 
         assertFalse(recName.isValid());
 
@@ -54,7 +54,7 @@ class ProteinNameImplTest {
         Name fullName = new NameImpl("a full Name", evidences);
         //	List<Name> shortNames = createShortNames();
         //	List<EC> ecNumbers = createECNumbers();
-        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(null).ecNumbers(null).build();
+        ProteinRecName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(null).ecNumbers(null).build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(0, recName.getShortNames().size());
         assertEquals(0, recName.getEcNumbers().size());
@@ -70,7 +70,7 @@ class ProteinNameImplTest {
         Name fullName = new NameImpl("a full Name", evidences);
         //	List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(null).ecNumbers(ecNumbers).build();
+        ProteinRecName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(null).ecNumbers(ecNumbers).build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(0, recName.getShortNames().size());
         assertEquals(ecNumbers, recName.getEcNumbers());
@@ -86,7 +86,7 @@ class ProteinNameImplTest {
         Name fullName = new NameImpl("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         //	List<EC> ecNumbers = createECNumbers();
-        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
+        ProteinRecName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
         assertEquals(fullName, recName.getFullName());
         assertEquals(shortNames, recName.getShortNames());
         assertEquals(0, recName.getEcNumbers().size());

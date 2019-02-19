@@ -109,7 +109,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 			ecEvidence.nameECBelong = val;
 			return new ECBuilder().value(ec).evidences(evidenceMap.get(ecEvidence)).build();
 		}).collect(Collectors.toList());
-		return new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
+		return new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
 
 	}
 
@@ -124,7 +124,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		List<EC> ecNumbers = val.ecs.stream().map(ec ->
 			createEC(ec, val, evidenceMap))
 			.collect(Collectors.toList());
-		return new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
+		return new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
 
 	}
 
@@ -150,7 +150,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 			ecEvidence.nameECBelong = val;
 			return new ECBuilder().value(ec).evidences(evidenceMap.get(ecEvidence)).build();
 		}).collect(Collectors.toList());
-		return new ProteinNameBuilder().fullName(fullName).ecNumbers(ecNumbers).build();
+		return new ProteinRecNameBuilder().fullName(fullName).ecNumbers(ecNumbers).build();
 
 	}
 }

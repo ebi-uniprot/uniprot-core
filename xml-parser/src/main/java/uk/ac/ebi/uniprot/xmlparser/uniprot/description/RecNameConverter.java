@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.RecommendedName;
@@ -27,7 +27,7 @@ public class RecNameConverter implements Converter<RecommendedName, ProteinName>
 
     @Override
     public ProteinName fromXml(RecommendedName xmlObj) {
-        return new ProteinNameBuilder()
+        return new ProteinRecNameBuilder()
                 .fullName(nameConverter.fromXml(xmlObj.getFullName()))
                 .shortNames(xmlObj.getShortName().stream().map(nameConverter::fromXml)
                                     .collect(Collectors.toList()))

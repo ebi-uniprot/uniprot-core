@@ -1,22 +1,24 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-
 import java.util.Collections;
 import java.util.List;
 
+import uk.ac.ebi.uniprot.common.Utils;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+
 public class ProteinSectionImpl implements ProteinSection {
-    private static final long serialVersionUID = 909950964614052681L;
-    private ProteinName recommendedName;
-    private List<ProteinName> alternativeNames;
+
+	private static final long serialVersionUID = -8215290595530427991L;
+	private ProteinRecName recommendedName;
+    private List<ProteinAltName> alternativeNames;
 
     private ProteinSectionImpl() {
         this.alternativeNames = Collections.emptyList();
     }
 
-    public ProteinSectionImpl(ProteinName recommendedName, List<ProteinName> alternativeNames) {
+    public ProteinSectionImpl(ProteinRecName recommendedName, List<ProteinAltName> alternativeNames) {
 
         this.recommendedName = recommendedName;
         if ((alternativeNames == null) || alternativeNames.isEmpty()) {
@@ -28,12 +30,12 @@ public class ProteinSectionImpl implements ProteinSection {
     }
 
     @Override
-    public ProteinName getRecommendedName() {
+    public ProteinRecName getRecommendedName() {
         return recommendedName;
     }
 
     @Override
-    public List<ProteinName> getAlternativeNames() {
+    public List<ProteinAltName> getAlternativeNames() {
         return alternativeNames;
     }
 

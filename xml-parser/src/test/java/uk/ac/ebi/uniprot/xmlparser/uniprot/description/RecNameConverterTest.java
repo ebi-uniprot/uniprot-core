@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
@@ -28,7 +28,7 @@ class RecNameConverterTest {
         Name fullName = new NameBuilder().value("a full Name").evidences(evidences).build();
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers)
+        ProteinName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers)
                 .build();
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         ECConverter ecConverter = new ECConverter(evRefMapper);

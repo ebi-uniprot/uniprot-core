@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.SubmittedName;
@@ -48,7 +48,7 @@ public class SubNameConverter implements Converter<SubmittedName, ProteinName>, 
     }
 
     private ProteinName createProteinName(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
-        return new ProteinNameBuilder()
+        return new ProteinRecNameBuilder()
                 .ecNumbers(ecNumbers)
                 .shortNames(shortNames)
                 .fullName(fullName)

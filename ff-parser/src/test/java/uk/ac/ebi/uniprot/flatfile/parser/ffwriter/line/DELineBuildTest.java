@@ -50,7 +50,7 @@ public class DELineBuildTest {
     }
 
     private ProteinName createProteinName(Name recFullName, List<Name> recShortNames, List<EC> recEcNumbers) {
-        return new ProteinNameBuilder()
+        return new ProteinRecNameBuilder()
                 .ecNumbers(recEcNumbers)
                 .shortNames(recShortNames)
                 .fullName(recFullName)
