@@ -72,12 +72,22 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     }
 
     public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue {
-        private SubcellularLocationValueImpl() {
-            super(null, Collections.emptyList());
+
+		private static final long serialVersionUID = -2637543322400653482L;
+		private String id;
+    	private SubcellularLocationValueImpl() {
+            super( null, Collections.emptyList());
         }
 
-        public SubcellularLocationValueImpl(String value, List<Evidence> evidences) {
+        public SubcellularLocationValueImpl(String id, String value, List<Evidence> evidences) {
             super(value, evidences);
+            this.id =id;
         }
+
+		@Override
+		public String getId() {
+			return id;
+		}
+		
     }
 }
