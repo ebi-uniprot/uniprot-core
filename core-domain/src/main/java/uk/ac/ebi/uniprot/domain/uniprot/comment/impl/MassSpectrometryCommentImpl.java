@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
@@ -74,6 +75,36 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasMolWeight() {
+        return this.molWeight != null;
+    }
+
+    @Override
+    public boolean hasMolWeightError() {
+        return this.molWeightError != null;
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
+    public boolean hasRanges() {
+        return Utils.notEmpty(this.ranges);
+    }
+
+    @Override
+    public boolean hasMethod() {
+        return this.method != null;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

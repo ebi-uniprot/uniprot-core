@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 
@@ -47,6 +48,21 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
     @Override
     public boolean isFtp() {
         return ftp;
+    }
+
+    @Override
+    public boolean hasResourceName() {
+        return this.resourceName != null;
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
+    public boolean hasResourceUrl() {
+        return Utils.notEmpty(this.resourceUrl);
     }
 
     @Override

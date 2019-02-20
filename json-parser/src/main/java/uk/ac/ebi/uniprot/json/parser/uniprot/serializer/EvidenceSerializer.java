@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.json.parser.uniprot.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceImpl;
@@ -20,7 +19,7 @@ public class EvidenceSerializer extends StdSerializer<EvidenceImpl> {
 
 
 	@Override
-	public void serialize(EvidenceImpl evidence, JsonGenerator gen, SerializerProvider sp) throws IOException, JsonProcessingException {
+	public void serialize(EvidenceImpl evidence, JsonGenerator gen, SerializerProvider sp) throws IOException {
         gen.writeStartObject();
         gen.writeStringField("evidenceCode",evidence.getEvidenceCode().getCode());
         if(evidence.getSource() != null) {

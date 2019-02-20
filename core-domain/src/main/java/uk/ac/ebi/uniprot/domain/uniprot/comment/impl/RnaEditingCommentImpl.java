@@ -48,6 +48,21 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
     }
 
     @Override
+    public boolean hasLocationType() {
+        return this.locationType != null;
+    }
+
+    @Override
+    public boolean hasPositions() {
+        return Utils.notEmpty(this.positions);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
