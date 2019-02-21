@@ -2,9 +2,11 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
+import java.io.Serializable;
 import java.util.List;
 
-public final class UniProtXDbType implements DatabaseType {
+public final class UniProtXDbType implements DatabaseType, Serializable {
+    private static final long serialVersionUID = 201534956573963997L;
     private String name;
 
     private UniProtXDbType() {

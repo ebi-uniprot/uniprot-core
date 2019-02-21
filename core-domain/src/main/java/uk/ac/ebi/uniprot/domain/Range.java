@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.domain;
 
-public final class Range {
+import java.io.Serializable;
+
+public final class Range implements Serializable {
+    private static final long serialVersionUID = 8921458888683701817L;
     private Position start;
     private Position end;
 

@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-public class EvidenceTypeDetail {
+import java.io.Serializable;
+
+public class EvidenceTypeDetail implements Serializable {
+    private static final long serialVersionUID = 4511309637271346914L;
     private String name;
     private String displayName;
     private String uriLink;

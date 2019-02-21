@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.domain;
 
-public final class Position implements Comparable<Position> {
+import java.io.Serializable;
+
+public final class Position implements Comparable<Position>, Serializable {
+    private static final long serialVersionUID = 894962443138290579L;
     private Integer value;
     private PositionModifier modifier;
 

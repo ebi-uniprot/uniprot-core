@@ -10,6 +10,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import java.util.Objects;
 
 public class EvidenceImpl implements Evidence {
+    private static final long serialVersionUID = 6892404810238028657L;
     static final EvidenceType REFERENCE = new EvidenceType("Reference");
     private static final String PIPE = "|";
     private static final String COLON = ":";

@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.domain;
 
-public final class Property implements Pair<String, String>, Comparable<Property> {
+import java.io.Serializable;
+
+public final class Property implements Pair<String, String>, Comparable<Property>, Serializable {
+    private static final long serialVersionUID = 2383267527069888292L;
     private String key;
     private String value;
 
