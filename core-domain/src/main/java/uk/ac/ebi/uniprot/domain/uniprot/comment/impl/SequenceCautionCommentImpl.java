@@ -63,6 +63,26 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     }
 
     @Override
+    public boolean hasSequence() {
+        return Utils.notEmpty(this.sequence);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
+    public boolean hasSequenceCautionType() {
+        return this.sequenceCautionType != null;
+    }
+
+    @Override
+    public boolean hasPositions() {
+        return Utils.notEmpty(this.positions);
+    }
+
+    @Override
     public List<Evidence> getEvidences() {
         return evidences;
     }

@@ -60,6 +60,12 @@ public interface CofactorComment extends Comment {
      */
     Note getNote();
 
+    boolean hasMolecule();
+
+    boolean hasCofactors();
+
+    boolean hasNote();
+
     boolean isValid();
 
 }

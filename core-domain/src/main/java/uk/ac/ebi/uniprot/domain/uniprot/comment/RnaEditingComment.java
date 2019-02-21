@@ -9,11 +9,17 @@ import java.util.List;
 
 public interface RnaEditingComment extends Comment {
 
-    String POSITIONS_PREFIX = "Modified_positions=";
+    public final static String POSITIONS_PREFIX = "Modified_positions=";
 
-    RnaEditingLocationType getLocationType();
+    public RnaEditingLocationType getLocationType();
 
-    List<RnaEdPosition> getPositions();
+    public List<RnaEdPosition> getPositions();
 
-    Note getNote();
+    public Note getNote();
+
+    boolean hasLocationType();
+
+    boolean hasPositions();
+
+    boolean hasNote();
 }

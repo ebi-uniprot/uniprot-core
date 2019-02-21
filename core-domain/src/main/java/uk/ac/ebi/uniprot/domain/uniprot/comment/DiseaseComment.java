@@ -62,4 +62,6 @@ public interface DiseaseComment extends Comment {
      */
     Note getNote();
 
+    boolean hasNote();
+
 }

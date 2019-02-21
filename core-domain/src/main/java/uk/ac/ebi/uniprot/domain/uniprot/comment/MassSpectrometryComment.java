@@ -6,15 +6,27 @@ import java.util.List;
 
 public interface MassSpectrometryComment extends Comment {
 
-    Float getMolWeight();
+    public Float getMolWeight();
 
-    Float getMolWeightError();
+    public Float getMolWeightError();
 
-    String getNote();
+    public String getNote();
 
-    List<MassSpectrometryRange> getRanges();
+    public List<MassSpectrometryRange> getRanges();
 
-    MassSpectrometryMethod getMethod();
+    public MassSpectrometryMethod getMethod();
 
-    List<Evidence> getEvidences();
+    public List<Evidence> getEvidences();
+
+    boolean hasMolWeight();
+
+    boolean hasMolWeightError();
+
+    boolean hasNote();
+
+    boolean hasRanges();
+
+    boolean hasMethod();
+
+    boolean hasEvidences();
 }

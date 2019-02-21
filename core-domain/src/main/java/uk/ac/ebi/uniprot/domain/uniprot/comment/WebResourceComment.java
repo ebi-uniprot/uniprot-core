@@ -11,4 +11,10 @@ public interface WebResourceComment extends Comment {
 
     boolean isFtp();
 
+    boolean hasResourceName();
+
+    boolean hasNote();
+
+    boolean hasResourceUrl();
+
 }

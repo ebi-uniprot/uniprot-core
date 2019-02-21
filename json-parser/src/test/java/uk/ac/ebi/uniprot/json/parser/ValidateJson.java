@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 
 public class ValidateJson {
 
-    private static Logger logger = LoggerFactory.getLogger(ValidateJson.class);
+    private static final Logger logger = LoggerFactory.getLogger(ValidateJson.class);
 
     public static <T> void verifyJsonRoundTripParser(T obj) {
         try {
