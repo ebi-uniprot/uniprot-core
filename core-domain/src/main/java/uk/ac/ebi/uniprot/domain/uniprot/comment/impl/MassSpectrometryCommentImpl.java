@@ -84,7 +84,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
 
     @Override
     public boolean hasMolWeightError() {
-        return this.molWeightError != null;
+        return this.molWeightError != null && this.molWeightError > 0;
     }
 
     @Override
