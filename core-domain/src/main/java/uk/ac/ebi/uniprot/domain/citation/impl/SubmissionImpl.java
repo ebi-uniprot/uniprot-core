@@ -48,9 +48,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
         if (getClass() != obj.getClass())
             return false;
         SubmissionImpl other = (SubmissionImpl) obj;
-        if (submissionDatabase != other.submissionDatabase)
-            return false;
-        return true;
+        return submissionDatabase == other.submissionDatabase;
     }
 
 

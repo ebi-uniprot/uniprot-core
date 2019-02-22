@@ -107,10 +107,7 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         } else if (!lastPage.equals(other.lastPage))
             return false;
         if (volume == null) {
-            if (other.volume != null)
-                return false;
-        } else if (!volume.equals(other.volume))
-            return false;
-        return true;
+            return other.volume == null;
+        } else return volume.equals(other.volume);
     }
 }

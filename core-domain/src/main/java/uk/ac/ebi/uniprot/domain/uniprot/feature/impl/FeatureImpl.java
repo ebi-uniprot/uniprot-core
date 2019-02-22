@@ -181,8 +181,6 @@ public class FeatureImpl implements Feature {
                 return false;
         } else if (!location.equals(other.location))
             return false;
-        if (type != other.type)
-            return false;
-        return true;
+        return type == other.type;
     }
 }

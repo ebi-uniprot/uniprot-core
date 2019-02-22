@@ -35,8 +35,8 @@ import java.util.List;
  */
 public interface AlternativeSequence extends Serializable {
 
-	public String getOriginalSequence();
-	public List<String> getAlternativeSequences();
+	String getOriginalSequence();
+	List<String> getAlternativeSequences();
 	//public SequenceReport getReport();
 
 }

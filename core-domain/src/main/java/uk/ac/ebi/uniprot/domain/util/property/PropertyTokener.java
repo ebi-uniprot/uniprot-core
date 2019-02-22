@@ -34,7 +34,9 @@ SOFTWARE.
  * @author JSON.org
  * @version 2014-05-03
  */
-public class PropertyTokener {
+public class PropertyTokener implements Serializable {
+    private static final long serialVersionUID = -5773077474446482977L;
+
     /**
      * Reader for the input.
      */

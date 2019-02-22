@@ -2,9 +2,11 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
+import java.io.Serializable;
 import java.util.List;
 
-public final class UniProtXDbType implements DatabaseType {
+public final class UniProtXDbType implements DatabaseType, Serializable {
+    private static final long serialVersionUID = 201534956573963997L;
     private String name;
 
     private UniProtXDbType() {
@@ -51,11 +53,8 @@ public final class UniProtXDbType implements DatabaseType {
             return false;
         UniProtXDbType other = (UniProtXDbType) obj;
         if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+            return other.name == null;
+        } else return name.equals(other.name);
     }
 
 }

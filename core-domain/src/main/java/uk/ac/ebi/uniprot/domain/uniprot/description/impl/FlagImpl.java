@@ -37,9 +37,7 @@ public class FlagImpl implements Flag {
         if (getClass() != obj.getClass())
             return false;
         FlagImpl other = (FlagImpl) obj;
-        if (type != other.type)
-            return false;
-        return true;
+        return type == other.type;
     }
 
 }

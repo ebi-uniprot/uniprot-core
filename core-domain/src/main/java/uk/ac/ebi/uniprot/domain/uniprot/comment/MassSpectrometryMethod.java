@@ -14,7 +14,7 @@ public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod
 
     private String value;
 
-    private MassSpectrometryMethod(String type) {
+    MassSpectrometryMethod(String type) {
         this.value = type;
     }
 

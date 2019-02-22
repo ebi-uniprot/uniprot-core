@@ -9,7 +9,7 @@ import java.util.List;
  * @time 13:19:07
  */
 public interface HasEvidences extends Serializable {
-    public List<Evidence> getEvidences();
+    List<Evidence> getEvidences();
     
     boolean hasEvidences();
 }

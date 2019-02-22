@@ -60,7 +60,7 @@ public interface Gene extends Serializable {
      *
      * @return true, if this Gene has a Gene Name, false, if it has not.
      */
-    public boolean hasGeneName();
+    boolean hasGeneName();
 
     /**
      * Returns the Gene Name of this Gene. Use {@link #hasGeneName() hasGeneName()}
@@ -76,7 +76,7 @@ public interface Gene extends Serializable {
      *
      * @return The Gene Name of this Gene.
      */
-    public GeneName getGeneName();
+    GeneName getGeneName();
 
     /**
      * Returns the List of Gene Name Synonyms of this Gene.
@@ -91,7 +91,7 @@ public interface Gene extends Serializable {
      *
      * @return The Gene Name Synonyms of this Gene.
      */
-    public List<GeneNameSynonym> getSynonyms();
+    List<GeneNameSynonym> getSynonyms();
 
 
     /**
@@ -105,7 +105,7 @@ public interface Gene extends Serializable {
      * @return The Ordered Locus Names of this Gene.
      */
 
-    public List<OrderedLocusName> getOrderedLocusNames();
+    List<OrderedLocusName> getOrderedLocusNames();
 
 
     /**
@@ -121,6 +121,6 @@ public interface Gene extends Serializable {
      *
      * @return The ORF Names of this Gene.
      */
-    public List<ORFName> getOrfNames();
+    List<ORFName> getOrfNames();
 
 }

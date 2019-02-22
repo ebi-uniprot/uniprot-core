@@ -68,11 +68,8 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         } else if (!address.equals(other.address))
             return false;
         if (institute == null) {
-            if (other.institute != null)
-                return false;
-        } else if (!institute.equals(other.institute))
-            return false;
-        return true;
+            return other.institute == null;
+        } else return institute.equals(other.institute);
     }
 
 

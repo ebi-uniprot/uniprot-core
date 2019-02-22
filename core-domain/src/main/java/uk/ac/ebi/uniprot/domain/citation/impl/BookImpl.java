@@ -160,10 +160,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         } else if (!publisher.equals(other.publisher))
             return false;
         if (volume == null) {
-            if (other.volume != null)
-                return false;
-        } else if (!volume.equals(other.volume))
-            return false;
-        return true;
+            return other.volume == null;
+        } else return volume.equals(other.volume);
     }
 }

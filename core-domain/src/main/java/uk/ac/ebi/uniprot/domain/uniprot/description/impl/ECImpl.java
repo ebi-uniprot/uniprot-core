@@ -54,11 +54,8 @@ public class ECImpl extends ECNumberImpl implements EC {
             return false;
         ECImpl other = (ECImpl) obj;
         if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        return true;
+            return other.evidences == null;
+        } else return evidences.equals(other.evidences);
     }
 
     @Override

@@ -38,9 +38,7 @@ public class InternalLineImpl extends ValueImpl implements InternalLine {
         if (getClass() != obj.getClass())
             return false;
         InternalLineImpl other = (InternalLineImpl) obj;
-        if (type != other.type)
-            return false;
-        return true;
+        return type == other.type;
     }
 
 

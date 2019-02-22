@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-public class EvidenceTypeDetail {
+import java.io.Serializable;
+
+public class EvidenceTypeDetail implements Serializable {
+    private static final long serialVersionUID = 4511309637271346914L;
     private String name;
     private String displayName;
     private String uriLink;
@@ -63,11 +66,8 @@ public class EvidenceTypeDetail {
         } else if (!name.equals(other.name))
             return false;
         if (uriLink == null) {
-            if (other.uriLink != null)
-                return false;
-        } else if (!uriLink.equals(other.uriLink))
-            return false;
-        return true;
+            return other.uriLink == null;
+        } else return uriLink.equals(other.uriLink);
     }
 
 }

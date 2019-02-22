@@ -60,9 +60,7 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
         if (getClass() != obj.getClass())
             return false;
         GeneLocationImpl other = (GeneLocationImpl) obj;
-        if (geneEncodingType != other.geneEncodingType)
-            return false;
-        return true;
+        return geneEncodingType == other.geneEncodingType;
     }
 
     private String getString() {

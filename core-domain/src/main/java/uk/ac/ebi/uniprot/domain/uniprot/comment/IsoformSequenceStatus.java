@@ -16,7 +16,7 @@ public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> 
 
     private String value;
 
-    private IsoformSequenceStatus(String type) {
+    IsoformSequenceStatus(String type) {
         this.value = type;
     }
 

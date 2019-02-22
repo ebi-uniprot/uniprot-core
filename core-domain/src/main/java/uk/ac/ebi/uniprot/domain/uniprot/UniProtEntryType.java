@@ -30,7 +30,7 @@ public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
     }
 
     public String getValue() {
-        return value.toString();
+        return value;
     }
 
     @Override

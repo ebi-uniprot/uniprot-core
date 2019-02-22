@@ -52,11 +52,8 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
         if (inactiveReasonType != other.inactiveReasonType)
             return false;
         if (mergeDemergeTo == null) {
-            if (other.mergeDemergeTo != null)
-                return false;
-        } else if (!mergeDemergeTo.equals(other.mergeDemergeTo))
-            return false;
-        return true;
+            return other.mergeDemergeTo == null;
+        } else return mergeDemergeTo.equals(other.mergeDemergeTo);
     }
 
 }

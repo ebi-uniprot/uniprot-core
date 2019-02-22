@@ -73,11 +73,8 @@ public class InternalSectionImpl implements InternalSection {
         } else if (!internalLines.equals(other.internalLines))
             return false;
         if (sourceLines == null) {
-            if (other.sourceLines != null)
-                return false;
-        } else if (!sourceLines.equals(other.sourceLines))
-            return false;
-        return true;
+            return other.sourceLines == null;
+        } else return sourceLines.equals(other.sourceLines);
     }
 
 }

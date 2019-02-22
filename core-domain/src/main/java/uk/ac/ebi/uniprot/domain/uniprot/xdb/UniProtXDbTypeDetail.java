@@ -1,9 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UniProtXDbTypeDetail {
+public class UniProtXDbTypeDetail implements Serializable {
+    private static final long serialVersionUID = 8751881513996820892L;
     private static final DBXRefTypeAttribute DEFAULT_ATTRIBUTE = new DBXRefTypeAttribute("Description",
                                                                                          "description", null);
     private String name;
@@ -92,11 +94,8 @@ public class UniProtXDbTypeDetail {
         } else if (!name.equals(other.name))
             return false;
         if (uriLink == null) {
-            if (other.uriLink != null)
-                return false;
-        } else if (!uriLink.equals(other.uriLink))
-            return false;
-        return true;
+            return other.uriLink == null;
+        } else return uriLink.equals(other.uriLink);
     }
 
 

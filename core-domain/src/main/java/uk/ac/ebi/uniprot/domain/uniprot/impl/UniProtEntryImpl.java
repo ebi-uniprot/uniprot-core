@@ -451,11 +451,8 @@ public class UniProtEntryImpl implements UniProtEntry {
         } else if (!sequence.equals(other.sequence))
             return false;
         if (uniProtId == null) {
-            if (other.uniProtId != null)
-                return false;
-        } else if (!uniProtId.equals(other.uniProtId))
-            return false;
-        return true;
+            return other.uniProtId == null;
+        } else return uniProtId.equals(other.uniProtId);
     }
 
 }

@@ -5,5 +5,5 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 
 public interface RnaEdPosition extends HasEvidences {
 
-    public String getPosition();
+    String getPosition();
 }

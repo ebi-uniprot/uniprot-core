@@ -22,19 +22,19 @@ import java.util.List;
  */
 public interface Book extends Citation {
 
-    public String getBookName();
+    String getBookName();
 
-    public List<Author> getEditors();
+    List<Author> getEditors();
 
-    public String getFirstPage();
+    String getFirstPage();
 
-    public String getLastPage();
+    String getLastPage();
 
-    public String getVolume();
+    String getVolume();
 
-    public String getPublisher();
+    String getPublisher();
 
-    public String getAddress();
+    String getAddress();
 
     boolean hasBookName();
 

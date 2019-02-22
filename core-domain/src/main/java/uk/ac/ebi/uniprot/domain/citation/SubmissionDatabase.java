@@ -12,7 +12,7 @@ public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
 
     private String name;
 
-    private SubmissionDatabase(String name) {
+    SubmissionDatabase(String name) {
         this.name = name;
     }
 
