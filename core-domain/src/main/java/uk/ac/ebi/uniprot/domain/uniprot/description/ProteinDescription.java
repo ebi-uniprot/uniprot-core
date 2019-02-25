@@ -8,6 +8,15 @@ public interface ProteinDescription extends Serializable {
 	ProteinRecName getRecommendedName();
 
     List<ProteinAltName> getAlternativeNames();
+    
+    Name getAllergenName();
+
+	Name getBiotechName();
+
+	List<Name> getCdAntigenNames();
+
+	List<Name> getInnNames();
+
 
     List<ProteinSubName> getSubmissionNames();
 
@@ -20,6 +29,13 @@ public interface ProteinDescription extends Serializable {
     boolean hasAlternativeNames();
 
     boolean hasSubmissionNames();
+    boolean hasAllergenName();
+
+	boolean hasBiotechName();
+
+	boolean hasCdAntigenNames();
+
+	boolean hasInnNames();
 
     boolean hasIncludes();
 

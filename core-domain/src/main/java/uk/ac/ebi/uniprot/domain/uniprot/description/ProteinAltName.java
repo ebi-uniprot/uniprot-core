@@ -9,28 +9,12 @@ public interface ProteinAltName extends Serializable {
 	List<Name> getShortNames();
 
 	List<EC> getEcNumbers();
-
-	Name getAllergenName();
-
-	Name getBiotechName();
-
-	List<Name> getCdAntigenNames();
-
-	List<Name> getInnNames();
-
+	
 	boolean hasFullName();
 
 	boolean hasShortNames();
 
 	boolean hasEcNumbers();
-
-	boolean hasAllergenName();
-
-	boolean hasBiotechName();
-
-	boolean hasCdAntigenNames();
-
-	boolean hasInnNames();
 
 	boolean isValid();
 }

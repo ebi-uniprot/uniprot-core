@@ -7,6 +7,14 @@ public interface ProteinSection extends Serializable {
 	ProteinRecName getRecommendedName();
 
     List<ProteinAltName> getAlternativeNames();
+    
+    Name getAllergenName();
+
+	Name getBiotechName();
+
+	List<Name> getCdAntigenNames();
+
+	List<Name> getInnNames();
 
     boolean hasRecommendedName();
 
