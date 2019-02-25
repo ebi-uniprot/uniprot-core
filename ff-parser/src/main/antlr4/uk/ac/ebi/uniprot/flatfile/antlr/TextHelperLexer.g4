@@ -1,6 +1,6 @@
 lexer grammar TextHelperLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 //this is only used satisfy antlr. not used.
 //it shouldn't produce any token in this default mode.

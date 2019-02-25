@@ -421,7 +421,8 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         if ((locationValue == null) || locationValue.value.isEmpty()) {
             return null;
         }
-        return new SubcellularLocationValueBuilder(locationValue.value, evidenceMap.get(locationValue)).build();
+        String id ="";
+        return new SubcellularLocationValueBuilder("", locationValue.value, evidenceMap.get(locationValue)).build();
     }
 
     private MassSpectrometryComment convertMassSpectrometry(CcLineObject.MassSpectrometry cObj,

@@ -1,6 +1,6 @@
 lexer grammar OsLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 OS_HEADER : 'OS   '    -> pushMode (OS_CONTENT);
 

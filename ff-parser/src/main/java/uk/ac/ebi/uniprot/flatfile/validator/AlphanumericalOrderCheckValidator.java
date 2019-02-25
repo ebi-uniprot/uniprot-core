@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.validator;
+package uk.ac.ebi.uniprot.flatfile.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

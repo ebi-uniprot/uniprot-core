@@ -14,8 +14,7 @@ import java.util.List;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.EQUAL_SIGN;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 
-public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription> 
-implements FFLineBuilder<ProteinDescription> {
+public class DELineBuilder extends FFLineBuilderAbstr<ProteinDescription> implements FFLineBuilder<ProteinDescription> {
 
 	private static final String EC = "EC";
 	private static final String SHORT = "Short";
@@ -56,19 +55,19 @@ implements FFLineBuilder<ProteinDescription> {
 
 		List<String> deLines = new ArrayList<>();
 		if (description.getRecommendedName() != null) {
-			deLines.addAll(buildNameLine(description.getRecommendedName(), REC_NAME, linePrefix,
+			deLines.addAll(buildRecNameLine(description.getRecommendedName(), REC_NAME, linePrefix,
 					includeFlatFileMarkings, addEvidence));
 		}
-		if (!description.getAlternativeNames().isEmpty()) {
-			deLines.addAll(buildAlternativeNameLine(description.getAlternativeNames(), linePrefix,
-					includeFlatFileMarkings, addEvidence));
+
+		if (description.getAlternativeNames() != null) {
+			for (ProteinAltName name : description.getAlternativeNames()) {
+				deLines.addAll(buildAltNameLine(name, ALT_NAME, linePrefix, includeFlatFileMarkings, addEvidence));
+			}
 		}
-		deLines.addAll(buildOtherNames(description, linePrefix,
-				includeFlatFileMarkings, addEvidence));
 
 		if (description.getSubmissionNames() != null) {
-			for (ProteinName name : description.getSubmissionNames()) {
-				deLines.addAll(buildNameLine(name, SUB_NAME, linePrefix, includeFlatFileMarkings, addEvidence));
+			for (ProteinSubName name : description.getSubmissionNames()) {
+				deLines.addAll(buildSubNameLine(name, SUB_NAME, linePrefix, includeFlatFileMarkings, addEvidence));
 			}
 		}
 
@@ -97,51 +96,6 @@ implements FFLineBuilder<ProteinDescription> {
 
 		return deLines;
 	}
-	//
-	// ALLERGEN("Allergen"),
-	// BIOTECH("Biotech"),
-	// CD_ANTIGEN("CD_antigen"),
-	// INN("INN"),
-	private List<String> buildOtherNames(ProteinDescription pd, String deLinePrefix,
-			boolean includeFlatFileMarkings, boolean showEvidence){
-		List<String> lines = new ArrayList<>();
-		Name allergenName = pd.getAllergenName();
-		if (allergenName != null) {
-			lines.add(buildNameLine1(allergenName, "Allergen", ALT_NAME, deLinePrefix, includeFlatFileMarkings,
-					showEvidence, true));
-		}
-		Name biotechName = pd.getBiotechName();
-		if (biotechName != null) {
-			lines.add(buildNameLine1(biotechName, "Biotech", ALT_NAME, deLinePrefix, includeFlatFileMarkings,
-					showEvidence, true));
-		}
-		List<Name> cdAntigenNames = pd.getCdAntigenNames();
-		boolean isFirst = true;
-		for (Name name : cdAntigenNames) {
-			lines.add(buildNameLine1(name, "CD_antigen", ALT_NAME, deLinePrefix, includeFlatFileMarkings, showEvidence,
-					isFirst));
-			isFirst = true;
-		}
-
-		List<Name> innNames = pd.getInnNames();
-		isFirst = true;
-		for (Name name : innNames) {
-			lines.add(buildNameLine1(name, "INN", ALT_NAME, deLinePrefix, includeFlatFileMarkings, showEvidence,
-					isFirst));
-			isFirst = true;
-		}
-		return lines;
-	}
-	private List<String> buildAlternativeNameLine(List<ProteinName> protAltNames, String deLinePrefix,
-			boolean includeFlatFileMarkings, boolean showEvidence) {
-		List<String> lines = new ArrayList<>();
-		for (ProteinName altName : protAltNames) {
-			lines.addAll(buildNameLine(altName, ALT_NAME, deLinePrefix, includeFlatFileMarkings, showEvidence));
-		}
-	
-		
-		return lines;
-	}
 
 	private String buildNameLine1(EvidencedValue value, String valueType, String NameType, String deLinePrefix,
 			boolean includeFlatFileMarkings, boolean showEvidence, boolean isFirst) {
@@ -159,7 +113,56 @@ implements FFLineBuilder<ProteinDescription> {
 
 	}
 
-	private List<String> buildNameLine(ProteinName name, String type, String deLinePrefix,
+	private List<String> buildAltNameLine(ProteinAltName name, String type, String deLinePrefix,
+			boolean includeFlatFileMarkings, boolean showEvidence) {
+		List<String> lines = new ArrayList<>();
+		boolean first = true;
+
+		if (name.getFullName() != null) {
+			lines.add(buildNameLine1(name.getFullName(), FULL, type, deLinePrefix, includeFlatFileMarkings,
+					showEvidence, first));
+			first = false;
+		}
+		for (Name shortName : name.getShortNames()) {
+			lines.add(
+					buildNameLine1(shortName, SHORT, type, deLinePrefix, includeFlatFileMarkings, showEvidence, first));
+			first = false;
+		}
+		for (EC ecNumber : name.getEcNumbers()) {
+			lines.add(buildNameLine1(ecNumber, EC, type, deLinePrefix, includeFlatFileMarkings, showEvidence, first));
+			first = false;
+		}
+
+		Name allergenName = name.getAllergenName();
+		if (allergenName != null) {
+			lines.add(buildNameLine1(allergenName, "Allergen", ALT_NAME, deLinePrefix, includeFlatFileMarkings,
+					showEvidence, true));
+		}
+		Name biotechName = name.getBiotechName();
+		if (biotechName != null) {
+			lines.add(buildNameLine1(biotechName, "Biotech", ALT_NAME, deLinePrefix, includeFlatFileMarkings,
+					showEvidence, true));
+		}
+		List<Name> cdAntigenNames = name.getCdAntigenNames();
+		boolean isFirst = true;
+		for (Name cname : cdAntigenNames) {
+			lines.add(buildNameLine1(cname, "CD_antigen", ALT_NAME, deLinePrefix, includeFlatFileMarkings, showEvidence,
+					isFirst));
+			isFirst = true;
+		}
+
+		List<Name> innNames = name.getInnNames();
+		isFirst = true;
+		for (Name iname : innNames) {
+			lines.add(buildNameLine1(iname, "INN", ALT_NAME, deLinePrefix, includeFlatFileMarkings, showEvidence,
+					isFirst));
+			isFirst = true;
+		}
+
+		return lines;
+	}
+
+	private List<String> buildRecNameLine(ProteinRecName name, String type, String deLinePrefix,
 			boolean includeFlatFileMarkings, boolean showEvidence) {
 		List<String> lines = new ArrayList<>();
 		boolean first = true;
@@ -182,8 +185,26 @@ implements FFLineBuilder<ProteinDescription> {
 		return lines;
 	}
 
-	private List<String> buildSectionLines(ProteinSection section, String sectionType,
-			boolean includeFlatFileMarkings, boolean addEvidence) {
+	private List<String> buildSubNameLine(ProteinSubName name, String type, String deLinePrefix,
+			boolean includeFlatFileMarkings, boolean showEvidence) {
+		List<String> lines = new ArrayList<>();
+		boolean first = true;
+
+		if (name.getFullName() != null) {
+			lines.add(buildNameLine1(name.getFullName(), FULL, type, deLinePrefix, includeFlatFileMarkings,
+					showEvidence, first));
+			first = false;
+		}
+		for (EC ecNumber : name.getEcNumbers()) {
+			lines.add(buildNameLine1(ecNumber, EC, type, deLinePrefix, includeFlatFileMarkings, showEvidence, first));
+			first = false;
+		}
+
+		return lines;
+	}
+
+	private List<String> buildSectionLines(ProteinSection section, String sectionType, boolean includeFlatFileMarkings,
+			boolean addEvidence) {
 		List<String> lines = new ArrayList<>();
 		StringBuilder sb1 = new StringBuilder();
 		if (includeFlatFileMarkings)
@@ -191,12 +212,13 @@ implements FFLineBuilder<ProteinDescription> {
 		sb1.append(sectionType);
 		lines.add(sb1.toString());
 		if (section.getRecommendedName() != null) {
-			lines.addAll(buildNameLine(section.getRecommendedName(), REC_NAME, DE_PREFIX_2, includeFlatFileMarkings,
+			lines.addAll(buildRecNameLine(section.getRecommendedName(), REC_NAME, DE_PREFIX_2, includeFlatFileMarkings,
 					addEvidence));
 		}
 		if (!section.getAlternativeNames().isEmpty()) {
-			lines.addAll(buildAlternativeNameLine(section.getAlternativeNames(), DE_PREFIX_2, includeFlatFileMarkings,
-					addEvidence));
+			for (ProteinAltName name : section.getAlternativeNames()) {
+				lines.addAll(buildAltNameLine(name, ALT_NAME, DE_PREFIX_2, includeFlatFileMarkings, addEvidence));
+			}
 		}
 		return lines;
 	}

@@ -7,7 +7,7 @@ GN   ORFNames=<name1>[, <name2>...];
 
 lexer grammar GnLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 GN_HEADER: 'GN   ';
 CHANGE_OF_LINE: '\nGN   ';

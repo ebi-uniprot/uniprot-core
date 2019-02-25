@@ -1,6 +1,6 @@
 lexer grammar CcLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 @members{
    public static final String CC_TOPIC_START_STRING="-!- ";

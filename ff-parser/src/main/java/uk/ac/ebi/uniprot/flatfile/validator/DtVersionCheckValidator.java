@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.validator;
+package uk.ac.ebi.uniprot.flatfile.validator;
 
 import uk.ac.ebi.uniprot.flatfile.parser.impl.dt.DtLineObject;
 

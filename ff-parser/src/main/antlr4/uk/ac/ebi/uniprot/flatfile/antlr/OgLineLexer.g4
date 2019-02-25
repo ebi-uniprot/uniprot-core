@@ -3,7 +3,7 @@ OG   Plasmid R6-5, Plasmid IncFII R100 (NR1), and
 OG   Plasmid IncFII R1-19 (R1 drd-19).
 */
 lexer grammar OgLineLexer;
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 OG_HEADER: 'OG   ';
 HYDROGENOSOME: 'Hydrogenosome';

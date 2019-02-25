@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.antlr;
+package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Lexer;

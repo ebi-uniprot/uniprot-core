@@ -8,9 +8,13 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineObject.FlagType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import com.google.common.base.Strings;
+
 
 public class DeLineConverter extends EvidenceCollector implements Converter<DeLineObject, ProteinDescription> {
 
@@ -19,26 +23,15 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f.getEvidenceInfo());
 		this.addAll(evidenceMap.values());
 		// ProteinDescription pd = factory.buildProteinDescription();
-		ProteinName recName = null;
+		ProteinRecName recName = null;
 		if (f.recName != null) {
 			recName = convertRecName(f.recName, evidenceMap);
 		}
-		List<ProteinName> altNames = f.altName.stream().map(val -> convertAltName(val, evidenceMap))
-				.collect(Collectors.toList());
-
-		List<Name> cdAntigenNames = f.alt_CD_antigen.stream().map(val -> convertName(val, evidenceMap))
-				.collect(Collectors.toList());
-
-		List<Name> innNames = f.alt_INN.stream().map(val -> convertName(val, evidenceMap)).collect(Collectors.toList());
-		Name biotechName = null;
-		if ((f.alt_Biotech != null) && (!f.alt_Biotech.isEmpty())) {
-			biotechName = convertName(f.alt_Biotech, evidenceMap);
-		}
-		Name allergenName = null;
-		if ((f.alt_Allergen != null) && (!f.alt_Allergen.isEmpty())) {
-			allergenName = convertName(f.alt_Allergen, evidenceMap);
-		}
-		List<ProteinName> subNames = f.subName.stream().map(val -> convertSubmissionName(val, evidenceMap))
+		List<ProteinAltName> altNames = convertAltNames( f.altName, f.alt_CD_antigen,
+				f.alt_INN, f.alt_Allergen, f.alt_Biotech,			
+				evidenceMap);
+	
+		List<ProteinSubName> subNames = f.subName.stream().map(val -> convertSubmissionName(val, evidenceMap))
 				.collect(Collectors.toList());
 
 		List<ProteinSection> contained = f.containedNames.stream()
@@ -49,13 +42,49 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 
 		uk.ac.ebi.uniprot.domain.uniprot.description.FlagType flag = createFlag(f.flags);
 		ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
-		builder.recommendedName(recName).submissionNames(subNames).alternativeNames(altNames).allergenName(allergenName)
-				.biotechName(biotechName).cdAntigenNames(cdAntigenNames).innNames(innNames).contains(contained)
+		builder.recommendedName(recName).submissionNames(subNames).alternativeNames(altNames).contains(contained)
 				.includes(included).flag(flag);
 
 		return builder.build();
 
 	}
+	
+	private List<ProteinAltName> convertAltNames(List<DeLineObject.Name> faltName, List<String> altCD_antigen,
+			List<String> altINN, String altAllergen, String altBiotech, Map<Object, List<Evidence>> evidenceMap) {
+		List<ProteinAltName> altNames = faltName.stream().map(val -> convertAltName(val, evidenceMap))
+				.collect(Collectors.toList());
+
+		List<Name> cdAntigenNames = altCD_antigen.stream().map(val -> convertName(val, evidenceMap))
+				.collect(Collectors.toList());
+
+		List<Name> innNames = altINN.stream().map(val -> convertName(val, evidenceMap)).collect(Collectors.toList());
+		Name biotechName = null;
+		if (!Strings.isNullOrEmpty(altBiotech)) {
+			biotechName = convertName(altBiotech, evidenceMap);
+		}
+		Name allergenName = null;
+		if (!Strings.isNullOrEmpty(altAllergen)) {
+			allergenName = convertName(altAllergen, evidenceMap);
+		}
+		if (cdAntigenNames.isEmpty() && innNames.isEmpty() && (biotechName == null) && (allergenName == null)) {
+			return altNames;
+		} else {
+			List<ProteinAltName> altNames2 = new ArrayList<>();
+
+			if (altNames.isEmpty()) {
+				altNames2.add(new ProteinAltNameBuilder().cdAntigenNames(cdAntigenNames).innNames(innNames)
+						.allergenName(allergenName).biotechName(biotechName).build());
+				return altNames2;
+			}
+			ProteinAltName altName = altNames.get(0);
+			altNames2.add(new ProteinAltNameBuilder().from(altName).cdAntigenNames(cdAntigenNames).innNames(innNames)
+					.allergenName(allergenName).biotechName(biotechName).build());
+			altNames2.addAll(altNames.subList(1, altNames.size()));
+			return altNames2;
+		}
+	}
+
+
 
 	private uk.ac.ebi.uniprot.domain.uniprot.description.FlagType createFlag(List<FlagType> flags) {
 		if (flags.contains(FlagType.Fragment)) {
@@ -81,21 +110,23 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 
 	private ProteinSection convertProteinNameSection(DeLineObject.NameBlock nameBlock,
 			Map<Object, List<Evidence>> evidenceMap) {
-		ProteinName recName = null;
+		ProteinRecName recName = null;
 		if (nameBlock.recName != null) {
 			recName = convertRecName(nameBlock.recName, evidenceMap);
 		}
-		List<ProteinName> altNames = nameBlock.altName.stream().map(val -> convertAltName(val, evidenceMap))
-				.collect(Collectors.toList());
+		List<ProteinAltName> altNames = 
+				convertAltNames(nameBlock.altName,nameBlock.alt_CD_antigen, nameBlock.alt_INN, nameBlock.alt_Allergen, nameBlock.alt_Biotech,
+						evidenceMap);
 
 		return new ProteinSectionBuilder().recommendedName(recName).alternativeNames(altNames).build();
 	}
 
 	private Name convertName(String val, Map<Object, List<Evidence>> evidenceMap) {
-		return new NameBuilder().value(val).evidences(evidenceMap.get(val)).build();
+		NameBuilder builder = new NameBuilder();
+		return builder.value(val).evidences(evidenceMap.get(val)).build();
 	}
 
-	private ProteinName convertAltName(DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
+	private ProteinAltName convertAltName(DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
 		Name fullName = null;
 		if ((val.fullName != null) || (!val.fullName.isEmpty())) {
 			fullName = new NameBuilder().value(val.fullName).evidences(evidenceMap.get(val.fullName)).build();
@@ -109,11 +140,11 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 			ecEvidence.nameECBelong = val;
 			return new ECBuilder().value(ec).evidences(evidenceMap.get(ecEvidence)).build();
 		}).collect(Collectors.toList());
-		return new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
+		return new ProteinAltNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
 
 	}
 
-	private ProteinName convertRecName(DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
+	private ProteinRecName convertRecName(DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
 		Name fullName = null;
 		if ((val.fullName != null) || (!val.fullName.isEmpty())) {
 			fullName = new NameBuilder().value(val.fullName).evidences(evidenceMap.get(val.fullName)).build();
@@ -121,9 +152,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		List<Name> shortNames = val.shortNames.stream()
 				.map(shortName -> new NameBuilder().value(shortName).evidences(evidenceMap.get(shortName)).build())
 				.collect(Collectors.toList());
-		List<EC> ecNumbers = val.ecs.stream().map(ec ->
-			createEC(ec, val, evidenceMap))
-			.collect(Collectors.toList());
+		List<EC> ecNumbers = val.ecs.stream().map(ec -> createEC(ec, val, evidenceMap)).collect(Collectors.toList());
 		return new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build();
 
 	}
@@ -135,7 +164,8 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		List<Evidence> evidences = evidenceMap.get(ecEvidence);
 		return new ECBuilder().value(ec).evidences(evidences).build();
 	}
-	private ProteinName convertSubmissionName(DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
+
+	private ProteinSubName convertSubmissionName(DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
 		Name fullName = null;
 		if ((val.fullName != null) || (!val.fullName.isEmpty())) {
 			fullName = new NameBuilder().value(val.fullName).evidences(evidenceMap.get(val.fullName)).build();
@@ -150,7 +180,7 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 			ecEvidence.nameECBelong = val;
 			return new ECBuilder().value(ec).evidences(evidenceMap.get(ecEvidence)).build();
 		}).collect(Collectors.toList());
-		return new ProteinRecNameBuilder().fullName(fullName).ecNumbers(ecNumbers).build();
+		return new ProteinSubNameBuilder().fullName(fullName).ecNumbers(ecNumbers).build();
 
 	}
 }

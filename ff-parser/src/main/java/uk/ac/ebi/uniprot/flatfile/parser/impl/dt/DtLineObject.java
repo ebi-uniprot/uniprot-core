@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.dt;
 
-import uk.ac.ebi.uniprot.validator.DtDateCheck;
-import uk.ac.ebi.uniprot.validator.DtVersionCheck;
+import uk.ac.ebi.uniprot.flatfile.validator.DtDateCheck;
+import uk.ac.ebi.uniprot.flatfile.validator.DtVersionCheck;
 
 import java.time.LocalDate;
 
