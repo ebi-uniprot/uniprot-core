@@ -32,14 +32,44 @@ public class EntryMapUtil {
         return sb.toString();
     }
 
+    public static String formatFloat(float d) {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
+    }
+
+
+    public static String formatDouble(double d) {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
+    }
+
     public static String getNoteString(Note note) {
-        return " Note=" + note.getTexts().stream().map(EntryMapUtil::evidencedValueToString)
-                .collect(Collectors.joining("; "));
+        return "Note=" + note.getTexts().stream().map(text ->{
+            String result = text.getValue()+".";
+            if(text.hasEvidences()){
+                result += " "+evidencesToString(text.getEvidences())+".";
+            }
+            return result;
+        }).collect(Collectors.joining("; "));
+    }
+
+    public static String getNoteStringWithoutDot(Note note) {
+        return "Note=" + note.getTexts().stream().map(text ->{
+            String result = text.getValue();
+            if(text.hasEvidences()){
+                result += " "+evidencesToString(text.getEvidences());
+            }
+            return result;
+        }).collect(Collectors.joining("; "));
     }
 
     public static String evidencedValueToString(EvidencedValue evidencedValue) {
         String result = evidencedValue.getValue();
-        if(evidencedValue.getEvidences() != null && !evidencedValue.getEvidences().isEmpty()){
+        if(evidencedValue.hasEvidences()){
             result += " "+evidencesToString(evidencedValue.getEvidences());
         }
         return result;

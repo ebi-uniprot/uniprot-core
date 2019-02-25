@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,41 +29,46 @@ public class DiseaseMap implements NamedValueMap {
     private Map<String, String> getDiseaseComments(List<DiseaseComment> dsComments) {
         Map<String, String> diseaseCommentMap = new HashMap<>();
         if ((dsComments != null)) {
-            String result = dsComments.stream().map(this::mapDiseaseCommentToString).collect(Collectors.joining("; "));
+            String result = dsComments.stream()
+                    .map(this::mapDiseaseCommentToString)
+                    .collect(Collectors.joining("; "));
             diseaseCommentMap.put("cc:disease", result);
         }
         return diseaseCommentMap;
     }
 
     private  String mapDiseaseCommentToString(DiseaseComment diseaseComment) {
-        String result = "";
+        List<String> result = new ArrayList<>();
+        result.add(diseaseComment.getCommentType().toDisplayName()+":");
         if(diseaseComment.getDisease() != null){
             Disease disease = diseaseComment.getDisease();
-            if(disease.getDiseaseId() != null && !disease.getDiseaseId().isEmpty()){
-                result += " "+disease.getDiseaseId();
+            if(disease.hasDiseaseId()){
+                result.add(disease.getDiseaseId());
             }
-            if(disease.getDiseaseAccession() != null && !disease.getDiseaseAccession().isEmpty()){
-                result += " "+disease.getDiseaseAccession();
+            if(disease.hasAcronym()){
+                result.add("("+disease.getAcronym()+")");
             }
-            if(disease.getAcronym() != null && !disease.getAcronym().isEmpty()){
-                result += " "+disease.getAcronym();
-            }
-            if(disease.getDescription() != null && !disease.getDescription().isEmpty()){
-                result += " "+disease.getDescription();
-            }
-            if(disease.getReference() != null){
+            if(disease.hasReference()){
                 DBCrossReference<DiseaseReferenceType> reference = disease.getReference();
-                if(reference.getDatabaseType() != null) {
-                    result += " " + reference.getDatabaseType().getName();
+                List<String> referenceStr = new ArrayList<>();
+                if(reference.hasDatabaseType()) {
+                    referenceStr.add(reference.getDatabaseType().getName());
                 }
-                if(reference.getId() != null && !reference.getId().isEmpty()) {
-                    result += " " + reference.getId();
+                if(reference.hasId()) {
+                    referenceStr.add(reference.getId());
                 }
+                result.add("["+String.join(":",referenceStr)+"]:");
+            }
+            if(disease.hasDescription()){
+                result.add(disease.getDescription());
+            }
+            if(disease.hasEvidences()){
+                result.add(EntryMapUtil.evidencesToString(disease.getEvidences())+".");
             }
         }
-        if(diseaseComment.getNote() != null) {
-            result += EntryMapUtil.getNoteString(diseaseComment.getNote());
+        if(diseaseComment.hasNote()) {
+            result.add(EntryMapUtil.getNoteString(diseaseComment.getNote()));
         }
-        return result;
+        return String.join(" ",result);
     }
 }

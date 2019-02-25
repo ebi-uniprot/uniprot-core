@@ -84,12 +84,12 @@ public class InteractionImpl implements Interaction {
 
     @Override
     public boolean hasFirstInteractor() {
-        return this.firstInteractor != null;
+        return this.firstInteractor != null && Utils.notEmpty(this.firstInteractor.getValue());
     }
 
     @Override
     public boolean hasSecondInteractor() {
-        return this.secondInteractor != null;
+        return this.secondInteractor != null && Utils.notEmpty(this.secondInteractor.getValue());
     }
 
     @Override

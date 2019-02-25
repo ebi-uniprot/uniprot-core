@@ -60,4 +60,17 @@ public interface Disease extends HasEvidences {
 
     boolean hasDefinedDisease();
 
+    boolean hasDiseaseId();
+
+    boolean hasDiseaseAccession();
+
+    /**
+     * @return disease acronym (AR)
+     */
+    boolean hasAcronym();
+
+    boolean hasDescription();
+
+    boolean hasReference();
+
 }

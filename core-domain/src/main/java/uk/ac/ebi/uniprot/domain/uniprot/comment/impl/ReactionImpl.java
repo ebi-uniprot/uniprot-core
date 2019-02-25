@@ -79,7 +79,7 @@ public class ReactionImpl implements Reaction {
 
     @Override
     public boolean hasEcNumber() {
-        return ecNumber != null;
+        return ecNumber != null && Utils.notEmpty(ecNumber.getValue());
     }
 
     @Override

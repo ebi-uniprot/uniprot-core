@@ -1,10 +1,12 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,34 +30,38 @@ public class SubcellularLocationMap implements NamedValueMap {
         if ((sclComments != null) && !sclComments.isEmpty()) {
 
             String result = sclComments.stream().map(subcellularLocationComment -> {
-                String subcellularLocationStr = "";
-                if (subcellularLocationComment.getMolecule() != null && !subcellularLocationComment.getMolecule().isEmpty()) {
-                    subcellularLocationStr += subcellularLocationComment.getMolecule();
+                List<String> subcellularLocationStr = new ArrayList<>();
+                subcellularLocationStr.add(CommentType.SUBCELLULAR_LOCATION.toDisplayName() + ": ");
+                if (subcellularLocationComment.hasMolecule()) {
+                    subcellularLocationStr.add(subcellularLocationComment.getMolecule()+": ");
                 }
-                if (subcellularLocationComment.getNote() != null) {
-                    subcellularLocationStr += EntryMapUtil.getNoteString(subcellularLocationComment.getNote());
+                if (subcellularLocationComment.hasSubcellularLocations()) {
+                    subcellularLocationStr.add(subcellularLocationComment.getSubcellularLocations().stream()
+                            .map(this::getSubCellLocationsString)
+                            .collect(Collectors.joining(". ","",".")));
                 }
-                if (subcellularLocationComment.getSubcellularLocations() != null && !subcellularLocationComment.getSubcellularLocations().isEmpty()) {
-                    subcellularLocationStr += subcellularLocationComment.getSubcellularLocations().stream()
-                            .map(subcellularLocation -> {
-                                String locationStr = "";
-                                if (subcellularLocation.getLocation() != null) {
-                                    locationStr += EntryMapUtil.evidencedValueToString(subcellularLocation.getLocation());
-                                }
-                                if (subcellularLocation.getOrientation() != null) {
-                                    locationStr += EntryMapUtil.evidencedValueToString(subcellularLocation.getOrientation());
-                                }
-                                if (subcellularLocation.getTopology() != null) {
-                                    locationStr += EntryMapUtil.evidencedValueToString(subcellularLocation.getTopology());
-                                }
-                                return locationStr;
-                            }).collect(Collectors.joining(". ")) + ".";
+                if (subcellularLocationComment.hasNote()) {
+                    subcellularLocationStr.add(" "+EntryMapUtil.getNoteString(subcellularLocationComment.getNote()));
                 }
-                return subcellularLocationStr;
-            }).collect(Collectors.joining(";  "));
-            subcellularLocationMap.put("cc:subcellular_location", CommentType.SUBCELLULAR_LOCATION.toDisplayName() + ": " + result);
+                return String.join("",subcellularLocationStr);
+            }).collect(Collectors.joining("; "));
+            subcellularLocationMap.put("cc:subcellular_location", result);
         }
         return subcellularLocationMap;
+    }
+
+    private String getSubCellLocationsString(SubcellularLocation subcellularLocation) {
+        List<String> locationStr = new ArrayList<>();
+        if (subcellularLocation.hasLocation()) {
+            locationStr.add(EntryMapUtil.evidencedValueToString(subcellularLocation.getLocation()));
+        }
+        if (subcellularLocation.hasTopology()) {
+            locationStr.add(EntryMapUtil.evidencedValueToString(subcellularLocation.getTopology()));
+        }
+        if (subcellularLocation.hasOrientation()) {
+            locationStr.add(EntryMapUtil.evidencedValueToString(subcellularLocation.getOrientation()));
+        }
+        return String.join("; ",locationStr);
     }
 
 }

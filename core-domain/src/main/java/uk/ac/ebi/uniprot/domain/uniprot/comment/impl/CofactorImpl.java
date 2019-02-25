@@ -53,6 +53,16 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
+    public boolean hasName() {
+        return Utils.notEmpty(this.name);
+    }
+
+    @Override
+    public boolean hasCofactorReference() {
+        return this.cofactorReference != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

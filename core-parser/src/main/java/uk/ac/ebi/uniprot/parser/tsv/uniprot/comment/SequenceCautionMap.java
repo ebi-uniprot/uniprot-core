@@ -5,6 +5,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,23 +46,23 @@ public class SequenceCautionMap implements NamedValueMap {
     }
 
     private String sequenceCautionToString(SequenceCautionComment sequenceCautionComment) {
-        String sequenceCautionStr = "";
-        if(sequenceCautionComment.getSequence() != null){
-            sequenceCautionStr+= "Sequence="+sequenceCautionComment.getSequence()+";";
+        List<String> sequenceCautionStr = new ArrayList<>();
+        if(sequenceCautionComment.hasSequence()){
+            sequenceCautionStr.add("Sequence="+sequenceCautionComment.getSequence());
         }
-        if(sequenceCautionComment.getSequenceCautionType()!= null){
-            sequenceCautionStr+= " Type="+sequenceCautionComment.getSequenceCautionType().name()+";";
+        if(sequenceCautionComment.hasSequenceCautionType()){
+            sequenceCautionStr.add("Type="+sequenceCautionComment.getSequenceCautionType().name());
         }
-        if(sequenceCautionComment.getPositions()!= null && !sequenceCautionComment.getPositions().isEmpty()){
-            sequenceCautionStr+= " Positions="+String.join(", ", sequenceCautionComment.getPositions())+";";
+        if(sequenceCautionComment.hasPositions()){
+            sequenceCautionStr.add("Positions="+String.join(", ", sequenceCautionComment.getPositions()));
         }
-        if(sequenceCautionComment.getNote()!= null){
-            sequenceCautionStr+= " Note="+sequenceCautionComment.getNote()+";";
+        if(sequenceCautionComment.hasNote()){
+            sequenceCautionStr.add("Note="+sequenceCautionComment.getNote());
         }
-        if(sequenceCautionComment.getEvidences()!= null){
-            sequenceCautionStr+= " Evidence="+ EntryMapUtil.evidencesToString(sequenceCautionComment.getEvidences()).trim()+";";
+        if(sequenceCautionComment.hasEvidences()){
+            sequenceCautionStr.add("Evidence="+ EntryMapUtil.evidencesToString(sequenceCautionComment.getEvidences()).trim());
         }
-        return sequenceCautionStr;
+        return String.join("; ",sequenceCautionStr);
     }
 
 }

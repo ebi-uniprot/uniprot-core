@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,15 +33,15 @@ public class CatalyticActivityMap implements NamedValueMap {
         if(catalyticActivityComments != null){
             String catalyticActivityString =  catalyticActivityComments.stream()
                     .map(this::getCatalyticActivityString)
-                    .collect(Collectors.joining(" "));
+                    .collect(Collectors.joining("; "));
 
-            catalyticActivityMap.put("cc:catalytic_activity",catalyticActivityString);
+            catalyticActivityMap.put("cc:catalytic_activity",catalyticActivityString+";");
         }
         return catalyticActivityMap;
     }
 
     private String getCatalyticActivityString(CatalyticActivityComment catalyticActivityComment) {
-        String result = "";
+        String result = catalyticActivityComment.getCommentType().toDisplayName()+":";
         if(catalyticActivityComment.hasReaction()){
             result+= " "+getReactionString(catalyticActivityComment.getReaction());
         }
@@ -51,33 +52,33 @@ public class CatalyticActivityMap implements NamedValueMap {
     }
 
     private String getReactionString(Reaction reaction) {
-        String result = "Reaction=";
+        List<String> result = new ArrayList<>();
         if(reaction.hasName()){
-            result+=reaction.getName();
+            result.add("Reaction="+reaction.getName());
         }
         if(reaction.hasReactionReferences()){
-            result += reaction.getReactionReferences().stream()
+            result.add("Xref="+reaction.getReactionReferences().stream()
                     .map(this::getReactionReferenceString)
-                    .collect(Collectors.joining(", "));
+                    .collect(Collectors.joining(", ")));
         }
         if(reaction.hasEcNumber()){
-            result+=reaction.getEcNumber();
+            result.add("EC="+reaction.getEcNumber().getValue());
         }
         if(reaction.hasEvidences()){
-            result+= EntryMapUtil.evidencesToString(reaction.getEvidences());
+            result.add("Evidence="+EntryMapUtil.evidencesToString(reaction.getEvidences()));
         }
-        return result;
+        return String.join("; ",result);
     }
 
     private String getReactionReferenceString(DBCrossReference<ReactionReferenceType> reactionReference) {
-        String result = "";
+        List<String> result = new ArrayList<>();
         if(reactionReference.hasDatabaseType()){
-            result += " "+reactionReference.getDatabaseType().getName();
+            result.add(reactionReference.getDatabaseType().getName());
         }
         if(reactionReference.hasId()){
-            result += ":"+reactionReference.getId();
+            result.add(reactionReference.getId());
         }
-        return result;
+        return String.join(":",result);
     }
 
     private String getPhysiologicalReactionsString(List<PhysiologicalReaction> physiologicalReactions) {

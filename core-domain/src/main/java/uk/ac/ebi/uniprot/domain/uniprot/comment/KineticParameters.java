@@ -10,4 +10,9 @@ public interface KineticParameters extends Serializable {
 
     Note getNote();
 
+    boolean hasMaximumVelocities();
+
+    boolean hasMichaelisConstants();
+
+    boolean hasNote();
 }

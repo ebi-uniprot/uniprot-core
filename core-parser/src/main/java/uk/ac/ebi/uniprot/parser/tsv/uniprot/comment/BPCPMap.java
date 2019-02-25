@@ -1,15 +1,13 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class BPCPMap implements NamedValueMap {
@@ -31,87 +29,106 @@ public class BPCPMap implements NamedValueMap {
         if ((bpcpComments != null)) {
             String absorption = absorptionToString(bpcpComments);
             if (!absorption.isEmpty()) {
-                bpcpCommentMap.put("absorption", "BIOPHYSICOCHEMICAL PROPERTIES: ;  " + absorption);
+                bpcpCommentMap.put("absorption", "BIOPHYSICOCHEMICAL PROPERTIES:  " + absorption);
             }
             String kinetics = kineticsToString(bpcpComments);
             if (!kinetics.isEmpty()) {
-                bpcpCommentMap.put("kinetics", "BIOPHYSICOCHEMICAL PROPERTIES:  " + kinetics);
+                bpcpCommentMap.put("kinetics", "BIOPHYSICOCHEMICAL PROPERTIES:  " + kinetics+";");
             }
             String phDependence = phDependenceToString(bpcpComments);
             if (!phDependence.isEmpty()) {
-                bpcpCommentMap.put("ph_dependence", "BIOPHYSICOCHEMICAL PROPERTIES: ;  pH dependence: " + phDependence);
+                bpcpCommentMap.put("ph_dependence", "BIOPHYSICOCHEMICAL PROPERTIES:  pH dependence: " + phDependence+";");
             }
             String redoxPotential = redoxPotentialToString(bpcpComments);
             if (!redoxPotential.isEmpty()) {
-                bpcpCommentMap.put("redox_potential", "BIOPHYSICOCHEMICAL PROPERTIES: ;  Redox potential: " + redoxPotential);
+                bpcpCommentMap.put("redox_potential", "BIOPHYSICOCHEMICAL PROPERTIES:  Redox potential: " + redoxPotential+";");
             }
             String tempDependence = tempDependenceToString(bpcpComments);
             if (!tempDependence.isEmpty()) {
-                bpcpCommentMap.put("temp_dependence", "BIOPHYSICOCHEMICAL PROPERTIES: ;  Temperature dependence: " + tempDependence);
+                bpcpCommentMap.put("temp_dependence", "BIOPHYSICOCHEMICAL PROPERTIES:  Temperature dependence: " + tempDependence+";");
             }
         }
         return bpcpCommentMap;
     }
 
     private String absorptionToString(List<BPCPComment> bpcpComments) {
-        return bpcpComments.stream().map(BPCPComment::getAbsorption).filter(Objects::nonNull)
-                .map(absorption -> {
-                    String result = "Absorption: Abs(max)="+absorption.getMax();
-                    if(absorption.getEvidences() != null && !absorption.getEvidences().isEmpty()){
-                        result += " "+ EntryMapUtil.evidencesToString(absorption.getEvidences())+";";
-                    }
-                    if(absorption.getNote() != null) {
-                        result += EntryMapUtil.getNoteString(absorption.getNote())+";";
-                    }
-                    return result;
-                }).collect(Collectors.joining("; "));
+        return bpcpComments.stream()
+                .filter(BPCPComment::hasAbsorption)
+                .map(BPCPComment::getAbsorption)
+                .map(this::absortionParameterToString)
+                .collect(Collectors.joining(" "));
 
+    }
+
+    private String absortionParameterToString(Absorption absorption) {
+        List<String> result = new ArrayList<>();
+        if(absorption.hasMax()) {
+            String prefix = "Abs(max)=";
+            if(absorption.isApproximate()) {
+                prefix += "~";
+            }
+            result.add(prefix + absorption.getMax() + " nm");
+
+        }
+        if(absorption.hasEvidences()){
+            result.add(EntryMapUtil.evidencesToString(absorption.getEvidences())+";");
+        }
+        if(absorption.hasNote()) {
+            result.add(EntryMapUtil.getNoteStringWithoutDot(absorption.getNote())+";");
+        }
+        return "Absorption: "+String.join(" ",result);
     }
 
     private String kineticsToString(List<BPCPComment> bpcpComments) {
-        return bpcpComments.stream().map(BPCPComment::getKineticParameters).filter(Objects::nonNull)
-                .map(kineticParameters -> {
-                    String result = "Kinetic parameters:";
-                    if(kineticParameters.getMichaelisConstants() != null && !kineticParameters.getMichaelisConstants().isEmpty()){
-                        result += kineticParameters.getMichaelisConstants().stream()
-                                .map(this::getMichaelConstantsString)
-                                .collect(Collectors.joining(";"))+";";
-                    }
-                    if(kineticParameters.getMaximumVelocities() != null && !kineticParameters.getMaximumVelocities().isEmpty()) {
-                        result += kineticParameters.getMaximumVelocities().stream()
-                                .map(this::getMaximumVelocitiesString)
-                                .collect(Collectors.joining(";"))+";";
-                    }
-                    if(kineticParameters.getNote() != null ) {
-                        result += EntryMapUtil.getNoteString(kineticParameters.getNote());
-                    }
-                    return result;
-                })
+        return bpcpComments.stream()
+                .filter(BPCPComment::hasKineticParameters)
+                .map(BPCPComment::getKineticParameters)
+                .map(this::kinectParameterToString)
                 .collect(Collectors.joining("; "));
     }
 
+    private  String kinectParameterToString(KineticParameters kineticParameters) {
+        List<String> result = new ArrayList<>();
+        if(kineticParameters.hasMichaelisConstants()){
+            result.add(kineticParameters.getMichaelisConstants().stream()
+                    .map(this::getMichaelConstantsString)
+                    .collect(Collectors.joining("; ")));
+        }
+        if(kineticParameters.hasMaximumVelocities()) {
+            result.add(kineticParameters.getMaximumVelocities().stream()
+                    .map(this::getMaximumVelocitiesString)
+                    .collect(Collectors.joining("; ")));
+        }
+        if(kineticParameters.hasNote()) {
+            result.add(EntryMapUtil.getNoteStringWithoutDot(kineticParameters.getNote()));
+        }
+        return "Kinetic parameters: "+String.join("; ",result);
+    }
+
     private String getMaximumVelocitiesString(MaximumVelocity maximumVelocity) {
-        String result = " Vmax="+maximumVelocity.getVelocity()+" "
+        String result = "Vmax="+EntryMapUtil.formatDouble(maximumVelocity.getVelocity())+" "
                 +maximumVelocity.getUnit()+ " "
                 +maximumVelocity.getEnzyme();
-        if(maximumVelocity.getEvidences() != null && !maximumVelocity.getEvidences().isEmpty()) {
+        if(maximumVelocity.hasEvidences()) {
             result += " "+EntryMapUtil.evidencesToString(maximumVelocity.getEvidences());
         }
         return result;
     }
 
     private String getMichaelConstantsString(MichaelisConstant michaelisConstant) {
-        String result = " KM="+michaelisConstant.getConstant()+" "
+        String result = "KM="+EntryMapUtil.formatDouble(michaelisConstant.getConstant())+" "
                 +michaelisConstant.getUnit().getName()+" for "
                 +michaelisConstant.getSubstrate();
-        if(michaelisConstant.getEvidences() != null && !michaelisConstant.getEvidences().isEmpty()) {
+        if(michaelisConstant.hasEvidences()) {
             result += " "+EntryMapUtil.evidencesToString(michaelisConstant.getEvidences());
         }
         return result;
     }
 
     private String phDependenceToString(List<BPCPComment> bpcpComments) {
-        return bpcpComments.stream().map(BPCPComment::getPhDependence).filter(Objects::nonNull)
+        return bpcpComments.stream()
+                .filter(BPCPComment::hasPhDependence)
+                .map(BPCPComment::getPhDependence)
                 .map(phDependence ->
                         phDependence.getTexts().stream()
                                 .map(EntryMapUtil::evidencedValueToString)
@@ -120,7 +137,9 @@ public class BPCPMap implements NamedValueMap {
     }
 
     private String redoxPotentialToString(List<BPCPComment> bpcpComments) {
-        return bpcpComments.stream().map(BPCPComment::getRedoxPotential).filter(Objects::nonNull)
+        return bpcpComments.stream()
+                .filter(BPCPComment::hasRedoxPotential)
+                .map(BPCPComment::getRedoxPotential)
                 .map(redoxPotential ->
                         redoxPotential.getTexts().stream()
                                 .map(EntryMapUtil::evidencedValueToString)
@@ -129,7 +148,9 @@ public class BPCPMap implements NamedValueMap {
     }
 
     private String tempDependenceToString(List<BPCPComment> bpcpComments) {
-        return bpcpComments.stream().map(BPCPComment::getTemperatureDependence).filter(Objects::nonNull)
+        return bpcpComments.stream()
+                .filter(BPCPComment::hasTemperatureDependence)
+                .map(BPCPComment::getTemperatureDependence)
                 .map(temperatureDependence ->
                         temperatureDependence.getTexts().stream()
                                 .map(EntryMapUtil::evidencedValueToString)

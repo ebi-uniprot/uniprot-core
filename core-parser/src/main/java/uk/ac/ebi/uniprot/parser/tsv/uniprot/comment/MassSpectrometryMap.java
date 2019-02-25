@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.Position;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,49 +28,51 @@ public class MassSpectrometryMap implements NamedValueMap {
 
     private Map<String, String>  getMassSpecComments(List<MassSpectrometryComment> msComments) {
         Map<String, String> massSpectrometryCommentMap = new HashMap<>();
-        if ((msComments != null)) {
-            String result = msComments.stream().map(this::mapMassSpectrometryCommentToString).collect(Collectors.joining(";  "));
-            massSpectrometryCommentMap.put("cc:mass_spectrometry", result);
+        if ((msComments != null && !msComments.isEmpty())) {
+            String result = msComments.stream()
+                    .map(this::mapMassSpectrometryCommentToString)
+                    .collect(Collectors.joining("; "));
+            massSpectrometryCommentMap.put("cc:mass_spectrometry", result+";");
         }
         return massSpectrometryCommentMap;
     }
 
     private String mapMassSpectrometryCommentToString(MassSpectrometryComment massSpectrometryComment) {
-        String result = "";
-        if(massSpectrometryComment.getMolWeight() != null){
-            result += " "+massSpectrometryComment.getMolWeight();
+        List<String> result = new ArrayList<>();
+        if(massSpectrometryComment.hasMolWeight()){
+            result.add("Mass="+EntryMapUtil.formatFloat(massSpectrometryComment.getMolWeight()));
         }
-        if(massSpectrometryComment.getMolWeightError() != null){
-            result += " "+massSpectrometryComment.getMolWeightError();
+        if(massSpectrometryComment.hasMolWeightError()){
+            result.add("Mass_error="+EntryMapUtil.formatFloat(massSpectrometryComment.getMolWeightError()));
         }
-        if(massSpectrometryComment.getMethod() != null){
-            result += " "+massSpectrometryComment.getMethod().getValue();
+        if(massSpectrometryComment.hasMethod()){
+            result.add("Method="+massSpectrometryComment.getMethod().getValue());
         }
-        if(massSpectrometryComment.getRanges() != null && !massSpectrometryComment.getRanges().isEmpty()){
-            result += " "+massSpectrometryComment.getRanges().stream().map(this::mapMassSpectrometryRangeToString)
-                    .collect(Collectors.joining("; "));
+        if(massSpectrometryComment.hasRanges()){
+            result.add(massSpectrometryComment.getRanges().stream().map(this::mapMassSpectrometryRangeToString)
+                    .collect(Collectors.joining("; ")));
         }
-        if(massSpectrometryComment.getNote() != null && !massSpectrometryComment.getNote().isEmpty()){
-            result += " "+massSpectrometryComment.getNote();
+        if(massSpectrometryComment.hasNote()){
+            result.add("Note="+massSpectrometryComment.getNote());
         }
-        if(massSpectrometryComment.getEvidences() != null && !massSpectrometryComment.getEvidences().isEmpty()){
-            result += " "+ EntryMapUtil.evidencesToString(massSpectrometryComment.getEvidences());
+        if(massSpectrometryComment.hasEvidences()){
+            result.add("Evidence="+EntryMapUtil.evidencesToString(massSpectrometryComment.getEvidences()));
         }
-        return result;
+        return CommentType.MASS_SPECTROMETRY.toDisplayName()+": "+String.join("; ",result);
     }
 
     private String mapMassSpectrometryRangeToString(MassSpectrometryRange massSpectrometryRange) {
-        String range = "";
+        List<String> range = new ArrayList<>();
         if(massSpectrometryRange.getRange() != null){
             Position start = massSpectrometryRange.getRange().getStart();
             if(start != null){
-                range += start.getValue();
+                range.add(""+start.getValue());
             }
             Position end = massSpectrometryRange.getRange().getEnd();
             if(end != null){
-                range += end.getValue();
+                range.add(""+end.getValue());
             }
         }
-        return range;
+        return "Range="+String.join("-",range);
     }
 }

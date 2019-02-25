@@ -1,9 +1,12 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,33 +30,45 @@ public class CofactorMap implements NamedValueMap {
         Map<String, String> cofactorCommentMap = new HashMap<>();
         if ((cfComments != null)) {
             String result = cfComments.stream().map(this::mapCofactorCommentToString).collect(Collectors.joining("; "));
-            cofactorCommentMap.put("cc:cofactor", result);
+            cofactorCommentMap.put("cc:cofactor", result+";");
         }
         return cofactorCommentMap;
     }
 
     private String mapCofactorCommentToString(CofactorComment cofactorComment) {
-        String result = "";
-        if(cofactorComment.getMolecule() != null && !cofactorComment.getMolecule().isEmpty()) {
-            result += cofactorComment.getMolecule();
+        List<String> result = new ArrayList<>();
+        result.add(cofactorComment.getCommentType().toDisplayName()+":");
+        if(cofactorComment.hasMolecule()) {
+            result.add(cofactorComment.getMolecule()+":");
         }
-        if(cofactorComment.getCofactors() != null && !cofactorComment.getCofactors().isEmpty()) {
-            result += cofactorComment.getCofactors().stream().map(cofactor -> {
-                String cofactorString = "";
-                if(cofactor.getName() != null && !cofactor.getName().isEmpty()){
-                    cofactorString += " "+cofactor.getName();
+        if(cofactorComment.hasCofactors()) {
+            String cofactors = cofactorComment.getCofactors().stream().map(cofactor -> {
+                List<String> cofactorString = new ArrayList<>();
+                if(cofactor.hasName()){
+                    cofactorString.add("Name="+cofactor.getName());
                 }
-                if(cofactor.getCofactorReference() != null){
-                    cofactorString +=" "+cofactor.getCofactorReference().getDatabaseType().getName();
-                    cofactorString +=" "+cofactor.getCofactorReference().getId();
+                if(cofactor.hasCofactorReference()){
+                    List<String> referenceString = new ArrayList<>();
+                    DBCrossReference<CofactorReferenceType> reference = cofactor.getCofactorReference();
+                    if(reference.hasDatabaseType()){
+                        referenceString.add(cofactor.getCofactorReference().getDatabaseType().getName());
+                    }
+                    if(reference.hasId()){
+                        referenceString.add(cofactor.getCofactorReference().getId());
+                    }
+                    cofactorString.add("Xref="+String.join(":",referenceString));
                 }
-                return cofactorString;
-            }).collect(Collectors.joining("; "));
+                if(cofactor.hasEvidences()){
+                    cofactorString.add("Evidence="+EntryMapUtil.evidencesToString(cofactor.getEvidences()));
+                }
+                return String.join("; ",cofactorString);
+            }).collect(Collectors.joining("; ","",";"));
+            result.add(cofactors);
         }
-        if(cofactorComment.getNote() != null) {
-            result += EntryMapUtil.getNoteString(cofactorComment.getNote());
+        if(cofactorComment.hasNote()) {
+            result.add(EntryMapUtil.getNoteStringWithoutDot(cofactorComment.getNote()));
         }
-        return result;
+        return String.join(" ",result);
     }
 
 }

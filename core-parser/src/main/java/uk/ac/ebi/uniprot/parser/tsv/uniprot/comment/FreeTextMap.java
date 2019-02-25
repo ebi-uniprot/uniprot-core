@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
@@ -29,14 +30,28 @@ public class FreeTextMap implements NamedValueMap {
     private Map<String, String> getTextComments(CommentType type, List<FreeTextComment> txtComments) {
         Map<String, String> txtCommentMap = new HashMap<>();
         if ((txtComments != null && !txtComments.isEmpty())) {
-            String value = txtComments.stream().map(freeTextComment ->
-                    type.name() + ": " + freeTextComment.getTexts().stream()
-                            .map(EntryMapUtil::evidencedValueToString)
-                            .collect(Collectors.joining("; "))
-            ).collect(Collectors.joining(".; "));
+            String value = txtComments.stream()
+                    .filter(FreeTextComment::hasTexts)
+                    .map(this::getTextCommentString)
+                    .collect(Collectors.joining("; "));
             String field = "cc:" + type.name().toLowerCase();
-            txtCommentMap.put(field, value + ".");
+            txtCommentMap.put(field, value);
         }
         return txtCommentMap;
+    }
+
+    private String getTextCommentString(FreeTextComment comment) {
+        String commentPrefix = comment.getCommentType().toDisplayName()+": ";
+        return comment.getTexts().stream()
+                .map(this::evidencedValueToString)
+                .collect(Collectors.joining("; ",commentPrefix,""));
+    }
+
+    private String evidencedValueToString(EvidencedValue evidencedValue) {
+        String result = evidencedValue.getValue()+".";
+        if(evidencedValue.hasEvidences()){
+            result += " "+EntryMapUtil.evidencesToString(evidencedValue.getEvidences())+".";
+        }
+        return result;
     }
 }

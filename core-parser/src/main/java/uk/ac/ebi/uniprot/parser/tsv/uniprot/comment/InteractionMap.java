@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class InteractionMap implements NamedValueMap {
@@ -27,8 +28,10 @@ public class InteractionMap implements NamedValueMap {
         Map<String, String> interactionCommentMap = new HashMap<>();
         if ((iaComments != null)) {
             String result = iaComments.stream()
+                    .filter(InteractionComment::hasInteractions)
                     .flatMap(val -> val.getInteractions().stream())
                     .map(this::getInterAct)
+                    .filter(Objects::nonNull)
                     .collect(Collectors.joining("; "));
             interactionCommentMap.put("cc:interaction", result);
         }
@@ -37,8 +40,10 @@ public class InteractionMap implements NamedValueMap {
 
     private String getInterAct(Interaction interAct) {
         if (InteractionType.SELF.equals(interAct.getType())) {
-            return "Self";
-        } else
+            return "Itself";
+        } else if(interAct.hasUniProtAccession()) {
             return interAct.getUniProtAccession().getValue();
+        }
+        return null;
     }
 }

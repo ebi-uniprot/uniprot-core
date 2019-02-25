@@ -81,6 +81,31 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
+    public boolean hasDiseaseId() {
+        return Utils.notEmpty(this.diseaseId);
+    }
+
+    @Override
+    public boolean hasDiseaseAccession() {
+        return Utils.notEmpty(this.diseaseAccession);
+    }
+
+    @Override
+    public boolean hasAcronym() {
+        return Utils.notEmpty(this.acronym);
+    }
+
+    @Override
+    public boolean hasDescription() {
+        return Utils.notEmpty(this.description);
+    }
+
+    @Override
+    public boolean hasReference() {
+        return this.reference != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

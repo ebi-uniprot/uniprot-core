@@ -55,6 +55,16 @@ public class AbsorptionImpl implements Absorption {
     }
 
     @Override
+    public boolean hasMax() {
+        return this.max > 0;
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null && this.note.hasTexts();
+    }
+
+    @Override
     public boolean isApproximate() {
         return this.approximate;
     }

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
@@ -49,6 +50,21 @@ public class KineticParametersImpl implements KineticParameters {
     @Override
     public Note getNote() {
         return note;
+    }
+
+    @Override
+    public boolean hasMaximumVelocities() {
+        return Utils.notEmpty(this.maximumVelocities);
+    }
+
+    @Override
+    public boolean hasMichaelisConstants() {
+        return Utils.notEmpty(this.michaelisConstants);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null && this.note.hasTexts();
     }
 
     @Override

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
@@ -35,18 +36,15 @@ public class RnaEditingMap implements NamedValueMap {
     }
 
     private  String mapRnaEditingCommentToString(RnaEditingComment rnaEditingComment) {
-        String result = "";
-        if(rnaEditingComment.getLocationType() != null){
-            result += " "+rnaEditingComment.getLocationType().name();
-        }
-        if(rnaEditingComment.getPositions() != null){
-            result += " "+rnaEditingComment.getPositions().stream()
+        String result = CommentType.RNA_EDITING.toDisplayName() + ": ";
+        if(rnaEditingComment.hasPositions()){
+            result += rnaEditingComment.getPositions().stream()
                     .map(this::mapRnaEdPositionToString)
-                    .collect(Collectors.joining("; "));
+                    .collect(Collectors.joining(", ","Modified_positions=",";"));
         }
 
-        if(rnaEditingComment.getNote() != null){
-            result += " "+ EntryMapUtil.getNoteString(rnaEditingComment.getNote());
+        if(rnaEditingComment.hasNote()){
+            result += " "+EntryMapUtil.getNoteString(rnaEditingComment.getNote())+";";
         }
         return result;
     }

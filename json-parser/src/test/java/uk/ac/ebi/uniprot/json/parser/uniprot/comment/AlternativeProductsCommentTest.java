@@ -75,7 +75,7 @@ public class AlternativeProductsCommentTest {
         assertEquals("SequenceID",isoforms.get("sequenceIds").get(0).asText());
 
         assertNotNull(isoforms.get("isoformSequenceStatus"));
-        assertEquals("described",isoforms.get("isoformSequenceStatus").asText());
+        assertEquals(IsoformSequenceStatus.DESCRIBED.toDisplayName(),isoforms.get("isoformSequenceStatus").asText());
 
         assertNotNull(jsonNode.get("note"));
         assertNotNull(jsonNode.get("note").get("texts"));
