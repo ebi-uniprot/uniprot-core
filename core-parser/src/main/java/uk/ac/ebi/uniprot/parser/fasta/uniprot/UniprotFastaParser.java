@@ -6,8 +6,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
 
 import java.util.List;
 
@@ -88,13 +88,13 @@ public class UniprotFastaParser {
     }
     private static String getDescriptionStr(ProteinDescription pd){
         StringBuilder  desc = new StringBuilder();
-        ProteinName name;
+        Name name;
         if(pd.getRecommendedName()!= null){
-            name = pd.getRecommendedName();
+            name = pd.getRecommendedName().getFullName();
         }else{
-            name =pd.getSubmissionNames().get(0);
+            name =pd.getSubmissionNames().get(0).getFullName();
         }
-        desc.append(name.getFullName().getValue());
+        desc.append(name.getValue());
         Flag flag = pd.getFlag();
         if(flag !=null && !flag.getType().equals(FlagType.PRECURSOR)){
             desc.append(" (Fragment)");

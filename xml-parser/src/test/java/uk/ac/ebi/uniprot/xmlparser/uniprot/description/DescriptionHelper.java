@@ -2,12 +2,16 @@ package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinAltNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSubNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
@@ -42,17 +46,31 @@ public class DescriptionHelper {
                 .build();
     }
 
-    public static ProteinSection createProteinNameSection(ProteinName name, List<ProteinName> altNames) {
+    public static ProteinSection createProteinNameSection(ProteinRecName name, List<ProteinAltName> altNames) {
         return new ProteinSectionBuilder()
                 .recommendedName(name)
                 .alternativeNames(altNames)
                 .build();
     }
 
-    public static ProteinName createProteinName(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
+    public static ProteinRecName createProteinRecName(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
         return new ProteinRecNameBuilder()
                 .fullName(fullName)
                 .shortNames(shortNames)
+                .ecNumbers(ecNumbers)
+                .build();
+    }
+    public static ProteinAltName createProteinAltName(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
+        return new ProteinAltNameBuilder()
+                .fullName(fullName)
+                .shortNames(shortNames)
+                .ecNumbers(ecNumbers)
+                .build();
+    }
+    public static ProteinSubName createProteinSubName(Name fullName, List<EC> ecNumbers) {
+        return new ProteinSubNameBuilder()
+                .fullName(fullName)
+             
                 .ecNumbers(ecNumbers)
                 .build();
     }

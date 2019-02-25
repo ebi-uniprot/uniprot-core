@@ -33,6 +33,16 @@ public class FlatfileRoundTripITIT {
     }
 
     @Test
+    public void testP87498() {
+        String filename = "/entryIT/P87498.dat";
+        String entryStr = readEntryFromFile(filename);
+
+        testEntry(entryStr, true);
+    }
+
+    
+    
+    @Test
     public void testD6RDV7() {
         String filename = "/entryIT/D6RDV7.dat";
         String entryStr = readEntryFromFile(filename);
@@ -541,7 +551,7 @@ public class FlatfileRoundTripITIT {
 
         assertNotNull(converted);
         String convertedEntryStr = writer.write(converted, ispublic);
-        //	System.out.println(convertedEntryStr);
+       // 	System.out.println(convertedEntryStr);
 
         String diff = compareFF(entryToParse, convertedEntryStr + "\n");
         System.out.println(diff);

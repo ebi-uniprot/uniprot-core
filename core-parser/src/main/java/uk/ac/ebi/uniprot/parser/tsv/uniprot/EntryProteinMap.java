@@ -157,7 +157,7 @@ public class EntryProteinMap implements NamedValueMap {
         return sb.toString();
     }
 
-    private String convertProteinNameToString(ProteinName name) {
+    private String convertProteinNameToString(ProteinRecName name) {
         StringBuilder sb = new StringBuilder();
         sb.append(name.getFullName().getValue());
         String sname = name.getShortNames().stream().map(Name::getValue)
@@ -180,7 +180,7 @@ public class EntryProteinMap implements NamedValueMap {
         }
         if(section.getAlternativeNames() != null){
             List<String> ecs = new ArrayList<>();
-            for (ProteinName proteinName:section.getAlternativeNames()) {
+            for (ProteinRecName proteinName:section.getAlternativeNames()) {
                 ecs.addAll(convertProteinNameEcNumbersToString(proteinName));
             }
             ec.addAll(ecs);
@@ -188,7 +188,7 @@ public class EntryProteinMap implements NamedValueMap {
         return ec;
     }
 
-    private List<String> convertProteinNameEcNumbersToString(ProteinName name) {
+    private List<String> convertProteinNameEcNumbersToString(ProteinRecName name) {
         return name.getEcNumbers().stream().map(EC::getValue).collect(Collectors.toList());
     }
 

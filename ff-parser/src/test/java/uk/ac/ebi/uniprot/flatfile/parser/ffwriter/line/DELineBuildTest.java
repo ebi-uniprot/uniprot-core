@@ -147,8 +147,7 @@ public class DELineBuildTest {
         cdAntigenNames.add(createName("CD156c", Collections.emptyList()));
         ProteinAltName altName2=
         new ProteinAltNameBuilder().from(altName)
-        .innNames(innNames)
-        .cdAntigenNames(cdAntigenNames)
+      
         .build();
         //	ProteinAlternativeName pAltName = factory.createProteinAlternativeName(altNames, null, null, cdAntigenNames,
         //			innNames);
@@ -158,6 +157,8 @@ public class DELineBuildTest {
                 builder.recommendedName(recName)
                         .alternativeNames(altNames)                   
                         .flag(FlagType.FRAGMENT_PRECURSOR)
+                        .innNames(innNames)
+                        .cdAntigenNames(cdAntigenNames)
                         .build();
 
 
@@ -196,8 +197,7 @@ public class DELineBuildTest {
         cdAntigenNames.add(createName("CD156c", Collections.emptyList()));
         ProteinAltName altName2=
                 new ProteinAltNameBuilder().from(altName)
-                .innNames(innNames)
-                .cdAntigenNames(cdAntigenNames)
+              
                 .build();
         altNames.add(altName2);
 //		ProteinAlternativeName pAltName = factory.createProteinAlternativeName(altNames, null, null, cdAntigenNames,
@@ -208,6 +208,8 @@ public class DELineBuildTest {
                 builder.recommendedName(recName)
                         .alternativeNames(altNames)
                         .flag(FlagType.FRAGMENT_PRECURSOR)
+                        .innNames(innNames)
+                        .cdAntigenNames(cdAntigenNames)
                         .build();
 
         String deLine = "DE   RecName: Full=Granulocyte colony-stimulating factor {ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1};\n"

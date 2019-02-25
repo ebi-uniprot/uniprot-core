@@ -60,7 +60,7 @@ public class SubcellularLocationConverter implements Converter<SubcellularLocati
                     }
             }
         }
-        return new SubcellularLocationValueBuilder(locationStr, evidences).build();
+        return new SubcellularLocationValueBuilder("", locationStr, evidences).build();
     }
 
     private String getLocationValues(List<EvidencedStringType> values) {

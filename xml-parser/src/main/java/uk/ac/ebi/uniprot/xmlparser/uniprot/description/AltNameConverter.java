@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinAltNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -10,7 +11,7 @@ import uk.ac.ebi.uniprot.xmlparser.Converter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AltNameConverter implements Converter<AlternativeName, ProteinName>, ToXmlDbReferences<ProteinName> {
+public class AltNameConverter implements Converter<AlternativeName, ProteinAltName>, ToXmlDbReferences<ProteinAltName> {
     private final NameConverter nameConverter;
     private final ECConverter ecConverter;
     private final ObjectFactory xmlUniprotFactory;
@@ -26,8 +27,8 @@ public class AltNameConverter implements Converter<AlternativeName, ProteinName>
     }
 
     @Override
-    public ProteinName fromXml(AlternativeName xmlObj) {
-        return new ProteinRecNameBuilder()
+    public ProteinAltName fromXml(AlternativeName xmlObj) {
+        return new ProteinAltNameBuilder()
                 .fullName(nameConverter.fromXml(xmlObj.getFullName()))
                 .shortNames(xmlObj.getShortName().stream().map(nameConverter::fromXml)
                                     .collect(Collectors.toList()))
@@ -37,7 +38,7 @@ public class AltNameConverter implements Converter<AlternativeName, ProteinName>
     }
 
     @Override
-    public AlternativeName toXml(ProteinName uniObj) {
+    public AlternativeName toXml(ProteinAltName uniObj) {
         AlternativeName altName = xmlUniprotFactory.createProteinTypeAlternativeName();
         altName.setFullName(nameConverter.toXml(uniObj.getFullName()));
         uniObj.getShortNames().forEach(val -> altName.getShortName().add(nameConverter.toXml(val)));
@@ -45,7 +46,7 @@ public class AltNameConverter implements Converter<AlternativeName, ProteinName>
         return altName;
     }
 
-    public List<DbReferenceType> toXmlDbReferences(ProteinName uniObj) {
+    public List<DbReferenceType> toXmlDbReferences(ProteinAltName uniObj) {
         return uniObj.getEcNumbers().stream().map(ecConverter::toXmlDbReference)
                 .collect(Collectors.toList());
     }

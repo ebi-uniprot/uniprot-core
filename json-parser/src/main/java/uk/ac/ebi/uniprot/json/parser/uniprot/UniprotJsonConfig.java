@@ -102,7 +102,7 @@ public class UniprotJsonConfig implements JsonConfig {
         mod.addAbstractTypeMapping(OrganismHost.class, OrganismHostImpl.class);
 
         mod.addAbstractTypeMapping(ProteinDescription.class, ProteinDescriptionImpl.class);
-        mod.addAbstractTypeMapping(ProteinName.class, ProteinNameImpl.class);
+        mod.addAbstractTypeMapping(ProteinRecName.class, ProteinNameImpl.class);
         mod.addAbstractTypeMapping(ProteinSection.class, ProteinSectionImpl.class);
         mod.addAbstractTypeMapping(Name.class, NameImpl.class);
         mod.addAbstractTypeMapping(EC.class, ECImpl.class);

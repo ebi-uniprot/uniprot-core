@@ -1,19 +1,30 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.de;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.flatfile.parser.Converter;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineObject.FlagType;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.google.common.base.Strings;
+
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinAltNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinDescriptionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSubNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.flatfile.parser.Converter;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineObject.FlagType;
 
 
 public class DeLineConverter extends EvidenceCollector implements Converter<DeLineObject, ProteinDescription> {
@@ -27,10 +38,21 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		if (f.recName != null) {
 			recName = convertRecName(f.recName, evidenceMap);
 		}
-		List<ProteinAltName> altNames = convertAltNames( f.altName, f.alt_CD_antigen,
-				f.alt_INN, f.alt_Allergen, f.alt_Biotech,			
-				evidenceMap);
-	
+		List<ProteinAltName> altNames = f.altName.stream().map(val -> convertAltName(val, evidenceMap))
+				.collect(Collectors.toList());
+		
+		List<Name> cdAntigenNames = f.alt_CD_antigen.stream().map(val -> convertName(val, evidenceMap))
+				.collect(Collectors.toList());
+
+		List<Name> innNames = f.alt_INN.stream().map(val -> convertName(val, evidenceMap)).collect(Collectors.toList());
+		Name biotechName = null;
+		if (!Strings.isNullOrEmpty(f.alt_Biotech)) {
+			biotechName = convertName(f.alt_Biotech, evidenceMap);
+		}
+		Name allergenName = null;
+		if (!Strings.isNullOrEmpty(f.alt_Allergen)) {
+			allergenName = convertName(f.alt_Allergen, evidenceMap);
+		}
 		List<ProteinSubName> subNames = f.subName.stream().map(val -> convertSubmissionName(val, evidenceMap))
 				.collect(Collectors.toList());
 
@@ -43,48 +65,15 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		uk.ac.ebi.uniprot.domain.uniprot.description.FlagType flag = createFlag(f.flags);
 		ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
 		builder.recommendedName(recName).submissionNames(subNames).alternativeNames(altNames).contains(contained)
-				.includes(included).flag(flag);
+				.includes(included).flag(flag)
+				.cdAntigenNames(cdAntigenNames)
+				.innNames(innNames)
+				.allergenName(allergenName)
+				.biotechName(biotechName);
 
 		return builder.build();
 
 	}
-	
-	private List<ProteinAltName> convertAltNames(List<DeLineObject.Name> faltName, List<String> altCD_antigen,
-			List<String> altINN, String altAllergen, String altBiotech, Map<Object, List<Evidence>> evidenceMap) {
-		List<ProteinAltName> altNames = faltName.stream().map(val -> convertAltName(val, evidenceMap))
-				.collect(Collectors.toList());
-
-		List<Name> cdAntigenNames = altCD_antigen.stream().map(val -> convertName(val, evidenceMap))
-				.collect(Collectors.toList());
-
-		List<Name> innNames = altINN.stream().map(val -> convertName(val, evidenceMap)).collect(Collectors.toList());
-		Name biotechName = null;
-		if (!Strings.isNullOrEmpty(altBiotech)) {
-			biotechName = convertName(altBiotech, evidenceMap);
-		}
-		Name allergenName = null;
-		if (!Strings.isNullOrEmpty(altAllergen)) {
-			allergenName = convertName(altAllergen, evidenceMap);
-		}
-		if (cdAntigenNames.isEmpty() && innNames.isEmpty() && (biotechName == null) && (allergenName == null)) {
-			return altNames;
-		} else {
-			List<ProteinAltName> altNames2 = new ArrayList<>();
-
-			if (altNames.isEmpty()) {
-				altNames2.add(new ProteinAltNameBuilder().cdAntigenNames(cdAntigenNames).innNames(innNames)
-						.allergenName(allergenName).biotechName(biotechName).build());
-				return altNames2;
-			}
-			ProteinAltName altName = altNames.get(0);
-			altNames2.add(new ProteinAltNameBuilder().from(altName).cdAntigenNames(cdAntigenNames).innNames(innNames)
-					.allergenName(allergenName).biotechName(biotechName).build());
-			altNames2.addAll(altNames.subList(1, altNames.size()));
-			return altNames2;
-		}
-	}
-
-
 
 	private uk.ac.ebi.uniprot.domain.uniprot.description.FlagType createFlag(List<FlagType> flags) {
 		if (flags.contains(FlagType.Fragment)) {
@@ -114,11 +103,30 @@ public class DeLineConverter extends EvidenceCollector implements Converter<DeLi
 		if (nameBlock.recName != null) {
 			recName = convertRecName(nameBlock.recName, evidenceMap);
 		}
-		List<ProteinAltName> altNames = 
-				convertAltNames(nameBlock.altName,nameBlock.alt_CD_antigen, nameBlock.alt_INN, nameBlock.alt_Allergen, nameBlock.alt_Biotech,
-						evidenceMap);
+		
+		List<ProteinAltName> altNames = nameBlock.altName.stream().map(val -> convertAltName(val, evidenceMap))
+				.collect(Collectors.toList());
+		
+		List<Name> cdAntigenNames =nameBlock.alt_CD_antigen.stream().map(val -> convertName(val, evidenceMap))
+				.collect(Collectors.toList());
 
-		return new ProteinSectionBuilder().recommendedName(recName).alternativeNames(altNames).build();
+		List<Name> innNames = nameBlock.alt_INN.stream().map(val -> convertName(val, evidenceMap)).collect(Collectors.toList());
+		Name biotechName = null;
+		if (!Strings.isNullOrEmpty(nameBlock.alt_Biotech)) {
+			biotechName = convertName(nameBlock.alt_Biotech, evidenceMap);
+		}
+		Name allergenName = null;
+		if (!Strings.isNullOrEmpty(nameBlock.alt_Allergen)) {
+			allergenName = convertName(nameBlock.alt_Allergen, evidenceMap);
+		}
+		
+
+
+		return new ProteinSectionBuilder().recommendedName(recName).alternativeNames(altNames)
+				.cdAntigenNames(cdAntigenNames)
+				.innNames(innNames)
+				.allergenName(allergenName)
+				.biotechName(biotechName).build();
 	}
 
 	private Name convertName(String val, Map<Object, List<Evidence>> evidenceMap) {
