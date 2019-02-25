@@ -5,7 +5,7 @@ KW   Transcription regulation.
 
 lexer grammar KwLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 KW_HEAD: 'KW   ';
 

@@ -4,7 +4,7 @@ RG   The mouse genome sequencing consortium;
 
 lexer grammar RgLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 RG_HEADER: 'RG   '   ->pushMode (RG_CONTENT);
 

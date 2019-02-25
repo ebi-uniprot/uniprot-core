@@ -1,6 +1,6 @@
 lexer grammar RpLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 RP_START  : 'RP   '             -> pushMode (RP_CONTENT);
 

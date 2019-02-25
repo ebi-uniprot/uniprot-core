@@ -1,6 +1,6 @@
 lexer grammar RlLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 tokens {CHANGE_OF_LINE, SPACE, COMA, DASH, SEMICOLON, COLON, DOT}
 
 RL_HEADER: 'RL   ';
