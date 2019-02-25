@@ -1,0 +1,202 @@
+ID   VIT1_CHICK              Reviewed;        1912 AA.
+AC   P87498;
+DT   15-JUL-1998, integrated into UniProtKB/Swiss-Prot.
+DT   01-MAY-1997, sequence version 1.
+DT   16-JAN-2019, entry version 109.
+DE   RecName: Full=Vitellogenin-1;
+DE   AltName: Full=Minor vitellogenin;
+DE   AltName: Full=Vitellogenin I;
+DE   Contains:
+DE     RecName: Full=Lipovitellin-1;
+DE     AltName: Full=Lipovitellin I;
+DE              Short=LVI;
+DE   Contains:
+DE     RecName: Full=Phosvitin;
+DE              Short=PV;
+DE   Contains:
+DE     RecName: Full=Lipovitellin-2;
+DE     AltName: Full=Lipovitellin II;
+DE              Short=LVII;
+DE   Contains:
+DE     RecName: Full=YGP42 {ECO:0000303|PubMed:20509661};
+DE     AltName: Allergen=Gal d 6 {ECO:0000303|PubMed:20509661};
+DE   Flags: Precursor;
+GN   Name=VTG1; Synonyms=VTGI;
+OS   Gallus gallus (Chicken).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Archelosauria; Archosauria; Dinosauria; Saurischia; Theropoda;
+OC   Coelurosauria; Aves; Neognathae; Galloanserae; Galliformes;
+OC   Phasianidae; Phasianinae; Gallus.
+OX   NCBI_TaxID=9031;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [MRNA].
+RC   TISSUE=Liver;
+RA   Mabuchi N., Yamamura J., Adachi T., Aoki N., Nakamura R., Matsuda T.;
+RL   Submitted (DEC-1996) to the EMBL/GenBank/DDBJ databases.
+RN   [2]
+RP   PROTEIN SEQUENCE OF 1628-1639, AND IDENTIFICATION OF YGP42.
+RX   PubMed=7599159; DOI=10.1016/0304-4165(95)00033-8;
+RA   Yamamura J., Adachi T., Aoki N., Nakajima H., Nakamura R., Matsuda T.;
+RT   "Precursor-product relationship between chicken vitellogenin and the
+RT   yolk proteins: the 40 kDa yolk plasma glycoprotein is derived from the
+RT   C-terminal cysteine-rich domain of vitellogenin II.";
+RL   Biochim. Biophys. Acta 1244:384-394(1995).
+RN   [3]
+RP   IGE-BINDING.
+RX   PubMed=20509661; DOI=10.1021/jf101403h;
+RA   Amo A., Rodriguez-Perez R., Blanco J., Villota J., Juste S., Moneo I.,
+RA   Caballero M.L.;
+RT   "Gal d 6 is the second allergen characterized from egg yolk.";
+RL   J. Agric. Food Chem. 58:7453-7457(2010).
+RN   [4]
+RP   ALLERGEN.
+RX   PubMed=26897338; DOI=10.1016/j.molimm.2016.02.005;
+RA   De Silva C., Dhanapala P., Doran T., Tang M.L.K., Suphioglu C.;
+RT   "Molecular and immunological analysis of hen's egg yolk allergens with
+RT   a focus on YGP42 (Gal d 6).";
+RL   Mol. Immunol. 71:152-160(2016).
+CC   -!- FUNCTION: Precursor of the egg-yolk proteins that are sources of
+CC       nutrients during early development of oviparous organisms.
+CC   -!- FUNCTION: Phosvitin is believed to be of importance in
+CC       sequestering calcium, iron and other cations for the developing
+CC       embryo.
+CC   -!- TISSUE SPECIFICITY: Produced by the liver, secreted into the blood
+CC       and then sequestered by receptor mediated endocytosis into growing
+CC       oocytes, where it is generally cleaved, giving rise to the
+CC       respective yolk components.
+CC   -!- INDUCTION: By steroids (estrogen).
+CC   -!- PTM: Phosvitin, an egg yolk storage protein, is one of the most
+CC       highly phosphorylated (10%) proteins in nature.
+CC   -!- PTM: Cathepsin D is responsible for intraoocytic processing of
+CC       vitellogenin.
+CC   -!- PTM: May contain intrachain disulfide bonds.
+CC   -!- ALLERGEN: YGP42: Causes an allergic reaction in human
+CC       (PubMed:26897338). Binds to IgE (PubMed:20509661,
+CC       PubMed:26897338). {ECO:0000269|PubMed:20509661,
+CC       ECO:0000269|PubMed:26897338}.
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   -----------------------------------------------------------------------
+DR   EMBL; D89547; BAA13973.1; -; mRNA.
+DR   PIR; T29088; T29088.
+DR   RefSeq; NP_001004408.1; NM_001004408.2.
+DR   UniGene; Gga.4125; -.
+DR   ProteinModelPortal; P87498; -.
+DR   SMR; P87498; -.
+DR   STRING; 9031.ENSGALP00000032611; -.
+DR   Allergome; 8172; Gal d 6.
+DR   Allergome; 8173; Gal d 6.0101.
+DR   PaxDb; P87498; -.
+DR   PRIDE; P87498; -.
+DR   GeneID; 424547; -.
+DR   KEGG; gga:424547; -.
+DR   CTD; 559475; -.
+DR   eggNOG; KOG4338; Eukaryota.
+DR   eggNOG; ENOG411104F; LUCA.
+DR   HOGENOM; HOG000172510; -.
+DR   InParanoid; P87498; -.
+DR   OrthoDB; 36651at2759; -.
+DR   PhylomeDB; P87498; -.
+DR   PRO; PR:P87498; -.
+DR   Proteomes; UP000000539; Unplaced.
+DR   GO; GO:0005319; F:lipid transporter activity; IBA:GO_Central.
+DR   GO; GO:0045735; F:nutrient reservoir activity; IEA:UniProtKB-KW.
+DR   GO; GO:0071391; P:cellular response to estrogen stimulus; IBA:GO_Central.
+DR   GO; GO:0032355; P:response to estradiol; IBA:GO_Central.
+DR   Gene3D; 1.25.10.20; -; 1.
+DR   Gene3D; 2.20.50.20; -; 2.
+DR   Gene3D; 2.20.90.10; -; 1.
+DR   Gene3D; 2.30.230.10; -; 1.
+DR   InterPro; IPR015819; Lipid_transp_b-sht_shell.
+DR   InterPro; IPR001747; Lipid_transpt_N.
+DR   InterPro; IPR011030; Lipovitellin_superhlx_dom.
+DR   InterPro; IPR015816; Vitellinogen_b-sht_N.
+DR   InterPro; IPR015258; Vitellinogen_b-sht_shell.
+DR   InterPro; IPR037088; Vitellinogen_b-sht_shell_sf.
+DR   InterPro; IPR015255; Vitellinogen_open_b-sht.
+DR   InterPro; IPR015817; Vitellinogen_open_b-sht_sub1.
+DR   InterPro; IPR001846; VWF_type-D.
+DR   Pfam; PF09172; DUF1943; 1.
+DR   Pfam; PF09175; DUF1944; 1.
+DR   Pfam; PF01347; Vitellogenin_N; 1.
+DR   Pfam; PF00094; VWD; 1.
+DR   SMART; SM01169; DUF1943; 1.
+DR   SMART; SM01170; DUF1944; 1.
+DR   SMART; SM00638; LPD_N; 1.
+DR   SMART; SM00216; VWD; 1.
+DR   SUPFAM; SSF48431; SSF48431; 1.
+DR   SUPFAM; SSF56968; SSF56968; 3.
+DR   PROSITE; PS51211; VITELLOGENIN; 1.
+DR   PROSITE; PS51233; VWFD; 1.
+PE   1: Evidence at protein level;
+KW   Allergen; Complete proteome; Direct protein sequencing;
+KW   Disulfide bond; Glycoprotein; Phosphoprotein; Reference proteome;
+KW   Signal; Storage protein.
+FT   SIGNAL        1     15       {ECO:0000255}.
+FT   CHAIN        16   1912       Vitellogenin-1.
+FT                                /FTId=PRO_0000041552.
+FT   CHAIN        16   1139       Lipovitellin-1. {ECO:0000250}.
+FT                                /FTId=PRO_0000041553.
+FT   CHAIN      1140   1391       Phosvitin. {ECO:0000250}.
+FT                                /FTId=PRO_0000041554.
+FT   CHAIN      1392   1627       Lipovitellin-2. {ECO:0000250}.
+FT                                /FTId=PRO_0000041555.
+FT   CHAIN      1628   1912       YGP42.
+FT                                /FTId=PRO_0000041556.
+FT   DOMAIN       24    663       Vitellogenin. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU00557}.
+FT   DOMAIN     1640   1846       VWFD. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU00580}.
+FT   COMPBIAS   1093   1104       Poly-Ser.
+FT   COMPBIAS   1150   1299       Ser-rich.
+FT   COMPBIAS   1359   1397       Ser-rich.
+FT   COMPBIAS   1612   1615       Poly-Ser.
+FT   CARBOHYD    163    163       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD    991    991       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD   1206   1206       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD   1375   1375       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD   1662   1662       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD   1698   1698       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+FT   CARBOHYD   1703   1703       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000255}.
+SQ   SEQUENCE   1912 AA;  210630 MW;  89BA6273D6492E51 CRC64;
+     MRGLISALVL TLVGSQHLNY QPDFGENKVY TYNYESILFS GIPEKGLART GIRIRSEVEI
+     SGIGPKLCLI RIHSIEAAEY NGIWPTSSFS RSLKLTQALT GQLSIPIKFE YSNGHVGNLM
+     APDSVSDDGL NIYRGILNIL ELSLKKMQHS YSIQEAGIGG ICNTTYAIQE NKKANLVDVT
+     KSKDLNSCEE KVQVVTGSAY TQPCQTCQQR NKNSRATATY NYKIKYTHNE AVITQAEVEE
+     VHQFTPFHEI TGGNAIVEAR QKLALIEVQK QVAEVPPKEF QKRGSLQYQF GSELLQLPVH
+     LFKIKDVERQ IEERLQDLVE TTYEQLPSDA PAKALKLMHL LRAANEENYE SVWKQFSSRP
+     AYRRYLLDLL PAAASHRSLR FLRHKMERQE LTNWEIAQTV LVALHSSSPT QEVMEEATLI
+     VKKHCPRSSS VLRKVCLLSY ASLCHKRCSS PYSCSECLQV FHVFAGEALG KSNIEEVLLA
+     LKALGNVGHP ASIKHIKKFL PGYAAGASEL PLKVHETAVM ALKSIGMRDP QMVQAITLEI
+     FLNHKIHPRI RMLAAVVLLE TKPGLPILMI LVDAVLKEPS MQVASFIYSH LRALGRSTAP
+     DLQMMASACR MAVRALSPKF DRSGYQFSKV FRFSMFKEFL MSGLAAKYFV LNNAGSLIPT
+     MAVSQLRTHF LGRVADPIEV GIAAEGLQEM FVRGYSPDKD WETNYDFREI LKKLSDWKAL
+     PRDKPFASGY LKMFGQELLF GRLDKDTLQN VLQVWYGPDE KIPSIRRLIS SLQTGIGRQW
+     TKALLLSEIR CIVPTCVGFP METSFYYSSV TKVAGNVQAQ ITPSPRSDFR LTELLNSNVR
+     LRSKMSLSMA KHMTFVIGIN TNMIQAGLEA HTKVNAHVPV NVVATIQMKE KSIKAEIPPC
+     KEETNLIIVS SKTFAVTRNI EDLAASKMTP VLLPEAVPDI MKMSFDSDSA SGETDNIRDR
+     QSVEDVSSGN SFSFGHPSSG KEPFIQSMCS NASTFGVQVC IEKKSVHAAF IRNVPLYNAI
+     GEHALRMSFK PVYSDVPIEK IQVTIQAGDQ APTKMVRLVT FEDPERQESS RKEVMKRVKK
+     ILDDTDNQAT RNSRSSSSSA SSISESSEST TSTPSSSDSD NRASQGDPQI NLKSRQSKAN
+     EKKFYPFGDS SSSGSSSSSS SSSSSSSDSS SSSRSSSSSD SSSSSSSSSS SSSSKSKSSS
+     RSSKSNRSSS SSNSKDSSSS SSKSNSKGSS SSSSKASGTR QKAKKQSKTT SFPHASAAEG
+     ERSVHEQKQE TQSSSSSSSR ASSNSRSTSS STSSSSESSG VSHRQWKQDR EAETKRVKSQ
+     FNSHSSYDIP NEWETYLPKV YRLRFRSAHT HWHSGHRTSS SSSSSSSESG SSHSNSSSSD
+     SSSRRSHMSD SSSSSSSHRH GEKAAHSSRR SPTSRAASAH HRPGSSLTRE RNFLGDVIPP
+     GITIVAQAVR SDNRNQGYQA TAYVRSDAAK VDVQLVVVQL AETNWKACAD AVILPLKAQA
+     RMRWGKECRD YRIAALATTG QMARKLAVQL KVQWGIIPSW IKKTSTALMR YVPGVALVLG
+     FSEAHQRNPS RELIVRAVAT SPRSIDTVIK VPGVTLYYQG LRVPFTLALG ASSSSYETRD
+     ITAWNFLPEI ASQIAQEDQS TCEVSKGDFK TFDRMSFTCS FNKSCNVVVA QDCTEHPKFI
+     ITTRKVDHQS LSREVHINTS SANITICPAA DSSLLVTCNK ESVLSDSGVS EYEKDNIKIY
+     KNGKTVIVEA PIHGLKNVNF DGEILKVTVA SWMRGKTCGV CGNNDREKHN ELLMPNHKLA
+     HSCSAFVHSW VLLEETCSGG CKLQRRYVKL NRNPTIDGEE STCYSVDPVL KCMKDCTPIE
+     KTSVKVGFHC FPKATAVSLL EWQRSSDKKS ASEDVVESVD ADIDCTCTGD CS
+//
