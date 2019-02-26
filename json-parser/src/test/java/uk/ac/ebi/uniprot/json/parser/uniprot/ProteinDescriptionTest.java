@@ -52,11 +52,12 @@ public class ProteinDescriptionTest {
         assertEquals(1,jsonNode.get("contains").size());
         validateRecommendedName(jsonNode.get("contains").get(0), "contains");
         validateAlternativeNames(jsonNode.get("contains").get(0), "contains");
-
+        validateAllergenBiotechCdAntigenAndInnNames(jsonNode.get("contains").get(0));
         assertNotNull(jsonNode.get("includes"));
         assertEquals(1,jsonNode.get("includes").size());
         validateRecommendedName(jsonNode.get("includes").get(0), "includes");
         validateAlternativeNames(jsonNode.get("includes").get(0), "includes");
+        validateAllergenBiotechCdAntigenAndInnNames(jsonNode.get("includes").get(0));
 
         assertNotNull(jsonNode.get("submissionNames"));
         JsonNode names = jsonNode.get("submissionNames");
@@ -66,17 +67,20 @@ public class ProteinDescriptionTest {
         JsonNode fullName = names.get("fullName");
         ValidateJson.validateValueEvidence(fullName,"sub full Name","ECO:0000255","PROSITE-ProRule","PRU10027");
 
-        assertNotNull(names.get("shortNames"));
-        JsonNode shortNames = names.get("shortNames");
-        assertEquals(1,shortNames.size());
-        ValidateJson.validateValueEvidence(shortNames.get(0),"submission short name","ECO:0000255","PROSITE-ProRule","PRU10020");
-
         assertNotNull(names.get("ecNumbers"));
         JsonNode ecNumbers = names.get("ecNumbers");
         assertEquals(1,ecNumbers.size());
         ValidateJson.validateValueEvidence(ecNumbers.get(0),"1.2.3.5","ECO:0000255","PROSITE-ProRule","PRU100211");
 
+        validateAllergenBiotechCdAntigenAndInnNames(jsonNode);
 
+        assertNotNull(jsonNode.get("flag"));
+        assertEquals("Fragment",jsonNode.get("flag").asText());
+
+
+    }
+
+    private void validateAllergenBiotechCdAntigenAndInnNames(JsonNode jsonNode) {
         assertNotNull(jsonNode.get("allergenName"));
         ValidateJson.validateValueEvidence(jsonNode.get("allergenName"),"allergen","ECO:0000255","PROSITE-ProRule","PRU10023");
 
@@ -92,11 +96,6 @@ public class ProteinDescriptionTest {
         JsonNode innNames = jsonNode.get("innNames");
         assertEquals(1,innNames.size());
         ValidateJson.validateValueEvidence(innNames.get(0),"inn antigen","ECO:0000255","PROSITE-ProRule","PRU100212");
-
-        assertNotNull(jsonNode.get("flag"));
-        assertEquals("Fragment",jsonNode.get("flag").asText());
-
-
     }
 
     private void validateAlternativeNames(JsonNode jsonNode, String from) {
@@ -151,11 +150,19 @@ public class ProteinDescriptionTest {
         ProteinSection include = new ProteinSectionBuilder()
                 .recommendedName(getRecommendedName("includes"))
                 .alternativeNames(createAltName("includes"))
+                .addInnNames(innName)
+                .allergenName(allergenName)
+                .biotechName(biotechName)
+                .addCdAntigenNames(antigenName)
                 .build();
 
         ProteinSection contain = new ProteinSectionBuilder()
                 .recommendedName(getRecommendedName("contains"))
                 .alternativeNames(createAltName("contains"))
+                .addInnNames(innName)
+                .allergenName(allergenName)
+                .biotechName(biotechName)
+                .addCdAntigenNames(antigenName)
                 .build();
 
         return new ProteinDescriptionBuilder()
