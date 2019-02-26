@@ -35,7 +35,6 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
 		List<String> lines = new ArrayList<>();
 		try {
 			final URL url = new URL(ftpUrl);
-//			final URLConnection con = url.openConnection(Proxy.NO_PROXY);
 			final URLConnection con = url.openConnection();
 			con.setDoInput(true);
 			final java.io.InputStream in = con.getInputStream();
