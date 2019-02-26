@@ -43,7 +43,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 	private String keywordFile;
 	private String diseaseFile;
 	private String accessionGoPubmedFile;
-
+	private String subcellularLocationFile;
+	
 	public DefaultUniProtEntryIterator() {
 		this(1, 5000, 50000);
 	}
@@ -136,7 +137,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 			this.ffQueue = ffQueue;
 			this.queue = queue;
 			this.countDown = countDown;
-			this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, false);
+			this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile,  false);
 				}
 
 		public void finish() {
@@ -209,10 +210,11 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 		}
 	}
 	@Override
-	public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile) {
+	public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile, String subcellarLocationFile) {
 		this.keywordFile =keywordFile;
 		this.diseaseFile = diseaseFile;
 		this.accessionGoPubmedFile =accessionGoPubmedFile;
+		this.subcellularLocationFile = subcellarLocationFile;
 		try {
 			setInput2(fileName);
 		} catch (FileNotFoundException e) {

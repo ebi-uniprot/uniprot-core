@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class CcAPConverterTest {
-	private final CcLineConverter converter = new CcLineConverter(null);
+	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
 	public void testAlternatProduct(){
 		//CC   -!- ALTERNATIVE PRODUCTS:

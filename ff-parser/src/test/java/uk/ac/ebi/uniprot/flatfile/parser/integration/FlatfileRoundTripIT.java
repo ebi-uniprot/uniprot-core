@@ -30,7 +30,7 @@ public class FlatfileRoundTripIT {
 	private boolean isPublic = false;
 	private boolean start = false;
 	UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
-	EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", true);
+	EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "",  true);
 	FlatfileWriter<UniProtEntry> ffWriter = new UniProtFlatfileWriter();
 
 	public static void main(String[] args) throws Exception {
@@ -47,7 +47,7 @@ public class FlatfileRoundTripIT {
 
 	private void testIterator(String filename) throws Exception{
 		UniProtEntryIterator iterator = new  DefaultUniProtEntryIterator();
-		iterator.setInput(filename, "", "", "");
+		iterator.setInput(filename, "", "", "" , "");
 		LocalTime time = LocalTime.now();
 		System.out.println("using EntryBufferedReader");
 		System.out.println(time.toString());
@@ -162,7 +162,7 @@ public class FlatfileRoundTripIT {
 
 	private void testRead(String filename) {
 		DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
-		iterator.setInput(filename, "", "", "");
+		iterator.setInput(filename, "", "", "", "");
 		int count = 0;
 		while (iterator.hasNext()) {
 			UniProtEntry entry = iterator.next();

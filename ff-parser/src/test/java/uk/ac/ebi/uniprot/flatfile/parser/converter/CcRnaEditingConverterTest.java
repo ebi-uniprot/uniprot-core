@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CcRnaEditingConverterTest {
-	private final CcLineConverter converter = new CcLineConverter(null);
+	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
 	public void testRNAEditing(){
 		//CC   -!- RNA EDITING: Modified_positions=1, 56, 89, 103, 126, 164;

@@ -39,7 +39,7 @@ public final class UniProtParserHelper {
             new ThreadLocal<EntryObjectConverter>() {
                 @Override
                 protected EntryObjectConverter initialValue() {
-                    return new EntryObjectConverter("", "", "", false);
+                    return new EntryObjectConverter("", "", "", "", false);
                 }
             };
 
@@ -47,7 +47,7 @@ public final class UniProtParserHelper {
             new ThreadLocal<EntryObjectConverter>() {
                 @Override
                 protected EntryObjectConverter initialValue() {
-                    return new EntryObjectConverter("", "", "", true);
+                    return new EntryObjectConverter("", "", "", "",  true);
                 }
             };
 
@@ -71,9 +71,10 @@ public final class UniProtParserHelper {
 
     }
    
-    public static UniProtEntryIterator parseFile(String filename, String keywordFile, String diseaseFile, String accessionGoPubmedFile) {
+    public static UniProtEntryIterator parseFile(String filename, String keywordFile, String diseaseFile, 
+    		String accessionGoPubmedFile, String subcellularLocationFile) {
     		UniProtEntryIterator iterator =new DefaultUniProtEntryIterator();
-    		iterator.setInput(filename, keywordFile, diseaseFile, accessionGoPubmedFile);
+    		iterator.setInput(filename, keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile);
     		return iterator;
     }
 }

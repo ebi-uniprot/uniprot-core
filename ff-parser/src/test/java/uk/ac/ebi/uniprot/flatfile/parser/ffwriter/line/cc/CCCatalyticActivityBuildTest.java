@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
+import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
@@ -17,7 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	private static UniprotLineParser<CcLineObject> parser ;
-	 private final CcLineConverter converter =  new CcLineConverter(new DiseaseServiceImpl(""));
+	 private final CcLineConverter converter =  new CcLineConverter(new DiseaseServiceImpl(""),new SubcellularLocationServiceImpl(""));
 	 @BeforeAll
 	 public static void setup() {
 		 parser = new DefaultUniprotLineParserFactory().createCcLineParser();

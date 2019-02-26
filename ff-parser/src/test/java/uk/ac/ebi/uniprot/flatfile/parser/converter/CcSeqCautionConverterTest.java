@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class CcSeqCautionConverterTest {
-	private final CcLineConverter converter = new CcLineConverter(null);
+	private final CcLineConverter converter = new CcLineConverter(null, null);
 	
 	@Test
 	public void testSequenceCaution(){

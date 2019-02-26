@@ -86,7 +86,7 @@ class UniProtGffParserIT {
                 .orElseThrow(() -> new IllegalStateException("Could not read file: " + path));
         EntryObject parse = entryParser.parse(entryAsString);
         assertNotNull(parse);
-        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", true);
+        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "", true);
         return entryObjectConverter.convert(parse);
     }
 
