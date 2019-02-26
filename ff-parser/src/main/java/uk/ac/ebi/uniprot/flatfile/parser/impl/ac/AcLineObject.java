@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ac;
 
-import uk.ac.ebi.uniprot.validator.AlphanumericalOrderCheck;
-import uk.ac.ebi.uniprot.validator.DuplicatedAcCheck;
+import uk.ac.ebi.uniprot.flatfile.validator.AlphanumericalOrderCheck;
+import uk.ac.ebi.uniprot.flatfile.validator.DuplicatedAcCheck;
 
 import java.util.ArrayList;
 import java.util.List;

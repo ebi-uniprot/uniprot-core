@@ -7,7 +7,7 @@ FT                                /FTId=VSP_004370.
 
 lexer grammar FtLineLexer;
 
-options { superClass=uk.ac.ebi.uniprot.antlr.RememberLastTokenLexer; }
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.RememberLastTokenLexer; }
 
 tokens{FT_HEADER, NEW_LINE, CHANGE_OF_LINE, LEFT_B, SPACE}
 
