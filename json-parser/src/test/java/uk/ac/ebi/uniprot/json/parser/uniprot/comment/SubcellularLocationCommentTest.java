@@ -76,9 +76,9 @@ public class SubcellularLocationCommentTest {
     public static SubcellularLocationComment getSubcellularLocationComment(){
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
         SubcellularLocation sublocation = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder("location value",evidences).build())
-                .orientation(new SubcellularLocationValueBuilder("orientation value",evidences).build())
-                .topology(new SubcellularLocationValueBuilder("topology value",evidences).build())
+                .location(new SubcellularLocationValueBuilder("id1", "location value",evidences).build())
+                .orientation(new SubcellularLocationValueBuilder("id2", "orientation value",evidences).build())
+                .topology(new SubcellularLocationValueBuilder("id2", "topology value",evidences).build())
                 .build();
 
         List<SubcellularLocation> subcellularLocations = Collections.singletonList(sublocation);
