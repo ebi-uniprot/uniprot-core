@@ -466,7 +466,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     SubcellularLocationValue buildLocationValue(String value, List<String> evs) {
         if (Strings.isNullOrEmpty(value))
             return null;
-        return new SubcellularLocationValueBuilder(value, createEvidence(evs)).build();
+        return new SubcellularLocationValueBuilder("", value, createEvidence(evs)).build();
 
     }
 }

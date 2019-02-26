@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
+import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationServiceImpl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -18,7 +19,9 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class CCCatalyticActivityParserTest {
-	private final CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""));
+	private final CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""),
+			 new SubcellularLocationServiceImpl("")
+			);
 	UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 	@Test
 	public void testAllWithoutPD() {

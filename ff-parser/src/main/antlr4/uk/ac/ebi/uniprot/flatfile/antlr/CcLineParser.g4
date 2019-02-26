@@ -305,7 +305,13 @@ cc_cat_act_reaction_line:
              ((SPACE|CHANGE_OF_LINE_LEVEL2) cc_cat_act_ec)?
            ((SPACE|CHANGE_OF_LINE_LEVEL2) cc_cat_act_evidence)?
            NEW_LINE;
-cc_cat_act_reaction: CC_CAT_ACT_REACTION cc_properties_text_level2 SEMICOLON;
+           
+ cc_properties_with_bracket3: (CC_PROPERTIES_TEXT2 | cc_common_text_in_bracket)+;   
+           
+ cc_properties_text_level3 : CHANGE_OF_LINE_LEVEL2 ?
+           cc_properties_with_bracket3 (CHANGE_OF_LINE_LEVEL2 cc_properties_with_bracket3)*;  
+                      
+cc_cat_act_reaction: CC_CAT_ACT_REACTION cc_properties_text_level3 SEMICOLON;
 cc_cat_act_xref: CC_CAT_ACT_XREF cc_properties_text_level2 SEMICOLON;
 cc_cat_act_ec: CC_CAT_ACT_EC cc_properties_text_level2 SEMICOLON;
 cc_cat_act_evidence: CC_CAT_ACT_EV_START EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* EV_END SEMICOLON;

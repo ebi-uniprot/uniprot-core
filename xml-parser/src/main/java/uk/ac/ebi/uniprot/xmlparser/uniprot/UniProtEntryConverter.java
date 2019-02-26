@@ -7,9 +7,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.*;
@@ -351,12 +353,12 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     }
 
     private void updateProteinDescriptionEvidences(Set<Evidence> evidences, ProteinDescription pd) {
-        updateProteinNameEvidences(evidences, pd.getRecommendedName());
+        updateProteinRecNameEvidences(evidences, pd.getRecommendedName());
         if (pd.getAlternativeNames() != null) {
-            pd.getAlternativeNames().forEach(val -> updateProteinNameEvidences(evidences, val));
+            pd.getAlternativeNames().forEach(val -> updateProteinAltNameEvidences(evidences, val));
         }
         if (pd.getSubmissionNames() != null) {
-            pd.getSubmissionNames().forEach(val -> updateProteinNameEvidences(evidences, val));
+            pd.getSubmissionNames().forEach(val -> updateProteinSubNameEvidences(evidences, val));
         }
         if (pd.getIncludes() != null) {
             pd.getIncludes().forEach(val -> updateProteinSectionEvidences(evidences, val));
@@ -380,18 +382,35 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     }
 
     private void updateProteinSectionEvidences(Set<Evidence> evidences, ProteinSection ps) {
-        updateProteinNameEvidences(evidences, ps.getRecommendedName());
+        updateProteinRecNameEvidences(evidences, ps.getRecommendedName());
         if (ps.getAlternativeNames() != null) {
-            ps.getAlternativeNames().forEach(val -> updateProteinNameEvidences(evidences, val));
+            ps.getAlternativeNames().forEach(val -> updateProteinAltNameEvidences(evidences, val));
         }
     }
 
-    private void updateProteinNameEvidences(Set<Evidence> evidences, ProteinName pn) {
+    private void updateProteinRecNameEvidences(Set<Evidence> evidences, ProteinRecName pn) {
         if (pn == null) {
             return;
         }
         updateHasEvidence(evidences, pn.getFullName());
         updateHasEvidences(evidences, pn.getShortNames());
+        updateHasEvidences(evidences, pn.getEcNumbers());
+
+    }
+    private void updateProteinAltNameEvidences(Set<Evidence> evidences, ProteinAltName pn) {
+        if (pn == null) {
+            return;
+        }
+        updateHasEvidence(evidences, pn.getFullName());
+        updateHasEvidences(evidences, pn.getShortNames());
+        updateHasEvidences(evidences, pn.getEcNumbers());
+
+    }
+    private void updateProteinSubNameEvidences(Set<Evidence> evidences, ProteinSubName pn) {
+        if (pn == null) {
+            return;
+        }
+        updateHasEvidence(evidences, pn.getFullName());
         updateHasEvidences(evidences, pn.getEcNumbers());
 
     }

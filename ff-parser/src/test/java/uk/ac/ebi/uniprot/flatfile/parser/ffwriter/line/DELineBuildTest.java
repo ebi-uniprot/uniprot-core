@@ -26,10 +26,10 @@ public class DELineBuildTest {
         recShortNames.add(createName("ADAM 10", Collections.emptyList()));
         List<EC> recEcNumbers = new ArrayList<>();
         recEcNumbers.add(createECNumber("2.3.1.35", Collections.emptyList()));
-        ProteinName recName = createProteinName(recFullName, recShortNames, recEcNumbers);
+        ProteinRecName recName = createProteinRecName(recFullName, recShortNames, recEcNumbers);
         Name altFullName = createName("General regulatory factor 12", Collections.emptyList());
-        ProteinName altName = createProteinName(altFullName, Collections.emptyList(), Collections.emptyList());
-        List<ProteinName> altNames = new ArrayList<>();
+        ProteinAltName altName = createProteinAltName(altFullName, Collections.emptyList(), Collections.emptyList());
+        List<ProteinAltName> altNames = new ArrayList<>();
         altNames.add(altName);
 
         ProteinDescription proteinDescription = createProteinDescription(recName, altNames, null, null);
@@ -40,7 +40,7 @@ public class DELineBuildTest {
 
     }
 
-    private ProteinDescription createProteinDescription(ProteinName recName, List<ProteinName> altNames, List<ProteinName> submissionNames, FlagType flag) {
+    private ProteinDescription createProteinDescription(ProteinRecName recName, List<ProteinAltName> altNames, List<ProteinSubName> submissionNames, FlagType flag) {
         return new ProteinDescriptionBuilder()
                 .recommendedName(recName)
                 .alternativeNames(altNames)
@@ -49,13 +49,29 @@ public class DELineBuildTest {
                 .build();
     }
 
-    private ProteinName createProteinName(Name recFullName, List<Name> recShortNames, List<EC> recEcNumbers) {
-        return new ProteinNameBuilder()
+    private ProteinAltName createProteinAltName(Name recFullName, List<Name> recShortNames, List<EC> recEcNumbers) {
+        return new ProteinAltNameBuilder()
                 .ecNumbers(recEcNumbers)
                 .shortNames(recShortNames)
                 .fullName(recFullName)
                 .build();
     }
+
+    private ProteinRecName createProteinRecName(Name recFullName, List<Name> recShortNames, List<EC> recEcNumbers) {
+        return new ProteinRecNameBuilder()
+                .ecNumbers(recEcNumbers)
+                .shortNames(recShortNames)
+                .fullName(recFullName)
+                .build();
+    }
+    
+    private ProteinSubName createProteinSubName(Name recFullName,  List<EC> recEcNumbers) {
+        return new ProteinSubNameBuilder()
+                .ecNumbers(recEcNumbers)
+                .fullName(recFullName)
+                .build();
+    }
+
 
     private EC createECNumber(String ec, List<Evidence> evidences) {
         return new ECBuilder().value(ec).evidences(evidences).build();
@@ -88,11 +104,11 @@ public class DELineBuildTest {
         List<EC> recEcNumbers = new ArrayList<>();
         recEcNumbers.add(createECNumber("2.3.1.35",
                                         createEvidence(Arrays.asList(new String[]{"ECO:0000303|Ref.6"}))));
-        ProteinName recName = createProteinName(recFullName, recShortNames, recEcNumbers);
+        ProteinRecName recName = createProteinRecName(recFullName, recShortNames, recEcNumbers);
         Name altFullName = createName("General regulatory factor 12",
                                       createEvidence(Arrays.asList(new String[]{"ECO:0000313|PDB:3OW2"})));
-        ProteinName altName = createProteinName(altFullName, Collections.emptyList(), Collections.emptyList());
-        List<ProteinName> altNames = new ArrayList<>();
+        ProteinAltName altName = createProteinAltName(altFullName, Collections.emptyList(), Collections.emptyList());
+        List<ProteinAltName> altNames = new ArrayList<>();
         altNames.add(altName);
 
         ProteinDescription proteinDescription = createProteinDescription(recName, altNames, null, null);
@@ -118,26 +134,31 @@ public class DELineBuildTest {
         recShortNames.add(createName("G-CSF", Collections.emptyList()));
         List<EC> recEcNumbers = new ArrayList<>();
 
-        ProteinName recName = createProteinName(recFullName, recShortNames, recEcNumbers);
+        ProteinRecName recName = createProteinRecName(recFullName, recShortNames, recEcNumbers);
         Name altFullName = createName("Pluripoietin", Collections.emptyList());
-        ProteinName altName = createProteinName(altFullName, Collections.emptyList(), Collections.emptyList());
-        List<ProteinName> altNames = new ArrayList<>();
-        altNames.add(altName);
+        ProteinAltName altName = createProteinAltName(altFullName, Collections.emptyList(), Collections.emptyList());
+        
+        
+        List<ProteinAltName> altNames = new ArrayList<>();
+     
         List<Name> innNames = new ArrayList<>();
         innNames.add(createName("Lenograstim", Collections.emptyList()));
         List<Name> cdAntigenNames = new ArrayList<>();
         cdAntigenNames.add(createName("CD156c", Collections.emptyList()));
-
+        ProteinAltName altName2=
+        new ProteinAltNameBuilder().from(altName)
+      
+        .build();
         //	ProteinAlternativeName pAltName = factory.createProteinAlternativeName(altNames, null, null, cdAntigenNames,
         //			innNames);
-
+        altNames.add(altName2);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         ProteinDescription proteinDescription =
                 builder.recommendedName(recName)
-                        .alternativeNames(altNames)
+                        .alternativeNames(altNames)                   
+                        .flag(FlagType.FRAGMENT_PRECURSOR)
                         .innNames(innNames)
                         .cdAntigenNames(cdAntigenNames)
-                        .flag(FlagType.FRAGMENT_PRECURSOR)
                         .build();
 
 
@@ -162,19 +183,23 @@ public class DELineBuildTest {
                 Arrays.asList(new String[]{"ECO:0000269|PubMed:10433554", "ECO:0000313|EMBL:BAG16761.1"}))));
         List<EC> recEcNumbers = new ArrayList<>();
 
-        ProteinName recName = createProteinName(recFullName, recShortNames, recEcNumbers);
+        ProteinRecName recName = createProteinRecName(recFullName, recShortNames, recEcNumbers);
         Name altFullName = createName("Pluripoietin",
                                       createEvidence(Arrays.asList(new String[]{
                                               "ECO:0000256|HAMAP-Rule:MF_00205"})));
-        ProteinName altName = createProteinName(altFullName, Collections.emptyList(), Collections.emptyList());
-        List<ProteinName> altNames = new ArrayList<>();
-        altNames.add(altName);
+        ProteinAltName altName = createProteinAltName(altFullName, Collections.emptyList(), Collections.emptyList());
+        List<ProteinAltName> altNames = new ArrayList<>();
+     
         List<Name> innNames = new ArrayList<>();
         innNames.add(createName("Lenograstim",
                                 createEvidence(Arrays.asList(new String[]{"ECO:0000313|PDB:3OW2"}))));
         List<Name> cdAntigenNames = new ArrayList<>();
         cdAntigenNames.add(createName("CD156c", Collections.emptyList()));
-
+        ProteinAltName altName2=
+                new ProteinAltNameBuilder().from(altName)
+              
+                .build();
+        altNames.add(altName2);
 //		ProteinAlternativeName pAltName = factory.createProteinAlternativeName(altNames, null, null, cdAntigenNames,
 //				innNames);
 
@@ -182,9 +207,9 @@ public class DELineBuildTest {
         ProteinDescription proteinDescription =
                 builder.recommendedName(recName)
                         .alternativeNames(altNames)
+                        .flag(FlagType.FRAGMENT_PRECURSOR)
                         .innNames(innNames)
                         .cdAntigenNames(cdAntigenNames)
-                        .flag(FlagType.FRAGMENT_PRECURSOR)
                         .build();
 
         String deLine = "DE   RecName: Full=Granulocyte colony-stimulating factor {ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1};\n"
@@ -201,19 +226,19 @@ public class DELineBuildTest {
     @Test
     public void testSubName() {
 
-        List<ProteinName> submissionNames = new ArrayList<>();
+        List<ProteinSubName> submissionNames = new ArrayList<>();
         Name fullName1 = createName("Expressed protein", Collections.emptyList());
         List<EC> ecNumbers1 = new ArrayList<>();
-        submissionNames.add(createProteinName(fullName1, null, ecNumbers1));
+        submissionNames.add(createProteinSubName(fullName1, ecNumbers1));
         Name fullName2 = createName("cDNA clone:001-021-F08, full insert sequence", Collections.emptyList());
         List<EC> ecNumbers2 = new ArrayList<>();
         ecNumbers2.add(createECNumber("2.3.1.35", createEvidence(Arrays.asList(new String[]{}))));
-        submissionNames.add(createProteinName(fullName2, null, ecNumbers2));
+        submissionNames.add(createProteinSubName(fullName2, ecNumbers2));
 
         Name fullName3 = createName("cDNA clone:006-308-H01, full insert sequence", Collections.emptyList());
         List<EC> ecNumbers3 = new ArrayList<>();
 
-        submissionNames.add(createProteinName(fullName3, null, ecNumbers3));
+        submissionNames.add(createProteinSubName(fullName3, ecNumbers3));
 
         ProteinDescription proteinDescription = createProteinDescription(null, null, submissionNames, FlagType.FRAGMENT);
         String deLine = "DE   SubName: Full=Expressed protein;\n"
@@ -225,24 +250,24 @@ public class DELineBuildTest {
 
     @Test
     public void testSubNameWithEvidence() {
-        List<ProteinName> submissionNames = new ArrayList<>();
+        List<ProteinSubName> submissionNames = new ArrayList<>();
         Name fullName1 = createName("Expressed protein",
                                     createEvidence(Arrays.asList(new String[]{"ECO:0000313|EMBL:BAG16761.1"})));
         List<EC> ecNumbers1 = new ArrayList<>();
-        submissionNames.add(createProteinName(fullName1, null, ecNumbers1));
+        submissionNames.add(createProteinSubName(fullName1, ecNumbers1));
         Name fullName2 = createName("cDNA clone:001-021-F08, full insert sequence",
                                     createEvidence(Arrays.asList(new String[]{"ECO:0000313|EMBL:BAG16761.2"})));
         List<EC> ecNumbers2 = new ArrayList<>();
         ecNumbers2.add(createECNumber("2.3.1.35",
                                       createEvidence(Arrays.asList(new String[]{
                                               "ECO:0000269|PubMed:10433554"}))));
-        submissionNames.add(createProteinName(fullName2, null, ecNumbers2));
+        submissionNames.add(createProteinSubName(fullName2, ecNumbers2));
 
         Name fullName3 = createName("cDNA clone:006-308-H01, full insert sequence",
                                     createEvidence(Arrays.asList(new String[]{"ECO:0000313|PDB:3OW2"})));
         List<EC> ecNumbers3 = new ArrayList<>();
 
-        submissionNames.add(createProteinName(fullName3, null, ecNumbers3));
+        submissionNames.add(createProteinSubName(fullName3, ecNumbers3));
 
         ProteinDescription proteinDescription = createProteinDescription(null, null, submissionNames, FlagType.FRAGMENT);
         String deLine = "DE   SubName: Full=Expressed protein {ECO:0000313|EMBL:BAG16761.1};\n"
@@ -272,7 +297,7 @@ public class DELineBuildTest {
         List<Name> recShortNames = new ArrayList<>();
         List<EC> recEcNumbers = new ArrayList<>();
         ;
-        ProteinName recName = createProteinName(recFullName, recShortNames, recEcNumbers);
+        ProteinRecName recName = createProteinRecName(recFullName, recShortNames, recEcNumbers);
 
         List<ProteinSection> includes = new ArrayList<>();
 
@@ -281,22 +306,22 @@ public class DELineBuildTest {
         List<EC> includeRecEcNumbers1 = new ArrayList<>();
         ;
         includeRecEcNumbers1.add(createECNumber("2.3.1.35", Collections.emptyList()));
-        ProteinName includeRecName1 = createProteinName(includeRecFullName1, includeRecShortNames1,
+        ProteinRecName includeRecName1 = createProteinRecName(includeRecFullName1, includeRecShortNames1,
                                                         includeRecEcNumbers1);
 
         Name includeAltFullName = createName("Ornithine acetyltransferase", Collections.emptyList());
         List<Name> includAltShortNames1 = new ArrayList<>();
         includAltShortNames1.add(createName("OATase", Collections.emptyList()));
-        ProteinName includeAltName = createProteinName(includeAltFullName, includAltShortNames1,
+        ProteinAltName includeAltName = createProteinAltName(includeAltFullName, includAltShortNames1,
                                                        Collections.emptyList());
-        List<ProteinName> includeAltNames = new ArrayList<>();
+        List<ProteinAltName> includeAltNames = new ArrayList<>();
         includeAltNames.add(includeAltName);
 
         Name includeAltFullName2 = createName("Ornithine transacetylase", Collections.emptyList());
         List<Name> includAltShortNames2 = new ArrayList<>();
         // includAltShortNames2.add(createProteinName("OATase",
         // Collections.emptyList()));
-        ProteinName includeAltName2 = createProteinName(includeAltFullName2, includAltShortNames2,
+        ProteinAltName includeAltName2 = createProteinAltName(includeAltFullName2, includAltShortNames2,
                                                         Collections.emptyList());
         includeAltNames.add(includeAltName2);
 
@@ -309,15 +334,15 @@ public class DELineBuildTest {
         List<EC> includeRecEcNumbers11 = new ArrayList<>();
         ;
         includeRecEcNumbers11.add(createECNumber("2.3.1.1", Collections.emptyList()));
-        ProteinName includeRecName11 = createProteinName(includeRecFullName11, includeRecShortNames11,
+        ProteinRecName includeRecName11 = createProteinRecName(includeRecFullName11, includeRecShortNames11,
                                                          includeRecEcNumbers11);
 
         Name includeAltFullName12 = createName("N-acetylglutamate synthase", Collections.emptyList());
         List<Name> includAltShortNames12 = new ArrayList<>();
         includAltShortNames12.add(createName("AGS", Collections.emptyList()));
-        ProteinName includeAltName12 = createProteinName(includeAltFullName12, includAltShortNames12,
+        ProteinAltName includeAltName12 = createProteinAltName(includeAltFullName12, includAltShortNames12,
                                                          Collections.emptyList());
-        List<ProteinName> includeAltNames2 = new ArrayList<>();
+        List<ProteinAltName> includeAltNames2 = new ArrayList<>();
         includeAltNames2.add(includeAltName12);
 
         ProteinSection include2 = createProteinNameSection(includeRecName11, includeAltNames2);
@@ -332,7 +357,7 @@ public class DELineBuildTest {
         ;
         // includeRecEcNumbers1.add(createECNumber("2.3.1.35",
         // Collections.emptyList()));
-        ProteinName containRecName1 = createProteinName(containRecFullName1, containRecShortNames1,
+        ProteinRecName containRecName1 = createProteinRecName(containRecFullName1, containRecShortNames1,
                                                         containRecEcNumbers1);
         ProteinSection contain1 = createProteinNameSection(containRecName1, null);
         contains.add(contain1);
@@ -344,7 +369,7 @@ public class DELineBuildTest {
         ;
         // includeRecEcNumbers1.add(createECNumber("2.3.1.35",
         // Collections.emptyList()));
-        ProteinName containRecName2 = createProteinName(containRecFullName2, containRecShortNames2,
+        ProteinRecName containRecName2 = createProteinRecName(containRecFullName2, containRecShortNames2,
                                                         containRecEcNumbers2);
         ProteinSection contain2 = createProteinNameSection(containRecName2, null);
         contains.add(contain2);
@@ -379,7 +404,7 @@ public class DELineBuildTest {
         List<Name> recShortNames = new ArrayList<>();
         List<EC> recEcNumbers = new ArrayList<>();
         ;
-        ProteinName recName = createProteinName(recFullName, recShortNames, recEcNumbers);
+        ProteinRecName recName = createProteinRecName(recFullName, recShortNames, recEcNumbers);
 
         List<ProteinSection> includes = new ArrayList<>();
 
@@ -391,16 +416,16 @@ public class DELineBuildTest {
         includeRecEcNumbers1.add(createECNumber("2.3.1.35",
                                                 createEvidence(Arrays.asList(new String[]{
                                                         "ECO:0000269|PubMed:10433554"}))));
-        ProteinName includeRecName1 = createProteinName(includeRecFullName1, includeRecShortNames1,
+        ProteinRecName includeRecName1 = createProteinRecName(includeRecFullName1, includeRecShortNames1,
                                                         includeRecEcNumbers1);
 
         Name includeAltFullName = createName("Ornithine acetyltransferase",
                                              createEvidence(Arrays.asList(new String[]{})));
         List<Name> includAltShortNames1 = new ArrayList<>();
         includAltShortNames1.add(createName("OATase", Collections.emptyList()));
-        ProteinName includeAltName = createProteinName(includeAltFullName, includAltShortNames1,
+        ProteinAltName includeAltName = createProteinAltName(includeAltFullName, includAltShortNames1,
                                                        Collections.emptyList());
-        List<ProteinName> includeAltNames = new ArrayList<>();
+        List<ProteinAltName> includeAltNames = new ArrayList<>();
         includeAltNames.add(includeAltName);
 
         Name includeAltFullName2 = createName("Ornithine transacetylase",
@@ -409,7 +434,7 @@ public class DELineBuildTest {
         List<Name> includAltShortNames2 = new ArrayList<>();
         // includAltShortNames2.add(createProteinName("OATase",
         // Collections.emptyList()));
-        ProteinName includeAltName2 = createProteinName(includeAltFullName2, includAltShortNames2,
+        ProteinAltName includeAltName2 = createProteinAltName(includeAltFullName2, includAltShortNames2,
                                                         Collections.emptyList());
         includeAltNames.add(includeAltName2);
 
@@ -427,7 +452,7 @@ public class DELineBuildTest {
         includeRecEcNumbers11.add(createECNumber("2.3.1.1",
                                                  createEvidence(Arrays.asList(new String[]{
                                                          "ECO:0000256|HAMAP-Rule:MF_00205"}))));
-        ProteinName includeRecName11 = createProteinName(includeRecFullName11, includeRecShortNames11,
+        ProteinRecName includeRecName11 = createProteinRecName(includeRecFullName11, includeRecShortNames11,
                                                          includeRecEcNumbers11);
 
         Name includeAltFullName12 = createName("N-acetylglutamate synthase",
@@ -435,9 +460,9 @@ public class DELineBuildTest {
                                                                                          "ECO:0000313|PDB:3OW2"})));
         List<Name> includAltShortNames12 = new ArrayList<>();
         includAltShortNames12.add(createName("AGS", Collections.emptyList()));
-        ProteinName includeAltName12 = createProteinName(includeAltFullName12, includAltShortNames12,
+        ProteinAltName includeAltName12 = createProteinAltName(includeAltFullName12, includAltShortNames12,
                                                          Collections.emptyList());
-        List<ProteinName> includeAltNames2 = new ArrayList<>();
+        List<ProteinAltName> includeAltNames2 = new ArrayList<>();
         includeAltNames2.add(includeAltName12);
 
         ProteinSection include2 = createProteinNameSection(includeRecName11, includeAltNames2);
@@ -453,7 +478,7 @@ public class DELineBuildTest {
         ;
         // includeRecEcNumbers1.add(createECNumber("2.3.1.35",
         // Collections.emptyList()));
-        ProteinName containRecName1 = createProteinName(containRecFullName1, containRecShortNames1,
+        ProteinRecName containRecName1 = createProteinRecName(containRecFullName1, containRecShortNames1,
                                                         containRecEcNumbers1);
         ProteinSection contain1 = createProteinNameSection(containRecName1, null);
         contains.add(contain1);
@@ -467,7 +492,7 @@ public class DELineBuildTest {
         ;
         // includeRecEcNumbers1.add(createECNumber("2.3.1.35",
         // Collections.emptyList()));
-        ProteinName containRecName2 = createProteinName(containRecFullName2, containRecShortNames2,
+        ProteinRecName containRecName2 = createProteinRecName(containRecFullName2, containRecShortNames2,
                                                         containRecEcNumbers2);
         ProteinSection contain2 = createProteinNameSection(containRecName2, null);
         contains.add(contain2);
@@ -479,7 +504,7 @@ public class DELineBuildTest {
         doTest(deLine, proteinDescription);
     }
 
-    private ProteinSection createProteinNameSection(ProteinName recName, List<ProteinName> altNames) {
+    private ProteinSection createProteinNameSection(ProteinRecName recName, List<ProteinAltName> altNames) {
         return new ProteinSectionBuilder()
                 .recommendedName(recName)
                 .alternativeNames(altNames)

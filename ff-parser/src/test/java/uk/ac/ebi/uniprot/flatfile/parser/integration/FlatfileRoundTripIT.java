@@ -24,18 +24,22 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class FlatfileRoundTripIT {
+
     @Test
     public void testA0A0A0MSM0() {
         String filename = "/entryIT/A0A0A0MSM0.dat";
         String entryStr = readEntryFromFile(filename);
 
+
         testEntry(entryStr, true);
     }
+
 
     @Test
     public void testD6RDV7() {
         String filename = "/entryIT/D6RDV7.dat";
         String entryStr = readEntryFromFile(filename);
+
 
         testEntry(entryStr, true);
     }
@@ -269,11 +273,13 @@ public class FlatfileRoundTripIT {
     @Test
     public void testQ8DPW5Dat() {
 
+
         String filename = "/entryIT/Q8DPW5.dat";
         String entryStr = readEntryFromFile(filename);
         // System.out.println(entryStr);
         testEntry(entryStr, true);
     }
+
 
     @Test
     public void testA4K2U9Dat() {
@@ -535,7 +541,7 @@ public class FlatfileRoundTripIT {
         EntryObject parse = entryParser.parse(entryToParse);
         assertNotNull(parse);
 
-        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", true);
+        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "", true);
         UniProtEntry converted = entryObjectConverter.convert(parse);
         FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
 

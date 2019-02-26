@@ -26,7 +26,7 @@ class EntryMapTest {
 	static void setup() throws Exception {
 
 		URL url = EntryMapTest.class.getResource("/uniprot/keywlist.txt");
-	    UniProtParser parser = new DefaultUniProtParser(url.getPath(),"","",true);
+	    UniProtParser parser = new DefaultUniProtParser(url.getPath(),"","", "", true);
 
 
 		InputStream is = EntryMapTest.class.getResourceAsStream("/uniprot/Q15758.dat" );

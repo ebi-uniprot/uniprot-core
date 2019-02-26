@@ -69,7 +69,7 @@ public class EntryConverterIT {
 		EntryObject parse = entryParser.parse(entryToParse);
 		assertNotNull(parse);
 
-		EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", true);
+		EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "",  true);
 		UniProtEntry convert = entryObjectConverter.convert(parse);
 		assertNotNull(convert);
 

@@ -19,7 +19,7 @@ public class FlatfileRoundTripMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlatfileRoundTripMain.class);
     private boolean isPublic = false;
     private UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
-    private EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", true);
+    private EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "", true);
     private FlatfileWriter<UniProtEntry> ffWriter = new UniProtFlatfileWriter();
 
     public static void main(String[] args) throws Exception {

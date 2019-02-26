@@ -20,8 +20,10 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
@@ -240,19 +242,19 @@ class UniProtEntryConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinName recommendedName = createProteinName(fullName, shortNames, ecNumbers);
+        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
         Name allergenName = createName("allergen", evidences);
         Name biotechName = createName("biotech", evidences);
         List<Name> antigenNames = new ArrayList<>();
         antigenNames.add(createName("cd antigen", evidences));
 
 
-        List<ProteinName> proteinAltName = createAltName();
+        List<ProteinAltName> proteinAltName = createAltName();
         Name fullName1 = createName("a full Name", evidences);
 
         List<EC> ecNumbers1 = createECNumbers();
-        ProteinName subName = createProteinName(fullName1, null, ecNumbers1);
-        List<ProteinName> subNames = new ArrayList<>();
+        ProteinSubName subName = createProteinSubName(fullName1, ecNumbers1);
+        List<ProteinSubName> subNames = new ArrayList<>();
         subNames.add(subName);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         return builder.recommendedName(recommendedName)
@@ -265,7 +267,7 @@ class UniProtEntryConverterTest {
 
     }
 
-    private List<ProteinName> createAltName() {
+    private List<ProteinAltName> createAltName() {
         List<Evidence> evidences = createEvidences();
         Name fullName = createName("a full alt Name", evidences);
         List<Name> shortNames = new ArrayList<>();
@@ -274,9 +276,9 @@ class UniProtEntryConverterTest {
         List<EC> ecNumbers = new ArrayList<>();
         ecNumbers.add(createEC("1.2.3.4", evidences));
 
-        ProteinName altName = createProteinName(fullName, shortNames, ecNumbers);
+        ProteinAltName altName = createProteinAltName(fullName, shortNames, ecNumbers);
 
-        List<ProteinName> altNames = new ArrayList<>();
+        List<ProteinAltName> altNames = new ArrayList<>();
         altNames.add(altName);
         return altNames;
     }

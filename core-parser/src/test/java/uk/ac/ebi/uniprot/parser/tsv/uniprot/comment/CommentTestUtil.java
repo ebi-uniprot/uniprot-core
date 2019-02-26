@@ -14,7 +14,7 @@ import java.util.List;
 public class CommentTestUtil {
 
     static UniProtEntry createUniProtEntryFromCommentLine(String commentLine) {
-        List<Comment> comments = new CcLineTransformer(null).transformNoHeader(commentLine);
+        List<Comment> comments = new CcLineTransformer(null, null).transformNoHeader(commentLine);
         return new UniProtEntryBuilder()
                 .primaryAccession(new UniProtAccessionBuilder("P12345").build())
                 .uniProtId(new UniProtIdBuilder("P12345_ID").build())

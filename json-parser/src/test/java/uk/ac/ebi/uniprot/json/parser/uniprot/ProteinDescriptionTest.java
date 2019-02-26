@@ -20,7 +20,7 @@ public class ProteinDescriptionTest {
     @Test
     public void testProteinDescriptionSimple() {
         Name fullName = new NameBuilder().value("protein name").build();
-        ProteinName recommendedName = new ProteinNameBuilder()
+        ProteinRecName recommendedName = new ProteinRecNameBuilder()
                 .fullName(fullName)
                 .build();
         ProteinDescription proteinDescription = new ProteinDescriptionBuilder()
@@ -142,9 +142,9 @@ public class ProteinDescriptionTest {
         Name biotechName = createName("biotech","PRU10024");
         Name antigenName = createName("cd antigen","PRU10025");
 
-        ProteinName recommendedName = getRecommendedName("");
-        List<ProteinName> proteinAltNames = createAltName("");
-        List<ProteinName> subNames = getSubmissionName();
+        ProteinRecName recommendedName = getRecommendedName("");
+        List<ProteinAltName> proteinAltNames = createAltName("");
+        List<ProteinSubName> subNames = getSubmissionName();
 
         Name innName = createName("inn antigen","PRU100212");
 
@@ -173,37 +173,35 @@ public class ProteinDescriptionTest {
 
     }
 
-    private static ProteinName getRecommendedName(String from) {
+    private static ProteinRecName getRecommendedName(String from) {
         Name fullName = createName(from+"rec full Name","PRU10026");
         List<Name> shortNames = createNameList(from+"recommended short name","PRU10020");
         List<EC> ecNumbers = createECNumbers("1.2.3.4",10);
 
-        return new ProteinNameBuilder()
+        return new ProteinRecNameBuilder()
                 .fullName(fullName)
                 .shortNames(shortNames)
                 .ecNumbers(ecNumbers)
                 .build();
     }
 
-    private static List<ProteinName> getSubmissionName() {
+    private static List<ProteinSubName> getSubmissionName() {
         Name fullName1 = createName("sub full Name","PRU10027");
         List<EC> ecNumbers1 = createECNumbers("1.2.3.5",11);
-        List<Name> shortNames1 = createNameList("submission short name","PRU10020");
-
-        ProteinName subName = new ProteinNameBuilder()
+       
+        ProteinSubName subName = new ProteinSubNameBuilder()
                 .fullName(fullName1)
-                .shortNames(shortNames1)
                 .ecNumbers(ecNumbers1)
                 .build();
         return Collections.singletonList(subName);
     }
 
-    private static List<ProteinName> createAltName(String from) {
+    private static List<ProteinAltName> createAltName(String from) {
         Name fullName = createName(from+"a full alt Name","PRU10022");
         List<Name> shortNames = createNameList(from+"short alt name1","PRU10028");
         List<EC> ecNumbers = createECNumbers("1.2.3.3",9);
 
-        ProteinName alternativeName = new ProteinNameBuilder()
+        ProteinAltName alternativeName = new ProteinAltNameBuilder()
                 .fullName(fullName)
                 .shortNames(shortNames)
                 .ecNumbers(ecNumbers)

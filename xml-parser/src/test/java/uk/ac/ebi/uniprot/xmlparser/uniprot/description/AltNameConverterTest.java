@@ -1,20 +1,24 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
-import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.AlternativeName;
-import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
-import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createEC;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createEvidences;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createName;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createProteinAltName;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.*;
+import org.junit.jupiter.api.Test;
+
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.AlternativeName;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
 
 class AltNameConverterTest {
 	@Test
@@ -23,7 +27,7 @@ class AltNameConverterTest {
 		Name fullName = createName("a full Name", evidences);
 		List<Name> shortNames = createShortNames();
 		List<EC> ecNumbers = createECNumbers();
-		ProteinName altName = createProteinName(fullName, shortNames, ecNumbers);
+		ProteinAltName altName = createProteinAltName(fullName, shortNames, ecNumbers);
 		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
 		ECConverter ecConverter = new ECConverter(evRefMapper);
 		NameConverter nameConverter =new NameConverter(evRefMapper);
@@ -32,7 +36,7 @@ class AltNameConverterTest {
 		AlternativeName xmlObj =converter.toXml(altName);
 		
 		 System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
-		ProteinName converted = converter.fromXml(xmlObj);
+		ProteinAltName converted = converter.fromXml(xmlObj);
 		assertEquals(altName, converted);
 	
 	}
@@ -43,7 +47,7 @@ class AltNameConverterTest {
 		Name fullName = createName("a full Name", evidences);
 		List<Name> shortNames = Collections.emptyList();
 		List<EC> ecNumbers = createECNumbers();
-		ProteinName altName = createProteinName(fullName, shortNames, ecNumbers);
+		ProteinAltName altName = createProteinAltName(fullName, shortNames, ecNumbers);
 		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
 		ECConverter ecConverter = new ECConverter(evRefMapper);
 		NameConverter nameConverter =new NameConverter(evRefMapper);
@@ -52,7 +56,7 @@ class AltNameConverterTest {
 		AlternativeName xmlObj =converter.toXml(altName);
 		
 		 System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
-		ProteinName converted = converter.fromXml(xmlObj);
+		ProteinAltName converted = converter.fromXml(xmlObj);
 		assertEquals(altName, converted);
 	
 	}
@@ -63,7 +67,7 @@ class AltNameConverterTest {
 		Name fullName = createName("a full Name", evidences);
 		List<Name> shortNames = createShortNames();
 		List<EC> ecNumbers =Collections.emptyList();
-		ProteinName altName = createProteinName(fullName, shortNames, ecNumbers);
+		ProteinAltName altName = createProteinAltName(fullName, shortNames, ecNumbers);
 		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
 		ECConverter ecConverter = new ECConverter(evRefMapper);
 		NameConverter nameConverter =new NameConverter(evRefMapper);
@@ -72,7 +76,7 @@ class AltNameConverterTest {
 		AlternativeName xmlObj =converter.toXml(altName);
 		
 		 System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
-		ProteinName converted = converter.fromXml(xmlObj);
+		ProteinAltName converted = converter.fromXml(xmlObj);
 		assertEquals(altName, converted);
 	
 	}

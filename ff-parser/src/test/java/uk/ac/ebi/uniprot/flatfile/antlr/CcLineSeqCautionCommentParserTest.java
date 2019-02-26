@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
+import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
@@ -172,7 +173,9 @@ public class CcLineSeqCautionCommentParserTest {
 		CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
 		assertEquals(1, sc.sequenceCautionObjects.size());
 		verify(sc.sequenceCautionObjects.get(0), "CAA39814.1", "Several", SequenceCautionType.FRAMESHIFT,  null);
-		 CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""));
+		 CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""),
+				 new SubcellularLocationServiceImpl("")
+				 );
 		 List<Comment> comments =converter.convert(obj);
 		 assertEquals(1, comments.size());
 		 assertEquals(CommentType.SEQUENCE_CAUTION, comments.get(0).getCommentType());

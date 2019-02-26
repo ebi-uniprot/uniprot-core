@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
 import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
+import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocationService;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.Range;
@@ -36,14 +37,16 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
     // private final DefaultCommentFactory factory = DefaultCommentFactory
     // .getInstance();
     private final DiseaseService diseaseService;
+    private final SubcellularLocationService subcellularLocationService;
     private final boolean ignoreWrong;
 
-    public CcLineConverter(DiseaseService diseaseService) {
-        this(diseaseService, true);
+    public CcLineConverter(DiseaseService diseaseService, SubcellularLocationService subcellularLocationService) {
+        this(diseaseService, subcellularLocationService, true);
     }
 
-    public CcLineConverter(DiseaseService diseaseService, boolean ignoreWrong) {
+    public CcLineConverter(DiseaseService diseaseService, SubcellularLocationService subcellularLocationService, boolean ignoreWrong) {
         this.diseaseService = diseaseService;
+        this.subcellularLocationService = subcellularLocationService;
         this.ignoreWrong = ignoreWrong;
     }
 
@@ -421,7 +424,13 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         if ((locationValue == null) || locationValue.value.isEmpty()) {
             return null;
         }
-        return new SubcellularLocationValueBuilder(locationValue.value, evidenceMap.get(locationValue)).build();
+        
+        String id ="";
+        uk.ac.ebi.uniprot.cv.subcell.SubcellularLocation subcellLocation = subcellularLocationService.getById(locationValue.value);
+        if(subcellLocation != null) {
+        	id = subcellLocation.getAccession();
+        }
+        return new SubcellularLocationValueBuilder(id, locationValue.value, evidenceMap.get(locationValue)).build();
     }
 
     private MassSpectrometryComment convertMassSpectrometry(CcLineObject.MassSpectrometry cObj,

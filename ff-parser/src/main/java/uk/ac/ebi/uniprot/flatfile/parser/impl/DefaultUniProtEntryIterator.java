@@ -39,6 +39,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
     private String keywordFile;
     private String diseaseFile;
     private String accessionGoPubmedFile;
+    private String subcellularLocationFile;
     // count of the entries that has been produced and consumed.
     private AtomicLong entryCounter = new AtomicLong();
 
@@ -53,10 +54,11 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
     }
 
     @Override
-    public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile) {
+    public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile, String subcellularLocationFile) {
         this.keywordFile = keywordFile;
         this.diseaseFile = diseaseFile;
         this.accessionGoPubmedFile = accessionGoPubmedFile;
+        this.subcellularLocationFile = subcellularLocationFile;
         try {
             setInput2(fileName);
         } catch (FileNotFoundException e) {
@@ -220,6 +222,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
             logger.debug("FF queue cleaned, full flat-file has be parsed.");
 
+
             for (ParsingTask task : workers) {
                 task.finish();
             }
@@ -246,7 +249,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             this.ffQueue = ffQueue;
             this.queue = queue;
             this.countDown = countDown;
-            this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, false);
+            this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, false);
         }
 
         void finish() {

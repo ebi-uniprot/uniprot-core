@@ -763,7 +763,7 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
           if (reactionLine != null) {
         	  CcLineObject.CAReaction reaction =new CcLineObject.CAReaction();
         	  dd.reaction =reaction;
-        	  reaction.name = reactionLine.cc_cat_act_reaction().cc_properties_text_level2().getText();
+        	  reaction.name = reactionLine.cc_cat_act_reaction().cc_properties_text_level3().getText();
         	  if(reactionLine.cc_cat_act_xref() !=null)
         		  reaction.xref =reactionLine.cc_cat_act_xref().cc_properties_text_level2().getText();
         	  if(reactionLine.cc_cat_act_ec() !=null) {
