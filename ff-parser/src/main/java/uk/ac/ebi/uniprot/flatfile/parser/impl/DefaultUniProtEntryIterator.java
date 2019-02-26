@@ -26,292 +26,283 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
-	private static Logger logger = LoggerFactory.getLogger(DefaultUniProtEntryIterator.class);
-	private static Logger logger_error = LoggerFactory
-			.getLogger(DefaultUniProtEntryIterator.class.getName() + ".error");
+    private static Logger logger = LoggerFactory.getLogger(DefaultUniProtEntryIterator.class);
+    private static Logger loggerError = LoggerFactory
+            .getLogger(DefaultUniProtEntryIterator.class.getName() + ".error");
 
-	public final int NUMBER_OF_THREAD;
+    private final int numberOfThreads;
+    private final List<ParsingTask> workers = new ArrayList<>();
+    private final BlockingQueue<UniProtEntry> entriesQueue;
+    private final BlockingQueue<String> ffQueue;
 
-	final List<ParsingTask> workers = new ArrayList<ParsingTask>();
-	private Thread spliter;
+    private CountDownLatch parsingJobCountDownLatch;
+    private String keywordFile;
+    private String diseaseFile;
+    private String accessionGoPubmedFile;
+    // count of the entries that has been produced and consumed.
+    private AtomicLong entryCounter = new AtomicLong();
 
-	final private BlockingQueue<UniProtEntry> entriesQueue;
-	final private BlockingQueue<String> ffQueue;
+    public DefaultUniProtEntryIterator() {
+        this(1, 5000, 50000);
+    }
 
-	private CountDownLatch parsingJobCountDownLatch;
-	
-	private String keywordFile;
-	private String diseaseFile;
-	private String accessionGoPubmedFile;
+    public DefaultUniProtEntryIterator(int numberOfThreads, int entryQueuesize, int ffQueueSize) {
+        this.numberOfThreads = numberOfThreads;
+        entriesQueue = new ArrayBlockingQueue<>(entryQueuesize);
+        ffQueue = new ArrayBlockingQueue<>(ffQueueSize);
+    }
 
-	public DefaultUniProtEntryIterator() {
-		this(1, 5000, 50000);
-	}
+    @Override
+    public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile) {
+        this.keywordFile = keywordFile;
+        this.diseaseFile = diseaseFile;
+        this.accessionGoPubmedFile = accessionGoPubmedFile;
+        try {
+            setInput2(fileName);
+        } catch (FileNotFoundException e) {
+            throw new UniProtParserException(e);
+        }
+    }
 
-	public DefaultUniProtEntryIterator(int number_of_thread, int entryQueuesize, int ffQueueSize) {
-		NUMBER_OF_THREAD = number_of_thread;
-		entriesQueue = new ArrayBlockingQueue<>(entryQueuesize);
-		ffQueue = new ArrayBlockingQueue<>(ffQueueSize);
-	}
+    public boolean hasNext() {
+        if (this.entryCounter.get() > 0)
+            return true;
+        else {
+            // if there are parsing jobs still running, wait and check again.
+            logger.trace("Checking hasNext: the entry queue is emptied.");
+            while (this.parsingJobCountDownLatch.getCount() > 0) {
+                logger.trace("Checking hasNext: the parsing jobs have not finished, wait a bit.");
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e) {
+                    logger.error(e.getMessage());
 
-	// count of the entries that has been produced and consumed.
-	private AtomicLong entryCounter = new AtomicLong();
+                }
+                if (this.entryCounter.get() > 0)
+                    return true;
+            }
 
-	public class EntryStringEmitter implements Runnable {
+            logger.trace("Checking hasNext: all parsing jobs have finished.");
 
-		final private EntryReader entryReader;
+            // if there re no job running, check last.
+            return this.entryCounter.get() > 0;
+        }
+    }
 
-		public EntryStringEmitter(EntryReader entryReader) {
-			this.entryReader = entryReader;
-		}
+    public UniProtEntry next() {
+        try {
+            UniProtEntry poll = this.entriesQueue.take();
 
-		@Override
-		public void run() {
-			long counter = 0;
-			long start_time = System.nanoTime();
-			long check_point = start_time;
-			try {
-				String next = entryReader.next();
-				while (next != null) {
-					boolean offer = ffQueue.offer(next);
-					if (offer) {
-						counter++;
-						entryCounter.getAndIncrement();
-						next = entryReader.next();
-					} else { // the queue is full.
-						Thread.sleep(1);
-						logger.trace("Target queue is FULL, wait a bit");
-					}
+            if (poll != null) {
+                entryCounter.getAndDecrement();
+            } else {
+                logger.trace("Next: entry query is empty.");
+            }
 
-					long l = System.nanoTime();
-					// report every 10 minitues
-					if (TimeUnit.NANOSECONDS.toMinutes(l - check_point) > 5) {
-						logger.debug(
-								"The total number of flat file entry has been scanned : {}. Using time:  {} minutes",
-								counter, TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - start_time));
-						check_point = l;
-					}
-				}
-			} catch (Exception e) {
-				logger_error.error("Exception in splitting FF", e);
-			}
+            return poll;
+        } catch (InterruptedException e) {
+            logger.debug("Get entry from queue is interrupted.");
+            return null;
+        }
+    }
 
-			logger.debug("FF scanning finished.");
-			logger.debug("Total flat file to be parsed: {} ", counter);
-			logger.debug("Total time used: {} ", TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - start_time));
+    /**
+     * This exposes the EntryQueue directly.
+     *
+     * @return
+     */
+    public Queue<UniProtEntry> getEntryQueue() {
+        return this.entriesQueue;
+    }
 
-			while (!ffQueue.isEmpty()) {
-				Uninterruptibles.sleepUninterruptibly(500, TimeUnit.MILLISECONDS);
-				logger.debug("Waiting the FF queue to be emptied.");
-			}
+    @Override
+    public void remove() {
+        logger.trace("remove is not implemented");
+    }
 
-			logger.debug("FF queue cleaned, all flat file has be parsed.");
+    private EntryReader createEntryReader(String fileName) throws FileNotFoundException {
+        if (fileName.endsWith(".gz")) {
+            try {
+                return new EntryBufferedReader(fileName);
+            } catch (IOException e) {
+                return new EntryBufferedReader2(fileName);
+            }
+        } else {
+            return new EntryBufferedReader2(fileName);
+        }
+    }
 
-			for (ParsingTask task : workers) {
-				task.finish();
-			}
+    private void setInput2(String fileName) throws FileNotFoundException {
+        EntryReader entryBufferReader2 = createEntryReader(fileName);
 
-			// waiting all parsing job to finish.
-			try {
-				parsingJobCountDownLatch.await();
-			} catch (InterruptedException e) {
-				logger.error(e.getMessage());
+        Thread splitter = new Thread(new EntryStringEmitter(entryBufferReader2));
+        splitter.setName("Entry Scanner Thread");
 
-			}
+        // using the best effort to scan the file.
+        splitter.setPriority(Thread.MAX_PRIORITY);
 
-			logger.debug("The FF scanning thread is now finished.");
-		}
-	}
+        splitter.start();
 
-	public class ParsingTask extends Thread {
-		private final BlockingQueue<String> ffQueue;
-		private final BlockingQueue<UniProtEntry> queue;
-		private final CountDownLatch countDown;
-		private final AtomicBoolean not_finished = new AtomicBoolean(false);
-		private UniProtParser parser;
-	//	private UniprotLineParser<EntryObject> parser;
-	//	private EntryObjectConverter converter;
+        int threadCount = Runtime.getRuntime().availableProcessors();
+        logger.debug("Available cores in the machine {}", threadCount);
 
-		public ParsingTask(BlockingQueue<String> ffQueue, BlockingQueue<UniProtEntry> queue, CountDownLatch countDown) {
-			this.ffQueue = ffQueue;
-			this.queue = queue;
-			this.countDown = countDown;
-			this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, false);
-				}
+        if (this.numberOfThreads != 0) {
+            threadCount = this.numberOfThreads;
+        }
 
-		public void finish() {
-			not_finished.compareAndSet(false, true);
-			logger.debug("The parsing task {} is signaled to finish.", this.getName());
-		}
+        logger.info("Using threads {}", threadCount);
 
-		@Override
-		public void run() {
+        this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
 
-			long start_time = System.nanoTime();
-			long checkPoint = start_time;
-			long counter = 0;
-			long failed = 0;
+        for (int i = 0; i < threadCount; i++) {
+            ParsingTask parsingTask = new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
+            parsingTask.setName("Parsing Worker No. " + (i + 1));
+            this.workers.add(parsingTask);
+            parsingTask.start();
+        }
 
-			while (!not_finished.get()) {
-				String poll = ffQueue.poll();
+        // wait until the entryCounter > 1, so hasNext won't return false.
+        while (entryCounter.get() == 0) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                //
+            }
+        }
+    }
 
-				if (poll != null) {
-					try {
-						UniProtEntry convert = parser.parse(poll);
-						// using put to block current thread if wait is necessary.
-						queue.put(convert);
-						counter++;
+    public class EntryStringEmitter implements Runnable {
+        private final EntryReader entryReader;
 
-						long l = System.nanoTime();
+        EntryStringEmitter(EntryReader entryReader) {
+            this.entryReader = entryReader;
+        }
 
-						// report every 10 minitues
-						if (TimeUnit.NANOSECONDS.toMinutes(l - checkPoint) > 5) {
-							logger.debug("Number of FF has been parsed by this worker : {}. Using time:  {} minutes",
-									counter, TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - start_time));
-							checkPoint = l;
-						}
-					} catch (Exception e) {
-						entryCounter.getAndDecrement();
-						failed++;
-						logger_error.error("Error while parsing FF", e);
-						logger_error.trace("The FF canot be parsed: \n{}", poll);
-					}
-				} else {
-					logger.trace("FF String queue is empty, wait a bit.");
-					try {
-						Thread.sleep(1);
-					} catch (InterruptedException e) {
-						//
-					}
-				}
-			}
+        @Override
+        public void run() {
+            long counter = 0;
+            long startTime = System.nanoTime();
+            long checkPoint = startTime;
+            try {
+                String next = entryReader.next();
+                while (next != null) {
+                    boolean offer = ffQueue.offer(next);
+                    if (offer) {
+                        counter++;
+                        entryCounter.getAndIncrement();
+                        next = entryReader.next();
+                    } else { // the queue is full.
+                        Thread.sleep(1);
+                        logger.trace("Target queue is FULL, wait a bit");
+                    }
 
-			logger.debug("Total FF parsed {} by this worker, Using time:  {} minutes", counter,
-					TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - start_time));
+                    long l = System.nanoTime();
+                    // report every 10 minitues
+                    if (TimeUnit.NANOSECONDS.toMinutes(l - checkPoint) > 5) {
+                        logger.debug(
+                                "The total number of flat file entry has been scanned : {}. Using time:  {} minutes",
+                                counter, TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
+                        checkPoint = l;
+                    }
+                }
+            } catch (Exception e) {
+                loggerError.error("Exception in splitting FF", e);
+            }
 
-			if (failed > 0) {
-				logger.warn("Failed FF parsing in the worker: {}", failed);
-			}
+            logger.debug("Flat-file scanning finished.");
+            logger.debug("Total flat-file to be parsed: {} ", counter);
+            logger.debug("Total time used: {} ", TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
 
-			countDown.countDown();
-		}
-	}
+            while (!ffQueue.isEmpty()) {
+                Uninterruptibles.sleepUninterruptibly(500, TimeUnit.MILLISECONDS);
+                logger.debug("Waiting the FF queue to be emptied.");
+            }
 
-	private EntryReader createEntryReader(String fileName) throws FileNotFoundException {
-		if (fileName.endsWith(".gz")) {
-			try {
-				return new EntryBufferedReader(fileName);
-			} catch (IOException e) {
-				return new EntryBufferedReader2(fileName);
-			}
-		} else {
-			return new EntryBufferedReader2(fileName);
-		}
-	}
-	@Override
-	public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile) {
-		this.keywordFile =keywordFile;
-		this.diseaseFile = diseaseFile;
-		this.accessionGoPubmedFile =accessionGoPubmedFile;
-		try {
-			setInput2(fileName);
-		} catch (FileNotFoundException e) {
-			throw new UniProtParserException(e);
-		}
-	}
+            logger.debug("FF queue cleaned, full flat-file has be parsed.");
 
-	private void setInput2(String fileName) throws FileNotFoundException {
-		EntryReader entryBufferReader2 = createEntryReader(fileName);
+            for (ParsingTask task : workers) {
+                task.finish();
+            }
 
-		this.spliter = new Thread(new EntryStringEmitter(entryBufferReader2));
-		this.spliter.setName("Entry Scanner Thread");
+            // waiting all parsing job to finish.
+            try {
+                parsingJobCountDownLatch.await();
+            } catch (InterruptedException e) {
+                logger.error(e.getMessage());
+            }
 
-		// using the best effort to scan the file.
-		this.spliter.setPriority(Thread.MAX_PRIORITY);
+            logger.debug("The flat-file scanning thread is now finished.");
+        }
+    }
 
-		this.spliter.start();
+    public class ParsingTask extends Thread {
+        private final BlockingQueue<String> ffQueue;
+        private final BlockingQueue<UniProtEntry> queue;
+        private final CountDownLatch countDown;
+        private final AtomicBoolean notFinished = new AtomicBoolean(false);
+        private UniProtParser parser;
 
-		int thread_count = Runtime.getRuntime().availableProcessors();
-		logger.debug("Available cores in the machine {}", thread_count);
+        ParsingTask(BlockingQueue<String> ffQueue, BlockingQueue<UniProtEntry> queue, CountDownLatch countDown) {
+            this.ffQueue = ffQueue;
+            this.queue = queue;
+            this.countDown = countDown;
+            this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, false);
+        }
 
-		if (this.NUMBER_OF_THREAD != 0) {
-			thread_count = this.NUMBER_OF_THREAD;
-		}
+        void finish() {
+            notFinished.compareAndSet(false, true);
+            logger.debug("The parsing task {} is signaled to finish.", this.getName());
+        }
 
-		logger.info("Using threads {}", thread_count);
+        @Override
+        public void run() {
+            long startTime = System.nanoTime();
+            long checkPoint = startTime;
+            long counter = 0;
+            long failed = 0;
 
-		this.parsingJobCountDownLatch = new CountDownLatch(thread_count);
+            while (!notFinished.get()) {
+                String poll = ffQueue.poll();
 
-		for (int i = 0; i < thread_count; i++) {
-			ParsingTask parsingTask = new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
-			parsingTask.setName("Parsing Worker No. " + (i + 1));
-			this.workers.add(parsingTask);
-			parsingTask.start();
-		}
+                if (poll != null) {
+                    try {
+                        UniProtEntry convert = parser.parse(poll);
+                        // using put to block current thread if wait is necessary.
+                        queue.put(convert);
+                        counter++;
 
-		// wait until the entryCounter > 1, so hasNext won't return false.
-		while (entryCounter.get() == 0) {
-			try {
-				Thread.sleep(1);
-			} catch (InterruptedException e) {
-				//
-			}
-		}
-	}
+                        long l = System.nanoTime();
 
-	public boolean hasNext() {
-		if (this.entryCounter.get() > 0)
-			return true;
-		else {
-			// if their are paring job still running, wait and check again.
-			logger.trace("Checking hasNext: the entry queue is emptied.");
-			while (this.parsingJobCountDownLatch.getCount() > 0) {
-				logger.trace("Checking hasNext: the parsing jobs have not finished, wait a bit.");
-				try {
-					Thread.sleep(1);
-				} catch (InterruptedException e) {
-					logger.error(e.getMessage());
+                        // report every 10 minitues
+                        if (TimeUnit.NANOSECONDS.toMinutes(l - checkPoint) > 5) {
+                            logger.debug("Number of FF has been parsed by this worker : {}. Using time:  {} minutes",
+                                         counter, TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
+                            checkPoint = l;
+                        }
+                    } catch (Exception e) {
+                        entryCounter.getAndDecrement();
+                        failed++;
+                        loggerError.error("Error while parsing FF", e);
+                        loggerError.trace("The FF canot be parsed: \n{}", poll);
+                    }
+                } else {
+                    logger.trace("FF String queue is empty, wait a bit.");
+                    try {
+                        Thread.sleep(1);
+                    } catch (InterruptedException e) {
+                        //
+                    }
+                }
+            }
 
-				}
-				if (this.entryCounter.get() > 0)
-					return true;
-			}
+            logger.debug("Total FF parsed {} by this worker, Using time:  {} minutes", counter,
+                         TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
 
-			logger.trace("Checking hasNext: all parsing jobs have finished.");
+            if (failed > 0) {
+                logger.warn("Failed FF parsing in the worker: {}", failed);
+            }
 
-			// if there re no job running, check last.
-			return this.entryCounter.get() > 0;
-		}
-	}
-
-	public UniProtEntry next() {
-		try {
-			UniProtEntry poll = this.entriesQueue.take();
-
-			if (poll != null) {
-				entryCounter.getAndDecrement();
-			} else {
-				logger.trace("Next: entry query is empty.");
-			}
-
-			return poll;
-		} catch (InterruptedException e) {
-			logger.debug("Get entry from queue is interrupted.");
-			return null;
-		}
-	}
-
-	/**
-	 * This exposes the EntryQueue directly.
-	 *
-	 * @return
-	 */
-	public Queue<UniProtEntry> getEntryQueue() {
-		return this.entriesQueue;
-	}
-
-	@Override
-	public void remove() {
-		logger.trace("remove is not implemented");
-	}
+            countDown.countDown();
+        }
+    }
 }
