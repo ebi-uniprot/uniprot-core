@@ -63,7 +63,10 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         // create in memory list of objects
         while (i < lines.size()) {
             String line = lines.get(i);
-
+        	if(COPYRIGHT_LINES.contains(line)) {
+				i++;
+				continue;
+			}
             // For terminating line no need to complete loop
             if (line.equals("//")) {
                 retList.add(entry);
