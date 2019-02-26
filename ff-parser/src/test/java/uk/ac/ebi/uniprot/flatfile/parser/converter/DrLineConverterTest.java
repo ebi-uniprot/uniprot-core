@@ -93,7 +93,7 @@ public class DrLineConverterTest {
 	}
 	
 	@Test
-	public void testIgnoreWrongDR(){
+	public void testIgnoreWrongDrComprehensive(){
 		/**
 		 *  val drLine = """DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.
                  |DR   RefSeq; YP_031579.1; NC_005946.1.

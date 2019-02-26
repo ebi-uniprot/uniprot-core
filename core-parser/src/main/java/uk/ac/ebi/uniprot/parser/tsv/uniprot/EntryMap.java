@@ -9,7 +9,7 @@ public class EntryMap implements NamedValueMap {
     private final UniProtEntry entry;
     private final List<String> fields;
 
-    public static final List<String> FIELDS = Arrays.asList("accession", "id", "score", "protein_existence");
+    public static final List<String> DEFAULT_FIELDS = Arrays.asList("accession", "id", "score", "protein_existence");
 
     public static final String FIELD_FEATURE = "feature";
 
@@ -19,7 +19,7 @@ public class EntryMap implements NamedValueMap {
     }
 
     public static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(FIELDS::contains);
+        return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
 
     }
 

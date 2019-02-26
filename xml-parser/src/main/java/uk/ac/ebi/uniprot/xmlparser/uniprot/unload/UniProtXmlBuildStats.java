@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class UniProtXmlBuildStats implements XmlBuildStats {
-    private static final String TITLE = "UniProt XML Build Report";
+    private static final String REPORT_TITLE = "UniProt XML Build Report";
     private static final long DEFAULT_REPORT_TIME = 60 * 5;
     private final Counter failedCounter;
     private final Counter succeededCounter;
@@ -24,11 +24,11 @@ public class UniProtXmlBuildStats implements XmlBuildStats {
     private final String title;
 
     public UniProtXmlBuildStats() {
-        this(TITLE, DEFAULT_REPORT_TIME);
+        this(REPORT_TITLE, DEFAULT_REPORT_TIME);
     }
 
     public UniProtXmlBuildStats(long reportTimeInSecond) {
-        this(TITLE, reportTimeInSecond);
+        this(REPORT_TITLE, reportTimeInSecond);
     }
 
     public UniProtXmlBuildStats(String title, long reportTimeInSecond) {
