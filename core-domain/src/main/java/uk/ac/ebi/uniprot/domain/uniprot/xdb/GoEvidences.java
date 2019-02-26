@@ -1,5 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -9,8 +12,8 @@ import java.util.Map;
 import java.util.Optional;
 
 public enum GoEvidences {
-
     INSTANCE;
+    private static final Logger LOGGER = LoggerFactory.getLogger(GoEvidences.class);
     private static final String COLON = ":";
     private static final String DEFAULT = "Default";
     private static final String GAF_ECO_URL = "https://raw.githubusercontent.com/evidenceontology/evidenceontology/master/gaf-eco-mapping.txt";
@@ -52,26 +55,28 @@ public enum GoEvidences {
 
     private void init() {
         try {
-
             InputStream is = getInputStreamFromURL();
             if (is == null) {
-                // logger.warn(GAF_ECO_URL +" cannot be accessed");
                 is = this.getClass().getClassLoader().getResourceAsStream(LOCAL_GAF_ECO_FILE);
-            }
-            if (is == null)
-                throw new IllegalArgumentException("GAF_ECO file cannot be accessed.");
-            BufferedReader bif = new BufferedReader(new InputStreamReader(is));
-            String l;
 
-            while ((l = bif.readLine()) != null) {
-                l = l.trim();
-                if ((l.length() == 0) || l.startsWith("#"))
-                    continue;
-                parseLine(l);
+                if (is == null) {
+                    throw new IllegalArgumentException("GAF_ECO file cannot be accessed.");
+                }
+            }
+
+            try (BufferedReader bif = new BufferedReader(new InputStreamReader(is))) {
+                String line;
+
+                while ((line = bif.readLine()) != null) {
+                    line = line.trim();
+                    if ((line.length() == 0) || line.startsWith("#"))
+                        continue;
+                    parseLine(line);
+                }
             }
 
         } catch (Exception e) {
-
+            LOGGER.error("Error encountered when initialising GO evidences", e);
         }
     }
 
@@ -80,7 +85,7 @@ public enum GoEvidences {
             URL url = new URL(GAF_ECO_URL);
             return url.openStream();
         } catch (Exception e) {
-
+            LOGGER.warn("Could not open stream for {}", GAF_ECO_URL);
         }
 
         return null;
