@@ -11,10 +11,10 @@ import java.util.stream.Collectors;
 
 public class GeneImpl implements Gene {
     private static final long serialVersionUID = 6903566846628575244L;
-    private static final String ORF_NAMES = "ORFNames=";
-    private static final String ORDERED_LOCUS_NAMES = "OrderedLocusNames=";
-    private static final String SYNONYMS = "Synonyms=";
-    private static final String NAME = "Name=";
+    private static final String ORF_NAMES_PREFIX = "ORFNames=";
+    private static final String ORDERED_LOCUS_NAMES_PREFIX = "OrderedLocusNames=";
+    private static final String SYNONYMS_PREFIX = "Synonyms=";
+    private static final String NAME_PREFIX = "Name=";
     private GeneName geneName;
     private List<GeneNameSynonym> synonyms;
     private List<OrderedLocusName> orderedLocusNames;
@@ -72,7 +72,7 @@ public class GeneImpl implements Gene {
         StringBuilder sb = new StringBuilder();
         boolean hasData = false;
         if (this.hasGeneName()) {
-            sb.append(NAME)
+            sb.append(NAME_PREFIX)
                     .append(this.geneName.getDisplayed(" "))
                     .append(";");
             hasData = true;
@@ -81,7 +81,7 @@ public class GeneImpl implements Gene {
             if (hasData) {
                 sb.append(" ");
             }
-            sb.append(SYNONYMS)
+            sb.append(SYNONYMS_PREFIX)
                     .append(
                             synonyms.stream().map(val -> val.getDisplayed(" "))
                                     .collect(Collectors.joining(", ")))
@@ -92,7 +92,7 @@ public class GeneImpl implements Gene {
             if (hasData) {
                 sb.append(" ");
             }
-            sb.append(ORDERED_LOCUS_NAMES)
+            sb.append(ORDERED_LOCUS_NAMES_PREFIX)
                     .append(
                             orderedLocusNames.stream().map(val -> val.getDisplayed(" "))
                                     .collect(Collectors.joining(", ")))
@@ -103,7 +103,7 @@ public class GeneImpl implements Gene {
             if (hasData) {
                 sb.append(" ");
             }
-            sb.append(ORF_NAMES)
+            sb.append(ORF_NAMES_PREFIX)
                     .append(
                             orfNames.stream().map(val -> val.getDisplayed(" "))
                                     .collect(Collectors.joining(", ")))
