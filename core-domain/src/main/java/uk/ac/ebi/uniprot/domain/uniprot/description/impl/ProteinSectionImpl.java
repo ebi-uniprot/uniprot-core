@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+
+import java.util.Collections;
+import java.util.List;
 
 public class ProteinSectionImpl implements ProteinSection {
 
@@ -56,6 +56,26 @@ public class ProteinSectionImpl implements ProteinSection {
     public boolean hasAlternativeNames() {
         return Utils.notEmpty(this.alternativeNames);
     }
+
+	@Override
+	public boolean hasAllergenName() {
+		return this.allergenName != null && this.allergenName.hasValue();
+	}
+
+	@Override
+	public boolean hasBiotechName() {
+		return this.biotechName != null && this.biotechName.hasValue();
+	}
+
+	@Override
+	public boolean hasCdAntigenNames() {
+		return Utils.notEmpty(this.cdAntigenNames);
+	}
+
+	@Override
+	public boolean hasInnNames() {
+		return Utils.notEmpty(this.innNames);
+	}
 
 	@Override
 	public Name getAllergenName() {

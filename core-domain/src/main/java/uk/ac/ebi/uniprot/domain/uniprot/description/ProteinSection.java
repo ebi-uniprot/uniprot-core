@@ -19,4 +19,12 @@ public interface ProteinSection extends Serializable {
     boolean hasRecommendedName();
 
     boolean hasAlternativeNames();
+
+    boolean hasAllergenName();
+
+    boolean hasBiotechName();
+
+    boolean hasCdAntigenNames();
+
+    boolean hasInnNames();
 }

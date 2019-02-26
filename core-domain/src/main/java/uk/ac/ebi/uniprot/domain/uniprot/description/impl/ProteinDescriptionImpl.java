@@ -128,7 +128,12 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         return Utils.notEmpty(this.contains);
     }
 
-    @Override
+	@Override
+	public boolean hasFlag() {
+		return this.flag != null;
+	}
+
+	@Override
     public Flag getFlag() {
         return flag;
     }

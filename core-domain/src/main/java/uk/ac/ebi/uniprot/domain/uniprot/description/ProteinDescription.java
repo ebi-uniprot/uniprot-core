@@ -29,6 +29,7 @@ public interface ProteinDescription extends Serializable {
     boolean hasAlternativeNames();
 
     boolean hasSubmissionNames();
+
     boolean hasAllergenName();
 
 	boolean hasBiotechName();
@@ -40,6 +41,8 @@ public interface ProteinDescription extends Serializable {
     boolean hasIncludes();
 
     boolean hasContains();
+
+    boolean hasFlag();
 
     boolean isValid();
 
