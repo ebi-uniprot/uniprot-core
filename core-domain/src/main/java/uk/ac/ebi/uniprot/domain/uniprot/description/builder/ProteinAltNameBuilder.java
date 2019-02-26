@@ -1,15 +1,16 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.builder;
 
-import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinAltNameImpl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
+import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, ProteinAltName> {
 
@@ -23,7 +24,7 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
     }
 
     public ProteinAltNameBuilder shortNames(List<Name> shortNames) {
-        this.shortNames = shortNames;
+        this.shortNames = nonNullList(shortNames);
         return this;
     }
 
@@ -32,7 +33,7 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
         return this;
     }
     public ProteinAltNameBuilder ecNumbers(List<EC> ecNumbers) {
-        this.ecNumbers = ecNumbers;
+        this.ecNumbers = nonNullList(ecNumbers);
         return this;
     }
 

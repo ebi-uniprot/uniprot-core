@@ -27,7 +27,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     }
 
     public ProteinSectionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
-        this.alternativeNames = alternativeNames;
+		this.alternativeNames = nonNullList(alternativeNames);
         return this;
     }
 
