@@ -28,15 +28,15 @@ class ProteinDescriptionConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinName recommendedName = createProteinName(fullName, shortNames,
+        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames,
                                                         ecNumbers);
 
-        List<ProteinName> proteinAltNames = createAltName();
+        List<ProteinAltName> proteinAltNames = createAltName();
         Name fullName1 = createName("a full Name", evidences);
 
         List<EC> ecNumbers1 = createECNumbers();
-        ProteinName subName = createProteinName(fullName1, null, ecNumbers1);
-        List<ProteinName> subNames = new ArrayList<>();
+        ProteinSubName subName = createProteinSubName(fullName1, ecNumbers1);
+        List<ProteinSubName> subNames = new ArrayList<>();
         subNames.add(subName);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         ProteinDescription description = builder.recommendedName(recommendedName).submissionNames(subNames)
@@ -59,11 +59,11 @@ class ProteinDescriptionConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinName recommendedName = createProteinName(fullName, shortNames, ecNumbers);
-        List<ProteinName> proteinAltNames = createAltName();
+        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
+        List<ProteinAltName> proteinAltNames = createAltName();
         Name fullName1 = createName("a full Name", evidences);
         List<EC> ecNumbers1 = createECNumbers();
-        ProteinName subName = createProteinName(fullName1, null,
+        ProteinSubName subName = createProteinSubName(fullName1,
                                                 ecNumbers1);
 
         ProteinSection included1 = createProteinNameSection(recommendedName, null);
@@ -74,7 +74,7 @@ class ProteinDescriptionConverterTest {
         List<ProteinSection> contains = new ArrayList<>();
         contains.add(contain1);
         contains.add(contain2);
-        List<ProteinName> subNames = new ArrayList<>();
+        List<ProteinSubName> subNames = new ArrayList<>();
         subNames.add(subName);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
         builder.recommendedName(recommendedName)
@@ -103,8 +103,8 @@ class ProteinDescriptionConverterTest {
 
     }
 
-    private List<ProteinName> createAltName() {
-        List<ProteinName> alternativeNames = new ArrayList<>();
+    private List<ProteinAltName> createAltName() {
+        List<ProteinAltName> alternativeNames = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         Name fullName = createName("a full alt Name", evidences);
         List<Name> shortNames = new ArrayList<>();
@@ -113,7 +113,7 @@ class ProteinDescriptionConverterTest {
         List<EC> ecNumbers = new ArrayList<>();
         ecNumbers.add(createEC("1.2.3.4", evidences));
 
-        alternativeNames.add(createProteinName(fullName, shortNames, ecNumbers));
+        alternativeNames.add(createProteinAltName(fullName, shortNames, ecNumbers));
 
         return alternativeNames;
     }

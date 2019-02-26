@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class CCWebResourceConverterTest {
-	private final CcLineConverter converter = new CcLineConverter(null);
+	private final CcLineConverter converter = new CcLineConverter(null, null);
 	
 	@Test
 	public void testWebResource(){

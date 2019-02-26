@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
+import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
@@ -60,7 +61,7 @@ public abstract class CCBuildTestAbstr {
     protected void doTest(String ccLine) {
         UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(ccLine + "\n");
-        CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""));
+        CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""), new SubcellularLocationServiceImpl(""));
         List<Comment> comments = converter.convert(obj);
         FFLine ffLine = builder.buildWithEvidence(comments);
         String resultString = ffLine.toString();

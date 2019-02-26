@@ -31,19 +31,22 @@ public class SubcellularLocationCommentBuilderTest {
     public void testSetSubcellularLocations() {
         List<SubcellularLocation> sublocations = new ArrayList<>();
         String molecule = "some mol";
+        String locationId ="someLocId";
         String locationVal = "some data";
         List<Evidence> evidences = createEvidences();
+        String topId = "topId";
         String topologyVal = "some top";
+        String orientId ="orientId";
         String orientationVal = "some orient";
         SubcellularLocation sublocation = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder(locationVal, evidences).build())
-                .topology(new SubcellularLocationValueBuilder(topologyVal, evidences).build())
-                .orientation(new SubcellularLocationValueBuilder(orientationVal, evidences).build())
+                .location(new SubcellularLocationValueBuilder(locationId, locationVal, evidences).build())
+                .topology(new SubcellularLocationValueBuilder(topId, topologyVal, evidences).build())
+                .orientation(new SubcellularLocationValueBuilder(orientId, orientationVal, evidences).build())
                 .build();
         sublocations.add(sublocation);
         SubcellularLocation sublocation2 = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder("val1", evidences).build())
-                .topology(new SubcellularLocationValueBuilder("val2", evidences).build())
+                .location(new SubcellularLocationValueBuilder("id1", "val1", evidences).build())
+                .topology(new SubcellularLocationValueBuilder("id2", "val2", evidences).build())
                 .build();
         sublocations.add(sublocation2);
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
@@ -68,15 +71,15 @@ public class SubcellularLocationCommentBuilderTest {
         String topologyVal = "some top";
         String orientationVal = "some orient";
         SubcellularLocation sublocation = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder(locationVal, evidences).build())
-                .topology(new SubcellularLocationValueBuilder(topologyVal, evidences).build())
-                .orientation(new SubcellularLocationValueBuilder(orientationVal, evidences).build())
+                .location(new SubcellularLocationValueBuilder("id1", locationVal, evidences).build())
+                .topology(new SubcellularLocationValueBuilder("id2", topologyVal, evidences).build())
+                .orientation(new SubcellularLocationValueBuilder("id3", orientationVal, evidences).build())
                 .build();
 
         sublocations.add(sublocation);
         SubcellularLocation sublocation2 = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder("val1", evidences).build())
-                .topology(new SubcellularLocationValueBuilder("val2", evidences).build())
+                .location(new SubcellularLocationValueBuilder("id4", "val1", evidences).build())
+                .topology(new SubcellularLocationValueBuilder("id5", "val2", evidences).build())
                 .build();
         sublocations.add(sublocation2);
 
@@ -100,7 +103,7 @@ public class SubcellularLocationCommentBuilderTest {
     public void testCreateSubcellularLocationValue() {
         String value = "some data";
         List<Evidence> evidences = createEvidences();
-        SubcellularLocationValue slv = new SubcellularLocationValueBuilder(value, evidences).build();
+        SubcellularLocationValue slv = new SubcellularLocationValueBuilder("id1", value, evidences).build();
         assertEquals(value, slv.getValue());
         assertEquals(evidences, slv.getEvidences());
         TestHelper.verifyJson(slv);
@@ -112,9 +115,9 @@ public class SubcellularLocationCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
         String orientationVal = "some orient";
-        SubcellularLocationValue location = new SubcellularLocationValueBuilder(locationVal, evidences).build();
-        SubcellularLocationValue topology = new SubcellularLocationValueBuilder(topologyVal, evidences).build();
-        SubcellularLocationValue orientation = new SubcellularLocationValueBuilder(orientationVal, evidences).build();
+        SubcellularLocationValue location = new SubcellularLocationValueBuilder("id1", locationVal, evidences).build();
+        SubcellularLocationValue topology = new SubcellularLocationValueBuilder("id2", topologyVal, evidences).build();
+        SubcellularLocationValue orientation = new SubcellularLocationValueBuilder("id3", orientationVal, evidences).build();
         SubcellularLocation sublocation = new SubcellularLocationBuilder()
                 .location(location)
                 .topology(topology)

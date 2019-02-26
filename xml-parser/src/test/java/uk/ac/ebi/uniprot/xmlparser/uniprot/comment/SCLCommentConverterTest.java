@@ -74,7 +74,7 @@ class SCLCommentConverterTest {
     }
 
     private SubcellularLocationValue create(String val, List<String> evidences) {
-        return new SubcellularLocationValueBuilder(val, createEvidence(evidences)).build();
+        return new SubcellularLocationValueBuilder("", val, createEvidence(evidences)).build();
     }
 
     private List<Evidence> createEvidence(List<String> evids) {

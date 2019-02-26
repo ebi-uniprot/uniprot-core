@@ -10,9 +10,9 @@ public class DefaultUniProtParser implements UniProtParser {
 	private final UniprotLineParser<EntryObject> parser;
 	private final EntryObjectConverter converter;
 	public DefaultUniProtParser(String keywordFile, String diseaseFile, 
-			String accessionGoPubmedFile, boolean ignoreWrongDr) {
+			String accessionGoPubmedFile, String subcellularLocationFile,  boolean ignoreWrongDr) {
 		this.parser = new DefaultUniprotLineParserFactory().createEntryParser();
-		this.converter = new EntryObjectConverter(keywordFile, diseaseFile, accessionGoPubmedFile, ignoreWrongDr);
+		this.converter = new EntryObjectConverter(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, ignoreWrongDr);
 		
 	};
 	@Override

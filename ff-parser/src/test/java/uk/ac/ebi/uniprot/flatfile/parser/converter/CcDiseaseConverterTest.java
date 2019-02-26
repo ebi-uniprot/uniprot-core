@@ -18,7 +18,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class CcDiseaseConverterTest {
-	private final CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""));
+	private final CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""), null);
 	@Test
 	public void testFull() {
 		/*

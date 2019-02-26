@@ -4,9 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface ProteinSection extends Serializable {
-    ProteinName getRecommendedName();
+	ProteinRecName getRecommendedName();
 
-    List<ProteinName> getAlternativeNames();
+    List<ProteinAltName> getAlternativeNames();
+    
+    Name getAllergenName();
+
+	Name getBiotechName();
+
+	List<Name> getCdAntigenNames();
+
+	List<Name> getInnNames();
 
     boolean hasRecommendedName();
 

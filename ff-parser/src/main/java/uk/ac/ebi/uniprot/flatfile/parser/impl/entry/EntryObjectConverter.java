@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordService;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
+import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocationService;
+import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationServiceImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
@@ -75,12 +77,16 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
     private Map<String, Map<String, List<Evidence>>> accessionGoEvidences = new HashMap<>();
 
 
-    public EntryObjectConverter(String keywordFile, String diseaseFile, String goPubmedFile, boolean ignoreWrong) {
+    public EntryObjectConverter(String keywordFile, String diseaseFile, String goPubmedFile,
+    		String subcellularLocationFile,
+    		
+    		boolean ignoreWrong) {
         drLineConverter = new DrLineConverter(ignoreWrong);
         KeywordService keywordService = new KeywordServiceImpl(keywordFile);
         DiseaseService diseaseService = new DiseaseServiceImpl(diseaseFile);
+        SubcellularLocationService subcellularLocationService = new SubcellularLocationServiceImpl(subcellularLocationFile);
         kwLineConverter = new KwLineConverter(keywordService, ignoreWrong);
-        ccLineConverter = new CcLineConverter(diseaseService, ignoreWrong);
+        ccLineConverter = new CcLineConverter(diseaseService, subcellularLocationService, ignoreWrong);
         initAccessionGoEvidenceMap(goPubmedFile);
 
     }

@@ -19,7 +19,7 @@ public class UniProtEntryIteratorIT {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A9N0W4.txl";
-			iterator.setInput(filename, "", "", "");
+			iterator.setInput(filename, "", "", "", "");
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();
 			assertNotNull(entry);
@@ -35,7 +35,7 @@ public class UniProtEntryIteratorIT {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A9N0W4.txl";
 			String entryStr = readFile(filename);
-			iterator.setInput(filename, "", "", "");
+			iterator.setInput(filename, "", "", "", "");
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();
 			FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
@@ -51,7 +51,7 @@ public class UniProtEntryIteratorIT {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/Q32K04.dat";
-			iterator.setInput(filename, "", "", "");
+			iterator.setInput(filename, "", "", "", "");
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();
 			assertNotNull(entry);
@@ -67,7 +67,7 @@ public class UniProtEntryIteratorIT {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/Q32K04.dat";
 			String entryStr = readFile(filename);
-			iterator.setInput(filename, "", "", "");
+			iterator.setInput(filename, "", "", "", "");
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();
 			FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
@@ -83,7 +83,7 @@ public class UniProtEntryIteratorIT {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
-			iterator.setInput(filename, "", "", "");
+			iterator.setInput(filename, "", "", "", "");
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();
 		
@@ -102,7 +102,7 @@ public class UniProtEntryIteratorIT {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat.gz";
-			iterator.setInput(filename, "", "", "");
+			iterator.setInput(filename, "", "", "", "");
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();
 			assertNotNull(entry);
@@ -132,7 +132,7 @@ public class UniProtEntryIteratorIT {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat.gz";
-			iterator.setInput(filename, "", "", "");
+			iterator.setInput(filename, "", "", "", "");
 			assertTrue(iterator.hasNext());
 			UniProtEntry entry = iterator.next();
 			assertNotNull(entry);

@@ -65,13 +65,13 @@ public class EntryProteinMap implements NamedValueMap {
                 sb.append(SPACE);
             }
             sb.append(protein.getAlternativeNames().stream()
-                              .map(val -> BLACKET_LEFT + convertProteinNameToString(val) + BLACKET_RIGHT)
+                              .map(val -> BLACKET_LEFT + convertProteinAltNameToString(val) + BLACKET_RIGHT)
                               .collect(Collectors.joining(SPACE)));
         }
         if ((protein.getSubmissionNames() != null) && !protein.getSubmissionNames().isEmpty()) {
-            sb.append(convertProteinNameToString(protein.getSubmissionNames().get(0)));
+            sb.append(convertProteinSubNameToString(protein.getSubmissionNames().get(0)));
             String data = protein.getSubmissionNames().stream().skip(1)
-                    .map(val -> BLACKET_LEFT + convertProteinNameToString(val) + BLACKET_RIGHT)
+                    .map(val -> BLACKET_LEFT + convertProteinSubNameToString(val) + BLACKET_RIGHT)
                     .collect(Collectors.joining(SPACE));
             if (data != null && !data.isEmpty()) {
                 sb.append(SPACE).append(data);
@@ -150,14 +150,41 @@ public class EntryProteinMap implements NamedValueMap {
                 sb.append(SPACE);
             }
             String alternativeNames = section.getAlternativeNames().stream()
-                    .map(val -> BLACKET_LEFT + convertProteinNameToString(val) + BLACKET_RIGHT)
+                    .map(val -> BLACKET_LEFT + convertProteinAltNameToString(val) + BLACKET_RIGHT)
                     .collect(Collectors.joining(SPACE));
             sb.append(alternativeNames);
         }
         return sb.toString();
     }
 
-    private String convertProteinNameToString(ProteinName name) {
+    private String convertProteinAltNameToString(ProteinAltName name) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name.getFullName().getValue());
+        String sname = name.getShortNames().stream().map(Name::getValue)
+                .collect(Collectors.joining(DELIMITER));
+        String ec = name.getEcNumbers().stream().map(val -> EC2 + SPACE + val.getValue())
+                .collect(Collectors.joining(DELIMITER));
+        if (sname != null && !sname.isEmpty()) {
+            sb.append(DELIMITER).append(sname);
+        }
+        if (ec != null && !ec.isEmpty()) {
+            sb.append(DELIMITER).append(ec);
+        }
+        return sb.toString();
+    }
+
+    private String convertProteinSubNameToString(ProteinSubName name) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name.getFullName().getValue());
+        String ec = name.getEcNumbers().stream().map(val -> EC2 + SPACE + val.getValue())
+                .collect(Collectors.joining(DELIMITER));
+        if (ec != null && !ec.isEmpty()) {
+            sb.append(DELIMITER).append(ec);
+        }
+        return sb.toString();
+    }
+    
+    private String convertProteinNameToString(ProteinRecName name) {
         StringBuilder sb = new StringBuilder();
         sb.append(name.getFullName().getValue());
         String sname = name.getShortNames().stream().map(Name::getValue)
@@ -180,7 +207,7 @@ public class EntryProteinMap implements NamedValueMap {
         }
         if(section.getAlternativeNames() != null){
             List<String> ecs = new ArrayList<>();
-            for (ProteinName proteinName:section.getAlternativeNames()) {
+            for (ProteinAltName proteinName:section.getAlternativeNames()) {
                 ecs.addAll(convertProteinNameEcNumbersToString(proteinName));
             }
             ec.addAll(ecs);
@@ -188,10 +215,15 @@ public class EntryProteinMap implements NamedValueMap {
         return ec;
     }
 
-    private List<String> convertProteinNameEcNumbersToString(ProteinName name) {
+    private List<String> convertProteinNameEcNumbersToString(ProteinRecName name) {
         return name.getEcNumbers().stream().map(EC::getValue).collect(Collectors.toList());
     }
-
+    private List<String> convertProteinNameEcNumbersToString(ProteinAltName name) {
+        return name.getEcNumbers().stream().map(EC::getValue).collect(Collectors.toList());
+    }
+    private List<String> convertProteinNameEcNumbersToString(ProteinSubName name) {
+        return name.getEcNumbers().stream().map(EC::getValue).collect(Collectors.toList());
+    }
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(FIELDS::contains);
 
