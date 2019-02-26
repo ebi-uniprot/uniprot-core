@@ -18,7 +18,7 @@ public class UniProtFFToXmlConverter implements Function<String, Entry> {
 	    private final UniProtEntryConverter xmlConverter;
 	    public UniProtFFToXmlConverter(String diseaseFile , String keywordFile) {
 		      this.ffParser =new DefaultUniProtParser( keywordFile,  diseaseFile, 
-		  			"", true);
+		  			"", "", true);
 		      this.xmlConverter = new UniProtEntryConverter();
 		    }
 
