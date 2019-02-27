@@ -18,7 +18,7 @@ class EntryLineageMapTest {
 /*
 	@Test
 	void testFields() {
-		List<String> fields = EntryLineageMap.FIELDS;
+		List<String> fields = EntryLineageMap.DEFAULT_FIELDS;
 		List<String> expected = Arrays.asList(new String[] {"lineage", "tl:all", "tl:class", "tl:cohort",
 				"tl:family", "tl:forma", "tl:genus", "tl:infraclass", "tl:infraorder", "tl:kingdom", "tl:order",
 				"tl:parvorder", "tl:phylum", "tl:species", "tl:species_group", "tl:species_subgroup", "tl:subclass",

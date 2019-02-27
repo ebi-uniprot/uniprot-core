@@ -8,7 +8,7 @@ public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorR
     NONE("");
     private String displayName;
 
-    private CofactorReferenceType(String displayName) {
+    CofactorReferenceType(String displayName) {
         this.displayName = displayName;
     }
 

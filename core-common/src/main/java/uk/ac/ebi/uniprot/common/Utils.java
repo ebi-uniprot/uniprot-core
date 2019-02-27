@@ -44,4 +44,12 @@ public class Utils {
     public static boolean nullOrEmpty(String value) {
         return value == null || value.isEmpty();
     }
+
+    public static boolean notEmpty(String value) {
+        return value != null && !value.isEmpty();
+    }
+
+    public static boolean notEmpty(List<?> value) {
+        return value != null && !value.isEmpty();
+    }
 }

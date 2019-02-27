@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class SubcellularLocationImpl implements SubcellularLocation {
+    private static final long serialVersionUID = -1217106303846658373L;
     private SubcellularLocationValue location;
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
@@ -41,6 +42,21 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     }
 
     @Override
+    public boolean hasLocation() {
+        return this.location != null;
+    }
+
+    @Override
+    public boolean hasTopology() {
+        return this.topology != null;
+    }
+
+    @Override
+    public boolean hasOrientation() {
+        return this.orientation != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -56,12 +72,22 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     }
 
     public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue {
-        private SubcellularLocationValueImpl() {
-            super(null, Collections.emptyList());
+
+		private static final long serialVersionUID = -2637543322400653482L;
+		private String id;
+    	private SubcellularLocationValueImpl() {
+            super( null, Collections.emptyList());
         }
 
-        public SubcellularLocationValueImpl(String value, List<Evidence> evidences) {
+        public SubcellularLocationValueImpl(String id, String value, List<Evidence> evidences) {
             super(value, evidences);
+            this.id =id;
         }
+
+		@Override
+		public String getId() {
+			return id;
+		}
+		
     }
 }

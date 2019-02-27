@@ -2,7 +2,7 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtParser;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
 
 import java.io.IOException;
 
@@ -63,7 +63,7 @@ public class UniProtEntryScorerTest {
             "//\n";
     @Test
     public void test1() throws IOException {
-        UniProtEntry entry = new DefaultUniProtParser("", "", "", true)
+        UniProtEntry entry = new DefaultUniProtParser("", "", "", "", true)
                 .parse(ENTRY);
 
         UniProtEntryScorer scored = new UniProtEntryScorer(System.out);

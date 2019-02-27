@@ -8,7 +8,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
-
+    private static final long serialVersionUID = 7406371948424303592L;
     private SubmissionDatabase submissionDatabase;
 
     private SubmissionImpl() {
@@ -24,6 +24,11 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     @Override
     public SubmissionDatabase getSubmissionDatabase() {
         return submissionDatabase;
+    }
+
+    @Override
+    public boolean hasSubmissionDatabase() {
+        return this.submissionDatabase != null;
     }
 
     @Override
@@ -43,9 +48,7 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
         if (getClass() != obj.getClass())
             return false;
         SubmissionImpl other = (SubmissionImpl) obj;
-        if (submissionDatabase != other.submissionDatabase)
-            return false;
-        return true;
+        return submissionDatabase == other.submissionDatabase;
     }
 
 

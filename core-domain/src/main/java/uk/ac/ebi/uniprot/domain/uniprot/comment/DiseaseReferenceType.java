@@ -17,7 +17,7 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
 
     private String displayName;
 
-    private DiseaseReferenceType(String displayName) {
+    DiseaseReferenceType(String displayName) {
         this.displayName = displayName;
     }
 

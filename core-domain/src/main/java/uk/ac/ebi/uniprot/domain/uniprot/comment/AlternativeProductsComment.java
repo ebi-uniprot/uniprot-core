@@ -3,9 +3,15 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment;
 import java.util.List;
 
 public interface AlternativeProductsComment extends Comment {
-    public List<APEventType> getEvents();
+    List<APEventType> getEvents();
 
-    public List<APIsoform> getIsoforms();
+    List<APIsoform> getIsoforms();
 
-    public Note getNote();
+    Note getNote();
+
+    boolean hasEvents();
+
+    boolean hasIsoforms();
+
+    boolean hasNote();
 }

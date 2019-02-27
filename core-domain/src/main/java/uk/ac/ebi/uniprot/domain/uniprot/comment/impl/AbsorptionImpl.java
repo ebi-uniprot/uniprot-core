@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class AbsorptionImpl implements Absorption {
+    private static final long serialVersionUID = -7439273402053104732L;
     private int max;
     private boolean approximate;
     private Note note;
@@ -38,6 +40,11 @@ public class AbsorptionImpl implements Absorption {
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public int getMax() {
         return max;
     }
@@ -45,6 +52,16 @@ public class AbsorptionImpl implements Absorption {
     @Override
     public Note getNote() {
         return note;
+    }
+
+    @Override
+    public boolean hasMax() {
+        return this.max > 0;
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null && this.note.hasTexts();
     }
 
     @Override

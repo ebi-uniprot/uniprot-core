@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.parser.gff.uniprot;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.parser.impl.entry.EntryObjectConverter;
+import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -15,9 +16,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import static org.slf4j.LoggerFactory.getLogger;
 
 /**
  * Created 05/02/19
@@ -25,6 +28,7 @@ import static org.junit.Assert.fail;
  * @author Edd
  */
 class UniProtGffParserIT {
+    private static final Logger LOGGER = getLogger(UniProtGffParserIT.class);
     private static final String TEST_FILE_PATH = "/uniprotkb/entry/";
 
     @Test
@@ -36,7 +40,7 @@ class UniProtGffParserIT {
 
         String gffAsString = readEntryFromFile(gffPath)
                 .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
-        System.out.println(entryGff);
+        LOGGER.info(entryGff);
         verify(entryGff, gffAsString);
     }
 
@@ -49,7 +53,7 @@ class UniProtGffParserIT {
 
         String gffAsString = readEntryFromFile(gffPath)
                 .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
-        System.out.println(entryGff);
+        LOGGER.info(entryGff);
         verify(entryGff, gffAsString);
     }
 
@@ -62,7 +66,7 @@ class UniProtGffParserIT {
 
         String gffAsString = readEntryFromFile(gffPath)
                 .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
-        System.out.println(entryGff);
+        LOGGER.info(entryGff);
         verify(entryGff, gffAsString);
     }
 
@@ -71,14 +75,13 @@ class UniProtGffParserIT {
         String[] expectedGff = gffAsString.split("\n");
         for (int i = 0; i < Math.min(givenGff.length, expectedGff.length); i++) {
             if (!givenGff[i].equals(expectedGff[i])) {
-                System.out.println("");
-                System.out.println("Given:    " + givenGff[i]);
-                System.out.println("Expected: " + expectedGff[i]);
+                LOGGER.warn("");
+                LOGGER.warn("Given:    " + givenGff[i]);
+                LOGGER.warn("Expected: " + expectedGff[i]);
                 fail();
             }
         }
     }
-
 
     private UniProtEntry readEntry(String path) {
         UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
@@ -86,17 +89,23 @@ class UniProtGffParserIT {
                 .orElseThrow(() -> new IllegalStateException("Could not read file: " + path));
         EntryObject parse = entryParser.parse(entryAsString);
         assertNotNull(parse);
-        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", true);
+        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "", true);
         return entryObjectConverter.convert(parse);
     }
 
     private Optional<String> readEntryFromFile(String fileName) {
         URL resource = getClass().getResource(fileName);
+        Stream<String> lines = null;
         try {
             Path path = Paths.get(resource.toURI());
-            return Optional.of(Files.lines(path).collect(Collectors.joining("\n")));
+            lines = Files.lines(path);
+            return Optional.of(lines.collect(Collectors.joining("\n")));
         } catch (URISyntaxException | IOException ex) {
-            ex.printStackTrace();//handle exception here
+            LOGGER.error("Could not read file", ex);
+        } finally {
+            if (lines != null) {
+                lines.close();
+            }
         }
         return Optional.empty();
     }

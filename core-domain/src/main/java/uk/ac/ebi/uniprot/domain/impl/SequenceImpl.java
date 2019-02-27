@@ -5,6 +5,7 @@ import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.util.MessageDigestUtil;
 
 public class SequenceImpl implements Sequence {
+    private static final long serialVersionUID = 8906599014658129082L;
     private String value;
     private int length;
     private int molWeight;
@@ -79,11 +80,8 @@ public class SequenceImpl implements Sequence {
             return false;
         SequenceImpl other = (SequenceImpl) obj;
         if (value == null) {
-            if (other.value != null)
-                return false;
-        } else if (!value.equals(other.value))
-            return false;
-        return true;
+            return other.value == null;
+        } else return value.equals(other.value);
     }
 
 }

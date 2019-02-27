@@ -16,4 +16,10 @@ public interface RnaEditingComment extends Comment {
     public List<RnaEdPosition> getPositions();
 
     public Note getNote();
+
+    boolean hasLocationType();
+
+    boolean hasPositions();
+
+    boolean hasNote();
 }

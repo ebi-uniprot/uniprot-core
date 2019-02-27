@@ -9,7 +9,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class JournalArticleImpl extends AbstractCitationImpl implements JournalArticle {
-
+    private static final long serialVersionUID = -1925700851366460680L;
     private Journal journal;
     private String firstPage;
     private String lastPage;
@@ -52,6 +52,26 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
     }
 
     @Override
+    public boolean hasJournal() {
+        return this.journal != null;
+    }
+
+    @Override
+    public boolean hasFirstPage() {
+        return Utils.notEmpty(this.firstPage);
+    }
+
+    @Override
+    public boolean hasLastPage() {
+        return Utils.notEmpty(this.lastPage);
+    }
+
+    @Override
+    public boolean hasVolume() {
+        return Utils.notEmpty(this.volume);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
@@ -87,10 +107,7 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         } else if (!lastPage.equals(other.lastPage))
             return false;
         if (volume == null) {
-            if (other.volume != null)
-                return false;
-        } else if (!volume.equals(other.volume))
-            return false;
-        return true;
+            return other.volume == null;
+        } else return volume.equals(other.volume);
     }
 }

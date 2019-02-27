@@ -5,7 +5,11 @@ package uk.ac.ebi.uniprot.domain.citation;
  */
 public interface Thesis extends Citation {
 
-    public String getInstitute();
+    String getInstitute();
 
-    public String getAddress();
+    String getAddress();
+
+    boolean hasInstitute();
+
+    boolean hasAddress();
 }

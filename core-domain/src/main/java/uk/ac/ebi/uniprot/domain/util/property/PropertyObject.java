@@ -1,9 +1,6 @@
 package uk.ac.ebi.uniprot.domain.util.property;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
+import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -90,7 +87,8 @@ import java.util.regex.Pattern;
  * @author JSON.org
  * @version 2016-08-15
  */
-public class PropertyObject {
+public class PropertyObject implements Serializable {
+    private static final long serialVersionUID = -5915002448486752892L;
     /**
      * It is sometimes more convenient and less ambiguous to have a
      * <code>NULL</code> object than to use Java's <code>null</code> value.

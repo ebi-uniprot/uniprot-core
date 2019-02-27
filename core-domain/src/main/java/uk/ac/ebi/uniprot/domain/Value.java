@@ -1,5 +1,9 @@
 package uk.ac.ebi.uniprot.domain;
 
-public interface Value {
+import java.io.Serializable;
+
+public interface Value extends Serializable {
     String getValue();
+
+    boolean hasValue();
 }

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
@@ -40,6 +41,11 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

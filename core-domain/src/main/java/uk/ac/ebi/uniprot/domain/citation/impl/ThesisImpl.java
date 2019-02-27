@@ -9,6 +9,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class ThesisImpl extends AbstractCitationImpl implements Thesis {
+    private static final long serialVersionUID = -8487467468767628311L;
     private String institute;
     private String address;
 
@@ -31,6 +32,16 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     @Override
     public String getAddress() {
         return address;
+    }
+
+    @Override
+    public boolean hasInstitute() {
+        return Utils.notEmpty(this.institute);
+    }
+
+    @Override
+    public boolean hasAddress() {
+        return Utils.notEmpty(this.address);
     }
 
     @Override
@@ -57,11 +68,8 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         } else if (!address.equals(other.address))
             return false;
         if (institute == null) {
-            if (other.institute != null)
-                return false;
-        } else if (!institute.equals(other.institute))
-            return false;
-        return true;
+            return other.institute == null;
+        } else return institute.equals(other.institute);
     }
 
 

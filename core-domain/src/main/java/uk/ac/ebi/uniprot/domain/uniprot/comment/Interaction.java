@@ -2,17 +2,29 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 
-public interface Interaction {
+import java.io.Serializable;
 
-    public InteractionType getType();
+public interface Interaction extends Serializable {
+    InteractionType getType();
 
-    public UniProtAccession getUniProtAccession();
+    UniProtAccession getUniProtAccession();
 
-    public String getGeneName();
+    String getGeneName();
 
-    public int getNumberOfExperiments();
+    int getNumberOfExperiments();
 
-    public Interactor getFirstInteractor();
+    Interactor getFirstInteractor();
 
-    public Interactor getSecondInteractor();
+    Interactor getSecondInteractor();
+
+
+    boolean hasUniProtAccession();
+
+    boolean hasGeneName();
+
+    boolean hasNumberOfExperiments();
+
+    boolean hasFirstInteractor();
+
+    boolean hasSecondInteractor();
 }

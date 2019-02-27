@@ -12,14 +12,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DomainConverter implements Converter<Domain, ProteinSection> ,ToXmlDbReferences<ProteinSection> {
+    private final NameConverter nameConverter;
 	private final RecNameConverter recNameConverter;
 	private final AltNameConverter altNameConverter;
 	private final ObjectFactory xmlUniprotFactory;
-	public DomainConverter(RecNameConverter recNameConverter, AltNameConverter altNameConverter) {
-		this(recNameConverter, altNameConverter, new ObjectFactory());
+	public DomainConverter(NameConverter nameConverter,
+			RecNameConverter recNameConverter, AltNameConverter altNameConverter) {
+		this(nameConverter, recNameConverter, altNameConverter, new ObjectFactory());
 	}
-	public DomainConverter(RecNameConverter recNameConverter, AltNameConverter altNameConverter,
+	public DomainConverter(NameConverter nameConverter,
+			RecNameConverter recNameConverter, AltNameConverter altNameConverter,
 			ObjectFactory xmlUniprotFactory) {
+		this.nameConverter = nameConverter;
 		this.recNameConverter = recNameConverter;
 		this.altNameConverter = altNameConverter;
 		this.xmlUniprotFactory = xmlUniprotFactory;
@@ -27,11 +31,31 @@ public class DomainConverter implements Converter<Domain, ProteinSection> ,ToXml
 
 	@Override
 	public ProteinSection fromXml(Domain xmlObj) {
-		return new ProteinSectionBuilder()
+		ProteinSectionBuilder builder =
+				new ProteinSectionBuilder()
 				.recommendedName(recNameConverter.fromXml(xmlObj.getRecommendedName()))
 				.alternativeNames(xmlObj.getAlternativeName().stream()
-										  .map(altNameConverter::fromXml).collect(Collectors.toList()))
-				.build();
+										  .map(altNameConverter::fromXml).collect(Collectors.toList()));
+		if(xmlObj.getAllergenName() !=null) {
+			builder.allergenName(nameConverter.fromXml(xmlObj.getAllergenName()));
+		}
+		if(xmlObj.getBiotechName() !=null) {
+			builder.biotechName(nameConverter.fromXml(xmlObj.getBiotechName()));
+		}
+		if(!xmlObj.getCdAntigenName().isEmpty()) {
+			builder.cdAntigenNames(
+			xmlObj.getCdAntigenName().stream()
+			.map(nameConverter::fromXml)
+			.collect(Collectors.toList()));
+		}
+		if(!xmlObj.getInnName().isEmpty()) {
+			builder.innNames(
+					xmlObj.getInnName().stream()
+					.map(nameConverter::fromXml)
+					.collect(Collectors.toList()));
+		}
+		
+		return builder.build();
 	}
 
 	@Override
@@ -39,6 +63,18 @@ public class DomainConverter implements Converter<Domain, ProteinSection> ,ToXml
 		Domain domain = xmlUniprotFactory.createProteinTypeDomain();
 		domain.setRecommendedName(recNameConverter.toXml(uniObj.getRecommendedName()));
 		uniObj.getAlternativeNames().forEach(val -> domain.getAlternativeName().add(altNameConverter.toXml(val)));		
+		 if (uniObj.getAllergenName() != null) {
+			 domain.setAllergenName(nameConverter.toXml(uniObj.getAllergenName()));
+			}
+
+			if (uniObj.getBiotechName() != null) {
+				domain.setBiotechName(nameConverter.toXml(uniObj.getBiotechName()));
+			}
+
+			uniObj.getCdAntigenNames().forEach(val -> domain.getCdAntigenName().add(nameConverter.toXml(val)));
+
+			uniObj.getInnNames().forEach(val -> domain.getInnName().add(nameConverter.toXml(val)));
+
 		return domain;
 
 	}

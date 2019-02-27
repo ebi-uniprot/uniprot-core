@@ -24,6 +24,7 @@ package uk.ac.ebi.uniprot.domain.util.property;
  SOFTWARE.
  */
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -75,7 +76,8 @@ import java.util.List;
  * @author JSON.org
  * @version 2016-08/15
  */
-public class PropertyArray implements Iterable<Object> {
+public class PropertyArray implements Iterable<Object>, Serializable {
+    private static final long serialVersionUID = 271695661120461979L;
 
     /**
      * The arrayList where the JSONArray's properties are kept.

@@ -2,7 +2,10 @@ package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
-public final class EvidenceType implements DatabaseType {
+import java.io.Serializable;
+
+public final class EvidenceType implements DatabaseType, Serializable {
+    private static final long serialVersionUID = 799945684184000909L;
     private String name;
 
     private EvidenceType() {
@@ -38,11 +41,8 @@ public final class EvidenceType implements DatabaseType {
             return false;
         EvidenceType other = (EvidenceType) obj;
         if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+            return other.name == null;
+        } else return name.equals(other.name);
     }
 
 

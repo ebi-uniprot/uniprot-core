@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain;
 
+import java.io.Serializable;
+
 /**
  * Encapsulates a protein sequence, in particular the sequence annotation in the
  * {@link uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry UniProtEntry} and
@@ -25,7 +27,7 @@ package uk.ac.ebi.uniprot.domain;
  * ...
  * </font></pre>
  */
-public interface Sequence {
+public interface Sequence extends Serializable {
 
     /**
      * Returns the length of this sequence. This should usually be the number of characters
@@ -33,7 +35,7 @@ public interface Sequence {
      *
      * @return The length of this sequence.
      */
-    public int getLength();
+    int getLength();
 
     /**
      * Returns the molecular weight of this sequence.
@@ -61,7 +63,7 @@ public interface Sequence {
      *
      * @return The molecular weight of this sequence.
      */
-    public int getMolWeight();
+    int getMolWeight();
 
 
     /**
@@ -90,9 +92,9 @@ public interface Sequence {
      *
      * @return The crc64 hashcode of this sequence.
      */
-    public String getCrc64();
+    String getCrc64();
 
-    public String getMd5();
+    String getMd5();
 
 
     /**
@@ -121,9 +123,9 @@ public interface Sequence {
      *
      * @return The String representation of the amino acid composition of this sequence.
      */
-    public String getValue();
+    String getValue();
 
 
-    public Sequence subSequence(int start, int end);
+    Sequence subSequence(int start, int end);
 
 }

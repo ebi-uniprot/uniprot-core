@@ -3,11 +3,13 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinAltNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
@@ -25,8 +27,8 @@ class ProteinSectionImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameBuilder().value("a full Name").evidences(evidences).build();
         List<Name> shortNames = createShortNames();
-        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
-        List<ProteinName> altNames = createAltName();
+        ProteinRecName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
+        List<ProteinAltName> altNames = createAltName();
         ProteinSection section = new ProteinSectionBuilder().recommendedName(recName).alternativeNames(altNames).build();
         assertEquals(recName, section.getRecommendedName());
         assertEquals(altNames, section.getAlternativeNames());
@@ -37,8 +39,8 @@ class ProteinSectionImplTest {
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameBuilder().value("a full Name").evidences(evidences).build();
         List<Name> shortNames = createShortNames();
-        ProteinName recName = new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
-        List<ProteinName> altNames = null;
+        ProteinRecName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(null).build();
+        List<ProteinAltName> altNames = null;
         ProteinSection section = new ProteinSectionBuilder().recommendedName(recName).alternativeNames(altNames).build();
         assertEquals(recName, section.getRecommendedName());
         assertEquals(0, section.getAlternativeNames().size());
@@ -52,8 +54,8 @@ class ProteinSectionImplTest {
         return shortNames;
     }
 
-    private List<ProteinName> createAltName() {
-        List<ProteinName> alternativeNames = new ArrayList<>();
+    private List<ProteinAltName> createAltName() {
+        List<ProteinAltName> alternativeNames = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         Name fullName = new NameBuilder().value("a full alt Name").evidences(evidences).build();
         List<Name> shortNames = new ArrayList<>();
@@ -62,7 +64,7 @@ class ProteinSectionImplTest {
         List<EC> ecNumbers = new ArrayList<>();
         ecNumbers.add(new ECBuilder().value("1.2.3.4").evidences( evidences).build());
 
-        alternativeNames.add(new ProteinNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build());
+        alternativeNames.add(new ProteinAltNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers).build());
 
         return alternativeNames;
     }

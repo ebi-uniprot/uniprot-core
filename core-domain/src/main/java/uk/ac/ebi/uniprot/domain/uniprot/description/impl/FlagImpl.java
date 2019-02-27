@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
 import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
 
 public class FlagImpl implements Flag {
+    private static final long serialVersionUID = -328562072578231072L;
     private FlagType type;
 
     private FlagImpl() {
@@ -36,9 +37,7 @@ public class FlagImpl implements Flag {
         if (getClass() != obj.getClass())
             return false;
         FlagImpl other = (FlagImpl) obj;
-        if (type != other.type)
-            return false;
-        return true;
+        return type == other.type;
     }
 
 }

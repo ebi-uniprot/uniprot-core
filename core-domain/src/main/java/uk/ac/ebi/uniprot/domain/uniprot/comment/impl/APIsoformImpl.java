@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class APIsoformImpl implements APIsoform {
+    private static final long serialVersionUID = -6908166238877018418L;
     private IsoformName name;
     private List<IsoformName> synonyms;
     private Note note;
@@ -70,6 +71,36 @@ public class APIsoformImpl implements APIsoform {
     @Override
     public IsoformSequenceStatus getIsoformSequenceStatus() {
         return isoformSequenceStatus;
+    }
+
+    @Override
+    public boolean hasName() {
+        return this.name != null;
+    }
+
+    @Override
+    public boolean hasSynonyms() {
+        return Utils.notEmpty(this.synonyms);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
+    public boolean hasIsoformIds() {
+        return Utils.notEmpty(this.isoformIds);
+    }
+
+    @Override
+    public boolean hasSequenceIds() {
+        return Utils.notEmpty(this.sequenceIds);
+    }
+
+    @Override
+    public boolean hasIsoformSequenceStatus() {
+        return this.isoformSequenceStatus != null;
     }
 
     @Override

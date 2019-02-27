@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UniProtReferenceImpl implements UniProtReference {
+    private static final long serialVersionUID = 4132545544902388006L;
     private Citation citation;
     private List<String> referencePositions;
     private List<ReferenceComment> referenceComments;
@@ -38,6 +39,11 @@ public class UniProtReferenceImpl implements UniProtReference {
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public Citation getCitation() {
         return citation;
     }
@@ -57,6 +63,21 @@ public class UniProtReferenceImpl implements UniProtReference {
     @Override
     public List<ReferenceComment> getReferenceComments() {
         return this.referenceComments;
+    }
+
+    @Override
+    public boolean hasCitation() {
+        return this.citation != null;
+    }
+
+    @Override
+    public boolean hasReferenceComments() {
+        return Utils.notEmpty(this.referenceComments);
+    }
+
+    @Override
+    public boolean hasReferencePositions() {
+        return Utils.notEmpty(this.referencePositions);
     }
 
     @Override

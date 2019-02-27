@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation {
+    private static final long serialVersionUID = -3156758801647353702L;
     private GeneEncodingType geneEncodingType;
 
     private GeneLocationImpl() {
@@ -59,9 +60,7 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
         if (getClass() != obj.getClass())
             return false;
         GeneLocationImpl other = (GeneLocationImpl) obj;
-        if (geneEncodingType != other.geneEncodingType)
-            return false;
-        return true;
+        return geneEncodingType == other.geneEncodingType;
     }
 
     private String getString() {

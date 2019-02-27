@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class NoteImpl extends FreeTextImpl implements Note {
+    private static final long serialVersionUID = -5402129813413280620L;
+
     private NoteImpl() {
         super(Collections.emptyList());
     }

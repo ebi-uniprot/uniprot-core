@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstantUnit;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MichaelisConstantImpl implements MichaelisConstant {
+    private static final long serialVersionUID = 7764704734751950354L;
     private double constant;
     private MichaelisConstantUnit unit;
     private String substrate;
@@ -35,6 +37,11 @@ public class MichaelisConstantImpl implements MichaelisConstant {
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

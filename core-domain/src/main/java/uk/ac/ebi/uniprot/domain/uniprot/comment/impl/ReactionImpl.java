@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 
 
 public class ReactionImpl implements Reaction {
+    private static final long serialVersionUID = 7533995250813372108L;
     private String name;
     private List<DBCrossReference<ReactionReferenceType>> reactionReferences;
     private ECNumber ecNumber;
@@ -46,6 +48,11 @@ public class ReactionImpl implements Reaction {
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -58,6 +65,21 @@ public class ReactionImpl implements Reaction {
     @Override
     public ECNumber getEcNumber() {
         return ecNumber;
+    }
+
+    @Override
+    public boolean hasName() {
+        return Utils.notEmpty(name);
+    }
+
+    @Override
+    public boolean hasReactionReferences() {
+        return Utils.notEmpty(this.reactionReferences);
+    }
+
+    @Override
+    public boolean hasEcNumber() {
+        return ecNumber != null && Utils.notEmpty(ecNumber.getValue());
     }
 
     @Override

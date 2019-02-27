@@ -11,7 +11,7 @@ public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefTy
 
     private String value;
 
-    private CitationXrefType(String type) {
+    CitationXrefType(String type) {
         this.value = type;
     }
 

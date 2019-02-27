@@ -31,12 +31,12 @@ ToXmlDbReferences<ProteinDescription> {
 		this.recNameConverter =new RecNameConverter(nameConverter, ecConverter, xmlUniprotFactory);
 		this.altNameConverter = new AltNameConverter(nameConverter, ecConverter, xmlUniprotFactory);
 		this.subNameConverter =new SubNameConverter(nameConverter, ecConverter, xmlUniprotFactory);
-		this.domainConverter =new DomainConverter(
+		this.domainConverter =new DomainConverter( nameConverter,
 				new RecNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
 				new AltNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
 				xmlUniprotFactory
 				);
-		this.componentConverter =new ComponentConverter(
+		this.componentConverter =new ComponentConverter(nameConverter,
 				new RecNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
 				new AltNameConverter(nameConverter, ecConverter, xmlUniprotFactory),
 				xmlUniprotFactory
@@ -59,8 +59,10 @@ ToXmlDbReferences<ProteinDescription> {
 		this.subNameConverter = subNameConverter;
 		this.nameConverter = nameConverter;
 		this.xmlUniprotFactory = xmlUniprotFactory;
-		this.domainConverter = new DomainConverter(recNameConverter, altNameConverter, xmlUniprotFactory);
-		this.componentConverter = new ComponentConverter(recNameConverter, altNameConverter, xmlUniprotFactory);
+		this.domainConverter = new DomainConverter(nameConverter, 
+				recNameConverter, altNameConverter, xmlUniprotFactory);
+		this.componentConverter = new ComponentConverter(nameConverter,
+				recNameConverter, altNameConverter, xmlUniprotFactory);
 
 	}
 
@@ -160,7 +162,7 @@ ToXmlDbReferences<ProteinDescription> {
 		});
 		
 		uniObj.getSubmissionNames().forEach(val -> {
-			altNameConverter.toXmlDbReferences(val)
+			subNameConverter.toXmlDbReferences(val)
 			.forEach(dbType -> {
 				if(!result.contains(dbType)) {
 					result.add(dbType);

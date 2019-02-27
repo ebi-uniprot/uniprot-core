@@ -7,6 +7,7 @@ import java.util.Objects;
 
 
 public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
+    private static final long serialVersionUID = -8822968683072940404L;
     private Range range;
     private String isoformId;
 

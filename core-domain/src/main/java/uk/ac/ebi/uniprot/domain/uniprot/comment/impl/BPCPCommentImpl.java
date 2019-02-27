@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
+    private static final long serialVersionUID = -8649046279103961092L;
     private Absorption absorption;
     private KineticParameters kineticParameters;
     private PhDependence phDependence;
@@ -57,6 +58,31 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
     }
 
     @Override
+    public boolean hasAbsorption() {
+        return this.absorption != null;
+    }
+
+    @Override
+    public boolean hasKineticParameters() {
+        return this.kineticParameters != null;
+    }
+
+    @Override
+    public boolean hasPhDependence() {
+        return this.phDependence != null;
+    }
+
+    @Override
+    public boolean hasRedoxPotential() {
+        return this.redoxPotential != null;
+    }
+
+    @Override
+    public boolean hasTemperatureDependence() {
+        return this.temperatureDependence != null;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -77,7 +103,7 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("");
+        StringBuilder sb = new StringBuilder();
         // if (commentsCounter>0)
         sb.append("\n");
         sb.append("CC   -!- ");

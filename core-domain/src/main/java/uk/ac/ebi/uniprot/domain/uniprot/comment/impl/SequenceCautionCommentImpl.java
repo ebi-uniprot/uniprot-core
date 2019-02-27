@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
+    private static final long serialVersionUID = 4628964374292908502L;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private List<String> positions;
@@ -61,8 +63,33 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     }
 
     @Override
+    public boolean hasSequence() {
+        return Utils.notEmpty(this.sequence);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
+    }
+
+    @Override
+    public boolean hasSequenceCautionType() {
+        return this.sequenceCautionType != null;
+    }
+
+    @Override
+    public boolean hasPositions() {
+        return Utils.notEmpty(this.positions);
+    }
+
+    @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

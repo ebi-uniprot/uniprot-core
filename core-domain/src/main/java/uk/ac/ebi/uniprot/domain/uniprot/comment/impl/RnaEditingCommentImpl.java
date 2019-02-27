@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
@@ -9,6 +10,7 @@ import java.util.Objects;
 
 
 public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
+    private static final long serialVersionUID = -5382803114400917004L;
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions;
     private Note note;
@@ -43,6 +45,21 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
     @Override
     public Note getNote() {
         return note;
+    }
+
+    @Override
+    public boolean hasLocationType() {
+        return this.locationType != null;
+    }
+
+    @Override
+    public boolean hasPositions() {
+        return Utils.notEmpty(this.positions);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
     }
 
     @Override
@@ -81,6 +98,11 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
         @Override
         public List<Evidence> getEvidences() {
             return evidences;
+        }
+
+        @Override
+        public boolean hasEvidences() {
+            return Utils.notEmpty(this.evidences);
         }
 
         @Override

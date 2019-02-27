@@ -12,4 +12,14 @@ public interface BPCPComment extends Comment {
 
     TemperatureDependence getTemperatureDependence();
 
+    boolean hasAbsorption();
+
+    boolean hasKineticParameters();
+
+    boolean hasPhDependence();
+
+    boolean hasRedoxPotential();
+
+    boolean hasTemperatureDependence();
+
 }

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CatalyticActivityCommentImpl extends CommentImpl implements CatalyticActivityComment {
+    private static final long serialVersionUID = 166685624467020599L;
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions;
 
@@ -37,6 +39,16 @@ public class CatalyticActivityCommentImpl extends CommentImpl implements Catalyt
     @Override
     public List<PhysiologicalReaction> getPhysiologicalReactions() {
         return physiologicalReactions;
+    }
+
+    @Override
+    public boolean hasReaction() {
+        return reaction != null;
+    }
+
+    @Override
+    public boolean hasPhysiologicalReactions() {
+        return Utils.notEmpty(this.physiologicalReactions);
     }
 
     @Override

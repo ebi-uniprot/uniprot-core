@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ECImpl extends ECNumberImpl implements EC {
+    private static final long serialVersionUID = -5418175231477354719L;
     private List<Evidence> evidences;
 
     private ECImpl() {
@@ -30,6 +32,11 @@ public class ECImpl extends ECNumberImpl implements EC {
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
@@ -47,11 +54,8 @@ public class ECImpl extends ECNumberImpl implements EC {
             return false;
         ECImpl other = (ECImpl) obj;
         if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
-        return true;
+            return other.evidences == null;
+        } else return evidences.equals(other.evidences);
     }
 
     @Override

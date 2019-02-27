@@ -11,4 +11,5 @@ public interface ScoreConfigure {
     String getKeywordFile();
     String getDiseaseFile();
     String getGOFile();
+    String getSubcellLocationFile();
 }

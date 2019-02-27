@@ -10,6 +10,7 @@ import static java.util.Collections.emptyList;
 
 
 public class BookImpl extends AbstractCitationImpl implements Book {
+    private static final long serialVersionUID = 7240686919749710678L;
     private String bookName;
     private List<Author> editors;
     private String firstPage;
@@ -71,6 +72,41 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     }
 
     @Override
+    public boolean hasBookName() {
+        return Utils.notEmpty(this.bookName);
+    }
+
+    @Override
+    public boolean hasEditors() {
+        return Utils.notEmpty(this.editors);
+    }
+
+    @Override
+    public boolean hasFirstPage() {
+        return Utils.notEmpty(this.firstPage);
+    }
+
+    @Override
+    public boolean hasLastPage() {
+        return Utils.notEmpty(this.lastPage);
+    }
+
+    @Override
+    public boolean hasVolume() {
+        return Utils.notEmpty(this.volume);
+    }
+
+    @Override
+    public boolean hasPublisher() {
+        return Utils.notEmpty(this.publisher);
+    }
+
+    @Override
+    public boolean hasAddress() {
+        return Utils.notEmpty(this.address);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
@@ -124,10 +160,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         } else if (!publisher.equals(other.publisher))
             return false;
         if (volume == null) {
-            if (other.volume != null)
-                return false;
-        } else if (!volume.equals(other.volume))
-            return false;
-        return true;
+            return other.volume == null;
+        } else return volume.equals(other.volume);
     }
 }

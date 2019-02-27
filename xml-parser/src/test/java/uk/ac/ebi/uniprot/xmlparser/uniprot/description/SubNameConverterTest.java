@@ -1,19 +1,23 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot.description;
 
-import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.SubmittedName;
-import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
-import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createEC;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createEvidences;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createName;
+import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.createProteinSubName;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.ac.ebi.uniprot.xmlparser.uniprot.description.DescriptionHelper.*;
+import org.junit.jupiter.api.Test;
+
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.SubmittedName;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.EvidenceIndexMapper;
+import uk.ac.ebi.uniprot.xmlparser.uniprot.UniProtXmlTestHelper;
 
 class SubNameConverterTest {
 
@@ -23,7 +27,7 @@ class SubNameConverterTest {
 		Name fullName = createName("a full Name", evidences);
 
 		List<EC> ecNumbers = createECNumbers();
-		ProteinName subName = createProteinName(fullName,  null, ecNumbers);
+		ProteinSubName subName = createProteinSubName(fullName,   ecNumbers);
 		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
 		ECConverter ecConverter = new ECConverter(evRefMapper);
 		NameConverter nameConverter =new NameConverter(evRefMapper);
@@ -31,7 +35,7 @@ class SubNameConverterTest {
 		SubmittedName xmlObj =converter.toXml(subName);
 		
 		 System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, SubmittedName.class, "submittedName"));
-		ProteinName converted = converter.fromXml(xmlObj);
+		ProteinSubName converted = converter.fromXml(xmlObj);
 		assertEquals(subName, converted);
 	}
 	private List<EC> createECNumbers() {

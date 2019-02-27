@@ -6,4 +6,8 @@ public interface CatalyticActivityComment extends Comment {
     Reaction getReaction();
 
     List<PhysiologicalReaction> getPhysiologicalReactions();
+
+    boolean hasReaction();
+
+    boolean hasPhysiologicalReactions();
 }

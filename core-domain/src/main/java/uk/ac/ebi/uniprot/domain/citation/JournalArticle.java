@@ -15,13 +15,21 @@ package uk.ac.ebi.uniprot.domain.citation;
  */
 public interface JournalArticle extends Citation {
 
-    public Journal getJournal();
+    Journal getJournal();
 
-    public String getFirstPage();
+    String getFirstPage();
 
-    public String getLastPage();
+    String getLastPage();
 
-    public String getVolume();
+    String getVolume();
+
+    boolean hasJournal();
+
+    boolean hasFirstPage();
+
+    boolean hasLastPage();
+
+    boolean hasVolume();
 }
 
 

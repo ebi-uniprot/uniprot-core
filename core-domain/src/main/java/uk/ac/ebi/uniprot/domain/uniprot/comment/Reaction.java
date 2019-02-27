@@ -12,4 +12,10 @@ public interface Reaction extends HasEvidences {
     List<DBCrossReference<ReactionReferenceType>> getReactionReferences();
 
     ECNumber getEcNumber();
+
+    boolean hasName();
+
+    boolean hasReactionReferences();
+
+    boolean hasEcNumber();
 }

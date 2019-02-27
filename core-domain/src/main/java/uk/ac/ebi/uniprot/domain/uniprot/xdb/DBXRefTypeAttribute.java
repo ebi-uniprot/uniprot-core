@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
-public final class DBXRefTypeAttribute {
+import java.io.Serializable;
+
+public final class DBXRefTypeAttribute implements Serializable {
+    private static final long serialVersionUID = -4851911006519587041L;
     private String name;
     private String xmlTag;
     private String uriLink;
@@ -57,11 +60,8 @@ public final class DBXRefTypeAttribute {
         } else if (!uriLink.equals(other.uriLink))
             return false;
         if (xmlTag == null) {
-            if (other.xmlTag != null)
-                return false;
-        } else if (!xmlTag.equals(other.xmlTag))
-            return false;
-        return true;
+            return other.xmlTag == null;
+        } else return xmlTag.equals(other.xmlTag);
     }
 
 }

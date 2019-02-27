@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
@@ -11,6 +12,7 @@ import java.util.Objects;
 
 
 public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference<T> {
+    private static final long serialVersionUID = 4318477387676269483L;
     protected T databaseType;
     protected String id;
     protected List<Property> properties;
@@ -42,6 +44,21 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
     @Override
     public List<Property> getProperties() {
         return properties;
+    }
+
+    @Override
+    public boolean hasDatabaseType() {
+        return this.databaseType != null;
+    }
+
+    @Override
+    public boolean hasId() {
+        return Utils.notEmpty(this.id);
+    }
+
+    @Override
+    public boolean hasProperties() {
+        return Utils.notEmpty(this.properties);
     }
 
     public void setProperties(List<Property> properties) {

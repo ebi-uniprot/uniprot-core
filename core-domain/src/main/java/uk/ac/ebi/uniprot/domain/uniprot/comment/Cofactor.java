@@ -7,4 +7,8 @@ public interface Cofactor extends HasEvidences {
     String getName();
 
     DBCrossReference<CofactorReferenceType> getCofactorReference();
+
+    boolean hasName();
+
+    boolean hasCofactorReference();
 }

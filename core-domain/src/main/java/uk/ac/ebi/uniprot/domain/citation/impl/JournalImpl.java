@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.domain.citation.impl;
 import uk.ac.ebi.uniprot.domain.citation.Journal;
 
 public class JournalImpl implements Journal {
+    private static final long serialVersionUID = 5877235340272317134L;
     private String name;
 
     private JournalImpl() {
@@ -36,11 +37,8 @@ public class JournalImpl implements Journal {
             return false;
         JournalImpl other = (JournalImpl) obj;
         if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        return true;
+            return other.name == null;
+        } else return name.equals(other.name);
     }
 
 }

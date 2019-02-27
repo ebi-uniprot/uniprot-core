@@ -1,8 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Value;
 
 public class ValueImpl implements Value {
+    private static final long serialVersionUID = 1046531902098372084L;
     private String value;
 
     private ValueImpl() {
@@ -16,6 +18,11 @@ public class ValueImpl implements Value {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
     }
 
     @Override
@@ -41,10 +48,7 @@ public class ValueImpl implements Value {
             return false;
         ValueImpl other = (ValueImpl) obj;
         if (value == null) {
-            if (other.value != null)
-                return false;
-        } else if (!value.equals(other.value))
-            return false;
-        return true;
+            return other.value == null;
+        } else return value.equals(other.value);
     }
 }

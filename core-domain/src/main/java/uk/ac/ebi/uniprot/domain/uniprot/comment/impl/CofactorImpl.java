@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CofactorImpl implements Cofactor {
+    private static final long serialVersionUID = -1446627008409869566L;
     private String name;
     private List<Evidence> evidences;
     private DBCrossReference<CofactorReferenceType> cofactorReference;
@@ -36,6 +38,11 @@ public class CofactorImpl implements Cofactor {
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -43,6 +50,16 @@ public class CofactorImpl implements Cofactor {
     @Override
     public DBCrossReference<CofactorReferenceType> getCofactorReference() {
         return cofactorReference;
+    }
+
+    @Override
+    public boolean hasName() {
+        return Utils.notEmpty(this.name);
+    }
+
+    @Override
+    public boolean hasCofactorReference() {
+        return this.cofactorReference != null;
     }
 
     @Override

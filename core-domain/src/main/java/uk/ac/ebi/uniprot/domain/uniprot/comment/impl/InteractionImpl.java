@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 
 public class InteractionImpl implements Interaction {
+    private static final long serialVersionUID = -1102213995267310387L;
     private InteractionType type;
     private UniProtAccession uniProtAccession;
     private String geneName;
@@ -63,6 +65,31 @@ public class InteractionImpl implements Interaction {
     @Override
     public Interactor getSecondInteractor() {
         return secondInteractor;
+    }
+
+    @Override
+    public boolean hasUniProtAccession() {
+        return this.uniProtAccession != null && Utils.notEmpty(this.uniProtAccession.getValue());
+    }
+
+    @Override
+    public boolean hasGeneName() {
+        return Utils.notEmpty(this.geneName);
+    }
+
+    @Override
+    public boolean hasNumberOfExperiments() {
+        return this.numberOfExperiments > 0;
+    }
+
+    @Override
+    public boolean hasFirstInteractor() {
+        return this.firstInteractor != null && Utils.notEmpty(this.firstInteractor.getValue());
+    }
+
+    @Override
+    public boolean hasSecondInteractor() {
+        return this.secondInteractor != null && Utils.notEmpty(this.secondInteractor.getValue());
     }
 
     @Override

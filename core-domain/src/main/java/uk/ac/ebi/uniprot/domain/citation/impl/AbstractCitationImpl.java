@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractCitationImpl implements Citation {
+    private static final long serialVersionUID = -2752460607884626559L;
     private CitationType citationType;
     private List<String> authoringGroup;
     private List<Author> authors;
@@ -68,12 +69,28 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean hasTitle() {
-        return ((title != null) && !title.isEmpty());
+        return Utils.notEmpty(this.title);
     }
 
     @Override
     public PublicationDate getPublicationDate() {
         return publicationDate;
+    }
+
+
+    @Override
+    public boolean hasAuthoringGroup(){
+        return Utils.notEmpty(this.authoringGroup);
+    }
+
+    @Override
+    public boolean hasAuthors(){
+        return Utils.notEmpty(this.authors);
+    }
+
+    @Override
+    public boolean hasPublicationDate(){
+        return this.publicationDate != null;
     }
 
     @Override
@@ -121,10 +138,7 @@ public abstract class AbstractCitationImpl implements Citation {
         } else if (!publicationDate.equals(other.publicationDate))
             return false;
         if (title == null) {
-            if (other.title != null)
-                return false;
-        } else if (!title.equals(other.title))
-            return false;
-        return true;
+            return other.title == null;
+        } else return title.equals(other.title);
     }
 }

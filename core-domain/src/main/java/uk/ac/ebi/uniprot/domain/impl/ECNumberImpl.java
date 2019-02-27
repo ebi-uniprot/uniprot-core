@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 
 import java.util.regex.Pattern;
 
 public class ECNumberImpl implements ECNumber {
     private static final Pattern EC_PATTERN = Pattern.compile("\\d{1,2}(\\.(\\-|n?\\d{1,3})){3}");
+    private static final long serialVersionUID = -9050725609382601827L;
     private String value;
 
     private ECNumberImpl() {
@@ -19,6 +21,11 @@ public class ECNumberImpl implements ECNumber {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
     }
 
     @Override
@@ -44,11 +51,8 @@ public class ECNumberImpl implements ECNumber {
             return false;
         ECNumberImpl other = (ECNumberImpl) obj;
         if (value == null) {
-            if (other.value != null)
-                return false;
-        } else if (!value.equals(other.value))
-            return false;
-        return true;
+            return other.value == null;
+        } else return value.equals(other.value);
     }
 
 }

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class InteractionCommentImpl extends CommentImpl implements InteractionComment {
+    private static final long serialVersionUID = 460447737850135638L;
     private List<Interaction> interactions;
 
     private InteractionCommentImpl() {
@@ -28,6 +30,11 @@ public class InteractionCommentImpl extends CommentImpl implements InteractionCo
     @Override
     public List<Interaction> getInteractions() {
         return interactions;
+    }
+
+    @Override
+    public boolean hasInteractions() {
+        return Utils.notEmpty(this.interactions);
     }
 
     @Override

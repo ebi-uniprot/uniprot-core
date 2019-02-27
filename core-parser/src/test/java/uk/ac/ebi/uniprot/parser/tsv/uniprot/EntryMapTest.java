@@ -3,10 +3,13 @@ package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.parser.UniProtParser;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtParser;
+import uk.ac.ebi.uniprot.flatfile.parser.UniProtParser;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +24,9 @@ class EntryMapTest {
 	
 	@BeforeAll
 	static void setup() throws Exception {
-	    UniProtParser parser = new DefaultUniProtParser("","","",true);
+
+		URL url = EntryMapTest.class.getResource("/uniprot/keywlist.txt");
+	    UniProtParser parser = new DefaultUniProtParser(url.getPath(),"","", "", true);
 
 
 		InputStream is = EntryMapTest.class.getResourceAsStream("/uniprot/Q15758.dat" );
@@ -174,19 +179,12 @@ class EntryMapTest {
 		assertEquals(fields.size(), result.size());
 		verify("Q15758", 0, result);
 
-		String altProd = "ALTERNATIVE PRODUCTS: " +
-				" Event=Alternative splicing, Alternative initiation; Named isoforms=3;" +
-				"Comment=A number of isoforms are produced by alternative" +
-				" initiation. Isoforms start at multiple alternative CUG and GUG" +
-				" codons. {ECO:0000269|PubMed:11350958}; " +
-				" Name=1;" +
-				" IsoId=Q15758-1; Sequence=displayed;" +
-				" Name=2;" +
-				" IsoId=Q15758-2; Sequence=VSP_046354;" +
-				" Note=No experimental confirmation available.;" +
-				" Name=3;" +
-				" IsoId=Q15758-3; Sequence=VSP_046851;" +
-				" Note=No experimental confirmation available.;" ;
+		String altProd = "ALTERNATIVE PRODUCTS:  Event=Alternative splicing, Alternative initiation; " +
+				"Named isoforms=3; Comment=A number of isoforms are produced by alternative initiation. " +
+				"Isoforms start at multiple alternative CUG and GUG codons. {ECO:0000269|PubMed:11350958}; " +
+				"Name=1; IsoId=Q15758-1; Sequence=Displayed; Name=2; IsoId=Q15758-2; Sequence=VSP_046354; " +
+				"Note=No experimental confirmation available.; Name=3; IsoId=Q15758-3; Sequence=VSP_046851; " +
+				"Note=No experimental confirmation available.;" ;
 		verify(altProd, 1, result);
 	}
 	
@@ -197,31 +195,23 @@ class EntryMapTest {
 		List<String> result= dl.getData();
 		assertEquals(fields.size(), result.size());
 		verify("Q15758", 0, result);
-		String cfunction ="FUNCTION: Sodium-dependent amino acids transporter that has a" +
-				" broad substrate specificity, with a preference for zwitterionic" +
-				" amino acids. It accepts as substrates all neutral amino acids," +
-				" including glutamine, asparagine, and branched-chain and aromatic" +
-				" amino acids, and excludes methylated, anionic, and cationic amino" +
-				" acids (PubMed:8702519, PubMed:29872227). Through binding of the" +
-				" fusogenic protein syncytin-1/ERVW-1 may mediate trophoblasts" +
-				" syncytialization, the spontaneous fusion of their plasma" +
-				" membranes, an essential process in placental development" +
-				" (PubMed:10708449, PubMed:23492904) {ECO:0000269|PubMed:10708449," +
-				" ECO:0000269|PubMed:23492904, ECO:0000269|PubMed:29872227," +
-				" ECO:0000269|PubMed:8702519}.;" +
-				" FUNCTION: (Microbial infection) Acts as a cell surface receptor" +
-				" for Feline endogenous virus RD114 {ECO:0000269|PubMed:10051606," +
-				" ECO:0000269|PubMed:10196349}.;" +
-				" FUNCTION: (Microbial infection) Acts as a cell surface receptor" +
-				" for Baboon M7 endogenous virus {ECO:0000269|PubMed:10196349}.;" +
-				" FUNCTION: (Microbial infection) Acts as a cell surface receptor" +
-				" for type D simian retroviruses {ECO:0000269|PubMed:10196349}.";
-
+		String cfunction ="FUNCTION: Sodium-dependent amino acids transporter that has a broad substrate specificity, " +
+				"with a preference for zwitterionic amino acids. It accepts as substrates all neutral amino acids, " +
+				"including glutamine, asparagine, and branched-chain and aromatic amino acids, and excludes methylated, " +
+				"anionic, and cationic amino acids (PubMed:8702519, PubMed:29872227). Through binding of the fusogenic " +
+				"protein syncytin-1/ERVW-1 may mediate trophoblasts syncytialization, the spontaneous fusion of their " +
+				"plasma membranes, an essential process in placental development (PubMed:10708449, PubMed:23492904). " +
+				"{ECO:0000269|PubMed:10708449, ECO:0000269|PubMed:23492904, ECO:0000269|PubMed:29872227, " +
+				"ECO:0000269|PubMed:8702519}.; " +
+				"FUNCTION: (Microbial infection) Acts as a cell surface receptor for Feline endogenous virus RD114. " +
+				"{ECO:0000269|PubMed:10051606, ECO:0000269|PubMed:10196349}.; FUNCTION: (Microbial infection) " +
+				"Acts as a cell surface receptor for Baboon M7 endogenous virus. {ECO:0000269|PubMed:10196349}.; " +
+				"FUNCTION: (Microbial infection) Acts as a cell surface receptor for type D simian retroviruses. " +
+				"{ECO:0000269|PubMed:10196349}.";
 		String cfomain ="";
-		String csubunit="SUBUNIT: Homotrimer (Probable) (PubMed:29872227). Interacts with" +
-				" ERVH48-1/suppressyn; may negatively regulate syncytialization" +
-				" (PubMed:23492904) {ECO:0000269|PubMed:23492904," +
-				" ECO:0000269|PubMed:29872227, ECO:0000305|PubMed:28424515}.";
+		String csubunit="SUBUNIT: Homotrimer (Probable) (PubMed:29872227). Interacts with ERVH48-1/suppressyn; " +
+				"may negatively regulate syncytialization (PubMed:23492904). " +
+				"{ECO:0000269|PubMed:23492904, ECO:0000269|PubMed:29872227, ECO:0000305|PubMed:28424515}.";
 	
 		String cinteraction ="Q99942" ;
 		verify(cfunction, 1, result);
@@ -238,10 +228,10 @@ class EntryMapTest {
 		assertEquals(fields.size(), result.size());
 		verify("P03431", 0, result);
 		String interaction ="Q14318; P03466; P03433; P03428; Q99959";
-		String subcell ="SUBCELLULAR LOCATION: Host nucleus {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19906916}."
-				+ " Host cytoplasm {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19906916}." ;
-		String ptm="PTM: Phosphorylated by host PRKCA {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19264651}.";
-		String similarity="SIMILARITY: Belongs to the influenza viruses polymerase PB1 family {ECO:0000255|HAMAP-Rule:MF_04065}.";
+		String subcell ="SUBCELLULAR LOCATION: Host nucleus {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19906916}. " +
+				"Host cytoplasm {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19906916}." ;
+		String ptm="PTM: Phosphorylated by host PRKCA. {ECO:0000255|HAMAP-Rule:MF_04065, ECO:0000269|PubMed:19264651}.";
+		String similarity="SIMILARITY: Belongs to the influenza viruses polymerase PB1 family. {ECO:0000255|HAMAP-Rule:MF_04065}.";
 		verify(interaction, 1, result);
 		verify(subcell, 2, result);
 		verify(ptm, 3, result);
@@ -255,7 +245,7 @@ class EntryMapTest {
 		assertEquals(fields.size(), result.size());
 		verify("P03431", 0, result);
 		String proteinFamily ="Influenza viruses polymerase PB1 family";
-		String similarity="SIMILARITY: Belongs to the influenza viruses polymerase PB1 family {ECO:0000255|HAMAP-Rule:MF_04065}.";
+		String similarity="SIMILARITY: Belongs to the influenza viruses polymerase PB1 family. {ECO:0000255|HAMAP-Rule:MF_04065}.";
 		verify(proteinFamily, 1, result);
 		verify(similarity, 2, result);	
 	}
@@ -267,8 +257,8 @@ class EntryMapTest {
 		List<String> result= dl.getData();
 		assertEquals(fields.size(), result.size());
 		verify("Q84MC7", 0, result);
-		String seqCaution ="SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=ERRONEOUS_INITIATION; Note=Translation N-terminally extended.; Evidence={ECO:0000305};" ;
-		String seqCaution2="SEQUENCE CAUTION:  Sequence=AAM65514.1; Type=ERRONEOUS_PREDICTION; Evidence={ECO:0000305};";
+		String seqCaution ="SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=ERRONEOUS_INITIATION; Note=Translation N-terminally extended.; Evidence={ECO:0000305}" ;
+		String seqCaution2="SEQUENCE CAUTION:  Sequence=AAM65514.1; Type=ERRONEOUS_PREDICTION; Evidence={ECO:0000305}";
 		
 		
 		verify(seqCaution, 1, result);
@@ -283,23 +273,23 @@ class EntryMapTest {
 		List<String> result= dl.getData();
 		assertEquals(fields.size(), result.size());
 		verify("Q70KY3", 0, result);
-		String absorption ="BIOPHYSICOCHEMICAL PROPERTIES: ;  Absorption: Abs(max)=280 {ECO:0000269|PubMed:12111146,"
-				+ " ECO:0000269|PubMed:12118243}; Note=Exhibits a shoulder at 360 nm, a smaller absorption peak at 450 nm,"
-				+ " and a second, larger peak at 590 nm. {ECO:0000269|PubMed:12118243};" ;
+		String absorption ="BIOPHYSICOCHEMICAL PROPERTIES:  Absorption: Abs(max)=280 nm {ECO:0000269|PubMed:12111146, " +
+				"ECO:0000269|PubMed:12118243}; Note=Exhibits a shoulder at 360 nm, " +
+				"a smaller absorption peak at 450 nm, and a second, larger peak at 590 nm. {ECO:0000269|PubMed:12118243};" ;
 		String kinetic="BIOPHYSICOCHEMICAL PROPERTIES:  Kinetic parameters: KM=5.61 mM for ethanol {ECO:0000269|PubMed:10320337,"
 				+ " ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276}; KM=0.105 mM for butane-1-ol {ECO:0000269|PubMed:10320337,"
 				+ " ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276}; Vmax=45.5 umol/min/mg enzyme toward potassium"
 				+ " ferricyanide (in the presence of 30 mM Tris-HCl pH 8.0) {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256,"
 				+ " ECO:0000269|PubMed:7730276};" ;
-		String phDep ="BIOPHYSICOCHEMICAL PROPERTIES: ;  pH dependence: Optimum pH is 3.5 with 2,2'-azinobis-(3-ethylbenzthiazoline-6-sulphonate)"
-				+ " as substrate, 5.0-7.5 with guiacol as substrate, and 6.0-7.0 with syringaldazine as substrate."
-				+ " {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243}; Optimum pH is 8.0."
-				+ " {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276}" ;
-		String redox ="BIOPHYSICOCHEMICAL PROPERTIES: ;  Redox potential: E(0) is +185 mV for heme c at pH 7.0,"
-				+ " +188 mV for heme c at pH 8.0, +172 mV for heme c at pH 8.0 and 0.3 M KCl and +189 mV for"
-				+ " ADH IIB-Azurin complex. {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276}" ;
-		String tempDep= "BIOPHYSICOCHEMICAL PROPERTIES: ;  Temperature dependence: Optimum temperature is 60-70 degrees Celsius."
-				+ " {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243}" ;
+		String phDep ="BIOPHYSICOCHEMICAL PROPERTIES:  pH dependence: Optimum pH is 3.5 with " +
+				"2,2'-azinobis-(3-ethylbenzthiazoline-6-sulphonate) as substrate, 5.0-7.5 with guiacol as substrate, " +
+				"and 6.0-7.0 with syringaldazine as substrate. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243}; " +
+				"Optimum pH is 8.0. {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};" ;
+		String redox ="BIOPHYSICOCHEMICAL PROPERTIES:  Redox potential: E(0) is +185 mV for heme c at pH 7.0, +188 mV " +
+				"for heme c at pH 8.0, +172 mV for heme c at pH 8.0 and 0.3 M KCl and +189 mV for ADH IIB-Azurin complex." +
+				" {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};" ;
+		String tempDep= "BIOPHYSICOCHEMICAL PROPERTIES:  Temperature dependence: Optimum temperature is 60-70 degrees " +
+				"Celsius. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243};" ;
 		
 		verify(absorption, 1, result);
 		verify(kinetic, 2, result);	

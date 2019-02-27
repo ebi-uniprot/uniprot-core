@@ -10,12 +10,23 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypeDetail;
 import uk.ebi.uniprot.scorer.uniprotkb.comments.CommentScored;
 import uk.ebi.uniprot.scorer.uniprotkb.comments.CommentScoredFactory;
 import uk.ebi.uniprot.scorer.uniprotkb.features.FeatureScored;
+import uk.ebi.uniprot.scorer.uniprotkb.xdb.EmblScored;
+import uk.ebi.uniprot.scorer.uniprotkb.xdb.GoScored;
+import uk.ebi.uniprot.scorer.uniprotkb.xdb.PDBScored;
+import uk.ebi.uniprot.scorer.uniprotkb.xdb.PDBSumScored;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -26,20 +37,20 @@ public class UniProtEntryScored implements HasScore {
 
     private static final Logger LOG = LoggerFactory.getLogger(UniProtEntryScored.class);
     private final EntryScore score;
-//    private static final List<DatabaseType> DATABASE_TYPES;
-//    static {
-//        DATABASE_TYPES = new ArrayList<>();
-//        List<String> allDBNames = CrossReferenceDatabaseContext.INSTANCE.getAllXrefDBName();
-//        Set<DatabaseType> excludedCrossReferences =
-//                new HashSet<>(Arrays.asList(DatabaseType.GO, DatabaseType.EMBL, DatabaseType.PDB, DatabaseType.PDBSUM));
-//        for (String name : allDBNames) {
-//            DatabaseType type = DatabaseType.getDatabaseType(name);
-//            if (!excludedCrossReferences.contains(type)) {
-//                DATABASE_TYPES.add(type);
-//            }
-//        }
-//
-//    }
+    private static final List<String> DATABASE_TYPES;
+    static {
+        DATABASE_TYPES = new ArrayList<>();
+        List<UniProtXDbTypeDetail> allDBs =  UniProtXDbDisplayOrder.INSTANCE.getOrderedDatabases();
+        Set<String> excludedCrossReferences =
+                new HashSet<>(Arrays.asList("GO", "EMBL", "PDB", "PDBsum"));
+        for (UniProtXDbTypeDetail xdb : allDBs) {
+        	String name  = xdb.getName();
+            if (!excludedCrossReferences.contains(name)) {
+                DATABASE_TYPES.add(name);
+            }
+        }
+
+    }
 
     private final UniProtEntry entry;
     private final List<EvidenceType> evidenceTypes;
@@ -61,10 +72,10 @@ public class UniProtEntryScored implements HasScore {
         this.score.commentScore = scoreComments();
 
         // XREFS
-//        this.score.xrefScore = scoreCrossReferences();
+        this.score.xrefScore = scoreCrossReferences();
 
         // XREFS
-//        this.score.goScore = scoreGo();
+        this.score.goScore = scoreGo();
 
         // KEYWORDS
         this.score.keywordScore = scoreKeywords();
@@ -152,61 +163,61 @@ public class UniProtEntryScored implements HasScore {
         return localScore;
     }
 
-//    private double scoreGo() {
-//        double localScore = 0;
-//        {
-//            List<DatabaseCrossReference> dbxs = entry.getDatabaseCrossReferences(DatabaseType.GO);
-//            localScore = new GoScored(dbxs, evidenceTypes).score();
-//        }
-//        return localScore;
-//    }
+    private double scoreGo() {
+        double localScore = 0;
+        {
+            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("GO");
+            localScore = new GoScored(dbxs, evidenceTypes).score();
+        }
+        return localScore;
+    }
 
-//    private double scoreCrossReferences() {
-//        double oldscore = 0;
-//        double localScore = 0;
-//        {
-//            List<DatabaseCrossReference> dbxs = entry.getDatabaseCrossReferences(DatabaseType.EMBL);
-//            oldscore = localScore;
-//            localScore += new EmblScored(dbxs, evidenceTypes).score();
-//            if (Math.abs(oldscore - localScore) > 0.001)
-//                LOG.debug("Xref score for EMBL {}", localScore - oldscore);
-//        }
-//
-//        {
-//            List<DatabaseCrossReference> dbxs = entry.getDatabaseCrossReferences(DatabaseType.PDB);
-//            oldscore = localScore;
-//            localScore += new PDBScored(dbxs, evidenceTypes).score();
-//            if (Math.abs(oldscore - localScore) > 0.001)
-//                LOG.debug("Xref score for PDB {}", localScore - oldscore);
-//        }
-//        {
-//            List<DatabaseCrossReference> dbxs = entry.getDatabaseCrossReferences(DatabaseType.PDBSUM);
-//            oldscore = localScore;
-//            localScore += new PDBSumScored(dbxs, evidenceTypes).score();
-//            if (Math.abs(oldscore - localScore) > 0.001)
-//                LOG.debug("Xref score for PDBSum {}", localScore - oldscore);
-//        }
-//
-//        oldscore = localScore;
-//        for (DatabaseType type : DATABASE_TYPES) {
-//            List<DatabaseCrossReference> xrefs = entry.getDatabaseCrossReferences(type);
-//            if (!xrefs.isEmpty() && hasEvidences(xrefs))
-//                localScore += 0.1;
-//        }
-//        if (Math.abs(oldscore - localScore) > 0.001)
-//            LOG.debug("Xref score for all other {}", localScore - oldscore);
-//
-//        return localScore;
-//    }
+    private double scoreCrossReferences() {
+        double oldscore = 0;
+        double localScore = 0;
+        {
+            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("EMBL");
+            oldscore = localScore;
+            localScore += new EmblScored(dbxs, evidenceTypes).score();
+            if (Math.abs(oldscore - localScore) > 0.001)
+                LOG.debug("Xref score for EMBL {}", localScore - oldscore);
+        }
 
-//    private boolean hasEvidences(List<DatabaseCrossReference> xrefs) {
-//        for (DatabaseCrossReference xref : xrefs) {
-//            if (ScoreUtil.hasEvidence(xref.getEvidenceIds(), evidenceTypes)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+        {
+            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("PDB");
+            oldscore = localScore;
+            localScore += new PDBScored(dbxs, evidenceTypes).score();
+            if (Math.abs(oldscore - localScore) > 0.001)
+                LOG.debug("Xref score for PDB {}", localScore - oldscore);
+        }
+        {
+            List<UniProtDBCrossReference> dbxs = entry.getDatabaseCrossReferencesByType("PDBsum");
+            oldscore = localScore;
+            localScore += new PDBSumScored(dbxs, evidenceTypes).score();
+            if (Math.abs(oldscore - localScore) > 0.001)
+                LOG.debug("Xref score for PDBSum {}", localScore - oldscore);
+        }
+
+        oldscore = localScore;
+        for (String type : DATABASE_TYPES) {
+            List<UniProtDBCrossReference> xrefs = entry.getDatabaseCrossReferencesByType(type);
+            if (!xrefs.isEmpty() && hasEvidences(xrefs))
+                localScore += 0.1;
+        }
+        if (Math.abs(oldscore - localScore) > 0.001)
+            LOG.debug("Xref score for all other {}", localScore - oldscore);
+
+        return localScore;
+    }
+
+    private boolean hasEvidences(List<UniProtDBCrossReference> xrefs) {
+        for (UniProtDBCrossReference xref : xrefs) {
+            if (ScoreUtil.hasEvidence(xref.getEvidences(), evidenceTypes)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private double scoreComments(boolean isSP, CommentType type, String name) {
         List<HasScore> scoredList = new ArrayList<>();

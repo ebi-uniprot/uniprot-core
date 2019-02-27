@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtEntryIterator;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtEntryIterator;
 
 import java.io.*;
 import java.time.Duration;
@@ -124,6 +124,7 @@ public class UniProtEntryScorer {
             String keywordFile = configure.getKeywordFile();
             String diseaseFile = configure.getDiseaseFile();
             String goFile = configure.getGOFile();
+            String subcellFile = configure.getSubcellLocationFile();
 
             if (!Strings.isNullOrEmpty(configure.getOutputFile())) {
                 out = new FileOutputStream(configure.getOutputFile());
@@ -136,7 +137,7 @@ public class UniProtEntryScorer {
                 LOG.info("OutputFile: {}", configure.getOutputFile());
 
             DefaultUniProtEntryIterator newEntryIterator = new DefaultUniProtEntryIterator(8, 10000, 50000);
-            newEntryIterator.setInput(fileName, keywordFile, diseaseFile, goFile);
+            newEntryIterator.setInput(fileName, keywordFile, diseaseFile, goFile, subcellFile);
             List<EvidenceType> evidenceTypes = convertEvidenceTypes(configure.getEvidences());
             UniProtEntryScorer scorer = new UniProtEntryScorer(out, true, evidenceTypes);
             scorer.setWithTaxId(true);

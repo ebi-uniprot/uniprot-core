@@ -16,14 +16,17 @@ public class ScoreConfigureImpl implements ScoreConfigure {
     @Parameter(required = true, names = "-f", description = "input entries file")
     private String inputFile = null;
 
-    @Parameter(required = true, names = "-k", description = "input entries file")
+    @Parameter(required = true, names = "-k", description = "input keyword file file")
     private String keywordFile = null;
 
-    @Parameter(required = true, names = "-d", description = "input entries file")
+    @Parameter(required = true, names = "-d", description = "input disease file file")
     private String diseaseFile = null;
 
-    @Parameter(required = true, names = "-g", description = "input entries file")
+    @Parameter(required = true, names = "-g", description = "input go term file")
     private String goFile = null;
+    
+    @Parameter(required = true, names = "-s", description = "input subcellular location file file")
+    private String subcellLocationFile = null;
 
     @Parameter(names = "-o", description = "output file")
     private String outputfile = null;
@@ -90,4 +93,9 @@ public class ScoreConfigureImpl implements ScoreConfigure {
         File file = new File(this.getInputFile());
         return (file.isFile());
     }
+
+	@Override
+	public String getSubcellLocationFile() {
+		return this.subcellLocationFile;
+	}
 }

@@ -17,4 +17,16 @@ public interface MassSpectrometryComment extends Comment {
     public MassSpectrometryMethod getMethod();
 
     public List<Evidence> getEvidences();
+
+    boolean hasMolWeight();
+
+    boolean hasMolWeightError();
+
+    boolean hasNote();
+
+    boolean hasRanges();
+
+    boolean hasMethod();
+
+    boolean hasEvidences();
 }

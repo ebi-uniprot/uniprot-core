@@ -14,7 +14,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDbType> implements UniProtDBCrossReference {
-
+    private static final long serialVersionUID = -3661768450999840694L;
     private static final String SEMICOLON = "; ";
     private static final String DASH = "-";
     private String isoformId;
@@ -40,8 +40,18 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     @Override
+    public boolean hasIsoformId() {
+        return Utils.notEmpty(this.isoformId);
+    }
+
+    @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

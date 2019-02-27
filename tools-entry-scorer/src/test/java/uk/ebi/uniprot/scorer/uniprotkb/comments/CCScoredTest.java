@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.parser.impl.cc.CcLineTransformer;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
 import uk.ebi.uniprot.scorer.uniprotkb.UniProtEntryScored;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class CCScoredTest {
             "CC       in the modulation of the activity of the binding partner.\n" +
             "CC   -!- SUBUNIT: Homodimer, and heterodimer with other family members.\n" +                    // 3.0
             "CC       {ECO:0000256|HAMAP-Rule:MF_01146}.\n" +
-            "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. {ECO:0000256|HAMAP-Rule:MF_01146}.\n" +           // 3.0 but is 1.0 in original unp.fw.tools test
+            "CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000256|HAMAP-Rule:MF_01146}.\n" +           // 3.0 but is 1.0 in original unp.fw.tools test
             // When debugging I can see that the subcell object has no associated evidence, but it should have one. Why?
             "CC   -!- MASS SPECTROMETRY: Mass=29440; Mass_error=2; Method=MALDI;\n" +                    // 9.0
             "CC       Range=1-255; Evidence={ECO:0000269|PubMed:10433554};\n" +
@@ -34,7 +34,7 @@ public class CCScoredTest {
 
     @Test
     public void test1() throws Exception {
-        CcLineTransformer ccLineTransformer = new CcLineTransformer(null);
+        CcLineTransformer ccLineTransformer = new CcLineTransformer(null, null);
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC);
         UniProtEntry entry = new UniProtEntryBuilder()
                 .primaryAccession(new UniProtAccessionBuilder("P12345").build())
@@ -127,7 +127,7 @@ public class CCScoredTest {
 
     @Test
     public void test2() {
-        CcLineTransformer ccLineTransformer = new CcLineTransformer(null);
+        CcLineTransformer ccLineTransformer = new CcLineTransformer(null, null);
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC_2);
         UniProtEntry entry = new UniProtEntryBuilder()
                 .primaryAccession(new UniProtAccessionBuilder("P12345").build())

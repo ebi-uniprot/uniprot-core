@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeText;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
@@ -9,6 +10,7 @@ import java.util.Objects;
 
 
 public class FreeTextImpl implements FreeText {
+    private static final long serialVersionUID = -4309930597833279389L;
     private List<EvidencedValue> texts;
 
     private FreeTextImpl() {
@@ -25,6 +27,11 @@ public class FreeTextImpl implements FreeText {
 
     public List<EvidencedValue> getTexts() {
         return texts;
+    }
+
+    @Override
+    public boolean hasTexts() {
+        return Utils.notEmpty(this.texts);
     }
 
     @Override

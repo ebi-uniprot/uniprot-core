@@ -1,8 +1,10 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 
 public class AuthorImpl implements Author {
+    private static final long serialVersionUID = -3113315529380049309L;
     private String value;
 
     private AuthorImpl() {
@@ -16,6 +18,11 @@ public class AuthorImpl implements Author {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
     }
 
     @Override
@@ -36,11 +43,8 @@ public class AuthorImpl implements Author {
             return false;
         AuthorImpl other = (AuthorImpl) obj;
         if (value == null) {
-            if (other.value != null)
-                return false;
-        } else if (!value.equals(other.value))
-            return false;
-        return true;
+            return other.value == null;
+        } else return value.equals(other.value);
     }
 
     @Override

@@ -3,11 +3,11 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.parser.UniprotLineParserFactory;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.parser.impl.de.DeLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.de.DeLineObject;
+import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
+import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineConverter;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineObject;
 
 import java.util.List;
 

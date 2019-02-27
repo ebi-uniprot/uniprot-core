@@ -13,6 +13,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ import java.util.List;
  * @date 17 Jan 2017
  * @time 18:41:20
  */
-public interface UniProtEntry {
+public interface UniProtEntry extends Serializable {
     UniProtEntryType getEntryType();
 
     UniProtAccession getPrimaryAccession();
@@ -72,4 +73,29 @@ public interface UniProtEntry {
     EntryInactiveReason getInactiveReason();
 
     boolean isActive();
+
+    boolean hasSecondaryAccessions();
+
+    boolean hasOrganism();
+
+    boolean hasOrganismHosts();
+
+    boolean hasProteinExistence();
+
+    boolean hasProteinDescription();
+
+    boolean hasGenes();
+
+    boolean hasComments();
+
+    boolean hasFeatures();
+
+    boolean hasGeneLocations();
+
+    boolean hasKeywords();
+
+    boolean hasReferences();
+
+    boolean hasDatabaseCrossReferences();
+
 }

@@ -1,8 +1,10 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 public class PublicationDateImpl implements PublicationDate {
+    private static final long serialVersionUID = 3232437573866835411L;
     private String value;
 
     private PublicationDateImpl() {
@@ -16,6 +18,11 @@ public class PublicationDateImpl implements PublicationDate {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
     }
 
     @Override
@@ -36,10 +43,7 @@ public class PublicationDateImpl implements PublicationDate {
             return false;
         PublicationDateImpl other = (PublicationDateImpl) obj;
         if (value == null) {
-            if (other.value != null)
-                return false;
-        } else if (!value.equals(other.value))
-            return false;
-        return true;
+            return other.value == null;
+        } else return value.equals(other.value);
     }
 }

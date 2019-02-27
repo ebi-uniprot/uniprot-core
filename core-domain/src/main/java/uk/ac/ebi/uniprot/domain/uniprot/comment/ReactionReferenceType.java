@@ -10,7 +10,7 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
     private String name;
 
 
-    private ReactionReferenceType(String name) {
+    ReactionReferenceType(String name) {
         this.name = name;
     }
 

@@ -28,6 +28,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
                        CommentType.TISSUE_SPECIFICITY,
                        CommentType.TOXIC_DOSE
             );
+    private static final long serialVersionUID = -3483334429376201154L;
 
     private CommentType commentType;
 

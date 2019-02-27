@@ -9,15 +9,17 @@ import uk.ac.ebi.uniprot.domain.EnumDisplay;
  */
 public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> {
 
-    DISPLAYED("displayed"),
-    EXTERNAL("external"),
-    NOT_DESCRIBED("not described"),
-    DESCRIBED("described");
+    DISPLAYED("displayed","Displayed"),
+    EXTERNAL("external", "External"),
+    NOT_DESCRIBED("not described", "Not described"),
+    DESCRIBED("described", "Described");
 
     private String value;
+    private String displayValue;
 
-    private IsoformSequenceStatus(String type) {
+    IsoformSequenceStatus(String type,String displayValue) {
         this.value = type;
+        this.displayValue = displayValue;
     }
 
     public static IsoformSequenceStatus typeOf(String value) {
@@ -36,6 +38,6 @@ public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> 
 
     @Override
     public String toDisplayName() {
-        return value;
+        return displayValue;
     }
 }

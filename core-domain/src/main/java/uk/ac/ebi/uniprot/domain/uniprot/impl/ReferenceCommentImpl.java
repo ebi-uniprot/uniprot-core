@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class ReferenceCommentImpl extends EvidencedValueImpl implements ReferenceComment {
+    private static final long serialVersionUID = 6546262222329573992L;
     private ReferenceCommentType type;
 
     private ReferenceCommentImpl() {

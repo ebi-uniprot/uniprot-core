@@ -23,7 +23,7 @@ public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
 
     private String name;
 
-    private GeneEncodingType(String name) {
+    GeneEncodingType(String name) {
         this.name = name;
     }
 

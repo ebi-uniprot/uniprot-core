@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
@@ -10,13 +11,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
+    private static final long serialVersionUID = -2902168556405341703L;
     private String molecule;
     private List<Cofactor> cofactors;
     private Note note;
 
     private CofactorCommentImpl() {
-        super(CommentType.COFACTOR);
-        this.cofactors = Collections.emptyList();
+        this(null,null,null);
     }
 
     public CofactorCommentImpl(String molecule,
@@ -48,6 +49,21 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     @Override
     public Note getNote() {
         return note;
+    }
+
+    @Override
+    public boolean hasMolecule() {
+        return Utils.notEmpty(this.molecule);
+    }
+
+    @Override
+    public boolean hasCofactors() {
+        return Utils.notEmpty(this.cofactors);
+    }
+
+    @Override
+    public boolean hasNote() {
+        return this.note != null;
     }
 
     @Override

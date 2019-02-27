@@ -8,14 +8,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class EntryMapUtil {
-    static String evidencesToString(List<Evidence> evidences) {
+public class EntryMapUtil {
+    public static String evidencesToString(List<Evidence> evidences) {
         if ((evidences == null) || evidences.isEmpty())
             return "";
         return evidences.stream().map(Evidence::toString).collect(Collectors.joining(", ", "{", "}"));
     }
 
-    static String convertOrganism(OrganismName organism) {
+    public static String convertOrganism(OrganismName organism) {
         StringBuilder sb = new StringBuilder();
         if (organism.getScientificName() != null && !organism.getScientificName().isEmpty()) {
             sb.append(organism.getScientificName());
@@ -32,14 +32,44 @@ class EntryMapUtil {
         return sb.toString();
     }
 
-    static String getNoteString(Note note) {
-        return " Note=" + note.getTexts().stream().map(EntryMapUtil::evidencedValueToString)
-                .collect(Collectors.joining("; "));
+    public static String formatFloat(float d) {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
     }
 
-    static String evidencedValueToString(EvidencedValue evidencedValue) {
+
+    public static String formatDouble(double d) {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
+    }
+
+    public static String getNoteString(Note note) {
+        return "Note=" + note.getTexts().stream().map(text ->{
+            String result = text.getValue()+".";
+            if(text.hasEvidences()){
+                result += " "+evidencesToString(text.getEvidences())+".";
+            }
+            return result;
+        }).collect(Collectors.joining("; "));
+    }
+
+    public static String getNoteStringWithoutDot(Note note) {
+        return "Note=" + note.getTexts().stream().map(text ->{
+            String result = text.getValue();
+            if(text.hasEvidences()){
+                result += " "+evidencesToString(text.getEvidences());
+            }
+            return result;
+        }).collect(Collectors.joining("; "));
+    }
+
+    public static String evidencedValueToString(EvidencedValue evidencedValue) {
         String result = evidencedValue.getValue();
-        if(evidencedValue.getEvidences() != null && !evidencedValue.getEvidences().isEmpty()){
+        if(evidencedValue.hasEvidences()){
             result += " "+evidencesToString(evidencedValue.getEvidences());
         }
         return result;

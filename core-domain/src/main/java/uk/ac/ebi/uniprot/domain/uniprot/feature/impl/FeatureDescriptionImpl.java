@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
 
 public class FeatureDescriptionImpl implements FeatureDescription {
+    private static final long serialVersionUID = -1958668003264920501L;
     private String value;
 
     private FeatureDescriptionImpl() {
@@ -17,6 +18,11 @@ public class FeatureDescriptionImpl implements FeatureDescription {
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public boolean hasValue() {
+        return Utils.notEmpty(this.value);
     }
 
     @Override
@@ -37,11 +43,8 @@ public class FeatureDescriptionImpl implements FeatureDescription {
             return false;
         FeatureDescriptionImpl other = (FeatureDescriptionImpl) obj;
         if (value == null) {
-            if (other.value != null)
-                return false;
-        } else if (!value.equals(other.value))
-            return false;
-        return true;
+            return other.value == null;
+        } else return value.equals(other.value);
     }
 
 }

@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 
 public class InternalLineImpl extends ValueImpl implements InternalLine {
+    private static final long serialVersionUID = -5550083478261876596L;
     private InternalLineType type;
 
     private InternalLineImpl() {
@@ -37,9 +38,7 @@ public class InternalLineImpl extends ValueImpl implements InternalLine {
         if (getClass() != obj.getClass())
             return false;
         InternalLineImpl other = (InternalLineImpl) obj;
-        if (type != other.type)
-            return false;
-        return true;
+        return type == other.type;
     }
 
 

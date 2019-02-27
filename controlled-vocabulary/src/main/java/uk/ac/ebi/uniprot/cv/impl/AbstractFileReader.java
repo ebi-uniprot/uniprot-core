@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
+import uk.ac.ebi.uniprot.cv.FileReader;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.Proxy;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
@@ -12,8 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import uk.ac.ebi.uniprot.cv.FileReader;
 
 public abstract class AbstractFileReader<T> implements FileReader<T> {
 	private static final String FTP_PREFIX ="ftp://";
@@ -36,7 +35,7 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
 		List<String> lines = new ArrayList<>();
 		try {
 			final URL url = new URL(ftpUrl);
-			final URLConnection con = url.openConnection(Proxy.NO_PROXY);
+			final URLConnection con = url.openConnection();
 			con.setDoInput(true);
 			final java.io.InputStream in = con.getInputStream();
 

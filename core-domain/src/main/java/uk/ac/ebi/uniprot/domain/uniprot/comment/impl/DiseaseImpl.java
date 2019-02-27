@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class DiseaseImpl implements Disease {
     private static final String DEFAULT_ACCESSION = "DI-00000";
+    private static final long serialVersionUID = 6827893775979818439L;
 
     private String diseaseId;
     private String diseaseAccession;
@@ -43,6 +44,11 @@ public class DiseaseImpl implements Disease {
     }
 
     @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
+    }
+
+    @Override
     public String getDiseaseId() {
         return diseaseId;
     }
@@ -72,6 +78,31 @@ public class DiseaseImpl implements Disease {
     public boolean hasDefinedDisease() {
         return (diseaseId != null && !diseaseId.isEmpty() && (getAcronym() != null && !getAcronym().isEmpty())
                 && isValidDescription() && isValidReference());
+    }
+
+    @Override
+    public boolean hasDiseaseId() {
+        return Utils.notEmpty(this.diseaseId);
+    }
+
+    @Override
+    public boolean hasDiseaseAccession() {
+        return Utils.notEmpty(this.diseaseAccession);
+    }
+
+    @Override
+    public boolean hasAcronym() {
+        return Utils.notEmpty(this.acronym);
+    }
+
+    @Override
+    public boolean hasDescription() {
+        return Utils.notEmpty(this.description);
+    }
+
+    @Override
+    public boolean hasReference() {
+        return this.reference != null;
     }
 
     @Override

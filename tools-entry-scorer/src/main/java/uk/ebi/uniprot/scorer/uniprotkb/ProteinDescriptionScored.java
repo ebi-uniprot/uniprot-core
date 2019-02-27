@@ -1,18 +1,26 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
-
-import java.util.*;
-import java.util.stream.Collectors;
-
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:34:03 To change this template use File | Settings
@@ -43,55 +51,106 @@ public class ProteinDescriptionScored implements HasScore {
         int distinctECNumbersSize = getDistinctECs(description).size();
 
         score += distinctECNumbersSize * 3;
-
         // recname only in main section
-        if (description.getRecommendedName() != null && hasProteinName(description.getRecommendedName())) {
-            score += 5;
+        if(description.hasRecommendedName() && hasValidEvidences(description.getRecommendedName())) {
+        	score+=5;
         }
-
+    
         // altname only in main section
-        for (ProteinName name : description.getAlternativeNames()) {
-            if (hasProteinName(name)) {
+        for (ProteinAltName name : description.getAlternativeNames()) {
+            if (hasValidEvidences(name)) {
                 score += 2;
             }
         }
+        if(isValidName(description.getAllergenName())) {
+        	 score += 2;
+        }
+        if(isValidName(description.getBiotechName())) {
+       	 score += 2;
+       }
+        if(description.hasCdAntigenNames()) {
+        	for(Name name: description.getCdAntigenNames()) {
+        		if(isValidName(name)) {
+        			score += 2;
+        		}
+        	}
+        }
+        
+        if(description.hasInnNames()) {
+        	for(Name name: description.getInnNames()) {
+        		if(isValidName(name)) {
+        			score += 2;
+        		}
+        	}
+        }
+        
         return score;
     }
-
+  
+    private boolean isValidName(Name name) {
+    	if((name ==null) || !name.isValid()) {
+    		return false;
+    	}
+    	return ScoreUtil.hasEvidence(name.getEvidences(), evidenceTypes);
+    }
+    private boolean hasValidEvidences(ProteinAltName name) {
+       	
+    	List<Evidence> evidences  =extractProteinAltNameEvidences(name);
+    	return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+    }
+    private boolean hasValidEvidences(ProteinRecName name) {
+   	
+    	List<Evidence> evidences  =extractProteinRecNameEvidences(name);
+    	return ScoreUtil.hasEvidence(evidences, evidenceTypes);
+    }
     private Set<EC> getDistinctECs(ProteinDescription description) {
         Set<EC> ecs = new HashSet<>();
-        addECs(description.getSubmissionNames(), ecs);
-        addECs(description.getRecommendedName(), ecs);
-        addECs(description.getAlternativeNames(), ecs);
+        addECsFromSubName(description.getSubmissionNames(), ecs);
+        addECsFromRecName(description.getRecommendedName(), ecs);
+        addECsFromAltName(description.getAlternativeNames(), ecs);
         description.getContains().forEach(proteinSection -> {
-            addECs(proteinSection.getRecommendedName(), ecs);
-            addECs(proteinSection.getAlternativeNames(), ecs);
+        	addECsFromRecName(proteinSection.getRecommendedName(), ecs);
+            addECsFromAltName(proteinSection.getAlternativeNames(), ecs);
         });
         description.getIncludes().forEach(proteinSection -> {
-            addECs(proteinSection.getRecommendedName(), ecs);
-            addECs(proteinSection.getAlternativeNames(), ecs);
+        	addECsFromRecName(proteinSection.getRecommendedName(), ecs);
+            addECsFromAltName(proteinSection.getAlternativeNames(), ecs);
         });
         return ecs;
     }
 
-    private void addECs(List<ProteinName> proteinNames, Set<EC> ecs) {
-        ecs.addAll(proteinNames.stream().map(ProteinName::getEcNumbers).filter(Objects::nonNull)
-                           .flatMap(Collection::stream)
-                           .collect(Collectors.toSet()));
-    }
-
-    private void addECs(ProteinName proteinName, Set<EC> ecs) {
+    private void addECsFromRecName(ProteinRecName proteinName, Set<EC> ecs) {
         if (nonNull(proteinName)) {
             ecs.addAll(nonNullList(proteinName.getEcNumbers()));
         }
     }
 
-
-    private boolean hasProteinName(ProteinName name) {
-        return ScoreUtil.hasEvidence(extractProteinNameEvidences(name), evidenceTypes);
+    private void addECsFromAltName(List<ProteinAltName> proteinNames, Set<EC> ecs) {
+        ecs.addAll(proteinNames.stream().map(ProteinAltName::getEcNumbers).filter(Objects::nonNull)
+                           .flatMap(Collection::stream)
+                           .collect(Collectors.toSet()));
     }
 
-    private List<Evidence> extractProteinNameEvidences(ProteinName name) {
+
+    private void addECsFromSubName(List<ProteinSubName> proteinNames, Set<EC> ecs) {
+        ecs.addAll(proteinNames.stream().map(ProteinSubName::getEcNumbers).filter(Objects::nonNull)
+                           .flatMap(Collection::stream)
+                           .collect(Collectors.toSet()));
+    }
+
+    private List<Evidence> extractProteinAltNameEvidences(ProteinAltName name) {
+        List<Evidence> evs = new ArrayList<>();
+        insertAllEvidences(name.getEcNumbers(), evs);
+        insertAllEvidences(name.getShortNames(), evs);
+        insertAllEvidences(name.getFullName(), evs);
+
+        evs.addAll(name.getEcNumbers().stream().map(HasEvidences::getEvidences).flatMap(Collection::stream)
+                           .collect(Collectors.toList()));
+
+        return evs;
+    }
+    
+    private List<Evidence> extractProteinRecNameEvidences(ProteinRecName name) {
         List<Evidence> evs = new ArrayList<>();
         insertAllEvidences(name.getEcNumbers(), evs);
         insertAllEvidences(name.getShortNames(), evs);

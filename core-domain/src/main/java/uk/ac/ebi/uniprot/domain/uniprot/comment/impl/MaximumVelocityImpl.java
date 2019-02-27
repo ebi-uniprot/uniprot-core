@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MaximumVelocityImpl implements MaximumVelocity {
+    private static final long serialVersionUID = -5733295713214255112L;
     private double velocity;
     private String unit;
     private String enzyme;
@@ -34,6 +36,11 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
+    }
+
+    @Override
+    public boolean hasEvidences() {
+        return Utils.notEmpty(this.evidences);
     }
 
     @Override

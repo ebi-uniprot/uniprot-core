@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 
@@ -8,6 +9,7 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
+    private static final long serialVersionUID = -8389378286532442748L;
     private Journal journal;
     private Locator locator;
 
@@ -35,6 +37,16 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     }
 
     @Override
+    public boolean hasLocator() {
+        return this.locator != null;
+    }
+
+    @Override
+    public boolean hasJournal() {
+        return this.journal != null ;
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
@@ -58,11 +70,8 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         } else if (!journal.equals(other.journal))
             return false;
         if (locator == null) {
-            if (other.locator != null)
-                return false;
-        } else if (!locator.equals(other.locator))
-            return false;
-        return true;
+            return other.locator == null;
+        } else return locator.equals(other.locator);
     }
 
     public static class LocatorImpl implements Locator {
@@ -79,6 +88,11 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         @Override
         public String getValue() {
             return value;
+        }
+
+        @Override
+        public boolean hasValue() {
+            return Utils.notEmpty(this.value);
         }
 
         @Override
@@ -100,11 +114,8 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
                 return false;
             LocatorImpl other = (LocatorImpl) obj;
             if (value == null) {
-                if (other.value != null)
-                    return false;
-            } else if (!value.equals(other.value))
-                return false;
-            return true;
+                return other.value == null;
+            } else return value.equals(other.value);
         }
 
     }

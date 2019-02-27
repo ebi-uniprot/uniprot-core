@@ -2,7 +2,7 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniProtParser;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -364,7 +364,7 @@ public class Q04756ScoredTest {
 
     @Test
     public void test() {
-        UniProtEntry entry = new DefaultUniProtParser("", "", "", true)
+        UniProtEntry entry = new DefaultUniProtParser("", "", "", "", true)
                 .parse(this.entry);
         UniProtEntryScored scored = new UniProtEntryScored(entry);
         System.out.println(scored.score());

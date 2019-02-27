@@ -15,4 +15,12 @@ public interface SequenceCautionComment extends Comment, HasEvidences {
     SequenceCautionType getSequenceCautionType();
 
     List<String> getPositions();
+
+    boolean hasSequence();
+
+    boolean hasNote();
+
+    boolean hasSequenceCautionType();
+
+    boolean hasPositions();
 }

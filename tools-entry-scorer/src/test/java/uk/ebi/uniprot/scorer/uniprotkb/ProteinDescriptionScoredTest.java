@@ -2,11 +2,11 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.parser.UniprotLineParserFactory;
-import uk.ac.ebi.uniprot.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.parser.impl.de.DeLineConverter;
-import uk.ac.ebi.uniprot.parser.impl.de.DeLineObject;
+import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
+import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineConverter;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineObject;
 
 import static org.junit.Assert.assertEquals;
 
@@ -79,6 +79,23 @@ public class ProteinDescriptionScoredTest {
                         "DE   Flags: Precursor; Fragment;\n";
 
         testDescription(description, 14.0, Consensus.COMPLEX);
+    }
+
+
+    @Test
+    public void shouldDEwithFlagsScore16() {
+
+        String description =
+                "DE   RecName: Full=A disintegrin and metalloproteinase domain 10;\n" +
+                        "DE            Short=ADAM 10;\n" +
+                        "DE            EC=3.4.24.81;\n" +
+                        "DE   AltName: Full=Mammalian disintegrin-metalloprotease;\n" +
+                        "DE   AltName: Full=Kuzbanian protein homolog;\n" +
+                        "DE   AltName: Allergen=Some value;\n" +
+                        "DE   AltName: CD_antigen=CD156c;\n" +
+                        "DE   Flags: Precursor; Fragment;\n";
+
+        testDescription(description, 16.0, Consensus.COMPLEX);
     }
 
     @Test

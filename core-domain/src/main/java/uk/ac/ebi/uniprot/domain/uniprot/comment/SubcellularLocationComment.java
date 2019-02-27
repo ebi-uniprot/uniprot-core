@@ -4,10 +4,15 @@ import java.util.List;
 
 public interface SubcellularLocationComment extends Comment {
 
+    String getMolecule();
 
-    public String getMolecule();
+    Note getNote();
 
-    public Note getNote();
+    List<SubcellularLocation> getSubcellularLocations();
 
-    public List<SubcellularLocation> getSubcellularLocations();
+    boolean hasMolecule();
+
+    boolean hasNote();
+
+    boolean hasSubcellularLocations();
 }

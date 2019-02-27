@@ -6,7 +6,7 @@ import java.util.*;
 
 public class EntryLineageMap implements NamedValueMap {
 /*    private final List<TaxNode> lineage;
-    public static final List<String> FIELDS =
+    public static final List<String> DEFAULT_FIELDS =
             Arrays.asList("lineage", "tl:all", "tl:class", "tl:cohort",
                           "tl:family", "tl:forma", "tl:genus", "tl:infraclass", "tl:infraorder", "tl:kingdom", "tl:order",
                           "tl:parvorder", "tl:phylum", "tl:species", "tl:species_group", "tl:species_subgroup", "tl:subclass",
@@ -33,7 +33,7 @@ public class EntryLineageMap implements NamedValueMap {
         String allLineage = getAll();
         map.put("tl:all", allLineage);
         map.put("lineage", allLineage);
-        FIELDS.stream().skip(1).forEach(val -> addToMap(val, map));
+        DEFAULT_FIELDS.stream().skip(1).forEach(val -> addToMap(val, map));
         return map;*/
     }
 /*
@@ -53,7 +53,7 @@ public class EntryLineageMap implements NamedValueMap {
     }
 
     public static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(FIELDS::contains);
+        return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
 
     }*/
 }

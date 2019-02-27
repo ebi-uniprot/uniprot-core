@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 
 
 public class UniProtEntryImpl implements UniProtEntry {
+    private static final long serialVersionUID = 3240727057252439286L;
     private UniProtEntryType entryType;
     private UniProtAccession primaryAccession;
     private List<UniProtAccession> secondaryAccessions;
@@ -271,6 +272,66 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
+    public boolean hasSecondaryAccessions() {
+        return Utils.notEmpty(secondaryAccessions);
+    }
+
+    @Override
+    public boolean hasOrganism() {
+        return this.organism != null;
+    }
+
+    @Override
+    public boolean hasOrganismHosts() {
+        return Utils.notEmpty(this.organismHosts);
+    }
+
+    @Override
+    public boolean hasProteinExistence() {
+        return this.proteinExistence != null;
+    }
+
+    @Override
+    public boolean hasProteinDescription() {
+        return this.proteinDescription != null;
+    }
+
+    @Override
+    public boolean hasGenes() {
+        return Utils.notEmpty(this.genes);
+    }
+
+    @Override
+    public boolean hasComments() {
+        return Utils.notEmpty(this.comments);
+    }
+
+    @Override
+    public boolean hasFeatures() {
+        return Utils.notEmpty(this.features);
+    }
+
+    @Override
+    public boolean hasGeneLocations() {
+        return Utils.notEmpty(this.geneLocations);
+    }
+
+    @Override
+    public boolean hasKeywords() {
+        return Utils.notEmpty(this.keywords);
+    }
+
+    @Override
+    public boolean hasReferences() {
+        return Utils.notEmpty(this.references);
+    }
+
+    @Override
+    public boolean hasDatabaseCrossReferences() {
+        return Utils.notEmpty(this.databaseCrossReferences);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -390,11 +451,8 @@ public class UniProtEntryImpl implements UniProtEntry {
         } else if (!sequence.equals(other.sequence))
             return false;
         if (uniProtId == null) {
-            if (other.uniProtId != null)
-                return false;
-        } else if (!uniProtId.equals(other.uniProtId))
-            return false;
-        return true;
+            return other.uniProtId == null;
+        } else return uniProtId.equals(other.uniProtId);
     }
 
 }

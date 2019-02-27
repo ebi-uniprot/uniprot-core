@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class NameImpl extends EvidencedValueImpl implements Name {
+    private static final long serialVersionUID = 6851897442612438068L;
 
     private NameImpl() {
         super("", Collections.emptyList());
