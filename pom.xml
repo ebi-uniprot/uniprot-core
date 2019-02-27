@@ -131,7 +131,6 @@
         <module>xml-parser</module>
         <module>controlled-vocabulary</module>
         <module>json-parser</module>
-        <module>core-common</module>
         <module>tools-entry-scorer</module>
     </modules>
 </project>
