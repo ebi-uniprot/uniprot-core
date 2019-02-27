@@ -405,9 +405,9 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         List<SubcellularLocation> locations = new ArrayList<SubcellularLocation>();
         for (CcLineObject.LocationObject lo : cObj.locations) {
             locations.add(new SubcellularLocationBuilder()
-                                  .location(createSubcellularLocationValue(lo.subcellularLocation, evidences))
-                                  .topology(createSubcellularLocationValue(lo.topology, evidences))
-                                  .orientation(createSubcellularLocationValue(lo.orientation, evidences))
+                                  .location(createSubcellularLocationValue(lo, lo.subcellularLocation, evidences))
+                                  .topology(createSubcellularLocationValue(lo, lo.topology, evidences))
+                                  .orientation(createSubcellularLocationValue(lo, lo.orientation, evidences))
                                   .build());
         }
         builder.subcellularLocations(locations);
@@ -419,16 +419,21 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
     }
 
 
-    private SubcellularLocationValue createSubcellularLocationValue(LocationValue locationValue,
+    private SubcellularLocationValue createSubcellularLocationValue(LocationObject lo, LocationValue locationValue,
                                                                     Map<Object, List<Evidence>> evidenceMap) {
         if ((locationValue == null) || locationValue.value.isEmpty()) {
             return null;
         }
         
         String id ="";
+        if(subcellularLocationService !=null) {
         uk.ac.ebi.uniprot.cv.subcell.SubcellularLocation subcellLocation = subcellularLocationService.getById(locationValue.value);
         if(subcellLocation != null) {
         	id = subcellLocation.getAccession();
+        }}
+        List<Evidence> evidences  =evidenceMap.get(locationValue);
+        if(evidences ==null) {
+        	evidences =evidenceMap.get(lo);
         }
         return new SubcellularLocationValueBuilder(id, locationValue.value, evidenceMap.get(locationValue)).build();
     }

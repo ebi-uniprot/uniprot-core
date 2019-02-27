@@ -103,7 +103,7 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 
     @Override
     public boolean hasRecommendedName() {
-        return this.recommendedName != null;
+        return (this.recommendedName != null) && this.recommendedName.isValid();
     }
 
     @Override
@@ -174,12 +174,12 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 
 	@Override
 	public boolean hasAllergenName() {
-		return allergenName !=null;
+		return (allergenName !=null) && allergenName.isValid();
 	}
 
 	@Override
 	public boolean hasBiotechName() {
-		return biotechName !=null;
+		return (biotechName !=null) && biotechName.isValid();
 	}
 
 	@Override

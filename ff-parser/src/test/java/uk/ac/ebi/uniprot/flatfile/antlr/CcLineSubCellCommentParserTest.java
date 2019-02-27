@@ -31,6 +31,38 @@ public class CcLineSubCellCommentParserTest {
 		verify(sl.locations.get(2).subcellularLocation, "Golgi apparatus membrane", null );
 		verify(sl.locations.get(2).topology, "Peripheral membrane protein", null );
 	}
+	@Test
+	public void test1WithEvidence() {
+		String lines =  "CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000256|HAMAP-Rule:MF_01146}.\n" ;
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
+		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
+		assertEquals(1, sl.locations.size());
+		
+		verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", null );
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_01146", obj.evidenceInfo.evidences.get(sl.locations.get(0).subcellularLocation).get(0) );
+	}
+	
+	@Test
+	public void test1WithEvidence2() {
+		String lines =  "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. {ECO:0000256|HAMAP-Rule:MF_01146}.\n" ;
+				;
+		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
+		CcLineObject obj = parser.parse(lines);
+		assertEquals(1, obj.ccs.size());
+		CcLineObject.CC cc = obj.ccs.get(0);
+		assertTrue(cc.object instanceof CcLineObject.SubcullarLocation);
+		CcLineObject.SubcullarLocation sl = (CcLineObject.SubcullarLocation) cc.object;
+		assertEquals(1, sl.locations.size());
+		
+		verify(sl.locations.get(0).subcellularLocation, "Cytoplasm", null );
+		assertEquals("ECO:0000256|HAMAP-Rule:MF_01146", obj.evidenceInfo.evidences.get(sl.locations.get(0)).get(0) );
+	}
+	
 	private void verify(CcLineObject.LocationValue lv, String value, LocationFlagEnum flag) {
 		assertEquals(value, lv.value);
 		assertEquals(flag, lv.flag);		
