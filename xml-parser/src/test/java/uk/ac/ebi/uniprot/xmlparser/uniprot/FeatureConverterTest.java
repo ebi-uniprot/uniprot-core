@@ -143,7 +143,6 @@ class FeatureConverterTest {
         verify(xmlObj, 153, 196, description2, ftid, null, Arrays.asList(1, 2));
         Feature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
-
     }
 
     @Test
@@ -289,7 +288,7 @@ class FeatureConverterTest {
     }
 
     @Test
-    void testVARSEQ() {
+    void testVarSeq2() {
         //	FT   VAR_SEQ    1158   1202       GSFLTKKQDQAARKIMRFLRRCRHRMRELKQNQELEGLPQP
         //	FT                                GLAT -> LLSHQEAGPGSPEDHEIPAALPTQDEGTEAEPG
         //	FT                                AGRASPAGTGHMTWPPPFSPPWGRLVQS (in isoform
