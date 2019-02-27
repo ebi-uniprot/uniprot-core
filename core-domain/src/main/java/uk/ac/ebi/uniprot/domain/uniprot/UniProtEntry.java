@@ -30,6 +30,8 @@ public interface UniProtEntry extends Serializable {
 
     UniProtId getUniProtId();
 
+    double getAnnotationScore();
+
     EntryAudit getEntryAudit();
 
     Organism getOrganism();
@@ -75,6 +77,8 @@ public interface UniProtEntry extends Serializable {
     boolean isActive();
 
     boolean hasSecondaryAccessions();
+
+    boolean hasAnnotationScore();
 
     boolean hasOrganism();
 

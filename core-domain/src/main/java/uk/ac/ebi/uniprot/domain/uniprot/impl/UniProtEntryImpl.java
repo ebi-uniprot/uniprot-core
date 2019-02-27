@@ -17,6 +17,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 
@@ -27,7 +28,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     private List<UniProtAccession> secondaryAccessions;
     private UniProtId uniProtId;
     private EntryAudit entryAudit;
-
+    private double annotationScore;
     private Organism organism;
     private List<OrganismHost> organismHosts;
 
@@ -63,7 +64,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                             UniProtId uniProtId,
                             EntryInactiveReason inactiveReason) {
         this(UniProtEntryType.UNKNOWN, primaryAccession, null, uniProtId,
-             null, null, null, null, null,
+             null, 0,null, null, null, null,
              null, null, null, null, null,
              null, null, null, null, inactiveReason);
     }
@@ -73,6 +74,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                             List<UniProtAccession> secondaryAccessions,
                             UniProtId uniProtId,
                             EntryAudit entryAudit,
+                            double annotationScore,
                             Organism organism,
                             List<OrganismHost> organismHosts,
                             ProteinExistence proteinExistence,
@@ -87,7 +89,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                             Sequence sequence,
                             InternalSection internalSection) {
         this(entryType, primaryAccession, secondaryAccessions, uniProtId,
-             entryAudit, organism, organismHosts, proteinExistence,
+             entryAudit, annotationScore, organism, organismHosts, proteinExistence,
              proteinDescription, genes, comments, features, geneLocations, keywords,
              references, databaseCrossReferences, sequence, internalSection, null);
 
@@ -96,7 +98,7 @@ public class UniProtEntryImpl implements UniProtEntry {
     public UniProtEntryImpl(UniProtEntryType entryType,
                             UniProtAccession primaryAccession,
                             List<UniProtAccession> secondaryAccessions,
-                            UniProtId uniProtId, EntryAudit entryAudit,
+                            UniProtId uniProtId, EntryAudit entryAudit,double annotationScore,
                             Organism organism,
                             List<OrganismHost> organismHosts,
                             ProteinExistence proteinExistence,
@@ -113,6 +115,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         this.secondaryAccessions = Utils.nonNullUnmodifiableList(secondaryAccessions);
         this.uniProtId = uniProtId;
         this.entryAudit = entryAudit;
+        this.annotationScore = annotationScore;
         this.organism = organism;
         this.organismHosts = Utils.nonNullUnmodifiableList(organismHosts);
         this.proteinExistence = proteinExistence;
@@ -147,6 +150,11 @@ public class UniProtEntryImpl implements UniProtEntry {
     @Override
     public UniProtId getUniProtId() {
         return uniProtId;
+    }
+
+    @Override
+    public double getAnnotationScore() {
+        return this.annotationScore;
     }
 
     @Override
@@ -277,6 +285,11 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
+    public boolean hasAnnotationScore() {
+        return this.annotationScore > 0;
+    }
+
+    @Override
     public boolean hasOrganism() {
         return this.organism != null;
     }
@@ -332,127 +345,36 @@ public class UniProtEntryImpl implements UniProtEntry {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((comments == null) ? 0 : comments.hashCode());
-        result = prime * result + ((databaseCrossReferences == null) ? 0 : databaseCrossReferences.hashCode());
-        result = prime * result + ((entryAudit == null) ? 0 : entryAudit.hashCode());
-        result = prime * result + ((entryType == null) ? 0 : entryType.hashCode());
-        result = prime * result + ((features == null) ? 0 : features.hashCode());
-        result = prime * result + ((genes == null) ? 0 : genes.hashCode());
-        result = prime * result + ((inactiveReason == null) ? 0 : inactiveReason.hashCode());
-        result = prime * result + ((internalSection == null) ? 0 : internalSection.hashCode());
-        result = prime * result + ((keywords == null) ? 0 : keywords.hashCode());
-        result = prime * result + ((geneLocations == null) ? 0 : geneLocations.hashCode());
-        result = prime * result + ((organism == null) ? 0 : organism.hashCode());
-        result = prime * result + ((organismHosts == null) ? 0 : organismHosts.hashCode());
-        result = prime * result + ((primaryAccession == null) ? 0 : primaryAccession.hashCode());
-        result = prime * result + ((proteinDescription == null) ? 0 : proteinDescription.hashCode());
-        result = prime * result + ((proteinExistence == null) ? 0 : proteinExistence.hashCode());
-        result = prime * result + ((references == null) ? 0 : references.hashCode());
-        result = prime * result + ((secondaryAccessions == null) ? 0 : secondaryAccessions.hashCode());
-        result = prime * result + ((sequence == null) ? 0 : sequence.hashCode());
-        result = prime * result + ((uniProtId == null) ? 0 : uniProtId.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UniProtEntryImpl that = (UniProtEntryImpl) o;
+        return Double.compare(that.annotationScore, annotationScore) == 0 &&
+                entryType == that.entryType &&
+                Objects.equals(primaryAccession, that.primaryAccession) &&
+                Objects.equals(secondaryAccessions, that.secondaryAccessions) &&
+                Objects.equals(uniProtId, that.uniProtId) &&
+                Objects.equals(entryAudit, that.entryAudit) &&
+                Objects.equals(organism, that.organism) &&
+                Objects.equals(organismHosts, that.organismHosts) &&
+                proteinExistence == that.proteinExistence &&
+                Objects.equals(proteinDescription, that.proteinDescription) &&
+                Objects.equals(genes, that.genes) &&
+                Objects.equals(comments, that.comments) &&
+                Objects.equals(features, that.features) &&
+                Objects.equals(geneLocations, that.geneLocations) &&
+                Objects.equals(keywords, that.keywords) &&
+                Objects.equals(references, that.references) &&
+                Objects.equals(databaseCrossReferences, that.databaseCrossReferences) &&
+                Objects.equals(sequence, that.sequence) &&
+                Objects.equals(internalSection, that.internalSection) &&
+                Objects.equals(inactiveReason, that.inactiveReason);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        UniProtEntryImpl other = (UniProtEntryImpl) obj;
-        if (comments == null) {
-            if (other.comments != null)
-                return false;
-        } else if (!comments.equals(other.comments))
-            return false;
-        if (databaseCrossReferences == null) {
-            if (other.databaseCrossReferences != null)
-                return false;
-        } else if (!databaseCrossReferences.equals(other.databaseCrossReferences))
-            return false;
-        if (entryAudit == null) {
-            if (other.entryAudit != null)
-                return false;
-        } else if (!entryAudit.equals(other.entryAudit))
-            return false;
-        if (entryType != other.entryType)
-            return false;
-        if (features == null) {
-            if (other.features != null)
-                return false;
-        } else if (!features.equals(other.features))
-            return false;
-        if (genes == null) {
-            if (other.genes != null)
-                return false;
-        } else if (!genes.equals(other.genes))
-            return false;
-        if (inactiveReason == null) {
-            if (other.inactiveReason != null)
-                return false;
-        } else if (!inactiveReason.equals(other.inactiveReason))
-            return false;
-        if (internalSection == null) {
-            if (other.internalSection != null)
-                return false;
-        } else if (!internalSection.equals(other.internalSection))
-            return false;
-        if (keywords == null) {
-            if (other.keywords != null)
-                return false;
-        } else if (!keywords.equals(other.keywords))
-            return false;
-        if (geneLocations == null) {
-            if (other.geneLocations != null)
-                return false;
-        } else if (!geneLocations.equals(other.geneLocations))
-            return false;
-        if (organism == null) {
-            if (other.organism != null)
-                return false;
-        } else if (!organism.equals(other.organism))
-            return false;
-        if (organismHosts == null) {
-            if (other.organismHosts != null)
-                return false;
-        } else if (!organismHosts.equals(other.organismHosts))
-            return false;
-        if (primaryAccession == null) {
-            if (other.primaryAccession != null)
-                return false;
-        } else if (!primaryAccession.equals(other.primaryAccession))
-            return false;
-        if (proteinDescription == null) {
-            if (other.proteinDescription != null)
-                return false;
-        } else if (!proteinDescription.equals(other.proteinDescription))
-            return false;
-        if (proteinExistence != other.proteinExistence)
-            return false;
-        if (references == null) {
-            if (other.references != null)
-                return false;
-        } else if (!references.equals(other.references))
-            return false;
-        if (secondaryAccessions == null) {
-            if (other.secondaryAccessions != null)
-                return false;
-        } else if (!secondaryAccessions.equals(other.secondaryAccessions))
-            return false;
-        if (sequence == null) {
-            if (other.sequence != null)
-                return false;
-        } else if (!sequence.equals(other.sequence))
-            return false;
-        if (uniProtId == null) {
-            return other.uniProtId == null;
-        } else return uniProtId.equals(other.uniProtId);
+    public int hashCode() {
+        return Objects.hash(entryType, primaryAccession, secondaryAccessions, uniProtId, entryAudit, annotationScore,
+                organism, organismHosts, proteinExistence, proteinDescription, genes, comments, features,
+                geneLocations, keywords, references, databaseCrossReferences, sequence, internalSection, inactiveReason);
     }
-
 }
