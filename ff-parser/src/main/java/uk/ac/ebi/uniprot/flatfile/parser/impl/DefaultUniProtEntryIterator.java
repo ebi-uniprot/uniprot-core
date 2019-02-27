@@ -249,7 +249,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             this.ffQueue = ffQueue;
             this.queue = queue;
             this.countDown = countDown;
-            this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, false);
+            this.parser = DefaultUniProtParser.getInstance(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, false);
         }
 
         void finish() {

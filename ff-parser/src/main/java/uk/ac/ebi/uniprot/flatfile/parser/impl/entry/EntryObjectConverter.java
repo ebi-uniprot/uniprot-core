@@ -76,11 +76,19 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
     private final CcLineConverter ccLineConverter;
     private Map<String, Map<String, List<Evidence>>> accessionGoEvidences = new HashMap<>();
 
+    private static EntryObjectConverter instance;
+
+
+    public static EntryObjectConverter getInstance(String keywordFile, String diseaseFile, String goPubmedFile,
+                                                   String subcellularLocationFile, boolean ignoreWrong){
+        if(instance == null){
+            instance = new EntryObjectConverter(keywordFile,diseaseFile,goPubmedFile,subcellularLocationFile,ignoreWrong);
+        }
+        return instance;
+    }
 
     public EntryObjectConverter(String keywordFile, String diseaseFile, String goPubmedFile,
-    		String subcellularLocationFile,
-    		
-    		boolean ignoreWrong) {
+    		String subcellularLocationFile, boolean ignoreWrong) {
         drLineConverter = new DrLineConverter(ignoreWrong);
         KeywordService keywordService = new KeywordServiceImpl(keywordFile);
         DiseaseService diseaseService = new DiseaseServiceImpl(diseaseFile);
