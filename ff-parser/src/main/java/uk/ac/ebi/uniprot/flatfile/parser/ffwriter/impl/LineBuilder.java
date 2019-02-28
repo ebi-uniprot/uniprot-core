@@ -8,7 +8,7 @@ import java.util.List;
 
 public class LineBuilder {
 	private final String prefix ;
-	private List<String> lines = new ArrayList<String>();
+	private List<String> lines = new ArrayList<>();
 	private StringBuilder currentLine =new StringBuilder();
 	private static final String defaultSeparator =", ";
 	public static final int LINE_LENGTH = 75;
@@ -59,12 +59,12 @@ public class LineBuilder {
 		addItem(item, defaultSeparator);
 	}
 	public void addEnding(String end){
-		if(!currentLine.equals(lineStart)){
+		if(!currentLine.toString().equals(lineStart)){
 			currentLine.append(end);
 		}
 	}
 	public void finish(String end){
-		if(!currentLine.equals(lineStart)){
+		if(!currentLine.toString().equals(lineStart)){
 			currentLine.append(end);
 			lines.add(currentLine.toString());
 		}

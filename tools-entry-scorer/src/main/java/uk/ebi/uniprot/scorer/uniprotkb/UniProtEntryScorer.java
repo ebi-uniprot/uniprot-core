@@ -13,8 +13,8 @@ import java.time.LocalTime;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 14:29:39 To change this template use File | Settings
- * | File Templates.
+ * 
+ *  based on https://swissprot.isb-sib.ch/wiki/display/sdu/Annotation+Scores+Before+Evidences
  */
 public class UniProtEntryScorer {
 

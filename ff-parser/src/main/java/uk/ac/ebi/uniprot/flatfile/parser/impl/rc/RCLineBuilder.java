@@ -28,55 +28,7 @@ public class RCLineBuilder implements RLine<List<ReferenceComment>> {
 			return new ArrayList<>();
 		}
 		LineBuilder lineBuilder =new LineBuilder(linePrefix, lineType);
-		List<StringBuilder> typeBuilders = new ArrayList<StringBuilder>();
-		boolean first = true;
-
-		// iterator over the types in order
-		for (ReferenceCommentType stype : order) {
-			List<ReferenceComment> referenceComments = getReferenceComment(f, stype);
-			if(referenceComments.isEmpty())
-				continue;
-			int counter = 0;
-			first = true;
-			StringBuilder typeBuilder = new StringBuilder();
-			for(ReferenceComment referenceComment: referenceComments) {
-
-				StringBuilder item = new StringBuilder();
-				String separator;
-
-				counter++;
-				if(first) {
-					separator =SPACE;
-				}
-				else if (referenceComments.size() == counter) {
-					separator =COMA+SEPARATOR_AND;
-				}else{
-					separator =SEPARATOR_COMA;
-				}
-
-				if (first) {
-					item.append(stype.toString());
-					item.append("=");
-					first = false;
-				}
-				item.append(referenceComment.getValue());
-				
-				if (showEvidence) {
-			
-					item.append(LineBuilderHelper.export(referenceComment.getEvidences()));
-				
-				}
-				if(typeBuilder.length() !=0)
-					typeBuilder.append(separator);
-				typeBuilder.append(item);
-				//    lineBuilder.addItem(item.toString(), separator);
-			}
-			if(typeBuilder.length() !=0)
-				typeBuilder.append(";");
-			typeBuilders.add(typeBuilder);
-
-		}
-
+		List<StringBuilder> typeBuilders = buildRefComments(f, showEvidence);
 		for(StringBuilder typeBuilder:typeBuilders){
 			lineBuilder.addItem(typeBuilder.toString(), SPACE);
 		}
@@ -84,63 +36,72 @@ public class RCLineBuilder implements RLine<List<ReferenceComment>> {
 		return lineBuilder.getLines();
 	}
 	
+	private List<StringBuilder> buildRefComments(List<ReferenceComment> f, boolean showEvidence){
+		List<StringBuilder> typeBuilders = new ArrayList<>();
+		for (ReferenceCommentType stype : order) {
+			List<ReferenceComment> referenceComments = getReferenceComment(f, stype);
+			if(referenceComments.isEmpty())
+				continue;
+			StringBuilder typeBuilder = 
+					buildRefComments(stype, referenceComments, showEvidence);
+			typeBuilders.add(typeBuilder);
+
+		}
+		return typeBuilders;
+	}
+	
+	private String getSeparater(boolean first, boolean last) {
+		if(first)
+			return SPACE;
+		else if(last) {
+			return COMA+SEPARATOR_AND;
+		}else
+			return SEPARATOR_COMA;
+	}
+	
+	
+	private StringBuilder buildRefComments( ReferenceCommentType stype, List<ReferenceComment> referenceComments,
+			boolean showEvidence) {
+		int counter = 0;
+		boolean first = true;
+		StringBuilder typeBuilder = new StringBuilder();
+		for(ReferenceComment referenceComment: referenceComments) {
+			StringBuilder item = new StringBuilder();			
+			counter++;
+			String separator = getSeparater(first,referenceComments.size() == counter );
+			
+			if (first) {
+				item.append(stype.toString());
+				item.append("=");
+				first = false;
+			}
+			item.append(referenceComment.getValue());
+			if (showEvidence) {				
+				item.append(LineBuilderHelper.export(referenceComment.getEvidences()));			
+			}
+
+			if(typeBuilder.length() !=0)
+				typeBuilder.append(separator);
+			typeBuilder.append(item);
+		}
+		if(typeBuilder.length() !=0)
+			typeBuilder.append(";");
+		
+		return typeBuilder;
+	}
 	
 	private List<String> buildLineStr(List<ReferenceComment> f) {
 		if(f.isEmpty()){
 			return new ArrayList<>();
 		}
-	//	LineBuilder lineBuilder =new LineBuilder(linePrefix, lineType);
-		List<StringBuilder> typeBuilders = new ArrayList<StringBuilder>();
-		boolean first = true;
-
-		// iterator over the types in order
-
-		for (ReferenceCommentType stype : order) {
-			List<ReferenceComment> referenceComments = getReferenceComment(f, stype);
-			if(referenceComments.isEmpty())
-				continue;
-			int counter = 0;
-			first = true;
-			StringBuilder typeBuilder = new StringBuilder();
-			for(ReferenceComment referenceComment: referenceComments) {
-
-				StringBuilder item = new StringBuilder();
-				String separator;
-
-				counter++;
-				if(first) {
-					separator =SPACE;
-				}
-				else if (referenceComments.size() == counter) {
-					separator =COMA+SEPARATOR_AND;
-				}else{
-					separator =SEPARATOR_COMA;
-				}
-
-				if (first) {
-					item.append(stype.toString());
-					item.append("=");
-					first = false;
-				}
-				item.append(referenceComment.getValue());
-
-				if(typeBuilder.length() !=0)
-					typeBuilder.append(separator);
-				typeBuilder.append(item);
-				//    lineBuilder.addItem(item.toString(), separator);
-			}
-			if(typeBuilder.length() !=0)
-				typeBuilder.append(";");
-			typeBuilders.add(typeBuilder);
-
-		}
-
+		List<StringBuilder> typeBuilders = buildRefComments(f, false);
 		StringBuilder lineBuilder = new StringBuilder();
 		int count =0;
 		for(StringBuilder typeBuilder:typeBuilders){
 			if(count>0)
 				lineBuilder.append(SPACE);
 			lineBuilder.append(typeBuilder.toString());
+			count++;
 		}
 		List<String> lines = new ArrayList<>();
 		lines.add(lineBuilder.toString());

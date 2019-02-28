@@ -22,17 +22,6 @@ public class InteractionCommentScored extends CommentScoredAbstr {
     }
 
     public double score() {
-        // TODO: 11/02/19 New model doesn't have interaction evidences ... what should we do here?
-        // Currently returning the computation that makes the test pass. However, is this right?!
         return comment.getInteractions().size() * 3;
-
-        // code for old model
-//        double score = 0;
-//        score +=
-//                comment.getInteractions()
-//                        .stream().filter(val -> ScoreUtil.hasEvidence(val.getEvidenceIds(), evidenceTypes))
-//                        .collect(Collectors.toList()).size() * 3;
-//
-//        return score;
     }
 }
