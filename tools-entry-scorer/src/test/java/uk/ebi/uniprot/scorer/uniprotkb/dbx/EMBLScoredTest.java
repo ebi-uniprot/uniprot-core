@@ -48,7 +48,7 @@ public class EMBLScoredTest extends AbstractDBXTest {
 
     @Test
     public void shouldEmbl4Score01() {
-        String line = "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}";
+        String line = "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 0.1);
     }
 
@@ -57,13 +57,13 @@ public class EMBLScoredTest extends AbstractDBXTest {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
-                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}";
+                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 0.1);
     }
 
     @Test
     public void shouldEmbl2Score01() {
-        String line = "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}";
+        String line = "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 0.1);
     }
 
@@ -72,11 +72,11 @@ public class EMBLScoredTest extends AbstractDBXTest {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
-                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}\n" +
+                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n" +
                 "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n" +
                 "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n" +
-                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}\n" +
-                "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{EI1}";
+                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n" +
+                "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 3.1);
     }
 
@@ -85,12 +85,12 @@ public class EMBLScoredTest extends AbstractDBXTest {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
-                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}\n" +
+                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n" +
                 "DR   EMBL; AF377743; AAK60255.1; ALT_INIT; Genomic_DNA.\n" +
                 "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n" +
                 "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n" +
-                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}\n" +
-                "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{EI1}";
+                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n" +
+                "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 3.1);
     }
 
@@ -99,11 +99,11 @@ public class EMBLScoredTest extends AbstractDBXTest {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
-                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}\n" +
+                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n" +
                 "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n" +
                 "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.\n" +
-                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{EI1}\n" +
-                "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{EI1}\n" +
+                "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n" +
+                "DR   EMBL; AK057020; BAB71346.1; JOINED; mRNA.{ECO:0000312|EMBL:AAD42944.1}\n" +
                 "DR   EMBL; AJ243418; -; NOT_ANNOTATED_CDS; mRNA.";
         testDBXrefScore(line, 4.1);
 
