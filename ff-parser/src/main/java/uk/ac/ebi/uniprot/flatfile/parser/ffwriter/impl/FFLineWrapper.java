@@ -5,7 +5,7 @@ import java.util.*;
 
 public class FFLineWrapper {
 	private final static String[] NOT_WRAPPED= {"->", "-->", "- ", "EC ", "TC ", "ECO:"};
-	private final static String[] DASHS ={"->", "-->", "- "};
+//	private final static String[] DASHS ={"->", "-->", "- "};
 	private final static String DASH ="-";
 	public static StringBuilder wrap(StringBuilder wrapThis, String separator, String linePrefix){
 		String[] seps = {separator};
