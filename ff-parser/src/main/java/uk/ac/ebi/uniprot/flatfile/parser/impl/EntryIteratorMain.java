@@ -28,12 +28,13 @@ public class EntryIteratorMain {
 
         LOGGER.info("==========");
         DefaultUniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(numThreads, entryQueueSize, ffQueueSize);
+        entryIterator.setIgnoreWrong(true);
         entryIterator.setInput(file, "", "", "", "");
         long count = 0;
         long start = System.currentTimeMillis();
         while ((maxCount < 1 || count < maxCount) && entryIterator.hasNext()) {
             UniProtEntry entry = entryIterator.next();
-            if (count % 50000 == 0) {
+            if (count % 5000 == 0) {
                 long duration = System.currentTimeMillis() - start;
                 double entriesPerSec = (double) (count * 1000) / duration;
                 long totalMemory = Runtime.getRuntime().totalMemory();
