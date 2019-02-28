@@ -1,20 +1,16 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
 import uk.ac.ebi.uniprot.cv.keyword.Keyword;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordDetail;
 import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordDetailImpl;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 	private static final String WW_LINE = "WW";
@@ -37,6 +33,13 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 		List<KeywordDetail> list = parseKeywordFileEntryList(rawList);
 		updateListWithRelationShips(list, rawList);
 		return list;
+	}
+
+	public Map<String,String> parseLinesToAccessionMap(List<String> lines) {
+		List<KeywordDetail> keywordDetailList = parseLines(lines);
+		return keywordDetailList.stream()
+				.map(KeywordDetail::getKeyword)
+				.collect(Collectors.toMap(Keyword::getId,Keyword::getAccession));
 	}
 
 	private void updateListWithRelationShips(List<KeywordDetail> list, List<KeyFileEntry> rawList) {

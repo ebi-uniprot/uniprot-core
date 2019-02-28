@@ -1,19 +1,19 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import uk.ac.ebi.uniprot.cv.disease.CrossReference;
 import uk.ac.ebi.uniprot.cv.disease.Disease;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseImpl;
 import uk.ac.ebi.uniprot.cv.keyword.Keyword;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public final class DiseaseFileReader extends AbstractFileReader<Disease> {
@@ -32,6 +32,11 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
 	public List<Disease> parseLines(List<String> lines) {
 		return convertLinesIntoInMemoryObjectList(lines).stream().map(this::parseDiseaseFileEntry)
 				.collect(Collectors.toList());
+	}
+
+	public Map<String,String> parseLinesToAccessionMap(List<String> lines) {
+		List<Disease> diseaseList = parseLines(lines);
+		return diseaseList.stream().collect(Collectors.toMap(Disease::getId,Disease::getAccession));
 	}
 
 	private Disease parseDiseaseFileEntry(DiseaseFileEntry entry) {

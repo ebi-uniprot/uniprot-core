@@ -1,19 +1,19 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
 import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
 import uk.ac.ebi.uniprot.cv.subcell.SubcellLocationType;
 import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocation;
 import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationImpl;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocation> {
@@ -39,6 +39,12 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         List<SubcellularLocation> list = parseSubcellularFileEntryList(rawList);
         updateListWithRelationShips(list, rawList);
         return list;
+    }
+
+    public Map<String,String> parseLinesToAccessionMap(List<String> lines) {
+        List<SubcellularFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
+        List<SubcellularLocation> list = parseSubcellularFileEntryList(rawList);
+        return list.stream().collect(Collectors.toMap(SubcellularLocation::getId,SubcellularLocation::getAccession));
     }
 
     private List<SubcellularFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
