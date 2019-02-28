@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EntryBufferedReader;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverterFactory;
 
 import java.io.IOException;
 
@@ -19,7 +19,7 @@ public class FlatfileRoundTripMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlatfileRoundTripMain.class);
     private boolean isPublic = false;
     private UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
-    private EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "", true);
+    private EntryObjectConverterFactory.EntryObjectConverter entryObjectConverter = new EntryObjectConverterFactory().createEntryObjectConverter("", "", "", "", true);
     private FlatfileWriter<UniProtEntry> ffWriter = new UniProtFlatfileWriter();
 
     public static void main(String[] args) throws Exception {

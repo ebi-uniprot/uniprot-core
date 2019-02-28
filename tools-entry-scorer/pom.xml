@@ -26,7 +26,6 @@
             <groupId>uk.ac.ebi.uniprot</groupId>
             <artifactId>ff-parser</artifactId>
             <version>0.1-SNAPSHOT</version>
-            <!--<scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>com.beust</groupId>

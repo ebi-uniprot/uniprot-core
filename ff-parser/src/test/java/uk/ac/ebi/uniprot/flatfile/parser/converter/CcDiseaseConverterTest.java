@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
@@ -13,12 +12,13 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class CcDiseaseConverterTest {
-	private final CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""), null);
+	private final CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>(),true);
 	@Test
 	public void testFull() {
 		/*

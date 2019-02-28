@@ -43,6 +43,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
     // count of the entries that has been produced and consumed.
     private AtomicLong entryCounter = new AtomicLong();
 
+    private boolean ignoreWrong = false;
+
     public DefaultUniProtEntryIterator() {
         this(1, 5000, 50000);
     }
@@ -51,6 +53,10 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         this.numberOfThreads = numberOfThreads;
         entriesQueue = new ArrayBlockingQueue<>(entryQueuesize);
         ffQueue = new ArrayBlockingQueue<>(ffQueueSize);
+    }
+
+    public void setIgnoreWrong(boolean ignoreWrong){
+        this.ignoreWrong = ignoreWrong;
     }
 
     @Override
@@ -249,7 +255,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             this.ffQueue = ffQueue;
             this.queue = queue;
             this.countDown = countDown;
-            this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, false);
+            this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, ignoreWrong);
         }
 
         void finish() {

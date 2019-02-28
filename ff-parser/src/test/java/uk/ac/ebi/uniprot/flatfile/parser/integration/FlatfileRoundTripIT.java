@@ -12,7 +12,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverterFactory;
 
 import java.io.IOException;
 import java.net.URL;
@@ -104,7 +104,7 @@ class FlatfileRoundTripIT {
         EntryObject parse = entryParser.parse(entryToParse);
         assertNotNull(parse);
 
-        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "", true);
+        EntryObjectConverterFactory.EntryObjectConverter entryObjectConverter = new EntryObjectConverterFactory().createEntryObjectConverter("", "", "", "", true);
         UniProtEntry converted = entryObjectConverter.convert(parse);
         FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
 

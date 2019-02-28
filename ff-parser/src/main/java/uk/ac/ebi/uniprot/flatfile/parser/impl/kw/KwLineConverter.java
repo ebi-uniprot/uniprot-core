@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.kw;
 
-import uk.ac.ebi.uniprot.cv.keyword.KeywordService;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -14,15 +13,15 @@ import java.util.List;
 import java.util.Map;
 
 public class KwLineConverter extends EvidenceCollector implements Converter<KwLineObject, List<Keyword>> {
-    private final KeywordService keywordService;
+    private final Map<String,String> keywordMap;
     private final boolean ignoreWrongId;
 
-    public KwLineConverter(KeywordService keywordService) {
-        this(keywordService, true);
+    public KwLineConverter(Map<String,String> keywordMap) {
+        this(keywordMap, true);
     }
 
-    public KwLineConverter(KeywordService keywordService, boolean ignoreWrongId) {
-        this.keywordService = keywordService;
+    public KwLineConverter(Map<String,String> keywordMap, boolean ignoreWrongId) {
+        this.keywordMap = keywordMap;
         this.ignoreWrongId = ignoreWrongId;
     }
 
@@ -33,14 +32,11 @@ public class KwLineConverter extends EvidenceCollector implements Converter<KwLi
         this.addAll(evidences.values());
         List<Keyword> keywords = new ArrayList<>();
         for (String kw : f.keywords) {
-            uk.ac.ebi.uniprot.cv.keyword.Keyword keyword = keywordService.getById(kw);
-            String kwid = "";
-            if (keyword != null) {
-                kwid = keyword.getAccession();
-            } else if (!ignoreWrongId) {
+            String keywordId= keywordMap.getOrDefault(kw,"");
+            if (!ignoreWrongId && keywordId.isEmpty()) {
                 throw new ParseKeywordException(kw + " does not match keyword entry.");
             }
-            keywords.add(new KeywordBuilder(kwid, kw, evidences.get(kw)).build());
+            keywords.add(new KeywordBuilder(keywordId, kw, evidences.get(kw)).build());
         }
         return keywords;
     }

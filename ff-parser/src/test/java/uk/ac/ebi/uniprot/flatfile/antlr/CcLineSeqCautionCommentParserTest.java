@@ -1,8 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
-import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
@@ -14,6 +12,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject.SequenceCautionObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject.SequenceCautionType;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -173,9 +172,7 @@ public class CcLineSeqCautionCommentParserTest {
 		CcLineObject.SequenceCaution sc = (CcLineObject.SequenceCaution) cc.object;
 		assertEquals(1, sc.sequenceCautionObjects.size());
 		verify(sc.sequenceCautionObjects.get(0), "CAA39814.1", "Several", SequenceCautionType.FRAMESHIFT,  null);
-		 CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""),
-				 new SubcellularLocationServiceImpl("")
-				 );
+		 CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>(),true);
 		 List<Comment> comments =converter.convert(obj);
 		 assertEquals(1, comments.size());
 		 assertEquals(CommentType.SEQUENCE_CAUTION, comments.get(0).getCommentType());

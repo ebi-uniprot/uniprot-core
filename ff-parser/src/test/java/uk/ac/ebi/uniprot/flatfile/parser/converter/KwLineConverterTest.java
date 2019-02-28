@@ -1,20 +1,20 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.kw.KwLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.kw.KwLineObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertNotNull;
 
 public class KwLineConverterTest {
-	private final KwLineConverter converter =new  KwLineConverter(new KeywordServiceImpl(""));
+	private final KwLineConverter converter =new  KwLineConverter(new HashMap<>(),true);
 	@Test
 	public void test(){
 		//KW   Activator; Complete proteome; Reference proteome; Transcription
