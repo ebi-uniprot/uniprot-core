@@ -34,8 +34,8 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
 				.collect(Collectors.toList());
 	}
 
-	public Map<String,String> parseLinesToAccessionMap(List<String> lines) {
-		List<Disease> diseaseList = parseLines(lines);
+	public Map<String,String> parseFileToAccessionMap(String filename) {
+		List<Disease> diseaseList = parse(filename);
 		return diseaseList.stream().collect(Collectors.toMap(Disease::getId,Disease::getAccession));
 	}
 

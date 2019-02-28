@@ -1,8 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseServiceImpl;
-import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationServiceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
@@ -19,6 +17,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -61,7 +60,7 @@ public abstract class CCBuildTestAbstr {
     protected void doTest(String ccLine) {
         UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
         CcLineObject obj = parser.parse(ccLine + "\n");
-        CcLineConverter converter = new CcLineConverter(new DiseaseServiceImpl(""), new SubcellularLocationServiceImpl(""));
+        CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>(),true);
         List<Comment> comments = converter.convert(obj);
         FFLine ffLine = builder.buildWithEvidence(comments);
         String resultString = ffLine.toString();

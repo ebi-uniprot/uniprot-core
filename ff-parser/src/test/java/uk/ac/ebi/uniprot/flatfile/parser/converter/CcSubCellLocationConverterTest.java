@@ -1,21 +1,19 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
 public class CcSubCellLocationConverterTest {
-	private final CcLineConverter converter = new CcLineConverter(null, null);
+	private final CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>());
 	@Test
 	void testEvidenceInLocationLevel() {
 		CcLineObject ccLineO = new CcLineObject();	

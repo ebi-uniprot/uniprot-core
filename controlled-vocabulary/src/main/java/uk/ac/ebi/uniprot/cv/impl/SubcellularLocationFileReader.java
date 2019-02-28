@@ -41,10 +41,10 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return list;
     }
 
-    public Map<String,String> parseLinesToAccessionMap(List<String> lines) {
-        List<SubcellularFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
-        List<SubcellularLocation> list = parseSubcellularFileEntryList(rawList);
-        return list.stream().collect(Collectors.toMap(SubcellularLocation::getId,SubcellularLocation::getAccession));
+    public Map<String,String> parseFileToAccessionMap(String fileName) {
+        List<SubcellularLocation> list = parse(fileName);
+        return list.stream()
+                .collect(Collectors.toMap(SubcellularLocation::getId,SubcellularLocation::getAccession));
     }
 
     private List<SubcellularFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {

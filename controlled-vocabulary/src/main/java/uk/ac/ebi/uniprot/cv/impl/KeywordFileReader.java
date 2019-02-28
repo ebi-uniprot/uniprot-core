@@ -35,8 +35,8 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 		return list;
 	}
 
-	public Map<String,String> parseLinesToAccessionMap(List<String> lines) {
-		List<KeywordDetail> keywordDetailList = parseLines(lines);
+	public Map<String,String> parseFileToAccessionMap(String fileName) {
+		List<KeywordDetail> keywordDetailList = parse(fileName);
 		return keywordDetailList.stream()
 				.map(KeywordDetail::getKeyword)
 				.collect(Collectors.toMap(Keyword::getId,Keyword::getAccession));

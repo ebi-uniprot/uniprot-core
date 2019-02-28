@@ -1,8 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.cv.disease.DiseaseService;
-import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocationService;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 import uk.ac.ebi.uniprot.domain.Range;
@@ -21,6 +19,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.exception.ParseDiseaseException;
+import uk.ac.ebi.uniprot.flatfile.parser.exception.ParseSubcellularLocationException;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject.*;
@@ -36,17 +35,17 @@ import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.pars
 public class CcLineConverter extends EvidenceCollector implements Converter<CcLineObject, List<Comment>> {
     // private final DefaultCommentFactory factory = DefaultCommentFactory
     // .getInstance();
-    private final DiseaseService diseaseService;
-    private final SubcellularLocationService subcellularLocationService;
+    private final Map<String, String> diseaseMap;
+    private final Map<String, String> subcellularLocationMap;
     private final boolean ignoreWrong;
 
-    public CcLineConverter(DiseaseService diseaseService, SubcellularLocationService subcellularLocationService) {
+    public CcLineConverter(Map<String, String> diseaseService, Map<String, String> subcellularLocationService) {
         this(diseaseService, subcellularLocationService, true);
     }
 
-    public CcLineConverter(DiseaseService diseaseService, SubcellularLocationService subcellularLocationService, boolean ignoreWrong) {
-        this.diseaseService = diseaseService;
-        this.subcellularLocationService = subcellularLocationService;
+    public CcLineConverter(Map<String, String> diseaseMap, Map<String, String> subcellularLocationMap, boolean ignoreWrong) {
+        this.diseaseMap = diseaseMap;
+        this.subcellularLocationMap = subcellularLocationMap;
         this.ignoreWrong = ignoreWrong;
     }
 
@@ -364,12 +363,11 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         DiseaseBuilder builder = new DiseaseBuilder();
         if (!Strings.isNullOrEmpty(cObj.name)) {
             builder.diseaseId(cObj.name);
-            uk.ac.ebi.uniprot.cv.disease.Disease disease = diseaseService.getById(cObj.name);
-            if (disease != null) {
-                builder.diseaseAc(disease.getAccession());
-            } else if (!ignoreWrong) {
+            String disease = diseaseMap.getOrDefault(cObj.name,"");
+            if (!ignoreWrong && disease.isEmpty()) {
                 throw new ParseDiseaseException(cObj.name + " does not match any humdisease entry");
             }
+            builder.diseaseAc(disease);
             if (!Strings.isNullOrEmpty(cObj.abbr)) {
                 builder.acronym(cObj.abbr);
 
@@ -424,18 +422,16 @@ public class CcLineConverter extends EvidenceCollector implements Converter<CcLi
         if ((locationValue == null) || locationValue.value.isEmpty()) {
             return null;
         }
-        
-        String id ="";
-        if(subcellularLocationService !=null) {
-        uk.ac.ebi.uniprot.cv.subcell.SubcellularLocation subcellLocation = subcellularLocationService.getById(locationValue.value);
-        if(subcellLocation != null) {
-        	id = subcellLocation.getAccession();
-        }}
+
+        String subcellLocation = subcellularLocationMap.getOrDefault(locationValue.value,"");
+        if (!ignoreWrong && subcellLocation.isEmpty()) {
+            throw new ParseSubcellularLocationException(locationValue.value + " does not match any subcellular Location entry");
+        }
         List<Evidence> evidences  =evidenceMap.get(locationValue);
         if(evidences ==null) {
         	evidences =evidenceMap.get(lo);
         }
-        return new SubcellularLocationValueBuilder(id, locationValue.value, evidenceMap.get(locationValue)).build();
+        return new SubcellularLocationValueBuilder(subcellLocation, locationValue.value, evidenceMap.get(locationValue)).build();
     }
 
     private MassSpectrometryComment convertMassSpectrometry(CcLineObject.MassSpectrometry cObj,
