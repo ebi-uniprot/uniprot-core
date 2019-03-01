@@ -256,7 +256,7 @@ public class PropertyObject implements Serializable {
             if (Double.isNaN(d)) {
                 return defaultValue;
             }
-            return new BigDecimal(((Number) val).doubleValue());
+            return BigDecimal.valueOf(((Number) val).doubleValue());
         }
         if (val instanceof Long || val instanceof Integer
                 || val instanceof Short || val instanceof Byte) {

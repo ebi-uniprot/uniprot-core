@@ -71,7 +71,7 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
         if (acc.equalsIgnoreCase("self")) {
             builder.interactionType(InteractionType.SELF);
         } else {
-            if (genename.endsWith("(xeno)")) {
+            if (genename != null && genename.endsWith("(xeno)")) {
                 builder.interactionType(InteractionType.XENO);
                 genename = genename.substring(0, genename.length() - 7);
             } else {

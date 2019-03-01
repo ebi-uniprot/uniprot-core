@@ -1,8 +1,7 @@
 package uk.ac.ebi.uniprot.xmlparser;
 
-import java.io.InputStream;
-import java.util.Iterator;
-import java.util.function.Function;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -12,9 +11,10 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.function.Function;
 
 public class XmlIterator<T, R> implements Iterator<R> {
 
@@ -57,12 +57,12 @@ public class XmlIterator<T, R> implements Iterator<R> {
 
 	@Override
 	public R next() {
-		T xmlEntry = this.xmlEntry;
+		T localXmlEntry = this.xmlEntry;
 		this.xmlEntry = getNextEntry();
-		if (xmlEntry != null)
-			return converter.apply(xmlEntry);
+		if (localXmlEntry != null)
+			return converter.apply(localXmlEntry);
 		else
-			return null;
+			throw new NoSuchElementException();
 	}
 
 	private T getNextEntry() {
@@ -85,10 +85,8 @@ public class XmlIterator<T, R> implements Iterator<R> {
 				return treeObject.getValue();
 			else
 				return null;
-		} catch (JAXBException e) {
-			logger.error("Parser error " + e);
-		} catch (XMLStreamException e) {
-			logger.error("Parser error " + e);
+		} catch (JAXBException | XMLStreamException e) {
+			logger.error("Parser error {}", e);
 		}
 
 		return null;

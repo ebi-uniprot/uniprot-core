@@ -8,12 +8,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuild
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PropertyType;
 
-import java.util.Optional;
-
 import static org.junit.Assert.*;
 
-public class UniProtCrossReferenceConverterTest {
-
+class UniProtCrossReferenceConverterTest {
     private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();
 
     @Test
@@ -133,21 +130,21 @@ public class UniProtCrossReferenceConverterTest {
 
     }
 
-    void verifyXml(DbReferenceType xmlObj, String db, String id) {
+    private void verifyXml(DbReferenceType xmlObj, String db, String id) {
         String xml = UniProtXmlTestHelper.toXmlString(xmlObj, DbReferenceType.class, "dbReference");
         System.out.println(xml);
         assertEquals(db, xmlObj.getType());
         assertEquals(id, xmlObj.getId());
     }
 
-    void verifyXmlAttr(DbReferenceType xmlObj, String xmlTag, String val) {
-        Optional<PropertyType> pType = xmlObj.getProperty().stream().filter(v -> v.getType().equals(xmlTag))
-                .findFirst();
+    private void verifyXmlAttr(DbReferenceType xmlObj, String xmlTag, String val) {
+        PropertyType pType = xmlObj.getProperty().stream().filter(v -> v.getType().equals(xmlTag))
+                .findFirst().orElse(null);
         if (Strings.isNullOrEmpty(val) || "-".equals(val)) {
-            assertFalse(pType.isPresent());
+            assertNull(pType);
         } else {
-            assertTrue(pType.isPresent());
-            assertEquals(val, pType.get().getValue());
+            assertNotNull(pType);
+            assertEquals(val, pType.getValue());
         }
     }
 

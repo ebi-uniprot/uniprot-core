@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class UniProtXmlBuildStats implements XmlBuildStats {
     private static final String REPORT_TITLE = "UniProt XML Build Report";
-    private static final long DEFAULT_REPORT_TIME = 60 * 5;
+    private static final long DEFAULT_REPORT_TIME = 60L * 5L;
     private final Counter failedCounter;
     private final Counter succeededCounter;
     private final Counter ffCounter;
@@ -33,9 +33,9 @@ public class UniProtXmlBuildStats implements XmlBuildStats {
 
     public UniProtXmlBuildStats(String title, long reportTimeInSecond) {
         this.title = title;
-        Slf4jReporter reporter = Slf4jReporter.forRegistry(MetricsUtil.getMetricRegistryInstance()).build();
-        reporter.start(reportTimeInSecond, TimeUnit.SECONDS);
-        this.reporter = reporter;
+        Slf4jReporter localReporter = Slf4jReporter.forRegistry(MetricsUtil.getMetricRegistryInstance()).build();
+        localReporter.start(reportTimeInSecond, TimeUnit.SECONDS);
+        this.reporter = localReporter;
 
         this.failedCounter = MetricsUtil.getMetricRegistryInstance().counter("entry-failed");
         this.succeededCounter = MetricsUtil.getMetricRegistryInstance().counter("entry-succeeded");

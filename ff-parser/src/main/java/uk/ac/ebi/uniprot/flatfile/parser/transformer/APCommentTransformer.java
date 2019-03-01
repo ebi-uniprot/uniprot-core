@@ -16,8 +16,7 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 
 
-public class APCommentTransformer implements
-        CommentTransformer<AlternativeProductsComment> {
+public class APCommentTransformer implements CommentTransformer<AlternativeProductsComment> {
     /**
      * "Event=Alternative splicing; Named isoforms=6;\n" + "Comment=Additional isoforms seem to exist.
      * {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n" + "Name=1 {ECO:0000313|EMBL:BAG16761.1}; Synonyms=A

@@ -51,7 +51,7 @@ final public class FeatureTransformer {
             }
             annotation = annotation.substring(0, index).trim();
             if (annotation.endsWith("\n")) {
-                annotation.substring(0, annotation.length() - 1).trim();
+                annotation = annotation.substring(0, annotation.length() - 1).trim();
             }
         }
         if (ftid != null) {

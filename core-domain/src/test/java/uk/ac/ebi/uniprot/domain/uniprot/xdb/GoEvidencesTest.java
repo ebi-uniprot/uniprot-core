@@ -5,47 +5,41 @@ import org.junit.jupiter.api.Test;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GoEvidencesTest {
+    private static final String WRONG = "WRONG";
 
     @Test
     void testConvertGAFToECO() {
         //IBA	Default	ECO:0000318
         Optional<String> eco = GoEvidences.INSTANCE.convertGAFToECO("IBA");
-        assertTrue(eco.isPresent());
-        assertEquals("ECO:0000318", eco.get());
+        assertEquals("ECO:0000318", eco.orElse(WRONG));
     }
 
     @Test
     void testConvertGAFToECODefault() {
         //IBA	Default	ECO:0000318
         Optional<String> eco = GoEvidences.INSTANCE.convertGAFToECO("IEA");
-        assertTrue(eco.isPresent());
-        assertEquals("ECO:0000501", eco.get());
+        assertEquals("ECO:0000501", eco.orElse(WRONG));
     }
 
     @Test
     void testConvertGAFToECOStringString() {
         //IEA	GO_REF:0000037	ECO:0000322
         Optional<String> eco = GoEvidences.INSTANCE.convertGAFToECO("IEA", "GO_REF:0000037");
-        assertTrue(eco.isPresent());
-        assertEquals("ECO:0000322", eco.get());
+        assertEquals("ECO:0000322", eco.orElse(WRONG));
     }
 
     @Test
     void testConvertECOToGAF() {
         Optional<String> gaf = GoEvidences.INSTANCE.convertECOToGAF("ECO:0000322");
-        assertTrue(gaf.isPresent());
-        assertEquals("IEA", gaf.get());
+        assertEquals("IEA", gaf.orElse(WRONG));
 
         gaf = GoEvidences.INSTANCE.convertECOToGAF("ECO:0000501");
-        assertTrue(gaf.isPresent());
-        assertEquals("IEA", gaf.get());
+        assertEquals("IEA", gaf.orElse(WRONG));
 
         gaf = GoEvidences.INSTANCE.convertECOToGAF("ECO:0000318");
-        assertTrue(gaf.isPresent());
-        assertEquals("IBA", gaf.get());
+        assertEquals("IBA", gaf.orElse(WRONG));
     }
 
 }
