@@ -6,6 +6,7 @@ import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 
 import java.util.List;
 
@@ -71,7 +72,7 @@ public class NewCitationScoredTest {
     }
 
     private List<UniProtReference> parseLines(String citationLines) {
-        UniProtEntry entry = new DefaultUniProtParser("", "", "", "", true)
+        UniProtEntry entry = new DefaultUniProtParser(new SupportingDataMapImpl(), true)
                 .parse(swissProtEntry(citationLines));
         return entry.getReferences();
     }

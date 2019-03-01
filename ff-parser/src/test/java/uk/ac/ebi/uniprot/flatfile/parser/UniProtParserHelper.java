@@ -3,8 +3,9 @@ package uk.ac.ebi.uniprot.flatfile.parser;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverterFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 
 public final class UniProtParserHelper {
 
@@ -35,19 +36,19 @@ public final class UniProtParserHelper {
                 }
             };
 
-    private static final ThreadLocal<EntryObjectConverterFactory.EntryObjectConverter> entryObjectConverter =
-            new ThreadLocal<EntryObjectConverterFactory.EntryObjectConverter>() {
+    private static final ThreadLocal<EntryObjectConverter> entryObjectConverter =
+            new ThreadLocal<EntryObjectConverter>() {
                 @Override
-                protected EntryObjectConverterFactory.EntryObjectConverter initialValue() {
-                    return new EntryObjectConverterFactory().createEntryObjectConverter("", "", "", "", true);
+                protected EntryObjectConverter initialValue() {
+                    return new EntryObjectConverter(new SupportingDataMapImpl(), true);
                 }
             };
 
-    private static final ThreadLocal<EntryObjectConverterFactory.EntryObjectConverter> entryObjectConverterIgnoreDR =
-            new ThreadLocal<EntryObjectConverterFactory.EntryObjectConverter>() {
+    private static final ThreadLocal<EntryObjectConverter> entryObjectConverterIgnoreDR =
+            new ThreadLocal<EntryObjectConverter>() {
                 @Override
-                protected EntryObjectConverterFactory.EntryObjectConverter initialValue() {
-                    return new EntryObjectConverterFactory().createEntryObjectConverter("", "", "", "",  true);
+                protected EntryObjectConverter initialValue() {
+                    return new EntryObjectConverter(new SupportingDataMapImpl(),  true);
                 }
             };
 
@@ -58,7 +59,7 @@ public final class UniProtParserHelper {
     public static UniProtEntry parse(String entryText, boolean ignoreWrongDR) {
         try {
             EntryObject parse = entryParser.get().parse(entryText);
-            EntryObjectConverterFactory.EntryObjectConverter entryConverter = entryObjectConverter.get();
+            EntryObjectConverter entryConverter = entryObjectConverter.get();
             if (ignoreWrongDR)
                 entryConverter = entryObjectConverterIgnoreDR.get();
             UniProtEntry convert = entryConverter.convert(parse);

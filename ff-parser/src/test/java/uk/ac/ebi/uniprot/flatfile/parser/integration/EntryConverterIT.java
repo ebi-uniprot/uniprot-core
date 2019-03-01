@@ -6,8 +6,9 @@ import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverterFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -69,7 +70,7 @@ public class EntryConverterIT {
 		EntryObject parse = entryParser.parse(entryToParse);
 		assertNotNull(parse);
 
-		EntryObjectConverterFactory.EntryObjectConverter entryObjectConverter = new EntryObjectConverterFactory().createEntryObjectConverter("", "", "", "",  true);
+		EntryObjectConverter entryObjectConverter = new EntryObjectConverter(new SupportingDataMapImpl(),  true);
 		UniProtEntry convert = entryObjectConverter.convert(parse);
 		assertNotNull(convert);
 

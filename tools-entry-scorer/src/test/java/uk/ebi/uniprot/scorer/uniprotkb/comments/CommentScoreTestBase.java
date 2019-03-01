@@ -16,7 +16,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CommentScoreTestBase {
-    private CcLineTransformer ccLineTransformer = new CcLineTransformer(null, null);
+    private CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
 
     void verify(CommentType type, String line, double expectedScore) throws Exception {
         verify(type, line, expectedScore, false);
@@ -55,7 +55,7 @@ class CommentScoreTestBase {
     }
 
     public static void main(String[] args) {
-        CcLineTransformer ccLineTransformer = new CcLineTransformer(null, null);
+        CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         String line = "ALLERGEN: Causes an allergic reaction in human. Binds to IgE and\n" +
                 "IgG.";
         List<Comment> comments = ccLineTransformer.transformNoHeader(line);
