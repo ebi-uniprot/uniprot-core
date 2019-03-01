@@ -55,6 +55,8 @@ public class UniProtEntryBuilder {
 
         ActiveEntryBuilder entryAudit(EntryAudit entryAudit);
 
+        ActiveEntryBuilder annotationScore(double annotationScore);
+
         ActiveEntryBuilder organism(Organism organism);
 
         ActiveEntryBuilder addOrganismHost(OrganismHost organismHost);
@@ -108,6 +110,7 @@ public class UniProtEntryBuilder {
         private List<UniProtAccession> secondaryAccessions = new ArrayList<>();
         private UniProtId uniProtId = null;
         private EntryAudit entryAudit = null;
+        private double annotationScore;
         private Organism organism = null;
         private List<OrganismHost> organismHosts = new ArrayList<>();
         private ProteinExistence proteinExistence = null;
@@ -177,6 +180,12 @@ public class UniProtEntryBuilder {
         @Override
         public ActiveEntryBuilder entryAudit(EntryAudit entryAudit) {
             this.entryAudit = entryAudit;
+            return this;
+        }
+
+        @Override
+        public ActiveEntryBuilder annotationScore(double annotationScore) {
+            this.annotationScore = annotationScore;
             return this;
         }
 
@@ -308,7 +317,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public UniProtEntry build() {
-            return new UniProtEntryImpl(entryType, primaryAccession, secondaryAccessions, uniProtId, entryAudit, organism,
+            return new UniProtEntryImpl(entryType, primaryAccession, secondaryAccessions, uniProtId, entryAudit, annotationScore, organism,
                                         organismHosts, proteinExistence, proteinDescription, genes, comments, features, geneLocations, keywords,
                                         references, databaseCrossReferences, sequence, internalSection, inactiveReason);
         }
@@ -334,6 +343,7 @@ public class UniProtEntryBuilder {
             this.sequence = instance.getSequence();
             this.internalSection = instance.getInternalSection();
             this.inactiveReason = instance.getInactiveReason();
+            this.annotationScore = instance.getAnnotationScore();
             return this;
         }
     }

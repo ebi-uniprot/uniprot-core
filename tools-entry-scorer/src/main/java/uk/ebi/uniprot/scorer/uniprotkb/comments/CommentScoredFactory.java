@@ -63,7 +63,7 @@ public class CommentScoredFactory {
                 commentScored = new WebResourceCommentScored((WebResourceComment) t, evidenceTypes);
                 break;
             case CATALYTIC_ACTIVITY:
-                commentScored = new CatalyticActivityCommentStructuredScored((CatalyticActivityComment) t, evidenceTypes);
+                commentScored = new CatalyticActivityCommentScored((CatalyticActivityComment) t, evidenceTypes);
                 break;
             default:
                 commentScored = new DefaultTextOnlyCommentScored(

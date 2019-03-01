@@ -84,46 +84,46 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
             String[] tokens = line.split(SPLIT_SPACES);
             switch (tokens[0]) {
                 case ID_LINE:
-                    entry.ID = tokens[1];
+                    entry.id = tokens[1];
                     break;
                 case IT_LINE:
-                    entry.IT = tokens[1];
+                    entry.it = tokens[1];
                     break;
                 case IO_LINE:
-                    entry.IO = tokens[1];
+                    entry.io = tokens[1];
                     break;
                 case AC_LINE:
-                    entry.AC = tokens[1];
+                    entry.ac = tokens[1];
                     break;
                 case DE_LINE:
-                    entry.DE.add(tokens[1]);
+                    entry.de.add(tokens[1]);
                     break;
                 case SY_LINE:
-                    entry.SY.add(tokens[1]);
+                    entry.sy.add(tokens[1]);
                     break;
                 case SL_LINE:
-                    entry.SL = tokens[1];
+                    entry.sl = tokens[1];
                     break;
                 case HI_LINE:
-                    entry.HI.add(tokens[1]);
+                    entry.hi.add(tokens[1]);
                     break;
                 case HP_LINE:
-                    entry.HP.add(tokens[1]);
+                    entry.hp.add(tokens[1]);
                     break;
                 case KW_LINE:
-                    entry.KW = tokens[1];
+                    entry.kw = tokens[1];
                     break;
                 case GO_LINE:
-                    entry.GO.add(tokens[1]);
+                    entry.go.add(tokens[1]);
                     break;
                 case AN_LINE:
-                    entry.AN.add(tokens[1]);
+                    entry.an.add(tokens[1]);
                     break;
                 case RX_LINE:
-                    entry.RX.add(tokens[1]);
+                    entry.rx.add(tokens[1]);
                     break;
                 case WW_LINE:
-                    entry.WW.add(tokens[1]);
+                    entry.ww.add(tokens[1]);
                     break;
                 default:
                     LOG.info("Unhandle line found while parsing file: {}", line);
@@ -148,46 +148,46 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
      */
     private SubcellularLocation parseSubcellularFileEntry(SubcellularFileEntry entry) {
         SubcellularLocationImpl retObj =new SubcellularLocationImpl();
-        retObj.setAccession(entry.AC);
-        retObj.setContent(trimSpacesAndRemoveLastDot(entry.SL));
+        retObj.setAccession(entry.ac);
+        retObj.setContent(trimSpacesAndRemoveLastDot(entry.sl));
 
-        if (entry.ID != null) {           
-            retObj.setId(trimSpacesAndRemoveLastDot(entry.ID));
+        if (entry.id != null) {           
+            retObj.setId(trimSpacesAndRemoveLastDot(entry.id));
             retObj.setType(SubcellLocationType.LOCATION);
-        } else if  (entry.IT != null){
-        	  retObj.setId(trimSpacesAndRemoveLastDot(entry.IT));
+        } else if  (entry.it != null){
+        	  retObj.setId(trimSpacesAndRemoveLastDot(entry.it));
               retObj.setType(SubcellLocationType.TOPOLOGY);
         }else {
-        	retObj.setId(trimSpacesAndRemoveLastDot(entry.IO));
+        	retObj.setId(trimSpacesAndRemoveLastDot(entry.io));
             retObj.setType(SubcellLocationType.ORIENTATION);
         }
         // definition
-        String def = String.join(" ", entry.DE);
+        String def = String.join(" ", entry.de);
         retObj.setDefinition(def.isEmpty() ? null : def);
 
         // Keyword is a single string will null by default
-        if((entry.KW !=null) && !entry.KW.isEmpty())
-        	retObj.setKeyword(new KeywordImpl(retObj.getId(), entry.KW));
+        if((entry.kw !=null) && !entry.kw.isEmpty())
+        	retObj.setKeyword(new KeywordImpl(retObj.getId(), entry.kw));
 
         // Links
-        retObj.setLinks(entry.WW.isEmpty() ? null : entry.WW);
+        retObj.setLinks(entry.ww.isEmpty() ? null : entry.ww);
 
         // Notes
-        String note = entry.AN.stream().collect(Collectors.joining(" "));
+        String note = entry.an.stream().collect(Collectors.joining(" "));
         retObj.setNote(note.isEmpty() ? null : note);
 
         // Interesting references
         List<String> refList =
-                entry.RX.stream().flatMap(s -> Arrays.asList(s.split(";")).stream()).collect(Collectors.toList());
+                entry.rx.stream().flatMap(s -> Arrays.asList(s.split(";")).stream()).collect(Collectors.toList());
         retObj.setReferences(refList.isEmpty() ? null : refList);
 
         // GoMapping
-        List<GeneOntology> goList = entry.GO.stream().map(this::parseGeneOntology).collect(Collectors.toList());
+        List<GeneOntology> goList = entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
         retObj.setGeneOntologies(goList.isEmpty()? null : goList);
 
         // Synonyms
         List<String> synList =
-                entry.SY.stream().flatMap(s -> Arrays.asList(s.split(";")).stream())
+                entry.sy.stream().flatMap(s -> Arrays.asList(s.split(";")).stream())
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
         retObj.setSynonyms(synList.isEmpty() ? null : synList);
@@ -199,7 +199,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         for (SubcellularFileEntry raw : rawList) {
 
             // Only check for those who have relationships
-            if (raw.HI.isEmpty() && raw.HP.isEmpty()) {
+            if (raw.hi.isEmpty() && raw.hp.isEmpty()) {
                 continue;
             }
             
@@ -207,17 +207,17 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
             
             assert(target !=null);
             
-            if (!raw.HI.isEmpty()) {
+            if (!raw.hi.isEmpty()) {
             	List<SubcellularLocation> isA= new ArrayList<>();
 
-                for (String id : raw.HI) {
+                for (String id : raw.hi) {
                     isA.add(findByIdentifier(list, id));
                 }
                 target.setIsA(isA);
             }
-            if (!raw.HP.isEmpty()) {
+            if (!raw.hp.isEmpty()) {
                 target.setPartOf(new ArrayList<>());
-                for (String id : raw.HP) {
+                for (String id : raw.hp) {
                     target.getPartOf().add(findByIdentifier(list, id));
                 }
             }
@@ -225,9 +225,9 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
     }
 
     private String getIdentifier(SubcellularFileEntry raw) {
-        if (raw.ID != null)
-            return raw.ID;
-        return raw.IT != null ? raw.IT : raw.IO;
+        if (raw.id != null)
+            return raw.id;
+        return raw.it != null ? raw.it : raw.io;
     }
 
     private SubcellularLocation findByIdentifier(List<SubcellularLocation> list, String id) {
@@ -251,29 +251,29 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
 }
 
 class SubcellularFileEntry {
-    String ID;
-    String IT;
-    String IO;
-    String AC;
-    List<String> DE;
-    List<String> SY;
-    String SL;
-    List<String> HI;
-    List<String> HP;
-    String KW;
-    List<String> GO;
-    List<String> AN;
-    List<String> RX;
-    List<String> WW;
+    String id;
+    String it;
+    String io;
+    String ac;
+    List<String> de;
+    List<String> sy;
+    String sl;
+    List<String> hi;
+    List<String> hp;
+    String kw;
+    List<String> go;
+    List<String> an;
+    List<String> rx;
+    List<String> ww;
 
     SubcellularFileEntry() {
-        DE = new ArrayList<>();
-        SY = new ArrayList<>();
-        HI = new ArrayList<>();
-        HP = new ArrayList<>();
-        GO = new ArrayList<>();
-        AN = new ArrayList<>();
-        RX = new ArrayList<>();
-        WW = new ArrayList<>();
+        de = new ArrayList<>();
+        sy = new ArrayList<>();
+        hi = new ArrayList<>();
+        hp = new ArrayList<>();
+        go = new ArrayList<>();
+        an = new ArrayList<>();
+        rx = new ArrayList<>();
+        ww = new ArrayList<>();
     }
 }

@@ -64,7 +64,7 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtDBCrossReferen
 
 	public String export(UniProtDBCrossReference reference, boolean includeFFMarkings, boolean showEvidence) {
 		UniProtXDbType dbType = reference.getDatabaseType();
-		if ((dbType.equals("EMBL")) && !includeFFMarkings)
+		if ((dbType.getName().equals("EMBL")) && !includeFFMarkings)
 			return exportEMBLNoFF(reference);
 		StringBuilder sb = new StringBuilder();
 		if (includeFFMarkings) {
@@ -73,9 +73,9 @@ public class DRLineBuilder extends FFLineBuilderAbstr<List<UniProtDBCrossReferen
 			.append("; ");
 		}
 		sb.append(reference.getId());
-		sb = append(sb, reference.getProperties(), 0, includeFFMarkings);
-		sb = append(sb, reference.getProperties(), 1, includeFFMarkings);
-		sb = append(sb, reference.getProperties(), 2, includeFFMarkings);
+		append(sb, reference.getProperties(), 0, includeFFMarkings);
+		append(sb, reference.getProperties(), 1, includeFFMarkings);
+		append(sb, reference.getProperties(), 2, includeFFMarkings);
 
 		if (includeFFMarkings)
 			sb.append(".");

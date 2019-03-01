@@ -12,16 +12,16 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
-public class CatalyticActivityCommentStructuredScored extends CommentScoredAbstr {
+public class CatalyticActivityCommentScored extends CommentScoredAbstr {
     private final CatalyticActivityComment comment;
 
-    public CatalyticActivityCommentStructuredScored(CatalyticActivityComment copy,
+    public CatalyticActivityCommentScored(CatalyticActivityComment copy,
                                                     List<EvidenceType> evidenceTypes) {
         super(copy.getCommentType(), evidenceTypes);
         this.comment = copy;
     }
 
-    public CatalyticActivityCommentStructuredScored(CatalyticActivityComment copy) {
+    public CatalyticActivityCommentScored(CatalyticActivityComment copy) {
         this(copy, null);
     }
 

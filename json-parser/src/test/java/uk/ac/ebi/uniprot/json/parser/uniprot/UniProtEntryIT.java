@@ -77,6 +77,7 @@ public class UniProtEntryIT {
                 .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                 .proteinDescription(ProteinDescriptionTest.getProteinDescription())
                 .genes(Collections.singletonList(GeneTest.createCompleteGene()))
+                .annotationScore(2)
                 .organism(OrganimsTest.getOrganism())
                 .organismHosts(Collections.singletonList(OrganimHostTest.getOrganismHost()))
                 .comments(comments)
