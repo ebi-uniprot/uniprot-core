@@ -138,12 +138,13 @@ class UniProtCrossReferenceConverterTest {
     }
 
     private void verifyXmlAttr(DbReferenceType xmlObj, String xmlTag, String val) {
+        PropertyType wrongPropertyType = new PropertyType();
         PropertyType pType = xmlObj.getProperty().stream().filter(v -> v.getType().equals(xmlTag))
-                .findFirst().orElse(null);
+                .findFirst().orElse(wrongPropertyType);
         if (Strings.isNullOrEmpty(val) || "-".equals(val)) {
-            assertNull(pType);
+            assertEquals(pType, wrongPropertyType);
         } else {
-            assertNotNull(pType);
+            assertNotEquals(pType, wrongPropertyType);
             assertEquals(val, pType.getValue());
         }
     }

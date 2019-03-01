@@ -4,6 +4,8 @@ package uk.ac.ebi.uniprot.cv.impl;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
+import uk.ac.ebi.uniprot.cv.keyword.Keyword;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordCache;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordDetail;
 
@@ -105,9 +107,10 @@ class KeywordFileReaderTest {
                               "AC   KW-0479",
                               "//");
         final List<KeywordDetail> retList = parser.parseLines(input);
+        WrongKeywordDetail wrongKeywordDetail = new WrongKeywordDetail();
         final KeywordDetail kw = retList.stream().filter(k -> k.getKeyword().getId().equals("2Fe-2S")).findFirst()
-                .orElse(null);
-        assertNotNull(kw);
+                .orElse(wrongKeywordDetail);
+        assertNotEquals(kw, wrongKeywordDetail);
 
         assertNotNull(kw.getCategory());
         assertEquals("KW-9993", kw.getCategory().getAccession());
@@ -116,6 +119,43 @@ class KeywordFileReaderTest {
         assertEquals(2, kw.getHierarchy().size());
 
         assertNull(kw.getSites());
+    }
+
+    private static class WrongKeywordDetail implements KeywordDetail {
+        @Override
+        public Keyword getKeyword() {
+            return null;
+        }
+
+        @Override
+        public String getDefinition() {
+            return null;
+        }
+
+        @Override
+        public List<String> getSynonyms() {
+            return null;
+        }
+
+        @Override
+        public List<GeneOntology> getGeneOntologies() {
+            return null;
+        }
+
+        @Override
+        public List<Keyword> getHierarchy() {
+            return null;
+        }
+
+        @Override
+        public List<String> getSites() {
+            return null;
+        }
+
+        @Override
+        public Keyword getCategory() {
+            return null;
+        }
     }
 
     @Test

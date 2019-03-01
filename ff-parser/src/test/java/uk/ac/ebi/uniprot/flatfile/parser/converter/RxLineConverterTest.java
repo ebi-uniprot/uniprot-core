@@ -6,13 +6,13 @@ import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rx.RxLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rx.RxLineObject;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RxLineConverterTest {
     @Test
@@ -31,15 +31,16 @@ class RxLineConverterTest {
         List<DBCrossReference<CitationXrefType>> cxrefs = converter.convert(rxLine);
         Citation citation = new BookBuilder().citationXrefs(cxrefs).build();
 
+        DBCrossReference<CitationXrefType> wrongXref = new DBCrossReferenceBuilder<CitationXrefType>().build();
         DBCrossReference<CitationXrefType> pubmedXref = citation
-                .getCitationXrefsByType(CitationXrefType.PUBMED).orElse(null);
-        assertNotNull(pubmedXref);
+                .getCitationXrefsByType(CitationXrefType.PUBMED).orElse(wrongXref);
+        assertNotEquals(pubmedXref, wrongXref);
         DBCrossReference<CitationXrefType> doiXref = citation
-                .getCitationXrefsByType(CitationXrefType.DOI).orElse(null);
-        assertNotNull(doiXref);
+                .getCitationXrefsByType(CitationXrefType.DOI).orElse(wrongXref);
+        assertNotEquals(doiXref, wrongXref);
         DBCrossReference<CitationXrefType> agricolaXref = citation
-                .getCitationXrefsByType(CitationXrefType.AGRICOLA).orElse(null);
-        assertNull(agricolaXref);
+                .getCitationXrefsByType(CitationXrefType.AGRICOLA).orElse(wrongXref);
+        assertEquals(agricolaXref, wrongXref);
 
         TestCase.assertEquals("15626370", pubmedXref.getId());
         TestCase.assertEquals("10.1016/j.toxicon.2004.10.011", doiXref.getId());
