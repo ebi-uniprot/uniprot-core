@@ -51,6 +51,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     private void loadSubcellularLocationMap(String subcellularLocationFile) {
         if(Utils.notEmpty(subcellularLocationFile)){
             subcellularLocationMap.putAll(new SubcellularLocationFileReader().parseFileToAccessionMap(subcellularLocationFile));
+            LOGGER.info("Loaded "+subcellularLocationMap.size()+" Subcellular Location Map");
         }else{
             LOGGER.warn("Subcellular Location File was not loaded");
         }
@@ -59,6 +60,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     private void loadKeywordMap(String keywordFile) {
         if(Utils.notEmpty(keywordFile)){
             keywordMap.putAll(new KeywordFileReader().parseFileToAccessionMap(keywordFile));
+            LOGGER.info("Loaded "+keywordMap.size()+" keyword Map");
         }else {
             LOGGER.warn("Subcellular Location File was not loaded");
         }
@@ -67,6 +69,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     private void loadDiseaseMap(String diseaseFile) {
         if(Utils.notEmpty(diseaseFile)){
             diseaseMap.putAll(new DiseaseFileReader().parseFileToAccessionMap(diseaseFile));
+            LOGGER.info("Loaded "+diseaseMap.size()+" disease Map");
         }else {
             LOGGER.warn("diseaseFile path must not be null or empty");
         }
@@ -91,6 +94,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
             } catch (IOException e) {
                 LOGGER.warn("Error while loading Go pubmed file file on path: " + goPubmedFile, e);
             }
+            LOGGER.info("Loaded "+goEvidencesMap.size()+" goEvidences Map");
         }else{
             LOGGER.warn("Go pubmed file is not defined");
         }
