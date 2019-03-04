@@ -22,6 +22,6 @@ public class InteractionCommentScored extends CommentScoredAbstr {
     }
 
     public double score() {
-        return comment.getInteractions().size() * 3;
+        return (double) comment.getInteractions().size() * 3;
     }
 }

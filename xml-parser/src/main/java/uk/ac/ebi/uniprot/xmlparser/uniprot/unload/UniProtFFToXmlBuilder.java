@@ -115,7 +115,7 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         try {
             xmFileMerger.mergeFiles(xmlFile, inputFiles);
         } catch (IOException e) {
-            throw new RuntimeException("failed to merge files", e);
+            throw new UniProtFFToXmlBuildException("failed to merge files", e);
         } finally {
             Duration duration = Duration.between(start, LocalTime.now());
             LOGGER.info("Time for merging file: {} seconds", duration.getSeconds());
@@ -188,12 +188,13 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         ExecutorService executorService = new ThreadPoolExecutor(nthread, 32, 30, TimeUnit.SECONDS, queue,
                                                                  new NamedThreadFactory(xmlfilePrev));
         EntryBufferedReader2 entryBufferReader2 = null;
-        PrintWriter failedEntryWriter = printWriterFromFile(failedFileName).orElse(printWriterFromOutputStream(System.out));
+        PrintWriter failedEntryWriter = printWriterFromFile(failedFileName)
+                .orElse(printWriterFromOutputStream(System.out));
 
         try {
             entryBufferReader2 = new EntryBufferedReader2(dataFile);
         } catch (Exception e) {
-            throw new RuntimeException("Parsing Flatfile failure.", e);
+            throw new UniProtFFToXmlBuildException("Parsing Flatfile failure.", e);
         }
         int counter = 0;
         do {
@@ -209,7 +210,7 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         try {
             executorService.awaitTermination(30, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
-            // ignore exception
+            Thread.currentThread().interrupt();
         }
         failedEntryWriter.close();
         xmlBuildStats.metricsReport();
@@ -230,13 +231,15 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
             try {
                 next = entryBufferReader2.next();
             } catch (Exception e) {
+                LOGGER.debug("Problem iterating over entries", e);
             }
             if (next == null) {
                 break;
             } else {
                 entries.add(next);
-                if (++count >= BATCH_SIZE)
+                if (++count >= BATCH_SIZE) {
                     break;
+                }
             }
         } while (true);
         time.stop();
@@ -315,7 +318,7 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
                     writers.put(name, writer);
 
                 } catch (Exception e) {
-                    throw new RuntimeException(e.getMessage());
+                    throw new UniProtFFToXmlBuildException(e.getMessage());
                 }
             }
             return writer;
@@ -333,12 +336,10 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         }
 
         private UniProtFFToXmlConverter getUniprotFFToXmlConverter(String name) {
-            UniProtFFToXmlConverter converter = converters.get(name);
-            if (converter == null) {
-                converter = new UniProtFFToXmlConverter(humdiseaseFilePath, keywordFilePath);
-                converters.put(name, converter);
-            }
-            return converter;
+            return converters.computeIfAbsent(name, n -> {
+                UniProtFFToXmlConverter uniProtFFToXmlConverter = new UniProtFFToXmlConverter(humdiseaseFilePath, keywordFilePath);
+                return converters.put(name, uniProtFFToXmlConverter);
+            });
         }
 
         private Marshaller getMarshaller(String name) {
@@ -358,8 +359,18 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
                 marshaller.setProperty(Marshaller.JAXB_FRAGMENT, Boolean.TRUE);
                 return marshaller;
             } catch (Exception e) {
-                throw new RuntimeException("JAXB initiallation failed", e);
+                throw new UniProtFFToXmlBuildException("JAXB initiallation failed", e);
             }
+        }
+    }
+
+    private static class UniProtFFToXmlBuildException extends RuntimeException {
+        UniProtFFToXmlBuildException(String message) {
+            super(message);
+        }
+
+        UniProtFFToXmlBuildException(String message, Throwable throwable) {
+            super(message, throwable);
         }
     }
 }
