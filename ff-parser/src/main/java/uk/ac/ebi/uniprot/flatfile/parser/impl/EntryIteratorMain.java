@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -16,8 +17,10 @@ public class EntryIteratorMain {
     private static final Logger LOGGER = getLogger(EntryIteratorMain.class);
 
     public static void main(String[] args) throws FileNotFoundException {
-        if (args.length != 5) {
-            LOGGER.error("Provide the correct arguments: FILE THREAD_NUM ENTRY_QUEUE_SIZE FF_QUEUE_SIZE COUNT");
+        LOGGER.info("received arguments length: "+ args.length);
+        LOGGER.info("received arguments: "+ Arrays.toString(args));
+        if (args.length != 9) {
+            LOGGER.error("Provide the correct arguments: FILE THREAD_NUM ENTRY_QUEUE_SIZE FF_QUEUE_SIZE COUNT KEYWORD_FILE DISEASE_FILE GO_FILE SUBCELLULAR_LOCATION_FILE");
             System.exit(1);
         }
         String file = args[0];
@@ -25,11 +28,15 @@ public class EntryIteratorMain {
         int entryQueueSize = Integer.parseInt(args[2]);
         int ffQueueSize = Integer.parseInt(args[3]);
         int maxCount = Integer.parseInt(args[4]);
+        String keywordFile = args[5];
+        String diseaseFile = args[6];
+        String goFile = args[7];
+        String subcellularLocationFile = args[8];
 
         LOGGER.info("==========");
         DefaultUniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(numThreads, entryQueueSize, ffQueueSize);
         entryIterator.setIgnoreWrong(true);
-        entryIterator.setInput(file, "", "", "", "");
+        entryIterator.setInput(file, keywordFile, diseaseFile, goFile, subcellularLocationFile);
         long count = 0;
         long start = System.currentTimeMillis();
         while ((maxCount < 1 || count < maxCount) && entryIterator.hasNext()) {
@@ -57,5 +64,6 @@ public class EntryIteratorMain {
         double entriesPerSec = (double) count / durationInSecs;
         LOGGER.info("Duration (ms) = {}", duration);
         LOGGER.info("Rate (entries/sec) = {}", entriesPerSec);
+        System.exit(0);
     }
 }
