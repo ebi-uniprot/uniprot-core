@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.flatfile.parser.UniProtParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -26,7 +27,7 @@ class EntryMapTest {
 	static void setup() throws Exception {
 
 		URL url = EntryMapTest.class.getResource("/uniprot/keywlist.txt");
-	    UniProtParser parser = new DefaultUniProtParser(url.getPath(),"","", "", true);
+	    UniProtParser parser = new DefaultUniProtParser(new SupportingDataMapImpl(url.getPath(),"","", ""), true);
 
 
 		InputStream is = EntryMapTest.class.getResourceAsStream("/uniprot/Q15758.dat" );

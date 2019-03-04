@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.flatfile.parser;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 
@@ -39,7 +40,7 @@ public final class UniProtParserHelper {
             new ThreadLocal<EntryObjectConverter>() {
                 @Override
                 protected EntryObjectConverter initialValue() {
-                    return new EntryObjectConverter("", "", "", "", false);
+                    return new EntryObjectConverter(new SupportingDataMapImpl(), true);
                 }
             };
 
@@ -47,7 +48,7 @@ public final class UniProtParserHelper {
             new ThreadLocal<EntryObjectConverter>() {
                 @Override
                 protected EntryObjectConverter initialValue() {
-                    return new EntryObjectConverter("", "", "", "",  true);
+                    return new EntryObjectConverter(new SupportingDataMapImpl(),  true);
                 }
             };
 
@@ -73,7 +74,8 @@ public final class UniProtParserHelper {
    
     public static UniProtEntryIterator parseFile(String filename, String keywordFile, String diseaseFile, 
     		String accessionGoPubmedFile, String subcellularLocationFile) {
-    		UniProtEntryIterator iterator =new DefaultUniProtEntryIterator();
+            DefaultUniProtEntryIterator iterator =new DefaultUniProtEntryIterator();
+            iterator.setIgnoreWrong(true);
     		iterator.setInput(filename, keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile);
     		return iterator;
     }

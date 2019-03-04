@@ -4,10 +4,7 @@ import com.google.common.util.concurrent.Uninterruptibles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.flatfile.parser.EntryReader;
-import uk.ac.ebi.uniprot.flatfile.parser.UniProtEntryIterator;
-import uk.ac.ebi.uniprot.flatfile.parser.UniProtParser;
-import uk.ac.ebi.uniprot.flatfile.parser.UniProtParserException;
+import uk.ac.ebi.uniprot.flatfile.parser.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -36,12 +33,12 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
     private final BlockingQueue<String> ffQueue;
 
     private CountDownLatch parsingJobCountDownLatch;
-    private String keywordFile;
-    private String diseaseFile;
-    private String accessionGoPubmedFile;
-    private String subcellularLocationFile;
+    private SupportingDataMap supportingDataMap;
+
     // count of the entries that has been produced and consumed.
     private AtomicLong entryCounter = new AtomicLong();
+
+    private boolean ignoreWrong = false;
 
     public DefaultUniProtEntryIterator() {
         this(1, 5000, 50000);
@@ -53,12 +50,15 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         ffQueue = new ArrayBlockingQueue<>(ffQueueSize);
     }
 
+    public void setIgnoreWrong(boolean ignoreWrong){
+        this.ignoreWrong = ignoreWrong;
+    }
+
     @Override
     public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile, String subcellularLocationFile) {
-        this.keywordFile = keywordFile;
-        this.diseaseFile = diseaseFile;
-        this.accessionGoPubmedFile = accessionGoPubmedFile;
-        this.subcellularLocationFile = subcellularLocationFile;
+        logger.info("Started loading SupportingDataMap");
+        supportingDataMap = new SupportingDataMapImpl(keywordFile,diseaseFile,accessionGoPubmedFile,subcellularLocationFile);
+        logger.info("finished loading SupportingDataMap");
         try {
             setInput2(fileName);
         } catch (FileNotFoundException e) {
@@ -249,7 +249,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             this.ffQueue = ffQueue;
             this.queue = queue;
             this.countDown = countDown;
-            this.parser = new DefaultUniProtParser(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, false);
+            this.parser = new DefaultUniProtParser(supportingDataMap, ignoreWrong);
         }
 
         void finish() {

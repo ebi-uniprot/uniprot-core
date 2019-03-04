@@ -11,6 +11,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 
@@ -104,7 +105,7 @@ class FlatfileRoundTripIT {
         EntryObject parse = entryParser.parse(entryToParse);
         assertNotNull(parse);
 
-        EntryObjectConverter entryObjectConverter = new EntryObjectConverter("", "", "", "", true);
+        EntryObjectConverter entryObjectConverter = new EntryObjectConverter(new SupportingDataMapImpl(), true);
         UniProtEntry converted = entryObjectConverter.convert(parse);
         FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
 

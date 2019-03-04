@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import uk.ac.ebi.uniprot.flatfile.parser.SupportingDataMap;
 import uk.ac.ebi.uniprot.flatfile.parser.UniProtParser;
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
@@ -9,10 +10,10 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 public class DefaultUniProtParser implements UniProtParser {
 	private final UniprotLineParser<EntryObject> parser;
 	private final EntryObjectConverter converter;
-	public DefaultUniProtParser(String keywordFile, String diseaseFile, 
-			String accessionGoPubmedFile, String subcellularLocationFile,  boolean ignoreWrongDr) {
+
+	public DefaultUniProtParser(SupportingDataMap supportingDataMap, boolean ignoreWrongDr) {
 		this.parser = new DefaultUniprotLineParserFactory().createEntryParser();
-		this.converter = new EntryObjectConverter(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile, ignoreWrongDr);
+		this.converter = new EntryObjectConverter(supportingDataMap, ignoreWrongDr);
 		
 	};
 	@Override

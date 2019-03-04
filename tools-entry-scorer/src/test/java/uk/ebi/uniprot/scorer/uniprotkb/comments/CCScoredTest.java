@@ -34,7 +34,7 @@ public class CCScoredTest {
 
     @Test
     public void test1() throws Exception {
-        CcLineTransformer ccLineTransformer = new CcLineTransformer(null, null);
+        CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC);
         UniProtEntry entry = new UniProtEntryBuilder()
                 .primaryAccession(new UniProtAccessionBuilder("P12345").build())
@@ -127,7 +127,7 @@ public class CCScoredTest {
 
     @Test
     public void test2() {
-        CcLineTransformer ccLineTransformer = new CcLineTransformer(null, null);
+        CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC_2);
         UniProtEntry entry = new UniProtEntryBuilder()
                 .primaryAccession(new UniProtAccessionBuilder("P12345").build())
