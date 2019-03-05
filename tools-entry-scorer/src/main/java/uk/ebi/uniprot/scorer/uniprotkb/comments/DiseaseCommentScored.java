@@ -33,7 +33,10 @@ public class DiseaseCommentScored extends CommentScoredAbstr {
     }
 
     private boolean hasEvidence() {
-        List<Evidence> evidences = new ArrayList<>(comment.getDisease().getEvidences());
+        List<Evidence> evidences = new ArrayList<>();
+        if(comment.hasDefinedDisease()) {
+            evidences.addAll(comment.getDisease().getEvidences());
+        }
         return ScoreUtil.hasEvidence(evidences, evidenceTypes);
     }
 }

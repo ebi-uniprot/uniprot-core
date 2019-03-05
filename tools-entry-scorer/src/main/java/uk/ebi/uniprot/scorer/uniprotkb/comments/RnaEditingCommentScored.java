@@ -63,7 +63,9 @@ public class RnaEditingCommentScored extends CommentScoredAbstr {
     private List<Evidence> getEvidences(RnaEditingComment comment) {
         List<Evidence> evidences = new ArrayList<>();
         comment.getPositions().forEach(pos -> evidences.addAll(pos.getEvidences()));
-        comment.getNote().getTexts().forEach(text -> evidences.addAll(text.getEvidences()));
+        if(comment.hasNote() && comment.getNote().hasTexts()) {
+            comment.getNote().getTexts().forEach(text -> evidences.addAll(text.getEvidences()));
+        }
         return evidences;
     }
 }
