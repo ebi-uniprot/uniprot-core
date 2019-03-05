@@ -67,7 +67,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
     public EntryObjectConverter(SupportingDataMap supportingDataMap, boolean ignoreWrong) {
         drLineConverter = new DrLineConverter(ignoreWrong);
         kwLineConverter = new KwLineConverter(supportingDataMap.getKeywordMap(), ignoreWrong);
-        ccLineConverter = new CcLineConverter(supportingDataMap.getKeywordMap(), supportingDataMap.getSubcellularLocationMap(), ignoreWrong);
+        ccLineConverter = new CcLineConverter(supportingDataMap.getDiseaseMap(), supportingDataMap.getSubcellularLocationMap(), ignoreWrong);
         this.accessionGoEvidences = supportingDataMap.getGoEvidencesMap();
     }
 
