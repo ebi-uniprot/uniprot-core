@@ -50,14 +50,14 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         ffQueue = new ArrayBlockingQueue<>(ffQueueSize);
     }
 
-    public void setIgnoreWrong(boolean ignoreWrong){
+    public void setIgnoreWrong(boolean ignoreWrong) {
         this.ignoreWrong = ignoreWrong;
     }
 
     @Override
     public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile, String subcellularLocationFile) {
         logger.info("Started loading SupportingDataMap");
-        supportingDataMap = new SupportingDataMapImpl(keywordFile,diseaseFile,accessionGoPubmedFile,subcellularLocationFile);
+        supportingDataMap = new SupportingDataMapImpl(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile);
         logger.info("finished loading SupportingDataMap");
         try {
             setInput2(fileName);
@@ -78,7 +78,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
                     logger.error(e.getMessage());
-
+                    Thread.currentThread().interrupt();
                 }
                 if (this.entryCounter.get() > 0)
                     return true;
@@ -104,6 +104,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             return poll;
         } catch (InterruptedException e) {
             logger.debug("Get entry from queue is interrupted.");
+            Thread.currentThread().interrupt();
             return null;
         }
     }
@@ -168,7 +169,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
-                //
+                Thread.currentThread().interrupt();
             }
         }
     }
@@ -232,6 +233,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                 parsingJobCountDownLatch.await();
             } catch (InterruptedException e) {
                 logger.error(e.getMessage());
+                Thread.currentThread().interrupt();
             }
 
             logger.debug("The flat-file scanning thread is now finished.");
@@ -293,7 +295,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                     try {
                         Thread.sleep(1);
                     } catch (InterruptedException e) {
-                        //
+                        Thread.currentThread().interrupt();
                     }
                 }
             }
