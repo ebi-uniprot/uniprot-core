@@ -7,11 +7,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.*;
@@ -105,7 +101,8 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         entry.getOrganismHosts().forEach(val -> xmlEntry.getOrganismHost().add(organismHostConverter.toXml(val)));
         xmlEntry.setProtein(descriptionConverter.toXml(entry.getProteinDescription()));
         entry.getGenes().forEach(gene -> xmlEntry.getGene().add(geneConverter.toXml(gene)));
-        entry.getGeneLocations().forEach(organelle -> xmlEntry.getGeneLocation().add(organelleConverter.toXml(organelle)));
+        entry.getGeneLocations()
+                .forEach(organelle -> xmlEntry.getGeneLocation().add(organelleConverter.toXml(organelle)));
         toXmlForCitations(xmlEntry, entry);
         toXmlForComments(xmlEntry, entry);
         xmlEntry.getDbReference().addAll(descriptionConverter.toXmlDbReferences(entry.getProteinDescription()));
@@ -147,7 +144,8 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     private List<Comment> fromXmlForComments(Entry xmlEntry) {
         List<Comment> uniComments = new ArrayList<>();
         List<uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType> comments = xmlEntry.getComment();
-        List<uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType> interactionComment = comments.stream().filter(val -> val.getType().equals(INTERACTION))
+        List<uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType> interactionComment = comments.stream()
+                .filter(val -> val.getType().equals(INTERACTION))
                 .collect(Collectors.toList());
 
         boolean interactionsFirst = true;
@@ -267,13 +265,14 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         if (entry.getGeneLocations() != null) {
             entry.getGeneLocations().forEach(val -> updateHasEvidence(evidences, val));
         }
-        List<Evidence> values = new ArrayList<>(evidences);
-        return values;
+        return new ArrayList<>(evidences);
     }
 
     private void updateReferenceEvidences(Set<Evidence> evidences, UniProtReference ref) {
         updateHasEvidence(evidences, ref);
-        updateHasEvidences(evidences, ref.getReferenceComments());
+        if (ref != null) {
+            updateHasEvidences(evidences, ref.getReferenceComments());
+        }
     }
 
     private <T extends Comment> void updateCommentEvidences(Set<Evidence> evidences, T comment) {
@@ -397,6 +396,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         updateHasEvidences(evidences, pn.getEcNumbers());
 
     }
+
     private void updateProteinAltNameEvidences(Set<Evidence> evidences, ProteinAltName pn) {
         if (pn == null) {
             return;
@@ -406,6 +406,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         updateHasEvidences(evidences, pn.getEcNumbers());
 
     }
+
     private void updateProteinSubNameEvidences(Set<Evidence> evidences, ProteinSubName pn) {
         if (pn == null) {
             return;
