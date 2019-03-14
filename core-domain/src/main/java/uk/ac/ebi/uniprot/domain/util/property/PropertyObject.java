@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.util.property;
 
-import java.io.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.io.IOException;
+import java.io.Serializable;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
@@ -232,7 +232,6 @@ public class PropertyObject implements Serializable {
 
     public PropertyObject(Object bean) {
         this();
-        this.populateMap(bean);
     }
 
     /**
@@ -1035,54 +1034,6 @@ public class PropertyObject implements Serializable {
      */
     protected Set<Entry<String, Object>> entrySet() {
         return this.map.entrySet();
-    }
-
-    /**
-     * Populates the internal map of the JSONObject with the bean properties. The
-     * bean can not be recursive.
-     *
-     * @param bean the bean
-     * @see PropertyObject#PropertyObject(Object)
-     */
-    private void populateMap(Object bean) {
-        Class<?> klass = bean.getClass();
-
-        // If klass is a System class then set includeSuperClass to false.
-
-        boolean includeSuperClass = klass.getClassLoader() != null;
-
-        Method[] methods = includeSuperClass ? klass.getMethods() : klass.getDeclaredMethods();
-        for (final Method method : methods) {
-            final int modifiers = method.getModifiers();
-            if (Modifier.isPublic(modifiers)
-                    && !Modifier.isStatic(modifiers)
-                    && method.getParameterTypes().length == 0
-                    && !method.isBridge()
-                    && method.getReturnType() != Void.TYPE
-                    && isValidMethodName(method.getName())) {
-                final String key = null;//getKeyNameFromMethod(method);
-                if (key != null && !key.isEmpty()) {
-                    try {
-                        final Object result = method.invoke(bean);
-                        if (result != null) {
-                            this.map.put(key, wrap(result));
-                            // we don't use the result anywhere outside of wrap
-                            // if it's a resource we should be sure to close it
-                            // after calling toString
-                            if (result instanceof Closeable) {
-                                try {
-                                    ((Closeable) result).close();
-                                } catch (IOException ignore) {
-                                }
-                            }
-                        }
-                    } catch (IllegalAccessException ignore) {
-                    } catch (IllegalArgumentException ignore) {
-                    } catch (InvocationTargetException ignore) {
-                    }
-                }
-            }
-        }
     }
 
     private boolean isValidMethodName(String name) {
