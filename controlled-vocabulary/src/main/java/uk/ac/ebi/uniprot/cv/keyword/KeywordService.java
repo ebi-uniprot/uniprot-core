@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.cv.keyword;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface KeywordService {
-	Keyword getById(String id);
-	List<KeywordDetail> getAll();
+	KeywordDetail getByAccession(String id);
+	Collection<KeywordDetail> getAll();
 }

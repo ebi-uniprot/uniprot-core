@@ -200,6 +200,11 @@ public class KeywordDetailImpl implements KeywordDetail {
 		return children;
 	}
 
+	@Override
+	public String getAccession() {
+		return getKeyword().getAccession();
+	}
+
 
 
 	

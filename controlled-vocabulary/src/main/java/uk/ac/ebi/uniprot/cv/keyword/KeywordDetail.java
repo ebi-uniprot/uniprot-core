@@ -11,5 +11,6 @@ public interface KeywordDetail {
 	List<String> getSites();
 	KeywordDetail getCategory();
 	List<KeywordDetail> getChildren();
+	String getAccession();
 	
 }

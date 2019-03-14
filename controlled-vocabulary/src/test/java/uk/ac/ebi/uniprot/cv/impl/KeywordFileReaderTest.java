@@ -162,6 +162,11 @@ class KeywordFileReaderTest {
 			// TODO Auto-generated method stub
 			return null;
 		}
+
+		@Override
+		public String getAccession() {
+			return getKeyword().getAccession();
+		}
     }
 
     @Test
