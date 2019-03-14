@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.cv.keyword.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
@@ -12,9 +13,10 @@ public class KeywordDetailImpl implements KeywordDetail {
 	private  String definition;
 	private  List<String> synonyms;
 	private  List<GeneOntology> geneOntologies;
-	private  List<Keyword> hierarchy;
+	private  List<KeywordDetail> parents;
 	private  List<String> sites;
-	private Keyword category;
+	private KeywordDetail category;
+	private  List<KeywordDetail> children =new ArrayList<>();
 	
 	
 	public KeywordDetailImpl() {
@@ -22,12 +24,12 @@ public class KeywordDetailImpl implements KeywordDetail {
 	}
 	
 	public KeywordDetailImpl(Keyword keyword, String definition, List<String> synonyms,
-			List<GeneOntology> geneOntologies, List<Keyword> hierarchy, List<String> sites, Keyword category) {
+			List<GeneOntology> geneOntologies, List<KeywordDetail> hierarchy, List<String> sites, KeywordDetail category) {
 		this.keyword = keyword;
 		this.definition = definition;
 		this.synonyms = synonyms;
 		this.geneOntologies = geneOntologies;
-		this.hierarchy = hierarchy;
+		this.parents = hierarchy;
 		this.sites = sites;
 		this.category = category;
 	}
@@ -65,28 +67,34 @@ public class KeywordDetailImpl implements KeywordDetail {
 
 
 
-	public List<Keyword> getHierarchy() {
-		return hierarchy;
+	public List<KeywordDetail> getParents() {
+		return parents;
 	}
 
 
 
 
-	public void setHierarchy(List<Keyword> hierarchy) {
-		this.hierarchy = hierarchy;
+	public void setParents(List<KeywordDetail> hierarchy) {
+		this.parents = hierarchy;
+		for(KeywordDetail keyword : hierarchy) {
+			if (!keyword.getChildren().contains(this)) {
+				keyword.getChildren().add(this);
+			}
+		}
+		
 	}
 
 
 
 
-	public Keyword getCategory() {
+	public KeywordDetail getCategory() {
 		return category;
 	}
 
 
 
 
-	public void setCategory(Keyword category) {
+	public void setCategory(KeywordDetail category) {
 		this.category = category;
 	}
 
@@ -133,7 +141,7 @@ public class KeywordDetailImpl implements KeywordDetail {
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
 		result = prime * result + ((definition == null) ? 0 : definition.hashCode());
 		result = prime * result + ((geneOntologies == null) ? 0 : geneOntologies.hashCode());
-		result = prime * result + ((hierarchy == null) ? 0 : hierarchy.hashCode());
+		result = prime * result + ((parents == null) ? 0 : parents.hashCode());
 		result = prime * result + ((keyword == null) ? 0 : keyword.hashCode());
 		result = prime * result + ((sites == null) ? 0 : sites.hashCode());
 		result = prime * result + ((synonyms == null) ? 0 : synonyms.hashCode());
@@ -164,10 +172,10 @@ public class KeywordDetailImpl implements KeywordDetail {
 				return false;
 		} else if (!geneOntologies.equals(other.geneOntologies))
 			return false;
-		if (hierarchy == null) {
-			if (other.hierarchy != null)
+		if (parents == null) {
+			if (other.parents != null)
 				return false;
-		} else if (!hierarchy.equals(other.hierarchy))
+		} else if (!parents.equals(other.parents))
 			return false;
 		if (keyword == null) {
 			if (other.keyword != null)
@@ -185,6 +193,11 @@ public class KeywordDetailImpl implements KeywordDetail {
 		} else if (!synonyms.equals(other.synonyms))
 			return false;
 		return true;
+	}
+
+	@Override
+	public List<KeywordDetail> getChildren() {
+		return children;
 	}
 
 

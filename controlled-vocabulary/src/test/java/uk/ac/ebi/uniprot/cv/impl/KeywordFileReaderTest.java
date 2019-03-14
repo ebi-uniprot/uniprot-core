@@ -46,7 +46,7 @@ class KeywordFileReaderTest {
                   () -> assertEquals(
                           "Keywords assigned to proteins because they have at least one specimen of a specific domain.",
                           retList.get(0).getDefinition()),
-                  () -> assertNull(retList.get(0).getHierarchy())
+                  () -> assertNull(retList.get(0).getParents())
         );
     }
 
@@ -113,10 +113,10 @@ class KeywordFileReaderTest {
         assertNotEquals(kw, wrongKeywordDetail);
 
         assertNotNull(kw.getCategory());
-        assertEquals("KW-9993", kw.getCategory().getAccession());
+        assertEquals("KW-9993", kw.getCategory().getKeyword().getAccession());
 
-        assertNotNull(kw.getHierarchy());
-        assertEquals(2, kw.getHierarchy().size());
+        assertNotNull(kw.getParents());
+        assertEquals(2, kw.getParents().size());
 
         assertNull(kw.getSites());
     }
@@ -143,7 +143,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public List<Keyword> getHierarchy() {
+        public List<KeywordDetail> getParents() {
             return null;
         }
 
@@ -153,9 +153,15 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public Keyword getCategory() {
+        public KeywordDetail getCategory() {
             return null;
         }
+
+		@Override
+		public List<KeywordDetail> getChildren() {
+			// TODO Auto-generated method stub
+			return null;
+		}
     }
 
     @Test
@@ -173,7 +179,7 @@ class KeywordFileReaderTest {
         final KeywordDetail kw = retList.get(0);
         assertNotNull(kw);
 
-        assertTrue(kw.getHierarchy().isEmpty());
+        assertTrue(kw.getParents().isEmpty());
         assertNull(kw.getCategory());
 
         assertNotNull(kw.getSites());
