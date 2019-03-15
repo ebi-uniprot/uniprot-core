@@ -43,17 +43,6 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 				.collect(Collectors.toMap(Keyword::getId,Keyword::getAccession));
 	}
 
-//	private void updateCategories(List<KeywordDetail> list) {
-//		for(KeywordDetail keyword : list) {
-//			List<KeywordDetail> parents = keyword.getParents();
-//			if((parents ==null) || (parents.isEmpty())) {
-//				if(keyword.getCategory() !=null) {
-//					KeywordDetailImpl target = (KeywordDetailImpl) keyword;
-//					target.setParents(Arrays.asList(keyword.getCategory()));
-//				}
-//			}
-//		}
-//	}
 	private void updateListWithRelationShips(List<KeywordDetail> list, List<KeyFileEntry> rawList) {
 		for (KeyFileEntry raw : rawList) {
 			// category will not have relationship, so ignore them

@@ -30,7 +30,17 @@ public class CrossReference {
 	public List<String> getProperties() {
 		return properties;
 	}
-
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append(databaseType).append("; ").append(id);
+		for(String property:properties) {
+			sb.append("; ").append(property);
+		}
+		sb.append(".");
+		
+		return sb.toString();
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
