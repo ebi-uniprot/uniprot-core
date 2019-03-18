@@ -7,8 +7,10 @@ public interface KeywordDetail {
 	String getDefinition();
 	List<String> getSynonyms();
 	List<GeneOntology> getGeneOntologies();
-	List<Keyword> getHierarchy();
+	List<KeywordDetail> getParents();
 	List<String> getSites();
-	Keyword getCategory();
+	KeywordDetail getCategory();
+	List<KeywordDetail> getChildren();
+	String getAccession();
 	
 }

@@ -32,6 +32,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 		List<KeyFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
 		List<KeywordDetail> list = parseKeywordFileEntryList(rawList);
 		updateListWithRelationShips(list, rawList);
+	//	updateCategories(list);
 		return list;
 	}
 
@@ -48,7 +49,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 			if (raw.hi.isEmpty()) {
 				continue;
 			}
-
+			
 			// Only getting keywords
 			KeywordDetailImpl target = (KeywordDetailImpl) findByIdentifier(list, raw.id);
 			assert (target != null);
@@ -56,7 +57,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 			// Setting the category
 			KeywordDetail category = findByIdentifier(list, raw.ca);
 			if(category !=null)
-				target.setCategory(category.getKeyword());
+				target.setCategory(category);
 
 			final List<String> withOutCategory = raw.hi.stream()
 					.map(s -> s.substring(s.indexOf(CATEGORY_SEPARATOR) + 1)).collect(Collectors.toList());
@@ -66,12 +67,14 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 					.map(this::trimSpacesAndRemoveLastDot).collect(Collectors.toSet());
 
 			// getting relationships
-			final List<Keyword> relations = directRelations.stream().map(s -> findByIdentifier(list, s))
-					.filter(val ->val !=null).map(val -> val.getKeyword())
+			final List<KeywordDetail> relations = directRelations.stream().map(s -> findByIdentifier(list, s))
+					.filter(val ->val !=null)
 					.collect(Collectors.toList());
 			// Only setting hierarchy if present
-			target.setHierarchy(relations );
-
+			target.setParents(relations );
+			if(relations.isEmpty() && (category !=null) ) {
+				target.setParents(Arrays.asList(category));
+			}
 		}
 	}
 

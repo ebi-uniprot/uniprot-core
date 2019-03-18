@@ -14,6 +14,7 @@ public enum KeywordCache {
 	INSTANCE;
 	public static final String FTP_LOCATION ="ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/keywlist.txt";
 	Map<String, List<KeywordDetail> > locationKeywordMap =new HashMap<>();
+	
 	KeywordCache(){
 		
 	}
