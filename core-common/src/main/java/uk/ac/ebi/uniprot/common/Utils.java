@@ -13,8 +13,7 @@ public class Utils {
         else
             return value;
     }
-            // uk.ac.ebi.uniprot.common.Utils
-    // import static uk.ac.ebi.uniprot.domain.util.Utils
+
     public static <T> List<T> nonNullList(List<T> source) {
         if (source != null) {
             return new ArrayList<>(source);
@@ -28,6 +27,7 @@ public class Utils {
             target.add(source);
         }
     }
+
     public static <T> List<T> nonNullUnmodifiableList(List<T> value) {
         if ((value == null) || value.isEmpty()) {
             return Collections.emptyList();
