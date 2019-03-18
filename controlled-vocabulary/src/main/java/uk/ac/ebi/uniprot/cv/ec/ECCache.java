@@ -15,7 +15,7 @@ public enum ECCache {
     INSTANCE;
     public static final String ENZYME_DAT = "enzyme.dat";
     public static final String ENZCLASS_TXT = "enzclass.txt";
-    private static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
+    static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
     Map<String, List<EC>> locationECMap = new HashMap<>();
 
     public List<EC> get(String dir) {

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class ECFileReader extends AbstractFileReader<EC> {
     private static final Pattern ENZYME_CLASS_PATTERN = Pattern
-            .compile("^([1-9-]\\.) ?([1-9-]\\.) ?([1-9-]\\.) ?([1-9-]) ? +(.*)\\.$");
+            .compile("^([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*) ? +(.*)\\.$");
     private static final Pattern TERMINATING_DOTS = Pattern.compile("^(.*?)\\.*$");
     private final ECDatFileReader datFileReader;
     private final ECClassFileReader classFileReader;
@@ -25,8 +25,8 @@ public class ECFileReader extends AbstractFileReader<EC> {
     @Override
     public List<EC> parse(String dirLocation) {
         List<EC> ecList = new ArrayList<>();
-        ecList.addAll(datFileReader.parse(dirLocation + ECCache.ENZYME_DAT));
         ecList.addAll(classFileReader.parse(dirLocation + ECCache.ENZCLASS_TXT));
+        ecList.addAll(datFileReader.parse(dirLocation + ECCache.ENZYME_DAT));
         return ecList;
     }
 
@@ -37,14 +37,12 @@ public class ECFileReader extends AbstractFileReader<EC> {
 
     static String removeLastDotsFrom(String line) {
         Matcher matcher = TERMINATING_DOTS.matcher(line);
-        if (matcher.matches()) {
-            return matcher.group(1);
-        } else {
-            return line;
-        }
+        // no need to check if regex matched, since it always matches something
+        matcher.matches();
+        return matcher.group(1);
     }
 
-    private static class ECClassFileReader extends AbstractFileReader<EC> {
+    static class ECClassFileReader extends AbstractFileReader<EC> {
         @Override
         List<EC> parseLines(List<String> lines) {
             List<EC> ecs = new ArrayList<>();
@@ -59,7 +57,7 @@ public class ECFileReader extends AbstractFileReader<EC> {
         }
     }
 
-    private static class ECDatFileReader extends AbstractFileReader<EC> {
+    static class ECDatFileReader extends AbstractFileReader<EC> {
         @Override
         List<EC> parseLines(List<String> lines) {
             List<EC> ecs = new ArrayList<>();

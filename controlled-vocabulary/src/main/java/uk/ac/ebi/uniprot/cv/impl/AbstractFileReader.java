@@ -1,20 +1,19 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
+import org.slf4j.Logger;
 import uk.ac.ebi.uniprot.cv.FileReader;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 public abstract class AbstractFileReader<T> implements FileReader<T> {
+    private static final Logger LOGGER = getLogger(AbstractFileReader.class);
     private static final String FTP_PREFIX = "ftp://";
     static final List<String> COPYRIGHT_LINES =
             Arrays.asList(
@@ -55,16 +54,29 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
         return lines;
     }
 
-    List<String> readLines(String filename) {
-        try {
-            return Files.readAllLines(Paths.get(filename));
-        } catch (IOException e) {
-
-        }
+    private List<String> readLines(String filename) {
         if (filename.startsWith(FTP_PREFIX)) {
             return fetchFromFTP(filename);
         } else {
-            return Collections.emptyList();
+            InputStream inputStream = AbstractFileReader.class.getClassLoader().getResourceAsStream(filename);
+            List<String> lines = new ArrayList<>();
+
+            try {
+                if (inputStream == null) {
+                    inputStream = new FileInputStream(new File(filename));
+                }
+
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        lines.add(line);
+                    }
+                }
+            } catch (IOException e) {
+                LOGGER.error("Problem loading file.", e);
+            }
+
+            return lines;
         }
     }
 }
