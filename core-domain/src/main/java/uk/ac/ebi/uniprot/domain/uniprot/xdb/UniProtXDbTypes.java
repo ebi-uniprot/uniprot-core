@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
 
 import uk.ac.ebi.uniprot.common.Utils;
+import uk.ac.ebi.uniprot.domain.uniprot.xdb.validator.DBXRefValidator;
 import uk.ac.ebi.uniprot.domain.util.property.PropertyArray;
 import uk.ac.ebi.uniprot.domain.util.property.PropertyObject;
 
@@ -31,6 +32,8 @@ public enum UniProtXDbTypes {
         if (type == null) {
             throw new IllegalArgumentException(typeName + " does not exist in UniProt database type list");
         }
+        // validate the UniProtXDbTypeDetail with dbXRef.txt
+        DBXRefValidator.validate(type);
         return type;
     }
 
