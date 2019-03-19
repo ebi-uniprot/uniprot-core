@@ -18,6 +18,10 @@ public enum ECCache {
     static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
     Map<String, List<EC>> locationECMap = new HashMap<>();
 
+    public List<EC> get() {
+        return get(null);
+    }
+
     public List<EC> get(String dir) {
         String filename = dir;
         if ((filename == null) || filename.isEmpty()) {
