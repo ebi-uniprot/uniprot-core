@@ -53,12 +53,6 @@
 		]
 	},
 	{
-		"name": "UniGene",
-		"displayName": "UniGene",
-		"category": "SEQ",
-		"uriLink": "https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?ORG=%value&CID=%value"
-	},
-	{
 		"name": "PDB",
 		"displayName": "PDB",
 		"category": "3DS",
@@ -1055,12 +1049,6 @@
 		"displayName": "HOGENOM",
 		"category": "PLG",
 		"uriLink": "http://doua.prabi.fr/cgi-bin/view-tree-srs.pl?query=%value&db=HOGENOM6"
-	},
-	{
-		"name": "HOVERGEN",
-		"displayName": "HOVERGEN",
-		"category": "PLG",
-		"uriLink": "http://doua.prabi.fr/cgi-bin/view-tree-srs.pl?query=%value&db=HOVERGEN"
 	},
 	{
 		"name": "InParanoid",
