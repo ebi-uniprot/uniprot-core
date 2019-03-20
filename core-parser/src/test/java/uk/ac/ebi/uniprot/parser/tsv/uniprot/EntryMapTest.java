@@ -463,7 +463,7 @@ class EntryMapTest {
     @Test
     void testXRefs1() {
         List<String> fields = Arrays
-                .asList("accession", "dr:embl", "dr:ccds", "dr:refseq", "dr:unigene", "dr:proteinmodelportal");
+                .asList("accession", "dr:embl", "dr:ccds", "dr:refseq", "dr:proteinmodelportal");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -476,8 +476,7 @@ class EntryMapTest {
         verify(embl, 1, result);
         verify(ccds, 2, result);
         verify(refseq, 3, result);
-        verify(unigen, 4, result);
-        verify(proteinmodelportal, 5, result);
+        verify(proteinmodelportal, 4, result);
     }
 
     @Test
