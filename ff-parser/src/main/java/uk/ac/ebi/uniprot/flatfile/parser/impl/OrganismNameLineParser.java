@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
-import uk.ac.ebi.uniprot.domain.Pair;
-import uk.ac.ebi.uniprot.domain.impl.PairImpl;
+import uk.ac.ebi.uniprot.cv.common.Pair;
+import uk.ac.ebi.uniprot.cv.common.PairImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 

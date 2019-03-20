@@ -1,5 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
+import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
+import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;

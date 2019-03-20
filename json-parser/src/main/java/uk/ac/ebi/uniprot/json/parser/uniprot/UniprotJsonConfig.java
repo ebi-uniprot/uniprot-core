@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.util.ClassUtil;
+import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
 import uk.ac.ebi.uniprot.domain.*;
 import uk.ac.ebi.uniprot.domain.citation.*;
 import uk.ac.ebi.uniprot.domain.citation.impl.*;

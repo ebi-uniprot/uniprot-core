@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.domain;
 
+import uk.ac.ebi.uniprot.cv.common.Pair;
+
 import java.io.Serializable;
 
 public final class Property implements Pair<String, String>, Comparable<Property>, Serializable {
