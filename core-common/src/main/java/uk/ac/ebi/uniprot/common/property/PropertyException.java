@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.cv.common.property;
+package uk.ac.ebi.uniprot.common.property;
 
 /**
  * The JSONException is thrown by the JSON.org classes when things are amiss.

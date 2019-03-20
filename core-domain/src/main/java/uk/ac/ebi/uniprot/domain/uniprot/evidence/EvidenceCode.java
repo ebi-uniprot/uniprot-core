@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
-
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
+
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     ECO_0000269("ECO:0000269", "Experimental", "Literature reference",

@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
-import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 
 public enum FeatureType implements EnumDisplay<FeatureType> {

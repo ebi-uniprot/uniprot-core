@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
 import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.cv.common.property.PropertyArray;
-import uk.ac.ebi.uniprot.cv.common.property.PropertyObject;
+import uk.ac.ebi.uniprot.common.property.PropertyArray;
+import uk.ac.ebi.uniprot.common.property.PropertyObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;

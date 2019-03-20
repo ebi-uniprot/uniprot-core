@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description;
 
-import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 /**
  * Contains a list of acceptable flag descriptors found within a DE line

@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.cv.xdb;
 
-import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 public enum DatabaseCategory implements EnumDisplay<DatabaseCategory> {
     SEQUENCE_DATABASES("SEQ", "Sequence databases"),

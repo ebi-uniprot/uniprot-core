@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.cv.xdb;
 
 import org.junit.jupiter.api.Test;
+
+import uk.ac.ebi.uniprot.common.Pair;
 import uk.ac.ebi.uniprot.cv.xdb.DatabaseCategory;
 import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
 import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
-import uk.ac.ebi.uniprot.cv.common.Pair;
 import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefValidator;
 
 import java.util.List;

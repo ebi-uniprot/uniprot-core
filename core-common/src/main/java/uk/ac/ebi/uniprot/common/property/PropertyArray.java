@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.cv.common.property;
+package uk.ac.ebi.uniprot.common.property;
 
 /*
  Copyright (c) 2002 JSON.org

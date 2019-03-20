@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 /**
  * User: Emilio Salazar

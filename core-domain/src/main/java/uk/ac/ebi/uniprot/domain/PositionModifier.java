@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain;
 
-import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 public enum PositionModifier implements EnumDisplay<PositionModifier> {
     EXACT,
