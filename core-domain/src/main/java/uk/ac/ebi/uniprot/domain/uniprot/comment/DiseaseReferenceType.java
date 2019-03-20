@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.DatabaseType;
-import uk.ac.ebi.uniprot.domain.EnumDisplay;
+import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
 
 /**
  * Enumeration of the possible external sources that have a references to diseases.

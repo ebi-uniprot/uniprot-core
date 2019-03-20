@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.xdb.validator;
+package uk.ac.ebi.uniprot.cv.xdb.validator;
 
 import java.io.IOException;
 import java.io.InputStream;

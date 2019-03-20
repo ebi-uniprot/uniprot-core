@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.xdb;
+package uk.ac.ebi.uniprot.cv.xdb;
 
 import java.io.Serializable;
 

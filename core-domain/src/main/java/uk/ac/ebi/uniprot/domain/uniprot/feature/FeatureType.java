@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
-import uk.ac.ebi.uniprot.domain.EnumDisplay;
+import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,10 +1,10 @@
-package uk.ac.ebi.uniprot.domain.uniprot.xdb.validator;
+package uk.ac.ebi.uniprot.cv.xdb.validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.Pair;
-import uk.ac.ebi.uniprot.domain.impl.PairImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbTypeDetail;
+import uk.ac.ebi.uniprot.cv.common.Pair;
+import uk.ac.ebi.uniprot.cv.common.PairImpl;
+import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
 
 import java.io.IOException;
 import java.util.*;

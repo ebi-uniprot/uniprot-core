@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.citation;
 
-import uk.ac.ebi.uniprot.domain.EnumDisplay;
+import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
 
 public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
     PDB("PDB data bank"),

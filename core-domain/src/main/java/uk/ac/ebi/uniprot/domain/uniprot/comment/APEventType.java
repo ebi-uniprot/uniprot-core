@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.EnumDisplay;
+import uk.ac.ebi.uniprot.cv.common.EnumDisplay;
 
 public enum APEventType implements EnumDisplay<APEventType> {
     ALTERNATIVE_PROMOTER_USAGE("Alternative promoter usage"),

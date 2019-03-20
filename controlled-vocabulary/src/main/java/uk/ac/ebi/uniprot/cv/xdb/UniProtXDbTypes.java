@@ -1,10 +1,10 @@
-package uk.ac.ebi.uniprot.domain.uniprot.xdb;
+package uk.ac.ebi.uniprot.cv.xdb;
 
 
 import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.validator.DBXRefValidator;
-import uk.ac.ebi.uniprot.domain.util.property.PropertyArray;
-import uk.ac.ebi.uniprot.domain.util.property.PropertyObject;
+import uk.ac.ebi.uniprot.cv.common.property.PropertyArray;
+import uk.ac.ebi.uniprot.cv.common.property.PropertyObject;
+import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefValidator;
 
 import java.io.InputStream;
 import java.util.ArrayList;
