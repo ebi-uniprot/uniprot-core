@@ -264,12 +264,12 @@ class EntryMapTest {
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
         verify("Q84MC7", 0, result);
-        String seqCaution = "SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=ERRONEOUS_INITIATION; Note=Translation N-terminally extended.; Evidence={ECO:0000305}";
-        String seqCaution2 = "SEQUENCE CAUTION:  Sequence=AAM65514.1; Type=ERRONEOUS_PREDICTION; Evidence={ECO:0000305}";
+        String seqCaution = "SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=ERRONEOUS_INITIATION; " +
+                "Note=Translation N-terminally extended.; Evidence={ECO:0000305};  " +
+                "Sequence=AAM65514.1; Type=ERRONEOUS_PREDICTION; Evidence={ECO:0000305}";
 
 
         verify(seqCaution, 1, result);
-        verify(seqCaution2, 2, result);
     }
 
     @Test
