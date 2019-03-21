@@ -27,6 +27,10 @@ public enum UniProtXDbTypes {
         return types;
     }
 
+    public Map<String, UniProtXDbTypeDetail> getTypeMap(){
+        return this.typeMap;
+    }
+
     public UniProtXDbTypeDetail getType(String typeName) {
         UniProtXDbTypeDetail type = typeMap.get(typeName);
         if (type == null) {

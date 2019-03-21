@@ -27,10 +27,10 @@ class UniProtXDbTypesTest {
         UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("EMBL");
         assertEquals("EMBL", opType.getName());
         assertEquals(DatabaseCategory.SEQUENCE_DATABASES, opType.getCategory());
-        assertEquals("https://www.ebi.ac.uk/ena/data/view/%value", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/ena/data/view/%s", opType.getUriLink());
         assertEquals(3, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ProteinId", "protein sequence ID",
-                        "https://www.ebi.ac.uk/ena/data/view/%value");
+                        "https://www.ebi.ac.uk/ena/data/view/%s");
         verifyAttribute(opType.getAttributes().get(1), "Status", "status",
                         null);
         verifyAttribute(opType.getAttributes().get(2), "MoleculeType", "molecule type",
@@ -43,7 +43,7 @@ class UniProtXDbTypesTest {
         assertEquals("PDB", opType.getName());
         assertEquals("PDB", opType.getDisplayName());
         assertEquals(DatabaseCategory.D3_STRUCTURE_DATABASES, opType.getCategory());
-        assertEquals("https://www.ebi.ac.uk/pdbe/entry/pdb/%value", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/pdbe-srv/view/entry/%s", opType.getUriLink());
         assertEquals(3, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Method", "method",
                         null);
@@ -59,7 +59,7 @@ class UniProtXDbTypesTest {
         assertEquals("ComplexPortal", opType.getName());
         assertEquals("ComplexPortal", opType.getDisplayName());
         assertEquals(DatabaseCategory.PROTEIN_PROTEIN_INTERACTION_DATABASES, opType.getCategory());
-        assertEquals("https://www.ebi.ac.uk/complexportal/complex/%value", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/complexportal/complex/%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "EntryName", "entry name",
                         null);
@@ -72,7 +72,7 @@ class UniProtXDbTypesTest {
         assertEquals("ChEMBL", opType.getName());
         assertEquals("ChEMBL", opType.getDisplayName());
         assertEquals(DatabaseCategory.CHEMISTRY, opType.getCategory());
-        assertEquals("https://www.ebi.ac.uk/chembldb/target/inspect/%value", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/chembldb/target/inspect/%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description",
                         null);
@@ -85,7 +85,7 @@ class UniProtXDbTypesTest {
         assertEquals("MoonDB", opType.getName());
         assertEquals("MoonDB", opType.getDisplayName());
         assertEquals(DatabaseCategory.PROTEIN_FAMILY_GROUP_DATABASES, opType.getCategory());
-        assertEquals("http://moondb.hb.univ-amu.fr/protein/%value", opType.getUriLink());
+        assertEquals("http://moondb.hb.univ-amu.fr/protein/%u", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Type", "type",
                         null);
@@ -97,7 +97,7 @@ class UniProtXDbTypesTest {
         assertEquals("iPTMnet", opType.getName());
         assertEquals("iPTMnet", opType.getDisplayName());
         assertEquals(DatabaseCategory.PTM_DATABASES, opType.getCategory());
-        assertEquals("https://research.bioinformatics.udel.edu/iptmnet/entry/%value", opType.getUriLink());
+        assertEquals("http://research.bioinformatics.udel.edu/iptmnet/entry/%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description",
                         null);
@@ -109,7 +109,7 @@ class UniProtXDbTypesTest {
         assertEquals("dbSNP", opType.getName());
         assertEquals("dbSNP", opType.getDisplayName());
         assertEquals(DatabaseCategory.POLYMORPHISM_AND_MUTATION_DATABASES, opType.getCategory());
-        assertEquals("https://www.ncbi.nlm.nih.gov/snp/%value", opType.getUriLink());
+        assertEquals("https://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?type=rs&rs=%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description",
                         null);
@@ -122,7 +122,7 @@ class UniProtXDbTypesTest {
         assertEquals("SWISS-2DPAGE", opType.getName());
         assertEquals("SWISS-2DPAGE", opType.getDisplayName());
         assertEquals(DatabaseCategory.D2_GEL_DATABASES, opType.getCategory());
-        assertEquals("https://world-2dpage.expasy.org/swiss-2dpage/protein/ac=%value", opType.getUriLink());
+        assertEquals("https://world-2dpage.expasy.org/swiss-2dpage/%u", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description",
                         null);
@@ -134,7 +134,7 @@ class UniProtXDbTypesTest {
         assertEquals("MaxQB", opType.getName());
         assertEquals("MaxQB", opType.getDisplayName());
         assertEquals(DatabaseCategory.PROTEOMIC_DATABASES, opType.getCategory());
-        assertEquals("http://maxqb.biochem.mpg.de/mxdb/protein/show/%value", opType.getUriLink());
+        assertEquals("http://maxqb.biochem.mpg.de/mxdb/protein/show/%u", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description",
                         null);
@@ -147,7 +147,7 @@ class UniProtXDbTypesTest {
         assertEquals("DNASU", opType.getName());
         assertEquals("DNASU", opType.getDisplayName());
         assertEquals(DatabaseCategory.PROTOCOLS_AND_MATERIALS_DATABASES, opType.getCategory());
-        assertEquals("https://dnasu.org/DNASU/AdvancedSearchOptions.do?geneName=%value", opType.getUriLink());
+        assertEquals("https://dnasu.org/DNASU/AdvancedSearchOptions.do?geneName=%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Description", "description",
                         null);
@@ -159,12 +159,12 @@ class UniProtXDbTypesTest {
         assertEquals("Ensembl", opType.getName());
         assertEquals("Ensembl", opType.getDisplayName());
         assertEquals(DatabaseCategory.GENOME_ANNOTATION_DATABASES, opType.getCategory());
-        assertEquals("https://www.ensembl.org/id/%value", opType.getUriLink());
+        assertEquals("https://www.ensembl.org/id/%s", opType.getUriLink());
         assertEquals(2, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ProteinId", "protein sequence ID",
-                        "https://www.ensembl.org/id/%value");
+                        "https://www.ensembl.org/id/%s");
         verifyAttribute(opType.getAttributes().get(1), "GeneId", "gene ID",
-                        "https://www.ensembl.org/id/%value");
+                        "https://www.ensembl.org/id/%s");
 
     }
 
@@ -174,7 +174,7 @@ class UniProtXDbTypesTest {
         assertEquals("VGNC", opType.getName());
         assertEquals("VGNC", opType.getDisplayName());
         assertEquals(DatabaseCategory.ORGANISM_SPECIFIC_DATABASES, opType.getCategory());
-        assertEquals("https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/%value", opType.getUriLink());
+        assertEquals("https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "GeneName", "gene designation",
                         null);
@@ -187,7 +187,7 @@ class UniProtXDbTypesTest {
         assertEquals("eggNOG", opType.getName());
         assertEquals("eggNOG", opType.getDisplayName());
         assertEquals(DatabaseCategory.PHYLOGENOMIC_DATABASES, opType.getCategory());
-        assertEquals("http://eggnogdb.embl.de/#/app/results?seqid=%acc&target_nogs=%value", opType.getUriLink());
+        assertEquals("http://eggnogdb.embl.de/#/app/results?seqid=%u&target_nogs=%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ToxonomicScope", "taxonomic scope",
                         null);
@@ -200,7 +200,7 @@ class UniProtXDbTypesTest {
         assertEquals("Reactome", opType.getName());
         assertEquals("Reactome", opType.getDisplayName());
         assertEquals(DatabaseCategory.ENZYME_AND_PATHWAY_DATABASES, opType.getCategory());
-        assertEquals("https://www.reactome.org/PathwayBrowser/#%value&FLG=%acc", opType.getUriLink());
+        assertEquals("https://www.reactome.org/PathwayBrowser/#%s&FLG=%u", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "PathwayName", "pathway name",
                         null);
@@ -212,7 +212,7 @@ class UniProtXDbTypesTest {
         assertEquals("ChiTaRS", opType.getName());
         assertEquals("ChiTaRS", opType.getDisplayName());
         assertEquals(DatabaseCategory.OTHER, opType.getCategory());
-        assertEquals("http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%value", opType
+        assertEquals("http://chitars.md.biu.ac.il/bin/search.pl?searchtype=gene_name&searchstr=%s&%d=1", opType
                 .getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "OrganismName", "organism name",
@@ -225,7 +225,7 @@ class UniProtXDbTypesTest {
         assertEquals("ExpressionAtlas", opType.getName());
         assertEquals("ExpressionAtlas", opType.getDisplayName());
         assertEquals(DatabaseCategory.GENE_EXPRESSION_DATABASES, opType.getCategory());
-        assertEquals("https://www.ebi.ac.uk/gxa/query?geneQuery=%value", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/gxa/query?geneQuery=%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ExpressionPatterns", "expression patterns",
                         null);
@@ -238,7 +238,7 @@ class UniProtXDbTypesTest {
         assertEquals("PIRSF", opType.getName());
         assertEquals("PIRSF", opType.getDisplayName());
         assertEquals(DatabaseCategory.FAMILY_AND_DOMAIN_DATABASES, opType.getCategory());
-        assertEquals("https://pir.georgetown.edu/cgi-bin/ipcSF?id=%value", opType.getUriLink());
+        assertEquals("http://pir.georgetown.edu/cgi-bin/ipcSF?id=%s", opType.getUriLink());
         assertEquals(2, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "EntryName", "entry name",
                         null);
@@ -252,7 +252,7 @@ class UniProtXDbTypesTest {
         assertEquals("GO", opType.getName());
         assertEquals("GO", opType.getDisplayName());
         assertEquals(DatabaseCategory.GENE_ONTOLOGY_DATABASES, opType.getCategory());
-        assertEquals("https://prosite.expasy.org/doc/%value", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/QuickGO/term/%s", opType.getUriLink());
         assertEquals(3, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "GoTerm", "term",
                         null);
@@ -267,8 +267,8 @@ class UniProtXDbTypesTest {
         UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("Proteomes");
         assertEquals("Proteomes", opType.getName());
         assertEquals("Proteomes", opType.getDisplayName());
-        assertEquals(DatabaseCategory.PROTEOMES_DATABASES, opType.getCategory());
-        assertEquals("https://www.uniprot.org/proteomes/%value", opType.getUriLink());
+        assertEquals(DatabaseCategory.OTHER, opType.getCategory());
+        assertEquals("https://www.uniprot.org/proteomes/%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Component", "component",
                         null);

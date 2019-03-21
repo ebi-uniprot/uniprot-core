@@ -20,7 +20,7 @@ public enum DatabaseCategory implements EnumDisplay<DatabaseCategory> {
     OTHER("OTHER", "Other"),
     GENE_EXPRESSION_DATABASES("GEP", "Gene expression databases"),
     FAMILY_AND_DOMAIN_DATABASES("FMD", "Family and domain databases"),
-    GENE_ONTOLOGY_DATABASES("OTG", "Gene ontology databases", false),
+    GENE_ONTOLOGY_DATABASES("OTG", "Ontologies", false),
 
     PROTEOMES_DATABASES("PRM", "Proteomes databases", false),
 
