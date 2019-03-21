@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.EnumDisplay;
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 public enum InteractionType implements EnumDisplay<InteractionType> {
     SELF,

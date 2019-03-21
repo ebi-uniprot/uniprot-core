@@ -1,9 +1,10 @@
-package uk.ac.ebi.uniprot.domain.uniprot.xdb;
+package uk.ac.ebi.uniprot.cv.xdb;
 
 
 import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.domain.util.property.PropertyArray;
-import uk.ac.ebi.uniprot.domain.util.property.PropertyObject;
+import uk.ac.ebi.uniprot.common.property.PropertyArray;
+import uk.ac.ebi.uniprot.common.property.PropertyObject;
+import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefValidator;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -31,6 +32,8 @@ public enum UniProtXDbTypes {
         if (type == null) {
             throw new IllegalArgumentException(typeName + " does not exist in UniProt database type list");
         }
+        // validate the UniProtXDbTypeDetail with dbXRef.txt
+        DBXRefValidator.validate(type);
         return type;
     }
 

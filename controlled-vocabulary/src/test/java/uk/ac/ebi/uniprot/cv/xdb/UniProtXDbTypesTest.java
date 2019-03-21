@@ -1,6 +1,10 @@
-package uk.ac.ebi.uniprot.domain.uniprot.xdb;
+package uk.ac.ebi.uniprot.cv.xdb;
 
 import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.cv.xdb.DBXRefTypeAttribute;
+import uk.ac.ebi.uniprot.cv.xdb.DatabaseCategory;
+import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
+import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
 
 import java.util.List;
 

@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain;
 
 
+import uk.ac.ebi.uniprot.common.EnumDisplay;
+
 public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
 
     A(710788),

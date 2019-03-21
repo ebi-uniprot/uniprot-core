@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.xmlparser.uniprot;
 
 import com.google.common.base.Strings;
+import uk.ac.ebi.uniprot.cv.xdb.DBXRefTypeAttribute;
+import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
+import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
@@ -27,7 +30,7 @@ public class UniProtCrossReferenceConverter implements Converter<DbReferenceType
 
 	@Override
 	public UniProtDBCrossReference fromXml(DbReferenceType xmlObj) {
-		UniProtXDbTypeDetail xdbType =UniProtXDbTypes.INSTANCE.getType(xmlObj.getType());
+		UniProtXDbTypeDetail xdbType = UniProtXDbTypes.INSTANCE.getType(xmlObj.getType());
 		
 		String databaseName = xdbType.getName();
 		String id =xmlObj.getId();

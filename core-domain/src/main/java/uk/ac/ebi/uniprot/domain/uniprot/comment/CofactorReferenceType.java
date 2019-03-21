@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
+import uk.ac.ebi.uniprot.common.EnumDisplay;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
-import uk.ac.ebi.uniprot.domain.EnumDisplay;
 
 public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorReferenceType> {
     CHEBI("ChEBI"),

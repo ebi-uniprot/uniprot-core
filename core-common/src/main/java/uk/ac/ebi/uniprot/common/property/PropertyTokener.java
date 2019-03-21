@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.util.property;
+package uk.ac.ebi.uniprot.common.property;
 
 import java.io.*;
 
