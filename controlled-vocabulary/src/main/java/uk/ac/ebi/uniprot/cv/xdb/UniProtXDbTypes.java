@@ -37,7 +37,7 @@ public enum UniProtXDbTypes {
             throw new IllegalArgumentException(typeName + " does not exist in UniProt database type list");
         }
         // validate the UniProtXDbTypeDetail with dbXRef.txt
-        DBXRefValidator.validate(type);
+        
         return type;
     }
 
@@ -63,8 +63,10 @@ public enum UniProtXDbTypes {
                         attributes.add(new DBXRefTypeAttribute(attributeName, attributeXmlTag, attributeUriLink));
                     });
                 }
-                types.add(new UniProtXDbTypeDetail(name, displayName, DatabaseCategory
-                        .typeOf(category), uriLink, attributes));
+                UniProtXDbTypeDetail xdbType = new UniProtXDbTypeDetail(name, displayName, DatabaseCategory
+                        .typeOf(category), uriLink, attributes);
+                DBXRefValidator.validate(xdbType);
+                types.add(xdbType);
             });
             typeMap = types.stream().collect(Collectors.toMap(UniProtXDbTypeDetail::getDisplayName, val -> val));
         } catch (Exception e) {

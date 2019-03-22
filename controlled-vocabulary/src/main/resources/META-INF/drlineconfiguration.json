@@ -1466,7 +1466,17 @@
 		"displayName": "PathwayCommons",
 		"category": "UNK",
 		"uriLink": "http://www.pathwaycommons.org/search?type=Pathway&q=%s"
+	},
+	{
+		"name": "UniGene",
+		"displayName": "UniGene",
+		"category": "SEQ",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?ORG=%d&CID=%s"
+	},
+	{
+		"name": "HOVERGEN",
+		"displayName": "HOVERGEN",
+		"category": "PLG",
+		"uriLink": "http://pbil.univ-lyon1.fr/cgi-bin/acnuc-ac2tree?query=%u&db=HOVERGEN"
 	}
-	
-	
 ]
