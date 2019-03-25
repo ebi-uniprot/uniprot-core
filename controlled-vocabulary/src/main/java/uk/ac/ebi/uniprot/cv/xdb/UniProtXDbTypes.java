@@ -41,6 +41,13 @@ public enum UniProtXDbTypes {
         return type;
     }
 
+    public List<UniProtXDbTypeDetail> getDBTypesByCategory(DatabaseCategory dbCatergory){
+        return this.types
+                .stream()
+                .filter(dbType -> dbType.getCategory() == dbCatergory)
+                .collect(Collectors.toList());
+    }
+
     private void init() {
         try (InputStream configFile = UniProtXDbTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
