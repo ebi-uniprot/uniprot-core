@@ -1,24 +1,47 @@
 package uk.ac.ebi.uniprot.cv.xdb;
 
 import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRef;
 import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefReader;
 import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefValidator;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DBXRefReaderTest {
+    private static Set<String> ACCESSION_WITHOUT_REF = new HashSet<>(
+            Arrays.asList(
+                    "DB-0133","DB-0225","DB-0018", "DB-0168","DB-0188","DB-0227","DB-0055","DB-0061","DB-0161",
+                    "DB-0067","DB-0219","DB-0068","DB-0072", "DB-0078","DB-0090","DB-0099","DB-0106","DB-0047"
+                    ));
 
     @Test
     void testReadAll() throws IOException {
         int count = 0;
         try(DBXRefReader reader = new DBXRefReader(DBXRefValidator.DBREF_FTP)) {
-            while (reader.read() != null) {
+            DBXRef dbxRef;
+            while ((dbxRef = reader.read()) != null) {
+                verifyDBXRef(dbxRef);
                 count++;
             }
         }
         assertTrue(count >= 171);
+    }
+
+    private void verifyDBXRef(DBXRef dbxRef) {
+        assertNotNull(dbxRef.getAccession(), "Accession is null");
+        assertNotNull(dbxRef.getAbbr(), "Abbr is null");
+        assertNotNull(dbxRef.getName(), "Name is null");
+        if(!ACCESSION_WITHOUT_REF.contains(dbxRef.getAccession())) {
+             assertNotNull(dbxRef.getRef(), "Ref is null");
+        }
+        assertNotNull(dbxRef.getLinkType(), "LinkTp is null");
+        assertNotNull(dbxRef.getServer(), "Server is null");
+        assertNotNull(dbxRef.getDbUrl(), "db_Url is null");
+        assertNotNull(dbxRef.getCategory(), "Cat is null");
     }
 }
