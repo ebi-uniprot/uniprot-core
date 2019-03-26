@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.cv.ec.EC;
 import uk.ac.ebi.uniprot.cv.ec.impl.ECImpl;
@@ -22,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ECFileReaderTest {
     private static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
-
+    @Disabled
     @Test
     void canCreateECFileReaderFromFTP() {
         ECFileReader reader = new ECFileReader();
