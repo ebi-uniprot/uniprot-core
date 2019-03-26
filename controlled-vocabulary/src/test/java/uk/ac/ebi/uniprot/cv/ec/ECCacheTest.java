@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.cv.ec;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -22,13 +23,13 @@ class ECCacheTest {
         List<EC> ecs = ECCache.INSTANCE.get("ec/");
         assertThat(ecs, hasSize(12));
     }
-
+    @Disabled
     @Test
     void givenWrongFilePath_whenLoadCache_loadsCacheFromFTP() {
         List<EC> ecs = ECCache.INSTANCE.get("/this/is/wrong/");
         assertThat(ecs, is(not(emptyList())));
     }
-
+    @Disabled
     @Test
     void canLoadCacheFromFTP() {
         List<EC> ecs = ECCache.INSTANCE.get(FTP_LOCATION);

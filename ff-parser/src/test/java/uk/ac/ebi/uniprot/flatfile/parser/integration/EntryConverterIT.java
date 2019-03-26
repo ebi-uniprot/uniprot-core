@@ -65,6 +65,15 @@ public class EntryConverterIT {
 		testEntry(entryStr);
 	}
 
+	
+	@Test
+	public void testP05067() {
+		String filename = "/entryIT/P05067.dat";
+		String entryStr = readEntryFromFile(filename);
+		System.out.println(entryStr);
+		testEntry(entryStr);
+	}
+
 	private void testEntry(String entryToParse) {
 		UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
 		EntryObject parse = entryParser.parse(entryToParse);

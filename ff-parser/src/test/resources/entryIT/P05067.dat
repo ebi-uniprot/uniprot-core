@@ -1,0 +1,3259 @@
+ID   A4_HUMAN                Reviewed;         770 AA.
+AC   P05067; B2R5V1; B4DII8; D3DSD1; D3DSD2; D3DSD3; P09000; P78438;
+AC   Q13764; Q13778; Q13793; Q16011; Q16014; Q16019; Q16020; Q6GSC0;
+AC   Q8WZ99; Q9BT38; Q9UC33; Q9UCA9; Q9UCB6; Q9UCC8; Q9UCD1; Q9UQ58;
+DT   13-AUG-1987, integrated into UniProtKB/Swiss-Prot.
+DT   01-NOV-1991, sequence version 3.
+DT   13-FEB-2019, entry version 280.
+DE   RecName: Full=Amyloid-beta precursor protein {ECO:0000305};
+DE            Short=APP {ECO:0000305};
+DE   AltName: Full=ABPP;
+DE   AltName: Full=APPI;
+DE   AltName: Full=Alzheimer disease amyloid protein;
+DE   AltName: Full=Amyloid precursor protein {ECO:0000305};
+DE   AltName: Full=Amyloid-beta A4 protein;
+DE   AltName: Full=Cerebral vascular amyloid peptide;
+DE            Short=CVAP;
+DE   AltName: Full=PreA4;
+DE   AltName: Full=Protease nexin-II;
+DE            Short=PN-II;
+DE   Contains:
+DE     RecName: Full=N-APP;
+DE   Contains:
+DE     RecName: Full=Soluble APP-alpha {ECO:0000303|PubMed:10656250};
+DE              Short=S-APP-alpha {ECO:0000303|PubMed:10656250};
+DE   Contains:
+DE     RecName: Full=Soluble APP-beta {ECO:0000303|PubMed:10656250};
+DE              Short=S-APP-beta {ECO:0000303|PubMed:10656250};
+DE   Contains:
+DE     RecName: Full=C99;
+DE     AltName: Full=Beta-secretase C-terminal fragment {ECO:0000303|PubMed:10656250};
+DE              Short=Beta-CTF {ECO:0000303|PubMed:10656250};
+DE   Contains:
+DE     RecName: Full=Amyloid-beta protein 42 {ECO:0000303|PubMed:8886002};
+DE              Short=Abeta42;
+DE     AltName: Full=Beta-APP42;
+DE   Contains:
+DE     RecName: Full=Amyloid-beta protein 40 {ECO:0000303|PubMed:8886002};
+DE              Short=Abeta40;
+DE     AltName: Full=Beta-APP40;
+DE   Contains:
+DE     RecName: Full=C83;
+DE     AltName: Full=Alpha-secretase C-terminal fragment {ECO:0000303|PubMed:10656250};
+DE              Short=Alpha-CTF {ECO:0000303|PubMed:10656250};
+DE   Contains:
+DE     RecName: Full=P3(42);
+DE   Contains:
+DE     RecName: Full=P3(40);
+DE   Contains:
+DE     RecName: Full=C80;
+DE   Contains:
+DE     RecName: Full=Gamma-secretase C-terminal fragment 59;
+DE     AltName: Full=Amyloid intracellular domain 59;
+DE              Short=AICD-59;
+DE              Short=AID(59);
+DE     AltName: Full=Gamma-CTF(59);
+DE   Contains:
+DE     RecName: Full=Gamma-secretase C-terminal fragment 57;
+DE     AltName: Full=Amyloid intracellular domain 57;
+DE              Short=AICD-57;
+DE              Short=AID(57);
+DE     AltName: Full=Gamma-CTF(57);
+DE   Contains:
+DE     RecName: Full=Gamma-secretase C-terminal fragment 50;
+DE     AltName: Full=Amyloid intracellular domain 50;
+DE              Short=AICD-50;
+DE              Short=AID(50);
+DE     AltName: Full=Gamma-CTF(50);
+DE   Contains:
+DE     RecName: Full=C31;
+DE   Flags: Precursor;
+GN   Name=APP {ECO:0000312|HGNC:HGNC:620}; Synonyms=A4, AD1;
+OS   Homo sapiens (Human).
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
+OC   Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
+OC   Catarrhini; Hominidae; Homo.
+OX   NCBI_TaxID=9606;
+RN   [1]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM APP695).
+RC   TISSUE=Brain;
+RX   PubMed=2881207; DOI=10.1038/325733a0;
+RA   Kang J., Lemaire H.-G., Unterbeck A., Salbaum J.M., Masters C.L.,
+RA   Grzeschik K.-H., Multhaup G., Beyreuther K., Mueller-Hill B.;
+RT   "The precursor of Alzheimer's disease amyloid A4 protein resembles a
+RT   cell-surface receptor.";
+RL   Nature 325:733-736(1987).
+RN   [2]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM APP751).
+RC   TISSUE=Brain;
+RX   PubMed=2893289; DOI=10.1038/331525a0;
+RA   Ponte P., Gonzalez-Dewhitt P., Schilling J., Miller J., Hsu D.,
+RA   Greenberg B., Davis K., Wallace W., Lieberburg I., Fuller F.,
+RA   Cordell B.;
+RT   "A new A4 amyloid mRNA contains a domain homologous to serine
+RT   proteinase inhibitors.";
+RL   Nature 331:525-527(1988).
+RN   [3]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] (ISOFORM APP695).
+RX   PubMed=2783775; DOI=10.1093/nar/17.2.517;
+RA   Lemaire H.-G., Salbaum J.M., Multhaup G., Kang J., Bayney R.M.,
+RA   Unterbeck A., Beyreuther K., Mueller-Hill B.;
+RT   "The PreA4(695) precursor protein of Alzheimer's disease A4 amyloid is
+RT   encoded by 16 exons.";
+RL   Nucleic Acids Res. 17:517-522(1989).
+RN   [4]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] (ISOFORM APP770).
+RX   PubMed=2110105; DOI=10.1016/0378-1119(90)90310-N;
+RA   Yoshikai S., Sasaki H., Doh-ura K., Furuya H., Sakaki Y.;
+RT   "Genomic organization of the human amyloid beta-protein precursor
+RT   gene.";
+RL   Gene 87:257-263(1990).
+RN   [5]
+RP   ERRATUM.
+RX   PubMed=1908403; DOI=10.1016/0378-1119(91)90093-Q;
+RA   Yoshikai S., Sasaki H., Doh-ura K., Furuya H., Sakaki Y.;
+RL   Gene 102:291-292(1991).
+RN   [6]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM L-APP733).
+RC   TISSUE=Leukocyte;
+RX   PubMed=1587857;
+RA   Koenig G., Moenning U., Czech C., Prior R., Banati R.,
+RA   Schreiter-Gasser U., Bauer J., Masters C.L., Beyreuther K.;
+RT   "Identification and differential expression of a novel alternative
+RT   splice isoform of the beta A4 amyloid precursor protein (APP) mRNA in
+RT   leukocytes and brain microglial cells.";
+RL   J. Biol. Chem. 267:10804-10809(1992).
+RN   [7]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] (ISOFORM APP770).
+RX   PubMed=9108164; DOI=10.1093/nar/25.9.1802;
+RA   Hattori M., Tsukahara F., Furuhata Y., Tanahashi H., Hirose M.,
+RA   Saito M., Tsukuni S., Sakaki Y.;
+RT   "A novel method for making nested deletions and its application for
+RT   sequencing of a 300 kb region of human APP locus.";
+RL   Nucleic Acids Res. 25:1802-1808(1997).
+RN   [8]
+RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM APP639), AND TISSUE SPECIFICITY.
+RC   TISSUE=Brain;
+RX   PubMed=12859342; DOI=10.1046/j.1460-9568.2003.02731.x;
+RA   Tang K., Wang C., Shen C., Sheng S., Ravid R., Jing N.;
+RT   "Identification of a novel alternative splicing isoform of human
+RT   amyloid precursor protein gene, APP639.";
+RL   Eur. J. Neurosci. 18:102-108(2003).
+RN   [9]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORMS APP770 AND 11).
+RC   TISSUE=Cerebellum, and Hippocampus;
+RX   PubMed=14702039; DOI=10.1038/ng1285;
+RA   Ota T., Suzuki Y., Nishikawa T., Otsuki T., Sugiyama T., Irie R.,
+RA   Wakamatsu A., Hayashi K., Sato H., Nagai K., Kimura K., Makita H.,
+RA   Sekine M., Obayashi M., Nishi T., Shibahara T., Tanaka T., Ishii S.,
+RA   Yamamoto J., Saito K., Kawai Y., Isono Y., Nakamura Y., Nagahari K.,
+RA   Murakami K., Yasuda T., Iwayanagi T., Wagatsuma M., Shiratori A.,
+RA   Sudo H., Hosoiri T., Kaku Y., Kodaira H., Kondo H., Sugawara M.,
+RA   Takahashi M., Kanda K., Yokoi T., Furuya T., Kikkawa E., Omura Y.,
+RA   Abe K., Kamihara K., Katsuta N., Sato K., Tanikawa M., Yamazaki M.,
+RA   Ninomiya K., Ishibashi T., Yamashita H., Murakawa K., Fujimori K.,
+RA   Tanai H., Kimata M., Watanabe M., Hiraoka S., Chiba Y., Ishida S.,
+RA   Ono Y., Takiguchi S., Watanabe S., Yosida M., Hotuta T., Kusano J.,
+RA   Kanehori K., Takahashi-Fujii A., Hara H., Tanase T.-O., Nomura Y.,
+RA   Togiya S., Komai F., Hara R., Takeuchi K., Arita M., Imose N.,
+RA   Musashino K., Yuuki H., Oshima A., Sasaki N., Aotsuka S.,
+RA   Yoshikawa Y., Matsunawa H., Ichihara T., Shiohata N., Sano S.,
+RA   Moriya S., Momiyama H., Satoh N., Takami S., Terashima Y., Suzuki O.,
+RA   Nakagawa S., Senoh A., Mizoguchi H., Goto Y., Shimizu F., Wakebe H.,
+RA   Hishigaki H., Watanabe T., Sugiyama A., Takemoto M., Kawakami B.,
+RA   Yamazaki M., Watanabe K., Kumagai A., Itakura S., Fukuzumi Y.,
+RA   Fujimori Y., Komiyama M., Tashiro H., Tanigami A., Fujiwara T.,
+RA   Ono T., Yamada K., Fujii Y., Ozaki K., Hirao M., Ohmori Y.,
+RA   Kawabata A., Hikiji T., Kobatake N., Inagaki H., Ikema Y., Okamoto S.,
+RA   Okitani R., Kawakami T., Noguchi S., Itoh T., Shigeta K., Senba T.,
+RA   Matsumura K., Nakajima Y., Mizuno T., Morinaga M., Sasaki M.,
+RA   Togashi T., Oyama M., Hata H., Watanabe M., Komatsu T.,
+RA   Mizushima-Sugano J., Satoh T., Shirai Y., Takahashi Y., Nakagawa K.,
+RA   Okumura K., Nagase T., Nomura N., Kikuchi H., Masuho Y., Yamashita R.,
+RA   Nakai K., Yada T., Nakamura Y., Ohara O., Isogai T., Sugano S.;
+RT   "Complete sequencing and characterization of 21,243 full-length human
+RT   cDNAs.";
+RL   Nat. Genet. 36:40-45(2004).
+RN   [10]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], AND VARIANT LYS-501.
+RG   NIEHS SNPs program;
+RL   Submitted (FEB-2005) to the EMBL/GenBank/DDBJ databases.
+RN   [11]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RX   PubMed=10830953; DOI=10.1038/35012518;
+RA   Hattori M., Fujiyama A., Taylor T.D., Watanabe H., Yada T.,
+RA   Park H.-S., Toyoda A., Ishii K., Totoki Y., Choi D.-K., Groner Y.,
+RA   Soeda E., Ohki M., Takagi T., Sakaki Y., Taudien S., Blechschmidt K.,
+RA   Polley A., Menzel U., Delabar J., Kumpf K., Lehmann R., Patterson D.,
+RA   Reichwald K., Rump A., Schillhabel M., Schudy A., Zimmermann W.,
+RA   Rosenthal A., Kudoh J., Shibuya K., Kawasaki K., Asakawa S.,
+RA   Shintani A., Sasaki T., Nagamine K., Mitsuyama S., Antonarakis S.E.,
+RA   Minoshima S., Shimizu N., Nordsiek G., Hornischer K., Brandt P.,
+RA   Scharfe M., Schoen O., Desario A., Reichelt J., Kauer G., Bloecker H.,
+RA   Ramser J., Beck A., Klages S., Hennig S., Riesselmann L., Dagand E.,
+RA   Wehrmeyer S., Borzym K., Gardiner K., Nizetic D., Francis F.,
+RA   Lehrach H., Reinhardt R., Yaspo M.-L.;
+RT   "The DNA sequence of human chromosome 21.";
+RL   Nature 405:311-319(2000).
+RN   [12]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
+RA   Mural R.J., Istrail S., Sutton G.G., Florea L., Halpern A.L.,
+RA   Mobarry C.M., Lippert R., Walenz B., Shatkay H., Dew I., Miller J.R.,
+RA   Flanigan M.J., Edwards N.J., Bolanos R., Fasulo D., Halldorsson B.V.,
+RA   Hannenhalli S., Turner R., Yooseph S., Lu F., Nusskern D.R.,
+RA   Shue B.C., Zheng X.H., Zhong F., Delcher A.L., Huson D.H.,
+RA   Kravitz S.A., Mouchard L., Reinert K., Remington K.A., Clark A.G.,
+RA   Waterman M.S., Eichler E.E., Adams M.D., Hunkapiller M.W., Myers E.W.,
+RA   Venter J.C.;
+RL   Submitted (SEP-2005) to the EMBL/GenBank/DDBJ databases.
+RN   [13]
+RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORMS APP305 AND APP751).
+RC   TISSUE=Eye, and Pancreas;
+RX   PubMed=15489334; DOI=10.1101/gr.2596504;
+RG   The MGC Project Team;
+RT   "The status, quality, and expansion of the NIH full-length cDNA
+RT   project: the Mammalian Gene Collection (MGC).";
+RL   Genome Res. 14:2121-2127(2004).
+RN   [14]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 1-10.
+RC   TISSUE=Liver;
+RX   PubMed=3140222; DOI=10.1093/nar/16.19.9351;
+RA   Schon E.A., Mita S., Sadlock J., Herbert J.;
+RT   "A cDNA specifying the human amyloid beta precursor protein (ABPP)
+RT   encodes a 95-kDa polypeptide.";
+RL   Nucleic Acids Res. 16:9351-9351(1988).
+RN   [15]
+RP   ERRATUM, AND SEQUENCE REVISION.
+RA   Schon E.A., Mita S., Sadlock J., Herbert J.;
+RL   Nucleic Acids Res. 16:11402-11402(1988).
+RN   [16]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] OF 1-75.
+RX   PubMed=2538123; DOI=10.1016/0006-291X(89)92437-6;
+RA   La Fauci G., Lahiri D.K., Salton S.R., Robakis N.K.;
+RT   "Characterization of the 5'-end region and the first two exons of the
+RT   beta-protein precursor gene.";
+RL   Biochem. Biophys. Res. Commun. 159:297-304(1989).
+RN   [17]
+RP   PROTEIN SEQUENCE OF 18-50.
+RC   TISSUE=Fibroblast;
+RX   PubMed=3597385;
+RA   van Nostrand W.E., Cunningham D.D.;
+RT   "Purification of protease nexin II from human fibroblasts.";
+RL   J. Biol. Chem. 262:8508-8514(1987).
+RN   [18]
+RP   PROTEIN SEQUENCE OF 18-40.
+RC   TISSUE=Platelet;
+RX   PubMed=12665801; DOI=10.1038/nbt810;
+RA   Gevaert K., Goethals M., Martens L., Van Damme J., Staes A.,
+RA   Thomas G.R., Vandekerckhove J.;
+RT   "Exploring proteomes and analyzing protein processing by mass
+RT   spectrometric identification of sorted N-terminal peptides.";
+RL   Nat. Biotechnol. 21:566-569(2003).
+RN   [19]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 286-366.
+RX   PubMed=2893290; DOI=10.1038/331528a0;
+RA   Tanzi R.E., McClatchey A.I., Lamperti E.D., Villa-Komaroff L.,
+RA   Gusella J.F., Neve R.L.;
+RT   "Protease inhibitor domain encoded by an amyloid protein precursor
+RT   mRNA associated with Alzheimer's disease.";
+RL   Nature 331:528-530(1988).
+RN   [20]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 287-367.
+RX   PubMed=2893291; DOI=10.1038/331530a0;
+RA   Kitaguchi N., Takahashi Y., Tokushima Y., Shiojiri S., Ito H.;
+RT   "Novel precursor of Alzheimer's disease amyloid protein shows protease
+RT   inhibitory activity.";
+RL   Nature 331:530-532(1988).
+RN   [21]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 507-770.
+RC   TISSUE=Brain cortex;
+RX   PubMed=2893379; DOI=10.1073/pnas.85.3.929;
+RA   Zain S.B., Salim M., Chou W.G., Sajdel-Sulkowska E.M., Majocha R.E.,
+RA   Marotta C.A.;
+RT   "Molecular cloning of amyloid cDNA derived from mRNA of the Alzheimer
+RT   disease brain: coding and noncoding regions of the fetal precursor
+RT   mRNA are expressed in the cortex.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 85:929-933(1988).
+RN   [22]
+RP   PROTEIN SEQUENCE OF 523-555, AND DOMAIN COLLAGEN-BINDING.
+RX   PubMed=8576160; DOI=10.1074/jbc.271.3.1613;
+RA   Beher D., Hesse L., Masters C.L., Multhaup G.;
+RT   "Regulation of amyloid protein precursor (APP) binding to collagen and
+RT   mapping of the binding sites on APP and collagen type I.";
+RL   J. Biol. Chem. 271:1613-1620(1996).
+RN   [23]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 655-737, AND VARIANTS AD1 GLY-717;
+RP   ILE-717 AND PHE-717.
+RX   PubMed=8476439; DOI=10.1006/bbrc.1993.1386;
+RA   Denman R.B., Rosenzcwaig R., Miller D.L.;
+RT   "A system for studying the effect(s) of familial Alzheimer disease
+RT   mutations on the processing of the beta-amyloid peptide precursor.";
+RL   Biochem. Biophys. Res. Commun. 192:96-103(1993).
+RN   [24]
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] OF 656-737.
+RX   PubMed=2675837; DOI=10.1016/0006-291X(89)91112-1;
+RA   Johnstone E.M., Chaney M.O., Moore R.E., Ward K.E., Norris F.H.,
+RA   Little S.P.;
+RT   "Alzheimer's disease amyloid peptide is encoded by two exons and shows
+RT   similarity to soybean trypsin inhibitor.";
+RL   Biochem. Biophys. Res. Commun. 163:1248-1255(1989).
+RN   [25]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 672-723, AND VARIANT AD1 ASN-678.
+RX   PubMed=15201367; DOI=10.1136/jnnp.2003.010611;
+RA   Wakutani Y., Watanabe K., Adachi Y., Wada-Isoe K., Urakami K.,
+RA   Ninomiya H., Saido T.C., Hashimoto T., Iwatsubo T., Nakashima K.;
+RT   "Novel amyloid precursor protein gene missense mutation (D678N) in
+RT   probable familial Alzheimer's disease.";
+RL   J. Neurol. Neurosurg. Psych. 75:1039-1042(2004).
+RN   [26]
+RP   PROTEIN SEQUENCE OF 672-681.
+RC   TISSUE=Brain cortex;
+RX   PubMed=3312495; DOI=10.1111/j.1471-4159.1987.tb01005.x;
+RA   Pardridge W.M., Vinters H.V., Yang J., Eisenberg J., Choi T.B.,
+RA   Tourtellotte W.W., Huebner V., Shively J.E.;
+RT   "Amyloid angiopathy of Alzheimer's disease: amino acid composition and
+RT   partial sequence of a 4,200-dalton peptide isolated from cortical
+RT   microvessels.";
+RL   J. Neurochem. 49:1394-1401(1987).
+RN   [27]
+RP   PROTEIN SEQUENCE OF 672-704, AND TISSUE SPECIFICITY.
+RX   PubMed=1406936; DOI=10.1038/359325a0;
+RA   Seubert P., Vigo-Pelfrey C., Esch F., Lee M., Dovey H., Davis D.,
+RA   Sinha S., Schlossmacher M., Whaley J., Swindlehurst C.;
+RT   "Isolation and quantification of soluble Alzheimer's beta-peptide from
+RT   biological fluids.";
+RL   Nature 359:325-327(1992).
+RN   [28]
+RP   PROTEIN SEQUENCE OF 672-701.
+RC   TISSUE=Cerebrospinal fluid;
+RX   PubMed=8229004; DOI=10.1111/j.1471-4159.1993.tb09841.x;
+RA   Vigo-Pelfrey C., Lee D., Keim P., Lieberburg I., Schenk D.B.;
+RT   "Characterization of beta-amyloid peptide from human cerebrospinal
+RT   fluid.";
+RL   J. Neurochem. 61:1965-1968(1993).
+RN   [29]
+RP   PROTEIN SEQUENCE OF 672-713.
+RC   TISSUE=Blood vessel;
+RX   PubMed=8248178; DOI=10.1073/pnas.90.22.10836;
+RA   Roher A.E., Lowenson J.D., Clarke S., Woods A.S., Cotter R.J.,
+RA   Gowing E., Ball M.J.;
+RT   "Beta-amyloid-(1-42) is a major component of cerebrovascular amyloid
+RT   deposits: implications for the pathology of Alzheimer disease.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 90:10836-10840(1993).
+RN   [30]
+RP   PROTEIN SEQUENCE OF 672-701 AND 707-713.
+RX   PubMed=8109908; DOI=10.1002/ana.410350223;
+RA   Wisniewski T., Lalowski M., Levy E., Marques M.R.F., Frangione B.;
+RT   "The amino acid sequence of neuritic plaque amyloid from a familial
+RT   Alzheimer's disease patient.";
+RL   Ann. Neurol. 35:245-246(1994).
+RN   [31]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 674-770.
+RC   TISSUE=Brain;
+RX   PubMed=3810169; DOI=10.1126/science.3810169;
+RA   Goldgaber D., Lerman M.I., McBride O.W., Saffiotti U., Gajdusek D.C.;
+RT   "Characterization and chromosomal localization of a cDNA encoding
+RT   brain amyloid of Alzheimer's disease.";
+RL   Science 235:877-880(1987).
+RN   [32]
+RP   NUCLEOTIDE SEQUENCE [MRNA] OF 674-703.
+RC   TISSUE=Fetal brain;
+RX   PubMed=2949367; DOI=10.1126/science.2949367;
+RA   Tanzi R.E., Gusella J.F., Watkins P.C., Bruns G.A.,
+RA   St George-Hyslop P.H., Van Keuren M.L., Patterson D., Pagan S.,
+RA   Kurnit D.M., Neve R.L.;
+RT   "Amyloid beta protein gene: cDNA, mRNA distribution, and genetic
+RT   linkage near the Alzheimer locus.";
+RL   Science 235:880-884(1987).
+RN   [33]
+RP   PROTEIN SEQUENCE OF 609-713, AND GLYCOSYLATION AT THR-633; THR-651;
+RP   THR-652; THR-659; THR-663; SER-667 AND TYR-681.
+RC   TISSUE=Cerebrospinal fluid;
+RX   PubMed=22576872; DOI=10.1002/jms.2987;
+RA   Brinkmalm G., Portelius E., Ohrfelt A., Mattsson N., Persson R.,
+RA   Gustavsson M.K., Vite C.H., Gobom J., Mansson J.E., Nilsson J.,
+RA   Halim A., Larson G., Ruetschi U., Zetterberg H., Blennow K.,
+RA   Brinkmalm A.;
+RT   "An online nano-LC-ESI-FTICR-MS method for comprehensive
+RT   characterization of endogenous fragments from amyloid beta and amyloid
+RT   precursor protein in human and cat cerebrospinal fluid.";
+RL   J. Mass Spectrom. 47:591-603(2012).
+RN   [34]
+RP   PROTEIN SEQUENCE OF 691-698, AND PROTEOLYTIC CLEAVAGE AT PHE-690 BY
+RP   THETA-SECRETASE.
+RX   PubMed=16816112; DOI=10.1096/fj.05-5632com;
+RA   Sun X., He G., Song W.;
+RT   "BACE2, as a novel APP theta-secretase, is not responsible for the
+RT   pathogenesis of Alzheimer's disease in Down syndrome.";
+RL   FASEB J. 20:1369-1376(2006).
+RN   [35]
+RP   PARTIAL NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM APP751).
+RC   TISSUE=Brain;
+RX   PubMed=2569763; DOI=10.1126/science.2569763;
+RA   de Sauvage F., Octave J.-N.;
+RT   "A novel mRNA of the A4 amyloid precursor gene coding for a possibly
+RT   secreted protein.";
+RL   Science 245:651-653(1989).
+RN   [36]
+RP   PARTIAL NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM APP695).
+RC   TISSUE=Brain;
+RX   PubMed=3035574; DOI=10.1073/pnas.84.12.4190;
+RA   Robakis N.K., Ramakrishna N., Wolfe G., Wisniewski H.M.;
+RT   "Molecular cloning and characterization of a cDNA encoding the
+RT   cerebrovascular and the neuritic plaque amyloid peptides.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 84:4190-4194(1987).
+RN   [37]
+RP   SUBCELLULAR LOCATION, SIGNAL SEQUENCE CLEAVAGE SITE, AND TOPOLOGY.
+RX   PubMed=2900137;
+RA   Dyrks T., Weidemann A., Multhaup G., Salbaum J.M., Lemaire H.-G.,
+RA   Kang J., Mueller-Hill B., Masters C.L., Beyreuther K.;
+RT   "Identification, transmembrane orientation and biogenesis of the
+RT   amyloid A4 precursor of Alzheimer's disease.";
+RL   EMBO J. 7:949-957(1988).
+RN   [38]
+RP   IDENTITY OF APP WITH NEXIN-II.
+RX   PubMed=2506449; DOI=10.1038/341144a0;
+RA   Oltersdorf T., Fritz L.C., Schenk D.B., Lieberburg I.,
+RA   Johnson-Wood K.L., Beattie E.C., Ward P.J., Blacher R.W., Dovey H.F.,
+RA   Sinha S.;
+RT   "The secreted form of the Alzheimer's amyloid precursor protein with
+RT   the Kunitz domain is protease nexin-II.";
+RL   Nature 341:144-147(1989).
+RN   [39]
+RP   PROTEASE-SPECIFICITY OF INHIBITOR DOMAIN.
+RX   PubMed=1969731; DOI=10.1016/0006-291X(90)92084-D;
+RA   Kido H., Fukutomi A., Schilling J., Wang Y., Cordell B., Katunuma N.;
+RT   "Protease-specificity of Kunitz inhibitor domain of Alzheimer's
+RT   disease amyloid protein precursor.";
+RL   Biochem. Biophys. Res. Commun. 167:716-721(1990).
+RN   [40]
+RP   EXTRACELLULAR ZINC-BINDING DOMAIN.
+RX   PubMed=8344894;
+RA   Bush A.I., Multhaup G., Moir R.D., Williamson T.G., Small D.H.,
+RA   Rumble B., Pollwein P., Beyreuther K., Masters C.L.;
+RT   "A novel zinc(II) binding site modulates the function of the beta A4
+RT   amyloid protein precursor of Alzheimer's disease.";
+RL   J. Biol. Chem. 268:16109-16112(1993).
+RN   [41]
+RP   INTERACTION WITH G(O).
+RX   PubMed=8446172; DOI=10.1038/362075a0;
+RA   Nishimoto I., Okamoto T., Matsuura Y., Takahashi S., Okamoto T.,
+RA   Murayama Y., Ogata E.;
+RT   "Alzheimer amyloid protein precursor complexes with brain GTP-binding
+RT   protein G(o).";
+RL   Nature 362:75-79(1993).
+RN   [42]
+RP   PHOSPHORYLATION AT THR-743.
+RX   PubMed=8131745;
+RA   Suzuki T., Oishi M., Marshak D.R., Czernik A.J., Nairn A.C.,
+RA   Greengard P.;
+RT   "Cell cycle-dependent regulation of the phosphorylation and metabolism
+RT   of the Alzheimer amyloid precursor protein.";
+RL   EMBO J. 13:1114-1122(1994).
+RN   [43]
+RP   EXTRACELLULAR COPPER-BINDING DOMAIN, AND MUTAGENESIS OF HIS-137;
+RP   MET-141; CYS-144; HIS-147 AND HIS-151.
+RX   PubMed=7913895; DOI=10.1016/0014-5793(94)00658-X;
+RA   Hesse L., Beher D., Masters C.L., Multhaup G.;
+RT   "The beta A4 amyloid precursor protein binding to copper.";
+RL   FEBS Lett. 349:109-116(1994).
+RN   [44]
+RP   N-TERMINAL HEPARIN-BINDING DOMAIN, AND MUTAGENESIS OF 99-LYS--ARG-102.
+RX   PubMed=8158260;
+RA   Small D.H., Nurcombe V., Reed G., Clarris H., Moir R., Beyreuther K.,
+RA   Masters C.L.;
+RT   "A heparin-binding domain in the amyloid protein precursor of
+RT   Alzheimer's disease is involved in the regulation of neurite
+RT   outgrowth.";
+RL   J. Neurosci. 14:2117-2127(1994).
+RN   [45]
+RP   CHARACTERIZATION OF L-APP733, AND MUTAGENESIS OF SER-656.
+RX   PubMed=7737970; DOI=10.1074/jbc.270.18.10388;
+RA   Pangalos M.N., Efthimiopoulos S., Shioi J., Robakis N.K.;
+RT   "The chondroitin sulfate attachment site of appican is formed by
+RT   splicing out exon 15 of the amyloid precursor gene.";
+RL   J. Biol. Chem. 270:10388-10391(1995).
+RN   [46]
+RP   INTERACTION WITH APP-BP1.
+RX   PubMed=8626687; DOI=10.1074/jbc.271.19.11339;
+RA   Chow N., Korenberg J.R., Chen X.-N., Neve R.L.;
+RT   "APP-BP1, a novel protein that binds to the carboxyl-terminal region
+RT   of the amyloid precursor protein.";
+RL   J. Biol. Chem. 271:11339-11346(1996).
+RN   [47]
+RP   INTERACTION WITH APBA1 AND APBB1, AND MUTAGENESIS OF TYR-728; TYR-757;
+RP   ASN-759 AND TYR-762.
+RX   PubMed=8887653; DOI=10.1128/MCB.16.11.6229;
+RA   Borg J.-P., Ooi J., Levy E., Margolis B.;
+RT   "The phosphotyrosine interaction domains of X11 and FE65 bind to
+RT   distinct sites on the YENPTY motif of amyloid precursor protein.";
+RL   Mol. Cell. Biol. 16:6229-6241(1996).
+RN   [48]
+RP   INTERACTION WITH APBB2.
+RX   PubMed=8855266; DOI=10.1073/pnas.93.20.10832;
+RA   Guenette S.Y., Chen J., Jondro P.D., Tanzi R.E.;
+RT   "Association of a novel human FE65-like protein with the cytoplasmic
+RT   domain of the amyloid-beta precursor protein.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 93:10832-10837(1996).
+RN   [49]
+RP   FUNCTION OF AMYLOID-BETA PEPTIDE AS LIPID PEROXIDATION INHIBITOR, AND
+RP   MUTAGENESIS OF MET-706.
+RX   PubMed=9168929; DOI=10.1006/bbrc.1997.6547;
+RA   Walter M.F., Mason P.E., Mason R.P.;
+RT   "Alzheimer's disease amyloid beta peptide 25-35 inhibits lipid
+RT   peroxidation as a result of its membrane interactions.";
+RL   Biochem. Biophys. Res. Commun. 233:760-764(1997).
+RN   [50]
+RP   HEPARIN-BINDING DOMAINS.
+RX   PubMed=9357988; DOI=10.1016/S0014-5793(97)01146-0;
+RA   Mok S.S., Sberna G., Heffernan D., Cappai R., Galatis D.,
+RA   Clarris H.J., Sawyer W.H., Beyreuther K., Masters C.L., Small D.H.;
+RT   "Expression and analysis of heparin-binding regions of the amyloid
+RT   precursor protein of Alzheimer's disease.";
+RL   FEBS Lett. 415:303-307(1997).
+RN   [51]
+RP   INTERACTION OF AMYLOID-BETA PEPTIDE WITH HADH2.
+RC   TISSUE=Brain;
+RX   PubMed=9338779; DOI=10.1038/39522;
+RA   Yan S.D., Fu J., Soto C., Chen X., Zhu H., Al-Mohanna F.,
+RA   Collinson K., Zhu A., Stern E., Saido T., Tohyama M., Ogawa S.,
+RA   Roher A., Stern D.;
+RT   "An intracellular protein that binds amyloid-beta peptide and mediates
+RT   neurotoxicity in Alzheimer's disease.";
+RL   Nature 389:689-695(1997).
+RN   [52]
+RP   COPPER-BINDING, AND DISULFIDE BOND FORMATION.
+RX   PubMed=9585534; DOI=10.1021/bi980022m;
+RA   Multhaup G., Ruppert T., Schlicksupp A., Hesse L., Bill E.,
+RA   Pipkorn R., Masters C.L., Beyreuther K.;
+RT   "Copper-binding amyloid precursor protein undergoes a site-specific
+RT   fragmentation in the reduction of hydrogen peroxide.";
+RL   Biochemistry 37:7224-7230(1998).
+RN   [53]
+RP   INTERACTION WITH APPBP2, MUTAGENESIS OF TYR-728, AND DOMAIN.
+RX   PubMed=9843960; DOI=10.1073/pnas.95.25.14745;
+RA   Zheng P., Eastman J., Vande Pol S., Pimplikar S.W.;
+RT   "PAT1, a microtubule-interacting protein, recognizes the basolateral
+RT   sorting signal of amyloid precursor protein.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 95:14745-14750(1998).
+RN   [54]
+RP   AMYLOID-BETA ZINC-BINDING, AND MUTAGENESIS OF ARG-676; TYR-681 AND
+RP   HIS-684.
+RX   PubMed=10413512; DOI=10.1021/bi990205o;
+RA   Liu S.T., Howlett G., Barrow C.J.;
+RT   "Histidine-13 is a crucial residue in the zinc ion-induced aggregation
+RT   of the A beta peptide of Alzheimer's disease.";
+RL   Biochemistry 38:9373-9378(1999).
+RN   [55]
+RP   PROTEOLYTIC CLEAVAGE AT ASP-197; ASP-219 AND ASP-739 BY CASPASES, AND
+RP   MUTAGENESIS OF ASP-739.
+RX   PubMed=10319819; DOI=10.1016/S0092-8674(00)80748-5;
+RA   Gervais F.G., Xu D., Robertson G.S., Vaillancourt J.P., Zhu Y.,
+RA   Huang J., LeBlanc A., Smith D., Rigby M., Shearman M.S., Clarke E.E.,
+RA   Zheng H., van der Ploeg L.H.T., Ruffolo S.C., Thornberry N.A.,
+RA   Xanthoudakis S., Zamboni R.J., Roy S., Nicholson D.W.;
+RT   "Involvement of caspases in proteolytic cleavage of Alzheimer's
+RT   amyloid-beta precursor protein and amyloidogenic A beta peptide
+RT   formation.";
+RL   Cell 97:395-406(1999).
+RN   [56]
+RP   IMPORTANCE OF MET-706 IN FREE RADICAL OXIDATIVE STRESS, AND
+RP   MUTAGENESIS OF MET-706.
+RX   PubMed=10535332; DOI=10.1016/S0361-9230(99)00093-3;
+RA   Varadarajan S., Yatin S., Kanski J., Jahanshahi F., Butterfield D.A.;
+RT   "Methionine residue 35 is important in amyloid beta-peptide-associated
+RT   free radical oxidative stress.";
+RL   Brain Res. Bull. 50:133-141(1999).
+RN   [57]
+RP   SUBCELLULAR LOCATION, PHOSPHORYLATION, AND MUTAGENESIS OF THR-743.
+RX   PubMed=10341243;
+RA   Ando K., Oishi M., Takeda S., Iijima K., Isohara T., Nairn A.C.,
+RA   Kirino Y., Greengard P., Suzuki T.;
+RT   "Role of phosphorylation of Alzheimer's amyloid precursor protein
+RT   during neuronal differentiation.";
+RL   J. Neurosci. 19:4421-4427(1999).
+RN   [58]
+RP   INTERACTION WITH APBA2.
+RX   PubMed=9890987; DOI=10.1074/jbc.274.4.2243;
+RA   Tomita S., Ozaki T., Taru H., Oguchi S., Takeda S., Yagi Y.,
+RA   Sakiyama S., Kirino Y., Suzuki T.;
+RT   "Interaction of a neuron-specific protein containing PDZ domains with
+RT   Alzheimer's amyloid precursor protein.";
+RL   J. Biol. Chem. 274:2243-2254(1999).
+RN   [59]
+RP   SUBCELLULAR LOCATION, ENDOCYTOSIS SIGNAL, AND MUTAGENESIS OF TYR-728;
+RP   GLY-756; TYR-757; ASN-759; PRO-760 AND TYR-762.
+RX   PubMed=10383380; DOI=10.1074/jbc.274.27.18851;
+RA   Perez R.G., Soriano S., Hayes J.D., Ostaszewski B., Xia W.,
+RA   Selkoe D.J., Chen X., Stokin G.B., Koo E.H.;
+RT   "Mutagenesis identifies new signals for beta-amyloid precursor protein
+RT   endocytosis, turnover, and the generation of secreted fragments,
+RT   including Abeta42.";
+RL   J. Biol. Chem. 274:18851-18856(1999).
+RN   [60]
+RP   IMPORTANCE OF CYS-144 IN COPPER REDUCTION, AND MUTAGENESIS OF CYS-144
+RP   AND 147-HIS--HIS-149.
+RX   PubMed=10461923; DOI=10.1046/j.1471-4159.1999.0731288.x;
+RA   Ruiz F.H., Gonzalez M., Bodini M., Opazo C., Inestrosa N.C.;
+RT   "Cysteine 144 is a key residue in the copper reduction by the beta-
+RT   amyloid precursor protein.";
+RL   J. Neurochem. 73:1288-1292(1999).
+RN   [61]
+RP   CLEAVAGE BY BACE1, SUBCELLULAR LOCATION (SOLUBLE APP-BETA), AND
+RP   CHARACTERIZATION OF VARIANT AD1 670-ASN-LEU-671.
+RX   PubMed=10656250; DOI=10.1006/mcne.1999.0811;
+RA   Hussain I., Powell D.J., Howlett D.R., Tew D.G., Meek T.D.,
+RA   Chapman C., Gloger I.S., Murphy K.E., Southan C.D., Ryan D.M.,
+RA   Smith T.S., Simmons D.L., Walsh F.S., Dingwall C., Christie G.;
+RT   "Identification of a novel aspartic proteinase (Asp 2) as beta-
+RT   secretase.";
+RL   Mol. Cell. Neurosci. 14:419-427(1999).
+RN   [62]
+RP   INTERACTION OF AMYLOID-BETA WITH APOE.
+RX   PubMed=10816430; DOI=10.1042/bj3480359;
+RA   Tokuda T., Calero M., Matsubara E., Vidal R., Kumar A., Permanne B.,
+RA   Zlokovic B., Smith J.D., Ladu M.J., Rostagno A., Frangione B.,
+RA   Ghiso J.;
+RT   "Lipidation of apolipoprotein E influences its isoform-specific
+RT   interaction with Alzheimer's amyloid beta peptides.";
+RL   Biochem. J. 348:359-365(2000).
+RN   [63]
+RP   INTERACTION OF APP42-BETA WITH CHRNA7.
+RX   PubMed=10681545; DOI=10.1074/jbc.275.8.5626;
+RA   Wang H.-Y., Lee D.H.S., D'Andrea M.R., Peterson P.A., Shank R.P.,
+RA   Reitz A.B.;
+RT   "Beta-amyloid(1-42) binds to alpha7 nicotinic acetylcholine receptor
+RT   with high affinity. Implications for Alzheimer's disease pathology.";
+RL   J. Biol. Chem. 275:5626-5632(2000).
+RN   [64]
+RP   IDENTIFICATION OF GAMMA-CTFS BY MASS SPECTROMETRY, MUTAGENESIS OF
+RP   ASP-739, AND PROTEOLYTIC CLEAVAGE.
+RX   PubMed=12214090;
+RA   Passer B., Pellegrini L., Russo C., Siegel R.M., Lenardo M.J.,
+RA   Schettini G., Bachmann M., Tabaton M., D'Adamio L.;
+RT   "Generation of an apoptotic intracellular peptide by gamma-secretase
+RT   cleavage of Alzheimer's amyloid beta protein precursor.";
+RL   J. Alzheimers Dis. 2:289-301(2000).
+RN   [65]
+RP   REVIEW ON FUNCTION OF AMYLOID-BETA AS ANTIOXIDANT.
+RX   PubMed=11775062; DOI=10.1023/A:1012629603390;
+RA   Kontush A.;
+RT   "Alzheimer's amyloid-beta as a preventive antioxidant for brain
+RT   lipoproteins.";
+RL   Cell. Mol. Neurobiol. 21:299-315(2001).
+RN   [66]
+RP   INTERACTION WITH FPR2 (AMYLOID-BETA PROTEIN 42), AND SUBCELLULAR
+RP   LOCATION (AMYLOID-BETA PROTEIN 42).
+RX   PubMed=11689470; DOI=10.1096/fj.01-0251com;
+RA   Yazawa H., Yu Z.-X., Takeda K., Le Y., Gong W., Ferrans V.J.,
+RA   Oppenheim J.J., Li C.C.H., Wang J.M.;
+RT   "Beta amyloid peptide (Abeta42) is internalized via the G-protein-
+RT   coupled receptor FPRL1 and forms fibrillar aggregates in
+RT   macrophages.";
+RL   FASEB J. 15:2454-2462(2001).
+RN   [67]
+RP   INTERACTION WITH BBP.
+RX   PubMed=11278849; DOI=10.1074/jbc.M011161200;
+RA   Kajkowski E.M., Lo C.F., Ning X., Walker S., Sofia H.J., Wang W.,
+RA   Edris W., Chanda P., Wagner E., Vile S., Ryan K., McHendry-Rinde B.,
+RA   Smith S.C., Wood A., Rhodes K.J., Kennedy J.D., Bard J.,
+RA   Jacobsen J.S., Ozenberger B.A.;
+RT   "Beta-amyloid peptide-induced apoptosis regulated by a novel protein
+RT   containing a G protein activation module.";
+RL   J. Biol. Chem. 276:18748-18756(2001).
+RN   [68]
+RP   AMYLOID-BETA COPPER AND ZINC-BINDING SITES.
+RX   PubMed=11274207; DOI=10.1074/jbc.M100175200;
+RA   Curtain C.C., Ali F., Volitakis I., Cherny R.A., Norton R.S.,
+RA   Beyreuther K., Barrow C.J., Masters C.L., Bush A.I., Barnham K.J.;
+RT   "Alzheimer's disease amyloid-beta binds copper and zinc to generate an
+RT   allosterically ordered structure containing superoxide dismutase-like
+RT   subunits.";
+RL   J. Biol. Chem. 276:20466-20473(2001).
+RN   [69]
+RP   SUBUNIT.
+RX   PubMed=11438549; DOI=10.1074/jbc.M105410200;
+RA   Scheuermann S., Hambsch B., Hesse L., Stumm J., Schmidt C., Beher D.,
+RA   Bayer T.A., Beyreuther K., Multhaup G.;
+RT   "Homodimerization of amyloid precursor protein and its implication in
+RT   the amyloidogenic pathway of Alzheimer's disease.";
+RL   J. Biol. Chem. 276:33923-33929(2001).
+RN   [70]
+RP   INTERACTION WITH APBB1, FUNCTION, AND SUBCELLULAR LOCATION
+RP   (GAMMA-SECRETASE C-TERMINAL FRAGMENT 59).
+RX   PubMed=11544248; DOI=10.1074/jbc.C100447200;
+RA   Kimberly W.T., Zheng J.B., Guenette S.Y., Selkoe D.J.;
+RT   "The intracellular domain of the beta-amyloid precursor protein is
+RT   stabilized by Fe65 and translocates to the nucleus in a notch-like
+RT   manner.";
+RL   J. Biol. Chem. 276:40288-40292(2001).
+RN   [71]
+RP   INTERACTION WITH FBLN1.
+RX   PubMed=11238726; DOI=10.1046/j.1471-4159.2001.00144.x;
+RA   Ohsawa I., Takamura C., Kohsaka S.;
+RT   "Fibulin-1 binds the amino-terminal head of beta-amyloid precursor
+RT   protein and modulates its physiological function.";
+RL   J. Neurochem. 76:1411-1420(2001).
+RN   [72]
+RP   INTERACTION WITH MAPT, AND FUNCTION.
+RX   PubMed=11943163; DOI=10.1016/S0014-5793(02)02376-1;
+RA   Rank K.B., Pauley A.M., Bhattacharya K., Wang Z., Evans D.B.,
+RA   Fleck T.J., Johnston J.A., Sharma S.K.;
+RT   "Direct interaction of soluble human recombinant tau protein with
+RT   Abeta 1-42 results in tau aggregation and hyperphosphorylation by tau
+RT   protein kinase II.";
+RL   FEBS Lett. 514:263-268(2002).
+RN   [73]
+RP   INTERACTION WITH MAPK8IP1, AND MUTAGENESIS OF TYR-757.
+RX   PubMed=11724784; DOI=10.1074/jbc.M108357200;
+RA   Scheinfeld M.H., Roncarati R., Vito P., Lopez P.A., Abdallah M.,
+RA   D'Adamio L.;
+RT   "Jun NH2-terminal kinase (JNK) interacting protein 1 (JIP1) binds the
+RT   cytoplasmic domain of the Alzheimer's beta-amyloid precursor protein
+RT   (APP).";
+RL   J. Biol. Chem. 277:3767-3775(2002).
+RN   [74]
+RP   COPPER-MEDIATED LIPID PEROXIDATION, AND MUTAGENESIS OF HIS-147 AND
+RP   HIS-151.
+RX   PubMed=11784781;
+RA   White A.R., Multhaup G., Galatis D., McKinstry W.J., Parker M.W.,
+RA   Pipkorn R., Beyreuther K., Masters C.L., Cappai R.;
+RT   "Contrasting species-dependent modulation of copper-mediated
+RT   neurotoxicity by the Alzheimer's disease amyloid precursor protein.";
+RL   J. Neurosci. 22:365-376(2002).
+RN   [75]
+RP   REVIEW ON ZINC-BINDING.
+RX   PubMed=12032279; DOI=10.1073/pnas.122249699;
+RA   Bush A.I., Tanzi R.E.;
+RT   "The galvanization of beta-amyloid in Alzheimer's disease.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 99:7317-7319(2002).
+RN   [76]
+RP   PHOSPHORYLATION AT SER-198 AND SER-206 BY CASEIN KINASES, AND
+RP   MUTAGENESIS OF SER-198 AND SER-206.
+RX   PubMed=8999878; DOI=10.1074/jbc.272.3.1896;
+RA   Walter J., Capell A., Hung A.Y., Langen H., Schnoelzer M.,
+RA   Thinakaran G., Sisodia S.S., Selkoe D.J., Haass C.;
+RT   "Ectodomain phosphorylation of beta-amyloid precursor protein at two
+RT   distinct cellular locations.";
+RL   J. Biol. Chem. 272:1896-1903(1997).
+RN   [77]
+RP   CHARACTERIZATION OF CASEIN KINASE PHOSPHORYLATION, AND MUTAGENESIS OF
+RP   SER-198 AND SER-206.
+RX   PubMed=10806211; DOI=10.1074/jbc.M002850200;
+RA   Walter J., Schindzielorz A., Hartung B., Haass C.;
+RT   "Phosphorylation of the beta-amyloid precursor protein at the cell
+RT   surface by ectocasein kinases 1 and 2.";
+RL   J. Biol. Chem. 275:23523-23529(2000).
+RN   [78]
+RP   PROTEOLYTIC CLEAVAGE BY CASPASES, AND MUTAGENESIS OF ASP-739.
+RX   PubMed=10742146; DOI=10.1038/74656;
+RA   Lu D.C., Rabizadeh S., Chandra S., Shayya R.F., Ellerby L.M., Ye X.,
+RA   Salvesen G.S., Koo E.H., Bredesen D.E.;
+RT   "A second cytotoxic proteolytic peptide derived from amyloid beta-
+RT   protein precursor.";
+RL   Nat. Med. 6:397-404(2000).
+RN   [79]
+RP   PHOSPHORYLATION, INTERACTION WITH APBB1, AND MUTAGENESIS OF THR-743.
+RX   PubMed=11517218; DOI=10.1074/jbc.M104059200;
+RA   Ando K., Iijima K., Elliott J.I., Kirino Y., Suzuki T.;
+RT   "Phosphorylation-dependent regulation of the interaction of amyloid
+RT   precursor protein with Fe65 affects the production of beta-amyloid.";
+RL   J. Biol. Chem. 276:40353-40361(2001).
+RN   [80]
+RP   PHOSPHORYLATION BY MAPK10, AND MUTAGENESIS OF THR-743.
+RX   PubMed=11146006; DOI=10.1046/j.1471-4159.2001.00102.x;
+RA   Standen C.L., Brownlees J., Grierson A.J., Kesavapany S., Lau K.-F.,
+RA   McLoughlin D.M., Miller C.C.J.;
+RT   "Phosphorylation of thr(668) in the cytoplasmic domain of the
+RT   Alzheimer's disease amyloid precursor protein by stress-activated
+RT   protein kinase 1b (Jun N-terminal kinase-3).";
+RL   J. Neurochem. 76:316-320(2001).
+RN   [81]
+RP   PROTEOLYTIC CLEAVAGE AT MET-671; LYS-687; VAL-711; ALA-713 AND
+RP   LEU-720.
+RX   PubMed=11851430; DOI=10.1021/bi015794o;
+RA   Weidemann A., Eggert S., Reinhard F.B.M., Vogel M., Paliga K.,
+RA   Baier G., Masters C.L., Beyreuther K., Evin G.;
+RT   "A novel epsilon-cleavage within the transmembrane domain of the
+RT   Alzheimer amyloid precursor protein demonstrates homology with Notch
+RT   processing.";
+RL   Biochemistry 41:2825-2835(2002).
+RN   [82]
+RP   PHOSPHORYLATION AT TYR-757, INTERACTION WITH SHC1, AND MUTAGENESIS OF
+RP   THR-743 AND TYR-757.
+RX   PubMed=11877420; DOI=10.1074/jbc.M110286200;
+RA   Tarr P.E., Roncarati R., Pelicci G., Pelicci P.G., D'Adamio L.;
+RT   "Tyrosine phosphorylation of the beta-amyloid precursor protein
+RT   cytoplasmic tail promotes interaction with Shc.";
+RL   J. Biol. Chem. 277:16798-16804(2002).
+RN   [83]
+RP   REVIEW.
+RX   PubMed=12142279; DOI=10.1146/annurev.cellbio.18.020402.142302;
+RA   Annaert W., De Strooper B.;
+RT   "A cell biological perspective on Alzheimer's disease.";
+RL   Annu. Rev. Cell Dev. Biol. 18:25-51(2002).
+RN   [84]
+RP   SUBCELLULAR LOCATION, AND ASSOCIATION OF AMYLOID FIBRILS WITH GCP1.
+RX   PubMed=15084524; DOI=10.1096/fj.03-1040fje;
+RA   Watanabe N., Araki W., Chui D.H., Makifuchi T., Ihara Y., Tabira T.;
+RT   "Glypican-1 as an Abeta binding HSPG in the human brain: its
+RT   localization in DIG domains and possible roles in the pathogenesis of
+RT   Alzheimer's disease.";
+RL   FASEB J. 18:1013-1015(2004).
+RN   [85]
+RP   INTERACTION WITH ANKS1B.
+RX   PubMed=15347684; DOI=10.1074/jbc.M405329200;
+RA   Ghersi E., Noviello C., D'Adamio L.;
+RT   "Amyloid-beta protein precursor (AbetaPP) intracellular domain-
+RT   associated protein-1 proteins bind to AbetaPP and modulate its
+RT   processing in an isoform-specific manner.";
+RL   J. Biol. Chem. 279:49105-49112(2004).
+RN   [86]
+RP   GLYCOSYLATION [LARGE SCALE ANALYSIS] AT ASN-542.
+RC   TISSUE=Plasma;
+RX   PubMed=16335952; DOI=10.1021/pr0502065;
+RA   Liu T., Qian W.-J., Gritsenko M.A., Camp D.G. II, Monroe M.E.,
+RA   Moore R.J., Smith R.D.;
+RT   "Human plasma N-glycoproteome analysis by immunoaffinity subtraction,
+RT   hydrazide chemistry, and mass spectrometry.";
+RL   J. Proteome Res. 4:2070-2080(2005).
+RN   [87]
+RP   INTERACTION WITH SORL1, AND SUBCELLULAR LOCATION.
+RX   PubMed=16174740; DOI=10.1073/pnas.0503689102;
+RA   Andersen O.M., Reiche J., Schmidt V., Gotthardt M., Spoelgen R.,
+RA   Behlke J., von Arnim C.A., Breiderhoff T., Jansen P., Wu X.,
+RA   Bales K.R., Cappai R., Masters C.L., Gliemann J., Mufson E.J.,
+RA   Hyman B.T., Paul S.M., Nykjaer A., Willnow T.E.;
+RT   "Neuronal sorting protein-related receptor sorLA/LR11 regulates
+RT   processing of the amyloid precursor protein.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 102:13461-13466(2005).
+RN   [88]
+RP   INTERACTION WITH APBB1.
+RX   PubMed=18468999; DOI=10.1074/jbc.M801827200;
+RA   Nakaya T., Kawai T., Suzuki T.;
+RT   "Regulation of FE65 nuclear translocation and function by amyloid
+RT   beta-protein precursor in osmotically stressed cells.";
+RL   J. Biol. Chem. 283:19119-19131(2008).
+RN   [89]
+RP   INTERACTION WITH ITM2C.
+RX   PubMed=19366692; DOI=10.1074/jbc.M109.006403;
+RA   Matsuda S., Matsuda Y., D'Adamio L.;
+RT   "BRI3 inhibits amyloid precursor protein processing in a
+RT   mechanistically distinct manner from its homologue dementia gene
+RT   BRI2.";
+RL   J. Biol. Chem. 284:15815-15825(2009).
+RN   [90]
+RP   FUNCTION, PROTEOLYTIC CLEAVAGE, AND INTERACTION WITH TNFRSF21.
+RX   PubMed=19225519; DOI=10.1038/nature07767;
+RA   Nikolaev A., McLaughlin T., O'Leary D.D.M., Tessier-Lavigne M.;
+RT   "APP binds DR6 to trigger axon pruning and neuron death via distinct
+RT   caspases.";
+RL   Nature 457:981-989(2009).
+RN   [91]
+RP   FUNCTION, AND INTERACTION WITH AGER.
+RX   PubMed=19901339; DOI=10.1073/pnas.0905686106;
+RA   Takuma K., Fang F., Zhang W., Yan S., Fukuzaki E., Du H., Sosunov A.,
+RA   McKhann G., Funatsu Y., Nakamichi N., Nagai T., Mizoguchi H., Ibi D.,
+RA   Hori O., Ogawa S., Stern D.M., Yamada K., Yan S.S.;
+RT   "RAGE-mediated signaling contributes to intraneuronal transport of
+RT   amyloid-{beta} and neuronal dysfunction.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 106:20021-20026(2009).
+RN   [92]
+RP   SUBCELLULAR LOCATION.
+RX   PubMed=20580937; DOI=10.1016/j.bbalip.2010.05.010;
+RA   Cossec J.C., Simon A., Marquer C., Moldrich R.X., Leterrier C.,
+RA   Rossier J., Duyckaerts C., Lenkei Z., Potier M.C.;
+RT   "Clathrin-dependent APP endocytosis and Abeta secretion are highly
+RT   sensitive to the level of plasma membrane cholesterol.";
+RL   Biochim. Biophys. Acta 1801:846-852(2010).
+RN   [93]
+RP   INTERACTION WITH GSAP.
+RX   PubMed=20811458; DOI=10.1038/nature09325;
+RA   He G., Luo W., Li P., Remmers C., Netzer W.J., Hendrick J.,
+RA   Bettayeb K., Flajolet M., Gorelick F., Wennogle L.P., Greengard P.;
+RT   "Gamma-secretase activating protein is a therapeutic target for
+RT   Alzheimer's disease.";
+RL   Nature 467:95-98(2010).
+RN   [94]
+RP   IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RX   PubMed=21269460; DOI=10.1186/1752-0509-5-17;
+RA   Burkard T.R., Planyavsky M., Kaupe I., Breitwieser F.P.,
+RA   Buerckstuemmer T., Bennett K.L., Superti-Furga G., Colinge J.;
+RT   "Initial characterization of the human central proteome.";
+RL   BMC Syst. Biol. 5:17-17(2011).
+RN   [95]
+RP   GLYCOSYLATION AT THR-633; THR-651; THR-652; SER-656; THR-663 AND
+RP   SER-667 PROTEOLYTIC PROCESSING, STRUCTURE OF CARBOHYDRATES, AND
+RP   IDENTIFICATION BY MASS SPECTROMETRY.
+RX   PubMed=21712440; DOI=10.1073/pnas.1102664108;
+RA   Halim A., Brinkmalm G., Ruetschi U., Westman-Brinkmalm A.,
+RA   Portelius E., Zetterberg H., Blennow K., Larson G., Nilsson J.;
+RT   "Site-specific characterization of threonine, serine, and tyrosine
+RT   glycosylations of amyloid precursor protein/amyloid beta-peptides in
+RT   human cerebrospinal fluid.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 108:11848-11853(2011).
+RN   [96]
+RP   INTERACTION WITH S100A9.
+RX   PubMed=22457725; DOI=10.1371/journal.pone.0032953;
+RA   Zhang C., Liu Y., Gilthorpe J., van der Maarel J.R.;
+RT   "MRP14 (S100A9) protein interacts with Alzheimer beta-amyloid peptide
+RT   and induces its fibrillization.";
+RL   PLoS ONE 7:E32953-E32953(2012).
+RN   [97]
+RP   PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT THR-743, AND IDENTIFICATION
+RP   BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS].
+RC   TISSUE=Liver;
+RX   PubMed=24275569; DOI=10.1016/j.jprot.2013.11.014;
+RA   Bian Y., Song C., Cheng K., Dong M., Wang F., Huang J., Sun D.,
+RA   Wang L., Ye M., Zou H.;
+RT   "An enzyme assisted RP-RPLC approach for in-depth analysis of human
+RT   liver phosphoproteome.";
+RL   J. Proteomics 96:253-262(2014).
+RN   [98]
+RP   INTERACTION WITH PLD3.
+RX   PubMed=24336208; DOI=10.1038/nature12825;
+RG   UK Brain Expression Consortium;
+RA   Cruchaga C., Karch C.M., Jin S.C., Benitez B.A., Cai Y., Guerreiro R.,
+RA   Harari O., Norton J., Budde J., Bertelsen S., Jeng A.T., Cooper B.,
+RA   Skorupa T., Carrell D., Levitch D., Hsu S., Choi J., Ryten M.,
+RA   Hardy J., Ryten M., Trabzuni D., Weale M.E., Ramasamy A., Smith C.,
+RA   Sassi C., Bras J., Gibbs J.R., Hernandez D.G., Lupton M.K., Powell J.,
+RA   Forabosco P., Ridge P.G., Corcoran C.D., Tschanz J.T., Norton M.C.,
+RA   Munger R.G., Schmutz C., Leary M., Demirci F.Y., Bamne M.N., Wang X.,
+RA   Lopez O.L., Ganguli M., Medway C., Turton J., Lord J., Braae A.,
+RA   Barber I., Brown K., Passmore P., Craig D., Johnston J.,
+RA   McGuinness B., Todd S., Heun R., Kolsch H., Kehoe P.G., Hooper N.M.,
+RA   Vardy E.R., Mann D.M., Pickering-Brown S., Brown K., Kalsheker N.,
+RA   Lowe J., Morgan K., David Smith A., Wilcock G., Warden D., Holmes C.,
+RA   Pastor P., Lorenzo-Betancor O., Brkanac Z., Scott E., Topol E.,
+RA   Morgan K., Rogaeva E., Singleton A.B., Hardy J., Kamboh M.I.,
+RA   St George-Hyslop P., Cairns N., Morris J.C., Kauwe J.S., Goate A.M.;
+RT   "Rare coding variants in the phospholipase D3 gene confer risk for
+RT   Alzheimer's disease.";
+RL   Nature 505:550-554(2014).
+RN   [99]
+RP   INTERACTION WITH VDAC1.
+RX   PubMed=25168729; DOI=10.1016/j.neuroscience.2014.07.079;
+RA   Fernandez-Echevarria C., Diaz M., Ferrer I., Canerina-Amaro A.,
+RA   Marin R.;
+RT   "Abeta promotes VDAC1 channel dephosphorylation in neuronal lipid
+RT   rafts. Relevance to the mechanisms of neurotoxicity in Alzheimer's
+RT   disease.";
+RL   Neuroscience 278:354-366(2014).
+RN   [100]
+RP   PHOSPHORYLATION AT SER-441 AND TYR-497.
+RX   PubMed=26091039; DOI=10.1016/j.cell.2015.05.028;
+RA   Tagliabracci V.S., Wiley S.E., Guo X., Kinch L.N., Durrant E., Wen J.,
+RA   Xiao J., Cui J., Nguyen K.B., Engel J.L., Coon J.J., Grishin N.,
+RA   Pinna L.A., Pagliarini D.J., Dixon J.E.;
+RT   "A single kinase generates the majority of the secreted
+RT   phosphoproteome.";
+RL   Cell 161:1619-1632(2015).
+RN   [101]
+RP   X-RAY CRYSTALLOGRAPHY (1.5 ANGSTROMS) OF 287-344.
+RX   PubMed=2125487; DOI=10.1021/bi00495a002;
+RA   Hynes T.R., Randal M., Kennedy L.A., Eigenbrot C., Kossiakof A.A.;
+RT   "X-ray crystal structure of the protease inhibitor domain of
+RT   Alzheimer's amyloid beta-protein precursor.";
+RL   Biochemistry 29:10018-10022(1990).
+RN   [102]
+RP   STRUCTURE BY NMR OF 289-344.
+RX   PubMed=1718421; DOI=10.1021/bi00107a015;
+RA   Heald S.L., Tilton R.F. Jr., Hammond L.S., Lee A., Bayney R.M.,
+RA   Kamarck M.E., Ramabhadran T.V., Dreyer R.N., Davis G., Unterbeck A.,
+RA   Tamburini P.P.;
+RT   "Sequential NMR resonance assignment and structure determination of
+RT   the Kunitz-type inhibitor domain of the Alzheimer's beta-amyloid
+RT   precursor protein.";
+RL   Biochemistry 30:10467-10478(1991).
+RN   [103]
+RP   STRUCTURE BY NMR OF 672-699.
+RX   PubMed=7516706; DOI=10.1021/bi00191a006;
+RA   Talafous J., Marcinowski K.J., Klopman G., Zagorski M.G.;
+RT   "Solution structure of residues 1-28 of the amyloid beta-peptide.";
+RL   Biochemistry 33:7788-7796(1994).
+RN   [104]
+RP   STRUCTURE BY NMR OF 672-711.
+RX   PubMed=7588758; DOI=10.1111/j.1432-1033.1995.293_1.x;
+RA   Sticht H., Bayer P., Willbold D., Dames S., Hilbich C., Beyreuther K.,
+RA   Frank R.W., Rosch P.;
+RT   "Structure of amyloid A4-(1-40)-peptide of Alzheimer's disease.";
+RL   Eur. J. Biochem. 233:293-298(1995).
+RN   [105]
+RP   STRUCTURE BY NMR OF 696-706.
+RX   PubMed=8973180; DOI=10.1021/bi961598j;
+RA   Kohno T., Kobayashi K., Maeda T., Sato K., Takashima A.;
+RT   "Three-dimensional structures of the amyloid beta peptide (25-35) in
+RT   membrane-mimicking environment.";
+RL   Biochemistry 35:16094-16104(1996).
+RN   [106]
+RP   X-RAY CRYSTALLOGRAPHY (1.8 ANGSTROMS) OF KUNITZ DOMAIN IN COMPLEX WITH
+RP   CHYMOTRYPSIN; TRYPSIN AND BASIC PANCREATIC TRYPSIN INHIBITOR.
+RX   PubMed=9300481; DOI=10.1002/pro.5560060902;
+RA   Scheidig A.J., Hynes T.R., Pelletier L.A., Wells J.A.,
+RA   Kossiakoff A.A.;
+RT   "Crystal structures of bovine chymotrypsin and trypsin complexed to
+RT   the inhibitor domain of Alzheimer's amyloid beta-protein precursor
+RT   (APPI) and basic pancreatic trypsin inhibitor (BPTI): engineering of
+RT   inhibitors with altered specificities.";
+RL   Protein Sci. 6:1806-1824(1997).
+RN   [107]
+RP   STRUCTURE BY NMR OF 672-711.
+RX   PubMed=9693002; DOI=10.1021/bi972979f;
+RA   Coles M., Bicknell W., Watson A.A., Fairlie D.P., Craik D.J.;
+RT   "Solution structure of amyloid beta-peptide(1-40) in a water-micelle
+RT   environment. Is the membrane-spanning domain where we think it is?";
+RL   Biochemistry 37:11064-11077(1998).
+RN   [108]
+RP   X-RAY CRYSTALLOGRAPHY (1.8 ANGSTROMS) OF 28-123.
+RX   PubMed=10201399; DOI=10.1038/7562;
+RA   Rossjohn J., Cappai R., Feil S.C., Henry A., McKinstry W.J.,
+RA   Galatis D., Hesse L., Multhaup G., Beyreuther K., Masters C.L.,
+RA   Parker M.W.;
+RT   "Crystal structure of the N-terminal, growth factor-like domain of
+RT   Alzheimer amyloid precursor protein.";
+RL   Nat. Struct. Biol. 6:327-331(1999).
+RN   [109]
+RP   STRUCTURE OF CAA-APP VARIANTS.
+RX   PubMed=10821838; DOI=10.1074/jbc.M003154200;
+RA   Miravalle L., Tokuda T., Chiarle R., Giaccone G., Bugiani O.,
+RA   Tagliavini F., Frangione B., Ghiso J.;
+RT   "Substitutions at codon 22 of Alzheimer's Abeta peptide induce diverse
+RT   conformational changes and apoptotic effects in human cerebral
+RT   endothelial cells.";
+RL   J. Biol. Chem. 275:27110-27116(2000).
+RN   [110]
+RP   STRUCTURE BY NMR OF 681-706.
+RX   PubMed=10940221; DOI=10.1006/jsbi.2000.4288;
+RA   Zhang S., Iwata K., Lachenmann M.J., Peng J.W., Li S., Stimson E.R.,
+RA   Lu Y., Felix A.M., Maggio J.E., Lee J.P.;
+RT   "The Alzheimer's peptide a beta adopts a collapsed coil structure in
+RT   water.";
+RL   J. Struct. Biol. 130:130-141(2000).
+RN   [111]
+RP   STRUCTURE BY NMR OF 672-699.
+RX   PubMed=10940222; DOI=10.1006/jsbi.2000.4267;
+RA   Poulsen S.-A., Watson A.A., Craik D.J.;
+RT   "Solution structures in aqueous SDS micelles of two amyloid beta
+RT   peptides of Abeta(1-28) mutated at the alpha-secretase cleavage
+RT   site.";
+RL   J. Struct. Biol. 130:142-152(2000).
+RN   [112] {ECO:0000244|PDB:1OWT}
+RP   STRUCTURE BY NMR OF 124-189, DISULFIDE BONDS, AND COPPER-BINDING
+RP   SITES.
+RX   PubMed=12611883; DOI=10.1074/jbc.M300629200;
+RA   Barnham K.J., McKinstry W.J., Multhaup G., Galatis D., Morton C.J.,
+RA   Curtain C.C., Williamson N.A., White A.R., Hinds M.G., Norton R.S.,
+RA   Beyreuther K., Masters C.L., Parker M.W., Cappai R.;
+RT   "Structure of the Alzheimer's disease amyloid precursor protein copper
+RT   binding domain. A regulator of neuronal copper homeostasis.";
+RL   J. Biol. Chem. 278:17401-17407(2003).
+RN   [113]
+RP   X-RAY CRYSTALLOGRAPHY (2.8 ANGSTROMS) OF 346-551, PARTIAL PROTEIN
+RP   SEQUENCE, MUTAGENESIS OF ARG-499 AND LYS-503, AND IDENTIFICATION BY
+RP   MASS SPECTROMETRY.
+RX   PubMed=15304215; DOI=10.1016/j.molcel.2004.06.037;
+RA   Wang Y., Ha Y.;
+RT   "The X-ray structure of an antiparallel dimer of the human amyloid
+RT   precursor protein E2 domain.";
+RL   Mol. Cell 15:343-353(2004).
+RN   [114]
+RP   X-RAY CRYSTALLOGRAPHY (2.1 ANGSTROMS) OF 672-711 IN COMPLEX WITH IDE.
+RX   PubMed=17051221; DOI=10.1038/nature05143;
+RA   Shen Y., Joachimiak A., Rosner M.R., Tang W.-J.;
+RT   "Structures of human insulin-degrading enzyme reveal a new substrate
+RT   recognition mechanism.";
+RL   Nature 443:870-874(2006).
+RN   [115]
+RP   X-RAY CRYSTALLOGRAPHY (0.85 ANGSTROMS) OF 133-189, AND DISULFIDE
+RP   BONDS.
+RX   PubMed=17909280; DOI=10.1107/S1744309107041139;
+RA   Kong G.K., Adams J.J., Cappai R., Parker M.W.;
+RT   "Structure of Alzheimer's disease amyloid precursor protein copper-
+RT   binding domain at atomic resolution.";
+RL   Acta Crystallogr. F 63:819-824(2007).
+RN   [116] {ECO:0000244|PDB:2FJZ, ECO:0000244|PDB:2FK1, ECO:0000244|PDB:2FK2, ECO:0000244|PDB:2FK3, ECO:0000244|PDB:2FKL}
+RP   X-RAY CRYSTALLOGRAPHY (1.6 ANGSTROMS) OF 133-189 IN COMPLEXES WITH
+RP   COPPER IONS, AND DISULFIDE BONDS.
+RX   PubMed=17239395; DOI=10.1016/j.jmb.2006.12.041;
+RA   Kong G.K., Adams J.J., Harris H.H., Boas J.F., Curtain C.C.,
+RA   Galatis D., Masters C.L., Barnham K.J., McKinstry W.J., Cappai R.,
+RA   Parker M.W.;
+RT   "Structural studies of the Alzheimer's amyloid precursor protein
+RT   copper-binding domain reveal how it binds copper ions.";
+RL   J. Mol. Biol. 367:148-161(2007).
+RN   [117]
+RP   X-RAY CRYSTALLOGRAPHY (1.65 ANGSTROMS) OF 672-679 IN COMPLEX WITH IGG.
+RX   PubMed=17895381; DOI=10.1073/pnas.0705888104;
+RA   Gardberg A.S., Dice L.T., Ou S., Rich R.L., Helmbrecht E., Ko J.,
+RA   Wetzel R., Myszka D.G., Patterson P.H., Dealwis C.;
+RT   "Molecular basis for passive immunotherapy of Alzheimer's disease.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 104:15659-15664(2007).
+RN   [118]
+RP   X-RAY CRYSTALLOGRAPHY (2.15 ANGSTROMS) OF 672-678 IN COMPLEXES WITH
+RP   ANTIBODY FAB FRAGMENTS.
+RX   PubMed=19923222; DOI=10.1074/jbc.M109.045187;
+RA   Basi G.S., Feinberg H., Oshidari F., Anderson J., Barbour R.,
+RA   Baker J., Comery T.A., Diep L., Gill D., Johnson-Wood K., Goel A.,
+RA   Grantcharova K., Lee M., Li J., Partridge A., Griswold-Prenner I.,
+RA   Piot N., Walker D., Widom A., Pangalos M.N., Seubert P.,
+RA   Jacobsen J.S., Schenk D., Weis W.I.;
+RT   "Structural correlates of antibodies associated with acute reversal of
+RT   amyloid beta-related behavioral deficits in a mouse model of Alzheimer
+RT   disease.";
+RL   J. Biol. Chem. 285:3417-3427(2010).
+RN   [119]
+RP   X-RAY CRYSTALLOGRAPHY (2.7 ANGSTROMS) OF 18-190, PARTIAL PROTEIN
+RP   SEQUENCE, SUBUNIT, DISULFIDE BONDS, AND IDENTIFICATION BY MASS
+RP   SPECTROMETRY.
+RX   PubMed=20212142; DOI=10.1073/pnas.0911326107;
+RA   Dahms S.O., Hoefgen S., Roeser D., Schlott B., Guhrs K.H., Than M.E.;
+RT   "Structure and biochemical analysis of the heparin-induced E1 dimer of
+RT   the amyloid precursor protein.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 107:5381-5386(2010).
+RN   [120] {ECO:0000244|PDB:2LOH}
+RP   STRUCTURE BY NMR OF 686-726, AND SUBCELLULAR LOCATION.
+RX   PubMed=22584060; DOI=10.1016/j.febslet.2012.04.062;
+RA   Nadezhdin K.D., Bocharova O.V., Bocharov E.V., Arseniev A.S.;
+RT   "Dimeric structure of transmembrane domain of amyloid precursor
+RT   protein in micellar environment.";
+RL   FEBS Lett. 586:1687-1692(2012).
+RN   [121] {ECO:0000244|PDB:2LP1}
+RP   STRUCTURE BY NMR OF 671-770, AND SUBCELLULAR LOCATION.
+RX   PubMed=22654059; DOI=10.1126/science.1219988;
+RA   Barrett P.J., Song Y., Van Horn W.D., Hustedt E.J., Schafer J.M.,
+RA   Hadziselimovic A., Beel A.J., Sanders C.R.;
+RT   "The amyloid precursor protein has a flexible transmembrane domain and
+RT   binds cholesterol.";
+RL   Science 336:1168-1171(2012).
+RN   [122] {ECO:0000244|PDB:4JFN}
+RP   X-RAY CRYSTALLOGRAPHY (1.75 ANGSTROMS) OF 23-185 IN COMPLEX WITH
+RP   COPPER, FUNCTION, SUBUNIT, SUBCELLULAR LOCATION, DOMAIN, DISULFIDE
+RP   BONDS, AND MUTAGENESIS OF HIS-108; HIS-110; HIS-147 AND HIS-151.
+RX   PubMed=25122912; DOI=10.1523/JNEUROSCI.0180-14.2014;
+RA   Baumkotter F., Schmidt N., Vargas C., Schilling S., Weber R.,
+RA   Wagner K., Fiedler S., Klug W., Radzimanowski J., Nickolaus S.,
+RA   Keller S., Eggert S., Wild K., Kins S.;
+RT   "Amyloid precursor protein dimerization and synaptogenic function
+RT   depend on copper binding to the growth factor-like domain.";
+RL   J. Neurosci. 34:11159-11172(2014).
+RN   [123] {ECO:0000244|PDB:2MGT}
+RP   STRUCTURE BY NMR OF 672-687, ZINC-BINDING SITES, AND DOMAIN.
+RX   PubMed=26898943; DOI=10.1038/srep21734;
+RA   Istrate A.N., Kozin S.A., Zhokhov S.S., Mantsyzov A.B., Kechko O.I.,
+RA   Pastore A., Makarov A.A., Polshakov V.I.;
+RT   "Interplay of histidine residues of the Alzheimer's disease Abeta
+RT   peptide governs its Zn-induced oligomerization.";
+RL   Sci. Rep. 6:21734-21734(2016).
+RN   [124] {ECO:0000244|PDB:5LFY}
+RP   STRUCTURE BY NMR OF 672-681, AND DOMAIN.
+RX   PubMed=28570778; DOI=10.1002/anie.201704615;
+RA   Polshakov V.I., Mantsyzov A.B., Kozin S.A., Adzhubei A.A.,
+RA   Zhokhov S.S., van Beek W., Kulikova A.A., Indeykina M.I.,
+RA   Mitkevich V.A., Makarov A.A.;
+RT   "A Binuclear Zinc Interaction Fold Discovered in the Homodimer of
+RT   Alzheimer's Amyloid-beta Fragment with Taiwanese Mutation D7H.";
+RL   Angew. Chem. Int. Ed. Engl. 56:11734-11739(2017).
+RN   [125] {ECO:0000244|PDB:5OQV}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (4.00 ANGSTROMS) OF 672-713.
+RX   PubMed=28882996; DOI=10.1126/science.aao2825;
+RA   Gremer L., Scholzel D., Schenk C., Reinartz E., Labahn J.,
+RA   Ravelli R.B.G., Tusche M., Lopez-Iglesias C., Hoyer W., Heise H.,
+RA   Willbold D., Schroder G.F.;
+RT   "Fibril structure of amyloid-beta(1-42) by cryo-electron microscopy.";
+RL   Science 358:116-119(2017).
+RN   [126] {ECO:0000244|PDB:5VOS}
+RP   STRUCTURE BY ELECTRON MICROSCOPY (1.42 ANGSTROMS) OF 695-705.
+RX   PubMed=29282295; DOI=10.1074/jbc.M117.806109;
+RA   Krotee P., Griner S.L., Sawaya M.R., Cascio D., Rodriguez J.A.,
+RA   Shi D., Philipp S., Murray K., Saelices L., Lee J., Seidler P.,
+RA   Glabe C.G., Jiang L., Gonen T., Eisenberg D.S.;
+RT   "Common fibrillar spines of amyloid-beta and human islet amyloid
+RT   polypeptide revealed by microelectron diffraction and structure-based
+RT   inhibitors.";
+RL   J. Biol. Chem. 293:2888-2902(2018).
+RN   [127]
+RP   REVIEW ON VARIANTS.
+RX   PubMed=1363811; DOI=10.1038/ng0792-233;
+RA   Hardy J.;
+RT   "Framing beta-amyloid.";
+RL   Nat. Genet. 1:233-234(1992).
+RN   [128]
+RP   VARIANT CAA-APP GLN-693.
+RX   PubMed=2111584; DOI=10.1126/science.2111584;
+RA   Levy E., Carman M.D., Fernandez-Madrid I.J., Power M.D.,
+RA   Lieberburg I., van Duinen S.G., Bots G.T.A.M., Luyendijk W.,
+RA   Frangione B.;
+RT   "Mutation of the Alzheimer's disease amyloid gene in hereditary
+RT   cerebral hemorrhage, Dutch type.";
+RL   Science 248:1124-1126(1990).
+RN   [129]
+RP   VARIANT AD1 ILE-717.
+RX   PubMed=1671712; DOI=10.1038/349704a0;
+RA   Goate A., Chartier-Harlin M.-C., Mullan M., Brown J., Crawford F.,
+RA   Fidani L., Giuffra L., Haynes A., Irving N., James L., Mant R.,
+RA   Newton P., Rooke K., Roques P., Talbot C., Pericak-Vance M.,
+RA   Roses A.D., Williamson R., Rossor M., Owen M., Hardy J.;
+RT   "Segregation of a missense mutation in the amyloid precursor protein
+RT   gene with familial Alzheimer's disease.";
+RL   Nature 349:704-706(1991).
+RN   [130]
+RP   VARIANT AD1 ILE-717.
+RX   PubMed=1908231; DOI=10.1016/0006-291X(91)91011-Z;
+RA   Yoshioka K., Miki T., Katsuya T., Ogihara T., Sakaki Y.;
+RT   "The 717Val-->Ile substitution in amyloid precursor protein is
+RT   associated with familial Alzheimer's disease regardless of ethnic
+RT   groups.";
+RL   Biochem. Biophys. Res. Commun. 178:1141-1146(1991).
+RN   [131]
+RP   VARIANT AD1 ILE-717.
+RX   PubMed=1678058; DOI=10.1016/0140-6736(91)91612-X;
+RA   Naruse S., Igarashi S., Kobayashi H., Aoki K., Inuzuka T., Kaneko K.,
+RA   Shimizu T., Iihara K., Kojima T., Miyatake T., Tsuji S.;
+RT   "Mis-sense mutation Val->Ile in exon 17 of amyloid precursor protein
+RT   gene in Japanese familial Alzheimer's disease.";
+RL   Lancet 337:978-979(1991).
+RN   [132]
+RP   VARIANT AD1 GLY-717.
+RX   PubMed=1944558; DOI=10.1038/353844a0;
+RA   Chartier-Harlin M.-C., Crawford F., Houlden H., Warren A., Hughes D.,
+RA   Fidani L., Goate A., Rossor M., Roques P., Hardy J., Mullan M.;
+RT   "Early-onset Alzheimer's disease caused by mutations at codon 717 of
+RT   the beta-amyloid precursor protein gene.";
+RL   Nature 353:844-846(1991).
+RN   [133]
+RP   VARIANT AD1 PHE-717.
+RX   PubMed=1925564; DOI=10.1126/science.1925564;
+RA   Murrell J.R., Farlow M., Ghetti B., Benson M.D.;
+RT   "A mutation in the amyloid precursor protein associated with
+RT   hereditary Alzheimer's disease.";
+RL   Science 254:97-99(1991).
+RN   [134]
+RP   VARIANT AD1 GLY-693.
+RX   PubMed=1415269;
+RA   Kamino K., Orr H.T., Payami H., Wijsman E.M., Alonso M.E., Pulst S.M.,
+RA   Anderson L., O'Dahl S., Nemens E., White J.A., Sadovnick A.D.,
+RA   Ball M.J., Kaye J., Warren A., McInnis M.G., Antonarakis S.E.,
+RA   Korenberg J.R., Sharma V., Kukull W., Larson E., Heston L.L.,
+RA   Martin G.M., Bird T.D., Schellenberg G.D.;
+RT   "Linkage and mutational analysis of familial Alzheimer disease
+RT   kindreds for the APP gene region.";
+RL   Am. J. Hum. Genet. 51:998-1014(1992).
+RN   [135]
+RP   VARIANT AD1 GLY-692.
+RX   PubMed=1303239; DOI=10.1038/ng0692-218;
+RA   Hendriks L., van Duijn C.M., Cras P., Cruts M., Van Hul W.,
+RA   van Harskamp F., Warren A., McInnis M.G., Antonarakis S.E.,
+RA   Martin J.J., Hofman A., Van Broeckhoven C.;
+RT   "Presenile dementia and cerebral haemorrhage linked to a mutation at
+RT   codon 692 of the beta-amyloid precursor protein gene.";
+RL   Nat. Genet. 1:218-221(1992).
+RN   [136]
+RP   VARIANT AD1 670-ASN-LEU-671.
+RX   PubMed=1302033; DOI=10.1038/ng0892-345;
+RA   Mullan M., Crawford F., Axelman K., Houlden H., Lilius L., Winblad B.,
+RA   Lannfelt L.;
+RT   "A pathogenic mutation for probable Alzheimer's disease in the APP
+RT   gene at the N-terminus of beta-amyloid.";
+RL   Nat. Genet. 1:345-347(1992).
+RN   [137]
+RP   CHARACTERIZATION OF VARIANT AD1 670-ASN-LEU-671.
+RX   PubMed=1465129; DOI=10.1038/360672a0;
+RA   Citron M., Oltersdorf T., Haass C., McConlogue L., Hung A.Y.,
+RA   Seubert P., Vigo-Pelfrey C., Lieberburg I., Selkoe D.J.;
+RT   "Mutation of the beta-amyloid precursor protein in familial
+RT   Alzheimer's disease increases beta-protein production.";
+RL   Nature 360:672-674(1992).
+RN   [138]
+RP   VARIANT VAL-713.
+RX   PubMed=1307241; DOI=10.1038/ng0792-306;
+RA   Jones C.T., Morris S., Yates C.M., Moffoot A., Sharpe C.,
+RA   Brock D.J.H., St Clair D.;
+RT   "Mutation in codon 713 of the beta amyloid precursor protein gene
+RT   presenting with schizophrenia.";
+RL   Nat. Genet. 1:306-309(1992).
+RN   [139]
+RP   VARIANT AD1 THR-713.
+RX   PubMed=1303275; DOI=10.1038/ng1292-255;
+RA   Carter D.A., Desmarais E., Bellis M., Campion D., Clerget-Darpoux F.,
+RA   Brice A., Agid Y., Jaillard-Serradt A., Mallet J.;
+RT   "More missense in amyloid gene.";
+RL   Nat. Genet. 2:255-256(1992).
+RN   [140]
+RP   VARIANTS AD1 ILE-717 AND PHE-717.
+RX   PubMed=8267572; DOI=10.1006/bbrc.1993.2491;
+RA   Liepnieks J.J., Ghetti B., Farlow M., Roses A.D., Benson M.D.;
+RT   "Characterization of amyloid fibril beta-peptide in familial
+RT   Alzheimer's disease with APP717 mutations.";
+RL   Biochem. Biophys. Res. Commun. 197:386-392(1993).
+RN   [141]
+RP   VARIANT ASP-665.
+RX   PubMed=8154870; DOI=10.1002/ana.410350410;
+RA   Peacock M.L., Murman D.L., Sima A.A.F., Warren J.T. Jr., Roses A.D.,
+RA   Fink J.K.;
+RT   "Novel amyloid precursor protein gene mutation (codon 665Asp) in a
+RT   patient with late-onset Alzheimer's disease.";
+RL   Ann. Neurol. 35:432-438(1994).
+RN   [142]
+RP   VARIANT AD1 PHE-717.
+RX   PubMed=8290042; DOI=10.1212/WNL.44.1.105;
+RA   Farlow M., Murrell J., Ghetti B., Unverzagt F., Zeldenrust S.,
+RA   Benson M.D.;
+RT   "Clinical characteristics in a kindred with early-onset Alzheimer's
+RT   disease and their linkage to a G-->T change at position 2149 of the
+RT   amyloid precursor protein gene.";
+RL   Neurology 44:105-111(1994).
+RN   [143]
+RP   VARIANT AD1 ILE-717.
+RX   PubMed=8577393; DOI=10.1016/0304-3940(95)12046-7;
+RA   Brooks W.S., Martins R.N., De Voecht J., Nicholson G.A.,
+RA   Schofield P.R., Kwok J.B.J., Fisher C., Yeung L.U.,
+RA   Van Broeckhoven C.;
+RT   "A mutation in codon 717 of the amyloid precursor protein gene in an
+RT   Australian family with Alzheimer's disease.";
+RL   Neurosci. Lett. 199:183-186(1995).
+RN   [144]
+RP   CHARACTERIZATION OF VARIANTS AD1 GLY-717; ILE-717 AND PHE-717.
+RX   PubMed=8886002; DOI=10.1006/bbrc.1996.1577;
+RA   Maruyama K., Tomita T., Shinozaki K., Kume H., Asada H., Saido T.C.,
+RA   Ishiura S., Iwatsubo T., Obata K.;
+RT   "Familial Alzheimer's disease-linked mutations at Val717 of amyloid
+RT   precursor protein are specific for the increased secretion of A beta
+RT   42(43).";
+RL   Biochem. Biophys. Res. Commun. 227:730-735(1996).
+RN   [145]
+RP   VARIANT AD1 VAL-716.
+RX   PubMed=9328472; DOI=10.1093/hmg/6.12.2087;
+RA   Eckman C.B., Mehta N.D., Crook R., Perez-Tur J., Prihar G.,
+RA   Pfeiffer E., Graff-Radford N., Hinder P., Yager D., Zenk B.,
+RA   Refolo L.M., Prada C.M., Younkin S.G., Hutton M., Hardy J.;
+RT   "A new pathogenic mutation in the APP gene (I716V) increases the
+RT   relative proportion of A beta 42(43).";
+RL   Hum. Mol. Genet. 6:2087-2089(1997).
+RN   [146]
+RP   VARIANT AD1 GLY-692, AND CHARACTERIZATION OF PHENOTYPE.
+RX   PubMed=9754958; DOI=10.1007/s004010050892;
+RA   Cras P., van Harskamp F., Hendriks L., Ceuterick C., van Duijn C.M.,
+RA   Stefanko S.Z., Hofman A., Kros J.M., Van Broeckhoven C., Martin J.J.;
+RT   "Presenile Alzheimer dementia characterized by amyloid angiopathy and
+RT   large amyloid core type senile plaques in the APP 692Ala-->Gly
+RT   mutation.";
+RL   Acta Neuropathol. 96:253-260(1998).
+RN   [147]
+RP   VARIANT AD1 MET-715, AND CHARACTERIZATION OF VARIANT AD1 MET-715.
+RX   PubMed=10097173; DOI=10.1073/pnas.96.7.4119;
+RA   Ancolio K., Dumanchin C., Barelli H., Warter J.-M., Brice A.,
+RA   Campion D., Frebourg T., Checler F.;
+RT   "Unusual phenotypic alteration of beta amyloid precursor protein
+RT   (betaAPP) maturation by a new Val-715 --> Met betaAPP-770 mutation
+RT   responsible for probable early-onset Alzheimer's disease.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 96:4119-4124(1999).
+RN   [148]
+RP   VARIANT AD1 ILE-717.
+RX   PubMed=10631141; DOI=10.1086/302702;
+RA   Finckh U., Mueller-Thomsen T., Mann U., Eggers C., Marksteiner J.,
+RA   Meins W., Binetti G., Alberici A., Hock C., Nitsch R.M., Gal A.;
+RT   "High prevalence of pathogenic mutations in patients with early-onset
+RT   dementia detected by sequence analyses of four different genes.";
+RL   Am. J. Hum. Genet. 66:110-117(2000).
+RN   [149]
+RP   VARIANT AD1 PRO-723.
+RX   PubMed=10665499;
+RX   DOI=10.1002/1531-8249(200002)47:2<249::AID-ANA18>3.0.CO;2-8;
+RA   Kwok J.B.J., Li Q.X., Hallupp M., Whyte S., Ames D., Beyreuther K.,
+RA   Masters C.L., Schofield P.R.;
+RT   "Novel Leu723Pro amyloid precursor protein mutation increases amyloid
+RT   beta42(43) peptide levels and induces apoptosis.";
+RL   Ann. Neurol. 47:249-253(2000).
+RN   [150]
+RP   VARIANT AD1 LEU-717.
+RX   PubMed=10867787; DOI=10.1001/archneur.57.6.885;
+RA   Murrell J.R., Hake A.M., Quaid K.A., Farlow M.R., Ghetti B.;
+RT   "Early-onset Alzheimer disease caused by a new mutation (V717L) in the
+RT   amyloid precursor protein gene.";
+RL   Arch. Neurol. 57:885-887(2000).
+RN   [151]
+RP   VARIANT AD1 ILE-714, AND CHARACTERIZATION OF VARIANTS AD1 ILE-714 AND
+RP   ILE-717.
+RX   PubMed=11063718; DOI=10.1093/hmg/9.18.2589;
+RA   Kumar-Singh S., De Jonghe C., Cruts M., Kleinert R., Wang R.,
+RA   Mercken M., De Strooper B., Vanderstichele H., Loefgren A.,
+RA   Vanderhoeven I., Backhovens H., Vanmechelen E., Kroisel P.M.,
+RA   Van Broeckhoven C.;
+RT   "Nonfibrillar diffuse amyloid deposition due to a gamma(42)-secretase
+RT   site mutation points to an essential role for N-truncated A beta(42)
+RT   in Alzheimer's disease.";
+RL   Hum. Mol. Genet. 9:2589-2598(2000).
+RN   [152]
+RP   CHARACTERIZATION OF VARIANT AD1 670-ASN-LEU-671.
+RX   PubMed=10677483; DOI=10.1073/pnas.97.4.1456;
+RA   Lin X., Koelsch G., Wu S., Downs D., Dashti A., Tang J.;
+RT   "Human aspartic protease memapsin 2 cleaves the beta-secretase site of
+RT   beta-amyloid precursor protein.";
+RL   Proc. Natl. Acad. Sci. U.S.A. 97:1456-1460(2000).
+RN   [153]
+RP   VARIANT CAA-APP ASN-694.
+RX   PubMed=11409420; DOI=10.1002/ana.1009;
+RA   Grabowski T.J., Cho H.S., Vonsattel J.P.G., Rebeck G.W.,
+RA   Greenberg S.M.;
+RT   "Novel amyloid precursor protein mutation in an Iowa family with
+RT   dementia and severe cerebral amyloid angiopathy.";
+RL   Ann. Neurol. 49:697-705(2001).
+RN   [154]
+RP   CHARACTERIZATION OF VARIANT AD1 GLY-692.
+RX   PubMed=11311152;
+RA   Walsh D.M., Hartley D.M., Condron M.M., Selkoe D.J., Teplow D.B.;
+RT   "In vitro studies of amyloid beta-protein fibril assembly and toxicity
+RT   provide clues to the aetiology of Flemish variant (Ala692-->Gly)
+RT   Alzheimer's disease.";
+RL   Biochem. J. 355:869-877(2001).
+RN   [155]
+RP   VARIANT AD1 GLY-693.
+RX   PubMed=11528419; DOI=10.1038/nn0901-887;
+RA   Nilsberth C., Westlind-Danielsson A., Eckman C.B., Condron M.M.,
+RA   Axelman K., Forsell C., Stenh C., Luthman J., Teplow D.B.,
+RA   Younkin S.G., Naeslund J., Lannfelt L.;
+RT   "The 'Arctic' APP mutation (E693G) causes Alzheimer's disease by
+RT   enhanced Abeta protofibril formation.";
+RL   Nat. Neurosci. 4:887-893(2001).
+RN   [156]
+RP   VARIANT AD1 ALA-714.
+RX   PubMed=12034808; DOI=10.1212/WNL.58.10.1574;
+RA   Pasalar P., Najmabadi H., Noorian A.R., Moghimi B., Jannati A.,
+RA   Soltanzadeh A., Krefft T., Crook R., Hardy J.;
+RT   "An Iranian family with Alzheimer's disease caused by a novel APP
+RT   mutation (Thr714Ala).";
+RL   Neurology 58:1574-1575(2002).
+RN   [157]
+RP   VARIANT CAA-APP ASN-694.
+RX   PubMed=12654973; DOI=10.1212/01.WNL.0000050140.10044.A8;
+RA   Greenberg S.M., Shin Y., Grabowski T.J., Cooper G.E., Rebeck G.W.,
+RA   Iglesias S., Chapon F., Tournier-Lasserve E., Baron J.-C.;
+RT   "Hemorrhagic stroke associated with the Iowa amyloid precursor protein
+RT   mutation.";
+RL   Neurology 60:1020-1022(2003).
+RN   [158]
+RP   VARIANT AD1 THR-713.
+RX   PubMed=15365148; DOI=10.1212/01.WNL.0000137048.80666.86;
+RA   Rossi G., Giaccone G., Maletta R., Morbin M., Capobianco R.,
+RA   Mangieri M., Giovagnoli A.R., Bizzi A., Tomaino C., Perri M.,
+RA   Di Natale M., Tagliavini F., Bugiani O., Bruni A.C.;
+RT   "A family with Alzheimer disease and strokes associated with A713T
+RT   mutation of the APP gene.";
+RL   Neurology 63:910-912(2004).
+RN   [159]
+RP   VARIANT CAA-APP VAL-705.
+RX   PubMed=16178030; DOI=10.1002/ana.20571;
+RA   Obici L., Demarchi A., de Rosa G., Bellotti V., Marciano S.,
+RA   Donadei S., Arbustini E., Palladini G., Diegoli M., Genovese E.,
+RA   Ferrari G., Coverlizza S., Merlini G.;
+RT   "A novel AbetaPP mutation exclusively associated with cerebral amyloid
+RT   angiopathy.";
+RL   Ann. Neurol. 58:639-644(2005).
+RN   [160]
+RP   VARIANT AD1 ILE-714.
+RX   PubMed=15668448; DOI=10.1212/01.WNL.0000149761.70566.3E;
+RA   Edwards-Lee T., Ringman J.M., Chung J., Werner J., Morgan A.,
+RA   St George-Hyslop P.H., Thompson P., Dutton R., Mlikotic A.,
+RA   Rogaeva E., Hardy J.;
+RT   "An African American family with early-onset Alzheimer disease and an
+RT   APP (T714I) mutation.";
+RL   Neurology 64:377-379(2005).
+RN   [161]
+RP   VARIANT CAA-APP LYS-693.
+RX   PubMed=20697050; DOI=10.1001/archneurol.2010.178;
+RA   Bugiani O., Giaccone G., Rossi G., Mangieri M., Capobianco R.,
+RA   Morbin M., Mazzoleni G., Cupidi C., Marcon G., Giovagnoli A.,
+RA   Bizzi A., Di Fede G., Puoti G., Carella F., Salmaggi A., Romorini A.,
+RA   Patruno G.M., Magoni M., Padovani A., Tagliavini F.;
+RT   "Hereditary cerebral hemorrhage with amyloidosis associated with the
+RT   E693K mutation of APP.";
+RL   Arch. Neurol. 67:987-995(2010).
+CC   -!- FUNCTION: Functions as a cell surface receptor and performs
+CC       physiological functions on the surface of neurons relevant to
+CC       neurite growth, neuronal adhesion and axonogenesis. Interaction
+CC       between APP molecules on neighboring cells promotes synaptogenesis
+CC       (PubMed:25122912). Involved in cell mobility and transcription
+CC       regulation through protein-protein interactions. Can promote
+CC       transcription activation through binding to APBB1-KAT5 and
+CC       inhibits Notch signaling through interaction with Numb. Couples to
+CC       apoptosis-inducing pathways such as those mediated by G(O) and
+CC       JIP. Inhibits G(o) alpha ATPase activity (By similarity). Acts as
+CC       a kinesin I membrane receptor, mediating the axonal transport of
+CC       beta-secretase and presenilin 1. Involved in copper
+CC       homeostasis/oxidative stress through copper ion reduction. In
+CC       vitro, copper-metallated APP induces neuronal death directly or is
+CC       potentiated through Cu(2+)-mediated low-density lipoprotein
+CC       oxidation. Can regulate neurite outgrowth through binding to
+CC       components of the extracellular matrix such as heparin and
+CC       collagen I and IV. The splice isoforms that contain the BPTI
+CC       domain possess protease inhibitor activity. Induces a AGER-
+CC       dependent pathway that involves activation of p38 MAPK, resulting
+CC       in internalization of amyloid-beta peptide and leading to
+CC       mitochondrial dysfunction in cultured cortical neurons. Provides
+CC       Cu(2+) ions for GPC1 which are required for release of nitric
+CC       oxide (NO) and subsequent degradation of the heparan sulfate
+CC       chains on GPC1. {ECO:0000250, ECO:0000269|PubMed:25122912}.
+CC   -!- FUNCTION: Amyloid-beta peptides are lipophilic metal chelators
+CC       with metal-reducing activity. Bind transient metals such as
+CC       copper, zinc and iron. In vitro, can reduce Cu(2+) and Fe(3+) to
+CC       Cu(+) and Fe(2+), respectively. Amyloid-beta protein 42 is a more
+CC       effective reductant than amyloid-beta protein 40. Amyloid-beta
+CC       peptides bind to lipoproteins and apolipoproteins E and J in the
+CC       CSF and to HDL particles in plasma, inhibiting metal-catalyzed
+CC       oxidation of lipoproteins. APP42-beta may activate mononuclear
+CC       phagocytes in the brain and elicit inflammatory responses.
+CC       Promotes both tau aggregation and TPK II-mediated phosphorylation.
+CC       Interaction with overexpressed HADH2 leads to oxidative stress and
+CC       neurotoxicity. Also binds GPC1 in lipid rafts.
+CC   -!- FUNCTION: Appicans elicit adhesion of neural cells to the
+CC       extracellular matrix and may regulate neurite outgrowth in the
+CC       brain. {ECO:0000250}.
+CC   -!- FUNCTION: The gamma-CTF peptides as well as the caspase-cleaved
+CC       peptides, including C31, are potent enhancers of neuronal
+CC       apoptosis.
+CC   -!- FUNCTION: N-APP binds TNFRSF21 triggering caspase activation and
+CC       degeneration of both neuronal cell bodies (via caspase-3) and
+CC       axons (via caspase-6).
+CC   -!- SUBUNIT: Binds, via its C-terminus, to the PID domain of several
+CC       cytoplasmic proteins, including APBB family members, the APBA
+CC       family, MAPK8IP1, SHC1 and, NUMB and DAB1 (By similarity). Binding
+CC       to DAB1 inhibits its serine phosphorylation (By similarity).
+CC       Interacts (via NPXY motif) with DAB2 (via PID domain); the
+CC       interaction is impaired by tyrosine phosphorylation of the NPXY
+CC       motif. Also interacts with GPCR-like protein BPP, APPBP1, IB1,
+CC       KNS2 (via its TPR domains), APPBP2 (via BaSS) and DDB1. In vitro,
+CC       it binds MAPT via the MT-binding domains (By similarity).
+CC       Associates with microtubules in the presence of ATP and in a
+CC       kinesin-dependent manner (By similarity). Interacts, through a C-
+CC       terminal domain, with GNAO1. Amyloid-beta protein 42 binds CHRNA7
+CC       in hippocampal neurons. Amyloid-beta associates with HADH2.
+CC       Soluble APP binds, via its N-terminal head, to FBLN1. Interacts
+CC       with CPEB1 and AGER (By similarity). Interacts with ANKS1B and
+CC       TNFRSF21. Interacts with ITM2B. Interacts with ITM2C. Interacts
+CC       with IDE. Can form homodimers; dimerization is enhanced in the
+CC       presence of Cu(2+) ions (PubMed:25122912). Can form homodimers;
+CC       this is promoted by heparin binding. Amyloid-beta protein 40
+CC       interacts with S100A9. CTF-alpha product of APP interacts with
+CC       GSAP. Interacts with SORL1. Interacts with PLD3. Interacts with
+CC       VDAC1 (PubMed:25168729). Interacts with NSG1; could regulate APP
+CC       processing (By similarity). Amyloid-beta protein 42 interacts with
+CC       FPR2 (PubMed:11689470). Interacts with SYT7 (By similarity).
+CC       {ECO:0000250|UniProtKB:P12023, ECO:0000269|PubMed:10681545,
+CC       ECO:0000269|PubMed:10816430, ECO:0000269|PubMed:11238726,
+CC       ECO:0000269|PubMed:11278849, ECO:0000269|PubMed:11438549,
+CC       ECO:0000269|PubMed:11517218, ECO:0000269|PubMed:11544248,
+CC       ECO:0000269|PubMed:11689470, ECO:0000269|PubMed:11724784,
+CC       ECO:0000269|PubMed:11877420, ECO:0000269|PubMed:11943163,
+CC       ECO:0000269|PubMed:15347684, ECO:0000269|PubMed:16174740,
+CC       ECO:0000269|PubMed:17051221, ECO:0000269|PubMed:17895381,
+CC       ECO:0000269|PubMed:18468999, ECO:0000269|PubMed:19225519,
+CC       ECO:0000269|PubMed:19366692, ECO:0000269|PubMed:19901339,
+CC       ECO:0000269|PubMed:20212142, ECO:0000269|PubMed:20811458,
+CC       ECO:0000269|PubMed:22457725, ECO:0000269|PubMed:24336208,
+CC       ECO:0000269|PubMed:25122912, ECO:0000269|PubMed:25168729,
+CC       ECO:0000269|PubMed:8446172, ECO:0000269|PubMed:8626687,
+CC       ECO:0000269|PubMed:8855266, ECO:0000269|PubMed:8887653,
+CC       ECO:0000269|PubMed:9300481, ECO:0000269|PubMed:9338779,
+CC       ECO:0000269|PubMed:9843960, ECO:0000269|PubMed:9890987}.
+CC   -!- INTERACTION:
+CC       Self; NbExp=106; IntAct=EBI-77613, EBI-77613;
+CC       Q306T3:- (xeno); NbExp=3; IntAct=EBI-77613, EBI-8294101;
+CC       P31696:AGRN (xeno); NbExp=3; IntAct=EBI-2431589, EBI-457650;
+CC       Q02410:APBA1; NbExp=3; IntAct=EBI-77613, EBI-368690;
+CC       O00213:APBB1; NbExp=5; IntAct=EBI-77613, EBI-81694;
+CC       Q92870:APBB2; NbExp=2; IntAct=EBI-77613, EBI-79277;
+CC       P51693:APLP1; NbExp=2; IntAct=EBI-302641, EBI-74648;
+CC       Q06481:APLP2; NbExp=2; IntAct=EBI-302641, EBI-79306;
+CC       P02647:APOA1; NbExp=5; IntAct=EBI-77613, EBI-701692;
+CC       P02649:APOE; NbExp=3; IntAct=EBI-2431589, EBI-1222467;
+CC       Q13867:BLMH; NbExp=2; IntAct=EBI-302641, EBI-718504;
+CC       P15253:CALR (xeno); NbExp=3; IntAct=EBI-77613, EBI-9005200;
+CC       P27797:CALR; NbExp=2; IntAct=EBI-77613, EBI-1049597;
+CC       Q8K3H7:CALR (xeno); NbExp=2; IntAct=EBI-3894543, EBI-9005068;
+CC       P36544:CHRNA7; NbExp=3; IntAct=EBI-821758, EBI-79333;
+CC       P10909:CLU; NbExp=3; IntAct=EBI-2431589, EBI-1104674;
+CC       P39060:COL18A1; NbExp=2; IntAct=EBI-821758, EBI-2566375;
+CC       P07339:CTSD; NbExp=2; IntAct=EBI-77613, EBI-2115097;
+CC       O75955:FLOT1; NbExp=5; IntAct=EBI-77613, EBI-603643;
+CC       Q9NZU0:FLRT3; NbExp=3; IntAct=EBI-302641, EBI-1057092;
+CC       P01100:FOS; NbExp=3; IntAct=EBI-77613, EBI-852851;
+CC       P46089:GPR3; NbExp=2; IntAct=EBI-302641, EBI-3909653;
+CC       A4D1B5:GSAP; NbExp=3; IntAct=EBI-77613, EBI-15875313;
+CC       Q9NSC5:HOMER3; NbExp=3; IntAct=EBI-302661, EBI-748420;
+CC       Q99714:HSD17B10; NbExp=4; IntAct=EBI-77613, EBI-79964;
+CC       P14735-1:IDE; NbExp=3; IntAct=EBI-2431589, EBI-15607031;
+CC       O43736:ITM2A; NbExp=3; IntAct=EBI-302641, EBI-2431769;
+CC       P05412:JUN; NbExp=2; IntAct=EBI-77613, EBI-852823;
+CC       Q68DU8:KCTD16; NbExp=3; IntAct=EBI-302641, EBI-20768174;
+CC       Q8N423:LILRB2; NbExp=7; IntAct=EBI-821758, EBI-2816428;
+CC       P97484:Lilrb3 (xeno); NbExp=8; IntAct=EBI-821758, EBI-15728641;
+CC       Q99683:MAP3K5; NbExp=2; IntAct=EBI-77613, EBI-476263;
+CC       P10636:MAPT; NbExp=5; IntAct=EBI-77613, EBI-366182;
+CC       Q93074:MED12; NbExp=2; IntAct=EBI-77613, EBI-394357;
+CC       P03897:MT-ND3; NbExp=2; IntAct=EBI-821758, EBI-1246249;
+CC       P07196:NEFL; NbExp=2; IntAct=EBI-77613, EBI-475646;
+CC       P21359:NF1; NbExp=3; IntAct=EBI-77613, EBI-1172917;
+CC       P08138:NGFR; NbExp=2; IntAct=EBI-77613, EBI-1387782;
+CC       P07174:Ngfr (xeno); NbExp=2; IntAct=EBI-2431589, EBI-1038810;
+CC       P61457:PCBD1; NbExp=2; IntAct=EBI-77613, EBI-740475;
+CC       Q15113:PCOLCE; NbExp=4; IntAct=EBI-821758, EBI-8869614;
+CC       P30101:PDIA3; NbExp=3; IntAct=EBI-77613, EBI-979862;
+CC       Q13526:PIN1; NbExp=2; IntAct=EBI-302641, EBI-714158;
+CC       Q5JRX3-1:PITRM1; NbExp=3; IntAct=EBI-2431589, EBI-16109799;
+CC       P60201:PLP1; NbExp=5; IntAct=EBI-302641, EBI-8653150;
+CC       P04156:PRNP; NbExp=3; IntAct=EBI-77613, EBI-977302;
+CC       P49768:PSEN1; NbExp=6; IntAct=EBI-77613, EBI-297277;
+CC       P11686-1:SFTPC; NbExp=4; IntAct=EBI-821758, EBI-16143688;
+CC       P29353:SHC1; NbExp=5; IntAct=EBI-77613, EBI-78835;
+CC       Q92529:SHC3; NbExp=2; IntAct=EBI-77613, EBI-79084;
+CC       Q9NP59:SLC40A1; NbExp=5; IntAct=EBI-77613, EBI-725153;
+CC       Q8BGY9:Slc5a7 (xeno); NbExp=2; IntAct=EBI-77613, EBI-2010752;
+CC       Q92673:SORL1; NbExp=3; IntAct=EBI-2431589, EBI-1171329;
+CC       Q9HCB6:SPON1; NbExp=3; IntAct=EBI-302641, EBI-2431846;
+CC       O95793:STAU1; NbExp=2; IntAct=EBI-302641, EBI-358174;
+CC       P01137:TGFB1; NbExp=3; IntAct=EBI-77613, EBI-779636;
+CC       P61812:TGFB2; NbExp=7; IntAct=EBI-77613, EBI-779581;
+CC       P21980:TGM2; NbExp=2; IntAct=EBI-821758, EBI-727668;
+CC       Q13625:TP53BP2; NbExp=3; IntAct=EBI-77613, EBI-77642;
+CC   -!- SUBCELLULAR LOCATION: Cell membrane {ECO:0000269|PubMed:10383380,
+CC       ECO:0000269|PubMed:20580937, ECO:0000305|PubMed:25122912}; Single-
+CC       pass type I membrane protein {ECO:0000305|PubMed:10383380,
+CC       ECO:0000305|PubMed:25122912}. Membrane
+CC       {ECO:0000269|PubMed:2900137, ECO:0000305|PubMed:22584060}; Single-
+CC       pass type I membrane protein {ECO:0000269|PubMed:2900137,
+CC       ECO:0000305|PubMed:22584060}. Perikaryon
+CC       {ECO:0000269|PubMed:10341243}. Cell projection, growth cone
+CC       {ECO:0000269|PubMed:10341243}. Membrane, clathrin-coated pit
+CC       {ECO:0000269|PubMed:20580937}. Early endosome
+CC       {ECO:0000269|PubMed:20580937}. Cytoplasmic vesicle
+CC       {ECO:0000269|PubMed:20580937, ECO:0000269|PubMed:25122912}.
+CC       Note=Cell surface protein that rapidly becomes internalized via
+CC       clathrin-coated pits. Only a minor proportion is present at the
+CC       cell membrane; most of the protein is present in intracellular
+CC       vesicles (PubMed:20580937). During maturation, the immature APP
+CC       (N-glycosylated in the endoplasmic reticulum) moves to the Golgi
+CC       complex where complete maturation occurs (O-glycosylated and
+CC       sulfated). After alpha-secretase cleavage, soluble APP is released
+CC       into the extracellular space and the C-terminal is internalized to
+CC       endosomes and lysosomes. Some APP accumulates in secretory
+CC       transport vesicles leaving the late Golgi compartment and returns
+CC       to the cell surface. APP sorts to the basolateral surface in
+CC       epithelial cells. During neuronal differentiation, the Thr-743
+CC       phosphorylated form is located mainly in growth cones, moderately
+CC       in neurites and sparingly in the cell body (PubMed:10341243).
+CC       Casein kinase phosphorylation can occur either at the cell surface
+CC       or within a post-Golgi compartment. Associates with GPC1 in
+CC       perinuclear compartments. Colocalizes with SORL1 in a vesicular
+CC       pattern in cytoplasm and perinuclear regions.
+CC       {ECO:0000269|PubMed:10341243, ECO:0000269|PubMed:20580937}.
+CC   -!- SUBCELLULAR LOCATION: Soluble APP-beta: Secreted
+CC       {ECO:0000269|PubMed:10656250}.
+CC   -!- SUBCELLULAR LOCATION: Amyloid-beta protein 42: Cell surface.
+CC       Note=Associates with FPR2 at the cell surface and the complex is
+CC       then rapidly internalized. {ECO:0000269|PubMed:11689470}.
+CC   -!- SUBCELLULAR LOCATION: Gamma-secretase C-terminal fragment 59:
+CC       Nucleus {ECO:0000269|PubMed:11544248}. Cytoplasm
+CC       {ECO:0000269|PubMed:11544248}. Note=located to both the cytoplasm
+CC       and nuclei of neurons. It can be translocated to the nucleus
+CC       through association with APBB1 (Fe65).
+CC       {ECO:0000269|PubMed:11544248}.
+CC   -!- ALTERNATIVE PRODUCTS:
+CC       Event=Alternative splicing; Named isoforms=11;
+CC         Comment=Additional isoforms seem to exist. Experimental
+CC         confirmation may be lacking for some isoforms.;
+CC       Name=APP770; Synonyms=PreA4 770;
+CC         IsoId=P05067-1; Sequence=Displayed;
+CC         Note=A major isoform.;
+CC       Name=APP305;
+CC         IsoId=P05067-2; Sequence=VSP_000005, VSP_000006;
+CC       Name=L-APP677;
+CC         IsoId=P05067-3; Sequence=VSP_000002, VSP_000004, VSP_000009;
+CC         Note=The L-isoforms are referred to as appicans.;
+CC       Name=APP695; Synonyms=PreA4 695;
+CC         IsoId=P05067-4; Sequence=VSP_000002, VSP_000004;
+CC         Note=A major isoform.;
+CC       Name=L-APP696;
+CC         IsoId=P05067-5; Sequence=VSP_000002, VSP_000003, VSP_000009;
+CC         Note=The L-isoforms are referred to as appicans.;
+CC       Name=APP714;
+CC         IsoId=P05067-6; Sequence=VSP_000002, VSP_000003;
+CC       Name=L-APP733;
+CC         IsoId=P05067-7; Sequence=VSP_000007, VSP_000008, VSP_000009;
+CC         Note=The L-isoforms are referred to as appicans.;
+CC       Name=APP751; Synonyms=PreA4 751;
+CC         IsoId=P05067-8; Sequence=VSP_000007, VSP_000008;
+CC         Note=A major isoform.;
+CC       Name=L-APP752;
+CC         IsoId=P05067-9; Sequence=VSP_000009;
+CC       Name=APP639;
+CC         IsoId=P05067-10; Sequence=VSP_009116, VSP_009117, VSP_009118;
+CC       Name=11;
+CC         IsoId=P05067-11; Sequence=VSP_045446, VSP_045447;
+CC   -!- TISSUE SPECIFICITY: Expressed in all fetal tissues examined with
+CC       highest levels in brain, kidney, heart and spleen. Weak expression
+CC       in liver. In adult brain, highest expression found in the frontal
+CC       lobe of the cortex and in the anterior perisylvian cortex-
+CC       opercular gyri. Moderate expression in the cerebellar cortex, the
+CC       posterior perisylvian cortex-opercular gyri and the temporal
+CC       associated cortex. Weak expression found in the striate, extra-
+CC       striate and motor cortices. Expressed in cerebrospinal fluid, and
+CC       plasma. Isoform APP695 is the predominant form in neuronal tissue,
+CC       isoform APP751 and isoform APP770 are widely expressed in non-
+CC       neuronal cells. Isoform APP751 is the most abundant form in T-
+CC       lymphocytes. Appican is expressed in astrocytes.
+CC       {ECO:0000269|PubMed:12859342, ECO:0000269|PubMed:1406936}.
+CC   -!- INDUCTION: Increased levels during neuronal differentiation.
+CC   -!- DOMAIN: The basolateral sorting signal (BaSS) is required for
+CC       sorting of membrane proteins to the basolateral surface of
+CC       epithelial cells. {ECO:0000269|PubMed:9843960}.
+CC   -!- DOMAIN: The GFLD subdomain binds Cu(2+) ions; this promotes
+CC       homodimerization. {ECO:0000269|PubMed:25122912}.
+CC   -!- DOMAIN: The NPXY sequence motif found in many tyrosine-
+CC       phosphorylated proteins is required for the specific binding of
+CC       the PID domain. However, additional amino acids either N- or C-
+CC       terminal to the NPXY motif are often required for complete
+CC       interaction. The PID domain-containing proteins which bind APP
+CC       require the YENPTY motif for full interaction. These interactions
+CC       are independent of phosphorylation on the terminal tyrosine
+CC       residue. The YENPXY site is also involved in clathrin-mediated
+CC       endocytosis. {ECO:0000269|PubMed:10383380}.
+CC   -!- DOMAIN: The C-terminal region can bind zinc ions; this favors
+CC       dimerization and formation of higher oligomers.
+CC       {ECO:0000269|PubMed:26898943, ECO:0000269|PubMed:28570778}.
+CC   -!- PTM: Proteolytically processed under normal cellular conditions.
+CC       Cleavage either by alpha-secretase, beta-secretase or theta-
+CC       secretase leads to generation and extracellular release of soluble
+CC       APP peptides, S-APP-alpha and S-APP-beta, and the retention of
+CC       corresponding membrane-anchored C-terminal fragments, C80, C83 and
+CC       C99. Subsequent processing of C80 and C83 by gamma-secretase
+CC       yields P3 peptides. This is the major secretory pathway and is
+CC       non-amyloidogenic. Alternatively, presenilin/nicastrin-mediated
+CC       gamma-secretase processing of C99 releases the amyloid-beta
+CC       proteins, amyloid-beta protein 40 and amyloid-beta protein 42,
+CC       major components of amyloid plaques, and the cytotoxic C-terminal
+CC       fragments, gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59). Many
+CC       other minor amyloid-beta peptides, amyloid-beta 1-X peptides, are
+CC       found in cerebral spinal fluid (CSF) including the amyloid-beta X-
+CC       15 peptides, produced from the cleavage by alpha-secretase and all
+CC       terminating at Gln-686. {ECO:0000269|PubMed:10656250}.
+CC   -!- PTM: Proteolytically cleaved by caspases during neuronal
+CC       apoptosis. Cleavage at Asp-739 by either caspase-6, -8 or -9
+CC       results in the production of the neurotoxic C31 peptide and the
+CC       increased production of amyloid-beta peptides.
+CC   -!- PTM: N-glycosylated (PubMed:2900137). N- and O-glycosylated. O-
+CC       glycosylation on Ser and Thr residues with core 1 or possibly core
+CC       8 glycans. Partial tyrosine glycosylation (Tyr-681) is found on
+CC       some minor, short amyloid-beta peptides (amyloid-beta 1-15, 1-16,
+CC       1-17, 1-18, 1-19 and 1-20) but not found on amyloid-beta protein
+CC       38, amyloid-beta protein 40 nor on amyloid-beta protein 42.
+CC       Modification on a tyrosine is unusual and is more prevelant in AD
+CC       patients. Glycans had Neu5AcHex(Neu5Ac)HexNAc-O-Tyr,
+CC       Neu5AcNeu5AcHex(Neu5Ac)HexNAc-O-Tyr and O-
+CC       AcNeu5AcNeu5AcHex(Neu5Ac)HexNAc-O-Tyr structures, where O-Ac is O-
+CC       acetylation of Neu5Ac. Neu5AcNeu5Ac is most likely Neu5Ac
+CC       2,8Neu5Ac linked. O-glycosylations in the vicinity of the cleavage
+CC       sites may influence the proteolytic processing. Appicans are L-APP
+CC       isoforms with O-linked chondroitin sulfate.
+CC       {ECO:0000269|PubMed:16335952, ECO:0000269|PubMed:21712440,
+CC       ECO:0000269|PubMed:22576872, ECO:0000269|PubMed:2900137}.
+CC   -!- PTM: Phosphorylation in the C-terminal on tyrosine, threonine and
+CC       serine residues is neuron-specific. Phosphorylation can affect APP
+CC       processing, neuronal differentiation and interaction with other
+CC       proteins. Phosphorylated on Thr-743 in neuronal cells by Cdc5
+CC       kinase and Mapk10, in dividing cells by Cdc2 kinase in a cell-
+CC       cycle dependent manner with maximal levels at the G2/M phase and,
+CC       in vitro, by GSK-3-beta. The Thr-743 phosphorylated form causes a
+CC       conformational change which reduces binding of Fe65 family
+CC       members. Phosphorylation on Tyr-757 is required for SHC binding.
+CC       Phosphorylated in the extracellular domain by casein kinases on
+CC       both soluble and membrane-bound APP. This phosphorylation is
+CC       inhibited by heparin. {ECO:0000269|PubMed:10341243,
+CC       ECO:0000269|PubMed:11146006, ECO:0000269|PubMed:11517218,
+CC       ECO:0000269|PubMed:11877420, ECO:0000269|PubMed:8131745,
+CC       ECO:0000269|PubMed:8999878}.
+CC   -!- PTM: Extracellular binding and reduction of copper, results in a
+CC       corresponding oxidation of Cys-144 and Cys-158, and the formation
+CC       of a disulfide bond. In vitro, the APP-Cu(+) complex in the
+CC       presence of hydrogen peroxide results in an increased production
+CC       of amyloid-beta-containing peptides.
+CC   -!- PTM: Trophic-factor deprivation triggers the cleavage of surface
+CC       APP by beta-secretase to release sAPP-beta which is further
+CC       cleaved to release an N-terminal fragment of APP (N-APP).
+CC   -!- PTM: Amyloid-beta peptides are degraded by IDE.
+CC   -!- MASS SPECTROMETRY: Mass=6461.6; Method=MALDI; Range=712-767;
+CC       Evidence={ECO:0000269|PubMed:12214090};
+CC   -!- MASS SPECTROMETRY: Mass=6451.6; Method=MALDI; Range=714-770;
+CC       Evidence={ECO:0000269|PubMed:12214090};
+CC   -!- MASS SPECTROMETRY: Mass=6436.8; Method=MALDI; Range=715-769;
+CC       Evidence={ECO:0000269|PubMed:12214090};
+CC   -!- MASS SPECTROMETRY: Mass=5752.5; Method=MALDI; Range=719-767;
+CC       Evidence={ECO:0000269|PubMed:12214090};
+CC   -!- DISEASE: Alzheimer disease 1 (AD1) [MIM:104300]: A familial early-
+CC       onset form of Alzheimer disease. It can be associated with
+CC       cerebral amyloid angiopathy. Alzheimer disease is a
+CC       neurodegenerative disorder characterized by progressive dementia,
+CC       loss of cognitive abilities, and deposition of fibrillar amyloid
+CC       proteins as intraneuronal neurofibrillary tangles, extracellular
+CC       amyloid plaques and vascular amyloid deposits. The major
+CC       constituents of these plaques are neurotoxic amyloid-beta protein
+CC       40 and amyloid-beta protein 42, that are produced by the
+CC       proteolysis of the transmembrane APP protein. The cytotoxic C-
+CC       terminal fragments (CTFs) and the caspase-cleaved products, such
+CC       as C31, are also implicated in neuronal death.
+CC       {ECO:0000269|PubMed:10097173, ECO:0000269|PubMed:10631141,
+CC       ECO:0000269|PubMed:10656250, ECO:0000269|PubMed:10665499,
+CC       ECO:0000269|PubMed:10677483, ECO:0000269|PubMed:10867787,
+CC       ECO:0000269|PubMed:11063718, ECO:0000269|PubMed:11311152,
+CC       ECO:0000269|PubMed:11528419, ECO:0000269|PubMed:12034808,
+CC       ECO:0000269|PubMed:1302033, ECO:0000269|PubMed:1303239,
+CC       ECO:0000269|PubMed:1303275, ECO:0000269|PubMed:1415269,
+CC       ECO:0000269|PubMed:1465129, ECO:0000269|PubMed:15201367,
+CC       ECO:0000269|PubMed:15365148, ECO:0000269|PubMed:15668448,
+CC       ECO:0000269|PubMed:1671712, ECO:0000269|PubMed:1678058,
+CC       ECO:0000269|PubMed:1908231, ECO:0000269|PubMed:1925564,
+CC       ECO:0000269|PubMed:1944558, ECO:0000269|PubMed:8267572,
+CC       ECO:0000269|PubMed:8290042, ECO:0000269|PubMed:8476439,
+CC       ECO:0000269|PubMed:8577393, ECO:0000269|PubMed:8886002,
+CC       ECO:0000269|PubMed:9328472, ECO:0000269|PubMed:9754958}. Note=The
+CC       disease is caused by mutations affecting the gene represented in
+CC       this entry.
+CC   -!- DISEASE: Cerebral amyloid angiopathy, APP-related (CAA-APP)
+CC       [MIM:605714]: A hereditary localized amyloidosis due to amyloid-
+CC       beta A4 peptide(s) deposition in the cerebral vessels. The
+CC       principal clinical characteristics are recurrent cerebral and
+CC       cerebellar hemorrhages, recurrent strokes, cerebral ischemia,
+CC       cerebral infarction, and progressive mental deterioration.
+CC       Patients develop cerebral hemorrhage because of the severe
+CC       cerebral amyloid angiopathy. Parenchymal amyloid deposits are rare
+CC       and largely in the form of pre-amyloid lesions or diffuse plaque-
+CC       like structures. They are Congo red negative and lack the dense
+CC       amyloid cores commonly present in Alzheimer disease. Some affected
+CC       individuals manifest progressive aphasic dementia,
+CC       leukoencephalopathy, and occipital calcifications.
+CC       {ECO:0000269|PubMed:11409420, ECO:0000269|PubMed:12654973,
+CC       ECO:0000269|PubMed:16178030, ECO:0000269|PubMed:20697050,
+CC       ECO:0000269|PubMed:2111584}. Note=The disease is caused by
+CC       mutations affecting the gene represented in this entry.
+CC   -!- MISCELLANEOUS: Chelation of metal ions, notably copper, iron and
+CC       zinc, can induce histidine-bridging between amyloid-beta molecules
+CC       resulting in amyloid-beta-metal aggregates. The affinity for
+CC       copper is much higher than for other transient metals and is
+CC       increased under acidic conditions. Extracellular zinc-binding
+CC       increases binding of heparin to APP and inhibits collagen-binding.
+CC       {ECO:0000269|PubMed:26898943, ECO:0000269|PubMed:28570778}.
+CC   -!- SIMILARITY: Belongs to the APP family. {ECO:0000255|PROSITE-
+CC       ProRule:PRU01217}.
+CC   -!- SEQUENCE CAUTION:
+CC       Sequence=AAA58727.1; Type=Miscellaneous discrepancy; Note=Contamination by an Alu repeat.; Evidence={ECO:0000305};
+CC   -!- WEB RESOURCE: Name=Alzforum; Note=APP mutations;
+CC       URL="https://www.alzforum.org/mutations/search?genes%255B%255D=348";
+CC   -!- WEB RESOURCE: Name=AD mutations;
+CC       URL="http://www.molgen.ua.ac.be/ADmutations/";
+CC   -!- WEB RESOURCE: Name=NIEHS-SNPs;
+CC       URL="http://egp.gs.washington.edu/data/app/";
+CC   -!- WEB RESOURCE: Name=Wikipedia; Note=Amyloid beta entry;
+CC       URL="https://en.wikipedia.org/wiki/Amyloid_beta";
+CC   -----------------------------------------------------------------------
+CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
+CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
+CC   -----------------------------------------------------------------------
+DR   EMBL; Y00264; CAA68374.1; -; mRNA.
+DR   EMBL; X13466; CAA31830.1; -; Genomic_DNA.
+DR   EMBL; X13467; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13468; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13469; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13470; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13471; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13472; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13473; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13474; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13475; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13476; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13477; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13478; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13479; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13487; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X13488; CAA31830.1; JOINED; Genomic_DNA.
+DR   EMBL; X06989; CAA30050.1; -; mRNA.
+DR   EMBL; M33112; AAB59502.1; -; Genomic_DNA.
+DR   EMBL; M34862; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34863; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34864; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34865; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34866; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34867; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34868; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34869; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34870; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34871; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34872; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34873; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34874; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34876; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34877; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34878; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34879; AAB59502.1; JOINED; Genomic_DNA.
+DR   EMBL; M34875; AAB59501.1; ALT_TERM; Genomic_DNA.
+DR   EMBL; M34862; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34863; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34864; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34865; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34866; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34867; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34868; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34869; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34870; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34871; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34872; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; M34873; AAB59501.1; JOINED; Genomic_DNA.
+DR   EMBL; D87675; BAA22264.1; -; Genomic_DNA.
+DR   EMBL; AK312326; BAG35248.1; -; mRNA.
+DR   EMBL; AK295621; BAG58500.1; -; mRNA.
+DR   EMBL; AY919674; AAW82435.1; -; Genomic_DNA.
+DR   EMBL; AP001439; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AP001440; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AP001441; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AP001442; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; AP001443; -; NOT_ANNOTATED_CDS; Genomic_DNA.
+DR   EMBL; CH471079; EAX09958.1; -; Genomic_DNA.
+DR   EMBL; CH471079; EAX09959.1; -; Genomic_DNA.
+DR   EMBL; CH471079; EAX09960.1; -; Genomic_DNA.
+DR   EMBL; CH471079; EAX09961.1; -; Genomic_DNA.
+DR   EMBL; CH471079; EAX09963.1; -; Genomic_DNA.
+DR   EMBL; CH471079; EAX09965.1; -; Genomic_DNA.
+DR   EMBL; BC004369; AAH04369.1; -; mRNA.
+DR   EMBL; BC065529; AAH65529.1; -; mRNA.
+DR   EMBL; M35675; AAA60163.1; ALT_SEQ; mRNA.
+DR   EMBL; M24547; AAC13654.1; -; Genomic_DNA.
+DR   EMBL; M24546; AAC13654.1; JOINED; Genomic_DNA.
+DR   EMBL; M28373; AAA58727.1; ALT_SEQ; mRNA.
+DR   EMBL; X06982; CAA30042.1; -; mRNA.
+DR   EMBL; X06981; CAA30041.1; -; mRNA.
+DR   EMBL; M18734; AAA51726.1; -; mRNA.
+DR   EMBL; M29270; AAA51768.1; -; Genomic_DNA.
+DR   EMBL; M29269; AAA51768.1; JOINED; Genomic_DNA.
+DR   EMBL; AB066441; BAB71958.2; -; mRNA.
+DR   EMBL; M15533; AAA35540.1; -; mRNA.
+DR   EMBL; M15532; AAA51564.1; -; mRNA.
+DR   EMBL; M37896; AAA51727.1; -; Genomic_DNA.
+DR   EMBL; M37895; AAA51727.1; JOINED; Genomic_DNA.
+DR   EMBL; S45136; AAB23646.1; -; Genomic_DNA.
+DR   EMBL; S60317; AAC60601.2; -; Genomic_DNA.
+DR   EMBL; AF282245; AAQ14327.1; -; mRNA.
+DR   EMBL; S60721; AAB26263.2; -; mRNA.
+DR   EMBL; S61380; AAB26264.2; -; mRNA.
+DR   EMBL; S61383; AAB26265.2; -; mRNA.
+DR   EMBL; M16765; AAA51722.1; -; mRNA.
+DR   CCDS; CCDS13576.1; -. [P05067-1]
+DR   CCDS; CCDS13577.1; -. [P05067-4]
+DR   CCDS; CCDS33523.1; -. [P05067-8]
+DR   CCDS; CCDS46638.1; -. [P05067-10]
+DR   CCDS; CCDS56212.1; -. [P05067-11]
+DR   CCDS; CCDS56213.1; -. [P05067-9]
+DR   PIR; S01442; S01442.
+DR   PIR; S02260; QRHUA4.
+DR   RefSeq; NP_000475.1; NM_000484.3. [P05067-1]
+DR   RefSeq; NP_001129488.1; NM_001136016.3. [P05067-11]
+DR   RefSeq; NP_001129601.1; NM_001136129.2. [P05067-10]
+DR   RefSeq; NP_001129602.1; NM_001136130.2.
+DR   RefSeq; NP_001129603.1; NM_001136131.2.
+DR   RefSeq; NP_001191230.1; NM_001204301.1. [P05067-9]
+DR   RefSeq; NP_001191231.1; NM_001204302.1. [P05067-7]
+DR   RefSeq; NP_001191232.1; NM_001204303.1. [P05067-3]
+DR   RefSeq; NP_958816.1; NM_201413.2. [P05067-8]
+DR   RefSeq; NP_958817.1; NM_201414.2. [P05067-4]
+DR   UniGene; Hs.434980; -.
+DR   PDB; 1AAP; X-ray; 1.50 A; A/B=287-344.
+DR   PDB; 1AMB; NMR; -; A=672-699.
+DR   PDB; 1AMC; NMR; -; A=672-699.
+DR   PDB; 1AML; NMR; -; A=672-711.
+DR   PDB; 1BA4; NMR; -; A=672-711.
+DR   PDB; 1BA6; NMR; -; A=672-711.
+DR   PDB; 1BJB; NMR; -; A=672-699.
+DR   PDB; 1BJC; NMR; -; A=672-699.
+DR   PDB; 1BRC; X-ray; 2.50 A; I=287-342.
+DR   PDB; 1CA0; X-ray; 2.10 A; D/I=289-342.
+DR   PDB; 1HZ3; NMR; -; A=681-706.
+DR   PDB; 1IYT; NMR; -; A=672-713.
+DR   PDB; 1MWP; X-ray; 1.80 A; A=28-123.
+DR   PDB; 1OWT; NMR; -; A=124-189.
+DR   PDB; 1QCM; NMR; -; A=696-706.
+DR   PDB; 1QWP; NMR; -; A=696-706.
+DR   PDB; 1QXC; NMR; -; A=696-706.
+DR   PDB; 1QYT; NMR; -; A=696-706.
+DR   PDB; 1TAW; X-ray; 1.80 A; B=287-344.
+DR   PDB; 1TKN; NMR; -; A=460-569.
+DR   PDB; 1UO7; Model; -; A=672-713.
+DR   PDB; 1UO8; Model; -; A=672-713.
+DR   PDB; 1UOA; Model; -; A=672-713.
+DR   PDB; 1UOI; Model; -; A=672-713.
+DR   PDB; 1X11; X-ray; 2.50 A; C/D=754-766.
+DR   PDB; 1Z0Q; NMR; -; A=672-713.
+DR   PDB; 1ZE7; NMR; -; A=672-687.
+DR   PDB; 1ZE9; NMR; -; A=672-687.
+DR   PDB; 1ZJD; X-ray; 2.60 A; B=289-344.
+DR   PDB; 2BEG; NMR; -; A/B/C/D/E=672-713.
+DR   PDB; 2BOM; Model; -; A/B=681-713.
+DR   PDB; 2BP4; NMR; -; A=672-687.
+DR   PDB; 2FJZ; X-ray; 1.61 A; A=133-189.
+DR   PDB; 2FK1; X-ray; 1.60 A; A=133-189.
+DR   PDB; 2FK2; X-ray; 1.65 A; A=133-189.
+DR   PDB; 2FK3; X-ray; 2.40 A; A/B/C/D/E/F/G/H=133-189.
+DR   PDB; 2FKL; X-ray; 2.50 A; A/B=124-189.
+DR   PDB; 2FMA; X-ray; 0.85 A; A=133-189.
+DR   PDB; 2G47; X-ray; 2.10 A; C/D=672-711.
+DR   PDB; 2IPU; X-ray; 1.65 A; P/Q=672-679.
+DR   PDB; 2LFM; NMR; -; A=672-711.
+DR   PDB; 2LLM; NMR; -; A=686-726.
+DR   PDB; 2LMN; NMR; -; A/B/C/D/E/F/G/H/I/J/K/L=672-711.
+DR   PDB; 2LMO; NMR; -; A/B/C/D/E/F/G/H/I/J/K/L=672-711.
+DR   PDB; 2LMP; NMR; -; A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R=672-711.
+DR   PDB; 2LMQ; NMR; -; A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R=672-711.
+DR   PDB; 2LNQ; NMR; -; A/B/C/D/E/F/G/H=672-711.
+DR   PDB; 2LOH; NMR; -; A/B=686-726.
+DR   PDB; 2LP1; NMR; -; A=671-770.
+DR   PDB; 2LZ3; NMR; -; A/B=699-726.
+DR   PDB; 2LZ4; NMR; -; A/B=699-726.
+DR   PDB; 2M4J; NMR; -; A/B/C/D/E/F/G/H/I=672-711.
+DR   PDB; 2M9R; NMR; -; A=672-711.
+DR   PDB; 2M9S; NMR; -; A=672-711.
+DR   PDB; 2MGT; NMR; -; A/B=672-687.
+DR   PDB; 2MJ1; NMR; -; A=688-705.
+DR   PDB; 2MPZ; NMR; -; A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R/S/T/U/V/W/X/Y/Z/a=686-711.
+DR   PDB; 2MVX; NMR; -; A/B/C/D/E/F/G/H/I/J=672-711.
+DR   PDB; 2MXU; NMR; -; A/B/C/D/E/F/G/H/I/J/K/L=672-713.
+DR   PDB; 2NAO; NMR; -; A/B/C/D/E/F=672-713.
+DR   PDB; 2OTK; NMR; -; C=672-711.
+DR   PDB; 2R0W; X-ray; 2.50 A; Q=672-679.
+DR   PDB; 2WK3; X-ray; 2.59 A; C/D=672-713.
+DR   PDB; 2Y29; X-ray; 2.30 A; A=687-692.
+DR   PDB; 2Y2A; X-ray; 1.91 A; A=687-692.
+DR   PDB; 2Y3J; X-ray; 1.99 A; A/B/C/D/E/F/G/H=701-706.
+DR   PDB; 2Y3K; X-ray; 1.90 A; A/B/C/D/E/F/G/H=706-713.
+DR   PDB; 2Y3L; X-ray; 2.10 A; A/B/C/G=706-713.
+DR   PDB; 3AYU; X-ray; 2.00 A; B=586-595.
+DR   PDB; 3BAE; X-ray; 1.59 A; A=672-699.
+DR   PDB; 3BKJ; X-ray; 1.59 A; A=672-687.
+DR   PDB; 3DXC; X-ray; 2.10 A; B/D=739-770.
+DR   PDB; 3DXD; X-ray; 2.20 A; B/D=739-770.
+DR   PDB; 3DXE; X-ray; 2.00 A; B/D=739-770.
+DR   PDB; 3GCI; X-ray; 2.04 A; P=707-713.
+DR   PDB; 3IFL; X-ray; 1.50 A; P=672-678.
+DR   PDB; 3IFN; X-ray; 1.50 A; P=672-711.
+DR   PDB; 3IFO; X-ray; 2.15 A; P/Q=672-678.
+DR   PDB; 3IFP; X-ray; 2.95 A; P/Q/R/S=672-678.
+DR   PDB; 3JQ5; X-ray; 2.03 A; B=672-679.
+DR   PDB; 3JQL; X-ray; 1.20 A; B=687-692.
+DR   PDB; 3JTI; X-ray; 1.80 A; B=699-706.
+DR   PDB; 3KTM; X-ray; 2.70 A; A/B/C/D/E/F/G/H=18-190.
+DR   PDB; 3L33; X-ray; 2.48 A; E/F/G/H=290-341.
+DR   PDB; 3L81; X-ray; 1.60 A; B=761-767.
+DR   PDB; 3MOQ; X-ray; 2.05 A; A/B/C/D=689-712.
+DR   PDB; 3MXC; X-ray; 2.00 A; L=754-762.
+DR   PDB; 3MXY; X-ray; 2.30 A; L=754-762.
+DR   PDB; 3NYJ; X-ray; 3.20 A; A=365-567.
+DR   PDB; 3NYL; X-ray; 2.80 A; A=365-570.
+DR   PDB; 3OVJ; X-ray; 1.80 A; A/B/C/D=687-692.
+DR   PDB; 3OW9; X-ray; 1.80 A; A/B=687-692.
+DR   PDB; 3PZZ; X-ray; 1.29 A; A/B=700-705.
+DR   PDB; 3Q2X; X-ray; 1.45 A; A=698-703.
+DR   PDB; 3SV1; X-ray; 3.30 A; D/E/F=754-767.
+DR   PDB; 3U0T; X-ray; 2.50 A; E/F=701-711.
+DR   PDB; 3UMH; X-ray; 2.00 A; A=370-575.
+DR   PDB; 3UMI; X-ray; 2.40 A; A=370-575.
+DR   PDB; 3UMK; X-ray; 2.60 A; A=370-575.
+DR   PDB; 4HIX; X-ray; 2.20 A; A=672-699.
+DR   PDB; 4JFN; X-ray; 1.75 A; A=23-185.
+DR   PDB; 4M1C; X-ray; 3.50 A; G/H=672-711.
+DR   PDB; 4MDR; X-ray; 1.85 A; B=758-767.
+DR   PDB; 4MVI; X-ray; 1.70 A; B=672-711.
+DR   PDB; 4MVK; X-ray; 1.50 A; B=689-694.
+DR   PDB; 4MVL; X-ray; 2.30 A; E/F/G/H=672-711.
+DR   PDB; 4NGE; X-ray; 2.70 A; B/E=672-711.
+DR   PDB; 4OJF; X-ray; 2.00 A; A=672-679.
+DR   PDB; 4ONF; X-ray; 2.00 A; P=672-678.
+DR   PDB; 4ONG; X-ray; 2.20 A; P=672-711.
+DR   PDB; 4PQD; X-ray; 1.33 A; A=22-126.
+DR   PDB; 4PWQ; X-ray; 1.40 A; A/B=18-190.
+DR   PDB; 4XXD; X-ray; 2.41 A; C/F=683-699.
+DR   PDB; 5AEF; EM; 5.00 A; A/B=686-713.
+DR   PDB; 5AM8; X-ray; 1.90 A; P/Q/R/S=675-681.
+DR   PDB; 5AMB; X-ray; 1.55 A; P/Q=706-713.
+DR   PDB; 5BUO; X-ray; 2.31 A; A/B=370-710.
+DR   PDB; 5C67; X-ray; 1.83 A; C/E=294-344.
+DR   PDB; 5CSZ; X-ray; 1.80 A; D/E=672-682.
+DR   PDB; 5HOW; X-ray; 2.29 A; A/B/C/D/E/F=688-705.
+DR   PDB; 5HOX; X-ray; 1.90 A; A/B/C/D/E/F=688-707.
+DR   PDB; 5HOY; X-ray; 2.29 A; A/B/C/D/E/F=688-707.
+DR   PDB; 5KK3; NMR; -; A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R=672-713.
+DR   PDB; 5LFY; NMR; -; A/B=672-681.
+DR   PDB; 5LV0; X-ray; 2.70 A; C/D=706-711.
+DR   PDB; 5MY4; X-ray; 2.21 A; C=674-683.
+DR   PDB; 5MYO; X-ray; 1.59 A; E=674-683.
+DR   PDB; 5MYX; X-ray; 1.49 A; E/F=674-689.
+DR   PDB; 5ONP; X-ray; 1.34 A; B=700-704.
+DR   PDB; 5ONQ; X-ray; 1.17 A; B=700-704.
+DR   PDB; 5OQV; EM; 4.00 A; A/B/C/D/E/F/G/H/I=672-713.
+DR   PDB; 5TXD; X-ray; 1.45 A; Z=698-703.
+DR   PDB; 5VOS; EM; 1.42 A; A=695-705.
+DR   PDB; 5VZY; X-ray; 2.32 A; A=682-696.
+DR   PDB; 5W3P; X-ray; 1.92 A; P=672-687.
+DR   PDB; 6CO3; X-ray; 2.38 A; Q=672-682.
+DR   PDB; 6GFI; X-ray; 2.30 A; C/E=294-346.
+DR   PDBsum; 1AAP; -.
+DR   PDBsum; 1AMB; -.
+DR   PDBsum; 1AMC; -.
+DR   PDBsum; 1AML; -.
+DR   PDBsum; 1BA4; -.
+DR   PDBsum; 1BA6; -.
+DR   PDBsum; 1BJB; -.
+DR   PDBsum; 1BJC; -.
+DR   PDBsum; 1BRC; -.
+DR   PDBsum; 1CA0; -.
+DR   PDBsum; 1HZ3; -.
+DR   PDBsum; 1IYT; -.
+DR   PDBsum; 1MWP; -.
+DR   PDBsum; 1OWT; -.
+DR   PDBsum; 1QCM; -.
+DR   PDBsum; 1QWP; -.
+DR   PDBsum; 1QXC; -.
+DR   PDBsum; 1QYT; -.
+DR   PDBsum; 1TAW; -.
+DR   PDBsum; 1TKN; -.
+DR   PDBsum; 1UO7; -.
+DR   PDBsum; 1UO8; -.
+DR   PDBsum; 1UOA; -.
+DR   PDBsum; 1UOI; -.
+DR   PDBsum; 1X11; -.
+DR   PDBsum; 1Z0Q; -.
+DR   PDBsum; 1ZE7; -.
+DR   PDBsum; 1ZE9; -.
+DR   PDBsum; 1ZJD; -.
+DR   PDBsum; 2BEG; -.
+DR   PDBsum; 2BOM; -.
+DR   PDBsum; 2BP4; -.
+DR   PDBsum; 2FJZ; -.
+DR   PDBsum; 2FK1; -.
+DR   PDBsum; 2FK2; -.
+DR   PDBsum; 2FK3; -.
+DR   PDBsum; 2FKL; -.
+DR   PDBsum; 2FMA; -.
+DR   PDBsum; 2G47; -.
+DR   PDBsum; 2IPU; -.
+DR   PDBsum; 2LFM; -.
+DR   PDBsum; 2LLM; -.
+DR   PDBsum; 2LMN; -.
+DR   PDBsum; 2LMO; -.
+DR   PDBsum; 2LMP; -.
+DR   PDBsum; 2LMQ; -.
+DR   PDBsum; 2LNQ; -.
+DR   PDBsum; 2LOH; -.
+DR   PDBsum; 2LP1; -.
+DR   PDBsum; 2LZ3; -.
+DR   PDBsum; 2LZ4; -.
+DR   PDBsum; 2M4J; -.
+DR   PDBsum; 2M9R; -.
+DR   PDBsum; 2M9S; -.
+DR   PDBsum; 2MGT; -.
+DR   PDBsum; 2MJ1; -.
+DR   PDBsum; 2MPZ; -.
+DR   PDBsum; 2MVX; -.
+DR   PDBsum; 2MXU; -.
+DR   PDBsum; 2NAO; -.
+DR   PDBsum; 2OTK; -.
+DR   PDBsum; 2R0W; -.
+DR   PDBsum; 2WK3; -.
+DR   PDBsum; 2Y29; -.
+DR   PDBsum; 2Y2A; -.
+DR   PDBsum; 2Y3J; -.
+DR   PDBsum; 2Y3K; -.
+DR   PDBsum; 2Y3L; -.
+DR   PDBsum; 3AYU; -.
+DR   PDBsum; 3BAE; -.
+DR   PDBsum; 3BKJ; -.
+DR   PDBsum; 3DXC; -.
+DR   PDBsum; 3DXD; -.
+DR   PDBsum; 3DXE; -.
+DR   PDBsum; 3GCI; -.
+DR   PDBsum; 3IFL; -.
+DR   PDBsum; 3IFN; -.
+DR   PDBsum; 3IFO; -.
+DR   PDBsum; 3IFP; -.
+DR   PDBsum; 3JQ5; -.
+DR   PDBsum; 3JQL; -.
+DR   PDBsum; 3JTI; -.
+DR   PDBsum; 3KTM; -.
+DR   PDBsum; 3L33; -.
+DR   PDBsum; 3L81; -.
+DR   PDBsum; 3MOQ; -.
+DR   PDBsum; 3MXC; -.
+DR   PDBsum; 3MXY; -.
+DR   PDBsum; 3NYJ; -.
+DR   PDBsum; 3NYL; -.
+DR   PDBsum; 3OVJ; -.
+DR   PDBsum; 3OW9; -.
+DR   PDBsum; 3PZZ; -.
+DR   PDBsum; 3Q2X; -.
+DR   PDBsum; 3SV1; -.
+DR   PDBsum; 3U0T; -.
+DR   PDBsum; 3UMH; -.
+DR   PDBsum; 3UMI; -.
+DR   PDBsum; 3UMK; -.
+DR   PDBsum; 4HIX; -.
+DR   PDBsum; 4JFN; -.
+DR   PDBsum; 4M1C; -.
+DR   PDBsum; 4MDR; -.
+DR   PDBsum; 4MVI; -.
+DR   PDBsum; 4MVK; -.
+DR   PDBsum; 4MVL; -.
+DR   PDBsum; 4NGE; -.
+DR   PDBsum; 4OJF; -.
+DR   PDBsum; 4ONF; -.
+DR   PDBsum; 4ONG; -.
+DR   PDBsum; 4PQD; -.
+DR   PDBsum; 4PWQ; -.
+DR   PDBsum; 4XXD; -.
+DR   PDBsum; 5AEF; -.
+DR   PDBsum; 5AM8; -.
+DR   PDBsum; 5AMB; -.
+DR   PDBsum; 5BUO; -.
+DR   PDBsum; 5C67; -.
+DR   PDBsum; 5CSZ; -.
+DR   PDBsum; 5HOW; -.
+DR   PDBsum; 5HOX; -.
+DR   PDBsum; 5HOY; -.
+DR   PDBsum; 5KK3; -.
+DR   PDBsum; 5LFY; -.
+DR   PDBsum; 5LV0; -.
+DR   PDBsum; 5MY4; -.
+DR   PDBsum; 5MYO; -.
+DR   PDBsum; 5MYX; -.
+DR   PDBsum; 5ONP; -.
+DR   PDBsum; 5ONQ; -.
+DR   PDBsum; 5OQV; -.
+DR   PDBsum; 5TXD; -.
+DR   PDBsum; 5VOS; -.
+DR   PDBsum; 5VZY; -.
+DR   PDBsum; 5W3P; -.
+DR   PDBsum; 6CO3; -.
+DR   PDBsum; 6GFI; -.
+DR   ProteinModelPortal; P05067; -.
+DR   SMR; P05067; -.
+DR   BioGrid; 106848; 2117.
+DR   ComplexPortal; CPX-1062; Amyloid-beta protein 40/42 complex.
+DR   ComplexPortal; CPX-1069; Amyloid-beta protein 40 complex.
+DR   ComplexPortal; CPX-1070; Amyloid-beta protein 42 complex.
+DR   ComplexPortal; CPX-1120; Amyloid-beta protein 40/42 oligomeric complex.
+DR   ComplexPortal; CPX-1134; Amyloid-beta protein 42 oligomeric complex.
+DR   ComplexPortal; CPX-1180; Amyloid-beta protein 40 oligomeric complex.
+DR   CORUM; P05067; -.
+DR   DIP; DIP-574N; -.
+DR   ELM; P05067; -.
+DR   IntAct; P05067; 193.
+DR   MINT; P05067; -.
+DR   STRING; 9606.ENSP00000284981; -.
+DR   BindingDB; P05067; -.
+DR   ChEMBL; CHEMBL2487; -.
+DR   DrugBank; DB05150; CAD106.
+DR   DrugBank; DB09148; Florbetaben (18F).
+DR   DrugBank; DB09149; Florbetapir (18F).
+DR   DrugBank; DB09151; Flutemetamol (18F).
+DR   DrugBank; DB02235; L-methionine (R)-S-oxide.
+DR   DrugBank; DB05846; Mito-4509.
+DR   MEROPS; I02.015; -.
+DR   TCDB; 1.C.50.1.2; the amyloid Beta-protein peptide (aBetapp) family.
+DR   GlyConnect; 49; -.
+DR   iPTMnet; P05067; -.
+DR   PhosphoSitePlus; P05067; -.
+DR   SwissPalm; P05067; -.
+DR   UniCarbKB; P05067; -.
+DR   BioMuta; APP; -.
+DR   DMDM; 112927; -.
+DR   SWISS-2DPAGE; P05067; -.
+DR   EPD; P05067; -.
+DR   jPOST; P05067; -.
+DR   MaxQB; P05067; -.
+DR   PaxDb; P05067; -.
+DR   PeptideAtlas; P05067; -.
+DR   PRIDE; P05067; -.
+DR   ProteomicsDB; 51774; -.
+DR   ProteomicsDB; 51775; -. [P05067-10]
+DR   ProteomicsDB; 51776; -. [P05067-2]
+DR   ProteomicsDB; 51777; -. [P05067-3]
+DR   ProteomicsDB; 51778; -. [P05067-4]
+DR   ProteomicsDB; 51779; -. [P05067-5]
+DR   ProteomicsDB; 51780; -. [P05067-6]
+DR   ProteomicsDB; 51781; -. [P05067-7]
+DR   ProteomicsDB; 51782; -. [P05067-8]
+DR   ProteomicsDB; 51783; -. [P05067-9]
+DR   DNASU; 351; -.
+DR   Ensembl; ENST00000346798; ENSP00000284981; ENSG00000142192. [P05067-1]
+DR   Ensembl; ENST00000348990; ENSP00000345463; ENSG00000142192. [P05067-4]
+DR   Ensembl; ENST00000354192; ENSP00000346129; ENSG00000142192. [P05067-10]
+DR   Ensembl; ENST00000357903; ENSP00000350578; ENSG00000142192. [P05067-8]
+DR   Ensembl; ENST00000358918; ENSP00000351796; ENSG00000142192. [P05067-9]
+DR   Ensembl; ENST00000440126; ENSP00000387483; ENSG00000142192. [P05067-11]
+DR   GeneID; 351; -.
+DR   KEGG; hsa:351; -.
+DR   UCSC; uc002ylz.4; human. [P05067-1]
+DR   CTD; 351; -.
+DR   DisGeNET; 351; -.
+DR   EuPathDB; HostDB:ENSG00000142192.20; -.
+DR   GeneCards; APP; -.
+DR   HGNC; HGNC:620; APP.
+DR   HPA; CAB000157; -.
+DR   HPA; HPA001462; -.
+DR   MalaCards; APP; -.
+DR   MIM; 104300; phenotype.
+DR   MIM; 104760; gene.
+DR   MIM; 605714; phenotype.
+DR   neXtProt; NX_P05067; -.
+DR   OpenTargets; ENSG00000142192; -.
+DR   Orphanet; 324723; ABeta amyloidosis, Arctic type.
+DR   Orphanet; 100006; ABeta amyloidosis, Dutch type.
+DR   Orphanet; 324708; ABeta amyloidosis, Iowa type.
+DR   Orphanet; 324713; ABeta amyloidosis, Italian type.
+DR   Orphanet; 324718; ABetaA21G amyloidosis.
+DR   Orphanet; 324703; ABetaL34V amyloidosis.
+DR   Orphanet; 1020; Early-onset autosomal dominant Alzheimer disease.
+DR   PharmGKB; PA24910; -.
+DR   eggNOG; KOG3540; Eukaryota.
+DR   eggNOG; ENOG410ZW2A; LUCA.
+DR   GeneTree; ENSGT00530000063252; -.
+DR   HOGENOM; HOG000232190; -.
+DR   HOVERGEN; HBG000051; -.
+DR   InParanoid; P05067; -.
+DR   KO; K04520; -.
+DR   OMA; KQCKTHA; -.
+DR   OrthoDB; 1010560at2759; -.
+DR   PhylomeDB; P05067; -.
+DR   TreeFam; TF317274; -.
+DR   BioCyc; MetaCyc:ENSG00000142192-MONOMER; -.
+DR   Reactome; R-HSA-114608; Platelet degranulation.
+DR   Reactome; R-HSA-3000178; ECM proteoglycans.
+DR   Reactome; R-HSA-381426; Regulation of Insulin-like Growth Factor (IGF) transport and uptake by Insulin-like Growth Factor Binding Proteins (IGFBPs).
+DR   Reactome; R-HSA-416476; G alpha (q) signalling events.
+DR   Reactome; R-HSA-418594; G alpha (i) signalling events.
+DR   Reactome; R-HSA-432720; Lysosome Vesicle Biogenesis.
+DR   Reactome; R-HSA-444473; Formyl peptide receptors bind formyl peptides and many other ligands.
+DR   Reactome; R-HSA-445989; TAK1 activates NFkB by phosphorylation and activation of IKKs complex.
+DR   Reactome; R-HSA-844456; The NLRP3 inflammasome.
+DR   Reactome; R-HSA-879415; Advanced glycosylation endproduct receptor signaling.
+DR   Reactome; R-HSA-8862803; Deregulated CDK5 triggers multiple neurodegenerative pathways in Alzheimer's disease models.
+DR   Reactome; R-HSA-8957275; Post-translational protein phosphorylation.
+DR   Reactome; R-HSA-933542; TRAF6 mediated NF-kB activation.
+DR   Reactome; R-HSA-977225; Amyloid fiber formation.
+DR   SABIO-RK; P05067; -.
+DR   SIGNOR; P05067; -.
+DR   ChiTaRS; APP; human.
+DR   EvolutionaryTrace; P05067; -.
+DR   GeneWiki; Amyloid_precursor_protein; -.
+DR   GenomeRNAi; 351; -.
+DR   PMAP-CutDB; P05067; -.
+DR   PRO; PR:P05067; -.
+DR   Proteomes; UP000005640; Chromosome 21.
+DR   Bgee; ENSG00000142192; Expressed in 242 organ(s), highest expression level in frontal cortex.
+DR   ExpressionAtlas; P05067; baseline and differential.
+DR   Genevisible; P05067; HS.
+DR   GO; GO:0106003; C:amyloid-beta complex; IMP:ARUK-UCL.
+DR   GO; GO:0045177; C:apical part of cell; IEA:Ensembl.
+DR   GO; GO:0097449; C:astrocyte projection; IEA:Ensembl.
+DR   GO; GO:0030424; C:axon; ISS:UniProtKB.
+DR   GO; GO:0009986; C:cell surface; IDA:UniProtKB.
+DR   GO; GO:0005911; C:cell-cell junction; IEA:Ensembl.
+DR   GO; GO:0035253; C:ciliary rootlet; IEA:Ensembl.
+DR   GO; GO:0005905; C:clathrin-coated pit; IEA:UniProtKB-SubCell.
+DR   GO; GO:0030134; C:COPII-coated ER to Golgi transport vesicle; IEA:Ensembl.
+DR   GO; GO:0005737; C:cytoplasm; IDA:ARUK-UCL.
+DR   GO; GO:0005829; C:cytosol; TAS:Reactome.
+DR   GO; GO:0043198; C:dendritic shaft; IDA:MGI.
+DR   GO; GO:0043197; C:dendritic spine; IDA:MGI.
+DR   GO; GO:0005769; C:early endosome; IDA:ARUK-UCL.
+DR   GO; GO:0005788; C:endoplasmic reticulum lumen; TAS:Reactome.
+DR   GO; GO:0005768; C:endosome; IDA:UniProtKB.
+DR   GO; GO:0031904; C:endosome lumen; TAS:ARUK-UCL.
+DR   GO; GO:0070381; C:endosome to plasma membrane transport vesicle; IDA:ARUK-UCL.
+DR   GO; GO:0070062; C:extracellular exosome; HDA:UniProtKB.
+DR   GO; GO:0005576; C:extracellular region; TAS:Reactome.
+DR   GO; GO:0005615; C:extracellular space; IDA:ARUK-UCL.
+DR   GO; GO:0005794; C:Golgi apparatus; IDA:UniProtKB.
+DR   GO; GO:0005796; C:Golgi lumen; TAS:Reactome.
+DR   GO; GO:0005798; C:Golgi-associated vesicle; ISS:UniProtKB.
+DR   GO; GO:1990812; C:growth cone filopodium; IEA:Ensembl.
+DR   GO; GO:1990761; C:growth cone lamellipodium; IEA:Ensembl.
+DR   GO; GO:0034364; C:high-density lipoprotein particle; IDA:ARUK-UCL.
+DR   GO; GO:0016021; C:integral component of membrane; ISS:UniProtKB.
+DR   GO; GO:0005887; C:integral component of plasma membrane; TAS:ProtInc.
+DR   GO; GO:0034363; C:intermediate-density lipoprotein particle; IDA:ARUK-UCL.
+DR   GO; GO:0005622; C:intracellular; IDA:ARUK-UCL.
+DR   GO; GO:1990777; C:lipoprotein particle; IDA:ARUK-UCL.
+DR   GO; GO:0044304; C:main axon; IEA:Ensembl.
+DR   GO; GO:0016020; C:membrane; IDA:ARUK-UCL.
+DR   GO; GO:0045121; C:membrane raft; IDA:ParkinsonsUK-UCL.
+DR   GO; GO:0005739; C:mitochondrion; IDA:ARUK-UCL.
+DR   GO; GO:0031594; C:neuromuscular junction; IEA:Ensembl.
+DR   GO; GO:0005641; C:nuclear envelope lumen; IDA:Alzheimers_University_of_Toronto.
+DR   GO; GO:0005634; C:nucleus; IGI:ARUK-UCL.
+DR   GO; GO:0043204; C:perikaryon; IEA:UniProtKB-SubCell.
+DR   GO; GO:0048471; C:perinuclear region of cytoplasm; IDA:UniProtKB.
+DR   GO; GO:0005886; C:plasma membrane; IDA:ARUK-UCL.
+DR   GO; GO:0031093; C:platelet alpha granule lumen; TAS:Reactome.
+DR   GO; GO:0048786; C:presynaptic active zone; IEA:Ensembl.
+DR   GO; GO:0032991; C:protein-containing complex; IDA:ARUK-UCL.
+DR   GO; GO:0043235; C:receptor complex; IDA:MGI.
+DR   GO; GO:0055037; C:recycling endosome; ISS:UniProtKB.
+DR   GO; GO:0005791; C:rough endoplasmic reticulum; IEA:Ensembl.
+DR   GO; GO:0005790; C:smooth endoplasmic reticulum; IEA:GOC.
+DR   GO; GO:0051233; C:spindle midzone; IEA:Ensembl.
+DR   GO; GO:0045202; C:synapse; IDA:MGI.
+DR   GO; GO:0008021; C:synaptic vesicle; IEA:Ensembl.
+DR   GO; GO:0032588; C:trans-Golgi network membrane; TAS:Reactome.
+DR   GO; GO:0030549; F:acetylcholine receptor activator activity; TAS:ARUK-UCL.
+DR   GO; GO:0033130; F:acetylcholine receptor binding; IPI:UniProtKB.
+DR   GO; GO:0097645; F:amylin binding; TAS:ARUK-UCL.
+DR   GO; GO:0034185; F:apolipoprotein binding; IPI:ARUK-UCL.
+DR   GO; GO:0051087; F:chaperone binding; IPI:ARUK-UCL.
+DR   GO; GO:0042056; F:chemoattractant activity; IGI:ARUK-UCL.
+DR   GO; GO:0003677; F:DNA binding; ISS:UniProtKB.
+DR   GO; GO:0019899; F:enzyme binding; IPI:ParkinsonsUK-UCL.
+DR   GO; GO:0046875; F:ephrin receptor binding; IPI:ARUK-UCL.
+DR   GO; GO:0005109; F:frizzled binding; IPI:ARUK-UCL.
+DR   GO; GO:0070851; F:growth factor receptor binding; IEA:Ensembl.
+DR   GO; GO:1904399; F:heparan sulfate binding; TAS:ARUK-UCL.
+DR   GO; GO:0043395; F:heparan sulfate proteoglycan binding; IMP:ARUK-UCL.
+DR   GO; GO:0008201; F:heparin binding; IEA:UniProtKB-KW.
+DR   GO; GO:0042802; F:identical protein binding; IPI:IntAct.
+DR   GO; GO:0005158; F:insulin receptor binding; IPI:ARUK-UCL.
+DR   GO; GO:0005178; F:integrin binding; IDA:ARUK-UCL.
+DR   GO; GO:0050750; F:low-density lipoprotein particle receptor binding; ISS:ARUK-UCL.
+DR   GO; GO:0016504; F:peptidase activator activity; IEA:Ensembl.
+DR   GO; GO:0046983; F:protein dimerization activity; IDA:ARUK-UCL.
+DR   GO; GO:0046982; F:protein heterodimerization activity; IPI:ARUK-UCL.
+DR   GO; GO:0042803; F:protein homodimerization activity; IDA:ARUK-UCL.
+DR   GO; GO:0051425; F:PTB domain binding; IPI:BHF-UCL.
+DR   GO; GO:0050786; F:RAGE receptor binding; IPI:ARUK-UCL.
+DR   GO; GO:0030546; F:receptor activator activity; IDA:ARUK-UCL.
+DR   GO; GO:0000979; F:RNA polymerase II core promoter sequence-specific DNA binding; IGI:ARUK-UCL.
+DR   GO; GO:0004867; F:serine-type endopeptidase inhibitor activity; IDA:UniProtKB.
+DR   GO; GO:0005102; F:signaling receptor binding; IPI:ARUK-UCL.
+DR   GO; GO:0046914; F:transition metal ion binding; IEA:InterPro.
+DR   GO; GO:0000187; P:activation of MAPK activity; ISS:ARUK-UCL.
+DR   GO; GO:0000185; P:activation of MAPKKK activity; IGI:ARUK-UCL.
+DR   GO; GO:0007189; P:adenylate cyclase-activating G protein-coupled receptor signaling pathway; IGI:ARUK-UCL.
+DR   GO; GO:0007193; P:adenylate cyclase-inhibiting G protein-coupled receptor signaling pathway; IGI:ARUK-UCL.
+DR   GO; GO:0008344; P:adult locomotory behavior; ISS:UniProtKB.
+DR   GO; GO:1990000; P:amyloid fibril formation; IMP:ParkinsonsUK-UCL.
+DR   GO; GO:0019731; P:antibacterial humoral response; IDA:UniProtKB.
+DR   GO; GO:0019732; P:antifungal humoral response; IMP:UniProtKB.
+DR   GO; GO:0061844; P:antimicrobial humoral immune response mediated by antimicrobial peptide; IMP:UniProtKB.
+DR   GO; GO:0008306; P:associative learning; IGI:ARUK-UCL.
+DR   GO; GO:0048143; P:astrocyte activation; IGI:ARUK-UCL.
+DR   GO; GO:0002265; P:astrocyte activation involved in immune response; IGI:ARUK-UCL.
+DR   GO; GO:0008088; P:axo-dendritic transport; ISS:UniProtKB.
+DR   GO; GO:0016199; P:axon midline choice point recognition; ISS:UniProtKB.
+DR   GO; GO:0007409; P:axonogenesis; ISS:UniProtKB.
+DR   GO; GO:0019722; P:calcium-mediated signaling; IDA:ARUK-UCL.
+DR   GO; GO:0007155; P:cell adhesion; IEA:UniProtKB-KW.
+DR   GO; GO:0006878; P:cellular copper ion homeostasis; ISS:UniProtKB.
+DR   GO; GO:0009987; P:cellular process; IMP:ParkinsonsUK-UCL.
+DR   GO; GO:0044267; P:cellular protein metabolic process; TAS:Reactome.
+DR   GO; GO:1904646; P:cellular response to amyloid-beta; IGI:ARUK-UCL.
+DR   GO; GO:0071320; P:cellular response to cAMP; IEA:Ensembl.
+DR   GO; GO:0071280; P:cellular response to copper ion; IEA:Ensembl.
+DR   GO; GO:0071287; P:cellular response to manganese ion; IEA:Ensembl.
+DR   GO; GO:1990090; P:cellular response to nerve growth factor stimulus; IEA:Ensembl.
+DR   GO; GO:0071874; P:cellular response to norepinephrine stimulus; IEA:Ensembl.
+DR   GO; GO:0008203; P:cholesterol metabolic process; IEA:Ensembl.
+DR   GO; GO:0050890; P:cognition; ISS:UniProtKB.
+DR   GO; GO:0048669; P:collateral sprouting in absence of injury; ISS:UniProtKB.
+DR   GO; GO:0050829; P:defense response to Gram-negative bacterium; IDA:UniProtKB.
+DR   GO; GO:0050830; P:defense response to Gram-positive bacterium; IDA:UniProtKB.
+DR   GO; GO:0016358; P:dendrite development; ISS:UniProtKB.
+DR   GO; GO:0006897; P:endocytosis; ISS:UniProtKB.
+DR   GO; GO:0030198; P:extracellular matrix organization; ISS:UniProtKB.
+DR   GO; GO:0030900; P:forebrain development; IEA:Ensembl.
+DR   GO; GO:0007186; P:G protein-coupled receptor signaling pathway; IDA:ARUK-UCL.
+DR   GO; GO:0045087; P:innate immune response; IMP:UniProtKB.
+DR   GO; GO:0035235; P:ionotropic glutamate receptor signaling pathway; ISS:UniProtKB.
+DR   GO; GO:0007612; P:learning; IMP:ARUK-UCL.
+DR   GO; GO:0007611; P:learning or memory; IMP:ARUK-UCL.
+DR   GO; GO:0042157; P:lipoprotein metabolic process; IC:ARUK-UCL.
+DR   GO; GO:0007626; P:locomotory behavior; ISS:UniProtKB.
+DR   GO; GO:0007617; P:mating behavior; ISS:UniProtKB.
+DR   GO; GO:0046466; P:membrane lipid catabolic process; IDA:ARUK-UCL.
+DR   GO; GO:0007613; P:memory; IGI:ARUK-UCL.
+DR   GO; GO:0014005; P:microglia development; IGI:ARUK-UCL.
+DR   GO; GO:0001774; P:microglial cell activation; IGI:ARUK-UCL.
+DR   GO; GO:0090647; P:modulation of age-related behavioral decline; IMP:ARUK-UCL.
+DR   GO; GO:0098815; P:modulation of excitatory postsynaptic potential; IGI:ARUK-UCL.
+DR   GO; GO:0006378; P:mRNA polyadenylation; ISS:UniProtKB.
+DR   GO; GO:1903523; P:negative regulation of blood circulation; IGI:ARUK-UCL.
+DR   GO; GO:0090090; P:negative regulation of canonical Wnt signaling pathway; IDA:ARUK-UCL.
+DR   GO; GO:0008285; P:negative regulation of cell population proliferation; IDA:UniProtKB.
+DR   GO; GO:0010629; P:negative regulation of gene expression; IGI:ARUK-UCL.
+DR   GO; GO:1900272; P:negative regulation of long-term synaptic potentiation; IGI:ARUK-UCL.
+DR   GO; GO:0010823; P:negative regulation of mitochondrion organization; TAS:ARUK-UCL.
+DR   GO; GO:1901215; P:negative regulation of neuron death; IDA:ARUK-UCL.
+DR   GO; GO:0045665; P:negative regulation of neuron differentiation; IEA:Ensembl.
+DR   GO; GO:1902894; P:negative regulation of pri-miRNA transcription by RNA polymerase II; IDA:ARUK-UCL.
+DR   GO; GO:1900181; P:negative regulation of protein localization to nucleus; IGI:ARUK-UCL.
+DR   GO; GO:0000122; P:negative regulation of transcription by RNA polymerase II; IGI:ARUK-UCL.
+DR   GO; GO:0050885; P:neuromuscular process controlling balance; IEA:Ensembl.
+DR   GO; GO:0051402; P:neuron apoptotic process; IMP:UniProtKB.
+DR   GO; GO:0031175; P:neuron projection development; ISS:UniProtKB.
+DR   GO; GO:1990535; P:neuron projection maintenance; IGI:ARUK-UCL.
+DR   GO; GO:0016322; P:neuron remodeling; ISS:UniProtKB.
+DR   GO; GO:0007219; P:Notch signaling pathway; IEA:UniProtKB-KW.
+DR   GO; GO:0002576; P:platelet degranulation; TAS:Reactome.
+DR   GO; GO:0061903; P:positive regulation of 1-phosphatidylinositol-3-kinase activity; IGI:ARUK-UCL.
+DR   GO; GO:1905908; P:positive regulation of amyloid fibril formation; IMP:ARUK-UCL.
+DR   GO; GO:1902004; P:positive regulation of amyloid-beta formation; IGI:ARUK-UCL.
+DR   GO; GO:0043065; P:positive regulation of apoptotic process; IDA:ARUK-UCL.
+DR   GO; GO:1902961; P:positive regulation of aspartic-type endopeptidase activity involved in amyloid precursor protein catabolic process; IGI:ARUK-UCL.
+DR   GO; GO:0061890; P:positive regulation of astrocyte activation; IGI:ARUK-UCL.
+DR   GO; GO:0050867; P:positive regulation of cell activation; NAS:ARUK-UCL.
+DR   GO; GO:1905893; P:positive regulation of cellular response to thapsigargin; IDA:ARUK-UCL.
+DR   GO; GO:1905896; P:positive regulation of cellular response to tunicamycin; IDA:ARUK-UCL.
+DR   GO; GO:0045080; P:positive regulation of chemokine biosynthetic process; IGI:ARUK-UCL.
+DR   GO; GO:0043280; P:positive regulation of cysteine-type endopeptidase activity involved in apoptotic process; IDA:ARUK-UCL.
+DR   GO; GO:0007204; P:positive regulation of cytosolic calcium ion concentration; NAS:ARUK-UCL.
+DR   GO; GO:0051091; P:positive regulation of DNA-binding transcription factor activity; IGI:ARUK-UCL.
+DR   GO; GO:1904472; P:positive regulation of endothelin secretion; IGI:ARUK-UCL.
+DR   GO; GO:0070374; P:positive regulation of ERK1 and ERK2 cascade; IGI:ARUK-UCL.
+DR   GO; GO:2000463; P:positive regulation of excitatory postsynaptic potential; IGI:ARUK-UCL.
+DR   GO; GO:1904022; P:positive regulation of G protein-coupled receptor internalization; IDA:ARUK-UCL.
+DR   GO; GO:0045745; P:positive regulation of G protein-coupled receptor signaling pathway; IDA:ARUK-UCL.
+DR   GO; GO:0010971; P:positive regulation of G2/M transition of mitotic cell cycle; IEA:Ensembl.
+DR   GO; GO:0010628; P:positive regulation of gene expression; IMP:ARUK-UCL.
+DR   GO; GO:0035066; P:positive regulation of histone acetylation; IGI:ARUK-UCL.
+DR   GO; GO:0050725; P:positive regulation of interleukin-1 beta biosynthetic process; IGI:ARUK-UCL.
+DR   GO; GO:0045410; P:positive regulation of interleukin-6 biosynthetic process; IGI:ARUK-UCL.
+DR   GO; GO:0046330; P:positive regulation of JNK cascade; IGI:ARUK-UCL.
+DR   GO; GO:1900273; P:positive regulation of long-term synaptic potentiation; IGI:ARUK-UCL.
+DR   GO; GO:0043410; P:positive regulation of MAPK cascade; IGI:ARUK-UCL.
+DR   GO; GO:0051044; P:positive regulation of membrane protein ectodomain proteolysis; IDA:ARUK-UCL.
+DR   GO; GO:1903980; P:positive regulation of microglial cell activation; IGI:ARUK-UCL.
+DR   GO; GO:0045931; P:positive regulation of mitotic cell cycle; ISS:UniProtKB.
+DR   GO; GO:0090026; P:positive regulation of monocyte chemotaxis; IDA:ARUK-UCL.
+DR   GO; GO:0043525; P:positive regulation of neuron apoptotic process; IDA:ARUK-UCL.
+DR   GO; GO:1901216; P:positive regulation of neuron death; IDA:ARUK-UCL.
+DR   GO; GO:0045666; P:positive regulation of neuron differentiation; IGI:ARUK-UCL.
+DR   GO; GO:0051092; P:positive regulation of NF-kappaB transcription factor activity; IGI:ARUK-UCL.
+DR   GO; GO:1901224; P:positive regulation of NIK/NF-kappaB signaling; IDA:ARUK-UCL.
+DR   GO; GO:0045429; P:positive regulation of nitric oxide biosynthetic process; IGI:ARUK-UCL.
+DR   GO; GO:1903223; P:positive regulation of oxidative stress-induced neuron death; IGI:ARUK-UCL.
+DR   GO; GO:0033138; P:positive regulation of peptidyl-serine phosphorylation; IMP:ARUK-UCL.
+DR   GO; GO:0010800; P:positive regulation of peptidyl-threonine phosphorylation; IMP:ARUK-UCL.
+DR   GO; GO:0042327; P:positive regulation of phosphorylation; IGI:ARUK-UCL.
+DR   GO; GO:0032092; P:positive regulation of protein binding; IDA:ARUK-UCL.
+DR   GO; GO:1904591; P:positive regulation of protein import; IDA:ARUK-UCL.
+DR   GO; GO:0010739; P:positive regulation of protein kinase A signaling; NAS:ARUK-UCL.
+DR   GO; GO:0051897; P:positive regulation of protein kinase B signaling; NAS:ARUK-UCL.
+DR   GO; GO:0051247; P:positive regulation of protein metabolic process; IMP:ARUK-UCL.
+DR   GO; GO:0001934; P:positive regulation of protein phosphorylation; IDA:ARUK-UCL.
+DR   GO; GO:0061098; P:positive regulation of protein tyrosine kinase activity; IGI:ARUK-UCL.
+DR   GO; GO:1900122; P:positive regulation of receptor binding; IDA:ARUK-UCL.
+DR   GO; GO:1905898; P:positive regulation of response to endoplasmic reticulum stress; IDA:ARUK-UCL.
+DR   GO; GO:0032930; P:positive regulation of superoxide anion generation; IGI:ARUK-UCL.
+DR   GO; GO:2000406; P:positive regulation of T cell migration; IMP:ARUK-UCL.
+DR   GO; GO:1902949; P:positive regulation of tau-protein kinase activity; IGI:ARUK-UCL.
+DR   GO; GO:0045944; P:positive regulation of transcription by RNA polymerase II; IGI:ARUK-UCL.
+DR   GO; GO:0042535; P:positive regulation of tumor necrosis factor biosynthetic process; IGI:ARUK-UCL.
+DR   GO; GO:0043687; P:post-translational protein modification; TAS:Reactome.
+DR   GO; GO:0051260; P:protein homooligomerization; IDA:ARUK-UCL.
+DR   GO; GO:0006468; P:protein phosphorylation; ISS:UniProtKB.
+DR   GO; GO:0051262; P:protein tetramerization; IMP:ARUK-UCL.
+DR   GO; GO:0070206; P:protein trimerization; IMP:ARUK-UCL.
+DR   GO; GO:1903048; P:regulation of acetylcholine-gated cation channel activity; IGI:ARUK-UCL.
+DR   GO; GO:1905906; P:regulation of amyloid fibril formation; IGI:ARUK-UCL.
+DR   GO; GO:1900221; P:regulation of amyloid-beta clearance; IC:ARUK-UCL.
+DR   GO; GO:1902950; P:regulation of dendritic spine maintenance; IGI:ARUK-UCL.
+DR   GO; GO:0007176; P:regulation of epidermal growth factor-activated receptor activity; ISS:UniProtKB.
+DR   GO; GO:0010468; P:regulation of gene expression; IGI:ARUK-UCL.
+DR   GO; GO:0048169; P:regulation of long-term neuronal synaptic plasticity; IGI:ARUK-UCL.
+DR   GO; GO:0040014; P:regulation of multicellular organism growth; ISS:UniProtKB.
+DR   GO; GO:2000310; P:regulation of NMDA receptor activity; TAS:ARUK-UCL.
+DR   GO; GO:0050730; P:regulation of peptidyl-tyrosine phosphorylation; IGI:ARUK-UCL.
+DR   GO; GO:1905606; P:regulation of presynapse assembly; IDA:SynGO.
+DR   GO; GO:1905945; P:regulation of response to calcium ion; ISS:ARUK-UCL.
+DR   GO; GO:0150003; P:regulation of spontaneous synaptic transmission; IGI:ARUK-UCL.
+DR   GO; GO:0050803; P:regulation of synapse structure or activity; ISS:UniProtKB.
+DR   GO; GO:0034121; P:regulation of toll-like receptor signaling pathway; IGI:ARUK-UCL.
+DR   GO; GO:0006357; P:regulation of transcription by RNA polymerase II; IGI:ARUK-UCL.
+DR   GO; GO:0006417; P:regulation of translation; ISS:UniProtKB.
+DR   GO; GO:0030111; P:regulation of Wnt signaling pathway; IC:ARUK-UCL.
+DR   GO; GO:0010288; P:response to lead ion; IEA:Ensembl.
+DR   GO; GO:0006979; P:response to oxidative stress; IEA:Ensembl.
+DR   GO; GO:0001878; P:response to yeast; IMP:UniProtKB.
+DR   GO; GO:0051563; P:smooth endoplasmic reticulum calcium ion homeostasis; IEA:Ensembl.
+DR   GO; GO:0001967; P:suckling behavior; IEA:Ensembl.
+DR   GO; GO:0050808; P:synapse organization; IGI:ARUK-UCL.
+DR   GO; GO:0051124; P:synaptic growth at neuromuscular junction; IEA:Ensembl.
+DR   GO; GO:0032640; P:tumor necrosis factor production; IGI:ARUK-UCL.
+DR   GO; GO:0008542; P:visual learning; ISS:UniProtKB.
+DR   CDD; cd00109; KU; 1.
+DR   Gene3D; 1.20.120.770; -; 1.
+DR   Gene3D; 2.30.29.30; -; 1.
+DR   Gene3D; 3.30.1490.140; -; 1.
+DR   Gene3D; 3.90.570.10; -; 1.
+DR   Gene3D; 4.10.230.10; -; 1.
+DR   Gene3D; 4.10.410.10; -; 1.
+DR   InterPro; IPR036669; Amyloid_Cu-bd_sf.
+DR   InterPro; IPR008155; Amyloid_glyco.
+DR   InterPro; IPR013803; Amyloid_glyco_Abeta.
+DR   InterPro; IPR037071; Amyloid_glyco_Abeta_sf.
+DR   InterPro; IPR011178; Amyloid_glyco_Cu-bd.
+DR   InterPro; IPR024329; Amyloid_glyco_E2_domain.
+DR   InterPro; IPR008154; Amyloid_glyco_extra.
+DR   InterPro; IPR019744; Amyloid_glyco_extracell_CS.
+DR   InterPro; IPR015849; Amyloid_glyco_heparin-bd.
+DR   InterPro; IPR036454; Amyloid_glyco_heparin-bd_sf.
+DR   InterPro; IPR019745; Amyloid_glyco_intracell_CS.
+DR   InterPro; IPR028866; APP.
+DR   InterPro; IPR019543; APP_amyloid_C.
+DR   InterPro; IPR036176; E2_sf.
+DR   InterPro; IPR002223; Kunitz_BPTI.
+DR   InterPro; IPR036880; Kunitz_BPTI_sf.
+DR   InterPro; IPR011993; PH-like_dom_sf.
+DR   InterPro; IPR020901; Prtase_inh_Kunz-CS.
+DR   PANTHER; PTHR23103; PTHR23103; 1.
+DR   PANTHER; PTHR23103:SF7; PTHR23103:SF7; 1.
+DR   Pfam; PF10515; APP_amyloid; 1.
+DR   Pfam; PF12924; APP_Cu_bd; 1.
+DR   Pfam; PF12925; APP_E2; 1.
+DR   Pfam; PF02177; APP_N; 1.
+DR   Pfam; PF03494; Beta-APP; 1.
+DR   Pfam; PF00014; Kunitz_BPTI; 1.
+DR   PRINTS; PR00203; AMYLOIDA4.
+DR   PRINTS; PR00759; BASICPTASE.
+DR   PRINTS; PR00204; BETAAMYLOID.
+DR   SMART; SM00006; A4_EXTRA; 1.
+DR   SMART; SM00131; KU; 1.
+DR   SUPFAM; SSF109843; SSF109843; 1.
+DR   SUPFAM; SSF56491; SSF56491; 1.
+DR   SUPFAM; SSF57362; SSF57362; 1.
+DR   SUPFAM; SSF89811; SSF89811; 1.
+DR   PROSITE; PS00319; APP_CUBD; 1.
+DR   PROSITE; PS51869; APP_E1; 1.
+DR   PROSITE; PS51870; APP_E2; 1.
+DR   PROSITE; PS00320; APP_INTRA; 1.
+DR   PROSITE; PS00280; BPTI_KUNITZ_1; 1.
+DR   PROSITE; PS50279; BPTI_KUNITZ_2; 1.
+PE   1: Evidence at protein level;
+KW   3D-structure; Alternative splicing; Alzheimer disease; Amyloid;
+KW   Amyloidosis; Apoptosis; Cell adhesion; Cell membrane; Cell projection;
+KW   Coated pit; Complete proteome; Copper; Cytoplasm; Cytoplasmic vesicle;
+KW   Direct protein sequencing; Disease mutation; Disulfide bond;
+KW   Endocytosis; Endosome; Glycoprotein; Heparin-binding; Iron;
+KW   Isopeptide bond; Membrane; Metal-binding; Neurodegeneration;
+KW   Notch signaling pathway; Nucleus; Oxidation; Phosphoprotein;
+KW   Polymorphism; Protease inhibitor; Proteoglycan; Reference proteome;
+KW   Secreted; Serine protease inhibitor; Signal; Transmembrane;
+KW   Transmembrane helix; Ubl conjugation; Zinc.
+FT   SIGNAL        1     17       {ECO:0000269|PubMed:12665801,
+FT                                ECO:0000269|PubMed:2900137,
+FT                                ECO:0000269|PubMed:3597385}.
+FT   CHAIN        18    770       Amyloid-beta precursor protein.
+FT                                /FTId=PRO_0000000088.
+FT   CHAIN        18    687       Soluble APP-alpha.
+FT                                /FTId=PRO_0000000089.
+FT   CHAIN        18    671       Soluble APP-beta.
+FT                                /FTId=PRO_0000000090.
+FT   CHAIN        18    286       N-APP.
+FT                                /FTId=PRO_0000381966.
+FT   CHAIN       672    770       C99.
+FT                                /FTId=PRO_0000000091.
+FT   CHAIN       672    713       Amyloid-beta protein 42.
+FT                                /FTId=PRO_0000000092.
+FT   CHAIN       672    711       Amyloid-beta protein 40.
+FT                                /FTId=PRO_0000000093.
+FT   CHAIN       688    770       C83.
+FT                                /FTId=PRO_0000000094.
+FT   PEPTIDE     688    713       P3(42).
+FT                                /FTId=PRO_0000000095.
+FT   PEPTIDE     688    711       P3(40).
+FT                                /FTId=PRO_0000000096.
+FT   CHAIN       691    770       C80.
+FT                                /FTId=PRO_0000384574.
+FT   CHAIN       712    770       Gamma-secretase C-terminal fragment 59.
+FT                                /FTId=PRO_0000000097.
+FT   CHAIN       714    770       Gamma-secretase C-terminal fragment 57.
+FT                                /FTId=PRO_0000000098.
+FT   CHAIN       721    770       Gamma-secretase C-terminal fragment 50.
+FT                                {ECO:0000250}.
+FT                                /FTId=PRO_0000000099.
+FT   CHAIN       740    770       C31.
+FT                                /FTId=PRO_0000000100.
+FT   TOPO_DOM     18    701       Extracellular. {ECO:0000305}.
+FT   TRANSMEM    702    722       Helical. {ECO:0000305|PubMed:22584060,
+FT                                ECO:0000305|PubMed:22654059}.
+FT   TOPO_DOM    723    770       Cytoplasmic. {ECO:0000305}.
+FT   DOMAIN       28    189       E1. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01217}.
+FT   DOMAIN      291    341       BPTI/Kunitz inhibitor.
+FT                                {ECO:0000255|PROSITE-ProRule:PRU00031}.
+FT   DOMAIN      374    565       E2. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01218}.
+FT   REGION       28    123       GFLD subdomain. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01217}.
+FT   REGION       96    110       Heparin-binding.
+FT   REGION      131    189       CuBD subdomain. {ECO:0000255|PROSITE-
+FT                                ProRule:PRU01217}.
+FT   REGION      181    188       Zinc-binding.
+FT   REGION      391    423       Heparin-binding.
+FT   REGION      491    522       Heparin-binding.
+FT   REGION      523    540       Collagen-binding.
+FT                                {ECO:0000269|PubMed:8576160}.
+FT   REGION      732    751       Interaction with G(o)-alpha.
+FT   MOTIF       724    734       Basolateral sorting signal.
+FT   MOTIF       757    762       YENPXY motif; contains endocytosis
+FT                                signal. {ECO:0000269|PubMed:10383380}.
+FT   COMPBIAS    230    260       Asp/Glu-rich (acidic).
+FT   COMPBIAS    274    280       Poly-Thr.
+FT   METAL       147    147       Copper 1. {ECO:0000244|PDB:2FK1,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217,
+FT                                ECO:0000269|PubMed:17239395,
+FT                                ECO:0000269|PubMed:25122912}.
+FT   METAL       151    151       Copper 1. {ECO:0000244|PDB:2FK1,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217,
+FT                                ECO:0000269|PubMed:17239395,
+FT                                ECO:0000269|PubMed:25122912}.
+FT   METAL       168    168       Copper 1. {ECO:0000244|PDB:2FK1,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217,
+FT                                ECO:0000269|PubMed:17239395}.
+FT   METAL       677    677       Copper or zinc 2.
+FT                                {ECO:0000269|PubMed:11274207,
+FT                                ECO:0000269|PubMed:26898943}.
+FT   METAL       681    681       Copper or zinc 2.
+FT                                {ECO:0000305|PubMed:10413512,
+FT                                ECO:0000305|PubMed:11274207}.
+FT   METAL       684    684       Copper or zinc 2.
+FT                                {ECO:0000269|PubMed:10413512,
+FT                                ECO:0000269|PubMed:11274207,
+FT                                ECO:0000269|PubMed:26898943}.
+FT   METAL       685    685       Copper or zinc 2.
+FT                                {ECO:0000269|PubMed:11274207,
+FT                                ECO:0000269|PubMed:26898943}.
+FT   SITE        170    170       Required for Cu(2+) reduction.
+FT                                {ECO:0000255|PROSITE-ProRule:PRU01217}.
+FT   SITE        197    198       Cleavage; by caspases.
+FT                                {ECO:0000269|PubMed:10319819}.
+FT   SITE        219    220       Cleavage; by caspases.
+FT                                {ECO:0000269|PubMed:10319819}.
+FT   SITE        301    302       Reactive bond.
+FT   SITE        671    672       Cleavage; by beta-secretase.
+FT                                {ECO:0000305|PubMed:11851430}.
+FT   SITE        672    673       Cleavage; by caspase-6; when associated
+FT                                with variant 670-N-L-671.
+FT   SITE        687    688       Cleavage; by alpha-secretase.
+FT                                {ECO:0000305|PubMed:11851430}.
+FT   SITE        690    691       Cleavage; by theta-secretase.
+FT                                {ECO:0000269|PubMed:16816112}.
+FT   SITE        704    704       Implicated in free radical propagation.
+FT                                {ECO:0000250}.
+FT   SITE        706    706       Susceptible to oxidation.
+FT                                {ECO:0000269|PubMed:10535332}.
+FT   SITE        711    712       Cleavage; by gamma-secretase; site 1.
+FT                                {ECO:0000305|PubMed:11851430}.
+FT   SITE        713    714       Cleavage; by gamma-secretase; site 2.
+FT                                {ECO:0000305|PubMed:11851430}.
+FT   SITE        720    721       Cleavage; by gamma-secretase; site 3.
+FT                                {ECO:0000269|PubMed:11851430}.
+FT   SITE        739    740       Cleavage; by caspase-6, caspase-8 or
+FT                                caspase-9. {ECO:0000269|PubMed:10319819}.
+FT   MOD_RES     198    198       Phosphoserine; by CK2.
+FT                                {ECO:0000269|PubMed:8999878}.
+FT   MOD_RES     206    206       Phosphoserine; by CK1.
+FT                                {ECO:0000269|PubMed:8999878}.
+FT   MOD_RES     441    441       Phosphoserine; by FAM20C.
+FT                                {ECO:0000269|PubMed:26091039}.
+FT   MOD_RES     497    497       Phosphotyrosine.
+FT                                {ECO:0000269|PubMed:26091039}.
+FT   MOD_RES     729    729       Phosphothreonine.
+FT                                {ECO:0000250|UniProtKB:P08592}.
+FT   MOD_RES     730    730       Phosphoserine; by APP-kinase I.
+FT                                {ECO:0000250|UniProtKB:P08592}.
+FT   MOD_RES     743    743       Phosphothreonine; by CDK5 and MAPK10.
+FT                                {ECO:0000244|PubMed:24275569,
+FT                                ECO:0000269|PubMed:8131745}.
+FT   MOD_RES     757    757       Phosphotyrosine.
+FT                                {ECO:0000269|PubMed:11877420}.
+FT   CARBOHYD    542    542       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000269|PubMed:16335952}.
+FT   CARBOHYD    571    571       N-linked (GlcNAc...) asparagine.
+FT                                {ECO:0000305}.
+FT   CARBOHYD    633    633       O-linked (GalNAc...) threonine; partial.
+FT                                {ECO:0000269|PubMed:21712440,
+FT                                ECO:0000269|PubMed:22576872}.
+FT   CARBOHYD    651    651       O-linked (GalNAc...) threonine; partial.
+FT                                {ECO:0000269|PubMed:21712440,
+FT                                ECO:0000269|PubMed:22576872}.
+FT   CARBOHYD    652    652       O-linked (GalNAc...) threonine; partial.
+FT                                {ECO:0000269|PubMed:21712440,
+FT                                ECO:0000269|PubMed:22576872}.
+FT   CARBOHYD    656    656       O-linked (Xyl...) (chondroitin sulfate)
+FT                                serine; in L-APP isoforms.
+FT                                {ECO:0000269|PubMed:21712440}.
+FT   CARBOHYD    659    659       O-linked (HexNAc...) threonine; partial.
+FT                                {ECO:0000269|PubMed:22576872}.
+FT   CARBOHYD    663    663       O-linked (GalNAc...) threonine; partial.
+FT                                {ECO:0000269|PubMed:22576872,
+FT                                ECO:0000305|PubMed:21712440}.
+FT   CARBOHYD    667    667       O-linked (GalNAc...) serine; partial.
+FT                                {ECO:0000269|PubMed:22576872,
+FT                                ECO:0000305|PubMed:21712440}.
+FT   CARBOHYD    681    681       O-linked (HexNAc...) tyrosine; partial.
+FT                                {ECO:0000269|PubMed:22576872}.
+FT   DISULFID     38     62       {ECO:0000244|PDB:1MWP,
+FT                                ECO:0000244|PDB:3KTM,
+FT                                ECO:0000244|PDB:4JFN,
+FT                                ECO:0000244|PDB:4PQD,
+FT                                ECO:0000244|PDB:4PWQ,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217}.
+FT   DISULFID     73    117       {ECO:0000244|PDB:1MWP,
+FT                                ECO:0000244|PDB:3KTM,
+FT                                ECO:0000244|PDB:4JFN,
+FT                                ECO:0000244|PDB:4PQD,
+FT                                ECO:0000244|PDB:4PWQ,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217}.
+FT   DISULFID     98    105       {ECO:0000244|PDB:1MWP,
+FT                                ECO:0000244|PDB:3KTM,
+FT                                ECO:0000244|PDB:4PQD,
+FT                                ECO:0000244|PDB:4PWQ,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217}.
+FT   DISULFID    133    187       {ECO:0000244|PDB:1OWT,
+FT                                ECO:0000244|PDB:2FJZ,
+FT                                ECO:0000244|PDB:2FK1,
+FT                                ECO:0000244|PDB:2FK2,
+FT                                ECO:0000244|PDB:2FK3,
+FT                                ECO:0000244|PDB:2FKL,
+FT                                ECO:0000244|PDB:2FMA,
+FT                                ECO:0000244|PDB:3KTM,
+FT                                ECO:0000244|PDB:4PWQ,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217,
+FT                                ECO:0000269|PubMed:12611883,
+FT                                ECO:0000269|PubMed:17239395,
+FT                                ECO:0000269|PubMed:17909280}.
+FT   DISULFID    144    174       {ECO:0000244|PDB:1OWT,
+FT                                ECO:0000244|PDB:2FJZ,
+FT                                ECO:0000244|PDB:2FK1,
+FT                                ECO:0000244|PDB:2FK2,
+FT                                ECO:0000244|PDB:2FK3,
+FT                                ECO:0000244|PDB:2FKL,
+FT                                ECO:0000244|PDB:2FMA,
+FT                                ECO:0000244|PDB:3KTM,
+FT                                ECO:0000244|PDB:4PWQ,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217,
+FT                                ECO:0000269|PubMed:12611883,
+FT                                ECO:0000269|PubMed:17239395,
+FT                                ECO:0000269|PubMed:17909280}.
+FT   DISULFID    158    186       {ECO:0000244|PDB:1OWT,
+FT                                ECO:0000244|PDB:2FJZ,
+FT                                ECO:0000244|PDB:2FK1,
+FT                                ECO:0000244|PDB:2FK2,
+FT                                ECO:0000244|PDB:2FK3,
+FT                                ECO:0000244|PDB:2FKL,
+FT                                ECO:0000244|PDB:2FMA,
+FT                                ECO:0000244|PDB:3KTM,
+FT                                ECO:0000244|PDB:4PWQ,
+FT                                ECO:0000255|PROSITE-ProRule:PRU01217,
+FT                                ECO:0000269|PubMed:12611883,
+FT                                ECO:0000269|PubMed:17239395,
+FT                                ECO:0000269|PubMed:17909280}.
+FT   DISULFID    291    341       {ECO:0000244|PDB:1AAP,
+FT                                ECO:0000244|PDB:1BRC,
+FT                                ECO:0000244|PDB:1CA0,
+FT                                ECO:0000244|PDB:1TAW,
+FT                                ECO:0000244|PDB:1ZJD,
+FT                                ECO:0000244|PDB:3L33}.
+FT   DISULFID    300    324       {ECO:0000244|PDB:1AAP,
+FT                                ECO:0000244|PDB:1BRC,
+FT                                ECO:0000244|PDB:1CA0,
+FT                                ECO:0000244|PDB:1TAW,
+FT                                ECO:0000244|PDB:1ZJD,
+FT                                ECO:0000244|PDB:3L33,
+FT                                ECO:0000244|PDB:5C67}.
+FT   DISULFID    316    337       {ECO:0000244|PDB:1AAP,
+FT                                ECO:0000244|PDB:1BRC,
+FT                                ECO:0000244|PDB:1CA0,
+FT                                ECO:0000244|PDB:1TAW,
+FT                                ECO:0000244|PDB:1ZJD,
+FT                                ECO:0000244|PDB:3L33,
+FT                                ECO:0000244|PDB:5C67}.
+FT   CROSSLNK    763    763       Glycyl lysine isopeptide (Lys-Gly)
+FT                                (interchain with G-Cter in ubiquitin).
+FT                                {ECO:0000250|UniProtKB:P08592}.
+FT   VAR_SEQ       1     19       MLPGLALLLLAAWTARALE -> MDQLEDLLVLFINY (in
+FT                                isoform 11).
+FT                                {ECO:0000303|PubMed:14702039}.
+FT                                /FTId=VSP_045446.
+FT   VAR_SEQ      19     74       Missing (in isoform APP639).
+FT                                {ECO:0000303|PubMed:12859342}.
+FT                                /FTId=VSP_009116.
+FT   VAR_SEQ     289    363       Missing (in isoform APP639).
+FT                                {ECO:0000303|PubMed:12859342}.
+FT                                /FTId=VSP_009117.
+FT   VAR_SEQ     289    289       E -> V (in isoform APP695, isoform L-
+FT                                APP696, isoform L-APP677 and isoform
+FT                                APP714). {ECO:0000303|PubMed:2881207}.
+FT                                /FTId=VSP_000002.
+FT   VAR_SEQ     290    364       Missing (in isoform APP695 and isoform L-
+FT                                APP677). {ECO:0000303|PubMed:2881207}.
+FT                                /FTId=VSP_000004.
+FT   VAR_SEQ     290    345       Missing (in isoform L-APP696 and isoform
+FT                                APP714). {ECO:0000305}.
+FT                                /FTId=VSP_000003.
+FT   VAR_SEQ     290    305       VCSEQAETGPCRAMIS -> KWYKEVHSGQARWLML (in
+FT                                isoform APP305).
+FT                                {ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_000005.
+FT   VAR_SEQ     306    770       Missing (in isoform APP305).
+FT                                {ECO:0000303|PubMed:15489334}.
+FT                                /FTId=VSP_000006.
+FT   VAR_SEQ     345    364       MSQSLLKTTQEPLARDPVKL -> I (in isoform
+FT                                11). {ECO:0000303|PubMed:14702039}.
+FT                                /FTId=VSP_045447.
+FT   VAR_SEQ     345    345       M -> I (in isoform L-APP733 and isoform
+FT                                APP751). {ECO:0000303|PubMed:15489334,
+FT                                ECO:0000303|PubMed:1587857,
+FT                                ECO:0000303|PubMed:2893289}.
+FT                                /FTId=VSP_000007.
+FT   VAR_SEQ     346    364       Missing (in isoform L-APP733 and isoform
+FT                                APP751). {ECO:0000303|PubMed:15489334,
+FT                                ECO:0000303|PubMed:1587857,
+FT                                ECO:0000303|PubMed:2893289}.
+FT                                /FTId=VSP_000008.
+FT   VAR_SEQ     364    364       L -> V (in isoform APP639).
+FT                                {ECO:0000303|PubMed:12859342}.
+FT                                /FTId=VSP_009118.
+FT   VAR_SEQ     637    654       Missing (in isoform L-APP677, isoform L-
+FT                                APP696, isoform L-APP733 and isoform L-
+FT                                APP752). {ECO:0000303|PubMed:1587857}.
+FT                                /FTId=VSP_000009.
+FT   VARIANT     501    501       E -> K (in dbSNP:rs45588932).
+FT                                {ECO:0000269|Ref.10}.
+FT                                /FTId=VAR_022315.
+FT   VARIANT     665    665       E -> D (in a patient with late onset
+FT                                Alzheimer disease; dbSNP:rs63750363).
+FT                                {ECO:0000269|PubMed:8154870}.
+FT                                /FTId=VAR_010107.
+FT   VARIANT     670    671       KM -> NL (in AD1; Swedish mutation;
+FT                                highly increases hydrolysis by BACE1 and
+FT                                amyloid-beta proteins production;
+FT                                dbSNP:rs281865161).
+FT                                {ECO:0000269|PubMed:10656250,
+FT                                ECO:0000269|PubMed:10677483,
+FT                                ECO:0000269|PubMed:1302033,
+FT                                ECO:0000269|PubMed:1465129}.
+FT                                /FTId=VAR_000015.
+FT   VARIANT     678    678       D -> N (in AD1; dbSNP:rs63750064).
+FT                                {ECO:0000269|PubMed:15201367}.
+FT                                /FTId=VAR_044424.
+FT   VARIANT     692    692       A -> G (in AD1; Flemish mutation;
+FT                                increases the solubility of processed
+FT                                amyloid-beta peptides and increases the
+FT                                stability of peptide oligomers;
+FT                                dbSNP:rs63750671).
+FT                                {ECO:0000269|PubMed:11311152,
+FT                                ECO:0000269|PubMed:1303239,
+FT                                ECO:0000269|PubMed:9754958}.
+FT                                /FTId=VAR_000016.
+FT   VARIANT     693    693       E -> G (in AD1; dbSNP:rs63751039).
+FT                                {ECO:0000269|PubMed:11528419,
+FT                                ECO:0000269|PubMed:1415269}.
+FT                                /FTId=VAR_014215.
+FT   VARIANT     693    693       E -> K (in CAA-APP; Italian type;
+FT                                dbSNP:rs63750579).
+FT                                {ECO:0000269|PubMed:20697050}.
+FT                                /FTId=VAR_014216.
+FT   VARIANT     693    693       E -> Q (in CAA-APP; Dutch type;
+FT                                dbSNP:rs63750579).
+FT                                {ECO:0000269|PubMed:2111584}.
+FT                                /FTId=VAR_000017.
+FT   VARIANT     694    694       D -> N (in CAA-APP; Iowa type;
+FT                                dbSNP:rs63749810).
+FT                                {ECO:0000269|PubMed:11409420,
+FT                                ECO:0000269|PubMed:12654973}.
+FT                                /FTId=VAR_014217.
+FT   VARIANT     705    705       L -> V (in CAA-APP; Italian type;
+FT                                dbSNP:rs63750921).
+FT                                {ECO:0000269|PubMed:16178030}.
+FT                                /FTId=VAR_032276.
+FT   VARIANT     713    713       A -> T (in AD1; dbSNP:rs63750066).
+FT                                {ECO:0000269|PubMed:1303275,
+FT                                ECO:0000269|PubMed:15365148}.
+FT                                /FTId=VAR_000019.
+FT   VARIANT     713    713       A -> V (in one chronic schizophrenia
+FT                                patient; unknown pathological
+FT                                significance; dbSNP:rs1800557).
+FT                                {ECO:0000269|PubMed:1307241}.
+FT                                /FTId=VAR_000018.
+FT   VARIANT     714    714       T -> A (in AD1; dbSNP:rs63750643).
+FT                                {ECO:0000269|PubMed:12034808}.
+FT                                /FTId=VAR_032277.
+FT   VARIANT     714    714       T -> I (in AD1; increased amyloid-beta
+FT                                protein 42/40 ratio; dbSNP:rs63750973).
+FT                                {ECO:0000269|PubMed:11063718,
+FT                                ECO:0000269|PubMed:15668448}.
+FT                                /FTId=VAR_014218.
+FT   VARIANT     715    715       V -> M (in AD1; decreased amyloid-beta
+FT                                protein 40/total amyloid-beta;
+FT                                dbSNP:rs63750734).
+FT                                {ECO:0000269|PubMed:10097173}.
+FT                                /FTId=VAR_010108.
+FT   VARIANT     716    716       I -> V (in AD1; dbSNP:rs63750399).
+FT                                {ECO:0000269|PubMed:9328472}.
+FT                                /FTId=VAR_000020.
+FT   VARIANT     717    717       V -> F (in AD1; increased amyloid-beta
+FT                                protein 42/40 ratio; dbSNP:rs63750264).
+FT                                {ECO:0000269|PubMed:1925564,
+FT                                ECO:0000269|PubMed:8267572,
+FT                                ECO:0000269|PubMed:8290042,
+FT                                ECO:0000269|PubMed:8476439,
+FT                                ECO:0000269|PubMed:8886002}.
+FT                                /FTId=VAR_000023.
+FT   VARIANT     717    717       V -> G (in AD1; increased amyloid-beta
+FT                                protein 42/40 ratio; dbSNP:rs63749964).
+FT                                {ECO:0000269|PubMed:1944558,
+FT                                ECO:0000269|PubMed:8476439,
+FT                                ECO:0000269|PubMed:8886002}.
+FT                                /FTId=VAR_000022.
+FT   VARIANT     717    717       V -> I (in AD1; increased amyloid-beta
+FT                                protein 42/40 ratio; dbSNP:rs63750264).
+FT                                {ECO:0000269|PubMed:10631141,
+FT                                ECO:0000269|PubMed:11063718,
+FT                                ECO:0000269|PubMed:1671712,
+FT                                ECO:0000269|PubMed:1678058,
+FT                                ECO:0000269|PubMed:1908231,
+FT                                ECO:0000269|PubMed:8267572,
+FT                                ECO:0000269|PubMed:8476439,
+FT                                ECO:0000269|PubMed:8577393,
+FT                                ECO:0000269|PubMed:8886002}.
+FT                                /FTId=VAR_000021.
+FT   VARIANT     717    717       V -> L (in AD1; dbSNP:rs63750264).
+FT                                {ECO:0000269|PubMed:10867787}.
+FT                                /FTId=VAR_014219.
+FT   VARIANT     723    723       L -> P (in AD1; dbSNP:rs63751122).
+FT                                {ECO:0000269|PubMed:10665499}.
+FT                                /FTId=VAR_010109.
+FT   MUTAGEN      99    102       KRGR->NQGG: Reduced heparin-binding.
+FT                                {ECO:0000269|PubMed:8158260}.
+FT   MUTAGEN     108    108       H->A: Loss of the copper binding site in
+FT                                the GFLD subdomain; when associated with
+FT                                A-110. {ECO:0000269|PubMed:25122912}.
+FT   MUTAGEN     110    110       H->A: Loss of the copper binding site in
+FT                                the GFLD subdomain; when associated with
+FT                                A-108. {ECO:0000269|PubMed:25122912}.
+FT   MUTAGEN     137    137       H->N: Binds copper. Forms dimer.
+FT                                {ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     141    141       M->T: Binds copper. Forms dimer.
+FT                                {ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     144    144       C->S: Binds copper. No dimer formation.
+FT                                No copper reducing activity.
+FT                                {ECO:0000269|PubMed:10461923,
+FT                                ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     147    149       HLH->ALA: 50% decrease in copper reducing
+FT                                activity. {ECO:0000269|PubMed:10461923}.
+FT   MUTAGEN     147    147       H->A: Loss of a copper binding site; when
+FT                                associated with A-151.
+FT                                {ECO:0000269|PubMed:25122912}.
+FT   MUTAGEN     147    147       H->A: Some decrease in copper reducing
+FT                                activity. {ECO:0000269|PubMed:11784781,
+FT                                ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     147    147       H->N: Binds copper. Forms dimer.
+FT                                {ECO:0000269|PubMed:11784781,
+FT                                ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     147    147       H->Y: Greatly reduced copper-mediated
+FT                                low-density lipoprotein oxidation.
+FT                                {ECO:0000269|PubMed:11784781,
+FT                                ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     151    151       H->A: Loss of a copper binding site; when
+FT                                associated with A-147.
+FT                                {ECO:0000269|PubMed:25122912}.
+FT   MUTAGEN     151    151       H->K: Greatly reduced copper-mediated
+FT                                low-density lipoprotein oxidation.
+FT                                {ECO:0000269|PubMed:11784781,
+FT                                ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     151    151       H->N: Binds copper. Forms dimer.
+FT                                {ECO:0000269|PubMed:11784781,
+FT                                ECO:0000269|PubMed:7913895}.
+FT   MUTAGEN     198    198       S->A: Greatly reduced casein kinase
+FT                                phosphorylation.
+FT                                {ECO:0000269|PubMed:10806211,
+FT                                ECO:0000269|PubMed:8999878}.
+FT   MUTAGEN     206    206       S->A: Reduced casein kinase
+FT                                phosphorylation.
+FT                                {ECO:0000269|PubMed:10806211,
+FT                                ECO:0000269|PubMed:8999878}.
+FT   MUTAGEN     499    499       R->A: Reduced affinity for heparin; when
+FT                                associated with A-503.
+FT                                {ECO:0000269|PubMed:15304215}.
+FT   MUTAGEN     503    503       K->A: Reduced affinity for heparin; when
+FT                                associated with A-499.
+FT                                {ECO:0000269|PubMed:15304215}.
+FT   MUTAGEN     656    656       S->A: Abolishes chondroitin sulfate
+FT                                binding in L-APP733 isoform.
+FT                                {ECO:0000269|PubMed:7737970}.
+FT   MUTAGEN     676    676       R->G: 60-70% zinc-induced amyloid-beta
+FT                                protein 28 aggregation.
+FT                                {ECO:0000269|PubMed:10413512}.
+FT   MUTAGEN     681    681       Y->F: 60-70% zinc-induced amyloid-beta
+FT                                protein 28 aggregation.
+FT                                {ECO:0000269|PubMed:10413512}.
+FT   MUTAGEN     684    684       H->R: Only 23% zinc-induced amyloid-beta
+FT                                protein 28 aggregation.
+FT                                {ECO:0000269|PubMed:10413512}.
+FT   MUTAGEN     704    704       G->V: Reduced protein oxidation. No
+FT                                hippocampal neuron toxicity.
+FT   MUTAGEN     706    706       M->L: Reduced lipid peroxidation
+FT                                inhibition. {ECO:0000269|PubMed:10535332,
+FT                                ECO:0000269|PubMed:9168929}.
+FT   MUTAGEN     706    706       M->V: No free radical production. No
+FT                                hippocampal neuron toxicity.
+FT                                {ECO:0000269|PubMed:10535332,
+FT                                ECO:0000269|PubMed:9168929}.
+FT   MUTAGEN     717    717       V->C,S: Unchanged amyloid-beta protein
+FT                                42/total amyloid-beta ratio.
+FT                                {ECO:0000269|PubMed:11063718,
+FT                                ECO:0000269|PubMed:8886002}.
+FT   MUTAGEN     717    717       V->K: Decreased amyloid-beta protein
+FT                                42/total amyloid-beta ratio.
+FT                                {ECO:0000269|PubMed:11063718,
+FT                                ECO:0000269|PubMed:8886002}.
+FT   MUTAGEN     717    717       V->M: Increased amyloid-beta protein
+FT                                42/40 ratio. No change in apoptosis after
+FT                                caspase cleavage.
+FT                                {ECO:0000269|PubMed:11063718,
+FT                                ECO:0000269|PubMed:8886002}.
+FT   MUTAGEN     728    728       Y->A: No effect on APBA1 nor APBB1
+FT                                binding. Greatly reduces the binding to
+FT                                APPBP2. APP internalization unchanged. No
+FT                                change in amyloid-beta protein 42
+FT                                secretion. {ECO:0000269|PubMed:10383380,
+FT                                ECO:0000269|PubMed:8887653,
+FT                                ECO:0000269|PubMed:9843960}.
+FT   MUTAGEN     739    739       D->A: No cleavage by caspases during
+FT                                apoptosis. {ECO:0000269|PubMed:10319819,
+FT                                ECO:0000269|PubMed:10742146,
+FT                                ECO:0000269|PubMed:12214090}.
+FT   MUTAGEN     739    739       D->N: No effect on FADD-induced
+FT                                apoptosis. {ECO:0000269|PubMed:10319819,
+FT                                ECO:0000269|PubMed:10742146,
+FT                                ECO:0000269|PubMed:12214090}.
+FT   MUTAGEN     743    743       T->A: Greatly reduces the binding to SHC1
+FT                                and APBB family members; no effect on
+FT                                NGF-stimulated neurite extension.
+FT                                {ECO:0000269|PubMed:10341243,
+FT                                ECO:0000269|PubMed:11146006,
+FT                                ECO:0000269|PubMed:11517218,
+FT                                ECO:0000269|PubMed:11877420}.
+FT   MUTAGEN     743    743       T->E: Reduced NGF-stimulated neurite
+FT                                extension. No effect on APP maturation.
+FT                                {ECO:0000269|PubMed:10341243,
+FT                                ECO:0000269|PubMed:11146006,
+FT                                ECO:0000269|PubMed:11517218,
+FT                                ECO:0000269|PubMed:11877420}.
+FT   MUTAGEN     756    756       G->A: APP internalization unchanged. No
+FT                                change in amyloid-beta protein 42
+FT                                secretion. {ECO:0000269|PubMed:10383380}.
+FT   MUTAGEN     757    757       Y->A: Little APP internalization. Reduced
+FT                                amyloid-beta protein 42 secretion.
+FT                                {ECO:0000269|PubMed:10383380,
+FT                                ECO:0000269|PubMed:11724784,
+FT                                ECO:0000269|PubMed:11877420,
+FT                                ECO:0000269|PubMed:8887653}.
+FT   MUTAGEN     757    757       Y->G: Loss of binding to MAPK8IP1, APBA1,
+FT                                APBB1, APPBP2 and SHC1.
+FT                                {ECO:0000269|PubMed:10383380,
+FT                                ECO:0000269|PubMed:11724784,
+FT                                ECO:0000269|PubMed:11877420,
+FT                                ECO:0000269|PubMed:8887653}.
+FT   MUTAGEN     759    759       N->A: No binding to APBA1, no effect on
+FT                                APBB1 binding. Little APP
+FT                                internalization. Reduced amyloid-beta
+FT                                protein 42 secretion.
+FT                                {ECO:0000269|PubMed:10383380,
+FT                                ECO:0000269|PubMed:8887653}.
+FT   MUTAGEN     760    760       P->A: Little APP internalization. Reduced
+FT                                amyloid-beta protein 42 secretion.
+FT                                {ECO:0000269|PubMed:10383380}.
+FT   MUTAGEN     762    762       Y->A: Loss of binding to APBA1 and APBB1.
+FT                                APP internalization unchanged. No change
+FT                                in amyloid-beta protein 42 secretion.
+FT                                {ECO:0000269|PubMed:10383380,
+FT                                ECO:0000269|PubMed:8887653}.
+FT   CONFLICT     15     16       AR -> VW (in Ref. 3; CAA31830).
+FT                                {ECO:0000305}.
+FT   CONFLICT    647    647       D -> E (in Ref. 36; AAA51722).
+FT                                {ECO:0000305}.
+FT   CONFLICT    724    724       Missing (in Ref. 23; AAB26263/AAB26264).
+FT                                {ECO:0000305}.
+FT   CONFLICT    731    731       I -> N (in Ref. 23; AAB26263/AAB26264/
+FT                                AAB26265). {ECO:0000305}.
+FT   CONFLICT    757    757       Y -> S (in Ref. 31; AAA35540).
+FT                                {ECO:0000305}.
+FT   HELIX        26     28       {ECO:0000244|PDB:4PQD}.
+FT   STRAND       33     35       {ECO:0000244|PDB:4PQD}.
+FT   STRAND       43     45       {ECO:0000244|PDB:4PQD}.
+FT   TURN         47     49       {ECO:0000244|PDB:4PQD}.
+FT   STRAND       52     54       {ECO:0000244|PDB:4PQD}.
+FT   STRAND       56     58       {ECO:0000244|PDB:4PWQ}.
+FT   HELIX        66     76       {ECO:0000244|PDB:4PQD}.
+FT   STRAND       82     87       {ECO:0000244|PDB:4PQD}.
+FT   STRAND       92     94       {ECO:0000244|PDB:4PQD}.
+FT   STRAND       97     99       {ECO:0000244|PDB:4PQD}.
+FT   TURN        100    102       {ECO:0000244|PDB:4PQD}.
+FT   STRAND      103    106       {ECO:0000244|PDB:4PQD}.
+FT   STRAND      110    112       {ECO:0000244|PDB:4PQD}.
+FT   STRAND      115    119       {ECO:0000244|PDB:4PQD}.
+FT   STRAND      134    139       {ECO:0000244|PDB:2FMA}.
+FT   HELIX       147    160       {ECO:0000244|PDB:2FMA}.
+FT   STRAND      163    174       {ECO:0000244|PDB:2FMA}.
+FT   TURN        175    177       {ECO:0000244|PDB:2FMA}.
+FT   STRAND      178    188       {ECO:0000244|PDB:2FMA}.
+FT   HELIX       288    292       {ECO:0000244|PDB:1AAP}.
+FT   STRAND      299    301       {ECO:0000244|PDB:1AAP}.
+FT   STRAND      304    310       {ECO:0000244|PDB:1AAP}.
+FT   TURN        311    314       {ECO:0000244|PDB:1AAP}.
+FT   STRAND      315    321       {ECO:0000244|PDB:1AAP}.
+FT   STRAND      323    325       {ECO:0000244|PDB:1AAP}.
+FT   STRAND      331    333       {ECO:0000244|PDB:1AAP}.
+FT   HELIX       334    341       {ECO:0000244|PDB:1AAP}.
+FT   HELIX       374    380       {ECO:0000244|PDB:3NYL}.
+FT   HELIX       389    418       {ECO:0000244|PDB:3UMH}.
+FT   STRAND      421    423       {ECO:0000244|PDB:3UMH}.
+FT   HELIX       425    480       {ECO:0000244|PDB:3UMH}.
+FT   STRAND      482    484       {ECO:0000244|PDB:3NYJ}.
+FT   HELIX       487    518       {ECO:0000244|PDB:3UMH}.
+FT   HELIX       520    546       {ECO:0000244|PDB:3UMH}.
+FT   HELIX       547    550       {ECO:0000244|PDB:3UMH}.
+FT   HELIX       552    566       {ECO:0000244|PDB:3UMH}.
+FT   HELIX       615    618       {ECO:0000244|PDB:5BUO}.
+FT   STRAND      620    622       {ECO:0000244|PDB:5BUO}.
+FT   HELIX       673    675       {ECO:0000244|PDB:4OJF}.
+FT   TURN        677    680       {ECO:0000244|PDB:5MYO}.
+FT   STRAND      683    685       {ECO:0000244|PDB:1BA4}.
+FT   STRAND      688    691       {ECO:0000244|PDB:3OVJ}.
+FT   STRAND      692    694       {ECO:0000244|PDB:4MVI}.
+FT   TURN        695    698       {ECO:0000244|PDB:4MVI}.
+FT   STRAND      701    703       {ECO:0000244|PDB:3PZZ}.
+FT   STRAND      707    712       {ECO:0000244|PDB:2Y3K}.
+FT   HELIX       744    754       {ECO:0000244|PDB:3DXE}.
+FT   STRAND      755    758       {ECO:0000244|PDB:1X11}.
+FT   STRAND      763    765       {ECO:0000244|PDB:3L81}.
+SQ   SEQUENCE   770 AA;  86943 MW;  A12EE761403740F5 CRC64;
+     MLPGLALLLL AAWTARALEV PTDGNAGLLA EPQIAMFCGR LNMHMNVQNG KWDSDPSGTK
+     TCIDTKEGIL QYCQEVYPEL QITNVVEANQ PVTIQNWCKR GRKQCKTHPH FVIPYRCLVG
+     EFVSDALLVP DKCKFLHQER MDVCETHLHW HTVAKETCSE KSTNLHDYGM LLPCGIDKFR
+     GVEFVCCPLA EESDNVDSAD AEEDDSDVWW GGADTDYADG SEDKVVEVAE EEEVAEVEEE
+     EADDDEDDED GDEVEEEAEE PYEEATERTT SIATTTTTTT ESVEEVVREV CSEQAETGPC
+     RAMISRWYFD VTEGKCAPFF YGGCGGNRNN FDTEEYCMAV CGSAMSQSLL KTTQEPLARD
+     PVKLPTTAAS TPDAVDKYLE TPGDENEHAH FQKAKERLEA KHRERMSQVM REWEEAERQA
+     KNLPKADKKA VIQHFQEKVE SLEQEAANER QQLVETHMAR VEAMLNDRRR LALENYITAL
+     QAVPPRPRHV FNMLKKYVRA EQKDRQHTLK HFEHVRMVDP KKAAQIRSQV MTHLRVIYER
+     MNQSLSLLYN VPAVAEEIQD EVDELLQKEQ NYSDDVLANM ISEPRISYGN DALMPSLTET
+     KTTVELLPVN GEFSLDDLQP WHSFGADSVP ANTENEVEPV DARPAADRGL TTRPGSGLTN
+     IKTEEISEVK MDAEFRHDSG YEVHHQKLVF FAEDVGSNKG AIIGLMVGGV VIATVIVITL
+     VMLKKKQYTS IHHGVVEVDA AVTPEERHLS KMQQNGYENP TYKFFEQMQN
+//
