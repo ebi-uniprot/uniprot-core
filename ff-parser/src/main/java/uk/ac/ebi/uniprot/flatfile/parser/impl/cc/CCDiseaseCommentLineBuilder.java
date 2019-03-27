@@ -14,12 +14,13 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
 
     @Override
     protected List<String> buildCommentLines(DiseaseComment comment,
-                                             boolean includeFFMarkings, boolean showEvidence) {
+                                             boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkings) {
             addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
         }
-        addCommentTypeName(comment, sb);
+        if(includeCommentType)
+        	addCommentTypeName(comment, sb);
 
 
         //if the disease is defined then in needs to be represented in the string

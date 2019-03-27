@@ -40,12 +40,12 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
 
 	@Override
 	protected List<String> buildCommentLines(CatalyticActivityComment comment, boolean includeFFMarkings,
-			boolean showEvidence) {
+			boolean showEvidence,boolean includeCommentType) {
 		List<String> lines = new ArrayList<>();
 		// first line
 		StringBuilder firstLine = new StringBuilder();
-
-		firstLine.append(buildStart(comment, includeFFMarkings));
+		if(includeCommentType)
+			firstLine.append(buildStart(comment, includeFFMarkings));
 		if (firstLine.length() > 0)
 			lines.add(firstLine.toString());
 		Reaction reaction = comment.getReaction();

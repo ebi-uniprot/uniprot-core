@@ -19,7 +19,7 @@ import java.util.List;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 
 public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilderAbstr<T> implements
-        FFLineBuilder<T> {
+        CommentLineBuilder<T> {
     private static final String CC_FF_MARK = "CC   -!- ";
     public final static String COMMENT_SPACE_INDENT = "         ";
     public final static String COMMENT_SPACE = "       ";
@@ -33,24 +33,31 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         super(LineType.CC, COMMENT_SPACE);
     }
 
-    protected abstract List<String> buildCommentLines(T comment, boolean includeFFMarkings, boolean showEvidence);
+    protected abstract List<String> buildCommentLines(T comment, boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType);
 
+    
+    @Override
+    public String buildString(T f, boolean showEvidence, boolean includeCommentType) {
+        List<String> lls = buildCommentLines(f, false, showEvidence, includeCommentType);
+        return FFLines.create(lls).toString();
+    }
     @Override
     public String buildString(T f) {
-        List<String> lls = buildCommentLines(f, false, false);
-        return FFLines.create(lls).toString();
+    	return buildString(f, false, true);
+     //   List<String> lls = buildCommentLines(f, false, false);
+    //    return FFLines.create(lls).toString();
     }
 
     @Override
     public String buildStringWithEvidence(T f) {
-        List<String> lls = buildCommentLines(f, false, true);
-        return FFLines.create(lls).toString();
+    	return buildString(f, true, true);
     }
 
 
     @Override
     protected FFLine buildLine(T f, boolean showEvidence) {
-        List<String> lls = buildCommentLines(f, true, showEvidence);
+    	
+        List<String> lls = buildCommentLines(f, true, showEvidence, true);
         return FFLines.create(lls);
     }
 

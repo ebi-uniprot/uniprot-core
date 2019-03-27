@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
-import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
-import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCFreeTextCommentLineBuilder;
+import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 public class FreeTextMap implements NamedValueMap {
 
@@ -41,17 +40,10 @@ public class FreeTextMap implements NamedValueMap {
     }
 
     private String getTextCommentString(FreeTextComment comment) {
-        String commentPrefix = comment.getCommentType().toDisplayName()+": ";
-        return comment.getTexts().stream()
-                .map(this::evidencedValueToString)
-                .collect(Collectors.joining("; ",commentPrefix,""));
+    	CCFreeTextCommentLineBuilder builder = new CCFreeTextCommentLineBuilder();
+    	String value = builder.buildStringWithEvidence(comment);
+    	return value.replaceAll("\n", " ");
+  
     }
 
-    private String evidencedValueToString(EvidencedValue evidencedValue) {
-        String result = evidencedValue.getValue()+".";
-        if(evidencedValue.hasEvidences()){
-            result += " "+EntryMapUtil.evidencesToString(evidencedValue.getEvidences())+".";
-        }
-        return result;
-    }
 }

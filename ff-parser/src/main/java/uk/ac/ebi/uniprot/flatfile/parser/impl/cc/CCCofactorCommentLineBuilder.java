@@ -30,12 +30,12 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
 
     @Override
     protected List<String> buildCommentLines(CofactorComment comment,
-            boolean includeFFMarkings, boolean showEvidence) {
+            boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType) {
         List<String> lines = new ArrayList<>();
         // first line
         StringBuilder firstLine = new StringBuilder();
-        // if(includeFFMarkings)
-        firstLine.append(buildStart(comment, includeFFMarkings));
+         if(includeCommentType)
+        	 firstLine.append(buildStart(comment, includeFFMarkings));
         if(!Strings.isNullOrEmpty(comment.getMolecule())) {
             // if(includeFFMarkings)
             firstLine.append(SPACE);

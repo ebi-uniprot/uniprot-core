@@ -26,14 +26,16 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
     private static final String MASS = "Mass=";
 
     @Override
-    protected List<String> buildCommentLines(MassSpectrometryComment comment, boolean includeFlatFileMarkings, boolean showEvidence) {
+    protected List<String> buildCommentLines(MassSpectrometryComment comment, boolean includeFlatFileMarkings, boolean showEvidence,boolean includeCommentType) {
         List<String> lines = new ArrayList<>();
         StringBuilder sb = new StringBuilder("");
         if (includeFlatFileMarkings) {
             addFlatFileMarkingsIfRequired(includeFlatFileMarkings, sb);
         }
+        if(includeCommentType) {
         sb.append(comment.getCommentType().toDisplayName());
         sb.append(": ");
+        }
 
         sb.append(MASS);
         sb.append(getSigDig(comment.getMolWeight()));

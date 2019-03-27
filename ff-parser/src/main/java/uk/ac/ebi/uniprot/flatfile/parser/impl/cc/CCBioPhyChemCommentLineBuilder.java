@@ -38,11 +38,11 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 	private static final String ABS_MAX = "Abs(max)=";
 	private static final String ABSORPTION2 = "Absorption:";
 	@Override
-	protected List<String> buildCommentLines(BPCPComment comment, boolean includeFlatFileMarkings, boolean showEvidence){
+	protected List<String> buildCommentLines(BPCPComment comment, boolean includeFlatFileMarkings, boolean showEvidence, boolean includeCommentType){
 		List<String> lines =new ArrayList<>();
 	
 		//first line
-	//	if(includeFlatFileMarkings)
+		if(includeCommentType)
 			lines.add(buildStart(comment, includeFlatFileMarkings));
 
 		if (comment.getAbsorption() !=null) {
@@ -91,7 +91,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 		start.append(name);
 		return start;
 	}
-	private List<String> buildAbsorptionLine(Absorption absorption, boolean includeFlatFileMarkings, boolean showEvidence) {
+	public List<String> buildAbsorptionLine(Absorption absorption, boolean includeFlatFileMarkings, boolean showEvidence) {
 		StringBuilder sb = new StringBuilder();
 		List<String> lines =new ArrayList<>();
 		lines.add(buildStart(ABSORPTION2,includeFlatFileMarkings ).toString());
@@ -130,7 +130,7 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
         }    
 	}
 
-	private List<String>  buildKineticLine(KineticParameters kps, boolean includeFlatFileMarkings, boolean showEvidence) {
+	public List<String>  buildKineticLine(KineticParameters kps, boolean includeFlatFileMarkings, boolean showEvidence) {
 		List<String> lines =new ArrayList<>();
 		lines.add(buildStart(KINETIC_PARAMETERS, includeFlatFileMarkings ).toString());
 	
@@ -216,13 +216,13 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
 		return temp;
 	}
 	
-	private List<String>  buildPHDepLine(PhDependence depend, boolean includeFlatFileMarkings, boolean showEvidence) {    
+	public List<String>  buildPHDepLine(PhDependence depend, boolean includeFlatFileMarkings, boolean showEvidence) {    
 	    return buildDependence(depend, P_H_DEPENDENCE, includeFlatFileMarkings, showEvidence);	
 	}
-	private List<String>  buildRedoxLine(RedoxPotential redox, boolean includeFlatFileMarkings, boolean showEvidence) {
+	public List<String>  buildRedoxLine(RedoxPotential redox, boolean includeFlatFileMarkings, boolean showEvidence) {
         return buildDependence(redox, REDOX_POTENTIAL, includeFlatFileMarkings, showEvidence);   
     }
-    private List<String>  buildTempLine(TemperatureDependence temp, boolean includeFlatFileMarkings, boolean showEvidence) {
+	public List<String>  buildTempLine(TemperatureDependence temp, boolean includeFlatFileMarkings, boolean showEvidence) {
         return buildDependence(temp, TEMPERATURE_DEPENDENCE, includeFlatFileMarkings, showEvidence);   
     }
 

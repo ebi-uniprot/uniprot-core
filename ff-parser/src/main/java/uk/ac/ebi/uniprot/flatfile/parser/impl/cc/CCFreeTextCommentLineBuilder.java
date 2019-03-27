@@ -12,12 +12,12 @@ import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 public class CCFreeTextCommentLineBuilder extends CCLineBuilderAbstr<FreeTextComment> {
 
 	@Override
-	protected List<String> buildCommentLines(FreeTextComment comment,  boolean includeFFMarkings, boolean showEvidence) {
+	protected List<String> buildCommentLines(FreeTextComment comment,  boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType) {
 		StringBuilder sb = new StringBuilder();
 
 		addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
-		
-		addCommentTypeName(comment, sb);
+		if(includeCommentType)
+			addCommentTypeName(comment, sb);
 		boolean first =true;
 		for(EvidencedValue text: comment.getTexts()){
 			if(!first)

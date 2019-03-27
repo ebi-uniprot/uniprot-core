@@ -23,11 +23,11 @@ public class CCSequenceCautionCommentLineBuilder extends CCLineBuilderAbstr<Sequ
 	}
 
 	@Override
-	protected List<String> buildCommentLines(SequenceCautionComment comment,  boolean includeFFMarkings, boolean showEvidence) {
+	protected List<String> buildCommentLines(SequenceCautionComment comment,  boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType) {
 		StringBuilder sb = new StringBuilder();
 		List<String> lines = new ArrayList<>();	
 		if (isFirstSequenceCauction) {
-			//if(includeFFMarkings)
+			if(includeCommentType)
 				lines.add(buildStart(comment, includeFFMarkings));
 		}
 		if (includeFFMarkings)

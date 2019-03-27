@@ -1,0 +1,7 @@
+package uk.ac.ebi.uniprot.xml;
+
+public interface Updater <F, T> {
+	 T fromXml(T modelObject, F xmlObject);
+
+	 void toXml(F xmlObject, T modelObject);
+}

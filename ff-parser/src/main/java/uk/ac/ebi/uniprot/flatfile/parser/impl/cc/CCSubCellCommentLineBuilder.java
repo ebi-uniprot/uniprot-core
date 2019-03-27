@@ -24,13 +24,14 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
     @Override
     protected List<String> buildCommentLines(
             SubcellularLocationComment comment, boolean includeFFMarkings,
-            boolean showEvidence) {
+            boolean showEvidence, boolean includeCommentType) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkings) {
             addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
 
         }
-        addCommentTypeName(comment, sb);
+        if(includeCommentType)
+        	addCommentTypeName(comment, sb);
         //Add molecule
         boolean needSpace = false;
         if (!Strings.isNullOrEmpty(comment.getMolecule())) {

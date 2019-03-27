@@ -21,12 +21,14 @@ public class CCRnaEditingCommentLineBuilder extends
 
 	@Override
 	protected List<String> buildCommentLines(RnaEditingComment comment,
-			boolean includeFFMarkings, boolean showEvidence) {
+			boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType) {
 		StringBuilder sb = new StringBuilder();
 		if (includeFFMarkings) {
 			addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
 		}
-		addCommentTypeName(comment, sb);
+		if(includeCommentType)
+			addCommentTypeName(comment, sb);
+		
 		int positionCount = 0;
 		for (RnaEdPosition aPosition : comment.getPositions()) {
 			if (aPosition.getPosition() != null

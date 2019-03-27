@@ -20,13 +20,15 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
 
 
 	@Override
-	protected List<String> buildCommentLines(WebResourceComment comment, boolean includeFlatFileMarkings, boolean showEvidence){
+	protected List<String> buildCommentLines(WebResourceComment comment, boolean includeFlatFileMarkings, boolean showEvidence, boolean includeCommentType){
 		List<String> lines = new ArrayList<>();
 		StringBuilder sb = new StringBuilder();
 		if(includeFlatFileMarkings)
 			addFlatFileMarkingsIfRequired(includeFlatFileMarkings, sb);
-		sb.append(comment.getCommentType().toDisplayName());
-		sb.append(": ");
+		if(includeCommentType) {
+			sb.append(comment.getCommentType().toDisplayName());
+			sb.append(": ");
+		}
 		sb.append(NAME);
 		sb.append(comment.getResourceName());
 		sb.append(SEMICOLON);

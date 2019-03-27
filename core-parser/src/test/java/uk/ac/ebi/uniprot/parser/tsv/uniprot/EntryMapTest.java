@@ -264,10 +264,11 @@ class EntryMapTest {
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
         verify("Q84MC7", 0, result);
-        String seqCaution = "SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=ERRONEOUS_INITIATION; " +
+        String seqCaution = "SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=Erroneous initiation; " +
                 "Note=Translation N-terminally extended.; Evidence={ECO:0000305};  " +
-                "Sequence=AAM65514.1; Type=ERRONEOUS_PREDICTION; Evidence={ECO:0000305}";
-
+                "Sequence=AAM65514.1; Type=Erroneous gene model prediction; Evidence={ECO:0000305};";
+        System.out.println(result.get(1));
+        System.out.println(seqCaution);
 
         verify(seqCaution, 1, result);
     }
@@ -291,13 +292,12 @@ class EntryMapTest {
         String phDep = "BIOPHYSICOCHEMICAL PROPERTIES:  pH dependence: Optimum pH is 3.5 with " +
                 "2,2'-azinobis-(3-ethylbenzthiazoline-6-sulphonate) as substrate, 5.0-7.5 with guiacol as substrate, " +
                 "and 6.0-7.0 with syringaldazine as substrate. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243}; " +
-                "Optimum pH is 8.0. {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};";
+                "pH dependence: Optimum pH is 8.0. {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};";
         String redox = "BIOPHYSICOCHEMICAL PROPERTIES:  Redox potential: E(0) is +185 mV for heme c at pH 7.0, +188 mV " +
                 "for heme c at pH 8.0, +172 mV for heme c at pH 8.0 and 0.3 M KCl and +189 mV for ADH IIB-Azurin complex." +
                 " {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};";
         String tempDep = "BIOPHYSICOCHEMICAL PROPERTIES:  Temperature dependence: Optimum temperature is 60-70 degrees " +
                 "Celsius. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243};";
-
         verify(absorption, 1, result);
         verify(kinetic, 2, result);
         verify(phDep, 3, result);

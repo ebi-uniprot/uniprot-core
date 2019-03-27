@@ -20,10 +20,10 @@ import java.util.List;
 public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<InteractionComment> {
 
 	@Override
-	protected List<String> buildCommentLines(InteractionComment comment, boolean includeFlatFileMarkings, boolean showEvidence){
+	protected List<String> buildCommentLines(InteractionComment comment, boolean includeFlatFileMarkings, boolean showEvidence, boolean includeCommentType){
 		List<String> lines = new ArrayList<>();
 		//first line
-	//	if(includeFlatFileMarkings)
+		if(includeCommentType)
 			lines.add(buildStart(comment, includeFlatFileMarkings));
 
 		for (Interaction act : comment.getInteractions()) {

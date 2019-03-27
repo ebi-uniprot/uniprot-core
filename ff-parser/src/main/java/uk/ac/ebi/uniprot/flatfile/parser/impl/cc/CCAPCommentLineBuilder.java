@@ -35,11 +35,11 @@ public class CCAPCommentLineBuilder extends
 	@Override
 	protected List<String> buildCommentLines(
 			AlternativeProductsComment comment,
-			boolean includeFlatFileMarkings, boolean showEvidence) {
+			boolean includeFlatFileMarkings, boolean showEvidence, boolean includeCommentType) {
 		List<String> lines = new ArrayList<>();
 
 		// first line
-		// if(includeFlatFileMarkings)
+		 if(includeCommentType)
 		lines.add(buildStart(comment, includeFlatFileMarkings));
 
 		// event line
