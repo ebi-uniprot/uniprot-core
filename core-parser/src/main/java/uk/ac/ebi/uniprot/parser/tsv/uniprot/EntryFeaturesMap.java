@@ -1,15 +1,22 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 
 public class EntryFeaturesMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("ft:var_seq", "ft:variant", "ft:non_con", "ft:non_std",
@@ -21,9 +28,6 @@ public class EntryFeaturesMap implements NamedValueMap {
 
     );
 
-    private static final List<String> FEATURE_HAS_ALTERNATIVE_SEQ = Arrays.asList("VARIANT", "VAR_SEQ", "MUTAGEN",
-                                                                                  "CONFLICT");
-    private static final List<String> FEATURE_TYPE_NEED_BRACKET = Arrays.asList("VARIANT", "VAR_SEQ", "CONFLICT");
 
     private static final Pattern DBSNP_PATTERN = Pattern.compile("(.+)dbSNP(\\:)(rs(\\d+))(.*)");
     private static final Map<String, String> FEATURETYPE_2_NAME = new HashMap<>();
@@ -140,62 +144,9 @@ public class EntryFeaturesMap implements NamedValueMap {
     }
 
     public static String featureToString(Feature feature) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(feature.getType()).append(" ")
-                .append(feature.getLocation().getStart().getValue())
-                .append(" ")
-                .append(feature.getLocation().getEnd().getValue());
-        if (FEATURE_HAS_ALTERNATIVE_SEQ.contains(feature.getType().name())) {
-            sb.append(" ").append(getAlternativeSequence(feature));
-        }
-        if (feature.getDescription() != null && feature.getDescription().getValue() != null &&
-                !feature.getDescription().getValue().isEmpty()) {
-            if (feature.getType().equals(FeatureType.MUTAGEN))
-                sb.append(":");
-            sb.append(" ");
-            if (FEATURE_TYPE_NEED_BRACKET.contains(feature.getType().name())) {
-                sb.append("(");
-            }
-            sb.append(feature.getDescription().getValue());
-            if (FEATURE_TYPE_NEED_BRACKET.contains(feature.getType().name())) {
-                sb.append(")");
-            }
-
-            sb.append(".");
-        }
-        if ((feature.getEvidences() != null) && !feature.getEvidences().isEmpty()) {
-            sb.append(" ").append(feature.getEvidences().stream().map(Evidence::toString)
-                                          .collect(Collectors.joining(", ", "{", "}"))).append(".");
-        }
-        if (feature.getFeatureId() != null && feature.getFeatureId().getValue() != null &&
-                !feature.getFeatureId().getValue().isEmpty()) {
-            sb.append(" /FTId=").append(feature.getFeatureId().getValue()).append(".");
-        }
-
-        return sb.toString();
+    	FFLineBuilder< Feature> fbuilder =FeatureLineBuilderFactory.create(feature);
+    	return fbuilder.buildStringWithEvidence(feature).replaceAll("\n",  " " );
     }
-
-    private static String getAlternativeSequence(Feature feature) {
-        if (FEATURE_HAS_ALTERNATIVE_SEQ.contains(feature.getType().name())) {
-            if (feature.getAlternativeSequence() == null ||
-                    feature.getAlternativeSequence().getAlternativeSequences() == null ||
-                    feature.getAlternativeSequence().getAlternativeSequences().isEmpty())
-                return "Missing";
-            else {
-                StringBuilder sb = new StringBuilder();
-                sb.append(feature.getAlternativeSequence().getOriginalSequence());
-                if (feature.getType().equals(FeatureType.MUTAGEN)) {
-                    sb.append("->");
-                } else {
-                    sb.append(" -> ");
-                }
-                sb.append(String.join(" ", feature.getAlternativeSequence().getAlternativeSequences()));
-                return sb.toString();
-            }
-        } else
-            return "";
-    }
-
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(FIELDS::contains);
     }

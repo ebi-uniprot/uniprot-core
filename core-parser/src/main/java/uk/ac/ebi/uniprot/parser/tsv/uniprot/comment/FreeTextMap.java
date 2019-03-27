@@ -14,7 +14,7 @@ public class FreeTextMap implements NamedValueMap {
 
     private final List<FreeTextComment> txtComments;
     private final CommentType type;
-
+	CCFreeTextCommentLineBuilder lineBuilder = new CCFreeTextCommentLineBuilder();
     public FreeTextMap(List<FreeTextComment> txtComments,CommentType type){
         this.txtComments = txtComments;
         this.type = type;
@@ -40,10 +40,7 @@ public class FreeTextMap implements NamedValueMap {
     }
 
     private String getTextCommentString(FreeTextComment comment) {
-    	CCFreeTextCommentLineBuilder builder = new CCFreeTextCommentLineBuilder();
-    	String value = builder.buildStringWithEvidence(comment);
-    	return value.replaceAll("\n", " ");
-  
+    	return lineBuilder.buildStringWithEvidence(comment).replaceAll("\n", " ");
     }
 
 }

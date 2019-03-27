@@ -1,6 +1,14 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
+
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
@@ -10,13 +18,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EntryFeaturesMapTest {
 
@@ -32,7 +33,8 @@ class EntryFeaturesMapTest {
 		verify("HELIX 7 10 {ECO:0000244|PDB:2LO1}.", "ft:helix", result);
 		String variantExp = "VARIANT 23 23 A -> G (in SCN1; dbSNP:rs1064793108). /FTId=VAR_064512.;"
 				+ " VARIANT 27 27 B -> D (in another; dbSNP:rs1064793121)."
-				+ " {ECO:0000269|PubMed:6142052, ECO:0000269|PubMed:12345}. /FTId=VAR_064556.";
+				+ " {ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052}. /FTId=VAR_064556.";
+		
 		verify(variantExp, "ft:variant", result);
 	}
 	@Test
@@ -79,12 +81,13 @@ class EntryFeaturesMapTest {
 	@Test
 	void testFeatureWithFtIdEvidenceToString() {
 		List<Evidence> evidences = new ArrayList<>();
-		evidences.add(createEvidence("ECO:0000269", "PubMed", "6142052"));
 		evidences.add(createEvidence("ECO:0000269", "PubMed", "12345"));
+		evidences.add(createEvidence("ECO:0000269", "PubMed", "6142052"));
+		
 		Feature feature = createFeature(FeatureType.VARIANT, new Range(23,23), "in SCN1; dbSNP:rs1064793108", "VAR_064512",evidences, createAlternativeSequence("A", "G"));
 		String result = EntryFeaturesMap.featureToString(feature);
 		String expected = "VARIANT 23 23 A -> G (in SCN1; dbSNP:rs1064793108)."
-				+ " {ECO:0000269|PubMed:6142052, ECO:0000269|PubMed:12345}. /FTId=VAR_064512.";
+				+ " {ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052}. /FTId=VAR_064512.";
 		assertEquals(result, expected);
 
 	}
@@ -106,7 +109,7 @@ class EntryFeaturesMapTest {
 		Feature feature = createFeature(FeatureType.DOMAIN, new Range(23,23), "some domain", null, evidences, null);
 
 		String result = EntryFeaturesMap.featureToString(feature);
-		String expected = "DOMAIN 23 23 some domain. {ECO:0000269|PubMed:6142052, ECO:0000269|PubMed:12345}.";
+		String expected = "DOMAIN 23 23 some domain. {ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052}.";
 		assertEquals(result, expected);
 
 	}

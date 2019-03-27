@@ -49,12 +49,11 @@ public abstract class AbstractFeatureLineBuilder
 		if (includeFFMarkings) {
 			if (!evIds.isEmpty() || extra.length() > 0) {
 				sb.append(FTLineBuilderHelper.SPACE_LOCATION_DESCRIPTION);
-
 			}
 		} else {
-			if (extra.length() > 0) {
+		//	if (extra.length() > 0) {
 				sb.append(SPACE);
-			}
+		//	}
 		}
 		if (extra.length() > 0) {
 			sb.append(extra);
