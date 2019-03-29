@@ -7,15 +7,20 @@ import uk.ac.ebi.uniprot.common.property.PropertyObject;
 import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefValidator;
 
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 
 public enum UniProtXDbTypes {
     INSTANCE;
     private final String FILENAME = "META-INF/drlineconfiguration.json";
+    private final String NEW_DB_LIST = "META-INF/new_db_list.txt";
+    
     private List<UniProtXDbTypeDetail> types = new ArrayList<>();
     private Map<String, UniProtXDbTypeDetail> typeMap;
 
@@ -47,12 +52,22 @@ public enum UniProtXDbTypes {
                 .filter(dbType -> dbType.getCategory() == dbCatergory)
                 .collect(Collectors.toList());
     }
-
+    private List<String> getNewDB(){
+    	String file = UniProtXDbTypes.class.getClassLoader().getResource(NEW_DB_LIST).getFile();
+    	try {
+    	return Files.readAllLines(Paths.get(file));
+    	}catch(Exception e) {
+    		throw new RuntimeException(e);
+    	}
+    	
+    }
+    
     private void init() {
+    	List<String> newDbs = getNewDB();
         try (InputStream configFile = UniProtXDbTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
             PropertyArray jsonArray = new PropertyArray(source);
-
+            
             jsonArray.forEach(item -> {
                 PropertyObject dbTypeDetail = (PropertyObject) item;
                 String name = dbTypeDetail.getString("name");
@@ -72,7 +87,8 @@ public enum UniProtXDbTypes {
                 }
                 UniProtXDbTypeDetail xdbType = new UniProtXDbTypeDetail(name, displayName, DatabaseCategory
                         .typeOf(category), uriLink, attributes);
-                DBXRefValidator.validate(xdbType);
+                if(!newDbs.contains(xdbType.getName()))
+                	DBXRefValidator.validate(xdbType);
                 types.add(xdbType);
             });
             typeMap = types.stream().collect(Collectors.toMap(UniProtXDbTypeDetail::getDisplayName, val -> val));

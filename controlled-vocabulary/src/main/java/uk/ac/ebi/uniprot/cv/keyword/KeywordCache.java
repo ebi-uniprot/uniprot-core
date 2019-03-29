@@ -47,6 +47,7 @@ public enum KeywordCache {
 	}
 	
 	private List<KeywordDetail> buildCache(String filename){
+		
 		KeywordFileReader parser = new KeywordFileReader();
 		return parser.parse(filename);
 

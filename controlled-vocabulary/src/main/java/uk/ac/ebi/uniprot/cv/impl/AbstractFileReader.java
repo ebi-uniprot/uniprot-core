@@ -58,14 +58,13 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
         if (filename.startsWith(FTP_PREFIX)) {
             return fetchFromFTP(filename);
         } else {
+        	
             InputStream inputStream = AbstractFileReader.class.getClassLoader().getResourceAsStream(filename);
             List<String> lines = new ArrayList<>();
-
             try {
                 if (inputStream == null) {
                     inputStream = new FileInputStream(new File(filename));
                 }
-
                 try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
                     String line;
                     while ((line = br.readLine()) != null) {
@@ -79,4 +78,8 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
             return lines;
         }
     }
+//    private InputStream getInputStream(String filename) {
+//    	 InputStream inputStream =  AbstractFileReader.class.getClassLoader().getResourceAsStream(filename);
+//    	 i
+//    }
 }
