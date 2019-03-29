@@ -6,7 +6,9 @@ import uk.ac.ebi.uniprot.common.property.PropertyArray;
 import uk.ac.ebi.uniprot.common.property.PropertyObject;
 import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefValidator;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -53,13 +55,19 @@ public enum UniProtXDbTypes {
                 .collect(Collectors.toList());
     }
     private List<String> getNewDB(){
-    	String file = UniProtXDbTypes.class.getClassLoader().getResource(NEW_DB_LIST).getFile();
-    	try {
-    	return Files.readAllLines(Paths.get(file));
-    	}catch(Exception e) {
-    		throw new RuntimeException(e);
-    	}
+    	List<String> newDbs = new ArrayList<>();
+  
+    	 try (InputStream inputStream = UniProtXDbTypes.class.getClassLoader().getResourceAsStream(NEW_DB_LIST);		 
+    			 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+             String line;
+             while ((line = br.readLine()) != null) {
+            	 newDbs.add(line);
+             }
     	
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	return newDbs;
     }
     
     private void init() {
