@@ -26,7 +26,7 @@ public class GoTermFileReader implements GoTermReader {
 		String filename = filepath ;
 		if(!filename.endsWith(FILENAME)){
 			filename +=File.separator + FILENAME;
-		}		
+		}			
 		try (Stream<String> stream = Files.lines(Paths.get(filename))) {	
 			return stream.map(this::readLine)
 			.filter(val->val !=null)
