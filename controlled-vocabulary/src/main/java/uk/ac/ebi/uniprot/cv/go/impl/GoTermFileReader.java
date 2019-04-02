@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.cv.go.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
 
 import uk.ac.ebi.uniprot.cv.go.GoTerm;
 import uk.ac.ebi.uniprot.cv.go.GoTermReader;
+import uk.ac.ebi.uniprot.cv.impl.AbstractFileReader;
 
 public class GoTermFileReader implements GoTermReader {
 	private static final String COMMENT_PREFIX = "!";
@@ -27,6 +29,7 @@ public class GoTermFileReader implements GoTermReader {
 		if(!filename.endsWith(FILENAME)){
 			filename +=File.separator + FILENAME;
 		}		
+	
 		try (Stream<String> stream = Files.lines(Paths.get(filename))) {	
 			return stream.map(this::readLine)
 			.filter(val->val !=null)
