@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.proteome.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class ComponentImpl implements Component {
 	private long proteinCount;
 	private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences;
 	private ComponentImpl() {
-		
+		dbXReferences = Collections.emptyList();
 	}
 	public ComponentImpl(String name, String description, long proteinCount,
 			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {

@@ -159,12 +159,12 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 		return this;
 	}
 	
-	public ProteomeBuilder redundantProteome(List<RedundantProteome> redundantProteomes) {
+	public ProteomeBuilder redundantProteomes(List<RedundantProteome> redundantProteomes) {
 		this.redundantProteomes =  Utils.nonNullList(redundantProteomes);
 		return this;
 	}
 	
-	public ProteomeBuilder addReference(RedundantProteome redundantProteome) {
+	public ProteomeBuilder addRedundantProteome(RedundantProteome redundantProteome) {
 		Utils.nonNullAdd(redundantProteome, redundantProteomes);
 		return this;
 	}

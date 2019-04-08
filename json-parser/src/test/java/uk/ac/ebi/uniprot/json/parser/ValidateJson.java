@@ -25,20 +25,28 @@ public class ValidateJson {
     public static <T> void verifyJsonRoundTripParser(T obj) {
         try {
             ObjectMapper mapper = UniprotJsonConfig.getInstance().getObjectMapper();
-            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
-            //logger.info(json);
-            T converted =  mapper.readValue(json,(Class<T>) obj.getClass());
-            assertEquals(obj, converted);
+            verifyJsonRoundTripParser(mapper, obj);
         }catch(Exception e) {
             fail(e.getMessage());
         }
     }
+    
+    public static <T> void verifyJsonRoundTripParser(ObjectMapper mapper, T obj) {
+        try {
+            String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
+            //logger.info(json);
+            System.out.println(json);
+            T converted =  mapper.readValue(json,(Class<T>) obj.getClass());
+            assertEquals(obj, converted);
+        }catch(Exception e) {
+        	e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
 
-
-    public static <T> JsonNode getJsonNodeFromSerializeOnlyMapper(T obj) {
+    public static <T> JsonNode getJsonNodeFromSerializeOnlyMapper(ObjectMapper mapper, T obj) {
         JsonNode jsonNode = null;
         try {
-            ObjectMapper mapper = UniprotJsonConfig.getInstance().getPrettyObjectMapper();
             String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
             logger.info(jsonString);
             jsonNode =  mapper.reader().readTree(jsonString);
@@ -46,6 +54,12 @@ public class ValidateJson {
             fail(e.getMessage());
         }
         return jsonNode;
+    }
+
+    public static <T> JsonNode getJsonNodeFromSerializeOnlyMapper(T obj) {
+    	 ObjectMapper mapper = UniprotJsonConfig.getInstance().getPrettyObjectMapper();
+    	return getJsonNodeFromSerializeOnlyMapper(mapper, obj);
+       
     }
 
 

@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.proteome;
 
-public enum SourceDB {
+import uk.ac.ebi.uniprot.common.EnumDisplay;
+
+public enum SourceDB implements EnumDisplay<SourceDB> {
 	ENA ("ENA/EMBL"),
 	ENSEMBL( "Ensembl"),
 	ENSEMBL_METAZOA( "EnsemblMetazoa"),
@@ -18,6 +20,10 @@ public enum SourceDB {
 	}
 	public String getName() {
 		return name;
+	}
+	@Override
+	public String toDisplayName() {
+		return getName();
 	}
 	
 }

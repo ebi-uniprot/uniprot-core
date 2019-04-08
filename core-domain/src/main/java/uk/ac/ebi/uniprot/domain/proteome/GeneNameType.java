@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.domain.proteome;
 
-public enum GeneNameType {
+import uk.ac.ebi.uniprot.common.EnumDisplay;
+
+
+public enum GeneNameType implements EnumDisplay<GeneNameType> {
 	MOD("MOD"),
 	ENSEMBL("Ensembl"),
 	OLN("OLN"),
@@ -14,5 +17,9 @@ public enum GeneNameType {
 	}
 	public String getName() {
 		return name;
+	}
+	@Override
+	public String toDisplayName() {
+		return getName();
 	}
 }

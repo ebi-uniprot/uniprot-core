@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.domain.proteome;
 
-public enum Superkingdom {
+import uk.ac.ebi.uniprot.common.EnumDisplay;
+
+public enum Superkingdom implements EnumDisplay<Superkingdom> {
 	ARCHAEA("archaea"),
 	VIRUSES("viruses"),
 	BACTERIA("bacteria"),
@@ -14,6 +16,11 @@ public enum Superkingdom {
 
 	public String getName() {
 		return name;
+	}
+
+	@Override
+	public String toDisplayName() {
+		return getName();
 	}
 	
 }

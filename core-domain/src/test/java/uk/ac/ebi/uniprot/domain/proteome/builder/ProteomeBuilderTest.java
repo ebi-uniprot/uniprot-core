@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.domain.proteome.builder;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,12 +12,22 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
+import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
+import uk.ac.ebi.uniprot.domain.citation.Submission;
+import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
+import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
 import uk.ac.ebi.uniprot.domain.proteome.Proteome;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
+import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
+import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
 
 class ProteomeBuilderTest {
 
@@ -178,52 +188,171 @@ class ProteomeBuilderTest {
 
 	@Test
 	void testAddComponent() {
-		fail("Not yet implemented");
+		Component component1 =
+				ComponentBuilder.newInstance()
+				.name("someName1").description("some description")
+				.proteinCount(102)
+				.build();
+				
+				Component component2 =
+						ComponentBuilder.newInstance()
+						.name("someName2").description("some description 2")
+						.proteinCount(102)
+						.build();
+				
+				Proteome proteome = ProteomeBuilder.newInstance().addComponent(component1)
+						.addComponent(component2)
+						 .build();
+						assertEquals(2, proteome.getComponents().size());
+						assertThat(proteome.getComponents(), hasItem(component2));
 	}
 
 	@Test
 	void testReferences() {
-		fail("Not yet implemented");
+		 JournalArticleBuilder builder = new JournalArticleBuilder();
+		 this.buildCitationParameters(builder);
+	        JournalArticle citation1 = builder.build();
+	        
+	        SubmissionBuilder builder2 = new SubmissionBuilder();
+	        buildCitationParameters(builder2);
+
+	        builder2.submittedToDatabase(SubmissionDatabase.PDB);
+	        Submission citation2 = builder2.build();
+		 
+	        List<Citation> citations = new ArrayList<>();
+	        citations.add(citation1);
+	        citations.add(citation2);
+	        Proteome proteome = ProteomeBuilder.newInstance().references(citations)
+					 .build();
+					assertEquals(2, proteome.getReferences().size());
+					assertThat(proteome.getReferences(), hasItem(citation1));
+	        
 	}
 
 	@Test
 	void testAddReferenceCitation() {
-		fail("Not yet implemented");
+		 JournalArticleBuilder builder = new JournalArticleBuilder();
+		 this.buildCitationParameters(builder);
+	        JournalArticle citation1 = builder.build();
+	        
+	        SubmissionBuilder builder2 = new SubmissionBuilder();
+	        buildCitationParameters(builder2);
+
+	        builder2.submittedToDatabase(SubmissionDatabase.PDB);
+	        Submission citation2 = builder2.build();
+
+
+	        Proteome proteome = ProteomeBuilder.newInstance().addReference(citation1)
+	        		.addReference(citation2)
+					 .build();
+					assertEquals(2, proteome.getReferences().size());
+					assertThat(proteome.getReferences(), hasItem(citation2));
+	}
+
+	  void buildCitationParameters(AbstractCitationBuilder<?, ?> builder) {
+		     final String TITLE = "Some title";
+		    final String PUBLICATION_DATE = "2015-MAY";
+		     final List<String> GROUPS = asList("T1", "T2");
+		     final List<String> AUTHORS = asList("Tom", "John");
+	        builder
+	                .title(TITLE)
+	                .publicationDate(PUBLICATION_DATE)
+	                .authoringGroups(GROUPS)
+	                .authors(AUTHORS)
+	                .citationXrefs(asList(new DBCrossReferenceBuilder<CitationXrefType>()
+	                                              .databaseType(CitationXrefType.PUBMED)
+	                                              .id("id1")
+	                                              .build(),
+	                                      new DBCrossReferenceBuilder<CitationXrefType>()
+	                                              .databaseType(CitationXrefType.AGRICOLA)
+	                                              .id("id2")
+	                                              .build()))
+	                .build();
+	    }
+	
+	@Test
+	void testRedundantProteomes() {
+		List<RedundantProteome> redundantProteomes = new ArrayList<>();
+		String id = "UP000004340";
+		RedundantProteome rproteome1 =
+				RedundantProteomeBuilder.newInstance()
+				.proteomeId(new ProteomeIdBuilder (id).build())
+				.similarity(0.98)
+				.build();
+		String id2 = "UP000004343";
+		RedundantProteome rproteome2=
+				RedundantProteomeBuilder.newInstance()
+				.proteomeId(new ProteomeIdBuilder (id2).build())
+				.similarity(0.88)
+				.build();
+		redundantProteomes.add(rproteome1);
+		redundantProteomes.add(rproteome2);
+		
+		Proteome proteome = ProteomeBuilder.newInstance().redundantProteomes(redundantProteomes)
+				 .build();
+				assertEquals(2, proteome.getRedudantProteomes().size());
+				assertThat(proteome.getRedudantProteomes(), hasItem(rproteome1));
 	}
 
 	@Test
-	void testRedundantProteome() {
-		fail("Not yet implemented");
-	}
+	void testAddRedundantProteome() {
+		String id = "UP000004340";
+		RedundantProteome rproteome1 =
+				RedundantProteomeBuilder.newInstance()
+				.proteomeId(new ProteomeIdBuilder (id).build())
+				.similarity(0.98)
+				.build();
+		String id2 = "UP000004343";
+		RedundantProteome rproteome2=
+				RedundantProteomeBuilder.newInstance()
+				.proteomeId(new ProteomeIdBuilder (id2).build())
+				.similarity(0.88)
+				.build();
 
-	@Test
-	void testAddReferenceRedundantProteome() {
-		fail("Not yet implemented");
+		Proteome proteome = ProteomeBuilder.newInstance()
+				.addRedundantProteome(rproteome1)
+				.addRedundantProteome(rproteome2)
+				 .build();
+				assertEquals(2, proteome.getRedudantProteomes().size());
+				assertThat(proteome.getRedudantProteomes(), hasItem(rproteome2));
 	}
 
 	@Test
 	void testPanproteome() {
-		fail("Not yet implemented");
+		String id = "UP000005644";
+		ProteomeId proteomeId = new ProteomeIdBuilder (id).build();
+		Proteome proteome = ProteomeBuilder.newInstance().panproteome(proteomeId)
+				.build();
+		assertEquals(proteomeId, proteome.getPanproteome());
 	}
 
 	@Test
 	void testAnnotationScore() {
-		fail("Not yet implemented");
+		Proteome proteome = ProteomeBuilder.newInstance().annotationScore(20)
+				.build();
+		assertEquals(20, proteome.getAnnotationScore());
 	}
 
 	@Test
 	void testSuperkingdom() {
-		fail("Not yet implemented");
+		Superkingdom superkingdom = Superkingdom.EUKARYOTA;
+		Proteome proteome = ProteomeBuilder.newInstance().superkingdom(superkingdom)
+				.build();
+		assertEquals(superkingdom, proteome.getSuperkingdom());
 	}
 
 	@Test
 	void testProteinCount() {
-		fail("Not yet implemented");
+		Proteome proteome = ProteomeBuilder.newInstance().proteinCount(905)
+				.build();
+		assertEquals(905, proteome.getProteinCount());
 	}
 
 	@Test
 	void testGeneCount() {
-		fail("Not yet implemented");
+		Proteome proteome = ProteomeBuilder.newInstance().geneCount(203)
+				.build();
+		assertEquals(203, proteome.getGeneCount());
 	}
 
 }
