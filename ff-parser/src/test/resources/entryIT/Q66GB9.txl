@@ -34,7 +34,6 @@ CC   -!- SIMILARITY: Belongs to the SecB family. {ECO:0000255|HAMAP-
 CC       Rule:MF_00821}.
 DR   EMBL; BX936398; CAH19303.1; -; Genomic_DNA.
 DR   RefSeq; WP_002208976.1; NZ_CP009712.1.
-DR   ProteinModelPortal; Q66GB9; -.
 DR   SMR; Q66GB9; -.
 DR   EnsemblBacteria; CAH19303; CAH19303; YPTB0063.
 DR   KEGG; ypo:BZ17_2532; -.

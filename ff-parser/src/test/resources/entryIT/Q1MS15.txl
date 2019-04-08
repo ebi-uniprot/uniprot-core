@@ -40,7 +40,6 @@ CC   -!- SIMILARITY: Belongs to the DMRL synthase family.
 CC       {ECO:0000255|HAMAP-Rule:MF_00178}.
 DR   EMBL; AM180252; CAJ54210.1; -; Genomic_DNA.
 DR   RefSeq; WP_011526237.1; NC_008011.1.
-DR   ProteinModelPortal; Q1MS15; -.
 DR   SMR; Q1MS15; -.
 DR   STRING; 363253.LI0154; -.
 DR   KEGG; lip:LI0154; -.

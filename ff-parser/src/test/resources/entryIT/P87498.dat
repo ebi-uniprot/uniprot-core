@@ -81,8 +81,6 @@ CC   -----------------------------------------------------------------------
 DR   EMBL; D89547; BAA13973.1; -; mRNA.
 DR   PIR; T29088; T29088.
 DR   RefSeq; NP_001004408.1; NM_001004408.2.
-DR   UniGene; Gga.4125; -.
-DR   ProteinModelPortal; P87498; -.
 DR   SMR; P87498; -.
 DR   STRING; 9031.ENSGALP00000032611; -.
 DR   Allergome; 8172; Gal d 6.

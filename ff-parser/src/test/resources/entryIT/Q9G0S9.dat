@@ -87,12 +87,10 @@ DR   EMBL; AF285565; AAG30710.1; -; Genomic_DNA.
 DR   EMBL; AF285566; AAG30711.1; -; Genomic_DNA.
 DR   EMBL; AY167071; AAN86562.1; -; Genomic_DNA.
 DR   RefSeq; YP_009192261.1; NC_028718.1.
-DR   ProteinModelPortal; Q9G0S9; -.
 DR   SMR; Q9G0S9; -.
 DR   Ensembl; ENSMICT00000053028; ENSMICP00000022746; ENSMICG00000037851.
 DR   GeneID; 26823990; -.
 DR   CTD; 4519; -.
-DR   HOVERGEN; HBG017694; -.
 DR   GO; GO:0031305; C:integral component of mitochondrial inner membrane; IEA:Ensembl.
 DR   GO; GO:0045275; C:respiratory chain complex III; IEA:InterPro.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.

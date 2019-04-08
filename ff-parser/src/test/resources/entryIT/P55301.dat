@@ -66,7 +66,6 @@ DR   EMBL; CP000099; AAZ69952.1; -; Genomic_DNA.
 DR   RefSeq; WP_011306001.1; NC_007355.1.
 DR   PDB; 1M5S; X-ray; 1.85 A; A/B/C/D=1-297.
 DR   PDBsum; 1M5S; -.
-DR   ProteinModelPortal; P55301; -.
 DR   SMR; P55301; -.
 DR   STRING; 269797.Mbar_A0980; -.
 DR   EnsemblBacteria; AAZ69952; AAZ69952; Mbar_A0980.

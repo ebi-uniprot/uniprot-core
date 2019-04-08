@@ -335,7 +335,6 @@ DR   RefSeq; NP_848701.1; NM_178586.2. [Q13362-3]
 DR   RefSeq; NP_848702.1; NM_178587.2. [Q13362-2]
 DR   RefSeq; XP_005267884.1; XM_005267827.1.
 DR   RefSeq; XP_011535222.1; XM_011536920.1.
-DR   UniGene; Hs.368264; -.
 DR   PDB; 2IAE; X-ray; 3.50 A; B/E=30-436.
 DR   PDB; 2JAK; X-ray; 2.60 A; A=11-380.
 DR   PDB; 2NPP; X-ray; 3.30 A; B/E=1-442.
@@ -356,7 +355,6 @@ DR   PDBsum; 5JJA; -.
 DR   PDBsum; 5K6S; -.
 DR   PDBsum; 5SW9; -.
 DR   PDBsum; 5SWF; -.
-DR   ProteinModelPortal; Q13362; -.
 DR   SMR; Q13362; -.
 DR   BioGrid; 111519; 43.
 DR   DIP; DIP-39401N; -.
@@ -396,7 +394,6 @@ DR   eggNOG; KOG2085; Eukaryota.
 DR   eggNOG; ENOG410XQJW; LUCA.
 DR   GeneTree; ENSGT00550000074525; -.
 DR   HOGENOM; HOG000067326; -.
-DR   HOVERGEN; HBG000009; -.
 DR   InParanoid; Q13362; -.
 DR   KO; K11584; -.
 DR   OMA; SHCRADE; -.

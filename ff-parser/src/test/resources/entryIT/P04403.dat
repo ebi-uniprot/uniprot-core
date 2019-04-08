@@ -82,7 +82,6 @@ DR   PDB; 1GYS; Model; -; A=37-64, B=69-142.
 DR   PDB; 2LVF; NMR; -; A=37-146.
 DR   PDBsum; 1GYS; -.
 DR   PDBsum; 2LVF; -.
-DR   ProteinModelPortal; P04403; -.
 DR   SMR; P04403; -.
 DR   Allergome; 3134; Ber e 1.0101.
 DR   Allergome; 88; Ber e 1.

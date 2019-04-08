@@ -66,9 +66,7 @@ DR   EMBL; AF160555; AAF15171.1; -; Genomic_DNA.
 DR   EMBL; AF160558; AAF15174.1; -; Genomic_DNA.
 DR   EMBL; AF160559; AAF15175.1; -; Genomic_DNA.
 DR   EMBL; AF160560; AAF15176.1; -; Genomic_DNA.
-DR   ProteinModelPortal; Q9T4R0; -.
 DR   SMR; Q9T4R0; -.
-DR   HOVERGEN; HBG017694; -.
 DR   GO; GO:0016021; C:integral component of membrane; IEA:UniProtKB-KW.
 DR   GO; GO:0005743; C:mitochondrial inner membrane; IEA:UniProtKB-SubCell.
 DR   GO; GO:0045275; C:respiratory chain complex III; IEA:InterPro.

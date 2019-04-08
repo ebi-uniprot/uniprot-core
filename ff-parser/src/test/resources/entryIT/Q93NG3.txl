@@ -77,7 +77,6 @@ DR   RefSeq; WP_016359448.1; NC_021229.1.
 DR   RefSeq; YP_007988763.1; NC_021229.1.
 DR   PDB; 2VOU; X-ray; 2.60 A; A/B/C=1-397.
 DR   PDBsum; 2VOU; -.
-DR   ProteinModelPortal; Q93NG3; -.
 DR   SMR; Q93NG3; -.
 DR   GeneID; 15879626; -.
 DR   KEGG; ag:AAK64255; -.

@@ -47,7 +47,6 @@ CC   -----------------------------------------------------------------------
 DR   EMBL; CP000034; ABB60353.1; -; Genomic_DNA.
 DR   RefSeq; WP_000796482.1; NC_007606.1.
 DR   RefSeq; YP_401842.1; NC_007606.1.
-DR   ProteinModelPortal; Q32K04; -.
 DR   SMR; Q32K04; -.
 DR   PRIDE; Q32K04; -.
 DR   EnsemblBacteria; ABB60353; ABB60353; SDY_0118.

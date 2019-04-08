@@ -22,7 +22,6 @@ CC   -!- FUNCTION: Acts as a radical domain for damaged PFL and possibly
 CC       other radical proteins. {ECO:0000255|HAMAP-Rule:MF_00806}.
 DR   EMBL; CP000886; ABX65766.1; -; Genomic_DNA.
 DR   RefSeq; WP_000627811.1; NC_010102.1.
-DR   ProteinModelPortal; A9N0W4; -.
 DR   SMR; A9N0W4; -.
 DR   EnsemblBacteria; ABX65766; ABX65766; SPAB_00329.
 DR   KEGG; spq:SPAB_00329; -.

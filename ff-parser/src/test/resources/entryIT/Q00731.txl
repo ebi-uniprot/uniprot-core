@@ -195,8 +195,6 @@ DR   RefSeq; NP_001273986.1; NM_001287057.1. [Q00731-2]
 DR   RefSeq; NP_001273987.1; NM_001287058.1. [Q00731-3]
 DR   RefSeq; NP_001303970.1; NM_001317041.1.
 DR   RefSeq; NP_033531.3; NM_009505.4. [Q00731-6]
-DR   UniGene; Mm.282184; -.
-DR   ProteinModelPortal; Q00731; -.
 DR   SMR; Q00731; -.
 DR   BioGrid; 204512; 2.
 DR   ComplexPortal; CPX-3160; Vascular endothelial growth factor A complex.
@@ -221,7 +219,6 @@ DR   eggNOG; ENOG410IGCM; Eukaryota.
 DR   eggNOG; ENOG410ZWYU; LUCA.
 DR   GeneTree; ENSGT00940000157284; -.
 DR   HOGENOM; HOG000230896; -.
-DR   HOVERGEN; HBG000105; -.
 DR   InParanoid; Q00731; -.
 DR   KO; K05448; -.
 DR   PhylomeDB; Q00731; -.

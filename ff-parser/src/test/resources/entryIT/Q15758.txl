@@ -351,7 +351,6 @@ DR   CCDS; CCDS46126.1; -. [Q15758-3]
 DR   RefSeq; NP_001138616.1; NM_001145144.1. [Q15758-3]
 DR   RefSeq; NP_001138617.1; NM_001145145.1. [Q15758-2]
 DR   RefSeq; NP_005619.1; NM_005628.2. [Q15758-1]
-DR   UniGene; Hs.631582; -.
 DR   PDB; 5LLM; X-ray; 3.25 A; A=158-230.
 DR   PDB; 5LLU; X-ray; 3.32 A; A=158-230.
 DR   PDB; 5LM4; X-ray; 3.10 A; A=158-230.
@@ -362,7 +361,6 @@ DR   PDBsum; 5LLU; -.
 DR   PDBsum; 5LM4; -.
 DR   PDBsum; 5MJU; -.
 DR   PDBsum; 6GCT; -.
-DR   ProteinModelPortal; Q15758; -.
 DR   SMR; Q15758; -.
 DR   BioGrid; 112401; 69.
 DR   IntAct; Q15758; 49.
@@ -409,7 +407,6 @@ DR   eggNOG; KOG3787; Eukaryota.
 DR   eggNOG; COG1301; LUCA.
 DR   GeneTree; ENSGT00760000119117; -.
 DR   HOGENOM; HOG000208776; -.
-DR   HOVERGEN; HBG000080; -.
 DR   InParanoid; Q15758; -.
 DR   KO; K05616; -.
 DR   OMA; NPYTFLW; -.

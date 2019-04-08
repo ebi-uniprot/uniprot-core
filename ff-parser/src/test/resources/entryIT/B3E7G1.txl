@@ -31,7 +31,6 @@ CC   -!- SIMILARITY: Belongs to the transcriptional regulatory CopG/NikR
 CC       family. {ECO:0000255|HAMAP-Rule:MF_00476}.
 DR   EMBL; CP001089; ACD96478.1; -; Genomic_DNA.
 DR   RefSeq; WP_012470807.1; NC_010814.1.
-DR   ProteinModelPortal; B3E7G1; -.
 DR   SMR; B3E7G1; -.
 DR   STRING; 398767.Glov_2765; -.
 DR   EnsemblBacteria; ACD96478; ACD96478; Glov_2765.

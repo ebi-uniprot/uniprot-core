@@ -113,10 +113,8 @@ CC       subfamily. {ECO:0000305}.
 DR   EMBL; AL110490; CAB54449.2; -; Genomic_DNA.
 DR   PIR; T27005; T27005.
 DR   RefSeq; NP_496958.2; NM_064557.5.
-DR   UniGene; Cel.14046; -.
 DR   PDB; 5FIR; X-ray; 2.84 A; A/C/E/G/I/K=1-787.
 DR   PDBsum; 5FIR; -.
-DR   ProteinModelPortal; Q9U299; -.
 DR   SMR; Q9U299; -.
 DR   BioGrid; 40353; 1.
 DR   ComplexPortal; CPX-420; xtbd-paxt-1 complex.

@@ -106,9 +106,6 @@ DR   EMBL; AL022329; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   CCDS; CCDS13832.1; -.
 DR   PIR; JC1469; JC1469.
 DR   RefSeq; NP_005151.2; NM_005160.3.
-DR   UniGene; Hs.657494; -.
-DR   UniGene; Hs.733960; -.
-DR   ProteinModelPortal; P35626; -.
 DR   SMR; P35626; -.
 DR   BioGrid; 106666; 10.
 DR   IntAct; P35626; 4.
@@ -148,7 +145,6 @@ DR   eggNOG; KOG0986; Eukaryota.
 DR   eggNOG; ENOG410YRQZ; LUCA.
 DR   GeneTree; ENSGT00860000133699; -.
 DR   HOGENOM; HOG000006742; -.
-DR   HOVERGEN; HBG050559; -.
 DR   InParanoid; P35626; -.
 DR   KO; K00910; -.
 DR   OMA; DHVQTHL; -.

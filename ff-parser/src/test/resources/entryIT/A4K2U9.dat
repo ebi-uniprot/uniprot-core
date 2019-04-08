@@ -78,7 +78,6 @@ CC   -----------------------------------------------------------------------
 DR   EMBL; DP000045; ABO52984.1; -; Genomic_DNA.
 DR   RefSeq; NP_001162074.1; NM_001168603.1. [A4K2U9-1]
 DR   RefSeq; XP_009231897.1; XM_009233622.1. [A4K2U9-1]
-DR   ProteinModelPortal; A4K2U9; -.
 DR   SMR; A4K2U9; -.
 DR   STRING; 9601.ENSPPYP00000012330; -.
 DR   PRIDE; A4K2U9; -.
@@ -87,7 +86,6 @@ DR   KEGG; pon:100137177; -.
 DR   CTD; 7529; -.
 DR   eggNOG; KOG0841; Eukaryota.
 DR   eggNOG; COG5040; LUCA.
-DR   HOVERGEN; HBG050423; -.
 DR   InParanoid; A4K2U9; -.
 DR   KO; K16197; -.
 DR   OrthoDB; EOG091G0VKY; -.

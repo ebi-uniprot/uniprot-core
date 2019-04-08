@@ -148,8 +148,6 @@ DR   EMBL; CP002687; AEE82593.1; -; Genomic_DNA.
 DR   EMBL; AF332405; AAG48768.1; -; mRNA.
 DR   PIR; B85079; B85079.
 DR   RefSeq; NP_567330.1; NM_116873.2.
-DR   UniGene; At.4151; -.
-DR   ProteinModelPortal; Q9S9U6; -.
 DR   SMR; Q9S9U6; -.
 DR   BioGrid; 11617; 1.
 DR   IntAct; Q9S9U6; 1.

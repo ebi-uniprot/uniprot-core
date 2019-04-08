@@ -183,7 +183,6 @@ DR   RefSeq; NP_000750.1; NM_000759.3. [P09919-1]
 DR   RefSeq; NP_001171618.1; NM_001178147.1.
 DR   RefSeq; NP_757373.1; NM_172219.2. [P09919-2]
 DR   RefSeq; NP_757374.2; NM_172220.2. [P09919-3]
-DR   UniGene; Hs.2233; -.
 DR   PDB; 1CD9; X-ray; 2.80 A; A/C=31-207.
 DR   PDB; 1GNC; NMR; -; A=31-207.
 DR   PDB; 1PGR; X-ray; 3.50 A; A/C/E/G=31-207.
@@ -196,7 +195,6 @@ DR   PDBsum; 1PGR; -.
 DR   PDBsum; 1RHG; -.
 DR   PDBsum; 2D9Q; -.
 DR   PDBsum; 5GW9; -.
-DR   ProteinModelPortal; P09919; -.
 DR   SMR; P09919; -.
 DR   BioGrid; 107827; 10.
 DR   DIP; DIP-61120N; -.
@@ -232,7 +230,6 @@ DR   eggNOG; ENOG410IIM2; Eukaryota.
 DR   eggNOG; ENOG4111DA4; LUCA.
 DR   GeneTree; ENSGT00390000017328; -.
 DR   HOGENOM; HOG000015371; -.
-DR   HOVERGEN; HBG005411; -.
 DR   InParanoid; P09919; -.
 DR   KO; K05423; -.
 DR   OMA; HKLCHPE; -.

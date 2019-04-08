@@ -193,9 +193,7 @@ DR   EMBL; AK151294; BAE30278.1; -; mRNA.
 DR   EMBL; AK158932; BAE34730.1; -; mRNA.
 DR   CCDS; CCDS17019.1; -. [Q9CQV8-1]
 DR   RefSeq; NP_061223.2; NM_018753.6. [Q9CQV8-1]
-DR   RefSeq; XP_006499972.1; XM_006499909.1. [Q9CQV8-1]
-DR   UniGene; Mm.34319; -.
-DR   UniGene; Mm.491117; -.
+DR   RefSeq; XP_006499972.1; XM_006499909.1. [Q9CQV8-1].
 DR   PDB; 4GNT; X-ray; 2.41 A; A=1-239.
 DR   PDB; 5F74; X-ray; 2.35 A; A=1-246.
 DR   PDB; 5WFU; X-ray; 1.97 A; A/B/C/D=1-246.
@@ -204,7 +202,6 @@ DR   PDBsum; 4GNT; -.
 DR   PDBsum; 5F74; -.
 DR   PDBsum; 5WFU; -.
 DR   PDBsum; 5WFX; -.
-DR   ProteinModelPortal; Q9CQV8; -.
 DR   SMR; Q9CQV8; -.
 DR   BioGrid; 207648; 31.
 DR   IntAct; Q9CQV8; 635.
@@ -228,7 +225,6 @@ DR   eggNOG; KOG0841; Eukaryota.
 DR   eggNOG; COG5040; LUCA.
 DR   GeneTree; ENSGT00940000153153; -.
 DR   HOGENOM; HOG000240379; -.
-DR   HOVERGEN; HBG050423; -.
 DR   InParanoid; Q9CQV8; -.
 DR   KO; K16197; -.
 DR   OMA; KKQQMGR; -.

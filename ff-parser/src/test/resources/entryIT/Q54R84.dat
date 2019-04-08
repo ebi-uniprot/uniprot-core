@@ -59,7 +59,6 @@ CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
 CC   -----------------------------------------------------------------------
 DR   EMBL; AAFI02000052; EAL65800.1; -; Genomic_DNA.
 DR   RefSeq; XP_639163.1; XM_634071.1.
-DR   ProteinModelPortal; Q54R84; -.
 DR   STRING; 44689.DDB0234245; -.
 DR   PaxDb; Q54R84; -.
 DR   EnsemblProtists; EAL65800; EAL65800; DDB_G0283319.

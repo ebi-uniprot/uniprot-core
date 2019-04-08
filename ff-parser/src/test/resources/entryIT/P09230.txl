@@ -215,7 +215,6 @@ DR   EMBL; M17741; AAA35242.1; -; Genomic_DNA.
 DR   EMBL; M23353; AAA35250.1; -; Genomic_DNA.
 DR   EMBL; CR382132; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   PIR; A26955; A26955.
-DR   ProteinModelPortal; P09230; -.
 DR   SMR; P09230; -.
 DR   MEROPS; S08.055; -.
 DR   InParanoid; P09230; -.
