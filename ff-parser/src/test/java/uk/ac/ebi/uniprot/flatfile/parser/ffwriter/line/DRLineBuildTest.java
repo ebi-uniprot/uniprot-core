@@ -43,7 +43,6 @@ public class DRLineBuildTest {
                 + "DR   EMBL; BK006947; DAA10497.1; -; Genomic_DNA.\n"
                 + "DR   PIR; S61096; S61096.\n"
                 + "DR   RefSeq; NP_014350.1; NM_001182887.1.\n"
-                + "DR   ProteinModelPortal; P53954; -.\n"
                 + "DR   DIP; DIP-7438N; -.\n"
                 + "DR   IntAct; P53954; 15.\n"
                 + "DR   MINT; MINT-1356407; -.\n"
@@ -81,7 +80,6 @@ public class DRLineBuildTest {
         xrefs.add(createUniProtDBCrossReference("EMBL", "BK006947", "DAA10497.1", "-", "Genomic_DNA"));
         xrefs.add(createUniProtDBCrossReference("PIR", "S61096", "S61096"));
         xrefs.add(createUniProtDBCrossReference("RefSeq", "NP_014350.1", "NM_001182887.1"));
-        xrefs.add(createUniProtDBCrossReference("ProteinModelPortal", "P53954", "-"));
         xrefs.add(createUniProtDBCrossReference("DIP", "DIP-7438N", "-"));
         xrefs.add(createUniProtDBCrossReference("IntAct", "P53954", "15"));
         xrefs.add(createUniProtDBCrossReference("MINT", "MINT-1356407", "-"));
