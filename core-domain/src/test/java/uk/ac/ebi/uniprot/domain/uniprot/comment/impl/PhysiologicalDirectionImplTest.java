@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhysiologicalReactionBuilder;

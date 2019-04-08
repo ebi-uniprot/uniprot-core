@@ -2,8 +2,8 @@ package uk.ac.ebi.uniprot.domain.proteome.impl;
 
 import java.util.regex.Pattern;
 
+import uk.ac.ebi.uniprot.domain.impl.ValueImpl;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
 public class ProteomeIdImpl extends ValueImpl implements ProteomeId {
 

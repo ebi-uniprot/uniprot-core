@@ -3,7 +3,7 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityCommentBuilder;

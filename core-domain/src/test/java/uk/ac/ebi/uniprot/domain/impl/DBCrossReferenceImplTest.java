@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Property;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;

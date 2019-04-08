@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;

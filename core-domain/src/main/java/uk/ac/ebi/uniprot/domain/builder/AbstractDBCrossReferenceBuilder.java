@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.citation.builder;
+package uk.ac.ebi.uniprot.domain.builder;
 
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;

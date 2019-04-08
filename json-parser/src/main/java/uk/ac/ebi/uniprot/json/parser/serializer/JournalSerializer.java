@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.json.parser.uniprot.serializer;
+package uk.ac.ebi.uniprot.json.parser.serializer;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

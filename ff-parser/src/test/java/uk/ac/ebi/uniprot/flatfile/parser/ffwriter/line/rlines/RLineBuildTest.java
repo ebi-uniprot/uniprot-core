@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.rlines;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.*;

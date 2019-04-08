@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;

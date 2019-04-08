@@ -2,12 +2,12 @@ package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
 import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.AuthorBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.*;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.uniprot.impl;
+package uk.ac.ebi.uniprot.domain.impl;
 
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Value;

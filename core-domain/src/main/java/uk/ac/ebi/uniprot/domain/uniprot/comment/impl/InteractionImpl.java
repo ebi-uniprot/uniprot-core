@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
 import uk.ac.ebi.uniprot.common.Utils;
+import uk.ac.ebi.uniprot.domain.impl.ValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 
 import java.util.Objects;
 

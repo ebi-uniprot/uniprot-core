@@ -2,6 +2,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
 import org.junit.Test;
 
+import uk.ac.ebi.uniprot.domain.impl.ValueImpl;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 

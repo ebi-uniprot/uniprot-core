@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.citation.builder;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 
 import static org.hamcrest.MatcherAssert.assertThat;

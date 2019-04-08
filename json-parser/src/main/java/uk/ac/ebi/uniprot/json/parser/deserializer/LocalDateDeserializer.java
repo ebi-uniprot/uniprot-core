@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.json.parser.uniprot.deserializer;
+package uk.ac.ebi.uniprot.json.parser.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
