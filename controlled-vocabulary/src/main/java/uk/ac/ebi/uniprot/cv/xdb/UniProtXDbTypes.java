@@ -1,21 +1,18 @@
 package uk.ac.ebi.uniprot.cv.xdb;
 
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.common.property.PropertyArray;
 import uk.ac.ebi.uniprot.common.property.PropertyObject;
 import uk.ac.ebi.uniprot.cv.xdb.validator.DBXRefValidator;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 
 public enum UniProtXDbTypes {
