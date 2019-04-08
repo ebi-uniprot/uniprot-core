@@ -1,25 +1,46 @@
 package uk.ac.ebi.uniprot.json.parser.uniprot;
 
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.core.Version;
-import com.fasterxml.jackson.databind.AnnotationIntrospector;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.cfg.MapperConfig;
-import com.fasterxml.jackson.databind.cfg.PackageVersion;
-import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
-import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.util.ClassUtil;
+import java.time.LocalDate;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
-import uk.ac.ebi.uniprot.domain.*;
-import uk.ac.ebi.uniprot.domain.citation.*;
-import uk.ac.ebi.uniprot.domain.citation.impl.*;
-import uk.ac.ebi.uniprot.domain.gene.*;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.DatabaseType;
+import uk.ac.ebi.uniprot.domain.ECNumber;
+import uk.ac.ebi.uniprot.domain.Sequence;
+import uk.ac.ebi.uniprot.domain.Value;
+import uk.ac.ebi.uniprot.domain.citation.Author;
+import uk.ac.ebi.uniprot.domain.citation.Book;
+import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
+import uk.ac.ebi.uniprot.domain.citation.Journal;
+import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
+import uk.ac.ebi.uniprot.domain.citation.Locator;
+import uk.ac.ebi.uniprot.domain.citation.Patent;
+import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.citation.Submission;
+import uk.ac.ebi.uniprot.domain.citation.Thesis;
+import uk.ac.ebi.uniprot.domain.citation.Unpublished;
+import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.BookImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.JournalArticleImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.JournalImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.PatentImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.SubmissionImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.ThesisImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.UnpublishedImpl;
+import uk.ac.ebi.uniprot.domain.gene.Gene;
+import uk.ac.ebi.uniprot.domain.gene.GeneName;
+import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
+import uk.ac.ebi.uniprot.domain.gene.ORFName;
+import uk.ac.ebi.uniprot.domain.gene.OrderedLocusName;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.DefaultDatabaseType;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
@@ -28,11 +49,94 @@ import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismHostImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.*;
+import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
+import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
+import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
+import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
+import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
+import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
+import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeText;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Interactor;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformId;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RedoxPotential;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AbsorptionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.AlternativeProductsCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.BPCPCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CofactorImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.DiseaseImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.FreeTextImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.KineticParametersImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MassSpectrometryRangeImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MaximumVelocityImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.MichaelisConstantImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.NoteImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.PhysiologicalReactionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.ReactionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.RnaEditingCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SequenceCautionCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.WebResourceCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
+import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
+import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ECImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.NameImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinAltNameImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinDescriptionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinRecNameImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSubNameImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
@@ -47,16 +151,42 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureDescriptionImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.*;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryAuditImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.EntryInactiveReasonImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneLocationImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalLineImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.InternalSectionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.ReferenceCommentImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.SourceLineImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtIdImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtReferenceImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.ValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.json.parser.CustomAnnotationIntrospector;
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
+import uk.ac.ebi.uniprot.json.parser.SimpleAnnotationIntrospector;
 import uk.ac.ebi.uniprot.json.parser.uniprot.deserializer.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.*;
-
-import java.time.LocalDate;
-import java.util.Arrays;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.AuthorSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.ECNumberSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.EvidenceSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.FeatureDescriptionSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.FeatureIdSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.FlagSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.InteractorSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.IsoformIdImplSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.JournalSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.LocalDateSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.LocatorSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.PublicationDateSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.UniProtAccessionSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.UniProtIdSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.UniProtXDbTypeSerializer;
 /**
  *
  * @author lgonzales
@@ -73,7 +203,7 @@ public class UniprotJsonConfig implements JsonConfig {
         this.prettyMapper = initPrettyObjectMapper();
     }
 
-    public static UniprotJsonConfig getInstance(){
+    public static synchronized UniprotJsonConfig getInstance(){
         if(INSTANCE == null){
             INSTANCE = new UniprotJsonConfig();
         }
@@ -258,42 +388,5 @@ public class UniprotJsonConfig implements JsonConfig {
         return this.objectMapper;
     }
 
-    private static class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
-
-        @Override
-        public TypeResolverBuilder<?> findTypeResolver(MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
-            if (baseType.isTypeOrSubTypeOf(Comment.class)
-					//|| (baseType.isTypeOrSubTypeOf(DatabaseType.class) && !baseType.hasRawClass(EvidenceType.class))
-                    || baseType.isTypeOrSubTypeOf(Citation.class)){
-                StdTypeResolverBuilder typeResolverBuilder = new StdTypeResolverBuilder();
-                typeResolverBuilder.init(JsonTypeInfo.Id.NAME, null);
-                typeResolverBuilder.typeProperty("type");
-                typeResolverBuilder.inclusion(JsonTypeInfo.As.PROPERTY);
-                return typeResolverBuilder;
-            }
-            return super.findTypeResolver(config, ac, baseType);
-        }
-
-    }
-
-
-    private static class SimpleAnnotationIntrospector extends AnnotationIntrospector {
-
-        @Override
-        public Version version() {
-            return PackageVersion.VERSION;
-        }
-
-        public String[] findEnumValues(Class<?> enumType, Enum<?>[] enumValues, String[] names) {
-            return Arrays.stream(enumValues).map(en -> {
-                EnumDisplay<?> jsonEnum = (EnumDisplay<?>) en;
-                return jsonEnum.toDisplayName();
-            }).toArray(String[]::new);
-        }
-
-        public Enum<?> findDefaultEnumValue(Class<Enum<?>> enumCls) {
-            return ClassUtil.findFirstAnnotatedEnumValue(enumCls, JsonEnumDefaultValue.class);
-        }
-
-    }
+   
 }
