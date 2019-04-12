@@ -473,7 +473,7 @@
 		"name": "jPOST",
 		"displayName": "jPOST",
 		"category": "PROTEOMIC",
-		"uriLink": "http://globe.jpostdb.org/protein?id=%u"
+		"uriLink": "https://globe.jpostdb.org/protein?id=%u"
 	},
 	
 	
@@ -1096,7 +1096,7 @@
 		"name": "BioCyc",
 		"displayName": "BioCyc",
 		"category": "EAP",
-		"uriLink": "http://biocyc.org/getid?id=%s"
+		"uriLink": "https://biocyc.org/getid?id=%s"
 	},
 	{
 		"name": "BRENDA",
