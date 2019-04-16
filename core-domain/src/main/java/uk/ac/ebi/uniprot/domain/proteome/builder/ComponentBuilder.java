@@ -6,6 +6,7 @@ import java.util.List;
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 import uk.ac.ebi.uniprot.domain.proteome.impl.ComponentImpl;
@@ -37,11 +38,12 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 		return this;
 	}
 
-	public ComponentBuilder addDbXReferences(DBCrossReference<ProteomeXReferenceType> dbXReference) {
+	public ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
 		Utils.nonNullAdd(dbXReference, dbXReferences);
 		return this;
 	}
-
+	
+	
 	public ComponentBuilder proteinCount(int proteinCount) {
 		this.proteinCount = proteinCount;
 		return this;
@@ -49,7 +51,7 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 
 	@Override
 	public Component build() {
-		return new ComponentImpl( name,  description,  proteinCount,  dbXReferences) ;
+		return new ComponentImpl( name,  description,  proteinCount, dbXReferences) ;
 	}
 
 	@Override
@@ -59,6 +61,7 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 		this.proteinCount = instance.getProteinCount();
 		dbXReferences.clear();
 		dbXReferences.addAll(instance.getDbXReferences());
+		
 		return this;
 	}
 

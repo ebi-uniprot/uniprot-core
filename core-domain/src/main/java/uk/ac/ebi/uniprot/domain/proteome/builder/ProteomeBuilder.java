@@ -8,6 +8,7 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
 import uk.ac.ebi.uniprot.domain.proteome.Proteome;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
@@ -37,7 +38,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	private long proteinCount;
 	private long geneCount;
 	private List<String> taxonLineage =new ArrayList<>();
-	
+	private List<CanonicalProtein> canonicalProteins  =new ArrayList<>();
 	public static ProteomeBuilder newInstance() {
 		return new ProteomeBuilder();
 	}
@@ -48,7 +49,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 				 proteomeType,  redundantTo,  strain,  isolate,
 				dbXReferences,  components,
 				references,  redundantProteomes,  panproteome,
-				 annotationScore,  superkingdom,  proteinCount,  geneCount, taxonLineage) ;
+				 annotationScore,  superkingdom,  proteinCount,  geneCount, taxonLineage, canonicalProteins) ;
 
 	}
 	
@@ -81,6 +82,8 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 		this.proteinCount = instance.getProteinCount();
 		this.geneCount =instance.getGeneCount();
 		this.taxonLineage =instance.getTaxonLineage();
+		canonicalProteins.clear();
+		canonicalProteins.addAll(instance.getCanonicalProteins());
 		return this;
 	}
 
@@ -192,4 +195,14 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 		this.taxonLineage =  Utils.nonNullList(taxonLineage);
 		return this;
 	}
+	public ProteomeBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {
+		this.canonicalProteins = Utils.nonNullList(canonicalProteins);
+		return this;
+	}
+
+	public ProteomeBuilder addCanonicalProtein(CanonicalProtein canonicalProtein) {
+		Utils.nonNullAdd(canonicalProtein, canonicalProteins);
+		return this;
+	}
+
 }

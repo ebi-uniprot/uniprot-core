@@ -22,7 +22,9 @@ import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
+import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
+import uk.ac.ebi.uniprot.domain.proteome.Protein;
 import uk.ac.ebi.uniprot.domain.proteome.Proteome;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
@@ -356,5 +358,38 @@ class ProteomeBuilderTest {
 		Proteome proteome = ProteomeBuilder.newInstance().taxonLineage(Arrays.asList("some lineage"))
 				.build();
 		assertEquals(Arrays.asList("some lineage"), proteome.getTaxonLineage());
+	}
+	
+	@Test
+	void addCanonicalProtein() {
+		List<Protein> proteins =new ArrayList<>();
+		proteins.add(ProteinBuilder.newInstance().accession("P12345").build());
+		proteins.add(ProteinBuilder.newInstance().accession("P12346").build());
+		CanonicalProtein cProtein = CanonicalProteinBuilder.newInstance().relatedProteins(proteins).build();	
+		
+		
+		Protein protein = ProteinBuilder.newInstance().accession("P22345").build();		
+		CanonicalProtein cProtein2 = CanonicalProteinBuilder.newInstance().addRelatedProtein(protein).build();		
+		Proteome proteome = ProteomeBuilder.newInstance().addCanonicalProtein(cProtein)
+				 .addCanonicalProtein(cProtein2)
+				 .build();
+		assertEquals(2, proteome.getCanonicalProteins().size());
+		assertThat(proteome.getCanonicalProteins(), hasItem(cProtein));
+	}
+	@Test
+	void canonicalProteins() {
+		List<Protein> proteins =new ArrayList<>();
+		proteins.add(ProteinBuilder.newInstance().accession("P12345").build());
+		proteins.add(ProteinBuilder.newInstance().accession("P12346").build());
+		CanonicalProtein cProtein = CanonicalProteinBuilder.newInstance().relatedProteins(proteins).build();	
+		
+		
+		Protein protein = ProteinBuilder.newInstance().accession("P22345").build();		
+		CanonicalProtein cProtein2 = CanonicalProteinBuilder.newInstance().addRelatedProtein(protein).build();	
+		List<CanonicalProtein> cProteins = Arrays.asList(cProtein, cProtein2);
+		Proteome proteome = ProteomeBuilder.newInstance().canonicalProteins(cProteins)
+				 .build();
+		assertEquals(2, proteome.getCanonicalProteins().size());
+		assertThat(proteome.getCanonicalProteins(), hasItem(cProtein2));
 	}
 }

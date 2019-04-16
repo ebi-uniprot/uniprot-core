@@ -8,6 +8,7 @@ import java.util.Objects;
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
 import uk.ac.ebi.uniprot.domain.proteome.Proteome;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
@@ -38,6 +39,7 @@ public class ProteomeImpl implements Proteome {
 	private long proteinCount;
 	private long geneCount;
 	List<String> taxonLineage;
+	private List<CanonicalProtein> canonicalProteins;
 	
 	private ProteomeImpl() {
 		dbXReferences = Collections.emptyList();
@@ -45,7 +47,7 @@ public class ProteomeImpl implements Proteome {
 		references = Collections.emptyList();
 		redundantProteomes = Collections.emptyList();
 		taxonLineage = Collections.emptyList();
-	    
+		canonicalProteins = Collections.emptyList();
 	}
 	
 	public ProteomeImpl(ProteomeId id, Taxonomy taxonomy, String description,  LocalDate modified,
@@ -53,7 +55,7 @@ public class ProteomeImpl implements Proteome {
 			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences, List<Component> components,
 			List<Citation> references, List<RedundantProteome> redundantProteomes, ProteomeId panproteome,
 			int annotationScore, Superkingdom superkingdom, long proteinCount, long geneCount,
-			List<String> taxonLineage) {
+			List<String> taxonLineage, List<CanonicalProtein> canonicalProteins) {
 		super();
 		this.id = id;
 		this.taxonomy = taxonomy;
@@ -74,6 +76,7 @@ public class ProteomeImpl implements Proteome {
 		this.proteinCount = proteinCount;
 		this.geneCount = geneCount;
 		this.taxonLineage  = Utils.nonNullUnmodifiableList( taxonLineage);
+		this.canonicalProteins  = Utils.nonNullUnmodifiableList( canonicalProteins);
 	}
 
 
@@ -166,6 +169,12 @@ public class ProteomeImpl implements Proteome {
 		return taxonLineage;
 	}
 	@Override
+	public List<CanonicalProtein> getCanonicalProteins() {
+		return this.canonicalProteins;
+	}
+
+	
+	@Override
 	public int hashCode() {
 		return Objects.hash(components, dbXReferences, description, id, isolate, modified,
 				panproteome, redundantProteomes, redundantTo, references,
@@ -198,6 +207,7 @@ public class ProteomeImpl implements Proteome {
 				;
 	}
 
+	
 	
 
 }

@@ -14,7 +14,9 @@ public class ComponentImpl implements Component {
 	private String name;
 	private String description;
 	private long proteinCount;
+	
 	private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences;
+
 	private ComponentImpl() {
 		dbXReferences = Collections.emptyList();
 	}
@@ -62,5 +64,4 @@ public class ComponentImpl implements Component {
 				&& Objects.equals(proteinCount, other.proteinCount) 
 				&& Objects.equals(dbXReferences, other.dbXReferences);
 	}
-
 }

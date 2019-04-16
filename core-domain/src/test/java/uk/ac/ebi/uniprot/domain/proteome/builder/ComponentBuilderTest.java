@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain.proteome.builder;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,8 +39,8 @@ class ComponentBuilderTest {
 				.id("ADFDA121")
 				.build();
 		Component component =
-		 ComponentBuilder.newInstance().addDbXReferences(xref1)
-		 .addDbXReferences(xref2)
+		 ComponentBuilder.newInstance().addDbXReference(xref1)
+		 .addDbXReference(xref2)
 		 .build();
 		assertEquals(2, component.getDbXReferences().size());
 		assertThat(component.getDbXReferences(), hasItem(xref1));
@@ -70,4 +70,5 @@ class ComponentBuilderTest {
 		
 				
 	}
+	
 }
