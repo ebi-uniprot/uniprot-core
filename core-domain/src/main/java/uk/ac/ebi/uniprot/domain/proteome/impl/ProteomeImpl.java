@@ -15,14 +15,14 @@ import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
 import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
 
 public class ProteomeImpl implements Proteome {
 
 	private static final long serialVersionUID = 1962327704149624243L;
 	private ProteomeId id;
-	private String name;
 	private String description;
-	private long taxonomy;
+	private Taxonomy taxonomy;
 	private LocalDate modified;
 	private ProteomeType proteomeType;
 	private ProteomeId redundantTo;
@@ -37,25 +37,28 @@ public class ProteomeImpl implements Proteome {
 	private Superkingdom superkingdom;
 	private long proteinCount;
 	private long geneCount;
+	List<String> taxonLineage;
 	
 	private ProteomeImpl() {
 		dbXReferences = Collections.emptyList();
 		components = Collections.emptyList();
 		references = Collections.emptyList();
 		redundantProteomes = Collections.emptyList();
+		taxonLineage = Collections.emptyList();
 	    
 	}
 	
-	public ProteomeImpl(ProteomeId id, String name, String description, long taxonomy, LocalDate modified,
+	public ProteomeImpl(ProteomeId id, Taxonomy taxonomy, String description,  LocalDate modified,
 			ProteomeType proteomeType, ProteomeId redundantTo, String strain, String isolate,
 			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences, List<Component> components,
 			List<Citation> references, List<RedundantProteome> redundantProteomes, ProteomeId panproteome,
-			int annotationScore, Superkingdom superkingdom, long proteinCount, long geneCount) {
+			int annotationScore, Superkingdom superkingdom, long proteinCount, long geneCount,
+			List<String> taxonLineage) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.description = description;
 		this.taxonomy = taxonomy;
+		this.description = description;
+		
 		this.modified = modified;
 		this.proteomeType = proteomeType;
 		this.redundantTo = redundantTo;
@@ -70,6 +73,7 @@ public class ProteomeImpl implements Proteome {
 		this.superkingdom = superkingdom;
 		this.proteinCount = proteinCount;
 		this.geneCount = geneCount;
+		this.taxonLineage  = Utils.nonNullUnmodifiableList( taxonLineage);
 	}
 
 
@@ -79,17 +83,12 @@ public class ProteomeImpl implements Proteome {
 	}
 
 	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
 	public String getDescription() {
 		return description;
 	}
 
 	@Override
-	public long getTaxonomy() {
+	public Taxonomy getTaxonomy() {
 		return taxonomy;
 	}
 
@@ -162,11 +161,14 @@ public class ProteomeImpl implements Proteome {
 	public long getGeneCount() {
 		return geneCount;
 	}
-
+	@Override
+	public List<String> getTaxonLineage() {
+		return taxonLineage;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(components, dbXReferences, description, id, isolate, modified,
-				name, panproteome, redundantProteomes, redundantTo, references,
+				panproteome, redundantProteomes, redundantTo, references,
 				strain, superkingdom, taxonomy, proteomeType);
 	}
 
@@ -185,7 +187,6 @@ public class ProteomeImpl implements Proteome {
 				&& Objects.equals(id, other.id)
 				&& Objects.equals(isolate, other.isolate)
 				&& Objects.equals(modified, other.modified)
-				&& Objects.equals(name, other.name)
 				&& Objects.equals(panproteome, other.panproteome)
 				&& Objects.equals(redundantProteomes, other.redundantProteomes)
 				&& Objects.equals(redundantTo, other.redundantTo)
@@ -196,5 +197,7 @@ public class ProteomeImpl implements Proteome {
 				&& Objects.equals(proteomeType, other.proteomeType)
 				;
 	}
+
+	
 
 }

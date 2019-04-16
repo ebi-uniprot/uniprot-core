@@ -6,12 +6,12 @@ import java.util.List;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
 
 public interface Proteome extends Serializable {
 	ProteomeId getId();
-	String getName();
-	String getDescription();
-	long getTaxonomy();
+	Taxonomy getTaxonomy();
+	String getDescription();	
 	LocalDate getModified();
 	ProteomeType getProteomeType();
 	ProteomeId getRedundantTo();
@@ -26,5 +26,6 @@ public interface Proteome extends Serializable {
 	Superkingdom getSuperkingdom();
 	long getProteinCount();
 	long getGeneCount();
+	List<String> getTaxonLineage();
 	
 }

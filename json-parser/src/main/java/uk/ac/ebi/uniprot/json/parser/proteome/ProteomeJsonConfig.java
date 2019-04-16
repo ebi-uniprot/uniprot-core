@@ -50,6 +50,10 @@ import uk.ac.ebi.uniprot.domain.proteome.impl.ProteinImpl;
 import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeIdImpl;
 import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeImpl;
 import uk.ac.ebi.uniprot.domain.proteome.impl.RedundantProteomeImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
+import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismHostImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.InteractionImpl;
@@ -114,6 +118,8 @@ public class ProteomeJsonConfig implements JsonConfig {
 	        mod.addAbstractTypeMapping(Proteome.class, ProteomeImpl.class);
 	        mod.addAbstractTypeMapping(Component.class, ComponentImpl.class);
 	        mod.addAbstractTypeMapping(ProteomeId.class, ProteomeIdImpl.class);
+	        mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
+	        
 	        mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
 	        mod.addAbstractTypeMapping(RedundantProteome.class, RedundantProteomeImpl.class);
 	        mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);

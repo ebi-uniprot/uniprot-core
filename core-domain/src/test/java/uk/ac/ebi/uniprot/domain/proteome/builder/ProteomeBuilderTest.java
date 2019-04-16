@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -28,6 +29,8 @@ import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
 import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyBuilder;
 
 class ProteomeBuilderTest {
 
@@ -51,13 +54,7 @@ class ProteomeBuilderTest {
 		assertEquals(proteomeId, proteome.getId());
 	}
 
-	@Test
-	void testName() {
-		String name ="Human";
-		Proteome proteome = ProteomeBuilder.newInstance().name(name)
-				.build();
-		assertEquals(name, proteome.getName());
-	}
+
 
 	@Test
 	void testDescription() {
@@ -69,7 +66,7 @@ class ProteomeBuilderTest {
 
 	@Test
 	void testTaxonomy() {
-		long taxonomy = 9606;
+		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
 		Proteome proteome = ProteomeBuilder.newInstance().taxonomy(taxonomy)
 				.build();
 		assertEquals(taxonomy, proteome.getTaxonomy());
@@ -354,5 +351,10 @@ class ProteomeBuilderTest {
 				.build();
 		assertEquals(203, proteome.getGeneCount());
 	}
-
+	@Test
+	void testTaxonLineage() {
+		Proteome proteome = ProteomeBuilder.newInstance().taxonLineage(Arrays.asList("some lineage"))
+				.build();
+		assertEquals(Arrays.asList("some lineage"), proteome.getTaxonLineage());
+	}
 }

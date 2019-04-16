@@ -16,12 +16,12 @@ import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
 import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
 import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
 
 public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	private ProteomeId id;
-	private String name;
 	private String description;
-	private long taxonomy;
+	private Taxonomy taxonomy;
 	private LocalDate modified;
 	private ProteomeType proteomeType= ProteomeType.NORMAL;
 	private ProteomeId redundantTo;
@@ -36,6 +36,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	private Superkingdom superkingdom;
 	private long proteinCount;
 	private long geneCount;
+	private List<String> taxonLineage =new ArrayList<>();
 	
 	public static ProteomeBuilder newInstance() {
 		return new ProteomeBuilder();
@@ -43,20 +44,20 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	
 	@Override
 	public Proteome build() {
-		return new ProteomeImpl( id,  name,  description,  taxonomy,  modified,
+		return new ProteomeImpl( id,  taxonomy,  description,   modified,
 				 proteomeType,  redundantTo,  strain,  isolate,
 				dbXReferences,  components,
 				references,  redundantProteomes,  panproteome,
-				 annotationScore,  superkingdom,  proteinCount,  geneCount) ;
+				 annotationScore,  superkingdom,  proteinCount,  geneCount, taxonLineage) ;
 
 	}
 	
 	@Override
 	public ProteomeBuilder from(Proteome instance) {
 		this.id = instance.getId();
-		this.name = instance.getName();
-		this.description =instance.getDescription();
 		this.taxonomy =instance.getTaxonomy();
+		this.description =instance.getDescription();
+	
 		this.modified = instance.getModified();
 		this.proteomeType = instance.getProteomeType();
 		this.redundantTo = instance.getRedundantTo();
@@ -79,7 +80,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 		this.superkingdom = instance.getSuperkingdom();
 		this.proteinCount = instance.getProteinCount();
 		this.geneCount =instance.getGeneCount();
-		
+		this.taxonLineage =instance.getTaxonLineage();
 		return this;
 	}
 
@@ -88,18 +89,14 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 		this.id = id;
 		return this;
 	}
-	
-	public ProteomeBuilder name(String name) {
-		this.name = name;
-		return this;
-	}
+
 	
 	public ProteomeBuilder description(String description) {
 		this.description = description;
 		return this;
 	}
 	
-	public ProteomeBuilder taxonomy(long taxonomy) {
+	public ProteomeBuilder taxonomy(Taxonomy taxonomy) {
 		this.taxonomy = taxonomy;
 		return this;
 	}
@@ -189,6 +186,10 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	}
 	public ProteomeBuilder geneCount(long geneCount) {
 		this.geneCount = geneCount;
+		return this;
+	}
+	public ProteomeBuilder taxonLineage(List<String> taxonLineage) {
+		this.taxonLineage =  Utils.nonNullList(taxonLineage);
 		return this;
 	}
 }

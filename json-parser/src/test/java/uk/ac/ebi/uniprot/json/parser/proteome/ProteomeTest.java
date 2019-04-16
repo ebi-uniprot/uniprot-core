@@ -27,6 +27,8 @@ import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.RedundantProteomeBuilder;
+import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 public class ProteomeTest {
@@ -90,10 +92,12 @@ public class ProteomeTest {
 				.build();
 		xrefs.add(xref1);
 		xrefs.add(xref2);
+		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens")
+				.commonName("Human").build();
 		Proteome proteome = ProteomeBuilder.newInstance().proteomeId(proteomeId)
-				.name("Human")
+			
 				.description(description)
-				.taxonomy(9606)
+				.taxonomy(taxonomy)
 				.modified(modified)
 				.proteomeType(ProteomeType.REDUNDANT)
 				.redundantTo(redId)
@@ -156,12 +160,13 @@ public class ProteomeTest {
 				.build();
 		redundantProteomes.add(rproteome1);
 		redundantProteomes.add(rproteome2);
-		
+		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens")
+				.commonName("Human").build();
 		
 		Proteome proteome = ProteomeBuilder.newInstance().proteomeId(proteomeId)
-				.name("Human")
+			
 				.description(description)
-				.taxonomy(9606)
+				.taxonomy(taxonomy)
 				.modified(modified)
 				.proteomeType(ProteomeType.REFERENCE)
 				.strain("some Strain")
