@@ -53,7 +53,14 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 
 	private Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordDetail keyword){
 		String accession = keyword.getAccession();
-		KeywordCategory category = KeywordCategory.fromValue(keyword.getCategory().getKeyword().getId());
+		KeywordDetail kcategory = keyword.getCategory();
+		KeywordCategory category =KeywordCategory.UNKNOWN;
+		if(kcategory !=null) {
+			 category = KeywordCategory.fromValue(kcategory.getKeyword().getId());
+		}else {
+			 category = KeywordCategory.fromValue(keyword.getKeyword().getId());
+		}
+	
 		return new PairImpl<>(accession, category);
 	}
 	private void updateListWithRelationShips(List<KeywordDetail> list, List<KeyFileEntry> rawList) {
