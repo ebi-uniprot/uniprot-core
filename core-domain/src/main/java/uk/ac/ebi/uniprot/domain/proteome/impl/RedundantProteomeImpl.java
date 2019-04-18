@@ -9,13 +9,13 @@ public class RedundantProteomeImpl implements RedundantProteome {
 
 	private static final long serialVersionUID = -5984551068808415398L;
 	private ProteomeId id;
-	private Double similarity;
+	private Float similarity;
 	
 	private RedundantProteomeImpl() {
 		
 	}
 	
-	public RedundantProteomeImpl(ProteomeId id, Double similarity) {
+	public RedundantProteomeImpl(ProteomeId id, Float similarity) {
 		this.id = id;
 		this.similarity = similarity;
 	}
@@ -26,7 +26,7 @@ public class RedundantProteomeImpl implements RedundantProteome {
 	}
 
 	@Override
-	public Double getSimilarity() {
+	public Float getSimilarity() {
 		return similarity;
 	}
 

@@ -22,5 +22,11 @@ public enum Superkingdom implements EnumDisplay<Superkingdom> {
 	public String toDisplayName() {
 		return getName();
 	}
-	
+	public static Superkingdom fromValue(String type) {
+		for(Superkingdom gnType: Superkingdom.values()) {
+			if(gnType.getName().equals(type))
+				return gnType;
+		}
+		  throw new IllegalArgumentException(type);
+	}
 }

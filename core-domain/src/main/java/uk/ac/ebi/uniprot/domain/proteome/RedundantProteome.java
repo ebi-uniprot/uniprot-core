@@ -4,5 +4,5 @@ import java.io.Serializable;
 
 public interface RedundantProteome extends Serializable {
 	ProteomeId getId();
-	Double getSimilarity();
+	Float getSimilarity();
 }

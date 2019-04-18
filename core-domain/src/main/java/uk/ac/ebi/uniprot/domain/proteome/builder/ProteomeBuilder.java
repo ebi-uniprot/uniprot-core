@@ -39,6 +39,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	private long geneCount;
 	private List<String> taxonLineage =new ArrayList<>();
 	private List<CanonicalProtein> canonicalProteins  =new ArrayList<>();
+	private String sourceDb;
 	public static ProteomeBuilder newInstance() {
 		return new ProteomeBuilder();
 	}
@@ -49,7 +50,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 				 proteomeType,  redundantTo,  strain,  isolate,
 				dbXReferences,  components,
 				references,  redundantProteomes,  panproteome,
-				 annotationScore,  superkingdom,  proteinCount,  geneCount, taxonLineage, canonicalProteins) ;
+				 annotationScore,  superkingdom,  proteinCount,  geneCount, taxonLineage, canonicalProteins, sourceDb) ;
 
 	}
 	
@@ -84,6 +85,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 		this.taxonLineage =instance.getTaxonLineage();
 		canonicalProteins.clear();
 		canonicalProteins.addAll(instance.getCanonicalProteins());
+		this.sourceDb =instance.getSourceDb();
 		return this;
 	}
 
@@ -92,7 +94,10 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 		this.id = id;
 		return this;
 	}
-
+	public ProteomeBuilder proteomeId(String id) {
+		this.id = new ProteomeIdBuilder(id).build();
+		return this;
+	}
 	
 	public ProteomeBuilder description(String description) {
 		this.description = description;
@@ -126,6 +131,10 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	
 	public ProteomeBuilder isolate(String isolate) {
 		this.isolate = isolate;
+		return this;
+	}
+	public ProteomeBuilder sourceDb(String sourceDb) {
+		this.sourceDb = sourceDb;
 		return this;
 	}
 	

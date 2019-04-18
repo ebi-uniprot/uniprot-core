@@ -276,13 +276,13 @@ class ProteomeBuilderTest {
 		RedundantProteome rproteome1 =
 				RedundantProteomeBuilder.newInstance()
 				.proteomeId(new ProteomeIdBuilder (id).build())
-				.similarity(0.98)
+				.similarity(0.98f)
 				.build();
 		String id2 = "UP000004343";
 		RedundantProteome rproteome2=
 				RedundantProteomeBuilder.newInstance()
 				.proteomeId(new ProteomeIdBuilder (id2).build())
-				.similarity(0.88)
+				.similarity(0.88f)
 				.build();
 		redundantProteomes.add(rproteome1);
 		redundantProteomes.add(rproteome2);
@@ -299,13 +299,13 @@ class ProteomeBuilderTest {
 		RedundantProteome rproteome1 =
 				RedundantProteomeBuilder.newInstance()
 				.proteomeId(new ProteomeIdBuilder (id).build())
-				.similarity(0.98)
+				.similarity(0.98f)
 				.build();
 		String id2 = "UP000004343";
 		RedundantProteome rproteome2=
 				RedundantProteomeBuilder.newInstance()
 				.proteomeId(new ProteomeIdBuilder (id2).build())
-				.similarity(0.88)
+				.similarity(0.88f)
 				.build();
 
 		Proteome proteome = ProteomeBuilder.newInstance()

@@ -7,7 +7,9 @@ public enum ProteomeXReferenceType implements DatabaseType ,  EnumDisplay<Proteo
 	GENOME_ASSEMBLY("GenomeAssembly"),
 	GENOME_ANNOTATION("GenomeAnnotation"),
 	GENOME_ACCESSION("GenomeAccession"),
-	BIOSAMPLE("Biosample");
+	ASSEMBLY_ID("AssemblyId"),
+	BIOSAMPLE("Biosample"),
+	UNKNOWN("Unknown");
 	
 	
 	private final String name;
@@ -22,5 +24,11 @@ public enum ProteomeXReferenceType implements DatabaseType ,  EnumDisplay<Proteo
 	public String toDisplayName() {
 		return getName();
 	}
-
+	public static ProteomeXReferenceType fromValue(String type) {
+		for(ProteomeXReferenceType gnType: ProteomeXReferenceType.values()) {
+			if(gnType.getName().equalsIgnoreCase(type))
+				return gnType;
+		}
+		return ProteomeXReferenceType.UNKNOWN;
+	}
 }

@@ -22,4 +22,11 @@ public enum GeneNameType implements EnumDisplay<GeneNameType> {
 	public String toDisplayName() {
 		return getName();
 	}
+	public static GeneNameType fromValue(String type) {
+		for(GeneNameType gnType: GeneNameType.values()) {
+			if(gnType.getName().equals(type))
+				return gnType;
+		}
+		return GeneNameType.MISSING;
+	}
 }

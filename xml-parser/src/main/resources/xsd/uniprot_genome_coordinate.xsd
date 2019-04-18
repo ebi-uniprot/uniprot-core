@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:upf="http://www.ebi.ac.uk/proteins/api/doc/xsd/feature"> 
+	<xs:import namespace="http://www.ebi.ac.uk/proteins/api/doc/xsd/feature"
+		schemaLocation="https://www.ebi.ac.uk/proteins/api/doc/xsd/feature.xsd" />
+
+
+ <xs:element name="gnEntries">
+        <xs:annotation>
+            <xs:documentation>Describes a collection of GN Entries.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="gnEntry" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<xs:element name="gnEntry">
+		<xs:annotation>
+			<xs:documentation> EntryType describes uniprot protein sequence that
+				maps a list of genomic locations: gnEntryType
+				Geneomic coordinates: chromosome, exons. The entry
+				contains uniprot
+				accession,
+				protein sequence, protein names, gene
+				names, ensemblIds, ensembl genomic
+				location
+				and genomic locations
+				(exons) maps to protein sequence
+			</xs:documentation>
+		</xs:annotation>
+
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="accession" type="xs:string" />
+				<xs:element name="name" type="xs:string" />
+				<xs:element name="taxid" type="xs:int"  minOccurs="0" />
+				<xs:element name="sequence" type="xs:string" />
+				
+				<xs:element name="protein" type="proteinType" />
+				<xs:element name="gene" type="geneNameType" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element name="gnCoordinate" type="gnCoordinateType" minOccurs="0"
+					maxOccurs="unbounded" />
+			</xs:sequence>		
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:complexType name="gnCoordinateType">
+		<xs:annotation>
+			<xs:documentation> gnEntryType one mapping of  uniprot protein sequence 
+				to genomic coordinate, including
+				 chromosome, exons. The entry
+				contains uniprot
+				accession,
+				protein sequence, protein names, gene
+				names, ensemblIds, ensembl genomic
+				location
+				and genomic locations
+				(exons) maps to protein sequence
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="genomicLocation" type="genomicLocationType" />
+			<xs:element name="feature" type="gnFeatureType" maxOccurs="unbounded"
+				minOccurs="0" />
+		</xs:sequence>
+		<xs:attribute use="required" name="ensembl_gene_id" type="xs:string" />
+		<xs:attribute use="required" name="ensembl_transcript_id"
+			type="xs:string" />
+		<xs:attribute use="required" name="ensembl_translation_id"
+			type="xs:string" />
+	</xs:complexType>
+
+
+
+	<xs:complexType name="proteinType">
+		<xs:sequence>
+			<xs:element name="recommendedName" type="proteinNameType"
+				minOccurs="0" />
+			<xs:element name="alternativeName" type="proteinNameType"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="submittedName" type="proteinNameType"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="proteinNameType">
+		<xs:sequence>
+			<xs:element name="fullName" type="xs:string" />
+			<xs:element name="shortName" type="xs:string" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+<!-- 	<xs:complexType name="geneType"> -->
+<!-- 		<xs:sequence> -->
+<!-- 			<xs:element name="geneName" type="geneNameType" maxOccurs="unbounded" /> -->
+<!-- 		</xs:sequence> -->
+<!-- 	</xs:complexType> -->
+	<xs:complexType name="geneNameType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="type" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="primary" />
+							<xs:enumeration value="synonym" />
+							<xs:enumeration value="ordered locus" />
+							<xs:enumeration value="ORF" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+
+	<xs:complexType name="genomicLocationType">
+		<xs:sequence>
+			<xs:element name="exon" type="exonMapType" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute  name="chromosome" type="xs:string"/>
+		<xs:attribute use="required" name="start" type="xs:long" />
+		<xs:attribute use="required" name="end" type="xs:long" />
+		<xs:attribute use="required" name="reverse_strand" type="xs:boolean" />
+	</xs:complexType>
+
+	<xs:complexType name="exonMapType">
+		<xs:sequence>
+			<xs:element name="proteinLocation" type="upf:locationType" />
+			<xs:element name="genomeLocation" type="upf:locationType" />
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="gnFeatureType">
+		<xs:complexContent>
+			<xs:extension base="upf:featureType">
+				<xs:sequence>
+					<xs:element name="genomeLocation" type="upf:locationType" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+
+
+</xs:schema>
+	

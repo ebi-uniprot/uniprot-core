@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.cv.pathway.impl;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;

@@ -19,6 +19,11 @@
         <jvnet.jaxb2.version>1.11.1</jvnet.jaxb2.version>
         <dropwizard.metrics.version>3.1.0</dropwizard.metrics.version>
         <jcommander.version>1.47</jcommander.version>
+       <xsd-location>${project.basedir}/src/main/resources/xsd</xsd-location>
+    	<proteome-xsd-pojo-package>uk.ac.ebi.uniprot.xml.jaxb.proteome</proteome-xsd-pojo-package>
+    	<uniprot-xsd-pojo-package>uk.ac.ebi.uniprot.xml.jaxb.uniprot</uniprot-xsd-pojo-package>
+    	<coordinate-xsd-pojo-package>uk.ac.ebi.uniprot.xml.jaxb.coordinate</coordinate-xsd-pojo-package>
+    	
     </properties>
     <dependencies>
         <dependency>
@@ -167,7 +172,7 @@
                             <xsdOptions>
                                 <xsdOption>
                                     <extension>true</extension>
-                                    <xsd>src/main/resources/xsd/uniprot.xsd</xsd>
+                                    <xsd>${xsd-location}/uniprot.xsd</xsd>
                                     <packagename>uk.ac.ebi.uniprot.xml.jaxb.uniprot</packagename>
                                     <extensionArgs>
                                         <extensionArg>-verbose</extensionArg>
@@ -177,7 +182,26 @@
                                         <!-- 										<extensionArg>${project.build.outputDirectory}/META-INF/uniprot.episode</extensionArg> -->
                                     </extensionArgs>
                                 </xsdOption>
-
+								<xsdOption>
+								<extension>true</extension>
+									<xsd>${xsd-location}/proteome.xsd</xsd>
+									<packagename>${proteome-xsd-pojo-package}</packagename>
+									<extensionArgs>
+										<extensionArg>-verbose</extensionArg>
+										<extensionArg>-Xequals</extensionArg>
+										<extensionArg>-XhashCode</extensionArg>
+									</extensionArgs>
+								</xsdOption>
+								<xsdOption>
+								<extension>true</extension>
+									<xsd>${xsd-location}/uniprot_genome_coordinate.xsd</xsd>
+									<packagename>${coordinate-xsd-pojo-package}</packagename>
+									<extensionArgs>
+										<extensionArg>-verbose</extensionArg>
+										<extensionArg>-Xequals</extensionArg>
+										<extensionArg>-XhashCode</extensionArg>
+									</extensionArgs>
+								</xsdOption>
                             </xsdOptions>
                         </configuration>
                     </execution>

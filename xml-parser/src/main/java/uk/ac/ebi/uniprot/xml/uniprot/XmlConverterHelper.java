@@ -17,7 +17,7 @@ import com.google.common.base.Strings;
  * <text>...</text>
  *
  **/
-final class XmlConverterHelper {
+public final class XmlConverterHelper {
 
 	public static String addIfNoPostfix(String text, String postfix) {
 		if (Strings.isNullOrEmpty(text))

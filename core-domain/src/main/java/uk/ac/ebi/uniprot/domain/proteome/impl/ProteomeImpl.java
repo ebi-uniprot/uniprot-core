@@ -40,6 +40,7 @@ public class ProteomeImpl implements Proteome {
 	private long geneCount;
 	List<String> taxonLineage;
 	private List<CanonicalProtein> canonicalProteins;
+	private String sourceDb;
 	
 	private ProteomeImpl() {
 		dbXReferences = Collections.emptyList();
@@ -55,7 +56,7 @@ public class ProteomeImpl implements Proteome {
 			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences, List<Component> components,
 			List<Citation> references, List<RedundantProteome> redundantProteomes, ProteomeId panproteome,
 			int annotationScore, Superkingdom superkingdom, long proteinCount, long geneCount,
-			List<String> taxonLineage, List<CanonicalProtein> canonicalProteins) {
+			List<String> taxonLineage, List<CanonicalProtein> canonicalProteins, String sourceDb) {
 		super();
 		this.id = id;
 		this.taxonomy = taxonomy;
@@ -77,6 +78,7 @@ public class ProteomeImpl implements Proteome {
 		this.geneCount = geneCount;
 		this.taxonLineage  = Utils.nonNullUnmodifiableList( taxonLineage);
 		this.canonicalProteins  = Utils.nonNullUnmodifiableList( canonicalProteins);
+		this.sourceDb = sourceDb;
 	}
 
 
@@ -172,13 +174,16 @@ public class ProteomeImpl implements Proteome {
 	public List<CanonicalProtein> getCanonicalProteins() {
 		return this.canonicalProteins;
 	}
-
+	@Override
+	public String getSourceDb() {
+		return sourceDb;
+	}
 	
 	@Override
 	public int hashCode() {
 		return Objects.hash(components, dbXReferences, description, id, isolate, modified,
 				panproteome, redundantProteomes, redundantTo, references,
-				strain, superkingdom, taxonomy, proteomeType);
+				strain, superkingdom, taxonomy, proteomeType, sourceDb);
 	}
 
 	@Override
@@ -204,8 +209,11 @@ public class ProteomeImpl implements Proteome {
 				&& Objects.equals(superkingdom, other.superkingdom)
 				&& Objects.equals(taxonomy, other.taxonomy)
 				&& Objects.equals(proteomeType, other.proteomeType)
+				&& Objects.equals(sourceDb, other.sourceDb)
 				;
 	}
+
+	
 
 	
 	

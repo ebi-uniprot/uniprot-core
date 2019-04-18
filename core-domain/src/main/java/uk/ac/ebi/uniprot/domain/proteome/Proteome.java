@@ -28,4 +28,5 @@ public interface Proteome extends Serializable {
 	long getGeneCount();
 	List<String> getTaxonLineage();
 	List<CanonicalProtein> getCanonicalProteins();	
+	String getSourceDb();
 }

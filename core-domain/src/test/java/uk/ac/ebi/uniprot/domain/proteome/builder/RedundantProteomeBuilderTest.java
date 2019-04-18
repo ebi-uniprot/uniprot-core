@@ -14,11 +14,11 @@ class RedundantProteomeBuilderTest {
 		RedundantProteome rproteome =
 				RedundantProteomeBuilder.newInstance()
 				.proteomeId(new ProteomeIdBuilder (id).build())
-				.similarity(0.98)
+				.similarity(0.98f)
 				.build();
 		
 		assertEquals(id, rproteome.getId().getValue());
-		assertEquals(0.98, rproteome.getSimilarity().doubleValue(), Double.MIN_VALUE);
+		assertEquals(0.98f, rproteome.getSimilarity().doubleValue(), Double.MIN_VALUE);
 	}
 
 }
