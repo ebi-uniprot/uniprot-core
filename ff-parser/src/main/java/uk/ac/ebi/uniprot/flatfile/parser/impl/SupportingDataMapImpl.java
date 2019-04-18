@@ -2,10 +2,13 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import uk.ac.ebi.uniprot.common.Pair;
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.cv.impl.DiseaseFileReader;
 import uk.ac.ebi.uniprot.cv.impl.KeywordFileReader;
 import uk.ac.ebi.uniprot.cv.impl.SubcellularLocationFileReader;
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.SupportingDataMap;
 
@@ -30,7 +33,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SupportingDataMapImpl.class);
 
-    private Map<String, String> keywordMap = new HashMap<>();
+    private Map<String, Pair<String, KeywordCategory>> keywordMap = new HashMap<>();
     private Map<String, String> diseaseMap = new HashMap<>();;
     private Map<String, Map<String, List<Evidence>>> goEvidencesMap = new HashMap<>();;
     private Map<String, String> subcellularLocationMap = new HashMap<>();;
@@ -124,7 +127,7 @@ public class SupportingDataMapImpl implements SupportingDataMap {
 
 
     @Override
-    public Map<String, String> getKeywordMap() {
+    public Map<String, Pair<String,  KeywordCategory>> getKeywordMap() {
         return keywordMap;
     }
 

@@ -2,6 +2,8 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
+
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
@@ -47,6 +49,7 @@ public class KeywordTest {
         return new KeywordBuilder()
                 .id("KW-11111")
                 .value("keyword value")
+                .category(KeywordCategory.DOMAIN)
                 .evidences(CreateUtils.createEvidenceList("ECO:0000255|PROSITE-ProRule:PRU10025"))
                 .build();
     }

@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
+
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.Sequence;
@@ -74,9 +76,9 @@ class UniProtEntryConverterTest {
         organelles.add(new GeneLocationBuilder(GeneEncodingType.PLASMID, "some value", evidences).build());
         List<Keyword> keywords = new ArrayList<>();
 
-        keywords.add(new KeywordBuilder("KW-001", "key1", evidences).build());
-        keywords.add(new KeywordBuilder("KW-002", "key2", evidences).build());
-        keywords.add(new KeywordBuilder("KW-003", "key3", evidences).build());
+        keywords.add(new KeywordBuilder("KW-001", "key1", KeywordCategory.UNKNOWN,  evidences).build());
+        keywords.add(new KeywordBuilder("KW-002", "key2", KeywordCategory.UNKNOWN,  evidences).build());
+        keywords.add(new KeywordBuilder("KW-003", "key3", KeywordCategory.UNKNOWN,  evidences).build());
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
         Sequence sequence = new SequenceBuilder(value).build();
         UniProtEntry entry =

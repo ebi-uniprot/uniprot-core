@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line;
 
 import org.junit.Test;
+
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -155,7 +157,7 @@ public class KWLineBuildTest {
     }
 
     private Keyword createKeyword(String id, String kw, List<Evidence> evidences) {
-        return new KeywordBuilder(id, kw, evidences).build();
+        return new KeywordBuilder(id, kw, KeywordCategory.DOMAIN, evidences).build();
     }
 
     private void doTest(String deLine, List<Keyword> genes) {

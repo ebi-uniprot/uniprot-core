@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
@@ -13,17 +14,18 @@ public class KeywordImpl extends EvidencedValueImpl implements Keyword {
     public static final String DEFAULT_ACCESSION = "KW-00000";
     private static final long serialVersionUID = -8858878734008282808L;
     private String id;
-
+    private KeywordCategory category;
     private KeywordImpl() {
-        this("", "", Collections.emptyList());
+        this("", "", KeywordCategory.UNKNOWN, Collections.emptyList());
     }
 
-    public KeywordImpl(String id, String value, List<Evidence> evidences) {
+    public KeywordImpl(String id, String value, KeywordCategory category, List<Evidence> evidences) {
         super(value, evidences);
         if (id == null || id.isEmpty()) {
             this.id = DEFAULT_ACCESSION;
         } else
             this.id = id;
+        this.category =category;
     }
 
     public String getId() {
@@ -43,4 +45,9 @@ public class KeywordImpl extends EvidencedValueImpl implements Keyword {
     public int hashCode() {
         return Objects.hash(super.hashCode(), id);
     }
+
+	@Override
+	public KeywordCategory getCategory() {
+		return category;
+	}
 }

@@ -2,8 +2,12 @@ package uk.ac.ebi.uniprot.cv.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import uk.ac.ebi.uniprot.common.Pair;
+import uk.ac.ebi.uniprot.common.PairImpl;
 import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
 import uk.ac.ebi.uniprot.cv.keyword.Keyword;
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordDetail;
 import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordDetailImpl;
@@ -36,13 +40,22 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 		return list;
 	}
 
-	public Map<String,String> parseFileToAccessionMap(String fileName) {
+	public Map<String, Pair<String, KeywordCategory> > parseFileToAccessionMap(String fileName) {
 		List<KeywordDetail> keywordDetailList = parse(fileName);
 		return keywordDetailList.stream()
-				.map(KeywordDetail::getKeyword)
-				.collect(Collectors.toMap(Keyword::getId,Keyword::getAccession));
+				.collect(Collectors.toMap(this::getId, this::getAccessionCategoryPair));
+			//	.map(KeywordDetail::getKeyword)
+			//	.collect(Collectors.toMap(Keyword::getId,new PairImplKeyword::getAccession));
+	}
+	private String getId(KeywordDetail keyword) {
+		return keyword.getKeyword().getId();
 	}
 
+	private Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordDetail keyword){
+		String accession = keyword.getAccession();
+		KeywordCategory category = KeywordCategory.fromValue(keyword.getCategory().getKeyword().getId());
+		return new PairImpl<>(accession, category);
+	}
 	private void updateListWithRelationShips(List<KeywordDetail> list, List<KeyFileEntry> rawList) {
 		for (KeyFileEntry raw : rawList) {
 			// category will not have relationship, so ignore them

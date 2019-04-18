@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -27,7 +28,7 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
 	public Keyword fromXml(KeywordType xmlObj) {
 		 String keywordValue = xmlObj.getValue();
 		 List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-		 return new KeywordBuilder(xmlObj.getId(), keywordValue, evidences).build();
+		 return new KeywordBuilder(xmlObj.getId(), keywordValue, KeywordCategory.UNKNOWN, evidences).build();
 	}
 
 	@Override

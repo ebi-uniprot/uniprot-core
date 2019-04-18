@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
@@ -16,20 +17,21 @@ import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
  */
 public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder, Keyword> {
     private String id;
-
+    private KeywordCategory category;
     public KeywordBuilder(){
 
     }
 
-    public KeywordBuilder(String id, String value, List<Evidence> evidences) {
+    public KeywordBuilder(String id, String value, KeywordCategory category, List<Evidence> evidences) {
         this.id = id;
         this.value = value;
+        this.category = category;
         this.evidences = nonNullList(evidences);
     }
 
     @Override
     public Keyword build() {
-        return new KeywordImpl(id, value, evidences);
+        return new KeywordImpl(id, value, category, evidences);
     }
 
     @Override
@@ -45,6 +47,10 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
 
     public KeywordBuilder id(String id) {
         this.id = id;
+        return this;
+    }
+    public KeywordBuilder category(KeywordCategory category) {
+        this.category = category;
         return this;
     }
 }

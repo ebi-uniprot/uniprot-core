@@ -1,6 +1,8 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
+
+import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -22,7 +24,7 @@ class KeywordConverterTest {
 	        List<Evidence> evidences = createEvidences();
 	        EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper(evidences);
 	        KeywordConverter converter = new KeywordConverter(evRefMapper);
-	        Keyword keyword = new KeywordBuilder(id, val, evidences).build();
+	        Keyword keyword = new KeywordBuilder(id, val, KeywordCategory.UNKNOWN, evidences).build();
 	        KeywordType xmlObj = converter.toXml(keyword);
 	        
 	        assertEquals(id, xmlObj.getId());
