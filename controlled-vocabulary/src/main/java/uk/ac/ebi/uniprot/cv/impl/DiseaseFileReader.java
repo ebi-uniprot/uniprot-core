@@ -8,10 +8,7 @@ import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseImpl;
 import uk.ac.ebi.uniprot.cv.keyword.Keyword;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -37,6 +34,13 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
 	public Map<String,String> parseFileToAccessionMap(String filename) {
 		List<Disease> diseaseList = parse(filename);
 		return diseaseList.stream().collect(Collectors.toMap(Disease::getId,Disease::getAccession));
+	}
+
+	public Iterator<Disease> getDiseaseIterator(String fileName){
+
+		List<Disease> diseaseList = parse(fileName);
+		return diseaseList.iterator();
+
 	}
 
 	private Disease parseDiseaseFileEntry(DiseaseFileEntry entry) {

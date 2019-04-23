@@ -13,5 +13,5 @@ public interface Disease {
 	List<String> getAlternativeNames();
 	List<CrossReference> getCrossReferences();
 	List<Keyword> getKeywords();
-	
+	Long getProteinCount();
 }

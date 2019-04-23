@@ -19,6 +19,13 @@ public class DiseaseImpl  implements Disease{
     private  List<String> alternativeNames;
     private List<CrossReference> crossReferences;
     private List<Keyword> keywords;
+    private Long uniProtCount;
+
+    private DiseaseImpl(){
+    	// do nothing.. just to satisfy the objectmapper
+		this.accession = null;
+	}
+
 	public DiseaseImpl(String id, String accession, String acronym, String definition, List<String> alternativeNames,
 			List<CrossReference> crossReferences, List<Keyword> keywords) {
 		super();
@@ -30,6 +37,14 @@ public class DiseaseImpl  implements Disease{
 		this.crossReferences = crossReferences;
 		this.keywords = keywords;
 	}
+
+	public DiseaseImpl(String id, String accession, String acronym, String definition, List<String> alternativeNames,
+					   List<CrossReference> crossReferences, List<Keyword> keywords, Long uniProtCount) {
+
+		this(id, accession, acronym, definition, alternativeNames, crossReferences, keywords);
+		this.uniProtCount = uniProtCount;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -69,6 +84,15 @@ public class DiseaseImpl  implements Disease{
 	public String getAccession() {
 		return accession;
 	}
+
+	public void setProteinCount(Long uniProtCount) {
+		this.uniProtCount = uniProtCount;
+	}
+	@Override
+	public Long getProteinCount() {
+		return this.uniProtCount;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -80,6 +104,7 @@ public class DiseaseImpl  implements Disease{
 		result = prime * result + ((definition == null) ? 0 : definition.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((keywords == null) ? 0 : keywords.hashCode());
+		result = prime * result + ((this.uniProtCount == null) ? 0 : this.uniProtCount.hashCode());
 		return result;
 	}
 	@Override
@@ -126,6 +151,13 @@ public class DiseaseImpl  implements Disease{
 				return false;
 		} else if (!keywords.equals(other.keywords))
 			return false;
+
+		if (this.uniProtCount == null) {
+			if (other.uniProtCount != null)
+				return false;
+		} else if (!this.uniProtCount.equals(other.uniProtCount))
+			return false;
+
 		return true;
 	}
 

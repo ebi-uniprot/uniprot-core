@@ -6,7 +6,9 @@ public class KeywordImpl implements Keyword {
 	private final String id;
 	private final String accession;
 	
-	
+	private KeywordImpl(){
+		this(null, null);
+	}
 	public KeywordImpl(String id, String accession) {
 		super();
 		this.id = id;

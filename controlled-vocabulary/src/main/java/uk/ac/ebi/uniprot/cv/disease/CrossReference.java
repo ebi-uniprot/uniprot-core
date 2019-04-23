@@ -7,6 +7,10 @@ public class CrossReference {
 	private final String databaseType;
     private final String id;
     private final List<String> properties;
+
+    private CrossReference(){
+    	this(null, null, Collections.emptyList());
+	}
     
     public CrossReference(String databaseType, String id) {
     	this(databaseType, id, Collections.emptyList());
