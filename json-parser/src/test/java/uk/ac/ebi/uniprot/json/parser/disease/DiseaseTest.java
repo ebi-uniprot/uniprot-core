@@ -57,4 +57,36 @@ public class DiseaseTest {
 
 		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getFullObjectMapper(), disease);
 	}
+
+	@Test
+	void testDiseaseWithMandatoryFieldsSet(){
+		String id = "Sample Disease";
+		String accession ="DI-12345";
+		String acronym = "SAMPLE-DIS";
+		String def = "This is sample definition.";
+
+		// cross ref
+		List<String> props = Arrays.asList("prop1", "prop2", "prop3");
+		String xrefId = "XREF-123";
+		String databaseType = "SAMPLE_TYPE";
+		CrossReference cr = new CrossReference(databaseType, xrefId, props);
+
+		DiseaseBuilder builder = DiseaseBuilder.newInstance();
+		builder.id(id).accession(accession).acronym(acronym).definition(def);
+		builder.crossReferences(cr);
+
+		Disease disease = builder.build();
+
+		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getFullObjectMapper(), disease);
+	}
+
+	@Test
+	void testDiseaseWithJustId(){
+		String id = "Sample Disease";
+		DiseaseBuilder builder = DiseaseBuilder.newInstance();
+		builder.id(id);
+		Disease disease = builder.build();
+		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getFullObjectMapper(), disease);
+	}
+
 }
