@@ -24,7 +24,7 @@ public class ValidateJson {
 
     public static <T> void verifyJsonRoundTripParser(T obj) {
         try {
-            ObjectMapper mapper = UniprotJsonConfig.getInstance().getObjectMapper();
+            ObjectMapper mapper = UniprotJsonConfig.getInstance().getFullObjectMapper();
             verifyJsonRoundTripParser(mapper, obj);
         }catch(Exception e) {
             fail(e.getMessage());
@@ -57,7 +57,7 @@ public class ValidateJson {
     }
 
     public static <T> JsonNode getJsonNodeFromSerializeOnlyMapper(T obj) {
-    	 ObjectMapper mapper = UniprotJsonConfig.getInstance().getPrettyObjectMapper();
+    	 ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
     	return getJsonNodeFromSerializeOnlyMapper(mapper, obj);
        
     }

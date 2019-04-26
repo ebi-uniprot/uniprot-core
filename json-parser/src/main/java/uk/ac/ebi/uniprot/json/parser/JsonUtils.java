@@ -13,7 +13,7 @@ import java.io.IOException;
 public class JsonUtils {
 
 	public static String getJsonString(Object obj, boolean isPretty) {
-		final ObjectMapper objectMapper = UniprotJsonConfig.getInstance().getObjectMapper();
+		final ObjectMapper objectMapper = UniprotJsonConfig.getInstance().getFullObjectMapper();
     	try {
     		if(isPretty)
     			return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
@@ -25,7 +25,7 @@ public class JsonUtils {
     	}
     }
 	public static <T> T convertJsonToObject(String json, Class<T> clazz){
-		ObjectMapper mapper = UniprotJsonConfig.getInstance().getObjectMapper();
+		ObjectMapper mapper = UniprotJsonConfig.getInstance().getFullObjectMapper();
 		try {
 			return mapper.readValue(json, clazz);
 		}catch(Exception e) {
@@ -34,7 +34,7 @@ public class JsonUtils {
 	}
 
 	public static <T> String getJsonSchema(Class<T> clazz) {
-	    ObjectMapper mapper = UniprotJsonConfig.getInstance().getObjectMapper();
+	    ObjectMapper mapper = UniprotJsonConfig.getInstance().getFullObjectMapper();
 	    JsonSchemaGenerator jsonSchemaGenerator = new JsonSchemaGenerator(mapper);
 	    JsonNode jsonSchema = jsonSchemaGenerator.generateJsonSchema(clazz);
 	    try {

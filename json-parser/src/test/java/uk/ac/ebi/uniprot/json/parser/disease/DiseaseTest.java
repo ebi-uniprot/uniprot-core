@@ -17,7 +17,7 @@ public class DiseaseTest {
 		String id = "XREF-123";
 		String databaseType = "SAMPLE_TYPE";
 		CrossReference cr = new CrossReference(databaseType, id, props);
-		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getObjectMapper(), cr);
+		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getFullObjectMapper(), cr);
 	}
 	
 	@Test
@@ -25,7 +25,7 @@ public class DiseaseTest {
 		String id = "Sample Keyword";
 		String accession = "KW-1234";
 		Keyword keyword = new KeywordImpl(id, accession);
-		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getObjectMapper(), keyword);
+		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getFullObjectMapper(), keyword);
 	}
 
 	@Test
@@ -50,11 +50,11 @@ public class DiseaseTest {
 
 		DiseaseBuilder builder = DiseaseBuilder.newInstance();
 		builder.id(id).accession(accession).acronym(acronym).definition(def);
-		builder.alternativeNames(altNames).crossReferences(Arrays.asList(cr));
-		builder.keywords(Arrays.asList(keyword)).proteinCount(proteinCount);
+		builder.alternativeNames(altNames).crossReferences(cr);
+		builder.keywords(keyword).proteinCount(proteinCount);
 
 		Disease disease = builder.build();
 
-		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getObjectMapper(), disease);
+		ValidateJson.verifyJsonRoundTripParser(DiseaseJsonConfig.getInstance().getFullObjectMapper(), disease);
 	}
 }
