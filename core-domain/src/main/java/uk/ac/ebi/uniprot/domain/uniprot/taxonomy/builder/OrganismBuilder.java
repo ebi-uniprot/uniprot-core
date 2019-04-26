@@ -1,9 +1,9 @@
-package uk.ac.ebi.uniprot.domain.taxonomy.builder;
+package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder;
 
 
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.OrganismImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl.OrganismImpl;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,8 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 import uk.ac.ebi.uniprot.common.Pair;
 import uk.ac.ebi.uniprot.common.PairImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
 
 import java.util.Arrays;
 import java.util.List;

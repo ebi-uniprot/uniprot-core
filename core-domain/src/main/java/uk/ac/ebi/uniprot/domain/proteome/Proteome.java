@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.domain.proteome;
 
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
 
 public interface Proteome extends Serializable {
 	ProteomeId getId();

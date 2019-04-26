@@ -4,14 +4,14 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.citation.CitationType;
 import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 

@@ -18,7 +18,7 @@ module uniprot.domain {
     exports uk.ac.ebi.uniprot.domain.uniprot.xdb;
 //	exports uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
     exports uk.ac.ebi.uniprot.domain.citation;
-    exports uk.ac.ebi.uniprot.domain.taxonomy;
+    exports uk.ac.ebi.uniprot.domain.uniprot.taxonomy;
     exports uk.ac.ebi.uniprot.domain.uniprot;
     exports uk.ac.ebi.uniprot.domain.gene;
     exports uk.ac.ebi.uniprot.domain.citation.builder;

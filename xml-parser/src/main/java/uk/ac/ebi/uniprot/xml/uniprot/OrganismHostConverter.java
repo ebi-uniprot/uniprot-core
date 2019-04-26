@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.OrganismType;

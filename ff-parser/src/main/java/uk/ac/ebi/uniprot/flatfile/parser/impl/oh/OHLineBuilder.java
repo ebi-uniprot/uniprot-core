@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.oh;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;

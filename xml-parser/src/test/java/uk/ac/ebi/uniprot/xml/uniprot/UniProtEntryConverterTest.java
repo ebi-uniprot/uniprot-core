@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
-
 import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
@@ -9,10 +8,6 @@ import uk.ac.ebi.uniprot.domain.Sequence;
 import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
 import uk.ac.ebi.uniprot.domain.gene.*;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.*;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
@@ -20,12 +15,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
+import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinDescriptionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
@@ -37,11 +27,14 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.AlternativeSequenceImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureIdImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.impl.FeatureImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.Entry;
-import uk.ac.ebi.uniprot.xml.uniprot.UniProtEntryConverter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

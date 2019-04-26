@@ -1,23 +1,16 @@
 package uk.ac.ebi.uniprot.domain.proteome.builder;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.Proteome;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
-import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
-import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
+import uk.ac.ebi.uniprot.domain.proteome.*;
 import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	private ProteomeId id;

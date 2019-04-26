@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.oh;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.OrganismNameLineParser;
 

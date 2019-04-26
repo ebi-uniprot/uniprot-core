@@ -1,8 +1,8 @@
-package uk.ac.ebi.uniprot.domain.taxonomy.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
 
 import java.util.Arrays;
 import java.util.List;

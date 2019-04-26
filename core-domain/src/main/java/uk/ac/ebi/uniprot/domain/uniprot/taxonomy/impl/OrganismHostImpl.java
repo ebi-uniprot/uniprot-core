@@ -1,6 +1,6 @@
-package uk.ac.ebi.uniprot.domain.taxonomy.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
 
 import java.util.List;
 import java.util.Objects;

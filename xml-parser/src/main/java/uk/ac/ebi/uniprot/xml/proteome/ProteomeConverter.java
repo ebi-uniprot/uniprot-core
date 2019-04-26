@@ -1,29 +1,21 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import com.google.common.base.Strings;
-
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.Proteome;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
-import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
-import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
+import uk.ac.ebi.uniprot.domain.proteome.*;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.SuperregnumType;
 import uk.ac.ebi.uniprot.xml.uniprot.XmlConverterHelper;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class ProteomeConverter implements Converter<uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome, Proteome> {
 

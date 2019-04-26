@@ -2,8 +2,8 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismHostBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.util.Collections;

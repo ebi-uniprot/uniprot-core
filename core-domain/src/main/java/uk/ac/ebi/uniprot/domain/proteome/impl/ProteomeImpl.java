@@ -1,22 +1,15 @@
 package uk.ac.ebi.uniprot.domain.proteome.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.proteome.*;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
+
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-
-import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.Proteome;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
-import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
-import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
 
 public class ProteomeImpl implements Proteome {
 

@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import java.util.List;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.OrganismType;
+
+import java.util.List;
 
 public class OrganismConverter implements Converter<OrganismType, Organism> {
 	private final EvidenceIndexMapper evRefMapper;

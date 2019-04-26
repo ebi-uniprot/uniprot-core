@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.os.OsLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.os.OsLineObject;
 

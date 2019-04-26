@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.domain.taxonomy;
+package uk.ac.ebi.uniprot.domain.uniprot.taxonomy;
 
 import uk.ac.ebi.uniprot.common.EnumDisplay;
 

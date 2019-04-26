@@ -1,15 +1,14 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.google.common.base.Strings;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.AbstractOrganismNameBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.AbstractOrganismNameBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.OrganismNameType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class OrganismConverterUtil {
 	public static final String CIENTIFICNAME_XMLTAG = "scientific";

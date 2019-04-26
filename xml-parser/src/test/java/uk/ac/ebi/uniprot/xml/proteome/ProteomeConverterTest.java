@@ -1,35 +1,25 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
+import uk.ac.ebi.uniprot.domain.citation.*;
+import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
+import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
+import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import uk.ac.ebi.uniprot.domain.proteome.*;
+import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
+import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeBuilder;
+import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.Proteome;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
-import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ProteomeConverterTest {
 

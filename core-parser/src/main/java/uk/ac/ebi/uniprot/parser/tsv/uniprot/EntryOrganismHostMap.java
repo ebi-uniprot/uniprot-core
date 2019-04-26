@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismHost;
-
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
 
 import java.util.*;
 import java.util.stream.Collectors;

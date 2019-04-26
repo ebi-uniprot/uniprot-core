@@ -1,12 +1,11 @@
-package uk.ac.ebi.uniprot.domain.taxonomy.builder;
+package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
+import static org.junit.Assert.assertEquals;
 
 class TaxonomyBuilderTest {
 

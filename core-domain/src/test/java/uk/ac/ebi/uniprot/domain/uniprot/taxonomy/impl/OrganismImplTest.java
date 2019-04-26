@@ -1,8 +1,8 @@
-package uk.ac.ebi.uniprot.domain.taxonomy.impl;
+package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
 import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.TestHelper;
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
 
 import java.util.Collections;
 import java.util.List;

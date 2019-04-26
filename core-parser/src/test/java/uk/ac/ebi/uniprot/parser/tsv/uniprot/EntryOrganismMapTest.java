@@ -1,16 +1,14 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class EntryOrganismMapTest {
 

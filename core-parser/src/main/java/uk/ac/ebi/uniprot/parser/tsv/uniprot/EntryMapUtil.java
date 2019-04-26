@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import java.util.List;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.OrganismName;
+import java.util.List;
 
 public class EntryMapUtil {
     public static String convertOrganism(OrganismName organism) {

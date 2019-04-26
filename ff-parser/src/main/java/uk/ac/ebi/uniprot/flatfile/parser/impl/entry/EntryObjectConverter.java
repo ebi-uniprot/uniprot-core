@@ -3,12 +3,12 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl.entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.*;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalSectionBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;

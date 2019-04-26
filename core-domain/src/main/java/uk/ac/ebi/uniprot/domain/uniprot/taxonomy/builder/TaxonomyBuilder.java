@@ -1,7 +1,7 @@
-package uk.ac.ebi.uniprot.domain.taxonomy.builder;
+package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
+import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl.TaxonomyImpl;
 
 public class TaxonomyBuilder extends AbstractOrganismNameBuilder<TaxonomyBuilder, Taxonomy> {
 	  private long taxonId;
