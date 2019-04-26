@@ -20,7 +20,7 @@ public class ProteinTest {
 			.geneNameType(GeneNameType.ENSEMBL)
 			.sequenceLength(307)
 			.build();	
-	   ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getObjectMapper(), protein);
+	   ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), protein);
 	   
 	}
 	@Test
@@ -50,6 +50,6 @@ public class ProteinTest {
 				.addRelatedProtein(rProtein1)
 				.addRelatedProtein(rProtein2)
 				.build();	
-		  ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getObjectMapper(), cProtein);
+		  ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), cProtein);
 	}
 }

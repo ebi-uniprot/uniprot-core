@@ -41,14 +41,14 @@ public class ProteomeTest {
 				.proteinCount(102)
 				.dbXReferences(xrefs)
 				.build();
-		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getObjectMapper(), component);
+		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), component);
 	}
 	
 	@Test
 	void testProteomeId() {
 		String id = "UP000005640";
 		ProteomeId proteomeId = new ProteomeIdBuilder (id).build();
-		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getObjectMapper(), proteomeId);
+		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteomeId);
 	}
 	@Test
 	void testRedundantProteome() {
@@ -58,7 +58,7 @@ public class ProteomeTest {
 				.proteomeId(new ProteomeIdBuilder (id).build())
 				.similarity(0.98f)
 				.build();
-		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getObjectMapper(), rproteome);	
+		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), rproteome);
 	}
 	@Test
 	void testProteome() {
@@ -96,7 +96,7 @@ public class ProteomeTest {
 				.superkingdom(Superkingdom.EUKARYOTA)
 				.build();
 		
-		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getObjectMapper(), proteome);	
+		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
 	}
 	
 	@Test
@@ -166,7 +166,7 @@ public class ProteomeTest {
 				.redundantProteomes(redundantProteomes)
 				.build();
 		
-		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getObjectMapper(), proteome);	
+		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
 	}
 	
 

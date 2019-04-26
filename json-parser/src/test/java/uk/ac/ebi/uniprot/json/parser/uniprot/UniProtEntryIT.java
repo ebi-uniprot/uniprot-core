@@ -94,7 +94,7 @@ public class UniProtEntryIT {
         ValidateJson.verifyEmptyFields(entry);
 
         try {
-            ObjectMapper mapper = UniprotJsonConfig.getInstance().getPrettyObjectMapper();
+            ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
             System.out.println(json);
         }catch(Exception e) {

@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.builder;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.cv.disease.CrossReference;
 import uk.ac.ebi.uniprot.cv.disease.Disease;
 import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseImpl;
@@ -62,13 +63,34 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         return this;
     }
 
+    // for single string
+    public DiseaseBuilder alternativeNames(String alternativeName){
+        this.alternativeNames = Utils.nonNullList(this.alternativeNames);
+        this.alternativeNames.add(alternativeName);
+        return this;
+    }
+
     public DiseaseBuilder alternativeNames(List<String> alternativeNames){
         this.alternativeNames = alternativeNames;
         return this;
     }
 
+    // setter for single object
+    public DiseaseBuilder crossReferences(CrossReference crossReference){
+        this.crossReferences = Utils.nonNullList(this.crossReferences);
+        this.crossReferences.add(crossReference);
+        return this;
+    }
+
     public DiseaseBuilder crossReferences(List<CrossReference> crossReferences){
         this.crossReferences = crossReferences;
+        return this;
+    }
+
+    // setter for single object
+    public DiseaseBuilder keywords(Keyword keyword){
+        this.keywords = Utils.nonNullList(this.keywords);
+        this.keywords.add(keyword);
         return this;
     }
 

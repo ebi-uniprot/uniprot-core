@@ -19,7 +19,7 @@ public class DiseaseImpl  implements Disease{
     private  List<String> alternativeNames;
     private List<CrossReference> crossReferences;
     private List<Keyword> keywords;
-    private Long uniProtCount;
+    private Long proteinCount;
 
     private DiseaseImpl(){
     	// do nothing.. just to satisfy the objectmapper
@@ -39,10 +39,10 @@ public class DiseaseImpl  implements Disease{
 	}
 
 	public DiseaseImpl(String id, String accession, String acronym, String definition, List<String> alternativeNames,
-					   List<CrossReference> crossReferences, List<Keyword> keywords, Long uniProtCount) {
+					   List<CrossReference> crossReferences, List<Keyword> keywords, Long proteinCount) {
 
 		this(id, accession, acronym, definition, alternativeNames, crossReferences, keywords);
-		this.uniProtCount = uniProtCount;
+		this.proteinCount = proteinCount;
 	}
 
 	public String getId() {
@@ -85,12 +85,9 @@ public class DiseaseImpl  implements Disease{
 		return accession;
 	}
 
-	public void setProteinCount(Long uniProtCount) {
-		this.uniProtCount = uniProtCount;
-	}
 	@Override
 	public Long getProteinCount() {
-		return this.uniProtCount;
+		return this.proteinCount;
 	}
 
 	@Override
@@ -104,7 +101,7 @@ public class DiseaseImpl  implements Disease{
 		result = prime * result + ((definition == null) ? 0 : definition.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((keywords == null) ? 0 : keywords.hashCode());
-		result = prime * result + ((this.uniProtCount == null) ? 0 : this.uniProtCount.hashCode());
+		result = prime * result + ((this.proteinCount == null) ? 0 : this.proteinCount.hashCode());
 		return result;
 	}
 	@Override
@@ -152,10 +149,10 @@ public class DiseaseImpl  implements Disease{
 		} else if (!keywords.equals(other.keywords))
 			return false;
 
-		if (this.uniProtCount == null) {
-			if (other.uniProtCount != null)
+		if (this.proteinCount == null) {
+			if (other.proteinCount != null)
 				return false;
-		} else if (!this.uniProtCount.equals(other.uniProtCount))
+		} else if (!this.proteinCount.equals(other.proteinCount))
 			return false;
 
 		return true;
