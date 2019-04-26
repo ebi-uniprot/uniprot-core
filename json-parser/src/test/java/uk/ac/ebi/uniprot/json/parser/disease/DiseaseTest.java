@@ -35,7 +35,8 @@ public class DiseaseTest {
 		String acronym = "SAMPLE-DIS";
 		String def = "This is sample definition.";
 		List<String> altNames = Arrays.asList("name1", "name2", "name3");
-		Long proteinCount = 100L;
+		Long reviwedProteinCount = 100L;
+		Long unreviwedProteinCount = 200L;
 
 		// cross ref
 		List<String> props = Arrays.asList("prop1", "prop2", "prop3");
@@ -51,7 +52,7 @@ public class DiseaseTest {
 		DiseaseBuilder builder = DiseaseBuilder.newInstance();
 		builder.id(id).accession(accession).acronym(acronym).definition(def);
 		builder.alternativeNames(altNames).crossReferences(cr);
-		builder.keywords(keyword).proteinCount(proteinCount);
+		builder.keywords(keyword).reviewedProteinCount(reviwedProteinCount).unreviewedProteinCount(unreviwedProteinCount);
 
 		Disease disease = builder.build();
 
