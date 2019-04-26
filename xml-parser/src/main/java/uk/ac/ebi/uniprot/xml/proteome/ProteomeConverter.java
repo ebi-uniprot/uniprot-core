@@ -4,12 +4,13 @@ import com.google.common.base.Strings;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.proteome.*;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeBuilder;
+import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
+import uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.SuperregnumType;
 import uk.ac.ebi.uniprot.xml.uniprot.XmlConverterHelper;
 
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class ProteomeConverter implements Converter<uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome, Proteome> {
+public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
 	private final ObjectFactory xmlFactory;
 	private final ComponentConverter componentConverter;
@@ -39,7 +40,7 @@ public class ProteomeConverter implements Converter<uk.ac.ebi.uniprot.xml.jaxb.p
 	}
 	
 	@Override
-	public Proteome fromXml(uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome xmlObj) {
+	public ProteomeEntry fromXml(Proteome xmlObj) {
 		List<Component> components = xmlObj.getComponent().stream().map(componentConverter::fromXml).collect(Collectors.toList());
 		List<CanonicalProtein> canonicalProteins = xmlObj.getCanonicalGene().stream().map(canonicalProteinConverter::fromXml)
 				.collect(Collectors.toList());
@@ -61,7 +62,7 @@ public class ProteomeConverter implements Converter<uk.ac.ebi.uniprot.xml.jaxb.p
 		Optional<Long> proteinCount=
 		components.stream().map(val ->val.getProteinCount()).reduce((val1, val2)->val1+val2);
 		
-		ProteomeBuilder builder = ProteomeBuilder.newInstance();
+		ProteomeEntryBuilder builder = ProteomeEntryBuilder.newInstance();
 		builder.proteomeId(proteomeId(xmlObj.getUpid()))
 		.proteomeType(proteomeType)
 			.description(xmlObj.getDescription())
@@ -93,7 +94,7 @@ public class ProteomeConverter implements Converter<uk.ac.ebi.uniprot.xml.jaxb.p
 	
 	
 	@Override
-	public uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome toXml(Proteome uniObj) {
+	public uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome toXml(ProteomeEntry uniObj) {
 		uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome xmlObj = xmlFactory.createProteome();
 		xmlObj.setUpid(uniObj.getId().getValue());
 		xmlObj.setDescription(uniObj.getDescription());

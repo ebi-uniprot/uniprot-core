@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
+public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, ProteomeEntry> {
 	private ProteomeId id;
 	private String description;
 	private Taxonomy taxonomy;
@@ -33,12 +33,12 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	private List<String> taxonLineage =new ArrayList<>();
 	private List<CanonicalProtein> canonicalProteins  =new ArrayList<>();
 	private String sourceDb;
-	public static ProteomeBuilder newInstance() {
-		return new ProteomeBuilder();
+	public static ProteomeEntryBuilder newInstance() {
+		return new ProteomeEntryBuilder();
 	}
 	
 	@Override
-	public Proteome build() {
+	public ProteomeEntry build() {
 		return new ProteomeImpl( id,  taxonomy,  description,   modified,
 				 proteomeType,  redundantTo,  strain,  isolate,
 				dbXReferences,  components,
@@ -48,7 +48,7 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	}
 	
 	@Override
-	public ProteomeBuilder from(Proteome instance) {
+	public ProteomeEntryBuilder from(ProteomeEntry instance) {
 		this.id = instance.getId();
 		this.taxonomy =instance.getTaxonomy();
 		this.description =instance.getDescription();
@@ -83,126 +83,126 @@ public class ProteomeBuilder implements Builder<ProteomeBuilder, Proteome> {
 	}
 
 	
-	public ProteomeBuilder proteomeId(ProteomeId id) {
+	public ProteomeEntryBuilder proteomeId(ProteomeId id) {
 		this.id = id;
 		return this;
 	}
-	public ProteomeBuilder proteomeId(String id) {
+	public ProteomeEntryBuilder proteomeId(String id) {
 		this.id = new ProteomeIdBuilder(id).build();
 		return this;
 	}
 	
-	public ProteomeBuilder description(String description) {
+	public ProteomeEntryBuilder description(String description) {
 		this.description = description;
 		return this;
 	}
 	
-	public ProteomeBuilder taxonomy(Taxonomy taxonomy) {
+	public ProteomeEntryBuilder taxonomy(Taxonomy taxonomy) {
 		this.taxonomy = taxonomy;
 		return this;
 	}
 	
-	public ProteomeBuilder modified(LocalDate modified) {
+	public ProteomeEntryBuilder modified(LocalDate modified) {
 		this.modified = modified;
 		return this;
 	}
 
-	public ProteomeBuilder proteomeType(ProteomeType proteomeType) {
+	public ProteomeEntryBuilder proteomeType(ProteomeType proteomeType) {
 		this.proteomeType = proteomeType;
 		return this;
 	}
 	
-	public ProteomeBuilder redundantTo(ProteomeId redundantTo) {
+	public ProteomeEntryBuilder redundantTo(ProteomeId redundantTo) {
 		this.redundantTo = redundantTo;
 		return this;
 	}
 	
-	public ProteomeBuilder strain(String strain) {
+	public ProteomeEntryBuilder strain(String strain) {
 		this.strain = strain;
 		return this;
 	}
 	
-	public ProteomeBuilder isolate(String isolate) {
+	public ProteomeEntryBuilder isolate(String isolate) {
 		this.isolate = isolate;
 		return this;
 	}
-	public ProteomeBuilder sourceDb(String sourceDb) {
+	public ProteomeEntryBuilder sourceDb(String sourceDb) {
 		this.sourceDb = sourceDb;
 		return this;
 	}
 	
-	public ProteomeBuilder dbXReferences(List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
+	public ProteomeEntryBuilder dbXReferences(List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
 		this.dbXReferences =  Utils.nonNullList(dbXReferences);
 		return this;
 	}
 	
-	public ProteomeBuilder addDbXReferences(DBCrossReference<ProteomeXReferenceType> dbXReference) {
+	public ProteomeEntryBuilder addDbXReferences(DBCrossReference<ProteomeXReferenceType> dbXReference) {
 		Utils.nonNullAdd(dbXReference, dbXReferences);
 		return this;
 	}
 	
-	public ProteomeBuilder components(List<Component> components) {
+	public ProteomeEntryBuilder components(List<Component> components) {
 		this.components =  Utils.nonNullList(components);
 		return this;
 	}
 	
-	public ProteomeBuilder addComponent(Component component) {
+	public ProteomeEntryBuilder addComponent(Component component) {
 		Utils.nonNullAdd(component, components);
 		return this;
 	}
 	
-	public ProteomeBuilder references(List<Citation> references) {
+	public ProteomeEntryBuilder references(List<Citation> references) {
 		this.references =  Utils.nonNullList(references);
 		return this;
 	}
 	
-	public ProteomeBuilder addReference(Citation reference) {
+	public ProteomeEntryBuilder addReference(Citation reference) {
 		Utils.nonNullAdd(reference, references);
 		return this;
 	}
 	
-	public ProteomeBuilder redundantProteomes(List<RedundantProteome> redundantProteomes) {
+	public ProteomeEntryBuilder redundantProteomes(List<RedundantProteome> redundantProteomes) {
 		this.redundantProteomes =  Utils.nonNullList(redundantProteomes);
 		return this;
 	}
 	
-	public ProteomeBuilder addRedundantProteome(RedundantProteome redundantProteome) {
+	public ProteomeEntryBuilder addRedundantProteome(RedundantProteome redundantProteome) {
 		Utils.nonNullAdd(redundantProteome, redundantProteomes);
 		return this;
 	}
 	
-	public ProteomeBuilder panproteome(ProteomeId panproteome) {
+	public ProteomeEntryBuilder panproteome(ProteomeId panproteome) {
 		this.panproteome = panproteome;
 		return this;
 	}
-	public ProteomeBuilder annotationScore(int annotationScore) {
+	public ProteomeEntryBuilder annotationScore(int annotationScore) {
 		this.annotationScore = annotationScore;
 		return this;
 	}
 	
-	public ProteomeBuilder superkingdom(Superkingdom superkingdom) {
+	public ProteomeEntryBuilder superkingdom(Superkingdom superkingdom) {
 		this.superkingdom = superkingdom;
 		return this;
 	}
 	
-	public ProteomeBuilder proteinCount(long proteinCount) {
+	public ProteomeEntryBuilder proteinCount(long proteinCount) {
 		this.proteinCount = proteinCount;
 		return this;
 	}
-	public ProteomeBuilder geneCount(long geneCount) {
+	public ProteomeEntryBuilder geneCount(long geneCount) {
 		this.geneCount = geneCount;
 		return this;
 	}
-	public ProteomeBuilder taxonLineage(List<String> taxonLineage) {
+	public ProteomeEntryBuilder taxonLineage(List<String> taxonLineage) {
 		this.taxonLineage =  Utils.nonNullList(taxonLineage);
 		return this;
 	}
-	public ProteomeBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {
+	public ProteomeEntryBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {
 		this.canonicalProteins = Utils.nonNullList(canonicalProteins);
 		return this;
 	}
 
-	public ProteomeBuilder addCanonicalProtein(CanonicalProtein canonicalProtein) {
+	public ProteomeEntryBuilder addCanonicalProtein(CanonicalProtein canonicalProtein) {
 		Utils.nonNullAdd(canonicalProtein, canonicalProteins);
 		return this;
 	}

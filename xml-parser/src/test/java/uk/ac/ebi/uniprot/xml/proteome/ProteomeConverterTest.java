@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.proteome.*;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeBuilder;
+import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
@@ -26,12 +26,12 @@ class ProteomeConverterTest {
 	@Test
 	void test() {	
 		ProteomeConverter converter = new ProteomeConverter();
-		Proteome proteome =create();
+		ProteomeEntry proteome =create();
 		uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome xml = converter.toXml(proteome);
-		Proteome converted = converter.fromXml(xml);
+		ProteomeEntry converted = converter.fromXml(xml);
 		assertEquals(proteome, converted);
 	}
-	private Proteome create() {
+	private ProteomeEntry create() {
 		String id = "UP000005640";
 		ProteomeId proteomeId = new ProteomeIdBuilder (id).build();
 		String description ="about some proteome";
@@ -69,7 +69,7 @@ class ProteomeConverterTest {
 		List<Citation> citations = new ArrayList<>();
 		citations.add(createJournal());
 		citations.add(createSubmission());
-		ProteomeBuilder builder = ProteomeBuilder.newInstance().proteomeId(proteomeId)
+		ProteomeEntryBuilder builder = ProteomeEntryBuilder.newInstance().proteomeId(proteomeId)
 				.description(description)
 				.taxonomy(taxonomy)
 				.modified(modified)

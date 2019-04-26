@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface Proteome extends Serializable {
+public interface ProteomeEntry extends Serializable {
 	ProteomeId getId();
 	Taxonomy getTaxonomy();
 	String getDescription();	

@@ -8,7 +8,7 @@ import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.*;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeBuilder;
+import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.RedundantProteomeBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
@@ -83,7 +83,7 @@ public class ProteomeTest {
 		xrefs.add(xref2);
 		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens")
 				.commonName("Human").build();
-		Proteome proteome = ProteomeBuilder.newInstance().proteomeId(proteomeId)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteomeId(proteomeId)
 			
 				.description(description)
 				.taxonomy(taxonomy)
@@ -152,7 +152,7 @@ public class ProteomeTest {
 		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens")
 				.commonName("Human").build();
 		
-		Proteome proteome = ProteomeBuilder.newInstance().proteomeId(proteomeId)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteomeId(proteomeId)
 			
 				.description(description)
 				.taxonomy(taxonomy)

@@ -21,16 +21,16 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ProteomeBuilderTest {
+class ProteomeEntryBuilderTest {
 
 	@Test
 	void testFrom() {
 		String id = "UP000005640";
 		ProteomeId proteomeId = new ProteomeIdBuilder (id).build();
-		Proteome proteome = ProteomeBuilder.newInstance().proteomeId(proteomeId)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteomeId(proteomeId)
 				.build();
 		
-		Proteome proteome2 = ProteomeBuilder.newInstance().from(proteome).build();
+		ProteomeEntry proteome2 = ProteomeEntryBuilder.newInstance().from(proteome).build();
 		assertEquals(proteome, proteome2);
 	}
 
@@ -38,7 +38,7 @@ class ProteomeBuilderTest {
 	void testProteomeId() {
 		String id = "UP000005640";
 		ProteomeId proteomeId = new ProteomeIdBuilder (id).build();
-		Proteome proteome = ProteomeBuilder.newInstance().proteomeId(proteomeId)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteomeId(proteomeId)
 				.build();
 		assertEquals(proteomeId, proteome.getId());
 	}
@@ -48,7 +48,7 @@ class ProteomeBuilderTest {
 	@Test
 	void testDescription() {
 		String description ="about some proteome";
-		Proteome proteome = ProteomeBuilder.newInstance().description(description)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().description(description)
 				.build();
 		assertEquals(description, proteome.getDescription());
 	}
@@ -56,7 +56,7 @@ class ProteomeBuilderTest {
 	@Test
 	void testTaxonomy() {
 		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
-		Proteome proteome = ProteomeBuilder.newInstance().taxonomy(taxonomy)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().taxonomy(taxonomy)
 				.build();
 		assertEquals(taxonomy, proteome.getTaxonomy());
 	}
@@ -64,7 +64,7 @@ class ProteomeBuilderTest {
 	@Test
 	void testModified() {
 		LocalDate modified = LocalDate.of(2015, 11, 5);
-		Proteome proteome = ProteomeBuilder.newInstance().modified(modified)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().modified(modified)
 				.build();
 		assertEquals(modified, proteome.getModified());
 	}
@@ -72,12 +72,12 @@ class ProteomeBuilderTest {
 	@Test
 	void testProteomeType() {
 		ProteomeType type = ProteomeType.NORMAL;
-		Proteome proteome = ProteomeBuilder.newInstance().proteomeType(type)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteomeType(type)
 				.build();
 		assertEquals(type, proteome.getProteomeType());
 		
 		type = ProteomeType.REFERENCE;
-		proteome = ProteomeBuilder.newInstance().proteomeType(type)
+		proteome = ProteomeEntryBuilder.newInstance().proteomeType(type)
 				.build();
 		assertEquals(type, proteome.getProteomeType());
 	}
@@ -86,7 +86,7 @@ class ProteomeBuilderTest {
 	void testRedundantTo() {
 		String id = "UP000005640";
 		ProteomeId proteomeId = new ProteomeIdBuilder (id).build();
-		Proteome proteome = ProteomeBuilder.newInstance().redundantTo(proteomeId)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().redundantTo(proteomeId)
 				.build();
 		assertEquals(proteomeId, proteome.getRedundantTo());
 	}
@@ -94,7 +94,7 @@ class ProteomeBuilderTest {
 	@Test
 	void testStrain() {
 		String  strain ="some strains";
-		Proteome proteome = ProteomeBuilder.newInstance().strain(strain)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().strain(strain)
 				.build();
 		assertEquals(strain, proteome.getStrain());
 	}
@@ -102,7 +102,7 @@ class ProteomeBuilderTest {
 	@Test
 	void testIsolate() {
 		String  isolate ="some isolate";
-		Proteome proteome = ProteomeBuilder.newInstance().isolate(isolate)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().isolate(isolate)
 				.build();
 		assertEquals(isolate, proteome.getIsolate());
 	}
@@ -122,7 +122,7 @@ class ProteomeBuilderTest {
 				.build();
 		xrefs.add(xref1);
 		xrefs.add(xref2);
-		Proteome proteome = ProteomeBuilder.newInstance().dbXReferences(xrefs)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().dbXReferences(xrefs)
 		 .build();
 		assertEquals(2, proteome.getDbXReferences().size());
 		assertThat(proteome.getDbXReferences(), hasItem(xref2));
@@ -142,7 +142,7 @@ class ProteomeBuilderTest {
 				.databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
 				.id("ADFDA121")
 				.build();
-		Proteome proteome = ProteomeBuilder.newInstance().addDbXReferences(xref1)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().addDbXReferences(xref1)
 		 .addDbXReferences(xref2)
 		 .build();
 		assertEquals(2, proteome.getDbXReferences().size());
@@ -166,7 +166,7 @@ class ProteomeBuilderTest {
 		
 		components.add(component1);
 		components.add(component2);
-		Proteome proteome = ProteomeBuilder.newInstance().components(components)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().components(components)
 				 .build();
 				assertEquals(2, proteome.getComponents().size());
 				assertThat(proteome.getComponents(), hasItem(component1));
@@ -186,7 +186,7 @@ class ProteomeBuilderTest {
 						.proteinCount(102)
 						.build();
 				
-				Proteome proteome = ProteomeBuilder.newInstance().addComponent(component1)
+				ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().addComponent(component1)
 						.addComponent(component2)
 						 .build();
 						assertEquals(2, proteome.getComponents().size());
@@ -208,7 +208,7 @@ class ProteomeBuilderTest {
 	        List<Citation> citations = new ArrayList<>();
 	        citations.add(citation1);
 	        citations.add(citation2);
-	        Proteome proteome = ProteomeBuilder.newInstance().references(citations)
+	        ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().references(citations)
 					 .build();
 					assertEquals(2, proteome.getReferences().size());
 					assertThat(proteome.getReferences(), hasItem(citation1));
@@ -228,7 +228,7 @@ class ProteomeBuilderTest {
 	        Submission citation2 = builder2.build();
 
 
-	        Proteome proteome = ProteomeBuilder.newInstance().addReference(citation1)
+	        ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().addReference(citation1)
 	        		.addReference(citation2)
 					 .build();
 					assertEquals(2, proteome.getReferences().size());
@@ -274,7 +274,7 @@ class ProteomeBuilderTest {
 		redundantProteomes.add(rproteome1);
 		redundantProteomes.add(rproteome2);
 		
-		Proteome proteome = ProteomeBuilder.newInstance().redundantProteomes(redundantProteomes)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().redundantProteomes(redundantProteomes)
 				 .build();
 				assertEquals(2, proteome.getRedudantProteomes().size());
 				assertThat(proteome.getRedudantProteomes(), hasItem(rproteome1));
@@ -295,7 +295,7 @@ class ProteomeBuilderTest {
 				.similarity(0.88f)
 				.build();
 
-		Proteome proteome = ProteomeBuilder.newInstance()
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance()
 				.addRedundantProteome(rproteome1)
 				.addRedundantProteome(rproteome2)
 				 .build();
@@ -307,14 +307,14 @@ class ProteomeBuilderTest {
 	void testPanproteome() {
 		String id = "UP000005644";
 		ProteomeId proteomeId = new ProteomeIdBuilder (id).build();
-		Proteome proteome = ProteomeBuilder.newInstance().panproteome(proteomeId)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().panproteome(proteomeId)
 				.build();
 		assertEquals(proteomeId, proteome.getPanproteome());
 	}
 
 	@Test
 	void testAnnotationScore() {
-		Proteome proteome = ProteomeBuilder.newInstance().annotationScore(20)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().annotationScore(20)
 				.build();
 		assertEquals(20, proteome.getAnnotationScore());
 	}
@@ -322,27 +322,27 @@ class ProteomeBuilderTest {
 	@Test
 	void testSuperkingdom() {
 		Superkingdom superkingdom = Superkingdom.EUKARYOTA;
-		Proteome proteome = ProteomeBuilder.newInstance().superkingdom(superkingdom)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().superkingdom(superkingdom)
 				.build();
 		assertEquals(superkingdom, proteome.getSuperkingdom());
 	}
 
 	@Test
 	void testProteinCount() {
-		Proteome proteome = ProteomeBuilder.newInstance().proteinCount(905)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteinCount(905)
 				.build();
 		assertEquals(905, proteome.getProteinCount());
 	}
 
 	@Test
 	void testGeneCount() {
-		Proteome proteome = ProteomeBuilder.newInstance().geneCount(203)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().geneCount(203)
 				.build();
 		assertEquals(203, proteome.getGeneCount());
 	}
 	@Test
 	void testTaxonLineage() {
-		Proteome proteome = ProteomeBuilder.newInstance().taxonLineage(Arrays.asList("some lineage"))
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().taxonLineage(Arrays.asList("some lineage"))
 				.build();
 		assertEquals(Arrays.asList("some lineage"), proteome.getTaxonLineage());
 	}
@@ -357,7 +357,7 @@ class ProteomeBuilderTest {
 		
 		Protein protein = ProteinBuilder.newInstance().accession("P22345").build();		
 		CanonicalProtein cProtein2 = CanonicalProteinBuilder.newInstance().addRelatedProtein(protein).build();		
-		Proteome proteome = ProteomeBuilder.newInstance().addCanonicalProtein(cProtein)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().addCanonicalProtein(cProtein)
 				 .addCanonicalProtein(cProtein2)
 				 .build();
 		assertEquals(2, proteome.getCanonicalProteins().size());
@@ -374,7 +374,7 @@ class ProteomeBuilderTest {
 		Protein protein = ProteinBuilder.newInstance().accession("P22345").build();		
 		CanonicalProtein cProtein2 = CanonicalProteinBuilder.newInstance().addRelatedProtein(protein).build();	
 		List<CanonicalProtein> cProteins = Arrays.asList(cProtein, cProtein2);
-		Proteome proteome = ProteomeBuilder.newInstance().canonicalProteins(cProteins)
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().canonicalProteins(cProteins)
 				 .build();
 		assertEquals(2, proteome.getCanonicalProteins().size());
 		assertThat(proteome.getCanonicalProteins(), hasItem(cProtein2));

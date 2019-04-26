@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class ProteomeImpl implements Proteome {
+public class ProteomeImpl implements ProteomeEntry {
 
 	private static final long serialVersionUID = 1962327704149624243L;
 	private ProteomeId id;
