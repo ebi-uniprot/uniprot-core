@@ -19,7 +19,8 @@ public class DiseaseImpl  implements Disease{
     private  List<String> alternativeNames;
     private List<CrossReference> crossReferences;
     private List<Keyword> keywords;
-    private Long proteinCount;
+    private Long reviewedProteinCount;
+    private Long unreviewedProteinCount;
 
     private DiseaseImpl(){
     	// do nothing.. just to satisfy the objectmapper
@@ -39,10 +40,12 @@ public class DiseaseImpl  implements Disease{
 	}
 
 	public DiseaseImpl(String id, String accession, String acronym, String definition, List<String> alternativeNames,
-					   List<CrossReference> crossReferences, List<Keyword> keywords, Long proteinCount) {
+					   List<CrossReference> crossReferences, List<Keyword> keywords,
+					   Long reviewedProteinCount, Long unreviewedProteinCount) {
 
 		this(id, accession, acronym, definition, alternativeNames, crossReferences, keywords);
-		this.proteinCount = proteinCount;
+		this.reviewedProteinCount = reviewedProteinCount;
+		this.unreviewedProteinCount = unreviewedProteinCount;
 	}
 
 	public String getId() {
@@ -86,8 +89,13 @@ public class DiseaseImpl  implements Disease{
 	}
 
 	@Override
-	public Long getProteinCount() {
-		return this.proteinCount;
+	public Long getReviewedProteinCount() {
+		return this.reviewedProteinCount;
+	}
+
+	@Override
+	public Long getUnreviewedProteinCount() {
+		return this.unreviewedProteinCount;
 	}
 
 	@Override
@@ -101,7 +109,8 @@ public class DiseaseImpl  implements Disease{
 		result = prime * result + ((definition == null) ? 0 : definition.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((keywords == null) ? 0 : keywords.hashCode());
-		result = prime * result + ((this.proteinCount == null) ? 0 : this.proteinCount.hashCode());
+		result = prime * result + ((this.reviewedProteinCount == null) ? 0 : this.reviewedProteinCount.hashCode());
+		result = prime * result + ((this.unreviewedProteinCount == null) ? 0 : this.unreviewedProteinCount.hashCode());
 		return result;
 	}
 	@Override
@@ -149,10 +158,16 @@ public class DiseaseImpl  implements Disease{
 		} else if (!keywords.equals(other.keywords))
 			return false;
 
-		if (this.proteinCount == null) {
-			if (other.proteinCount != null)
+		if (this.reviewedProteinCount == null) {
+			if (other.reviewedProteinCount != null)
 				return false;
-		} else if (!this.proteinCount.equals(other.proteinCount))
+		} else if (!this.reviewedProteinCount.equals(other.reviewedProteinCount))
+			return false;
+
+		if (this.unreviewedProteinCount == null) {
+			if (other.unreviewedProteinCount != null)
+				return false;
+		} else if (!this.unreviewedProteinCount.equals(other.unreviewedProteinCount))
 			return false;
 
 		return true;

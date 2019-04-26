@@ -17,7 +17,8 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     private List<String> alternativeNames;
     private List<CrossReference> crossReferences;
     private List<Keyword> keywords;
-    private Long proteinCount;
+    private Long reviewedProteinCount;
+    private Long unreviewedProteinCount;
 
 
     public static DiseaseBuilder newInstance() {
@@ -27,7 +28,8 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     @Override
     public Disease build() {
         return new DiseaseImpl(this.id, this.accession, this.acronym,
-                this.definition, this.alternativeNames, this.crossReferences, this.keywords, this.proteinCount);
+                this.definition, this.alternativeNames, this.crossReferences,
+                this.keywords, this.reviewedProteinCount, this.unreviewedProteinCount);
     }
 
     @Override
@@ -39,7 +41,8 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         this.alternativeNames = instance.getAlternativeNames();
         this.crossReferences = instance.getCrossReferences();
         this.keywords = instance.getKeywords();
-        this.proteinCount = instance.getProteinCount();
+        this.reviewedProteinCount = instance.getReviewedProteinCount();
+        this.unreviewedProteinCount = instance.getUnreviewedProteinCount();
         return this;
     }
 
@@ -99,8 +102,13 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         return this;
     }
 
-    public DiseaseBuilder proteinCount(Long proteinCount){
-        this.proteinCount = proteinCount;
+    public DiseaseBuilder reviewedProteinCount(Long reviewedProteinCount){
+        this.reviewedProteinCount = reviewedProteinCount;
+        return this;
+    }
+
+    public DiseaseBuilder unreviewedProteinCount(Long unreviewedProteinCount){
+        this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }
 
