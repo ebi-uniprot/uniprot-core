@@ -342,9 +342,10 @@ class ProteomeEntryBuilderTest {
 	}
 	@Test
 	void testTaxonLineage() {
-		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().taxonLineage(Arrays.asList("some lineage"))
+		Taxonomy taxon = new TaxonomyBuilder().taxonId(9605).scientificName("Homo").build();
+		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().taxonLineage(Arrays.asList(taxon))
 				.build();
-		assertEquals(Arrays.asList("some lineage"), proteome.getTaxonLineage());
+		assertEquals(Arrays.asList(taxon), proteome.getTaxonLineage());
 	}
 	
 	@Test

@@ -59,7 +59,7 @@ public class ProteomeJsonConfig extends JsonConfig {
         SimpleModule mod = new SimpleModule();
         mod.addSerializer(LocalDate.class, new LocalDateSerializer());
         mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
-        mod.addAbstractTypeMapping(ProteomeEntry.class, ProteomeImpl.class);
+        mod.addAbstractTypeMapping(ProteomeEntry.class, ProteomeEntryImpl.class);
         mod.addAbstractTypeMapping(Component.class, ComponentImpl.class);
         mod.addAbstractTypeMapping(ProteomeId.class, ProteomeIdImpl.class);
         mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
