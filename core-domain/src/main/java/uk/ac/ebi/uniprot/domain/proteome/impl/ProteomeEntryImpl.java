@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class ProteomeImpl implements ProteomeEntry {
+public class ProteomeEntryImpl implements ProteomeEntry {
 
 	private static final long serialVersionUID = 1962327704149624243L;
 	private ProteomeId id;
@@ -31,11 +31,11 @@ public class ProteomeImpl implements ProteomeEntry {
 	private Superkingdom superkingdom;
 	private long proteinCount;
 	private long geneCount;
-	List<String> taxonLineage;
+	List<Taxonomy> taxonLineage;
 	private List<CanonicalProtein> canonicalProteins;
 	private String sourceDb;
 	
-	private ProteomeImpl() {
+	private ProteomeEntryImpl() {
 		dbXReferences = Collections.emptyList();
 		components = Collections.emptyList();
 		references = Collections.emptyList();
@@ -44,12 +44,12 @@ public class ProteomeImpl implements ProteomeEntry {
 		canonicalProteins = Collections.emptyList();
 	}
 	
-	public ProteomeImpl(ProteomeId id, Taxonomy taxonomy, String description,  LocalDate modified,
+	public ProteomeEntryImpl(ProteomeId id, Taxonomy taxonomy, String description,  LocalDate modified,
 			ProteomeType proteomeType, ProteomeId redundantTo, String strain, String isolate,
 			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences, List<Component> components,
 			List<Citation> references, List<RedundantProteome> redundantProteomes, ProteomeId panproteome,
 			int annotationScore, Superkingdom superkingdom, long proteinCount, long geneCount,
-			List<String> taxonLineage, List<CanonicalProtein> canonicalProteins, String sourceDb) {
+			List<Taxonomy> taxonLineage, List<CanonicalProtein> canonicalProteins, String sourceDb) {
 		super();
 		this.id = id;
 		this.taxonomy = taxonomy;
@@ -160,7 +160,7 @@ public class ProteomeImpl implements ProteomeEntry {
 		return geneCount;
 	}
 	@Override
-	public List<String> getTaxonLineage() {
+	public List<Taxonomy> getTaxonLineage() {
 		return taxonLineage;
 	}
 	@Override
@@ -187,7 +187,7 @@ public class ProteomeImpl implements ProteomeEntry {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ProteomeImpl other = (ProteomeImpl) obj;
+		ProteomeEntryImpl other = (ProteomeEntryImpl) obj;
 		return Objects.equals(components, other.components) 
 				&& Objects.equals(dbXReferences, other.dbXReferences)
 				&& Objects.equals(description, other.description) 

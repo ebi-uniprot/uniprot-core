@@ -26,7 +26,7 @@ public interface ProteomeEntry extends Serializable {
 	Superkingdom getSuperkingdom();
 	long getProteinCount();
 	long getGeneCount();
-	List<String> getTaxonLineage();
+	List<Taxonomy> getTaxonLineage();
 	List<CanonicalProtein> getCanonicalProteins();	
 	String getSourceDb();
 }

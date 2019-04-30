@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.proteome.*;
-import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeImpl;
+import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeEntryImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 
 import java.time.LocalDate;
@@ -30,7 +30,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	private Superkingdom superkingdom;
 	private long proteinCount;
 	private long geneCount;
-	private List<String> taxonLineage =new ArrayList<>();
+	private List<Taxonomy> taxonLineage =new ArrayList<>();
 	private List<CanonicalProtein> canonicalProteins  =new ArrayList<>();
 	private String sourceDb;
 	public static ProteomeEntryBuilder newInstance() {
@@ -39,7 +39,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	
 	@Override
 	public ProteomeEntry build() {
-		return new ProteomeImpl( id,  taxonomy,  description,   modified,
+		return new ProteomeEntryImpl( id,  taxonomy,  description,   modified,
 				 proteomeType,  redundantTo,  strain,  isolate,
 				dbXReferences,  components,
 				references,  redundantProteomes,  panproteome,
@@ -193,8 +193,12 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 		this.geneCount = geneCount;
 		return this;
 	}
-	public ProteomeEntryBuilder taxonLineage(List<String> taxonLineage) {
+	public ProteomeEntryBuilder taxonLineage(List<Taxonomy> taxonLineage) {
 		this.taxonLineage =  Utils.nonNullList(taxonLineage);
+		return this;
+	}
+	public ProteomeEntryBuilder addTaxonLineage(Taxonomy taxon) {
+		Utils.nonNullAdd(taxon, taxonLineage);
 		return this;
 	}
 	public ProteomeEntryBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {

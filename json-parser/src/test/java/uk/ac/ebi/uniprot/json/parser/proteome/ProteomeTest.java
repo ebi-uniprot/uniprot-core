@@ -151,6 +151,11 @@ public class ProteomeTest {
 		redundantProteomes.add(rproteome2);
 		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens")
 				.commonName("Human").build();
+		Taxonomy taxon1 = TaxonomyBuilder.newInstance().taxonId(9604).scientificName("Hominidae")
+				.build();
+		Taxonomy taxon2 = TaxonomyBuilder.newInstance().taxonId(9605).scientificName("Homo")
+				.build();
+	
 		
 		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteomeId(proteomeId)
 			
@@ -160,6 +165,8 @@ public class ProteomeTest {
 				.proteomeType(ProteomeType.REFERENCE)
 				.strain("some Strain")
 				.dbXReferences(xrefs)
+				.addTaxonLineage(taxon1)
+				.addTaxonLineage(taxon2)
 				.references(getCitations())
 				.superkingdom(Superkingdom.EUKARYOTA)
 			//	.components(components)
