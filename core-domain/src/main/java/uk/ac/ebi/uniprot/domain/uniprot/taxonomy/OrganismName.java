@@ -10,4 +10,10 @@ public interface OrganismName extends Serializable {
     String getCommonName();
 
     List<String> getSynonyms();
+
+    boolean hasScientificName();
+
+    boolean hasCommonName();
+
+    boolean hasSynonyms();
 }

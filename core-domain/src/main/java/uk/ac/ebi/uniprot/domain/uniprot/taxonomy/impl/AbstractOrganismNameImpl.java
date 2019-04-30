@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
 
 import java.util.List;
@@ -37,6 +38,18 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
 
     public List<String> getSynonyms() {
         return synonyms;
+    }
+
+    public boolean hasScientificName(){
+        return Utils.notEmpty(this.scientificName);
+    }
+
+    public boolean hasCommonName(){
+        return Utils.notEmpty(this.commonName);
+    }
+
+    public boolean hasSynonyms(){
+        return Utils.notEmpty(this.synonyms);
     }
 
     @Override

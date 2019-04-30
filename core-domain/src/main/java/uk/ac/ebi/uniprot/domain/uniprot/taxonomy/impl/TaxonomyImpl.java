@@ -1,5 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
+import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 
 import java.util.List;
@@ -7,9 +8,6 @@ import java.util.Objects;
 
 public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -319775179301440772L;
 	   private long taxonId;
 	   private String mnemonic;
@@ -32,6 +30,11 @@ public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
 	public String getMnemonic() {
 		return mnemonic;
 	}
+
+    @Override
+    public boolean hasMnemonic() {
+        return Utils.notEmpty(this.mnemonic);
+    }
 
     @Override
     public boolean equals(Object o) {
