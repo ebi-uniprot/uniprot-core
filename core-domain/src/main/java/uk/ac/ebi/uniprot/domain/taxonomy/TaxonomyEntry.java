@@ -28,6 +28,8 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
 
     List<String> getLinks();
 
+    TaxonomyStatistics getStatistics();
+
     boolean hasParentId();
 
     boolean hasRank();
@@ -41,5 +43,7 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
     boolean hasHosts();
 
     boolean hasLinks();
+
+    boolean hasStatistics();
 
 }

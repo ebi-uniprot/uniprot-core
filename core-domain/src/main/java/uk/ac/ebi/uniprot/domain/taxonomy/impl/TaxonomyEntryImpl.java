@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
 import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyEntry;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStrain;
+import uk.ac.ebi.uniprot.domain.taxonomy.*;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl.TaxonomyImpl;
 
@@ -36,10 +33,12 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private List<String> links;
 
+    private TaxonomyStatistics statistics;
+
     public TaxonomyEntryImpl(long taxonId, String scientificName, String commonName, List<String> synonyms,
                              String mnemonic, long parentId, TaxonomyRank rank, boolean hidden, boolean active,
                              List<String> otherNames, List<TaxonomyLineage> lineage, List<TaxonomyStrain> strains,
-                             List<Taxonomy> hosts, List<String> links) {
+                             List<Taxonomy> hosts, List<String> links,TaxonomyStatistics statistics) {
         super(taxonId, scientificName, commonName, synonyms, mnemonic);
         this.parentId = parentId;
         this.rank = rank;
@@ -50,6 +49,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         this.strains = strains;
         this.hosts = hosts;
         this.links = links;
+        this.statistics = statistics;
     }
 
     @Override
@@ -98,6 +98,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
+    public TaxonomyStatistics getStatistics() {
+        return statistics;
+    }
+
+    @Override
     public boolean hasParentId() {
         return parentId > 0;
     }
@@ -133,6 +138,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
+    public boolean hasStatistics() {
+        return this.statistics != null;
+    }
+
+    @Override
     public String toString() {
         return "TaxonomyEntryImpl{" +
                 "taxonId=" + getTaxonId() +
@@ -148,6 +158,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 ", strains=" + strains +
                 ", hosts=" + hosts +
                 ", links=" + links +
+                ", statistics=" + statistics +
                 '}';
     }
 
@@ -165,12 +176,13 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 Objects.equals(getLineage(), that.getLineage()) &&
                 Objects.equals(getStrains(), that.getStrains()) &&
                 Objects.equals(getHosts(), that.getHosts()) &&
-                Objects.equals(getLinks(), that.getLinks());
+                Objects.equals(getLinks(), that.getLinks()) &&
+                Objects.equals(getStatistics(), that.getStatistics());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getParentId(), getRank(), isHidden(), isActive(), getOtherNames(),
-                getLineage(), getStrains(), getHosts(), getLinks());
+                getLineage(), getStrains(), getHosts(), getLinks(),getStatistics());
     }
 }
