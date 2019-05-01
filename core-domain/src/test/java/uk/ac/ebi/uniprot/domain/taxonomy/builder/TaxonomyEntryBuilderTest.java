@@ -27,6 +27,7 @@ class TaxonomyEntryBuilderTest {
         assertFalse(taxonomyEntry.hasScientificName());
         assertFalse(taxonomyEntry.hasCommonName());
         assertFalse(taxonomyEntry.hasMnemonic());
+        assertFalse(taxonomyEntry.hasStatistics());
 
         assertTrue(taxonomyEntry.getSynonyms().isEmpty());
         assertFalse(taxonomyEntry.hasSynonyms());
@@ -87,6 +88,9 @@ class TaxonomyEntryBuilderTest {
         assertTrue(taxonomyEntry.hasMnemonic());
         assertEquals(taxonomyEntry.getMnemonic(),"mnemonic");
 
+        assertTrue(taxonomyEntry.hasStatistics());
+        assertEquals(taxonomyEntry.getStatistics(),TaxonomyStatisticsBuilderTest.getCompleteTaxonomyStatistics());
+
         assertTrue(taxonomyEntry.hasSynonyms());
         MatcherAssert.assertThat(taxonomyEntry.getSynonyms(), Matchers.contains("synonym"));
 
@@ -104,14 +108,6 @@ class TaxonomyEntryBuilderTest {
 
         assertTrue(taxonomyEntry.hasStrains());
         MatcherAssert.assertThat(taxonomyEntry.getStrains(),Matchers.contains(TaxonomyStrainBuilderTest.getCompleteTaxonomyStrain()));
-    }
-
-    private Taxonomy getCompleteTaxonomy() {
-        return TaxonomyBuilder.newInstance().taxonId(9606)
-                .scientificName("Homo sapiens")
-                .commonName("Human")
-                .synonyms(Collections.singletonList("Some name"))
-                .mnemonic("HUMAN").build();
     }
 
     private TaxonomyEntry getCompleteTaxonomyEntryUsingAdd(){
@@ -151,8 +147,16 @@ class TaxonomyEntryBuilderTest {
         builder.rank(TaxonomyRank.KINGDOM);
         builder.hidden(true);
         builder.active(true);
+        builder.statistics(TaxonomyStatisticsBuilderTest.getCompleteTaxonomyStatistics());
         return builder;
     }
 
+    private Taxonomy getCompleteTaxonomy() {
+        return TaxonomyBuilder.newInstance().taxonId(9606)
+                .scientificName("Homo sapiens")
+                .commonName("Human")
+                .synonyms(Collections.singletonList("Some name"))
+                .mnemonic("HUMAN").build();
+    }
 
 }

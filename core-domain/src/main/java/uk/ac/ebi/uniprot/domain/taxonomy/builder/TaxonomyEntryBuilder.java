@@ -2,10 +2,7 @@ package uk.ac.ebi.uniprot.domain.taxonomy.builder;
 
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyEntry;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStrain;
+import uk.ac.ebi.uniprot.domain.taxonomy.*;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyEntryImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.AbstractOrganismNameBuilder;
@@ -37,6 +34,8 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     private List<Taxonomy> hosts = new ArrayList<>();
 
     private List<String> links = new ArrayList<>();
+
+    private TaxonomyStatistics statistics;
 
     public TaxonomyEntryBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
@@ -117,10 +116,15 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
         return this;
     }
 
+    public TaxonomyEntryBuilder statistics(TaxonomyStatistics statistics){
+        this.statistics = statistics;
+        return this;
+    }
+
     @Override
     public TaxonomyEntry build() {
         return new TaxonomyEntryImpl(taxonId,scientificName,commonName,synonyms,mnemonic,parentId,
-                rank,hidden,active,otherNames,lineage,strains,hosts,links);
+                rank,hidden,active,otherNames,lineage,strains,hosts,links,statistics);
     }
 
     @Override
@@ -145,6 +149,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
         this.hosts(instance.getHosts());
         this.links.clear();
         this.links(instance.getLinks());
+        this.statistics(instance.getStatistics());
         return this;
     }
 
