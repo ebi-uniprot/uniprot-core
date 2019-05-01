@@ -2,6 +2,7 @@ package uk.ac.ebi.uniprot.domain.proteome;
 
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 
 import java.io.Serializable;
@@ -26,7 +27,7 @@ public interface ProteomeEntry extends Serializable {
 	Superkingdom getSuperkingdom();
 	long getProteinCount();
 	long getGeneCount();
-	List<Taxonomy> getTaxonLineage();
+	List<TaxonomyLineage> getTaxonLineage();
 	List<CanonicalProtein> getCanonicalProteins();	
 	String getSourceDb();
 }

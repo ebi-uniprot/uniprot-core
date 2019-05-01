@@ -3,6 +3,7 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
+import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -38,6 +39,50 @@ public class FeatureTest {
         assertEquals(FeatureType.CHAIN.getDisplayName(),jsonNode.get("type").asText());
     }
 
+    @Test
+    public void testFeatureExact() {
+    	  Range location = Range.create(2,8);
+        Feature feature = new FeatureBuilder()
+                .type(FeatureType.CHAIN)
+                .location(location)
+                .build();
+
+        ValidateJson.verifyJsonRoundTripParser(feature);
+    }
+
+    @Test
+    public void testFeatureOut() {
+    	  Range location =new Range(2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE) ;
+        Feature feature = new FeatureBuilder()
+                .type(FeatureType.CHAIN)
+                .location(location)
+                .build();
+
+        ValidateJson.verifyJsonRoundTripParser(feature);
+    }
+    
+    @Test
+    public void testFeatureUnsure() {
+    	  Range location =new Range(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE) ;
+        Feature feature = new FeatureBuilder()
+                .type(FeatureType.CHAIN)
+                .location(location)
+                .build();
+
+        ValidateJson.verifyJsonRoundTripParser(feature);
+    }
+    
+    @Test
+    public void testFeatureUnknow() {
+    	  Range location =new Range(-1, -1, PositionModifier.UNKOWN, PositionModifier.UNKOWN) ;
+        Feature feature = new FeatureBuilder()
+                .type(FeatureType.CHAIN)
+                .location(location)
+                .build();
+
+        ValidateJson.verifyJsonRoundTripParser(feature);
+    }
+    
     @Test
     public void testFeatureComplete() {
         Feature feature = getFeature();

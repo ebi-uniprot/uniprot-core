@@ -11,6 +11,8 @@ import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.RedundantProteomeBuilder;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyLineageBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
@@ -100,6 +102,12 @@ public class ProteomeTest {
 	}
 	
 	@Test
+	void testTaxonomyLineage() {
+		TaxonomyLineage taxon1 = new TaxonomyLineageBuilder().taxonId(9604).scientificName("Hominidae")
+				.build();
+		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), taxon1);
+	}
+	@Test
 	void testReferenceProteome() {
 		String id = "UP000005640";
 		String description ="about some proteome";
@@ -151,9 +159,9 @@ public class ProteomeTest {
 		redundantProteomes.add(rproteome2);
 		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens")
 				.commonName("Human").build();
-		Taxonomy taxon1 = TaxonomyBuilder.newInstance().taxonId(9604).scientificName("Hominidae")
+		TaxonomyLineage taxon1 = new TaxonomyLineageBuilder().taxonId(9604).scientificName("Hominidae")
 				.build();
-		Taxonomy taxon2 = TaxonomyBuilder.newInstance().taxonId(9605).scientificName("Homo")
+		TaxonomyLineage taxon2 = new TaxonomyLineageBuilder().taxonId(9605).scientificName("Homo")
 				.build();
 	
 		
@@ -166,14 +174,17 @@ public class ProteomeTest {
 				.strain("some Strain")
 				.dbXReferences(xrefs)
 				.addTaxonLineage(taxon1)
-				.addTaxonLineage(taxon2)
+		//		.addTaxonLineage(taxon2)
 				.references(getCitations())
 				.superkingdom(Superkingdom.EUKARYOTA)
 			//	.components(components)
 				.redundantProteomes(redundantProteomes)
 				.build();
 		
+		
+		
 		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
+		
 	}
 	
 

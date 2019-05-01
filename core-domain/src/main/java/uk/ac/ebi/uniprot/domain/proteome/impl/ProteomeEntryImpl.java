@@ -4,6 +4,7 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.proteome.*;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 
 import java.time.LocalDate;
@@ -31,7 +32,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 	private Superkingdom superkingdom;
 	private long proteinCount;
 	private long geneCount;
-	List<Taxonomy> taxonLineage;
+	List<TaxonomyLineage> taxonLineage;
 	private List<CanonicalProtein> canonicalProteins;
 	private String sourceDb;
 	
@@ -49,7 +50,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences, List<Component> components,
 			List<Citation> references, List<RedundantProteome> redundantProteomes, ProteomeId panproteome,
 			int annotationScore, Superkingdom superkingdom, long proteinCount, long geneCount,
-			List<Taxonomy> taxonLineage, List<CanonicalProtein> canonicalProteins, String sourceDb) {
+			List<TaxonomyLineage> taxonLineage, List<CanonicalProtein> canonicalProteins, String sourceDb) {
 		super();
 		this.id = id;
 		this.taxonomy = taxonomy;
@@ -160,7 +161,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 		return geneCount;
 	}
 	@Override
-	public List<Taxonomy> getTaxonLineage() {
+	public List<TaxonomyLineage> getTaxonLineage() {
 		return taxonLineage;
 	}
 	@Override
