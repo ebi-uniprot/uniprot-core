@@ -8,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.*;
+import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
+import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyLineageBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 
@@ -342,7 +344,7 @@ class ProteomeEntryBuilderTest {
 	}
 	@Test
 	void testTaxonLineage() {
-		Taxonomy taxon = new TaxonomyBuilder().taxonId(9605).scientificName("Homo").build();
+		TaxonomyLineage taxon = new TaxonomyLineageBuilder().taxonId(9605).scientificName("Homo").build();
 		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().taxonLineage(Arrays.asList(taxon))
 				.build();
 		assertEquals(Arrays.asList(taxon), proteome.getTaxonLineage());

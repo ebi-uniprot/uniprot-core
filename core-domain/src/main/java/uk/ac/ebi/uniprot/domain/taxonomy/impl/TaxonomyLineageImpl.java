@@ -21,6 +21,9 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
 
     private boolean hidden;
 
+    private TaxonomyLineageImpl() {
+    	
+    }
     public TaxonomyLineageImpl(long taxonId, String scientificName, TaxonomyRank rank, boolean hidden) {
         this.taxonId = taxonId;
         this.scientificName = scientificName;

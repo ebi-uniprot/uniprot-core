@@ -11,7 +11,7 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, T
 
     private String scientificName;
 
-    private TaxonomyRank rank;
+    private TaxonomyRank rank; //=TaxonomyRank.NO_RANK;
 
     private boolean hidden;
 
