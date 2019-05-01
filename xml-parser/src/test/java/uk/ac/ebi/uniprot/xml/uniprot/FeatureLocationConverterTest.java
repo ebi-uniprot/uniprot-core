@@ -38,7 +38,7 @@ class FeatureLocationConverterTest {
 	@Test
 	void testSameUnknown() {
 		
-		Range location = createRange(null, null, PositionModifier.UNKOWN, PositionModifier.UNKOWN);
+		Range location = createRange(null, null, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
 		
 		LocationType xmlObj =converter.toXml(location);
 		
@@ -110,7 +110,7 @@ class FeatureLocationConverterTest {
 	
 	@Test
 	void testExactUnknowNotSame() {
-		Range location = createRange(10, 230, PositionModifier.EXACT, PositionModifier.UNKOWN);
+		Range location = createRange(10, 230, PositionModifier.EXACT, PositionModifier.UNKNOWN);
 		
 		LocationType xmlObj =converter.toXml(location);
 		
@@ -122,7 +122,7 @@ class FeatureLocationConverterTest {
 
 	@Test
 	void testUnknowExactNotSame() {
-		Range location = createRange(10, 230, PositionModifier.UNKOWN, PositionModifier.EXACT);
+		Range location = createRange(10, 230, PositionModifier.UNKNOWN, PositionModifier.EXACT);
 		
 		LocationType xmlObj =converter.toXml(location);
 		

@@ -60,7 +60,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
                 if (!isfirst)
                     sb.append(SEPARATOR_COMA);
 
-                if (range.getRange().getStart().getModifier() == PositionModifier.UNKOWN) {
+                if (range.getRange().getStart().getModifier() == PositionModifier.UNKNOWN) {
                     sb.append("?");
                 } else {
                     sb.append(range.getRange().getStart().getValue());
@@ -68,7 +68,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
                 }
                 sb.append("-");
 
-                if (range.getRange().getEnd().getModifier() == PositionModifier.UNKOWN) {
+                if (range.getRange().getEnd().getModifier() == PositionModifier.UNKNOWN) {
                     sb.append("?");
                 } else {
                     sb.append(range.getRange().getEnd().getValue());

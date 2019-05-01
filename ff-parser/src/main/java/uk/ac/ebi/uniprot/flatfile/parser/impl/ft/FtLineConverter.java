@@ -294,7 +294,7 @@ public class FtLineConverter extends EvidenceCollector
 
         Integer start = -1;
         if ((locationStart == null) || locationStart.trim().isEmpty()) {
-            startModifier = PositionModifier.UNKOWN;
+            startModifier = PositionModifier.UNKNOWN;
         } else {
             locationStart = locationStart.trim();
             char c = locationStart.charAt(0);
@@ -302,11 +302,11 @@ public class FtLineConverter extends EvidenceCollector
                 if (locationStart.length() > 1) {
                     String val = locationStart.substring(1).trim();
                     if (val.isEmpty()) {
-                        startModifier = PositionModifier.UNKOWN;
+                        startModifier = PositionModifier.UNKNOWN;
                     } else {
                         int value = Integer.parseInt(val);
                         if (value == -1) {
-                            startModifier = PositionModifier.UNKOWN;
+                            startModifier = PositionModifier.UNKNOWN;
                         } else {
                             startModifier = PositionModifier.UNSURE;
                             start = value;
@@ -314,7 +314,7 @@ public class FtLineConverter extends EvidenceCollector
                     }
 
                 } else {
-                    startModifier = PositionModifier.UNKOWN;
+                    startModifier = PositionModifier.UNKNOWN;
                 }
             } else if (c == outSymbol) {
                 startModifier = PositionModifier.OUTSIDE;

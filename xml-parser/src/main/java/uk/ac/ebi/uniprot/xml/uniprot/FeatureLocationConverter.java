@@ -49,7 +49,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
 		if (Strings.isNullOrEmpty(status)) {
 
 		} else if (status.equals(UNKNOWN)) {
-			modifier = PositionModifier.UNKOWN;
+			modifier = PositionModifier.UNKNOWN;
 			return new Position(-1, modifier);
 		} else if (status.equals(UNCERTAIN)) {
 			modifier = PositionModifier.UNSURE;
@@ -67,7 +67,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
 			setExactPosition(locationType, location);
 		} else if (locationIsSame(location, PositionModifier.UNSURE)) {
 			setUnsurePosition(locationType, location);
-		} else if (locationIsSame(location, PositionModifier.UNKOWN)) {
+		} else if (locationIsSame(location, PositionModifier.UNKNOWN)) {
 			setUnknownPosition(locationType);
 		} else {
 			locationType.setBegin(toXml(location.getStart(), LESS_THAN));
@@ -80,7 +80,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
 	private PositionType toXml(Position position, String outsideString) {
 		PositionType positionType = xmlUniprotFactory.createPositionType();
 		switch (position.getModifier()) {
-		case UNKOWN:
+		case UNKNOWN:
 			positionType.setStatus(UNKNOWN);
 			break;
 		case UNSURE:
@@ -120,7 +120,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
 	private boolean locationIsSame(Range location, PositionModifier modifier) {
 		boolean isModifierSame = (location.getStart().getModifier() == modifier)
 				&& (location.getEnd().getModifier() == modifier);
-		if (modifier == PositionModifier.UNKOWN)
+		if (modifier == PositionModifier.UNKNOWN)
 			return isModifierSame;
 		else {
 			if (!isModifierSame)

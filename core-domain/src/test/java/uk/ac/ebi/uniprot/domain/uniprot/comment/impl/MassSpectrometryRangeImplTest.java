@@ -18,7 +18,7 @@ class MassSpectrometryRangeImplTest {
 
     @Test
     void testMassSpectrometryRangeImplRangeString() {
-        Range range = new Range(null, 25, PositionModifier.UNKOWN, PositionModifier.EXACT);
+        Range range = new Range(null, 25, PositionModifier.UNKNOWN, PositionModifier.EXACT);
 
         MassSpectrometryRange msRange = new MassSpectrometryRangeImpl(range, "");
         verify(msRange, range, "");

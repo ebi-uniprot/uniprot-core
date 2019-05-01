@@ -20,7 +20,7 @@ public final class Position implements Comparable<Position>, Serializable {
     public Position(Integer value, PositionModifier modifier) {
         this.value = value;
         if (value == null) {
-            this.modifier = PositionModifier.UNKOWN;
+            this.modifier = PositionModifier.UNKNOWN;
         } else
 
             this.modifier = modifier;
@@ -36,13 +36,13 @@ public final class Position implements Comparable<Position>, Serializable {
 
     @Override
     public int compareTo(Position o) {
-        if (modifier == PositionModifier.UNKOWN) {
-            if (o.getModifier() == PositionModifier.UNKOWN) {
+        if (modifier == PositionModifier.UNKNOWN) {
+            if (o.getModifier() == PositionModifier.UNKNOWN) {
                 return -1;
             } else {
                 return 1;
             }
-        } else if (o.getModifier() == PositionModifier.UNKOWN) {
+        } else if (o.getModifier() == PositionModifier.UNKNOWN) {
             return -1;
         } else {
             return this.getValue().compareTo(o.getValue());
@@ -69,7 +69,7 @@ public final class Position implements Comparable<Position>, Serializable {
         Position other = (Position) obj;
         if (modifier != other.modifier)
             return false;
-        if(modifier ==PositionModifier.UNKOWN )
+        if(modifier ==PositionModifier.UNKNOWN )
         	return true;
         if (value == null) {
             return other.value == null;
@@ -79,9 +79,9 @@ public final class Position implements Comparable<Position>, Serializable {
     private static PositionModifier getValueModifier(Integer value) {
         PositionModifier modifier = PositionModifier.EXACT;
         if (value == null) {
-            modifier = PositionModifier.UNKOWN;
+            modifier = PositionModifier.UNKNOWN;
         } else if (value.intValue() < 0) {
-            modifier = PositionModifier.UNKOWN;
+            modifier = PositionModifier.UNKNOWN;
         }
         return modifier;
     }

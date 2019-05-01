@@ -74,7 +74,7 @@ public class FeatureTest {
     
     @Test
     public void testFeatureUnknow() {
-    	  Range location =new Range(-1, -1, PositionModifier.UNKOWN, PositionModifier.UNKOWN) ;
+    	  Range location =new Range(-1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN) ;
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
                 .location(location)

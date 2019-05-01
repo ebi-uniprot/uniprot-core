@@ -453,9 +453,9 @@ public class FtLineConverterTest {
                                   PositionModifier startF, PositionModifier endF) {
         assertEquals(floc.getStart().getModifier(), startF);
         assertEquals(floc.getEnd().getModifier(), endF);
-        if (startF != PositionModifier.UNKOWN)
+        if (startF != PositionModifier.UNKNOWN)
             assertEquals(floc.getStart().getValue().intValue(), start);
-        if (startF != PositionModifier.UNKOWN)
+        if (startF != PositionModifier.UNKNOWN)
             assertEquals(floc.getEnd().getValue().intValue(), end);
     }
 }

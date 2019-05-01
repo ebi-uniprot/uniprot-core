@@ -23,7 +23,7 @@ public class FtLineTransformerTest {
 		Feature feature = features.get(0);
 
 		
-		assertEquals(PositionModifier.UNKOWN, feature
+		assertEquals(PositionModifier.UNKNOWN, feature
 				.getLocation().getStart().getModifier());
 		assertEquals(121, feature.getLocation().getEnd().getValue().intValue());
 		assertEquals(FeatureType.CHAIN, feature.getType());
