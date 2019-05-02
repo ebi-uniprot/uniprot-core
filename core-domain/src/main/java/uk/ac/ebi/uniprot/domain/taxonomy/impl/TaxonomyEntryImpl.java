@@ -35,6 +35,10 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private TaxonomyStatistics statistics;
 
+    private TaxonomyEntryImpl(){
+        this(0,null,null,null,null,0,null,false,false,null,null,null,null,null,null);
+    }
+
     public TaxonomyEntryImpl(long taxonId, String scientificName, String commonName, List<String> synonyms,
                              String mnemonic, long parentId, TaxonomyRank rank, boolean hidden, boolean active,
                              List<String> otherNames, List<TaxonomyLineage> lineage, List<TaxonomyStrain> strains,
@@ -44,11 +48,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         this.rank = rank;
         this.hidden = hidden;
         this.active = active;
-        this.otherNames = otherNames;
-        this.lineage = lineage;
-        this.strains = strains;
-        this.hosts = hosts;
-        this.links = links;
+        this.otherNames = Utils.nonNullList(otherNames);
+        this.lineage = Utils.nonNullList(lineage);
+        this.strains = Utils.nonNullList(strains);
+        this.hosts = Utils.nonNullList(hosts);
+        this.links = Utils.nonNullList(links);
         this.statistics = statistics;
     }
 

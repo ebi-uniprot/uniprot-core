@@ -18,9 +18,13 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     private List<String> synonyms;
 
+    private TaxonomyStrainImpl(){
+        this(null,null);
+    }
+
     public TaxonomyStrainImpl(String name, List<String> synonyms) {
         this.name = name;
-        this.synonyms = synonyms;
+        this.synonyms = Utils.nonNullList(synonyms);
     }
 
     @Override

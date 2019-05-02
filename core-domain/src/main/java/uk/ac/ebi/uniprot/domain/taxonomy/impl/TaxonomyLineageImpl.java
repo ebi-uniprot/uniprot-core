@@ -22,7 +22,7 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
     private boolean hidden;
 
     private TaxonomyLineageImpl() {
-    	
+    	this(0,null,null,false);
     }
     public TaxonomyLineageImpl(long taxonId, String scientificName, TaxonomyRank rank, boolean hidden) {
         this.taxonId = taxonId;
@@ -73,7 +73,7 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
         TaxonomyLineageImpl that = (TaxonomyLineageImpl) o;
         return getTaxonId() == that.getTaxonId() &&
                 isHidden() == that.isHidden() &&
-                getScientificName().equals(that.getScientificName()) &&
+                Objects.equals(getScientificName(), that.getScientificName()) &&
                 getRank() == that.getRank();
     }
 

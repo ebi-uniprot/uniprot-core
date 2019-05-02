@@ -10,6 +10,10 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
     private long unreviewedProteinCount;
     private long proteomeCount;
 
+    private TaxonomyStatisticsImpl(){
+        this(0,0,0);
+    }
+
     public TaxonomyStatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount, long proteomeCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
