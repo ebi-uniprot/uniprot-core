@@ -84,7 +84,7 @@ public class FTLineBuilderHelper {
 
 	private static boolean isValidPosition(Position position) {
 		return (position.getValue() != null) && (position.getValue() > -1)
-				&& (position.getModifier() != PositionModifier.UNKOWN);
+				&& (position.getModifier() != PositionModifier.UNKNOWN);
 	}
 
 	private static void writeFeatureLocation(Feature feature, StringBuilder temp, boolean includeFFMarkup) {
@@ -128,7 +128,7 @@ public class FTLineBuilderHelper {
 		switch (mod) {
 		case EXACT:
 			break;
-		case UNKOWN:
+		case UNKNOWN:
 			value = QUESTION_MARK;
 			break;
 		case UNSURE:

@@ -34,7 +34,7 @@ public class FeatureTranslatorTest {
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.CHAIN, feature.getType());
-        assertEquals(PositionModifier.UNKOWN, feature
+        assertEquals(PositionModifier.UNKNOWN, feature
                 .getLocation().getStart().getModifier());
         assertEquals(121, feature.getLocation().getEnd().getValue().intValue());
         assertEquals(FeatureType.CHAIN, feature.getType());

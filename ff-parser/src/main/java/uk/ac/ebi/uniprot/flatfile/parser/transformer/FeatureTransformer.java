@@ -184,9 +184,9 @@ final public class FeatureTransformer {
         int pos = -1;
         String locationStart = location;
         if (locationStart == null) {
-            modifier = PositionModifier.UNKOWN;
+            modifier = PositionModifier.UNKNOWN;
         } else if (locationStart.trim().isEmpty()) {
-            modifier = PositionModifier.UNKOWN;
+            modifier = PositionModifier.UNKNOWN;
         } else {
             locationStart = locationStart.trim();
             char c = locationStart.charAt(0);
@@ -195,11 +195,11 @@ final public class FeatureTransformer {
                 if (locationStart.length() > 1) {
                     String val = locationStart.substring(1).trim();
                     if (val.isEmpty()) {
-                        modifier = PositionModifier.UNKOWN;
+                        modifier = PositionModifier.UNKNOWN;
                     } else {
                         int value = Integer.parseInt(val);
                         if (value == -1) {
-                            modifier = PositionModifier.UNKOWN;
+                            modifier = PositionModifier.UNKNOWN;
 
                         } else {
                             pos = value;
@@ -208,7 +208,7 @@ final public class FeatureTransformer {
                     }
 
                 } else {
-                    modifier = PositionModifier.UNKOWN;
+                    modifier = PositionModifier.UNKNOWN;
                 }
             } else if (c == outside) {
                 modifier = PositionModifier.OUTSIDE;

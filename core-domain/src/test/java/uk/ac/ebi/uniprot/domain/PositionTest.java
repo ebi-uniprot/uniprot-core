@@ -11,14 +11,14 @@ class PositionTest {
         Position position = new Position(12);
         verify(position, 12, PositionModifier.EXACT);
         position = new Position(null);
-        verify(position, null, PositionModifier.UNKOWN);
+        verify(position, null, PositionModifier.UNKNOWN);
 
     }
 
     @Test
     void testPositionMinus() {
         Position position = new Position(-12);
-        verify(position, -12, PositionModifier.UNKOWN);
+        verify(position, -12, PositionModifier.UNKNOWN);
 
     }
 

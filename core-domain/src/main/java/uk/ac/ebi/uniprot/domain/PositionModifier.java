@@ -5,7 +5,7 @@ import uk.ac.ebi.uniprot.common.EnumDisplay;
 public enum PositionModifier implements EnumDisplay<PositionModifier> {
     EXACT,
     OUTSIDE,
-    UNKOWN,
+    UNKNOWN,
     UNSURE;
 
     @Override
