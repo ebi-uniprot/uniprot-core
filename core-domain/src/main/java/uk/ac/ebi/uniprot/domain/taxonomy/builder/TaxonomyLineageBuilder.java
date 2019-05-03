@@ -42,10 +42,12 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, T
 
     @Override
     public TaxonomyLineageBuilder from(TaxonomyLineage instance) {
-        this.taxonId(instance.getTaxonId());
-        this.scientificName(instance.getScientificName());
-        this.rank(instance.getRank());
-        this.hidden(instance.isHidden());
+        if(instance != null) {
+            this.taxonId(instance.getTaxonId());
+            this.scientificName(instance.getScientificName());
+            this.rank(instance.getRank());
+            this.hidden(instance.isHidden());
+        }
         return this;
     }
 

@@ -129,27 +129,29 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
 
     @Override
     public TaxonomyEntryBuilder from(TaxonomyEntry instance) {
-        this.taxonId(instance.getTaxonId());
-        this.scientificName(instance.getScientificName());
-        this.commonName(instance.getCommonName());
-        this.synonyms.clear();
-        this.synonyms(instance.getSynonyms());
-        this.mnemonic(instance.getMnemonic());
-        this.parentId(instance.getParentId());
-        this.rank(instance.getRank());
-        this.hidden(instance.isHidden());
-        this.active(instance.isActive());
-        this.otherNames.clear();
-        this.otherNames(instance.getOtherNames());
-        this.lineage.clear();
-        this.lineage(instance.getLineage());
-        this.strains.clear();
-        this.strains(instance.getStrains());
-        this.hosts.clear();
-        this.hosts(instance.getHosts());
-        this.links.clear();
-        this.links(instance.getLinks());
-        this.statistics(instance.getStatistics());
+        if(instance != null) {
+            this.taxonId(instance.getTaxonId());
+            this.scientificName(instance.getScientificName());
+            this.commonName(instance.getCommonName());
+            this.synonyms.clear();
+            this.synonyms(instance.getSynonyms());
+            this.mnemonic(instance.getMnemonic());
+            this.parentId(instance.getParentId());
+            this.rank(instance.getRank());
+            this.hidden(instance.isHidden());
+            this.active(instance.isActive());
+            this.otherNames.clear();
+            this.otherNames(instance.getOtherNames());
+            this.lineage.clear();
+            this.lineage(instance.getLineage());
+            this.strains.clear();
+            this.strains(instance.getStrains());
+            this.hosts.clear();
+            this.hosts(instance.getHosts());
+            this.links.clear();
+            this.links(instance.getLinks());
+            this.statistics(instance.getStatistics());
+        }
         return this;
     }
 

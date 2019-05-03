@@ -36,8 +36,10 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, Tax
 
     @Override
     public TaxonomyStrainBuilder from(TaxonomyStrain instance) {
-        this.name(instance.getName());
-        this.synonyms(instance.getSynonyms());
+        if(instance != null) {
+            this.name(instance.getName());
+            this.synonyms(instance.getSynonyms());
+        }
         return this;
     }
 }

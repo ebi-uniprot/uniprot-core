@@ -30,9 +30,11 @@ public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatisticsBuil
 
     @Override
     public TaxonomyStatisticsBuilder from(TaxonomyStatistics instance) {
-        this.reviewedProteinCount(instance.getReviewedProteinCount());
-        this.unreviewedProteinCount(instance.getUnreviewedProteinCount());
-        this.proteomeCount(instance.getProteomeCount());
+        if(instance != null) {
+            this.reviewedProteinCount(instance.getReviewedProteinCount());
+            this.unreviewedProteinCount(instance.getUnreviewedProteinCount());
+            this.proteomeCount(instance.getProteomeCount());
+        }
         return this;
     }
 }
