@@ -15,7 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class DBXRefReaderTest {
     private static Set<String> ACCESSION_WITHOUT_REF = new HashSet<>(
             Arrays.asList(
-                    "DB-0133","DB-0225","DB-0018", "DB-0168","DB-0188","DB-0227","DB-0055","DB-0061","DB-0161",
+            		"DB-0133",
+                    "DB-0225","DB-0018", "DB-0168","DB-0188","DB-0227","DB-0055","DB-0061","DB-0161",
                     "DB-0067","DB-0219","DB-0068","DB-0072", "DB-0078","DB-0090","DB-0099","DB-0106","DB-0047"
                     ));
 
@@ -29,7 +30,7 @@ class DBXRefReaderTest {
                 count++;
             }
         }
-        assertTrue(count >= 171);
+        assertTrue(count >= 169);
     }
 
     private void verifyDBXRef(DBXRef dbxRef) {

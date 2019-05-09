@@ -79,7 +79,9 @@ class DBXRefValidatorTest {
         try(DBXRefReader reader = new DBXRefReader(DBXRefValidator.DBREF_FTP)) {
             DBXRef dbXRef;
             while ((dbXRef = reader.read()) != null) {
-                if(!IGNORED_DBS.contains(dbXRef.getAbbr())) {
+            	String linkType =dbXRef.getLinkType();
+            	if(linkType.equals("Explicit")) {
+            //    if(!IGNORED_DBS.contains(dbXRef.getAbbr())) {
                     assertTrue(typeMap.containsKey(dbXRef.getAbbr()), "DBXref " + dbXRef.getAbbr() + " is not there in drlineconfiguration");
                     List<Pair<String, String>> mismatches = DBXRefValidator.validate(typeMap.get(dbXRef.getAbbr()));
 

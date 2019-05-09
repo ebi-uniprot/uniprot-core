@@ -3,7 +3,6 @@ ENZYME
 GenAtlas
 GenBank
 GPCRDB
-HOVERGEN
 HUGE
 Micado
 MobiDB
@@ -14,5 +13,4 @@ RCSB-PDB
 Rouge
 SBKB
 SOURCE
-UniGene
 GlycoProtDB
