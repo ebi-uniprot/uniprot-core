@@ -20,17 +20,17 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DBXRefValidatorTest {
-    private static Set<String> IGNORED_DBS;
-
-    @BeforeAll
-    static void loadIgnoredDB() throws FileNotFoundException {
-        Scanner s = new Scanner(new File("src/main/resources/META-INF/ignored_db_list.txt"));
-        IGNORED_DBS = new HashSet<>();
-        while(s.hasNextLine()){
-            IGNORED_DBS.add(s.nextLine());
-        }
-        s.close();
-    }
+//    private static Set<String> IGNORED_DBS;
+//
+//    @BeforeAll
+//    static void loadIgnoredDB() throws FileNotFoundException {
+//        Scanner s = new Scanner(new File("src/main/resources/META-INF/ignored_db_list.txt"));
+//        IGNORED_DBS = new HashSet<>();
+//        while(s.hasNextLine()){
+//            IGNORED_DBS.add(s.nextLine());
+//        }
+//        s.close();
+//    }
 
     @Test
     void testSuccessfulValidation() {
