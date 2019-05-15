@@ -463,7 +463,7 @@ class EntryMapTest {
     @Test
     void testXRefs1() {
         List<String> fields = Arrays
-                .asList("accession", "dr:embl", "dr:ccds", "dr:refseq", "dr:proteinmodelportal");
+                .asList("accession", "dr:embl", "dr:ccds", "dr:refseq", "dr:smr");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -471,12 +471,11 @@ class EntryMapTest {
         String embl = "U53347;AF102826;AF105423;GQ919058;AK292690;AK299137;AK301661;AK316546;AC008622;CH471126;BC000062;AF334818;";
         String ccds = "CCDS12692.1 [Q15758-1];CCDS46125.1 [Q15758-2];CCDS46126.1 [Q15758-3];";
         String refseq = "NP_001138616.1 [Q15758-3];NP_001138617.1 [Q15758-2];NP_005619.1 [Q15758-1];";
-        String unigen = "Hs.631582;";
-        String proteinmodelportal = "Q15758;";
+        String smr = "Q15758;";
         verify(embl, 1, result);
         verify(ccds, 2, result);
         verify(refseq, 3, result);
-        verify(proteinmodelportal, 4, result);
+        verify(smr, 4, result);
     }
 
     @Test

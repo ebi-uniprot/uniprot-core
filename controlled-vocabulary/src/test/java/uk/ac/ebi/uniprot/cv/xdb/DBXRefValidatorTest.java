@@ -20,17 +20,17 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DBXRefValidatorTest {
-    private static Set<String> IGNORED_DBS;
-
-    @BeforeAll
-    static void loadIgnoredDB() throws FileNotFoundException {
-        Scanner s = new Scanner(new File("src/main/resources/META-INF/ignored_db_list.txt"));
-        IGNORED_DBS = new HashSet<>();
-        while(s.hasNextLine()){
-            IGNORED_DBS.add(s.nextLine());
-        }
-        s.close();
-    }
+//    private static Set<String> IGNORED_DBS;
+//
+//    @BeforeAll
+//    static void loadIgnoredDB() throws FileNotFoundException {
+//        Scanner s = new Scanner(new File("src/main/resources/META-INF/ignored_db_list.txt"));
+//        IGNORED_DBS = new HashSet<>();
+//        while(s.hasNextLine()){
+//            IGNORED_DBS.add(s.nextLine());
+//        }
+//        s.close();
+//    }
 
     @Test
     void testSuccessfulValidation() {
@@ -79,7 +79,9 @@ class DBXRefValidatorTest {
         try(DBXRefReader reader = new DBXRefReader(DBXRefValidator.DBREF_FTP)) {
             DBXRef dbXRef;
             while ((dbXRef = reader.read()) != null) {
-                if(!IGNORED_DBS.contains(dbXRef.getAbbr())) {
+            	String linkType =dbXRef.getLinkType();
+            	if(linkType.equals("Explicit")) {
+            //    if(!IGNORED_DBS.contains(dbXRef.getAbbr())) {
                     assertTrue(typeMap.containsKey(dbXRef.getAbbr()), "DBXref " + dbXRef.getAbbr() + " is not there in drlineconfiguration");
                     List<Pair<String, String>> mismatches = DBXRefValidator.validate(typeMap.get(dbXRef.getAbbr()));
 

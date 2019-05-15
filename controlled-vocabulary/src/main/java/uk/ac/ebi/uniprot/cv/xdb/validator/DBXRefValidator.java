@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.util.*;
 
 public class DBXRefValidator {
-    private static final Logger LOGGER = LoggerFactory.getLogger(DBXRefValidator.class);
+    private static final String EXPLICIT = "Explicit";
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(DBXRefValidator.class);
 
     private static Map<String, DBXRef> ABB_DBXREF = new HashMap<>();
     public final static String DBREF_FTP = "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/dbxref.txt";
@@ -20,6 +22,8 @@ public class DBXRefValidator {
         try (DBXRefReader reader = new DBXRefReader(DBREF_FTP)) {
             DBXRef xref;
             while ((xref = reader.read()) != null) {
+            	if(!xref.getLinkType().equals(EXPLICIT))
+            		continue;
                 ABB_DBXREF.put(xref.getAbbr().toLowerCase(), xref);
             }
         } catch (IOException e) {

@@ -85,12 +85,6 @@
 		"uriLink": "http://disprot.bio.unipd.it/%s"
 	},
 	{
-		"name": "ProteinModelPortal",
-		"displayName": "ProteinModelPortal",
-		"category": "3DS",
-		"uriLink": "https://www.proteinmodelportal.org/query/uniprot/%s"
-	},
-	{
 		"name": "SMR",
 		"displayName": "SMR",
 		"category": "3DS",
@@ -198,7 +192,8 @@
 		"name": "SwissLipids",
 		"displayName": "SwissLipids",
 		"category": "CHEMISTRY",
-		"uriLink": "http://www.swisslipids.org/#/entity/%s/"		
+		"uriLink": "https://www.swisslipids.org/#/entity/%s/"	
+			
 	},
 	
 	{
@@ -1466,17 +1461,5 @@
 		"displayName": "PathwayCommons",
 		"category": "UNK",
 		"uriLink": "http://www.pathwaycommons.org/search?type=Pathway&q=%s"
-	},
-	{
-		"name": "UniGene",
-		"displayName": "UniGene",
-		"category": "SEQ",
-		"uriLink": "https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?ORG=%d&CID=%s"
-	},
-	{
-		"name": "HOVERGEN",
-		"displayName": "HOVERGEN",
-		"category": "PLG",
-		"uriLink": "http://pbil.univ-lyon1.fr/cgi-bin/acnuc-ac2tree?query=%u&db=HOVERGEN"
 	}
 ]
