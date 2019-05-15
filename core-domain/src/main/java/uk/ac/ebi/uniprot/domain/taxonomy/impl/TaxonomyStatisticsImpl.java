@@ -8,16 +8,18 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
 
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
-    private long proteomeCount;
+    private long referenceProteomeCount;
+    private long completeProteomeCount;
 
     private TaxonomyStatisticsImpl(){
-        this(0,0,0);
+        this(0, 0, 0, 0);
     }
 
-    public TaxonomyStatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount, long proteomeCount) {
+    public TaxonomyStatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount, long referenceProteomeCount, long completeProteomeCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
-        this.proteomeCount = proteomeCount;
+        this.referenceProteomeCount = referenceProteomeCount;
+        this.completeProteomeCount = completeProteomeCount;
     }
 
     @Override
@@ -31,8 +33,13 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
     }
 
     @Override
-    public long getProteomeCount() {
-        return proteomeCount;
+    public long getReferenceProteomeCount() {
+        return referenceProteomeCount;
+    }
+
+    @Override
+    public long getCompleteProteomeCount() {
+        return completeProteomeCount;
     }
 
     @Override
@@ -46,8 +53,13 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
     }
 
     @Override
-    public boolean hasProteomeCount() {
-        return proteomeCount > 0L;
+    public boolean hasReferenceProteomeCount() {
+        return referenceProteomeCount > 0L;
+    }
+
+    @Override
+    public boolean hasCompleteProteomeCount() {
+        return completeProteomeCount > 0L;
     }
 
     @Override
@@ -57,12 +69,14 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
         TaxonomyStatisticsImpl that = (TaxonomyStatisticsImpl) o;
         return getReviewedProteinCount() == that.getReviewedProteinCount() &&
                 getUnreviewedProteinCount() == that.getUnreviewedProteinCount() &&
-                getProteomeCount() == that.getProteomeCount();
+                getReferenceProteomeCount() == that.getReferenceProteomeCount() &&
+                getCompleteProteomeCount() == that.getCompleteProteomeCount();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getReviewedProteinCount(), getUnreviewedProteinCount(), getProteomeCount());
+        return Objects.hash(getReviewedProteinCount(), getUnreviewedProteinCount(),
+                getReferenceProteomeCount(), getCompleteProteomeCount());
     }
 
     @Override
@@ -70,7 +84,8 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
         return "TaxonomyStatisticsImpl{" +
                 "reviewedProteinCount=" + reviewedProteinCount +
                 ", unreviewedProteinCount=" + unreviewedProteinCount +
-                ", proteomeCount=" + proteomeCount +
+                ", referenceProteomeCount=" + referenceProteomeCount +
+                ", completeProteomeCount=" + completeProteomeCount +
                 '}';
     }
 }

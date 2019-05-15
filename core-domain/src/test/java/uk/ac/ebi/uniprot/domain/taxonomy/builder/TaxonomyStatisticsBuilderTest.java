@@ -17,8 +17,11 @@ class TaxonomyStatisticsBuilderTest {
         assertFalse(taxonomyStatistics.hasUnreviewedProteinCount());
         assertEquals(taxonomyStatistics.getUnreviewedProteinCount(),0L);
 
-        assertFalse(taxonomyStatistics.hasProteomeCount());
-        assertEquals(taxonomyStatistics.getProteomeCount(),0L);
+        assertFalse(taxonomyStatistics.hasReferenceProteomeCount());
+        assertEquals(taxonomyStatistics.getReferenceProteomeCount(),0L);
+
+        assertFalse(taxonomyStatistics.hasCompleteProteomeCount());
+        assertEquals(taxonomyStatistics.getCompleteProteomeCount(),0L);
     }
 
     @Test
@@ -31,8 +34,11 @@ class TaxonomyStatisticsBuilderTest {
         assertTrue(taxonomyStatistics.hasUnreviewedProteinCount());
         assertEquals(taxonomyStatistics.getUnreviewedProteinCount(),20L);
 
-        assertTrue(taxonomyStatistics.hasProteomeCount());
-        assertEquals(taxonomyStatistics.getProteomeCount(),1L);
+        assertTrue(taxonomyStatistics.hasReferenceProteomeCount());
+        assertEquals(taxonomyStatistics.getReferenceProteomeCount(),1L);
+
+        assertTrue(taxonomyStatistics.hasCompleteProteomeCount());
+        assertEquals(taxonomyStatistics.getCompleteProteomeCount(),2L);
     }
 
     @Test
@@ -53,7 +59,8 @@ class TaxonomyStatisticsBuilderTest {
         return new TaxonomyStatisticsBuilder()
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)
-                .proteomeCount(1)
+                .referenceProteomeCount(1)
+                .completeProteomeCount(2)
                 .build();
     }
 }

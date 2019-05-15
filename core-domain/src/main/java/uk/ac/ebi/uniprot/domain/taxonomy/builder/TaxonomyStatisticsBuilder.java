@@ -8,7 +8,8 @@ public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatisticsBuil
 
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
-    private long proteomeCount;
+    private long referenceProteomeCount;
+    private long completeProteomeCount;
 
     public TaxonomyStatisticsBuilder reviewedProteinCount(long reviewedProteinCount){
         this.reviewedProteinCount = reviewedProteinCount;
@@ -18,14 +19,18 @@ public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatisticsBuil
         this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }
-    public TaxonomyStatisticsBuilder proteomeCount(long proteomeCount){
-        this.proteomeCount = proteomeCount;
+    public TaxonomyStatisticsBuilder referenceProteomeCount(long referenceProteomeCount){
+        this.referenceProteomeCount = referenceProteomeCount;
+        return this;
+    }
+    public TaxonomyStatisticsBuilder completeProteomeCount(long completeProteomeCount){
+        this.completeProteomeCount = completeProteomeCount;
         return this;
     }
 
     @Override
     public TaxonomyStatistics build() {
-        return new TaxonomyStatisticsImpl(reviewedProteinCount,unreviewedProteinCount,proteomeCount);
+        return new TaxonomyStatisticsImpl(reviewedProteinCount,unreviewedProteinCount,referenceProteomeCount,completeProteomeCount);
     }
 
     @Override
@@ -33,7 +38,8 @@ public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatisticsBuil
         if(instance != null) {
             this.reviewedProteinCount(instance.getReviewedProteinCount());
             this.unreviewedProteinCount(instance.getUnreviewedProteinCount());
-            this.proteomeCount(instance.getProteomeCount());
+            this.completeProteomeCount(instance.getCompleteProteomeCount());
+            this.referenceProteomeCount(instance.getReferenceProteomeCount());
         }
         return this;
     }
