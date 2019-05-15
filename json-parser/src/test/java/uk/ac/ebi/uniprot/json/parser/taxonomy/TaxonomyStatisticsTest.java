@@ -25,7 +25,8 @@ class TaxonomyStatisticsTest {
         return new TaxonomyStatisticsBuilder()
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)
-                .proteomeCount(1)
+                .referenceProteomeCount(2)
+                .completeProteomeCount(1)
                 .build();
     }
 }
