@@ -6,7 +6,6 @@ import java.util.List;
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 import uk.ac.ebi.uniprot.domain.proteome.impl.ComponentImpl;

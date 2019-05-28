@@ -1,6 +1,10 @@
 package uk.ac.ebi.uniprot.json.parser.proteome;
 
+import static org.junit.Assert.fail;
+
 import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
 import uk.ac.ebi.uniprot.domain.proteome.GeneNameType;
@@ -9,6 +13,7 @@ import uk.ac.ebi.uniprot.domain.proteome.builder.CanonicalProteinBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteinBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+import uk.ac.ebi.uniprot.json.parser.uniprot.UniprotJsonConfig;
 
 public class ProteinTest {
 	@Test 
@@ -21,6 +26,15 @@ public class ProteinTest {
 			.sequenceLength(307)
 			.build();	
 	   ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), protein);
+	   
+	   try {
+           ObjectMapper mapper = ProteomeJsonConfig.getInstance().getSimpleObjectMapper();
+           String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(protein);
+           System.out.println(json);
+       }catch(Exception e) {
+           fail(e.getMessage());
+       }
+	   
 	   
 	}
 	@Test
@@ -51,5 +65,13 @@ public class ProteinTest {
 				.addRelatedProtein(rProtein2)
 				.build();	
 		  ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), cProtein);
+		  try {
+	           ObjectMapper mapper = ProteomeJsonConfig.getInstance().getSimpleObjectMapper();
+	           String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(cProtein);
+	           System.out.println(json);
+	       }catch(Exception e) {
+	           fail(e.getMessage());
+	       }
+		   
 	}
 }

@@ -1,0 +1,74 @@
+package uk.ac.ebi.uniprot.json.parser.uniparc;
+
+import static org.junit.Assert.fail;
+
+import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import uk.ac.ebi.uniprot.domain.Location;
+import uk.ac.ebi.uniprot.domain.uniparc.InterproGroup;
+import uk.ac.ebi.uniprot.domain.uniparc.SequenceFeature;
+import uk.ac.ebi.uniprot.domain.uniparc.SignatureDbType;
+import uk.ac.ebi.uniprot.domain.uniparc.builder.InterProGroupBuilder;
+import uk.ac.ebi.uniprot.domain.uniparc.builder.SequenceFeatureBuilder;
+import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+
+/**
+ *
+ * @author jluo
+ * @date: 24 May 2019
+ *
+*/
+
+public class SequenceFeatureTest {
+	@Test
+	void testInterProGroup() {
+		InterproGroup domain =
+		new InterProGroupBuilder()
+		.id("IPR007123")
+		.name("Gelsolin-like domain")
+		.build();
+		
+		 ValidateJson.verifyJsonRoundTripParser(UniParcJsonConfig.getInstance().getFullObjectMapper(), domain);
+		 
+		 try {
+	           ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
+	           String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(domain);
+	           System.out.println(json);
+	       }catch(Exception e) {
+	           fail(e.getMessage());
+	       }
+	}
+	
+	
+	@Test
+	void testSequenceFeature() {
+		SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
+		builder.signatureDbType(SignatureDbType.PFAM)
+		.signatureDbId("PF00626")
+		.addLocation(new Location(81, 163))
+		.addLocation(new Location(202, 267))
+		.addLocation(new Location(330, 398))
+		.addLocation(new Location(586, 653))
+		.addLocation(new Location(692, 766))
+		.interproGroup(
+		new InterProGroupBuilder()
+		.id("IPR007123")
+		.name("Gelsolin-like domain")
+		.build());
+		SequenceFeature sf = builder.build();
+		ValidateJson.verifyJsonRoundTripParser(UniParcJsonConfig.getInstance().getFullObjectMapper(), sf);
+		
+		try {
+	           ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
+	           String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(sf);
+	           System.out.println(json);
+	       }catch(Exception e) {
+	           fail(e.getMessage());
+	       }
+		
+	}
+
+}
+

@@ -1,18 +1,50 @@
 package uk.ac.ebi.uniprot.json.parser.proteome;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Value;
-import uk.ac.ebi.uniprot.domain.citation.*;
-import uk.ac.ebi.uniprot.domain.citation.impl.*;
+import uk.ac.ebi.uniprot.domain.citation.Author;
+import uk.ac.ebi.uniprot.domain.citation.Book;
+import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
+import uk.ac.ebi.uniprot.domain.citation.Journal;
+import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
+import uk.ac.ebi.uniprot.domain.citation.Locator;
+import uk.ac.ebi.uniprot.domain.citation.Patent;
+import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
+import uk.ac.ebi.uniprot.domain.citation.Submission;
+import uk.ac.ebi.uniprot.domain.citation.Thesis;
+import uk.ac.ebi.uniprot.domain.citation.Unpublished;
+import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.BookImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.JournalArticleImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.JournalImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.PatentImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.SubmissionImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.ThesisImpl;
+import uk.ac.ebi.uniprot.domain.citation.impl.UnpublishedImpl;
 import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.domain.impl.DefaultDatabaseType;
 import uk.ac.ebi.uniprot.domain.impl.ValueImpl;
-import uk.ac.ebi.uniprot.domain.proteome.*;
-import uk.ac.ebi.uniprot.domain.proteome.impl.*;
+import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
+import uk.ac.ebi.uniprot.domain.proteome.Component;
+import uk.ac.ebi.uniprot.domain.proteome.Protein;
+import uk.ac.ebi.uniprot.domain.proteome.ProteomeEntry;
+import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
+import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
+import uk.ac.ebi.uniprot.domain.proteome.impl.CanonicalProteinImpl;
+import uk.ac.ebi.uniprot.domain.proteome.impl.ComponentImpl;
+import uk.ac.ebi.uniprot.domain.proteome.impl.ProteinImpl;
+import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeEntryImpl;
+import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeIdImpl;
+import uk.ac.ebi.uniprot.domain.proteome.impl.RedundantProteomeImpl;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyLineageImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
@@ -21,10 +53,12 @@ import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl.TaxonomyImpl;
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
 import uk.ac.ebi.uniprot.json.parser.deserializer.LocalDateDeserializer;
-import uk.ac.ebi.uniprot.json.parser.serializer.*;
+import uk.ac.ebi.uniprot.json.parser.serializer.AuthorSerializer;
+import uk.ac.ebi.uniprot.json.parser.serializer.JournalSerializer;
+import uk.ac.ebi.uniprot.json.parser.serializer.LocalDateSerializer;
+import uk.ac.ebi.uniprot.json.parser.serializer.LocatorSerializer;
+import uk.ac.ebi.uniprot.json.parser.serializer.PublicationDateSerializer;
 import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.UniProtAccessionSerializer;
-
-import java.time.LocalDate;
 
 public class ProteomeJsonConfig extends JsonConfig {
     private static ProteomeJsonConfig INSTANCE;
@@ -113,6 +147,10 @@ public class ProteomeJsonConfig extends JsonConfig {
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
+        
+        simpleMod.addSerializer(ProteomeIdImpl.class, new ProteomeIdSerializer());
+        
+        prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }
 }
