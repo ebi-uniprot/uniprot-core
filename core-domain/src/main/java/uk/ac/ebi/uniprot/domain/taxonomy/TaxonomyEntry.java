@@ -30,6 +30,8 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
 
     TaxonomyStatistics getStatistics();
 
+    TaxonomyInactiveReason getInactiveReason();
+
     boolean hasParentId();
 
     boolean hasRank();
@@ -45,5 +47,7 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
     boolean hasLinks();
 
     boolean hasStatistics();
+
+    boolean hasInactiveReason();
 
 }

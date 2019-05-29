@@ -37,6 +37,8 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
 
     private TaxonomyStatistics statistics;
 
+    private TaxonomyInactiveReason inactiveReason;
+
     public TaxonomyEntryBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
         return this;
@@ -121,10 +123,15 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
         return this;
     }
 
+    public TaxonomyEntryBuilder inactiveReason(TaxonomyInactiveReason inactiveReason){
+        this.inactiveReason = inactiveReason;
+        return this;
+    }
+
     @Override
     public TaxonomyEntry build() {
         return new TaxonomyEntryImpl(taxonId,scientificName,commonName,synonyms,mnemonic,parentId,
-                rank,hidden,active,otherNames,lineage,strains,hosts,links,statistics);
+                rank,hidden,active,otherNames,lineage,strains,hosts,links,statistics,inactiveReason);
     }
 
     @Override
@@ -151,6 +158,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
             this.links.clear();
             this.links(instance.getLinks());
             this.statistics(instance.getStatistics());
+            this.inactiveReason = instance.getInactiveReason();
         }
         return this;
     }

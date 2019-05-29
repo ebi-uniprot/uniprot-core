@@ -35,14 +35,17 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private TaxonomyStatistics statistics;
 
+    private TaxonomyInactiveReason inactiveReason;
+
     private TaxonomyEntryImpl(){
-        this(0,null,null,null,null,0,null,false,false,null,null,null,null,null,null);
+        this(0,null,null,null,null,0,null,false,false,null,null,null,null,null,null,null);
     }
 
     public TaxonomyEntryImpl(long taxonId, String scientificName, String commonName, List<String> synonyms,
                              String mnemonic, long parentId, TaxonomyRank rank, boolean hidden, boolean active,
                              List<String> otherNames, List<TaxonomyLineage> lineage, List<TaxonomyStrain> strains,
-                             List<Taxonomy> hosts, List<String> links,TaxonomyStatistics statistics) {
+                             List<Taxonomy> hosts, List<String> links, TaxonomyStatistics statistics,
+                             TaxonomyInactiveReason inactiveReason) {
         super(taxonId, scientificName, commonName, synonyms, mnemonic);
         this.parentId = parentId;
         this.rank = rank;
@@ -54,6 +57,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         this.hosts = Utils.nonNullList(hosts);
         this.links = Utils.nonNullList(links);
         this.statistics = statistics;
+        this.inactiveReason = inactiveReason;
     }
 
     @Override
@@ -107,6 +111,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
+    public TaxonomyInactiveReason getInactiveReason() {
+        return inactiveReason;
+    }
+
+    @Override
     public boolean hasParentId() {
         return parentId > 0;
     }
@@ -147,6 +156,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
+    public boolean hasInactiveReason() {
+        return this.inactiveReason != null;
+    }
+
+    @Override
     public String toString() {
         return "TaxonomyEntryImpl{" +
                 "taxonId=" + getTaxonId() +
@@ -163,6 +177,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 ", hosts=" + hosts +
                 ", links=" + links +
                 ", statistics=" + statistics +
+                ", inactiveReason=" + inactiveReason +
                 '}';
     }
 
@@ -181,12 +196,13 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 Objects.equals(getStrains(), that.getStrains()) &&
                 Objects.equals(getHosts(), that.getHosts()) &&
                 Objects.equals(getLinks(), that.getLinks()) &&
-                Objects.equals(getStatistics(), that.getStatistics());
+                Objects.equals(getStatistics(), that.getStatistics()) &&
+                getInactiveReason() == that.getInactiveReason();
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), getParentId(), getRank(), isHidden(), isActive(), getOtherNames(),
-                getLineage(), getStrains(), getHosts(), getLinks(),getStatistics());
+                getLineage(), getStrains(), getHosts(), getLinks(), getStatistics(), getInactiveReason());
     }
 }
