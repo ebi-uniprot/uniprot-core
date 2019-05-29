@@ -1,6 +1,9 @@
 package uk.ac.ebi.uniprot.json.parser.proteome;
 
 import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.citation.*;
@@ -16,6 +19,8 @@ import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyLineageBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
+
+import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -184,6 +189,15 @@ public class ProteomeTest {
 		
 		
 		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
+		 
+		  try {
+	           ObjectMapper mapper = ProteomeJsonConfig.getInstance().getSimpleObjectMapper();
+	           String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(proteome);
+	           System.out.println(json);
+	       }catch(Exception e) {
+	           fail(e.getMessage());
+	       }
+		   
 		
 	}
 	
