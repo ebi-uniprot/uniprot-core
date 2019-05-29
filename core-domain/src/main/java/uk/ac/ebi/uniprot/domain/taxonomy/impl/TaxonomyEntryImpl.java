@@ -197,7 +197,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
                 Objects.equals(getHosts(), that.getHosts()) &&
                 Objects.equals(getLinks(), that.getLinks()) &&
                 Objects.equals(getStatistics(), that.getStatistics()) &&
-                getInactiveReason() == that.getInactiveReason();
+                Objects.equals(getInactiveReason(), that.getInactiveReason());
     }
 
     @Override

@@ -42,6 +42,7 @@ class TaxonomyEntryTest {
         builder.addOtherNames("otherName");
         builder.addLineage(TaxonomyLineageTest.getCompleteTaxonomyLineage());
         builder.addStrain(TaxonomyStrainTest.getCompleteTaxonomyStrain());
+        builder.inactiveReason(TaxonomyInactiveReasonTest.getCompleteTaxonomyInactiveReason());
         builder.addHost(getCompleteTaxonomy());
         builder.addLink("link");
 

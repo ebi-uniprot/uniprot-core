@@ -2,14 +2,8 @@ package uk.ac.ebi.uniprot.json.parser.taxonomy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyEntry;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStatistics;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStrain;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyEntryImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyLineageImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyStatisticsImpl;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyStrainImpl;
+import uk.ac.ebi.uniprot.domain.taxonomy.*;
+import uk.ac.ebi.uniprot.domain.taxonomy.impl.*;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl.TaxonomyImpl;
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
@@ -52,6 +46,7 @@ public class TaxonomyJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(TaxonomyLineage.class, TaxonomyLineageImpl.class);
         mod.addAbstractTypeMapping(TaxonomyStatistics.class, TaxonomyStatisticsImpl.class);
         mod.addAbstractTypeMapping(TaxonomyStrain.class, TaxonomyStrainImpl.class);
+        mod.addAbstractTypeMapping(TaxonomyInactiveReason.class, TaxonomyInactiveReasonImpl.class);
         mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
 
         objMapper.registerModule(mod);
