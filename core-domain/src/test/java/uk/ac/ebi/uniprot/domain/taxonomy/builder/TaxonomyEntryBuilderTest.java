@@ -75,7 +75,7 @@ class TaxonomyEntryBuilderTest {
         assertEquals(taxonomyEntry.getTaxonId(), 9606L);
 
         assertTrue(taxonomyEntry.hasParentId());
-        assertEquals(taxonomyEntry.getParentId(),9605L);
+        assertEquals(taxonomyEntry.getParentId(),Long.valueOf(9605L));
 
         assertTrue(taxonomyEntry.hasRank());
         assertEquals(taxonomyEntry.getRank(),TaxonomyRank.KINGDOM);

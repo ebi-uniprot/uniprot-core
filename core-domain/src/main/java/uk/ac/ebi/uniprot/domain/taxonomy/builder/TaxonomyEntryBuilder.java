@@ -17,13 +17,13 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
 
     private String mnemonic;
 
-    private long parentId;
+    private Long parentId;
 
     private TaxonomyRank rank;
 
-    private boolean hidden;
+    private Boolean hidden;
 
-    private boolean active;
+    private Boolean active;
 
     private List<String> otherNames = new ArrayList<>();
 
@@ -58,8 +58,23 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
         return this;
     }
 
+    public TaxonomyEntryBuilder parentId(Long parentId) {
+        this.parentId = parentId;
+        return this;
+    }
+
+    public TaxonomyEntryBuilder hidden(Boolean hidden) {
+        this.hidden = hidden;
+        return this;
+    }
+
     public TaxonomyEntryBuilder hidden(boolean hidden) {
         this.hidden = hidden;
+        return this;
+    }
+
+    public TaxonomyEntryBuilder active(Boolean active) {
+        this.active = active;
         return this;
     }
 

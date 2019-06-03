@@ -15,13 +15,13 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private static final long serialVersionUID = -319775179301440773L;
 
-    private long parentId;
+    private Long parentId;
 
     private TaxonomyRank rank;
 
-    private boolean hidden;
+    private Boolean hidden;
 
-    private boolean active;
+    private Boolean active;
 
     private List<String> otherNames;
 
@@ -38,11 +38,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     private TaxonomyInactiveReason inactiveReason;
 
     private TaxonomyEntryImpl(){
-        this(0,null,null,null,null,0,null,false,false,null,null,null,null,null,null,null);
+        this(0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
     }
 
     public TaxonomyEntryImpl(long taxonId, String scientificName, String commonName, List<String> synonyms,
-                             String mnemonic, long parentId, TaxonomyRank rank, boolean hidden, boolean active,
+                             String mnemonic, Long parentId, TaxonomyRank rank, Boolean hidden, Boolean active,
                              List<String> otherNames, List<TaxonomyLineage> lineage, List<TaxonomyStrain> strains,
                              List<Taxonomy> hosts, List<String> links, TaxonomyStatistics statistics,
                              TaxonomyInactiveReason inactiveReason) {
@@ -61,7 +61,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
-    public long getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
@@ -71,13 +71,13 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
     }
 
     @Override
-    public boolean isHidden() {
-        return hidden;
+    public Boolean isHidden() {
+        return hidden != null && hidden;
     }
 
     @Override
-    public boolean isActive() {
-        return active;
+    public Boolean isActive() {
+        return active != null && active;
     }
 
     @Override
@@ -117,7 +117,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     @Override
     public boolean hasParentId() {
-        return parentId > 0;
+        return parentId != null && parentId > 0;
     }
 
     @Override
@@ -187,7 +187,7 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         TaxonomyEntryImpl that = (TaxonomyEntryImpl) o;
-        return getParentId() == that.getParentId() &&
+        return Objects.equals(getParentId(),that.getParentId()) &&
                 isHidden() == that.isHidden() &&
                 isActive() == that.isActive() &&
                 getRank() == that.getRank() &&

@@ -10,13 +10,13 @@ import java.util.List;
  */
 public interface TaxonomyEntry extends Taxonomy, Serializable {
 
-    long getParentId();
+    Long getParentId();
 
     TaxonomyRank getRank();
 
-    boolean isHidden();
+    Boolean isHidden();
 
-    boolean isActive();
+    Boolean isActive();
 
     List<String> getOtherNames();
 
