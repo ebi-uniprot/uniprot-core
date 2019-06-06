@@ -12,27 +12,27 @@ import static org.hamcrest.Matchers.is;
  *
  * @author Edd
  */
-class ChebiServiceFactoryTest {
+class ChebiRepoFactoryTest {
     @Test
     void canCreateFactory() {
-        ChebiService service = ChebiServiceFactory.get("chebi/chebi.obo");
-        assertThat(service, is(notNullValue()));
+        ChebiRepo repo = ChebiRepoFactory.get("chebi/chebi.obo");
+        assertThat(repo, is(notNullValue()));
     }
 
     @Test
     void loadedChebiEntitiesAreCorrect() {
-        ChebiService service = ChebiServiceFactory.get("chebi/chebi.obo");
-        assertThat(service, is(notNullValue()));
+        ChebiRepo repo = ChebiRepoFactory.get("chebi/chebi.obo");
+        assertThat(repo, is(notNullValue()));
 
-        Chebi chebi = service.getChebi("CHEBI:30151");
+        Chebi chebi = repo.getById("30151");
         assertThat(chebi.name(), is("aluminide(1-)"));
         assertThat(chebi.inchiKey(), is("SBLSYFIUPXRQRY-UHFFFAOYSA-N"));
 
-        chebi = service.getChebi("CHEBI:32129");
+        chebi = repo.getById("32129");
         assertThat(chebi.name(), is("diamminesilver(1+) fluoride"));
         assertThat(chebi.inchiKey(), is("FJKGRAZQBBWYLG-UHFFFAOYSA-M"));
 
-        chebi = service.getChebi("CHEBI:36347");
+        chebi = repo.getById("36347");
         assertThat(chebi.name(), is("nuclear particle"));
         assertThat(chebi.inchiKey(), is(nullValue()));
     }

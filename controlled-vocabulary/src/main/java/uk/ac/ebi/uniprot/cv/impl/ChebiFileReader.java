@@ -11,8 +11,10 @@ import java.util.regex.Pattern;
 import static uk.ac.ebi.uniprot.common.Utils.nonNull;
 
 public class ChebiFileReader extends AbstractFileReader<Chebi> {
-    private static final Pattern VALUE_PATTERN = Pattern.compile("^\\w+:\\s+(.*)$");
-    private static final Pattern INCHI_PATTERN = Pattern.compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
+    private static final String ID_PREFIX = "id: CHEBI:";
+    private static final String NAME_PREFIX = "name: ";
+    private static final Pattern INCHI_PATTERN = Pattern
+            .compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
 
     @Override
     List<Chebi> parseLines(List<String> lines) {
@@ -28,10 +30,10 @@ public class ChebiFileReader extends AbstractFileReader<Chebi> {
             }
             if (nonNull(chebiBuilder)) {
                 Matcher inchiMatcher = INCHI_PATTERN.matcher(line);
-                if (line.startsWith("id:")) {
-                    chebiBuilder.id(extractValue(line));
-                } else if (line.startsWith("name:")) {
-                    chebiBuilder.name(extractValue(line));
+                if (line.startsWith(ID_PREFIX)) {
+                    chebiBuilder.id(line.substring(ID_PREFIX.length()));
+                } else if (line.startsWith(NAME_PREFIX)) {
+                    chebiBuilder.name(line.substring(NAME_PREFIX.length()));
                 } else if (inchiMatcher.matches()) {
                     chebiBuilder.inchiKey(inchiMatcher.group(1));
                 }
@@ -42,14 +44,5 @@ public class ChebiFileReader extends AbstractFileReader<Chebi> {
         chebiList.add(chebiBuilder.build());
 
         return chebiList;
-    }
-
-    private String extractValue(String line) {
-        Matcher valueMatcher = VALUE_PATTERN.matcher(line);
-        if (valueMatcher.matches()) {
-            return valueMatcher.group(1);
-        } else {
-            return null;
-        }
     }
 }

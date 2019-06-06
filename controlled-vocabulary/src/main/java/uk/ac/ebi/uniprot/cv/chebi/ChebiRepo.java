@@ -5,6 +5,6 @@ package uk.ac.ebi.uniprot.cv.chebi;
  *
  * @author Edd
  */
-public interface ChebiService {
-    Chebi getChebi(String id);
+public interface ChebiRepo {
+    Chebi getById(String id);
 }

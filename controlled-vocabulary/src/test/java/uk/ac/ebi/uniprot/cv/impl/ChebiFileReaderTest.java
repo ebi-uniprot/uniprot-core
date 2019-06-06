@@ -27,8 +27,8 @@ class ChebiFileReaderTest {
 
     @Test
     void extractsId() {
-        String id = "CHEBI:30151";
-        List<Chebi> chebis = reader.parseLines(asList("[Term]", "id: " + id));
+        String id = "30151";
+        List<Chebi> chebis = reader.parseLines(asList("[Term]", "id: CHEBI:" + id));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
         assertThat(chebi.id(), is(id));
@@ -61,13 +61,13 @@ class ChebiFileReaderTest {
 
     @Test
     void extractsAllFields() {
-        String id = "CHEBI:30151";
+        String id = "30151";
         String name = "aluminide(1-)";
         String inchikey = "SBLSYFIUPXRQRY-UHFFFAOYSA-N";
         List<Chebi> chebis = reader
                 .parseLines(
                         asList("[Term]",
-                               "id: " + id,
+                               "id: CHEBI:" + id,
                                "name: " + name,
                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
@@ -79,7 +79,7 @@ class ChebiFileReaderTest {
 
     @Test
     void extractsAllFieldsForMultipleEntries() {
-        String id1 = "CHEBI:30151";
+        String id1 = "30151";
         String name1 = "aluminide(2-)";
         String inchikey1 = "SBLSYFIUPXRQRY-UHFFFAOYSA-N";
         String id2 = "CHEBI:30152";
@@ -89,12 +89,12 @@ class ChebiFileReaderTest {
         List<Chebi> chebis = reader
                 .parseLines(
                         asList("[Term]",
-                               "id: " + id1,
+                               "id: CHEBI:" + id1,
                                "name: " + name1,
                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey1 + "\" xsd:string",
                                "",
                                "[Term]",
-                               "id: " + id2,
+                               "id: CHEBI:" + id2,
                                "name: " + name2,
                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey2 + "\" xsd:string"));
         assertThat(chebis, hasSize(2));
