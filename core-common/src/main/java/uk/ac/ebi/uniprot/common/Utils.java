@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.common;
 
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Utils {
     public static String nullToEmpty(String value) {
@@ -51,5 +48,9 @@ public class Utils {
 
     public static boolean notEmpty(List<?> value) {
         return value != null && !value.isEmpty();
+    }
+
+    public static boolean nonNull(Object o) {
+        return Objects.nonNull(o);
     }
 }
