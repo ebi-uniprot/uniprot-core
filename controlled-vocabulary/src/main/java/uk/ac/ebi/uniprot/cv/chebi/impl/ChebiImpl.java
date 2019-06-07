@@ -12,7 +12,7 @@ public class ChebiImpl implements Chebi {
     private final String inchiKey;
     private final String name;
 
-    private ChebiImpl(String id, String name, String inchiKey) {
+    public ChebiImpl(String id, String name, String inchiKey) {
         this.id = id;
         this.name = name;
         this.inchiKey= inchiKey;
@@ -40,30 +40,5 @@ public class ChebiImpl implements Chebi {
                 ", inchiKey='" + inchiKey + '\'' +
                 ", name='" + name + '\'' +
                 '}';
-    }
-
-    public static class Builder {
-        private String id;
-        private String name;
-        private String inchiKey;
-
-        public Builder id(String id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        public Builder inchiKey(String inchiKey) {
-            this.inchiKey = inchiKey;
-            return this;
-        }
-
-        public Chebi build() {
-            return new ChebiImpl(id, name, inchiKey);
-        }
     }
 }

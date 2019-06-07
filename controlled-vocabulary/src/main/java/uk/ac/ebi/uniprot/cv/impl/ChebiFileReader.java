@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
 import uk.ac.ebi.uniprot.cv.chebi.Chebi;
-import uk.ac.ebi.uniprot.cv.chebi.impl.ChebiImpl;
+import uk.ac.ebi.uniprot.cv.chebi.ChebiBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +19,14 @@ public class ChebiFileReader extends AbstractFileReader<Chebi> {
     @Override
     List<Chebi> parseLines(List<String> lines) {
         List<Chebi> chebiList = new ArrayList<>();
-        ChebiImpl.Builder chebiBuilder = null;
+        ChebiBuilder chebiBuilder = null;
         for (String line : lines) {
             if (line.startsWith("[Term]")) {
                 if (nonNull(chebiBuilder)) {
                     chebiList.add(chebiBuilder.build());
                 }
                 // start of new term
-                chebiBuilder = new ChebiImpl.Builder();
+                chebiBuilder = new ChebiBuilder();
             }
             if (nonNull(chebiBuilder)) {
                 Matcher inchiMatcher = INCHI_PATTERN.matcher(line);
