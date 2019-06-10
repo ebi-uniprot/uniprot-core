@@ -868,7 +868,7 @@
 		"name": "MIM",
 		"displayName": "MIM",
 		"category": "ORG",
-		"uriLink": "http://www.omim.org/entry/%s",
+		"uriLink": "https://www.omim.org/entry/%s",
 		"attributes": [
 			{
 				"name": "type",
