@@ -10,13 +10,13 @@ import java.util.List;
  */
 public interface TaxonomyEntry extends Taxonomy, Serializable {
 
-    long getParentId();
+    Long getParentId();
 
     TaxonomyRank getRank();
 
-    boolean isHidden();
+    Boolean isHidden();
 
-    boolean isActive();
+    Boolean isActive();
 
     List<String> getOtherNames();
 
@@ -29,6 +29,8 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
     List<String> getLinks();
 
     TaxonomyStatistics getStatistics();
+
+    TaxonomyInactiveReason getInactiveReason();
 
     boolean hasParentId();
 
@@ -45,5 +47,7 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
     boolean hasLinks();
 
     boolean hasStatistics();
+
+    boolean hasInactiveReason();
 
 }

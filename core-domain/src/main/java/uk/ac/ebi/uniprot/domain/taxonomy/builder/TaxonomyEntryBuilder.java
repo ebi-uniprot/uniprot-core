@@ -17,13 +17,13 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
 
     private String mnemonic;
 
-    private long parentId;
+    private Long parentId;
 
     private TaxonomyRank rank;
 
-    private boolean hidden;
+    private Boolean hidden;
 
-    private boolean active;
+    private Boolean active;
 
     private List<String> otherNames = new ArrayList<>();
 
@@ -36,6 +36,8 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     private List<String> links = new ArrayList<>();
 
     private TaxonomyStatistics statistics;
+
+    private TaxonomyInactiveReason inactiveReason;
 
     public TaxonomyEntryBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
@@ -56,8 +58,23 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
         return this;
     }
 
+    public TaxonomyEntryBuilder parentId(Long parentId) {
+        this.parentId = parentId;
+        return this;
+    }
+
+    public TaxonomyEntryBuilder hidden(Boolean hidden) {
+        this.hidden = hidden;
+        return this;
+    }
+
     public TaxonomyEntryBuilder hidden(boolean hidden) {
         this.hidden = hidden;
+        return this;
+    }
+
+    public TaxonomyEntryBuilder active(Boolean active) {
+        this.active = active;
         return this;
     }
 
@@ -121,10 +138,15 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
         return this;
     }
 
+    public TaxonomyEntryBuilder inactiveReason(TaxonomyInactiveReason inactiveReason){
+        this.inactiveReason = inactiveReason;
+        return this;
+    }
+
     @Override
     public TaxonomyEntry build() {
         return new TaxonomyEntryImpl(taxonId,scientificName,commonName,synonyms,mnemonic,parentId,
-                rank,hidden,active,otherNames,lineage,strains,hosts,links,statistics);
+                rank,hidden,active,otherNames,lineage,strains,hosts,links,statistics,inactiveReason);
     }
 
     @Override
@@ -151,6 +173,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
             this.links.clear();
             this.links(instance.getLinks());
             this.statistics(instance.getStatistics());
+            this.inactiveReason = instance.getInactiveReason();
         }
         return this;
     }

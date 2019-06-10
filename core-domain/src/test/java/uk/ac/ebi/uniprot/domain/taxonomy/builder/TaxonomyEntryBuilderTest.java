@@ -28,6 +28,7 @@ class TaxonomyEntryBuilderTest {
         assertFalse(taxonomyEntry.hasCommonName());
         assertFalse(taxonomyEntry.hasMnemonic());
         assertFalse(taxonomyEntry.hasStatistics());
+        assertFalse(taxonomyEntry.hasInactiveReason());
 
         assertTrue(taxonomyEntry.getSynonyms().isEmpty());
         assertFalse(taxonomyEntry.hasSynonyms());
@@ -74,7 +75,7 @@ class TaxonomyEntryBuilderTest {
         assertEquals(taxonomyEntry.getTaxonId(), 9606L);
 
         assertTrue(taxonomyEntry.hasParentId());
-        assertEquals(taxonomyEntry.getParentId(),9605L);
+        assertEquals(taxonomyEntry.getParentId(),Long.valueOf(9605L));
 
         assertTrue(taxonomyEntry.hasRank());
         assertEquals(taxonomyEntry.getRank(),TaxonomyRank.KINGDOM);
@@ -105,6 +106,9 @@ class TaxonomyEntryBuilderTest {
 
         assertTrue(taxonomyEntry.hasOtherNames());
         MatcherAssert.assertThat(taxonomyEntry.getOtherNames(),Matchers.contains("otherName"));
+
+        assertTrue(taxonomyEntry.hasInactiveReason());
+        assertEquals(taxonomyEntry.getInactiveReason(), TaxonomyInactiveReasonBuilderTest.getCompleteTaxonomyInactiveReason());
 
         assertTrue(taxonomyEntry.hasStrains());
         MatcherAssert.assertThat(taxonomyEntry.getStrains(),Matchers.contains(TaxonomyStrainBuilderTest.getCompleteTaxonomyStrain()));
@@ -147,6 +151,7 @@ class TaxonomyEntryBuilderTest {
         builder.rank(TaxonomyRank.KINGDOM);
         builder.hidden(true);
         builder.active(true);
+        builder.inactiveReason(TaxonomyInactiveReasonBuilderTest.getCompleteTaxonomyInactiveReason());
         builder.statistics(TaxonomyStatisticsBuilderTest.getCompleteTaxonomyStatistics());
         return builder;
     }
