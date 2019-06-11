@@ -1,0 +1,68 @@
+format-version: 1.2
+data-version: 176
+date: 31:05:2019 00:45
+saved-by: chebi
+subsetdef: 1_STAR "Preliminary entries"
+subsetdef: 2_STAR "Annotated by 3rd party"
+subsetdef: 3_STAR "Manually annotated by ChEBI Team"
+synonymtypedef: IUPAC_NAME "IUPAC NAME"
+synonymtypedef: BRAND_NAME "BRAND NAME"
+synonymtypedef: INN "INN"
+default-namespace: chebi_ontology
+remark: ChEBI subsumes and replaces the Chemical Ontology first
+remark: developed by Michael Ashburner & Pankaj Jaiswal.
+remark: Author: ChEBI curation team
+remark: ChEBI Release version 176
+remark: For any queries contact chebi-help@ebi.ac.uk
+ontology: chebi
+
+[Term]
+id: CHEBI:30151
+name: aluminide(1-)
+subset: 3_STAR
+synonym: "Aluminum anion" RELATED [NIST_Chemistry_WebBook]
+synonym: "Al(-)" RELATED [IUPAC]
+synonym: "aluminide(1-)" EXACT IUPAC_NAME [IUPAC]
+synonym: "aluminide(-I)" EXACT IUPAC_NAME [IUPAC]
+property_value: http://purl.obolibrary.org/obo/chebi/formula "Al" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/charge "-1" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/monoisotopicmass "26.98209" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/mass "26.98154" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/inchi "InChI=1S/Al/q-1" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/smiles "[Al-]" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/inchikey "SBLSYFIUPXRQRY-UHFFFAOYSA-N" xsd:string
+xref: CAS:22325-47-9 "NIST Chemistry WebBook"
+is_a: CHEBI:33429
+is_a: CHEBI:33627
+
+[Term]
+id: CHEBI:32129
+name: diamminesilver(1+) fluoride
+subset: 3_STAR
+synonym: "diamminefluorosilver" RELATED [ChemIDplus]
+synonym: "diammine silver fluoride" RELATED [ChemIDplus]
+synonym: "Silver diammine fluoride" RELATED [KEGG_COMPOUND]
+synonym: "diamminesilver(I) fluoride" EXACT IUPAC_NAME [IUPAC]
+synonym: "diamminesilver(1+) fluoride" EXACT IUPAC_NAME [IUPAC]
+synonym: "[Ag(NH3)2]F" RELATED [IUPAC]
+property_value: http://purl.obolibrary.org/obo/chebi/formula "AgFH6N2" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/mass "160.92772" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/formula "Ag.F.2H3N" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/monoisotopicmass "159.95659" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/charge "0" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/smiles "[F-].[H][N]([H])([H])[Ag+][N]([H])([H])[H]" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/inchi "InChI=1S/Ag.FH.2H3N/h;1H;2*1H3/q+1;;;/p-1" xsd:string
+property_value: http://purl.obolibrary.org/obo/chebi/inchikey "FJKGRAZQBBWYLG-UHFFFAOYSA-M" xsd:string
+xref: CAS:34445-07-3 "ChemIDplus"
+xref: CAS:34445-07-3 "KEGG COMPOUND"
+xref: KEGG:D01502
+is_a: CHEBI:24060
+relationship: has_part CHEBI:33049
+
+[Term]
+id: CHEBI:36347
+name: nuclear particle
+subset: 3_STAR
+def: "A nucleus or any of its constituents in any of their energy states." []
+synonym: "nuclear particle" EXACT IUPAC_NAME [IUPAC]
+is_a: CHEBI:36342
