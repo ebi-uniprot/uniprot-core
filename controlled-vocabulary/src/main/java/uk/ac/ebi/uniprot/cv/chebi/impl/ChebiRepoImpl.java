@@ -14,7 +14,7 @@ public class ChebiRepoImpl implements ChebiRepo {
 
     public ChebiRepoImpl(String dir) {
         List<Chebi> chebiList = ChebiCache.INSTANCE.get(dir);
-        chebiMap = chebiList.stream().collect(Collectors.toMap(Chebi::id, Function.identity()));
+        chebiMap = chebiList.stream().collect(Collectors.toMap(Chebi::getId, Function.identity()));
     }
 
     @Override

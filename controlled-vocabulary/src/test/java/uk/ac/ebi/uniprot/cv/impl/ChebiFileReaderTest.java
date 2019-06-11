@@ -31,9 +31,9 @@ class ChebiFileReaderTest {
         List<Chebi> chebis = reader.parseLines(asList("[Term]", "id: CHEBI:" + id));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
-        assertThat(chebi.id(), is(id));
-        assertThat(chebi.name(), is(nullValue()));
-        assertThat(chebi.inchiKey(), is(nullValue()));
+        assertThat(chebi.getId(), is(id));
+        assertThat(chebi.getName(), is(nullValue()));
+        assertThat(chebi.getInchiKey(), is(nullValue()));
     }
 
     @Test
@@ -42,9 +42,9 @@ class ChebiFileReaderTest {
         List<Chebi> chebis = reader.parseLines(asList("[Term]", "name: " + name));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
-        assertThat(chebi.name(), is(name));
-        assertThat(chebi.id(), is(nullValue()));
-        assertThat(chebi.inchiKey(), is(nullValue()));
+        assertThat(chebi.getName(), is(name));
+        assertThat(chebi.getId(), is(nullValue()));
+        assertThat(chebi.getInchiKey(), is(nullValue()));
     }
 
     @Test
@@ -54,9 +54,9 @@ class ChebiFileReaderTest {
                 .parseLines(asList("[Term]", "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
-        assertThat(chebi.inchiKey(), is(inchikey));
-        assertThat(chebi.id(), is(nullValue()));
-        assertThat(chebi.name(), is(nullValue()));
+        assertThat(chebi.getInchiKey(), is(inchikey));
+        assertThat(chebi.getId(), is(nullValue()));
+        assertThat(chebi.getName(), is(nullValue()));
     }
 
     @Test
@@ -72,9 +72,9 @@ class ChebiFileReaderTest {
                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
-        assertThat(chebi.id(), is(id));
-        assertThat(chebi.name(), is(name));
-        assertThat(chebi.inchiKey(), is(inchikey));
+        assertThat(chebi.getId(), is(id));
+        assertThat(chebi.getName(), is(name));
+        assertThat(chebi.getInchiKey(), is(inchikey));
     }
 
     @Test
@@ -100,14 +100,14 @@ class ChebiFileReaderTest {
         assertThat(chebis, hasSize(2));
 
         Chebi chebi1 = chebis.get(0);
-        assertThat(chebi1.id(), is(id1));
-        assertThat(chebi1.name(), is(name1));
-        assertThat(chebi1.inchiKey(), is(inchikey1));
+        assertThat(chebi1.getId(), is(id1));
+        assertThat(chebi1.getName(), is(name1));
+        assertThat(chebi1.getInchiKey(), is(inchikey1));
 
         Chebi chebi2 = chebis.get(1);
-        assertThat(chebi2.id(), is(id2));
-        assertThat(chebi2.name(), is(name2));
-        assertThat(chebi2.inchiKey(), is(inchikey2));
+        assertThat(chebi2.getId(), is(id2));
+        assertThat(chebi2.getName(), is(name2));
+        assertThat(chebi2.getInchiKey(), is(inchikey2));
     }
 
     @Test
@@ -116,6 +116,6 @@ class ChebiFileReaderTest {
                 .parseLines(asList("[Term]", "id:???WWWRONG"));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
-        assertThat(chebi.id(), is(nullValue()));
+        assertThat(chebi.getId(), is(nullValue()));
     }
 }

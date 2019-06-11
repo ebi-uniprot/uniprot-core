@@ -19,17 +19,17 @@ public class ChebiImpl implements Chebi {
     }
 
     @Override
-    public String id() {
+    public String getId() {
         return id;
     }
 
     @Override
-    public String name() {
+    public String getName() {
         return name;
     }
 
     @Override
-    public String inchiKey() {
+    public String getInchiKey() {
         return inchiKey;
     }
 

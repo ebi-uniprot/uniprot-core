@@ -6,7 +6,7 @@ package uk.ac.ebi.uniprot.cv.chebi;
  * @author Edd
  */
 public interface Chebi {
-    String id();
-    String name();
-    String inchiKey();
+    String getId();
+    String getName();
+    String getInchiKey();
 }

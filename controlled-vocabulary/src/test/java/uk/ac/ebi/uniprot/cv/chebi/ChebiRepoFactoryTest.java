@@ -25,15 +25,15 @@ class ChebiRepoFactoryTest {
         assertThat(repo, is(notNullValue()));
 
         Chebi chebi = repo.getById("30151");
-        assertThat(chebi.name(), is("aluminide(1-)"));
-        assertThat(chebi.inchiKey(), is("SBLSYFIUPXRQRY-UHFFFAOYSA-N"));
+        assertThat(chebi.getName(), is("aluminide(1-)"));
+        assertThat(chebi.getInchiKey(), is("SBLSYFIUPXRQRY-UHFFFAOYSA-N"));
 
         chebi = repo.getById("32129");
-        assertThat(chebi.name(), is("diamminesilver(1+) fluoride"));
-        assertThat(chebi.inchiKey(), is("FJKGRAZQBBWYLG-UHFFFAOYSA-M"));
+        assertThat(chebi.getName(), is("diamminesilver(1+) fluoride"));
+        assertThat(chebi.getInchiKey(), is("FJKGRAZQBBWYLG-UHFFFAOYSA-M"));
 
         chebi = repo.getById("36347");
-        assertThat(chebi.name(), is("nuclear particle"));
-        assertThat(chebi.inchiKey(), is(nullValue()));
+        assertThat(chebi.getName(), is("nuclear particle"));
+        assertThat(chebi.getInchiKey(), is(nullValue()));
     }
 }
