@@ -27,7 +27,7 @@ class ProteomeConverterTest {
 	void test() {	
 		ProteomeConverter converter = new ProteomeConverter();
 		ProteomeEntry proteome =create();
-		uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome xml = converter.toXml(proteome);
+		uk.ac.ebi.uniprot.xml.jaxb.proteome.ProteomeType xml = converter.toXml(proteome);
 		ProteomeEntry converted = converter.fromXml(xml);
 		assertEquals(proteome, converted);
 	}
@@ -56,12 +56,13 @@ class ProteomeConverterTest {
 		Component component1 =
 		ComponentBuilder.newInstance()
 		.name("someName1").description("some description")
+		.type(uk.ac.ebi.uniprot.domain.proteome.ComponentType.UNPLACED)				
 		.build();
 		
 		Component component2 =
 				ComponentBuilder.newInstance()
 				.name("someName2").description("some description 2")
-	
+				.type(uk.ac.ebi.uniprot.domain.proteome.ComponentType.SEGMENTED_GENOME)			
 				.build();
 		
 		components.add(component1);
@@ -78,7 +79,8 @@ class ProteomeConverterTest {
 				.dbXReferences(xrefs)
 				.components(components)
 				.superkingdom(Superkingdom.EUKARYOTA)
-				.references(citations);
+				.references(citations)
+				.annotationScore(15);
 		
 		return builder.build();
 	}
@@ -104,6 +106,7 @@ class ProteomeConverterTest {
 	        builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
 	                .addAuthor("Sulson J.E.")
 	                .addAuthor("JWaterston R.")
+	                .title("Another title")
 	                .publicationDate(date);
 	        return builder.build();
 	    }

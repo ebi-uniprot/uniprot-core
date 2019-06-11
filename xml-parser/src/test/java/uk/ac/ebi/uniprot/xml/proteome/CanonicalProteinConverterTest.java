@@ -9,7 +9,7 @@ import uk.ac.ebi.uniprot.domain.proteome.Protein;
 import uk.ac.ebi.uniprot.domain.proteome.builder.CanonicalProteinBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteinBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.xml.jaxb.proteome.CanonicalGene;
+import uk.ac.ebi.uniprot.xml.jaxb.proteome.CanonicalGeneType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.EntryType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.GeneNameType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.GeneType;
@@ -20,7 +20,7 @@ class CanonicalProteinConverterTest {
 	CanonicalProteinConverter converter = new CanonicalProteinConverter();
 	@Test
 	void testFromXml() {
-		CanonicalGene cGene = xmlFactory.createCanonicalGene();
+		CanonicalGeneType cGene = xmlFactory.createCanonicalGeneType();
 		cGene.setGene(createGene1());
 		cGene.getRelatedGene().add(createGene2());
 		cGene.getRelatedGene().add(createGene3());
@@ -66,7 +66,7 @@ class CanonicalProteinConverterTest {
 		.addRelatedProtein(protein3)
 		.build();
 		
-		CanonicalGene cGene = converter.toXml(cProtein);
+		CanonicalGeneType cGene = converter.toXml(cProtein);
 		CanonicalProtein converted = converter.fromXml(cGene);
 		assertEquals(cProtein, converted);
 	}

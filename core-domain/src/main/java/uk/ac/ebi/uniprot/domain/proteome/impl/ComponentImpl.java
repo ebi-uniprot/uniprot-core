@@ -7,24 +7,27 @@ import java.util.Objects;
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
+import uk.ac.ebi.uniprot.domain.proteome.ComponentType;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 
 public class ComponentImpl implements Component {
 	private static final long serialVersionUID = -5592878122341180241L;
 	private String name;
 	private String description;
-	private long proteinCount;
+	private int proteinCount;
+	private ComponentType type;
 	
 	private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences;
 
-	private ComponentImpl() {
+	protected ComponentImpl() {
 		dbXReferences = Collections.emptyList();
 	}
-	public ComponentImpl(String name, String description, long proteinCount,
-			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
+	public ComponentImpl(String name, String description, int proteinCount, ComponentType type,
+			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences ) {
 		this.name = name;
 		this.description = description;
 		this.proteinCount = proteinCount;
+		this.type = type;
 		this.dbXReferences =Utils.nonNullList(dbXReferences);
 	}
 	@Override
@@ -43,12 +46,16 @@ public class ComponentImpl implements Component {
 	}
 
 	@Override
-	public long getProteinCount() {
+	public int getProteinCount() {
 		return proteinCount;
 	}
 	@Override
+	public ComponentType getType() {
+		return type;
+	}
+	@Override
 	public int hashCode() {	
-		return Objects.hash(name, description, proteinCount, dbXReferences);
+		return Objects.hash(name, description, proteinCount, dbXReferences, type);
 
 	}
 	@Override
@@ -62,6 +69,8 @@ public class ComponentImpl implements Component {
 		ComponentImpl other = (ComponentImpl) obj;
 		return Objects.equals(name, other.name) && Objects.equals(description, other.description)
 				&& Objects.equals(proteinCount, other.proteinCount) 
+				&& Objects.equals(type, other.type) 
 				&& Objects.equals(dbXReferences, other.dbXReferences);
 	}
+	
 }

@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
+import uk.ac.ebi.uniprot.domain.proteome.ComponentType;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 
 class ComponentBuilderTest {
@@ -26,6 +27,19 @@ class ComponentBuilderTest {
 		assertEquals("some description", component.getDescription());
 		assertEquals(102, component.getProteinCount());
 	}
+	@Test
+	void testNameAndDescriptionAndProteinCountAndType() {
+		Component component = ComponentBuilder.newInstance()
+				.name("someName").description("some description")
+				.proteinCount(102)
+				.type(ComponentType.PRIMARY)
+				.build();
+		assertEquals("someName", component.getName());
+		assertEquals("some description", component.getDescription());
+		assertEquals(102, component.getProteinCount());
+		assertEquals(ComponentType.PRIMARY, component.getType());
+	}
+	
 	@Test
 	void testAddXref() {
 		DBCrossReference<ProteomeXReferenceType> xref1 =

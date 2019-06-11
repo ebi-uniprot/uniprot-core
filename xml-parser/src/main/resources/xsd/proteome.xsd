@@ -6,12 +6,12 @@
                        <xs:documentation>Describes a collection of proteome entries.</xs:documentation>
       	     </xs:annotation>
 			<xs:sequence>
-			    <xs:element ref="proteome" minOccurs="1" maxOccurs="unbounded" />
+			    <xs:element name="proteome" type="proteomeType" minOccurs="1" maxOccurs="unbounded" />
 	         </xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="proteome"> 
-   <xs:complexType>
+	
+   <xs:complexType name="proteomeType"> 
         <xs:annotation>
             <xs:documentation>Describes proteome type.</xs:documentation>
         </xs:annotation>
@@ -27,7 +27,9 @@
 				<xs:element name="component" type="componentType" maxOccurs="unbounded"/>
 				<xs:element name="reference" type="referenceType" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="redundantProteome" type="redundantProteomeType" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="canonicalGene" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="canonicalGene" type="canonicalGeneType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="panproteome" type="xs:string" minOccurs="0"/>
+				<xs:element name="annotationScore" type="annotationScoreType" minOccurs="0" maxOccurs="1"/>
 			</xs:sequence>
 			<xs:attribute name="upid" type="upidType" />
 			<xs:attribute name="modified" type="xs:date" />
@@ -36,7 +38,6 @@
 			<xs:attribute name="sourceTaxonomy" type="xs:long" />
 			<xs:attribute name="superregnum" type="superregnumType" />
    </xs:complexType>
-   </xs:element>
    
      <xs:simpleType name="superregnumType">
        <xs:annotation>
@@ -61,8 +62,8 @@
              <xs:pattern value="UP[0-9]{9}"/>
         </xs:restriction>
     </xs:simpleType>
-    <xs:element name="canonicalGene" >
-        <xs:complexType>
+
+    <xs:complexType name="canonicalGeneType">
             <xs:annotation>
                 <xs:documentation>Describes canonical gene in genecentric model.</xs:documentation>
             </xs:annotation>
@@ -70,8 +71,8 @@
                 <xs:element name="gene" type="geneType" />
                 <xs:element name="relatedGene" type="geneType" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    </xs:complexType>
+    
     <xs:complexType name="geneType">
        <xs:annotation>
           <xs:documentation>
@@ -89,6 +90,23 @@
         <xs:attribute name="geneNameType" type="geneNameType" />
     </xs:complexType>
     
+     <xs:simpleType name="componentTypeType">
+       <xs:annotation>
+          <xs:documentation>
+             Enumeration for componentTypeType.
+          </xs:documentation>
+       </xs:annotation>
+       <xs:restriction base="xs:string">
+            <xs:enumeration value="Primary"/>
+            <xs:enumeration value="CON"/>
+            <xs:enumeration value="Segmented genome"/>
+            <xs:enumeration value="WGS"/>
+            <xs:enumeration value="GCA"/>
+            <xs:enumeration value="GCF"/>
+            <xs:enumeration value="Unplaced"/>
+       </xs:restriction>
+    </xs:simpleType>
+    
      <xs:simpleType name="entryType">
        <xs:annotation>
           <xs:documentation>
@@ -99,7 +117,7 @@
             <xs:enumeration value="Swiss-Prot"/>
             <xs:enumeration value="TrEMBL"/>
        </xs:restriction>
-    </xs:simpleType>
+    </xs:simpleType> 
 
      <xs:simpleType name="geneNameType">
        <xs:annotation>
@@ -162,8 +180,10 @@
      	    <xs:element name="biosampleId" type="xs:string" minOccurs="0" />
 	        <xs:element name="genomeAccession" type="xs:string" maxOccurs="unbounded"/>
 	        <xs:element name="protein" type="proteinType" minOccurs="0" maxOccurs="unbounded"/>
-     	  </xs:sequence>      
+     	  </xs:sequence>
     	 <xs:attribute name="name" type="xs:string"/>
+    	 <xs:attribute name="count" type="xs:int" use="required"/>
+    	 <xs:attribute name="type" type="componentTypeType"  use="required"/>
     </xs:complexType>
     
         <xs:complexType name="proteinType">
@@ -185,7 +205,7 @@
             <xs:documentation>Describes the submission type of publication.</xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="citation" type="xs:string">
+            <xs:element name="title" type="xs:string">
                 <xs:annotation>
                     <xs:documentation>Describes the title of a citation.</xs:documentation>
                 </xs:annotation>
@@ -280,5 +300,10 @@
         <xs:attribute name="type" type="xs:string" use="required"/>
         <xs:attribute name="value" type="xs:string" use="required"/>
     </xs:complexType>
-	  
+
+    <xs:complexType name="annotationScoreType">
+         <xs:attribute name="normalizedAnnotationScore" type="xs:int" use="required"/>
+    </xs:complexType>
+
+   	  
 </xs:schema>

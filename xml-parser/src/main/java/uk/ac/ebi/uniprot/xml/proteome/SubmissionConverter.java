@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.citation.Submission;
 import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
 import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
@@ -24,7 +26,8 @@ public class SubmissionConverter  implements Converter<ReferenceType, Submission
 		SubmissionBuilder builder = new SubmissionBuilder();
 		ReferenceConverterHelper.updateFromXmlCitaiton(xmlObj, builder);
 		SubmissionType xmlSubmission = xmlObj.getSubmission();
-		builder.submittedToDatabase(SubmissionDatabase.typeOf(xmlSubmission.getDb()));
+		builder.submittedToDatabase(SubmissionDatabase.typeOf(xmlSubmission.getDb()))
+		.title(xmlSubmission.getTitle());
 		return builder.build();
 	}
 
@@ -34,6 +37,10 @@ public class SubmissionConverter  implements Converter<ReferenceType, Submission
 		  ReferenceConverterHelper.updateToXmlCitatation(xmlFactory, xmlCitation, uniObj);
 		  SubmissionType xmlSubmission = xmlFactory.createSubmissionType();
 		  xmlSubmission.setDb(uniObj.getSubmissionDatabase().getName());
+		
+		  if(!Strings.isNullOrEmpty(uniObj.getTitle())) {
+			  xmlSubmission.setTitle(uniObj.getTitle());
+		  }
 		  xmlCitation.setSubmission(xmlSubmission);
 		  return xmlCitation;
 	}

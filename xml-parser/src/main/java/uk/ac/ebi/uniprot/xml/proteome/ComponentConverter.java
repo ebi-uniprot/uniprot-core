@@ -13,6 +13,7 @@ import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ComponentType;
+import uk.ac.ebi.uniprot.xml.jaxb.proteome.ComponentTypeType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
 
 public class ComponentConverter implements Converter<ComponentType, Component> {
@@ -43,7 +44,10 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
 			xrefs.add(new DBCrossReferenceBuilder<ProteomeXReferenceType>()
 					.databaseType(ProteomeXReferenceType.BIOSAMPLE).id(xmlObj.getBiosampleId()).build());
 		}
-		builder.dbXReferences(xrefs).proteinCount(xmlObj.getProtein().size());
+		builder.dbXReferences(xrefs).proteinCount(xmlObj.getCount());
+		
+		builder.type(uk.ac.ebi.uniprot.domain.proteome.ComponentType.fromValue(xmlObj.getType().value()));
+	
 		return builder.build();
 	}
 
@@ -60,7 +64,9 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
 		uniObj.getDbXReferences().stream()
 				.filter(val -> val.getDatabaseType() == ProteomeXReferenceType.GENOME_ACCESSION).map(val -> val.getId())
 				.forEach(val -> xmlObj.getGenomeAccession().add(val));
-
+		xmlObj.setCount(uniObj.getProteinCount());
+		ComponentTypeType type = ComponentTypeType.fromValue(uniObj.getType().getName());
+		xmlObj.setType(type);
 		return xmlObj;
 	}
 

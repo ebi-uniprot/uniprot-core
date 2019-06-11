@@ -7,13 +7,15 @@ import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.proteome.Component;
+import uk.ac.ebi.uniprot.domain.proteome.ComponentType;
 import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
 import uk.ac.ebi.uniprot.domain.proteome.impl.ComponentImpl;
 
 public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 	private String name;
 	private String description;
-	private long proteinCount;
+	private int proteinCount;
+	private ComponentType type;
 	private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences =new ArrayList<>();
 
 	
@@ -47,10 +49,14 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 		this.proteinCount = proteinCount;
 		return this;
 	}
+	public ComponentBuilder type(ComponentType type) {
+		this.type = type;
+		return this;
+	}
 
 	@Override
 	public Component build() {
-		return new ComponentImpl( name,  description,  proteinCount, dbXReferences) ;
+		return new ComponentImpl( name,  description,  proteinCount, type, dbXReferences) ;
 	}
 
 	@Override
@@ -58,6 +64,7 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 		this.name = instance.getName();
 		this.description = instance.getDescription();
 		this.proteinCount = instance.getProteinCount();
+		this.type = instance.getType();
 		dbXReferences.clear();
 		dbXReferences.addAll(instance.getDbXReferences());
 		

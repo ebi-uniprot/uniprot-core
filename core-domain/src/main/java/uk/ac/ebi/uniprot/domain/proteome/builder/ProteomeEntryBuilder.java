@@ -29,8 +29,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	private ProteomeId panproteome;
 	private int annotationScore;
 	private Superkingdom superkingdom;
-	private long proteinCount;
-	private long geneCount;
+	private int proteinCount;
+	private int geneCount;
 	private List<TaxonomyLineage> taxonLineage =new ArrayList<>();
 	private List<CanonicalProtein> canonicalProteins  =new ArrayList<>();
 	private String sourceDb;
@@ -80,6 +80,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 		canonicalProteins.clear();
 		canonicalProteins.addAll(instance.getCanonicalProteins());
 		this.sourceDb =instance.getSourceDb();
+	
 		return this;
 	}
 
@@ -186,11 +187,11 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 		return this;
 	}
 	
-	public ProteomeEntryBuilder proteinCount(long proteinCount) {
+	public ProteomeEntryBuilder proteinCount(int proteinCount) {
 		this.proteinCount = proteinCount;
 		return this;
 	}
-	public ProteomeEntryBuilder geneCount(long geneCount) {
+	public ProteomeEntryBuilder geneCount(int geneCount) {
 		this.geneCount = geneCount;
 		return this;
 	}

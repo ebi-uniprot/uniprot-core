@@ -47,6 +47,7 @@ public class ProteomeTest {
 				.name("someName").description("some description")
 				.proteinCount(102)
 				.dbXReferences(xrefs)
+				.type(ComponentType.PRIMARY)
 				.build();
 		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), component);
 	}
@@ -101,6 +102,7 @@ public class ProteomeTest {
 				.dbXReferences(xrefs)
 				.references(getCitations())
 				.superkingdom(Superkingdom.EUKARYOTA)
+				.panproteome(new ProteomeIdBuilder ("UP000005649").build())
 				.build();
 		
 		 ValidateJson.verifyJsonRoundTripParser(ProteomeJsonConfig.getInstance().getFullObjectMapper(), proteome);
