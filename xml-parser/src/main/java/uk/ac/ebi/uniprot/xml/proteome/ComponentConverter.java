@@ -65,8 +65,12 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
 				.filter(val -> val.getDatabaseType() == ProteomeXReferenceType.GENOME_ACCESSION).map(val -> val.getId())
 				.forEach(val -> xmlObj.getGenomeAccession().add(val));
 		xmlObj.setCount(uniObj.getProteinCount());
+		if(uniObj.getType() !=null) {
 		ComponentTypeType type = ComponentTypeType.fromValue(uniObj.getType().getName());
 		xmlObj.setType(type);
+		}else {
+			xmlObj.setType(ComponentTypeType.UNPLACED);
+		}
 		return xmlObj;
 	}
 
