@@ -27,7 +27,7 @@ class ProteomeConverterTest {
 	void test() {	
 		ProteomeConverter converter = new ProteomeConverter();
 		ProteomeEntry proteome =create();
-		uk.ac.ebi.uniprot.xml.jaxb.proteome.ProteomeType xml = converter.toXml(proteome);
+		uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome xml = converter.toXml(proteome);
 		ProteomeEntry converted = converter.fromXml(xml);
 		assertEquals(proteome, converted);
 	}

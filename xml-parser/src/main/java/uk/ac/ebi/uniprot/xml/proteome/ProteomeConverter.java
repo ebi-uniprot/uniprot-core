@@ -11,7 +11,7 @@ import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.AnnotationScoreType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
-import uk.ac.ebi.uniprot.xml.jaxb.proteome.ProteomeType;
+import uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.SuperregnumType;
 import uk.ac.ebi.uniprot.xml.uniprot.XmlConverterHelper;
 
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry> {
+public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
 	private final ObjectFactory xmlFactory;
 	private final ComponentConverter componentConverter;
@@ -41,7 +41,7 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
 	}
 	
 	@Override
-	public ProteomeEntry fromXml(ProteomeType xmlObj) {
+	public ProteomeEntry fromXml(Proteome xmlObj) {
 		List<Component> components = xmlObj.getComponent().stream().map(componentConverter::fromXml).collect(Collectors.toList());
 		List<CanonicalProtein> canonicalProteins = xmlObj.getCanonicalGene().stream().map(canonicalProteinConverter::fromXml)
 				.collect(Collectors.toList());
@@ -98,8 +98,8 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
 	
 	
 	@Override
-	public ProteomeType toXml(ProteomeEntry uniObj) {
-		ProteomeType xmlObj = xmlFactory.createProteomeType();
+	public Proteome toXml(ProteomeEntry uniObj) {
+		Proteome xmlObj = xmlFactory.createProteome();
 		xmlObj.setUpid(uniObj.getId().getValue());
 		xmlObj.setDescription(uniObj.getDescription());
 		xmlObj.setTaxonomy(uniObj.getTaxonomy().getTaxonId());
@@ -155,7 +155,7 @@ public class ProteomeConverter implements Converter<ProteomeType, ProteomeEntry>
 			return builder.taxonId(taxonId).scientificName(name).build();
 	}
 	
-	private uk.ac.ebi.uniprot.domain.proteome.ProteomeType getProteomeType(ProteomeType t) {
+	private uk.ac.ebi.uniprot.domain.proteome.ProteomeType getProteomeType(Proteome t) {
 		if(t.isIsReferenceProteome())
 			return uk.ac.ebi.uniprot.domain.proteome.ProteomeType.REFERENCE;
 		else if (t.isIsRepresentativeProteome()) {
