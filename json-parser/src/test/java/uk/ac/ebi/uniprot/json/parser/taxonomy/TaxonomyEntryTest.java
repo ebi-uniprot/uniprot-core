@@ -24,6 +24,7 @@ class TaxonomyEntryTest {
     void testCompleteTaxonomyEntry(){
         TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntry();
         ValidateJson.verifyJsonRoundTripParser(TaxonomyJsonConfig.getInstance().getFullObjectMapper(),taxonomyEntry);
+        ValidateJson.verifyEmptyFields(taxonomyEntry);
     }
 
     private TaxonomyEntry getCompleteTaxonomyEntry(){

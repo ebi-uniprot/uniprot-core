@@ -19,6 +19,7 @@ class TaxonomyStatisticsTest {
     void testCompleteTaxonomyStatistics(){
         TaxonomyStatistics taxonomyStatistics = getCompleteTaxonomyStatistics();
         ValidateJson.verifyJsonRoundTripParser(TaxonomyJsonConfig.getInstance().getFullObjectMapper(),taxonomyStatistics);
+        ValidateJson.verifyEmptyFields(taxonomyStatistics);
     }
 
     static TaxonomyStatistics getCompleteTaxonomyStatistics() {

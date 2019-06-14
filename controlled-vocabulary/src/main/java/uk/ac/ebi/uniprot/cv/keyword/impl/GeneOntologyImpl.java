@@ -5,6 +5,10 @@ import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
 public class GeneOntologyImpl implements GeneOntology {
 	private final String goId;
 	private final String goTerm;
+
+    private GeneOntologyImpl() {
+        this(null, null);
+    }
 	public static GeneOntology create(String goId, String goTerm) {
 		return new GeneOntologyImpl(goId, goTerm) ;
 	}

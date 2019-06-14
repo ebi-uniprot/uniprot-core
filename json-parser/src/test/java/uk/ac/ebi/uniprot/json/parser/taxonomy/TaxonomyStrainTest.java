@@ -21,6 +21,7 @@ class TaxonomyStrainTest {
     void testCompleteTaxonomyStrain(){
         TaxonomyStrain taxonomyStrain = getCompleteTaxonomyStrain();
         ValidateJson.verifyJsonRoundTripParser(TaxonomyJsonConfig.getInstance().getFullObjectMapper(),taxonomyStrain);
+        ValidateJson.verifyEmptyFields(taxonomyStrain);
     }
 
     static TaxonomyStrain getCompleteTaxonomyStrain(){

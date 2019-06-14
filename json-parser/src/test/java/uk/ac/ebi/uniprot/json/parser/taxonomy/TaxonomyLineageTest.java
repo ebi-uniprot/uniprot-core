@@ -21,6 +21,7 @@ public class TaxonomyLineageTest {
     void testCompleteTaxonomyLineage(){
         TaxonomyLineage taxonomyLineage = getCompleteTaxonomyLineage();
         ValidateJson.verifyJsonRoundTripParser(TaxonomyJsonConfig.getInstance().getFullObjectMapper(),taxonomyLineage);
+        ValidateJson.verifyEmptyFields(taxonomyLineage);
     }
 
     static TaxonomyLineage getCompleteTaxonomyLineage(){

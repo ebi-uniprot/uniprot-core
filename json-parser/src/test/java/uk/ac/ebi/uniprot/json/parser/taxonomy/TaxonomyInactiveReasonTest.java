@@ -24,6 +24,7 @@ public class TaxonomyInactiveReasonTest {
     void testCompleteTaxonomyInactiveReason(){
         TaxonomyInactiveReason taxonomyInactiveReason = getCompleteTaxonomyInactiveReason();
         ValidateJson.verifyJsonRoundTripParser(TaxonomyJsonConfig.getInstance().getFullObjectMapper(),taxonomyInactiveReason);
+        ValidateJson.verifyEmptyFields(taxonomyInactiveReason);
     }
 
     static TaxonomyInactiveReason getCompleteTaxonomyInactiveReason() {
