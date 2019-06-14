@@ -6,12 +6,12 @@
                        <xs:documentation>Describes a collection of proteome entries.</xs:documentation>
       	     </xs:annotation>
 			<xs:sequence>
-			    <xs:element name="proteome" type="proteomeType" minOccurs="1" maxOccurs="unbounded" />
+			    <xs:element ref="proteome" minOccurs="1" maxOccurs="unbounded" />
 	         </xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	
-   <xs:complexType name="proteomeType"> 
+	<xs:element name="proteome"> 
+   <xs:complexType>
         <xs:annotation>
             <xs:documentation>Describes proteome type.</xs:documentation>
         </xs:annotation>
@@ -27,7 +27,7 @@
 				<xs:element name="component" type="componentType" maxOccurs="unbounded"/>
 				<xs:element name="reference" type="referenceType" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="redundantProteome" type="redundantProteomeType" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element name="canonicalGene" type="canonicalGeneType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="canonicalGene" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element name="panproteome" type="xs:string" minOccurs="0"/>
 				<xs:element name="annotationScore" type="annotationScoreType" minOccurs="0" maxOccurs="1"/>
 			</xs:sequence>
@@ -38,7 +38,7 @@
 			<xs:attribute name="sourceTaxonomy" type="xs:long" />
 			<xs:attribute name="superregnum" type="superregnumType" />
    </xs:complexType>
-   
+    </xs:element>
      <xs:simpleType name="superregnumType">
        <xs:annotation>
           <xs:documentation>
@@ -63,7 +63,8 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:complexType name="canonicalGeneType">
+     <xs:element name="canonicalGene" >
+        <xs:complexType>
             <xs:annotation>
                 <xs:documentation>Describes canonical gene in genecentric model.</xs:documentation>
             </xs:annotation>
@@ -72,7 +73,7 @@
                 <xs:element name="relatedGene" type="geneType" minOccurs="0" maxOccurs="unbounded"/>
             </xs:sequence>
     </xs:complexType>
-    
+    </xs:element>  
     <xs:complexType name="geneType">
        <xs:annotation>
           <xs:documentation>
