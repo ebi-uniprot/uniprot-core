@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.cv.keyword;
 
+import uk.ac.ebi.uniprot.cv.impl.KeywordFileReader;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import uk.ac.ebi.uniprot.cv.impl.KeywordFileReader;
 
 
 
@@ -13,19 +13,19 @@ public enum KeywordCache {
 
 	INSTANCE;
 	public static final String FTP_LOCATION ="ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/keywlist.txt";
-	Map<String, List<KeywordDetail> > locationKeywordMap =new HashMap<>();
+	Map<String, List<KeywordEntry>> locationKeywordMap = new HashMap<>();
 	
 	KeywordCache(){
 		
 	}
-	
-	public List<KeywordDetail> get(String file) {
+
+	public List<KeywordEntry> get(String file) {
 		String filename = file;
 		if((filename ==null) || filename.isEmpty()){
 			filename = FTP_LOCATION;
 		}
-		
-		List<KeywordDetail> result = locationKeywordMap.get(filename);
+
+		List<KeywordEntry> result = locationKeywordMap.get(filename);
 		if(result !=null)
 			return result;
 		
@@ -45,8 +45,8 @@ public enum KeywordCache {
 		}
 		
 	}
-	
-	private List<KeywordDetail> buildCache(String filename){
+
+	private List<KeywordEntry> buildCache(String filename) {
 		
 		KeywordFileReader parser = new KeywordFileReader();
 		return parser.parse(filename);

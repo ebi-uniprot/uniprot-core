@@ -4,7 +4,9 @@ import java.util.Collection;
 import java.util.List;
 
 public interface KeywordService {
-	KeywordDetail getByAccession(String id);
-	Collection<KeywordDetail> getAll();
-	List<KeywordDetail> getAllCategories();
+    KeywordEntry getByAccession(String id);
+
+    Collection<KeywordEntry> getAll();
+
+    List<KeywordEntry> getAllCategories();
 }
