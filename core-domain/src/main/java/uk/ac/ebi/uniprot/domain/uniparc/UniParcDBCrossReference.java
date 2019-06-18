@@ -16,7 +16,7 @@ public interface UniParcDBCrossReference  extends DBCrossReference<UniParcDataba
 
     public final String PROPERTY_PROTEIN_NAME = "protein_name";
 
-    public final String PROPERTY_UNI_PROT_KB_ACCESSION = "UniProtKB_accession";
+    public final String PROPERTY_UNIPROT_KB_ACCESSION = "UniProtKB_accession";
 
     public final String PROPERTY_CHAIN = "chain";
 
