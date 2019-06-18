@@ -8,7 +8,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -36,6 +35,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
         map.put("lineage",getLineage());
         map.put("strain",getStrains());
         map.put("host",getHosts());
+        map.put("statistics", getStatistics());
         return map;
     }
 
@@ -87,17 +87,12 @@ public class TaxonomyEntryMap implements NamedValueMap {
         }
     }
 
-    private String getOrDefaultEmpty(String input){
-        if(Utils.notEmpty(input)){
-            return input;
-        }else{
-            return "";
-        }
-    }
-
-    private String getOrDefaultEmpty(List<String> input){
-        if(Utils.notEmpty(input)){
-            return String.join(", ", input);
+    private String getStatistics() {
+        if (taxonomyEntry.getStatistics() != null) {
+            return "reviewed:" + taxonomyEntry.getStatistics().getReviewedProteinCount() + "; " +
+                    "annotated:" + taxonomyEntry.getStatistics().getUnreviewedProteinCount() + "; " +
+                    "reference:" + taxonomyEntry.getStatistics().getReferenceProteomeCount() + "; " +
+                    "complete:" + taxonomyEntry.getStatistics().getCompleteProteomeCount();
         }else{
             return "";
         }

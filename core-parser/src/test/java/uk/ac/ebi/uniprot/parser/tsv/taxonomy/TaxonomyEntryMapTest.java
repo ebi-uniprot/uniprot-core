@@ -26,7 +26,7 @@ class TaxonomyEntryMapTest {
         TaxonomyEntry entry = new TaxonomyEntryBuilder().taxonId(9606L).parentId(100L).build();
         Map<String,String> mappedEntries = new TaxonomyEntryMap(entry).attributeValues();
         assertThat(mappedEntries,notNullValue());
-        assertEquals(13, mappedEntries.size());
+        assertEquals(14, mappedEntries.size());
         assertEquals("9606",mappedEntries.get("id"));
         mappedEntries.remove("id");
         assertEquals("100",mappedEntries.get("parent"));
@@ -41,7 +41,7 @@ class TaxonomyEntryMapTest {
 
         Map<String,String> mappedEntries = new TaxonomyEntryMap(entry).attributeValues();
 
-        assertEquals(13, mappedEntries.size());
+        assertEquals(14, mappedEntries.size());
         assertEquals("9606",mappedEntries.get("id"));
         assertEquals("9605",mappedEntries.get("parent"));
         assertEquals("name",mappedEntries.get("strain"));
@@ -55,6 +55,7 @@ class TaxonomyEntryMapTest {
         assertEquals("reviewed",mappedEntries.get("reviewed"));
         assertEquals("commonName",mappedEntries.get("common_name"));
         assertEquals("lineage value",mappedEntries.get("lineage"));
+        assertEquals("reviewed:10; annotated:0; reference:0; complete:0", mappedEntries.get("statistics"));
     }
 
     @Test
@@ -63,7 +64,7 @@ class TaxonomyEntryMapTest {
         builder.statistics(new TaxonomyStatisticsBuilder().unreviewedProteinCount(10).build());
         TaxonomyEntry entry = builder.build();
         Map<String,String> mappedEntries = new TaxonomyEntryMap(entry).attributeValues();
-        assertEquals(13, mappedEntries.size());
+        assertEquals(14, mappedEntries.size());
         assertEquals("annotated",mappedEntries.get("reviewed"));
     }
 
