@@ -146,7 +146,7 @@ public class KeywordEntryImpl implements KeywordEntry {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKeyword(), getDefinition(), getSynonyms(), getGeneOntologies(), getParents(),
+        return Objects.hash(getKeyword(), getDefinition(), getSynonyms(), getGeneOntologies(),
                 getSites(), getCategory(), getChildren(), getStatistics());
     }
 }
