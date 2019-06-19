@@ -2,21 +2,20 @@ package uk.ac.ebi.uniprot.cv.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import uk.ac.ebi.uniprot.common.Pair;
 import uk.ac.ebi.uniprot.common.PairImpl;
 import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
 import uk.ac.ebi.uniprot.cv.keyword.Keyword;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordDetail;
+import uk.ac.ebi.uniprot.cv.keyword.KeywordEntry;
 import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordDetailImpl;
+import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordEntryImpl;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
+public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
 	private static final String WW_LINE = "WW";
 	private static final String CA_LINE = "CA";
 	private static final String GO_LINE = "GO";
@@ -30,40 +29,59 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 	private static final String CATEGORY_SEPARATOR = ":";
 	private static final String HIERARCHY_SEPARATOR = ";";
 	private static final Logger LOG = LoggerFactory.getLogger(KeywordFileReader.class);
-	
 
-	public List<KeywordDetail> parseLines(List<String> lines) {
+
+	public List<KeywordEntry> parseLines(List<String> lines) {
 		List<KeyFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
-		List<KeywordDetail> list = parseKeywordFileEntryList(rawList);
+		List<KeywordEntry> list = parseKeywordFileEntryList(rawList);
 		updateListWithRelationShips(list, rawList);
-	//	updateCategories(list);
+		cleanParentChildren(list);
 		return list;
 	}
 
 	public Map<String, Pair<String, KeywordCategory> > parseFileToAccessionMap(String fileName) {
-		List<KeywordDetail> keywordDetailList = parse(fileName);
-		return keywordDetailList.stream()
+		List<KeywordEntry> keywordEntryList = parse(fileName);
+		return keywordEntryList.stream()
 				.collect(Collectors.toMap(this::getId, this::getAccessionCategoryPair));
-			//	.map(KeywordDetail::getKeyword)
-			//	.collect(Collectors.toMap(Keyword::getId,new PairImplKeyword::getAccession));
 	}
-	private String getId(KeywordDetail keyword) {
+
+	private String getId(KeywordEntry keyword) {
 		return keyword.getKeyword().getId();
 	}
 
-	private Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordDetail keyword){
+	private Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
 		String accession = keyword.getAccession();
-		KeywordDetail kcategory = keyword.getCategory();
+		Keyword kcategory = keyword.getCategory();
 		KeywordCategory category =KeywordCategory.UNKNOWN;
 		if(kcategory !=null) {
-			 category = KeywordCategory.fromValue(kcategory.getKeyword().getId());
+			category = KeywordCategory.fromValue(kcategory.getId());
 		}else {
 			 category = KeywordCategory.fromValue(keyword.getKeyword().getId());
 		}
 	
 		return new PairImpl<>(accession, category);
 	}
-	private void updateListWithRelationShips(List<KeywordDetail> list, List<KeyFileEntry> rawList) {
+
+	private void cleanParentChildren(List<KeywordEntry> list) {
+		for (KeywordEntry entry : list) {
+			KeywordEntryImpl entryImpl = (KeywordEntryImpl) entry;
+			Set<KeywordEntry> newParentList = cleanParentChildren(entryImpl.getParents());
+			entryImpl.setParents(newParentList);
+		}
+	}
+
+	private Set<KeywordEntry> cleanParentChildren(Set<KeywordEntry> list) {
+		Set<KeywordEntry> result = new HashSet<>();
+		for (KeywordEntry entry : list) {
+			KeywordEntryImpl newEntry = new KeywordEntryImpl();
+			newEntry.setKeyword(entry.getKeyword());
+			newEntry.setParents(cleanParentChildren(entry.getParents()));
+			result.add(newEntry);
+		}
+		return result;
+	}
+
+	private void updateListWithRelationShips(List<KeywordEntry> list, List<KeyFileEntry> rawList) {
 		for (KeyFileEntry raw : rawList) {
 			// category will not have relationship, so ignore them
 			if (raw.hi.isEmpty()) {
@@ -71,13 +89,14 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 			}
 			
 			// Only getting keywords
-			KeywordDetailImpl target = (KeywordDetailImpl) findByIdentifier(list, raw.id);
+			KeywordEntryImpl target = (KeywordEntryImpl) findByIdentifier(list, raw.id);
 			assert (target != null);
 
 			// Setting the category
-			KeywordDetail category = findByIdentifier(list, raw.ca);
-			if(category !=null)
-				target.setCategory(category);
+			KeywordEntry category = findByIdentifier(list, raw.ca);
+			if (category != null) {
+				target.setCategory(category.getKeyword());
+			}
 
 			final List<String> withOutCategory = raw.hi.stream()
 					.map(s -> s.substring(s.indexOf(CATEGORY_SEPARATOR) + 1)).collect(Collectors.toList());
@@ -86,29 +105,34 @@ public class KeywordFileReader extends AbstractFileReader<KeywordDetail> {
 					.filter(arr -> arr.length >= 2).map(arr -> arr[arr.length - 2])
 					.map(this::trimSpacesAndRemoveLastDot).collect(Collectors.toSet());
 
-			// getting relationships
-			final List<KeywordDetail> relations = directRelations.stream().map(s -> findByIdentifier(list, s))
-					.filter(val ->val !=null)
+			// getting relationships and update it parents for directRelations
+			final List<KeywordEntry> relations = directRelations.stream().map(s -> findByIdentifier(list, s))
+					.filter(Objects::nonNull)
+					.peek(keywordEntry -> {
+						keywordEntry.getParents().add(target);
+					})
 					.collect(Collectors.toList());
+
 			// Only setting hierarchy if present
-			target.setParents(relations );
+			target.getChildren().addAll(relations);
 			if(relations.isEmpty() && (category !=null) ) {
-				target.setParents(Arrays.asList(category));
+				target.getChildren().add(category);
+				category.getParents().add(target);
 			}
 		}
 	}
 
-	private KeywordDetail findByIdentifier(List<KeywordDetail> list, String id) {
+	private KeywordEntry findByIdentifier(List<KeywordEntry> list, String id) {
 		return list.stream().filter(s -> s.getKeyword().getId().equals(trimSpacesAndRemoveLastDot(id))).findFirst().orElse(null);
 	}
 
-	private List<KeywordDetail> parseKeywordFileEntryList(List<KeyFileEntry> rawList) {
+	private List<KeywordEntry> parseKeywordFileEntryList(List<KeyFileEntry> rawList) {
 		return rawList.stream().map(this::parseKeywordFileEntry).collect(Collectors.toList());
 	}
 
-	private KeywordDetail parseKeywordFileEntry(KeyFileEntry entry) {
+	private KeywordEntry parseKeywordFileEntry(KeyFileEntry entry) {
 		final String identifier = entry.id != null ? entry.id : entry.ic;
-		KeywordDetailImpl retObj = new KeywordDetailImpl();
+		KeywordEntryImpl retObj = new KeywordEntryImpl();
 		Keyword keyword  =new KeywordImpl(trimSpacesAndRemoveLastDot(identifier), entry.ac);
 		retObj.setKeyword(keyword);
 		// definition

@@ -1,16 +1,21 @@
 package uk.ac.ebi.uniprot.cv.keyword;
 
 import java.util.List;
+import java.util.Set;
 
-public interface KeywordDetail {
+public interface KeywordEntry {
 	Keyword getKeyword();
 	String getDefinition();
 	List<String> getSynonyms();
 	List<GeneOntology> getGeneOntologies();
-	List<KeywordDetail> getParents();
+
+    Set<KeywordEntry> getParents();
 	List<String> getSites();
-	KeywordDetail getCategory();
-	List<KeywordDetail> getChildren();
+
+    Keyword getCategory();
+
+    List<KeywordEntry> getChildren();
 	String getAccession();
-	
+
+    KeywordStatistics getStatistics();
 }

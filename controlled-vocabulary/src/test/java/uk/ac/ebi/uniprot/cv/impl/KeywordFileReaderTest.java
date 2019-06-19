@@ -4,13 +4,11 @@ package uk.ac.ebi.uniprot.cv.impl;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
-import uk.ac.ebi.uniprot.cv.keyword.Keyword;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordCache;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordDetail;
+import uk.ac.ebi.uniprot.cv.keyword.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +19,7 @@ class KeywordFileReaderTest {
     @Disabled
     @Test
     void testParseDefaultFile() {
-        List<KeywordDetail> keywords = parser.parse(KeywordCache.FTP_LOCATION);
+        List<KeywordEntry> keywords = parser.parse(KeywordCache.FTP_LOCATION);
         assertFalse(keywords.isEmpty());
     }
 
@@ -37,7 +35,7 @@ class KeywordFileReaderTest {
                               "DE   of a specific domain.",
                               "//");
 
-        final List<KeywordDetail> retList = parser.parseLines(input);
+        final List<KeywordEntry> retList = parser.parseLines(input);
         assertAll("Category parse result",
                   () -> assertNotNull(retList),
                   () -> assertEquals(1, retList.size(), "should have one object return"),
@@ -46,7 +44,8 @@ class KeywordFileReaderTest {
                   () -> assertEquals(
                           "Keywords assigned to proteins because they have at least one specimen of a specific domain.",
                           retList.get(0).getDefinition()),
-                  () -> assertNull(retList.get(0).getParents())
+                () -> assertNotNull(retList.get(0).getParents()),
+                () -> assertTrue(retList.get(0).getParents().isEmpty())
         );
     }
 
@@ -70,7 +69,7 @@ class KeywordFileReaderTest {
                               "CA   Ligand.",
                               "//");
 
-        final List<KeywordDetail> retList = parser.parseLines(input);
+        final List<KeywordEntry> retList = parser.parseLines(input);
 
         assertAll("Keyword parse result",
                   () -> assertNotNull(retList.get(0).getSynonyms()),
@@ -106,22 +105,22 @@ class KeywordFileReaderTest {
                               "ID   Metal-binding.",
                               "AC   KW-0479",
                               "//");
-        final List<KeywordDetail> retList = parser.parseLines(input);
-        WrongKeywordDetail wrongKeywordDetail = new WrongKeywordDetail();
-        final KeywordDetail kw = retList.stream().filter(k -> k.getKeyword().getId().equals("2Fe-2S")).findFirst()
-                .orElse(wrongKeywordDetail);
-        assertNotEquals(kw, wrongKeywordDetail);
+        final List<KeywordEntry> retList = parser.parseLines(input);
+        WrongKeywordEntry wrongKeywordEntry = new WrongKeywordEntry();
+        final KeywordEntry kw = retList.stream().filter(k -> k.getKeyword().getId().equals("2Fe-2S")).findFirst()
+                .orElse(wrongKeywordEntry);
+        assertNotEquals(kw, wrongKeywordEntry);
 
         assertNotNull(kw.getCategory());
-        assertEquals("KW-9993", kw.getCategory().getKeyword().getAccession());
+        assertEquals("KW-9993", kw.getCategory().getAccession());
 
-        assertNotNull(kw.getParents());
-        assertEquals(2, kw.getParents().size());
+        assertNotNull(kw.getChildren());
+        assertEquals(2, kw.getChildren().size());
 
         assertNull(kw.getSites());
     }
 
-    private static class WrongKeywordDetail implements KeywordDetail {
+    private static class WrongKeywordEntry implements KeywordEntry {
         @Override
         public Keyword getKeyword() {
             return null;
@@ -143,7 +142,7 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public List<KeywordDetail> getParents() {
+        public Set<KeywordEntry> getParents() {
             return null;
         }
 
@@ -153,13 +152,12 @@ class KeywordFileReaderTest {
         }
 
         @Override
-        public KeywordDetail getCategory() {
+        public Keyword getCategory() {
             return null;
         }
 
 		@Override
-		public List<KeywordDetail> getChildren() {
-			// TODO Auto-generated method stub
+        public List<KeywordEntry> getChildren() {
 			return null;
 		}
 
@@ -167,6 +165,11 @@ class KeywordFileReaderTest {
 		public String getAccession() {
 			return getKeyword().getAccession();
 		}
+
+        @Override
+        public KeywordStatistics getStatistics() {
+            return null;
+        }
     }
 
     @Test
@@ -180,8 +183,8 @@ class KeywordFileReaderTest {
                               "WW   http://www.webelements.com/tungsten/",
                               "CA   Ligand.",
                               "//");
-        final List<KeywordDetail> retList = parser.parseLines(input);
-        final KeywordDetail kw = retList.get(0);
+        final List<KeywordEntry> retList = parser.parseLines(input);
+        final KeywordEntry kw = retList.get(0);
         assertNotNull(kw);
 
         assertTrue(kw.getParents().isEmpty());
