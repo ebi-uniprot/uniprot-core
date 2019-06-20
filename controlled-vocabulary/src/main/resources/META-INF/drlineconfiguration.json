@@ -417,6 +417,12 @@
 	},
 	
 	{
+		"name": "CPTAC",
+		"displayName": "CPTAC",
+		"category": "PROTEOMIC",
+		"uriLink": "https://assays.cancer.gov/%value"
+	},
+	{
 		"name": "EPD",
 		"displayName": "EPD",
 		"category": "PROTEOMIC",
@@ -805,12 +811,6 @@
 		"uriLink": "https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=%s"
 	},
 	{
-		"name": "H-InvDB",
-		"displayName": "H-InvDB",
-		"category": "ORG",
-		"uriLink": "http://h-invitational.jp/hinv/spsoup/locus_view?hix_id=%s"
-	},
-	{
 		"name": "HGNC",
 		"displayName": "HGNC",
 		"category": "ORG",
@@ -875,6 +875,13 @@
 				"xmlTag":"type"			
 			}
 		]
+	},
+	{
+		"name": "NIAGADS",
+		"displayName": "NIAGADS",
+		"category": "ORG",
+		"uriLink": "https://www.niagads.org/genomics/showRecord.do?name=GeneRecordClasses.GeneRecordClass&source_id=%value"
+	
 	},
 	{
 		"name": "neXtProt",

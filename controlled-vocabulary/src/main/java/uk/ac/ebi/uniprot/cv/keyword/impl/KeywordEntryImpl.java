@@ -5,10 +5,7 @@ import uk.ac.ebi.uniprot.cv.keyword.Keyword;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordEntry;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordStatistics;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class KeywordEntryImpl implements KeywordEntry {
 
@@ -132,64 +129,24 @@ public class KeywordEntryImpl implements KeywordEntry {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((category == null) ? 0 : category.hashCode());
-        result = prime * result + ((definition == null) ? 0 : definition.hashCode());
-        result = prime * result + ((geneOntologies == null) ? 0 : geneOntologies.hashCode());
-        result = prime * result + ((parents == null) ? 0 : parents.hashCode());
-        result = prime * result + ((keyword == null) ? 0 : keyword.hashCode());
-        result = prime * result + ((sites == null) ? 0 : sites.hashCode());
-        result = prime * result + ((synonyms == null) ? 0 : synonyms.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        KeywordEntryImpl that = (KeywordEntryImpl) o;
+        return Objects.equals(getKeyword(), that.getKeyword()) &&
+                Objects.equals(getDefinition(), that.getDefinition()) &&
+                Objects.equals(getSynonyms(), that.getSynonyms()) &&
+                Objects.equals(getGeneOntologies(), that.getGeneOntologies()) &&
+                Objects.equals(getParents(), that.getParents()) &&
+                Objects.equals(getSites(), that.getSites()) &&
+                Objects.equals(getCategory(), that.getCategory()) &&
+                Objects.equals(getChildren(), that.getChildren()) &&
+                Objects.equals(getStatistics(), that.getStatistics());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        KeywordEntryImpl other = (KeywordEntryImpl) obj;
-        if (category == null) {
-            if (other.category != null)
-                return false;
-        } else if (!category.equals(other.category))
-            return false;
-        if (definition == null) {
-            if (other.definition != null)
-                return false;
-        } else if (!definition.equals(other.definition))
-            return false;
-        if (geneOntologies == null) {
-            if (other.geneOntologies != null)
-                return false;
-        } else if (!geneOntologies.equals(other.geneOntologies))
-            return false;
-        if (parents == null) {
-            if (other.parents != null)
-                return false;
-        } else if (!parents.equals(other.parents))
-            return false;
-        if (keyword == null) {
-            if (other.keyword != null)
-                return false;
-        } else if (!keyword.equals(other.keyword))
-            return false;
-        if (sites == null) {
-            if (other.sites != null)
-                return false;
-        } else if (!sites.equals(other.sites))
-            return false;
-        if (synonyms == null) {
-            if (other.synonyms != null)
-                return false;
-        } else if (!synonyms.equals(other.synonyms))
-            return false;
-        return true;
+    public int hashCode() {
+        return Objects.hash(getKeyword(), getDefinition(), getSynonyms(), getGeneOntologies(),
+                getSites(), getCategory(), getChildren(), getStatistics());
     }
-
 }

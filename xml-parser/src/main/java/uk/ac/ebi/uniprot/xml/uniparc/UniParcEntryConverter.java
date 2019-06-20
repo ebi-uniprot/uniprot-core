@@ -36,7 +36,6 @@ public class UniParcEntryConverter implements Converter<Entry, UniParcEntry> {
 	public UniParcEntryConverter() {
 		this(new ObjectFactory(), null);
 	}
-
 	public UniParcEntryConverter(ObjectFactory xmlFactory,TaxonomyRepo taxonomyRepo ) {
 		this.xmlFactory = xmlFactory;
 		this.seqFeatureConverter = new SequenceFeatureConverter(xmlFactory);

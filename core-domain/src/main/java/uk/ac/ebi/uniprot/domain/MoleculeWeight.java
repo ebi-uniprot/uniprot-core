@@ -39,12 +39,20 @@ public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
     MoleculeWeight(int weight) {
         this.weight = weight;
     }
-
+    
+    private static int getElementWeight(char c) {
+    	try {
+    		return  MoleculeWeight.valueOf(String.valueOf(c)).weight;
+    	}catch(Exception e) {
+    		
+    	}
+    	return 0;
+    }
     public static int calcMolecularWeight(String sequence) {
 
         long weight = 0;
         for (char c : sequence.toCharArray()) {
-            int val = MoleculeWeight.valueOf(String.valueOf(c)).weight;
+            int val = getElementWeight(c);
             weight += val;
         }
         weight += h2o.weight;
