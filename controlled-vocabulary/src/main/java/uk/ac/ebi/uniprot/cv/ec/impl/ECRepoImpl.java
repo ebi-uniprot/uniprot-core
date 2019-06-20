@@ -6,6 +6,7 @@ import uk.ac.ebi.uniprot.cv.ec.ECRepo;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,12 @@ public class ECRepoImpl implements ECRepo {
     }
 
     @Override
-    public EC getEC(String id) {
-        return ecIdMap.get(id);
+    public Optional<EC> getEC(String id) {
+        if (ecIdMap.containsKey(id)) {
+            return Optional.of(ecIdMap.get(id));
+        } else {
+            return Optional.empty();
+        }
     }
 
 }

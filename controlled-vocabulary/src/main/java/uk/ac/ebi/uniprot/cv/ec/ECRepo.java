@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.cv.ec;
 
+import java.util.Optional;
+
 public interface ECRepo {
-	EC getEC(String id);
+    Optional<EC> getEC(String id);
 }
