@@ -1,5 +1,5 @@
 package uk.ac.ebi.uniprot.cv.ec;
 
-public interface ECService {
+public interface ECRepo {
 	EC getEC(String id);
 }
