@@ -50,6 +50,10 @@ public class Utils {
         return value != null && !value.isEmpty();
     }
 
+    public static boolean notEmpty(Map<?, ?> value) {
+        return value != null && !value.isEmpty();
+    }
+
     public static boolean nonNull(Object o) {
         return Objects.nonNull(o);
     }
