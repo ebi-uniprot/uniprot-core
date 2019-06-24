@@ -29,7 +29,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	private ProteomeId panproteome;
 	private int annotationScore;
 	private Superkingdom superkingdom;
-	private int proteinCount;
 	private int geneCount;
 	private List<TaxonomyLineage> taxonLineage =new ArrayList<>();
 	private List<CanonicalProtein> canonicalProteins  =new ArrayList<>();
@@ -44,7 +43,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 				 proteomeType,  redundantTo,  strain,  isolate,
 				dbXReferences,  components,
 				references,  redundantProteomes,  panproteome,
-				 annotationScore,  superkingdom,  proteinCount,  geneCount, taxonLineage, canonicalProteins, sourceDb) ;
+				 annotationScore,  superkingdom,   geneCount, taxonLineage, canonicalProteins, sourceDb) ;
 
 	}
 	
@@ -74,7 +73,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 		this.panproteome =instance.getPanproteome();
 		this.annotationScore = instance.getAnnotationScore();
 		this.superkingdom = instance.getSuperkingdom();
-		this.proteinCount = instance.getProteinCount();
 		this.geneCount =instance.getGeneCount();
 		this.taxonLineage =instance.getTaxonLineage();
 		canonicalProteins.clear();
@@ -184,11 +182,6 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	
 	public ProteomeEntryBuilder superkingdom(Superkingdom superkingdom) {
 		this.superkingdom = superkingdom;
-		return this;
-	}
-	
-	public ProteomeEntryBuilder proteinCount(int proteinCount) {
-		this.proteinCount = proteinCount;
 		return this;
 	}
 	public ProteomeEntryBuilder geneCount(int geneCount) {

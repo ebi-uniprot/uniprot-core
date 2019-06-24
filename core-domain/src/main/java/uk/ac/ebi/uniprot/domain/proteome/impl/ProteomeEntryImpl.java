@@ -30,7 +30,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 	private ProteomeId panproteome;
 	private int annotationScore;
 	private Superkingdom superkingdom;
-	private int proteinCount;
+
 	private int geneCount;
 	List<TaxonomyLineage> taxonLineage;
 	private List<CanonicalProtein> canonicalProteins;
@@ -49,7 +49,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 			ProteomeType proteomeType, ProteomeId redundantTo, String strain, String isolate,
 			List<DBCrossReference<ProteomeXReferenceType>> dbXReferences, List<Component> components,
 			List<Citation> references, List<RedundantProteome> redundantProteomes, ProteomeId panproteome,
-			int annotationScore, Superkingdom superkingdom, int proteinCount, int geneCount,
+			int annotationScore, Superkingdom superkingdom,  int geneCount,
 			List<TaxonomyLineage> taxonLineage, List<CanonicalProtein> canonicalProteins, String sourceDb) {
 		super();
 		this.id = id;
@@ -68,7 +68,6 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 		this.panproteome = panproteome;
 		this.annotationScore = annotationScore;
 		this.superkingdom = superkingdom;
-		this.proteinCount = proteinCount;
 		this.geneCount = geneCount;
 		this.taxonLineage  = Utils.nonNullUnmodifiableList( taxonLineage);
 		this.canonicalProteins  = Utils.nonNullUnmodifiableList( canonicalProteins);
@@ -153,7 +152,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 
 	@Override
 	public int getProteinCount() {
-		return proteinCount;
+		return components.stream().mapToInt(val->val.getProteinCount())
+				.sum();
 	}
 
 	@Override

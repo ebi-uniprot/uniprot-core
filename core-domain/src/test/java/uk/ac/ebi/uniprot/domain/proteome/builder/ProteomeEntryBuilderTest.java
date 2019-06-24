@@ -330,13 +330,6 @@ class ProteomeEntryBuilderTest {
 	}
 
 	@Test
-	void testProteinCount() {
-		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().proteinCount(905)
-				.build();
-		assertEquals(905, proteome.getProteinCount());
-	}
-
-	@Test
 	void testGeneCount() {
 		ProteomeEntry proteome = ProteomeEntryBuilder.newInstance().geneCount(203)
 				.build();
