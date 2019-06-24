@@ -1,9 +1,19 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.proteome.*;
+import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
+import uk.ac.ebi.uniprot.domain.proteome.Component;
+import uk.ac.ebi.uniprot.domain.proteome.ProteomeEntry;
+import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
+import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
+import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
+import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
 import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
@@ -14,10 +24,6 @@ import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.Proteome;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.SuperregnumType;
 import uk.ac.ebi.uniprot.xml.uniprot.XmlConverterHelper;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 
@@ -60,9 +66,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 				.filter(val -> val!=null)
 				.collect(Collectors.toList());
 		
-		Optional<Integer> proteinCount=
-		components.stream().map(val ->val.getProteinCount()).reduce((val1, val2)->val1+val2);
-		
+	
 		ProteomeEntryBuilder builder = ProteomeEntryBuilder.newInstance();
 		builder.proteomeId(proteomeId(xmlObj.getUpid()))
 		.proteomeType(proteomeType)
@@ -77,7 +81,6 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 			.geneCount(canonicalProteins.size())
 			.redundantProteomes(redundantProteomes)
 			.dbXReferences(xrefs)
-			.proteinCount(proteinCount.isPresent()? proteinCount.get():0)
 			.superkingdom(Superkingdom.fromValue(xmlObj.getSuperregnum().value()))
 			.annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore())
 			.references(citations);
