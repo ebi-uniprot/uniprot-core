@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.google.common.base.Strings;
+
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
@@ -33,9 +35,11 @@ public class UniParcOrganismMap implements NamedValueMap {
 		Map<String, String> map = new HashMap<>();
 		String organismNames =
 		organisms.stream().map(val ->EntryMapUtil.convertOrganism(val) )
+		.filter(val ->!Strings.isNullOrEmpty(val))
 		.collect(Collectors.joining(DELIMITER));
 		String taxIds=
 		organisms.stream().map(val -> ""+val.getTaxonId())
+		.filter(val ->!Strings.isNullOrEmpty(val) && !val.equals("O"))
 		.collect(Collectors.joining(DELIMITER));
 		
 		map.put(FIELDS.get(0), organismNames);

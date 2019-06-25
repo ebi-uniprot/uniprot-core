@@ -23,13 +23,12 @@ public class UniParcFastaParser {
 	        int columnCounter = 0;
 	        String sequence = entry.getSequence().getValue();
 	        for (char c : sequence.toCharArray()) {
-	            sb.append(c);
-	            if ((++columnCounter % 60 == 0) && (columnCounter < sequence.length())) {
+	            if (columnCounter % 60 == 0 && columnCounter > 0) {
 	                sb.append("\n");
 	            }
+	            sb.append(c);
+	            columnCounter++;
 	        }
-	        
-	
 	        return sb.toString();
 	}
 }
