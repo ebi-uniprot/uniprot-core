@@ -228,5 +228,15 @@
     "name": "TubercuList",
     "displayName": "TubercuList",
     "uriLink": "https://mycobrowser.epfl.ch/genes/%value"
+  },
+   {
+    "name": "MobiDB-lite",
+    "displayName": "MobiDB-lite",
+    "uriLink": "https://www.uniprot.org/help/MobiDB-lite"
+  },
+  {
+    "name": "ProteomicsDB",
+    "displayName": "ProteomicsDB",
+    "uriLink":  "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
   }
 ]
