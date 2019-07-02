@@ -4,10 +4,11 @@ import uk.ac.ebi.uniprot.common.Pair;
 import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-public interface SupportingDataMap {
+public interface SupportingDataMap extends Serializable {
 
     Map<String, Pair<String, KeywordCategory>> getKeywordMap();
 

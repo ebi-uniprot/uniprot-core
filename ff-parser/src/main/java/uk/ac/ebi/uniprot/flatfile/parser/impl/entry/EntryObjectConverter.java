@@ -38,7 +38,11 @@ import java.util.stream.Collectors;
 
 public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry>{
 
-    private static final Logger logger = LoggerFactory.getLogger(EntryObjectConverter.class);
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1548724347898352705L;
+	private static final Logger logger = LoggerFactory.getLogger(EntryObjectConverter.class);
     private final AcLineConverter acLineConverter = new AcLineConverter();
     private final DeLineConverter deLineConverter = new DeLineConverter();
 

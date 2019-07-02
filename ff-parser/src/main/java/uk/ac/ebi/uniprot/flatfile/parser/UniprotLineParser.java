@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: wudong
@@ -7,6 +9,6 @@ package uk.ac.ebi.uniprot.flatfile.parser;
  * Time: 15:29
  * To change this template use File | Settings | File Templates.
  */
-public interface UniprotLineParser<T> {
+public interface UniprotLineParser<T> extends Serializable {
     T parse(String s);
 }
