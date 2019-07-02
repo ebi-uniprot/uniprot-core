@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser;
 
+import java.io.Serializable;
+
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.Lexer;
@@ -19,11 +21,11 @@ import uk.ac.ebi.uniprot.flatfile.antlr.*;
  * Time: 15:34
  * To change this template use File | Settings | File Templates.
  */
-public interface GrammarFactory<L extends Lexer, P extends Parser> {
+public interface GrammarFactory<L extends Lexer, P extends Parser> extends Serializable  {
 
     //public static final String packageName = "uk.ac.ebi.uniprot.parser.antlr";
 
-    public static enum GrammarFactoryEnum {
+    public static enum GrammarFactoryEnum  implements Serializable{
         Uniprot, Ac, Id, Dt, Kw, Dr, Sq, Gn, Pe, Os, Og, Rn, Rt, Rp, Ra, Rg, Rc, Rx, De, Rl, Ft, Oc, Ox, Oh, Cc, Ss;
 
         @SuppressWarnings("rawtypes")

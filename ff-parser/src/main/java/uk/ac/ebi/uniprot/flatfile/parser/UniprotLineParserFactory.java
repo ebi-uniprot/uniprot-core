@@ -1,5 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser;
 
+import java.io.Serializable;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ac.AcLineObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineObject;
@@ -31,7 +33,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.ss.SsLineObject;
  * <p/>
  * User: wudong, Date: 19/08/13, Time: 15:49
  */
-public interface UniprotLineParserFactory {
+public interface UniprotLineParserFactory extends Serializable{
 	public  UniprotLineParser<AcLineObject> createAcLineParser();
 
 	UniprotLineParser<DrLineObject> createDrLineParser();
