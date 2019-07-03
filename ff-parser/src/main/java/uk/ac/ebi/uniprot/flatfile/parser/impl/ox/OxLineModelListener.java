@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ox;
 
 import org.antlr.v4.runtime.misc.NotNull;
-import uk.ac.ebi.uniprot.flatfile.antlr.OxLineBaseListener;
 import uk.ac.ebi.uniprot.flatfile.antlr.OxLineParser;
+import uk.ac.ebi.uniprot.flatfile.antlr.OxLineParserBaseListener;
 import uk.ac.ebi.uniprot.flatfile.parser.ParseTreeObjectExtractor;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceInfo;
+import uk.ac.ebi.uniprot.flatfile.parser.impl.oh.OhLineObject;
 
 
 /**
@@ -14,7 +15,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceInfo;
  * Time: 12:26
  * To change this template use File | Settings | File Templates.
  */
-public class OxLineModelListener extends OxLineBaseListener implements ParseTreeObjectExtractor<OxLineObject> {
+public class OxLineModelListener extends OxLineParserBaseListener implements ParseTreeObjectExtractor<OxLineObject> {
 
 	private OxLineObject object;
 

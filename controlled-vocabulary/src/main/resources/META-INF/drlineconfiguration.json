@@ -477,6 +477,12 @@
 		"uriLink": "https://globe.jpostdb.org/protein?id=%u"
 	},
 	
+	{
+		"name": "MassIVE",
+		"displayName": "MassIVE",
+		"category": "PROTEOMIC",
+		"uriLink": "https://massive.ucsd.edu/ProteoSAFe/protein_explorer.jsp?libraries=2&protein_name=%value"
+	},
 	
 	{
 		"name": "DNASU",
@@ -1474,5 +1480,17 @@
 		"displayName": "PathwayCommons",
 		"category": "UNK",
 		"uriLink": "http://www.pathwaycommons.org/search?type=Pathway&q=%s"
+	},
+	{
+		"name": "Pharos",
+		"displayName": "Pharos",
+		"category": "UNK",
+		"uriLink": "https://pharos.nih.gov/targets/%value"
+	},
+	{
+		"name": "DrugCentral",
+		"displayName": "DrugCentral",
+		"category": "UNK",
+		"uriLink": "http://drugcentral.org/target/%value"
 	}
 ]

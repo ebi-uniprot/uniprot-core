@@ -3,3 +3,6 @@ ProtClustDB
 PathwayCommons
 CPTAC
 NIAGADS
+DrugCentral
+Pharos
+MassIVE
