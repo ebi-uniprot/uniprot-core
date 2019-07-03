@@ -17,14 +17,15 @@ import java.util.Locale;
 public class DtLineModelListener extends DtLineParserBaseListener implements ParseTreeObjectExtractor<DtLineObject> {
 
     private DtLineObject object;
-    private DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
-            .toFormatter(Locale.ENGLISH);
+
 
     @Override
     public void exitDt_entryver_line(@NotNull DtLineParser.Dt_entryver_lineContext ctx) {
         String text = ctx.DATE().getText();
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                .toFormatter(Locale.ENGLISH);
         object.entry_date = LocalDate.parse(text, formatter);
 
         String text1 = ctx.VERSION().getText();
@@ -39,6 +40,10 @@ public class DtLineModelListener extends DtLineParserBaseListener implements Par
     @Override
     public void exitDt_integration_line(@NotNull DtLineParser.Dt_integration_lineContext ctx) {
         String text = ctx.DATE().getText();
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                .toFormatter(Locale.ENGLISH);
         object.integration_date = LocalDate.parse(text, formatter);
         if (ctx.dt_database().SWISSPROT() != null) {
             object.isSiwssprot = true;
@@ -50,6 +55,10 @@ public class DtLineModelListener extends DtLineParserBaseListener implements Par
     @Override
     public void exitDt_seqver_line(@NotNull DtLineParser.Dt_seqver_lineContext ctx) {
         String text = ctx.DATE().getText();
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                .toFormatter(Locale.ENGLISH);
         object.seq_date = LocalDate.parse(text, formatter);
 
         String text1 = ctx.VERSION().getText();
