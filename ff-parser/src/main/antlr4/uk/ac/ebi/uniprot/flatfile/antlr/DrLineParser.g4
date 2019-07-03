@@ -13,7 +13,7 @@ DR   Pfam; PF04947; Pox_VLTF3; 1.
 
 parser grammar DrLineParser;
 
-options { tokenVocab=DrLineLexer;}
+options { tokenVocab=DrLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 dr_dr:
      (dr_line|dr_prosite_ss)+ ;

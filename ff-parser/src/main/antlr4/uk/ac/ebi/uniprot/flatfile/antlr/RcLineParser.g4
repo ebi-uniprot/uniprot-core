@@ -1,6 +1,6 @@
 parser grammar RcLineParser;
 
-options { tokenVocab=RcLineLexer; }
+options { tokenVocab=RcLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 rc_rc: RC_HEADER rc (rc_separator rc)* NEW_LINE;
 

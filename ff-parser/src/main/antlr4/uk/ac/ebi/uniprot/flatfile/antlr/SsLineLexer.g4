@@ -1,5 +1,7 @@
 lexer grammar SsLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 /*
 
 **

@@ -1,6 +1,7 @@
 parser grammar AcLineParser;
 
-options { tokenVocab=AcLineLexer;}
+
+options { tokenVocab=AcLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser; }
 
 ac_ac: ac_line+;
 

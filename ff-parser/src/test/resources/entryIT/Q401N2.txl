@@ -168,7 +168,6 @@ DR   CTD; 353174; -.
 DR   DisGeNET; 353174; -.
 DR   EuPathDB; HostDB:ENSG00000186919.12; -.
 DR   GeneCards; ZACN; -.
-DR   H-InvDB; HIX0027141; -.
 DR   HGNC; HGNC:29504; ZACN.
 DR   MIM; 610935; gene.
 DR   neXtProt; NX_Q401N2; -.

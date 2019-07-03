@@ -5,7 +5,7 @@ RA   Cozzone A.J., Cortay J.-C.;
 
 parser grammar RaLineParser;
 
-options { tokenVocab=RaLineLexer;}
+options { tokenVocab=RaLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 ra_ra: RA_HEADER names END_OF_RA;
 

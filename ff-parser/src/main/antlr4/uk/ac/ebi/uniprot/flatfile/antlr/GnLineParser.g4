@@ -7,7 +7,7 @@ GN   ORFNames=<name1>[, <name2>...];
 
 parser grammar GnLineParser;
 
-options { tokenVocab=GnLineLexer;}
+options { tokenVocab=GnLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 gn_gn: gn_line_block (GN_NAME_SEPARATOR gn_line_block)* NEWLINE;
 

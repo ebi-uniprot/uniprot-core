@@ -9,7 +9,7 @@ SQ   SEQUENCE   256 AA;  29735 MW;  B4840739BF7D4121 CRC64;
 
 parser grammar SqLineParser;
 
-options { tokenVocab=SqLineLexer;}
+options { tokenVocab=SqLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 sq_sq: sq_head sq_block;
 

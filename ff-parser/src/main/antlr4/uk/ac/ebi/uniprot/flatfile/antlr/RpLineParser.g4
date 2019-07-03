@@ -1,6 +1,6 @@
 parser grammar RpLineParser;
 
-options { tokenVocab=RpLineLexer;}
+options { tokenVocab=RpLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 rp_rp: RP_START rp_scope (
             (COMA (SPACE|CHANGE_OF_LINE) rp_scope)*

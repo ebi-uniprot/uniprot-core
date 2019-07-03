@@ -9,6 +9,8 @@ RX   AGRICOLA=IND20551642; DOI=10.1007/BF00224104;
 
 lexer grammar RxLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 RX_HEADER : 'RX   ' ;
 
 CHANGE_OF_LINE: '\nRX   ';

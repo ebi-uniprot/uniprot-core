@@ -1,5 +1,7 @@
 lexer grammar DeLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 DE_RECNAME_START: 'DE   RecName: ';
 DE_SUBNAME_START: 'DE   SubName: ';
 DE_ALTNAME_START: 'DE   AltName: ';

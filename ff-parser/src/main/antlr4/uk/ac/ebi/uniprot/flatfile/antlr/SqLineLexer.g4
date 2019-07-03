@@ -9,6 +9,8 @@ SQ   SEQUENCE   256 AA;  29735 MW;  B4840739BF7D4121 CRC64;
 
 lexer grammar SqLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 SQ: 'SQ';
 SEQUENCE: 'SEQUENCE';
 AA: 'AA;';

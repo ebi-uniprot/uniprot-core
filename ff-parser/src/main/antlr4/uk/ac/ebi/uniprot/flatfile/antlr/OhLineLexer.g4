@@ -6,6 +6,8 @@ The length of an OH line may exceed 75 characters.
 
 lexer grammar OhLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 OH_HEADER: 'OH   ';
 NCBI_TAX: 'NCBI_TaxID=';
 

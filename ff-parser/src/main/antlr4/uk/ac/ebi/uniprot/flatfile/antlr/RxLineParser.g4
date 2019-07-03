@@ -9,7 +9,7 @@ RX   AGRICOLA=IND20551642; DOI=10.1007/BF00224104;
 
 parser grammar RxLineParser;
 
-options { tokenVocab=RxLineLexer;}
+options { tokenVocab=RxLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 rx_rx : RX_HEADER rx ((SPACE|CHANGE_OF_LINE) rx)* NEW_LINE;
 

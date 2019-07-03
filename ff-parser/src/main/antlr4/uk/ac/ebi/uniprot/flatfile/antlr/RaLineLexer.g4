@@ -5,6 +5,8 @@ RA   Cozzone A.J., Cortay J.-C.;
 
 lexer grammar RaLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 RA_HEADER: 'RA   '    -> pushMode(AUTHOR_CONTENT);
 
 mode AUTHOR_CONTENT;

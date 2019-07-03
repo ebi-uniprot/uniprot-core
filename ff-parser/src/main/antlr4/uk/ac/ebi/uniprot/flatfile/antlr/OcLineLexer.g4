@@ -9,6 +9,8 @@ OC   Homo.
 
 lexer grammar OcLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 OC_HEADER : 'OC   '   ->pushMode(OC_CONTENT);
 
 mode OC_CONTENT;

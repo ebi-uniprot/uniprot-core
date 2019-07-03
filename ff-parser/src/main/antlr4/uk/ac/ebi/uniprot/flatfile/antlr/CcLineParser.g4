@@ -1,6 +1,6 @@
 parser grammar CcLineParser;
 
-options { tokenVocab=CcLineLexer;}
+options { tokenVocab=CcLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 cc_cc: (CC_HEADER cc_line)+;
 

@@ -1,5 +1,7 @@
 lexer grammar UniprotLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 ID_LINE:   ID_HEADER .+? NEW_LINE;
 AC_LINE:   AC_HEADER .+? NEW_LINE;
 DT_LINE:   DT_HEADER .+? NEW_LINE;

@@ -1,6 +1,6 @@
 parser grammar DeLineParser;
 
-options { tokenVocab=DeLineLexer;}
+options { tokenVocab=DeLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 de_de: rec_name? alt_name*  alt_allergen? alt_biotech? alt_cdantigen* alt_inn* sub_name*
        included_de* contained_de* flags?;

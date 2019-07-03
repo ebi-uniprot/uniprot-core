@@ -4,7 +4,7 @@ OG   Plasmid IncFII R1-19 (R1 drd-19).
 */
 parser grammar OgLineParser;
 
-options { tokenVocab=OgLineLexer;}
+options { tokenVocab=OgLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 og_og:
     (hydrogenosome_line | mitochondrion_line | nucleomorph_line | plasmid_line | (plastid_line+))+ ;

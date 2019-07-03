@@ -3,6 +3,7 @@ ID   EntryName Status; SequenceLength.
 */
 lexer grammar IdLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
 
 ID_HEAD: 'ID   ';
 

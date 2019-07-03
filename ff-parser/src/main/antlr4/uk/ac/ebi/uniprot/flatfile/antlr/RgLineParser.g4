@@ -4,7 +4,7 @@ RG   The mouse genome sequencing consortium;
 
 parser grammar RgLineParser;
 
-options { tokenVocab=RgLineLexer; }
+options { tokenVocab=RgLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 rg_rg: rg_line+;
 

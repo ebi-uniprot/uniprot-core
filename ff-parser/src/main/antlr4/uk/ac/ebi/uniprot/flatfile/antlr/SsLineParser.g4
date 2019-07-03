@@ -1,6 +1,6 @@
 parser grammar SsLineParser;
 
-options { tokenVocab=SsLineLexer;}
+options { tokenVocab=SsLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 ss_ss:  STAR_LINE
         (source_section | internal_section |(source_section internal_section));

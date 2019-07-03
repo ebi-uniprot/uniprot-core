@@ -1,7 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.antlr.v4.runtime.CharStream;
-import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.misc.Interval;
 
@@ -18,8 +17,12 @@ import org.antlr.v4.runtime.misc.Interval;
  * <br>
  * This class cannot be put under the uk.ac.ebi.uniprot.parser package cause parser is a keyword in the Antlr grammar file.
  */
-public abstract class RememberLastTokenLexer extends Lexer {
+public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Token lastToken;
 
 	protected RememberLastTokenLexer(CharStream input) {

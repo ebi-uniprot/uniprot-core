@@ -9,7 +9,7 @@ OC   Homo.
 
 parser grammar OcLineParser;
 
-options { tokenVocab=OcLineLexer; }
+options { tokenVocab=OcLineLexer;  superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 oc_oc: OC_HEADER oc (SEMI_COLON (SPACE|CHANGE_OF_LINE) oc)* DOT_NEW_LINE;
 

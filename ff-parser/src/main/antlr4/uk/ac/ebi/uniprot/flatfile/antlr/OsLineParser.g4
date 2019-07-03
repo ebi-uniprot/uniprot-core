@@ -1,6 +1,6 @@
 parser grammar OsLineParser;
 
-options { tokenVocab=OsLineLexer;}
+options { tokenVocab=OsLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 os_os : OS_HEADER os_line END;
 

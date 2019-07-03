@@ -1,6 +1,6 @@
 parser grammar UniprotParser;
 
-options { tokenVocab=UniprotLexer;}
+options { tokenVocab=UniprotLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 ff: entry+;
 

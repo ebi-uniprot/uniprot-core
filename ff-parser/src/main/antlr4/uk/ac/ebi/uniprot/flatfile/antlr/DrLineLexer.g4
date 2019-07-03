@@ -19,6 +19,8 @@ DR PROSITE; PS00157; RUBISCO_LARGE; 1. [P21235-2]{EI1}
 
 lexer grammar DrLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 tokens {SEPARATOR,  RIGHT_BRACKET}
 
 DR_HEADER : 'DR   ';

@@ -1,6 +1,6 @@
 parser grammar TextHelperParser;
 
-options { tokenVocab=TextHelperLexer;}
+options { tokenVocab=TextHelperLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 text_containing_change_of_line:
     REMOVE_CHANGE_OF_LINE_WORD (REMOVE_CHANGE_OF_LINE_SPACE|REMOVE_CHANGE_OF_LINE_CHANGE_OF_LINE REMOVE_CHANGE_OF_LINE_WORD)*;

@@ -6,7 +6,7 @@ DT   18-APR-2012, entry version 24.
 
 lexer grammar DtLineLexer;
 
-
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
 
 
 DT_HEAD : 'DT   ';

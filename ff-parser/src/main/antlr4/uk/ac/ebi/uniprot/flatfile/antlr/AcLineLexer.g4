@@ -1,5 +1,7 @@
 lexer grammar AcLineLexer;
 
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
+
 AC_HEAD: 'AC   ';
 SPACE1: ' ';
 NEWLINE: '\n';

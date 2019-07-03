@@ -7,7 +7,7 @@ FT                                /FTId=VSP_004370.
 
 parser grammar FtLineParser;
 
-options { tokenVocab=FtLineLexer;}
+options { tokenVocab=FtLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 ft_ft: ft_line+;
 

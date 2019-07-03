@@ -6,7 +6,7 @@ DT   18-APR-2012, entry version 24.
 
 parser grammar DtLineParser;
 
-options { tokenVocab=DtLineLexer;}
+options { tokenVocab=DtLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 dt_dt: dt_integration_line dt_seqver_line dt_entryver_line;
 

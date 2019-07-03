@@ -5,7 +5,7 @@ KW   Transcription regulation.
 
 parser grammar KwLineParser;
 
-options { tokenVocab=KwLineLexer;}
+options { tokenVocab=KwLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 kw_kw:   kw_line+;
 

@@ -3,7 +3,7 @@ ID   EntryName Status; SequenceLength.
 */
 parser grammar IdLineParser;
 
-options { tokenVocab=IdLineLexer;}
+options { tokenVocab=IdLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 id_id: ID_HEAD entry_name SPACE+ review_status SPACE+ length SPACE AA DOT_NEWLINE;
 

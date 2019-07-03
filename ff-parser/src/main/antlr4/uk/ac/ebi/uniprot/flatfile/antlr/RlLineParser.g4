@@ -1,6 +1,6 @@
 parser grammar RlLineParser;
 
-options { tokenVocab=RlLineLexer;}
+options { tokenVocab=RlLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 rl_rl: RL_HEADER rl;
 

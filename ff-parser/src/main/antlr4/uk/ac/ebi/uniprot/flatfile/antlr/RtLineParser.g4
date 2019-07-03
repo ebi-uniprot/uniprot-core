@@ -1,6 +1,6 @@
 parser grammar RtLineParser;
 
-options { tokenVocab=RtLineLexer;}
+options { tokenVocab=RtLineLexer; superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtParser;}
 
 rt_rt: RT_START rt_line  RT_ENDING;
 
