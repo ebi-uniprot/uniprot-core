@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureStatistics;
 import uk.ac.ebi.uniprot.domain.literature.builder.LiteratureEntryBuilder;
-import uk.ac.ebi.uniprot.domain.literature.builder.LiteratureStatisticsBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 /**
@@ -18,7 +16,7 @@ class LiteratureEntryTest {
     void testSimpleLiteratureEntry() {
         LiteratureEntryBuilder builder = new LiteratureEntryBuilder();
 
-        LiteratureEntry literatureEntry = builder.build();
+        LiteratureEntry literatureEntry = builder.completeAuthorList(false).build();
         ValidateJson.verifyJsonRoundTripParser(LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
     }
 
@@ -35,6 +33,7 @@ class LiteratureEntryTest {
                 .pubmedId("pubmed Id")
                 .addAuthor(new AuthorImpl("author name"))
                 .addAuthoringGroup("authoring group")
+                .completeAuthorList(true)
                 .firstPage("first Page")
                 .journal("journal Name")
                 .volume("volume")
@@ -42,15 +41,8 @@ class LiteratureEntryTest {
                 .literatureAbstract("literature Abstract")
                 .publicationDate(new PublicationDateImpl("21-06-2019"))
                 .title("title")
-                .statistics(createCompleteLiteratureStatistics())
-                .build();
-    }
-
-    private LiteratureStatistics createCompleteLiteratureStatistics() {
-        return new LiteratureStatisticsBuilder()
-                .reviewedProteinCount(10)
-                .unreviewedProteinCount(20)
-                .mappedProteinCount(30)
+                .addLiteratureMappedReference(LiteratureMappedReferenceTest.getCompleteLiteratureMappedReference())
+                .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())
                 .build();
     }
 

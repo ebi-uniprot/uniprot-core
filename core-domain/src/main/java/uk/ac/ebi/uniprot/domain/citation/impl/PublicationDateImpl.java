@@ -3,6 +3,8 @@ package uk.ac.ebi.uniprot.domain.citation.impl;
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
+import java.util.Objects;
+
 public class PublicationDateImpl implements PublicationDate {
     private static final long serialVersionUID = 3232437573866835411L;
     private String value;
@@ -26,24 +28,22 @@ public class PublicationDateImpl implements PublicationDate {
     }
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PublicationDateImpl that = (PublicationDateImpl) o;
+        return Objects.equals(getValue(), that.getValue());
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        PublicationDateImpl other = (PublicationDateImpl) obj;
-        if (value == null) {
-            return other.value == null;
-        } else return value.equals(other.value);
+    public int hashCode() {
+        return Objects.hash(getValue());
+    }
+
+    @Override
+    public String toString() {
+        return "PublicationDateImpl{" +
+                "value='" + value + '\'' +
+                '}';
     }
 }

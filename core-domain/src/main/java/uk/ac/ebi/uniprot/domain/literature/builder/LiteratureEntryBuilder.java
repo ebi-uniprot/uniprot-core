@@ -7,6 +7,7 @@ import uk.ac.ebi.uniprot.domain.citation.Journal;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 import uk.ac.ebi.uniprot.domain.citation.impl.JournalImpl;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
+import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureStatistics;
 import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureEntryImpl;
 
@@ -20,15 +21,17 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
 
     private String pubmedId;
     private String doiId;
-    private String title;
+    private String title = "";
     private List<String> authoringGroup = new ArrayList<>();
     private List<Author> authors = new ArrayList<>();
+    private boolean completeAuthorList = true;
     private PublicationDate publicationDate;
     private Journal journal;
     private String firstPage;
     private String lastPage;
     private String volume;
-    private String literatureAbstract;
+    private String literatureAbstract = "";
+    private List<LiteratureMappedReference> literatureMappedReference = new ArrayList<>();
     private LiteratureStatistics statistics;
 
     public LiteratureEntryBuilder pubmedId(String pubmedId) {
@@ -42,7 +45,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder title(String title) {
-        this.title = title;
+        this.title = Utils.nullToEmpty(title);
         return this;
     }
 
@@ -63,6 +66,11 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
 
     public LiteratureEntryBuilder addAuthor(Author author) {
         Utils.nonNullAdd(author, this.authors);
+        return this;
+    }
+
+    public LiteratureEntryBuilder completeAuthorList(boolean completeAuthorList) {
+        this.completeAuthorList = completeAuthorList;
         return this;
     }
 
@@ -103,6 +111,16 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
         return this;
     }
 
+    public LiteratureEntryBuilder literatureMappedReference(List<LiteratureMappedReference> literatureMappedReference) {
+        this.literatureMappedReference = Utils.nonNullList(literatureMappedReference);
+        return this;
+    }
+
+    public LiteratureEntryBuilder addLiteratureMappedReference(LiteratureMappedReference literatureMappedReference) {
+        Utils.nonNullAdd(literatureMappedReference, this.literatureMappedReference);
+        return this;
+    }
+
     public LiteratureEntryBuilder statistics(LiteratureStatistics statistics) {
         this.statistics = statistics;
         return this;
@@ -110,8 +128,8 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
 
     @Override
     public LiteratureEntry build() {
-        return new LiteratureEntryImpl(pubmedId, doiId, title, authoringGroup, authors, publicationDate, journal,
-                firstPage, lastPage, volume, literatureAbstract, statistics);
+        return new LiteratureEntryImpl(pubmedId, doiId, title, authoringGroup, authors, completeAuthorList,
+                publicationDate, journal, firstPage, lastPage, volume, literatureAbstract, literatureMappedReference, statistics);
     }
 
     @Override
@@ -122,11 +140,13 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
                 .title(instance.getTitle())
                 .authoringGroup(instance.getAuthoringGroup())
                 .authors(instance.getAuthors())
+                .completeAuthorList(instance.isCompleteAuthorList())
                 .publicationDate(instance.getPublicationDate())
                 .journal(instance.getJournal())
                 .firstPage(instance.getFirstPage())
                 .lastPage(instance.getLastPage())
                 .literatureAbstract(instance.getLiteratureAbstract())
+                .literatureMappedReference(instance.getLiteratureMappedReferences())
                 .statistics(instance.getStatistics());
         return builder;
     }

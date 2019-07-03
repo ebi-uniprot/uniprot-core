@@ -21,6 +21,8 @@ public interface LiteratureEntry extends Serializable {
 
     List<Author> getAuthors();
 
+    boolean isCompleteAuthorList();
+
     List<String> getAuthoringGroup();
 
     Journal getJournal();
@@ -34,6 +36,8 @@ public interface LiteratureEntry extends Serializable {
     String getVolume();
 
     String getLiteratureAbstract();
+
+    List<LiteratureMappedReference> getLiteratureMappedReferences();
 
     LiteratureStatistics getStatistics();
 
@@ -79,6 +83,10 @@ public interface LiteratureEntry extends Serializable {
 
     default boolean hasLiteratureAbstract() {
         return Utils.notEmpty(getLiteratureAbstract());
+    }
+
+    default boolean hasLiteratureMappedReferences() {
+        return Utils.notEmpty(getLiteratureMappedReferences());
     }
 
     default boolean hasStatistics() {

@@ -9,13 +9,18 @@ import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.JournalImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
+import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureStatistics;
 import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureEntryImpl;
+import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureMappedReferenceImpl;
 import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureStatisticsImpl;
+import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
+import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
 import uk.ac.ebi.uniprot.json.parser.serializer.AuthorSerializer;
 import uk.ac.ebi.uniprot.json.parser.serializer.JournalSerializer;
 import uk.ac.ebi.uniprot.json.parser.serializer.PublicationDateSerializer;
+import uk.ac.ebi.uniprot.json.parser.uniprot.serializer.UniProtAccessionSerializer;
 
 public class LiteratureJsonConfig extends JsonConfig {
     private static LiteratureJsonConfig INSTANCE;
@@ -53,9 +58,11 @@ public class LiteratureJsonConfig extends JsonConfig {
         SimpleModule mod = new SimpleModule();
         mod.addAbstractTypeMapping(LiteratureEntry.class, LiteratureEntryImpl.class);
         mod.addAbstractTypeMapping(LiteratureStatistics.class, LiteratureStatisticsImpl.class);
+        mod.addAbstractTypeMapping(LiteratureMappedReference.class, LiteratureMappedReferenceImpl.class);
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
         mod.addAbstractTypeMapping(Author.class, AuthorImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);
+        mod.addAbstractTypeMapping(UniProtAccession.class, UniProtAccessionImpl.class);
         objMapper.registerModule(mod);
 
         return objMapper;
@@ -68,6 +75,7 @@ public class LiteratureJsonConfig extends JsonConfig {
         simpleMod.addSerializer(AuthorImpl.class, new AuthorSerializer());
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
+        simpleMod.addSerializer(UniProtAccessionImpl.class, new UniProtAccessionSerializer());
 
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;

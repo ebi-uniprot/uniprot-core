@@ -36,6 +36,7 @@ class LiteratureEntryBuilderTest {
         assertFalse(entry.hasTitle());
         assertFalse(entry.hasVolume());
         assertFalse(entry.hasStatistics());
+        assertTrue(entry.isCompleteAuthorList());
 
     }
 
@@ -88,6 +89,8 @@ class LiteratureEntryBuilderTest {
         assertTrue(entry.hasStatistics());
         assertEquals(entry.getStatistics(), LiteratureStatisticsBuilderTest.createCompleteLiteratureStatistics());
 
+        assertFalse(entry.isCompleteAuthorList());
+
     }
 
     private LiteratureEntry createCompleteLiteratureEntry() {
@@ -115,7 +118,8 @@ class LiteratureEntryBuilderTest {
                 .literatureAbstract("literature Abstract")
                 .publicationDate(new PublicationDateImpl("21-06-2019"))
                 .statistics(LiteratureStatisticsBuilderTest.createCompleteLiteratureStatistics())
-                .title("title");
+                .title("title")
+                .completeAuthorList(false);
     }
 
 }

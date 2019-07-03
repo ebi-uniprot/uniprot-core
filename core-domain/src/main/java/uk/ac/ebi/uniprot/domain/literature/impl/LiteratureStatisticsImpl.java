@@ -23,7 +23,6 @@ public class LiteratureStatisticsImpl implements LiteratureStatistics {
         this.mappedProteinCount = mappedProteinCount;
     }
 
-
     @Override
     public long getReviewedProteinCount() {
         return reviewedProteinCount;

@@ -5,6 +5,7 @@ import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Journal;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
+import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureStatistics;
 
 import java.util.List;
@@ -22,32 +23,37 @@ public class LiteratureEntryImpl implements LiteratureEntry {
     private String title;
     private List<String> authoringGroup;
     private List<Author> authors;
+    private boolean completeAuthorList;
     private PublicationDate publicationDate;
     private Journal journal;
     private String firstPage;
     private String lastPage;
     private String volume;
     private String literatureAbstract;
+    private List<LiteratureMappedReference> literatureMappedReferences;
     private LiteratureStatistics statistics;
 
     private LiteratureEntryImpl() {
-        this(null, null, null, null, null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, false, null, null, null, null, null, null, null, null);
     }
 
     public LiteratureEntryImpl(String pubmedId, String doiId, String title, List<String> authoringGroup,
-                               List<Author> authors, PublicationDate publicationDate, Journal journal, String firstPage,
-                               String lastPage, String volume, String literatureAbstract, LiteratureStatistics statistics) {
+                               List<Author> authors, boolean completeAuthorList, PublicationDate publicationDate, Journal journal, String firstPage,
+                               String lastPage, String volume, String literatureAbstract,
+                               List<LiteratureMappedReference> literatureMappedReferences, LiteratureStatistics statistics) {
         this.pubmedId = pubmedId;
         this.doiId = Utils.nullToEmpty(doiId);
         this.title = Utils.nullToEmpty(title);
         this.authoringGroup = Utils.nonNullList(authoringGroup);
         this.authors = Utils.nonNullList(authors);
+        this.completeAuthorList = completeAuthorList;
         this.publicationDate = publicationDate;
         this.journal = journal;
         this.firstPage = Utils.nullToEmpty(firstPage);
         this.lastPage = Utils.nullToEmpty(lastPage);
         this.volume = Utils.nullToEmpty(volume);
         this.literatureAbstract = Utils.nullToEmpty(literatureAbstract);
+        this.literatureMappedReferences = Utils.nonNullList(literatureMappedReferences);
         this.statistics = statistics;
     }
 
@@ -75,6 +81,11 @@ public class LiteratureEntryImpl implements LiteratureEntry {
     @Override
     public List<Author> getAuthors() {
         return authors;
+    }
+
+    @Override
+    public boolean isCompleteAuthorList() {
+        return completeAuthorList;
     }
 
     @Override
@@ -108,6 +119,11 @@ public class LiteratureEntryImpl implements LiteratureEntry {
     }
 
     @Override
+    public List<LiteratureMappedReference> getLiteratureMappedReferences() {
+        return literatureMappedReferences;
+    }
+
+    @Override
     public LiteratureStatistics getStatistics() {
         return statistics;
     }
@@ -117,7 +133,8 @@ public class LiteratureEntryImpl implements LiteratureEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LiteratureEntryImpl that = (LiteratureEntryImpl) o;
-        return Objects.equals(getPubmedId(), that.getPubmedId()) &&
+        return isCompleteAuthorList() == that.isCompleteAuthorList() &&
+                Objects.equals(getPubmedId(), that.getPubmedId()) &&
                 Objects.equals(getDoiId(), that.getDoiId()) &&
                 Objects.equals(getTitle(), that.getTitle()) &&
                 Objects.equals(getAuthoringGroup(), that.getAuthoringGroup()) &&
@@ -128,14 +145,15 @@ public class LiteratureEntryImpl implements LiteratureEntry {
                 Objects.equals(getLastPage(), that.getLastPage()) &&
                 Objects.equals(getVolume(), that.getVolume()) &&
                 Objects.equals(getLiteratureAbstract(), that.getLiteratureAbstract()) &&
-                Objects.equals(getStatistics(), that.getStatistics());
+                Objects.equals(getStatistics(), that.getStatistics()) &&
+                Objects.equals(getLiteratureMappedReferences(), that.getLiteratureMappedReferences());
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(getPubmedId(), getDoiId(), getTitle(), getAuthoringGroup(), getAuthors(),
-                getPublicationDate(), getJournal(), getFirstPage(), getLastPage(), getVolume(),
-                getLiteratureAbstract(), getStatistics());
+                isCompleteAuthorList(), getPublicationDate(), getJournal(), getFirstPage(), getLastPage(),
+                getVolume(), getLiteratureAbstract(), getStatistics(), getLiteratureMappedReferences());
     }
 
     @Override
@@ -146,13 +164,15 @@ public class LiteratureEntryImpl implements LiteratureEntry {
                 ", title='" + title + '\'' +
                 ", authoringGroup=" + authoringGroup +
                 ", authors=" + authors +
+                ", completeAuthorList=" + completeAuthorList +
                 ", publicationDate=" + publicationDate +
                 ", journal=" + journal +
                 ", firstPage='" + firstPage + '\'' +
                 ", lastPage='" + lastPage + '\'' +
                 ", volume='" + volume + '\'' +
                 ", literatureAbstract='" + literatureAbstract + '\'' +
-                ", statistics='" + statistics + '\'' +
+                ", statistics=" + statistics +
+                ", literatureMappedReferences=" + literatureMappedReferences +
                 '}';
     }
 }
