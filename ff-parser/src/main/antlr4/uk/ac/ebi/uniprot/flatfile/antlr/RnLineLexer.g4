@@ -1,14 +1,13 @@
-grammar RnLine;
+lexer grammar RnLineLexer;
 
-rn_rn: 'RN   ' LEFT_BRACKET rn_number RIGHT_BRACKET ((SPACE | CHANGE_OF_LINE)evidence)?'\n';
+options { superClass=uk.ac.ebi.uniprot.flatfile.antlr.AbstractUniProtLexer; }
 
-rn_number: INTEGER;
+RN_HEADER: 'RN   ';
+NEWLINE : '\n';
 
 LEFT_BRACKET: '[';
 RIGHT_BRACKET: ']';
 INTEGER: [1-9][0-9]*;
-
-evidence: LEFT_B  EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* RIGHT_B;
 
 LEFT_B : '{';
 RIGHT_B : '}';

@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.pe;
 
 import org.antlr.v4.runtime.misc.NotNull;
-import uk.ac.ebi.uniprot.flatfile.antlr.PeLineBaseListener;
+import uk.ac.ebi.uniprot.flatfile.antlr.PeLineParserBaseListener;
 import uk.ac.ebi.uniprot.flatfile.antlr.PeLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.ParseTreeObjectExtractor;
 
@@ -12,7 +12,7 @@ import uk.ac.ebi.uniprot.flatfile.parser.ParseTreeObjectExtractor;
  * Time: 12:26
  * To change this template use File | Settings | File Templates.
  */
-public class PeLineModelListener extends PeLineBaseListener implements ParseTreeObjectExtractor<PeLineObject> {
+public class PeLineModelListener extends PeLineParserBaseListener implements ParseTreeObjectExtractor<PeLineObject> {
 
 	private PeLineObject object ;
 
