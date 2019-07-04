@@ -17,7 +17,7 @@ class DBXRefReaderTest {
             Arrays.asList(
             		"DB-0133",
                     "DB-0225","DB-0018", "DB-0168","DB-0188","DB-0227","DB-0055","DB-0061","DB-0161",
-                    "DB-0067","DB-0219","DB-0068","DB-0072", "DB-0078","DB-0090","DB-0099","DB-0106","DB-0047"
+                    "DB-0067","DB-0219","DB-0068","DB-0072", "DB-0078","DB-0090","DB-0099","DB-0106","DB-0047", "DB-0236"
                     ));
 
     @Test
@@ -34,10 +34,13 @@ class DBXRefReaderTest {
     }
 
     private void verifyDBXRef(DBXRef dbxRef) {
+    	System.out.println(dbxRef.toString());
         assertNotNull(dbxRef.getAccession(), "Accession is null");
         assertNotNull(dbxRef.getAbbr(), "Abbr is null");
         assertNotNull(dbxRef.getName(), "Name is null");
+        
         if(!ACCESSION_WITHOUT_REF.contains(dbxRef.getAccession())) {
+        	
              assertNotNull(dbxRef.getRef(), "Ref is null");
         }
         assertNotNull(dbxRef.getLinkType(), "LinkTp is null");

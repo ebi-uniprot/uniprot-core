@@ -238,7 +238,7 @@ class UniProtXDbTypesTest {
         assertEquals("PIRSF", opType.getName());
         assertEquals("PIRSF", opType.getDisplayName());
         assertEquals(DatabaseCategory.FAMILY_AND_DOMAIN_DATABASES, opType.getCategory());
-        assertEquals("http://pir.georgetown.edu/cgi-bin/ipcSF?id=%s", opType.getUriLink());
+        assertEquals("https://proteininformationresource.org/cgi-bin/ipcSF?id=%s", opType.getUriLink());
         assertEquals(2, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "EntryName", "entry name",
                         null);

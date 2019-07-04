@@ -30,7 +30,7 @@
 		"name": "PIR",
 		"displayName": "PIR",
 		"category": "SEQ",
-		"uriLink": "http://pir.georgetown.edu/cgi-bin/nbrfget?uid=%s",
+		"uriLink": "https://proteininformationresource.org/cgi-bin/nbrfget?uid=%s",
 		"attributes": [
 			{
 				"name": "EntryName",
@@ -81,8 +81,8 @@
 	{
 		"name": "DisProt",
 		"displayName": "DisProt",
-		"category": "3DS",
-		"uriLink": "http://disprot.bio.unipd.it/%s"
+		"category": "FMD",
+		"uriLink": "http://disprot.bio.unipd.it/%s" 
 	},
 	{
 		"name": "SMR",
@@ -260,7 +260,7 @@
 		"name": "MoonProt",
 		"displayName": "MoonProt",
 		"category": "PFAM",
-		"uriLink": "http://moonlightingproteins.org/proteins/?q=%u"
+		"uriLink": "http://www.moonlightingproteins.org/proteins/?q=%u"
 	},
 	{
 		"name": "mycoCLAP",
@@ -603,7 +603,7 @@
 		"name": "GeneDB",
 		"displayName": "GeneDB",
 		"category": "GMA",
-		"uriLink": "http://www.genedb.org/gene/%s"		
+		"uriLink": "https://www.genedb.org/gene/%s"		
 	},
 	{
 		"name": "GeneID",
@@ -681,7 +681,7 @@
 		"name": "WBParaSite",
 		"displayName": "WBParaSite",
 		"category": "GMA",
-		"uriLink": "http://parasite.wormbase.org/id/%s",
+		"uriLink": "https://parasite.wormbase.org/id/%s",
 		"attributes": [
 			{
 				"name": "ProteinId",
@@ -1033,7 +1033,7 @@
 		"name": "ZFIN",
 		"displayName": "ZFIN",
 		"category": "ORG",
-		"uriLink": "http://zfin.org/cgi-bin/webdriver?MIval=aa-markerview.apg&OID=%s",
+		"uriLink": "https://zfin.org/%s",
 		"attributes": [		
 			{	"name": "GeneName",
 				"xmlTag":"gene designation"			
@@ -1116,7 +1116,7 @@
 		"name": "BRENDA",
 		"displayName": "BRENDA",
 		"category": "EAP",
-		"uriLink": "http://www.brenda-enzymes.org/enzyme.php?ecno=%s&UniProtAcc=%u&OrganismID=%d",
+		"uriLink": "https://www.brenda-enzymes.org/enzyme.php?ecno=%s&UniProtAcc=%u&OrganismID=%d",
 		"attributes": [		
 			{	"name": "OrganismId",
 				"xmlTag":"organism ID"			
@@ -1203,7 +1203,7 @@
 		"name": "PRO",
 		"displayName": "PRO",
 		"category": "OTHER",
-		"uriLink": "http://research.bioinformatics.udel.edu/pro/entry/%s"	
+		"uriLink": "https://research.bioinformatics.udel.edu/pro/entry/%s"	
 	},
 	{
 		"name": "Bgee",
@@ -1336,7 +1336,7 @@
 		"name": "PIRSF",
 		"displayName": "PIRSF",
 		"category": "FMD",
-		"uriLink": "http://pir.georgetown.edu/cgi-bin/ipcSF?id=%s",
+		"uriLink": "https://proteininformationresource.org/cgi-bin/ipcSF?id=%s",
 		"attributes": [		
 			{	"name": "EntryName",
 				"xmlTag":"entry name"			
@@ -1492,5 +1492,11 @@
 		"displayName": "DrugCentral",
 		"category": "UNK",
 		"uriLink": "http://drugcentral.org/target/%value"
+	},
+	{
+		"name": "ABCD",
+		"displayName": "ABCD",
+		"category": "PAM",
+		"uriLink": "https://web.expasy.org/cgi-bin/abcd/search_abcd.pl?input=%u"
 	}
 ]
