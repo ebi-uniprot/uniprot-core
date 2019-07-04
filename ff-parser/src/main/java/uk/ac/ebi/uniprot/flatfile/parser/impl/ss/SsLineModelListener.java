@@ -17,10 +17,7 @@ import java.util.Locale;
 public class SsLineModelListener extends SsLineParserBaseListener implements ParseTreeObjectExtractor<SsLineObject> {
 
     private SsLineObject object;
-    private DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-            .parseCaseInsensitive()
-            .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
-            .toFormatter(Locale.ENGLISH);
+  
 
     @Override
     public void enterSs_ss(@NotNull SsLineParser.Ss_ssContext ctx) {
@@ -45,6 +42,10 @@ public class SsLineModelListener extends SsLineParserBaseListener implements Par
     public void exitEvidence_line(@NotNull SsLineParser.Evidence_lineContext ctx) {
         SsLineObject.EvLine evLine = new SsLineObject.EvLine();
         evLine.id = ctx.ev_id().getText();
+         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                .toFormatter(Locale.ENGLISH);
 
         evLine.date = LocalDate.parse(ctx.EV_DATE().getText(), formatter);
         evLine.attr_2 = (ctx.ev_attr_2() != null) ? ctx.ev_attr_2().getText() : "";
