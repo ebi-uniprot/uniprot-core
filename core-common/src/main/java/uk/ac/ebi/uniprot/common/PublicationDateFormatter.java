@@ -1,46 +1,45 @@
 package uk.ac.ebi.uniprot.common;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.Locale;
 
 /**
  * Enumeration that contains a set of date formatters.
- *
+ * <p>
  * The enumeration is used not only to format the date correctly, but also to validate the date
  */
 public enum PublicationDateFormatter {
-    YEAR(new SimpleDateFormat("yyyy", Locale.ENGLISH)),
-    YEAR_DIGIT_MONTH(new SimpleDateFormat("yyyy-MM", Locale.ENGLISH)),
-    THREE_LETTER_MONTH_YEAR(new SimpleDateFormat("MMM-yyyy", Locale.ENGLISH)),
-    DAY_DIGITMONTH_YEAR(new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)),
-    DAY_THREE_LETTER_MONTH_YEAR(new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH));
+    YEAR(DateTimeFormatter.ofPattern("yyyy", Locale.ENGLISH)),
+    YEAR_DIGIT_MONTH(DateTimeFormatter.ofPattern("yyyy-MM", Locale.ENGLISH)),
+    THREE_LETTER_MONTH_YEAR(DateTimeFormatter.ofPattern("MMM-yyyy", Locale.ENGLISH)),
+    DAY_DIGITMONTH_YEAR(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)),
+    DAY_THREE_LETTER_MONTH_YEAR(DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.ENGLISH));
 
-    private SimpleDateFormat dateFormat;
+    private DateTimeFormatter dateFormat;
 
-    PublicationDateFormatter(SimpleDateFormat dateFormat) {
+    PublicationDateFormatter(DateTimeFormatter dateFormat) {
         this.dateFormat = dateFormat;
-        this.dateFormat.setLenient(false);
     }
 
     public Date convertStringToDate(String publicationDate) throws ParseException {
-        try{
-            return dateFormat.parse(publicationDate);
-        }catch (ParseException e){
+        try {
+            LocalDate localDate = LocalDate.parse(publicationDate, dateFormat);
+            return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        } catch (DateTimeParseException e) {
             System.err.println("failed to parse: " + publicationDate);
             throw e;
         }
     }
 
-    public String convertDateToString(Date pubDate) {
-        return dateFormat.format(pubDate);
-    }
-
     public boolean isValidDate(String date) {
         try {
-            dateFormat.parse(date);
-        } catch (ParseException e) {
+            LocalDate.parse(date, dateFormat);
+        } catch (DateTimeParseException e) {
             return false;
         }
 
