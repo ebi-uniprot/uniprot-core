@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, LiteratureEntry> {
 
-    private String pubmedId;
+    private Long pubmedId;
     private String doiId;
     private String title = "";
     private List<String> authoringGroup = new ArrayList<>();
@@ -34,7 +34,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     private List<LiteratureMappedReference> literatureMappedReference = new ArrayList<>();
     private LiteratureStatistics statistics;
 
-    public LiteratureEntryBuilder pubmedId(String pubmedId) {
+    public LiteratureEntryBuilder pubmedId(Long pubmedId) {
         this.pubmedId = pubmedId;
         return this;
     }
@@ -143,6 +143,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
                 .completeAuthorList(instance.isCompleteAuthorList())
                 .publicationDate(instance.getPublicationDate())
                 .journal(instance.getJournal())
+                .volume(instance.getVolume())
                 .firstPage(instance.getFirstPage())
                 .lastPage(instance.getLastPage())
                 .literatureAbstract(instance.getLiteratureAbstract())

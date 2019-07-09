@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface LiteratureEntry extends Serializable {
 
-    String getPubmedId();
+    Long getPubmedId();
 
     String getDoiId();
 
@@ -42,7 +42,7 @@ public interface LiteratureEntry extends Serializable {
     LiteratureStatistics getStatistics();
 
     default boolean hasPubmedId() {
-        return Utils.notEmpty(getPubmedId());
+        return Utils.nonNull(getPubmedId()) && getPubmedId() > 0;
     }
 
     default boolean hasDoiId() {

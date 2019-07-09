@@ -18,7 +18,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
 
     private static final long serialVersionUID = -1925700851366460681L;
 
-    private String pubmedId;
+    private Long pubmedId;
     private String doiId;
     private String title;
     private List<String> authoringGroup;
@@ -37,7 +37,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
         this(null, null, null, null, null, false, null, null, null, null, null, null, null, null);
     }
 
-    public LiteratureEntryImpl(String pubmedId, String doiId, String title, List<String> authoringGroup,
+    public LiteratureEntryImpl(Long pubmedId, String doiId, String title, List<String> authoringGroup,
                                List<Author> authors, boolean completeAuthorList, PublicationDate publicationDate, Journal journal, String firstPage,
                                String lastPage, String volume, String literatureAbstract,
                                List<LiteratureMappedReference> literatureMappedReferences, LiteratureStatistics statistics) {
@@ -59,7 +59,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
 
 
     @Override
-    public String getPubmedId() {
+    public Long getPubmedId() {
         return pubmedId;
     }
 

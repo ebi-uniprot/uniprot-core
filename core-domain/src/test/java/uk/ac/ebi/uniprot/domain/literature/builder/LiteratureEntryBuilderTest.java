@@ -36,6 +36,7 @@ class LiteratureEntryBuilderTest {
         assertFalse(entry.hasTitle());
         assertFalse(entry.hasVolume());
         assertFalse(entry.hasStatistics());
+        assertFalse(entry.hasLiteratureMappedReferences());
         assertTrue(entry.isCompleteAuthorList());
 
     }
@@ -78,7 +79,7 @@ class LiteratureEntryBuilderTest {
         assertEquals(entry.getPublicationDate().getValue(), "21-06-2019");
 
         assertTrue(entry.hasPubmedId());
-        assertEquals(entry.getPubmedId(), "pubmed Id");
+        assertEquals(entry.getPubmedId(), 100L);
 
         assertTrue(entry.hasTitle());
         assertEquals(entry.getTitle(), "title");
@@ -89,6 +90,9 @@ class LiteratureEntryBuilderTest {
         assertTrue(entry.hasStatistics());
         assertEquals(entry.getStatistics(), LiteratureStatisticsBuilderTest.createCompleteLiteratureStatistics());
 
+        assertTrue(entry.hasLiteratureMappedReferences());
+        MatcherAssert.assertThat(entry.getLiteratureMappedReferences(), Matchers.contains(LiteratureMappedReferenceBuilderTest.createCompleteLiteratureMappedReference()));
+
         assertFalse(entry.isCompleteAuthorList());
 
     }
@@ -97,6 +101,7 @@ class LiteratureEntryBuilderTest {
         return createBasicLiteratureEntryBuilder()
                 .authors(Collections.singletonList(new AuthorImpl("author name")))
                 .authoringGroup(Collections.singletonList("authoring group"))
+                .literatureMappedReference(Collections.singletonList(LiteratureMappedReferenceBuilderTest.createCompleteLiteratureMappedReference()))
                 .build();
     }
 
@@ -104,13 +109,14 @@ class LiteratureEntryBuilderTest {
         return createBasicLiteratureEntryBuilder()
                 .addAuthor(new AuthorImpl("author name"))
                 .addAuthoringGroup("authoring group")
+                .addLiteratureMappedReference(LiteratureMappedReferenceBuilderTest.createCompleteLiteratureMappedReference())
                 .build();
     }
 
     private LiteratureEntryBuilder createBasicLiteratureEntryBuilder() {
         return new LiteratureEntryBuilder()
                 .doiId("doi Id")
-                .pubmedId("pubmed Id")
+                .pubmedId(100L)
                 .firstPage("first Page")
                 .journal("journal Name")
                 .volume("volume")

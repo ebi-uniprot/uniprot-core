@@ -30,7 +30,7 @@ class LiteratureEntryTest {
     private LiteratureEntry getCompleteLiteratureEntry() {
         return new LiteratureEntryBuilder()
                 .doiId("doi Id")
-                .pubmedId("pubmed Id")
+                .pubmedId(100L)
                 .addAuthor(new AuthorImpl("author name"))
                 .addAuthoringGroup("authoring group")
                 .completeAuthorList(true)
