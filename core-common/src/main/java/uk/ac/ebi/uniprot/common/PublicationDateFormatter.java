@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.common;
 
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoField;
 import java.util.Date;
 import java.util.Locale;
 
@@ -14,11 +15,20 @@ import java.util.Locale;
  * The enumeration is used not only to format the date correctly, but also to validate the date
  */
 public enum PublicationDateFormatter {
-    YEAR(DateTimeFormatter.ofPattern("yyyy", Locale.ENGLISH)),
-    YEAR_DIGIT_MONTH(DateTimeFormatter.ofPattern("yyyy-MM", Locale.ENGLISH)),
-    THREE_LETTER_MONTH_YEAR(DateTimeFormatter.ofPattern("MMM-yyyy", Locale.ENGLISH)),
-    DAY_DIGITMONTH_YEAR(DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)),
-    DAY_THREE_LETTER_MONTH_YEAR(DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.ENGLISH));
+    YEAR(formatFor("yyyy")
+                 .parseDefaulting(ChronoField.MONTH_OF_YEAR, 1)
+                 .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+                 .toFormatter(Locale.ENGLISH)),
+    YEAR_DIGIT_MONTH(formatFor("yyyy-MM")
+                             .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+                             .toFormatter(Locale.ENGLISH)),
+    THREE_LETTER_MONTH_YEAR(formatFor("MMM-yyyy")
+                                    .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+                                    .toFormatter(Locale.ENGLISH)),
+    DAY_DIGITMONTH_YEAR(formatFor("yyyy-MM-dd")
+                                .toFormatter(Locale.ENGLISH)),
+    DAY_THREE_LETTER_MONTH_YEAR(formatFor("dd-MMM-yyyy")
+                                        .toFormatter(Locale.ENGLISH));
 
     private DateTimeFormatter dateFormat;
 
@@ -26,7 +36,7 @@ public enum PublicationDateFormatter {
         this.dateFormat = dateFormat;
     }
 
-    public Date convertStringToDate(String publicationDate) throws ParseException {
+    public Date convertStringToDate(String publicationDate) {
         try {
             LocalDate localDate = LocalDate.parse(publicationDate, dateFormat);
             return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -44,5 +54,9 @@ public enum PublicationDateFormatter {
         }
 
         return true;
+    }
+
+    private static DateTimeFormatterBuilder formatFor(String pattern) {
+        return new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern(pattern);
     }
 }
