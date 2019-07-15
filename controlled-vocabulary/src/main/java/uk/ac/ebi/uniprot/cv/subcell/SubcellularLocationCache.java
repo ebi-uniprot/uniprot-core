@@ -1,26 +1,26 @@
 package uk.ac.ebi.uniprot.cv.subcell;
 
+import uk.ac.ebi.uniprot.cv.impl.SubcellularLocationFileReader;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import uk.ac.ebi.uniprot.cv.impl.SubcellularLocationFileReader;
-
 public enum SubcellularLocationCache {
 	INSTANCE;
 	public static final String FTP_LOCATION ="ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/subcell.txt";
-	Map<String, List<SubcellularLocation> > locationSubcellularLocationMap =new HashMap<>();
+	Map<String, List<SubcellularLocationEntry>> locationSubcellularLocationMap = new HashMap<>();
 	SubcellularLocationCache(){
 		
 	}
-	
-	public List<SubcellularLocation> get(String file) {
+
+	public List<SubcellularLocationEntry> get(String file) {
 		String filename = file;
 		if((filename ==null) || filename.isEmpty()){
 			filename = FTP_LOCATION;
 		}
-		
-		List<SubcellularLocation> result = locationSubcellularLocationMap.get(filename);
+
+		List<SubcellularLocationEntry> result = locationSubcellularLocationMap.get(filename);
 		if(result !=null)
 			return result;
 		
@@ -40,8 +40,8 @@ public enum SubcellularLocationCache {
 		}
 		
 	}
-	
-	private List<SubcellularLocation> buildCache(String filename){
+
+	private List<SubcellularLocationEntry> buildCache(String filename) {
 		SubcellularLocationFileReader parser = new SubcellularLocationFileReader();
 		return parser.parse(filename);
 
