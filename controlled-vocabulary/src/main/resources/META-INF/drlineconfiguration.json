@@ -883,7 +883,7 @@
 		"uriLink": "https://www.omim.org/entry/%s",
 		"attributes": [
 			{
-				"name": "type",
+				"name": "Type",
 				"xmlTag":"type"			
 			}
 		]
