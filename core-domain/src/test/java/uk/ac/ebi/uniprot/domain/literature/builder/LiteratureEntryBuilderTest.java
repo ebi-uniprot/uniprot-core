@@ -79,7 +79,7 @@ class LiteratureEntryBuilderTest {
         assertEquals(entry.getPublicationDate().getValue(), "21-06-2019");
 
         assertTrue(entry.hasPubmedId());
-        assertEquals(entry.getPubmedId(), 100L);
+        assertEquals(entry.getPubmedId(), Long.valueOf(100L));
 
         assertTrue(entry.hasTitle());
         assertEquals(entry.getTitle(), "title");
