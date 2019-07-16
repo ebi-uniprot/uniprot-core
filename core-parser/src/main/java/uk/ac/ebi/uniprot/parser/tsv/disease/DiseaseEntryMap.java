@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DiseaseEntryMap implements NamedValueMap {
-    private static final String EMPTY_STRING = "";
+    public static final String EMPTY_STRING = "";
 
     private final Disease diseaseEntry;
 
@@ -37,7 +37,7 @@ public class DiseaseEntryMap implements NamedValueMap {
 
     private String getKewords(List<Keyword> keywords) {
         if (Utils.notEmpty(keywords)) {
-            return keywords.stream().map(Keyword::getId).collect(Collectors.joining(", "));
+            return keywords.stream().map(Keyword::getId).collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
         }
@@ -45,7 +45,7 @@ public class DiseaseEntryMap implements NamedValueMap {
 
     private String getCrossReferences(List<CrossReference> crossReferences) {
         if (Utils.notEmpty(crossReferences)) {
-            return crossReferences.stream().map(CrossReference::getId).collect(Collectors.joining(", "));
+            return crossReferences.stream().map(CrossReference::getId).collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
         }
@@ -53,8 +53,8 @@ public class DiseaseEntryMap implements NamedValueMap {
 
 
     private String getAlternativeNames(List<String> alternativeNames) {
-        if (alternativeNames != null) {
-            return this.diseaseEntry.getAlternativeNames().stream().collect(Collectors.joining(", "));
+        if (Utils.notEmpty(alternativeNames)) {
+            return String.join(",", alternativeNames);
         } else {
             return EMPTY_STRING;
         }
