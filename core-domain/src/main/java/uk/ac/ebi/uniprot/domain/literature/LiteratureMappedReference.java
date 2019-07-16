@@ -3,12 +3,13 @@ package uk.ac.ebi.uniprot.domain.literature;
 import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author lgonzales
  */
-public interface LiteratureMappedReference {
+public interface LiteratureMappedReference extends Serializable {
 
     UniProtAccession getUniprotAccession();
 

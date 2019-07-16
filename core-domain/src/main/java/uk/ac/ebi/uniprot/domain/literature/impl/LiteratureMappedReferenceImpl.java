@@ -12,6 +12,8 @@ import java.util.Objects;
  */
 public class LiteratureMappedReferenceImpl implements LiteratureMappedReference {
 
+    private static final long serialVersionUID = -1925700851366460682L;
+
     private UniProtAccession uniprotAccession;
     private String source;
     private String sourceId;

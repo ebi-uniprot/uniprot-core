@@ -84,37 +84,37 @@ public class LiteratureEntryMap implements NamedValueMap {
     }
 
     private String getReference() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (literatureEntry.hasJournal()) {
-            result += literatureEntry.getJournal().getName();
+            result.append(literatureEntry.getJournal().getName());
         }
         if (literatureEntry.hasVolume()) {
-            result += " " + literatureEntry.getVolume();
+            result.append(" ").append(literatureEntry.getVolume());
         }
-        if (Utils.notEmpty(result)) {
-            result = result.trim() + ":";
+        if (result.length() > 0) {
+            result.append(":");
         }
         if (literatureEntry.hasFirstPage()) {
-            result += literatureEntry.getFirstPage();
+            result.append(literatureEntry.getFirstPage());
 
             if (literatureEntry.hasLastPage()) {
-                result += "-" + literatureEntry.getLastPage();
+                result.append("-").append(literatureEntry.getLastPage());
             }
         }
         if (literatureEntry.hasPublicationDate()) {
-            result += "(" + literatureEntry.getPublicationDate().getValue() + ")";
+            result.append("(").append(literatureEntry.getPublicationDate().getValue()).append(")");
         }
-        return result.trim();
+        return result.toString();
     }
 
     private String getStatistics() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         if (literatureEntry.hasStatistics()) {
-            result = "mapped:" + literatureEntry.getStatistics().getMappedProteinCount() + "; " +
-                    "reviewed:" + literatureEntry.getStatistics().getReviewedProteinCount() + "; " +
-                    "annotated:" + literatureEntry.getStatistics().getUnreviewedProteinCount();
+            result.append("mapped:").append(literatureEntry.getStatistics().getMappedProteinCount()).append("; ")
+                    .append("reviewed:").append(literatureEntry.getStatistics().getReviewedProteinCount()).append("; ")
+                    .append("annotated:").append(literatureEntry.getStatistics().getUnreviewedProteinCount());
         }
-        return result;
+        return result.toString();
     }
 
 }
