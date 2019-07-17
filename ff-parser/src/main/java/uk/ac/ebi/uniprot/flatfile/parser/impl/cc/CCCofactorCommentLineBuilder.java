@@ -52,7 +52,7 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
             sb.append(XREF).append(coRef.getDatabaseType().toDisplayName())
                     .append(":").append(coRef.getId())
                     .append(SEMICOLON);
-            if (!cofactor.getEvidences().isEmpty()) {
+            if (!cofactor.getEvidences().isEmpty() && showEvidence) {
                 sb.append(SPACE);
                 sb.append(EVIDENCE);
                 String evStr = LineBuilderHelper.export(cofactor.getEvidences()).trim();
