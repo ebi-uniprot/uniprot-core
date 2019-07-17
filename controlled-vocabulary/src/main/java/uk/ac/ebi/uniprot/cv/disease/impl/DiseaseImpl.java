@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.cv.disease.impl;
 
 import java.util.List;
+import java.util.Objects;
 
 import uk.ac.ebi.uniprot.cv.disease.CrossReference;
 import uk.ac.ebi.uniprot.cv.disease.Disease;
@@ -99,78 +100,24 @@ public class DiseaseImpl  implements Disease{
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((accession == null) ? 0 : accession.hashCode());
-		result = prime * result + ((acronym == null) ? 0 : acronym.hashCode());
-		result = prime * result + ((alternativeNames == null) ? 0 : alternativeNames.hashCode());
-		result = prime * result + ((crossReferences == null) ? 0 : crossReferences.hashCode());
-		result = prime * result + ((definition == null) ? 0 : definition.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((keywords == null) ? 0 : keywords.hashCode());
-		result = prime * result + ((this.reviewedProteinCount == null) ? 0 : this.reviewedProteinCount.hashCode());
-		result = prime * result + ((this.unreviewedProteinCount == null) ? 0 : this.unreviewedProteinCount.hashCode());
-		return result;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		DiseaseImpl disease = (DiseaseImpl) o;
+		return Objects.equals(id, disease.id) &&
+				Objects.equals(accession, disease.accession) &&
+				Objects.equals(acronym, disease.acronym) &&
+				Objects.equals(definition, disease.definition) &&
+				Objects.equals(alternativeNames, disease.alternativeNames) &&
+				Objects.equals(crossReferences, disease.crossReferences) &&
+				Objects.equals(keywords, disease.keywords) &&
+				Objects.equals(reviewedProteinCount, disease.reviewedProteinCount) &&
+				Objects.equals(unreviewedProteinCount, disease.unreviewedProteinCount);
 	}
+
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DiseaseImpl other = (DiseaseImpl) obj;
-		if (accession == null) {
-			if (other.accession != null)
-				return false;
-		} else if (!accession.equals(other.accession))
-			return false;
-		if (acronym == null) {
-			if (other.acronym != null)
-				return false;
-		} else if (!acronym.equals(other.acronym))
-			return false;
-		if (alternativeNames == null) {
-			if (other.alternativeNames != null)
-				return false;
-		} else if (!alternativeNames.equals(other.alternativeNames))
-			return false;
-		if (crossReferences == null) {
-			if (other.crossReferences != null)
-				return false;
-		} else if (!crossReferences.equals(other.crossReferences))
-			return false;
-		if (definition == null) {
-			if (other.definition != null)
-				return false;
-		} else if (!definition.equals(other.definition))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (keywords == null) {
-			if (other.keywords != null)
-				return false;
-		} else if (!keywords.equals(other.keywords))
-			return false;
-
-		if (this.reviewedProteinCount == null) {
-			if (other.reviewedProteinCount != null)
-				return false;
-		} else if (!this.reviewedProteinCount.equals(other.reviewedProteinCount))
-			return false;
-
-		if (this.unreviewedProteinCount == null) {
-			if (other.unreviewedProteinCount != null)
-				return false;
-		} else if (!this.unreviewedProteinCount.equals(other.unreviewedProteinCount))
-			return false;
-
-		return true;
+	public int hashCode() {
+		return Objects.hash(id, accession, acronym, definition, alternativeNames, crossReferences,
+				keywords, reviewedProteinCount, unreviewedProteinCount);
 	}
-
 }
