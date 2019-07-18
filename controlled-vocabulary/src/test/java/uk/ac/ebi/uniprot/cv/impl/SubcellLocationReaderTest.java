@@ -1,14 +1,13 @@
 package uk.ac.ebi.uniprot.cv.impl;
 
 
+import org.junit.Test;
+import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocationEntry;
 
 import java.util.Arrays;
 import java.util.List;
-import org.junit.Test;
 
-import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocation;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SubcellLocationReaderTest {
 
@@ -25,10 +24,10 @@ public class SubcellLocationReaderTest {
                         "SL   Cell tip.",
                         "GO   GO:0051286; cell tip",
                         "//");
-        List<SubcellularLocation> retList = parser.parseLines(input);
+        List<SubcellularLocationEntry> retList = parser.parseLines(input);
 
         assertEquals("Size shoud be exactly 1", 1,retList.size());
-        SubcellularLocation retObj = retList.get(0);
+        SubcellularLocationEntry retObj = retList.get(0);
         assertEquals("Identifier check", "Cell tip", retObj.getId());
         assertEquals("Accession test", "SL-0456", retObj.getAccession());
         assertEquals("Definition match",
@@ -146,7 +145,7 @@ public class SubcellLocationReaderTest {
                         "Distributed under the Creative Commons Attribution-NoDerivs License",
                         "-----------------------------------------------------------------------");
 
-        List<SubcellularLocation> retList = parser.parseLines(input);
+        List<SubcellularLocationEntry> retList = parser.parseLines(input);
         assertEquals("Return list size ", 4, retList.size());
         assertEquals("Is a Hierarchy of parent size", 1, retList.get(0).getIsA().size());
         assertEquals("Part of Hierarchy of parent size", 2, retList.get(0).getPartOf().size());

@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
 import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
 import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
-import uk.ac.ebi.uniprot.cv.subcell.SubcellLocationType;
-import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocation;
-import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationImpl;
+import uk.ac.ebi.uniprot.cv.subcell.SubcellLocationCategory;
+import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocationEntry;
+import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationEntryImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
-public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocation> {
+public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocationEntry> {
 	private static final String HP_LINE = "HP";
 	private static final String KW_LINE = "KW";
 	private static final String GO_LINE = "GO";
@@ -34,17 +34,17 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
 	private static final String SPLIT_SPACES = "   ";
     private static final Logger LOG = LoggerFactory.getLogger(SubcellularLocationFileReader.class);
 
-    public List<SubcellularLocation> parseLines(List<String> lines) {
+    public List<SubcellularLocationEntry> parseLines(List<String> lines) {
         List<SubcellularFileEntry> rawList = convertLinesIntoInMemoryObjectList(lines);
-        List<SubcellularLocation> list = parseSubcellularFileEntryList(rawList);
+        List<SubcellularLocationEntry> list = parseSubcellularFileEntryList(rawList);
         updateListWithRelationShips(list, rawList);
         return list;
     }
 
     public Map<String,String> parseFileToAccessionMap(String fileName) {
-        List<SubcellularLocation> list = parse(fileName);
+        List<SubcellularLocationEntry> list = parse(fileName);
         return list.stream()
-                .collect(Collectors.toMap(SubcellularLocation::getContent,SubcellularLocation::getAccession));
+                .collect(Collectors.toMap(SubcellularLocationEntry::getContent, SubcellularLocationEntry::getAccession));
     }
 
     private List<SubcellularFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
@@ -136,7 +136,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return retList;
     }
 
-    private List<SubcellularLocation> parseSubcellularFileEntryList(List<SubcellularFileEntry> list) {
+    private List<SubcellularLocationEntry> parseSubcellularFileEntryList(List<SubcellularFileEntry> list) {
         return list.stream().map(this::parseSubcellularFileEntry).collect(Collectors.toList());
     }
 
@@ -146,20 +146,20 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
      * @param entry
      * @return
      */
-    private SubcellularLocation parseSubcellularFileEntry(SubcellularFileEntry entry) {
-        SubcellularLocationImpl retObj =new SubcellularLocationImpl();
+    private SubcellularLocationEntry parseSubcellularFileEntry(SubcellularFileEntry entry) {
+        SubcellularLocationEntryImpl retObj = new SubcellularLocationEntryImpl();
         retObj.setAccession(entry.ac);
         retObj.setContent(trimSpacesAndRemoveLastDot(entry.sl));
 
         if (entry.id != null) {           
             retObj.setId(trimSpacesAndRemoveLastDot(entry.id));
-            retObj.setType(SubcellLocationType.LOCATION);
+            retObj.setCategory(SubcellLocationCategory.LOCATION);
         } else if  (entry.it != null){
         	  retObj.setId(trimSpacesAndRemoveLastDot(entry.it));
-              retObj.setType(SubcellLocationType.TOPOLOGY);
+            retObj.setCategory(SubcellLocationCategory.TOPOLOGY);
         }else {
         	retObj.setId(trimSpacesAndRemoveLastDot(entry.io));
-            retObj.setType(SubcellLocationType.ORIENTATION);
+            retObj.setCategory(SubcellLocationCategory.ORIENTATION);
         }
         // definition
         String def = String.join(" ", entry.de);
@@ -195,20 +195,20 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return retObj;
     }
 
-    private void updateListWithRelationShips(List<SubcellularLocation> list, List<SubcellularFileEntry> rawList) {
+    private void updateListWithRelationShips(List<SubcellularLocationEntry> list, List<SubcellularFileEntry> rawList) {
         for (SubcellularFileEntry raw : rawList) {
 
             // Only check for those who have relationships
             if (raw.hi.isEmpty() && raw.hp.isEmpty()) {
                 continue;
             }
-            
-            SubcellularLocationImpl target = (SubcellularLocationImpl) findByIdentifier(list, getIdentifier(raw));
+
+            SubcellularLocationEntryImpl target = (SubcellularLocationEntryImpl) findByIdentifier(list, getIdentifier(raw));
             
             assert(target !=null);
             
             if (!raw.hi.isEmpty()) {
-            	List<SubcellularLocation> isA= new ArrayList<>();
+                List<SubcellularLocationEntry> isA = new ArrayList<>();
 
                 for (String id : raw.hi) {
                     isA.add(findByIdentifier(list, id));
@@ -230,7 +230,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return raw.it != null ? raw.it : raw.io;
     }
 
-    private SubcellularLocation findByIdentifier(List<SubcellularLocation> list, String id) {
+    private SubcellularLocationEntry findByIdentifier(List<SubcellularLocationEntry> list, String id) {
         return list.stream().filter(
                 s -> s.getId().equals(trimSpacesAndRemoveLastDot(id)))
                 .findFirst().orElse(null);
