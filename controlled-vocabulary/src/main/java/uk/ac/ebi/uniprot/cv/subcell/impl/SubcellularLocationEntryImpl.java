@@ -18,10 +18,8 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private String definition;
     private String content;
     private List<String> synonyms = Collections.emptyList();
-    ;
     private Keyword keyword;
     private List<GeneOntology> geneOntologies = Collections.emptyList();
-    ;
     private String note;
     private List<String> references = Collections.emptyList();
     private List<String> links = Collections.emptyList();
@@ -53,7 +51,6 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     public String getContent() {
         return content;
     }
-
 
     @Override
     public List<String> getSynonyms() {
