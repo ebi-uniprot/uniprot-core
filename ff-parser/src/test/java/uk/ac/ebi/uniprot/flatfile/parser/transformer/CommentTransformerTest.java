@@ -81,7 +81,7 @@ public class CommentTransformerTest {
     public void testCofactor() {
         String tString = "COFACTOR:\nName=K(+); Xref=ChEBI:CHEBI:29103; "
                 + "Evidence={ECO:0000250};\nNote=Binds 1 potassium ion per subunit.;";
-        testComment(tString, CommentType.COFACTOR);
+        testComment(tString, CommentType.COFACTOR, true);
     }
 
     @Test
