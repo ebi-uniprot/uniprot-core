@@ -24,7 +24,7 @@ public class UniProtAccessionTest {
         assertEquals("P21802",jsonNode.asText());
     }
 
-    static UniProtAccession getUniProtAccession() {
+    public static UniProtAccession getUniProtAccession() {
         return new UniProtAccessionBuilder("P21802").build();
     }
 }

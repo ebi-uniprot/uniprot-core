@@ -136,7 +136,7 @@ public class FeatureTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000269","PubMed","11389730");
     }
 
-    static Feature getFeature(){
+    public static Feature getFeature(){
         AlternativeSequence alternativeSequence = new AlternativeSequenceBuilder()
                 .original("original value")
                 .alternative("alternative value")
