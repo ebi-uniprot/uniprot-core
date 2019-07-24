@@ -2,6 +2,8 @@ package uk.ac.ebi.uniprot.common.concurrency;
 
 import java.util.concurrent.ExecutorService;
 
+import static uk.ac.ebi.uniprot.common.concurrency.TaskExecutorProperties.Builder.createTaskExecutorPropertiesBuilder;
+
 /**
  * Records properties that can be used to configure a {@code TaskExecutor} or {@link ExecutorService}.
  *
@@ -17,13 +19,17 @@ public class TaskExecutorProperties {
     static final boolean WAIT_FOR_TASKS_TO_COMPLETE_ON_SHUTDOWN = true;
     static final String THREAD_NAME_PREFIX = "async-";
 
-    private final int corePoolSize;
-    private final int maxPoolSize;
-    private final int queueCapacity;
-    private final int keepAliveSeconds;
-    private final boolean allowCoreThreadTimeout;
-    private final boolean waitForTasksToCompleteOnShutdown;
-    private final String threadNamePrefix;
+    private int corePoolSize;
+    private int maxPoolSize;
+    private int queueCapacity;
+    private int keepAliveSeconds;
+    private boolean allowCoreThreadTimeout;
+    private boolean waitForTasksToCompleteOnShutdown;
+    private String threadNamePrefix;
+
+    public TaskExecutorProperties() {
+        this(createTaskExecutorPropertiesBuilder());
+    }
 
     private TaskExecutorProperties(Builder builder) {
         this.keepAliveSeconds = builder.keepAliveSeconds;
@@ -61,6 +67,34 @@ public class TaskExecutorProperties {
 
     public String getThreadNamePrefix() {
         return threadNamePrefix;
+    }
+
+    public void setCorePoolSize(int corePoolSize) {
+        this.corePoolSize = corePoolSize;
+    }
+
+    public void setMaxPoolSize(int maxPoolSize) {
+        this.maxPoolSize = maxPoolSize;
+    }
+
+    public void setQueueCapacity(int queueCapacity) {
+        this.queueCapacity = queueCapacity;
+    }
+
+    public void setKeepAliveSeconds(int keepAliveSeconds) {
+        this.keepAliveSeconds = keepAliveSeconds;
+    }
+
+    public void setAllowCoreThreadTimeout(boolean allowCoreThreadTimeout) {
+        this.allowCoreThreadTimeout = allowCoreThreadTimeout;
+    }
+
+    public void setWaitForTasksToCompleteOnShutdown(boolean waitForTasksToCompleteOnShutdown) {
+        this.waitForTasksToCompleteOnShutdown = waitForTasksToCompleteOnShutdown;
+    }
+
+    public void setThreadNamePrefix(String threadNamePrefix) {
+        this.threadNamePrefix = threadNamePrefix;
     }
 
     public static final class Builder {

@@ -15,6 +15,13 @@ import static uk.ac.ebi.uniprot.common.concurrency.TaskExecutorProperties.Builde
  */
 class TaskExecutorPropertiesTest {
     @Test
+    void canCreatePropertiesWithDefaultConstructor() {
+        TaskExecutorProperties props = new TaskExecutorProperties();
+        assertThat(props, is(notNullValue()));
+        correctDefaults(props);
+    }
+
+    @Test
     void canCreateBuilder() {
         assertThat(createTaskExecutorPropertiesBuilder(), is(notNullValue()));
     }
@@ -70,6 +77,10 @@ class TaskExecutorPropertiesTest {
     @Test
     void hasCorrectDefaults() {
         TaskExecutorProperties props = createTaskExecutorPropertiesBuilder().build();
+        correctDefaults(props);
+    }
+
+    private void correctDefaults(TaskExecutorProperties props) {
         assertThat(props.getCorePoolSize(), is(DEFAULT_CORE_POOL_SIZE));
         assertThat(props.getMaxPoolSize(), is(MAX_POOL_SIZE));
         assertThat(props.getQueueCapacity(), is(QUEUE_CAPACITY));
