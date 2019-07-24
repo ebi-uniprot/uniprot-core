@@ -57,7 +57,7 @@ public class UniProtReferenceTest {
 
     }
 
-    static List<UniProtReference> getUniProtReferences() {
+    public static List<UniProtReference> getUniProtReferences() {
         List<UniProtReference> uniProtReferences = new ArrayList<>();
         uniProtReferences.add(getUniProtReference(BookTest.getBook()));
         uniProtReferences.add(getUniProtReference(ElectronicArticleTest.getElectronicArticle()));
