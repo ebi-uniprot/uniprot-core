@@ -1165,6 +1165,18 @@
 	},
 	
 	{
+		"name": "PlantReactome",
+		"displayName": "PlantReactome",
+		"category": "EAP",
+		"uriLink": "https://plantreactome.gramene.org/PathwayBrowser/#/%s&FLG=%u",
+		"attributes": [		
+			{	"name": "pathwayName",
+				"xmlTag":"pathway name"			
+			}
+		]
+	},
+	
+	{
 		"name": "ChiTaRS",
 		"displayName": "ChiTaRS",
 		"category": "OTHER",
