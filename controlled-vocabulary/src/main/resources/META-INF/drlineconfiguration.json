@@ -1473,7 +1473,7 @@
 	{
 		"name": "Proteomes",
 		"displayName": "Proteomes",
-		"category": "OTHER",
+		"category": "PRM",
 		"uriLink": "https://www.uniprot.org/proteomes/%s",
 		"attributes": [		
 			{	"name": "Component",

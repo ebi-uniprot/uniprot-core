@@ -68,6 +68,6 @@ public enum DatabaseCategory implements EnumDisplay<DatabaseCategory> {
 
     @Override
     public String toDisplayName() {
-        return this.name;
+        return this.displayName;
     }
 }
