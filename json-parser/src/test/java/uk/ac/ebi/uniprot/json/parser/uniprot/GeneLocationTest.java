@@ -41,7 +41,7 @@ public class GeneLocationTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000255","PROSITE-ProRule","PRU10025");
     }
 
-    static GeneLocation getGeneLocation() {
+    public static GeneLocation getGeneLocation() {
         return new GeneLocationBuilder()
                 .geneEncodingType(GeneEncodingType.CYANELLE_PLASTID)
                 .value("geneLocation value")

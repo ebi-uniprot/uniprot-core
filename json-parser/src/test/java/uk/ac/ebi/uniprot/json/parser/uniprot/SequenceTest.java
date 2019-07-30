@@ -38,7 +38,7 @@ public class SequenceTest {
         assertEquals("B1D4A86C222D0ED5500ABE909DD36218",jsonNode.get("md5").asText());
     }
 
-    static Sequence getSequence() {
+    public static Sequence getSequence() {
         return new SequenceBuilder("SAPSQDFMRF").build();
     }
 

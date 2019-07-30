@@ -62,7 +62,7 @@ public class InternalSectionTest {
 
     }
 
-    static InternalSection getInternalSection() {
+    public static InternalSection getInternalSection() {
         InternalLine internalLine = new InternalLineBuilder(InternalLineType.DR,"line value").build();
 
         EvidenceLine evidenceLine = new EvidenceLineBuilder()
