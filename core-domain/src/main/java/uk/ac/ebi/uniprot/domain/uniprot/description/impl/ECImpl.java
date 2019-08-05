@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -8,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.common.Utils;
 
 public class ECImpl extends ECNumberImpl implements EC {
     private static final long serialVersionUID = -5418175231477354719L;

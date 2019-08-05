@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
     private static final long serialVersionUID = -2902168556405341703L;

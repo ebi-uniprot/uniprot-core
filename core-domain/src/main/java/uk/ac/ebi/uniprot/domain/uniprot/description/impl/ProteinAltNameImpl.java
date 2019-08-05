@@ -3,7 +3,8 @@ package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 import java.util.Collections;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.common.Utils;
+import org.uniprot.core.common.Utils;
+
 import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;

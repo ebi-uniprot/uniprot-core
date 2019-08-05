@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
+import org.uniprot.core.common.Utils;
+
 import uk.ac.ebi.uniprot.domain.citation.Author;
 
 public class AuthorImpl implements Author {

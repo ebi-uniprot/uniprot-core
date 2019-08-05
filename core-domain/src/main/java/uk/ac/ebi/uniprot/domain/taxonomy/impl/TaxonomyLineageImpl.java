@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
 
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 /**
  *
  * @author lgonzales

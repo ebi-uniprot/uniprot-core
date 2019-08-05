@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MaximumVelocity;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.MichaelisConstant;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class KineticParametersImpl implements KineticParameters {
     private static final long serialVersionUID = 6933033384155525116L;

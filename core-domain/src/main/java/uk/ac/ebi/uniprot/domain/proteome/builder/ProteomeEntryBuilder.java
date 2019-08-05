@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.proteome.builder;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
@@ -12,6 +11,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, ProteomeEntry> {
 	private ProteomeId id;

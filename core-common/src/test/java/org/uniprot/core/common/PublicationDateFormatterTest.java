@@ -1,6 +1,7 @@
-package uk.ac.ebi.uniprot.common;
+package org.uniprot.core.common;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.common.PublicationDateFormatter;
 
 import java.util.Calendar;
 import java.util.Date;

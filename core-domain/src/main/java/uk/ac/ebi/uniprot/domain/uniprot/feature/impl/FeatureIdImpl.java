@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 
@@ -9,6 +8,8 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import org.uniprot.core.common.Utils;
 
 public class FeatureIdImpl implements FeatureId {
 

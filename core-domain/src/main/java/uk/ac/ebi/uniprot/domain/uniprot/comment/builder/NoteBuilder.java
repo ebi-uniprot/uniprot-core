@@ -4,9 +4,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.NoteImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
-import java.util.List;
+import static org.uniprot.core.common.Utils.nonNullList;
 
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
+import java.util.List;
 
 /**
  * Created 16/01/19

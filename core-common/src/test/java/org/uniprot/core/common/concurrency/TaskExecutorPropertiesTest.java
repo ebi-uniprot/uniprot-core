@@ -1,12 +1,13 @@
-package uk.ac.ebi.uniprot.common.concurrency;
+package org.uniprot.core.common.concurrency;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.common.concurrency.TaskExecutorProperties;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static uk.ac.ebi.uniprot.common.concurrency.TaskExecutorProperties.*;
-import static uk.ac.ebi.uniprot.common.concurrency.TaskExecutorProperties.Builder.createTaskExecutorPropertiesBuilder;
+import static org.uniprot.core.common.concurrency.TaskExecutorProperties.*;
+import static org.uniprot.core.common.concurrency.TaskExecutorProperties.Builder.createTaskExecutorPropertiesBuilder;
 
 /**
  * Created 23/07/19

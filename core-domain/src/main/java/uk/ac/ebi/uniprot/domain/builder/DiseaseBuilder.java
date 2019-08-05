@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.domain.builder;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 
 import java.util.List;
 
+import org.uniprot.core.common.Utils;
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
 import org.uniprot.core.cv.disease.impl.DiseaseImpl;

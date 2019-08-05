@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.domain.literature.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 /**
  * @author lgonzales

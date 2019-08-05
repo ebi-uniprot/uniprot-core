@@ -5,11 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl;
 
+import static org.uniprot.core.common.Utils.nonNullAdd;
+import static org.uniprot.core.common.Utils.nonNullList;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
     private Reaction reaction;

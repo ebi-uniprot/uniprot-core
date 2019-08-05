@@ -7,11 +7,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 import uk.ac.ebi.uniprot.domain.uniprot.description.impl.ProteinSectionImpl;
 
+import static org.uniprot.core.common.Utils.nonNullAdd;
+import static org.uniprot.core.common.Utils.nonNullList;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, ProteinSection> {
 

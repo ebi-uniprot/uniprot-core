@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.parser.tsv.literature;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
@@ -8,6 +7,8 @@ import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.common.Utils;
 
 /**
  * @author lgonzales

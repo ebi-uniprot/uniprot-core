@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.builder;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStrain;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyStrainImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, TaxonomyStrain> {
 

@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.ECNumber;
 
 import java.util.regex.Pattern;
+
+import org.uniprot.core.common.Utils;
 
 public class ECNumberImpl implements ECNumber {
     private static final Pattern EC_PATTERN = Pattern.compile("\\d{1,2}(\\.(\\-|n?\\d{1,3})){3}");

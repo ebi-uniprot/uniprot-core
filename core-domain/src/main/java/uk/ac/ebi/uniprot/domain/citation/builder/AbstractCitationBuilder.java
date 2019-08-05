@@ -9,13 +9,13 @@ import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
 import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
 
+import static org.uniprot.core.common.Utils.nonNullAdd;
+import static org.uniprot.core.common.Utils.nonNullList;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<B, T>, T extends Citation> implements CitationBuilder<B, T> {
     protected List<String> authoringGroups = new ArrayList<>();

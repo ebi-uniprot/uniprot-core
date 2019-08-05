@@ -5,9 +5,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.GeneImpl;
 
-import java.util.List;
+import static org.uniprot.core.common.Utils.nonNullList;
 
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
+import java.util.List;
 
 /**
  *

@@ -4,7 +4,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import uk.ac.ebi.uniprot.common.Utils;
+import org.uniprot.core.common.Utils;
+
 import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
 import uk.ac.ebi.uniprot.domain.proteome.Protein;
 

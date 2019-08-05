@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment {
     private static final long serialVersionUID = 955858123969540661L;

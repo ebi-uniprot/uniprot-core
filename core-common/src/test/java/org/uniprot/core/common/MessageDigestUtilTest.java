@@ -1,6 +1,7 @@
-package uk.ac.ebi.uniprot.common;
+package org.uniprot.core.common;
 
 import org.junit.Test;
+import org.uniprot.core.common.MessageDigestUtil;
 
 import static org.junit.Assert.assertEquals;
 

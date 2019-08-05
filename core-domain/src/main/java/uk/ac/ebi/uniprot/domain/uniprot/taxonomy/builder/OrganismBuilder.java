@@ -5,11 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl.OrganismImpl;
 
+import static org.uniprot.core.common.Utils.nonNullAdd;
+import static org.uniprot.core.common.Utils.nonNullList;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
  * @author lgonzales

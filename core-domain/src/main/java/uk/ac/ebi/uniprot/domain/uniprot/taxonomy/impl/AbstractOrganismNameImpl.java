@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
+
+import static org.uniprot.core.common.Utils.nonNullUnmodifiableList;
+import static org.uniprot.core.common.Utils.nullToEmpty;
 
 import java.util.List;
 import java.util.Objects;
 
-import static uk.ac.ebi.uniprot.common.Utils.nonNullUnmodifiableList;
-import static uk.ac.ebi.uniprot.common.Utils.nullToEmpty;
+import org.uniprot.core.common.Utils;
 
 /**
  * @author lgonzales

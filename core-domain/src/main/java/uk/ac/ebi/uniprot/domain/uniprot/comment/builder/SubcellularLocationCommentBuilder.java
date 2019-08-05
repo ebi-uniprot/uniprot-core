@@ -5,11 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.SubcellularLocationCommentImpl;
 
+import static org.uniprot.core.common.Utils.nonNullAdd;
+import static org.uniprot.core.common.Utils.nonNullList;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNullAdd;
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 public final class SubcellularLocationCommentBuilder implements CommentBuilder<SubcellularLocationCommentBuilder, SubcellularLocationComment> {
     private String molecule;

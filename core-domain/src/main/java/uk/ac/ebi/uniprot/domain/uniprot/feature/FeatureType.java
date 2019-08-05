@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
 
 
 public enum FeatureType implements EnumDisplay<FeatureType> {

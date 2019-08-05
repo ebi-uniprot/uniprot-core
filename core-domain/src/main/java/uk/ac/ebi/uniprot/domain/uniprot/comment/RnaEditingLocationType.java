@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
 
 /**
  * Created by IntelliJ IDEA.

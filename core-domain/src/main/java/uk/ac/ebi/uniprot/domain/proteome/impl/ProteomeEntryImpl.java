@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.proteome.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.domain.proteome.*;
@@ -11,6 +10,8 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class ProteomeEntryImpl implements ProteomeEntry {
 

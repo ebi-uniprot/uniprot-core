@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
+
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
 public enum FeatureXDbType implements DatabaseType, EnumDisplay<FeatureXDbType> {

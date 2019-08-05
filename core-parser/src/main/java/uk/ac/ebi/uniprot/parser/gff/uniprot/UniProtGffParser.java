@@ -14,7 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static uk.ac.ebi.uniprot.common.Utils.nullOrEmpty;
+import static org.uniprot.core.common.Utils.nullOrEmpty;
 import static uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.*;
 
 /**

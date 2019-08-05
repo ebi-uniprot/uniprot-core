@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.proteome;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
 
 public enum Superkingdom implements EnumDisplay<Superkingdom> {
 	ARCHAEA("archaea"),

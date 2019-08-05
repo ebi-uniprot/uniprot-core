@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
 import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
@@ -8,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
 
 import java.util.Collections;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 public class InternalSectionImpl implements InternalSection {
     private static final long serialVersionUID = 3250758805630819227L;

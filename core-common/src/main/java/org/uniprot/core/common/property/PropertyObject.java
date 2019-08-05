@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.common.property;
+package org.uniprot.core.common.property;
 
 import java.io.IOException;
 import java.io.Serializable;

@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
 
 import java.util.Collections;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 
 public class AlternativeSequenceImpl implements AlternativeSequence {

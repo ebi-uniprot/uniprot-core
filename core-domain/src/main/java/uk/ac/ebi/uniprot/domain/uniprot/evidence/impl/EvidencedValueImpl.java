@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.common.Utils;
 
 public class EvidencedValueImpl implements EvidencedValue {
     private String value;

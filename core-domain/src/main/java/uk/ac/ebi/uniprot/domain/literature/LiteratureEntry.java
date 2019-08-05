@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.literature;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Journal;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 /**
  * @author lgonzales

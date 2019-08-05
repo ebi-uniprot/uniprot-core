@@ -1,6 +1,6 @@
 package org.uniprot.core.cv.subcell;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
 
 public enum SubcellLocationCategory implements EnumDisplay<SubcellLocationCategory> {
     LOCATION("Cellular component"),

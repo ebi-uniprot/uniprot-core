@@ -5,11 +5,11 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
 
+import static org.uniprot.core.common.Utils.nonNullList;
+
 import java.util.List;
 
 import org.uniprot.core.cv.keyword.KeywordCategory;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
  * Created 23/01/19

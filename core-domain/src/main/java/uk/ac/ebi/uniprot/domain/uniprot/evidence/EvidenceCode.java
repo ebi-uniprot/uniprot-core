@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
 
 public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     ECO_0000269("ECO:0000269", "Experimental", "Literature reference",

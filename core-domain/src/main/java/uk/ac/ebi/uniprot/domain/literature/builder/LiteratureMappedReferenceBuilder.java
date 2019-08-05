@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.literature.builder;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
 import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureMappedReferenceImpl;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 /**
  * @author lgonzales

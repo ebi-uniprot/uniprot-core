@@ -1,7 +1,8 @@
-package uk.ac.ebi.uniprot.common;
+package org.uniprot.core.common;
 
 import java.math.BigDecimal;
 import org.junit.Test;
+import org.uniprot.core.common.Crc64;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.common.Pair;
-import uk.ac.ebi.uniprot.common.PairImpl;
 import uk.ac.ebi.uniprot.domain.Position;
 import uk.ac.ebi.uniprot.domain.PositionModifier;
 import uk.ac.ebi.uniprot.domain.Range;
@@ -17,6 +15,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import org.uniprot.core.common.Pair;
+import org.uniprot.core.common.PairImpl;
 
 final public class FeatureTransformer {
     private static final String FTID = "/FTId=";

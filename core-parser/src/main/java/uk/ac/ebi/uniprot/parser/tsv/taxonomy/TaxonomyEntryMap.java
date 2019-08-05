@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.parser.tsv.taxonomy;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyEntry;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
 import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStrain;
@@ -10,6 +9,8 @@ import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.common.Utils;
 
 public class TaxonomyEntryMap implements NamedValueMap {
 

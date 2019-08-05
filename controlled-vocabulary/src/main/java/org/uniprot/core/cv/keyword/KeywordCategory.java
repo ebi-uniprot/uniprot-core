@@ -1,6 +1,6 @@
 package org.uniprot.core.cv.keyword;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
 
 public enum KeywordCategory implements EnumDisplay<KeywordCategory> {
 	BIOLOGICAL_PROCESS("Biological process", "KW-9999"),

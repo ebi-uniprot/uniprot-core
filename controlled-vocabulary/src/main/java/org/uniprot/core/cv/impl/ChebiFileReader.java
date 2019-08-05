@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.impl;
 
+import static org.uniprot.core.common.Utils.nonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -7,8 +9,6 @@ import java.util.regex.Pattern;
 
 import org.uniprot.core.cv.chebi.Chebi;
 import org.uniprot.core.cv.chebi.ChebiBuilder;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNull;
 
 public class ChebiFileReader extends AbstractFileReader<Chebi> {
     private static final String ID_PREFIX = "id: CHEBI:";

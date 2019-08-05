@@ -2,7 +2,7 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
+import static org.uniprot.core.common.Utils.nonNullList;
 
 import java.util.ArrayList;
 import java.util.Collection;

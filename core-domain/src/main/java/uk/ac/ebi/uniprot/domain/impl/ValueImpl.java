@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
+import org.uniprot.core.common.Utils;
+
 import uk.ac.ebi.uniprot.domain.Value;
 
 public class ValueImpl implements Value {

@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.description.*;
 
 import java.util.Collections;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 
 public class ProteinDescriptionImpl implements ProteinDescription {

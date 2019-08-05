@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
+import org.uniprot.core.common.Utils;
+
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
 
 public class FeatureDescriptionImpl implements FeatureDescription {

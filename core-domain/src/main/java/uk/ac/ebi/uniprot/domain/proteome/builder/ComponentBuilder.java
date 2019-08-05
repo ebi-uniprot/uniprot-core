@@ -3,7 +3,8 @@ package uk.ac.ebi.uniprot.domain.proteome.builder;
 import java.util.ArrayList;
 import java.util.List;
 
-import uk.ac.ebi.uniprot.common.Utils;
+import org.uniprot.core.common.Utils;
+
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.proteome.Component;

@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.common.concurrency;
+package org.uniprot.core.common.concurrency;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

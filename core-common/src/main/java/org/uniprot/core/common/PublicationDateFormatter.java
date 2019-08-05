@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.common;
+package org.uniprot.core.common;
 
 import java.time.LocalDate;
 import java.time.ZoneId;

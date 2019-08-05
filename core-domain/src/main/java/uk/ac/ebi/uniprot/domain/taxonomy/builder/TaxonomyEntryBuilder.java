@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.taxonomy.builder;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.taxonomy.*;
 import uk.ac.ebi.uniprot.domain.taxonomy.impl.TaxonomyEntryImpl;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.AbstractOrganismNameBui
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEntryBuilder,TaxonomyEntry>
         implements Builder<TaxonomyEntryBuilder, TaxonomyEntry> {

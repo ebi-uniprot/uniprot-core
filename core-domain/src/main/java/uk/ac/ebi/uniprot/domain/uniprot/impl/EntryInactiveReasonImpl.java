@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.EntryInactiveReason;
 import uk.ac.ebi.uniprot.domain.uniprot.InactiveReasonType;
 
 import java.util.Collections;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 public class EntryInactiveReasonImpl implements EntryInactiveReason {
     private static final long serialVersionUID = 1358481260367130982L;

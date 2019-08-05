@@ -1,4 +1,4 @@
-package uk.ac.ebi.uniprot.common;
+package org.uniprot.core.common;
 
 public class PairImpl<K, V> implements Pair<K, V> {
     private final K key;

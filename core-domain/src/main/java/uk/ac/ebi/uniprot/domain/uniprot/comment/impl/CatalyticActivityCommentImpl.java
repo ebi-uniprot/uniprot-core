@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class CatalyticActivityCommentImpl extends CommentImpl implements CatalyticActivityComment {
     private static final long serialVersionUID = 166685624467020599L;

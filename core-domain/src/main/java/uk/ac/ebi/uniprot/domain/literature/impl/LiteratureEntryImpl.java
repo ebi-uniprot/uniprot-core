@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.literature.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.Author;
 import uk.ac.ebi.uniprot.domain.citation.Journal;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
@@ -10,6 +9,8 @@ import uk.ac.ebi.uniprot.domain.literature.LiteratureStatistics;
 
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 /**
  * @author lgonzales

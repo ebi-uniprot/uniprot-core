@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.citation.*;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+
+import org.uniprot.core.common.Utils;
 
 public abstract class AbstractCitationImpl implements Citation {
     private static final long serialVersionUID = -2752460607884626559L;

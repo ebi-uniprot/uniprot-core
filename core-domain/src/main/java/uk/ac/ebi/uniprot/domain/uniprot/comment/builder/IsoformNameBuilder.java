@@ -5,9 +5,9 @@ import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.APIsoformImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 
-import java.util.List;
+import static org.uniprot.core.common.Utils.nonNullList;
 
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
+import java.util.List;
 
 /**
  * Created 15/01/19

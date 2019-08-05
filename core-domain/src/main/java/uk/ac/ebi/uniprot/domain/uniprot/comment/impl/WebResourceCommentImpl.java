@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
 
+import static org.uniprot.core.common.Utils.nullToEmpty;
+
 import java.util.Objects;
 
-import static uk.ac.ebi.uniprot.common.Utils.nullToEmpty;
+import org.uniprot.core.common.Utils;
 
 public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
     private static final long serialVersionUID = -2748929647045369784L;

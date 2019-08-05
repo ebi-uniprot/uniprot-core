@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.impl.ValueImpl;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class APIsoformImpl implements APIsoform {
     private static final long serialVersionUID = -6908166238877018418L;

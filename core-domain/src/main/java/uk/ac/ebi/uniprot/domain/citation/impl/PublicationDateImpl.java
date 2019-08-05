@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.domain.citation.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
 
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class PublicationDateImpl implements PublicationDate {
     private static final long serialVersionUID = 3232437573866835411L;

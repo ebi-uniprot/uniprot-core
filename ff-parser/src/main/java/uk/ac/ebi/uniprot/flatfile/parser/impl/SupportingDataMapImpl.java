@@ -2,13 +2,13 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.common.Pair;
+import org.uniprot.core.common.Utils;
 import org.uniprot.core.cv.impl.DiseaseFileReader;
 import org.uniprot.core.cv.impl.KeywordFileReader;
 import org.uniprot.core.cv.impl.SubcellularLocationFileReader;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 
-import uk.ac.ebi.uniprot.common.Pair;
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.SupportingDataMap;
 

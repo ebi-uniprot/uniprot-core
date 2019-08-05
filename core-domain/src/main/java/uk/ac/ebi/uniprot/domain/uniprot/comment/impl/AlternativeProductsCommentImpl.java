@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.domain.uniprot.comment.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class AlternativeProductsCommentImpl extends CommentImpl implements AlternativeProductsComment {
     private static final long serialVersionUID = -8166142214330716494L;

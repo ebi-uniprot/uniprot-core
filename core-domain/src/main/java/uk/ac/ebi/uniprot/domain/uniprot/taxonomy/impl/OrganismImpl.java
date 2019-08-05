@@ -1,14 +1,15 @@
 package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
 
 import java.util.List;
 import java.util.Objects;
 
+import org.uniprot.core.common.Utils;
+
 import static java.util.Collections.emptyList;
-import static uk.ac.ebi.uniprot.common.Utils.nonNullUnmodifiableList;
+import static org.uniprot.core.common.Utils.nonNullUnmodifiableList;
 
 public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     private static final long serialVersionUID = 3285422222944186108L;

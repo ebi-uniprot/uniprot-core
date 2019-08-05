@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.domain.uniprot.evidence;
 
-import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.common.property.PropertyArray;
-import uk.ac.ebi.uniprot.common.property.PropertyObject;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.common.Utils;
+import org.uniprot.core.common.property.PropertyArray;
+import org.uniprot.core.common.property.PropertyObject;
 
 
 public enum EvidenceTypes {

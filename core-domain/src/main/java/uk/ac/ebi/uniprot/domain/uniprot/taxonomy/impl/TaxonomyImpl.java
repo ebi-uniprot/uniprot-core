@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
 

@@ -1,9 +1,10 @@
-package uk.ac.ebi.uniprot.common.concurrency;
+package org.uniprot.core.common.concurrency;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.common.concurrency.OnZeroCountSleeper;
 
 import java.util.List;
 import java.util.stream.Stream;

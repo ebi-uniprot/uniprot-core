@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.domain.taxonomy;
 
-import uk.ac.ebi.uniprot.common.EnumDisplay;
+import org.uniprot.core.common.EnumDisplay;
 
 public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
     FORMA("forma"),

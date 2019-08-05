@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 import uk.ac.ebi.uniprot.domain.Property;
@@ -9,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.common.Utils;
 
 
 public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference<T> {

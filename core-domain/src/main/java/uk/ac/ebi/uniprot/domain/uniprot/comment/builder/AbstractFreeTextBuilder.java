@@ -4,10 +4,10 @@ import uk.ac.ebi.uniprot.domain.Builder;
 import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeText;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 
+import static org.uniprot.core.common.Utils.nonNullList;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 
 /**
  * Created 16/01/19

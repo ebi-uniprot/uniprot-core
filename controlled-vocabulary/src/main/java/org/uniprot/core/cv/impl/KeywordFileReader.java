@@ -2,6 +2,8 @@ package org.uniprot.core.cv.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.common.Pair;
+import org.uniprot.core.common.PairImpl;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordCategory;
@@ -9,9 +11,6 @@ import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
-
-import uk.ac.ebi.uniprot.common.Pair;
-import uk.ac.ebi.uniprot.common.PairImpl;
 
 import java.util.*;
 import java.util.stream.Collectors;

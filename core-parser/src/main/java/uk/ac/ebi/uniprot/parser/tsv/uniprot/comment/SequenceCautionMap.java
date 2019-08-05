@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.common.Utils;
+import org.uniprot.core.common.Utils;
+
 import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;

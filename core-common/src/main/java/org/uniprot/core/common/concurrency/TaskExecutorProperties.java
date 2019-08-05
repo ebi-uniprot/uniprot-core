@@ -1,8 +1,8 @@
-package uk.ac.ebi.uniprot.common.concurrency;
+package org.uniprot.core.common.concurrency;
+
+import static org.uniprot.core.common.concurrency.TaskExecutorProperties.Builder.createTaskExecutorPropertiesBuilder;
 
 import java.util.concurrent.ExecutorService;
-
-import static uk.ac.ebi.uniprot.common.concurrency.TaskExecutorProperties.Builder.createTaskExecutorPropertiesBuilder;
 
 /**
  * Records properties that can be used to configure a {@code TaskExecutor} or {@link ExecutorService}.

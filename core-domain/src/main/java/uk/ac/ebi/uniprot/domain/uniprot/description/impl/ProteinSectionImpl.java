@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.description.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
 import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
@@ -8,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
 
 import java.util.Collections;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 public class ProteinSectionImpl implements ProteinSection {
 

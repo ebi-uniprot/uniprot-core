@@ -2,13 +2,13 @@ package uk.ac.ebi.uniprot.json.parser;
 
 import java.util.Arrays;
 
+import org.uniprot.core.common.EnumDisplay;
+
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.cfg.PackageVersion;
 import com.fasterxml.jackson.databind.util.ClassUtil;
-
-import uk.ac.ebi.uniprot.common.EnumDisplay;
 
 public class SimpleAnnotationIntrospector extends AnnotationIntrospector {
 

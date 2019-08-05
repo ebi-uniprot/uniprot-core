@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.common.Utils;
-
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.common.Utils;
 
 public interface NamedValueMap {
 	Map<String, String> attributeValues();

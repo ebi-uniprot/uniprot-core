@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.domain;
 
 import java.io.Serializable;
 
-import uk.ac.ebi.uniprot.common.Pair;
+import org.uniprot.core.common.Pair;
 
 public final class Property implements Pair<String, String>, Comparable<Property>, Serializable {
     private static final long serialVersionUID = 2383267527069888292L;

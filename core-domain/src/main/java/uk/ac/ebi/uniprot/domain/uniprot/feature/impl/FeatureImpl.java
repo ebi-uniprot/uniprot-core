@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.feature.impl;
 
-import uk.ac.ebi.uniprot.common.Utils;
 import uk.ac.ebi.uniprot.domain.DBCrossReference;
 import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -8,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
 
 import java.util.Collections;
 import java.util.List;
+
+import org.uniprot.core.common.Utils;
 
 public class FeatureImpl implements Feature {
     private static final long serialVersionUID = -5308576363211194641L;
