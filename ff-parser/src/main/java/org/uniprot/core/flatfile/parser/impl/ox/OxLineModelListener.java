@@ -5,8 +5,8 @@ import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.oh.OhLineObject;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.OxLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.OxLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.OxLineParser;
+import org.uniprot.core.flatfile.antlr.OxLineParserBaseListener;
 
 
 /**

@@ -4,8 +4,8 @@ package org.uniprot.core.flatfile.parser.impl.ac;
 
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.AcLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.AcLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.AcLineParser;
+import org.uniprot.core.flatfile.antlr.AcLineParserBaseListener;
 
 
 /**

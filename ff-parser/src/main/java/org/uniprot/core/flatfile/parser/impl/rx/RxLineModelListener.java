@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.rx;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.RxLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.RxLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.RxLineParser;
+import org.uniprot.core.flatfile.antlr.RxLineParserBaseListener;
 
 /**
  * Created with IntelliJ IDEA.

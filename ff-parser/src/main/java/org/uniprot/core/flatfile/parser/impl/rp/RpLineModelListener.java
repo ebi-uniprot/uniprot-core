@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.rp;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.RpLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.RpLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.RpLineParser;
+import org.uniprot.core.flatfile.antlr.RpLineParserBaseListener;
 
 /**
  * Created with IntelliJ IDEA.

@@ -5,9 +5,9 @@ import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.CcLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.CcLineParser.*;
-import uk.ac.ebi.uniprot.flatfile.antlr.CcLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.CcLineParser;
+import org.uniprot.core.flatfile.antlr.CcLineParser.*;
+import org.uniprot.core.flatfile.antlr.CcLineParserBaseListener;
 
 import java.util.ArrayList;
 import java.util.List;

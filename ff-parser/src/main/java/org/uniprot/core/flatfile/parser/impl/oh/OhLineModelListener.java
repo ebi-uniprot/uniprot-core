@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.oh;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.OhLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.OhLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.OhLineParser;
+import org.uniprot.core.flatfile.antlr.OhLineParserBaseListener;
 
 /**
  * Created with IntelliJ IDEA.

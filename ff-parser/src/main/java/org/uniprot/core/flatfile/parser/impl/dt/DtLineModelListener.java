@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.dt;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.DtLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.DtLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.DtLineParser;
+import org.uniprot.core.flatfile.antlr.DtLineParserBaseListener;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

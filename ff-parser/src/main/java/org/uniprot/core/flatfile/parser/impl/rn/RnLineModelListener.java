@@ -4,8 +4,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.RnLineParserBaseListener;
-import uk.ac.ebi.uniprot.flatfile.antlr.RnLineParser;
+import org.uniprot.core.flatfile.antlr.RnLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.RnLineParser;
 
 /**
  * Created with IntelliJ IDEA.

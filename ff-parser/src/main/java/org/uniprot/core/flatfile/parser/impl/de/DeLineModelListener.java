@@ -5,8 +5,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.DeLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.DeLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.DeLineParser;
+import org.uniprot.core.flatfile.antlr.DeLineParserBaseListener;
 
 import java.util.List;
 

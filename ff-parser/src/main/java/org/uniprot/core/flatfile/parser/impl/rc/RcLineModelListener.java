@@ -4,8 +4,8 @@ import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.RcLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.RcLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.RcLineParser;
+import org.uniprot.core.flatfile.antlr.RcLineParserBaseListener;
 
 import java.util.List;
 

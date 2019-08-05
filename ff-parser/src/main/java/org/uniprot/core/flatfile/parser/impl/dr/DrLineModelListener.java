@@ -5,8 +5,8 @@ import org.uniprot.core.flatfile.parser.ParseException;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.DrLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.DrLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.DrLineParser;
+import org.uniprot.core.flatfile.antlr.DrLineParserBaseListener;
 
 import java.util.ArrayList;
 import java.util.List;

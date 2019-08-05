@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.pe;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.PeLineParserBaseListener;
-import uk.ac.ebi.uniprot.flatfile.antlr.PeLineParser;
+import org.uniprot.core.flatfile.antlr.PeLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.PeLineParser;
 
 /**
  * Created with IntelliJ IDEA.

@@ -6,8 +6,8 @@ import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.GnLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.GnLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.GnLineParser;
+import org.uniprot.core.flatfile.antlr.GnLineParserBaseListener;
 
 import java.util.ArrayList;
 import java.util.List;

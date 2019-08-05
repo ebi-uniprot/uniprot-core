@@ -2,8 +2,8 @@ package org.uniprot.core.flatfile.parser.impl.rl;
 
 //import org.antlr.v4.runtime.misc.NotNull;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.RlLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.RlLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.RlLineParser;
+import org.uniprot.core.flatfile.antlr.RlLineParserBaseListener;
 
 import javax.validation.constraints.NotNull;
 

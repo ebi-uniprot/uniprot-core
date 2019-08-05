@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.ss;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.SsLineParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.SsLineParserBaseListener;
+import org.uniprot.core.flatfile.antlr.SsLineParser;
+import org.uniprot.core.flatfile.antlr.SsLineParserBaseListener;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

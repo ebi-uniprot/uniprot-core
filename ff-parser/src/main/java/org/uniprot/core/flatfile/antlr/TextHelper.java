@@ -4,8 +4,8 @@ import com.google.common.base.Preconditions;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import uk.ac.ebi.uniprot.flatfile.antlr.TextHelperLexer;
-import uk.ac.ebi.uniprot.flatfile.antlr.TextHelperParser;
+import org.uniprot.core.flatfile.antlr.TextHelperLexer;
+import org.uniprot.core.flatfile.antlr.TextHelperParser;
 
 import java.util.ArrayList;
 import java.util.List;

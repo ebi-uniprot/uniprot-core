@@ -30,8 +30,8 @@ import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 
-import uk.ac.ebi.uniprot.flatfile.antlr.UniprotParser;
-import uk.ac.ebi.uniprot.flatfile.antlr.UniprotParserBaseListener;
+import org.uniprot.core.flatfile.antlr.UniprotParser;
+import org.uniprot.core.flatfile.antlr.UniprotParserBaseListener;
 
 /**
  * Created with IntelliJ IDEA.
