@@ -21,9 +21,11 @@
 		<dropwizard.metrics.version>3.1.0</dropwizard.metrics.version>
 		<jcommander.version>1.47</jcommander.version>
 		<xsd-location>${project.basedir}/src/main/resources/xsd</xsd-location>
-		<proteome-xsd-pojo-package>uk.ac.ebi.uniprot.xml.jaxb.proteome</proteome-xsd-pojo-package>
-		<uniprot-xsd-pojo-package>uk.ac.ebi.uniprot.xml.jaxb.uniprot</uniprot-xsd-pojo-package>
-		<coordinate-xsd-pojo-package>uk.ac.ebi.uniprot.xml.jaxb.coordinate</coordinate-xsd-pojo-package>
+		<proteome-xsd-pojo-package>org.uniprot.core.xml.jaxb.proteome</proteome-xsd-pojo-package>
+		<uniprot-xsd-pojo-package>org.uniprot.core.xml.jaxb.uniprot</uniprot-xsd-pojo-package>
+		<coordinate-xsd-pojo-package>org.uniprot.core.xml.jaxb.coordinate</coordinate-xsd-pojo-package>
+		<uniref-xsd-pojo-package>org.uniprot.core.xml.jaxb.uniref</uniref-xsd-pojo-package>
+		<uniparc-xsd-pojo-package>org.uniprot.core.xml.jaxb.uniparc</uniparc-xsd-pojo-package>
 
 	</properties>
 	<dependencies>
@@ -174,7 +176,7 @@
 								<xsdOption>
 									<extension>true</extension>
 									<xsd>${xsd-location}/uniprot.xsd</xsd>
-									<packagename>uk.ac.ebi.uniprot.xml.jaxb.uniprot</packagename>
+									<packagename>${uniprot-xsd-pojo-package}</packagename>
 									<extensionArgs>
 										<extensionArg>-verbose</extensionArg>
 										<extensionArg>-Xequals</extensionArg>
@@ -186,7 +188,7 @@
 								<xsdOption>
 									<extension>true</extension>
 									<xsd>${xsd-location}/uniparc.xsd</xsd>
-									<packagename>uk.ac.ebi.uniprot.xml.jaxb.uniparc</packagename>
+									<packagename>${uniparc-xsd-pojo-package}</packagename>
 									<extensionArgs>
 										<extensionArg>-verbose</extensionArg>
 										<extensionArg>-Xequals</extensionArg>
@@ -198,7 +200,7 @@
 								<xsdOption>
 									<extension>true</extension>
 									<xsd>${xsd-location}/uniref.xsd</xsd>
-									<packagename>uk.ac.ebi.uniprot.xml.jaxb.uniref</packagename>
+									<packagename>${uniref-xsd-pojo-package}</packagename>
 									<extensionArgs>
 										<extensionArg>-verbose</extensionArg>
 										<extensionArg>-Xequals</extensionArg>
