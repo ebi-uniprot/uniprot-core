@@ -1,11 +1,11 @@
 package uk.ebi.uniprot.scorer.uniprotkb.dbx;
 
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 import uk.ebi.uniprot.scorer.uniprotkb.HasScore;
 
 import java.util.List;
 
+import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 

@@ -1,10 +1,9 @@
 package org.uniprot.core.parser.tsv.uniprot.comment;
 
-import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
-
 import java.util.List;
 
 import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;

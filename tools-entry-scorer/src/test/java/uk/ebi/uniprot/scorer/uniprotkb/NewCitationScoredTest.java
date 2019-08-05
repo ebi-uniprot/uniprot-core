@@ -3,11 +3,10 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 import org.junit.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationType;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtReference;
-
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 
 import java.util.List;
 

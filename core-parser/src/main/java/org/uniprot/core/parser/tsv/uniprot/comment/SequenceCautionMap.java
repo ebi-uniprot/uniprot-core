@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.util.Utils;
-
-import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 
 public class SequenceCautionMap implements NamedValueMap {
 

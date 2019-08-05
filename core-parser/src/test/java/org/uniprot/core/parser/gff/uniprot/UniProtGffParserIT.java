@@ -2,14 +2,13 @@ package org.uniprot.core.parser.gff.uniprot;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
+import org.uniprot.core.flatfile.parser.UniprotLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
+import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
+import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
 import org.uniprot.core.parser.gff.uniprot.UniProtGffParser;
 import org.uniprot.core.uniprot.UniProtEntry;
-
-import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObjectConverter;
 
 import java.io.IOException;
 import java.net.URISyntaxException;

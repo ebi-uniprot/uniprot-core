@@ -1,14 +1,14 @@
 package uk.ebi.uniprot.scorer.uniprotkb.feature;
 
 import org.junit.Test;
+import org.uniprot.core.flatfile.parser.UniprotLineParser;
+import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
+import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.feature.Feature;
 
-import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParserFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FtLineConverter;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FtLineObject;
 import uk.ebi.uniprot.scorer.uniprotkb.features.FeatureScored;
 
 import java.util.List;

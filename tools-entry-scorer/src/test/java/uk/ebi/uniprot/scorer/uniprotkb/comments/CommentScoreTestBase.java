@@ -1,10 +1,10 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
 import uk.ebi.uniprot.scorer.uniprotkb.UniProtEntryScored;
 
 import java.util.List;
 
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;

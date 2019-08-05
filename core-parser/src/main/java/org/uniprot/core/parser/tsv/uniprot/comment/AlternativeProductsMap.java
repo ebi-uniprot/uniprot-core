@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
-
-import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 
 public class AlternativeProductsMap implements NamedValueMap {
 

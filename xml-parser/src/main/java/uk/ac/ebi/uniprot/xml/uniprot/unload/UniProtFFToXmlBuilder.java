@@ -4,7 +4,8 @@ import com.codahale.metrics.Timer;
 import com.sun.xml.bind.marshaller.DataWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.EntryBufferedReader2;
+import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader2;
+
 import uk.ac.ebi.uniprot.xml.DefaultXmlFileMerger;
 import uk.ac.ebi.uniprot.xml.XmlBuildStats;
 import uk.ac.ebi.uniprot.xml.XmlBuilder;

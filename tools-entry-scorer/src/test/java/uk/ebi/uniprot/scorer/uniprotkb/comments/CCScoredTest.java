@@ -1,6 +1,7 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 import org.junit.Test;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
@@ -9,7 +10,6 @@ import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
 import uk.ebi.uniprot.scorer.uniprotkb.UniProtEntryScored;
 
 import java.util.List;

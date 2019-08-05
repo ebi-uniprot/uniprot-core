@@ -2,11 +2,11 @@ package uk.ac.ebi.uniprot.xml.uniprot.unload;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.UniProtParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.uniprot.UniProtEntry;
 
-import uk.ac.ebi.uniprot.flatfile.parser.UniProtParser;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.Entry;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtEntryConverter;
 

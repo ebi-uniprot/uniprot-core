@@ -2,12 +2,11 @@ package org.uniprot.core.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.flatfile.parser.UniProtParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.parser.tsv.uniprot.EntryMap;
 import org.uniprot.core.uniprot.UniProtEntry;
-
-import uk.ac.ebi.uniprot.flatfile.parser.UniProtParser;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

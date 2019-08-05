@@ -1,7 +1,5 @@
 package org.uniprot.core.parser.gff.uniprot;
 
-import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FTLineBuilderHelper;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -9,6 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.flatfile.parser.impl.ft.FTLineBuilderHelper;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;

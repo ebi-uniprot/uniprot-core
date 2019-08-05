@@ -12,12 +12,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
+import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureDescription;
 import org.uniprot.core.uniprot.feature.FeatureType;
-
-import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 
 public class EntryFeaturesMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("ft:var_seq", "ft:variant", "ft:non_con", "ft:non_std",

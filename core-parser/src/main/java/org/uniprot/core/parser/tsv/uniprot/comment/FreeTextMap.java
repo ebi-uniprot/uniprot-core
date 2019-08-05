@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.flatfile.parser.impl.cc.CCFreeTextCommentLineBuilder;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-
-import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCFreeTextCommentLineBuilder;
 
 public class FreeTextMap implements NamedValueMap {
 

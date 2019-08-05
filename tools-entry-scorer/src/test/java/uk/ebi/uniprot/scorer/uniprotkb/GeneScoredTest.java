@@ -2,13 +2,12 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 
 import org.junit.Test;
+import org.uniprot.core.flatfile.parser.UniprotLineParser;
+import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.gn.GnLineConverter;
+import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject;
 import org.uniprot.core.gene.Gene;
-
-import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParserFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.gn.GnLineConverter;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.gn.GnLineObject;
 
 import java.util.List;
 

@@ -1,13 +1,12 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.Test;
+import org.uniprot.core.flatfile.parser.UniprotLineParser;
+import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
+import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
 import org.uniprot.core.uniprot.description.ProteinDescription;
-
-import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
-import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParserFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineConverter;
-import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DeLineObject;
 
 import static org.junit.Assert.assertEquals;
 

@@ -3,10 +3,9 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
-
-import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtEntryIterator;
 
 import java.io.*;
 import java.time.Duration;
