@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.impl;
 
-import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
@@ -8,6 +7,8 @@ import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+
+import org.uniprot.core.cv.keyword.KeywordCategory;
 
 public class KeywordImpl extends EvidencedValueImpl implements Keyword {
 

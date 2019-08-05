@@ -1,15 +1,17 @@
 package uk.ac.ebi.uniprot.json.parser.keyword;
 
+import org.uniprot.core.cv.keyword.GeneOntology;
+import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordStatistics;
+import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
-import uk.ac.ebi.uniprot.cv.keyword.Keyword;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordEntry;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordStatistics;
-import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordEntryImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordStatisticsImpl;
+
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
 
 /**

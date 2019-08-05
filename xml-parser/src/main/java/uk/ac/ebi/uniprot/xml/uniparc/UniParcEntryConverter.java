@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.cv.taxonomy.TaxonomicNode;
+import org.uniprot.core.cv.taxonomy.TaxonomyRepo;
+
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.cv.taxonomy.TaxonomicNode;
-import uk.ac.ebi.uniprot.cv.taxonomy.TaxonomyRepo;
 import uk.ac.ebi.uniprot.domain.uniparc.UniParcDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniparc.UniParcEntry;
 import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcEntryBuilder;

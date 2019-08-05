@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.json.parser.keyword;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.cv.keyword.Keyword;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 /**

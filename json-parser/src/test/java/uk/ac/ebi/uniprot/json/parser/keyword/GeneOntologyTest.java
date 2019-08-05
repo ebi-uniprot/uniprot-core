@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.json.parser.keyword;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.cv.keyword.GeneOntology;
-import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
+import org.uniprot.core.cv.keyword.GeneOntology;
+import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 /**

@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.parser.tsv.keyword;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.cv.keyword.Keyword;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordEntry;
-import uk.ac.ebi.uniprot.cv.keyword.impl.GeneOntologyImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordEntryImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordStatisticsImpl;
+import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
 
 import java.util.Collections;
 import java.util.Map;

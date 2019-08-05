@@ -2,6 +2,8 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+
 import uk.ac.ebi.uniprot.domain.gene.Gene;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
@@ -12,7 +14,6 @@ import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
 import uk.ebi.uniprot.scorer.uniprotkb.comments.CommentScored;
 import uk.ebi.uniprot.scorer.uniprotkb.comments.CommentScoredFactory;
 import uk.ebi.uniprot.scorer.uniprotkb.features.FeatureScored;

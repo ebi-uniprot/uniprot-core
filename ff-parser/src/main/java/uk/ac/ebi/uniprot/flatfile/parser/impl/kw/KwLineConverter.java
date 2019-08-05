@@ -2,7 +2,6 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl.kw;
 
 import uk.ac.ebi.uniprot.common.Pair;
 import uk.ac.ebi.uniprot.common.PairImpl;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
@@ -14,6 +13,8 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.cv.keyword.KeywordCategory;
 
 public class KwLineConverter extends EvidenceCollector implements Converter<KwLineObject, List<Keyword>> {
     private final Map<String,Pair<String, KeywordCategory> > keywordMap;

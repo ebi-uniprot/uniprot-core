@@ -1,15 +1,16 @@
 package uk.ac.ebi.uniprot.parser.tsv.disease;
 
 import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.cv.disease.CrossReference;
-import uk.ac.ebi.uniprot.cv.disease.Disease;
-import uk.ac.ebi.uniprot.cv.keyword.Keyword;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.cv.disease.CrossReference;
+import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.keyword.Keyword;
 
 public class DiseaseEntryMap implements NamedValueMap {
     public static final String EMPTY_STRING = "";

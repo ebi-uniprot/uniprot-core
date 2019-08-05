@@ -1,9 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.cv.xdb.DBXRefTypeAttribute;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
+
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.*;
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
@@ -14,6 +12,10 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PropertyType;
 
 import java.util.List;
 import java.util.Optional;
+
+import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 
 public class UniProtCrossReferenceConverter implements Converter<DbReferenceType, UniProtDBCrossReference> {
 	private static final String GO = "GO";

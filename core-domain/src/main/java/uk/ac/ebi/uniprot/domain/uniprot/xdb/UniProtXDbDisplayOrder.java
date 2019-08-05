@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
-
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,6 +9,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 
 /**
  * @author jieluo

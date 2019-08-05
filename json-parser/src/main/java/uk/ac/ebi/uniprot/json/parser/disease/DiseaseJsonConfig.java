@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.json.parser.disease;
 
+import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.disease.impl.DiseaseImpl;
+import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import uk.ac.ebi.uniprot.cv.disease.Disease;
-import uk.ac.ebi.uniprot.cv.disease.impl.DiseaseImpl;
-import uk.ac.ebi.uniprot.cv.keyword.Keyword;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
+
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
 
 public class DiseaseJsonConfig extends JsonConfig {

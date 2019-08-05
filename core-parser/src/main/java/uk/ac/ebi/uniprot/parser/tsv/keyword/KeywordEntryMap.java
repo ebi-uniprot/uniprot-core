@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.parser.tsv.keyword;
 
 import uk.ac.ebi.uniprot.common.Utils;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordEntry;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import org.uniprot.core.cv.keyword.KeywordEntry;
 
 public class KeywordEntryMap implements NamedValueMap {
 

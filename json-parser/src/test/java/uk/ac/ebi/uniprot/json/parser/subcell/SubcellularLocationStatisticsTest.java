@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.json.parser.subcell;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.cv.subcell.SubcellularLocationStatistics;
-import uk.ac.ebi.uniprot.cv.subcell.impl.SubcellularLocationStatisticsImpl;
+import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
+import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 /**

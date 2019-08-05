@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb.impl;
 
 import org.junit.Test;
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtXDbTypes;
+
 import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
 
 import java.util.List;
 

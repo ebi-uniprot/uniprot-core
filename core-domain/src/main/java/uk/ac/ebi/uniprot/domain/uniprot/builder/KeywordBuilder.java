@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.builder;
 
-import uk.ac.ebi.uniprot.cv.keyword.KeywordCategory;
 import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import uk.ac.ebi.uniprot.domain.uniprot.impl.KeywordImpl;
 
 import java.util.List;
+
+import org.uniprot.core.cv.keyword.KeywordCategory;
 
 import static uk.ac.ebi.uniprot.common.Utils.nonNullList;
 

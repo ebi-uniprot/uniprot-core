@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.domain.uniprot.xdb;
 
-import uk.ac.ebi.uniprot.cv.xdb.DBXRefTypeAttribute;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypeDetail;
-import uk.ac.ebi.uniprot.cv.xdb.UniProtXDbTypes;
 import uk.ac.ebi.uniprot.domain.DatabaseType;
 
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
+import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 
 public final class UniProtXDbType implements DatabaseType, Serializable {
     private static final long serialVersionUID = 201534956573963997L;

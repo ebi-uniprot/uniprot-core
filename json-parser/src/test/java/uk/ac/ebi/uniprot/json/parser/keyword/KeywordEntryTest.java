@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.json.parser.keyword;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.cv.keyword.KeywordEntry;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordEntryImpl;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordStatisticsImpl;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
+import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.util.Collections;

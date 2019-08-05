@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.parser.tsv.disease;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.cv.disease.CrossReference;
-import uk.ac.ebi.uniprot.cv.disease.Disease;
-import uk.ac.ebi.uniprot.cv.keyword.Keyword;
-import uk.ac.ebi.uniprot.cv.keyword.impl.KeywordImpl;
+import org.uniprot.core.cv.disease.CrossReference;
+import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.cv.keyword.impl.KeywordImpl;
+
 import uk.ac.ebi.uniprot.domain.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.parser.tsv.taxonomy.TaxonomyEntryMap;
 
