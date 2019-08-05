@@ -9,7 +9,7 @@ import javax.xml.namespace.QName;
 
 
 public class UniProtXmlTestHelper {
-	public static final String TARGET_PACKAGE ="uk.ac.ebi.uniprot.xml.jaxb.uniprot";
+	public static final String TARGET_PACKAGE ="org.uniprot.core.xml.jaxb.uniprot";
 	@SuppressWarnings("unchecked")
 	public static <T>  String toXmlString(T obj, Class<T>  clazz, String element) {
 		 try {
