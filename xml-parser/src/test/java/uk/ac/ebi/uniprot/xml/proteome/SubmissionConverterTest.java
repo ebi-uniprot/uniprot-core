@@ -3,11 +3,11 @@ package uk.ac.ebi.uniprot.xml.proteome;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.Submission;
+import org.uniprot.core.citation.SubmissionDatabase;
+import org.uniprot.core.citation.builder.SubmissionBuilder;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ConsortiumType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.NameListType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;

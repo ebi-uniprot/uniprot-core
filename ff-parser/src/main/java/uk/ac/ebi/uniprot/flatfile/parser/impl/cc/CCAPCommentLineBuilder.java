@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.APEventType;
+import org.uniprot.core.uniprot.comment.APIsoform;
+import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
+import org.uniprot.core.uniprot.comment.Note;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

@@ -2,17 +2,18 @@ package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.comment.Cofactor;
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CofactorType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
@@ -28,7 +29,7 @@ import java.util.Map;
 import static java.util.Collections.singletonList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class CofactorCommentConverterTest {
     CofactorCommentConverter converter;

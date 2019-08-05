@@ -9,24 +9,23 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeEntry;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeType;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
-import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
-import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.RedundantProteomeBuilder;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyLineageBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.ProteomeEntry;
+import org.uniprot.core.proteome.ProteomeId;
+import org.uniprot.core.proteome.ProteomeType;
+import org.uniprot.core.proteome.ProteomeXReferenceType;
+import org.uniprot.core.proteome.RedundantProteome;
+import org.uniprot.core.proteome.Superkingdom;
+import org.uniprot.core.proteome.builder.ComponentBuilder;
+import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
+import org.uniprot.core.proteome.builder.RedundantProteomeBuilder;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 /**
  *

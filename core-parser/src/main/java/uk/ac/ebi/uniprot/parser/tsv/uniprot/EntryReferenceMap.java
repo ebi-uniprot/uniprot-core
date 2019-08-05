@@ -1,12 +1,11 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.uniprot.UniProtReference;
 
 public class EntryReferenceMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("pm_id");

@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
 
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.citation.JournalArticle;
+import org.uniprot.core.citation.builder.JournalArticleBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

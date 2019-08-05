@@ -1,10 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.AbsorptionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
@@ -15,6 +10,12 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.Absorption;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.AbsorptionBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class BPCPAbsorptionConverter implements Converter<CommentType.Absorption, Absorption> {
     private static final String APPROXIMATION_SYMBOL = "~";

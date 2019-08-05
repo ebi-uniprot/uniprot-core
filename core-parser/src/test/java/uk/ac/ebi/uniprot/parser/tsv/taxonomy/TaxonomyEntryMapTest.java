@@ -1,16 +1,16 @@
 package uk.ac.ebi.uniprot.parser.tsv.taxonomy;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyEntry;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStrain;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyEntryBuilder;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyLineageBuilder;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyStatisticsBuilder;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyStrainBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.taxonomy.TaxonomyEntry;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.TaxonomyRank;
+import org.uniprot.core.taxonomy.TaxonomyStrain;
+import org.uniprot.core.taxonomy.builder.TaxonomyEntryBuilder;
+import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.builder.TaxonomyStatisticsBuilder;
+import org.uniprot.core.taxonomy.builder.TaxonomyStrainBuilder;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import java.util.Collections;
 import java.util.Map;

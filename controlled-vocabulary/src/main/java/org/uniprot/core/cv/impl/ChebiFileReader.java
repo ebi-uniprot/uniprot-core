@@ -1,6 +1,6 @@
 package org.uniprot.core.cv.impl;
 
-import static org.uniprot.core.common.Utils.nonNull;
+import static org.uniprot.core.util.Utils.nonNull;
 
 import java.util.ArrayList;
 import java.util.List;

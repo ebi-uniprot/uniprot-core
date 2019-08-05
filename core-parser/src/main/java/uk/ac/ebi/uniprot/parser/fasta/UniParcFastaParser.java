@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.parser.fasta;
 
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcEntry;
+import org.uniprot.core.uniparc.UniParcEntry;
 
 /**
  *

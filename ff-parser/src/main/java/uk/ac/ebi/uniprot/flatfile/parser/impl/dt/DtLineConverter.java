@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl.dt;
 
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryAuditBuilder;
+import org.uniprot.core.uniprot.EntryAudit;
+import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 
 

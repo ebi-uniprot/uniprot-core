@@ -1,12 +1,13 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.Absorption;
+import org.uniprot.core.uniprot.comment.BPCPComment;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 14:38:24 To change this template use File | Settings

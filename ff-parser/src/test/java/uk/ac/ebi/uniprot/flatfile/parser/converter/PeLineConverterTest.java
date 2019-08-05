@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
+import org.uniprot.core.uniprot.ProteinExistence;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.pe.PeLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.pe.PeLineObject;
 

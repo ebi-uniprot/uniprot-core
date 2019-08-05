@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
 
 public class FreeTextCommentTranslator implements CommentTransformer<FreeTextComment> {

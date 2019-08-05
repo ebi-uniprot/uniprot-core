@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntry;
+
 import uk.ac.ebi.uniprot.flatfile.parser.SupportingDataMap;
 import uk.ac.ebi.uniprot.flatfile.parser.UniProtParser;
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;

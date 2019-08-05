@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

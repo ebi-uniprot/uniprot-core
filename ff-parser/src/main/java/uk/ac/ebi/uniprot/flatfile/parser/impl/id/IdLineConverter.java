@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.id;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 
 import java.util.AbstractMap;
 import java.util.Map;
+
+import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.UniProtId;
+import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 
 public class IdLineConverter implements Converter<IdLineObject, Map.Entry<UniProtId, UniProtEntryType>> {
 

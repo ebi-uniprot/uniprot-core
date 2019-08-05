@@ -1,9 +1,5 @@
 package uk.ebi.uniprot.scorer.uniprotkb.features;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ebi.uniprot.scorer.uniprotkb.Consensus;
 import uk.ebi.uniprot.scorer.uniprotkb.HasScore;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreStatus;
@@ -12,6 +8,11 @@ import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.List;
+
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
 
 import static uk.ebi.uniprot.scorer.uniprotkb.Consensus.NUMBER;
 import static uk.ebi.uniprot.scorer.uniprotkb.Consensus.PRESENCE;

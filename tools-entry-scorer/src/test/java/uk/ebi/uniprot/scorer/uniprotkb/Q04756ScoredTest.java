@@ -1,7 +1,8 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntry;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 

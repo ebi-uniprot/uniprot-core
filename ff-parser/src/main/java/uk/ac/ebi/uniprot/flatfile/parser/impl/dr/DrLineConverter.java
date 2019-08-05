@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.dr;
 
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalLineBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.exception.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
@@ -14,6 +8,13 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.uniprot.InternalLine;
+import org.uniprot.core.uniprot.InternalLineType;
+import org.uniprot.core.uniprot.builder.InternalLineBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 
 public class DrLineConverter extends EvidenceCollector implements Converter<DrLineObject, UniProtDrObjects> {
     private boolean ignoreWrongDR = false;

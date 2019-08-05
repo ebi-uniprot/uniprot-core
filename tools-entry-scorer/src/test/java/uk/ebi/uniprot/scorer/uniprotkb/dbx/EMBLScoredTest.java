@@ -1,7 +1,8 @@
 package uk.ebi.uniprot.scorer.uniprotkb.dbx;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+
 import uk.ebi.uniprot.scorer.uniprotkb.HasScore;
 import uk.ebi.uniprot.scorer.uniprotkb.xdb.EmblScored;
 

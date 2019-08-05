@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.json.parser.literature;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
-import uk.ac.ebi.uniprot.domain.literature.builder.LiteratureMappedReferenceBuilder;
+import org.uniprot.core.literature.LiteratureMappedReference;
+import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 /**

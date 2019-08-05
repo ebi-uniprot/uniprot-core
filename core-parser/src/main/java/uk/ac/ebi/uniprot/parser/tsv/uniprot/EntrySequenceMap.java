@@ -1,12 +1,11 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.Sequence;
-
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.Sequence;
 
 public class EntrySequenceMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("sequence", "mass", "length");

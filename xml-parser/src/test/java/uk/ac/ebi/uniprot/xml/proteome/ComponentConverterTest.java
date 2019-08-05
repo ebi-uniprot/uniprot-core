@@ -3,9 +3,9 @@ package uk.ac.ebi.uniprot.xml.proteome;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.builder.ComponentBuilder;
 
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ComponentType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ComponentTypeType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
@@ -23,7 +23,7 @@ class ComponentConverterTest {
 		assertEquals("component name", component.getName());
 		assertEquals("component description", component.getDescription());
 		assertEquals(0, component.getDbXReferences().size());
-		assertEquals(uk.ac.ebi.uniprot.domain.proteome.ComponentType.CON, component.getType());
+		assertEquals(org.uniprot.core.proteome.ComponentType.CON, component.getType());
 	}
 
 	@Test
@@ -32,7 +32,7 @@ class ComponentConverterTest {
 				ComponentBuilder.newInstance()
 				.name("some name")
 				.description("some description")
-				.type(uk.ac.ebi.uniprot.domain.proteome.ComponentType.PRIMARY)
+				.type(org.uniprot.core.proteome.ComponentType.PRIMARY)
 				.build();
 		ComponentType xmlObj = converter.toXml(component);
 		Component converted = converter.fromXml(xmlObj);

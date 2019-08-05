@@ -1,13 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.common.Pair;
 import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.util.Pair;
 
 public interface SupportingDataMap extends Serializable {
 

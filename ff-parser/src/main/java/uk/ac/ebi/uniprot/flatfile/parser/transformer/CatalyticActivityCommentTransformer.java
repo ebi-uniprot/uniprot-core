@@ -2,22 +2,23 @@ package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.ReactionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.ECNumber;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
 
 import static java.util.Arrays.stream;
 

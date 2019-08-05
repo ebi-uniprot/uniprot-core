@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.ProteomeXReferenceType;
+import org.uniprot.core.proteome.builder.ComponentBuilder;
+
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ComponentType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ComponentTypeType;
@@ -46,7 +47,7 @@ public class ComponentConverter implements Converter<ComponentType, Component> {
 		}
 		builder.dbXReferences(xrefs).proteinCount(xmlObj.getCount());
 		
-		builder.type(uk.ac.ebi.uniprot.domain.proteome.ComponentType.fromValue(xmlObj.getType().value()));
+		builder.type(org.uniprot.core.proteome.ComponentType.fromValue(xmlObj.getType().value()));
 	
 		return builder.build();
 	}

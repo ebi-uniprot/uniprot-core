@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.json.parser.taxonomy;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStatistics;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyStatisticsBuilder;
+import org.uniprot.core.taxonomy.TaxonomyStatistics;
+import org.uniprot.core.taxonomy.builder.TaxonomyStatisticsBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 class TaxonomyStatisticsTest {

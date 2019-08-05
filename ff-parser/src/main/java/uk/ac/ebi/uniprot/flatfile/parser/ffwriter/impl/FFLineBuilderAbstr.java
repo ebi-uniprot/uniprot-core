@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.DEFAUT_LINESPACE;
 

@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.comment.SubcellularLocation;
+import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SubcellularLocationType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class SubcellularLocationConverterTest {
 

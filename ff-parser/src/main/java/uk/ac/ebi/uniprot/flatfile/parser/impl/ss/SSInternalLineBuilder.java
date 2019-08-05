@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ss;
 
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineBuilderAbstr;
@@ -9,6 +7,9 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.InternalLine;
+import org.uniprot.core.uniprot.InternalLineType;
 
 public class SSInternalLineBuilder extends FFLineBuilderAbstr<List<InternalLine> >{
 

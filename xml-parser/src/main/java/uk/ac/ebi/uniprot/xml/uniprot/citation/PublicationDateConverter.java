@@ -3,8 +3,9 @@ package uk.ac.ebi.uniprot.xml.uniprot.citation;
 import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
-import uk.ac.ebi.uniprot.domain.citation.builder.PublicationDateBuilder;
+import org.uniprot.core.citation.PublicationDate;
+import org.uniprot.core.citation.builder.PublicationDateBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 
 import java.text.ParseException;

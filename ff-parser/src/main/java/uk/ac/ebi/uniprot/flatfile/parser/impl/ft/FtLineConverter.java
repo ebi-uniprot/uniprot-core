@@ -1,22 +1,24 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ft;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 
 import java.util.*;
 import java.util.regex.Matcher;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.FeatureXDbType;
+import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
 public class FtLineConverter extends EvidenceCollector
         implements Converter<FtLineObject, List<Feature>> {

@@ -1,14 +1,16 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ft;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.Position;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.*;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.Position;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.uniprot.feature.*;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.LINE_LENGTH;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEPARATOR;

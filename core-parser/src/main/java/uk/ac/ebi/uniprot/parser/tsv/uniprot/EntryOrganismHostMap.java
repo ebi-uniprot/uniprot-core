@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 
 public class EntryOrganismHostMap implements NamedValueMap {
     public static final List<String> FIELDS = Arrays.asList("organism_host");

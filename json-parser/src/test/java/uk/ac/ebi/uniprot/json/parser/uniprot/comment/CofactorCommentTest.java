@@ -2,17 +2,18 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.comment.Cofactor;
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 

@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -9,6 +7,9 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.RecommendedName;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.description.ProteinRecName;
+import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
 
 public class RecNameConverter implements Converter<RecommendedName, ProteinRecName>, ToXmlDbReferences<ProteinRecName> {
     private final NameConverter nameConverter;

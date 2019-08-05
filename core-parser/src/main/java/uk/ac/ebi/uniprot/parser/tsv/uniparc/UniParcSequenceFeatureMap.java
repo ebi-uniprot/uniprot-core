@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniparc.SequenceFeature;
-import uk.ac.ebi.uniprot.domain.uniparc.SignatureDbType;
+import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SignatureDbType;
+
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 /**

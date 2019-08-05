@@ -3,15 +3,16 @@ package uk.ac.ebi.uniprot.xml.uniprot.comment;
 import com.google.common.base.Strings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.ReactionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.ECNumber;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;
@@ -25,7 +26,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 
 class CatalyticActivityCommentConverterTest {

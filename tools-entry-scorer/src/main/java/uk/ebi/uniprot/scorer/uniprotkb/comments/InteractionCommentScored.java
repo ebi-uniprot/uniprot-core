@@ -1,9 +1,9 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.InteractionComment;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:43:07 To change this template use File | Settings

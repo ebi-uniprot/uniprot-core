@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 import org.slf4j.Logger;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntry;
 
 import java.io.FileNotFoundException;
 import java.util.Arrays;

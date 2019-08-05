@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
+import org.uniprot.core.uniprot.ProteinExistence;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.pe.PELineBuilder;
 

@@ -1,10 +1,10 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-
 import java.util.List;
 import java.util.regex.Pattern;
+
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 02-Mar-2010 Time: 16:14:37 To change this template use File | Settings

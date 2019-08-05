@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FtLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FtLineObject;
 

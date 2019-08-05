@@ -1,13 +1,13 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 public class ScoreUtil {
     public static ScoreStatus getScoreStatus(Collection<ScoreStatus> types) {

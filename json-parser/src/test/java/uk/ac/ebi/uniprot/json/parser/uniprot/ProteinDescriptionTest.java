@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.*;
+import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprot.description.builder.*;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.util.Collections;

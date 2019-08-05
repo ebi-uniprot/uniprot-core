@@ -1,12 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
@@ -14,6 +7,14 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.Disease;
+import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class DiseaseCommentConverter implements CommentConverter< DiseaseComment> {
 	private final ObjectFactory xmlUniprotFactory;

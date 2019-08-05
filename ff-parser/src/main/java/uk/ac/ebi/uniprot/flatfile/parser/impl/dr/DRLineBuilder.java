@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.dr;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbDisplayOrder;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -15,7 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.Property;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtXDbDisplayOrder;
+import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SPACE;

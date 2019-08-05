@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceInfo;

@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.builder.AbstractCitationBuilder;
+import org.uniprot.core.citation.builder.AuthorBuilder;
+
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.AuthorBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ConsortiumType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.NameListType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;

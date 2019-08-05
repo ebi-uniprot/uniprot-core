@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ac;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-
 import java.util.List;
+
+import org.uniprot.core.uniprot.UniProtAccession;
 
 
 public class UniProtAcLineObject {

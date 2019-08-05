@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 

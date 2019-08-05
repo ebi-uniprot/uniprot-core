@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.GeneLocationBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.GeneEncodingType;
+import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneLocationType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.OrganelleConverter;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class OrganelleConverterTest {
 

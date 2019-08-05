@@ -3,21 +3,22 @@ package uk.ac.ebi.uniprot.xml.proteome;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.proteome.CanonicalProtein;
+import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.ProteomeEntry;
+import org.uniprot.core.proteome.ProteomeId;
+import org.uniprot.core.proteome.ProteomeXReferenceType;
+import org.uniprot.core.proteome.RedundantProteome;
+import org.uniprot.core.proteome.Superkingdom;
+import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeEntry;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeId;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
-import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
-import uk.ac.ebi.uniprot.domain.proteome.Superkingdom;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.AnnotationScoreType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
@@ -51,7 +52,7 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 		List<Component> components = xmlObj.getComponent().stream().map(componentConverter::fromXml).collect(Collectors.toList());
 		List<CanonicalProtein> canonicalProteins = xmlObj.getCanonicalGene().stream().map(canonicalProteinConverter::fromXml)
 				.collect(Collectors.toList());
-		uk.ac.ebi.uniprot.domain.proteome.ProteomeType proteomeType = getProteomeType(xmlObj);
+		org.uniprot.core.proteome.ProteomeType proteomeType = getProteomeType(xmlObj);
 		List<RedundantProteome> redundantProteomes=
 		xmlObj.getRedundantProteome().stream()
 		.map(redundantProteomeConverter::fromXml).collect(Collectors.toList());
@@ -107,12 +108,12 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 		xmlObj.setDescription(uniObj.getDescription());
 		xmlObj.setTaxonomy(uniObj.getTaxonomy().getTaxonId());
 		xmlObj.setName(uniObj.getTaxonomy().getScientificName());
-		uk.ac.ebi.uniprot.domain.proteome.ProteomeType type =uniObj.getProteomeType();
-		if(type ==uk.ac.ebi.uniprot.domain.proteome.ProteomeType.REFERENCE) {
+		org.uniprot.core.proteome.ProteomeType type =uniObj.getProteomeType();
+		if(type ==org.uniprot.core.proteome.ProteomeType.REFERENCE) {
 			xmlObj.setIsReferenceProteome(true);
-		}else if(type ==uk.ac.ebi.uniprot.domain.proteome.ProteomeType.REPRESENTATIVE) {
+		}else if(type ==org.uniprot.core.proteome.ProteomeType.REPRESENTATIVE) {
 			xmlObj.setIsRepresentativeProteome(true);
-		}else if(type == uk.ac.ebi.uniprot.domain.proteome.ProteomeType.REDUNDANT) {
+		}else if(type == org.uniprot.core.proteome.ProteomeType.REDUNDANT) {
 			xmlObj.setIsReferenceProteome(true);
 		}
 		xmlObj.setModified(XmlConverterHelper.dateToXml(uniObj.getModified()));
@@ -158,14 +159,14 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
 			return builder.taxonId(taxonId).scientificName(name).build();
 	}
 	
-	private uk.ac.ebi.uniprot.domain.proteome.ProteomeType getProteomeType(Proteome t) {
+	private org.uniprot.core.proteome.ProteomeType getProteomeType(Proteome t) {
 		if(t.isIsReferenceProteome())
-			return uk.ac.ebi.uniprot.domain.proteome.ProteomeType.REFERENCE;
+			return org.uniprot.core.proteome.ProteomeType.REFERENCE;
 		else if (t.isIsRepresentativeProteome()) {
-			return uk.ac.ebi.uniprot.domain.proteome.ProteomeType.REPRESENTATIVE;
+			return org.uniprot.core.proteome.ProteomeType.REPRESENTATIVE;
 		}else if((t.getRedundantTo() != null) && (!t.getRedundantTo().isEmpty())) {
-			return uk.ac.ebi.uniprot.domain.proteome.ProteomeType.REDUNDANT;
+			return org.uniprot.core.proteome.ProteomeType.REDUNDANT;
 		}else
-			return uk.ac.ebi.uniprot.domain.proteome.ProteomeType.NORMAL;
+			return org.uniprot.core.proteome.ProteomeType.NORMAL;
 	}
 }

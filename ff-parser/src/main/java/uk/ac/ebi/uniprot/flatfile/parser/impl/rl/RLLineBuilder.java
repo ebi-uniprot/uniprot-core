@@ -1,13 +1,15 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.rl;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.citation.*;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.RLine;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.citation.*;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

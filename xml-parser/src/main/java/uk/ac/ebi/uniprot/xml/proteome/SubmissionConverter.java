@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
+import org.uniprot.core.citation.Submission;
+import org.uniprot.core.citation.SubmissionDatabase;
+import org.uniprot.core.citation.builder.SubmissionBuilder;
+
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ReferenceType;

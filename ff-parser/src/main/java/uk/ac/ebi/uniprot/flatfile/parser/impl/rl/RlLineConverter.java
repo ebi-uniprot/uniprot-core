@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.rl;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.*;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.SubmissionDatabase;
+import org.uniprot.core.citation.builder.*;
+
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 
 public class RlLineConverter implements Converter<RlLineObject, AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>> {

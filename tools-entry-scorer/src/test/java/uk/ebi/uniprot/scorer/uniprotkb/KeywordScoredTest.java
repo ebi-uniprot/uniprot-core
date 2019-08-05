@@ -3,7 +3,8 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
+import org.uniprot.core.uniprot.Keyword;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;

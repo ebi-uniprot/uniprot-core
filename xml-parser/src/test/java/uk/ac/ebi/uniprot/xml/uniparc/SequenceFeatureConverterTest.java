@@ -3,12 +3,12 @@ package uk.ac.ebi.uniprot.xml.uniparc;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.Location;
+import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SignatureDbType;
+import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
+import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
 
-import uk.ac.ebi.uniprot.domain.Location;
-import uk.ac.ebi.uniprot.domain.uniparc.SequenceFeature;
-import uk.ac.ebi.uniprot.domain.uniparc.SignatureDbType;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.InterProGroupBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.SequenceFeatureBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniparc.SeqFeatureType;
 
 /**

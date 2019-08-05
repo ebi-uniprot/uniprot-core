@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.parser;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public interface HasEvidence extends Serializable {
 	void clear();

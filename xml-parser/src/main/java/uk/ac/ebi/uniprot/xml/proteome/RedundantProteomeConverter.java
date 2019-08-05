@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
-import uk.ac.ebi.uniprot.domain.proteome.RedundantProteome;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.RedundantProteomeBuilder;
+import org.uniprot.core.proteome.RedundantProteome;
+import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
+import org.uniprot.core.proteome.builder.RedundantProteomeBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.RedundantProteomeType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;

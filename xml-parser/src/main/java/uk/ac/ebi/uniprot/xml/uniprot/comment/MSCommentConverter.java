@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -12,6 +9,11 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class MSCommentConverter implements CommentConverter<MassSpectrometryComment> {
     private final ObjectFactory xmlUniprotFactory;

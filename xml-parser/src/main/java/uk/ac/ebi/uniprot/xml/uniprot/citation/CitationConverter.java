@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
+import org.uniprot.core.citation.Citation;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -18,8 +19,8 @@ public class CitationConverter implements Converter<CitationType, Citation> {
 
 	@Override
 	public Citation fromXml(CitationType xmlObj) {
-		uk.ac.ebi.uniprot.domain.citation.CitationType type = 
-				uk.ac.ebi.uniprot.domain.citation.CitationType.typeOf(xmlObj.getType());
+		org.uniprot.core.citation.CitationType type = 
+				org.uniprot.core.citation.CitationType.typeOf(xmlObj.getType());
 		Converter<CitationType, Citation> converter=CitationConverterFactory.
 				INSTANCE.getConverter(xmlUniprotFactory, type);	
 		if(converter !=null)

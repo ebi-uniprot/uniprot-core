@@ -8,12 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.uniparc.InterproGroup;
-import uk.ac.ebi.uniprot.domain.uniparc.SequenceFeature;
-import uk.ac.ebi.uniprot.domain.uniparc.SignatureDbType;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.InterProGroupBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SignatureDbType;
+import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
+import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
 
 /**
  *

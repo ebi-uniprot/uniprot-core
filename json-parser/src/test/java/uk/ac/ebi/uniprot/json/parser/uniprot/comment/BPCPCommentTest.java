@@ -2,10 +2,11 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 

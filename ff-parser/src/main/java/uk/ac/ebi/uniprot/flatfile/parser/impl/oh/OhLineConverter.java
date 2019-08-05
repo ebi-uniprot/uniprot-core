@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.oh;
 
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismHostBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.OrganismNameLineParser;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+import org.uniprot.core.uniprot.taxonomy.OrganismName;
+import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
 
 
 public class OhLineConverter implements Converter<OhLineObject, List<OrganismHost> > {

@@ -1,15 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequenceHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureId;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureIdBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.FeatureType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -17,6 +9,16 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.AlternativeSequenceHelper;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
+import org.uniprot.core.uniprot.feature.builder.FeatureIdBuilder;
 
 public class FeatureConverter implements Converter<FeatureType, Feature> {
 
@@ -39,14 +41,14 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
 
     @Override
     public Feature fromXml(FeatureType xmlObj) {
-        uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType type = uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType
+        org.uniprot.core.uniprot.feature.FeatureType type = org.uniprot.core.uniprot.feature.FeatureType
                 .typeOf(xmlObj.getType());
         String description = "";
         if (xmlObj.getDescription() != null) {
             description = xmlObj.getDescription();
             if (AlternativeSequenceHelper.hasAlternativeSequence(type)) {
                 description = XmlConverterHelper.removeIfPostfix(description, STOP);
-                if (type != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)
+                if (type != org.uniprot.core.uniprot.feature.FeatureType.MUTAGEN)
                     description = XmlConverterHelper.lowercaseFirstLetter(description);
             }
         }
@@ -98,7 +100,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
             if (AlternativeSequenceHelper.hasAlternativeSequence(uniObj.getType())) {
                 val = XmlConverterHelper.addIfNoPostfix(val, STOP);
 
-                if (uniObj.getType() != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.MUTAGEN)
+                if (uniObj.getType() != org.uniprot.core.uniprot.feature.FeatureType.MUTAGEN)
                     val = XmlConverterHelper.uppercaseFirstLetter(val);
             }
             xmlFeature.setDescription(val);
@@ -121,7 +123,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
     }
 
     private void updateConflictFeature(FeatureType featureType, Feature feature) {
-        if (feature.getType() != uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.CONFLICT) {
+        if (feature.getType() != org.uniprot.core.uniprot.feature.FeatureType.CONFLICT) {
             return;
         }
         if ((feature.getDescription() == null) || Strings.isNullOrEmpty(feature.getDescription().getValue())) {

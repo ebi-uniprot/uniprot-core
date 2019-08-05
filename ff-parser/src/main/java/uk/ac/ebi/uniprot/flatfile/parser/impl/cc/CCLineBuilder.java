@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -11,6 +8,10 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 
 
 public   class CCLineBuilder extends FFLineBuilderAbstr< List< Comment > > implements

@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 
 import java.util.List;
 import java.util.Map;

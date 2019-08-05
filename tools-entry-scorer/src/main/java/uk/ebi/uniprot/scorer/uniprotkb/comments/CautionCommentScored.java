@@ -1,11 +1,12 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:03:04 To change this template use File | Settings

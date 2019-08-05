@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingPositionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 
 public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditingComment> {

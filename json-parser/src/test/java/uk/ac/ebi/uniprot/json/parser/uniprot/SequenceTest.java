@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
+import org.uniprot.core.Sequence;
+import org.uniprot.core.builder.SequenceBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;

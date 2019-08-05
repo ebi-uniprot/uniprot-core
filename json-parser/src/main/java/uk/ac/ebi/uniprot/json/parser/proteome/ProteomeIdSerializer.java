@@ -2,11 +2,11 @@ package uk.ac.ebi.uniprot.json.parser.proteome;
 
 import java.io.IOException;
 
+import org.uniprot.core.proteome.impl.ProteomeIdImpl;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-
-import uk.ac.ebi.uniprot.domain.proteome.impl.ProteomeIdImpl;
 
 /**
  *

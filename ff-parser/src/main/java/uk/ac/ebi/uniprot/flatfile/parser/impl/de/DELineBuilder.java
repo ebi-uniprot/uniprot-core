@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.de;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -10,6 +8,9 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.EQUAL_SIGN;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEMICOLON;

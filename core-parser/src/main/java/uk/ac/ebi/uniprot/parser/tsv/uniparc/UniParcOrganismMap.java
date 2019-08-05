@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 

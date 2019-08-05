@@ -1,8 +1,7 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.UniProtEntryType;
 
 import java.util.Collections;
 import java.util.List;

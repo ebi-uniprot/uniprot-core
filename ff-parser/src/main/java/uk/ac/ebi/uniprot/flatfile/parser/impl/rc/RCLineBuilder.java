@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.rc;
 
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.LineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.LineBuilderHelper;
@@ -10,6 +8,9 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.RLine;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.ReferenceComment;
+import org.uniprot.core.uniprot.ReferenceCommentType;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

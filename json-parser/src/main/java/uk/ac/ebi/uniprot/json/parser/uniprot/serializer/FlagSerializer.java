@@ -3,9 +3,10 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.serializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import uk.ac.ebi.uniprot.domain.uniprot.description.impl.FlagImpl;
 
 import java.io.IOException;
+
+import org.uniprot.core.uniprot.description.impl.FlagImpl;
 /**
  *
  * @author lgonzales

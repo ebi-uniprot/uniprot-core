@@ -2,13 +2,14 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.citation;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.Submission;
+import org.uniprot.core.citation.SubmissionDatabase;
+import org.uniprot.core.citation.builder.SubmissionBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.util.Collections;

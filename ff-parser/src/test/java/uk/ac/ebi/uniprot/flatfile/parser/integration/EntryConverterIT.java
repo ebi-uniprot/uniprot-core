@@ -3,7 +3,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.integration;
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntry;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;

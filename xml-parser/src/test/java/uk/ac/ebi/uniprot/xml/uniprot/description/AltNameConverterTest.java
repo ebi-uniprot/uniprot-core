@@ -11,11 +11,11 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinAltName;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.AlternativeName;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;

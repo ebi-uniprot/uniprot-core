@@ -1,21 +1,22 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.ft;
 
-import uk.ac.ebi.uniprot.domain.Position;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.Position;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
 import static org.junit.Assert.assertEquals;
 

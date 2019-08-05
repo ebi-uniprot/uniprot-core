@@ -3,9 +3,9 @@ package uk.ac.ebi.uniprot.xml.uniprot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.Range;
 
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.LocationType;
 import uk.ac.ebi.uniprot.xml.uniprot.FeatureLocationConverter;
 

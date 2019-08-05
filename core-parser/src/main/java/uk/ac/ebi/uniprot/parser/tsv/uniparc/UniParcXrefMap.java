@@ -9,9 +9,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDatabaseType;
+import org.uniprot.core.Property;
+import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabaseType;
+
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 /**

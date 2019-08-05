@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.citation.*;
-import uk.ac.ebi.uniprot.domain.citation.builder.*;
+import org.uniprot.core.citation.*;
+import org.uniprot.core.citation.builder.*;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rl.RlLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rl.RlLineObject;
 

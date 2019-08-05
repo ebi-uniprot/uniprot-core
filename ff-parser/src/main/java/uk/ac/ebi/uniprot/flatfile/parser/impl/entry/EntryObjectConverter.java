@@ -3,14 +3,15 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl.entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalSectionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.*;
+import org.uniprot.core.uniprot.builder.InternalSectionBuilder;
+import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.SupportingDataMap;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ac.AcLineConverter;

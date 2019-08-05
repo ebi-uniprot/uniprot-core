@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.ft;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
 
 import java.util.ArrayList;
 import java.util.List;

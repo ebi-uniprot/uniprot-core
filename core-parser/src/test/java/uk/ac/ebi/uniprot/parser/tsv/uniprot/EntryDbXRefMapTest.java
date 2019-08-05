@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 
 import java.util.ArrayList;
 import java.util.List;

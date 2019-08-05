@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.*;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject.AlternativeNameSequenceEnum;

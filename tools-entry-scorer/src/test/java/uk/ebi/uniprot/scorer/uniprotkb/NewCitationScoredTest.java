@@ -1,10 +1,11 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationType;
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtReference;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;
 

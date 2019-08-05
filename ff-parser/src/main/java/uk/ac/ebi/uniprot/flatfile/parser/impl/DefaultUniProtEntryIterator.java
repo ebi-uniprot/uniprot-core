@@ -3,7 +3,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl;
 import com.google.common.util.concurrent.Uninterruptibles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntry;
+
 import uk.ac.ebi.uniprot.flatfile.parser.*;
 
 import java.io.FileNotFoundException;

@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+
 import uk.ac.ebi.uniprot.flatfile.parser.exception.DatabaseTypeNotExistException;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.dr.DrLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.dr.DrLineObject;

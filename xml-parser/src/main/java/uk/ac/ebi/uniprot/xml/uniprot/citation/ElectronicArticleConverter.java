@@ -1,8 +1,10 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
+import org.uniprot.core.citation.ElectronicArticle;
+import org.uniprot.core.citation.builder.ElectronicArticleBuilder;
+
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.citation.ElectronicArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.ElectronicArticleBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

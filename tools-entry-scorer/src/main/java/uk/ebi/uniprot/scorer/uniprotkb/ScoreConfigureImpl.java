@@ -3,7 +3,7 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 
-import static org.uniprot.core.common.Utils.nullOrEmpty;
+import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 import java.io.File;
 import java.util.ArrayList;

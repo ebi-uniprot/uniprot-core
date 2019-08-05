@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.KineticParametersBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MaximumVelocityBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MichaelisConstantBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType.Kinetics;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
@@ -15,6 +9,13 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.KineticParametersBuilder;
+import org.uniprot.core.uniprot.comment.builder.MaximumVelocityBuilder;
+import org.uniprot.core.uniprot.comment.builder.MichaelisConstantBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class BPCPKineticParametersConverter implements Converter<Kinetics, KineticParameters> {
     private final ObjectFactory xmlUniprotFactory;

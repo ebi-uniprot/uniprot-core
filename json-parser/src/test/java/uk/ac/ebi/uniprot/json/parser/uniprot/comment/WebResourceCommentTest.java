@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
+import org.uniprot.core.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.*;

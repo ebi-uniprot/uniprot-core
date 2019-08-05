@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.Unpublished;
-import uk.ac.ebi.uniprot.domain.citation.builder.UnpublishedBuilder;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.Unpublished;
+import org.uniprot.core.citation.builder.UnpublishedBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;
 import uk.ac.ebi.uniprot.xml.uniprot.citation.CitationConverter;

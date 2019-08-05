@@ -3,9 +3,10 @@ package uk.ac.ebi.uniprot.json.parser.serializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import uk.ac.ebi.uniprot.domain.citation.impl.ElectronicArticleImpl;
 
 import java.io.IOException;
+
+import org.uniprot.core.citation.impl.ElectronicArticleImpl;
 /**
  *
  * @author lgonzales

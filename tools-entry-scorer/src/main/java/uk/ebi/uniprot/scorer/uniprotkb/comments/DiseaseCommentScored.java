@@ -1,12 +1,13 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:08:03 To change this template use File | Settings

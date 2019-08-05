@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.gene.*;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.gene.*;
+import org.uniprot.core.uniprot.builder.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneNameType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class GeneConverterTest {
 

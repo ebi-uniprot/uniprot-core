@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Absorption;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.BPCPComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.KineticParameters;
+import org.uniprot.core.uniprot.comment.Absorption;
+import org.uniprot.core.uniprot.comment.BPCPComment;
+import org.uniprot.core.uniprot.comment.KineticParameters;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCBioPhyChemCommentLineBuilder;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 

@@ -3,9 +3,8 @@ package uk.ac.ebi.uniprot.xml.uniparc;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
+import org.uniprot.core.Sequence;
+import org.uniprot.core.builder.SequenceBuilder;
 
 /**
  *

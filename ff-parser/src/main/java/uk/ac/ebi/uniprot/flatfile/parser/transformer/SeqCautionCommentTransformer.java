@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprot.comment.SequenceCautionType;
+import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class SeqCautionCommentTransformer implements CommentTransformer<SequenceCautionComment> {
 

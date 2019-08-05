@@ -1,17 +1,18 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
 import uk.ebi.uniprot.scorer.uniprotkb.UniProtEntryScored;
 
 import java.util.List;
+
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

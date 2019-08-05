@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.rlines;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.builder.AuthorBuilder;
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.builder.AuthorBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ra.RALineBuilder;
 
 import java.util.ArrayList;

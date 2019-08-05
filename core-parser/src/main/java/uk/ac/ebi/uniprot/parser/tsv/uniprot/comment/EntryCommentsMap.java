@@ -1,15 +1,16 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 
 public class EntryCommentsMap implements NamedValueMap {
 	public static final List<String> FIELDS = Arrays.asList("cc:alternative_products", "cc:mass_spectrometry",

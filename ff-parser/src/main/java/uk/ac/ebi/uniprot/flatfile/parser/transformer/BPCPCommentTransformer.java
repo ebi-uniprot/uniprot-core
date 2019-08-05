@@ -1,13 +1,13 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 
 public class BPCPCommentTransformer implements

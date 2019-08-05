@@ -10,11 +10,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.proteome.Component;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeEntry;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.Component;
+import org.uniprot.core.proteome.ProteomeEntry;
+import org.uniprot.core.proteome.builder.ComponentBuilder;
+import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
 
 /**
  *

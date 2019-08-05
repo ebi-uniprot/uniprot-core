@@ -1,16 +1,16 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+
 import static java.util.Collections.emptyList;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 /**
  * Created 16/01/19

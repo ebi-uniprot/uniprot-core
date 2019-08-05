@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.ReferenceCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.ReferenceComment;
+import org.uniprot.core.uniprot.ReferenceCommentType;
+import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SourceDataType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;
@@ -15,7 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class ReferenceCommentConverterTest {
 

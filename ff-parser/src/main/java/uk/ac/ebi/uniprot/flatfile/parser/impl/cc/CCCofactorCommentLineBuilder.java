@@ -1,15 +1,17 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.LineBuilderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.comment.Cofactor;
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.comment.CofactorReferenceType;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

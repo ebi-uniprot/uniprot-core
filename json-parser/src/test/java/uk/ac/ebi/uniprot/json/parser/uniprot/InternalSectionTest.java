@@ -2,15 +2,16 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLine;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalLineType;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.SourceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalLineBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.InternalSectionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.SourceLineBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceLineBuilder;
+import org.uniprot.core.uniprot.InternalLine;
+import org.uniprot.core.uniprot.InternalLineType;
+import org.uniprot.core.uniprot.InternalSection;
+import org.uniprot.core.uniprot.SourceLine;
+import org.uniprot.core.uniprot.builder.InternalLineBuilder;
+import org.uniprot.core.uniprot.builder.InternalSectionBuilder;
+import org.uniprot.core.uniprot.builder.SourceLineBuilder;
+import org.uniprot.core.uniprot.evidence.EvidenceLine;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.time.LocalDate;

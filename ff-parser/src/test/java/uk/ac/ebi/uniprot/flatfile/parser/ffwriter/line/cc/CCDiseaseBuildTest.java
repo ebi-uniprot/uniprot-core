@@ -1,13 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import org.junit.Test;
-
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.DiseaseCommentBuilder;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.comment.Disease;
+import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

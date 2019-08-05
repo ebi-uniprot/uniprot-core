@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.xml.uniprot.description;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.builder.ECBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;

@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineConverter;
@@ -179,7 +180,7 @@ public class CcLineSeqCautionCommentParserTest {
 		 SequenceCautionComment comment = (SequenceCautionComment) comments.get(0);
 		 assertEquals("Several", comment.getPositions().get(0));
 		 assertEquals("CAA39814.1", comment.getSequence());
-		 assertEquals(uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType.FRAMESHIFT, comment.getSequenceCautionType());
+		 assertEquals(org.uniprot.core.uniprot.comment.SequenceCautionType.FRAMESHIFT, comment.getSequenceCautionType());
 	}
 	
 	

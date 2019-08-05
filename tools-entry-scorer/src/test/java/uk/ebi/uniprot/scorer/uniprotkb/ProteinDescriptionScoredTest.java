@@ -1,7 +1,8 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
+import org.uniprot.core.uniprot.description.ProteinDescription;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;

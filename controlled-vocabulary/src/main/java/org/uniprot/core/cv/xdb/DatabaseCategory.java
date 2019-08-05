@@ -1,6 +1,6 @@
 package org.uniprot.core.cv.xdb;
 
-import org.uniprot.core.common.EnumDisplay;
+import org.uniprot.core.util.EnumDisplay;
 
 public enum DatabaseCategory implements EnumDisplay<DatabaseCategory> {
     SEQUENCE_DATABASES("SEQ", "Sequence databases"),

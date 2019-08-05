@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.rlines;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.citation.Book;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
+import org.uniprot.core.citation.Book;
+import org.uniprot.core.citation.JournalArticle;
+import org.uniprot.core.citation.Submission;
+import org.uniprot.core.citation.SubmissionDatabase;
+import org.uniprot.core.citation.builder.BookBuilder;
+import org.uniprot.core.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.citation.builder.SubmissionBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rl.RLLineBuilder;
 
 import java.util.ArrayList;

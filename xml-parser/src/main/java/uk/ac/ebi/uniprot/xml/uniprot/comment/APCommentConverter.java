@@ -1,10 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APEventType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.AlternativeProductsComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EventType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -12,6 +7,12 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.APEventType;
+import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.APCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 
 public class APCommentConverter implements CommentConverter<AlternativeProductsComment> {
     private static final String ALTERNATIVE_PROMOTER = "alternative promoter";

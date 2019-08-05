@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.GeneLocationBuilder;
+import org.uniprot.core.uniprot.GeneEncodingType;
+import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
 
 import java.util.*;
 

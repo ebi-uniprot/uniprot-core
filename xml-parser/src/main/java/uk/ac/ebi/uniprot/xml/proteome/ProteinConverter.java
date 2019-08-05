@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
-import uk.ac.ebi.uniprot.domain.proteome.GeneNameType;
-import uk.ac.ebi.uniprot.domain.proteome.Protein;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteinBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
+import org.uniprot.core.proteome.GeneNameType;
+import org.uniprot.core.proteome.Protein;
+import org.uniprot.core.proteome.builder.ProteinBuilder;
+import org.uniprot.core.uniprot.UniProtEntryType;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.EntryType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.GeneType;

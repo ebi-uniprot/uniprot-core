@@ -3,11 +3,12 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.serializer;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidencedValueImpl;
 
 import java.io.IOException;
+
+import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 /**
  *
  * @author lgonzales

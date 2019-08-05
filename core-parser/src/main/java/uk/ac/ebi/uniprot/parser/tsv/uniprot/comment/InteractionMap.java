@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 import java.util.HashMap;
@@ -10,6 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.Interaction;
+import org.uniprot.core.uniprot.comment.InteractionComment;
+import org.uniprot.core.uniprot.comment.InteractionType;
 
 public class InteractionMap implements NamedValueMap {
 

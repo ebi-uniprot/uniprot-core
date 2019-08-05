@@ -1,12 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

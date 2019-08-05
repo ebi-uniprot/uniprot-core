@@ -1,7 +1,8 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+
 import uk.ebi.uniprot.scorer.uniprotkb.HasScore;
 
 public interface CommentScored extends HasScore {

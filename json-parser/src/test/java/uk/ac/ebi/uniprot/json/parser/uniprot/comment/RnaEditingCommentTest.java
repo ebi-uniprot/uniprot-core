@@ -2,13 +2,14 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingLocationType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.RnaEdPosition;
+import org.uniprot.core.uniprot.comment.RnaEditingComment;
+import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 

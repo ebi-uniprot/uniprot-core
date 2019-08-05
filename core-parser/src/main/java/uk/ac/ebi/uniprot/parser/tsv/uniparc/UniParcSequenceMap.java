@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import uk.ac.ebi.uniprot.domain.Sequence;
+import org.uniprot.core.Sequence;
+
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 /**

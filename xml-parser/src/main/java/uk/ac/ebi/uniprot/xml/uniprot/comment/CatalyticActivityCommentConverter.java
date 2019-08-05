@@ -1,15 +1,16 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprot.comment.Reaction;
+import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 
 public class CatalyticActivityCommentConverter implements CommentConverter<CatalyticActivityComment> {
 	private final ObjectFactory xmlUniprotFactory;

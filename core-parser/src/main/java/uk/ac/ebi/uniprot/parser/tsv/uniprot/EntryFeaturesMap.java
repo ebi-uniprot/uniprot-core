@@ -12,9 +12,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDescription;
+import org.uniprot.core.uniprot.feature.FeatureType;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 

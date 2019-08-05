@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCMassSpecCommentLineBuilder;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 

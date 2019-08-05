@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ox.OXLineBuilder;
 

@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
+import org.uniprot.core.uniprot.taxonomy.OrganismName;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.SubcellularLocation;
+import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 
 public class SubcelLocationCommentTransformer implements

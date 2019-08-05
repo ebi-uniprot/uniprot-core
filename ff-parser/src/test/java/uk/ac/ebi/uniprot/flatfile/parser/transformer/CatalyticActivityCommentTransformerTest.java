@@ -4,12 +4,12 @@ package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 import com.google.common.base.Strings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprot.comment.Reaction;
+import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 import java.util.stream.Collectors;

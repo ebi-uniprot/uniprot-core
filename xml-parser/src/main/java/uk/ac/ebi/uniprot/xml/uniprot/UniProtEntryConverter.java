@@ -1,15 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryAuditBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.*;
 import uk.ac.ebi.uniprot.xml.uniprot.citation.ReferenceConverter;
@@ -20,6 +10,17 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.gene.Gene;
+import org.uniprot.core.uniprot.*;
+import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     private static final String INTERACTION = "interaction";
@@ -158,7 +159,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
                                             .fromXml(interactionComment));
                 }
             } else {
-                uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType type = uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType
+                org.uniprot.core.uniprot.comment.CommentType type = org.uniprot.core.uniprot.comment.CommentType
                         .typeOf(commentType.getType());
                 uniComments.add(CommentConverterFactory.INSTANCE
                                         .createCommentConverter(type, evRefMapper, xmlUniprotFactory)
@@ -171,7 +172,7 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     // Must process interaction comments separately
     private void toXmlForComments(Entry xmlEntry, UniProtEntry uniProtEntry) {
         for (Comment comment : uniProtEntry.getComments()) {
-            if (comment.getCommentType() == uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType.INTERACTION) {
+            if (comment.getCommentType() == org.uniprot.core.uniprot.comment.CommentType.INTERACTION) {
 
                 xmlEntry.getComment().addAll(CommentConverterFactory.INSTANCE
                                                      .createInteractionCommentConverter(this.xmlUniprotFactory)

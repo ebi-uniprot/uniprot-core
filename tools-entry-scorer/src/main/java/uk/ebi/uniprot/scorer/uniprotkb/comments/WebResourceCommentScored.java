@@ -1,10 +1,10 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 17:21:42 To change this template use File | Settings

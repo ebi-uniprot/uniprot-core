@@ -3,10 +3,10 @@ package uk.ac.ebi.uniprot.xml.proteome;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.proteome.Protein;
+import org.uniprot.core.proteome.builder.ProteinBuilder;
+import org.uniprot.core.uniprot.UniProtEntryType;
 
-import uk.ac.ebi.uniprot.domain.proteome.Protein;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteinBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.EntryType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.GeneNameType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.GeneType;
@@ -27,7 +27,7 @@ class ProteinConverterTest {
 		assertEquals("P12345", protein.getAccession().getValue());
 		assertEquals(UniProtEntryType.SWISSPROT, protein.getEntryType());
 		assertEquals("gen1", protein.getGeneName());
-		assertEquals(uk.ac.ebi.uniprot.domain.proteome.GeneNameType.MOD, protein.getGeneNameType());
+		assertEquals(org.uniprot.core.proteome.GeneNameType.MOD, protein.getGeneNameType());
 		assertEquals(123l, protein.getSequenceLength());
 	}
 
@@ -37,7 +37,7 @@ class ProteinConverterTest {
 		builder.accession("P21312")
 		.entryType(UniProtEntryType.TREMBL)
 		.geneName("some gene")
-		.geneNameType(uk.ac.ebi.uniprot.domain.proteome.GeneNameType.ENSEMBL)
+		.geneNameType(org.uniprot.core.proteome.GeneNameType.ENSEMBL)
 		.sequenceLength(324);
 		Protein protein = builder.build();
 		GeneType gene = converter.toXml(protein);

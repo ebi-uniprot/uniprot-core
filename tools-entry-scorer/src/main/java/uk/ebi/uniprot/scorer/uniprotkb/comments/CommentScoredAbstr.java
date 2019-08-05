@@ -1,10 +1,5 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ebi.uniprot.scorer.uniprotkb.Consensus;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreStatus;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
@@ -12,6 +7,12 @@ import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import static uk.ebi.uniprot.scorer.uniprotkb.Consensus.PRESENCE;
 

@@ -2,9 +2,9 @@ package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import com.google.common.base.Strings;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.*;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import java.util.*;
 import java.util.stream.Collectors;

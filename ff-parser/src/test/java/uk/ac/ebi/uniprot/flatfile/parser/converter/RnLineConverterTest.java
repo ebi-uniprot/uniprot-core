@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rn.RnLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rn.RnLineObject;
 

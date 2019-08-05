@@ -2,11 +2,12 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
+import org.uniprot.core.Property;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;

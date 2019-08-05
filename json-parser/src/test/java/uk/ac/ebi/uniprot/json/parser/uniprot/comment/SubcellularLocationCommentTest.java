@@ -2,14 +2,15 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.SubcellularLocation;
+import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 

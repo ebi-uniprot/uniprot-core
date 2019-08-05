@@ -1,14 +1,15 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreStatus;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.Cofactor;
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:05:15 To change this template use File | Settings

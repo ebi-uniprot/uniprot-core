@@ -6,15 +6,15 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.cv.taxonomy.TaxonomicNode;
 import org.uniprot.core.cv.taxonomy.TaxonomyRepo;
+import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcEntry;
+import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcEntry;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniparc.Entry;
 import uk.ac.ebi.uniprot.xml.jaxb.uniparc.ObjectFactory;

@@ -1,14 +1,15 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
+
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:05:38 To change this template use File | Settings

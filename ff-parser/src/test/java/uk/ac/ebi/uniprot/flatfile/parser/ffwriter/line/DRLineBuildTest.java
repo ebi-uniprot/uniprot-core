@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.dr.DRLineBuilder;
 

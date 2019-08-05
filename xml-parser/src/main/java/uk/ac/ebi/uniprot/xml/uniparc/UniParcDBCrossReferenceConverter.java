@@ -2,10 +2,11 @@ package uk.ac.ebi.uniprot.xml.uniparc;
 
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDatabaseType;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcDBCrossReferenceBuilder;
+import org.uniprot.core.Property;
+import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniparc.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniparc.ObjectFactory;

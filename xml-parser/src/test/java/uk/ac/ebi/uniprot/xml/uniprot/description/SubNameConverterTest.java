@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinSubName;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.SubmittedName;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;

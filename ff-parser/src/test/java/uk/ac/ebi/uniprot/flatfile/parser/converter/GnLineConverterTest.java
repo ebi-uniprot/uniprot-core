@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.gene.GeneName;
-import uk.ac.ebi.uniprot.domain.gene.GeneNameSynonym;
-import uk.ac.ebi.uniprot.domain.gene.ORFName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.gene.Gene;
+import org.uniprot.core.gene.GeneName;
+import org.uniprot.core.gene.GeneNameSynonym;
+import org.uniprot.core.gene.ORFName;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.gn.GnLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.gn.GnLineObject;
 

@@ -1,10 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeText;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -15,6 +10,12 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.LineBuilderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.FreeText;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

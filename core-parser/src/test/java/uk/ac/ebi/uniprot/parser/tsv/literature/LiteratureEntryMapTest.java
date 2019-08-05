@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.parser.tsv.literature;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
-import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureStatistics;
-import uk.ac.ebi.uniprot.domain.literature.builder.LiteratureEntryBuilder;
-import uk.ac.ebi.uniprot.domain.literature.builder.LiteratureMappedReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.literature.builder.LiteratureStatisticsBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
+import org.uniprot.core.citation.impl.AuthorImpl;
+import org.uniprot.core.citation.impl.PublicationDateImpl;
+import org.uniprot.core.literature.LiteratureEntry;
+import org.uniprot.core.literature.LiteratureMappedReference;
+import org.uniprot.core.literature.LiteratureStatistics;
+import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
+import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
+import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
+import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
 import java.util.Map;
 

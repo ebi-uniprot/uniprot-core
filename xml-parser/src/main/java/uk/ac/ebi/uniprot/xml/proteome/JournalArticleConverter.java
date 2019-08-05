@@ -2,11 +2,12 @@ package uk.ac.ebi.uniprot.xml.proteome;
 
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.JournalArticle;
+import org.uniprot.core.citation.builder.JournalArticleBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.JournalType;

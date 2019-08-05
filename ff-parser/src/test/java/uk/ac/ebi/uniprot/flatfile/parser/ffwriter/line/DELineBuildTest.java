@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprot.description.builder.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.de.DELineBuilder;
 

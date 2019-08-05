@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryRangeBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
+import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.LocationType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
@@ -21,7 +22,7 @@ import java.util.List;
 
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class MSCommentConverterTest {
 

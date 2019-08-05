@@ -2,11 +2,12 @@ package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import com.google.common.base.Strings;
 import org.apache.commons.lang.StringUtils;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationValue;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.comment.SubcellularLocation;
+import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

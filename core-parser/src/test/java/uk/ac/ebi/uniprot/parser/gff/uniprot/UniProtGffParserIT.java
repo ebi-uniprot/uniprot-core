@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.parser.gff.uniprot;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntry;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.SupportingDataMapImpl;

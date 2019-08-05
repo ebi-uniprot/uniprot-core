@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
@@ -10,6 +7,10 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 
 import java.util.List;
+
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.builder.ECBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class ECConverter implements Converter<EvidencedStringType, EC> {
 	private final EvidenceIndexMapper evRefMapper;

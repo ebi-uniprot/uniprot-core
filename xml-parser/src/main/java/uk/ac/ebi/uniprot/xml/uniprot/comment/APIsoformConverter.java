@@ -1,13 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APIsoformBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.IsoformNameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.IsoformType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -19,6 +11,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.APIsoform;
+import org.uniprot.core.uniprot.comment.IsoformName;
+import org.uniprot.core.uniprot.comment.IsoformSequenceStatus;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
 

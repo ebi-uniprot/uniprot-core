@@ -2,9 +2,10 @@ package uk.ac.ebi.uniprot.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprot.comment.SequenceCautionType;
+import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.CreateUtils;
 

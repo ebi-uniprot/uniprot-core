@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.Submission;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.JournalArticle;
+import org.uniprot.core.citation.Submission;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ReferenceType;

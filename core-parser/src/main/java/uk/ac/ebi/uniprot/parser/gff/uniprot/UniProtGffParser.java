@@ -1,11 +1,5 @@
 package uk.ac.ebi.uniprot.parser.gff.uniprot;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FTLineBuilderHelper;
 
 import java.util.List;
@@ -14,8 +8,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static org.uniprot.core.common.Utils.nullOrEmpty;
-import static uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType.*;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
+
+import static org.uniprot.core.uniprot.feature.FeatureType.*;
+import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 /**
  * @author gqi

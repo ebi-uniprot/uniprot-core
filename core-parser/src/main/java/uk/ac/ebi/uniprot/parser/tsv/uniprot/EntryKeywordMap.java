@@ -1,11 +1,10 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.Value;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.Value;
+import org.uniprot.core.uniprot.Keyword;
 
 public class EntryKeywordMap implements NamedValueMap {
     private final List<Keyword> keywords;

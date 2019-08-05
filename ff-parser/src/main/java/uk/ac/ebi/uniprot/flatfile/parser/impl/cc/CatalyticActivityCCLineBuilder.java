@@ -1,16 +1,17 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprot.comment.Reaction;
+import org.uniprot.core.uniprot.comment.ReactionReferenceType;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEPARATOR_COMA;

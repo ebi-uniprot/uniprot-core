@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryAuditBuilder;
+import org.uniprot.core.uniprot.EntryAudit;
+import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.time.LocalDate;

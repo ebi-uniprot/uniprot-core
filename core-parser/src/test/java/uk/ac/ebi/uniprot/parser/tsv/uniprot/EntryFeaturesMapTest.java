@@ -8,16 +8,15 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
 class EntryFeaturesMapTest {
 

@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.xml.proteome;
 
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
-import uk.ac.ebi.uniprot.domain.proteome.builder.CanonicalProteinBuilder;
+import org.uniprot.core.proteome.CanonicalProtein;
+import org.uniprot.core.proteome.builder.CanonicalProteinBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.CanonicalGene;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;

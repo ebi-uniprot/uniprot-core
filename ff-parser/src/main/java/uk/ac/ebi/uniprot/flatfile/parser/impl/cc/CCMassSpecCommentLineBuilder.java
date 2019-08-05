@@ -1,13 +1,15 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

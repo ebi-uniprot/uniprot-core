@@ -3,8 +3,8 @@ package uk.ac.ebi.uniprot.xml.uniprot.citation;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.citation.Citation;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -18,8 +18,8 @@ class CitationConverterFactoryTest {
 	@Test
 	void test() {
 		ObjectFactory oFactory =	new ObjectFactory();
-		uk.ac.ebi.uniprot.domain.citation.CitationType type =
-				uk.ac.ebi.uniprot.domain.citation.CitationType.BOOK;		
+		org.uniprot.core.citation.CitationType type =
+				org.uniprot.core.citation.CitationType.BOOK;		
 		Converter<CitationType, ? extends Citation>  converter
 		
 		= CitationConverterFactory.INSTANCE.getConverter(oFactory, type);
@@ -27,13 +27,13 @@ class CitationConverterFactoryTest {
 		
 		
 		type =
-				uk.ac.ebi.uniprot.domain.citation.CitationType.JOURNAL_ARTICLE;		
+				org.uniprot.core.citation.CitationType.JOURNAL_ARTICLE;		
 		converter		
 		= CitationConverterFactory.INSTANCE.getConverter(oFactory, type);
 		assertTrue( converter instanceof JournalArticleConverter);
 		
 		type =
-				uk.ac.ebi.uniprot.domain.citation.CitationType.SUBMISSION;		
+				org.uniprot.core.citation.CitationType.SUBMISSION;		
 		converter		
 		= CitationConverterFactory.INSTANCE.getConverter(oFactory, type);
 		assertTrue( converter instanceof SubmissionConverter);

@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.Keyword;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.kw.KwLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.kw.KwLineObject;
 

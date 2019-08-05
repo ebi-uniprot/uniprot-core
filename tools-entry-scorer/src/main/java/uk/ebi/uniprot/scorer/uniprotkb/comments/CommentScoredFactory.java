@@ -1,10 +1,10 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 public class CommentScoredFactory {
     public static CommentScored create(Comment t) {

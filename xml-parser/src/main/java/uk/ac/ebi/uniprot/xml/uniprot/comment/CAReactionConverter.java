@@ -1,12 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Reaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.ReactionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -16,6 +9,14 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.ECNumber;
+import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.uniprot.comment.Reaction;
+import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class CAReactionConverter implements Converter<ReactionType, Reaction> {
     private static final String EC = "EC";

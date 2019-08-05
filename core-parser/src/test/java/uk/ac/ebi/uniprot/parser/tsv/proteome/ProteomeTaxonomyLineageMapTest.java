@@ -9,9 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
 
 /**
  *

@@ -1,14 +1,15 @@
 package uk.ac.ebi.uniprot.xml.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 
 import java.util.List;
+
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.builder.NameBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class NameConverter implements Converter<EvidencedStringType, Name> {
 	private final EvidenceIndexMapper evRefMapper;

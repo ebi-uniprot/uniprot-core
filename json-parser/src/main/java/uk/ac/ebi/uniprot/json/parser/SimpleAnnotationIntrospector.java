@@ -2,7 +2,7 @@ package uk.ac.ebi.uniprot.json.parser;
 
 import java.util.Arrays;
 
-import org.uniprot.core.common.EnumDisplay;
+import org.uniprot.core.util.EnumDisplay;
 
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
 import com.fasterxml.jackson.core.Version;

@@ -2,10 +2,10 @@ package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

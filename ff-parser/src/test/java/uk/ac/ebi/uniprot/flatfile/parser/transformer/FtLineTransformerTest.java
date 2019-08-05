@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FtLineTransformer;
 
 import java.util.List;

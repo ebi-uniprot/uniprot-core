@@ -1,18 +1,18 @@
 package uk.ac.ebi.uniprot.xml.proteome;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.citation.*;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.proteome.*;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ComponentBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeEntryBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteomeIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.*;
+import org.uniprot.core.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.proteome.*;
+import org.uniprot.core.proteome.builder.ComponentBuilder;
+import org.uniprot.core.proteome.builder.ProteomeEntryBuilder;
+import org.uniprot.core.proteome.builder.ProteomeIdBuilder;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -56,13 +56,13 @@ class ProteomeConverterTest {
 		Component component1 =
 		ComponentBuilder.newInstance()
 		.name("someName1").description("some description")
-		.type(uk.ac.ebi.uniprot.domain.proteome.ComponentType.UNPLACED)				
+		.type(org.uniprot.core.proteome.ComponentType.UNPLACED)				
 		.build();
 		
 		Component component2 =
 				ComponentBuilder.newInstance()
 				.name("someName2").description("some description 2")
-				.type(uk.ac.ebi.uniprot.domain.proteome.ComponentType.SEGMENTED_GENOME)			
+				.type(org.uniprot.core.proteome.ComponentType.SEGMENTED_GENOME)			
 				.build();
 		
 		components.add(component1);

@@ -7,7 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcEntry;
+import org.uniprot.core.uniparc.UniParcEntry;
+
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 /**

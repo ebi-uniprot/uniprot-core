@@ -2,7 +2,7 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static org.uniprot.core.common.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -12,15 +12,15 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinAltName;
+import org.uniprot.core.uniprot.description.ProteinDescription;
+import org.uniprot.core.uniprot.description.ProteinRecName;
+import org.uniprot.core.uniprot.description.ProteinSubName;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:34:03 To change this template use File | Settings

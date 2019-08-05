@@ -1,18 +1,19 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.rlines;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.SubmissionDatabase;
-import uk.ac.ebi.uniprot.domain.citation.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.ReferenceCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.SubmissionDatabase;
+import org.uniprot.core.citation.builder.*;
+import org.uniprot.core.uniprot.ReferenceComment;
+import org.uniprot.core.uniprot.ReferenceCommentType;
+import org.uniprot.core.uniprot.UniProtReference;
+import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
+import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.RLineBuilder;
 

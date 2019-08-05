@@ -2,13 +2,13 @@ package org.uniprot.core.cv.xdb;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.common.Pair;
 import org.uniprot.core.cv.xdb.DatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 import org.uniprot.core.cv.xdb.validator.DBXRef;
 import org.uniprot.core.cv.xdb.validator.DBXRefReader;
 import org.uniprot.core.cv.xdb.validator.DBXRefValidator;
+import org.uniprot.core.util.Pair;
 
 import java.io.File;
 import java.io.FileNotFoundException;

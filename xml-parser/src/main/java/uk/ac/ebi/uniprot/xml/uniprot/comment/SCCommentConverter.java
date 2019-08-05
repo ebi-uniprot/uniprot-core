@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SequenceCautionCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.LocationType;
@@ -14,6 +11,11 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprot.comment.SequenceCautionType;
+import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class SCCommentConverter implements CommentConverter< SequenceCautionComment> {
 

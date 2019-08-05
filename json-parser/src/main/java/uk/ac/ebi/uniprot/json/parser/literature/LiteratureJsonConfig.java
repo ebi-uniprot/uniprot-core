@@ -1,21 +1,23 @@
 package uk.ac.ebi.uniprot.json.parser.literature;
 
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Journal;
+import org.uniprot.core.citation.PublicationDate;
+import org.uniprot.core.citation.impl.AuthorImpl;
+import org.uniprot.core.citation.impl.JournalImpl;
+import org.uniprot.core.citation.impl.PublicationDateImpl;
+import org.uniprot.core.literature.LiteratureEntry;
+import org.uniprot.core.literature.LiteratureMappedReference;
+import org.uniprot.core.literature.LiteratureStatistics;
+import org.uniprot.core.literature.impl.LiteratureEntryImpl;
+import org.uniprot.core.literature.impl.LiteratureMappedReferenceImpl;
+import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
+import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Journal;
-import uk.ac.ebi.uniprot.domain.citation.PublicationDate;
-import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
-import uk.ac.ebi.uniprot.domain.citation.impl.JournalImpl;
-import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureMappedReference;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureStatistics;
-import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureEntryImpl;
-import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureMappedReferenceImpl;
-import uk.ac.ebi.uniprot.domain.literature.impl.LiteratureStatisticsImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtAccessionImpl;
+
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
 import uk.ac.ebi.uniprot.json.parser.serializer.AuthorSerializer;
 import uk.ac.ebi.uniprot.json.parser.serializer.JournalSerializer;

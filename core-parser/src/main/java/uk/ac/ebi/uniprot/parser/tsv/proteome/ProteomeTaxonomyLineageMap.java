@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 /**

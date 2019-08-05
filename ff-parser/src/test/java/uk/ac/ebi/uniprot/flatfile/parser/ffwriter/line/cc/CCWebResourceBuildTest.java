@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
+import org.uniprot.core.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 
 public class CCWebResourceBuildTest extends CCBuildTestAbstr {
     @Test

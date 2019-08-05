@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Cofactor;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.comment.Cofactor;
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
 
 import java.util.AbstractMap;
 import java.util.ArrayList;

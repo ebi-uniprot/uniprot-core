@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.json.parser.taxonomy;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyStrain;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyStrainBuilder;
+import org.uniprot.core.taxonomy.TaxonomyStrain;
+import org.uniprot.core.taxonomy.builder.TaxonomyStrainBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.util.Collections;

@@ -2,9 +2,9 @@ package org.uniprot.core.cv.xdb.validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.common.Pair;
-import org.uniprot.core.common.PairImpl;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 import java.io.IOException;
 import java.util.*;

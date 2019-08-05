@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.JournalArticle;
+import org.uniprot.core.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;
 import uk.ac.ebi.uniprot.xml.uniprot.citation.CitationConverter;

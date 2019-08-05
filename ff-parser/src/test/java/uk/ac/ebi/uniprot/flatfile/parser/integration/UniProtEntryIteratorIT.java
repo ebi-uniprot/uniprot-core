@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.integration;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntry;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.UniProtFlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniProtEntryIterator;

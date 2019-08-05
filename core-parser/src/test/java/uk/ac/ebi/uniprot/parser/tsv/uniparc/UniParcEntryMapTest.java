@@ -8,24 +8,23 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.Location;
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.InterproGroup;
-import uk.ac.ebi.uniprot.domain.uniparc.SequenceFeature;
-import uk.ac.ebi.uniprot.domain.uniparc.SignatureDbType;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDatabaseType;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcEntry;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.InterProGroupBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.SequenceFeatureBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcDBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.Location;
+import org.uniprot.core.Property;
+import org.uniprot.core.Sequence;
+import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.SequenceFeature;
+import org.uniprot.core.uniparc.SignatureDbType;
+import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.UniParcEntry;
+import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
+import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
+import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
+import org.uniprot.core.uniparc.builder.UniParcEntryBuilder;
+import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 /**
  *

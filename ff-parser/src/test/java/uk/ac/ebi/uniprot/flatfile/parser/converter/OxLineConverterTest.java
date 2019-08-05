@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.taxonomy.Organism;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ox.OxLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ox.OxLineObject;
 

@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.og;
 
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -11,6 +9,9 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.GeneEncodingType;
+import org.uniprot.core.uniprot.GeneLocation;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

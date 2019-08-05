@@ -1,13 +1,14 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreStatus;
 import uk.ebi.uniprot.scorer.uniprotkb.ScoreUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 public class DefaultTextOnlyCommentScored extends CommentScoredAbstr {
     private FreeTextComment comment;

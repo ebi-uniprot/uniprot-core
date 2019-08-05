@@ -1,15 +1,16 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
 
 import java.util.List;
+
+import org.uniprot.core.builder.SequenceBuilder;
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
+import org.uniprot.core.uniprot.comment.Comment;
 
 public class CommentTestUtil {
 

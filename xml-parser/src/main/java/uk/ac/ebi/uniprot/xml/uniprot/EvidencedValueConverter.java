@@ -1,14 +1,15 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.EvidencedStringType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
 public class EvidencedValueConverter implements Converter<EvidencedStringType, EvidencedValue> {
 

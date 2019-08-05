@@ -2,7 +2,7 @@ package uk.ebi.uniprot.scorer.uniprotkb;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 import java.util.ArrayList;
 import java.util.List;

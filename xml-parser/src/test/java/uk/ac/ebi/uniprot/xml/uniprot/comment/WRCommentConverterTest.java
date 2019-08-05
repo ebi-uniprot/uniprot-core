@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
+import org.uniprot.core.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;
 import uk.ac.ebi.uniprot.xml.uniprot.comment.WRCommentConverter;

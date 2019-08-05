@@ -1,17 +1,17 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryMethod;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.MassSpectrometryRangeBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
+import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 
 public class MSCommentTransformer implements CommentTransformer<MassSpectrometryComment> {

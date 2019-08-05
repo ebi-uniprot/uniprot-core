@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.common.Utils;
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
 import org.uniprot.core.cv.keyword.Keyword;
+import org.uniprot.core.util.Utils;
 
 public class DiseaseEntryMap implements NamedValueMap {
     public static final String EMPTY_STRING = "";

@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
-import uk.ac.ebi.uniprot.domain.citation.Patent;
-import uk.ac.ebi.uniprot.domain.citation.builder.PatentBuilder;
+import org.uniprot.core.citation.Patent;
+import org.uniprot.core.citation.builder.PatentBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

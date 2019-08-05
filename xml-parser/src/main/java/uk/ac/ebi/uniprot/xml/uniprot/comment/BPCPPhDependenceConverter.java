@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhDependenceBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -9,6 +7,9 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.PhDependence;
+import org.uniprot.core.uniprot.comment.builder.PhDependenceBuilder;
 
 public class BPCPPhDependenceConverter implements Converter<CommentType.PhDependence, PhDependence> {
 	private final ObjectFactory xmlUniprotFactory;

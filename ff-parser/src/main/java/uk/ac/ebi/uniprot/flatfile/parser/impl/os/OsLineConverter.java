@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl.os;
 
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismName;
+import org.uniprot.core.uniprot.taxonomy.OrganismName;
+
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.OrganismNameLineParser;
 

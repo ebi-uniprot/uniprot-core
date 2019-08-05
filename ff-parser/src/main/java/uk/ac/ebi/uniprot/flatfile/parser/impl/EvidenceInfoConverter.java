@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
+
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLines;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLines;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class EvidenceInfoConverter extends EvidenceCollector implements Converter<EvidenceInfo, Map<Object, List<Evidence>>> {
     @Override

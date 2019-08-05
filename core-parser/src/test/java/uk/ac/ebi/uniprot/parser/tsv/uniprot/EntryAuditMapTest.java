@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryAuditBuilder;
+import org.uniprot.core.uniprot.EntryAudit;
+import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
 
 import java.time.LocalDate;
 import java.util.Arrays;

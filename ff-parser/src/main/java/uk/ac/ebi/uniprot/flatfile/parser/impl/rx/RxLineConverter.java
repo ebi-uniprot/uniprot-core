@@ -1,13 +1,14 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.rx;
 
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
 
 public class RxLineConverter implements Converter<RxLineObject, List<DBCrossReference<CitationXrefType>>> {
     @Override

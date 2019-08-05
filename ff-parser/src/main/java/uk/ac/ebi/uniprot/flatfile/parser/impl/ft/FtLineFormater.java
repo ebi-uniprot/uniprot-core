@@ -1,6 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ft;
 
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.FeatureType;
+
 import uk.ac.ebi.uniprot.flatfile.parser.LineFormater;
 
 public class FtLineFormater implements LineFormater {

@@ -1,9 +1,8 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.*;
+import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprot.description.builder.*;
 
 import java.util.*;
 import java.util.stream.Collectors;

@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
+import org.uniprot.core.Sequence;
+import org.uniprot.core.builder.SequenceBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SequenceType;

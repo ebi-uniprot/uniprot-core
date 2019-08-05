@@ -1,15 +1,17 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.InteractantType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.Interaction;
+import org.uniprot.core.uniprot.comment.InteractionType;
+import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
 
 public class InteractionConverter implements Converter<CommentType, Interaction> {
     private static final String INTERACTION = "interaction";

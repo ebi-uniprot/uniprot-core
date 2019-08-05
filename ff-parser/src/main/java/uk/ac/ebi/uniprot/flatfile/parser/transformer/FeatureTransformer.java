@@ -1,23 +1,22 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.Position;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequence;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.AlternativeSequenceHelper;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.FeatureType;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.AlternativeSequenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.builder.FeatureBuilder;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.uniprot.core.common.Pair;
-import org.uniprot.core.common.PairImpl;
+import org.uniprot.core.Position;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.AlternativeSequenceHelper;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
+import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.PairImpl;
 
 final public class FeatureTransformer {
     private static final String FTID = "/FTId=";

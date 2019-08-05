@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ac;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 
 public class AcLineConverter implements Converter<AcLineObject, UniProtAcLineObject> {
 

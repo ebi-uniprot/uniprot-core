@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismHostBuilder;
+import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.OrganismType;
 
 import static org.junit.Assert.assertEquals;

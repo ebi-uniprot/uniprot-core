@@ -1,19 +1,20 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.citation.*;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.citation.builder.SubmissionBuilder;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.ReferenceCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.citation.*;
+import org.uniprot.core.citation.builder.BookBuilder;
+import org.uniprot.core.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.citation.builder.SubmissionBuilder;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.uniprot.ReferenceComment;
+import org.uniprot.core.uniprot.ReferenceCommentType;
+import org.uniprot.core.uniprot.UniProtReference;
+import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
+import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ReferenceType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;

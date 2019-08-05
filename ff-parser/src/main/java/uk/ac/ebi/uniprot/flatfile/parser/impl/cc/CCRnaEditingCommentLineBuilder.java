@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEditingComment;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.comment.RnaEdPosition;
+import org.uniprot.core.uniprot.comment.RnaEditingComment;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.flatfile.parser.LineFormater;
 
 import java.util.AbstractMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import org.uniprot.core.uniprot.comment.CommentType;
 
 public class CcLineFormater implements LineFormater {
 

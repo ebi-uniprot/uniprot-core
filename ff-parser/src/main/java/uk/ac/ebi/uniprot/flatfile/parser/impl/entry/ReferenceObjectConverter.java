@@ -1,12 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.entry;
 
 
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.builder.AbstractCitationBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtReferenceBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.entry.EntryObject.ReferenceObject;
@@ -21,6 +15,13 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.rx.RxLineConverter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.builder.AbstractCitationBuilder;
+import org.uniprot.core.uniprot.ReferenceComment;
+import org.uniprot.core.uniprot.UniProtReference;
+import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 
 public class ReferenceObjectConverter extends EvidenceCollector implements Converter<EntryObject.ReferenceObject, UniProtReference> {
     private final RaLineConverter raLineConverter = new RaLineConverter();

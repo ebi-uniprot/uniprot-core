@@ -5,8 +5,9 @@ import com.google.common.io.Resources;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.UniProtFlatfileWriter;

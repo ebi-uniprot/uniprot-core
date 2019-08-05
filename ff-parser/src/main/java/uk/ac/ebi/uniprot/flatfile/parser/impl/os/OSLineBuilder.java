@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.os;
 
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -10,6 +9,8 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.taxonomy.Organism;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEPARATOR;
 

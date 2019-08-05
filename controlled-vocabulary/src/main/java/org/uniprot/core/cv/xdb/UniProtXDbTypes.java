@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.common.Utils;
-import org.uniprot.core.common.property.PropertyArray;
-import org.uniprot.core.common.property.PropertyObject;
 import org.uniprot.core.cv.xdb.validator.DBXRefValidator;
+import org.uniprot.core.util.Utils;
+import org.uniprot.core.util.property.PropertyArray;
+import org.uniprot.core.util.property.PropertyObject;
 
 
 public enum UniProtXDbTypes {

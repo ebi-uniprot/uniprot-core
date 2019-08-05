@@ -1,9 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.rc;
 
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.ReferenceCommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.ReferenceCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
@@ -11,6 +7,11 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.uniprot.ReferenceComment;
+import org.uniprot.core.uniprot.ReferenceCommentType;
+import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class RcLineConverter extends EvidenceCollector implements Converter<RcLineObject, List<ReferenceComment>> {
     @Override

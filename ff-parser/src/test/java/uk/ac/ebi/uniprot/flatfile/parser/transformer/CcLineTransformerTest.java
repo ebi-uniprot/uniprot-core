@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
 
 import java.util.List;

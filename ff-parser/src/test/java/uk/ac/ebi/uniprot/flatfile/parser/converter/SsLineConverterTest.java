@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceLine;
+import org.uniprot.core.uniprot.InternalSection;
+import org.uniprot.core.uniprot.evidence.EvidenceLine;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ss.SsLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ss.SsLineObject;
 

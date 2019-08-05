@@ -2,9 +2,9 @@ package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import java.util.List;
 

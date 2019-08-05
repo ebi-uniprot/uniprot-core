@@ -1,0 +1,7 @@
+package org.uniprot.core.uniprot.comment;
+
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+
+public interface SubcellularLocationValue extends EvidencedValue {
+	  String getId();
+}

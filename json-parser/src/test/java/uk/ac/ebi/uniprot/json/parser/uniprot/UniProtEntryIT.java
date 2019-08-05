@@ -5,12 +5,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryInactiveReasonBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.*;
+import org.uniprot.core.uniprot.builder.EntryInactiveReasonBuilder;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
+import org.uniprot.core.uniprot.comment.Comment;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import uk.ac.ebi.uniprot.json.parser.uniprot.comment.*;
 

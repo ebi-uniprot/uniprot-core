@@ -9,11 +9,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniparc.UniParcDatabaseType;
-import uk.ac.ebi.uniprot.domain.uniparc.builder.UniParcDBCrossReferenceBuilder;
+import org.uniprot.core.Property;
+import org.uniprot.core.uniparc.UniParcDBCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabaseType;
+import org.uniprot.core.uniparc.builder.UniParcDBCrossReferenceBuilder;
 
 /**
  *

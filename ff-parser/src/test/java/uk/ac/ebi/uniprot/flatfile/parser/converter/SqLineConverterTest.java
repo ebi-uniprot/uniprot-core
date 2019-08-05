@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.Sequence;
+import org.uniprot.core.Sequence;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.sq.SqLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.sq.SqLineObject;
 

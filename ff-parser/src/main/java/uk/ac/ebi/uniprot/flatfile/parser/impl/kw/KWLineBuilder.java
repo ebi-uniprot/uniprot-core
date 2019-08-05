@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.kw;
 
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -10,6 +9,8 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.Keyword;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

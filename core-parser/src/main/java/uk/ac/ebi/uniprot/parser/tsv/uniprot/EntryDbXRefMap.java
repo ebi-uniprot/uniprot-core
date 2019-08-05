@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.DatabaseType;
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.DatabaseType;
+import org.uniprot.core.Property;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 public class EntryDbXRefMap implements NamedValueMap {
     private static final String DR = "dr:";

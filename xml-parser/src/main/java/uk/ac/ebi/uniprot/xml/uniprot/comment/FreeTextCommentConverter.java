@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.FreeTextComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.FreeTextCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
@@ -10,6 +7,10 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 public class FreeTextCommentConverter implements CommentConverter<FreeTextComment> {
     private final ObjectFactory xmlUniprotFactory;
@@ -28,8 +29,8 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
     public FreeTextComment fromXml(CommentType xmlObj) {
         if ((xmlObj == null) || xmlObj.getText().isEmpty())
             return null;
-        uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType type =
-                uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType.typeOf(xmlObj.getType());
+        org.uniprot.core.uniprot.comment.CommentType type =
+                org.uniprot.core.uniprot.comment.CommentType.typeOf(xmlObj.getType());
         List<EvidencedValue> texts =
                 xmlObj.getText().stream()
                         .map(eviValueConverter::fromXml)

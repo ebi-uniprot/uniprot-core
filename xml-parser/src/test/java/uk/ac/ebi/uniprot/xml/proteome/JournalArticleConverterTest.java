@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.JournalArticle;
+import org.uniprot.core.citation.builder.JournalArticleBuilder;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
 
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.JournalArticle;
-import uk.ac.ebi.uniprot.domain.citation.builder.JournalArticleBuilder;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ConsortiumType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.JournalType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.NameListType;

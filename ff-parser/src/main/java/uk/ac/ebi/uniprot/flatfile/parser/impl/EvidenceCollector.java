@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.HasEvidence;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 
 public class EvidenceCollector implements HasEvidence {

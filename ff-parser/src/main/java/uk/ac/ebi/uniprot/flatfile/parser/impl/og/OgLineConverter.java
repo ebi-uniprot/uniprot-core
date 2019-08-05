@@ -1,9 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.og;
 
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.GeneLocationBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
@@ -11,6 +7,11 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.uniprot.GeneEncodingType;
+import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class OgLineConverter extends EvidenceCollector implements Converter<OgLineObject, List<GeneLocation>> {
     @Override

@@ -1,9 +1,8 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
 import org.junit.jupiter.api.Test;
-
-import uk.ac.ebi.uniprot.domain.Sequence;
-import uk.ac.ebi.uniprot.domain.builder.SequenceBuilder;
+import org.uniprot.core.Sequence;
+import org.uniprot.core.builder.SequenceBuilder;
 
 import java.util.Arrays;
 import java.util.List;

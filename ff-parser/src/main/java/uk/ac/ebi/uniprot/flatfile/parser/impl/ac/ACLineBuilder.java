@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ac;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -9,6 +8,8 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.List;
+
+import org.uniprot.core.uniprot.UniProtAccession;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEMICOLON;
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.SEPARATOR_SEMICOLON;

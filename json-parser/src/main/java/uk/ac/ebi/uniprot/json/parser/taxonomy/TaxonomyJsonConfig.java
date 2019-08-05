@@ -1,11 +1,13 @@
 package uk.ac.ebi.uniprot.json.parser.taxonomy;
 
+import org.uniprot.core.taxonomy.*;
+import org.uniprot.core.taxonomy.impl.*;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import uk.ac.ebi.uniprot.domain.taxonomy.*;
-import uk.ac.ebi.uniprot.domain.taxonomy.impl.*;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.impl.TaxonomyImpl;
+
 import uk.ac.ebi.uniprot.json.parser.JsonConfig;
 
 public class TaxonomyJsonConfig extends JsonConfig {

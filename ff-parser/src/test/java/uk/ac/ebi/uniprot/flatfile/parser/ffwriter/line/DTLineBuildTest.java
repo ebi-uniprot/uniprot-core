@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryAuditBuilder;
+import org.uniprot.core.uniprot.EntryAudit;
+import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.dt.DTLineBuilder;
 

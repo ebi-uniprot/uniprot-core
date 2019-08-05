@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.uniprot.taxonomy.Organism;
 
 public class EntryOrganismMap implements NamedValueMap {
 	public static final List<String> FIELDS = Arrays.asList( "organism", "organism_id", "tax_id");

@@ -2,11 +2,12 @@ package uk.ac.ebi.uniprot.xml.uniprot;
 
 import java.math.BigInteger;
 
+import org.uniprot.core.Position;
+import org.uniprot.core.PositionModifier;
+import org.uniprot.core.Range;
+
 import com.google.common.base.Strings;
 
-import uk.ac.ebi.uniprot.domain.Position;
-import uk.ac.ebi.uniprot.domain.PositionModifier;
-import uk.ac.ebi.uniprot.domain.Range;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.LocationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

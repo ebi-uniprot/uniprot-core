@@ -2,9 +2,10 @@ package uk.ac.ebi.uniprot.xml.uniprot;
 
 import com.google.common.base.Strings;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtXDbType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PropertyType;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtCrossReferenceConverter;

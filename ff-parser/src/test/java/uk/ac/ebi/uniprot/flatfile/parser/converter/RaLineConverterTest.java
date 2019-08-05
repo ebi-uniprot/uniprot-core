@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.citation.Author;
+import org.uniprot.core.citation.Author;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ra.RaLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ra.RaLineObject;
 

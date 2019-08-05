@@ -1,9 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.citation.Author;
-import uk.ac.ebi.uniprot.domain.citation.Book;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.NameListType;
@@ -12,6 +10,10 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PersonType;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.citation.Author;
+import org.uniprot.core.citation.Book;
+import org.uniprot.core.citation.builder.BookBuilder;
 
 public class BookConverter implements Converter<CitationType, Book> {
 

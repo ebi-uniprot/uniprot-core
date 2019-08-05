@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.parser.fasta.uniprot;
 
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-
 import java.util.List;
+
+import org.uniprot.core.gene.Gene;
+import org.uniprot.core.uniprot.ProteinExistence;
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.description.Flag;
+import org.uniprot.core.uniprot.description.FlagType;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinDescription;
 
 public class UniprotFastaParser {
     private final String header;

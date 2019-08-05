@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.*;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.description.*;
 
 public class EntryProteinMap implements NamedValueMap {
     private static final String EC2 = "EC";

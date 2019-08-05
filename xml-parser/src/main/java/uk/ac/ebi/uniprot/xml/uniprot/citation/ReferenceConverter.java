@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtReference;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtReferenceBuilder;
+import org.uniprot.core.uniprot.UniProtReference;
+import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ReferenceType;

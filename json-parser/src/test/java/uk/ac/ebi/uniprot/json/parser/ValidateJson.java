@@ -5,8 +5,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.impl.UniProtEntryImpl;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.uniprot.impl.UniProtEntryImpl;
+
 import uk.ac.ebi.uniprot.json.parser.uniprot.UniprotJsonConfig;
 
 import java.lang.reflect.Field;

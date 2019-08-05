@@ -1,7 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.*;
 
 import static org.junit.Assert.*;
 

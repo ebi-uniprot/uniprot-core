@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import junit.framework.TestCase;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.OrganismHost;
+import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.oh.OhLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.oh.OhLineObject;
 

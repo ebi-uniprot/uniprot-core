@@ -3,10 +3,11 @@ package uk.ac.ebi.uniprot.xml.uniprot.description;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSubNameBuilder;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinSubName;
+import org.uniprot.core.uniprot.description.builder.ProteinSubNameBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

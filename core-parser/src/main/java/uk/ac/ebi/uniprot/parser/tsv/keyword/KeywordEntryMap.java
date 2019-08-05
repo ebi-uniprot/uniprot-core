@@ -7,8 +7,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.uniprot.core.common.Utils;
 import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.util.Utils;
 
 public class KeywordEntryMap implements NamedValueMap {
 

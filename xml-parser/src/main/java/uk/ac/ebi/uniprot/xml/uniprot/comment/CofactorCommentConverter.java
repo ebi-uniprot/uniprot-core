@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CofactorComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.CofactorCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.MoleculeType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -12,6 +9,11 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 
 public class CofactorCommentConverter implements CommentConverter< CofactorComment> {
 	private final ObjectFactory xmlUniprotFactory;

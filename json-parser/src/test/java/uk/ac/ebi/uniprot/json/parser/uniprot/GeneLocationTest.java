@@ -2,9 +2,10 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneEncodingType;
-import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.GeneLocationBuilder;
+import org.uniprot.core.uniprot.GeneEncodingType;
+import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;

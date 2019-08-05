@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.gn;
 
-import uk.ac.ebi.uniprot.domain.gene.*;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
@@ -12,6 +9,10 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.gn.GnLineObject.GnObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.gene.*;
+import org.uniprot.core.uniprot.builder.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class GnLineConverter extends EvidenceCollector implements Converter<GnLineObject, List<Gene>> {
     @Override

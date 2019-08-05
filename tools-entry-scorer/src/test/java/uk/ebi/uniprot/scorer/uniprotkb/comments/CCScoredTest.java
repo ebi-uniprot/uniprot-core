@@ -1,13 +1,14 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtIdBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.UniProtEntry;
+import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
+import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineTransformer;
 import uk.ebi.uniprot.scorer.uniprotkb.UniProtEntryScored;
 
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
-import static uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType.*;
+import static org.uniprot.core.uniprot.comment.CommentType.*;
 
 public class CCScoredTest {
     private static final String CC = "CC   -!- FUNCTION: Adapter protein implicated in the regulation of a large\n" +     // 9.0

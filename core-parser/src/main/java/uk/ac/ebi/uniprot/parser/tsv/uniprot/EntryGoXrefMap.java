@@ -1,11 +1,10 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
-
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.Property;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 public class EntryGoXrefMap implements NamedValueMap {
     private final List<UniProtDBCrossReference> dbReferences;

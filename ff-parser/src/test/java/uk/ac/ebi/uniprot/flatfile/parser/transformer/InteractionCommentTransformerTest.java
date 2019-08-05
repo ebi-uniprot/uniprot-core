@@ -1,10 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.Interaction;
+import org.uniprot.core.uniprot.comment.InteractionComment;
+import org.uniprot.core.uniprot.comment.InteractionType;
 
 import static org.junit.Assert.*;
 

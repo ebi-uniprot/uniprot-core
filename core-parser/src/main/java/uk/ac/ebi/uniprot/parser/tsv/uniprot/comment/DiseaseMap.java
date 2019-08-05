@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprot.comment.DiseaseComment;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCDiseaseCommentLineBuilder;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 

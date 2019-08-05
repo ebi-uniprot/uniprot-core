@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntry;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.comment.EntryCommentsMap;
 
 import java.util.*;
+
+import org.uniprot.core.uniprot.UniProtEntry;
 
 public class EntryMap implements NamedValueMap {
     private final UniProtEntry entry;

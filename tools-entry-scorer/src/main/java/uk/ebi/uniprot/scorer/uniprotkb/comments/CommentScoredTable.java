@@ -1,10 +1,11 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
 import uk.ebi.uniprot.scorer.uniprotkb.Consensus;
 
 import java.util.EnumMap;
+
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
 
 import static uk.ebi.uniprot.scorer.uniprotkb.Consensus.*;
 

@@ -1,14 +1,14 @@
 package uk.ac.ebi.uniprot.json.parser;
 
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.uniprot.comment.Comment;
+
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.cfg.MapperConfig;
 import com.fasterxml.jackson.databind.introspect.AnnotatedClass;
 import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
-
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
 
 public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
 	private static final long serialVersionUID = 3724944589060382231L;

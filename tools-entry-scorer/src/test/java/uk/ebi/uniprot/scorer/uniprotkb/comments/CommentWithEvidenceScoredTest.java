@@ -1,8 +1,8 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 import static java.util.Collections.singletonList;
 

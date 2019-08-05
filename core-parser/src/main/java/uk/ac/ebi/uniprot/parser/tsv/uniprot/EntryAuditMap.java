@@ -1,11 +1,11 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.uniprot.EntryAudit;
 
 public class EntryAuditMap implements NamedValueMap {
 

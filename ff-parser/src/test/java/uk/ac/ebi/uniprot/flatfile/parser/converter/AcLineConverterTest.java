@@ -2,7 +2,8 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
+import org.uniprot.core.uniprot.UniProtAccession;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ac.AcLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ac.AcLineObject;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ac.UniProtAcLineObject;

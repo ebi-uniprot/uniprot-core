@@ -2,15 +2,17 @@ package uk.ac.ebi.uniprot.flatfile.parser.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.common.Pair;
-import org.uniprot.core.common.Utils;
 import org.uniprot.core.cv.impl.DiseaseFileReader;
 import org.uniprot.core.cv.impl.KeywordFileReader;
 import org.uniprot.core.cv.impl.SubcellularLocationFileReader;
 import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.Utils;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.flatfile.parser.SupportingDataMap;
+
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,8 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 /**
  * This class contains all the external supporting data map required to parse from flat file to Entry object.

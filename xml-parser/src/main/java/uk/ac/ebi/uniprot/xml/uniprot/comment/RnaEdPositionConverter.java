@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.RnaEdPosition;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.RnaEditingPositionBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.LocationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -9,6 +7,9 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PositionType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 
 import java.math.BigInteger;
+
+import org.uniprot.core.uniprot.comment.RnaEdPosition;
+import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
 
 public class RnaEdPositionConverter implements Converter<LocationType, RnaEdPosition> {
 

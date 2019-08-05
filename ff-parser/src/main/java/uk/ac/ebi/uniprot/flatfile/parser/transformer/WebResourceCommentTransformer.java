@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.WebResourceCommentBuilder;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 
 public class WebResourceCommentTransformer implements CommentTransformer<WebResourceComment> {
 	private static final CommentType COMMENT_TYPE = CommentType.WEBRESOURCE;

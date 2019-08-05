@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
+import org.uniprot.core.uniprot.EntryAudit;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.dt.DtLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.dt.DtLineObject;
 

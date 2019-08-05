@@ -1,6 +1,6 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ft;
 
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.Feature;
 
 public class CarbohydFeatureLineBuilder 
 extends AbstractFeatureLineBuilder {

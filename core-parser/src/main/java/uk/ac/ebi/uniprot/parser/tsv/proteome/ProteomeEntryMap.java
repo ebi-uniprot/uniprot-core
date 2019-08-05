@@ -8,8 +8,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeEntry;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
+import org.uniprot.core.proteome.ProteomeEntry;
+import org.uniprot.core.proteome.ProteomeXReferenceType;
+
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 
 /**

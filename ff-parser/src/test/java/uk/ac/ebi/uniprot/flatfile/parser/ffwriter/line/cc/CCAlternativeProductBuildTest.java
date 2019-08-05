@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APCommentBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APIsoformBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.IsoformNameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.APCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 

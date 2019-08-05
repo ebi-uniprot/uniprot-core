@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.GeneLocation;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.GeneLocation;
 
 public class EntryEncodedMap implements NamedValueMap {
 	public static final List<String> FIELDS = Arrays.asList(new String[] { "gene_location" });

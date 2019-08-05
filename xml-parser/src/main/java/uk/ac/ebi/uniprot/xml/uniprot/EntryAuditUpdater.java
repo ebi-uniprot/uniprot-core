@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.EntryAudit;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.EntryAuditBuilder;
 import uk.ac.ebi.uniprot.xml.Updater;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SequenceType;
 
 import java.time.LocalDate;
+
+import org.uniprot.core.uniprot.EntryAudit;
+import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
 
 public class EntryAuditUpdater implements Updater<SequenceType, EntryAudit> {
 

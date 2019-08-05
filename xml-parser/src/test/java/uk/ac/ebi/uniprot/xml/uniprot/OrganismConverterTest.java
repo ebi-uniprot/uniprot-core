@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
+import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.OrganismType;
 
 import java.util.Arrays;

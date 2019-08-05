@@ -1,22 +1,7 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.cc;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.ECNumber;
-import uk.ac.ebi.uniprot.domain.Range;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.impl.DBCrossReferenceImpl;
-import uk.ac.ebi.uniprot.domain.impl.ECNumberImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.MassSpectrometryRange;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SequenceCautionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.impl.CatalyticActivityCommentImpl;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidencedValue;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidencedValueBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper;
+
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.exception.ParseDiseaseException;
 import uk.ac.ebi.uniprot.flatfile.parser.exception.ParseSubcellularLocationException;
@@ -24,13 +9,27 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject.*;
 
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLines;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLines;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.ECNumber;
+import org.uniprot.core.Range;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.impl.DBCrossReferenceImpl;
+import org.uniprot.core.impl.ECNumberImpl;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.*;
+import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
 
 public class CcLineConverter extends EvidenceCollector implements Converter<CcLineObject, List<Comment>> {
     // private final DefaultCommentFactory factory = DefaultCommentFactory

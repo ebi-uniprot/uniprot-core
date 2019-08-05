@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.json.parser.disease;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.builder.DiseaseBuilder;
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 
-import uk.ac.ebi.uniprot.domain.builder.DiseaseBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 import java.util.Arrays;
 import java.util.List;

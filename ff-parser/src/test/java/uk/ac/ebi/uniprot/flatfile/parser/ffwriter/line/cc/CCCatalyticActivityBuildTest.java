@@ -2,8 +2,9 @@ package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.cc;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CatalyticActivityComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprot.comment.Comment;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineConverter;

@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.WebResourceComment;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject;
 

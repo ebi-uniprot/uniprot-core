@@ -1,8 +1,8 @@
 package uk.ac.ebi.uniprot.parser.tsv.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-
 import java.util.*;
+
+import org.uniprot.core.uniprot.UniProtEntryType;
 
 public class EntryTypeMap implements NamedValueMap {
 	public static final List<String> FIELDS = Collections.singletonList("reviewed");

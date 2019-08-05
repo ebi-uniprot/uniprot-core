@@ -1,9 +1,9 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public final class EvidenceIndexMapper {
 	private Map<Evidence, Integer> evidenceToIndexMap = new HashMap<>();

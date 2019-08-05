@@ -2,8 +2,9 @@ package uk.ebi.uniprot.scorer.uniprotkb.xdb;
 
 import java.util.List;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.xdb.UniProtDBCrossReference;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+
 import uk.ebi.uniprot.scorer.uniprotkb.Consensus;
 import uk.ebi.uniprot.scorer.uniprotkb.HasScore;
 

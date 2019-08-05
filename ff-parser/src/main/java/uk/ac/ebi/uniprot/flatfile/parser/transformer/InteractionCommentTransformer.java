@@ -1,15 +1,15 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Interaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.InteractionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.InteractionCommentBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.Interaction;
+import org.uniprot.core.uniprot.comment.InteractionComment;
+import org.uniprot.core.uniprot.comment.InteractionType;
+import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
+import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
 
 public class InteractionCommentTransformer implements CommentTransformer<InteractionComment> {
     private static final CommentType COMMENT_TYPE = CommentType.INTERACTION;

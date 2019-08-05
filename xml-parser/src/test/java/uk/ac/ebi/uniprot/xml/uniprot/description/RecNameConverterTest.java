@@ -1,14 +1,15 @@
 package uk.ac.ebi.uniprot.xml.uniprot.description;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceCode;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinRecName;
+import org.uniprot.core.uniprot.description.builder.NameBuilder;
+import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.RecommendedName;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;

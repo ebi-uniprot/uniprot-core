@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtAccession;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.UniProtAccessionBuilder;
+import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ac.ACLineBuilder;
 

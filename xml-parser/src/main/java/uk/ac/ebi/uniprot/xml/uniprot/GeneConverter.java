@@ -1,9 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
-import uk.ac.ebi.uniprot.domain.gene.*;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.*;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneNameType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.GeneType;
@@ -11,6 +7,11 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.gene.*;
+import org.uniprot.core.uniprot.builder.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 public class GeneConverter implements Converter<GeneType, Gene> {
 	private final EvidenceIndexMapper evRefMapper;

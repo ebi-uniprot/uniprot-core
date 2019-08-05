@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.xml.uniprot;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.Flag;
-import uk.ac.ebi.uniprot.domain.uniprot.description.FlagType;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinDescription;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.FlagBuilder;
+import org.uniprot.core.uniprot.description.Flag;
+import org.uniprot.core.uniprot.description.FlagType;
+import org.uniprot.core.uniprot.description.ProteinDescription;
+import org.uniprot.core.uniprot.description.builder.FlagBuilder;
+
 import uk.ac.ebi.uniprot.xml.Updater;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.SequenceType;
 

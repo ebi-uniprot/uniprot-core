@@ -1,10 +1,7 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import com.google.common.base.Strings;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Note;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.NoteBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.MoleculeType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -12,6 +9,11 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
 
 public class SCLCommentConverter implements CommentConverter<SubcellularLocationComment> {
     private final ObjectFactory xmlUniprotFactory;

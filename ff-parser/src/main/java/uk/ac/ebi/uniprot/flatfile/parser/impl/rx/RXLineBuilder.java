@@ -1,14 +1,15 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.rx;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.RLine;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationXrefType;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

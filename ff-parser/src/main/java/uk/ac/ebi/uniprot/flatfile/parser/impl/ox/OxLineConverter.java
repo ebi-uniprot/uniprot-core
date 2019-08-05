@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ox;
 
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Organism;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.OrganismBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceCollector;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
@@ -10,6 +7,10 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.EvidenceConverterHelper;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 
 public class OxLineConverter extends EvidenceCollector implements Converter<OxLineObject, Organism> {
 	@Override

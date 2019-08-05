@@ -1,12 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser.transformer;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Disease;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseComment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.DiseaseReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.Disease;
+import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 

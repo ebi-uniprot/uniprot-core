@@ -2,11 +2,12 @@ package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.builder.BookBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rx.RxLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rx.RxLineObject;
 

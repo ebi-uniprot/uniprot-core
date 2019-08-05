@@ -3,12 +3,12 @@ package uk.ac.ebi.uniprot.xml.proteome;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.proteome.CanonicalProtein;
+import org.uniprot.core.proteome.Protein;
+import org.uniprot.core.proteome.builder.CanonicalProteinBuilder;
+import org.uniprot.core.proteome.builder.ProteinBuilder;
+import org.uniprot.core.uniprot.UniProtEntryType;
 
-import uk.ac.ebi.uniprot.domain.proteome.CanonicalProtein;
-import uk.ac.ebi.uniprot.domain.proteome.Protein;
-import uk.ac.ebi.uniprot.domain.proteome.builder.CanonicalProteinBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.builder.ProteinBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.CanonicalGene;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.EntryType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.GeneNameType;
@@ -31,7 +31,7 @@ class CanonicalProteinConverterTest {
 		assertEquals("P12345", protein.getAccession().getValue());
 		assertEquals(UniProtEntryType.SWISSPROT, protein.getEntryType());
 		assertEquals("gen1", protein.getGeneName());
-		assertEquals(uk.ac.ebi.uniprot.domain.proteome.GeneNameType.MOD, protein.getGeneNameType());
+		assertEquals(org.uniprot.core.proteome.GeneNameType.MOD, protein.getGeneNameType());
 		assertEquals(123l, protein.getSequenceLength());
 		assertEquals(2, cProtein.getRelatedProteins().size());
 	}
@@ -42,7 +42,7 @@ class CanonicalProteinConverterTest {
 		.accession("P21312")
 		.entryType(UniProtEntryType.TREMBL)
 		.geneName("some gene")
-		.geneNameType(uk.ac.ebi.uniprot.domain.proteome.GeneNameType.ENSEMBL)
+		.geneNameType(org.uniprot.core.proteome.GeneNameType.ENSEMBL)
 		.sequenceLength(324)
 		.build();
 		
@@ -50,14 +50,14 @@ class CanonicalProteinConverterTest {
 				.accession("P21912")
 				.entryType(UniProtEntryType.SWISSPROT)
 				.geneName("some gene1")
-				.geneNameType(uk.ac.ebi.uniprot.domain.proteome.GeneNameType.ENSEMBL)
+				.geneNameType(org.uniprot.core.proteome.GeneNameType.ENSEMBL)
 				.sequenceLength(334)
 				.build();
 		Protein protein3 = ProteinBuilder.newInstance()
 				.accession("P31912")
 				.entryType(UniProtEntryType.SWISSPROT)
 				.geneName("some gene3")
-				.geneNameType(uk.ac.ebi.uniprot.domain.proteome.GeneNameType.OLN)
+				.geneNameType(org.uniprot.core.proteome.GeneNameType.OLN)
 				.sequenceLength(434)
 				.build();
 		CanonicalProteinBuilder builder = CanonicalProteinBuilder.newInstance();

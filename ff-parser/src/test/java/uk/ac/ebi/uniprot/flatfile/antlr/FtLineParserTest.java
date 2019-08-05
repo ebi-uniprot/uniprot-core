@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.antlr;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.Feature;
+
 import uk.ac.ebi.uniprot.flatfile.parser.UniprotLineParser;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ft.FtLineConverter;

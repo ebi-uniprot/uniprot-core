@@ -2,10 +2,11 @@ package uk.ac.ebi.uniprot.xml.proteome;
 
 import java.util.stream.Collectors;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.Property;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.proteome.ProteomeXReferenceType;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.Property;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.proteome.ProteomeXReferenceType;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.proteome.ObjectFactory;

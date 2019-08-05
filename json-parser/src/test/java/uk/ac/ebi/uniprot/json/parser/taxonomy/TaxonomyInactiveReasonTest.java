@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.json.parser.taxonomy;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyInactiveReason;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyInactiveReasonType;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyInactiveReasonBuilder;
+import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
+import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
+import org.uniprot.core.taxonomy.builder.TaxonomyInactiveReasonBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 /**

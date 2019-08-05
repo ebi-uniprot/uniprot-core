@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.EntryMapUtil;
 import uk.ac.ebi.uniprot.parser.tsv.uniprot.NamedValueMap;
 

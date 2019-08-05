@@ -1,10 +1,11 @@
 package uk.ac.ebi.uniprot.json.parser.literature;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.citation.impl.AuthorImpl;
-import uk.ac.ebi.uniprot.domain.citation.impl.PublicationDateImpl;
-import uk.ac.ebi.uniprot.domain.literature.LiteratureEntry;
-import uk.ac.ebi.uniprot.domain.literature.builder.LiteratureEntryBuilder;
+import org.uniprot.core.citation.impl.AuthorImpl;
+import org.uniprot.core.citation.impl.PublicationDateImpl;
+import org.uniprot.core.literature.LiteratureEntry;
+import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 /**

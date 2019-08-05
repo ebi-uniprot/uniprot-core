@@ -1,10 +1,10 @@
 package uk.ebi.uniprot.scorer.uniprotkb;
 
-import uk.ac.ebi.uniprot.domain.gene.Gene;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.EvidenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.HasEvidences;
-
 import java.util.List;
+
+import org.uniprot.core.gene.Gene;
+import org.uniprot.core.uniprot.evidence.EvidenceType;
+import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:37:49 To change this template use File | Settings

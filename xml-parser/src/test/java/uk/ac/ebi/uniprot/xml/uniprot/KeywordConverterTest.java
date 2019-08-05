@@ -2,10 +2,10 @@ package uk.ac.ebi.uniprot.xml.uniprot;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.uniprot.Keyword;
+import org.uniprot.core.uniprot.builder.KeywordBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.KeywordType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.KeywordConverter;

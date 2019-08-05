@@ -1,6 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ss;
 
-import uk.ac.ebi.uniprot.domain.uniprot.InternalSection;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineBuilderAbstr;
@@ -8,6 +7,8 @@ import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLines;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.InternalSection;
 
 public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
     private static final String INTERNAL_SECTION = "**   #################    INTERNAL SECTION    ##################";

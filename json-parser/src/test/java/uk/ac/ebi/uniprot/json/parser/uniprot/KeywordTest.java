@@ -3,9 +3,9 @@ package uk.ac.ebi.uniprot.json.parser.uniprot;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.junit.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.uniprot.Keyword;
+import org.uniprot.core.uniprot.builder.KeywordBuilder;
 
-import uk.ac.ebi.uniprot.domain.uniprot.Keyword;
-import uk.ac.ebi.uniprot.domain.uniprot.builder.KeywordBuilder;
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import static org.junit.Assert.assertEquals;

@@ -1,7 +1,7 @@
 package uk.ebi.uniprot.scorer.uniprotkb.comments;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.CommentType;
 
 public class PharmaceuticalScoredTest extends CommentScoreTestBase {
     @Test

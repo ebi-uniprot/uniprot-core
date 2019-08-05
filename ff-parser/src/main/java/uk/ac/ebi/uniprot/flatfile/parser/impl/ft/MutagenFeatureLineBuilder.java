@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.ft;
 
-import uk.ac.ebi.uniprot.domain.uniprot.feature.Feature;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineWrapper;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.LineBuilderHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.uniprot.core.uniprot.feature.Feature;
 
 import static uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl.FFLineConstant.*;
 

@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.DbReferenceType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -10,6 +8,9 @@ import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ProteinType.Domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.description.ProteinSection;
+import org.uniprot.core.uniprot.description.builder.ProteinSectionBuilder;
 
 public class DomainConverter implements Converter<Domain, ProteinSection> ,ToXmlDbReferences<ProteinSection> {
     private final NameConverter nameConverter;

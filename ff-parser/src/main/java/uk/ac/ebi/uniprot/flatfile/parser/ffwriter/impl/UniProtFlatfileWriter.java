@@ -1,8 +1,5 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.impl;
 
-import uk.ac.ebi.uniprot.domain.uniprot.*;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.CommentType;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FFLine;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.FlatfileWriter;
 import uk.ac.ebi.uniprot.flatfile.parser.ffwriter.LineType;
@@ -26,6 +23,10 @@ import uk.ac.ebi.uniprot.flatfile.parser.impl.sq.SQLineBuilder;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.ss.SSLineBuilder;
 
 import java.util.*;
+
+import org.uniprot.core.uniprot.*;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
 
 
 public class UniProtFlatfileWriter implements FlatfileWriter<UniProtEntry>{

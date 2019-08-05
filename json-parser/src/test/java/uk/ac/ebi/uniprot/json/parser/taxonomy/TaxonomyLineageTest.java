@@ -1,9 +1,10 @@
 package uk.ac.ebi.uniprot.json.parser.taxonomy;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyLineage;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyLineageBuilder;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.TaxonomyRank;
+import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 public class TaxonomyLineageTest {

@@ -1,7 +1,5 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.uniprot.comment.TemperatureDependence;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.TemperatureDependenceBuilder;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CommentType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
@@ -9,6 +7,9 @@ import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidencedValueConverter;
 
 import java.util.stream.Collectors;
+
+import org.uniprot.core.uniprot.comment.TemperatureDependence;
+import org.uniprot.core.uniprot.comment.builder.TemperatureDependenceBuilder;
 
 public class BPCPTempDependenceConverter implements Converter<CommentType.TemperatureDependence, TemperatureDependence> {
 	private final ObjectFactory xmlUniprotFactory;

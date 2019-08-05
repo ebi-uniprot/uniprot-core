@@ -1,23 +1,23 @@
 package uk.ac.ebi.uniprot.xml.uniprot.description;
 
-import uk.ac.ebi.uniprot.domain.uniprot.description.EC;
-import uk.ac.ebi.uniprot.domain.uniprot.description.Name;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinAltName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinRecName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSection;
-import uk.ac.ebi.uniprot.domain.uniprot.description.ProteinSubName;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ECBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.NameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinAltNameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinRecNameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSectionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.description.builder.ProteinSubNameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static uk.ac.ebi.uniprot.domain.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinAltName;
+import org.uniprot.core.uniprot.description.ProteinRecName;
+import org.uniprot.core.uniprot.description.ProteinSection;
+import org.uniprot.core.uniprot.description.ProteinSubName;
+import org.uniprot.core.uniprot.description.builder.ECBuilder;
+import org.uniprot.core.uniprot.description.builder.NameBuilder;
+import org.uniprot.core.uniprot.description.builder.ProteinAltNameBuilder;
+import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
+import org.uniprot.core.uniprot.description.builder.ProteinSectionBuilder;
+import org.uniprot.core.uniprot.description.builder.ProteinSubNameBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 /**
  * Created 30/01/19

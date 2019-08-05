@@ -1,17 +1,18 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalDirectionType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.PhysiologicalReaction;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.ReactionReferenceType;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.PhysiologicalReactionType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 
 import java.util.List;
+
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
+import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class CAPhysioReactionConverter implements Converter<PhysiologicalReactionType, PhysiologicalReaction> {
     private final EvidenceIndexMapper evRefMapper;

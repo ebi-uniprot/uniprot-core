@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtEntryType;
-import uk.ac.ebi.uniprot.domain.uniprot.UniProtId;
+import org.uniprot.core.uniprot.UniProtEntryType;
+import org.uniprot.core.uniprot.UniProtId;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.id.IdLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.id.IdLineObject;
 

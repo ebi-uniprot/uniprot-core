@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.flatfile.parser.converter;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.Comment;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineConverter;
 import uk.ac.ebi.uniprot.flatfile.parser.impl.cc.CcLineObject;
 

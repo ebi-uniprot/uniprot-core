@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.flatfile.parser.impl.pe;
 
 
-import uk.ac.ebi.uniprot.domain.uniprot.ProteinExistence;
+import org.uniprot.core.uniprot.ProteinExistence;
+
 import uk.ac.ebi.uniprot.flatfile.parser.Converter;
 
 public class PeLineConverter implements Converter<PeLineObject, ProteinExistence> {

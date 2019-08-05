@@ -1,7 +1,8 @@
 package uk.ac.ebi.uniprot.xml.uniprot.citation;
 
-import uk.ac.ebi.uniprot.domain.citation.Thesis;
-import uk.ac.ebi.uniprot.domain.citation.builder.ThesisBuilder;
+import org.uniprot.core.citation.Thesis;
+import org.uniprot.core.citation.builder.ThesisBuilder;
+
 import uk.ac.ebi.uniprot.xml.Converter;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.CitationType;
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.ObjectFactory;

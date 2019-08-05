@@ -1,12 +1,13 @@
 package uk.ac.ebi.uniprot.xml.uniprot.comment;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.APIsoform;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformName;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.IsoformSequenceStatus;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.APIsoformBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.comment.builder.IsoformNameBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.comment.APIsoform;
+import org.uniprot.core.uniprot.comment.IsoformName;
+import org.uniprot.core.uniprot.comment.IsoformSequenceStatus;
+import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+
 import uk.ac.ebi.uniprot.xml.jaxb.uniprot.IsoformType;
 import uk.ac.ebi.uniprot.xml.uniprot.EvidenceIndexMapper;
 import uk.ac.ebi.uniprot.xml.uniprot.UniProtXmlTestHelper;

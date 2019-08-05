@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.flatfile.parser.ffwriter.line.rlines;
 
 import org.junit.Test;
-import uk.ac.ebi.uniprot.domain.DBCrossReference;
-import uk.ac.ebi.uniprot.domain.builder.DBCrossReferenceBuilder;
-import uk.ac.ebi.uniprot.domain.citation.Citation;
-import uk.ac.ebi.uniprot.domain.citation.CitationXrefType;
-import uk.ac.ebi.uniprot.domain.citation.builder.BookBuilder;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.Citation;
+import org.uniprot.core.citation.CitationXrefType;
+import org.uniprot.core.citation.builder.BookBuilder;
+
 import uk.ac.ebi.uniprot.flatfile.parser.impl.rx.RXLineBuilder;
 
 import java.util.ArrayList;

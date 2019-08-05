@@ -1,11 +1,12 @@
 package uk.ac.ebi.uniprot.json.parser.taxonomy;
 
 import org.junit.jupiter.api.Test;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyEntry;
-import uk.ac.ebi.uniprot.domain.taxonomy.TaxonomyRank;
-import uk.ac.ebi.uniprot.domain.taxonomy.builder.TaxonomyEntryBuilder;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.Taxonomy;
-import uk.ac.ebi.uniprot.domain.uniprot.taxonomy.builder.TaxonomyBuilder;
+import org.uniprot.core.taxonomy.TaxonomyEntry;
+import org.uniprot.core.taxonomy.TaxonomyRank;
+import org.uniprot.core.taxonomy.builder.TaxonomyEntryBuilder;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+
 import uk.ac.ebi.uniprot.json.parser.ValidateJson;
 
 import java.util.Collections;
