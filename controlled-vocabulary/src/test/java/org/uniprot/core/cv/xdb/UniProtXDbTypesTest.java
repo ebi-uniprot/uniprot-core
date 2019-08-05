@@ -268,7 +268,7 @@ class UniProtXDbTypesTest {
         UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("Proteomes");
         assertEquals("Proteomes", opType.getName());
         assertEquals("Proteomes", opType.getDisplayName());
-        assertEquals(OTHER, opType.getCategory());
+        assertEquals(DatabaseCategory.PROTEOMES_DATABASES, opType.getCategory());
         assertEquals("https://www.uniprot.org/proteomes/%s", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "Component", "component",
@@ -291,11 +291,11 @@ class UniProtXDbTypesTest {
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES), 38);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 9);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES), 8);
-        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(OTHER), 7);
+        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(OTHER), 6);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(FAMILY_AND_DOMAIN_DATABASES), 15);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(GENE_ONTOLOGY_DATABASES), 1);
-        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PROTEOMES_DATABASES), 0);
+        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PROTEOMES_DATABASES), 1);
     }
 
     private void verifyGroupSize(List<UniProtXDbTypeDetail> dbTypesByCategory, int size) {

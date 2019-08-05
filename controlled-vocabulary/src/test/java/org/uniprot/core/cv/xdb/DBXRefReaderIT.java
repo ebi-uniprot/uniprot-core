@@ -12,7 +12,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DBXRefReaderTest {
+class DBXRefReaderIT {
     private static Set<String> ACCESSION_WITHOUT_REF = new HashSet<>(
             Arrays.asList(
             		"DB-0133",

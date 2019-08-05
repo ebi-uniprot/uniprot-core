@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class DBXRefValidatorTest {
+class DBXRefValidatorIT {
 	private static Set<String> IGNORED_DBS;
 	private static Set<String> NEW_DBS;
 
