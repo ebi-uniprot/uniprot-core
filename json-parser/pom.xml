@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>uk.ac.ebi.uniprot</groupId>
+        <groupId>org.uniprot</groupId>
         <artifactId>core-parent</artifactId>
         <version>1.0</version>
         <relativePath>../</relativePath>
@@ -18,7 +18,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>uk.ac.ebi.uniprot</groupId>
+            <groupId>org.uniprot</groupId>
             <artifactId>core-domain</artifactId>
             <version>${project.version}</version>
         </dependency>
