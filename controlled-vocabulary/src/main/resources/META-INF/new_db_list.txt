@@ -1,10 +1,9 @@
 CleanEx
 ProtClustDB
 PathwayCommons
-CPTAC
-NIAGADS
 DrugCentral
 Pharos
 MassIVE
 ProDom
 PlantReactome
+Proteomes

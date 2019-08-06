@@ -817,12 +817,6 @@
 		"uriLink": "https://www.ncbi.nlm.nih.gov/books/NBK1116/?term=%s"
 	},
 	{
-		"name": "H-InvDB",
-		"displayName": "H-InvDB",
-		"category": "ORG",
-		"uriLink": "http://h-invitational.jp/hinv/spsoup/locus_view?hix_id=%s"
-	},
-	{
 		"name": "HGNC",
 		"displayName": "HGNC",
 		"category": "ORG",
@@ -1215,7 +1209,7 @@
 		"name": "PRO",
 		"displayName": "PRO",
 		"category": "OTHER",
-		"uriLink": "https://research.bioinformatics.udel.edu/pro/entry/%s"	
+		"uriLink": "https://proconsortium.org/app/entry/%s"	
 	},
 	{
 		"name": "Bgee",

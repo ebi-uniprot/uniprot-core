@@ -288,7 +288,7 @@ class UniProtXDbTypesTest {
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PROTEOMIC_DATABASES), 11);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PROTOCOLS_AND_MATERIALS_DATABASES), 2);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(GENOME_ANNOTATION_DATABASES), 14);
-        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES), 38);
+        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES), 37);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 9);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES), 8);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(OTHER), 6);

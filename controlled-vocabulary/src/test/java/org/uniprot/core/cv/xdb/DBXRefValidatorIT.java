@@ -79,6 +79,7 @@ class DBXRefValidatorIT {
 		// check if all the drlineconfig.json is in sync with dbxref.txt
 		for (UniProtXDbTypeDetail dbTypeDetail : UniProtXDbTypes.INSTANCE.getAllDBXRefTypes()) {
 			if (!NEW_DBS.contains(dbTypeDetail.getName())) {
+				System.out.println(dbTypeDetail.getName());
 				List<Pair<String, String>> mismatches = DBXRefValidator.validate(dbTypeDetail);
 				assertTrue(mismatches.isEmpty(), mismatches.stream().map(p -> p.getKey() + " : " + p.getValue())
 						.collect(Collectors.toList()).toString());
