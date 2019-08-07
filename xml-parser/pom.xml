@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jaxb.version>2.3.0</jaxb.version>
 		<jvnet.jaxb2.version>1.11.1</jvnet.jaxb2.version>
-		<dropwizard.metrics.version>3.1.0</dropwizard.metrics.version>
+		<dropwizard.metrics.version>4.0.5</dropwizard.metrics.version>
 		<jcommander.version>1.47</jcommander.version>
 		<xsd-location>${project.basedir}/src/main/resources/xsd</xsd-location>
 		<proteome-xsd-pojo-package>org.uniprot.core.xml.jaxb.proteome</proteome-xsd-pojo-package>
@@ -79,6 +79,11 @@
 			<artifactId>metrics-core</artifactId>
 			<version>${dropwizard.metrics.version}</version>
 		</dependency>
+		   <dependency>
+    <groupId>io.dropwizard.metrics</groupId>
+    <artifactId>metrics-jmx</artifactId>
+     <version>${dropwizard.metrics.version}</version> 
+</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
