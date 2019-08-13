@@ -7,7 +7,7 @@
     <artifactId>core-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <name>UniProt Core Parent POM</name>
+    <name>UniProt Core Aggregator</name>
 
     <properties>
         <mockito-version>1.9.5</mockito-version>
