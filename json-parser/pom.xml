@@ -12,10 +12,12 @@
 
     <artifactId>json-parser</artifactId>
     <version>0.1-SNAPSHOT</version>
+
     <properties>
         <jackson.version>2.9.6</jackson.version>
         <mbknor-jackson-jsonschema.version>1.0.31</mbknor-jackson-jsonschema.version>
     </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.uniprot</groupId>

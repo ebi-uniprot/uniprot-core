@@ -9,14 +9,15 @@
         <version>1.0</version>
         <relativePath>../</relativePath>
     </parent>
+
     <artifactId>ff-parser</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>ff-parser</name>
-    <url>http://maven.apache.org</url>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <antlr4.version>4.5.3</antlr4.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.uniprot</groupId>
@@ -72,31 +73,31 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-              <scope>test</scope>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-              <scope>test</scope>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-              <scope>test</scope>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-              <scope>test</scope>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-launcher</artifactId>
-              <scope>test</scope>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>org.junit.platform</groupId>
@@ -108,7 +109,7 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-              <scope>test</scope>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>org.junit.platform</groupId>
@@ -116,7 +117,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-       
+
     </dependencies>
     <build>
         <plugins>
