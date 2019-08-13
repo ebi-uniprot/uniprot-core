@@ -20,6 +20,7 @@
         <guava.version>28.0-jre</guava.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
+        <http-uniprot-private-url>http://wwwdev.ebi.ac.uk/uniprot/artifactory</http-uniprot-private-url>
     </properties>
 
     <dependencyManagement>
@@ -138,4 +139,30 @@
         <module>json-parser</module>
         <module>tools-entry-scorer</module>
     </modules>
+
+    <profiles>
+        <!-- active when running on jenkins -->
+        <profile>
+            <id>jenkins</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>uniprot-artifactory-deploy-release</id>
+                    <name>Deploy Uniprot Maven Release</name>
+                    <url>${http-uniprot-private-url}/release</url>
+                </repository>
+                <snapshotRepository>
+                    <uniqueVersion>false</uniqueVersion>
+                    <id>uniprot-artifactory-deploy-snapshot</id>
+                    <name>Deploy Uniprot Maven Snapshot</name>
+                    <url>${http-uniprot-private-url}/snapshot</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
 </project>
