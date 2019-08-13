@@ -1,6 +1,6 @@
 package org.uniprot.core.uniref.builder;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
@@ -14,7 +14,6 @@ import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntryId;
-import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 
 /**
@@ -142,11 +141,11 @@ class RepresentativeMemberBuilderTest {
 
 	@Test
 	void testOverlapRegion() {
-		String name ="some name";
+
 		int start = 50;
 		int end = 65;
 		
-		OverlapRegion overlapRegion = new OverlapRegionBuilder().name(name)
+		OverlapRegion overlapRegion = new OverlapRegionBuilder()
 				.start(start).end(end)
 				.build();
 		

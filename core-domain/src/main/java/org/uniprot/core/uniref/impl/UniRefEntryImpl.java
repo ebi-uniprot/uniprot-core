@@ -7,10 +7,10 @@ import java.util.Objects;
 
 import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.RepresentativeMember;
-import org.uniprot.core.uniref.UniRefDatabase;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
+import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.util.Utils;
 
 /**
@@ -28,35 +28,35 @@ public class UniRefEntryImpl implements UniRefEntry {
 	private UniRefEntryId id;
 	private String name;
 	private LocalDate updated;
-	private UniRefDatabase database;
+	private UniRefType entryType;
 	private long commonTaxonId;
 	private String commonTaxonName;
 	private List<GoTerm> goTerms;
 	private RepresentativeMember representativeMember;
-	private List<UniRefMember> unirefMembers;
+	private List<UniRefMember> members;
 	
 	protected UniRefEntryImpl() {
 		goTerms = Collections.emptyList();
-		unirefMembers = Collections.emptyList();
+		members = Collections.emptyList();
 	}
 	public UniRefEntryImpl( UniRefEntryId id,
 	 String name,
 	 LocalDate updated,
-	 UniRefDatabase database,
+	 UniRefType entryType,
 	 long commonTaxonId,
 	 String commonTaxonName,
 	 List<GoTerm> goTerms,
 	 RepresentativeMember representativeMember,
-	 List<UniRefMember> unirefMembers) {
+	 List<UniRefMember> members) {
 		this.id = id;
 		this.name = name;
 		this.updated = updated;
-		this.database =database;
+		this.entryType =entryType;
 		this.commonTaxonId =commonTaxonId;
 		this.commonTaxonName =commonTaxonName;
 		this.goTerms= Utils.nonNullUnmodifiableList(goTerms);
 		this.representativeMember = representativeMember;
-		this.unirefMembers = Utils.nonNullUnmodifiableList(unirefMembers);
+		this.members = Utils.nonNullUnmodifiableList(members);
 
 	}
 	@Override
@@ -75,8 +75,8 @@ public class UniRefEntryImpl implements UniRefEntry {
 	}
 
 	@Override
-	public UniRefDatabase getDatabase() {
-		return database;
+	public UniRefType getEntryType() {
+		return entryType;
 	}
 
 	@Override
@@ -100,14 +100,14 @@ public class UniRefEntryImpl implements UniRefEntry {
 	}
 
 	@Override
-	public List<UniRefMember> getUniRefMembers() {
-		return unirefMembers;
+	public List<UniRefMember> getMembers() {
+		return members;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, updated, database, commonTaxonId,
-				commonTaxonName, goTerms, representativeMember, unirefMembers);
+		return Objects.hash(id, name, updated, entryType, commonTaxonId,
+				commonTaxonName, goTerms, representativeMember, members);
 	}
 
 	@Override
@@ -122,12 +122,12 @@ public class UniRefEntryImpl implements UniRefEntry {
 		return Objects.equals(id, other.id)
 				&& Objects.equals(name, other.name)
 				&& Objects.equals(updated, other.updated)
-				&& Objects.equals(database, other.database)
+				&& Objects.equals(entryType, other.entryType)
 				&& Objects.equals(commonTaxonId, other.commonTaxonId)
 				&& Objects.equals(commonTaxonName, other.commonTaxonName)
 				&& Objects.equals(goTerms, other.goTerms)
 				&& Objects.equals(representativeMember, other.representativeMember)
-				&& Objects.equals(unirefMembers, other.unirefMembers)
+				&& Objects.equals(members, other.members)
 				;
 
 	}

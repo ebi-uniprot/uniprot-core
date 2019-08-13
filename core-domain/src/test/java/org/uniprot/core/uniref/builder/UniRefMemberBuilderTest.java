@@ -121,11 +121,10 @@ class UniRefMemberBuilderTest {
 
 	@Test
 	void testOverlapRegion() {
-		String name ="some name";
 		int start = 50;
 		int end = 65;
 		
-		OverlapRegion overlapRegion = new OverlapRegionBuilder().name(name)
+		OverlapRegion overlapRegion = new OverlapRegionBuilder()
 				.start(start).end(end)
 				.build();
 		

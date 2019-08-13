@@ -15,11 +15,11 @@ public interface UniRefEntry extends Serializable {
 	UniRefEntryId getId();
 	String getName();
 	LocalDate getUpdated();
-	UniRefDatabase getDatabase();
+	UniRefType getEntryType();
 	long getCommonTaxonId();
 	String getCommonTaxonName();
 	List<GoTerm> getGoTerms();
 	RepresentativeMember getRepresentativeMember();
-	List<UniRefMember> getUniRefMembers();	
+	List<UniRefMember> getMembers();	
 }
 

@@ -7,10 +7,10 @@ import java.util.List;
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.RepresentativeMember;
-import org.uniprot.core.uniref.UniRefDatabase;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
+import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryImpl;
 import org.uniprot.core.util.Utils;
 
@@ -25,12 +25,12 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 	private UniRefEntryId id;
 	private String name;
 	private LocalDate updated;
-	private UniRefDatabase database;
+	private UniRefType entryType;
 	private long commonTaxonId;
 	private String commonTaxonName;
 	private List<GoTerm> goTerms =new ArrayList<>();
 	private RepresentativeMember representativeMember;
-	private List<UniRefMember> unirefMembers  =new ArrayList<>();
+	private List<UniRefMember> members  =new ArrayList<>();
 	
 	
 	
@@ -40,12 +40,12 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 		return new UniRefEntryImpl(  id,
 				  name,
 				  updated,
-				  database,
+				  entryType,
 				  commonTaxonId,
 				  commonTaxonName,
 				  goTerms,
 				  representativeMember,
-				  unirefMembers) ;
+				  members) ;
 	}
 
 	@Override
@@ -53,12 +53,12 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 		return this.id(instance.getId())
 				.name(instance.getName())
 				.updated(instance.getUpdated())
-				.database(instance.getDatabase())
+				.entryType(instance.getEntryType())
 				.commonTaxonId(instance.getCommonTaxonId())
 				.commonTaxonName(instance.getCommonTaxonName())
 				.goTerms(instance.getGoTerms())
 				.representativeMember(instance.getRepresentativeMember())
-				.unirefMembers(instance.getUniRefMembers());
+				.members(instance.getMembers());
 	}
 	public UniRefEntryBuilder id(UniRefEntryId id) {
 		this.id = id;
@@ -76,8 +76,8 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 		this.updated = updated;
 		return this;
 	}
-	public UniRefEntryBuilder database(UniRefDatabase database) {
-		this.database = database;
+	public UniRefEntryBuilder entryType(UniRefType entryType) {
+		this.entryType = entryType;
 		return this;
 	}
 	public UniRefEntryBuilder commonTaxonId(long commonTaxonId) {
@@ -103,12 +103,12 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 		return this;
 	}
 	
-	public UniRefEntryBuilder unirefMembers(List<UniRefMember> unirefMembers) {
-		this.unirefMembers =  Utils.nonNullList(unirefMembers);
+	public UniRefEntryBuilder members(List<UniRefMember> unirefMembers) {
+		this.members =  Utils.nonNullList(unirefMembers);
 		return this;
 	}
-	public UniRefEntryBuilder addUnirefMember(UniRefMember unirefMember) {
-		Utils.nonNullAdd(unirefMember, this.unirefMembers);
+	public UniRefEntryBuilder addMember(UniRefMember unirefMember) {
+		Utils.nonNullAdd(unirefMember, this.members);
 		return this;
 	}
 }

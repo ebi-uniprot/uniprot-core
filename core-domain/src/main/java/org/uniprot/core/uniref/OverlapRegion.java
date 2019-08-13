@@ -12,6 +12,5 @@ import java.io.Serializable;
 public interface OverlapRegion extends Serializable {
 	int getStart();
 	int getEnd();
-	String getName();
 }
 

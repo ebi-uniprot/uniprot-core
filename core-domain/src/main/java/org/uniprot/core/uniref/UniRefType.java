@@ -9,7 +9,7 @@ import org.uniprot.core.util.EnumDisplay;
  *
 */
 
-public enum UniRefDatabaseType implements EnumDisplay<UniRefDatabaseType>{
+public enum UniRefType implements EnumDisplay<UniRefType>{
 	UniRef100,
 	UniRef90,
 	UniRef50;

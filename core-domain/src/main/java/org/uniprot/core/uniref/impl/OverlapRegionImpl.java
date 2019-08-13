@@ -17,7 +17,7 @@ public class OverlapRegionImpl implements OverlapRegion {
 	 * 
 	 */
 	private static final long serialVersionUID = 6494342913253051799L;
-	private String name;
+
 	private int start;
 	private int end;
 
@@ -26,8 +26,7 @@ public class OverlapRegionImpl implements OverlapRegion {
 		
 	}
 
-	public OverlapRegionImpl (String name, int start, int end) {
-		this.name = name;
+	public OverlapRegionImpl ( int start, int end) {
 		this.start =start;
 		this.end =end;
 				
@@ -43,12 +42,8 @@ public class OverlapRegionImpl implements OverlapRegion {
 	}
 
 	@Override
-	public String getName() {
-		return name;
-	}
-	@Override
 	public int hashCode() {
-		return Objects.hash(name, start, end);
+		return Objects.hash( start, end);
 	}
 
 	@Override
@@ -60,8 +55,8 @@ public class OverlapRegionImpl implements OverlapRegion {
 		if (getClass() != obj.getClass())
 			return false;
 		OverlapRegionImpl other = (OverlapRegionImpl) obj;
-		return Objects.equals(name, other.name)
-				&& (start == other.start)
+		return
+				 (start == other.start)
 				&&  (end == other.end)
 				;
 
