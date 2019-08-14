@@ -79,7 +79,6 @@ public class UniRefEntryJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniRefEntry.class, UniRefEntryImpl.class);
   
         mod.addAbstractTypeMapping(GoTerm.class, GoTermImpl.class);
-        mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
         mod.addAbstractTypeMapping(OverlapRegion.class, OverlapRegionImpl.class);
         
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);

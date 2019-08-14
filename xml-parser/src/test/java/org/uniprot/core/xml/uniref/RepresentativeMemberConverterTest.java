@@ -34,9 +34,10 @@ class RepresentativeMemberConverterTest {
 		String upi = "UPI0000083A08";
 		
 		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+		
 		RepresentativeMember member = new RepresentativeMemberBuilder()
-				.memberIdType(type).memberId(memberId).taxonomy(taxonomy)
+				.memberIdType(type).memberId(memberId).organismName("Homo sapiens")
+				.organismTaxId(9606)
 				.sequenceLength(length)
 				.proteinName(pName)
 				.uniparcId(new UniParcIdBuilder(upi).build())

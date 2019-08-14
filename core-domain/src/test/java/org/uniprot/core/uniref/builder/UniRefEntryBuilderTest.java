@@ -1,6 +1,6 @@
 package org.uniprot.core.uniref.builder;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -9,16 +9,14 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.GoTermType;
 import org.uniprot.core.uniref.RepresentativeMember;
-import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
+import org.uniprot.core.uniref.UniRefType;
 
 /**
  *
@@ -169,12 +167,12 @@ class UniRefEntryBuilderTest {
 	void testUnirefMembers() {
 		String memberId = "P12345";
 		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+		
 		UniRefMember member = new UniRefMemberBuilder()
-				.memberIdType(type).memberId(memberId).taxonomy(taxonomy).build();
+				.memberIdType(type).memberId(memberId).organismName("Homo sapiens").organismTaxId(9606).build();
 		
 		UniRefMember member2 = new UniRefMemberBuilder()
-				.memberIdType(UniRefMemberIdType.UNIPARC).memberId("UPI0000321").taxonomy(taxonomy).build();
+				.memberIdType(UniRefMemberIdType.UNIPARC).memberId("UPI0000321").organismName("Homo sapiens").organismTaxId(9606).build();
 		
 		List<UniRefMember> members = Arrays.asList(member, member2);
 		UniRefEntry entry = new UniRefEntryBuilder()
@@ -187,9 +185,9 @@ class UniRefEntryBuilderTest {
 	void testAddUnirefMember() {
 		String memberId = "P12345";
 		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+		
 		UniRefMember member = new UniRefMemberBuilder()
-				.memberIdType(type).memberId(memberId).taxonomy(taxonomy).build();
+				.memberIdType(type).memberId(memberId).organismName("Homo sapiens").organismTaxId(9606).build();
 		
 		UniRefEntry entry = new UniRefEntryBuilder()
 				.addMember(member)

@@ -3,7 +3,6 @@ package org.uniprot.core.uniref.builder;
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
@@ -20,7 +19,8 @@ public abstract class AbstractUniRefMemberBuilder<B extends AbstractUniRefMember
 implements Builder<B, T> {
 	protected UniRefMemberIdType memberIdType;
 	protected String memberId;
-	protected Taxonomy taxonomy;
+	protected String organismName;
+	protected long organismTaxId;
 	protected int sequenceLength;
 	protected String proteinName;
 	protected UniProtAccession accession;
@@ -42,8 +42,12 @@ implements Builder<B, T> {
 		return getThis();
 	}
 	
-	public B taxonomy(Taxonomy taxonomy) {
-		this.taxonomy = taxonomy;
+	public B organismName(String organismName) {
+		this.organismName = organismName;
+		return getThis();
+	}
+	public B organismTaxId(long organismTaxId) {
+		this.organismTaxId = organismTaxId;
 		return getThis();
 	}
 	
@@ -96,7 +100,8 @@ implements Builder<B, T> {
 	protected void init(T instance) {
         this.memberIdType(instance.getMemberIdType())
                 .memberId(instance.getMemberId())
-                .taxonomy(instance.getTaxonomy())
+                .organismName(instance.getOrganismName())
+                .organismTaxId(instance.getOrganismTaxId())
                 .sequenceLength(instance.getSequenceLength())
                 .proteinName(instance.getProteinName())
                 .accession(instance.getUniProtAccession())

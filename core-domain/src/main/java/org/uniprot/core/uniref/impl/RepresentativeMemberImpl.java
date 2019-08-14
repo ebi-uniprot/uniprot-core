@@ -31,12 +31,12 @@ public class RepresentativeMemberImpl extends UniRefMemberImpl implements Repres
 	}
 	
 	public RepresentativeMemberImpl(UniRefMemberIdType memberIdType, String memberId, 
-			Taxonomy taxonomy, int sequenceLength,
+			String organismName,long organismTaxId, int sequenceLength,
 			String proteinName, UniProtAccession accession, UniRefEntryId uniref50Id, UniRefEntryId uniref90Id,
-			UniRefEntryId uniref100Id, UniParcId uniparcId, OverlapRegion overlapRegion, boolean seed, 
+			UniRefEntryId uniref100Id, UniParcId uniparcId, OverlapRegion overlapRegion, Boolean seed, 
 			Sequence sequence) {
 		super( memberIdType,  memberId, 
-			 taxonomy,  sequenceLength,
+				organismName, organismTaxId,   sequenceLength,
 			 proteinName,  accession,  uniref50Id,  uniref90Id,
 			 uniref100Id,  uniparcId,  overlapRegion,  seed);
 		

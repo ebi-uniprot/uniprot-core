@@ -50,13 +50,12 @@ public abstract class AbstractMemberConverter<T extends UniRefMember> implements
 		memberType.setDbReference(xref);
 		xref.setType(uniObj.getMemberIdType().toDisplayName());
 		xref.setId(uniObj.getMemberId());
-		if(uniObj.getTaxonomy() !=null) {
-			xref.getProperty().add(createProperty(PROPERTY_NCBI_TAXONOMY, String.valueOf(uniObj.getTaxonomy().getTaxonId())));
-			String organismName = getOrganismName(uniObj.getTaxonomy());
-			if(!Strings.isNullOrEmpty(organismName)) {
-				xref.getProperty().add(createProperty(PROPERTY_SOURCE_ORGANISM, organismName));
-			}
+		
+		if(!Strings.isNullOrEmpty(uniObj.getOrganismName())) {
+			xref.getProperty().add(createProperty(PROPERTY_SOURCE_ORGANISM, uniObj.getOrganismName()));
 		}
+		xref.getProperty().add(createProperty(PROPERTY_NCBI_TAXONOMY, String.valueOf(uniObj.getOrganismTaxId())));
+		
 		if(!Strings.isNullOrEmpty(uniObj.getProteinName())) {
 			xref.getProperty().add(createProperty(PROPERTY_PROTEIN_NAME, uniObj.getProteinName()));
 		}
@@ -82,28 +81,12 @@ public abstract class AbstractMemberConverter<T extends UniRefMember> implements
 			  String overlap = uniObj.getOverlapRegion().getStart() + "-" + uniObj.getOverlapRegion().getEnd();
 			  xref.getProperty().add(createProperty(PROPERTY_SOURCE_OVERLAP, overlap));
 		}
-		if(uniObj.isSeed()) {
+		if(uniObj.isSeed()!=null) {
 			xref.getProperty().add(createProperty(PROPERTY_IS_SEED, String.valueOf(uniObj.isSeed())));
 		}
 	}
 	
-	private String getOrganismName(Taxonomy tax) {
-		 StringBuilder sb = new StringBuilder();
-	        sb.append(tax.getScientificName());
-	        String commonName = tax.getCommonName();
-	        if (commonName != null && !commonName.isEmpty()) {
-	            sb.append(" (")
-	                    .append(commonName).append(")");
-	        }
-	        List<String> synonyms = tax.getSynonyms();
-	        if (!synonyms.isEmpty()) {
-	            sb.append(" (")
-	                    .append(String.join(", ", synonyms))
-	                    .append(")");
-	        }
-	        return sb.toString();
-	        
-	}
+
 	private PropertyType createProperty(String type, String value) {
 		PropertyType property = jaxbFactory.createPropertyType();
 		property.setType(type);
@@ -114,17 +97,17 @@ public abstract class AbstractMemberConverter<T extends UniRefMember> implements
 		builder.memberIdType(UniRefMemberIdType.typeOf(xmlObj.getDbReference().getType()))
 		.memberId(xmlObj.getDbReference().getId());
 		
-		String organismName="";
-		Long taxId =null ;
+	//	String organismName="";
+	//	Long taxId =null ;
 		
 		List<PropertyType> properties = xmlObj.getDbReference().getProperty();
 		for (PropertyType property : properties) {
 			if (property.getType().equals(PROPERTY_NCBI_TAXONOMY)) {
-				taxId = Long.parseLong(property.getValue());
+				builder.organismTaxId( Long.parseLong(property.getValue()));
 			} else if (property.getType().equals(PROPERTY_PROTEIN_NAME)) {
 				builder.proteinName(property.getValue());
 			} else if (property.getType().equals(PROPERTY_SOURCE_ORGANISM)) {
-				organismName= property.getValue();
+				builder.organismName(property.getValue());
 			} else if (property.getType().equals(PROPERTY_SOURCE_UNIPARC)) {
 				builder.uniparcId(new UniParcIdBuilder(property.getValue()).build());
 			} else if (property.getType().equals(PROPERTY_SOURCE_LENGTH)) {
@@ -153,14 +136,10 @@ public abstract class AbstractMemberConverter<T extends UniRefMember> implements
 				System.out.println("property.getType() = " + property.getType());
 			}
 		}
-		if(taxId !=null)
-			builder.taxonomy(convertFromXml(taxId, organismName));
+		
 	}
 
-	private Taxonomy convertFromXml(long taxId, String fullName) {
-		OrganismName name =OrganismNameLineParser.createFromOrganismLine(fullName);
-		return new TaxonomyBuilder().from(name).taxonId(taxId).build();				
-	}
+	
 		
 }
 

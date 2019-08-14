@@ -30,9 +30,9 @@ class MemberConverterTest {
 		String upi = "UPI0000083A08";
 		
 		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
 		UniRefMember member = new UniRefMemberBuilder()
-				.memberIdType(type).memberId(memberId).taxonomy(taxonomy)
+				.memberIdType(type).memberId(memberId).organismName("Homo sapiens")
+				.organismTaxId(9606l)
 				.sequenceLength(length)
 				.proteinName(pName)
 				.uniparcId(new UniParcIdBuilder(upi).build())

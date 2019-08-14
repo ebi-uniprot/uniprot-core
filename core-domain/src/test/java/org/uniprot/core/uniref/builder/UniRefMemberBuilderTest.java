@@ -27,9 +27,9 @@ class UniRefMemberBuilderTest {
 	void testFrom() {
 		String memberId = "P12345";
 		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+	
 		UniRefMember member = new UniRefMemberBuilder()
-				.memberIdType(type).memberId(memberId).taxonomy(taxonomy).build();
+				.memberIdType(type).memberId(memberId).organismName("Homo sapiens").organismTaxId(9606).build();
 		
 		UniRefMember member2 = new UniRefMemberBuilder().from(member).build();
 		assertEquals(member, member2);
@@ -56,10 +56,11 @@ class UniRefMemberBuilderTest {
 
 	@Test
 	void testTaxonomy() {
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+		
 		UniRefMember member = new UniRefMemberBuilder()
-				.taxonomy(taxonomy).build();
-		assertEquals(taxonomy, member.getTaxonomy());
+				.organismName("Homo sapiens").organismTaxId(9606).build();
+		assertEquals("Homo sapiens", member.getOrganismName());
+		assertEquals(9606l, member.getOrganismTaxId());
 	}
 
 	@Test
@@ -137,7 +138,7 @@ class UniRefMemberBuilderTest {
 	void testIsSeed() {
 		UniRefMember member = new UniRefMemberBuilder()
 				.build();
-		assertEquals(false, member.isSeed());
+		assertNull(member.isSeed());
 		 member = new UniRefMemberBuilder()
 				 .isSeed(true)
 					.build();

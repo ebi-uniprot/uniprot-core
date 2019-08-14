@@ -4,7 +4,6 @@ import java.util.Objects;
 
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
@@ -24,7 +23,8 @@ public class UniRefMemberImpl implements UniRefMember {
 	private static final long serialVersionUID = -1490306000699324397L;
 	private UniRefMemberIdType memberIdType;
 	private String memberId;
-	private Taxonomy taxonomy;
+	private String organismName;
+	private long organismTaxId;
 	private int sequenceLength;
 	private String proteinName;
 	private UniProtAccession accession;
@@ -40,12 +40,13 @@ public class UniRefMemberImpl implements UniRefMember {
 	}
 
 	public UniRefMemberImpl(UniRefMemberIdType memberIdType, String memberId, 
-			Taxonomy taxonomy, int sequenceLength,
+			String organismName, long organismTaxId, int sequenceLength,
 			String proteinName, UniProtAccession accession, UniRefEntryId uniref50Id, UniRefEntryId uniref90Id,
 			UniRefEntryId uniref100Id, UniParcId uniparcId, OverlapRegion overlapRegion, Boolean seed) {
 		this.memberIdType =memberIdType;
 		this.memberId =memberId;
-		this.taxonomy =taxonomy;
+		this.organismName =organismName;
+		this.organismTaxId =organismTaxId;
 		this.sequenceLength = sequenceLength;
 		this.proteinName =proteinName;
 		this.accession = accession;
@@ -66,12 +67,16 @@ public class UniRefMemberImpl implements UniRefMember {
 	public String getMemberId() {
 		return memberId;
 	}
-
 	@Override
-	public Taxonomy getTaxonomy() {
-		return taxonomy;
+	public String getOrganismName() {
+		return organismName;
 	}
 
+	@Override
+	public long getOrganismTaxId() {
+		return organismTaxId;
+	}
+	
 	@Override
 	public int getSequenceLength() {
 		return sequenceLength;
@@ -119,7 +124,7 @@ public class UniRefMemberImpl implements UniRefMember {
 	@Override
 	public int hashCode() {
 		return Objects.hash( memberIdType,  memberId, 
-				 taxonomy,  sequenceLength,
+				 organismName, organismTaxId,  sequenceLength,
 				 proteinName,  accession, uniref50Id ,  uniref90Id,
 				 uniref100Id,  uniparcId,  overlapRegion,  seed);
 	}
@@ -135,7 +140,8 @@ public class UniRefMemberImpl implements UniRefMember {
 		UniRefMemberImpl other = (UniRefMemberImpl) obj;
 		return Objects.equals(memberIdType, other.memberIdType)
 				&& Objects.equals(memberId, other.memberId)
-				&& Objects.equals(taxonomy, other.taxonomy)
+				&& Objects.equals(organismName, other.organismName)
+				&& (organismTaxId==other.organismTaxId)
 				&& (sequenceLength==other.sequenceLength)
 				&& Objects.equals(proteinName, other.proteinName)
 				&& Objects.equals(accession, other.accession)
@@ -144,8 +150,10 @@ public class UniRefMemberImpl implements UniRefMember {
 				&& Objects.equals(uniref100Id, other.uniref100Id)
 				&& Objects.equals(uniparcId, other.uniparcId)
 				&& Objects.equals(overlapRegion, other.overlapRegion)
-				&& (this.seed == other.seed)
+				&&Objects.equals(seed, other.seed)
 				;
 
 	}
+
+
 }

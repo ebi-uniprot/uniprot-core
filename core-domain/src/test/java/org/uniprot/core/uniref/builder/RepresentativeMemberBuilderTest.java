@@ -1,5 +1,6 @@
 package org.uniprot.core.uniref.builder;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -44,10 +45,10 @@ class RepresentativeMemberBuilderTest {
 		Sequence sequence = new SequenceBuilder(seq).build();
 		String memberId = "P12345";
 		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+
 		RepresentativeMember member = new RepresentativeMemberBuilder()
 				.memberIdType(type).memberId(memberId)
-				.taxonomy(taxonomy)
+				.organismName("Homo sapiens").organismTaxId(9606)
 				.sequence(sequence)
 				.build();
 		RepresentativeMember member2 = new RepresentativeMemberBuilder()
@@ -76,10 +77,11 @@ class RepresentativeMemberBuilderTest {
 
 	@Test
 	void testTaxonomy() {
-		Taxonomy taxonomy = TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+		
 		RepresentativeMember member = new RepresentativeMemberBuilder()
-				.taxonomy(taxonomy).build();
-		assertEquals(taxonomy, member.getTaxonomy());
+				.organismName("Homo sapiens").organismTaxId(9606).build();
+		assertEquals("Homo sapiens", member.getOrganismName());
+		assertEquals(9606l, member.getOrganismTaxId());
 	}
 
 	@Test
@@ -158,7 +160,7 @@ class RepresentativeMemberBuilderTest {
 	void testIsSeed() {
 		RepresentativeMember member = new RepresentativeMemberBuilder()
 				.build();
-		assertEquals(false, member.isSeed());
+		assertNull( member.isSeed());
 		 member = new RepresentativeMemberBuilder()
 				 .isSeed(true)
 					.build();

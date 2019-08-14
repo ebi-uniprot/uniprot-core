@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 
 /**
  *
@@ -16,7 +15,8 @@ import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 public interface UniRefMember extends Serializable {
 	UniRefMemberIdType getMemberIdType();
 	String getMemberId();
-	Taxonomy getTaxonomy();
+	String getOrganismName();
+	long getOrganismTaxId();
 	int getSequenceLength();
 	String getProteinName();
 	UniProtAccession getUniProtAccession();

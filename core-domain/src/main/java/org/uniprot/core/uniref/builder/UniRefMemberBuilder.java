@@ -15,7 +15,7 @@ public class UniRefMemberBuilder extends AbstractUniRefMemberBuilder<UniRefMembe
 	@Override
 	public UniRefMember build() {
 		return new UniRefMemberImpl( memberIdType,  memberId, 
-				 taxonomy,  sequenceLength,
+				 organismName, organismTaxId,  sequenceLength,
 				 proteinName,  accession,  uniref50Id,  uniref90Id,
 				 uniref100Id, uniparcId ,  overlapRegion,  seed) ;
 	}

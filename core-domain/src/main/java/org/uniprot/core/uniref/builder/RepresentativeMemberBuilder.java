@@ -22,7 +22,7 @@ public class RepresentativeMemberBuilder extends AbstractUniRefMemberBuilder<Rep
 	@Override
 	public RepresentativeMember build() {
 		return new RepresentativeMemberImpl( memberIdType,  memberId, 
-				 taxonomy,  sequenceLength,
+				organismName, organismTaxId,  sequenceLength,
 				 proteinName,  accession,  uniref50Id,  uniref90Id,
 				 uniref100Id, uniparcId ,  overlapRegion,  seed, sequence) ;
 	}
