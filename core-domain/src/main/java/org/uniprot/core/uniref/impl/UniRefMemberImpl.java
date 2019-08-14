@@ -33,7 +33,7 @@ public class UniRefMemberImpl implements UniRefMember {
 	private UniRefEntryId uniref100Id;
 	private UniParcId uniparcId;
 	private OverlapRegion overlapRegion;
-	private boolean seed;
+	private Boolean seed;
 
 	protected UniRefMemberImpl() {
 
@@ -42,7 +42,7 @@ public class UniRefMemberImpl implements UniRefMember {
 	public UniRefMemberImpl(UniRefMemberIdType memberIdType, String memberId, 
 			Taxonomy taxonomy, int sequenceLength,
 			String proteinName, UniProtAccession accession, UniRefEntryId uniref50Id, UniRefEntryId uniref90Id,
-			UniRefEntryId uniref100Id, UniParcId uniparcId, OverlapRegion overlapRegion, boolean seed) {
+			UniRefEntryId uniref100Id, UniParcId uniparcId, OverlapRegion overlapRegion, Boolean seed) {
 		this.memberIdType =memberIdType;
 		this.memberId =memberId;
 		this.taxonomy =taxonomy;
@@ -113,7 +113,7 @@ public class UniRefMemberImpl implements UniRefMember {
 	}
 
 	@Override
-	public boolean isSeed() {
+	public Boolean isSeed() {
 		return seed;
 	}
 	@Override

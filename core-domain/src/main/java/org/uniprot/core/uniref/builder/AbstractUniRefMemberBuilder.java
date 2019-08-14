@@ -29,7 +29,7 @@ implements Builder<B, T> {
 	protected UniRefEntryId uniref100Id;
 	protected UniParcId uniparcId;
 	protected OverlapRegion overlapRegion;
-	protected boolean seed=false;
+	protected Boolean seed;
 	
 	
 	public B memberIdType(UniRefMemberIdType memberIdType) {
@@ -88,7 +88,7 @@ implements Builder<B, T> {
 		return getThis();
 	}
 	
-	public B isSeed(boolean seed) {
+	public B isSeed(Boolean seed) {
 		this.seed = seed;
 		return getThis();
 	}

@@ -25,7 +25,7 @@ public interface UniRefMember extends Serializable {
 	UniRefEntryId getUniRef100Id();
 	UniParcId getUniParcId();
 	OverlapRegion getOverlapRegion();
-	boolean isSeed();
+	Boolean isSeed();
 	
 	
 }

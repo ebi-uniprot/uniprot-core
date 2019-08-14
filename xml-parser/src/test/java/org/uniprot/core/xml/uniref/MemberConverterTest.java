@@ -24,7 +24,7 @@ class MemberConverterTest {
 
 	@Test
 	void testToXml() {
-		String memberId = "P12345";
+		String memberId = "P12345_HUMAN";
 		int length=312;
 		String pName ="some protein name"; 
 		String upi = "UPI0000083A08";
@@ -36,7 +36,7 @@ class MemberConverterTest {
 				.sequenceLength(length)
 				.proteinName(pName)
 				.uniparcId(new UniParcIdBuilder(upi).build())
-				.accession(new UniProtAccessionBuilder(memberId).build())
+				.accession(new UniProtAccessionBuilder("P12345").build())
 				.uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
 				.uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
 				.uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
