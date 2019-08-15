@@ -10,7 +10,7 @@ import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.xml.XmlChainIterator;
-import org.uniprot.core.xml.jaxb.uniref.EntryType;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
 
 /**
  *
@@ -30,12 +30,12 @@ class UniRefEntryConverterTest {
 		
 		List<InputStream> iss = Arrays.asList(is);
 		
-		 XmlChainIterator<EntryType, EntryType>  chainingIterators =
+		 XmlChainIterator<Entry, Entry>  chainingIterators =
 	        		new XmlChainIterator<>(iss.iterator(),
-	        				EntryType.class, UNIREF_ROOT_ELEMENT, Function.identity() );
+	        				Entry.class, UNIREF_ROOT_ELEMENT, Function.identity() );
 		 int count =0;
 		 while(chainingIterators.hasNext()) {
-			 EntryType entry =chainingIterators.next();
+			 Entry entry =chainingIterators.next();
 			 rountripTest(entry);
 			 count++;
 			
@@ -43,10 +43,10 @@ class UniRefEntryConverterTest {
 		 is.close();
 		assertEquals(2, count);
 	}
-	private void rountripTest(EntryType xmlEntry) {
+	private void rountripTest(Entry xmlEntry) {
 		UniRefEntryConverter converter = new UniRefEntryConverter();
 		UniRefEntry entry = converter.fromXml(xmlEntry);
-		EntryType converted = converter.toXml(entry);
+		Entry converted = converter.toXml(entry);
 		UniRefEntry converted2 = converter.fromXml(converted);
 		assertEquals(entry, converted2);
 		

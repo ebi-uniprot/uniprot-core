@@ -9,7 +9,7 @@ import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.builder.GoTermBuilder;
 import org.uniprot.core.uniref.builder.UniRefEntryBuilder;
 import org.uniprot.core.xml.Converter;
-import org.uniprot.core.xml.jaxb.uniref.EntryType;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
 import org.uniprot.core.xml.jaxb.uniref.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniref.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
@@ -23,7 +23,7 @@ import com.google.common.base.Strings;
  *
  */
 
-public class UniRefEntryConverter implements Converter< EntryType, UniRefEntry> {
+public class UniRefEntryConverter implements Converter< Entry, UniRefEntry> {
 	public static final String PROPERTY_MEMBER_COUNT = "member count";
 	public static final String PROPERTY_COMMON_TAXON = "common taxon";
 	public static final String PROPERTY_COMMON_TAXON_ID = "common taxon ID";
@@ -47,7 +47,7 @@ public class UniRefEntryConverter implements Converter< EntryType, UniRefEntry> 
 	}
 
 	@Override
-	public UniRefEntry fromXml(EntryType xmlObj) {
+	public UniRefEntry fromXml(Entry xmlObj) {
 		
 		UniRefEntryBuilder builder = new UniRefEntryBuilder();
 		builder.id(xmlObj.getId())
@@ -72,7 +72,7 @@ public class UniRefEntryConverter implements Converter< EntryType, UniRefEntry> 
 		String val = id.substring(0, id.indexOf("_"));
 		return UniRefType.valueOf(val);
 	}
-	private void updatePropertFromXml(UniRefEntryBuilder builder, EntryType jaxbEntry) {
+	private void updatePropertFromXml(UniRefEntryBuilder builder, Entry jaxbEntry) {
 		for (PropertyType property :jaxbEntry.getProperty()) {
 			if (property.getType().equals(PROPERTY_COMMON_TAXON)) {
 				builder.commonTaxonName(property.getValue());
@@ -95,8 +95,8 @@ public class UniRefEntryConverter implements Converter< EntryType, UniRefEntry> 
 		return new GoTermBuilder().type(type).id(id).build();
 	}
 	@Override
-	public EntryType toXml(UniRefEntry uniObj) {
-		EntryType jaxbEntry = jaxbFactory.createEntryType();
+	public Entry toXml(UniRefEntry uniObj) {
+		Entry jaxbEntry = jaxbFactory.createEntry();
 		jaxbEntry.setId(uniObj.getId().getValue());
 		jaxbEntry.setName(uniObj.getName());
 		
@@ -106,7 +106,7 @@ public class UniRefEntryConverter implements Converter< EntryType, UniRefEntry> 
 		updatePropertyToXml(jaxbEntry, uniObj);
 		return jaxbEntry;
 	}
-	private void updatePropertyToXml(EntryType jaxbEntry, UniRefEntry uniObj) {
+	private void updatePropertyToXml(Entry jaxbEntry, UniRefEntry uniObj) {
 		int count = uniObj.getMembers().size() +1;
 		jaxbEntry.getProperty().add(createProperty(PROPERTY_MEMBER_COUNT, String.valueOf(count)));
 		if(!Strings.isNullOrEmpty(uniObj.getCommonTaxonName())) {

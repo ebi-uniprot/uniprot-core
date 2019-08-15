@@ -365,7 +365,12 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
     }
 
     private static class UniProtFFToXmlBuildException extends RuntimeException {
-        UniProtFFToXmlBuildException(String message) {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = -2716084900878573322L;
+
+		UniProtFFToXmlBuildException(String message) {
             super(message);
         }
 
