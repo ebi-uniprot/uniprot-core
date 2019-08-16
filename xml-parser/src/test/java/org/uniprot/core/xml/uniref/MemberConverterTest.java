@@ -29,7 +29,7 @@ class MemberConverterTest {
 		String pName ="some protein name"; 
 		String upi = "UPI0000083A08";
 		
-		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
+		UniRefMemberIdType type =UniRefMemberIdType.UNIPROTKB;
 		UniRefMember member = new UniRefMemberBuilder()
 				.memberIdType(type).memberId(memberId).organismName("Homo sapiens")
 				.organismTaxId(9606l)

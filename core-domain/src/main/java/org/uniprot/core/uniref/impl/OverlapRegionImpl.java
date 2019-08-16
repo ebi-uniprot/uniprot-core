@@ -12,10 +12,6 @@ import org.uniprot.core.uniref.OverlapRegion;
 */
 
 public class OverlapRegionImpl implements OverlapRegion {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 6494342913253051799L;
 
 	private int start;

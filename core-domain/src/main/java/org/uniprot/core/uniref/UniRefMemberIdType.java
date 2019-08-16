@@ -10,7 +10,7 @@ import org.uniprot.core.util.EnumDisplay;
 */
 
 public enum UniRefMemberIdType implements EnumDisplay<UniRefMemberIdType> {
-	UNIPROT("UniProtKB ID"),
+	UNIPROTKB("UniProtKB ID"),
 	UNIPARC("UniParc ID");
 	private String displayName;
 	UniRefMemberIdType(String displayName){

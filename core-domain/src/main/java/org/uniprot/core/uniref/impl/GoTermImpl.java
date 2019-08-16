@@ -13,10 +13,6 @@ import org.uniprot.core.uniref.GoTermType;
 */
 
 public class GoTermImpl implements GoTerm {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -8965126511980015976L;
 	
 	private GoTermType type;

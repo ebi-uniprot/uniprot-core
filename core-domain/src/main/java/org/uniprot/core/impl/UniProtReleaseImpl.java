@@ -12,9 +12,6 @@ import org.uniprot.core.UniProtRelease;
 */
 
 public class UniProtReleaseImpl implements UniProtRelease {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7846089090404292951L;
 	private String currentVersion;
 	private LocalDate currentReleaseDate;

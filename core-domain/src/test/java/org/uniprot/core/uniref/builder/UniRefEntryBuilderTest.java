@@ -166,7 +166,7 @@ class UniRefEntryBuilderTest {
 	@Test
 	void testUnirefMembers() {
 		String memberId = "P12345";
-		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
+		UniRefMemberIdType type =UniRefMemberIdType.UNIPROTKB;
 		
 		UniRefMember member = new UniRefMemberBuilder()
 				.memberIdType(type).memberId(memberId).organismName("Homo sapiens").organismTaxId(9606).build();
@@ -184,7 +184,7 @@ class UniRefEntryBuilderTest {
 	@Test
 	void testAddUnirefMember() {
 		String memberId = "P12345";
-		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
+		UniRefMemberIdType type =UniRefMemberIdType.UNIPROTKB;
 		
 		UniRefMember member = new UniRefMemberBuilder()
 				.memberIdType(type).memberId(memberId).organismName("Homo sapiens").organismTaxId(9606).build();

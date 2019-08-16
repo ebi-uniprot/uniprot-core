@@ -44,7 +44,7 @@ class RepresentativeMemberBuilderTest {
 		String seq = "MVSWGRFICLVVVTMATLSLARPSFSLVED";
 		Sequence sequence = new SequenceBuilder(seq).build();
 		String memberId = "P12345";
-		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
+		UniRefMemberIdType type =UniRefMemberIdType.UNIPROTKB;
 
 		RepresentativeMember member = new RepresentativeMemberBuilder()
 				.memberIdType(type).memberId(memberId)
@@ -68,7 +68,7 @@ class RepresentativeMemberBuilderTest {
 	@Test
 	void testMemberId() {
 		String memberId = "P12345";
-		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
+		UniRefMemberIdType type =UniRefMemberIdType.UNIPROTKB;
 		RepresentativeMember member = new RepresentativeMemberBuilder()
 				.memberIdType(type).memberId(memberId).build();
 		assertEquals(type, member.getMemberIdType());
