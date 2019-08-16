@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>uk.ac.ebi.uniprot</groupId>
-        <artifactId>ujdk-parent</artifactId>
-        <version>1.0</version>
-        <relativePath>../uniprot-ujdk-parent</relativePath>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
-	<groupId>org.uniprot</groupId>
+
+    <groupId>org.uniprot</groupId>
     <artifactId>core-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
-
-    <name>UniProt Core Parent POM</name>
+    <name>UniProt Core Aggregator</name>
 
     <properties>
         <mockito-version>1.9.5</mockito-version>
@@ -22,26 +15,21 @@
         <slf4j.version>1.7.20</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <junit.version>4.12</junit.version>
+        <junit-jupiter.version>5.3.2</junit-jupiter.version>
         <hamcrest.version>1.3</hamcrest.version>
-
+        <guava.version>28.0-jre</guava.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
+        <http-uniprot-private-url>http://wwwdev.ebi.ac.uk/uniprot/artifactory</http-uniprot-private-url>
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencyManagement>
-
         <dependencies>
-            <!-- Testing -->
             <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-core</artifactId>
-                <version>${mockito-version}</version>
-                   <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-api-mockito</artifactId>
-                <version>${powermock-version}</version>
-                   <scope>test</scope>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>28.0-jre</version>
             </dependency>
 
             <!-- Logging -->
@@ -63,13 +51,29 @@
                 <version>${logback.version}</version>
             </dependency>
 
+            <!-- Testing -->
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito-version}</version>
+                <scope>test</scope>
+            </dependency>
+
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
-            
+
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit-jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest-all</artifactId>
@@ -84,12 +88,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.8</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <!-- Sets up jacaco for unit test coverage analysis (jacoco.agent.ut.arg) -->
                     <execution>
@@ -122,17 +130,40 @@
         </plugins>
     </build>
 
-
-
-	<modules>
-<!--  		<module>core-util</module>  -->
-		<module>core-common</module>
-		<module>core-domain</module>
-		<module>ff-parser</module>
-		<module>core-parser</module>
+    <modules>
+        <module>core-common</module>
+        <module>core-domain</module>
+        <module>ff-parser</module>
+        <module>core-parser</module>
         <module>xml-parser</module>
         <module>controlled-vocabulary</module>
         <module>json-parser</module>
         <module>tools-entry-scorer</module>
     </modules>
+
+    <profiles>
+        <!-- active when running on jenkins -->
+        <profile>
+            <id>jenkins</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <distributionManagement>
+                <repository>
+                    <id>uniprot-artifactory-deploy-release</id>
+                    <name>Deploy Uniprot Maven Release</name>
+                    <url>${http-uniprot-private-url}/release</url>
+                </repository>
+                <snapshotRepository>
+                    <uniqueVersion>false</uniqueVersion>
+                    <id>uniprot-artifactory-deploy-snapshot</id>
+                    <name>Deploy Uniprot Maven Snapshot</name>
+                    <url>${http-uniprot-private-url}/snapshot</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
+
 </project>

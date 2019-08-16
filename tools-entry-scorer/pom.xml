@@ -11,6 +11,7 @@
 
     <artifactId>tools-entry-scorer</artifactId>
     <version>0.1-SNAPSHOT</version>
+    
     <dependencies>
         <dependency>
             <groupId>org.uniprot</groupId>
