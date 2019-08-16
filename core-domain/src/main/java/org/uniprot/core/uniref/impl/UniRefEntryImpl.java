@@ -21,9 +21,7 @@ import org.uniprot.core.util.Utils;
 */
 
 public class UniRefEntryImpl implements UniRefEntry {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = -3900697447474386293L;
 	private UniRefEntryId id;
 	private String name;

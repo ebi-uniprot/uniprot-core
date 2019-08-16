@@ -33,7 +33,7 @@ class RepresentativeMemberConverterTest {
 		String pName ="some protein name"; 
 		String upi = "UPI0000083A08";
 		
-		UniRefMemberIdType type =UniRefMemberIdType.UNIPROT;
+		UniRefMemberIdType type =UniRefMemberIdType.UNIPROTKB;
 		
 		RepresentativeMember member = new RepresentativeMemberBuilder()
 				.memberIdType(type).memberId(memberId).organismName("Homo sapiens")

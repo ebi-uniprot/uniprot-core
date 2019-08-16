@@ -48,40 +48,46 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="entryType">
-		<xs:annotation>
-			<xs:documentation>UniRef50/90/100 entry</xs:documentation>
-		</xs:annotation>
-		<xs:sequence>
-			<xs:element name="name" type="xs:string"/>
-			<xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="representativeMember" type="memberType"/>
-			<xs:element name="member" type="memberType" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:sequence>
-		<xs:attribute name="id" type="xs:ID" use="required">
-			<xs:annotation>
-				<xs:documentation>The entry identifier.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-		<xs:attribute name="updated" type="xs:date" use="required">
-			<xs:annotation>
-				<xs:documentation>The update date for the entry.</xs:documentation>
-			</xs:annotation>
-		</xs:attribute>
-	</xs:complexType>
-	<xs:element name="UniRef100">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="entry" type="entryType" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
-			<xs:attribute name="releaseDate" type="xs:date" use="required"/>
-			<xs:attribute name="version" type="xs:string" use="required"/>
-		</xs:complexType>
-	</xs:element>
+	
+	 <xs:element name="entry">
+        <xs:complexType>
+            <xs:annotation>
+                <xs:documentation>UniRef50/90/100 entry</xs:documentation>
+            </xs:annotation>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="property" type="propertyType" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="representativeMember" type="memberType"/>
+                <xs:element name="member" type="memberType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required">
+                <xs:annotation>
+                    <xs:documentation>The entry identifier.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="updated" type="xs:date" use="required">
+                <xs:annotation>
+                    <xs:documentation>The update date for the entry.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+
+    </xs:element>
+
+    <xs:element name="UniRef100">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="entry" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="releaseDate" type="xs:date" use="required"/>
+            <xs:attribute name="version" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+	
 	<xs:element name="UniRef90">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="entry" type="entryType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="entry" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="releaseDate" type="xs:date" use="required"/>
 			<xs:attribute name="version" type="xs:string" use="required"/>
@@ -90,7 +96,7 @@
 	<xs:element name="UniRef50">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="entry" type="entryType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="entry" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="releaseDate" type="xs:date" use="required"/>
 			<xs:attribute name="version" type="xs:string" use="required"/>
@@ -99,7 +105,7 @@
 	<xs:element name="UniRef">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="entry" type="entryType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="entry" minOccurs="0" maxOccurs="unbounded"/>
 			</xs:sequence>
 			<xs:attribute name="releaseDate" type="xs:date" use="optional"/>
 			<xs:attribute name="version" type="xs:string" use="optional"/>

@@ -3,6 +3,7 @@ package org.uniprot.core.xml;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -10,7 +11,8 @@ import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.xml.XmlChainIterator;
 import org.uniprot.core.xml.jaxb.proteome.Proteome;
-import org.uniprot.core.xml.jaxb.uniref.EntryType;
+import org.uniprot.core.xml.jaxb.uniref.Entry;
+import org.uniprot.core.xml.writer.DefaultXmlWriter;
 
 /**
  *
@@ -55,16 +57,22 @@ class XmlChainIteratorTest {
 		
 		List<InputStream> iss = Arrays.asList(is);
 		
-		 XmlChainIterator<EntryType, EntryType>  chainingIterators =
+		 XmlChainIterator<Entry, Entry>  chainingIterators =
 	        		new XmlChainIterator<>(iss.iterator(),
-	        				EntryType.class, UNIREF_ROOT_ELEMENT, Function.identity() );
+	        				Entry.class, UNIREF_ROOT_ELEMENT, Function.identity() );
 		 int count =0;
+		 StringWriter writer= new StringWriter();
+		 DefaultXmlWriter<Entry>  xmlWriter = new DefaultXmlWriter<>(writer, "org.uniprot.core.xml.jaxb.uniref");
+		 xmlWriter.init();
 		 while(chainingIterators.hasNext()) {
-			 EntryType entry =chainingIterators.next();
+			 Entry entry =chainingIterators.next();
 			 count++;
+			 xmlWriter.write(entry);
 			
 		 }
 		 is.close();
+		 System.out.println(writer.toString());
+
 		assertEquals(2, count);
 	}
 }

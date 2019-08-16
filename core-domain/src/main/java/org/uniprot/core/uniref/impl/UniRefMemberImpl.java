@@ -17,9 +17,6 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
  */
 
 public class UniRefMemberImpl implements UniRefMember {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -1490306000699324397L;
 	private UniRefMemberIdType memberIdType;
 	private String memberId;

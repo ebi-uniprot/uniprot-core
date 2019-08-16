@@ -5,7 +5,6 @@ import java.util.Objects;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefEntryId;
@@ -19,10 +18,6 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
 */
 
 public class RepresentativeMemberImpl extends UniRefMemberImpl implements RepresentativeMember {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Sequence sequence;

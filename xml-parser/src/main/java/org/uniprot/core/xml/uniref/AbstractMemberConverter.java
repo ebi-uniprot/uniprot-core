@@ -2,12 +2,11 @@ package org.uniprot.core.xml.uniref;
 
 import java.util.List;
 
-import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.builder.AbstractUniRefMemberBuilder;
@@ -29,6 +28,7 @@ import com.google.common.base.Strings;
 */
 
 public abstract class AbstractMemberConverter<T extends UniRefMember> implements Converter<MemberType, T> {
+	 private static Logger logger = LoggerFactory.getLogger(AbstractMemberConverter.class);
 	public static final String PROPERTY_PROTEIN_NAME = "protein name";
 	public static final String PROPERTY_NCBI_TAXONOMY = "NCBI taxonomy";
 	public static final String PROPERTY_SOURCE_ORGANISM = "source organism";
@@ -96,9 +96,7 @@ public abstract class AbstractMemberConverter<T extends UniRefMember> implements
 	protected void updateMemberFromXml(AbstractUniRefMemberBuilder<? extends AbstractUniRefMemberBuilder<?,T>, T> builder , MemberType xmlObj ) {
 		builder.memberIdType(UniRefMemberIdType.typeOf(xmlObj.getDbReference().getType()))
 		.memberId(xmlObj.getDbReference().getId());
-		
-	//	String organismName="";
-	//	Long taxId =null ;
+
 		
 		List<PropertyType> properties = xmlObj.getDbReference().getProperty();
 		for (PropertyType property : properties) {
@@ -133,7 +131,7 @@ public abstract class AbstractMemberConverter<T extends UniRefMember> implements
 			} else if (property.getType().equals(PROPERTY_IS_SEED)) {
 				builder.isSeed(Boolean.parseBoolean(property.getValue()));
 			} else {
-				System.out.println("property.getType() = " + property.getType());
+				logger.error("XML member property: "+ property.getType() + " is not supported" );
 			}
 		}
 		
