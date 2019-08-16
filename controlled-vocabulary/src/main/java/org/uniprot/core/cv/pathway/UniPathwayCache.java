@@ -8,7 +8,7 @@ import org.uniprot.core.cv.impl.UniPathwayFileReader;
 
 public enum UniPathwayCache {
 	INSTANCE;
-	public static final String FTP_LOCATION ="./src/main/resources/unipathway.txt";
+	public static final String FTP_LOCATION ="unipathway.txt";
 	Map<String, List<UniPathway> > locationPathwayMap =new HashMap<>();
 
 	public List<UniPathway> get(String file){
