@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniref.UniRefMember;
