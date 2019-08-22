@@ -75,7 +75,7 @@ public class UniRefEntryMap implements NamedValueMap {
 		Map<String, String> map = new HashMap<>();
 		map.put(FIELDS.get(0), entry.getId().getValue());
 		map.put(FIELDS.get(1), entry.getName());
-		map.put(FIELDS.get(2), entry.getCommonTaxonName());
+		map.put(FIELDS.get(2), entry.getCommonTaxon());
 		map.put(FIELDS.get(3), Long.toString(entry.getCommonTaxonId()));
 		map.put(FIELDS.get(4), Integer.toString(entry.getMemberCount()));
 		map.put(FIELDS.get(5),  entry.getUpdated().toString());

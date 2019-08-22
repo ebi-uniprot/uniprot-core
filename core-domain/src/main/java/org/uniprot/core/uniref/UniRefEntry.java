@@ -17,7 +17,7 @@ public interface UniRefEntry extends Serializable {
 	LocalDate getUpdated();
 	UniRefType getEntryType();
 	long getCommonTaxonId();
-	String getCommonTaxonName();
+	String getCommonTaxon();
 	List<GoTerm> getGoTerms();
 	RepresentativeMember getRepresentativeMember();
 	List<UniRefMember> getMembers();	

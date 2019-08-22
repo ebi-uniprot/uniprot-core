@@ -39,7 +39,7 @@ public class UniRefFastaParser {
 		
 		if(entry.getCommonTaxonId() !=1l) {
 			sb.append(" Tax=")
-			.append(entry.getCommonTaxonName())
+			.append(entry.getCommonTaxon())
 			.append(" TaxID=")
 			.append(entry.getCommonTaxonId());
 		}

@@ -75,7 +75,7 @@ public class UniRefEntryConverter implements Converter< Entry, UniRefEntry> {
 	private void updatePropertFromXml(UniRefEntryBuilder builder, Entry jaxbEntry) {
 		for (PropertyType property :jaxbEntry.getProperty()) {
 			if (property.getType().equals(PROPERTY_COMMON_TAXON)) {
-				builder.commonTaxonName(property.getValue());
+				builder.commonTaxon(property.getValue());
 			} else if (property.getType().equals(PROPERTY_COMMON_TAXON_ID)) {
 				builder.commonTaxonId( Long.parseLong(property.getValue()));
 			} else if (property.getType().equals(PROPERTY_GO_FUNCTION)) {
@@ -112,8 +112,8 @@ public class UniRefEntryConverter implements Converter< Entry, UniRefEntry> {
 			count = uniObj.getMembers().size()+1;
 		}
 		jaxbEntry.getProperty().add(createProperty(PROPERTY_MEMBER_COUNT, String.valueOf(count)));
-		if(!Strings.isNullOrEmpty(uniObj.getCommonTaxonName())) {
-			jaxbEntry.getProperty().add(createProperty(PROPERTY_COMMON_TAXON, uniObj.getCommonTaxonName()));
+		if(!Strings.isNullOrEmpty(uniObj.getCommonTaxon())) {
+			jaxbEntry.getProperty().add(createProperty(PROPERTY_COMMON_TAXON, uniObj.getCommonTaxon()));
 		}
 		jaxbEntry.getProperty().add(createProperty(PROPERTY_COMMON_TAXON_ID, String.valueOf(uniObj.getCommonTaxonId())));
 		uniObj.getGoTerms().stream().map(this::convert).forEach( jaxbEntry.getProperty()::add);

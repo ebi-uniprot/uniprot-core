@@ -122,7 +122,7 @@ public class UniRefTest {
 				.updated(LocalDate.now())
 				.entryType(type)
 				.commonTaxonId(9606l)
-				.commonTaxonName("Homo sapiens")
+				.commonTaxon("Homo sapiens")
 				.representativeMember(createReprestativeMember())
 				.addMember(createMember())
 				.addGoTerm(new GoTermBuilder().type(GoTermType.COMPONENT).id("GO:0044444").build())

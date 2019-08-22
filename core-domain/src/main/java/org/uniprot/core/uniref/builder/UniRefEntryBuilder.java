@@ -28,7 +28,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 	private LocalDate updated;
 	private UniRefType entryType;
 	private long commonTaxonId;
-	private String commonTaxonName;
+	private String commonTaxon;
 	private List<GoTerm> goTerms =new ArrayList<>();
 	private RepresentativeMember representativeMember;
 	private List<UniRefMember> members  =new ArrayList<>();
@@ -44,7 +44,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 				  updated,
 				  entryType,
 				  commonTaxonId,
-				  commonTaxonName,
+				  commonTaxon,
 				  goTerms,
 				  representativeMember,
 				  members) ;
@@ -57,7 +57,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 				.updated(instance.getUpdated())
 				.entryType(instance.getEntryType())
 				.commonTaxonId(instance.getCommonTaxonId())
-				.commonTaxonName(instance.getCommonTaxonName())
+				.commonTaxon(instance.getCommonTaxon())
 				.goTerms(instance.getGoTerms())
 				.representativeMember(instance.getRepresentativeMember())
 				.members(instance.getMembers());
@@ -87,8 +87,8 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 		return this;
 	}
 	
-	public UniRefEntryBuilder commonTaxonName(String commonTaxonName) {
-		this.commonTaxonName = commonTaxonName;
+	public UniRefEntryBuilder commonTaxon(String commonTaxon) {
+		this.commonTaxon = commonTaxon;
 		return this;
 	}
 	

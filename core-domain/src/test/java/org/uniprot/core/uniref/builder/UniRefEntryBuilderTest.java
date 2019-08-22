@@ -46,7 +46,7 @@ class UniRefEntryBuilderTest {
 				.updated(LocalDate.now())
 				.entryType(type)
 				.commonTaxonId(9606l)
-				.commonTaxonName("Homo sapiens")
+				.commonTaxon("Homo sapiens")
 				.representativeMember(member)
 				.build();
 		
@@ -105,9 +105,9 @@ class UniRefEntryBuilderTest {
 		String commonTax = "Homo sapiens";
 		
 		UniRefEntry entry = new UniRefEntryBuilder()
-				.commonTaxonName(commonTax)
+				.commonTaxon(commonTax)
 				.build();
-		assertEquals(commonTax, entry.getCommonTaxonName());
+		assertEquals(commonTax, entry.getCommonTaxon());
 	}
 
 	@Test

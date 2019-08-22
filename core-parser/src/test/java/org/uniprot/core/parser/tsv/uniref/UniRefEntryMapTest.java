@@ -88,7 +88,7 @@ class UniRefEntryMapTest {
 				.updated(created)
 				.entryType(type)
 				.commonTaxonId(9605l)
-				.commonTaxonName("Homo")
+				.commonTaxon("Homo")
 				.representativeMember(createReprestativeMember())
 				.addMember(createMember())
 				.addGoTerm(new GoTermBuilder().type(GoTermType.COMPONENT).id("GO:0044444").build())

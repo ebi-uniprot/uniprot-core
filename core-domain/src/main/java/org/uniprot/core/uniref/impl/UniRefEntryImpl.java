@@ -29,7 +29,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 	private LocalDate updated;
 	private UniRefType entryType;
 	private long commonTaxonId;
-	private String commonTaxonName;
+	private String commonTaxon;
 	private List<GoTerm> goTerms;
 	private RepresentativeMember representativeMember;
 	private List<UniRefMember> members;
@@ -45,7 +45,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 	 LocalDate updated,
 	 UniRefType entryType,
 	 long commonTaxonId,
-	 String commonTaxonName,
+	 String commonTaxon,
 	 List<GoTerm> goTerms,
 	 RepresentativeMember representativeMember,
 	 List<UniRefMember> members) {
@@ -54,7 +54,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 		this.updated = updated;
 		this.entryType =entryType;
 		this.commonTaxonId =commonTaxonId;
-		this.commonTaxonName =commonTaxonName;
+		this.commonTaxon =commonTaxon;
 		this.goTerms= Utils.nonNullUnmodifiableList(goTerms);
 		this.representativeMember = representativeMember;
 		this.members = Utils.nonNullUnmodifiableList(members);
@@ -91,8 +91,8 @@ public class UniRefEntryImpl implements UniRefEntry {
 	}
 
 	@Override
-	public String getCommonTaxonName() {
-		return commonTaxonName;
+	public String getCommonTaxon() {
+		return commonTaxon;
 	}
 
 	@Override
@@ -113,7 +113,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name, updated, entryType, commonTaxonId,
-				commonTaxonName, goTerms, representativeMember, members, memberCount);
+				commonTaxon, goTerms, representativeMember, members, memberCount);
 	}
 
 	@Override
@@ -131,7 +131,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 				&& Objects.equals(updated, other.updated)
 				&& Objects.equals(entryType, other.entryType)
 				&& Objects.equals(commonTaxonId, other.commonTaxonId)
-				&& Objects.equals(commonTaxonName, other.commonTaxonName)
+				&& Objects.equals(commonTaxon, other.commonTaxon)
 				&& Objects.equals(goTerms, other.goTerms)
 				&& Objects.equals(representativeMember, other.representativeMember)
 				&& Objects.equals(members, other.members)
