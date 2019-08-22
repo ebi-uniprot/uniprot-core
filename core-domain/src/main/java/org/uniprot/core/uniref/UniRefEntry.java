@@ -21,5 +21,6 @@ public interface UniRefEntry extends Serializable {
 	List<GoTerm> getGoTerms();
 	RepresentativeMember getRepresentativeMember();
 	List<UniRefMember> getMembers();	
+	int getMemberCount();
 }
 

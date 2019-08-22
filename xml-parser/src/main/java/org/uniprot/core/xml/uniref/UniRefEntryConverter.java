@@ -85,7 +85,7 @@ public class UniRefEntryConverter implements Converter< Entry, UniRefEntry> {
 			} else if (property.getType().equals(PROPERTY_GO_PROCESS)) {
 				builder.addGoTerm(createGoTerm(GoTermType.PROCESS, property.getValue()));
 			} else if (property.getType().equals(PROPERTY_MEMBER_COUNT)) {
-				
+				builder.memberCount(Integer.parseInt(property.getValue()));
 			} else {
 				System.out.println("property.getType() = " + property.getType() +" not supported");
 			}
@@ -107,7 +107,10 @@ public class UniRefEntryConverter implements Converter< Entry, UniRefEntry> {
 		return jaxbEntry;
 	}
 	private void updatePropertyToXml(Entry jaxbEntry, UniRefEntry uniObj) {
-		int count = uniObj.getMembers().size() +1;
+		int count = uniObj.getMemberCount();
+		if(count ==0) {
+			count = uniObj.getMembers().size()+1;
+		}
 		jaxbEntry.getProperty().add(createProperty(PROPERTY_MEMBER_COUNT, String.valueOf(count)));
 		if(!Strings.isNullOrEmpty(uniObj.getCommonTaxonName())) {
 			jaxbEntry.getProperty().add(createProperty(PROPERTY_COMMON_TAXON, uniObj.getCommonTaxonName()));

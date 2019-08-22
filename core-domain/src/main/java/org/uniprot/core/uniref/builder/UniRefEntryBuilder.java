@@ -24,6 +24,7 @@ import org.uniprot.core.util.Utils;
 public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEntry> {
 	private UniRefEntryId id;
 	private String name;
+	private int memberCount;
 	private LocalDate updated;
 	private UniRefType entryType;
 	private long commonTaxonId;
@@ -39,6 +40,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 	public UniRefEntry build() {
 		return new UniRefEntryImpl(  id,
 				  name,
+				  memberCount,
 				  updated,
 				  entryType,
 				  commonTaxonId,
@@ -109,6 +111,10 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 	}
 	public UniRefEntryBuilder addMember(UniRefMember unirefMember) {
 		Utils.nonNullAdd(unirefMember, this.members);
+		return this;
+	}
+	public UniRefEntryBuilder memberCount(int memberCount) {
+		this.memberCount = memberCount;
 		return this;
 	}
 }

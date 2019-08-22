@@ -25,6 +25,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 	private static final long serialVersionUID = -3900697447474386293L;
 	private UniRefEntryId id;
 	private String name;
+	private int memberCount;
 	private LocalDate updated;
 	private UniRefType entryType;
 	private long commonTaxonId;
@@ -33,12 +34,14 @@ public class UniRefEntryImpl implements UniRefEntry {
 	private RepresentativeMember representativeMember;
 	private List<UniRefMember> members;
 	
+	
 	protected UniRefEntryImpl() {
 		goTerms = Collections.emptyList();
 		members = Collections.emptyList();
 	}
 	public UniRefEntryImpl( UniRefEntryId id,
-	 String name,
+	 String name, 
+	 int memberCount,
 	 LocalDate updated,
 	 UniRefType entryType,
 	 long commonTaxonId,
@@ -47,7 +50,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 	 RepresentativeMember representativeMember,
 	 List<UniRefMember> members) {
 		this.id = id;
-		this.name = name;
+		this.name = name;	
 		this.updated = updated;
 		this.entryType =entryType;
 		this.commonTaxonId =commonTaxonId;
@@ -55,6 +58,11 @@ public class UniRefEntryImpl implements UniRefEntry {
 		this.goTerms= Utils.nonNullUnmodifiableList(goTerms);
 		this.representativeMember = representativeMember;
 		this.members = Utils.nonNullUnmodifiableList(members);
+		if(memberCount ==0) {
+			this.memberCount = this.members.size()+1;
+		}else {
+			this.memberCount = memberCount;
+		}
 
 	}
 	@Override
@@ -105,7 +113,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name, updated, entryType, commonTaxonId,
-				commonTaxonName, goTerms, representativeMember, members);
+				commonTaxonName, goTerms, representativeMember, members, memberCount);
 	}
 
 	@Override
@@ -119,6 +127,7 @@ public class UniRefEntryImpl implements UniRefEntry {
 		UniRefEntryImpl other = (UniRefEntryImpl) obj;
 		return Objects.equals(id, other.id)
 				&& Objects.equals(name, other.name)
+				&& Objects.equals(memberCount, other.memberCount)
 				&& Objects.equals(updated, other.updated)
 				&& Objects.equals(entryType, other.entryType)
 				&& Objects.equals(commonTaxonId, other.commonTaxonId)
@@ -128,6 +137,10 @@ public class UniRefEntryImpl implements UniRefEntry {
 				&& Objects.equals(members, other.members)
 				;
 
+	}
+	@Override
+	public int getMemberCount() {
+		return memberCount;
 	}
 }
 
