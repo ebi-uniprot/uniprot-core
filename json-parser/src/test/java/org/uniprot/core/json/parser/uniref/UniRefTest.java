@@ -67,6 +67,7 @@ public class UniRefTest {
 				.uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
 				.uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
 				.uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
+			
 				.build();
 		return member;
 	}
@@ -128,6 +129,7 @@ public class UniRefTest {
 				.addGoTerm(new GoTermBuilder().type(GoTermType.COMPONENT).id("GO:0044444").build())
 				.addGoTerm(new GoTermBuilder().type(GoTermType.FUNCTION).id("GO:0044459").build())
 				.addGoTerm(new GoTermBuilder().type(GoTermType.PROCESS).id("GO:0032459").build())
+				.memberCount(2)
 				.build();
 		ValidateJson.verifyJsonRoundTripParser(UniRefEntryJsonConfig.getInstance().getFullObjectMapper(), entry);
 		

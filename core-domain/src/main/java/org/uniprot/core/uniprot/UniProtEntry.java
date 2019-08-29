@@ -9,6 +9,7 @@ import org.uniprot.core.gene.Gene;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.description.ProteinDescription;
+import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.taxonomy.Organism;
@@ -101,5 +102,6 @@ public interface UniProtEntry extends Serializable {
     boolean hasReferences();
 
     boolean hasDatabaseCrossReferences();
+    List<Evidence> gatherEvidences();
 
 }
