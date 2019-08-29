@@ -43,7 +43,9 @@ public enum EvidenceTypes {
                 String name = dbTypeDetail.getString("name");
                 String displayName = dbTypeDetail.getString("displayName");
                 String uriLink = dbTypeDetail.getString("uriLink");
-                types.add(new EvidenceTypeDetail(name, displayName, uriLink));
+                String category = dbTypeDetail.getString("category");
+                EvidenceTypeCategory etCategory= EvidenceTypeCategory.valueOf(category);
+                types.add(new EvidenceTypeDetail(name, displayName,  etCategory, uriLink));
             });
             typeMap = types.stream().collect(Collectors.toMap(EvidenceTypeDetail::getName, val -> val));
         } catch (Exception e) {
