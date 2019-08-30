@@ -468,6 +468,8 @@ public class UniProtEntryImpl implements UniProtEntry {
 	}
 
 	private void updateProteinDescriptionEvidences(Set<Evidence> evidences, ProteinDescription pd) {
+		if(pd ==null)
+			return;
 		updateProteinRecNameEvidences(evidences, pd.getRecommendedName());
 		if (pd.getAlternativeNames() != null) {
 			pd.getAlternativeNames().forEach(val -> updateProteinAltNameEvidences(evidences, val));
