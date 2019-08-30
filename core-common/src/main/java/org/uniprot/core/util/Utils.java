@@ -57,4 +57,20 @@ public class Utils {
     public static boolean nonNull(Object o) {
         return Objects.nonNull(o);
     }
+    public static String capitalize(String str) {
+    	if(nullOrEmpty(str))
+    		return str;
+        return new StringBuilder()
+            .append(Character.toTitleCase(str.charAt(0)))
+            .append(str.substring(1))
+            .toString();
+    }
+    public static String uncapitalize(String str) {
+    	if(nullOrEmpty(str))
+    		return str;
+        return new StringBuilder()
+            .append(Character.toLowerCase(str.charAt(0)))
+            .append(str.substring(1))
+            .toString();
+    }
 }

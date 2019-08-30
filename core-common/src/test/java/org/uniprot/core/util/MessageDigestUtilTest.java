@@ -1,9 +1,10 @@
 package org.uniprot.core.util;
 
-import org.junit.Test;
-import org.uniprot.core.util.MessageDigestUtil;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.util.MessageDigestUtil;
 
 public class MessageDigestUtilTest {
 

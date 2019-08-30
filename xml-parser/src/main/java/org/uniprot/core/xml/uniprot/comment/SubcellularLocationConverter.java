@@ -1,12 +1,11 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
-import org.apache.commons.lang.StringUtils;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
 import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.util.Utils;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
@@ -82,7 +81,7 @@ public class SubcellularLocationConverter implements Converter<SubcellularLocati
     }
 
     private String lowerCaseFirstLetter(String val) {
-        if (Strings.isNullOrEmpty(val))
+    	if(Utils.nullOrEmpty(val))
             return val;
         if (val.length() > 1) {
             char second = val.charAt(1);
@@ -90,7 +89,7 @@ public class SubcellularLocationConverter implements Converter<SubcellularLocati
                 return val;
             }
         }
-        return StringUtils.uncapitalize(val);
+        return Utils.uncapitalize(val);
     }
 
     @Override
@@ -124,7 +123,7 @@ public class SubcellularLocationConverter implements Converter<SubcellularLocati
 
     private EvidencedStringType buildLocation(String value, SubcellularLocationValue locationValue) {
         EvidencedStringType typeLocation = xmlUniprotFactory.createEvidencedStringType();
-        typeLocation.setValue(StringUtils.capitalize(value));
+        typeLocation.setValue(Utils.capitalize(value));
 
         // Evidences
         List<Evidence> evidenceIds = locationValue.getEvidences();
