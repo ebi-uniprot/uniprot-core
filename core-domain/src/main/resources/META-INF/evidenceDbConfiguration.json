@@ -1,283 +1,290 @@
 [
-  {
-    "name": "Araport",
-    "displayName": "Araport",
-    "catagory": "I",
-    "uriLink": "https://apps.araport.org/thalemine/portal.do?externalids=%value"
-  },
-  {
-    "name": "CGD",
-    "displayName": "CGD",
-    "catagory": "I",
-    "uriLink": "http://www.candidagenome.org/cgi-bin/locus.pl?dbid=%value"
-  },
-  {
-    "name": "EMBL",
-    "displayName": "EMBL",
-    "catagory": "I",
-    "uriLink": "https://www.ebi.ac.uk/ena/data/view/%value"
-  },
-  {
-    "name": "EPD",
-    "displayName": "EPD",
-    "catagory": "C",
-    "uriLink": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
-  },
-  {
-    "name": "Ensembl",
-    "displayName": "Ensembl",
-    "catagory": "I",
-    "uriLink": "https://www.ensembl.org/id/%value"
-  },
-  {
-    "name": "EnsemblBacteria",
-    "displayName": "EnsemblBacteria",
-    "catagory": "I",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value"
-  },
-  {
-    "name": "EnsemblFungi",
-    "displayName": "EnsemblFungi",
-    "catagory": "I",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value"
-  },
-  {
-    "name": "EnsemblMetazoa",
-    "displayName": "EnsemblMetazoa",
-    "catagory": "I",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value"
-  },
-  {
-    "name": "EnsemblPlants",
-    "displayName": "EnsemblPlants",
-    "catagory": "I",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value"
-  },
-  {
-    "name": "EnsemblProtists",
-    "displayName": "EnsemblProtists",
-    "catagory": "I",
-    "uriLink": "http://www.ensemblgenomes.org/id/%value"
-  },
-  {
-    "name": "FlyBase",
-    "displayName": "FlyBase",
-    "catagory": "I",
-    "uriLink": "http://flybase.org/reports/%value.html"
-  },
-  {
-    "name": "HAMAP-Rule",
-    "displayName": "HAMAP-Rule",
-    "catagory": "A",
-    "uriLink": "https://www.uniprot.org/unirule/%value"
-  },
-  {
-    "name": "HGNC",
-    "displayName": "HGNC",
-    "catagory": "I",
-    "uriLink": "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%value"
-  },
-  {
-    "name": "MGI",
-    "displayName": "MGI",
-    "catagory": "I",
-    "uriLink": "http://www.informatics.jax.org/marker/%value"
-  },
-  {
-    "name": "MaxQB",
-    "displayName": "MaxQB",
-    "catagory": "C",
-    "uriLink": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
-  },
-  {
-    "name": "PDB",
-    "displayName": "PDB",
-    "catagory": "I",
-    "uriLink": "https://www.ebi.ac.uk/pdbe-srv/view/entry/%value"
-  },
-  {
-    "name": "PIR",
-    "displayName": "PIR",
-    "catagory": "I",
-    "uriLink": "http://pir.georgetown.edu/cgi-bin/nbrfget?uid=%value"
-  },
-  {
-    "name": "PIRNR",
-    "displayName": "PIRNR",
-    "catagory": "A",
-    "uriLink": "https://www.uniprot.org/unirule/%value"
-  },
-  {
-    "name": "PIRSR",
-    "displayName": "PIRSR",
-    "catagory": "A",
-    "uriLink": "https://www.uniprot.org/unirule/%value"
-  },
-  {
-    "name": "PROSITE",
-    "displayName": "PROSITE",
-     "catagory": "A",
-    "uriLink": "https://prosite.expasy.org/doc/%value"
-  },
-  {
-    "name": "PROSITE-ProRule",
-    "displayName": "PROSITE-ProRule",
-     "catagory": "A",
-    "uriLink": "https://prosite.expasy.org/unirule/%value"
-  },
-  {
-    "name": "PeptideAtlas",
-    "displayName": "PeptideAtlas",
-     "catagory": "C",
-    "uriLink": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
-  },
-  {
-    "name": "Pfam",
-    "displayName": "Pfam",
-     "catagory": "A",
-    "uriLink": "http://pfam.xfam.org/family/%value"
-  },
-  {
-    "name": "PomBase",
-    "displayName": "PomBase",
-     "catagory": "I",
-    "uriLink": "https://www.pombase.org/spombe/result/%value"
-  },
-  {
-    "name": "Proteomes",
-    "displayName": "Proteomes",
-     "catagory": "A",
-    "uriLink": "https://www.uniprot.org/proteomes/%value"
-  },
-  {
-    "name": "PubMed",
-    "displayName": "PubMed",
-     "catagory": "C",
-    "uriLink": "https://www.uniprot.org/citations/%value"
-  },
-  {
-    "name": "RGD",
-    "displayName": "RGD",
-     "catagory": "I",
-    "uriLink": "http://rgd.mcw.edu/tools/genes/genes_view.cgi?id=%value"
-  },
-  {
-    "name": "RefSeq",
-    "displayName": "RefSeq",
-     "catagory": "I",
-    "uriLink": "https://www.ncbi.nlm.nih.gov/protein/%value"
-  },
-  {
-    "name": "RuleBase",
-    "displayName": "RuleBase",
-     "catagory": "A",
-    "uriLink": "https://www.uniprot.org/unirule/%value"
-  },
-  {
-    "name": "SAAS",
-    "displayName": "SAAS",
-     "catagory": "A",
-    "uriLink": "https://www.uniprot.org/saas/%value"
-  },
-  {
-    "name": "SAM",
-    "displayName": "SAM",
-    "uriLink": "https://www.uniprot.org/help/sam"
-  },
-  {
-    "name": "SGD",
-    "displayName": "SGD",
-     "catagory": "I",
-    "uriLink": "https://www.yeastgenome.org/locus/%value"
-  },
-  {
-    "name": "SMART",
-    "displayName": "SMART",
-     "catagory": "A",
-    "uriLink": "http://smart.embl.de/smart/do_annotation.pl?DOMAIN=%value"
-  },
-  {
-    "name": "UniRule",
-    "displayName": "UniRule",
-     "catagory": "A",
-    "uriLink": "https://www.uniprot.org/unirule/%value"
-  },
-  {
-    "name": "VGNC",
-    "displayName": "VGNC",
-     "catagory": "I",
-    "uriLink": "https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/%value"
-  },
-  {
-    "name": "VectorBase",
-    "displayName": "VectorBase",
-     "catagory": "I",
-    "uriLink": "https://www.vectorbase.org/id/%value"
-  },
-  {
-    "name": "WBParaSite",
-    "displayName": "WBParaSite",
-     "catagory": "I",
-    "uriLink": "http://parasite.wormbase.org/id/%value"
-  },
-  {
-    "name": "WormBase",
-    "displayName": "WormBase",
-     "catagory": "I",
-    "uriLink": "https://wormbase.org/species/c_elegans/cds/%value"
-  },
-  {
-    "name": "Xenbase",
-    "displayName": "Xenbase",
-     "catagory": "I",
-    "uriLink": "http://www.xenbase.org/gene/showgene.do?method=display&geneId=value"
-  },
-  {
-    "name": "ZFIN",
-    "displayName": "ZFIN",
-     "catagory": "I",
-    "uriLink": "http://zfin.org/cgi-bin/webdriver?MIval=aa-markerview.apg&OID=%value"
-  },
-  {
-    "name": "UniProtKB",
-    "displayName": "UniProtKB",
-     "catagory": "C",
-    "uriLink": "https://www.uniprot.org/uniprot/%value"
-  },
-  {
-    "name": "Reference",
-    "displayName": "Reference",
-     "catagory": "C",
-    "uriLink": ""
-  },
-  {
-    "name": "dictyBase",
-    "displayName": "dictyBase",
-    "uriLink": "http://dictybase.org/gene/%value"
-  },
-  {
-    "name": "MIM",
-    "displayName": "MIM",
-    "uriLink": "http://www.omim.org/entry/%value"
-  },
-  {
-    "name": "EcoGene",
-    "displayName": "EcoGene",
-    "uriLink": "http://www.ecogene.org/geneInfo.php?eg_id=%value"
-  },
-  {
-    "name": "TubercuList",
-    "displayName": "TubercuList",
-    "uriLink": "https://mycobrowser.epfl.ch/genes/%value"
-  },
-   {
-    "name": "MobiDB-lite",
-    "displayName": "MobiDB-lite",
-    "uriLink": "https://www.uniprot.org/help/MobiDB-lite"
-  },
-  {
-    "name": "ProteomicsDB",
-    "displayName": "ProteomicsDB",
-    "uriLink":  "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
-  }
+	{
+		"name": "Araport",
+		"displayName": "Araport",
+		"category": "I",
+		"uriLink": "https://apps.araport.org/thalemine/portal.do?externalids=%value"
+	},
+	{
+		"name": "CGD",
+		"displayName": "CGD",
+		"category": "I",
+		"uriLink": "http://www.candidagenome.org/cgi-bin/locus.pl?dbid=%value"
+	},
+	{
+		"name": "EMBL",
+		"displayName": "EMBL",
+		"category": "I",
+		"uriLink": "https://www.ebi.ac.uk/ena/data/view/%value"
+	},
+	{
+		"name": "EPD",
+		"displayName": "EPD",
+		"category": "C",
+		"uriLink": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
+	},
+	{
+		"name": "Ensembl",
+		"displayName": "Ensembl",
+		"category": "I",
+		"uriLink": "https://www.ensembl.org/id/%value"
+	},
+	{
+		"name": "EnsemblBacteria",
+		"displayName": "EnsemblBacteria",
+		"category": "I",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value"
+	},
+	{
+		"name": "EnsemblFungi",
+		"displayName": "EnsemblFungi",
+		"category": "I",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value"
+	},
+	{
+		"name": "EnsemblMetazoa",
+		"displayName": "EnsemblMetazoa",
+		"category": "I",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value"
+	},
+	{
+		"name": "EnsemblPlants",
+		"displayName": "EnsemblPlants",
+		"category": "I",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value"
+	},
+	{
+		"name": "EnsemblProtists",
+		"displayName": "EnsemblProtists",
+		"category": "I",
+		"uriLink": "http://www.ensemblgenomes.org/id/%value"
+	},
+	{
+		"name": "FlyBase",
+		"displayName": "FlyBase",
+		"category": "I",
+		"uriLink": "http://flybase.org/reports/%value.html"
+	},
+	{
+		"name": "HAMAP-Rule",
+		"displayName": "HAMAP-Rule",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/unirule/%value"
+	},
+	{
+		"name": "HGNC",
+		"displayName": "HGNC",
+		"category": "I",
+		"uriLink": "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%value"
+	},
+	{
+		"name": "MGI",
+		"displayName": "MGI",
+		"category": "I",
+		"uriLink": "http://www.informatics.jax.org/marker/%value"
+	},
+	{
+		"name": "MaxQB",
+		"displayName": "MaxQB",
+		"category": "C",
+		"uriLink": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
+	},
+	{
+		"name": "PDB",
+		"displayName": "PDB",
+		"category": "I",
+		"uriLink": "https://www.ebi.ac.uk/pdbe-srv/view/entry/%value"
+	},
+	{
+		"name": "PIR",
+		"displayName": "PIR",
+		"category": "I",
+		"uriLink": "http://pir.georgetown.edu/cgi-bin/nbrfget?uid=%value"
+	},
+	{
+		"name": "PIRNR",
+		"displayName": "PIRNR",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/unirule/%value"
+	},
+	{
+		"name": "PIRSR",
+		"displayName": "PIRSR",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/unirule/%value"
+	},
+	{
+		"name": "PROSITE",
+		"displayName": "PROSITE",
+		"category": "A",
+		"uriLink": "https://prosite.expasy.org/doc/%value"
+	},
+	{
+		"name": "PROSITE-ProRule",
+		"displayName": "PROSITE-ProRule",
+		"category": "A",
+		"uriLink": "https://prosite.expasy.org/unirule/%value"
+	},
+	{
+		"name": "PeptideAtlas",
+		"displayName": "PeptideAtlas",
+		"category": "C",
+		"uriLink": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
+	},
+	{
+		"name": "Pfam",
+		"displayName": "Pfam",
+		"category": "A",
+		"uriLink": "http://pfam.xfam.org/family/%value"
+	},
+	{
+		"name": "PomBase",
+		"displayName": "PomBase",
+		"category": "I",
+		"uriLink": "https://www.pombase.org/spombe/result/%value"
+	},
+	{
+		"name": "Proteomes",
+		"displayName": "Proteomes",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/proteomes/%value"
+	},
+	{
+		"name": "PubMed",
+		"displayName": "PubMed",
+		"category": "C",
+		"uriLink": "https://www.uniprot.org/citations/%value"
+	},
+	{
+		"name": "RGD",
+		"displayName": "RGD",
+		"category": "I",
+		"uriLink": "http://rgd.mcw.edu/tools/genes/genes_view.cgi?id=%value"
+	},
+	{
+		"name": "RefSeq",
+		"displayName": "RefSeq",
+		"category": "I",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/protein/%value"
+	},
+	{
+		"name": "RuleBase",
+		"displayName": "RuleBase",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/unirule/%value"
+	},
+	{
+		"name": "SAAS",
+		"displayName": "SAAS",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/saas/%value"
+	},
+	{
+		"name": "SAM",
+		"displayName": "SAM",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/help/sam"
+	},
+	{
+		"name": "SGD",
+		"displayName": "SGD",
+		"category": "I",
+		"uriLink": "https://www.yeastgenome.org/locus/%value"
+	},
+	{
+		"name": "SMART",
+		"displayName": "SMART",
+		"category": "A",
+		"uriLink": "http://smart.embl.de/smart/do_annotation.pl?DOMAIN=%value"
+	},
+	{
+		"name": "UniRule",
+		"displayName": "UniRule",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/unirule/%value"
+	},
+	{
+		"name": "VGNC",
+		"displayName": "VGNC",
+		"category": "I",
+		"uriLink": "https://vertebrate.genenames.org/data/gene-symbol-report/#!/vgnc_id/%value"
+	},
+	{
+		"name": "VectorBase",
+		"displayName": "VectorBase",
+		"category": "I",
+		"uriLink": "https://www.vectorbase.org/id/%value"
+	},
+	{
+		"name": "WBParaSite",
+		"displayName": "WBParaSite",
+		"category": "I",
+		"uriLink": "http://parasite.wormbase.org/id/%value"
+	},
+	{
+		"name": "WormBase",
+		"displayName": "WormBase",
+		"category": "I",
+		"uriLink": "https://wormbase.org/species/c_elegans/cds/%value"
+	},
+	{
+		"name": "Xenbase",
+		"displayName": "Xenbase",
+		"category": "I",
+		"uriLink": "http://www.xenbase.org/gene/showgene.do?method=display&geneId=value"
+	},
+	{
+		"name": "ZFIN",
+		"displayName": "ZFIN",
+		"category": "I",
+		"uriLink": "http://zfin.org/cgi-bin/webdriver?MIval=aa-markerview.apg&OID=%value"
+	},
+	{
+		"name": "UniProtKB",
+		"displayName": "UniProtKB",
+		"category": "C",
+		"uriLink": "https://www.uniprot.org/uniprot/%value"
+	},
+	{
+		"name": "Reference",
+		"displayName": "Reference",
+		"category": "C",
+		"uriLink": ""
+	},
+	{
+		"name": "dictyBase",
+		"displayName": "dictyBase",
+		"category": "C",
+		"uriLink": "http://dictybase.org/gene/%value"
+	},
+	{
+		"name": "MIM",
+		"displayName": "MIM",
+		"category": "C",
+		"uriLink": "http://www.omim.org/entry/%value"
+	},
+	{
+		"name": "EcoGene",
+		"displayName": "EcoGene",
+		"category": "C",
+		"uriLink": "http://www.ecogene.org/geneInfo.php?eg_id=%value"
+	},
+	{
+		"name": "TubercuList",
+		"displayName": "TubercuList",
+		"category": "C",
+		"uriLink": "https://mycobrowser.epfl.ch/genes/%value"
+	},
+	{
+		"name": "MobiDB-lite",
+		"displayName": "MobiDB-lite",
+		"category": "A",
+		"uriLink": "https://www.uniprot.org/help/MobiDB-lite"
+	},
+	{
+		"name": "ProteomicsDB",
+		"displayName": "ProteomicsDB",
+		"category": "C",
+		"uriLink": "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/proteomics_mapping/README"
+	}
 ]

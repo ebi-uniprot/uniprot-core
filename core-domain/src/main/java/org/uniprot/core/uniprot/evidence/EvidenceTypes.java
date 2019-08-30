@@ -37,15 +37,8 @@ public enum EvidenceTypes {
         try (InputStream configFile = EvidenceTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
             PropertyArray list = new PropertyArray(source);
-
             list.forEach(item -> {
-                PropertyObject dbTypeDetail = (PropertyObject) item;
-                String name = dbTypeDetail.getString("name");
-                String displayName = dbTypeDetail.getString("displayName");
-                String uriLink = dbTypeDetail.getString("uriLink");
-                String category = dbTypeDetail.getString("category");
-                EvidenceTypeCategory etCategory= EvidenceTypeCategory.valueOf(category);
-                types.add(new EvidenceTypeDetail(name, displayName,  etCategory, uriLink));
+                types.add(convert((PropertyObject) item));
             });
             typeMap = types.stream().collect(Collectors.toMap(EvidenceTypeDetail::getName, val -> val));
         } catch (Exception e) {
@@ -53,4 +46,13 @@ public enum EvidenceTypes {
         }
     }
 
+    private  EvidenceTypeDetail convert(PropertyObject obj) {
+    	   String name = obj.getString("name");
+           String displayName = obj.getString("displayName");
+           String uriLink = obj.getString("uriLink");
+           String category = obj.getString("category");
+           EvidenceTypeCategory etCategory= EvidenceTypeCategory.valueOf(category);
+           return new EvidenceTypeDetail(name, displayName,  etCategory, uriLink);
+           
+    }
 }
