@@ -11,9 +11,11 @@ import org.uniprot.core.parser.tsv.keyword.KeywordEntryMap;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class KeywordEntryMapTest {
@@ -29,8 +31,9 @@ class KeywordEntryMapTest {
         mappedEntries.remove("id");
         assertEquals("Ligand", mappedEntries.get("name"));
         mappedEntries.remove("name");
-
-        mappedEntries.values().stream().peek(value -> assertEquals("", value));
+       Optional<String> result =
+        mappedEntries.values().stream().filter(val -> !val.isEmpty()).findAny();
+       assertFalse(result.isPresent());
     }
 
     @Test
