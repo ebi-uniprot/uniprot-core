@@ -74,7 +74,7 @@ class OnZeroCountSleeperTest {
 
     @Test
     void willWaitUntilZero() {
-        OnZeroCountSleeper sleeper = new OnZeroCountSleeper();
+    //    OnZeroCountSleeper sleeper = new OnZeroCountSleeper();
         List<Thread> incrementers = Stream
                 .generate(() -> new Thread(() -> {
                     int count = sleeper.increment();
@@ -121,7 +121,7 @@ class OnZeroCountSleeperTest {
                     try {
                         Thread.sleep((long) (100000));
                     } catch (InterruptedException e) {
-                        // do nothing
+                    	LOGGER.error("User interrupted", e);
                     }
                     int count = sleeper.decrement();
                     LOGGER.info("decremented, so that count = {}", count);
