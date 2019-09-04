@@ -68,12 +68,11 @@ public class UniParcXrefMap implements NamedValueMap {
 	
 	private String getProteomes() {
 		return xrefs.stream().map(this::getProteome)
-				.filter(val ->val.isPresent())
-				.map(val->val.get())
+				.filter(val ->val !=null)
 				.collect(Collectors.joining(DELIMITER));
 	}
 	
-	private Optional<String> getProteome(UniParcDBCrossReference xref) {
+	private String getProteome(UniParcDBCrossReference xref) {
 		Optional<Property> opUpid = getProperty(xref, UniParcDBCrossReference.PROPERTY_PROTEOME_ID);
 		if(opUpid.isPresent()) {
 			Optional<Property> opPComponent = getProperty(xref, UniParcDBCrossReference.PROPERTY_COMPONENT);
@@ -81,27 +80,25 @@ public class UniParcXrefMap implements NamedValueMap {
 			if(opPComponent.isPresent()) {
 				proteome +=":" + opPComponent.get().getValue();
 			}
-			return Optional.of(proteome);
+			return proteome;
 		}
-		return Optional.empty();
+		return null;
 	}
 	private String getUniProtAccessions(){
-		return xrefs.stream().map(this::getUniProtAccession)
-		.filter(val ->val.isPresent())
-		.map(val->val.get())
+		return xrefs.stream().map(this::getUniProtAccession)			
+		.filter(val -> val!=null)
 		.collect(Collectors.joining(DELIMITER));
 	}
-	private Optional<String> getUniProtAccession(UniParcDBCrossReference xref) {
-
+	private String getUniProtAccession(UniParcDBCrossReference xref) {
 		UniParcDatabaseType type = xref.getDatabaseType();
 		if((type==UniParcDatabaseType.SWISSPROT) || (type ==UniParcDatabaseType.TREMBL) || (type ==UniParcDatabaseType.SWISSPROT_VARSPLIC)) {
 			 String accession= xref.getId();
 			if(!xref.isActive()) {
 				accession +="." + xref.getVersion() + " (obsolete)";
 			}
-			return Optional.of(accession);
+			return accession;
 		}
-		return Optional.empty();
+		return null;
 	}
 	private String getData(String propertyType) {
 		return xrefs.stream().map(val -> getProperty(val, propertyType))
