@@ -24,6 +24,17 @@
         <jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
         <http-uniprot-private-url>http://wwwdev.ebi.ac.uk/uniprot/artifactory</http-uniprot-private-url>
         <java.version>1.8</java.version>
+        
+                <!-- Test coverage -->
+        <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+
+        <!-- Unit test report path -->
+        <jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+        <jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</jacoco.reportPath>
+
+        <!-- Integration test report path -->
+        <jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+        <jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</jacoco.itReportPath>
     </properties>
 
     <dependencyManagement>
