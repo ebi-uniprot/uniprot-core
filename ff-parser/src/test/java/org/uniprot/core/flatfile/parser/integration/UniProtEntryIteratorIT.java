@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.parser.integration;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.flatfile.writer.FlatfileWriter;
 import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UniProtEntryIteratorIT {
 	@Test
@@ -102,7 +102,7 @@ public class UniProtEntryIteratorIT {
 		}
 	}
 
-	@Ignore
+	@Disabled
 	public void testMultiDatRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();

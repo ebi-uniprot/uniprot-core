@@ -1,10 +1,11 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.os.OsLineConverter;
 import org.uniprot.core.flatfile.parser.impl.os.OsLineObject;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OsLineConverterTest {
 	@Test
@@ -14,10 +15,9 @@ public class OsLineConverterTest {
 		osO.organism_species ="Solanum melongena (Eggplant) (Aubergine)";
 		OsLineConverter converter = new OsLineConverter();
 		OrganismName org =converter.convert(osO);
-		TestCase.assertEquals("Solanum melongena", org.getScientificName());
-		TestCase.assertEquals("Eggplant", org.getCommonName());
-		TestCase.assertEquals("Aubergine", org.getSynonyms().get(0));
-		
+		assertEquals("Solanum melongena", org.getScientificName());
+		assertEquals("Eggplant", org.getCommonName());
+		assertEquals("Aubergine", org.getSynonyms().get(0));
 	}
 	
 	
@@ -28,11 +28,9 @@ public class OsLineConverterTest {
 		osO.organism_species ="Homo sapiens (Human)";
 		OsLineConverter converter = new OsLineConverter();
 		OrganismName org =converter.convert(osO);
-		TestCase.assertEquals("Homo sapiens", org.getScientificName());
-		TestCase.assertEquals("Human", org.getCommonName());
-		TestCase.assertEquals(0, org.getSynonyms().size());
-		
-		
+		assertEquals("Homo sapiens", org.getScientificName());
+		assertEquals("Human", org.getCommonName());
+		assertEquals(0, org.getSynonyms().size());
 	}
 	@Test
 	public void testVirus() {
@@ -41,9 +39,8 @@ public class OsLineConverterTest {
 		osO.organism_species ="Frog virus 3 (isolate Goorha) (FV-3)";
 		OsLineConverter converter = new OsLineConverter();
 		OrganismName org =converter.convert(osO);
-		TestCase.assertEquals("Frog virus 3 (isolate Goorha)", org.getScientificName());
-		TestCase.assertEquals("FV-3", org.getCommonName());
-		TestCase.assertEquals(0, org.getSynonyms().size());	
-		
+		assertEquals("Frog virus 3 (isolate Goorha)", org.getScientificName());
+		assertEquals("FV-3", org.getCommonName());
+		assertEquals(0, org.getSynonyms().size());
 	}
 }

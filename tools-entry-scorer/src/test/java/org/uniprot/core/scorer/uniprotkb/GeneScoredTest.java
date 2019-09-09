@@ -1,7 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
@@ -12,7 +12,7 @@ import org.uniprot.core.scorer.uniprotkb.GeneScored;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class GeneScoredTest {

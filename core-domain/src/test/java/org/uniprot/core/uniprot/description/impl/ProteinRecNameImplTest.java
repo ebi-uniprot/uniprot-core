@@ -7,7 +7,6 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.builder.ECBuilder;
 import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
-import org.uniprot.core.uniprot.description.impl.NameImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
@@ -15,7 +14,7 @@ import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProteinRecNameImplTest {
 

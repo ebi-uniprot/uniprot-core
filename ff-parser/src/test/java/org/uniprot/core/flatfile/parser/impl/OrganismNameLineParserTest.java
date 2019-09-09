@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 

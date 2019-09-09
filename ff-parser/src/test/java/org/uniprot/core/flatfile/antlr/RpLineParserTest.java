@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rp.RpLineObject;
@@ -8,7 +8,8 @@ import org.uniprot.core.flatfile.parser.impl.rp.RpLineObject;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RpLineParserTest {
 	@Test
@@ -30,21 +31,17 @@ public class RpLineParserTest {
 		verify(obj, Arrays.asList(new String[] {"NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]"}));
 
 	}
-	@Test(expected =RuntimeException.class)
+	@Test
 	public void test3() {
 		String rgLines = "RP   NUCLEOTIDE sequence [MRNA].\n";
 		UniprotLineParser<RpLineObject> parser = new DefaultUniprotLineParserFactory().createRpLineParser();
-		RpLineObject obj = parser.parse(rgLines);
-		verify(obj, Arrays.asList(new String[] {"NUCLEOTIDE sequence [MRNA]"}));
-
+		assertThrows(RuntimeException.class, ()->parser.parse(rgLines));
 	}
-	@Test(expected =RuntimeException.class)
+	@Test
 	public void test4() {
 		String rgLines = "RP   NUCLEOTIDE SEQUENCE [MRNA]\n";
 		UniprotLineParser<RpLineObject> parser = new DefaultUniprotLineParserFactory().createRpLineParser();
-		RpLineObject obj = parser.parse(rgLines);
-		verify(obj, Arrays.asList(new String[] {"NUCLEOTIDE sequence [MRNA]"}));
-
+		assertThrows(RuntimeException.class, ()->parser.parse(rgLines));
 	}
 	@Test
 	public void testMulti() {

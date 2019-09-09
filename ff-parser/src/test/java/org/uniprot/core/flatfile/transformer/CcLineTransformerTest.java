@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CcLineTransformerTest {
 	private CcLineTransformer transformer =new CcLineTransformer();

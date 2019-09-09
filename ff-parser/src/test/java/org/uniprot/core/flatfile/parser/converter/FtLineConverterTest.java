@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
@@ -12,7 +12,7 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FtLineConverterTest {
     private final FtLineConverter converter = new FtLineConverter();

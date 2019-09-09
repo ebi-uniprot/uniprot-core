@@ -1,7 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
 public class SubcellularScoredTest extends CommentScoreTestBase {

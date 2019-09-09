@@ -1,14 +1,13 @@
 package org.uniprot.core.citation.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.CitationType;
-import org.uniprot.core.citation.builder.BookBuilder;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookBuilderTest extends AbstractCitationBuilderTest {
 

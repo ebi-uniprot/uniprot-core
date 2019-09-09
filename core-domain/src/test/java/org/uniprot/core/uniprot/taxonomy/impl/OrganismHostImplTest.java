@@ -1,14 +1,13 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
-import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostImpl;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrganismHostImplTest {
 

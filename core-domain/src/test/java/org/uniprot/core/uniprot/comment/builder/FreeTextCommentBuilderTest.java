@@ -1,10 +1,9 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
@@ -15,7 +14,8 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 
 public class FreeTextCommentBuilderTest {
@@ -179,10 +179,10 @@ public class FreeTextCommentBuilderTest {
                 .build();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testBuildNoneFreeTextComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
-        buildFreeTextComment(CommentType.COFACTOR, texts);
+        assertThrows(IllegalArgumentException.class, () -> buildFreeTextComment(CommentType.COFACTOR, texts));
     }
 
     private List<EvidencedValue> createEvidenceValues2() {

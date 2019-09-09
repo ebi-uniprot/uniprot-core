@@ -1,20 +1,18 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
-import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 public class MassSpectrometryCommentBuilderTest {

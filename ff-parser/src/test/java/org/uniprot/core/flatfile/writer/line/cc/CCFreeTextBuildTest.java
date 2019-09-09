@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
@@ -313,7 +313,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 			doTest(ccLine, comment);
 	}
 
-	@Ignore
+	@Disabled
 	public void testCOFACTOR() {
 		String ccLine =("CC   -!- COFACTOR: FAD (By similarity).");
 		String text ="FAD";
@@ -325,7 +325,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 			doTest(ccLine, comment);
 	}
 
-	@Ignore
+	@Disabled
 	public void testCOFACTORWithEvidence() {
 		String ccLine =("CC   -!- COFACTOR: FAD (By similarity). {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
 				 		"CC       ECO:0000313|Ensembl:ENSP00000409133}.");

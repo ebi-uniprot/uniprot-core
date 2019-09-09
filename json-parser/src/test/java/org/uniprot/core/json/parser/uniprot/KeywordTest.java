@@ -1,14 +1,14 @@
 package org.uniprot.core.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.Keyword;
 import org.uniprot.core.uniprot.builder.KeywordBuilder;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales

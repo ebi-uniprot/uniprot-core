@@ -1,6 +1,6 @@
 package org.uniprot.core.scorer.uniprotkb.dbx;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.HamapScored;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;

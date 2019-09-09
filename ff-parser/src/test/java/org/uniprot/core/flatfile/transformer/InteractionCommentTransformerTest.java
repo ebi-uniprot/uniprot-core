@@ -1,15 +1,12 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
-import org.uniprot.core.flatfile.transformer.InteractionCommentTransformer;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.InteractionType;
 
-import static org.junit.Assert.*;
-
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InteractionCommentTransformerTest {
 	private final InteractionCommentTransformer transformer = new InteractionCommentTransformer();

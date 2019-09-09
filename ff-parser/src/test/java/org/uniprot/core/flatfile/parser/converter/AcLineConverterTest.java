@@ -1,15 +1,14 @@
 package org.uniprot.core.flatfile.parser.converter;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import org.uniprot.core.flatfile.parser.impl.ac.UniProtAcLineObject;
 import org.uniprot.core.uniprot.UniProtAccession;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AcLineConverterTest {
 	private AcLineConverter converter = new AcLineConverter();

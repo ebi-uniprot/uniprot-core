@@ -1,9 +1,7 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.flatfile.transformer.CommentTransformerHelper;
-import org.uniprot.core.flatfile.transformer.DiseaseCommentTransformer;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
@@ -12,8 +10,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DiseaseCommentTransformerTest {
     private final DiseaseCommentTransformer transformer = new DiseaseCommentTransformer();

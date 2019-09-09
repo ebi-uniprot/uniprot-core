@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.exception.DatabaseTypeNotExistException;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
@@ -9,9 +9,7 @@ import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DrLineConverterTest {
 	final private DrLineConverter converter = new DrLineConverter();
@@ -66,7 +64,7 @@ public class DrLineConverterTest {
 				"IPR007031", "Poxvirus_VLTF3", null, null );
 	}
 	
-	@Test (expected = DatabaseTypeNotExistException.class) 
+	@Test
 	public void testWrongDr()throws Exception{
 		/**
 		 *  val drLine = """DR   EMBL2; AY548484; AAT09660.1; -; Genomic_DNA.
@@ -75,8 +73,7 @@ public class DrLineConverterTest {
 		DrLineObject obj = new DrLineObject();
 		obj.drObjects.add(creatDrObject("EMBL2", "AY548484", "AAT09660.1", "-", "Genomic_DNA"  ));
 		
-		UniProtDrObjects drObjects= converter.convert(obj);
-		assertNull(drObjects);
+		assertThrows(DatabaseTypeNotExistException.class, () -> converter.convert(obj));
 	}
 	
 	@Test 

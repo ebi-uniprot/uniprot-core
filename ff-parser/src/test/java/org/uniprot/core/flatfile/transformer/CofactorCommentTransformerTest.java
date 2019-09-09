@@ -3,19 +3,16 @@ package org.uniprot.core.flatfile.transformer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.flatfile.transformer.CofactorCommentTransformer;
-import org.uniprot.core.flatfile.transformer.CommentTransformerHelper;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 

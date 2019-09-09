@@ -1,7 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb.feature;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FeatureScoredTest {
 
@@ -224,7 +224,7 @@ public class FeatureScoredTest {
         testFeatureScore(line, 0.0);
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void shouldNonTerScore0() throws Exception {
         List<Feature> features = TRANSFORMER.transformNoHeader("FT   NON_TER      465    466\n");
@@ -244,7 +244,7 @@ public class FeatureScoredTest {
 
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void shouldIntramem2Score3() throws Exception {
         List<Feature> features = TRANSFORMER

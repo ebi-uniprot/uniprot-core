@@ -1,11 +1,10 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UniProtAccessionImplTest {
 

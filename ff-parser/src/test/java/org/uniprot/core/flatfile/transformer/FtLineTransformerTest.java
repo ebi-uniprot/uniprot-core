@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineTransformer;
 import org.uniprot.core.uniprot.feature.Feature;
@@ -8,9 +8,7 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FtLineTransformerTest {
 	private FtLineTransformer transformer =new FtLineTransformer();

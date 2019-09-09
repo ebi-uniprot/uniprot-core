@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
 import com.google.common.base.Strings;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;

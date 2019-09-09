@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.builder.*;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class RlLineConverterTest {
     private final RlLineConverter converter = new RlLineConverter();

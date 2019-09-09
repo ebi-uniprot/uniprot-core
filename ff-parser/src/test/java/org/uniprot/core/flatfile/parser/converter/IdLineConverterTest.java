@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineConverter;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineObject;
 import org.uniprot.core.uniprot.UniProtEntryType;
@@ -8,7 +8,7 @@ import org.uniprot.core.uniprot.UniProtId;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IdLineConverterTest {
 	private IdLineConverter converter = new IdLineConverter();

@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
@@ -10,8 +10,8 @@ import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
 import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales

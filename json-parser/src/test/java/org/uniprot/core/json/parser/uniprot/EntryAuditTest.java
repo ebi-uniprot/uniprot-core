@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.EntryAudit;
 import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
@@ -9,7 +9,7 @@ import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
 import java.time.LocalDate;
 import java.time.Month;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  *
  * @author lgonzales

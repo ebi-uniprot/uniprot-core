@@ -5,7 +5,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
 import org.uniprot.core.xml.uniprot.EvidenceConverter;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 public class EvidenceConverterTest {

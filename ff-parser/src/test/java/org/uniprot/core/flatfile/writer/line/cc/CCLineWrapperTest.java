@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
@@ -8,7 +8,6 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class CCLineWrapperTest extends CCBuildTestAbstr {
     @Test

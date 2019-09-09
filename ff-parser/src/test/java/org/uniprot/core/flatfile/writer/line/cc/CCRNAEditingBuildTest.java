@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;

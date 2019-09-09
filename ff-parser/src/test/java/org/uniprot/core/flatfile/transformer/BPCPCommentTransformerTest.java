@@ -1,13 +1,12 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
-import org.uniprot.core.flatfile.transformer.BPCPCommentTransformer;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BPCPCommentTransformerTest {
     private final BPCPCommentTransformer transformer = new BPCPCommentTransformer();

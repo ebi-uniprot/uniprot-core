@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -14,8 +14,8 @@ import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales

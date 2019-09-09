@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
-import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class WebResourceCommentBuilderTest {
 

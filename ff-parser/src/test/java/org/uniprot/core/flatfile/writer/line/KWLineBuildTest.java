@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.impl.kw.KWLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class KWLineBuildTest {
     KWLineBuilder builder = new KWLineBuilder();
@@ -164,7 +164,6 @@ public class KWLineBuildTest {
         String resultString = ffLine.toString();
         System.out.println(resultString);
         System.out.println("\n");
-        // System.out.println(deLine);
         assertEquals(deLine, resultString);
     }
 
@@ -173,5 +172,4 @@ public class KWLineBuildTest {
         return evIds.stream().map(EvidenceHelper::parseEvidenceLine).collect(Collectors.toList());
 
     }
-
 }

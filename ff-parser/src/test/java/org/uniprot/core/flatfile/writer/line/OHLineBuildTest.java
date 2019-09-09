@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.flatfile.parser.impl.oh.OHLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -10,7 +10,7 @@ import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 

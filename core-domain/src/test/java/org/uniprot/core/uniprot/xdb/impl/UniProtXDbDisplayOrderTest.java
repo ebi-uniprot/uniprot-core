@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprot.xdb.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 import org.uniprot.core.uniprot.xdb.UniProtXDbDisplayOrder;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UniProtXDbDisplayOrderTest {
 

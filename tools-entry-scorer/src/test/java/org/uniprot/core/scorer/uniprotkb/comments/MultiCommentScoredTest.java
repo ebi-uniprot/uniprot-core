@@ -1,6 +1,6 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MultiCommentScoredTest extends CommentScoreTestBase {
 

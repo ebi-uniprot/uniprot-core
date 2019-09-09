@@ -1,6 +1,6 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
@@ -10,7 +10,7 @@ import org.uniprot.core.scorer.uniprotkb.Consensus;
 import org.uniprot.core.scorer.uniprotkb.ProteinDescriptionScored;
 import org.uniprot.core.uniprot.description.ProteinDescription;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Tests if the DE line is parsed correctly for SwissProt and TrEMBL entries.

@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineConverter;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineObject;
 import org.uniprot.core.uniprot.Keyword;
@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class KwLineConverterTest {
 	private final KwLineConverter converter =new  KwLineConverter(new HashMap<>(),true);

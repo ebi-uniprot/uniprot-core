@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ss.SSEvidenceLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.ss.SSInternalLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.ss.SSLineBuilder;
@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SSLineBuildTest {
     @Test

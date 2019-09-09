@@ -14,7 +14,7 @@ import org.uniprot.core.uniprot.UniProtEntry;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class FlatfileRoundTripMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlatfileRoundTripMain.class);

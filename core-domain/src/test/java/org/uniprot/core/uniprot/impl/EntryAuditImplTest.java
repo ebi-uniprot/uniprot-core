@@ -1,14 +1,13 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.EntryAudit;
-import org.uniprot.core.uniprot.impl.EntryAuditImpl;
 
 import java.time.LocalDate;
 import java.time.Month;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EntryAuditImplTest {
 

@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.AlternativeNameSequenceEnum;
@@ -10,7 +10,7 @@ import org.uniprot.core.uniprot.comment.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CcAPConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);

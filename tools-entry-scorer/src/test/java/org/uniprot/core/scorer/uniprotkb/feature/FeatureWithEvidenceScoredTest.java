@@ -1,6 +1,6 @@
 package org.uniprot.core.scorer.uniprotkb.feature;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.feature.Feature;
 import java.util.List;
 
 import static java.util.Collections.singletonList;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FeatureWithEvidenceScoredTest {
     @Test

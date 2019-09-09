@@ -1,6 +1,6 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
@@ -11,7 +11,7 @@ import org.uniprot.core.uniprot.UniProtReference;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author jieluo

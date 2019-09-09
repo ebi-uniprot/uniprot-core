@@ -1,17 +1,15 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EvidencedValueImplTest {
 

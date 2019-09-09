@@ -20,7 +20,7 @@ import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rp.RpLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rp.RpLineObject;
 
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RpLineConverterTest {
 	private final RpLineConverter converter = new RpLineConverter();

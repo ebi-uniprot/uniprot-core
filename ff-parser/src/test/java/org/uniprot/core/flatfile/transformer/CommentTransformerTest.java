@@ -1,17 +1,16 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilderFactory;
-import org.uniprot.core.flatfile.transformer.CommentTransformerHelper;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class CommentTransformerTest {
     @Test
@@ -95,7 +94,7 @@ public class CommentTransformerTest {
 
     }
 
-    @Ignore
+    @Disabled
     public void testSequenceCaution() {
         String tString = "SEQUENCE CAUTION: Sequence=BAA11638.1;"
                 + " Type=Erroneous initiation;";

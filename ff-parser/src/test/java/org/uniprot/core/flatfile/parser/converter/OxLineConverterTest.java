@@ -1,7 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ox.OxLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ox.OxLineObject;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -10,7 +9,7 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OxLineConverterTest {
 	@Test
@@ -20,7 +19,7 @@ public class OxLineConverterTest {
 		osO.taxonomy_id =9606;
 		OxLineConverter converter = new OxLineConverter();
 		Organism taxId =converter.convert(osO);
-		TestCase.assertEquals(9606, taxId.getTaxonId());	
+		assertEquals(9606, taxId.getTaxonId());
 	}
 	@Test
 	public void testEvidence(){
@@ -35,7 +34,7 @@ public class OxLineConverterTest {
 		
 		OxLineConverter converter = new OxLineConverter();
 		Organism taxId =converter.convert(osO);
-		TestCase.assertEquals(9606, taxId.getTaxonId());	
+		assertEquals(9606, taxId.getTaxonId());
 		List<Evidence> eviIds = taxId.getEvidences();
 		assertEquals(2, eviIds.size());
 		Evidence eviId = eviIds.get(0);

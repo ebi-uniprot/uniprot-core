@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
@@ -11,7 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.rx.RXLineBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class RXLineBuilderTest {

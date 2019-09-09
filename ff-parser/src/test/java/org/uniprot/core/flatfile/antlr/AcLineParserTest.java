@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
@@ -8,8 +8,7 @@ import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AcLineParserTest {
 	@Test
@@ -21,12 +20,11 @@ public class AcLineParserTest {
 		assertTrue(obj.secondaryAcc.isEmpty());
 	}
 
-	@Test(expected = RuntimeException.class)
+	@Test
 	public void inValidOneLineOneAcc() {
 		String ac_one_line = "AC   Q6GDDZX4;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
-	 parser.parse(ac_one_line);
-
+		assertThrows(RuntimeException.class, ()->parser.parse(ac_one_line));
 	}
 
 	@Test

@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
 import com.google.common.base.Strings;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;

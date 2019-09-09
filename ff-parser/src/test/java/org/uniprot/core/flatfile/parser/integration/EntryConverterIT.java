@@ -2,7 +2,7 @@ package org.uniprot.core.flatfile.parser.integration;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class EntryConverterIT {
 	@Test

@@ -10,7 +10,7 @@ import org.uniprot.core.xml.uniprot.description.NameConverter;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createEvidences;
 import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createName;
 

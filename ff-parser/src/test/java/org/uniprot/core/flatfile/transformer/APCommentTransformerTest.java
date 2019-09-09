@@ -1,13 +1,9 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
-import org.uniprot.core.flatfile.transformer.APCommentTransformer;
-import org.uniprot.core.flatfile.transformer.CommentTransformerHelper;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
 
-import static org.junit.Assert.*;
-
-
+import static org.junit.jupiter.api.Assertions.*;
 
 public class APCommentTransformerTest {
 	private final APCommentTransformer transformer

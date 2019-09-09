@@ -1,14 +1,13 @@
 package org.uniprot.core.cv.impl;
 
 
-import org.junit.Test;
-import org.uniprot.core.cv.impl.SubcellularLocationFileReader;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SubcellLocationReaderTest {
 
@@ -27,19 +26,18 @@ public class SubcellLocationReaderTest {
                         "//");
         List<SubcellularLocationEntry> retList = parser.parseLines(input);
 
-        assertEquals("Size shoud be exactly 1", 1,retList.size());
+        assertEquals(1, retList.size(), "Size shoud be exactly 1");
         SubcellularLocationEntry retObj = retList.get(0);
-        assertEquals("Identifier check", "Cell tip", retObj.getId());
-        assertEquals("Accession test", "SL-0456", retObj.getAccession());
-        assertEquals("Definition match",
-                "The region at either end of the longest axis of a cylindrical or elongated cell, where polarized growth may occur.",
-                retObj.getDefinition());
-        assertEquals("Content of subc. loc. lines match", "Cell tip", retObj.getContent());
+        assertEquals("Cell tip", retObj.getId(), "Identifier check");
+        assertEquals("SL-0456", retObj.getAccession(), "Accession test");
+        assertEquals("The region at either end of the longest axis of a cylindrical or elongated cell, where polarized growth may occur.",
+                retObj.getDefinition(), "Definition match");
+        assertEquals("Cell tip", retObj.getContent(), "Content of subc. loc. lines match");
 
 
-        assertEquals("Size of GO mapping shoud be exactly 1", 1,retObj.getGeneOntologies().size());
-        assertEquals("GO id check", "GO:0051286", retObj.getGeneOntologies().get(0).getGoId());
-        assertEquals("GO definition check", "cell tip", retObj.getGeneOntologies().get(0).getGoTerm());
+        assertEquals(1, retObj.getGeneOntologies().size(), "Size of GO mapping shoud be exactly 1");
+        assertEquals("GO:0051286", retObj.getGeneOntologies().get(0).getGoId(), "GO id check");
+        assertEquals("cell tip", retObj.getGeneOntologies().get(0).getGoTerm(), "GO definition check");
     }
 
     @Test
@@ -147,13 +145,12 @@ public class SubcellLocationReaderTest {
                         "-----------------------------------------------------------------------");
 
         List<SubcellularLocationEntry> retList = parser.parseLines(input);
-        assertEquals("Return list size ", 4, retList.size());
-        assertEquals("Is a Hierarchy of parent size", 1, retList.get(0).getIsA().size());
-        assertEquals("Part of Hierarchy of parent size", 2, retList.get(0).getPartOf().size());
+        assertEquals(4, retList.size(), "Return list size ");
+        assertEquals(1, retList.get(0).getIsA().size(), "Is a Hierarchy of parent size");
+        assertEquals(2, retList.get(0).getPartOf().size(), "Part of Hierarchy of parent size");
 
-        assertEquals("Is a Hierarchy of parent", "SL-0162", retList.get(0).getIsA().get(0).getAccession());
-        assertEquals("Part of Hierarchy of parent", "Endomembrane system",
-                retList.get(0).getPartOf().get(1).getId());
+        assertEquals("SL-0162", retList.get(0).getIsA().get(0).getAccession(), "Is a Hierarchy of parent");
+        assertEquals("Endomembrane system", retList.get(0).getPartOf().get(1).getId(), "Part of Hierarchy of parent");
     }
 
 }

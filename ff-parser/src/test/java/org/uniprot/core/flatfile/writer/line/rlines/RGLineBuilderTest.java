@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rg.RGLineBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RGLineBuilderTest {
 	private final RGLineBuilder builder = new RGLineBuilder();

@@ -1,17 +1,8 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.AbsorptionBuilder;
-import org.uniprot.core.uniprot.comment.builder.BPCPCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.KineticParametersBuilder;
-import org.uniprot.core.uniprot.comment.builder.MaximumVelocityBuilder;
-import org.uniprot.core.uniprot.comment.builder.MichaelisConstantBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
-import org.uniprot.core.uniprot.comment.builder.PhDependenceBuilder;
-import org.uniprot.core.uniprot.comment.builder.RedoxPotentialBuilder;
-import org.uniprot.core.uniprot.comment.builder.TemperatureDependenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
@@ -19,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 

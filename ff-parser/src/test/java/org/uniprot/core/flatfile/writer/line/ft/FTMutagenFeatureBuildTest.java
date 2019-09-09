@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;

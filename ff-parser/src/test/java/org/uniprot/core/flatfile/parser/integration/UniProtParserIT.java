@@ -2,7 +2,7 @@ package org.uniprot.core.flatfile.parser.integration;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniProtEntryIterator;
 import org.uniprot.core.flatfile.parser.UniProtParserHelper;
 import org.uniprot.core.uniprot.UniProtEntry;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UniProtParserIT {
 	@Test

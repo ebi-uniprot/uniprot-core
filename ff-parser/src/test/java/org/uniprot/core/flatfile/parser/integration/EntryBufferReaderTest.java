@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.integration;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EntryBufferReaderTest {
 	@Test

@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.Submission;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RLLineBuilderTest {
     private final RLLineBuilder builder = new RLLineBuilder();

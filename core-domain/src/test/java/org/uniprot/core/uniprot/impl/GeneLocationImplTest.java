@@ -1,16 +1,15 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.GeneEncodingType;
 import org.uniprot.core.uniprot.GeneLocation;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.impl.GeneLocationImpl;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 public class GeneLocationImplTest {

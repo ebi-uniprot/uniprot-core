@@ -1,10 +1,11 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineConverter;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SqLineConverterTest {
 	private SqLineConverter converter = new SqLineConverter();
@@ -24,11 +25,9 @@ public class SqLineConverterTest {
 		obj.sequence =sequence;
 		
 		Sequence seq = converter.convert(obj);
-		TestCase.assertEquals(256, seq.getLength());
-		TestCase.assertEquals(29735, seq.getMolWeight());
-		TestCase.assertEquals("B4840739BF7D4121", seq.getCrc64());
-		TestCase.assertEquals(sequence, seq.getValue());
-		
+		assertEquals(256, seq.getLength());
+		assertEquals(29735, seq.getMolWeight());
+		assertEquals("B4840739BF7D4121", seq.getCrc64());
+		assertEquals(sequence, seq.getValue());
 	}
-	
 }

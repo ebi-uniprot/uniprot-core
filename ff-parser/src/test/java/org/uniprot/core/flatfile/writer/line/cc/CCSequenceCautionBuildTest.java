@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCSequenceCautionCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
@@ -10,8 +10,7 @@ import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
 	CCSequenceCautionCommentLineBuilder builder = new CCSequenceCautionCommentLineBuilder();
@@ -173,5 +172,4 @@ public class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
 		System.out.println(value);
 		assertEquals(ccLine, value);
 	}
-	
 }

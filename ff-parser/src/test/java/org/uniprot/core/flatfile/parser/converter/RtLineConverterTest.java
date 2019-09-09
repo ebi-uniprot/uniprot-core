@@ -1,9 +1,10 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rt.RtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rt.RtLineObject;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RtLineConverterTest {
 	@Test
@@ -13,7 +14,6 @@ public class RtLineConverterTest {
 		RtLineConverter converter = new RtLineConverter();
 		
 		String title = converter.convert(rt);
-		TestCase.assertEquals("A novel adapter protein employs a phosphotyrosine binding domain", title);
-		
+		assertEquals("A novel adapter protein employs a phosphotyrosine binding domain", title);
 	}
 }

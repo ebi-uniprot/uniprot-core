@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CcSubCellLocationConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>());
@@ -37,7 +37,6 @@ public class CcSubCellLocationConverterTest {
 		SubcellularLocationComment scComment = (SubcellularLocationComment) comment;
 		
 		assertNotNull(scComment);
-		
 	}
 	
 	@Test

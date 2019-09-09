@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineConverter;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject.OgEnum;
@@ -11,8 +11,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OgLineConverterTest {
 	private final OgLineConverter converter = new OgLineConverter();

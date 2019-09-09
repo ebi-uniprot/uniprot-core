@@ -1,7 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rc.RcLineObject;
 import org.uniprot.core.uniprot.ReferenceComment;
@@ -10,6 +9,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RcLineConverterTest {
 	@Test
@@ -27,16 +28,16 @@ public class RcLineConverterTest {
 		rcline.rcs.add(rc2);
 		RcLineConverter converter = new RcLineConverter();
 		List<ReferenceComment> sss =converter.convert(rcline);
-		TestCase.assertEquals(3,  sss.size());
+		assertEquals(3,  sss.size());
 		ReferenceComment strain = sss.get(0);
 		ReferenceComment tissue1 = sss.get(1);
 		ReferenceComment tissue2 = sss.get(2);
-		TestCase.assertEquals(ReferenceCommentType.STRAIN, strain.getType());
-		TestCase.assertEquals("Holstein", strain.getValue());
-		TestCase.assertEquals(ReferenceCommentType.TISSUE, tissue1.getType());
-		TestCase.assertEquals("Lymph node", tissue1.getValue());
-		TestCase.assertEquals(ReferenceCommentType.TISSUE, tissue2.getType());
-		TestCase.assertEquals("Mammary gland", tissue2.getValue());
+		assertEquals(ReferenceCommentType.STRAIN, strain.getType());
+		assertEquals("Holstein", strain.getValue());
+		assertEquals(ReferenceCommentType.TISSUE, tissue1.getType());
+		assertEquals("Lymph node", tissue1.getValue());
+		assertEquals(ReferenceCommentType.TISSUE, tissue2.getType());
+		assertEquals("Mammary gland", tissue2.getValue());
 		
 	}
 	
@@ -65,30 +66,30 @@ public class RcLineConverterTest {
 		rcline.rcs.add(rc2);
 		RcLineConverter converter = new RcLineConverter();
 		List<ReferenceComment> sss =converter.convert(rcline);
-		TestCase.assertEquals(3,  sss.size());
+		assertEquals(3,  sss.size());
 		ReferenceComment strain = sss.get(0);
 		ReferenceComment tissue1 = sss.get(1);
 		ReferenceComment tissue2 = sss.get(2);
-		TestCase.assertEquals(ReferenceCommentType.STRAIN, strain.getType());
-		TestCase.assertEquals("Holstein", strain.getValue());
-		TestCase.assertEquals(ReferenceCommentType.TISSUE, tissue1.getType());
-		TestCase.assertEquals("Lymph node", tissue1.getValue());
-		TestCase.assertEquals(ReferenceCommentType.TISSUE, tissue2.getType());
-		TestCase.assertEquals("Mammary gland", tissue2.getValue());
+		assertEquals(ReferenceCommentType.STRAIN, strain.getType());
+		assertEquals("Holstein", strain.getValue());
+		assertEquals(ReferenceCommentType.TISSUE, tissue1.getType());
+		assertEquals("Lymph node", tissue1.getValue());
+		assertEquals(ReferenceCommentType.TISSUE, tissue2.getType());
+		assertEquals("Mammary gland", tissue2.getValue());
 		List<Evidence> eviIds = strain.getEvidences();
-		TestCase.assertEquals(2, eviIds.size());
+		assertEquals(2, eviIds.size());
 		Evidence eviId1 = eviIds.get(0);
 		Evidence eviId2 = eviIds.get(1);
-		TestCase.assertEquals("ECO:0000313|Proteomes:UP000007751", eviId1.getValue());
-		TestCase.assertEquals("ECO:0000313|Proteomes:UP000007752", eviId2.getValue());
+		assertEquals("ECO:0000313|Proteomes:UP000007751", eviId1.getValue());
+		assertEquals("ECO:0000313|Proteomes:UP000007752", eviId2.getValue());
 		eviIds = tissue1.getEvidences();
-		TestCase.assertEquals(0, eviIds.size());
+		assertEquals(0, eviIds.size());
 		 
 		eviIds = tissue2.getEvidences();
-		TestCase.assertEquals(2, eviIds.size());
+		assertEquals(2, eviIds.size());
 		eviId1 = eviIds.get(0);
 		 eviId2 = eviIds.get(1);
-		TestCase.assertEquals("ECO:0000313|Proteomes:UP000007752", eviId1.getValue());
-		TestCase.assertEquals("ECO:0000313|Proteomes:UP000007753", eviId2.getValue());
+		assertEquals("ECO:0000313|Proteomes:UP000007752", eviId1.getValue());
+		assertEquals("ECO:0000313|Proteomes:UP000007753", eviId2.getValue());
 	}
 }

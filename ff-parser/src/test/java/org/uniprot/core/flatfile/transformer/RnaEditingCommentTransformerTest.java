@@ -1,11 +1,11 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.transformer.RnaEditingCommentTransformer;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class RnaEditingCommentTransformerTest {
     private final RnaEditingCommentTransformer transformer = new RnaEditingCommentTransformer();
@@ -24,7 +24,7 @@ public class RnaEditingCommentTransformerTest {
         assertEquals(1, comment.getNote().getTexts().get(0).getEvidences().size());
         
     }
-    
+
     @Test
     public void testQ85BW1(){
         String val ="RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687}"

@@ -7,7 +7,7 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.TestHelper;
 import org.uniprot.core.impl.SequenceImpl;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SequenceImplTest {
     private static Sequence sequence;
@@ -21,7 +21,6 @@ public class SequenceImplTest {
     @Test
     public void testGetLength() {
         assertEquals(40, sequence.getLength());
-
     }
 
     @Test

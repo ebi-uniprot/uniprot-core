@@ -2,15 +2,11 @@ package org.uniprot.core.cv.pathway;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.pathway.Pathway;
-import org.uniprot.core.cv.pathway.PathwayCache;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PathwayCacheIT {
 private static List<Pathway> pathways;

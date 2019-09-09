@@ -1,12 +1,11 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.id.IDLineBuilder;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineObject;
 import org.uniprot.core.flatfile.writer.FFLine;
 
-import static org.junit.Assert.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IDLineBuildTest {
 	IDLineBuilder builder = new IDLineBuilder();

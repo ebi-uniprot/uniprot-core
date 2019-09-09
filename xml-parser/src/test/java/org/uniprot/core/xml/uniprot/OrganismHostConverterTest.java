@@ -6,7 +6,7 @@ import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.OrganismType;
 import org.uniprot.core.xml.uniprot.OrganismHostConverter;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrganismHostConverterTest {
 

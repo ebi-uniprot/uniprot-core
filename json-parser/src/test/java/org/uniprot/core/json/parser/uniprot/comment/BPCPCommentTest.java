@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.*;
@@ -11,7 +11,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 /**
  *
  * @author lgonzales
@@ -63,7 +63,7 @@ public class BPCPCommentTest {
 
         JsonNode maximumVelocities = kineticParameters.get("maximumVelocities").get(0);
         assertNotNull(maximumVelocities.get("velocity"));
-        assertEquals(1.0d,maximumVelocities.get("velocity").asDouble(),0.0d);
+        assertEquals(1.0d,maximumVelocities.get("velocity").asDouble(),0.0000001d);
         assertNotNull(maximumVelocities.get("unit"));
         assertEquals("unit1",maximumVelocities.get("unit").asText());
         assertNotNull(maximumVelocities.get("enzyme"));
@@ -74,7 +74,7 @@ public class BPCPCommentTest {
 
         JsonNode michaelisConstants = kineticParameters.get("michaelisConstants").get(0);
         assertNotNull(michaelisConstants.get("constant"));
-        assertEquals(2.0999999046325684,michaelisConstants.get("constant").asDouble(),0.0d);
+        assertEquals(2.0999999046325684,michaelisConstants.get("constant").asDouble(),0.0000001d);
         assertNotNull(michaelisConstants.get("unit"));
         assertEquals("uM",michaelisConstants.get("unit").asText());
         assertNotNull(michaelisConstants.get("substrate"));

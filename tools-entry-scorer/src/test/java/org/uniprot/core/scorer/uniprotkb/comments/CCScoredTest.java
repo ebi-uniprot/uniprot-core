@@ -1,6 +1,6 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
 import org.uniprot.core.scorer.uniprotkb.comments.CommentScored;
@@ -16,7 +16,7 @@ import org.uniprot.core.uniprot.comment.CommentType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.comment.CommentType.*;
 
 public class CCScoredTest {

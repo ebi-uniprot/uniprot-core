@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CatalyticActivityCommentTransformerTest {
 	private static CatalyticActivityCommentTransformer transformer ;

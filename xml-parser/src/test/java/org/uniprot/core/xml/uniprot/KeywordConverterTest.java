@@ -12,7 +12,7 @@ import org.uniprot.core.xml.uniprot.KeywordConverter;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 
 class KeywordConverterTest {

@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 import org.uniprot.core.uniprot.InternalSection;
@@ -9,7 +9,7 @@ import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SsLineConverterTest {
     private SsLineConverter converter = new SsLineConverter();

@@ -6,12 +6,11 @@ import org.uniprot.core.TestHelper;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.impl.DiseaseCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 
