@@ -5,22 +5,21 @@ import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverterUtil;
 
 import java.util.regex.Matcher;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class FtLineConverterUtilTest {
+class FtLineConverterUtilTest {
 	@Test
-	public void testCardohydNoDescr() {
+	void testCardohydNoDescr() {
 		String val = "O-linked (GalNAc...) serine";
 		Matcher matcher = FtLineConverterUtil.CARBOHYD_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
 		assertEquals("O-linked", matcher.group(1));
 		assertEquals("(GalNAc...) serine", matcher.group(2));
-		assertEquals(null, matcher.group(5));
+		assertNull(matcher.group(5));
 		
 	}
 	@Test
-	public void testCardohydSingleDes() {
+	void testCardohydSingleDes() {
 		String val = "O-linked (GlcNAc) tyrosine; by Photorhabdus PAU_02230";
 		Matcher matcher = FtLineConverterUtil.CARBOHYD_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
@@ -29,7 +28,7 @@ public class FtLineConverterUtilTest {
 		assertEquals("by Photorhabdus PAU_02230", matcher.group(5));
 	}
 	@Test
-	public void testCardohydMultiDes() {
+	void testCardohydMultiDes() {
 		String val = "N-linked (GlcNAc...) asparagine; atypical; partial";
 		Matcher matcher = FtLineConverterUtil.CARBOHYD_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
@@ -39,7 +38,7 @@ public class FtLineConverterUtilTest {
 	}
 	
 	@Test
-	public void testVarSeqMissing() {
+	void testVarSeqMissing() {
 		String val = "Missing (in isoform Beta)";
 		Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
@@ -62,7 +61,7 @@ public class FtLineConverterUtilTest {
 		}
 	}
 	@Test
-	public void testVarSeq2() {
+	void testVarSeq2() {
 		String val = "KIGTTLPEVPT -> RNWHRPCLRCQR (in isoform 2 and isoform 3)";
 		Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
 	
@@ -78,7 +77,7 @@ public class FtLineConverterUtilTest {
 		
 	}
 	@Test
-	public void testVarSeq3() {
+	void testVarSeq3() {
 		String val = "GEARPARAQKPAQL -> V (in isoform SV1, isoform 2, isoform SV5, isoform 8, isoform SV10 and isoform SV11)";
 		Matcher matcher = FtLineConverterUtil.VAR_SEQ_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
@@ -88,11 +87,10 @@ public class FtLineConverterUtilTest {
 		assertEquals("GEARPARAQKPAQL", original);
 		assertEquals("V", other);
 		assertEquals("isoform SV1, isoform 2, isoform SV5, isoform 8, isoform SV10 and isoform SV11", matcher.group(10));
-	
 	}
 	
 	@Test
-	public void testVarSeq4() {
+	void testVarSeq4() {
 		String original = 
 				"MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLGVSGAGGALALGPERLSAFVFPGELLL"
 						+ "RLLRMIILPLVVCSLIGGAASLDPGALGRLGAW"
@@ -112,7 +110,7 @@ public class FtLineConverterUtilTest {
 	}
 	
 	@Test
-	public void testVarSeq5() {
+	void testVarSeq5() {
 		String original = 
 				"APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV";
 		String val ="APLVPIFSFGENDLFDQIPNSSGSWLRYIQNRLQKIMGISLPLFHGRGVFQYSFGLIPYRRPITTVV"
@@ -132,20 +130,20 @@ public class FtLineConverterUtilTest {
 	
 	
 	@Test
-	public void testVariantMissing() {
+	void testVariantMissing() {
 		String val = "Missing (in strain: Isolate clinical 49A)";
 		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(val);
 	
 		assertTrue(matcher.matches());
 		assertEquals("Missing", matcher.group(1));
-		assertEquals(null, matcher.group(3));
-		assertEquals(null, matcher.group(5));
+		assertNull(matcher.group(3));
+		assertNull(matcher.group(5));
 		assertEquals("in strain: Isolate clinical 49A", matcher.group(9));
 
 	}
 	
 	@Test
-	public void testVariantStandard() {
+	void testVariantStandard() {
 		String val = "Y -> C (in dbSNP:rs56074660)";
 		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(val);
 		
@@ -157,7 +155,7 @@ public class FtLineConverterUtilTest {
 
 	}
 	@Test
-	public void testVariantStandard2() {
+	void testVariantStandard2() {
 		String val = "Y -> C(in dbSNP:rs56074660)";
 		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(val);
 		
@@ -169,7 +167,7 @@ public class FtLineConverterUtilTest {
 
 	}
 	@Test
-	public void testVariantEmpty() {
+	void testVariantEmpty() {
 		String val = "PL -> GE ()";
 		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(val);
 		
@@ -177,11 +175,11 @@ public class FtLineConverterUtilTest {
 		assertEquals("PL -> GE", matcher.group(1));
 		assertEquals("PL", matcher.group(3));
 		assertEquals("GE", matcher.group(5));
-		assertEquals(null, matcher.group(9));
+		assertNull(matcher.group(9));
 
 	}
 	@Test
-	public void testVariantEmpty2() {
+	void testVariantEmpty2() {
 		String val = "R -> K";
 		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(val);
 		
@@ -189,12 +187,12 @@ public class FtLineConverterUtilTest {
 		assertEquals("R -> K", matcher.group(1));
 		assertEquals("R", matcher.group(3));
 		assertEquals("K", matcher.group(5));
-		assertEquals(null, matcher.group(8));
+		assertNull(matcher.group(8));
 
 	}
 	
 	@Test
-	public void testVariantEmpty3() {
+	void testVariantEmpty3() {
 		String val = "ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD";
 		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(val);
 		
@@ -202,39 +200,37 @@ public class FtLineConverterUtilTest {
 		assertEquals("ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPDLKVPVVQKVTKRLGVTSPD", matcher.group(1));
 		assertEquals("ASAIILRSQLIVALAQKLSRTVGVNKAV", matcher.group(3));
 		assertEquals("ITAVTLPPDLKVPVVQKVTKRLGVTSPD", matcher.group(5));
-		assertEquals(null, matcher.group(8));
-
+		assertNull(matcher.group(8));
 	}
 	
 	@Test
-	public void testVariantMissingEmpty() {
+	void testVariantMissingEmpty() {
 		String val = "Missing";
 		Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(val);
 		
 		assertTrue(matcher.matches());
 		assertEquals("Missing", matcher.group(1));
-		assertEquals(null, matcher.group(3));
-		assertEquals(null, matcher.group(5));
-		assertEquals(null, matcher.group(8));
-
+		assertNull( matcher.group(3));
+		assertNull(matcher.group(5));
+		assertNull(matcher.group(8));
 	}
 
 	
 	@Test
-	public void testMutagenMissing() {
+	void testMutagenMissing() {
 		String val = "Missing: Leads to hyper-activity and constitutive expression of MDR1";
 		Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(val);
 		
 		assertTrue(matcher.matches());
 		assertEquals("Missing", matcher.group(1));
-		assertEquals(null, matcher.group(3));
-		assertEquals(null, matcher.group(5));
+		assertNull(matcher.group(3));
+		assertNull(matcher.group(5));
 		assertEquals("Leads to hyper-activity and constitutive expression of MDR1", matcher.group(8));
 
 	}
 	
 	@Test
-	public void testMutagenSingle() {
+	void testMutagenSingle() {
 		String val = "H->A: Decreased activity";
 		Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(val);
 		
@@ -247,7 +243,7 @@ public class FtLineConverterUtilTest {
 	}
 	
 	@Test
-	public void testMutagenMulti() {
+	void testMutagenMulti() {
 		String val = "W->D,N,G: Strongly reduced enzyme activity but does not affect UDP-binding";
 		Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(val);
 		
@@ -261,7 +257,7 @@ public class FtLineConverterUtilTest {
 
 	}
 	@Test
-	public void testMutagenMultiSpace() {
+	void testMutagenMultiSpace() {
 		String val = "W -> D,N,G: Strongly reduced enzyme activity but does not affect UDP-binding";
 		Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(val);
 		
@@ -275,13 +271,13 @@ public class FtLineConverterUtilTest {
 
 	}
 	@Test
-	public void testConflictDescMissing() {
+	void testConflictDescMissing() {
 		String val="Missing (in Ref. 3; AA sequence)";
 		Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
 		assertEquals("Missing", matcher.group(1));
-		assertEquals(null, matcher.group(3));
-		assertEquals(null, matcher.group(5));
+		assertNull(matcher.group(3));
+		assertNull(matcher.group(5));
 		assertEquals("3; AA sequence", matcher.group(10));
 		String regex =", | and ";
 		String[] tokens = matcher.group(10).split(regex);
@@ -291,7 +287,7 @@ public class FtLineConverterUtilTest {
 	}
 	
 	@Test
-	public void testConflictDescSingle() {
+	void testConflictDescSingle() {
 		String val="S -> G (in Ref. 4; AAA42118/AAA42303)";
 		Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
@@ -306,7 +302,7 @@ public class FtLineConverterUtilTest {
 	
 	}
 	@Test
-	public void testConflictDescTwo() {
+	void testConflictDescTwo() {
 		String val="L -> V (in Ref. 3; CAA49505 and 7; AAO89504/AAO89505)";
 		Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());
@@ -322,7 +318,7 @@ public class FtLineConverterUtilTest {
 	
 	}
 	@Test
-	public void testConflictDescMulti() {
+	void testConflictDescMulti() {
 		String val="Q -> K (in Ref. 1; AAO59377, 2; ABO40479 and 6; AAH63566)";
 		Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(val);
 		assertTrue(matcher.matches());

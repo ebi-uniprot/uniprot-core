@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class KwLineParserTest {
+class KwLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String kwLines = "KW   Activator; Complete proteome; Reference proteome; Transcription.\n";
 		UniprotLineParser<KwLineObject> parser = new DefaultUniprotLineParserFactory().createKwLineParser();
 		KwLineObject obj = parser.parse(kwLines);
@@ -30,7 +30,7 @@ public class KwLineParserTest {
 	}
 
 	@Test
-	public void testLineWraper() {
+	void testLineWraper() {
 		String kwLines = "KW   Activator; Complete proteome;\n" + "KW   Reference proteome; Transcription;\n"
 				+ "KW   Transcription regulation.\n";
 		UniprotLineParser<KwLineObject> parser = new DefaultUniprotLineParserFactory().createKwLineParser();
@@ -45,7 +45,7 @@ public class KwLineParserTest {
 	}
 
 	@Test
-	public void testEvidences() {
+	void testEvidences() {
 		String kwLines = "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
 				+ "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735, ECO:0000006};\n"
 				+ "KW   Transcription regulation.\n";
@@ -61,7 +61,7 @@ public class KwLineParserTest {
 	}
 
 	@Test
-	public void testEvidencesWrapper() {
+	void testEvidencesWrapper() {
 		String kwLines = "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
 				+ "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735,\n" + "KW   ECO:0000006};\n"
 				+ "KW   Transcription regulation.\n";
@@ -77,7 +77,7 @@ public class KwLineParserTest {
 	}
 
 	@Test
-	public void testEvidencesWrapper3() {
+	void testEvidencesWrapper3() {
 		String kwLines = "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
 				+ "KW   Reference proteome; Transcription\n" + "KW   {ECO:0000006|PubMed:20858735, ECO:0000006};\n"
 				+ "KW   Transcription regulation.\n";
@@ -93,7 +93,7 @@ public class KwLineParserTest {
 	}
 
 	@Test
-	public void testLongKw() {
+	void testLongKw() {
 		String kwLines = "KW   Disulfide bond {ECO:0000256|SAAS:SAAS000777_004_000331};\n"
 				+ "KW   Fusion of virus membrane with host membrane\n"
 				+ "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n"

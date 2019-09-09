@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class ElectronicArticleTest {
 
     @Test
-    public void testElectronicArticleSimple() {
+    void testElectronicArticleSimple() {
         Citation citation = new ElectronicArticleBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
 
@@ -31,7 +31,7 @@ public class ElectronicArticleTest {
     }
 
     @Test
-    public void testElectronicArticleComplete() {
+    void testElectronicArticleComplete() {
         Citation citation = getElectronicArticle();
         ValidateJson.verifyJsonRoundTripParser(citation);
         ValidateJson.verifyEmptyFields(citation);

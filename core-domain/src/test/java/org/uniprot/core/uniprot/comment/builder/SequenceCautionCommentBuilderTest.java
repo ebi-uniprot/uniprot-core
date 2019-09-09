@@ -11,10 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SequenceCautionCommentBuilderTest {
+class SequenceCautionCommentBuilderTest {
 
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         SequenceCautionCommentBuilder builder1 = new SequenceCautionCommentBuilder();
         SequenceCautionCommentBuilder builder2 = new SequenceCautionCommentBuilder();
         assertNotNull(builder1);
@@ -23,7 +23,7 @@ public class SequenceCautionCommentBuilderTest {
     }
 
     @Test
-    public void testSetSequenceCautionType() {
+    void testSetSequenceCautionType() {
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
@@ -36,7 +36,7 @@ public class SequenceCautionCommentBuilderTest {
     }
 
     @Test
-    public void testSetSequence() {
+    void testSetSequence() {
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
@@ -50,7 +50,7 @@ public class SequenceCautionCommentBuilderTest {
     }
 
     @Test
-    public void testSetPositions() {
+    void testSetPositions() {
         List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
@@ -66,7 +66,7 @@ public class SequenceCautionCommentBuilderTest {
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =

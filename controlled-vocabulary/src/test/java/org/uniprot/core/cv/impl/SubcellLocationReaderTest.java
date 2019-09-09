@@ -9,12 +9,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SubcellLocationReaderTest {
+class SubcellLocationReaderTest {
 
 	  private final SubcellularLocationFileReader parser = new SubcellularLocationFileReader();
 
     @Test
-    public void testSingleSubCellEntry() {
+    void testSingleSubCellEntry() {
         List<String> input =
                 Arrays.asList("_______________________________",
                         "ID   Cell tip.",
@@ -41,7 +41,7 @@ public class SubcellLocationReaderTest {
     }
 
     @Test
-    public void testRelationShip() {
+    void testRelationShip() {
         List<String> input =
                 Arrays.asList("---------------------------------------------------------------------------",
                         "        UniProt - Swiss-Prot Protein Knowledgebase",

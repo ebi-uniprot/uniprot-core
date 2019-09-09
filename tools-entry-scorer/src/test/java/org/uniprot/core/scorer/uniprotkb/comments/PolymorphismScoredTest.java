@@ -3,9 +3,9 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class PolymorphismScoredTest extends CommentScoreTestBase {
+class PolymorphismScoredTest extends CommentScoreTestBase {
     @Test
-    public void shouldSpScore90() throws Exception {
+    void shouldSpScore90() {
         String line = "CC   -!- POLYMORPHISM: Variations in SDAD1 may be a cause of susceptibility\n" +
                 "CC       to seasonal allergic rhinitis (SAR). SAR is a common allergic\n" +
                 "CC       disorder characterized by episodes of sneezing, rhinorrhea, and\n" +
@@ -14,7 +14,7 @@ public class PolymorphismScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldScore90() throws Exception {
+    void shouldScore90() {
         String line = "CC   -!- POLYMORPHISM: Variations in SDAD1 may be a cause of susceptibility\n" +
                 "CC       to seasonal allergic rhinitis (SAR). SAR is a common allergic\n" +
                 "CC       disorder characterized by episodes of sneezing, rhinorrhea, and\n" +
@@ -23,7 +23,7 @@ public class PolymorphismScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldWithEvScore90() throws Exception {
+    void shouldWithEvScore90() {
         String line = "CC   -!- POLYMORPHISM: Variations in SDAD1 may be a cause of susceptibility\n" +
                 "CC       to seasonal allergic rhinitis (SAR). SAR is a common allergic\n" +
                 "CC       disorder characterized by episodes of sneezing, rhinorrhea, and\n" +

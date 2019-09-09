@@ -24,10 +24,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class FeatureTest {
+class FeatureTest {
 
     @Test
-    public void testFeatureSimple() {
+    void testFeatureSimple() {
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
                 .build();
@@ -40,7 +40,7 @@ public class FeatureTest {
     }
 
     @Test
-    public void testFeatureExact() {
+    void testFeatureExact() {
     	  Range location = Range.create(2,8);
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -51,7 +51,7 @@ public class FeatureTest {
     }
 
     @Test
-    public void testFeatureOut() {
+    void testFeatureOut() {
     	  Range location =new Range(2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE) ;
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -62,7 +62,7 @@ public class FeatureTest {
     }
     
     @Test
-    public void testFeatureUnsure() {
+    void testFeatureUnsure() {
     	  Range location =new Range(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE) ;
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -73,7 +73,7 @@ public class FeatureTest {
     }
     
     @Test
-    public void testFeatureUnknow() {
+    void testFeatureUnknow() {
     	  Range location =new Range(-1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN) ;
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -84,7 +84,7 @@ public class FeatureTest {
     }
     
     @Test
-    public void testFeatureComplete() {
+    void testFeatureComplete() {
         Feature feature = getFeature();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -136,7 +136,7 @@ public class FeatureTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000269","PubMed","11389730");
     }
 
-    public static Feature getFeature(){
+    static Feature getFeature(){
         AlternativeSequence alternativeSequence = new AlternativeSequenceBuilder()
                 .original("original value")
                 .alternative("alternative value")

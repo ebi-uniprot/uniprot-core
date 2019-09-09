@@ -8,9 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RgLineConverterTest {
+class RgLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 		//"RG   The mouse genome sequencing consortium;\n";
 		RgLineObject rgline = new RgLineObject();
 		rgline.reference_groups.add("The mouse genome sequencing consortium");

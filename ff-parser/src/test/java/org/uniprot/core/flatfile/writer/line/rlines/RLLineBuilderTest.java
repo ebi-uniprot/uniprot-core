@@ -16,11 +16,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RLLineBuilderTest {
+class RLLineBuilderTest {
     private final RLLineBuilder builder = new RLLineBuilder();
 
     @Test
-    public void testJournalArticle() {
+    void testJournalArticle() {
         JournalArticle ja = buildJournalArticle("Virology", "70", "84", "323", "2004");
         List<String> lines = builder.buildLine(ja, true, true);
         assertEquals(1, lines.size());
@@ -46,7 +46,7 @@ public class RLLineBuilderTest {
     }
 
     @Test
-    public void testSubmission() {
+    void testSubmission() {
         SubmissionBuilder subbuilder = new SubmissionBuilder();
         subbuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
                 .publicationDate("FEB-2004")
@@ -63,7 +63,7 @@ public class RLLineBuilderTest {
     }
 
     @Test
-    public void testBook() {
+    void testBook() {
         BookBuilder bookBuilder = new BookBuilder();
         List<String> editors = new ArrayList<>(Arrays.asList("Magnusson S.",
                                                              "Ottesen M.", "Foltmann B.", "Dano K.",

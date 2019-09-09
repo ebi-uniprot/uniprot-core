@@ -5,7 +5,6 @@ import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.comment.WRCommentConverter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

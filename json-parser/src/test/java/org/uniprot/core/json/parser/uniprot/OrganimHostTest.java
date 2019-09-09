@@ -11,11 +11,11 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class OrganimHostTest {
+class OrganimHostTest {
 
 
     @Test
-    public void testOrganismSimple() {
+    void testOrganismSimple() {
         OrganismHost organism = new OrganismHostBuilder()
                 .taxonId(9606L)
                 .scientificName("scientific name")
@@ -30,7 +30,7 @@ public class OrganimHostTest {
     }
 
     @Test
-    public void testOrganismComplete() {
+    void testOrganismComplete() {
         OrganismHost organism = getOrganismHost();
         ValidateJson.verifyJsonRoundTripParser(organism);
         ValidateJson.verifyEmptyFields(organism);
@@ -46,7 +46,7 @@ public class OrganimHostTest {
         assertEquals("synonyms 1",jsonNode.get("synonyms").get(0).asText());
     }
 
-    public static OrganismHost getOrganismHost() {
+    static OrganismHost getOrganismHost() {
         return new OrganismHostBuilder()
                 .taxonId(9606L)
                 .scientificName("scientific name")

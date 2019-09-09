@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ProteomeTest {
+class ProteomeTest {
 	@Test
 	void testComponent() {
 		List<DBCrossReference<ProteomeXReferenceType>> xrefs =new ArrayList<>();

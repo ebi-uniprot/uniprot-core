@@ -33,7 +33,7 @@ class CatalyticActivityCommentConverterTest {
     private static CatalyticActivityCommentConverter converter;
 
     @BeforeAll
-    public static void setup() {
+    static void setup() {
         objectFactory = new ObjectFactory();
 
 

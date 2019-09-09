@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class CitationUtil {
+class CitationUtil {
 
     static void validateCitation(JsonNode jsonNode){
         assertNotNull(jsonNode.get("publicationDate"));

@@ -8,10 +8,10 @@ import org.uniprot.core.uniprot.comment.WebResourceComment;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class WebResourceCommentBuilderTest {
+class WebResourceCommentBuilderTest {
 
     @Test
-    public void testSetDatabaseName() {
+    void testSetDatabaseName() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         WebResourceComment comment = builder.resourceName(databaseName)
@@ -24,7 +24,7 @@ public class WebResourceCommentBuilderTest {
     }
 
     @Test
-    public void testSetDatabaseUrl() {
+    void testSetDatabaseUrl() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseUrl = "some url";
@@ -39,7 +39,7 @@ public class WebResourceCommentBuilderTest {
     }
 
     @Test
-    public void testSetDatabaseFtp() {
+    void testSetDatabaseFtp() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseFtp = "some ftp";
@@ -55,7 +55,7 @@ public class WebResourceCommentBuilderTest {
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseUrl = "some url";

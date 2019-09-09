@@ -10,10 +10,10 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class IdLineConverterTest {
+class IdLineConverterTest {
 	private IdLineConverter converter = new IdLineConverter();
 	@Test
-	public void testConverter() throws Exception{
+	void testConverter() {
 		//ID   001R_FRG3G              Reviewed;         256 AA
 		IdLineObject idObj = new IdLineObject();
 		idObj.setReviewed(true);
@@ -26,7 +26,7 @@ public class IdLineConverterTest {
 	
 	}
 	@Test
-	public void testConverter2() throws Exception{
+	void testConverter2() {
 		//ID   001R_FRG3G              Reviewed;         256 AA
 		IdLineObject idObj = new IdLineObject();
 		idObj.setReviewed(false);

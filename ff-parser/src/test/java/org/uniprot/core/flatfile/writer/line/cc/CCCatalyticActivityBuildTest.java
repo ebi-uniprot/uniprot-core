@@ -15,15 +15,15 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
+class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	private static UniprotLineParser<CcLineObject> parser ;
 	 private final CcLineConverter converter =  new CcLineConverter(new HashMap<>(),new HashMap<>(),true);
 	 @BeforeAll
-	 public static void setup() {
+	 static void setup() {
 		 parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 	 }
 	@Test
-	public void testNoPD() {
+	void testNoPD() {
 		   String ccLine =
 	                "CC   -!- CATALYTIC ACTIVITY:\n" + 
 	                "CC       Reaction=cytidine(32)/guanosine(34) in tRNA + 2 S-adenosyl-L-\n" + 
@@ -38,7 +38,7 @@ public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testWithSinglePD() {
+	void testWithSinglePD() {
 		  String ccLine =
 	                "CC   -!- CATALYTIC ACTIVITY:\n" + 
 	                "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n" + 
@@ -54,7 +54,7 @@ public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testWithMultiPD() {
+	void testWithMultiPD() {
 	    String ccLine =
                 "CC   -!- CATALYTIC ACTIVITY:\n" + 
                 "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n" + 
@@ -73,7 +73,7 @@ public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	
 	
 	@Test
-	public void testCaBasedOnEnzyme() {
+	void testCaBasedOnEnzyme() {
 	    String ccLine =
                 "CC   -!- CATALYTIC ACTIVITY:\n" + 
                 "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n" + 
@@ -85,7 +85,7 @@ public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	
 	
 	@Test
-	public void testLineWrap() {
+	void testLineWrap() {
 		 String ccLine =
 	                "CC   -!- CATALYTIC ACTIVITY:\n" + 
 	                "CC       Reaction=H2O + L-arginyl-[protein] = L-citrullyl-[protein] +\n" + 
@@ -97,7 +97,7 @@ public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testLineWrap2() {
+	void testLineWrap2() {
 		 String ccLine =
 	                "CC   -!- CATALYTIC ACTIVITY:\n" + 
 	                "CC       Reaction=Cleavage of non-reducing alpha-(1->3)-N-\n" + 
@@ -110,7 +110,7 @@ public class CCCatalyticActivityBuildTest  extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testNoXref() {
+	void testNoXref() {
 		 String ccLine =
 	                "CC   -!- CATALYTIC ACTIVITY:\n" + 
 	                "CC       Reaction=Preferential cleavage of Arg-|-Xaa bonds in small\n" + 

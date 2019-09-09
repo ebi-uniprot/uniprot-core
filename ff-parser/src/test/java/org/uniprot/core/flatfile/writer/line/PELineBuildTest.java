@@ -7,9 +7,9 @@ import org.uniprot.core.uniprot.ProteinExistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PELineBuildTest {
+class PELineBuildTest {
 	@Test
-	public void test() {
+	void test() {
 		String peLine = "PE   1: Evidence at protein level;";
 		PELineBuilder builder = new PELineBuilder();
 		FFLine ffLine = builder.build(ProteinExistence.PROTEIN_LEVEL);

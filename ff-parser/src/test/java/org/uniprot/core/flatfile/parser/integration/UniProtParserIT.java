@@ -16,9 +16,9 @@ import java.util.TreeSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UniProtParserIT {
+class UniProtParserIT {
 	@Test
-	public void testParse() {
+	void testParse() {
 		String filename = "/entryIT/Q32K04.dat";
 		String entryStr = readEntryFromFile(filename);
 		UniProtEntry entry =UniProtParserHelper.parse(entryStr);
@@ -26,7 +26,7 @@ public class UniProtParserIT {
 		assertEquals("Q32K04", entry.getPrimaryAccession().getValue());
 	}
 	@Test
-	public void testParseWithIgnore() {
+	void testParseWithIgnore() {
 		String filename = "/entryIT/A0A176EY13.txl";
 		String entryStr = readEntryFromFile(filename);
 		UniProtEntry entry =UniProtParserHelper.parse(entryStr);
@@ -35,7 +35,7 @@ public class UniProtParserIT {
 	}
 	
 	@Test
-	public void testParseFile() {
+	void testParseFile() {
 		String filename = "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
 		UniProtEntryIterator iterator = UniProtParserHelper.parseFile(filename, "", "", "", "");
 		assertTrue(iterator.hasNext());

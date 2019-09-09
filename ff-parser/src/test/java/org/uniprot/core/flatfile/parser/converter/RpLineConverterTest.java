@@ -8,10 +8,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RpLineConverterTest {
+class RpLineConverterTest {
 	private final RpLineConverter converter = new RpLineConverter();
 	@Test
-	public void test1(){
+	void test1(){
 		// "RP   NUCLEOTIDE SEQUENCE [MRNA].\n";
 		RpLineObject rp =new RpLineObject();
 		rp.scopes.add("NUCLEOTIDE SEQUENCE [MRNA]");
@@ -22,7 +22,7 @@ public class RpLineConverterTest {
 	}
 	
 	@Test
-	public void test2(){
+	void test2(){
 		// """RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS A AND C), FUNCTION, INTERACTION
         //RP   WITH PKC-3, SUBCELLULAR LOCATION, TISSUE SPECIFICITY, DEVELOPMENTAL
         //RP   STAGE, AND MUTAGENESIS OF PHE-175 AND PHE-221.

@@ -6,9 +6,9 @@ import org.uniprot.core.citation.JournalArticle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
+class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
-    public void testBuildCitation() {
+    void testBuildCitation() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         JournalArticle citation = builder.build();
@@ -16,7 +16,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddJournalName() {
+    void testAddJournalName() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
@@ -27,7 +27,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddFirstPage() {
+    void testAddFirstPage() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
@@ -40,7 +40,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddLastPage() {
+    void testAddLastPage() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
@@ -55,7 +55,7 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddVolume() {
+    void testAddVolume() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";

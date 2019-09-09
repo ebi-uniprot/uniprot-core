@@ -12,9 +12,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RcLineConverterTest {
+class RcLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 		// "RC   STRAIN=Holstein; TISSUE=Lymph node, and Mammary gland;\n";
 		RcLineObject rcline =new RcLineObject();
 		RcLineObject.RC rc1 = new RcLineObject.RC();
@@ -42,7 +42,7 @@ public class RcLineConverterTest {
 	}
 	
 	@Test
-	public void testEvidence(){
+	void testEvidence(){
 		// "RC   STRAIN=Holstein{EI1,EI2}; TISSUE=Lymph node, and Mammary gland{EI2,EI3};\n";
 		RcLineObject rcline =new RcLineObject();
 		RcLineObject.RC rc1 = new RcLineObject.RC();

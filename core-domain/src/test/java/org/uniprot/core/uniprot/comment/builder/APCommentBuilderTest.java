@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class APCommentBuilderTest {
+class APCommentBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         APCommentBuilder builder1 = new APCommentBuilder();
         APCommentBuilder builder2 = new APCommentBuilder();
         assertNotNull(builder1);
@@ -27,7 +27,7 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testSetEvents() {
+    void testSetEvents() {
         APCommentBuilder builder = new APCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
@@ -40,7 +40,7 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testSetEventIsoforms() {
+    void testSetEventIsoforms() {
         APCommentBuilder builder = new APCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
@@ -55,7 +55,7 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testSetEventIsoformsNote() {
+    void testSetEventIsoformsNote() {
         APCommentBuilder builder = new APCommentBuilder();
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
@@ -74,14 +74,14 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testCreateAPNote() {
+    void testCreateAPNote() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note apNote = new NoteBuilder(texts).build();
         assertEquals(2, apNote.getTexts().size());
     }
 
     @Test
-    public void testCreateIsoformName() {
+    void testCreateIsoformName() {
         List<Evidence> evidences = createEvidences();
         String name = "Some name";
         IsoformName isoformName = createIsoformName(name, evidences);
@@ -90,7 +90,7 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testAPIsoformBuilderSetName() {
+    void testAPIsoformBuilderSetName() {
         List<Evidence> evidences = createEvidences();
         String name = "Some name";
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
@@ -106,7 +106,7 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testAPIsoformBuilderSetNameSynonym() {
+    void testAPIsoformBuilderSetNameSynonym() {
         List<Evidence> evidences = createEvidences();
         String name = "Some name";
         String syn1 = "synonym1";
@@ -127,7 +127,7 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testAPIsoformBuilderSetNameSynonymId() {
+    void testAPIsoformBuilderSetNameSynonymId() {
         List<Evidence> evidences = createEvidences();
         String name = "Some name";
         String syn1 = "synonym1";
@@ -150,7 +150,7 @@ public class APCommentBuilderTest {
     }
 
     @Test
-    public void testAPIsoformBuilder() {
+    void testAPIsoformBuilder() {
         List<Evidence> evidences = createEvidences();
         String name = "Some name";
         String syn1 = "synonym1";

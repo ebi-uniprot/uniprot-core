@@ -17,7 +17,7 @@ import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 
 class KeywordConverterTest {
 	  @Test
-	    public void test() {
+	    void test() {
 	        String val = "Transmembrane";
 	        String id = "KW-0812";
 	        List<Evidence> evidences = createEvidences();

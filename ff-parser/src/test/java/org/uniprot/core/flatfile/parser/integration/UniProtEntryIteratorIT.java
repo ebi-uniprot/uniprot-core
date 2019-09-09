@@ -13,9 +13,9 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UniProtEntryIteratorIT {
+class UniProtEntryIteratorIT {
 	@Test
-	public void testSingleTxl() {
+	void testSingleTxl() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -31,7 +31,7 @@ public class UniProtEntryIteratorIT {
 	}
 
 	@Test
-	public void testSingleTxlRoundTrip() {
+	void testSingleTxlRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -49,7 +49,7 @@ public class UniProtEntryIteratorIT {
 	}
 
 	@Test
-	public void testSingleDat() {
+	void testSingleDat() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -65,7 +65,7 @@ public class UniProtEntryIteratorIT {
 	}
 
 	@Test
-	public void testSingleDatRoundTrip() {
+	void testSingleDatRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -83,7 +83,7 @@ public class UniProtEntryIteratorIT {
 	}
 	
 	@Test
-	public void testMultiDat() {
+	void testMultiDat() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -103,7 +103,7 @@ public class UniProtEntryIteratorIT {
 	}
 
 	@Disabled
-	public void testMultiDatRoundTrip() {
+	void testMultiDatRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -134,7 +134,7 @@ public class UniProtEntryIteratorIT {
 	
 
 	@Test
-	public void testMultiDatGz() {
+	void testMultiDatGz() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);

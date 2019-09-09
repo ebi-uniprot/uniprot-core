@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class CofactorCommentBuilderTest {
+class CofactorCommentBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         CofactorCommentBuilder builder1 = new CofactorCommentBuilder();
         CofactorCommentBuilder builder2 = new CofactorCommentBuilder();
         assertNotNull(builder1);
@@ -26,7 +26,7 @@ public class CofactorCommentBuilderTest {
     }
 
     @Test
-    public void testSetMolecule() {
+    void testSetMolecule() {
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
         String molecule = "some mol";
         CofactorComment comment =
@@ -39,7 +39,7 @@ public class CofactorCommentBuilderTest {
     }
 
     @Test
-    public void testSetCofactors() {
+    void testSetCofactors() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
@@ -58,7 +58,7 @@ public class CofactorCommentBuilderTest {
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
@@ -80,7 +80,7 @@ public class CofactorCommentBuilderTest {
     }
 
     @Test
-    public void testCreateCofactorReference() {
+    void testCreateCofactorReference() {
         CofactorReferenceType type = CofactorReferenceType.CHEBI;
         String referenceId = "CHEBI:314";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(type, referenceId);
@@ -89,7 +89,7 @@ public class CofactorCommentBuilderTest {
     }
 
     @Test
-    public void testCreateCofactor() {
+    void testCreateCofactor() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());

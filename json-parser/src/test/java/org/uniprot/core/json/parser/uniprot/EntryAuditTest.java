@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author lgonzales
  */
-public class EntryAuditTest {
+class EntryAuditTest {
 
     @Test
-    public void testEntryAudit() {
+    void testEntryAudit() {
         EntryAudit entryAudit = getEntryAudit();
         ValidateJson.verifyJsonRoundTripParser(entryAudit);
         ValidateJson.verifyEmptyFields(entryAudit);
@@ -30,7 +30,7 @@ public class EntryAuditTest {
         assertEquals(5,jsonNode.get("sequenceVersion").asInt());
     }
 
-    public static EntryAudit getEntryAudit() {
+    static EntryAudit getEntryAudit() {
         LocalDate firstPublicDate = LocalDate.of(2015, Month.AUGUST, 2);
         LocalDate lastAnnotationUpdateDate = LocalDate.of(2016, Month.APRIL, 24);
         LocalDate lastSequenceUpdateDate = LocalDate.of(2017, Month.JANUARY, 21);

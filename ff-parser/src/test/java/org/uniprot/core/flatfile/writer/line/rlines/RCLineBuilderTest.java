@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RCLineBuilderTest {
+class RCLineBuilderTest {
 
     private final RCLineBuilder builder = new RCLineBuilder();
 
     @Test
-    public void testSingle() {
+    void testSingle() {
         List<ReferenceComment> sss = buildRc();
         List<String> lines = builder.buildLine(sss, true, true);
         assertEquals(5, lines.size());
@@ -29,7 +29,7 @@ public class RCLineBuilderTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         List<ReferenceComment> sss = buildRc();
         List<String> lines = builder.buildLine(sss, true, false);
         assertEquals(2, lines.size());
@@ -39,7 +39,7 @@ public class RCLineBuilderTest {
     }
 
     @Test
-    public void test3() {
+    void test3() {
         List<ReferenceComment> sss = buildRc();
         List<String> lines = builder.buildLine(sss, false, false);
         assertEquals(1, lines.size());

@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
 */
 
-public class UniParcDbCrossReferenceTest {
+class UniParcDbCrossReferenceTest {
 	@Test
 	void test() {
 		UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();

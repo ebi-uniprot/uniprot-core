@@ -3,9 +3,9 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class InductionScoredTest extends CommentScoreTestBase {
+class InductionScoredTest extends CommentScoreTestBase {
     @Test
-    public void shouldSpScore30() throws Exception {
+    void shouldSpScore30() {
         String line = "CC   -!- INDUCTION: Regulated in a cell cycle-dependent manner, peaking in\n" +
                 "CC       G1 phase. Appears exclusively during the G1 and S phases (at\n" +
                 "CC       protein level). Negatively regulated by transcription factor SBF\n" +
@@ -14,7 +14,7 @@ public class InductionScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldScore10() throws Exception {
+    void shouldScore10() {
         String line = "CC   -!- INDUCTION: Regulated in a cell cycle-dependent manner, peaking in\n" +
                 "CC       G1 phase. Appears exclusively during the G1 and S phases (at\n" +
                 "CC       protein level). Negatively regulated by transcription factor SBF\n" +
@@ -23,7 +23,7 @@ public class InductionScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldWithEvScore10() throws Exception {
+    void shouldWithEvScore10() throws Exception {
         String line = "CC   -!- INDUCTION: Regulated in a cell cycle-dependent manner, peaking in\n" +
                 "CC       G1 phase. Appears exclusively during the G1 and S phases (at\n" +
                 "CC       protein level). Negatively regulated by transcription factor SBF\n" +

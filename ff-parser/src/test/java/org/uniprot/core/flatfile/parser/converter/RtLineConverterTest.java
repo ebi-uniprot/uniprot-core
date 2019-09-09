@@ -6,9 +6,9 @@ import org.uniprot.core.flatfile.parser.impl.rt.RtLineObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RtLineConverterTest {
+class RtLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 		RtLineObject rt =new RtLineObject();
 		rt.title ="A novel adapter protein employs a phosphotyrosine binding domain";
 		RtLineConverter converter = new RtLineConverter();

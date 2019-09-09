@@ -7,23 +7,23 @@ import org.uniprot.core.flatfile.parser.impl.rt.RtLineObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RtLineParserTest {
+class RtLineParserTest {
 	@Test
-	public void testSimple() {
+	void testSimple() {
 		String rtLines = "RT   \"A novel adapter protein employs a phosphotyrosine binding domain.\";\n";
 		UniprotLineParser<RtLineObject> parser = new DefaultUniprotLineParserFactory().createRtLineParser();
 		RtLineObject obj = parser.parse(rtLines);
 		assertEquals("A novel adapter protein employs a phosphotyrosine binding domain.", obj.title);
 	}
 	@Test
-	public void testWithDoubleQuotes() {
+	void testWithDoubleQuotes() {
 		String rtLines = "RT   \"A novel adapter \"protein\" employs a phosphotyrosine binding domain.\";\n";
 		UniprotLineParser<RtLineObject> parser = new DefaultUniprotLineParserFactory().createRtLineParser();
 		RtLineObject obj = parser.parse(rtLines);
 		assertEquals("A novel adapter \"protein\" employs a phosphotyrosine binding domain.", obj.title);
 	}
 	@Test
-	public void testMultiLines() {
+	void testMultiLines() {
 		String rtLines = "RT   \"New insulin-like proteins with atypical disulfide bond pattern\n"
 				+"RT   characterized in Caenorhabditis elegans by comparative sequence\n"
 				+"RT   analysis and homology modeling?\";\n"
@@ -34,7 +34,7 @@ public class RtLineParserTest {
 				+ " characterized in Caenorhabditis elegans by comparative sequence analysis and homology modeling?", obj.title);
 	}
 	@Test
-	public void testWithDot() {
+	void testWithDot() {
 		String rtLines = "RT   \"14-3-3 is phosphorylated by casein kinase I on residue 233.\n"
 				+"RT   Phosphorylation at this site in vivo regulates Raf/14-3-3\n"
 				+"RT   interaction.\";\n"
@@ -45,7 +45,7 @@ public class RtLineParserTest {
 				+ "Phosphorylation at this site in vivo regulates Raf/14-3-3 interaction.", obj.title);
 	}
 	@Test
-	public void testWithDash() {
+	void testWithDash() {
 		String rtLines = "RT   \"Nuclear localization of protein kinase U-alpha is regulated by 14-3-\n"
 				+"RT   3.\";\n"
 				;
@@ -55,7 +55,7 @@ public class RtLineParserTest {
 				, obj.title);
 	}
 	@Test
-	public void testWithSemicolon() {
+	void testWithSemicolon() {
 		String rtLines = "RT   \"The success of acinetobacter species; genetic, metabolic and\n"
 				+"RT   virulence attributes.\";\n"
 				;
@@ -65,7 +65,7 @@ public class RtLineParserTest {
 				, obj.title);
 	}
 	@Test
-	public void testWithSemicolonAndDot() {
+	void testWithSemicolonAndDot() {
 		String rtLines = "RT   \"The success of acinetobacter species; genetic. metabolic and\n"
 				+"RT   virulence attributes.\";\n"
 				;
@@ -75,7 +75,7 @@ public class RtLineParserTest {
 				, obj.title);
 	}
 	@Test
-	public void testWithSemicolonAndQuote() {
+	void testWithSemicolonAndQuote() {
 		String rtLines = "RT   \"The success of \"acinetobacter\" species; genetic. metabolic and\n"
 				+"RT   virulence attributes.\";\n"
 				;
@@ -85,7 +85,7 @@ public class RtLineParserTest {
 				, obj.title);
 	}
 	@Test
-	public void testWithSemicolonAndQuote2() {
+	void testWithSemicolonAndQuote2() {
 		String rtLines = "RT   \"The success of \"acinetobacter\" species; genetic. metabolic and\n"
 				+"RT   virulence \"attributes\".\";\n"
 				;
@@ -95,7 +95,7 @@ public class RtLineParserTest {
 				, obj.title);
 	}
 	@Test
-	public void testWithBracket() {
+	void testWithBracket() {
 		String rtLines = "RT   \"[Primary structure of proline tRNA of bacteriophage T5].\";\n"
 				;
 		UniprotLineParser<RtLineObject> parser = new DefaultUniprotLineParserFactory().createRtLineParser();

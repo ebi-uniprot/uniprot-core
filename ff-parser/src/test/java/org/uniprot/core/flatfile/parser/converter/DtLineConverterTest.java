@@ -11,11 +11,11 @@ import java.time.format.DateTimeFormatterBuilder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DtLineConverterTest {
+class DtLineConverterTest {
 	private DtLineConverter converter = new DtLineConverter();
 
 	@Test
-	public void testConverter() throws Exception {
+	void testConverter() {
 		DtLineObject dtLine = new DtLineObject();
 
 		DateTimeFormatter formatter = new DateTimeFormatterBuilder().parseCaseInsensitive()

@@ -8,9 +8,9 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineDiseaseCommentParserTest {
+class CcLineDiseaseCommentParserTest {
 	@Test
-	public void test() {
+	void test() {
 			String lines = "CC   -!- DISEASE: Acyl-CoA dehydrogenase family, member 9, deficiency\n"
 					+"CC       (ACAD9 deficiency) [MIM:611126]: A metabolic disorder with\n"
 					+"CC       variable manifestations that include dilated cardiomyopathy, liver\n"
@@ -36,7 +36,7 @@ public class CcLineDiseaseCommentParserTest {
 	}
 
 	@Test
-	public void testWithEvidence() {
+	void testWithEvidence() {
 			String lines = "CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
 					+"CC       characterized by malignant lesions arising from the inner wall of\n"
 					+"CC       the large intestine (the colon) and the rectum. Genetic\n"
@@ -72,7 +72,7 @@ public class CcLineDiseaseCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeaderWithEvidence() {
+	void testNoHeaderWithEvidence() {
 
 		String ccLineStringEvidence=
 				"DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
@@ -95,7 +95,7 @@ public class CcLineDiseaseCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeader2() {
+	void testNoHeader2() {
 
 		String ccLineStringEvidence=
 				("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
@@ -114,7 +114,7 @@ public class CcLineDiseaseCommentParserTest {
 			assertNotNull(obj);
 	}
 	@Test
-	public void testNoHeader3() {
+	void testNoHeader3() {
 		String ccLineStringEvidence =("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
 				"characterized by malignant lesions arising from the inner wall of " +
 				"the large intestine (the colon) and the rectum. Genetic " +
@@ -135,7 +135,7 @@ public class CcLineDiseaseCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeader4() {
+	void testNoHeader4() {
 		String ccLineStringEvidence = "DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome (JP/HHT) [MIM:175050]:"
 	              + " JP/HHT syndrome phenotype consists of the coexistence of juvenile polyposis (JIP) and hereditary"
 	              + " hemorrhagic telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are autosomal"

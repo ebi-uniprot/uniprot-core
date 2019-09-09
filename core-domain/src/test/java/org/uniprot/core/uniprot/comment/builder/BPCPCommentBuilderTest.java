@@ -14,9 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class BPCPCommentBuilderTest {
+class BPCPCommentBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         BPCPCommentBuilder builder1 = new BPCPCommentBuilder();
         BPCPCommentBuilder builder2 = new BPCPCommentBuilder();
         assertNotNull(builder1);
@@ -25,7 +25,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testSetAbsorption() {
+    void testSetAbsorption() {
         int max = 21;
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
@@ -48,7 +48,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testSetKineticParameters() {
+    void testSetKineticParameters() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
@@ -93,7 +93,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testSetPHDependence() {
+    void testSetPHDependence() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
@@ -121,7 +121,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testSetRedoxPotential() {
+    void testSetRedoxPotential() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
@@ -150,7 +150,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testSetTemperatureDependence() {
+    void testSetTemperatureDependence() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
@@ -180,7 +180,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreatePHDependence() {
+    void testCreatePHDependence() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         PhDependence phDependence = new PhDependenceBuilder(texts).build();
         assertEquals(2, phDependence.getTexts().size());
@@ -189,7 +189,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateRedoxPotential() {
+    void testCreateRedoxPotential() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         RedoxPotential redoxPotential = new RedoxPotentialBuilder(texts).build();
         assertEquals(2, redoxPotential.getTexts().size());
@@ -198,7 +198,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateTemperatureDependence() {
+    void testCreateTemperatureDependence() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         TemperatureDependence temDependence = new TemperatureDependenceBuilder(texts).build();
         assertEquals(2, temDependence.getTexts().size());
@@ -207,7 +207,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateAbsorptionNote() {
+    void testCreateAbsorptionNote() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
         assertEquals(2, note.getTexts().size());
@@ -216,7 +216,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateKPNote() {
+    void testCreateKPNote() {
 
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
@@ -226,7 +226,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateAbsorption1() {
+    void testCreateAbsorption1() {
         int max = 21;
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
@@ -238,7 +238,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateAbsorption2() {
+    void testCreateAbsorption2() {
         int max = 21;
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = new NoteBuilder(texts).build();
@@ -250,7 +250,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateMaximumVelocity() {
+    void testCreateMaximumVelocity() {
         float velocity = 1.02f;
         String unit = "some unit";
         String enzyme = "some enzyme";
@@ -263,7 +263,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateMichaelisConstant() {
+    void testCreateMichaelisConstant() {
         float constant = 2.13f;
         MichaelisConstantUnit unit = MichaelisConstantUnit.MG_ML_2;
         String substrate = "some value";
@@ -276,7 +276,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateKineticParametersWithNote() {
+    void testCreateKineticParametersWithNote() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         List<MichaelisConstant> mConstants = new ArrayList<>();
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
@@ -288,7 +288,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateKineticParametersWithVelocityNote() {
+    void testCreateKineticParametersWithVelocityNote() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));
@@ -302,7 +302,7 @@ public class BPCPCommentBuilderTest {
     }
 
     @Test
-    public void testCreateKineticParametersWithVelocityConstantNote() {
+    void testCreateKineticParametersWithVelocityConstantNote() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0f, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321f, "unit2", "enzyme2", createEvidences()));

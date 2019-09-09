@@ -3,10 +3,10 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class TissueSpecificityScoredTest extends CommentScoreTestBase {
+class TissueSpecificityScoredTest extends CommentScoreTestBase {
 
     @Test
-    public void shouldSpScore30() throws Exception {
+    void shouldSpScore30() {
         String line = "CC   -!- TISSUE SPECIFICITY: In adult brain, highly expressed in putamen\n" +
                 "CC       with no expression in cerebral cortex. Expressed in adult and\n" +
                 "CC       fetal lung and fetal liver. Also expressed at high levels in some\n" +
@@ -16,7 +16,7 @@ public class TissueSpecificityScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldScore30() throws Exception {
+    void shouldScore30() {
         String line = "CC   -!- TISSUE SPECIFICITY: In adult brain, highly expressed in putamen\n" +
                 "CC       with no expression in cerebral cortex. Expressed in adult and\n" +
                 "CC       fetal lung and fetal liver. Also expressed at high levels in some\n" +
@@ -26,7 +26,7 @@ public class TissueSpecificityScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldWithEvScore30() throws Exception {
+    void shouldWithEvScore30() {
         String line = "CC   -!- TISSUE SPECIFICITY: In adult brain, highly expressed in putamen\n" +
                 "CC       with no expression in cerebral cortex. Expressed in adult and\n" +
                 "CC       fetal lung and fetal liver. Also expressed at high levels in some\n" +

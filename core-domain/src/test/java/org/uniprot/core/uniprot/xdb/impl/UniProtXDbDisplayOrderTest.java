@@ -9,17 +9,17 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UniProtXDbDisplayOrderTest {
+class UniProtXDbDisplayOrderTest {
 
     @Test
-    public void testCreateUniProtXDbDisplayOrder() {
+    void testCreateUniProtXDbDisplayOrder() {
         UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
         assertFalse(dorder.getOrderedDatabases().isEmpty());
         assertTrue(dorder.getOrderedDatabases().contains(UniProtXDbTypes.INSTANCE.getType("EMBL")));
     }
 
     @Test
-    public void testGetOrderedDatabases() {
+    void testGetOrderedDatabases() {
         UniProtXDbDisplayOrder dorder = UniProtXDbDisplayOrder.INSTANCE;
         List<UniProtXDbTypeDetail> dbtypes = dorder.getOrderedDatabases();
 

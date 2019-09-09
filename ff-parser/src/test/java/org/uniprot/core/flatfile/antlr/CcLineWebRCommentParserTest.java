@@ -8,9 +8,9 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineWebRCommentParserTest {
+class CcLineWebRCommentParserTest {
 	@Test
-	public void test1() {
+	void test1() {
 		String lines = "CC   -!- WEB RESOURCE: Name=CD40Lbase; Note=CD40L defect database;\n"
 				+"CC       URL=\"http://bioinf.uta.fi/CD40Lbase/\";\n"
 				;
@@ -29,7 +29,7 @@ public class CcLineWebRCommentParserTest {
 	}
 	
 	@Test
-	public void test2() {
+	void test2() {
 		String lines = "CC   -!- WEB RESOURCE: Name=Functional Glycomics Gateway - GTase;\n"
 				+"CC       Note=Beta1,4-N-acetylgalactosaminyltransferase III.;\n"
 				+"CC       URL=\"http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507\";\n"
@@ -48,7 +48,7 @@ public class CcLineWebRCommentParserTest {
 	}
 
 	@Test
-	public void test3() {
+	void test3() {
 		String lines = "CC   -!- WEB RESOURCE: Name=GeneReviews;\n"
 				+"CC       URL=\"http://www.genetests.org/query?gene=RP1\";\n"
 		
@@ -67,7 +67,7 @@ public class CcLineWebRCommentParserTest {
 	}
 
 	@Test
-	public void testNoHdeader() {
+	void testNoHdeader() {
 		String ccLineString = "WEB RESOURCE: Name=GeneReviews;\n"
 				+"URL=\"http://www.genetests.org/query?gene=RP1\";\n"
 		

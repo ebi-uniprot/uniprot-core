@@ -5,9 +5,9 @@ import org.uniprot.core.flatfile.parser.impl.DefaultLineFormater;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DefaultLineFormaterTest {
+class DefaultLineFormaterTest {
 	@Test
-	public void testkeyword() {
+	void testkeyword() {
 		String expected = "KW   Activator {ECO:00000001}; Complete proteome {ECO:00000001};\n"
 				+ "KW   Reference proteome; Transcription {ECO:0000006|PubMed:20858735, ECO:0000006};\n"
 				+ "KW   Transcription regulation.\n";
@@ -25,7 +25,7 @@ public class DefaultLineFormaterTest {
 	}
 
 	@Test
-	public void testDR() {
+	void testDR() {
 		String expected = "DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.\n"
 				+ "DR   RefSeq; YP_031579.1; NC_005946.1.\n" + "DR   ProteinModelPortal; Q6GZX4; -.\n";
 		String lines = "EMBL; AY548484; AAT09660.1; -; Genomic_DNA.\n" + "RefSeq; YP_031579.1; NC_005946.1.\n"
@@ -34,7 +34,7 @@ public class DefaultLineFormaterTest {
 	}
 
 	@Test
-	public void testGene() {
+	void testGene() {
 		String expected = "GN   Name=GeneA {ECO:0000006|PubMed:20858735}; Synonyms=Syn1 {ECO:0000006|PubMed:20858735,\n"
 				+ "GN   ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
 		String lines = "Name=GeneA {ECO:0000006|PubMed:20858735}; Synonyms=Syn1 {ECO:0000006|PubMed:20858735,\n"
@@ -44,7 +44,7 @@ public class DefaultLineFormaterTest {
 	}
 
 	@Test
-	public void testOG() {
+	void testOG() {
 		String expected = "OG   Plasmid R6-5, Plasmid IncFII R100 (NR1), and\n"
 				+ "OG   Plasmid IncFII R1-19 (R1 drd-19).\n";
 		String lines = "Plasmid R6-5, Plasmid IncFII R100 (NR1), and\n" + "Plasmid IncFII R1-19 (R1 drd-19).\n";

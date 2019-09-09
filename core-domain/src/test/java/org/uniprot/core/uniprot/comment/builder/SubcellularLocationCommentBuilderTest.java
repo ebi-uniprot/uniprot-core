@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class SubcellularLocationCommentBuilderTest {
+class SubcellularLocationCommentBuilderTest {
 
     @Test
-    public void testSetMolecule() {
+    void testSetMolecule() {
         String molecule = "some mol";
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         SubcellularLocationComment comment = builder.molecule(molecule)
@@ -28,7 +28,7 @@ public class SubcellularLocationCommentBuilderTest {
     }
 
     @Test
-    public void testSetSubcellularLocations() {
+    void testSetSubcellularLocations() {
         List<SubcellularLocation> sublocations = new ArrayList<>();
         String molecule = "some mol";
         String locationId ="someLocId";
@@ -62,7 +62,7 @@ public class SubcellularLocationCommentBuilderTest {
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         List<SubcellularLocation> sublocations = new ArrayList<>();
         String molecule = "";
         String locationVal = "some data";
@@ -98,7 +98,7 @@ public class SubcellularLocationCommentBuilderTest {
     }
 
     @Test
-    public void testCreateSubcellularLocationValue() {
+    void testCreateSubcellularLocationValue() {
         String value = "some data";
         List<Evidence> evidences = createEvidences();
         SubcellularLocationValue slv = new SubcellularLocationValueBuilder("id1", value, evidences).build();
@@ -107,7 +107,7 @@ public class SubcellularLocationCommentBuilderTest {
     }
 
     @Test
-    public void testCreateSubcellularLocation() {
+    void testCreateSubcellularLocation() {
         String locationVal = "some data";
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";

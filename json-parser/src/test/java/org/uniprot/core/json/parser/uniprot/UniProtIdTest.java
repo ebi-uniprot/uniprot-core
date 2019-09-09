@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author lgonzales
  */
-public class UniProtIdTest {
+class UniProtIdTest {
 
     @Test
-    public void testUniProtAccession() {
+    void testUniProtAccession() {
         UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();
         ValidateJson.verifyJsonRoundTripParser(uniProtId);
         ValidateJson.verifyEmptyFields(uniProtId);

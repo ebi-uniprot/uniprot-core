@@ -17,10 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class UniProtDBCrossReferenceTest {
+class UniProtDBCrossReferenceTest {
 
     @Test
-    public void testUniProtDBCrossReferenceSimple() {
+    void testUniProtDBCrossReferenceSimple() {
         UniProtXDbType opType = new UniProtXDbType("PIR");
         UniProtDBCrossReference dbCrossReference = new UniProtDBCrossReferenceImpl(opType,
                 "S61096", null, null);
@@ -36,7 +36,7 @@ public class UniProtDBCrossReferenceTest {
     }
 
     @Test
-    public void testUniProtDBCrossReferenceComplete() {
+    void testUniProtDBCrossReferenceComplete() {
 
         UniProtDBCrossReference dbCrossReference = getUniProtDBCrossReference();
 
@@ -69,7 +69,7 @@ public class UniProtDBCrossReferenceTest {
 
     }
 
-    public static UniProtDBCrossReference getUniProtDBCrossReference() {
+    static UniProtDBCrossReference getUniProtDBCrossReference() {
         Property property = new Property("ProteinId","description value");
         return new UniProtDBCrossReferenceBuilder()
                 .id("id value")

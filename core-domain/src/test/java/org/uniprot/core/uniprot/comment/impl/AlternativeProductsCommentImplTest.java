@@ -17,7 +17,7 @@ import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createSynonyms;
 
 class AlternativeProductsCommentImplTest {
-    public List<APIsoform> createIsoforms() {
+    List<APIsoform> createIsoforms() {
         List<APIsoform> isoforms = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         IsoformName isoformName1 = new IsoformNameBuilder("Name 1", evidences).build();

@@ -7,7 +7,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
 
-public class TaxonomyLineageTest {
+class TaxonomyLineageTest {
 
     @Test
     void testSimpleTaxonomyLineage(){

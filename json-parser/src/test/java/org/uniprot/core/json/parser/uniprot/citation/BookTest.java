@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class BookTest {
 
     @Test
-    public void testBookSimple() {
+    void testBookSimple() {
 
         Citation citation = new BookBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
@@ -33,7 +33,7 @@ public class BookTest {
     }
 
     @Test
-    public void testBookComplete() {
+    void testBookComplete() {
 
         Citation citation = getBook();
         ValidateJson.verifyJsonRoundTripParser(citation);

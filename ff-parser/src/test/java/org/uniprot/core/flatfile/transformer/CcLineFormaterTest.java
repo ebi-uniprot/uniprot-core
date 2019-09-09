@@ -5,9 +5,9 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CcLineFormaterTest {
+class CcLineFormaterTest {
 	@Test
-	public void testInteraction() {
+	void testInteraction() {
 		String expected = "CC   -!- INTERACTION:\n"
 				+ "CC       Q9W4W2:fs(1)Yb; NbExp=4; IntAct=EBI-2890374, EBI-3424083;\n"
 				+ "CC       Q9VKM1:piwi; NbExp=4; IntAct=EBI-2890374, EBI-3406276;\n";
@@ -24,7 +24,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testAPComment() {
+	void testAPComment() {
 		String expected = "CC   -!- ALTERNATIVE PRODUCTS:\n"
 				+ "CC       Event=Alternative splicing; Named isoforms=6;\n"
 				+ "CC         Comment=Additional isoforms seem to exist.\n"
@@ -73,7 +73,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testBPCPCommentLine() {
+	void testBPCPCommentLine() {
 		String expected = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" + "CC       Absorption:\n"
 				+ "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
 				+ "CC         Note=The above maximum is for the oxidized form. Shows a maximal\n"
@@ -102,7 +102,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testBPCPCommentLine2() {
+	void testBPCPCommentLine2() {
 		String expected = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" + "CC       pH dependence:\n"
 				+ "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n" + "CC       Redox potential:\n"
 				+ "CC         E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2};\n"
@@ -122,7 +122,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testCofactor() {
+	void testCofactor() {
 		String expected = "CC   -!- COFACTOR: Isoform 1:\n"
 				+ "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
 				+ "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
@@ -137,7 +137,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testMS() {
+	void testMS() {
 		String expected = "CC   -!- MASS SPECTROMETRY: Mass=24948; Mass_error=6; Method=MALDI;\n"
 				+ "CC       Range=1-228; Evidence={ECO:0000006|PubMed:16629414};\n";
 		String lines = "MASS SPECTROMETRY: Mass=24948; Mass_error=6; Method=MALDI;\n"
@@ -146,7 +146,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testRnaEditing() {
+	void testRnaEditing() {
 		String expected = "CC   -!- RNA EDITING: Modified_positions=59 {ECO:0000313|EMBL:BAG16761.1}, 78, 94, 98, 102, 121; Note=The\n"
 				+ "CC       nonsense codon at position 59 is modified to a sense codon. The\n"
 				+ "CC       stop codon at position 121 is created by RNA editing. {ECO:0000313|PDB:3OW2,\n"
@@ -159,7 +159,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testSeqCaution() {
+	void testSeqCaution() {
 		String expected = "CC   -!- SEQUENCE CAUTION:\n"
 				+ "CC       Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"
 				+ "CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction; Positions=388, 399;\n";
@@ -169,7 +169,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testSubCellLocation() {
+	void testSubCellLocation() {
 		String expected = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n"
 				+ "CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
 				+ "CC       Note=Loosely associated with the inner membrane.\n"
@@ -181,7 +181,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testTextComment() {
+	void testTextComment() {
 		String expected = "CC   -!- FUNCTION: May play a cri{tical role in virion formation. Essential\n"
 				+ "CC       fo}r {virus} replication in vitro. {ECO:0000313|PDB:3OW2}.\n";
 		String lines = "FUNCTION: May play a cri{tical role in virion formation. Essential\n"
@@ -190,7 +190,7 @@ public class CcLineFormaterTest {
 	}
 
 	@Test
-	public void testWRComment() {
+	void testWRComment() {
 		String expected = "CC   -!- WEB RESOURCE: Name=Functional Glycomics Gateway - GTase;\n"
 				+ "CC       Note=Beta1,4-N-acetylgalactosaminyltransferase III.;\n"
 				+ "CC       URL=\"http://www.functionalglycomics.org/glycomics/search/jsp/landing.jsp?query=gt_mou_507\";\n";

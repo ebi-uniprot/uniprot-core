@@ -28,7 +28,7 @@ class CofactorConverterTest {
     CofactorConverter converter;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
 
         EvidenceIndexMapper evidenceReferenceHandler = new EvidenceIndexMapper();
 
@@ -48,7 +48,7 @@ class CofactorConverterTest {
     }
 
     @Test
-    public void testToXml() {
+    void testToXml() {
         // CC Name=Zn(2+); Xref=ChEBI:CHEBI:29105;
         // CC Evidence={ECO:0000269|PubMed:9060645, ECO:0000269|PubMed:9060647};
 
@@ -85,7 +85,7 @@ class CofactorConverterTest {
     }
 
     @Test
-    public void testFromXml() {
+    void testFromXml() {
         ObjectFactory objectFactory = new ObjectFactory();
         CofactorType cofactorType = objectFactory.createCofactorType();
         cofactorType.setName("Zn(2+)");

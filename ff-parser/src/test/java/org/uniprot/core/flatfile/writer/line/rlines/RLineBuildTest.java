@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RLineBuildTest {
+class RLineBuildTest {
     /*
      * "RN   [1]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n" +
      * "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n" +
@@ -36,7 +36,7 @@ public class RLineBuildTest {
     RLineBuilder builder = new RLineBuilder();
 
     @Test
-    public void testJournalArticle() {
+    void testJournalArticle() {
         String rlines = "RN   [1]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
                 + "RC   PLASMID=pSd11_G1246, pSd12_G1263, pSd13_G1271, pSd2_G1252, pSd3_G1281,\n"
                 + "RC   pSd4_G1190, and pSd5_G1213;\n" + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
@@ -72,7 +72,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testJournalArticleEvidence() {
+    void testJournalArticleEvidence() {
         String rlines = "RN   [1] {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1}\n"
                 + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
                 + "RC   PLASMID=pSd11_G1246 {ECO:0000269|PubMed:10433554,\n"
@@ -148,7 +148,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testSubmission() {
+    void testSubmission() {
         String rlines = "RN   [2]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
                 + "RC   STRAIN=439-80 / Serotype O:9, and pSd11_G1246;\n" + "RC   PLASMID=pYV, and pSd2_G1252;\n"
                 + "RC   TRANSPOSON=Tn2502, pSd4_G1190, and pSd5_G1213;\n"
@@ -184,7 +184,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testSubmissionEvidence() {
+    void testSubmissionEvidence() {
         String rlines = "RN   [2]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
                 + "RC   STRAIN=439-80 / Serotype O:9 {ECO:0000269|PubMed:10433554,\n"
                 + "RC   ECO:0000313|EMBL:BAG16761.1}, and pSd11_G1246\n" + "RC   {ECO:0000269|PubMed:10433554};\n"
@@ -254,7 +254,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testBook1() {
+    void testBook1() {
         String rlines = "RN   [1]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
                 + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
                 + "RT   study of speciation using DNA sequence data.\";\n"
@@ -284,7 +284,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testBook2() {
+    void testBook2() {
         String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
                 + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
                 + "RT   study of speciation using DNA sequence data.\";\n"
@@ -313,7 +313,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testBook3() {
+    void testBook3() {
         String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
                 + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
                 + "RT   study of speciation using DNA sequence data.\";\n"
@@ -345,7 +345,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testThesis() {
+    void testThesis() {
         String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
                 + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
                 + "RT   study of speciation using DNA sequence data.\";\n"
@@ -376,7 +376,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testPatent() {
+    void testPatent() {
         String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
                 + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
                 + "RT   study of speciation using DNA sequence data.\";\n"
@@ -403,7 +403,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testElectronicJournal() {
+    void testElectronicJournal() {
         String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
                 + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
                 + "RT   study of speciation using DNA sequence data.\";\n" + "RL   (er) Plant Gene Register PGR99-114.";
@@ -429,7 +429,7 @@ public class RLineBuildTest {
     }
 
     @Test
-    public void testUnpublishedObservation() {
+    void testUnpublishedObservation() {
         String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
                 + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
                 + "RT   study of speciation using DNA sequence data.\";\n"

@@ -7,9 +7,9 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
+class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
 	@Test
-	public void testCARBOHYD() {
+	void testCARBOHYD() {
 		String ftLine = 
 				"FT   CARBOHYD     61     61       N-linked (GlcNAc...); by host\n" +
 				"FT                                (Potential).";
@@ -29,7 +29,7 @@ public class FTCarbohydFeatureBuildTest extends FTBuildTestAbstr {
 	}
 	
 	@Test
-	public void testCARBOHYDEvidence() {
+	void testCARBOHYDEvidence() {
 		String ftLine = 
 				"FT   CARBOHYD     61     61       N-linked (GlcNAc...); by host\n" +
 				"FT                                (Potential).\n" +

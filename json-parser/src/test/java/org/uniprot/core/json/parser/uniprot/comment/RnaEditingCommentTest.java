@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class RnaEditingCommentTest {
 
     @Test
-    public void testRnaEditingSimple() {
+    void testRnaEditingSimple() {
 
         RnaEditingComment comment = new RnaEditingCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -33,7 +33,7 @@ public class RnaEditingCommentTest {
     }
 
     @Test
-    public void testRnaEditingComplete() {
+    void testRnaEditingComplete() {
         RnaEditingComment comment = getRnaEditingComment();
         ValidateJson.verifyJsonRoundTripParser(comment);
         ValidateJson.verifyEmptyFields(comment);

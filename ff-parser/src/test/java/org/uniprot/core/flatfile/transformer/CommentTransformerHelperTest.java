@@ -28,7 +28,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidencedValues1() {
+    void testParseEvidencedValues1() {
         String value = "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
                 + " Retains 65% of its activity after heating at 55 degrees Celsius for 10 min."
                 + " {ECO:0000269|PubMed:10433555}. The half-life value for loss of activity at 60"
@@ -46,7 +46,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidencedValues2() {
+    void testParseEvidencedValues2() {
         String value = "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
                 + " Retains 65% of its activity after heating at 55 degrees Celsius for 10 min."
                 + " {ECO:0000269|PubMed:10433555}. The half-life value for loss of activity at 60"
@@ -64,7 +64,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidencedValuesNoEv1() {
+    void testParseEvidencedValuesNoEv1() {
         String value = "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
                 + " Retains 65% of its activity after heating at 55 degrees Celsius for 10 min.."
                 + " The half-life value for loss of activity at 60"
@@ -82,7 +82,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidencedValuesNoEv2() {
+    void testParseEvidencedValuesNoEv2() {
         String value = "Remains fully active after heating at 50 degrees Celsius and pH 4.0 for 10 min."
                 + " Retains 65% of its activity after heating at 55 degrees Celsius for 10 min.."
                 + " The half-life value for loss of activity at 60"
@@ -100,7 +100,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidenceValue1() {
+    void testParseEvidenceValue1() {
         String value = "The half-life value for loss of activity at 60"
                 + " degrees Celsius and pH 4.0 is 3.5 min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         String str = "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5 min.";
@@ -111,7 +111,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidenceValue2() {
+    void testParseEvidenceValue2() {
         String value = "The half-life value for loss of activity at 60"
                 + " degrees Celsius and pH 4.0 is 3.5 min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         String str = "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5 min";
@@ -122,7 +122,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidenceValueNotEv1() {
+    void testParseEvidenceValueNotEv1() {
         String value = "The half-life value for loss of activity at 60"
                 + " degrees Celsius and pH 4.0 is 3.5 min.;";
         String str = "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5 min.";
@@ -133,7 +133,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseEvidenceValueNoEv2() {
+    void testParseEvidenceValueNoEv2() {
         String value = "The half-life value for loss of activity at 60"
                 + " degrees Celsius and pH 4.0 is 3.5 min.;";
         String str = "The half-life value for loss of activity at 60 degrees Celsius and pH 4.0 is 3.5 min";
@@ -144,7 +144,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testStripEvidence() {
+    void testStripEvidence() {
         String value = "The half-life value for loss of activity at 60"
                 + " degrees Celsius and pH 4.0 is 3.5 min. {ECO:0000269|PubMed:10433554, ECO:0000269|PubMed:104335};";
         List<Evidence> evIds = new ArrayList<>();
@@ -156,7 +156,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testStripEvidence2() {
+    void testStripEvidence2() {
         String value = "The half-life value for loss of activity at 60"
                 + " degrees Celsius and pH 4.0 is 3.5 min.";
         List<Evidence> evIds = new ArrayList<>();
@@ -167,7 +167,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseNoteString() {
+    void testParseNoteString() {
         String note = "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"
                 + " the reduced form.. These absorption peaks are for the tryptophylquinone cofactor.;";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(note, false);
@@ -182,7 +182,7 @@ public class CommentTransformerHelperTest {
     }
 
     @Test
-    public void testParseNoteString2() {
+    void testParseNoteString2() {
         String note = "The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"
                 + " the reduced form. {ECO:0000269|PubMed:10433554}. "
                 + "These absorption peaks are for the tryptophylquinone cofactor. "

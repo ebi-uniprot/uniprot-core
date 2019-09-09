@@ -15,12 +15,11 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DTLineBuildTest {
-    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.ENGLISH);
-    DTLineBuilder builder = new DTLineBuilder();
+class DTLineBuildTest {
+    private DTLineBuilder builder = new DTLineBuilder();
 
     @Test
-    public void testSwissProt() throws Exception {
+    void testSwissProt() {
         LocalDate firstPublicDate = LocalDate.of(1986, 7, 21);
         LocalDate lastAnnotationUpdateDate = LocalDate.of(2007, 11, 13);
         LocalDate lastSequenceUpdateDate = LocalDate.of(2007, 1, 23);
@@ -46,7 +45,7 @@ public class DTLineBuildTest {
     }
 
     @Test
-    public void testTrembl() throws Exception {
+    void testTrembl() {
         LocalDate firstPublicDate = LocalDate.of(2005, 5, 24);
         LocalDate lastAnnotationUpdateDate = LocalDate.of(2017, 12, 20);
         LocalDate lastSequenceUpdateDate = LocalDate.of(2005, 5, 24);

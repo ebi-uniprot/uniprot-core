@@ -20,17 +20,17 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class InternalSectionImplTest {
+class InternalSectionImplTest {
 
     @Test
-    public void testCreateSourceLine() {
+    void testCreateSourceLine() {
         String value = "some source value";
         SourceLine sourceLine = new SourceLineBuilder(value).build();
         assertEquals(value, sourceLine.getValue());
     }
 
     @Test
-    public void testInternalSectionImplOnlyIL() {
+    void testInternalSectionImplOnlyIL() {
         List<InternalLine> internalLines = new ArrayList<>();
         List<SourceLine> sourceLines = new ArrayList<>();
         internalLines.add(new InternalLineBuilder(InternalLineType.CX, "value1").build());
@@ -43,7 +43,7 @@ public class InternalSectionImplTest {
     }
 
     @Test
-    public void testInternalSectionImplOnlyEL() {
+    void testInternalSectionImplOnlyEL() {
         List<EvidenceLine> evlines = new ArrayList<>();
         LocalDate createDate = LocalDate.of(2015, Month.AUGUST, 2);
         String curator = "som curator";
@@ -56,7 +56,7 @@ public class InternalSectionImplTest {
     }
 
     @Test
-    public void testInternalSectionImpl() {
+    void testInternalSectionImpl() {
         List<InternalLine> internalLines = new ArrayList<>();
         List<SourceLine> sourceLines = new ArrayList<>();
         internalLines.add(new InternalLineBuilder(InternalLineType.CX, "value1").build());

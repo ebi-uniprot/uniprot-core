@@ -9,9 +9,9 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
+class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 	@Test
-	public void testVarsplic() throws Exception {
+	void testVarsplic() {
 
 		String ftLine = "FT   VAR_SEQ     167    229       Missing (in isoform Alpha and isoform\n"
 				+ "FT                                Beta).\n" + "FT                                /FTId=VSP_005610.";
@@ -39,7 +39,7 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testVarsplicEvidence() throws Exception {
+	void testVarsplicEvidence() {
 
 		String ftLine = "FT   VAR_SEQ     167    229       Missing (in isoform Alpha and isoform\n"
 				+ "FT                                Beta). {ECO:0000269|PubMed:10433554,\n"
@@ -77,7 +77,7 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testVarsplicMulti() throws Exception {
+	void testVarsplicMulti() {
 		String ftLine = "FT   VAR_SEQ      46     46       R -> MLW,RRKI,GPQMTLSHA (in isoform\n"
 				+ "FT                                Long).\n" + "FT                                /FTId=VSP_005610.";
 		String ftLineString = "VAR_SEQ 46 46 R -> MLW,RRKI,GPQMTLSHA (in isoform " + "Long).\n" + "/FTId=VSP_005610.";
@@ -107,7 +107,7 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testVarsplic2() throws Exception {
+	void testVarsplic2() {
 		String ftLine = "FT   VAR_SEQ      46     46       R -> MLWRRKIGPQMTLSHAAG (in isoform\n"
 				+ "FT                                Long).\n" + "FT                                /FTId=VSP_005610.";
 		String ftLineString = "VAR_SEQ 46 46 R -> MLWRRKIGPQMTLSHAAG (in isoform " + "Long).\n" + "/FTId=VSP_005610.";
@@ -135,7 +135,7 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testVarsplic2Evidence() throws Exception {
+	void testVarsplic2Evidence() {
 		String ftLine = "FT   VAR_SEQ      46     46       R -> MLWRRKIGPQMTLSHAAG (in isoform\n"
 				+ "FT                                Long). {ECO:0000269|PubMed:10433554,\n"
 				+ "FT                                ECO:0000313|EMBL:BAG16761.1}.\n"
@@ -170,7 +170,7 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testVarsplic3() throws Exception {
+	void testVarsplic3() {
 		String ftLine = "FT   VAR_SEQ     103    222       GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEE\n"
 				+ "FT                                EPLENTWPTPYPYSKKLAEKAVLAANGWNLKNGDTLYTCAL\n"
 				+ "FT                                RPTYIYGEGGPFLSASINEALNNNGILSSVGK -> FSTVN\n"
@@ -211,7 +211,7 @@ public class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testVarsplic3Evidence() throws Exception {
+	void testVarsplic3Evidence() {
 		String ftLine = "FT   VAR_SEQ     103    222       GTQLLLEACVQASVPVFIYTSSIEVAGPNSYKEIIQNGHEE\n"
 				+ "FT                                EPLENTWPTPYPYSKKLAEKAVLAANGWNLKNGDTLYTCAL\n"
 				+ "FT                                RPTYIYGEGGPFLSASINEALNNNGILSSVGK -> FSTVN\n"

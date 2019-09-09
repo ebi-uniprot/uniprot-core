@@ -14,10 +14,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CcFreeTextConverterTest {
+class CcFreeTextConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
-	public void testTextOnly(){
+	void testTextOnly(){
 		/*
 		 * CC   -!- FUNCTION: This enzyme is necessary for target cell lysis in cell-
         CC       mediated immune responses. It cleaves after Lys or Arg. May be

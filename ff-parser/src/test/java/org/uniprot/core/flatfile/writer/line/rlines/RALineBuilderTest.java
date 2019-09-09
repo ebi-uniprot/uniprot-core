@@ -12,11 +12,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class RALineBuilderTest {
+class RALineBuilderTest {
     private final RALineBuilder builder = new RALineBuilder();
 
     @Test
-    public void test1() {
+    void test1() {
         List<String> authorsS = new ArrayList<>(Arrays.asList("Tan W.G.", "Barkman T.J.",
                                                               "Gregory Chinchar V.", "Essani K.",
                                                               "Arctander P.", "Fjeldsaa J."));
@@ -29,7 +29,7 @@ public class RALineBuilderTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         List<String> authorsS = new ArrayList<>(Arrays.asList("Tan W.G.", "Barkman T.J.",
                                                               "Gregory Chinchar V.", "Essani K.",
                                                               "Arctander P.", "Fjeldsaa J.",

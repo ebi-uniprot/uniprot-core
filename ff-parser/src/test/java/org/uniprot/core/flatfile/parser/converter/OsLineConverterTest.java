@@ -7,9 +7,9 @@ import org.uniprot.core.uniprot.taxonomy.OrganismName;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OsLineConverterTest {
+class OsLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 		//"OS   Solanum melongena (Eggplant) (Aubergine).
 		OsLineObject osO = new OsLineObject();
 		osO.organism_species ="Solanum melongena (Eggplant) (Aubergine)";
@@ -22,7 +22,7 @@ public class OsLineConverterTest {
 	
 	
 	@Test
-	public void test2(){
+	void test2(){
 		//OS   Homo sapiens (Human).
 		OsLineObject osO = new OsLineObject();
 		osO.organism_species ="Homo sapiens (Human)";
@@ -33,7 +33,7 @@ public class OsLineConverterTest {
 		assertEquals(0, org.getSynonyms().size());
 	}
 	@Test
-	public void testVirus() {
+	void testVirus() {
 		//OS   Frog virus 3 (isolate Goorha) (FV-3).
 		OsLineObject osO = new OsLineObject();
 		osO.organism_species ="Frog virus 3 (isolate Goorha) (FV-3)";

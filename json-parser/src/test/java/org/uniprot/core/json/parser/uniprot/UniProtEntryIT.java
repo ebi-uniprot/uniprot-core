@@ -25,12 +25,12 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author lgonzales
  */
-public class UniProtEntryIT {
+class UniProtEntryIT {
 
     private static Logger logger = LoggerFactory.getLogger(UniProtEntryIT.class);
 
     @Test
-    public void testInactiveUniProtEntryComplete() {
+    void testInactiveUniProtEntryComplete() {
         EntryInactiveReason inactiveReason = new EntryInactiveReasonBuilder()
                 .type(InactiveReasonType.MERGED)
                 .addMergeDemergeTo("merge id")
@@ -52,7 +52,7 @@ public class UniProtEntryIT {
     }
 
     @Test
-    public void testUniProtEntryComplete() {
+    void testUniProtEntryComplete() {
         List<Comment> comments = new ArrayList<>();
         comments.add(AlternativeProductsCommentTest.getAlternativeProductsComment());
         comments.add(BPCPCommentTest.getBpcpComment());

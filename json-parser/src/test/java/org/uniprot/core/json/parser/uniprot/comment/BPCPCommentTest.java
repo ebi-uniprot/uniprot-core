@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BPCPCommentTest {
 
     @Test
-    public void testBPCPCommentSimple() {
+    void testBPCPCommentSimple() {
 
         BPCPComment comment = new BPCPCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -31,7 +31,7 @@ public class BPCPCommentTest {
 
 
     @Test
-    public void testBPCPCommentComplete() {
+    void testBPCPCommentComplete() {
         BPCPComment comment = getBpcpComment();
 
         ValidateJson.verifyJsonRoundTripParser(comment);

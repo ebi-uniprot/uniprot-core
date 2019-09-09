@@ -15,10 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class GeneTest {
+class GeneTest {
 
     @Test
-    public void testGeneSimple() {
+    void testGeneSimple() {
         Gene gene = createSimpleGene();
         ValidateJson.verifyJsonRoundTripParser(gene);
 
@@ -29,7 +29,7 @@ public class GeneTest {
     }
 
     @Test
-    public void testGeneComplete() {
+    void testGeneComplete() {
         Gene gene = createCompleteGene();
         ValidateJson.verifyJsonRoundTripParser(gene);
         ValidateJson.verifyEmptyFields(gene);
@@ -51,7 +51,7 @@ public class GeneTest {
         ValidateJson.validateValueEvidence(jsonNode.get("orfNames").get(0),"some orf","ECO:0000269","PubMed","11389730");
     }
 
-    public static Gene createCompleteGene(){
+    static Gene createCompleteGene(){
         List<Evidence> geneNameEvidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001360");
         GeneName geneName = new GeneNameBuilder().value("some Gene").evidences(geneNameEvidences).build();
 

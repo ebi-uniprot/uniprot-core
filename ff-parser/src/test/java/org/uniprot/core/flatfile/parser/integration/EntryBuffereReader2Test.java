@@ -9,11 +9,11 @@ import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EntryBuffereReader2Test {
+class EntryBuffereReader2Test {
 	@Test
-	public void testSimple() { 
+	void testSimple() {
 		String filename= "src/test/resources/entryIT/entryReader2.dat";
-		try (EntryBufferedReader2 reader = new EntryBufferedReader2(filename);) {
+		try (EntryBufferedReader2 reader = new EntryBufferedReader2(filename)) {
 		
 		
 		verify("test1", reader, false);
@@ -26,9 +26,9 @@ public class EntryBuffereReader2Test {
 		}
 	}
 	@Test
-	public void test2Entries() { 
+	void test2Entries() {
 		String filename= "src/test/resources/entryIT/A8EZU1_D6RDV7.dat";
-		try (EntryBufferedReader2 reader = new EntryBufferedReader2(filename);) {
+		try (EntryBufferedReader2 reader = new EntryBufferedReader2(filename)) {
 		String entry1 = readFile("src/test/resources/entryIT/A8EZU1.dat");	
 		verify(entry1, reader, true);
 		String entry2 = readFile("src/test/resources/entryIT/D6RDV7.dat");	

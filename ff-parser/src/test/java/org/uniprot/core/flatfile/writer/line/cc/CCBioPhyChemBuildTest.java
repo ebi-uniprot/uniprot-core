@@ -9,9 +9,9 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
+class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     @Test
-    public void test1WithEvidence() {
+    void test1WithEvidence() {
         String ccLine = ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "CC       pH dependence:\n" +
                 "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n" +
@@ -66,7 +66,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test1WithoutEvidence() {
+    void test1WithoutEvidence() {
         String ccLine = ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "CC       pH dependence:\n" +
                 "CC         Optimum pH is 8-10.;\n" +
@@ -111,7 +111,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test2WithoutEvidence() {
+    void test2WithoutEvidence() {
         String ccLine = ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "CC       Absorption:\n" +
                 "CC         Abs(max)=465 nm;\n" +
@@ -192,7 +192,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test2WithEvidence() {
+    void test2WithEvidence() {
         String ccLine = ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "CC       Absorption:\n" +
                 "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +
@@ -290,7 +290,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test3WithEvidence() {
+    void test3WithEvidence() {
         String ccLine = ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "CC       pH dependence:\n" +
                 "CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}. Optimum pH is\n" +
@@ -368,7 +368,7 @@ public class CCBioPhyChemBuildTest extends CCBuildTestAbstr {
 
 
     @Test
-    public void test4WithEvidence() {
+    void test4WithEvidence() {
         String ccLine = ("CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "CC       Absorption:\n" +
                 "CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +

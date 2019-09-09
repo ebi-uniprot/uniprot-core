@@ -13,10 +13,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class KwLineConverterTest {
+class KwLineConverterTest {
 	private final KwLineConverter converter =new  KwLineConverter(new HashMap<>(),true);
 	@Test
-	public void test(){
+	void test(){
 		//KW   Activator; Complete proteome; Reference proteome; Transcription
 		KwLineObject obj = new KwLineObject();
 		obj.keywords.add("Activator");
@@ -36,7 +36,7 @@ public class KwLineConverterTest {
 		
 	}
 	@Test
-	public void testEvidences(){
+	void testEvidences(){
 		//KW   Activator{EI1}; Complete proteome{EI2};
         //KW   Reference proteome; Transcription{EI2,EI3};
 		

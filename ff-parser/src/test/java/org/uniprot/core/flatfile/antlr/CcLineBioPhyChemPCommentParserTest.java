@@ -9,9 +9,9 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.BiophysicochemicalP
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineBioPhyChemPCommentParserTest {
+class CcLineBioPhyChemPCommentParserTest {
 	@Test
-	public void testProperty1() {
+	void testProperty1() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Kinetic parameters:\n"
 				+"CC         KM=1.3 mM for L,L-SDAP (in the presence of Zn(2+) at 25 degrees\n"
@@ -34,7 +34,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 	
 	
 	@Test
-	public void testSmallVmaxValue() {
+	void testSmallVmaxValue() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n" + 
 				"CC       Kinetic parameters:\n" + 
 				"CC         KM=0.3913 uM for FAM fluorophore-coupled RNA substrate and a\n" + 
@@ -54,7 +54,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 	
 	
 	@Test
-	public void testProperty2() {
+	void testProperty2() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Kinetic parameters:\n"
 				+"CC         KM=71 uM for ATP;\n"
@@ -83,7 +83,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 	}
 	
 	@Test
-	public void testTwoTempDependences() {
+	void testTwoTempDependences() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Kinetic parameters:\n"
 				+"CC         KM=71 uM for ATP;\n"
@@ -115,7 +115,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 	}
 	  
 	@Test
-	public void testAbsorption() {
+	void testAbsorption() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Absorption:\n"
 				+"CC         Abs(max)=578 nm;\n";
@@ -132,7 +132,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 
 	}
 	
-	public void testAbsorptionWithNote() {
+	void testAbsorptionWithNote() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Absorption:\n"
 				+"CC         Abs(max)=~596 nm;\n"
@@ -153,7 +153,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 
 	}
 	
-	public void testAbsorptionWithNoteEvidences() {
+	void testAbsorptionWithNoteEvidences() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Absorption:\n"
 				+"CC         Abs(max)=~596 nm {ECO:0000313};\n"
@@ -177,7 +177,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 	}
 
 	@Test
-	public void testBPWithEvidences() {
+	void testBPWithEvidences() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Absorption:\n"
 				+"CC         Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"
@@ -230,7 +230,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 
 	
 	@Test
-	public void testBPWithEvidences2() {
+	void testBPWithEvidences2() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       pH dependence:\n"
 				+"CC         Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1};\n"
@@ -259,7 +259,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 	
 	  }
 	@Test
-	public void testBPSpecialChars() {
+	void testBPSpecialChars() {
 		String lines = "CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"CC       Kinetic parameters:\n"
 				+"CC         KM=19.7 uM for peptide substrate DABCYL-ARSGAKASGC(farnesyl)LVS-\n"
@@ -280,7 +280,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 
 	}
 	@Test
-	public void testNoHeaderWithEvidence() {
+	void testNoHeaderWithEvidence() {
 		String ccLineStringEvidence =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
 				"Absorption:\n" +
 				"  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +							
@@ -301,7 +301,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 		assertNotNull(obj);
 	}
 	@Test
-	public void testNoHeaderWithEvidence2() {
+	void testNoHeaderWithEvidence2() {
 		String ccLineStringEvidence =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
 				"Absorption:\n" +
 				"Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +							
@@ -322,7 +322,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 		assertNotNull(obj);
 	}
 	@Test
-	public void testNoHeaderWithEvidence3() {
+	void testNoHeaderWithEvidence3() {
 
 			String linesNoHeader = "BIOPHYSICOCHEMICAL PROPERTIES:\n"
 					+"pH dependence:\n"
@@ -341,7 +341,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 			assertNotNull(obj);
 	}
 	@Test
-	public void testNoHeaderWithEvidence4() {
+	void testNoHeaderWithEvidence4() {
 
 			String linesNoHeader = "BIOPHYSICOCHEMICAL PROPERTIES:\n"
 					+"pH dependence:\n"
@@ -361,7 +361,7 @@ public class CcLineBioPhyChemPCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeaderWithEvidences() {
+	void testNoHeaderWithEvidences() {
 		String linesNoHeader = "BIOPHYSICOCHEMICAL PROPERTIES:\n"
 				+"Absorption:\n"
 				+"Abs(max)=465 nm {ECO:0000313|EMBL:BAG16761.1};\n"

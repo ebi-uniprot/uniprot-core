@@ -8,10 +8,10 @@ import org.uniprot.core.uniprot.comment.InteractionType;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class InteractionCommentTransformerTest {
+class InteractionCommentTransformerTest {
 	private final InteractionCommentTransformer transformer = new InteractionCommentTransformer();
 	@Test
-	public void test1(){
+	void test1(){
 		String ccLineString =("INTERACTION:\n" +
 				"Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n" +
 				"Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n" +
@@ -45,7 +45,7 @@ public class InteractionCommentTransformerTest {
 		assertEquals("EBI-126770", interaction3.getSecondInteractor().getValue() );
 	}
 	@Test
-	public void test2(){
+	void test2(){
 		String ccLineString =("INTERACTION:\n" +
 				"Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
 				"O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +
@@ -80,7 +80,7 @@ public class InteractionCommentTransformerTest {
 	}
 	
 	@Test
-	public void test3(){
+	void test3(){
 		String ccLineString =(
 				"Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
 				"O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +

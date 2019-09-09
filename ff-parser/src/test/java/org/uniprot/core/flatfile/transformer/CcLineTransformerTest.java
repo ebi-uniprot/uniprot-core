@@ -9,11 +9,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineTransformerTest {
+class CcLineTransformerTest {
 	private CcLineTransformer transformer =new CcLineTransformer();
 	
 	@Test
-	public void testAPComment(){
+	void testAPComment(){
 		String ccLineString ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 				"Comment=Additional isoforms seem to exist.;\n" +
@@ -58,7 +58,7 @@ public class CcLineTransformerTest {
 		assertEquals("No experimental confirmation available.", isoform5.getNote().getTexts().get(0).getValue());
 	}
 	@Test
-	public void testAPCommentWithEvidence() {
+	void testAPCommentWithEvidence() {
 		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 		        "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
@@ -125,7 +125,7 @@ public class CcLineTransformerTest {
 	}
 
 	@Test
-	public void tesAPCommenttWithEvidenceFormated(){
+	void tesAPCommenttWithEvidenceFormated(){
 		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 		        "  Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
@@ -193,7 +193,7 @@ public class CcLineTransformerTest {
 	}
 	
 	@Test
-	public void testBPCPComment1(){
+	void testBPCPComment1(){
 		String ccLineString =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
 				"pH dependence:\n" +
 				"Optimum pH is 8-10.. Optimum pH is 3-5.;\n" +
@@ -235,7 +235,7 @@ public class CcLineTransformerTest {
 		assertEquals(0, tempD.getTexts().get(1).getEvidences().size());
 	}
 	@Test
-	public void testBPCPComment2(){
+	void testBPCPComment2(){
 		String ccLineStringEvidence =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
 				"pH dependence:\n" +
 				"Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}."
@@ -281,7 +281,7 @@ public class CcLineTransformerTest {
 	}
 	
 	@Test
-	public void testBPCPComment3(){
+	void testBPCPComment3(){
 		String ccLineString =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
 				"Absorption:\n" +
 				"  Abs(max)=465 nm;\n" +							
@@ -338,7 +338,7 @@ public class CcLineTransformerTest {
 //		assertEquals(comment2, comment);
 	}
 	@Test
-	public void testBPCPComment4(){
+	void testBPCPComment4(){
 		String ccLineStringEvidence =("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
 				"Absorption:\n" +
 				"  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +							
@@ -406,7 +406,7 @@ public class CcLineTransformerTest {
 	}
 	
 	@Test
-	public void testCofactorEvidence1(){
+	void testCofactorEvidence1(){
 		String ccLineStringEvidence=
 				"COFACTOR:\n" +
 				"Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n" +
@@ -443,7 +443,7 @@ public class CcLineTransformerTest {
 	}
 	
 	@Test
-	public void testConfactorEvidence2(){
+	void testConfactorEvidence2(){
 		String ccLineStringEvidence ="COFACTOR: Serine protease NS3:\n" +
 	            "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
 	            + " ECO:0000269|PubMed:16683189};\n" +
@@ -487,7 +487,7 @@ public class CcLineTransformerTest {
 	}
 	
 	@Test
-    public void testCofactor3(){
+    void testCofactor3(){
         String ccLineStringEvidence ="COFACTOR: Serine protease NS3:\n" +
                 "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n" +
                 "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};" ;
@@ -521,7 +521,7 @@ public class CcLineTransformerTest {
         
        
     @Test
-    public void testCofactor4(){
+    void testCofactor4(){
         String ccLineStringEvidence ="COFACTOR: Non-structural protein 5A:\n" +
                 "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};\n" +
                 " Note=Binds 1 zinc ion in the NS5A N-terminal domain. {ECO:0000250};" ;
@@ -552,7 +552,7 @@ public class CcLineTransformerTest {
     }
     
     @Test
-	public void testDiseaseNoEvidence1(){
+	void testDiseaseNoEvidence1(){
 		String ccLineString =("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
 				"characterized by malignant lesions arising from the inner wall of " +
 				"the large intestine (the colon) and the rectum. Genetic " +
@@ -592,7 +592,7 @@ public class CcLineTransformerTest {
 	}
 	
 	@Test
-	public void testDiseaseEvidence1(){
+	void testDiseaseEvidence1(){
 		String ccLineStringEvidence =("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
 				"characterized by malignant lesions arising from the inner wall of " +
 				"the large intestine (the colon) and the rectum. Genetic " +
@@ -644,7 +644,7 @@ public class CcLineTransformerTest {
   
 
    @Test 
-   public void testFailed(){
+   void testFailed(){
        String val ="DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome (JP/HHT) [MIM:175050]:"
                + " JP/HHT syndrome phenotype consists of the coexistence of juvenile polyposis (JIP) and hereditary"
                + " hemorrhagic telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are autosomal"
@@ -683,7 +683,7 @@ public class CcLineTransformerTest {
       
    }
    @Test
-	public void testInteraction1(){
+	void testInteraction1(){
 		String ccLineString =("INTERACTION:\n" +
 				"Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n" +
 				"Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n" +
@@ -719,7 +719,7 @@ public class CcLineTransformerTest {
 		assertEquals("EBI-126770", interaction3.getSecondInteractor().getValue() );
 	}
 	@Test
-	public void testInteraction2(){
+	void testInteraction2(){
 		String ccLineString =("INTERACTION:\n" +
 				"Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
 				"O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +
@@ -756,7 +756,7 @@ public class CcLineTransformerTest {
 	}
 	 
     @Test
-    public void testRnaEditing(){
+    void testRnaEditing(){
         String ccLineString ="RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687}"
                 +", 1052 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687};"
                 + " Note=The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense codons.;";
@@ -777,7 +777,7 @@ public class CcLineTransformerTest {
     }
     
     @Test
-	public void testMassSpec() {
+	void testMassSpec() {
 		String ccLineString = "MASS SPECTROMETRY: Mass=8320; Mass_error=3;"
 				+ " Method=Electrospray; Range=1-72; Evidence={ECO:0000269|PubMed:8735961};";
 		 List<Comment> comments = transformer.transformNoHeader(ccLineString);
@@ -788,7 +788,7 @@ public class CcLineTransformerTest {
 
 	}
     @Test
-	public void testTextOnly1() {
+	void testTextOnly1() {
 		String ccLineString = "ACTIVITY REGULATION: Inactivated by the serine"
 				+ " protease inhibitor diisopropylfluorophosphate.";
 		 List<Comment> comments = transformer.transformNoHeader(ccLineString);
@@ -802,7 +802,7 @@ public class CcLineTransformerTest {
 	}
 
 	@Test
-	public void testTextOnly2() {
+	void testTextOnly2() {
 		String ccLineString = "SIMILARITY: Belongs to the peptidase S1 family. Granzyme subfamily.";
 		 List<Comment> comments = transformer.transformNoHeader(ccLineString);
 			assertEquals(1, comments.size());

@@ -16,11 +16,11 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class CofactorCommentTransformerTest {
+class CofactorCommentTransformerTest {
 	private final CofactorCommentTransformer transformer =new CofactorCommentTransformer();
 	
 	@Test
-	public void testNote() {
+	void testNote() {
 		String val = "Note=Binds 2 divalent ions per subunit (magnesium or cobalt).";
 
 		CofactorComment comment = 
@@ -36,7 +36,7 @@ public class CofactorCommentTransformerTest {
 
 	@DisplayName("Tests a cofactor that has a molecule and a note")
 	@Test
-	public void testCofactorMoleculeAndNote() {
+	void testCofactorMoleculeAndNote() {
 		String moleculeStr = "Isoform 1";
 		String noteStr = "Binds 2 divalent ions per subunit (magnesium or cobalt)";
 
@@ -59,7 +59,7 @@ public class CofactorCommentTransformerTest {
 
 	@DisplayName("Tests a cofactor that has a molecule and a single cofactor reference")
 	@Test
-	public void testCofactorMoleculeAndSimpleReference() {
+	void testCofactorMoleculeAndSimpleReference() {
 		String moleculeStr = "Isoform 1";
 
 		String refStr1 = "CHEBI:123";
@@ -90,7 +90,7 @@ public class CofactorCommentTransformerTest {
 
 	@DisplayName("Tests a cofactor that has a molecule and two cofactor references")
 	@Test
-	public void testCofactorMoleculeAndMultipleReferences() {
+	void testCofactorMoleculeAndMultipleReferences() {
 		String moleculeStr = "Isoform 1";
 
 		String refStr1 = "CHEBI:123";
@@ -134,7 +134,7 @@ public class CofactorCommentTransformerTest {
 
 	@DisplayName("Tests a cofactor that has a molecule and a single cofactor reference and a note")
 	@Test
-	public void testCofactorMoleculeWithSimpleReferenceAndNote() {
+	void testCofactorMoleculeWithSimpleReferenceAndNote() {
 		String moleculeStr = "Isoform 1";
 
 		String refStr1 = "CHEBI:123";
@@ -174,7 +174,7 @@ public class CofactorCommentTransformerTest {
 	}
 
 	@Test
-	public void testInvalidcofactorFormat() {
+	void testInvalidcofactorFormat() {
 		String val = "Isoform 1";
 
 		try {
@@ -185,7 +185,7 @@ public class CofactorCommentTransformerTest {
 		}
 	}
 	@Test
-	public void testEvidence1(){
+	void testEvidence1(){
 		String ccLineStringEvidence=
 				"COFACTOR:\n" +
 				"Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n" +
@@ -220,7 +220,7 @@ public class CofactorCommentTransformerTest {
 	}
 	
 	@Test
-	public void testEvidence2(){
+	void testEvidence2(){
 		String ccLineStringEvidence ="COFACTOR: Serine protease NS3:\n" +
 	            "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
 	            + " ECO:0000269|PubMed:16683189};\n" +
@@ -262,7 +262,7 @@ public class CofactorCommentTransformerTest {
 	}
 	
 	@Test
-    public void testFailed(){
+    void testFailed(){
         String ccLineStringEvidence ="COFACTOR: Serine protease NS3:\n" +
                 "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n" +
                 "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};" ;
@@ -294,7 +294,7 @@ public class CofactorCommentTransformerTest {
         
        
     @Test
-    public void testFailed2(){
+    void testFailed2(){
         String ccLineStringEvidence ="COFACTOR: Non-structural protein 5A:\n" +
                 "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};\n" +
                 " Note=Binds 1 zinc ion in the NS5A N-terminal domain. {ECO:0000250};" ;
@@ -324,7 +324,7 @@ public class CofactorCommentTransformerTest {
     }
     
     @Test
-    public void testMoleculeWithSlashSymbol() {
+    void testMoleculeWithSlashSymbol() {
         String moleculeStr = "Bifunctional cytochrome P450/NADPH--P450 reductase";
  
         String refStr1 = "CHEBI:57692";

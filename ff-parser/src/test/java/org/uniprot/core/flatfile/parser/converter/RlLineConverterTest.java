@@ -9,11 +9,11 @@ import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RlLineConverterTest {
+class RlLineConverterTest {
     private final RlLineConverter converter = new RlLineConverter();
 
     @Test
-    public void testJournalArticle() {
+    void testJournalArticle() {
         // "RL   J. Mol. Biol. 168:321-331(1983).
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.JournalArticle ja = new RlLineObject.JournalArticle();
@@ -38,7 +38,7 @@ public class RlLineConverterTest {
     }
 
     @Test
-    public void testSubmission() {
+    void testSubmission() {
         // "RL   Submitted (OCT-1995) to the EMBL/GenBank/DDBJ databases.
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Submission subm = new RlLineObject.Submission();
@@ -57,7 +57,7 @@ public class RlLineConverterTest {
     }
 
     @Test
-    public void testThesis() {
+    void testThesis() {
         // "RL   Thesis (1977), University of Geneva, Switzerland.\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Thesis th = new RlLineObject.Thesis();
@@ -77,7 +77,7 @@ public class RlLineConverterTest {
     }
 
     @Test
-    public void testPatent() {
+    void testPatent() {
         //"RL   Patent number WO9010703, 20-SEP-1990.\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Patent th = new RlLineObject.Patent();
@@ -99,7 +99,7 @@ public class RlLineConverterTest {
 
 
     @Test
-    public void testBook() {
+    void testBook() {
         //RL   (In) Boyer P.D. (eds.);
         //RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York (1975).
         RlLineObject rlObject = new RlLineObject();
@@ -128,7 +128,7 @@ public class RlLineConverterTest {
     }
 
     @Test
-    public void testElectronicArticle() {
+    void testElectronicArticle() {
         // "RL   (er) Plant Gene Register PGR98-023.\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.EPub th = new RlLineObject.EPub();
@@ -147,7 +147,7 @@ public class RlLineConverterTest {
     }
 
     @Test
-    public void testElectronicArticle2() {
+    void testElectronicArticle2() {
         // "RL   (er) J. Am. Chem. Soc. 121:9223-9224(1999).\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.EPub th = new RlLineObject.EPub();
@@ -166,7 +166,7 @@ public class RlLineConverterTest {
     }
 
     @Test
-    public void testUnpublished() {
+    void testUnpublished() {
         // "RL   Unpublished observations (OCT-1978).\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Unpublished th = new RlLineObject.Unpublished();

@@ -14,10 +14,10 @@ import javax.xml.namespace.QName;
  *
 */
 
-public class UniParcXmlTestHelper {
-	public static final String TARGET_PACKAGE ="org.uniprot.core.xml.jaxb.uniparc";
+class UniParcXmlTestHelper {
+	private static final String TARGET_PACKAGE ="org.uniprot.core.xml.jaxb.uniparc";
 	@SuppressWarnings("unchecked")
-	public static <T>  String toXmlString(T obj, Class<T>  clazz, String element) {
+	static <T>  String toXmlString(T obj, Class<T>  clazz, String element) {
 		 try {
 	            StringWriter stringWriter = new StringWriter();
 	            JAXBContext jc = JAXBContext.newInstance(TARGET_PACKAGE);

@@ -17,16 +17,16 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CatalyticActivityCommentTransformerTest {
+class CatalyticActivityCommentTransformerTest {
 	private static CatalyticActivityCommentTransformer transformer ;
 	@BeforeAll
-	public static void setup() {
+	static void setup() {
 		transformer = new CatalyticActivityCommentTransformer();
 	}
 	
 
 	@Test
-	public void withTwoPhysiologicalDirection() {
+	void withTwoPhysiologicalDirection() {
 		String ccLine =  "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
@@ -64,7 +64,7 @@ public class CatalyticActivityCommentTransformerTest {
 	}
 	
 	@Test
-	public void withTwoPhysiologicalDirectionWithSpaceSeparator() {
+	void withTwoPhysiologicalDirectionWithSpaceSeparator() {
 		String ccLine =  "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
@@ -101,7 +101,7 @@ public class CatalyticActivityCommentTransformerTest {
 		
 	}
 	@Test
-	public void withTwoPhysiologicalDirectionNoEC() {
+	void withTwoPhysiologicalDirectionNoEC() {
 		String ccLine =  "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
@@ -137,7 +137,7 @@ public class CatalyticActivityCommentTransformerTest {
 		
 	}
 	@Test
-	public void withTwoPhysiologicalDirectionNoEvidence() {
+	void withTwoPhysiologicalDirectionNoEvidence() {
 		String ccLine =  "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
@@ -170,7 +170,7 @@ public class CatalyticActivityCommentTransformerTest {
 		
 	}
 	@Test
-	public void withTwoPhysiologicalDirectionNoHeaderNoEvidence() {
+	void withTwoPhysiologicalDirectionNoHeaderNoEvidence() {
 		String ccLine =  "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
@@ -203,7 +203,7 @@ public class CatalyticActivityCommentTransformerTest {
 	}
 	
 	@Test
-	public void withTwoPhysiologicalDirectionNoHheader() {
+	void withTwoPhysiologicalDirectionNoHheader() {
 		String ccLine = 
 				 "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
@@ -241,7 +241,7 @@ public class CatalyticActivityCommentTransformerTest {
 	}
 	
 	@Test
-	public void withNoPhysiologicalDirectionNoHheader() {
+	void withNoPhysiologicalDirectionNoHheader() {
 		String ccLine = 
 				"Reaction=cytidine(32)/guanosine(34) in tRNA + 2 S-adenosyl-L-"
 						+ "methionine = 2'-O-methylcytidine(32)/2'-O-methylguanosine(34) in"
@@ -268,7 +268,7 @@ public class CatalyticActivityCommentTransformerTest {
 	
 	}
 	@Test
-	public void caBasedOnEnzyme() {
+	void caBasedOnEnzyme() {
 		String ccLine = "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,"
@@ -287,7 +287,7 @@ public class CatalyticActivityCommentTransformerTest {
 	}
 	
 	@Test
-	public void caBasedOnEnzymen2() {
+	void caBasedOnEnzymen2() {
 		String ccLine = "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; EC=1.1.1.n271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,"
@@ -306,7 +306,7 @@ public class CatalyticActivityCommentTransformerTest {
 	}
 
 	@Test
-	public void caBasedOnEnzymeWithSemicolon() {
+	void caBasedOnEnzymeWithSemicolon() {
 		String ccLine = "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=Endonucleolytic cleavage of DNA to give random double-stranded fragments with terminal " +
 				"5'-phosphates; ATP is simultaneously hydrolyzed; EC=1.1.1.271; Evidence={ECO:0000256|RuleBase:RU364115};";

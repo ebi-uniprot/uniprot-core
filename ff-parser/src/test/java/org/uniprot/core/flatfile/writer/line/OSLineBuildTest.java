@@ -9,10 +9,10 @@ import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OSLineBuildTest {
-	OSLineBuilder builder = new OSLineBuilder();
+class OSLineBuildTest {
+	private OSLineBuilder builder = new OSLineBuilder();
 	@Test
-	public void test2(){
+	void test2(){
 		String osLine = "OS   Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB).";
 		OrganismName organism = OrganismNameLineParser.createFromOrganismLine("Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB)");
 		
@@ -27,7 +27,7 @@ public class OSLineBuildTest {
 	}
 	
 	@Test
-	public void test41(){
+	void test41(){
 		
 			String osLine ="OS   Methylobacterium extorquens (Methylobacterium dichloromethanicum)\n" +
                            "OS   (Protomonas extorquens).";

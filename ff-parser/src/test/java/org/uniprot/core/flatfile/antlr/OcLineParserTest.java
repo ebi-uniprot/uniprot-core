@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OcLineParserTest {
+class OcLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String ocLines = "OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi.\n";
 		UniprotLineParser<OcLineObject> parser = new DefaultUniprotLineParserFactory().createOcLineParser();
 		OcLineObject obj = parser.parse(ocLines);
@@ -23,7 +23,7 @@ public class OcLineParserTest {
 		assertEquals(nodes, obj.nodes);
 	}
 	@Test
-	public void test2() {
+	void test2() {
 		String ocLines = "OC   Eukaryota; Metazoa; Chordata; Craniata;\n"
 				+"OC   Vertebrata; Euteleostomi.\n";
 				;
@@ -33,7 +33,7 @@ public class OcLineParserTest {
 
 	}
 	@Test
-	public void test3() {
+	void test3() {
 		String ocLines = "OC   Viruses; dsDNA viruses, no RNA stage; Iridoviridae; Ranavirus.\n"
 			
 				;
@@ -43,7 +43,7 @@ public class OcLineParserTest {
 
 	}
 	@Test
-	public void test4() {
+	void test4() {
 		String ocLines = "OC   Bacteria; Bacteroidetes; Bacteroidetes Order II. Incertae sedis;\n"
 			+"OC   Rhodothermaceae; Salinibacter.\n"
 				;

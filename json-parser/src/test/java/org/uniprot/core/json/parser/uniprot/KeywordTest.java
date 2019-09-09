@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class KeywordTest {
+class KeywordTest {
 
     @Test
-    public void testKeywordSimple() {
+    void testKeywordSimple() {
         Keyword keyword = new KeywordBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(keyword);
 
@@ -26,7 +26,7 @@ public class KeywordTest {
         assertEquals("KW-00000",jsonNode.get("id").asText());
     }
     @Test
-    public void testKeywordComplete() {
+    void testKeywordComplete() {
         Keyword keyword = getKeyword();
         ValidateJson.verifyJsonRoundTripParser(keyword);
         ValidateJson.verifyEmptyFields(keyword);
@@ -44,7 +44,7 @@ public class KeywordTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000255","PROSITE-ProRule","PRU10025");
     }
 
-    public static Keyword getKeyword() {
+    static Keyword getKeyword() {
         return new KeywordBuilder()
                 .id("KW-11111")
                 .value("keyword value")

@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SubcellularLocationCommentTest {
 
     @Test
-    public void testSubcellularLocationSimple() {
+    void testSubcellularLocationSimple() {
 
         SubcellularLocationComment comment = new SubcellularLocationCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -37,7 +37,7 @@ public class SubcellularLocationCommentTest {
     }
 
     @Test
-    public void testSubcellularLocationComplete() {
+    void testSubcellularLocationComplete() {
 
         SubcellularLocationComment comment = getSubcellularLocationComment();
         ValidateJson.verifyJsonRoundTripParser(comment);

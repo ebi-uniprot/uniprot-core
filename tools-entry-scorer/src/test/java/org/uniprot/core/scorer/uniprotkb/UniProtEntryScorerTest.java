@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Time: 14:31
  * To change this template use File | Settings | File Templates.
  */
-public class UniProtEntryScorerTest {
+class UniProtEntryScorerTest {
     private static final String ENTRY = "ID   013L_IIV3               Reviewed;          90 AA.\n" +
             "AC   Q197E7;\n" +
             "DT   16-JUN-2009, integrated into UniProtKB/Swiss-Prot.\n" +
@@ -63,7 +63,7 @@ public class UniProtEntryScorerTest {
             "     ILALIFGVFM WWSKYNHDKK RSLNTASIFY\n" +
             "//\n";
     @Test
-    public void test1() throws IOException {
+    void test1() throws IOException {
         UniProtEntry entry = new DefaultUniProtParser(new SupportingDataMapImpl(), true)
                 .parse(ENTRY);
 

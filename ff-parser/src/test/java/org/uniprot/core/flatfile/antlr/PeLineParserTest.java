@@ -7,9 +7,9 @@ import org.uniprot.core.flatfile.parser.impl.pe.PeLineObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PeLineParserTest {
+class PeLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String peLines = "PE   1: Evidence at protein level;\n";
 		UniprotLineParser<PeLineObject> parser = new DefaultUniprotLineParserFactory().createPeLineParser();
 		PeLineObject obj = parser.parse(peLines);

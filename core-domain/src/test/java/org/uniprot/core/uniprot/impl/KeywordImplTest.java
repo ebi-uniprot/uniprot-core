@@ -13,10 +13,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class KeywordImplTest {
+class KeywordImplTest {
 
     @Test
-    public void testKeywordImpl() {
+    void testKeywordImpl() {
         String val = "Transmembrane";
         String id = "KW-0812";
         KeywordCategory category = KeywordCategory.DOMAIN;
@@ -28,7 +28,7 @@ public class KeywordImplTest {
     }
 
     @Test
-    public void testGetDisplayedValue() {
+    void testGetDisplayedValue() {
         String val = "Transmembrane";
         String id = "KW-0812";
         KeywordCategory category = KeywordCategory.DOMAIN;

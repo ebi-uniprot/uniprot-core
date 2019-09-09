@@ -14,10 +14,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CcRnaEditingConverterTest {
+class CcRnaEditingConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
-	public void testRNAEditing(){
+	void testRNAEditing(){
 		//CC   -!- RNA EDITING: Modified_positions=1, 56, 89, 103, 126, 164;
         //CC       Note=The initiator methionine is created by RNA editing.
 		CcLineObject ccLineO = new CcLineObject();	

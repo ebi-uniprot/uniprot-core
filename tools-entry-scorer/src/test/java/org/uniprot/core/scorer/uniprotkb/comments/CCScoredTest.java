@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.comment.CommentType.*;
 
-public class CCScoredTest {
+class CCScoredTest {
     private static final String CC = "CC   -!- FUNCTION: Adapter protein implicated in the regulation of a large\n" +     // 9.0
             "CC       spectrum of both general and specialized signaling pathways. Binds\n" +
             "CC       to a large number of partners, usually by recognition of a\n" +
@@ -35,7 +35,7 @@ public class CCScoredTest {
 
 
     @Test
-    public void test1() throws Exception {
+    void test1() throws Exception {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC);
         UniProtEntry entry = new UniProtEntryBuilder()
@@ -128,7 +128,7 @@ public class CCScoredTest {
                     "CC   -!- SIMILARITY: Belongs to the 14-3-3 family.";
 
     @Test
-    public void test2() {
+    void test2() {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC_2);
         UniProtEntry entry = new UniProtEntryBuilder()

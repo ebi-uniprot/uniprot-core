@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
 */
 
-public class SequenceFeatureTest {
+class SequenceFeatureTest {
 	@Test
 	void testInterProGroup() {
 		InterproGroup domain =

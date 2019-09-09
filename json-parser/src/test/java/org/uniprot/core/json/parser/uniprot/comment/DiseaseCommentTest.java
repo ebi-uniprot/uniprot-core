@@ -24,7 +24,7 @@ public class DiseaseCommentTest {
 
 
     @Test
-    public void testDiseaseSimple() {
+    void testDiseaseSimple() {
 
         DiseaseComment comment = new DiseaseCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -36,7 +36,7 @@ public class DiseaseCommentTest {
     }
 
     @Test
-    public void testDiseaseComplete() {
+    void testDiseaseComplete() {
         DiseaseComment comment = getDiseaseComment();
 
         ValidateJson.verifyJsonRoundTripParser(comment);

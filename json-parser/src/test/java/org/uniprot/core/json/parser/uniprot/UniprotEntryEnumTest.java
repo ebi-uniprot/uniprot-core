@@ -11,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author lgonzales
  */
-public class UniprotEntryEnumTest {
+class UniprotEntryEnumTest {
 
     @Test
-    public void testProteinExistenceEnum() {
+    void testProteinExistenceEnum() {
         ProteinExistence proteinExistence = ProteinExistence.PROTEIN_LEVEL;
         ValidateJson.verifyJsonRoundTripParser(proteinExistence);
 
@@ -23,7 +23,7 @@ public class UniprotEntryEnumTest {
     }
 
     @Test
-    public void testEntryTypeEnum() {
+    void testEntryTypeEnum() {
         UniProtEntryType entryType = UniProtEntryType.SWISSPROT;
         ValidateJson.verifyJsonRoundTripParser(entryType);
 

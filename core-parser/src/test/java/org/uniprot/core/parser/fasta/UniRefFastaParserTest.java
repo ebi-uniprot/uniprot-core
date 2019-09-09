@@ -29,7 +29,7 @@ import org.uniprot.core.uniref.builder.UniRefMemberBuilder;
  *
 */
 
-public class UniRefFastaParserTest {
+class UniRefFastaParserTest {
 
 	@Test
 	void testFastaEntry() {

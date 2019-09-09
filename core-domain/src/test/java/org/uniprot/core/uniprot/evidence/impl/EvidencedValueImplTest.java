@@ -11,10 +11,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EvidencedValueImplTest {
+class EvidencedValueImplTest {
 
     @Test
-    public void testEmptyEvidence() {
+    void testEmptyEvidence() {
         String value = "some value";
         List<Evidence> evidences = Collections.emptyList();
         EvidencedValueImpl evidencedValue = new EvidencedValueImpl(value, evidences);
@@ -23,7 +23,7 @@ public class EvidencedValueImplTest {
     }
 
     @Test
-    public void testTwoEvidences() {
+    void testTwoEvidences() {
         String value = "some values";
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(new EvidenceImpl(

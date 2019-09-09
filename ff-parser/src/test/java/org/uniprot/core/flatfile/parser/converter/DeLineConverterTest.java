@@ -13,11 +13,11 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DeLineConverterTest {
+class DeLineConverterTest {
     private DeLineConverter converter = new DeLineConverter();
 
     @Test
-    public void test1() {
+    void test1() {
 		/*
 		 *     val deLines = """DE   RecName: Full=Annexin A5;
                     |DE            Short=Annexin-5;
@@ -63,7 +63,7 @@ public class DeLineConverterTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         DeLineObject deObject = new DeLineObject();
         deObject.recName = new DeLineObject.Name();
         deObject.recName.fullName = "Annexin A5";
@@ -99,7 +99,7 @@ public class DeLineConverterTest {
     }
 
     @Test
-    public void test3() {
+    void test3() {
         /**
          * "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;
          |DE   Includes:
@@ -178,7 +178,7 @@ public class DeLineConverterTest {
     }
 
     @Test
-    public void testEvidence() {
+    void testEvidence() {
 		/*
 		 *   val deLines = """DE   RecName: Full=Annexin A5{EI1};
                     |DE            Short=Annexin-5{EI1, EI2};

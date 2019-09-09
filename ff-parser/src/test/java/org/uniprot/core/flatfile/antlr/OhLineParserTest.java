@@ -7,9 +7,9 @@ import org.uniprot.core.flatfile.parser.impl.oh.OhLineObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OhLineParserTest {
+class OhLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String ohLines = "OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).\n";
 		UniprotLineParser<OhLineObject> parser = new DefaultUniprotLineParserFactory().createOhLineParser();
 		OhLineObject obj = parser.parse(ohLines);
@@ -25,7 +25,7 @@ public class OhLineParserTest {
 	}
 	
 	@Test
-	public void test2() {
+	void test2() {
 		String ohLines = "OH   NCBI_TaxID=3662; Cucurbita moschata (Winter crookneck squash) (Cucurbita pepo var. moschata).\n";
 		UniprotLineParser<OhLineObject> parser = new DefaultUniprotLineParserFactory().createOhLineParser();
 		OhLineObject obj = parser.parse(ohLines);
@@ -36,7 +36,7 @@ public class OhLineParserTest {
 
 	}
 	@Test
-	public void test3() {
+	void test3() {
 		String ohLines = "OH   NCBI_TaxID=3662; Cucurbita moschata (Winter crookneck squash) (Cucurbita pepo var. moschata).\n"
 		+"OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).\n";
 		UniprotLineParser<OhLineObject> parser = new DefaultUniprotLineParserFactory().createOhLineParser();

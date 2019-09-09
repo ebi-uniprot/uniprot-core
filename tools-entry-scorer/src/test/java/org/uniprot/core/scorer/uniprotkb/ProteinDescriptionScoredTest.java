@@ -15,12 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * Tests if the DE line is parsed correctly for SwissProt and TrEMBL entries.
  */
-public class ProteinDescriptionScoredTest {
+class ProteinDescriptionScoredTest {
 
     private static final UniprotLineParserFactory PARSER_FACTORY = new DefaultUniprotLineParserFactory();
 
     @Test
-    public void shouldSubNameScore6() {
+    void shouldSubNameScore6() {
 
         String description = "DE   SubName: Full=Type IIS restriction enzyme Eco57I;\n" +
                 "DE            EC=3.1.21.4;\n" +
@@ -30,7 +30,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldSubnameScore0() {
+    void shouldSubnameScore0() {
         String description = "DE   SubName: Full=Putative uncharacterized protein {ECO:0000269|PubMed:10433554};\n"
                 + "DE   Flags: Precursor {ECO:0000269|PubMed:10433554};\n";
 
@@ -38,7 +38,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldSubnameScore3() {
+    void shouldSubnameScore3() {
         String description =
                 "DE   SubName: Full=Glutamate synthase large chain. {ECO:0000269|PubMed:10433554};\n" +
                 "DE            EC=1.4.1.13 {ECO:0000269|PubMed:10433554};\n";
@@ -46,7 +46,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldSubName2Score3() {
+    void shouldSubName2Score3() {
         String description =
                 "DE   SubName: Full=Catalytic activity: beta-D-glucuronoside + H2O = D-glucuronate + "
                         + "alcohol. {ECO:0000269|PubMed:10433554};\n" +
@@ -57,7 +57,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldRecNameScore9() {
+    void shouldRecNameScore9() {
 
         String description = "DE   RecName: Full=Interleukin-2;\n" +
                 "DE            Short=IL-2;\n" +
@@ -69,7 +69,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDEwithFlagsScore14() {
+    void shouldDEwithFlagsScore14() {
 
         String description =
                 "DE   RecName: Full=A disintegrin and metalloproteinase domain 10;\n" +
@@ -85,7 +85,7 @@ public class ProteinDescriptionScoredTest {
 
 
     @Test
-    public void shouldDEwithFlagsScore16() {
+    void shouldDEwithFlagsScore16() {
 
         String description =
                 "DE   RecName: Full=A disintegrin and metalloproteinase domain 10;\n" +
@@ -101,7 +101,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDEwithIncludesScore11() {
+    void shouldDEwithIncludesScore11() {
 
         String description = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" +
                 "DE   Includes:\n" +
@@ -120,7 +120,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDEwithDuplicateECsScore14() {
+    void shouldDEwithDuplicateECsScore14() {
 
         String description = "DE   RecName: Full=Multifunctional CCA protein;\n" +
                 "DE   Includes:\n" +
@@ -144,7 +144,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDEwithContainsScore11() {
+    void shouldDEwithContainsScore11() {
 
         String description = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" +
                 "DE   Includes:\n" +
@@ -165,7 +165,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDescriptionScore9() {
+    void shouldDescriptionScore9() {
 
         String description =
                 "DE   RecName: Full=Interleukin-2;\n" +
@@ -177,7 +177,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void testIncludeScore3() {
+    void testIncludeScore3() {
 
         String description =
                 "DE   Includes:\n" +
@@ -190,7 +190,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDescriptionScore11() {
+    void shouldDescriptionScore11() {
 
         String description = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" +
                 "DE   Includes:\n" +
@@ -214,7 +214,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldRecName2Score9() {
+    void shouldRecName2Score9() {
         String description =
                 "DE   RecName: Full=Interleukin-2;\n" +
                         "DE            Short=IL-2;\n" +
@@ -225,7 +225,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDeWithECScore17() {
+    void shouldDeWithECScore17() {
         String description =
                 "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" +
                         "DE   Includes:\n" +
@@ -248,7 +248,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void testSpDescriptionScore11() {
+    void testSpDescriptionScore11() {
 
         String description = "DE   RecName: Full=Granulocyte colony-stimulating factor;\n" +
                 "DE            Short=G-CSF;\n" +
@@ -261,7 +261,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldBigDescriptionScore11() {
+    void shouldBigDescriptionScore11() {
 
         String description = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" +
                 "DE   Includes:\n" +
@@ -285,7 +285,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldDescriptionScore14() {
+    void shouldDescriptionScore14() {
 
         String description = "DE   RecName: Full=4-coumarate--CoA ligase-like 5;\n" +
                 "DE            EC=6.2.1.-;\n" +
@@ -297,7 +297,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldSubNameScore0() {
+    void shouldSubNameScore0() {
 
         String description = "DE   SubName: Full=transposase{EI1};\n";
         testDescription(description, 0.0, Consensus.COMPLEX);
@@ -305,7 +305,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldRecName2Score5() {
+    void shouldRecName2Score5() {
 
         String description =
                 "DE   RecName: Full=Ammonium transporter 1 member 1;\n" +
@@ -316,7 +316,7 @@ public class ProteinDescriptionScoredTest {
     }
 
     @Test
-    public void shouldRecNameScore5() {
+    void shouldRecNameScore5() {
 
         String description =
                 "DE   RecName: Full=9.5 days embryo parthenogenote cDNA, RIKEN full-length enriched"

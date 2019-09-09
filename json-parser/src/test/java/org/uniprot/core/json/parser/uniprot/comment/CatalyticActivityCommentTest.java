@@ -26,7 +26,7 @@ public class CatalyticActivityCommentTest {
 
 
     @Test
-    public void testCatalyticActivitySimple() {
+    void testCatalyticActivitySimple() {
 
         CatalyticActivityComment comment = new CatalyticActivityCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -38,7 +38,7 @@ public class CatalyticActivityCommentTest {
 
 
     @Test
-    public void testCatalyticActivityComplete() {
+    void testCatalyticActivityComplete() {
         CatalyticActivityComment comment = getCatalyticActivityComment();
 
 

@@ -11,7 +11,7 @@ import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 
-public class CommentTestUtil {
+class CommentTestUtil {
 
     static UniProtEntry createUniProtEntryFromCommentLine(String commentLine) {
         List<Comment> comments = new CcLineTransformer("", "").transformNoHeader(commentLine);

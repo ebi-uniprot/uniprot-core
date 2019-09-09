@@ -3,9 +3,9 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class CatalyticActivityScoredTest extends CommentScoreTestBase {
+class CatalyticActivityScoredTest extends CommentScoreTestBase {
 	@Test
-	public void shouldSpScore30() throws Exception {
+	void shouldSpScore30() {
 		String line = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=cytidine(32)/guanosine(34) in tRNA + 2 S-adenosyl-L-\n"
 				+ "CC         methionine = 2'-O-methylcytidine(32)/2'-O-methylguanosine(34) in\n"
@@ -18,7 +18,7 @@ public class CatalyticActivityScoredTest extends CommentScoreTestBase {
 	}
 
 	@Test
-	public void shouldScore30() throws Exception {
+	void shouldScore30() {
 		String line =	 "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; EC=1.1.1.n271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
@@ -27,7 +27,7 @@ public class CatalyticActivityScoredTest extends CommentScoreTestBase {
 	}
 
 	@Test
-	public void shouldWithEvScore30() throws Exception {
+	void shouldWithEvScore30() {
 		String line = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"

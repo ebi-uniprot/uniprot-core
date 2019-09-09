@@ -5,9 +5,9 @@ import org.uniprot.core.flatfile.parser.impl.ft.FtLineFormater;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FtLineFormaterTest {
+class FtLineFormaterTest {
 	@Test
-	public void test() {
+	void test() {
 		 String expected = "FT   CHAIN        20    873       104 kDa microneme/rhoptry antigen.\n"
 				 +"FT                                /FTId=PRO_0000232680.\n"
                  ;
@@ -24,7 +24,7 @@ public class FtLineFormaterTest {
 	}
 
 	@Test
-	public void test2() {
+	void test2() {
 	 String expected = "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
 			 +"FT                                -> SECLTYGKQPLTSFHPFTSQMPP (in\n"
 			 +"FT                                isoform 2).\n"

@@ -7,9 +7,9 @@ import org.uniprot.core.uniprot.ProteinExistence;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PeLineConverterTest {
+class PeLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 	//	PE   1: Evidence at protein level
 		PeLineObject pe = new PeLineObject();
 		pe.level =1;

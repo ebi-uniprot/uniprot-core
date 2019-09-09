@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class GeneLocationImplTest {
+class GeneLocationImplTest {
 
     @Test
-    public void testGetDisplayedValueAPICOPLAST_PLASTID() {
+    void testGetDisplayedValueAPICOPLAST_PLASTID() {
         GeneEncodingType type = GeneEncodingType.APICOPLAST_PLASTID;
         String val = "";
         List<Evidence> evidences = createEvidences();
@@ -25,7 +25,7 @@ public class GeneLocationImplTest {
     }
 
     @Test
-    public void testGetDisplayedValueMITOCHONDRION() {
+    void testGetDisplayedValueMITOCHONDRION() {
         GeneEncodingType type = GeneEncodingType.MITOCHONDRION;
         String val = "some value";
         List<Evidence> evidences = createEvidences();
@@ -35,7 +35,7 @@ public class GeneLocationImplTest {
     }
 
     @Test
-    public void testGetDisplayedValueHYDROGENOSOME() {
+    void testGetDisplayedValueHYDROGENOSOME() {
         GeneEncodingType type = GeneEncodingType.HYDROGENOSOME;
         String val = "some value";
         List<Evidence> evidences = createEvidences();
@@ -45,7 +45,7 @@ public class GeneLocationImplTest {
     }
 
     @Test
-    public void testGetDisplayedValuePLASTID() {
+    void testGetDisplayedValuePLASTID() {
         GeneEncodingType type = GeneEncodingType.PLASTID;
         String val = "some value";
         List<Evidence> evidences = createEvidences();
@@ -55,7 +55,7 @@ public class GeneLocationImplTest {
     }
 
     @Test
-    public void testGetDisplayedValuePLASMID() {
+    void testGetDisplayedValuePLASMID() {
         GeneEncodingType type = GeneEncodingType.PLASMID;
         String val = "some value";
         List<Evidence> evidences = createEvidences();
@@ -65,7 +65,7 @@ public class GeneLocationImplTest {
     }
 
     @Test
-    public void testGeneLocationImpl() {
+    void testGeneLocationImpl() {
         GeneEncodingType type = GeneEncodingType.APICOPLAST_PLASTID;
         String val = "";
         List<Evidence> evidences = null;

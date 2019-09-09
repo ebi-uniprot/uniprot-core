@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class DiseaseCommentBuilderTest {
+class DiseaseCommentBuilderTest {
 
     @Test
-    public void testSetDisease() {
+    void testSetDisease() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         String description = "some description";
@@ -43,7 +43,7 @@ public class DiseaseCommentBuilderTest {
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         String description = "some description";

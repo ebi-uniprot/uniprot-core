@@ -9,9 +9,9 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
+class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
 	@Test
-	public void testTwoReports() {
+	void testTwoReports() {
 		String ftLine = "FT   CONFLICT      1      1       A -> Q (in Ref. 1; BAA37160/BAA37165 and\n"
 				+ "FT                                2).";
 		String ftLineString = "CONFLICT 1 1 A -> Q (in Ref. 1; BAA37160/BAA37165 and 2).";
@@ -35,7 +35,7 @@ public class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
 	String val = "Q -> K (in Ref. 1; AAO59377, 2; ABO40479 and 6; AAH63566)";
 
 	@Test
-	public void testConflictEvidence() {
+	void testConflictEvidence() {
 		String ftLine = "FT   CONFLICT      1      1       A -> Q (in Ref. 1; BAA37160/BAA37165 and\n"
 				+ "FT                                2). {ECO:0000269|PubMed:10433554,\n"
 				+ "FT                                ECO:0000313|EMBL:BAG16761.1}.";
@@ -70,7 +70,7 @@ public class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testThreeReprotsAndTwoAltSeq() {
+	void testThreeReprotsAndTwoAltSeq() {
 		String ftLine = "FT   CONFLICT      1      1       A -> QK (in Ref. 1; BAA37160/BAA37165, 2;\n"
 				+ "FT                                ABO40479 and 6; AAH63566).";
 		String ftLineString = "CONFLICT 1 1 A -> QK (in Ref. 1; BAA37160/BAA37165, 2; ABO40479 and 6; AAH63566).";

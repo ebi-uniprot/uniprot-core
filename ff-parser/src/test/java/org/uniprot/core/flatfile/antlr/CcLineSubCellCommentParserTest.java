@@ -10,9 +10,9 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.LocationFlagEnum;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CcLineSubCellCommentParserTest {
+class CcLineSubCellCommentParserTest {
 	@Test
-	public void test1() {
+	void test1() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. Endoplasmic reticulum membrane;\n"
 				+"CC       Peripheral membrane protein. Golgi apparatus membrane; Peripheral\n"
 				+"CC       membrane protein.\n"
@@ -32,7 +32,7 @@ public class CcLineSubCellCommentParserTest {
 		verify(sl.locations.get(2).topology, "Peripheral membrane protein", null );
 	}
 	@Test
-	public void test1WithEvidence() {
+	void test1WithEvidence() {
 		String lines =  "CC   -!- SUBCELLULAR LOCATION: Cytoplasm {ECO:0000256|HAMAP-Rule:MF_01146}.\n" ;
 				;
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -48,7 +48,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void test1WithEvidence2() {
+	void test1WithEvidence2() {
 		String lines =  "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. {ECO:0000256|HAMAP-Rule:MF_01146}.\n" ;
 				;
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -69,7 +69,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void test2() {
+	void test2() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Cell membrane; Peripheral membrane protein\n"
 				+"CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
 				+"CC       terminal amino acids may participate in cell membrane attachment.\n"
@@ -91,7 +91,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void test3() {
+	void test3() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Isoform 2: Cytoplasm (Probable).\n"
 			//	+"CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
 			//	+"CC       terminal amino acids may participate in cell membrane attachment.\n"
@@ -112,7 +112,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void test4() {
+	void test4() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Golgi apparatus, trans-Golgi network\n"
 				+"CC       membrane; Multi-pass membrane protein (By similarity).\n"
 				+"CC       Note=Predominantly found in the trans-Golgi network (TGN). Not\n"
@@ -137,7 +137,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void test5() {
+	void test5() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Cell membrane; Multi-pass membrane protein.\n"
        +"CC       Endosome. Note=Interaction with SNX27 mediates recruitment to\n"
         +"CC       early endosomes, while interaction with SLC9A3R1 and EZR might\n"
@@ -165,7 +165,7 @@ public class CcLineSubCellCommentParserTest {
 
 	}
 	@Test
-	public void testIsoformHasDot() {
+	void testIsoformHasDot() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Isoform UL12.5: Host mitochondrion.\n"
 			//	+"CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
 			//	+"CC       terminal amino acids may participate in cell membrane attachment.\n"
@@ -186,7 +186,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void testNoteWithDot() {
+	void testNoteWithDot() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Cytoplasm. Cell junction, tight junction.\n"
 				+"CC       Golgi apparatus. Cytoplasm, cytoskeleton, spindle. Cell\n"
 				+"CC       projection, ruffle membrane. Note=Localizes to the tips of\n"
@@ -210,7 +210,7 @@ public class CcLineSubCellCommentParserTest {
 
 	}
 	@Test
-	public void testIsoformWithComma() {
+	void testIsoformWithComma() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Processed beta-1,4-galactosyltransferase 1:\n"
 				+"CC       Secreted. Note=Soluble form found in body fluids.\n"
 				;
@@ -229,7 +229,7 @@ public class CcLineSubCellCommentParserTest {
 
 	}
 	@Test
-	public void testSublocatWithEvidence() {
+	void testSublocatWithEvidence() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
 				+"CC       membrane protein (By similarity) {ECO:0000002|PubMed:1234213}.\n"
 				;
@@ -248,7 +248,7 @@ public class CcLineSubCellCommentParserTest {
 
 	}
 	@Test
-	public void testSublocatWithEvidenceNote() {
+	void testSublocatWithEvidenceNote() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n"
 				+"CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
 				+"CC       Note=Loosely associated with the inner membrane.\n"
@@ -272,7 +272,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void testSublocationWithEvidence() {
+	void testSublocationWithEvidence() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
 				+"CC       membrane protein (By similarity). {ECO:0000002|PubMed:1234213}.\n"
 
@@ -292,7 +292,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void testMultiComments() {
+	void testMultiComments() {
 		String lines = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane\n" + 
 				"CC       {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}; Multi-\n" + 
 				"CC       pass membrane protein (By similarity) {ECO:0000303|Ref.6}.\n" + 
@@ -332,7 +332,7 @@ public class CcLineSubCellCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeader() {
+	void testNoHeader() {
 		String ccLineString = "SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n"
 				+"{ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554}.\n"
 				+"Note=Loosely associated with the inner membrane.\n"

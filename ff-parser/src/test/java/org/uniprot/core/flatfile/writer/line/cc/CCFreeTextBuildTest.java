@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class CCFreeTextBuildTest extends CCBuildTestAbstr {
+class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
-    public void testPTMWithEvidence4() {
+    void testPTMWithEvidence4() {
         String ccLine = ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" +
                 "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n" +
                 "CC       secretase leads to generation and extracellular release of soluble\n" +
@@ -66,7 +66,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testPTMWithEvidence2() {
+    void testPTMWithEvidence2() {
         String ccLine = ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" +
                 "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n" +
                 "CC       secretase leads to generation and extracellular release of soluble\n" +
@@ -120,7 +120,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testPTMWithEvidence3() {
+    void testPTMWithEvidence3() {
         String ccLine = ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" +
                 "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n" +
                 "CC       secretase leads to generation and extracellular release of soluble\n" +
@@ -178,7 +178,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-	public void testAllergen() throws Exception {
+	void testAllergen() throws Exception {
 		String ccLine =("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE.\n" +
 				"CC       Partially heat-labile allergen that may cause both respiratory and\n" +
 				"CC       food-allergy symptoms in patients with the bird-egg syndrome.");
@@ -196,7 +196,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTestStringEv(ccLineString, comment);
 	}
 	@Test
-	public void testAllergenWithEvidence() throws Exception {
+	void testAllergenWithEvidence() throws Exception {
 		String ccLine =("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE.\n" +
 				"CC       Partially heat-labile allergen that may cause both respiratory and\n" +
 				"CC       food-allergy symptoms in patients with the bird-egg syndrome.\n" +
@@ -218,7 +218,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Test
-	public void testBIOTECHNOLOGY() {
+	void testBIOTECHNOLOGY() {
 		String ccLine =("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing\n" +
 				"CC       an antisense PG gene by genetic manipulation. The Flavr Savr\n" +
 				"CC       tomato produced by Calgene (Monsanto) in such a manner has a\n" +
@@ -240,7 +240,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testBIOTECHNOLOGYWithEvidence() {
+	void testBIOTECHNOLOGYWithEvidence() {
 		String ccLine =("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing\n" +
 				"CC       an antisense PG gene by genetic manipulation. The Flavr Savr\n" +
 				"CC       tomato produced by Calgene (Monsanto) in such a manner has a\n" +
@@ -263,7 +263,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testActivityRegulation() {
+	void testActivityRegulation() {
 		String ccLine =("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate +\n" +
 				"CC       L-glutamine.");
 		String text ="ATP + L-glutamate + NH(3) = ADP + phosphate + L-glutamine.";
@@ -276,7 +276,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testActivityRegulationWithEvidence() {
+	void testActivityRegulationWithEvidence() {
 		String ccLine =("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate +\n" +
 				"CC       L-glutamine. {ECO:0000313|Ensembl:ENSP00000409133}.");
 		String text ="ATP + L-glutamate + NH(3) = ADP + phosphate + L-glutamine.";
@@ -289,7 +289,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testCaution() {
+	void testCaution() {
 		String ccLine =("CC   -!- CAUTION: It is uncertain whether Met-1 or Met-3 is the initiator.");
 		String text ="It is uncertain whether Met-1 or Met-3 is the initiator.";
 		List<String> evs = new ArrayList<>();
@@ -301,7 +301,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testCautionWithEvidence() {
+	void testCautionWithEvidence() {
 		String ccLine =("CC   -!- CAUTION: It is uncertain whether Met-1 or Met-3 is the initiator.\n" +
 					    "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.");
 		String text ="It is uncertain whether Met-1 or Met-3 is the initiator.";
@@ -314,7 +314,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Disabled
-	public void testCOFACTOR() {
+	void testCOFACTOR() {
 		String ccLine =("CC   -!- COFACTOR: FAD (By similarity).");
 		String text ="FAD";
 		List<String> evs = new ArrayList<>();
@@ -326,7 +326,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Disabled
-	public void testCOFACTORWithEvidence() {
+	void testCOFACTORWithEvidence() {
 		String ccLine =("CC   -!- COFACTOR: FAD (By similarity). {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
 				 		"CC       ECO:0000313|Ensembl:ENSP00000409133}.");
 		String text ="FAD";
@@ -340,7 +340,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testDevelopmental() {
+	void testDevelopmental() {
 		String ccLine =("CC   -!- DEVELOPMENTAL STAGE: Expressed early during conidial (dormant\n" +
 						"CC       spores) differentiation.");
 		String text ="Expressed early during conidial (dormant spores) differentiation.";
@@ -352,7 +352,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 			doTest(ccLine, comment);
 	}
 	@Test
-	public void testDevelopmentalWithEvidence() {
+	void testDevelopmentalWithEvidence() {
 		String ccLine =("CC   -!- DEVELOPMENTAL STAGE: Expressed early during conidial (dormant\n" +
 						"CC       spores) differentiation. {ECO:0000313|Ensembl:ENSP00000409133}.");
 		String text ="Expressed early during conidial (dormant spores) differentiation.";
@@ -364,7 +364,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 			doTest(ccLine, comment);
 	}
 	@Test
-	public void testDOMAIN() {
+	void testDOMAIN() {
 		String ccLine =("CC   -!- DOMAIN: The B chain is composed of two domains, each domain\n" +
 						"CC       consists of 3 homologous subdomains (alpha, beta, gamma).");
 		String text ="The B chain is composed of two domains, each domain "
@@ -378,7 +378,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testDOMAINWithEvidence() {
+	void testDOMAINWithEvidence() {
 		String ccLine =("CC   -!- DOMAIN: The B chain is composed of two domains, each domain\n" +
 						"CC       consists of 3 homologous subdomains (alpha, beta, gamma).\n" +
 						"CC       {ECO:0000256|HAMAP-Rule:MF_00205}.");
@@ -394,7 +394,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testEnxymeRegulation() {
+	void testEnxymeRegulation() {
 		String ccLine =
 			   ("CC   -!- ACTIVITY REGULATION: The activity of this enzyme is controlled by\n" +
 				"CC       adenylation under conditions of abundant glutamine. The fully\n" +
@@ -411,7 +411,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testEnxymeRegulationWithEvidence() {
+	void testEnxymeRegulationWithEvidence() {
 		String ccLine =
 			   ("CC   -!- ACTIVITY REGULATION: The activity of this enzyme is controlled by\n" +
 				"CC       adenylation under conditions of abundant glutamine. The fully\n" +
@@ -430,7 +430,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testINDUCTION() {
+	void testINDUCTION() {
 		String ccLine =("CC   -!- INDUCTION: By infection, plant wounding, or elicitor treatment of\n" +
 						"CC       cell cultures.");
 		String text ="By infection, plant wounding, or elicitor treatment of cell cultures.";
@@ -443,7 +443,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Test
-	public void testINDUCTIONWithEvidence() {
+	void testINDUCTIONWithEvidence() {
 		String ccLine =("CC   -!- INDUCTION: By infection, plant wounding, or elicitor treatment of\n" +
 						"CC       cell cultures. {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
 				        "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
@@ -461,7 +461,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 			doTestStringEv(ccLineStringEvidence, comment);
 	}
 	@Test
-	public void testMISC() {
+	void testMISC() {
 		String ccLine =("CC   -!- MISCELLANEOUS: Binds to bacitracin.");
 		String text ="Binds to bacitracin.";
 		List<String> evs = new ArrayList<>();
@@ -473,7 +473,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testMISCWithEvidence() {
+	void testMISCWithEvidence() {
 		String ccLine =("CC   -!- MISCELLANEOUS: Binds to bacitracin.\n"+
 				        "CC       {ECO:0000313|Ensembl:ENSP00000409133}.");
 		String text ="Binds to bacitracin";
@@ -485,7 +485,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 			doTest(ccLine, comment);
 	}
 	@Test
-	public void testPATH() {
+	void testPATH() {
 		String ccLine =("CC   -!- PATHWAY: Porphyrin biosynthesis by the C5 pathway; second step.");
 		String text ="Porphyrin biosynthesis by the C5 pathway; second step.";
 		List<String> evs = new ArrayList<>();
@@ -497,7 +497,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Test
-	public void testPATHWithEvidence() {
+	void testPATHWithEvidence() {
 		String ccLine =("CC   -!- PATHWAY: Porphyrin biosynthesis by the C5 pathway; second step.\n" +
 	                    "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.");
 		String text ="Porphyrin biosynthesis by the C5 pathway; second step.";
@@ -511,7 +511,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 
 	
 	@Test
-	public void testPAHRMA() {
+	void testPAHRMA() {
 		String ccLine =
 			   ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen),\n" +
 				"CC       Betaseron (Berlex) and Rebif (Serono). Used in the treatment of\n" +
@@ -530,7 +530,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testPAHRMAWithEvidence() {
+	void testPAHRMAWithEvidence() {
 		String ccLine =
 			   ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen),\n" +
 				"CC       Betaseron (Berlex) and Rebif (Serono). Used in the treatment of\n" +
@@ -550,7 +550,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testPTM() {
+	void testPTM() {
 		String ccLine =(
 				"CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" +
 						"CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n" +
@@ -585,7 +585,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Test
-	public void testPTMWithEvidence() {
+	void testPTMWithEvidence() {
 		String ccLine =(
 				"CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" +
 						"CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n" +
@@ -622,7 +622,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Test
-	public void testSIMILARITY() {
+	void testSIMILARITY() {
 		String ccLine =("CC   -!- SIMILARITY: Belongs to the annexin family.");
 
 		String text ="Belongs to the annexin family";
@@ -634,7 +634,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTest(ccLine, comment);
 	}
 	@Test
-	public void testSIMILARITYWithEvidence() {
+	void testSIMILARITYWithEvidence() {
 		String ccLine =("CC   -!- SIMILARITY: Belongs to the annexin family. {ECO:0000256|HAMAP-\n" +
 				 		"CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
 
@@ -647,7 +647,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTest(ccLine, comment);
 	}
 	@Test
-	public void testSUBUNIT() {
+	void testSUBUNIT() {
 		String ccLine =("CC   -!- SUBUNIT: Homotetramer.");
 		String text ="Homotetramer";
 		List<String> evs = new ArrayList<>();
@@ -658,7 +658,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTest(ccLine, comment);
 	}
 	@Test
-	public void testSUBUNITWithEvidence() {
+	void testSUBUNITWithEvidence() {
 		String ccLine =("CC   -!- SUBUNIT: Homotetramer. {ECO:0000256|HAMAP-Rule:MF_00205}.");
 		String text ="Homotetramer";
 		List<String> evs = new ArrayList<>();
@@ -670,7 +670,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Test
-	public void testTissueSpecificity() {
+	void testTissueSpecificity() {
 		String ccLine =("CC   -!- TISSUE SPECIFICITY: Shoots, roots, and cotyledon from dehydrating\n" +
 						"CC       seedlings.");
 		String text ="Shoots, roots, and cotyledon from dehydrating seedlings";
@@ -682,7 +682,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTest(ccLine, comment);
 	}
 	@Test
-	public void testTissueSpecificityWithEvidence() {
+	void testTissueSpecificityWithEvidence() {
 		String ccLine =("CC   -!- TISSUE SPECIFICITY: Shoots, roots, and cotyledon from dehydrating\n" +
 						"CC       seedlings. {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
 						"CC       ECO:0000313|Ensembl:ENSP00000409133}.");
@@ -695,7 +695,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTest(ccLine, comment);
 	}
 	@Test
-	public void testToxic() {
+	void testToxic() {
 		String ccLine =("CC   -!- TOXIC DOSE: PD(50) is 1.72 mg/kg by injection in blowfly larvae.");
 		String text ="PD(50) is 1.72 mg/kg by injection in blowfly larvae";
 		List<String> evs = new ArrayList<>();
@@ -706,7 +706,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTest(ccLine, comment);
 	}
 	@Test
-	public void testToxicWithEvidence() {
+	void testToxicWithEvidence() {
 		String ccLine =("CC   -!- TOXIC DOSE: PD(50) is 1.72 mg/kg by injection in blowfly larvae.\n" +
 	                    "CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
 	                    "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
@@ -720,7 +720,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testFunctionWithNoEvidence() {
+	void testFunctionWithNoEvidence() {
 		String ccLine =(
 						"CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps\n" +
 						"CC       in lysine degradation. The N-terminal and the C-terminal contain\n" +
@@ -741,7 +741,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	
 	@Test
-	public void testFunctionWithEvidence() {
+	void testFunctionWithEvidence() {
 		String ccLine =(
 						"CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps\n" +
 						"CC       in lysine degradation. The N-terminal and the C-terminal contain\n" +
@@ -761,7 +761,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 		doTest(ccLine, comment);
 	}
 	@Test
-	public void test2() throws Exception{
+	void test2() throws Exception{
 		String ccLine =("CC   -!- FUNCTION: Stimulates the proliferation of early hematopoietic\n" +
 				"CC       cells. Synergizes well with a number of other colony stimulating\n" +
 				"CC       factors and interleukins. {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
@@ -779,7 +779,7 @@ public class CCFreeTextBuildTest extends CCBuildTestAbstr {
 	}
 	//
 	@Test
-	public void testFunctionWithEvidence2() {
+	void testFunctionWithEvidence2() {
 		String ccLine =(
 						"CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps\n" +
 						"CC       in lysine degradation. The N-terminal and the C-terminal contain\n" +

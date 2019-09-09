@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class CofactorCommentTest {
 
     @Test
-    public void testCofactorSimple() {
+    void testCofactorSimple() {
 
         CofactorComment comment = new CofactorCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -40,7 +40,7 @@ public class CofactorCommentTest {
 
 
     @Test
-    public void testCofactorComplete() {
+    void testCofactorComplete() {
         CofactorComment comment = getCofactorComment();
 
         ValidateJson.verifyJsonRoundTripParser(comment);

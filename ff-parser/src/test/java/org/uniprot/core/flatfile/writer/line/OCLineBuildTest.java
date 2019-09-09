@@ -9,10 +9,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OCLineBuildTest {
-	OCLineBuilder builder = new OCLineBuilder();
+class OCLineBuildTest {
+	private OCLineBuilder builder = new OCLineBuilder();
 	@Test
-	public void testHuman(){
+	void testHuman(){
 	
 		String ocLine ="OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;"+
 				"\nOC   Mammalia; Eutheria; Euarchontoglires; Primates; Catarrhini; Hominidae;" +

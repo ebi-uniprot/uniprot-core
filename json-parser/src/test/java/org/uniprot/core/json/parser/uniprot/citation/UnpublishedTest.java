@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class UnpublishedTest {
 
     @Test
-    public void testUnpublishedSimple() {
+    void testUnpublishedSimple() {
         Citation citation =  new UnpublishedBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
 
@@ -31,7 +31,7 @@ public class UnpublishedTest {
     }
 
     @Test
-    public void testUnpublishedComplete() {
+    void testUnpublishedComplete() {
         Citation citation = getUnpublished();
         ValidateJson.verifyJsonRoundTripParser(citation);
         ValidateJson.verifyEmptyFields(citation);

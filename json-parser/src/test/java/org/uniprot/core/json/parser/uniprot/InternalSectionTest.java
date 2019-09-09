@@ -21,15 +21,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class InternalSectionTest {
+class InternalSectionTest {
 
     @Test
-    public void testInternalSectionSimple() {
+    void testInternalSectionSimple() {
         InternalSection internalSection = new InternalSectionBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(internalSection);
     }
     @Test
-    public void testInternalSectionComplete() {
+    void testInternalSectionComplete() {
         InternalSection internalSection = getInternalSection();
         ValidateJson.verifyJsonRoundTripParser(internalSection);
         ValidateJson.verifyEmptyFields(internalSection);
@@ -62,7 +62,7 @@ public class InternalSectionTest {
 
     }
 
-    public static InternalSection getInternalSection() {
+    static InternalSection getInternalSection() {
         InternalLine internalLine = new InternalLineBuilder(InternalLineType.DR,"line value").build();
 
         EvidenceLine evidenceLine = new EvidenceLineBuilder()

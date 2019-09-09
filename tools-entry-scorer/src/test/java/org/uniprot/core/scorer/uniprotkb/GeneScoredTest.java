@@ -15,11 +15,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class GeneScoredTest {
+class GeneScoredTest {
     private static final UniprotLineParserFactory PARSER_FACTORY = new DefaultUniprotLineParserFactory();
 
     @Test
-    public void shouldGeneScore4() {
+    void shouldGeneScore4() {
         String lines = "GN   Name=par-5; Synonyms=ftt-1; OrderedLocusNames=At1g22300;\n" +
                 "GN   ORFNames=M117.2;\n";
 
@@ -31,7 +31,7 @@ public class GeneScoredTest {
     }
 
     @Test
-    public void shouldGenesScore16() {
+    void shouldGenesScore16() {
         String lines = "GN   Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;\n" +
                 "GN   and\n" +
                 "GN   Name=Jon99Ciii; Synonyms=SER2, SER5, Ser99Db; ORFNames=CG15519;\n";
@@ -43,7 +43,7 @@ public class GeneScoredTest {
     }
 
     @Test
-    public void shouldGeneScore2() {
+    void shouldGeneScore2() {
         String lines = "GN   Name=GF14A; OrderedLocusNames=Os08g0480800, LOC_Os08g37490;\n" +
                 "GN   ORFNames=OJ1113_A10.40, OSJNBb0092C08.10;\n";
         int score = 0;
@@ -55,7 +55,7 @@ public class GeneScoredTest {
     }
 
     @Test
-    public void shouldGenesScore0() {
+    void shouldGenesScore0() {
         String lines = "GN   OrderedLocusNames=Os02g0224200, LOC_Os02g13110;\n" +
                 "GN   ORFNames=P0470A03.14, OsJ_005772;\n";
         int score = 0;
@@ -66,7 +66,7 @@ public class GeneScoredTest {
     }
 
     @Test
-    public void shouldGenesScore6() {
+    void shouldGenesScore6() {
         String lines = "GN   Name=rlmE; Synonyms=ftsJ, rrmJ; ORFNames=HGR_12727;\n";
         int score = 0;
         for (Gene g : parseLines(lines))

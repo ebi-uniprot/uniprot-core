@@ -8,9 +8,9 @@ import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class SqLineParserTest {
+class SqLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String osLines = "SQ   SEQUENCE   256 AA;  29735 MW;  B4840739BF7D4121 CRC64;\n"
         +"     MAFSAEDVLK EYDRRRRMEA LLLSLYYPND RKLLDYKEWS PPRVQVECPK APVEWNNPPS\n"
         +"     EKGLIVGHFS GIKYKGEKAQ ASEVDVNKMC CWVSKFKDAM RRYQGIQTCK IPGKVLSDLD\n"
@@ -34,7 +34,7 @@ public class SqLineParserTest {
 		assertTrue(obj.sequence.endsWith(end));
 	}
 	@Test
-	public void testOneLine() {
+	void testOneLine() {
 		String osLines = "SQ   SEQUENCE   256 AA;  29735 MW;  B4840739BF7D4121 CRC64;\n"
         +"     MAFSAEDVLK WKFTPL\n"
         ;
@@ -47,7 +47,7 @@ public class SqLineParserTest {
 	
 	}
 	@Test
-	public void test2() {
+	void test2() {
 		String osLines = "SQ   SEQUENCE   162 AA;  18749 MW;  1883589730544714 CRC64;\n"
         +"     MDEGYYSGNL ESVLGYVSDM HTKLASITQL VIAKIETIDN DILNNDIVNF IMCRSNLNNP\n"
         +"     FISFLDTVYT IIDQEIYQNE\n"

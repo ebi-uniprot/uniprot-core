@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * @author lgonzales
  */
-public class OrganimsTest {
+class OrganimsTest {
 
     @Test
-    public void testOrganismSimple() {
+    void testOrganismSimple() {
         Organism organism = new OrganismBuilder()
                 .taxonId(9606L)
                 .scientificName("scientific name")
@@ -32,7 +32,7 @@ public class OrganimsTest {
     }
 
     @Test
-    public void testOrganismComplete() {
+    void testOrganismComplete() {
         Organism organism = getOrganism();
         ValidateJson.verifyJsonRoundTripParser(organism);
         ValidateJson.verifyEmptyFields(organism);
@@ -56,7 +56,7 @@ public class OrganimsTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001363");
     }
 
-    public static Organism getOrganism() {
+    static Organism getOrganism() {
         return new OrganismBuilder()
                 .taxonId(9606L)
                 .scientificName("scientific name")

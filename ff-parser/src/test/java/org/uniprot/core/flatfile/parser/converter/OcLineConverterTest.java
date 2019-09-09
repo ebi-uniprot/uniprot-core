@@ -8,9 +8,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OcLineConverterTest {
+class OcLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 	//"OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi.\n"
 		OcLineObject obj = new OcLineObject();
 		obj.nodes.add("Eukaryota");

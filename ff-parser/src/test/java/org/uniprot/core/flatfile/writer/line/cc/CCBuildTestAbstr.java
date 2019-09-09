@@ -26,7 +26,7 @@ import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
-public abstract class CCBuildTestAbstr {
+abstract class CCBuildTestAbstr {
     CCLineBuilder builder = new CCLineBuilder();
 
     <T extends Comment> void doTest(String ftLine, T comment) {

@@ -15,9 +15,9 @@ import java.util.List;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FeatureWithEvidenceScoredTest {
+class FeatureWithEvidenceScoredTest {
     @Test
-    public void shouldModResScore3() {
+    void shouldModResScore3() {
         String ftLine =
                 "FT   MOD_RES     117    117       2-(S-cysteinyl)pyruvic acid O-\n" +
                         "FT                                phosphothioketal (By similarity).\n" +
@@ -27,7 +27,7 @@ public class FeatureWithEvidenceScoredTest {
     }
 
     @Test
-    public void shouldModResScore0() {
+    void shouldModResScore0() {
         String ftLine =
                 "FT   MOD_RES     117    117       2-(S-cysteinyl)pyruvic acid O-\n" +
                         "FT                                phosphothioketal (By similarity).\n" +
@@ -37,7 +37,7 @@ public class FeatureWithEvidenceScoredTest {
     }
 
     @Test
-    public void shouldTransMemScore3() {
+    void shouldTransMemScore3() {
         String ftLine =
                 "FT   TRANSMEM    789    809       Helical. {ECO:0000256|SAM:Phobius}.\n";
         Feature feature = createFeature(ftLine);
@@ -45,7 +45,7 @@ public class FeatureWithEvidenceScoredTest {
     }
 
     @Test
-    public void shouldTransMemScore0() {
+    void shouldTransMemScore0() {
         String ftLine =
                 "FT   TRANSMEM    789    809       Helical. {ECO:0000256|SAM:Phobius}.\n";
         Feature feature = createFeature(ftLine);
@@ -53,7 +53,7 @@ public class FeatureWithEvidenceScoredTest {
     }
 
     @Test
-    public void shouldDOMAINScore00() {
+    void shouldDOMAINScore00() {
         String ftLine =
                 "FT   DOMAIN        1    438       SPX. {ECO:0000259|PROSITE:PS51382}.\n";
         Feature feature = createFeature(ftLine);
@@ -61,7 +61,7 @@ public class FeatureWithEvidenceScoredTest {
     }
 
     @Test
-    public void shouldDOMAINScore0() {
+    void shouldDOMAINScore0() {
         String ftLine =
                 "FT   DOMAIN        1    438       SPX. {ECO:0000259|PROSITE:PS51382}.\n";
         Feature feature = createFeature(ftLine);

@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SequenceCautionCommentTest {
 
     @Test
-    public void testSequenceCautionSimple() {
+    void testSequenceCautionSimple() {
 
         SequenceCautionComment comment = new SequenceCautionCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -31,7 +31,7 @@ public class SequenceCautionCommentTest {
     }
 
     @Test
-    public void testSequenceCautionComplete() {
+    void testSequenceCautionComplete() {
 
         SequenceCautionComment comment = getSequenceCautionComment();
 

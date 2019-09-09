@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class InteractionCommentTest {
 
     @Test
-    public void testInteractionSimple() {
+    void testInteractionSimple() {
 
         InteractionComment comment = new InteractionCommentBuilder()
                 .build();
@@ -32,7 +32,7 @@ public class InteractionCommentTest {
     }
 
     @Test
-    public void testInteractionCommentComplete() {
+    void testInteractionCommentComplete() {
         InteractionComment comment = getInteractionComment();
 
         ValidateJson.verifyJsonRoundTripParser(comment);

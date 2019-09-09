@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class AlternativeProductsCommentTest {
 
     @Test
-    public void testAlternativeProductsCommentSimple() {
+    void testAlternativeProductsCommentSimple() {
 
         AlternativeProductsComment comment = new APCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -36,7 +36,7 @@ public class AlternativeProductsCommentTest {
     }
 
     @Test
-    public void testAlternativeProductsCommentComplete() {
+    void testAlternativeProductsCommentComplete() {
         AlternativeProductsComment comment = getAlternativeProductsComment();
         ValidateJson.verifyJsonRoundTripParser(comment);
         ValidateJson.verifyEmptyFields(comment);

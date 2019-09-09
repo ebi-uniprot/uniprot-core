@@ -14,11 +14,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DRLineBuildTest {
-    DRLineBuilder builder = new DRLineBuilder();
+class DRLineBuildTest {
+    private DRLineBuilder builder = new DRLineBuilder();
 
     @Test
-    public void testMint() {
+    void testMint() {
         String drLine = "DR   EMBL; U12141; AAA99664.1; -; Genomic_DNA.\n"
                 + "DR   MINT; MINT-1356407; -.";
         List<UniProtDBCrossReference> xrefs = new ArrayList<>();
@@ -34,7 +34,7 @@ public class DRLineBuildTest {
     }
 
     @Test
-    public void test1() {
+    void test1() {
 
         String drLine = "DR   EMBL; U12141; AAA99664.1; -; Genomic_DNA.\n"
                 + "DR   EMBL; U62941; AAB49937.1; -; Genomic_DNA.\n"
@@ -119,7 +119,7 @@ public class DRLineBuildTest {
     }
 
     @Test
-    public void testWithIsoform() {
+    void testWithIsoform() {
 
 
         String drLine = "DR   Gene3D; G3DSA:3.20.20.110; RuBisCO_large; 1.\n" +

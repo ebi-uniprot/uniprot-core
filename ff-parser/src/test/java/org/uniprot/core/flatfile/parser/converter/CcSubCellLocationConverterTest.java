@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CcSubCellLocationConverterTest {
+class CcSubCellLocationConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>());
 	@Test
 	void testEvidenceInLocationLevel() {

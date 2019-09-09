@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RgLineParserTest {
+class RgLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String rgLines = "RG   The mouse genome sequencing consortium;\n";
 		UniprotLineParser<RgLineObject> parser = new DefaultUniprotLineParserFactory().createRgLineParser();
 		RgLineObject obj = parser.parse(rgLines);
@@ -24,7 +24,7 @@ public class RgLineParserTest {
 		assertEquals(groups, obj.reference_groups);
 	}
 	@Test
-	public void test2() {
+	void test2() {
 		String rgLines = "RG   The mouse genome sequencing consortium;\n"
 				+"RG   The something else consortium;\n"
 				;

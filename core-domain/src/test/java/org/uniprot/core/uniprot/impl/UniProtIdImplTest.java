@@ -6,10 +6,10 @@ import org.uniprot.core.uniprot.UniProtId;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UniProtIdImplTest {
+class UniProtIdImplTest {
 
     @Test
-    public void testUniProtIdImpl() {
+    void testUniProtIdImpl() {
         String val = "P12345_HUMAN";
         UniProtId uniprotId = new UniProtIdImpl(val);
         assertEquals(val, uniprotId.getValue());

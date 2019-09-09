@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
 */
 
-public class UniParcEntryTest {
+class UniParcEntryTest {
 	@Test
 	void test() {
 		UniParcEntry entry = createEntry() ;

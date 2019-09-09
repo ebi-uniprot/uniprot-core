@@ -18,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @date 19 Jan 2017
  * @time 14:16:09
  */
-public class NewCitationScoredTest {
+class NewCitationScoredTest {
     private static final String RP_TO_REPLACE = "RP_TO_REPLACE";
 
     @Test
-    public void shouldCitationScore0() {
+    void shouldCitationScore0() {
         List<UniProtReference> uniProtReferences = parseLines(
                 "RP   SUBCELLULAR LOCATION, INTERACTION WITH PKC-3, PHOSPHORYLATION SITES\n" +
                         "RP   SER-17 AND SER-65, AND MUTAGENESIS OF SER-17 AND SER-65.");
@@ -33,7 +33,7 @@ public class NewCitationScoredTest {
     }
 
     @Test
-    public void shouldCitation2Score0() {
+    void shouldCitation2Score0() {
         List<UniProtReference> uniProtReferences = parseLines(
                 "RP   PROTEIN SEQUENCE OF 3-20.");
         assertEquals(1, uniProtReferences.size());
@@ -43,7 +43,7 @@ public class NewCitationScoredTest {
     }
 
     @Test
-    public void shouldCitation3Score0() {
+    void shouldCitation3Score0() {
         List<UniProtReference> uniProtReferences = parseLines(
                 "RP   PROTEIN SEQUENCE OF 3-20.");
         assertEquals(1, uniProtReferences.size());
@@ -53,7 +53,7 @@ public class NewCitationScoredTest {
     }
 
     @Test
-    public void shouldCitation4Score0() {
+    void shouldCitation4Score0() {
         List<UniProtReference> uniProtReferences = parseLines(
                 "RP   ACETYLATION [LARGE SCALE ANALYSIS] AT LYS-70 AND LYS-117, AND MASS\n" +
                         "RP   SPECTROMETRY.");
@@ -64,7 +64,7 @@ public class NewCitationScoredTest {
     }
 
     @Test
-    public void shouldCitation5Score0() {
+    void shouldCitation5Score0() {
         List<UniProtReference> uniProtReferences = parseLines("RP   NUCLEOTIDE SEQUENCE [MRNA].");
         assertEquals(1, uniProtReferences.size());
         Citation citation = uniProtReferences.get(0).getCitation();

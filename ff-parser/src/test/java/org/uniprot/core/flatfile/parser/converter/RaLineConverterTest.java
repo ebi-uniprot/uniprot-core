@@ -10,9 +10,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RaLineConverterTest {
+class RaLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 		// "RA   Galinier A., Perriere G., Duclos B.;\n";
 		RaLineObject ra =new RaLineObject();
 		ra.authors.add("Galinier A.");

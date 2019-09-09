@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.UniProtEntryType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class ProteinTest {
+class ProteinTest {
 	@Test 
 	void testProtein() {
 	String accession ="P12345";

@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
-public class OHLineBuildTest {
-	OHLineBuilder builder = new OHLineBuilder();
+class OHLineBuildTest {
+	private OHLineBuilder builder = new OHLineBuilder();
 	@Test
-	public void testOGHydrogenosome(){
+	void testOGHydrogenosome(){
 		String ohLine ="OH   NCBI_TaxID=9606; Homo sapiens (Human).\n" +
                        "OH   NCBI_TaxID=77231; Epomops franqueti (Franquet's epauleted bat).\n" +
                         "OH   NCBI_TaxID=77243; Myonycteris torquata (Little collared fruit bat).";
@@ -55,7 +55,7 @@ public class OHLineBuildTest {
    }
 	
 	@Test
-	public void testOGHydrogenosome2(){
+	void testOGHydrogenosome2(){
 		String ohLine ="OH   NCBI_TaxID=9606; Homo sapiens (Human).\n" +
                        "OH   NCBI_TaxID=77231; Epomops franqueti (Franquet's epauleted bat).\n" +
                        "OH   NCBI_TaxID=9685; Felis catus (Cat) (Felis silvestris catus).\n" +
@@ -90,7 +90,7 @@ public class OHLineBuildTest {
 		
 	}
 	@Test
-	public void testLongOH(){
+	void testLongOH(){
 		String ohLine ="OH   NCBI_TaxID=9606; Homo sapiens (Human).\n" +
                 "OH   NCBI_TaxID=9685; Felis catus (Cat) (Felis silvestris catus).\n" +
                 "OH   NCBI_TaxID=9785; Loxodonta africana (African elephant).\n" +

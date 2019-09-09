@@ -7,10 +7,10 @@ import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SqLineConverterTest {
+class SqLineConverterTest {
 	private SqLineConverter converter = new SqLineConverter();
 	@Test
-	public void test1(){
+	void test1(){
 	
 		SqLineObject obj = new SqLineObject();
 		obj.crc64 ="B4840739BF7D4121";

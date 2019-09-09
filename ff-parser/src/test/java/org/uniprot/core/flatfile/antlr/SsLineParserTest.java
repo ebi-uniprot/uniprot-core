@@ -7,9 +7,9 @@ import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SsLineParserTest {
+class SsLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String ssLines = "**\n"
                 +"**   #################    INTERNAL SECTION    ##################\n"
                 +"**EV EI2; ProtImp; -; -; 11-SEP-2009.\n"
@@ -40,7 +40,7 @@ public class SsLineParserTest {
 		assertEquals(attr2, obj.attr_2);
 	}
 	@Test
-	public void test2() {
+	void test2() {
 		String ssLines = "**\n"
                 +"**   #################    INTERNAL SECTION    ##################\n"
                 +"**EV ECO:0000313; ProtImp:-; -; 07-NOV-2006.\n"
@@ -61,7 +61,7 @@ public class SsLineParserTest {
 
 	}
 	@Test
-	public void test3() {
+	void test3() {
 		String ssLines = "**\n"
                 +"**   #################    INTERNAL SECTION    ##################\n"
                 +"**EV ECO:0000313; ProtImp; -; 07-NOV-2006.\n"
@@ -75,7 +75,7 @@ public class SsLineParserTest {
 
 	}
 	@Test
-	public void test4() {
+	void test4() {
 		String ssLines = "**\n"
                 +"**   #################    INTERNAL SECTION    ##################\n"
                 +"**EV ECO:0000269; PubMed:123; XXX; 13-NOV-1978.\n"
@@ -97,7 +97,7 @@ public class SsLineParserTest {
 		verify(obj.ssEVLines.get(5),"ECO:0000305", "-", "", "XXX" );
 	}
 	@Test
-	public void testSources() {
+	void testSources() {
 		String ssLines = "**\n"
                 +"**   #################     SOURCE SECTION     ##################\n"
                 +"**   LOCUS       999163         29 aa\n"
@@ -119,7 +119,7 @@ public class SsLineParserTest {
 //		verify(obj.ssEVLines.get(5),"ECO:0000305", "-", "", "XXX" );
 	}
 	@Test
-	public void testSourcesInternalSection() {
+	void testSourcesInternalSection() {
 		String ssLines = "**\n"
                 +"**   #################     SOURCE SECTION     ##################\n"
                 +"**   LOCUS       999163         29 aa\n"

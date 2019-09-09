@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class MassSpectrometryCommentTest {
 
     @Test
-    public void testInteractionSimple() {
+    void testInteractionSimple() {
 
         MassSpectrometryComment comment = new MassSpectrometryCommentBuilder()
                 .build();
@@ -33,7 +33,7 @@ public class MassSpectrometryCommentTest {
     }
 
     @Test
-    public void testInteractionComplete() {
+    void testInteractionComplete() {
 
         MassSpectrometryComment comment = getMassSpectrometryComment();
         ValidateJson.verifyJsonRoundTripParser(comment);

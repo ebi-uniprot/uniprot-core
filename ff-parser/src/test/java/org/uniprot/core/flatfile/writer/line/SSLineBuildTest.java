@@ -22,9 +22,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SSLineBuildTest {
+class SSLineBuildTest {
     @Test
-    public void testEvidenceLines() {
+    void testEvidenceLines() {
         String ssLines = "**EV ECO:0000250; -; XXX; 01-JAN-1900.\n"
                 + "**EV ECO:0000313; Ensembl:ENSP00000483257; -; 05-JUN-2015.";
         String evidence1 = "ECO:0000250";
@@ -44,7 +44,7 @@ public class SSLineBuildTest {
     }
 
     @Test
-    public void testInternalLines() {
+    void testInternalLines() {
         String ssLines = "**SO UPD; 37856; 05-DEC-2008.\n" +
                 "**ZB LYG, 07-FEB-2006; LIB, 17-MAR-2006; LYG, 04-MAY-2006; ISC, 14-DEC-2006;\n" +
                 "**ZB ALG/LYG, 08-JAN-2007; LYG, 09-JAN-2007; MCB, 09-JAN-2007; RUE, 05-JUN-2007;";
@@ -66,7 +66,7 @@ public class SSLineBuildTest {
     }
 
     @Test
-    public void testSourceLine() {
+    void testSourceLine() {
         String ssLines =
                 "**   #################     SOURCE SECTION     ##################\n"
                         + "**   LOCUS       999163         29 aa\n"
@@ -86,7 +86,7 @@ public class SSLineBuildTest {
     }
 
     @Test
-    public void testInterSection1() {
+    void testInterSection1() {
         String ssLines = "**\n"
                 + "**   #################    INTERNAL SECTION    ##################\n"
                 + "**EV ECO:0000313; ProtImp:UP123; -; 07-NOV-2006.\n"
@@ -121,7 +121,7 @@ public class SSLineBuildTest {
     }
 
     @Test
-    public void testInterSectionWithSource() {
+    void testInterSectionWithSource() {
         String ssLines = "**\n"
                 + "**   #################     SOURCE SECTION     ##################\n"
                 + "**   LOCUS       999163         29 aa\n"

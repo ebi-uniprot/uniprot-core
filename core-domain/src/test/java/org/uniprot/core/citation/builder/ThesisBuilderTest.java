@@ -7,9 +7,9 @@ import org.uniprot.core.citation.Thesis;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class ThesisBuilderTest extends AbstractCitationBuilderTest {
+class ThesisBuilderTest extends AbstractCitationBuilderTest {
     @Test
-    public void testBuildAll() {
+    void testBuildAll() {
         ThesisBuilder builder = new ThesisBuilder();
         String institute = "Cambridge University";
         String address = "Cambridge";
@@ -23,7 +23,7 @@ public class ThesisBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testInstitute() {
+    void testInstitute() {
         ThesisBuilder builder = new ThesisBuilder();
         String institute = "Cambridge University";
         builder.institute(institute);
@@ -33,7 +33,7 @@ public class ThesisBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddress() {
+    void testAddress() {
         ThesisBuilder builder = new ThesisBuilder();
         String address = "Cambridge";
         builder.address(address);

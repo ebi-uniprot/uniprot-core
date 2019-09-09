@@ -11,9 +11,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class RpLineParserTest {
+class RpLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String rgLines = "RP   NUCLEOTIDE SEQUENCE [MRNA].\n";
 		UniprotLineParser<RpLineObject> parser = new DefaultUniprotLineParserFactory().createRpLineParser();
 		RpLineObject obj = parser.parse(rgLines);
@@ -24,7 +24,7 @@ public class RpLineParserTest {
 		assertEquals(scopes, obj.scopes);
 	}
 	@Test
-	public void test2() {
+	void test2() {
 		String rgLines = "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n";
 		UniprotLineParser<RpLineObject> parser = new DefaultUniprotLineParserFactory().createRpLineParser();
 		RpLineObject obj = parser.parse(rgLines);
@@ -32,19 +32,19 @@ public class RpLineParserTest {
 
 	}
 	@Test
-	public void test3() {
+	void test3() {
 		String rgLines = "RP   NUCLEOTIDE sequence [MRNA].\n";
 		UniprotLineParser<RpLineObject> parser = new DefaultUniprotLineParserFactory().createRpLineParser();
 		assertThrows(RuntimeException.class, ()->parser.parse(rgLines));
 	}
 	@Test
-	public void test4() {
+	void test4() {
 		String rgLines = "RP   NUCLEOTIDE SEQUENCE [MRNA]\n";
 		UniprotLineParser<RpLineObject> parser = new DefaultUniprotLineParserFactory().createRpLineParser();
 		assertThrows(RuntimeException.class, ()->parser.parse(rgLines));
 	}
 	@Test
-	public void testMulti() {
+	void testMulti() {
 		String rgLines = "RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS A AND C), FUNCTION, INTERACTION\n"
 				+ "RP   WITH PKC-3, SUBCELLULAR LOCATION, TISSUE SPECIFICITY, DEVELOPMENTAL\n"
 				+ "RP   STAGE, AND MUTAGENESIS OF PHE-175 AND PHE-221.\n"
@@ -57,7 +57,7 @@ public class RpLineParserTest {
 
 	}
 	@Test
-	public void testMulti2() {
+	void testMulti2() {
 		String rgLines = "RP   X-RAY CRYSTALLOGRAPHY (2.6 ANGSTROMS) OF 22-480, AND DISULFIDE BONDS.\n"
 
 				;
@@ -68,7 +68,7 @@ public class RpLineParserTest {
 
 	}
 	@Test
-	public void testWithComma() {
+	void testWithComma() {
 		String rgLines = "RP   NUCLEOTIDE SEQUENCE [MRNA], INTERACTION WITH PTDINS(4,5)P2;\n"
 				+"RP   PTDINS(3,4,5)P3 AND INS(1,3,4,5)P4, TISSUE SPECIFICITY, AND\n"
 				+"RP   MUTAGENESIS OF ARG-151 AND ARG-275.\n"

@@ -22,16 +22,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class UniProtReferenceTest {
+class UniProtReferenceTest {
 
     @Test
-    public void testUniProtReferenceSimple() {
+    void testUniProtReferenceSimple() {
         UniProtReference uniprotReference = new UniProtReferenceBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(uniprotReference);
     }
 
     @Test
-    public void testUniProtReferenceComplete() {
+    void testUniProtReferenceComplete() {
         UniProtReference uniprotReference = getUniProtReference();
 
         ValidateJson.verifyJsonRoundTripParser(uniprotReference);
@@ -57,7 +57,7 @@ public class UniProtReferenceTest {
 
     }
 
-    public static List<UniProtReference> getUniProtReferences() {
+    static List<UniProtReference> getUniProtReferences() {
         List<UniProtReference> uniProtReferences = new ArrayList<>();
         uniProtReferences.add(getUniProtReference(BookTest.getBook()));
         uniProtReferences.add(getUniProtReference(ElectronicArticleTest.getElectronicArticle()));

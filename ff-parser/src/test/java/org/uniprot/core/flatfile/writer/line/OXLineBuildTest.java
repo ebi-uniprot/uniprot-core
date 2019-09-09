@@ -8,10 +8,10 @@ import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OXLineBuildTest {
-	OXLineBuilder builder = new OXLineBuilder();
+class OXLineBuildTest {
+	private OXLineBuilder builder = new OXLineBuilder();
 	@Test
-	public void test(){
+	void test(){
 		String oxLine ="OX   NCBI_TaxID=9606;";
 		
 		Organism taxId = new OrganismBuilder().taxonId(9606).build();

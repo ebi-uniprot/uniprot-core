@@ -11,11 +11,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UniProtDBCrossReferenceImplTest {
+class UniProtDBCrossReferenceImplTest {
 
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl12() {
+    void testUniProtDatabaseCrossReferenceImpl12() {
         // DR GeneDB; H25N7.01:pep; -.
         String val = "GeneDB; H25N7.01:pep; -.";
         String type = "GeneDB";
@@ -32,7 +32,7 @@ public class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl32ByFactory() {
+    void testUniProtDatabaseCrossReferenceImpl32ByFactory() {
         // DR GeneDB; H25N7.01:pep; -.
         String val = "GeneDB; H25N7.01:pep; -.";
         String type = "GeneDB";
@@ -52,7 +52,7 @@ public class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl32() {
+    void testUniProtDatabaseCrossReferenceImpl32() {
         // DR GeneDB; H25N7.01:pep; -.
         String val = "GeneDB; H25N7.01:pep; -.";
         String type = "GeneDB";
@@ -75,7 +75,7 @@ public class UniProtDBCrossReferenceImplTest {
 
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl33() {
+    void testUniProtDatabaseCrossReferenceImpl33() {
         // DR   GO; GO:0005814; C:centriole; IEA:Ensembl.
         String val = "GO; GO:0005814; C:centriole; IEA:Ensembl.";
         String type = "GO";
@@ -97,7 +97,7 @@ public class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl42() {
+    void testUniProtDatabaseCrossReferenceImpl42() {
         // DR GeneDB; H25N7.01:pep; -.
         String val = "GeneDB; H25N7.01:pep; -.";
         String type = "GeneDB";
@@ -121,7 +121,7 @@ public class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl43() {
+    void testUniProtDatabaseCrossReferenceImpl43() {
         // DR   GO; GO:0005814; C:centriole; IEA:Ensembl.
         String val = "GO; GO:0005814; C:centriole; IEA:Ensembl.";
         String type = "GO";
@@ -145,7 +145,7 @@ public class UniProtDBCrossReferenceImplTest {
 
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl44() {
+    void testUniProtDatabaseCrossReferenceImpl44() {
         //DR   EMBL; DQ185029; AAZ94714.1; -; mRNA.
         String val = "EMBL; DQ185029; AAZ94714.1; -; mRNA.";
         String type = "EMBL";
@@ -170,7 +170,7 @@ public class UniProtDBCrossReferenceImplTest {
 
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl4Iso() {
+    void testUniProtDatabaseCrossReferenceImpl4Iso() {
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
         String val = "Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]";
         String type = "Ensembl";
@@ -194,7 +194,7 @@ public class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    public void testUniProtDatabaseCrossReferenceImpl402() {
+    void testUniProtDatabaseCrossReferenceImpl402() {
         // DR GeneDB; H25N7.01:pep; -.
         String val = "GeneDB; H25N7.01:pep; -.";
         String type = "GeneDB";

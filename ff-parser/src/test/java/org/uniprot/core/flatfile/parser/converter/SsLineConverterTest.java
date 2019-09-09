@@ -11,11 +11,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SsLineConverterTest {
+class SsLineConverterTest {
     private SsLineConverter converter = new SsLineConverter();
 
     @Test
-    public void testEvidence() {
+    void testEvidence() {
         SsLineObject obj = new SsLineObject();
         //**EV ECO:0000313; ProtImp; -; 07-NOV-2006.\n"+
         //**EV ECO:0000256; HAMAP-Rule:MF_01417; -; 01-OCT-2010.\n"

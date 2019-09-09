@@ -10,9 +10,9 @@ import java.time.format.DateTimeFormatter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DtLineParserTest {
+class DtLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		 String dtLines = "DT   28-JUN-2011, integrated into UniProtKB/Swiss-Prot.\n"
 				 +"DT   19-JUL-2004, sequence version 1.\n"
 				 +"DT   18-APR-2012, entry version 24.\n"

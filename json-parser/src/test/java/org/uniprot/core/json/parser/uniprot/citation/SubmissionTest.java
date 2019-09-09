@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class SubmissionTest {
 
     @Test
-    public void testSubmissionSimple() {
+    void testSubmissionSimple() {
         Citation citation =  new SubmissionBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
 
@@ -32,7 +32,7 @@ public class SubmissionTest {
     }
 
     @Test
-    public void testSubmissionComplete() {
+    void testSubmissionComplete() {
         Citation citation = getSubmission();
         ValidateJson.verifyJsonRoundTripParser(citation);
         ValidateJson.verifyEmptyFields(citation);

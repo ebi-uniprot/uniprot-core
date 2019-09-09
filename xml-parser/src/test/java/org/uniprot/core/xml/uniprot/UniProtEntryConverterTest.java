@@ -297,7 +297,7 @@ class UniProtEntryConverterTest {
     }
 
 
-    public List<UniProtDBCrossReference> createDbXref() {
+    List<UniProtDBCrossReference> createDbXref() {
         // DR   Ensembl; ENST00000393119; ENSP00000376827; ENSG00000011143. [Q9NXB0-1]
         String type = "Ensembl";
         String id = "ENST00000393119";

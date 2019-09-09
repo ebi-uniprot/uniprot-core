@@ -13,9 +13,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class DiseaseBuilderTest {
+class DiseaseBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         DiseaseBuilder builder1 = new DiseaseBuilder();
         DiseaseBuilder builder2 = new DiseaseBuilder();
         assertNotNull(builder1);
@@ -24,7 +24,7 @@ public class DiseaseBuilderTest {
     }
 
     @Test
-    public void testSetDiseaseId() {
+    void testSetDiseaseId() {
         DiseaseBuilder builder = new DiseaseBuilder();
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
@@ -36,7 +36,7 @@ public class DiseaseBuilderTest {
     }
 
     @Test
-    public void testSetAcronym() {
+    void testSetAcronym() {
         DiseaseBuilder builder = new DiseaseBuilder();
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
@@ -49,7 +49,7 @@ public class DiseaseBuilderTest {
     }
 
     @Test
-    public void testSetDescription() {
+    void testSetDescription() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         List<Evidence> evidences =  createEvidences();
@@ -68,7 +68,7 @@ public class DiseaseBuilderTest {
     }
 
     @Test
-    public void testSetReference() {
+    void testSetReference() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         List<Evidence> evidences =  createEvidences();
@@ -90,7 +90,7 @@ public class DiseaseBuilderTest {
     }
 
     @Test
-    public void testCreateDiseaseReference() {
+    void testCreateDiseaseReference() {
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);

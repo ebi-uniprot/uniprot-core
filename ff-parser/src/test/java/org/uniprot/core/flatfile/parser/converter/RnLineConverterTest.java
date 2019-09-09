@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RnLineConverterTest {
+class RnLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 	//	 "RN   [11]\n";
 		RnLineObject osO = new RnLineObject();
 		osO.number=11;
@@ -21,7 +21,7 @@ public class RnLineConverterTest {
 		assertEquals(0, evIds.size());
 	}
 	@Test
-	public void testEvidence(){
+	void testEvidence(){
 //		 "RN   [11]{[EI1][EI2]}\n";
 		RnLineObject osO = new RnLineObject();
 		osO.number=11;

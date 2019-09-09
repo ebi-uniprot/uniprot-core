@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RnLineParserTest {
+class RnLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String rnLines = "RN   [2] {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554,\n"
 				+"RN   ECO:0000303|Ref.6}\n";
 		UniprotLineParser<RnLineObject> parser = new DefaultUniprotLineParserFactory().createRnLineParser();

@@ -7,9 +7,9 @@ import org.uniprot.core.uniprot.comment.CommentType;
  * Created by IntelliJ IDEA. User: spatient Date: 17-Jul-2007 Time: 10:47:25 To change this template use File | Settings
  * | File Templates.
  */
-public class AlternativeProductsScoredTest extends CommentScoreTestBase {
+class AlternativeProductsScoredTest extends CommentScoreTestBase {
     @Test
-    public void shouldScore18() throws Exception {
+    void shouldScore18() throws Exception {
         verify(CommentType.ALTERNATIVE_PRODUCTS, "ALTERNATIVE PRODUCTS:\n" +
                 "Event=Alternative splicing; Named isoforms=6;\n" +
                 "  Comment=Additional isoforms seem to exist.;\n" +

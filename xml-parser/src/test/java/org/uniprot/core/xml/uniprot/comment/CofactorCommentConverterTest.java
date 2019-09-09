@@ -34,7 +34,7 @@ class CofactorCommentConverterTest {
     CofactorCommentConverter converter;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
 
         EvidenceIndexMapper evidenceReferenceHandler = new EvidenceIndexMapper();
 

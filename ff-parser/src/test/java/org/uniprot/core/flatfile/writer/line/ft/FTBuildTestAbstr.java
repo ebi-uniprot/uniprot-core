@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FTBuildTestAbstr {
+class FTBuildTestAbstr {
     void doTest(String ftLine, Feature feature) {
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory.create(feature);
 

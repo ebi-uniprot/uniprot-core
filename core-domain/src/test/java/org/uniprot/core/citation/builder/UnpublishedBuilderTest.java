@@ -8,9 +8,9 @@ import org.uniprot.core.citation.Unpublished;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
+class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
     @Test
-    public void testBuildWithTitlePublication() {
+    void testBuildWithTitlePublication() {
         UnpublishedBuilder builder = new UnpublishedBuilder();
         String title = "Some title";
         builder.title(title)
@@ -24,7 +24,7 @@ public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testBuildAll() {
+    void testBuildAll() {
         UnpublishedBuilder builder = new UnpublishedBuilder();
         buildCitationParameters(builder);
         Unpublished citation = builder.build();

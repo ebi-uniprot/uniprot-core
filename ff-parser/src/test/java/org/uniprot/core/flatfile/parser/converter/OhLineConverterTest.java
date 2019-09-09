@@ -9,9 +9,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OhLineConverterTest {
+class OhLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 		//"OH   NCBI_TaxID=9598; Pan troglodytes (Chimpanzee).
 		OhLineObject ohO = new OhLineObject();
 		OhLineObject.OhValue ohV = new OhLineObject.OhValue();

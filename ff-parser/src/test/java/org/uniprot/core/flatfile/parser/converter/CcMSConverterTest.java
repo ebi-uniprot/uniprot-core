@@ -14,10 +14,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CcMSConverterTest {
+class CcMSConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
-	public void testMassSpectrometry(){
+	void testMassSpectrometry(){
 		//CC   -!- MASS SPECTROMETRY: Mass=13822; Method=MALDI; Range=19-140 (P15522-
         //CC       2); Source=PubMed:10531593;
 		CcLineObject ccLineO = new CcLineObject();	

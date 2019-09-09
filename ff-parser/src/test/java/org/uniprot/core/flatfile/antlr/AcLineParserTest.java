@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class AcLineParserTest {
+class AcLineParserTest {
 	@Test
-	public void validOneLineOneAcc() {
+	void validOneLineOneAcc() {
 		String ac_one_line = "AC   Q6GZX4;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -21,14 +21,14 @@ public class AcLineParserTest {
 	}
 
 	@Test
-	public void inValidOneLineOneAcc() {
+	void inValidOneLineOneAcc() {
 		String ac_one_line = "AC   Q6GDDZX4;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		assertThrows(RuntimeException.class, ()->parser.parse(ac_one_line));
 	}
 
 	@Test
-	public void validOneLineMoreAcc() {
+	void validOneLineMoreAcc() {
 		String ac_one_line = "AC   Q6GZX4; Q6GZX5; Q6GZX6;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -38,7 +38,7 @@ public class AcLineParserTest {
 	}
 
 	@Test
-	public void validMultiLineMoreAcc() {
+	void validMultiLineMoreAcc() {
 		String ac_one_line = "AC   Q6GZX4; Q6GZX5; Q6GZX6;\n" + "AC   Q6GZX7; Q6GZX8; Q6GZX9;\n" + "AC   Q6GZX0;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -47,7 +47,7 @@ public class AcLineParserTest {
 		assertEquals(expected, obj.secondaryAcc);
 	}
 	@Test
-	public void validOneLineMoreNewAcc() {
+	void validOneLineMoreNewAcc() {
 		String ac_one_line = "AC   A0A000A000; Q6GZX5; Q6GZX6;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -57,7 +57,7 @@ public class AcLineParserTest {
 	}
 
 	@Test
-	public void validOneLineMoreIsoformAcc() {
+	void validOneLineMoreIsoformAcc() {
 		String ac_one_line = "AC   A0A000A000-1; Q6GZX5-11; Q6GZX6-10;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);

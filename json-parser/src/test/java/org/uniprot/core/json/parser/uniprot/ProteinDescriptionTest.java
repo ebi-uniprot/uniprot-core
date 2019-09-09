@@ -15,10 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class ProteinDescriptionTest {
+class ProteinDescriptionTest {
 
     @Test
-    public void testProteinDescriptionSimple() {
+    void testProteinDescriptionSimple() {
         Name fullName = new NameBuilder().value("protein name").build();
         ProteinRecName recommendedName = new ProteinRecNameBuilder()
                 .fullName(fullName)
@@ -37,7 +37,7 @@ public class ProteinDescriptionTest {
     }
 
     @Test
-    public void testProteinDescriptionComplete() {
+    void testProteinDescriptionComplete() {
         ProteinDescription proteinDescription = getProteinDescription();
         ValidateJson.verifyJsonRoundTripParser(proteinDescription);
         ValidateJson.verifyEmptyFields(proteinDescription);
@@ -136,7 +136,7 @@ public class ProteinDescriptionTest {
     }
 
 
-    public static ProteinDescription getProteinDescription(){
+    static ProteinDescription getProteinDescription(){
         Name allergenName = createName("allergen","PRU10023");
         Name biotechName = createName("biotech","PRU10024");
         Name antigenName = createName("cd antigen","PRU10025");

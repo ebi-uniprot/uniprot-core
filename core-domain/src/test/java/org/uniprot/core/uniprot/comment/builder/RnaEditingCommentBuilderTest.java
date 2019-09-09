@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class RnaEditingCommentBuilderTest {
+class RnaEditingCommentBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         RnaEditingCommentBuilder builder1 = new RnaEditingCommentBuilder();
         RnaEditingCommentBuilder builder2 = new RnaEditingCommentBuilder();
         assertNotNull(builder1);
@@ -22,7 +22,7 @@ public class RnaEditingCommentBuilderTest {
     }
 
     @Test
-    public void testSetlocationType() {
+    void testSetlocationType() {
 
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
@@ -35,7 +35,7 @@ public class RnaEditingCommentBuilderTest {
     }
 
     @Test
-    public void testSetpositions() {
+    void testSetpositions() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         positions.add(new RnaEditingPositionBuilder("123", evidences).build());
@@ -52,7 +52,7 @@ public class RnaEditingCommentBuilderTest {
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         positions.add(new RnaEditingPositionBuilder("123", evidences).build());
@@ -71,7 +71,7 @@ public class RnaEditingCommentBuilderTest {
     }
 
     @Test
-    public void testCreatePosition() {
+    void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
         RnaEdPosition position = new RnaEditingPositionBuilder("123", evidences).build();
         assertEquals("123", position.getPosition());

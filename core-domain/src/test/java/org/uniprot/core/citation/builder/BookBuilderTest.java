@@ -8,10 +8,10 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BookBuilderTest extends AbstractCitationBuilderTest {
+class BookBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
-    public void testBuildCitation() {
+    void testBuildCitation() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         Book citation = builder.build();
@@ -19,7 +19,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddBookName() {
+    void testAddBookName() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
@@ -30,7 +30,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddEditors() {
+    void testAddEditors() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
@@ -44,7 +44,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddFirstPage() {
+    void testAddFirstPage() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
@@ -61,7 +61,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddLastPage() {
+    void testAddLastPage() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
@@ -79,7 +79,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddVolume() {
+    void testAddVolume() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
@@ -99,7 +99,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddPublisher() {
+    void testAddPublisher() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         String bookName = "Some book name";
@@ -121,7 +121,7 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testAddAddress() {
+    void testAddAddress() {
         BookBuilder builder = new BookBuilder();
         this.buildCitationParameters(builder);
         String bookName = "Some book name";

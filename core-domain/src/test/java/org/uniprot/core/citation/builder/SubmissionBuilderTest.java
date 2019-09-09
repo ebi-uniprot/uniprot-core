@@ -8,9 +8,9 @@ import org.uniprot.core.citation.SubmissionDatabase;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SubmissionBuilderTest extends AbstractCitationBuilderTest {
+class SubmissionBuilderTest extends AbstractCitationBuilderTest {
     @Test
-    public void testBuildAll() {
+    void testBuildAll() {
         SubmissionBuilder builder = new SubmissionBuilder();
         buildCitationParameters(builder);
 
@@ -21,7 +21,7 @@ public class SubmissionBuilderTest extends AbstractCitationBuilderTest {
     }
 
     @Test
-    public void testSubmittedToDatabase() {
+    void testSubmittedToDatabase() {
         SubmissionBuilder builder = new SubmissionBuilder();
         builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         Submission citation = builder.build();

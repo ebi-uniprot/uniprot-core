@@ -9,9 +9,9 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
+class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
 	@Test
-	public void testMutagen() throws Exception {
+	void testMutagen() {
 		String ftLine = "FT   MUTAGEN       2      2       B->A,N: Less than 1% residual activity.";
 		String ftLineString = "MUTAGEN 2 2 B->A,N: Less than 1% residual activity.";
 		String originalSequence = "B";
@@ -32,7 +32,7 @@ public class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testMutagenEvidence() throws Exception {
+	void testMutagenEvidence() {
 		String ftLine = "FT   MUTAGEN       2      2       B->A,N: Less than 1% residual activity.\n"
 				+ "FT                                {ECO:0000269|PubMed:10433554,\n"
 				+ "FT                                ECO:0000313|EMBL:BAG16761.1}.";

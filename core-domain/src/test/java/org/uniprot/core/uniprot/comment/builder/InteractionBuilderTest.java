@@ -12,9 +12,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class InteractionBuilderTest {
+class InteractionBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         InteractionBuilder builder1 = new InteractionBuilder();
         InteractionBuilder builder2 = new InteractionBuilder();
         assertNotNull(builder1);
@@ -23,7 +23,7 @@ public class InteractionBuilderTest {
     }
 
     @Test
-    public void testSetInteractionType() {
+    void testSetInteractionType() {
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction = builder.interactionType(InteractionType.BINARY)
                 .build();
@@ -35,7 +35,7 @@ public class InteractionBuilderTest {
     }
 
     @Test
-    public void testSetGeneName() {
+    void testSetGeneName() {
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction = builder.interactionType(InteractionType.BINARY)
                 .geneName("gn22")
@@ -48,7 +48,7 @@ public class InteractionBuilderTest {
     }
 
     @Test
-    public void testSetNumberOfExperiments() {
+    void testSetNumberOfExperiments() {
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction = builder.interactionType(InteractionType.BINARY)
                 .geneName("gn22")
@@ -63,7 +63,7 @@ public class InteractionBuilderTest {
     }
 
     @Test
-    public void testSetFirstInteractor() {
+    void testSetFirstInteractor() {
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction = builder.interactionType(InteractionType.BINARY)
                 .geneName("gn22")
@@ -79,7 +79,7 @@ public class InteractionBuilderTest {
     }
 
     @Test
-    public void testSetSecondInteractor() {
+    void testSetSecondInteractor() {
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction = builder.interactionType(InteractionType.BINARY)
                 .geneName("gn22")
@@ -97,7 +97,7 @@ public class InteractionBuilderTest {
     }
 
     @Test
-    public void testSetUniProtAccession() {
+    void testSetUniProtAccession() {
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction = builder.interactionType(InteractionType.BINARY)
                 .geneName("gn22")
@@ -116,7 +116,7 @@ public class InteractionBuilderTest {
     }
 
     @Test
-    public void testCreateInteractionComment() {
+    void testCreateInteractionComment() {
         InteractionBuilder builder = new InteractionBuilder();
         Interaction interaction = builder.interactionType(InteractionType.BINARY)
                 .geneName("gn22")

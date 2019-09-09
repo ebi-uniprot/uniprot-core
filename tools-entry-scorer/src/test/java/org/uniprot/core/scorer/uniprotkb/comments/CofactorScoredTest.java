@@ -3,9 +3,9 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class CofactorScoredTest extends CommentScoreTestBase {
+class CofactorScoredTest extends CommentScoreTestBase {
     @Test
-    public void shouldScore00() throws Exception {
+    void shouldScore00() throws Exception {
         String line = "CC   -!- COFACTOR:\n" +
                 "CC       Note=Does not require a metal cofactor.\n" +
                 "CC       {ECO:0000269|PubMed:24450804};";
@@ -13,7 +13,7 @@ public class CofactorScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldScore10() throws Exception {
+    void shouldScore10() throws Exception {
         String line = "CC   -!- COFACTOR: Isoform 1:\n" +
                 "CC       Name=Zn(2+); Xref=ChEBI:CHEBI:29105;\n" +
                 "CC         Evidence={ECO:0000305|PubMed:16683188};\n" +
@@ -23,7 +23,7 @@ public class CofactorScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldScore20() throws Exception {
+    void shouldScore20() throws Exception {
         String line = "CC   -!- COFACTOR:\n" +
                 "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420;\n" +
                 "CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00086};\n" +

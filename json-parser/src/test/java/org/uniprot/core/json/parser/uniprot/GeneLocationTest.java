@@ -13,17 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-public class GeneLocationTest {
+class GeneLocationTest {
 
 
     @Test
-    public void testGeneLocationSimple() {
+    void testGeneLocationSimple() {
         GeneLocation geneLocation = new GeneLocationBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(geneLocation);
     }
 
     @Test
-    public void testGeneLocationComplete() {
+    void testGeneLocationComplete() {
         GeneLocation geneLocation = getGeneLocation();
         ValidateJson.verifyJsonRoundTripParser(geneLocation);
         ValidateJson.verifyEmptyFields(geneLocation);
@@ -41,7 +41,7 @@ public class GeneLocationTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000255","PROSITE-ProRule","PRU10025");
     }
 
-    public static GeneLocation getGeneLocation() {
+    static GeneLocation getGeneLocation() {
         return new GeneLocationBuilder()
                 .geneEncodingType(GeneEncodingType.CYANELLE_PLASTID)
                 .value("geneLocation value")

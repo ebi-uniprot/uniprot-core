@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 
-public class CCSubcellBuildTest extends CCBuildTestAbstr {
+class CCSubcellBuildTest extends CCBuildTestAbstr {
     @Test
-    public void test1() {
+    void test1() {
         String ccLine = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space.\n"
                 + "CC       Note=Loosely associated with the inner membrane.";
 
@@ -55,7 +55,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test1Evidences() {
+    void test1Evidences() {
         String ccLine = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n" +
                 "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}.\n" +
                 "CC       Note=Loosely associated with the inner membrane.\n" +
@@ -110,7 +110,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         String ccLine = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
                 + "CC       membrane protein (By similarity).";
         String ccLineString = "SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass "
@@ -141,7 +141,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test2Evidence() {
+    void test2Evidence() {
         String ccLine = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane\n" +
                 "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}; Multi-\n" +
                 "CC       pass membrane protein (By similarity) {ECO:0000303|Ref.6}.";
@@ -191,7 +191,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test2Evidence2() {
+    void test2Evidence2() {
         String ccLine = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n" +
                 "CC       membrane protein (By similarity) {ECO:0000269|PubMed:10433554,\n" +
                 "CC       ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1}.";
@@ -226,7 +226,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test3() {
+    void test3() {
         String ccLine = ("CC   -!- SUBCELLULAR LOCATION: Spike protein S2: Virion membrane; Single-\n" +
                 "CC       pass type I membrane sdssds protein (By similarity). Host\n" +
                 "CC       endoplasmic reticulum-Golgi intermediate compartment membrane;\n" +
@@ -285,7 +285,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test3Evidence() {
+    void test3Evidence() {
         String ccLine = "CC   -!- SUBCELLULAR LOCATION: Spike protein S2: Virion membrane\n" +
                 "CC       {ECO:0000313|EMBL:BAG16761.1}; Single-pass type I membrane sdssds\n" +
                 "CC       protein (By similarity) {ECO:0000269|PubMed:10433554}. Host\n" +
@@ -385,7 +385,7 @@ public class CCSubcellBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test1Evidences3() {
+    void test1Evidences3() {
         String ccLine = "CC   -!- SUBCELLULAR LOCATION: Mitochondrion intermembrane space\n" +
                 "CC       {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}.\n" +
                 "CC       Note=Loosely associated with the inner membrane.\n" +

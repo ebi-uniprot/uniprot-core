@@ -11,9 +11,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OxLineConverterTest {
+class OxLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 	//	OX   NCBI_TaxID=9606;
 		OxLineObject osO = new OxLineObject();
 		osO.taxonomy_id =9606;
@@ -22,7 +22,7 @@ public class OxLineConverterTest {
 		assertEquals(9606, taxId.getTaxonId());
 	}
 	@Test
-	public void testEvidence(){
+	void testEvidence(){
 	//	OX   NCBI_TaxID=9606{EI1,EI2};
 		OxLineObject osO = new OxLineObject();
 		osO.taxonomy_id =9606;

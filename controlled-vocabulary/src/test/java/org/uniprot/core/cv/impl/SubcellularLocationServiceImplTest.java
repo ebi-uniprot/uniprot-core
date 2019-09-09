@@ -8,7 +8,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class SubcellularLocationServiceImplTest {
+class SubcellularLocationServiceImplTest {
 	@Test
 	void test() {
 		String file ="src/test/resources/subcell.txt";

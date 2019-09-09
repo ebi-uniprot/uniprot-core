@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WebResourceCommentTest {
 
     @Test
-    public void testWebResourceSimple() {
+    void testWebResourceSimple() {
 
         WebResourceComment comment = new WebResourceCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -25,7 +25,7 @@ public class WebResourceCommentTest {
     }
 
     @Test
-    public void testWebResourceComplete() {
+    void testWebResourceComplete() {
 
         WebResourceComment comment = getWebResourceComment();
         ValidateJson.verifyJsonRoundTripParser(comment);

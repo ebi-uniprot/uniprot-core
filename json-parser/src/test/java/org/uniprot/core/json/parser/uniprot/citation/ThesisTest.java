@@ -22,7 +22,7 @@ public class ThesisTest {
 
 
     @Test
-    public void testThesisSimple() {
+    void testThesisSimple() {
         Citation citation =  new ThesisBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
 
@@ -32,7 +32,7 @@ public class ThesisTest {
     }
 
     @Test
-    public void testThesisComplete() {
+    void testThesisComplete() {
         Citation citation = getThesis();
         ValidateJson.verifyJsonRoundTripParser(citation);
         ValidateJson.verifyEmptyFields(citation);

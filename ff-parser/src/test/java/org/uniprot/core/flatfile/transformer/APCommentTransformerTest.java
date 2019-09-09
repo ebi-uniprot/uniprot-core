@@ -5,11 +5,11 @@ import org.uniprot.core.uniprot.comment.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class APCommentTransformerTest {
+class APCommentTransformerTest {
 	private final APCommentTransformer transformer
 		=new APCommentTransformer();
 	@Test
-	public void test1(){
+	void test1(){
 		String ccLineString =
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 				"Comment=Additional isoforms seem to exist.;\n" +
@@ -59,7 +59,7 @@ public class APCommentTransformerTest {
 		assertEquals("No experimental confirmation available.", isoform5.getNote().getTexts().get(0).getValue());
 	}
 	@Test
-	public void testWithEvidence(){
+	void testWithEvidence(){
 		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 		        "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
@@ -125,7 +125,7 @@ public class APCommentTransformerTest {
 		
 	}
 	@Test
-	public void testWithEvidenceFormated(){
+	void testWithEvidenceFormated(){
 		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 		        "  Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"

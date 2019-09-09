@@ -3,16 +3,16 @@ package org.uniprot.core.scorer.uniprotkb.comments;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class BioPhyScoredTest extends CommentScoreTestBase {
+class BioPhyScoredTest extends CommentScoreTestBase {
     @Test
-    public void shouldAbsorpScore20() throws Exception {
+    void shouldAbsorpScore20() throws Exception {
         String line = "BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "Absorption:\n" +
                 "  Abs(max)=~480 nm;";
         verify(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, line, 2.0);
     }
     @Test
-    public void shouldpDDepScore20() throws Exception {
+    void shouldpDDepScore20() throws Exception {
         String line = "BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "pH dependence:\n" +
                 "  Optimum pH is 8.;";
@@ -20,7 +20,7 @@ public class BioPhyScoredTest extends CommentScoreTestBase {
        
     }
     @Test
-    public void shouldScore220() throws Exception {
+    void shouldScore220() throws Exception {
        String line ="BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "Kinetic parameters:\n" +
                 "  KM=0.7 uM for Boc-Gln-Arg-Arg-MCA {ECO:0000313|EMBL:EOP66756.1};\n" +
@@ -47,7 +47,7 @@ public class BioPhyScoredTest extends CommentScoreTestBase {
 
     }
     @Test
-    public void shouldRedoxScore20() throws Exception {
+    void shouldRedoxScore20() throws Exception {
         String line ="BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "Redox potential:\n" +
                 "  E(0) is about +178 mV.;";
@@ -55,7 +55,7 @@ public class BioPhyScoredTest extends CommentScoreTestBase {
      
     }
     @Test
-    public void shouldTempDepScore20() throws Exception {
+    void shouldTempDepScore20() throws Exception {
         String line = "BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "Temperature dependence:\n" +
                 "  Optimum temperature is 70 degrees Celsius. Inactive at 37\n" +
@@ -63,7 +63,7 @@ public class BioPhyScoredTest extends CommentScoreTestBase {
         verify(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, line, 2.0);
     }
     @Test
-    public void shouldScore40() throws Exception {
+    void shouldScore40() throws Exception {
         String line = "BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "Kinetic parameters:\n" +
                 "  KM=25 uM for AdoMet;\n" +
@@ -74,7 +74,7 @@ public class BioPhyScoredTest extends CommentScoreTestBase {
     }
 
    @Test 
-    public void shouldAScore220() throws Exception {
+    void shouldAScore220() throws Exception {
         String line = "BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "Kinetic parameters:\n" +
                 "  KM=0.7 uM for Boc-Gln-Arg-Arg-MCA;\n" +

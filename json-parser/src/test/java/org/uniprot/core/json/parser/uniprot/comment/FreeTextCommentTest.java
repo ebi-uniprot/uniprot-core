@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class FreeTextCommentTest {
 
     @Test
-    public void testFreeTextSimple() {
+    void testFreeTextSimple() {
 
         FreeTextComment comment = new FreeTextCommentBuilder()
                 .commentType(CommentType.DISRUPTION_PHENOTYPE)
@@ -31,7 +31,7 @@ public class FreeTextCommentTest {
     }
 
     @Test
-    public void testFreeTextComplete() {
+    void testFreeTextComplete() {
         FreeTextComment comment = getFreeTextComment();
 
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -54,6 +54,4 @@ public class FreeTextCommentTest {
                 .texts(CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001360"))
                 .build();
     }
-
-
 }

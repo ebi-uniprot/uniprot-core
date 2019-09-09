@@ -8,9 +8,9 @@ import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class EntryParserTest {
+class EntryParserTest {
 	@Test
-	public void test() {
+	void test() {
 		 String entryLines ="ID   001R_FRG3G              Reviewed;         256 AA.\n"
          +"AC   Q6GZX4;\n"
          +"DT   28-JUN-2011, integrated into UniProtKB/Swiss-Prot.\n"
