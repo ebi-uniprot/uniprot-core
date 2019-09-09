@@ -33,6 +33,5 @@ class RangeTest {
     private void verify(Range range, Position start, Position end) {
         assertEquals(start, range.getStart());
         assertEquals(end, range.getEnd());
-        TestHelper.verifyJson(range);
     }
 }

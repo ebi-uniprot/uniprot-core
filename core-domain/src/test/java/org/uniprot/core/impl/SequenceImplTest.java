@@ -4,8 +4,6 @@ package org.uniprot.core.impl;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
-import org.uniprot.core.TestHelper;
-import org.uniprot.core.impl.SequenceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -49,10 +47,5 @@ public class SequenceImplTest {
         int end = 20;
         Sequence subSeq = sequence.subSequence(start, end);
         assertEquals("STPSRRSSRRGRVTP", subSeq.getValue());
-    }
-
-    @Test
-    public void testToJson() {
-        TestHelper.verifyJson(sequence);
     }
 }

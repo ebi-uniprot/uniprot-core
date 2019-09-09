@@ -1,7 +1,6 @@
 package org.uniprot.core.citation.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.CitationType;
 
@@ -119,8 +118,6 @@ public class BookBuilderTest extends AbstractCitationBuilderTest {
         assertEquals("324C", citation.getLastPage());
         assertEquals("3", citation.getVolume());
         assertEquals("London Press", citation.getPublisher());
-
-        TestHelper.verifyJson(citation);
     }
 
     @Test

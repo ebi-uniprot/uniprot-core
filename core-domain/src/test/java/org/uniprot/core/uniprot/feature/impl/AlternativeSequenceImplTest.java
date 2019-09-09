@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
 
@@ -21,7 +21,6 @@ class AlternativeSequenceImplTest {
 
 		assertEquals("AB", as.getOriginalSequence());
 		assertEquals(Arrays.asList("DC", "SDGASS"), as.getAlternativeSequences());
-		TestHelper.verifyJson(as);
 	}
 
 	@Test
@@ -31,9 +30,6 @@ class AlternativeSequenceImplTest {
 
 		assertEquals("AB", as.getOriginalSequence());
 		assertTrue(as.getAlternativeSequences().isEmpty());
-
-		
-		TestHelper.verifyJson(as);
 	}
 
 }

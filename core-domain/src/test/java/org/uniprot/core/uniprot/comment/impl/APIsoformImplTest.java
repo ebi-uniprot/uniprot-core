@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
 import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
@@ -25,7 +25,6 @@ class APIsoformImplTest {
         IsoformName isoformName = new IsoformNameBuilder(name, evidences).build();
         assertEquals(name, isoformName.getValue());
         assertEquals(evidences, isoformName.getEvidences());
-        TestHelper.verifyJson(isoformName);
     }
 
     @Test
@@ -53,7 +52,6 @@ class APIsoformImplTest {
         assertEquals(isoformIds, apIsoform.getIsoformIds());
         assertEquals(sequenceIds, apIsoform.getSequenceIds());
         assertEquals(IsoformSequenceStatus.DESCRIBED, apIsoform.getIsoformSequenceStatus());
-        TestHelper.verifyJson(apIsoform);
     }
 
     private List<IsoformId> createIsoformIds() {

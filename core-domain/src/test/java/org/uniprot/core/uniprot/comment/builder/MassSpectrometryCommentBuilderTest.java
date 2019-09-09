@@ -2,7 +2,6 @@ package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
@@ -38,7 +37,6 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -59,7 +57,6 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -80,7 +77,6 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -99,7 +95,6 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -124,7 +119,6 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -151,7 +145,6 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(evidences, comment.getEvidences());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test

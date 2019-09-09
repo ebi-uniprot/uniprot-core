@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.EntryInactiveReason;
 import org.uniprot.core.uniprot.InactiveReasonType;
 import org.uniprot.core.uniprot.builder.EntryInactiveReasonBuilder;
@@ -18,7 +18,6 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason = new EntryInactiveReasonBuilder().type(InactiveReasonType.MERGED).mergeDemergeTo(Arrays.asList("P12345")).build();
         assertEquals(InactiveReasonType.MERGED, reason.getInactiveReasonType());
         assertEquals(Arrays.asList("P12345"), reason.getMergeDemergeTo());
-        TestHelper.verifyJson(reason);
     }
 
     @Test
@@ -27,7 +26,6 @@ class EntryInactiveReasonImplTest {
                 .asList("P12345", "P12347")).build();
         assertEquals(InactiveReasonType.DEMERGED, reason.getInactiveReasonType());
         assertEquals(Arrays.asList("P12345", "P12347"), reason.getMergeDemergeTo());
-        TestHelper.verifyJson(reason);
     }
 
     @Test
@@ -35,6 +33,5 @@ class EntryInactiveReasonImplTest {
         EntryInactiveReason reason = new EntryInactiveReasonBuilder().type(InactiveReasonType.DELETED).mergeDemergeTo(null).build();
         assertEquals(InactiveReasonType.DELETED, reason.getInactiveReasonType());
         assertTrue(reason.getMergeDemergeTo().isEmpty());
-        TestHelper.verifyJson(reason);
     }
 }

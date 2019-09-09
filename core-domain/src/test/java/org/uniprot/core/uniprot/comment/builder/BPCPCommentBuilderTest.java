@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -45,7 +45,6 @@ public class BPCPCommentBuilderTest {
         assertFalse(comment.getPhDependence() != null);
         assertFalse(comment.getRedoxPotential() != null);
         assertFalse(comment.getTemperatureDependence() != null);
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -73,7 +72,6 @@ public class BPCPCommentBuilderTest {
         assertFalse(comment.getPhDependence() != null);
         assertFalse(comment.getRedoxPotential() != null);
         assertFalse(comment.getTemperatureDependence() != null);
-        TestHelper.verifyJson(comment);
     }
 
     private Absorption createAbsorption(int max, boolean b, Note note, List<Evidence> evidences) {
@@ -120,7 +118,6 @@ public class BPCPCommentBuilderTest {
         assertTrue(comment.getPhDependence() != null);
         assertFalse(comment.getRedoxPotential() != null);
         assertFalse(comment.getTemperatureDependence() != null);
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -150,7 +147,6 @@ public class BPCPCommentBuilderTest {
         assertTrue(comment.getPhDependence() != null);
         assertTrue(comment.getRedoxPotential() != null);
         assertFalse(comment.getTemperatureDependence() != null);
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -181,7 +177,6 @@ public class BPCPCommentBuilderTest {
         assertNotNull(comment.getPhDependence());
         assertNotNull(comment.getRedoxPotential());
         assertNotNull(comment.getTemperatureDependence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test

@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
@@ -25,7 +24,6 @@ public class FreeTextCommentBuilderTest {
         FreeTextComment comment = buildFreeTextComment(CommentType.ALLERGEN, texts);
         assertEquals(CommentType.ALLERGEN, comment.getCommentType());
         assertEquals(texts, comment.getTexts());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -33,7 +31,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValues2();
         FreeTextComment comment = buildFreeTextComment(CommentType.BIOTECHNOLOGY, texts);
         assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -41,7 +38,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.CATALYTIC_ACTIVITY, texts);
         assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -49,7 +45,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.CAUTION, texts);
         assertEquals(CommentType.CAUTION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -57,7 +52,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.DEVELOPMENTAL_STAGE, texts);
         assertEquals(CommentType.DEVELOPMENTAL_STAGE, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -65,7 +59,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.DISRUPTION_PHENOTYPE, texts);
         assertEquals(CommentType.DISRUPTION_PHENOTYPE, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -73,7 +66,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.DOMAIN, texts);
         assertEquals(CommentType.DOMAIN, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -81,7 +73,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.ACTIVITY_REGULATION, texts);
         assertEquals(CommentType.ACTIVITY_REGULATION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -89,7 +80,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.FUNCTION, texts);
         assertEquals(CommentType.FUNCTION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -97,7 +87,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.INDUCTION, texts);
         assertEquals(CommentType.INDUCTION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -105,7 +94,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.MISCELLANEOUS, texts);
         assertEquals(CommentType.MISCELLANEOUS, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -113,7 +101,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.PATHWAY, texts);
         assertEquals(CommentType.PATHWAY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -121,7 +108,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.PHARMACEUTICAL, texts);
         assertEquals(CommentType.PHARMACEUTICAL, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -129,7 +115,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.POLYMORPHISM, texts);
         assertEquals(CommentType.POLYMORPHISM, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -137,7 +122,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.PTM, texts);
         assertEquals(CommentType.PTM, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -145,7 +129,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.SIMILARITY, texts);
         assertEquals(CommentType.SIMILARITY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -153,7 +136,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.SUBUNIT, texts);
         assertEquals(CommentType.SUBUNIT, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -161,7 +143,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.TISSUE_SPECIFICITY, texts);
         assertEquals(CommentType.TISSUE_SPECIFICITY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -169,7 +150,6 @@ public class FreeTextCommentBuilderTest {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.TOXIC_DOSE, texts);
         assertEquals(CommentType.TOXIC_DOSE, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     private FreeTextComment buildFreeTextComment(CommentType type, List<EvidencedValue> texts) {

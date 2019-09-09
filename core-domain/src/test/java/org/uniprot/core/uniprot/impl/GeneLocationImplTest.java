@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.GeneEncodingType;
 import org.uniprot.core.uniprot.GeneLocation;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -22,7 +22,6 @@ public class GeneLocationImplTest {
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected = "Plastid; Apicoplast {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
-        TestHelper.verifyJson(geneLocation);
     }
 
     @Test
@@ -33,7 +32,6 @@ public class GeneLocationImplTest {
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected = "Mitochondrion {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
-        TestHelper.verifyJson(geneLocation);
     }
 
     @Test
@@ -44,7 +42,6 @@ public class GeneLocationImplTest {
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected = "Hydrogenosome {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
-        TestHelper.verifyJson(geneLocation);
     }
 
     @Test
@@ -55,7 +52,6 @@ public class GeneLocationImplTest {
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected = "Plastid {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
-        TestHelper.verifyJson(geneLocation);
     }
 
     @Test
@@ -66,7 +62,6 @@ public class GeneLocationImplTest {
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
         String expected = "Plasmid some value {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
-        TestHelper.verifyJson(geneLocation);
     }
 
     @Test
@@ -78,6 +73,5 @@ public class GeneLocationImplTest {
         assertEquals(type, geneLocation.getGeneEncodingType());
         assertEquals(val, geneLocation.getValue());
         assertTrue(geneLocation.getEvidences().isEmpty());
-        TestHelper.verifyJson(geneLocation);
     }
 }

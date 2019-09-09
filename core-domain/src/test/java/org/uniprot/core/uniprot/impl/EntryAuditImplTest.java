@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.EntryAudit;
 
 import java.time.LocalDate;
@@ -26,7 +26,6 @@ public class EntryAuditImplTest {
         assertEquals(lastSequenceUpdateDate, entryAudit.getLastSequenceUpdateDate());
         assertEquals(entryVersion, entryAudit.getEntryVersion());
         assertEquals(sequenceVersion, entryAudit.getSequenceVersion());
-        TestHelper.verifyJson(entryAudit);
     }
 
 }

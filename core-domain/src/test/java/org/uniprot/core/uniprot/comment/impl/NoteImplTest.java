@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -38,7 +38,6 @@ class NoteImplTest {
 
         Note note = new NoteBuilder(texts).build();
         assertEquals(texts, note.getTexts());
-        TestHelper.verifyJson(note);
     }
 
     @Test
@@ -46,6 +45,5 @@ class NoteImplTest {
         List<EvidencedValue> texts = new ArrayList<>();
         Note note = new NoteBuilder(texts).build();
         assertEquals(texts, note.getTexts());
-        TestHelper.verifyJson(note);
     }
 }

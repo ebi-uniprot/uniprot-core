@@ -1,7 +1,6 @@
 package org.uniprot.core.citation.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.ElectronicArticle;
 
@@ -14,7 +13,6 @@ public class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
         this.buildCitationParameters(builder);
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
-        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -26,7 +24,6 @@ public class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());
-        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -40,6 +37,5 @@ public class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());
         assertEquals("Some locator", citation.getLocator().getValue());
-        TestHelper.verifyJson(citation);
     }
 }

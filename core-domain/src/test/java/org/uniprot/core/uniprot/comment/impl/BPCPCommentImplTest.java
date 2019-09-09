@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -15,24 +14,6 @@ import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 
 class BPCPCommentImplTest {
-    @Test
-    void testCreatePHDependence() {
-        PhDependence obj = new PhDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
-        TestHelper.verifyJson(obj);
-    }
-
-    @Test
-    void testCreateRedoxPotential() {
-        RedoxPotential obj = new RedoxPotentialBuilder(createEvidenceValuesWithoutEvidences()).build();
-        TestHelper.verifyJson(obj);
-    }
-
-    @Test
-    void testCreateTemperatureDependence() {
-        TemperatureDependence obj = new TemperatureDependenceBuilder(createEvidenceValuesWithoutEvidences()).build();
-        TestHelper.verifyJson(obj);
-    }
-
     @Test
     void testBPCPCommentImpl() {
         Absorption absorption = createAbsorption();
@@ -53,7 +34,6 @@ class BPCPCommentImplTest {
         assertEquals(phDependence, comment.getPhDependence());
         assertEquals(redoxPotential, comment.getRedoxPotential());
         assertEquals(temperatureDependence, comment.getTemperatureDependence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -76,7 +56,6 @@ class BPCPCommentImplTest {
         assertEquals(phDependence, comment.getPhDependence());
         assertEquals(redoxPotential, comment.getRedoxPotential());
         assertEquals(temperatureDependence, comment.getTemperatureDependence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -99,7 +78,6 @@ class BPCPCommentImplTest {
         assertEquals(phDependence, comment.getPhDependence());
         assertEquals(redoxPotential, comment.getRedoxPotential());
         assertEquals(temperatureDependence, comment.getTemperatureDependence());
-        TestHelper.verifyJson(comment);
     }
 
 
@@ -123,9 +101,7 @@ class BPCPCommentImplTest {
         assertEquals(phDependence, comment.getPhDependence());
         assertEquals(redoxPotential, comment.getRedoxPotential());
         assertEquals(temperatureDependence, comment.getTemperatureDependence());
-        TestHelper.verifyJson(comment);
     }
-
 
     private Absorption createAbsorption() {
         Note note = createNote();

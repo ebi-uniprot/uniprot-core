@@ -2,7 +2,7 @@ package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
@@ -33,7 +33,6 @@ public class DiseaseBuilderTest {
         assertNull(disease.getDescription());
         assertNull(disease.getReference());
         assertNull(disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test
@@ -47,7 +46,6 @@ public class DiseaseBuilderTest {
         assertNull(disease.getDescription());
         assertNull(disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test
@@ -67,7 +65,6 @@ public class DiseaseBuilderTest {
         assertEquals(diseaseDescription, disease.getDescription());
         assertNull(disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test
@@ -90,7 +87,6 @@ public class DiseaseBuilderTest {
         assertEquals(diseaseDescription, disease.getDescription());
         assertEquals(reference, disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test

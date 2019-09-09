@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -33,7 +32,6 @@ public class RnaEditingCommentBuilderTest {
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -51,7 +49,6 @@ public class RnaEditingCommentBuilderTest {
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertFalse(comment.getNote() != null);
         assertEquals(positions, comment.getPositions());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -71,7 +68,6 @@ public class RnaEditingCommentBuilderTest {
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertEquals(note, comment.getNote());
         assertEquals(positions, comment.getPositions());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -80,6 +76,5 @@ public class RnaEditingCommentBuilderTest {
         RnaEdPosition position = new RnaEditingPositionBuilder("123", evidences).build();
         assertEquals("123", position.getPosition());
         assertEquals(evidences, position.getEvidences());
-        TestHelper.verifyJson(position);
     }
 }

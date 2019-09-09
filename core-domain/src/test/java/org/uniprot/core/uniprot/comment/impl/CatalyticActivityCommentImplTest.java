@@ -3,7 +3,7 @@ package org.uniprot.core.uniprot.comment.impl;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.impl.ECNumberImpl;
@@ -30,7 +30,6 @@ class CatalyticActivityCommentImplTest {
         assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
         assertEquals(reaction, comment.getReaction());
         assertEquals(phyReactions, comment.getPhysiologicalReactions());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -41,7 +40,6 @@ class CatalyticActivityCommentImplTest {
         assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
         assertEquals(reaction, comment.getReaction());
         assertTrue(comment.getPhysiologicalReactions().isEmpty());
-        TestHelper.verifyJson(comment);
     }
 
     private List<PhysiologicalReaction> createPhyReaction() {

@@ -1,7 +1,7 @@
 package org.uniprot.core.citation.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.Unpublished;
 
@@ -21,8 +21,6 @@ public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
         assertTrue(citation.getAuthoringGroup().isEmpty());
         assertTrue(citation.getAuthors().isEmpty());
         assertEquals(CitationType.UNPUBLISHED, citation.getCitationType());
-        TestHelper.verifyJson(citation);
-
     }
 
     @Test
@@ -31,6 +29,5 @@ public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
         buildCitationParameters(builder);
         Unpublished citation = builder.build();
         verifyCitation(citation, CitationType.UNPUBLISHED);
-        TestHelper.verifyJson(citation);
     }
 }

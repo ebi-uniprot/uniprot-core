@@ -1,7 +1,7 @@
 package org.uniprot.core.citation.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.Patent;
 
@@ -18,7 +18,6 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
         assertEquals(CitationType.PATENT, citation.getCitationType());
         assertEquals(pnumber, citation.getPatentNumber());
         this.verifyCitation(citation, CitationType.PATENT);
-        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -29,6 +28,5 @@ public class PatentBuilderTest extends AbstractCitationBuilderTest {
         Patent citation = builder.build();
         assertEquals(CitationType.PATENT, citation.getCitationType());
         assertEquals(pnumber, citation.getPatentNumber());
-        TestHelper.verifyJson(citation);
     }
 }

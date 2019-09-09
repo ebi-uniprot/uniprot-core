@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
@@ -33,7 +33,6 @@ public class SequenceCautionCommentBuilderTest {
         assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
         assertNull(comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -48,7 +47,6 @@ public class SequenceCautionCommentBuilderTest {
         assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
         assertEquals("somesequence", comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -65,7 +63,6 @@ public class SequenceCautionCommentBuilderTest {
         assertFalse(comment.getNote() != null);
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -83,6 +80,5 @@ public class SequenceCautionCommentBuilderTest {
         assertEquals("some note", comment.getNote());
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 }

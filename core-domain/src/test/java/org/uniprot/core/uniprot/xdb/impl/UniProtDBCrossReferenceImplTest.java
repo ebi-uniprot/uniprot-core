@@ -2,7 +2,7 @@ package org.uniprot.core.uniprot.xdb.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
@@ -227,7 +227,6 @@ public class UniProtDBCrossReferenceImplTest {
         assertEquals(isoformId, xref.getIsoformId());
         assertEquals(thirdAttr, getValue(xref, 1));
         assertEquals(fourAttr, getValue(xref, 2));
-        TestHelper.verifyJson(xref);
     }
 
     private String getValue(UniProtDBCrossReference xref, int number) {

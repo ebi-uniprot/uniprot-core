@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 
@@ -21,7 +21,6 @@ public class WebResourceCommentBuilderTest {
         assertEquals("", comment.getResourceUrl());
         assertFalse(comment.isFtp());
         assertEquals("", comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -37,7 +36,6 @@ public class WebResourceCommentBuilderTest {
         assertEquals(databaseUrl, comment.getResourceUrl());
         assertFalse(comment.isFtp());
         assertEquals("", comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -54,7 +52,6 @@ public class WebResourceCommentBuilderTest {
         assertEquals(databaseFtp, comment.getResourceUrl());
         assertTrue(comment.isFtp());
         assertEquals("", comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -72,6 +69,5 @@ public class WebResourceCommentBuilderTest {
         assertEquals(databaseUrl, comment.getResourceUrl());
         assertFalse(comment.isFtp());
         assertEquals(note, comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 }

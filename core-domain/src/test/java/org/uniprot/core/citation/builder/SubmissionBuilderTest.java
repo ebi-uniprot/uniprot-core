@@ -1,7 +1,7 @@
 package org.uniprot.core.citation.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
@@ -18,7 +18,6 @@ public class SubmissionBuilderTest extends AbstractCitationBuilderTest {
         Submission citation = builder.build();
         assertEquals(SubmissionDatabase.PDB, citation.getSubmissionDatabase());
         verifyCitation(citation, CitationType.SUBMISSION);
-        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -28,6 +27,5 @@ public class SubmissionBuilderTest extends AbstractCitationBuilderTest {
         Submission citation = builder.build();
         assertEquals(CitationType.SUBMISSION, citation.getCitationType());
         assertEquals(SubmissionDatabase.EMBL_GENBANK_DDBJ, citation.getSubmissionDatabase());
-        TestHelper.verifyJson(citation);
     }
 }

@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
@@ -59,7 +59,6 @@ public class SubcellularLocationCommentBuilderTest {
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -96,7 +95,6 @@ public class SubcellularLocationCommentBuilderTest {
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -106,7 +104,6 @@ public class SubcellularLocationCommentBuilderTest {
         SubcellularLocationValue slv = new SubcellularLocationValueBuilder("id1", value, evidences).build();
         assertEquals(value, slv.getValue());
         assertEquals(evidences, slv.getEvidences());
-        TestHelper.verifyJson(slv);
     }
 
     @Test
@@ -126,13 +123,11 @@ public class SubcellularLocationCommentBuilderTest {
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertEquals(orientation, sublocation.getOrientation());
-        TestHelper.verifyJson(sublocation);
 
         sublocation = new SubcellularLocationBuilder()
                 .location(location).topology(topology).build();
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertFalse(sublocation.getOrientation() != null);
-        TestHelper.verifyJson(sublocation);
     }
 }

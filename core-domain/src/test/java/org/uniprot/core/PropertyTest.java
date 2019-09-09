@@ -12,8 +12,6 @@ class PropertyTest {
         Property pt = new Property("some key", "some value");
         assertEquals("some key", pt.getKey());
         assertEquals("some value", pt.getValue());
-        TestHelper.verifyJson(pt);
-
     }
 
 }

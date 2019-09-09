@@ -2,7 +2,7 @@ package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -36,7 +36,6 @@ public class CofactorCommentBuilderTest {
         assertEquals(0, comment.getCofactors().size());
         assertFalse(comment.getNote() != null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -56,7 +55,6 @@ public class CofactorCommentBuilderTest {
         assertEquals(cofactor, comment.getCofactors().get(0));
         assertFalse(comment.getNote() != null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -79,7 +77,6 @@ public class CofactorCommentBuilderTest {
         assertNotNull(comment.getNote());
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test

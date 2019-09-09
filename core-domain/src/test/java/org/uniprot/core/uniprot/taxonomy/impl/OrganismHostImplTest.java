@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 
 import java.util.Arrays;
@@ -18,7 +18,6 @@ public class OrganismHostImplTest {
         assertEquals(scientificName, organism.getScientificName());
         assertEquals("", organism.getCommonName());
         assertEquals(0, organism.getSynonyms().size());
-        TestHelper.verifyJson(organism);
     }
 
     @Test
@@ -29,7 +28,6 @@ public class OrganismHostImplTest {
         assertEquals(scientificName, organism.getScientificName());
         assertEquals(commonName, organism.getCommonName());
         assertEquals(0, organism.getSynonyms().size());
-        TestHelper.verifyJson(organism);
     }
 
     @Test
@@ -50,7 +48,5 @@ public class OrganismHostImplTest {
         assertEquals(scientificName, organism.getScientificName());
         assertEquals(commonName, organism.getCommonName());
         assertEquals(synonyms, organism.getSynonyms());
-
-        TestHelper.verifyJson(organism);
     }
 }

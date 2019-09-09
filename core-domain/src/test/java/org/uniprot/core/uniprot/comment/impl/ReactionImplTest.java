@@ -3,7 +3,7 @@ package org.uniprot.core.uniprot.comment.impl;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.uniprot.comment.Reaction;
@@ -34,7 +34,6 @@ class ReactionImplTest {
         assertEquals(name, reaction.getName());
         assertEquals(ecNumber, reaction.getEcNumber());
         assertEquals(references, reaction.getReactionReferences());
-        TestHelper.verifyJson(reaction);
     }
 
     @Test
@@ -47,7 +46,6 @@ class ReactionImplTest {
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
         assertTrue(reaction.getReactionReferences().isEmpty());
-        TestHelper.verifyJson(reaction);
     }
 
     @Test
@@ -61,7 +59,6 @@ class ReactionImplTest {
         assertEquals(name, reaction.getName());
         assertEquals(ecNumber, reaction.getEcNumber());
         assertTrue(reaction.getReactionReferences().isEmpty());
-        TestHelper.verifyJson(reaction);
     }
 
     @Test
@@ -82,7 +79,6 @@ class ReactionImplTest {
         assertEquals(name, reaction.getName());
         assertEquals(null, reaction.getEcNumber());
         assertEquals(references, reaction.getReactionReferences());
-        TestHelper.verifyJson(reaction);
     }
 
     private DBCrossReference<ReactionReferenceType> xref(ReactionReferenceType type, String id) {

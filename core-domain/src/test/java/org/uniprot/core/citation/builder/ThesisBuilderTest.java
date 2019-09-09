@@ -1,7 +1,6 @@
 package org.uniprot.core.citation.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.Thesis;
 
@@ -21,7 +20,6 @@ public class ThesisBuilderTest extends AbstractCitationBuilderTest {
         assertEquals(institute, citation.getInstitute());
         assertEquals(address, citation.getAddress());
         this.verifyCitation(citation, CitationType.THESIS);
-        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -32,7 +30,6 @@ public class ThesisBuilderTest extends AbstractCitationBuilderTest {
         Thesis citation = builder.build();
         assertEquals(CitationType.THESIS, citation.getCitationType());
         assertEquals(institute, citation.getInstitute());
-        TestHelper.verifyJson(citation);
     }
 
     @Test
@@ -43,6 +40,5 @@ public class ThesisBuilderTest extends AbstractCitationBuilderTest {
         Thesis citation = builder.build();
         assertEquals(CitationType.THESIS, citation.getCitationType());
         assertEquals(address, citation.getAddress());
-        TestHelper.verifyJson(citation);
     }
 }

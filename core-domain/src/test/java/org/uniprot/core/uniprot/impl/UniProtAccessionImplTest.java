@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.UniProtAccession;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +14,6 @@ public class UniProtAccessionImplTest {
         UniProtAccession accession = new UniProtAccessionImpl(val);
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
-        TestHelper.verifyJson(accession);
     }
 
     @Test
@@ -24,7 +23,6 @@ public class UniProtAccessionImplTest {
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
         assertTrue(accession.isValidAccession());
-        TestHelper.verifyJson(accession);
     }
 
     @Test
@@ -34,7 +32,6 @@ public class UniProtAccessionImplTest {
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
         assertTrue(accession.isValidAccession());
-        TestHelper.verifyJson(accession);
     }
 
     @Test
@@ -44,7 +41,6 @@ public class UniProtAccessionImplTest {
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
         assertTrue(accession.isValidAccession());
-        TestHelper.verifyJson(accession);
     }
 
     @Test

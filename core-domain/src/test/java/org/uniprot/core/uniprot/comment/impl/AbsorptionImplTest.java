@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.Absorption;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.builder.AbsorptionBuilder;
@@ -27,7 +27,6 @@ class AbsorptionImplTest {
         assertFalse(absorption.isApproximate());
         assertEquals(note, absorption.getNote());
         assertEquals(evidences, absorption.getEvidences());
-        TestHelper.verifyJson(absorption);
     }
 
     @Test
@@ -44,6 +43,5 @@ class AbsorptionImplTest {
         assertTrue(absorption.isApproximate());
         assertEquals(note, absorption.getNote());
         assertTrue(absorption.getEvidences().isEmpty());
-        TestHelper.verifyJson(absorption);
     }
 }

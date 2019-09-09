@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 
@@ -20,7 +20,6 @@ public class EvidencedValueImplTest {
         EvidencedValueImpl evidencedValue = new EvidencedValueImpl(value, evidences);
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
-        TestHelper.verifyJson(evidencedValue);
     }
 
     @Test
@@ -36,6 +35,5 @@ public class EvidencedValueImplTest {
         EvidencedValueImpl evidencedValue = new EvidencedValueImpl(value, evidences);
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
-        TestHelper.verifyJson(evidencedValue);
     }
 }

@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -37,7 +37,6 @@ public class APCommentBuilderTest {
         assertEquals(0, comment.getIsoforms().size());
         //   assertFalse(comment.getNote().isPresent());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -53,7 +52,6 @@ public class APCommentBuilderTest {
         assertEquals(2, comment.getEvents().size());
         assertEquals(1, comment.getIsoforms().size());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -73,7 +71,6 @@ public class APCommentBuilderTest {
         assertEquals(1, comment.getIsoforms().size());
         assertNotNull(comment.getNote());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test

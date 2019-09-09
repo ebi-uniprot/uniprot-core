@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.KineticParametersBuilder;
 import org.uniprot.core.uniprot.comment.builder.MaximumVelocityBuilder;
@@ -28,7 +28,6 @@ class KineticParametersImplTest {
         assertEquals(unit, maxVelocity.getUnit());
         assertEquals(enzyme, maxVelocity.getEnzyme());
         assertEquals(2, maxVelocity.getEvidences().size());
-        TestHelper.verifyJson(maxVelocity);
     }
 
     @Test
@@ -43,7 +42,6 @@ class KineticParametersImplTest {
         assertEquals(unit, maxVelocity.getUnit());
         assertEquals(enzyme, maxVelocity.getEnzyme());
         assertEquals(0, maxVelocity.getEvidences().size());
-        TestHelper.verifyJson(maxVelocity);
     }
 
     @Test
@@ -56,8 +54,6 @@ class KineticParametersImplTest {
         assertEquals(unit, mconstant.getUnit());
         assertEquals(substrate, mconstant.getSubstrate());
         assertEquals(2, mconstant.getEvidences().size());
-
-        TestHelper.verifyJson(mconstant);
     }
 
     @Test
@@ -70,8 +66,6 @@ class KineticParametersImplTest {
         assertEquals(unit, mconstant.getUnit());
         assertEquals(substrate, mconstant.getSubstrate());
         assertEquals(0, mconstant.getEvidences().size());
-
-        TestHelper.verifyJson(mconstant);
     }
 
     @Test
@@ -86,7 +80,6 @@ class KineticParametersImplTest {
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
-        TestHelper.verifyJson(kp);
     }
 
     @Test
@@ -101,7 +94,6 @@ class KineticParametersImplTest {
         assertEquals(0, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
-        TestHelper.verifyJson(kp);
     }
 
     @Test
@@ -116,7 +108,6 @@ class KineticParametersImplTest {
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(1, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
-        TestHelper.verifyJson(kp);
     }
 
     @Test
@@ -131,7 +122,6 @@ class KineticParametersImplTest {
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(0, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
-        TestHelper.verifyJson(kp);
     }
 
     private List<MaximumVelocity> createVelocities() {
