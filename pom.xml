@@ -10,20 +10,17 @@
     <name>UniProt Core Aggregator</name>
 
     <properties>
-        <surefire-version>2.22.1</surefire-version>
-        <failsafe-version>2.22.1</failsafe-version>
-        <mockito-version>1.9.5</mockito-version>
-        <powermock-version>1.6.2</powermock-version>
-        <slf4j.version>1.7.20</slf4j.version>
-        <logback.version>1.1.7</logback.version>
-        <junit.version>4.12</junit.version>
+        <surefire-version>2.22.2</surefire-version>
+        <failsafe-version>2.22.2</failsafe-version>
+        <mockito-version>3.0.0</mockito-version>
+        <slf4j.version>1.7.28</slf4j.version>
+        <logback.version>1.2.3</logback.version>
         <junit-jupiter.version>5.3.2</junit-jupiter.version>
         <hamcrest.version>1.3</hamcrest.version>
-        <guava.version>28.0-jre</guava.version>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <jacoco-maven-plugin.version>0.7.8</jacoco-maven-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <http-uniprot-private-url>http://wwwdev.ebi.ac.uk/uniprot/artifactory</http-uniprot-private-url>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencyManagement>
@@ -58,13 +55,6 @@
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito-version}</version>
-                <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -130,8 +120,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
