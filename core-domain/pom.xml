@@ -5,18 +5,18 @@
     <parent>
         <groupId>org.uniprot</groupId>
         <artifactId>core-parent</artifactId>
-        <version>1.11</version>
+        <version>0.11-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
-    <version>0.11-SNAPSHOT</version>
+    <version>${project.parent.version}</version>
     <artifactId>core-domain</artifactId>
     
     <dependencies>
         <dependency>
             <groupId>org.uniprot</groupId>
             <artifactId>controlled-vocabulary</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

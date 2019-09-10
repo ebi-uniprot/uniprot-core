@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.uniprot</groupId>
         <artifactId>core-parent</artifactId>
-        <version>1.11</version>
+        <version>0.11-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
     <artifactId>ff-parser</artifactId>
-    <version>0.11-SNAPSHOT</version>
+    <version>${project.parent.version}</version>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>org.uniprot</groupId>
             <artifactId>core-domain</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.uniprot</groupId>
             <artifactId>controlled-vocabulary</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
