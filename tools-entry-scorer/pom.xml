@@ -5,12 +5,12 @@
     <parent>
         <artifactId>core-parent</artifactId>
         <groupId>org.uniprot</groupId>
-        <version>1.0</version>
+        <version>1.11</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tools-entry-scorer</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.11-SNAPSHOT</version>
     
     <dependencies>
         <dependency>
