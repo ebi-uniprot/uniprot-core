@@ -1,14 +1,11 @@
 package org.uniprot.core.cv.ec;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.ec.ECRepo;
-import org.uniprot.core.cv.ec.ECRepoFactory;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created 20/06/19
