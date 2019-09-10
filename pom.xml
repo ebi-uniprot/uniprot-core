@@ -21,6 +21,19 @@
         <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
         <http-uniprot-private-url>http://wwwdev.ebi.ac.uk/uniprot/artifactory</http-uniprot-private-url>
         <java.version>11</java.version>
+        <skipITs>false</skipITs>
+        <skipUTs>false</skipUTs>
+
+        <!-- Test coverage -->
+        <jacoco.outputDir>${project.build.directory}</jacoco.outputDir>
+
+        <!-- Unit test report path -->
+        <jacoco.out.ut.file>jacoco-ut.exec</jacoco.out.ut.file>
+        <jacoco.reportPath>${jacoco.outputDir}/${jacoco.out.ut.file}</jacoco.reportPath>
+
+        <!-- Integration test report path -->
+        <jacoco.out.it.file>jacoco-it.exec</jacoco.out.it.file>
+        <jacoco.itReportPath>${jacoco.outputDir}/${jacoco.out.it.file}</jacoco.itReportPath>
     </properties>
 
     <dependencyManagement>
@@ -124,6 +137,35 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!-- Exclude integration tests from unit test run -->
+                    <excludes>
+                        <skipITs>${skipUTs}</skipITs>
+                        <exclude>**/*IT.java</exclude>
+                    </excludes>
+                    <argLine>${jacoco.agent.ut.arg}</argLine>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <configuration>
+                    <skipITs>${skipITs}</skipITs>
+                    <argLine>${jacoco.agent.it.arg}</argLine>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>${jacoco-maven-plugin.version}</version>
@@ -153,35 +195,6 @@
                             <propertyName>jacoco.agent.it.arg</propertyName>
                             <append>true</append>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <!-- Exclude integration tests from unit test run -->
-                    <excludes>
-                        <skipITs>${skipUTs}</skipITs>
-                        <exclude>**/*IT.java</exclude>
-                    </excludes>
-                    <argLine>${jacoco.agent.ut.arg}</argLine>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <configuration>
-                    <skipITs>${skipITs}</skipITs>
-                    <argLine>${jacoco.agent.it.arg}</argLine>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
@@ -221,42 +234,6 @@
                     <url>${http-uniprot-private-url}/snapshot</url>
                 </snapshotRepository>
             </distributionManagement>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <systemProperties>
-                                <property>
-                                    <name>http.proxyHost</name>
-                                    <value>${http.proxyHost}</value>
-                                </property>
-                                <property>
-                                    <name>http.proxyPort</name>
-                                    <value>${http.proxyPort}</value>
-                                </property>
-                            </systemProperties>
-                        </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-failsafe-plugin</artifactId>
-                        <configuration>
-                            <systemProperties>
-                                <property>
-                                    <name>http.proxyHost</name>
-                                    <value>${http.proxyHost}</value>
-                                </property>
-                                <property>
-                                    <name>http.proxyPort</name>
-                                    <value>${http.proxyPort}</value>
-                                </property>
-                            </systemProperties>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 

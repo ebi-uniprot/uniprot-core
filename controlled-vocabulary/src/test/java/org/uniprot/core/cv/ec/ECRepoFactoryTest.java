@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.ec;
 
+import static org.junit.Assert.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.ec.ECRepo;
 import org.uniprot.core.cv.ec.ECRepoFactory;
@@ -26,25 +28,25 @@ class ECRepoFactoryTest {
 
         // prove enzyme class file was read
         final String id1 = "1.-.-.-";
-        ecRepo.getEC(id1).map(ec -> {
+        assertTrue(ecRepo.getEC(id1).map(ec -> {
             assertThat(ec.id(), is(id1));
             assertThat(ec.label(), is("Oxidoreductases"));
             return true;
-        }).orElseThrow(IllegalStateException::new);
+        }).orElse(false));
 
         final String id2 = "1.1.99.-";
-        ecRepo.getEC(id2).map(ec -> {
+        assertTrue(ecRepo.getEC(id2).map(ec -> {
             assertThat(ec.id(), is(id2));
             assertThat(ec.label(), is("With other acceptors"));
             return true;
-        }).orElseThrow(IllegalStateException::new);
+        }).orElse(false));
 
         // prove enzyme dat file was read
         final String id3 = "1.1.1.2";
-        ecRepo.getEC(id3).map(ec -> {
+        assertTrue(ecRepo.getEC(id3).map(ec -> {
             assertThat(ec.id(), is(id3));
             assertThat(ec.label(), is("Alcohol dehydrogenase (NADP(+))"));
             return true;
-        }).orElseThrow(IllegalStateException::new);
+        }).orElse(false));
     }
 }
