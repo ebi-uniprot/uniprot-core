@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-class GeneLocationTest {
+public class GeneLocationTest {
 
 
     @Test
@@ -41,7 +41,7 @@ class GeneLocationTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000255","PROSITE-ProRule","PRU10025");
     }
 
-    static GeneLocation getGeneLocation() {
+    public static GeneLocation getGeneLocation() {
         return new GeneLocationBuilder()
                 .geneEncodingType(GeneEncodingType.CYANELLE_PLASTID)
                 .value("geneLocation value")

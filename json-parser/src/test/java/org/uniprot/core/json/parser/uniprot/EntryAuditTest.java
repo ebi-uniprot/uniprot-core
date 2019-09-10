@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author lgonzales
  */
-class EntryAuditTest {
+public class EntryAuditTest {
 
     @Test
     void testEntryAudit() {
@@ -30,7 +30,7 @@ class EntryAuditTest {
         assertEquals(5,jsonNode.get("sequenceVersion").asInt());
     }
 
-    static EntryAudit getEntryAudit() {
+    public static EntryAudit getEntryAudit() {
         LocalDate firstPublicDate = LocalDate.of(2015, Month.AUGUST, 2);
         LocalDate lastAnnotationUpdateDate = LocalDate.of(2016, Month.APRIL, 24);
         LocalDate lastSequenceUpdateDate = LocalDate.of(2017, Month.JANUARY, 21);

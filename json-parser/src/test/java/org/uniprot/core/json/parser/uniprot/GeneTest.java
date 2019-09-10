@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-class GeneTest {
+public class GeneTest {
 
     @Test
     void testGeneSimple() {
@@ -51,7 +51,7 @@ class GeneTest {
         ValidateJson.validateValueEvidence(jsonNode.get("orfNames").get(0),"some orf","ECO:0000269","PubMed","11389730");
     }
 
-    static Gene createCompleteGene(){
+    public static Gene createCompleteGene(){
         List<Evidence> geneNameEvidences = CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001360");
         GeneName geneName = new GeneNameBuilder().value("some Gene").evidences(geneNameEvidences).build();
 

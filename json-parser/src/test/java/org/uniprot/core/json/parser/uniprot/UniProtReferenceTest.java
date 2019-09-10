@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-class UniProtReferenceTest {
+public class UniProtReferenceTest {
 
     @Test
     void testUniProtReferenceSimple() {
@@ -57,7 +57,7 @@ class UniProtReferenceTest {
 
     }
 
-    static List<UniProtReference> getUniProtReferences() {
+    public static List<UniProtReference> getUniProtReferences() {
         List<UniProtReference> uniProtReferences = new ArrayList<>();
         uniProtReferences.add(getUniProtReference(BookTest.getBook()));
         uniProtReferences.add(getUniProtReference(ElectronicArticleTest.getElectronicArticle()));

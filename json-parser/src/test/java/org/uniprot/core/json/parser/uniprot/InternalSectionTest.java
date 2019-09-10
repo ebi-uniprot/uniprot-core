@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-class InternalSectionTest {
+public class InternalSectionTest {
 
     @Test
     void testInternalSectionSimple() {
@@ -62,7 +62,7 @@ class InternalSectionTest {
 
     }
 
-    static InternalSection getInternalSection() {
+    public static InternalSection getInternalSection() {
         InternalLine internalLine = new InternalLineBuilder(InternalLineType.DR,"line value").build();
 
         EvidenceLine evidenceLine = new EvidenceLineBuilder()

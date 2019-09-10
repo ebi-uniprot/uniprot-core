@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author lgonzales
  */
-class UniProtAccessionTest {
+public class UniProtAccessionTest {
 
     @Test
     void testUniProtAccession() {
@@ -24,7 +24,7 @@ class UniProtAccessionTest {
         assertEquals("P21802",jsonNode.asText());
     }
 
-    static UniProtAccession getUniProtAccession() {
+    public static UniProtAccession getUniProtAccession() {
         return new UniProtAccessionBuilder("P21802").build();
     }
 }

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-class KeywordTest {
+public class KeywordTest {
 
     @Test
     void testKeywordSimple() {
@@ -44,7 +44,7 @@ class KeywordTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000255","PROSITE-ProRule","PRU10025");
     }
 
-    static Keyword getKeyword() {
+    public static Keyword getKeyword() {
         return new KeywordBuilder()
                 .id("KW-11111")
                 .value("keyword value")

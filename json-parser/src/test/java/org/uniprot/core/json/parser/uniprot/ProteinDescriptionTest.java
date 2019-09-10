@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-class ProteinDescriptionTest {
+public class ProteinDescriptionTest {
 
     @Test
     void testProteinDescriptionSimple() {
@@ -136,7 +136,7 @@ class ProteinDescriptionTest {
     }
 
 
-    static ProteinDescription getProteinDescription(){
+    public static ProteinDescription getProteinDescription(){
         Name allergenName = createName("allergen","PRU10023");
         Name biotechName = createName("biotech","PRU10024");
         Name antigenName = createName("cd antigen","PRU10025");

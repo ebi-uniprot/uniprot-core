@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  *
  * @author lgonzales
  */
-class UniProtDBCrossReferenceTest {
+public class UniProtDBCrossReferenceTest {
 
     @Test
     void testUniProtDBCrossReferenceSimple() {
@@ -69,7 +69,7 @@ class UniProtDBCrossReferenceTest {
 
     }
 
-    static UniProtDBCrossReference getUniProtDBCrossReference() {
+    public static UniProtDBCrossReference getUniProtDBCrossReference() {
         Property property = new Property("ProteinId","description value");
         return new UniProtDBCrossReferenceBuilder()
                 .id("id value")

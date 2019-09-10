@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * @author lgonzales
  */
-class OrganimsTest {
+public class OrganimsTest {
 
     @Test
     void testOrganismSimple() {
@@ -56,7 +56,7 @@ class OrganimsTest {
         ValidateJson.validateEvidence(jsonNode.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001363");
     }
 
-    static Organism getOrganism() {
+    public static Organism getOrganism() {
         return new OrganismBuilder()
                 .taxonId(9606L)
                 .scientificName("scientific name")

@@ -11,7 +11,7 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class OrganimHostTest {
+public class OrganimHostTest {
 
 
     @Test
@@ -46,7 +46,7 @@ class OrganimHostTest {
         assertEquals("synonyms 1",jsonNode.get("synonyms").get(0).asText());
     }
 
-    static OrganismHost getOrganismHost() {
+    public static OrganismHost getOrganismHost() {
         return new OrganismHostBuilder()
                 .taxonId(9606L)
                 .scientificName("scientific name")
