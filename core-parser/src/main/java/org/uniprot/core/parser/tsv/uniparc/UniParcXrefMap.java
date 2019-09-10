@@ -39,14 +39,14 @@ public class UniParcXrefMap implements NamedValueMap {
 		String genes=getData(UniParcDBCrossReference.PROPERTY_GENE_NAME);;
 		String accessions = getUniProtAccessions();
 		String proteomes = getProteomes();
-		LocalDate firstSeen = getFirstSeenDate();
-		LocalDate lastSeen = getLastSeenDate();
+		Optional<LocalDate> firstSeen = getFirstSeenDate();
+		Optional<LocalDate> lastSeen = getLastSeenDate();
 		map.put(FIELDS.get(0), genes);
 		map.put(FIELDS.get(1), proteins);
 		map.put(FIELDS.get(2), proteomes);
 		map.put(FIELDS.get(3), accessions);
-		map.put(FIELDS.get(4), firstSeen.toString());
-		map.put(FIELDS.get(5), lastSeen.toString());
+		map.put(FIELDS.get(4), firstSeen.map(val ->val.toString()).orElse(""));
+		map.put(FIELDS.get(5), lastSeen.map(val ->val.toString()).orElse(""));
 		return map;
 	}
 	
@@ -54,26 +54,24 @@ public class UniParcXrefMap implements NamedValueMap {
 		return fields.stream().anyMatch(FIELDS::contains);
 	}
 	
-	private LocalDate getFirstSeenDate() {
+	private Optional<LocalDate> getFirstSeenDate() {
 		return xrefs.stream().map(val ->val.getCreated())
 		.min( Comparator.comparing( LocalDate::toEpochDay ) )
-        .get();
+        ;
 	}
-	private LocalDate getLastSeenDate() {
+	private Optional<LocalDate> getLastSeenDate() {
 		return xrefs.stream().map(val ->val.getLastUpdated())
-		.max( Comparator.comparing( LocalDate::toEpochDay ) )
-        .get();
+		.max( Comparator.comparing( LocalDate::toEpochDay ) );
 	}
 	
 	
 	private String getProteomes() {
 		return xrefs.stream().map(this::getProteome)
-				.filter(val ->val.isPresent())
-				.map(val->val.get())
+				.filter(val ->val !=null)
 				.collect(Collectors.joining(DELIMITER));
 	}
 	
-	private Optional<String> getProteome(UniParcDBCrossReference xref) {
+	private String getProteome(UniParcDBCrossReference xref) {
 		Optional<Property> opUpid = getProperty(xref, UniParcDBCrossReference.PROPERTY_PROTEOME_ID);
 		if(opUpid.isPresent()) {
 			Optional<Property> opPComponent = getProperty(xref, UniParcDBCrossReference.PROPERTY_COMPONENT);
@@ -81,27 +79,25 @@ public class UniParcXrefMap implements NamedValueMap {
 			if(opPComponent.isPresent()) {
 				proteome +=":" + opPComponent.get().getValue();
 			}
-			return Optional.of(proteome);
+			return proteome;
 		}
-		return Optional.empty();
+		return null;
 	}
 	private String getUniProtAccessions(){
-		return xrefs.stream().map(this::getUniProtAccession)
-		.filter(val ->val.isPresent())
-		.map(val->val.get())
+		return xrefs.stream().map(this::getUniProtAccession)			
+		.filter(val -> val!=null)
 		.collect(Collectors.joining(DELIMITER));
 	}
-	private Optional<String> getUniProtAccession(UniParcDBCrossReference xref) {
-
+	private String getUniProtAccession(UniParcDBCrossReference xref) {
 		UniParcDatabaseType type = xref.getDatabaseType();
 		if((type==UniParcDatabaseType.SWISSPROT) || (type ==UniParcDatabaseType.TREMBL) || (type ==UniParcDatabaseType.SWISSPROT_VARSPLIC)) {
 			 String accession= xref.getId();
 			if(!xref.isActive()) {
 				accession +="." + xref.getVersion() + " (obsolete)";
 			}
-			return Optional.of(accession);
+			return accession;
 		}
-		return Optional.empty();
+		return null;
 	}
 	private String getData(String propertyType) {
 		return xrefs.stream().map(val -> getProperty(val, propertyType))

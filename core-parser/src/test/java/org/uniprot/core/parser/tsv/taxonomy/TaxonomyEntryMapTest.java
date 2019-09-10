@@ -14,10 +14,13 @@ import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TaxonomyEntryMapTest {
@@ -32,8 +35,9 @@ class TaxonomyEntryMapTest {
         mappedEntries.remove("id");
         assertEquals("100",mappedEntries.get("parent"));
         mappedEntries.remove("parent");
-
-        mappedEntries.values().stream().peek(value -> assertEquals("",value));
+        List<String> result =
+        mappedEntries.values().stream().filter(val ->!val.isEmpty()).collect(Collectors.toList());
+        assertTrue(result.isEmpty());
     }
 
     @Test

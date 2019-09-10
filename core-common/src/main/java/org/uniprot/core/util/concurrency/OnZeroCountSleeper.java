@@ -74,7 +74,7 @@ public class OnZeroCountSleeper {
             try {
                 Thread.sleep(SLEEP_MILLIS);
             } catch (InterruptedException e) {
-                // do nothing
+                LOGGER.error("User interrupted.", e);
             }
             timeoutMillisCounter += SLEEP_MILLIS;
         }
