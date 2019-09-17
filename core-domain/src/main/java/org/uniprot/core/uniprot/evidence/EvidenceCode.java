@@ -1,18 +1,18 @@
 package org.uniprot.core.uniprot.evidence;
 
+import org.uniprot.core.util.EnumDisplay;
+
 import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
-import org.uniprot.core.util.EnumDisplay;
-
 public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     ECO_0000269("ECO:0000269", "Experimental", "Literature reference",
                 Arrays.asList("x Publication(s) with 'Manual assertion based on experiment in'"),
-                EnumSet.of(Category.EXPERMIENTAL, Category.MANUAL)),
+                EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL)),
     ECO_0000303("ECO:0000303", "Non-traceable author statement", "Literature reference",
                 Arrays.asList("x Publication(s) with 'Manual assertion based on opinion in'"),
-                EnumSet.of(Category.EXPERMIENTAL, Category.MANUAL)),
+                EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL)),
     ECO_0000305("ECO:0000305", "Curator inference", "Literature reference (optional)",
                 Arrays.asList("Curated", "x Publication(s) with 'Manual assertion inferred by curator from'"),
                 EnumSet.of(Category.MANUAL)),
@@ -98,6 +98,6 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
 
 
     public enum Category {
-        EXPERMIENTAL, MANUAL, AUTOMATIC
+        EXPERIMENTAL, MANUAL, AUTOMATIC
     }
 }
