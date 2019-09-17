@@ -1,16 +1,16 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.flatfile.parser.impl.sq.SQLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SQLineBuildTest {
+class SQLineBuildTest {
     @Test
-    public void test() {
+    void test() {
         String sqLine = "SQ   SEQUENCE   504 AA;  54443 MW;  F994A9048C816394 CRC64;\n" +
                 "     MTPTLAALLC LGLSLGPRTH VQAGPFPKPT LWAEPGSVIS WGSPVTIWCQ GSLEAQEYRL\n" +
                 "     DKEGSPEPWD RNNPLEPKNK ARFSIPSITE HHAGRYRCHY YSSAGWSEPS DPLELVMTGA\n" +

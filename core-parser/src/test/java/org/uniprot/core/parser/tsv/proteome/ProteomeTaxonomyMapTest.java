@@ -1,17 +1,14 @@
 package org.uniprot.core.parser.tsv.proteome;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.taxonomy.Taxonomy;
+import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.parser.tsv.proteome.ProteomeTaxonomyMap;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *

@@ -9,7 +9,7 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
 import org.uniprot.core.xml.uniprot.UniProtCrossReferenceConverter;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class UniProtCrossReferenceConverterTest {
     private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();

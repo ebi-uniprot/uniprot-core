@@ -1,7 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb.feature;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.UniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
@@ -18,143 +18,143 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FeatureScoredTest {
+class FeatureScoredTest {
 
     private static final FtLineTransformer TRANSFORMER = new FtLineTransformer();
 
     @Test
-    public void shouldModResScore3() throws Exception {
+    void shouldModResScore3() throws Exception {
         String line = "FT   MOD_RES      87     87       Phosphoserine. {ECO:0000256|HAMAP-Rule:MF_01146}.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldActiveSiteScore9() throws Exception {
+    void shouldActiveSiteScore9() throws Exception {
         String line = "FT   ACT_SITE       79    197       Response regulatory.\n";
         testFeatureScore(line, 9.0);
     }
 
     @Test
-    public void shouldCarbohydScore3() throws Exception {
+    void shouldCarbohydScore3() throws Exception {
         String line = "FT   CARBOHYD    100    100       O-linked (Gal...). {ECO:0000256|HAMAP-Rule:MF_01146}.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldChainScore1() throws Exception {
+    void shouldChainScore1() throws Exception {
         String line = "FT   CHAIN        61    386       ATP synthase gamma chain 2.\n" +
                 "FT                                /FTId=PRO_0000002675.\n";
         testFeatureScore(line, 1.0);
     }
 
     @Test
-    public void shouldCoiledScore3() throws Exception {
+    void shouldCoiledScore3() throws Exception {
         String line = "FT   COILED      104    217       {ECO:0000256}.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldCompbiasScore3() throws Exception {
+    void shouldCompbiasScore3() throws Exception {
         String line = "FT   COMPBIAS     17     96       Asp-rich (acidic).\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldConflictScore0() throws Exception {
+    void shouldConflictScore0() throws Exception {
         String line = "FT   CONFLICT     3     4       CD -> VW (in Ref. 3).\n";
         testFeatureScore(line, 0.0);
     }
 
     @Test
-    public void shouldCrosslinkScore9() throws Exception {
+    void shouldCrosslinkScore9() throws Exception {
         String line = "FT   CROSSLNK     83     83       Glycyl lysine isopeptide (Gly-Lys)\n" +
                 "FT                                (with M-243).\n";
         testFeatureScore(line, 9.0);
     }
 
     @Test
-    public void shouldDnaBindScore3() throws Exception {
+    void shouldDnaBindScore3() throws Exception {
         String line = "FT   DNA_BIND     54     77       H-T-H motif. {ECO:0000256}.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldDomainScore3() throws Exception {
+    void shouldDomainScore3() throws Exception {
         String line = "FT   DOMAIN      106   >131       EF-hand 4.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldHelixScore0() throws Exception {
+    void shouldHelixScore0() throws Exception {
         String line = "FT   HELIX       710    736\n";
         testFeatureScore(line, 0.0);
     }
 
     @Test
-    public void shouldInitMetScore9() throws Exception {
+    void shouldInitMetScore9() throws Exception {
         String line = "FT   INIT_MET     50     50       For isoform HLF36 and isoform HLF17.\n";
         testFeatureScore(line, 9.0);
     }
 
     @Test
-    public void shouldLipidScore3() throws Exception {
+    void shouldLipidScore3() throws Exception {
         String line = "FT   LIPID         1      1       N-myristoyl glycine.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldMetalScore3() throws Exception {
+    void shouldMetalScore3() throws Exception {
         String line = "FT   METAL        96     96       Cobalt 1 and 2. {ECO:0000256|HAMAP-Rule:MF_01146}.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldMotifScore1() throws Exception {
+    void shouldMotifScore1() throws Exception {
         String line = "FT   MOTIF        50     58       Effector region. {ECO:0000256|HAMAP-Rule:MF_01146}.\n";
         testFeatureScore(line, 1.0);
     }
 
     @Test
-    public void shouldMutagenScore3() throws Exception {
+    void shouldMutagenScore3() throws Exception {
         String line = "FT   MUTAGEN     2    2       B->A: No activity.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldNPBindScore3() throws Exception {
+    void shouldNPBindScore3() throws Exception {
         String line = "FT   NP_BIND       9     14       FAD (ADP part). {ECO:0000256|HAMAP-Rule:MF_01146}.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldPeptideScore1() throws Exception {
+    void shouldPeptideScore1() throws Exception {
         String line = "FT   PEPTIDE     110    123       Urotensin-2.\n";
         testFeatureScore(line, 1.0);
     }
 
     @Test
-    public void shouldPropepScore3() throws Exception {
+    void shouldPropepScore3() throws Exception {
         String line = "FT   PROPEP       20     37\n";
         testFeatureScore(line, 3.0);
 
     }
 
     @Test
-    public void shouldTopoDomScore3() throws Exception {
+    void shouldTopoDomScore3() throws Exception {
         String line = "FT   TOPO_DOM    164    176       Cytoplasmic. {ECO:0000256}.\n";
         testFeatureScore(line, 3.0);
     }
 
     @Test
-    public void shouldVariantScore2() throws Exception {
+    void shouldVariantScore2() throws Exception {
         String line = "FT   VARIANT     3    3       C -> H (in homocystinuria; mild form).\n";
         testFeatureScore(line, 2.0);
     }
 
     @Test
-    public void shouldVariantScore24() throws Exception {
+    void shouldVariantScore24() throws Exception {
         String line = "FT   VARIANT      48     48       A -> S (in allele B*1503).\n" +
                 "FT                                /FTId=VAR_016365.\n" +
                 "FT   VARIANT      69     70       MA -> EE (in allele B*1503).\n" +
@@ -198,7 +198,7 @@ public class FeatureScoredTest {
     }
 
     @Test
-    public void shouldVarSeqScore0() throws Exception {
+    void shouldVarSeqScore0() throws Exception {
         String line = "FT   VAR_SEQ      1     55       Missing (in isoform 4).\n" +
                 "FT                                /FTId=VSP_005610.\n";
         testFeatureScore(line, 0.0);
@@ -206,27 +206,27 @@ public class FeatureScoredTest {
     }
 
     @Test
-    public void shouldStrandScore0() throws Exception {
+    void shouldStrandScore0() throws Exception {
         String line = "FT   STRAND      465    466\n";
         testFeatureScore(line, 0.0);
     }
 
     @Test
-    public void shouldTurnScore0() throws Exception {
+    void shouldTurnScore0() throws Exception {
         String line = "FT   TURN      465    466\n";
         testFeatureScore(line, 0.0);
 
     }
 
     @Test
-    public void shouldNonConsScore0() throws Exception {
+    void shouldNonConsScore0() throws Exception {
         String line = "FT   NON_CONS      465    466\n";
         testFeatureScore(line, 0.0);
     }
 
-    @Ignore
+    @Disabled
     @Test
-    public void shouldNonTerScore0() throws Exception {
+    void shouldNonTerScore0() throws Exception {
         List<Feature> features = TRANSFORMER.transformNoHeader("FT   NON_TER      465    466\n");
 
         assertEquals(features.size(), 1);
@@ -237,16 +237,16 @@ public class FeatureScoredTest {
     }
 
     @Test
-    public void shouldIntramemScore3() throws Exception {
+    void shouldIntramemScore3() throws Exception {
         String line = "FT   INTRAMEM    242    261       Pore-forming; Name=Segment H5.\n" +
                 "FT                                {ECO:0000256}.\n";
         testFeatureScore(line, 3.0);
 
     }
 
-    @Ignore
+    @Disabled
     @Test
-    public void shouldIntramem2Score3() throws Exception {
+    void shouldIntramem2Score3() throws Exception {
         List<Feature> features = TRANSFORMER
                 .transformNoHeader("FT   INTRAMEM    108    115       {ECO:0000256|HAMAP-Rule:MF_01146}.\n");
 
@@ -258,7 +258,7 @@ public class FeatureScoredTest {
     }
 
     @Test
-    public void shouldTestScore26() throws Exception {
+    void shouldTestScore26() throws Exception {
         String line = "FT   INIT_MET      1      1       Removed. {ECO:0000256|HAMAP-Rule:MF_01146}.\n" +
                 "FT   CHAIN         2    271       Aquaporin-1.\n" +
                 "FT                                /FTId=PRO_0000063919.\n" +

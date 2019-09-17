@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.feature.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
 
@@ -20,7 +20,6 @@ class FeatureIdImplTest {
     void testJsonConversion() {
         String value = "PRO_123";
         FeatureIdImpl featureId = new FeatureIdImpl(value);
-        TestHelper.verifyJson(featureId);
     }
 
     @Test

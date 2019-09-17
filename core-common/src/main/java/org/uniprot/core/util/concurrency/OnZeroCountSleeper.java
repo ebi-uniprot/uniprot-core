@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class OnZeroCountSleeper {
     private static final Logger LOGGER = LoggerFactory.getLogger(OnZeroCountSleeper.class);
     private static final int SLEEP_MILLIS = 5 * 1000;
-    private static final int TIMEOUT_MILLIS_MAX = 60 * 1000;
+    private static final int TIMEOUT_MILLIS_MAX = 10 * 60 * 1000;
     private final int timeoutMillisMax;
     private final AtomicInteger counter;
 

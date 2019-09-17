@@ -1,6 +1,6 @@
 package org.uniprot.core.json.parser.proteome;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.UniProtEntryType;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class ProteinTest {
+class ProteinTest {
 	@Test 
 	void testProtein() {
 	String accession ="P12345";

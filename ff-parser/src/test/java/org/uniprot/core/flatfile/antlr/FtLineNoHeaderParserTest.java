@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineFormater;
@@ -10,11 +10,11 @@ import org.uniprot.core.flatfile.parser.impl.ft.FtLineObject.FTType;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FtLineNoHeaderParserTest {
+class FtLineNoHeaderParserTest {
 	@Test
-	public void testChain() {
+	void testChain() {
 		 String ftLines = "CHAIN        20    873       104 kDa microneme/rhoptry antigen.\n"
 				 +"/FTId=PRO_0000232680.\n"
                  ;
@@ -33,7 +33,7 @@ public class FtLineNoHeaderParserTest {
 		assertEquals(ftid, ft.ftId);	
 	}
 	@Test
-	public void testNonTer() {
+	void testNonTer() {
 		 String ftLines ="NON_TER 1 1";
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -44,7 +44,7 @@ public class FtLineNoHeaderParserTest {
 		 verify(obj.fts.get(0), FTType.NON_TER, "1", "1", null, null);		 
 	}
 	@Test
-	public void testChain2() {
+	void testChain2() {
 		 String ftLines ="CHAIN ? 121 Potential.\n/FTId=PRO_5001267722.";
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -56,7 +56,7 @@ public class FtLineNoHeaderParserTest {
 	}
 	
 	@Test
-	public void testBinding(){
+	void testBinding(){
 		 String ftLines ="BINDING 138 138 NAD(P)HX; via amide nitrogen.";
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -68,7 +68,7 @@ public class FtLineNoHeaderParserTest {
 	}
 	
 	@Test
-	public void testSignal(){
+	void testSignal(){
 		 String ftLines ="SIGNAL <1 33 Potential.";
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -81,7 +81,7 @@ public class FtLineNoHeaderParserTest {
 	
 	
 	@Test
-	public void testCONFLICT(){
+	void testCONFLICT(){
 		 String ftLines ="CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633).";
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -93,7 +93,7 @@ public class FtLineNoHeaderParserTest {
 	}
 	
 	@Test
-	public void testVARIANT(){
+	void testVARIANT(){
 		 String ftLines ="VARIANT 421 421 C -> R (in GS; dbSNP:rs28936387).\n/FTId=VAR_007115.";
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -105,7 +105,7 @@ public class FtLineNoHeaderParserTest {
 	}
 	
 	@Test
-	public void testMultiFt() {
+	void testMultiFt() {
 		 String ftLines = "VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
 				 +"DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in\n"
 				 +"isoform 2).\n"
@@ -130,7 +130,7 @@ public class FtLineNoHeaderParserTest {
 		 
 	}
 	@Test
-	public void testWithEvidence3() {
+	void testWithEvidence3() {
 		 String ftLines = "REGION      237    240       Sulfate 1 binding.\n"
 				 +"REGION      275    277       Phosphate 2 binding. {ECO:0000006|PubMed:20858735, ECO:0000006}.\n"
                  ;
@@ -147,7 +147,7 @@ public class FtLineNoHeaderParserTest {
 		 verifyEvidences(obj, obj.fts.get(1),  Arrays.asList(new String[] {"ECO:0000006|PubMed:20858735", "ECO:0000006"}) );
 	}
 	@Test
-	public void testWithEvidence4() {
+	void testWithEvidence4() {
 		 String ftLines = "TRANSMEM     57     77       Helical; (Potential). {ECO:0000257|HAMAP-\n"
 				 +"Rule:MF_03021}.\n"
                  ;
@@ -162,7 +162,7 @@ public class FtLineNoHeaderParserTest {
 		
 	}
 	@Test
-	public void testWithEvidence() {
+	void testWithEvidence() {
 		 String ftLines = "METAL       186    186       Calcium; via carbonyl oxygen. {ECO:0000006|PubMed:20858735,\n"
 				 +"ECO:0000006|PubMed:23640942}.\n"
                  ;

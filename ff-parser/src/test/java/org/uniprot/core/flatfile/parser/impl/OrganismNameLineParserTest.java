@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 
@@ -10,10 +10,10 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class OrganismNameLineParserTest {
+class OrganismNameLineParserTest {
 
     @Test
-    public void testParseScientificNameOnly() {
+    void testParseScientificNameOnly() {
         String str = "Homo sapiens";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
         assertEquals(str, organism.getScientificName());
@@ -21,7 +21,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testParseScientificNameCommonName() {
+    void testParseScientificNameCommonName() {
         String str = "Homo sapiens (Human)";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
         assertEquals("Homo sapiens", organism.getScientificName());
@@ -31,7 +31,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testParseScientificNameCommonNameSynonyms() {
+    void testParseScientificNameCommonNameSynonyms() {
 
         String str = "Homo sapiens (Human) (Name1, Name2)";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
@@ -42,7 +42,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testCreateWithDot() {
+    void testCreateWithDot() {
         String str = "Roseovarius sp. HI0049";
         String scientificName = "Roseovarius sp. HI0049";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
@@ -54,7 +54,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testCreateWith_() {
+    void testCreateWith_() {
         String str = "Candidatus Heimdallarchaeota archaeon LC_2";
         String scientificName = "Candidatus Heimdallarchaeota archaeon LC_2";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
@@ -67,7 +67,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testCreateWithSlash() {
+    void testCreateWithSlash() {
 
         String str = "Salmonella paratyphi B (strain ATCC BAA-1250 / SPB7)";
 
@@ -80,7 +80,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testStrain() {
+    void testStrain() {
         String str = "Magnaporthe oryzae (strain 70-15 / ATCC MYA-4617 / FGSC 8958) (Rice blast fungus) (Pyricularia oryzae)";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
 
@@ -91,7 +91,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testStrainWithBrakect2() {
+    void testStrainWithBrakect2() {
         String str = "Synechococcus sp. (strain JA-2-3B'a(2-13)) (Cyanobacteria bacterium Yellowstone B-Prime)";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
         assertEquals("Synechococcus sp. (strain JA-2-3B'a(2-13))", organism.getScientificName());
@@ -101,7 +101,7 @@ public class OrganismNameLineParserTest {
     }
 
     @Test
-    public void testIsolate() {
+    void testIsolate() {
         String str = "Variola virus (isolate Human/India/Ind3/1967) (VARV) (Smallpox virus)";
         OrganismName organism = OrganismNameLineParser.createFromOrganismLine(str);
         assertEquals("Variola virus (isolate Human/India/Ind3/1967)", organism.getScientificName());

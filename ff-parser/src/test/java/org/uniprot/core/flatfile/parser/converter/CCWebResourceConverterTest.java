@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.uniprot.comment.Comment;
@@ -9,13 +9,13 @@ import org.uniprot.core.uniprot.comment.WebResourceComment;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CCWebResourceConverterTest {
+class CCWebResourceConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	
 	@Test
-	public void testWebResource(){
+	void testWebResource(){
 		//CC   -!- WEB RESOURCE: Name=CD40Lbase; Note=CD40L defect database;
         //CC       URL="http://bioinf.uta.fi/CD40Lbase/";
 		CcLineObject ccLineO = new CcLineObject();	

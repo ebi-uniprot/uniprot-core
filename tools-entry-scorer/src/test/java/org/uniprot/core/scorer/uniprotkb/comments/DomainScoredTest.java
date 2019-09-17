@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class DomainScoredTest extends CommentScoreTestBase {
+class DomainScoredTest extends CommentScoreTestBase {
     @Test
-    public void shouldScore10() throws Exception {
+    void shouldScore10() throws Exception {
         String line = "CC   -!- DOMAIN: The twin Cx9C motifs are involved in the recognition by\n" +
                 "CC       the mitochondrial MIA40-ERV1 disulfide relay system and the\n" +
                 "CC       subsequent transfer of disulfide bonds by dithiol/disulfide\n" +
@@ -14,7 +14,7 @@ public class DomainScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldWithEvScore10() throws Exception {
+    void shouldWithEvScore10() throws Exception {
         String line = "CC   -!- DOMAIN: The twin Cx9C motifs are involved in the recognition by\n" +
                 "CC       the mitochondrial MIA40-ERV1 disulfide relay system and the\n" +
                 "CC       subsequent transfer of disulfide bonds by dithiol/disulfide\n" +
@@ -23,7 +23,7 @@ public class DomainScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldSpScore10() throws Exception {
+    void shouldSpScore10() throws Exception {
         String line = "CC   -!- DOMAIN: The twin Cx9C motifs are involved in the recognition by\n" +
                 "CC       the mitochondrial MIA40-ERV1 disulfide relay system and the\n" +
                 "CC       subsequent transfer of disulfide bonds by dithiol/disulfide\n" +

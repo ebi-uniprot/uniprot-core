@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.description.*;
 import org.uniprot.core.uniprot.description.builder.*;
@@ -9,8 +9,8 @@ import org.uniprot.core.uniprot.description.builder.*;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
 public class ProteinDescriptionTest {
 
     @Test
-    public void testProteinDescriptionSimple() {
+    void testProteinDescriptionSimple() {
         Name fullName = new NameBuilder().value("protein name").build();
         ProteinRecName recommendedName = new ProteinRecNameBuilder()
                 .fullName(fullName)
@@ -37,7 +37,7 @@ public class ProteinDescriptionTest {
     }
 
     @Test
-    public void testProteinDescriptionComplete() {
+    void testProteinDescriptionComplete() {
         ProteinDescription proteinDescription = getProteinDescription();
         ValidateJson.verifyJsonRoundTripParser(proteinDescription);
         ValidateJson.verifyEmptyFields(proteinDescription);

@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class MultiCommentScoredTest extends CommentScoreTestBase {
+class MultiCommentScoredTest extends CommentScoreTestBase {
 
     @Test
-    public void shouldScore60() throws Exception {
+    void shouldScore60() throws Exception {
         String line = "CC   -!- FUNCTION: Involved in the presentation of foreign antigens to the\n" +
                 "CC       immune system. {ECO:0000256|HAMAP-Rule:MF_01146}.\n" +
                 "CC   -!- SIMILARITY: Belongs to the MHC class I family.\n" +
@@ -16,7 +16,7 @@ public class MultiCommentScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldScore160() throws Exception {
+    void shouldScore160() throws Exception {
         String line = "CC   -!- FUNCTION: Envelope protein E binding to host cell surface receptor\n" +   // 3.0
                 "CC       is followed by virus internalization through clathrin-mediated\n" +
                 "CC       endocytosis. Envelope protein E is subsequently involved in\n" +
@@ -47,7 +47,7 @@ public class MultiCommentScoredTest extends CommentScoreTestBase {
     }
 
     @Test
-    public void shouldScore140() throws Exception {
+    void shouldScore140() throws Exception {
         String line = "CC   -!- FUNCTION: Envelope protein E binding to host cell surface receptor\n" +
                 "CC       is followed by virus internalization through clathrin-mediated\n" +
                 "CC       endocytosis. Envelope protein E is subsequently involved in\n" +

@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
@@ -15,14 +15,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CCCatalyticActivityParserTest {
+
+class CCCatalyticActivityParserTest {
 	private final CcLineConverter converter = new CcLineConverter(new HashMap<>(),
 			new HashMap<>(),true);
 	UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 	@Test
-	public void testAllWithoutPD() {
+	void testAllWithoutPD() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=cytidine(32)/guanosine(34) in tRNA + 2 S-adenosyl-L-\n"
 				+ "CC         methionine = 2'-O-methylcytidine(32)/2'-O-methylguanosine(34) in\n"
@@ -75,7 +76,7 @@ public class CCCatalyticActivityParserTest {
 	}
 	
 	@Test
-	public void testAllWithSinglePD() {
+	void testAllWithSinglePD() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
@@ -117,7 +118,7 @@ public class CCCatalyticActivityParserTest {
 	}
 
 	@Test
-	public void testParseAllWithSinglePD() {
+	void testParseAllWithSinglePD() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
@@ -168,7 +169,7 @@ public class CCCatalyticActivityParserTest {
 	}
 
 	@Test
-	public void testAllWithSinglePDNoEC() {
+	void testAllWithSinglePDNoEC() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
@@ -210,7 +211,7 @@ public class CCCatalyticActivityParserTest {
 	}
 
 	@Test
-	public void testParseAllWithSinglePDNoEC() {
+	void testParseAllWithSinglePDNoEC() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
@@ -255,7 +256,7 @@ public class CCCatalyticActivityParserTest {
 	}
 
 	@Test
-	public void testAllWithMultiPD() {
+	void testAllWithMultiPD() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
@@ -306,7 +307,7 @@ public class CCCatalyticActivityParserTest {
 	}
 
 	@Test
-	public void testParseAllWithMultiPD() {
+	void testParseAllWithMultiPD() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273,\n"
@@ -363,7 +364,7 @@ public class CCCatalyticActivityParserTest {
 
 	}
 	@Test
-	public void caBasedOnEnzyme() {
+	void caBasedOnEnzyme() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; EC=1.1.1.271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"
@@ -390,7 +391,7 @@ public class CCCatalyticActivityParserTest {
 	}
 	
 	@Test
-	public void caBasedOnEnzymeN() {
+	void caBasedOnEnzymeN() {
 		String ccLine = "CC   -!- CATALYTIC ACTIVITY:\n"
 				+ "CC       Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-\n"
 				+ "CC         rhamnose + H(+) + NADPH; EC=1.1.1.n271; Evidence={ECO:0000255|HAMAP-Rule:MF_00956,\n"

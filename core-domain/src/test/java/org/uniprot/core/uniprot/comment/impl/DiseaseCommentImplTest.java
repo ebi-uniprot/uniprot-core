@@ -2,16 +2,15 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.impl.DiseaseCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 
@@ -41,6 +40,5 @@ class DiseaseCommentImplTest {
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
-        TestHelper.verifyJson(comment);
     }
 }

@@ -1,21 +1,21 @@
 package org.uniprot.core.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
 
 import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class OrganimHostTest {
 
 
     @Test
-    public void testOrganismSimple() {
+    void testOrganismSimple() {
         OrganismHost organism = new OrganismHostBuilder()
                 .taxonId(9606L)
                 .scientificName("scientific name")
@@ -30,7 +30,7 @@ public class OrganimHostTest {
     }
 
     @Test
-    public void testOrganismComplete() {
+    void testOrganismComplete() {
         OrganismHost organism = getOrganismHost();
         ValidateJson.verifyJsonRoundTripParser(organism);
         ValidateJson.verifyEmptyFields(organism);

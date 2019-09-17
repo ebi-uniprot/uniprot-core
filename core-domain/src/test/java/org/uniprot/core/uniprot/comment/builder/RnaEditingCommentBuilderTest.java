@@ -1,23 +1,19 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class RnaEditingCommentBuilderTest {
+class RnaEditingCommentBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         RnaEditingCommentBuilder builder1 = new RnaEditingCommentBuilder();
         RnaEditingCommentBuilder builder2 = new RnaEditingCommentBuilder();
         assertNotNull(builder1);
@@ -26,7 +22,7 @@ public class RnaEditingCommentBuilderTest {
     }
 
     @Test
-    public void testSetlocationType() {
+    void testSetlocationType() {
 
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
@@ -36,11 +32,10 @@ public class RnaEditingCommentBuilderTest {
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetpositions() {
+    void testSetpositions() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         positions.add(new RnaEditingPositionBuilder("123", evidences).build());
@@ -54,11 +49,10 @@ public class RnaEditingCommentBuilderTest {
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertFalse(comment.getNote() != null);
         assertEquals(positions, comment.getPositions());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         positions.add(new RnaEditingPositionBuilder("123", evidences).build());
@@ -74,15 +68,13 @@ public class RnaEditingCommentBuilderTest {
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertEquals(note, comment.getNote());
         assertEquals(positions, comment.getPositions());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testCreatePosition() {
+    void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
         RnaEdPosition position = new RnaEditingPositionBuilder("123", evidences).build();
         assertEquals("123", position.getPosition());
         assertEquals(evidences, position.getEvidences());
-        TestHelper.verifyJson(position);
     }
 }

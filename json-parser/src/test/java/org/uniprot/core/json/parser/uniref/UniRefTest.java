@@ -1,6 +1,6 @@
 package org.uniprot.core.json.parser.uniref;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
 
@@ -34,7 +34,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
 */
 
-public class UniRefTest {
+class UniRefTest {
 	@Test
 	void testUniRefMember() {
 		UniRefMember member= createMember();

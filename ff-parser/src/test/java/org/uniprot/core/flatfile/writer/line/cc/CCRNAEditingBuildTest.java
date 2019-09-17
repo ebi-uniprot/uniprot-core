@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
+class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test
-    public void testRNAEDITING() {
+    void testRNAEDITING() {
         String ccLine = ("CC   -!- RNA EDITING: Modified_positions=393, 431, 452, 495;");
         String ccLineString = ("RNA EDITING: Modified_positions=393, 431, 452, 495;");
 
@@ -50,7 +50,7 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testRNAEDITING3() {
+    void testRNAEDITING3() {
         String ccLine = ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1},\n" +
                 "CC       158 {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n" +
                 "CC       {ECO:0000303|Ref.6}; Note=Partially edited. RNA editing generates\n" +
@@ -125,7 +125,7 @@ public class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testRNAEDITING4() {
+    void testRNAEDITING4() {
         String ccLine = ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1},\n" +
                 "CC       158 {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n" +
                 "CC       {ECO:0000303|Ref.6}; Note=Partial edited. {ECO:0000313|PDB:3OW2}.\n" +

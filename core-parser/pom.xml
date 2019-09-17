@@ -5,23 +5,23 @@
     <parent>
         <groupId>org.uniprot</groupId>
         <artifactId>core-parent</artifactId>
-        <version>1.0</version>
+        <version>0.1-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
-	<version>0.1-SNAPSHOT</version>
+	<version>${project.parent.version}</version>
 	<artifactId>core-parser</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.uniprot</groupId>
             <artifactId>core-domain</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.uniprot</groupId>
             <artifactId>ff-parser</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -31,60 +31,19 @@
          <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-               <scope>test</scope>
+             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-               <scope>test</scope>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-               <scope>test</scope>
+            <scope>test</scope>
         </dependency>
-        
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-               <scope>test</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-               <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.platform</groupId>
-                    <artifactId>junit-platform-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-               <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.platform</groupId>
-                    <artifactId>junit-platform-commons</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        
     </dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
-			</plugin>
-		</plugins>
-	</build>
 </project>

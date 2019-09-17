@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
 
@@ -27,7 +27,6 @@ class OrganismImplTest {
         assertEquals(commonName, organism.getCommonName());
         assertEquals(lineages, organism.getLineage());
         assertEquals(synonyms, organism.getSynonyms());
-        TestHelper.verifyJson(organism);
     }
 
 }

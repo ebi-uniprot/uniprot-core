@@ -1,17 +1,17 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CcLineMSCommentParserTest {
+class CcLineMSCommentParserTest {
 	@Test
-	public void testMaldiWithMassAndError() {
+	void testMaldiWithMassAndError() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=24948; Mass_error=6; Method=MALDI;\n"
 				+"CC       Range=1-228; Evidence={ECO:0000006|PubMed:16629414};\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -40,7 +40,7 @@ public class CcLineMSCommentParserTest {
 	}
 
 	@Test
-	public void testRangeWithIsoform() {
+	void testRangeWithIsoform() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=13822; Method=MALDI; Range=19-140 (P15522-\n"
 				+"CC       2); Evidence={ECO:0000006|PubMed:16629414};\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -59,7 +59,7 @@ public class CcLineMSCommentParserTest {
 	}
 	
 	@Test
-	public void testMultiRange() {
+	void testMultiRange() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=514.2; Method=Electrospray; Range=51-54,\n"
 				 +"CC       71-74, 91-94, 132-135, 148-151; Note=The measured mass is that of\n"
 				+"CC       RPGW-amide.; Evidence={ECO:0000006|PubMed:16629414};\n";
@@ -79,7 +79,7 @@ public class CcLineMSCommentParserTest {
 	}
 
 	@Test
-	public void testRangeWithUnknown() {
+	void testRangeWithUnknown() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=9571; Method=Electrospray; Range=1-?;\n"
 				 +"CC       Evidence={ECO:0000006|PubMed:16629414};\n"
 				 ;
@@ -100,7 +100,7 @@ public class CcLineMSCommentParserTest {
 	}
 	
 	@Test
-	public void testWithNoteNoError() {
+	void testWithNoteNoError() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=7190; Method=MALDI; Range=1-67;\n"
 				 +"CC       Note=Variant 6.01; Evidence={ECO:0000006|PubMed:16629414};\n"
 				 ;
@@ -122,7 +122,7 @@ public class CcLineMSCommentParserTest {
 	}
 	
 	@Test
-	public void test6() {
+	void test6() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=1200.8; Mass_error=2.0E-4; Method=MALDI;\n"
 				 +"CC       Range=24-33; Evidence={ECO:0000006|PubMed:16629414};\n"
 				 ;
@@ -145,7 +145,7 @@ public class CcLineMSCommentParserTest {
 	
 	
 	@Test
-	public void testMultiEvidences() {
+	void testMultiEvidences() {
 		String lines = "CC   -!- MASS SPECTROMETRY: Mass=3979.9; Method=Electrospray; Range=51-81;\n"
 				 +"CC       Evidence={ECO:0000006|PubMed:16629414, ECO:0000006|PubMed:16629415};\n"
 				 ;
@@ -169,7 +169,7 @@ public class CcLineMSCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeader() {
+	void testNoHeader() {
 		String ccLineString = "MASS SPECTROMETRY: Mass=3979.9; Method=Electrospray; Range=51-81;\n"
 				 +"Evidence={ECO:0000006|PubMed:16629414, ECO:0000006|PubMed:16629415};\n"
 				 ;

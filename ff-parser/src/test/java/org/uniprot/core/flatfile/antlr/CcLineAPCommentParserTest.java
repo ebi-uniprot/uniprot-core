@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
@@ -8,11 +8,11 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.AlternativeNameSequenceEnum;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.AlternativeProducts;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineAPCommentParserTest {
+class CcLineAPCommentParserTest {
 	@Test
-	public void testParser() {
+	void testParser() {
 		String lines = "CC   -!- ALTERNATIVE PRODUCTS:\n"
 				+"CC       Event=Alternative splicing; Named isoforms=3;\n"
 				+"CC         Comment=Additional isoforms seem to exist. Experimental\n"
@@ -64,7 +64,7 @@ public class CcLineAPCommentParserTest {
 	}
 
 	@Test
-	public void testParser2() {
+	void testParser2() {
 		String lines = "CC   -!- ALTERNATIVE PRODUCTS:\n"
 				+"CC       Event=Alternative promoter usage; Named isoforms=2;\n"
 				+"CC       Name=alpha;\n"
@@ -103,7 +103,7 @@ public class CcLineAPCommentParserTest {
 
 	
 	@Test
-	public void testParserSequenceValue() {
+	void testParserSequenceValue() {
 		String lines =  "CC   -!- ALTERNATIVE PRODUCTS:\n"+
 		        "CC       Event=Alternative splicing; Named isoforms=6;\n"+
 		        "CC       Name=1; Synonyms=A;\n"+
@@ -134,7 +134,7 @@ public class CcLineAPCommentParserTest {
 	}
 	
 	@Test
-	public void testParserSynonyms() {
+	void testParserSynonyms() {
 		String lines =  "CC   -!- ALTERNATIVE PRODUCTS:\n"
 		        +"CC       Event=Alternative splicing; Named isoforms=20;\n"
 		        +"CC       Name=Bim-alpha3; Synonyms=BCL2-like 11 transcript variant 10,\n"
@@ -155,7 +155,7 @@ public class CcLineAPCommentParserTest {
 	}
 	
 	@Test
-	public void testParserSynonyms2() {
+	void testParserSynonyms2() {
 		String lines =  "CC   -!- ALTERNATIVE PRODUCTS:\n"
 		        +"CC       Event=Alternative splicing; Named isoforms=15;\n"
 		        +"CC       Name=1; Synonyms=FLIP-L, CLARP1, MRIT alpha-1, CASH alpha, I-FLICE\n"
@@ -174,7 +174,7 @@ public class CcLineAPCommentParserTest {
 	}
 	
 	@Test
-	public void testParserWithEvidences() {
+	void testParserWithEvidences() {
 		String lines =  "CC   -!- ALTERNATIVE PRODUCTS:\n"
 				+"CC       Event=Alternative splicing; Named isoforms=6;\n"
 				+"CC       Name=1 {ECO:0000313|EMBL:BAG16761.1};\n"
@@ -211,7 +211,7 @@ public class CcLineAPCommentParserTest {
 	
 
 	@Test
-	public void testParserWithEvidences2() {
+	void testParserWithEvidences2() {
 		String lines =  "CC   -!- ALTERNATIVE PRODUCTS:\n"
 				    +"CC       Event=Alternative splicing; Named isoforms=6;\n"
 				    +"CC         Comment=Additional isoforms seem to exist.\n"
@@ -286,7 +286,7 @@ public class CcLineAPCommentParserTest {
 		
 	}
 	@Test
-	public void testNoHeaderWithEvidence() {
+	void testNoHeaderWithEvidence() {
 		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 		        "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
@@ -321,7 +321,7 @@ public class CcLineAPCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeader() {
+	void testNoHeader() {
 		String ccLineString ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 				"Comment=Additional isoforms seem to exist.;\n" +
@@ -351,7 +351,7 @@ public class CcLineAPCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeaderWithEvidence2() {
+	void testNoHeaderWithEvidence2() {
 		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 		        "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
@@ -383,7 +383,7 @@ public class CcLineAPCommentParserTest {
 		
 	}
 	@Test
-	public void testNoHeaderWithEvidence4() {
+	void testNoHeaderWithEvidence4() {
 		String ccLineStringEvidence ="ALTERNATIVE PRODUCTS:\n" +
 		        "Event=Alternative splicing; Named isoforms=6;\n" +
 		        "Comment=Additional isoforms seem to exist. {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};"
@@ -417,7 +417,7 @@ public class CcLineAPCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeaderWithEvidence5() {
+	void testNoHeaderWithEvidence5() {
 	String ccLineStringEvidence =   "ALTERNATIVE PRODUCTS:\n"
 			  +"Event=Alternative splicing; Named isoforms=6;\n"
 			  +" Comment=Additional isoforms seem to exist.\n"

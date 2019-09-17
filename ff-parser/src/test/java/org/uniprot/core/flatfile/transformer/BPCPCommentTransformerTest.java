@@ -1,15 +1,14 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
-import org.uniprot.core.flatfile.transformer.BPCPCommentTransformer;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class BPCPCommentTransformerTest {
+class BPCPCommentTransformerTest {
     private final BPCPCommentTransformer transformer = new BPCPCommentTransformer();
 
     /**
@@ -38,7 +37,7 @@ public class BPCPCommentTransformerTest {
      */
 
     @Test
-    public void testAbsorption() {
+    void testAbsorption() {
         // "Absorption:\n" +
         // "Abs(max)=465 nm;\n" +
         // "Note=The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"
@@ -59,7 +58,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testAbsorption2() {
+    void testAbsorption2() {
         // "Absorption:\n" +
         // "Abs(max)=465 nm;\n" +
         // "Note=The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"
@@ -86,7 +85,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testKM1() {
+    void testKM1() {
         String value = "KM=5.4 uM for tyramine;";
         MichaelisConstant km = transformer.buildMichaelisConstant(value);
         assertEquals(5.4f, km.getConstant(), 0.00001f);
@@ -96,7 +95,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testKM2() {
+    void testKM2() {
         String value = "KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};";
         MichaelisConstant km = transformer.buildMichaelisConstant(value);
         assertEquals(5.4f, km.getConstant(), 0.00001f);
@@ -109,7 +108,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testMaxV1() {
+    void testMaxV1() {
         String val = "Vmax=17 umol/min/mg enzyme;";
         MaximumVelocity mv = transformer.buildMaximumVelocity(val);
         assertEquals(17.0f, mv.getVelocity(), 0.00001f);
@@ -119,7 +118,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testMaxV2() {
+    void testMaxV2() {
         String val = "Vmax=17 umol/min/mg enzyme {ECO:0000313|PDB:3OW2};";
         MaximumVelocity mv = transformer.buildMaximumVelocity(val);
         assertEquals(17.0f, mv.getVelocity(), 0.00001f);
@@ -131,7 +130,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testKP1() {
+    void testKP1() {
         // "Kinetic parameters:\n" +
         // "KM=5.4 uM for tyramine;\n" +
         // "KM=688 uM for pyridoxal;\n" +
@@ -163,7 +162,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testKP2() {
+    void testKP2() {
         // "Kinetic parameters:\n" +
         // "KM=5.4 uM for tyramine {ECO:0000313|EMBL:BAG16761.1};\n" +
         // "KM=688 uM for pyridoxal {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n" +
@@ -204,7 +203,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testPhDependence1() {
+    void testPhDependence1() {
         String val = "Optimum pH is 8-10.. Optimum pH is 3-5.;";
         List<String> lines = new ArrayList<>();
         lines.add(val);
@@ -217,7 +216,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testPhDependence2() {
+    void testPhDependence2() {
         String val = "Optimum pH is 8-10.. Optimum pH is 3-5. {ECO:0000313|EMBL:BAG16761.1};";
         List<String> lines = new ArrayList<>();
         lines.add(val);
@@ -231,7 +230,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testRedox1() {
+    void testRedox1() {
         String val = "E(0) is -448 mV.;";
         List<String> lines = new ArrayList<>();
         lines.add(val);
@@ -242,7 +241,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testRedox2() {
+    void testRedox2() {
         String val = "E(0) is -448 mV. {ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}."
                 + " E(0) is -234 mV. {ECO:0000303|Ref.6};";
         List<String> lines = new ArrayList<>();
@@ -258,7 +257,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testTemperatureDependence1() {
+    void testTemperatureDependence1() {
         String val = "Highly active at low temperatures, even at 0 degree Celsius. Thermolabile.;";
         List<String> lines = new ArrayList<>();
         lines.add(val);
@@ -270,7 +269,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testTemperatureDependence2() {
+    void testTemperatureDependence2() {
         String val = "Highly active at low temperatures, even at 0 degree Celsius. "
                 + "Thermolabile. {ECO:0000256|HAMAP-Rule:MF_00205}."
                 + " Another active at low temperatures.;";
@@ -289,7 +288,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testBPCPComment1() {
+    void testBPCPComment1() {
         String ccLineString = ("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "pH dependence:\n" +
                 "Optimum pH is 8-10.. Optimum pH is 3-5.;\n" +
@@ -329,7 +328,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testBPCPComment2() {
+    void testBPCPComment2() {
         String ccLineStringEvidence = ("BIOPHYSICOCHEMICAL PROPERTIES:\n" +
                 "pH dependence:\n" +
                 "Optimum pH is 8-10. {ECO:0000313|EMBL:BAG16761.1}."
@@ -373,7 +372,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testBPCPComment3() {
+    void testBPCPComment3() {
         String ccLineString = ("Absorption:\n" +
                 "  Abs(max)=465 nm;\n" +
                 "  Note=The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"
@@ -423,7 +422,7 @@ public class BPCPCommentTransformerTest {
     }
 
     @Test
-    public void testBPCPComment4() {
+    void testBPCPComment4() {
         String ccLineStringEvidence = ("Absorption:\n" +
                 "  Abs(max)=~465 nm {ECO:0000313|EMBL:BAG16761.1};\n" +
                 "  Note=The above maximum is for the oxidized form. Shows a maximal peak at 330 nm in"

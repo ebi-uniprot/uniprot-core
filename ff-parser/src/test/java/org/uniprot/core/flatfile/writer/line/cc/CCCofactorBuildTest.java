@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Cofactor;
@@ -15,10 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
-public class CCCofactorBuildTest extends CCBuildTestAbstr {
+class CCCofactorBuildTest extends CCBuildTestAbstr {
     @Test
-    public void test1() {
+    void test1() {
         String ccLine =
                 "CC   -!- COFACTOR:\n" +
                         "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-\n" +
@@ -63,7 +62,7 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         String ccLine =
                 "CC   -!- COFACTOR: Serine protease NS3:\n" +
                         "CC       Note=Binds 1 zinc ion per NS3 protease domain.;";
@@ -89,7 +88,7 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test3() {
+    void test3() {
 
 
         String ccLine = "CC   -!- COFACTOR: Serine protease NS3:\n" +
@@ -149,7 +148,7 @@ public class CCCofactorBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test4() {
+    void test4() {
         String ccLine =
                 "CC   -!- COFACTOR:\n" +
                         "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-\n" +

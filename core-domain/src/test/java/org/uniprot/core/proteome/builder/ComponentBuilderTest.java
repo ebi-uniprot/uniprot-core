@@ -1,7 +1,7 @@
 package org.uniprot.core.proteome.builder;
 
 import static org.hamcrest.CoreMatchers.hasItem;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;

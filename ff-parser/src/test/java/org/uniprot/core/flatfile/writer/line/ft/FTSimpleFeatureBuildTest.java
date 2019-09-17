@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 
@@ -9,9 +9,9 @@ import java.util.List;
 
 
 
-public class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
+class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
 	@Test
-	public void test1(){
+	void test1(){
 		String ftLine ="FT   ACT_SITE   1691   1871       VWFA 3; main binding site for collagens\n"+
 					   "FT                                type I and III.";
 		String ftLineString = "ACT_SITE 1691 1871 VWFA 3; main binding site for collagens "+
@@ -29,7 +29,7 @@ public class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
 		doTestString(ftLineString,feature);
 	}
 	@Test
-	public void test2(){
+	void test2(){
 		String ftLine ="FT   CHAIN        61    386       Serine/threonine-protein phosphatase 2A\n" +
 				"FT                                56 kDa regulatory subunit gamma isoform.\n" +
 				"FT                                /FTId=PRO_0000071458." ;
@@ -47,7 +47,7 @@ public class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
 		doTestString(ftLineString,feature);	
 	}
 	@Test 
-	public void test3(){
+	void test3(){
 		String ftLine =	"FT   BINDING      79    197       Response regulatory (By similarity).";
 		String ftLineString =	"BINDING 79 197 Response regulatory (By similarity).";
 		String description2 ="Response regulatory (By similarity)";
@@ -60,7 +60,7 @@ public class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
 	}
 	
 	@Test
-	public void test1Ev(){
+	void test1Ev(){
 		String ftLine =	"FT   ACT_SITE   1691   1871       VWFA 3; main binding site for collagens\n" +
 				"FT                                type I and III. {ECO:0000303|Ref.6,\n" +
 				"FT                                ECO:0000313|EMBL:BAG16761.1}." ;
@@ -86,7 +86,7 @@ public class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
 		doTestStringEv(ftLineStringEv,feature);
 	}
 	@Test
-	public void test2Ev(){
+	void test2Ev(){
 		String ftLine ="FT   CHAIN        61    386       Serine/threonine-protein phosphatase 2A\n" +
 				"FT                                56 kDa regulatory subunit gamma isoform.\n" +
 				"FT                                {ECO:0000256|HAMAP-Rule:MF_00205}.\n" +
@@ -108,7 +108,7 @@ public class FTSimpleFeatureBuildTest extends FTBuildTestAbstr {
 		doTestStringEv(ftLineStringEv,feature);
 	}
 	@Test 
-	public void test3Ev(){
+	void test3Ev(){
 		String ftLine =	"FT   BINDING      79    197       Response regulatory (By similarity).\n"+
 				"FT                                {ECO:0000269|PubMed:10433554,\n" +
 				"FT                                ECO:0000313|PDB:3OW2}." ;

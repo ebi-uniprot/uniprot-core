@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 import org.uniprot.core.uniprot.InternalSection;
@@ -9,13 +9,13 @@ import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SsLineConverterTest {
+class SsLineConverterTest {
     private SsLineConverter converter = new SsLineConverter();
 
     @Test
-    public void testEvidence() {
+    void testEvidence() {
         SsLineObject obj = new SsLineObject();
         //**EV ECO:0000313; ProtImp; -; 07-NOV-2006.\n"+
         //**EV ECO:0000256; HAMAP-Rule:MF_01417; -; 01-OCT-2010.\n"

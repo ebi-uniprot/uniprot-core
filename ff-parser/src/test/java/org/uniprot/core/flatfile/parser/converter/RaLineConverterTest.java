@@ -1,16 +1,18 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.flatfile.parser.impl.ra.RaLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ra.RaLineObject;
 
 import java.util.List;
 
-public class RaLineConverterTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class RaLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 		// "RA   Galinier A., Perriere G., Duclos B.;\n";
 		RaLineObject ra =new RaLineObject();
 		ra.authors.add("Galinier A.");
@@ -19,7 +21,7 @@ public class RaLineConverterTest {
 		
 		RaLineConverter converter = new RaLineConverter();
 		 List<Author> authors = converter.convert (ra);
-		 TestCase.assertEquals(3, authors.size());
+		 assertEquals(3, authors.size());
 		 validate(authors, "Galinier A.");
 		 validate(authors, "Perriere G.");
 		 validate(authors, "Duclos B.");
@@ -32,6 +34,6 @@ public class RaLineConverterTest {
 				break;
 			}
 		}
-		TestCase.assertTrue(found);
+		assertTrue(found);
 	}
 }

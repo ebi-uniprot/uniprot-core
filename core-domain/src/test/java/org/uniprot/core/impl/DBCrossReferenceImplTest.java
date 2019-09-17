@@ -3,7 +3,7 @@ package org.uniprot.core.impl;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.Property;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.impl.DefaultDatabaseType;
 
@@ -45,6 +45,5 @@ class DBCrossReferenceImplTest {
         assertEquals(dbName, xref.getDatabaseType().getName());
         assertEquals(id, xref.getId());
         assertEquals(properties, xref.getProperties());
-        TestHelper.verifyJson(xref);
     }
 }

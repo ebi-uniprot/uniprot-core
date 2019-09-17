@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineConverter;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject;
 import org.uniprot.core.gene.Gene;
@@ -13,13 +13,14 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class GnLineConverterTest {
+
+class GnLineConverterTest {
 	private final GnLineConverter converter = new GnLineConverter();
 	@Test
-	public void test1(){
+	void test1(){
 		//GN   Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;
 		GnLineObject gnLineObj= new GnLineObject();
 		GnLineObject.GnName gnName = new GnLineObject.GnName();
@@ -61,7 +62,7 @@ public class GnLineConverterTest {
 		validate(gene.getOrfNames().get(0), orf);
 	}
 	@Test
-	public void test2(){
+	void test2(){
 		//GN   Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;
       //  |GN   and
       //  |GN   Name=Jon99Cii2;
@@ -123,7 +124,7 @@ public class GnLineConverterTest {
 	}
 	
 	@Test
-	public void testEvidenceTag(){
+	void testEvidenceTag(){
 		/*
 		 * GN   Name=blaCTX-M-14{EI4}; Synonyms=beta-lactamase CTX-M-14{EI7},
           GN   bla-CTX-M-14a{EI8, EI9}, ORFNames=ETN48_p0088{EI5}

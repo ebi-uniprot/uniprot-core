@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.impl.kw.KWLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -15,13 +15,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class KWLineBuildTest {
+class KWLineBuildTest {
     KWLineBuilder builder = new KWLineBuilder();
 
     @Test
-    public void test1() {
+    void test1() {
         String kwLine = "KW   Complete proteome; Metal-binding; Repeat; Virus reference strain;\n"
                 + "KW   Zinc-finger.";
 
@@ -35,7 +35,7 @@ public class KWLineBuildTest {
     }
 
     @Test
-    public void test1Evidence() {
+    void test1Evidence() {
         String kwLine = "KW   Complete proteome {ECO:0000269|PubMed:10433554,\n"
                 + "KW   ECO:0000313|EMBL:BAG16761.1}; Metal-binding;\n"
                 + "KW   Repeat {ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1};\n"
@@ -61,7 +61,7 @@ public class KWLineBuildTest {
     }
 
     @Test
-    public void test3() {
+    void test3() {
         String kwLine = "KW   Cell membrane; Complete proteome; Glycoprotein; GPI-anchor;\n"
                 + "KW   Lipoprotein; Membrane; Repeat; Signal; Sporozoite.";
 
@@ -80,7 +80,7 @@ public class KWLineBuildTest {
     }
 
     @Test
-    public void testEvidence() {
+    void testEvidence() {
         String kwLine = "KW   3D-structure {ECO:0000313, ECO:0000313|EMBL:EAW66463.1};\n"
                 + "KW   Allergen {ECO:0000313|EMBL:EAW66464.1};\n"
                 + "KW   Direct protein sequencing {ECO:0000313|EMBL:EAW66463.1,\n"
@@ -117,7 +117,7 @@ public class KWLineBuildTest {
     }
 
     @Test
-    public void testEvidence2() {
+    void testEvidence2() {
         String kwLine = "KW   Disulfide bond {ECO:0000256|SAAS:SAAS000777_004_000331};\n"
                 + "KW   Fusion of virus membrane with host membrane\n"
                 + "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n"
@@ -164,7 +164,6 @@ public class KWLineBuildTest {
         String resultString = ffLine.toString();
         System.out.println(resultString);
         System.out.println("\n");
-        // System.out.println(deLine);
         assertEquals(deLine, resultString);
     }
 
@@ -173,5 +172,4 @@ public class KWLineBuildTest {
         return evIds.stream().map(EvidenceHelper::parseEvidenceLine).collect(Collectors.toList());
 
     }
-
 }

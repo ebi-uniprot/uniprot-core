@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
@@ -12,13 +12,13 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FtLineConverterTest {
+class FtLineConverterTest {
     private final FtLineConverter converter = new FtLineConverter();
 
     @Test
-    public void test1() {
+    void test1() {
         //"FT   HELIX      33     83
         //"FT    SIGNAL     <1     34       Potential.
         FtLineObject fobj = new FtLineObject();
@@ -84,7 +84,7 @@ public class FtLineConverterTest {
 
 
     @Test
-    public void testMutagen() throws Exception {
+    void testMutagen() throws Exception {
 		/*
 		 *  """FT   MUTAGEN     119    119       C->R,E,A: Loss of cADPr hydrolase and
                  |FT                                ADP-ribosyl cyclase activity.
@@ -115,7 +115,7 @@ public class FtLineConverterTest {
     }
 
     @Test
-    public void testVarSeq() throws Exception {
+    void testVarSeq() throws Exception {
         /**
          *
          "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL
@@ -150,7 +150,7 @@ public class FtLineConverterTest {
 
 
     @Test
-    public void testVarSeq2() throws Exception {
+    void testVarSeq2() throws Exception {
         /**
          *
          "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL
@@ -185,7 +185,7 @@ public class FtLineConverterTest {
 
 
     @Test
-    public void testVariant() throws Exception {
+    void testVariant() throws Exception {
         /**
          * FT   VARIANT     102    102       V -> I (in HH2; dbSNP:rs55642501).
          FT                                /FTId=VAR_030972.                       /FTId=VSP_004370.
@@ -215,7 +215,7 @@ public class FtLineConverterTest {
     }
 
     @Test
-    public void testVariant2() throws Exception {
+    void testVariant2() throws Exception {
         /**
          * FT   VARIANT     102    102       V -> I (in HH2; dbSNP:rs55642501).
          FT                                /FTId=VAR_030972.                       /FTId=VSP_004370.
@@ -246,7 +246,7 @@ public class FtLineConverterTest {
 
 
     @Test
-    public void testVariantNoText() throws Exception {
+    void testVariantNoText() throws Exception {
         /**
          "FT   VARIANT     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" +
          "FT                                LKVPVVQKVTKRLGVTSPD.\n";
@@ -277,7 +277,7 @@ public class FtLineConverterTest {
 
 
     @Test
-    public void testEvidence() {
+    void testEvidence() {
         //"FT   HELIX      33     83{EI1,EI2}
         //"FT    SIGNAL     <1     34       Potential{EI2,EI3}.
         FtLineObject fobj = new FtLineObject();
@@ -378,7 +378,7 @@ public class FtLineConverterTest {
     }
 
     @Test
-    public void testEvidence2() {
+    void testEvidence2() {
         //"FT   ACT_SITE    150    150       {ECO:0000255|PROSITE-ProRule:PRU10088}.
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();
@@ -410,7 +410,7 @@ public class FtLineConverterTest {
     }
 
     @Test
-    public void testEvidence3() {
+    void testEvidence3() {
         //"FT   ACT_SITE    150    150       {ECO:0000255|PROSITE-ProRule:PRU10088}.
         FtLineObject fobj = new FtLineObject();
         FtLineObject.FT ft = new FtLineObject.FT();

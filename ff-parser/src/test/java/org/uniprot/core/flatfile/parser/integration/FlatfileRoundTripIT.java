@@ -22,8 +22,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.slf4j.LoggerFactory.getLogger;
 
 class FlatfileRoundTripIT {
@@ -124,7 +123,7 @@ class FlatfileRoundTripIT {
         for (int i = 0; i < originalDBXrefs.size(); i++) {
             UniProtDBCrossReference origXref = originalDBXrefs.get(i);
             UniProtDBCrossReference convertedXref = convertedDBXrefs.get(i);
-            assertEquals("DBXref at index " + i + " differs", origXref, convertedXref);
+            assertEquals(origXref, convertedXref, "DBXref at index " + i + " differs");
         }
 
         assertEquals(converted, converted2);

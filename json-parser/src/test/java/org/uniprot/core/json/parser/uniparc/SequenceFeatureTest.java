@@ -1,6 +1,6 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
 */
 
-public class SequenceFeatureTest {
+class SequenceFeatureTest {
 	@Test
 	void testInterProGroup() {
 		InterproGroup domain =

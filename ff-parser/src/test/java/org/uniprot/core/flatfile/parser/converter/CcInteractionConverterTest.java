@@ -1,19 +1,19 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.uniprot.comment.*;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CcInteractionConverterTest {
+class CcInteractionConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
-	public void testInteraction(){
+	void testInteraction(){
 		/*
 		 CC   -!- INTERACTION:
          CC       Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;

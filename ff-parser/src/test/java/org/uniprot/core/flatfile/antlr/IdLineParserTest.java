@@ -1,15 +1,16 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.id.IdLineObject;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class IdLineParserTest {
+
+class IdLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String idlines = "ID   001R_FRG3G              Reviewed;         256 AA.\n";
 		UniprotLineParser<IdLineObject> parser = new DefaultUniprotLineParserFactory().createIdLineParser();
 		IdLineObject obj = parser.parse(idlines);
@@ -22,7 +23,7 @@ public class IdLineParserTest {
 		assertEquals(seqlen, obj.getSequenceLength());
 	}
 	@Test
-	public void testIsoform() {
+	void testIsoform() {
 		String idlines = "ID   001R_FRG3G_123           Reviewed;         256 AA.\n";
 		UniprotLineParser<IdLineObject> parser = new DefaultUniprotLineParserFactory().createIdLineParser();
 		IdLineObject obj = parser.parse(idlines);
@@ -30,7 +31,7 @@ public class IdLineParserTest {
 	}
 
 	@Test
-	public void test2() {
+	void test2() {
 		String idlines = "ID   001R_FRG3G              Reviewed;         256 AA.\n";
 		UniprotLineParser<IdLineObject> parser = new DefaultUniprotLineParserFactory().createIdLineParser();
 		IdLineObject obj = parser.parse(idlines);

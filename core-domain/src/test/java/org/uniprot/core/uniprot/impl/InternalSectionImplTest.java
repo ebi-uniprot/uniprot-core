@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
 import org.uniprot.core.uniprot.InternalSection;
@@ -17,22 +17,20 @@ import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-public class InternalSectionImplTest {
+class InternalSectionImplTest {
 
     @Test
-    public void testCreateSourceLine() {
+    void testCreateSourceLine() {
         String value = "some source value";
         SourceLine sourceLine = new SourceLineBuilder(value).build();
         assertEquals(value, sourceLine.getValue());
-        TestHelper.verifyJson(sourceLine);
     }
 
     @Test
-    public void testInternalSectionImplOnlyIL() {
+    void testInternalSectionImplOnlyIL() {
         List<InternalLine> internalLines = new ArrayList<>();
         List<SourceLine> sourceLines = new ArrayList<>();
         internalLines.add(new InternalLineBuilder(InternalLineType.CX, "value1").build());
@@ -42,11 +40,10 @@ public class InternalSectionImplTest {
         assertEquals(internalLines, is.getInternalLines());
         assertTrue(is.getSourceLines().isEmpty());
         assertTrue(is.getEvidenceLines().isEmpty());
-        TestHelper.verifyJson(is);
     }
 
     @Test
-    public void testInternalSectionImplOnlyEL() {
+    void testInternalSectionImplOnlyEL() {
         List<EvidenceLine> evlines = new ArrayList<>();
         LocalDate createDate = LocalDate.of(2015, Month.AUGUST, 2);
         String curator = "som curator";
@@ -56,11 +53,10 @@ public class InternalSectionImplTest {
         assertTrue(is.getSourceLines().isEmpty());
         assertTrue(is.getInternalLines().isEmpty());
         assertEquals(evlines, is.getEvidenceLines());
-        TestHelper.verifyJson(is);
     }
 
     @Test
-    public void testInternalSectionImpl() {
+    void testInternalSectionImpl() {
         List<InternalLine> internalLines = new ArrayList<>();
         List<SourceLine> sourceLines = new ArrayList<>();
         internalLines.add(new InternalLineBuilder(InternalLineType.CX, "value1").build());
@@ -77,7 +73,6 @@ public class InternalSectionImplTest {
         assertEquals(internalLines, is.getInternalLines());
         assertEquals(sourceLines, is.getSourceLines());
         assertEquals(evlines, is.getEvidenceLines());
-        TestHelper.verifyJson(is);
     }
 
     @Test
@@ -91,8 +86,6 @@ public class InternalSectionImplTest {
         assertEquals(curator, evline.getCurator());
         assertEquals(evidence, evline.getEvidence());
         assertEquals(evidence, evline.toEvidence().getValue());
-        TestHelper.verifyJson(evline);
-
     }
 
     @Test
@@ -102,6 +95,5 @@ public class InternalSectionImplTest {
         InternalLine internalLine = new InternalLineBuilder(type, value).build();
         assertEquals(type, internalLine.getType());
         assertEquals(value, internalLine.getValue());
-        TestHelper.verifyJson(internalLine);
     }
 }

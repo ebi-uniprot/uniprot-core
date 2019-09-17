@@ -1,16 +1,16 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.transformer.RnaEditingCommentTransformer;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class RnaEditingCommentTransformerTest {
+class RnaEditingCommentTransformerTest {
     private final RnaEditingCommentTransformer transformer = new RnaEditingCommentTransformer();
     @Test
-    public void testQ9W4K2(){
+    void testQ9W4K2(){
        String val ="Modified_positions=572 {ECO:0000269|PubMed:17018572, ECO:0000269|Ref.3};"
                + " Note=Partially edited. Target of Adar. {ECO:0000269|PubMed:17018572};";
         
@@ -24,9 +24,9 @@ public class RnaEditingCommentTransformerTest {
         assertEquals(1, comment.getNote().getTexts().get(0).getEvidences().size());
         
     }
-    
+
     @Test
-    public void testQ85BW1(){
+    void testQ85BW1(){
         String val ="RNA EDITING: Modified_positions=46 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687}"
                 +", 1052 {ECO:0000269|PubMed:12527781, ECO:0000269|PubMed:12711687};"
                 + " Note=The nonsense codons at positions 46, 421, 973, 984 and 1048 are modified to sense codons.;";

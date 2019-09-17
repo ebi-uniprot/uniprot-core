@@ -1,12 +1,12 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 /**
  *
  * @author lgonzales
@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class WebResourceCommentTest {
 
     @Test
-    public void testWebResourceSimple() {
+    void testWebResourceSimple() {
 
         WebResourceComment comment = new WebResourceCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -25,7 +25,7 @@ public class WebResourceCommentTest {
     }
 
     @Test
-    public void testWebResourceComplete() {
+    void testWebResourceComplete() {
 
         WebResourceComment comment = getWebResourceComment();
         ValidateJson.verifyJsonRoundTripParser(comment);

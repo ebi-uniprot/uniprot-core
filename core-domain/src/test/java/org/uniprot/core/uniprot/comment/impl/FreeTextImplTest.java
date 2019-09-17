@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.impl.FreeTextImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
@@ -22,7 +22,6 @@ class FreeTextImplTest {
         List<EvidencedValue> texts = new ArrayList<>();
         FreeTextImpl freeText = new FreeTextImpl(texts);
         assertEquals(texts, freeText.getTexts());
-        TestHelper.verifyJson(freeText);
     }
 
     @Test
@@ -39,7 +38,6 @@ class FreeTextImplTest {
         texts.add(new EvidencedValueImpl("value2", Collections.emptyList()));
         FreeTextImpl freeText = new FreeTextImpl(texts);
         assertEquals(texts, freeText.getTexts());
-        TestHelper.verifyJson(freeText);
     }
 
 }

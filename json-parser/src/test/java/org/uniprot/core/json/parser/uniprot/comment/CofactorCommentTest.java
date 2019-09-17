@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -19,8 +19,8 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales
@@ -28,7 +28,7 @@ import static org.junit.Assert.assertNotNull;
 public class CofactorCommentTest {
 
     @Test
-    public void testCofactorSimple() {
+    void testCofactorSimple() {
 
         CofactorComment comment = new CofactorCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -40,7 +40,7 @@ public class CofactorCommentTest {
 
 
     @Test
-    public void testCofactorComplete() {
+    void testCofactorComplete() {
         CofactorComment comment = getCofactorComment();
 
         ValidateJson.verifyJsonRoundTripParser(comment);

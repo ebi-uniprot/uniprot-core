@@ -3,13 +3,11 @@ package org.uniprot.core.uniprot.feature.impl;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
-import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 
@@ -26,7 +24,6 @@ class FeatureImplTest {
         assertEquals(FeatureType.ACT_SITE, feature.getType());
         assertFalse(feature.hasAlternativeSequence());
         assertFalse(feature.hasFeatureId());
-        TestHelper.verifyJson(feature);
     }
 
     @Test
@@ -45,6 +42,5 @@ class FeatureImplTest {
         assertEquals(featureId, feature.getFeatureId());
         assertNull(feature.getAlternativeSequence());
         assertNull(feature.getDbXref());
-        TestHelper.verifyJson(feature);
     }
 }

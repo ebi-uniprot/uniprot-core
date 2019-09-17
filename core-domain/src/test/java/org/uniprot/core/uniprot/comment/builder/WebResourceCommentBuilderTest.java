@@ -1,17 +1,17 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
-import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class WebResourceCommentBuilderTest {
+
+class WebResourceCommentBuilderTest {
 
     @Test
-    public void testSetDatabaseName() {
+    void testSetDatabaseName() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         WebResourceComment comment = builder.resourceName(databaseName)
@@ -21,11 +21,10 @@ public class WebResourceCommentBuilderTest {
         assertEquals("", comment.getResourceUrl());
         assertFalse(comment.isFtp());
         assertEquals("", comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetDatabaseUrl() {
+    void testSetDatabaseUrl() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseUrl = "some url";
@@ -37,11 +36,10 @@ public class WebResourceCommentBuilderTest {
         assertEquals(databaseUrl, comment.getResourceUrl());
         assertFalse(comment.isFtp());
         assertEquals("", comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetDatabaseFtp() {
+    void testSetDatabaseFtp() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseFtp = "some ftp";
@@ -54,11 +52,10 @@ public class WebResourceCommentBuilderTest {
         assertEquals(databaseFtp, comment.getResourceUrl());
         assertTrue(comment.isFtp());
         assertEquals("", comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
         String databaseName = "someDbName";
         String databaseUrl = "some url";
@@ -72,6 +69,5 @@ public class WebResourceCommentBuilderTest {
         assertEquals(databaseUrl, comment.getResourceUrl());
         assertFalse(comment.isFtp());
         assertEquals(note, comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 }

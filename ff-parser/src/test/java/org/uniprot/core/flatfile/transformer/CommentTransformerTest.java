@@ -1,34 +1,33 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCLineBuilderFactory;
-import org.uniprot.core.flatfile.transformer.CommentTransformerHelper;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class CommentTransformerTest {
+class CommentTransformerTest {
     @Test
-    public void testTextOnly1() {
+    void testTextOnly1() {
         String tString = "ACTIVITY REGULATION: Inactivated by the serine"
                 + " protease inhibitor diisopropylfluorophosphate.";
         testComment(tString, CommentType.ACTIVITY_REGULATION);
     }
 
     @Test
-    public void testTextOnly2() {
+    void testTextOnly2() {
         String tString = "SIMILARITY: Belongs to the peptidase S1 family. Granzyme subfamily.";
         testComment(tString, CommentType.SIMILARITY);
     }
 
     @Test
-    public void testTextOnly3() {
+    void testTextOnly3() {
         String tString = "PPIases accelerate the folding of proteins.";
         FreeTextComment comment = CommentTransformerHelper.transform(tString,
                 CommentType.FUNCTION);
@@ -40,7 +39,7 @@ public class CommentTransformerTest {
     }
 
     @Test
-    public void testTextOnly3Ev() {
+    void testTextOnly3Ev() {
         String tString = "PPIases accelerate the folding of proteins (By similarity). {ECO:0000269|PubMed:10051606}.";
         FreeTextComment comment = CommentTransformerHelper.transform(tString,
                 CommentType.FUNCTION);
@@ -55,21 +54,21 @@ public class CommentTransformerTest {
     }
 
     @Test
-    public void testInteraction() {
+    void testInteraction() {
         String tString = "INTERACTION:\nP14222:PRF1; NbExp=3; IntAct=EBI-2505785,"
                 + " EBI-724466;\nP10124:SRGN; NbExp=2; IntAct=EBI-2505785, EBI-744915;";
         testComment(tString, CommentType.INTERACTION);
     }
 
     @Test
-    public void testSubcellularLocation() {
+    void testSubcellularLocation() {
         String tString = "SUBCELLULAR LOCATION: Cytoplasmic granule. Note=Cytoplasmic "
                 + "granules of cytolytic T-lymphocytes and natural killer cells.";
         testComment(tString, CommentType.SUBCELLULAR_LOCATION);
     }
 
     @Test
-    public void testSubcellularLocationWithEvidence() {
+    void testSubcellularLocationWithEvidence() {
         String tString = "SUBCELLULAR LOCATION: Mitochondrion outer membrane {ECO:0000269|PubMed:2250705};"
                 + " Single-pass membrane protein {ECO:0000269|PubMed:2250705}. Nucleus membrane"
                 + " {ECO:0000269|PubMed:2250705}; Single-pass membrane protein {ECO:0000269|PubMed:2250705}."
@@ -79,14 +78,14 @@ public class CommentTransformerTest {
     }
 
     @Test
-    public void testCofactor() {
+    void testCofactor() {
         String tString = "COFACTOR:\nName=K(+); Xref=ChEBI:CHEBI:29103; "
                 + "Evidence={ECO:0000250};\nNote=Binds 1 potassium ion per subunit.;";
         testComment(tString, CommentType.COFACTOR, true);
     }
 
     @Test
-    public void testAltProd() {
+    void testAltProd() {
         String tString = "ALTERNATIVE PRODUCTS:\nEvent=Alternative initiation;"
                 + " Named isoforms=2;\nName=Long;\nIsoId=Q10981-1;"
                 + " Sequence=Displayed;\nName=Short;\nIsoId=Q10981-2;"
@@ -95,15 +94,15 @@ public class CommentTransformerTest {
 
     }
 
-    @Ignore
-    public void testSequenceCaution() {
+    @Disabled
+    void testSequenceCaution() {
         String tString = "SEQUENCE CAUTION: Sequence=BAA11638.1;"
                 + " Type=Erroneous initiation;";
         testComment(tString, CommentType.SEQUENCE_CAUTION);
     }
 
     @Test
-    public void testBioPhyChem() {
+    void testBioPhyChem() {
         String tString = "BIOPHYSICOCHEMICAL PROPERTIES:\n"
                 + "Kinetic parameters:\nKM=30 uM for acetyl-CoA (at pH 7.5);\n"
                 + "KM=57 uM for glyoxylate (at pH 7.5);\n"
@@ -112,7 +111,7 @@ public class CommentTransformerTest {
     }
 
     @Test
-    public void testDisease() {
+    void testDisease() {
         String tString = "DISEASE: Breast-ovarian cancer, familial, 1 (BROVCA1) [MIM:604370]:"
                 + " A condition associated with familial predisposition to cancer"
                 + " of the breast and ovaries. Characteristic features in affected"
@@ -128,7 +127,7 @@ public class CommentTransformerTest {
     }
 
     @Test
-    public void testMassSpec() {
+    void testMassSpec() {
         String tString = "MASS SPECTROMETRY: Mass=8320; Mass_error=3;"
                 + " Method=Electrospray; Range=1-72; Evidence={ECO:0000269|PubMed:8735961};";
         testComment(tString, CommentType.MASS_SPECTROMETRY);
@@ -136,7 +135,7 @@ public class CommentTransformerTest {
     }
 
     @Test
-    public void testCatalyticActivity() {
+    void testCatalyticActivity() {
     	String ccLine =  "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"
 				+ "rhamnose + H(+) + NADPH; Xref=Rhea:RHEA:18885, ChEBI:CHEBI:57273, "
@@ -154,7 +153,7 @@ public class CommentTransformerTest {
     }
     
     @Test
-    public void testCatalyticActivityNotShowEvidence() {
+    void testCatalyticActivityNotShowEvidence() {
     	
     	String ccLineNoEvidence =  "CATALYTIC ACTIVITY:\n"
 				+ "Reaction=GDP-beta-L-fucose + NADP(+) = GDP-4-dehydro-alpha-D-"

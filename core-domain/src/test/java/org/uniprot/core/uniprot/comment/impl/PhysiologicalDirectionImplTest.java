@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
 import org.uniprot.core.uniprot.comment.ReactionReferenceType;
@@ -30,7 +30,6 @@ class PhysiologicalDirectionImplTest {
 
         assertEquals(PhysiologicalDirectionType.LEFT_TO_RIGHT, reaction.getDirectionType());
         assertEquals("RHEA:123", reaction.getReactionReference().getId());
-        TestHelper.verifyJson(reaction);
     }
 
 }

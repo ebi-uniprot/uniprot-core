@@ -1,6 +1,6 @@
 package org.uniprot.core.cv.pathway;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
@@ -10,7 +10,7 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class PathwayCacheIT {
+class PathwayCacheIT {
 private static List<Pathway> pathways;
 	
 	@BeforeAll
@@ -25,10 +25,10 @@ private static List<Pathway> pathways;
 				 pathways.stream().filter(val -> val.getAccession().equals(acc))
 		 .findFirst();
 		 assertTrue(opVal.isPresent());
-		 List<Pathway> hi = opVal.map(val ->val.getIsAParents()).orElse(Collections.emptyList());
-		 List<Pathway> hp = opVal.map(val ->val.getPartOfParents()).orElse(Collections.emptyList());
-		 assertTrue(hi.isEmpty());	
-		 assertTrue(hp.isEmpty());	
+		 List<Pathway> hi = opVal.map(Pathway::getIsAParents).orElse(Collections.emptyList());
+		 List<Pathway> hp = opVal.map(Pathway::getPartOfParents).orElse(Collections.emptyList());
+		 assertTrue(hi.isEmpty());
+		 assertTrue(hp.isEmpty());
 		
 	}
 	
@@ -38,11 +38,11 @@ private static List<Pathway> pathways;
 		 Optional<Pathway> opVal=
 				 pathways.stream().filter(val -> val.getAccession().equals(acc))
 		 .findFirst();
-		 List<Pathway> hi = opVal.map(val ->val.getIsAParents()).orElse(Collections.emptyList());
-		 List<Pathway> hp = opVal.map(val ->val.getPartOfParents()).orElse(Collections.emptyList());
+		 List<Pathway> hi = opVal.map(Pathway::getIsAParents).orElse(Collections.emptyList());
+		 List<Pathway> hp = opVal.map(Pathway::getPartOfParents).orElse(Collections.emptyList());
 		 assertTrue(opVal.isPresent());
 		 assertEquals(1, hi.size());
-		 assertTrue(hp.isEmpty());	
+		 assertTrue(hp.isEmpty());
 	}
 	
 	@Test
@@ -52,10 +52,10 @@ private static List<Pathway> pathways;
 				 pathways.stream().filter(val -> val.getAccession().equals(acc))
 		 .findFirst();
 		 assertTrue(opVal.isPresent());
-		 List<Pathway> hi = opVal.map(val ->val.getIsAParents()).orElse(Collections.emptyList());
-		 List<Pathway> hp = opVal.map(val ->val.getPartOfParents()).orElse(Collections.emptyList());
+		 List<Pathway> hi = opVal.map(Pathway::getIsAParents).orElse(Collections.emptyList());
+		 List<Pathway> hp = opVal.map(Pathway::getPartOfParents).orElse(Collections.emptyList());
 		 assertEquals(1, hi.size());
-		 assertTrue(hp.isEmpty());	
+		 assertTrue(hp.isEmpty());
 		
 	}
 }

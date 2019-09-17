@@ -1,6 +1,6 @@
 package org.uniprot.core.parser.fasta;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 
@@ -29,7 +29,7 @@ import org.uniprot.core.uniref.builder.UniRefMemberBuilder;
  *
 */
 
-public class UniRefFastaParserTest {
+class UniRefFastaParserTest {
 
 	@Test
 	void testFastaEntry() {

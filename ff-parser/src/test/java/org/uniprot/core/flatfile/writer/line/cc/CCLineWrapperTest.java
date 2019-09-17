@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
@@ -9,10 +9,9 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class CCLineWrapperTest extends CCBuildTestAbstr {
+class CCLineWrapperTest extends CCBuildTestAbstr {
     @Test
-    public void testTCSpace() {
+    void testTCSpace() {
         String text = "Belongs to the sodium:solute symporter (SSF) (TC 2.A.21) family";
         List<String> evs = new ArrayList<>();
         String evi = "ECO:0000256|RuleBase:RU362091";
@@ -26,7 +25,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testECSpace() {
+    void testECSpace() {
         String text = "Belongs to the sodium:solute symporter (SSF) (EC 2.A.21) family";
         List<String> evs = new ArrayList<>();
         String evi = "ECO:0000256|RuleBase:RU362091";
@@ -41,7 +40,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
 
     
     @Test
-    public void testDash() {
+    void testDash() {
         String text =
                 "Non-catalytic subunit of the queuine tRNA-ribosyltransferase (TGT) that catalyzes the base-exchange of"
                         + " a guanine (G) residue with queuine (Q) at position 34 (anticodon wobble position) in tRNAs with GU(N)"
@@ -64,7 +63,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testDashSpace1() {
+    void testDashSpace1() {
         String text =
                 "Responsible, at least in part, for anchoring of the major outer membrane lipoprotein (Lpp, also known as the Braun"
                         + " lipoprotein) to the peptidoglycan via a meso-diaminopimelyl-L-Lys- bond on the terminal residue of Lpp. Can be oxidized"
@@ -86,7 +85,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testMultiDash() {
+    void testMultiDash() {
         String text = "Release of protein hormones and neuropeptides from their precursors, "
                 + "generally by hydrolysis of -Lys-Arg-|- bonds.";
         String evi = "ECO:0000269|PubMed:18456808";
@@ -101,7 +100,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testMultiDash2() {
+    void testMultiDash2() {
         String text =
                 "Hydrolysis of -Arg-|-Xaa- and -Lys-|-Xaa- bonds in oligopeptides, even when P1' residue is proline.";
         String evi = "ECO:0000269|PubMed:18456808";
@@ -115,7 +114,7 @@ public class CCLineWrapperTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testMultiDash3() {
+    void testMultiDash3() {
         String text =
                 "Hydrolysis of proteins to small peptides in the presence of ATP and magnesium."
                         + " Alpha-casein is the usual test substrate. In the absence of ATP, only oligopeptides"

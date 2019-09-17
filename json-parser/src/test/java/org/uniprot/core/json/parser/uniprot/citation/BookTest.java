@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot.citation;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Book;
@@ -12,8 +12,8 @@ import org.uniprot.core.json.parser.ValidateJson;
 
 import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  *
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertNotNull;
 public class BookTest {
 
     @Test
-    public void testBookSimple() {
+    void testBookSimple() {
 
         Citation citation = new BookBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
@@ -33,7 +33,7 @@ public class BookTest {
     }
 
     @Test
-    public void testBookComplete() {
+    void testBookComplete() {
 
         Citation citation = getBook();
         ValidateJson.verifyJsonRoundTripParser(citation);

@@ -56,7 +56,7 @@ class CommentScoreTestBase {
         assertEquals(expectedScore, entryScored.score(), 0.001);
     }
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         String line = "ALLERGEN: Causes an allergic reaction in human. Binds to IgE and\n" +
                 "IgG.";

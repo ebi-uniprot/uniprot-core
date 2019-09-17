@@ -6,12 +6,12 @@
     <parent>
         <groupId>org.uniprot</groupId>
         <artifactId>core-parent</artifactId>
-        <version>1.0</version>
+        <version>0.1-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
     <artifactId>ff-parser</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>${project.parent.version}</version>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>org.uniprot</groupId>
             <artifactId>core-domain</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.uniprot</groupId>
             <artifactId>controlled-vocabulary</artifactId>
-            <version>${project.version}</version>
+            <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -40,7 +40,7 @@
             <version>${antlr4.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -83,63 +83,9 @@
             <artifactId>junit-jupiter-params</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.junit.vintage</groupId>
-            <artifactId>junit-vintage-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.platform</groupId>
-                    <artifactId>junit-platform-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.platform</groupId>
-                    <artifactId>junit-platform-commons</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-            </plugin>
-            <!-- 			<plugin> -->
-            <!-- 				<artifactId>maven-toolchains-plugin</artifactId> -->
-            <!-- 				<configuration> -->
-            <!-- 					<toolchains> -->
-            <!-- 						<jdk> -->
-            <!-- 							<version>1.9</version> -->
-            <!-- 							<vendor>oracle</vendor> -->
-            <!-- 						</jdk> -->
-            <!-- 					</toolchains> -->
-            <!-- 				</configuration> -->
-            <!-- 				<executions> -->
-            <!-- 					<execution> -->
-            <!-- 						<goals> -->
-            <!-- 							<goal>toolchain</goal> -->
-            <!-- 						</goals> -->
-            <!-- 					</execution> -->
-            <!-- 				</executions> -->
-            <!-- 			</plugin> -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>

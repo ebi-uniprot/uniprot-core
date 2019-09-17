@@ -7,16 +7,15 @@ import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.CitationXrefType;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
 import org.uniprot.core.citation.impl.AbstractCitationImpl;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 class AbstractCitationBuilderTest {
     private static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;

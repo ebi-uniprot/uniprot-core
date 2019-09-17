@@ -2,7 +2,7 @@ package org.uniprot.core.flatfile.parser.integration;
 
 import com.google.common.io.CharSource;
 import com.google.common.io.Resources;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
@@ -14,11 +14,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class EntryConverterIT {
+class EntryConverterIT {
 	@Test
-	public void testA0A0A0MSM0() {
+	void testA0A0A0MSM0() {
 		String filename = "/entryIT/A0A0A0MSM0.dat";
 		String entryStr = readEntryFromFile(filename);
 		System.out.println(entryStr);
@@ -26,7 +26,7 @@ public class EntryConverterIT {
 	}
 
 	@Test
-	public void testD6RDV7() {
+	void testD6RDV7() {
 		String filename = "/entryIT/D6RDV7.dat";
 		String entryStr = readEntryFromFile(filename);
 		System.out.println(entryStr);
@@ -34,7 +34,7 @@ public class EntryConverterIT {
 	}
 
 	@Test
-	public void testQ15758() {
+	void testQ15758() {
 		String filename = "/entryIT/Q15758.dat";
 		String entryStr = readEntryFromFile(filename);
 		System.out.println(entryStr);
@@ -42,7 +42,7 @@ public class EntryConverterIT {
 	}
 
 	@Test
-	public void testQ3SYC2() {
+	void testQ3SYC2() {
 		String filename = "/entryIT/Q3SYC2.dat";
 		String entryStr = readEntryFromFile(filename);
 		System.out.println(entryStr);
@@ -50,7 +50,7 @@ public class EntryConverterIT {
 	}
 
 	@Test
-	public void testQ63HN8() {
+	void testQ63HN8() {
 		String filename = "/entryIT/Q63HN8.dat";
 		String entryStr = readEntryFromFile(filename);
 		System.out.println(entryStr);
@@ -58,7 +58,7 @@ public class EntryConverterIT {
 	}
 
 	@Test
-	public void testQ9NYP9() {
+	void testQ9NYP9() {
 		String filename = "/entryIT/Q9NYP9.dat";
 		String entryStr = readEntryFromFile(filename);
 		// System.out.println(entryStr);
@@ -67,7 +67,7 @@ public class EntryConverterIT {
 
 	
 	@Test
-	public void testP05067() {
+	void testP05067() {
 		String filename = "/entryIT/P05067.dat";
 		String entryStr = readEntryFromFile(filename);
 		System.out.println(entryStr);

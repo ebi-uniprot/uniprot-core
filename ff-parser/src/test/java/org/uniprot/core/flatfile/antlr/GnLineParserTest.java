@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject;
@@ -9,11 +9,11 @@ import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject.GnNameType;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GnLineParserTest {
+class GnLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String gnLines = "GN   Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -33,7 +33,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testTwoLines() {
+	void testTwoLines() {
 		String gnLines = "GN   Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da;\n" + "GN   ORFNames=CG7877;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -47,7 +47,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testTwoLines2() {
+	void testTwoLines2() {
 		String gnLines = "GN   Name=Jon99Cii; Synonyms=SER1, SER5,\n" + "GN   Ser99Da; ORFNames=CG7877;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -60,7 +60,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testTwoGenes() {
+	void testTwoGenes() {
 		String gnLines = "GN   Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da; ORFNames=CG7877;\n" + "GN   and\n"
 				+ "GN   Name=Jon99Cii2;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
@@ -76,7 +76,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidence() {
+	void testWithEvidence() {
 		String gnLines = "GN   Name=blaCTX-M-14 {ECO:0000006|PubMed:20858735, ECO:0000006};\n"
 
 		;
@@ -89,7 +89,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidenceMore() {
+	void testWithEvidenceMore() {
 		String gnLines = "GN   Name=GeneA {ECO:0000006|PubMed:20858735}; Synonyms=Syn1 {ECO:0000006|PubMed:20858735,\n"
 				+ "GN   ECO:0000005|PubMed:208587235}, Syn2 {ECO:0000005|PubMed:208587235};\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
@@ -103,7 +103,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidenceMultiLine() {
+	void testWithEvidenceMultiLine() {
 		String gnLines = "GN   Name=blaCTX-M-14 {ECO:0000006|PubMed:20858735,\n" + "GN   ECO:0000006};\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -114,7 +114,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidenceMultiLine2() {
+	void testWithEvidenceMultiLine2() {
 		String gnLines = "GN   Name=blaCTX-M-14\n" + "GN   {ECO:0000006|PubMed:20858735, ECO:0000006};\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -125,7 +125,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testAll() {
+	void testAll() {
 		String gnLines = "GN   Name=ACO2; Synonyms=EI305; OrderedLocusNames=At1g62380;\n" + "GN   ORFNames=F24O1.10;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -138,7 +138,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testGeneWithComma() {
+	void testGeneWithComma() {
 		String gnLines = "GN   Name=ARG5,6;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -148,7 +148,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testGeneWithSemicolon() {
+	void testGeneWithSemicolon() {
 		String gnLines = "GN   Name=PHT4;1; Synonyms=ANTR1; OrderedLocusNames=At2g29650;\n"
 				+ "GN   ORFNames=T27A16.25;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
@@ -163,7 +163,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testGeneWithDash() {
+	void testGeneWithDash() {
 		String gnLines = "GN   Name=CXP;2-1;\n";
 		UniprotLineParser<GnLineObject> parser = new DefaultUniprotLineParserFactory().createGnLineParser();
 		GnLineObject obj = parser.parse(gnLines);
@@ -173,7 +173,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testMultiGene1() {
+	void testMultiGene1() {
 		String gnLines = "GN   Name=Jon99Cii {ECO:0000313|EMBL:BAG16761.1};\n"
 				+ "GN   Synonyms=SER1 {ECO:0000313|EMBL:BAG16761.1}, SER5 {ECO:0000303|Ref.6},\n"
 				+ "GN   Ser99Da {ECO:0000269|PubMed:10433554};\n"
@@ -202,7 +202,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testMultiGene2() {
+	void testMultiGene2() {
 		String gnLines = "GN   Name=GF14A {ECO:0000313|EMBL:BAG16761.1, ECO:0000269|PubMed:10433554,\n"
 				+ "GN   ECO:0000313|PDB:3OW2};\n" + "GN   OrderedLocusNames=Os08g0480800 {ECO:0000303|Ref.6,\n"
 				+ "GN   ECO:0000269|PubMed:10433554, ECO:0000313|PDB:3OW2}, LOC_Os08g37490\n"
@@ -225,7 +225,7 @@ public class GnLineParserTest {
 	}
 
 	@Test
-	public void testMultiEvidences() {
+	void testMultiEvidences() {
 		String gnLines = "GN   Name=par-5 {ECO:0000269|PubMed:10433554, ECO:0000269|Ref.6,\n"
 				+ "GN   ECO:0000303|PubMed:10433554, ECO:0000305, ECO:0000250|UniProtKB:Q8WUF5, ECO:0000250,\n"
 				+ "GN   ECO:0000312|EMBL:BAG16761.1, ECO:0000255|HAMAP-Rule:MF_00205, ECO:0000255,\n"

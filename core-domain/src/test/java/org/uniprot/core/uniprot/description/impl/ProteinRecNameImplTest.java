@@ -1,13 +1,12 @@
 package org.uniprot.core.uniprot.description.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.builder.ECBuilder;
 import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
-import org.uniprot.core.uniprot.description.impl.NameImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
@@ -15,7 +14,7 @@ import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProteinRecNameImplTest {
 
@@ -30,9 +29,6 @@ class ProteinRecNameImplTest {
         assertEquals(shortNames, recName.getShortNames());
         assertEquals(ecNumbers, recName.getEcNumbers());
         assertTrue(recName.isValid());
-
-        TestHelper.verifyJson(recName);
-
     }
 
     @Test
@@ -42,11 +38,7 @@ class ProteinRecNameImplTest {
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
         ProteinRecName recName = new ProteinRecNameBuilder().fullName(null).shortNames(shortNames).ecNumbers(ecNumbers).build();
-
         assertFalse(recName.isValid());
-
-        //	TestHelper.verifyJson(recName);
-
     }
 
     @Test
@@ -60,9 +52,6 @@ class ProteinRecNameImplTest {
         assertEquals(0, recName.getShortNames().size());
         assertEquals(0, recName.getEcNumbers().size());
         assertTrue(recName.isValid());
-
-        TestHelper.verifyJson(recName);
-
     }
 
     @Test
@@ -76,9 +65,6 @@ class ProteinRecNameImplTest {
         assertEquals(0, recName.getShortNames().size());
         assertEquals(ecNumbers, recName.getEcNumbers());
         assertTrue(recName.isValid());
-
-        TestHelper.verifyJson(recName);
-
     }
 
     @Test
@@ -92,9 +78,6 @@ class ProteinRecNameImplTest {
         assertEquals(shortNames, recName.getShortNames());
         assertEquals(0, recName.getEcNumbers().size());
         assertTrue(recName.isValid());
-
-        TestHelper.verifyJson(recName);
-
     }
 
 

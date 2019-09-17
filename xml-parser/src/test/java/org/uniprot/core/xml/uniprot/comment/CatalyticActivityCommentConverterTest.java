@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
@@ -33,7 +33,7 @@ class CatalyticActivityCommentConverterTest {
     private static CatalyticActivityCommentConverter converter;
 
     @BeforeAll
-    public static void setup() {
+    static void setup() {
         objectFactory = new ObjectFactory();
 
 

@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class CCLineBuildTest extends CCBuildTestAbstr {
+class CCLineBuildTest extends CCBuildTestAbstr {
 
 
 	@Test
-	public void testSIMILARITY3() {
+	void testSIMILARITY3() {
 		String ccLine =
 			   ("CC   -!- SIMILARITY: Belongs to the MHC class I family.\n" +
 				"CC   -!- SIMILARITY: Contains 1 Ig-like C1-type (immunoglobulin-like)\n" +
@@ -16,7 +16,7 @@ public class CCLineBuildTest extends CCBuildTestAbstr {
 
 	
 	@Test
-	public void testBigComment() {
+	void testBigComment() {
 		String ccLine =
 			   ("CC   -!- FUNCTION: Has immunoglobulin-binding and hemagglutination\n" +
 				"CC       properties, and can bind to mannose. Essential for virulence. May\n" +
@@ -33,7 +33,7 @@ public class CCLineBuildTest extends CCBuildTestAbstr {
 	}
 
 	@Test
-	public void testBigCommentAgain() {
+	void testBigCommentAgain() {
 		String ccLine =(
 						"CC   -!- FUNCTION: The B regulatory subunit may modulate substrate\n" +
 						"CC       selectivity and catalytic activity, and also may direct the\n" +

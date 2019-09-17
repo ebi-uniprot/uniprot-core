@@ -1,17 +1,16 @@
 package org.uniprot.core.citation.builder;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
+
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.Unpublished;
-import org.uniprot.core.citation.builder.UnpublishedBuilder;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
+class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
     @Test
-    public void testBuildWithTitlePublication() {
+    void testBuildWithTitlePublication() {
         UnpublishedBuilder builder = new UnpublishedBuilder();
         String title = "Some title";
         builder.title(title)
@@ -22,16 +21,13 @@ public class UnpublishedBuilderTest extends AbstractCitationBuilderTest {
         assertTrue(citation.getAuthoringGroup().isEmpty());
         assertTrue(citation.getAuthors().isEmpty());
         assertEquals(CitationType.UNPUBLISHED, citation.getCitationType());
-        TestHelper.verifyJson(citation);
-
     }
 
     @Test
-    public void testBuildAll() {
+    void testBuildAll() {
         UnpublishedBuilder builder = new UnpublishedBuilder();
         buildCitationParameters(builder);
         Unpublished citation = builder.build();
         verifyCitation(citation, CitationType.UNPUBLISHED);
-        TestHelper.verifyJson(citation);
     }
 }

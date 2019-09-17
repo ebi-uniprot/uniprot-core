@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineConverter;
@@ -11,11 +11,11 @@ import org.uniprot.core.uniprot.feature.Feature;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FtLineParserTest {
+class FtLineParserTest {
 	@Test
-	public void testChain() {
+	void testChain() {
 		 String ftLines = "FT   CHAIN        20    873       104 kDa microneme/rhoptry antigen.\n"
 				 +"FT                                /FTId=PRO_0000232680.\n"
                  ;
@@ -26,7 +26,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testHelix() {
+	void testHelix() {
 		 String ftLines = "FT   HELIX      33     83\n"
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -36,7 +36,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testMutagenMultiLineText() {
+	void testMutagenMultiLineText() {
 		 String ftLines = "FT   MUTAGEN     119    119       C->R,E,A: Loss of cADPr hydrolase and\n"
 				 +"FT                                ADP-ribosyl cyclase activity.\n"
                  ;
@@ -47,7 +47,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testVarSeqMultiLineText() {
+	void testVarSeqMultiLineText() {
 		 String ftLines = "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
 				 +"FT                                DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in\n"
 				 +"FT                                isoform 2).\n"
@@ -61,7 +61,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testVarSeqWraper1() {
+	void testVarSeqWraper1() {
 		 String ftLines = "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
 				 +"FT                                -> SECLTYGKQPLTSFHPFTSQMPP (in\n"
 				 +"FT                                isoform 2).\n"
@@ -75,7 +75,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testVarSeq() {
+	void testVarSeq() {
 		String ftLines ="FT   VAR_SEQ       1     31       MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n" +
 				"FT                                KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n" +
 				"FT                                SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK\n" +
@@ -101,7 +101,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testVarSeq2() {
+	void testVarSeq2() {
 		String ftLines ="FT   VAR_SEQ       1      1       M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA\n" +
 				"FT                                SPSRRGSASRAGPGRASETM (in isoform L-VEGF-\n" +
 				"FT                                1). {ECO:0000305}.\n" +
@@ -126,7 +126,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testMultiFt() {
+	void testMultiFt() {
 		 String ftLines = "FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
 				 +"FT                                DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in\n"
 				 +"FT                                isoform 2).\n"
@@ -149,7 +149,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testWithPotential() {
+	void testWithPotential() {
 		 String ftLines = "FT   CARBOHYD     61     61       N-linked (GlcNAc...); by host\n"
 				 +"FT                                (Potential).\n"
                  ;
@@ -161,7 +161,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testUnknown() {
+	void testUnknown() {
 		 String ftLines = "FT   TRANSIT       1      ?       Mitochondrion (Potential).\n"
 				 +"FT   CHAIN         ?    610       Protein ABC1 homolog, mitochondrial.\n"
 				 +"FT                                /FTId=PRO_0000000261.\n"
@@ -177,7 +177,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidence() {
+	void testWithEvidence() {
 		 String ftLines = "FT   METAL       186    186       Calcium; via carbonyl oxygen. {ECO:0000006|PubMed:20858735,\n"
 				 +"FT                                ECO:0000006|PubMed:23640942}.\n"
                  ;
@@ -190,7 +190,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidence2() {
+	void testWithEvidence2() {
 		 String ftLines = "FT   HELIX      33     83       {ECO:0000313|EMBL:BAG16761.1}.\n"
                  ;
 		 UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -202,7 +202,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testWithEvidence3() {
+	void testWithEvidence3() {
 		 String ftLines = "FT   REGION      237    240       Sulfate 1 binding.\n"
 				 +"FT   REGION      275    277       Phosphate 2 binding. {ECO:0000006|PubMed:20858735, ECO:0000006}.\n"
                  ;
@@ -218,7 +218,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidence4() {
+	void testWithEvidence4() {
 		 String ftLines = "FT   TRANSMEM     57     77       Helical; (Potential). {ECO:0000257|HAMAP-\n"
 				 +"FT                                Rule:MF_03021}.\n"
                  ;
@@ -232,7 +232,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testWithEvidence5() {
+	void testWithEvidence5() {
 		 String ftLines = "FT   TRANSMEM     57     77       Helical; (Potential). {ECO:0000257|\n"
 				 +"FT                                HAMAP-Rule:MF_03021}.\n"
                  ;
@@ -246,7 +246,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testWithEvidence6() {
+	void testWithEvidence6() {
 		 String ftLines = "FT   TRANSMEM     57     77       Helical; (Potential). {ECO:\n"
 				 +"FT                                0000257|HAMAP-Rule:MF_03021}.\n"
                  ;
@@ -260,7 +260,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testConflictFeature() {
+	void testConflictFeature() {
 		String ftLine =
 				"FT   CONFLICT      1      1       A -> Q (in Ref. 1; BAA37160/BAA37165 and\n" +
 				"FT                                2).\n";
@@ -273,7 +273,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testConflictFeature2() {
+	void testConflictFeature2() {
 		String ftLine =
 				"FT   CONFLICT    149    176       KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLST\n" +
 				"FT                                VS (in Ref. 4; CAA78385). {ECO:0000305}.\n";
@@ -287,7 +287,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testConflictFeatureWithSlash() {
+	void testConflictFeatureWithSlash() {
 		String ftLine =
 				"FT   CONFLICT    430    432       ALL -> DLV (in Ref. 1; BAA85929/BAA85930/\n" +
 				"FT                                BAA85931). {ECO:0000305}.\n";
@@ -301,7 +301,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testVariantWithMulti() {
+	void testVariantWithMulti() {
 		String ftLine =
 				"FT   VARIANT     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" +
 				"FT                                LKVPVVQKVTKRLGVTSPD.\n";
@@ -314,7 +314,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testVariantWithMulti2() {
+	void testVariantWithMulti2() {
 		String ftLine =
 				"FT   VARIANT     157    224       EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n" +
 				"FT                                PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n" +
@@ -330,7 +330,7 @@ public class FtLineParserTest {
 	}
 	
 	@Test
-	public void testVarSeqWithMulti() {
+	void testVarSeqWithMulti() {
 		String ftLine =
 				"FT   VAR_SEQ     267    294       ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" +
 				"FT                                LKVPVVQKVTKRLGVTSPD.\n";
@@ -344,7 +344,7 @@ public class FtLineParserTest {
 	}
 
 	@Test
-	public void testMultiFeatures() {
+	void testMultiFeatures() {
 		 String ftLines = "FT   MUTAGEN       2      2       B->A,N: Less than 1% residual activity.\n"
 	                +"FT                                {ECO:0000313|EMBL:BAG16761.1,\n"
 	                +"FT                                ECO:0000269|PubMed:10433554}.\n"

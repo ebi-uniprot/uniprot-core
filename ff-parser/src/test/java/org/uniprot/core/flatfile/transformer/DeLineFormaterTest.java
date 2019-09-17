@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineFormater;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DeLineFormaterTest {
+class DeLineFormaterTest {
 	@Test
-	public void test1() {
+	void test1() {
 		 String expected = "DE   RecName: Full=Annexin A5;\n"
                  +"DE            Short=Annexin-5;\n"
                  +"DE   AltName: Full=Annexin V;\n"
@@ -40,7 +40,7 @@ public class DeLineFormaterTest {
 	}
 	
 	@Test
-	public void testsubname() {
+	void testsubname() {
 		 String expected = "DE   SubName: Full=Annexin A5;\n"
                  +"DE            Short=Annexin-5;\n"
                  +"DE   SubName: Full=Annexin V;\n"               
@@ -57,7 +57,7 @@ public class DeLineFormaterTest {
 	}
 	
 	@Test
-	public void testContainInclude() {
+	void testContainInclude() {
 		 String expected = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
 		         +"DE   Includes:\n"
 		         +"DE     RecName: Full=Glutamate N-acetyltransferase;\n"

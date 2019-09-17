@@ -1,17 +1,17 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.InteractionObject;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineInteractionCommentParserTest {
+class CcLineInteractionCommentParserTest {
 	@Test
-	public void test1() {
+	void test1() {
 		String lines = "CC   -!- INTERACTION:\n" + "CC       P11450:fcp3c; NbExp=1; IntAct=EBI-126914, EBI-159556;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 		CcLineObject obj = parser.parse(lines);
@@ -36,7 +36,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test2() {
+	void test2() {
 		String lines = "CC   -!- INTERACTION:\n"
 				+ "CC       Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -51,7 +51,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test3() {
+	void test3() {
 		String lines = "CC   -!- INTERACTION:\n" + "CC       Q8NI08:-; NbExp=1; IntAct=EBI-80809, EBI-80799;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 		CcLineObject obj = parser.parse(lines);
@@ -65,7 +65,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test4() {
+	void test4() {
 		String lines = "CC   -!- INTERACTION:\n" + "CC       Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
 		CcLineObject obj = parser.parse(lines);
@@ -79,7 +79,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test5() {
+	void test5() {
 		String lines = "CC   -!- INTERACTION:\n"
 				+ "CC       Q8C1S0:2410018M14Rik (xeno); NbExp=1; IntAct=EBI-394562, EBI-398761;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -94,7 +94,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test6() {
+	void test6() {
 		String lines = "CC   -!- INTERACTION:\n" + "CC       P51618:IRAK1; NbExp=2; IntAct=EBI-448466, EBI-358664;\n"
 				+ "CC       P51617:IRAK2; NbExp=3; IntAct=EBI-448472, EBI-358664;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -110,7 +110,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test7() {
+	void test7() {
 		String lines = "CC   -!- INTERACTION:\n" + "CC       G5EC23:hcf-1; NbExp=2; IntAct=EBI-318108, EBI-4480523;\n"
 				+ "CC       Q11184:let-756; NbExp=3; IntAct=EBI-318108, EBI-3843983;\n"
 				+ "CC       Q10666:pop-1; NbExp=2; IntAct=EBI-318108, EBI-317870;\n"
@@ -131,7 +131,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test8() {
+	void test8() {
 		String lines = "CC   -!- INTERACTION:\n"
 				+ "CC       Q9W4W2:fs(1)Yb; NbExp=4; IntAct=EBI-2890374, EBI-3424083;\n"
 				+ "CC       Q9VKM1:piwi; NbExp=4; IntAct=EBI-2890374, EBI-3406276;\n";
@@ -149,7 +149,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test9() {
+	void test9() {
 		String lines = "CC   -!- INTERACTION:\n"
 				+ "CC       Q67XQ1:At1g03430; NbExp=2; IntAct=EBI-1100967, EBI-1100725;\n"
 				+ "CC       Q9C5A5:At5g08720/T2K12_70; NbExp=3; IntAct=EBI-1100967, EBI-1998000;\n"
@@ -169,7 +169,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test10() {
+	void test10() {
 		String lines = "CC   -!- INTERACTION:\n"
 				+ "CC       Q9V3G9:EG:BACR37P7.5; NbExp=1; IntAct=EBI-175067, EBI-162998;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -185,7 +185,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test11() {
+	void test11() {
 		String lines = "CC   -!- INTERACTION:\n"
 				+ "CC       Q9SZI2:NAP1;1; NbExp=4; IntAct=EBI-6913662, EBI-4424361;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -201,7 +201,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void test12() {
+	void test12() {
 		String lines = "CC   -!- INTERACTION:\n"
 				+ "CC       A1Z199:BCR/ABL fusion; NbExp=2; IntAct=EBI-491549, EBI-7286259;\n";
 		UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -216,7 +216,7 @@ public class CcLineInteractionCommentParserTest {
 
 	}
 	@Test
-	public void testNoHeader() {
+	void testNoHeader() {
 		String ccLineString =("INTERACTION:\n" +
 				"Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n" +
 				"Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n" +
@@ -230,7 +230,7 @@ public class CcLineInteractionCommentParserTest {
 	}
 
 	@Test
-	public void testNoHeader2() {
+	void testNoHeader2() {
 		String ccLineString =("INTERACTION:\n" +
 				"Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
 				"O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +

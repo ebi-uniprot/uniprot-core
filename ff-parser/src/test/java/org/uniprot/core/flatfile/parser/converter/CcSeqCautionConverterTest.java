@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.uniprot.comment.Comment;
@@ -10,14 +10,13 @@ import org.uniprot.core.uniprot.comment.SequenceCautionType;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CcSeqCautionConverterTest {
+class CcSeqCautionConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	
 	@Test
-	public void testSequenceCaution(){
+	void testSequenceCaution(){
 		//CC   -!- SEQUENCE CAUTION:
         //CC       Sequence=CAI12537.1; Type=Erroneous gene model prediction;
        //CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction; Positions=388, 399;

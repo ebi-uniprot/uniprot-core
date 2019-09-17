@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rn.RnLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rn.RnLineObject;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -8,21 +8,20 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RnLineConverterTest {
+class RnLineConverterTest {
 	@Test
-	public void test(){
+	void test(){
 	//	 "RN   [11]\n";
 		RnLineObject osO = new RnLineObject();
 		osO.number=11;
 		RnLineConverter converter = new RnLineConverter();
 		List<Evidence>  evIds =converter.convert(osO);
 		assertEquals(0, evIds.size());
-		
 	}
 	@Test
-	public void testEvidence(){
+	void testEvidence(){
 //		 "RN   [11]{[EI1][EI2]}\n";
 		RnLineObject osO = new RnLineObject();
 		osO.number=11;

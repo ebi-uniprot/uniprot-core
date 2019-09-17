@@ -21,13 +21,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Tests if the KW line is parsed correctly for SwissProt and
  * TrEMBL entries.
  */
-public class KeywordScoredTest {
+class KeywordScoredTest {
     private static final UniprotLineParserFactory PARSER_FACTORY = new DefaultUniprotLineParserFactory();
 
     @DisplayName("Inserts a single KW line into the entry. The keywords given " +
             "in this line is reflectd by the score.")
     @Test
-    public void shouldKeyword2Score0() {
+    void shouldKeyword2Score0() {
         String lines = "KW   ATP-binding; Cell cycle; Cell division; Kinase; Mitosis.\n";
         int score = 0;
         for (Keyword kw : parseLines(lines))
@@ -39,7 +39,7 @@ public class KeywordScoredTest {
     @DisplayName("Inserts multiple KW line into the entry. The keywords given " +
             "in this line is reflectd by the score.")
     @Test
-    public void shouldKeyword3Score0() {
+    void shouldKeyword3Score0() {
         String lines = "KW   ATP-binding; Cell cycle; Cell division; Kinase; Mitosis;\n" +
                 "KW   Phosphorylation; Serine/threonine-protein kinase; Transferase.\n";
         int score = 0;

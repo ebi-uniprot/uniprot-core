@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
@@ -17,8 +17,8 @@ import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  *
@@ -27,7 +27,7 @@ import static org.junit.Assert.assertNotNull;
 public class FeatureTest {
 
     @Test
-    public void testFeatureSimple() {
+    void testFeatureSimple() {
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
                 .build();
@@ -40,7 +40,7 @@ public class FeatureTest {
     }
 
     @Test
-    public void testFeatureExact() {
+    void testFeatureExact() {
     	  Range location = Range.create(2,8);
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -51,7 +51,7 @@ public class FeatureTest {
     }
 
     @Test
-    public void testFeatureOut() {
+    void testFeatureOut() {
     	  Range location =new Range(2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE) ;
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -62,7 +62,7 @@ public class FeatureTest {
     }
     
     @Test
-    public void testFeatureUnsure() {
+    void testFeatureUnsure() {
     	  Range location =new Range(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE) ;
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -73,7 +73,7 @@ public class FeatureTest {
     }
     
     @Test
-    public void testFeatureUnknow() {
+    void testFeatureUnknow() {
     	  Range location =new Range(-1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN) ;
         Feature feature = new FeatureBuilder()
                 .type(FeatureType.CHAIN)
@@ -84,7 +84,7 @@ public class FeatureTest {
     }
     
     @Test
-    public void testFeatureComplete() {
+    void testFeatureComplete() {
         Feature feature = getFeature();
 
         ValidateJson.verifyJsonRoundTripParser(feature);

@@ -1,26 +1,23 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
-import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Collections.singletonList;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class CofactorCommentBuilderTest {
+class CofactorCommentBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         CofactorCommentBuilder builder1 = new CofactorCommentBuilder();
         CofactorCommentBuilder builder2 = new CofactorCommentBuilder();
         assertNotNull(builder1);
@@ -29,7 +26,7 @@ public class CofactorCommentBuilderTest {
     }
 
     @Test
-    public void testSetMolecule() {
+    void testSetMolecule() {
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
         String molecule = "some mol";
         CofactorComment comment =
@@ -39,11 +36,10 @@ public class CofactorCommentBuilderTest {
         assertEquals(0, comment.getCofactors().size());
         assertFalse(comment.getNote() != null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetCofactors() {
+    void testSetCofactors() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
@@ -59,11 +55,10 @@ public class CofactorCommentBuilderTest {
         assertEquals(cofactor, comment.getCofactors().get(0));
         assertFalse(comment.getNote() != null);
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
@@ -82,11 +77,10 @@ public class CofactorCommentBuilderTest {
         assertNotNull(comment.getNote());
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testCreateCofactorReference() {
+    void testCreateCofactorReference() {
         CofactorReferenceType type = CofactorReferenceType.CHEBI;
         String referenceId = "CHEBI:314";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(type, referenceId);
@@ -95,7 +89,7 @@ public class CofactorCommentBuilderTest {
     }
 
     @Test
-    public void testCreateCofactor() {
+    void testCreateCofactor() {
         String name = "someName";
         DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());

@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
 import com.google.common.base.Strings;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
@@ -12,9 +12,9 @@ import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
+class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
-    public void testMASSSPEC() {
+    void testMASSSPEC() {
         String ccLine = "CC   -!- MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray;\n" +
                 "CC       Range=167-186; Note=Monophosphorylated;\n" +
                 "CC       Evidence={ECO:0000303|PubMed:16629414};";
@@ -41,7 +41,7 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testMASSSPEC2() {
+    void testMASSSPEC2() {
         String ccLine = "CC   -!- MASS SPECTROMETRY: Mass=22629; Mass_error=1.6;\n" +
                 "CC       Method=Electrospray; Range=16-214 (P04653-1); Note=Allele D, with\n" +
                 "CC       6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
@@ -67,7 +67,7 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testMass3() {
+    void testMass3() {
         String ccLine = "CC   -!- MASS SPECTROMETRY: Mass=22629; Mass_error=1.6;\n" +
                 "CC       Method=Electrospray; Range=16-214 (P04653-1); Note=Allele D, with\n" +
                 "CC       6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
@@ -97,7 +97,7 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testMass4() {
+    void testMass4() {
         String ccLine = "CC   -!- MASS SPECTROMETRY: Mass=3260; Method=MALDI; Range=?-?;\n" +
                 "CC       Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString = "MASS SPECTROMETRY: Mass=3260; Method=MALDI; Range=?-?; Evidence={ECO:0000303|PubMed:16629414};";
@@ -122,7 +122,7 @@ public class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void test6() {
+    void test6() {
         String ccLine = "CC   -!- MASS SPECTROMETRY: Mass=871.3; Method=Electrospray; Range=35-42,\n" +
                 "CC       101-108 (P04653-1), 145-152, 189-196; Note=Monophosphorylated;\n" +
                 "CC       Evidence={ECO:0000303|PubMed:16629414};";

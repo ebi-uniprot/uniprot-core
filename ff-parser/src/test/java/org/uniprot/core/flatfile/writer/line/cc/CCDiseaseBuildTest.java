@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
@@ -14,9 +14,9 @@ import java.util.List;
 import java.util.Map;
 
 
-public class CCDiseaseBuildTest extends CCBuildTestAbstr {
+class CCDiseaseBuildTest extends CCBuildTestAbstr {
     @Test
-    public void testNoEvidence() throws Exception {
+    void testNoEvidence() {
         String ccLine = ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n" +
                 "CC       characterized by malignant lesions arising from the inner wall of\n" +
                 "CC       the large intestine (the colon) and the rectum. Genetic\n" +
@@ -66,7 +66,7 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testEvidence1() throws Exception {
+    void testEvidence1() {
         String ccLine = ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n" +
                 "CC       characterized by malignant lesions arising from the inner wall of\n" +
                 "CC       the large intestine (the colon) and the rectum. Genetic\n" +
@@ -131,7 +131,7 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testEvidence2() throws Exception {
+    void testEvidence2() {
         String ccLine = ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n" +
                 "CC       characterized by malignant lesions arising from the inner wall of\n" +
                 "CC       the large intestine (the colon) and the rectum. Genetic\n" +
@@ -200,7 +200,7 @@ public class CCDiseaseBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void testEvidence3() throws Exception {
+    void testEvidence3() {
         String ccLine = ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n" +
                 "CC       characterized by malignant lesions arising from the inner wall of\n" +
                 "CC       the large intestine (the colon) and the rectum. Genetic\n" +

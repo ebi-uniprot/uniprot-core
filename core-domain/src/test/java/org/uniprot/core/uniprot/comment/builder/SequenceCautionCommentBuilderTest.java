@@ -1,21 +1,20 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class SequenceCautionCommentBuilderTest {
+class SequenceCautionCommentBuilderTest {
 
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         SequenceCautionCommentBuilder builder1 = new SequenceCautionCommentBuilder();
         SequenceCautionCommentBuilder builder2 = new SequenceCautionCommentBuilder();
         assertNotNull(builder1);
@@ -24,7 +23,7 @@ public class SequenceCautionCommentBuilderTest {
     }
 
     @Test
-    public void testSetSequenceCautionType() {
+    void testSetSequenceCautionType() {
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
@@ -34,11 +33,10 @@ public class SequenceCautionCommentBuilderTest {
         assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
         assertNull(comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetSequence() {
+    void testSetSequence() {
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
@@ -49,11 +47,10 @@ public class SequenceCautionCommentBuilderTest {
         assertFalse(comment.getNote() != null);
         assertEquals(0, comment.getPositions().size());
         assertEquals("somesequence", comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetPositions() {
+    void testSetPositions() {
         List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
@@ -66,11 +63,10 @@ public class SequenceCautionCommentBuilderTest {
         assertFalse(comment.getNote() != null);
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
@@ -84,6 +80,5 @@ public class SequenceCautionCommentBuilderTest {
         assertEquals("some note", comment.getNote());
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
-        TestHelper.verifyJson(comment);
     }
 }
