@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.de.DELineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.description.*;
@@ -14,13 +14,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DELineBuildTest {
-    DELineBuilder builder = new DELineBuilder();
+class DELineBuildTest {
+    private DELineBuilder builder = new DELineBuilder();
 
     @Test
-    public void test1() {
+    void test1() {
         Name recFullName = createName("14-3-3-like protein GF14 iota", Collections.emptyList());
         List<Name> recShortNames = new ArrayList<>();
         recShortNames.add(createName("ADAM 10", Collections.emptyList()));
@@ -94,7 +94,7 @@ public class DELineBuildTest {
     }
 
     @Test
-    public void test1Evidence() {
+    void test1Evidence() {
         Name recFullName = createName("14-3-3-like protein GF14 iota", createEvidence(
                 Arrays.asList(new String[]{"ECO:0000269|PubMed:10433554", "ECO:0000313|EMBL:BAG16761.1"})));
         List<Name> recShortNames = new ArrayList<>();
@@ -127,7 +127,7 @@ public class DELineBuildTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
 
         Name recFullName = createName("Granulocyte colony-stimulating factor", Collections.emptyList());
         List<Name> recShortNames = new ArrayList<>();
@@ -173,7 +173,7 @@ public class DELineBuildTest {
     }
 
     @Test
-    public void test2Evidence() {
+    void test2Evidence() {
 
         Name recFullName = createName("Granulocyte colony-stimulating factor",
                                       createEvidence(Arrays.asList(new String[]{"ECO:0000303|Ref.6",
@@ -224,7 +224,7 @@ public class DELineBuildTest {
     }
 
     @Test
-    public void testSubName() {
+    void testSubName() {
 
         List<ProteinSubName> submissionNames = new ArrayList<>();
         Name fullName1 = createName("Expressed protein", Collections.emptyList());
@@ -249,7 +249,7 @@ public class DELineBuildTest {
     }
 
     @Test
-    public void testSubNameWithEvidence() {
+    void testSubNameWithEvidence() {
         List<ProteinSubName> submissionNames = new ArrayList<>();
         Name fullName1 = createName("Expressed protein",
                                     createEvidence(Arrays.asList(new String[]{"ECO:0000313|EMBL:BAG16761.1"})));
@@ -280,7 +280,7 @@ public class DELineBuildTest {
     }
 
     @Test
-    public void testIncludeAndContain() {
+    void testIncludeAndContain() {
         String deLine = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n" + "DE   Includes:\n"
                 + "DE     RecName: Full=Glutamate N-acetyltransferase;\n" + "DE              EC=2.3.1.35;\n"
                 + "DE     AltName: Full=Ornithine acetyltransferase;\n" + "DE              Short=OATase;\n"
@@ -382,7 +382,7 @@ public class DELineBuildTest {
     }
 
     @Test
-    public void testIncludeAndContainWithEvidenceEvidence() {
+    void testIncludeAndContainWithEvidenceEvidence() {
         String deLine = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ {ECO:0000313|EMBL:BAG16761.1};\n"
                 + "DE   Includes:\n"
                 + "DE     RecName: Full=Glutamate N-acetyltransferase {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1};\n"

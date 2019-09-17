@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 13:47:47 To change this template use File | Settings
  * | File Templates.
  */
-public class Q04756ScoredTest {
+class Q04756ScoredTest {
 
     private String entry = "ID   HGFA_HUMAN              Reviewed;         655 AA.\n" +
             "AC   Q04756; Q14726; Q2M1W7; Q53X47;\n" +
@@ -365,7 +365,7 @@ public class Q04756ScoredTest {
             "//\n";
 
     @Test
-    public void test() {
+    void test() {
         UniProtEntry entry = new DefaultUniProtParser(new SupportingDataMapImpl(), true)
                 .parse(this.entry);
         UniProtEntryScored scored = new UniProtEntryScored(entry);

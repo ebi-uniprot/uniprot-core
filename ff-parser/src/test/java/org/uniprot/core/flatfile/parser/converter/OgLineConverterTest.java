@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineConverter;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject.OgEnum;
@@ -11,13 +11,13 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import java.util.ArrayList;
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class OgLineConverterTest {
+class OgLineConverterTest {
 	private final OgLineConverter converter = new OgLineConverter();
 	@Test
-	public void test1() {
+	void test1() {
 		//OG   Plasmid R6-5, Plasmid IncFII R100 (NR1), and
         //OG   Plasmid IncFII R1-19 (R1 drd-19).
 		OgLineObject ogObj = new OgLineObject();
@@ -31,7 +31,7 @@ public class OgLineConverterTest {
 		 testExist(GeneEncodingType.PLASMID, "IncFII R1-19 (R1 drd-19)", orgs);
 	}
 	@Test
-	public void test2() {
+	void test2() {
 	/*OG   Hydrogenosome.
         |OG   Mitochondrion.
         |OG   Nucleomorph.
@@ -70,7 +70,7 @@ public class OgLineConverterTest {
 	}
 	
 	@Test
-	public void testEvidence(){
+	void testEvidence(){
 		OgLineObject ogObj = new OgLineObject();
 		ogObj.ogs.add(OgEnum.HYDROGENOSOME); //{EI2}
 		ogObj.plasmidNames.add("R6-5");

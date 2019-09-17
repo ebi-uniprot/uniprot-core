@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineTransformer;
 import org.uniprot.core.uniprot.feature.Feature;
@@ -8,14 +8,12 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
-
-public class FtLineTransformerTest {
+class FtLineTransformerTest {
 	private FtLineTransformer transformer =new FtLineTransformer();
 	@Test
-	public void testChain() {
+	void testChain() {
 
 		String lines = "CHAIN ? 121 Potential.\n/FTId=PRO_5001267722.";
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -33,7 +31,7 @@ public class FtLineTransformerTest {
 	}
 
 	@Test
-	public void testSignal() {
+	void testSignal() {
 
 		String lines = "SIGNAL <1 33 some description.";
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -51,7 +49,7 @@ public class FtLineTransformerTest {
 
 	}
 	@Test
-	public void testConflict() {
+	void testConflict() {
 
 		String lines = "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633).";
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -76,7 +74,7 @@ public class FtLineTransformerTest {
 	}
 
 	@Test
-	public void testMutagen() {
+	void testMutagen() {
 
 		String lines = "MUTAGEN 9 9 K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16.";
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -103,7 +101,7 @@ public class FtLineTransformerTest {
 	
 	
 	@Test
-	public void testVariant() {
+	void testVariant() {
 
 		String lines = "VARIANT 421 421 C -> R (in GS; dbSNP:rs28936387).\n/FTId=VAR_007115.";
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -133,7 +131,7 @@ public class FtLineTransformerTest {
 	
 	
 	@Test
-	public void testVariant2() {
+	void testVariant2() {
 
 		String lines = "VARIANT 561 561 Missing (in GS).\n/FTId=VAR_007118.";
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -159,7 +157,7 @@ public class FtLineTransformerTest {
 	}
 	
 	@Test
-	public void testVarSeq() {
+	void testVarSeq() {
 
 		String lines = "VAR_SEQ 239 239 E -> ERDVIRSVRLPRE (in isoform PLEC-0, isoform 1C,"
 				+ " isoform 2A and isoform 3A).\n/FTId=VSP_005049.";
@@ -193,7 +191,7 @@ public class FtLineTransformerTest {
 	}
 	
 	@Test
-	public void testVarSeq2() {
+	void testVarSeq2() {
 
 		String lines = "VAR_SEQ 1 242 Missing (in isoform PLEC-1H).\n/FTId=VSP_005040.";
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -222,7 +220,7 @@ public class FtLineTransformerTest {
 	//
 	
 	@Test
-	public void testCarbohyd() {
+	void testCarbohyd() {
 
 		String lines = "CARBOHYD 196 196 N-linked (GlcNAc...); by host.";	
 		List<Feature> features = transformer.transformNoHeader( lines) ;
@@ -243,7 +241,7 @@ public class FtLineTransformerTest {
 		
 	}
 	@Test
-	public void testCarbohyd2() {
+	void testCarbohyd2() {
 
 		String lines =  "CARBOHYD 7 7 O-linked (GalNAc...).";
 		List<Feature> features = transformer.transformNoHeader( lines) ;

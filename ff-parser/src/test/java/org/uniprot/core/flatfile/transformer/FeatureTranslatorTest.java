@@ -1,21 +1,20 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
-import org.uniprot.core.flatfile.transformer.FeatureTransformer;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class FeatureTranslatorTest {
+class FeatureTranslatorTest {
     private final FeatureTransformer transformer = new FeatureTransformer();
 
     @Test
-    public void testNonTer() {
+    void testNonTer() {
         // "SIGNAL <1 33 Potential.",
         // "CHAIN 34 121 Potential.\n/FTId=PRO_5001267722.",
         //
@@ -29,7 +28,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testChain() {
+    void testChain() {
 
         String testString = "CHAIN ? 121 Potential.\n/FTId=PRO_5001267722.";
         Feature feature = transformer.transform(testString);
@@ -45,7 +44,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testSignal() {
+    void testSignal() {
 
         String testString = "SIGNAL <1 33 Potential.";
         Feature feature = transformer.transform(testString);
@@ -62,7 +61,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testBinding() {
+    void testBinding() {
 
         String testString = "BINDING 138 138 NAD(P)HX; via amide nitrogen.";
         Feature feature = transformer.transform(testString);
@@ -85,7 +84,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testConflict() {
+    void testConflict() {
 
         String testString = "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633).";
         Feature feature = transformer.transform(testString);
@@ -116,7 +115,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testConflict2() {
+    void testConflict2() {
 
         String testString = "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633 and 3; AA432).";
         Feature feature = transformer.transform(testString);
@@ -148,7 +147,7 @@ public class FeatureTranslatorTest {
 
     
     @Test
-    public void testConflict3() {
+    void testConflict3() {
 
         String testString = "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633, 3; AA432 and 4; AB321).";
         Feature feature = transformer.transform(testString);
@@ -180,7 +179,7 @@ public class FeatureTranslatorTest {
     }
     
     @Test
-    public void testMutagen() {
+    void testMutagen() {
 
         String testString = "MUTAGEN 9 9 K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16.";
         Feature feature = transformer.transform(testString);
@@ -210,7 +209,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testVariant() {
+    void testVariant() {
 
         String testString = "VARIANT 421 421 C -> R (in GS; dbSNP:rs28936387).\n/FTId=VAR_007115.";
         Feature feature = transformer.transform(testString);
@@ -242,7 +241,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testVariant2() {
+    void testVariant2() {
 
         String testString = "VARIANT 561 561 Missing (in GS).\n/FTId=VAR_007118.";
         Feature feature = transformer.transform(testString);
@@ -271,7 +270,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testVarSeq() {
+    void testVarSeq() {
 
         String testString = "VAR_SEQ 239 239 E -> ERDVIRSVRLPRE (in isoform PLEC- 0, isoform 1C,"
                 + " isoform 2A and isoform 3A).\n/FTId=VSP_005049.";
@@ -306,7 +305,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testVarSeq2() {
+    void testVarSeq2() {
 
         String testString = "VAR_SEQ 1 242 Missing (in isoform PLEC-1H).\n/FTId=VSP_005040.";
         Feature feature = transformer.transform(testString);
@@ -337,7 +336,7 @@ public class FeatureTranslatorTest {
     //
 
     @Test
-    public void testCarbohyd() {
+    void testCarbohyd() {
 
         String testString = "CARBOHYD 196 196 N-linked (GlcNAc...); by host.";
         Feature feature = transformer.transform(testString);
@@ -362,7 +361,7 @@ public class FeatureTranslatorTest {
     }
 
     @Test
-    public void testCarbohyd2() {
+    void testCarbohyd2() {
 
         String testString = "CARBOHYD 7 7 O-linked (GalNAc...).";
         Feature feature = transformer.transform(testString);

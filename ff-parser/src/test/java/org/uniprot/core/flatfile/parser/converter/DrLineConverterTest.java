@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.exception.DatabaseTypeNotExistException;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
@@ -9,15 +9,13 @@ import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 import java.util.List;
 
-import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class DrLineConverterTest {
+class DrLineConverterTest {
 	final private DrLineConverter converter = new DrLineConverter();
 	
 	@Test
-	public void testEmbl(){
+	void testEmbl(){
 		DrLineObject obj = new DrLineObject();
 		obj.drObjects.add(creatDrObject("EMBL", "AY548484", "AAT09660.1", "someValue", "Genomic_DNA"  ));
 		UniProtDrObjects drObjects= converter.convert(obj);
@@ -28,7 +26,7 @@ public class DrLineConverterTest {
 	}
 	
 	@Test
-	public void test(){
+	void test(){
 		/**
 		 *  val drLine = """DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.
                  |DR   RefSeq; YP_031579.1; NC_005946.1.
@@ -66,8 +64,8 @@ public class DrLineConverterTest {
 				"IPR007031", "Poxvirus_VLTF3", null, null );
 	}
 	
-	@Test (expected = DatabaseTypeNotExistException.class) 
-	public void testWrongDr()throws Exception{
+	@Test
+	void testWrongDr()throws Exception{
 		/**
 		 *  val drLine = """DR   EMBL2; AY548484; AAT09660.1; -; Genomic_DNA.
              
@@ -75,12 +73,11 @@ public class DrLineConverterTest {
 		DrLineObject obj = new DrLineObject();
 		obj.drObjects.add(creatDrObject("EMBL2", "AY548484", "AAT09660.1", "-", "Genomic_DNA"  ));
 		
-		UniProtDrObjects drObjects= converter.convert(obj);
-		assertNull(drObjects);
+		assertThrows(DatabaseTypeNotExistException.class, () -> converter.convert(obj));
 	}
 	
 	@Test 
-	public void testIgnoreWrongDr()throws Exception{
+	void testIgnoreWrongDr()throws Exception{
 		/**
 		 *  val drLine = """DR   EMBL2; AY548484; AAT09660.1; -; Genomic_DNA.
              
@@ -93,7 +90,7 @@ public class DrLineConverterTest {
 	}
 	
 	@Test
-	public void testIgnoreWrongDrComprehensive(){
+	void testIgnoreWrongDrComprehensive(){
 		/**
 		 *  val drLine = """DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.
                  |DR   RefSeq; YP_031579.1; NC_005946.1.
@@ -134,7 +131,7 @@ public class DrLineConverterTest {
 	}
 	
 	@Test
-	public void testIgnoreWrongDR3(){
+	void testIgnoreWrongDR3(){
 		/**
 		 *  val drLine = """DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.
                  |DR   RefSeq; YP_031579.1; NC_005946.1.
@@ -176,7 +173,7 @@ public class DrLineConverterTest {
 	
 	
 	@Test
-	public void testIgnoreWrongDR2(){
+	void testIgnoreWrongDR2(){
 		/**
 		 *  val drLine = """DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.
                  |DR   RefSeq; YP_031579.1; NC_005946.1.
@@ -219,7 +216,7 @@ public class DrLineConverterTest {
 	
 	
 	@Test
-	public void testEvidence(){
+	void testEvidence(){
 		//"DR   EMBL; CP001509; ACT41999.1; -; Genomic_DNA.{EI3}
         //DR   EMBL; AM946981; CAQ30614.1; -; Genomic_DNA.{EI4}
 		//DR   GeneID; 2947773; -.

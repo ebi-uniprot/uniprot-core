@@ -1,26 +1,22 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
+
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class SubcellularLocationCommentBuilderTest {
+class SubcellularLocationCommentBuilderTest {
 
     @Test
-    public void testSetMolecule() {
+    void testSetMolecule() {
         String molecule = "some mol";
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         SubcellularLocationComment comment = builder.molecule(molecule)
@@ -32,7 +28,7 @@ public class SubcellularLocationCommentBuilderTest {
     }
 
     @Test
-    public void testSetSubcellularLocations() {
+    void testSetSubcellularLocations() {
         List<SubcellularLocation> sublocations = new ArrayList<>();
         String molecule = "some mol";
         String locationId ="someLocId";
@@ -63,11 +59,10 @@ public class SubcellularLocationCommentBuilderTest {
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         List<SubcellularLocation> sublocations = new ArrayList<>();
         String molecule = "";
         String locationVal = "some data";
@@ -100,21 +95,19 @@ public class SubcellularLocationCommentBuilderTest {
         assertEquals(2, comment.getSubcellularLocations().size());
         assertEquals(sublocation, comment.getSubcellularLocations().get(0));
         assertEquals(sublocation2, comment.getSubcellularLocations().get(1));
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testCreateSubcellularLocationValue() {
+    void testCreateSubcellularLocationValue() {
         String value = "some data";
         List<Evidence> evidences = createEvidences();
         SubcellularLocationValue slv = new SubcellularLocationValueBuilder("id1", value, evidences).build();
         assertEquals(value, slv.getValue());
         assertEquals(evidences, slv.getEvidences());
-        TestHelper.verifyJson(slv);
     }
 
     @Test
-    public void testCreateSubcellularLocation() {
+    void testCreateSubcellularLocation() {
         String locationVal = "some data";
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
@@ -130,13 +123,11 @@ public class SubcellularLocationCommentBuilderTest {
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertEquals(orientation, sublocation.getOrientation());
-        TestHelper.verifyJson(sublocation);
 
         sublocation = new SubcellularLocationBuilder()
                 .location(location).topology(topology).build();
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertFalse(sublocation.getOrientation() != null);
-        TestHelper.verifyJson(sublocation);
     }
 }

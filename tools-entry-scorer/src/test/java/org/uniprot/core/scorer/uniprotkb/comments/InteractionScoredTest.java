@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 
-public class InteractionScoredTest extends CommentScoreTestBase {
+class InteractionScoredTest extends CommentScoreTestBase {
     @Test
-    public void shouldScore90() throws Exception {
+    void shouldScore90() throws Exception {
         String line = "CC   -!- INTERACTION:\n" +
                 "CC       Self; NbExp=1; IntAct=EBI-2856, EBI-2856;\n" +
                 "CC       Q02821:SRP1; NbExp=2; IntAct=EBI-2856, EBI-1797;\n" +

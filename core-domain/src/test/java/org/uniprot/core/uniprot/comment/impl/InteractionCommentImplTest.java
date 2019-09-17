@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
@@ -37,6 +37,5 @@ class InteractionCommentImplTest {
         InteractionComment comment = new InteractionCommentImpl(interactions);
         assertEquals(interactions, comment.getInteractions());
         assertEquals(CommentType.INTERACTION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 }

@@ -11,7 +11,7 @@ import org.uniprot.core.taxonomy.builder.TaxonomyInactiveReasonBuilder;
  *
  * @author lgonzales
  */
-public class TaxonomyInactiveReasonTest {
+class TaxonomyInactiveReasonTest {
 
     @Test
     void testSimpleTaxonomyInactiveReason(){

@@ -20,7 +20,7 @@ public class SequenceConverter implements Converter<SequenceType, Sequence> {
 	@Override
 	public Sequence fromXml(SequenceType xmlObj) {
 		String sequence = xmlObj.getValue();
-		sequence = sequence.replaceAll(" ", "");
+	//	sequence = sequence.replaceAll(" ", "");
 		return new SequenceBuilder(sequence).build();
 	}
 
@@ -31,23 +31,24 @@ public class SequenceConverter implements Converter<SequenceType, Sequence> {
 		xmlObj.setLength(uniObj.getValue().length());
 		xmlObj.setMass(uniObj.getMolWeight());
 		String sequence = uniObj.getValue();
-		StringBuilder sb = new StringBuilder();
-		int count = 0;
-		int size = 60;
-		for (int i = 0; i < sequence.length(); i = i + size) {
-			if (count > 0) {
-				sb.append(" ");
-			}
-			if (sequence.length() > i + size) {
+//		StringBuilder sb = new StringBuilder();
+//
+//		int count = 0;
+//		int size = 60;
+//		for (int i = 0; i < sequence.length(); i = i + size) {
+//			if (count > 0) {
+//				sb.append(" ");
+//			}
+//			if (sequence.length() > i + size) {
+//
+//				sb.append(sequence.substring(i, i + size));
+//				count++;
+//			} else {
+//				sb.append(sequence.substring(i));
+//			}
+//		}
 
-				sb.append(sequence.substring(i, i + size));
-				count++;
-			} else {
-				sb.append(sequence.substring(i));
-			}
-		}
-
-		xmlObj.setValue(sb.toString());
+		xmlObj.setValue(sequence);
 
 		return xmlObj;
 	}

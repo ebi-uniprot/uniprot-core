@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CCAPCommentLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.comment.*;
@@ -13,13 +13,13 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
+class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
     CCAPCommentLineBuilder ccLineBuilder = new CCAPCommentLineBuilder();
 
     @Test
-    public void TestNoEvidence() {
+    void TestNoEvidence() {
         String ccLine = "CC   -!- ALTERNATIVE PRODUCTS:\n" + "CC       Event=Alternative splicing; Named isoforms=6;\n"
                 + "CC         Comment=Additional isoforms seem to exist.;\n" + "CC       Name=1; Synonyms=A;\n"
                 + "CC         IsoId=Q9V8R9-1; Sequence=Displayed;\n"
@@ -160,7 +160,7 @@ public class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
     }
 
     @Test
-    public void TestEvidence1() {
+    void TestEvidence1() {
         String ccLine = "CC   -!- ALTERNATIVE PRODUCTS:\n" + "CC       Event=Alternative splicing; Named isoforms=6;\n"
                 + "CC         Comment=Additional isoforms seem to exist.\n"
                 + "CC         {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}. Another\n"

@@ -2,7 +2,7 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorReferenceType;
@@ -25,7 +25,6 @@ class CofactorImplTest {
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(evidences, cofactor.getEvidences());
-        TestHelper.verifyJson(cofactor);
     }
 
     @Test
@@ -37,6 +36,5 @@ class CofactorImplTest {
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(evidences, cofactor.getEvidences());
-        TestHelper.verifyJson(cofactor);
     }
 }

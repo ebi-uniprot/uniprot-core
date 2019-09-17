@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineConverter;
 import org.uniprot.core.flatfile.parser.impl.dt.DtLineObject;
 import org.uniprot.core.uniprot.EntryAudit;
@@ -9,13 +9,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DtLineConverterTest {
+class DtLineConverterTest {
 	private DtLineConverter converter = new DtLineConverter();
 
 	@Test
-	public void testConverter() throws Exception {
+	void testConverter() {
 		DtLineObject dtLine = new DtLineObject();
 
 		DateTimeFormatter formatter = new DateTimeFormatterBuilder().parseCaseInsensitive()

@@ -1,25 +1,22 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
-import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class MassSpectrometryCommentBuilderTest {
+class MassSpectrometryCommentBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         MassSpectrometryCommentBuilder builder1 = new MassSpectrometryCommentBuilder();
         MassSpectrometryCommentBuilder builder2 = new MassSpectrometryCommentBuilder();
         assertNotNull(builder1);
@@ -28,7 +25,7 @@ public class MassSpectrometryCommentBuilderTest {
     }
 
     @Test
-    public void testSetmethod() {
+    void testSetmethod() {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
         MassSpectrometryComment comment =
                 builder.method(MassSpectrometryMethod.ELECTROSPRAY)
@@ -40,11 +37,10 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetMolWeight() {
+    void testSetMolWeight() {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
         MassSpectrometryComment comment =
 
@@ -61,11 +57,10 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetMolWeightError() {
+    void testSetMolWeightError() {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
 
         MassSpectrometryComment comment = builder.method(MassSpectrometryMethod.ELECTROSPRAY)
@@ -82,11 +77,10 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
         MassSpectrometryComment comment =
                 builder.method(MassSpectrometryMethod.ELECTROSPRAY)
@@ -101,11 +95,10 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetranges() {
+    void testSetranges() {
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         ranges.add(createMassSpectrometryRange(12, 21, null));
         ranges.add(createMassSpectrometryRange(13, 25, "someValue"));
@@ -126,11 +119,10 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetEvidences() {
+    void testSetEvidences() {
         List<MassSpectrometryRange> ranges = new ArrayList<>();
         ranges.add(createMassSpectrometryRange(12, 21, null));
         ranges.add(createMassSpectrometryRange(13, 25, "someValue"));
@@ -153,11 +145,10 @@ public class MassSpectrometryCommentBuilderTest {
         assertEquals(evidences, comment.getEvidences());
         assertEquals(ranges, comment.getRanges());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testCreateMassSpectrometryRange() {
+    void testCreateMassSpectrometryRange() {
         int start = 23;
         int end = 34;
         String isoformId = "some value";

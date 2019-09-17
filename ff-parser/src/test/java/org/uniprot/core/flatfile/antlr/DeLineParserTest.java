@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.antlr;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
@@ -12,11 +12,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DeLineParserTest {
+class DeLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		 String deLines = "DE   RecName: Full=Annexin A5;\n"
                  +"DE            Short=Annexin-5;\n"
                  +"DE   AltName: Full=Annexin V;\n"
@@ -57,7 +57,7 @@ public class DeLineParserTest {
 		
 	}
 	@Test
-	public void testWithEvidence() {
+	void testWithEvidence() {
 		 String deLines = "DE   RecName: Full=Annexin A5 {ECO:0000256|PIRNR:PIRNR038994};\n"
                  +"DE            Short=Annexin-5 {ECO:0000256|PIRNR:PIRNR038994, ECO:0000256|PIRNR:PIRNR038995};\n"
                  +"DE   AltName: Full=Annexin V {ECO:0000256|PIRNR:PIRNR038994};\n"
@@ -99,7 +99,7 @@ public class DeLineParserTest {
 	}
 	
 	@Test
-	public void testWithNewEvidence() {
+	void testWithNewEvidence() {
 		 String deLines = "DE   RecName: Full=Annexin A5 {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942};\n"
                  +"DE            Short=Annexin-5 {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640943};\n"            
                  +"DE   Flags: Precursor {ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942, ECO:0000001};\n"
@@ -114,7 +114,7 @@ public class DeLineParserTest {
 		
 	}
 	@Test
-	public void testWithEC() {
+	void testWithEC() {
 		 String deLines = "DE   AltName: Short=PAP-I;\n"
                  +"DE            EC=1.1.1.1;\n"
                  +"DE            EC=1.1.1.2;\n"
@@ -132,7 +132,7 @@ public class DeLineParserTest {
 		 verify(obj.altName.get(2), null, Arrays.asList(new String[] {"PAP-I", "PAP.1", "PAP.2"}) , Collections.emptyList()); 
 	}
 	@Test
-	public void testWithContainInclude() {
+	void testWithContainInclude() {
 		 String deLines = "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;\n"
          +"DE   Includes:\n"
          +"DE     RecName: Full=Glutamate N-acetyltransferase;\n"
@@ -172,7 +172,7 @@ public class DeLineParserTest {
 	
 	}
 	@Test
-	public void testFlags() {
+	void testFlags() {
 		 String deLines = "DE   RecName: Full=UI;\n"
                  +"DE   Flags: Precursor; Fragments;\n"          
                  ;
@@ -184,7 +184,7 @@ public class DeLineParserTest {
 		 
 	}
 	@Test
-	public void testAllergen() {
+	void testAllergen() {
 		 String deLines = "DE   RecName: Full=13S globulin seed storage protein 3;\n"
                  +"DE   AltName: Full=Legumin-like protein 3;\n"          
                  +"DE   AltName: Allergen=Fag e 1;\n"          
@@ -196,7 +196,7 @@ public class DeLineParserTest {
 		 assertEquals("Fag e 1", obj.alt_Allergen);	 
 	}
 	@Test
-	public void testEcn2() {
+	void testEcn2() {
 		 String deLines = "DE   RecName: Full=Amino acid--[acyl-carrier-protein] ligase 1;\n"
                  +"DE            EC=6.2.1.n2;\n"          
     
@@ -206,7 +206,7 @@ public class DeLineParserTest {
 		 verify(obj.recName,"Amino acid--[acyl-carrier-protein] ligase 1", Arrays.asList(new String[] {}) , Arrays.asList(new String[] {"6.2.1.n2"}) );
 	}
 	@Test
-	public void testWithSemiColon() {
+	void testWithSemiColon() {
 		 String deLines = "DE   RecName: Full=Dual specificity phosphatase Cdc25;\n"
                  +"DE            EC=3.1.3.48;\n"          
                  +"DE   AltName: Full=Arath;CDC25;\n"        
@@ -217,7 +217,7 @@ public class DeLineParserTest {
 		 verify(obj.altName.get(0),"Arath;CDC25", Arrays.asList(new String[] {}) , Collections.emptyList());
 	}
 	@Test
-	public void testNamewithSemiColonEcEvidence() {
+	void testNamewithSemiColonEcEvidence() {
 		 String deLines = "DE   SubName: Full=Cryptic phospho-beta-glucosidase; cryptic {ECO:0000313|EMBL:CSQ00014.1};\n"
                  +"DE            EC=3.2.1.86 {ECO:0000313|EMBL:CSQ00014.1};\n"          
                  ;
@@ -233,7 +233,7 @@ public class DeLineParserTest {
 	}
 	
 	@Test
-	public void testSubnames() {
+	void testSubnames() {
 		 String deLines = "DE   SubName: Full=Conjugal transfer protein;\n"
                  +"DE   SubName: Full=Conjugative transfer protein;\n"          
                  +"DE   SubName: Full=TraR;\n"          
@@ -245,7 +245,7 @@ public class DeLineParserTest {
 		 verify(obj.subName.get(2),"TraR", Arrays.asList(new String[] {}) , Arrays.asList(new String[] {}) );
 	}
 	@Test
-	public void testWithContainIncludeEvidence() {
+	void testWithContainIncludeEvidence() {
 		 String deLines = "DE   RecName: Full=Some name {ECO:12345|Ref.1, ECO:0000256|HAMAP-Rule:MF_00205};\n"
 				  +"DE            Short=SN {ECO:12345|Ref.2, ECO:0000256|HAMAP-Rule:MF_00206};\n"
 				  +"DE            EC=3.4.21.10 {ECO:12345|Ref.3, ECO:0000256|HAMAP-Rule:MF_00205};\n"
@@ -276,7 +276,7 @@ public class DeLineParserTest {
 	
 	}
 	@Test
-	public void testWithCurlyBracket() {
+	void testWithCurlyBracket() {
 		 String deLines = "DE   RecName: Full=(4-*{*4-[2-(gamma-L-glutamylamino)ethyl]phenoxymethyl*}*furan-2-yl)methanamine synthase {ECO:12345|Ref.1};\n"
 		
                 ;

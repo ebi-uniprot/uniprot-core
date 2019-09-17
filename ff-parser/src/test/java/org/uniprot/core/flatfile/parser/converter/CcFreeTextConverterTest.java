@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
@@ -11,13 +11,13 @@ import org.uniprot.core.uniprot.comment.FreeTextComment;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CcFreeTextConverterTest {
+class CcFreeTextConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
-	public void testTextOnly(){
+	void testTextOnly(){
 		/*
 		 * CC   -!- FUNCTION: This enzyme is necessary for target cell lysis in cell-
         CC       mediated immune responses. It cleaves after Lys or Arg. May be

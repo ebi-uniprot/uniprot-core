@@ -1,6 +1,5 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import junit.framework.TestCase;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -42,7 +41,7 @@ class RxLineConverterTest {
                 .getCitationXrefsByType(CitationXrefType.AGRICOLA).orElse(wrongXref);
         assertEquals(agricolaXref, wrongXref);
 
-        TestCase.assertEquals("15626370", pubmedXref.getId());
-        TestCase.assertEquals("10.1016/j.toxicon.2004.10.011", doiXref.getId());
+        assertEquals("15626370", pubmedXref.getId());
+        assertEquals("10.1016/j.toxicon.2004.10.011", doiXref.getId());
     }
 }

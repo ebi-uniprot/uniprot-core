@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
@@ -9,12 +9,12 @@ import org.uniprot.core.uniprot.comment.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CcBPCPConverterTest {
+class CcBPCPConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(null, null);
 	@Test
-	public void testBPCP() {
+	void testBPCP() {
 		CcLineObject ccLineO = new CcLineObject();	
 		CcLineObject.CC cc1 =new CcLineObject.CC();
 		cc1.topic =CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES;
@@ -45,7 +45,7 @@ public class CcBPCPConverterTest {
 		assertEquals(0.000197, maxV.getVelocity(), 0.000001);
 	}
 	@Test
-	public void testBioPhyChem2(){
+	void testBioPhyChem2(){
 		//CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:
         //CC       Kinetic parameters:
         //CC         KM=71 uM for ATP;
@@ -101,7 +101,7 @@ public class CcBPCPConverterTest {
 				wcomment.getTemperatureDependence().getTexts().get(0).getValue());
 	}
 	@Test
-	public void testBioPhyChem(){
+	void testBioPhyChem(){
 		//CC   -!- BIOPHYSICOCHEMICAL PROPERTIES:
 		//CC       Absorption:\n" +
         //CC         Abs(max)=3 nm;\n" +

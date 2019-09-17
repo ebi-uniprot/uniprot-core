@@ -1,10 +1,8 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
@@ -15,161 +13,143 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 
-public class FreeTextCommentBuilderTest {
+class FreeTextCommentBuilderTest {
     @Test
-    public void testBuildAllergenComment() {
+    void testBuildAllergenComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.ALLERGEN, texts);
         assertEquals(CommentType.ALLERGEN, comment.getCommentType());
         assertEquals(texts, comment.getTexts());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildBiotechnologyComment() {
+    void testBuildBiotechnologyComment() {
         List<EvidencedValue> texts = createEvidenceValues2();
         FreeTextComment comment = buildFreeTextComment(CommentType.BIOTECHNOLOGY, texts);
         assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildCatalyticActivityComment() {
+    void testBuildCatalyticActivityComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.CATALYTIC_ACTIVITY, texts);
         assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildCautionComment() {
+    void testBuildCautionComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.CAUTION, texts);
         assertEquals(CommentType.CAUTION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildDevelopmentalStageComment() {
+    void testBuildDevelopmentalStageComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.DEVELOPMENTAL_STAGE, texts);
         assertEquals(CommentType.DEVELOPMENTAL_STAGE, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildDisruptionPhenotypeComment() {
+    void testBuildDisruptionPhenotypeComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.DISRUPTION_PHENOTYPE, texts);
         assertEquals(CommentType.DISRUPTION_PHENOTYPE, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildDomainComment() {
+    void testBuildDomainComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.DOMAIN, texts);
         assertEquals(CommentType.DOMAIN, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildEnzymeRegulationComment() {
+    void testBuildEnzymeRegulationComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.ACTIVITY_REGULATION, texts);
         assertEquals(CommentType.ACTIVITY_REGULATION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildFunctionComment() {
+    void testBuildFunctionComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.FUNCTION, texts);
         assertEquals(CommentType.FUNCTION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildInductionComment() {
+    void testBuildInductionComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.INDUCTION, texts);
         assertEquals(CommentType.INDUCTION, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildMiscellaneousComment() {
+    void testBuildMiscellaneousComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.MISCELLANEOUS, texts);
         assertEquals(CommentType.MISCELLANEOUS, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildPathwayComment() {
+    void testBuildPathwayComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.PATHWAY, texts);
         assertEquals(CommentType.PATHWAY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildPharmaceuticalComment() {
+    void testBuildPharmaceuticalComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.PHARMACEUTICAL, texts);
         assertEquals(CommentType.PHARMACEUTICAL, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildPolymorphismComment() {
+    void testBuildPolymorphismComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.POLYMORPHISM, texts);
         assertEquals(CommentType.POLYMORPHISM, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildPtmComment() {
+    void testBuildPtmComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.PTM, texts);
         assertEquals(CommentType.PTM, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildSimiarityComment() {
+    void testBuildSimiarityComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.SIMILARITY, texts);
         assertEquals(CommentType.SIMILARITY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildSubunitComment() {
+    void testBuildSubunitComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.SUBUNIT, texts);
         assertEquals(CommentType.SUBUNIT, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildTissueSpecificityComment() {
+    void testBuildTissueSpecificityComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.TISSUE_SPECIFICITY, texts);
         assertEquals(CommentType.TISSUE_SPECIFICITY, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testBuildToxicDoseComment() {
+    void testBuildToxicDoseComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         FreeTextComment comment = buildFreeTextComment(CommentType.TOXIC_DOSE, texts);
         assertEquals(CommentType.TOXIC_DOSE, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     private FreeTextComment buildFreeTextComment(CommentType type, List<EvidencedValue> texts) {
@@ -179,10 +159,10 @@ public class FreeTextCommentBuilderTest {
                 .build();
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testBuildNoneFreeTextComment() {
+    @Test
+    void testBuildNoneFreeTextComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
-        buildFreeTextComment(CommentType.COFACTOR, texts);
+        assertThrows(IllegalArgumentException.class, () -> buildFreeTextComment(CommentType.COFACTOR, texts));
     }
 
     private List<EvidencedValue> createEvidenceValues2() {

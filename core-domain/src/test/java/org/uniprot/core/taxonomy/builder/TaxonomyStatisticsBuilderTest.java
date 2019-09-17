@@ -56,7 +56,7 @@ class TaxonomyStatisticsBuilderTest {
     }
 
 
-    public static TaxonomyStatistics getCompleteTaxonomyStatistics() {
+    static TaxonomyStatistics getCompleteTaxonomyStatistics() {
         return new TaxonomyStatisticsBuilder()
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)

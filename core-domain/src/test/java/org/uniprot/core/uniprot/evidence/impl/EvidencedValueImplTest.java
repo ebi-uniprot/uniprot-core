@@ -1,32 +1,29 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
+
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
-import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EvidencedValueImplTest {
+class EvidencedValueImplTest {
 
     @Test
-    public void testEmptyEvidence() {
+    void testEmptyEvidence() {
         String value = "some value";
         List<Evidence> evidences = Collections.emptyList();
         EvidencedValueImpl evidencedValue = new EvidencedValueImpl(value, evidences);
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
-        TestHelper.verifyJson(evidencedValue);
     }
 
     @Test
-    public void testTwoEvidences() {
+    void testTwoEvidences() {
         String value = "some values";
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(new EvidenceImpl(
@@ -38,6 +35,5 @@ public class EvidencedValueImplTest {
         EvidencedValueImpl evidencedValue = new EvidencedValueImpl(value, evidences);
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
-        TestHelper.verifyJson(evidencedValue);
     }
 }

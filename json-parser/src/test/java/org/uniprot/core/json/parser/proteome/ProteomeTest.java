@@ -20,14 +20,14 @@ import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ProteomeTest {
+class ProteomeTest {
 	@Test
 	void testComponent() {
 		List<DBCrossReference<ProteomeXReferenceType>> xrefs =new ArrayList<>();

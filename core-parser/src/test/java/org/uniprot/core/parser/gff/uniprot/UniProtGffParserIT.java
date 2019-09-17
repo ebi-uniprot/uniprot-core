@@ -7,7 +7,6 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
-import org.uniprot.core.parser.gff.uniprot.UniProtGffParser;
 import org.uniprot.core.uniprot.UniProtEntry;
 
 import java.io.IOException;
@@ -20,8 +19,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.slf4j.LoggerFactory.getLogger;
 
 /**

@@ -8,7 +8,7 @@ import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Created 27/02/19

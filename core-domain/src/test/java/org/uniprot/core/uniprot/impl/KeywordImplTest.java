@@ -1,22 +1,22 @@
 package org.uniprot.core.uniprot.impl;
 
-import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprot.Keyword;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
-import org.uniprot.core.uniprot.impl.KeywordImpl;
 
-public class KeywordImplTest {
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class KeywordImplTest {
 
     @Test
-    public void testKeywordImpl() {
+    void testKeywordImpl() {
         String val = "Transmembrane";
         String id = "KW-0812";
         KeywordCategory category = KeywordCategory.DOMAIN;
@@ -28,7 +28,7 @@ public class KeywordImplTest {
     }
 
     @Test
-    public void testGetDisplayedValue() {
+    void testGetDisplayedValue() {
         String val = "Transmembrane";
         String id = "KW-0812";
         KeywordCategory category = KeywordCategory.DOMAIN;

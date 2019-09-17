@@ -1,15 +1,15 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.os.OsLineObject;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OsLineParserTest {
+class OsLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String osLines = "OS   Solanum melongena (Eggplant) (Aubergine).\n";
 		UniprotLineParser<OsLineObject> parser = new DefaultUniprotLineParserFactory().createOsLineParser();
 		OsLineObject obj = parser.parse(osLines);
@@ -17,7 +17,7 @@ public class OsLineParserTest {
 	
 	}
 	@Test
-	public void testTwoLine() {
+	void testTwoLine() {
 		String osLines = "OS   Rous (strain Schmidt-Ruppin A) (Avian leukosis\n"
 				+"OS   virus-RSA).\n"
 				;
@@ -28,7 +28,7 @@ public class OsLineParserTest {
 	}
 	
 	@Test
-	public void testThreeLine() {
+	void testThreeLine() {
 		String osLines = "OS   Rous (strain Schmidt-Ruppin A)\n"
 				+"OS   (Avian leukosis\n"
 				+"OS   virus-RSA).\n"
@@ -39,7 +39,7 @@ public class OsLineParserTest {
 	
 	}
 	@Test
-	public void testWithSlash() {
+	void testWithSlash() {
 		String osLines = "OS   African swine fever virus (isolate Pig/Kenya/KEN-50/1950) (ASFV).\n"
 				;
 		UniprotLineParser<OsLineObject> parser = new DefaultUniprotLineParserFactory().createOsLineParser();
@@ -48,7 +48,7 @@ public class OsLineParserTest {
 	
 	}
 	@Test
-	public void testWithDot() {
+	void testWithDot() {
 		String osLines = "OS   Salmonella enterica subsp. enterica serovar Heidelberg str.\n"
 				;
 		UniprotLineParser<OsLineObject> parser = new DefaultUniprotLineParserFactory().createOsLineParser();
@@ -57,7 +57,7 @@ public class OsLineParserTest {
 	
 	}
 	@Test
-	public void testWithDot2() {
+	void testWithDot2() {
 		String osLines = "OS   Aeromonas sp. E6(2011).\n"
 				;
 		UniprotLineParser<OsLineObject> parser = new DefaultUniprotLineParserFactory().createOsLineParser();
@@ -67,7 +67,7 @@ public class OsLineParserTest {
 	}
 	
 	@Test
-	public void testVirus() {
+	void testVirus() {
 		String osLines = "OS   Frog virus 3 (isolate Goorha) (FV-3).\n"
 				;
 		UniprotLineParser<OsLineObject> parser = new DefaultUniprotLineParserFactory().createOsLineParser();

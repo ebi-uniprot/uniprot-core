@@ -1,9 +1,7 @@
 package org.uniprot.core.flatfile.transformer;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.flatfile.transformer.CommentTransformerHelper;
-import org.uniprot.core.flatfile.transformer.DiseaseCommentTransformer;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
@@ -12,14 +10,14 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class DiseaseCommentTransformerTest {
+class DiseaseCommentTransformerTest {
     private final DiseaseCommentTransformer transformer = new DiseaseCommentTransformer();
 
     @Test
-    public void testNoEvidence1() {
+    void testNoEvidence1() {
         String ccLineString = ("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
                 "characterized by malignant lesions arising from the inner wall of " +
                 "the large intestine (the colon) and the rectum. Genetic " +
@@ -55,7 +53,7 @@ public class DiseaseCommentTransformerTest {
     }
 
     @Test
-    public void testEvidence1() {
+    void testEvidence1() {
         String ccLineStringEvidence = ("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease " +
                 "characterized by malignant lesions arising from the inner wall of " +
                 "the large intestine (the colon) and the rectum. Genetic " +
@@ -101,7 +99,7 @@ public class DiseaseCommentTransformerTest {
     }
 
     @Test
-    public void testStructuredDisease1() {
+    void testStructuredDisease1() {
         String diseaseId = "Deafness, autosomal recessive, 12";
         String diseaseAcronym = "DFNB12";
         String diseaseReferenceType = "MIM";
@@ -140,7 +138,7 @@ public class DiseaseCommentTransformerTest {
     }
 
     @Test
-    public void testStructuredDisease2() {
+    void testStructuredDisease2() {
         String diseaseId = "Bartter syndrome 4B";
         String diseaseAcronym = "BS4B";
         String diseaseReferenceType = "MIM";
@@ -182,7 +180,7 @@ public class DiseaseCommentTransformerTest {
     }
 
     @Test
-    public void testStructuredDisease2WithEvidence() {
+    void testStructuredDisease2WithEvidence() {
         String diseaseId = "Bartter syndrome 4B";
         String diseaseAcronym = "BS4B";
         String diseaseReferenceType = "MIM";
@@ -235,7 +233,7 @@ public class DiseaseCommentTransformerTest {
     }
 
     @Test
-    public void testStructuredDisease3() {
+    void testStructuredDisease3() {
         String diseaseId = "Herpes simplex encephalitis 2";
         String diseaseAcronym = "HSE2";
         String diseaseReferenceType = "MIM";
@@ -279,7 +277,7 @@ public class DiseaseCommentTransformerTest {
     }
 
     @Test
-    public void testFailed() {
+    void testFailed() {
         String val = "DISEASE: Juvenile polyposis/hereditary hemorrhagic telangiectasia syndrome (JP/HHT) [MIM:175050]:"
                 + " JP/HHT syndrome phenotype consists of the coexistence of juvenile polyposis (JIP) and hereditary"
                 + " hemorrhagic telangiectasia (HHT) [MIM:187300] in a single individual. JIP and HHT are autosomal"

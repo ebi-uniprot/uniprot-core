@@ -5,14 +5,14 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
 import org.uniprot.core.xml.uniprot.EvidenceConverter;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
-public class EvidenceConverterTest {
+class EvidenceConverterTest {
 	private final EvidenceConverter converter = new EvidenceConverter();
 
 	@Test
-	public void testProteomics() {
+	void testProteomics() {
 		// **EV ECO:0000213; PubMed:1234143; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000213|PubMed:1234143";
 		String ecoCode = "ECO:0000213";
@@ -29,7 +29,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testSequenceAnalysis() {
+	void testSequenceAnalysis() {
 		// **EV ECO:0000255; -; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000255";
 		String ecoCode = "ECO:0000255";
@@ -45,7 +45,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testImportS() {
+	void testImportS() {
 		// **EV ECO:0000312; DatabaseName:DatabaseId; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000312|DatabaseName:DatabaseId";
 		String ecoCode = "ECO:0000312";
@@ -62,7 +62,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testSimilarity() {
+	void testSimilarity() {
 		// **EV ECO:0000250; UniProtKB:Accession; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000250|UniProtKB:Accession";
 		String ecoCode = "ECO:0000250";
@@ -78,7 +78,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testReference() {
+	void testReference() {
 		// **EV ECO:0000303; Reference:x; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000303|Ref.3";
 		String ecoCode = "ECO:0000303";
@@ -94,7 +94,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testOpinion2() {
+	void testOpinion2() {
 		// **EV ECO:0000303; PubMed:x; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000303|PubMed:x";
 		String ecoCode = "ECO:0000303";
@@ -111,7 +111,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testExperimental1() {
+	void testExperimental1() {
 		// **EV ECO:0000269; PubMed:123; XXX; 13-NOV-1978
 		String evIdStr = "ECO:0000269|PubMed:123";
 		String ecoCode = "ECO:0000269";
@@ -127,7 +127,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testExperimental2() {
+	void testExperimental2() {
 		// **EV ECO:0000269; Ref.1; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000269|Ref.1";
 		String ecoCode = "ECO:0000269";
@@ -141,7 +141,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testCurator1() {
+	void testCurator1() {
 		// **EV ECO:0000305; PubMed:x; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000305|PubMed:x";
 		String ecoCode = "ECO:0000305";
@@ -157,7 +157,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testCurator2() {
+	void testCurator2() {
 		// **EV ECO:0000305; -; XXX; 13-NOV-1978.
 		String evIdStr = "ECO:0000305";
 		String ecoCode = "ECO:0000305";
@@ -173,7 +173,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testImportEmbl() {
+	void testImportEmbl() {
 		// **EV ECO:0000313; EMBL:BAG16761.1; -; 01-OCT-2010.
 		String evIdStr = "ECO:0000313|EMBL:BAG16761.1";
 		String ecoCode = "ECO:0000313";
@@ -189,7 +189,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testImportHamapT() {
+	void testImportHamapT() {
 		// **ECO:0000256|HAMAP-Rule:MF_00205
 		String evIdStr = "ECO:0000256|HAMAP-Rule:MF_00205";
 		String ecoCode = "ECO:0000256";
@@ -205,7 +205,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testImportHamapS() {
+	void testImportHamapS() {
 		// **ECO:0000255|HAMAP-Rule:MF_00205
 		String evIdStr = "ECO:0000255|HAMAP-Rule:MF_00205";
 		String ecoCode = "ECO:0000255";
@@ -221,7 +221,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testImportEnsembl() {
+	void testImportEnsembl() {
 
 		// **EV ECO:0000313; Ensembl:ENSMUSP00000067691; -; 10-JUN-2011.
 
@@ -239,7 +239,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testImportPIRNR() {
+	void testImportPIRNR() {
 		// **EV ECO:0000256; PIRNR:PIRNR000477; -; 24-OCT-2012.
 
 		String evIdStr = "ECO:0000256|PIRNR:PIRNR000477";
@@ -256,7 +256,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testNoSource() {
+	void testNoSource() {
 		// ECO:0000255
 		String evIdStr = "ECO:0000255";
 		String ecoCode = "ECO:0000255";
@@ -272,7 +272,7 @@ public class EvidenceConverterTest {
 	}
 
 	@Test
-	public void testImportProImp() {
+	void testImportProImp() {
 		// **EV ECO:0000313; ProtImp:UP000006470; -; 25-JUN-2014.
 		String evIdStr = "ECO:0000313|ProtImp:UP000006470";
 		String ecoCode = "ECO:0000313";

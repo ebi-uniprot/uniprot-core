@@ -21,7 +21,7 @@ import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 class BPCPConverterTest {
 
     @Test
-    public void testSetKineticParameters() {
+    void testSetKineticParameters() {
 
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
@@ -46,7 +46,7 @@ class BPCPConverterTest {
     }
 
     @Test
-    public void testSetPHDependence() {
+    void testSetPHDependence() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
@@ -71,7 +71,7 @@ class BPCPConverterTest {
     }
 
     @Test
-    public void testSetRedoxPotential() {
+    void testSetRedoxPotential() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));
@@ -97,7 +97,7 @@ class BPCPConverterTest {
     }
 
     @Test
-    public void testSetTemperatureDependence() {
+    void testSetTemperatureDependence() {
         List<MaximumVelocity> velocities = new ArrayList<>();
         velocities.add(createMaximumVelocity(1.0, "unit1", "enzyme1", createEvidences()));
         velocities.add(createMaximumVelocity(1.321, "unit2", "enzyme2", createEvidences()));

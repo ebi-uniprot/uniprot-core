@@ -1,16 +1,16 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject;
 import org.uniprot.core.flatfile.parser.impl.dr.DrLineObject.DrObject;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DrLineParserTest {
+class DrLineParserTest {
 	@Test
-	public void testEMBL() {
+	void testEMBL() {
 		 String dfLines = "DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.\n"
                  ;
 		 UniprotLineParser<DrLineObject> parser = new DefaultUniprotLineParserFactory().createDrLineParser();
@@ -31,7 +31,7 @@ public class DrLineParserTest {
 		}
 	}
 	@Test
-	public void testMultiDRs() {
+	void testMultiDRs() {
 		 String dfLines = "DR   EMBL; AY548484; AAT09660.1; -; Genomic_DNA.\n"
 				 +"DR   RefSeq; YP_031579.1; NC_005946.1.\n"
 				 +"DR   ProteinModelPortal; Q6GZX4; -.\n"
@@ -56,7 +56,7 @@ public class DrLineParserTest {
 		 verify(obj.drObjects.get(8), "Pfam", "PF04947", "Pox_VLTF3",  "1", null, null);
 	}
 	@Test
-	public void testWithEvidence() {
+	void testWithEvidence() {
 		 String dfLines = "DR   EMBL; HF571520; CCQ33941.1; -; Genomic_DNA. {ECO:19841122|Ref.1}\n"
                  ;
 		 UniprotLineParser<DrLineObject> parser = new DefaultUniprotLineParserFactory().createDrLineParser();
@@ -66,7 +66,7 @@ public class DrLineParserTest {
 		 assertEquals("ECO:19841122|Ref.1", obj.evidenceInfo.evidences.get(obj.drObjects.get(0)).get(0));
 	}
 	@Test
-	public void testWithDots() {
+	void testWithDots() {
 		 String dfLines = "DR   EMBL; AY548484; AAT09696.1; -; Genomic_DNA.\n"
 				 +"DR   Gene3D; 3.40.50.1000; -; 2.\n"
                  ;
@@ -77,7 +77,7 @@ public class DrLineParserTest {
 		 verify(obj.drObjects.get(1), "Gene3D", "3.40.50.1000", "-", "2", null, null);
 	}
 	@Test
-	public void testWithSemicolon() {
+	void testWithSemicolon() {
 		 String dfLines = "DR   Orphanet; 102724; Acute myeloid leukemia with t(8;21)(q22;q22) translocation.\n"
                  ;
 		 UniprotLineParser<DrLineObject> parser = new DefaultUniprotLineParserFactory().createDrLineParser();
@@ -86,7 +86,7 @@ public class DrLineParserTest {
 		 verify(obj.drObjects.get(0), "Orphanet", "102724", "Acute myeloid leukemia with t(8;21)(q22;q22) translocation", null, null, null);
 	}
 	@Test
-	public void testWithDots2() {
+	void testWithDots2() {
 		 String dfLines = "DR   UCSC; T23F11.3a.1; c. elegans.\n"
 				 +"DR   Gene3D; 3.40.50.1000; -; 2.\n"
                  ;
@@ -97,7 +97,7 @@ public class DrLineParserTest {
 		 verify(obj.drObjects.get(1), "Gene3D", "3.40.50.1000", "-", "2", null, null);
 	}
 	@Test
-	public void testWithSlash() {
+	void testWithSlash() {
 		 String dfLines = "DR   FlyBase; FBgn0013067; Dvir\\Cdc37.\n"
                  ;
 		 UniprotLineParser<DrLineObject> parser = new DefaultUniprotLineParserFactory().createDrLineParser();
@@ -106,7 +106,7 @@ public class DrLineParserTest {
 		 verify(obj.drObjects.get(0), "FlyBase", "FBgn0013067", "Dvir\\Cdc37", null, null, null);
 	}
 	@Test
-	public void testWithDash() {
+	void testWithDash() {
 		 String dfLines = "DR   Orphanet; 99880; Hyperparathyroidism - jaw tumor syndrome.\n"
                  ;
 		 UniprotLineParser<DrLineObject> parser = new DefaultUniprotLineParserFactory().createDrLineParser();
@@ -115,7 +115,7 @@ public class DrLineParserTest {
 		 verify(obj.drObjects.get(0), "Orphanet", "99880", "Hyperparathyroidism - jaw tumor syndrome", null, null, null);
 	}
 	@Test
-	public void testWithCurlyBracket() {
+	void testWithCurlyBracket() {
 		 String dfLines = "DR   GO; GO:0033942; F:4-alpha-D-{(1->4)-alpha-D-glucano}trehalose trehalohydrolase activity; IEA:UniProtKB-EC.\n"
                  ;
 		 UniprotLineParser<DrLineObject> parser = new DefaultUniprotLineParserFactory().createDrLineParser();
@@ -125,7 +125,7 @@ public class DrLineParserTest {
 	}
 	
 	@Test
-	public void testWithStarStar() {
+	void testWithStarStar() {
 		 String dfLines = "DR   PROSITE; PS51165; THUMP; 1.\n"
 				 +"DR   PROSITE; PS01261; UPF0020; 1.\n"
 				 +"**   PROSITE; PS00092; N6_MTASE; FALSE_POS_1.\n"
@@ -140,7 +140,7 @@ public class DrLineParserTest {
 		 assertEquals("PS00092; N6_MTASE; FALSE_POS_2.", obj.drObjects.get(3).ssLineValue);
 	}
 	@Test
-	public void testWithIsoforms() {
+	void testWithIsoforms() {
 		 String dfLines = "DR   PRIDE; P19802; -.\n"
 				 +"DR   PRIDE; P19803; -. [P19802-2]\n"
 				 +"DR   PROSITE; PS00157; RUBISCO_LARGE; 1. [P21235-2]\n"

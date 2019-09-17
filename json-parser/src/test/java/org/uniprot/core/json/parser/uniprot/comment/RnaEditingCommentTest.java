@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.Note;
@@ -12,8 +12,8 @@ import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales
@@ -21,7 +21,7 @@ import static org.junit.Assert.assertNotNull;
 public class RnaEditingCommentTest {
 
     @Test
-    public void testRnaEditingSimple() {
+    void testRnaEditingSimple() {
 
         RnaEditingComment comment = new RnaEditingCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -33,7 +33,7 @@ public class RnaEditingCommentTest {
     }
 
     @Test
-    public void testRnaEditingComplete() {
+    void testRnaEditingComplete() {
         RnaEditingComment comment = getRnaEditingComment();
         ValidateJson.verifyJsonRoundTripParser(comment);
         ValidateJson.verifyEmptyFields(comment);

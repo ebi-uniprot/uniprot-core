@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.InteractionType;
@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CCInteractionBuildTest extends CCBuildTestAbstr {
+class CCInteractionBuildTest extends CCBuildTestAbstr {
     @Test
-    public void testINTERACTION1() {
+    void testINTERACTION1() {
         String ccLine = ("CC   -!- INTERACTION:\n" +
                 "CC       Self; NbExp=1; IntAct=EBI-123485, EBI-123485;\n" +
                 "CC       Q9W158:CG4612; NbExp=1; IntAct=EBI-123485, EBI-89895;\n" +
@@ -57,7 +57,7 @@ public class CCInteractionBuildTest extends CCBuildTestAbstr {
 
     //
     @Test
-    public void testINTERACTION2() {
+    void testINTERACTION2() {
         String ccLine = ("CC   -!- INTERACTION:\n" +
                 "CC       Q9W1K5-1:CG11299; NbExp=1; IntAct=EBI-133844, EBI-212772;\n" +
                 "CC       O96017:CHEK2; NbExp=4; IntAct=EBI-372428, EBI-1180783;\n" +

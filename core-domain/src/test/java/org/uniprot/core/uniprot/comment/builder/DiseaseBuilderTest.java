@@ -1,22 +1,21 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class DiseaseBuilderTest {
+class DiseaseBuilderTest {
     @Test
-    public void testNewInstance() {
+    void testNewInstance() {
         DiseaseBuilder builder1 = new DiseaseBuilder();
         DiseaseBuilder builder2 = new DiseaseBuilder();
         assertNotNull(builder1);
@@ -25,7 +24,7 @@ public class DiseaseBuilderTest {
     }
 
     @Test
-    public void testSetDiseaseId() {
+    void testSetDiseaseId() {
         DiseaseBuilder builder = new DiseaseBuilder();
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
@@ -34,11 +33,10 @@ public class DiseaseBuilderTest {
         assertNull(disease.getDescription());
         assertNull(disease.getReference());
         assertNull(disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test
-    public void testSetAcronym() {
+    void testSetAcronym() {
         DiseaseBuilder builder = new DiseaseBuilder();
         String diseaseId = "someId";
         Disease disease = builder.diseaseId(diseaseId)
@@ -48,11 +46,10 @@ public class DiseaseBuilderTest {
         assertNull(disease.getDescription());
         assertNull(disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test
-    public void testSetDescription() {
+    void testSetDescription() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         List<Evidence> evidences =  createEvidences();
@@ -68,11 +65,10 @@ public class DiseaseBuilderTest {
         assertEquals(diseaseDescription, disease.getDescription());
         assertNull(disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test
-    public void testSetReference() {
+    void testSetReference() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         List<Evidence> evidences =  createEvidences();
@@ -91,11 +87,10 @@ public class DiseaseBuilderTest {
         assertEquals(diseaseDescription, disease.getDescription());
         assertEquals(reference, disease.getReference());
         assertEquals("someAcron", disease.getAcronym());
-        TestHelper.verifyJson(disease);
     }
 
     @Test
-    public void testCreateDiseaseReference() {
+    void testCreateDiseaseReference() {
         DiseaseReferenceType referenceType = DiseaseReferenceType.MIM;
         String referenceId = "3124";
         DBCrossReference<DiseaseReferenceType> reference = new DBCrossReferenceImpl<>(referenceType, referenceId);

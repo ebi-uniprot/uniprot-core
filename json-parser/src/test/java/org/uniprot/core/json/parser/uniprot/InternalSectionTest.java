@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
@@ -15,8 +15,8 @@ import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
 
 import java.time.LocalDate;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales
@@ -24,12 +24,12 @@ import static org.junit.Assert.assertNotNull;
 public class InternalSectionTest {
 
     @Test
-    public void testInternalSectionSimple() {
+    void testInternalSectionSimple() {
         InternalSection internalSection = new InternalSectionBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(internalSection);
     }
     @Test
-    public void testInternalSectionComplete() {
+    void testInternalSectionComplete() {
         InternalSection internalSection = getInternalSection();
         ValidateJson.verifyJsonRoundTripParser(internalSection);
         ValidateJson.verifyEmptyFields(internalSection);

@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.Citation;
@@ -11,14 +11,14 @@ import org.uniprot.core.flatfile.parser.impl.rx.RXLineBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class RXLineBuilderTest {
-    RXLineBuilder builder = new RXLineBuilder();
+class RXLineBuilderTest {
+    private RXLineBuilder builder = new RXLineBuilder();
 
     @Test
-    public void testPubmed() {
+    void testPubmed() {
         Citation xrefs = buildCitationXref("15165820", null, null);
         List<String> lines = builder.buildLine(xrefs, true, true);
         assertEquals(1, lines.size());
@@ -27,7 +27,7 @@ public class RXLineBuilderTest {
     }
 
     @Test
-    public void testDOI() {
+    void testDOI() {
         Citation xrefs = buildCitationXref(null, "10.1016/j.virol.2004.02.019", null);
         List<String> lines = builder.buildLine(xrefs, true, true);
         assertEquals(1, lines.size());
@@ -36,7 +36,7 @@ public class RXLineBuilderTest {
     }
 
     @Test
-    public void testAgricola() {
+    void testAgricola() {
         Citation xrefs = buildCitationXref(null, null, "asfsadgdasgdagd");
         List<String> lines = builder.buildLine(xrefs, true, true);
         assertEquals(1, lines.size());
@@ -45,7 +45,7 @@ public class RXLineBuilderTest {
     }
 
     @Test
-    public void testPubmedDOI() {
+    void testPubmedDOI() {
         Citation xrefs = buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null);
         List<String> lines = builder.buildLine(xrefs, true, true);
         assertEquals(1, lines.size());
@@ -54,7 +54,7 @@ public class RXLineBuilderTest {
     }
 
     @Test
-    public void testPubmedAgricola() {
+    void testPubmedAgricola() {
         Citation xrefs = buildCitationXref("15165820", null, "asfsadgdasgdagd");
         List<String> lines = builder.buildLine(xrefs, true, true);
         assertEquals(1, lines.size());
@@ -63,7 +63,7 @@ public class RXLineBuilderTest {
     }
 
     @Test
-    public void testAll() {
+    void testAll() {
         Citation xrefs = buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", "asfsadgdasgdagd");
         List<String> lines = builder.buildLine(xrefs, true, true);
         assertEquals(2, lines.size());
@@ -72,7 +72,7 @@ public class RXLineBuilderTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         Citation xrefs = buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", "asfsadgdasgdagd");
         List<String> lines = builder.buildLine(xrefs, false, true);
         assertEquals(1, lines.size());

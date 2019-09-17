@@ -1,20 +1,19 @@
 package org.uniprot.core.flatfile.parser.converter;
 
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import org.uniprot.core.flatfile.parser.impl.ac.UniProtAcLineObject;
 import org.uniprot.core.uniprot.UniProtAccession;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
-public class AcLineConverterTest {
+class AcLineConverterTest {
 	private AcLineConverter converter = new AcLineConverter();
 	@Test
-	public void testConverter() throws Exception{
+	void testConverter() {
 		//val ac_one_line_moreacc = "AC   Q6GZX4; Q6GZX5; Q6GZX6;\n"
 		AcLineObject acObj = new AcLineObject();
 		acObj.primaryAcc ="Q6GZX4";
@@ -29,7 +28,7 @@ public class AcLineConverterTest {
 		
 	}
 	@Test
-	public void testConverter2() throws Exception{
+	void testConverter2() {
 		//val ac_one_line_moreacc = "AC   Q6GZX4; Q6GZX5; Q6GZX6;\n"
 		AcLineObject acObj = new AcLineObject();
 		acObj.primaryAcc ="Q6GZX4";

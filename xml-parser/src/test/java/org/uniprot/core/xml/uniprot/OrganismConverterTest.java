@@ -9,7 +9,7 @@ import org.uniprot.core.xml.uniprot.OrganismConverter;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.xml.uniprot.EvidenceHelper.createEvidences;
 
 class OrganismConverterTest {

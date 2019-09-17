@@ -1,10 +1,6 @@
 package org.uniprot.core.cv.xdb;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
-import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 
 import java.util.List;
 
@@ -299,7 +295,7 @@ class UniProtXDbTypesTest {
     }
 
     private void verifyGroupSize(List<UniProtXDbTypeDetail> dbTypesByCategory, int size) {
-        Assert.assertEquals(size, dbTypesByCategory.size());
+        assertEquals(size, dbTypesByCategory.size());
     }
 
 

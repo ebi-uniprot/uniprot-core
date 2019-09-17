@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.og.OgLineObject;
@@ -10,12 +10,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class OgLineParserTest {
+class OgLineParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String ogLines = "OG   Plasmid.\n";
 		UniprotLineParser<OgLineObject> parser = new DefaultUniprotLineParserFactory().createOgLineParser();
 		OgLineObject obj = parser.parse(ogLines);
@@ -27,7 +26,7 @@ public class OgLineParserTest {
 	}
 	
 	@Test
-	public void testWithValue() {
+	void testWithValue() {
 		String ogLines = "OG   Plasmid R68.45.\n";
 		UniprotLineParser<OgLineObject> parser = new DefaultUniprotLineParserFactory().createOgLineParser();
 		OgLineObject obj = parser.parse(ogLines);
@@ -35,7 +34,7 @@ public class OgLineParserTest {
 				Arrays.asList(new String[] {"R68.45"}));
 	}
 	@Test
-	public void testWithValue2() {
+	void testWithValue2() {
 		String ogLines = "OG   Plasmid IncFII R1-19 (R1 drd-19).\n";
 		UniprotLineParser<OgLineObject> parser = new DefaultUniprotLineParserFactory().createOgLineParser();
 		OgLineObject obj = parser.parse(ogLines);
@@ -44,7 +43,7 @@ public class OgLineParserTest {
 	}
 	
 	@Test
-	public void testWithMultiValues() {
+	void testWithMultiValues() {
 		String ogLines = "OG   Plasmid R6-5, Plasmid IncFII R100 (NR1), and\n"
 		+ "OG   Plasmid IncFII R1-19 (R1 drd-19).\n"
 		;
@@ -54,7 +53,7 @@ public class OgLineParserTest {
 				Arrays.asList(new String[] {"R6-5", "IncFII R100 (NR1)", "IncFII R1-19 (R1 drd-19)"}));
 	}
 	@Test
-	public void testWithMultiOgs() {
+	void testWithMultiOgs() {
 		String ogLines = "OG   Hydrogenosome.\n"
 		+ "OG   Mitochondrion.\n"
 		+ "OG   Nucleomorph.\n"
@@ -74,7 +73,7 @@ public class OgLineParserTest {
 				Arrays.asList(new String[] {"R6-5"}));
 	}
 	@Test
-	public void testWithMultiOgsEvidence() {
+	void testWithMultiOgsEvidence() {
 		String ogLines = "OG   Hydrogenosome {ECO:0000001}.\n"
 		+ "OG   Mitochondrion {ECO:0000001}.\n"
 		+ "OG   Nucleomorph {ECO:0000002|PubMed:1234213}.\n"
@@ -111,7 +110,7 @@ public class OgLineParserTest {
 	}
 	
 	@Test
-	public void testWithMultiOgsEvidence2() {
+	void testWithMultiOgsEvidence2() {
 		String ogLines = "OG   Plasmid R1 (R7268) {ECO:0000313|EMBL:BAG16761.1},\n"
 		+ "OG   Plasmid IncF::IncFIA::IncFIB::IncI1-ly {ECO:0000313|EMBL:BAG16761.1,\n"
 		+ "OG   ECO:0000269|PubMed:10433554}, Plasmid p013.1IncR {ECO:0000303|Ref.6,\n"
@@ -136,7 +135,7 @@ public class OgLineParserTest {
 	}
 	
 	@Test
-	public void testBigOg() {
+	void testBigOg() {
 		String ogLines = "OG   Plastid; Chloroplast {ECO:0000313|EMBL:BAG16761.1,\n"
 		+ "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2,\n"
 		+ "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n"
@@ -152,7 +151,7 @@ public class OgLineParserTest {
 		assertNotNull(obj);		
 	}
 	@Test
-	public void testBigOg2() {
+	void testBigOg2() {
 		String ogLines = "OG   Plastid; Chloroplast {ECO:0000313|EMBL:BAG16761.1,\n"
 		+ "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2,\n"
 		+ "OG   ECO:0000256|HAMAP-Rule:MF_00205}.\n"
@@ -163,7 +162,7 @@ public class OgLineParserTest {
 		assertNotNull(obj);		
 	}
 	@Test
-	public void testBigOg3() {
+	void testBigOg3() {
 		String ogLines = "OG   Plasmid R1 (R7268), Plasmid IncF::IncFIA::IncFIB::IncI1-ly,\n"
 		+ "OG   Plasmid p013.1IncR, Plasmid pUD16, and Plasmid IncF::IncL/M.\n"
 		
@@ -174,7 +173,7 @@ public class OgLineParserTest {
 		assertNotNull(obj);		
 	}
 	@Test
-	public void testPlasmdWithEvidence() {
+	void testPlasmdWithEvidence() {
 		String ogLines = "OG   Plasmid {ECO:0000313|ProtImp}.\n"
 		
 		;

@@ -1,7 +1,7 @@
 package org.uniprot.core.flatfile.parser.integration;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtEntryIterator;
 import org.uniprot.core.flatfile.writer.FlatfileWriter;
 import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class UniProtEntryIteratorIT {
+class UniProtEntryIteratorIT {
 	@Test
-	public void testSingleTxl() {
+	void testSingleTxl() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -31,7 +31,7 @@ public class UniProtEntryIteratorIT {
 	}
 
 	@Test
-	public void testSingleTxlRoundTrip() {
+	void testSingleTxlRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -49,7 +49,7 @@ public class UniProtEntryIteratorIT {
 	}
 
 	@Test
-	public void testSingleDat() {
+	void testSingleDat() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -65,7 +65,7 @@ public class UniProtEntryIteratorIT {
 	}
 
 	@Test
-	public void testSingleDatRoundTrip() {
+	void testSingleDatRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -83,7 +83,7 @@ public class UniProtEntryIteratorIT {
 	}
 	
 	@Test
-	public void testMultiDat() {
+	void testMultiDat() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -102,8 +102,8 @@ public class UniProtEntryIteratorIT {
 		}
 	}
 
-	@Ignore
-	public void testMultiDatRoundTrip() {
+	@Disabled
+	void testMultiDatRoundTrip() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);
@@ -134,7 +134,7 @@ public class UniProtEntryIteratorIT {
 	
 
 	@Test
-	public void testMultiDatGz() {
+	void testMultiDatGz() {
 		try {
 			DefaultUniProtEntryIterator iterator = new DefaultUniProtEntryIterator();
 			iterator.setIgnoreWrong(true);

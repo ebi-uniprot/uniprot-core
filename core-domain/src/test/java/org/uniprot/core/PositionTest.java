@@ -35,6 +35,5 @@ class PositionTest {
     private void verify(Position position, Integer value, PositionModifier modifier) {
         assertEquals(value, position.getValue());
         assertEquals(modifier, position.getModifier());
-        TestHelper.verifyJson(position);
     }
 }

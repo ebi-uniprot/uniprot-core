@@ -12,7 +12,7 @@ import org.uniprot.core.json.parser.disease.DiseaseJsonConfig;
 import java.util.Arrays;
 import java.util.List;
 
-public class DiseaseTest {
+class DiseaseTest {
 	@Test
 	void testCrossReference() {
 		List<String> props = Arrays.asList("prop1", "prop2", "prop3");

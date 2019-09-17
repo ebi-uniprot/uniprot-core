@@ -2,13 +2,13 @@ package org.uniprot.core.json.parser.uniprot.citation;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales
  */
-public class CitationUtil {
+class CitationUtil {
 
     static void validateCitation(JsonNode jsonNode){
         assertNotNull(jsonNode.get("publicationDate"));

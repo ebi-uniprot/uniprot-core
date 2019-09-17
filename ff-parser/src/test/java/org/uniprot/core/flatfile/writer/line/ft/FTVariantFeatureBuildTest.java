@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
@@ -9,9 +9,9 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
+class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
 	@Test
-	public void testVariant() throws Exception {
+	void testVariant() {
 		String ftLine = "FT   VARIANT     221    221       G -> E (in a breast cancer sample;\n"
 				+ "FT                                somatic mutation; dbSNP:rs35514614).\n"
 				+ "FT                                /FTId=VAR_038685.";
@@ -38,7 +38,7 @@ public class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
 	}
 
 	@Test
-	public void testVariantEvidence() throws Exception {
+	void testVariantEvidence() {
 		String ftLine = "FT   VARIANT     221    221       G -> E,D (in a breast cancer sample;\n"
 				+ "FT                                somatic mutation; dbSNP:rs35514614).\n"
 				+ "FT                                {ECO:0000269|PubMed:10433554,\n"

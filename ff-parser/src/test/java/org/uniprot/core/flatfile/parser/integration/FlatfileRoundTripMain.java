@@ -14,16 +14,16 @@ import org.uniprot.core.uniprot.UniProtEntry;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class FlatfileRoundTripMain {
+class FlatfileRoundTripMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlatfileRoundTripMain.class);
     private boolean isPublic = false;
     private UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
     private EntryObjectConverter entryObjectConverter = new EntryObjectConverter(new SupportingDataMapImpl(), true);
     private FlatfileWriter<UniProtEntry> ffWriter = new UniProtFlatfileWriter();
 
-    public static void main(String[] args) throws Exception {
+    static void main(String[] args) throws Exception {
         if (args.length == 0) {
             LOGGER.error("Please set arguments.");
             System.exit(1);

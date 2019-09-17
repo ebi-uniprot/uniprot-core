@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.APCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
@@ -18,7 +17,7 @@ import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createSynonyms;
 
 class AlternativeProductsCommentImplTest {
-    public List<APIsoform> createIsoforms() {
+    List<APIsoform> createIsoforms() {
         List<APIsoform> isoforms = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         IsoformName isoformName1 = new IsoformNameBuilder("Name 1", evidences).build();
@@ -64,7 +63,6 @@ class AlternativeProductsCommentImplTest {
         assertEquals(isoforms, comment.getIsoforms());
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
@@ -81,6 +79,5 @@ class AlternativeProductsCommentImplTest {
         assertEquals(events, comment.getEvents());
         assertEquals(isoforms, comment.getIsoforms());
         assertEquals(note, comment.getNote());
-        TestHelper.verifyJson(comment);
     }
 }

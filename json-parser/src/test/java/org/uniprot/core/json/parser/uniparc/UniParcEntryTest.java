@@ -1,6 +1,6 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
 */
 
-public class UniParcEntryTest {
+class UniParcEntryTest {
 	@Test
 	void test() {
 		UniParcEntry entry = createEntry() ;

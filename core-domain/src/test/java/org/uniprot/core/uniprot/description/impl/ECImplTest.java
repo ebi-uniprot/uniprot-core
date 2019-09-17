@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.description.impl;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.builder.ECBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -31,7 +31,6 @@ class ECImplTest {
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
         assertEquals(evidences, ecObj.getEvidences());
-        TestHelper.verifyJson(ecObj);
     }
 
     @Test
@@ -42,7 +41,6 @@ class ECImplTest {
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
         assertEquals(Collections.emptyList(), ecObj.getEvidences());
-        TestHelper.verifyJson(ecObj);
     }
 
 }

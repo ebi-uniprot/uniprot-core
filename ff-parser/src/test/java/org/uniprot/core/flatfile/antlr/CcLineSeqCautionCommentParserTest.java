@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
@@ -15,12 +15,11 @@ import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineSeqCautionCommentParserTest {
+class CcLineSeqCautionCommentParserTest {
 	@Test
-	public void test1() {
+	void test1() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n"
 				+"CC       Sequence=CAI24940.1; Type=Erroneous gene model prediction;\n"
 				;
@@ -56,7 +55,7 @@ public class CcLineSeqCautionCommentParserTest {
 	}
 	
 	@Test
-	public void testAllFields() {
+	void testAllFields() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n"
 				+"CC       Sequence=AAG34697.1; Type=Erroneous termination; Positions=388; Note=Translated as Ser;\n"
 				;
@@ -71,7 +70,7 @@ public class CcLineSeqCautionCommentParserTest {
 		
 	}
 	@Test
-	public void test2() {
+	void test2() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n"
 				+"CC       Sequence=CAI12537.1; Type=Erroneous gene model prediction;\n"
 				+"CC       Sequence=CAI39742.1; Type=Erroneous gene model prediction; Positions=388, 399;\n"
@@ -88,7 +87,7 @@ public class CcLineSeqCautionCommentParserTest {
 		
 	}
 	@Test
-	public void test3() {
+	void test3() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n"
 				+"CC       Sequence=AAA25676.1; Type=Frameshift; Positions=Several;\n"
 				+"CC       Sequence=CAD59919.1; Type=Frameshift; Positions=519;\n"
@@ -107,7 +106,7 @@ public class CcLineSeqCautionCommentParserTest {
 	}
 	
 	@Test
-	public void test4() {
+	void test4() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n"
 				+"CC       Sequence=AAA85813.1; Type=Frameshift; Positions=134; Note=Frameshift correction allows the C-terminal sequence to be compatible with the results of mass spectrometry and X-ray crystallography;\n"
 				;
@@ -122,7 +121,7 @@ public class CcLineSeqCautionCommentParserTest {
 
 	}
 	@Test
-	public void test5() {
+	void test5() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n"
 				+"CC       Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};\n"
 				;
@@ -140,7 +139,7 @@ public class CcLineSeqCautionCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeader() {
+	void testNoHeader() {
 		String ccLineString = "SEQUENCE CAUTION:\n"
 				+"Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};\n"
 				;
@@ -160,7 +159,7 @@ public class CcLineSeqCautionCommentParserTest {
 	}
 	
 	@Test
-	public void testPositionSeveral() {
+	void testPositionSeveral() {
 		String lines = "CC   -!- SEQUENCE CAUTION:\n" + 
 				"CC       Sequence=CAA39814.1; Type=Frameshift; Positions=Several; Evidence={ECO:0000305};\n"
 				;

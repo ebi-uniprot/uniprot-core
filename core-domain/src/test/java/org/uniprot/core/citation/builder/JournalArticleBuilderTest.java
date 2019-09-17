@@ -1,25 +1,22 @@
 package org.uniprot.core.citation.builder;
 
-import org.junit.Test;
-import org.uniprot.core.TestHelper;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.JournalArticle;
-import org.uniprot.core.citation.builder.JournalArticleBuilder;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
+class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
-    public void testBuildCitation() {
+    void testBuildCitation() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         JournalArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
-        TestHelper.verifyJson(citation);
     }
 
     @Test
-    public void testAddJournalName() {
+    void testAddJournalName() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
@@ -27,11 +24,10 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         JournalArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());
-        TestHelper.verifyJson(citation);
     }
 
     @Test
-    public void testAddFirstPage() {
+    void testAddFirstPage() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
@@ -41,11 +37,10 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());
         assertEquals("213", citation.getFirstPage());
-        TestHelper.verifyJson(citation);
     }
 
     @Test
-    public void testAddLastPage() {
+    void testAddLastPage() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
@@ -57,11 +52,10 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         assertEquals(journalName, citation.getJournal().getName());
         assertEquals("213", citation.getFirstPage());
         assertEquals("223", citation.getLastPage());
-        TestHelper.verifyJson(citation);
     }
 
     @Test
-    public void testAddVolume() {
+    void testAddVolume() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
@@ -75,6 +69,5 @@ public class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         assertEquals("213", citation.getFirstPage());
         assertEquals("223", citation.getLastPage());
         assertEquals("2", citation.getVolume());
-        TestHelper.verifyJson(citation);
     }
 }

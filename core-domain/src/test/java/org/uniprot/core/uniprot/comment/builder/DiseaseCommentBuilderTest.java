@@ -1,25 +1,22 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
-import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
-public class DiseaseCommentBuilderTest {
+class DiseaseCommentBuilderTest {
 
     @Test
-    public void testSetDisease() {
+    void testSetDisease() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         String description = "some description";
@@ -43,11 +40,10 @@ public class DiseaseCommentBuilderTest {
         assertEquals(null, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
-        TestHelper.verifyJson(comment);
     }
 
     @Test
-    public void testSetNote() {
+    void testSetNote() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
         String description = "some description";
@@ -73,6 +69,5 @@ public class DiseaseCommentBuilderTest {
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
-        TestHelper.verifyJson(comment);
     }
 }

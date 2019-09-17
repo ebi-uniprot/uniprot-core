@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ac.ACLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.UniProtAccession;
@@ -9,14 +9,13 @@ import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
-public class ACLineBuildTest {
-    ACLineBuilder builder = new ACLineBuilder();
+class ACLineBuildTest {
+    private ACLineBuilder builder = new ACLineBuilder();
 
     @Test
-    public void test1() {
+    void test1() {
         String acLine = "AC   P99999; P00001; Q6NUR2; Q6NX69; Q96BV4;";
         List<UniProtAccession> acces = new ArrayList<>();
         acces.add(new UniProtAccessionBuilder("P99999").build());
@@ -30,7 +29,7 @@ public class ACLineBuildTest {
     }
 
     @Test
-    public void testNewAc() {
+    void testNewAc() {
         String acLine = "AC   A0A000ACJ5; P00001; Q6NUR2; Q6NX69; Q96BV4;";
         List<UniProtAccession> acces = new ArrayList<>();
         acces.add(new UniProtAccessionBuilder("A0A000ACJ5").build());
@@ -45,7 +44,7 @@ public class ACLineBuildTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         String acLine = "AC   Q96PK6; B0LM41; B3KMN4; D6RGD8; O75932; Q2PYN1; Q53GV1; Q68DQ9;\n" +
                 "AC   Q96PK5; A0A000ACJ5; Q96BV4;";
         List<UniProtAccession> acces = new ArrayList<>();

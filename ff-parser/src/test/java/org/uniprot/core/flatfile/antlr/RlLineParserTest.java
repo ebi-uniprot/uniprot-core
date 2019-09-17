@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
@@ -9,12 +9,12 @@ import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject.SubmissionDB;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RlLineParserTest {
+class RlLineParserTest {
 	@Test
-	public void testJournalArticle1() {
+	void testJournalArticle1() {
 		String rgLines = "RL   J. Mol. Biol. 168:321-331(1983).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -24,7 +24,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testJournalArticle2() {
+	void testJournalArticle2() {
 		String rgLines = "RL   Int. J. Parasitol. 0:0-0(2005).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -33,7 +33,7 @@ public class RlLineParserTest {
 				"Int. J. Parasitol.", "0", "0", "0", 2005);
 	}
 	@Test
-	public void testJournalContainDash() {
+	void testJournalContainDash() {
 		String rgLines = "RL   Hoppe-Seyler's Z. Physiol. Chem. 362:1665-1669(1981).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -42,7 +42,7 @@ public class RlLineParserTest {
 				"Hoppe-Seyler's Z. Physiol. Chem.", "1665", "1669", "362", 1981);
 	}
 	@Test
-	public void testJournalContainDash2() {
+	void testJournalContainDash2() {
 		String rgLines = "RL   Abstr. - Soc. Neurosci. 25:168-168(1999).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -51,7 +51,7 @@ public class RlLineParserTest {
 				"Abstr. - Soc. Neurosci.", "168", "168", "25", 1999);
 	}
 	@Test
-	public void testJournalContainBracket() {
+	void testJournalContainBracket() {
 		String rgLines = "RL   Clin. Endocrinol. (Oxf.) 56:413-418(2002).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -60,7 +60,7 @@ public class RlLineParserTest {
 				"Clin. Endocrinol. (Oxf.)", "413", "418", "56", 2002);
 	}
 	@Test
-	public void testJournalWithSpeciealPage() {
+	void testJournalWithSpeciealPage() {
 		String rgLines = "RL   PLoS ONE 3:E1450-E1450(2008).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -79,7 +79,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testEpub() {
+	void testEpub() {
 		String rgLines = "RL   (er) Plant Gene Register PGR98-023.\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -89,7 +89,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testEpub2() {
+	void testEpub2() {
 		String rgLines = "RL   (er) Invest. Ophthalmol. Vis. Sci. 43:ARVO E-Abstract 791(2002).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -99,7 +99,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testEpub3() {
+	void testEpub3() {
 		String rgLines = "RL   (er) J. Am. Chem. Soc. 121:9223-9224(1999).\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -113,7 +113,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testSubmission() {
+	void testSubmission() {
 		String rgLines = "RL   Submitted (OCT-1995) to the EMBL/GenBank/DDBJ databases.\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -130,7 +130,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testPatent() {
+	void testPatent() {
 		String rgLines = "RL   Patent number WO9010703, 20-SEP-1990.\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -148,7 +148,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testThesis() {
+	void testThesis() {
 		String rgLines = "RL   Thesis (1977), University of Geneva, Switzerland.\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -158,7 +158,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testThesis2() {
+	void testThesis2() {
 		String rgLines = "RL   Thesis (2001), A. Mickiewicz University, Poland.\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -168,7 +168,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testThesis3() {
+	void testThesis3() {
 		String rgLines = "RL   Thesis (2008), Department of Biosystems, K.U.Leuven, Leuven, Belgium.\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -178,7 +178,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testThesis4() {
+	void testThesis4() {
 		String rgLines = "RL   Thesis (2001), A. Mickiewicz University.\n";
 		UniprotLineParser<RlLineObject> parser = new DefaultUniprotLineParserFactory().createRlLineParser();
 		RlLineObject obj = parser.parse(rgLines);
@@ -189,7 +189,7 @@ public class RlLineParserTest {
 	
 	
 	@Test
-	public void testThesis5() {
+	void testThesis5() {
 		String rgLines = "RL   Thesis (2000), Department of Veterinary Medicine,\n"
 				+"RL   Justus-Liebig-University, D-35392 Giessen, Germany.\n"
 				;
@@ -201,7 +201,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testThesis6() {
+	void testThesis6() {
 		String rgLines = "RL   Thesis (2010), Suranaree Univercity of Technology, 111 Suranaree Ave.\n"
 				+"RL   Suranaree Univercity of Technology, Thailand, Nakhon Ratchasima,\n"
 				+"RL   Thailand.\n"
@@ -221,7 +221,7 @@ public class RlLineParserTest {
 	}
 
 	@Test
-	public void testUnpublished() {
+	void testUnpublished() {
 		String rgLines = "RL   Unpublished observations (OCT-1978).\n"
 			
 				;
@@ -235,7 +235,7 @@ public class RlLineParserTest {
 		assertEquals(year, up.year);
 	}
 	@Test
-	public void testBook() {
+	void testBook() {
 		String rgLines = "RL   (In) Boyer P.D. (eds.);\n"
 				+"RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York (1975).\n"
 			
@@ -249,7 +249,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testBook2() {
+	void testBook2() {
 		String rgLines = "RL   (In) Rich D.H., Gross E. (eds.);\n"
 				+"RL   Proceedings of the 7th American peptide symposium, pp.69-72, Pierce\n"
 				+"RL   Chemical Co., Rockford Il. (1981).\n"
@@ -277,7 +277,7 @@ public class RlLineParserTest {
 		assertEquals(year, book.year);
 	}
 	@Test
-	public void testBookTitleWithSpot() {
+	void testBookTitleWithSpot() {
 		String rgLines = "RL   (In) Kueck U. (eds.);\n"
 				+"RL   The Mycota II, Genetics and Biotechnology (2nd edition), pp.95-112,\n"
 				+"RL   Springer-Verlag, Berlin-Heidelberg (2004).\n"
@@ -292,7 +292,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testBookMultilineEditor() {
+	void testBookMultilineEditor() {
 		String rgLines = "RL   (In) Cummings D.J., Brost P., Dawid I.B., Weissman S.M., Fox C.F.\n"
 				+"RL   (eds.);\n"
 				+"RL   Extrachromosomal DNA, pp.339-355, Academic Press, New York (1979).\n"
@@ -307,7 +307,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testBookProceedings() {
+	void testBookProceedings() {
 		String rgLines = "RL   (In) Proceedings of the 20th international conference on Arabidopsis\n"
 				+"RL   research, abstract#543, Edinburgh (2009).\n"
 				
@@ -322,7 +322,7 @@ public class RlLineParserTest {
 		assertEquals("abstract#543", ((RlLineObject.Book) obj.reference).pageString);
 	}
 	@Test
-	public void testVolumeContainDot() {
+	void testVolumeContainDot() {
 		String rgLines = "RL   (In) Biggins J. (eds.);\n"
 				+"RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus Nijhoff,\n"
 				+"RL   The Hague (1987).\n"
@@ -336,7 +336,7 @@ public class RlLineParserTest {
 				"13","16", "II.1", "Martinus Nijhoff", "The Hague",  1987);
 	}
 	@Test
-	public void testVolumeContainDot2() {
+	void testVolumeContainDot2() {
 		String rgLines = "RL   (In) Biggins J. (eds.);\n"
 				+"RL   Progress in photosynthesis research, pp.II.1:13-16, Martinus Nijhoff (1987).\n"
 				;
@@ -349,7 +349,7 @@ public class RlLineParserTest {
 				"13","16", "II.1", "Martinus Nijhoff",  null,  1987);
 	}
 	@Test
-	public void testBookTitle() {
+	void testBookTitle() {
 		String rgLines = "RL   (In) Barnett A.A., Veiga L.M., Ferrari S.F., Norconk M.A. (eds.);\n"
 				+"RL   EVOLUTIONARY BIOLOGY AND CONSERVATION OF TITIS, SAKIS AND UACARIS,\n"
 				+"RL   pp.0-0, Cambridge University Press, Cambridge, UK (2009).\n"
@@ -363,7 +363,7 @@ public class RlLineParserTest {
 				"0","0", null, "Cambridge University Press",  "Cambridge, UK",  2009);
 	}
 	@Test
-	public void testBookTitle2() {
+	void testBookTitle2() {
 		String rgLines = "RL   (In) Goffinet B., Hollowell V., Magill R. (eds.);\n"
 				+"RL   MOLECULAR SYSTEMATICS OF BRYOPHYTES - MONOGRAPHS IN SYSTEMATIC BOTANY,\n"
 				+"RL   pp.61-86, Missouri Botanical Garden Press, USA (2004).\n"
@@ -378,7 +378,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testBookStrange() {
+	void testBookStrange() {
 		String rgLines = "RL   (In) Unknown A. (eds.);\n"
 				+"RL   PROCEEDINGS OF III CONGRESSO NACIONAL DE SAUDE PUBLICA VETERINARIA E I\n"
 				+"RL   ENCONTRO INTERNACIONAL DE SAUDE PUBLICA VETERINARIA, pp.0-0, Brazil\n"
@@ -393,7 +393,7 @@ public class RlLineParserTest {
 				"0","0", null, "Brazil",  null,  2009);
 	}
 	@Test
-	public void testBookStrange2() {
+	void testBookStrange2() {
 		String rgLines = "RL   (In) Klenk, H.-D. (eds.);\n"
 				+"RL   XIIth International Congress of Virology, pp.9-0, EDK. Medical and\n"
 				+"RL   Scientific International Pubulisher, 75014 Paris, France (2002).\n"
@@ -408,7 +408,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testBookStrange3() {
+	void testBookStrange3() {
 		String rgLines = "RL   (In) Unknown A. (eds.);\n"
 				+"RL   Abstract, pp.8-0, European Symposium on Drosophila\n"
 				+"RL   Neurobiology(Neurofly-2000) Alicante, Spain:23rd to 27th September\n"
@@ -424,7 +424,7 @@ public class RlLineParserTest {
 				"Spain:23rd to 27th September 2000:1-1; CSIC",  2000);
 	}
 	@Test
-	public void testBookStrange4() {
+	void testBookStrange4() {
 		String rgLines = "RL   (In) Proceedings of the 39th annual Drosophila research conference,\n"
 				+"RL   pp.39:414C-414C, Washington D.C. (1998).\n"
 				;
@@ -438,7 +438,7 @@ public class RlLineParserTest {
 				null,  1998);
 	}
 	@Test
-	public void testBookStrange5() {
+	void testBookStrange5() {
 		String rgLines = "RL   (In) Proceedings of Plant Biology '2000: The annual meeting of the\n"
 				+"RL   American Society of Plant Physiologists, pp.abstract#272:0-0,\n"
 				+"RL   San Diego (2000).\n"
@@ -454,7 +454,7 @@ public class RlLineParserTest {
 	}
 	
 	@Test
-	public void testBookStrange6() {
+	void testBookStrange6() {
 		String rgLines = "RL   (In) Proceedings of the 20th international conference on Arabidopsis\n"
 				+"RL   research, abstract#501734213, Edinburgh (2009).\n"
 				;
@@ -469,7 +469,7 @@ public class RlLineParserTest {
 		assertEquals("abstract#501734213", ((RlLineObject.Book) obj.reference).pageString);
 	}
 	@Test
-	public void testBookStrange7() {
+	void testBookStrange7() {
 		String rgLines = "RL   (In) Rossiter A., Kawanabe H. (eds.);\n"
 				+"RL   ADVANCES IN ECOLOGICAL RESEARCH 31: BIOLOGY OF ANCIENT LAKES;\n"
 				+"RL   BIODIVERSITY, ECOLOGY AND EVOLUTION, pp.275-302, Academic Press,\n"

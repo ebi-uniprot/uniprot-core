@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
@@ -8,12 +8,11 @@ import org.uniprot.core.flatfile.parser.impl.ac.AcLineObject;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class AcLineParserTest {
+class AcLineParserTest {
 	@Test
-	public void validOneLineOneAcc() {
+	void validOneLineOneAcc() {
 		String ac_one_line = "AC   Q6GZX4;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -21,16 +20,15 @@ public class AcLineParserTest {
 		assertTrue(obj.secondaryAcc.isEmpty());
 	}
 
-	@Test(expected = RuntimeException.class)
-	public void inValidOneLineOneAcc() {
+	@Test
+	void inValidOneLineOneAcc() {
 		String ac_one_line = "AC   Q6GDDZX4;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
-	 parser.parse(ac_one_line);
-
+		assertThrows(RuntimeException.class, ()->parser.parse(ac_one_line));
 	}
 
 	@Test
-	public void validOneLineMoreAcc() {
+	void validOneLineMoreAcc() {
 		String ac_one_line = "AC   Q6GZX4; Q6GZX5; Q6GZX6;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -40,7 +38,7 @@ public class AcLineParserTest {
 	}
 
 	@Test
-	public void validMultiLineMoreAcc() {
+	void validMultiLineMoreAcc() {
 		String ac_one_line = "AC   Q6GZX4; Q6GZX5; Q6GZX6;\n" + "AC   Q6GZX7; Q6GZX8; Q6GZX9;\n" + "AC   Q6GZX0;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -49,7 +47,7 @@ public class AcLineParserTest {
 		assertEquals(expected, obj.secondaryAcc);
 	}
 	@Test
-	public void validOneLineMoreNewAcc() {
+	void validOneLineMoreNewAcc() {
 		String ac_one_line = "AC   A0A000A000; Q6GZX5; Q6GZX6;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);
@@ -59,7 +57,7 @@ public class AcLineParserTest {
 	}
 
 	@Test
-	public void validOneLineMoreIsoformAcc() {
+	void validOneLineMoreIsoformAcc() {
 		String ac_one_line = "AC   A0A000A000-1; Q6GZX5-11; Q6GZX6-10;\n";
 		UniprotLineParser<AcLineObject> parser = new DefaultUniprotLineParserFactory().createAcLineParser();
 		AcLineObject obj = parser.parse(ac_one_line);

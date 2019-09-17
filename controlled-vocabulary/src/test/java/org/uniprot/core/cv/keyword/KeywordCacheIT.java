@@ -1,15 +1,15 @@
 package org.uniprot.core.cv.keyword;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.keyword.KeywordCache;
-import org.uniprot.core.cv.keyword.KeywordEntry;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 class KeywordCacheIT {
     private static List<KeywordEntry> keywords;
@@ -26,12 +26,9 @@ class KeywordCacheIT {
                 .filter(val -> val.getKeyword().getAccession().equals(acc))
                 .findFirst();
         assertTrue(opVal.isPresent());
-        List<KeywordEntry> children = opVal.get().getChildren();
-        System.out.println("testWithMultiChildren");
-        children.forEach(val -> System.out.println(val.getKeyword().getAccession() + "\t" + val.getKeyword().getId()));
-
-        Set<KeywordEntry> parents = opVal.get().getParents();
-        assertNotNull(parents);
+        List<KeywordEntry> children = opVal.map(val ->val.getChildren()).orElse(Collections.emptyList());
+		Set<KeywordEntry> parents = opVal.map(val ->val.getParents()).orElse(Collections.emptySet());
+        assertFalse(children.isEmpty());
         assertTrue(parents.isEmpty());
     }
 
@@ -42,14 +39,10 @@ class KeywordCacheIT {
                 .filter(val -> val.getKeyword().getAccession().equals(acc))
                 .findFirst();
         assertTrue(opVal.isPresent());
-        Set<KeywordEntry> parents = opVal.get().getParents();
-        assertNotNull(parents);
-        assertTrue(parents.size() > 1);
-        System.out.println("testCategory");
-        parents.forEach(val -> System.out.println(val.getKeyword().getAccession() + "\t" + val.getKeyword().getId()));
+        List<KeywordEntry> children = opVal.map(val ->val.getChildren()).orElse(Collections.emptyList());
+      	Set<KeywordEntry> parents = opVal.map(val ->val.getParents()).orElse(Collections.emptySet());
 
-        List<KeywordEntry> children = opVal.get().getChildren();
-        assertNotNull(children);
+        assertTrue(parents.size() > 1);
         assertTrue(children.isEmpty());
     }
 
@@ -60,16 +53,11 @@ class KeywordCacheIT {
                 .filter(val -> val.getKeyword().getAccession().equals(acc))
                 .findFirst();
         assertTrue(opVal.isPresent());
-        System.out.println("testWithParentsAndChildren");
-        Set<KeywordEntry> parents = opVal.get().getParents();
-        assertNotNull(parents);
+        List<KeywordEntry> children = opVal.map(val ->val.getChildren()).orElse(Collections.emptyList());
+      	Set<KeywordEntry> parents = opVal.map(val ->val.getParents()).orElse(Collections.emptySet());
         assertFalse(parents.isEmpty());
-        System.out.println("Parents");
-        parents.forEach(val -> System.out.println(val.getKeyword().getAccession() + "\t" + val.getKeyword().getId()));
-        List<KeywordEntry> children = opVal.get().getChildren();
-        assertNotNull(children);
-        System.out.println("Children");
-        children.forEach(val -> System.out.println(val.getKeyword().getAccession() + "\t" + val.getKeyword().getId()));
+        assertFalse(children.isEmpty());
+      
     }
 
 }

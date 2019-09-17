@@ -3,7 +3,7 @@ package org.uniprot.core.uniprot.comment.impl;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
-import org.uniprot.core.TestHelper;
+
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryRangeImpl;
 
@@ -28,6 +28,5 @@ class MassSpectrometryRangeImplTest {
     private void verify(MassSpectrometryRange msRange, Range range, String isoformId) {
         assertEquals(range, msRange.getRange());
         assertEquals(isoformId, msRange.getIsoformId());
-        TestHelper.verifyJson(msRange);
     }
 }

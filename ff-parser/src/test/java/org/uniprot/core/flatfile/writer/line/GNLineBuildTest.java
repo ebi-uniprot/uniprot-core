@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.gn.GNLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.gene.*;
@@ -15,14 +15,14 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class GNLineBuildTest {
+class GNLineBuildTest {
     GNLineBuilder builder = new GNLineBuilder();
 
     @Test
-    public void test1() {
+    void test1() {
         String gnLine = "GN   Name=par-5; Synonyms=ftt-1; OrderedLocusNames=At1g22300;\n" +
                 "GN   ORFNames=M117.2;";
 
@@ -63,7 +63,7 @@ public class GNLineBuildTest {
     }
 
     @Test
-    public void test1Evidence() {
+    void test1Evidence() {
         String gnLine = "GN   Name=par-5 {ECO:0000313|EMBL:BAG16761.1};\n" +
                 "GN   Synonyms=ftt-1 {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6};\n" +
                 "GN   OrderedLocusNames=At1g22300 {ECO:0000313|EMBL:BAG16761.1};\n" +
@@ -97,7 +97,7 @@ public class GNLineBuildTest {
     }
 
     @Test
-    public void testTwoGenes() {
+    void testTwoGenes() {
         String gnLine = "GN   Name=Jon99Cii; Synonyms=SER1, SER5, Ser99Da;\n" +
                 "GN   ORFNames=At1g22300, CG7877, M117.2;\n" +
                 "GN   and\n" +
@@ -173,7 +173,7 @@ public class GNLineBuildTest {
 
 
     @Test
-    public void test2GenesWithEvidence() {
+    void test2GenesWithEvidence() {
         String gnLine = "GN   Name=Jon99Cii {ECO:0000313|EMBL:BAG16761.1};\n" +
                 "GN   Synonyms=SER1 {ECO:0000313|EMBL:BAG16761.1}, SER5 {ECO:0000303|Ref.6},\n" +
                 "GN   Ser99Da {ECO:0000269|PubMed:10433554};\n" +
@@ -254,7 +254,7 @@ public class GNLineBuildTest {
     }
 
     @Test
-    public void test3() {
+    void test3() {
         String gnLine = "GN   Name=GF14A; OrderedLocusNames=Os08g0480800, LOC_Os08g37490;\n" +
                 "GN   ORFNames=OJ1113_A10.40, OSJNBb0092C08.10;";
         List<Gene> genes = new ArrayList<>();
@@ -285,7 +285,7 @@ public class GNLineBuildTest {
     }
 
     @Test
-    public void test3Evidence() {
+    void test3Evidence() {
         String gnLine = "GN   Name=GF14A {ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1,\n" +
                 "GN   ECO:0000313|PDB:3OW2};\n" +
                 "GN   OrderedLocusNames=Os08g0480800 {ECO:0000269|PubMed:10433554,\n" +
@@ -329,7 +329,7 @@ public class GNLineBuildTest {
     }
 
     @Test
-    public void testNoGeneName() {
+    void testNoGeneName() {
         String gnLine = "GN   OrderedLocusNames=Os08g0480800, LOC_Os08g37490;\n" +
                 "GN   ORFNames=OJ1113_A10.40, OSJNBb0092C08.10;";
         List<Gene> genes = new ArrayList<>();

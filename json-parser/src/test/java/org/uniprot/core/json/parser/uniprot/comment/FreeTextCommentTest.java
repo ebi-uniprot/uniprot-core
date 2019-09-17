@@ -1,15 +1,15 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
 public class FreeTextCommentTest {
 
     @Test
-    public void testFreeTextSimple() {
+    void testFreeTextSimple() {
 
         FreeTextComment comment = new FreeTextCommentBuilder()
                 .commentType(CommentType.DISRUPTION_PHENOTYPE)
@@ -31,7 +31,7 @@ public class FreeTextCommentTest {
     }
 
     @Test
-    public void testFreeTextComplete() {
+    void testFreeTextComplete() {
         FreeTextComment comment = getFreeTextComment();
 
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -54,6 +54,4 @@ public class FreeTextCommentTest {
                 .texts(CreateUtils.createEvidencedValueList("value","ECO:0000256|PIRNR:PIRNR001360"))
                 .build();
     }
-
-
 }

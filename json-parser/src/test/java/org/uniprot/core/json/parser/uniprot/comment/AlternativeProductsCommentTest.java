@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
 import org.uniprot.core.uniprot.comment.*;
@@ -16,8 +16,8 @@ import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author lgonzales
@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNotNull;
 public class AlternativeProductsCommentTest {
 
     @Test
-    public void testAlternativeProductsCommentSimple() {
+    void testAlternativeProductsCommentSimple() {
 
         AlternativeProductsComment comment = new APCommentBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(comment);
@@ -36,7 +36,7 @@ public class AlternativeProductsCommentTest {
     }
 
     @Test
-    public void testAlternativeProductsCommentComplete() {
+    void testAlternativeProductsCommentComplete() {
         AlternativeProductsComment comment = getAlternativeProductsComment();
         ValidateJson.verifyJsonRoundTripParser(comment);
         ValidateJson.verifyEmptyFields(comment);

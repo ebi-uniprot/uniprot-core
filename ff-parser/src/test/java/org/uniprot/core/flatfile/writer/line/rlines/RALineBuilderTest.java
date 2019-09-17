@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.builder.AuthorBuilder;
 import org.uniprot.core.flatfile.parser.impl.ra.RALineBuilder;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class RALineBuilderTest {
+class RALineBuilderTest {
     private final RALineBuilder builder = new RALineBuilder();
 
     @Test
-    public void test1() {
+    void test1() {
         List<String> authorsS = new ArrayList<>(Arrays.asList("Tan W.G.", "Barkman T.J.",
                                                               "Gregory Chinchar V.", "Essani K.",
                                                               "Arctander P.", "Fjeldsaa J."));
@@ -29,7 +29,7 @@ public class RALineBuilderTest {
     }
 
     @Test
-    public void test2() {
+    void test2() {
         List<String> authorsS = new ArrayList<>(Arrays.asList("Tan W.G.", "Barkman T.J.",
                                                               "Gregory Chinchar V.", "Essani K.",
                                                               "Arctander P.", "Fjeldsaa J.",

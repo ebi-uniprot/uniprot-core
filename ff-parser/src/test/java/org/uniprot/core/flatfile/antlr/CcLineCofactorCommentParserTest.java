@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.antlr;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineFormater;
@@ -10,11 +10,11 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.StructuredCofactor;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CcLineCofactorCommentParserTest {
+class CcLineCofactorCommentParserTest {
 	@Test
-	public void test() {
+	void test() {
 		String lines = "CC   -!- COFACTOR: Isoform 1:\n"
 				+"CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
 				+"CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
@@ -42,7 +42,7 @@ public class CcLineCofactorCommentParserTest {
 	}
 	
 	@Test
-	public void test2() {
+	void test2() {
 		String lines = "CC   -!- COFACTOR: Serine protease NS3:\n"
 				+"CC       Name=Zn(2+); Xref=ChEBI:CHEBI:29105;\n"
 				+"CC         Evidence={ECO:0000269|PubMed:16683188,\n"
@@ -82,7 +82,7 @@ public class CcLineCofactorCommentParserTest {
 
 	
 	@Test
-	public void testNoteOnly() {
+	void testNoteOnly() {
 		String lines = "CC   -!- COFACTOR:\n"
 				+"CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
 				+"CC       {ECO:0000255|HAMAP-Rule:MF_00086};\n";
@@ -100,7 +100,7 @@ public class CcLineCofactorCommentParserTest {
 	}
 	
 	@Test
-	public void testNoteOnly2() {
+	void testNoteOnly2() {
 		String lines = "CC   -!- COFACTOR:\n"
 				+"CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
 				+"CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n"
@@ -119,7 +119,7 @@ public class CcLineCofactorCommentParserTest {
 	}
 	
 	@Test
-	public void testTwoNoteOnly2() {
+	void testTwoNoteOnly2() {
 		String lines = "CC   -!- COFACTOR:\n"
 				+"CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).;\n"
 				+"CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n"
@@ -140,7 +140,7 @@ public class CcLineCofactorCommentParserTest {
 
 
 	@Test
-	public void testTwoNoteOnlyWithEvidence() {
+	void testTwoNoteOnlyWithEvidence() {
 		String lines = "CC   -!- COFACTOR:\n"
 				+"CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt). {ECO:0000255|HAMAP-Rule:MF_00086};\n"
 				+"CC       Binds 3 divalent ions per subunit (magnesium or cobalt).;\n"
@@ -161,7 +161,7 @@ public class CcLineCofactorCommentParserTest {
 	}
 
 	@Test
-	public void testNoHeaderWithEvidence() {
+	void testNoHeaderWithEvidence() {
 
 		String ccLineStringEvidence ="COFACTOR: Serine protease NS3:\n" +
 	            "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
@@ -180,7 +180,7 @@ public class CcLineCofactorCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeaderWithEvidence2() {
+	void testNoHeaderWithEvidence2() {
 
 		   String ccLineStringEvidence ="COFACTOR: Serine protease NS3:\n" +
 	                "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n" +
@@ -192,7 +192,7 @@ public class CcLineCofactorCommentParserTest {
 			assertNotNull(obj);
 	}
 	@Test
-	public void testNoHeaderWithEvidence3() {
+	void testNoHeaderWithEvidence3() {
 
 		  String ccLineStringEvidence ="COFACTOR: Non-structural protein 5A:\n" +
 	                "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};\n" +
@@ -205,7 +205,7 @@ public class CcLineCofactorCommentParserTest {
 	}
 	
 	@Test
-	public void testNoHeaderWithEvidence4() {
+	void testNoHeaderWithEvidence4() {
 
 		String ccLineStringEvidence=
 				"COFACTOR:\n" +

@@ -1,6 +1,6 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineConverter;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
@@ -15,12 +15,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class CcDiseaseConverterTest {
+class CcDiseaseConverterTest {
 	private final CcLineConverter converter = new CcLineConverter(new HashMap<>(), new HashMap<>(),true);
 	@Test
-	public void testFull() {
+	void testFull() {
 		/*
 		 * Kleefstra syndrome (KLESTS) [MIM:610253]: A syndrome characterized by 
 		 * severe mental retardation, hypotonia, brachy(micro)cephaly, and facial 
@@ -72,7 +72,7 @@ public class CcDiseaseConverterTest {
 	}
 	
 	@Test
-	public void testFullWithEvidence() {
+	void testFullWithEvidence() {
 	
 		CcLineObject ccLineO = new CcLineObject();	
 		CcLineObject.CC cc1 =new CcLineObject.CC();
@@ -115,7 +115,7 @@ public class CcDiseaseConverterTest {
 	}
 	
 	@Test
-	public void testOnlyNote() {
+	void testOnlyNote() {
 		//Note=Frequently mutated in a variety of human cancers (PubMed:15155950)
 		CcLineObject ccLineO = new CcLineObject();	
 		CcLineObject.CC cc1 =new CcLineObject.CC();

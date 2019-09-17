@@ -1,8 +1,9 @@
 package org.uniprot.core.uniprot.evidence;
 
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  *
@@ -11,7 +12,7 @@ import org.junit.jupiter.api.Test;
  *
 */
 
-public class EvidenceTypesTest {
+class EvidenceTypesTest {
 
 	@Test
 	void testGetType() {

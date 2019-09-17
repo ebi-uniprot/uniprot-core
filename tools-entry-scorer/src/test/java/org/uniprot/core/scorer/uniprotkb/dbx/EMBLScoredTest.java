@@ -1,39 +1,39 @@
 package org.uniprot.core.scorer.uniprotkb.dbx;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.EmblScored;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 import java.util.List;
 
-public class EMBLScoredTest extends AbstractDBXTest {
+class EMBLScoredTest extends AbstractDBXTest {
     @Test
-    public void shouldEmblScore3() {
+    void shouldEmblScore3() {
         String line = "DR   EMBL; AF377743; AAK60255.1; ALT_INIT; Genomic_DNA.";
         testDBXrefScore(line, 3.0);
     }
 
     @Test
-    public void shouldEmbl3Score30() {
+    void shouldEmbl3Score30() {
         String line = "DR   EMBL; AF280559; AAG22715.1; ALT_SEQ; Genomic_DNA.";
         testDBXrefScore(line, 3.0);
     }
 
     @Test
-    public void shouldEmbl2Score30() {
+    void shouldEmbl2Score30() {
         String line = "DR   EMBL; V01146; CAA24416.1; ALT_TERM; Genomic_DNA.";
         testDBXrefScore(line, 3.0);
     }
 
     @Test
-    public void shouldEmblScore30() {
+    void shouldEmblScore30() {
         String line = "DR   EMBL; Z73122; CAA97462.1; ALT_FRAME; Genomic_DNA.";
         testDBXrefScore(line, 3.0);
     }
 
     @Test
-    public void shouldEmbl5Score01() {
+    void shouldEmbl5Score01() {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.";
@@ -41,19 +41,19 @@ public class EMBLScoredTest extends AbstractDBXTest {
     }
 
     @Test
-    public void shouldEmblScore1() {
+    void shouldEmblScore1() {
         String line = "DR   EMBL; AJ243418; -; NOT_ANNOTATED_CDS; mRNA.";
         testDBXrefScore(line, 1.0);
     }
 
     @Test
-    public void shouldEmbl4Score01() {
+    void shouldEmbl4Score01() {
         String line = "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 0.1);
     }
 
     @Test
-    public void shouldEmbl3Score01() {
+    void shouldEmbl3Score01() {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
@@ -62,13 +62,13 @@ public class EMBLScoredTest extends AbstractDBXTest {
     }
 
     @Test
-    public void shouldEmbl2Score01() {
+    void shouldEmbl2Score01() {
         String line = "DR   EMBL; AK057020; BAB71346.1; -; mRNA.{ECO:0000312|EMBL:AAD42944.1}";
         testDBXrefScore(line, 0.1);
     }
 
     @Test
-    public void shouldEmbl2Score31() {
+    void shouldEmbl2Score31() {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
@@ -81,7 +81,7 @@ public class EMBLScoredTest extends AbstractDBXTest {
     }
 
     @Test
-    public void shouldEmblScore31() {
+    void shouldEmblScore31() {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
@@ -95,7 +95,7 @@ public class EMBLScoredTest extends AbstractDBXTest {
     }
 
     @Test
-    public void shouldEmblScored41() {
+    void shouldEmblScored41() {
         String line = "DR   EMBL; M63397; AAA51662.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; M63395; AAA51662.1; JOINED; Genomic_DNA.\n" +
                 "DR   EMBL; M63396; AAA51662.1; JOINED; Genomic_DNA.\n" +
@@ -110,7 +110,7 @@ public class EMBLScoredTest extends AbstractDBXTest {
     }
 
     @Test
-    public void shouldEmblScore01() {
+    void shouldEmblScore01() {
         String line = "DR   EMBL; EU095219; ABU47413.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; EU095220; ABU47426.1; -; Genomic_DNA.\n" +
                 "DR   EMBL; EU095221; ABU47439.1; -; Genomic_DNA.\n" +
