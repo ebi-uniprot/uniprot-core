@@ -15,11 +15,11 @@ public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
     NUCLEOMORPH("Nucleomorph"),
     PLASMID("Plasmid"),
     PLASTID("Plastid"),
-    APICOPLAST_PLASTID("Apicoplast"),
-    CHLOROPLAST_PLASTID("Chloroplast"),
-    CYANELLE_PLASTID("Cyanelle"),
+    APICOPLAST("Apicoplast"),
+    CHLOROPLAST("Chloroplast"),
+    CYANELLE("Cyanelle"),
     NON_PHOTOSYNTHETIC_PLASTID("Non-photosynthetic plastid"),
-    CHROMATOPHORE_PLASTID("Organellar chromatophore");
+    ORGANELLAR_CHROMATOPHORE("Organellar chromatophore");
 
     private String name;
 

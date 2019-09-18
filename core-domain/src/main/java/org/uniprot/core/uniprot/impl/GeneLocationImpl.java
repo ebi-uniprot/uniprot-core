@@ -82,11 +82,11 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
                     sb.append(getValue());
                 }
                 break;
-            case APICOPLAST_PLASTID:
-            case CHLOROPLAST_PLASTID:
-            case CYANELLE_PLASTID:
+            case APICOPLAST:
+            case CHLOROPLAST:
+            case CYANELLE:
             case NON_PHOTOSYNTHETIC_PLASTID:
-            case CHROMATOPHORE_PLASTID:
+            case ORGANELLAR_CHROMATOPHORE:
                 sb.append("Plastid; ");
                 sb.append(getGeneEncodingType().getName());
                 break;

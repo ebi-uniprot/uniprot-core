@@ -59,10 +59,10 @@ class OgLineConverterTest {
 		 testExist(GeneEncodingType.PLASMID, "R6-5", orgs);
 		 testExist(GeneEncodingType.HYDROGENOSOME, "", orgs);
 		 testExist(GeneEncodingType.MITOCHONDRION, "", orgs);
-		 testExist(GeneEncodingType.APICOPLAST_PLASTID, "", orgs);
-		 testExist(GeneEncodingType.CHLOROPLAST_PLASTID, "", orgs);
-		 testExist(GeneEncodingType.CHROMATOPHORE_PLASTID, "", orgs);
-		 testExist(GeneEncodingType.CYANELLE_PLASTID, "", orgs);
+		 testExist(GeneEncodingType.APICOPLAST, "", orgs);
+		 testExist(GeneEncodingType.CHLOROPLAST, "", orgs);
+		 testExist(GeneEncodingType.ORGANELLAR_CHROMATOPHORE, "", orgs);
+		 testExist(GeneEncodingType.CYANELLE, "", orgs);
 		 testExist(GeneEncodingType.NON_PHOTOSYNTHETIC_PLASTID, "", orgs);
 		 testExist(GeneEncodingType.NUCLEOMORPH, "", orgs);
 		 

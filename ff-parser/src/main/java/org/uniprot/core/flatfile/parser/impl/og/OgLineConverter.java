@@ -35,16 +35,16 @@ public class OgLineConverter extends EvidenceCollector implements Converter<OgLi
                     type = GeneEncodingType.PLASTID;
                     break;
                 case PLASTID_APICOPLAST:
-                    type = GeneEncodingType.APICOPLAST_PLASTID;
+                    type = GeneEncodingType.APICOPLAST;
                     break;
                 case PLASTID_CHLOROPLAST:
-                    type = GeneEncodingType.CHLOROPLAST_PLASTID;
+                    type = GeneEncodingType.CHLOROPLAST;
                     break;
                 case PLASTID_ORGANELLAR_CHROMATOPHORE:
-                    type = GeneEncodingType.CHROMATOPHORE_PLASTID;
+                    type = GeneEncodingType.ORGANELLAR_CHROMATOPHORE;
                     break;
                 case PLASTID_CYANELLE:
-                    type = GeneEncodingType.CYANELLE_PLASTID;
+                    type = GeneEncodingType.CYANELLE;
                     break;
                 case PLASTID_NON_PHOTOSYNTHETIC:
                     type = GeneEncodingType.NON_PHOTOSYNTHETIC_PLASTID;

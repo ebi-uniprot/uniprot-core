@@ -81,7 +81,7 @@ class OGLineBuildTest {
     @Test
     void testOGPlastidApicoplast() {
         String ogLine = "OG   Plastid; Apicoplast.";
-        GeneEncodingType type = GeneEncodingType.APICOPLAST_PLASTID;
+        GeneEncodingType type = GeneEncodingType.APICOPLAST;
         List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
         GeneLocation org = createOrganelle(type, evs);
@@ -93,7 +93,7 @@ class OGLineBuildTest {
     @Test
     void testOGPlastidChloroplast() {
         String ogLine = "OG   Plastid; Chloroplast.";
-        GeneEncodingType type = GeneEncodingType.CHLOROPLAST_PLASTID;
+        GeneEncodingType type = GeneEncodingType.CHLOROPLAST;
         List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
         GeneLocation org = createOrganelle(type, evs);
@@ -105,7 +105,7 @@ class OGLineBuildTest {
     @Test
     void testOGPlastidCyanelle() {
         String ogLine = "OG   Plastid; Cyanelle.";
-        GeneEncodingType type = GeneEncodingType.CYANELLE_PLASTID;
+        GeneEncodingType type = GeneEncodingType.CYANELLE;
         List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs = new ArrayList<>();
         GeneLocation org = createOrganelle(type, evs);
@@ -142,7 +142,7 @@ class OGLineBuildTest {
                 "OG   Plastid; Chloroplast.\n" +
                         "OG   Plasmid IncFII R100 (NR1), Plasmid IncW R388, and Plasmid pLMO20.";
         List<GeneLocation> organelles = new ArrayList<>();
-        GeneEncodingType type = GeneEncodingType.CHLOROPLAST_PLASTID;
+        GeneEncodingType type = GeneEncodingType.CHLOROPLAST;
 
         List<String> evs = new ArrayList<>();
         GeneLocation org = createOrganelle(type, evs);
@@ -184,7 +184,7 @@ class OGLineBuildTest {
         String ogLine = "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
                 "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n" +
                 "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.";
-        GeneEncodingType type = GeneEncodingType.CHLOROPLAST_PLASTID;
+        GeneEncodingType type = GeneEncodingType.CHLOROPLAST;
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         String ev3 = "ECO:0000303|Ref.6";
@@ -220,7 +220,7 @@ class OGLineBuildTest {
         String ev4 = "ECO:0000313|PDB:3OW2";
         String ev5 = "ECO:0000256|HAMAP-Rule:MF_00205";
         List<GeneLocation> organelles = new ArrayList<>();
-        GeneEncodingType type = GeneEncodingType.CHLOROPLAST_PLASTID;
+        GeneEncodingType type = GeneEncodingType.CHLOROPLAST;
 
         List<String> evs = new ArrayList<>();
         evs.add(ev1);

@@ -16,7 +16,7 @@ class GeneLocationImplTest {
 
     @Test
     void testGetDisplayedValueAPICOPLAST_PLASTID() {
-        GeneEncodingType type = GeneEncodingType.APICOPLAST_PLASTID;
+        GeneEncodingType type = GeneEncodingType.APICOPLAST;
         String val = "";
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
@@ -66,7 +66,7 @@ class GeneLocationImplTest {
 
     @Test
     void testGeneLocationImpl() {
-        GeneEncodingType type = GeneEncodingType.APICOPLAST_PLASTID;
+        GeneEncodingType type = GeneEncodingType.APICOPLAST;
         String val = "";
         List<Evidence> evidences = null;
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);

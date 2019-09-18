@@ -107,11 +107,11 @@ public class OGLineBuilder extends FFLineBuilderAbstr< List<GeneLocation> >
 	                    sb.append(organelle.getValue());
 	                }
 	                break;
-	            case APICOPLAST_PLASTID:
-	            case CHLOROPLAST_PLASTID:
-	            case CYANELLE_PLASTID:
+	            case APICOPLAST:
+	            case CHLOROPLAST:
+	            case CYANELLE:
 	            case NON_PHOTOSYNTHETIC_PLASTID:
-	            case CHROMATOPHORE_PLASTID:
+	            case ORGANELLAR_CHROMATOPHORE:
 	                sb.append("Plastid; ");
 	                sb.append(organelle.getGeneEncodingType().getName());
 	                break;
