@@ -1,6 +1,5 @@
 package org.uniprot.core.util.property;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +21,7 @@ class PropertyTokenerTest {
    * @throws IOException thrown if something unexpected happens.
    */
   @Test
-  public void verifyBackFailureZeroIndex() throws IOException {
+  void verifyBackFailureZeroIndex() throws IOException {
     try(Reader reader = new StringReader("some test string")) {
       final PropertyTokener tokener = new PropertyTokener(reader);
       try {
@@ -42,7 +41,7 @@ class PropertyTokenerTest {
    * @throws IOException thrown if something unexpected happens.
    */
   @Test
-  public void verifyBackFailureDoubleBack() throws IOException {
+  void verifyBackFailureDoubleBack() throws IOException {
     try(Reader reader = new StringReader("some test string")) {
       final PropertyTokener tokener = new PropertyTokener(reader);
       tokener.next();
@@ -60,7 +59,7 @@ class PropertyTokenerTest {
   }
 
   @Test
-  public void testValid() {
+  void testValid() {
     checkValid("0",Number.class);
     checkValid(" 0  ",Number.class);
     checkValid("23",Number.class);
@@ -84,7 +83,7 @@ class PropertyTokenerTest {
   }
 
   @Test
-  public void testErrors() {
+  void testErrors() {
     // Check that stream can detect that a value is found after
     // the first one
     checkError(" { \"a\":1 }  4 ");
@@ -92,14 +91,12 @@ class PropertyTokenerTest {
     checkError("{} true");
   }
 
-  private Object checkValid(String testStr, Class<?> aClass)  {
+  private void checkValid(String testStr, Class<?> aClass)  {
     Object result = nextValue(testStr);
 
     // Check class of object returned
     if( null == aClass ) {
-      if(PropertyObject.NULL.equals(result)) {
-        // OK
-      } else {
+      if(!PropertyObject.NULL.equals(result)) {
         throw new PropertyException("Unexpected class: "+result.getClass().getSimpleName());
       }
     } else {
@@ -110,7 +107,6 @@ class PropertyTokenerTest {
       }
     }
 
-    return result;
   }
 
   private void checkError(String testStr) {
@@ -127,12 +123,12 @@ class PropertyTokenerTest {
    * Verifies that PropertyTokener can read a stream that contains a value. After
    * the reading is done, check that the stream is left in the correct state
    * by reading the characters after. All valid cases should reach end of stream.
-   * @param testStr
-   * @return
-   * @throws Exception
+   * @param testStr string to parse
+   * @return Object
+   * @throws PropertyException when value not found or unexpected token
    */
   private Object nextValue(String testStr) throws PropertyException {
-    try(StringReader sr = new StringReader(testStr);){
+    try(StringReader sr = new StringReader(testStr)){
       PropertyTokener tokener = new PropertyTokener(sr);
 
       Object result = tokener.nextValue();
@@ -158,7 +154,7 @@ class PropertyTokenerTest {
    * @throws IOException thrown if something unexpected happens.
    */
   @Test
-  public void testSkipToFailureWithBufferedReader() throws IOException {
+  void testSkipToFailureWithBufferedReader() throws IOException {
     final byte[] superLongBuffer = new byte[1000001];
     // fill our buffer
     for(int i=0;i<superLongBuffer.length;i++) {
@@ -185,7 +181,7 @@ class PropertyTokenerTest {
    * @throws IOException thrown if something unexpected happens.
    */
   @Test
-  public void testSkipToSuccessWithStringReader() throws IOException {
+  void testSkipToSuccessWithStringReader() throws IOException {
     final StringBuilder superLongBuffer = new StringBuilder(1000001);
     // fill our buffer
     for(int i=0;i<superLongBuffer.length();i++) {
@@ -207,7 +203,7 @@ class PropertyTokenerTest {
    * with different new line combinations.
    */
   @Test
-  public void testNextBackComboWithNewLines() {
+  void testNextBackComboWithNewLines() {
     final String testString = "this is\nA test\r\nWith some different\rNew Lines";
     //                         ^       ^         ^                    ^
     // index positions         0       8        16                   36
@@ -290,61 +286,9 @@ class PropertyTokenerTest {
     tokener = new PropertyTokener(KEY_VALUE);
   }
 
-  @AfterEach
-  void tearDown() {
-  }
-
   @Test
   void canCrateFromString() {
     new PropertyTokener(KEY_VALUE);
-  }
-
-  @Test
-  void dehexchar() {
-  }
-
-  @Test
-  void back() {
-  }
-
-  @Test
-  void end() {
-  }
-
-  @Test
-  void more() {
-  }
-
-  @Test
-  void next() {
-  }
-
-  @Test
-  void testNext() {
-  }
-
-  @Test
-  void testNext1() {
-  }
-
-  @Test
-  void nextClean() {
-  }
-
-  @Test
-  void nextString() {
-  }
-
-  @Test
-  void nextTo() {
-  }
-
-  @Test
-  void testNextTo() {
-  }
-
-  @Test
-  void nextValue() {
   }
 
   @Test
