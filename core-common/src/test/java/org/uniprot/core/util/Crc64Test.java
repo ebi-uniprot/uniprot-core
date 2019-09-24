@@ -1,11 +1,10 @@
 package org.uniprot.core.util;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.util.Crc64;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 
@@ -35,6 +34,15 @@ class Crc64Test {
         assertEquals("E89E2EE11971278E", cString1);
         assertEquals("E89E2EE11971278E", c2);
 
+    }
+
+    @Test
+    void getCrc64BDCanReturngetCrc64Result(){
+        String seq = "MQTFLKGKRVGYWLSEKKIKKLNFQAFAELCRKRGMEVVQLNLSRPIEEQGPLDVIIHKLTDVILEADQNDSQSLELVHRFQEYIDAHPETIVL";
+        String cString1 = Crc64.getCrc64(seq);
+        BigDecimal bd = Crc64.getCrc64BD(seq);
+        String c2 = Long.toHexString(bd.longValue()).toUpperCase();
+        assertEquals(cString1, c2);
     }
 
 }

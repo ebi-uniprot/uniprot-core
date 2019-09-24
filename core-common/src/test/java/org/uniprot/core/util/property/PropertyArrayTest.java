@@ -467,4 +467,10 @@ class PropertyArrayTest {
     assertNotNull(list.remove(2), "Removing an entry should succeed");
     assertEquals(2, list.size(), "List should have 2 elements");
   }
+
+  @Test
+  void canBeCreatedWithNullCollection(){
+    Collection nullCollection = null;
+    new PropertyArray(nullCollection);
+  }
 }
