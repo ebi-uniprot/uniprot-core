@@ -3,6 +3,7 @@ package org.uniprot.core.cv.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
 
 import java.util.Arrays;
 import java.util.List;

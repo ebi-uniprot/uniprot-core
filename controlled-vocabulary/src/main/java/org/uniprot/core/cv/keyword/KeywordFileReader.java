@@ -1,11 +1,8 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.keyword;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.keyword.GeneOntology;
-import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.KeywordCategory;
-import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.common.AbstractFileReader;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
@@ -243,7 +240,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
 		return retList;
 	}
 
-	private class KeyFileEntry {
+	private static class KeyFileEntry {
 		String id;
 		String ic;
 		String ac;

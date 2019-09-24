@@ -1,9 +1,9 @@
 package org.uniprot.core.cv.pathway.impl;
 
-import java.util.List;
-
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.pathway.Pathway;
+
+import java.util.List;
 
 public class PathwayImpl implements Pathway {
 	private String accession;

@@ -1,10 +1,10 @@
 package org.uniprot.core.cv.subcell;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
+
+import java.util.List;
+import java.util.Optional;
 
 public interface SubcellularLocationEntry {
 	SubcellLocationCategory getCategory();

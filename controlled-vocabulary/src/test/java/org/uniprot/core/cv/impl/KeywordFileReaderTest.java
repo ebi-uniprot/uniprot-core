@@ -4,7 +4,6 @@ package org.uniprot.core.cv.impl;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.impl.KeywordFileReader;
 import org.uniprot.core.cv.keyword.*;
 
 import java.util.Arrays;

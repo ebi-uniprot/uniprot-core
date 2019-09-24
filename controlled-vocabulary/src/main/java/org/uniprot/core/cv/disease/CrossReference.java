@@ -2,6 +2,7 @@ package org.uniprot.core.cv.disease;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class CrossReference {
 	private final String databaseType;
@@ -47,40 +48,20 @@ public class CrossReference {
 	}
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((databaseType == null) ? 0 : databaseType.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((properties == null) ? 0 : properties.hashCode());
-		return result;
+    	return Objects.hash(this.id, this.databaseType, this.properties);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null || this.getClass() != obj.getClass()) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		CrossReference other = (CrossReference) obj;
-		if (databaseType == null) {
-			if (other.databaseType != null)
-				return false;
-		} else if (!databaseType.equals(other.databaseType))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (properties == null) {
-			if (other.properties != null)
-				return false;
-		} else if (!properties.equals(other.properties))
-			return false;
-		return true;
+		return Objects.equals(this.id, other.id)
+				&& Objects.equals(this.databaseType, other.databaseType)
+				&& Objects.equals(this.properties, other.properties);
 	}
-
-   
 }

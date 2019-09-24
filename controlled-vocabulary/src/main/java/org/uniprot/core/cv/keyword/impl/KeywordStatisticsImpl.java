@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.cv.keyword.KeywordStatistics;
+
+import java.util.Objects;
 
 /**
  * @author lgonzales

@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.subcell.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
+
+import java.util.Objects;
 
 /**
  * @author lgonzales

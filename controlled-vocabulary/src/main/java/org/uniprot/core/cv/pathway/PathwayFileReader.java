@@ -1,16 +1,17 @@
-package org.uniprot.core.cv.impl;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+package org.uniprot.core.cv.pathway;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.common.AbstractFileReader;
 import org.uniprot.core.cv.disease.CrossReference;
-import org.uniprot.core.cv.pathway.Pathway;
 import org.uniprot.core.cv.pathway.impl.PathwayImpl;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PathwayFileReader extends AbstractFileReader<Pathway> {
 	private static final String ID_LINE = "ID";
@@ -24,13 +25,13 @@ public class PathwayFileReader extends AbstractFileReader<Pathway> {
 	private static final String SPLIT_SPACES = "   ";
 	private static final String SEMICOLON = ";";
 	private static final Logger LOG = LoggerFactory.getLogger(PathwayFileReader.class);
-	public static final  List<String> UNIPATHWAY_COMMENT_LINES =
+	public static final  List<String> UNIPATHWAY_COMMENT_LINES = Collections.unmodifiableList(
 			Arrays.asList(
 					"This controlled vocabulary is provided by the UniPathway project" ,
 					"(http://www.grenoble.prabi.fr/obiwarehouse/unipathway), a collaborative" ,
 					"effort involving the SIB (http://www.isb-sib.ch/) and the INRIA" ,
 					"(http://www.inrialpes.fr/)"
-					);
+					));
 	
 	@Override
 	public List<Pathway> parseLines(List<String> lines) {
@@ -232,7 +233,7 @@ public class PathwayFileReader extends AbstractFileReader<Pathway> {
 		return retList;
 	}
 	
-	private class PathwayFileEntry {
+	private static class PathwayFileEntry {
 		String id;	
 		String ac;
 		String cl;

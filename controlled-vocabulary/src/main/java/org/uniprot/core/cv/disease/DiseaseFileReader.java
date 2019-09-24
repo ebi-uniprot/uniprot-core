@@ -1,9 +1,8 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.disease;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.disease.CrossReference;
-import org.uniprot.core.cv.disease.Disease;
+import org.uniprot.core.cv.common.AbstractFileReader;
 import org.uniprot.core.cv.disease.impl.DiseaseImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
@@ -154,7 +153,7 @@ public final class DiseaseFileReader extends AbstractFileReader<Disease> {
 		return retList;
 	}
 
-	private class DiseaseFileEntry {
+	private static class DiseaseFileEntry {
 		String id;
 		String ac;
 		String ar;

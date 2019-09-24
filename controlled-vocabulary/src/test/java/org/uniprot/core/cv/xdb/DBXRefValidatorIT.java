@@ -2,9 +2,6 @@ package org.uniprot.core.cv.xdb;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.xdb.DatabaseCategory;
-import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
-import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 import org.uniprot.core.cv.xdb.validator.DBXRef;
 import org.uniprot.core.cv.xdb.validator.DBXRefReader;
 import org.uniprot.core.cv.xdb.validator.DBXRefValidator;
@@ -13,11 +10,7 @@ import org.uniprot.core.util.Pair;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

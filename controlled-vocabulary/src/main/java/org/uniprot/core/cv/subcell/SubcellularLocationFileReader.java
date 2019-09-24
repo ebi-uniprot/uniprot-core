@@ -1,12 +1,11 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.subcell;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.common.AbstractFileReader;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
-import org.uniprot.core.cv.subcell.SubcellLocationCategory;
-import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 
 import java.util.ArrayList;

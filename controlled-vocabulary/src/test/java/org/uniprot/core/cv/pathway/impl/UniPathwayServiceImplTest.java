@@ -1,12 +1,11 @@
 package org.uniprot.core.cv.pathway.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.pathway.UniPathway;
 import org.uniprot.core.cv.pathway.UniPathwayService;
-import org.uniprot.core.cv.pathway.impl.UniPathwayServiceImpl;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class UniPathwayServiceImplTest {
 	private static UniPathwayService service;

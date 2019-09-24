@@ -2,9 +2,9 @@ package org.uniprot.core.flatfile.parser.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.impl.DiseaseFileReader;
-import org.uniprot.core.cv.impl.KeywordFileReader;
-import org.uniprot.core.cv.impl.SubcellularLocationFileReader;
+import org.uniprot.core.cv.disease.DiseaseFileReader;
+import org.uniprot.core.cv.keyword.KeywordFileReader;
+import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.flatfile.parser.SupportingDataMap;
 import org.uniprot.core.uniprot.evidence.Evidence;
