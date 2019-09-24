@@ -860,9 +860,6 @@ public class PropertyObject implements Serializable {
             if (valueThis == valueOther) {
                 continue;
             }
-            if (valueThis == null) {
-                return false;
-            }
             if (valueThis instanceof PropertyObject) {
                 if (!((PropertyObject) valueThis).similar(valueOther)) {
                     return false;
