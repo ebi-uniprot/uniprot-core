@@ -121,24 +121,6 @@ public class PropertyObject implements Serializable {
     }
 
     /**
-     * Construct a JSONObject from a subset of another JSONObject. An array of
-     * strings is used to identify the keys that should be copied. Missing keys
-     * are ignored.
-     *
-     * @param jo    A JSONObject.
-     * @param names An array of strings.
-     */
-    public PropertyObject(PropertyObject jo, String[] names) {
-        this(names.length);
-        for (int i = 0; i < names.length; i += 1) {
-            try {
-                this.putOnce(names[i], jo.opt(names[i]));
-            } catch (Exception ignore) {
-            }
-        }
-    }
-
-    /**
      * Construct a JSONObject from a JSONTokener.
      *
      * @param x A JSONTokener object containing the source string.
@@ -230,43 +212,8 @@ public class PropertyObject implements Serializable {
         }
     }
 
-    public PropertyObject(Object bean) {
-        this();
-    }
-
-    /**
-     * @param val          value to convert
-     * @param defaultValue default value to return is the conversion doesn't work or is null.
-     * @return BigDecimal conversion of the original value, or the defaultValue if unable
-     * to convert.
-     */
-    static BigDecimal objectToBigDecimal(Object val, BigDecimal defaultValue) {
-        if (NULL.equals(val)) {
-            return defaultValue;
-        }
-        if (val instanceof BigDecimal) {
-            return (BigDecimal) val;
-        }
-        if (val instanceof BigInteger) {
-            return new BigDecimal((BigInteger) val);
-        }
-        if (val instanceof Double || val instanceof Float) {
-            final double d = ((Number) val).doubleValue();
-            if (Double.isNaN(d)) {
-                return defaultValue;
-            }
-            return BigDecimal.valueOf(((Number) val).doubleValue());
-        }
-        if (val instanceof Long || val instanceof Integer
-                || val instanceof Short || val instanceof Byte) {
-            return new BigDecimal(((Number) val).longValue());
-        }
-        // don't check if it's a string in case of unchecked Number subclasses
-        try {
-            return new BigDecimal(val.toString());
-        } catch (Exception e) {
-            return defaultValue;
-        }
+    public PropertyObject(String obj){
+        this(new PropertyTokener(obj));
     }
 
     /**
@@ -549,7 +496,7 @@ public class PropertyObject implements Serializable {
                     || object.getClass().getClassLoader() == null) {
                 return object.toString();
             }
-            return new PropertyObject(object);
+            return new PropertyObject();
         } catch (Exception exception) {
             return null;
         }

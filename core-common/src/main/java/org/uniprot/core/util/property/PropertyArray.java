@@ -496,7 +496,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
         if (names == null || names.isEmpty() || this.isEmpty()) {
             return null;
         }
-        PropertyObject jo = new PropertyObject(names.length());
+        PropertyObject jo = new PropertyObject();
         for (int i = 0; i < names.length(); i += 1) {
             jo.put(names.getString(i), this.opt(i));
         }
