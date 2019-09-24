@@ -502,12 +502,6 @@ public class PropertyObject implements Serializable {
         }
     }
 
-    static final void indent(Writer writer, int indent) throws IOException {
-        for (int i = 0; i < indent; i += 1) {
-            writer.write(' ');
-        }
-    }
-
     /**
      * Get the value object associated with a key.
      *
@@ -524,27 +518,6 @@ public class PropertyObject implements Serializable {
             throw new PropertyException("JSONObject[" + quote(key) + "] not found.");
         }
         return object;
-    }
-
-    /**
-     * Get the Number value associated with a key.
-     *
-     * @param key A key string.
-     * @return The numeric value.
-     * @throws PropertyException if the key is not found or if the value is not a Number
-     *                           object and cannot be converted to a number.
-     */
-    public Number getNumber(String key) throws PropertyException {
-        Object object = this.get(key);
-        try {
-            if (object instanceof Number) {
-                return (Number) object;
-            }
-            return stringToNumber(object.toString());
-        } catch (Exception e) {
-            throw new PropertyException("JSONObject[" + quote(key)
-                                                + "] is not a number.", e);
-        }
     }
 
     /**
@@ -617,17 +590,6 @@ public class PropertyObject implements Serializable {
     }
 
     /**
-     * Get an enumeration of the keys of the JSONObject. Modifying this key Set will also
-     * modify the JSONObject. Use with caution.
-     *
-     * @return An iterator of the keys.
-     * @see Set#iterator()
-     */
-    public Iterator<String> keys() {
-        return this.keySet().iterator();
-    }
-
-    /**
      * Get a set of keys of the JSONObject. Modifying this key Set will also modify the
      * JSONObject. Use with caution.
      *
@@ -636,15 +598,6 @@ public class PropertyObject implements Serializable {
      */
     public Set<String> keySet() {
         return this.map.keySet();
-    }
-
-    /**
-     * Get the number of keys stored in the JSONObject.
-     *
-     * @return The number of keys in the JSONObject.
-     */
-    public int length() {
-        return this.map.size();
     }
 
     /**
@@ -981,10 +934,6 @@ public class PropertyObject implements Serializable {
      */
     protected Set<Entry<String, Object>> entrySet() {
         return this.map.entrySet();
-    }
-
-    private boolean isValidMethodName(String name) {
-        return !"getClass".equals(name) && !"getDeclaringClass".equals(name);
     }
 
     /**
