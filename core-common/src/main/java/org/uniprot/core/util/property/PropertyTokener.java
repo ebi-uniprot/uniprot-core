@@ -89,17 +89,6 @@ public class PropertyTokener implements Serializable {
         this.line = 1;
     }
 
-
-    /**
-     * Construct a JSONTokener from an InputStream. The caller must close the input stream.
-     *
-     * @param inputStream The source.
-     */
-    public PropertyTokener(InputStream inputStream) {
-        this(new InputStreamReader(inputStream));
-    }
-
-
     /**
      * Construct a JSONTokener from a string.
      *
@@ -107,26 +96,6 @@ public class PropertyTokener implements Serializable {
      */
     public PropertyTokener(String s) {
         this(new StringReader(s));
-    }
-
-    /**
-     * Get the hex value of a character (base16).
-     *
-     * @param c A character between '0' and '9' or between 'A' and 'F' or
-     *          between 'a' and 'f'.
-     * @return An int between 0 and 15, or -1 if c was not a hex digit.
-     */
-    public static int dehexchar(char c) {
-        if (c >= '0' && c <= '9') {
-            return c - '0';
-        }
-        if (c >= 'A' && c <= 'F') {
-            return c - ('A' - 10);
-        }
-        if (c >= 'a' && c <= 'f') {
-            return c - ('a' - 10);
-        }
-        return -1;
     }
 
     /**
@@ -210,26 +179,6 @@ public class PropertyTokener implements Serializable {
         this.incrementIndexes(c);
         this.previous = (char) c;
         return this.previous;
-    }
-
-    /**
-     * Consume the next character, and check that it matches a specified
-     * character.
-     *
-     * @param c The character to match.
-     * @return The character.
-     * @throws PropertyException if the character does not match.
-     */
-    public char next(char c) throws PropertyException {
-        char n = this.next();
-        if (n != c) {
-            if (n > 0) {
-                throw this.syntaxError("Expected '" + c + "' and instead saw '" +
-                                               n + "'");
-            }
-            throw this.syntaxError("Expected '" + c + "' and instead saw ''");
-        }
-        return n;
     }
 
     /**
@@ -336,54 +285,6 @@ public class PropertyTokener implements Serializable {
                     }
                     sb.append(c);
             }
-        }
-    }
-
-    /**
-     * Get the text up but not including the specified character or the
-     * end of line, whichever comes first.
-     *
-     * @param delimiter A delimiter character.
-     * @return A string.
-     * @throws PropertyException Thrown if there is an error while searching
-     *                           for the delimiter
-     */
-    public String nextTo(char delimiter) throws PropertyException {
-        StringBuilder sb = new StringBuilder();
-        for (; ; ) {
-            char c = this.next();
-            if (c == delimiter || c == 0 || c == '\n' || c == '\r') {
-                if (c != 0) {
-                    this.back();
-                }
-                return sb.toString().trim();
-            }
-            sb.append(c);
-        }
-    }
-
-    /**
-     * Get the text up but not including one of the specified delimiter
-     * characters or the end of line, whichever comes first.
-     *
-     * @param delimiters A set of delimiter characters.
-     * @return A string, trimmed.
-     * @throws PropertyException Thrown if there is an error while searching
-     *                           for the delimiter
-     */
-    public String nextTo(String delimiters) throws PropertyException {
-        char c;
-        StringBuilder sb = new StringBuilder();
-        for (; ; ) {
-            c = this.next();
-            if (delimiters.indexOf(c) >= 0 || c == 0 ||
-                    c == '\n' || c == '\r') {
-                if (c != 0) {
-                    this.back();
-                }
-                return sb.toString().trim();
-            }
-            sb.append(c);
         }
     }
 
