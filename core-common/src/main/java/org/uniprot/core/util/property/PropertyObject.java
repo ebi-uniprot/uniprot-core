@@ -463,43 +463,31 @@ public class PropertyObject implements Serializable {
      * @return The wrapped value
      */
     public static Object wrap(Object object) {
-        try {
-            if (object == null) {
-                return NULL;
-            }
-            if (object instanceof PropertyObject || object instanceof PropertyArray
-                    || object instanceof Byte || object instanceof Character
-                    || object instanceof Short || object instanceof Integer
-                    || object instanceof Long || object instanceof Boolean
-                    || object instanceof Float || object instanceof Double
-                    || object instanceof String || object instanceof BigInteger
-                    || object instanceof BigDecimal || object instanceof Enum) {
-                return object;
-            }
-
-            if (object instanceof Collection) {
-                Collection<?> coll = (Collection<?>) object;
-                return new PropertyArray(coll);
-            }
-            if (object.getClass().isArray()) {
-                return new PropertyArray(object);
-            }
-            if (object instanceof Map) {
-                Map<?, ?> map = (Map<?, ?>) object;
-                return new PropertyObject(map);
-            }
-            Package objectPackage = object.getClass().getPackage();
-            String objectPackageName = objectPackage != null ? objectPackage
-                    .getName() : "";
-            if (objectPackageName.startsWith("java.")
-                    || objectPackageName.startsWith("javax.")
-                    || object.getClass().getClassLoader() == null) {
-                return object.toString();
-            }
-            return new PropertyObject();
-        } catch (Exception exception) {
-            return null;
+        if (object == null) {
+            return NULL;
         }
+        if (object instanceof PropertyObject || object instanceof PropertyArray
+                || object instanceof Byte || object instanceof Character
+                || object instanceof Short || object instanceof Integer
+                || object instanceof Long || object instanceof Boolean
+                || object instanceof Float || object instanceof Double
+                || object instanceof String || object instanceof BigInteger
+                || object instanceof BigDecimal || object instanceof Enum) {
+            return object;
+        }
+
+        if (object instanceof Collection) {
+            Collection<?> coll = (Collection<?>) object;
+            return new PropertyArray(coll);
+        }
+        if (object.getClass().isArray()) {
+            return new PropertyArray(object);
+        }
+        if (object instanceof Map) {
+            Map<?, ?> map = (Map<?, ?>) object;
+            return new PropertyObject(map);
+        }
+        return new PropertyObject();
     }
 
     /**
@@ -859,39 +847,35 @@ public class PropertyObject implements Serializable {
      * @return true if they are equal
      */
     public boolean similar(Object other) {
-        try {
-            if (!(other instanceof PropertyObject)) {
-                return false;
-            }
-            if (!this.keySet().equals(((PropertyObject) other).keySet())) {
-                return false;
-            }
-            for (final Entry<String, ?> entry : this.entrySet()) {
-                String name = entry.getKey();
-                Object valueThis = entry.getValue();
-                Object valueOther = ((PropertyObject) other).get(name);
-                if (valueThis == valueOther) {
-                    continue;
-                }
-                if (valueThis == null) {
-                    return false;
-                }
-                if (valueThis instanceof PropertyObject) {
-                    if (!((PropertyObject) valueThis).similar(valueOther)) {
-                        return false;
-                    }
-                } else if (valueThis instanceof PropertyArray) {
-                    if (!((PropertyArray) valueThis).similar(valueOther)) {
-                        return false;
-                    }
-                } else if (!valueThis.equals(valueOther)) {
-                    return false;
-                }
-            }
-            return true;
-        } catch (Throwable exception) {
+        if (!(other instanceof PropertyObject)) {
             return false;
         }
+        if (!this.keySet().equals(((PropertyObject) other).keySet())) {
+            return false;
+        }
+        for (final Entry<String, ?> entry : this.entrySet()) {
+            String name = entry.getKey();
+            Object valueThis = entry.getValue();
+            Object valueOther = ((PropertyObject) other).get(name);
+            if (valueThis == valueOther) {
+                continue;
+            }
+            if (valueThis == null) {
+                return false;
+            }
+            if (valueThis instanceof PropertyObject) {
+                if (!((PropertyObject) valueThis).similar(valueOther)) {
+                    return false;
+                }
+            } else if (valueThis instanceof PropertyArray) {
+                if (!((PropertyArray) valueThis).similar(valueOther)) {
+                    return false;
+                }
+            } else if (!valueThis.equals(valueOther)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -973,17 +957,6 @@ public class PropertyObject implements Serializable {
         @Override
         public String toString() {
             return "null";
-        }
-
-        /**
-         * There is only intended to be a single instance of the NULL object,
-         * so the clone method returns itself.
-         *
-         * @return NULL.
-         */
-        @Override
-        protected final Object clone() {
-            return this;
         }
     }
 }
