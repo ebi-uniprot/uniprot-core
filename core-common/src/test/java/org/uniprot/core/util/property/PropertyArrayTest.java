@@ -469,8 +469,105 @@ class PropertyArrayTest {
   }
 
   @Test
-  void canBeCreatedWithNullCollection(){
+  void canBeCreatedWithNullCollection() {
     Collection nullCollection = null;
-    new PropertyArray(nullCollection);
+    PropertyArray arr = new PropertyArray(nullCollection);
+    assertTrue(arr.isEmpty());
+  }
+
+  @Test
+  void propertyArrayCanBeCreatedWithArray() {
+    String[] arr = {"abc", "def"};
+    PropertyArray propertyArray = new PropertyArray(arr);
+    assertEquals("def", propertyArray.getString(1));
+  }
+
+  @Test
+  void exceptionWhileAdding_NegativeIndex() {
+    PropertyArray arr = new PropertyArray();
+    assertThrows(PropertyException.class, () -> arr.put(-1, ""));
+  }
+
+  @Test
+  void simplePut_whenIndexAndLengthAreEqual() {
+    String[] arr = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    PropertyArray propertyArray = new PropertyArray(arr);
+    propertyArray.put(9, "10");
+    assertEquals("10", propertyArray.getString(9));
+  }
+
+  @Test
+  void canDirectlyPutToIndex_whichIsMoreThanDefaultIndex() {
+    PropertyArray propertyArray = new PropertyArray();
+    propertyArray.put(10, "1");
+    assertEquals("1", propertyArray.getString(10));
+  }
+
+  @Test
+  void similarWillOnlyConsiderTypePropertyArray() {
+    String[] arr = {};
+    PropertyArray propertyArray = new PropertyArray();
+    assertFalse(propertyArray.similar(arr));
+  }
+
+  @Test
+  void nullAndEmptyAreNotSimilar() {
+    PropertyArray nullArr = new PropertyArray();
+    nullArr.put(null);
+    PropertyArray empty = new PropertyArray();
+    empty.put("");
+    assertFalse(nullArr.similar(empty));
+  }
+
+  @Test
+  void whileComparingPropertyArrayDelegatesCallToPropertyObject() {
+    PropertyArray arrWithObject = new PropertyArray();
+    arrWithObject.put(new PropertyObject("{}"));
+    PropertyArray empty = new PropertyArray();
+    empty.put("");
+    assertFalse(arrWithObject.similar(empty));
+  }
+
+  @Test
+  void fromPropertyArray_canCreatePropertyObject() {
+    String[] arr = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    PropertyArray propertyArray = new PropertyArray(arr);
+    PropertyObject pObj = propertyArray.toJSONObject(new PropertyArray(new String[]{"1"}));
+    assertEquals("1", pObj.getString("1"));
+  }
+
+  @Test
+  void propertyArray_canBeCreatedFromComplexTokenizer() {
+    PropertyTokener pt = new PropertyTokener("[b,c,d],1,2.3,[,]");
+    PropertyArray propertyArray = new PropertyArray(pt);
+    assertEquals("c", propertyArray.getString(1));
+  }
+
+  @Test
+  void propertyArray_TokenizerWillThrowSyntaxErrorIfBracketMissing() {
+    PropertyTokener pt = new PropertyTokener("[b,c,d");
+    PropertyException e = assertThrows(PropertyException.class, () ->new PropertyArray(pt));
+    assertEquals("Expected a ',' or ']' at 6 [character 7 line 1]", e.getMessage());
+  }
+
+  @Test
+  void propertyArray_TokenizerWillThrowSyntaxErrorIfOnlyBracket() {
+    PropertyTokener pt = new PropertyTokener("]");
+    PropertyException e = assertThrows(PropertyException.class, () ->new PropertyArray(pt));
+    assertEquals("A JSONArray text must start with '[' at 1 [character 2 line 1]", e.getMessage());
+  }
+
+  @Test
+  void propertyArray_TokenizerWillAddNullObject_stringWith2Commas() {
+    PropertyTokener pt = new PropertyTokener("[,]");
+    PropertyArray propertyArray = new PropertyArray(pt);
+    assertEquals(PropertyObject.NULL, propertyArray.get(0));
+  }
+
+  @Test
+  void propertyArray_TokenizerWillThrowSyntaxError_specialCharacter_defaultCase() {
+    PropertyTokener pt = new PropertyTokener("[,']'[");
+    PropertyException e = assertThrows(PropertyException.class, () ->new PropertyArray(pt));
+    assertEquals("Expected a ',' or ']' at 6 [character 7 line 1]", e.getMessage());
   }
 }
