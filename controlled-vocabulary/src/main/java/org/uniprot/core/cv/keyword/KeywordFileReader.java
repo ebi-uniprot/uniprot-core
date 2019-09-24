@@ -49,7 +49,7 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
 	private Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
 		String accession = keyword.getAccession();
 		Keyword kcategory = keyword.getCategory();
-		KeywordCategory category =KeywordCategory.UNKNOWN;
+		KeywordCategory category;
 		if(kcategory !=null) {
 			category = KeywordCategory.fromValue(kcategory.getId());
 		}else {

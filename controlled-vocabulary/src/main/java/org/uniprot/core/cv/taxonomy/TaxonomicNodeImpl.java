@@ -1,5 +1,7 @@
 package org.uniprot.core.cv.taxonomy;
 
+import java.util.Objects;
+
 /**
  * Concrete implementation of a TaxonomicNode.
  *
@@ -111,34 +113,18 @@ class TaxonomicNodeImpl implements TaxonomicNode {
 		}
 
 		TaxonomicNodeImpl that = (TaxonomicNodeImpl) o;
-
-		if (id != that.id) {
-			return false;
-		}
-		if (commonName != null ? !commonName.equals(that.commonName) : that.commonName != null) {
-			return false;
-		}
-		if (parent != null ? !parent.equals(that.parent) : that.parent != null) {
-			return false;
-		}
-		if (scientificName != null ? !scientificName.equals(that.scientificName) : that.scientificName != null) {
-			return false;
-		}
-		if (synonymName != null ? !synonymName.equals(that.synonymName) : that.synonymName != null) {
-			return false;
-		}
-
-		return true;
+		return Objects.equals(this.id, that.id)
+				&& Objects.equals(this.commonName, that.commonName)
+				&& Objects.equals(this.parent, that.parent)
+				&& Objects.equals(this.scientificName, that.scientificName)
+				&& Objects.equals(this.synonymName, that.synonymName)
+				&& Objects.equals(this.mnemonic, that.mnemonic);
 	}
 
 	@Override
 	public int hashCode() {
-		int result = id;
-		result = 31 * result + (scientificName != null ? scientificName.hashCode() : 0);
-		result = 31 * result + (commonName != null ? commonName.hashCode() : 0);
-		result = 31 * result + (synonymName != null ? synonymName.hashCode() : 0);
-		result = 31 * result + (parent != null ? parent.hashCode() : 0);
-		return result;
+		return Objects.hash(this.id, this.commonName, this.parent,
+				this.scientificName, this.synonymName, this.mnemonic);
 	}
 
 	@Override

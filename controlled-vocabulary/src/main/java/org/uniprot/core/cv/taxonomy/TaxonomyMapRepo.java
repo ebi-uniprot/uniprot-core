@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -128,43 +129,18 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
 			}
 
 			TaxonomicNodeProxy that = (TaxonomicNodeProxy) o;
-
-			if (id != that.id) {
-				return false;
-			}
-
-			if (commonName != null ? !commonName.equals(that.commonName) : that.commonName != null) {
-				return false;
-			}
-
-			if (parentTaxID != null ? !parentTaxID.equals(that.parentTaxID) : that.parentTaxID != null) {
-				return false;
-			}
-
-			if (scientificName != null ? !scientificName.equals(that.scientificName) : that.scientificName != null) {
-				return false;
-			}
-
-			if (synonymName != null ? !synonymName.equals(that.synonymName) : that.synonymName != null) {
-				return false;
-			}
-
-			if (mnemonic != null ? !mnemonic.equals(that.mnemonic) : that.mnemonic != null) {
-				return false;
-			}
-
-			return true;
+			return Objects.equals(this.id, that.id)
+					&& Objects.equals(this.commonName, that.commonName)
+					&& Objects.equals(this.parentTaxID, that.parentTaxID)
+					&& Objects.equals(this.scientificName, that.scientificName)
+					&& Objects.equals(this.synonymName, that.synonymName)
+					&& Objects.equals(this.mnemonic, that.mnemonic);
 		}
 
 		@Override
 		public int hashCode() {
-			int result = id;
-			result = 31 * result + (parentTaxID != null ? parentTaxID.hashCode() : 0);
-			result = 31 * result + (scientificName != null ? scientificName.hashCode() : 0);
-			result = 31 * result + (commonName != null ? commonName.hashCode() : 0);
-			result = 31 * result + (synonymName != null ? synonymName.hashCode() : 0);
-			result = 31 * result + (mnemonic != null ? mnemonic.hashCode() : 0);
-			return result;
+			return Objects.hash(this.id, this.parentTaxID, this.scientificName,
+					this.commonName, this.synonymName, this.mnemonic);
 		}
 
 		@Override
