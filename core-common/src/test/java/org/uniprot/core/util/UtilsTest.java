@@ -170,7 +170,7 @@ class UtilsTest {
   }
 
   @Nested
-  class Maps{
+  class Maps {
 
     @Nested
     class notNullOrEmpty {
@@ -188,7 +188,7 @@ class UtilsTest {
         map.put("test1", true);
         map.put("test2", false);
         assertAll(
-          () -> assertTrue(Utils.notNullOrEmpty(Collections.singletonMap(1,2))),
+          () -> assertTrue(Utils.notNullOrEmpty(Collections.singletonMap(1, 2))),
           () -> assertTrue(Utils.notNullOrEmpty(Collections.checkedMap(map, String.class, Boolean.class))),
           () -> assertTrue(Utils.notNullOrEmpty(map)),
           () -> assertTrue(Utils.notNullOrEmpty(Collections.synchronizedMap(map))),
@@ -216,6 +216,46 @@ class UtilsTest {
           () -> assertFalse(Utils.nullOrEmpty(map)),
           () -> assertFalse(Utils.nullOrEmpty(Collections.synchronizedMap(map))),
           () -> assertFalse(Utils.nullOrEmpty(Collections.unmodifiableMap(map)))
+        );
+      }
+    }
+  }
+
+  @Nested
+  class Others {
+
+    @Nested
+    class notNull {
+
+      @Test
+      void objectsNull_ReturnFalse() {
+        Object o = null;
+        Collection c = null;
+        Map m = null;
+        Integer i = null;
+        Pair p = null;
+        assertAll(
+          () -> assertFalse(Utils.notNull(o)),
+          () -> assertFalse(Utils.notNull(c)),
+          () -> assertFalse(Utils.notNull(m)),
+          () -> assertFalse(Utils.notNull(i)),
+          () -> assertFalse(Utils.notNull(p))
+        );
+      }
+
+      @Test
+      void objectsNotNull_ReturnTrue() {
+        Object o = new Object();
+        Collection c = Collections.emptyList();
+        Map m = Collections.emptyMap();
+        Integer i = 5;
+        Pair<Object, Collection> p = new PairImpl(o,c);
+        assertAll(
+          () -> assertTrue(Utils.notNull(o)),
+          () -> assertTrue(Utils.notNull(c)),
+          () -> assertTrue(Utils.notNull(m)),
+          () -> assertTrue(Utils.notNull(i)),
+          () -> assertTrue(Utils.notNull(p))
         );
       }
     }
