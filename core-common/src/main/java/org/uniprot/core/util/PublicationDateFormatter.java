@@ -46,16 +46,6 @@ public enum PublicationDateFormatter {
         }
     }
 
-    public boolean isValidDate(String date) {
-        try {
-            LocalDate.parse(date, dateFormat);
-        } catch (DateTimeParseException e) {
-            return false;
-        }
-
-        return true;
-    }
-
     private static DateTimeFormatterBuilder formatFor(String pattern) {
         return new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern(pattern);
     }
