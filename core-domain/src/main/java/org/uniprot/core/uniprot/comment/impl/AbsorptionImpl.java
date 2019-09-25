@@ -41,7 +41,7 @@ public class AbsorptionImpl implements Absorption {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

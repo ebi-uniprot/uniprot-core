@@ -85,7 +85,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder journal(String journalName) {
-        if (Utils.notEmpty(journalName)) {
+        if (Utils.notNullOrEmpty(journalName)) {
             this.journal = new JournalImpl(journalName);
         }
         return this;

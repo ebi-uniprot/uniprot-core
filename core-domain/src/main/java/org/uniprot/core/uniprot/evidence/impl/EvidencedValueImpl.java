@@ -28,7 +28,7 @@ public class EvidencedValueImpl implements EvidencedValue {
 
     @Override
     public boolean hasValue() {
-        return Utils.notEmpty(this.value);
+        return Utils.notNullOrEmpty(this.value);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class EvidencedValueImpl implements EvidencedValue {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

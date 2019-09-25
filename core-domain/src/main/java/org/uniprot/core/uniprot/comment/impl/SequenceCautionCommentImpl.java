@@ -64,7 +64,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
 
     @Override
     public boolean hasSequence() {
-        return Utils.notEmpty(this.sequence);
+        return Utils.notNullOrEmpty(this.sequence);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
 
     @Override
     public boolean hasPositions() {
-        return Utils.notEmpty(this.positions);
+        return Utils.notNullOrEmpty(this.positions);
     }
 
     @Override
@@ -89,7 +89,7 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

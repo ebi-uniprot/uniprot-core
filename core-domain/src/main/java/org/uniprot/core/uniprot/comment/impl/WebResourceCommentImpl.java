@@ -62,7 +62,7 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
 
     @Override
     public boolean hasResourceUrl() {
-        return Utils.notEmpty(this.resourceUrl);
+        return Utils.notNullOrEmpty(this.resourceUrl);
     }
 
     @Override

@@ -69,7 +69,7 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean hasTitle() {
-        return Utils.notEmpty(this.title);
+        return Utils.notNullOrEmpty(this.title);
     }
 
     @Override
@@ -80,12 +80,12 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean hasAuthoringGroup(){
-        return Utils.notEmpty(this.authoringGroup);
+        return Utils.notNullOrEmpty(this.authoringGroup);
     }
 
     @Override
     public boolean hasAuthors(){
-        return Utils.notEmpty(this.authors);
+        return Utils.notNullOrEmpty(this.authors);
     }
 
     @Override

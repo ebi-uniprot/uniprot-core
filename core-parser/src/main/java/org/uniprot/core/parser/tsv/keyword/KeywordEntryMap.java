@@ -39,7 +39,7 @@ public class KeywordEntryMap implements NamedValueMap {
 
     private String getGeneOntology() {
         String result = "";
-        if (Utils.notEmpty(keywordEntry.getGeneOntologies())) {
+        if (Utils.notNullOrEmpty(keywordEntry.getGeneOntologies())) {
             result = keywordEntry.getGeneOntologies().stream()
                     .map(go -> go.getGoId() + ":" + go.getGoTerm())
                     .collect(Collectors.joining(", "));

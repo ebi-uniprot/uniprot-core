@@ -25,7 +25,7 @@ public class ECNumberImpl implements ECNumber {
 
     @Override
     public boolean hasValue() {
-        return Utils.notEmpty(this.value);
+        return Utils.notNullOrEmpty(this.value);
     }
 
     @Override

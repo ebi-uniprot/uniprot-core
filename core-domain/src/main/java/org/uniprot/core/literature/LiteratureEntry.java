@@ -46,19 +46,19 @@ public interface LiteratureEntry extends Serializable {
     }
 
     default boolean hasDoiId() {
-        return Utils.notEmpty(getDoiId());
+        return Utils.notNullOrEmpty(getDoiId());
     }
 
     default boolean hasTitle() {
-        return Utils.notEmpty(getTitle());
+        return Utils.notNullOrEmpty(getTitle());
     }
 
     default boolean hasAuthoringGroup() {
-        return Utils.notEmpty(getAuthoringGroup());
+        return Utils.notNullOrEmpty(getAuthoringGroup());
     }
 
     default boolean hasAuthors() {
-        return Utils.notEmpty(getAuthors());
+        return Utils.notNullOrEmpty(getAuthors());
     }
 
     default boolean hasPublicationDate() {
@@ -70,23 +70,23 @@ public interface LiteratureEntry extends Serializable {
     }
 
     default boolean hasFirstPage() {
-        return Utils.notEmpty(getFirstPage());
+        return Utils.notNullOrEmpty(getFirstPage());
     }
 
     default boolean hasLastPage() {
-        return Utils.notEmpty(getLastPage());
+        return Utils.notNullOrEmpty(getLastPage());
     }
 
     default boolean hasVolume() {
-        return Utils.notEmpty(getVolume());
+        return Utils.notNullOrEmpty(getVolume());
     }
 
     default boolean hasLiteratureAbstract() {
-        return Utils.notEmpty(getLiteratureAbstract());
+        return Utils.notNullOrEmpty(getLiteratureAbstract());
     }
 
     default boolean hasLiteratureMappedReferences() {
-        return Utils.notEmpty(getLiteratureMappedReferences());
+        return Utils.notNullOrEmpty(getLiteratureMappedReferences());
     }
 
     default boolean hasStatistics() {

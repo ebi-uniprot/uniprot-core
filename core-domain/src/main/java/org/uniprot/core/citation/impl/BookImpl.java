@@ -73,37 +73,37 @@ public class BookImpl extends AbstractCitationImpl implements Book {
 
     @Override
     public boolean hasBookName() {
-        return Utils.notEmpty(this.bookName);
+        return Utils.notNullOrEmpty(this.bookName);
     }
 
     @Override
     public boolean hasEditors() {
-        return Utils.notEmpty(this.editors);
+        return Utils.notNullOrEmpty(this.editors);
     }
 
     @Override
     public boolean hasFirstPage() {
-        return Utils.notEmpty(this.firstPage);
+        return Utils.notNullOrEmpty(this.firstPage);
     }
 
     @Override
     public boolean hasLastPage() {
-        return Utils.notEmpty(this.lastPage);
+        return Utils.notNullOrEmpty(this.lastPage);
     }
 
     @Override
     public boolean hasVolume() {
-        return Utils.notEmpty(this.volume);
+        return Utils.notNullOrEmpty(this.volume);
     }
 
     @Override
     public boolean hasPublisher() {
-        return Utils.notEmpty(this.publisher);
+        return Utils.notNullOrEmpty(this.publisher);
     }
 
     @Override
     public boolean hasAddress() {
-        return Utils.notEmpty(this.address);
+        return Utils.notNullOrEmpty(this.address);
     }
 
     @Override

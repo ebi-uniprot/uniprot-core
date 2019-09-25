@@ -52,7 +52,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
     }
 
     private String getPartOf() {
-        if(Utils.notEmpty(entry.getPartOf())){
+        if(Utils.notNullOrEmpty(entry.getPartOf())){
             return entry.getPartOf().stream()
                     .map(mapped -> mapped.getAccession() + "; " +
                             mapped.getId() + "; " +
@@ -64,7 +64,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
     }
 
     private String getIsA() {
-        if(Utils.notEmpty(entry.getIsA())){
+        if(Utils.notNullOrEmpty(entry.getIsA())){
             return entry.getIsA().stream()
                     .map(mapped -> mapped.getAccession() + "; " +
                             mapped.getId() + "; " +
@@ -76,7 +76,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
     }
 
     private String getGeneOntologies() {
-        if(Utils.notEmpty(entry.getGeneOntologies())){
+        if(Utils.notNullOrEmpty(entry.getGeneOntologies())){
             return entry.getGeneOntologies().stream()
                     .map(mapped -> mapped.getGoId() + ":" + mapped.getGoTerm())
                     .collect(Collectors.joining(", "));

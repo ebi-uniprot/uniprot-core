@@ -271,7 +271,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
 	@Override
 	public boolean hasSecondaryAccessions() {
-		return Utils.notEmpty(secondaryAccessions);
+		return Utils.notNullOrEmpty(secondaryAccessions);
 	}
 
 	@Override
@@ -286,7 +286,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
 	@Override
 	public boolean hasOrganismHosts() {
-		return Utils.notEmpty(this.organismHosts);
+		return Utils.notNullOrEmpty(this.organismHosts);
 	}
 
 	@Override
@@ -301,37 +301,37 @@ public class UniProtEntryImpl implements UniProtEntry {
 
 	@Override
 	public boolean hasGenes() {
-		return Utils.notEmpty(this.genes);
+		return Utils.notNullOrEmpty(this.genes);
 	}
 
 	@Override
 	public boolean hasComments() {
-		return Utils.notEmpty(this.comments);
+		return Utils.notNullOrEmpty(this.comments);
 	}
 
 	@Override
 	public boolean hasFeatures() {
-		return Utils.notEmpty(this.features);
+		return Utils.notNullOrEmpty(this.features);
 	}
 
 	@Override
 	public boolean hasGeneLocations() {
-		return Utils.notEmpty(this.geneLocations);
+		return Utils.notNullOrEmpty(this.geneLocations);
 	}
 
 	@Override
 	public boolean hasKeywords() {
-		return Utils.notEmpty(this.keywords);
+		return Utils.notNullOrEmpty(this.keywords);
 	}
 
 	@Override
 	public boolean hasReferences() {
-		return Utils.notEmpty(this.references);
+		return Utils.notNullOrEmpty(this.references);
 	}
 
 	@Override
 	public boolean hasDatabaseCrossReferences() {
-		return Utils.notEmpty(this.databaseCrossReferences);
+		return Utils.notNullOrEmpty(this.databaseCrossReferences);
 	}
 
 	@Override

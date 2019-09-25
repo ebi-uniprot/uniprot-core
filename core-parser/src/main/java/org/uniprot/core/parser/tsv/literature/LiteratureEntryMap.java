@@ -58,7 +58,7 @@ public class LiteratureEntryMap implements NamedValueMap {
 
     private String getAuthorsAndAuthoringGroups() {
         String result = getAuthoringGroup();
-        if (Utils.notEmpty(result)) {
+        if (Utils.notNullOrEmpty(result)) {
             result += "; " + getAuthors();
         }
         return result;

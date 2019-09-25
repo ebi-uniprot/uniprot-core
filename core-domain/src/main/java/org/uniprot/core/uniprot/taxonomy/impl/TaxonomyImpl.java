@@ -33,7 +33,7 @@ public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
 
     @Override
     public boolean hasMnemonic() {
-        return Utils.notEmpty(this.mnemonic);
+        return Utils.notNullOrEmpty(this.mnemonic);
     }
 
     @Override

@@ -45,7 +45,7 @@ public class DiseaseImpl implements Disease {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override
@@ -82,22 +82,22 @@ public class DiseaseImpl implements Disease {
 
     @Override
     public boolean hasDiseaseId() {
-        return Utils.notEmpty(this.diseaseId);
+        return Utils.notNullOrEmpty(this.diseaseId);
     }
 
     @Override
     public boolean hasDiseaseAccession() {
-        return Utils.notEmpty(this.diseaseAccession);
+        return Utils.notNullOrEmpty(this.diseaseAccession);
     }
 
     @Override
     public boolean hasAcronym() {
-        return Utils.notEmpty(this.acronym);
+        return Utils.notNullOrEmpty(this.acronym);
     }
 
     @Override
     public boolean hasDescription() {
-        return Utils.notEmpty(this.description);
+        return Utils.notNullOrEmpty(this.description);
     }
 
     @Override

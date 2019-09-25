@@ -54,12 +54,12 @@ public class KineticParametersImpl implements KineticParameters {
 
     @Override
     public boolean hasMaximumVelocities() {
-        return Utils.notEmpty(this.maximumVelocities);
+        return Utils.notNullOrEmpty(this.maximumVelocities);
     }
 
     @Override
     public boolean hasMichaelisConstants() {
-        return Utils.notEmpty(this.michaelisConstants);
+        return Utils.notNullOrEmpty(this.michaelisConstants);
     }
 
     @Override

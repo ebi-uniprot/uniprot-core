@@ -41,7 +41,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
 
     @Override
     public boolean hasIsoformId() {
-        return Utils.notEmpty(this.isoformId);
+        return Utils.notNullOrEmpty(this.isoformId);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

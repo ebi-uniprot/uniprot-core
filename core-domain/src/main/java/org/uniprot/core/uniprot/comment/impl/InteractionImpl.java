@@ -69,12 +69,12 @@ public class InteractionImpl implements Interaction {
 
     @Override
     public boolean hasUniProtAccession() {
-        return this.uniProtAccession != null && Utils.notEmpty(this.uniProtAccession.getValue());
+        return this.uniProtAccession != null && Utils.notNullOrEmpty(this.uniProtAccession.getValue());
     }
 
     @Override
     public boolean hasGeneName() {
-        return Utils.notEmpty(this.geneName);
+        return Utils.notNullOrEmpty(this.geneName);
     }
 
     @Override
@@ -84,12 +84,12 @@ public class InteractionImpl implements Interaction {
 
     @Override
     public boolean hasFirstInteractor() {
-        return this.firstInteractor != null && Utils.notEmpty(this.firstInteractor.getValue());
+        return this.firstInteractor != null && Utils.notNullOrEmpty(this.firstInteractor.getValue());
     }
 
     @Override
     public boolean hasSecondInteractor() {
-        return this.secondInteractor != null && Utils.notEmpty(this.secondInteractor.getValue());
+        return this.secondInteractor != null && Utils.notNullOrEmpty(this.secondInteractor.getValue());
     }
 
     @Override
