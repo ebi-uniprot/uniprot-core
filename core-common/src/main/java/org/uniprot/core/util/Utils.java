@@ -51,6 +51,10 @@ public class Utils {
         return value == null || value.isEmpty();
     }
 
+    public static boolean nullOrEmpty(Map<?, ?> value) {
+        return value == null || value.isEmpty();
+    }
+
     public static boolean notNullOrEmpty(String value) {
         return value != null && !value.isEmpty();
     }
