@@ -22,7 +22,7 @@ public interface LiteratureMappedReference extends Serializable {
     String getAnnotation();
 
     default boolean hasUniprotAccession() {
-        return Utils.nonNull(getUniprotAccession()) && Utils.notNullOrEmpty(getUniprotAccession().getValue());
+        return Utils.notNull(getUniprotAccession()) && Utils.notNullOrEmpty(getUniprotAccession().getValue());
     }
 
     default boolean hasSource() {

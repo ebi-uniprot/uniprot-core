@@ -67,7 +67,7 @@ public class Utils {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean nonNull(Object o) {
+    public static boolean notNull(Object o) {
         return Objects.nonNull(o);
     }
     public static String upperFirstChar(String str) {

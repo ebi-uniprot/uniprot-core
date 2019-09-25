@@ -44,7 +44,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
 
     private String getStatistics() {
         StringBuilder result = new StringBuilder();
-        if (Utils.nonNull(entry.getStatistics())) {
+        if (Utils.notNull(entry.getStatistics())) {
             result.append("reviewed:").append(entry.getStatistics().getReviewedProteinCount()).append("; ")
             .append("annotated:").append(entry.getStatistics().getUnreviewedProteinCount());
         }

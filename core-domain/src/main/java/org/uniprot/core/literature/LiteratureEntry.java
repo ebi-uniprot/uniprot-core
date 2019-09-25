@@ -42,7 +42,7 @@ public interface LiteratureEntry extends Serializable {
     LiteratureStatistics getStatistics();
 
     default boolean hasPubmedId() {
-        return Utils.nonNull(getPubmedId()) && getPubmedId() > 0;
+        return Utils.notNull(getPubmedId()) && getPubmedId() > 0;
     }
 
     default boolean hasDoiId() {
@@ -62,11 +62,11 @@ public interface LiteratureEntry extends Serializable {
     }
 
     default boolean hasPublicationDate() {
-        return Utils.nonNull(getPublicationDate());
+        return Utils.notNull(getPublicationDate());
     }
 
     default boolean hasJournal() {
-        return Utils.nonNull(getJournal());
+        return Utils.notNull(getJournal());
     }
 
     default boolean hasFirstPage() {
@@ -90,7 +90,7 @@ public interface LiteratureEntry extends Serializable {
     }
 
     default boolean hasStatistics() {
-        return Utils.nonNull(getStatistics());
+        return Utils.notNull(getStatistics());
     }
 
 }
