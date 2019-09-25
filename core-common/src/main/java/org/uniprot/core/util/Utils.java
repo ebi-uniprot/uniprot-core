@@ -24,9 +24,9 @@ public class Utils {
         }
     }
 
-    public static <T> void nonNullAdd(T source, List<T> target) {
-        if (source != null) {
-            target.add(source);
+    public static <T> void nonNullAdd(T value, List<T> target) {
+        if (value != null) {
+            target.add(value);
         }
     }
 
