@@ -2,6 +2,7 @@ package org.uniprot.core.cv.taxonomy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.taxonomy.impl.TaxonomicNodeImpl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,16 +19,21 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
     private String fieldSeparator;
     private String nullPlaceholder;
 
+    private static final String READER_ERROR_MSG = "An exception occurred when closing the reader.";
+
     public FileNodeIterator(File file, String fieldSeparator, String nullPlaceholder) {
         try {
             this.fileReader = new FileReader(file);
             this.bufferedReader = new BufferedReader(fileReader);
+            this.fieldSeparator = fieldSeparator;
+            this.nullPlaceholder = nullPlaceholder;
+            this.next = readNode(this.bufferedReader.readLine());
         } catch (IOException ex) {
             if (this.bufferedReader != null) {
                 try {
                     this.bufferedReader.close();
                 } catch (IOException e) {
-                    logger.error("An exception ocurred when closing the reader.", e);
+                    logger.error(READER_ERROR_MSG, e);
                 }
             }
 
@@ -42,55 +48,40 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
             this.fileReader = null;
             throw new IllegalStateException("An exception occurred whilst accessing the taxonomy file", ex);
         }
-
-        this.fieldSeparator = fieldSeparator;
-        this.nullPlaceholder = nullPlaceholder;
-
     }
 
     @Override
     public boolean hasNext() {
-        boolean hasNext = false;
+        return this.next != null;
+    }
+
+    @Override
+    public TaxonomicNode next() {
+        TaxonomicNode localNext = this.next;
         try {
-            if (this.next != null) {
-                hasNext = true;
+            if (!hasNext()) {
+                throw new NoSuchElementException("No elements left in iterator");
             } else {
-                String line = this.bufferedReader.readLine();
-                if (line != null) {
-                    String[] nodeElements = line.split(this.fieldSeparator);
-                    this.next = createNode(nodeElements);
-                    hasNext = true;
-                }
+                this.next = readNode(this.bufferedReader.readLine());
             }
         } catch (IOException e) {
             throw new IllegalStateException("An exception occurred whilst reading from the taxonomy file", e);
         } finally {
-            if (!hasNext) {
+            if (!hasNext()) {
                 try {
                     this.bufferedReader.close();
                 } catch (IOException e) {
-                    logger.error("An exception ocurred when closing the reader.", e);
+                    logger.error(READER_ERROR_MSG, e);
                 }
 
                 try {
                     this.fileReader.close();
                 } catch (IOException e) {
-                    logger.error("An exception ocurred when closing the reader.", e);
+                    logger.error(READER_ERROR_MSG, e);
                 }
             }
         }
-
-        return hasNext;
-    }
-
-    @Override
-    public TaxonomicNode next() {
-        if (!hasNext()) {
-            throw new NoSuchElementException("No elements left in iterator");
-        }
-        TaxonomicNode next = this.next;
-        this.next = null;
-        return next;
+        return localNext;
     }
 
     private TaxonomicNode createNode(String[] nodeElements) {
@@ -103,18 +94,17 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
 
         String commonName = parseString(nodeElements[10]); //sptr_common
         if (commonName == null || commonName.equalsIgnoreCase("\\N")) {
-            commonName = parseString(nodeElements[8]); //ncbi_common;
+            commonName = parseString(nodeElements[8]); //ncbi_common
         }
 
         Integer parentId = parseInteger(nodeElements[1]);
         TaxonomicNode parentNode = createParentNode(parentId);
 
-        TaxonomicNode node = new TaxonomicNodeImpl.Builder(id, scientificName)
+        return new TaxonomicNodeImpl.Builder(id, scientificName)
                 .withCommonName(commonName)
                 .withSynonymName(parseString(nodeElements[11]))
                 .withMnemonic(parseString(nodeElements[12]))
                 .childOf(parentNode).build();
-        return node;
     }
 
     private TaxonomicNode createParentNode(Integer parentId) {
@@ -154,5 +144,15 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
         }
 
         return value;
+    }
+
+    private TaxonomicNode readNode(String line) {
+        TaxonomicNode node = null;
+        if (line != null) {
+            String[] nodeElements = line.split(this.fieldSeparator);
+            node = createNode(nodeElements);
+        }
+
+        return node;
     }
 }

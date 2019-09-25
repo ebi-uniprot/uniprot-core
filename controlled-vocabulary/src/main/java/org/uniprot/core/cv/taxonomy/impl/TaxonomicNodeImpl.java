@@ -1,4 +1,6 @@
-package org.uniprot.core.cv.taxonomy;
+package org.uniprot.core.cv.taxonomy.impl;
+
+import org.uniprot.core.cv.taxonomy.TaxonomicNode;
 
 import java.util.Objects;
 
@@ -9,7 +11,7 @@ import java.util.Objects;
  *
  * Note: All information necessary to populate the node has to be provided at build time.
  */
-class TaxonomicNodeImpl implements TaxonomicNode {
+public class TaxonomicNodeImpl implements TaxonomicNode {
 	public static final String UNDEFINED_SCIENTIFIC_NAME = "Undefined";
 
     private int id;

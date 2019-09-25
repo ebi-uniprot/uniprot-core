@@ -1,8 +1,11 @@
-package org.uniprot.core.cv.taxonomy;
+package org.uniprot.core.cv.taxonomy.impl;
 
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.taxonomy.TaxonMappingException;
+import org.uniprot.core.cv.taxonomy.TaxonomicNode;
+import org.uniprot.core.cv.taxonomy.TaxonomyRepo;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,8 +1,5 @@
 package org.uniprot.core.cv.taxonomy;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 
 /**
@@ -11,8 +8,6 @@ import java.io.File;
 public class FileNodeIterable implements Iterable<TaxonomicNode> {
 	private static final String TAB_SEPARATOR = "\t";
 	private static final String NULL_PLACEHOLDER = "\\N";
-
-	private final Logger logger = LoggerFactory.getLogger(getClass());
 
 	private String fieldSeparator;
 	private String nullPlaceholder;
