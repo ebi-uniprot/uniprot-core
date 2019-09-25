@@ -4,6 +4,11 @@ import java.io.InputStream;
 import java.util.*;
 
 public class Utils {
+    /**
+     * Convert null to empty string or return actual
+     * @param value string null or non null
+     * @return empty string or original string
+     */
     public static String nullToEmpty(String value) {
         if (value == null)
             return "";

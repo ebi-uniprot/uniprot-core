@@ -1,14 +1,16 @@
 package org.uniprot.core.util;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.uniprot.core.util.PublicationDateFormatter;
 
+import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created 09/07/19
@@ -70,6 +72,12 @@ class PublicationDateFormatterTest {
         } catch (Exception e) {
             fail("Year test failed");
         }
+    }
+
+    @ParameterizedTest
+    @EnumSource(PublicationDateFormatter.class)
+    void wrongFormats_shouldThrowExceptions(PublicationDateFormatter formatter) {
+        assertThrows(DateTimeParseException.class, () -> formatter.convertStringToDate("wrong-format"));
     }
 
     private void verifyDate(Date date, int expectedYear, int expectedMonth, int expectedDay) {
