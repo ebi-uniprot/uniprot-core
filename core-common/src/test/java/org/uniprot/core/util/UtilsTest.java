@@ -41,7 +41,7 @@ class UtilsTest {
       @ParameterizedTest
       @ValueSource(strings = {"1", "AB", "a%^b", "()+^£$^%%", "aB", "Ab", " s ", "NULL", "   ", "123432"})
       void nonEmpty_shouldAlwaysReturnFalse(String test) {
-        assertEquals(test, Utils.nullToEmpty(test));
+        assertFalse(Utils.nullOrEmpty(test));
       }
     }
 
@@ -93,6 +93,24 @@ class UtilsTest {
           () -> assertEquals("protein Def", Utils.lowerFirstChar("Protein Def")),
           () -> assertEquals("12345", Utils.lowerFirstChar("12345"))
         );
+      }
+    }
+
+    @Nested
+    class notNullOrEmpty {
+
+      @Test
+      void whenNullOrEmpty_returnFalse() {
+        assertAll(
+          () -> assertFalse(Utils.notNullOrEmpty((String) null)),
+          () -> assertFalse(Utils.notNullOrEmpty(""))
+        );
+      }
+
+      @ParameterizedTest
+      @ValueSource(strings = {"1", "AB", "a%^b", "()+^£$^%%", "aB", "Ab", " s ", "NULL", "   ", "123432"})
+      void nonEmpty_shouldAlwaysReturnTrue(String test) {
+        assertTrue(Utils.notNullOrEmpty(test));
       }
     }
 
