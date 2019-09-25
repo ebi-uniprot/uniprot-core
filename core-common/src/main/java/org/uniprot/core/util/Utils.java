@@ -69,17 +69,11 @@ public class Utils {
     public static String upperFirstChar(String str) {
     	if(nullOrEmpty(str))
     		return str;
-        return new StringBuilder()
-            .append(Character.toTitleCase(str.charAt(0)))
-            .append(str.substring(1))
-            .toString();
+    	return Character.toTitleCase(str.charAt(0)) + str.substring(1);
     }
     public static String lowerFirstChar(String str) {
     	if(nullOrEmpty(str))
     		return str;
-        return new StringBuilder()
-            .append(Character.toLowerCase(str.charAt(0)))
-            .append(str.substring(1))
-            .toString();
+    	return Character.toLowerCase(str.charAt(0)) + str.substring(1);
     }
 }
