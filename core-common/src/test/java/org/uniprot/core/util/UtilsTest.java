@@ -1,13 +1,14 @@
 package org.uniprot.core.util;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.io.ByteArrayInputStream;
 import java.util.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class UtilsTest {
 
@@ -167,6 +168,67 @@ class UtilsTest {
         );
       }
     }
+
+    @Nested
+    class unmodifiableList {
+      @Test
+      void passingNullReturnEmptyList() {
+        List l = Utils.nonNullUnmodifiableList(null);
+        assertTrue(l.isEmpty());
+      }
+
+      @Test
+      void passing_emptyList_returnEmptyList() {
+        List l = Utils.nonNullUnmodifiableList(new ArrayList<>());
+        assertTrue(l.isEmpty());
+      }
+
+      @Test
+      void passingNullReturnEmptyList_unmodifiable() {
+        List<String> l = Utils.nonNullUnmodifiableList(null);
+        assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
+      }
+
+      @Test
+      void passing_emptyList_returnEmptyList_unmodifiable() {
+        List<String> l = Utils.nonNullUnmodifiableList(new ArrayList<>());
+        assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
+      }
+
+      @Test
+      void passingList_returnUnmodifiable() {
+        List<String> list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        List<String> l = Utils.nonNullUnmodifiableList(list);
+        assertThrows(UnsupportedOperationException.class, () -> l.add("c"));
+      }
+    }
+
+    @Nested
+    class addOrIgnoreNull {
+      @Test
+      void addingNullValueInNullList_nullList(){
+        List<String> l = null;
+        Utils.nonNullAdd(null,l);
+        assertNull(l);
+      }
+
+      @Test
+      void addingNotNullValueInNullList_NPE(){
+        List<String> l = null;
+        assertThrows(NullPointerException.class,()-> Utils.nonNullAdd("test",l));
+      }
+
+      @Test
+      void nonNulValue(){
+        List<String> l = new ArrayList<>();
+        Utils.nonNullAdd("abc",l);
+        assertNotNull(l);
+        assertEquals(1, l.size());
+        assertEquals("abc", l.get(0));
+      }
+    }
   }
 
   @Nested
@@ -249,7 +311,7 @@ class UtilsTest {
         Collection c = Collections.emptyList();
         Map m = Collections.emptyMap();
         Integer i = 5;
-        Pair<Object, Collection> p = new PairImpl(o,c);
+        Pair<Object, Collection> p = new PairImpl(o, c);
         assertAll(
           () -> assertTrue(Utils.notNull(o)),
           () -> assertTrue(Utils.notNull(c)),
@@ -259,6 +321,22 @@ class UtilsTest {
         );
       }
     }
+
+    @Nested
+    class loadPropertyInput {
+      @Test
+      void canReadEveryThingFromInputStream() {
+        String file = "abc";
+        assertEquals("abc", Utils.loadPropertyInput(new ByteArrayInputStream(file.getBytes())));
+      }
+
+      @Test
+      void nothingToRead_returnEmpty() {
+        String file = "";
+        assertEquals("", Utils.loadPropertyInput(new ByteArrayInputStream(file.getBytes())));
+      }
+    }
+
   }
 }
 
