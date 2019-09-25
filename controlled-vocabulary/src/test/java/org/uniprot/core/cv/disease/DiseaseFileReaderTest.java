@@ -1,22 +1,17 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.disease;
 
-
-
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.disease.Disease;
 import org.uniprot.core.cv.disease.DiseaseCache;
-import org.uniprot.core.cv.impl.DiseaseFileReader;
+import org.uniprot.core.cv.disease.DiseaseFileReader;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class DiseaseFileReaderTest {
     private static final DiseaseFileReader reader = new DiseaseFileReader();

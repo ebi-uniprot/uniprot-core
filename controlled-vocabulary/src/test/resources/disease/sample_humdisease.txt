@@ -1,0 +1,88 @@
+---------------------------------------------------------------------------
+        UniProt Knowledgebase
+        SIB Swiss Institute of Bioinformatics; Geneva, Switzerland
+        European Bioinformatics Institute (EBI); Hinxton, United Kingdom
+        Protein Information Resource (PIR); Washington DC, USA
+---------------------------------------------------------------------------
+
+Description: Controlled vocabulary of human diseases
+Name:        humdisease.txt
+Release:     2018_10 of 07-Nov-2018
+
+---------------------------------------------------------------------------
+
+  This document lists the controlled vocabulary that is used for the
+  annotation of human diseases in UniProtKB/Swiss-Prot.
+
+  It follows the format below:
+
+  ---------  ---------------------------     ------------------------------
+  Line code  Content                         Occurrence in an entry
+  ---------  ---------------------------     ------------------------------
+  ID         Identifier                      Once; starts an entry
+  AC         Accession (DI-xxxxx)            Once
+  AR         Acronym                         Once
+  DE         Definition                      Once or more
+  SY         Alternative name(s)             Optional; once or more
+  DR         Cross-reference(s)              Once or more
+  KW         Associated keyword (accession)  Optional; Once or more
+  //         Terminator                      Once; ends an entry
+
+  Sources: OMIM, Scientific articles, Dorland's Medical Dictionary,
+  Orphanet.
+
+___________________________________________________________________________
+
+ID   2,4-dienoyl-CoA reductase deficiency.
+AC   DI-04240
+AR   DECRD.
+DE   A rare, autosomal recessive, inborn error of polyunsaturated fatty
+DE   acids and lysine metabolism, resulting in mitochondrial dysfunction.
+DE   Affected individuals have a severe encephalopathy with neurologic and
+DE   metabolic abnormalities beginning in early infancy. Laboratory studies
+DE   show increased C10:2 carnitine levels and hyperlysinemia.
+DR   MIM; 616034; phenotype.
+DR   MedGen; CN037048.
+DR   MeSH; D020167.
+DR   MeSH; D028361.
+//
+ID   2-aminoadipic 2-oxoadipic aciduria.
+AC   DI-03673
+AR   AMOXAD.
+DE   A metabolic disorder characterized by increased levels of 2-oxoadipate
+DE   and 2-hydroxyadipate in the urine, and elevated 2-aminoadipate in the
+DE   plasma. Patients can have mild to severe intellectual disability,
+DE   muscular hypotonia, developmental delay, ataxia, and epilepsy. Most
+DE   cases are asymptomatic.
+DR   MIM; 204750; phenotype.
+DR   MedGen; C1859817.
+DR   MeSH; D000592.
+//
+ID   3-alpha-hydroxyacyl-CoA dehydrogenase deficiency.
+AC   DI-00002
+AR   HADH deficiency.
+DE   An autosomal recessive, metabolic disorder with various clinical
+DE   presentations including hypoglycemia, hepatoencephalopathy, myopathy
+DE   or cardiomyopathy, and in some cases sudden death.
+SY   HAD deficiency.
+SY   Hydroxyacyl-coenzyme A dehydrogenase deficiency.
+SY   SCHAD deficiency.
+DR   MIM; 231530; phenotype.
+DR   MedGen; C1291230.
+DR   MeSH; D008659.
+//
+ID   ZTTK syndrome.
+AC   DI-04860
+AR   ZTTKS.
+DE   An autosomal dominant syndrome characterized by intellectual
+DE   disability, developmental delay, malformations of the cerebral cortex,
+DE   epilepsy, vision problems, musculo-skeletal abnormalities, and
+DE   congenital malformations.
+SY   Zhu-Tokita-Takenouchi-Kim syndrome.
+SY   ZTTK multiple congenital anomalies-mental retardation syndrome.
+DR   MIM; 617140; phenotype.
+DR   MedGen; CN238690.
+DR   MeSH; D000015.
+DR   MeSH; D008607.
+KW   KW-0991:Mental retardation.
+//

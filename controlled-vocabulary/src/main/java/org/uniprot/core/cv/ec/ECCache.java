@@ -1,55 +1,44 @@
 package org.uniprot.core.cv.ec;
 
+import org.uniprot.core.cv.common.AbstractFileReader;
+import org.uniprot.core.cv.common.BaseCache;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.uniprot.core.cv.impl.ECFileReader;
 
 /**
  * Created 15/03/19
  *
  * @author Edd
  */
-public enum ECCache {
+public enum ECCache implements BaseCache<EC> {
     INSTANCE;
     public static final String ENZYME_DAT = "enzyme.dat";
     public static final String ENZCLASS_TXT = "enzclass.txt";
-    static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
-    Map<String, List<EC>> locationECMap = new HashMap<>();
+    private static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
+    private Map<String, List<EC>> locationECMap = new HashMap<>();
+    private AbstractFileReader<EC> reader;
 
-    public List<EC> get() {
-        return get(null);
+    private String defaultDataLocation = FTP_LOCATION;
+
+    @Override
+    public String getDefaultDataFile() {
+        return this.defaultDataLocation;
     }
 
-    public List<EC> get(String dir) {
-        String filename = dir;
-        if ((filename == null) || filename.isEmpty()) {
-            filename = FTP_LOCATION;
-        }
-
-        List<EC> result = locationECMap.get(filename);
-        if (result != null)
-            return result;
-
-        result = buildCache(filename);
-        if (result.isEmpty() && !FTP_LOCATION.equals(filename)) {
-            result = locationECMap.get(FTP_LOCATION);
-            if (result == null) {
-                result = buildCache(FTP_LOCATION);
-                locationECMap.put(FTP_LOCATION, result);
-                return result;
-            } else {
-                return result;
-            }
-        } else {
-            locationECMap.put(filename, result);
-            return result;
-        }
-
+    @Override
+    public void setDefaultDataFile(String dataFile) {
+        this.defaultDataLocation = dataFile;
     }
 
-    private List<EC> buildCache(String dirLocation) {
-        return new ECFileReader().parse(dirLocation);
+    @Override
+    public Map<String, List<EC>> getCacheMap() {
+        return this.locationECMap;
+    }
+
+    @Override
+    public AbstractFileReader<EC> getReader() {
+        return this.reader != null ? this.reader : (this.reader = new ECFileReader());
     }
 }

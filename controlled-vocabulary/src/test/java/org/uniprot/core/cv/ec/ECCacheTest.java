@@ -1,8 +1,6 @@
 package org.uniprot.core.cv.ec;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.ec.EC;
-import org.uniprot.core.cv.ec.ECCache;
 
 import java.util.List;
 

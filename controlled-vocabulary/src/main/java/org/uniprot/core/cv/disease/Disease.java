@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.disease;
 
-import java.util.List;
-
 import org.uniprot.core.cv.keyword.Keyword;
+
+import java.util.List;
 
 
 public interface Disease {

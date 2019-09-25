@@ -1,50 +1,42 @@
 package org.uniprot.core.cv.chebi;
 
+import org.uniprot.core.cv.common.AbstractFileReader;
+import org.uniprot.core.cv.common.BaseCache;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.uniprot.core.cv.impl.ChebiFileReader;
 
 /**
  * Created 05/06/19
  *
  * @author Edd
  */
-public enum ChebiCache {
+public enum ChebiCache implements BaseCache<Chebi> {
     INSTANCE;
 
     private static final String FTP_LOCATION = "ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.obo";
     private Map<String, List<Chebi>> chebiMap = new HashMap<>();
+    private AbstractFileReader<Chebi> reader;
+    private String defaultDataLocation = FTP_LOCATION;
 
-    public List<Chebi> get(String dir) {
-        String filename = dir;
-        if ((filename == null) || filename.isEmpty()) {
-            filename = FTP_LOCATION;
-        }
-
-        List<Chebi> result = chebiMap.get(filename);
-        if (result != null) {
-            return result;
-        }
-
-        result = buildCache(filename);
-        if (result.isEmpty() && !FTP_LOCATION.equals(filename)) {
-            result = chebiMap.get(FTP_LOCATION);
-            if (result == null) {
-                result = buildCache(FTP_LOCATION);
-                chebiMap.put(FTP_LOCATION, result);
-                return result;
-            } else {
-                return result;
-            }
-        } else {
-            chebiMap.put(filename, result);
-            return result;
-        }
+    @Override
+    public String getDefaultDataFile() {
+        return this.defaultDataLocation;
     }
 
-    private List<Chebi> buildCache(String filename) {
-        return new ChebiFileReader().parse(filename);
+    @Override
+    public void setDefaultDataFile(String dataFile) {
+        this.defaultDataLocation = dataFile;
+    }
+
+    @Override
+    public Map<String, List<Chebi>> getCacheMap() {
+        return this.chebiMap;
+    }
+
+    @Override
+    public AbstractFileReader<Chebi> getReader() {
+        return this.reader != null ? this.reader : (this.reader = new ChebiFileReader());
     }
 }
