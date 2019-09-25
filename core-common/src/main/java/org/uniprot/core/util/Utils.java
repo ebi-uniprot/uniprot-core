@@ -66,7 +66,7 @@ public class Utils {
     public static boolean nonNull(Object o) {
         return Objects.nonNull(o);
     }
-    public static String capitalize(String str) {
+    public static String upperFirstChar(String str) {
     	if(nullOrEmpty(str))
     		return str;
         return new StringBuilder()
@@ -74,7 +74,7 @@ public class Utils {
             .append(str.substring(1))
             .toString();
     }
-    public static String uncapitalize(String str) {
+    public static String lowerFirstChar(String str) {
     	if(nullOrEmpty(str))
     		return str;
         return new StringBuilder()

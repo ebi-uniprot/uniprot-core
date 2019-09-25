@@ -12,7 +12,7 @@ class UtilsTest {
   @Test
   void testCapitalize() {
     String str = "protein";
-    String result = Utils.capitalize(str);
+    String result = Utils.upperFirstChar(str);
     assertEquals("Protein", result);
 
   }
@@ -20,7 +20,7 @@ class UtilsTest {
   @Test
   void testUncapitalize() {
     String str = "Protein";
-    String result = Utils.uncapitalize(str);
+    String result = Utils.lowerFirstChar(str);
     assertEquals("protein", result);
 
   }

@@ -89,7 +89,7 @@ public class SubcellularLocationConverter implements Converter<SubcellularLocati
                 return val;
             }
         }
-        return Utils.uncapitalize(val);
+        return Utils.lowerFirstChar(val);
     }
 
     @Override
@@ -123,7 +123,7 @@ public class SubcellularLocationConverter implements Converter<SubcellularLocati
 
     private EvidencedStringType buildLocation(String value, SubcellularLocationValue locationValue) {
         EvidencedStringType typeLocation = xmlUniprotFactory.createEvidencedStringType();
-        typeLocation.setValue(Utils.capitalize(value));
+        typeLocation.setValue(Utils.upperFirstChar(value));
 
         // Evidences
         List<Evidence> evidenceIds = locationValue.getEvidences();
