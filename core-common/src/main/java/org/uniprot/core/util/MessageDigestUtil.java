@@ -17,7 +17,7 @@ public class MessageDigestUtil {
      *            Message Digest type,
      * @return String
      */
-    public static String getDigest(String seq, String type) {
+    static String getDigest(String seq, String type) {
         MessageDigest md;
         try {
             md = MessageDigest.getInstance(type);
@@ -42,8 +42,6 @@ public class MessageDigestUtil {
     private static String byteArrayToHexString(byte[] in) {
         byte ch;
         int i = 0;
-        if (in == null || in.length <= 0)
-            return null;
 
         String[] pseudo = {"0", "1", "2",
                 "3", "4", "5", "6", "7", "8",
