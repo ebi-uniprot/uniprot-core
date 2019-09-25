@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.keyword;
 
 
 import org.junit.jupiter.api.Disabled;

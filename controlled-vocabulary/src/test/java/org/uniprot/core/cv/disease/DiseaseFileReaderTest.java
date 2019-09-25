@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.disease;
 
 
 import org.junit.jupiter.api.Disabled;

@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.pathway;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.pathway.UniPathway;

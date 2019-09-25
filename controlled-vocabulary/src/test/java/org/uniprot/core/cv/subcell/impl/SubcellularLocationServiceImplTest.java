@@ -1,8 +1,7 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.subcell.impl;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.impl.SubcellularLocationServiceImpl;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

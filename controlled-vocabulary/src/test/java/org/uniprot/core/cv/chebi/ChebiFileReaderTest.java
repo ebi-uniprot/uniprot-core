@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.chebi;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
