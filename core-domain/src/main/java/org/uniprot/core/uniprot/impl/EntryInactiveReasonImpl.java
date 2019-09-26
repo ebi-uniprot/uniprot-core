@@ -18,7 +18,7 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
 
     public EntryInactiveReasonImpl(InactiveReasonType inactiveReasonType, List<String> mergeDemergeTo) {
         this.inactiveReasonType = inactiveReasonType;
-        this.mergeDemergeTo = Utils.nonNullUnmodifiableList(mergeDemergeTo);
+        this.mergeDemergeTo = Utils.unmodifiableList(mergeDemergeTo);
     }
 
     @Override

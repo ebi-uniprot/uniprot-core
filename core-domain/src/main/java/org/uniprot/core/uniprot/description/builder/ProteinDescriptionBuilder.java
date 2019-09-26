@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.description.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
-		nonNullAdd(alternativeNames, this.alternativeNames);
+		addOrIgnoreNull(alternativeNames, this.alternativeNames);
 		return this;
 	}
 	
@@ -60,7 +60,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder addCdAntigenNames(Name cdAntigen) {
-		nonNullAdd(cdAntigen, this.cdAntigenNames);
+		addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
 		return this;
 	}
 
@@ -70,7 +70,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder addInnNames(Name innNames) {
-		nonNullAdd(innNames, this.innNames);
+		addOrIgnoreNull(innNames, this.innNames);
 		return this;
 	}
 	
@@ -88,7 +88,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder addSubmissionNames(ProteinSubName submissionNames) {
-		nonNullAdd(submissionNames, this.submissionNames);
+		addOrIgnoreNull(submissionNames, this.submissionNames);
 		return this;
 	}
 
@@ -98,7 +98,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder addIncludes(ProteinSection includes) {
-		nonNullAdd(includes, this.includes);
+		addOrIgnoreNull(includes, this.includes);
 		return this;
 	}
 
@@ -108,7 +108,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder addContains(ProteinSection contains) {
-		nonNullAdd(contains, this.contains);
+		addOrIgnoreNull(contains, this.contains);
 		return this;
 	}
 

@@ -89,7 +89,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addOtherNames(String otherNames) {
-        Utils.nonNullAdd(otherNames,this.otherNames);
+        Utils.addOrIgnoreNull(otherNames,this.otherNames);
         return this;
     }
 
@@ -99,7 +99,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addLineage(TaxonomyLineage lineage) {
-        Utils.nonNullAdd(lineage,this.lineage);
+        Utils.addOrIgnoreNull(lineage,this.lineage);
         return this;
     }
 
@@ -109,7 +109,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addStrain(TaxonomyStrain strains) {
-        Utils.nonNullAdd(strains,this.strains);
+        Utils.addOrIgnoreNull(strains,this.strains);
         return this;
     }
 
@@ -119,7 +119,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addHost(Taxonomy host) {
-        Utils.nonNullAdd(host,this.hosts);
+        Utils.addOrIgnoreNull(host,this.hosts);
         return this;
     }
 
@@ -129,7 +129,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addLink(String link) {
-        Utils.nonNullAdd(link,this.links);
+        Utils.addOrIgnoreNull(link,this.links);
         return this;
     }
 

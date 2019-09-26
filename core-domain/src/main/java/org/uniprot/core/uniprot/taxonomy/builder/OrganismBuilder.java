@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.builder;
 
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     }
 
     public OrganismBuilder addLineage(String lineage) {
-        nonNullAdd(lineage, this.lineage);
+        addOrIgnoreNull(lineage, this.lineage);
         return this;
     }
 
@@ -40,7 +40,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     }
 
     public OrganismBuilder addEvidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 

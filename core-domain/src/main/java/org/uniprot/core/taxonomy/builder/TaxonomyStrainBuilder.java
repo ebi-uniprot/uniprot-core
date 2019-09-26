@@ -25,7 +25,7 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, Tax
     }
 
     public TaxonomyStrainBuilder addSynonym(String synonym) {
-        Utils.nonNullAdd(synonym,this.synonyms);
+        Utils.addOrIgnoreNull(synonym,this.synonyms);
         return this;
     }
 

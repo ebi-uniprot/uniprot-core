@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -45,7 +45,7 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
     }
 
     public SubcellularLocationCommentBuilder addSubcellularLocation(SubcellularLocation subcellularLocation) {
-        nonNullAdd(subcellularLocation, this.subcellularLocations);
+        addOrIgnoreNull(subcellularLocation, this.subcellularLocations);
         return this;
     }
 }

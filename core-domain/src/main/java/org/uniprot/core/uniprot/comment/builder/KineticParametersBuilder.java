@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
     }
 
     public KineticParametersBuilder addMaximumVelocitie(MaximumVelocity maximumVelocity) {
-        nonNullAdd(maximumVelocity, this.maximumVelocities);
+        addOrIgnoreNull(maximumVelocity, this.maximumVelocities);
         return this;
     }
 
@@ -39,7 +39,7 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
     }
 
     public KineticParametersBuilder addMichaelisConstant(MichaelisConstant michaelisConstant) {
-        nonNullAdd(michaelisConstant, this.michaelisConstants);
+        addOrIgnoreNull(michaelisConstant, this.michaelisConstants);
         return this;
     }
 

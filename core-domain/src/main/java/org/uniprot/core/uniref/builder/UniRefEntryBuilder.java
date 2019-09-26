@@ -97,7 +97,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 		return this;
 	}
 	public UniRefEntryBuilder addGoTerm(GoTerm goTerm) {
-		Utils.nonNullAdd(goTerm, this.goTerms);
+		Utils.addOrIgnoreNull(goTerm, this.goTerms);
 		return this;
 	}
 	public UniRefEntryBuilder representativeMember(RepresentativeMember representativeMember) {
@@ -110,7 +110,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 		return this;
 	}
 	public UniRefEntryBuilder addMember(UniRefMember unirefMember) {
-		Utils.nonNullAdd(unirefMember, this.members);
+		Utils.addOrIgnoreNull(unirefMember, this.members);
 		return this;
 	}
 	public UniRefEntryBuilder memberCount(int memberCount) {

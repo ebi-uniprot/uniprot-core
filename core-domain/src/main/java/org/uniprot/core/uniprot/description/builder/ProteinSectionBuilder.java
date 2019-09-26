@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.description.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     }
 
     public ProteinSectionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
-        nonNullAdd(alternativeNames, this.alternativeNames);
+        addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
     public ProteinSectionBuilder allergenName(Name allergenName) {
@@ -51,7 +51,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
 	}
 
 	public ProteinSectionBuilder addCdAntigenNames(Name cdAntigen) {
-		nonNullAdd(cdAntigen, this.cdAntigenNames);
+		addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
 		return this;
 	}
 
@@ -61,7 +61,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
 	}
 
 	public ProteinSectionBuilder addInnNames(Name innNames) {
-		nonNullAdd(innNames, this.innNames);
+		addOrIgnoreNull(innNames, this.innNames);
 		return this;
 	}
     @Override

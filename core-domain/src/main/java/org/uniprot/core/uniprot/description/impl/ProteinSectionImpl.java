@@ -29,11 +29,11 @@ public class ProteinSectionImpl implements ProteinSection {
     		) {
 
         this.recommendedName = recommendedName;
-        this.alternativeNames =  Utils.nonNullUnmodifiableList(alternativeNames);
+        this.alternativeNames =  Utils.unmodifiableList(alternativeNames);
         this.allergenName = allergenName;
         this.biotechName = biotechName;
-        this.cdAntigenNames =  Utils.nonNullUnmodifiableList(cdAntigenNames);
-        this.innNames =  Utils.nonNullUnmodifiableList(innNames);
+        this.cdAntigenNames =  Utils.unmodifiableList(cdAntigenNames);
+        this.innNames =  Utils.unmodifiableList(innNames);
 
     }
 

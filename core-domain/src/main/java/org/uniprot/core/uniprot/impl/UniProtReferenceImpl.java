@@ -28,9 +28,9 @@ public class UniProtReferenceImpl implements UniProtReference {
     public UniProtReferenceImpl(Citation citation, List<String> referencePositions, List<ReferenceComment> referenceComments,
                                 List<Evidence> evidences) {
         this.citation = citation;
-        this.referencePositions = Utils.nonNullUnmodifiableList(referencePositions);
-        this.referenceComments = Utils.nonNullUnmodifiableList(referenceComments);
-        this.evidences = Utils.nonNullUnmodifiableList(evidences);
+        this.referencePositions = Utils.unmodifiableList(referencePositions);
+        this.referenceComments = Utils.unmodifiableList(referenceComments);
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

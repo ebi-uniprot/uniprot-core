@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class InteractionCommentBuilder implements CommentBuilder<InteractionComm
     }
 
     public InteractionCommentBuilder addInteraction(Interaction interaction) {
-        nonNullAdd(interaction, this.interactions);
+        addOrIgnoreNull(interaction, this.interactions);
         return this;
     }
 

@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class GeneBuilder implements Builder<GeneBuilder,Gene> {
     }
 
     public GeneBuilder addSynonyms(GeneNameSynonym synonym) {
-        nonNullAdd(synonym, this.synonyms);
+        addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
 
@@ -39,7 +39,7 @@ public class GeneBuilder implements Builder<GeneBuilder,Gene> {
     }
 
     public GeneBuilder addOrderedLocusNames(OrderedLocusName orderedLocusName) {
-        nonNullAdd(orderedLocusName, this.orderedLocusNames);
+        addOrIgnoreNull(orderedLocusName, this.orderedLocusNames);
         return this;
     }
 
@@ -51,7 +51,7 @@ public class GeneBuilder implements Builder<GeneBuilder,Gene> {
     }
 
     public GeneBuilder addOrfNames(ORFName orfName) {
-        nonNullAdd(orfName, this.orfNames);
+        addOrIgnoreNull(orfName, this.orfNames);
         return this;
     }
     public GeneBuilder orfNames(List<ORFName> orfNames) {

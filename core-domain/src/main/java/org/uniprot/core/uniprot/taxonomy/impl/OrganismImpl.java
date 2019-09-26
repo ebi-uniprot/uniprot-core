@@ -8,7 +8,7 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
 
 import static java.util.Collections.emptyList;
-import static org.uniprot.core.util.Utils.nonNullUnmodifiableList;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     private static final long serialVersionUID = 3285422222944186108L;
@@ -23,9 +23,9 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     public OrganismImpl(List<String> lineage, long taxonId, List<Evidence> evidences,
                         String scientificName, String commonName, List<String> synonyms) {
         super(scientificName, commonName, synonyms);
-        this.lineage = nonNullUnmodifiableList(lineage);
+        this.lineage = unmodifiableList(lineage);
         this.taxonId = taxonId;
-        this.evidences = nonNullUnmodifiableList(evidences);
+        this.evidences = unmodifiableList(evidences);
     }
 
     @Override

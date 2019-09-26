@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
     }
 
     public InternalSectionBuilder addInternalLine(InternalLine internalLine) {
-        nonNullAdd(internalLine, this.internalLines);
+        addOrIgnoreNull(internalLine, this.internalLines);
         return this;
     }
 
@@ -52,7 +52,7 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
     }
 
     public InternalSectionBuilder addEvidenceLine(EvidenceLine evidenceLine) {
-        nonNullAdd(evidenceLine, this.evidenceLines);
+        addOrIgnoreNull(evidenceLine, this.evidenceLines);
         return this;
     }
 
@@ -62,7 +62,7 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
     }
 
     public InternalSectionBuilder addSourceLine(SourceLine sourceLine) {
-        nonNullAdd(sourceLine, this.sourceLines);
+        addOrIgnoreNull(sourceLine, this.sourceLines);
         return this;
     }
 }

@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.feature.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class AlternativeSequenceBuilder implements Builder<AlternativeSequenceBu
     }
 
     public AlternativeSequenceBuilder alternative(String alternative) {
-        nonNullAdd(alternative, this.alternativeSequences);
+        addOrIgnoreNull(alternative, this.alternativeSequences);
         return this;
     }
 }

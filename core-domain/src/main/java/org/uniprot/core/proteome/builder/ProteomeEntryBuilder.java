@@ -137,7 +137,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder addDbXReferences(DBCrossReference<ProteomeXReferenceType> dbXReference) {
-		Utils.nonNullAdd(dbXReference, dbXReferences);
+		Utils.addOrIgnoreNull(dbXReference, dbXReferences);
 		return this;
 	}
 	
@@ -147,7 +147,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder addComponent(Component component) {
-		Utils.nonNullAdd(component, components);
+		Utils.addOrIgnoreNull(component, components);
 		return this;
 	}
 	
@@ -157,7 +157,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder addReference(Citation reference) {
-		Utils.nonNullAdd(reference, references);
+		Utils.addOrIgnoreNull(reference, references);
 		return this;
 	}
 	
@@ -167,7 +167,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder addRedundantProteome(RedundantProteome redundantProteome) {
-		Utils.nonNullAdd(redundantProteome, redundantProteomes);
+		Utils.addOrIgnoreNull(redundantProteome, redundantProteomes);
 		return this;
 	}
 	
@@ -193,7 +193,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 		return this;
 	}
 	public ProteomeEntryBuilder addTaxonLineage(TaxonomyLineage taxon) {
-		Utils.nonNullAdd(taxon, taxonLineage);
+		Utils.addOrIgnoreNull(taxon, taxonLineage);
 		return this;
 	}
 	public ProteomeEntryBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {
@@ -202,7 +202,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 
 	public ProteomeEntryBuilder addCanonicalProtein(CanonicalProtein canonicalProtein) {
-		Utils.nonNullAdd(canonicalProtein, canonicalProteins);
+		Utils.addOrIgnoreNull(canonicalProtein, canonicalProteins);
 		return this;
 	}
 

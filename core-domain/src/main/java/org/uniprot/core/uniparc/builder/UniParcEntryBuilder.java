@@ -48,7 +48,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
 	}
 	
 	public UniParcEntryBuilder addDatabaseCrossReference(UniParcDBCrossReference databaseCrossReference) {
-		Utils.nonNullAdd(databaseCrossReference, databaseCrossReferences);
+		Utils.addOrIgnoreNull(databaseCrossReference, databaseCrossReferences);
 		return this;
 	}
 	public UniParcEntryBuilder sequence(Sequence sequence) {
@@ -67,7 +67,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
 	}
 	
 	public UniParcEntryBuilder addSequenceFeature(SequenceFeature sequenceFeature) {
-		Utils.nonNullAdd(sequenceFeature, sequenceFeatures);
+		Utils.addOrIgnoreNull(sequenceFeature, sequenceFeatures);
 		return this;
 	}
 	
@@ -77,7 +77,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
 	}
 	
 	public UniParcEntryBuilder addTaxonomy(Taxonomy taxonomy) {
-		Utils.nonNullAdd(taxonomy, taxonomies);
+		Utils.addOrIgnoreNull(taxonomy, taxonomies);
 		return this;
 	}
 	

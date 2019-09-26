@@ -24,17 +24,31 @@ public class Utils {
         }
     }
 
-    public static <T> void nonNullAdd(T value, List<T> target) {
+    /**
+     * Add value in list or ignore if value is null
+     *
+     * @param value value or null when you want to add in list
+     * @param target list to add value, should be notNull and modifiable
+     * @param <T> Type of value and list should be same
+     */
+    public static <T> void addOrIgnoreNull(T value, List<T> target) {
         if (value != null) {
             target.add(value);
         }
     }
 
-    public static <T> List<T> nonNullUnmodifiableList(List<T> value) {
-        if ((value == null) || value.isEmpty()) {
+    /**
+     * Converts list to unmodifiable list
+     *
+     * @param targetList can be null or any list
+     * @param <T> type of the list
+     * @return Always returns non null un modifiable list
+     */
+    public static <T> List<T> unmodifiableList(List<T> targetList) {
+        if ((targetList == null) || targetList.isEmpty()) {
             return Collections.emptyList();
         } else {
-            return Collections.unmodifiableList(value);
+            return Collections.unmodifiableList(targetList);
         }
     }
 

@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     }
 
     public UniProtReferenceBuilder addPositions(String referencePosition) {
-        nonNullAdd(referencePosition, this.referencePositions);
+        addOrIgnoreNull(referencePosition, this.referencePositions);
         return this;
     }
 
@@ -62,7 +62,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     }
 
     public UniProtReferenceBuilder addComment(ReferenceComment referenceComment) {
-        nonNullAdd(referenceComment, this.referenceComments);
+        addOrIgnoreNull(referenceComment, this.referenceComments);
         return this;
     }
 
@@ -72,7 +72,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     }
 
     public UniProtReferenceBuilder evidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 }

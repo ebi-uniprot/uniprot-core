@@ -27,7 +27,7 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder,
 	}
 
 	public CanonicalProteinBuilder addRelatedProtein(Protein relatedProtein) {
-		Utils.nonNullAdd(relatedProtein, relatedProteins);
+		Utils.addOrIgnoreNull(relatedProtein, relatedProteins);
 		return this;
 	}
 

@@ -45,7 +45,7 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, S
 		return this;
 	}
 	public SequenceFeatureBuilder addLocation(Location location) {
-		Utils.nonNullAdd(location, locations);
+		Utils.addOrIgnoreNull(location, locations);
 		return this;
 	}
 	

@@ -35,7 +35,7 @@ public class DiseaseImpl implements Disease {
         this.acronym = acronym;
         this.description = description;
         this.reference = reference;
-        this.evidences = Utils.nonNullUnmodifiableList(evidences);
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

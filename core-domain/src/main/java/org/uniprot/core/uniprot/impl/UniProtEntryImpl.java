@@ -110,20 +110,20 @@ public class UniProtEntryImpl implements UniProtEntry {
 			InternalSection internalSection, EntryInactiveReason inactiveReason) {
 		this.entryType = entryType;
 		this.primaryAccession = primaryAccession;
-		this.secondaryAccessions = Utils.nonNullUnmodifiableList(secondaryAccessions);
+		this.secondaryAccessions = Utils.unmodifiableList(secondaryAccessions);
 		this.uniProtId = uniProtId;
 		this.entryAudit = entryAudit;
 		this.annotationScore = annotationScore;
 		this.organism = organism;
-		this.organismHosts = Utils.nonNullUnmodifiableList(organismHosts);
+		this.organismHosts = Utils.unmodifiableList(organismHosts);
 		this.proteinExistence = proteinExistence;
 		this.proteinDescription = proteinDescription;
-		this.genes = Utils.nonNullUnmodifiableList(genes);
+		this.genes = Utils.unmodifiableList(genes);
 		this.comments = Utils.nonNullList(comments);
 		this.features = Utils.nonNullList(features);
-		this.geneLocations = Utils.nonNullUnmodifiableList(geneLocations);
-		this.keywords = Utils.nonNullUnmodifiableList(keywords);
-		this.references = Utils.nonNullUnmodifiableList(references);
+		this.geneLocations = Utils.unmodifiableList(geneLocations);
+		this.keywords = Utils.unmodifiableList(keywords);
+		this.references = Utils.unmodifiableList(references);
 		this.databaseCrossReferences = Utils.nonNullList(databaseCrossReferences);
 		this.sequence = sequence;
 		this.internalSection = internalSection;

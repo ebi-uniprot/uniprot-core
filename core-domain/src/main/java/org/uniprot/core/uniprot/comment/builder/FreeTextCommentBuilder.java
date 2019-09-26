@@ -9,7 +9,7 @@ import org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import static org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl.isFreeTextCommentType;
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
@@ -43,7 +43,7 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBui
     }
 
     public FreeTextCommentBuilder addText(EvidencedValue text) {
-        nonNullAdd(text, this.texts);
+        addOrIgnoreNull(text, this.texts);
         return this;
     }
 }

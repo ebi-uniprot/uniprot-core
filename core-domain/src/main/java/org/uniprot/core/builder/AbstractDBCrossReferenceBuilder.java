@@ -50,7 +50,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
     }
 
     public B addProperty(Property property) {
-        nonNullAdd(property, this.properties);
+        addOrIgnoreNull(property, this.properties);
         return getThis();
     }
 

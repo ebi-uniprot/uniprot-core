@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
     }
 
     public RnaEditingCommentBuilder addPosition(RnaEdPosition position) {
-        nonNullAdd(position, this.positions);
+        addOrIgnoreNull(position, this.positions);
         return this;
     }
 

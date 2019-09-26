@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -66,7 +66,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder addRange(MassSpectrometryRange range) {
-        nonNullAdd(range, this.ranges);
+        addOrIgnoreNull(range, this.ranges);
         return this;
     }
 
@@ -76,7 +76,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder addEvidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 }

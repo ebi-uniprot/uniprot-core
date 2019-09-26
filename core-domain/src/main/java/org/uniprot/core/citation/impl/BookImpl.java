@@ -28,7 +28,7 @@ public class BookImpl extends AbstractCitationImpl implements Book {
                     String firstPage, String lastPage, String volume, String publisher, String address) {
         super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
         this.bookName = Utils.nullToEmpty(bookName);
-        this.editors = Utils.nonNullUnmodifiableList(editors);
+        this.editors = Utils.unmodifiableList(editors);
         this.firstPage = Utils.nullToEmpty(firstPage);
         this.lastPage = Utils.nullToEmpty(lastPage);
         this.volume = Utils.nullToEmpty(volume);

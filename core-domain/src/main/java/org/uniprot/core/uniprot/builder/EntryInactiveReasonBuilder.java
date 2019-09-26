@@ -30,7 +30,7 @@ public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReasonBu
     }
 
     public EntryInactiveReasonBuilder addMergeDemergeTo(String mergeDemergeTo) {
-        Utils.nonNullAdd(mergeDemergeTo, this.mergeDemergeTo);
+        Utils.addOrIgnoreNull(mergeDemergeTo, this.mergeDemergeTo);
         return this;
     }
 

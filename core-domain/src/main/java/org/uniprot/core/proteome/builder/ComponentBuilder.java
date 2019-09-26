@@ -40,7 +40,7 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 	}
 
 	public ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
-		Utils.nonNullAdd(dbXReference, dbXReferences);
+		Utils.addOrIgnoreNull(dbXReference, dbXReferences);
 		return this;
 	}
 	

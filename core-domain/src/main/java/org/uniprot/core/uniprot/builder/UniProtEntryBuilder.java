@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -167,7 +167,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession) {
-            nonNullAdd(secondaryAccession, this.secondaryAccessions);
+            addOrIgnoreNull(secondaryAccession, this.secondaryAccessions);
             return this;
         }
 
@@ -197,7 +197,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addOrganismHost(OrganismHost organismHost) {
-            nonNullAdd(organismHost, this.organismHosts);
+            addOrIgnoreNull(organismHost, this.organismHosts);
             return this;
         }
 
@@ -221,7 +221,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addGene(Gene gene) {
-            nonNullAdd(gene, this.genes);
+            addOrIgnoreNull(gene, this.genes);
             return this;
         }
 
@@ -233,7 +233,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addComment(Comment comment) {
-            nonNullAdd(comment, this.comments);
+            addOrIgnoreNull(comment, this.comments);
             return this;
         }
 
@@ -245,7 +245,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addFeature(Feature feature) {
-            nonNullAdd(feature, this.features);
+            addOrIgnoreNull(feature, this.features);
             return this;
         }
 
@@ -257,7 +257,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addGeneLocation(GeneLocation geneLocation) {
-            nonNullAdd(geneLocation, this.geneLocations);
+            addOrIgnoreNull(geneLocation, this.geneLocations);
             return this;
         }
 
@@ -269,7 +269,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addKeyword(Keyword keyword) {
-            nonNullAdd(keyword, this.keywords);
+            addOrIgnoreNull(keyword, this.keywords);
             return this;
         }
 
@@ -281,7 +281,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addReference(UniProtReference reference) {
-            nonNullAdd(reference, this.references);
+            addOrIgnoreNull(reference, this.references);
             return this;
         }
 
@@ -293,7 +293,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addDatabaseCrossReference(UniProtDBCrossReference databaseCrossReference) {
-            nonNullAdd(databaseCrossReference, this.databaseCrossReferences);
+            addOrIgnoreNull(databaseCrossReference, this.databaseCrossReferences);
             return this;
         }
 

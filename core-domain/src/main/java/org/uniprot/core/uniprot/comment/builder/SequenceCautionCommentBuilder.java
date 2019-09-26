@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     }
 
     public SequenceCautionCommentBuilder addPosition(String position) {
-        nonNullAdd(position, this.positions);
+        addOrIgnoreNull(position, this.positions);
         return this;
     }
 
@@ -65,7 +65,7 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     }
 
     public SequenceCautionCommentBuilder addEvidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 }

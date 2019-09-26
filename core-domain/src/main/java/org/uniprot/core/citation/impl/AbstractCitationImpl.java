@@ -25,8 +25,8 @@ public abstract class AbstractCitationImpl implements Citation {
     public AbstractCitationImpl(CitationType citationType, List<String> authoringGroup, List<Author> authors,
                                 List<DBCrossReference<CitationXrefType>> citationXrefs, String title, PublicationDate publicationDate) {
         this.citationType = citationType;
-        this.authoringGroup = Utils.nonNullUnmodifiableList(authoringGroup);
-        this.authors = Utils.nonNullUnmodifiableList(authors);
+        this.authoringGroup = Utils.unmodifiableList(authoringGroup);
+        this.authors = Utils.unmodifiableList(authors);
         this.citationXrefs = citationXrefs;
         this.title = Utils.nullToEmpty(title);
         this.publicationDate = publicationDate;

@@ -173,25 +173,25 @@ class UtilsTest {
     class unmodifiableList {
       @Test
       void passingNullReturnEmptyList() {
-        List l = Utils.nonNullUnmodifiableList(null);
+        List l = Utils.unmodifiableList(null);
         assertTrue(l.isEmpty());
       }
 
       @Test
       void passing_emptyList_returnEmptyList() {
-        List l = Utils.nonNullUnmodifiableList(new ArrayList<>());
+        List l = Utils.unmodifiableList(new ArrayList<>());
         assertTrue(l.isEmpty());
       }
 
       @Test
       void passingNullReturnEmptyList_unmodifiable() {
-        List<String> l = Utils.nonNullUnmodifiableList(null);
+        List<String> l = Utils.unmodifiableList(null);
         assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
       }
 
       @Test
       void passing_emptyList_returnEmptyList_unmodifiable() {
-        List<String> l = Utils.nonNullUnmodifiableList(new ArrayList<>());
+        List<String> l = Utils.unmodifiableList(new ArrayList<>());
         assertThrows(UnsupportedOperationException.class, () -> l.add("abc"));
       }
 
@@ -200,7 +200,7 @@ class UtilsTest {
         List<String> list = new ArrayList<>();
         list.add("a");
         list.add("b");
-        List<String> l = Utils.nonNullUnmodifiableList(list);
+        List<String> l = Utils.unmodifiableList(list);
         assertThrows(UnsupportedOperationException.class, () -> l.add("c"));
       }
     }
@@ -210,20 +210,20 @@ class UtilsTest {
       @Test
       void addingNullValueInNullList_nullList(){
         List<String> l = null;
-        Utils.nonNullAdd(null,l);
+        Utils.addOrIgnoreNull(null,l);
         assertNull(l);
       }
 
       @Test
       void addingNotNullValueInNullList_NPE(){
         List<String> l = null;
-        assertThrows(NullPointerException.class,()-> Utils.nonNullAdd("test",l));
+        assertThrows(NullPointerException.class,()-> Utils.addOrIgnoreNull("test",l));
       }
 
       @Test
       void nonNulValue(){
         List<String> l = new ArrayList<>();
-        Utils.nonNullAdd("abc",l);
+        Utils.addOrIgnoreNull("abc",l);
         assertNotNull(l);
         assertEquals(1, l.size());
         assertEquals("abc", l.get(0));

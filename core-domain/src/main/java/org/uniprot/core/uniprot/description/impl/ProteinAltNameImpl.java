@@ -23,8 +23,8 @@ public class ProteinAltNameImpl implements ProteinAltName {
 
 	public ProteinAltNameImpl(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
 		this.fullName = fullName;
-		this.shortNames = Utils.nonNullUnmodifiableList(shortNames);
-		this.ecNumbers = Utils.nonNullUnmodifiableList(ecNumbers);
+		this.shortNames = Utils.unmodifiableList(shortNames);
+		this.ecNumbers = Utils.unmodifiableList(ecNumbers);
 		
 	}
 

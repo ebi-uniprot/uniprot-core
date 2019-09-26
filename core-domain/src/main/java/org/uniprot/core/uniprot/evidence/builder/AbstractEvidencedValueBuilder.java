@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.evidence.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     }
 
     public B addEvidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return getThis();
     }
 

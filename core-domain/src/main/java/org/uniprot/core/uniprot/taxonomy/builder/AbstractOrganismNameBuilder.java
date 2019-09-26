@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.taxonomy.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.nonNullList;
 
 import java.util.ArrayList;
@@ -33,7 +33,7 @@ public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismName
     }
 
     public B addSynonyms(String synonym) {
-        nonNullAdd(synonym, this.synonyms);
+        addOrIgnoreNull(synonym, this.synonyms);
         return getThis();
     }
 
