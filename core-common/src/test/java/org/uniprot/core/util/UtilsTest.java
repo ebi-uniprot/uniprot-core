@@ -208,25 +208,97 @@ class UtilsTest {
     @Nested
     class addOrIgnoreNull {
       @Test
-      void addingNullValueInNullList_nullList(){
+      void addingNullValueInNullList_nullList() {
         List<String> l = null;
-        Utils.addOrIgnoreNull(null,l);
+        Utils.addOrIgnoreNull(null, l);
         assertNull(l);
       }
 
       @Test
-      void addingNotNullValueInNullList_NPE(){
+      void addingNotNullValueInNullList_NPE() {
         List<String> l = null;
-        assertThrows(NullPointerException.class,()-> Utils.addOrIgnoreNull("test",l));
+        assertThrows(NullPointerException.class, () -> Utils.addOrIgnoreNull("test", l));
       }
 
       @Test
-      void nonNulValue(){
+      void nonNulValue() {
         List<String> l = new ArrayList<>();
-        Utils.addOrIgnoreNull("abc",l);
+        Utils.addOrIgnoreNull("abc", l);
         assertNotNull(l);
         assertEquals(1, l.size());
         assertEquals("abc", l.get(0));
+      }
+    }
+
+    @Nested
+    class emptyOrList {
+      @Test
+      void whenNull_returnsEmptyList() {
+        assertAll(
+          () -> assertNotNull(Utils.emptyOrList((null))),
+          () -> assertTrue(Utils.emptyOrList((null)).isEmpty())
+        );
+      }
+
+      @Test
+      void whenNotNull_shouldReturnActualList() {
+        List<String> list = new LinkedList<>();
+        list.add("test1");
+        list.add("test2");
+        List<String> synchronizedList = Collections.synchronizedList(list);
+        List<String> unmodifiableList = Collections.unmodifiableList(list);
+        List<String> checkedList = Collections.checkedList(list, String.class);
+        List<Integer> singletonList = Collections.singletonList(123);
+        assertAll(
+          () -> assertSame(singletonList, Utils.emptyOrList(singletonList)),
+          () -> assertSame(checkedList, Utils.emptyOrList(checkedList)),
+          () -> assertSame(list, Utils.emptyOrList(list)),
+          () -> assertSame(synchronizedList, Utils.emptyOrList(synchronizedList)),
+          () -> assertSame(unmodifiableList, Utils.emptyOrList(unmodifiableList))
+        );
+      }
+    }
+
+    @Nested
+    class modifiableList {
+      @Test
+      void whenNull_returnsEmptyList() {
+        assertAll(
+          () -> assertNotNull(Utils.modifiableList((null))),
+          () -> assertTrue(Utils.modifiableList((null)).isEmpty())
+        );
+      }
+
+      @Test
+      void canAddElementsInEmptyList() {
+        List<String> nullList = null;
+        List<String> list = Utils.modifiableList(nullList);
+        list.add("a");
+        assertAll(
+          () -> assertEquals("a", list.get(0)),
+          () -> assertFalse(list.isEmpty()),
+          () -> assertNotSame(nullList, list)
+        );
+      }
+
+      @Test
+      void whenUnModifiable_returnModifiable() {
+        List<String> list = new LinkedList<>();
+        list.add("test1");
+        list.add("test2");
+        List<String> unmodifiableList = Collections.unmodifiableList(list);
+        assertThrows(UnsupportedOperationException.class, ()-> unmodifiableList.add("shouldNotBeAdded"));
+
+        assertAll(
+          () -> assertNotSame(list, Utils.modifiableList(list)),
+          () -> assertNotSame(unmodifiableList, Utils.modifiableList(unmodifiableList)),
+          () -> {
+            List<String> retList = Utils.modifiableList(unmodifiableList);
+            retList.add("1");
+            assertEquals(3, retList.size());
+            assertEquals("1", retList.get(2));
+          }
+        );
       }
     }
   }
