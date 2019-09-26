@@ -34,7 +34,7 @@ SOFTWARE.
  * @author JSON.org
  * @version 2014-05-03
  */
-public class PropertyTokener implements Serializable {
+class PropertyTokener implements Serializable {
     private static final long serialVersionUID = -5773077474446482977L;
 
     /**
@@ -76,7 +76,7 @@ public class PropertyTokener implements Serializable {
      *
      * @param reader A reader.
      */
-    public PropertyTokener(Reader reader) {
+    PropertyTokener(Reader reader) {
         this.reader = reader.markSupported()
                 ? reader
                 : new BufferedReader(reader);
@@ -94,7 +94,7 @@ public class PropertyTokener implements Serializable {
      *
      * @param s A source string.
      */
-    public PropertyTokener(String s) {
+    PropertyTokener(String s) {
         this(new StringReader(s));
     }
 
@@ -106,7 +106,7 @@ public class PropertyTokener implements Serializable {
      * @throws PropertyException Thrown if trying to step back more than 1 step
      *                           or if already at the start of the string
      */
-    public void back() throws PropertyException {
+    void back() throws PropertyException {
         if (this.usePrevious || this.index <= 0) {
             throw new PropertyException("Stepping back two steps is not supported");
         }
@@ -120,7 +120,7 @@ public class PropertyTokener implements Serializable {
      *
      * @return true if at the end of the file and we didn't step back
      */
-    public boolean end() {
+    boolean end() {
         return this.eof && !this.usePrevious;
     }
 
@@ -132,7 +132,7 @@ public class PropertyTokener implements Serializable {
      * @throws PropertyException thrown if there is an error stepping forward
      *                           or backward while checking for more data.
      */
-    public boolean more() throws PropertyException {
+    boolean more() throws PropertyException {
         if (this.usePrevious) {
             return true;
         }
@@ -160,7 +160,7 @@ public class PropertyTokener implements Serializable {
      * @return The next character, or 0 if past the end of the source string.
      * @throws PropertyException Thrown if there is an error reading the source string.
      */
-    public char next() throws PropertyException {
+    char next() throws PropertyException {
         int c;
         if (this.usePrevious) {
             this.usePrevious = false;
@@ -189,7 +189,7 @@ public class PropertyTokener implements Serializable {
      * @throws PropertyException Substring bounds error if there are not
      *                           n characters remaining in the source string.
      */
-    public String next(int n) throws PropertyException {
+    String next(int n) throws PropertyException {
         if (n == 0) {
             return "";
         }
@@ -213,7 +213,7 @@ public class PropertyTokener implements Serializable {
      * @return A character, or 0 if there are no more characters.
      * @throws PropertyException Thrown if there is an error reading the source string.
      */
-    public char nextClean() throws PropertyException {
+    char nextClean() throws PropertyException {
         for (; ; ) {
             char c = this.next();
             if (c == 0 || c > ' ') {
@@ -234,7 +234,7 @@ public class PropertyTokener implements Serializable {
      * @return A String.
      * @throws PropertyException Unterminated string.
      */
-    public String nextString(char quote) throws PropertyException {
+    String nextString(char quote) throws PropertyException {
         char c;
         StringBuilder sb = new StringBuilder();
         for (; ; ) {
@@ -295,7 +295,7 @@ public class PropertyTokener implements Serializable {
      * @return An object.
      * @throws PropertyException If syntax error.
      */
-    public Object nextValue() throws PropertyException {
+    Object nextValue() throws PropertyException {
         char c = this.nextClean();
         String string;
 
@@ -346,7 +346,7 @@ public class PropertyTokener implements Serializable {
      * @throws PropertyException Thrown if there is an error while searching
      *                           for the to character
      */
-    public char skipTo(char to) throws PropertyException {
+    char skipTo(char to) throws PropertyException {
         char c;
         try {
             long startIndex = this.index;
@@ -380,7 +380,7 @@ public class PropertyTokener implements Serializable {
      * @param message The error message.
      * @return A JSONException object, suitable for throwing
      */
-    public PropertyException syntaxError(String message) {
+    PropertyException syntaxError(String message) {
         return new PropertyException(message + this.toString());
     }
 
@@ -391,7 +391,7 @@ public class PropertyTokener implements Serializable {
      * @param causedBy The throwable that caused the error.
      * @return A JSONException object, suitable for throwing
      */
-    public PropertyException syntaxError(String message, Throwable causedBy) {
+    PropertyException syntaxError(String message, Throwable causedBy) {
         return new PropertyException(message + this.toString(), causedBy);
     }
 

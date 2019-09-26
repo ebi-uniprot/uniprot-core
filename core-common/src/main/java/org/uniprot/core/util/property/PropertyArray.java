@@ -76,7 +76,7 @@ import java.util.List;
  * @author JSON.org
  * @version 2016-08/15
  */
-public class PropertyArray implements Iterable<Object>, Serializable {
+class PropertyArray implements Iterable<Object>, Serializable {
     private static final long serialVersionUID = 271695661120461979L;
 
     /**
@@ -87,7 +87,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
     /**
      * Construct an empty JSONArray.
      */
-    public PropertyArray() {
+    PropertyArray() {
         this.myArrayList = new ArrayList<>();
     }
 
@@ -97,7 +97,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @param x A JSONTokener
      * @throws PropertyException If there is a syntax error.
      */
-    public PropertyArray(PropertyTokener x) throws PropertyException {
+    PropertyArray(PropertyTokener x) throws PropertyException {
         this();
         if (x.nextClean() != '[') {
             throw x.syntaxError("A JSONArray text must start with '['");
@@ -150,7 +150,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      *               &nbsp;<small>(right bracket)</small>.
      * @throws PropertyException If there is a syntax error.
      */
-    public PropertyArray(String source) throws PropertyException {
+    PropertyArray(String source) throws PropertyException {
         this(new PropertyTokener(source));
     }
 
@@ -159,7 +159,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      *
      * @param collection A Collection.
      */
-    public PropertyArray(Collection<?> collection) {
+    PropertyArray(Collection<?> collection) {
         if (collection == null) {
             this.myArrayList = new ArrayList<>();
         } else {
@@ -178,7 +178,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @throws PropertyException    If not an array or if an array value is non-finite number.
      * @throws NullPointerException Thrown if the array parameter is null.
      */
-    public PropertyArray(Object array) throws PropertyException {
+    PropertyArray(Object array) throws PropertyException {
         this();
         if (array.getClass().isArray()) {
             int length = Array.getLength(array);
@@ -204,7 +204,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @return An object value.
      * @throws PropertyException If there is no value for the index.
      */
-    public Object get(int index) throws PropertyException {
+    Object get(int index) throws PropertyException {
         Object object = this.opt(index);
         if (object == null) {
             throw new PropertyException("JSONArray[" + index + "] not found.");
@@ -221,7 +221,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @throws PropertyException If there is no value for the index or if the value is not
      *                           convertible to boolean.
      */
-    public boolean getBoolean(int index) throws PropertyException {
+    boolean getBoolean(int index) throws PropertyException {
         Object object = this.get(index);
         if (object.equals(Boolean.FALSE)
                 || (object instanceof String && ((String) object)
@@ -243,7 +243,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @throws PropertyException if the key is not found or if the value is not a Number
      *                           object and cannot be converted to a number.
      */
-    public Number getNumber(int index) throws PropertyException {
+    Number getNumber(int index) throws PropertyException {
         Object object = this.get(index);
         try {
             if (object instanceof Number) {
@@ -262,7 +262,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @return The value.
      * @throws PropertyException If the key is not found or if the value is not a number.
      */
-    public int getInt(int index) throws PropertyException {
+    int getInt(int index) throws PropertyException {
         return this.getNumber(index).intValue();
     }
 
@@ -274,7 +274,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @throws PropertyException If there is no value for the index. or if the value is not a
      *                           JSONArray
      */
-    public PropertyArray getJSONArray(int index) throws PropertyException {
+    PropertyArray getJSONArray(int index) throws PropertyException {
         Object object = this.get(index);
         if (object instanceof PropertyArray) {
             return (PropertyArray) object;
@@ -290,7 +290,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @throws PropertyException If there is no value for the index or if the value is not a
      *                           JSONObject
      */
-    public PropertyObject getJSONObject(int index) throws PropertyException {
+    PropertyObject getJSONObject(int index) throws PropertyException {
         Object object = this.get(index);
         if (object instanceof PropertyObject) {
             return (PropertyObject) object;
@@ -305,7 +305,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @return A string value.
      * @throws PropertyException If there is no string value for the index.
      */
-    public String getString(int index) throws PropertyException {
+    String getString(int index) throws PropertyException {
         Object object = this.get(index);
         if (object instanceof String) {
             return (String) object;
@@ -318,7 +318,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      *
      * @return The length (or size).
      */
-    public int length() {
+    int length() {
         return this.myArrayList.size();
     }
 
@@ -328,7 +328,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @param index The index must be between 0 and length() - 1. If not, null is returned.
      * @return An object value, or null if there is no object at that index.
      */
-    public Object opt(int index) {
+    Object opt(int index) {
         return (index < 0 || index >= this.length()) ? null : this.myArrayList
                 .get(index);
     }
@@ -342,7 +342,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @param defaultValue A boolean default.
      * @return The truth.
      */
-    public boolean optBoolean(int index, boolean defaultValue) {
+    boolean optBoolean(int index, boolean defaultValue) {
         try {
             return this.getBoolean(index);
         } catch (Exception e) {
@@ -359,7 +359,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @param index The index must be between 0 and length() - 1.
      * @return A String value.
      */
-    public String optString(int index) {
+    String optString(int index) {
         return this.optString(index, "");
     }
 
@@ -371,7 +371,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @param defaultValue The default value.
      * @return A String value.
      */
-    public String optString(int index, String defaultValue) {
+    String optString(int index, String defaultValue) {
         Object object = this.opt(index);
         return PropertyObject.NULL.equals(object) ? defaultValue : object
                 .toString();
@@ -387,7 +387,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @return this.
      * @throws PropertyException If the value is non-finite number.
      */
-    public PropertyArray put(Object value) {
+    PropertyArray put(Object value) {
         PropertyObject.testValidity(value);
         this.myArrayList.add(value);
         return this;
@@ -406,7 +406,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @throws PropertyException If the index is negative or if the the value is an invalid
      *                           number.
      */
-    public PropertyArray put(int index, Object value) throws PropertyException {
+    PropertyArray put(int index, Object value) throws PropertyException {
         if (index < 0) {
             throw new PropertyException("JSONArray[" + index + "] not found.");
         }
@@ -437,7 +437,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @return The value that was associated with the index, or null if there
      * was no value.
      */
-    public Object remove(int index) {
+    Object remove(int index) {
         return index >= 0 && index < this.length()
                 ? this.myArrayList.remove(index)
                 : null;
@@ -450,7 +450,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @param other The other JSONArray
      * @return true if they are equal
      */
-    public boolean similar(Object other) {
+    boolean similar(Object other) {
         if (!(other instanceof PropertyArray)) {
             return false;
         }
@@ -492,7 +492,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * has no values.
      * @throws PropertyException If any of the names are null.
      */
-    public PropertyObject toJSONObject(PropertyArray names) throws PropertyException {
+    PropertyObject toJSONObject(PropertyArray names) throws PropertyException {
         if (names == null || names.isEmpty() || this.isEmpty()) {
             return null;
         }
@@ -512,7 +512,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      *
      * @return a java.util.List containing the elements of this array
      */
-    public List<Object> toList() {
+    List<Object> toList() {
         List<Object> results = new ArrayList<>(this.myArrayList.size());
         for (Object element : this.myArrayList) {
             if (element == null || PropertyObject.NULL.equals(element)) {
@@ -533,7 +533,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      *
      * @return true if JSONArray is empty, otherwise false.
      */
-    public boolean isEmpty() {
+    boolean isEmpty() {
         return this.myArrayList.isEmpty();
     }
 
