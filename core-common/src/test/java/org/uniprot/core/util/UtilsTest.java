@@ -15,7 +15,7 @@ class UtilsTest {
   @Nested
   class Strings {
     @Nested
-    class nullToEmpty {
+    class emptyOrString {
 
       @Test
       void whenNull_returnEmptyString() {
