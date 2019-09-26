@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.description.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
     }
 
     public ProteinAltNameBuilder shortNames(List<Name> shortNames) {
-        this.shortNames = nonNullList(shortNames);
+        this.shortNames = modifiableList(shortNames);
         return this;
     }
 
@@ -33,7 +33,7 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
         return this;
     }
     public ProteinAltNameBuilder ecNumbers(List<EC> ecNumbers) {
-        this.ecNumbers = nonNullList(ecNumbers);
+        this.ecNumbers = modifiableList(ecNumbers);
         return this;
     }
 

@@ -2,7 +2,7 @@ package org.uniprot.core.scorer.uniprotkb;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -121,7 +121,7 @@ public class ProteinDescriptionScored implements HasScore {
 
     private void addECsFromRecName(ProteinRecName proteinName, Set<EC> ecs) {
         if (nonNull(proteinName)) {
-            ecs.addAll(nonNullList(proteinName.getEcNumbers()));
+            ecs.addAll(modifiableList(proteinName.getEcNumbers()));
         }
     }
 

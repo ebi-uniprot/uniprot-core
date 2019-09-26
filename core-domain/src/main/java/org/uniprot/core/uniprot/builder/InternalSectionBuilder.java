@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
     }
 
     public InternalSectionBuilder internalLines(List<InternalLine> internalLines) {
-        this.internalLines = nonNullList(internalLines);
+        this.internalLines = modifiableList(internalLines);
         return this;
     }
 
@@ -47,7 +47,7 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
     }
 
     public InternalSectionBuilder evidenceLines(List<EvidenceLine> evidenceLines) {
-        this.evidenceLines = nonNullList(evidenceLines);
+        this.evidenceLines = modifiableList(evidenceLines);
         return this;
     }
 
@@ -57,7 +57,7 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
     }
 
     public InternalSectionBuilder sourceLines(List<SourceLine> sourceLines) {
-        this.sourceLines = nonNullList(sourceLines);
+        this.sourceLines = modifiableList(sourceLines);
         return this;
     }
 

@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     }
 
     public DiseaseBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 

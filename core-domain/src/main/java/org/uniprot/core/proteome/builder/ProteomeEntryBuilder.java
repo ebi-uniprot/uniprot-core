@@ -132,7 +132,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder dbXReferences(List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
-		this.dbXReferences =  Utils.nonNullList(dbXReferences);
+		this.dbXReferences =  Utils.modifiableList(dbXReferences);
 		return this;
 	}
 	
@@ -142,7 +142,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder components(List<Component> components) {
-		this.components =  Utils.nonNullList(components);
+		this.components =  Utils.modifiableList(components);
 		return this;
 	}
 	
@@ -152,7 +152,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder references(List<Citation> references) {
-		this.references =  Utils.nonNullList(references);
+		this.references =  Utils.modifiableList(references);
 		return this;
 	}
 	
@@ -162,7 +162,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 	}
 	
 	public ProteomeEntryBuilder redundantProteomes(List<RedundantProteome> redundantProteomes) {
-		this.redundantProteomes =  Utils.nonNullList(redundantProteomes);
+		this.redundantProteomes =  Utils.modifiableList(redundantProteomes);
 		return this;
 	}
 	
@@ -189,7 +189,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 		return this;
 	}
 	public ProteomeEntryBuilder taxonLineage(List<TaxonomyLineage> taxonLineage) {
-		this.taxonLineage =  Utils.nonNullList(taxonLineage);
+		this.taxonLineage =  Utils.modifiableList(taxonLineage);
 		return this;
 	}
 	public ProteomeEntryBuilder addTaxonLineage(TaxonomyLineage taxon) {
@@ -197,7 +197,7 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 		return this;
 	}
 	public ProteomeEntryBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {
-		this.canonicalProteins = Utils.nonNullList(canonicalProteins);
+		this.canonicalProteins = Utils.modifiableList(canonicalProteins);
 		return this;
 	}
 

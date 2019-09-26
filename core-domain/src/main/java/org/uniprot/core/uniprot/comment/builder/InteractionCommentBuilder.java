@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class InteractionCommentBuilder implements CommentBuilder<InteractionComm
     private List<Interaction> interactions = new ArrayList<>();
 
     public InteractionCommentBuilder interactions(List<Interaction> interactions) {
-        this.interactions = nonNullList(interactions);
+        this.interactions = modifiableList(interactions);
         return this;
     }
 

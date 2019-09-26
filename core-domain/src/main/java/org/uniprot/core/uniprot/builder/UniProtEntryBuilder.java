@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -173,7 +173,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions) {
-            this.secondaryAccessions = nonNullList(secondaryAccessions);
+            this.secondaryAccessions = modifiableList(secondaryAccessions);
             return this;
         }
 
@@ -203,7 +203,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder organismHosts(List<OrganismHost> organismHosts) {
-            this.organismHosts = nonNullList(organismHosts);
+            this.organismHosts = modifiableList(organismHosts);
             return this;
         }
 
@@ -227,7 +227,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder genes(List<Gene> genes) {
-            this.genes = nonNullList(genes);
+            this.genes = modifiableList(genes);
             return this;
         }
 
@@ -239,7 +239,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder comments(List<Comment> comments) {
-            this.comments = nonNullList(comments);
+            this.comments = modifiableList(comments);
             return this;
         }
 
@@ -251,7 +251,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder features(List<Feature> features) {
-            this.features = nonNullList(features);
+            this.features = modifiableList(features);
             return this;
         }
 
@@ -263,7 +263,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder geneLocations(List<GeneLocation> geneLocations) {
-            this.geneLocations = nonNullList(geneLocations);
+            this.geneLocations = modifiableList(geneLocations);
             return this;
         }
 
@@ -275,7 +275,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder keywords(List<Keyword> keywords) {
-            this.keywords = nonNullList(keywords);
+            this.keywords = modifiableList(keywords);
             return this;
         }
 
@@ -287,7 +287,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder references(List<UniProtReference> references) {
-            this.references = nonNullList(references);
+            this.references = modifiableList(references);
             return this;
         }
 
@@ -299,7 +299,7 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder databaseCrossReferences(List<UniProtDBCrossReference> databaseCrossReferences) {
-            this.databaseCrossReferences = nonNullList(databaseCrossReferences);
+            this.databaseCrossReferences = modifiableList(databaseCrossReferences);
             return this;
         }
 

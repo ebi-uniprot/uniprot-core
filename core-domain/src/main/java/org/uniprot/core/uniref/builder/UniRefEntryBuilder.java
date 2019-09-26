@@ -93,7 +93,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 	}
 	
 	public UniRefEntryBuilder goTerms(List<GoTerm> goTerms) {
-		this.goTerms =  Utils.nonNullList(goTerms);
+		this.goTerms =  Utils.modifiableList(goTerms);
 		return this;
 	}
 	public UniRefEntryBuilder addGoTerm(GoTerm goTerm) {
@@ -106,7 +106,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
 	}
 	
 	public UniRefEntryBuilder members(List<UniRefMember> unirefMembers) {
-		this.members =  Utils.nonNullList(unirefMembers);
+		this.members =  Utils.modifiableList(unirefMembers);
 		return this;
 	}
 	public UniRefEntryBuilder addMember(UniRefMember unirefMember) {

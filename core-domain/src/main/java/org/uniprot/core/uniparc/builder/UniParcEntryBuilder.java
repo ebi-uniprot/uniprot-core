@@ -43,7 +43,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
 	}
 	
 	public UniParcEntryBuilder databaseCrossReferences(List<UniParcDBCrossReference> databaseCrossReferences) {
-		this.databaseCrossReferences = Utils.nonNullList(databaseCrossReferences);
+		this.databaseCrossReferences = Utils.modifiableList(databaseCrossReferences);
 		return this;
 	}
 	
@@ -62,7 +62,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
 	}
 	
 	public UniParcEntryBuilder sequenceFeatures(List<SequenceFeature> sequenceFeatures) {
-		this.sequenceFeatures = Utils.nonNullList(sequenceFeatures);
+		this.sequenceFeatures = Utils.modifiableList(sequenceFeatures);
 		return this;
 	}
 	
@@ -72,7 +72,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
 	}
 	
 	public UniParcEntryBuilder taxonomies(List<Taxonomy> taxonomies) {
-		this.taxonomies = Utils.nonNullList(taxonomies);
+		this.taxonomies = Utils.modifiableList(taxonomies);
 		return this;
 	}
 	

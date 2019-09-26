@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class GeneLocationBuilder extends AbstractEvidencedValueBuilder<GeneLocat
     public GeneLocationBuilder(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         this.geneEncodingType = geneEncodingType;
         this.value = value;
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
     }
 
     @Override

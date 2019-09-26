@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     }
 
     public UniProtReferenceBuilder positions(List<String> referencePositions) {
-        this.referencePositions = nonNullList(referencePositions);
+        this.referencePositions = modifiableList(referencePositions);
         return this;
     }
 
@@ -57,7 +57,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     }
 
     public UniProtReferenceBuilder comments(List<ReferenceComment> referenceComments) {
-        this.referenceComments = nonNullList(referenceComments);
+        this.referenceComments = modifiableList(referenceComments);
         return this;
     }
 
@@ -67,7 +67,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     }
 
     public UniProtReferenceBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 

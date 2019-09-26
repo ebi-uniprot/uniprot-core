@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.description.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
-		this.alternativeNames = nonNullList(alternativeNames);
+		this.alternativeNames = modifiableList(alternativeNames);
 		return this;
 	}
 
@@ -55,7 +55,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
-		this.cdAntigenNames = nonNullList(cdAntigenNames);
+		this.cdAntigenNames = modifiableList(cdAntigenNames);
 		return this;
 	}
 
@@ -65,7 +65,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder innNames(List<Name> innNames) {
-		this.innNames = nonNullList(innNames);
+		this.innNames = modifiableList(innNames);
 		return this;
 	}
 
@@ -83,7 +83,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder submissionNames(List<ProteinSubName> submissionNames) {
-		this.submissionNames = nonNullList(submissionNames);
+		this.submissionNames = modifiableList(submissionNames);
 		return this;
 	}
 
@@ -93,7 +93,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
-		this.includes = nonNullList(includes);
+		this.includes = modifiableList(includes);
 		return this;
 	}
 
@@ -103,7 +103,7 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescriptionBuil
 	}
 
 	public ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
-		this.contains = nonNullList(contains);
+		this.contains = modifiableList(contains);
 		return this;
 	}
 

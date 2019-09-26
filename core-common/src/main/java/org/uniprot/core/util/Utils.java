@@ -16,7 +16,15 @@ public class Utils {
             return value;
     }
 
-    public static <T> List<T> nonNullList(List<T> source) {
+  /**
+   * Creates new array list from source. Can be expensive call depending on list size. Will change
+   * the implementation of list to array list.
+   *
+   * @param source can be null or any list
+   * @param <T>
+   * @return non null array list
+   */
+    public static <T> List<T> modifiableList(List<T> source) {
         if (source != null) {
             return new ArrayList<>(source);
         } else {

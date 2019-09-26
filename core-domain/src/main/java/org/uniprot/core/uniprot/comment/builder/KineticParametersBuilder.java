@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
     private Note note;
 
     public KineticParametersBuilder maximumVelocities(List<MaximumVelocity> maximumVelocities) {
-        this.maximumVelocities = nonNullList(maximumVelocities);
+        this.maximumVelocities = modifiableList(maximumVelocities);
         return this;
     }
 
@@ -34,7 +34,7 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
     }
 
     public KineticParametersBuilder michaelisConstants(List<MichaelisConstant> michaelisConstants) {
-        this.michaelisConstants = nonNullList(michaelisConstants);
+        this.michaelisConstants = modifiableList(michaelisConstants);
         return this;
     }
 

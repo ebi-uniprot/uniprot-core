@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
     }
 
     public CatalyticActivityCommentBuilder physiologicalReactions(List<PhysiologicalReaction> physiologicalReactions) {
-        this.physiologicalReactions = nonNullList(physiologicalReactions);
+        this.physiologicalReactions = modifiableList(physiologicalReactions);
         return this;
     }
 

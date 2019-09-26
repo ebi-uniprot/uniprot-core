@@ -10,7 +10,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 import static org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl.isFreeTextCommentType;
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
     private CommentType commentType;
@@ -38,7 +38,7 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBui
     }
 
     public FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
-        this.texts = nonNullList(texts);
+        this.texts = modifiableList(texts);
         return this;
     }
 

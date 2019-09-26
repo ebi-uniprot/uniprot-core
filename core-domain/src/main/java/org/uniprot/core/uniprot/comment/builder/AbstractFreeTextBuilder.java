@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public abstract class AbstractFreeTextBuilder<B extends AbstractFreeTextBuilder<
 
     @Override
     public B from(F instance) {
-        this.evidencedValues = nonNullList(instance.getTexts());
+        this.evidencedValues = modifiableList(instance.getTexts());
         return getThis();
     }
 

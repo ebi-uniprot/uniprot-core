@@ -84,7 +84,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder otherNames(List<String> otherNames) {
-        this.otherNames = Utils.nonNullList(otherNames);
+        this.otherNames = Utils.modifiableList(otherNames);
         return this;
     }
 
@@ -94,7 +94,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder lineage(List<TaxonomyLineage> lineage) {
-        this.lineage = Utils.nonNullList(lineage);
+        this.lineage = Utils.modifiableList(lineage);
         return this;
     }
 
@@ -104,7 +104,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder strains(List<TaxonomyStrain> strains) {
-        this.strains = Utils.nonNullList(strains);
+        this.strains = Utils.modifiableList(strains);
         return this;
     }
 
@@ -114,7 +114,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder hosts(List<Taxonomy> hosts) {
-        this.hosts = Utils.nonNullList(hosts);
+        this.hosts = Utils.modifiableList(hosts);
         return this;
     }
 
@@ -124,7 +124,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder links(List<String> links) {
-        this.links = Utils.nonNullList(links);
+        this.links = Utils.modifiableList(links);
         return this;
     }
 

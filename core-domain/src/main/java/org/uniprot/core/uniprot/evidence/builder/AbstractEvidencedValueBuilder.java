@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.evidence.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedV
     }
 
     public B evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return getThis();
     }
 

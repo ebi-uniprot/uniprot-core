@@ -46,7 +46,7 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
     }
 
     public LiteratureMappedReferenceBuilder sourceCategory(List<String> sourceCategory) {
-        this.sourceCategory = Utils.nonNullList(sourceCategory);
+        this.sourceCategory = Utils.modifiableList(sourceCategory);
         return this;
     }
 

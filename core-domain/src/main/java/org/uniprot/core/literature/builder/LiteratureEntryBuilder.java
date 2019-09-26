@@ -50,7 +50,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder authoringGroup(List<String> authoringGroup) {
-        this.authoringGroup = Utils.nonNullList(authoringGroup);
+        this.authoringGroup = Utils.modifiableList(authoringGroup);
         return this;
     }
 
@@ -60,7 +60,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder authors(List<Author> authors) {
-        this.authors = Utils.nonNullList(authors);
+        this.authors = Utils.modifiableList(authors);
         return this;
     }
 
@@ -112,7 +112,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder literatureMappedReference(List<LiteratureMappedReference> literatureMappedReference) {
-        this.literatureMappedReference = Utils.nonNullList(literatureMappedReference);
+        this.literatureMappedReference = Utils.modifiableList(literatureMappedReference);
         return this;
     }
 

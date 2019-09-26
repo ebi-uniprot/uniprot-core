@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.description.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     }
 
     public ProteinSectionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
-		this.alternativeNames = nonNullList(alternativeNames);
+		this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
@@ -46,7 +46,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
 	}
 
 	public ProteinSectionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
-		this.cdAntigenNames = nonNullList(cdAntigenNames);
+		this.cdAntigenNames = modifiableList(cdAntigenNames);
 		return this;
 	}
 
@@ -56,7 +56,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
 	}
 
 	public ProteinSectionBuilder innNames(List<Name> innNames) {
-		this.innNames = nonNullList(innNames);
+		this.innNames = modifiableList(innNames);
 		return this;
 	}
 

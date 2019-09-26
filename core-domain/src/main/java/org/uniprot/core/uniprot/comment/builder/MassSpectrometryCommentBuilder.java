@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder ranges(List<MassSpectrometryRange> ranges) {
-        this.ranges = nonNullList(ranges);
+        this.ranges = modifiableList(ranges);
         return this;
     }
 
@@ -71,7 +71,7 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     }
 
     public MassSpectrometryCommentBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 

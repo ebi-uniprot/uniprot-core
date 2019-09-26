@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,7 +54,7 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder synonyms(List<IsoformName> synonyms) {
-        this.synonyms = nonNullList(synonyms);
+        this.synonyms = modifiableList(synonyms);
         return this;
     }
 
@@ -79,7 +79,7 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder sequenceIds(List<String> sequenceIds) {
-        this.sequenceIds = nonNullList(sequenceIds);
+        this.sequenceIds = modifiableList(sequenceIds);
         return this;
     }
 

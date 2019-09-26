@@ -41,7 +41,7 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, S
 		return this;
 	}
 	public SequenceFeatureBuilder locations(List<Location> locations) {
-		this.locations = Utils.nonNullList(locations);
+		this.locations = Utils.modifiableList(locations);
 		return this;
 	}
 	public SequenceFeatureBuilder addLocation(Location location) {

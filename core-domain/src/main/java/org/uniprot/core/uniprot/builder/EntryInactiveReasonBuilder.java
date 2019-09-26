@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReasonBu
     }
 
     public EntryInactiveReasonBuilder mergeDemergeTo(List<String> mergeDemergeTo) {
-        this.mergeDemergeTo = nonNullList(mergeDemergeTo);
+        this.mergeDemergeTo = modifiableList(mergeDemergeTo);
         return this;
     }
 

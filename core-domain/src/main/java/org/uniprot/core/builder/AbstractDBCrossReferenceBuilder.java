@@ -45,7 +45,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
     }
 
     public B properties(List<Property> properties) {
-        this.properties = nonNullList(properties);
+        this.properties = modifiableList(properties);
         return getThis();
     }
 

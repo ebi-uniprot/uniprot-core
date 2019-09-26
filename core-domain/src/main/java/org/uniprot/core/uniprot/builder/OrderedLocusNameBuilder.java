@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class OrderedLocusNameBuilder extends AbstractEvidencedValueBuilder<Order
 
     public OrderedLocusNameBuilder(String oln, List<Evidence> evidences) {
         this.value = oln;
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
     }
 
     @Override

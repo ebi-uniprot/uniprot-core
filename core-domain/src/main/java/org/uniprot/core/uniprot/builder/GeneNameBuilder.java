@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuild
 
     public GeneNameBuilder(String name, List<Evidence> evidences) {
         this.value = name;
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
     }
 
     @Override

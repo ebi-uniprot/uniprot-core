@@ -22,7 +22,7 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder,
 	}
 
 	public CanonicalProteinBuilder relatedProteins(List<Protein> relatedProteins) {
-		this.relatedProteins = Utils.nonNullList(relatedProteins);
+		this.relatedProteins = Utils.modifiableList(relatedProteins);
 		return this;
 	}
 

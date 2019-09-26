@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class RnaEditingPositionBuilder implements Builder<RnaEditingPositionBuil
 
     public RnaEditingPositionBuilder(String position, List<Evidence> evidences) {
         this.position = position;
-        this.evidences = this.evidences = nonNullList(evidences);
+        this.evidences = this.evidences = modifiableList(evidences);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class RnaEditingPositionBuilder implements Builder<RnaEditingPositionBuil
     }
 
     public RnaEditingPositionBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 
