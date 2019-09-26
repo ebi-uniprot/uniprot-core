@@ -4,18 +4,15 @@ import java.math.BigDecimal;
 
 public class Crc64 {
 
-    private static long[] crc64Array = new long[256];
+    private static final long[] crc64Array = new long[256];
 
-    /**
-     * Initialization of _crc64Array.
-     */
     static {
         for (int i = 0; i <= 255; ++i) {
             long k = i;
 
             for (int j = 0; j < 8; ++j) {
                 if ((k & 1) != 0) {
-                    k = (k >>> 1) ^ 0xd800000000000000l;
+                    k = (k >>> 1) ^ 0xd800000000000000L;
                 } else {
                     k = k >>> 1;
                 }
@@ -56,7 +53,7 @@ public class Crc64 {
     }
 
     public static BigDecimal getCrc64BD(String sequence) {
-        Long val = getCrc64Long(sequence);
+        long val = getCrc64Long(sequence);
         if (val > 0) {
             return new BigDecimal(val);
         }

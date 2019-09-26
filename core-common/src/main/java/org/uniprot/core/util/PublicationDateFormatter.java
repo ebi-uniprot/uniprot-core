@@ -30,7 +30,7 @@ public enum PublicationDateFormatter {
     DAY_THREE_LETTER_MONTH_YEAR(formatFor("dd-MMM-yyyy")
                                         .toFormatter(Locale.ENGLISH));
 
-    private DateTimeFormatter dateFormat;
+    private final DateTimeFormatter dateFormat;
 
     PublicationDateFormatter(DateTimeFormatter dateFormat) {
         this.dateFormat = dateFormat;

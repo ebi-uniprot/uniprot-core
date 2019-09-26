@@ -117,7 +117,7 @@ public class PropertyObject implements Serializable {
         // implementations to rearrange their items for a faster element
         // retrieval based on associative access.
         // Therefore, an implementation mustn't rely on the order of the item.
-        this.map = new HashMap<String, Object>();
+        this.map = new HashMap<>();
     }
 
     /**
@@ -197,9 +197,9 @@ public class PropertyObject implements Serializable {
      */
     public PropertyObject(Map<?, ?> m) {
         if (m == null) {
-            this.map = new HashMap<String, Object>();
+            this.map = new HashMap<>();
         } else {
-            this.map = new HashMap<String, Object>(m.size());
+            this.map = new HashMap<>(m.size());
             for (final Entry<?, ?> e : m.entrySet()) {
                 if (e.getKey() == null) {
                     throw new NullPointerException("Null key.");
@@ -362,10 +362,10 @@ public class PropertyObject implements Serializable {
             // in stringToValue.
             BigInteger bi = new BigInteger(val);
             if (bi.bitLength() <= 31) {
-                return Integer.valueOf(bi.intValue());
+                return bi.intValue();
             }
             if (bi.bitLength() <= 63) {
-                return Long.valueOf(bi.longValue());
+                return bi.longValue();
             }
             return bi;
         }
@@ -417,8 +417,8 @@ public class PropertyObject implements Serializable {
                 } else {
                     Long myLong = Long.valueOf(string);
                     if (string.equals(myLong.toString())) {
-                        if (myLong.longValue() == myLong.intValue()) {
-                            return Integer.valueOf(myLong.intValue());
+                        if (myLong == myLong.intValue()) {
+                            return myLong.intValue();
                         }
                         return myLong;
                     }
@@ -885,7 +885,7 @@ public class PropertyObject implements Serializable {
      * @return a java.util.Map containing the entries of this object
      */
     public Map<String, Object> toMap() {
-        Map<String, Object> results = new HashMap<String, Object>();
+        Map<String, Object> results = new HashMap<>();
         for (Entry<String, Object> entry : this.entrySet()) {
             Object value;
             if (entry.getValue() == null || NULL.equals(entry.getValue())) {

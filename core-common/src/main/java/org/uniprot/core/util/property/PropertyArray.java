@@ -88,7 +88,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * Construct an empty JSONArray.
      */
     public PropertyArray() {
-        this.myArrayList = new ArrayList<Object>();
+        this.myArrayList = new ArrayList<>();
     }
 
     /**
@@ -161,9 +161,9 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      */
     public PropertyArray(Collection<?> collection) {
         if (collection == null) {
-            this.myArrayList = new ArrayList<Object>();
+            this.myArrayList = new ArrayList<>();
         } else {
-            this.myArrayList = new ArrayList<Object>(collection.size());
+            this.myArrayList = new ArrayList<>(collection.size());
             for (Object o : collection) {
                 this.myArrayList.add(PropertyObject.wrap(o));
             }
@@ -513,7 +513,7 @@ public class PropertyArray implements Iterable<Object>, Serializable {
      * @return a java.util.List containing the elements of this array
      */
     public List<Object> toList() {
-        List<Object> results = new ArrayList<Object>(this.myArrayList.size());
+        List<Object> results = new ArrayList<>(this.myArrayList.size());
         for (Object element : this.myArrayList) {
             if (element == null || PropertyObject.NULL.equals(element)) {
                 results.add(null);
