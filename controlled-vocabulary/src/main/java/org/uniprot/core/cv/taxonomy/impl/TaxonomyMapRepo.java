@@ -13,7 +13,8 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * A taxonomy service that stores the various taxonomy nodes in a
+ * A taxonomy service that stores the various taxonomy nodes in a map
+ * The node can be fetched by the taxonomyId
  */
 
 public class TaxonomyMapRepo implements TaxonomyRepo {
@@ -30,6 +31,12 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
 
 		populateMap(nodes);
 	}
+
+	@Override
+	public Optional<TaxonomicNode> retrieveNodeUsingTaxID(int taxonId) {
+		return Optional.ofNullable(taxonMap.get(taxonId));
+	}
+
 
 	private void populateMap(Iterable<TaxonomicNode> nodes) {
 		logger.info("Populating taxonomy map");
@@ -56,11 +63,6 @@ public class TaxonomyMapRepo implements TaxonomyRepo {
 		}
 
 		return proxyNode;
-	}
-
-	@Override
-	public Optional<TaxonomicNode> retrieveNodeUsingTaxID(int taxonId) {
-		return Optional.ofNullable(taxonMap.get(taxonId));
 	}
 
 	/**
