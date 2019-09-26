@@ -26,10 +26,10 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
 
     public LiteratureMappedReferenceImpl(UniProtAccession uniprotAccession, String source, String sourceId, List<String> sourceCategory, String annotation) {
         this.uniprotAccession = uniprotAccession;
-        this.source = Utils.nullToEmpty(source);
-        this.sourceId = Utils.nullToEmpty(sourceId);
+        this.source = Utils.emptyOrString(source);
+        this.sourceId = Utils.emptyOrString(sourceId);
         this.sourceCategory = Utils.unmodifiableList(sourceCategory);
-        this.annotation = Utils.nullToEmpty(annotation);
+        this.annotation = Utils.emptyOrString(annotation);
     }
 
     @Override

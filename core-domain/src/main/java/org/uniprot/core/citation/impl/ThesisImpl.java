@@ -20,8 +20,8 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     public ThesisImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                       String title, PublicationDate publicationDate, String institute, String address) {
         super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.institute = Utils.nullToEmpty(institute);
-        this.address = Utils.nullToEmpty(address);
+        this.institute = Utils.emptyOrString(institute);
+        this.address = Utils.emptyOrString(address);
     }
 
     @Override

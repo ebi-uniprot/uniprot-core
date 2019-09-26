@@ -26,9 +26,9 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         if (journalName != null) {
             this.journal = new JournalImpl(journalName);
         }
-        this.firstPage = Utils.nullToEmpty(firstPage);
-        this.lastPage = Utils.nullToEmpty(lastPage);
-        this.volume = Utils.nullToEmpty(volume);
+        this.firstPage = Utils.emptyOrString(firstPage);
+        this.lastPage = Utils.emptyOrString(lastPage);
+        this.volume = Utils.emptyOrString(volume);
     }
 
     @Override

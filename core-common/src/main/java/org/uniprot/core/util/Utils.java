@@ -7,14 +7,14 @@ public class Utils {
   /**
    * Convert null to empty string or return actual
    *
-   * @param value string null or non null
+   * @param string string null or non null
    * @return empty string or original string
    */
-  public static String nullToEmpty(String value) {
-    if (value == null)
+  public static String emptyOrString(String string) {
+    if (string == null)
       return "";
     else
-      return value;
+      return string;
   }
 
   /**

@@ -17,7 +17,7 @@ public class EvidencedValueImpl implements EvidencedValue {
     }
 
     public EvidencedValueImpl(String value, List<Evidence> evidences) {
-        this.value = Utils.nullToEmpty(value);
+        this.value = Utils.emptyOrString(value);
         this.evidences = Utils.unmodifiableList(evidences);
     }
 

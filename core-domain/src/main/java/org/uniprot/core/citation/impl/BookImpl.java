@@ -27,13 +27,13 @@ public class BookImpl extends AbstractCitationImpl implements Book {
                     String title, PublicationDate publicationDate, String bookName, List<Author> editors,
                     String firstPage, String lastPage, String volume, String publisher, String address) {
         super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.bookName = Utils.nullToEmpty(bookName);
+        this.bookName = Utils.emptyOrString(bookName);
         this.editors = Utils.unmodifiableList(editors);
-        this.firstPage = Utils.nullToEmpty(firstPage);
-        this.lastPage = Utils.nullToEmpty(lastPage);
-        this.volume = Utils.nullToEmpty(volume);
-        this.publisher = Utils.nullToEmpty(publisher);
-        this.address = Utils.nullToEmpty(address);
+        this.firstPage = Utils.emptyOrString(firstPage);
+        this.lastPage = Utils.emptyOrString(lastPage);
+        this.volume = Utils.emptyOrString(volume);
+        this.publisher = Utils.emptyOrString(publisher);
+        this.address = Utils.emptyOrString(address);
     }
 
     @Override

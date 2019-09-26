@@ -19,7 +19,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     public PatentImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
                       String title, PublicationDate publicationDate, String patentNumber) {
         super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.patentNumber = Utils.nullToEmpty(patentNumber);
+        this.patentNumber = Utils.emptyOrString(patentNumber);
     }
 
     @Override

@@ -23,15 +23,15 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
-        map.put("id", Utils.nullToEmpty(entry.getId()));
-        map.put("accession", Utils.nullToEmpty(entry.getAccession()));
-        map.put("definition", Utils.nullToEmpty(entry.getDefinition()));
+        map.put("id", Utils.emptyOrString(entry.getId()));
+        map.put("accession", Utils.emptyOrString(entry.getAccession()));
+        map.put("definition", Utils.emptyOrString(entry.getDefinition()));
         map.put("category", getCategory());
         map.put("keyword", getKeyword());
         map.put("synonyms", String.join(", ", entry.getSynonyms()));
-        map.put("content", Utils.nullToEmpty(entry.getContent()));
+        map.put("content", Utils.emptyOrString(entry.getContent()));
         map.put("gene_ontologies", getGeneOntologies());
-        map.put("note", Utils.nullToEmpty(entry.getNote()));
+        map.put("note", Utils.emptyOrString(entry.getNote()));
         map.put("references", String.join(", ", entry.getReferences()));
         map.put("links", String.join(", ", entry.getLinks()));
         map.put("is_a", getIsA());
@@ -91,7 +91,7 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
 
     private String getCategory() {
         if(entry.getCategory() != null) {
-            return Utils.nullToEmpty(entry.getCategory().toDisplayName());
+            return Utils.emptyOrString(entry.getCategory().toDisplayName());
         }else {
             return "";
         }

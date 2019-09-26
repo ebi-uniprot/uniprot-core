@@ -25,9 +25,9 @@ public class LiteratureEntryMap implements NamedValueMap {
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
         map.put("id", String.valueOf(literatureEntry.getPubmedId()));
-        map.put("doi", Utils.nullToEmpty(literatureEntry.getDoiId()));
-        map.put("title", Utils.nullToEmpty(literatureEntry.getTitle()));
-        map.put("lit_abstract", Utils.nullToEmpty(literatureEntry.getLiteratureAbstract()));
+        map.put("doi", Utils.emptyOrString(literatureEntry.getDoiId()));
+        map.put("title", Utils.emptyOrString(literatureEntry.getTitle()));
+        map.put("lit_abstract", Utils.emptyOrString(literatureEntry.getLiteratureAbstract()));
         map.put("author", getAuthors());
         map.put("authoring_group", getAuthoringGroup());
         map.put("author_and_group", getAuthorsAndAuthoringGroups());

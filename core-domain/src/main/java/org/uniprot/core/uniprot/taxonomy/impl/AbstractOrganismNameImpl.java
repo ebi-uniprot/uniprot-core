@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
 import static org.uniprot.core.util.Utils.unmodifiableList;
-import static org.uniprot.core.util.Utils.nullToEmpty;
+import static org.uniprot.core.util.Utils.emptyOrString;
 
 import java.util.List;
 import java.util.Objects;
@@ -23,8 +23,8 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
     }
 
     AbstractOrganismNameImpl(String scientificName, String commonName, List<String> synonyms) {
-        this.scientificName = nullToEmpty(scientificName);
-        this.commonName = nullToEmpty(commonName);
+        this.scientificName = emptyOrString(scientificName);
+        this.commonName = emptyOrString(commonName);
         this.synonyms = unmodifiableList(synonyms);
     }
 

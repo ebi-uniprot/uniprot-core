@@ -19,13 +19,13 @@ class UtilsTest {
 
       @Test
       void whenNull_returnEmptyString() {
-        assertEquals("", Utils.nullToEmpty(null));
+        assertEquals("", Utils.emptyOrString(null));
       }
 
       @ParameterizedTest
       @ValueSource(strings = {"a", "AB", "a%^b", "()+^£$^%%", "aB", "Ab", "", "null", "   ", "123432"})
       void notNull_returnAsItIs(String test) {
-        assertEquals(test, Utils.nullToEmpty(test));
+        assertEquals(test, Utils.emptyOrString(test));
       }
     }
 

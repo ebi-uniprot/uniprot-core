@@ -45,7 +45,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder title(String title) {
-        this.title = Utils.nullToEmpty(title);
+        this.title = Utils.emptyOrString(title);
         return this;
     }
 

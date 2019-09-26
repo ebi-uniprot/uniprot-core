@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.impl;
 
-import static org.uniprot.core.util.Utils.nullToEmpty;
+import static org.uniprot.core.util.Utils.emptyOrString;
 
 import java.util.Objects;
 
@@ -24,10 +24,10 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
                                   boolean ftp,
                                   String note) {
         super(CommentType.WEBRESOURCE);
-        this.resourceName = nullToEmpty(resourceName);
-        this.resourceUrl = nullToEmpty(resourceUrl);
+        this.resourceName = emptyOrString(resourceName);
+        this.resourceUrl = emptyOrString(resourceUrl);
         this.ftp = ftp;
-        this.note = nullToEmpty(note);
+        this.note = emptyOrString(note);
     }
 
     @Override
