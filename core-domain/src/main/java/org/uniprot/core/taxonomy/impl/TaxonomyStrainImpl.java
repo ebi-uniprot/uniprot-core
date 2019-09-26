@@ -24,7 +24,7 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     public TaxonomyStrainImpl(String name, List<String> synonyms) {
         this.name = name;
-        this.synonyms = Utils.nonNullList(synonyms);
+        this.synonyms = Utils.unmodifiableList(synonyms);
     }
 
     @Override

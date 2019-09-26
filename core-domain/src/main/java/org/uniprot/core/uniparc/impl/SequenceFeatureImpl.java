@@ -37,7 +37,7 @@ public class SequenceFeatureImpl implements SequenceFeature {
 		this.interproGroup = domain;
 		this.database = dbType;
 		this.databaseId = dbId;
-		this.locations = Utils.nonNullList(locations);
+		this.locations = Utils.unmodifiableList(locations);
 	}
 
 	@Override

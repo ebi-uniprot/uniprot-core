@@ -119,12 +119,12 @@ public class UniProtEntryImpl implements UniProtEntry {
 		this.proteinExistence = proteinExistence;
 		this.proteinDescription = proteinDescription;
 		this.genes = Utils.unmodifiableList(genes);
-		this.comments = Utils.nonNullList(comments);
-		this.features = Utils.nonNullList(features);
+		this.comments = Utils.unmodifiableList(comments);
+		this.features = Utils.unmodifiableList(features);
 		this.geneLocations = Utils.unmodifiableList(geneLocations);
 		this.keywords = Utils.unmodifiableList(keywords);
 		this.references = Utils.unmodifiableList(references);
-		this.databaseCrossReferences = Utils.nonNullList(databaseCrossReferences);
+		this.databaseCrossReferences = Utils.unmodifiableList(databaseCrossReferences);
 		this.sequence = sequence;
 		this.internalSection = internalSection;
 		this.inactiveReason = inactiveReason;

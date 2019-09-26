@@ -28,7 +28,7 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
         this.uniprotAccession = uniprotAccession;
         this.source = Utils.nullToEmpty(source);
         this.sourceId = Utils.nullToEmpty(sourceId);
-        this.sourceCategory = Utils.nonNullList(sourceCategory);
+        this.sourceCategory = Utils.unmodifiableList(sourceCategory);
         this.annotation = Utils.nullToEmpty(annotation);
     }
 

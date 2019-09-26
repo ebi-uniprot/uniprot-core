@@ -44,8 +44,8 @@ public class LiteratureEntryImpl implements LiteratureEntry {
         this.pubmedId = pubmedId;
         this.doiId = Utils.nullToEmpty(doiId);
         this.title = Utils.nullToEmpty(title);
-        this.authoringGroup = Utils.nonNullList(authoringGroup);
-        this.authors = Utils.nonNullList(authors);
+        this.authoringGroup = Utils.unmodifiableList(authoringGroup);
+        this.authors = Utils.unmodifiableList(authors);
         this.completeAuthorList = completeAuthorList;
         this.publicationDate = publicationDate;
         this.journal = journal;
@@ -53,7 +53,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
         this.lastPage = Utils.nullToEmpty(lastPage);
         this.volume = Utils.nullToEmpty(volume);
         this.literatureAbstract = Utils.nullToEmpty(literatureAbstract);
-        this.literatureMappedReferences = Utils.nonNullList(literatureMappedReferences);
+        this.literatureMappedReferences = Utils.unmodifiableList(literatureMappedReferences);
         this.statistics = statistics;
     }
 

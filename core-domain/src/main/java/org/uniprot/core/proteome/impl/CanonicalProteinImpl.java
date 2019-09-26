@@ -17,7 +17,7 @@ public class CanonicalProteinImpl implements CanonicalProtein {
 	}
 	public  CanonicalProteinImpl(Protein canonicalProtein, List<Protein> relatedProteins) {
 		this.canonicalProtein = canonicalProtein;
-		this.relatedProteins =Utils.nonNullList(relatedProteins);
+		this.relatedProteins =Utils.unmodifiableList(relatedProteins);
 	
 	}
 	@Override

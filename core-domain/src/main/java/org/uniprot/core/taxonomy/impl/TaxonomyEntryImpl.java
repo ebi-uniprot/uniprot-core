@@ -51,11 +51,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         this.rank = rank;
         this.hidden = hidden;
         this.active = active;
-        this.otherNames = Utils.nonNullList(otherNames);
-        this.lineage = Utils.nonNullList(lineage);
-        this.strains = Utils.nonNullList(strains);
-        this.hosts = Utils.nonNullList(hosts);
-        this.links = Utils.nonNullList(links);
+        this.otherNames = Utils.unmodifiableList(otherNames);
+        this.lineage = Utils.unmodifiableList(lineage);
+        this.strains = Utils.unmodifiableList(strains);
+        this.hosts = Utils.unmodifiableList(hosts);
+        this.links = Utils.unmodifiableList(links);
         this.statistics = statistics;
         this.inactiveReason = inactiveReason;
     }
