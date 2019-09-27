@@ -929,15 +929,7 @@ class PropertyObject implements Property, Serializable {
 
     static List<Property> spliteratorToListIgnoreOthers(Spliterator<Object> propertyArraySpliterator) {
         return StreamSupport.stream(propertyArraySpliterator, false)
-          .filter(obj -> {
-                try {
-                    Property p = (Property) obj;
-                    return true;
-                } catch (ClassCastException e) {
-                    return false;
-                }
-            }
-          )
+          .filter(obj -> obj instanceof PropertyObject)
           .map(obj -> (Property) obj)
           .collect(Collectors.toList());
     }
