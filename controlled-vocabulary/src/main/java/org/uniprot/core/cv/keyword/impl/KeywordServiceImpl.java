@@ -1,14 +1,14 @@
 package org.uniprot.core.cv.keyword.impl;
 
+import org.uniprot.core.cv.keyword.KeywordCache;
+import org.uniprot.core.cv.keyword.KeywordEntry;
+import org.uniprot.core.cv.keyword.KeywordService;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.cv.keyword.KeywordCache;
-import org.uniprot.core.cv.keyword.KeywordEntry;
-import org.uniprot.core.cv.keyword.KeywordService;
 
 public class KeywordServiceImpl implements KeywordService {
     private Map<String, KeywordEntry> keywordAccessionMap;

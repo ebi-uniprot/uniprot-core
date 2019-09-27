@@ -7,7 +7,4 @@ public class TaxonMappingException extends RuntimeException {
     public TaxonMappingException(String message) {
         super(message);
     }
-    public TaxonMappingException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

@@ -276,7 +276,7 @@ class UniProtXDbTypesTest {
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 4);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 3);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PROTEIN_PROTEIN_INTERACTION_DATABASES), 8);
-        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(CHEMISTRY), 5);
+        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(CHEMISTRY), 6);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PROTEIN_FAMILY_GROUP_DATABASES), 12);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PTM_DATABASES), 7);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(POLYMORPHISM_AND_MUTATION_DATABASES), 3);
@@ -287,7 +287,7 @@ class UniProtXDbTypesTest {
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES), 37);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 9);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES), 8);
-        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(OTHER), 6);
+        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(OTHER), 7);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(FAMILY_AND_DOMAIN_DATABASES), 15);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(GENE_ONTOLOGY_DATABASES), 1);

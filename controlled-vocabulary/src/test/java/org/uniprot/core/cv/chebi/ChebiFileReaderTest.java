@@ -1,9 +1,9 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.chebi;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.chebi.Chebi;
-import org.uniprot.core.cv.impl.ChebiFileReader;
+import org.uniprot.core.cv.chebi.ChebiFileReader;
 
 import java.util.List;
 

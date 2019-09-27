@@ -30,6 +30,8 @@ public class DBXRefValidator {
         }
     }
 
+    private DBXRefValidator(){}
+
     public static List<Pair<String, String>> validate(UniProtXDbTypeDetail dbTypeDetail) {
         DBXRef dbXRef = ABB_DBXREF.get(dbTypeDetail.getName().toLowerCase());
         List<Pair<String, String>> mismatches = new ArrayList<>();

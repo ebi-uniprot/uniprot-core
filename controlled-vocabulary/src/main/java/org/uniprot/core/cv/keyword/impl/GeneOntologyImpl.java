@@ -2,6 +2,8 @@ package org.uniprot.core.cv.keyword.impl;
 
 import org.uniprot.core.cv.keyword.GeneOntology;
 
+import java.util.Objects;
+
 public class GeneOntologyImpl implements GeneOntology {
 	private final String goId;
 	private final String goTerm;
@@ -28,32 +30,22 @@ public class GeneOntologyImpl implements GeneOntology {
 	}
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((goId == null) ? 0 : goId.hashCode());
-		result = prime * result + ((goTerm == null) ? 0 : goTerm.hashCode());
-		return result;
+    	return Objects.hash(this.goId, this.goTerm);
 	}
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		GeneOntologyImpl other = (GeneOntologyImpl) obj;
-		if (goId == null) {
-			if (other.goId != null)
-				return false;
-		} else if (!goId.equals(other.goId))
-			return false;
-		if (goTerm == null) {
-			if (other.goTerm != null)
-				return false;
-		} else if (!goTerm.equals(other.goTerm))
-			return false;
-		return true;
+		return Objects.equals(this.goId, other.goId)
+				&& Objects.equals(this.goTerm, other.goTerm);
 	}
 
 }

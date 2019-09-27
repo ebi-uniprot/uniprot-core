@@ -3,8 +3,8 @@ package org.uniprot.core.flatfile.parser.impl.cc;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.cv.impl.DiseaseFileReader;
-import org.uniprot.core.cv.impl.SubcellularLocationFileReader;
+import org.uniprot.core.cv.disease.DiseaseFileReader;
+import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
 import org.uniprot.core.flatfile.parser.LineTransformer;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
