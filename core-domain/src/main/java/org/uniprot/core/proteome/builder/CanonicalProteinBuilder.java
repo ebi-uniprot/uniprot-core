@@ -10,38 +10,38 @@ import org.uniprot.core.proteome.impl.CanonicalProteinImpl;
 import org.uniprot.core.util.Utils;
 
 public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder, CanonicalProtein> {
-	private Protein canonicalProtein;
-	private List<Protein> relatedProteins = new ArrayList<>();
+    private Protein canonicalProtein;
+    private List<Protein> relatedProteins = new ArrayList<>();
 
-	public static CanonicalProteinBuilder newInstance() {
-		return new CanonicalProteinBuilder();
-	}
-	@Override
-	public CanonicalProtein build() {
-		return new CanonicalProteinImpl(canonicalProtein, relatedProteins);
-	}
+    public static CanonicalProteinBuilder newInstance() {
+        return new CanonicalProteinBuilder();
+    }
 
-	public CanonicalProteinBuilder relatedProteins(List<Protein> relatedProteins) {
-		this.relatedProteins = Utils.nonNullList(relatedProteins);
-		return this;
-	}
+    @Override
+    public CanonicalProtein build() {
+        return new CanonicalProteinImpl(canonicalProtein, relatedProteins);
+    }
 
-	public CanonicalProteinBuilder addRelatedProtein(Protein relatedProtein) {
-		Utils.nonNullAdd(relatedProtein, relatedProteins);
-		return this;
-	}
+    public CanonicalProteinBuilder relatedProteins(List<Protein> relatedProteins) {
+        this.relatedProteins = Utils.nonNullList(relatedProteins);
+        return this;
+    }
 
-	public CanonicalProteinBuilder canonicalProtein(Protein canonicalProtein) {
-		this.canonicalProtein = canonicalProtein;
-		return this;
-	}
+    public CanonicalProteinBuilder addRelatedProtein(Protein relatedProtein) {
+        Utils.nonNullAdd(relatedProtein, relatedProteins);
+        return this;
+    }
 
-	@Override
-	public CanonicalProteinBuilder from(CanonicalProtein instance) {
-		this.canonicalProtein = instance.getCanonicalProtein();
-		relatedProteins.clear();
-		relatedProteins.addAll(instance.getRelatedProteins());
-		return this;
-	}
+    public CanonicalProteinBuilder canonicalProtein(Protein canonicalProtein) {
+        this.canonicalProtein = canonicalProtein;
+        return this;
+    }
 
+    @Override
+    public CanonicalProteinBuilder from(CanonicalProtein instance) {
+        this.canonicalProtein = instance.getCanonicalProtein();
+        relatedProteins.clear();
+        relatedProteins.addAll(instance.getRelatedProteins());
+        return this;
+    }
 }

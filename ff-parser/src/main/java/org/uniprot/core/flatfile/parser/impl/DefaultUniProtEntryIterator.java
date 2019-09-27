@@ -1,11 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import com.google.common.util.concurrent.Uninterruptibles;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.flatfile.parser.*;
-import org.uniprot.core.uniprot.UniProtEntry;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,14 +12,19 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-/**
- * Created by wudong on 15/04/2014.
- */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.*;
+import org.uniprot.core.uniprot.UniProtEntry;
+
+import com.google.common.util.concurrent.Uninterruptibles;
+
+/** Created by wudong on 15/04/2014. */
 public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
     private static Logger logger = LoggerFactory.getLogger(DefaultUniProtEntryIterator.class);
-    private static Logger loggerError = LoggerFactory
-            .getLogger(DefaultUniProtEntryIterator.class.getName() + ".error");
+    private static Logger loggerError =
+            LoggerFactory.getLogger(DefaultUniProtEntryIterator.class.getName() + ".error");
 
     private final int numberOfThreads;
     private final List<ParsingTask> workers = new ArrayList<>();
@@ -55,9 +54,16 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
     }
 
     @Override
-    public void setInput(String fileName, String keywordFile, String diseaseFile, String accessionGoPubmedFile, String subcellularLocationFile) {
+    public void setInput(
+            String fileName,
+            String keywordFile,
+            String diseaseFile,
+            String accessionGoPubmedFile,
+            String subcellularLocationFile) {
         logger.info("Started loading SupportingDataMap");
-        supportingDataMap = new SupportingDataMapImpl(keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile);
+        supportingDataMap =
+                new SupportingDataMapImpl(
+                        keywordFile, diseaseFile, accessionGoPubmedFile, subcellularLocationFile);
         logger.info("finished loading SupportingDataMap");
         try {
             setInput2(fileName);
@@ -67,8 +73,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
     }
 
     public boolean hasNext() {
-        if (this.entryCounter.get() > 0)
-            return true;
+        if (this.entryCounter.get() > 0) return true;
         else {
             // if there are parsing jobs still running, wait and check again.
             logger.trace("Checking hasNext: the entry queue is emptied.");
@@ -80,8 +85,7 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                     logger.error(e.getMessage());
                     Thread.currentThread().interrupt();
                 }
-                if (this.entryCounter.get() > 0)
-                    return true;
+                if (this.entryCounter.get() > 0) return true;
             }
 
             logger.trace("Checking hasNext: all parsing jobs have finished.");
@@ -158,7 +162,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
 
         for (int i = 0; i < threadCount; i++) {
-            ParsingTask parsingTask = new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
+            ParsingTask parsingTask =
+                    new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
             parsingTask.setName("Parsing Worker No. " + (i + 1));
             this.workers.add(parsingTask);
             parsingTask.start();
@@ -204,7 +209,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                     if (TimeUnit.NANOSECONDS.toMinutes(l - checkPoint) > 5) {
                         logger.debug(
                                 "The total number of flat file entry has been scanned : {}. Using time:  {} minutes",
-                                counter, TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
+                                counter,
+                                TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
                         checkPoint = l;
                     }
                 }
@@ -214,7 +220,9 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
             logger.debug("Flat-file scanning finished.");
             logger.debug("Total flat-file to be parsed: {} ", counter);
-            logger.debug("Total time used: {} ", TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
+            logger.debug(
+                    "Total time used: {} ",
+                    TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
 
             while (!ffQueue.isEmpty()) {
                 Uninterruptibles.sleepUninterruptibly(500, TimeUnit.MILLISECONDS);
@@ -222,7 +230,6 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             }
 
             logger.debug("FF queue cleaned, full flat-file has be parsed.");
-
 
             for (ParsingTask task : workers) {
                 task.finish();
@@ -247,7 +254,10 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         private final AtomicBoolean notFinished = new AtomicBoolean(false);
         private UniProtParser parser;
 
-        ParsingTask(BlockingQueue<String> ffQueue, BlockingQueue<UniProtEntry> queue, CountDownLatch countDown) {
+        ParsingTask(
+                BlockingQueue<String> ffQueue,
+                BlockingQueue<UniProtEntry> queue,
+                CountDownLatch countDown) {
             this.ffQueue = ffQueue;
             this.queue = queue;
             this.countDown = countDown;
@@ -280,8 +290,10 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
 
                         // report every 10 minitues
                         if (TimeUnit.NANOSECONDS.toMinutes(l - checkPoint) > 5) {
-                            logger.debug("Number of FF has been parsed by this worker : {}. Using time:  {} minutes",
-                                         counter, TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
+                            logger.debug(
+                                    "Number of FF has been parsed by this worker : {}. Using time:  {} minutes",
+                                    counter,
+                                    TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
                             checkPoint = l;
                         }
                     } catch (Exception e) {
@@ -300,8 +312,10 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
                 }
             }
 
-            logger.debug("Total FF parsed {} by this worker, Using time:  {} minutes", counter,
-                         TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
+            logger.debug(
+                    "Total FF parsed {} by this worker, Using time:  {} minutes",
+                    counter,
+                    TimeUnit.NANOSECONDS.toMinutes(System.nanoTime() - startTime));
 
             if (failed > 0) {
                 logger.warn("Failed FF parsing in the worker: {}", failed);

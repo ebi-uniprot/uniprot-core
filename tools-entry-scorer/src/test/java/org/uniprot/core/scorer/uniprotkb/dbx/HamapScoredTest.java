@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb.dbx;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.scorer.uniprotkb.HasScore;
 import org.uniprot.core.scorer.uniprotkb.xdb.HamapScored;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
-
-import java.util.List;
 
 class HamapScoredTest extends AbstractDBXTest {
     @Test
@@ -24,7 +24,6 @@ class HamapScoredTest extends AbstractDBXTest {
     void shouldHamap6Score01() {
         String line = "DR   HAMAP; MF_01105; N-acetyl_glu_synth; 1; atypical/fused.";
         testDBXrefScore(line, 0.1);
-
     }
 
     @Test
@@ -41,25 +40,27 @@ class HamapScoredTest extends AbstractDBXTest {
 
     @Test
     void shouldHamap3Score01() {
-        String line = "DR   HAMAP; MF_00229; His_ammonia-lyase; 1; -.\n" +
-                "DR   HAMAP; MF_01105; N-acetyl_glu_synth; 1; atypical/fused.";
+        String line =
+                "DR   HAMAP; MF_00229; His_ammonia-lyase; 1; -.\n"
+                        + "DR   HAMAP; MF_01105; N-acetyl_glu_synth; 1; atypical/fused.";
         testDBXrefScore(line, 0.1);
     }
 
     @Test
     void shouldHamap2Score01() {
-        String line = "DR   HAMAP; MF_00229; His_ammonia-lyase; 1; -.\n" +
-                "DR   HAMAP; MF_00229; His_ammonia-lyase; 2321; -.\n" +
-                "DR   HAMAP; MF_00006; Arg_succ_lyase; 1; fused.\n" +
-                "DR   HAMAP; MF_01105; N-acetyl_glu_synth; 1; atypical/fused.";
+        String line =
+                "DR   HAMAP; MF_00229; His_ammonia-lyase; 1; -.\n"
+                        + "DR   HAMAP; MF_00229; His_ammonia-lyase; 2321; -.\n"
+                        + "DR   HAMAP; MF_00006; Arg_succ_lyase; 1; fused.\n"
+                        + "DR   HAMAP; MF_01105; N-acetyl_glu_synth; 1; atypical/fused.";
         testDBXrefScore(line, 0.1);
-
     }
 
     @Test
     void shouldHamapScore01() {
-        String line = "DR   HAMAP; MF_00229; His_ammonia-lyase; 1; -.\n" +
-                "DR   HAMAP; MF_00229; His_ammonia-lyase32; 1; -.";
+        String line =
+                "DR   HAMAP; MF_00229; His_ammonia-lyase; 1; -.\n"
+                        + "DR   HAMAP; MF_00229; His_ammonia-lyase32; 1; -.";
         testDBXrefScore(line, 0.1);
     }
 

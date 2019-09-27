@@ -1,12 +1,15 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.json.parser.uniprot.UniprotJsonConfig;
 import org.uniprot.core.json.parser.uniprot.comment.*;
 import org.uniprot.core.uniprot.*;
 import org.uniprot.core.uniprot.builder.EntryInactiveReasonBuilder;
@@ -15,40 +18,36 @@ import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 class UniProtEntryIT {
 
     private static Logger logger = LoggerFactory.getLogger(UniProtEntryIT.class);
 
     @Test
     void testInactiveUniProtEntryComplete() {
-        EntryInactiveReason inactiveReason = new EntryInactiveReasonBuilder()
-                .type(InactiveReasonType.MERGED)
-                .addMergeDemergeTo("merge id")
-                .build();
+        EntryInactiveReason inactiveReason =
+                new EntryInactiveReasonBuilder()
+                        .type(InactiveReasonType.MERGED)
+                        .addMergeDemergeTo("merge id")
+                        .build();
 
         UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();
         UniProtAccession accession = new UniProtAccessionBuilder("accession value").build();
 
-        UniProtEntry inactiveEntry = new UniProtEntryBuilder()
-                .primaryAccession(accession)
-                .uniProtId(uniProtId)
-                .inactive()
-                .inactiveReason(inactiveReason)
-                .build();
+        UniProtEntry inactiveEntry =
+                new UniProtEntryBuilder()
+                        .primaryAccession(accession)
+                        .uniProtId(uniProtId)
+                        .inactive()
+                        .inactiveReason(inactiveReason)
+                        .build();
         ValidateJson.verifyJsonRoundTripParser(inactiveEntry);
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(inactiveEntry);
         assertNotNull(jsonNode.get("primaryAccession"));
-        assertEquals("accession value",jsonNode.get("primaryAccession").asText());
+        assertEquals("accession value", jsonNode.get("primaryAccession").asText());
     }
 
     @Test
@@ -69,27 +68,31 @@ class UniProtEntryIT {
 
         UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();
         UniProtEntryBuilder builder = new UniProtEntryBuilder();
-        UniProtEntry entry = builder.primaryAccession(UniProtAccessionTest.getUniProtAccession())
-                .uniProtId(uniProtId)
-                .active()
-                .entryType(UniProtEntryType.SWISSPROT)
-                .addSecondaryAccession(UniProtAccessionTest.getUniProtAccession())
-                .entryAudit(EntryAuditTest.getEntryAudit())
-                .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
-                .proteinDescription(ProteinDescriptionTest.getProteinDescription())
-                .genes(Collections.singletonList(GeneTest.createCompleteGene()))
-                .annotationScore(2)
-                .organism(OrganimsTest.getOrganism())
-                .organismHosts(Collections.singletonList(OrganimHostTest.getOrganismHost()))
-                .comments(comments)
-                .features(Collections.singletonList(FeatureTest.getFeature()))
-                .internalSection(InternalSectionTest.getInternalSection())
-                .keywords(Collections.singletonList(KeywordTest.getKeyword()))
-                .geneLocations(Collections.singletonList(GeneLocationTest.getGeneLocation()))
-                .references(UniProtReferenceTest.getUniProtReferences())
-                .databaseCrossReferences(Collections.singletonList(UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
-                .sequence(SequenceTest.getSequence())
-                .build();
+        UniProtEntry entry =
+                builder.primaryAccession(UniProtAccessionTest.getUniProtAccession())
+                        .uniProtId(uniProtId)
+                        .active()
+                        .entryType(UniProtEntryType.SWISSPROT)
+                        .addSecondaryAccession(UniProtAccessionTest.getUniProtAccession())
+                        .entryAudit(EntryAuditTest.getEntryAudit())
+                        .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
+                        .proteinDescription(ProteinDescriptionTest.getProteinDescription())
+                        .genes(Collections.singletonList(GeneTest.createCompleteGene()))
+                        .annotationScore(2)
+                        .organism(OrganimsTest.getOrganism())
+                        .organismHosts(Collections.singletonList(OrganimHostTest.getOrganismHost()))
+                        .comments(comments)
+                        .features(Collections.singletonList(FeatureTest.getFeature()))
+                        .internalSection(InternalSectionTest.getInternalSection())
+                        .keywords(Collections.singletonList(KeywordTest.getKeyword()))
+                        .geneLocations(
+                                Collections.singletonList(GeneLocationTest.getGeneLocation()))
+                        .references(UniProtReferenceTest.getUniProtReferences())
+                        .databaseCrossReferences(
+                                Collections.singletonList(
+                                        UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
+                        .sequence(SequenceTest.getSequence())
+                        .build();
 
         ValidateJson.verifyJsonRoundTripParser(entry);
         ValidateJson.verifyEmptyFields(entry);
@@ -98,9 +101,8 @@ class UniProtEntryIT {
             ObjectMapper mapper = UniprotJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
             System.out.println(json);
-        }catch(Exception e) {
+        } catch (Exception e) {
             fail(e.getMessage());
         }
     }
-
 }

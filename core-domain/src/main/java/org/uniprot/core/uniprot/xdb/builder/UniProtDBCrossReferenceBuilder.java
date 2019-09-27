@@ -19,7 +19,9 @@ import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
  *
  * @author Edd
  */
-public class UniProtDBCrossReferenceBuilder extends AbstractDBCrossReferenceBuilder<UniProtDBCrossReferenceBuilder, UniProtXDbType, UniProtDBCrossReference> {
+public class UniProtDBCrossReferenceBuilder
+        extends AbstractDBCrossReferenceBuilder<
+                UniProtDBCrossReferenceBuilder, UniProtXDbType, UniProtDBCrossReference> {
     private String isoformId;
     private List<Evidence> evidences = new ArrayList<>();
 

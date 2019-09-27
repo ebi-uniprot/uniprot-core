@@ -1,5 +1,12 @@
 package org.uniprot.core.cv.keyword.impl;
 
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -7,13 +14,6 @@ import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordStatistics;
-
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class KeywordEntryImplTest {
 
@@ -29,29 +29,42 @@ public class KeywordEntryImplTest {
     private KeywordStatistics statistics;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         this.random = UUID.randomUUID().toString();
         this.keyword = KeywordImplTest.createKeyword("id-" + this.random, "acc-" + this.random);
         this.definition = "definition-" + this.random;
-        this.synonyms = IntStream.range(0, 5).mapToObj(i -> i + "-syn-" + this.random).collect(Collectors.toList());
-        this.geneOntologies = IntStream.range(0, 3)
-                .mapToObj(i -> GeneOntologyImplTest.createGeneOntology(i +"-id-" + this.random, i + "-term-" + this.random))
-                .collect(Collectors.toList());
-        this.sites = IntStream.range(0, 5).mapToObj(i -> i + "-site-" + this.random).collect(Collectors.toList());
+        this.synonyms =
+                IntStream.range(0, 5)
+                        .mapToObj(i -> i + "-syn-" + this.random)
+                        .collect(Collectors.toList());
+        this.geneOntologies =
+                IntStream.range(0, 3)
+                        .mapToObj(
+                                i ->
+                                        GeneOntologyImplTest.createGeneOntology(
+                                                i + "-id-" + this.random,
+                                                i + "-term-" + this.random))
+                        .collect(Collectors.toList());
+        this.sites =
+                IntStream.range(0, 5)
+                        .mapToObj(i -> i + "-site-" + this.random)
+                        .collect(Collectors.toList());
 
         long rev = ThreadLocalRandom.current().nextLong(100000);
         long unrev = ThreadLocalRandom.current().nextLong(100000);
         this.statistics = KeywordStatisticsImplTest.createKeywordStatistics(rev, unrev);
-        this.category = KeywordImplTest.createKeyword("idc-" + this.random, "cat-acc-" + this.random);
+        this.category =
+                KeywordImplTest.createKeyword("idc-" + this.random, "cat-acc-" + this.random);
     }
 
     @Test
-    void testCreateKeywordEntry(){
+    void testCreateKeywordEntry() {
         KeywordEntry keywordEntry = createKeywordEntry();
         Assertions.assertEquals(this.keyword, keywordEntry.getKeyword());
         Assertions.assertEquals(this.definition, keywordEntry.getDefinition());
         Assertions.assertArrayEquals(this.synonyms.toArray(), keywordEntry.getSynonyms().toArray());
-        Assertions.assertArrayEquals(this.geneOntologies.toArray(), keywordEntry.getGeneOntologies().toArray());
+        Assertions.assertArrayEquals(
+                this.geneOntologies.toArray(), keywordEntry.getGeneOntologies().toArray());
         Assertions.assertNull(keywordEntry.getParents());
         Assertions.assertNull(keywordEntry.getChildren());
         Assertions.assertArrayEquals(this.sites.toArray(), keywordEntry.getSites().toArray());
@@ -60,7 +73,7 @@ public class KeywordEntryImplTest {
     }
 
     @Test
-    void testCreateKeywordEntryDefaultConstructor(){
+    void testCreateKeywordEntryDefaultConstructor() {
         KeywordEntry keywordEntry = new KeywordEntryImpl();
         Assertions.assertNull(keywordEntry.getKeyword());
         Assertions.assertNull(keywordEntry.getDefinition());
@@ -76,7 +89,7 @@ public class KeywordEntryImplTest {
     }
 
     @Test
-    void testValueEqual(){
+    void testValueEqual() {
         KeywordEntry kw1 = createKeywordEntry();
         KeywordEntry kw2 = createKeywordEntry();
         Assertions.assertTrue(kw1.equals(kw2));
@@ -84,20 +97,20 @@ public class KeywordEntryImplTest {
     }
 
     @Test
-    void testRefEqual(){
+    void testRefEqual() {
         KeywordEntry kw1 = createKeywordEntry();
         Assertions.assertTrue(kw1.equals(kw1));
         Assertions.assertTrue(kw1.hashCode() == kw1.hashCode());
     }
 
     @Test
-    void testEqualWithNull(){
+    void testEqualWithNull() {
         KeywordEntry kw1 = createKeywordEntry();
         Assertions.assertFalse(kw1.equals(null));
     }
 
     @Test
-    void testValueNotEqual(){
+    void testValueNotEqual() {
         KeywordEntry kw1 = createKeywordEntry();
         this.statistics = null;
         KeywordEntry kw2 = createKeywordEntry();
@@ -105,7 +118,15 @@ public class KeywordEntryImplTest {
     }
 
     private KeywordEntry createKeywordEntry() {
-        return new KeywordEntryImpl(this.keyword, this.definition, this.synonyms, this.geneOntologies,
-                this.parents, this.sites, this.category, this.children, this.statistics);
+        return new KeywordEntryImpl(
+                this.keyword,
+                this.definition,
+                this.synonyms,
+                this.geneOntologies,
+                this.parents,
+                this.sites,
+                this.category,
+                this.children,
+                this.statistics);
     }
 }

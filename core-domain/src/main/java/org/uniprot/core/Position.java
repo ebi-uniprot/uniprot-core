@@ -7,23 +7,17 @@ public final class Position implements Comparable<Position>, Serializable {
     private Integer value;
     private PositionModifier modifier;
 
-    private Position() {
-
-    }
+    private Position() {}
 
     public Position(Integer value) {
         this(value, getValueModifier(value));
-
     }
-
 
     public Position(Integer value, PositionModifier modifier) {
         this.value = value;
         if (value == null) {
             this.modifier = PositionModifier.UNKNOWN;
-        } else
-
-            this.modifier = modifier;
+        } else this.modifier = modifier;
     }
 
     public Integer getValue() {
@@ -60,17 +54,12 @@ public final class Position implements Comparable<Position>, Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         Position other = (Position) obj;
-        if (modifier != other.modifier)
-            return false;
-        if(modifier ==PositionModifier.UNKNOWN )
-        	return true;
+        if (modifier != other.modifier) return false;
+        if (modifier == PositionModifier.UNKNOWN) return true;
         if (value == null) {
             return other.value == null;
         } else return value.equals(other.value);
@@ -85,7 +74,4 @@ public final class Position implements Comparable<Position>, Serializable {
         }
         return modifier;
     }
-
-
-
 }

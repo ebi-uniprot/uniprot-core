@@ -10,16 +10,15 @@ import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.util.Utils;
 
 public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
-    private  String id;
+    private String id;
     private String accession;
-    private  String acronym;
-    private  String definition;
+    private String acronym;
+    private String definition;
     private List<String> alternativeNames;
     private List<CrossReference> crossReferences;
     private List<Keyword> keywords;
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
-
 
     public static DiseaseBuilder newInstance() {
         return new DiseaseBuilder();
@@ -27,9 +26,16 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
 
     @Override
     public Disease build() {
-        return new DiseaseImpl(this.id, this.accession, this.acronym,
-                this.definition, this.alternativeNames, this.crossReferences,
-                this.keywords, this.reviewedProteinCount, this.unreviewedProteinCount);
+        return new DiseaseImpl(
+                this.id,
+                this.accession,
+                this.acronym,
+                this.definition,
+                this.alternativeNames,
+                this.crossReferences,
+                this.keywords,
+                this.reviewedProteinCount,
+                this.unreviewedProteinCount);
     }
 
     @Override
@@ -46,70 +52,69 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         return this;
     }
 
-    public DiseaseBuilder id(String id){
+    public DiseaseBuilder id(String id) {
         this.id = id;
         return this;
     }
 
-    public DiseaseBuilder accession(String accession){
+    public DiseaseBuilder accession(String accession) {
         this.accession = accession;
         return this;
     }
 
-    public DiseaseBuilder acronym(String acronym){
+    public DiseaseBuilder acronym(String acronym) {
         this.acronym = acronym;
         return this;
     }
 
-    public DiseaseBuilder definition(String definition){
+    public DiseaseBuilder definition(String definition) {
         this.definition = definition;
         return this;
     }
 
     // for single string
-    public DiseaseBuilder alternativeNames(String alternativeName){
+    public DiseaseBuilder alternativeNames(String alternativeName) {
         this.alternativeNames = Utils.nonNullList(this.alternativeNames);
         this.alternativeNames.add(alternativeName);
         return this;
     }
 
-    public DiseaseBuilder alternativeNames(List<String> alternativeNames){
+    public DiseaseBuilder alternativeNames(List<String> alternativeNames) {
         this.alternativeNames = alternativeNames;
         return this;
     }
 
     // setter for single object
-    public DiseaseBuilder crossReferences(CrossReference crossReference){
+    public DiseaseBuilder crossReferences(CrossReference crossReference) {
         this.crossReferences = Utils.nonNullList(this.crossReferences);
         this.crossReferences.add(crossReference);
         return this;
     }
 
-    public DiseaseBuilder crossReferences(List<CrossReference> crossReferences){
+    public DiseaseBuilder crossReferences(List<CrossReference> crossReferences) {
         this.crossReferences = crossReferences;
         return this;
     }
 
     // setter for single object
-    public DiseaseBuilder keywords(Keyword keyword){
+    public DiseaseBuilder keywords(Keyword keyword) {
         this.keywords = Utils.nonNullList(this.keywords);
         this.keywords.add(keyword);
         return this;
     }
 
-    public DiseaseBuilder keywords(List<Keyword> keywords){
+    public DiseaseBuilder keywords(List<Keyword> keywords) {
         this.keywords = keywords;
         return this;
     }
 
-    public DiseaseBuilder reviewedProteinCount(Long reviewedProteinCount){
+    public DiseaseBuilder reviewedProteinCount(Long reviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         return this;
     }
 
-    public DiseaseBuilder unreviewedProteinCount(Long unreviewedProteinCount){
+    public DiseaseBuilder unreviewedProteinCount(Long unreviewedProteinCount) {
         this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }
-
 }

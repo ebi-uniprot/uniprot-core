@@ -1,7 +1,14 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
 import org.uniprot.core.uniprot.InternalSection;
@@ -11,14 +18,6 @@ import org.uniprot.core.uniprot.builder.InternalSectionBuilder;
 import org.uniprot.core.uniprot.builder.SourceLineBuilder;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
-
-import java.time.LocalDate;
-import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InternalSectionImplTest {
 
@@ -47,8 +46,12 @@ class InternalSectionImplTest {
         List<EvidenceLine> evlines = new ArrayList<>();
         LocalDate createDate = LocalDate.of(2015, Month.AUGUST, 2);
         String curator = "som curator";
-        evlines.add(new EvidenceLineBuilder().evidence("ECO:0000269|PubMed:22481068").creationDate(createDate)
-                            .curator(curator).build());
+        evlines.add(
+                new EvidenceLineBuilder()
+                        .evidence("ECO:0000269|PubMed:22481068")
+                        .creationDate(createDate)
+                        .curator(curator)
+                        .build());
         InternalSection is = new InternalSectionBuilder().evidenceLines(evlines).build();
         assertTrue(is.getSourceLines().isEmpty());
         assertTrue(is.getInternalLines().isEmpty());
@@ -66,10 +69,18 @@ class InternalSectionImplTest {
         List<EvidenceLine> evlines = new ArrayList<>();
         LocalDate createDate = LocalDate.of(2015, Month.AUGUST, 2);
         String curator = "som curator";
-        evlines.add(new EvidenceLineBuilder().evidence("ECO:0000269|PubMed:22481068").creationDate(createDate)
-                            .curator(curator).build());
-        InternalSection is = new InternalSectionBuilder().internalLines(internalLines).evidenceLines(evlines)
-                .sourceLines(sourceLines).build();
+        evlines.add(
+                new EvidenceLineBuilder()
+                        .evidence("ECO:0000269|PubMed:22481068")
+                        .creationDate(createDate)
+                        .curator(curator)
+                        .build());
+        InternalSection is =
+                new InternalSectionBuilder()
+                        .internalLines(internalLines)
+                        .evidenceLines(evlines)
+                        .sourceLines(sourceLines)
+                        .build();
         assertEquals(internalLines, is.getInternalLines());
         assertEquals(sourceLines, is.getSourceLines());
         assertEquals(evlines, is.getEvidenceLines());
@@ -80,8 +91,12 @@ class InternalSectionImplTest {
         LocalDate createDate = LocalDate.of(2015, Month.AUGUST, 2);
         String curator = "som curator";
         String evidence = "ECO:0000269|PubMed:22481068";
-        EvidenceLine evline = new EvidenceLineBuilder().evidence(evidence).creationDate(createDate).curator(curator)
-                .build();
+        EvidenceLine evline =
+                new EvidenceLineBuilder()
+                        .evidence(evidence)
+                        .creationDate(createDate)
+                        .curator(curator)
+                        .build();
         assertEquals(createDate, evline.getCreateDate());
         assertEquals(curator, evline.getCurator());
         assertEquals(evidence, evline.getEvidence());

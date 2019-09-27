@@ -19,11 +19,12 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
     }
 
-    public BPCPCommentImpl(Absorption absorption,
-                           KineticParameters kineticParameters,
-                           PhDependence phDependence,
-                           RedoxPotential redoxPotential,
-                           TemperatureDependence temperatureDependence) {
+    public BPCPCommentImpl(
+            Absorption absorption,
+            KineticParameters kineticParameters,
+            PhDependence phDependence,
+            RedoxPotential redoxPotential,
+            TemperatureDependence temperatureDependence) {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
         this.absorption = absorption;
         this.kineticParameters = kineticParameters;
@@ -88,17 +89,22 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         BPCPCommentImpl that = (BPCPCommentImpl) o;
-        return Objects.equals(absorption, that.absorption) &&
-                Objects.equals(kineticParameters, that.kineticParameters) &&
-                Objects.equals(phDependence, that.phDependence) &&
-                Objects.equals(redoxPotential, that.redoxPotential) &&
-                Objects.equals(temperatureDependence, that.temperatureDependence);
+        return Objects.equals(absorption, that.absorption)
+                && Objects.equals(kineticParameters, that.kineticParameters)
+                && Objects.equals(phDependence, that.phDependence)
+                && Objects.equals(redoxPotential, that.redoxPotential)
+                && Objects.equals(temperatureDependence, that.temperatureDependence);
     }
 
     @Override
     public int hashCode() {
-        return Objects
-                .hash(super.hashCode(), absorption, kineticParameters, phDependence, redoxPotential, temperatureDependence);
+        return Objects.hash(
+                super.hashCode(),
+                absorption,
+                kineticParameters,
+                phDependence,
+                redoxPotential,
+                temperatureDependence);
     }
 
     @Override
@@ -117,7 +123,8 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
             sb.append("\nCC       Kinetic parameters:");
 
             if (null != getKineticParameters().getMichaelisConstants()) {
-                List<MichaelisConstant> michaelisConstants = getKineticParameters().getMichaelisConstants();
+                List<MichaelisConstant> michaelisConstants =
+                        getKineticParameters().getMichaelisConstants();
                 System.err.println("michaelisConstants.size() = " + michaelisConstants.size());
                 for (MichaelisConstant michaelisConstant : michaelisConstants) {
                     StringBuilder temp = sb;
@@ -129,38 +136,39 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
                     temp.append(michaelisConstant.getSubstrate());
                     temp.append(";");
                     sb.append("\n");
-
                 }
             }
 
             if (null != getKineticParameters().getMaximumVelocities()
                     && !getKineticParameters().getMaximumVelocities().isEmpty()) {
-                List<MaximumVelocity> maximumVelocities = getKineticParameters().getMaximumVelocities();
+                List<MaximumVelocity> maximumVelocities =
+                        getKineticParameters().getMaximumVelocities();
                 for (MaximumVelocity maximumVelocity : maximumVelocities) {
-                    sb.append("CC         Vmax=" + maximumVelocity.getVelocity() + " "
-                                      + maximumVelocity.getUnit() + " " + maximumVelocity.getEnzyme() + ";");
+                    sb.append(
+                            "CC         Vmax="
+                                    + maximumVelocity.getVelocity()
+                                    + " "
+                                    + maximumVelocity.getUnit()
+                                    + " "
+                                    + maximumVelocity.getEnzyme()
+                                    + ";");
                     sb.append("\n");
-
                 }
             }
-
         }
         if (getPhDependence() != null) {
             sb.append("\nCC       pH dependence:\nCC         ");
             sb.append(getPhDependence().toString());
             sb.append(";");
-
         }
         if (getRedoxPotential() != null) {
             sb.append("\nCC       Redox potential:\nCC         ");
             sb.append(getRedoxPotential().toString());
             sb.append(";");
-
         }
         if (getTemperatureDependence() != null) {
             sb.append("\nCC       Temperature dependence:\n");
             sb.append("CC         " + getTemperatureDependence().toString() + ";");
-
         }
 
         // commentsCounter++;
@@ -190,7 +198,8 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
         }
     }
 
-    public static class TemperatureDependenceImpl extends FreeTextImpl implements TemperatureDependence {
+    public static class TemperatureDependenceImpl extends FreeTextImpl
+            implements TemperatureDependence {
 
         private TemperatureDependenceImpl() {
             super(Collections.emptyList());

@@ -9,9 +9,7 @@ import java.util.Objects;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 import org.uniprot.core.util.Utils;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public abstract class AbstractOrganismNameImpl implements OrganismName {
 
     private static final long serialVersionUID = -4054471655650420667L;
@@ -19,8 +17,7 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
     private String commonName;
     private List<String> synonyms;
 
-    AbstractOrganismNameImpl() {
-    }
+    AbstractOrganismNameImpl() {}
 
     AbstractOrganismNameImpl(String scientificName, String commonName, List<String> synonyms) {
         this.scientificName = nullToEmpty(scientificName);
@@ -40,15 +37,15 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
         return synonyms;
     }
 
-    public boolean hasScientificName(){
+    public boolean hasScientificName() {
         return Utils.notEmpty(this.scientificName);
     }
 
-    public boolean hasCommonName(){
+    public boolean hasCommonName() {
         return Utils.notEmpty(this.commonName);
     }
 
-    public boolean hasSynonyms(){
+    public boolean hasSynonyms() {
         return Utils.notEmpty(this.synonyms);
     }
 
@@ -57,9 +54,9 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractOrganismNameImpl that = (AbstractOrganismNameImpl) o;
-        return Objects.equals(scientificName, that.scientificName) &&
-                Objects.equals(commonName, that.commonName) &&
-                Objects.equals(synonyms, that.synonyms);
+        return Objects.equals(scientificName, that.scientificName)
+                && Objects.equals(commonName, that.commonName)
+                && Objects.equals(synonyms, that.synonyms);
     }
 
     @Override
@@ -73,14 +70,11 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
         sb.append(getScientificName());
         String commonName = getCommonName();
         if (commonName != null && !commonName.isEmpty()) {
-            sb.append(" (")
-                    .append(commonName).append(")");
+            sb.append(" (").append(commonName).append(")");
         }
         List<String> synonyms = this.getSynonyms();
         if (!synonyms.isEmpty()) {
-            sb.append(" (")
-                    .append(String.join(", ", synonyms))
-                    .append(")");
+            sb.append(" (").append(String.join(", ", synonyms)).append(")");
         }
         return sb.toString();
     }

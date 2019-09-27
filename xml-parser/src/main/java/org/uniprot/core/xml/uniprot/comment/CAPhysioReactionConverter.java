@@ -13,7 +13,8 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PhysiologicalReactionType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
-public class CAPhysioReactionConverter implements Converter<PhysiologicalReactionType, PhysiologicalReaction> {
+public class CAPhysioReactionConverter
+        implements Converter<PhysiologicalReactionType, PhysiologicalReaction> {
     private final EvidenceIndexMapper evRefMapper;
     private final ObjectFactory xmlUniprotFactory;
     private final CAReactionReferenceConverter refConverter;
@@ -22,7 +23,8 @@ public class CAPhysioReactionConverter implements Converter<PhysiologicalReactio
         this(evRefMapper, new ObjectFactory());
     }
 
-    public CAPhysioReactionConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+    public CAPhysioReactionConverter(
+            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.evRefMapper = evRefMapper;
         this.xmlUniprotFactory = xmlUniprotFactory;
         this.refConverter = new CAReactionReferenceConverter(xmlUniprotFactory);
@@ -31,7 +33,8 @@ public class CAPhysioReactionConverter implements Converter<PhysiologicalReactio
     @Override
     public PhysiologicalReaction fromXml(PhysiologicalReactionType xmlObj) {
 
-        PhysiologicalDirectionType directionType = PhysiologicalDirectionType.typeOf(xmlObj.getDirection());
+        PhysiologicalDirectionType directionType =
+                PhysiologicalDirectionType.typeOf(xmlObj.getDirection());
         DBCrossReference<ReactionReferenceType> reactionReference =
                 refConverter.fromXml(xmlObj.getDbReference());
         // Evidences
@@ -45,16 +48,15 @@ public class CAPhysioReactionConverter implements Converter<PhysiologicalReactio
 
     @Override
     public PhysiologicalReactionType toXml(PhysiologicalReaction uniObj) {
-        PhysiologicalReactionType physioReactionType = xmlUniprotFactory.createPhysiologicalReactionType();
+        PhysiologicalReactionType physioReactionType =
+                xmlUniprotFactory.createPhysiologicalReactionType();
         physioReactionType.setDirection(uniObj.getDirectionType().toDisplayName());
         physioReactionType.setDbReference(refConverter.toXml(uniObj.getReactionReference()));
         List<Evidence> evidenceIds = uniObj.getEvidences();
         if ((evidenceIds != null) && !evidenceIds.isEmpty()) {
             List<Integer> evs = evRefMapper.writeEvidences(evidenceIds);
-            if (!evs.isEmpty())
-                physioReactionType.getEvidence().addAll(evs);
+            if (!evs.isEmpty()) physioReactionType.getEvidence().addAll(evs);
         }
         return physioReactionType;
     }
-
 }

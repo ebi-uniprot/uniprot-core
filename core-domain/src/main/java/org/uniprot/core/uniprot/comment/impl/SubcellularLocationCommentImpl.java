@@ -10,7 +10,8 @@ import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
 import org.uniprot.core.util.Utils;
 
-public class SubcellularLocationCommentImpl extends CommentImpl implements SubcellularLocationComment {
+public class SubcellularLocationCommentImpl extends CommentImpl
+        implements SubcellularLocationComment {
     private static final long serialVersionUID = 955858123969540661L;
     private String molecule;
     private Note note;
@@ -22,9 +23,8 @@ public class SubcellularLocationCommentImpl extends CommentImpl implements Subce
         this.subcellularLocations = Collections.emptyList();
     }
 
-    public SubcellularLocationCommentImpl(String molecule,
-                                          List<SubcellularLocation> subcellularLocations,
-                                          Note note) {
+    public SubcellularLocationCommentImpl(
+            String molecule, List<SubcellularLocation> subcellularLocations, Note note) {
         super(CommentType.SUBCELLULAR_LOCATION);
         if (molecule == null || molecule.isEmpty()) {
             this.molecule = "";
@@ -76,9 +76,9 @@ public class SubcellularLocationCommentImpl extends CommentImpl implements Subce
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SubcellularLocationCommentImpl that = (SubcellularLocationCommentImpl) o;
-        return Objects.equals(molecule, that.molecule) &&
-                Objects.equals(note, that.note) &&
-                Objects.equals(subcellularLocations, that.subcellularLocations);
+        return Objects.equals(molecule, that.molecule)
+                && Objects.equals(note, that.note)
+                && Objects.equals(subcellularLocations, that.subcellularLocations);
     }
 
     @Override

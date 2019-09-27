@@ -1,6 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.pe;
 
-
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.uniprot.ProteinExistence;
 

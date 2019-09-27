@@ -25,13 +25,10 @@ public class DefaultTextOnlyCommentScored extends CommentScoredAbstr {
     public double score() {
         double score = 0;
         if (hasEvidence()) {
-            if (this.getCommentScoredInfo() == null)
-                return 0;
-            if (getCommentScoredInfo().dashed)
-                return getCommentScoredInfo().experimentalScore;
+            if (this.getCommentScoredInfo() == null) return 0;
+            if (getCommentScoredInfo().dashed) return getCommentScoredInfo().experimentalScore;
 
-            ScoreStatus status = getCommentScoreStatus(comment,
-                                                       this.getDefaultEvidenceCode());
+            ScoreStatus status = getCommentScoreStatus(comment, this.getDefaultEvidenceCode());
             switch (status) {
                 case EXPERIMENTAL:
                     score += getCommentScoredInfo().experimentalScore;
@@ -44,7 +41,6 @@ public class DefaultTextOnlyCommentScored extends CommentScoredAbstr {
             }
         }
         return score;
-
     }
 
     private boolean hasEvidence() {

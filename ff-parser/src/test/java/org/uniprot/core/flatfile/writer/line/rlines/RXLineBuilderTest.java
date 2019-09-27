@@ -1,5 +1,10 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -7,12 +12,6 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.flatfile.parser.impl.rx.RXLineBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 class RXLineBuilderTest {
     private RXLineBuilder builder = new RXLineBuilder();
@@ -64,7 +63,8 @@ class RXLineBuilderTest {
 
     @Test
     void testAll() {
-        Citation xrefs = buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", "asfsadgdasgdagd");
+        Citation xrefs =
+                buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", "asfsadgdasgdagd");
         List<String> lines = builder.buildLine(xrefs, true, true);
         assertEquals(2, lines.size());
         String expected = "RX   DOI=10.1016/j.virol.2004.02.019;";
@@ -73,10 +73,12 @@ class RXLineBuilderTest {
 
     @Test
     void test2() {
-        Citation xrefs = buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", "asfsadgdasgdagd");
+        Citation xrefs =
+                buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", "asfsadgdasgdagd");
         List<String> lines = builder.buildLine(xrefs, false, true);
         assertEquals(1, lines.size());
-        String expected = "PubMed=15165820; AGRICOLA=asfsadgdasgdagd; DOI=10.1016/j.virol.2004.02.019;";
+        String expected =
+                "PubMed=15165820; AGRICOLA=asfsadgdasgdagd; DOI=10.1016/j.virol.2004.02.019;";
         assertEquals(expected, lines.get(0));
     }
 
@@ -84,16 +86,23 @@ class RXLineBuilderTest {
 
         List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
         if (pubmed != null)
-            xrefs.add(new DBCrossReferenceBuilder<CitationXrefType>().databaseType(CitationXrefType.PUBMED).id(pubmed)
-                              .build());
+            xrefs.add(
+                    new DBCrossReferenceBuilder<CitationXrefType>()
+                            .databaseType(CitationXrefType.PUBMED)
+                            .id(pubmed)
+                            .build());
         if (doi != null)
-            xrefs.add(new DBCrossReferenceBuilder<CitationXrefType>().databaseType(CitationXrefType.DOI).id(doi)
-                              .build());
+            xrefs.add(
+                    new DBCrossReferenceBuilder<CitationXrefType>()
+                            .databaseType(CitationXrefType.DOI)
+                            .id(doi)
+                            .build());
         if (agricolaId != null)
-            xrefs.add(new DBCrossReferenceBuilder<CitationXrefType>().databaseType(CitationXrefType.AGRICOLA)
-                              .id(agricolaId)
-                              .build());
+            xrefs.add(
+                    new DBCrossReferenceBuilder<CitationXrefType>()
+                            .databaseType(CitationXrefType.AGRICOLA)
+                            .id(agricolaId)
+                            .build());
         return new BookBuilder().citationXrefs(xrefs).build();
-
     }
 }

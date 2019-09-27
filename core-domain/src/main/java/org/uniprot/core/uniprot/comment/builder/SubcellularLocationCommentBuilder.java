@@ -11,7 +11,8 @@ import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
 import org.uniprot.core.uniprot.comment.impl.SubcellularLocationCommentImpl;
 
-public final class SubcellularLocationCommentBuilder implements CommentBuilder<SubcellularLocationCommentBuilder, SubcellularLocationComment> {
+public final class SubcellularLocationCommentBuilder
+        implements CommentBuilder<SubcellularLocationCommentBuilder, SubcellularLocationComment> {
     private String molecule;
     private Note note;
     private List<SubcellularLocation> subcellularLocations = new ArrayList<>();
@@ -23,8 +24,7 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
     @Override
     public SubcellularLocationCommentBuilder from(SubcellularLocationComment instance) {
         subcellularLocations.clear();
-        return this
-                .molecule(instance.getMolecule())
+        return this.molecule(instance.getMolecule())
                 .subcellularLocations(instance.getSubcellularLocations())
                 .note(instance.getNote());
     }
@@ -39,12 +39,14 @@ public final class SubcellularLocationCommentBuilder implements CommentBuilder<S
         return this;
     }
 
-    public SubcellularLocationCommentBuilder subcellularLocations(List<SubcellularLocation> subcellularLocations) {
+    public SubcellularLocationCommentBuilder subcellularLocations(
+            List<SubcellularLocation> subcellularLocations) {
         this.subcellularLocations = nonNullList(subcellularLocations);
         return this;
     }
 
-    public SubcellularLocationCommentBuilder addSubcellularLocation(SubcellularLocation subcellularLocation) {
+    public SubcellularLocationCommentBuilder addSubcellularLocation(
+            SubcellularLocation subcellularLocation) {
         nonNullAdd(subcellularLocation, this.subcellularLocations);
         return this;
     }

@@ -8,17 +8,18 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.uniprot.feature.Feature;
 
 public class FtLineTransformer implements LineTransformer<Feature> {
-	private final UniprotLineParser<FtLineObject> parser = new DefaultUniprotLineParserFactory().createFtLineParser();
-	private final FtLineFormater formater  =new FtLineFormater();
-	private final FtLineConverter converter = new FtLineConverter();
-	@Override
-	public List<Feature> transform(String lines) {
-		return converter.convert(parser.parse(lines));
-	}
+    private final UniprotLineParser<FtLineObject> parser =
+            new DefaultUniprotLineParserFactory().createFtLineParser();
+    private final FtLineFormater formater = new FtLineFormater();
+    private final FtLineConverter converter = new FtLineConverter();
 
-	@Override
-	public List< Feature>  transformNoHeader(String lines) {
-		return transform(formater.format(lines));
-	}
+    @Override
+    public List<Feature> transform(String lines) {
+        return converter.convert(parser.parse(lines));
+    }
 
+    @Override
+    public List<Feature> transformNoHeader(String lines) {
+        return transform(formater.format(lines));
+    }
 }

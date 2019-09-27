@@ -30,14 +30,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /**
- *
  * @author jluo
  * @date: 24 May 2019
- *
-*/
-
+ */
 public class UniParcJsonConfig extends JsonConfig {
-	private static UniParcJsonConfig INSTANCE;
+    private static UniParcJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
     private final ObjectMapper prettyMapper;
@@ -64,9 +61,8 @@ public class UniParcJsonConfig extends JsonConfig {
         return this.objectMapper;
     }
 
-
     private ObjectMapper initObjectMapper() {
-        ObjectMapper objMapper =  getDefaultFullObjectMapper();
+        ObjectMapper objMapper = getDefaultFullObjectMapper();
 
         SimpleModule mod = new SimpleModule();
         mod.addSerializer(LocalDate.class, new LocalDateSerializer());
@@ -75,14 +71,15 @@ public class UniParcJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(InterproGroup.class, InterProGroupImpl.class);
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
         mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
-        mod.addAbstractTypeMapping(UniParcDBCrossReference.class, UniParcDBCrossReferenceImpl.class);
-        
+        mod.addAbstractTypeMapping(
+                UniParcDBCrossReference.class, UniParcDBCrossReferenceImpl.class);
+
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);
         mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
         mod.addAbstractTypeMapping(DatabaseType.class, DefaultDatabaseType.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
- 
+
         objMapper.registerModule(mod);
 
         return objMapper;
@@ -93,9 +90,8 @@ public class UniParcJsonConfig extends JsonConfig {
         SimpleModule simpleMod = new SimpleModule();
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
         simpleMod.addSerializer(UniParcIdImpl.class, new UniParcIdSerializer());
-        
+
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }
 }
-

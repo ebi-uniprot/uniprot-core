@@ -1,10 +1,5 @@
 package org.uniprot.core.xml;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.xml.bind.JAXBException;
-import javax.xml.stream.XMLStreamException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,6 +8,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 import java.util.zip.GZIPInputStream;
+
+import javax.xml.bind.JAXBException;
+import javax.xml.stream.XMLStreamException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class XmlChainIterator<T, R> implements Iterator<R> {
     private static final Logger logger = LoggerFactory.getLogger(XmlChainIterator.class);
@@ -23,8 +24,11 @@ public class XmlChainIterator<T, R> implements Iterator<R> {
     private XmlIterator<T, R> entryIterator;
     private InputStream currentStream;
 
-    public XmlChainIterator(Iterator<InputStream> inputStreamIterator, Class<T> clazz, String startElement,
-                            Function<T, R> converter) {
+    public XmlChainIterator(
+            Iterator<InputStream> inputStreamIterator,
+            Class<T> clazz,
+            String startElement,
+            Function<T, R> converter) {
         this.inputStreamIterator = inputStreamIterator;
         this.clazz = clazz;
         this.startElement = startElement;
@@ -33,8 +37,7 @@ public class XmlChainIterator<T, R> implements Iterator<R> {
 
     @Override
     public boolean hasNext() {
-        if (this.entryIterator != null && this.entryIterator.hasNext())
-            return true;
+        if (this.entryIterator != null && this.entryIterator.hasNext()) return true;
         else {
 
             // close the previous stream.
@@ -48,7 +51,8 @@ public class XmlChainIterator<T, R> implements Iterator<R> {
 
             try {
                 this.currentStream = inputStreamIterator.next();
-                this.entryIterator = new XmlIterator<>(this.currentStream, clazz, startElement, converter);
+                this.entryIterator =
+                        new XmlIterator<>(this.currentStream, clazz, startElement, converter);
             } catch (XMLStreamException | JAXBException e) {
                 return false;
             }
@@ -93,8 +97,7 @@ public class XmlChainIterator<T, R> implements Iterator<R> {
                 String file = files.remove(0);
 
                 InputStream is = XmlChainIterator.class.getClassLoader().getResourceAsStream(file);
-                if (is != null)
-                    return is;
+                if (is != null) return is;
 
                 if (file.endsWith(".gzip") || file.endsWith(".gz")) {
                     return new GZIPInputStream(new FileInputStream(file));
@@ -106,7 +109,5 @@ public class XmlChainIterator<T, R> implements Iterator<R> {
                 throw new RuntimeException("Cannot find the specified file:", e);
             }
         }
-
     }
-
 }

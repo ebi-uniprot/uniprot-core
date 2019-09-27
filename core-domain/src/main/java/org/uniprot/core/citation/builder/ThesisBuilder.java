@@ -8,15 +8,14 @@ public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, 
     private String address;
 
     public Thesis build() {
-        return new ThesisImpl(authoringGroups, authors, xrefs, title, publicationDate, institute, address);
+        return new ThesisImpl(
+                authoringGroups, authors, xrefs, title, publicationDate, institute, address);
     }
 
     @Override
     public ThesisBuilder from(Thesis instance) {
         init(instance);
-        return this
-                .institute(instance.getInstitute())
-                .address(instance.getAddress());
+        return this.institute(instance.getInstitute()).address(instance.getAddress());
     }
 
     public ThesisBuilder institute(String institute) {

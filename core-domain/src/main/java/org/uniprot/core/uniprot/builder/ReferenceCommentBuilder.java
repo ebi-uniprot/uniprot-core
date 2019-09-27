@@ -10,7 +10,8 @@ import org.uniprot.core.uniprot.impl.ReferenceCommentImpl;
  *
  * @author Edd
  */
-public class ReferenceCommentBuilder extends AbstractEvidencedValueBuilder<ReferenceCommentBuilder, ReferenceComment> {
+public class ReferenceCommentBuilder
+        extends AbstractEvidencedValueBuilder<ReferenceCommentBuilder, ReferenceComment> {
     private ReferenceCommentType type;
 
     @Override

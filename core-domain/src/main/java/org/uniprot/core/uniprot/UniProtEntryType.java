@@ -8,7 +8,6 @@ import org.uniprot.core.util.EnumDisplay;
  * @time 18:41:43
  */
 public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
-
     SWISSPROT("Swiss-Prot"),
     TREMBL("TrEMBL"),
     INACTIVE("Inactive"),

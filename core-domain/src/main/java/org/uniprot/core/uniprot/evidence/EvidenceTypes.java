@@ -10,7 +10,6 @@ import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.PropertyArray;
 import org.uniprot.core.util.property.PropertyObject;
 
-
 public enum EvidenceTypes {
     INSTANCE;
     private final String FILENAME = "META-INF/evidenceDbConfiguration.json";
@@ -34,25 +33,28 @@ public enum EvidenceTypes {
     }
 
     private void init() {
-        try (InputStream configFile = EvidenceTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
+        try (InputStream configFile =
+                EvidenceTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
             PropertyArray list = new PropertyArray(source);
-            list.forEach(item -> {
-                types.add(convert((PropertyObject) item));
-            });
-            typeMap = types.stream().collect(Collectors.toMap(EvidenceTypeDetail::getName, val -> val));
+            list.forEach(
+                    item -> {
+                        types.add(convert((PropertyObject) item));
+                    });
+            typeMap =
+                    types.stream()
+                            .collect(Collectors.toMap(EvidenceTypeDetail::getName, val -> val));
         } catch (Exception e) {
             throw new RuntimeException("Unable to load property file", e);
         }
     }
 
-    private  EvidenceTypeDetail convert(PropertyObject obj) {
-    	   String name = obj.getString("name");
-           String displayName = obj.getString("displayName");
-           String uriLink = obj.getString("uriLink");
-           String category = obj.getString("category");
-           EvidenceTypeCategory etCategory= EvidenceTypeCategory.valueOf(category);
-           return new EvidenceTypeDetail(name, displayName,  etCategory, uriLink);
-           
+    private EvidenceTypeDetail convert(PropertyObject obj) {
+        String name = obj.getString("name");
+        String displayName = obj.getString("displayName");
+        String uriLink = obj.getString("uriLink");
+        String category = obj.getString("category");
+        EvidenceTypeCategory etCategory = EvidenceTypeCategory.valueOf(category);
+        return new EvidenceTypeDetail(name, displayName, etCategory, uriLink);
     }
 }

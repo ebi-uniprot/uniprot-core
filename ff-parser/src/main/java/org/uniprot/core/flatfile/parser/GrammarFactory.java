@@ -12,7 +12,6 @@ import org.antlr.v4.runtime.atn.ParserATNSimulator;
 import org.antlr.v4.runtime.atn.PredictionContextCache;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.uniprot.core.flatfile.antlr.*;
-
 import org.uniprot.core.flatfile.antlr.AcLineLexer;
 import org.uniprot.core.flatfile.antlr.AcLineParser;
 import org.uniprot.core.flatfile.antlr.CcLineLexer;
@@ -66,30 +65,53 @@ import org.uniprot.core.flatfile.antlr.SsLineParser;
 import org.uniprot.core.flatfile.antlr.UniprotLexer;
 import org.uniprot.core.flatfile.antlr.UniprotParser;
 
-
 /**
- * Created with IntelliJ IDEA.
- * User: wudong
- * Date: 08/08/13
- * Time: 15:34
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 15:34 To change this template use
+ * File | Settings | File Templates.
  */
-public interface GrammarFactory<L extends Lexer, P extends Parser> extends Serializable  {
+public interface GrammarFactory<L extends Lexer, P extends Parser> extends Serializable {
 
-    //public static final String packageName = "uk.ac.ebi.uniprot.parser.antlr";
+    // public static final String packageName = "uk.ac.ebi.uniprot.parser.antlr";
 
-    public static enum GrammarFactoryEnum  implements Serializable{
-        Uniprot, Ac, Id, Dt, Kw, Dr, Sq, Gn, Pe, Os, Og, Rn, Rt, Rp, Ra, Rg, Rc, Rx, De, Rl, Ft, Oc, Ox, Oh, Cc, Ss;
+    public static enum GrammarFactoryEnum implements Serializable {
+        Uniprot,
+        Ac,
+        Id,
+        Dt,
+        Kw,
+        Dr,
+        Sq,
+        Gn,
+        Pe,
+        Os,
+        Og,
+        Rn,
+        Rt,
+        Rp,
+        Ra,
+        Rg,
+        Rc,
+        Rx,
+        De,
+        Rl,
+        Ft,
+        Oc,
+        Ox,
+        Oh,
+        Cc,
+        Ss;
 
         @SuppressWarnings("rawtypes")
-		private GrammarFactory factory;
+        private GrammarFactory factory;
 
         @SuppressWarnings("rawtypes")
-		private GrammarFactory createFactory() {
-     //       final String name = this.name();
+        private GrammarFactory createFactory() {
+            //       final String name = this.name();
 
-            //final String lexerName = packageName + "." + name + (name.equals("Uniprot")?"":"Line") + "Lexer";
-            //final String parserName = packageName + "." + name + (name.equals("Uniprot")?"":"Line") +"Parser";
+            // final String lexerName = packageName + "." + name +
+            // (name.equals("Uniprot")?"":"Line") + "Lexer";
+            // final String parserName = packageName + "." + name +
+            // (name.equals("Uniprot")?"":"Line") +"Parser";
 
             return new GrammarFactory() {
                 @Override
@@ -149,9 +171,9 @@ public interface GrammarFactory<L extends Lexer, P extends Parser> extends Seria
                             return wrapLexer(new SsLineLexer(in), SsLineLexer._ATN);
 
                         default:
-                            throw new RuntimeException("Lexer is not defined for: " + GrammarFactoryEnum.this);
+                            throw new RuntimeException(
+                                    "Lexer is not defined for: " + GrammarFactoryEnum.this);
                     }
-
                 }
 
                 @Override
@@ -211,20 +233,21 @@ public interface GrammarFactory<L extends Lexer, P extends Parser> extends Seria
                             return new SsLineParser(tokens);
 
                         default:
-                            throw new RuntimeException("Parser is not defined for: " + GrammarFactoryEnum.this);
+                            throw new RuntimeException(
+                                    "Parser is not defined for: " + GrammarFactoryEnum.this);
                     }
                 }
 
-//				@Override
-//				public String getTopRuleName() {
-//					if (name.equals("Uniprot")) return "entry";
-//					return (name + "_" + name).toLowerCase();
-//				}
+                //				@Override
+                //				public String getTopRuleName() {
+                //					if (name.equals("Uniprot")) return "entry";
+                //					return (name + "_" + name).toLowerCase();
+                //				}
             };
         }
 
         @SuppressWarnings("rawtypes")
-		public synchronized GrammarFactory getFactory() {
+        public synchronized GrammarFactory getFactory() {
             if (factory == null) {
                 factory = createFactory();
             }
@@ -233,14 +256,16 @@ public interface GrammarFactory<L extends Lexer, P extends Parser> extends Seria
 
         public static Lexer wrapLexer(Lexer lexer, ATN _ATN) {
             DFA[] dfAfromATN = createDFAfromATN(_ATN);
-            LexerATNSimulator lexerATNSimulator = new LexerATNSimulator(lexer, _ATN, dfAfromATN, new PredictionContextCache());
+            LexerATNSimulator lexerATNSimulator =
+                    new LexerATNSimulator(lexer, _ATN, dfAfromATN, new PredictionContextCache());
             lexer.setInterpreter(lexerATNSimulator);
             return lexer;
         }
 
         public static Parser wrapParser(Parser parser, ATN _ATN) {
             DFA[] dfAfromATN = createDFAfromATN(_ATN);
-            ParserATNSimulator parserATNSimulator = new ParserATNSimulator(parser, _ATN, dfAfromATN, new PredictionContextCache());
+            ParserATNSimulator parserATNSimulator =
+                    new ParserATNSimulator(parser, _ATN, dfAfromATN, new PredictionContextCache());
             parser.setInterpreter(parserATNSimulator);
             return parser;
         }
@@ -258,7 +283,6 @@ public interface GrammarFactory<L extends Lexer, P extends Parser> extends Seria
 
     public P createParser(CommonTokenStream tokens);
 
-    //public String getTopRuleName();
-
+    // public String getTopRuleName();
 
 }

@@ -26,6 +26,7 @@ public class CcLineFormater implements LineFormater {
     private static final String AP_ISO_ID = "IsoId=";
 
     private static final Set<String> BIOPHYCHEMPROPERTIES_VALUES = new HashSet<>();
+
     static {
         BIOPHYCHEMPROPERTIES_VALUES.add(ABSORPTION);
         BIOPHYCHEMPROPERTIES_VALUES.add(KINETIC_PARAMETERS);
@@ -35,6 +36,7 @@ public class CcLineFormater implements LineFormater {
     }
 
     private static final Set<String> APCOMMENT_VALUE = new HashSet<>();
+
     static {
         APCOMMENT_VALUE.add("Name=");
         APCOMMENT_VALUE.add("Event=");
@@ -79,8 +81,7 @@ public class CcLineFormater implements LineFormater {
                         Map.Entry<String, Boolean> apformated = formatAPComment(token, isApName);
                         sb.append(apformated.getKey());
                         isApName = apformated.getValue();
-                    } else
-                        sb.append(CC_LINE_PREFIX + token);
+                    } else sb.append(CC_LINE_PREFIX + token);
                 } else {
                     sb.append(token);
                 }
@@ -115,8 +116,7 @@ public class CcLineFormater implements LineFormater {
     }
 
     private boolean isFirstLineComment(String token) {
-        if (token.startsWith(CC_LINE_FIRST_PREFIX))
-            return true;
+        if (token.startsWith(CC_LINE_FIRST_PREFIX)) return true;
         for (CommentType type : CommentType.values()) {
             if (token.startsWith(type.toDisplayName() + ":")) {
                 return true;

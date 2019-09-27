@@ -5,13 +5,13 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.description.ProteinAltName;
 import org.uniprot.core.uniprot.description.builder.ProteinAltNameBuilder;
-import org.uniprot.core.uniprot.description.builder.ProteinRecNameBuilder;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType.AlternativeName;
 
-public class AltNameConverter implements Converter<AlternativeName, ProteinAltName>, ToXmlDbReferences<ProteinAltName> {
+public class AltNameConverter
+        implements Converter<AlternativeName, ProteinAltName>, ToXmlDbReferences<ProteinAltName> {
     private final NameConverter nameConverter;
     private final ECConverter ecConverter;
     private final ObjectFactory xmlUniprotFactory;
@@ -20,7 +20,8 @@ public class AltNameConverter implements Converter<AlternativeName, ProteinAltNa
         this(nameConverter, ecConverter, new ObjectFactory());
     }
 
-    public AltNameConverter(NameConverter nameConverter, ECConverter ecConverter, ObjectFactory xmlUniprotFactory) {
+    public AltNameConverter(
+            NameConverter nameConverter, ECConverter ecConverter, ObjectFactory xmlUniprotFactory) {
         this.nameConverter = nameConverter;
         this.ecConverter = ecConverter;
         this.xmlUniprotFactory = xmlUniprotFactory;
@@ -30,10 +31,14 @@ public class AltNameConverter implements Converter<AlternativeName, ProteinAltNa
     public ProteinAltName fromXml(AlternativeName xmlObj) {
         return new ProteinAltNameBuilder()
                 .fullName(nameConverter.fromXml(xmlObj.getFullName()))
-                .shortNames(xmlObj.getShortName().stream().map(nameConverter::fromXml)
-                                    .collect(Collectors.toList()))
-                .ecNumbers(xmlObj.getEcNumber().stream().map(ecConverter::fromXml)
-                                   .collect(Collectors.toList()))
+                .shortNames(
+                        xmlObj.getShortName().stream()
+                                .map(nameConverter::fromXml)
+                                .collect(Collectors.toList()))
+                .ecNumbers(
+                        xmlObj.getEcNumber().stream()
+                                .map(ecConverter::fromXml)
+                                .collect(Collectors.toList()))
                 .build();
     }
 
@@ -47,7 +52,8 @@ public class AltNameConverter implements Converter<AlternativeName, ProteinAltNa
     }
 
     public List<DbReferenceType> toXmlDbReferences(ProteinAltName uniObj) {
-        return uniObj.getEcNumbers().stream().map(ecConverter::toXmlDbReference)
+        return uniObj.getEcNumbers().stream()
+                .map(ecConverter::toXmlDbReference)
                 .collect(Collectors.toList());
     }
 }

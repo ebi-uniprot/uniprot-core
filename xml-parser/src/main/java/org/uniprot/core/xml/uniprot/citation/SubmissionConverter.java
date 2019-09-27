@@ -35,5 +35,4 @@ public class SubmissionConverter implements Converter<CitationType, Submission> 
         xmlCitation.setDb(uniObj.getSubmissionDatabase().getName());
         return xmlCitation;
     }
-
 }

@@ -26,9 +26,13 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
         this.evidences = Collections.emptyList();
     }
 
-    public MassSpectrometryCommentImpl(MassSpectrometryMethod method, Float molWeight,
-                                       Float molWeightError, String note, List<MassSpectrometryRange> ranges,
-                                       List<Evidence> evidences) {
+    public MassSpectrometryCommentImpl(
+            MassSpectrometryMethod method,
+            Float molWeight,
+            Float molWeightError,
+            String note,
+            List<MassSpectrometryRange> ranges,
+            List<Evidence> evidences) {
         super(CommentType.MASS_SPECTROMETRY);
         this.method = method;
         this.molWeight = molWeight;
@@ -113,16 +117,17 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         MassSpectrometryCommentImpl that = (MassSpectrometryCommentImpl) o;
-        return method == that.method &&
-                Objects.equals(molWeight, that.molWeight) &&
-                Objects.equals(molWeightError, that.molWeightError) &&
-                Objects.equals(note, that.note) &&
-                Objects.equals(ranges, that.ranges) &&
-                Objects.equals(evidences, that.evidences);
+        return method == that.method
+                && Objects.equals(molWeight, that.molWeight)
+                && Objects.equals(molWeightError, that.molWeightError)
+                && Objects.equals(note, that.note)
+                && Objects.equals(ranges, that.ranges)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), method, molWeight, molWeightError, note, ranges, evidences);
+        return Objects.hash(
+                super.hashCode(), method, molWeight, molWeightError, note, ranges, evidences);
     }
 }

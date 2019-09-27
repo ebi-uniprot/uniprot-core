@@ -1,37 +1,37 @@
 package org.uniprot.core.flatfile.parser.converter;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
-import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
-import org.uniprot.core.uniprot.description.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.flatfile.parser.impl.de.DeLineConverter;
+import org.uniprot.core.flatfile.parser.impl.de.DeLineObject;
+import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 class DeLineConverterTest {
     private DeLineConverter converter = new DeLineConverter();
 
     @Test
     void test1() {
-		/*
-		 *     val deLines = """DE   RecName: Full=Annexin A5;
-                    |DE            Short=Annexin-5;
-                    |DE   AltName: Full=Annexin V;
-                    |DE   AltName: Full=Lipocortin V;
-                    |DE   AltName: Full=Placental anticoagulant protein I;
-                    |DE            Short=PAP-I;
-                    |DE   AltName: Full=PP4;
-                    |DE   AltName: Full=Thromboplastin inhibitor;
-                    |DE   AltName: Full=Vascular anticoagulant-alpha;
-                    |DE            Short=VAC-alpha;
-                    |DE   AltName: Full=Anchorin CII;
-                    |DE   Flags: Precursor;
-		 */
+        /*
+        *     val deLines = """DE   RecName: Full=Annexin A5;
+                         |DE            Short=Annexin-5;
+                         |DE   AltName: Full=Annexin V;
+                         |DE   AltName: Full=Lipocortin V;
+                         |DE   AltName: Full=Placental anticoagulant protein I;
+                         |DE            Short=PAP-I;
+                         |DE   AltName: Full=PP4;
+                         |DE   AltName: Full=Thromboplastin inhibitor;
+                         |DE   AltName: Full=Vascular anticoagulant-alpha;
+                         |DE            Short=VAC-alpha;
+                         |DE   AltName: Full=Anchorin CII;
+                         |DE   Flags: Precursor;
+        */
         DeLineObject deObject = new DeLineObject();
         deObject.recName = new DeLineObject.Name();
         deObject.recName.fullName = "Annexin A5";
@@ -83,7 +83,6 @@ class DeLineConverterTest {
         ProteinDescription pDesc = converter.convert(deObject);
         ProteinRecName recName = pDesc.getRecommendedName();
 
-
         validate("Annexin A5", "Annexin-5", recName);
         List<ProteinAltName> altNames = pDesc.getAlternativeNames();
         assertEquals(7, altNames.size());
@@ -101,22 +100,13 @@ class DeLineConverterTest {
     @Test
     void test3() {
         /**
-         * "DE   RecName: Full=Arginine biosynthesis bifunctional protein argJ;
-         |DE   Includes:
-         |DE     RecName: Full=Glutamate N-acetyltransferase;
-         |DE              EC=2.3.1.35;
-         |DE     AltName: Full=Ornithine acetyltransferase;
-         |DE              Short=OATase;
-         |DE     AltName: Full=Ornithine transacetylase;
-         |DE   Includes:
-         |DE     RecName: Full=Amino-acid acetyltransferase;
-         |DE              EC=2.3.1.1;
-         |DE     AltName: Full=N-acetylglutamate synthase;
-         |DE              Short=AGS;
-         |DE   Contains:
-         |DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ alpha chain;
-         |DE   Contains:
-         |DE     RecName: Full=Arginine biosynthesis bifunctional protein argJ beta chain;
+         * "DE RecName: Full=Arginine biosynthesis bifunctional protein argJ; |DE Includes: |DE
+         * RecName: Full=Glutamate N-acetyltransferase; |DE EC=2.3.1.35; |DE AltName: Full=Ornithine
+         * acetyltransferase; |DE Short=OATase; |DE AltName: Full=Ornithine transacetylase; |DE
+         * Includes: |DE RecName: Full=Amino-acid acetyltransferase; |DE EC=2.3.1.1; |DE AltName:
+         * Full=N-acetylglutamate synthase; |DE Short=AGS; |DE Contains: |DE RecName: Full=Arginine
+         * biosynthesis bifunctional protein argJ alpha chain; |DE Contains: |DE RecName:
+         * Full=Arginine biosynthesis bifunctional protein argJ beta chain;
          */
         DeLineObject deObject = new DeLineObject();
         deObject.recName = new DeLineObject.Name();
@@ -124,19 +114,22 @@ class DeLineConverterTest {
         DeLineObject.NameBlock incName1 = new DeLineObject.NameBlock();
         List<String> ecs = new ArrayList<>();
         ecs.add("2.3.1.35");
-        incName1.recName = createName("Glutamate N-acetyltransferase", new ArrayList<String>(), ecs);
+        incName1.recName =
+                createName("Glutamate N-acetyltransferase", new ArrayList<String>(), ecs);
         incName1.altName.add(createName("Ornithine acetyltransferase", "OATase"));
         incName1.altName.add(createName("Ornithine transacetylase"));
         deObject.includedNames.add(incName1);
         DeLineObject.NameBlock incName2 = new DeLineObject.NameBlock();
         List<String> ecs2 = new ArrayList<>();
         ecs2.add("2.3.1.1");
-        incName2.recName = createName("Amino-acid acetyltransferase", new ArrayList<String>(), ecs2);
+        incName2.recName =
+                createName("Amino-acid acetyltransferase", new ArrayList<String>(), ecs2);
         incName2.altName.add(createName("N-acetylglutamate synthase", "AGS"));
         deObject.includedNames.add(incName2);
 
         DeLineObject.NameBlock conName1 = new DeLineObject.NameBlock();
-        conName1.recName = createName("Arginine biosynthesis bifunctional protein argJ alpha chain");
+        conName1.recName =
+                createName("Arginine biosynthesis bifunctional protein argJ alpha chain");
 
         DeLineObject.NameBlock conName2 = new DeLineObject.NameBlock();
         conName2.recName = createName("Arginine biosynthesis bifunctional protein argJ beta chain");
@@ -164,32 +157,35 @@ class DeLineConverterTest {
         validate("Amino-acid acetyltransferase", null, ecs2, included2.getRecommendedName());
         validate("N-acetylglutamate synthase", "AGS", altNames.get(0));
 
-
         List<ProteinSection> contained = pDesc.getContains();
         assertEquals(2, contained.size());
 
         ProteinSection contained1 = contained.get(0);
-        validate("Arginine biosynthesis bifunctional protein argJ alpha chain", null, contained1.getRecommendedName());
+        validate(
+                "Arginine biosynthesis bifunctional protein argJ alpha chain",
+                null,
+                contained1.getRecommendedName());
         ProteinSection contained2 = contained.get(1);
 
-        validate("Arginine biosynthesis bifunctional protein argJ beta chain", null, contained2.getRecommendedName());
-
-
+        validate(
+                "Arginine biosynthesis bifunctional protein argJ beta chain",
+                null,
+                contained2.getRecommendedName());
     }
 
     @Test
     void testEvidence() {
-		/*
-		 *   val deLines = """DE   RecName: Full=Annexin A5{EI1};
-                    |DE            Short=Annexin-5{EI1, EI2};
-                    |DE   AltName: Full=Annexin V{EI1};
-                    |DE   AltName: Full=Lipocortin V{EI1};
-                    |DE   AltName: Full=Placental anticoagulant protein I{EI1};
-                    |DE            Short=PAP-I{EI2};
-                    |DE   AltName: Full=PP4{EI1};
-                    |DE   AltName: Full=Thromboplastin inhibitor{EI3};
-                    |DE   Flags: Precursor{EI1, EI2, EI3};
-		 */
+        /*
+        *   val deLines = """DE   RecName: Full=Annexin A5{EI1};
+                         |DE            Short=Annexin-5{EI1, EI2};
+                         |DE   AltName: Full=Annexin V{EI1};
+                         |DE   AltName: Full=Lipocortin V{EI1};
+                         |DE   AltName: Full=Placental anticoagulant protein I{EI1};
+                         |DE            Short=PAP-I{EI2};
+                         |DE   AltName: Full=PP4{EI1};
+                         |DE   AltName: Full=Thromboplastin inhibitor{EI3};
+                         |DE   Flags: Precursor{EI1, EI2, EI3};
+        */
         DeLineObject deObject = new DeLineObject();
         deObject.recName = new DeLineObject.Name();
         deObject.recName.fullName = "Annexin A5";
@@ -249,7 +245,6 @@ class DeLineConverterTest {
 
         List<String> ecs = new ArrayList<>();
 
-
         validate("Annexin A5", "Annexin-5", ecs, recName, evidences);
 
         List<ProteinAltName> altNames = pDesc.getAlternativeNames();
@@ -269,12 +264,17 @@ class DeLineConverterTest {
         validate(fullName, shortName, ecs, proteinName);
     }
 
-
-    private void validate(String fullName, String shortName, List<String> ecs, ProteinRecName proteinName) {
+    private void validate(
+            String fullName, String shortName, List<String> ecs, ProteinRecName proteinName) {
         validate(fullName, shortName, ecs, proteinName, new TreeMap<String, List<String>>());
     }
 
-    private void validate(String fullName, String shortName, List<String> ecs, ProteinRecName proteinName, Map<String, List<String>> evidences) {
+    private void validate(
+            String fullName,
+            String shortName,
+            List<String> ecs,
+            ProteinRecName proteinName,
+            Map<String, List<String>> evidences) {
         if (fullName != null) {
             assertEquals(fullName, proteinName.getFullName().getValue());
             validateEvidence(evidences.get(fullName), proteinName.getFullName().getEvidences());
@@ -282,7 +282,8 @@ class DeLineConverterTest {
         if (shortName != null) {
             assertEquals(1, proteinName.getShortNames().size());
             assertEquals(shortName, proteinName.getShortNames().get(0).getValue());
-            validateEvidence(evidences.get(shortName), proteinName.getShortNames().get(0).getEvidences());
+            validateEvidence(
+                    evidences.get(shortName), proteinName.getShortNames().get(0).getEvidences());
         }
 
         assertEquals(ecs.size(), proteinName.getEcNumbers().size());
@@ -290,21 +291,24 @@ class DeLineConverterTest {
             validateEvidence(evidences.get(ecNumber.getValue()), ecNumber.getEvidences());
             assertTrue(ecs.contains(ecNumber.getValue()));
         }
-
     }
-    
-    
+
     private void validate(String fullName, String shortName, ProteinAltName proteinName) {
         List<String> ecs = new ArrayList<>();
         validate(fullName, shortName, ecs, proteinName);
     }
 
-
-    private void validate(String fullName, String shortName, List<String> ecs, ProteinAltName proteinName) {
+    private void validate(
+            String fullName, String shortName, List<String> ecs, ProteinAltName proteinName) {
         validate(fullName, shortName, ecs, proteinName, new TreeMap<String, List<String>>());
     }
 
-    private void validate(String fullName, String shortName, List<String> ecs, ProteinAltName proteinName, Map<String, List<String>> evidences) {
+    private void validate(
+            String fullName,
+            String shortName,
+            List<String> ecs,
+            ProteinAltName proteinName,
+            Map<String, List<String>> evidences) {
         if (fullName != null) {
             assertEquals(fullName, proteinName.getFullName().getValue());
             validateEvidence(evidences.get(fullName), proteinName.getFullName().getEvidences());
@@ -312,7 +316,8 @@ class DeLineConverterTest {
         if (shortName != null) {
             assertEquals(1, proteinName.getShortNames().size());
             assertEquals(shortName, proteinName.getShortNames().get(0).getValue());
-            validateEvidence(evidences.get(shortName), proteinName.getShortNames().get(0).getEvidences());
+            validateEvidence(
+                    evidences.get(shortName), proteinName.getShortNames().get(0).getEvidences());
         }
 
         assertEquals(ecs.size(), proteinName.getEcNumbers().size());
@@ -320,12 +325,10 @@ class DeLineConverterTest {
             validateEvidence(evidences.get(ecNumber.getValue()), ecNumber.getEvidences());
             assertTrue(ecs.contains(ecNumber.getValue()));
         }
-
     }
 
     private void validateEvidence(List<String> expected, List<Evidence> vals) {
-        if ((expected == null) || (expected.size() == 0))
-            return;
+        if ((expected == null) || (expected.size() == 0)) return;
         assertEquals(expected.size(), vals.size());
         for (Evidence val : vals) {
             assertTrue(expected.contains(val.getValue()));
@@ -347,7 +350,8 @@ class DeLineConverterTest {
         return createName(fullName, shortNames, new ArrayList<String>());
     }
 
-    private DeLineObject.Name createName(String fullName, List<String> shortNames, List<String> ecs) {
+    private DeLineObject.Name createName(
+            String fullName, List<String> shortNames, List<String> ecs) {
         DeLineObject.Name name = new DeLineObject.Name();
         name.fullName = fullName;
         name.shortNames.addAll(shortNames);

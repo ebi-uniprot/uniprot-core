@@ -19,15 +19,15 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
         this(evRefMapper, new ObjectFactory());
     }
 
-    public FreeTextCommentConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+    public FreeTextCommentConverter(
+            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
         this.eviValueConverter = new EvidencedValueConverter(evRefMapper, xmlUniprotFactory, true);
     }
 
     @Override
     public FreeTextComment fromXml(CommentType xmlObj) {
-        if ((xmlObj == null) || xmlObj.getText().isEmpty())
-            return null;
+        if ((xmlObj == null) || xmlObj.getText().isEmpty()) return null;
         org.uniprot.core.uniprot.comment.CommentType type =
                 org.uniprot.core.uniprot.comment.CommentType.typeOf(xmlObj.getType());
         List<EvidencedValue> texts =
@@ -40,8 +40,7 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
 
     @Override
     public CommentType toXml(FreeTextComment uniObj) {
-        if (uniObj == null)
-            return null;
+        if (uniObj == null) return null;
 
         CommentType xmlObj = xmlUniprotFactory.createCommentType();
         // type
@@ -49,6 +48,4 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
         uniObj.getTexts().forEach(val -> xmlObj.getText().add(eviValueConverter.toXml(val)));
         return xmlObj;
     }
-
-
 }

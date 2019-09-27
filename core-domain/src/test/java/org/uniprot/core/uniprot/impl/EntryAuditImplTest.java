@@ -1,13 +1,12 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.EntryAudit;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.LocalDate;
 import java.time.Month;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.EntryAudit;
 
 class EntryAuditImplTest {
 
@@ -19,13 +18,17 @@ class EntryAuditImplTest {
         int entryVersion = 20;
         int sequenceVersion = 5;
 
-        EntryAudit entryAudit = new EntryAuditImpl(firstPublicDate, lastAnnotationUpdateDate,
-                                                   lastSequenceUpdateDate, entryVersion, sequenceVersion);
+        EntryAudit entryAudit =
+                new EntryAuditImpl(
+                        firstPublicDate,
+                        lastAnnotationUpdateDate,
+                        lastSequenceUpdateDate,
+                        entryVersion,
+                        sequenceVersion);
         assertEquals(firstPublicDate, entryAudit.getFirstPublicDate());
         assertEquals(lastAnnotationUpdateDate, entryAudit.getLastAnnotationUpdateDate());
         assertEquals(lastSequenceUpdateDate, entryAudit.getLastSequenceUpdateDate());
         assertEquals(entryVersion, entryAudit.getEntryVersion());
         assertEquals(sequenceVersion, entryAudit.getSequenceVersion());
     }
-
 }

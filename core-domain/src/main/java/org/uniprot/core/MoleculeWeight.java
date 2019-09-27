@@ -1,10 +1,8 @@
 package org.uniprot.core;
 
-
 import org.uniprot.core.util.EnumDisplay;
 
 public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
-
     A(710788),
     B(1146532),
     C(1031388),
@@ -33,21 +31,21 @@ public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
 
     h2o(180153);
 
-
     private int weight;
 
     MoleculeWeight(int weight) {
         this.weight = weight;
     }
-    
+
     private static int getElementWeight(char c) {
-    	try {
-    		return  MoleculeWeight.valueOf(String.valueOf(c)).weight;
-    	}catch(Exception e) {
-    		
-    	}
-    	return 0;
+        try {
+            return MoleculeWeight.valueOf(String.valueOf(c)).weight;
+        } catch (Exception e) {
+
+        }
+        return 0;
     }
+
     public static int calcMolecularWeight(String sequence) {
 
         long weight = 0;

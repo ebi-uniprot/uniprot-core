@@ -1,11 +1,11 @@
 package org.uniprot.core.cv.taxonomy;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class FileNodeIterableTest {
 
@@ -15,7 +15,7 @@ public class FileNodeIterableTest {
         File taxonomyFile = new File(url.toURI());
         FileNodeIterable iterable = new FileNodeIterable(taxonomyFile);
         int nodeCount = 0;
-        for(TaxonomicNode node : iterable){
+        for (TaxonomicNode node : iterable) {
             verifyTaxonomicNode(node);
             nodeCount++;
         }
@@ -25,7 +25,9 @@ public class FileNodeIterableTest {
 
     @Test
     void testIterableWithNullFile() {
-        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class, () -> new FileNodeIterable(null));
+        IllegalArgumentException thrown =
+                Assertions.assertThrows(
+                        IllegalArgumentException.class, () -> new FileNodeIterable(null));
         Assertions.assertEquals("Taxonomy file is null", thrown.getMessage());
     }
 
@@ -33,8 +35,10 @@ public class FileNodeIterableTest {
     void testIterableWithEmptySeparator() throws URISyntaxException {
         URL url = ClassLoader.getSystemClassLoader().getResource("taxonomy/taxonomy.dat");
         File taxonomyFile = new File(url.toURI());
-        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new FileNodeIterable(taxonomyFile, "", null));
+        IllegalArgumentException thrown =
+                Assertions.assertThrows(
+                        IllegalArgumentException.class,
+                        () -> new FileNodeIterable(taxonomyFile, "", null));
         Assertions.assertTrue(thrown.getMessage().contains("Invalid field separator:"));
     }
 
@@ -42,8 +46,10 @@ public class FileNodeIterableTest {
     void testIterableWithNullPlaceholder() throws URISyntaxException {
         URL url = ClassLoader.getSystemClassLoader().getResource("taxonomy/taxonomy.dat");
         File taxonomyFile = new File(url.toURI());
-        IllegalArgumentException thrown = Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new FileNodeIterable(taxonomyFile, "\t", null));
+        IllegalArgumentException thrown =
+                Assertions.assertThrows(
+                        IllegalArgumentException.class,
+                        () -> new FileNodeIterable(taxonomyFile, "\t", null));
         Assertions.assertTrue(thrown.getMessage().contains("Invalid null placeholde"));
     }
 
@@ -51,5 +57,4 @@ public class FileNodeIterableTest {
         Assertions.assertNotNull(node);
         Assertions.assertNotNull(node.id());
     }
-
 }

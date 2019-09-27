@@ -1,5 +1,14 @@
 package org.uniprot.core.parser.tsv.keyword;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
@@ -7,16 +16,6 @@ import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordStatisticsImpl;
-import org.uniprot.core.parser.tsv.keyword.KeywordEntryMap;
-
-import java.util.Collections;
-import java.util.Map;
-import java.util.Optional;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class KeywordEntryMapTest {
 
@@ -31,9 +30,9 @@ class KeywordEntryMapTest {
         mappedEntries.remove("id");
         assertEquals("Ligand", mappedEntries.get("name"));
         mappedEntries.remove("name");
-       Optional<String> result =
-        mappedEntries.values().stream().filter(val -> !val.isEmpty()).findAny();
-       assertFalse(result.isPresent());
+        Optional<String> result =
+                mappedEntries.values().stream().filter(val -> !val.isEmpty()).findAny();
+        assertFalse(result.isPresent());
     }
 
     @Test
@@ -59,7 +58,8 @@ class KeywordEntryMapTest {
         KeywordEntryImpl keywordEntry = new KeywordEntryImpl();
         keywordEntry.setDefinition("Definition value");
         keywordEntry.setKeyword(getKeyword());
-        keywordEntry.setGeneOntologies(Collections.singletonList(new GeneOntologyImpl("goId", "goTerm")));
+        keywordEntry.setGeneOntologies(
+                Collections.singletonList(new GeneOntologyImpl("goId", "goTerm")));
         keywordEntry.setSynonyms(Collections.singletonList("synonym"));
         keywordEntry.setSites(Collections.singletonList("site"));
 
@@ -87,6 +87,4 @@ class KeywordEntryMapTest {
         keywordEntry.setKeyword(getKeyword());
         return keywordEntry;
     }
-
-
 }

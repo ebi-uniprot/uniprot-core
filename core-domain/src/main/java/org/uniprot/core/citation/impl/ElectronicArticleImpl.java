@@ -1,12 +1,12 @@
 package org.uniprot.core.citation.impl;
 
+import static java.util.Collections.emptyList;
+
 import java.util.List;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
-
-import static java.util.Collections.emptyList;
 
 public class ElectronicArticleImpl extends AbstractCitationImpl implements ElectronicArticle {
     private static final long serialVersionUID = -8389378286532442748L;
@@ -17,9 +17,21 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
-    public ElectronicArticleImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                                 String title, PublicationDate publicationDate, String journalName, Locator locator) {
-        super(CitationType.ELECTRONIC_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
+    public ElectronicArticleImpl(
+            List<String> authoringGroup,
+            List<Author> authors,
+            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            String title,
+            PublicationDate publicationDate,
+            String journalName,
+            Locator locator) {
+        super(
+                CitationType.ELECTRONIC_ARTICLE,
+                authoringGroup,
+                authors,
+                citationXrefs,
+                title,
+                publicationDate);
         if (journalName != null) {
             this.journal = new JournalImpl(journalName);
         }
@@ -43,7 +55,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
 
     @Override
     public boolean hasJournal() {
-        return this.journal != null ;
+        return this.journal != null;
     }
 
     @Override
@@ -57,18 +69,13 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         ElectronicArticleImpl other = (ElectronicArticleImpl) obj;
         if (journal == null) {
-            if (other.journal != null)
-                return false;
-        } else if (!journal.equals(other.journal))
-            return false;
+            if (other.journal != null) return false;
+        } else if (!journal.equals(other.journal)) return false;
         if (locator == null) {
             return other.locator == null;
         } else return locator.equals(other.locator);
@@ -77,9 +84,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     public static class LocatorImpl implements Locator {
         private String value;
 
-        private LocatorImpl() {
-
-        }
+        private LocatorImpl() {}
 
         public LocatorImpl(String value) {
             this.value = value;
@@ -106,18 +111,13 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
 
         @Override
         public boolean equals(Object obj) {
-            if (this == obj)
-                return true;
-            if (obj == null)
-                return false;
-            if (getClass() != obj.getClass())
-                return false;
+            if (this == obj) return true;
+            if (obj == null) return false;
+            if (getClass() != obj.getClass()) return false;
             LocatorImpl other = (LocatorImpl) obj;
             if (value == null) {
                 return other.value == null;
             } else return value.equals(other.value);
         }
-
     }
-
 }

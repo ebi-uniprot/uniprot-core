@@ -8,9 +8,7 @@ import org.uniprot.core.citation.Journal;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.util.Utils;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public interface LiteratureEntry extends Serializable {
 
     Long getPubmedId();
@@ -92,5 +90,4 @@ public interface LiteratureEntry extends Serializable {
     default boolean hasStatistics() {
         return Utils.nonNull(getStatistics());
     }
-
 }

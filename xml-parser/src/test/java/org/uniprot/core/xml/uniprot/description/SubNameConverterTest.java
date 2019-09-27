@@ -17,34 +17,33 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType.SubmittedName;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.description.ECConverter;
-import org.uniprot.core.xml.uniprot.description.NameConverter;
-import org.uniprot.core.xml.uniprot.description.SubNameConverter;
 
 class SubNameConverterTest {
 
-	@Test
-	void test() {
-		List<Evidence> evidences = createEvidences();
-		Name fullName = createName("a full Name", evidences);
+    @Test
+    void test() {
+        List<Evidence> evidences = createEvidences();
+        Name fullName = createName("a full Name", evidences);
 
-		List<EC> ecNumbers = createECNumbers();
-		ProteinSubName subName = createProteinSubName(fullName,   ecNumbers);
-		EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
-		ECConverter ecConverter = new ECConverter(evRefMapper);
-		NameConverter nameConverter =new NameConverter(evRefMapper);
-		SubNameConverter converter = new SubNameConverter( nameConverter,  ecConverter) ;
-		SubmittedName xmlObj =converter.toXml(subName);
-		
-		 System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, SubmittedName.class, "submittedName"));
-		ProteinSubName converted = converter.fromXml(xmlObj);
-		assertEquals(subName, converted);
-	}
-	private List<EC> createECNumbers() {
-		List<Evidence> evidences = createEvidences();
-		List<EC> ecNumbers = new ArrayList<>();
-		ecNumbers.add(createEC("1.2.3.4", evidences));
-		ecNumbers.add(createEC("1.3.4.3", evidences));
-		return ecNumbers;
-	}
+        List<EC> ecNumbers = createECNumbers();
+        ProteinSubName subName = createProteinSubName(fullName, ecNumbers);
+        EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
+        ECConverter ecConverter = new ECConverter(evRefMapper);
+        NameConverter nameConverter = new NameConverter(evRefMapper);
+        SubNameConverter converter = new SubNameConverter(nameConverter, ecConverter);
+        SubmittedName xmlObj = converter.toXml(subName);
+
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlObj, SubmittedName.class, "submittedName"));
+        ProteinSubName converted = converter.fromXml(xmlObj);
+        assertEquals(subName, converted);
+    }
+
+    private List<EC> createECNumbers() {
+        List<Evidence> evidences = createEvidences();
+        List<EC> ecNumbers = new ArrayList<>();
+        ecNumbers.add(createEC("1.2.3.4", evidences));
+        ecNumbers.add(createEC("1.3.4.3", evidences));
+        return ecNumbers;
+    }
 }

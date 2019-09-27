@@ -1,5 +1,7 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
+import static java.util.Objects.nonNull;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -13,16 +15,15 @@ import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 
-import static java.util.Objects.nonNull;
-
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:15:13 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:15:13 To change this template
+ * use File | Settings | File Templates.
  */
 public class SubcellularLocationCommentScored extends CommentScoredAbstr {
     private final SubcellularLocationComment comment;
 
-    public SubcellularLocationCommentScored(SubcellularLocationComment copy, List<EvidenceType> evidenceTypes) {
+    public SubcellularLocationCommentScored(
+            SubcellularLocationComment copy, List<EvidenceType> evidenceTypes) {
         super(copy.getCommentType(), evidenceTypes);
         this.comment = copy;
     }
@@ -34,8 +35,7 @@ public class SubcellularLocationCommentScored extends CommentScoredAbstr {
     public double score() {
         double score = 0;
         for (SubcellularLocation loc : comment.getSubcellularLocations()) {
-            if (!hasEvidence(loc))
-                continue;
+            if (!hasEvidence(loc)) continue;
             // default to location test
             ScoreStatus status = getCommentScoreStatus(loc);
             switch (status) {

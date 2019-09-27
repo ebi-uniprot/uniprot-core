@@ -26,17 +26,18 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
      *
      * @param value string representation of a source.
      * @return the enum type of the provided source.
-     * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum type.
+     * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum
+     *     type.
      */
     public static DiseaseReferenceType typeOf(String value) {
-        for (DiseaseReferenceType referenceType : DiseaseReferenceType
-                .values()) {
+        for (DiseaseReferenceType referenceType : DiseaseReferenceType.values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
             }
         }
 
-        throw new IllegalArgumentException("The disease reference type: " + value + " doesn't exist");
+        throw new IllegalArgumentException(
+                "The disease reference type: " + value + " doesn't exist");
     }
 
     /**

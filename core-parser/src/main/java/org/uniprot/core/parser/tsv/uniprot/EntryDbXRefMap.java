@@ -3,7 +3,6 @@ package org.uniprot.core.parser.tsv.uniprot;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.DatabaseType;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
@@ -25,7 +24,6 @@ public class EntryDbXRefMap implements NamedValueMap {
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(val -> val.startsWith(DR))
                 || EntryGoXrefMap.contains(fields);
-
     }
 
     public EntryDbXRefMap(List<UniProtDBCrossReference> dbReferences) {
@@ -43,23 +41,31 @@ public class EntryDbXRefMap implements NamedValueMap {
         }
 
         Map<String, String> map = new HashMap<>();
-        Map<String, List<UniProtDBCrossReference>> xrefMap = dbReferences.stream()
-                .collect(Collectors.groupingBy(xref -> xref.getDatabaseType().getName()));
+        Map<String, List<UniProtDBCrossReference>> xrefMap =
+                dbReferences.stream()
+                        .collect(Collectors.groupingBy(xref -> xref.getDatabaseType().getName()));
         xrefMap.forEach((key, value) -> addToMap(map, key, value));
         return map;
     }
 
-    private void addToMap(Map<String, String> map, String type, List<UniProtDBCrossReference> xrefs) {
+    private void addToMap(
+            Map<String, String> map, String type, List<UniProtDBCrossReference> xrefs) {
         if (type.equalsIgnoreCase("GO")) {
             EntryGoXrefMap dlGoXref = new EntryGoXrefMap(xrefs);
             Map<String, String> goMap = dlGoXref.attributeValues();
             goMap.forEach(map::put);
         } else if (type.equalsIgnoreCase("PROTEOMES")) {
-            map.put(DR + type.toLowerCase(),
-                    xrefs.stream().map(EntryDbXRefMap::proteomeXrefToString).collect(Collectors.joining("; ")));
+            map.put(
+                    DR + type.toLowerCase(),
+                    xrefs.stream()
+                            .map(EntryDbXRefMap::proteomeXrefToString)
+                            .collect(Collectors.joining("; ")));
         } else {
-            map.put(DR + type.toLowerCase(),
-                    xrefs.stream().map(EntryDbXRefMap::dbXrefToString).collect(Collectors.joining(";", "", ";")));
+            map.put(
+                    DR + type.toLowerCase(),
+                    xrefs.stream()
+                            .map(EntryDbXRefMap::dbXrefToString)
+                            .collect(Collectors.joining(";", "", ";")));
             if (type.equalsIgnoreCase("PDB")) {
                 map.put("3d", pdbXrefTo3DString(xrefs));
             }
@@ -68,12 +74,15 @@ public class EntryDbXRefMap implements NamedValueMap {
 
     private String pdbXrefTo3DString(List<UniProtDBCrossReference> xrefs) {
         Map<String, Long> result =
-                xrefs.stream().flatMap(val -> val.getProperties().stream())
+                xrefs.stream()
+                        .flatMap(val -> val.getProperties().stream())
                         .filter(val -> val.getKey().equalsIgnoreCase("Method"))
                         .map(Property::getValue)
                         .map(D3MethodMAP::get)
                         .filter(Objects::nonNull)
-                        .collect(Collectors.groupingBy(val -> val, TreeMap::new, Collectors.counting()));
+                        .collect(
+                                Collectors.groupingBy(
+                                        val -> val, TreeMap::new, Collectors.counting()));
 
         return result.entrySet().stream()
                 .map(val -> (val.getKey() + " (" + val.getValue().toString() + ")"))
@@ -91,9 +100,7 @@ public class EntryDbXRefMap implements NamedValueMap {
 
     public static String proteomeXrefToString(UniProtDBCrossReference xref) {
         StringBuilder sb = new StringBuilder();
-        sb.append(xref.getId())
-                .append(": ")
-                .append(xref.getProperties().get(0).getValue());
+        sb.append(xref.getId()).append(": ").append(xref.getProperties().get(0).getValue());
 
         return sb.toString();
     }

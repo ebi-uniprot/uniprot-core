@@ -4,9 +4,7 @@ import java.util.Objects;
 
 import org.uniprot.core.literature.LiteratureStatistics;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public class LiteratureStatisticsImpl implements LiteratureStatistics {
 
     private long reviewedProteinCount;
@@ -17,7 +15,8 @@ public class LiteratureStatisticsImpl implements LiteratureStatistics {
         this(0, 0, 0);
     }
 
-    public LiteratureStatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount, long mappedProteinCount) {
+    public LiteratureStatisticsImpl(
+            long reviewedProteinCount, long unreviewedProteinCount, long mappedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
         this.mappedProteinCount = mappedProteinCount;
@@ -43,22 +42,26 @@ public class LiteratureStatisticsImpl implements LiteratureStatistics {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LiteratureStatisticsImpl that = (LiteratureStatisticsImpl) o;
-        return getReviewedProteinCount() == that.getReviewedProteinCount() &&
-                getUnreviewedProteinCount() == that.getUnreviewedProteinCount() &&
-                getMappedProteinCount() == that.getMappedProteinCount();
+        return getReviewedProteinCount() == that.getReviewedProteinCount()
+                && getUnreviewedProteinCount() == that.getUnreviewedProteinCount()
+                && getMappedProteinCount() == that.getMappedProteinCount();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getReviewedProteinCount(), getUnreviewedProteinCount(), getMappedProteinCount());
+        return Objects.hash(
+                getReviewedProteinCount(), getUnreviewedProteinCount(), getMappedProteinCount());
     }
 
     @Override
     public String toString() {
-        return "LiteratureStatisticsImpl{" +
-                "reviewedProteinCount=" + reviewedProteinCount +
-                ", unreviewedProteinCount=" + unreviewedProteinCount +
-                ", mappedProteinCount=" + mappedProteinCount +
-                '}';
+        return "LiteratureStatisticsImpl{"
+                + "reviewedProteinCount="
+                + reviewedProteinCount
+                + ", unreviewedProteinCount="
+                + unreviewedProteinCount
+                + ", mappedProteinCount="
+                + mappedProteinCount
+                + '}';
     }
 }

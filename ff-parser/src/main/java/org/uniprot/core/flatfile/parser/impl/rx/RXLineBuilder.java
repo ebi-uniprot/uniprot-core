@@ -19,28 +19,45 @@ public class RXLineBuilder implements RLine<Citation> {
     @Override
     public List<String> buildLine(Citation xrefs, boolean includeFFMarkup, boolean showEvidence) {
         List<String> lines = new ArrayList<>();
-        if (xrefs == null)
-            return lines;
+        if (xrefs == null) return lines;
         StringBuilder line = new StringBuilder();
-        line = buildLine(lines, line, xrefs.getCitationXrefsByType(CitationXrefType.PUBMED), includeFFMarkup);
-        line = buildLine(lines, line, xrefs.getCitationXrefsByType(CitationXrefType.AGRICOLA), includeFFMarkup);
-        line = buildLine(lines, line, xrefs.getCitationXrefsByType(CitationXrefType.DOI), includeFFMarkup);
+        line =
+                buildLine(
+                        lines,
+                        line,
+                        xrefs.getCitationXrefsByType(CitationXrefType.PUBMED),
+                        includeFFMarkup);
+        line =
+                buildLine(
+                        lines,
+                        line,
+                        xrefs.getCitationXrefsByType(CitationXrefType.AGRICOLA),
+                        includeFFMarkup);
+        line =
+                buildLine(
+                        lines,
+                        line,
+                        xrefs.getCitationXrefsByType(CitationXrefType.DOI),
+                        includeFFMarkup);
         if (line.length() > 0) {
             lines.add(line.toString());
         }
         return lines;
     }
 
-    private StringBuilder buildLine(List<String> lines, StringBuilder line, Optional<DBCrossReference<CitationXrefType>> xref,
-                                    boolean includeFFMarkup) {
+    private StringBuilder buildLine(
+            List<String> lines,
+            StringBuilder line,
+            Optional<DBCrossReference<CitationXrefType>> xref,
+            boolean includeFFMarkup) {
         if (xref.isPresent()) {
-            if ((line.length() > 0) && ((getString(xref.get()).length() + line.length()) >= LINE_LENGTH - 1)) {
+            if ((line.length() > 0)
+                    && ((getString(xref.get()).length() + line.length()) >= LINE_LENGTH - 1)) {
                 lines.add(line.toString());
                 line = new StringBuilder();
             }
             if (line.length() == 0) {
-                if (includeFFMarkup)
-                    line.append(linePrefix);
+                if (includeFFMarkup) line.append(linePrefix);
             } else {
                 line.append(SPACE);
             }
@@ -48,8 +65,7 @@ public class RXLineBuilder implements RLine<Citation> {
 
             line.append(SEMICOLON);
             return line;
-        } else
-            return line;
+        } else return line;
     }
 
     private String getString(DBCrossReference<CitationXrefType> xref) {

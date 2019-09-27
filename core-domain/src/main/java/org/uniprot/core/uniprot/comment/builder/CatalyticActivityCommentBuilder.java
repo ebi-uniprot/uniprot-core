@@ -11,7 +11,8 @@ import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
 
-public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
+public class CatalyticActivityCommentBuilder
+        implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();
 
@@ -23,8 +24,7 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
     @Override
     public CatalyticActivityCommentBuilder from(CatalyticActivityComment instance) {
         physiologicalReactions.clear();
-        return this
-                .physiologicalReactions(instance.getPhysiologicalReactions())
+        return this.physiologicalReactions(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());
     }
 
@@ -33,12 +33,14 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
         return this;
     }
 
-    public CatalyticActivityCommentBuilder physiologicalReactions(List<PhysiologicalReaction> physiologicalReactions) {
+    public CatalyticActivityCommentBuilder physiologicalReactions(
+            List<PhysiologicalReaction> physiologicalReactions) {
         this.physiologicalReactions = nonNullList(physiologicalReactions);
         return this;
     }
 
-    public CatalyticActivityCommentBuilder addPhysiologicalReaction(PhysiologicalReaction physiologicalReaction) {
+    public CatalyticActivityCommentBuilder addPhysiologicalReaction(
+            PhysiologicalReaction physiologicalReaction) {
         nonNullAdd(physiologicalReaction, this.physiologicalReactions);
         return this;
     }

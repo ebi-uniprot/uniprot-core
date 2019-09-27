@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.comment;
 
-
 import java.io.Serializable;
 import java.util.List;
 

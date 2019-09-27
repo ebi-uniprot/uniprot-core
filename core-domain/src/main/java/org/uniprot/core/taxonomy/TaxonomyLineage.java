@@ -1,10 +1,8 @@
 package org.uniprot.core.taxonomy;
 
 import java.io.Serializable;
-/**
- *
- * @author lgonzales
- */
+
+/** @author lgonzales */
 public interface TaxonomyLineage extends Serializable {
 
     long getTaxonId();
@@ -20,5 +18,4 @@ public interface TaxonomyLineage extends Serializable {
     boolean hasScientificName();
 
     boolean hasRank();
-
 }

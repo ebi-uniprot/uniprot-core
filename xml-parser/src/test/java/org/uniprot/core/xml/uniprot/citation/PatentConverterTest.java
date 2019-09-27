@@ -1,15 +1,13 @@
 package org.uniprot.core.xml.uniprot.citation;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.Patent;
 import org.uniprot.core.citation.builder.PatentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.citation.CitationConverter;
-import org.uniprot.core.xml.uniprot.citation.PatentConverter;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PatentConverterTest {
 
@@ -18,7 +16,8 @@ class PatentConverterTest {
         Patent citation = create();
         PatentConverter converter = new PatentConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Patent converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -29,7 +28,8 @@ class PatentConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -38,8 +38,7 @@ class PatentConverterTest {
         PatentBuilder builder = new PatentBuilder();
         String pnumber = "Some Number";
         String date = "2018";
-        builder.patentNumber(pnumber)
-                .publicationDate(date);
+        builder.patentNumber(pnumber).publicationDate(date);
 
         return builder.build();
     }

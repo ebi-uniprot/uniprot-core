@@ -72,9 +72,7 @@ public class GeneImpl implements Gene {
         StringBuilder sb = new StringBuilder();
         boolean hasData = false;
         if (this.hasGeneName()) {
-            sb.append(NAME_PREFIX)
-                    .append(this.geneName.getDisplayed(" "))
-                    .append(";");
+            sb.append(NAME_PREFIX).append(this.geneName.getDisplayed(" ")).append(";");
             hasData = true;
         }
         if (!this.synonyms.isEmpty()) {
@@ -83,7 +81,8 @@ public class GeneImpl implements Gene {
             }
             sb.append(SYNONYMS_PREFIX)
                     .append(
-                            synonyms.stream().map(val -> val.getDisplayed(" "))
+                            synonyms.stream()
+                                    .map(val -> val.getDisplayed(" "))
                                     .collect(Collectors.joining(", ")))
                     .append(";");
             hasData = true;
@@ -94,7 +93,8 @@ public class GeneImpl implements Gene {
             }
             sb.append(ORDERED_LOCUS_NAMES_PREFIX)
                     .append(
-                            orderedLocusNames.stream().map(val -> val.getDisplayed(" "))
+                            orderedLocusNames.stream()
+                                    .map(val -> val.getDisplayed(" "))
                                     .collect(Collectors.joining(", ")))
                     .append(";");
             hasData = true;
@@ -105,7 +105,8 @@ public class GeneImpl implements Gene {
             }
             sb.append(ORF_NAMES_PREFIX)
                     .append(
-                            orfNames.stream().map(val -> val.getDisplayed(" "))
+                            orfNames.stream()
+                                    .map(val -> val.getDisplayed(" "))
                                     .collect(Collectors.joining(", ")))
                     .append(";");
         }
@@ -125,28 +126,19 @@ public class GeneImpl implements Gene {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         GeneImpl other = (GeneImpl) obj;
         if (geneName == null) {
-            if (other.geneName != null)
-                return false;
-        } else if (!geneName.equals(other.geneName))
-            return false;
+            if (other.geneName != null) return false;
+        } else if (!geneName.equals(other.geneName)) return false;
         if (orderedLocusNames == null) {
-            if (other.orderedLocusNames != null)
-                return false;
-        } else if (!orderedLocusNames.equals(other.orderedLocusNames))
-            return false;
+            if (other.orderedLocusNames != null) return false;
+        } else if (!orderedLocusNames.equals(other.orderedLocusNames)) return false;
         if (orfNames == null) {
-            if (other.orfNames != null)
-                return false;
-        } else if (!orfNames.equals(other.orfNames))
-            return false;
+            if (other.orfNames != null) return false;
+        } else if (!orfNames.equals(other.orfNames)) return false;
         if (synonyms == null) {
             return other.synonyms == null;
         } else return synonyms.equals(other.synonyms);
@@ -163,8 +155,8 @@ public class GeneImpl implements Gene {
         }
     }
 
-
-    public static class OrderedLocusNameImpl extends EvidencedValueImpl implements OrderedLocusName {
+    public static class OrderedLocusNameImpl extends EvidencedValueImpl
+            implements OrderedLocusName {
 
         private OrderedLocusNameImpl() {
             super(null, null);

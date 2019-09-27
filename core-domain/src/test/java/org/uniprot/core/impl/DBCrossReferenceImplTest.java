@@ -1,17 +1,15 @@
 package org.uniprot.core.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.Property;
-
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.impl.DefaultDatabaseType;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.DBCrossReference;
+import org.uniprot.core.Property;
+import org.uniprot.core.builder.DBCrossReferenceBuilder;
 
 class DBCrossReferenceImplTest {
     @Test
@@ -40,8 +38,11 @@ class DBCrossReferenceImplTest {
         verify(xref, "EMBL", "DB123414", properties);
     }
 
-    private void verify(DBCrossReference<DefaultDatabaseType> xref, String dbName, String id,
-                        List<Property> properties) {
+    private void verify(
+            DBCrossReference<DefaultDatabaseType> xref,
+            String dbName,
+            String id,
+            List<Property> properties) {
         assertEquals(dbName, xref.getDatabaseType().getName());
         assertEquals(id, xref.getId());
         assertEquals(properties, xref.getProperties());

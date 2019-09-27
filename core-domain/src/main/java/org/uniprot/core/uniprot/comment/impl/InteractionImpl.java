@@ -9,7 +9,6 @@ import org.uniprot.core.uniprot.comment.InteractionType;
 import org.uniprot.core.uniprot.comment.Interactor;
 import org.uniprot.core.util.Utils;
 
-
 public class InteractionImpl implements Interaction {
     private static final long serialVersionUID = -1102213995267310387L;
     private InteractionType type;
@@ -19,16 +18,15 @@ public class InteractionImpl implements Interaction {
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
-    private InteractionImpl() {
+    private InteractionImpl() {}
 
-    }
-
-    public InteractionImpl(InteractionType type,
-                           UniProtAccession uniProtAccession,
-                           String geneName,
-                           int numberOfExperiments,
-                           Interactor firstInteractor,
-                           Interactor secondInteractor) {
+    public InteractionImpl(
+            InteractionType type,
+            UniProtAccession uniProtAccession,
+            String geneName,
+            int numberOfExperiments,
+            Interactor firstInteractor,
+            Interactor secondInteractor) {
         this.type = type;
         this.uniProtAccession = uniProtAccession;
         this.geneName = geneName;
@@ -97,17 +95,23 @@ public class InteractionImpl implements Interaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InteractionImpl that = (InteractionImpl) o;
-        return numberOfExperiments == that.numberOfExperiments &&
-                type == that.type &&
-                Objects.equals(uniProtAccession, that.uniProtAccession) &&
-                Objects.equals(geneName, that.geneName) &&
-                Objects.equals(firstInteractor, that.firstInteractor) &&
-                Objects.equals(secondInteractor, that.secondInteractor);
+        return numberOfExperiments == that.numberOfExperiments
+                && type == that.type
+                && Objects.equals(uniProtAccession, that.uniProtAccession)
+                && Objects.equals(geneName, that.geneName)
+                && Objects.equals(firstInteractor, that.firstInteractor)
+                && Objects.equals(secondInteractor, that.secondInteractor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, uniProtAccession, geneName, numberOfExperiments, firstInteractor, secondInteractor);
+        return Objects.hash(
+                type,
+                uniProtAccession,
+                geneName,
+                numberOfExperiments,
+                firstInteractor,
+                secondInteractor);
     }
 
     public static class InteractorImpl extends ValueImpl implements Interactor {

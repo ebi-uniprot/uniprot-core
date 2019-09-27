@@ -12,12 +12,13 @@ import org.uniprot.core.uniprot.GeneLocation;
 import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public class OgLineConverter extends EvidenceCollector implements Converter<OgLineObject, List<GeneLocation>> {
+public class OgLineConverter extends EvidenceCollector
+        implements Converter<OgLineObject, List<GeneLocation>> {
     @Override
     public List<GeneLocation> convert(OgLineObject f) {
         List<GeneLocation> organelles = new ArrayList<>();
-        Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f
-                                                                                          .getEvidenceInfo());
+        Map<Object, List<Evidence>> evidenceMap =
+                EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidenceMap.values());
         for (OgLineObject.OgEnum ogEnum : f.ogs) {
             GeneEncodingType type = GeneEncodingType.UNKOWN;
@@ -55,7 +56,6 @@ public class OgLineConverter extends EvidenceCollector implements Converter<OgLi
                 default:
                     type = GeneEncodingType.UNKOWN;
                     break;
-
             }
             GeneLocation org = new GeneLocationBuilder(type, "", evidenceMap.get(ogEnum)).build();
 
@@ -63,11 +63,12 @@ public class OgLineConverter extends EvidenceCollector implements Converter<OgLi
         }
 
         for (String val : f.plasmidNames) {
-            GeneLocation org = new GeneLocationBuilder(GeneEncodingType.PLASMID, val, evidenceMap.get(val)).build();
+            GeneLocation org =
+                    new GeneLocationBuilder(GeneEncodingType.PLASMID, val, evidenceMap.get(val))
+                            .build();
             organelles.add(org);
         }
 
         return organelles;
     }
-
 }

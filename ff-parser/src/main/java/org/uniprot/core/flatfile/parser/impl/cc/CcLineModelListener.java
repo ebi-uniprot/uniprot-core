@@ -1,57 +1,70 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.tree.TerminalNode;
+import org.uniprot.core.flatfile.antlr.CcLineParser;
+import org.uniprot.core.flatfile.antlr.CcLineParser.*;
+import org.uniprot.core.flatfile.antlr.CcLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
 
-import org.uniprot.core.flatfile.antlr.CcLineParser;
-import org.uniprot.core.flatfile.antlr.CcLineParser.*;
-import org.uniprot.core.flatfile.antlr.CcLineParserBaseListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use File | Settings |
- * File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use
+ * File | Settings | File Templates.
  */
-public class CcLineModelListener extends CcLineParserBaseListener implements ParseTreeObjectExtractor<CcLineObject> {
+public class CcLineModelListener extends CcLineParserBaseListener
+        implements ParseTreeObjectExtractor<CcLineObject> {
 
     private CcLineObject object;
 
-    private EvidencedString getEvidencedString(CcLineParser.Cc_properties_text_level2_with_evContext context) {
+    private EvidencedString getEvidencedString(
+            CcLineParser.Cc_properties_text_level2_with_evContext context) {
         String text = context.cc_properties_text_level2().getText().trim();
         List<String> evidence =
-                context.evidence() == null ? null : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
+                context.evidence() == null
+                        ? null
+                        : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
         return EvidencedString.get(text, evidence);
     }
 
-    private EvidencedString getEvidencedString(CcLineParser.Cc_properties_note_text_level2_with_evContext context) {
+    private EvidencedString getEvidencedString(
+            CcLineParser.Cc_properties_note_text_level2_with_evContext context) {
         String text = context.cc_properties_note_text_level2().getText().trim();
         List<String> evidence =
-                context.evidence() == null ? null : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
+                context.evidence() == null
+                        ? null
+                        : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
         return EvidencedString.get(text, evidence);
     }
 
-    private EvidencedString getEvidencedString(CcLineParser.Cc_properties_note_text_with_evContext context) {
+    private EvidencedString getEvidencedString(
+            CcLineParser.Cc_properties_note_text_with_evContext context) {
         String text = context.cc_properties_note_text().getText().trim();
         List<String> evidence =
-                context.evidence() == null ? null : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
+                context.evidence() == null
+                        ? null
+                        : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
         return EvidencedString.get(text, evidence);
     }
 
     private EvidencedString getEvidencedString(CcLineParser.Cc_common_text_with_evContext context) {
         String text = context.cc_common_text().getText().trim();
         List<String> evidence =
-                context.evidence() == null ? null : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
+                context.evidence() == null
+                        ? null
+                        : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
         return EvidencedString.get(text, evidence);
     }
 
     private EvidencedString getEvidenceString(Cc_alternative_value_with_evidenceContext context) {
         String text = context.cc_alternative_value().getText().trim();
         List<String> evidence =
-                context.evidence() == null ? null : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
+                context.evidence() == null
+                        ? null
+                        : EvidenceInfo.processEvidence(context.evidence().EV_TAG());
         return EvidencedString.get(text, evidence);
     }
 
@@ -64,7 +77,8 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         CcLineObject.FreeText ftext = new CcLineObject.FreeText();
 
         Cc_common_textsContext ccCommonTextsContext = ctx.cc_common_texts();
-        List<Cc_common_text_with_evContext> ccCommonTextWithEvContexts = ccCommonTextsContext.cc_common_text_with_ev();
+        List<Cc_common_text_with_evContext> ccCommonTextWithEvContexts =
+                ccCommonTextsContext.cc_common_text_with_ev();
 
         for (Cc_common_text_with_evContext ftCtx : ccCommonTextWithEvContexts) {
             ftext.texts.add(getEvidencedString(ftCtx));
@@ -96,7 +110,8 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         List<CcLineParser.Cc_sequence_caution_lineContext> ccSequenceCautionLineContexts =
                 ctx.cc_sequence_caution_line();
 
-        for (CcLineParser.Cc_sequence_caution_lineContext lineContext : ccSequenceCautionLineContexts) {
+        for (CcLineParser.Cc_sequence_caution_lineContext lineContext :
+                ccSequenceCautionLineContexts) {
             CcLineObject.SequenceCautionObject object1 = new CcLineObject.SequenceCautionObject();
             sc.sequenceCautionObjects.add(object1);
 
@@ -104,14 +119,17 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                     lineContext.cc_sequence_caution_sequence();
             object1.sequence = ccSequenceCautionSequenceContext.CC_SC_SEQUENCE_TEXT().getText();
             if (ccSequenceCautionSequenceContext.evidence() != null) {
-                EvidenceInfo.processEvidence(object.getEvidenceInfo(), object1.sequence,
+                EvidenceInfo.processEvidence(
+                        object.getEvidenceInfo(),
+                        object1.sequence,
                         ccSequenceCautionSequenceContext.evidence().EV_TAG());
             }
 
             CcLineParser.Cc_sequence_caution_typeContext ccSequenceCautionTypeContext =
                     lineContext.cc_sequence_caution_type();
-            object1.type = CcLineObject.SequenceCautionType
-                    .fromSting(ccSequenceCautionTypeContext.CC_SC_TYPE_VALUE().getText());
+            object1.type =
+                    CcLineObject.SequenceCautionType.fromSting(
+                            ccSequenceCautionTypeContext.CC_SC_TYPE_VALUE().getText());
 
             CcLineParser.Cc_sequence_caution_positionContext ccSequenceCautionPositionContext =
                     lineContext.cc_sequence_caution_position();
@@ -136,7 +154,8 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                 object1.note = ccSequenceCautionNoteContext.CC_SC_NOTE_TEXT().getText();
             }
 
-            CcLineParser.Cc_sequence_caution_evidenceContext ev = lineContext.cc_sequence_caution_evidence();
+            CcLineParser.Cc_sequence_caution_evidenceContext ev =
+                    lineContext.cc_sequence_caution_evidence();
             if (ev != null) {
                 EvidenceInfo.processEvidence(object.getEvidenceInfo(), object1, ev.EV_TAG());
             }
@@ -161,7 +180,7 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                 ctx.cc_mass_spectrometry_mass_error();
         if (ccMassSpectrometryMassErrorContext != null) {
             String text1 = ccMassSpectrometryMassErrorContext.CC_MS_V_NUMBER().getText();
-            ms.massError =  Float.parseFloat(text1);
+            ms.massError = Float.parseFloat(text1);
         }
 
         CcLineParser.Cc_mass_spectrometry_mass_methodContext ccMassSpectrometryMassMethodContext =
@@ -169,11 +188,13 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         String text1 = ccMassSpectrometryMassMethodContext.cc_mass_spectrometry_value().getText();
         ms.method = text1;
 
-        CcLineParser.Cc_mass_spectrometry_mass_rangeContext rangeContext = ctx.cc_mass_spectrometry_mass_range();
+        CcLineParser.Cc_mass_spectrometry_mass_rangeContext rangeContext =
+                ctx.cc_mass_spectrometry_mass_range();
 
         List<CcLineParser.Cc_mass_spectrometry_mass_range_valueContext> rangeValueContexts =
                 rangeContext.cc_mass_spectrometry_mass_range_value();
-        for (CcLineParser.Cc_mass_spectrometry_mass_range_valueContext rangeValueContext : rangeValueContexts) {
+        for (CcLineParser.Cc_mass_spectrometry_mass_range_valueContext rangeValueContext :
+                rangeValueContexts) {
             CcLineParser.Cc_mass_spectrometry_mass_range_value_valueContext vv1 =
                     rangeValueContext.cc_mass_spectrometry_mass_range_value_value(0);
 
@@ -203,12 +224,14 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             ms.ranges.add(range);
         }
 
-        CcLineParser.Cc_mass_spectrometry_mass_noteContext noteContext = ctx.cc_mass_spectrometry_mass_note();
+        CcLineParser.Cc_mass_spectrometry_mass_noteContext noteContext =
+                ctx.cc_mass_spectrometry_mass_note();
         if (noteContext != null) {
             ms.note = noteContext.cc_properties_text().getText();
         }
 
-        CcLineParser.Cc_mass_spectrometry_mass_sourceContext sourceContext = ctx.cc_mass_spectrometry_mass_source();
+        CcLineParser.Cc_mass_spectrometry_mass_sourceContext sourceContext =
+                ctx.cc_mass_spectrometry_mass_source();
         if (sourceContext != null) {
             EvidenceInfo.processEvidence(object.getEvidenceInfo(), ms, sourceContext.EV_TAG());
 
@@ -229,7 +252,8 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         cc.object = wr;
         object.ccs.add(cc);
 
-        CcLineParser.Cc_web_resource_nameContext ccWebResourceNameContext = ctx.cc_web_resource_name();
+        CcLineParser.Cc_web_resource_nameContext ccWebResourceNameContext =
+                ctx.cc_web_resource_name();
         wr.name = ccWebResourceNameContext.cc_properties_text().getText();
 
         CcLineParser.Cc_web_resource_urlContext ccWebResourceUrlContext = ctx.cc_web_resource_url();
@@ -239,7 +263,8 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             wr.url = text.substring(1, text.length() - 1);
         }
 
-        CcLineParser.Cc_web_resource_noteContext ccWebResourceNoteContext = ctx.cc_web_resource_note();
+        CcLineParser.Cc_web_resource_noteContext ccWebResourceNoteContext =
+                ctx.cc_web_resource_note();
         if (ccWebResourceNoteContext != null) {
             wr.note = ccWebResourceNoteContext.cc_properties_text().getText();
         }
@@ -254,11 +279,14 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         cc.object = ir;
         object.ccs.add(cc);
 
-        // CC {{SP_Ac:identifier[ (xeno)]}|Self}; NbExp=n; IntAct=IntAct_Protein_Ac, IntAct_Protein_Ac;
-        List<CcLineParser.Cc_interaction_lineContext> ccInteractionLineContexts = ctx.cc_interaction_line();
+        // CC {{SP_Ac:identifier[ (xeno)]}|Self}; NbExp=n; IntAct=IntAct_Protein_Ac,
+        // IntAct_Protein_Ac;
+        List<CcLineParser.Cc_interaction_lineContext> ccInteractionLineContexts =
+                ctx.cc_interaction_line();
         for (CcLineParser.Cc_interaction_lineContext io : ccInteractionLineContexts) {
             CcLineObject.InteractionObject interactionObject = new CcLineObject.InteractionObject();
-            CcLineParser.Cc_interaction_intactContext ccInteractionIntactContext = io.cc_interaction_intact();
+            CcLineParser.Cc_interaction_intactContext ccInteractionIntactContext =
+                    io.cc_interaction_intact();
             interactionObject.firstId = ccInteractionIntactContext.CC_IR_AC(0).getText();
             interactionObject.secondId = ccInteractionIntactContext.CC_IR_AC(1).getText();
 
@@ -289,17 +317,21 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
     public void exitCc_biophyiochemical(CcLineParser.Cc_biophyiochemicalContext ctx) {
         CcLineObject.CC cc = new CcLineObject.CC();
         cc.topic = CcLineObject.CCTopicEnum.BIOPHYSICOCHEMICAL_PROPERTIES;
-        CcLineObject.BiophysicochemicalProperties bp = new CcLineObject.BiophysicochemicalProperties();
+        CcLineObject.BiophysicochemicalProperties bp =
+                new CcLineObject.BiophysicochemicalProperties();
         cc.object = bp;
         object.ccs.add(cc);
 
-        List<CcLineParser.Cc_biophyiochemical_propertiesContext> ctx2 = ctx.cc_biophyiochemical_properties();
-        for (CcLineParser.Cc_biophyiochemical_propertiesContext ccBiophyiochemicalPropertiesContext : ctx2) {
+        List<CcLineParser.Cc_biophyiochemical_propertiesContext> ctx2 =
+                ctx.cc_biophyiochemical_properties();
+        for (CcLineParser.Cc_biophyiochemical_propertiesContext
+                ccBiophyiochemicalPropertiesContext : ctx2) {
             processBiophysicalProperties(ccBiophyiochemicalPropertiesContext, bp);
         }
     }
 
-    private void processBiophysicalProperties(CcLineParser.Cc_biophyiochemical_propertiesContext ctx,
+    private void processBiophysicalProperties(
+            CcLineParser.Cc_biophyiochemical_propertiesContext ctx,
             CcLineObject.BiophysicochemicalProperties bp) {
         if (ctx.cc_biophyiochemical_absorption() != null) {
             Cc_biophyiochemical_absorption_basContext absBasContext =
@@ -315,8 +347,12 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             }
 
             CcLineParser.EvidenceContext evidence1 = textWithEv.evidence();
-            bp.bsorptionAbs = EvidencedString.get(absValue,
-                    evidence1 == null ? null : EvidenceInfo.processEvidence(evidence1.EV_TAG()));
+            bp.bsorptionAbs =
+                    EvidencedString.get(
+                            absValue,
+                            evidence1 == null
+                                    ? null
+                                    : EvidenceInfo.processEvidence(evidence1.EV_TAG()));
 
             Cc_biophyiochemical_absorption_noteContext absNotContext =
                     ctx.cc_biophyiochemical_absorption().cc_biophyiochemical_absorption_note();
@@ -331,19 +367,24 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             }
         }
 
-        CcLineParser.Cc_biophyiochemical_kineticContext kineticContext = ctx.cc_biophyiochemical_kinetic();
+        CcLineParser.Cc_biophyiochemical_kineticContext kineticContext =
+                ctx.cc_biophyiochemical_kinetic();
         if (kineticContext != null) {
-            List<CcLineParser.Cc_biophyiochemical_kinetic_kmContext> ccBiophyiochemicalKineticKmContexts =
-                    kineticContext.cc_biophyiochemical_kinetic_km();
-            for (CcLineParser.Cc_biophyiochemical_kinetic_kmContext km : ccBiophyiochemicalKineticKmContexts) {
-                CcLineParser.Cc_properties_text_level2_with_evContext c = km.cc_properties_text_level2_with_ev();
+            List<CcLineParser.Cc_biophyiochemical_kinetic_kmContext>
+                    ccBiophyiochemicalKineticKmContexts =
+                            kineticContext.cc_biophyiochemical_kinetic_km();
+            for (CcLineParser.Cc_biophyiochemical_kinetic_kmContext km :
+                    ccBiophyiochemicalKineticKmContexts) {
+                CcLineParser.Cc_properties_text_level2_with_evContext c =
+                        km.cc_properties_text_level2_with_ev();
                 bp.kms.add(getEvidencedString(c));
             }
 
             List<CcLineParser.Cc_biophyiochemical_kinetic_bpmaxContext> maxcontext =
                     kineticContext.cc_biophyiochemical_kinetic_bpmax();
             for (CcLineParser.Cc_biophyiochemical_kinetic_bpmaxContext c : maxcontext) {
-                CcLineParser.Cc_properties_text_level2_with_evContext cc = c.cc_properties_text_level2_with_ev();
+                CcLineParser.Cc_properties_text_level2_with_evContext cc =
+                        c.cc_properties_text_level2_with_ev();
                 bp.vmaxs.add(getEvidencedString(cc));
             }
 
@@ -352,16 +393,20 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             if (noteContext != null) {
                 Cc_properties_notes_level_2Context ccPropertiesNotesLevel2Context =
                         noteContext.cc_properties_notes_level_2();
-                List<CcLineParser.Cc_properties_note_text_level2_with_evContext> textLevel2WithEvContexts =
-                        ccPropertiesNotesLevel2Context.cc_properties_note_text_level2_with_ev();
-                for (CcLineParser.Cc_properties_note_text_level2_with_evContext cc : textLevel2WithEvContexts) {
+                List<CcLineParser.Cc_properties_note_text_level2_with_evContext>
+                        textLevel2WithEvContexts =
+                                ccPropertiesNotesLevel2Context
+                                        .cc_properties_note_text_level2_with_ev();
+                for (CcLineParser.Cc_properties_note_text_level2_with_evContext cc :
+                        textLevel2WithEvContexts) {
                     bp.kpNote.add(getEvidencedString(cc));
                 }
             }
         }
 
         if (ctx.cc_biophyiochemical_redox() != null) {
-            Cc_properties_notes_level_2Context c = ctx.cc_biophyiochemical_redox().cc_properties_notes_level_2();
+            Cc_properties_notes_level_2Context c =
+                    ctx.cc_biophyiochemical_redox().cc_properties_notes_level_2();
             List<CcLineParser.Cc_properties_note_text_level2_with_evContext> textWithEvs =
                     c.cc_properties_note_text_level2_with_ev();
             for (CcLineParser.Cc_properties_note_text_level2_with_evContext cc : textWithEvs) {
@@ -384,7 +429,8 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                     ctx.cc_biophyiochemical_temperature().cc_properties_notes_level_2();
             List<Cc_properties_note_text_level2_with_evContext> textLevel2WithEvContexts =
                     ccPropertiesNotesLevel2Context.cc_properties_note_text_level2_with_ev();
-            for (Cc_properties_note_text_level2_with_evContext textLevel2WithEvContext : textLevel2WithEvContexts) {
+            for (Cc_properties_note_text_level2_with_evContext textLevel2WithEvContext :
+                    textLevel2WithEvContexts) {
                 bp.temperatureDependence.add(getEvidencedString(textLevel2WithEvContext));
             }
         }
@@ -407,31 +453,47 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                 String text = sPosCtx.INTEGER().getText();
                 re.locations.add(Integer.parseInt(text));
                 if (sPosCtx.evidence() != null) {
-                    EvidenceInfo.processEvidence(object.getEvidenceInfo(), text, sPosCtx.evidence().EV_TAG());
+                    EvidenceInfo.processEvidence(
+                            object.getEvidenceInfo(), text, sPosCtx.evidence().EV_TAG());
                 }
             }
-        }
-
-        else if ((ctx.cc_rna_edigint_modified_position().cc_re_position_undetermined() != null)
-                && (ctx.cc_rna_edigint_modified_position().cc_re_position_undetermined()
-                        .CC_RE_MODIFIED_POSITION_UNDETERMINED() != null)) {
+        } else if ((ctx.cc_rna_edigint_modified_position().cc_re_position_undetermined() != null)
+                && (ctx.cc_rna_edigint_modified_position()
+                                .cc_re_position_undetermined()
+                                .CC_RE_MODIFIED_POSITION_UNDETERMINED()
+                        != null)) {
             re.locationEnum = CcLineObject.RnaEditingLocationEnum.UNDETERMINED;
-            if (ctx.cc_rna_edigint_modified_position().cc_re_position_undetermined().evidence() != null) {
-                EvidenceInfo.processEvidence(object.getEvidenceInfo(), re.locationEnum,
-                        ctx.cc_rna_edigint_modified_position().cc_re_position_undetermined().evidence().EV_TAG());
+            if (ctx.cc_rna_edigint_modified_position().cc_re_position_undetermined().evidence()
+                    != null) {
+                EvidenceInfo.processEvidence(
+                        object.getEvidenceInfo(),
+                        re.locationEnum,
+                        ctx.cc_rna_edigint_modified_position()
+                                .cc_re_position_undetermined()
+                                .evidence()
+                                .EV_TAG());
             }
         } else if ((ctx.cc_rna_edigint_modified_position().cc_re_position_not_applicable() != null)
-                && (ctx.cc_rna_edigint_modified_position().cc_re_position_not_applicable()
-                        .CC_RE_MODIFIED_POSITION_NOT_APPLICABLE() != null)) {
+                && (ctx.cc_rna_edigint_modified_position()
+                                .cc_re_position_not_applicable()
+                                .CC_RE_MODIFIED_POSITION_NOT_APPLICABLE()
+                        != null)) {
             re.locationEnum = CcLineObject.RnaEditingLocationEnum.NOT_APPLICABLE;
-            if (ctx.cc_rna_edigint_modified_position().cc_re_position_not_applicable().evidence() != null) {
-                EvidenceInfo.processEvidence(object.getEvidenceInfo(), re.locationEnum,
-                        ctx.cc_rna_edigint_modified_position().cc_re_position_not_applicable().evidence().EV_TAG());
+            if (ctx.cc_rna_edigint_modified_position().cc_re_position_not_applicable().evidence()
+                    != null) {
+                EvidenceInfo.processEvidence(
+                        object.getEvidenceInfo(),
+                        re.locationEnum,
+                        ctx.cc_rna_edigint_modified_position()
+                                .cc_re_position_not_applicable()
+                                .evidence()
+                                .EV_TAG());
             }
         }
 
         if (ctx.cc_rna_edigint_note() != null) {
-            Cc_properties_notesContext ccPropertiesNotesContext = ctx.cc_rna_edigint_note().cc_properties_notes();
+            Cc_properties_notesContext ccPropertiesNotesContext =
+                    ctx.cc_rna_edigint_note().cc_properties_notes();
             List<Cc_properties_note_text_with_evContext> ccPropertiesTextWithEvContexts =
                     ccPropertiesNotesContext.cc_properties_note_text_with_ev();
             for (Cc_properties_note_text_with_evContext c : ccPropertiesTextWithEvContexts) {
@@ -457,9 +519,11 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             sl.molecule = word;
         }
 
-        CcLineParser.Cc_subcellular_noteContext ccSubcellularNoteContext = ctx.cc_subcellular_note();
+        CcLineParser.Cc_subcellular_noteContext ccSubcellularNoteContext =
+                ctx.cc_subcellular_note();
         if (ccSubcellularNoteContext != null) {
-            Cc_common_textsContext ccCommonTextsContext = ccSubcellularNoteContext.cc_common_texts();
+            Cc_common_textsContext ccCommonTextsContext =
+                    ccSubcellularNoteContext.cc_common_texts();
             List<Cc_common_text_with_evContext> ccCommonTextWithEvContexts =
                     ccCommonTextsContext.cc_common_text_with_ev();
 
@@ -471,21 +535,29 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         CcLineParser.Cc_subcellular_location_sectionContext ccSubcellularLocationSectionContext =
                 ctx.cc_subcellular_location_section();
         if (ccSubcellularLocationSectionContext != null) {
-            List<CcLineParser.Cc_subcellular_location_location_with_evidenceContext> ccSubcellularLocationLocationWithEvidenceContexts =
-                    ccSubcellularLocationSectionContext.cc_subcellular_location_location_with_evidence();
-            for (CcLineParser.Cc_subcellular_location_location_with_evidenceContext locationContext : ccSubcellularLocationLocationWithEvidenceContexts) {
+            List<CcLineParser.Cc_subcellular_location_location_with_evidenceContext>
+                    ccSubcellularLocationLocationWithEvidenceContexts =
+                            ccSubcellularLocationSectionContext
+                                    .cc_subcellular_location_location_with_evidence();
+            for (CcLineParser.Cc_subcellular_location_location_with_evidenceContext
+                    locationContext : ccSubcellularLocationLocationWithEvidenceContexts) {
                 CcLineObject.LocationObject locationObject = new CcLineObject.LocationObject();
 
-                CcLineParser.Cc_subcellular_location_locationContext ccSubcellularLocationLocationContext =
-                        locationContext.cc_subcellular_location_location();
+                CcLineParser.Cc_subcellular_location_locationContext
+                        ccSubcellularLocationLocationContext =
+                                locationContext.cc_subcellular_location_location();
 
-                List<CcLineParser.Cc_subcellular_location_value_with_evidenceContext> valueContexts =
-                        ccSubcellularLocationLocationContext.cc_subcellular_location_value_with_evidence();
+                List<CcLineParser.Cc_subcellular_location_value_with_evidenceContext>
+                        valueContexts =
+                                ccSubcellularLocationLocationContext
+                                        .cc_subcellular_location_value_with_evidence();
                 int size = valueContexts.size();
                 if (size >= 1) {
-                    CcLineParser.Cc_subcellular_location_value_with_evidenceContext locEvi = valueContexts.get(0);
-                    CcLineParser.Cc_subcellular_location_valueContext ccSubcellularLocationValueContext =
-                            locEvi.cc_subcellular_location_value();
+                    CcLineParser.Cc_subcellular_location_value_with_evidenceContext locEvi =
+                            valueContexts.get(0);
+                    CcLineParser.Cc_subcellular_location_valueContext
+                            ccSubcellularLocationValueContext =
+                                    locEvi.cc_subcellular_location_value();
 
                     locationObject.subcellularLocation = new CcLineObject.LocationValue();
 
@@ -493,68 +565,92 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                             ccSubcellularLocationValueContext.cc_subcellular_words().getText();
 
                     if (ccSubcellularLocationValueContext.cc_subcellular_location_flag() != null) {
-                        String text = ccSubcellularLocationValueContext.cc_subcellular_location_flag().CC_SL_FLAG()
-                                .getText();
+                        String text =
+                                ccSubcellularLocationValueContext
+                                        .cc_subcellular_location_flag()
+                                        .CC_SL_FLAG()
+                                        .getText();
                         String replace = text.replace("\nCC       ", " ");
                         locationObject.subcellularLocation.flag =
-                                CcLineObject.LocationFlagEnum.fromSting(replace.substring(1, replace.length() - 1));
+                                CcLineObject.LocationFlagEnum.fromSting(
+                                        replace.substring(1, replace.length() - 1));
                     }
 
                     if (locEvi.evidence() != null) {
-                        EvidenceInfo.processEvidence(object.getEvidenceInfo(), locationObject.subcellularLocation,
+                        EvidenceInfo.processEvidence(
+                                object.getEvidenceInfo(),
+                                locationObject.subcellularLocation,
                                 locEvi.evidence().EV_TAG());
                     }
                 }
 
                 if (size >= 2) {
 
-                    CcLineParser.Cc_subcellular_location_value_with_evidenceContext locEvi = valueContexts.get(1);
-                    CcLineParser.Cc_subcellular_location_valueContext ccSubcellularLocationValueContext =
-                            locEvi.cc_subcellular_location_value();
+                    CcLineParser.Cc_subcellular_location_value_with_evidenceContext locEvi =
+                            valueContexts.get(1);
+                    CcLineParser.Cc_subcellular_location_valueContext
+                            ccSubcellularLocationValueContext =
+                                    locEvi.cc_subcellular_location_value();
 
                     locationObject.topology = new CcLineObject.LocationValue();
                     locationObject.topology.value =
                             ccSubcellularLocationValueContext.cc_subcellular_words().getText();
 
                     if (ccSubcellularLocationValueContext.cc_subcellular_location_flag() != null) {
-                        String text = ccSubcellularLocationValueContext.cc_subcellular_location_flag().CC_SL_FLAG()
-                                .getText();
+                        String text =
+                                ccSubcellularLocationValueContext
+                                        .cc_subcellular_location_flag()
+                                        .CC_SL_FLAG()
+                                        .getText();
                         String replace = text.replace("\nCC       ", " ");
                         locationObject.topology.flag =
-                                CcLineObject.LocationFlagEnum.fromSting(replace.substring(1, replace.length() - 1));
+                                CcLineObject.LocationFlagEnum.fromSting(
+                                        replace.substring(1, replace.length() - 1));
                     }
 
                     if (locEvi.evidence() != null) {
-                        EvidenceInfo.processEvidence(object.getEvidenceInfo(), locationObject.topology,
+                        EvidenceInfo.processEvidence(
+                                object.getEvidenceInfo(),
+                                locationObject.topology,
                                 locEvi.evidence().EV_TAG());
                     }
                 }
 
                 if (size >= 3) {
-                    CcLineParser.Cc_subcellular_location_value_with_evidenceContext locEvi = valueContexts.get(2);
-                    CcLineParser.Cc_subcellular_location_valueContext ccSubcellularLocationValueContext =
-                            locEvi.cc_subcellular_location_value();
+                    CcLineParser.Cc_subcellular_location_value_with_evidenceContext locEvi =
+                            valueContexts.get(2);
+                    CcLineParser.Cc_subcellular_location_valueContext
+                            ccSubcellularLocationValueContext =
+                                    locEvi.cc_subcellular_location_value();
 
                     locationObject.orientation = new CcLineObject.LocationValue();
                     locationObject.orientation.value =
                             ccSubcellularLocationValueContext.cc_subcellular_words().getText();
 
                     if (ccSubcellularLocationValueContext.cc_subcellular_location_flag() != null) {
-                        String text = ccSubcellularLocationValueContext.cc_subcellular_location_flag().CC_SL_FLAG()
-                                .getText();
+                        String text =
+                                ccSubcellularLocationValueContext
+                                        .cc_subcellular_location_flag()
+                                        .CC_SL_FLAG()
+                                        .getText();
                         String replace = text.replace("\nCC       ", " ");
                         locationObject.orientation.flag =
-                                CcLineObject.LocationFlagEnum.fromSting(replace.substring(1, replace.length() - 1));
+                                CcLineObject.LocationFlagEnum.fromSting(
+                                        replace.substring(1, replace.length() - 1));
                     }
 
                     if (locEvi.evidence() != null) {
-                        EvidenceInfo.processEvidence(object.getEvidenceInfo(), locationObject.orientation,
+                        EvidenceInfo.processEvidence(
+                                object.getEvidenceInfo(),
+                                locationObject.orientation,
                                 locEvi.evidence().EV_TAG());
                     }
                 }
 
                 if (locationContext.evidence() != null) {
-                    EvidenceInfo.processEvidence(object.getEvidenceInfo(), locationObject,
+                    EvidenceInfo.processEvidence(
+                            object.getEvidenceInfo(),
+                            locationObject,
                             locationContext.evidence().EV_TAG());
                 }
 
@@ -575,31 +671,38 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
         CcLineParser.Cc_alternative_products_eventContext ccAlternativeProductsEventContext =
                 ctx.cc_alternative_products_event();
         List<CcLineParser.Cc_alternative_valueContext> ccAlternativeValueContexts1 =
-                ccAlternativeProductsEventContext.cc_alternative_products_event_event().cc_alternative_value();
+                ccAlternativeProductsEventContext
+                        .cc_alternative_products_event_event()
+                        .cc_alternative_value();
 
-        for (CcLineParser.Cc_alternative_valueContext ccAlternativeValueContext : ccAlternativeValueContexts1) {
+        for (CcLineParser.Cc_alternative_valueContext ccAlternativeValueContext :
+                ccAlternativeValueContexts1) {
             String text = ccAlternativeValueContext.getText();
             ap.events.add(text);
         }
 
-        ap.namedIsoforms = ccAlternativeProductsEventContext.cc_alternative_products_event_namedisoforms()
-                .cc_alternative_value().getText();
+        ap.namedIsoforms =
+                ccAlternativeProductsEventContext
+                        .cc_alternative_products_event_namedisoforms()
+                        .cc_alternative_value()
+                        .getText();
         if (ccAlternativeProductsEventContext.cc_alternative_products_event_comment() != null) {
 
             Cc_properties_notes_level_2Context ccPropertiesNotesLevel2Context =
-                    ccAlternativeProductsEventContext.cc_alternative_products_event_comment()
+                    ccAlternativeProductsEventContext
+                            .cc_alternative_products_event_comment()
                             .cc_properties_notes_level_2();
             List<Cc_properties_note_text_level2_with_evContext> textLevel2WithEvContexts =
                     ccPropertiesNotesLevel2Context.cc_properties_note_text_level2_with_ev();
             for (Cc_properties_note_text_level2_with_evContext co : textLevel2WithEvContexts) {
                 ap.comment.add(getEvidencedString(co));
             }
-
         }
 
         List<CcLineParser.Cc_alternative_products_nameContext> ccAlternativeProductsNameContexts =
                 ctx.cc_alternative_products_name();
-        for (CcLineParser.Cc_alternative_products_nameContext nameContext : ccAlternativeProductsNameContexts) {
+        for (CcLineParser.Cc_alternative_products_nameContext nameContext :
+                ccAlternativeProductsNameContexts) {
             CcLineObject.AlternativeProductName name = new CcLineObject.AlternativeProductName();
             name.name = getEvidenceString(nameContext.cc_alternative_value_with_evidence());
 
@@ -612,7 +715,9 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             }
 
             CcLineParser.Cc_alternative_products_sequence_valueContext seqvalueContext =
-                    nameContext.cc_alternative_products_sequence().cc_alternative_products_sequence_value();
+                    nameContext
+                            .cc_alternative_products_sequence()
+                            .cc_alternative_products_sequence_value();
             if (seqvalueContext.CC_AP_DISPLAYED() != null) {
                 name.sequenceEnum = CcLineObject.AlternativeNameSequenceEnum.DISPLAYED;
             } else if (seqvalueContext.CC_AP_EXTERNAL() != null) {
@@ -623,9 +728,12 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                 name.sequenceEnum = CcLineObject.AlternativeNameSequenceEnum.UNSURE;
             } else if (seqvalueContext.CC_AP_DESCRIBED() != null) {
                 name.sequenceEnum = CcLineObject.AlternativeNameSequenceEnum.DESCRIBED;
-            } else if (seqvalueContext.cc_alternative_products_sequence_value_identifiers() != null) {
+            } else if (seqvalueContext.cc_alternative_products_sequence_value_identifiers()
+                    != null) {
                 List<TerminalNode> terminalNodes =
-                        seqvalueContext.cc_alternative_products_sequence_value_identifiers().CC_AP_FEATURE_IDENTIFIER();
+                        seqvalueContext
+                                .cc_alternative_products_sequence_value_identifiers()
+                                .CC_AP_FEATURE_IDENTIFIER();
                 for (TerminalNode terminalNode : terminalNodes) {
                     String text = terminalNode.getText();
                     name.sequenceFTId.add(text);
@@ -635,9 +743,11 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             CcLineParser.Cc_alternative_products_synonymsContext synContext =
                     nameContext.cc_alternative_products_synonyms();
             if (synContext != null) {
-                List<CcLineParser.Cc_alternative_value_with_evidenceContext> ccAlternativeValueContexts =
-                        synContext.cc_alternative_value_with_evidence();
-                for (CcLineParser.Cc_alternative_value_with_evidenceContext ccAlternativeValueContext : ccAlternativeValueContexts) {
+                List<CcLineParser.Cc_alternative_value_with_evidenceContext>
+                        ccAlternativeValueContexts =
+                                synContext.cc_alternative_value_with_evidence();
+                for (CcLineParser.Cc_alternative_value_with_evidenceContext
+                        ccAlternativeValueContext : ccAlternativeValueContexts) {
                     name.synNames.add(getEvidenceString(ccAlternativeValueContext));
                 }
             }
@@ -680,8 +790,7 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                 }
                 dd.name = text.substring(0, lastB).trim();
                 dd.abbr = text.substring(lastB + 1, text.length() - 1);
-            } else
-                dd.name = text;
+            } else dd.name = text;
 
             CcLineParser.Cc_disease_mimContext ccDiseaseAbbrMinContext = ctx.cc_disease_mim();
             String text1 = ccDiseaseAbbrMinContext.getText();
@@ -692,7 +801,9 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             dd.description = ctx.cc_disease_description().cc_disease_text_d().getText();
 
             if (ctx.cc_disease_description().evidence() != null) {
-                EvidenceInfo.processEvidence(object.evidenceInfo, dd.description,
+                EvidenceInfo.processEvidence(
+                        object.evidenceInfo,
+                        dd.description,
                         ctx.cc_disease_description().evidence().EV_TAG());
             }
         }
@@ -729,7 +840,8 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
             Cc_properties_notesContext ccPropertiesNotesContext = note.cc_properties_notes();
             List<Cc_properties_note_text_with_evContext> ccPropertiesTextWithEvContexts =
                     ccPropertiesNotesContext.cc_properties_note_text_with_ev();
-            for (Cc_properties_note_text_with_evContext ccPropertiesTextWithEvContext : ccPropertiesTextWithEvContexts) {
+            for (Cc_properties_note_text_with_evContext ccPropertiesTextWithEvContext :
+                    ccPropertiesTextWithEvContexts) {
                 dd.note.add(getEvidencedString(ccPropertiesTextWithEvContext));
             }
         }
@@ -742,9 +854,11 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
                     CcLineObject.CofactorItem item = new CcLineObject.CofactorItem();
                     item.name = line.cc_cofactor_name().cc_properties_text_level2().getText();
                     item.xref = line.cc_cofactor_xref().cc_properties_text_level2().getText();
-                    CcLineParser.Cc_cofactor_evidenceContext evidenceContext = line.cc_cofactor_evidence();
+                    CcLineParser.Cc_cofactor_evidenceContext evidenceContext =
+                            line.cc_cofactor_evidence();
                     if (evidenceContext != null) {
-                        EvidenceInfo.processEvidence(object.getEvidenceInfo(), item, evidenceContext.EV_TAG());
+                        EvidenceInfo.processEvidence(
+                                object.getEvidenceInfo(), item, evidenceContext.EV_TAG());
                     }
                     dd.cofactors.add(item);
                 }
@@ -755,48 +869,54 @@ public class CcLineModelListener extends CcLineParserBaseListener implements Par
 
     @Override
     public void exitCc_catalytic_activity(CcLineParser.Cc_catalytic_activityContext ctx) {
-    	  CcLineObject.CC cc = new CcLineObject.CC();
-          cc.topic = CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY;
-          CcLineObject.CatalyticActivity dd = new CcLineObject.CatalyticActivity();
-          cc.object = dd;
-         
-          Cc_cat_act_reaction_lineContext reactionLine = ctx.cc_cat_act_reaction_line();
-          if (reactionLine != null) {
-        	  CcLineObject.CAReaction reaction =new CcLineObject.CAReaction();
-        	  dd.reaction =reaction;
-        	  reaction.name = reactionLine.cc_cat_act_reaction().cc_properties_text_level3().getText();
-        	  if(reactionLine.cc_cat_act_xref() !=null)
-        		  reaction.xref =reactionLine.cc_cat_act_xref().cc_properties_text_level2().getText();
-        	  if(reactionLine.cc_cat_act_ec() !=null) {
-        		  reaction.ec = reactionLine.cc_cat_act_ec().cc_properties_text_level2().getText();		  
-        	  }
-        	  CcLineParser.Cc_cat_act_evidenceContext evidenceContext =reactionLine.cc_cat_act_evidence();
-        	  if (evidenceContext != null) {
-                  EvidenceInfo.processEvidence(object.getEvidenceInfo(), reaction, evidenceContext.EV_TAG());
-              }
-          }
-          CcLineParser.Cc_cat_act_pd_linesContext lineCtx = ctx.cc_cat_act_pd_lines();
-          if (lineCtx != null) {
-              List<Cc_cat_act_pd_lineContext> lines = lineCtx.cc_cat_act_pd_line();
-              if (!lines.isEmpty()) {
-                  dd.physiologicalDirections = new ArrayList<>();
-                  for (Cc_cat_act_pd_lineContext line : lines) {
-                      CcLineObject.CAPhysioDirection item = new CcLineObject.CAPhysioDirection();
-                      item.name = line.cc_cat_act_pd().cc_properties_text_level2().getText();
-                      item.xref = line.cc_cat_act_pd_xref().cc_properties_text_level2().getText();
-                      CcLineParser.Cc_cat_act_pd_evidenceContext evidenceContext = line.cc_cat_act_pd_evidence();
-                      if (evidenceContext != null) {
-                          EvidenceInfo.processEvidence(object.getEvidenceInfo(), item, evidenceContext.EV_TAG());
-                      }
-                      dd.physiologicalDirections.add(item);
-                  }
-              }
-          }
-          object.ccs.add(cc);
+        CcLineObject.CC cc = new CcLineObject.CC();
+        cc.topic = CcLineObject.CCTopicEnum.CATALYTIC_ACTIVITY;
+        CcLineObject.CatalyticActivity dd = new CcLineObject.CatalyticActivity();
+        cc.object = dd;
+
+        Cc_cat_act_reaction_lineContext reactionLine = ctx.cc_cat_act_reaction_line();
+        if (reactionLine != null) {
+            CcLineObject.CAReaction reaction = new CcLineObject.CAReaction();
+            dd.reaction = reaction;
+            reaction.name =
+                    reactionLine.cc_cat_act_reaction().cc_properties_text_level3().getText();
+            if (reactionLine.cc_cat_act_xref() != null)
+                reaction.xref =
+                        reactionLine.cc_cat_act_xref().cc_properties_text_level2().getText();
+            if (reactionLine.cc_cat_act_ec() != null) {
+                reaction.ec = reactionLine.cc_cat_act_ec().cc_properties_text_level2().getText();
+            }
+            CcLineParser.Cc_cat_act_evidenceContext evidenceContext =
+                    reactionLine.cc_cat_act_evidence();
+            if (evidenceContext != null) {
+                EvidenceInfo.processEvidence(
+                        object.getEvidenceInfo(), reaction, evidenceContext.EV_TAG());
+            }
+        }
+        CcLineParser.Cc_cat_act_pd_linesContext lineCtx = ctx.cc_cat_act_pd_lines();
+        if (lineCtx != null) {
+            List<Cc_cat_act_pd_lineContext> lines = lineCtx.cc_cat_act_pd_line();
+            if (!lines.isEmpty()) {
+                dd.physiologicalDirections = new ArrayList<>();
+                for (Cc_cat_act_pd_lineContext line : lines) {
+                    CcLineObject.CAPhysioDirection item = new CcLineObject.CAPhysioDirection();
+                    item.name = line.cc_cat_act_pd().cc_properties_text_level2().getText();
+                    item.xref = line.cc_cat_act_pd_xref().cc_properties_text_level2().getText();
+                    CcLineParser.Cc_cat_act_pd_evidenceContext evidenceContext =
+                            line.cc_cat_act_pd_evidence();
+                    if (evidenceContext != null) {
+                        EvidenceInfo.processEvidence(
+                                object.getEvidenceInfo(), item, evidenceContext.EV_TAG());
+                    }
+                    dd.physiologicalDirections.add(item);
+                }
+            }
+        }
+        object.ccs.add(cc);
     }
+
     @Override
     public CcLineObject getObject() {
         return object;
     }
-
 }

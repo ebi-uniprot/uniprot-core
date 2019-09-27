@@ -20,13 +20,13 @@ import org.uniprot.core.uniprot.evidence.HasEvidences;
 
 public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
         implements FFLineBuilder<UniProtReference> {
-    private final static RPLineBuilder rpLineBuilder = new RPLineBuilder();
-    private final static RCLineBuilder rcLineBuilder = new RCLineBuilder();
-    private final static RXLineBuilder rxLineBuilder = new RXLineBuilder();
-    private final static RGLineBuilder rgLineBuilder = new RGLineBuilder();
-    private final static RALineBuilder raLineBuilder = new RALineBuilder();
-    private final static RTLineBuilder rtLineBuilder = new RTLineBuilder();
-    private final static RLLineBuilder rlLineBuilder = new RLLineBuilder();
+    private static final RPLineBuilder rpLineBuilder = new RPLineBuilder();
+    private static final RCLineBuilder rcLineBuilder = new RCLineBuilder();
+    private static final RXLineBuilder rxLineBuilder = new RXLineBuilder();
+    private static final RGLineBuilder rgLineBuilder = new RGLineBuilder();
+    private static final RALineBuilder raLineBuilder = new RALineBuilder();
+    private static final RTLineBuilder rtLineBuilder = new RTLineBuilder();
+    private static final RLLineBuilder rlLineBuilder = new RLLineBuilder();
     private int rn;
 
     public RLineBuilder() {
@@ -59,25 +59,33 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
         lines.addAll(buildRNLine(rn, f, includeFFMarkup, showEvidence));
 
         // RP Line rLine.append(RPLineNew.export(citation));
-        lines.addAll(rpLineBuilder.buildLine(f.getReferencePositions(), includeFFMarkup, showEvidence));
+        lines.addAll(
+                rpLineBuilder.buildLine(f.getReferencePositions(), includeFFMarkup, showEvidence));
 
         // RC Line rLine.append(RCLineNew.exportWithEvidenceTag(citation));
-        lines.addAll(rcLineBuilder.buildLine(f.getReferenceComments(), includeFFMarkup, showEvidence));
+        lines.addAll(
+                rcLineBuilder.buildLine(f.getReferenceComments(), includeFFMarkup, showEvidence));
         // RX line rLine.append(RXLineNew.export(citation));
         lines.addAll(rxLineBuilder.buildLine(f.getCitation(), includeFFMarkup, showEvidence));
         // RG line rLine.append(RGLineNew.export(citation));
-        lines.addAll(rgLineBuilder.buildLine(f.getCitation().getAuthoringGroup(), includeFFMarkup, showEvidence));
+        lines.addAll(
+                rgLineBuilder.buildLine(
+                        f.getCitation().getAuthoringGroup(), includeFFMarkup, showEvidence));
         // RA line rLine.append(RALineNew.export(citation));
-        lines.addAll(raLineBuilder.buildLine(f.getCitation().getAuthors(), includeFFMarkup, showEvidence));
+        lines.addAll(
+                raLineBuilder.buildLine(
+                        f.getCitation().getAuthors(), includeFFMarkup, showEvidence));
         // RT line rLine.append(RTLineNew.export(citation));
-        lines.addAll(rtLineBuilder.buildLine(f.getCitation().getTitle(), includeFFMarkup, showEvidence));
+        lines.addAll(
+                rtLineBuilder.buildLine(f.getCitation().getTitle(), includeFFMarkup, showEvidence));
         // RL line rLine.append(RLLineNew.export(citation));
         lines.addAll(rlLineBuilder.buildLine(f.getCitation(), includeFFMarkup, showEvidence));
 
         return FFLines.create(lines);
     }
 
-    private List<String> buildRNLine(int rn, HasEvidences he, boolean includeFFMarkup, boolean showEvidence) {
+    private List<String> buildRNLine(
+            int rn, HasEvidences he, boolean includeFFMarkup, boolean showEvidence) {
 
         StringBuilder sb = new StringBuilder();
         String rnLinePrefix = LineType.RN + DEFAUT_LINESPACE;
@@ -90,6 +98,5 @@ public class RLineBuilder extends FFLineBuilderAbstr<UniProtReference>
         List<String> lines = new ArrayList<>();
         lines.add(sb.toString());
         return lines;
-
     }
 }

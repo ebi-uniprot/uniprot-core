@@ -1,13 +1,12 @@
 package org.uniprot.core.citation.impl;
 
+import static java.util.Collections.emptyList;
+
 import java.util.List;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
-
-import static java.util.Collections.emptyList;
-
 
 public class BookImpl extends AbstractCitationImpl implements Book {
     private static final long serialVersionUID = 7240686919749710678L;
@@ -20,12 +19,34 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     private String address;
 
     private BookImpl() {
-        this(emptyList(), emptyList(), emptyList(), null, null, null, emptyList(), null, null, null, null, null);
+        this(
+                emptyList(),
+                emptyList(),
+                emptyList(),
+                null,
+                null,
+                null,
+                emptyList(),
+                null,
+                null,
+                null,
+                null,
+                null);
     }
 
-    public BookImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                    String title, PublicationDate publicationDate, String bookName, List<Author> editors,
-                    String firstPage, String lastPage, String volume, String publisher, String address) {
+    public BookImpl(
+            List<String> authoringGroup,
+            List<Author> authors,
+            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            String title,
+            PublicationDate publicationDate,
+            String bookName,
+            List<Author> editors,
+            String firstPage,
+            String lastPage,
+            String volume,
+            String publisher,
+            String address) {
         super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
         this.bookName = Utils.nullToEmpty(bookName);
         this.editors = Utils.nonNullUnmodifiableList(editors);
@@ -122,43 +143,28 @@ public class BookImpl extends AbstractCitationImpl implements Book {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         BookImpl other = (BookImpl) obj;
         if (address == null) {
-            if (other.address != null)
-                return false;
-        } else if (!address.equals(other.address))
-            return false;
+            if (other.address != null) return false;
+        } else if (!address.equals(other.address)) return false;
         if (bookName == null) {
-            if (other.bookName != null)
-                return false;
-        } else if (!bookName.equals(other.bookName))
-            return false;
+            if (other.bookName != null) return false;
+        } else if (!bookName.equals(other.bookName)) return false;
         if (editors == null) {
-            if (other.editors != null)
-                return false;
-        } else if (!editors.equals(other.editors))
-            return false;
+            if (other.editors != null) return false;
+        } else if (!editors.equals(other.editors)) return false;
         if (firstPage == null) {
-            if (other.firstPage != null)
-                return false;
-        } else if (!firstPage.equals(other.firstPage))
-            return false;
+            if (other.firstPage != null) return false;
+        } else if (!firstPage.equals(other.firstPage)) return false;
         if (lastPage == null) {
-            if (other.lastPage != null)
-                return false;
-        } else if (!lastPage.equals(other.lastPage))
-            return false;
+            if (other.lastPage != null) return false;
+        } else if (!lastPage.equals(other.lastPage)) return false;
         if (publisher == null) {
-            if (other.publisher != null)
-                return false;
-        } else if (!publisher.equals(other.publisher))
-            return false;
+            if (other.publisher != null) return false;
+        } else if (!publisher.equals(other.publisher)) return false;
         if (volume == null) {
             return other.volume == null;
         } else return volume.equals(other.volume);

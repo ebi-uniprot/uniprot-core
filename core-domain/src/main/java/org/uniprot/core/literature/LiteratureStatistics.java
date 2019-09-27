@@ -2,9 +2,7 @@ package org.uniprot.core.literature;
 
 import java.io.Serializable;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public interface LiteratureStatistics extends Serializable {
 
     long getReviewedProteinCount();
@@ -24,5 +22,4 @@ public interface LiteratureStatistics extends Serializable {
     default boolean hasMappedProteinCount() {
         return getMappedProteinCount() > 0;
     }
-
 }

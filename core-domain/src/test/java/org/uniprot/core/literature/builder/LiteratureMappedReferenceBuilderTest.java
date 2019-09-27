@@ -1,15 +1,14 @@
 package org.uniprot.core.literature.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Collections;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.literature.LiteratureMappedReference;
-import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
-
-import java.util.Collections;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class LiteratureMappedReferenceBuilderTest {
 
@@ -31,7 +30,8 @@ class LiteratureMappedReferenceBuilderTest {
 
     @Test
     void testCompleteLiteratureEntryWithAdd() {
-        LiteratureMappedReference mappedReference = createCompleteLiteratureMappedReferenceWithAdd();
+        LiteratureMappedReference mappedReference =
+                createCompleteLiteratureMappedReferenceWithAdd();
         validateLiteratureMappedReference(mappedReference);
     }
 
@@ -43,7 +43,8 @@ class LiteratureMappedReferenceBuilderTest {
         assertEquals(mappedReference.getSource(), "source value");
 
         assertTrue(mappedReference.hasSourceCategory());
-        MatcherAssert.assertThat(mappedReference.getSourceCategory(), Matchers.contains("source category"));
+        MatcherAssert.assertThat(
+                mappedReference.getSourceCategory(), Matchers.contains("source category"));
 
         assertTrue(mappedReference.hasSourceId());
         assertEquals(mappedReference.getSourceId(), "source Id");
@@ -72,5 +73,4 @@ class LiteratureMappedReferenceBuilderTest {
                 .source("source value")
                 .sourceId("source Id");
     }
-
 }

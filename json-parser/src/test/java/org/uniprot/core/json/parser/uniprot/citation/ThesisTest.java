@@ -1,6 +1,10 @@
 package org.uniprot.core.json.parser.uniprot.citation;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -10,20 +14,14 @@ import org.uniprot.core.citation.Thesis;
 import org.uniprot.core.citation.builder.ThesisBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
-import java.util.Collections;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class ThesisTest {
-
 
     @Test
     void testThesisSimple() {
-        Citation citation =  new ThesisBuilder().build();
+        Citation citation = new ThesisBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(citation);
@@ -48,13 +46,14 @@ public class ThesisTest {
 
         assertNotNull(jsonNode.get("address"));
         assertEquals("thesis address", jsonNode.get("address").asText());
-
     }
 
-    public static Thesis getThesis(){
-        DBCrossReference<CitationXrefType> xref = new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(CitationXrefType.PUBMED)
-                .id("somepID1").build();
+    public static Thesis getThesis() {
+        DBCrossReference<CitationXrefType> xref =
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .databaseType(CitationXrefType.PUBMED)
+                        .id("somepID1")
+                        .build();
         return new ThesisBuilder()
                 .address("thesis address")
                 .institute("thesis institute")

@@ -15,35 +15,41 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
-public class KwLineConverter extends EvidenceCollector implements Converter<KwLineObject, List<Keyword>> {
-    private final Map<String,Pair<String, KeywordCategory> > keywordMap;
+public class KwLineConverter extends EvidenceCollector
+        implements Converter<KwLineObject, List<Keyword>> {
+    private final Map<String, Pair<String, KeywordCategory>> keywordMap;
     private final boolean ignoreWrongId;
-    private static Pair<String, KeywordCategory> DEFAULT_KEYWORD_ID = new PairImpl<>("", KeywordCategory.UNKNOWN);
+    private static Pair<String, KeywordCategory> DEFAULT_KEYWORD_ID =
+            new PairImpl<>("", KeywordCategory.UNKNOWN);
 
-    public KwLineConverter(Map<String, Pair<String, KeywordCategory> > keywordMap) {
+    public KwLineConverter(Map<String, Pair<String, KeywordCategory>> keywordMap) {
         this(keywordMap, true);
     }
 
-    public KwLineConverter(Map<String, Pair<String, KeywordCategory>> keywordMap, boolean ignoreWrongId) {
+    public KwLineConverter(
+            Map<String, Pair<String, KeywordCategory>> keywordMap, boolean ignoreWrongId) {
         this.keywordMap = keywordMap;
         this.ignoreWrongId = ignoreWrongId;
     }
 
-
     @Override
     public List<Keyword> convert(KwLineObject f) {
-        Map<Object, List<Evidence>> evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
+        Map<Object, List<Evidence>> evidences =
+                EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidences.values());
         List<Keyword> keywords = new ArrayList<>();
         for (String kw : f.keywords) {
-            Pair<String, KeywordCategory> keywordId= keywordMap.getOrDefault(kw, DEFAULT_KEYWORD_ID );
+            Pair<String, KeywordCategory> keywordId =
+                    keywordMap.getOrDefault(kw, DEFAULT_KEYWORD_ID);
             if (!ignoreWrongId && keywordId.equals(DEFAULT_KEYWORD_ID)) {
                 throw new ParseKeywordException(kw + " does not match keyword entry.");
             }
-            
-            keywords.add(new KeywordBuilder(keywordId.getKey(), kw, keywordId.getValue(), evidences.get(kw)).build());
+
+            keywords.add(
+                    new KeywordBuilder(
+                                    keywordId.getKey(), kw, keywordId.getValue(), evidences.get(kw))
+                            .build());
         }
         return keywords;
     }
-
 }

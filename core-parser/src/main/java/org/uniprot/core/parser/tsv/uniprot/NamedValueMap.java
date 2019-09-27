@@ -6,7 +6,7 @@ import java.util.Map;
 import org.uniprot.core.util.Utils;
 
 public interface NamedValueMap {
-	Map<String, String> attributeValues();
+    Map<String, String> attributeValues();
 
     default String getOrDefaultEmpty(String input) {
         if (Utils.notEmpty(input)) {

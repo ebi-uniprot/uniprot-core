@@ -1,12 +1,11 @@
 package org.uniprot.core.citation.builder;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SubmissionBuilderTest extends AbstractCitationBuilderTest {
     @Test

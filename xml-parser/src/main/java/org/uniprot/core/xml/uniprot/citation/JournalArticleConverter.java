@@ -1,6 +1,5 @@
 package org.uniprot.core.xml.uniprot.citation;
 
-
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.xml.Converter;
@@ -29,7 +28,6 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
         builder.lastPage(pageConverter.fromXml(xmlObj.getLast()));
         builder.volume(xmlObj.getVolume());
 
-
         return builder.build();
     }
 
@@ -45,6 +43,4 @@ public class JournalArticleConverter implements Converter<CitationType, JournalA
 
         return xmlCitation;
     }
-
-
 }

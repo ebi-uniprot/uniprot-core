@@ -11,28 +11,32 @@ import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
 import org.uniprot.core.uniprot.comment.Comment;
 
 public class CcLineTransformer implements LineTransformer<Comment> {
-	private final UniprotLineParser<CcLineObject> parser = new DefaultUniprotLineParserFactory().createCcLineParser();
-	private final CcLineFormater formater  =new CcLineFormater();
-	private final CcLineConverter converter;
-	public CcLineTransformer() {
-		this("", "");
-	}
-	
-	public CcLineTransformer(String diseaseFile, String subcellularLocationFile) {
-		Map<String,String> subcellularLocationMap = new SubcellularLocationFileReader().parseFileToAccessionMap(subcellularLocationFile);
-		Map<String,String> diseaseMap = new DiseaseFileReader().parseFileToAccessionMap(diseaseFile);
-		 converter = new CcLineConverter(diseaseMap, subcellularLocationMap);
-	}
+    private final UniprotLineParser<CcLineObject> parser =
+            new DefaultUniprotLineParserFactory().createCcLineParser();
+    private final CcLineFormater formater = new CcLineFormater();
+    private final CcLineConverter converter;
 
-	@Override
-	public List<Comment> transform(String lines) {
-		CcLineObject obj = parser.parse(lines);
-		return converter.convert(obj);
-	}
+    public CcLineTransformer() {
+        this("", "");
+    }
 
-	@Override
-	public List<Comment> transformNoHeader(String lines) {
-		return transform(formater.format(lines));
-	}
+    public CcLineTransformer(String diseaseFile, String subcellularLocationFile) {
+        Map<String, String> subcellularLocationMap =
+                new SubcellularLocationFileReader()
+                        .parseFileToAccessionMap(subcellularLocationFile);
+        Map<String, String> diseaseMap =
+                new DiseaseFileReader().parseFileToAccessionMap(diseaseFile);
+        converter = new CcLineConverter(diseaseMap, subcellularLocationMap);
+    }
 
+    @Override
+    public List<Comment> transform(String lines) {
+        CcLineObject obj = parser.parse(lines);
+        return converter.convert(obj);
+    }
+
+    @Override
+    public List<Comment> transformNoHeader(String lines) {
+        return transform(formater.format(lines));
+    }
 }

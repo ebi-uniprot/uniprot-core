@@ -17,13 +17,18 @@ public final class InteractionBuilder implements Builder<InteractionBuilder, Int
     private Interactor secondInteractor;
 
     public Interaction build() {
-        return new InteractionImpl(type, uniProtAccession, geneName, numberOfExperiments, firstInteractor, secondInteractor);
+        return new InteractionImpl(
+                type,
+                uniProtAccession,
+                geneName,
+                numberOfExperiments,
+                firstInteractor,
+                secondInteractor);
     }
 
     @Override
     public InteractionBuilder from(Interaction instance) {
-        return this
-                .uniProtAccession(instance.getUniProtAccession())
+        return this.uniProtAccession(instance.getUniProtAccession())
                 .geneName(instance.getGeneName())
                 .interactionType(instance.getType())
                 .numberOfExperiments(instance.getNumberOfExperiments())

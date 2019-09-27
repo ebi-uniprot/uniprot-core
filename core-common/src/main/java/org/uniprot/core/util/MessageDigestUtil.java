@@ -5,10 +5,10 @@ import java.security.NoSuchAlgorithmException;
 
 public class MessageDigestUtil {
     static final byte[] HEX_CHAR_TABLE = {
-            (byte) '0', (byte) '1', (byte) '2', (byte) '3',
-            (byte) '4', (byte) '5', (byte) '6', (byte) '7',
-            (byte) '8', (byte) '9', (byte) 'A', (byte) 'B',
-            (byte) 'C', (byte) 'D', (byte) 'E', (byte) 'F'
+        (byte) '0', (byte) '1', (byte) '2', (byte) '3',
+        (byte) '4', (byte) '5', (byte) '6', (byte) '7',
+        (byte) '8', (byte) '9', (byte) 'A', (byte) 'B',
+        (byte) 'C', (byte) 'D', (byte) 'E', (byte) 'F'
     };
 
     private MessageDigestUtil() {
@@ -16,11 +16,11 @@ public class MessageDigestUtil {
     }
 
     /**
-     * This function call MessageDigest class digest to get bytes and convert the byte array to Hex String
+     * This function call MessageDigest class digest to get bytes and convert the byte array to Hex
+     * String
      *
      * @param seq
-     * @param type
-     *            Message Digest type,
+     * @param type Message Digest type,
      * @return String
      */
     public static String getDigest(String seq, String type) {
@@ -59,13 +59,11 @@ public class MessageDigestUtil {
     private static String byteArrayToHexString(byte[] in) {
         byte ch = 0x00;
         int i = 0;
-        if (in == null || in.length <= 0)
-            return null;
+        if (in == null || in.length <= 0) return null;
 
-        String[] pseudo = {"0", "1", "2",
-                "3", "4", "5", "6", "7", "8",
-                "9", "A", "B", "C", "D", "E",
-                "F"};
+        String[] pseudo = {
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"
+        };
         StringBuilder out = new StringBuilder(in.length * 2);
 
         while (i < in.length) {
@@ -81,5 +79,4 @@ public class MessageDigestUtil {
         }
         return new String(out);
     }
-
 }

@@ -19,10 +19,8 @@ public class MaximumVelocityImpl implements MaximumVelocity {
         this.evidences = Collections.emptyList();
     }
 
-    public MaximumVelocityImpl(double velocity,
-                               String unit,
-                               String enzyme,
-                               List<Evidence> evidences) {
+    public MaximumVelocityImpl(
+            double velocity, String unit, String enzyme, List<Evidence> evidences) {
         this.velocity = velocity;
         this.unit = unit;
         this.enzyme = enzyme;
@@ -63,10 +61,10 @@ public class MaximumVelocityImpl implements MaximumVelocity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MaximumVelocityImpl that = (MaximumVelocityImpl) o;
-        return Double.compare(that.velocity, velocity) == 0 &&
-                Objects.equals(unit, that.unit) &&
-                Objects.equals(enzyme, that.enzyme) &&
-                Objects.equals(evidences, that.evidences);
+        return Double.compare(that.velocity, velocity) == 0
+                && Objects.equals(unit, that.unit)
+                && Objects.equals(enzyme, that.enzyme)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override

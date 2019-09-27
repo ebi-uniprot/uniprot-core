@@ -12,11 +12,7 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.impl.ProteinRecNameImpl;
 
-
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, ProteinRecName> {
 
     private Name fullName;
@@ -37,6 +33,7 @@ public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, Pro
         nonNullAdd(shortNames, this.shortNames);
         return this;
     }
+
     public ProteinRecNameBuilder ecNumbers(List<EC> ecNumbers) {
         this.ecNumbers = nonNullList(ecNumbers);
         return this;

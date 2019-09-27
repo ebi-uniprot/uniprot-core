@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.xdb.impl;
 
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +12,8 @@ import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.util.Utils;
 
-public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDbType> implements UniProtDBCrossReference {
+public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDbType>
+        implements UniProtDBCrossReference {
     private static final long serialVersionUID = -3661768450999840694L;
     private static final String SEMICOLON = "; ";
     private static final String DASH = "-";
@@ -25,11 +25,17 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         evidences = Collections.emptyList();
     }
 
-    public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId) {
+    public UniProtDBCrossReferenceImpl(
+            UniProtXDbType database, String id, List<Property> properties, String isoformId) {
         this(database, id, properties, isoformId, Collections.emptyList());
     }
 
-    public UniProtDBCrossReferenceImpl(UniProtXDbType database, String id, List<Property> properties, String isoformId, List<Evidence> evidences) {
+    public UniProtDBCrossReferenceImpl(
+            UniProtXDbType database,
+            String id,
+            List<Property> properties,
+            String isoformId,
+            List<Evidence> evidences) {
         super(database, id, properties);
         this.isoformId = isoformId;
         this.evidences = Utils.nonNullUnmodifiableList(evidences);
@@ -81,8 +87,8 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         UniProtDBCrossReferenceImpl that = (UniProtDBCrossReferenceImpl) o;
-        return Objects.equals(isoformId, that.isoformId) &&
-                Objects.equals(evidences, that.evidences);
+        return Objects.equals(isoformId, that.isoformId)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override

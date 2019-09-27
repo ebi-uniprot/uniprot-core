@@ -10,10 +10,9 @@ import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 import org.uniprot.core.util.Utils;
 
-/**
- * @author lgonzales
- */
-public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappedReferenceBuilder, LiteratureMappedReference> {
+/** @author lgonzales */
+public class LiteratureMappedReferenceBuilder
+        implements Builder<LiteratureMappedReferenceBuilder, LiteratureMappedReference> {
 
     private UniProtAccession uniprotAccession;
 
@@ -62,7 +61,8 @@ public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappe
 
     @Override
     public LiteratureMappedReference build() {
-        return new LiteratureMappedReferenceImpl(uniprotAccession, source, sourceId, sourceCategory, annotation);
+        return new LiteratureMappedReferenceImpl(
+                uniprotAccession, source, sourceId, sourceCategory, annotation);
     }
 
     @Override

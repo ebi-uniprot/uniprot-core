@@ -8,8 +8,8 @@ import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:03:04 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 15:03:04 To change this template
+ * use File | Settings | File Templates.
  */
 public class CautionCommentScored extends CommentScoredAbstr {
 
@@ -32,18 +32,15 @@ public class CautionCommentScored extends CommentScoredAbstr {
 
     @Override
     public double score() {
-        if (hasScored())
-            return 3.0;
-        else
-            return 0;
+        if (hasScored()) return 3.0;
+        else return 0;
     }
 
     private boolean hasScored() {
         List<EvidencedValue> texts = comment.getTexts();
         if (!texts.isEmpty()) {
             for (EvidencedValue text : texts) {
-                if (!hasScored(text))
-                    return false;
+                if (!hasScored(text)) return false;
             }
             return true;
         } else {
@@ -52,9 +49,8 @@ public class CautionCommentScored extends CommentScoredAbstr {
     }
 
     private boolean hasScored(EvidencedValue val) {
-        if (val.getValue().equals(PROBLEM_CAUTION) || val.getValue().equals(ANOTHER_PROBLEM_CAUTION))
-            return false;
+        if (val.getValue().equals(PROBLEM_CAUTION)
+                || val.getValue().equals(ANOTHER_PROBLEM_CAUTION)) return false;
         return ScoreUtil.hasEvidence(val.getEvidences(), evidenceTypes);
-
     }
 }

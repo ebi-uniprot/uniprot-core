@@ -1,13 +1,13 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import com.beust.jcommander.JCommander;
-import com.beust.jcommander.Parameter;
-
 import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.beust.jcommander.JCommander;
+import com.beust.jcommander.Parameter;
 
 public class ScoreConfigureImpl implements ScoreConfigure {
     @Parameter(names = "-e", description = "a list of evidence types")
@@ -24,7 +24,7 @@ public class ScoreConfigureImpl implements ScoreConfigure {
 
     @Parameter(required = true, names = "-g", description = "input go term file")
     private String goFile = null;
-    
+
     @Parameter(required = true, names = "-s", description = "input subcellular location file file")
     private String subcellLocationFile = null;
 
@@ -33,16 +33,14 @@ public class ScoreConfigureImpl implements ScoreConfigure {
 
     @Parameter(names = "--help", help = true)
     private boolean help;
+
     private JCommander jCommander;
 
-    private ScoreConfigureImpl() {
-
-    }
+    private ScoreConfigureImpl() {}
 
     public static final ScoreConfigure fromCommandLine(String[] args) {
         ScoreConfigureImpl configurator = new ScoreConfigureImpl();
-        configurator.jCommander = JCommander.newBuilder()
-                .addObject(configurator).build();
+        configurator.jCommander = JCommander.newBuilder().addObject(configurator).build();
         configurator.jCommander.parse(args);
 
         return configurator;
@@ -88,14 +86,13 @@ public class ScoreConfigureImpl implements ScoreConfigure {
 
     @Override
     public boolean validate() {
-        if (nullOrEmpty(this.getInputFile()))
-            return false;
+        if (nullOrEmpty(this.getInputFile())) return false;
         File file = new File(this.getInputFile());
         return (file.isFile());
     }
 
-	@Override
-	public String getSubcellLocationFile() {
-		return this.subcellLocationFile;
-	}
+    @Override
+    public String getSubcellLocationFile() {
+        return this.subcellLocationFile;
+    }
 }

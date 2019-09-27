@@ -1,17 +1,13 @@
 package org.uniprot.core.cv.disease;
 
-
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.disease.Disease;
-import org.uniprot.core.cv.disease.DiseaseCache;
-import org.uniprot.core.cv.disease.DiseaseFileReader;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 class DiseaseFileReaderTest {
     private static final DiseaseFileReader reader = new DiseaseFileReader();
@@ -19,16 +15,17 @@ class DiseaseFileReaderTest {
     @Disabled
     @Test
     void testParseDefaultFile() {
-    	List<Disease> diseases =reader.parse(DiseaseCache.FTP_LOCATION);
-    	assertFalse(diseases.isEmpty());
+        List<Disease> diseases = reader.parse(DiseaseCache.FTP_LOCATION);
+        assertFalse(diseases.isEmpty());
     }
-    
+
     @Test
     @DisplayName("Only simple disease with cross references")
     void simpleDiseaseParse() {
 
         final List<String> input =
-                Arrays.asList("_______________________________",
+                Arrays.asList(
+                        "_______________________________",
                         "ID   Roberts syndrome.",
                         "AC   DI-02272",
                         "AR   RBS.",
@@ -37,19 +34,28 @@ class DiseaseFileReaderTest {
                         "//");
 
         final List<Disease> retList = reader.parseLines(input);
-        assertAll("Disease parse result",
+        assertAll(
+                "Disease parse result",
                 () -> assertNotNull(retList),
                 () -> assertEquals(1, retList.size(), "should have one object return"),
                 () -> assertEquals("Roberts syndrome", retList.get(0).getId()),
                 () -> assertEquals("DI-02272", retList.get(0).getAccession()),
                 () -> assertEquals("RBS", retList.get(0).getAcronym()),
-                () -> assertEquals("Rare autosomal recessive disorder characterized", retList.get(0).getDefinition()),
-                () -> assertEquals("MIM", retList.get(0).getCrossReferences().get(0).getDatabaseType()),
+                () ->
+                        assertEquals(
+                                "Rare autosomal recessive disorder characterized",
+                                retList.get(0).getDefinition()),
+                () ->
+                        assertEquals(
+                                "MIM",
+                                retList.get(0).getCrossReferences().get(0).getDatabaseType()),
                 () -> assertEquals("268300", retList.get(0).getCrossReferences().get(0).getId()),
-                () -> assertEquals("phenotype", retList.get(0).getCrossReferences().get(0).getProperties().get(0)),
+                () ->
+                        assertEquals(
+                                "phenotype",
+                                retList.get(0).getCrossReferences().get(0).getProperties().get(0)),
                 () -> assertTrue(retList.get(0).getAlternativeNames().isEmpty()),
-                () -> assertTrue(retList.get(0).getKeywords().isEmpty())
-        );
+                () -> assertTrue(retList.get(0).getKeywords().isEmpty()));
     }
 
     @Test
@@ -57,7 +63,8 @@ class DiseaseFileReaderTest {
     void parseDiseaseAndCheckKeywords() {
 
         final List<String> input =
-                Arrays.asList("______________________________",
+                Arrays.asList(
+                        "______________________________",
                         "ID   Unilateral palmoplantar verrucous nevus.",
                         "AC   DI-01111",
                         "AR   UPVN.",
@@ -71,29 +78,37 @@ class DiseaseFileReaderTest {
 
         final List<Disease> retList = reader.parseLines(input);
 
-      
-                
-                assertAll("Disease parse result",
-                        () -> assertNotNull(retList),
-                        () -> assertEquals(1, retList.size(), "should have one object return"),
-                        () -> assertEquals("Unilateral palmoplantar verrucous nevus", retList.get(0).getId()),
-                        () -> assertEquals("DI-01111", retList.get(0).getAccession()),
-                        () -> assertEquals("UPVN", retList.get(0).getAcronym()),
-                  
-                        () -> assertEquals("MIM", retList.get(0).getCrossReferences().get(0).getDatabaseType()),
-                        () -> assertEquals("144200", retList.get(0).getCrossReferences().get(0).getId()),
-                        () -> assertEquals("phenotype", retList.get(0).getCrossReferences().get(0).getProperties().get(0)),
-                        () -> assertEquals("Palmoplantar keratoderma", retList.get(0).getKeywords().get(0).getId()),
-                        () -> assertEquals("KW-1007", retList.get(0).getKeywords().get(0).getAccession())
-                );
-
+        assertAll(
+                "Disease parse result",
+                () -> assertNotNull(retList),
+                () -> assertEquals(1, retList.size(), "should have one object return"),
+                () ->
+                        assertEquals(
+                                "Unilateral palmoplantar verrucous nevus", retList.get(0).getId()),
+                () -> assertEquals("DI-01111", retList.get(0).getAccession()),
+                () -> assertEquals("UPVN", retList.get(0).getAcronym()),
+                () ->
+                        assertEquals(
+                                "MIM",
+                                retList.get(0).getCrossReferences().get(0).getDatabaseType()),
+                () -> assertEquals("144200", retList.get(0).getCrossReferences().get(0).getId()),
+                () ->
+                        assertEquals(
+                                "phenotype",
+                                retList.get(0).getCrossReferences().get(0).getProperties().get(0)),
+                () ->
+                        assertEquals(
+                                "Palmoplantar keratoderma",
+                                retList.get(0).getKeywords().get(0).getId()),
+                () -> assertEquals("KW-1007", retList.get(0).getKeywords().get(0).getAccession()));
     }
 
     @Test
     @DisplayName("Should return alternative names when parsing disease")
     void parseDiseaseAndCheckAlternativeNames() {
         final List<String> input =
-                Arrays.asList("_____________________________",
+                Arrays.asList(
+                        "_____________________________",
                         "ID   SC phocomelia syndrome.",
                         "AC   DI-02280",
                         "AR   SCPS.",
@@ -105,7 +120,7 @@ class DiseaseFileReaderTest {
         assertEquals(1, retList.get(0).getAlternativeNames().size());
         assertEquals("SC pseudothalidomide syndrome", retList.get(0).getAlternativeNames().get(0));
 
-        assertEquals("",retList.get(0).getDefinition());
+        assertEquals("", retList.get(0).getDefinition());
         assertTrue(retList.get(0).getCrossReferences().isEmpty());
     }
 
@@ -113,7 +128,8 @@ class DiseaseFileReaderTest {
     @DisplayName("should return all attributes not null when parsing complete entry")
     void parseLargeDisease() {
         final List<String> input =
-                Arrays.asList("____________________________",
+                Arrays.asList(
+                        "____________________________",
                         "ID   Salt and pepper developmental regression syndrome",
                         "AC   DI-00096",
                         "AR   SPDRS.",
@@ -140,5 +156,4 @@ class DiseaseFileReaderTest {
         assertEquals(3, di.getCrossReferences().size());
         assertEquals(2, di.getKeywords().size());
     }
-
 }

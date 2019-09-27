@@ -1,18 +1,17 @@
 package org.uniprot.core.xml.uniprot.description;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createEvidences;
+import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createName;
+
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
-import org.uniprot.core.xml.uniprot.description.NameConverter;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createEvidences;
-import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.createName;
 
 class NameConverterTest {
 
@@ -31,7 +30,5 @@ class NameConverterTest {
         System.out.println(nameObj.toString());
         System.out.println(converted.toString());
         assertEquals(nameObj, converted);
-
     }
-
 }

@@ -7,9 +7,7 @@ public class FlagImpl implements Flag {
     private static final long serialVersionUID = -328562072578231072L;
     private FlagType type;
 
-    private FlagImpl() {
-
-    }
+    private FlagImpl() {}
 
     public FlagImpl(FlagType type) {
         this.type = type;
@@ -30,14 +28,10 @@ public class FlagImpl implements Flag {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         FlagImpl other = (FlagImpl) obj;
         return type == other.type;
     }
-
 }

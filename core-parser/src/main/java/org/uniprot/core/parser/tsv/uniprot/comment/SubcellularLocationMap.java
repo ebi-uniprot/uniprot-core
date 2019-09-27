@@ -13,7 +13,8 @@ public class SubcellularLocationMap implements NamedValueMap {
 
     private final List<SubcellularLocationComment> sclComments;
     private final CCSubCellCommentLineBuilder lineBuilder = new CCSubCellCommentLineBuilder();
-    public SubcellularLocationMap(List<SubcellularLocationComment> sclComments){
+
+    public SubcellularLocationMap(List<SubcellularLocationComment> sclComments) {
         this.sclComments = sclComments;
     }
 
@@ -22,17 +23,24 @@ public class SubcellularLocationMap implements NamedValueMap {
         return getSubCellLocComments(this.sclComments);
     }
 
-    private Map<String, String> getSubCellLocComments(List<SubcellularLocationComment> sclComments) {
+    private Map<String, String> getSubCellLocComments(
+            List<SubcellularLocationComment> sclComments) {
         Map<String, String> subcellularLocationMap = new HashMap<>();
         if ((sclComments != null) && !sclComments.isEmpty()) {
 
-            String result = sclComments.stream().map(this::subcelllocationCommentToString).collect(Collectors.joining("; "));
+            String result =
+                    sclComments.stream()
+                            .map(this::subcelllocationCommentToString)
+                            .collect(Collectors.joining("; "));
             subcellularLocationMap.put("cc:subcellular_location", result);
         }
         return subcellularLocationMap;
     }
 
-    private String subcelllocationCommentToString(SubcellularLocationComment subcellularLocationComment) { 	
-    	return lineBuilder.buildString(subcellularLocationComment, true, true).replaceAll("\n", " ");
+    private String subcelllocationCommentToString(
+            SubcellularLocationComment subcellularLocationComment) {
+        return lineBuilder
+                .buildString(subcellularLocationComment, true, true)
+                .replaceAll("\n", " ");
     }
 }

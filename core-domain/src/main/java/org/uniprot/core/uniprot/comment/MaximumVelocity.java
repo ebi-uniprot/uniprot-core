@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.comment;
 
-
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 import org.uniprot.core.util.Utils;
 
@@ -22,5 +21,4 @@ public interface MaximumVelocity extends HasEvidences {
     default boolean hasUnit() {
         return Utils.notEmpty(getUnit());
     }
-
 }

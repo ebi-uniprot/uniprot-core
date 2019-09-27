@@ -16,5 +16,4 @@ public interface WebResourceComment extends Comment {
     boolean hasNote();
 
     boolean hasResourceUrl();
-
 }

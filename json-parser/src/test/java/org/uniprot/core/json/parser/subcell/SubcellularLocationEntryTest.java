@@ -1,5 +1,7 @@
 package org.uniprot.core.json.parser.subcell;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
@@ -8,9 +10,6 @@ import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.json.parser.subcell.SubcellularLocationJsonConfig;
-
-import java.util.Collections;
 
 /**
  * @author lgonzales
@@ -21,13 +20,18 @@ class SubcellularLocationEntryTest {
     @Test
     void testSimpleSubcellularLocationEntry() {
         SubcellularLocationEntry subcellularLocationEntry = new SubcellularLocationEntryImpl();
-        ValidateJson.verifyJsonRoundTripParser(SubcellularLocationJsonConfig.getInstance().getFullObjectMapper(), subcellularLocationEntry);
+        ValidateJson.verifyJsonRoundTripParser(
+                SubcellularLocationJsonConfig.getInstance().getFullObjectMapper(),
+                subcellularLocationEntry);
     }
 
     @Test
     void testCompleteSubcellularLocationEntry() {
-        SubcellularLocationEntry subcellularLocationEntry = getCompleteSubcellularLocationEntry(true);
-        ValidateJson.verifyJsonRoundTripParser(SubcellularLocationJsonConfig.getInstance().getFullObjectMapper(), subcellularLocationEntry);
+        SubcellularLocationEntry subcellularLocationEntry =
+                getCompleteSubcellularLocationEntry(true);
+        ValidateJson.verifyJsonRoundTripParser(
+                SubcellularLocationJsonConfig.getInstance().getFullObjectMapper(),
+                subcellularLocationEntry);
     }
 
     private SubcellularLocationEntry getCompleteSubcellularLocationEntry(boolean hasChild) {

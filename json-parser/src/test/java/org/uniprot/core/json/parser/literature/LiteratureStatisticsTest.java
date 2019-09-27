@@ -2,25 +2,24 @@ package org.uniprot.core.json.parser.literature;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.json.parser.literature.LiteratureJsonConfig;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 class LiteratureStatisticsTest {
 
     @Test
     void testSimpleLiteratureEntry() {
         LiteratureStatistics statistics = new LiteratureStatisticsBuilder().build();
-        ValidateJson.verifyJsonRoundTripParser(LiteratureJsonConfig.getInstance().getFullObjectMapper(), statistics);
+        ValidateJson.verifyJsonRoundTripParser(
+                LiteratureJsonConfig.getInstance().getFullObjectMapper(), statistics);
     }
 
     @Test
     void testCompleteLiteratureEntry() {
         LiteratureStatistics statistics = getCompleteLiteratureStatistics();
-        ValidateJson.verifyJsonRoundTripParser(LiteratureJsonConfig.getInstance().getFullObjectMapper(), statistics);
+        ValidateJson.verifyJsonRoundTripParser(
+                LiteratureJsonConfig.getInstance().getFullObjectMapper(), statistics);
         ValidateJson.verifyEmptyFields(statistics);
     }
 

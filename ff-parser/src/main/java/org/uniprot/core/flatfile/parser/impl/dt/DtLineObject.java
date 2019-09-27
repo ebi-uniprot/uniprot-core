@@ -6,13 +6,9 @@ import org.uniprot.core.flatfile.validator.DtDateCheck;
 import org.uniprot.core.flatfile.validator.DtVersionCheck;
 
 /**
- * Created with IntelliJ IDEA.
- * User: wudong
- * Date: 12/08/13
- * Time: 13:27
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 12/08/13 Time: 13:27 To change this template use
+ * File | Settings | File Templates.
  */
-
 @DtDateCheck
 @DtVersionCheck
 public class DtLineObject {

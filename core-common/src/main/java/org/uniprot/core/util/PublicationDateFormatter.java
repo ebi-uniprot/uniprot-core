@@ -11,24 +11,25 @@ import java.util.Locale;
 
 /**
  * Enumeration that contains a set of date formatters.
- * <p>
- * The enumeration is used not only to format the date correctly, but also to validate the date
+ *
+ * <p>The enumeration is used not only to format the date correctly, but also to validate the date
  */
 public enum PublicationDateFormatter {
-    YEAR(formatFor("yyyy")
-                 .parseDefaulting(ChronoField.MONTH_OF_YEAR, 1)
-                 .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
-                 .toFormatter(Locale.ENGLISH)),
-    YEAR_DIGIT_MONTH(formatFor("yyyy-MM")
-                             .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
-                             .toFormatter(Locale.ENGLISH)),
-    THREE_LETTER_MONTH_YEAR(formatFor("MMM-yyyy")
-                                    .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
-                                    .toFormatter(Locale.ENGLISH)),
-    DAY_DIGITMONTH_YEAR(formatFor("yyyy-MM-dd")
-                                .toFormatter(Locale.ENGLISH)),
-    DAY_THREE_LETTER_MONTH_YEAR(formatFor("dd-MMM-yyyy")
-                                        .toFormatter(Locale.ENGLISH));
+    YEAR(
+            formatFor("yyyy")
+                    .parseDefaulting(ChronoField.MONTH_OF_YEAR, 1)
+                    .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+                    .toFormatter(Locale.ENGLISH)),
+    YEAR_DIGIT_MONTH(
+            formatFor("yyyy-MM")
+                    .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+                    .toFormatter(Locale.ENGLISH)),
+    THREE_LETTER_MONTH_YEAR(
+            formatFor("MMM-yyyy")
+                    .parseDefaulting(ChronoField.DAY_OF_MONTH, 1)
+                    .toFormatter(Locale.ENGLISH)),
+    DAY_DIGITMONTH_YEAR(formatFor("yyyy-MM-dd").toFormatter(Locale.ENGLISH)),
+    DAY_THREE_LETTER_MONTH_YEAR(formatFor("dd-MMM-yyyy").toFormatter(Locale.ENGLISH));
 
     private DateTimeFormatter dateFormat;
 

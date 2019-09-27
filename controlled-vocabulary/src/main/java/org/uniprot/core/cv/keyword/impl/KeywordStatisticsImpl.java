@@ -1,12 +1,10 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import org.uniprot.core.cv.keyword.KeywordStatistics;
-
 import java.util.Objects;
 
-/**
- * @author lgonzales
- */
+import org.uniprot.core.cv.keyword.KeywordStatistics;
+
+/** @author lgonzales */
 public class KeywordStatisticsImpl implements KeywordStatistics {
 
     private long reviewedProteinCount;
@@ -36,8 +34,8 @@ public class KeywordStatisticsImpl implements KeywordStatistics {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KeywordStatisticsImpl that = (KeywordStatisticsImpl) o;
-        return getReviewedProteinCount() == that.getReviewedProteinCount() &&
-                getUnreviewedProteinCount() == that.getUnreviewedProteinCount();
+        return getReviewedProteinCount() == that.getReviewedProteinCount()
+                && getUnreviewedProteinCount() == that.getUnreviewedProteinCount();
     }
 
     @Override

@@ -2,10 +2,6 @@ package org.uniprot.core.json.parser.crossref;
 
 import org.uniprot.core.crossref.CrossRefEntry;
 import org.uniprot.core.crossref.CrossRefEntryImpl;
-import org.uniprot.core.cv.disease.Disease;
-import org.uniprot.core.cv.disease.impl.DiseaseImpl;
-import org.uniprot.core.cv.keyword.Keyword;
-import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,7 +11,8 @@ public class CrossRefJsonConfig extends JsonConfig {
     private static CrossRefJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
-    private final ObjectMapper simpleMapper; // mapper without unwanted fields like type, lighter version
+    private final ObjectMapper
+            simpleMapper; // mapper without unwanted fields like type, lighter version
 
     private CrossRefJsonConfig() {
         this.objectMapper = initFullObjectMapper();
@@ -38,7 +35,6 @@ public class CrossRefJsonConfig extends JsonConfig {
     public ObjectMapper getFullObjectMapper() {
         return this.objectMapper;
     }
-
 
     private ObjectMapper initFullObjectMapper() {
         ObjectMapper objMapper = getDefaultFullObjectMapper();

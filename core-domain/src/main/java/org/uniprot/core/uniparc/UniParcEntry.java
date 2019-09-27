@@ -7,18 +7,19 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 
 /**
- *
  * @author jluo
  * @date: 21 May 2019
- *
-*/
-
+ */
 public interface UniParcEntry extends Serializable {
-	UniParcId getUniParcId();
-	List<UniParcDBCrossReference> getDbXReferences();	 
-	Sequence getSequence();
-	String getUniProtExclusionReason();
-	List<SequenceFeature> getSequenceFeatures();
-	List<Taxonomy> getTaxonomies();
-}
+    UniParcId getUniParcId();
 
+    List<UniParcDBCrossReference> getDbXReferences();
+
+    Sequence getSequence();
+
+    String getUniProtExclusionReason();
+
+    List<SequenceFeature> getSequenceFeatures();
+
+    List<Taxonomy> getTaxonomies();
+}

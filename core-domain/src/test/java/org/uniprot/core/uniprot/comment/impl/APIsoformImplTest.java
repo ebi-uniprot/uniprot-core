@@ -1,21 +1,19 @@
 package org.uniprot.core.uniprot.comment.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
-import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
-import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
-import org.uniprot.core.uniprot.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createSynonyms;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 class APIsoformImplTest {
     @Test
@@ -37,14 +35,15 @@ class APIsoformImplTest {
         List<IsoformId> isoformIds = createIsoformIds();
         List<String> sequenceIds = asList("seq 1", "seq 2");
 
-        APIsoform apIsoform = new APIsoformBuilder()
-                .name(isoformName)
-                .synonyms(synonyms)
-                .note(note)
-                .ids(asList("id 1", "id 2"))
-                .sequenceIds(sequenceIds)
-                .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
-                .build();
+        APIsoform apIsoform =
+                new APIsoformBuilder()
+                        .name(isoformName)
+                        .synonyms(synonyms)
+                        .note(note)
+                        .ids(asList("id 1", "id 2"))
+                        .sequenceIds(sequenceIds)
+                        .sequenceStatus(IsoformSequenceStatus.DESCRIBED)
+                        .build();
 
         assertEquals(isoformName, apIsoform.getName());
         assertEquals(synonyms, apIsoform.getSynonyms());

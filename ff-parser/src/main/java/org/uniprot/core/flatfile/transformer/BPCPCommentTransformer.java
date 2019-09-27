@@ -9,9 +9,7 @@ import org.uniprot.core.uniprot.comment.builder.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-
-public class BPCPCommentTransformer implements
-        CommentTransformer<BPCPComment> {
+public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
     private static final String VMAX = "Vmax=";
     private static final String NOTE2 = "Note=";
     private static final String ABS_MAX = "Abs(max)=";
@@ -22,7 +20,6 @@ public class BPCPCommentTransformer implements
     private static final String KINETIC_PARAMETERS = "Kinetic parameters:";
     private static final String KM2 = "KM=";
     private static final CommentType COMMENT_TYPE = CommentType.BIOPHYSICOCHEMICAL_PROPERTIES;
-
 
     @Override
     public BPCPComment transform(String annotation) {
@@ -45,8 +42,7 @@ public class BPCPCommentTransformer implements
         return builder.build();
     }
 
-    private void switchTopic(String line, StringTokenizer lines,
-                             BPCPCommentBuilder builder) {
+    private void switchTopic(String line, StringTokenizer lines, BPCPCommentBuilder builder) {
 
         if (line.equals(KINETIC_PARAMETERS)) {
             List<String> tokens = getTypeLines(lines, builder);
@@ -71,8 +67,7 @@ public class BPCPCommentTransformer implements
         }
     }
 
-    private List<String> getTypeLines(StringTokenizer lines,
-                                      BPCPCommentBuilder builder) {
+    private List<String> getTypeLines(StringTokenizer lines, BPCPCommentBuilder builder) {
         List<String> tokenlines = new ArrayList<>();
         while (lines.hasMoreTokens()) {
             String line = lines.nextToken();
@@ -83,13 +78,13 @@ public class BPCPCommentTransformer implements
             }
         }
         return tokenlines;
-
     }
 
     private boolean isLineTitle(String line) {
         return line.equals(KINETIC_PARAMETERS)
                 || line.equals(TEMPERATURE_DEPENDENCE)
-                || line.equals(P_H_DEPENDENCE) || line.equals(REDOX_POTENTIAL)
+                || line.equals(P_H_DEPENDENCE)
+                || line.equals(REDOX_POTENTIAL)
                 || line.equals(ABSORPTION);
     }
 
@@ -115,11 +110,17 @@ public class BPCPCommentTransformer implements
             } else if (line.startsWith(NOTE2)) {
                 String comment = line.substring(5, line.length());
 
-                List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(comment, false);
+                List<EvidencedValue> evValues =
+                        CommentTransformerHelper.parseEvidencedValues(comment, false);
                 note = new NoteBuilder(evValues).build();
             }
         }
-        return new AbsorptionBuilder().max(max).approximate(approximate).note(note).evidences(evidences).build();
+        return new AbsorptionBuilder()
+                .max(max)
+                .approximate(approximate)
+                .note(note)
+                .evidences(evidences)
+                .build();
     }
 
     public PhDependence buildPHDependence(List<String> lines) {
@@ -127,7 +128,8 @@ public class BPCPCommentTransformer implements
         for (String line : lines) {
             sb.append(line).append(" ");
         }
-        return new PhDependenceBuilder(CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
+        return new PhDependenceBuilder(
+                        CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
                 .build();
     }
 
@@ -136,7 +138,8 @@ public class BPCPCommentTransformer implements
         for (String line : lines) {
             sb.append(line).append(" ");
         }
-        return new RedoxPotentialBuilder(CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
+        return new RedoxPotentialBuilder(
+                        CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
                 .build();
     }
 
@@ -147,15 +150,14 @@ public class BPCPCommentTransformer implements
         }
 
         return new TemperatureDependenceBuilder(
-                CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
+                        CommentTransformerHelper.parseEvidencedValues(sb.toString().trim(), false))
                 .build();
     }
 
     public MichaelisConstant buildMichaelisConstant(String line) {
         List<Evidence> evidences = new ArrayList<>();
         line = CommentTransformerHelper.stripEvidences(line, evidences);
-        if (line.endsWith(";"))
-            line = line.substring(0, line.length() - 1);
+        if (line.endsWith(";")) line = line.substring(0, line.length() - 1);
         StringTokenizer st = new StringTokenizer(line.substring(3), " ");
         String val = st.nextToken();
         val = val.replace(",", "");
@@ -183,8 +185,7 @@ public class BPCPCommentTransformer implements
     public MaximumVelocity buildMaximumVelocity(String line) {
         List<Evidence> evidences = new ArrayList<>();
         line = CommentTransformerHelper.stripEvidences(line, evidences);
-        if (line.endsWith(";"))
-            line = line.substring(0, line.length() - 1);
+        if (line.endsWith(";")) line = line.substring(0, line.length() - 1);
 
         StringTokenizer st = new StringTokenizer(line.substring(5), " ");
         double value = Double.parseDouble(st.nextToken());
@@ -196,7 +197,12 @@ public class BPCPCommentTransformer implements
             commentRestline.append(" ");
         }
         String commentStr = commentRestline.toString().trim();
-        return new MaximumVelocityBuilder().velocity(value).unit(unit).enzyme(commentStr).evidences(evidences).build();
+        return new MaximumVelocityBuilder()
+                .velocity(value)
+                .unit(unit)
+                .enzyme(commentStr)
+                .evidences(evidences)
+                .build();
     }
 
     public KineticParameters buildKineticParameters(List<String> lines) {
@@ -210,8 +216,11 @@ public class BPCPCommentTransformer implements
 
             } else if (line.startsWith(NOTE2)) {
                 String commentStr = line.substring(5);
-                note = new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(commentStr, false))
-                        .build();
+                note =
+                        new NoteBuilder(
+                                        CommentTransformerHelper.parseEvidencedValues(
+                                                commentStr, false))
+                                .build();
             } else if (line.startsWith(VMAX)) {
                 velocities.add(buildMaximumVelocity(line));
 

@@ -1,12 +1,12 @@
 package org.uniprot.core.parser.tsv.subcell;
 
-import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
-import org.uniprot.core.util.Utils;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author lgonzales
@@ -38,63 +38,72 @@ public class SubcellularLocationEntryMap implements NamedValueMap {
         map.put("part_of", getPartOf());
         map.put("statistics", getStatistics());
 
-
         return map;
     }
 
     private String getStatistics() {
         StringBuilder result = new StringBuilder();
         if (Utils.nonNull(entry.getStatistics())) {
-            result.append("reviewed:").append(entry.getStatistics().getReviewedProteinCount()).append("; ")
-            .append("annotated:").append(entry.getStatistics().getUnreviewedProteinCount());
+            result.append("reviewed:")
+                    .append(entry.getStatistics().getReviewedProteinCount())
+                    .append("; ")
+                    .append("annotated:")
+                    .append(entry.getStatistics().getUnreviewedProteinCount());
         }
         return result.toString();
     }
 
     private String getPartOf() {
-        if(Utils.notEmpty(entry.getPartOf())){
+        if (Utils.notEmpty(entry.getPartOf())) {
             return entry.getPartOf().stream()
-                    .map(mapped -> mapped.getAccession() + "; " +
-                            mapped.getId() + "; " +
-                            mapped.getCategory())
+                    .map(
+                            mapped ->
+                                    mapped.getAccession()
+                                            + "; "
+                                            + mapped.getId()
+                                            + "; "
+                                            + mapped.getCategory())
                     .collect(Collectors.joining(", "));
-        }else {
+        } else {
             return "";
         }
     }
 
     private String getIsA() {
-        if(Utils.notEmpty(entry.getIsA())){
+        if (Utils.notEmpty(entry.getIsA())) {
             return entry.getIsA().stream()
-                    .map(mapped -> mapped.getAccession() + "; " +
-                            mapped.getId() + "; " +
-                            mapped.getCategory())
+                    .map(
+                            mapped ->
+                                    mapped.getAccession()
+                                            + "; "
+                                            + mapped.getId()
+                                            + "; "
+                                            + mapped.getCategory())
                     .collect(Collectors.joining(", "));
-        }else {
+        } else {
             return "";
         }
     }
 
     private String getGeneOntologies() {
-        if(Utils.notEmpty(entry.getGeneOntologies())){
+        if (Utils.notEmpty(entry.getGeneOntologies())) {
             return entry.getGeneOntologies().stream()
                     .map(mapped -> mapped.getGoId() + ":" + mapped.getGoTerm())
                     .collect(Collectors.joining(", "));
-        }else {
+        } else {
             return "";
         }
     }
 
     private String getKeyword() {
-    	return entry.getKeyword().map(val ->val.getAccession()).orElse("");
+        return entry.getKeyword().map(val -> val.getAccession()).orElse("");
     }
 
     private String getCategory() {
-        if(entry.getCategory() != null) {
+        if (entry.getCategory() != null) {
             return Utils.nullToEmpty(entry.getCategory().toDisplayName());
-        }else {
+        } else {
             return "";
         }
     }
-
 }

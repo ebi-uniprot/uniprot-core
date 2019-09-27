@@ -20,7 +20,6 @@ public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
         super(CommentType.DISEASE);
         this.disease = disease;
         this.note = note;
-
     }
 
     @Override
@@ -49,8 +48,7 @@ public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         DiseaseCommentImpl that = (DiseaseCommentImpl) o;
-        return Objects.equals(disease, that.disease) &&
-                Objects.equals(note, that.note);
+        return Objects.equals(disease, that.disease) && Objects.equals(note, that.note);
     }
 
     @Override

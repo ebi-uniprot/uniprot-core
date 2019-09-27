@@ -13,7 +13,8 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public class RedoxPotentialBuilder extends AbstractFreeTextBuilder<RedoxPotentialBuilder, RedoxPotential> {
+public class RedoxPotentialBuilder
+        extends AbstractFreeTextBuilder<RedoxPotentialBuilder, RedoxPotential> {
     public RedoxPotentialBuilder(List<EvidencedValue> evidencedValues) {
         this.evidencedValues = nonNullList(evidencedValues);
     }

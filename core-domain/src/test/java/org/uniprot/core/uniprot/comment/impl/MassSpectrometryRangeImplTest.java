@@ -1,13 +1,11 @@
 package org.uniprot.core.uniprot.comment.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
-
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
-import org.uniprot.core.uniprot.comment.impl.MassSpectrometryRangeImpl;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MassSpectrometryRangeImplTest {
 

@@ -11,13 +11,15 @@ import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
 import com.fasterxml.jackson.databind.jsontype.impl.StdTypeResolverBuilder;
 
 public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
-	private static final long serialVersionUID = 3724944589060382231L;
+    private static final long serialVersionUID = 3724944589060382231L;
 
-	@Override
-    public TypeResolverBuilder<?> findTypeResolver(MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
+    @Override
+    public TypeResolverBuilder<?> findTypeResolver(
+            MapperConfig<?> config, AnnotatedClass ac, JavaType baseType) {
         if (baseType.isTypeOrSubTypeOf(Comment.class)
-				//|| (baseType.isTypeOrSubTypeOf(DatabaseType.class) && !baseType.hasRawClass(EvidenceType.class))
-                || baseType.isTypeOrSubTypeOf(Citation.class)){
+                // || (baseType.isTypeOrSubTypeOf(DatabaseType.class) &&
+                // !baseType.hasRawClass(EvidenceType.class))
+                || baseType.isTypeOrSubTypeOf(Citation.class)) {
             StdTypeResolverBuilder typeResolverBuilder = new StdTypeResolverBuilder();
             typeResolverBuilder.init(JsonTypeInfo.Id.NAME, null);
             typeResolverBuilder.typeProperty("type");
@@ -26,6 +28,4 @@ public class CustomAnnotationIntrospector extends SimpleAnnotationIntrospector {
         }
         return super.findTypeResolver(config, ac, baseType);
     }
-
 }
-

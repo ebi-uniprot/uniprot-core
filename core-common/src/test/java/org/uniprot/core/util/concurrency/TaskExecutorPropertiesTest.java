@@ -1,13 +1,12 @@
 package org.uniprot.core.util.concurrency;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.util.concurrency.TaskExecutorProperties;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.uniprot.core.util.concurrency.TaskExecutorProperties.*;
 import static org.uniprot.core.util.concurrency.TaskExecutorProperties.Builder.createTaskExecutorPropertiesBuilder;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Created 23/07/19
@@ -30,49 +29,72 @@ class TaskExecutorPropertiesTest {
     @Test
     void canSetCorePoolSize() {
         int value = 5;
-        assertThat(createTaskExecutorPropertiesBuilder().corePoolSize(value).build().getCorePoolSize(), is(value));
+        assertThat(
+                createTaskExecutorPropertiesBuilder().corePoolSize(value).build().getCorePoolSize(),
+                is(value));
     }
 
     @Test
     void canSetMaxPoolSize() {
         int value = 5;
-        assertThat(createTaskExecutorPropertiesBuilder().maxPoolSize(value).build().getMaxPoolSize(), is(value));
+        assertThat(
+                createTaskExecutorPropertiesBuilder().maxPoolSize(value).build().getMaxPoolSize(),
+                is(value));
     }
 
     @Test
     void canSetQueueCapacity() {
         int value = 5;
-        assertThat(createTaskExecutorPropertiesBuilder().queueCapacity(value).build().getQueueCapacity(), is(value));
+        assertThat(
+                createTaskExecutorPropertiesBuilder()
+                        .queueCapacity(value)
+                        .build()
+                        .getQueueCapacity(),
+                is(value));
     }
 
     @Test
     void canSetKeepAlive() {
         int value = 5;
-        assertThat(createTaskExecutorPropertiesBuilder().keepAliveSeconds(value).build().getKeepAliveSeconds(),
-                   is(value));
+        assertThat(
+                createTaskExecutorPropertiesBuilder()
+                        .keepAliveSeconds(value)
+                        .build()
+                        .getKeepAliveSeconds(),
+                is(value));
     }
 
     @Test
     void canSetAllowCoreThreadTimeout() {
         boolean value = false;
-        assertThat(createTaskExecutorPropertiesBuilder().allowCoreThreadTimeout(value).build()
-                           .isAllowCoreThreadTimeout(),
-                   is(value));
+        assertThat(
+                createTaskExecutorPropertiesBuilder()
+                        .allowCoreThreadTimeout(value)
+                        .build()
+                        .isAllowCoreThreadTimeout(),
+                is(value));
     }
 
     @Test
     void canSetWaitForCompletion() {
         boolean value = true;
-        assertThat(createTaskExecutorPropertiesBuilder().waitForTasksToCompleteOnShutdown(value).build()
-                           .isWaitForTasksToCompleteOnShutdown(),
-                   is(value));
+        assertThat(
+                createTaskExecutorPropertiesBuilder()
+                        .waitForTasksToCompleteOnShutdown(value)
+                        .build()
+                        .isWaitForTasksToCompleteOnShutdown(),
+                is(value));
     }
 
     @Test
     void canSetThreadNamePrefix() {
         String value = "lovely-day";
-        assertThat(createTaskExecutorPropertiesBuilder().threadNamePrefix(value).build()
-                           .getThreadNamePrefix(), is(value));
+        assertThat(
+                createTaskExecutorPropertiesBuilder()
+                        .threadNamePrefix(value)
+                        .build()
+                        .getThreadNamePrefix(),
+                is(value));
     }
 
     @Test
@@ -87,7 +109,9 @@ class TaskExecutorPropertiesTest {
         assertThat(props.getQueueCapacity(), is(QUEUE_CAPACITY));
         assertThat(props.getKeepAliveSeconds(), is(KEEP_ALIVE_SECONDS));
         assertThat(props.isAllowCoreThreadTimeout(), is(ALLOW_CORE_THREAD_TIMEOUT));
-        assertThat(props.isWaitForTasksToCompleteOnShutdown(), is(WAIT_FOR_TASKS_TO_COMPLETE_ON_SHUTDOWN));
+        assertThat(
+                props.isWaitForTasksToCompleteOnShutdown(),
+                is(WAIT_FOR_TASKS_TO_COMPLETE_ON_SHUTDOWN));
         assertThat(props.getThreadNamePrefix(), is(THREAD_NAME_PREFIX));
     }
 }

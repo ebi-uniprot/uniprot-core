@@ -1,14 +1,12 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.taxonomy.Organism;
 
 class OrganismImplTest {
 
@@ -20,7 +18,8 @@ class OrganismImplTest {
         List<String> lineages = Collections.singletonList("lineage");
         List<String> synonyms = Collections.singletonList("synonym");
 
-        Organism organism = new OrganismImpl(lineages, 9606L, null, scientificName, commonName, synonyms);
+        Organism organism =
+                new OrganismImpl(lineages, 9606L, null, scientificName, commonName, synonyms);
 
         assertEquals(9606L, organism.getTaxonId());
         assertEquals(scientificName, organism.getScientificName());
@@ -28,5 +27,4 @@ class OrganismImplTest {
         assertEquals(lineages, organism.getLineage());
         assertEquals(synonyms, organism.getSynonyms());
     }
-
 }

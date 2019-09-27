@@ -1,11 +1,11 @@
 package org.uniprot.core.cv.ec;
 
-import org.junit.jupiter.api.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
+import org.junit.jupiter.api.Test;
 
 /**
  * Created 18/03/19

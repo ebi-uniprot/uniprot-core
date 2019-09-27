@@ -1,24 +1,23 @@
 package org.uniprot.core.flatfile.parser.impl.ss;
 
-import org.antlr.v4.runtime.misc.NotNull;
-import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
-
-import org.uniprot.core.flatfile.antlr.SsLineParser;
-import org.uniprot.core.flatfile.antlr.SsLineParserBaseListener;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Locale;
 
+import org.antlr.v4.runtime.misc.NotNull;
+import org.uniprot.core.flatfile.antlr.SsLineParser;
+import org.uniprot.core.flatfile.antlr.SsLineParserBaseListener;
+import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
+
 /**
- * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use File | Settings |
- * File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use
+ * File | Settings | File Templates.
  */
-public class SsLineModelListener extends SsLineParserBaseListener implements ParseTreeObjectExtractor<SsLineObject> {
+public class SsLineModelListener extends SsLineParserBaseListener
+        implements ParseTreeObjectExtractor<SsLineObject> {
 
     private SsLineObject object;
-  
 
     @Override
     public void enterSs_ss(@NotNull SsLineParser.Ss_ssContext ctx) {
@@ -26,7 +25,8 @@ public class SsLineModelListener extends SsLineParserBaseListener implements Par
     }
 
     @Override
-    public void exitInternal_annotation_line(@NotNull SsLineParser.Internal_annotation_lineContext ctx) {
+    public void exitInternal_annotation_line(
+            @NotNull SsLineParser.Internal_annotation_lineContext ctx) {
         SsLineObject.SsLine ssLine = new SsLineObject.SsLine();
         ssLine.topic = ctx.TOPIC().getText();
         ssLine.text = ctx.IA_TEXT().getText();
@@ -43,10 +43,11 @@ public class SsLineModelListener extends SsLineParserBaseListener implements Par
     public void exitEvidence_line(@NotNull SsLineParser.Evidence_lineContext ctx) {
         SsLineObject.EvLine evLine = new SsLineObject.EvLine();
         evLine.id = ctx.ev_id().getText();
-         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-                .parseCaseInsensitive()
-                .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
-                .toFormatter(Locale.ENGLISH);
+        DateTimeFormatter formatter =
+                new DateTimeFormatterBuilder()
+                        .parseCaseInsensitive()
+                        .append(DateTimeFormatter.ofPattern("dd-MMM-yyyy"))
+                        .toFormatter(Locale.ENGLISH);
 
         evLine.date = LocalDate.parse(ctx.EV_DATE().getText(), formatter);
         evLine.attr_2 = (ctx.ev_attr_2() != null) ? ctx.ev_attr_2().getText() : "";

@@ -17,7 +17,8 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
         super("", Collections.emptyList());
     }
 
-    public GeneLocationImpl(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
+    public GeneLocationImpl(
+            GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         super(value, evidences);
         this.geneEncodingType = geneEncodingType;
     }
@@ -53,12 +54,9 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         GeneLocationImpl other = (GeneLocationImpl) obj;
         return geneEncodingType == other.geneEncodingType;
     }
@@ -67,7 +65,6 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
 
         StringBuilder sb = new StringBuilder();
         switch (getGeneEncodingType()) {
-
             case HYDROGENOSOME:
             case MITOCHONDRION:
             case NUCLEOMORPH:
@@ -96,6 +93,4 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
 
         return sb.toString();
     }
-
-
 }

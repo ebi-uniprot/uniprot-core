@@ -1,15 +1,13 @@
 package org.uniprot.core.xml.uniprot.citation;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.ElectronicArticle;
 import org.uniprot.core.citation.builder.ElectronicArticleBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.citation.CitationConverter;
-import org.uniprot.core.xml.uniprot.citation.ElectronicArticleConverter;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ElectronicArticleConverterTest {
 
@@ -18,7 +16,8 @@ class ElectronicArticleConverterTest {
         ElectronicArticle citation = create();
         ElectronicArticleConverter converter = new ElectronicArticleConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         ElectronicArticle converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -29,7 +28,8 @@ class ElectronicArticleConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -40,7 +40,9 @@ class ElectronicArticleConverterTest {
         String date = "JAN-2018";
 
         String journalName = "Nature";
-        builder.journalName(journalName).locator("Some locator").title(title)
+        builder.journalName(journalName)
+                .locator("Some locator")
+                .title(title)
                 .addAuthor("Sulson J.E.")
                 .addAuthor("JWaterston R.")
                 .publicationDate(date);

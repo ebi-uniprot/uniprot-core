@@ -11,9 +11,7 @@ import org.uniprot.core.uniprot.impl.GeneImpl;
 
 public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuilder, GeneName> {
 
-    public GeneNameBuilder(){
-
-    }
+    public GeneNameBuilder() {}
 
     public GeneNameBuilder(String name, List<Evidence> evidences) {
         this.value = name;

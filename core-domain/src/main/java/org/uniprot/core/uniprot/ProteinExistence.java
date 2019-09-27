@@ -2,11 +2,8 @@ package org.uniprot.core.uniprot;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jieluo
- */
+/** @author jieluo */
 public enum ProteinExistence implements EnumDisplay<ProteinExistence> {
-
     PROTEIN_LEVEL("Evidence at protein level", "1: Evidence at protein level"),
     TRANSCRIPT_LEVEL("Evidence at transcript level", "2: Evidence at transcript level"),
     HOMOLOGY("Inferred from homology", "3: Inferred from homology"),

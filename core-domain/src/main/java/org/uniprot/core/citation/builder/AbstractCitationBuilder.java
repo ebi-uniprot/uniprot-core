@@ -17,7 +17,9 @@ import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
 
-public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<B, T>, T extends Citation> implements CitationBuilder<B, T> {
+public abstract class AbstractCitationBuilder<
+                B extends AbstractCitationBuilder<B, T>, T extends Citation>
+        implements CitationBuilder<B, T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
     protected List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
@@ -40,9 +42,7 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
     }
 
     public B authors(Collection<String> authors) {
-        this.authors.addAll(authors.stream()
-                                    .map(AuthorImpl::new)
-                                    .collect(Collectors.toList()));
+        this.authors.addAll(authors.stream().map(AuthorImpl::new).collect(Collectors.toList()));
         return getThis();
     }
 
@@ -80,7 +80,10 @@ public abstract class AbstractCitationBuilder<B extends AbstractCitationBuilder<
         this.citationXrefs(instance.getCitationXrefs())
                 .title(instance.getTitle())
                 .publicationDate(instance.getPublicationDate().getValue())
-                .authors(instance.getAuthors().stream().map(Value::getValue).collect(Collectors.toList()))
+                .authors(
+                        instance.getAuthors().stream()
+                                .map(Value::getValue)
+                                .collect(Collectors.toList()))
                 .authoringGroups(instance.getAuthoringGroup());
     }
 

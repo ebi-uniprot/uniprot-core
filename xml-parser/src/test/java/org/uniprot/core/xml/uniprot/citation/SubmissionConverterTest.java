@@ -1,5 +1,7 @@
 package org.uniprot.core.xml.uniprot.citation;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.Submission;
@@ -7,10 +9,6 @@ import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.builder.SubmissionBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.citation.CitationConverter;
-import org.uniprot.core.xml.uniprot.citation.SubmissionConverter;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SubmissionConverterTest {
 
@@ -19,7 +17,8 @@ class SubmissionConverterTest {
         Submission citation = create();
         SubmissionConverter converter = new SubmissionConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Submission converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -29,7 +28,8 @@ class SubmissionConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -38,7 +38,8 @@ class SubmissionConverterTest {
         SubmissionBuilder builder = new SubmissionBuilder();
         String title = "Protein research";
         String date = "JAN-2018";
-        builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ).title(title)
+        builder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ)
+                .title(title)
                 .addAuthor("Sulson J.E.")
                 .addAuthor("JWaterston R.")
                 .publicationDate(date);

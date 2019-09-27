@@ -1,16 +1,15 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.ProteinExistence;
 import org.uniprot.core.uniprot.UniProtEntryType;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-/**
- *
- * @author lgonzales
- */
+import com.fasterxml.jackson.databind.JsonNode;
+
+/** @author lgonzales */
 class UniprotEntryEnumTest {
 
     @Test
@@ -19,7 +18,7 @@ class UniprotEntryEnumTest {
         ValidateJson.verifyJsonRoundTripParser(proteinExistence);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(proteinExistence);
-        assertEquals("1: Evidence at protein level",jsonNode.asText());
+        assertEquals("1: Evidence at protein level", jsonNode.asText());
     }
 
     @Test
@@ -28,7 +27,6 @@ class UniprotEntryEnumTest {
         ValidateJson.verifyJsonRoundTripParser(entryType);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(entryType);
-        assertEquals("Swiss-Prot",jsonNode.asText());
+        assertEquals("Swiss-Prot", jsonNode.asText());
     }
-
 }

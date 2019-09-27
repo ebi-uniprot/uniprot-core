@@ -1,9 +1,8 @@
 package org.uniprot.core;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Property;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class PropertyTest {
 
@@ -13,5 +12,4 @@ class PropertyTest {
         assertEquals("some key", pt.getKey());
         assertEquals("some value", pt.getValue());
     }
-
 }

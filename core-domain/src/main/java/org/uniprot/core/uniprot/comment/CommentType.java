@@ -3,44 +3,20 @@ package org.uniprot.core.uniprot.comment;
 import org.uniprot.core.util.EnumDisplay;
 
 /**
- * Enumerates all comment types in UniProt.
- * Important!!! The order which is here must
- * the order existing in the file  cc_ord which
- * is placed in /eabbi/sp/misc1/pc/sprot/various/cc_ord
- * <p>
- * CC   -!- FUNCTION: Text.
- * CC   -!- CATALYTIC ACTIVITY: Text.
- * CC   -!- COFACTOR: Text.
- * CC   -!- ENZYME REGULATION: Text.
- * CC   -!- BIOPHYSICOCHEMICAL PROPERTIES: Text.
- * CC   -!- PATHWAY: Text.
- * CC   -!- SUBUNIT: Text.
- * CC   -!- INTERACTION: Standardized format.
- * CC   -!- SUBCELLULAR LOCATION: Text.
- * CC   -!- ALTERNATIVE PRODUCTS: Text.
- * CC   -!- TISSUE SPECIFICITY: Text.
- * CC   -!- DEVELOPMENTAL STAGE: Text.
- * CC   -!- INDUCTION: Text.
- * CC   -!- DOMAIN: Text.
- * CC   -!- PTM: Text.
- * CC   -!- RNA EDITING: Text.
- * CC   -!- MASS SPECTROMETRY: Text.
- * CC   -!- POLYMORPHISM: Text.
- * CC   -!- DISEASE: Text.
- * CC   -!- DISRUPTION PHENOTYPE: Text.
- * CC   -!- ALLERGEN: Text.
- * CC   -!- TOXIC DOSE: Text.
- * CC   -!- BIOTECHNOLOGY: Text.
- * CC   -!- PHARMACEUTICAL: Text.
- * CC   -!- MISCELLANEOUS: Text.
- * CC   -!- SIMILARITY: Text.
- * CC   -!- CAUTION: Text.
- * CC   -!- SEQUENCE CAUTION: Text.
- * CC   -!- WEB RESOURCE: Text.
+ * Enumerates all comment types in UniProt. Important!!! The order which is here must the order
+ * existing in the file cc_ord which is placed in /eabbi/sp/misc1/pc/sprot/various/cc_ord
+ *
+ * <p>CC -!- FUNCTION: Text. CC -!- CATALYTIC ACTIVITY: Text. CC -!- COFACTOR: Text. CC -!- ENZYME
+ * REGULATION: Text. CC -!- BIOPHYSICOCHEMICAL PROPERTIES: Text. CC -!- PATHWAY: Text. CC -!-
+ * SUBUNIT: Text. CC -!- INTERACTION: Standardized format. CC -!- SUBCELLULAR LOCATION: Text. CC -!-
+ * ALTERNATIVE PRODUCTS: Text. CC -!- TISSUE SPECIFICITY: Text. CC -!- DEVELOPMENTAL STAGE: Text. CC
+ * -!- INDUCTION: Text. CC -!- DOMAIN: Text. CC -!- PTM: Text. CC -!- RNA EDITING: Text. CC -!- MASS
+ * SPECTROMETRY: Text. CC -!- POLYMORPHISM: Text. CC -!- DISEASE: Text. CC -!- DISRUPTION PHENOTYPE:
+ * Text. CC -!- ALLERGEN: Text. CC -!- TOXIC DOSE: Text. CC -!- BIOTECHNOLOGY: Text. CC -!-
+ * PHARMACEUTICAL: Text. CC -!- MISCELLANEOUS: Text. CC -!- SIMILARITY: Text. CC -!- CAUTION: Text.
+ * CC -!- SEQUENCE CAUTION: Text. CC -!- WEB RESOURCE: Text.
  */
 public enum CommentType implements EnumDisplay<CommentType> {
-
-
     FUNCTION("FUNCTION", "function"),
     CATALYTIC_ACTIVITY("CATALYTIC ACTIVITY", "catalytic activity"),
     COFACTOR("COFACTOR", "cofactor"),
@@ -81,8 +57,7 @@ public enum CommentType implements EnumDisplay<CommentType> {
     }
 
     public static CommentType dbTypeOf(String value) {
-        for (CommentType commentType : CommentType
-                .values()) {
+        for (CommentType commentType : CommentType.values()) {
             if (commentType.toString().equalsIgnoreCase(value)) {
                 return commentType;
             }
@@ -92,8 +67,7 @@ public enum CommentType implements EnumDisplay<CommentType> {
     }
 
     public static CommentType typeOf(String value) {
-        for (CommentType commentType : CommentType
-                .values()) {
+        for (CommentType commentType : CommentType.values()) {
             if (commentType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
                 return commentType;
             }
@@ -103,10 +77,9 @@ public enum CommentType implements EnumDisplay<CommentType> {
     }
 
     /**
-     * Returns the name of this enum constant, as contained in the
-     * declaration.  This method may be overridden, though it typically
-     * isn't necessary or desirable.  An enum type should override this
-     * method when a more "programmer-friendly" string form exists.
+     * Returns the name of this enum constant, as contained in the declaration. This method may be
+     * overridden, though it typically isn't necessary or desirable. An enum type should override
+     * this method when a more "programmer-friendly" string form exists.
      *
      * @return the name of this enum constant
      */
@@ -122,5 +95,4 @@ public enum CommentType implements EnumDisplay<CommentType> {
     public String toXmlDisplayName() {
         return xmlDisplayValue;
     }
-
 }

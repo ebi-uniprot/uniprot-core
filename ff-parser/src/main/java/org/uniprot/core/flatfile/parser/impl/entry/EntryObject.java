@@ -29,39 +29,35 @@ import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 
-/**
- * <p/>
- * User: wudong, Date: 16/09/13, Time: 10:46
- */
+/** User: wudong, Date: 16/09/13, Time: 10:46 */
 public class EntryObject {
-	 public AcLineObject ac;
-	 public CcLineObject cc;
-	 public DeLineObject de;
-	 public DrLineObject dr;
-	 public DtLineObject dt;
-	 public FtLineObject ft;
-	 public GnLineObject gn;
-	 public IdLineObject id;
-	 public KwLineObject kw;
-	 public OcLineObject oc;
-	 public OgLineObject og;
-	 public OhLineObject oh;
-	 public OsLineObject os;
-	 public OxLineObject ox;
-	 public PeLineObject pe;
-	 public SqLineObject sq;
-	 public SsLineObject ss;
-	 public List<ReferenceObject> ref = new ArrayList<ReferenceObject>();
+    public AcLineObject ac;
+    public CcLineObject cc;
+    public DeLineObject de;
+    public DrLineObject dr;
+    public DtLineObject dt;
+    public FtLineObject ft;
+    public GnLineObject gn;
+    public IdLineObject id;
+    public KwLineObject kw;
+    public OcLineObject oc;
+    public OgLineObject og;
+    public OhLineObject oh;
+    public OsLineObject os;
+    public OxLineObject ox;
+    public PeLineObject pe;
+    public SqLineObject sq;
+    public SsLineObject ss;
+    public List<ReferenceObject> ref = new ArrayList<ReferenceObject>();
 
-     public static class ReferenceObject{
-	     public RnLineObject rn;
-	     public RpLineObject rp;
-	     public RaLineObject ra;
-	     public RtLineObject rt;
-	     public RxLineObject rx;
-	     public RcLineObject rc;
-	     public RgLineObject rg;
-	     public RlLineObject rl;
-     }
-
+    public static class ReferenceObject {
+        public RnLineObject rn;
+        public RpLineObject rp;
+        public RaLineObject ra;
+        public RtLineObject rt;
+        public RxLineObject rx;
+        public RcLineObject rc;
+        public RgLineObject rg;
+        public RlLineObject rl;
+    }
 }

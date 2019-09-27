@@ -1,5 +1,11 @@
 package org.uniprot.core.parser.tsv.literature;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
@@ -9,14 +15,7 @@ import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
 import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
 import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
-import org.uniprot.core.parser.tsv.literature.LiteratureEntryMap;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
-
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author lgonzales
@@ -46,10 +45,14 @@ class LiteratureEntryMapTest {
         assertEquals("100", mappedEntries.get("id"));
         assertEquals("doi Id", mappedEntries.get("doi"));
         assertEquals("title", mappedEntries.get("title"));
-        assertEquals("journal Name volume:first Page-last Page(21-06-2019)", mappedEntries.get("reference"));
+        assertEquals(
+                "journal Name volume:first Page-last Page(21-06-2019)",
+                mappedEntries.get("reference"));
         assertEquals("authoring group; author name", mappedEntries.get("author_and_group"));
         assertEquals("journal Name", mappedEntries.get("journal"));
-        assertEquals("source value; source Id; source category; annotation value", mappedEntries.get("mapped_references"));
+        assertEquals(
+                "source value; source Id; source category; annotation value",
+                mappedEntries.get("mapped_references"));
         assertEquals("author name", mappedEntries.get("author"));
         assertEquals("21-06-2019", mappedEntries.get("publication"));
         assertEquals("authoring group", mappedEntries.get("authoring_group"));
@@ -93,5 +96,4 @@ class LiteratureEntryMapTest {
                 .mappedProteinCount(30)
                 .build();
     }
-
 }

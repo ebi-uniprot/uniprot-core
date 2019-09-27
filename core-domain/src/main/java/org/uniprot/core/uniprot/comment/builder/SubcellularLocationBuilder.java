@@ -10,7 +10,8 @@ import org.uniprot.core.uniprot.comment.impl.SubcellularLocationImpl;
  *
  * @author Edd
  */
-public final class SubcellularLocationBuilder implements Builder<SubcellularLocationBuilder, SubcellularLocation> {
+public final class SubcellularLocationBuilder
+        implements Builder<SubcellularLocationBuilder, SubcellularLocation> {
     private SubcellularLocationValue location;
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
@@ -36,8 +37,7 @@ public final class SubcellularLocationBuilder implements Builder<SubcellularLoca
 
     @Override
     public SubcellularLocationBuilder from(SubcellularLocation instance) {
-        return this
-                .location(instance.getLocation())
+        return this.location(instance.getLocation())
                 .orientation(instance.getOrientation())
                 .topology(instance.getTopology());
     }

@@ -9,7 +9,7 @@ import org.uniprot.core.cv.chebi.impl.ChebiRepoImpl;
  */
 public class ChebiRepoFactory {
 
-    private ChebiRepoFactory(){}
+    private ChebiRepoFactory() {}
 
     public static ChebiRepo get(String filename) {
         return new ChebiRepoImpl(filename);

@@ -1,27 +1,24 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 
-import java.util.Collections;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public class OrganimsTest {
 
     @Test
     void testOrganismSimple() {
-        Organism organism = new OrganismBuilder()
-                .taxonId(9606L)
-                .scientificName("scientific name")
-                .build();
+        Organism organism =
+                new OrganismBuilder().taxonId(9606L).scientificName("scientific name").build();
 
         ValidateJson.verifyJsonRoundTripParser(organism);
 
@@ -53,7 +50,8 @@ public class OrganimsTest {
 
         assertNotNull(jsonNode.get("evidences"));
         assertEquals(1, jsonNode.get("evidences").size());
-        ValidateJson.validateEvidence(jsonNode.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001363");
+        ValidateJson.validateEvidence(
+                jsonNode.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001363");
     }
 
     public static Organism getOrganism() {

@@ -1,6 +1,11 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -12,16 +17,9 @@ import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
 import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class UniProtReferenceTest {
 
     @Test
@@ -38,23 +36,26 @@ public class UniProtReferenceTest {
         ValidateJson.verifyEmptyFields(uniprotReference);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(uniprotReference);
-        assertNotNull(jsonNode.get("citation")); // citation information is being tested in BooksTest class
+        assertNotNull(
+                jsonNode.get(
+                        "citation")); // citation information is being tested in BooksTest class
 
         assertNotNull(jsonNode.get("referencePositions"));
-        assertEquals(1,jsonNode.get("referencePositions").size());
-        assertEquals("position 1",jsonNode.get("referencePositions").get(0).asText());
+        assertEquals(1, jsonNode.get("referencePositions").size());
+        assertEquals("position 1", jsonNode.get("referencePositions").get(0).asText());
 
         assertNotNull(jsonNode.get("referenceComments"));
-        assertEquals(1,jsonNode.get("referenceComments").size());
+        assertEquals(1, jsonNode.get("referenceComments").size());
         JsonNode referenceComment = jsonNode.get("referenceComments").get(0);
-        ValidateJson.validateValueEvidence(referenceComment,"reference comment value","ECO:0000269","PubMed","11389730");
+        ValidateJson.validateValueEvidence(
+                referenceComment, "reference comment value", "ECO:0000269", "PubMed", "11389730");
         assertNotNull(referenceComment.get("type"));
-        assertEquals("PLASMID",referenceComment.get("type").asText());
+        assertEquals("PLASMID", referenceComment.get("type").asText());
 
         assertNotNull(jsonNode.get("evidences"));
-        assertEquals(1,jsonNode.get("evidences").size());
-        ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000269","PubMed","11389730");
-
+        assertEquals(1, jsonNode.get("evidences").size());
+        ValidateJson.validateEvidence(
+                jsonNode.get("evidences").get(0), "ECO:0000269", "PubMed", "11389730");
     }
 
     public static List<UniProtReference> getUniProtReferences() {
@@ -75,11 +76,12 @@ public class UniProtReferenceTest {
 
     private static UniProtReference getUniProtReference(Citation citation) {
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
-        ReferenceComment referenceComment = new ReferenceCommentBuilder()
-                .type(ReferenceCommentType.PLASMID)
-                .value("reference comment value")
-                .evidences(evidences)
-                .build();
+        ReferenceComment referenceComment =
+                new ReferenceCommentBuilder()
+                        .type(ReferenceCommentType.PLASMID)
+                        .value("reference comment value")
+                        .evidences(evidences)
+                        .build();
 
         return new UniProtReferenceBuilder()
                 .citation(citation)

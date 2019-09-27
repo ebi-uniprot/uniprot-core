@@ -1,12 +1,12 @@
 package org.uniprot.core.citation.impl;
 
+import static java.util.Collections.emptyList;
+
 import java.util.List;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
-
-import static java.util.Collections.emptyList;
 
 public class PatentImpl extends AbstractCitationImpl implements Patent {
     private static final long serialVersionUID = 7708555945786333862L;
@@ -16,8 +16,13 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
         this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
-    public PatentImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                      String title, PublicationDate publicationDate, String patentNumber) {
+    public PatentImpl(
+            List<String> authoringGroup,
+            List<Author> authors,
+            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            String title,
+            PublicationDate publicationDate,
+            String patentNumber) {
         super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
         this.patentNumber = Utils.nullToEmpty(patentNumber);
     }
@@ -42,12 +47,9 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         PatentImpl other = (PatentImpl) obj;
         if (patentNumber == null) {
             return other.patentNumber == null;

@@ -1,5 +1,10 @@
 package org.uniprot.core.flatfile.writer.line.ft;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
@@ -13,11 +18,6 @@ import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FTBuildTestAbstr {
     void doTest(String ftLine, Feature feature) {
@@ -47,30 +47,67 @@ class FTBuildTestAbstr {
         assertEquals(ccLine, value);
     }
 
-    Feature createFeature(FeatureType type, int nstart, int nend, String description, String ftId, List<String> evs) {
-        return createFeature(type, nstart, nend, PositionModifier.EXACT, PositionModifier.EXACT, description, ftId,
-                             evs);
+    Feature createFeature(
+            FeatureType type,
+            int nstart,
+            int nend,
+            String description,
+            String ftId,
+            List<String> evs) {
+        return createFeature(
+                type,
+                nstart,
+                nend,
+                PositionModifier.EXACT,
+                PositionModifier.EXACT,
+                description,
+                ftId,
+                evs);
     }
 
-    Feature createFeature(FeatureType type, int nstart, int nend, PositionModifier sfModifier,
-                          PositionModifier efModifier, String description, String ftId, List<String> evs) {
-        Range location = new Range(new Position(nstart, sfModifier), new Position(nend, efModifier));
+    Feature createFeature(
+            FeatureType type,
+            int nstart,
+            int nend,
+            PositionModifier sfModifier,
+            PositionModifier efModifier,
+            String description,
+            String ftId,
+            List<String> evs) {
+        Range location =
+                new Range(new Position(nstart, sfModifier), new Position(nend, efModifier));
 
         return new FeatureBuilder()
-                .type(type).location(location).description(description).featureId(ftId).evidences(createEvidence(evs))
+                .type(type)
+                .location(location)
+                .description(description)
+                .featureId(ftId)
+                .evidences(createEvidence(evs))
                 .build();
     }
 
-    Feature createFeature(FeatureType type, Range location, String description, String ftId,
-                          AlternativeSequence alternativeSequence, List<String> evs) {
+    Feature createFeature(
+            FeatureType type,
+            Range location,
+            String description,
+            String ftId,
+            AlternativeSequence alternativeSequence,
+            List<String> evs) {
         return new FeatureBuilder()
-                .type(type).location(location).description(description).featureId(ftId)
-                .alternativeSequence(alternativeSequence).evidences(createEvidence(evs))
+                .type(type)
+                .location(location)
+                .description(description)
+                .featureId(ftId)
+                .alternativeSequence(alternativeSequence)
+                .evidences(createEvidence(evs))
                 .build();
     }
 
-    AlternativeSequence createAlternativeSequence(String originalSequence, List<String> alternativeSequences) {
-        return new AlternativeSequenceBuilder().alternatives(alternativeSequences).original(originalSequence)
+    AlternativeSequence createAlternativeSequence(
+            String originalSequence, List<String> alternativeSequences) {
+        return new AlternativeSequenceBuilder()
+                .alternatives(alternativeSequences)
+                .original(originalSequence)
                 .build();
     }
 

@@ -1,5 +1,11 @@
 package org.uniprot.core.xml.uniprot.description;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.*;
 import org.uniprot.core.uniprot.description.builder.ProteinDescriptionBuilder;
@@ -8,18 +14,6 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.description.AltNameConverter;
-import org.uniprot.core.xml.uniprot.description.ECConverter;
-import org.uniprot.core.xml.uniprot.description.NameConverter;
-import org.uniprot.core.xml.uniprot.description.ProteinDescriptionConverter;
-import org.uniprot.core.xml.uniprot.description.RecNameConverter;
-import org.uniprot.core.xml.uniprot.description.SubNameConverter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.*;
 
 class ProteinDescriptionConverterTest {
 
@@ -34,8 +28,7 @@ class ProteinDescriptionConverterTest {
         Name fullName = createName("a full Name", evidences);
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames,
-                                                        ecNumbers);
+        ProteinRecName recommendedName = createProteinRecName(fullName, shortNames, ecNumbers);
 
         List<ProteinAltName> proteinAltNames = createAltName();
         Name fullName1 = createName("a full Name", evidences);
@@ -45,18 +38,25 @@ class ProteinDescriptionConverterTest {
         List<ProteinSubName> subNames = new ArrayList<>();
         subNames.add(subName);
         ProteinDescriptionBuilder builder = new ProteinDescriptionBuilder();
-        ProteinDescription description = builder.recommendedName(recommendedName).submissionNames(subNames)
-                .alternativeNames(proteinAltNames).allergenName(allergenName).biotechName(biotechName)
-                .cdAntigenNames(antigenNames).build();
+        ProteinDescription description =
+                builder.recommendedName(recommendedName)
+                        .submissionNames(subNames)
+                        .alternativeNames(proteinAltNames)
+                        .allergenName(allergenName)
+                        .biotechName(biotechName)
+                        .cdAntigenNames(antigenNames)
+                        .build();
         ProteinDescriptionConverter converter = createConverter();
         ProteinType xmlObj = converter.toXml(description);
         System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, ProteinType.class, "protein"));
         ProteinDescription converted = converter.fromXml(xmlObj);
         assertEquals(description, converted);
         List<DbReferenceType> dbReferences = converter.toXmlDbReferences(description);
-        dbReferences.forEach(val -> System.out.println(
-                UniProtXmlTestHelper.toXmlString(val, DbReferenceType.class, "dbReference"))
-        );
+        dbReferences.forEach(
+                val ->
+                        System.out.println(
+                                UniProtXmlTestHelper.toXmlString(
+                                        val, DbReferenceType.class, "dbReference")));
     }
 
     @Test
@@ -69,8 +69,7 @@ class ProteinDescriptionConverterTest {
         List<ProteinAltName> proteinAltNames = createAltName();
         Name fullName1 = createName("a full Name", evidences);
         List<EC> ecNumbers1 = createECNumbers();
-        ProteinSubName subName = createProteinSubName(fullName1,
-                                                ecNumbers1);
+        ProteinSubName subName = createProteinSubName(fullName1, ecNumbers1);
 
         ProteinSection included1 = createProteinNameSection(recommendedName, null);
         ProteinSection contain1 = createProteinNameSection(recommendedName, null);
@@ -94,7 +93,6 @@ class ProteinDescriptionConverterTest {
         System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, ProteinType.class, "protein"));
         ProteinDescription converted = converter.fromXml(xmlObj);
         assertEquals(description, converted);
-
     }
 
     private ProteinDescriptionConverter createConverter() {
@@ -105,8 +103,8 @@ class ProteinDescriptionConverterTest {
         AltNameConverter altNameConverter = new AltNameConverter(nameConverter, ecConverter);
         SubNameConverter subNameConverter = new SubNameConverter(nameConverter, ecConverter);
 
-        return new ProteinDescriptionConverter(recNameConverter, altNameConverter, subNameConverter, nameConverter);
-
+        return new ProteinDescriptionConverter(
+                recNameConverter, altNameConverter, subNameConverter, nameConverter);
     }
 
     private List<ProteinAltName> createAltName() {

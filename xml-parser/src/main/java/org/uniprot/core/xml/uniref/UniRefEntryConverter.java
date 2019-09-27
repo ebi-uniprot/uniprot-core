@@ -17,123 +17,134 @@ import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 import com.google.common.base.Strings;
 
 /**
- *
  * @author jluo
  * @date: 13 Aug 2019
- *
  */
+public class UniRefEntryConverter implements Converter<Entry, UniRefEntry> {
+    public static final String PROPERTY_MEMBER_COUNT = "member count";
+    public static final String PROPERTY_COMMON_TAXON = "common taxon";
+    public static final String PROPERTY_COMMON_TAXON_ID = "common taxon ID";
+    public static final String PROPERTY_GO_FUNCTION = "GO Molecular Function";
+    public static final String PROPERTY_GO_COMPONENT = "GO Cellular Component";
+    public static final String PROPERTY_GO_PROCESS = "GO Biological Process";
 
-public class UniRefEntryConverter implements Converter< Entry, UniRefEntry> {
-	public static final String PROPERTY_MEMBER_COUNT = "member count";
-	public static final String PROPERTY_COMMON_TAXON = "common taxon";
-	public static final String PROPERTY_COMMON_TAXON_ID = "common taxon ID";
-	public static final String PROPERTY_GO_FUNCTION = "GO Molecular Function";
-	public static final String PROPERTY_GO_COMPONENT = "GO Cellular Component";
-	public static final String PROPERTY_GO_PROCESS = "GO Biological Process";
+    private final MemberConverter memberConverter;
+    private final RepresentativeMemberConverter representativeMemverConverter;
+    private final ObjectFactory jaxbFactory;
 
-	
-	private final MemberConverter memberConverter;
-	private final RepresentativeMemberConverter representativeMemverConverter;
-	private final ObjectFactory jaxbFactory;
+    public UniRefEntryConverter() {
+        this(new ObjectFactory());
+    }
 
-	public UniRefEntryConverter() {
-		this(new ObjectFactory());
-	}
+    public UniRefEntryConverter(ObjectFactory jaxbFactory) {
+        this.jaxbFactory = jaxbFactory;
+        memberConverter = new MemberConverter(jaxbFactory);
+        representativeMemverConverter = new RepresentativeMemberConverter(jaxbFactory);
+    }
 
-	public UniRefEntryConverter(ObjectFactory jaxbFactory) {
-		this.jaxbFactory = jaxbFactory;
-		memberConverter = new MemberConverter(jaxbFactory);
-	    representativeMemverConverter = new RepresentativeMemberConverter(jaxbFactory);
-	}
+    @Override
+    public UniRefEntry fromXml(Entry xmlObj) {
 
-	@Override
-	public UniRefEntry fromXml(Entry xmlObj) {
-		
-		UniRefEntryBuilder builder = new UniRefEntryBuilder();
-		builder.id(xmlObj.getId())
-		.entryType(getTypeFromId(xmlObj.getId()))
-		.name(xmlObj.getName())
-		.updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
-		.representativeMember(representativeMemverConverter.fromXml(xmlObj.getRepresentativeMember()))
-		.members(
-				xmlObj.getMember()
-				.stream().map(memberConverter::fromXml)
-				.collect(Collectors.toList())			
-				);
-		
-		updatePropertFromXml(builder, xmlObj);
-		return builder.build();
+        UniRefEntryBuilder builder = new UniRefEntryBuilder();
+        builder.id(xmlObj.getId())
+                .entryType(getTypeFromId(xmlObj.getId()))
+                .name(xmlObj.getName())
+                .updated(XmlConverterHelper.dateFromXml(xmlObj.getUpdated()))
+                .representativeMember(
+                        representativeMemverConverter.fromXml(xmlObj.getRepresentativeMember()))
+                .members(
+                        xmlObj.getMember().stream()
+                                .map(memberConverter::fromXml)
+                                .collect(Collectors.toList()));
 
-	}
-	private UniRefType getTypeFromId(String id) {
-		if(!id.contains("_")) {
-			throw new IllegalArgumentException("UniRef id:" + id + " is wrong format");
-		}
-		String val = id.substring(0, id.indexOf("_"));
-		return UniRefType.valueOf(val);
-	}
-	private void updatePropertFromXml(UniRefEntryBuilder builder, Entry jaxbEntry) {
-		for (PropertyType property :jaxbEntry.getProperty()) {
-			if (property.getType().equals(PROPERTY_COMMON_TAXON)) {
-				builder.commonTaxon(property.getValue());
-			} else if (property.getType().equals(PROPERTY_COMMON_TAXON_ID)) {
-				builder.commonTaxonId( Long.parseLong(property.getValue()));
-			} else if (property.getType().equals(PROPERTY_GO_FUNCTION)) {
-				builder.addGoTerm(createGoTerm(GoTermType.FUNCTION, property.getValue()));			
-			} else if (property.getType().equals(PROPERTY_GO_COMPONENT)) {
-				builder.addGoTerm(createGoTerm(GoTermType.COMPONENT, property.getValue()));
-			} else if (property.getType().equals(PROPERTY_GO_PROCESS)) {
-				builder.addGoTerm(createGoTerm(GoTermType.PROCESS, property.getValue()));
-			} else if (property.getType().equals(PROPERTY_MEMBER_COUNT)) {
-				builder.memberCount(Integer.parseInt(property.getValue()));
-			} else {
-				System.out.println("property.getType() = " + property.getType() +" not supported");
-			}
-		}
-	}
-	private GoTerm createGoTerm(GoTermType type, String id) {
-		return new GoTermBuilder().type(type).id(id).build();
-	}
-	@Override
-	public Entry toXml(UniRefEntry uniObj) {
-		Entry jaxbEntry = jaxbFactory.createEntry();
-		jaxbEntry.setId(uniObj.getId().getValue());
-		jaxbEntry.setName(uniObj.getName());
-		
-		jaxbEntry.setRepresentativeMember(representativeMemverConverter.toXml(uniObj.getRepresentativeMember()));
-		jaxbEntry.setUpdated(XmlConverterHelper.dateToXml(uniObj.getUpdated()));
-		uniObj.getMembers().stream().map(memberConverter::toXml	).forEach(jaxbEntry.getMember()::add);
-		updatePropertyToXml(jaxbEntry, uniObj);
-		return jaxbEntry;
-	}
-	private void updatePropertyToXml(Entry jaxbEntry, UniRefEntry uniObj) {
-		int count = uniObj.getMemberCount();
-		if(count ==0) {
-			count = uniObj.getMembers().size()+1;
-		}
-		jaxbEntry.getProperty().add(createProperty(PROPERTY_MEMBER_COUNT, String.valueOf(count)));
-		if(!Strings.isNullOrEmpty(uniObj.getCommonTaxon())) {
-			jaxbEntry.getProperty().add(createProperty(PROPERTY_COMMON_TAXON, uniObj.getCommonTaxon()));
-		}
-		jaxbEntry.getProperty().add(createProperty(PROPERTY_COMMON_TAXON_ID, String.valueOf(uniObj.getCommonTaxonId())));
-		uniObj.getGoTerms().stream().map(this::convert).forEach( jaxbEntry.getProperty()::add);
-	}
-	
-	private PropertyType convert(GoTerm goTerm) {
-		switch(goTerm.getType()) {
-		case FUNCTION:
-			return createProperty(PROPERTY_GO_FUNCTION, goTerm.getId());
-		case COMPONENT:
-			return createProperty(PROPERTY_GO_COMPONENT, goTerm.getId());
-		case PROCESS:
-			return createProperty(PROPERTY_GO_PROCESS, goTerm.getId());
-		}
-		return createProperty(goTerm.getType().toDisplayName(), goTerm.getId());
-	}
-	private PropertyType createProperty(String type, String value) {
-		PropertyType property = jaxbFactory.createPropertyType();
-		property.setType(type);
-		property.setValue(value);
-		return property;
-	}
+        updatePropertFromXml(builder, xmlObj);
+        return builder.build();
+    }
+
+    private UniRefType getTypeFromId(String id) {
+        if (!id.contains("_")) {
+            throw new IllegalArgumentException("UniRef id:" + id + " is wrong format");
+        }
+        String val = id.substring(0, id.indexOf("_"));
+        return UniRefType.valueOf(val);
+    }
+
+    private void updatePropertFromXml(UniRefEntryBuilder builder, Entry jaxbEntry) {
+        for (PropertyType property : jaxbEntry.getProperty()) {
+            if (property.getType().equals(PROPERTY_COMMON_TAXON)) {
+                builder.commonTaxon(property.getValue());
+            } else if (property.getType().equals(PROPERTY_COMMON_TAXON_ID)) {
+                builder.commonTaxonId(Long.parseLong(property.getValue()));
+            } else if (property.getType().equals(PROPERTY_GO_FUNCTION)) {
+                builder.addGoTerm(createGoTerm(GoTermType.FUNCTION, property.getValue()));
+            } else if (property.getType().equals(PROPERTY_GO_COMPONENT)) {
+                builder.addGoTerm(createGoTerm(GoTermType.COMPONENT, property.getValue()));
+            } else if (property.getType().equals(PROPERTY_GO_PROCESS)) {
+                builder.addGoTerm(createGoTerm(GoTermType.PROCESS, property.getValue()));
+            } else if (property.getType().equals(PROPERTY_MEMBER_COUNT)) {
+                builder.memberCount(Integer.parseInt(property.getValue()));
+            } else {
+                System.out.println("property.getType() = " + property.getType() + " not supported");
+            }
+        }
+    }
+
+    private GoTerm createGoTerm(GoTermType type, String id) {
+        return new GoTermBuilder().type(type).id(id).build();
+    }
+
+    @Override
+    public Entry toXml(UniRefEntry uniObj) {
+        Entry jaxbEntry = jaxbFactory.createEntry();
+        jaxbEntry.setId(uniObj.getId().getValue());
+        jaxbEntry.setName(uniObj.getName());
+
+        jaxbEntry.setRepresentativeMember(
+                representativeMemverConverter.toXml(uniObj.getRepresentativeMember()));
+        jaxbEntry.setUpdated(XmlConverterHelper.dateToXml(uniObj.getUpdated()));
+        uniObj.getMembers().stream()
+                .map(memberConverter::toXml)
+                .forEach(jaxbEntry.getMember()::add);
+        updatePropertyToXml(jaxbEntry, uniObj);
+        return jaxbEntry;
+    }
+
+    private void updatePropertyToXml(Entry jaxbEntry, UniRefEntry uniObj) {
+        int count = uniObj.getMemberCount();
+        if (count == 0) {
+            count = uniObj.getMembers().size() + 1;
+        }
+        jaxbEntry.getProperty().add(createProperty(PROPERTY_MEMBER_COUNT, String.valueOf(count)));
+        if (!Strings.isNullOrEmpty(uniObj.getCommonTaxon())) {
+            jaxbEntry
+                    .getProperty()
+                    .add(createProperty(PROPERTY_COMMON_TAXON, uniObj.getCommonTaxon()));
+        }
+        jaxbEntry
+                .getProperty()
+                .add(
+                        createProperty(
+                                PROPERTY_COMMON_TAXON_ID,
+                                String.valueOf(uniObj.getCommonTaxonId())));
+        uniObj.getGoTerms().stream().map(this::convert).forEach(jaxbEntry.getProperty()::add);
+    }
+
+    private PropertyType convert(GoTerm goTerm) {
+        switch (goTerm.getType()) {
+            case FUNCTION:
+                return createProperty(PROPERTY_GO_FUNCTION, goTerm.getId());
+            case COMPONENT:
+                return createProperty(PROPERTY_GO_COMPONENT, goTerm.getId());
+            case PROCESS:
+                return createProperty(PROPERTY_GO_PROCESS, goTerm.getId());
+        }
+        return createProperty(goTerm.getType().toDisplayName(), goTerm.getId());
+    }
+
+    private PropertyType createProperty(String type, String value) {
+        PropertyType property = jaxbFactory.createPropertyType();
+        property.setType(type);
+        property.setValue(value);
+        return property;
+    }
 }

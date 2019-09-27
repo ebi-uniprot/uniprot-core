@@ -1,5 +1,11 @@
 package org.uniprot.core.cv.subcell;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.common.AbstractFileReader;
@@ -8,29 +14,22 @@ import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-
 public class SubcellularLocationFileReader extends AbstractFileReader<SubcellularLocationEntry> {
-	private static final String HP_LINE = "HP";
-	private static final String KW_LINE = "KW";
-	private static final String GO_LINE = "GO";
-	private static final String AN_LINE = "AN";
-	private static final String RX_LINE = "RX";
-	private static final String WW_LINE = "WW";
-	private static final String HI_LINE = "HI";
-	private static final String SL_LINE = "SL";
-	private static final String SY_LINE = "SY";
-	private static final String DE_LINE = "DE";
-	private static final String AC_LINE = "AC";
-	private static final String IO_LINE = "IO";
-	private static final String IT_LINE = "IT";
-	private static final String ID_LINE = "ID";
-	private static final String SPLIT_SPACES = "   ";
+    private static final String HP_LINE = "HP";
+    private static final String KW_LINE = "KW";
+    private static final String GO_LINE = "GO";
+    private static final String AN_LINE = "AN";
+    private static final String RX_LINE = "RX";
+    private static final String WW_LINE = "WW";
+    private static final String HI_LINE = "HI";
+    private static final String SL_LINE = "SL";
+    private static final String SY_LINE = "SY";
+    private static final String DE_LINE = "DE";
+    private static final String AC_LINE = "AC";
+    private static final String IO_LINE = "IO";
+    private static final String IT_LINE = "IT";
+    private static final String ID_LINE = "ID";
+    private static final String SPLIT_SPACES = "   ";
     private static final Logger LOG = LoggerFactory.getLogger(SubcellularLocationFileReader.class);
 
     public List<SubcellularLocationEntry> parseLines(List<String> lines) {
@@ -40,10 +39,13 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return list;
     }
 
-    public Map<String,String> parseFileToAccessionMap(String fileName) {
+    public Map<String, String> parseFileToAccessionMap(String fileName) {
         List<SubcellularLocationEntry> list = parse(fileName);
         return list.stream()
-                .collect(Collectors.toMap(SubcellularLocationEntry::getContent, SubcellularLocationEntry::getAccession));
+                .collect(
+                        Collectors.toMap(
+                                SubcellularLocationEntry::getContent,
+                                SubcellularLocationEntry::getAccession));
     }
 
     private List<SubcellularFileEntry> convertLinesIntoInMemoryObjectList(List<String> lines) {
@@ -55,8 +57,7 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         // Ignore the header lines and information
         for (; i < lines.size(); i++) {
             String lineIgnore = lines.get(i);
-            if (lineIgnore.startsWith("______"))
-                break;
+            if (lineIgnore.startsWith("______")) break;
         }
 
         // Ignore underscore ___ line
@@ -68,10 +69,10 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         // create in memory list of objects
         while (i < lines.size()) {
             String line = lines.get(i);
-        	if(COPYRIGHT_LINES.contains(line)) {
-				i++;
-				continue;
-			}
+            if (COPYRIGHT_LINES.contains(line)) {
+                i++;
+                continue;
+            }
             // For terminating line no need to complete loop
             if (line.equals("//")) {
                 retList.add(entry);
@@ -126,7 +127,6 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                     break;
                 default:
                     LOG.info("Unhandle line found while parsing file: {}", line);
-
             }
 
             // read and save next line
@@ -135,13 +135,15 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return retList;
     }
 
-    private List<SubcellularLocationEntry> parseSubcellularFileEntryList(List<SubcellularFileEntry> list) {
+    private List<SubcellularLocationEntry> parseSubcellularFileEntryList(
+            List<SubcellularFileEntry> list) {
         return list.stream().map(this::parseSubcellularFileEntry).collect(Collectors.toList());
     }
 
     /**
-     * In case properties (strings or list) are empty setting it null. OGM will not insert null properties in neo4j node
-     * 
+     * In case properties (strings or list) are empty setting it null. OGM will not insert null
+     * properties in neo4j node
+     *
      * @param entry
      * @return
      */
@@ -150,14 +152,14 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         retObj.setAccession(entry.ac);
         retObj.setContent(trimSpacesAndRemoveLastDot(entry.sl));
 
-        if (entry.id != null) {           
+        if (entry.id != null) {
             retObj.setId(trimSpacesAndRemoveLastDot(entry.id));
             retObj.setCategory(SubcellLocationCategory.LOCATION);
-        } else if  (entry.it != null){
-        	  retObj.setId(trimSpacesAndRemoveLastDot(entry.it));
+        } else if (entry.it != null) {
+            retObj.setId(trimSpacesAndRemoveLastDot(entry.it));
             retObj.setCategory(SubcellLocationCategory.TOPOLOGY);
-        }else {
-        	retObj.setId(trimSpacesAndRemoveLastDot(entry.io));
+        } else {
+            retObj.setId(trimSpacesAndRemoveLastDot(entry.io));
             retObj.setCategory(SubcellLocationCategory.ORIENTATION);
         }
         // definition
@@ -165,8 +167,8 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         retObj.setDefinition(def.isEmpty() ? null : def);
 
         // Keyword is a single string will null by default
-        if((entry.kw !=null) && !entry.kw.isEmpty())
-        	retObj.setKeyword(new KeywordImpl(retObj.getId(), entry.kw));
+        if ((entry.kw != null) && !entry.kw.isEmpty())
+            retObj.setKeyword(new KeywordImpl(retObj.getId(), entry.kw));
 
         // Links
         retObj.setLinks(entry.ww.isEmpty() ? null : entry.ww);
@@ -177,16 +179,20 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
 
         // Interesting references
         List<String> refList =
-                entry.rx.stream().flatMap(s -> Arrays.asList(s.split(";")).stream()).collect(Collectors.toList());
+                entry.rx.stream()
+                        .flatMap(s -> Arrays.asList(s.split(";")).stream())
+                        .collect(Collectors.toList());
         retObj.setReferences(refList.isEmpty() ? null : refList);
 
         // GoMapping
-        List<GeneOntology> goList = entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
-        retObj.setGeneOntologies(goList.isEmpty()? null : goList);
+        List<GeneOntology> goList =
+                entry.go.stream().map(this::parseGeneOntology).collect(Collectors.toList());
+        retObj.setGeneOntologies(goList.isEmpty() ? null : goList);
 
         // Synonyms
         List<String> synList =
-                entry.sy.stream().flatMap(s -> Arrays.asList(s.split(";")).stream())
+                entry.sy.stream()
+                        .flatMap(s -> Arrays.asList(s.split(";")).stream())
                         .map(this::trimSpacesAndRemoveLastDot)
                         .collect(Collectors.toList());
         retObj.setSynonyms(synList.isEmpty() ? null : synList);
@@ -194,7 +200,8 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
         return retObj;
     }
 
-    private void updateListWithRelationShips(List<SubcellularLocationEntry> list, List<SubcellularFileEntry> rawList) {
+    private void updateListWithRelationShips(
+            List<SubcellularLocationEntry> list, List<SubcellularFileEntry> rawList) {
         for (SubcellularFileEntry raw : rawList) {
 
             // Only check for those who have relationships
@@ -202,10 +209,11 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
                 continue;
             }
 
-            SubcellularLocationEntryImpl target = (SubcellularLocationEntryImpl) findByIdentifier(list, getIdentifier(raw));
-            
-            assert(target !=null);
-            
+            SubcellularLocationEntryImpl target =
+                    (SubcellularLocationEntryImpl) findByIdentifier(list, getIdentifier(raw));
+
+            assert (target != null);
+
             if (!raw.hi.isEmpty()) {
                 List<SubcellularLocationEntry> isA = new ArrayList<>();
 
@@ -224,15 +232,16 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
     }
 
     private String getIdentifier(SubcellularFileEntry raw) {
-        if (raw.id != null)
-            return raw.id;
+        if (raw.id != null) return raw.id;
         return raw.it != null ? raw.it : raw.io;
     }
 
-    private SubcellularLocationEntry findByIdentifier(List<SubcellularLocationEntry> list, String id) {
-        return list.stream().filter(
-                s -> s.getId().equals(trimSpacesAndRemoveLastDot(id)))
-                .findFirst().orElse(null);
+    private SubcellularLocationEntry findByIdentifier(
+            List<SubcellularLocationEntry> list, String id) {
+        return list.stream()
+                .filter(s -> s.getId().equals(trimSpacesAndRemoveLastDot(id)))
+                .findFirst()
+                .orElse(null);
     }
 
     private GeneOntology parseGeneOntology(String go) {
@@ -241,12 +250,10 @@ public class SubcellularLocationFileReader extends AbstractFileReader<Subcellula
     }
 
     private String trimSpacesAndRemoveLastDot(String str) {
-        if (str == null)
-            return null;
+        if (str == null) return null;
         str = str.trim();
         return str.endsWith(".") ? str.substring(0, str.length() - 1) : str;
     }
-
 }
 
 class SubcellularFileEntry {

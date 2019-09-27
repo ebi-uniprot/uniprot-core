@@ -28,8 +28,7 @@ public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption>
     @Override
     public AbsorptionBuilder from(Absorption instance) {
         evidences.clear();
-        return this
-                .note(instance.getNote())
+        return this.note(instance.getNote())
                 .approximate(instance.isApproximate())
                 .max(instance.getMax())
                 .evidences(instance.getEvidences());

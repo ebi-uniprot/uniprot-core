@@ -12,16 +12,18 @@ import org.uniprot.core.util.Utils;
 
 public class FeatureIdImpl implements FeatureId {
 
-    private final static Map<FeatureType, List<Pattern>> FEATUREID_REGEX_MAP = new EnumMap<>(FeatureType.class);
-    private final static Pattern PRO_PATTERN = Pattern.compile("PRO_(\\d+)");
-    private final static Pattern CAR_PATTERN = Pattern.compile("CAR_(\\d+)");
-    private final static Pattern VSP_PATTERN = Pattern.compile("VSP_(\\d+)");
-    private final static Pattern VAR_PATTERN = Pattern.compile("VAR_(\\d+)");
+    private static final Map<FeatureType, List<Pattern>> FEATUREID_REGEX_MAP =
+            new EnumMap<>(FeatureType.class);
+    private static final Pattern PRO_PATTERN = Pattern.compile("PRO_(\\d+)");
+    private static final Pattern CAR_PATTERN = Pattern.compile("CAR_(\\d+)");
+    private static final Pattern VSP_PATTERN = Pattern.compile("VSP_(\\d+)");
+    private static final Pattern VAR_PATTERN = Pattern.compile("VAR_(\\d+)");
     private static final long serialVersionUID = 2993129119240452004L;
 
     static {
         FEATUREID_REGEX_MAP.put(FeatureType.CHAIN, Arrays.asList(PRO_PATTERN));
-        FEATUREID_REGEX_MAP.put(FeatureType.CARBOHYD, Arrays.asList(PRO_PATTERN, CAR_PATTERN, VSP_PATTERN));
+        FEATUREID_REGEX_MAP.put(
+                FeatureType.CARBOHYD, Arrays.asList(PRO_PATTERN, CAR_PATTERN, VSP_PATTERN));
         FEATUREID_REGEX_MAP.put(FeatureType.PEPTIDE, Arrays.asList(PRO_PATTERN));
         FEATUREID_REGEX_MAP.put(FeatureType.PROPEP, Arrays.asList(PRO_PATTERN));
         FEATUREID_REGEX_MAP.put(FeatureType.VAR_SEQ, Arrays.asList(VSP_PATTERN));
@@ -55,10 +57,8 @@ public class FeatureIdImpl implements FeatureId {
     @Override
     public boolean isValid(FeatureType type) {
         List<Pattern> patterns = FEATUREID_REGEX_MAP.get(type);
-        if (patterns == null)
-            return true;
-        if (value == null)
-            return false;
+        if (patterns == null) return true;
+        if (value == null) return false;
         return patterns.stream().anyMatch(val -> val.matcher(value).matches());
     }
 
@@ -72,16 +72,12 @@ public class FeatureIdImpl implements FeatureId {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         FeatureIdImpl other = (FeatureIdImpl) obj;
         if (value == null) {
             return other.value == null;
         } else return value.equals(other.value);
     }
-
 }

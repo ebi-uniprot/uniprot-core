@@ -5,5 +5,6 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 public interface Keyword extends EvidencedValue {
     String getId();
+
     KeywordCategory getCategory();
 }

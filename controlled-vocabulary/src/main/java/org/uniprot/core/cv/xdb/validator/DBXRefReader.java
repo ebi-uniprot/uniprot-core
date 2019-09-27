@@ -9,8 +9,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class DBXRefReader implements AutoCloseable {
-    private static final String DATA_REGION_SEP = "___________________________________________________________________________";
-    private static final String COPYRIGHT_SEP = "-----------------------------------------------------------------------";
+    private static final String DATA_REGION_SEP =
+            "___________________________________________________________________________";
+    private static final String COPYRIGHT_SEP =
+            "-----------------------------------------------------------------------";
     private static final String LINE_SEP = "\n";
     // Fields of the dbxref file - begin
     private static final String AC_STR = "AC";
@@ -24,7 +26,7 @@ public class DBXRefReader implements AutoCloseable {
     // Fields of the dbxref file - end
 
     private static final String KEY_VAL_SEPARATOR = ": ";
-    private static final Pattern NEWLINE_PATTERN =  Pattern.compile("^\\s*$", Pattern.MULTILINE);
+    private static final Pattern NEWLINE_PATTERN = Pattern.compile("^\\s*$", Pattern.MULTILINE);
 
     private Scanner reader;
     private boolean dataRegionStarted;
@@ -37,7 +39,7 @@ public class DBXRefReader implements AutoCloseable {
         this.dataRegionStarted = false;
     }
 
-    public DBXRef read(){
+    public DBXRef read() {
         // skip the un-needed lines
         while (this.reader.hasNext() && !this.dataRegionStarted) {
             String lines = reader.next();
@@ -60,34 +62,34 @@ public class DBXRefReader implements AutoCloseable {
         String acc = null, abbr = null, name = null, ref = null;
         String lType = null, server = null, url = null, cat = null;
 
-        for(String line : lines){
+        for (String line : lines) {
             String[] keyVal = line.split(KEY_VAL_SEPARATOR);
-            switch (keyVal[0].trim()){
-                case AC_STR :
+            switch (keyVal[0].trim()) {
+                case AC_STR:
                     acc = keyVal[1].trim();
                     break;
-                case ABBREV_STR :
+                case ABBREV_STR:
                     abbr = keyVal[1].trim();
                     break;
-                case NAME_STR :
+                case NAME_STR:
                     name = keyVal[1].trim();
                     break;
-                case REF_STR :
+                case REF_STR:
                     ref = keyVal[1].trim();
                     break;
-                case LINK_TP_STR :
+                case LINK_TP_STR:
                     lType = keyVal[1].trim();
                     break;
-                case SERVER_STR :
+                case SERVER_STR:
                     server = keyVal[1].trim();
                     break;
                 case DB_URL_STR:
                     url = keyVal[1].trim();
                     break;
-                case CAT_STR :
+                case CAT_STR:
                     cat = keyVal[1].trim();
                     break;
-                default://do nothing
+                default: // do nothing
             }
         }
 
@@ -102,6 +104,5 @@ public class DBXRefReader implements AutoCloseable {
     @Override
     public void close() {
         reader.close();
-
     }
 }

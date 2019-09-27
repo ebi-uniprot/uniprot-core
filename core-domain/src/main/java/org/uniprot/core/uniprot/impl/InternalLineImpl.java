@@ -32,15 +32,10 @@ public class InternalLineImpl extends ValueImpl implements InternalLine {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         InternalLineImpl other = (InternalLineImpl) obj;
         return type == other.type;
     }
-
-
 }

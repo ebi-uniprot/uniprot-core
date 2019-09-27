@@ -6,10 +6,7 @@ import java.util.List;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
 
-/**
- * <p/>
- * User: wudong, Date: 03/09/13, Time: 16:35
- */
+/** User: wudong, Date: 03/09/13, Time: 16:35 */
 public class CcLineObject implements HasEvidenceInfo {
 
     public List<CC> ccs = new ArrayList<>();
@@ -40,16 +37,13 @@ public class CcLineObject implements HasEvidenceInfo {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o)
-                return true;
-            if (o == null || getClass() != o.getClass())
-                return false;
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
             final EvidencedString evValue = (EvidencedString) o;
 
-            if (evidences != null && !evidences.isEmpty() ? !evidences.equals(evValue.evidences)
-                    : evValue.evidences != null
-                            && !evValue.evidences.isEmpty())
-                return false;
+            if (evidences != null && !evidences.isEmpty()
+                    ? !evidences.equals(evValue.evidences)
+                    : evValue.evidences != null && !evValue.evidences.isEmpty()) return false;
 
             return value.equals(evValue.value);
         }
@@ -150,9 +144,9 @@ public class CcLineObject implements HasEvidenceInfo {
 
         public static CCTopicEnum fromString(String s) {
             String replace = s.replace(' ', '_');
-//            if (replace.equals("ACTIVITY_REGULATION")) {
-//                replace = "ENZYME_REGULATION";
-//            }
+            //            if (replace.equals("ACTIVITY_REGULATION")) {
+            //                replace = "ENZYME_REGULATION";
+            //            }
             return CCTopicEnum.valueOf(replace);
         }
     }
@@ -187,7 +181,6 @@ public class CcLineObject implements HasEvidenceInfo {
         public LocationValue subcellularLocation;
         public LocationValue topology;
         public LocationValue orientation;
-
     }
 
     public static enum LocationFlagEnum {
@@ -198,14 +191,12 @@ public class CcLineObject implements HasEvidenceInfo {
 
         public static LocationFlagEnum fromSting(String s) {
             String s1 = s.toLowerCase();
-            if (s1.indexOf("by") >= 0 && s.indexOf("similarity") > 0)
-                return BY_SIMILARITY;
+            if (s1.indexOf("by") >= 0 && s.indexOf("similarity") > 0) return BY_SIMILARITY;
             else if (s1.indexOf("probable") >= 0) {
                 return PROBABLE;
             } else if (s1.indexOf("potential") >= 0) {
                 return POTENTIAL;
-            } else
-                throw new RuntimeException(s + " cannot be parsed to the location flag");
+            } else throw new RuntimeException(s + " cannot be parsed to the location flag");
         }
     }
 
@@ -244,7 +235,6 @@ public class CcLineObject implements HasEvidenceInfo {
         public List<Integer> positions = new ArrayList<>();
         public String positionValue;
         public String note;
-
     }
 
     public static class MassSpectrometry {
@@ -286,17 +276,20 @@ public class CcLineObject implements HasEvidenceInfo {
     public static class FreeText {
         public List<EvidencedString> texts = new ArrayList<>();
     }
-    public static class CatalyticActivity{
-    	public CAReaction reaction;
-    	public List<CAPhysioDirection> physiologicalDirections =new ArrayList<>();
+
+    public static class CatalyticActivity {
+        public CAReaction reaction;
+        public List<CAPhysioDirection> physiologicalDirections = new ArrayList<>();
     }
+
     public static class CAReaction {
-    	public String name;
-    	public String xref;
-    	public String ec;
+        public String name;
+        public String xref;
+        public String ec;
     }
-    public static class CAPhysioDirection{
-    	public String name;
-    	public String xref;
+
+    public static class CAPhysioDirection {
+        public String name;
+        public String xref;
     }
 }

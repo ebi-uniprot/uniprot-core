@@ -5,10 +5,15 @@ import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.builder.*;
 import org.uniprot.core.flatfile.parser.Converter;
 
-public class RlLineConverter implements Converter<RlLineObject, AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>> {
+public class RlLineConverter
+        implements Converter<
+                RlLineObject,
+                AbstractCitationBuilder<
+                        ? extends AbstractCitationBuilder<?, ?>, ? extends Citation>> {
     @SuppressWarnings({"unchecked", "rawtypes"})
     @Override
-    public AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation> convert(RlLineObject f) {
+    public AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
+            convert(RlLineObject f) {
         if (f.reference instanceof RlLineObject.JournalArticle) {
             return (AbstractCitationBuilder) convert((RlLineObject.JournalArticle) f.reference);
         } else if (f.reference instanceof RlLineObject.Book) {
@@ -23,8 +28,7 @@ public class RlLineConverter implements Converter<RlLineObject, AbstractCitation
             return (AbstractCitationBuilder) convert((RlLineObject.Thesis) f.reference);
         } else if (f.reference instanceof RlLineObject.Unpublished) {
             return (AbstractCitationBuilder) convert((RlLineObject.Unpublished) f.reference);
-        } else
-            throw new RuntimeException("Unable to parse RL line");
+        } else throw new RuntimeException("Unable to parse RL line");
     }
 
     private JournalArticleBuilder convert(RlLineObject.JournalArticle ja) {
@@ -39,24 +43,19 @@ public class RlLineConverter implements Converter<RlLineObject, AbstractCitation
 
     private BookBuilder convert(RlLineObject.Book b) {
         BookBuilder builder = new BookBuilder();
-        if (b.page_start != null)
-            builder.firstPage("" + b.page_start);
-        if (b.page_end != null)
-            builder.lastPage("" + b.page_end);
+        if (b.page_start != null) builder.firstPage("" + b.page_start);
+        if (b.page_end != null) builder.lastPage("" + b.page_end);
         builder.publicationDate("" + b.year);
 
-        if (b.volume != null)
-            builder.volume("" + b.volume);
+        if (b.volume != null) builder.volume("" + b.volume);
 
-        if ((b.page_start == null) && (b.page_end == null) &&
-                b.pageString != null) {
+        if ((b.page_start == null) && (b.page_end == null) && b.pageString != null) {
             builder.firstPage(b.pageString);
             builder.bookName(b.title);
         } else if (b.pageString != null) {
             builder.bookName(b.title + ", " + b.pageString);
 
-        } else
-            builder.bookName(b.title);
+        } else builder.bookName(b.title);
 
         builder.editors(b.editors);
         if (b.press != null && (!b.press.isEmpty())) {
@@ -78,7 +77,6 @@ public class RlLineConverter implements Converter<RlLineObject, AbstractCitation
                 pubDate = line.substring(index + 1, line.length() - 1);
                 line = line.substring(0, index).trim();
                 builder.publicationDate(pubDate);
-
             }
         }
         if (line.startsWith("Plant Gene Register ")) {
@@ -135,8 +133,7 @@ public class RlLineConverter implements Converter<RlLineObject, AbstractCitation
         ThesisBuilder builder = new ThesisBuilder();
         builder.publicationDate("" + thesis.year);
         builder.institute(thesis.institute);
-        if (thesis.country != null)
-            builder.address(thesis.country);
+        if (thesis.country != null) builder.address(thesis.country);
         return builder;
     }
 

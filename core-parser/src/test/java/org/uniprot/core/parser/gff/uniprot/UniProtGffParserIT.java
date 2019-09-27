@@ -1,13 +1,8 @@
 package org.uniprot.core.parser.gff.uniprot;
 
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.uniprot.core.flatfile.parser.UniprotLineParser;
-import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
-import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
-import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
-import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
-import org.uniprot.core.uniprot.UniProtEntry;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,9 +14,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.slf4j.LoggerFactory.getLogger;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.uniprot.core.flatfile.parser.UniprotLineParser;
+import org.uniprot.core.flatfile.parser.impl.DefaultUniprotLineParserFactory;
+import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
+import org.uniprot.core.flatfile.parser.impl.entry.EntryObject;
+import org.uniprot.core.flatfile.parser.impl.entry.EntryObjectConverter;
+import org.uniprot.core.uniprot.UniProtEntry;
 
 /**
  * Created 05/02/19
@@ -39,8 +39,10 @@ class UniProtGffParserIT {
         UniProtEntry entry = readEntry(entryPath);
         String entryGff = UniProtGffParser.convert(entry);
 
-        String gffAsString = readEntryFromFile(gffPath)
-                .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
+        String gffAsString =
+                readEntryFromFile(gffPath)
+                        .orElseThrow(
+                                () -> new IllegalStateException("Could not read file: " + gffPath));
         LOGGER.info(entryGff);
         verify(entryGff, gffAsString);
     }
@@ -52,8 +54,10 @@ class UniProtGffParserIT {
         UniProtEntry entry = readEntry(entryPath);
         String entryGff = UniProtGffParser.convert(entry);
 
-        String gffAsString = readEntryFromFile(gffPath)
-                .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
+        String gffAsString =
+                readEntryFromFile(gffPath)
+                        .orElseThrow(
+                                () -> new IllegalStateException("Could not read file: " + gffPath));
         LOGGER.info(entryGff);
         verify(entryGff, gffAsString);
     }
@@ -65,8 +69,10 @@ class UniProtGffParserIT {
         UniProtEntry entry = readEntry(entryPath);
         String entryGff = UniProtGffParser.convert(entry);
 
-        String gffAsString = readEntryFromFile(gffPath)
-                .orElseThrow(() -> new IllegalStateException("Could not read file: " + gffPath));
+        String gffAsString =
+                readEntryFromFile(gffPath)
+                        .orElseThrow(
+                                () -> new IllegalStateException("Could not read file: " + gffPath));
         LOGGER.info(entryGff);
         verify(entryGff, gffAsString);
     }
@@ -85,12 +91,16 @@ class UniProtGffParserIT {
     }
 
     private UniProtEntry readEntry(String path) {
-        UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
-        String entryAsString = readEntryFromFile(path)
-                .orElseThrow(() -> new IllegalStateException("Could not read file: " + path));
+        UniprotLineParser<EntryObject> entryParser =
+                new DefaultUniprotLineParserFactory().createEntryParser();
+        String entryAsString =
+                readEntryFromFile(path)
+                        .orElseThrow(
+                                () -> new IllegalStateException("Could not read file: " + path));
         EntryObject parse = entryParser.parse(entryAsString);
         assertNotNull(parse);
-        EntryObjectConverter entryObjectConverter = new EntryObjectConverter(new SupportingDataMapImpl(), true);
+        EntryObjectConverter entryObjectConverter =
+                new EntryObjectConverter(new SupportingDataMapImpl(), true);
         return entryObjectConverter.convert(parse);
     }
 

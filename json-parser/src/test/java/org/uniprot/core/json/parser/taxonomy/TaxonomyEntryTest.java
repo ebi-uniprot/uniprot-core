@@ -1,34 +1,35 @@
 package org.uniprot.core.json.parser.taxonomy;
 
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.json.parser.taxonomy.TaxonomyJsonConfig;
 import org.uniprot.core.taxonomy.TaxonomyEntry;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.builder.TaxonomyEntryBuilder;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
-import java.util.Collections;
-
 class TaxonomyEntryTest {
 
     @Test
-    void testSimpleTaxonomyEntry(){
+    void testSimpleTaxonomyEntry() {
         TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
 
         TaxonomyEntry taxonomyEntry = builder.build();
-        ValidateJson.verifyJsonRoundTripParser(TaxonomyJsonConfig.getInstance().getFullObjectMapper(),taxonomyEntry);
+        ValidateJson.verifyJsonRoundTripParser(
+                TaxonomyJsonConfig.getInstance().getFullObjectMapper(), taxonomyEntry);
     }
 
     @Test
-    void testCompleteTaxonomyEntry(){
+    void testCompleteTaxonomyEntry() {
         TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntry();
-        ValidateJson.verifyJsonRoundTripParser(TaxonomyJsonConfig.getInstance().getFullObjectMapper(),taxonomyEntry);
+        ValidateJson.verifyJsonRoundTripParser(
+                TaxonomyJsonConfig.getInstance().getFullObjectMapper(), taxonomyEntry);
         ValidateJson.verifyEmptyFields(taxonomyEntry);
     }
 
-    private TaxonomyEntry getCompleteTaxonomyEntry(){
+    private TaxonomyEntry getCompleteTaxonomyEntry() {
         TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
         builder.taxonId(9606L);
         builder.scientificName("scientificName");
@@ -49,15 +50,15 @@ class TaxonomyEntryTest {
         builder.addLink("link");
 
         return builder.build();
-
     }
 
     private Taxonomy getCompleteTaxonomy() {
-        return TaxonomyBuilder.newInstance().taxonId(9606)
+        return TaxonomyBuilder.newInstance()
+                .taxonId(9606)
                 .scientificName("Homo sapiens")
                 .commonName("Human")
                 .synonyms(Collections.singletonList("Some name"))
-                .mnemonic("HUMAN").build();
+                .mnemonic("HUMAN")
+                .build();
     }
-
 }

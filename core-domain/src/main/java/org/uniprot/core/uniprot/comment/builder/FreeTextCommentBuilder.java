@@ -1,5 +1,9 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import static org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl.isFreeTextCommentType;
+import static org.uniprot.core.util.Utils.nonNullAdd;
+import static org.uniprot.core.util.Utils.nonNullList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +12,8 @@ import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-import static org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl.isFreeTextCommentType;
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
-
-public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
+public class FreeTextCommentBuilder
+        implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
     private CommentType commentType;
     private List<EvidencedValue> texts = new ArrayList<>();
 
@@ -27,9 +28,7 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextCommentBui
     @Override
     public FreeTextCommentBuilder from(FreeTextComment instance) {
         texts.clear();
-        return this
-                .commentType(instance.getCommentType())
-                .texts(instance.getTexts());
+        return this.commentType(instance.getCommentType()).texts(instance.getTexts());
     }
 
     public FreeTextCommentBuilder commentType(CommentType commentType) {

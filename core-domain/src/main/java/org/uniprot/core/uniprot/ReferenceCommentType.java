@@ -2,9 +2,7 @@ package org.uniprot.core.uniprot;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- */
+/** @author jluo */
 public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
     STRAIN("STRAIN"),
     PLASMID("PLASMID"),
@@ -15,7 +13,6 @@ public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
 
     ReferenceCommentType(String type) {
         this.value = type;
-
     }
 
     public static ReferenceCommentType typeOf(String value) {

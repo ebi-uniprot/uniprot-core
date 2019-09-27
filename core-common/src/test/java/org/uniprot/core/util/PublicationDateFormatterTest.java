@@ -1,14 +1,13 @@
 package org.uniprot.core.util;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.util.PublicationDateFormatter;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Test;
 
 /**
  * Created 09/07/19
@@ -42,7 +41,9 @@ class PublicationDateFormatterTest {
     @Test
     void test_THREE_LETTER_MONTH_YEAR_ConvertStringToDate() {
         try {
-            Date date = PublicationDateFormatter.THREE_LETTER_MONTH_YEAR.convertStringToDate("MAR-2002");
+            Date date =
+                    PublicationDateFormatter.THREE_LETTER_MONTH_YEAR.convertStringToDate(
+                            "MAR-2002");
             verifyDate(date, 2002, 2, -1);
 
         } catch (Exception e) {
@@ -53,7 +54,8 @@ class PublicationDateFormatterTest {
     @Test
     void test_DAY_DIGITMONTH_YEAR_ConvertStringToDate() {
         try {
-            Date date = PublicationDateFormatter.DAY_DIGITMONTH_YEAR.convertStringToDate("2001-11-20");
+            Date date =
+                    PublicationDateFormatter.DAY_DIGITMONTH_YEAR.convertStringToDate("2001-11-20");
             verifyDate(date, 2001, 10, 20);
 
         } catch (Exception e) {
@@ -64,7 +66,9 @@ class PublicationDateFormatterTest {
     @Test
     void test_DAY_THREE_LETTER_MONTH_YEAR_ConvertStringToDate() {
         try {
-            Date date = PublicationDateFormatter.DAY_THREE_LETTER_MONTH_YEAR.convertStringToDate("10-MAY-2001");
+            Date date =
+                    PublicationDateFormatter.DAY_THREE_LETTER_MONTH_YEAR.convertStringToDate(
+                            "10-MAY-2001");
             verifyDate(date, 2001, 4, 10);
 
         } catch (Exception e) {

@@ -1,6 +1,11 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -16,15 +21,9 @@ import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-import java.util.Collections;
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class CofactorCommentTest {
 
     @Test
@@ -35,9 +34,8 @@ public class CofactorCommentTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("COFACTOR",jsonNode.get("commentType").asText());
+        assertEquals("COFACTOR", jsonNode.get("commentType").asText());
     }
-
 
     @Test
     void testCofactorComplete() {
@@ -48,46 +46,47 @@ public class CofactorCommentTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("COFACTOR",jsonNode.get("commentType").asText());
+        assertEquals("COFACTOR", jsonNode.get("commentType").asText());
 
         assertNotNull(jsonNode.get("molecule"));
-        assertEquals("molecule",jsonNode.get("molecule").asText());
+        assertEquals("molecule", jsonNode.get("molecule").asText());
 
         assertNotNull(jsonNode.get("cofactors"));
-        assertEquals(1,jsonNode.get("cofactors").size());
+        assertEquals(1, jsonNode.get("cofactors").size());
         JsonNode cofactor = jsonNode.get("cofactors").get(0);
         assertNotNull(cofactor.get("name"));
-        assertEquals("Cofactor Name",cofactor.get("name").asText());
+        assertEquals("Cofactor Name", cofactor.get("name").asText());
         assertNotNull(cofactor.get("evidences"));
-        assertEquals(1,cofactor.get("evidences").size());
-        ValidateJson.validateEvidence(cofactor.get("evidences").get(0),"ECO:0000256","PIRNR","PIRNR001361");
+        assertEquals(1, cofactor.get("evidences").size());
+        ValidateJson.validateEvidence(
+                cofactor.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
         assertNotNull(cofactor.get("cofactorReference"));
         JsonNode reactionReferences = cofactor.get("cofactorReference");
         assertNotNull(reactionReferences.get("databaseType"));
-        assertEquals("ChEBI",reactionReferences.get("databaseType").asText());
+        assertEquals("ChEBI", reactionReferences.get("databaseType").asText());
         assertNotNull(reactionReferences.get("id"));
-        assertEquals("CHEBI:314",reactionReferences.get("id").asText());
+        assertEquals("CHEBI:314", reactionReferences.get("id").asText());
 
         assertNotNull(jsonNode.get("note"));
         assertNotNull(jsonNode.get("note").get("texts"));
-        assertEquals(1,jsonNode.get("note").get("texts").size());
+        assertEquals(1, jsonNode.get("note").get("texts").size());
         JsonNode valueEvidence = jsonNode.get("note").get("texts").get(0);
-        ValidateJson.validateValueEvidence(valueEvidence,"value2","ECO:0000256","PIRNR","PIRNR001361");
-
-
-
+        ValidateJson.validateValueEvidence(
+                valueEvidence, "value2", "ECO:0000256", "PIRNR", "PIRNR001361");
     }
 
     public static CofactorComment getCofactorComment() {
-        DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceBuilder<CofactorReferenceType>()
-                .databaseType(CofactorReferenceType.CHEBI)
-                .id("CHEBI:314")
-                .build();
-        Cofactor cofactor = new CofactorBuilder()
-                .name("Cofactor Name")
-                .reference(reference)
-                .evidences(createEvidences())
-                .build();
+        DBCrossReference<CofactorReferenceType> reference =
+                new DBCrossReferenceBuilder<CofactorReferenceType>()
+                        .databaseType(CofactorReferenceType.CHEBI)
+                        .id("CHEBI:314")
+                        .build();
+        Cofactor cofactor =
+                new CofactorBuilder()
+                        .name("Cofactor Name")
+                        .reference(reference)
+                        .evidences(createEvidences())
+                        .build();
         List<Cofactor> cofactors = Collections.singletonList(cofactor);
 
         Note note = new NoteBuilder(createEvidenceValues()).build();
@@ -98,12 +97,11 @@ public class CofactorCommentTest {
                 .build();
     }
 
-
     private static List<Evidence> createEvidences() {
         return CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361");
     }
 
     private static List<EvidencedValue> createEvidenceValues() {
-        return CreateUtils.createEvidencedValueList("value2","ECO:0000256|PIRNR:PIRNR001361");
+        return CreateUtils.createEvidencedValueList("value2", "ECO:0000256|PIRNR:PIRNR001361");
     }
 }

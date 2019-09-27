@@ -10,6 +10,7 @@ import org.uniprot.core.flatfile.validator.DuplicatedAcCheck;
 public class AcLineObject {
     public String primaryAcc;
 
-    @AlphanumericalOrderCheck(message = "Secondary Acc is not ordered alphanumerically, or contains duplication.")
+    @AlphanumericalOrderCheck(
+            message = "Secondary Acc is not ordered alphanumerically, or contains duplication.")
     public List<String> secondaryAcc = new ArrayList<String>();
 }

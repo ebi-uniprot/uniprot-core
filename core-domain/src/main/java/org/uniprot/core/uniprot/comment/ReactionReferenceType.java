@@ -9,7 +9,6 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
     UNKNOWN("Unknown");
     private String name;
 
-
     ReactionReferenceType(String name) {
         this.name = name;
     }
@@ -19,11 +18,11 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
      *
      * @param value string representation of a source.
      * @return the enum type of the provided source.
-     * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum type.
+     * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum
+     *     type.
      */
     public static ReactionReferenceType typeOf(String value) {
-        for (ReactionReferenceType referenceType : ReactionReferenceType
-                .values()) {
+        for (ReactionReferenceType referenceType : ReactionReferenceType.values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
             }
@@ -44,6 +43,4 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
     public String toDisplayName() {
         return name;
     }
-
-
 }

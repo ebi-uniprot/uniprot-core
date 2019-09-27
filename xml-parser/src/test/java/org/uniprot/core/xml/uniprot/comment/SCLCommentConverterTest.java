@@ -1,5 +1,12 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
@@ -15,52 +22,58 @@ import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.comment.SCLCommentConverter;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class SCLCommentConverterTest {
 
     @Test
     void test() {
-        SubcellularLocationValue location = create("Membrane, caveola",
-                                                   Arrays.asList("ECO:0000256|PIRNR:PIRNR037393", "ECO:0000256|RuleBase:RU361271"));
-        SubcellularLocationValue topology = create("Lipid-anchor, GPI-like-anchor",
-                                                   Arrays.asList("ECO:0000256|PIRNR:PIRNR0373943", "ECO:0000256|RuleBase:RU361271"));
+        SubcellularLocationValue location =
+                create(
+                        "Membrane, caveola",
+                        Arrays.asList(
+                                "ECO:0000256|PIRNR:PIRNR037393", "ECO:0000256|RuleBase:RU361271"));
+        SubcellularLocationValue topology =
+                create(
+                        "Lipid-anchor, GPI-like-anchor",
+                        Arrays.asList(
+                                "ECO:0000256|PIRNR:PIRNR0373943", "ECO:0000256|RuleBase:RU361271"));
 
-        SubcellularLocationValue orientation = create("Peripheral membrane protein",
-                                                      Arrays.asList("ECO:0000256|RuleBase:RU000680", "ECO:0000256|SAAS:SAAS00583323"));
-        SubcellularLocation subcelLocation = createSubcellularLocation(location,
-                                                                       topology, orientation);
+        SubcellularLocationValue orientation =
+                create(
+                        "Peripheral membrane protein",
+                        Arrays.asList(
+                                "ECO:0000256|RuleBase:RU000680", "ECO:0000256|SAAS:SAAS00583323"));
+        SubcellularLocation subcelLocation =
+                createSubcellularLocation(location, topology, orientation);
 
         List<SubcellularLocation> subcelLocations = new ArrayList<>();
         subcelLocations.add(subcelLocation);
-        SubcellularLocationValue location2 = create("Cell membrane",
-                                                    Arrays.asList("ECO:0000250"));
-        SubcellularLocation subcelLocation2 = createSubcellularLocation(location2,
-                                                                        null, null);
+        SubcellularLocationValue location2 = create("Cell membrane", Arrays.asList("ECO:0000250"));
+        SubcellularLocation subcelLocation2 = createSubcellularLocation(location2, null, null);
         subcelLocations.add(subcelLocation2);
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         builder.molecule("Some mol")
                 .subcellularLocations(subcelLocations)
-                .note(createNote("Some note", Arrays
-                        .asList("ECO:0000256|RuleBase:RU361271", "ECO:0000256|SAAS:SAAS00583323")));
+                .note(
+                        createNote(
+                                "Some note",
+                                Arrays.asList(
+                                        "ECO:0000256|RuleBase:RU361271",
+                                        "ECO:0000256|SAAS:SAAS00583323")));
         SubcellularLocationComment comment = builder.build();
         SCLCommentConverter converter = new SCLCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
 
         SubcellularLocationComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
-
     }
 
-    private SubcellularLocation createSubcellularLocation(SubcellularLocationValue location, SubcellularLocationValue topology, SubcellularLocationValue orientation) {
+    private SubcellularLocation createSubcellularLocation(
+            SubcellularLocationValue location,
+            SubcellularLocationValue topology,
+            SubcellularLocationValue orientation) {
         return new SubcellularLocationBuilder()
                 .location(location)
                 .topology(topology)

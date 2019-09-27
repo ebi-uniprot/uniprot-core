@@ -1,22 +1,22 @@
 package org.uniprot.core.xml.uniprot;
 
-import com.google.common.base.Strings;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.PropertyType;
-import org.uniprot.core.xml.uniprot.UniProtCrossReferenceConverter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.google.common.base.Strings;
 
 class UniProtCrossReferenceConverterTest {
     private final UniProtCrossReferenceConverter converter = new UniProtCrossReferenceConverter();
 
     @Test
     void testEmbl3Attributes() {
-        //DR   EMBL; AY150815; AAN61049.1; -; mRNA.
+        // DR   EMBL; AY150815; AAN61049.1; -; mRNA.
         String dbName = "EMBL";
         String id = "AY150815";
         String description = "AAN61049.1";
@@ -24,8 +24,8 @@ class UniProtCrossReferenceConverterTest {
         String fourthAttribute = "mRNA";
         String isoformId = null;
         UniProtDBCrossReference emblXref =
-                createUniProtDBCrossReference(dbName, id,
-                                              description, thirdAttribute, fourthAttribute, isoformId);
+                createUniProtDBCrossReference(
+                        dbName, id, description, thirdAttribute, fourthAttribute, isoformId);
         DbReferenceType xmlObj = converter.toXml(emblXref);
         verifyXml(xmlObj, dbName, id);
         assertNull(xmlObj.getMolecule());
@@ -35,12 +35,11 @@ class UniProtCrossReferenceConverterTest {
         assertNotNull(xmlObj);
         UniProtDBCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(emblXref, converted);
-
     }
 
     @Test
     void testEPDNoAttributes() {
-        //DR   EPD; Q9U3D6; -.
+        // DR   EPD; Q9U3D6; -.
         String dbName = "EPD";
         String id = "Q9U3D6";
         String description = "-";
@@ -48,21 +47,19 @@ class UniProtCrossReferenceConverterTest {
         String fourthAttribute = null;
         String isoformId = null;
         UniProtDBCrossReference emblXref =
-                createUniProtDBCrossReference(dbName, id,
-                                              description, thirdAttribute, fourthAttribute, isoformId);
+                createUniProtDBCrossReference(
+                        dbName, id, description, thirdAttribute, fourthAttribute, isoformId);
         DbReferenceType xmlObj = converter.toXml(emblXref);
         verifyXml(xmlObj, dbName, id);
         assertTrue(xmlObj.getProperty().isEmpty());
         assertNull(xmlObj.getMolecule());
         UniProtDBCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(emblXref, converted);
-
-
     }
 
     @Test
     void testRefSeqOneAttributesWithIsoform() {
-        //DR   RefSeq; NP_492154.2; NM_059753.5. [Q9U3D6-2]
+        // DR   RefSeq; NP_492154.2; NM_059753.5. [Q9U3D6-2]
         String dbName = "RefSeq";
         String id = "NP_492154.2";
         String description = "NM_059753.5";
@@ -70,8 +67,8 @@ class UniProtCrossReferenceConverterTest {
         String fourthAttribute = null;
         String isoformId = "Q9U3D6-2";
         UniProtDBCrossReference emblXref =
-                createUniProtDBCrossReference(dbName, id,
-                                              description, thirdAttribute, fourthAttribute, isoformId);
+                createUniProtDBCrossReference(
+                        dbName, id, description, thirdAttribute, fourthAttribute, isoformId);
         DbReferenceType xmlObj = converter.toXml(emblXref);
         verifyXml(xmlObj, dbName, id);
         assertEquals(1, xmlObj.getProperty().size());
@@ -80,12 +77,11 @@ class UniProtCrossReferenceConverterTest {
         assertEquals(isoformId, xmlObj.getMolecule().getId());
         UniProtDBCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(emblXref, converted);
-
     }
 
     @Test
     void testProsite2AttributesWithIsoform() {
-        //DR   PROSITE; PS51192; HELICASE_ATP_BIND_1; 1
+        // DR   PROSITE; PS51192; HELICASE_ATP_BIND_1; 1
         String dbName = "PROSITE";
         String id = "PS51192";
         String description = "HELICASE_ATP_BIND_1";
@@ -93,8 +89,8 @@ class UniProtCrossReferenceConverterTest {
         String fourthAttribute = null;
         String isoformId = "Q9U3D6-5";
         UniProtDBCrossReference emblXref =
-                createUniProtDBCrossReference(dbName, id,
-                                              description, thirdAttribute, fourthAttribute, isoformId);
+                createUniProtDBCrossReference(
+                        dbName, id, description, thirdAttribute, fourthAttribute, isoformId);
         DbReferenceType xmlObj = converter.toXml(emblXref);
         verifyXml(xmlObj, dbName, id);
         assertEquals(2, xmlObj.getProperty().size());
@@ -104,12 +100,11 @@ class UniProtCrossReferenceConverterTest {
         assertEquals(isoformId, xmlObj.getMolecule().getId());
         UniProtDBCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(emblXref, converted);
-
     }
 
     @Test
     void testGO2Attributes() {
-        //DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-KW.
+        // DR   GO; GO:0005524; F:ATP binding; IEA:UniProtKB-KW.
         String dbName = "GO";
         String id = "GO:0005524";
         String description = "F:ATP binding";
@@ -117,8 +112,8 @@ class UniProtCrossReferenceConverterTest {
         String fourthAttribute = null;
         String isoformId = null;
         UniProtDBCrossReference emblXref =
-                createUniProtDBCrossReference(dbName, id,
-                                              description, thirdAttribute, fourthAttribute, isoformId);
+                createUniProtDBCrossReference(
+                        dbName, id, description, thirdAttribute, fourthAttribute, isoformId);
         DbReferenceType xmlObj = converter.toXml(emblXref);
         verifyXml(xmlObj, dbName, id);
         assertEquals(3, xmlObj.getProperty().size());
@@ -127,8 +122,6 @@ class UniProtCrossReferenceConverterTest {
         verifyXmlAttr(xmlObj, "project", "UniProtKB-KW");
         UniProtDBCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(emblXref, converted);
-
-
     }
 
     private void verifyXml(DbReferenceType xmlObj, String db, String id) {
@@ -140,8 +133,11 @@ class UniProtCrossReferenceConverterTest {
 
     private void verifyXmlAttr(DbReferenceType xmlObj, String xmlTag, String val) {
         PropertyType wrongPropertyType = new PropertyType();
-        PropertyType pType = xmlObj.getProperty().stream().filter(v -> v.getType().equals(xmlTag))
-                .findFirst().orElse(wrongPropertyType);
+        PropertyType pType =
+                xmlObj.getProperty().stream()
+                        .filter(v -> v.getType().equals(xmlTag))
+                        .findFirst()
+                        .orElse(wrongPropertyType);
         if (Strings.isNullOrEmpty(val) || "-".equals(val)) {
             assertEquals(pType, wrongPropertyType);
         } else {
@@ -150,7 +146,13 @@ class UniProtCrossReferenceConverterTest {
         }
     }
 
-    private UniProtDBCrossReference createUniProtDBCrossReference(String dbName, String id, String description, String thirdAttribute, String fourthAttribute, String isoformId) {
+    private UniProtDBCrossReference createUniProtDBCrossReference(
+            String dbName,
+            String id,
+            String description,
+            String thirdAttribute,
+            String fourthAttribute,
+            String isoformId) {
         UniProtXDbType uniProtXDbType = new UniProtXDbType(dbName);
         return new UniProtDBCrossReferenceBuilder()
                 .databaseType(uniProtXDbType)

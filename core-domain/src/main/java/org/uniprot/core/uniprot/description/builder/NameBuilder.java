@@ -13,6 +13,6 @@ public class NameBuilder extends AbstractEvidencedValueBuilder<NameBuilder, Name
 
     @Override
     public Name build() {
-        return new NameImpl(value,evidences);
+        return new NameImpl(value, evidences);
     }
 }

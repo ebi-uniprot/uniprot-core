@@ -1,16 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.disease.DiseaseFileReader;
-import org.uniprot.core.cv.keyword.KeywordFileReader;
-import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
-import org.uniprot.core.cv.keyword.KeywordCategory;
-import org.uniprot.core.flatfile.parser.SupportingDataMap;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.Utils;
-
 import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 import java.io.BufferedReader;
@@ -23,8 +12,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.disease.DiseaseFileReader;
+import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.cv.keyword.KeywordFileReader;
+import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
+import org.uniprot.core.flatfile.parser.SupportingDataMap;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.Utils;
+
 /**
- * This class contains all the external supporting data map required to parse from flat file to Entry object.
+ * This class contains all the external supporting data map required to parse from flat file to
+ * Entry object.
  *
  * @author lgonzales
  */
@@ -37,50 +38,54 @@ public class SupportingDataMapImpl implements SupportingDataMap {
     private Map<String, Map<String, List<Evidence>>> goEvidencesMap = new HashMap<>();;
     private Map<String, String> subcellularLocationMap = new HashMap<>();;
 
-    public SupportingDataMapImpl(){
-        this(null,null,null,null);
+    public SupportingDataMapImpl() {
+        this(null, null, null, null);
     }
-    public SupportingDataMapImpl(String keywordFile, String diseaseFile,
-                                 String goEvidencesMap, String subcellularLocationFile){
+
+    public SupportingDataMapImpl(
+            String keywordFile,
+            String diseaseFile,
+            String goEvidencesMap,
+            String subcellularLocationFile) {
         loadKeywordMap(keywordFile);
         loadDiseaseMap(diseaseFile);
         loadGoEvidenceMap(goEvidencesMap);
         loadSubcellularLocationMap(subcellularLocationFile);
     }
 
-
-
     private void loadSubcellularLocationMap(String subcellularLocationFile) {
-        if(Utils.notEmpty(subcellularLocationFile)){
-            subcellularLocationMap.putAll(new SubcellularLocationFileReader().parseFileToAccessionMap(subcellularLocationFile));
-            LOGGER.info("Loaded "+subcellularLocationMap.size()+" Subcellular Location Map");
-        }else{
+        if (Utils.notEmpty(subcellularLocationFile)) {
+            subcellularLocationMap.putAll(
+                    new SubcellularLocationFileReader()
+                            .parseFileToAccessionMap(subcellularLocationFile));
+            LOGGER.info("Loaded " + subcellularLocationMap.size() + " Subcellular Location Map");
+        } else {
             LOGGER.warn("Subcellular Location File was not loaded");
         }
     }
 
     private void loadKeywordMap(String keywordFile) {
-        if(Utils.notEmpty(keywordFile)){
+        if (Utils.notEmpty(keywordFile)) {
             keywordMap.putAll(new KeywordFileReader().parseFileToAccessionMap(keywordFile));
-            LOGGER.info("Loaded "+keywordMap.size()+" keyword Map");
-        }else {
+            LOGGER.info("Loaded " + keywordMap.size() + " keyword Map");
+        } else {
             LOGGER.warn("Subcellular Location File was not loaded");
         }
     }
 
     private void loadDiseaseMap(String diseaseFile) {
-        if(Utils.notEmpty(diseaseFile)){
+        if (Utils.notEmpty(diseaseFile)) {
             diseaseMap.putAll(new DiseaseFileReader().parseFileToAccessionMap(diseaseFile));
-            LOGGER.info("Loaded "+diseaseMap.size()+" disease Map");
-        }else {
+            LOGGER.info("Loaded " + diseaseMap.size() + " disease Map");
+        } else {
             LOGGER.warn("diseaseFile path must not be null or empty");
         }
     }
 
-
     private void loadGoEvidenceMap(String goPubmedFile) {
         if (Utils.notEmpty(goPubmedFile)) {
-            try (BufferedReader br = Files.newBufferedReader(Paths.get(goPubmedFile), StandardCharsets.UTF_8)) {
+            try (BufferedReader br =
+                    Files.newBufferedReader(Paths.get(goPubmedFile), StandardCharsets.UTF_8)) {
                 for (String line = null; (line = br.readLine()) != null; ) {
                     String[] splitedLine = line.split("\t");
                     if (splitedLine.length >= 7) {
@@ -96,8 +101,8 @@ public class SupportingDataMapImpl implements SupportingDataMap {
             } catch (IOException e) {
                 LOGGER.warn("Error while loading Go pubmed file file on path: " + goPubmedFile, e);
             }
-            LOGGER.info("Loaded "+goEvidencesMap.size()+" goEvidences Map");
-        }else{
+            LOGGER.info("Loaded " + goEvidencesMap.size() + " goEvidences Map");
+        } else {
             LOGGER.warn("Go pubmed file is not defined");
         }
     }
@@ -124,9 +129,8 @@ public class SupportingDataMapImpl implements SupportingDataMap {
         }
     }
 
-
     @Override
-    public Map<String, Pair<String,  KeywordCategory>> getKeywordMap() {
+    public Map<String, Pair<String, KeywordCategory>> getKeywordMap() {
         return keywordMap;
     }
 

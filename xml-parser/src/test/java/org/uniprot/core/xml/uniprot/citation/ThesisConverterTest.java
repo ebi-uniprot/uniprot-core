@@ -1,15 +1,13 @@
 package org.uniprot.core.xml.uniprot.citation;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.Thesis;
 import org.uniprot.core.citation.builder.ThesisBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.citation.CitationConverter;
-import org.uniprot.core.xml.uniprot.citation.ThesisConverter;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ThesisConverterTest {
 
@@ -18,7 +16,8 @@ class ThesisConverterTest {
         Thesis citation = create();
         ThesisConverter converter = new ThesisConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Thesis converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -29,11 +28,11 @@ class ThesisConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
-
 
     private Thesis create() {
         ThesisBuilder builder = new ThesisBuilder();

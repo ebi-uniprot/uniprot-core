@@ -10,7 +10,11 @@ import java.util.Set;
  */
 public class AlternativeSequenceHelper {
     private static final Set<FeatureType> ALTERNATIVE_SEQUENCE_SET =
-            EnumSet.of(FeatureType.CONFLICT, FeatureType.MUTAGEN, FeatureType.VARIANT, FeatureType.VAR_SEQ);
+            EnumSet.of(
+                    FeatureType.CONFLICT,
+                    FeatureType.MUTAGEN,
+                    FeatureType.VARIANT,
+                    FeatureType.VAR_SEQ);
 
     public static boolean hasAlternativeSequence(FeatureType type) {
         return ALTERNATIVE_SEQUENCE_SET.contains(type);

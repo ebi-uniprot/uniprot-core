@@ -10,9 +10,7 @@ import org.uniprot.core.util.PairImpl;
 
 public class OrganismNameLineParser {
 
-    private static final List<String> STRAINS = Arrays.asList(
-            " (strain", " (isolate"
-    );
+    private static final List<String> STRAINS = Arrays.asList(" (strain", " (isolate");
 
     public static OrganismName createFromOrganismLine(String organismName) {
         OrganismBuilder builder = new OrganismBuilder();
@@ -45,7 +43,6 @@ public class OrganismNameLineParser {
                 builder.scientificName(value);
                 return builder.build();
             }
-
         }
         startBracketIndex = rest.indexOf("(", start + 1);
         if (startBracketIndex == -1) {
@@ -64,11 +61,13 @@ public class OrganismNameLineParser {
         if (!rest.isEmpty()) {
             startBracketIndex = rest.indexOf("(");
             if (startBracketIndex == -1) {
-                throw new IllegalArgumentException("organism name: " + organismName + " is not right");
+                throw new IllegalArgumentException(
+                        "organism name: " + organismName + " is not right");
             }
             endBracketIndex = getEndBlacket(rest, startBracketIndex + 1);
             if (endBracketIndex == -1) {
-                throw new IllegalArgumentException("organism name: " + organismName + " is not right");
+                throw new IllegalArgumentException(
+                        "organism name: " + organismName + " is not right");
             }
             synonym = rest.substring(startBracketIndex + 1, endBracketIndex).trim();
             builder.scientificName(scientificName);
@@ -104,22 +103,18 @@ public class OrganismNameLineParser {
         if (value.endsWith(".")) {
             value = value.substring(0, value.length() - 1);
         }
-        if (value.charAt(value.length() - 1) != endC)
-            return -1;
+        if (value.charAt(value.length() - 1) != endC) return -1;
         int countStart = 0;
         int countEnd = 0;
         for (int i = start; i < value.length(); i++) {
             if (value.charAt(i) == endC) {
-                if (countStart == countEnd)
-                    return i;
-                else
-                    countEnd++;
+                if (countStart == countEnd) return i;
+                else countEnd++;
             } else if (value.charAt(i) == startC) {
                 countStart++;
             }
         }
 
         return -1;
-
     }
 }

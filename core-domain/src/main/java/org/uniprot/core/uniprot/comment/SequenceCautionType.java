@@ -2,12 +2,8 @@ package org.uniprot.core.uniprot.comment;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * User: Emilio Salazar
- * Date: 14-May-2007
- */
+/** User: Emilio Salazar Date: 14-May-2007 */
 public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
-
     FRAMESHIFT("Frameshift"),
     ERRONEOUS_INITIATION("Erroneous initiation"),
     ERRONEOUS_TERMIINATION("Erroneous termination"),
@@ -16,7 +12,6 @@ public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     MISCELLANEOUS_DISCREPANCY("Miscellaneous discrepancy"),
     UNKNOWN("unknown");
 
-
     private String value;
 
     SequenceCautionType(String value) {
@@ -24,8 +19,7 @@ public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     }
 
     public static SequenceCautionType typeOf(String value) {
-        for (SequenceCautionType sequenceCautionType : SequenceCautionType
-                .values()) {
+        for (SequenceCautionType sequenceCautionType : SequenceCautionType.values()) {
             if (sequenceCautionType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
                 return sequenceCautionType;
             }
@@ -35,10 +29,9 @@ public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     }
 
     /**
-     * Returns the name of this enum constant, as contained in the
-     * declaration.  This method may be overridden, though it typically
-     * isn't necessary or desirable.  An enum type should override this
-     * method when a more "programmer-friendly" string form exists.
+     * Returns the name of this enum constant, as contained in the declaration. This method may be
+     * overridden, though it typically isn't necessary or desirable. An enum type should override
+     * this method when a more "programmer-friendly" string form exists.
      *
      * @return the name of this enum constant
      */

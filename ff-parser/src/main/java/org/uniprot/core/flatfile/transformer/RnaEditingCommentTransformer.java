@@ -9,7 +9,6 @@ import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-
 public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditingComment> {
     private static final String UNKNOWN = "Unknown";
 
@@ -22,14 +21,14 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
     private static final String MODIFIED_POSITIONS = "Modified_positions=";
 
     /**
-     * String ccLineStringEvidence =("RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1}, " + "158
-     * {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160 " + "{ECO:0000303|Ref.6}; Note=Partially edited. RNA
-     * editing generates "+ "receptor isoforms that differ in their ability to interact with "+ "the phospholipase C
-     * signaling cascade in a transfected cell line, "+ "suggesting that this RNA processing event may contribute to the
-     * "+ "modulation of serotonergic neurotransmission in the central "+ "nervous system.
+     * String ccLineStringEvidence =("RNA EDITING: Modified_positions=156
+     * {ECO:0000313|EMBL:BAG16761.1}, " + "158 {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160
+     * " + "{ECO:0000303|Ref.6}; Note=Partially edited. RNA editing generates "+ "receptor isoforms
+     * that differ in their ability to interact with "+ "the phospholipase C signaling cascade in a
+     * transfected cell line, "+ "suggesting that this RNA processing event may contribute to the "+
+     * "modulation of serotonergic neurotransmission in the central "+ "nervous system.
      * {ECO:0000256|HAMAP-Rule:MF_00205, " + "ECO:0000313|PDB:3OW2};");
      */
-
     private static final CommentType COMMENT_TYPE = CommentType.RNA_EDITING;
 
     @Override
@@ -73,7 +72,8 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
         }
         if (noteStr != null) {
             Note note =
-                    new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(noteStr, true)).build();
+                    new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(noteStr, true))
+                            .build();
             builder.note(note);
         }
         return builder.build();
@@ -104,7 +104,6 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
 
         } while (index != -1);
         return positions;
-
     }
 
     private RnaEditingLocationType getLocationType(List<String> poses) {
@@ -112,17 +111,11 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
         // Undetermined,
         // Unknown,
         // Known;
-        if (poses.size() > 1)
-            return RnaEditingLocationType.Known;
+        if (poses.size() > 1) return RnaEditingLocationType.Known;
         else if (poses.get(0).startsWith(NOT_APPLICABLE))
             return RnaEditingLocationType.Not_applicable;
-        else if (poses.get(0).startsWith(UNDETERMINED))
-            return RnaEditingLocationType.Undetermined;
-        else if (poses.get(0).startsWith(UNKNOWN))
-            return RnaEditingLocationType.Unknown;
-        else
-            return RnaEditingLocationType.Known;
-
+        else if (poses.get(0).startsWith(UNDETERMINED)) return RnaEditingLocationType.Undetermined;
+        else if (poses.get(0).startsWith(UNKNOWN)) return RnaEditingLocationType.Unknown;
+        else return RnaEditingLocationType.Known;
     }
-
 }

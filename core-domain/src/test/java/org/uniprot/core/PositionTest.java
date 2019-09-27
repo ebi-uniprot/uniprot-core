@@ -1,10 +1,8 @@
 package org.uniprot.core;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Position;
-import org.uniprot.core.PositionModifier;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class PositionTest {
 
@@ -14,14 +12,12 @@ class PositionTest {
         verify(position, 12, PositionModifier.EXACT);
         position = new Position(null);
         verify(position, null, PositionModifier.UNKNOWN);
-
     }
 
     @Test
     void testPositionMinus() {
         Position position = new Position(-12);
         verify(position, -12, PositionModifier.UNKNOWN);
-
     }
 
     @Test

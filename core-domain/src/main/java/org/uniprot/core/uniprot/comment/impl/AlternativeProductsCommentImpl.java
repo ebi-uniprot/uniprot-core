@@ -7,7 +7,8 @@ import java.util.Objects;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.util.Utils;
 
-public class AlternativeProductsCommentImpl extends CommentImpl implements AlternativeProductsComment {
+public class AlternativeProductsCommentImpl extends CommentImpl
+        implements AlternativeProductsComment {
     private static final long serialVersionUID = -8166142214330716494L;
     private List<APEventType> events;
     private List<APIsoform> isoforms;
@@ -20,9 +21,7 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
     }
 
     public AlternativeProductsCommentImpl(
-            List<APEventType> events,
-            List<APIsoform> isoforms,
-            Note note) {
+            List<APEventType> events, List<APIsoform> isoforms, Note note) {
         super(CommentType.ALTERNATIVE_PRODUCTS);
         if ((events == null) || events.isEmpty()) {
             this.events = Collections.emptyList();
@@ -73,9 +72,9 @@ public class AlternativeProductsCommentImpl extends CommentImpl implements Alter
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         AlternativeProductsCommentImpl that = (AlternativeProductsCommentImpl) o;
-        return Objects.equals(events, that.events) &&
-                Objects.equals(isoforms, that.isoforms) &&
-                Objects.equals(note, that.note);
+        return Objects.equals(events, that.events)
+                && Objects.equals(isoforms, that.isoforms)
+                && Objects.equals(note, that.note);
     }
 
     @Override

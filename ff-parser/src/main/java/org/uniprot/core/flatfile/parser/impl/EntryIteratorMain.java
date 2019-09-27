@@ -1,12 +1,12 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.slf4j.Logger;
-import org.uniprot.core.uniprot.UniProtEntry;
+import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 
-import static org.slf4j.LoggerFactory.getLogger;
+import org.slf4j.Logger;
+import org.uniprot.core.uniprot.UniProtEntry;
 
 /**
  * Created 28/02/19
@@ -17,10 +17,11 @@ public class EntryIteratorMain {
     private static final Logger LOGGER = getLogger(EntryIteratorMain.class);
 
     public static void main(String[] args) throws FileNotFoundException {
-        LOGGER.info("received arguments length: "+ args.length);
-        LOGGER.info("received arguments: "+ Arrays.toString(args));
+        LOGGER.info("received arguments length: " + args.length);
+        LOGGER.info("received arguments: " + Arrays.toString(args));
         if (args.length != 9) {
-            LOGGER.error("Provide the correct arguments: FILE THREAD_NUM ENTRY_QUEUE_SIZE FF_QUEUE_SIZE COUNT KEYWORD_FILE DISEASE_FILE GO_FILE SUBCELLULAR_LOCATION_FILE");
+            LOGGER.error(
+                    "Provide the correct arguments: FILE THREAD_NUM ENTRY_QUEUE_SIZE FF_QUEUE_SIZE COUNT KEYWORD_FILE DISEASE_FILE GO_FILE SUBCELLULAR_LOCATION_FILE");
             System.exit(1);
         }
         String file = args[0];
@@ -34,7 +35,8 @@ public class EntryIteratorMain {
         String subcellularLocationFile = args[8];
 
         LOGGER.info("==========");
-        DefaultUniProtEntryIterator entryIterator = new DefaultUniProtEntryIterator(numThreads, entryQueueSize, ffQueueSize);
+        DefaultUniProtEntryIterator entryIterator =
+                new DefaultUniProtEntryIterator(numThreads, entryQueueSize, ffQueueSize);
         entryIterator.setIgnoreWrong(true);
         entryIterator.setInput(file, keywordFile, diseaseFile, goFile, subcellularLocationFile);
         long count = 0;

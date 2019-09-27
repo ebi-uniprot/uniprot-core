@@ -1,21 +1,21 @@
 package org.uniprot.core.flatfile.parser.impl.dr;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.antlr.v4.runtime.misc.NotNull;
+import org.uniprot.core.flatfile.antlr.DrLineParser;
+import org.uniprot.core.flatfile.antlr.DrLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseException;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
-import org.uniprot.core.flatfile.antlr.DrLineParser;
-import org.uniprot.core.flatfile.antlr.DrLineParserBaseListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use File | Settings |
- * File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use
+ * File | Settings | File Templates.
  */
-public class DrLineModelListener extends DrLineParserBaseListener implements ParseTreeObjectExtractor<DrLineObject> {
+public class DrLineModelListener extends DrLineParserBaseListener
+        implements ParseTreeObjectExtractor<DrLineObject> {
 
     private DrLineObject object;
 
@@ -136,5 +136,4 @@ public class DrLineModelListener extends DrLineParserBaseListener implements Par
 
         EvidenceInfo.processEvidenceString(line.getEvidenceInfo(), dr, evs);
     }
-
 }

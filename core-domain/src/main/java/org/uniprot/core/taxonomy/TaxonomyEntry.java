@@ -4,10 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-/**
- *
- * @author lgonzales
- */
+
+/** @author lgonzales */
 public interface TaxonomyEntry extends Taxonomy, Serializable {
 
     Long getParentId();
@@ -49,5 +47,4 @@ public interface TaxonomyEntry extends Taxonomy, Serializable {
     boolean hasStatistics();
 
     boolean hasInactiveReason();
-
 }

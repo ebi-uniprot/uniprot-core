@@ -1,18 +1,5 @@
 package org.uniprot.core.xml.uniprot.unload;
 
-import com.codahale.metrics.Timer;
-import com.sun.xml.bind.marshaller.DataWriter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader2;
-import org.uniprot.core.xml.DefaultXmlFileMerger;
-import org.uniprot.core.xml.XmlBuildStats;
-import org.uniprot.core.xml.XmlBuilder;
-import org.uniprot.core.xml.XmlFileMerger;
-import org.uniprot.core.xml.jaxb.uniprot.Entry;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,6 +14,21 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.flatfile.parser.impl.EntryBufferedReader2;
+import org.uniprot.core.xml.DefaultXmlFileMerger;
+import org.uniprot.core.xml.XmlBuildStats;
+import org.uniprot.core.xml.XmlBuilder;
+import org.uniprot.core.xml.XmlFileMerger;
+import org.uniprot.core.xml.jaxb.uniprot.Entry;
+
+import com.codahale.metrics.Timer;
+import com.sun.xml.bind.marshaller.DataWriter;
 
 public class UniProtFFToXmlBuilder implements XmlBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(UniProtFFToXmlBuilder.class);
@@ -64,7 +66,8 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
             try {
                 LOGGER.info("Start building xml from ... {}", dataFile);
                 String threadNamePrefix = tempFilePref + "-" + inc++ + "-";
-                outputFiles.addAll(multithreadBuild(dataFile, threadNamePrefix, nthread, failedEntryFile));
+                outputFiles.addAll(
+                        multithreadBuild(dataFile, threadNamePrefix, nthread, failedEntryFile));
             } catch (Exception e) {
                 LOGGER.error("dataFile: " + dataFile + " failed to build. ", e);
             }
@@ -86,7 +89,6 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         updateStats(xmlFile, this.failedFileName);
         xmlBuildStats.metricsReport();
         return xmlBuildStats;
-
     }
 
     private void updateStats(String xmlFile, String failedEntryFile) {
@@ -104,14 +106,14 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
                 xmlBuildStats.setFailedEntryFile(failedEntryFile);
             }
         }
-
     }
 
     private void mergeFiles(String xmlFile, List<String> inputFiles) {
         LOGGER.info("merge files from ... {}", inputFiles);
         LOGGER.info("merge to ... {}", xmlFile);
         LocalTime start = LocalTime.now();
-        XmlFileMerger xmFileMerger = new DefaultXmlFileMerger(UniProtXmlConstants.HEADER, UniProtXmlConstants.FOOTER);
+        XmlFileMerger xmFileMerger =
+                new DefaultXmlFileMerger(UniProtXmlConstants.HEADER, UniProtXmlConstants.FOOTER);
         try {
             xmFileMerger.mergeFiles(xmlFile, inputFiles);
         } catch (IOException e) {
@@ -120,7 +122,6 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
             Duration duration = Duration.between(start, LocalTime.now());
             LOGGER.info("Time for merging file: {} seconds", duration.getSeconds());
         }
-
     }
 
     private void deleteFiles(List<String> inputFiles) {
@@ -143,7 +144,8 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         List<String> outputFiles = new ArrayList<>();
         String dataFile = failedEntryFile;
         do {
-            LOGGER.info("Number of failed Entries: {}", xmlBuildStats.getFailedCounter().getCount());
+            LOGGER.info(
+                    "Number of failed Entries: {}", xmlBuildStats.getFailedCounter().getCount());
             LOGGER.info("Retry build failed entries: {}", nretry);
             String newFailedEntryFile = getFailedEntryFileName(nretry);
             String xmlfilePrex = tempFilePref + XML_FILE_PREX_RETRY + nretry;
@@ -180,16 +182,23 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         return new PrintWriter(new OutputStreamWriter(os));
     }
 
-    private List<String> multithreadBuild(String dataFile, String xmlfilePrev, int nthread, String failedEntryFile) {
+    private List<String> multithreadBuild(
+            String dataFile, String xmlfilePrev, int nthread, String failedEntryFile) {
         this.failedFileName = failedEntryFile;
         long failed = xmlBuildStats.getFailedCounter().getCount();
         xmlBuildStats.getFailedCounter().dec(failed);
         LimitedQueue<Runnable> queue = new LimitedQueue<>(10000);
-        ExecutorService executorService = new ThreadPoolExecutor(nthread, 32, 30, TimeUnit.SECONDS, queue,
-                                                                 new NamedThreadFactory(xmlfilePrev));
+        ExecutorService executorService =
+                new ThreadPoolExecutor(
+                        nthread,
+                        32,
+                        30,
+                        TimeUnit.SECONDS,
+                        queue,
+                        new NamedThreadFactory(xmlfilePrev));
         EntryBufferedReader2 entryBufferReader2 = null;
-        PrintWriter failedEntryWriter = printWriterFromFile(failedFileName)
-                .orElse(printWriterFromOutputStream(System.out));
+        PrintWriter failedEntryWriter =
+                printWriterFromFile(failedFileName).orElse(printWriterFromOutputStream(System.out));
 
         try {
             entryBufferReader2 = new EntryBufferedReader2(dataFile);
@@ -199,11 +208,15 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         int counter = 0;
         do {
             List<String> ffEntries = getNextListFFEntries(entryBufferReader2);
-            if (ffEntries.isEmpty())
-                break;
+            if (ffEntries.isEmpty()) break;
             this.xmlBuildStats.getFlatfileEntryCounter().inc(ffEntries.size());
-            executorService.submit(new UniProtFF2XmlWriter(ffEntries, this.diseaseFile, this.keywordFile,
-                                                           failedEntryWriter, xmlBuildStats));
+            executorService.submit(
+                    new UniProtFF2XmlWriter(
+                            ffEntries,
+                            this.diseaseFile,
+                            this.keywordFile,
+                            failedEntryWriter,
+                            xmlBuildStats));
             counter++;
         } while (true);
         executorService.shutdown();
@@ -218,7 +231,8 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
     }
 
     private List<String> getxmlFiles(String xmlfilePrev, int nthread) {
-        return IntStream.range(1, nthread + 1).mapToObj(val -> (xmlfilePrev + val + XML_FILEEXT))
+        return IntStream.range(1, nthread + 1)
+                .mapToObj(val -> (xmlfilePrev + val + XML_FILEEXT))
                 .collect(Collectors.toList());
     }
 
@@ -247,9 +261,12 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
     }
 
     static class UniProtFF2XmlWriter implements Runnable {
-        private static final ConcurrentHashMap<String, UniProtFFToXmlConverter> converters = new ConcurrentHashMap<>();
-        private static final ConcurrentHashMap<String, Marshaller> marshallers = new ConcurrentHashMap<>();
-        private static final ConcurrentHashMap<String, DataWriter> writers = new ConcurrentHashMap<>();
+        private static final ConcurrentHashMap<String, UniProtFFToXmlConverter> converters =
+                new ConcurrentHashMap<>();
+        private static final ConcurrentHashMap<String, Marshaller> marshallers =
+                new ConcurrentHashMap<>();
+        private static final ConcurrentHashMap<String, DataWriter> writers =
+                new ConcurrentHashMap<>();
 
         private final String humdiseaseFilePath;
         private final String keywordFilePath;
@@ -257,8 +274,12 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         private final PrintWriter failedEntryWriter;
         private UniProtXmlBuildStats metrics;
 
-        public UniProtFF2XmlWriter(List<String> ffEntries, String humdiseaseFilePath, String keywordFilePath,
-                                   PrintWriter failedEntryWriter, UniProtXmlBuildStats metrics) {
+        public UniProtFF2XmlWriter(
+                List<String> ffEntries,
+                String humdiseaseFilePath,
+                String keywordFilePath,
+                PrintWriter failedEntryWriter,
+                UniProtXmlBuildStats metrics) {
             this.ffEntries = ffEntries;
             this.keywordFilePath = keywordFilePath;
             this.humdiseaseFilePath = humdiseaseFilePath;
@@ -293,7 +314,8 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
                         writer.flush();
                         metrics.getSucceededCounter().inc();
                     } catch (Exception e) {
-                        LOGGER.warn("Entry write to XML Failed. {}", xmlEntry.getAccession().get(0));
+                        LOGGER.warn(
+                                "Entry write to XML Failed. {}", xmlEntry.getAccession().get(0));
                         metrics.getFailedCounter().inc();
                         writeFailedFFEntry(ffEntry);
                     } finally {
@@ -336,10 +358,13 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
         }
 
         private UniProtFFToXmlConverter getUniprotFFToXmlConverter(String name) {
-            return converters.computeIfAbsent(name, n -> {
-                UniProtFFToXmlConverter uniProtFFToXmlConverter = new UniProtFFToXmlConverter(humdiseaseFilePath, keywordFilePath);
-                return converters.put(name, uniProtFFToXmlConverter);
-            });
+            return converters.computeIfAbsent(
+                    name,
+                    n -> {
+                        UniProtFFToXmlConverter uniProtFFToXmlConverter =
+                                new UniProtFFToXmlConverter(humdiseaseFilePath, keywordFilePath);
+                        return converters.put(name, uniProtFFToXmlConverter);
+                    });
         }
 
         private Marshaller getMarshaller(String name) {
@@ -365,12 +390,10 @@ public class UniProtFFToXmlBuilder implements XmlBuilder {
     }
 
     private static class UniProtFFToXmlBuildException extends RuntimeException {
-        /**
-		 * 
-		 */
-		private static final long serialVersionUID = -2716084900878573322L;
+        /** */
+        private static final long serialVersionUID = -2716084900878573322L;
 
-		UniProtFFToXmlBuildException(String message) {
+        UniProtFFToXmlBuildException(String message) {
             super(message);
         }
 

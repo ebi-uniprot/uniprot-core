@@ -25,31 +25,26 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
     public CofactorConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.evRefMapper = evRefMapper;
         this.xmlUniprotFactory = xmlUniprotFactory;
-
     }
 
     @Override
     public Cofactor fromXml(CofactorType xmlObj) {
         String name = xmlObj.getName();
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-        CofactorReferenceType type = CofactorReferenceType.typeOf(xmlObj.getDbReference().getType());
+        CofactorReferenceType type =
+                CofactorReferenceType.typeOf(xmlObj.getDbReference().getType());
         DBCrossReference<CofactorReferenceType> reference =
                 new DBCrossReferenceBuilder<CofactorReferenceType>()
                         .databaseType(type)
                         .id(xmlObj.getDbReference().getId())
                         .build();
 
-        return new CofactorBuilder()
-                .name(name)
-                .reference(reference)
-                .evidences(evidences)
-                .build();
+        return new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
     }
 
     @Override
     public CofactorType toXml(Cofactor cofactor) {
-        if (cofactor == null)
-            return null;
+        if (cofactor == null) return null;
         CofactorType xmlCofactor = xmlUniprotFactory.createCofactorType();
         xmlCofactor.setName(cofactor.getName());
         DbReferenceType dbref = xmlUniprotFactory.createDbReferenceType();
@@ -59,10 +54,8 @@ public class CofactorConverter implements Converter<CofactorType, Cofactor> {
         List<Evidence> evidenceIds = cofactor.getEvidences();
         if ((evidenceIds != null) && !evidenceIds.isEmpty()) {
             List<Integer> evs = evRefMapper.writeEvidences(evidenceIds);
-            if (!evs.isEmpty())
-                xmlCofactor.getEvidence().addAll(evs);
+            if (!evs.isEmpty()) xmlCofactor.getEvidence().addAll(evs);
         }
         return xmlCofactor;
     }
-
 }

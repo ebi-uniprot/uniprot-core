@@ -21,7 +21,8 @@ public class SubcellularLocationJsonConfig extends JsonConfig {
     private static SubcellularLocationJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
-    private final ObjectMapper simpleMapper; // mapper without unwanted fields like type, lighter version
+    private final ObjectMapper
+            simpleMapper; // mapper without unwanted fields like type, lighter version
 
     private SubcellularLocationJsonConfig() {
         this.objectMapper = initFullObjectMapper();
@@ -50,8 +51,10 @@ public class SubcellularLocationJsonConfig extends JsonConfig {
 
         // customise the default mapper
         SimpleModule mod = new SimpleModule();
-        mod.addAbstractTypeMapping(SubcellularLocationEntry.class, SubcellularLocationEntryImpl.class);
-        mod.addAbstractTypeMapping(SubcellularLocationStatistics.class, SubcellularLocationStatisticsImpl.class);
+        mod.addAbstractTypeMapping(
+                SubcellularLocationEntry.class, SubcellularLocationEntryImpl.class);
+        mod.addAbstractTypeMapping(
+                SubcellularLocationStatistics.class, SubcellularLocationStatisticsImpl.class);
         mod.addAbstractTypeMapping(Keyword.class, KeywordImpl.class);
         mod.addAbstractTypeMapping(GeneOntology.class, GeneOntologyImpl.class);
         objMapper.registerModule(mod);
@@ -67,4 +70,3 @@ public class SubcellularLocationJsonConfig extends JsonConfig {
         return prettyObjMapper;
     }
 }
-

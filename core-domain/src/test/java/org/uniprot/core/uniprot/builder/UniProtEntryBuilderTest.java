@@ -1,10 +1,7 @@
 package org.uniprot.core.uniprot.builder;
 
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 class UniProtEntryBuilderTest {
-    //TODO: implement tests for UniProtEntryBuilderTest
+    // TODO: implement tests for UniProtEntryBuilderTest
 
 }

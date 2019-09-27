@@ -11,15 +11,17 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 
-public class OxLineConverter extends EvidenceCollector implements Converter<OxLineObject, Organism> {
-	@Override
-	public Organism convert(OxLineObject f) {
-	
-		Map<Object, List<Evidence> > evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
-		this.addAll( evidences.values());
-		return new OrganismBuilder()
-				.taxonId(f.taxonomy_id)
-				.evidences(evidences.getOrDefault(f.taxonomy_id, Collections.emptyList()))
-				.build();
-	}
+public class OxLineConverter extends EvidenceCollector
+        implements Converter<OxLineObject, Organism> {
+    @Override
+    public Organism convert(OxLineObject f) {
+
+        Map<Object, List<Evidence>> evidences =
+                EvidenceConverterHelper.convert(f.getEvidenceInfo());
+        this.addAll(evidences.values());
+        return new OrganismBuilder()
+                .taxonId(f.taxonomy_id)
+                .evidences(evidences.getOrDefault(f.taxonomy_id, Collections.emptyList()))
+                .build();
+    }
 }

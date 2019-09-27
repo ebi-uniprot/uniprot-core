@@ -9,8 +9,7 @@ public abstract class CommentImpl implements Comment {
     private static final long serialVersionUID = 4940248496275660209L;
     private CommentType commentType;
 
-    public CommentImpl() {
-    }
+    public CommentImpl() {}
 
     public CommentImpl(CommentType commentType) {
         this.commentType = commentType;

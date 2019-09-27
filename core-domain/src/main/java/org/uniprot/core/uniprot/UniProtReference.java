@@ -19,5 +19,4 @@ public interface UniProtReference extends HasEvidences {
     boolean hasReferenceComments();
 
     boolean hasReferencePositions();
-
 }

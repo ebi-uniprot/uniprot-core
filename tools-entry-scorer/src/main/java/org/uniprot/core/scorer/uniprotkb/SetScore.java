@@ -3,8 +3,8 @@ package org.uniprot.core.scorer.uniprotkb;
 import java.text.DecimalFormat;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 18-Mar-2010 Time: 11:48:41 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 18-Mar-2010 Time: 11:48:41 To change this template
+ * use File | Settings | File Templates.
  */
 public class SetScore {
 
@@ -36,10 +36,8 @@ public class SetScore {
         count++;
         sum += num;
         squareSum += num * num;
-        if (num > max)
-            max = num;
-        if (num < min)
-            min = num;
+        if (num > max) max = num;
+        if (num < min) min = num;
     }
 
     public Type getType() {
@@ -84,12 +82,18 @@ public class SetScore {
     @Override
     public String toString() {
         DecimalFormat decimalFormat = new DecimalFormat("0.0");
-        return type +
-                ", " + count +
-                ", " + decimalFormat.format(sum) +
-                ", " + decimalFormat.format(getMean()) +
-                ", " + decimalFormat.format(getStandardDeviation()) +
-                ", " + decimalFormat.format(max) +
-                ", " + decimalFormat.format(min);
+        return type
+                + ", "
+                + count
+                + ", "
+                + decimalFormat.format(sum)
+                + ", "
+                + decimalFormat.format(getMean())
+                + ", "
+                + decimalFormat.format(getStandardDeviation())
+                + ", "
+                + decimalFormat.format(max)
+                + ", "
+                + decimalFormat.format(min);
     }
 }

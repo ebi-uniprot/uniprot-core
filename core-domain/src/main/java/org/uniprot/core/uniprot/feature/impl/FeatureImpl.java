@@ -19,35 +19,50 @@ public class FeatureImpl implements Feature {
     private DBCrossReference<FeatureXDbType> dbXref;
     private List<Evidence> evidences;
 
-    public FeatureImpl(FeatureType type, Range location, String description, List<Evidence> evidences) {
+    public FeatureImpl(
+            FeatureType type, Range location, String description, List<Evidence> evidences) {
         this(type, location, description, null, evidences);
-
     }
 
-    public FeatureImpl(FeatureType type, Range location, String description, FeatureId featureId,
-                       List<Evidence> evidences) {
+    public FeatureImpl(
+            FeatureType type,
+            Range location,
+            String description,
+            FeatureId featureId,
+            List<Evidence> evidences) {
         this(type, location, description, featureId, null, null, evidences);
-
     }
 
-    public FeatureImpl(FeatureType type, Range location, String description, FeatureId featureId,
-                       AlternativeSequence alternativeSequence, DBCrossReference<FeatureXDbType> dbXref, List<Evidence> evidences) {
-        this(type, location, new FeatureDescriptionImpl(description),
-             featureId, alternativeSequence, dbXref, evidences
-        );
+    public FeatureImpl(
+            FeatureType type,
+            Range location,
+            String description,
+            FeatureId featureId,
+            AlternativeSequence alternativeSequence,
+            DBCrossReference<FeatureXDbType> dbXref,
+            List<Evidence> evidences) {
+        this(
+                type,
+                location,
+                new FeatureDescriptionImpl(description),
+                featureId,
+                alternativeSequence,
+                dbXref,
+                evidences);
     }
 
     private FeatureImpl() {
         evidences = Collections.emptyList();
     }
 
-    public FeatureImpl(FeatureType type,
-                       Range location,
-                       FeatureDescription description,
-                       FeatureId featureId,
-                       AlternativeSequence alternativeSequence,
-                       DBCrossReference<FeatureXDbType> dbXref,
-                       List<Evidence> evidences) {
+    public FeatureImpl(
+            FeatureType type,
+            Range location,
+            FeatureDescription description,
+            FeatureId featureId,
+            AlternativeSequence alternativeSequence,
+            DBCrossReference<FeatureXDbType> dbXref,
+            List<Evidence> evidences) {
 
         this.type = type;
         this.location = location;
@@ -97,7 +112,6 @@ public class FeatureImpl implements Feature {
         return this.featureId != null && FeatureIdImpl.hasFeatureId(type);
     }
 
-
     @Override
     public AlternativeSequence getAlternativeSequence() {
         return alternativeSequence;
@@ -132,7 +146,9 @@ public class FeatureImpl implements Feature {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((alternativeSequence == null) ? 0 : alternativeSequence.hashCode());
+        result =
+                prime * result
+                        + ((alternativeSequence == null) ? 0 : alternativeSequence.hashCode());
         result = prime * result + ((dbXref == null) ? 0 : dbXref.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
@@ -144,43 +160,28 @@ public class FeatureImpl implements Feature {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         FeatureImpl other = (FeatureImpl) obj;
         if (alternativeSequence == null) {
-            if (other.alternativeSequence != null)
-                return false;
-        } else if (!alternativeSequence.equals(other.alternativeSequence))
-            return false;
+            if (other.alternativeSequence != null) return false;
+        } else if (!alternativeSequence.equals(other.alternativeSequence)) return false;
         if (dbXref == null) {
-            if (other.dbXref != null)
-                return false;
-        } else if (!dbXref.equals(other.dbXref))
-            return false;
+            if (other.dbXref != null) return false;
+        } else if (!dbXref.equals(other.dbXref)) return false;
         if (description == null) {
-            if (other.description != null)
-                return false;
-        } else if (!description.equals(other.description))
-            return false;
+            if (other.description != null) return false;
+        } else if (!description.equals(other.description)) return false;
         if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
+            if (other.evidences != null) return false;
+        } else if (!evidences.equals(other.evidences)) return false;
         if (featureId == null) {
-            if (other.featureId != null)
-                return false;
-        } else if (!featureId.equals(other.featureId))
-            return false;
+            if (other.featureId != null) return false;
+        } else if (!featureId.equals(other.featureId)) return false;
         if (location == null) {
-            if (other.location != null)
-                return false;
-        } else if (!location.equals(other.location))
-            return false;
+            if (other.location != null) return false;
+        } else if (!location.equals(other.location)) return false;
         return type == other.type;
     }
 }

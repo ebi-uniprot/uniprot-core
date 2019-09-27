@@ -1,15 +1,15 @@
 package org.uniprot.core.flatfile.parser.converter;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDate;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineConverter;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 import org.uniprot.core.uniprot.InternalSection;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
-
-import java.time.LocalDate;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SsLineConverterTest {
     private SsLineConverter converter = new SsLineConverter();
@@ -17,8 +17,8 @@ class SsLineConverterTest {
     @Test
     void testEvidence() {
         SsLineObject obj = new SsLineObject();
-        //**EV ECO:0000313; ProtImp; -; 07-NOV-2006.\n"+
-        //**EV ECO:0000256; HAMAP-Rule:MF_01417; -; 01-OCT-2010.\n"
+        // **EV ECO:0000313; ProtImp; -; 07-NOV-2006.\n"+
+        // **EV ECO:0000256; HAMAP-Rule:MF_01417; -; 01-OCT-2010.\n"
         SsLineObject.EvLine ev1 = new SsLineObject.EvLine();
         ev1.id = "ECO:0000313";
         ev1.db = "ProtImp";
@@ -45,13 +45,11 @@ class SsLineConverterTest {
         assertEquals(ev1.date, evidence1.getCreateDate());
         assertEquals(ev1.attr_2, evidence1.getCurator());
 
-
         assertEquals("MF_01417", evidence2.toEvidence().getSource().getId());
         assertEquals("ECO:0000256|HAMAP-Rule:MF_01417", evidence2.getEvidence());
         assertEquals("HAMAP-Rule", evidence2.toEvidence().getSource().getDatabaseType().getName());
         assertEquals("ECO:0000256", evidence2.toEvidence().getEvidenceCode().getCode());
         assertEquals(ev2.date, evidence2.getCreateDate());
         assertEquals(ev2.attr_2, evidence2.getCurator());
-
     }
 }

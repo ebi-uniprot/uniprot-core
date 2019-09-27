@@ -1,14 +1,11 @@
 package org.uniprot.core.literature.builder;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.literature.LiteratureStatistics;
-import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * @author lgonzales
- */
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.literature.LiteratureStatistics;
+
+/** @author lgonzales */
 class LiteratureStatisticsBuilderTest {
 
     @Test
@@ -40,5 +37,4 @@ class LiteratureStatisticsBuilderTest {
                 .mappedProteinCount(30)
                 .build();
     }
-
 }

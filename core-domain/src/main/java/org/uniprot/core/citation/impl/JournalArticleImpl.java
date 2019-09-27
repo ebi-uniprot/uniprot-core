@@ -1,12 +1,12 @@
 package org.uniprot.core.citation.impl;
 
+import static java.util.Collections.emptyList;
+
 import java.util.List;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.util.Utils;
-
-import static java.util.Collections.emptyList;
 
 public class JournalArticleImpl extends AbstractCitationImpl implements JournalArticle {
     private static final long serialVersionUID = -1925700851366460680L;
@@ -19,10 +19,23 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         this(emptyList(), emptyList(), emptyList(), null, null, null, null, null, null);
     }
 
-    public JournalArticleImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                              String title, PublicationDate publicationDate, String journalName,
-                              String firstPage, String lastPage, String volume) {
-        super(CitationType.JOURNAL_ARTICLE, authoringGroup, authors, citationXrefs, title, publicationDate);
+    public JournalArticleImpl(
+            List<String> authoringGroup,
+            List<Author> authors,
+            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            String title,
+            PublicationDate publicationDate,
+            String journalName,
+            String firstPage,
+            String lastPage,
+            String volume) {
+        super(
+                CitationType.JOURNAL_ARTICLE,
+                authoringGroup,
+                authors,
+                citationXrefs,
+                title,
+                publicationDate);
         if (journalName != null) {
             this.journal = new JournalImpl(journalName);
         }
@@ -84,28 +97,19 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         JournalArticleImpl other = (JournalArticleImpl) obj;
         if (firstPage == null) {
-            if (other.firstPage != null)
-                return false;
-        } else if (!firstPage.equals(other.firstPage))
-            return false;
+            if (other.firstPage != null) return false;
+        } else if (!firstPage.equals(other.firstPage)) return false;
         if (journal == null) {
-            if (other.journal != null)
-                return false;
-        } else if (!journal.equals(other.journal))
-            return false;
+            if (other.journal != null) return false;
+        } else if (!journal.equals(other.journal)) return false;
         if (lastPage == null) {
-            if (other.lastPage != null)
-                return false;
-        } else if (!lastPage.equals(other.lastPage))
-            return false;
+            if (other.lastPage != null) return false;
+        } else if (!lastPage.equals(other.lastPage)) return false;
         if (volume == null) {
             return other.volume == null;
         } else return volume.equals(other.volume);

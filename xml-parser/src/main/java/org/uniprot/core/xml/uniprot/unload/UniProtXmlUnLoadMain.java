@@ -7,10 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.xml.XmlBuildStats;
 
-
-
 public class UniProtXmlUnLoadMain {
-	private static final Logger LOGGER = LoggerFactory.getLogger(UniProtXmlUnLoadMain.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UniProtXmlUnLoadMain.class);
 
     public static void main(String[] args) {
         LocalTime start = LocalTime.now();
@@ -19,11 +17,16 @@ public class UniProtXmlUnLoadMain {
             System.out.println(configure.getUsage());
             System.exit(1);
         }
-        UniProtFFToXmlBuilder builder = new UniProtFFToXmlBuilder(configure.getKeywordFilePath(), 
-        		configure.getHumdiseaseFilePath(), configure.nThreads() );
+        UniProtFFToXmlBuilder builder =
+                new UniProtFFToXmlBuilder(
+                        configure.getKeywordFilePath(),
+                        configure.getHumdiseaseFilePath(),
+                        configure.nThreads());
         try {
-            XmlBuildStats stats = builder.build(configure.getUniProtInputFFilePath(),
-                    configure.getUniProtXmlOutputFilePath());
+            XmlBuildStats stats =
+                    builder.build(
+                            configure.getUniProtInputFFilePath(),
+                            configure.getUniProtXmlOutputFilePath());
             System.out.println(stats.getReport());
             Duration duration = Duration.between(start, LocalTime.now());
             LOGGER.info("Total time: " + duration.getSeconds() + " seconds");

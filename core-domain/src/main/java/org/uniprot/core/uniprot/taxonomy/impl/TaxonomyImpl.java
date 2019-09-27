@@ -8,15 +8,20 @@ import org.uniprot.core.util.Utils;
 
 public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
 
-	private static final long serialVersionUID = -319775179301440772L;
-	   private long taxonId;
-	   private String mnemonic;
+    private static final long serialVersionUID = -319775179301440772L;
+    private long taxonId;
+    private String mnemonic;
 
     private TaxonomyImpl() {
         this(-1, null, null, null, null);
     }
 
-    public TaxonomyImpl(long taxonId, String scientificName, String commonName, List<String> synonyms, String mnemonic) {
+    public TaxonomyImpl(
+            long taxonId,
+            String scientificName,
+            String commonName,
+            List<String> synonyms,
+            String mnemonic) {
         super(scientificName, commonName, synonyms);
         this.taxonId = taxonId;
         this.mnemonic = mnemonic;
@@ -26,10 +31,11 @@ public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
     public long getTaxonId() {
         return taxonId;
     }
+
     @Override
-	public String getMnemonic() {
-		return mnemonic;
-	}
+    public String getMnemonic() {
+        return mnemonic;
+    }
 
     @Override
     public boolean hasMnemonic() {
@@ -42,8 +48,7 @@ public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         TaxonomyImpl that = (TaxonomyImpl) o;
-        return Objects.equals(taxonId, that.taxonId)
-        		&& Objects.equals(mnemonic, that.mnemonic);
+        return Objects.equals(taxonId, that.taxonId) && Objects.equals(mnemonic, that.mnemonic);
     }
 
     @Override
@@ -59,6 +64,4 @@ public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
         sb.append(super.toString());
         return sb.toString();
     }
-
-	
 }

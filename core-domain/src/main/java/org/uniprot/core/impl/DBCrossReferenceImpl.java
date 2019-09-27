@@ -10,7 +10,6 @@ import org.uniprot.core.DatabaseType;
 import org.uniprot.core.Property;
 import org.uniprot.core.util.Utils;
 
-
 public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossReference<T> {
     private static final long serialVersionUID = 4318477387676269483L;
     protected T databaseType;
@@ -62,8 +61,7 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
     }
 
     public void setProperties(List<Property> properties) {
-        if ((properties == null) || properties.isEmpty())
-            this.properties = Collections.emptyList();
+        if ((properties == null) || properties.isEmpty()) this.properties = Collections.emptyList();
         else {
             this.properties = new ArrayList<>();
             this.properties.addAll(properties);
@@ -83,9 +81,9 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DBCrossReferenceImpl<?> that = (DBCrossReferenceImpl<?>) o;
-        return Objects.equals(databaseType, that.databaseType) &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(properties, that.properties);
+        return Objects.equals(databaseType, that.databaseType)
+                && Objects.equals(id, that.id)
+                && Objects.equals(properties, that.properties);
     }
 
     @Override

@@ -9,12 +9,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 /**
- *
  * @author jluo
  * @date: 24 May 2019
- *
-*/
-
+ */
 public class ProteomeIdSerializer extends StdSerializer<ProteomeIdImpl> {
 
     public ProteomeIdSerializer() {
@@ -22,9 +19,11 @@ public class ProteomeIdSerializer extends StdSerializer<ProteomeIdImpl> {
     }
 
     @Override
-    public void serialize(ProteomeIdImpl value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(
+            ProteomeIdImpl value,
+            JsonGenerator jsonGenerator,
+            SerializerProvider serializerProvider)
+            throws IOException {
         jsonGenerator.writeString(value.getValue());
     }
 }
-
-

@@ -4,17 +4,23 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Indicates that a {@link uk.ac.ebi.Feature.interfaces.uniprot.oldfeatures.Feature Feature} in an UniProtEntry can have an alternative sequence ({@link uk.ac.ebi.kraken.interfaces.uniprot.oldfeatures.SubSequence SubSequence}).
- * <br><br>
+ * Indicates that a {@link uk.ac.ebi.Feature.interfaces.uniprot.oldfeatures.Feature Feature} in an
+ * UniProtEntry can have an alternative sequence ({@link
+ * uk.ac.ebi.kraken.interfaces.uniprot.oldfeatures.SubSequence SubSequence}). <br>
+ * <br>
  * These values can be found in the FT line of the flat file on the marked position.
- * <pre class="example"><font color="#AAAAAA">   KW   Neurotransmitter degradation; Polymorphism; Serine esterase; Synapse.
+ *
+ * <pre class="example">
+ * <font color="#AAAAAA">   KW   Neurotransmitter degradation; Polymorphism; Serine esterase; Synapse.
  * FT   DISULFID     45     72       By similarity.
  * FT   VARIANT      97     97       <font color="#000000">G -> S</font> (in strain Barriol, strain Espro,
  * FT                                strain Padova and strain Praias).
  * FT                                /FTId=VSP_004117.
  * SQ   SEQUENCE   132 AA;  14543 MW;  2F40C4B3FC2468E8 CRC64;
  * ...</font></pre>
+ *
  * In XML:
+ *
  * <pre> <font color="#AAAAAA">...
  * &lt;feature type="disulfide bond" status="by similarity"&gt;
  *     &lt;location&gt;
@@ -35,8 +41,9 @@ import java.util.List;
  */
 public interface AlternativeSequence extends Serializable {
 
-	String getOriginalSequence();
-	List<String> getAlternativeSequences();
-	//public SequenceReport getReport();
+    String getOriginalSequence();
+
+    List<String> getAlternativeSequences();
+    // public SequenceReport getReport();
 
 }

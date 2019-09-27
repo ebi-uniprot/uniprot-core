@@ -8,9 +8,7 @@ public class JournalImpl implements Journal {
     private static final long serialVersionUID = 5877235340272317134L;
     private String name;
 
-    private JournalImpl() {
-
-    }
+    private JournalImpl() {}
 
     public JournalImpl(String name) {
         this.name = name;
@@ -36,8 +34,6 @@ public class JournalImpl implements Journal {
 
     @Override
     public String toString() {
-        return "JournalImpl{" +
-                "name='" + name + '\'' +
-                '}';
+        return "JournalImpl{" + "name='" + name + '\'' + '}';
     }
 }

@@ -10,26 +10,26 @@ import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.RLine;
 
-public class RALineBuilder implements RLine< List<Author> > {
-	private final LineType lineType = LineType.RA;
-	private final String linePrefix = lineType + DEFAUT_LINESPACE;
-	@Override
-	public List<String> buildLine(List<Author> f, boolean includeFFMarkup,
-			boolean showEvidence) {
-		if((f==null)||(f.size()==0)){
-			new ArrayList<>();
-		}
+public class RALineBuilder implements RLine<List<Author>> {
+    private final LineType lineType = LineType.RA;
+    private final String linePrefix = lineType + DEFAUT_LINESPACE;
 
-		List<String> tokens =new ArrayList<>();
-		for(Author author:f){
-			tokens.add(author.getValue());
-		}	
-		if(includeFFMarkup)
-			return FFLineWrapper.buildLine(tokens, COMA, SPACE, SEMICOLON,linePrefix, LINE_LENGTH, includeFFMarkup);
-		else{
-			return FFLineWrapper.buildLine(tokens, COMA, SPACE, SEMICOLON, "", LINE_LENGTH, includeFFMarkup);
-		}
-		
-	}
+    @Override
+    public List<String> buildLine(List<Author> f, boolean includeFFMarkup, boolean showEvidence) {
+        if ((f == null) || (f.size() == 0)) {
+            new ArrayList<>();
+        }
 
+        List<String> tokens = new ArrayList<>();
+        for (Author author : f) {
+            tokens.add(author.getValue());
+        }
+        if (includeFFMarkup)
+            return FFLineWrapper.buildLine(
+                    tokens, COMA, SPACE, SEMICOLON, linePrefix, LINE_LENGTH, includeFFMarkup);
+        else {
+            return FFLineWrapper.buildLine(
+                    tokens, COMA, SPACE, SEMICOLON, "", LINE_LENGTH, includeFFMarkup);
+        }
+    }
 }

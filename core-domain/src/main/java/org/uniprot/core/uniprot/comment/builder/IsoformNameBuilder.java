@@ -14,7 +14,8 @@ import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
  *
  * @author Edd
  */
-public class IsoformNameBuilder extends AbstractEvidencedValueBuilder<IsoformNameBuilder, IsoformName> {
+public class IsoformNameBuilder
+        extends AbstractEvidencedValueBuilder<IsoformNameBuilder, IsoformName> {
     private IsoformNameBuilder() {}
 
     public IsoformNameBuilder(String value, List<Evidence> evidences) {

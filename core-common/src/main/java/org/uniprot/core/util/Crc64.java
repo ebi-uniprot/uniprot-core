@@ -6,9 +6,7 @@ public class Crc64 {
 
     private static long[] crc64Array = new long[256];
 
-    /**
-     * Initialization of _crc64Array.
-     */
+    /** Initialization of _crc64Array. */
     static {
         for (int i = 0; i <= 255; ++i) {
             long k = i;
@@ -31,8 +29,7 @@ public class Crc64 {
     /**
      * Returns the crc64 checksum for the given sequence.
      *
-     * @param sequence
-     *            sequence
+     * @param sequence sequence
      * @return the crc64 checksum for the sequence
      */
     public static long getCrc64Long(String sequence) {
@@ -83,9 +80,7 @@ public class Crc64 {
 
         StringBuilder crc64 = new StringBuilder("0000000000000000");
 
-        crc64.replace(crc64.length() - crc64String.length(),
-                crc64.length(),
-                crc64String);
+        crc64.replace(crc64.length() - crc64String.length(), crc64.length(), crc64String);
 
         return crc64.toString();
     }

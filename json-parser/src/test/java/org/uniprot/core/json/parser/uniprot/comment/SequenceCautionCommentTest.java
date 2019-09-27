@@ -1,6 +1,10 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
@@ -8,14 +12,9 @@ import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
 import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
 
-import java.util.Collections;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class SequenceCautionCommentTest {
 
     @Test
@@ -26,8 +25,7 @@ public class SequenceCautionCommentTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("SEQUENCE CAUTION",jsonNode.get("commentType").asText());
-
+        assertEquals("SEQUENCE CAUTION", jsonNode.get("commentType").asText());
     }
 
     @Test
@@ -41,28 +39,28 @@ public class SequenceCautionCommentTest {
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
 
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("SEQUENCE CAUTION",jsonNode.get("commentType").asText());
+        assertEquals("SEQUENCE CAUTION", jsonNode.get("commentType").asText());
 
         assertNotNull(jsonNode.get("sequenceCautionType"));
-        assertEquals("Erroneous initiation",jsonNode.get("sequenceCautionType").asText());
+        assertEquals("Erroneous initiation", jsonNode.get("sequenceCautionType").asText());
 
         assertNotNull(jsonNode.get("sequence"));
-        assertEquals("sequence",jsonNode.get("sequence").asText());
+        assertEquals("sequence", jsonNode.get("sequence").asText());
 
         assertNotNull(jsonNode.get("positions"));
-        assertEquals(1,jsonNode.get("positions").size());
-        assertEquals("position",jsonNode.get("positions").get(0).asText());
+        assertEquals(1, jsonNode.get("positions").size());
+        assertEquals("position", jsonNode.get("positions").get(0).asText());
 
         assertNotNull(jsonNode.get("note"));
-        assertEquals("Text note",jsonNode.get("note").asText());
+        assertEquals("Text note", jsonNode.get("note").asText());
 
         assertNotNull(jsonNode.get("evidences"));
-        assertEquals(1,jsonNode.get("evidences").size());
-        ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000256","PIRNR","PIRNR001361");
+        assertEquals(1, jsonNode.get("evidences").size());
+        ValidateJson.validateEvidence(
+                jsonNode.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
     }
 
-
-    public static SequenceCautionComment getSequenceCautionComment(){
+    public static SequenceCautionComment getSequenceCautionComment() {
         return new SequenceCautionCommentBuilder()
                 .sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                 .sequence("sequence")
@@ -71,5 +69,4 @@ public class SequenceCautionCommentTest {
                 .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                 .build();
     }
-
 }

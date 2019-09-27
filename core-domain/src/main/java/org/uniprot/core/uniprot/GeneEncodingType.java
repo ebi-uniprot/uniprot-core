@@ -8,7 +8,6 @@ import org.uniprot.core.util.EnumDisplay;
  * @time 18:40:27
  */
 public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
-
     UNKOWN("unknown"),
     HYDROGENOSOME("Hydrogenosome"),
     MITOCHONDRION("Mitochondrion"),
@@ -33,7 +32,8 @@ public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
                 return geneEncodingType;
             }
         }
-        throw new IllegalArgumentException("the gene Encoding Type with the description " + name + " doesn't exist");
+        throw new IllegalArgumentException(
+                "the gene Encoding Type with the description " + name + " doesn't exist");
     }
 
     public String getName() {

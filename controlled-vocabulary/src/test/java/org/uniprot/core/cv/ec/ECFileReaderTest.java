@@ -1,14 +1,5 @@
 package org.uniprot.core.cv.ec;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.ec.EC;
-import org.uniprot.core.cv.ec.ECFileReader;
-import org.uniprot.core.cv.ec.impl.ECImpl;
-
-import java.util.Arrays;
-import java.util.List;
-
 import static java.util.Collections.emptyList;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,6 +8,13 @@ import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.cv.ec.impl.ECImpl;
+
 /**
  * Created 18/03/19
  *
@@ -24,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ECFileReaderTest {
     private static final String FTP_LOCATION = "ftp://ftp.expasy.org/databases/enzyme/";
+
     @Disabled
     @Test
     void canCreateECFileReaderFromFTP() {
@@ -41,8 +40,9 @@ class ECFileReaderTest {
 
     @Test
     void throwExceptionWhenCallingParseDirectly() {
-        assertThrows(UnsupportedOperationException.class,
-                     () -> new ECFileReader().parseLines(emptyList()));
+        assertThrows(
+                UnsupportedOperationException.class,
+                () -> new ECFileReader().parseLines(emptyList()));
     }
 
     @Test
@@ -71,16 +71,27 @@ class ECFileReaderTest {
     @Test
     void parseECClassFileCorrectly() {
         final List<String> input =
-                Arrays.asList("1. 1. 2.-    With a cytochrome as acceptor.",
-                              "1. 1. 3.-    With oxygen as acceptor.");
+                Arrays.asList(
+                        "1. 1. 2.-    With a cytochrome as acceptor.",
+                        "1. 1. 3.-    With oxygen as acceptor.");
 
         List<EC> retList = new ECFileReader.ECClassFileReader().parseLines(input);
-        assertAll("EC dat file parsing result",
-                  () -> assertNotNull(retList),
-                  () -> assertThat(retList, hasSize(2)),
-                  () -> assertThat(retList, containsInAnyOrder(
-                          new ECImpl.Builder().id("1.1.3.-").label("With oxygen as acceptor").build(),
-                          new ECImpl.Builder().id("1.1.2.-").label("With a cytochrome as acceptor").build())));
+        assertAll(
+                "EC dat file parsing result",
+                () -> assertNotNull(retList),
+                () -> assertThat(retList, hasSize(2)),
+                () ->
+                        assertThat(
+                                retList,
+                                containsInAnyOrder(
+                                        new ECImpl.Builder()
+                                                .id("1.1.3.-")
+                                                .label("With oxygen as acceptor")
+                                                .build(),
+                                        new ECImpl.Builder()
+                                                .id("1.1.2.-")
+                                                .label("With a cytochrome as acceptor")
+                                                .build())));
     }
 
     @Test
@@ -140,15 +151,24 @@ class ECFileReaderTest {
                         "PR   PROSITE; PDOC00061;",
                         "DR   Q6AZW2, A1A1A_DANRE;  Q568L5, A1A1B_DANRE;  Q24857, ADH3_ENTHI ;",
                         "DR   P27800, ALDX_SPOSA ;  P75691, YAHK_ECOLI ;",
-                        "//"
-                );
+                        "//");
 
         List<EC> retList = new ECFileReader.ECDatFileReader().parseLines(input);
-        assertAll("EC dat file parsing result",
-                  () -> assertNotNull(retList),
-                  () -> assertThat(retList, hasSize(2)),
-                  () -> assertThat(retList, containsInAnyOrder(
-                          new ECImpl.Builder().id("1.1.1.1").label("Alcohol dehydrogenase").build(),
-                          new ECImpl.Builder().id("1.1.1.2").label("Alcohol dehydrogenase (NADP(+))").build())));
+        assertAll(
+                "EC dat file parsing result",
+                () -> assertNotNull(retList),
+                () -> assertThat(retList, hasSize(2)),
+                () ->
+                        assertThat(
+                                retList,
+                                containsInAnyOrder(
+                                        new ECImpl.Builder()
+                                                .id("1.1.1.1")
+                                                .label("Alcohol dehydrogenase")
+                                                .build(),
+                                        new ECImpl.Builder()
+                                                .id("1.1.1.2")
+                                                .label("Alcohol dehydrogenase (NADP(+))")
+                                                .build())));
     }
 }

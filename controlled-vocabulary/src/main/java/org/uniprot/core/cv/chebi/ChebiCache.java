@@ -1,11 +1,11 @@
 package org.uniprot.core.cv.chebi;
 
-import org.uniprot.core.cv.common.AbstractFileReader;
-import org.uniprot.core.cv.common.BaseCache;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.uniprot.core.cv.common.AbstractFileReader;
+import org.uniprot.core.cv.common.BaseCache;
 
 /**
  * Created 05/06/19
@@ -15,7 +15,8 @@ import java.util.Map;
 public enum ChebiCache implements BaseCache<Chebi> {
     INSTANCE;
 
-    private static final String FTP_LOCATION = "ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.obo";
+    private static final String FTP_LOCATION =
+            "ftp://ftp.ebi.ac.uk/pub/databases/chebi/ontology/chebi.obo";
     private Map<String, List<Chebi>> chebiMap = new HashMap<>();
     private AbstractFileReader<Chebi> reader;
     private String defaultDataLocation = FTP_LOCATION;

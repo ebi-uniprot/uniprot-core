@@ -8,7 +8,6 @@ import org.uniprot.core.uniprot.comment.FreeText;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.util.Utils;
 
-
 public class FreeTextImpl implements FreeText {
     private static final long serialVersionUID = -4309930597833279389L;
     private List<EvidencedValue> texts;

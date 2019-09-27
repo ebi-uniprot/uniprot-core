@@ -15,8 +15,7 @@ public enum APEventType implements EnumDisplay<APEventType> {
     }
 
     public static APEventType typeOf(String value) {
-        for (APEventType type : APEventType
-                .values()) {
+        for (APEventType type : APEventType.values()) {
             if (type.getName().equalsIgnoreCase(value)) {
                 return type;
             }

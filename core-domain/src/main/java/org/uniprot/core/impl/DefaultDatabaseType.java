@@ -5,9 +5,7 @@ import org.uniprot.core.DatabaseType;
 public final class DefaultDatabaseType implements DatabaseType {
     private String name;
 
-    private DefaultDatabaseType() {
-
-    }
+    private DefaultDatabaseType() {}
 
     public DefaultDatabaseType(String name) {
         this.name = name;
@@ -28,16 +26,12 @@ public final class DefaultDatabaseType implements DatabaseType {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         DefaultDatabaseType other = (DefaultDatabaseType) obj;
         if (name == null) {
             return other.name == null;
         } else return name.equals(other.name);
     }
-
 }

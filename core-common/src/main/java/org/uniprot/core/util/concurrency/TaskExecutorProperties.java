@@ -5,9 +5,11 @@ import static org.uniprot.core.util.concurrency.TaskExecutorProperties.Builder.c
 import java.util.concurrent.ExecutorService;
 
 /**
- * Records properties that can be used to configure a {@code TaskExecutor} or {@link ExecutorService}.
+ * Records properties that can be used to configure a {@code TaskExecutor} or {@link
+ * ExecutorService}.
  *
- * Created 23/01/17
+ * <p>Created 23/01/17
+ *
  * @author Edd
  */
 public class TaskExecutorProperties {
@@ -106,8 +108,7 @@ public class TaskExecutorProperties {
         private boolean waitForTasksToCompleteOnShutdown = WAIT_FOR_TASKS_TO_COMPLETE_ON_SHUTDOWN;
         private String threadNamePrefix = THREAD_NAME_PREFIX;
 
-        private Builder() {
-        }
+        private Builder() {}
 
         public static Builder createTaskExecutorPropertiesBuilder() {
             return new Builder();

@@ -1,6 +1,11 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ECNumber;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -13,17 +18,10 @@ import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class CatalyticActivityCommentTest {
-
 
     @Test
     void testCatalyticActivitySimple() {
@@ -33,75 +31,80 @@ public class CatalyticActivityCommentTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("CATALYTIC ACTIVITY",jsonNode.get("commentType").asText());
+        assertEquals("CATALYTIC ACTIVITY", jsonNode.get("commentType").asText());
     }
-
 
     @Test
     void testCatalyticActivityComplete() {
         CatalyticActivityComment comment = getCatalyticActivityComment();
-
 
         ValidateJson.verifyJsonRoundTripParser(comment);
         ValidateJson.verifyEmptyFields(comment);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("CATALYTIC ACTIVITY",jsonNode.get("commentType").asText());
+        assertEquals("CATALYTIC ACTIVITY", jsonNode.get("commentType").asText());
 
         assertNotNull(jsonNode.get("reaction"));
         JsonNode reaction = jsonNode.get("reaction");
         assertNotNull(reaction.get("name"));
-        assertEquals("some reaction",reaction.get("name").asText());
+        assertEquals("some reaction", reaction.get("name").asText());
         assertNotNull(reaction.get("reactionReferences"));
-        assertEquals(1,reaction.get("reactionReferences").size());
+        assertEquals(1, reaction.get("reactionReferences").size());
         JsonNode reactionReferences = reaction.get("reactionReferences").get(0);
         assertNotNull(reactionReferences.get("databaseType"));
-        assertEquals("ChEBI",reactionReferences.get("databaseType").asText());
+        assertEquals("ChEBI", reactionReferences.get("databaseType").asText());
         assertNotNull(reactionReferences.get("id"));
-        assertEquals("ChEBI:3243",reactionReferences.get("id").asText());
+        assertEquals("ChEBI:3243", reactionReferences.get("id").asText());
         assertNotNull(reaction.get("ecNumber"));
-        assertEquals("1.2.4.5",reaction.get("ecNumber").asText());
+        assertEquals("1.2.4.5", reaction.get("ecNumber").asText());
         assertNotNull(reaction.get("evidences"));
-        assertEquals(1,reaction.get("evidences").size());
-        ValidateJson.validateEvidence(reaction.get("evidences").get(0),"ECO:0000256","PIRNR","PIRNR001361");
+        assertEquals(1, reaction.get("evidences").size());
+        ValidateJson.validateEvidence(
+                reaction.get("evidences").get(0), "ECO:0000256", "PIRNR", "PIRNR001361");
 
         assertNotNull(jsonNode.get("physiologicalReactions"));
-        assertEquals(1,jsonNode.get("physiologicalReactions").size());
+        assertEquals(1, jsonNode.get("physiologicalReactions").size());
         JsonNode physiologicalReactions = jsonNode.get("physiologicalReactions").get(0);
         assertNotNull(physiologicalReactions.get("directionType"));
-        assertEquals("right-to-left",physiologicalReactions.get("directionType").asText());
+        assertEquals("right-to-left", physiologicalReactions.get("directionType").asText());
         assertNotNull(physiologicalReactions.get("reactionReference"));
         reactionReferences = physiologicalReactions.get("reactionReference");
         assertNotNull(reactionReferences.get("databaseType"));
-        assertEquals("Rhea",reactionReferences.get("databaseType").asText());
+        assertEquals("Rhea", reactionReferences.get("databaseType").asText());
         assertNotNull(reactionReferences.get("id"));
-        assertEquals("RHEA:313",reactionReferences.get("id").asText());
+        assertEquals("RHEA:313", reactionReferences.get("id").asText());
         assertNotNull(physiologicalReactions.get("evidences"));
-        assertEquals(1,physiologicalReactions.get("evidences").size());
-        ValidateJson.validateEvidence(physiologicalReactions.get("evidences").get(0),"ECO:0000313","Ensembl","ENSP0001324");
+        assertEquals(1, physiologicalReactions.get("evidences").size());
+        ValidateJson.validateEvidence(
+                physiologicalReactions.get("evidences").get(0),
+                "ECO:0000313",
+                "Ensembl",
+                "ENSP0001324");
     }
 
     public static CatalyticActivityComment getCatalyticActivityComment() {
         return new CatalyticActivityCommentBuilder()
-                    .physiologicalReactions(createPhyReactions())
-                    .reaction(createReaction())
-                    .build();
+                .physiologicalReactions(createPhyReactions())
+                .reaction(createReaction())
+                .build();
     }
 
-
     private static List<PhysiologicalReaction> createPhyReactions() {
-        List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000313|Ensembl:ENSP0001324");
+        List<Evidence> evidences =
+                CreateUtils.createEvidenceList("ECO:0000313|Ensembl:ENSP0001324");
 
         List<PhysiologicalReaction> phyReactions = new ArrayList<>();
-        phyReactions.add(new PhysiologicalReactionBuilder()
-                .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
-                .reactionReference(new DBCrossReferenceBuilder<ReactionReferenceType>()
-                        .databaseType(ReactionReferenceType.RHEA)
-                        .id("RHEA:313")
-                        .build())
-                .evidences(evidences)
-                .build());
+        phyReactions.add(
+                new PhysiologicalReactionBuilder()
+                        .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
+                        .reactionReference(
+                                new DBCrossReferenceBuilder<ReactionReferenceType>()
+                                        .databaseType(ReactionReferenceType.RHEA)
+                                        .id("RHEA:313")
+                                        .build())
+                        .evidences(evidences)
+                        .build());
         return phyReactions;
     }
 
@@ -111,10 +114,11 @@ public class CatalyticActivityCommentTest {
         ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
         return new ReactionBuilder()
                 .name(name)
-                .addReactionReference(new DBCrossReferenceBuilder<ReactionReferenceType>()
-                        .databaseType(ReactionReferenceType.CHEBI)
-                        .id("ChEBI:3243")
-                        .build())
+                .addReactionReference(
+                        new DBCrossReferenceBuilder<ReactionReferenceType>()
+                                .databaseType(ReactionReferenceType.CHEBI)
+                                .id("ChEBI:3243")
+                                .build())
                 .ecNumber(ecNumber)
                 .evidences(evidences)
                 .build();

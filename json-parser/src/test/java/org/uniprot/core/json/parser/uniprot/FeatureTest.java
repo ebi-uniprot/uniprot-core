@@ -1,6 +1,10 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.PositionModifier;
@@ -15,74 +19,54 @@ import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
-import java.util.List;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class FeatureTest {
 
     @Test
     void testFeatureSimple() {
-        Feature feature = new FeatureBuilder()
-                .type(FeatureType.CHAIN)
-                .build();
+        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(feature);
         assertNotNull(jsonNode.get("type"));
-        assertEquals(FeatureType.CHAIN.getDisplayName(),jsonNode.get("type").asText());
+        assertEquals(FeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
     }
 
     @Test
     void testFeatureExact() {
-    	  Range location = Range.create(2,8);
-        Feature feature = new FeatureBuilder()
-                .type(FeatureType.CHAIN)
-                .location(location)
-                .build();
+        Range location = Range.create(2, 8);
+        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
 
     @Test
     void testFeatureOut() {
-    	  Range location =new Range(2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE) ;
-        Feature feature = new FeatureBuilder()
-                .type(FeatureType.CHAIN)
-                .location(location)
-                .build();
+        Range location = new Range(2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
+        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
-    
+
     @Test
     void testFeatureUnsure() {
-    	  Range location =new Range(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE) ;
-        Feature feature = new FeatureBuilder()
-                .type(FeatureType.CHAIN)
-                .location(location)
-                .build();
+        Range location = new Range(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE);
+        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
-    
+
     @Test
     void testFeatureUnknow() {
-    	  Range location =new Range(-1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN) ;
-        Feature feature = new FeatureBuilder()
-                .type(FeatureType.CHAIN)
-                .location(location)
-                .build();
+        Range location = new Range(-1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
+        Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
     }
-    
+
     @Test
     void testFeatureComplete() {
         Feature feature = getFeature();
@@ -92,62 +76,67 @@ public class FeatureTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(feature);
         assertNotNull(jsonNode.get("type"));
-        assertEquals(FeatureType.CHAIN.getDisplayName(),jsonNode.get("type").asText());
+        assertEquals(FeatureType.CHAIN.getDisplayName(), jsonNode.get("type").asText());
 
         assertNotNull(jsonNode.get("location"));
 
         assertNotNull(jsonNode.get("location").get("start"));
         JsonNode start = jsonNode.get("location").get("start");
         assertNotNull(start.get("value"));
-        assertEquals(2,start.get("value").asInt());
+        assertEquals(2, start.get("value").asInt());
         assertNotNull(start.get("modifier"));
-        assertEquals("EXACT",start.get("modifier").asText());
+        assertEquals("EXACT", start.get("modifier").asText());
 
         assertNotNull(jsonNode.get("location").get("end"));
         JsonNode end = jsonNode.get("location").get("end");
         assertNotNull(end.get("value"));
-        assertEquals(8,end.get("value").asInt());
+        assertEquals(8, end.get("value").asInt());
         assertNotNull(end.get("modifier"));
-        assertEquals("EXACT",end.get("modifier").asText());
+        assertEquals("EXACT", end.get("modifier").asText());
 
         assertNotNull(jsonNode.get("description"));
-        assertEquals("description value",jsonNode.get("description").asText());
+        assertEquals("description value", jsonNode.get("description").asText());
 
         assertNotNull(jsonNode.get("featureId"));
-        assertEquals("id value",jsonNode.get("featureId").asText());
+        assertEquals("id value", jsonNode.get("featureId").asText());
 
         assertNotNull(jsonNode.get("alternativeSequence"));
         JsonNode alternativeSequence = jsonNode.get("alternativeSequence");
         assertNotNull(alternativeSequence.get("originalSequence"));
-        assertEquals("original value",alternativeSequence.get("originalSequence").asText());
+        assertEquals("original value", alternativeSequence.get("originalSequence").asText());
         assertNotNull(alternativeSequence.get("alternativeSequences"));
-        assertEquals(1,alternativeSequence.get("alternativeSequences").size());
-        assertEquals("alternative value",alternativeSequence.get("alternativeSequences").get(0).asText());
+        assertEquals(1, alternativeSequence.get("alternativeSequences").size());
+        assertEquals(
+                "alternative value",
+                alternativeSequence.get("alternativeSequences").get(0).asText());
 
         assertNotNull(jsonNode.get("dbXref"));
         JsonNode dbXref = jsonNode.get("dbXref");
         assertNotNull(dbXref.get("databaseType"));
-        assertEquals("dbSNP",dbXref.get("databaseType").asText());
+        assertEquals("dbSNP", dbXref.get("databaseType").asText());
         assertNotNull(dbXref.get("id"));
-        assertEquals("db id",dbXref.get("id").asText());
+        assertEquals("db id", dbXref.get("id").asText());
 
         assertNotNull(jsonNode.get("evidences"));
-        assertEquals(1,jsonNode.get("evidences").size());
-        ValidateJson.validateEvidence(jsonNode.get("evidences").get(0),"ECO:0000269","PubMed","11389730");
+        assertEquals(1, jsonNode.get("evidences").size());
+        ValidateJson.validateEvidence(
+                jsonNode.get("evidences").get(0), "ECO:0000269", "PubMed", "11389730");
     }
 
-    public static Feature getFeature(){
-        AlternativeSequence alternativeSequence = new AlternativeSequenceBuilder()
-                .original("original value")
-                .alternative("alternative value")
-                .build();
+    public static Feature getFeature() {
+        AlternativeSequence alternativeSequence =
+                new AlternativeSequenceBuilder()
+                        .original("original value")
+                        .alternative("alternative value")
+                        .build();
 
-        DBCrossReference<FeatureXDbType> xrefs = new DBCrossReferenceBuilder<FeatureXDbType>()
-                .databaseType(FeatureXDbType.DBSNP)
-                .id("db id")
-                .build();
+        DBCrossReference<FeatureXDbType> xrefs =
+                new DBCrossReferenceBuilder<FeatureXDbType>()
+                        .databaseType(FeatureXDbType.DBSNP)
+                        .id("db id")
+                        .build();
 
-        Range location = Range.create(2,8);
+        Range location = Range.create(2, 8);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         return new FeatureBuilder()
                 .type(FeatureType.CHAIN)

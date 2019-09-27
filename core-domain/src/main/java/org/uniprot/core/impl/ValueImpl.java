@@ -7,9 +7,7 @@ public class ValueImpl implements Value {
     private static final long serialVersionUID = 1046531902098372084L;
     private String value;
 
-    private ValueImpl() {
-
-    }
+    private ValueImpl() {}
 
     public ValueImpl(String value) {
         this.value = value;
@@ -40,12 +38,9 @@ public class ValueImpl implements Value {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         ValueImpl other = (ValueImpl) obj;
         if (value == null) {
             return other.value == null;

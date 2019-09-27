@@ -1,41 +1,41 @@
 package org.uniprot.core.taxonomy.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Collections;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
-import org.uniprot.core.taxonomy.builder.TaxonomyStrainBuilder;
-
-import java.util.Collections;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TaxonomyStrainBuilderTest {
 
     @Test
-    void testSimpleTaxonomyStrain(){
+    void testSimpleTaxonomyStrain() {
         TaxonomyStrain taxonomyStrain = new TaxonomyStrainBuilder().name("name").build();
 
         assertTrue(taxonomyStrain.hasName());
-        assertEquals(taxonomyStrain.getName(),"name");
+        assertEquals(taxonomyStrain.getName(), "name");
 
         assertFalse(taxonomyStrain.hasSynonyms());
     }
 
     @Test
-    void testCompleteTaxonomyStrain(){
+    void testCompleteTaxonomyStrain() {
         TaxonomyStrain taxonomyStrain = getCompleteTaxonomyStrain();
         validateTaxonomyStrain(taxonomyStrain);
     }
 
     @Test
-    void testAddMethodsTaxonomyStrain(){
-        TaxonomyStrain taxonomyStrain = new TaxonomyStrainBuilder().addSynonym("synonym").name("name").build();
+    void testAddMethodsTaxonomyStrain() {
+        TaxonomyStrain taxonomyStrain =
+                new TaxonomyStrainBuilder().addSynonym("synonym").name("name").build();
         validateTaxonomyStrain(taxonomyStrain);
     }
 
     @Test
-    void testFromTaxonomyStrain(){
+    void testFromTaxonomyStrain() {
         TaxonomyStrain taxonomyStrain = getCompleteTaxonomyStrain();
 
         TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder().from(taxonomyStrain);
@@ -47,20 +47,18 @@ class TaxonomyStrainBuilderTest {
         assertTrue(equals);
     }
 
-    static TaxonomyStrain getCompleteTaxonomyStrain(){
+    static TaxonomyStrain getCompleteTaxonomyStrain() {
         TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder();
         builder.synonyms(Collections.singletonList("synonym"));
         builder.name("name");
         return builder.build();
     }
 
-
     private void validateTaxonomyStrain(TaxonomyStrain taxonomyStrain) {
         assertTrue(taxonomyStrain.hasName());
-        assertEquals(taxonomyStrain.getName(),"name");
+        assertEquals(taxonomyStrain.getName(), "name");
 
         assertTrue(taxonomyStrain.hasSynonyms());
         MatcherAssert.assertThat(taxonomyStrain.getSynonyms(), Matchers.contains("synonym"));
     }
-
 }

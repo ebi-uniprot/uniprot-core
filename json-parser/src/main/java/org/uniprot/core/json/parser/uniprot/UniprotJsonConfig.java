@@ -1,9 +1,5 @@
 package org.uniprot.core.json.parser.uniprot;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.jsontype.NamedType;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-
 import java.time.LocalDate;
 
 import org.uniprot.core.*;
@@ -56,9 +52,11 @@ import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
-/**
- * @author lgonzales
- */
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.NamedType;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+
+/** @author lgonzales */
 public class UniprotJsonConfig extends JsonConfig {
 
     private static UniprotJsonConfig INSTANCE;
@@ -123,7 +121,8 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(EvidencedValue.class, EvidencedValueImpl.class);
         mod.addAbstractTypeMapping(Evidence.class, EvidenceImpl.class);
 
-        mod.addAbstractTypeMapping(AlternativeProductsComment.class, AlternativeProductsCommentImpl.class);
+        mod.addAbstractTypeMapping(
+                AlternativeProductsComment.class, AlternativeProductsCommentImpl.class);
         mod.addAbstractTypeMapping(APIsoform.class, APIsoformImpl.class);
         mod.addAbstractTypeMapping(IsoformName.class, APIsoformImpl.IsoformNameImpl.class);
         mod.addAbstractTypeMapping(IsoformId.class, APIsoformImpl.IsoformIdImpl.class);
@@ -131,24 +130,30 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(PhysiologicalReaction.class, PhysiologicalReactionImpl.class);
         mod.addAbstractTypeMapping(Absorption.class, AbsorptionImpl.class);
         mod.addAbstractTypeMapping(SequenceCautionComment.class, SequenceCautionCommentImpl.class);
-        mod.addAbstractTypeMapping(MassSpectrometryComment.class, MassSpectrometryCommentImpl.class);
+        mod.addAbstractTypeMapping(
+                MassSpectrometryComment.class, MassSpectrometryCommentImpl.class);
         mod.addAbstractTypeMapping(RedoxPotential.class, BPCPCommentImpl.RedoxPotentialImpl.class);
-        mod.addAbstractTypeMapping(RnaEdPosition.class, RnaEditingCommentImpl.RnaEdPositionImpl.class);
+        mod.addAbstractTypeMapping(
+                RnaEdPosition.class, RnaEditingCommentImpl.RnaEdPositionImpl.class);
         mod.addAbstractTypeMapping(RnaEditingComment.class, RnaEditingCommentImpl.class);
         mod.addAbstractTypeMapping(MichaelisConstant.class, MichaelisConstantImpl.class);
         mod.addAbstractTypeMapping(MassSpectrometryRange.class, MassSpectrometryRangeImpl.class);
         mod.addAbstractTypeMapping(KineticParameters.class, KineticParametersImpl.class);
         mod.addAbstractTypeMapping(SubcellularLocation.class, SubcellularLocationImpl.class);
-        mod.addAbstractTypeMapping(TemperatureDependence.class, BPCPCommentImpl.TemperatureDependenceImpl.class);
+        mod.addAbstractTypeMapping(
+                TemperatureDependence.class, BPCPCommentImpl.TemperatureDependenceImpl.class);
         mod.addAbstractTypeMapping(Interactor.class, InteractionImpl.InteractorImpl.class);
         mod.addAbstractTypeMapping(DiseaseComment.class, DiseaseCommentImpl.class);
         mod.addAbstractTypeMapping(Cofactor.class, CofactorImpl.class);
-        mod.addAbstractTypeMapping(SubcellularLocationValue.class, SubcellularLocationImpl.SubcellularLocationValueImpl.class);
+        mod.addAbstractTypeMapping(
+                SubcellularLocationValue.class,
+                SubcellularLocationImpl.SubcellularLocationValueImpl.class);
         mod.addAbstractTypeMapping(Disease.class, DiseaseImpl.class);
         mod.addAbstractTypeMapping(InteractionComment.class, InteractionCommentImpl.class);
         mod.addAbstractTypeMapping(MaximumVelocity.class, MaximumVelocityImpl.class);
         mod.addAbstractTypeMapping(BPCPComment.class, BPCPCommentImpl.class);
-        mod.addAbstractTypeMapping(CatalyticActivityComment.class, CatalyticActivityCommentImpl.class);
+        mod.addAbstractTypeMapping(
+                CatalyticActivityComment.class, CatalyticActivityCommentImpl.class);
         mod.addAbstractTypeMapping(CofactorComment.class, CofactorCommentImpl.class);
         mod.addAbstractTypeMapping(Reaction.class, ReactionImpl.class);
         mod.addAbstractTypeMapping(FreeTextComment.class, FreeTextCommentImpl.class);
@@ -156,7 +161,8 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(WebResourceComment.class, WebResourceCommentImpl.class);
         mod.addAbstractTypeMapping(Note.class, NoteImpl.class);
         mod.addAbstractTypeMapping(PhDependence.class, BPCPCommentImpl.PhDependenceImpl.class);
-        mod.addAbstractTypeMapping(SubcellularLocationComment.class, SubcellularLocationCommentImpl.class);
+        mod.addAbstractTypeMapping(
+                SubcellularLocationComment.class, SubcellularLocationCommentImpl.class);
 
         mod.addAbstractTypeMapping(ReferenceComment.class, ReferenceCommentImpl.class);
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
@@ -183,7 +189,8 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
 
         mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
-        mod.addAbstractTypeMapping(UniProtDBCrossReference.class, UniProtDBCrossReferenceImpl.class);
+        mod.addAbstractTypeMapping(
+                UniProtDBCrossReference.class, UniProtDBCrossReferenceImpl.class);
 
         mod.addAbstractTypeMapping(AlternativeSequence.class, AlternativeSequenceImpl.class);
 
@@ -195,7 +202,8 @@ public class UniprotJsonConfig extends JsonConfig {
 
         mod.registerSubtypes(new NamedType(AlternativeProductsCommentImpl.class, "AP"));
         mod.registerSubtypes(new NamedType(BPCPCommentImpl.class, "BPCP"));
-        mod.registerSubtypes(new NamedType(CatalyticActivityCommentImpl.class, "CatalyticActivity"));
+        mod.registerSubtypes(
+                new NamedType(CatalyticActivityCommentImpl.class, "CatalyticActivity"));
         mod.registerSubtypes(new NamedType(CofactorCommentImpl.class, "Cofactor"));
         mod.registerSubtypes(new NamedType(DiseaseCommentImpl.class, "Disease"));
         mod.registerSubtypes(new NamedType(FreeTextCommentImpl.class, "FreeText"));
@@ -203,7 +211,8 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.registerSubtypes(new NamedType(MassSpectrometryCommentImpl.class, "MassSpectrometry"));
         mod.registerSubtypes(new NamedType(RnaEditingCommentImpl.class, "RnaEditing"));
         mod.registerSubtypes(new NamedType(SequenceCautionCommentImpl.class, "SequenceCaution"));
-        mod.registerSubtypes(new NamedType(SubcellularLocationCommentImpl.class, "SubcellularLocation"));
+        mod.registerSubtypes(
+                new NamedType(SubcellularLocationCommentImpl.class, "SubcellularLocation"));
         mod.registerSubtypes(new NamedType(WebResourceCommentImpl.class, "WebResource"));
 
         mod.registerSubtypes(new NamedType(BookImpl.class, "Book"));
@@ -213,7 +222,6 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
         mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
         mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
-
 
         objMapper.registerModule(mod);
 
@@ -243,5 +251,4 @@ public class UniprotJsonConfig extends JsonConfig {
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }
-
 }

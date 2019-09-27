@@ -12,13 +12,14 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 14:32:51 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 14:32:51 To change this template
+ * use File | Settings | File Templates.
  */
 public class AlternativeProductsCommentScored extends CommentScoredAbstr {
     private final AlternativeProductsComment comment;
 
-    public AlternativeProductsCommentScored(AlternativeProductsComment copy, List<EvidenceType> evidenceTypes) {
+    public AlternativeProductsCommentScored(
+            AlternativeProductsComment copy, List<EvidenceType> evidenceTypes) {
         super(copy.getCommentType(), evidenceTypes);
         this.comment = copy;
     }
@@ -30,9 +31,12 @@ public class AlternativeProductsCommentScored extends CommentScoredAbstr {
     @Override
     public double score() {
         double score = 0;
-        score += comment.getIsoforms().stream()
-                .filter(this::hasEvidence)
-                .collect(Collectors.toList()).size() * 3;
+        score +=
+                comment.getIsoforms().stream()
+                                .filter(this::hasEvidence)
+                                .collect(Collectors.toList())
+                                .size()
+                        * 3;
         return score;
     }
 

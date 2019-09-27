@@ -9,14 +9,15 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public class RnLineConverter extends EvidenceCollector implements Converter<RnLineObject, List<Evidence>> {
+public class RnLineConverter extends EvidenceCollector
+        implements Converter<RnLineObject, List<Evidence>> {
     @Override
     public List<Evidence> convert(RnLineObject f) {
-        Map<Object, List<Evidence>> evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
+        Map<Object, List<Evidence>> evidences =
+                EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidences.values());
         List<Evidence> evIds = evidences.get(f.number);
-        if (evIds == null)
-            evIds = new ArrayList<>();
+        if (evIds == null) evIds = new ArrayList<>();
         return evIds;
     }
 }

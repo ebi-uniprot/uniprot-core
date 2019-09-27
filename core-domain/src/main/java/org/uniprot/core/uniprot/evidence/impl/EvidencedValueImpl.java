@@ -52,18 +52,13 @@ public class EvidencedValueImpl implements EvidencedValue {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         EvidencedValueImpl other = (EvidencedValueImpl) obj;
         if (evidences == null) {
-            if (other.evidences != null)
-                return false;
-        } else if (!evidences.equals(other.evidences))
-            return false;
+            if (other.evidences != null) return false;
+        } else if (!evidences.equals(other.evidences)) return false;
         if (value == null) {
             return other.value == null;
         } else return value.equals(other.value);
@@ -80,8 +75,10 @@ public class EvidencedValueImpl implements EvidencedValue {
         sb.append(value);
         if (!evidences.isEmpty()) {
             sb.append(separator)
-                    .append(evidences.stream().map(Evidence::getValue).collect(Collectors.joining(", ", "{", "}")));
-
+                    .append(
+                            evidences.stream()
+                                    .map(Evidence::getValue)
+                                    .collect(Collectors.joining(", ", "{", "}")));
         }
         return sb.toString();
     }

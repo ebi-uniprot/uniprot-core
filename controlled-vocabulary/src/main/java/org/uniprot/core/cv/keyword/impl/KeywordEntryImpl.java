@@ -1,11 +1,11 @@
 package org.uniprot.core.cv.keyword.impl;
 
+import java.util.*;
+
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordStatistics;
-
-import java.util.*;
 
 public class KeywordEntryImpl implements KeywordEntry {
 
@@ -19,15 +19,21 @@ public class KeywordEntryImpl implements KeywordEntry {
     private List<KeywordEntry> children;
     private KeywordStatistics statistics;
 
-
     public KeywordEntryImpl() {
         children = new ArrayList<>();
         parents = new HashSet<>();
     }
 
-    public KeywordEntryImpl(Keyword keyword, String definition, List<String> synonyms,
-                            List<GeneOntology> geneOntologies, Set<KeywordEntry> parents, List<String> sites,
-                            Keyword category, List<KeywordEntry> children, KeywordStatistics statistics) {
+    public KeywordEntryImpl(
+            Keyword keyword,
+            String definition,
+            List<String> synonyms,
+            List<GeneOntology> geneOntologies,
+            Set<KeywordEntry> parents,
+            List<String> sites,
+            Keyword category,
+            List<KeywordEntry> children,
+            KeywordStatistics statistics) {
         this.keyword = keyword;
         this.definition = definition;
         this.synonyms = synonyms;
@@ -43,11 +49,9 @@ public class KeywordEntryImpl implements KeywordEntry {
         this.definition = definition;
     }
 
-
     public void setSynonyms(List<String> synonyms) {
         this.synonyms = synonyms;
     }
-
 
     public void setGeneOntologies(List<GeneOntology> geneOntologies) {
         this.geneOntologies = geneOntologies;
@@ -62,7 +66,6 @@ public class KeywordEntryImpl implements KeywordEntry {
         return parents;
     }
 
-
     public void setParents(Set<KeywordEntry> parents) {
         this.parents = parents;
     }
@@ -75,7 +78,6 @@ public class KeywordEntryImpl implements KeywordEntry {
     public Keyword getCategory() {
         return category;
     }
-
 
     public void setCategory(Keyword category) {
         this.category = category;
@@ -133,20 +135,27 @@ public class KeywordEntryImpl implements KeywordEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KeywordEntryImpl that = (KeywordEntryImpl) o;
-        return Objects.equals(getKeyword(), that.getKeyword()) &&
-                Objects.equals(getDefinition(), that.getDefinition()) &&
-                Objects.equals(getSynonyms(), that.getSynonyms()) &&
-                Objects.equals(getGeneOntologies(), that.getGeneOntologies()) &&
-                Objects.equals(getParents(), that.getParents()) &&
-                Objects.equals(getSites(), that.getSites()) &&
-                Objects.equals(getCategory(), that.getCategory()) &&
-                Objects.equals(getChildren(), that.getChildren()) &&
-                Objects.equals(getStatistics(), that.getStatistics());
+        return Objects.equals(getKeyword(), that.getKeyword())
+                && Objects.equals(getDefinition(), that.getDefinition())
+                && Objects.equals(getSynonyms(), that.getSynonyms())
+                && Objects.equals(getGeneOntologies(), that.getGeneOntologies())
+                && Objects.equals(getParents(), that.getParents())
+                && Objects.equals(getSites(), that.getSites())
+                && Objects.equals(getCategory(), that.getCategory())
+                && Objects.equals(getChildren(), that.getChildren())
+                && Objects.equals(getStatistics(), that.getStatistics());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKeyword(), getDefinition(), getSynonyms(), getGeneOntologies(),
-                getSites(), getCategory(), getChildren(), getStatistics());
+        return Objects.hash(
+                getKeyword(),
+                getDefinition(),
+                getSynonyms(),
+                getGeneOntologies(),
+                getSites(),
+                getCategory(),
+                getChildren(),
+                getStatistics());
     }
 }

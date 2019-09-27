@@ -1,5 +1,9 @@
 package org.uniprot.core.flatfile.parser.converter;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -9,15 +13,11 @@ import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class RxLineConverterTest {
     @Test
     void test() {
         RxLineObject rxLine = new RxLineObject();
-        //"RX   PubMed=15626370; DOI=10.1016/j.toxicon.2004.10.011;\n";
+        // "RX   PubMed=15626370; DOI=10.1016/j.toxicon.2004.10.011;\n";
         RxLineObject.RX rx = new RxLineObject.RX();
         rx.type = RxLineObject.DB.PubMed;
         rx.value = "15626370";
@@ -30,15 +30,16 @@ class RxLineConverterTest {
         List<DBCrossReference<CitationXrefType>> cxrefs = converter.convert(rxLine);
         Citation citation = new BookBuilder().citationXrefs(cxrefs).build();
 
-        DBCrossReference<CitationXrefType> wrongXref = new DBCrossReferenceBuilder<CitationXrefType>().build();
-        DBCrossReference<CitationXrefType> pubmedXref = citation
-                .getCitationXrefsByType(CitationXrefType.PUBMED).orElse(wrongXref);
+        DBCrossReference<CitationXrefType> wrongXref =
+                new DBCrossReferenceBuilder<CitationXrefType>().build();
+        DBCrossReference<CitationXrefType> pubmedXref =
+                citation.getCitationXrefsByType(CitationXrefType.PUBMED).orElse(wrongXref);
         assertNotEquals(pubmedXref, wrongXref);
-        DBCrossReference<CitationXrefType> doiXref = citation
-                .getCitationXrefsByType(CitationXrefType.DOI).orElse(wrongXref);
+        DBCrossReference<CitationXrefType> doiXref =
+                citation.getCitationXrefsByType(CitationXrefType.DOI).orElse(wrongXref);
         assertNotEquals(doiXref, wrongXref);
-        DBCrossReference<CitationXrefType> agricolaXref = citation
-                .getCitationXrefsByType(CitationXrefType.AGRICOLA).orElse(wrongXref);
+        DBCrossReference<CitationXrefType> agricolaXref =
+                citation.getCitationXrefsByType(CitationXrefType.AGRICOLA).orElse(wrongXref);
         assertEquals(agricolaXref, wrongXref);
 
         assertEquals("15626370", pubmedXref.getId());

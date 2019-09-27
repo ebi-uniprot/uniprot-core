@@ -9,12 +9,9 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 /**
- *
  * @author jluo
  * @date: 24 May 2019
- *
-*/
-
+ */
 public class UniParcIdSerializer extends StdSerializer<UniParcIdImpl> {
 
     public UniParcIdSerializer() {
@@ -22,7 +19,9 @@ public class UniParcIdSerializer extends StdSerializer<UniParcIdImpl> {
     }
 
     @Override
-    public void serialize(UniParcIdImpl value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(
+            UniParcIdImpl value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+            throws IOException {
         jsonGenerator.writeString(value.getValue());
     }
 }

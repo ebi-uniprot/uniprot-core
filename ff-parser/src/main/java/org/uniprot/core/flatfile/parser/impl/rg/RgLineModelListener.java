@@ -1,22 +1,18 @@
 package org.uniprot.core.flatfile.parser.impl.rg;
 
 import org.antlr.v4.runtime.misc.NotNull;
-import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
-
 import org.uniprot.core.flatfile.antlr.RgLineParser;
 import org.uniprot.core.flatfile.antlr.RgLineParserBaseListener;
-
+import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 
 /**
- * Created with IntelliJ IDEA.
- * User: wudong
- * Date: 08/08/13
- * Time: 12:26
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use
+ * File | Settings | File Templates.
  */
-public class RgLineModelListener extends RgLineParserBaseListener implements ParseTreeObjectExtractor<RgLineObject> {
+public class RgLineModelListener extends RgLineParserBaseListener
+        implements ParseTreeObjectExtractor<RgLineObject> {
 
-	private RgLineObject object ;
+    private RgLineObject object;
 
     @Override
     public void enterRg_rg(@NotNull RgLineParser.Rg_rgContext ctx) {
@@ -24,12 +20,12 @@ public class RgLineModelListener extends RgLineParserBaseListener implements Par
     }
 
     @Override
-	public void exitRg_value(@NotNull RgLineParser.Rg_valueContext ctx) {
-		String text = ctx.getText();
-		object.reference_groups.add(text);
-	}
+    public void exitRg_value(@NotNull RgLineParser.Rg_valueContext ctx) {
+        String text = ctx.getText();
+        object.reference_groups.add(text);
+    }
 
-	public RgLineObject getObject() {
-		return object;
-	}
+    public RgLineObject getObject() {
+        return object;
+    }
 }

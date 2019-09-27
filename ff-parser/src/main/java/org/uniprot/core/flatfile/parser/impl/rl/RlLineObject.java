@@ -3,40 +3,35 @@ package org.uniprot.core.flatfile.parser.impl.rl;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <p/>
- * User: wudong, Date: 21/08/13, Time: 16:44
- */
+/** User: wudong, Date: 21/08/13, Time: 16:44 */
 public class RlLineObject {
 
     public Ref reference;
 
-    public static interface Ref {
-    }
+    public static interface Ref {}
 
     public static class Book implements Ref {
         public List<String> editors = new ArrayList<String>();
         public String title;
 
-
         public String page_start;
         public String page_end;
         public String volume;
 
-	    //to accomodate something like "abstract#543"
-	    public String pageString;
+        // to accomodate something like "abstract#543"
+        public String pageString;
 
-	    public String press;
-	    public String place;
+        public String press;
+        public String place;
 
-	    public int year;
+        public int year;
     }
 
     public static class Thesis implements Ref {
         public String institute;
         public String country;
         public int year;
-        //missing possible city
+        // missing possible city
     }
 
     public static class JournalArticle implements Ref {
@@ -75,5 +70,4 @@ public class RlLineObject {
         PDB,
         PIR
     }
-
 }

@@ -11,7 +11,8 @@ import org.uniprot.core.uniprot.comment.CofactorComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.CofactorCommentImpl;
 
-public final class CofactorCommentBuilder implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {
+public final class CofactorCommentBuilder
+        implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {
     private String molecule;
     private List<Cofactor> cofactors = new ArrayList<>();
     private Note note;
@@ -23,8 +24,7 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     @Override
     public CofactorCommentBuilder from(CofactorComment instance) {
         cofactors.clear();
-        return this
-                .cofactors(instance.getCofactors())
+        return this.cofactors(instance.getCofactors())
                 .molecule(instance.getMolecule())
                 .note(instance.getNote());
     }

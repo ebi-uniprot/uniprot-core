@@ -4,9 +4,6 @@ import org.junit.jupiter.api.Test;
 
 class EntryCommentsMapTest {
 
-
     @Test
-    void testMassSpectrometryMapping() {
-
-    }
+    void testMassSpectrometryMapping() {}
 }

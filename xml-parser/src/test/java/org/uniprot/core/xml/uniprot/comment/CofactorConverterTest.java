@@ -1,5 +1,13 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
@@ -13,16 +21,6 @@ import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.comment.CofactorConverter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
-
 
 class CofactorConverterTest {
     CofactorConverter converter;
@@ -44,7 +42,6 @@ class CofactorConverterTest {
         evidenceReferenceHandler.reset(evIdMap);
 
         this.converter = new CofactorConverter(evidenceReferenceHandler);
-
     }
 
     @Test
@@ -52,11 +49,11 @@ class CofactorConverterTest {
         // CC Name=Zn(2+); Xref=ChEBI:CHEBI:29105;
         // CC Evidence={ECO:0000269|PubMed:9060645, ECO:0000269|PubMed:9060647};
 
-
-        DBCrossReference<CofactorReferenceType> reference = new DBCrossReferenceBuilder<CofactorReferenceType>()
-                .databaseType(CofactorReferenceType.CHEBI)
-                .id("CHEBI:29105")
-                .build();
+        DBCrossReference<CofactorReferenceType> reference =
+                new DBCrossReferenceBuilder<CofactorReferenceType>()
+                        .databaseType(CofactorReferenceType.CHEBI)
+                        .id("CHEBI:29105")
+                        .build();
 
         Evidence evidence1 = parseEvidenceLine("ECO:0000269|PubMed:9060645");
         Evidence evidence2 = parseEvidenceLine("ECO:0000269|PubMed:9060647");
@@ -64,11 +61,8 @@ class CofactorConverterTest {
         evids.add(evidence1);
         evids.add(evidence2);
 
-        Cofactor cofactor = new CofactorBuilder()
-                .reference(reference)
-                .evidences(evids)
-                .name("Zn(2+)")
-                .build();
+        Cofactor cofactor =
+                new CofactorBuilder().reference(reference).evidences(evids).name("Zn(2+)").build();
         CofactorType cofactorType = converter.toXml(cofactor);
         assertEquals("Zn(2+)", cofactorType.getName());
         assertEquals("CHEBI:29105", cofactorType.getDbReference().getId());
@@ -77,11 +71,11 @@ class CofactorConverterTest {
         assertEquals(2, evs.size());
         assertEquals(1, evs.get(0).intValue());
         assertEquals(3, evs.get(1).intValue());
-        System.out.println(UniProtXmlTestHelper.toXmlString(cofactorType, CofactorType.class, "cofactor"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(cofactorType, CofactorType.class, "cofactor"));
 
         Cofactor converted = converter.fromXml(cofactorType);
         assertEquals(cofactor, converted);
-
     }
 
     @Test
@@ -98,7 +92,8 @@ class CofactorConverterTest {
         Cofactor cofactor = converter.fromXml(cofactorType);
         assertEquals("Zn(2+)", cofactor.getName());
         assertEquals("CHEBI:29105", cofactor.getCofactorReference().getId());
-        assertEquals(CofactorReferenceType.CHEBI, cofactor.getCofactorReference().getDatabaseType());
+        assertEquals(
+                CofactorReferenceType.CHEBI, cofactor.getCofactorReference().getDatabaseType());
         List<Evidence> evids = cofactor.getEvidences();
         assertEquals(2, evids.size());
         assertEquals("ECO:0000269|PubMed:9060646", evids.get(0).getValue());

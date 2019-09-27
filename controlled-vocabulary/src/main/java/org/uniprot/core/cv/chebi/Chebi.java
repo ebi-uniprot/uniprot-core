@@ -7,6 +7,8 @@ package org.uniprot.core.cv.chebi;
  */
 public interface Chebi {
     String getId();
+
     String getName();
+
     String getInchiKey();
 }

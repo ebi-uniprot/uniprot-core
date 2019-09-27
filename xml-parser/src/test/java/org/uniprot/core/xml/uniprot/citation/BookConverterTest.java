@@ -1,15 +1,13 @@
 package org.uniprot.core.xml.uniprot.citation;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CitationType;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.citation.BookConverter;
-import org.uniprot.core.xml.uniprot.citation.CitationConverter;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookConverterTest {
 
@@ -18,7 +16,8 @@ class BookConverterTest {
         Book citation = create();
         BookConverter converter = new BookConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Book converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -29,7 +28,8 @@ class BookConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -42,7 +42,12 @@ class BookConverterTest {
         builder.bookName(bookName)
                 .addEditor("David")
                 .addEditor("Charlie")
-                .firstPage("234").lastPage("324C").volume("3").publisher("London Press").address("London").title(title)
+                .firstPage("234")
+                .lastPage("324C")
+                .volume("3")
+                .publisher("London Press")
+                .address("London")
+                .title(title)
                 .publicationDate(date);
         return builder.build();
     }

@@ -13,10 +13,10 @@ public enum FeatureXDbType implements DatabaseType, EnumDisplay<FeatureXDbType> 
 
     public static FeatureXDbType typeOf(String type) {
         for (FeatureXDbType featuretype : FeatureXDbType.values()) {
-            if (type.equals(featuretype.getName()))
-                return featuretype;
+            if (type.equals(featuretype.getName())) return featuretype;
         }
-        throw new IllegalArgumentException(type + " is not valid Feature cross reference database type");
+        throw new IllegalArgumentException(
+                type + " is not valid Feature cross reference database type");
     }
 
     @Override

@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.taxonomy;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,5 +10,4 @@ public interface Organism extends OrganismName, HasEvidences, Serializable {
     long getTaxonId();
 
     List<String> getLineage();
-
 }

@@ -15,16 +15,16 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public abstract class AbstractEvidencedValueBuilder<B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue> implements Builder<B, E> {
+public abstract class AbstractEvidencedValueBuilder<
+                B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue>
+        implements Builder<B, E> {
     protected String value;
     protected List<Evidence> evidences = new ArrayList<>();
 
     @Override
     public B from(E instance) {
         evidences.clear();
-        return this
-                .evidences(instance.getEvidences())
-                .value(instance.getValue());
+        return this.evidences(instance.getEvidences()).value(instance.getValue());
     }
 
     public B value(String value) {

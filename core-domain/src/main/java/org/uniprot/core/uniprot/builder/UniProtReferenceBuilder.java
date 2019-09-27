@@ -34,8 +34,7 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
         referenceComments.clear();
         referencePositions.clear();
         evidences.clear();
-        return this
-                .citation(instance.getCitation())
+        return this.citation(instance.getCitation())
                 .evidences(instance.getEvidences())
                 .comments(instance.getReferenceComments())
                 .positions(instance.getReferencePositions());

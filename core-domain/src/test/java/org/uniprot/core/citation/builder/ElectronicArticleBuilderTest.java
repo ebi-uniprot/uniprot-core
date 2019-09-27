@@ -1,10 +1,10 @@
 package org.uniprot.core.citation.builder;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.ElectronicArticle;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
@@ -31,8 +31,7 @@ class ElectronicArticleBuilderTest extends AbstractCitationBuilderTest {
         ElectronicArticleBuilder builder = new ElectronicArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
-        builder.journalName(journalName)
-                .locator("Some locator");
+        builder.journalName(journalName).locator("Some locator");
         ElectronicArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.ELECTRONIC_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());

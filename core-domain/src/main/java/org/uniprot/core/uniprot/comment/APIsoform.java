@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.comment;
 
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,5 +28,4 @@ public interface APIsoform extends Serializable {
     boolean hasSequenceIds();
 
     boolean hasIsoformSequenceStatus();
-
 }

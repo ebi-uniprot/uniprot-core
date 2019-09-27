@@ -1,13 +1,12 @@
 package org.uniprot.core.xml.uniprot.unload;
 
-import com.codahale.metrics.Counter;
-import com.codahale.metrics.Slf4jReporter;
-import com.codahale.metrics.Timer;
-
 import java.util.concurrent.TimeUnit;
 
 import org.uniprot.core.xml.XmlBuildStats;
 
+import com.codahale.metrics.Counter;
+import com.codahale.metrics.Slf4jReporter;
+import com.codahale.metrics.Timer;
 
 public class UniProtXmlBuildStats implements XmlBuildStats {
     private static final String REPORT_TITLE = "UniProt XML Build Report";
@@ -33,7 +32,8 @@ public class UniProtXmlBuildStats implements XmlBuildStats {
 
     public UniProtXmlBuildStats(String title, long reportTimeInSecond) {
         this.title = title;
-        Slf4jReporter localReporter = Slf4jReporter.forRegistry(MetricsUtil.getMetricRegistryInstance()).build();
+        Slf4jReporter localReporter =
+                Slf4jReporter.forRegistry(MetricsUtil.getMetricRegistryInstance()).build();
         localReporter.start(reportTimeInSecond, TimeUnit.SECONDS);
         this.reporter = localReporter;
 
@@ -41,7 +41,8 @@ public class UniProtXmlBuildStats implements XmlBuildStats {
         this.succeededCounter = MetricsUtil.getMetricRegistryInstance().counter("entry-succeeded");
         this.ffCounter = MetricsUtil.getMetricRegistryInstance().counter("flatfile_entry");
         this.ffReaderTimer = MetricsUtil.getMetricRegistryInstance().timer("flatfile-read-time");
-        this.entryParseTimer = MetricsUtil.getMetricRegistryInstance().timer("entry-parse-convert-time");
+        this.entryParseTimer =
+                MetricsUtil.getMetricRegistryInstance().timer("entry-parse-convert-time");
         this.xmlWriteTimer = MetricsUtil.getMetricRegistryInstance().timer("xml-write-time");
     }
 
@@ -77,8 +78,12 @@ public class UniProtXmlBuildStats implements XmlBuildStats {
     public String getReport() {
         StringBuilder sb = new StringBuilder();
         sb.append(title).append("\n");
-        sb.append("Total number of flatfile entries: ").append(this.getFlatfileEntryCounter().getCount()).append("\n");
-        sb.append("Entries have successfully been built: ").append(this.getNumberOfEntrySucceeded()).append("\n");
+        sb.append("Total number of flatfile entries: ")
+                .append(this.getFlatfileEntryCounter().getCount())
+                .append("\n");
+        sb.append("Entries have successfully been built: ")
+                .append(this.getNumberOfEntrySucceeded())
+                .append("\n");
         sb.append("Entries failed: ").append(this.getNumberOfEntryFailed()).append("\n");
         sb.append("The built XML file: ").append(this.getOuputFile()).append("\n");
         if (this.getNumberOfEntryFailed() > 0) {
@@ -116,5 +121,4 @@ public class UniProtXmlBuildStats implements XmlBuildStats {
     public Timer getFfReadTimer() {
         return ffReaderTimer;
     }
-
 }

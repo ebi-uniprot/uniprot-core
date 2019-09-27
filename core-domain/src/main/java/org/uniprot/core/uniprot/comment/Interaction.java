@@ -17,7 +17,6 @@ public interface Interaction extends Serializable {
 
     Interactor getSecondInteractor();
 
-
     boolean hasUniProtAccession();
 
     boolean hasGeneName();

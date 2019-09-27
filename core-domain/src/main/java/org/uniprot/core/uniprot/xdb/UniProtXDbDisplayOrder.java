@@ -13,9 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 
-/**
- * @author jieluo
- */
+/** @author jieluo */
 public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTypeDetail> {
     INSTANCE;
     private Map<String, DBDisplayOrder> databaseType2DefsNoCase;
@@ -101,8 +99,10 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
     }
 
     private BufferedReader getReaderFromFile() {
-        InputStream inputStream = UniProtXDbDisplayOrder.class.getClassLoader()
-                .getResourceAsStream(UniProtXDbDisplayOrder.DR_ORD_FILE);
+        InputStream inputStream =
+                UniProtXDbDisplayOrder.class
+                        .getClassLoader()
+                        .getResourceAsStream(UniProtXDbDisplayOrder.DR_ORD_FILE);
         if (inputStream == null) {
             File file = new File(UniProtXDbDisplayOrder.DR_ORD_FILE);
             try (InputStream fileInputStream = new FileInputStream(file)) {
@@ -116,11 +116,13 @@ public enum UniProtXDbDisplayOrder implements DatabaseDisplayOrder<UniProtXDbTyp
     }
 
     private static class SafeLazyInitializer {
-        static List<UniProtXDbTypeDetail> uniProtXDbTypeDetails = initValues(UniProtXDbDisplayOrder.INSTANCE.databaseType2DefsNoCase);
+        static List<UniProtXDbTypeDetail> uniProtXDbTypeDetails =
+                initValues(UniProtXDbDisplayOrder.INSTANCE.databaseType2DefsNoCase);
 
-        private static List<UniProtXDbTypeDetail> initValues(Map<String, DBDisplayOrder> databaseType2DefsNoCase) {
-            List<UniProtXDbTypeDetail> values = new CopyOnWriteArrayList<>(UniProtXDbTypes.INSTANCE
-                                                                                   .getAllDBXRefTypes());
+        private static List<UniProtXDbTypeDetail> initValues(
+                Map<String, DBDisplayOrder> databaseType2DefsNoCase) {
+            List<UniProtXDbTypeDetail> values =
+                    new CopyOnWriteArrayList<>(UniProtXDbTypes.INSTANCE.getAllDBXRefTypes());
             values.sort(new XRefDBOrder(databaseType2DefsNoCase));
             return values;
         }

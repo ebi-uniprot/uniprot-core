@@ -1,6 +1,14 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
@@ -16,17 +24,8 @@ import org.uniprot.core.xml.jaxb.uniprot.*;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.comment.CatalyticActivityCommentConverter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
-
+import com.google.common.base.Strings;
 
 class CatalyticActivityCommentConverterTest {
     private static ObjectFactory objectFactory;
@@ -35,7 +34,6 @@ class CatalyticActivityCommentConverterTest {
     @BeforeAll
     static void setup() {
         objectFactory = new ObjectFactory();
-
 
         EvidenceIndexMapper evidenceReferenceHandler = new EvidenceIndexMapper();
 
@@ -53,7 +51,6 @@ class CatalyticActivityCommentConverterTest {
         converter = new CatalyticActivityCommentConverter(evidenceReferenceHandler, objectFactory);
     }
 
-
     @Test
     void testFromXmlBindingWithPhysioReaction() {
         ReactionType reactionType = objectFactory.createReactionType();
@@ -67,7 +64,8 @@ class CatalyticActivityCommentConverterTest {
         CommentType commentType = objectFactory.createCommentType();
         commentType.setReaction(reactionType);
 
-        PhysiologicalReactionType physioReactionType = objectFactory.createPhysiologicalReactionType();
+        PhysiologicalReactionType physioReactionType =
+                objectFactory.createPhysiologicalReactionType();
         physioReactionType.setDirection("right-to-left");
         physioReactionType.setDbReference(createDbReferenceType("Rhea", "RHEA:125"));
         physioReactionType.getEvidence().add(2);
@@ -79,8 +77,12 @@ class CatalyticActivityCommentConverterTest {
         Reaction reaction = converted.getReaction();
         assertEquals("another text", reaction.getName());
         assertEquals(2, reaction.getReactionReferences().size());
-        verifyReactionReference(reaction.getReactionReferences().get(0), ReactionReferenceType.CHEBI, "CHEBI:29105");
-        verifyReactionReference(reaction.getReactionReferences().get(1), ReactionReferenceType.RHEA, "RHEA:125");
+        verifyReactionReference(
+                reaction.getReactionReferences().get(0),
+                ReactionReferenceType.CHEBI,
+                "CHEBI:29105");
+        verifyReactionReference(
+                reaction.getReactionReferences().get(1), ReactionReferenceType.RHEA, "RHEA:125");
         assertEquals("1.2.1.32", reaction.getEcNumber().getValue());
         List<Evidence> evids = reaction.getEvidences();
         assertEquals(2, evids.size());
@@ -93,14 +95,16 @@ class CatalyticActivityCommentConverterTest {
 
         assertEquals(PhysiologicalDirectionType.RIGHT_TO_LEFT, physioReaction.getDirectionType());
 
-        verifyReactionReference(physioReaction.getReactionReference(), ReactionReferenceType.RHEA, "RHEA:125");
+        verifyReactionReference(
+                physioReaction.getReactionReference(), ReactionReferenceType.RHEA, "RHEA:125");
         evids = physioReaction.getEvidences();
         assertEquals(2, evids.size());
         assertEquals("ECO:0000269|PubMed:9060646", evids.get(0).getValue());
         assertEquals("ECO:0000269|PubMed:9060647", evids.get(1).getValue());
     }
 
-    private void verifyReactionReference(DBCrossReference<ReactionReferenceType> ref, ReactionReferenceType type, String id) {
+    private void verifyReactionReference(
+            DBCrossReference<ReactionReferenceType> ref, ReactionReferenceType type, String id) {
         assertEquals(type, ref.getDatabaseType());
         assertEquals(id, ref.getId());
     }
@@ -116,8 +120,10 @@ class CatalyticActivityCommentConverterTest {
     void testToXmlBindingWithPhysioReaction() {
         Reaction reaction = createReaction("some value", "1.1.2.42");
         List<PhysiologicalReaction> physioReactions = new ArrayList<>();
-        physioReactions.add(createPhysiologicalReaction(PhysiologicalDirectionType.LEFT_TO_RIGHT, "RHEA:321"));
-        physioReactions.add(createPhysiologicalReaction(PhysiologicalDirectionType.RIGHT_TO_LEFT, "RHEA:12"));
+        physioReactions.add(
+                createPhysiologicalReaction(PhysiologicalDirectionType.LEFT_TO_RIGHT, "RHEA:321"));
+        physioReactions.add(
+                createPhysiologicalReaction(PhysiologicalDirectionType.RIGHT_TO_LEFT, "RHEA:12"));
 
         CatalyticActivityComment comment =
                 new CatalyticActivityCommentBuilder()
@@ -152,7 +158,8 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(1, evs.get(0).intValue());
         assertEquals(3, evs.get(1).intValue());
 
-        System.out.println(UniProtXmlTestHelper.toXmlString(commentType, CommentType.class, "comment"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(commentType, CommentType.class, "comment"));
     }
 
     @Test
@@ -161,8 +168,10 @@ class CatalyticActivityCommentConverterTest {
         Reaction reaction = createReaction("some value", "1.1.2.42");
         List<PhysiologicalReaction> physioReactions = new ArrayList<>();
 
-        physioReactions.add(createPhysiologicalReaction(PhysiologicalDirectionType.LEFT_TO_RIGHT, "RHEA:321"));
-        physioReactions.add(createPhysiologicalReaction(PhysiologicalDirectionType.RIGHT_TO_LEFT, "RHEA:12"));
+        physioReactions.add(
+                createPhysiologicalReaction(PhysiologicalDirectionType.LEFT_TO_RIGHT, "RHEA:321"));
+        physioReactions.add(
+                createPhysiologicalReaction(PhysiologicalDirectionType.RIGHT_TO_LEFT, "RHEA:12"));
         CatalyticActivityComment comment =
                 new CatalyticActivityCommentBuilder()
                         .reaction(reaction)
@@ -171,18 +180,14 @@ class CatalyticActivityCommentConverterTest {
         CommentType commentType = converter.toXml(comment);
         CatalyticActivityComment converted = converter.fromXml(commentType);
         assertEquals(comment, converted);
-
     }
-
 
     @Test
     void testToXmlBindingWithOutPhysioReaction() {
 
         Reaction reaction = createReaction("some value", "1.1.2.42");
         CatalyticActivityComment comment =
-                new CatalyticActivityCommentBuilder()
-                        .reaction(reaction)
-                        .build();
+                new CatalyticActivityCommentBuilder().reaction(reaction).build();
 
         CommentType commentType = converter.toXml(comment);
         assertNotNull(commentType);
@@ -204,7 +209,6 @@ class CatalyticActivityCommentConverterTest {
 
         CatalyticActivityComment converted = converter.fromXml(commentType);
         assertEquals(comment, converted);
-
     }
 
     @Test
@@ -212,9 +216,7 @@ class CatalyticActivityCommentConverterTest {
         Reaction reaction = createReaction2("some value", "1.1.2.42");
 
         CatalyticActivityComment comment =
-                new CatalyticActivityCommentBuilder()
-                        .reaction(reaction)
-                        .build();
+                new CatalyticActivityCommentBuilder().reaction(reaction).build();
         CommentType commentType = converter.toXml(comment);
         assertNotNull(commentType);
         ReactionType reactionType = commentType.getReaction();
@@ -231,7 +233,6 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(3, evs.get(1).intValue());
         List<PhysiologicalReactionType> prts = commentType.getPhysiologicalReaction();
         assertEquals(0, prts.size());
-
     }
 
     private Reaction createReaction(String name, String ec) {
@@ -241,8 +242,7 @@ class CatalyticActivityCommentConverterTest {
         references.add(createReference(ReactionReferenceType.RHEA, "RHEA:322"));
 
         ECNumber ecNumber = null;
-        if (!Strings.isNullOrEmpty(ec))
-            ecNumber = new ECNumberImpl(ec);
+        if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberImpl(ec);
         Evidence evidence1 = parseEvidenceLine("ECO:0000269|PubMed:9060645");
         Evidence evidence2 = parseEvidenceLine("ECO:0000269|PubMed:9060647");
         List<Evidence> evids = new ArrayList<>();
@@ -262,8 +262,7 @@ class CatalyticActivityCommentConverterTest {
         List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
 
         ECNumber ecNumber = null;
-        if (!Strings.isNullOrEmpty(ec))
-            ecNumber = new ECNumberImpl(ec);
+        if (!Strings.isNullOrEmpty(ec)) ecNumber = new ECNumberImpl(ec);
         Evidence evidence1 = parseEvidenceLine("ECO:0000269|PubMed:9060645");
         Evidence evidence2 = parseEvidenceLine("ECO:0000269|PubMed:9060647");
         List<Evidence> evids = new ArrayList<>();
@@ -277,8 +276,8 @@ class CatalyticActivityCommentConverterTest {
                 .build();
     }
 
-    private PhysiologicalReaction createPhysiologicalReaction(PhysiologicalDirectionType type,
-                                                              String rheaId) {
+    private PhysiologicalReaction createPhysiologicalReaction(
+            PhysiologicalDirectionType type, String rheaId) {
         Evidence evidence1 = parseEvidenceLine("ECO:0000269|PubMed:9060645");
         Evidence evidence2 = parseEvidenceLine("ECO:0000269|PubMed:9060647");
         List<Evidence> evids = new ArrayList<>();
@@ -291,10 +290,11 @@ class CatalyticActivityCommentConverterTest {
                 .build();
     }
 
-    private DBCrossReference<ReactionReferenceType> createReference(ReactionReferenceType type, String rheaId) {
+    private DBCrossReference<ReactionReferenceType> createReference(
+            ReactionReferenceType type, String rheaId) {
         return new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                   .databaseType(type)
-                                   .id(rheaId)
-                                   .build();
+                .databaseType(type)
+                .id(rheaId)
+                .build();
     }
 }

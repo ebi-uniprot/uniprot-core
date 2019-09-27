@@ -9,14 +9,14 @@ import org.uniprot.core.uniprot.comment.BPCPComment;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 14:38:24 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 14:38:24 To change this template
+ * use File | Settings | File Templates.
  */
 public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbstr {
     private final BPCPComment comment;
 
-    public BioPhysicoChemicalPropertiesCommentScored(BPCPComment copy,
-                                                     List<EvidenceType> evidenceTypes) {
+    public BioPhysicoChemicalPropertiesCommentScored(
+            BPCPComment copy, List<EvidenceType> evidenceTypes) {
         super(copy.getCommentType(), evidenceTypes);
         this.comment = copy;
     }
@@ -36,14 +36,23 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
             if (comment.getKineticParameters() != null) {
                 score +=
                         comment.getKineticParameters().getMaximumVelocities().stream()
-                                .filter(val -> ScoreUtil.hasEvidence(val.getEvidences(), evidenceTypes))
-                                .collect(Collectors.toList()).size() * 2;
+                                        .filter(
+                                                val ->
+                                                        ScoreUtil.hasEvidence(
+                                                                val.getEvidences(), evidenceTypes))
+                                        .collect(Collectors.toList())
+                                        .size()
+                                * 2;
 
                 score +=
                         comment.getKineticParameters().getMichaelisConstants().stream()
-                                .filter(val -> ScoreUtil.hasEvidence(val.getEvidences(), evidenceTypes))
-                                .collect(Collectors.toList()).size() * 2;
-
+                                        .filter(
+                                                val ->
+                                                        ScoreUtil.hasEvidence(
+                                                                val.getEvidences(), evidenceTypes))
+                                        .collect(Collectors.toList())
+                                        .size()
+                                * 2;
             }
 
             score += hasPHDependenceProperty(comment) ? 2 : 0;
@@ -63,26 +72,29 @@ public class BioPhysicoChemicalPropertiesCommentScored extends CommentScoredAbst
     }
 
     private boolean hasPHDependenceProperty(BPCPComment comment) {
-        if (comment.getPhDependence() == null)
-            return false;
-        return ScoreUtil.hasEvidence(comment.getPhDependence().getTexts().stream()
-                                             .flatMap(val -> val.getEvidences().stream())
-                                             .collect(Collectors.toList()), evidenceTypes);
+        if (comment.getPhDependence() == null) return false;
+        return ScoreUtil.hasEvidence(
+                comment.getPhDependence().getTexts().stream()
+                        .flatMap(val -> val.getEvidences().stream())
+                        .collect(Collectors.toList()),
+                evidenceTypes);
     }
 
     private boolean hasRedoxPotentialProperty(BPCPComment comment) {
-        if (comment.getRedoxPotential() == null)
-            return false;
-        return ScoreUtil.hasEvidence(comment.getRedoxPotential().getTexts().stream()
-                                             .flatMap(val -> val.getEvidences().stream())
-                                             .collect(Collectors.toList()), evidenceTypes);
+        if (comment.getRedoxPotential() == null) return false;
+        return ScoreUtil.hasEvidence(
+                comment.getRedoxPotential().getTexts().stream()
+                        .flatMap(val -> val.getEvidences().stream())
+                        .collect(Collectors.toList()),
+                evidenceTypes);
     }
 
     private boolean hasTemperatureDependenceProperty(BPCPComment comment) {
-        if (comment.getTemperatureDependence() == null)
-            return false;
-        return ScoreUtil.hasEvidence(comment.getTemperatureDependence().getTexts().stream()
-                                             .flatMap(val -> val.getEvidences().stream())
-                                             .collect(Collectors.toList()), evidenceTypes);
+        if (comment.getTemperatureDependence() == null) return false;
+        return ScoreUtil.hasEvidence(
+                comment.getTemperatureDependence().getTexts().stream()
+                        .flatMap(val -> val.getEvidences().stream())
+                        .collect(Collectors.toList()),
+                evidenceTypes);
     }
 }

@@ -19,10 +19,10 @@ import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 /**
- * A staged builder that guides a user when creating a {@link UniProtEntry} instance. For example, the accession
- * must be supplied first, after which the ID must be added. After this, one chooses the entry type. Many fields
- * can be set for the usual Swiss-Prot/TrEMBL entry types. However, inactive entries have only a single field
- * available for setting; the inactive reason.
+ * A staged builder that guides a user when creating a {@link UniProtEntry} instance. For example,
+ * the accession must be supplied first, after which the ID must be added. After this, one chooses
+ * the entry type. Many fields can be set for the usual Swiss-Prot/TrEMBL entry types. However,
+ * inactive entries have only a single field available for setting; the inactive reason.
  *
  * @author lgonzales
  */
@@ -91,9 +91,11 @@ public class UniProtEntryBuilder {
 
         ActiveEntryBuilder references(List<UniProtReference> references);
 
-        ActiveEntryBuilder addDatabaseCrossReference(UniProtDBCrossReference databaseCrossReference);
+        ActiveEntryBuilder addDatabaseCrossReference(
+                UniProtDBCrossReference databaseCrossReference);
 
-        ActiveEntryBuilder databaseCrossReferences(List<UniProtDBCrossReference> databaseCrossReferences);
+        ActiveEntryBuilder databaseCrossReferences(
+                List<UniProtDBCrossReference> databaseCrossReferences);
 
         ActiveEntryBuilder sequence(Sequence sequence);
 
@@ -104,7 +106,8 @@ public class UniProtEntryBuilder {
         InactiveEntryBuilder inactiveReason(EntryInactiveReason inactiveReason);
     }
 
-    private class EntryBuilder extends UniProtEntryBuilder implements UniProtIdBuilder, ActiveEntryBuilder, InactiveEntryBuilder, Status {
+    private class EntryBuilder extends UniProtEntryBuilder
+            implements UniProtIdBuilder, ActiveEntryBuilder, InactiveEntryBuilder, Status {
         private UniProtAccession primaryAccession;
         private UniProtEntryType entryType = null;
         private List<UniProtAccession> secondaryAccessions = new ArrayList<>();
@@ -292,13 +295,15 @@ public class UniProtEntryBuilder {
         }
 
         @Override
-        public ActiveEntryBuilder addDatabaseCrossReference(UniProtDBCrossReference databaseCrossReference) {
+        public ActiveEntryBuilder addDatabaseCrossReference(
+                UniProtDBCrossReference databaseCrossReference) {
             nonNullAdd(databaseCrossReference, this.databaseCrossReferences);
             return this;
         }
 
         @Override
-        public ActiveEntryBuilder databaseCrossReferences(List<UniProtDBCrossReference> databaseCrossReferences) {
+        public ActiveEntryBuilder databaseCrossReferences(
+                List<UniProtDBCrossReference> databaseCrossReferences) {
             this.databaseCrossReferences = nonNullList(databaseCrossReferences);
             return this;
         }
@@ -317,9 +322,27 @@ public class UniProtEntryBuilder {
 
         @Override
         public UniProtEntry build() {
-            return new UniProtEntryImpl(entryType, primaryAccession, secondaryAccessions, uniProtId, entryAudit, annotationScore, organism,
-                                        organismHosts, proteinExistence, proteinDescription, genes, comments, features, geneLocations, keywords,
-                                        references, databaseCrossReferences, sequence, internalSection, inactiveReason);
+            return new UniProtEntryImpl(
+                    entryType,
+                    primaryAccession,
+                    secondaryAccessions,
+                    uniProtId,
+                    entryAudit,
+                    annotationScore,
+                    organism,
+                    organismHosts,
+                    proteinExistence,
+                    proteinDescription,
+                    genes,
+                    comments,
+                    features,
+                    geneLocations,
+                    keywords,
+                    references,
+                    databaseCrossReferences,
+                    sequence,
+                    internalSection,
+                    inactiveReason);
         }
 
         @Override

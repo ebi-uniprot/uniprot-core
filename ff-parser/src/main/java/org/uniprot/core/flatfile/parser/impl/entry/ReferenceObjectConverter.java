@@ -1,6 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.entry;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +21,8 @@ import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.UniProtReference;
 import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 
-public class ReferenceObjectConverter extends EvidenceCollector implements Converter<EntryObject.ReferenceObject, UniProtReference> {
+public class ReferenceObjectConverter extends EvidenceCollector
+        implements Converter<EntryObject.ReferenceObject, UniProtReference> {
     private final RaLineConverter raLineConverter = new RaLineConverter();
     private final RcLineConverter rcLineConverter = new RcLineConverter();
     private final RgLineConverter rgLineConverter = new RgLineConverter();
@@ -34,13 +34,12 @@ public class ReferenceObjectConverter extends EvidenceCollector implements Conve
 
     @Override
     public UniProtReference convert(ReferenceObject f) {
-        AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation> builder = rlLineConverter
-                .convert(f.rl);
+        AbstractCitationBuilder<? extends AbstractCitationBuilder<?, ?>, ? extends Citation>
+                builder = rlLineConverter.convert(f.rl);
         if (f.ra != null) {
             List<Author> authors = raLineConverter.convert(f.ra);
             builder.authors(authors);
         }
-
 
         if (f.rg != null) {
             builder.authoringGroups(rgLineConverter.convert(f.rg));
@@ -62,12 +61,13 @@ public class ReferenceObjectConverter extends EvidenceCollector implements Conve
 
             referenceComments = rcLineConverter.convert(f.rc);
         }
-        UniProtReference uniprotReference = new UniProtReferenceBuilder()
-                .positions(referencePositions)
-                .comments(referenceComments)
-                .evidences(rnLineConverter.convert(f.rn))
-                .citation(builder.build())
-                .build();
+        UniProtReference uniprotReference =
+                new UniProtReferenceBuilder()
+                        .positions(referencePositions)
+                        .comments(referenceComments)
+                        .evidences(rnLineConverter.convert(f.rn))
+                        .citation(builder.build())
+                        .build();
 
         updateEvidences();
         return uniprotReference;
@@ -84,5 +84,4 @@ public class ReferenceObjectConverter extends EvidenceCollector implements Conve
         rnLineConverter.clear();
         rcLineConverter.clear();
     }
-
 }

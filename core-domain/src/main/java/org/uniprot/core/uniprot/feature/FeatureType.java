@@ -6,11 +6,10 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.util.EnumDisplay;
 
-
 public enum FeatureType implements EnumDisplay<FeatureType> {
     /**
-     * Enumerates all features types in UniProt. Important!!! The order which is here must the order existing in the
-     * file cc_ord which is placed in /ebi/sp/misc1/pc/sprot/various/ft_ord
+     * Enumerates all features types in UniProt. Important!!! The order which is here must the order
+     * existing in the file cc_ord which is placed in /ebi/sp/misc1/pc/sprot/various/ft_ord
      */
     INIT_MET("initiator methionine", "initiator methionine", FeatureCategory.MOLECULE_PROCESSING),
     SIGNAL("signal peptide", "signal peptide", FeatureCategory.MOLECULE_PROCESSING),
@@ -26,18 +25,33 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
     CA_BIND("calcium-binding region", "calcium-binding region", FeatureCategory.REGIONS),
     ZN_FING("zinc finger region", "zinc finger region", FeatureCategory.REGIONS),
     DNA_BIND("DNA-binding region", "DNA-binding region", FeatureCategory.REGIONS),
-    NP_BIND("nucleotide phosphate-binding region", "Nucleotide-binding region", FeatureCategory.REGIONS),
+    NP_BIND(
+            "nucleotide phosphate-binding region",
+            "Nucleotide-binding region",
+            FeatureCategory.REGIONS),
     REGION("region of interest", "region of interest", FeatureCategory.REGIONS),
     COILED("coiled-coil region", "coiled-coil region", FeatureCategory.REGIONS),
     MOTIF("short sequence motif", "short sequence motif", FeatureCategory.REGIONS),
-    COMPBIAS("compositionally biased region", "compositionally biased region", FeatureCategory.REGIONS),
+    COMPBIAS(
+            "compositionally biased region",
+            "compositionally biased region",
+            FeatureCategory.REGIONS),
     ACT_SITE("active site", "active site", FeatureCategory.SITES),
     METAL("metal ion-binding site", "metal ion-binding site", FeatureCategory.SITES),
     BINDING("binding site", "Other binding site", FeatureCategory.SITES),
     SITE("site", "Other site of interest", FeatureCategory.SITES),
-    NON_STD("non-standard amino acid", "non-standard amino acid", FeatureCategory.AMINO_ACID_MODIFICATIONS),
-    MOD_RES("modified residue", "Post-translationally modified residue", FeatureCategory.AMINO_ACID_MODIFICATIONS),
-    LIPID("lipid moiety-binding region", "lipid moiety-binding region", FeatureCategory.AMINO_ACID_MODIFICATIONS),
+    NON_STD(
+            "non-standard amino acid",
+            "non-standard amino acid",
+            FeatureCategory.AMINO_ACID_MODIFICATIONS),
+    MOD_RES(
+            "modified residue",
+            "Post-translationally modified residue",
+            FeatureCategory.AMINO_ACID_MODIFICATIONS),
+    LIPID(
+            "lipid moiety-binding region",
+            "lipid moiety-binding region",
+            FeatureCategory.AMINO_ACID_MODIFICATIONS),
     CARBOHYD("glycosylation site", "glycosylation site", FeatureCategory.AMINO_ACID_MODIFICATIONS),
     DISULFID("disulfide bond", "disulfide bond", FeatureCategory.AMINO_ACID_MODIFICATIONS),
     CROSSLNK("cross-link", "cross-link", FeatureCategory.AMINO_ACID_MODIFICATIONS),
@@ -46,7 +60,10 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
     MUTAGEN("mutagenesis site", "mutagenesis site", FeatureCategory.EXPERIMENTAL_INFO),
     UNSURE("unsure residue", "Uncertainty in sequence", FeatureCategory.EXPERIMENTAL_INFO),
     CONFLICT("sequence conflict", "sequence conflict", FeatureCategory.EXPERIMENTAL_INFO),
-    NON_CONS("non-consecutive residues", "non-consecutive residues", FeatureCategory.EXPERIMENTAL_INFO),
+    NON_CONS(
+            "non-consecutive residues",
+            "non-consecutive residues",
+            FeatureCategory.EXPERIMENTAL_INFO),
     NON_TER("non-terminal residue", "non-terminal residue", FeatureCategory.EXPERIMENTAL_INFO),
     HELIX("helix", "helix", FeatureCategory.SECONDARY_STRUCTURE),
     TURN("turn", "turn", FeatureCategory.SECONDARY_STRUCTURE),
@@ -56,14 +73,11 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
     private final String displayName;
     private final FeatureCategory category;
 
-    FeatureType(String value,
-                String displayName, FeatureCategory category) {
+    FeatureType(String value, String displayName, FeatureCategory category) {
         this.value = value;
         this.displayName = displayName;
         this.category = category;
     }
-
-   
 
     public String getValue() {
         return value;
@@ -77,12 +91,12 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         return category;
     }
 
-
-    public static List<FeatureType> getFeatureTypes(FeatureCategory category){
+    public static List<FeatureType> getFeatureTypes(FeatureCategory category) {
         return Arrays.stream(FeatureType.values())
-        .filter(val -> val.getCategory()== category)
-        .collect(Collectors.toList());
+                .filter(val -> val.getCategory() == category)
+                .collect(Collectors.toList());
     }
+
     public static FeatureType typeOf(String value) {
         for (FeatureType featureType : FeatureType.values()) {
             if (featureType.name().equalsIgnoreCase(value)) {
@@ -94,16 +108,16 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
                 return featureType;
             }
         }
-        throw new IllegalArgumentException("the fetaure with the description " + value + " doesn't exist");
-
+        throw new IllegalArgumentException(
+                "the fetaure with the description " + value + " doesn't exist");
     }
-
 
     public String getDisplayName() {
-    	return displayName;
+        return displayName;
     }
-	@Override
-	public String toDisplayName() {
-		return displayName;
-	}
+
+    @Override
+    public String toDisplayName() {
+        return displayName;
+    }
 }

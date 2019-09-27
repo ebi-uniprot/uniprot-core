@@ -12,7 +12,8 @@ import org.uniprot.core.uniprot.comment.RnaEditingComment;
 import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
 import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentImpl;
 
-public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
+public final class RnaEditingCommentBuilder
+        implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions = new ArrayList<>();
     private Note note;
@@ -24,9 +25,7 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
     @Override
     public RnaEditingCommentBuilder from(RnaEditingComment instance) {
         positions.clear();
-        return this
-                .positions(instance.getPositions())
-                .locationType(instance.getLocationType());
+        return this.positions(instance.getPositions()).locationType(instance.getLocationType());
     }
 
     public RnaEditingCommentBuilder locationType(RnaEditingLocationType locationType) {

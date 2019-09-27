@@ -30,8 +30,7 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, M
     @Override
     public MaximumVelocityBuilder from(MaximumVelocity instance) {
         evidences.clear();
-        return this
-                .evidences(instance.getEvidences())
+        return this.evidences(instance.getEvidences())
                 .enzyme(instance.getEnzyme())
                 .unit(instance.getUnit())
                 .velocity(instance.getVelocity());

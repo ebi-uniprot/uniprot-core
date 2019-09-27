@@ -1,6 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.id;
 
-
 import java.util.AbstractMap;
 import java.util.Map;
 
@@ -9,7 +8,8 @@ import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.UniProtId;
 import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 
-public class IdLineConverter implements Converter<IdLineObject, Map.Entry<UniProtId, UniProtEntryType>> {
+public class IdLineConverter
+        implements Converter<IdLineObject, Map.Entry<UniProtId, UniProtEntryType>> {
 
     @Override
     public Map.Entry<UniProtId, UniProtEntryType> convert(IdLineObject f) {
@@ -20,5 +20,4 @@ public class IdLineConverter implements Converter<IdLineObject, Map.Entry<UniPro
         }
         return new AbstractMap.SimpleEntry<>(id, type);
     }
-
 }

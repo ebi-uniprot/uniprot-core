@@ -15,17 +15,18 @@ public class KeywordImpl extends EvidencedValueImpl implements Keyword {
     private static final long serialVersionUID = -8858878734008282808L;
     private String id;
     private KeywordCategory category;
+
     private KeywordImpl() {
         this("", "", KeywordCategory.UNKNOWN, Collections.emptyList());
     }
 
-    public KeywordImpl(String id, String value, KeywordCategory category, List<Evidence> evidences) {
+    public KeywordImpl(
+            String id, String value, KeywordCategory category, List<Evidence> evidences) {
         super(value, evidences);
         if (id == null || id.isEmpty()) {
             this.id = DEFAULT_ACCESSION;
-        } else
-            this.id = id;
-        this.category =category;
+        } else this.id = id;
+        this.category = category;
     }
 
     public String getId() {
@@ -46,8 +47,8 @@ public class KeywordImpl extends EvidencedValueImpl implements Keyword {
         return Objects.hash(super.hashCode(), id);
     }
 
-	@Override
-	public KeywordCategory getCategory() {
-		return category;
-	}
+    @Override
+    public KeywordCategory getCategory() {
+        return category;
+    }
 }

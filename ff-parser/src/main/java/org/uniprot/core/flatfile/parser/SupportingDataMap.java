@@ -17,5 +17,4 @@ public interface SupportingDataMap extends Serializable {
     Map<String, Map<String, List<Evidence>>> getGoEvidencesMap();
 
     Map<String, String> getSubcellularLocationMap();
-
 }

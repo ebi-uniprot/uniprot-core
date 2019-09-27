@@ -1,13 +1,13 @@
 package org.uniprot.core.cv.xdb;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class UniProtXDbTypeDetailTest {
     private String random;
@@ -18,19 +18,23 @@ public class UniProtXDbTypeDetailTest {
     private List<DBXRefTypeAttribute> attributes;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         this.random = UUID.randomUUID().toString();
         this.name = "name-" + this.random;
         this.displayName = "displayName-" + this.random;
         this.category = DatabaseCategory.CHEMISTRY;
         this.uriLink = "uriLink-" + this.random;
-        this.attributes = IntStream.range(0, 3)
-                .mapToObj(i -> DBXRefTypeAttributeTest.createDBXRefTypeAttribute(this.name, this.displayName, this.uriLink))
-                .collect(Collectors.toList());
+        this.attributes =
+                IntStream.range(0, 3)
+                        .mapToObj(
+                                i ->
+                                        DBXRefTypeAttributeTest.createDBXRefTypeAttribute(
+                                                this.name, this.displayName, this.uriLink))
+                        .collect(Collectors.toList());
     }
 
     @Test
-    void testCreateObject(){
+    void testCreateObject() {
         UniProtXDbTypeDetail dbType = createUniProtXDbTypeDetail(false);
         Assertions.assertNotNull(dbType);
         Assertions.assertEquals(this.name, dbType.getName());
@@ -44,7 +48,7 @@ public class UniProtXDbTypeDetailTest {
     }
 
     @Test
-    void testCreateObjectWithAttrib(){
+    void testCreateObjectWithAttrib() {
         UniProtXDbTypeDetail dbType = createUniProtXDbTypeDetail(true);
         Assertions.assertNotNull(dbType);
         Assertions.assertEquals(this.name, dbType.getName());
@@ -55,7 +59,7 @@ public class UniProtXDbTypeDetailTest {
     }
 
     @Test
-    void testValueEqual(){
+    void testValueEqual() {
         UniProtXDbTypeDetail n1 = createUniProtXDbTypeDetail(false);
         UniProtXDbTypeDetail n2 = createUniProtXDbTypeDetail(false);
         Assertions.assertTrue(n1.equals(n2));
@@ -63,39 +67,42 @@ public class UniProtXDbTypeDetailTest {
     }
 
     @Test
-    void testRefEqual(){
+    void testRefEqual() {
         UniProtXDbTypeDetail n1 = createUniProtXDbTypeDetail(true);
         Assertions.assertTrue(n1.equals(n1));
         Assertions.assertTrue(n1.hashCode() == n1.hashCode());
     }
 
     @Test
-    void testEqualWithNull(){
+    void testEqualWithNull() {
         UniProtXDbTypeDetail n1 = createUniProtXDbTypeDetail(true);
         Assertions.assertFalse(n1.equals(null));
     }
 
     @Test
-    void testValueNotEqual(){
+    void testValueNotEqual() {
         UniProtXDbTypeDetail n1 = createUniProtXDbTypeDetail(false);
         this.uriLink = null;
         UniProtXDbTypeDetail n2 = createUniProtXDbTypeDetail(false);
         Assertions.assertFalse(n1.equals(n2));
     }
 
-    private UniProtXDbTypeDetail createUniProtXDbTypeDetail(boolean passAttribute){
-        if(passAttribute) {
-            return createUniProtXDbTypeDetail(this.name, this.displayName,
-                    this.category, this.uriLink, this.attributes);
+    private UniProtXDbTypeDetail createUniProtXDbTypeDetail(boolean passAttribute) {
+        if (passAttribute) {
+            return createUniProtXDbTypeDetail(
+                    this.name, this.displayName, this.category, this.uriLink, this.attributes);
         } else {
-            return createUniProtXDbTypeDetail(this.name, this.displayName,
-                    this.category, this.uriLink, null);
+            return createUniProtXDbTypeDetail(
+                    this.name, this.displayName, this.category, this.uriLink, null);
         }
     }
 
-    public static UniProtXDbTypeDetail createUniProtXDbTypeDetail(String name, String displayName,
-                                                                  DatabaseCategory category, String uriLink,
-                                                                  List<DBXRefTypeAttribute> attributes){
+    public static UniProtXDbTypeDetail createUniProtXDbTypeDetail(
+            String name,
+            String displayName,
+            DatabaseCategory category,
+            String uriLink,
+            List<DBXRefTypeAttribute> attributes) {
         return new UniProtXDbTypeDetail(name, displayName, category, uriLink, attributes);
     }
 }

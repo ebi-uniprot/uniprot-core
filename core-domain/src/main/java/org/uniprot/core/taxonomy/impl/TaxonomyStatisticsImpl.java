@@ -11,11 +11,15 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
     private long referenceProteomeCount;
     private long completeProteomeCount;
 
-    private TaxonomyStatisticsImpl(){
+    private TaxonomyStatisticsImpl() {
         this(0, 0, 0, 0);
     }
 
-    public TaxonomyStatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount, long referenceProteomeCount, long completeProteomeCount) {
+    public TaxonomyStatisticsImpl(
+            long reviewedProteinCount,
+            long unreviewedProteinCount,
+            long referenceProteomeCount,
+            long completeProteomeCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
         this.referenceProteomeCount = referenceProteomeCount;
@@ -67,25 +71,32 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaxonomyStatisticsImpl that = (TaxonomyStatisticsImpl) o;
-        return getReviewedProteinCount() == that.getReviewedProteinCount() &&
-                getUnreviewedProteinCount() == that.getUnreviewedProteinCount() &&
-                getReferenceProteomeCount() == that.getReferenceProteomeCount() &&
-                getCompleteProteomeCount() == that.getCompleteProteomeCount();
+        return getReviewedProteinCount() == that.getReviewedProteinCount()
+                && getUnreviewedProteinCount() == that.getUnreviewedProteinCount()
+                && getReferenceProteomeCount() == that.getReferenceProteomeCount()
+                && getCompleteProteomeCount() == that.getCompleteProteomeCount();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getReviewedProteinCount(), getUnreviewedProteinCount(),
-                getReferenceProteomeCount(), getCompleteProteomeCount());
+        return Objects.hash(
+                getReviewedProteinCount(),
+                getUnreviewedProteinCount(),
+                getReferenceProteomeCount(),
+                getCompleteProteomeCount());
     }
 
     @Override
     public String toString() {
-        return "TaxonomyStatisticsImpl{" +
-                "reviewedProteinCount=" + reviewedProteinCount +
-                ", unreviewedProteinCount=" + unreviewedProteinCount +
-                ", referenceProteomeCount=" + referenceProteomeCount +
-                ", completeProteomeCount=" + completeProteomeCount +
-                '}';
+        return "TaxonomyStatisticsImpl{"
+                + "reviewedProteinCount="
+                + reviewedProteinCount
+                + ", unreviewedProteinCount="
+                + unreviewedProteinCount
+                + ", referenceProteomeCount="
+                + referenceProteomeCount
+                + ", completeProteomeCount="
+                + completeProteomeCount
+                + '}';
     }
 }

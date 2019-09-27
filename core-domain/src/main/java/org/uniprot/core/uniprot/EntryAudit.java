@@ -14,5 +14,4 @@ public interface EntryAudit extends Serializable {
     int getEntryVersion();
 
     int getSequenceVersion();
-
 }

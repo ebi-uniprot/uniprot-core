@@ -15,8 +15,8 @@ import org.uniprot.core.uniprot.evidence.EvidenceType;
 public class CatalyticActivityCommentScored extends CommentScoredAbstr {
     private final CatalyticActivityComment comment;
 
-    public CatalyticActivityCommentScored(CatalyticActivityComment copy,
-                                                    List<EvidenceType> evidenceTypes) {
+    public CatalyticActivityCommentScored(
+            CatalyticActivityComment copy, List<EvidenceType> evidenceTypes) {
         super(copy.getCommentType(), evidenceTypes);
         this.comment = copy;
     }
@@ -29,12 +29,9 @@ public class CatalyticActivityCommentScored extends CommentScoredAbstr {
     public double score() {
         double score = 0;
         if (hasEvidence()) {
-            if (this.getCommentScoredInfo() == null)
-                return 0;
-            if (getCommentScoredInfo().dashed)
-                return getCommentScoredInfo().experimentalScore;
-            ScoreStatus status = getScoreStatus(comment,
-                                                this.getDefaultEvidenceCode());
+            if (this.getCommentScoredInfo() == null) return 0;
+            if (getCommentScoredInfo().dashed) return getCommentScoredInfo().experimentalScore;
+            ScoreStatus status = getScoreStatus(comment, this.getDefaultEvidenceCode());
             switch (status) {
                 case EXPERIMENTAL:
                     score += getCommentScoredInfo().experimentalScore;
@@ -47,11 +44,9 @@ public class CatalyticActivityCommentScored extends CommentScoredAbstr {
             }
         }
         return score;
-
     }
 
-    private ScoreStatus getScoreStatus(CatalyticActivityComment comment,
-                                       EvidenceCode defaultCode) {
+    private ScoreStatus getScoreStatus(CatalyticActivityComment comment, EvidenceCode defaultCode) {
         Collection<ScoreStatus> types = new HashSet<>();
         for (Evidence evidence : getEvidences(comment)) {
             types.add(ScoreUtil.convert(evidence.getEvidenceCode()));

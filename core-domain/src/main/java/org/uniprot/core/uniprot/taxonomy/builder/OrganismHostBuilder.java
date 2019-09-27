@@ -3,7 +3,8 @@ package org.uniprot.core.uniprot.taxonomy.builder;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostImpl;
 
-public class OrganismHostBuilder extends AbstractOrganismNameBuilder<OrganismHostBuilder, OrganismHost> {
+public class OrganismHostBuilder
+        extends AbstractOrganismNameBuilder<OrganismHostBuilder, OrganismHost> {
     private long taxonId;
 
     public OrganismHostBuilder taxonId(long taxonId) {

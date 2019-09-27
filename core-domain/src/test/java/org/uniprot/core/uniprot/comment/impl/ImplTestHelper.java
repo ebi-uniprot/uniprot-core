@@ -1,5 +1,8 @@
 package org.uniprot.core.uniprot.comment.impl;
 
+import static java.util.Collections.emptyList;
+import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +16,6 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
-import static java.util.Collections.emptyList;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
-
 /**
  * Created 17/01/19
  *
@@ -25,11 +25,12 @@ public class ImplTestHelper {
     static Note createNote() {
         List<EvidencedValue> texts = new ArrayList<>();
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceBuilder()
-                              .databaseName("Ensembl")
-                              .databaseId("ENSP0001324")
-                              .evidenceCode(EvidenceCode.ECO_0000313)
-                              .build());
+        evidences.add(
+                new EvidenceBuilder()
+                        .databaseName("Ensembl")
+                        .databaseId("ENSP0001324")
+                        .evidenceCode(EvidenceCode.ECO_0000313)
+                        .build());
         evidences.add(
                 new EvidenceBuilder()
                         .databaseName("PIRNR")

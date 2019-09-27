@@ -20,9 +20,10 @@ public class CofactorImpl implements Cofactor {
         this.evidences = Collections.emptyList();
     }
 
-    public CofactorImpl(String name,
-                        DBCrossReference<CofactorReferenceType> cofactorReference,
-                        List<Evidence> evidences) {
+    public CofactorImpl(
+            String name,
+            DBCrossReference<CofactorReferenceType> cofactorReference,
+            List<Evidence> evidences) {
         this.name = name;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
@@ -67,9 +68,9 @@ public class CofactorImpl implements Cofactor {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CofactorImpl cofactor = (CofactorImpl) o;
-        return Objects.equals(name, cofactor.name) &&
-                Objects.equals(evidences, cofactor.evidences) &&
-                Objects.equals(cofactorReference, cofactor.cofactorReference);
+        return Objects.equals(name, cofactor.name)
+                && Objects.equals(evidences, cofactor.evidences)
+                && Objects.equals(cofactorReference, cofactor.cofactorReference);
     }
 
     @Override

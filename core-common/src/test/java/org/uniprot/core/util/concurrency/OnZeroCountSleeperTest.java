@@ -1,19 +1,17 @@
 package org.uniprot.core.util.concurrency;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.util.concurrency.OnZeroCountSleeper;
-
-import java.util.List;
-import java.util.stream.Stream;
-
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.slf4j.LoggerFactory.getLogger;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
 
 /**
  * Created 13/07/19
@@ -74,27 +72,38 @@ class OnZeroCountSleeperTest {
 
     @Test
     void willWaitUntilZero() {
-    //    OnZeroCountSleeper sleeper = new OnZeroCountSleeper();
-        List<Thread> incrementers = Stream
-                .generate(() -> new Thread(() -> {
-                    int count = sleeper.increment();
-                    LOGGER.info("incremented, so that count = {}", count);
-                }))
-                .limit(5)
-                .collect(toList());
+        //    OnZeroCountSleeper sleeper = new OnZeroCountSleeper();
+        List<Thread> incrementers =
+                Stream.generate(
+                                () ->
+                                        new Thread(
+                                                () -> {
+                                                    int count = sleeper.increment();
+                                                    LOGGER.info(
+                                                            "incremented, so that count = {}",
+                                                            count);
+                                                }))
+                        .limit(5)
+                        .collect(toList());
 
-        List<Thread> decrementers = Stream
-                .generate(() -> new Thread(() -> {
-                    try {
-                        Thread.sleep((long) (Math.random() * 10000));
-                    } catch (InterruptedException e) {
-                        // do nothing
-                    }
-                    int count = sleeper.decrement();
-                    LOGGER.info("decremented, so that count = {}", count);
-                }))
-                .limit(5)
-                .collect(toList());
+        List<Thread> decrementers =
+                Stream.generate(
+                                () ->
+                                        new Thread(
+                                                () -> {
+                                                    try {
+                                                        Thread.sleep(
+                                                                (long) (Math.random() * 10000));
+                                                    } catch (InterruptedException e) {
+                                                        // do nothing
+                                                    }
+                                                    int count = sleeper.decrement();
+                                                    LOGGER.info(
+                                                            "decremented, so that count = {}",
+                                                            count);
+                                                }))
+                        .limit(5)
+                        .collect(toList());
 
         incrementers.forEach(Thread::start);
 
@@ -108,26 +117,36 @@ class OnZeroCountSleeperTest {
     @Test
     void willWaitOnlyUntilMaxTimeout() {
         OnZeroCountSleeper sleeper = new OnZeroCountSleeper(0, 1000);
-        List<Thread> incrementers = Stream
-                .generate(() -> new Thread(() -> {
-                    int count = sleeper.increment();
-                    LOGGER.info("incremented, so that count = {}", count);
-                }))
-                .limit(5)
-                .collect(toList());
+        List<Thread> incrementers =
+                Stream.generate(
+                                () ->
+                                        new Thread(
+                                                () -> {
+                                                    int count = sleeper.increment();
+                                                    LOGGER.info(
+                                                            "incremented, so that count = {}",
+                                                            count);
+                                                }))
+                        .limit(5)
+                        .collect(toList());
 
-        List<Thread> decrementers = Stream
-                .generate(() -> new Thread(() -> {
-                    try {
-                        Thread.sleep((long) (100000));
-                    } catch (InterruptedException e) {
-                    	LOGGER.error("User interrupted", e);
-                    }
-                    int count = sleeper.decrement();
-                    LOGGER.info("decremented, so that count = {}", count);
-                }))
-                .limit(5)
-                .collect(toList());
+        List<Thread> decrementers =
+                Stream.generate(
+                                () ->
+                                        new Thread(
+                                                () -> {
+                                                    try {
+                                                        Thread.sleep((long) (100000));
+                                                    } catch (InterruptedException e) {
+                                                        LOGGER.error("User interrupted", e);
+                                                    }
+                                                    int count = sleeper.decrement();
+                                                    LOGGER.info(
+                                                            "decremented, so that count = {}",
+                                                            count);
+                                                }))
+                        .limit(5)
+                        .collect(toList());
 
         incrementers.forEach(Thread::start);
 

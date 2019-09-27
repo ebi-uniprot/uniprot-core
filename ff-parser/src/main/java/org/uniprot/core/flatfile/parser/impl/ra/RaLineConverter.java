@@ -15,5 +15,4 @@ public class RaLineConverter implements Converter<RaLineObject, List<Author>> {
                 .map(val -> new AuthorBuilder(val).build())
                 .collect(Collectors.toList());
     }
-
 }

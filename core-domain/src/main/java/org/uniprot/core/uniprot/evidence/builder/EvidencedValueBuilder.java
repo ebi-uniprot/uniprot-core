@@ -13,7 +13,8 @@ import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
  *
  * @author Edd
  */
-public class EvidencedValueBuilder extends AbstractEvidencedValueBuilder<EvidencedValueBuilder, EvidencedValue> {
+public class EvidencedValueBuilder
+        extends AbstractEvidencedValueBuilder<EvidencedValueBuilder, EvidencedValue> {
     private EvidencedValueBuilder() {}
 
     public EvidencedValueBuilder(String value, List<Evidence> evidences) {

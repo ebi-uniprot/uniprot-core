@@ -11,7 +11,7 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, T
 
     private String scientificName;
 
-    private TaxonomyRank rank; //=TaxonomyRank.NO_RANK;
+    private TaxonomyRank rank; // =TaxonomyRank.NO_RANK;
 
     private boolean hidden;
 
@@ -37,12 +37,12 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, T
 
     @Override
     public TaxonomyLineage build() {
-        return new TaxonomyLineageImpl(taxonId,scientificName,rank,hidden);
+        return new TaxonomyLineageImpl(taxonId, scientificName, rank, hidden);
     }
 
     @Override
     public TaxonomyLineageBuilder from(TaxonomyLineage instance) {
-        if(instance != null) {
+        if (instance != null) {
             this.taxonId(instance.getTaxonId());
             this.scientificName(instance.getScientificName());
             this.rank(instance.getRank());
@@ -50,5 +50,4 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, T
         }
         return this;
     }
-
 }

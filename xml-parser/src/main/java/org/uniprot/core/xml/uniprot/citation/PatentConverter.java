@@ -34,5 +34,4 @@ public class PatentConverter implements Converter<CitationType, Patent> {
         xmlCitation.setNumber(uniObj.getPatentNumber());
         return xmlCitation;
     }
-
 }

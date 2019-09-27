@@ -27,7 +27,8 @@ public class LiteratureJsonConfig extends JsonConfig {
     private static LiteratureJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
-    private final ObjectMapper simpleMapper; // mapper without unwanted fields like type, lighter version
+    private final ObjectMapper
+            simpleMapper; // mapper without unwanted fields like type, lighter version
 
     private LiteratureJsonConfig() {
         this.objectMapper = initFullObjectMapper();
@@ -51,7 +52,6 @@ public class LiteratureJsonConfig extends JsonConfig {
         return this.objectMapper;
     }
 
-
     private ObjectMapper initFullObjectMapper() {
         ObjectMapper objMapper = getDefaultFullObjectMapper();
 
@@ -59,7 +59,8 @@ public class LiteratureJsonConfig extends JsonConfig {
         SimpleModule mod = new SimpleModule();
         mod.addAbstractTypeMapping(LiteratureEntry.class, LiteratureEntryImpl.class);
         mod.addAbstractTypeMapping(LiteratureStatistics.class, LiteratureStatisticsImpl.class);
-        mod.addAbstractTypeMapping(LiteratureMappedReference.class, LiteratureMappedReferenceImpl.class);
+        mod.addAbstractTypeMapping(
+                LiteratureMappedReference.class, LiteratureMappedReferenceImpl.class);
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
         mod.addAbstractTypeMapping(Author.class, AuthorImpl.class);
         mod.addAbstractTypeMapping(Journal.class, JournalImpl.class);
@@ -82,4 +83,3 @@ public class LiteratureJsonConfig extends JsonConfig {
         return prettyObjMapper;
     }
 }
-

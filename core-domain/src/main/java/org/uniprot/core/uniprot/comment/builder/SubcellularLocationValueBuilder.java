@@ -14,11 +14,12 @@ import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
  *
  * @author Edd
  */
-public class SubcellularLocationValueBuilder extends AbstractEvidencedValueBuilder<SubcellularLocationValueBuilder, SubcellularLocationValue> {
+public class SubcellularLocationValueBuilder
+        extends AbstractEvidencedValueBuilder<
+                SubcellularLocationValueBuilder, SubcellularLocationValue> {
     private String id;
 
-    private SubcellularLocationValueBuilder() {
-    }
+    private SubcellularLocationValueBuilder() {}
 
     public SubcellularLocationValueBuilder(String id, String value, List<Evidence> evidences) {
         this.id = id;
@@ -38,8 +39,7 @@ public class SubcellularLocationValueBuilder extends AbstractEvidencedValueBuild
 
     @Override
     public SubcellularLocationValueBuilder from(SubcellularLocationValue instance) {
-        return super.from(instance)
-                .id(instance.getId());
+        return super.from(instance).id(instance.getId());
     }
 
     public SubcellularLocationValueBuilder id(String id) {

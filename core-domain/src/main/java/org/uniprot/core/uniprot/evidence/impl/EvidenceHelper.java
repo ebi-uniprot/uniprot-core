@@ -46,11 +46,9 @@ public class EvidenceHelper {
 
         EvidenceCode evidenceCode = EvidenceCode.codeOf(code);
 
-        EvidenceBuilder builder = evidenceBuilder
-                .evidenceCode(evidenceCode);
+        EvidenceBuilder builder = evidenceBuilder.evidenceCode(evidenceCode);
         if (xref != null) {
-            builder.databaseName(xref.getDatabaseType().getName())
-                    .databaseId(xref.getId());
+            builder.databaseName(xref.getDatabaseType().getName()).databaseId(xref.getId());
         }
 
         return builder.build();

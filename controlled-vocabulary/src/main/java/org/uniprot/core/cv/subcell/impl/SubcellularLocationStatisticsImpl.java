@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.subcell.impl;
 
-import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
-
 import java.util.Objects;
+
+import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
 
 /**
  * @author lgonzales
@@ -17,7 +17,8 @@ public class SubcellularLocationStatisticsImpl implements SubcellularLocationSta
         this(0L, 0L);
     }
 
-    public SubcellularLocationStatisticsImpl(long reviewedProteinCount, long unreviewedProteinCount) {
+    public SubcellularLocationStatisticsImpl(
+            long reviewedProteinCount, long unreviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         this.unreviewedProteinCount = unreviewedProteinCount;
     }
@@ -37,8 +38,8 @@ public class SubcellularLocationStatisticsImpl implements SubcellularLocationSta
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SubcellularLocationStatisticsImpl that = (SubcellularLocationStatisticsImpl) o;
-        return getReviewedProteinCount() == that.getReviewedProteinCount() &&
-                getUnreviewedProteinCount() == that.getUnreviewedProteinCount();
+        return getReviewedProteinCount() == that.getReviewedProteinCount()
+                && getUnreviewedProteinCount() == that.getUnreviewedProteinCount();
     }
 
     @Override

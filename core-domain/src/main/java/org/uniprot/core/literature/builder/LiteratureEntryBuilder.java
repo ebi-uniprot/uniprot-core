@@ -14,9 +14,7 @@ import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureEntryImpl;
 import org.uniprot.core.util.Utils;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, LiteratureEntry> {
 
     private Long pubmedId;
@@ -111,12 +109,14 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
         return this;
     }
 
-    public LiteratureEntryBuilder literatureMappedReference(List<LiteratureMappedReference> literatureMappedReference) {
+    public LiteratureEntryBuilder literatureMappedReference(
+            List<LiteratureMappedReference> literatureMappedReference) {
         this.literatureMappedReference = Utils.nonNullList(literatureMappedReference);
         return this;
     }
 
-    public LiteratureEntryBuilder addLiteratureMappedReference(LiteratureMappedReference literatureMappedReference) {
+    public LiteratureEntryBuilder addLiteratureMappedReference(
+            LiteratureMappedReference literatureMappedReference) {
         Utils.nonNullAdd(literatureMappedReference, this.literatureMappedReference);
         return this;
     }
@@ -128,27 +128,41 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
 
     @Override
     public LiteratureEntry build() {
-        return new LiteratureEntryImpl(pubmedId, doiId, title, authoringGroup, authors, completeAuthorList,
-                publicationDate, journal, firstPage, lastPage, volume, literatureAbstract, literatureMappedReference, statistics);
+        return new LiteratureEntryImpl(
+                pubmedId,
+                doiId,
+                title,
+                authoringGroup,
+                authors,
+                completeAuthorList,
+                publicationDate,
+                journal,
+                firstPage,
+                lastPage,
+                volume,
+                literatureAbstract,
+                literatureMappedReference,
+                statistics);
     }
 
     @Override
     public LiteratureEntryBuilder from(LiteratureEntry instance) {
-        LiteratureEntryBuilder builder = new LiteratureEntryBuilder()
-                .pubmedId(instance.getPubmedId())
-                .doiId(instance.getDoiId())
-                .title(instance.getTitle())
-                .authoringGroup(instance.getAuthoringGroup())
-                .authors(instance.getAuthors())
-                .completeAuthorList(instance.isCompleteAuthorList())
-                .publicationDate(instance.getPublicationDate())
-                .journal(instance.getJournal())
-                .volume(instance.getVolume())
-                .firstPage(instance.getFirstPage())
-                .lastPage(instance.getLastPage())
-                .literatureAbstract(instance.getLiteratureAbstract())
-                .literatureMappedReference(instance.getLiteratureMappedReferences())
-                .statistics(instance.getStatistics());
+        LiteratureEntryBuilder builder =
+                new LiteratureEntryBuilder()
+                        .pubmedId(instance.getPubmedId())
+                        .doiId(instance.getDoiId())
+                        .title(instance.getTitle())
+                        .authoringGroup(instance.getAuthoringGroup())
+                        .authors(instance.getAuthors())
+                        .completeAuthorList(instance.isCompleteAuthorList())
+                        .publicationDate(instance.getPublicationDate())
+                        .journal(instance.getJournal())
+                        .volume(instance.getVolume())
+                        .firstPage(instance.getFirstPage())
+                        .lastPage(instance.getLastPage())
+                        .literatureAbstract(instance.getLiteratureAbstract())
+                        .literatureMappedReference(instance.getLiteratureMappedReferences())
+                        .statistics(instance.getStatistics());
         return builder;
     }
 }

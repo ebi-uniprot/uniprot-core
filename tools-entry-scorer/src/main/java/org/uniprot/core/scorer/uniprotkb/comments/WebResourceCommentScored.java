@@ -1,14 +1,13 @@
 package org.uniprot.core.scorer.uniprotkb.comments;
 
-
 import java.util.List;
 
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 17:21:42 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 17:21:42 To change this template
+ * use File | Settings | File Templates.
  */
 public class WebResourceCommentScored extends CommentScoredAbstr {
     @SuppressWarnings("unused")

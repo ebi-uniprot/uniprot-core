@@ -1,6 +1,10 @@
 package org.uniprot.core.json.parser.uniprot.citation;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -10,15 +14,9 @@ import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.builder.BookBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
-import java.util.Collections;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class BookTest {
 
     @Test
@@ -48,7 +46,7 @@ public class BookTest {
         assertNotNull(jsonNode.get("bookName"));
         assertEquals("book Name", jsonNode.get("bookName").asText());
         assertNotNull(jsonNode.get("editors"));
-        assertEquals(1,jsonNode.get("editors").size());
+        assertEquals(1, jsonNode.get("editors").size());
         assertEquals("editor Leo", jsonNode.get("editors").get(0).asText());
         assertNotNull(jsonNode.get("firstPage"));
         assertEquals("first page", jsonNode.get("firstPage").asText());
@@ -62,10 +60,12 @@ public class BookTest {
         assertEquals("address value", jsonNode.get("address").asText());
     }
 
-    public static Book getBook(){
-        DBCrossReference<CitationXrefType> xref = new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(CitationXrefType.PUBMED)
-                .id("somepID1").build();
+    public static Book getBook() {
+        DBCrossReference<CitationXrefType> xref =
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .databaseType(CitationXrefType.PUBMED)
+                        .id("somepID1")
+                        .build();
         return new BookBuilder()
                 .bookName("book Name")
                 .addEditor("editor Leo")
@@ -81,6 +81,4 @@ public class BookTest {
                 .citationXrefs(Collections.singletonList(xref))
                 .build();
     }
-
-
 }

@@ -21,9 +21,10 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
         this.evidences = Collections.emptyList();
     }
 
-    public PhysiologicalReactionImpl(PhysiologicalDirectionType directionType,
-                                     DBCrossReference<ReactionReferenceType> reactionReference,
-                                     List<Evidence> evidences) {
+    public PhysiologicalReactionImpl(
+            PhysiologicalDirectionType directionType,
+            DBCrossReference<ReactionReferenceType> reactionReference,
+            List<Evidence> evidences) {
         this.directionType = directionType;
         this.reactionReference = reactionReference;
         if ((evidences == null) || evidences.isEmpty()) {
@@ -68,9 +69,9 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PhysiologicalReactionImpl that = (PhysiologicalReactionImpl) o;
-        return directionType == that.directionType &&
-                Objects.equals(reactionReference, that.reactionReference) &&
-                Objects.equals(evidences, that.evidences);
+        return directionType == that.directionType
+                && Objects.equals(reactionReference, that.reactionReference)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override

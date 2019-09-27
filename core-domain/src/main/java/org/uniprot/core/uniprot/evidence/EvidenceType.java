@@ -8,8 +8,7 @@ public final class EvidenceType implements DatabaseType, Serializable {
     private static final long serialVersionUID = 799945684184000909L;
     private String name;
 
-    private EvidenceType() {
-    }
+    private EvidenceType() {}
 
     public EvidenceType(String name) {
         this.name = name;
@@ -33,17 +32,12 @@ public final class EvidenceType implements DatabaseType, Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         EvidenceType other = (EvidenceType) obj;
         if (name == null) {
             return other.name == null;
         } else return name.equals(other.name);
     }
-
-
 }

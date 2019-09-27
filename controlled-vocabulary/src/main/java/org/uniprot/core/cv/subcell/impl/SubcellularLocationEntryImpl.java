@@ -1,15 +1,15 @@
 package org.uniprot.core.cv.subcell.impl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.SubcellularLocationStatistics;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
     private SubcellLocationCategory category;
@@ -158,26 +158,38 @@ public class SubcellularLocationEntryImpl implements SubcellularLocationEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SubcellularLocationEntryImpl that = (SubcellularLocationEntryImpl) o;
-        return getCategory() == that.getCategory() &&
-                Objects.equals(getId(), that.getId()) &&
-                Objects.equals(getAccession(), that.getAccession()) &&
-                Objects.equals(getDefinition(), that.getDefinition()) &&
-                Objects.equals(getContent(), that.getContent()) &&
-                Objects.equals(getSynonyms(), that.getSynonyms()) &&
-                Objects.equals(getKeyword(), that.getKeyword()) &&
-                Objects.equals(getGeneOntologies(), that.getGeneOntologies()) &&
-                Objects.equals(getNote(), that.getNote()) &&
-                Objects.equals(getReferences(), that.getReferences()) &&
-                Objects.equals(getLinks(), that.getLinks()) &&
-                Objects.equals(getIsA(), that.getIsA()) &&
-                Objects.equals(getPartOf(), that.getPartOf()) &&
-                Objects.equals(getStatistics(), that.getStatistics());
+        return getCategory() == that.getCategory()
+                && Objects.equals(getId(), that.getId())
+                && Objects.equals(getAccession(), that.getAccession())
+                && Objects.equals(getDefinition(), that.getDefinition())
+                && Objects.equals(getContent(), that.getContent())
+                && Objects.equals(getSynonyms(), that.getSynonyms())
+                && Objects.equals(getKeyword(), that.getKeyword())
+                && Objects.equals(getGeneOntologies(), that.getGeneOntologies())
+                && Objects.equals(getNote(), that.getNote())
+                && Objects.equals(getReferences(), that.getReferences())
+                && Objects.equals(getLinks(), that.getLinks())
+                && Objects.equals(getIsA(), that.getIsA())
+                && Objects.equals(getPartOf(), that.getPartOf())
+                && Objects.equals(getStatistics(), that.getStatistics());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCategory(), getId(), getAccession(), getDefinition(), getContent(), getSynonyms(),
-                getKeyword(), getGeneOntologies(), getNote(), getReferences(), getLinks(), getIsA(),
-                getPartOf(), getStatistics());
+        return Objects.hash(
+                getCategory(),
+                getId(),
+                getAccession(),
+                getDefinition(),
+                getContent(),
+                getSynonyms(),
+                getKeyword(),
+                getGeneOntologies(),
+                getNote(),
+                getReferences(),
+                getLinks(),
+                getIsA(),
+                getPartOf(),
+                getStatistics());
     }
 }

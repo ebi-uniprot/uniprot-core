@@ -16,9 +16,9 @@ import org.uniprot.core.Property;
  * @author Edd
  */
 public abstract class AbstractDBCrossReferenceBuilder<
-        B extends AbstractDBCrossReferenceBuilder<B, T, D>,
-        T extends DatabaseType,
-        D extends DBCrossReference<T>>
+                B extends AbstractDBCrossReferenceBuilder<B, T, D>,
+                T extends DatabaseType,
+                D extends DBCrossReference<T>>
         implements Builder<B, D> {
     protected T databaseType;
     protected String id;
@@ -28,8 +28,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
 
     @Override
     public B from(D instance) {
-        return this
-                .properties(instance.getProperties())
+        return this.properties(instance.getProperties())
                 .id(instance.getId())
                 .databaseType(instance.getDatabaseType());
     }

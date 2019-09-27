@@ -45,11 +45,12 @@ public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit>
 
     @Override
     public EntryAudit build() {
-        return new EntryAuditImpl(firstPublicDate,
-                                  lastAnnotationUpdateDate,
-                                  lastSequenceUpdateDate,
-                                  entryVersion,
-                                  sequenceVersion);
+        return new EntryAuditImpl(
+                firstPublicDate,
+                lastAnnotationUpdateDate,
+                lastSequenceUpdateDate,
+                entryVersion,
+                sequenceVersion);
     }
 
     @Override

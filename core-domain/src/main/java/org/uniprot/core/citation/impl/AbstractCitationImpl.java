@@ -22,8 +22,13 @@ public abstract class AbstractCitationImpl implements Citation {
         this.authoringGroup = Collections.emptyList();
     }
 
-    public AbstractCitationImpl(CitationType citationType, List<String> authoringGroup, List<Author> authors,
-                                List<DBCrossReference<CitationXrefType>> citationXrefs, String title, PublicationDate publicationDate) {
+    public AbstractCitationImpl(
+            CitationType citationType,
+            List<String> authoringGroup,
+            List<Author> authors,
+            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            String title,
+            PublicationDate publicationDate) {
         this.citationType = citationType;
         this.authoringGroup = Utils.nonNullUnmodifiableList(authoringGroup);
         this.authors = Utils.nonNullUnmodifiableList(authors);
@@ -38,7 +43,8 @@ public abstract class AbstractCitationImpl implements Citation {
     }
 
     @Override
-    public Optional<DBCrossReference<CitationXrefType>> getCitationXrefsByType(CitationXrefType type) {
+    public Optional<DBCrossReference<CitationXrefType>> getCitationXrefsByType(
+            CitationXrefType type) {
         return citationXrefs.stream().filter(xref -> xref.getDatabaseType() == type).findAny();
     }
 
@@ -77,19 +83,18 @@ public abstract class AbstractCitationImpl implements Citation {
         return publicationDate;
     }
 
-
     @Override
-    public boolean hasAuthoringGroup(){
+    public boolean hasAuthoringGroup() {
         return Utils.notEmpty(this.authoringGroup);
     }
 
     @Override
-    public boolean hasAuthors(){
+    public boolean hasAuthors() {
         return Utils.notEmpty(this.authors);
     }
 
     @Override
-    public boolean hasPublicationDate(){
+    public boolean hasPublicationDate() {
         return this.publicationDate != null;
     }
 
@@ -108,35 +113,23 @@ public abstract class AbstractCitationImpl implements Citation {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         AbstractCitationImpl other = (AbstractCitationImpl) obj;
         if (authoringGroup == null) {
-            if (other.authoringGroup != null)
-                return false;
-        } else if (!authoringGroup.equals(other.authoringGroup))
-            return false;
+            if (other.authoringGroup != null) return false;
+        } else if (!authoringGroup.equals(other.authoringGroup)) return false;
         if (authors == null) {
-            if (other.authors != null)
-                return false;
-        } else if (!authors.equals(other.authors))
-            return false;
-        if (citationType != other.citationType)
-            return false;
+            if (other.authors != null) return false;
+        } else if (!authors.equals(other.authors)) return false;
+        if (citationType != other.citationType) return false;
         if (citationXrefs == null) {
-            if (other.citationXrefs != null)
-                return false;
-        } else if (!citationXrefs.equals(other.citationXrefs))
-            return false;
+            if (other.citationXrefs != null) return false;
+        } else if (!citationXrefs.equals(other.citationXrefs)) return false;
         if (publicationDate == null) {
-            if (other.publicationDate != null)
-                return false;
-        } else if (!publicationDate.equals(other.publicationDate))
-            return false;
+            if (other.publicationDate != null) return false;
+        } else if (!publicationDate.equals(other.publicationDate)) return false;
         if (title == null) {
             return other.title == null;
         } else return title.equals(other.title);

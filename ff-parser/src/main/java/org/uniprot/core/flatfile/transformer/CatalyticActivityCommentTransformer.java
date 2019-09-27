@@ -1,7 +1,6 @@
 package org.uniprot.core.flatfile.transformer;
 
-
-import com.google.common.base.Strings;
+import static java.util.Arrays.stream;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +19,19 @@ import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
 
-import static java.util.Arrays.stream;
+import com.google.common.base.Strings;
 
-public class CatalyticActivityCommentTransformer implements CommentTransformer<CatalyticActivityComment> {
+public class CatalyticActivityCommentTransformer
+        implements CommentTransformer<CatalyticActivityComment> {
     private static final CommentType COMMENT_TYPE = CommentType.CATALYTIC_ACTIVITY;
-    private static final String CATALYTIC_ACTIVITY_REGEX = "^([\\w/-]+(\\s[\\w/-]+)*:)?"
-            + "(\\s*(Reaction=(.+?));( (Xref=([^;]+));)?( EC=(([0-9]|\\.|n)+);)?( Evidence=\\{([^;]+)\\};)?)"
-            + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?"
-            + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?";
+    private static final String CATALYTIC_ACTIVITY_REGEX =
+            "^([\\w/-]+(\\s[\\w/-]+)*:)?"
+                    + "(\\s*(Reaction=(.+?));( (Xref=([^;]+));)?( EC=(([0-9]|\\.|n)+);)?( Evidence=\\{([^;]+)\\};)?)"
+                    + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?"
+                    + "(([ \\t\\r\\n\\f]+)(PhysiologicalDirection=([^;]+)); (Xref=([^;]+));( Evidence=\\{([^;]+)\\};)?)?";
 
-    public static final Pattern ATALYTIC_ACTIVITY_PATTERN = Pattern.compile(CATALYTIC_ACTIVITY_REGEX);
+    public static final Pattern ATALYTIC_ACTIVITY_PATTERN =
+            Pattern.compile(CATALYTIC_ACTIVITY_REGEX);
 
     @Override
     public CatalyticActivityComment transform(String annotation) {
@@ -55,7 +57,8 @@ public class CatalyticActivityCommentTransformer implements CommentTransformer<C
             String pdXref2 = matcher.group(27);
             String pdEvidence2 = matcher.group(29);
 
-            Reaction reaction = createReaction(reactionName, reactionXref, reactionEc, reactionEvidence);
+            Reaction reaction =
+                    createReaction(reactionName, reactionXref, reactionEc, reactionEvidence);
             builder.reaction(reaction);
             List<PhysiologicalReaction> pds = new ArrayList<>();
             if (!Strings.isNullOrEmpty(pdName1)) {
@@ -71,10 +74,10 @@ public class CatalyticActivityCommentTransformer implements CommentTransformer<C
             throw new IllegalArgumentException(
                     "Unable to convert annotation to CATALYTIC_ACTIVITY comment: " + annotation);
         }
-
     }
 
-    private PhysiologicalReaction createPhysiologicalDirection(String name, String xref, String evidence) {
+    private PhysiologicalReaction createPhysiologicalDirection(
+            String name, String xref, String evidence) {
         DBCrossReference<ReactionReferenceType> reference = null;
         if (!Strings.isNullOrEmpty(xref)) {
             reference = convertReactionReference(xref);
@@ -82,7 +85,8 @@ public class CatalyticActivityCommentTransformer implements CommentTransformer<C
         List<Evidence> evidences = new ArrayList<>();
         if (!Strings.isNullOrEmpty(evidence)) {
             evidences =
-                    EvidenceHelper.parseEvidenceLines(stream(evidence.split(", ")).collect(Collectors.toList()));
+                    EvidenceHelper.parseEvidenceLines(
+                            stream(evidence.split(", ")).collect(Collectors.toList()));
         }
         return new PhysiologicalReactionBuilder()
                 .directionType(PhysiologicalDirectionType.typeOf(name))
@@ -100,16 +104,23 @@ public class CatalyticActivityCommentTransformer implements CommentTransformer<C
         List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
         if (!Strings.isNullOrEmpty(xref)) {
             references =
-                    stream(xref.split(", ")).map(this::convertReactionReference).collect(Collectors.toList());
+                    stream(xref.split(", "))
+                            .map(this::convertReactionReference)
+                            .collect(Collectors.toList());
         }
         List<Evidence> evidences = new ArrayList<>();
         if (!Strings.isNullOrEmpty(evidence)) {
 
-            evidences = EvidenceHelper
-                    .parseEvidenceLines(stream(evidence.split(", ")).collect(Collectors.toList()));
+            evidences =
+                    EvidenceHelper.parseEvidenceLines(
+                            stream(evidence.split(", ")).collect(Collectors.toList()));
         }
         return new ReactionBuilder()
-                .name(name).references(references).ecNumber(ecNumber).evidences(evidences).build();
+                .name(name)
+                .references(references)
+                .ecNumber(ecNumber)
+                .evidences(evidences)
+                .build();
     }
 
     private DBCrossReference<ReactionReferenceType> convertReactionReference(String val) {
@@ -122,6 +133,4 @@ public class CatalyticActivityCommentTransformer implements CommentTransformer<C
                 .id(id)
                 .build();
     }
-
-
 }

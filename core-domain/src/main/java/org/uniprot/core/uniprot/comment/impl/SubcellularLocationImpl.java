@@ -20,9 +20,9 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     public SubcellularLocationImpl(
             SubcellularLocationValue location,
             SubcellularLocationValue topology,
-            SubcellularLocationValue orientation){
+            SubcellularLocationValue orientation) {
         this.location = location;
-        this.topology =topology;
+        this.topology = topology;
         this.orientation = orientation;
     }
 
@@ -61,9 +61,9 @@ public class SubcellularLocationImpl implements SubcellularLocation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SubcellularLocationImpl that = (SubcellularLocationImpl) o;
-        return Objects.equals(location, that.location) &&
-                Objects.equals(topology, that.topology) &&
-                Objects.equals(orientation, that.orientation);
+        return Objects.equals(location, that.location)
+                && Objects.equals(topology, that.topology)
+                && Objects.equals(orientation, that.orientation);
     }
 
     @Override
@@ -71,23 +71,24 @@ public class SubcellularLocationImpl implements SubcellularLocation {
         return Objects.hash(location, topology, orientation);
     }
 
-    public static class SubcellularLocationValueImpl extends EvidencedValueImpl implements SubcellularLocationValue {
+    public static class SubcellularLocationValueImpl extends EvidencedValueImpl
+            implements SubcellularLocationValue {
 
-		private static final long serialVersionUID = -2637543322400653482L;
-		private String id;
-    	private SubcellularLocationValueImpl() {
-            super( null, Collections.emptyList());
+        private static final long serialVersionUID = -2637543322400653482L;
+        private String id;
+
+        private SubcellularLocationValueImpl() {
+            super(null, Collections.emptyList());
         }
 
         public SubcellularLocationValueImpl(String id, String value, List<Evidence> evidences) {
             super(value, evidences);
-            this.id =id;
+            this.id = id;
         }
 
-		@Override
-		public String getId() {
-			return id;
-		}
-		
+        @Override
+        public String getId() {
+            return id;
+        }
     }
 }
