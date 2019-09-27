@@ -1,10 +1,10 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.ec;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.ec.EC;
+import org.uniprot.core.cv.ec.ECFileReader;
 import org.uniprot.core.cv.ec.impl.ECImpl;
-import org.uniprot.core.cv.impl.ECFileReader;
 
 import java.util.Arrays;
 import java.util.List;

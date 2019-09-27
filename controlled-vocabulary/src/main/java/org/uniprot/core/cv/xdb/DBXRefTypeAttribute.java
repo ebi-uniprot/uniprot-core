@@ -1,6 +1,7 @@
 package org.uniprot.core.cv.xdb;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public final class DBXRefTypeAttribute implements Serializable {
     private static final long serialVersionUID = -4851911006519587041L;
@@ -32,12 +33,7 @@ public final class DBXRefTypeAttribute implements Serializable {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((uriLink == null) ? 0 : uriLink.hashCode());
-        result = prime * result + ((xmlTag == null) ? 0 : xmlTag.hashCode());
-        return result;
+        return Objects.hash(this.name, this.xmlTag, this.uriLink);
     }
 
     @Override
@@ -48,20 +44,11 @@ public final class DBXRefTypeAttribute implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
+
         DBXRefTypeAttribute other = (DBXRefTypeAttribute) obj;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (uriLink == null) {
-            if (other.uriLink != null)
-                return false;
-        } else if (!uriLink.equals(other.uriLink))
-            return false;
-        if (xmlTag == null) {
-            return other.xmlTag == null;
-        } else return xmlTag.equals(other.xmlTag);
+        return Objects.equals(this.name, other.name)
+                && Objects.equals(this.uriLink, other.uriLink)
+                && Objects.equals(this.xmlTag, other.xmlTag);
     }
 
 }

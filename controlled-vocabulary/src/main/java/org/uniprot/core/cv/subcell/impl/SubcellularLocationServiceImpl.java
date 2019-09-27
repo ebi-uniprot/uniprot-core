@@ -1,13 +1,13 @@
 package org.uniprot.core.cv.subcell.impl;
 
+import org.uniprot.core.cv.subcell.SubcellularLocationCache;
+import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
+import org.uniprot.core.cv.subcell.SubcellularLocationService;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.cv.subcell.SubcellularLocationCache;
-import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
-import org.uniprot.core.cv.subcell.SubcellularLocationService;
 
 public class SubcellularLocationServiceImpl implements SubcellularLocationService {
 	private List<SubcellularLocationEntry> subcellularLocations;

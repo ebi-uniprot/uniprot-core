@@ -481,7 +481,7 @@
 		"name": "MassIVE",
 		"displayName": "MassIVE",
 		"category": "PROTEOMIC",
-		"uriLink": "https://massive.ucsd.edu/ProteoSAFe/protein_explorer.jsp?libraries=2&protein_name=%value"
+		"uriLink": "https://massive.ucsd.edu/ProteoSAFe/protein_explorer.jsp?libraries=2&protein_name=%u"
 	},
 	
 	{
@@ -1490,14 +1490,14 @@
 	{
 		"name": "Pharos",
 		"displayName": "Pharos",
-		"category": "UNK",
-		"uriLink": "https://pharos.nih.gov/targets/%value"
+		"category": "OTHER",
+		"uriLink": "https://pharos.nih.gov/idg/targets/%u"
 	},
 	{
 		"name": "DrugCentral",
 		"displayName": "DrugCentral",
-		"category": "UNK",
-		"uriLink": "http://drugcentral.org/target/%value"
+		"category": "CHEMISTRY",
+		"uriLink": "http://drugcentral.org/target/%u"
 	},
 	{
 		"name": "ABCD",

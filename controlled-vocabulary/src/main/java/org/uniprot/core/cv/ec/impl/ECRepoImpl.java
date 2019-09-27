@@ -1,14 +1,14 @@
 package org.uniprot.core.cv.ec.impl;
 
+import org.uniprot.core.cv.ec.EC;
+import org.uniprot.core.cv.ec.ECCache;
+import org.uniprot.core.cv.ec.ECRepo;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.cv.ec.EC;
-import org.uniprot.core.cv.ec.ECCache;
-import org.uniprot.core.cv.ec.ECRepo;
 
 public class ECRepoImpl implements ECRepo {
     private final Map<String, EC> ecIdMap;

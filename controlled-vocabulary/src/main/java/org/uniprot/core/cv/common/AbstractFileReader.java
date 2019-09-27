@@ -1,4 +1,4 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.common;
 
 import org.slf4j.Logger;
 import org.uniprot.core.cv.FileReader;
@@ -15,7 +15,7 @@ import static org.slf4j.LoggerFactory.getLogger;
 public abstract class AbstractFileReader<T> implements FileReader<T> {
     private static final Logger LOGGER = getLogger(AbstractFileReader.class);
     private static final String FTP_PREFIX = "ftp://";
-    static final List<String> COPYRIGHT_LINES =
+    protected static final List<String> COPYRIGHT_LINES =
             Arrays.asList(
                     "-----------------------------------------------------------------------",
                     "Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms",
@@ -23,7 +23,7 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
                     "-----------------------------------------------------------------------"
             );
 
-    abstract List<T> parseLines(List<String> lines);
+    public abstract List<T> parseLines(List<String> lines);
 
     @Override
     public List<T> parse(String filename) {
@@ -48,8 +48,8 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
                 inText.close();
                 in.close();
             }
-        } catch (Exception e) {
-
+        } catch (IOException e) {
+            LOGGER.error("Error while fetching the data from ftp url {}", ftpUrl);
         }
         return lines;
     }
@@ -78,8 +78,4 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
             return lines;
         }
     }
-//    private InputStream getInputStream(String filename) {
-//    	 InputStream inputStream =  AbstractFileReader.class.getClassLoader().getResourceAsStream(filename);
-//    	 i
-//    }
 }

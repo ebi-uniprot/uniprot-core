@@ -2,12 +2,13 @@ package org.uniprot.core.cv.pathway;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class UniPathway implements Comparable<UniPathway>{
 	private final String accession;
 	private final String name;
 	private UniPathway parent ;
-	private List<UniPathway> children =new ArrayList<>();
+	private List<UniPathway> children = new ArrayList<>();
 	
 	public UniPathway(String accession, String name) {
 		this.accession = accession;
@@ -44,33 +45,22 @@ public class UniPathway implements Comparable<UniPathway>{
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((accession == null) ? 0 : accession.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
+		return Objects.hash(this.name, this.accession);
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		UniPathway other = (UniPathway) obj;
-		if (accession == null) {
-			if (other.accession != null)
-				return false;
-		} else if (!accession.equals(other.accession))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+		return Objects.equals(this.accession, other.accession)
+				&& Objects.equals(this.name, other.name);
 	}
-
 }

@@ -3,6 +3,7 @@ package org.uniprot.core.cv.xdb;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class UniProtXDbTypeDetail implements Serializable {
     private static final long serialVersionUID = 8751881513996820892L;
@@ -57,14 +58,8 @@ public class UniProtXDbTypeDetail implements Serializable {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((attributes == null) ? 0 : attributes.hashCode());
-        result = prime * result + ((category == null) ? 0 : category.hashCode());
-        result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((uriLink == null) ? 0 : uriLink.hashCode());
-        return result;
+        return Objects.hash(this.attributes, this.category,
+                this.displayName, this.name, this.uriLink);
     }
 
     @Override
@@ -75,28 +70,18 @@ public class UniProtXDbTypeDetail implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
+
         UniProtXDbTypeDetail other = (UniProtXDbTypeDetail) obj;
-        if (attributes == null) {
-            if (other.attributes != null)
-                return false;
-        } else if (!attributes.equals(other.attributes))
-            return false;
-        if (category != other.category)
-            return false;
-        if (displayName == null) {
-            if (other.displayName != null)
-                return false;
-        } else if (!displayName.equals(other.displayName))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (uriLink == null) {
-            return other.uriLink == null;
-        } else return uriLink.equals(other.uriLink);
+
+        return Objects.equals(this.attributes, other.attributes)
+                &&
+                Objects.equals(this.category, other.category)
+                &&
+                Objects.equals(this.displayName, other.displayName)
+                &&
+                Objects.equals(this.name, other.name)
+                &&
+                Objects.equals(this.uriLink, other.uriLink);
+
     }
-
-
 }

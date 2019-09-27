@@ -1,14 +1,13 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.chebi;
 
-import static org.uniprot.core.util.Utils.nonNull;
+import org.uniprot.core.cv.common.AbstractFileReader;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.uniprot.core.cv.chebi.Chebi;
-import org.uniprot.core.cv.chebi.ChebiBuilder;
+import static org.uniprot.core.util.Utils.nonNull;
 
 public class ChebiFileReader extends AbstractFileReader<Chebi> {
     private static final String ID_PREFIX = "id: CHEBI:";
@@ -17,7 +16,7 @@ public class ChebiFileReader extends AbstractFileReader<Chebi> {
             .compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
 
     @Override
-    List<Chebi> parseLines(List<String> lines) {
+    public List<Chebi> parseLines(List<String> lines) {
         List<Chebi> chebiList = new ArrayList<>();
         ChebiBuilder chebiBuilder = null;
         for (String line : lines) {
@@ -40,8 +39,9 @@ public class ChebiFileReader extends AbstractFileReader<Chebi> {
             }
         }
 
-        // add the most recently created builder
-        chebiList.add(chebiBuilder.build());
+        if(chebiBuilder != null) {// add the most recently created builder
+            chebiList.add(chebiBuilder.build());
+        }
 
         return chebiList;
     }

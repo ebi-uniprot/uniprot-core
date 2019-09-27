@@ -1,6 +1,11 @@
 package org.uniprot.core.cv.xdb;
 
 
+import org.uniprot.core.cv.xdb.validator.DBXRefValidator;
+import org.uniprot.core.util.Utils;
+import org.uniprot.core.util.property.PropertyArray;
+import org.uniprot.core.util.property.PropertyObject;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -8,11 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.uniprot.core.cv.xdb.validator.DBXRefValidator;
-import org.uniprot.core.util.Utils;
-import org.uniprot.core.util.property.PropertyArray;
-import org.uniprot.core.util.property.PropertyObject;
 
 
 public enum UniProtXDbTypes {

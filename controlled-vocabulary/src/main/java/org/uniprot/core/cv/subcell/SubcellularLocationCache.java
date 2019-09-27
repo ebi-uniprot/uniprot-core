@@ -1,49 +1,36 @@
 package org.uniprot.core.cv.subcell;
 
+import org.uniprot.core.cv.common.AbstractFileReader;
+import org.uniprot.core.cv.common.BaseCache;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.uniprot.core.cv.impl.SubcellularLocationFileReader;
-
-public enum SubcellularLocationCache {
+public enum SubcellularLocationCache implements BaseCache<SubcellularLocationEntry> {
 	INSTANCE;
 	public static final String FTP_LOCATION ="ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/subcell.txt";
-	Map<String, List<SubcellularLocationEntry>> locationSubcellularLocationMap = new HashMap<>();
-	SubcellularLocationCache(){
-		
+	private Map<String, List<SubcellularLocationEntry>> locationSubcellularLocationMap = new HashMap<>();
+	private AbstractFileReader<SubcellularLocationEntry> reader;
+	private String defaultDataLocation = FTP_LOCATION;
+
+	@Override
+	public String getDefaultDataFile() {
+		return this.defaultDataLocation;
 	}
 
-	public List<SubcellularLocationEntry> get(String file) {
-		String filename = file;
-		if((filename ==null) || filename.isEmpty()){
-			filename = FTP_LOCATION;
-		}
-
-		List<SubcellularLocationEntry> result = locationSubcellularLocationMap.get(filename);
-		if(result !=null)
-			return result;
-		
-		result = buildCache(filename);
-		if(result.isEmpty() && !FTP_LOCATION.equals(filename)) {
-			result = locationSubcellularLocationMap.get(FTP_LOCATION);
-			if(result ==null) {
-				result = buildCache(FTP_LOCATION);
-				locationSubcellularLocationMap.put(FTP_LOCATION, result);
-				return result;
-			}else {
-				return result;
-			}
-		}else {
-			locationSubcellularLocationMap.put(filename, result);
-			return result;
-		}
-		
+	@Override
+	public void setDefaultDataFile(String dataFile) {
+		this.defaultDataLocation = dataFile;
 	}
 
-	private List<SubcellularLocationEntry> buildCache(String filename) {
-		SubcellularLocationFileReader parser = new SubcellularLocationFileReader();
-		return parser.parse(filename);
+	@Override
+	public Map<String, List<SubcellularLocationEntry>> getCacheMap() {
+		return this.locationSubcellularLocationMap;
+	}
 
+	@Override
+	public AbstractFileReader<SubcellularLocationEntry> getReader() {
+		return this.reader == null ? (this.reader = new SubcellularLocationFileReader()) : this.reader;
 	}
 }

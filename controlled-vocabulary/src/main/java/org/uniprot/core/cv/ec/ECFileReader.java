@@ -1,14 +1,13 @@
-package org.uniprot.core.cv.impl;
+package org.uniprot.core.cv.ec;
+
+import org.uniprot.core.cv.common.AbstractFileReader;
+import org.uniprot.core.cv.ec.impl.ECImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.uniprot.core.cv.ec.EC;
-import org.uniprot.core.cv.ec.ECCache;
-import org.uniprot.core.cv.ec.impl.ECImpl;
 
 public class ECFileReader extends AbstractFileReader<EC> {
     private static final Pattern ENZYME_CLASS_PATTERN = Pattern
@@ -31,20 +30,20 @@ public class ECFileReader extends AbstractFileReader<EC> {
     }
 
     @Override
-    List<EC> parseLines(List<String> lines) {
+    public List<EC> parseLines(List<String> lines) {
         throw new UnsupportedOperationException("Functionality supplied by inner classes; please call 'parse' method.");
     }
 
-    static String removeLastDotsFrom(String line) {
+    public static String removeLastDotsFrom(String line) {
         Matcher matcher = TERMINATING_DOTS.matcher(line);
         // no need to check if regex matched, since it always matches something
         matcher.matches();
         return matcher.group(1);
     }
 
-    static class ECClassFileReader extends AbstractFileReader<EC> {
+    public static class ECClassFileReader extends AbstractFileReader<EC> {
         @Override
-        List<EC> parseLines(List<String> lines) {
+        public List<EC> parseLines(List<String> lines) {
             List<EC> ecs = new ArrayList<>();
             for (String line : lines) {
                 Matcher matcher = ENZYME_CLASS_PATTERN.matcher(line);
@@ -57,9 +56,9 @@ public class ECFileReader extends AbstractFileReader<EC> {
         }
     }
 
-    static class ECDatFileReader extends AbstractFileReader<EC> {
+    public static class ECDatFileReader extends AbstractFileReader<EC> {
         @Override
-        List<EC> parseLines(List<String> lines) {
+        public List<EC> parseLines(List<String> lines) {
             List<EC> ecs = new ArrayList<>();
             ECImpl.Builder builder = new ECImpl.Builder();
             for (String line : lines) {

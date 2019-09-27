@@ -1,9 +1,6 @@
 package org.uniprot.core.cv.chebi;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.chebi.Chebi;
-import org.uniprot.core.cv.chebi.ChebiRepo;
-import org.uniprot.core.cv.chebi.ChebiRepoFactory;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
