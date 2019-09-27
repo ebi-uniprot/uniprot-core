@@ -3,8 +3,7 @@ package org.uniprot.core.cv.xdb;
 
 import org.uniprot.core.cv.xdb.validator.DBXRefValidator;
 import org.uniprot.core.util.Utils;
-import org.uniprot.core.util.property.PropertyArray;
-import org.uniprot.core.util.property.PropertyObject;
+import org.uniprot.core.util.property.Property;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -71,22 +70,20 @@ public enum UniProtXDbTypes {
     	List<String> newDbs = getNewDB();
         try (InputStream configFile = UniProtXDbTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
-            PropertyArray jsonArray = new PropertyArray(source);
+            List<Property> jsonArray = Property.parseJsonArray(source);
             
             jsonArray.forEach(item -> {
-                PropertyObject dbTypeDetail = (PropertyObject) item;
-                String name = dbTypeDetail.getString("name");
-                String displayName = dbTypeDetail.getString("displayName");
-                String category = dbTypeDetail.getString("category");
-                String uriLink = dbTypeDetail.getString("uriLink");
+                String name = item.getString("name");
+                String displayName = item.getString("displayName");
+                String category = item.getString("category");
+                String uriLink = item.getString("uriLink");
                 List<DBXRefTypeAttribute> attributes = new ArrayList<>();
-                PropertyArray properties = dbTypeDetail.optJSONArray("attributes");
+                List<Property>  properties = item.getProperties("attributes");
                 if (properties != null) {
                     properties.forEach(p -> {
-                        PropertyObject property = (PropertyObject) p;
-                        String attributeName = property.getString("name");
-                        String attributeXmlTag = property.optString("xmlTag", null);
-                        String attributeUriLink = property.optString("uriLink", null);
+                        String attributeName = p.getString("name");
+                        String attributeXmlTag = p.optString("xmlTag", null);
+                        String attributeUriLink = p.optString("uriLink", null);
                         attributes.add(new DBXRefTypeAttribute(attributeName, attributeXmlTag, attributeUriLink));
                     });
                 }
