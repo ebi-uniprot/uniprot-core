@@ -1,5 +1,8 @@
 package org.uniprot.core.util;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -17,7 +20,7 @@ public class MessageDigestUtil {
      * @param type Message Digest type,
      * @return String
      */
-    static String getDigest(String seq, String type) {
+    static String getDigest(@NotNull String seq, @NotBlank String type) {
         MessageDigest md;
         try {
             md = MessageDigest.getInstance(type);
@@ -35,7 +38,7 @@ public class MessageDigestUtil {
      * @param seq string to be converted
      * @return Hex string
      */
-    public static String getMD5(String seq) {
+    public static @NotBlank String getMD5(@Null String seq) {
         return getDigest(seq, "MD5");
     }
 

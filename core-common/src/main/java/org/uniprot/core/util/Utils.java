@@ -1,5 +1,7 @@
 package org.uniprot.core.util;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.io.InputStream;
 import java.util.*;
 
@@ -10,7 +12,7 @@ public class Utils {
      * @param string string null or non null
      * @return empty string or original string
      */
-    public static String emptyOrString(String string) {
+    public static @NotNull String emptyOrString(@Null String string) {
         if (string == null) return "";
         else return string;
     }
@@ -22,7 +24,7 @@ public class Utils {
      * @param <T> Type of list
      * @return non null list or new array list
      */
-    public static <T> List<T> emptyOrList(List<T> list) {
+    public static <T> @NotNull List<T> emptyOrList(@Null List<T> list) {
         if (list == null) return new ArrayList<>();
         else return list;
     }
@@ -35,7 +37,7 @@ public class Utils {
      * @param <T> Type of source list
      * @return non null array list
      */
-    public static <T> List<T> modifiableList(List<T> source) {
+    public static <T> @NotNull List<T> modifiableList(@Null List<T> source) {
         if (source != null) {
             return new ArrayList<>(source);
         } else {
@@ -50,7 +52,7 @@ public class Utils {
      * @param target list to add value, should be notNull and modifiable
      * @param <T> Type of value and list should be same
      */
-    public static <T> void addOrIgnoreNull(T value, List<T> target) {
+    public static <T> void addOrIgnoreNull(@Null T value, @NotNull List<T> target) {
         if (value != null) {
             target.add(value);
         }
@@ -63,7 +65,7 @@ public class Utils {
      * @param <T> type of the list
      * @return Always returns non null un modifiable list
      */
-    public static <T> List<T> unmodifiableList(List<T> targetList) {
+    public static <T> @NotNull List<T> unmodifiableList(@Null List<T> targetList) {
         if ((targetList == null) || targetList.isEmpty()) {
             return Collections.emptyList();
         } else {
@@ -71,45 +73,45 @@ public class Utils {
         }
     }
 
-    public static String loadPropertyInput(InputStream configFile) {
+    public static @NotNull String loadPropertyInput(@NotNull InputStream configFile) {
         Scanner s = new Scanner(configFile).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
 
-    public static boolean nullOrEmpty(String value) {
+    public static boolean nullOrEmpty(@Null String value) {
         return value == null || value.isEmpty();
     }
 
-    public static boolean nullOrEmpty(List<?> value) {
+    public static boolean nullOrEmpty(@Null List<?> value) {
         return value == null || value.isEmpty();
     }
 
-    public static boolean nullOrEmpty(Map<?, ?> value) {
+    public static boolean nullOrEmpty(@Null Map<?, ?> value) {
         return value == null || value.isEmpty();
     }
 
-    public static boolean notNullOrEmpty(String value) {
+    public static boolean notNullOrEmpty(@Null String value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notNullOrEmpty(List<?> value) {
+    public static boolean notNullOrEmpty(@Null List<?> value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notNullOrEmpty(Map<?, ?> value) {
+    public static boolean notNullOrEmpty(@Null Map<?, ?> value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notNull(Object o) {
+    public static boolean notNull(@Null Object o) {
         return Objects.nonNull(o);
     }
 
-    public static String upperFirstChar(String str) {
+    public static @Null String upperFirstChar(@Null String str) {
         if (nullOrEmpty(str)) return str;
         return Character.toTitleCase(str.charAt(0)) + str.substring(1);
     }
 
-    public static String lowerFirstChar(String str) {
+    public static @Null String lowerFirstChar(@Null String str) {
         if (nullOrEmpty(str)) return str;
         return Character.toLowerCase(str.charAt(0)) + str.substring(1);
     }

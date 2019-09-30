@@ -1,5 +1,7 @@
 package org.uniprot.core.util;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -37,7 +39,7 @@ public enum PublicationDateFormatter {
         this.dateFormat = dateFormat;
     }
 
-    public Date convertStringToDate(String publicationDate) {
+    public @NotNull Date convertStringToDate(@NotBlank String publicationDate) {
         try {
             LocalDate localDate = LocalDate.parse(publicationDate, dateFormat);
             return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
