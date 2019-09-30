@@ -9,8 +9,6 @@ public final class Property implements Pair<String, String>, Comparable<Property
     private String key;
     private String value;
 
-    private Property() {}
-
     public Property(String key, String value) {
         this.key = key;
         this.value = value;
