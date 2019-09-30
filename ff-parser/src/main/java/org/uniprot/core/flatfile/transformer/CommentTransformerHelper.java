@@ -15,74 +15,60 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
 public class CommentTransformerHelper {
-    private static final CommentTransformer<FreeTextComment> DEAFULT_BUILDER = new FreeTextCommentTranslator();
+    private static final CommentTransformer<FreeTextComment> DEAFULT_BUILDER =
+            new FreeTextCommentTranslator();
     private static Map<CommentType, CommentTransformer<? extends Comment>> commentTranslator =
             new EnumMap<>(CommentType.class);
-    static {
-        commentTranslator.put(CommentType.ALTERNATIVE_PRODUCTS,
-                new APCommentTransformer());
-        commentTranslator.put(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES,
-                new BPCPCommentTransformer());
-        commentTranslator.put(CommentType.COFACTOR,
-                new CofactorCommentTransformer());
-        commentTranslator.put(CommentType.DISEASE,
-                new DiseaseCommentTransformer());
-        commentTranslator.put(CommentType.INTERACTION,
-                new InteractionCommentTransformer());
-        commentTranslator.put(CommentType.MASS_SPECTROMETRY,
-                new MSCommentTransformer());
-        commentTranslator.put(CommentType.RNA_EDITING,
-                new RnaEditingCommentTransformer());
-        commentTranslator.put(CommentType.SEQUENCE_CAUTION,
-                new SeqCautionCommentTransformer());
-        commentTranslator.put(CommentType.SUBCELLULAR_LOCATION,
-                new SubcelLocationCommentTransformer());
 
-        commentTranslator.put(CommentType.WEBRESOURCE,
-                new WebResourceCommentTransformer());
-        commentTranslator.put(CommentType.CATALYTIC_ACTIVITY,
-                new CatalyticActivityCommentTransformer());
+    static {
+        commentTranslator.put(CommentType.ALTERNATIVE_PRODUCTS, new APCommentTransformer());
+        commentTranslator.put(
+                CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, new BPCPCommentTransformer());
+        commentTranslator.put(CommentType.COFACTOR, new CofactorCommentTransformer());
+        commentTranslator.put(CommentType.DISEASE, new DiseaseCommentTransformer());
+        commentTranslator.put(CommentType.INTERACTION, new InteractionCommentTransformer());
+        commentTranslator.put(CommentType.MASS_SPECTROMETRY, new MSCommentTransformer());
+        commentTranslator.put(CommentType.RNA_EDITING, new RnaEditingCommentTransformer());
+        commentTranslator.put(CommentType.SEQUENCE_CAUTION, new SeqCautionCommentTransformer());
+        commentTranslator.put(
+                CommentType.SUBCELLULAR_LOCATION, new SubcelLocationCommentTransformer());
+
+        commentTranslator.put(CommentType.WEBRESOURCE, new WebResourceCommentTransformer());
+        commentTranslator.put(
+                CommentType.CATALYTIC_ACTIVITY, new CatalyticActivityCommentTransformer());
     }
 
     @SuppressWarnings("unchecked")
     public static <T extends Comment> CommentTransformer<T> createTranslator(CommentType type) {
-        CommentTransformer<T> builder =
-                (CommentTransformer<T>) commentTranslator.get(type);
-        if (builder != null)
-            return builder;
-        else
-            return (CommentTransformer<T>) DEAFULT_BUILDER;
+        CommentTransformer<T> builder = (CommentTransformer<T>) commentTranslator.get(type);
+        if (builder != null) return builder;
+        else return (CommentTransformer<T>) DEAFULT_BUILDER;
     }
 
     public static String trimCommentHeader(String annotation, CommentType type) {
         if (annotation.startsWith(type.toDisplayName())) {
             annotation = annotation.substring(type.toDisplayName().length() + 1).trim();
-            if (annotation.startsWith("\n"))
-                annotation = annotation.substring(1);
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
         }
         return annotation;
     }
 
-    public static <T extends Comment> T transform(String annotation,
-            CommentType type) {
+    public static <T extends Comment> T transform(String annotation, CommentType type) {
         CommentTransformer<T> translator = createTranslator(type);
         return translator.transform(type, annotation);
     }
 
     public static String stripTrailing(String val, String trail) {
-        if (val.endsWith(trail))
-            return val.substring(0, val.length() - trail.length());
-        else
-            return val;
+        if (val.endsWith(trail)) return val.substring(0, val.length() - trail.length());
+        else return val;
     }
 
-    public static String stripEvidences(String line,
-            List<Evidence> evidences) {
+    public static String stripEvidences(String line, List<Evidence> evidences) {
         if (line.endsWith("}") || line.endsWith("};") || line.endsWith("}.")) {
             String ev = line.substring(line.lastIndexOf('{') + 1, line.lastIndexOf('}'));
             String[] tokens = ev.split(",");
-            for(String token: tokens) {
-            	 evidences.add(parseEvidenceLine(token.trim()));
+            for (String token : tokens) {
+                evidences.add(parseEvidenceLine(token.trim()));
             }
         } else {
             return line;
@@ -94,7 +80,8 @@ public class CommentTransformerHelper {
         return parseEvidencedValues(value, trimEndFullStop, '.');
     }
 
-    public static List<EvidencedValue> parseEvidencedValues(String value, boolean trimEndFullStop, char separator) {
+    public static List<EvidencedValue> parseEvidencedValues(
+            String value, boolean trimEndFullStop, char separator) {
 
         List<EvidencedValue> evValues = new ArrayList<>();
         char comm = separator;
@@ -102,8 +89,7 @@ public class CommentTransformerHelper {
         char dot = '.';
 
         String temp = value;
-        if (temp.endsWith(";"))
-            temp = temp.substring(0, temp.length() - 1);
+        if (temp.endsWith(";")) temp = temp.substring(0, temp.length() - 1);
         int index = temp.indexOf(comm);
         if ((index == -1) || (index == value.length() - 1)) {
             evValues.add(parseEvidencedValue(temp, trimEndFullStop));

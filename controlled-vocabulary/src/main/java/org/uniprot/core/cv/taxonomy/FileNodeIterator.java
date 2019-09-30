@@ -1,15 +1,15 @@
 package org.uniprot.core.cv.taxonomy;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.taxonomy.impl.TaxonomicNodeImpl;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.taxonomy.impl.TaxonomicNodeImpl;
 
 public class FileNodeIterator implements Iterator<TaxonomicNode> {
     private final Logger logger = LoggerFactory.getLogger(getClass());
@@ -46,7 +46,8 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
             }
             this.bufferedReader = null;
             this.fileReader = null;
-            throw new IllegalStateException("An exception occurred whilst accessing the taxonomy file", ex);
+            throw new IllegalStateException(
+                    "An exception occurred whilst accessing the taxonomy file", ex);
         }
     }
 
@@ -65,7 +66,8 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
                 this.next = readNode(this.bufferedReader.readLine());
             }
         } catch (IOException e) {
-            throw new IllegalStateException("An exception occurred whilst reading from the taxonomy file", e);
+            throw new IllegalStateException(
+                    "An exception occurred whilst reading from the taxonomy file", e);
         } finally {
             if (!hasNext()) {
                 try {
@@ -87,14 +89,14 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
     private TaxonomicNode createNode(String[] nodeElements) {
         Integer id = parseInteger(nodeElements[0]);
 
-        String scientificName = parseString(nodeElements[9]); //sptr_scientific
+        String scientificName = parseString(nodeElements[9]); // sptr_scientific
         if (scientificName == null || scientificName.equalsIgnoreCase("\\N")) {
-            scientificName = parseString(nodeElements[7]); //ncbi_scientific
+            scientificName = parseString(nodeElements[7]); // ncbi_scientific
         }
 
-        String commonName = parseString(nodeElements[10]); //sptr_common
+        String commonName = parseString(nodeElements[10]); // sptr_common
         if (commonName == null || commonName.equalsIgnoreCase("\\N")) {
-            commonName = parseString(nodeElements[8]); //ncbi_common
+            commonName = parseString(nodeElements[8]); // ncbi_common
         }
 
         Integer parentId = parseInteger(nodeElements[1]);
@@ -104,15 +106,18 @@ public class FileNodeIterator implements Iterator<TaxonomicNode> {
                 .withCommonName(commonName)
                 .withSynonymName(parseString(nodeElements[11]))
                 .withMnemonic(parseString(nodeElements[12]))
-                .childOf(parentNode).build();
+                .childOf(parentNode)
+                .build();
     }
 
     private TaxonomicNode createParentNode(Integer parentId) {
         TaxonomicNode parentNode = null;
 
         if (parentId != null) {
-            parentNode = new TaxonomicNodeImpl.Builder(parentId,
-                    TaxonomicNodeImpl.UNDEFINED_SCIENTIFIC_NAME).build();
+            parentNode =
+                    new TaxonomicNodeImpl.Builder(
+                                    parentId, TaxonomicNodeImpl.UNDEFINED_SCIENTIFIC_NAME)
+                            .build();
         }
 
         return parentNode;

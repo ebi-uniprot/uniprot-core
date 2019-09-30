@@ -8,10 +8,8 @@ import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
-/**
- *
- * @author lgonzales
- */
+
+/** @author lgonzales */
 public class CreateUtils {
 
     public static List<Evidence> createEvidenceList(String evidenceStr) {
@@ -30,11 +28,11 @@ public class CreateUtils {
     }
 
     public static List<EvidencedValue> createEvidencedValueList(String value, String evidenceStr) {
-        return Collections.singletonList(createEvidencedValue(value,evidenceStr));
+        return Collections.singletonList(createEvidencedValue(value, evidenceStr));
     }
 
     public static EvidencedValue createEvidencedValue(String value, String evidenceStr) {
         List<Evidence> evidences = Collections.singletonList(createEvidence(evidenceStr));
-        return new EvidencedValueBuilder(value,evidences).build();
+        return new EvidencedValueBuilder(value, evidences).build();
     }
 }

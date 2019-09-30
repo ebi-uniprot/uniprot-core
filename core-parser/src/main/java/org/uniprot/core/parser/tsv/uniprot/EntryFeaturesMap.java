@@ -19,15 +19,48 @@ import org.uniprot.core.uniprot.feature.FeatureDescription;
 import org.uniprot.core.uniprot.feature.FeatureType;
 
 public class EntryFeaturesMap implements NamedValueMap {
-    public static final List<String> FIELDS = Arrays.asList("ft:var_seq", "ft:variant", "ft:non_con", "ft:non_std",
-                                                            "ft:non_ter", "ft:conflict", "ft:unsure", "ft:act_site", "ft:binding", "ft:ca_bind", "ft:dna_bind",
-                                                            "ft:metal", "ft:np_bind", "ft:site", "ft:mutagen", "ft:intramem", "ft:top_dom", "ft:transmem", "ft:chain",
-                                                            "ft:crosslnk", "ft:disulfide", "ft:carbohyd", "ft:init_met", "ft:lipid", "ft:mod_res", "ft:peptide",
-                                                            "ft:propep", "ft:signal", "ft:transit", "ft:strand", "ft:helix", "ft:turn", "ft:coiled", "ft:compbias",
-                                                            "ft:domain", "ft:motif", "ft:region", "ft:repeat", "ft:zn_fing", "dr:dbsnp"
-
-    );
-
+    public static final List<String> FIELDS =
+            Arrays.asList(
+                    "ft:var_seq",
+                    "ft:variant",
+                    "ft:non_con",
+                    "ft:non_std",
+                    "ft:non_ter",
+                    "ft:conflict",
+                    "ft:unsure",
+                    "ft:act_site",
+                    "ft:binding",
+                    "ft:ca_bind",
+                    "ft:dna_bind",
+                    "ft:metal",
+                    "ft:np_bind",
+                    "ft:site",
+                    "ft:mutagen",
+                    "ft:intramem",
+                    "ft:top_dom",
+                    "ft:transmem",
+                    "ft:chain",
+                    "ft:crosslnk",
+                    "ft:disulfide",
+                    "ft:carbohyd",
+                    "ft:init_met",
+                    "ft:lipid",
+                    "ft:mod_res",
+                    "ft:peptide",
+                    "ft:propep",
+                    "ft:signal",
+                    "ft:transit",
+                    "ft:strand",
+                    "ft:helix",
+                    "ft:turn",
+                    "ft:coiled",
+                    "ft:compbias",
+                    "ft:domain",
+                    "ft:motif",
+                    "ft:region",
+                    "ft:repeat",
+                    "ft:zn_fing",
+                    "dr:dbsnp");
 
     private static final Pattern DBSNP_PATTERN = Pattern.compile("(.+)dbSNP(\\:)(rs(\\d+))(.*)");
     private static final Map<String, String> FEATURETYPE_2_NAME = new HashMap<>();
@@ -76,7 +109,6 @@ public class EntryFeaturesMap implements NamedValueMap {
         FEATURETYPE_2_NAME.put("TURN", "Turn");
         FEATURETYPE_2_NAME.put("STRAND", "Beta strand");
         FEATURETYPE_2_NAME.put("INTRAMEM", "Intramembrane");
-
     }
 
     private final List<Feature> features;
@@ -84,8 +116,7 @@ public class EntryFeaturesMap implements NamedValueMap {
     public EntryFeaturesMap(List<Feature> features) {
         if (features == null) {
             this.features = Collections.emptyList();
-        } else
-            this.features = Collections.unmodifiableList(features);
+        } else this.features = Collections.unmodifiableList(features);
     }
 
     @Override
@@ -99,26 +130,31 @@ public class EntryFeaturesMap implements NamedValueMap {
         for (Feature feature : features) {
             featureMap.computeIfAbsent(feature.getType(), k -> new ArrayList<>()).add(feature);
         }
-        featureMap.forEach((featureType, features) -> {
-            String key = "ft:" + featureType.name().toLowerCase();
-            String value = features.stream().map(EntryFeaturesMap::featureToString)
-                    .collect(Collectors.joining("; "));
-            map.put(key, value);
-            if (featureType.equals(FeatureType.VARIANT)) {
-                String dbSnps = variantTodbSnp(features);
-                if (dbSnps != null && !dbSnps.isEmpty()) {
-                    map.put("dr:dbsnp", dbSnps);
-                }
-            }
-        });
+        featureMap.forEach(
+                (featureType, features) -> {
+                    String key = "ft:" + featureType.name().toLowerCase();
+                    String value =
+                            features.stream()
+                                    .map(EntryFeaturesMap::featureToString)
+                                    .collect(Collectors.joining("; "));
+                    map.put(key, value);
+                    if (featureType.equals(FeatureType.VARIANT)) {
+                        String dbSnps = variantTodbSnp(features);
+                        if (dbSnps != null && !dbSnps.isEmpty()) {
+                            map.put("dr:dbsnp", dbSnps);
+                        }
+                    }
+                });
 
         return map;
     }
 
     private String variantTodbSnp(List<Feature> features) {
-        return features.stream().map(Feature::getDescription).map(this::getDbsnpFromFeatureDescription)
-                .filter(val -> val != null && !val.isEmpty()).collect(Collectors.joining(" "));
-
+        return features.stream()
+                .map(Feature::getDescription)
+                .map(this::getDbsnpFromFeatureDescription)
+                .filter(val -> val != null && !val.isEmpty())
+                .collect(Collectors.joining(" "));
     }
 
     private String getDbsnpFromFeatureDescription(FeatureDescription description) {
@@ -135,18 +171,23 @@ public class EntryFeaturesMap implements NamedValueMap {
             return Collections.emptyList();
         }
 
-        Map<String, Long> values = features.stream().map(val -> FEATURETYPE_2_NAME.get(val.getType().name()))
-                .filter(Objects::nonNull)
-                .collect(Collectors.groupingBy(val -> val, TreeMap::new, Collectors.counting()));
-        return values.entrySet().stream().map(val -> (val.getKey() + " (" + val.getValue().toString() + ")"))
+        Map<String, Long> values =
+                features.stream()
+                        .map(val -> FEATURETYPE_2_NAME.get(val.getType().name()))
+                        .filter(Objects::nonNull)
+                        .collect(
+                                Collectors.groupingBy(
+                                        val -> val, TreeMap::new, Collectors.counting()));
+        return values.entrySet().stream()
+                .map(val -> (val.getKey() + " (" + val.getValue().toString() + ")"))
                 .collect(Collectors.toList());
-
     }
 
     public static String featureToString(Feature feature) {
-    	FFLineBuilder< Feature> fbuilder =FeatureLineBuilderFactory.create(feature);
-    	return fbuilder.buildStringWithEvidence(feature).replaceAll("\n",  " " );
+        FFLineBuilder<Feature> fbuilder = FeatureLineBuilderFactory.create(feature);
+        return fbuilder.buildStringWithEvidence(feature).replaceAll("\n", " ");
     }
+
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(FIELDS::contains);
     }

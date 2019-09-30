@@ -10,10 +10,9 @@ import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 
-
 public class OXLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLineBuilder<Organism> {
-    final private static String NAME = "NCBI_TaxID=";
-    final private static String STOP = ";";
+    private static final String NAME = "NCBI_TaxID=";
+    private static final String STOP = ";";
 
     public OXLineBuilder() {
         super(LineType.OX);
@@ -37,11 +36,9 @@ public class OXLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLin
         return build(f, true, false).toString();
     }
 
-
     private StringBuilder build(Organism f, boolean showEvidence, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
-        if (includeFFMarkup)
-            sb.append(linePrefix);
+        if (includeFFMarkup) sb.append(linePrefix);
         sb.append(NAME);
 
         sb.append(f.getTaxonId());
@@ -50,5 +47,4 @@ public class OXLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLin
         sb.append(STOP);
         return sb;
     }
-
 }

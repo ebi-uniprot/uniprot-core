@@ -12,63 +12,62 @@ import org.uniprot.core.proteome.impl.ComponentImpl;
 import org.uniprot.core.util.Utils;
 
 public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
-	private String name;
-	private String description;
-	private int proteinCount;
-	private ComponentType type;
-	private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences =new ArrayList<>();
+    private String name;
+    private String description;
+    private int proteinCount;
+    private ComponentType type;
+    private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences = new ArrayList<>();
 
-	
-	public static ComponentBuilder newInstance() {
-		return new ComponentBuilder();
-	}
-	
-	
-	public ComponentBuilder name(String name) {
-		this.name = name;
-		return this;
-	}
+    public static ComponentBuilder newInstance() {
+        return new ComponentBuilder();
+    }
 
-	public ComponentBuilder description(String description) {
-		this.description = description;
-		return this;
-	}
+
+    public ComponentBuilder name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ComponentBuilder description(String description) {
+        this.description = description;
+        return this;
+    }
 
 	public ComponentBuilder dbXReferences(List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
 		this.dbXReferences = Utils.modifiableList(dbXReferences);
-		return this;
-	}
+        return this;
+    }
 
-	public ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
+    public ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
 		Utils.addOrIgnoreNull(dbXReference, dbXReferences);
-		return this;
-	}
-	
-	
-	public ComponentBuilder proteinCount(int proteinCount) {
-		this.proteinCount = proteinCount;
-		return this;
-	}
-	public ComponentBuilder type(ComponentType type) {
-		this.type = type;
-		return this;
-	}
+        return this;
+    }
 
-	@Override
-	public Component build() {
-		return new ComponentImpl( name,  description,  proteinCount, type, dbXReferences) ;
-	}
 
-	@Override
-	public ComponentBuilder from(Component instance) {
-		this.name = instance.getName();
-		this.description = instance.getDescription();
-		this.proteinCount = instance.getProteinCount();
-		this.type = instance.getType();
-		dbXReferences.clear();
-		dbXReferences.addAll(instance.getDbXReferences());
-		
-		return this;
-	}
+    public ComponentBuilder proteinCount(int proteinCount) {
+        this.proteinCount = proteinCount;
+        return this;
+    }
 
+    public ComponentBuilder type(ComponentType type) {
+        this.type = type;
+        return this;
+    }
+
+    @Override
+    public Component build() {
+        return new ComponentImpl(name, description, proteinCount, type, dbXReferences);
+    }
+
+    @Override
+    public ComponentBuilder from(Component instance) {
+        this.name = instance.getName();
+        this.description = instance.getDescription();
+        this.proteinCount = instance.getProteinCount();
+        this.type = instance.getType();
+        dbXReferences.clear();
+        dbXReferences.addAll(instance.getDbXReferences());
+
+        return this;
+    }
 }

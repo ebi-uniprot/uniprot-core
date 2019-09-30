@@ -17,17 +17,18 @@ public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorR
      *
      * @param value string representation of a source.
      * @return the enum type of the provided source.
-     * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum type.
+     * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum
+     *     type.
      */
     public static CofactorReferenceType typeOf(String value) {
-        for (CofactorReferenceType referenceType : CofactorReferenceType
-                .values()) {
+        for (CofactorReferenceType referenceType : CofactorReferenceType.values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
             }
         }
 
-        throw new IllegalArgumentException("The cofactor reference type: " + value + " doesn't exist");
+        throw new IllegalArgumentException(
+                "The cofactor reference type: " + value + " doesn't exist");
     }
 
     @Override
@@ -43,6 +44,4 @@ public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorR
     public String toDisplayName() {
         return displayName;
     }
-
-
 }

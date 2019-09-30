@@ -7,9 +7,7 @@ package org.uniprot.core.util.property;
  * @version 2015-12-09
  */
 public class PropertyException extends RuntimeException {
-    /**
-     * Serialization ID
-     */
+    /** Serialization ID */
     private static final long serialVersionUID = 0;
 
     /**
@@ -25,7 +23,7 @@ public class PropertyException extends RuntimeException {
      * Constructs a JSONException with an explanatory message and cause.
      *
      * @param message Detail about the reason for the exception.
-     * @param cause   The cause.
+     * @param cause The cause.
      */
     public PropertyException(final String message, final Throwable cause) {
         super(message, cause);
@@ -39,5 +37,4 @@ public class PropertyException extends RuntimeException {
     public PropertyException(final Throwable cause) {
         super(cause.getMessage(), cause);
     }
-
 }

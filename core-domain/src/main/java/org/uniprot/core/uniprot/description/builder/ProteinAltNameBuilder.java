@@ -32,6 +32,7 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
         addOrIgnoreNull(shortNames, this.shortNames);
         return this;
     }
+
     public ProteinAltNameBuilder ecNumbers(List<EC> ecNumbers) {
         this.ecNumbers = modifiableList(ecNumbers);
         return this;
@@ -42,10 +43,9 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
         return this;
     }
 
-   
     @Override
     public ProteinAltName build() {
-        return new ProteinAltNameImpl( fullName, shortNames, ecNumbers);
+        return new ProteinAltNameImpl(fullName, shortNames, ecNumbers);
     }
 
     @Override

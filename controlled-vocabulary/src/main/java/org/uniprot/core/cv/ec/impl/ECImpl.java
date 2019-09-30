@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.ec.impl;
 
-import org.uniprot.core.cv.ec.EC;
-
 import java.util.Objects;
+
+import org.uniprot.core.cv.ec.EC;
 
 /**
  * Created 15/03/19
@@ -33,8 +33,7 @@ public class ECImpl implements EC {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ECImpl ec = (ECImpl) o;
-        return Objects.equals(id, ec.id) &&
-                Objects.equals(label, ec.label);
+        return Objects.equals(id, ec.id) && Objects.equals(label, ec.label);
     }
 
     @Override

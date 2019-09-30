@@ -45,12 +45,9 @@ public abstract class CommentScoredAbstr implements CommentScored {
     @Override
     public EvidenceCode getDefaultEvidenceCode() {
         if (isSwissProt()) {
-            if (getCommentScoredInfo() != null)
-                return getCommentScoredInfo().defaultCode;
-            else
-                return CommentScoredTable.getDefaultSwissProtEvidenceCode();
-        } else
-            return CommentScoredTable.getDefaultTrEMBLEvidenceCode();
+            if (getCommentScoredInfo() != null) return getCommentScoredInfo().defaultCode;
+            else return CommentScoredTable.getDefaultSwissProtEvidenceCode();
+        } else return CommentScoredTable.getDefaultTrEMBLEvidenceCode();
     }
 
     @Override
@@ -62,8 +59,7 @@ public abstract class CommentScoredAbstr implements CommentScored {
         }
     }
 
-    ScoreStatus getCommentScoreStatus(FreeTextComment comment,
-                                      EvidenceCode defaultCode) {
+    ScoreStatus getCommentScoreStatus(FreeTextComment comment, EvidenceCode defaultCode) {
         List<EvidencedValue> texts = comment.getTexts();
         Collection<ScoreStatus> types = new HashSet<>();
         if (!texts.isEmpty()) {
@@ -104,7 +100,10 @@ public abstract class CommentScoredAbstr implements CommentScored {
         if (val.endsWith(".")) {
             val = val.substring(0, val.length() - 1);
         }
-        if (!ignoreEnds && (val.endsWith(BY_SIMILARITY) || val.endsWith(POTENTIAL) || val.endsWith(PROBABLE))) {
+        if (!ignoreEnds
+                && (val.endsWith(BY_SIMILARITY)
+                        || val.endsWith(POTENTIAL)
+                        || val.endsWith(PROBABLE))) {
             return false;
         }
         return val.contains(BY_SIMILARITY) || val.contains(POTENTIAL) || val.contains(PROBABLE);

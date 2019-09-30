@@ -18,11 +18,11 @@ import org.uniprot.core.uniprot.impl.KeywordImpl;
 public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder, Keyword> {
     private String id;
     private KeywordCategory category;
-    public KeywordBuilder(){
 
-    }
+    public KeywordBuilder() {}
 
-    public KeywordBuilder(String id, String value, KeywordCategory category, List<Evidence> evidences) {
+    public KeywordBuilder(
+            String id, String value, KeywordCategory category, List<Evidence> evidences) {
         this.id = id;
         this.value = value;
         this.category = category;
@@ -41,14 +41,14 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
 
     @Override
     public KeywordBuilder from(Keyword instance) {
-        return super.from(instance)
-                .id(instance.getId());
+        return super.from(instance).id(instance.getId());
     }
 
     public KeywordBuilder id(String id) {
         this.id = id;
         return this;
     }
+
     public KeywordBuilder category(KeywordCategory category) {
         this.category = category;
         return this;

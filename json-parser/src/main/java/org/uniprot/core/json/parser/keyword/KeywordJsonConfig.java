@@ -13,14 +13,13 @@ import org.uniprot.core.json.parser.JsonConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public class KeywordJsonConfig extends JsonConfig {
     private static KeywordJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
-    private final ObjectMapper simpleMapper; // mapper without unwanted fields like type, lighter version
+    private final ObjectMapper
+            simpleMapper; // mapper without unwanted fields like type, lighter version
 
     private KeywordJsonConfig() {
         this.objectMapper = initFullObjectMapper();
@@ -43,7 +42,6 @@ public class KeywordJsonConfig extends JsonConfig {
     public ObjectMapper getFullObjectMapper() {
         return this.objectMapper;
     }
-
 
     private ObjectMapper initFullObjectMapper() {
         ObjectMapper objMapper = getDefaultFullObjectMapper();

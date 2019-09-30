@@ -1,5 +1,8 @@
 package org.uniprot.core.parser.gff.uniprot;
 
+import static org.uniprot.core.uniprot.feature.FeatureType.*;
+import static org.uniprot.core.util.Utils.nullOrEmpty;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -14,12 +17,7 @@ import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureType;
 
-import static org.uniprot.core.uniprot.feature.FeatureType.*;
-import static org.uniprot.core.util.Utils.nullOrEmpty;
-
-/**
- * @author gqi
- */
+/** @author gqi */
 public class UniProtGffParser {
     private static final String GFF_HEADER = "##gff-version 3";
     private static final String ENTRY_PREFIX = "##sequence-region ";
@@ -30,59 +28,86 @@ public class UniProtGffParser {
     private static final String LINE_SEPARATOR = "\n";
 
     public static String convert(UniProtEntry entry) {
-        // Note: the trailing '/t' character at the end of the line is strange, but is there to conform to the
+        // Note: the trailing '/t' character at the end of the line is strange, but is there to
+        // conform to the
         //       way the current uniprot.org produces GFF files, as of 06/02/2019
-        String lines = entry.getFeatures().stream().filter(UniProtGffParser::isPrintable)
-                .map(f -> convert(f, entry)).collect(Collectors.joining("\t" + LINE_SEPARATOR));
+        String lines =
+                entry.getFeatures().stream()
+                        .filter(UniProtGffParser::isPrintable)
+                        .map(f -> convert(f, entry))
+                        .collect(Collectors.joining("\t" + LINE_SEPARATOR));
 
-        return getGFFheader() + LINE_SEPARATOR +
-                getEntryHeader(entry) + LINE_SEPARATOR +
-                lines + "\t";
+        return getGFFheader()
+                + LINE_SEPARATOR
+                + getEntryHeader(entry)
+                + LINE_SEPARATOR
+                + lines
+                + "\t";
     }
 
     private static String convert(Feature feature, UniProtEntry entry) {
-        String accession = entry.getPrimaryAccession().getValue();                      // 1: seqid
-        String type = FeatureLabel.getLabelFromName(feature.getType().getName());       // 3: type
-        int start = feature.getLocation().getStart().getValue();                        // 4: start
-        int end = feature.getLocation().getEnd().getValue();                            // 5: end
-        String score = EMPTY_COLUMN, strand = EMPTY_COLUMN, phase = EMPTY_COLUMN;       // 6,7,8: empty score, strand and phase
+        String accession = entry.getPrimaryAccession().getValue(); // 1: seqid
+        String type = FeatureLabel.getLabelFromName(feature.getType().getName()); // 3: type
+        int start = feature.getLocation().getStart().getValue(); // 4: start
+        int end = feature.getLocation().getEnd().getValue(); // 5: end
+        String score = EMPTY_COLUMN,
+                strand = EMPTY_COLUMN,
+                phase = EMPTY_COLUMN; // 6,7,8: empty score, strand and phase
         // 9: attributes
         String attributes = getFeatureAttributes(feature);
 
-        return String.join(COLUMN_SEPARATOR, accession, FEATURE_SOURCE, type, String.valueOf(start), String
-                                   .valueOf(end), score, strand, phase,
-                           attributes);
+        return String.join(
+                COLUMN_SEPARATOR,
+                accession,
+                FEATURE_SOURCE,
+                type,
+                String.valueOf(start),
+                String.valueOf(end),
+                score,
+                strand,
+                phase,
+                attributes);
     }
 
-    private static void gatherEvidenceAttributes(Feature feature, StringBuilder xrefs, StringBuilder attributes) {
+    private static void gatherEvidenceAttributes(
+            Feature feature, StringBuilder xrefs, StringBuilder attributes) {
         List<Evidence> evidences = feature.getEvidences();
 
         // Do we need remove duplicate evidence code, or just repeat e.g. Q8WWI5
-        String evidenceCodes = evidences.stream()
-                .map(Evidence::getEvidenceCode)
-                .filter(Objects::nonNull)
-                .map(EvidenceCode::getCode)
-                .collect(Collectors.joining(","));
+        String evidenceCodes =
+                evidences.stream()
+                        .map(Evidence::getEvidenceCode)
+                        .filter(Objects::nonNull)
+                        .map(EvidenceCode::getCode)
+                        .collect(Collectors.joining(","));
         if (!nullOrEmpty(evidenceCodes)) {
             appendAttributes("Ontology_term", evidenceCodes, attributes);
         }
 
-        String evidenceString = evidences.stream().map(Evidence::toString).collect(Collectors.joining(","));
+        String evidenceString =
+                evidences.stream().map(Evidence::toString).collect(Collectors.joining(","));
         if (!nullOrEmpty(evidenceString)) {
             appendAttributes("evidence", evidenceString, attributes);
         }
 
-        String pubmed = evidences.stream()
-                .filter(evidence -> evidence.getSource() != null)
-                .filter(evidence -> evidence.getSource().getDatabaseType().getName().equals("PubMed"))
-                .map(Evidence::getSource)
-                .map(DBCrossReference::getId)
-                .collect(Collectors.toSet())
-                .stream()
-                // UUW pmid not in order, eg. P00550
-                // pmid duplicate Q8WWI5
-                .sorted()
-                .map(p -> "PMID:" + escape(p)).collect(Collectors.joining(","));
+        String pubmed =
+                evidences.stream()
+                        .filter(evidence -> evidence.getSource() != null)
+                        .filter(
+                                evidence ->
+                                        evidence.getSource()
+                                                .getDatabaseType()
+                                                .getName()
+                                                .equals("PubMed"))
+                        .map(Evidence::getSource)
+                        .map(DBCrossReference::getId)
+                        .collect(Collectors.toSet())
+                        .stream()
+                        // UUW pmid not in order, eg. P00550
+                        // pmid duplicate Q8WWI5
+                        .sorted()
+                        .map(p -> "PMID:" + escape(p))
+                        .collect(Collectors.joining(","));
 
         if (!nullOrEmpty(pubmed)) {
             ifBuilderNonEmptyThenAppend(xrefs, ",");
@@ -124,8 +149,10 @@ public class UniProtGffParser {
     }
 
     private static String getEntryHeader(UniProtEntry entry) {
-        return ENTRY_PREFIX + entry.getPrimaryAccession().getValue() + " 1 " +
-                entry.getSequence().getLength();
+        return ENTRY_PREFIX
+                + entry.getPrimaryAccession().getValue()
+                + " 1 "
+                + entry.getSequence().getLength();
     }
 
     private static String getFeatureAttributes(Feature feature) {
@@ -167,8 +194,7 @@ public class UniProtGffParser {
         }
 
         // empty attributes
-        if (attributesBuilder.length() == 0)
-            attributesBuilder.append('.');
+        if (attributesBuilder.length() == 0) attributesBuilder.append('.');
 
         return attributesBuilder.toString();
     }
@@ -179,10 +205,10 @@ public class UniProtGffParser {
         if (!nullOrEmpty(descriptionValue)) {
             if (featureType.equals(VARIANT)) {
                 updateNoteForVariant(descriptionValue, note);
-            } else if (featureType.equals(VAR_SEQ) ||
-                    featureType.equals(MUTAGEN) ||
-                    featureType.equals(CARBOHYD) ||
-                    !descriptionValue.startsWith("In Ref")) {
+            } else if (featureType.equals(VAR_SEQ)
+                    || featureType.equals(MUTAGEN)
+                    || featureType.equals(CARBOHYD)
+                    || !descriptionValue.startsWith("In Ref")) {
                 ifBuilderNonEmptyThenAppendSpace(note);
                 note.append(descriptionValue);
                 note.append(".");
@@ -206,7 +232,8 @@ public class UniProtGffParser {
         descriptionValue = descriptionValue.replaceAll("; dbSNP:.+$", "");
         if (!nullOrEmpty(descriptionValue)) {
             ifBuilderNonEmptyThenAppendSpace(note);
-            descriptionValue = descriptionValue.substring(0, 1).toUpperCase() + descriptionValue.substring(1);
+            descriptionValue =
+                    descriptionValue.substring(0, 1).toUpperCase() + descriptionValue.substring(1);
             note.append(descriptionValue);
             note.append(".");
         }
@@ -231,8 +258,7 @@ public class UniProtGffParser {
     }
 
     private static String escape(String text) {
-        return text
-                .replaceAll("%", "%25")
+        return text.replaceAll("%", "%25")
                 .replaceAll(";", "%3B")
                 .replaceAll("=", "%3D")
                 .replaceAll("&", "%26")
@@ -240,7 +266,7 @@ public class UniProtGffParser {
     }
 
     private static boolean isPrintable(Feature feature) {
-        return feature.getLocation().getStart().getValue() != -1 &&
-                feature.getLocation().getEnd().getValue() != -1;
+        return feature.getLocation().getStart().getValue() != -1
+                && feature.getLocation().getEnd().getValue() != -1;
     }
 }

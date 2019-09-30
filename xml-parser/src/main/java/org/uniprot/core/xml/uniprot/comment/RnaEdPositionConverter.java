@@ -12,7 +12,6 @@ import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
 public class RnaEdPositionConverter implements Converter<LocationType, RnaEdPosition> {
 
-
     private final ObjectFactory xmlUniprotFactory;
     private final EvidenceIndexMapper evRefMapper;
 
@@ -20,18 +19,20 @@ public class RnaEdPositionConverter implements Converter<LocationType, RnaEdPosi
         this(evRefMapper, new ObjectFactory());
     }
 
-    public RnaEdPositionConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+    public RnaEdPositionConverter(
+            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.evRefMapper = evRefMapper;
         this.xmlUniprotFactory = xmlUniprotFactory;
     }
-
 
     @Override
     public RnaEdPosition fromXml(LocationType xmlObj) {
         if (xmlObj != null && xmlObj.getPosition() != null) {
             String position = xmlObj.getPosition().getPosition().toString().trim();
-            return new RnaEditingPositionBuilder(position, evRefMapper
-                    .parseEvidenceIds(xmlObj.getPosition().getEvidence())).build();
+            return new RnaEditingPositionBuilder(
+                            position,
+                            evRefMapper.parseEvidenceIds(xmlObj.getPosition().getEvidence()))
+                    .build();
         } else return null;
     }
 
@@ -50,7 +51,9 @@ public class RnaEdPositionConverter implements Converter<LocationType, RnaEdPosi
             positionType.setStatus(null);
 
             if (!position.getEvidences().isEmpty()) {
-                positionType.getEvidence().addAll(evRefMapper.writeEvidences(position.getEvidences()));
+                positionType
+                        .getEvidence()
+                        .addAll(evRefMapper.writeEvidences(position.getEvidences()));
             }
 
             locationType.setPosition(positionType);
@@ -58,5 +61,4 @@ public class RnaEdPositionConverter implements Converter<LocationType, RnaEdPosi
             return locationType;
         } else return null;
     }
-
 }

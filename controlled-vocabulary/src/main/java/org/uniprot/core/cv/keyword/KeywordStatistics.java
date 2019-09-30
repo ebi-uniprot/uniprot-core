@@ -1,12 +1,9 @@
 package org.uniprot.core.cv.keyword;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public interface KeywordStatistics {
 
     long getReviewedProteinCount();
 
     long getUnreviewedProteinCount();
-
 }

@@ -30,8 +30,12 @@ public class DiseaseEntryMap implements NamedValueMap {
         map.put("alternative_names", getAlternativeNames(this.diseaseEntry.getAlternativeNames()));
         map.put("cross_references", getCrossReferences(this.diseaseEntry.getCrossReferences()));
         map.put("keywords", getKewords(this.diseaseEntry.getKeywords()));
-        map.put("reviewed_protein_count", String.valueOf(this.diseaseEntry.getReviewedProteinCount()));
-        map.put("unreviewed_protein_count", String.valueOf(this.diseaseEntry.getUnreviewedProteinCount()));
+        map.put(
+                "reviewed_protein_count",
+                String.valueOf(this.diseaseEntry.getReviewedProteinCount()));
+        map.put(
+                "unreviewed_protein_count",
+                String.valueOf(this.diseaseEntry.getUnreviewedProteinCount()));
         return map;
     }
 
@@ -50,7 +54,6 @@ public class DiseaseEntryMap implements NamedValueMap {
             return EMPTY_STRING;
         }
     }
-
 
     private String getAlternativeNames(List<String> alternativeNames) {
         if (Utils.notNullOrEmpty(alternativeNames)) {

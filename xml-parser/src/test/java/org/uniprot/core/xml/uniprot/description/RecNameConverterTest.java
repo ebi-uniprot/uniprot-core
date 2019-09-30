@@ -1,5 +1,12 @@
 package org.uniprot.core.xml.uniprot.description;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
@@ -12,16 +19,6 @@ import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.ProteinType.RecommendedName;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.description.ECConverter;
-import org.uniprot.core.xml.uniprot.description.NameConverter;
-import org.uniprot.core.xml.uniprot.description.RecNameConverter;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.xml.uniprot.description.DescriptionHelper.*;
 
 class RecNameConverterTest {
 
@@ -31,8 +28,12 @@ class RecNameConverterTest {
         Name fullName = new NameBuilder().value("a full Name").evidences(evidences).build();
         List<Name> shortNames = createShortNames();
         List<EC> ecNumbers = createECNumbers();
-        ProteinRecName recName = new ProteinRecNameBuilder().fullName(fullName).shortNames(shortNames).ecNumbers(ecNumbers)
-                .build();
+        ProteinRecName recName =
+                new ProteinRecNameBuilder()
+                        .fullName(fullName)
+                        .shortNames(shortNames)
+                        .ecNumbers(ecNumbers)
+                        .build();
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         ECConverter ecConverter = new ECConverter(evRefMapper);
         NameConverter nameConverter = new NameConverter(evRefMapper);
@@ -40,10 +41,10 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinRecName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
-
     }
 
     @Test
@@ -60,10 +61,10 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinRecName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
-
     }
 
     @Test
@@ -80,10 +81,10 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinRecName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
-
     }
 
     private List<Name> createShortNames() {
@@ -104,17 +105,18 @@ class RecNameConverterTest {
 
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceBuilder()
-                              .databaseName("Ensembl")
-                              .databaseId("ENSP0001324")
-                              .evidenceCode(EvidenceCode.ECO_0000313)
-                              .build());
-        evidences.add(new EvidenceBuilder()
-                              .databaseName("PIRNR")
-                              .databaseName("PIRNR001361")
-                              .evidenceCode(EvidenceCode.ECO_0000256)
-                              .build());
+        evidences.add(
+                new EvidenceBuilder()
+                        .databaseName("Ensembl")
+                        .databaseId("ENSP0001324")
+                        .evidenceCode(EvidenceCode.ECO_0000313)
+                        .build());
+        evidences.add(
+                new EvidenceBuilder()
+                        .databaseName("PIRNR")
+                        .databaseName("PIRNR001361")
+                        .evidenceCode(EvidenceCode.ECO_0000256)
+                        .build());
         return evidences;
     }
-
 }

@@ -1,17 +1,16 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 class SubcellularLocationCommentBuilderTest {
 
@@ -19,8 +18,7 @@ class SubcellularLocationCommentBuilderTest {
     void testSetMolecule() {
         String molecule = "some mol";
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
-        SubcellularLocationComment comment = builder.molecule(molecule)
-                .build();
+        SubcellularLocationComment comment = builder.molecule(molecule).build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
         assertEquals(molecule, comment.getMolecule());
         assertFalse(comment.getNote() != null);
@@ -31,28 +29,41 @@ class SubcellularLocationCommentBuilderTest {
     void testSetSubcellularLocations() {
         List<SubcellularLocation> sublocations = new ArrayList<>();
         String molecule = "some mol";
-        String locationId ="someLocId";
+        String locationId = "someLocId";
         String locationVal = "some data";
         List<Evidence> evidences = createEvidences();
         String topId = "topId";
         String topologyVal = "some top";
-        String orientId ="orientId";
+        String orientId = "orientId";
         String orientationVal = "some orient";
-        SubcellularLocation sublocation = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder(locationId, locationVal, evidences).build())
-                .topology(new SubcellularLocationValueBuilder(topId, topologyVal, evidences).build())
-                .orientation(new SubcellularLocationValueBuilder(orientId, orientationVal, evidences).build())
-                .build();
+        SubcellularLocation sublocation =
+                new SubcellularLocationBuilder()
+                        .location(
+                                new SubcellularLocationValueBuilder(
+                                                locationId, locationVal, evidences)
+                                        .build())
+                        .topology(
+                                new SubcellularLocationValueBuilder(topId, topologyVal, evidences)
+                                        .build())
+                        .orientation(
+                                new SubcellularLocationValueBuilder(
+                                                orientId, orientationVal, evidences)
+                                        .build())
+                        .build();
         sublocations.add(sublocation);
-        SubcellularLocation sublocation2 = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder("id1", "val1", evidences).build())
-                .topology(new SubcellularLocationValueBuilder("id2", "val2", evidences).build())
-                .build();
+        SubcellularLocation sublocation2 =
+                new SubcellularLocationBuilder()
+                        .location(
+                                new SubcellularLocationValueBuilder("id1", "val1", evidences)
+                                        .build())
+                        .topology(
+                                new SubcellularLocationValueBuilder("id2", "val2", evidences)
+                                        .build())
+                        .build();
         sublocations.add(sublocation2);
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
-        SubcellularLocationComment comment = builder.molecule(molecule)
-                .subcellularLocations(sublocations)
-                .build();
+        SubcellularLocationComment comment =
+                builder.molecule(molecule).subcellularLocations(sublocations).build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
         assertEquals(molecule, comment.getMolecule());
         assertFalse(comment.getNote() != null);
@@ -69,26 +80,37 @@ class SubcellularLocationCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
         String orientationVal = "some orient";
-        SubcellularLocation sublocation = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder("id1", locationVal, evidences).build())
-                .topology(new SubcellularLocationValueBuilder("id2", topologyVal, evidences).build())
-                .orientation(new SubcellularLocationValueBuilder("id3", orientationVal, evidences).build())
-                .build();
+        SubcellularLocation sublocation =
+                new SubcellularLocationBuilder()
+                        .location(
+                                new SubcellularLocationValueBuilder("id1", locationVal, evidences)
+                                        .build())
+                        .topology(
+                                new SubcellularLocationValueBuilder("id2", topologyVal, evidences)
+                                        .build())
+                        .orientation(
+                                new SubcellularLocationValueBuilder(
+                                                "id3", orientationVal, evidences)
+                                        .build())
+                        .build();
 
         sublocations.add(sublocation);
-        SubcellularLocation sublocation2 = new SubcellularLocationBuilder()
-                .location(new SubcellularLocationValueBuilder("id4", "val1", evidences).build())
-                .topology(new SubcellularLocationValueBuilder("id5", "val2", evidences).build())
-                .build();
+        SubcellularLocation sublocation2 =
+                new SubcellularLocationBuilder()
+                        .location(
+                                new SubcellularLocationValueBuilder("id4", "val1", evidences)
+                                        .build())
+                        .topology(
+                                new SubcellularLocationValueBuilder("id5", "val2", evidences)
+                                        .build())
+                        .build();
         sublocations.add(sublocation2);
 
         Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
 
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
-        SubcellularLocationComment comment = builder.molecule(molecule)
-                .subcellularLocations(sublocations)
-                .note(note)
-                .build();
+        SubcellularLocationComment comment =
+                builder.molecule(molecule).subcellularLocations(sublocations).note(note).build();
         assertEquals(CommentType.SUBCELLULAR_LOCATION, comment.getCommentType());
         assertEquals("", comment.getMolecule());
         assertEquals(note, comment.getNote());
@@ -101,7 +123,8 @@ class SubcellularLocationCommentBuilderTest {
     void testCreateSubcellularLocationValue() {
         String value = "some data";
         List<Evidence> evidences = createEvidences();
-        SubcellularLocationValue slv = new SubcellularLocationValueBuilder("id1", value, evidences).build();
+        SubcellularLocationValue slv =
+                new SubcellularLocationValueBuilder("id1", value, evidences).build();
         assertEquals(value, slv.getValue());
         assertEquals(evidences, slv.getEvidences());
     }
@@ -112,20 +135,24 @@ class SubcellularLocationCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         String topologyVal = "some top";
         String orientationVal = "some orient";
-        SubcellularLocationValue location = new SubcellularLocationValueBuilder("id1", locationVal, evidences).build();
-        SubcellularLocationValue topology = new SubcellularLocationValueBuilder("id2", topologyVal, evidences).build();
-        SubcellularLocationValue orientation = new SubcellularLocationValueBuilder("id3", orientationVal, evidences).build();
-        SubcellularLocation sublocation = new SubcellularLocationBuilder()
-                .location(location)
-                .topology(topology)
-                .orientation(orientation)
-                .build();
+        SubcellularLocationValue location =
+                new SubcellularLocationValueBuilder("id1", locationVal, evidences).build();
+        SubcellularLocationValue topology =
+                new SubcellularLocationValueBuilder("id2", topologyVal, evidences).build();
+        SubcellularLocationValue orientation =
+                new SubcellularLocationValueBuilder("id3", orientationVal, evidences).build();
+        SubcellularLocation sublocation =
+                new SubcellularLocationBuilder()
+                        .location(location)
+                        .topology(topology)
+                        .orientation(orientation)
+                        .build();
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertEquals(orientation, sublocation.getOrientation());
 
-        sublocation = new SubcellularLocationBuilder()
-                .location(location).topology(topology).build();
+        sublocation =
+                new SubcellularLocationBuilder().location(location).topology(topology).build();
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertFalse(sublocation.getOrientation() != null);

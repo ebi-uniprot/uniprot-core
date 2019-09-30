@@ -17,7 +17,6 @@ import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-
 public class CofactorCommentTransformer implements CommentTransformer<CofactorComment> {
 
     private static final String NOTE = "Note=";
@@ -45,30 +44,35 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
             scanner.useDelimiter(COFACTOR_NAME + "|" + COFACTOR_XREF);
 
             while (scanner.hasNext()) {
-                String name = CommentTransformerHelper.stripTrailing(scanner.next().trim(), SEMI_COLON);
+                String name =
+                        CommentTransformerHelper.stripTrailing(scanner.next().trim(), SEMI_COLON);
                 String ref = scanner.next().trim();
                 String evidence = null;
                 if (ref.contains(EVIDENCE)) {
                     evidence = ref.substring(ref.indexOf(EVIDENCE) + EVIDENCE.length());
                     ref = ref.substring(0, ref.indexOf(EVIDENCE)).trim();
-
                 }
                 ref = CommentTransformerHelper.stripTrailing(ref, SEMI_COLON);
                 int dbTypeSeperator = ref.indexOf(COLON);
 
                 String dbType = ref.substring(0, dbTypeSeperator);
                 String xref = ref.substring(dbTypeSeperator + 1, ref.length());
-                DBCrossReference<CofactorReferenceType> reference
-                        = new DBCrossReferenceBuilder<CofactorReferenceType>()
-                        .databaseType(CofactorReferenceType.typeOf(dbType))
-                        .id(xref)
-                        .build();
+                DBCrossReference<CofactorReferenceType> reference =
+                        new DBCrossReferenceBuilder<CofactorReferenceType>()
+                                .databaseType(CofactorReferenceType.typeOf(dbType))
+                                .id(xref)
+                                .build();
                 List<Evidence> evidences = new ArrayList<>();
 
                 if (evidence != null) {
                     CommentTransformerHelper.stripEvidences(evidence, evidences);
                 }
-                Cofactor cofactor = new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
+                Cofactor cofactor =
+                        new CofactorBuilder()
+                                .name(name)
+                                .reference(reference)
+                                .evidences(evidences)
+                                .build();
                 cofactors.add(cofactor);
             }
         }
@@ -93,10 +97,13 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
 
             // extract note
             if ((separatorIndex = annotation.indexOf(NOTE)) != -1) {
-                String noteStr = annotation.substring(separatorIndex + NOTE.length(), annotation.length());
-                builder.note(new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(noteStr, true))
-                                     .build());
-
+                String noteStr =
+                        annotation.substring(separatorIndex + NOTE.length(), annotation.length());
+                builder.note(
+                        new NoteBuilder(
+                                        CommentTransformerHelper.parseEvidencedValues(
+                                                noteStr, true))
+                                .build());
 
                 // remove the note from the original annotation
                 annotation = annotation.substring(0, separatorIndex).trim();
@@ -105,7 +112,8 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
             // extract cofactors
             if ((separatorIndex = annotation.indexOf(COFACTOR_NAME)) != -1) {
                 List<Cofactor> cofactors =
-                        extractCofactorReferences(annotation.substring(separatorIndex, annotation.length()));
+                        extractCofactorReferences(
+                                annotation.substring(separatorIndex, annotation.length()));
                 builder.cofactors(cofactors);
                 annotation = annotation.substring(0, separatorIndex).trim();
             }
@@ -113,13 +121,11 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
             // extract molecule
             if (annotation.trim().length() > 0) {
                 builder.molecule(extractCofactorMolecule(annotation));
-
             }
             return builder.build();
         } else {
-            throw new IllegalArgumentException("Unable to convert annotation to COFACTOR comment: " + annotation);
+            throw new IllegalArgumentException(
+                    "Unable to convert annotation to COFACTOR comment: " + annotation);
         }
-
     }
-
 }

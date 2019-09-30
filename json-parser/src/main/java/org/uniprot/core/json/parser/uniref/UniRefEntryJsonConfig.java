@@ -15,8 +15,6 @@ import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdImpl;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
 import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.RepresentativeMember;
@@ -34,16 +32,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
 /**
- *
  * @author jluo
  * @date: 13 Aug 2019
- *
-*/
-
+ */
 public class UniRefEntryJsonConfig extends JsonConfig {
 
-	
-	private static UniRefEntryJsonConfig INSTANCE;
+    private static UniRefEntryJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
     private final ObjectMapper prettyMapper;
@@ -71,16 +65,16 @@ public class UniRefEntryJsonConfig extends JsonConfig {
     }
 
     private ObjectMapper initObjectMapper() {
-        ObjectMapper objMapper =  getDefaultFullObjectMapper();
+        ObjectMapper objMapper = getDefaultFullObjectMapper();
 
         SimpleModule mod = new SimpleModule();
         mod.addSerializer(LocalDate.class, new LocalDateSerializer());
         mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
         mod.addAbstractTypeMapping(UniRefEntry.class, UniRefEntryImpl.class);
-  
+
         mod.addAbstractTypeMapping(GoTerm.class, GoTermImpl.class);
         mod.addAbstractTypeMapping(OverlapRegion.class, OverlapRegionImpl.class);
-        
+
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(UniParcId.class, UniParcIdImpl.class);
         mod.addAbstractTypeMapping(UniRefEntryId.class, UniRefEntryIdImpl.class);
@@ -98,12 +92,10 @@ public class UniRefEntryJsonConfig extends JsonConfig {
         SimpleModule simpleMod = new SimpleModule();
         simpleMod.addSerializer(LocalDate.class, new LocalDateSerializer());
         simpleMod.addSerializer(UniParcIdImpl.class, new UniParcIdSerializer());
-        
+
         simpleMod.addSerializer(UniRefEntryIdImpl.class, new UniRefEntryIdSerializer());
         simpleMod.addSerializer(UniProtAccessionImpl.class, new UniProtAccessionSerializer());
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }
-
 }
-

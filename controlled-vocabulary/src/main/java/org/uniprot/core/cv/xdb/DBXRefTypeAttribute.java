@@ -9,9 +9,7 @@ public final class DBXRefTypeAttribute implements Serializable {
     private String xmlTag;
     private String uriLink;
 
-    private DBXRefTypeAttribute() {
-
-    }
+    private DBXRefTypeAttribute() {}
 
     public DBXRefTypeAttribute(String name, String xmlTag, String uriLink) {
         this.name = name;
@@ -38,17 +36,13 @@ public final class DBXRefTypeAttribute implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
 
         DBXRefTypeAttribute other = (DBXRefTypeAttribute) obj;
         return Objects.equals(this.name, other.name)
                 && Objects.equals(this.uriLink, other.uriLink)
                 && Objects.equals(this.xmlTag, other.xmlTag);
     }
-
 }

@@ -1,13 +1,12 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 
 class OrganismHostImplTest {
 
@@ -24,7 +23,8 @@ class OrganismHostImplTest {
     void testScientificCommon() {
         String scientificName = "Homo sapiens";
         String commonName = "Human";
-        OrganismHost organism = new OrganismHostImpl(0, scientificName, commonName, null);;
+        OrganismHost organism = new OrganismHostImpl(0, scientificName, commonName, null);
+        ;
         assertEquals(scientificName, organism.getScientificName());
         assertEquals(commonName, organism.getCommonName());
         assertEquals(0, organism.getSynonyms().size());
@@ -33,7 +33,8 @@ class OrganismHostImplTest {
     @Test
     void testNoScientificName() {
         String commonName = "Human";
-        OrganismHost organism = new OrganismHostImpl(0, null, commonName, null);;
+        OrganismHost organism = new OrganismHostImpl(0, null, commonName, null);
+        ;
         assertEquals(commonName, organism.getCommonName());
     }
 
@@ -43,7 +44,8 @@ class OrganismHostImplTest {
         String scientificName = "Homo sapiens";
         String commonName = "Human";
         List<String> synonyms = Arrays.asList("Name1", "Name2");
-        OrganismHost organism = new OrganismHostImpl(0, scientificName, commonName, synonyms);;
+        OrganismHost organism = new OrganismHostImpl(0, scientificName, commonName, synonyms);
+        ;
 
         assertEquals(scientificName, organism.getScientificName());
         assertEquals(commonName, organism.getCommonName());

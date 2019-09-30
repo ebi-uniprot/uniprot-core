@@ -13,7 +13,8 @@ public class DiseaseJsonConfig extends JsonConfig {
     private static DiseaseJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
-    private final ObjectMapper simpleMapper; // mapper without unwanted fields like type, lighter version
+    private final ObjectMapper
+            simpleMapper; // mapper without unwanted fields like type, lighter version
 
     private DiseaseJsonConfig() {
         this.objectMapper = initFullObjectMapper();
@@ -36,7 +37,6 @@ public class DiseaseJsonConfig extends JsonConfig {
     public ObjectMapper getFullObjectMapper() {
         return this.objectMapper;
     }
-
 
     private ObjectMapper initFullObjectMapper() {
         ObjectMapper objMapper = getDefaultFullObjectMapper();

@@ -11,39 +11,37 @@ import org.uniprot.core.xml.jaxb.uniprot.KeywordType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
 public class KeywordConverter implements Converter<KeywordType, Keyword> {
-	private final EvidenceIndexMapper evRefMapper;
-	private final ObjectFactory xmlUniprotFactory;
+    private final EvidenceIndexMapper evRefMapper;
+    private final ObjectFactory xmlUniprotFactory;
 
-	public KeywordConverter(EvidenceIndexMapper evRefMapper) {
-		this(evRefMapper, new ObjectFactory());
-	}
+    public KeywordConverter(EvidenceIndexMapper evRefMapper) {
+        this(evRefMapper, new ObjectFactory());
+    }
 
-	public KeywordConverter(EvidenceIndexMapper evRefMapper,
-			ObjectFactory xmlUniprotFactory) {
-		this.evRefMapper = evRefMapper;
-		this.xmlUniprotFactory = xmlUniprotFactory;
-	}
+    public KeywordConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+        this.evRefMapper = evRefMapper;
+        this.xmlUniprotFactory = xmlUniprotFactory;
+    }
 
-	@Override
-	public Keyword fromXml(KeywordType xmlObj) {
-		 String keywordValue = xmlObj.getValue();
-		 List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-		 return new KeywordBuilder(xmlObj.getId(), keywordValue, KeywordCategory.UNKNOWN, evidences).build();
-	}
+    @Override
+    public Keyword fromXml(KeywordType xmlObj) {
+        String keywordValue = xmlObj.getValue();
+        List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
+        return new KeywordBuilder(xmlObj.getId(), keywordValue, KeywordCategory.UNKNOWN, evidences)
+                .build();
+    }
 
-	@Override
-	public KeywordType toXml(Keyword uniObj) {
-		KeywordType xmlKeyword = xmlUniprotFactory.createKeywordType();
-		String value = uniObj.getValue();
-		xmlKeyword.setValue(value);
-		xmlKeyword.setId(uniObj.getId());
+    @Override
+    public KeywordType toXml(Keyword uniObj) {
+        KeywordType xmlKeyword = xmlUniprotFactory.createKeywordType();
+        String value = uniObj.getValue();
+        xmlKeyword.setValue(value);
+        xmlKeyword.setId(uniObj.getId());
 
-		if (!uniObj.getEvidences().isEmpty()) {
-			List<Integer> ev = evRefMapper.writeEvidences(uniObj.getEvidences());
-			if (!ev.isEmpty())
-				xmlKeyword.getEvidence().addAll(ev);
-		}
-		return xmlKeyword;
-	}
-
+        if (!uniObj.getEvidences().isEmpty()) {
+            List<Integer> ev = evRefMapper.writeEvidences(uniObj.getEvidences());
+            if (!ev.isEmpty()) xmlKeyword.getEvidence().addAll(ev);
+        }
+        return xmlKeyword;
+    }
 }

@@ -1,11 +1,11 @@
 package org.uniprot.core.cv.keyword.impl;
 
+import java.util.UUID;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.GeneOntology;
-
-import java.util.UUID;
 
 public class GeneOntologyImplTest {
 
@@ -14,21 +14,21 @@ public class GeneOntologyImplTest {
     private String term;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         this.random = UUID.randomUUID().toString();
         this.id = "id-" + this.random;
         this.term = "term-" + this.random;
     }
 
     @Test
-    void testCreateGO(){
+    void testCreateGO() {
         GeneOntology go = createGeneOntology(this.id, this.term);
         Assertions.assertEquals(this.id, go.getGoId());
         Assertions.assertEquals(this.term, go.getGoTerm());
     }
 
     @Test
-    void testValueEqual(){
+    void testValueEqual() {
         GeneOntology go1 = createGeneOntology(this.id, this.term);
         GeneOntology go2 = createGeneOntology(this.id, this.term);
         Assertions.assertTrue(go1.equals(go2));
@@ -36,21 +36,19 @@ public class GeneOntologyImplTest {
     }
 
     @Test
-    void testRefEqual(){
+    void testRefEqual() {
         GeneOntology go1 = createGeneOntology(this.id, this.term);
         Assertions.assertTrue(go1.equals(go1));
         Assertions.assertTrue(go1.hashCode() == go1.hashCode());
     }
 
     @Test
-    void testEqualWithNull(){
+    void testEqualWithNull() {
         GeneOntology go1 = createGeneOntology(this.id, this.term);
         Assertions.assertFalse(go1.equals(null));
     }
 
-
-    public static GeneOntology createGeneOntology(String id, String term){
+    public static GeneOntology createGeneOntology(String id, String term) {
         return GeneOntologyImpl.create(id, term);
     }
-
 }

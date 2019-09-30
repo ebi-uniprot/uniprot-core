@@ -1,5 +1,12 @@
 package org.uniprot.core.scorer.uniprotkb;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
@@ -21,34 +28,27 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbDisplayOrder;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:33:09 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 13:33:09 To change this template
+ * use File | Settings | File Templates.
  */
 public class UniProtEntryScored implements HasScore {
 
     private static final Logger LOG = LoggerFactory.getLogger(UniProtEntryScored.class);
     private final EntryScore score;
     private static final List<String> DATABASE_TYPES;
+
     static {
         DATABASE_TYPES = new ArrayList<>();
-        List<UniProtXDbTypeDetail> allDBs =  UniProtXDbDisplayOrder.INSTANCE.getOrderedDatabases();
+        List<UniProtXDbTypeDetail> allDBs = UniProtXDbDisplayOrder.INSTANCE.getOrderedDatabases();
         Set<String> excludedCrossReferences =
                 new HashSet<>(Arrays.asList("GO", "EMBL", "PDB", "PDBsum"));
         for (UniProtXDbTypeDetail xdb : allDBs) {
-        	String name  = xdb.getName();
+            String name = xdb.getName();
             if (!excludedCrossReferences.contains(name)) {
                 DATABASE_TYPES.add(name);
             }
         }
-
     }
 
     private final UniProtEntry entry;
@@ -58,8 +58,8 @@ public class UniProtEntryScored implements HasScore {
         this.entry = copy;
         this.evidenceTypes = evidenceTypes;
         this.score = new EntryScore(copy.getPrimaryAccession().getValue());
-//        int taxId = Integer.parseInt(copy.getNcbiTaxonomyIds().get(0).getValue());
-//        this.score.taxId = taxId;
+        //        int taxId = Integer.parseInt(copy.getNcbiTaxonomyIds().get(0).getValue());
+        //        this.score.taxId = taxId;
 
         // PROTEIN DESCRIPTION SCORE
         this.score.descriptionScore = scoreDescription();
@@ -85,19 +85,19 @@ public class UniProtEntryScored implements HasScore {
         // JOURNAL ARTICLES
         this.score.citiationScore = 0;
 
-        this.score.totalScore = this.score.descriptionScore +
-                this.score.geneScore +
-                this.score.commentScore +
-                this.score.xrefScore +
-                this.score.goScore +
-                this.score.keywordScore +
-                this.score.featureScore +
-                this.score.citiationScore;
+        this.score.totalScore =
+                this.score.descriptionScore
+                        + this.score.geneScore
+                        + this.score.commentScore
+                        + this.score.xrefScore
+                        + this.score.goScore
+                        + this.score.keywordScore
+                        + this.score.featureScore
+                        + this.score.citiationScore;
     }
 
     public UniProtEntryScored(UniProtEntry copy) {
         this(copy, null);
-
     }
 
     public EntryScore getEntryScore() {
@@ -119,14 +119,14 @@ public class UniProtEntryScored implements HasScore {
         for (Keyword kw : entry.getKeywords()) {
             KeywordScored scored = new KeywordScored(kw, evidenceTypes);
             kscore += scored.score();
-            if (scored.consensus() == Consensus.PRESENCE)
-                break;
+            if (scored.consensus() == Consensus.PRESENCE) break;
         }
         return kscore;
     }
 
     private double scoreDescription() {
-        ProteinDescriptionScored pd = new ProteinDescriptionScored(entry.getProteinDescription(), evidenceTypes);
+        ProteinDescriptionScored pd =
+                new ProteinDescriptionScored(entry.getProteinDescription(), evidenceTypes);
         double localScore = pd.score();
         return localScore;
     }
@@ -136,8 +136,7 @@ public class UniProtEntryScored implements HasScore {
         for (Gene gene : entry.getGenes()) {
             GeneScored geneScored = new GeneScored(gene, evidenceTypes);
             gscore += geneScored.score();
-            if (geneScored.consensus() == Consensus.PRESENCE)
-                break;
+            if (geneScored.consensus() == Consensus.PRESENCE) break;
         }
         return gscore;
     }
@@ -148,8 +147,10 @@ public class UniProtEntryScored implements HasScore {
         boolean isSP = (entry.getEntryType() == UniProtEntryType.SWISSPROT);
         for (FeatureType type : FeatureType.values()) {
             List<HasScore> scoredList = new ArrayList<>();
-            for (Feature feature : entry.getFeatures().stream().filter(f -> f.getType().equals(type))
-                    .collect(Collectors.toList())) {
+            for (Feature feature :
+                    entry.getFeatures().stream()
+                            .filter(f -> f.getType().equals(type))
+                            .collect(Collectors.toList())) {
                 FeatureScored scored = new FeatureScored(feature, evidenceTypes);
                 scored.setIsSwissProt(isSP);
                 scoredList.add(scored);
@@ -200,8 +201,7 @@ public class UniProtEntryScored implements HasScore {
         oldscore = localScore;
         for (String type : DATABASE_TYPES) {
             List<UniProtDBCrossReference> xrefs = entry.getDatabaseCrossReferencesByType(type);
-            if (!xrefs.isEmpty() && hasEvidences(xrefs))
-                localScore += 0.1;
+            if (!xrefs.isEmpty() && hasEvidences(xrefs)) localScore += 0.1;
         }
         if (Math.abs(oldscore - localScore) > 0.001)
             LOG.debug("Xref score for all other {}", localScore - oldscore);
@@ -220,15 +220,16 @@ public class UniProtEntryScored implements HasScore {
 
     private double scoreComments(boolean isSP, CommentType type, String name) {
         List<HasScore> scoredList = new ArrayList<>();
-        entry.getComments().stream().filter(c -> c.getCommentType().equals(type))
-                .forEach(c -> {
-                    CommentScored scored = CommentScoredFactory.create(c, evidenceTypes);
-                    scored.setIsSwissProt(isSP);
-                    scoredList.add(scored);
-                });
+        entry.getComments().stream()
+                .filter(c -> c.getCommentType().equals(type))
+                .forEach(
+                        c -> {
+                            CommentScored scored = CommentScoredFactory.create(c, evidenceTypes);
+                            scored.setIsSwissProt(isSP);
+                            scoredList.add(scored);
+                        });
         double score = this.scoreList(scoredList);
-        if (Math.abs(score) > 0.001)
-            LOG.debug("Comment score for [{}] {}", name, score);
+        if (Math.abs(score) > 0.001) LOG.debug("Comment score for [{}] {}", name, score);
         return score;
     }
 
@@ -237,7 +238,11 @@ public class UniProtEntryScored implements HasScore {
         boolean isSP = (entry.getEntryType() == UniProtEntryType.SWISSPROT);
         localScore += scoreComments(isSP, CommentType.ALLERGEN, "Allergen");
         localScore += scoreComments(isSP, CommentType.ALTERNATIVE_PRODUCTS, "Alternative Products");
-        localScore += scoreComments(isSP, CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, "BioPhysicoChemicalProperties");
+        localScore +=
+                scoreComments(
+                        isSP,
+                        CommentType.BIOPHYSICOCHEMICAL_PROPERTIES,
+                        "BioPhysicoChemicalProperties");
         localScore += scoreComments(isSP, CommentType.BIOTECHNOLOGY, "BioTech");
         localScore += scoreComments(isSP, CommentType.CATALYTIC_ACTIVITY, "Catalytic Activity");
         localScore += scoreComments(isSP, CommentType.CAUTION, "Caution");
@@ -273,8 +278,7 @@ public class UniProtEntryScored implements HasScore {
         for (HasScore scored : objects) {
             if (scored.consensus() == Consensus.PRESENCE)
                 localScore = scored.score() > localScore ? scored.score() : localScore;
-            else
-                localScore += scored.score();
+            else localScore += scored.score();
         }
         return localScore;
     }

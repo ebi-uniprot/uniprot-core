@@ -6,10 +6,7 @@ import java.util.Objects;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.util.Utils;
 
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     private static final long serialVersionUID = -319775179301440775L;
@@ -18,8 +15,8 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     private List<String> synonyms;
 
-    private TaxonomyStrainImpl(){
-        this(null,null);
+    private TaxonomyStrainImpl() {
+        this(null, null);
     }
 
     public TaxonomyStrainImpl(String name, List<String> synonyms) {
@@ -52,8 +49,8 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaxonomyStrainImpl that = (TaxonomyStrainImpl) o;
-        return Objects.equals(getName(), that.getName()) &&
-                Objects.equals(getSynonyms(), that.getSynonyms());
+        return Objects.equals(getName(), that.getName())
+                && Objects.equals(getSynonyms(), that.getSynonyms());
     }
 
     @Override
@@ -63,9 +60,6 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     @Override
     public String toString() {
-        return "TaxonomyStrainImpl{" +
-                "name='" + name + '\'' +
-                ", synonyms=" + synonyms +
-                '}';
+        return "TaxonomyStrainImpl{" + "name='" + name + '\'' + ", synonyms=" + synonyms + '}';
     }
 }

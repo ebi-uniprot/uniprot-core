@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface HasEvidences extends Serializable {
     List<Evidence> getEvidences();
-    
+
     boolean hasEvidences();
 }

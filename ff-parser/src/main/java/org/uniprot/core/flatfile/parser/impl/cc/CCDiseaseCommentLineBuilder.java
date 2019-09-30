@@ -13,17 +13,18 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComment> {
 
     @Override
-    protected List<String> buildCommentLines(DiseaseComment comment,
-                                             boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType) {
+    protected List<String> buildCommentLines(
+            DiseaseComment comment,
+            boolean includeFFMarkings,
+            boolean showEvidence,
+            boolean includeCommentType) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkings) {
             addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
         }
-        if(includeCommentType)
-        	addCommentTypeName(comment, sb);
+        if (includeCommentType) addCommentTypeName(comment, sb);
 
-
-        //if the disease is defined then in needs to be represented in the string
+        // if the disease is defined then in needs to be represented in the string
         boolean needSpace = false;
         if (comment.hasDefinedDisease()) {
             sb.append(createDiseaseString(comment.getDisease()));
@@ -31,15 +32,13 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
             needSpace = true;
         }
 
-        //append the note
+        // append the note
         if (isValidNote(comment.getNote())) {
-            if (needSpace)
-                sb.append(SPACE);
+            if (needSpace) sb.append(SPACE);
             sb.append(NOTE);
             boolean isfirst = true;
             for (EvidencedValue val : comment.getNote().getTexts()) {
-                if (!isfirst)
-                    sb.append(SPACE);
+                if (!isfirst) sb.append(SPACE);
                 sb.append(val.getValue());
                 appendIfNot(sb, STOP);
                 sb = addEvidence(val, sb, showEvidence, STOP);
@@ -58,13 +57,19 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
     private String createDiseaseString(Disease disease) {
         String diseaseString = "";
 
-        diseaseString += disease.getDiseaseId() + " "
-                + "(" + disease.getAcronym() + ") "
-                + "[" + disease.getReference().getDatabaseType().toDisplayName() + ":" + disease.getReference()
-                .getId() + "]: "
-                + disease.getDescription();
+        diseaseString +=
+                disease.getDiseaseId()
+                        + " "
+                        + "("
+                        + disease.getAcronym()
+                        + ") "
+                        + "["
+                        + disease.getReference().getDatabaseType().toDisplayName()
+                        + ":"
+                        + disease.getReference().getId()
+                        + "]: "
+                        + disease.getDescription();
 
         return diseaseString;
     }
-
 }

@@ -30,8 +30,7 @@ public class AbsorptionImpl implements Absorption {
         this.note = note;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
-        } else
-            this.evidences = Collections.unmodifiableList(evidences);
+        } else this.evidences = Collections.unmodifiableList(evidences);
     }
 
     @Override
@@ -74,10 +73,10 @@ public class AbsorptionImpl implements Absorption {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbsorptionImpl that = (AbsorptionImpl) o;
-        return max == that.max &&
-                approximate == that.approximate &&
-                Objects.equals(note, that.note) &&
-                Objects.equals(evidences, that.evidences);
+        return max == that.max
+                && approximate == that.approximate
+                && Objects.equals(note, that.note)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override

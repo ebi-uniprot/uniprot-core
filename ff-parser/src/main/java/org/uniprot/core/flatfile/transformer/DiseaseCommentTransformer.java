@@ -13,7 +13,6 @@ import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-
 public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComment> {
     private static final CommentType COMMENT_TYPE = CommentType.DISEASE;
 
@@ -32,16 +31,15 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
         builder.disease(populateDisease(splitByNote[0].trim()));
         if (splitByNote.length == 2) {
             String noteValue = splitByNote[1].trim();
-            Note note = new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(noteValue, true))
-                    .build();
+            Note note =
+                    new NoteBuilder(CommentTransformerHelper.parseEvidencedValues(noteValue, true))
+                            .build();
             builder.note(note);
-
         }
         return builder.build();
     }
 
     private Disease populateDisease(String diseaseString) {
-
 
         String sep = "[MIM:";
         String sep2 = "]:";
@@ -64,7 +62,6 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
             populateDiseaseDescription(builder, description);
 
             return builder.build();
-
         }
 
         return null;
@@ -78,12 +75,12 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
      */
     private String populateDiseaseId(String diseaseString) {
 
-        String idString = diseaseString
-                .substring(0, diseaseString.indexOf('(')).trim();
+        String idString = diseaseString.substring(0, diseaseString.indexOf('(')).trim();
         return idString;
     }
 
-    private static final Pattern BETWEEN_PARENTHESIS_PATTERN = Pattern.compile("\\((.*?)\\) \\[MIM:");
+    private static final Pattern BETWEEN_PARENTHESIS_PATTERN =
+            Pattern.compile("\\((.*?)\\) \\[MIM:");
 
     /**
      * Populates the {@link DiseaseAcronym} object using its String representation
@@ -93,23 +90,21 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
      */
     private String populateDiseaseAcronym(String diseaseString) {
 
-        Matcher parenthesisMatcher = BETWEEN_PARENTHESIS_PATTERN
-                .matcher(diseaseString);
+        Matcher parenthesisMatcher = BETWEEN_PARENTHESIS_PATTERN.matcher(diseaseString);
 
         // retrieve the text between parenthesis of the first text element with
         // parenthesis
         String acronymString = "";
         if (parenthesisMatcher.find()) {
             acronymString = parenthesisMatcher.group(1);
-
         }
 
         return acronymString;
     }
 
     // pattern that identifies the disease reference
-    private static final Pattern BETWEEN_SQUARE_BRACKETS_PATTERN = Pattern
-            .compile("\\[(.*\\:.*?)\\]");
+    private static final Pattern BETWEEN_SQUARE_BRACKETS_PATTERN =
+            Pattern.compile("\\[(.*\\:.*?)\\]");
 
     /**
      * Populates the {@link DiseaseDescription} object using its String representation
@@ -123,8 +118,7 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
         List<Evidence> evidences = new ArrayList<>();
         descriptionString = CommentTransformerHelper.stripEvidences(descriptionString, evidences);
         // remove trailing full stop
-        builder.description(descriptionString)
-                .evidences(evidences);
+        builder.description(descriptionString).evidences(evidences);
     }
 
     /**
@@ -142,7 +136,6 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
             String referenceString = bracketsMatcher.group(1);
 
             String[] referenceElements = referenceString.split(":");
-
 
             DiseaseReferenceType referenceType = DiseaseReferenceType.typeOf(referenceElements[0]);
 

@@ -1,17 +1,18 @@
 package org.uniprot.core.cv.ec;
 
-import org.uniprot.core.cv.common.AbstractFileReader;
-import org.uniprot.core.cv.ec.impl.ECImpl;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.uniprot.core.cv.common.AbstractFileReader;
+import org.uniprot.core.cv.ec.impl.ECImpl;
+
 public class ECFileReader extends AbstractFileReader<EC> {
-    private static final Pattern ENZYME_CLASS_PATTERN = Pattern
-            .compile("^([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*) ? +(.*)\\.$");
+    private static final Pattern ENZYME_CLASS_PATTERN =
+            Pattern.compile(
+                    "^([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*\\.) ?([1-9-][0-9]*) ? +(.*)\\.$");
     private static final Pattern TERMINATING_DOTS = Pattern.compile("^(.*?)\\.*$");
     private final ECDatFileReader datFileReader;
     private final ECClassFileReader classFileReader;
@@ -31,7 +32,8 @@ public class ECFileReader extends AbstractFileReader<EC> {
 
     @Override
     public List<EC> parseLines(List<String> lines) {
-        throw new UnsupportedOperationException("Functionality supplied by inner classes; please call 'parse' method.");
+        throw new UnsupportedOperationException(
+                "Functionality supplied by inner classes; please call 'parse' method.");
     }
 
     public static String removeLastDotsFrom(String line) {
@@ -48,7 +50,11 @@ public class ECFileReader extends AbstractFileReader<EC> {
             for (String line : lines) {
                 Matcher matcher = ENZYME_CLASS_PATTERN.matcher(line);
                 if (matcher.matches() && matcher.groupCount() == 5) {
-                    String id = matcher.group(1) + matcher.group(2) + matcher.group(3) + matcher.group(4);
+                    String id =
+                            matcher.group(1)
+                                    + matcher.group(2)
+                                    + matcher.group(3)
+                                    + matcher.group(4);
                     ecs.add(new ECImpl(id, removeLastDotsFrom(matcher.group(5))));
                 }
             }

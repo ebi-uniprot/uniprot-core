@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
-
 import java.math.BigInteger;
 
 import org.uniprot.core.Position;
@@ -14,6 +12,8 @@ import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.PositionType;
 
+import com.google.common.base.Strings;
+
 public class MSRangeConverter implements Converter<LocationType, MassSpectrometryRange> {
     private static final String UNKNOWN = "unknown";
     private final ObjectFactory xmlUniprotFactory;
@@ -24,13 +24,11 @@ public class MSRangeConverter implements Converter<LocationType, MassSpectrometr
 
     public MSRangeConverter(ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
-
     }
 
     @Override
     public MassSpectrometryRange fromXml(LocationType xmlObj) {
-        if (xmlObj == null)
-            return null;
+        if (xmlObj == null) return null;
         Range range = null;
         if (xmlObj.getPosition() != null) {
             new Range(fromXml(xmlObj.getPosition()), fromXml(xmlObj.getPosition()));
@@ -61,15 +59,13 @@ public class MSRangeConverter implements Converter<LocationType, MassSpectrometr
                 locationXML.setSequence(uniObj.getIsoformId());
             }
             return locationXML;
-        } else
-            return null;
+        } else return null;
     }
 
     private Position fromXml(PositionType posType) {
         if (UNKNOWN.equals(posType.getStatus())) {
             return new Position(0, PositionModifier.UNKNOWN);
-        } else
-            return new Position(posType.getPosition().intValue());
+        } else return new Position(posType.getPosition().intValue());
     }
 
     private PositionType toXml(Position position) {
@@ -81,5 +77,4 @@ public class MSRangeConverter implements Converter<LocationType, MassSpectrometr
         }
         return posType;
     }
-
 }

@@ -24,8 +24,13 @@ public class DiseaseImpl implements Disease {
         this(null, null, null, null, null, null);
     }
 
-    public DiseaseImpl(String diseaseId, String diseaseAccession, String acronym, String description,
-                       DBCrossReference<DiseaseReferenceType> reference, List<Evidence> evidences) {
+    public DiseaseImpl(
+            String diseaseId,
+            String diseaseAccession,
+            String acronym,
+            String description,
+            DBCrossReference<DiseaseReferenceType> reference,
+            List<Evidence> evidences) {
         this.diseaseId = diseaseId;
         if (diseaseAccession == null || diseaseAccession.isEmpty()) {
             this.diseaseAccession = DEFAULT_ACCESSION;
@@ -58,7 +63,6 @@ public class DiseaseImpl implements Disease {
         return diseaseAccession;
     }
 
-
     @Override
     public String getAcronym() {
         return acronym;
@@ -76,8 +80,11 @@ public class DiseaseImpl implements Disease {
 
     @Override
     public boolean hasDefinedDisease() {
-        return (diseaseId != null && !diseaseId.isEmpty() && (getAcronym() != null && !getAcronym().isEmpty())
-                && isValidDescription() && isValidReference());
+        return (diseaseId != null
+                && !diseaseId.isEmpty()
+                && (getAcronym() != null && !getAcronym().isEmpty())
+                && isValidDescription()
+                && isValidReference());
     }
 
     @Override
@@ -110,11 +117,11 @@ public class DiseaseImpl implements Disease {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         DiseaseImpl disease = (DiseaseImpl) o;
-        return Objects.equals(diseaseId, disease.diseaseId) &&
-                Objects.equals(diseaseAccession, disease.diseaseAccession) &&
-                Objects.equals(acronym, disease.acronym) &&
-                Objects.equals(description, disease.description) &&
-                Objects.equals(reference, disease.reference);
+        return Objects.equals(diseaseId, disease.diseaseId)
+                && Objects.equals(diseaseAccession, disease.diseaseAccession)
+                && Objects.equals(acronym, disease.acronym)
+                && Objects.equals(description, disease.description)
+                && Objects.equals(reference, disease.reference);
     }
 
     @Override
@@ -127,7 +134,9 @@ public class DiseaseImpl implements Disease {
     }
 
     private boolean isValidReference() {
-        return (getReference() != null && getReference().getId() != null && !getReference().getId().isEmpty()
+        return (getReference() != null
+                && getReference().getId() != null
+                && !getReference().getId().isEmpty()
                 && getReference().getDatabaseType() != DiseaseReferenceType.NONE);
     }
 }

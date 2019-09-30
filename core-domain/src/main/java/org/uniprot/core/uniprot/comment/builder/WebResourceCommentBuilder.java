@@ -3,7 +3,8 @@ package org.uniprot.core.uniprot.comment.builder;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.comment.impl.WebResourceCommentImpl;
 
-public final class WebResourceCommentBuilder implements CommentBuilder<WebResourceCommentBuilder, WebResourceComment> {
+public final class WebResourceCommentBuilder
+        implements CommentBuilder<WebResourceCommentBuilder, WebResourceComment> {
     private String resourceName;
     private String resourceUrl;
     private boolean isFtp = false;
@@ -15,8 +16,7 @@ public final class WebResourceCommentBuilder implements CommentBuilder<WebResour
 
     @Override
     public WebResourceCommentBuilder from(WebResourceComment instance) {
-        return this
-                .isFtp(instance.isFtp())
+        return this.isFtp(instance.isFtp())
                 .note(instance.getNote())
                 .resourceName(instance.getResourceName())
                 .resourceUrl(instance.getResourceUrl());

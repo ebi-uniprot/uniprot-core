@@ -1,5 +1,11 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -12,14 +18,6 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniprot.ReactionType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.comment.CAReactionConverter;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
-
 
 class CAReactionConverterTest {
     ObjectFactory objectFactory = new ObjectFactory();
@@ -37,13 +35,17 @@ class CAReactionConverterTest {
         Reaction reaction = converter.fromXml(reactionType);
         assertEquals("another text", reaction.getName());
         assertEquals(2, reaction.getReactionReferences().size());
-        verifyReactionReference(reaction.getReactionReferences().get(0), ReactionReferenceType.CHEBI, "CHEBI:29105");
-        verifyReactionReference(reaction.getReactionReferences().get(1), ReactionReferenceType.RHEA, "RHEA:125");
+        verifyReactionReference(
+                reaction.getReactionReferences().get(0),
+                ReactionReferenceType.CHEBI,
+                "CHEBI:29105");
+        verifyReactionReference(
+                reaction.getReactionReferences().get(1), ReactionReferenceType.RHEA, "RHEA:125");
         assertEquals("1.2.1.32", reaction.getEcNumber().getValue());
     }
 
-    private void verifyReactionReference(DBCrossReference<ReactionReferenceType> ref,
-                                         ReactionReferenceType type, String id) {
+    private void verifyReactionReference(
+            DBCrossReference<ReactionReferenceType> ref, ReactionReferenceType type, String id) {
         assertEquals(type, ref.getDatabaseType());
         assertEquals(id, ref.getId());
     }
@@ -68,14 +70,19 @@ class CAReactionConverterTest {
         List<Evidence> evids = new ArrayList<>();
         evids.add(evidence1);
         evids.add(evidence2);
-        Reaction reaction = new ReactionBuilder().name("Some value").references(references).ecNumber(("1.2.3.32"))
-                .evidences(evids).build();
+        Reaction reaction =
+                new ReactionBuilder()
+                        .name("Some value")
+                        .references(references)
+                        .ecNumber(("1.2.3.32"))
+                        .evidences(evids)
+                        .build();
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
-
 
         ReactionType reactionType = converter.toXml(reaction);
 
-        System.out.println(UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
 
         assertEquals("Some value", reactionType.getText());
         assertEquals(4, reactionType.getDbReference().size());
@@ -88,8 +95,6 @@ class CAReactionConverterTest {
         assertEquals(2, evs.size());
         assertEquals(1, evs.get(0).intValue());
         assertEquals(2, evs.get(1).intValue());
-
-
     }
 
     @Test
@@ -103,17 +108,27 @@ class CAReactionConverterTest {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(evidence1);
         evidences.add(evidence2);
-        Reaction reaction = new ReactionBuilder().name("Some value").references(references).ecNumber(("1.2.3.32"))
-                .evidences(evidences).build();
+        Reaction reaction =
+                new ReactionBuilder()
+                        .name("Some value")
+                        .references(references)
+                        .ecNumber(("1.2.3.32"))
+                        .evidences(evidences)
+                        .build();
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
 
         ReactionType reactionType = converter.toXml(reaction);
-        System.out.println(UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
         Reaction converted = converter.fromXml(reactionType);
         assertEquals(reaction, converted);
     }
 
-    private DBCrossReference<ReactionReferenceType> createReference(ReactionReferenceType type, String id) {
-        return new DBCrossReferenceBuilder<ReactionReferenceType>().databaseType(type).id(id).build();
+    private DBCrossReference<ReactionReferenceType> createReference(
+            ReactionReferenceType type, String id) {
+        return new DBCrossReferenceBuilder<ReactionReferenceType>()
+                .databaseType(type)
+                .id(id)
+                .build();
     }
 }

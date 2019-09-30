@@ -1,20 +1,17 @@
 package org.uniprot.core.literature.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Collections;
+
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
 import org.uniprot.core.literature.LiteratureEntry;
-import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
 
-import java.util.Collections;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 class LiteratureEntryBuilderTest {
 
     @Test
@@ -39,7 +36,6 @@ class LiteratureEntryBuilderTest {
         assertFalse(entry.hasStatistics());
         assertFalse(entry.hasLiteratureMappedReferences());
         assertTrue(entry.isCompleteAuthorList());
-
     }
 
     @Test
@@ -59,7 +55,8 @@ class LiteratureEntryBuilderTest {
         MatcherAssert.assertThat(entry.getAuthoringGroup(), Matchers.contains("authoring group"));
 
         assertTrue(entry.hasAuthors());
-        MatcherAssert.assertThat(entry.getAuthors(), Matchers.contains(new AuthorImpl("author name")));
+        MatcherAssert.assertThat(
+                entry.getAuthors(), Matchers.contains(new AuthorImpl("author name")));
 
         assertTrue(entry.hasDoiId());
         assertEquals(entry.getDoiId(), "doi Id");
@@ -89,20 +86,28 @@ class LiteratureEntryBuilderTest {
         assertEquals(entry.getVolume(), "volume");
 
         assertTrue(entry.hasStatistics());
-        assertEquals(entry.getStatistics(), LiteratureStatisticsBuilderTest.createCompleteLiteratureStatistics());
+        assertEquals(
+                entry.getStatistics(),
+                LiteratureStatisticsBuilderTest.createCompleteLiteratureStatistics());
 
         assertTrue(entry.hasLiteratureMappedReferences());
-        MatcherAssert.assertThat(entry.getLiteratureMappedReferences(), Matchers.contains(LiteratureMappedReferenceBuilderTest.createCompleteLiteratureMappedReference()));
+        MatcherAssert.assertThat(
+                entry.getLiteratureMappedReferences(),
+                Matchers.contains(
+                        LiteratureMappedReferenceBuilderTest
+                                .createCompleteLiteratureMappedReference()));
 
         assertFalse(entry.isCompleteAuthorList());
-
     }
 
     private LiteratureEntry createCompleteLiteratureEntry() {
         return createBasicLiteratureEntryBuilder()
                 .authors(Collections.singletonList(new AuthorImpl("author name")))
                 .authoringGroup(Collections.singletonList("authoring group"))
-                .literatureMappedReference(Collections.singletonList(LiteratureMappedReferenceBuilderTest.createCompleteLiteratureMappedReference()))
+                .literatureMappedReference(
+                        Collections.singletonList(
+                                LiteratureMappedReferenceBuilderTest
+                                        .createCompleteLiteratureMappedReference()))
                 .build();
     }
 
@@ -110,7 +115,9 @@ class LiteratureEntryBuilderTest {
         return createBasicLiteratureEntryBuilder()
                 .addAuthor(new AuthorImpl("author name"))
                 .addAuthoringGroup("authoring group")
-                .addLiteratureMappedReference(LiteratureMappedReferenceBuilderTest.createCompleteLiteratureMappedReference())
+                .addLiteratureMappedReference(
+                        LiteratureMappedReferenceBuilderTest
+                                .createCompleteLiteratureMappedReference())
                 .build();
     }
 
@@ -128,5 +135,4 @@ class LiteratureEntryBuilderTest {
                 .title("title")
                 .completeAuthorList(false);
     }
-
 }

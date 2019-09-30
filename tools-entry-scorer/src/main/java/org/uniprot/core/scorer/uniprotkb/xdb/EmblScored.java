@@ -8,8 +8,8 @@ import org.uniprot.core.scorer.uniprotkb.ScoreUtil;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
-public class EmblScored  implements HasScore {
-	List<UniProtDBCrossReference> xrefs;
+public class EmblScored implements HasScore {
+    List<UniProtDBCrossReference> xrefs;
     private boolean isEmblSequenceDone = false;
     private boolean isEmblDone = false;
     private boolean isEmblNotAnnotatedCDSDone = false;
@@ -51,7 +51,6 @@ public class EmblScored  implements HasScore {
         }
 
         return score;
-
     }
 
     @Override

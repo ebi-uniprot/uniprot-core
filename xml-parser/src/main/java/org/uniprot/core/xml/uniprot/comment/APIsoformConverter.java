@@ -43,12 +43,11 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
 
         // IsoformId info
         for (String id : xmlObj.getId()) {
-            if (id != null && !id.isEmpty())
-                builder.addId(id);
-
+            if (id != null && !id.isEmpty()) builder.addId(id);
         }
         // IsoformName and IsoformSynonym info
-        boolean isName = true; // The first component in the file is the Name and the rest are the synonyms
+        boolean isName =
+                true; // The first component in the file is the Name and the rest are the synonyms
         List<IsoformName> synonyms = new ArrayList<>();
         for (IsoformType.Name name : xmlObj.getName()) {
             IsoformName isoformName = isoformNameFromXml(name);
@@ -74,8 +73,12 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
 
         // Isoform Note info
         if (!xmlObj.getText().isEmpty()) {
-            Note note = new NoteBuilder(xmlObj.getText().stream().map(evValueConverter::fromXml)
-                                                .collect(Collectors.toList())).build();
+            Note note =
+                    new NoteBuilder(
+                                    xmlObj.getText().stream()
+                                            .map(evValueConverter::fromXml)
+                                            .collect(Collectors.toList()))
+                            .build();
             builder.note(note);
         }
         return builder.build();
@@ -83,20 +86,19 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
 
     @Override
     public IsoformType toXml(APIsoform isoform) {
-        if (isoform == null)
-            return null;
+        if (isoform == null) return null;
         IsoformType isoformType = xmlUniprotFactory.createIsoformType();
         if ((isoform.getIsoformIds() != null) && !isoform.getIsoformIds().isEmpty()) {
             isoform.getIsoformIds().forEach(val -> isoformType.getId().add(val.getValue()));
         }
         if (isoform.getName() != null) {
             isoformType.getName().add(isoformNameToXml(isoform.getName()));
-
         }
 
         // IsoformSynonyms
         if (isoform.getSynonyms() != null && !isoform.getSynonyms().isEmpty()) {
-            isoform.getSynonyms().forEach(name -> isoformType.getName().add(isoformNameToXml(name)));
+            isoform.getSynonyms()
+                    .forEach(name -> isoformType.getName().add(isoformNameToXml(name)));
         }
 
         Note note = isoform.getNote();
@@ -117,7 +119,6 @@ public class APIsoformConverter implements Converter<IsoformType, APIsoform> {
         }
 
         return isoformType;
-
     }
 
     private IsoformName isoformNameFromXml(IsoformType.Name xmlObj) {

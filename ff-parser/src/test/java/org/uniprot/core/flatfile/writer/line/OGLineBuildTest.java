@@ -1,5 +1,12 @@
 package org.uniprot.core.flatfile.writer.line;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.og.OGLineBuilder;
 import org.uniprot.core.flatfile.writer.FFLine;
@@ -9,13 +16,6 @@ import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class OGLineBuildTest {
     private OGLineBuilder builder = new OGLineBuilder();
 
@@ -23,7 +23,6 @@ class OGLineBuildTest {
     void testOGHydrogenosome() {
         String ogLine = "OG   Hydrogenosome.";
         GeneEncodingType type = GeneEncodingType.HYDROGENOSOME;
-
 
         List<GeneLocation> organelles = new ArrayList<>();
         organelles.add(createOrganelle(type, Collections.emptyList()));
@@ -139,8 +138,8 @@ class OGLineBuildTest {
     @Test
     void testOrganPlasmids() {
         String ogLine =
-                "OG   Plastid; Chloroplast.\n" +
-                        "OG   Plasmid IncFII R100 (NR1), Plasmid IncW R388, and Plasmid pLMO20.";
+                "OG   Plastid; Chloroplast.\n"
+                        + "OG   Plasmid IncFII R100 (NR1), Plasmid IncW R388, and Plasmid pLMO20.";
         List<GeneLocation> organelles = new ArrayList<>();
         GeneEncodingType type = GeneEncodingType.CHLOROPLAST;
 
@@ -155,14 +154,13 @@ class OGLineBuildTest {
         organelles.add(createPlasmid("pLMO20", evs3));
 
         doTestOrganelle(ogLine, organelles);
-
     }
-
 
     @Test
     void testOGPlasmids() {
-        String ogLine = "OG   Plasmid R1 (R7268), Plasmid IncF::IncFIA::IncFIB::IncI1-ly,\n" +
-                "OG   Plasmid p013.1IncR, Plasmid pUD16, and Plasmid IncF::IncL/M.";
+        String ogLine =
+                "OG   Plasmid R1 (R7268), Plasmid IncF::IncFIA::IncFIB::IncI1-ly,\n"
+                        + "OG   Plasmid p013.1IncR, Plasmid pUD16, and Plasmid IncF::IncL/M.";
         List<GeneLocation> organelles = new ArrayList<>();
         List<String> evs1 = new ArrayList<>();
         organelles.add(createPlasmid("R1 (R7268)", evs1));
@@ -178,12 +176,12 @@ class OGLineBuildTest {
         doTestOrganelle(ogLine, organelles);
     }
 
-
     @Test
     void testOGPlastidChloroplastEvidence() {
-        String ogLine = "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
-                "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n" +
-                "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.";
+        String ogLine =
+                "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.";
         GeneEncodingType type = GeneEncodingType.CHLOROPLAST;
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
@@ -206,13 +204,13 @@ class OGLineBuildTest {
     @Test
     void testOrganPlasmidsWithEvidence() {
         String ogLine =
-                "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
-                        "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n" +
-                        "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.\n" +
-                        "OG   Plasmid IncFII R100 (NR1) {ECO:0000269|PubMed:10433554,\n" +
-                        "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid IncW R388 {ECO:0000303|Ref.6},\n" +
-                        "OG   and Plasmid pLMO20 {ECO:0000256|HAMAP-Rule:MF_00205,\n" +
-                        "OG   ECO:0000313|EMBL:BAG16761.1}.";
+                "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.\n"
+                        + "OG   Plasmid IncFII R100 (NR1) {ECO:0000269|PubMed:10433554,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid IncW R388 {ECO:0000303|Ref.6},\n"
+                        + "OG   and Plasmid pLMO20 {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1}.";
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
@@ -244,17 +242,16 @@ class OGLineBuildTest {
         organelles.add(createPlasmid("pLMO20", evs3));
 
         doTestOrganelle(ogLine, organelles);
-
     }
 
     @Test
     void testOGPlasmidsWithEvidence() {
         String ogLine =
-                "OG   Plasmid R1 (R7268) {ECO:0000313|EMBL:BAG16761.1},\n" +
-                        "OG   Plasmid IncF::IncFIA::IncFIB::IncI1-ly {ECO:0000269|PubMed:10433554,\n" +
-                        "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid p013.1IncR {ECO:0000303|Ref.6,\n" +
-                        "OG   ECO:0000313|PDB:3OW2}, Plasmid pUD16 {ECO:0000313|PDB:3OW2}, and\n" +
-                        "OG   Plasmid IncF::IncL/M {ECO:0000256|HAMAP-Rule:MF_00205}.";
+                "OG   Plasmid R1 (R7268) {ECO:0000313|EMBL:BAG16761.1},\n"
+                        + "OG   Plasmid IncF::IncFIA::IncFIB::IncI1-ly {ECO:0000269|PubMed:10433554,\n"
+                        + "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid p013.1IncR {ECO:0000303|Ref.6,\n"
+                        + "OG   ECO:0000313|PDB:3OW2}, Plasmid pUD16 {ECO:0000313|PDB:3OW2}, and\n"
+                        + "OG   Plasmid IncF::IncL/M {ECO:0000256|HAMAP-Rule:MF_00205}.";
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         String ev3 = "ECO:0000303|Ref.6";
@@ -283,7 +280,8 @@ class OGLineBuildTest {
     }
 
     private GeneLocation createPlasmid(String value, List<String> evs) {
-        return new GeneLocationBuilder(GeneEncodingType.PLASMID, value, createEvidence(evs)).build();
+        return new GeneLocationBuilder(GeneEncodingType.PLASMID, value, createEvidence(evs))
+                .build();
     }
 
     private GeneLocation createOrganelle(GeneEncodingType type, List<String> evs) {

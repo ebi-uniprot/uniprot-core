@@ -2,14 +2,9 @@ package org.uniprot.core.uniprot.comment;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * User: mkleen@ebi.ac.uk
- * Date: 28-Nov-2005
- * Time: 11:24:21
- */
+/** User: mkleen@ebi.ac.uk Date: 28-Nov-2005 Time: 11:24:21 */
 public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> {
-
-    DISPLAYED("displayed","Displayed"),
+    DISPLAYED("displayed", "Displayed"),
     EXTERNAL("external", "External"),
     NOT_DESCRIBED("not described", "Not described"),
     DESCRIBED("described", "Described");
@@ -17,19 +12,19 @@ public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> 
     private String value;
     private String displayValue;
 
-    IsoformSequenceStatus(String type,String displayValue) {
+    IsoformSequenceStatus(String type, String displayValue) {
         this.value = type;
         this.displayValue = displayValue;
     }
 
     public static IsoformSequenceStatus typeOf(String value) {
-        for (IsoformSequenceStatus status : IsoformSequenceStatus
-                .values()) {
+        for (IsoformSequenceStatus status : IsoformSequenceStatus.values()) {
             if (status.getValue().equals(value)) {
                 return status;
             }
         }
-        throw new IllegalArgumentException("the IsoformSequenceStatus with the description " + value + " doesn't exist");
+        throw new IllegalArgumentException(
+                "the IsoformSequenceStatus with the description " + value + " doesn't exist");
     }
 
     public String getValue() {

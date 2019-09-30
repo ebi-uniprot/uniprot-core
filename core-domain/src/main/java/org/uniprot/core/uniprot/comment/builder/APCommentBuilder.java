@@ -12,7 +12,8 @@ import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentImpl;
 
-public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
+public final class APCommentBuilder
+        implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
     private List<APEventType> events = new ArrayList<>();
     private List<APIsoform> isoforms = new ArrayList<>();
     private Note note;
@@ -25,8 +26,7 @@ public final class APCommentBuilder implements CommentBuilder<APCommentBuilder, 
     public APCommentBuilder from(AlternativeProductsComment instance) {
         events.clear();
         isoforms.clear();
-        return this
-                .events(instance.getEvents())
+        return this.events(instance.getEvents())
                 .isoforms(instance.getIsoforms())
                 .note(instance.getNote());
     }

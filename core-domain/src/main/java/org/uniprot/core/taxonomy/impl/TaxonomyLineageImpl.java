@@ -5,10 +5,8 @@ import java.util.Objects;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.util.Utils;
-/**
- *
- * @author lgonzales
- */
+
+/** @author lgonzales */
 public class TaxonomyLineageImpl implements TaxonomyLineage {
 
     private static final long serialVersionUID = -319775179301440774L;
@@ -22,9 +20,11 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
     private boolean hidden;
 
     private TaxonomyLineageImpl() {
-    	this(0,null,null,false);
+        this(0, null, null, false);
     }
-    public TaxonomyLineageImpl(long taxonId, String scientificName, TaxonomyRank rank, boolean hidden) {
+
+    public TaxonomyLineageImpl(
+            long taxonId, String scientificName, TaxonomyRank rank, boolean hidden) {
         this.taxonId = taxonId;
         this.scientificName = scientificName;
         this.rank = rank;
@@ -71,10 +71,10 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaxonomyLineageImpl that = (TaxonomyLineageImpl) o;
-        return getTaxonId() == that.getTaxonId() &&
-                isHidden() == that.isHidden() &&
-                Objects.equals(getScientificName(), that.getScientificName()) &&
-                getRank() == that.getRank();
+        return getTaxonId() == that.getTaxonId()
+                && isHidden() == that.isHidden()
+                && Objects.equals(getScientificName(), that.getScientificName())
+                && getRank() == that.getRank();
     }
 
     @Override

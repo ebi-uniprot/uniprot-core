@@ -1,17 +1,15 @@
 package org.uniprot.core.cv.chebi;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.cv.chebi.Chebi;
-import org.uniprot.core.cv.chebi.ChebiFileReader;
-
-import java.util.List;
-
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * Created 06/06/19
@@ -51,8 +49,13 @@ class ChebiFileReaderTest {
     @Test
     void extractsInchikey() {
         String inchikey = "SBLSYFIUPXRQRY-UHFFFAOYSA-N";
-        List<Chebi> chebis = reader
-                .parseLines(asList("[Term]", "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey + "\" xsd:string"));
+        List<Chebi> chebis =
+                reader.parseLines(
+                        asList(
+                                "[Term]",
+                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \""
+                                        + inchikey
+                                        + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
         assertThat(chebi.getInchiKey(), is(inchikey));
@@ -65,12 +68,15 @@ class ChebiFileReaderTest {
         String id = "30151";
         String name = "aluminide(1-)";
         String inchikey = "SBLSYFIUPXRQRY-UHFFFAOYSA-N";
-        List<Chebi> chebis = reader
-                .parseLines(
-                        asList("[Term]",
-                               "id: CHEBI:" + id,
-                               "name: " + name,
-                               "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey + "\" xsd:string"));
+        List<Chebi> chebis =
+                reader.parseLines(
+                        asList(
+                                "[Term]",
+                                "id: CHEBI:" + id,
+                                "name: " + name,
+                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \""
+                                        + inchikey
+                                        + "\" xsd:string"));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
         assertThat(chebi.getId(), is(id));
@@ -87,17 +93,22 @@ class ChebiFileReaderTest {
         String name2 = "halide anion";
         String inchikey2 = "PUZPDOWCWNUUKD-UHFFFAOYSA-M";
 
-        List<Chebi> chebis = reader
-                .parseLines(
-                        asList("[Term]",
-                               "id: CHEBI:" + id1,
-                               "name: " + name1,
-                               "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey1 + "\" xsd:string",
-                               "",
-                               "[Term]",
-                               "id: CHEBI:" + id2,
-                               "name: " + name2,
-                               "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \"" + inchikey2 + "\" xsd:string"));
+        List<Chebi> chebis =
+                reader.parseLines(
+                        asList(
+                                "[Term]",
+                                "id: CHEBI:" + id1,
+                                "name: " + name1,
+                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \""
+                                        + inchikey1
+                                        + "\" xsd:string",
+                                "",
+                                "[Term]",
+                                "id: CHEBI:" + id2,
+                                "name: " + name2,
+                                "property_value: http://purl.obolibrary.org/obo/chebi/inchikey \""
+                                        + inchikey2
+                                        + "\" xsd:string"));
         assertThat(chebis, hasSize(2));
 
         Chebi chebi1 = chebis.get(0);
@@ -113,8 +124,7 @@ class ChebiFileReaderTest {
 
     @Test
     void malformedIdLineReturnsNullValue() {
-        List<Chebi> chebis = reader
-                .parseLines(asList("[Term]", "id:???WWWRONG"));
+        List<Chebi> chebis = reader.parseLines(asList("[Term]", "id:???WWWRONG"));
         assertThat(chebis, hasSize(1));
         Chebi chebi = chebis.get(0);
         assertThat(chebi.getId(), is(nullValue()));

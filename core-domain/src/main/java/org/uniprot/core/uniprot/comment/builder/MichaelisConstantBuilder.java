@@ -17,7 +17,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public final class MichaelisConstantBuilder implements Builder<MichaelisConstantBuilder, MichaelisConstant> {
+public final class MichaelisConstantBuilder
+        implements Builder<MichaelisConstantBuilder, MichaelisConstant> {
     private double constant;
     private MichaelisConstantUnit unit;
     private String substrate;
@@ -56,8 +57,7 @@ public final class MichaelisConstantBuilder implements Builder<MichaelisConstant
     @Override
     public MichaelisConstantBuilder from(MichaelisConstant instance) {
         evidences.clear();
-        return this
-                .evidences(instance.getEvidences())
+        return this.evidences(instance.getEvidences())
                 .constant(instance.getConstant())
                 .substrate(instance.getSubstrate())
                 .unit(instance.getUnit());

@@ -1,12 +1,12 @@
 package org.uniprot.core.cv.taxonomy.impl;
 
+import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.taxonomy.TaxonomicNode;
-
-import java.util.UUID;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class TaxonomicNodeImplTest {
     private String random;
@@ -18,20 +18,27 @@ public class TaxonomicNodeImplTest {
     private TaxonomicNode parent;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         this.random = UUID.randomUUID().toString();
         this.id = ThreadLocalRandom.current().nextInt();
         this.scientificName = "sn-" + this.random;
         this.commonName = "cn-" + this.random;
         this.synonymName = "syn-" + this.random;
         this.mnemonic = "mn-" + this.random;
-        this.parent = new TaxonomicNodeImpl.Builder(this.id - 1, this.scientificName + "parent").build();
+        this.parent =
+                new TaxonomicNodeImpl.Builder(this.id - 1, this.scientificName + "parent").build();
     }
 
     @Test
-    void testCreateObject(){
-        TaxonomicNode node = createTaxonomicNode(this.id, this.scientificName, this.commonName,
-                this.synonymName, this.mnemonic, null);
+    void testCreateObject() {
+        TaxonomicNode node =
+                createTaxonomicNode(
+                        this.id,
+                        this.scientificName,
+                        this.commonName,
+                        this.synonymName,
+                        this.mnemonic,
+                        null);
         Assertions.assertNotNull(node);
         Assertions.assertEquals(this.id, node.id());
         Assertions.assertEquals(this.scientificName, node.scientificName());
@@ -43,9 +50,15 @@ public class TaxonomicNodeImplTest {
     }
 
     @Test
-    void testCreateObjectWithParent(){
-        TaxonomicNode node = createTaxonomicNode(this.id, this.scientificName,
-                this.commonName, this.synonymName, this.mnemonic, this.parent);
+    void testCreateObjectWithParent() {
+        TaxonomicNode node =
+                createTaxonomicNode(
+                        this.id,
+                        this.scientificName,
+                        this.commonName,
+                        this.synonymName,
+                        this.mnemonic,
+                        this.parent);
         Assertions.assertNotNull(node);
         Assertions.assertEquals(this.id, node.id());
         Assertions.assertEquals(this.scientificName, node.scientificName());
@@ -57,21 +70,36 @@ public class TaxonomicNodeImplTest {
     }
 
     @Test
-    void testToString(){
-        TaxonomicNode node = createTaxonomicNode(this.id, this.scientificName,
-                this.commonName, this.synonymName, this.mnemonic, this.parent);
-        String str = "TaxonomicNodeImpl{" +
-                "id=" + this.id +
-                ", scientificName='" + this.scientificName + '\'' +
-                ", commonName='" + this.commonName + '\'' +
-                ", synonymName='" + this.synonymName + '\'' +
-                ", parent=" + this.parent +
-                '}';
+    void testToString() {
+        TaxonomicNode node =
+                createTaxonomicNode(
+                        this.id,
+                        this.scientificName,
+                        this.commonName,
+                        this.synonymName,
+                        this.mnemonic,
+                        this.parent);
+        String str =
+                "TaxonomicNodeImpl{"
+                        + "id="
+                        + this.id
+                        + ", scientificName='"
+                        + this.scientificName
+                        + '\''
+                        + ", commonName='"
+                        + this.commonName
+                        + '\''
+                        + ", synonymName='"
+                        + this.synonymName
+                        + '\''
+                        + ", parent="
+                        + this.parent
+                        + '}';
         Assertions.assertEquals(str, node.toString());
     }
 
     @Test
-    void testValueEqual(){
+    void testValueEqual() {
         TaxonomicNode n1 = createTaxonomicNode();
         TaxonomicNode n2 = createTaxonomicNode();
         Assertions.assertTrue(n1.equals(n2));
@@ -79,31 +107,38 @@ public class TaxonomicNodeImplTest {
     }
 
     @Test
-    void testRefEqual(){
+    void testRefEqual() {
         TaxonomicNode n1 = createTaxonomicNode();
         Assertions.assertTrue(n1.equals(n1));
         Assertions.assertTrue(n1.hashCode() == n1.hashCode());
     }
 
     @Test
-    void testEqualWithNull(){
+    void testEqualWithNull() {
         TaxonomicNode n1 = createTaxonomicNode();
         Assertions.assertFalse(n1.equals(null));
     }
 
     @Test
-    void testValueNotEqual(){
+    void testValueNotEqual() {
         TaxonomicNode n1 = createTaxonomicNode();
         this.parent = null;
         TaxonomicNode n2 = createTaxonomicNode();
         Assertions.assertFalse(n1.equals(n2));
     }
 
-    private TaxonomicNode createTaxonomicNode(){
-        return createTaxonomicNode(this.id, this.scientificName, this.commonName, this.synonymName, this.mnemonic, this.parent);
+    private TaxonomicNode createTaxonomicNode() {
+        return createTaxonomicNode(
+                this.id,
+                this.scientificName,
+                this.commonName,
+                this.synonymName,
+                this.mnemonic,
+                this.parent);
     }
 
-    public static TaxonomicNode createTaxonomicNode(int id, String sn, String cn, String sy, String mn, TaxonomicNode parent){
+    public static TaxonomicNode createTaxonomicNode(
+            int id, String sn, String cn, String sy, String mn, TaxonomicNode parent) {
         TaxonomicNodeImpl.Builder builder = new TaxonomicNodeImpl.Builder(id, sn);
         builder.withCommonName(cn).withSynonymName(sy).withMnemonic(mn).childOf(parent);
         return builder.build();

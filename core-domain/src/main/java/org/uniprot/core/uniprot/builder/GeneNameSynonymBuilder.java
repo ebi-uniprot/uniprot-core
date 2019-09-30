@@ -9,14 +9,11 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
-/**
- * @author lgonzales
- */
-public class GeneNameSynonymBuilder extends AbstractEvidencedValueBuilder<GeneNameSynonymBuilder, GeneNameSynonym> {
+/** @author lgonzales */
+public class GeneNameSynonymBuilder
+        extends AbstractEvidencedValueBuilder<GeneNameSynonymBuilder, GeneNameSynonym> {
 
-    public GeneNameSynonymBuilder(){
-
-    }
+    public GeneNameSynonymBuilder() {}
 
     public GeneNameSynonymBuilder(String syn, List<Evidence> evidences) {
         this.value = syn;

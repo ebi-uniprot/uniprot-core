@@ -31,13 +31,8 @@ public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
 
     @Override
     public Feature build() {
-        return new FeatureImpl(type,
-                               location,
-                               description,
-                               featureId,
-                               alternativeSequence,
-                               dbXref,
-                               evidences);
+        return new FeatureImpl(
+                type, location, description, featureId, alternativeSequence, dbXref, evidences);
     }
 
     @Override

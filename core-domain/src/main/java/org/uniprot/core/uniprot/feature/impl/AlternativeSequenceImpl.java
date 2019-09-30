@@ -1,12 +1,10 @@
 package org.uniprot.core.uniprot.feature.impl;
 
-
 import java.util.Collections;
 import java.util.List;
 
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.util.Utils;
-
 
 public class AlternativeSequenceImpl implements AlternativeSequence {
     private static final long serialVersionUID = 804707478075935286L;
@@ -30,7 +28,6 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
         return this.originalSequence;
     }
 
-
     @Override
     public List<String> getAlternativeSequences() {
         return this.alternativeSequences;
@@ -40,25 +37,22 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((alternativeSequences == null) ? 0 : alternativeSequences.hashCode());
+        result =
+                prime * result
+                        + ((alternativeSequences == null) ? 0 : alternativeSequences.hashCode());
         result = prime * result + ((originalSequence == null) ? 0 : originalSequence.hashCode());
         return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         AlternativeSequenceImpl other = (AlternativeSequenceImpl) obj;
         if (alternativeSequences == null) {
-            if (other.alternativeSequences != null)
-                return false;
-        } else if (!alternativeSequences.equals(other.alternativeSequences))
-            return false;
+            if (other.alternativeSequences != null) return false;
+        } else if (!alternativeSequences.equals(other.alternativeSequences)) return false;
         if (originalSequence == null) {
             return other.originalSequence == null;
         } else return originalSequence.equals(other.originalSequence);

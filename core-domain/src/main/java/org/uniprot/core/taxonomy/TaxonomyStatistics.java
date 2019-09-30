@@ -19,5 +19,4 @@ public interface TaxonomyStatistics extends Serializable {
     boolean hasReferenceProteomeCount();
 
     boolean hasCompleteProteomeCount();
-
 }

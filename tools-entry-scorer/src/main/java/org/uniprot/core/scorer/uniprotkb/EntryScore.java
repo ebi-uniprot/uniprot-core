@@ -3,8 +3,8 @@ package org.uniprot.core.scorer.uniprotkb;
 import java.text.DecimalFormat;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 17-Mar-2010 Time: 15:17:12 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 17-Mar-2010 Time: 15:17:12 To change this template
+ * use File | Settings | File Templates.
  */
 public class EntryScore {
 
@@ -114,31 +114,50 @@ public class EntryScore {
 
     public String toStringWithTaxId() {
         DecimalFormat decimalFormat = new DecimalFormat("0.0");
-        return accession +
-                ", " + taxId +
-                ", " + decimalFormat.format(descriptionScore) +
-                ", " + decimalFormat.format(geneScore) +
-                ", " + decimalFormat.format(commentScore) +
-                ", " + decimalFormat.format(xrefScore) +
-                ", " + decimalFormat.format(goScore) +
-                ", " + decimalFormat.format(keywordScore) +
-                ", " + decimalFormat.format(featureScore) +
-                ", " + decimalFormat.format(citiationScore) +
-                ", " + decimalFormat.format(totalScore);
+        return accession
+                + ", "
+                + taxId
+                + ", "
+                + decimalFormat.format(descriptionScore)
+                + ", "
+                + decimalFormat.format(geneScore)
+                + ", "
+                + decimalFormat.format(commentScore)
+                + ", "
+                + decimalFormat.format(xrefScore)
+                + ", "
+                + decimalFormat.format(goScore)
+                + ", "
+                + decimalFormat.format(keywordScore)
+                + ", "
+                + decimalFormat.format(featureScore)
+                + ", "
+                + decimalFormat.format(citiationScore)
+                + ", "
+                + decimalFormat.format(totalScore);
     }
 
     @Override
     public String toString() {
         DecimalFormat decimalFormat = new DecimalFormat("0.0");
-        return accession +
-                ", " + decimalFormat.format(descriptionScore) +
-                ", " + decimalFormat.format(geneScore) +
-                ", " + decimalFormat.format(commentScore) +
-                ", " + decimalFormat.format(xrefScore) +
-                ", " + decimalFormat.format(goScore) +
-                ", " + decimalFormat.format(keywordScore) +
-                ", " + decimalFormat.format(featureScore) +
-                ", " + decimalFormat.format(citiationScore) +
-                ", " + decimalFormat.format(totalScore);
+        return accession
+                + ", "
+                + decimalFormat.format(descriptionScore)
+                + ", "
+                + decimalFormat.format(geneScore)
+                + ", "
+                + decimalFormat.format(commentScore)
+                + ", "
+                + decimalFormat.format(xrefScore)
+                + ", "
+                + decimalFormat.format(goScore)
+                + ", "
+                + decimalFormat.format(keywordScore)
+                + ", "
+                + decimalFormat.format(featureScore)
+                + ", "
+                + decimalFormat.format(citiationScore)
+                + ", "
+                + decimalFormat.format(totalScore);
     }
 }

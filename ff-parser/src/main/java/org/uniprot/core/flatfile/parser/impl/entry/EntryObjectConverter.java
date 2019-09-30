@@ -1,5 +1,7 @@
 package org.uniprot.core.flatfile.parser.impl.entry;
 
+import java.util.*;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,16 +35,12 @@ import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 
-import java.util.*;
-import java.util.stream.Collectors;
+public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry> {
 
-public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry>{
+    /** */
+    private static final long serialVersionUID = -1548724347898352705L;
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -1548724347898352705L;
-	private static final Logger logger = LoggerFactory.getLogger(EntryObjectConverter.class);
+    private static final Logger logger = LoggerFactory.getLogger(EntryObjectConverter.class);
     private final AcLineConverter acLineConverter = new AcLineConverter();
     private final DeLineConverter deLineConverter = new DeLineConverter();
 
@@ -71,7 +69,11 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
     public EntryObjectConverter(SupportingDataMap supportingDataMap, boolean ignoreWrong) {
         drLineConverter = new DrLineConverter(ignoreWrong);
         kwLineConverter = new KwLineConverter(supportingDataMap.getKeywordMap(), ignoreWrong);
-        ccLineConverter = new CcLineConverter(supportingDataMap.getDiseaseMap(), supportingDataMap.getSubcellularLocationMap(), ignoreWrong);
+        ccLineConverter =
+                new CcLineConverter(
+                        supportingDataMap.getDiseaseMap(),
+                        supportingDataMap.getSubcellularLocationMap(),
+                        ignoreWrong);
         this.accessionGoEvidences = supportingDataMap.getGoEvidencesMap();
     }
 
@@ -81,25 +83,24 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         UniProtEntryBuilder builder = new UniProtEntryBuilder();
         Map.Entry<UniProtId, UniProtEntryType> ids = idLineConverter.convert(f.id);
         UniProtAcLineObject acLineObj = acLineConverter.convert(f.ac);
-        UniProtEntryBuilder.ActiveEntryBuilder activeEntryBuilder = builder
-                .primaryAccession(acLineObj.getPrimaryAccession())
-                .uniProtId(ids.getKey())
-                .active()
-                .entryType(ids.getValue())
-                .secondaryAccessions(acLineObj.getSecondAccessions())
-                .entryAudit(dtLineConverter.convert(f.dt));
-        if (f.cc != null)
-            activeEntryBuilder.comments(ccLineConverter.convert(f.cc));
+        UniProtEntryBuilder.ActiveEntryBuilder activeEntryBuilder =
+                builder.primaryAccession(acLineObj.getPrimaryAccession())
+                        .uniProtId(ids.getKey())
+                        .active()
+                        .entryType(ids.getValue())
+                        .secondaryAccessions(acLineObj.getSecondAccessions())
+                        .entryAudit(dtLineConverter.convert(f.dt));
+        if (f.cc != null) activeEntryBuilder.comments(ccLineConverter.convert(f.cc));
         activeEntryBuilder.proteinDescription(deLineConverter.convert(f.de));
         UniProtDrObjects drObjects = drLineConverter.convert(f.dr);
-        activeEntryBuilder.databaseCrossReferences(addGoEvidence(f.ac.primaryAcc, drObjects.drObjects));
+        activeEntryBuilder.databaseCrossReferences(
+                addGoEvidence(f.ac.primaryAcc, drObjects.drObjects));
 
         if (f.ft != null) {
             activeEntryBuilder.features(ftLineConverter.convert(f.ft));
         }
-        if (f.gn != null)
+        if (f.gn != null) activeEntryBuilder.genes(gnLineConverter.convert(f.gn));
 
-            activeEntryBuilder.genes(gnLineConverter.convert(f.gn));
         if (f.kw != null) {
             activeEntryBuilder.keywords(kwLineConverter.convert(f.kw));
         }
@@ -112,7 +113,8 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         OrganismBuilder organismBuilder = new OrganismBuilder();
         organismBuilder.from(osLineConverter.convert(f.os));
         Organism oxLineOrganism = oxLineConverter.convert(f.ox);
-        organismBuilder.taxonId(oxLineOrganism.getTaxonId())
+        organismBuilder
+                .taxonId(oxLineOrganism.getTaxonId())
                 .evidences(oxLineOrganism.getEvidences())
                 .lineage(ocLineConverter.convert(f.oc));
         activeEntryBuilder.organism(organismBuilder.build());
@@ -129,38 +131,36 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         if (drObjects.ssProsites != null) {
             List<InternalLine> internalLines = new ArrayList<>();
             internalLines.addAll(drObjects.ssProsites);
+            if (usl != null) internalLines.addAll(usl.getInternalLines());
             if (usl != null)
-                internalLines.addAll(usl.getInternalLines());
-            if (usl != null)
-                activeEntryBuilder.internalSection(new InternalSectionBuilder()
-                        .evidenceLines(usl.getEvidenceLines())
-                        .sourceLines(usl.getSourceLines())
-                        .internalLines(internalLines).build());
+                activeEntryBuilder.internalSection(
+                        new InternalSectionBuilder()
+                                .evidenceLines(usl.getEvidenceLines())
+                                .sourceLines(usl.getSourceLines())
+                                .internalLines(internalLines)
+                                .build());
             else {
-                activeEntryBuilder.internalSection(new InternalSectionBuilder()
-                        .internalLines(internalLines).build());
+                activeEntryBuilder.internalSection(
+                        new InternalSectionBuilder().internalLines(internalLines).build());
             }
         } else {
             activeEntryBuilder.internalSection(usl);
         }
 
-
         return activeEntryBuilder.build();
-
     }
 
-    private List<UniProtDBCrossReference> addGoEvidence(String accession, List<UniProtDBCrossReference> dbRefs) {
+    private List<UniProtDBCrossReference> addGoEvidence(
+            String accession, List<UniProtDBCrossReference> dbRefs) {
         Map<String, List<Evidence>> goEvidenceMap = accessionGoEvidences.get(accession);
         if (goEvidenceMap == null) {
             return dbRefs;
         }
-        return dbRefs.stream()
-                .map(val -> convert(val, goEvidenceMap))
-                .collect(Collectors.toList());
-
+        return dbRefs.stream().map(val -> convert(val, goEvidenceMap)).collect(Collectors.toList());
     }
 
-    private UniProtDBCrossReference convert(UniProtDBCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
+    private UniProtDBCrossReference convert(
+            UniProtDBCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
         if (xref.getDatabaseType().getName().equals("GO")) {
             String id = xref.getId();
             List<Evidence> evidences = goEvidenceMap.get(id);
@@ -212,6 +212,4 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 
         return evidences;
     }
-
-
 }

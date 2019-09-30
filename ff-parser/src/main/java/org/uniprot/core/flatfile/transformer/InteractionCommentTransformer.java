@@ -34,13 +34,11 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
         annotation = CommentTransformerHelper.stripTrailing(annotation, ".");
         if (annotation == null) {
             throw new IllegalArgumentException();
-
         }
         String[] tokens = annotation.split("\n");
         for (String token : tokens) {
             Interaction interaction = convertInteraction(token);
-            if (interaction != null)
-                interactions.add(interaction);
+            if (interaction != null) interactions.add(interaction);
         }
 
         return interactions;
@@ -49,7 +47,6 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
     public Interaction convertInteraction(String value) {
         if (value == null) {
             throw new IllegalArgumentException();
-
         }
         InteractionBuilder builder = new InteractionBuilder();
 
@@ -79,7 +76,6 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
             }
             builder.uniProtAccession(acc);
             builder.geneName(genename);
-
         }
         builder.numberOfExperiments(Integer.parseInt(nbexp.substring(6)));
 
@@ -92,10 +88,8 @@ public class InteractionCommentTransformer implements CommentTransformer<Interac
         st.nextToken(); // IntAct
         String acc1 = st.nextToken(); // EBI-206607
         String acc2 = st.nextToken(); // EBI-108331
-        builder.firstInteractor(acc1)
-                .secondInteractor(acc2);
+        builder.firstInteractor(acc1).secondInteractor(acc2);
 
         return builder.build();
     }
-
 }

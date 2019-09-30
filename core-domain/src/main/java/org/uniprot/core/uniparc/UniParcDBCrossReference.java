@@ -5,14 +5,11 @@ import java.time.LocalDate;
 import org.uniprot.core.DBCrossReference;
 
 /**
- *
  * @author jluo
  * @date: 21 May 2019
- *
-*/
-
-public interface UniParcDBCrossReference  extends DBCrossReference<UniParcDatabaseType>{
-     public final String PROPERTY_GENE_NAME = "gene_name";
+ */
+public interface UniParcDBCrossReference extends DBCrossReference<UniParcDatabaseType> {
+    public final String PROPERTY_GENE_NAME = "gene_name";
 
     public final String PROPERTY_PROTEIN_NAME = "protein_name";
 
@@ -26,12 +23,14 @@ public interface UniParcDBCrossReference  extends DBCrossReference<UniParcDataba
     public final String PROPERTY_COMPONENT = "component";
 
     public final String PROPERTY_NCBI_TAXONOMY_ID = "NCBI_taxonomy_id";
-    
-	int getVersionI();
-	Integer getVersion();
-	boolean isActive();
-	LocalDate getCreated();
-	LocalDate getLastUpdated();
 
+    int getVersionI();
+
+    Integer getVersion();
+
+    boolean isActive();
+
+    LocalDate getCreated();
+
+    LocalDate getLastUpdated();
 }
-

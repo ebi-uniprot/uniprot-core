@@ -10,9 +10,9 @@ import org.uniprot.core.uniprot.comment.builder.MichaelisConstantBuilder;
 import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.Converter;
+import org.uniprot.core.xml.jaxb.uniprot.CommentType.Kinetics;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
-import org.uniprot.core.xml.jaxb.uniprot.CommentType.Kinetics;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
 
@@ -25,7 +25,8 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
         this(evRefMapper, new ObjectFactory());
     }
 
-    public BPCPKineticParametersConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+    public BPCPKineticParametersConverter(
+            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
         this.evValueConverter = new EvidencedValueConverter(evRefMapper, xmlUniprotFactory, false);
         this.evRefMapper = evRefMapper;
@@ -33,15 +34,23 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
 
     @Override
     public KineticParameters fromXml(Kinetics xmlObj) {
-        List<MichaelisConstant> mConstants = xmlObj.getKM().stream().map(val -> michaelisConstantFromXml(val))
-                .collect(Collectors.toList());
-        List<MaximumVelocity> velocities = xmlObj.getVmax().stream().map(val -> maximumVelocityFromXml(val))
-                .collect(Collectors.toList());
+        List<MichaelisConstant> mConstants =
+                xmlObj.getKM().stream()
+                        .map(val -> michaelisConstantFromXml(val))
+                        .collect(Collectors.toList());
+        List<MaximumVelocity> velocities =
+                xmlObj.getVmax().stream()
+                        .map(val -> maximumVelocityFromXml(val))
+                        .collect(Collectors.toList());
 
         Note note = null;
         if (!xmlObj.getText().isEmpty()) {
-            note = new NoteBuilder(xmlObj.getText().stream().map(evValueConverter::fromXml)
-                                           .collect(Collectors.toList())).build();
+            note =
+                    new NoteBuilder(
+                                    xmlObj.getText().stream()
+                                            .map(evValueConverter::fromXml)
+                                            .collect(Collectors.toList()))
+                            .build();
         }
 
         return new KineticParametersBuilder()
@@ -56,10 +65,12 @@ public class BPCPKineticParametersConverter implements Converter<Kinetics, Kinet
         Kinetics kineticsXML = xmlUniprotFactory.createCommentTypeKinetics();
 
         // MichaelisConstant
-        kp.getMichaelisConstants().forEach(mc -> kineticsXML.getKM().add(michaelisConstantToXml(mc)));
+        kp.getMichaelisConstants()
+                .forEach(mc -> kineticsXML.getKM().add(michaelisConstantToXml(mc)));
 
         // Maximum velocity
-        kp.getMaximumVelocities().forEach(mc -> kineticsXML.getVmax().add(maximumVelocityToXml(mc)));
+        kp.getMaximumVelocities()
+                .forEach(mc -> kineticsXML.getVmax().add(maximumVelocityToXml(mc)));
 
         // kineticParameterNote
         Note note = kp.getNote();

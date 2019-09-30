@@ -25,12 +25,13 @@ public class APIsoformImpl implements APIsoform {
         synonyms = Collections.emptyList();
     }
 
-    public APIsoformImpl(IsoformName name,
-                         List<IsoformName> synonyms,
-                         Note note,
-                         List<IsoformId> isoformIds,
-                         List<String> sequenceIds,
-                         IsoformSequenceStatus isoformSequenceStatus) {
+    public APIsoformImpl(
+            IsoformName name,
+            List<IsoformName> synonyms,
+            Note note,
+            List<IsoformId> isoformIds,
+            List<String> sequenceIds,
+            IsoformSequenceStatus isoformSequenceStatus) {
         this.name = name;
         this.synonyms = Utils.unmodifiableList(synonyms);
         this.note = note;
@@ -39,8 +40,7 @@ public class APIsoformImpl implements APIsoform {
 
         if (isoformSequenceStatus == null) {
             this.isoformSequenceStatus = IsoformSequenceStatus.DESCRIBED;
-        } else
-            this.isoformSequenceStatus = isoformSequenceStatus;
+        } else this.isoformSequenceStatus = isoformSequenceStatus;
     }
 
     @Override
@@ -108,12 +108,12 @@ public class APIsoformImpl implements APIsoform {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         APIsoformImpl apIsoform = (APIsoformImpl) o;
-        return Objects.equals(name, apIsoform.name) &&
-                Objects.equals(synonyms, apIsoform.synonyms) &&
-                Objects.equals(note, apIsoform.note) &&
-                Objects.equals(isoformIds, apIsoform.isoformIds) &&
-                Objects.equals(sequenceIds, apIsoform.sequenceIds) &&
-                isoformSequenceStatus == apIsoform.isoformSequenceStatus;
+        return Objects.equals(name, apIsoform.name)
+                && Objects.equals(synonyms, apIsoform.synonyms)
+                && Objects.equals(note, apIsoform.note)
+                && Objects.equals(isoformIds, apIsoform.isoformIds)
+                && Objects.equals(sequenceIds, apIsoform.sequenceIds)
+                && isoformSequenceStatus == apIsoform.isoformSequenceStatus;
     }
 
     @Override

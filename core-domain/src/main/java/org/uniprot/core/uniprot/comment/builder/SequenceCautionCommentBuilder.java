@@ -11,7 +11,8 @@ import org.uniprot.core.uniprot.comment.SequenceCautionType;
 import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
+public final class SequenceCautionCommentBuilder
+        implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private String note;
@@ -19,22 +20,23 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
     private List<Evidence> evidences = new ArrayList<>();
 
     public SequenceCautionComment build() {
-        return new SequenceCautionCommentImpl(sequenceCautionType, sequence, positions, note, evidences);
+        return new SequenceCautionCommentImpl(
+                sequenceCautionType, sequence, positions, note, evidences);
     }
 
     @Override
     public SequenceCautionCommentBuilder from(SequenceCautionComment instance) {
         positions.clear();
         evidences.clear();
-        return this
-                .sequenceCautionType(instance.getSequenceCautionType())
+        return this.sequenceCautionType(instance.getSequenceCautionType())
                 .sequence(instance.getSequence())
                 .evidences(instance.getEvidences())
                 .note(instance.getNote())
                 .positions(instance.getPositions());
     }
 
-    public SequenceCautionCommentBuilder sequenceCautionType(SequenceCautionType sequenceCautionType) {
+    public SequenceCautionCommentBuilder sequenceCautionType(
+            SequenceCautionType sequenceCautionType) {
         this.sequenceCautionType = sequenceCautionType;
         return this;
     }

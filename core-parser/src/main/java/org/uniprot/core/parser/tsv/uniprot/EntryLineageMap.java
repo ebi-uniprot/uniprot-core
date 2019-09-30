@@ -1,11 +1,9 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-
-
 import java.util.*;
 
 public class EntryLineageMap implements NamedValueMap {
-/*    private final List<TaxNode> lineage;
+    /*    private final List<TaxNode> lineage;
     public static final List<String> DEFAULT_FIELDS =
             Arrays.asList("lineage", "tl:all", "tl:class", "tl:cohort",
                           "tl:family", "tl:forma", "tl:genus", "tl:infraclass", "tl:infraorder", "tl:kingdom", "tl:order",
@@ -25,10 +23,10 @@ public class EntryLineageMap implements NamedValueMap {
 
     @Override
     public Map<String, String> attributeValues() {
-        //if (lineage.isEmpty()) {
-            return Collections.emptyMap();
-        //}
-/*
+        // if (lineage.isEmpty()) {
+        return Collections.emptyMap();
+        // }
+        /*
         Map<String, String> map = new HashMap<>();
         String allLineage = getAll();
         map.put("tl:all", allLineage);
@@ -36,7 +34,7 @@ public class EntryLineageMap implements NamedValueMap {
         DEFAULT_FIELDS.stream().skip(1).forEach(val -> addToMap(val, map));
         return map;*/
     }
-/*
+    /*
     private void addToMap(String field, Map<String, String> map) {
         Optional<TaxNode> node = getValue(field);
         node.ifPresent(taxNode -> map.put(field, taxNode.getName()));

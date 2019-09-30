@@ -5,22 +5,27 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- *
  * @author jluo
  * @date: 9 Aug 2019
- *
-*/
-
+ */
 public interface UniRefEntry extends Serializable {
-	UniRefEntryId getId();
-	String getName();
-	LocalDate getUpdated();
-	UniRefType getEntryType();
-	long getCommonTaxonId();
-	String getCommonTaxon();
-	List<GoTerm> getGoTerms();
-	RepresentativeMember getRepresentativeMember();
-	List<UniRefMember> getMembers();	
-	int getMemberCount();
-}
+    UniRefEntryId getId();
 
+    String getName();
+
+    LocalDate getUpdated();
+
+    UniRefType getEntryType();
+
+    long getCommonTaxonId();
+
+    String getCommonTaxon();
+
+    List<GoTerm> getGoTerms();
+
+    RepresentativeMember getRepresentativeMember();
+
+    List<UniRefMember> getMembers();
+
+    int getMemberCount();
+}

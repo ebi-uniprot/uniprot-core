@@ -1,5 +1,14 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
@@ -7,15 +16,6 @@ import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 
 class FreeTextCommentBuilderTest {
     @Test
@@ -153,43 +153,44 @@ class FreeTextCommentBuilderTest {
     }
 
     private FreeTextComment buildFreeTextComment(CommentType type, List<EvidencedValue> texts) {
-        return new FreeTextCommentBuilder()
-                .texts(texts)
-                .commentType(type)
-                .build();
+        return new FreeTextCommentBuilder().texts(texts).commentType(type).build();
     }
 
     @Test
     void testBuildNoneFreeTextComment() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
-        assertThrows(IllegalArgumentException.class, () -> buildFreeTextComment(CommentType.COFACTOR, texts));
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> buildFreeTextComment(CommentType.COFACTOR, texts));
     }
 
     private List<EvidencedValue> createEvidenceValues2() {
         List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(new EvidencedValueBuilder(
-                "value1",
-                asList(
-                        new EvidenceBuilder()
-                                .databaseId("ENSP0001324")
-                                .databaseName("Ensembl")
-                                .evidenceCode(EvidenceCode.ECO_0000313)
-                                .build(),
-                        new EvidenceBuilder()
-                                .databaseId("PIRNR001361")
-                                .databaseName("PIRNR")
-                                .evidenceCode(EvidenceCode.ECO_0000256)
-                                .build()
-                )).build());
-        evidencedValues.add(new EvidencedValueBuilder(
-                "value2",
-                singletonList(
-                        new EvidenceBuilder()
-                                .databaseId("ENSP0001324")
-                                .databaseName("Ensembl")
-                                .evidenceCode(EvidenceCode.ECO_0000313)
-                                .build()
-                )).build());
+        evidencedValues.add(
+                new EvidencedValueBuilder(
+                                "value1",
+                                asList(
+                                        new EvidenceBuilder()
+                                                .databaseId("ENSP0001324")
+                                                .databaseName("Ensembl")
+                                                .evidenceCode(EvidenceCode.ECO_0000313)
+                                                .build(),
+                                        new EvidenceBuilder()
+                                                .databaseId("PIRNR001361")
+                                                .databaseName("PIRNR")
+                                                .evidenceCode(EvidenceCode.ECO_0000256)
+                                                .build()))
+                        .build());
+        evidencedValues.add(
+                new EvidencedValueBuilder(
+                                "value2",
+                                singletonList(
+                                        new EvidenceBuilder()
+                                                .databaseId("ENSP0001324")
+                                                .databaseName("Ensembl")
+                                                .evidenceCode(EvidenceCode.ECO_0000313)
+                                                .build()))
+                        .build());
         return evidencedValues;
     }
 }

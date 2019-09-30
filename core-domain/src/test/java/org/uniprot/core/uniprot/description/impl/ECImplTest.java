@@ -1,19 +1,18 @@
 package org.uniprot.core.uniprot.description.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.description.builder.ECBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidenceCode;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.builder.ECBuilder;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 
 class ECImplTest {
 
@@ -21,11 +20,18 @@ class ECImplTest {
     void testECImplComplete() {
         String ec = "4.6.1.2";
         List<Evidence> evidences = new ArrayList<>();
-        evidences.add(new EvidenceBuilder().evidenceCode(EvidenceCode.ECO_0000313)
-                        .databaseName("Ensembl").databaseId("ENSP0001324").build());
         evidences.add(
-                new EvidenceBuilder().evidenceCode(EvidenceCode.ECO_0000256)
-                        .databaseName("PIRNR").databaseId("PIRNR001361").build());
+                new EvidenceBuilder()
+                        .evidenceCode(EvidenceCode.ECO_0000313)
+                        .databaseName("Ensembl")
+                        .databaseId("ENSP0001324")
+                        .build());
+        evidences.add(
+                new EvidenceBuilder()
+                        .evidenceCode(EvidenceCode.ECO_0000256)
+                        .databaseName("PIRNR")
+                        .databaseId("PIRNR001361")
+                        .build());
 
         EC ecObj = new ECBuilder().value(ec).evidences(evidences).build();
         assertEquals(ec, ecObj.getValue());
@@ -42,5 +48,4 @@ class ECImplTest {
         assertTrue(ecObj.isValid());
         assertEquals(Collections.emptyList(), ecObj.getEvidences());
     }
-
 }

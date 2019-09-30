@@ -1,8 +1,5 @@
 package org.uniprot.core.uniprot.xdb;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -11,12 +8,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public enum GoEvidences {
     INSTANCE;
     private static final Logger LOGGER = LoggerFactory.getLogger(GoEvidences.class);
     private static final String COLON = ":";
     private static final String DEFAULT = "Default";
-    private static final String GAF_ECO_URL = "https://raw.githubusercontent.com/evidenceontology/evidenceontology/master/gaf-eco-mapping.txt";
+    private static final String GAF_ECO_URL =
+            "https://raw.githubusercontent.com/evidenceontology/evidenceontology/master/gaf-eco-mapping.txt";
     private static final String LOCAL_GAF_ECO_FILE = "META-INF/gaf-eco-mapping.txt";
     private Map<String, String> defaultMapping = new HashMap<>();
     private Map<String, String> defaultMappingFromEco = new HashMap<>();
@@ -35,10 +36,8 @@ public enum GoEvidences {
             return Optional.ofNullable(defaultMapping.get(threeLet));
         }
         String ecoCode = otherMapping.get(threeLet + COLON + goRef);
-        if (ecoCode != null)
-            return Optional.ofNullable(ecoCode);
-        else
-            return Optional.ofNullable(defaultMapping.get(threeLet));
+        if (ecoCode != null) return Optional.ofNullable(ecoCode);
+        else return Optional.ofNullable(defaultMapping.get(threeLet));
     }
 
     public Optional<String> convertECOToGAF(String ecoCode) {
@@ -69,8 +68,7 @@ public enum GoEvidences {
 
                 while ((line = bif.readLine()) != null) {
                     line = line.trim();
-                    if ((line.length() == 0) || line.startsWith("#"))
-                        continue;
+                    if ((line.length() == 0) || line.startsWith("#")) continue;
                     parseLine(line);
                 }
             }
@@ -93,8 +91,7 @@ public enum GoEvidences {
 
     private void parseLine(String line) {
         String[] tokens = line.split("\t");
-        if (tokens.length < 3)
-            return;
+        if (tokens.length < 3) return;
         if (tokens[1].equalsIgnoreCase(DEFAULT)) {
             defaultMapping.put(tokens[0], tokens[2]);
             defaultMappingFromEco.put(tokens[2], tokens[0]);

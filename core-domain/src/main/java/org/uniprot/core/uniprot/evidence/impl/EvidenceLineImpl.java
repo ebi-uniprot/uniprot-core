@@ -50,9 +50,9 @@ public class EvidenceLineImpl implements EvidenceLine {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EvidenceLineImpl that = (EvidenceLineImpl) o;
-        return Objects.equals(evidence, that.evidence) &&
-                Objects.equals(createDate, that.createDate) &&
-                Objects.equals(curator, that.curator);
+        return Objects.equals(evidence, that.evidence)
+                && Objects.equals(createDate, that.createDate)
+                && Objects.equals(curator, that.curator);
     }
 
     @Override

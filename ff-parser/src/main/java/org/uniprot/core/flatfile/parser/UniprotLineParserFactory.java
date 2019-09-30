@@ -29,32 +29,29 @@ import org.uniprot.core.flatfile.parser.impl.rx.RxLineObject;
 import org.uniprot.core.flatfile.parser.impl.sq.SqLineObject;
 import org.uniprot.core.flatfile.parser.impl.ss.SsLineObject;
 
-/**
- * <p/>
- * User: wudong, Date: 19/08/13, Time: 15:49
- */
-public interface UniprotLineParserFactory extends Serializable{
-	public  UniprotLineParser<AcLineObject> createAcLineParser();
+/** User: wudong, Date: 19/08/13, Time: 15:49 */
+public interface UniprotLineParserFactory extends Serializable {
+    public UniprotLineParser<AcLineObject> createAcLineParser();
 
-	UniprotLineParser<DrLineObject> createDrLineParser();
+    UniprotLineParser<DrLineObject> createDrLineParser();
 
-	UniprotLineParser<DeLineObject> createDeLineParser();
+    UniprotLineParser<DeLineObject> createDeLineParser();
 
-	UniprotLineParser<DtLineObject> createDtLineParser();
+    UniprotLineParser<DtLineObject> createDtLineParser();
 
-	UniprotLineParser<GnLineObject> createGnLineParser();
+    UniprotLineParser<GnLineObject> createGnLineParser();
 
-	UniprotLineParser<IdLineObject> createIdLineParser();
+    UniprotLineParser<IdLineObject> createIdLineParser();
 
-	UniprotLineParser<OsLineObject> createOsLineParser();
+    UniprotLineParser<OsLineObject> createOsLineParser();
 
-	UniprotLineParser<PeLineObject> createPeLineParser();
+    UniprotLineParser<PeLineObject> createPeLineParser();
 
-	UniprotLineParser<SqLineObject> createSqLineParser();
+    UniprotLineParser<SqLineObject> createSqLineParser();
 
-	UniprotLineParser<OgLineObject> createOgLineParser();
+    UniprotLineParser<OgLineObject> createOgLineParser();
 
-	UniprotLineParser<KwLineObject> createKwLineParser();
+    UniprotLineParser<KwLineObject> createKwLineParser();
 
     UniprotLineParser<RnLineObject> createRnLineParser();
 
@@ -72,17 +69,17 @@ public interface UniprotLineParserFactory extends Serializable{
 
     UniprotLineParser<RlLineObject> createRlLineParser();
 
-	UniprotLineParser<FtLineObject> createFtLineParser();
+    UniprotLineParser<FtLineObject> createFtLineParser();
 
-	UniprotLineParser<OcLineObject> createOcLineParser();
+    UniprotLineParser<OcLineObject> createOcLineParser();
 
-	UniprotLineParser<OxLineObject> createOxLineParser();
+    UniprotLineParser<OxLineObject> createOxLineParser();
 
-	UniprotLineParser<OhLineObject> createOhLineParser();
+    UniprotLineParser<OhLineObject> createOhLineParser();
 
-	UniprotLineParser<CcLineObject> createCcLineParser();
+    UniprotLineParser<CcLineObject> createCcLineParser();
 
-	UniprotLineParser<EntryObject> createEntryParser();
+    UniprotLineParser<EntryObject> createEntryParser();
 
-	UniprotLineParser<SsLineObject> createSsLineParser();
+    UniprotLineParser<SsLineObject> createSsLineParser();
 }

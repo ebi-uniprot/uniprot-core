@@ -13,7 +13,8 @@ public class TaxonomyJsonConfig extends JsonConfig {
     private static TaxonomyJsonConfig INSTANCE;
 
     private final ObjectMapper objectMapper;
-    private final ObjectMapper simpleMapper; // mapper without unwanted fields like type, lighter version
+    private final ObjectMapper
+            simpleMapper; // mapper without unwanted fields like type, lighter version
 
     private TaxonomyJsonConfig() {
         this.objectMapper = initFullObjectMapper();
@@ -37,7 +38,6 @@ public class TaxonomyJsonConfig extends JsonConfig {
         return this.objectMapper;
     }
 
-
     private ObjectMapper initFullObjectMapper() {
         ObjectMapper objMapper = getDefaultFullObjectMapper();
 
@@ -60,4 +60,3 @@ public class TaxonomyJsonConfig extends JsonConfig {
         return simpleObjMapper;
     }
 }
-

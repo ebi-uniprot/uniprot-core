@@ -12,8 +12,7 @@ import org.uniprot.core.uniprot.evidence.HasEvidences;
 public class ScoreUtil {
     public static ScoreStatus getScoreStatus(Collection<ScoreStatus> types) {
         ScoreStatus status = ScoreStatus.NO_SCORE;
-        if (types.contains(ScoreStatus.EXPERIMENTAL))
-            status = ScoreStatus.EXPERIMENTAL;
+        if (types.contains(ScoreStatus.EXPERIMENTAL)) status = ScoreStatus.EXPERIMENTAL;
         else if (types.contains(ScoreStatus.NON_EXPERIMENTAL))
             status = ScoreStatus.NON_EXPERIMENTAL;
         return status;
@@ -58,8 +57,9 @@ public class ScoreUtil {
     }
 
     public static boolean hasEvidence(List<Evidence> evidences, List<EvidenceType> evidenceTypes) {
-        if ((evidenceTypes == null) || (evidenceTypes.isEmpty()))
-            return true;
-        return evidences.stream().map(e -> e.getSource().getDatabaseType()).anyMatch(evidenceTypes::contains);
+        if ((evidenceTypes == null) || (evidenceTypes.isEmpty())) return true;
+        return evidences.stream()
+                .map(e -> e.getSource().getDatabaseType())
+                .anyMatch(evidenceTypes::contains);
     }
 }

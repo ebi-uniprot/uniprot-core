@@ -9,7 +9,9 @@ import org.uniprot.core.impl.DBCrossReferenceImpl;
  *
  * @author Edd
  */
-public class DBCrossReferenceBuilder<T extends DatabaseType> extends AbstractDBCrossReferenceBuilder<DBCrossReferenceBuilder<T>, T, DBCrossReference<T>> {
+public class DBCrossReferenceBuilder<T extends DatabaseType>
+        extends AbstractDBCrossReferenceBuilder<
+                DBCrossReferenceBuilder<T>, T, DBCrossReference<T>> {
     @Override
     public DBCrossReference<T> build() {
         return new DBCrossReferenceImpl<>(databaseType, id, properties);

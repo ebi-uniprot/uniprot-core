@@ -9,7 +9,8 @@ import org.uniprot.core.citation.impl.PublicationDateImpl;
  *
  * @author Edd
  */
-public class PublicationDateBuilder extends AbstractValueBuilder<PublicationDateBuilder, PublicationDate> {
+public class PublicationDateBuilder
+        extends AbstractValueBuilder<PublicationDateBuilder, PublicationDate> {
     public PublicationDateBuilder(String value) {
         super(value);
     }

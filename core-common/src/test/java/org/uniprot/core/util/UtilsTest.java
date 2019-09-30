@@ -84,9 +84,9 @@ class UtilsTest {
 
       @Test
       void uncapitalizeFirstChar() {
-        String str = "Protein";
+		String str ="Protein";
         String result = Utils.lowerFirstChar(str);
-        assertEquals("protein", result);
+		assertEquals("protein", result);
         assertAll(
           () -> assertEquals("protein", Utils.lowerFirstChar("Protein")),
           () -> assertEquals(" protein", Utils.lowerFirstChar(" protein")),
@@ -409,6 +409,6 @@ class UtilsTest {
       }
     }
 
-  }
+	}
 }
 

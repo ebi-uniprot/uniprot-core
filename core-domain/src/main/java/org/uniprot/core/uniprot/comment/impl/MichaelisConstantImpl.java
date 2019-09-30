@@ -20,10 +20,11 @@ public class MichaelisConstantImpl implements MichaelisConstant {
         this.evidences = Collections.emptyList();
     }
 
-    public MichaelisConstantImpl(double constant,
-                                 MichaelisConstantUnit unit,
-                                 String substrate,
-                                 List<Evidence> evidences) {
+    public MichaelisConstantImpl(
+            double constant,
+            MichaelisConstantUnit unit,
+            String substrate,
+            List<Evidence> evidences) {
         this.constant = constant;
         this.unit = unit;
         this.substrate = substrate;
@@ -64,10 +65,10 @@ public class MichaelisConstantImpl implements MichaelisConstant {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MichaelisConstantImpl that = (MichaelisConstantImpl) o;
-        return Double.compare(that.constant, constant) == 0 &&
-                unit == that.unit &&
-                Objects.equals(substrate, that.substrate) &&
-                Objects.equals(evidences, that.evidences);
+        return Double.compare(that.constant, constant) == 0
+                && unit == that.unit
+                && Objects.equals(substrate, that.substrate)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override

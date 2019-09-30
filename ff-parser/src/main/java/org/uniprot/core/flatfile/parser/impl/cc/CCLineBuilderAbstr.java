@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uniprot.core.flatfile.writer.FFLine;
-import org.uniprot.core.flatfile.writer.FFLineBuilder;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.flatfile.writer.impl.FFLineBuilderAbstr;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
@@ -18,12 +17,12 @@ import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 
-public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilderAbstr<T> implements
-        CommentLineBuilder<T> {
+public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilderAbstr<T>
+        implements CommentLineBuilder<T> {
     private static final String CC_FF_MARK = "CC   -!- ";
-    public final static String COMMENT_SPACE_INDENT = "         ";
-    public final static String COMMENT_SPACE = "       ";
-    public final static String CC_PREFIX_INDENT = "CC" + COMMENT_SPACE_INDENT;
+    public static final String COMMENT_SPACE_INDENT = "         ";
+    public static final String COMMENT_SPACE = "       ";
+    public static final String CC_PREFIX_INDENT = "CC" + COMMENT_SPACE_INDENT;
     protected static final String NOTE = "Note=";
     protected static final String NAME = "Name=";
     protected static final String BRACKET_RIGHT = ")";
@@ -33,49 +32,48 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         super(LineType.CC, COMMENT_SPACE);
     }
 
-    protected abstract List<String> buildCommentLines(T comment, boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType);
+    protected abstract List<String> buildCommentLines(
+            T comment, boolean includeFFMarkings, boolean showEvidence, boolean includeCommentType);
 
-    
     @Override
     public String buildString(T f, boolean showEvidence, boolean includeCommentType) {
         List<String> lls = buildCommentLines(f, false, showEvidence, includeCommentType);
         return FFLines.create(lls).toString();
     }
+
     @Override
     public String buildString(T f) {
-    	return buildString(f, false, true);
-     //   List<String> lls = buildCommentLines(f, false, false);
-    //    return FFLines.create(lls).toString();
+        return buildString(f, false, true);
+        //   List<String> lls = buildCommentLines(f, false, false);
+        //    return FFLines.create(lls).toString();
     }
 
     @Override
     public String buildStringWithEvidence(T f) {
-    	return buildString(f, true, true);
+        return buildString(f, true, true);
     }
-
 
     @Override
     protected FFLine buildLine(T f, boolean showEvidence) {
-    	
+
         List<String> lls = buildCommentLines(f, true, showEvidence, true);
         return FFLines.create(lls);
     }
 
-
     //	protected String buildCommentStatus(HasCommentStatus comment ) {
-//		String extra="";
-//		if (comment.getCommentStatus() == CommentStatus.BY_SIMILARITY) {
-//			extra += " (By similarity)";
-//		} else if (comment.getCommentStatus() == CommentStatus.PROBABLE) {
-//			extra += " (Probable)";
-//		}  else if (comment.getCommentStatus() == CommentStatus.POTENTIAL) {
-//			extra += " (Potential)";
-//		}
-//		return extra;
-//	}
-    protected StringBuilder addFlatFileMarkingsIfRequired(boolean includeFlatFileMarkings, StringBuilder sb) {
-        if (includeFlatFileMarkings)
-            sb.append(CC_FF_MARK);
+    //		String extra="";
+    //		if (comment.getCommentStatus() == CommentStatus.BY_SIMILARITY) {
+    //			extra += " (By similarity)";
+    //		} else if (comment.getCommentStatus() == CommentStatus.PROBABLE) {
+    //			extra += " (Probable)";
+    //		}  else if (comment.getCommentStatus() == CommentStatus.POTENTIAL) {
+    //			extra += " (Potential)";
+    //		}
+    //		return extra;
+    //	}
+    protected StringBuilder addFlatFileMarkingsIfRequired(
+            boolean includeFlatFileMarkings, StringBuilder sb) {
+        if (includeFlatFileMarkings) sb.append(CC_FF_MARK);
         return sb;
     }
 
@@ -92,12 +90,11 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         start.append(":");
 
         return start.toString();
-
     }
 
-    protected StringBuilder addEvidence(HasEvidences he, StringBuilder str, boolean showEvidence, String postfix) {
-        if (!showEvidence)
-            return str;
+    protected StringBuilder addEvidence(
+            HasEvidences he, StringBuilder str, boolean showEvidence, String postfix) {
+        if (!showEvidence) return str;
         String evStr = LineBuilderHelper.export(he.getEvidences());
         if (evStr.length() > 0) {
             str.append(evStr);
@@ -106,13 +103,17 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         return str;
     }
 
-    protected StringBuilder addEvidence(HasEvidences he, StringBuilder str, boolean showEvidence,
-                                        String postfix, String postfixWitNoEvidence) {
+    protected StringBuilder addEvidence(
+            HasEvidences he,
+            StringBuilder str,
+            boolean showEvidence,
+            String postfix,
+            String postfixWitNoEvidence) {
         if (!showEvidence) {
             str.append(postfixWitNoEvidence);
             return str;
         }
-        //str.append( EvidenceLine.export(he.getEvidenceIds()))
+        // str.append( EvidenceLine.export(he.getEvidenceIds()))
         String evStr = LineBuilderHelper.export(he.getEvidences());
         if (evStr.length() > 0) {
             str.append(evStr);
@@ -123,7 +124,8 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         return str;
     }
 
-    protected List<String> addEvidences(List<String> lines, HasEvidences he, boolean showEvidence, String linePref) {
+    protected List<String> addEvidences(
+            List<String> lines, HasEvidences he, boolean showEvidence, String linePref) {
         if ((showEvidence) && (he.getEvidences().size() > 0)) {
             StringBuilder sb = new StringBuilder();
             List<String> lines2 = new ArrayList<>();
@@ -140,11 +142,11 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
             lines2.addAll(lls);
             return lines2;
 
-        } else
-            return lines;
+        } else return lines;
     }
 
-    protected String buildFreeText(FreeText depend, boolean showEvidence, String separator, String end) {
+    protected String buildFreeText(
+            FreeText depend, boolean showEvidence, String separator, String end) {
         boolean isfirst = true;
         StringBuilder sb = new StringBuilder();
         for (EvidencedValue val : depend.getTexts()) {

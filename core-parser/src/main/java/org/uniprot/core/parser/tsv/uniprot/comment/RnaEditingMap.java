@@ -13,7 +13,8 @@ public class RnaEditingMap implements NamedValueMap {
 
     private final List<RnaEditingComment> rnaEditingComments;
     private final CCRnaEditingCommentLineBuilder lineBuilder = new CCRnaEditingCommentLineBuilder();
-    public RnaEditingMap(List<RnaEditingComment> rnaEditingComments){
+
+    public RnaEditingMap(List<RnaEditingComment> rnaEditingComments) {
         this.rnaEditingComments = rnaEditingComments;
     }
 
@@ -25,18 +26,16 @@ public class RnaEditingMap implements NamedValueMap {
     private Map<String, String> getRnaEdComments(List<RnaEditingComment> reComments) {
         Map<String, String> rnaEditingCommentMap = new HashMap<>();
         if ((reComments != null)) {
-            String result = reComments.stream()
-                    .map(this::mapRnaEditingCommentToString)
-                    .collect(Collectors.joining(";  "));
+            String result =
+                    reComments.stream()
+                            .map(this::mapRnaEditingCommentToString)
+                            .collect(Collectors.joining(";  "));
             rnaEditingCommentMap.put("cc:rna_editing", result);
         }
         return rnaEditingCommentMap;
     }
 
-    private  String mapRnaEditingCommentToString(RnaEditingComment rnaEditingComment) {  	
-    	return lineBuilder.buildString(rnaEditingComment, true, true).replaceAll("\n", " ");
-
+    private String mapRnaEditingCommentToString(RnaEditingComment rnaEditingComment) {
+        return lineBuilder.buildString(rnaEditingComment, true, true).replaceAll("\n", " ");
     }
-
-  
 }

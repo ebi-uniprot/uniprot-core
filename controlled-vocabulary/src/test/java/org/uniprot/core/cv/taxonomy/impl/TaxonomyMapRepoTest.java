@@ -1,15 +1,15 @@
 package org.uniprot.core.cv.taxonomy.impl;
 
+import java.io.File;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.taxonomy.FileNodeIterable;
 import org.uniprot.core.cv.taxonomy.TaxonomicNode;
-
-import java.io.File;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.Optional;
 
 public class TaxonomyMapRepoTest {
 
@@ -23,7 +23,7 @@ public class TaxonomyMapRepoTest {
     }
 
     @Test
-    void testRetrieveNodeUsingTaxId(){
+    void testRetrieveNodeUsingTaxId() {
         TaxonomyMapRepo repo = new TaxonomyMapRepo(this.fileNodeIterable);
         Optional<TaxonomicNode> node = repo.retrieveNodeUsingTaxID(2759);
         Assertions.assertTrue(node.isPresent());
@@ -38,7 +38,7 @@ public class TaxonomyMapRepoTest {
     }
 
     @Test
-    void testRetrieveNodeUsingTaxIdWithoutParent(){
+    void testRetrieveNodeUsingTaxIdWithoutParent() {
         TaxonomyMapRepo repo = new TaxonomyMapRepo(this.fileNodeIterable);
         Optional<TaxonomicNode> node = repo.retrieveNodeUsingTaxID(1);
         Assertions.assertTrue(node.isPresent());

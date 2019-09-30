@@ -1,14 +1,14 @@
 package org.uniprot.core.cv.chebi;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 public class ChebiCacheTest {
 
     @Test
-    void testLoadCacheFromDefaultFileAsFallback(){
+    void testLoadCacheFromDefaultFileAsFallback() {
         String emptyFileName = "empty.txt";
         String defaultDataFile = "chebi/chebi.obo";
         ChebiCache chebiCache = ChebiCache.INSTANCE;

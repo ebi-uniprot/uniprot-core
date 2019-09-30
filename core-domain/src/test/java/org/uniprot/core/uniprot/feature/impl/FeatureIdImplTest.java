@@ -1,11 +1,9 @@
 package org.uniprot.core.uniprot.feature.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.feature.FeatureType;
-import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.feature.FeatureType;
 
 class FeatureIdImplTest {
 
@@ -31,7 +29,6 @@ class FeatureIdImplTest {
         assertTrue(featureId.isValid(FeatureType.PROPEP));
         assertFalse(featureId.isValid(FeatureType.VARIANT));
         assertTrue(featureId.isValid(FeatureType.CARBOHYD));
-
     }
 
     @Test
@@ -40,7 +37,6 @@ class FeatureIdImplTest {
         FeatureIdImpl featureId = new FeatureIdImpl(value);
         assertFalse(featureId.isValid(FeatureType.PROPEP));
         assertTrue(featureId.isValid(FeatureType.VARIANT));
-
     }
 
     @Test
@@ -50,7 +46,6 @@ class FeatureIdImplTest {
         assertFalse(featureId.isValid(FeatureType.PROPEP));
         assertFalse(featureId.isValid(FeatureType.VARIANT));
         assertTrue(featureId.isValid(FeatureType.VAR_SEQ));
-
     }
 
     @Test
@@ -62,5 +57,4 @@ class FeatureIdImplTest {
         assertFalse(featureId.isValid(FeatureType.VARIANT));
         assertTrue(featureId.isValid(FeatureType.CARBOHYD));
     }
-
 }

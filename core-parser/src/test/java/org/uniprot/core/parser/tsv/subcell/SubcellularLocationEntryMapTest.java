@@ -1,5 +1,12 @@
 package org.uniprot.core.parser.tsv.subcell;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Collections;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
@@ -7,13 +14,6 @@ import org.uniprot.core.cv.subcell.SubcellLocationCategory;
 import org.uniprot.core.cv.subcell.SubcellularLocationEntry;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationEntryImpl;
 import org.uniprot.core.cv.subcell.impl.SubcellularLocationStatisticsImpl;
-
-import java.util.Collections;
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -25,7 +25,8 @@ class SubcellularLocationEntryMapTest {
     void checkSimpleEntryAttributeValues() {
         SubcellularLocationEntryImpl entry = new SubcellularLocationEntryImpl();
         entry.setAccession("SL-0001");
-        Map<String, String> mappedEntries = new SubcellularLocationEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new SubcellularLocationEntryMap(entry).attributeValues();
         assertThat(mappedEntries, notNullValue());
         assertEquals(14, mappedEntries.size());
         assertEquals("SL-0001", mappedEntries.get("accession"));
@@ -38,7 +39,8 @@ class SubcellularLocationEntryMapTest {
     void checkCompleteEntryAttributeValues() {
         SubcellularLocationEntry entry = createSubcellularLocationEntry(true);
 
-        Map<String, String> mappedEntries = new SubcellularLocationEntryMap(entry).attributeValues();
+        Map<String, String> mappedEntries =
+                new SubcellularLocationEntryMap(entry).attributeValues();
 
         assertEquals(14, mappedEntries.size());
         assertEquals("noteValue", mappedEntries.get("note"));
@@ -62,7 +64,8 @@ class SubcellularLocationEntryMapTest {
         entry.setAccession("SL-0001");
         entry.setContent("content value");
         entry.setDefinition("definition value");
-        entry.setGeneOntologies(Collections.singletonList(new GeneOntologyImpl("goIdValue", "goTermValue")));
+        entry.setGeneOntologies(
+                Collections.singletonList(new GeneOntologyImpl("goIdValue", "goTermValue")));
         entry.setId("idValue");
         entry.setKeyword(new KeywordImpl("keywordIdValue", "keywordAccessionValue"));
         entry.setLinks(Collections.singletonList("linkValue"));
@@ -77,6 +80,4 @@ class SubcellularLocationEntryMapTest {
         }
         return entry;
     }
-
-
 }

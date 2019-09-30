@@ -9,32 +9,27 @@ import org.uniprot.core.Sequence;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 
 /**
- *
  * @author jluo
  * @date: 24 Jun 2019
- *
  */
-
 public class UniParcSequenceMap implements NamedValueMap {
-	public static final List<String> FIELDS = Arrays.asList("checksum", "length", "sequence");
-	private final Sequence sequence;
+    public static final List<String> FIELDS = Arrays.asList("checksum", "length", "sequence");
+    private final Sequence sequence;
 
-	public UniParcSequenceMap(Sequence sequence) {
-		this.sequence = sequence;
-	}
+    public UniParcSequenceMap(Sequence sequence) {
+        this.sequence = sequence;
+    }
 
-	@Override
-	public Map<String, String> attributeValues() {
-		Map<String, String> map = new HashMap<>();
-		map.put(FIELDS.get(0), sequence.getCrc64());
-		map.put(FIELDS.get(1), "" + sequence.getLength());
-		map.put(FIELDS.get(2), sequence.getValue());
-		return map;
-	}
+    @Override
+    public Map<String, String> attributeValues() {
+        Map<String, String> map = new HashMap<>();
+        map.put(FIELDS.get(0), sequence.getCrc64());
+        map.put(FIELDS.get(1), "" + sequence.getLength());
+        map.put(FIELDS.get(2), sequence.getValue());
+        return map;
+    }
 
-	public static boolean contains(List<String> fields) {
-		return fields.stream().anyMatch(FIELDS::contains);
-	}
-
-
+    public static boolean contains(List<String> fields) {
+        return fields.stream().anyMatch(FIELDS::contains);
+    }
 }

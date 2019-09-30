@@ -1,7 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
-import com.google.common.base.Strings;
-
 import java.util.*;
 import java.util.regex.Matcher;
 
@@ -19,6 +17,8 @@ import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 
+import com.google.common.base.Strings;
+
 public class FtLineConverter extends EvidenceCollector
         implements Converter<FtLineObject, List<Feature>> {
     private static final String CONFLICT_REGEX = ", | and ";
@@ -28,20 +28,23 @@ public class FtLineConverter extends EvidenceCollector
     @Override
     public List<Feature> convert(FtLineObject f) {
         List<Feature> features = new ArrayList<>();
-        Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper.convert(f.getEvidenceInfo());
+        Map<Object, List<Evidence>> evidenceMap =
+                EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidenceMap.values());
         for (FtLineObject.FT ft : f.fts) {
             FeatureType featureType = convert(ft.type);
             Range location = convertFeatureLocation(ft.location_start, ft.location_end);
             Feature feature = convertFeature(featureType, location, ft, evidenceMap);
             features.add(feature);
-
         }
         return features;
     }
 
-    private Feature convertFeature(FeatureType type, Range location, FtLineObject.FT ft,
-                                   Map<Object, List<Evidence>> evidenceMap) {
+    private Feature convertFeature(
+            FeatureType type,
+            Range location,
+            FtLineObject.FT ft,
+            Map<Object, List<Evidence>> evidenceMap) {
         List<Evidence> evidences = evidenceMap.get(ft);
         switch (type) {
             case CARBOHYD:
@@ -56,12 +59,11 @@ public class FtLineConverter extends EvidenceCollector
                 return convertMutagenFeature(type, location, ft, evidences);
             default:
                 return convertSimpleFeature(type, location, ft, evidences);
-
         }
     }
 
-    private Feature convertCarbohydFeature(FeatureType type, Range location, FtLineObject.FT ft,
-                                           List<Evidence> evidences) {
+    private Feature convertCarbohydFeature(
+            FeatureType type, Range location, FtLineObject.FT ft, List<Evidence> evidences) {
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
@@ -71,9 +73,8 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-
-    private Feature convertVarSeqFeature(FeatureType type, Range location, FtLineObject.FT ft,
-                                         List<Evidence> evidences) {
+    private Feature convertVarSeqFeature(
+            FeatureType type, Range location, FtLineObject.FT ft, List<Evidence> evidences) {
         String value = ft.ft_text;
         value = fixVarSeqSpace(value);
         String originalSequence = "";
@@ -100,10 +101,11 @@ public class FtLineConverter extends EvidenceCollector
                 isoforms.add(token);
             }
         }
-        AlternativeSequence altSeq = new AlternativeSequenceBuilder()
-                .original(originalSequence)
-                .alternatives(alternativeSequences)
-                .build();
+        AlternativeSequence altSeq =
+                new AlternativeSequenceBuilder()
+                        .original(originalSequence)
+                        .alternatives(alternativeSequences)
+                        .build();
         //	factory.createReport(isoforms));
 
         return new FeatureBuilder()
@@ -128,8 +130,7 @@ public class FtLineConverter extends EvidenceCollector
         int spaceLocation = -1;
         do {
             spaceLocation = getSpaceLocation(temp, index);
-            if (spaceLocation == -1)
-                break;
+            if (spaceLocation == -1) break;
             String val = temp.substring(0, spaceLocation) + temp.substring(spaceLocation + 1);
             temp = val;
             index -= 1;
@@ -157,14 +158,13 @@ public class FtLineConverter extends EvidenceCollector
 
     public boolean isSequenceLetter(String se) {
         for (int i = 0; i < se.length(); i++) {
-            if (se.charAt(i) > 'Z' || se.charAt(i) < 'A')
-                return false;
+            if (se.charAt(i) > 'Z' || se.charAt(i) < 'A') return false;
         }
         return true;
     }
 
-    private Feature convertVariantFeature(FeatureType type, Range location, FtLineObject.FT ft,
-                                          List<Evidence> evidences) {
+    private Feature convertVariantFeature(
+            FeatureType type, Range location, FtLineObject.FT ft, List<Evidence> evidences) {
         String value = ft.ft_text;
         Matcher matcher = FtLineConverterUtil.VAIANT_DESC_PATTERN.matcher(value);
         String originalSequence = "";
@@ -177,14 +177,14 @@ public class FtLineConverter extends EvidenceCollector
                 originalSequence = matcher.group(3);
                 alternativeSequences.add(matcher.group(5));
             }
-            if (matcher.group(9) != null)
-                description = matcher.group(9);
+            if (matcher.group(9) != null) description = matcher.group(9);
         }
 
-        AlternativeSequence altSeq = new AlternativeSequenceBuilder()
-                .original(originalSequence)
-                .alternatives(alternativeSequences)
-                .build();
+        AlternativeSequence altSeq =
+                new AlternativeSequenceBuilder()
+                        .original(originalSequence)
+                        .alternatives(alternativeSequences)
+                        .build();
         //		factory.createReport(reports));
         DBCrossReference<FeatureXDbType> dbXref = null;
         return new FeatureBuilder()
@@ -198,8 +198,8 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private Feature convertConflictFeature(FeatureType type, Range location, FtLineObject.FT ft,
-                                           List<Evidence> evidences) {
+    private Feature convertConflictFeature(
+            FeatureType type, Range location, FtLineObject.FT ft, List<Evidence> evidences) {
         String value = ft.ft_text;
         Matcher matcher = FtLineConverterUtil.CONFLICT_DESC_PATTERN.matcher(value);
         String originalSequence = "";
@@ -218,12 +218,13 @@ public class FtLineConverter extends EvidenceCollector
             description = "in Ref. " + matcher.group(10);
             reports = Arrays.asList(tokens);
         }
-        AlternativeSequence altSeq = new AlternativeSequenceBuilder()
-                .original(originalSequence)
-                .alternatives(alternativeSequences)
-                .build();;
+        AlternativeSequence altSeq =
+                new AlternativeSequenceBuilder()
+                        .original(originalSequence)
+                        .alternatives(alternativeSequences)
+                        .build();
+        ;
         //	factory.createReport(reports));
-
 
         return new FeatureBuilder()
                 .type(type)
@@ -234,8 +235,8 @@ public class FtLineConverter extends EvidenceCollector
                 .build();
     }
 
-    private Feature convertMutagenFeature(FeatureType type, Range location, FtLineObject.FT ft,
-                                          List<Evidence> evidences) {
+    private Feature convertMutagenFeature(
+            FeatureType type, Range location, FtLineObject.FT ft, List<Evidence> evidences) {
         String value = ft.ft_text;
         Matcher matcher = FtLineConverterUtil.MUTAGEN_DESC_PATTERN.matcher(value);
         String originalSequence = "";
@@ -253,28 +254,30 @@ public class FtLineConverter extends EvidenceCollector
             reports.add(matcher.group(8));
             description = matcher.group(8);
         }
-        AlternativeSequence altSeq = new AlternativeSequenceBuilder()
-                .original(originalSequence)
-                .alternatives(alternativeSequences)
-                .build();
+        AlternativeSequence altSeq =
+                new AlternativeSequenceBuilder()
+                        .original(originalSequence)
+                        .alternatives(alternativeSequences)
+                        .build();
         //	factory.createReport(reports));
         return new FeatureBuilder()
                 .type(type)
                 .location(location)
-//                .featureId(ft.ftId)
+                //                .featureId(ft.ftId)
                 .evidences(evidences)
                 .alternativeSequence(altSeq)
                 .description(description)
                 .build();
     }
 
-    private Feature convertSimpleFeature(FeatureType type, Range location, FtLineObject.FT ft,
-                                         List<Evidence> evidences) {
-        FeatureBuilder featureBuilder = new FeatureBuilder()
-                .type(type)
-                .location(location)
-                .evidences(evidences)
-                .description(ft.ft_text);
+    private Feature convertSimpleFeature(
+            FeatureType type, Range location, FtLineObject.FT ft, List<Evidence> evidences) {
+        FeatureBuilder featureBuilder =
+                new FeatureBuilder()
+                        .type(type)
+                        .location(location)
+                        .evidences(evidences)
+                        .description(ft.ft_text);
 
         if (!Strings.isNullOrEmpty(ft.ftId)) {
             featureBuilder.featureId(ft.ftId);
@@ -290,7 +293,8 @@ public class FtLineConverter extends EvidenceCollector
         return new Range(start.getValue(), end.getValue(), start.getKey(), end.getKey());
     }
 
-    private Map.Entry<PositionModifier, Integer> convertLocation(String locationStart, char outSymbol) {
+    private Map.Entry<PositionModifier, Integer> convertLocation(
+            String locationStart, char outSymbol) {
         PositionModifier startModifier = PositionModifier.EXACT;
 
         Integer start = -1;

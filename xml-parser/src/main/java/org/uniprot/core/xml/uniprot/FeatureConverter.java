@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot;
 
-import com.google.common.base.Strings;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,6 +17,8 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.FeatureType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
+import com.google.common.base.Strings;
+
 public class FeatureConverter implements Converter<FeatureType, Feature> {
 
     private static final String STOP = ".";
@@ -30,18 +30,16 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         this(evRefMapper, new ObjectFactory());
     }
 
-    public FeatureConverter(EvidenceIndexMapper evRefMapper,
-                            ObjectFactory xmlUniprotFactory) {
+    public FeatureConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.locationConverter = new FeatureLocationConverter(xmlUniprotFactory);
         this.evRefMapper = evRefMapper;
         this.xmlUniprotFactory = xmlUniprotFactory;
-
     }
 
     @Override
     public Feature fromXml(FeatureType xmlObj) {
-        org.uniprot.core.uniprot.feature.FeatureType type = org.uniprot.core.uniprot.feature.FeatureType
-                .typeOf(xmlObj.getType());
+        org.uniprot.core.uniprot.feature.FeatureType type =
+                org.uniprot.core.uniprot.feature.FeatureType.typeOf(xmlObj.getType());
         String description = "";
         if (xmlObj.getDescription() != null) {
             description = xmlObj.getDescription();
@@ -61,15 +59,17 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         }
         AlternativeSequence altSeq = null;
         if (!Strings.isNullOrEmpty(xmlObj.getOriginal())) {
-            altSeq = new AlternativeSequenceBuilder()
-                    .original(xmlObj.getOriginal())
-                    .alternatives(xmlObj.getVariation())
-                    .build();
+            altSeq =
+                    new AlternativeSequenceBuilder()
+                            .original(xmlObj.getOriginal())
+                            .alternatives(xmlObj.getVariation())
+                            .build();
         } else if (AlternativeSequenceHelper.hasAlternativeSequence(type)) {
-            altSeq = new AlternativeSequenceBuilder()
-                    .original("")
-                    .alternatives(Collections.emptyList())
-                    .build();
+            altSeq =
+                    new AlternativeSequenceBuilder()
+                            .original("")
+                            .alternatives(Collections.emptyList())
+                            .build();
         }
 
         return new FeatureBuilder()
@@ -91,7 +91,8 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
             xmlFeature.setType(uniObj.getType().getValue());
         }
         xmlFeature.setLocation(locationConverter.toXml(uniObj.getLocation()));
-        if ((uniObj.getFeatureId() != null) && !Strings.isNullOrEmpty(uniObj.getFeatureId().getValue())) {
+        if ((uniObj.getFeatureId() != null)
+                && !Strings.isNullOrEmpty(uniObj.getFeatureId().getValue())) {
             xmlFeature.setId(uniObj.getFeatureId().getValue());
         }
         if ((uniObj.getDescription() != null) && !uniObj.getDescription().getValue().isEmpty()) {
@@ -107,8 +108,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         // feature xml evidence tags set
         if (!uniObj.getEvidences().isEmpty()) {
             List<Integer> evs = evRefMapper.writeEvidences(uniObj.getEvidences());
-            if (!evs.isEmpty())
-                xmlFeature.getEvidence().addAll(evs);
+            if (!evs.isEmpty()) xmlFeature.getEvidence().addAll(evs);
         }
         if (uniObj.getAlternativeSequence() != null) {
             AlternativeSequence altSeq = uniObj.getAlternativeSequence();
@@ -125,7 +125,8 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         if (feature.getType() != org.uniprot.core.uniprot.feature.FeatureType.CONFLICT) {
             return;
         }
-        if ((feature.getDescription() == null) || Strings.isNullOrEmpty(feature.getDescription().getValue())) {
+        if ((feature.getDescription() == null)
+                || Strings.isNullOrEmpty(feature.getDescription().getValue())) {
             return;
         }
         String description = feature.getDescription().getValue();
@@ -134,7 +135,6 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
         for (Integer reference : refs) {
             sb.append(reference);
             sb.append(" ");
-
         }
         featureType.setRef(sb.toString().trim());
     }
@@ -154,7 +154,6 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
                 token = token.substring(index + 1).trim();
             }
             refs.add(Integer.parseInt(token));
-
         }
 
         return refs;

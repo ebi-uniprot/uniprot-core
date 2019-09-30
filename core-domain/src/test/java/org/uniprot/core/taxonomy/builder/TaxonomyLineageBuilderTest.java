@@ -1,44 +1,43 @@
 package org.uniprot.core.taxonomy.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TaxonomyLineageBuilderTest {
 
     @Test
-    void testSimpleTaxonomyLineage(){
+    void testSimpleTaxonomyLineage() {
         TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
         builder.taxonId(9606L);
 
         TaxonomyLineage taxonomyLineage = builder.build();
 
         assertTrue(taxonomyLineage.hasTaxonId());
-        assertEquals(taxonomyLineage.getTaxonId(),9606L);
+        assertEquals(taxonomyLineage.getTaxonId(), 9606L);
 
         assertFalse(taxonomyLineage.hasScientificName());
         assertFalse(taxonomyLineage.hasRank());
     }
 
     @Test
-    void testCompleteTaxonomyLineage(){
+    void testCompleteTaxonomyLineage() {
         TaxonomyLineage taxonomyLineage = getCompleteTaxonomyLineage();
 
         assertTrue(taxonomyLineage.hasTaxonId());
-        assertEquals(taxonomyLineage.getTaxonId(),9606L);
+        assertEquals(taxonomyLineage.getTaxonId(), 9606L);
 
         assertTrue(taxonomyLineage.hasRank());
-        assertEquals(taxonomyLineage.getRank(),TaxonomyRank.FAMILY);
+        assertEquals(taxonomyLineage.getRank(), TaxonomyRank.FAMILY);
 
         assertTrue(taxonomyLineage.hasScientificName());
-        assertEquals(taxonomyLineage.getScientificName(),"Scientific Name");
+        assertEquals(taxonomyLineage.getScientificName(), "Scientific Name");
     }
 
     @Test
-    void testFromTaxonomyLineage(){
+    void testFromTaxonomyLineage() {
         TaxonomyLineage taxonomyLineage = getCompleteTaxonomyLineage();
 
         TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder().from(taxonomyLineage);
@@ -50,10 +49,12 @@ class TaxonomyLineageBuilderTest {
         assertTrue(equals);
     }
 
-    static TaxonomyLineage getCompleteTaxonomyLineage(){
+    static TaxonomyLineage getCompleteTaxonomyLineage() {
         TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
-        builder.taxonId(9606L).scientificName("Scientific Name").hidden(true).rank(TaxonomyRank.FAMILY);
+        builder.taxonId(9606L)
+                .scientificName("Scientific Name")
+                .hidden(true)
+                .rank(TaxonomyRank.FAMILY);
         return builder.build();
     }
-
 }

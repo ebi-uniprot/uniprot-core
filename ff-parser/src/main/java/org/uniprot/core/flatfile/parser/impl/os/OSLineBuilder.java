@@ -13,33 +13,33 @@ import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 
-public class OSLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLineBuilder<Organism> {
-;
-	
-	public OSLineBuilder(){
-		super(LineType.OS);
-	}
-	
-	@Override
-	protected FFLine buildLine(Organism f, boolean showEvidence){
-		StringBuilder sb = build(f, showEvidence, true );
-		List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR, linePrefix);
-		return FFLines.create(lls);
-	}
-	@Override
-	public String buildString(Organism f) {
-		return build(f, false, false).toString();
-	}
-	
-	@Override
-	public String buildStringWithEvidence(Organism f) {
-		return build(f, true, false).toString();
-	}
-	
-	private  StringBuilder build(Organism organism, boolean showEvidence, boolean includeFFMarkup) {
+public class OSLineBuilder extends FFLineBuilderAbstr<Organism>
+        implements FFLineBuilder<Organism> {;
+
+    public OSLineBuilder() {
+        super(LineType.OS);
+    }
+
+    @Override
+    protected FFLine buildLine(Organism f, boolean showEvidence) {
+        StringBuilder sb = build(f, showEvidence, true);
+        List<String> lls = FFLineWrapper.buildLines(sb, SEPARATOR, linePrefix);
+        return FFLines.create(lls);
+    }
+
+    @Override
+    public String buildString(Organism f) {
+        return build(f, false, false).toString();
+    }
+
+    @Override
+    public String buildStringWithEvidence(Organism f) {
+        return build(f, true, false).toString();
+    }
+
+    private StringBuilder build(Organism organism, boolean showEvidence, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
-        if (includeFFMarkup)
-            sb.append(linePrefix);
+        if (includeFFMarkup) sb.append(linePrefix);
         if (organism.getScientificName() != null) {
             sb.append(organism.getScientificName());
         }
@@ -48,15 +48,15 @@ public class OSLineBuilder extends FFLineBuilderAbstr<Organism> implements FFLin
             sb.append(organism.getCommonName());
             sb.append(")");
         }
-        if(!organism.getSynonyms().isEmpty()) {
-        	String val = organism.getSynonyms().stream().collect(Collectors.joining(", "));
-        		sb.append(" (");
+        if (!organism.getSynonyms().isEmpty()) {
+            String val = organism.getSynonyms().stream().collect(Collectors.joining(", "));
+            sb.append(" (");
             sb.append(val);
             sb.append(")");
         }
-      
+
         appendIfNot(sb, '.');
-    
+
         return sb;
     }
 }

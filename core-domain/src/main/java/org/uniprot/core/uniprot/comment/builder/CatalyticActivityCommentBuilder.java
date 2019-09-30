@@ -11,7 +11,8 @@ import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
 
-public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
+public class CatalyticActivityCommentBuilder
+        implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();
 
@@ -23,8 +24,7 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
     @Override
     public CatalyticActivityCommentBuilder from(CatalyticActivityComment instance) {
         physiologicalReactions.clear();
-        return this
-                .physiologicalReactions(instance.getPhysiologicalReactions())
+        return this.physiologicalReactions(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());
     }
 

@@ -1,5 +1,15 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
@@ -18,17 +28,6 @@ import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.comment.CofactorCommentConverter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class CofactorCommentConverterTest {
     CofactorCommentConverter converter;
@@ -50,9 +49,7 @@ class CofactorCommentConverterTest {
         evidenceReferenceHandler.reset(evIdMap);
 
         this.converter = new CofactorCommentConverter(evidenceReferenceHandler);
-
     }
-
 
     @Test
     void test() {
@@ -89,13 +86,13 @@ class CofactorCommentConverterTest {
         assertEquals(xmlEv, note.getEvidence());
         CofactorComment convertedComment = converter.fromXml(xmlComment);
         assertEquals(comment, convertedComment);
-        String createdXmlText = UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment");
+        String createdXmlText =
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment");
         System.out.println(createdXmlText);
-
     }
 
-    private void assertCofactorType(CofactorType cofactor, String name, String dbType, String dbId,
-                                    List<Integer> evids) {
+    private void assertCofactorType(
+            CofactorType cofactor, String name, String dbType, String dbId, List<Integer> evids) {
         assertEquals(name, cofactor.getName());
         assertEquals(dbType, cofactor.getDbReference().getType());
         assertEquals(dbId, cofactor.getDbReference().getId());
@@ -107,10 +104,12 @@ class CofactorCommentConverterTest {
         for (String evid : evids) {
             evidences.add(parseEvidenceLine(evid));
         }
-        return new NoteBuilder(singletonList(new EvidencedValueBuilder(val, evidences).build())).build();
+        return new NoteBuilder(singletonList(new EvidencedValueBuilder(val, evidences).build()))
+                .build();
     }
 
-    private Cofactor create(String name, CofactorReferenceType type, String xrefId, List<String> evids) {
+    private Cofactor create(
+            String name, CofactorReferenceType type, String xrefId, List<String> evids) {
         DBCrossReference<CofactorReferenceType> reference =
                 new DBCrossReferenceBuilder<CofactorReferenceType>()
                         .databaseType(type)

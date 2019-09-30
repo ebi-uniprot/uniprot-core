@@ -2,12 +2,10 @@ package org.uniprot.core.uniprot;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- */
+/** @author jluo */
 public enum InternalLineType implements EnumDisplay<InternalLineType> {
     CL(1),
-    //Chromosomal location of a gene.
+    // Chromosomal location of a gene.
     CP(2),
     // Complete proteome.
     CX(3),
@@ -64,8 +62,7 @@ public enum InternalLineType implements EnumDisplay<InternalLineType> {
     // PROSITE special case
     UP(29),
     ZD(23);
-    //Complete proteome
-
+    // Complete proteome
 
     int position;
 

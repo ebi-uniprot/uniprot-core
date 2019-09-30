@@ -15,13 +15,13 @@ public class UniprotFastaParser {
     private final String header;
     private final String sequence;
 
-    public static UniprotFastaParser create(UniProtEntry entry){
+    public static UniprotFastaParser create(UniProtEntry entry) {
 
         StringBuilder sb = new StringBuilder();
         sb.append('>');
-        if(entry.getEntryType() == UniProtEntryType.SWISSPROT) {
+        if (entry.getEntryType() == UniProtEntryType.SWISSPROT) {
             sb.append("sp");
-        }else {
+        } else {
             sb.append("tr");
         }
         sb.append('|');
@@ -33,70 +33,60 @@ public class UniprotFastaParser {
         sb.append(" OX=").append(entry.getOrganism().getTaxonId());
         String geneStr = getGeneStr(entry.getGenes());
 
-        if(geneStr !=null){
+        if (geneStr != null) {
             sb.append(" GN=").append(geneStr);
         }
         sb.append(" PE=").append(getProteinExist(entry));
         sb.append(" SV=").append(entry.getEntryAudit().getSequenceVersion());
 
         return new UniprotFastaParser(sb.toString(), entry.getSequence().getValue());
-
     }
 
-    private UniprotFastaParser(String header, String sequence){
+    private UniprotFastaParser(String header, String sequence) {
         this.header = header;
         this.sequence = sequence;
     }
 
-    private static String getProteinExist(UniProtEntry entry){
+    private static String getProteinExist(UniProtEntry entry) {
         ProteinExistence pe = entry.getProteinExistence();
-        String peStr= "5";
-        if(pe == ProteinExistence.PROTEIN_LEVEL)
-            peStr ="1";
-        else if(pe == ProteinExistence.TRANSCRIPT_LEVEL)
-            peStr ="2";
-        else if(pe == ProteinExistence.HOMOLOGY)
-            peStr ="3";
-        else if(pe == ProteinExistence.PREDICTED)
-            peStr ="4";
-        else if(pe == ProteinExistence.UNCERTAIN)
-            peStr ="5";
+        String peStr = "5";
+        if (pe == ProteinExistence.PROTEIN_LEVEL) peStr = "1";
+        else if (pe == ProteinExistence.TRANSCRIPT_LEVEL) peStr = "2";
+        else if (pe == ProteinExistence.HOMOLOGY) peStr = "3";
+        else if (pe == ProteinExistence.PREDICTED) peStr = "4";
+        else if (pe == ProteinExistence.UNCERTAIN) peStr = "5";
         return peStr;
     }
 
-    private static String getGeneStr(List<Gene> genes){
+    private static String getGeneStr(List<Gene> genes) {
         String geneName = null;
-        String orfName =null;
+        String orfName = null;
         String olnName = null;
-        for(Gene gene: genes){
-            if(gene.hasGeneName())
-                geneName = gene.getGeneName().getValue();
-            else if((gene.getOrderedLocusNames() !=null) &&(gene.getOrderedLocusNames().size()>0)){
-                olnName =gene.getOrderedLocusNames().get(0).getValue();
+        for (Gene gene : genes) {
+            if (gene.hasGeneName()) geneName = gene.getGeneName().getValue();
+            else if ((gene.getOrderedLocusNames() != null)
+                    && (gene.getOrderedLocusNames().size() > 0)) {
+                olnName = gene.getOrderedLocusNames().get(0).getValue();
+            } else if ((gene.getOrfNames() != null) && (gene.getOrfNames().size() > 0)) {
+                orfName = gene.getOrfNames().get(0).getValue();
             }
-            else if((gene.getOrfNames() !=null) &&(gene.getOrfNames().size()>0)){
-                orfName =gene.getOrfNames().get(0).getValue();
-            }
-
         }
-        if(geneName !=null)
-            return geneName;
-        else if(olnName !=null)
-            return olnName;
-        else
-            return orfName;
+        if (geneName != null) return geneName;
+        else if (olnName != null) return olnName;
+        else return orfName;
     }
-    private static String getDescriptionStr(ProteinDescription pd){
-        StringBuilder  desc = new StringBuilder();
+
+    private static String getDescriptionStr(ProteinDescription pd) {
+        StringBuilder desc = new StringBuilder();
         Name name;
-        if(pd.getRecommendedName()!= null){
+        if (pd.getRecommendedName() != null) {
             name = pd.getRecommendedName().getFullName();
-        }else{
-            name =pd.getSubmissionNames().get(0).getFullName();
+        } else {
+            name = pd.getSubmissionNames().get(0).getFullName();
         }
         desc.append(name.getValue());
         Flag flag = pd.getFlag();
-        if(flag !=null && !flag.getType().equals(FlagType.PRECURSOR)){
+        if (flag != null && !flag.getType().equals(FlagType.PRECURSOR)) {
             desc.append(" (Fragment)");
         }
         return desc.toString();
@@ -110,7 +100,7 @@ public class UniprotFastaParser {
         return sequence;
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(header).append("\n");
         int columnCounter = 0;
@@ -122,5 +112,4 @@ public class UniprotFastaParser {
         }
         return sb.toString();
     }
-
 }

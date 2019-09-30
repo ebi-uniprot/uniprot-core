@@ -26,7 +26,6 @@ public enum DatabaseCategory implements EnumDisplay<DatabaseCategory> {
 
     UNKNOWN("UNK", "Unknown", false);
 
-
     private final String name;
     private final String displayName;
     private final boolean searchable;

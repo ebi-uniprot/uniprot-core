@@ -1,5 +1,12 @@
 package org.uniprot.core.xml.uniprot.comment;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -16,14 +23,6 @@ import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
-import org.uniprot.core.xml.uniprot.comment.DiseaseCommentConverter;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 class DiseaseCommentConverterTest {
 
@@ -31,12 +30,12 @@ class DiseaseCommentConverterTest {
     void test() {
         DiseaseBuilder builder = new DiseaseBuilder();
 
-//		CC   -!- DISEASE: Cystathioninuria (CSTNU) [MIM:219500]: Autosomal
-//		CC       recessive phenotype characterized by abnormal accumulation of
-//		CC       plasma cystathionine, leading to increased urinary excretion.
-//		CC       {ECO:0000269|PubMed:12574942, ECO:0000269|PubMed:18476726}.
-//		CC       Note=The disease is caused by mutations affecting the gene
-//		CC       represented in this entry.	
+        //		CC   -!- DISEASE: Cystathioninuria (CSTNU) [MIM:219500]: Autosomal
+        //		CC       recessive phenotype characterized by abnormal accumulation of
+        //		CC       plasma cystathionine, leading to increased urinary excretion.
+        //		CC       {ECO:0000269|PubMed:12574942, ECO:0000269|PubMed:18476726}.
+        //		CC       Note=The disease is caused by mutations affecting the gene
+        //		CC       represented in this entry.
 
         List<Evidence> evidences = new ArrayList<>();
         Evidence evidence1 = parseEvidenceLine("ECO:0000269|PubMed:12574942");
@@ -44,26 +43,23 @@ class DiseaseCommentConverterTest {
         evidences.add(evidence1);
         evidences.add(evidence2);
 
-        String description = "Autosomal recessive phenotype characterized "
-                + "by abnormal accumulation of plasma cystathionine, leading"
-                + " to increased urinary excretion.";
+        String description =
+                "Autosomal recessive phenotype characterized "
+                        + "by abnormal accumulation of plasma cystathionine, leading"
+                        + " to increased urinary excretion.";
         builder.acronym("CSTNU")
                 .diseaseId("Cystathioninuria")
                 .description(description)
                 .diseaseAc("DI-01465")
-                .reference(
-                        createDBCrossReference(DiseaseReferenceType.MIM, "219500"))
-                .evidences(evidences)
-        ;
+                .reference(createDBCrossReference(DiseaseReferenceType.MIM, "219500"))
+                .evidences(evidences);
         Disease disease = builder.build();
-        String noteStr = "The disease is caused by mutations affecting the gene represented in this entry";
+        String noteStr =
+                "The disease is caused by mutations affecting the gene represented in this entry";
         Note note = createNote(noteStr, Collections.emptyList());
 
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
-        DiseaseComment comment =
-                commentBuilder.disease(disease)
-                        .note(note)
-                        .build();
+        DiseaseComment comment = commentBuilder.disease(disease).note(note).build();
 
         DiseaseCommentConverter converter = new DiseaseCommentConverter(new EvidenceIndexMapper());
         CommentType xmlObj = converter.toXml(comment);
@@ -75,8 +71,7 @@ class DiseaseCommentConverterTest {
 
     private Note createNote(String val, List<String> evids) {
         List<EvidencedValue> texts = new ArrayList<>();
-        texts.add(
-                new EvidencedValueBuilder(val, createEvidence(evids)).build());
+        texts.add(new EvidencedValueBuilder(val, createEvidence(evids)).build());
         return new NoteBuilder(texts).build();
     }
 
@@ -88,7 +83,11 @@ class DiseaseCommentConverterTest {
         return evidences;
     }
 
-    private DBCrossReference<DiseaseReferenceType> createDBCrossReference(DiseaseReferenceType type, String id) {
-        return new DBCrossReferenceBuilder<DiseaseReferenceType>().databaseType(type).id(id).build();
+    private DBCrossReference<DiseaseReferenceType> createDBCrossReference(
+            DiseaseReferenceType type, String id) {
+        return new DBCrossReferenceBuilder<DiseaseReferenceType>()
+                .databaseType(type)
+                .id(id)
+                .build();
     }
 }

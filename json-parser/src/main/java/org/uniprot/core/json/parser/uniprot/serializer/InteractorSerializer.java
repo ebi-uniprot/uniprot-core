@@ -1,16 +1,14 @@
 package org.uniprot.core.json.parser.uniprot.serializer;
 
+import java.io.IOException;
+
+import org.uniprot.core.uniprot.comment.impl.InteractionImpl;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-import java.io.IOException;
-
-import org.uniprot.core.uniprot.comment.impl.InteractionImpl;
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class InteractorSerializer extends StdSerializer<InteractionImpl.InteractorImpl> {
 
     public InteractorSerializer() {
@@ -18,8 +16,11 @@ public class InteractorSerializer extends StdSerializer<InteractionImpl.Interact
     }
 
     @Override
-    public void serialize(InteractionImpl.InteractorImpl value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(
+            InteractionImpl.InteractorImpl value,
+            JsonGenerator jsonGenerator,
+            SerializerProvider serializerProvider)
+            throws IOException {
         jsonGenerator.writeString(value.getValue());
     }
-
 }

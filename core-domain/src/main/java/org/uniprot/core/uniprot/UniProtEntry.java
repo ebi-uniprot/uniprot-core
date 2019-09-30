@@ -102,6 +102,6 @@ public interface UniProtEntry extends Serializable {
     boolean hasReferences();
 
     boolean hasDatabaseCrossReferences();
-    List<Evidence> gatherEvidences();
 
+    List<Evidence> gatherEvidences();
 }

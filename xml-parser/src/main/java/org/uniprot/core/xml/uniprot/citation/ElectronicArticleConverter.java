@@ -24,8 +24,7 @@ public class ElectronicArticleConverter implements Converter<CitationType, Elect
     public ElectronicArticle fromXml(CitationType xmlObj) {
         ElectronicArticleBuilder builder = new ElectronicArticleBuilder();
         CitationConverterHelper.updateFromXmlCitaiton(xmlObj, builder);
-        if (xmlObj.getName() != null)
-            builder.journalName(xmlObj.getName());
+        if (xmlObj.getName() != null) builder.journalName(xmlObj.getName());
         builder.locator(xmlObj.getLocator());
         return builder.build();
     }
@@ -41,5 +40,4 @@ public class ElectronicArticleConverter implements Converter<CitationType, Elect
         xmlCitation.setLocator(uniObj.getLocator().getValue());
         return xmlCitation;
     }
-
 }

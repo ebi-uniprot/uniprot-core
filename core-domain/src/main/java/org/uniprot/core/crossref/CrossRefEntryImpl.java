@@ -20,9 +20,18 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         // do nothing.. just to satisfy the objectmapper
     }
 
-    public CrossRefEntryImpl(String name, String accession, String abbrev, String pubMedId,
-                             String doiId, String linkType, String server, String dbUrl, String category,
-                             Long reviewedProteinCount, Long unreviewedProteinCount) {
+    public CrossRefEntryImpl(
+            String name,
+            String accession,
+            String abbrev,
+            String pubMedId,
+            String doiId,
+            String linkType,
+            String server,
+            String dbUrl,
+            String category,
+            Long reviewedProteinCount,
+            Long unreviewedProteinCount) {
         this.name = name;
         this.accession = accession;
         this.abbrev = abbrev;
@@ -140,22 +149,32 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CrossRefEntryImpl that = (CrossRefEntryImpl) o;
-        return Objects.equals(this.name, that.name) &&
-                Objects.equals(this.accession, that.accession) &&
-                Objects.equals(this.abbrev, that.abbrev) &&
-                Objects.equals(this.pubMedId, that.pubMedId) &&
-                Objects.equals(this.doiId, that.doiId) &&
-                Objects.equals(this.linkType, that.linkType) &&
-                Objects.equals(this.server, that.server) &&
-                Objects.equals(this.dbUrl, that.dbUrl) &&
-                Objects.equals(this.category, that.category) &&
-                Objects.equals(this.reviewedProteinCount, that.reviewedProteinCount) &&
-                Objects.equals(this.unreviewedProteinCount, that.unreviewedProteinCount);
+        return Objects.equals(this.name, that.name)
+                && Objects.equals(this.accession, that.accession)
+                && Objects.equals(this.abbrev, that.abbrev)
+                && Objects.equals(this.pubMedId, that.pubMedId)
+                && Objects.equals(this.doiId, that.doiId)
+                && Objects.equals(this.linkType, that.linkType)
+                && Objects.equals(this.server, that.server)
+                && Objects.equals(this.dbUrl, that.dbUrl)
+                && Objects.equals(this.category, that.category)
+                && Objects.equals(this.reviewedProteinCount, that.reviewedProteinCount)
+                && Objects.equals(this.unreviewedProteinCount, that.unreviewedProteinCount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.name, this.accession, this.abbrev, this.pubMedId, this.doiId, this.linkType,
-                this.server, this.dbUrl, this.category, this.reviewedProteinCount, this.unreviewedProteinCount);
+        return Objects.hash(
+                this.name,
+                this.accession,
+                this.abbrev,
+                this.pubMedId,
+                this.doiId,
+                this.linkType,
+                this.server,
+                this.dbUrl,
+                this.category,
+                this.reviewedProteinCount,
+                this.unreviewedProteinCount);
     }
 }

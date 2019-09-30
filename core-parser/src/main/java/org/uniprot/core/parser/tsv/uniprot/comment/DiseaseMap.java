@@ -13,7 +13,7 @@ public class DiseaseMap implements NamedValueMap {
 
     private final List<DiseaseComment> diseaseComments;
 
-    public DiseaseMap(List<DiseaseComment> diseaseComments){
+    public DiseaseMap(List<DiseaseComment> diseaseComments) {
         this.diseaseComments = diseaseComments;
     }
 
@@ -25,16 +25,17 @@ public class DiseaseMap implements NamedValueMap {
     private Map<String, String> getDiseaseComments(List<DiseaseComment> dsComments) {
         Map<String, String> diseaseCommentMap = new HashMap<>();
         if ((dsComments != null)) {
-            String result = dsComments.stream()
-                    .map(this::mapDiseaseCommentToString)
-                    .collect(Collectors.joining("; "));
+            String result =
+                    dsComments.stream()
+                            .map(this::mapDiseaseCommentToString)
+                            .collect(Collectors.joining("; "));
             diseaseCommentMap.put("cc:disease", result);
         }
         return diseaseCommentMap;
     }
 
-    private  String mapDiseaseCommentToString(DiseaseComment diseaseComment) {
-    	CCDiseaseCommentLineBuilder builder = new CCDiseaseCommentLineBuilder();
-    	return builder.buildString(diseaseComment, true, true).replaceAll("\n", " ");
+    private String mapDiseaseCommentToString(DiseaseComment diseaseComment) {
+        CCDiseaseCommentLineBuilder builder = new CCDiseaseCommentLineBuilder();
+        return builder.buildString(diseaseComment, true, true).replaceAll("\n", " ");
     }
 }

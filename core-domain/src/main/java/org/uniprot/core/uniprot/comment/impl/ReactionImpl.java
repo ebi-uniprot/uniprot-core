@@ -12,7 +12,6 @@ import org.uniprot.core.uniprot.comment.ReactionReferenceType;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
-
 public class ReactionImpl implements Reaction {
     private static final long serialVersionUID = 7533995250813372108L;
     private String name;
@@ -25,9 +24,11 @@ public class ReactionImpl implements Reaction {
         this.reactionReferences = Collections.emptyList();
     }
 
-    public ReactionImpl(String name,
-                        List<DBCrossReference<ReactionReferenceType>> reactionReferences,
-                        ECNumber ecNumber, List<Evidence> evidences) {
+    public ReactionImpl(
+            String name,
+            List<DBCrossReference<ReactionReferenceType>> reactionReferences,
+            ECNumber ecNumber,
+            List<Evidence> evidences) {
         this.name = name;
         if ((reactionReferences == null) || reactionReferences.isEmpty()) {
             this.reactionReferences = Collections.emptyList();
@@ -87,14 +88,20 @@ public class ReactionImpl implements Reaction {
         StringBuilder sb = new StringBuilder();
         sb.append("Reaction=").append(name).append(";");
         sb.append(" Xref=")
-                .append(reactionReferences.stream().map(this::getReferenceString).collect(Collectors.joining(", ")))
+                .append(
+                        reactionReferences.stream()
+                                .map(this::getReferenceString)
+                                .collect(Collectors.joining(", ")))
                 .append(";");
         if ((ecNumber != null) && ecNumber.isValid()) {
             sb.append(" EC=").append(ecNumber.getValue()).append(";");
         }
         if (!evidences.isEmpty()) {
             sb.append(" Evidence={")
-                    .append(evidences.stream().map(val -> val.toString()).collect(Collectors.joining(", ")))
+                    .append(
+                            evidences.stream()
+                                    .map(val -> val.toString())
+                                    .collect(Collectors.joining(", ")))
                     .append("};");
         }
 
@@ -106,10 +113,10 @@ public class ReactionImpl implements Reaction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReactionImpl reaction = (ReactionImpl) o;
-        return Objects.equals(name, reaction.name) &&
-                Objects.equals(reactionReferences, reaction.reactionReferences) &&
-                Objects.equals(ecNumber, reaction.ecNumber) &&
-                Objects.equals(evidences, reaction.evidences);
+        return Objects.equals(name, reaction.name)
+                && Objects.equals(reactionReferences, reaction.reactionReferences)
+                && Objects.equals(ecNumber, reaction.ecNumber)
+                && Objects.equals(evidences, reaction.evidences);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
-
 import java.util.List;
 
 import org.uniprot.core.uniprot.comment.Interaction;
@@ -11,6 +9,8 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.InteractantType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
+
+import com.google.common.base.Strings;
 
 public class InteractionConverter implements Converter<CommentType, Interaction> {
     private static final String INTERACTION = "interaction";
@@ -23,13 +23,11 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
     public InteractionConverter(ObjectFactory xmlUniprotFactory) {
 
         this.xmlUniprotFactory = xmlUniprotFactory;
-
     }
 
     @Override
     public Interaction fromXml(CommentType xmlObject) {
-        if (xmlObject == null)
-            return null;
+        if (xmlObject == null) return null;
         InteractionBuilder builder = new InteractionBuilder();
 
         List<InteractantType> actTypes = xmlObject.getInteractant();
@@ -63,7 +61,6 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
         }
         if (type != InteractionType.SELF) {
             builder.uniProtAccession(secondAct.getId());
-
         }
         builder.numberOfExperiments(xmlObject.getExperiments());
         return builder.build();
@@ -71,11 +68,9 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
 
     @Override
     public CommentType toXml(Interaction uniObj) {
-        if (uniObj == null)
-            return null;
+        if (uniObj == null) return null;
         CommentType commentType = xmlUniprotFactory.createCommentType();
         commentType.setType(INTERACTION);
-
 
         String firstInteract = uniObj.getFirstInteractor().getValue();
         InteractantType firstactantType = xmlUniprotFactory.createInteractantType();
@@ -86,7 +81,6 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
         String secondInteract = uniObj.getSecondInteractor().getValue();
         secondactantType.setIntactId(secondInteract);
         commentType.getInteractant().add(secondactantType);
-
 
         InteractionType type = uniObj.getType();
         if (type != InteractionType.SELF) {
@@ -106,5 +100,4 @@ public class InteractionConverter implements Converter<CommentType, Interaction>
 
         return commentType;
     }
-
 }

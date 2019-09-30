@@ -1,7 +1,7 @@
 package org.uniprot.core.xml.uniprot.unload;
 
-import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.JmxReporter;
+import com.codahale.metrics.MetricRegistry;
 
 /**
  * Created 24/05/2016

@@ -1,26 +1,23 @@
 package org.uniprot.core.flatfile.parser.impl.rn;
 
 import org.antlr.v4.runtime.misc.NotNull;
+import org.uniprot.core.flatfile.antlr.RnLineParser;
+import org.uniprot.core.flatfile.antlr.RnLineParserBaseListener;
 import org.uniprot.core.flatfile.parser.ParseTreeObjectExtractor;
 import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 
-import org.uniprot.core.flatfile.antlr.RnLineParserBaseListener;
-import org.uniprot.core.flatfile.antlr.RnLineParser;
-
 /**
- * Created with IntelliJ IDEA.
- * User: wudong
- * Date: 08/08/13
- * Time: 12:26
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 12:26 To change this template use
+ * File | Settings | File Templates.
  */
-public class RnLineModelListener extends RnLineParserBaseListener implements ParseTreeObjectExtractor<RnLineObject> {
+public class RnLineModelListener extends RnLineParserBaseListener
+        implements ParseTreeObjectExtractor<RnLineObject> {
 
     private RnLineObject object;
 
     @Override
     public void enterRn_rn(@NotNull RnLineParser.Rn_rnContext ctx) {
-        this.object=new RnLineObject();
+        this.object = new RnLineObject();
     }
 
     @Override
@@ -33,8 +30,8 @@ public class RnLineModelListener extends RnLineParserBaseListener implements Par
         return object;
     }
 
-	@Override
-	public void exitEvidence(@NotNull RnLineParser.EvidenceContext ctx) {
-		EvidenceInfo.processEvidence(object.getEvidenceInfo(), object.number, ctx.EV_TAG());
-	}
+    @Override
+    public void exitEvidence(@NotNull RnLineParser.EvidenceContext ctx) {
+        EvidenceInfo.processEvidence(object.getEvidenceInfo(), object.number, ctx.EV_TAG());
+    }
 }

@@ -15,14 +15,14 @@ import org.uniprot.core.uniprot.impl.GeneLocationImpl;
  *
  * @author Edd
  */
-public class GeneLocationBuilder extends AbstractEvidencedValueBuilder<GeneLocationBuilder, GeneLocation> {
+public class GeneLocationBuilder
+        extends AbstractEvidencedValueBuilder<GeneLocationBuilder, GeneLocation> {
     private GeneEncodingType geneEncodingType;
 
-    public GeneLocationBuilder(){
+    public GeneLocationBuilder() {}
 
-    }
-
-    public GeneLocationBuilder(GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
+    public GeneLocationBuilder(
+            GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
         this.geneEncodingType = geneEncodingType;
         this.value = value;
         this.evidences = modifiableList(evidences);

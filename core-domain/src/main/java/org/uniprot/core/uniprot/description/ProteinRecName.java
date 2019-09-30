@@ -4,17 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 public interface ProteinRecName extends Serializable {
-	Name getFullName();
+    Name getFullName();
 
-	List<Name> getShortNames();
+    List<Name> getShortNames();
 
-	List<EC> getEcNumbers();
+    List<EC> getEcNumbers();
 
-	boolean hasFullName();
+    boolean hasFullName();
 
-	boolean hasShortNames();
+    boolean hasShortNames();
 
-	boolean hasEcNumbers();
+    boolean hasEcNumbers();
 
-	boolean isValid();
+    boolean isValid();
 }

@@ -13,7 +13,8 @@ import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprot.builder.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public class GnLineConverter extends EvidenceCollector implements Converter<GnLineObject, List<Gene>> {
+public class GnLineConverter extends EvidenceCollector
+        implements Converter<GnLineObject, List<Gene>> {
     @Override
     public List<Gene> convert(GnLineObject f) {
         List<Gene> genes = new ArrayList<>();
@@ -23,18 +24,24 @@ public class GnLineConverter extends EvidenceCollector implements Converter<GnLi
             List<ORFName> orfNames = new ArrayList<>();
             List<OrderedLocusName> olnNames = new ArrayList<>();
             for (GnName gn : gno.names) {
-                Map<Object, List<Evidence>> evidenceMap = EvidenceConverterHelper
-                        .convert(gn.getEvidenceInfo());
+                Map<Object, List<Evidence>> evidenceMap =
+                        EvidenceConverterHelper.convert(gn.getEvidenceInfo());
                 this.addAll(evidenceMap.values());
                 switch (gn.type) {
                     case GENAME:
                         if (!gn.names.isEmpty()) {
-                            geneName = new GeneNameBuilder(gn.names.get(0), evidenceMap.get(gn.names.get(0))).build();
+                            geneName =
+                                    new GeneNameBuilder(
+                                                    gn.names.get(0),
+                                                    evidenceMap.get(gn.names.get(0)))
+                                            .build();
                         }
                         break;
                     case SYNNAME:
                         for (String name : gn.names) {
-                            synonyms.add(new GeneNameSynonymBuilder(name, evidenceMap.get(name)).build());
+                            synonyms.add(
+                                    new GeneNameSynonymBuilder(name, evidenceMap.get(name))
+                                            .build());
                         }
                         break;
                     case ORFNAME:
@@ -44,18 +51,20 @@ public class GnLineConverter extends EvidenceCollector implements Converter<GnLi
                         break;
                     case OLNAME:
                         for (String name : gn.names) {
-                            olnNames.add(new OrderedLocusNameBuilder(name, evidenceMap.get(name)).build());
+                            olnNames.add(
+                                    new OrderedLocusNameBuilder(name, evidenceMap.get(name))
+                                            .build());
                         }
                         break;
                 }
-
             }
-            genes.add(new GeneBuilder()
-                              .geneName(geneName)
-                              .synonyms(synonyms)
-                              .orderedLocusNames(olnNames)
-                              .orfNames(orfNames)
-                              .build());
+            genes.add(
+                    new GeneBuilder()
+                            .geneName(geneName)
+                            .synonyms(synonyms)
+                            .orderedLocusNames(olnNames)
+                            .orfNames(orfNames)
+                            .build());
         }
         return genes;
     }

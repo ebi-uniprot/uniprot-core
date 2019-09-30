@@ -26,12 +26,8 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     private IsoformSequenceStatus isoformSequenceStatus;
 
     public APIsoform build() {
-        return new APIsoformImpl(name,
-                                 synonyms,
-                                 note,
-                                 isoformIds,
-                                 sequenceIds,
-                                 isoformSequenceStatus);
+        return new APIsoformImpl(
+                name, synonyms, note, isoformIds, sequenceIds, isoformSequenceStatus);
     }
 
     @Override
@@ -39,9 +35,11 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
         synonyms.clear();
         isoformIds.clear();
         sequenceIds.clear();
-        return this
-                .sequenceIds(instance.getSequenceIds())
-                .ids(instance.getIsoformIds().stream().map(Value::getValue).collect(Collectors.toList()))
+        return this.sequenceIds(instance.getSequenceIds())
+                .ids(
+                        instance.getIsoformIds().stream()
+                                .map(Value::getValue)
+                                .collect(Collectors.toList()))
                 .note(instance.getNote())
                 .synonyms(instance.getSynonyms())
                 .sequenceStatus(instance.getIsoformSequenceStatus())

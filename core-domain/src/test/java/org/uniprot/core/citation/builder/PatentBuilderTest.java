@@ -1,11 +1,10 @@
 package org.uniprot.core.citation.builder;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.Patent;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PatentBuilderTest extends AbstractCitationBuilderTest {
     @Test

@@ -12,8 +12,8 @@ import static org.uniprot.core.util.Utils.notNull;
 public class ChebiFileReader extends AbstractFileReader<Chebi> {
     private static final String ID_PREFIX = "id: CHEBI:";
     private static final String NAME_PREFIX = "name: ";
-    private static final Pattern INCHI_PATTERN = Pattern
-            .compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
+    private static final Pattern INCHI_PATTERN =
+            Pattern.compile("^property_value: \\S+chebi/inchikey\\s+\"(.*)\"\\s.*$");
 
     @Override
     public List<Chebi> parseLines(List<String> lines) {
@@ -39,7 +39,7 @@ public class ChebiFileReader extends AbstractFileReader<Chebi> {
             }
         }
 
-        if(chebiBuilder != null) {// add the most recently created builder
+        if (chebiBuilder != null) { // add the most recently created builder
             chebiList.add(chebiBuilder.build());
         }
 

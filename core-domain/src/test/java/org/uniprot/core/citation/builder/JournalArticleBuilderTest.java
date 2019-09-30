@@ -1,10 +1,10 @@
 package org.uniprot.core.citation.builder;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.JournalArticle;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
     @Test
@@ -31,8 +31,7 @@ class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
-        builder.journalName(journalName)
-                .firstPage("213");
+        builder.journalName(journalName).firstPage("213");
         JournalArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());
@@ -44,9 +43,7 @@ class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
-        builder.journalName(journalName)
-                .firstPage("213")
-                .lastPage("223");
+        builder.journalName(journalName).firstPage("213").lastPage("223");
         JournalArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());
@@ -59,10 +56,7 @@ class JournalArticleBuilderTest extends AbstractCitationBuilderTest {
         JournalArticleBuilder builder = new JournalArticleBuilder();
         this.buildCitationParameters(builder);
         String journalName = "Nature";
-        builder.journalName(journalName)
-                .firstPage("213")
-                .lastPage("223")
-                .volume("2");
+        builder.journalName(journalName).firstPage("213").lastPage("223").volume("2");
         JournalArticle citation = builder.build();
         this.verifyCitation(citation, CitationType.JOURNAL_ARTICLE);
         assertEquals(journalName, citation.getJournal().getName());

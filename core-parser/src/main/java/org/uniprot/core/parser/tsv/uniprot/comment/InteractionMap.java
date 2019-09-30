@@ -15,7 +15,7 @@ public class InteractionMap implements NamedValueMap {
 
     private final List<InteractionComment> interactionComments;
 
-    public InteractionMap(List<InteractionComment> interactionComments){
+    public InteractionMap(List<InteractionComment> interactionComments) {
         this.interactionComments = interactionComments;
     }
 
@@ -27,12 +27,13 @@ public class InteractionMap implements NamedValueMap {
     private Map<String, String> getInterActComments(List<InteractionComment> iaComments) {
         Map<String, String> interactionCommentMap = new HashMap<>();
         if ((iaComments != null)) {
-            String result = iaComments.stream()
-                    .filter(InteractionComment::hasInteractions)
-                    .flatMap(val -> val.getInteractions().stream())
-                    .map(this::getInterAct)
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.joining("; "));
+            String result =
+                    iaComments.stream()
+                            .filter(InteractionComment::hasInteractions)
+                            .flatMap(val -> val.getInteractions().stream())
+                            .map(this::getInterAct)
+                            .filter(Objects::nonNull)
+                            .collect(Collectors.joining("; "));
             interactionCommentMap.put("cc:interaction", result);
         }
         return interactionCommentMap;
@@ -41,7 +42,7 @@ public class InteractionMap implements NamedValueMap {
     private String getInterAct(Interaction interAct) {
         if (InteractionType.SELF.equals(interAct.getType())) {
             return "Itself";
-        } else if(interAct.hasUniProtAccession()) {
+        } else if (interAct.hasUniProtAccession()) {
             return interAct.getUniProtAccession().getValue();
         }
         return null;

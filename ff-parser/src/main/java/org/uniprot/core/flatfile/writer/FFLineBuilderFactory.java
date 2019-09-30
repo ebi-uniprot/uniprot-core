@@ -7,8 +7,9 @@ import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.description.ProteinDescription;
 
 public interface FFLineBuilderFactory {
-	FFLineBuilder< List<UniProtAccession> > createAcLineBuilder();
-	FFLineBuilder<List<Comment> > createCcLineBuilder();
-	FFLineBuilder<ProteinDescription> createDeLineBuilder();
-	
+    FFLineBuilder<List<UniProtAccession>> createAcLineBuilder();
+
+    FFLineBuilder<List<Comment>> createCcLineBuilder();
+
+    FFLineBuilder<ProteinDescription> createDeLineBuilder();
 }

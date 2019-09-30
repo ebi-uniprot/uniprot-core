@@ -1,16 +1,15 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.GeneEncodingType;
-import org.uniprot.core.uniprot.GeneLocation;
-import org.uniprot.core.uniprot.evidence.Evidence;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.GeneEncodingType;
+import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 class GeneLocationImplTest {
 
@@ -20,7 +19,8 @@ class GeneLocationImplTest {
         String val = "";
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
-        String expected = "Plastid; Apicoplast {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected =
+                "Plastid; Apicoplast {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 
@@ -30,7 +30,8 @@ class GeneLocationImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
-        String expected = "Mitochondrion {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected =
+                "Mitochondrion {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 
@@ -40,7 +41,8 @@ class GeneLocationImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
-        String expected = "Hydrogenosome {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected =
+                "Hydrogenosome {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 
@@ -50,7 +52,8 @@ class GeneLocationImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
-        String expected = "Plastid {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected =
+                "Plastid {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 
@@ -60,7 +63,8 @@ class GeneLocationImplTest {
         String val = "some value";
         List<Evidence> evidences = createEvidences();
         GeneLocation geneLocation = new GeneLocationImpl(type, val, evidences);
-        String expected = "Plasmid some value {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
+        String expected =
+                "Plasmid some value {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}";
         assertEquals(expected, geneLocation.getDisplayed(""));
     }
 

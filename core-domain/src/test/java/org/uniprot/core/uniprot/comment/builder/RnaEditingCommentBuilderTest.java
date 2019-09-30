@@ -1,15 +1,15 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
 
 class RnaEditingCommentBuilderTest {
     @Test
@@ -25,9 +25,7 @@ class RnaEditingCommentBuilderTest {
     void testSetlocationType() {
 
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
-        RnaEditingComment comment =
-                builder.locationType(RnaEditingLocationType.Known)
-                        .build();
+        RnaEditingComment comment = builder.locationType(RnaEditingLocationType.Known).build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertFalse(comment.getNote() != null);
@@ -42,9 +40,7 @@ class RnaEditingCommentBuilderTest {
         positions.add(new RnaEditingPositionBuilder("432", evidences).build());
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
-                builder.locationType(RnaEditingLocationType.Known)
-                        .positions(positions)
-                        .build();
+                builder.locationType(RnaEditingLocationType.Known).positions(positions).build();
         assertEquals(RnaEditingLocationType.Known, comment.getLocationType());
         assertEquals(CommentType.RNA_EDITING, comment.getCommentType());
         assertFalse(comment.getNote() != null);

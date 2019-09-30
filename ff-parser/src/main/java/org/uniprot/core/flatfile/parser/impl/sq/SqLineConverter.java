@@ -5,8 +5,8 @@ import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 
 public class SqLineConverter implements Converter<SqLineObject, Sequence> {
-	@Override
-	public Sequence convert(SqLineObject f) {
-		return new SequenceBuilder(f.sequence).build();
-	}
+    @Override
+    public Sequence convert(SqLineObject f) {
+        return new SequenceBuilder(f.sequence).build();
+    }
 }

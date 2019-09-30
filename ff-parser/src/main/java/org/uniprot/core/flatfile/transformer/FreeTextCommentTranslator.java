@@ -10,7 +10,6 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
-
 public class FreeTextCommentTranslator implements CommentTransformer<FreeTextComment> {
     private static final String EVIDENCE_PREFIX = "{ECO";
     private static final String EVIDENCE_POSTFIX = "}";
@@ -30,11 +29,8 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
         List<EvidencedValue> texts = buildFreeTexts(annotation);
 
         FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
-        return builder.commentType(type)
-                .texts(texts)
-                .build();
+        return builder.commentType(type).texts(texts).build();
     }
-
 
     private List<EvidencedValue> buildFreeTexts(String annotation) {
         List<EvidencedValue> texts = new ArrayList<>();
@@ -43,8 +39,7 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
 
         do {
             indexPre = annotation.indexOf(EVIDENCE_PREFIX);
-            if (indexPre == -1)
-                break;
+            if (indexPre == -1) break;
             indexPost = annotation.indexOf(EVIDENCE_POSTFIX, indexPre);
             if (indexPost == -1) {
                 break;

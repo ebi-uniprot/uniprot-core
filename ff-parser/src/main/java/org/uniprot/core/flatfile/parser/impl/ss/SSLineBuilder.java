@@ -10,7 +10,8 @@ import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.uniprot.InternalSection;
 
 public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
-    private static final String INTERNAL_SECTION = "**   #################    INTERNAL SECTION    ##################";
+    private static final String INTERNAL_SECTION =
+            "**   #################    INTERNAL SECTION    ##################";
     private static final String START_LINE = "**";
     private SSSourceLineBuilder sourceLineBuilder = new SSSourceLineBuilder();
     private SSEvidenceLineBuilder evidenceLineBuilder = new SSEvidenceLineBuilder();
@@ -30,11 +31,9 @@ public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
 
     @Override
     public String buildStringWithEvidence(InternalSection f) {
-        if (f == null)
-            return "";
+        if (f == null) return "";
         return buildLine(f, true).toString();
     }
-
 
     @Override
     protected FFLine buildLine(InternalSection f, boolean showEvidence) {
@@ -47,10 +46,9 @@ public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
         FFLine internalLines = internalLineBuilder.buildWithEvidence(f.getInternalLines());
         evidenceLines.add(internalLines);
 
-
-//		if(sourceLines.isEmpty() && evidenceLines.isEmpty()){
-//			return FFLines.create(lines);
-//		}
+        //		if(sourceLines.isEmpty() && evidenceLines.isEmpty()){
+        //			return FFLines.create(lines);
+        //		}
         lines.add(START_LINE);
         lines.addAll(sourceLines.lines());
         lines.add(INTERNAL_SECTION);
@@ -60,5 +58,4 @@ public class SSLineBuilder extends FFLineBuilderAbstr<InternalSection> {
         }
         return FFLines.create(lines);
     }
-
 }

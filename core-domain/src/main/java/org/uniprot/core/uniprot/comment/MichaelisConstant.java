@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.comment;
 
-
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 import org.uniprot.core.util.Utils;
 
@@ -25,5 +24,4 @@ public interface MichaelisConstant extends HasEvidences {
     default boolean hasSubstrate() {
         return Utils.notNullOrEmpty(getSubstrate());
     }
-
 }

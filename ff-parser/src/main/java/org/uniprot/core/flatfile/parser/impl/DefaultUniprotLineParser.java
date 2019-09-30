@@ -2,11 +2,6 @@ package org.uniprot.core.flatfile.parser.impl;
 
 import org.antlr.v4.runtime.*;
 import org.uniprot.core.flatfile.antlr.*;
-import org.uniprot.core.flatfile.parser.*;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineErrorListener;
-import org.uniprot.core.flatfile.parser.impl.entry.EntryErrorListener;
-import org.uniprot.core.flatfile.parser.impl.ft.FtLineErrorListener;
-
 import org.uniprot.core.flatfile.antlr.AcLineParser;
 import org.uniprot.core.flatfile.antlr.CcLineLexer;
 import org.uniprot.core.flatfile.antlr.CcLineParser;
@@ -36,27 +31,29 @@ import org.uniprot.core.flatfile.antlr.SqLineParser;
 import org.uniprot.core.flatfile.antlr.SsLineParser;
 import org.uniprot.core.flatfile.antlr.UniprotLexer;
 import org.uniprot.core.flatfile.antlr.UniprotParser;
+import org.uniprot.core.flatfile.parser.*;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineErrorListener;
+import org.uniprot.core.flatfile.parser.impl.entry.EntryErrorListener;
+import org.uniprot.core.flatfile.parser.impl.ft.FtLineErrorListener;
 
 /**
- * Created with IntelliJ IDEA.
- * User: wudong
- * Date: 08/08/13
- * Time: 15:30
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 15:30 To change this template use
+ * File | Settings | File Templates.
  */
 public class DefaultUniprotLineParser<T, L extends Lexer, P extends Parser>
         implements UniprotLineParser<T> {
 
-    final private GrammarFactory<L, P> factory;
+    private final GrammarFactory<L, P> factory;
     private final P parser;
 
     private ParseTreeObjectExtractor<T> listener;
-    private static final org.slf4j.Logger
-            logger = org.slf4j.LoggerFactory.getLogger(DefaultUniprotLineParser.class);
+    private static final org.slf4j.Logger logger =
+            org.slf4j.LoggerFactory.getLogger(DefaultUniprotLineParser.class);
 
     private L lexer;
 
-    protected DefaultUniprotLineParser(GrammarFactory<L, P> factory, ParseTreeObjectExtractor<T> listener) {
+    protected DefaultUniprotLineParser(
+            GrammarFactory<L, P> factory, ParseTreeObjectExtractor<T> listener) {
         this.factory = factory;
         this.listener = listener;
 
@@ -71,8 +68,7 @@ public class DefaultUniprotLineParser<T, L extends Lexer, P extends Parser>
      * @param factory
      * @return
      */
-    public P createParserFromInput(CharStream in,
-                                   GrammarFactory<L, P> factory) {
+    public P createParserFromInput(CharStream in, GrammarFactory<L, P> factory) {
         lexer = factory.createLexer(in);
         lexer.removeErrorListeners();
 
@@ -115,10 +111,9 @@ public class DefaultUniprotLineParser<T, L extends Lexer, P extends Parser>
         return t;
     }
 
-
     protected T processWithParser(P parser, String originString) {
 
-        //remove thie reflection to improve error handling and parsing speed.
+        // remove thie reflection to improve error handling and parsing speed.
         try {
             if (parser instanceof AcLineParser) {
                 ((AcLineParser) parser).ac_ac();
@@ -173,16 +168,20 @@ public class DefaultUniprotLineParser<T, L extends Lexer, P extends Parser>
             } else if (parser instanceof UniprotParser) {
                 ((UniprotParser) parser).entry();
             } else {
-                throw new RuntimeException("Parser's type : " + parser.getClass() + " is not recognized.");
+                throw new RuntimeException(
+                        "Parser's type : " + parser.getClass() + " is not recognized.");
             }
         } catch (NullPointerException e) {
-            throw new RuntimeException("Unexpected Error, Checking the format of string: " + originString, e);
+            throw new RuntimeException(
+                    "Unexpected Error, Checking the format of string: " + originString, e);
         } catch (ParseException e) {
-            logger.trace("Parsing Error In {} for string: \n{}", parser.getClass().getSimpleName(), originString);
+            logger.trace(
+                    "Parsing Error In {} for string: \n{}",
+                    parser.getClass().getSimpleName(),
+                    originString);
             throw new RuntimeException("ParseException", e);
         }
 
         return listener.getObject();
     }
-
 }

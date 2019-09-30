@@ -27,6 +27,5 @@ public class EntrySequenceMap implements NamedValueMap {
 
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(FIELDS::contains);
-
     }
 }

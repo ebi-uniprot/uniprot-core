@@ -7,7 +7,8 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.DbReferenceType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
-public class CAReactionReferenceConverter implements Converter<DbReferenceType, DBCrossReference<ReactionReferenceType>> {
+public class CAReactionReferenceConverter
+        implements Converter<DbReferenceType, DBCrossReference<ReactionReferenceType>> {
     private final ObjectFactory xmlUniprotFactory;
 
     public CAReactionReferenceConverter() {
@@ -34,5 +35,4 @@ public class CAReactionReferenceConverter implements Converter<DbReferenceType, 
         dbref.setId(uniObj.getId());
         return dbref;
     }
-
 }

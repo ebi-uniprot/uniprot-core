@@ -28,5 +28,4 @@ public class EntryAuditUpdater implements Updater<SequenceType, EntryAudit> {
         LocalDate date = modelObject.getLastSequenceUpdateDate();
         xmlObject.setModified(XmlConverterHelper.dateToXml(date));
     }
-
 }

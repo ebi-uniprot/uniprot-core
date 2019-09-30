@@ -4,8 +4,8 @@ import org.uniprot.core.util.EnumDisplay;
 
 /**
  * Contains a list of acceptable flag descriptors found within a DE line
- * <p>
- * current valid flags are Precursor, Fragment, Fragments
+ *
+ * <p>current valid flags are Precursor, Fragment, Fragments
  */
 public enum FlagType implements EnumDisplay<FlagType> {
     PRECURSOR("Precursor"),
@@ -13,7 +13,6 @@ public enum FlagType implements EnumDisplay<FlagType> {
     FRAGMENTS("Fragments"),
     FRAGMENT_PRECURSOR("Fragment,Precursor"),
     FRAGMENTS_PRECURSOR("Fragments,Precursor");
-
 
     private String value;
 
@@ -27,7 +26,8 @@ public enum FlagType implements EnumDisplay<FlagType> {
                 return flagType;
             }
         }
-        throw new IllegalArgumentException(String.format("The Flagtype with value %s does not exist", value));
+        throw new IllegalArgumentException(
+                String.format("The Flagtype with value %s does not exist", value));
     }
 
     public static String[] displayValues() {

@@ -15,16 +15,24 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, Cross
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
-
     public static CrossRefEntryBuilder newInstance() {
         return new CrossRefEntryBuilder();
     }
 
     @Override
     public CrossRefEntry build() {
-        return new CrossRefEntryImpl(this.name, this.accession, this.abbrev,
-                this.pubMedId, this.doiId, this.linkType,
-                this.server, this.dbUrl, this.category, this.reviewedProteinCount, this.unreviewedProteinCount);
+        return new CrossRefEntryImpl(
+                this.name,
+                this.accession,
+                this.abbrev,
+                this.pubMedId,
+                this.doiId,
+                this.linkType,
+                this.server,
+                this.dbUrl,
+                this.category,
+                this.reviewedProteinCount,
+                this.unreviewedProteinCount);
     }
 
     @Override

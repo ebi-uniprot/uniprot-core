@@ -2,12 +2,8 @@ package org.uniprot.core.uniprot.taxonomy;
 
 import java.io.Serializable;
 
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public interface OrganismHost extends OrganismName, Serializable {
 
     long getTaxonId();
-
 }

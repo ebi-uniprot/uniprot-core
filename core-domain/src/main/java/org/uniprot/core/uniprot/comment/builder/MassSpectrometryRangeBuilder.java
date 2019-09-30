@@ -10,7 +10,8 @@ import org.uniprot.core.uniprot.comment.impl.MassSpectrometryRangeImpl;
  *
  * @author Edd
  */
-public final class MassSpectrometryRangeBuilder implements Builder<MassSpectrometryRangeBuilder, MassSpectrometryRange> {
+public final class MassSpectrometryRangeBuilder
+        implements Builder<MassSpectrometryRangeBuilder, MassSpectrometryRange> {
     private Range range;
     private String isoformId;
 
@@ -30,8 +31,6 @@ public final class MassSpectrometryRangeBuilder implements Builder<MassSpectrome
 
     @Override
     public MassSpectrometryRangeBuilder from(MassSpectrometryRange instance) {
-        return this
-                .isoformId(instance.getIsoformId())
-                .range(instance.getRange());
+        return this.isoformId(instance.getIsoformId()).range(instance.getRange());
     }
 }

@@ -7,9 +7,10 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.CommaParameterSplitter;
 import com.google.common.base.Strings;
 
-
 public class UniProtUnloadConfigure {
-	@Parameter(names = "-if", splitter = CommaParameterSplitter.class,
+    @Parameter(
+            names = "-if",
+            splitter = CommaParameterSplitter.class,
             description = "input flat file (s), comma separated")
     private List<String> inputFiles;
 
@@ -39,20 +40,18 @@ public class UniProtUnloadConfigure {
 
     private JCommander jCommander;
 
-
-
     public static final UniProtUnloadConfigure fromCommandLine(String[] args) {
-    	UniProtUnloadConfigure configurator = new UniProtUnloadConfigure();
+        UniProtUnloadConfigure configurator = new UniProtUnloadConfigure();
         configurator.jCommander = new JCommander(configurator, args);
         return configurator;
     }
 
     public boolean isValid() {
-        if ((inputFiles == null) || inputFiles.isEmpty()
+        if ((inputFiles == null)
+                || inputFiles.isEmpty()
                 || Strings.isNullOrEmpty(outputFile)
                 || Strings.isNullOrEmpty(humdiseaseFile)
-                || Strings.isNullOrEmpty(keywordFile))
-            return false;
+                || Strings.isNullOrEmpty(keywordFile)) return false;
         return true;
     }
 
@@ -61,7 +60,6 @@ public class UniProtUnloadConfigure {
         jCommander.usage(out);
         return out.toString();
     }
-
 
     public String getHumdiseaseFilePath() {
         return this.humdiseaseFile;

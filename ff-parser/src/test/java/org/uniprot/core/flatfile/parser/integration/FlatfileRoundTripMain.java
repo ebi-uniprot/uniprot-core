@@ -1,5 +1,9 @@
 package org.uniprot.core.flatfile.parser.integration;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.flatfile.parser.UniprotLineParser;
@@ -12,15 +16,13 @@ import org.uniprot.core.flatfile.writer.FlatfileWriter;
 import org.uniprot.core.flatfile.writer.impl.UniProtFlatfileWriter;
 import org.uniprot.core.uniprot.UniProtEntry;
 
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 class FlatfileRoundTripMain {
     private static final Logger LOGGER = LoggerFactory.getLogger(FlatfileRoundTripMain.class);
     private boolean isPublic = false;
-    private UniprotLineParser<EntryObject> entryParser = new DefaultUniprotLineParserFactory().createEntryParser();
-    private EntryObjectConverter entryObjectConverter = new EntryObjectConverter(new SupportingDataMapImpl(), true);
+    private UniprotLineParser<EntryObject> entryParser =
+            new DefaultUniprotLineParserFactory().createEntryParser();
+    private EntryObjectConverter entryObjectConverter =
+            new EntryObjectConverter(new SupportingDataMapImpl(), true);
     private FlatfileWriter<UniProtEntry> ffWriter = new UniProtFlatfileWriter();
 
     static void main(String[] args) throws Exception {
@@ -43,7 +45,6 @@ class FlatfileRoundTripMain {
                         failedCount++;
                     }
                     totalCount++;
-
                 }
                 if (totalCount % 5000 == 0) {
                     LOGGER.info("parsed entries:" + totalCount + " failed: " + failedCount);

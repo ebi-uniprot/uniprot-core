@@ -18,7 +18,7 @@ import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
-final public class FeatureTransformer {
+public final class FeatureTransformer {
     private static final String FTID = "/FTId=";
     private static final String BRACKET_LEFT = "(";
     private static final String SEMICOLON = ";";
@@ -89,7 +89,8 @@ final public class FeatureTransformer {
         return builder.build();
     }
 
-    private Pair<String, AlternativeSequence> updateFeatureDescription(FeatureType type, String text) {
+    private Pair<String, AlternativeSequence> updateFeatureDescription(
+            FeatureType type, String text) {
         String description = "";
         if (type == FeatureType.CONFLICT) {
             int index = text.indexOf(BRACKET_LEFT);
@@ -124,8 +125,7 @@ final public class FeatureTransformer {
             String reportString = null;
             if (text.endsWith(STOP)) {
                 reportString = text.substring(index + 2, text.length() - 1);
-            } else
-                reportString = text.substring(index + 2, text.length());
+            } else reportString = text.substring(index + 2, text.length());
             text = text.substring(0, index).trim();
             description = reportString;
         } else if (type == FeatureType.VARIANT) {
@@ -156,12 +156,17 @@ final public class FeatureTransformer {
         }
 
         if (text.equalsIgnoreCase(MISSING) || text.startsWith(MISSING)) {
-            return new PairImpl<>(description, new AlternativeSequenceBuilder()
-                    .original("").alternatives(Collections.emptyList()).build());
+            return new PairImpl<>(
+                    description,
+                    new AlternativeSequenceBuilder()
+                            .original("")
+                            .alternatives(Collections.emptyList())
+                            .build());
         }
 
         int index = text.indexOf("->");
-        String alternativeSequence = text.substring(index + 2).replaceAll(LINE_END, "").replaceAll(" ", "");
+        String alternativeSequence =
+                text.substring(index + 2).replaceAll(LINE_END, "").replaceAll(" ", "");
         StringTokenizer st = new StringTokenizer(alternativeSequence, ",:or");
         List<String> altSeq = new ArrayList<>();
         while (st.hasMoreTokens()) {
@@ -169,8 +174,9 @@ final public class FeatureTransformer {
         }
         String original = text.substring(0, index).trim().replaceAll("\\s*", "");
 
-        return new PairImpl<>(description, new AlternativeSequenceBuilder().original(original).alternatives(altSeq)
-                .build());
+        return new PairImpl<>(
+                description,
+                new AlternativeSequenceBuilder().original(original).alternatives(altSeq).build());
     }
 
     public static Range convertFeatureLocation(String locationStart, String locationEnd) {

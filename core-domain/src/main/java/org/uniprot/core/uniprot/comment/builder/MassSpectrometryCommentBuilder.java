@@ -12,7 +12,8 @@ import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
+public final class MassSpectrometryCommentBuilder
+        implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
     private MassSpectrometryMethod method;
     private Float molWeight;
     private Float molWeightError;
@@ -21,15 +22,15 @@ public final class MassSpectrometryCommentBuilder implements CommentBuilder<Mass
     private List<Evidence> evidences = new ArrayList<>();
 
     public MassSpectrometryComment build() {
-        return new MassSpectrometryCommentImpl(method, molWeight, molWeightError, note, ranges, evidences);
+        return new MassSpectrometryCommentImpl(
+                method, molWeight, molWeightError, note, ranges, evidences);
     }
 
     @Override
     public MassSpectrometryCommentBuilder from(MassSpectrometryComment instance) {
         ranges.clear();
         evidences.clear();
-        return this
-                .molWeight(instance.getMolWeight())
+        return this.molWeight(instance.getMolWeight())
                 .molWeightError(instance.getMolWeightError())
                 .evidences(instance.getEvidences())
                 .ranges(instance.getRanges())

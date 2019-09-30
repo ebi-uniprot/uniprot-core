@@ -17,23 +17,19 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     private Note note;
 
     private CofactorCommentImpl() {
-        this(null,null,null);
+        this(null, null, null);
     }
 
-    public CofactorCommentImpl(String molecule,
-                               List<Cofactor> cofactors,
-                               Note note) {
+    public CofactorCommentImpl(String molecule, List<Cofactor> cofactors, Note note) {
         super(CommentType.COFACTOR);
-        if(molecule == null || molecule.isEmpty())
-            this.molecule =null;
-        else
-            this.molecule =molecule;
-        if((cofactors ==null) || cofactors.isEmpty()){
+        if (molecule == null || molecule.isEmpty()) this.molecule = null;
+        else this.molecule = molecule;
+        if ((cofactors == null) || cofactors.isEmpty()) {
             this.cofactors = Collections.emptyList();
-        }else{
-            this.cofactors =Collections.unmodifiableList(cofactors);
+        } else {
+            this.cofactors = Collections.unmodifiableList(cofactors);
         }
-        this.note =note;
+        this.note = note;
     }
 
     @Override
@@ -77,9 +73,9 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         CofactorCommentImpl that = (CofactorCommentImpl) o;
-        return Objects.equals(molecule, that.molecule) &&
-                Objects.equals(cofactors, that.cofactors) &&
-                Objects.equals(note, that.note);
+        return Objects.equals(molecule, that.molecule)
+                && Objects.equals(cofactors, that.cofactors)
+                && Objects.equals(note, that.note);
     }
 
     @Override

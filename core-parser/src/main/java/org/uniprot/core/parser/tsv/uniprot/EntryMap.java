@@ -9,7 +9,8 @@ public class EntryMap implements NamedValueMap {
     private final UniProtEntry entry;
     private final List<String> fields;
 
-    public static final List<String> DEFAULT_FIELDS = Arrays.asList("accession", "id", "score", "protein_existence");
+    public static final List<String> DEFAULT_FIELDS =
+            Arrays.asList("accession", "id", "score", "protein_existence");
 
     public static final String FIELD_FEATURE = "feature";
 
@@ -20,7 +21,6 @@ public class EntryMap implements NamedValueMap {
 
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(DEFAULT_FIELDS::contains);
-
     }
 
     public List<String> getData() {
@@ -35,7 +35,7 @@ public class EntryMap implements NamedValueMap {
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
-        if(EntryAuditMap.contains(fields)){
+        if (EntryAuditMap.contains(fields)) {
             addData(map, new EntryAuditMap(entry.getEntryAudit()));
         }
         if (EntryCommentsMap.contains(fields)) {
@@ -104,8 +104,9 @@ public class EntryMap implements NamedValueMap {
         Map<String, String> map = new HashMap<>();
         map.put("accession", entry.getPrimaryAccession().getValue());
         map.put("id", entry.getUniProtId().getValue());
-        //map.put("score", entry.getAnnotationScore() + ""); TODO: Check with Jie about the annotation score field
-        if (entry.getProteinExistence()!= null) {
+        // map.put("score", entry.getAnnotationScore() + ""); TODO: Check with Jie about the
+        // annotation score field
+        if (entry.getProteinExistence() != null) {
             map.put("protein_existence", entry.getProteinExistence().getValue());
         }
         return map;
@@ -118,7 +119,6 @@ public class EntryMap implements NamedValueMap {
 
         if (!listFeatures.isEmpty()) {
             return String.join("; ", listFeatures);
-        } else
-            return "";
+        } else return "";
     }
 }

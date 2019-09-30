@@ -20,8 +20,7 @@ public class SequenceImpl implements Sequence {
     public SequenceImpl(String sequence) {
         if (sequence == null) {
             this.value = "";
-        } else
-            this.value = sequence;
+        } else this.value = sequence;
         this.length = this.value.length();
         this.molWeight = MoleculeWeight.calcMolecularWeight(this.value);
         this.crc64 = Crc64.getCrc64(value);
@@ -69,16 +68,12 @@ public class SequenceImpl implements Sequence {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         SequenceImpl other = (SequenceImpl) obj;
         if (value == null) {
             return other.value == null;
         } else return value.equals(other.value);
     }
-
 }

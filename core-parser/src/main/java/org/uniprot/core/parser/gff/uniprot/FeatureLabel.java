@@ -1,17 +1,12 @@
 package org.uniprot.core.parser.gff.uniprot;
 
-/**
- * 
- * @author gqi
- *
- */
-
+/** @author gqi */
 public enum FeatureLabel {
     /**
-     * org.expasy.uniprot.models.Annotation.Type uk.ac.ebi.kraken.interfaces.uniprot.features.FeatureType
-     * 
-     * Based the above two classes to match the feature key and label    used by gff file
-     * 
+     * org.expasy.uniprot.models.Annotation.Type
+     * uk.ac.ebi.kraken.interfaces.uniprot.features.FeatureType
+     *
+     * <p>Based the above two classes to match the feature key and label used by gff file
      */
     INIT_MET("Initiator methionine"),
     SIGNAL("Signal peptide"),
@@ -26,7 +21,7 @@ public enum FeatureLabel {
     CA_BIND("Calcium binding"),
     ZN_FING("Zinc finger"),
     DNA_BIND("DNA binding"),
-    NP_BIND("Nucleotide binding"),             
+    NP_BIND("Nucleotide binding"),
     REGION("Region"),
     COILED("Coiled coil"),
     MOTIF("Motif"),
@@ -71,5 +66,4 @@ public enum FeatureLabel {
         }
         throw new IllegalArgumentException("the fetaure with the name " + name + " doesn't exist");
     }
-
 }

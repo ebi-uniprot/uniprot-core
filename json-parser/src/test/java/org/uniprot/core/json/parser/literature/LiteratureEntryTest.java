@@ -4,13 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.json.parser.literature.LiteratureJsonConfig;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 class LiteratureEntryTest {
 
     @Test
@@ -18,13 +15,15 @@ class LiteratureEntryTest {
         LiteratureEntryBuilder builder = new LiteratureEntryBuilder();
 
         LiteratureEntry literatureEntry = builder.completeAuthorList(false).build();
-        ValidateJson.verifyJsonRoundTripParser(LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
+        ValidateJson.verifyJsonRoundTripParser(
+                LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
     }
 
     @Test
     void testCompleteLiteratureEntry() {
         LiteratureEntry literatureEntry = getCompleteLiteratureEntry();
-        ValidateJson.verifyJsonRoundTripParser(LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
+        ValidateJson.verifyJsonRoundTripParser(
+                LiteratureJsonConfig.getInstance().getFullObjectMapper(), literatureEntry);
         ValidateJson.verifyEmptyFields(literatureEntry);
     }
 
@@ -42,9 +41,9 @@ class LiteratureEntryTest {
                 .literatureAbstract("literature Abstract")
                 .publicationDate(new PublicationDateImpl("21-06-2019"))
                 .title("title")
-                .addLiteratureMappedReference(LiteratureMappedReferenceTest.getCompleteLiteratureMappedReference())
+                .addLiteratureMappedReference(
+                        LiteratureMappedReferenceTest.getCompleteLiteratureMappedReference())
                 .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())
                 .build();
     }
-
 }

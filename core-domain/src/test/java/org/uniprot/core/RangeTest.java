@@ -1,11 +1,8 @@
 package org.uniprot.core;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.Position;
-import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class RangeTest {
 
@@ -15,11 +12,13 @@ class RangeTest {
         verify(range, new Position(12), new Position(25));
     }
 
-
     @Test
     void testRangeTTModifier() {
         Range range = new Range(12, 25, PositionModifier.OUTSIDE, PositionModifier.EXACT);
-        verify(range, new Position(12, PositionModifier.OUTSIDE), new Position(25, PositionModifier.EXACT));
+        verify(
+                range,
+                new Position(12, PositionModifier.OUTSIDE),
+                new Position(25, PositionModifier.EXACT));
     }
 
     @Test

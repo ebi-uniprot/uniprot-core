@@ -24,8 +24,12 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
         this.positions = Collections.emptyList();
     }
 
-    public SequenceCautionCommentImpl(SequenceCautionType sequenceCautionType, String sequence,
-                                      List<String> positions, String note, List<Evidence> evidences) {
+    public SequenceCautionCommentImpl(
+            SequenceCautionType sequenceCautionType,
+            String sequence,
+            List<String> positions,
+            String note,
+            List<Evidence> evidences) {
         super(CommentType.SEQUENCE_CAUTION);
         this.sequenceCautionType = sequenceCautionType;
         this.sequence = sequence;
@@ -98,15 +102,16 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SequenceCautionCommentImpl that = (SequenceCautionCommentImpl) o;
-        return sequenceCautionType == that.sequenceCautionType &&
-                Objects.equals(sequence, that.sequence) &&
-                Objects.equals(positions, that.positions) &&
-                Objects.equals(note, that.note) &&
-                Objects.equals(evidences, that.evidences);
+        return sequenceCautionType == that.sequenceCautionType
+                && Objects.equals(sequence, that.sequence)
+                && Objects.equals(positions, that.positions)
+                && Objects.equals(note, that.note)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), sequenceCautionType, sequence, positions, note, evidences);
+        return Objects.hash(
+                super.hashCode(), sequenceCautionType, sequence, positions, note, evidences);
     }
 }

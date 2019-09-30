@@ -19,13 +19,11 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
 
     public DiseaseConverter(ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
-
     }
 
     @Override
     public Disease fromXml(CommentType.Disease xmlDisease) {
-        if (xmlDisease == null)
-            return null;
+        if (xmlDisease == null) return null;
         DiseaseBuilder builder = new DiseaseBuilder();
         builder.acronym(xmlDisease.getAcronym())
                 .diseaseAc(xmlDisease.getId())
@@ -33,7 +31,8 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
                 .description(xmlDisease.getDescription());
 
         if (xmlDisease.getDbReference() != null) {
-            DiseaseReferenceType type = DiseaseReferenceType.typeOf(xmlDisease.getDbReference().getType());
+            DiseaseReferenceType type =
+                    DiseaseReferenceType.typeOf(xmlDisease.getDbReference().getType());
             DBCrossReference<DiseaseReferenceType> reference =
                     new DBCrossReferenceBuilder<DiseaseReferenceType>()
                             .databaseType(type)
@@ -46,8 +45,7 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
 
     @Override
     public CommentType.Disease toXml(Disease disease) {
-        if (disease == null)
-            return null;
+        if (disease == null) return null;
 
         CommentType.Disease xmlDisease = xmlUniprotFactory.createCommentTypeDisease();
         xmlDisease.setAcronym(disease.getAcronym());
@@ -62,5 +60,4 @@ public class DiseaseConverter implements Converter<CommentType.Disease, Disease>
 
         return xmlDisease;
     }
-
 }

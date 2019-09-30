@@ -9,5 +9,4 @@ public interface TaxonomyInactiveReason {
     boolean hasInactiveReasonType();
 
     boolean hasMergedTo();
-
 }

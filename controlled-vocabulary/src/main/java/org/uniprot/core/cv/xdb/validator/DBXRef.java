@@ -10,7 +10,7 @@ public class DBXRef {
     private String dbUrl;
     private String category;
 
-    public static class DBXRefBuilder{
+    public static class DBXRefBuilder {
         private String accession;
         private String abbr;
         private String name;
@@ -20,39 +20,47 @@ public class DBXRef {
         private String dbUrl;
         private String category;
 
-        public DBXRefBuilder accession(String accession){
+        public DBXRefBuilder accession(String accession) {
             this.accession = accession;
             return this;
         }
-        public DBXRefBuilder abbr(String abbr){
+
+        public DBXRefBuilder abbr(String abbr) {
             this.abbr = abbr;
             return this;
         }
-        public DBXRefBuilder name(String name){
+
+        public DBXRefBuilder name(String name) {
             this.name = name;
             return this;
         }
-        public DBXRefBuilder ref(String ref){
+
+        public DBXRefBuilder ref(String ref) {
             this.ref = ref;
             return this;
         }
-        public DBXRefBuilder linkType(String linkType){
+
+        public DBXRefBuilder linkType(String linkType) {
             this.linkType = linkType;
             return this;
         }
-        public DBXRefBuilder server(String server){
+
+        public DBXRefBuilder server(String server) {
             this.server = server;
             return this;
         }
-        public DBXRefBuilder dbUrl(String dbUrl){
+
+        public DBXRefBuilder dbUrl(String dbUrl) {
             this.dbUrl = dbUrl;
             return this;
         }
-        public DBXRefBuilder category(String category){
+
+        public DBXRefBuilder category(String category) {
             this.category = category;
             return this;
         }
-        public DBXRef build(){
+
+        public DBXRef build() {
             DBXRef dbxRef = new DBXRef();
             dbxRef.accession = this.accession;
             dbxRef.abbr = this.abbr;
@@ -100,15 +108,31 @@ public class DBXRef {
 
     @Override
     public String toString() {
-        return "DBXRef{" +
-                "accession='" + accession + '\'' +
-                ", abbr='" + abbr + '\'' +
-                ", name='" + name + '\'' +
-                ", ref='" + ref + '\'' +
-                ", linkType='" + linkType + '\'' +
-                ", server='" + server + '\'' +
-                ", dbUrl='" + dbUrl + '\'' +
-                ", category='" + category + '\'' +
-                '}';
+        return "DBXRef{"
+                + "accession='"
+                + accession
+                + '\''
+                + ", abbr='"
+                + abbr
+                + '\''
+                + ", name='"
+                + name
+                + '\''
+                + ", ref='"
+                + ref
+                + '\''
+                + ", linkType='"
+                + linkType
+                + '\''
+                + ", server='"
+                + server
+                + '\''
+                + ", dbUrl='"
+                + dbUrl
+                + '\''
+                + ", category='"
+                + category
+                + '\''
+                + '}';
     }
 }

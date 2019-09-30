@@ -1,7 +1,6 @@
 package org.uniprot.core.cv.common;
 
-import org.slf4j.Logger;
-import org.uniprot.core.cv.FileReader;
+import static org.slf4j.LoggerFactory.getLogger;
 
 import java.io.*;
 import java.net.URL;
@@ -10,7 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.slf4j.LoggerFactory.getLogger;
+import org.slf4j.Logger;
+import org.uniprot.core.cv.FileReader;
 
 public abstract class AbstractFileReader<T> implements FileReader<T> {
     private static final Logger LOGGER = getLogger(AbstractFileReader.class);
@@ -20,8 +20,7 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
                     "-----------------------------------------------------------------------",
                     "Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms",
                     "Distributed under the Creative Commons Attribution (CC BY 4.0) License",
-                    "-----------------------------------------------------------------------"
-            );
+                    "-----------------------------------------------------------------------");
 
     public abstract List<T> parseLines(List<String> lines);
 
@@ -58,8 +57,9 @@ public abstract class AbstractFileReader<T> implements FileReader<T> {
         if (filename.startsWith(FTP_PREFIX)) {
             return fetchFromFTP(filename);
         } else {
-        	
-            InputStream inputStream = AbstractFileReader.class.getClassLoader().getResourceAsStream(filename);
+
+            InputStream inputStream =
+                    AbstractFileReader.class.getClassLoader().getResourceAsStream(filename);
             List<String> lines = new ArrayList<>();
             try {
                 if (inputStream == null) {

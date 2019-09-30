@@ -16,7 +16,8 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
         this.mergeDemergeTo = Collections.emptyList();
     }
 
-    public EntryInactiveReasonImpl(InactiveReasonType inactiveReasonType, List<String> mergeDemergeTo) {
+    public EntryInactiveReasonImpl(
+            InactiveReasonType inactiveReasonType, List<String> mergeDemergeTo) {
         this.inactiveReasonType = inactiveReasonType;
         this.mergeDemergeTo = Utils.unmodifiableList(mergeDemergeTo);
     }
@@ -35,25 +36,21 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((inactiveReasonType == null) ? 0 : inactiveReasonType.hashCode());
+        result =
+                prime * result + ((inactiveReasonType == null) ? 0 : inactiveReasonType.hashCode());
         result = prime * result + ((mergeDemergeTo == null) ? 0 : mergeDemergeTo.hashCode());
         return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         EntryInactiveReasonImpl other = (EntryInactiveReasonImpl) obj;
-        if (inactiveReasonType != other.inactiveReasonType)
-            return false;
+        if (inactiveReasonType != other.inactiveReasonType) return false;
         if (mergeDemergeTo == null) {
             return other.mergeDemergeTo == null;
         } else return mergeDemergeTo.equals(other.mergeDemergeTo);
     }
-
 }

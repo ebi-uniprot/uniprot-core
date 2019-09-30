@@ -8,7 +8,6 @@ import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
-
 public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
     private static final long serialVersionUID = -5382803114400917004L;
     private RnaEditingLocationType locationType;
@@ -20,8 +19,8 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
         this.positions = Collections.emptyList();
     }
 
-    public RnaEditingCommentImpl(RnaEditingLocationType locationType,
-                                 List<RnaEdPosition> positions, Note note) {
+    public RnaEditingCommentImpl(
+            RnaEditingLocationType locationType, List<RnaEdPosition> positions, Note note) {
         super(CommentType.RNA_EDITING);
         this.locationType = locationType;
         if ((positions == null) || positions.isEmpty()) {
@@ -68,9 +67,9 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         RnaEditingCommentImpl that = (RnaEditingCommentImpl) o;
-        return locationType == that.locationType &&
-                Objects.equals(positions, that.positions) &&
-                Objects.equals(note, that.note);
+        return locationType == that.locationType
+                && Objects.equals(positions, that.positions)
+                && Objects.equals(note, that.note);
     }
 
     @Override
@@ -115,8 +114,8 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             RnaEdPositionImpl that = (RnaEdPositionImpl) o;
-            return Objects.equals(position, that.position) &&
-                    Objects.equals(evidences, that.evidences);
+            return Objects.equals(position, that.position)
+                    && Objects.equals(evidences, that.evidences);
         }
 
         @Override

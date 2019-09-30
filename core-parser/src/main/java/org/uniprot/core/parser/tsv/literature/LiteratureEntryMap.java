@@ -76,10 +76,15 @@ public class LiteratureEntryMap implements NamedValueMap {
 
     private String getMappedReferences() {
         return literatureEntry.getLiteratureMappedReferences().stream()
-                .map(mapped -> mapped.getSource() + "; " +
-                        mapped.getSourceId() + "; " +
-                        String.join(", ", mapped.getSourceCategory()) + "; " +
-                        mapped.getAnnotation())
+                .map(
+                        mapped ->
+                                mapped.getSource()
+                                        + "; "
+                                        + mapped.getSourceId()
+                                        + "; "
+                                        + String.join(", ", mapped.getSourceCategory())
+                                        + "; "
+                                        + mapped.getAnnotation())
                 .collect(Collectors.joining(", "));
     }
 
@@ -110,11 +115,15 @@ public class LiteratureEntryMap implements NamedValueMap {
     private String getStatistics() {
         StringBuilder result = new StringBuilder();
         if (literatureEntry.hasStatistics()) {
-            result.append("mapped:").append(literatureEntry.getStatistics().getMappedProteinCount()).append("; ")
-                    .append("reviewed:").append(literatureEntry.getStatistics().getReviewedProteinCount()).append("; ")
-                    .append("annotated:").append(literatureEntry.getStatistics().getUnreviewedProteinCount());
+            result.append("mapped:")
+                    .append(literatureEntry.getStatistics().getMappedProteinCount())
+                    .append("; ")
+                    .append("reviewed:")
+                    .append(literatureEntry.getStatistics().getReviewedProteinCount())
+                    .append("; ")
+                    .append("annotated:")
+                    .append(literatureEntry.getStatistics().getUnreviewedProteinCount());
         }
         return result.toString();
     }
-
 }

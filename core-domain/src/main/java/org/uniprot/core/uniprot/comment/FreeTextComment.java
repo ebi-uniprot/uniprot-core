@@ -1,5 +1,3 @@
 package org.uniprot.core.uniprot.comment;
 
-public interface FreeTextComment extends Comment, FreeText {
-
-}
+public interface FreeTextComment extends Comment, FreeText {}

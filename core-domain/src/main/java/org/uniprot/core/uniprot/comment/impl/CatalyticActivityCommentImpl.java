@@ -20,8 +20,8 @@ public class CatalyticActivityCommentImpl extends CommentImpl implements Catalyt
         this.physiologicalReactions = Collections.emptyList();
     }
 
-    public CatalyticActivityCommentImpl(Reaction reaction,
-                                        List<PhysiologicalReaction> physiologicalReactions) {
+    public CatalyticActivityCommentImpl(
+            Reaction reaction, List<PhysiologicalReaction> physiologicalReactions) {
         super(CommentType.CATALYTIC_ACTIVITY);
         this.reaction = reaction;
         if ((physiologicalReactions == null) || physiologicalReactions.isEmpty()) {
@@ -57,8 +57,8 @@ public class CatalyticActivityCommentImpl extends CommentImpl implements Catalyt
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         CatalyticActivityCommentImpl that = (CatalyticActivityCommentImpl) o;
-        return Objects.equals(reaction, that.reaction) &&
-                Objects.equals(physiologicalReactions, that.physiologicalReactions);
+        return Objects.equals(reaction, that.reaction)
+                && Objects.equals(physiologicalReactions, that.physiologicalReactions);
     }
 
     @Override

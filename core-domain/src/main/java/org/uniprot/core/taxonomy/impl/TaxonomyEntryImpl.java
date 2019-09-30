@@ -7,10 +7,8 @@ import org.uniprot.core.taxonomy.*;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
 import org.uniprot.core.util.Utils;
-/**
- *
- * @author lgonzales
- */
+
+/** @author lgonzales */
 public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private static final long serialVersionUID = -319775179301440773L;
@@ -37,15 +35,29 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private TaxonomyInactiveReason inactiveReason;
 
-    private TaxonomyEntryImpl(){
-        this(0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+    private TaxonomyEntryImpl() {
+        this(
+                0, null, null, null, null, null, null, null, null, null, null, null, null, null,
+                null, null);
     }
 
-    public TaxonomyEntryImpl(long taxonId, String scientificName, String commonName, List<String> synonyms,
-                             String mnemonic, Long parentId, TaxonomyRank rank, Boolean hidden, Boolean active,
-                             List<String> otherNames, List<TaxonomyLineage> lineage, List<TaxonomyStrain> strains,
-                             List<Taxonomy> hosts, List<String> links, TaxonomyStatistics statistics,
-                             TaxonomyInactiveReason inactiveReason) {
+    public TaxonomyEntryImpl(
+            long taxonId,
+            String scientificName,
+            String commonName,
+            List<String> synonyms,
+            String mnemonic,
+            Long parentId,
+            TaxonomyRank rank,
+            Boolean hidden,
+            Boolean active,
+            List<String> otherNames,
+            List<TaxonomyLineage> lineage,
+            List<TaxonomyStrain> strains,
+            List<Taxonomy> hosts,
+            List<String> links,
+            TaxonomyStatistics statistics,
+            TaxonomyInactiveReason inactiveReason) {
         super(taxonId, scientificName, commonName, synonyms, mnemonic);
         this.parentId = parentId;
         this.rank = rank;
@@ -162,23 +174,38 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     @Override
     public String toString() {
-        return "TaxonomyEntryImpl{" +
-                "taxonId=" + getTaxonId() +
-                ", scientificName=" + getScientificName() +
-                ", commonName=" + getCommonName() +
-                ", mnemonic=" + getMnemonic() +
-                ", parentId=" + parentId +
-                ", rank=" + rank +
-                ", hidden=" + hidden +
-                ", active=" + active +
-                ", otherNames=" + otherNames +
-                ", lineage=" + lineage +
-                ", strains=" + strains +
-                ", hosts=" + hosts +
-                ", links=" + links +
-                ", statistics=" + statistics +
-                ", inactiveReason=" + inactiveReason +
-                '}';
+        return "TaxonomyEntryImpl{"
+                + "taxonId="
+                + getTaxonId()
+                + ", scientificName="
+                + getScientificName()
+                + ", commonName="
+                + getCommonName()
+                + ", mnemonic="
+                + getMnemonic()
+                + ", parentId="
+                + parentId
+                + ", rank="
+                + rank
+                + ", hidden="
+                + hidden
+                + ", active="
+                + active
+                + ", otherNames="
+                + otherNames
+                + ", lineage="
+                + lineage
+                + ", strains="
+                + strains
+                + ", hosts="
+                + hosts
+                + ", links="
+                + links
+                + ", statistics="
+                + statistics
+                + ", inactiveReason="
+                + inactiveReason
+                + '}';
     }
 
     @Override
@@ -187,22 +214,33 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         TaxonomyEntryImpl that = (TaxonomyEntryImpl) o;
-        return Objects.equals(getParentId(),that.getParentId()) &&
-                isHidden() == that.isHidden() &&
-                isActive() == that.isActive() &&
-                getRank() == that.getRank() &&
-                Objects.equals(getOtherNames(), that.getOtherNames()) &&
-                Objects.equals(getLineage(), that.getLineage()) &&
-                Objects.equals(getStrains(), that.getStrains()) &&
-                Objects.equals(getHosts(), that.getHosts()) &&
-                Objects.equals(getLinks(), that.getLinks()) &&
-                Objects.equals(getStatistics(), that.getStatistics()) &&
-                Objects.equals(getInactiveReason(), that.getInactiveReason());
+        return Objects.equals(getParentId(), that.getParentId())
+                && isHidden() == that.isHidden()
+                && isActive() == that.isActive()
+                && getRank() == that.getRank()
+                && Objects.equals(getOtherNames(), that.getOtherNames())
+                && Objects.equals(getLineage(), that.getLineage())
+                && Objects.equals(getStrains(), that.getStrains())
+                && Objects.equals(getHosts(), that.getHosts())
+                && Objects.equals(getLinks(), that.getLinks())
+                && Objects.equals(getStatistics(), that.getStatistics())
+                && Objects.equals(getInactiveReason(), that.getInactiveReason());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), getParentId(), getRank(), isHidden(), isActive(), getOtherNames(),
-                getLineage(), getStrains(), getHosts(), getLinks(), getStatistics(), getInactiveReason());
+        return Objects.hash(
+                super.hashCode(),
+                getParentId(),
+                getRank(),
+                isHidden(),
+                isActive(),
+                getOtherNames(),
+                getLineage(),
+                getStrains(),
+                getHosts(),
+                getLinks(),
+                getStatistics(),
+                getInactiveReason());
     }
 }

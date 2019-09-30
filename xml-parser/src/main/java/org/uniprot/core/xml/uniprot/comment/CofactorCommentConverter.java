@@ -1,7 +1,5 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import com.google.common.base.Strings;
-
 import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.CofactorComment;
@@ -14,71 +12,78 @@ import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
 
-public class CofactorCommentConverter implements CommentConverter< CofactorComment> {
-	private final ObjectFactory xmlUniprotFactory;
-	private final CofactorConverter cofactorConverter;
-	private final EvidencedValueConverter evValueConverter;
+import com.google.common.base.Strings;
 
-	public CofactorCommentConverter(EvidenceIndexMapper evRefMapper) {
-		this(evRefMapper, new ObjectFactory());
-	}
+public class CofactorCommentConverter implements CommentConverter<CofactorComment> {
+    private final ObjectFactory xmlUniprotFactory;
+    private final CofactorConverter cofactorConverter;
+    private final EvidencedValueConverter evValueConverter;
 
-	public CofactorCommentConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
-		this.xmlUniprotFactory = xmlUniprotFactory;
-		this.cofactorConverter = new CofactorConverter(evRefMapper, xmlUniprotFactory);
-		evValueConverter = new EvidencedValueConverter(evRefMapper, xmlUniprotFactory, true);
-	}
+    public CofactorCommentConverter(EvidenceIndexMapper evRefMapper) {
+        this(evRefMapper, new ObjectFactory());
+    }
 
-	@Override
-	public CofactorComment fromXml(CommentType xmlComment) {
-		if (xmlComment == null)
-			return null;
+    public CofactorCommentConverter(
+            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+        this.xmlUniprotFactory = xmlUniprotFactory;
+        this.cofactorConverter = new CofactorConverter(evRefMapper, xmlUniprotFactory);
+        evValueConverter = new EvidencedValueConverter(evRefMapper, xmlUniprotFactory, true);
+    }
 
-		CofactorCommentBuilder builder = new CofactorCommentBuilder();
+    @Override
+    public CofactorComment fromXml(CommentType xmlComment) {
+        if (xmlComment == null) return null;
 
-		// Molecule
-		if (xmlComment.getMolecule() != null) {
-			builder.molecule(xmlComment.getMolecule().getValue());
-		}
+        CofactorCommentBuilder builder = new CofactorCommentBuilder();
 
-		// cofactor note
-		if (!xmlComment.getText().isEmpty()) {
-			Note note = new NoteBuilder(
-					xmlComment.getText().stream().map(evValueConverter::fromXml).collect(Collectors.toList())).build();
-			builder.note(note);
-		}
-		if (!xmlComment.getCofactor().isEmpty()) {
-			builder.cofactors(
-					xmlComment.getCofactor().stream().map(cofactorConverter::fromXml).collect(Collectors.toList()));
+        // Molecule
+        if (xmlComment.getMolecule() != null) {
+            builder.molecule(xmlComment.getMolecule().getValue());
+        }
 
-		}
-		return builder.build();
-	}
+        // cofactor note
+        if (!xmlComment.getText().isEmpty()) {
+            Note note =
+                    new NoteBuilder(
+                                    xmlComment.getText().stream()
+                                            .map(evValueConverter::fromXml)
+                                            .collect(Collectors.toList()))
+                            .build();
+            builder.note(note);
+        }
+        if (!xmlComment.getCofactor().isEmpty()) {
+            builder.cofactors(
+                    xmlComment.getCofactor().stream()
+                            .map(cofactorConverter::fromXml)
+                            .collect(Collectors.toList()));
+        }
+        return builder.build();
+    }
 
-	@Override
-	public CommentType toXml(CofactorComment comment) {
-		if (comment == null)
-			return null;
+    @Override
+    public CommentType toXml(CofactorComment comment) {
+        if (comment == null) return null;
 
-		CommentType xmlComment = xmlUniprotFactory.createCommentType();
+        CommentType xmlComment = xmlUniprotFactory.createCommentType();
 
-		// comment type
-		xmlComment.setType(comment.getCommentType().toDisplayName().toLowerCase());
-		if (!Strings.isNullOrEmpty(comment.getMolecule())) {
-			MoleculeType mol = xmlUniprotFactory.createMoleculeType();
-			mol.setValue(comment.getMolecule());
-			xmlComment.setMolecule(mol);
-		}
-		// cofactor not
-		if ((comment.getNote() != null) && (!comment.getNote().getTexts().isEmpty())) {
-			comment.getNote().getTexts().forEach(val -> xmlComment.getText().add(evValueConverter.toXml(val)));
-		}
-		// cofactor
-		if ((comment.getCofactors() != null) && (!comment.getCofactors().isEmpty())) {
-			comment.getCofactors().forEach(val -> xmlComment.getCofactor().add(cofactorConverter.toXml(val)));
-
-		}
-		return xmlComment;
-	}
-
+        // comment type
+        xmlComment.setType(comment.getCommentType().toDisplayName().toLowerCase());
+        if (!Strings.isNullOrEmpty(comment.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(comment.getMolecule());
+            xmlComment.setMolecule(mol);
+        }
+        // cofactor not
+        if ((comment.getNote() != null) && (!comment.getNote().getTexts().isEmpty())) {
+            comment.getNote()
+                    .getTexts()
+                    .forEach(val -> xmlComment.getText().add(evValueConverter.toXml(val)));
+        }
+        // cofactor
+        if ((comment.getCofactors() != null) && (!comment.getCofactors().isEmpty())) {
+            comment.getCofactors()
+                    .forEach(val -> xmlComment.getCofactor().add(cofactorConverter.toXml(val)));
+        }
+        return xmlComment;
+    }
 }

@@ -27,8 +27,7 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
 
     @Override
     public DiseaseBuilder from(Disease instance) {
-        return this
-                .acronym(instance.getAcronym())
+        return this.acronym(instance.getAcronym())
                 .description(instance.getDescription())
                 .diseaseAc(instance.getDiseaseAccession())
                 .diseaseId(instance.getDiseaseId())

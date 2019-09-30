@@ -1,6 +1,10 @@
 package org.uniprot.core.json.parser.uniprot.citation;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.Collections;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -10,19 +14,14 @@ import org.uniprot.core.citation.Unpublished;
 import org.uniprot.core.citation.builder.UnpublishedBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
-import java.util.Collections;
+import com.fasterxml.jackson.databind.JsonNode;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class UnpublishedTest {
 
     @Test
     void testUnpublishedSimple() {
-        Citation citation =  new UnpublishedBuilder().build();
+        Citation citation = new UnpublishedBuilder().build();
         ValidateJson.verifyJsonRoundTripParser(citation);
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(citation);
@@ -41,14 +40,14 @@ public class UnpublishedTest {
 
         assertNotNull(jsonNode.get("citationType"));
         assertEquals("unpublished observations", jsonNode.get("citationType").asText());
-
     }
 
-
-    public static Unpublished getUnpublished(){
-        DBCrossReference<CitationXrefType> xref = new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(CitationXrefType.PUBMED)
-                .id("somepID1").build();
+    public static Unpublished getUnpublished() {
+        DBCrossReference<CitationXrefType> xref =
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .databaseType(CitationXrefType.PUBMED)
+                        .id("somepID1")
+                        .build();
         return new UnpublishedBuilder()
                 .publicationDate("date value")
                 .addAuthorGroup("auth group")

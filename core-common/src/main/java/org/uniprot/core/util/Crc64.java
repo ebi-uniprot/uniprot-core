@@ -28,8 +28,7 @@ public class Crc64 {
     /**
      * Returns the crc64 checksum for the given sequence.
      *
-     * @param sequence
-     *            sequence
+     * @param sequence sequence
      * @return the crc64 checksum for the sequence
      */
     public static long getCrc64Long(String sequence) {
@@ -80,9 +79,7 @@ public class Crc64 {
 
         StringBuilder crc64 = new StringBuilder("0000000000000000");
 
-        crc64.replace(crc64.length() - crc64String.length(),
-                crc64.length(),
-                crc64String);
+        crc64.replace(crc64.length() - crc64String.length(), crc64.length(), crc64String);
 
         return crc64.toString();
     }

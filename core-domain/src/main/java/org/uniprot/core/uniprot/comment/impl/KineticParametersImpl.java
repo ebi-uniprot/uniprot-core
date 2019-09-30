@@ -21,9 +21,10 @@ public class KineticParametersImpl implements KineticParameters {
         this.michaelisConstants = Collections.emptyList();
     }
 
-    public KineticParametersImpl(List<MaximumVelocity> maximumVelocities,
-                                 List<MichaelisConstant> michaelisConstants,
-                                 Note note) {
+    public KineticParametersImpl(
+            List<MaximumVelocity> maximumVelocities,
+            List<MichaelisConstant> michaelisConstants,
+            Note note) {
         if ((maximumVelocities == null) || maximumVelocities.isEmpty()) {
             this.maximumVelocities = Collections.emptyList();
         } else {
@@ -72,9 +73,9 @@ public class KineticParametersImpl implements KineticParameters {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KineticParametersImpl that = (KineticParametersImpl) o;
-        return Objects.equals(maximumVelocities, that.maximumVelocities) &&
-                Objects.equals(michaelisConstants, that.michaelisConstants) &&
-                Objects.equals(note, that.note);
+        return Objects.equals(maximumVelocities, that.maximumVelocities)
+                && Objects.equals(michaelisConstants, that.michaelisConstants)
+                && Objects.equals(note, that.note);
     }
 
     @Override

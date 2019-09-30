@@ -1,4 +1,3 @@
 package org.uniprot.core.uniprot.comment;
 
-public interface TemperatureDependence extends FreeText {
-}
+public interface TemperatureDependence extends FreeText {}

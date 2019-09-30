@@ -12,13 +12,15 @@ import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public class RcLineConverter extends EvidenceCollector implements Converter<RcLineObject, List<ReferenceComment>> {
+public class RcLineConverter extends EvidenceCollector
+        implements Converter<RcLineObject, List<ReferenceComment>> {
     @Override
     public List<ReferenceComment> convert(RcLineObject f) {
         List<ReferenceComment> sss = new ArrayList<>();
         for (RcLineObject.RC rc : f.rcs) {
             ReferenceCommentType type = convert(rc.tokenType);
-            Map<Object, List<Evidence>> evidences = EvidenceConverterHelper.convert(rc.getEvidenceInfo());
+            Map<Object, List<Evidence>> evidences =
+                    EvidenceConverterHelper.convert(rc.getEvidenceInfo());
             this.addAll(evidences.values());
             for (String val : rc.values) {
                 ReferenceComment refComment =

@@ -9,7 +9,8 @@ import java.util.List;
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 
-public abstract class AbstractOrganismNameBuilder<B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
+public abstract class AbstractOrganismNameBuilder<
+                B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
         implements Builder<B, T> {
     protected String scientificName = "";
     protected String commonName = "";

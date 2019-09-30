@@ -1,20 +1,19 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.evidence.EvidencedValue;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 class APCommentBuilderTest {
     @Test
@@ -46,9 +45,7 @@ class APCommentBuilderTest {
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
         List<APIsoform> apIsoforms = singletonList(createAPIsoform());
-        AlternativeProductsComment comment = builder.events(events)
-                .isoforms(apIsoforms)
-                .build();
+        AlternativeProductsComment comment = builder.events(events).isoforms(apIsoforms).build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(1, comment.getIsoforms().size());
         assertEquals(CommentType.ALTERNATIVE_PRODUCTS, comment.getCommentType());
@@ -63,10 +60,8 @@ class APCommentBuilderTest {
         List<APIsoform> apIsoforms = singletonList(createAPIsoform());
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note apNote = new NoteBuilder(texts).build();
-        AlternativeProductsComment comment = builder.events(events)
-                .isoforms(apIsoforms)
-                .note(apNote)
-                .build();
+        AlternativeProductsComment comment =
+                builder.events(events).isoforms(apIsoforms).note(apNote).build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(1, comment.getIsoforms().size());
         assertNotNull(comment.getNote());
@@ -94,10 +89,8 @@ class APCommentBuilderTest {
         List<Evidence> evidences = createEvidences();
         String name = "Some name";
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
-        APIsoform apIsoform =
-                isoformBuilder.name(createIsoformName(name, evidences))
+        APIsoform apIsoform = isoformBuilder.name(createIsoformName(name, evidences)).build();
 
-                        .build();
         assertEquals(name, apIsoform.getName().getValue());
         assertEquals(0, apIsoform.getSynonyms().size());
         assertEquals(0, apIsoform.getIsoformIds().size());
@@ -116,7 +109,8 @@ class APCommentBuilderTest {
         isoformSynonyms.add(createIsoformName(syn2, emptyList()));
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         APIsoform apIsoform =
-                isoformBuilder.name(createIsoformName(name, evidences))
+                isoformBuilder
+                        .name(createIsoformName(name, evidences))
                         .synonyms(isoformSynonyms)
                         .build();
         assertEquals(name, apIsoform.getName().getValue());
@@ -138,7 +132,8 @@ class APCommentBuilderTest {
 
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         APIsoform apIsoform =
-                isoformBuilder.name(createIsoformName(name, evidences))
+                isoformBuilder
+                        .name(createIsoformName(name, evidences))
                         .synonyms(isoformSynonyms)
                         .ids(asList("isoID1", "isoID2", "isoID3"))
                         .build();
@@ -161,7 +156,8 @@ class APCommentBuilderTest {
 
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
         APIsoform apIsoform =
-                isoformBuilder.name(createIsoformName(name, evidences))
+                isoformBuilder
+                        .name(createIsoformName(name, evidences))
                         .synonyms(isoformSynonyms)
                         .ids(asList("isoID1", "isoID2", "isoID3"))
                         .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
@@ -184,13 +180,13 @@ class APCommentBuilderTest {
         isoformSynonyms.add(createIsoformName(syn2, emptyList()));
 
         APIsoformBuilder isoformBuilder = new APIsoformBuilder();
-        return
-                isoformBuilder.name(createIsoformName(name, evidences))
-                        .synonyms(isoformSynonyms)
-                        .ids(asList("isoID1", "isoID2", "isoID3"))
-                        .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
-                        .sequenceIds(singletonList("someSeqId"))
-                        .build();
+        return isoformBuilder
+                .name(createIsoformName(name, evidences))
+                .synonyms(isoformSynonyms)
+                .ids(asList("isoID1", "isoID2", "isoID3"))
+                .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
+                .sequenceIds(singletonList("someSeqId"))
+                .build();
     }
 
     private static IsoformName createIsoformName(String name, List<Evidence> evidences) {

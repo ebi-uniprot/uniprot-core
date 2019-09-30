@@ -1,13 +1,11 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
 import org.uniprot.core.flatfile.parser.HasEvidence;
 import org.uniprot.core.uniprot.evidence.Evidence;
-
 
 public class EvidenceCollector implements HasEvidence {
     private Collection<Evidence> evidences = new HashSet<>();

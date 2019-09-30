@@ -13,6 +13,7 @@ public class AlternativeProductsMap implements NamedValueMap {
 
     private final List<AlternativeProductsComment> alternativeProductsComments;
     CCAPCommentLineBuilder lineBuilder = new CCAPCommentLineBuilder();
+
     public AlternativeProductsMap(List<AlternativeProductsComment> alternativeProductsComments) {
         this.alternativeProductsComments = alternativeProductsComments;
     }
@@ -25,16 +26,19 @@ public class AlternativeProductsMap implements NamedValueMap {
     private Map<String, String> getAPComments(List<AlternativeProductsComment> apComments) {
         Map<String, String> apCommentMap = new HashMap<>();
         if ((apComments != null)) {
-            String result = apComments.stream()
-                    .map(this::getAlternativeProductsCommentsString2)
-                    .collect(Collectors.joining(" "));
-            apCommentMap.put("cc:alternative_products", "ALTERNATIVE PRODUCTS:  " +result);
+            String result =
+                    apComments.stream()
+                            .map(this::getAlternativeProductsCommentsString2)
+                            .collect(Collectors.joining(" "));
+            apCommentMap.put("cc:alternative_products", "ALTERNATIVE PRODUCTS:  " + result);
         }
         return apCommentMap;
     }
-    
-    private String getAlternativeProductsCommentsString2(AlternativeProductsComment alternativeProductsComment) {
-    	return lineBuilder.buildString(alternativeProductsComment, true, false).replaceAll("\n", " ");
-    }
 
+    private String getAlternativeProductsCommentsString2(
+            AlternativeProductsComment alternativeProductsComment) {
+        return lineBuilder
+                .buildString(alternativeProductsComment, true, false)
+                .replaceAll("\n", " ");
+    }
 }

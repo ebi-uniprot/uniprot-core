@@ -1,16 +1,15 @@
 package org.uniprot.core.json.parser.uniprot.comment;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 
-import static org.junit.jupiter.api.Assertions.*;
-/**
- *
- * @author lgonzales
- */
+import com.fasterxml.jackson.databind.JsonNode;
+
+/** @author lgonzales */
 public class WebResourceCommentTest {
 
     @Test
@@ -21,7 +20,7 @@ public class WebResourceCommentTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("WEB RESOURCE",jsonNode.get("commentType").asText());
+        assertEquals("WEB RESOURCE", jsonNode.get("commentType").asText());
     }
 
     @Test
@@ -33,23 +32,22 @@ public class WebResourceCommentTest {
 
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
-        assertEquals("WEB RESOURCE",jsonNode.get("commentType").asText());
+        assertEquals("WEB RESOURCE", jsonNode.get("commentType").asText());
 
         assertNotNull(jsonNode.get("resourceName"));
-        assertEquals("resource name",jsonNode.get("resourceName").asText());
+        assertEquals("resource name", jsonNode.get("resourceName").asText());
 
         assertNotNull(jsonNode.get("resourceUrl"));
-        assertEquals("resource URL",jsonNode.get("resourceUrl").asText());
+        assertEquals("resource URL", jsonNode.get("resourceUrl").asText());
 
         assertNotNull(jsonNode.get("ftp"));
         assertTrue(jsonNode.get("ftp").asBoolean());
 
         assertNotNull(jsonNode.get("note"));
-        assertEquals("Note text",jsonNode.get("note").asText());
-
+        assertEquals("Note text", jsonNode.get("note").asText());
     }
 
-    public static WebResourceComment getWebResourceComment(){
+    public static WebResourceComment getWebResourceComment() {
         return new WebResourceCommentBuilder()
                 .resourceName("resource name")
                 .resourceUrl("resource URL")

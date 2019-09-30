@@ -14,11 +14,10 @@ import java.util.TimeZone;
 
 /**
  * Get it from https://gist.github.com/pablomoretti/9748230
- * 
+ *
  * @author jieluo
  * @date 4 Apr 2017
  * @time 13:16:11
- *
  */
 public class SimpleDateFormatThreadSafe extends SimpleDateFormat {
     private static final long serialVersionUID = 5448371898056188202L;
@@ -26,42 +25,46 @@ public class SimpleDateFormatThreadSafe extends SimpleDateFormat {
 
     public SimpleDateFormatThreadSafe() {
         super();
-        localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
-            @Override
-            protected SimpleDateFormat initialValue() {
-                return new SimpleDateFormat();
-            }
-        };
+        localSimpleDateFormat =
+                new ThreadLocal<SimpleDateFormat>() {
+                    @Override
+                    protected SimpleDateFormat initialValue() {
+                        return new SimpleDateFormat();
+                    }
+                };
     }
 
     public SimpleDateFormatThreadSafe(final String pattern) {
         super(pattern);
-        localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
-            @Override
-            protected SimpleDateFormat initialValue() {
-                return new SimpleDateFormat(pattern);
-            }
-        };
+        localSimpleDateFormat =
+                new ThreadLocal<SimpleDateFormat>() {
+                    @Override
+                    protected SimpleDateFormat initialValue() {
+                        return new SimpleDateFormat(pattern);
+                    }
+                };
     }
 
     public SimpleDateFormatThreadSafe(final String pattern, final DateFormatSymbols formatSymbols) {
         super(pattern, formatSymbols);
-        localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
-            @Override
-            protected SimpleDateFormat initialValue() {
-                return new SimpleDateFormat(pattern, formatSymbols);
-            }
-        };
+        localSimpleDateFormat =
+                new ThreadLocal<SimpleDateFormat>() {
+                    @Override
+                    protected SimpleDateFormat initialValue() {
+                        return new SimpleDateFormat(pattern, formatSymbols);
+                    }
+                };
     }
 
     public SimpleDateFormatThreadSafe(final String pattern, final Locale locale) {
         super(pattern, locale);
-        localSimpleDateFormat = new ThreadLocal<SimpleDateFormat>() {
-            @Override
-            protected SimpleDateFormat initialValue() {
-                return new SimpleDateFormat(pattern, locale);
-            }
-        };
+        localSimpleDateFormat =
+                new ThreadLocal<SimpleDateFormat>() {
+                    @Override
+                    protected SimpleDateFormat initialValue() {
+                        return new SimpleDateFormat(pattern, locale);
+                    }
+                };
     }
 
     @Override

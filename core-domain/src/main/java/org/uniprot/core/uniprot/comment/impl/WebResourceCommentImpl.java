@@ -19,10 +19,8 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
         this(null, null, false, null);
     }
 
-    public WebResourceCommentImpl(String resourceName,
-                                  String resourceUrl,
-                                  boolean ftp,
-                                  String note) {
+    public WebResourceCommentImpl(
+            String resourceName, String resourceUrl, boolean ftp, String note) {
         super(CommentType.WEBRESOURCE);
         this.resourceName = emptyOrString(resourceName);
         this.resourceUrl = emptyOrString(resourceUrl);
@@ -71,10 +69,10 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         WebResourceCommentImpl that = (WebResourceCommentImpl) o;
-        return ftp == that.ftp &&
-                Objects.equals(resourceName, that.resourceName) &&
-                Objects.equals(resourceUrl, that.resourceUrl) &&
-                Objects.equals(note, that.note);
+        return ftp == that.ftp
+                && Objects.equals(resourceName, that.resourceName)
+                && Objects.equals(resourceUrl, that.resourceUrl)
+                && Objects.equals(note, that.note);
     }
 
     @Override

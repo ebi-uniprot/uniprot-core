@@ -20,17 +20,30 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
     private String address = "";
 
     public Book build() {
-        return new BookImpl(authoringGroups, authors, xrefs, title, publicationDate, bookName, editors,
-                            firstPage, lastPage, volume, publisher, address);
+        return new BookImpl(
+                authoringGroups,
+                authors,
+                xrefs,
+                title,
+                publicationDate,
+                bookName,
+                editors,
+                firstPage,
+                lastPage,
+                volume,
+                publisher,
+                address);
     }
 
     @Override
     public BookBuilder from(Book instance) {
         init(instance);
-        return this
-                .address(instance.getAddress())
+        return this.address(instance.getAddress())
                 .bookName(instance.getBookName())
-                .editors(instance.getEditors().stream().map(Author::getValue).collect(Collectors.toList()))
+                .editors(
+                        instance.getEditors().stream()
+                                .map(Author::getValue)
+                                .collect(Collectors.toList()))
                 .firstPage(instance.getFirstPage())
                 .lastPage(instance.getLastPage())
                 .publisher(instance.getPublisher())

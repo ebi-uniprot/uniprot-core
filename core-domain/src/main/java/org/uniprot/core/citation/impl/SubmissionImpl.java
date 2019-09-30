@@ -1,11 +1,11 @@
 package org.uniprot.core.citation.impl;
 
+import static java.util.Collections.emptyList;
+
 import java.util.List;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
-
-import static java.util.Collections.emptyList;
 
 public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     private static final long serialVersionUID = 7406371948424303592L;
@@ -15,9 +15,20 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
         this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
-    public SubmissionImpl(List<String> authoringGroup, List<Author> authors, List<DBCrossReference<CitationXrefType>> citationXrefs,
-                          String title, PublicationDate publicationDate, SubmissionDatabase submissionDatabase) {
-        super(CitationType.SUBMISSION, authoringGroup, authors, citationXrefs, title, publicationDate);
+    public SubmissionImpl(
+            List<String> authoringGroup,
+            List<Author> authors,
+            List<DBCrossReference<CitationXrefType>> citationXrefs,
+            String title,
+            PublicationDate publicationDate,
+            SubmissionDatabase submissionDatabase) {
+        super(
+                CitationType.SUBMISSION,
+                authoringGroup,
+                authors,
+                citationXrefs,
+                title,
+                publicationDate);
         this.submissionDatabase = submissionDatabase;
     }
 
@@ -35,21 +46,17 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + ((submissionDatabase == null) ? 0 : submissionDatabase.hashCode());
+        result =
+                prime * result + ((submissionDatabase == null) ? 0 : submissionDatabase.hashCode());
         return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         SubmissionImpl other = (SubmissionImpl) obj;
         return submissionDatabase == other.submissionDatabase;
     }
-
-
 }

@@ -9,14 +9,11 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
-/**
- * @author lgonzales
- */
-public class OrderedLocusNameBuilder extends AbstractEvidencedValueBuilder<OrderedLocusNameBuilder, OrderedLocusName> {
+/** @author lgonzales */
+public class OrderedLocusNameBuilder
+        extends AbstractEvidencedValueBuilder<OrderedLocusNameBuilder, OrderedLocusName> {
 
-    public OrderedLocusNameBuilder(){
-
-    }
+    public OrderedLocusNameBuilder() {}
 
     public OrderedLocusNameBuilder(String oln, List<Evidence> evidences) {
         this.value = oln;

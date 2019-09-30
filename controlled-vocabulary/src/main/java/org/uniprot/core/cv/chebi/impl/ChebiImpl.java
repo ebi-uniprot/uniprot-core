@@ -15,7 +15,7 @@ public class ChebiImpl implements Chebi {
     public ChebiImpl(String id, String name, String inchiKey) {
         this.id = id;
         this.name = name;
-        this.inchiKey= inchiKey;
+        this.inchiKey = inchiKey;
     }
 
     @Override
@@ -35,10 +35,16 @@ public class ChebiImpl implements Chebi {
 
     @Override
     public String toString() {
-        return "ChebiImpl{" +
-                "id='" + id + '\'' +
-                ", inchiKey='" + inchiKey + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+        return "ChebiImpl{"
+                + "id='"
+                + id
+                + '\''
+                + ", inchiKey='"
+                + inchiKey
+                + '\''
+                + ", name='"
+                + name
+                + '\''
+                + '}';
     }
 }

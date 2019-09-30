@@ -9,9 +9,7 @@ public final class Property implements Pair<String, String>, Comparable<Property
     private String key;
     private String value;
 
-    private Property() {
-
-    }
+    private Property() {}
 
     public Property(String key, String value) {
         this.key = key;
@@ -39,18 +37,13 @@ public final class Property implements Pair<String, String>, Comparable<Property
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         Property other = (Property) obj;
         if (key == null) {
-            if (other.key != null)
-                return false;
-        } else if (!key.equals(other.key))
-            return false;
+            if (other.key != null) return false;
+        } else if (!key.equals(other.key)) return false;
         if (value == null) {
             return other.value == null;
         } else return value.equals(other.value);
@@ -60,5 +53,4 @@ public final class Property implements Pair<String, String>, Comparable<Property
     public int compareTo(Property o) {
         return this.key.compareTo(o.getKey());
     }
-
 }

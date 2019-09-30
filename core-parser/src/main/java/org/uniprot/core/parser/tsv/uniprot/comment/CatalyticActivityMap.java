@@ -13,6 +13,7 @@ public class CatalyticActivityMap implements NamedValueMap {
 
     private final List<CatalyticActivityComment> catalyticActivityComments;
     private final CatalyticActivityCCLineBuilder lineBuilder = new CatalyticActivityCCLineBuilder();
+
     public CatalyticActivityMap(List<CatalyticActivityComment> catalyticActivityComments) {
         this.catalyticActivityComments = catalyticActivityComments;
     }
@@ -22,22 +23,21 @@ public class CatalyticActivityMap implements NamedValueMap {
         return getCatalyticActivityComments(this.catalyticActivityComments);
     }
 
-
-    private Map<String, String> getCatalyticActivityComments(List<CatalyticActivityComment> catalyticActivityComments){
+    private Map<String, String> getCatalyticActivityComments(
+            List<CatalyticActivityComment> catalyticActivityComments) {
         Map<String, String> catalyticActivityMap = new HashMap<>();
-        if(catalyticActivityComments != null){
-            String catalyticActivityString =  catalyticActivityComments.stream()
-                    .map(this::getCatalyticActivityString)
-                    .collect(Collectors.joining(" "));
+        if (catalyticActivityComments != null) {
+            String catalyticActivityString =
+                    catalyticActivityComments.stream()
+                            .map(this::getCatalyticActivityString)
+                            .collect(Collectors.joining(" "));
 
-            catalyticActivityMap.put("cc:catalytic_activity",catalyticActivityString);
+            catalyticActivityMap.put("cc:catalytic_activity", catalyticActivityString);
         }
         return catalyticActivityMap;
-    } 
-    
-    private String getCatalyticActivityString(CatalyticActivityComment catalyticActivityComment) {
-    	return lineBuilder.buildString(catalyticActivityComment, true, true).replaceAll("\n", " ");
     }
 
-
+    private String getCatalyticActivityString(CatalyticActivityComment catalyticActivityComment) {
+        return lineBuilder.buildString(catalyticActivityComment, true, true).replaceAll("\n", " ");
+    }
 }

@@ -1,6 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl.rg;
 
-
 import java.util.ArrayList;
 import java.util.List;
 

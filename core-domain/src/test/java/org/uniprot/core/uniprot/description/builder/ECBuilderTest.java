@@ -1,6 +1,4 @@
 package org.uniprot.core.uniprot.description.builder;
 
-//TODO: lgonzales
-class ECBuilderTest {
-
-}
+// TODO: lgonzales
+class ECBuilderTest {}

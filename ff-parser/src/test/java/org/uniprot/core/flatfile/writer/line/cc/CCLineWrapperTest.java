@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.writer.line.cc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-
-import java.util.ArrayList;
-import java.util.List;
 
 class CCLineWrapperTest extends CCBuildTestAbstr {
     @Test
@@ -21,7 +21,6 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
                         + "\nCC       (TC 2.A.21) family. {ECO:0000256|RuleBase:RU362091}.";
         FreeTextComment comment = buildComment(CommentType.SIMILARITY, text, evs);
         doTest(expected, comment);
-
     }
 
     @Test
@@ -35,10 +34,8 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
                         + "\nCC       (EC 2.A.21) family. {ECO:0000256|RuleBase:RU362091}.";
         FreeTextComment comment = buildComment(CommentType.SIMILARITY, text, evs);
         doTest(expected, comment);
-
     }
 
-    
     @Test
     void testDash() {
         String text =
@@ -86,16 +83,18 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
 
     @Test
     void testMultiDash() {
-        String text = "Release of protein hormones and neuropeptides from their precursors, "
-                + "generally by hydrolysis of -Lys-Arg-|- bonds.";
+        String text =
+                "Release of protein hormones and neuropeptides from their precursors, "
+                        + "generally by hydrolysis of -Lys-Arg-|- bonds.";
         String evi = "ECO:0000269|PubMed:18456808";
         List<String> evs = new ArrayList<>();
         evs.add(evi);
         FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text, evs);
 
-        String expected = "CC   -!- ACTIVITY REGULATION: Release of protein hormones and neuropeptides"
-                + "\nCC       from their precursors, generally by hydrolysis of -Lys-"
-                + "\nCC       Arg-|- bonds. {ECO:0000269|PubMed:18456808}.";
+        String expected =
+                "CC   -!- ACTIVITY REGULATION: Release of protein hormones and neuropeptides"
+                        + "\nCC       from their precursors, generally by hydrolysis of -Lys-"
+                        + "\nCC       Arg-|- bonds. {ECO:0000269|PubMed:18456808}.";
         doTest(expected, comment);
     }
 
@@ -107,9 +106,10 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         List<String> evs = new ArrayList<>();
         evs.add(evi);
         FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text, evs);
-        String expected = "CC   -!- ACTIVITY REGULATION: Hydrolysis of -Arg-|-Xaa- and -Lys-|-"
-                + "\nCC       Xaa- bonds in oligopeptides, even when P1' residue is proline."
-                + "\nCC       {ECO:0000269|PubMed:18456808}.";
+        String expected =
+                "CC   -!- ACTIVITY REGULATION: Hydrolysis of -Arg-|-Xaa- and -Lys-|-"
+                        + "\nCC       Xaa- bonds in oligopeptides, even when P1' residue is proline."
+                        + "\nCC       {ECO:0000269|PubMed:18456808}.";
         doTest(expected, comment);
     }
 
@@ -136,13 +136,11 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         doTest(expected, comment);
     }
 
-    private FreeTextComment buildComment(CommentType type, String text,  List<String> evs) {
-    	List<EvidencedValue> evidencedValues = new ArrayList<>();
-		evidencedValues.add(createEvidencedValue(text, evs));
-    		FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
-    		builder.commentType(type)
-    		.texts(evidencedValues);
-    		return builder.build();
-       
+    private FreeTextComment buildComment(CommentType type, String text, List<String> evs) {
+        List<EvidencedValue> evidencedValues = new ArrayList<>();
+        evidencedValues.add(createEvidencedValue(text, evs));
+        FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
+        builder.commentType(type).texts(evidencedValues);
+        return builder.build();
     }
 }

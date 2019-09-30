@@ -1,16 +1,14 @@
 package org.uniprot.core.json.parser.uniprot.serializer;
 
+import java.io.IOException;
+
+import org.uniprot.core.uniprot.xdb.UniProtXDbType;
+
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-import java.io.IOException;
-
-import org.uniprot.core.uniprot.xdb.UniProtXDbType;
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public class UniProtXDbTypeSerializer extends StdSerializer<UniProtXDbType> {
 
     public UniProtXDbTypeSerializer() {
@@ -18,7 +16,11 @@ public class UniProtXDbTypeSerializer extends StdSerializer<UniProtXDbType> {
     }
 
     @Override
-    public void serialize(UniProtXDbType value, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(
+            UniProtXDbType value,
+            JsonGenerator jsonGenerator,
+            SerializerProvider serializerProvider)
+            throws IOException {
         jsonGenerator.writeString(value.getName());
     }
 }

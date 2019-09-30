@@ -1,15 +1,14 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.SequenceCautionComment;
-import org.uniprot.core.uniprot.comment.SequenceCautionType;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprot.comment.SequenceCautionType;
 
 class SequenceCautionCommentBuilderTest {
 
@@ -26,8 +25,7 @@ class SequenceCautionCommentBuilderTest {
     void testSetSequenceCautionType() {
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
-                builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
-                        .build();
+                builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION).build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
         assertFalse(comment.getNote() != null);
@@ -51,7 +49,7 @@ class SequenceCautionCommentBuilderTest {
 
     @Test
     void testSetPositions() {
-        List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
+        List<String> positions = Arrays.asList(new String[] {"P1", "P2"});
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
@@ -67,7 +65,7 @@ class SequenceCautionCommentBuilderTest {
 
     @Test
     void testSetNote() {
-        List<String> positions = Arrays.asList(new String[]{"P1", "P2"});
+        List<String> positions = Arrays.asList(new String[] {"P1", "P2"});
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)

@@ -4,10 +4,9 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
 
-/**
- * @author lgonzales
- */
-public class LiteratureStatisticsBuilder implements Builder<LiteratureStatisticsBuilder, LiteratureStatistics> {
+/** @author lgonzales */
+public class LiteratureStatisticsBuilder
+        implements Builder<LiteratureStatisticsBuilder, LiteratureStatistics> {
 
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
@@ -30,7 +29,8 @@ public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics
 
     @Override
     public LiteratureStatistics build() {
-        return new LiteratureStatisticsImpl(reviewedProteinCount, unreviewedProteinCount, mappedProteinCount);
+        return new LiteratureStatisticsImpl(
+                reviewedProteinCount, unreviewedProteinCount, mappedProteinCount);
     }
 
     @Override

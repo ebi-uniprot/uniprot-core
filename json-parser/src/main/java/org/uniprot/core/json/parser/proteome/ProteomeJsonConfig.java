@@ -88,9 +88,8 @@ public class ProteomeJsonConfig extends JsonConfig {
         return this.objectMapper;
     }
 
-
     private ObjectMapper initObjectMapper() {
-        ObjectMapper objMapper =  getDefaultFullObjectMapper();
+        ObjectMapper objMapper = getDefaultFullObjectMapper();
 
         SimpleModule mod = new SimpleModule();
         mod.addSerializer(LocalDate.class, new LocalDateSerializer());
@@ -100,7 +99,7 @@ public class ProteomeJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(ProteomeId.class, ProteomeIdImpl.class);
         mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
         mod.addAbstractTypeMapping(TaxonomyLineage.class, TaxonomyLineageImpl.class);
-        
+
         mod.addAbstractTypeMapping(Value.class, ValueImpl.class);
         mod.addAbstractTypeMapping(RedundantProteome.class, RedundantProteomeImpl.class);
         mod.addAbstractTypeMapping(DBCrossReference.class, DBCrossReferenceImpl.class);
@@ -109,7 +108,6 @@ public class ProteomeJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Protein.class, ProteinImpl.class);
         mod.addAbstractTypeMapping(CanonicalProtein.class, CanonicalProteinImpl.class);
         mod.addAbstractTypeMapping(UniProtAccession.class, UniProtAccessionImpl.class);
-
 
         mod.addAbstractTypeMapping(PublicationDate.class, PublicationDateImpl.class);
         mod.addAbstractTypeMapping(Locator.class, ElectronicArticleImpl.LocatorImpl.class);
@@ -130,7 +128,6 @@ public class ProteomeJsonConfig extends JsonConfig {
         mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
         mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
 
-
         objMapper.registerModule(mod);
 
         return objMapper;
@@ -147,9 +144,9 @@ public class ProteomeJsonConfig extends JsonConfig {
         simpleMod.addSerializer(PublicationDateImpl.class, new PublicationDateSerializer());
         simpleMod.addSerializer(ElectronicArticleImpl.LocatorImpl.class, new LocatorSerializer());
         simpleMod.addSerializer(JournalImpl.class, new JournalSerializer());
-        
+
         simpleMod.addSerializer(ProteomeIdImpl.class, new ProteomeIdSerializer());
-        
+
         prettyObjMapper.registerModule(simpleMod);
         return prettyObjMapper;
     }

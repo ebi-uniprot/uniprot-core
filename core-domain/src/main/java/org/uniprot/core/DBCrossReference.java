@@ -15,5 +15,4 @@ public interface DBCrossReference<T extends DatabaseType> extends Serializable {
     boolean hasId();
 
     boolean hasProperties();
-
 }

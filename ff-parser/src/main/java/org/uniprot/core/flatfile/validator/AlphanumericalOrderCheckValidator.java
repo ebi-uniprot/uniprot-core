@@ -1,14 +1,13 @@
 package org.uniprot.core.flatfile.validator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import java.util.Iterator;
 
-/**
- * Check the given iterator is sorted alphanumerically and does not contains duplication.
- */
-public class AlphanumericalOrderCheckValidator implements
-        ConstraintValidator<AlphanumericalOrderCheck, Iterable<? extends Comparable>> {
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+/** Check the given iterator is sorted alphanumerically and does not contains duplication. */
+public class AlphanumericalOrderCheckValidator
+        implements ConstraintValidator<AlphanumericalOrderCheck, Iterable<? extends Comparable>> {
 
     private AlphanumericalOrderCheck.Order order;
 
@@ -18,12 +17,14 @@ public class AlphanumericalOrderCheckValidator implements
     }
 
     @Override
-    public boolean isValid(Iterable<? extends Comparable> comparables, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(
+            Iterable<? extends Comparable> comparables,
+            ConstraintValidatorContext constraintValidatorContext) {
         return isSorted(comparables, order == AlphanumericalOrderCheck.Order.DESC);
     }
 
-    public static <T extends Comparable<? super T>>
-    boolean isSorted(Iterable<T> iterable, boolean desc) {
+    public static <T extends Comparable<? super T>> boolean isSorted(
+            Iterable<T> iterable, boolean desc) {
         Iterator<T> iter = iterable.iterator();
         if (!iter.hasNext()) {
             return true;
@@ -31,8 +32,7 @@ public class AlphanumericalOrderCheckValidator implements
         T t = iter.next();
         while (iter.hasNext()) {
             T t2 = iter.next();
-            if (desc) {
-            }
+            if (desc) {}
             if (t.compareTo(t2) > 0) {
                 return false;
             } else {
@@ -45,5 +45,4 @@ public class AlphanumericalOrderCheckValidator implements
 
         return true;
     }
-
 }

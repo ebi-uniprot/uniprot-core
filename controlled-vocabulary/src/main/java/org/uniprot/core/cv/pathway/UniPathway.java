@@ -4,63 +4,65 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class UniPathway implements Comparable<UniPathway>{
-	private final String accession;
-	private final String name;
-	private UniPathway parent ;
-	private List<UniPathway> children = new ArrayList<>();
-	
-	public UniPathway(String accession, String name) {
-		this.accession = accession;
-		this.name = name;
-	}
+public class UniPathway implements Comparable<UniPathway> {
+    private final String accession;
+    private final String name;
+    private UniPathway parent;
+    private List<UniPathway> children = new ArrayList<>();
 
-	public String getAccession() {
-		return accession;
-	}
+    public UniPathway(String accession, String name) {
+        this.accession = accession;
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
-	public void setParent(UniPathway parent) {
-		this.parent = parent;
-		if(this.parent !=null) {
-			if (!this.parent.getChildren().contains(this)) {
-				this.parent.getChildren().add(this);
-			}
-		}
-		
-	}
-	public UniPathway getParent(){
-		return parent;
-	}
-	public List<UniPathway> getChildren(){
-		return children;
-	}
+    public String getAccession() {
+        return accession;
+    }
 
-	@Override
-	public int compareTo(UniPathway o) {
-		return name.compareTo(o.getName());
-	}
+    public String getName() {
+        return name;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.name, this.accession);
-	}
+    public void setParent(UniPathway parent) {
+        this.parent = parent;
+        if (this.parent != null) {
+            if (!this.parent.getChildren().contains(this)) {
+                this.parent.getChildren().add(this);
+            }
+        }
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		UniPathway other = (UniPathway) obj;
-		return Objects.equals(this.accession, other.accession)
-				&& Objects.equals(this.name, other.name);
-	}
+    public UniPathway getParent() {
+        return parent;
+    }
+
+    public List<UniPathway> getChildren() {
+        return children;
+    }
+
+    @Override
+    public int compareTo(UniPathway o) {
+        return name.compareTo(o.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name, this.accession);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        UniPathway other = (UniPathway) obj;
+        return Objects.equals(this.accession, other.accession)
+                && Objects.equals(this.name, other.name);
+    }
 }

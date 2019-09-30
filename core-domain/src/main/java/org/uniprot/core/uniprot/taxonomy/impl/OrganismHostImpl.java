@@ -5,9 +5,7 @@ import java.util.Objects;
 
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public class OrganismHostImpl extends AbstractOrganismNameImpl implements OrganismHost {
 
     private static final long serialVersionUID = 6516703868320522667L;
@@ -17,7 +15,8 @@ public class OrganismHostImpl extends AbstractOrganismNameImpl implements Organi
         this(-1, null, null, null);
     }
 
-    public OrganismHostImpl(long taxonId, String scientificName, String commonName, List<String> synonyms) {
+    public OrganismHostImpl(
+            long taxonId, String scientificName, String commonName, List<String> synonyms) {
         super(scientificName, commonName, synonyms);
         this.taxonId = taxonId;
     }

@@ -25,10 +25,14 @@ public class EntryReferenceMap implements NamedValueMap {
             return Collections.emptyMap();
         }
 
-        String result = references.stream().map(UniProtReference::getCitation).filter(val -> val.getCitationXrefs() != null)
-                .flatMap(val -> val.getCitationXrefs().stream())
-                .filter(val -> val.getDatabaseType().equals(CitationXrefType.PUBMED)).map(DBCrossReference::getId)
-                .collect(Collectors.joining("; "));
+        String result =
+                references.stream()
+                        .map(UniProtReference::getCitation)
+                        .filter(val -> val.getCitationXrefs() != null)
+                        .flatMap(val -> val.getCitationXrefs().stream())
+                        .filter(val -> val.getDatabaseType().equals(CitationXrefType.PUBMED))
+                        .map(DBCrossReference::getId)
+                        .collect(Collectors.joining("; "));
         Map<String, String> map = new HashMap<>();
         map.put(FIELDS.get(0), result);
         return map;
@@ -36,6 +40,5 @@ public class EntryReferenceMap implements NamedValueMap {
 
     public static boolean contains(List<String> fields) {
         return fields.stream().anyMatch(FIELDS::contains);
-
     }
 }

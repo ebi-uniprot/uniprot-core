@@ -7,11 +7,8 @@ import org.uniprot.core.flatfile.parser.impl.EvidenceInfo;
 import org.uniprot.core.flatfile.parser.impl.HasEvidenceInfo;
 
 /**
- * Created with IntelliJ IDEA.
- * User: wudong
- * Date: 08/08/13
- * Time: 11:50
- * To change this template use File | Settings | File Templates.
+ * Created with IntelliJ IDEA. User: wudong Date: 08/08/13 Time: 11:50 To change this template use
+ * File | Settings | File Templates.
  */
 public class RcLineObject {
 
@@ -28,13 +25,11 @@ public class RcLineObject {
         public RcTokenEnum tokenType;
         public List<String> values = new ArrayList<String>();
 
-	    public EvidenceInfo evidenceInfo=new EvidenceInfo();
+        public EvidenceInfo evidenceInfo = new EvidenceInfo();
 
-	    @Override
-	    public EvidenceInfo getEvidenceInfo() {
-		    return evidenceInfo;
-	    }
+        @Override
+        public EvidenceInfo getEvidenceInfo() {
+            return evidenceInfo;
+        }
     }
-
-
 }

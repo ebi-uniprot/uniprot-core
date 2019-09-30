@@ -21,5 +21,4 @@ public interface BPCPComment extends Comment {
     boolean hasRedoxPotential();
 
     boolean hasTemperatureDependence();
-
 }

@@ -36,12 +36,16 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
     @Override
     public Reaction fromXml(ReactionType xmlObj) {
         String name = xmlObj.getText();
-        List<DBCrossReference<ReactionReferenceType>> references = xmlObj.getDbReference().stream()
-                .filter(val -> !EC.equals(val.getType())).map(val -> refConverter.fromXml(val))
-                .collect(Collectors.toList());
+        List<DBCrossReference<ReactionReferenceType>> references =
+                xmlObj.getDbReference().stream()
+                        .filter(val -> !EC.equals(val.getType()))
+                        .map(val -> refConverter.fromXml(val))
+                        .collect(Collectors.toList());
 
-        Optional<DbReferenceType> opEc = xmlObj.getDbReference().stream().filter(val -> EC.equals(val.getType()))
-                .findFirst();
+        Optional<DbReferenceType> opEc =
+                xmlObj.getDbReference().stream()
+                        .filter(val -> EC.equals(val.getType()))
+                        .findFirst();
         ECNumber ecNumber = null;
         if (opEc.isPresent()) {
             ecNumber = new ECNumberImpl(opEc.get().getId());
@@ -60,8 +64,12 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
     public ReactionType toXml(Reaction uniObj) {
         ReactionType reactionType = this.xmlUniprotFactory.createReactionType();
         reactionType.setText(uniObj.getName());
-        reactionType.getDbReference().addAll(uniObj.getReactionReferences().stream().map(val -> refConverter.toXml(val))
-                                                     .collect(Collectors.toList()));
+        reactionType
+                .getDbReference()
+                .addAll(
+                        uniObj.getReactionReferences().stream()
+                                .map(val -> refConverter.toXml(val))
+                                .collect(Collectors.toList()));
         if (uniObj.getEcNumber() != null) {
             DbReferenceType dbReference = this.xmlUniprotFactory.createDbReferenceType();
             dbReference.setType(EC);
@@ -71,8 +79,7 @@ public class CAReactionConverter implements Converter<ReactionType, Reaction> {
         List<Evidence> evidenceIds = uniObj.getEvidences();
         if ((evidenceIds != null) && !evidenceIds.isEmpty()) {
             List<Integer> evs = evRefMapper.writeEvidences(evidenceIds);
-            if (!evs.isEmpty())
-                reactionType.getEvidence().addAll(evs);
+            if (!evs.isEmpty()) reactionType.getEvidence().addAll(evs);
         }
         return reactionType;
     }

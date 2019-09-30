@@ -1,13 +1,13 @@
 package org.uniprot.core.flatfile.parser.converter;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.*;
 import org.uniprot.core.citation.builder.*;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineConverter;
 import org.uniprot.core.flatfile.parser.impl.rl.RlLineObject;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RlLineConverterTest {
     private final RlLineConverter converter = new RlLineConverter();
@@ -34,7 +34,6 @@ class RlLineConverterTest {
         assertEquals("168", journal.getVolume());
         assertEquals("1983", journal.getPublicationDate().getValue());
         assertEquals("J. Mol. Biol.", journal.getJournal().getName());
-
     }
 
     @Test
@@ -78,7 +77,7 @@ class RlLineConverterTest {
 
     @Test
     void testPatent() {
-        //"RL   Patent number WO9010703, 20-SEP-1990.\n";
+        // "RL   Patent number WO9010703, 20-SEP-1990.\n";
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Patent th = new RlLineObject.Patent();
         th.day = 20;
@@ -94,14 +93,12 @@ class RlLineConverterTest {
 
         assertEquals("WO9010703", patent.getPatentNumber());
         assertEquals("20-SEP-1990", patent.getPublicationDate().getValue());
-
     }
-
 
     @Test
     void testBook() {
-        //RL   (In) Boyer P.D. (eds.);
-        //RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York (1975).
+        // RL   (In) Boyer P.D. (eds.);
+        // RL   The enzymes (3rd ed.), pp.11:397-547, Academic Press, New York (1975).
         RlLineObject rlObject = new RlLineObject();
         RlLineObject.Book th = new RlLineObject.Book();
         th.editors.add("Boyer P.D.");
@@ -136,14 +133,12 @@ class RlLineConverterTest {
 
         rlObject.reference = th;
 
-
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof ElectronicArticleBuilder);
         ElectronicArticle ea = ((ElectronicArticleBuilder) builder).build();
         assertEquals(CitationType.ELECTRONIC_ARTICLE, ea.getCitationType());
         assertEquals("Plant Gene Register", ea.getJournal().getName());
         assertEquals("PGR98-023", ea.getLocator().getValue());
-
     }
 
     @Test
@@ -155,14 +150,12 @@ class RlLineConverterTest {
 
         rlObject.reference = th;
 
-
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof ElectronicArticleBuilder);
         ElectronicArticle ea = ((ElectronicArticleBuilder) builder).build();
         assertEquals(CitationType.ELECTRONIC_ARTICLE, ea.getCitationType());
-        //assertEquals("Plant Gene Register", ea.getJournal().getName());
+        // assertEquals("Plant Gene Register", ea.getJournal().getName());
         assertEquals("J. Am. Chem. Soc. 121:9223-9224(1999)", ea.getLocator().getValue());
-
     }
 
     @Test
@@ -174,7 +167,6 @@ class RlLineConverterTest {
         th.year = 1978;
 
         rlObject.reference = th;
-
 
         CitationBuilder builder = converter.convert(rlObject);
         assertTrue(builder instanceof UnpublishedBuilder);

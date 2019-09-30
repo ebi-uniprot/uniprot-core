@@ -1,5 +1,13 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -16,14 +24,6 @@ import org.uniprot.core.uniprot.builder.UniProtReferenceBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class RLineBuildTest {
     /*
      * "RN   [1]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n" +
@@ -37,53 +37,78 @@ class RLineBuildTest {
 
     @Test
     void testJournalArticle() {
-        String rlines = "RN   [1]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
-                + "RC   PLASMID=pSd11_G1246, pSd12_G1263, pSd13_G1271, pSd2_G1252, pSd3_G1281,\n"
-                + "RC   pSd4_G1190, and pSd5_G1213;\n" + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
-                + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
-                + "RT   \"Comparative genomic analyses of frog virus 3, type species of the\n"
-                + "RT   genus Ranavirus (family Iridoviridae).\";\n" + "RL   Virology 323:70-84(2004).";
+        String rlines =
+                "RN   [1]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
+                        + "RC   PLASMID=pSd11_G1246, pSd12_G1263, pSd13_G1271, pSd2_G1252, pSd3_G1281,\n"
+                        + "RC   pSd4_G1190, and pSd5_G1213;\n"
+                        + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
+                        + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
+                        + "RT   \"Comparative genomic analyses of frog virus 3, type species of the\n"
+                        + "RT   genus Ranavirus (family Iridoviridae).\";\n"
+                        + "RL   Virology 323:70-84(2004).";
 
         JournalArticleBuilder jaBuilder = new JournalArticleBuilder();
-        List<String> authors = Arrays
-                .asList(new String[]{"Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K."});
+        List<String> authors =
+                Arrays.asList(
+                        new String[] {
+                            "Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K."
+                        });
         jaBuilder.authors(authors);
 
-        String title = "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
+        String title =
+                "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
         jaBuilder.citationXrefs(buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
-        jaBuilder.journalName("Virology").firstPage("70").lastPage("84").volume("323")
+        jaBuilder
+                .journalName("Virology")
+                .firstPage("70")
+                .lastPage("84")
+                .volume("323")
                 .publicationDate("2004");
 
-        List<String> plasmids = new ArrayList<>(Arrays.asList(new String[]{"pSd11_G1246", "pSd12_G1263",
-                                                                           "pSd13_G1271", "pSd2_G1252", "pSd3_G1281",
-                                                                           "pSd4_G1190", "pSd5_G1213"}));
+        List<String> plasmids =
+                new ArrayList<>(
+                        Arrays.asList(
+                                new String[] {
+                                    "pSd11_G1246",
+                                    "pSd12_G1263",
+                                    "pSd13_G1271",
+                                    "pSd2_G1252",
+                                    "pSd3_G1281",
+                                    "pSd4_G1190",
+                                    "pSd5_G1213"
+                                }));
 
-        List<ReferenceComment> referenceComments = buildReferenceComments(plasmids, ReferenceCommentType.PLASMID);
+        List<ReferenceComment> referenceComments =
+                buildReferenceComments(plasmids, ReferenceCommentType.PLASMID);
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(jaBuilder.build())
-                .positions(referencePositions)
-                .comments(referenceComments)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(jaBuilder.build())
+                        .positions(referencePositions)
+                        .comments(referenceComments)
+                        .build();
         doTest(rlines, uniRef, 1);
     }
 
     @Test
     void testJournalArticleEvidence() {
-        String rlines = "RN   [1] {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1}\n"
-                + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
-                + "RC   PLASMID=pSd11_G1246 {ECO:0000269|PubMed:10433554,\n"
-                + "RC   ECO:0000313|EMBL:BAG16761.1}, pSd12_G1263\n"
-                + "RC   {ECO:0000269|PubMed:10433554}, pSd13_G1271\n"
-                + "RC   {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}, pSd4_G1190\n"
-                + "RC   {ECO:0000303|Ref.6}, and pSd5_G1213 {ECO:0000256|HAMAP-Rule:MF_00205};\n"
-                + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
-                + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
-                + "RT   \"Comparative genomic analyses of frog virus 3, type species of the\n"
-                + "RT   genus Ranavirus (family Iridoviridae).\";\n" + "RL   Virology 323:70-84(2004).";
+        String rlines =
+                "RN   [1] {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1}\n"
+                        + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
+                        + "RC   PLASMID=pSd11_G1246 {ECO:0000269|PubMed:10433554,\n"
+                        + "RC   ECO:0000313|EMBL:BAG16761.1}, pSd12_G1263\n"
+                        + "RC   {ECO:0000269|PubMed:10433554}, pSd13_G1271\n"
+                        + "RC   {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2}, pSd4_G1190\n"
+                        + "RC   {ECO:0000303|Ref.6}, and pSd5_G1213 {ECO:0000256|HAMAP-Rule:MF_00205};\n"
+                        + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
+                        + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
+                        + "RT   \"Comparative genomic analyses of frog virus 3, type species of the\n"
+                        + "RT   genus Ranavirus (family Iridoviridae).\";\n"
+                        + "RL   Virology 323:70-84(2004).";
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
@@ -97,14 +122,22 @@ class RLineBuildTest {
         evs.add(ev3);
 
         JournalArticleBuilder jaBuilder = new JournalArticleBuilder();
-        List<String> authors = Arrays
-                .asList(new String[]{"Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K."});
+        List<String> authors =
+                Arrays.asList(
+                        new String[] {
+                            "Tan W.G.", "Barkman T.J.", "Gregory Chinchar V.", "Essani K."
+                        });
         jaBuilder.authors(authors);
 
-        String title = "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
+        String title =
+                "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         jaBuilder.title(title);
         jaBuilder.citationXrefs(buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", null));
-        jaBuilder.journalName("Virology").firstPage("70").lastPage("84").volume("323")
+        jaBuilder
+                .journalName("Virology")
+                .firstPage("70")
+                .lastPage("84")
+                .volume("323")
                 .publicationDate("2004");
 
         List<ReferenceComment> referenceComments = new ArrayList<>();
@@ -137,63 +170,76 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(jaBuilder.build())
-                .positions(referencePositions)
-                .comments(referenceComments)
-                .evidences(createEvidence(evs))
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(jaBuilder.build())
+                        .positions(referencePositions)
+                        .comments(referenceComments)
+                        .evidences(createEvidence(evs))
+                        .build();
         doTest(rlines, uniRef, 1);
-
     }
 
     @Test
     void testSubmission() {
-        String rlines = "RN   [2]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
-                + "RC   STRAIN=439-80 / Serotype O:9, and pSd11_G1246;\n" + "RC   PLASMID=pYV, and pSd2_G1252;\n"
-                + "RC   TRANSPOSON=Tn2502, pSd4_G1190, and pSd5_G1213;\n"
-                + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
-                + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia\n"
-                + "RT   coli in Europe.\";\n" + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
+        String rlines =
+                "RN   [2]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
+                        + "RC   STRAIN=439-80 / Serotype O:9, and pSd11_G1246;\n"
+                        + "RC   PLASMID=pYV, and pSd2_G1252;\n"
+                        + "RC   TRANSPOSON=Tn2502, pSd4_G1190, and pSd5_G1213;\n"
+                        + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
+                        + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia\n"
+                        + "RT   coli in Europe.\";\n"
+                        + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
         SubmissionBuilder smBuilder = new SubmissionBuilder();
-        List<String> authors = new ArrayList<>(
-                Arrays.asList(new String[]{"Tan W.G.H.", "Barkman T.J.", "Chinchar V.G."}));
-        String title = "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
-        smBuilder.authors(authors).title(title)
-                .publicationDate("FEB-2004");
+        List<String> authors =
+                new ArrayList<>(
+                        Arrays.asList(
+                                new String[] {"Tan W.G.H.", "Barkman T.J.", "Chinchar V.G."}));
+        String title =
+                "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
+        smBuilder.authors(authors).title(title).publicationDate("FEB-2004");
 
         smBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         List<ReferenceComment> referenceComments = new ArrayList<>();
-        List<String> strains = Arrays.asList(new String[]{"439-80 / Serotype O:9", "pSd11_G1246"});
+        List<String> strains = Arrays.asList(new String[] {"439-80 / Serotype O:9", "pSd11_G1246"});
         referenceComments.addAll(buildReferenceComments(strains, ReferenceCommentType.STRAIN));
-        List<String> plasmids = Arrays.asList(new String[]{"pYV", "pSd2_G1252"});
+        List<String> plasmids = Arrays.asList(new String[] {"pYV", "pSd2_G1252"});
         referenceComments.addAll(buildReferenceComments(plasmids, ReferenceCommentType.PLASMID));
 
-        List<String> transponsons = new ArrayList<>(
-                Arrays.asList(new String[]{"Tn2502", "pSd4_G1190", "pSd5_G1213"}));
+        List<String> transponsons =
+                new ArrayList<>(Arrays.asList(new String[] {"Tn2502", "pSd4_G1190", "pSd5_G1213"}));
 
-        referenceComments.addAll(buildReferenceComments(transponsons, ReferenceCommentType.TRANSPOSON));
+        referenceComments.addAll(
+                buildReferenceComments(transponsons, ReferenceCommentType.TRANSPOSON));
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(smBuilder.build())
-                .positions(referencePositions)
-                .comments(referenceComments)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(smBuilder.build())
+                        .positions(referencePositions)
+                        .comments(referenceComments)
+                        .build();
         doTest(rlines, uniRef, 2);
     }
 
     @Test
     void testSubmissionEvidence() {
-        String rlines = "RN   [2]\n" + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
-                + "RC   STRAIN=439-80 / Serotype O:9 {ECO:0000269|PubMed:10433554,\n"
-                + "RC   ECO:0000313|EMBL:BAG16761.1}, and pSd11_G1246\n" + "RC   {ECO:0000269|PubMed:10433554};\n"
-                + "RC   PLASMID=pYV {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2},\n"
-                + "RC   and pSd2_G1252 {ECO:0000303|Ref.6};\n"
-                + "RC   TRANSPOSON=Tn2502 {ECO:0000256|HAMAP-Rule:MF_00205}, and pSd4_G1190\n"
-                + "RC   {ECO:0000256|HAMAP-Rule:MF_00205};\n" + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
-                + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia\n"
-                + "RT   coli in Europe.\";\n" + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
+        String rlines =
+                "RN   [2]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].\n"
+                        + "RC   STRAIN=439-80 / Serotype O:9 {ECO:0000269|PubMed:10433554,\n"
+                        + "RC   ECO:0000313|EMBL:BAG16761.1}, and pSd11_G1246\n"
+                        + "RC   {ECO:0000269|PubMed:10433554};\n"
+                        + "RC   PLASMID=pYV {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2},\n"
+                        + "RC   and pSd2_G1252 {ECO:0000303|Ref.6};\n"
+                        + "RC   TRANSPOSON=Tn2502 {ECO:0000256|HAMAP-Rule:MF_00205}, and pSd4_G1190\n"
+                        + "RC   {ECO:0000256|HAMAP-Rule:MF_00205};\n"
+                        + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
+                        + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia\n"
+                        + "RT   coli in Europe.\";\n"
+                        + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
@@ -202,10 +248,11 @@ class RLineBuildTest {
         String ev5 = "ECO:0000256|HAMAP-Rule:MF_00205";
 
         SubmissionBuilder smBuilder = new SubmissionBuilder();
-        List<String> authors = Arrays.asList(new String[]{"Tan W.G.H.", "Barkman T.J.", "Chinchar V.G."});
-        String title = "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
-        smBuilder.authors(authors).title(title)
-                .publicationDate("FEB-2004");
+        List<String> authors =
+                Arrays.asList(new String[] {"Tan W.G.H.", "Barkman T.J.", "Chinchar V.G."});
+        String title =
+                "Emergence of plasmid-mediated quinolone resistance in Escherichia coli in Europe.";
+        smBuilder.authors(authors).title(title).publicationDate("FEB-2004");
 
         smBuilder.submittedToDatabase(SubmissionDatabase.EMBL_GENBANK_DDBJ);
         List<ReferenceComment> referenceComments = new ArrayList<>();
@@ -244,92 +291,136 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(smBuilder.build())
-                .positions(referencePositions)
-                .comments(referenceComments)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(smBuilder.build())
+                        .positions(referencePositions)
+                        .comments(referenceComments)
+                        .build();
         doTest(rlines, uniRef, 2);
-
     }
 
     @Test
     void testBook1() {
-        String rlines = "RN   [1]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
-                + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                + "RT   study of speciation using DNA sequence data.\";\n"
-                + "RL   (In) Loeschcke V., Magnusson S., Ottesen M., Foltmann B., Dano K.,\n"
-                + "RL   Neurath H. (eds.);\n"
-                + "RL   CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
+        String rlines =
+                "RN   [1]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE.\n"
+                        + "RA   Arctander P., Fjeldsaa J.;\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
+                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RL   (In) Loeschcke V., Magnusson S., Ottesen M., Foltmann B., Dano K.,\n"
+                        + "RL   Neurath H. (eds.);\n"
+                        + "RL   CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
         BookBuilder bkBuilder = new BookBuilder();
-        List<String> authors = Arrays.asList(new String[]{"Arctander P.", "Fjeldsaa J."});
+        List<String> authors = Arrays.asList(new String[] {"Arctander P.", "Fjeldsaa J."});
 
-        List<String> editors = new ArrayList<>(Arrays.asList(
-                new String[]{"Loeschcke V.", "Magnusson S.", "Ottesen M.", "Foltmann B.", "Dano K.", "Neurath H."}));
-        String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
+        List<String> editors =
+                new ArrayList<>(
+                        Arrays.asList(
+                                new String[] {
+                                    "Loeschcke V.",
+                                    "Magnusson S.",
+                                    "Ottesen M.",
+                                    "Foltmann B.",
+                                    "Dano K.",
+                                    "Neurath H."
+                                }));
+        String title =
+                "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
         bkBuilder.authors(authors);
         bkBuilder.editors(editors);
         bkBuilder.title(title);
-        bkBuilder.bookName("CONSERVATION GENETICS").firstPage("205").lastPage("227").publisher("Birkhaeuser Verlag")
-                .address("Basel").publicationDate("1994");
+        bkBuilder
+                .bookName("CONSERVATION GENETICS")
+                .firstPage("205")
+                .lastPage("227")
+                .publisher("Birkhaeuser Verlag")
+                .address("Basel")
+                .publicationDate("1994");
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(bkBuilder.build())
-                .positions(referencePositions)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(bkBuilder.build())
+                        .positions(referencePositions)
+                        .build();
         doTest(rlines, uniRef, 1);
-
     }
 
     @Test
     void testBook2() {
-        String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
-                + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                + "RT   study of speciation using DNA sequence data.\";\n"
-                + "RL   (In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H.\n" + "RL   (eds.);\n"
-                + "RL   CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
+        String rlines =
+                "RN   [5]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE.\n"
+                        + "RA   Arctander P., Fjeldsaa J.;\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
+                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RL   (In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H.\n"
+                        + "RL   (eds.);\n"
+                        + "RL   CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
 
         BookBuilder bkBuilder = new BookBuilder();
-        List<String> authors = Arrays.asList(new String[]{"Arctander P.", "Fjeldsaa J."});
+        List<String> authors = Arrays.asList(new String[] {"Arctander P.", "Fjeldsaa J."});
 
-        List<String> editors = new ArrayList<>(
-                Arrays.asList(new String[]{"Magnusson S.", "Ottesen M.", "Foltmann B.", "Dano K.", "Neurath H."}));
-        String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
+        List<String> editors =
+                new ArrayList<>(
+                        Arrays.asList(
+                                new String[] {
+                                    "Magnusson S.",
+                                    "Ottesen M.",
+                                    "Foltmann B.",
+                                    "Dano K.",
+                                    "Neurath H."
+                                }));
+        String title =
+                "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
         bkBuilder.authors(authors);
         bkBuilder.editors(editors);
         bkBuilder.title(title);
-        bkBuilder.bookName("CONSERVATION GENETICS").firstPage("205").lastPage("227").publisher("Birkhaeuser Verlag")
-                .address("Basel").publicationDate("1994");
+        bkBuilder
+                .bookName("CONSERVATION GENETICS")
+                .firstPage("205")
+                .lastPage("227")
+                .publisher("Birkhaeuser Verlag")
+                .address("Basel")
+                .publicationDate("1994");
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(bkBuilder.build())
-                .positions(referencePositions)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(bkBuilder.build())
+                        .positions(referencePositions)
+                        .build();
         doTest(rlines, uniRef, 5);
     }
 
     @Test
     void testBook3() {
-        String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
-                + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                + "RT   study of speciation using DNA sequence data.\";\n"
-                + "RL   (In) Proceedings of the 9th international conference on Arabidopsis\n"
-                + "RL   research, abstract#501708527, Madison (1998).";
+        String rlines =
+                "RN   [5]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE.\n"
+                        + "RA   Arctander P., Fjeldsaa J.;\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
+                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RL   (In) Proceedings of the 9th international conference on Arabidopsis\n"
+                        + "RL   research, abstract#501708527, Madison (1998).";
 
         BookBuilder bkBuilder = new BookBuilder();
         List<String> authors = Arrays.asList("Arctander P.", "Fjeldsaa J.");
 
-        List<String> editors = Arrays.asList(new String[]{});
-        String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
-        String bookTitle = "Proceedings of the 9th international conference on Arabidopsis research";
+        List<String> editors = Arrays.asList(new String[] {});
+        String title =
+                "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
+        String bookTitle =
+                "Proceedings of the 9th international conference on Arabidopsis research";
         bkBuilder.authors(authors);
         bkBuilder.editors(editors);
         bkBuilder.title(title);
-        bkBuilder.bookName(bookTitle).firstPage("abstract#501708527")
+        bkBuilder
+                .bookName(bookTitle)
+                .firstPage("abstract#501708527")
                 // .lastPage("227")
                 .publisher("Madison")
                 // .address("Basel")
@@ -337,26 +428,31 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(bkBuilder.build())
-                .positions(referencePositions)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(bkBuilder.build())
+                        .positions(referencePositions)
+                        .build();
         doTest(rlines, uniRef, 5);
     }
 
     @Test
     void testThesis() {
-        String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
-                + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                + "RT   study of speciation using DNA sequence data.\";\n"
-                + "RL   Thesis (2002), Department of Fakultaet fuer Biologie, Universitaet\n"
-                + "RL   Heidelberg, Heidelberg, Germany.";
+        String rlines =
+                "RN   [5]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE.\n"
+                        + "RA   Arctander P., Fjeldsaa J.;\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
+                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RL   Thesis (2002), Department of Fakultaet fuer Biologie, Universitaet\n"
+                        + "RL   Heidelberg, Heidelberg, Germany.";
 
         ThesisBuilder thBuilder = new ThesisBuilder();
 
         List<String> authors = Arrays.asList("Arctander P.", "Fjeldsaa J.");
 
-        String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
+        String title =
+                "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
         thBuilder.authors(authors);
 
         thBuilder.title(title);
@@ -368,25 +464,30 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(thBuilder.build())
-                .positions(referencePositions)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(thBuilder.build())
+                        .positions(referencePositions)
+                        .build();
         doTest(rlines, uniRef, 5);
     }
 
     @Test
     void testPatent() {
-        String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
-                + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                + "RT   study of speciation using DNA sequence data.\";\n"
-                + "RL   Patent number WO0149833, 12-JUL-2001.";
+        String rlines =
+                "RN   [5]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE.\n"
+                        + "RA   Arctander P., Fjeldsaa J.;\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
+                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RL   Patent number WO0149833, 12-JUL-2001.";
 
         PatentBuilder paBuilder = new PatentBuilder();
 
         List<String> authors = Arrays.asList("Arctander P.", "Fjeldsaa J.");
         paBuilder.authors(authors);
-        String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
+        String title =
+                "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
         paBuilder.patentNumber("WO0149833");
 
         paBuilder.title(title);
@@ -395,24 +496,30 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(paBuilder.build())
-                .positions(referencePositions)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(paBuilder.build())
+                        .positions(referencePositions)
+                        .build();
         doTest(rlines, uniRef, 5);
     }
 
     @Test
     void testElectronicJournal() {
-        String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
-                + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                + "RT   study of speciation using DNA sequence data.\";\n" + "RL   (er) Plant Gene Register PGR99-114.";
+        String rlines =
+                "RN   [5]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE.\n"
+                        + "RA   Arctander P., Fjeldsaa J.;\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
+                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RL   (er) Plant Gene Register PGR99-114.";
 
         ElectronicArticleBuilder eaBuilder = new ElectronicArticleBuilder();
 
-        List<String> authors = Arrays.asList(new String[]{"Arctander P.", "Fjeldsaa J."});
+        List<String> authors = Arrays.asList(new String[] {"Arctander P.", "Fjeldsaa J."});
         eaBuilder.authors(authors);
-        String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
+        String title =
+                "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
 
         eaBuilder.title(title);
         String locator = "PGR99-114";
@@ -421,25 +528,30 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(eaBuilder.build())
-                .positions(referencePositions)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(eaBuilder.build())
+                        .positions(referencePositions)
+                        .build();
         doTest(rlines, uniRef, 5);
     }
 
     @Test
     void testUnpublishedObservation() {
-        String rlines = "RN   [5]\n" + "RP   NUCLEOTIDE SEQUENCE.\n" + "RA   Arctander P., Fjeldsaa J.;\n"
-                + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                + "RT   study of speciation using DNA sequence data.\";\n"
-                + "RL   Unpublished observations (JAN-2012).";
+        String rlines =
+                "RN   [5]\n"
+                        + "RP   NUCLEOTIDE SEQUENCE.\n"
+                        + "RA   Arctander P., Fjeldsaa J.;\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
+                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RL   Unpublished observations (JAN-2012).";
 
         UnpublishedBuilder uoBuilder = new UnpublishedBuilder();
 
-        List<String> authors = Arrays.asList(new String[]{"Arctander P.", "Fjeldsaa J."});
+        List<String> authors = Arrays.asList(new String[] {"Arctander P.", "Fjeldsaa J."});
         uoBuilder.authors(authors);
-        String title = "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
+        String title =
+                "Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study of speciation using DNA sequence data.";
 
         uoBuilder.title(title);
 
@@ -447,15 +559,16 @@ class RLineBuildTest {
 
         List<String> referencePositions = new ArrayList<>();
         referencePositions.add("NUCLEOTIDE SEQUENCE");
-        UniProtReference uniRef = new UniProtReferenceBuilder()
-                .citation(uoBuilder.build())
-                .positions(referencePositions)
-                .build();
+        UniProtReference uniRef =
+                new UniProtReferenceBuilder()
+                        .citation(uoBuilder.build())
+                        .positions(referencePositions)
+                        .build();
         doTest(rlines, uniRef, 5);
-
     }
 
-    private ReferenceComment buildReferenceComment(String val, ReferenceCommentType type, List<String> evs) {
+    private ReferenceComment buildReferenceComment(
+            String val, ReferenceCommentType type, List<String> evs) {
         return new ReferenceCommentBuilder()
                 .type(type)
                 .value(val)
@@ -463,7 +576,8 @@ class RLineBuildTest {
                 .build();
     }
 
-    private List<ReferenceComment> buildReferenceComments(List<String> vals, ReferenceCommentType type) {
+    private List<ReferenceComment> buildReferenceComments(
+            List<String> vals, ReferenceCommentType type) {
         List<ReferenceComment> sss = new ArrayList<>();
         if ((vals != null) && (!vals.isEmpty())) {
             for (String val : vals) {
@@ -473,24 +587,28 @@ class RLineBuildTest {
         return sss;
     }
 
-    private List<DBCrossReference<CitationXrefType>> buildCitationXref(String pubmed, String doi, String agricolaId) {
+    private List<DBCrossReference<CitationXrefType>> buildCitationXref(
+            String pubmed, String doi, String agricolaId) {
         List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();
         if (pubmed != null) {
-            xrefs.add(new DBCrossReferenceBuilder<CitationXrefType>()
-                              .databaseType(CitationXrefType.PUBMED)
-                              .id(pubmed)
-                              .build());
+            xrefs.add(
+                    new DBCrossReferenceBuilder<CitationXrefType>()
+                            .databaseType(CitationXrefType.PUBMED)
+                            .id(pubmed)
+                            .build());
         }
         if (doi != null)
-            xrefs.add(new DBCrossReferenceBuilder<CitationXrefType>()
-                              .databaseType(CitationXrefType.DOI)
-                              .id(doi)
-                              .build());
+            xrefs.add(
+                    new DBCrossReferenceBuilder<CitationXrefType>()
+                            .databaseType(CitationXrefType.DOI)
+                            .id(doi)
+                            .build());
         if (agricolaId != null)
-            xrefs.add(new DBCrossReferenceBuilder<CitationXrefType>()
-                              .databaseType(CitationXrefType.AGRICOLA)
-                              .id(agricolaId)
-                              .build());
+            xrefs.add(
+                    new DBCrossReferenceBuilder<CitationXrefType>()
+                            .databaseType(CitationXrefType.AGRICOLA)
+                            .id(agricolaId)
+                            .build());
         return xrefs;
     }
 

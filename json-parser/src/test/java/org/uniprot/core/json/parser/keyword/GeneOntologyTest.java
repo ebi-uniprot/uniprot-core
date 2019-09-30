@@ -4,23 +4,22 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.impl.GeneOntologyImpl;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.json.parser.keyword.KeywordJsonConfig;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 class GeneOntologyTest {
 
     @Test
     void testSimpleGeneOntology() {
         GeneOntology geneOntology = new GeneOntologyImpl(null, null);
-        ValidateJson.verifyJsonRoundTripParser(KeywordJsonConfig.getInstance().getFullObjectMapper(), geneOntology);
+        ValidateJson.verifyJsonRoundTripParser(
+                KeywordJsonConfig.getInstance().getFullObjectMapper(), geneOntology);
     }
 
     @Test
     void testCompleteGeneOntology() {
         GeneOntology geneOntology = getCompleteGeneOntology();
-        ValidateJson.verifyJsonRoundTripParser(KeywordJsonConfig.getInstance().getFullObjectMapper(), geneOntology);
+        ValidateJson.verifyJsonRoundTripParser(
+                KeywordJsonConfig.getInstance().getFullObjectMapper(), geneOntology);
     }
 
     static GeneOntology getCompleteGeneOntology() {

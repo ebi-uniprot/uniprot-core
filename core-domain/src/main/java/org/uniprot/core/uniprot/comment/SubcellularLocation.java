@@ -15,5 +15,4 @@ public interface SubcellularLocation extends Serializable {
     boolean hasTopology();
 
     boolean hasOrientation();
-
 }

@@ -11,8 +11,8 @@ import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
 /**
- * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:05:38 To change this template use File | Settings
- * | File Templates.
+ * Created by IntelliJ IDEA. User: spatient Date: 01-Mar-2010 Time: 16:05:38 To change this template
+ * use File | Settings | File Templates.
  */
 public class SimilarityCommentScored extends CommentScoredAbstr {
 
@@ -47,8 +47,7 @@ public class SimilarityCommentScored extends CommentScoredAbstr {
             return false;
         } else {
             for (EvidencedValue text : texts) {
-                if (belongsRegEx.matcher(text.getValue()).find())
-                    return true;
+                if (belongsRegEx.matcher(text.getValue()).find()) return true;
             }
         }
         return false;

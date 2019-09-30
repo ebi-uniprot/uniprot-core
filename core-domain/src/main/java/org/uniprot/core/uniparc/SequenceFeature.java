@@ -6,16 +6,15 @@ import java.util.List;
 import org.uniprot.core.Location;
 
 /**
- *
  * @author jluo
  * @date: 22 May 2019
- *
-*/
-
+ */
 public interface SequenceFeature extends Serializable {
-	InterproGroup getInterProDomain();
-	SignatureDbType getSignatureDbType();
-	String getSignatureDbId();
-	List<Location> getLocations();
-}
+    InterproGroup getInterProDomain();
 
+    SignatureDbType getSignatureDbType();
+
+    String getSignatureDbId();
+
+    List<Location> getLocations();
+}

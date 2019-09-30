@@ -5,7 +5,8 @@ import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.DiseaseCommentImpl;
 
-public class DiseaseCommentBuilder implements CommentBuilder<DiseaseCommentBuilder, DiseaseComment> {
+public class DiseaseCommentBuilder
+        implements CommentBuilder<DiseaseCommentBuilder, DiseaseComment> {
     private Disease disease;
     private Note note;
 
@@ -16,9 +17,7 @@ public class DiseaseCommentBuilder implements CommentBuilder<DiseaseCommentBuild
 
     @Override
     public DiseaseCommentBuilder from(DiseaseComment instance) {
-        return this
-                .disease(instance.getDisease())
-                .note(instance.getNote());
+        return this.disease(instance.getDisease()).note(instance.getNote());
     }
 
     public DiseaseCommentBuilder disease(Disease disease) {

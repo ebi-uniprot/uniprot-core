@@ -15,12 +15,11 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
 
-public class DrLineConverter extends EvidenceCollector implements Converter<DrLineObject, UniProtDrObjects> {
+public class DrLineConverter extends EvidenceCollector
+        implements Converter<DrLineObject, UniProtDrObjects> {
     private boolean ignoreWrongDR = false;
 
-    public DrLineConverter() {
-
-    }
+    public DrLineConverter() {}
 
     public DrLineConverter(boolean ignoreWrongDR) {
         this.ignoreWrongDR = ignoreWrongDR;
@@ -30,15 +29,13 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
     public UniProtDrObjects convert(DrLineObject f) {
 
         UniProtDrObjects uniProtDrObjects = new UniProtDrObjects();
-        if (f == null)
-            return uniProtDrObjects;
-        Map<Object, List<Evidence>> evidences = EvidenceConverterHelper.convert(f.getEvidenceInfo());
+        if (f == null) return uniProtDrObjects;
+        Map<Object, List<Evidence>> evidences =
+                EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidences.values());
         for (DrLineObject.DrObject drline : f.drObjects) {
-            if (drline.ssLineValue != null)
-                addSSProsites(drline, uniProtDrObjects);
-            else
-                addDrLine(drline, uniProtDrObjects, evidences);
+            if (drline.ssLineValue != null) addSSProsites(drline, uniProtDrObjects);
+            else addDrLine(drline, uniProtDrObjects, evidences);
         }
         return uniProtDrObjects;
     }
@@ -47,16 +44,17 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
         if (drline.ssLineValue != null) {
             if (uniProtDrObjects.ssProsites == null)
                 uniProtDrObjects.ssProsites = new ArrayList<InternalLine>();
-            uniProtDrObjects.ssProsites
-                    .add(new InternalLineBuilder(InternalLineType.PROSITE, drline.ssLineValue).build());
+            uniProtDrObjects.ssProsites.add(
+                    new InternalLineBuilder(InternalLineType.PROSITE, drline.ssLineValue).build());
         }
     }
 
-    private void addDrLine(DrLineObject.DrObject drline, UniProtDrObjects uniProtDrObjects,
-                           Map<Object, List<Evidence>> evidenceMap) {
+    private void addDrLine(
+            DrLineObject.DrObject drline,
+            UniProtDrObjects uniProtDrObjects,
+            Map<Object, List<Evidence>> evidenceMap) {
 
-        if (drline.ssLineValue != null)
-            return;
+        if (drline.ssLineValue != null) return;
 
         String id = drline.attributes.get(0);
         String description = drline.attributes.get(1);
@@ -76,18 +74,17 @@ public class DrLineConverter extends EvidenceCollector implements Converter<DrLi
         }
         try {
             UniProtXDbType type = new UniProtXDbType(drline.DbName);
-            uniProtDrObjects.drObjects
-                    .add(new UniProtDBCrossReferenceBuilder()
-                                 .id(id)
-                                 .databaseType(type)
-                                 .isoformId(isoformId)
-                                 .addProperty(type.getAttribute(0), description)
-                                 .addProperty(type.getAttribute(1), thirdAttribute)
-                                 .addProperty(type.getAttribute(2), fourthAttribute)
-                                 .build());
+            uniProtDrObjects.drObjects.add(
+                    new UniProtDBCrossReferenceBuilder()
+                            .id(id)
+                            .databaseType(type)
+                            .isoformId(isoformId)
+                            .addProperty(type.getAttribute(0), description)
+                            .addProperty(type.getAttribute(1), thirdAttribute)
+                            .addProperty(type.getAttribute(2), fourthAttribute)
+                            .build());
         } catch (Exception e) {
-            if (!ignoreWrongDR)
-                throw new DatabaseTypeNotExistException(drline.DbName);
+            if (!ignoreWrongDR) throw new DatabaseTypeNotExistException(drline.DbName);
         }
     }
 }

@@ -27,7 +27,8 @@ public class BPCPAbsorptionConverter implements Converter<CommentType.Absorption
         this(evRefMapper, new ObjectFactory());
     }
 
-    public BPCPAbsorptionConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+    public BPCPAbsorptionConverter(
+            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
         this.evValueConverter = new EvidencedValueConverter(evRefMapper, xmlUniprotFactory, false);
         this.evRefMapper = evRefMapper;
@@ -55,12 +56,20 @@ public class BPCPAbsorptionConverter implements Converter<CommentType.Absorption
         }
 
         if (!xmlObj.getText().isEmpty()) {
-            note = new NoteBuilder(xmlObj.getText().stream().map(evValueConverter::fromXml)
-                                           .collect(Collectors.toList())).build();
+            note =
+                    new NoteBuilder(
+                                    xmlObj.getText().stream()
+                                            .map(evValueConverter::fromXml)
+                                            .collect(Collectors.toList()))
+                            .build();
         }
 
         return new AbsorptionBuilder()
-                .max(maxValue).approximate(approximate).note(note).evidences(evidences).build();
+                .max(maxValue)
+                .approximate(approximate)
+                .note(note)
+                .evidences(evidences)
+                .build();
     }
 
     @Override
@@ -74,14 +83,14 @@ public class BPCPAbsorptionConverter implements Converter<CommentType.Absorption
 
         if (!uniObj.getEvidences().isEmpty()) {
             List<Integer> evs = evRefMapper.writeEvidences(uniObj.getEvidences());
-            if (!evs.isEmpty())
-                absorptionXML.getMax().getEvidence().addAll(evs);
+            if (!evs.isEmpty()) absorptionXML.getMax().getEvidence().addAll(evs);
         }
 
         // AbsorptionNote
         Note note = uniObj.getNote();
         if ((note != null) && (!note.getTexts().isEmpty())) {
-            note.getTexts().forEach(val -> absorptionXML.getText().add(evValueConverter.toXml(val)));
+            note.getTexts()
+                    .forEach(val -> absorptionXML.getText().add(evValueConverter.toXml(val)));
         }
 
         return absorptionXML;

@@ -16,7 +16,7 @@ public class ParseSubcellularLocationException extends RuntimeException {
         super(message, cause);
     }
 
-    public ParseSubcellularLocationException( Throwable cause) {
-        super( cause);
+    public ParseSubcellularLocationException(Throwable cause) {
+        super(cause);
     }
 }

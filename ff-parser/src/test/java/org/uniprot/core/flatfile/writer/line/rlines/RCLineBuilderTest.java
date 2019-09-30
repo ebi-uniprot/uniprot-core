@@ -1,5 +1,11 @@
 package org.uniprot.core.flatfile.writer.line.rlines;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.rc.RCLineBuilder;
 import org.uniprot.core.uniprot.ReferenceComment;
@@ -7,12 +13,6 @@ import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.builder.ReferenceCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RCLineBuilderTest {
 
@@ -25,7 +25,6 @@ class RCLineBuilderTest {
         assertEquals(5, lines.size());
         String line3 = "RC   {ECO:0000269|PubMed:10433554}, pSd13_G1271";
         assertEquals(line3, lines.get(2));
-
     }
 
     @Test
@@ -35,7 +34,6 @@ class RCLineBuilderTest {
         assertEquals(2, lines.size());
         String line1 = "RC   PLASMID=pSd11_G1246, pSd12_G1263, pSd13_G1271, pSd4_G1190, and";
         assertEquals(line1, lines.get(0));
-
     }
 
     @Test
@@ -45,7 +43,6 @@ class RCLineBuilderTest {
         assertEquals(1, lines.size());
         String line1 = "PLASMID=pSd11_G1246, pSd12_G1263, pSd13_G1271, pSd4_G1190, and pSd5_G1213;";
         assertEquals(line1, lines.get(0));
-
     }
 
     private List<ReferenceComment> buildRc() {
@@ -84,8 +81,13 @@ class RCLineBuilderTest {
         return sss;
     }
 
-    private ReferenceComment buildReferenceComment(String val, ReferenceCommentType type, List<String> evs) {
-        return new ReferenceCommentBuilder().type(type).value(val).evidences(createEvidence(evs)).build();
+    private ReferenceComment buildReferenceComment(
+            String val, ReferenceCommentType type, List<String> evs) {
+        return new ReferenceCommentBuilder()
+                .type(type)
+                .value(val)
+                .evidences(createEvidence(evs))
+                .build();
     }
 
     private List<Evidence> createEvidence(List<String> evIds) {

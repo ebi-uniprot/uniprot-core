@@ -18,5 +18,4 @@ public class ProteomeIdBuilder extends AbstractValueBuilder<ProteomeIdBuilder, P
     protected ProteomeIdBuilder getThis() {
         return this;
     }
-
 }

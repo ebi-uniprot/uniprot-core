@@ -14,7 +14,7 @@ public class ECImpl extends ECNumberImpl implements EC {
     private List<Evidence> evidences;
 
     private ECImpl() {
-        this("",null);
+        this("", null);
     }
 
     public ECImpl(String value, List<Evidence> evidences) {
@@ -46,12 +46,9 @@ public class ECImpl extends ECNumberImpl implements EC {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (!super.equals(obj))
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (!super.equals(obj)) return false;
+        if (getClass() != obj.getClass()) return false;
         ECImpl other = (ECImpl) obj;
         if (evidences == null) {
             return other.evidences == null;
@@ -64,10 +61,11 @@ public class ECImpl extends ECNumberImpl implements EC {
         sb.append(getValue());
         if (!evidences.isEmpty()) {
             sb.append(separator)
-                    .append(evidences.stream().map(Evidence::getValue).collect(Collectors.joining(", ", "{", "}")));
-
+                    .append(
+                            evidences.stream()
+                                    .map(Evidence::getValue)
+                                    .collect(Collectors.joining(", ", "{", "}")));
         }
         return sb.toString();
     }
-
 }

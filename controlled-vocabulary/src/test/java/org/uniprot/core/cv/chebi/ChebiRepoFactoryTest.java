@@ -1,11 +1,11 @@
 package org.uniprot.core.cv.chebi;
 
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+
+import org.junit.jupiter.api.Test;
 
 /**
  * Created 06/06/19

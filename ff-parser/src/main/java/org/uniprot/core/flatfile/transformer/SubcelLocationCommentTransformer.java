@@ -13,9 +13,8 @@ import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilde
 import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-
-public class SubcelLocationCommentTransformer implements
-        CommentTransformer<SubcellularLocationComment> {
+public class SubcelLocationCommentTransformer
+        implements CommentTransformer<SubcellularLocationComment> {
     private static final CommentType COMMENT_TYPE = CommentType.SUBCELLULAR_LOCATION;
 
     @Override
@@ -27,8 +26,7 @@ public class SubcelLocationCommentTransformer implements
     @Override
     public SubcellularLocationComment transform(CommentType commentType, String annotation) {
 
-        if (annotation == null)
-            return null;
+        if (annotation == null) return null;
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
         int moleculeEndIndex;
 
@@ -40,8 +38,11 @@ public class SubcelLocationCommentTransformer implements
             if (splitByNote.length > 1) {
                 preNote = splitByNote[0].trim();
                 String noteStr = splitByNote[1].trim();
-                builder.note(new NoteBuilder(CommentTransformerHelper
-                                                     .parseEvidencedValues(noteStr, true, '.')).build());
+                builder.note(
+                        new NoteBuilder(
+                                        CommentTransformerHelper.parseEvidencedValues(
+                                                noteStr, true, '.'))
+                                .build());
             } else {
                 preNote = annotation;
             }
@@ -60,7 +61,6 @@ public class SubcelLocationCommentTransformer implements
         List<SubcellularLocation> locations = populateLocations(preNote);
         builder.subcellularLocations(locations);
         return builder.build();
-
     }
 
     private List<SubcellularLocation> populateLocations(String preNote) {
@@ -74,7 +74,6 @@ public class SubcelLocationCommentTransformer implements
                 continue;
             }
             locations.add(populateLocation(aSubcellularLocation));
-
         }
         return locations;
     }
@@ -91,7 +90,10 @@ public class SubcelLocationCommentTransformer implements
             orientation = populateValue(locationElements[2]);
         }
         return new SubcellularLocationBuilder()
-                .location(location).topology(topology).orientation(orientation).build();
+                .location(location)
+                .topology(topology)
+                .orientation(orientation)
+                .build();
     }
 
     private SubcellularLocationValue populateValue(String value) {

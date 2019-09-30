@@ -6,10 +6,7 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- *
- * @author lgonzales
- */
+/** @author lgonzales */
 public abstract class JsonConfig {
 
     public abstract ObjectMapper getSimpleObjectMapper();
@@ -17,20 +14,20 @@ public abstract class JsonConfig {
     public abstract ObjectMapper getFullObjectMapper();
 
     // common setting applicable to fullobject mapper
-    public ObjectMapper getDefaultFullObjectMapper(){
+    public ObjectMapper getDefaultFullObjectMapper() {
         ObjectMapper objMapper = getDefaultObjectMapper();
         objMapper.setAnnotationIntrospector(new CustomAnnotationIntrospector());
         return objMapper;
     }
 
     // common setting applicable to skinny object mapper
-    public ObjectMapper getDefaultSimpleObjectMapper(){
+    public ObjectMapper getDefaultSimpleObjectMapper() {
         ObjectMapper objMapper = getDefaultObjectMapper();
         objMapper.setAnnotationIntrospector(new SimpleAnnotationIntrospector());
         return objMapper;
     }
 
-    private ObjectMapper getDefaultObjectMapper(){
+    private ObjectMapper getDefaultObjectMapper() {
         ObjectMapper objMapper = new ObjectMapper();
         objMapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
         objMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

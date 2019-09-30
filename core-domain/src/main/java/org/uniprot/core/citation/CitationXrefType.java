@@ -4,7 +4,6 @@ import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
 
 public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefType> {
-
     PUBMED("PubMed"),
     DOI("DOI"),
     AGRICOLA("AGRICOLA");
@@ -16,13 +15,13 @@ public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefTy
     }
 
     public static CitationXrefType typeOf(String value) {
-        for (CitationXrefType citXrefType : CitationXrefType
-                .values()) {
+        for (CitationXrefType citXrefType : CitationXrefType.values()) {
             if (citXrefType.getName().equalsIgnoreCase(value)) {
                 return citXrefType;
             }
         }
-        throw new IllegalArgumentException("the citation cross-reference type " + value + " doesn't exist");
+        throw new IllegalArgumentException(
+                "the citation cross-reference type " + value + " doesn't exist");
     }
 
     public String getName() {
@@ -33,5 +32,4 @@ public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefTy
     public String toDisplayName() {
         return getName();
     }
-
 }

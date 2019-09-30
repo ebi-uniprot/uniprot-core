@@ -34,16 +34,26 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
         APCommentBuilder builder = new APCommentBuilder();
 
         if (xmlObj.getEvent() != null && !xmlObj.getEvent().isEmpty()) {
-            builder.events(xmlObj.getEvent().stream().map(val -> eventFromXml(val)).collect(Collectors.toList()));
+            builder.events(
+                    xmlObj.getEvent().stream()
+                            .map(val -> eventFromXml(val))
+                            .collect(Collectors.toList()));
         }
 
         if (xmlObj.getIsoform() != null && !xmlObj.getIsoform().isEmpty()) {
-            builder.isoforms(xmlObj.getIsoform().stream().map(isoformConverter::fromXml).collect(Collectors.toList()));
+            builder.isoforms(
+                    xmlObj.getIsoform().stream()
+                            .map(isoformConverter::fromXml)
+                            .collect(Collectors.toList()));
         }
 
         if (!xmlObj.getText().isEmpty()) {
-            Note note = new NoteBuilder(xmlObj.getText().stream().map(evValueConverter::fromXml)
-                                                .collect(Collectors.toList())).build();
+            Note note =
+                    new NoteBuilder(
+                                    xmlObj.getText().stream()
+                                            .map(evValueConverter::fromXml)
+                                            .collect(Collectors.toList()))
+                            .build();
             builder.note(note);
         }
         return builder.build();
@@ -51,8 +61,7 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
 
     @Override
     public CommentType toXml(AlternativeProductsComment comment) {
-        if (comment == null)
-            return null;
+        if (comment == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType(comment.getCommentType().toXmlDisplayName());
 
@@ -61,7 +70,10 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
         }
 
         if (comment.getIsoforms() != null) {
-            comment.getIsoforms().forEach(isoform -> commentXML.getIsoform().add(isoformConverter.toXml(isoform)));
+            comment.getIsoforms()
+                    .forEach(
+                            isoform ->
+                                    commentXML.getIsoform().add(isoformConverter.toXml(isoform)));
         }
 
         Note note = comment.getNote();
@@ -70,13 +82,11 @@ public class APCommentConverter implements CommentConverter<AlternativeProductsC
         }
 
         return commentXML;
-
     }
 
     private APEventType eventFromXml(EventType xmlObj) {
         String eventType = xmlObj.getType();
-        if (ALTERNATIVE_PROMOTER.equals(eventType))
-            return APEventType.ALTERNATIVE_PROMOTER_USAGE;
+        if (ALTERNATIVE_PROMOTER.equals(eventType)) return APEventType.ALTERNATIVE_PROMOTER_USAGE;
         return APEventType.typeOf(eventType);
     }
 

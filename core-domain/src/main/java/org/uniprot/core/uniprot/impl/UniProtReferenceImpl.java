@@ -25,8 +25,11 @@ public class UniProtReferenceImpl implements UniProtReference {
         this.evidences = Collections.emptyList();
     }
 
-    public UniProtReferenceImpl(Citation citation, List<String> referencePositions, List<ReferenceComment> referenceComments,
-                                List<Evidence> evidences) {
+    public UniProtReferenceImpl(
+            Citation citation,
+            List<String> referencePositions,
+            List<ReferenceComment> referenceComments,
+            List<Evidence> evidences) {
         this.citation = citation;
         this.referencePositions = Utils.unmodifiableList(referencePositions);
         this.referenceComments = Utils.unmodifiableList(referenceComments);
@@ -85,10 +88,10 @@ public class UniProtReferenceImpl implements UniProtReference {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniProtReferenceImpl that = (UniProtReferenceImpl) o;
-        return Objects.equals(citation, that.citation) &&
-                Objects.equals(referencePositions, that.referencePositions) &&
-                Objects.equals(referenceComments, that.referenceComments) &&
-                Objects.equals(evidences, that.evidences);
+        return Objects.equals(citation, that.citation)
+                && Objects.equals(referencePositions, that.referencePositions)
+                && Objects.equals(referenceComments, that.referenceComments)
+                && Objects.equals(evidences, that.evidences);
     }
 
     @Override

@@ -9,9 +9,7 @@ public class PublicationDateImpl implements PublicationDate {
     private static final long serialVersionUID = 3232437573866835411L;
     private String value;
 
-    private PublicationDateImpl() {
-
-    }
+    private PublicationDateImpl() {}
 
     public PublicationDateImpl(String value) {
         this.value = value;
@@ -42,8 +40,6 @@ public class PublicationDateImpl implements PublicationDate {
 
     @Override
     public String toString() {
-        return "PublicationDateImpl{" +
-                "value='" + value + '\'' +
-                '}';
+        return "PublicationDateImpl{" + "value='" + value + '\'' + '}';
     }
 }

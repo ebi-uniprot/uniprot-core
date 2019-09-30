@@ -13,7 +13,6 @@ import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-
 public class MSCommentTransformer implements CommentTransformer<MassSpectrometryComment> {
 
     private static final CommentType COMMENT_TYPE = CommentType.MASS_SPECTROMETRY;
@@ -34,7 +33,8 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
             char c = annotation.charAt(iii);
             if (c == ';') {
                 String follow = annotation.substring(iii + 1);
-                if (follow.startsWith(" Mass=") || follow.startsWith(" Note=")
+                if (follow.startsWith(" Mass=")
+                        || follow.startsWith(" Note=")
                         || follow.startsWith(" Source=")
                         || follow.startsWith(" Mass_error=")
                         || follow.startsWith(" Range=")
@@ -61,8 +61,7 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
 
                     if (token.startsWith("Mass_error")) {
                         String mWERR = token.substring(indexEq + 1, token.length());
-                        if (mWERR.length() > 0)
-                            builder.molWeightError(Float.parseFloat(mWERR));
+                        if (mWERR.length() > 0) builder.molWeightError(Float.parseFloat(mWERR));
                         continue;
                     }
                     if (token.startsWith("Mass")) {
@@ -81,7 +80,6 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                             List<Evidence> evidences = new ArrayList<>();
                             CommentTransformerHelper.stripEvidences(evidenceStr, evidences);
                             builder.evidences(evidences);
-
                         }
                         continue;
                     }
@@ -103,18 +101,21 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                         continue;
                     }
 
-                    throw new IllegalArgumentException("Unknown element "
-                                                               + token + " found in MASS SPECTROMETRY comment "
-                                                               + annotation);
+                    throw new IllegalArgumentException(
+                            "Unknown element "
+                                    + token
+                                    + " found in MASS SPECTROMETRY comment "
+                                    + annotation);
                 } else {
                     throw new IllegalArgumentException(
-                            "Missing value at token " + token
+                            "Missing value at token "
+                                    + token
                                     + " found in MASS SPECTROMETRY comment "
                                     + annotation);
                 }
             } else {
-                throw new IllegalArgumentException("Missing \"=\" in token "
-                                                           + token + " within line " + annotation);
+                throw new IllegalArgumentException(
+                        "Missing \"=\" in token " + token + " within line " + annotation);
             }
         }
         return builder.build();
@@ -163,10 +164,11 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                     end = parseRangeNumber(token.substring(indexDash + 1));
                 }
                 if (!openStatement) {
-                    massSpecRanges
-                            .add(new MassSpectrometryRangeBuilder()
-                                         .range(new Range(start, end))
-                                         .isoformId(isoformId).build());
+                    massSpecRanges.add(
+                            new MassSpectrometryRangeBuilder()
+                                    .range(new Range(start, end))
+                                    .isoformId(isoformId)
+                                    .build());
                     leftOvers = new StringBuilder();
                 }
             } else {
@@ -182,10 +184,10 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
         numberOrUnknown = numberOrUnknown.trim();
         final int numberOrUnknownLength = numberOrUnknown.length();
         if (numberOrUnknownLength < 1) {
-            throw new IllegalArgumentException(
-                    "Missing position in mass spectrometry range.");
+            throw new IllegalArgumentException("Missing position in mass spectrometry range.");
         }
-        return (numberOrUnknownLength == 1 && numberOrUnknown.charAt(0) == '?') ? -1
+        return (numberOrUnknownLength == 1 && numberOrUnknown.charAt(0) == '?')
+                ? -1
                 : Integer.parseInt(numberOrUnknown);
     }
 }

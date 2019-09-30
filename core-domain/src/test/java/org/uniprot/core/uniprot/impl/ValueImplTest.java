@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.impl.ValueImpl;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.impl.ValueImpl;
 
 class ValueImplTest {
 
@@ -18,5 +18,4 @@ class ValueImplTest {
         ValueImpl valImpl3 = new ValueImpl("AnotherValue");
         assertNotEquals(valImpl, valImpl3);
     }
-
 }

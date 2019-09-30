@@ -28,7 +28,9 @@ public class EntryOrganismHostMap implements NamedValueMap {
         }
 
         Map<String, String> map = new HashMap<>();
-        map.put(FIELDS.get(0), organismHost.stream().map(this::getOrganismName).collect(Collectors.joining("; ")));
+        map.put(
+                FIELDS.get(0),
+                organismHost.stream().map(this::getOrganismName).collect(Collectors.joining("; ")));
         return map;
     }
 

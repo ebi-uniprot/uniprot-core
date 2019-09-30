@@ -1,14 +1,14 @@
 package org.uniprot.core.cv.disease;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 public class DiseaseCacheTest {
 
     @Test
-    void testLoadCacheFromDefaultFileAsFallback(){
+    void testLoadCacheFromDefaultFileAsFallback() {
         String emptyFileName = "empty.txt";
         String defaultDataFile = "disease/sample_humdisease.txt";
         DiseaseCache diseaseCache = DiseaseCache.INSTANCE;

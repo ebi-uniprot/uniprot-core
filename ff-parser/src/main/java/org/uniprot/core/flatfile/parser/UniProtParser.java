@@ -4,6 +4,6 @@ import java.io.Serializable;
 
 import org.uniprot.core.uniprot.UniProtEntry;
 
-public interface UniProtParser extends Serializable{
-	UniProtEntry parse(String entryff);
+public interface UniProtParser extends Serializable {
+    UniProtEntry parse(String entryff);
 }

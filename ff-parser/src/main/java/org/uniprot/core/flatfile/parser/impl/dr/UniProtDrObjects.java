@@ -7,6 +7,6 @@ import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 public class UniProtDrObjects {
-	public List<UniProtDBCrossReference> drObjects =new ArrayList<>();
-	public List<InternalLine> ssProsites =null;
+    public List<UniProtDBCrossReference> drObjects = new ArrayList<>();
+    public List<InternalLine> ssProsites = null;
 }

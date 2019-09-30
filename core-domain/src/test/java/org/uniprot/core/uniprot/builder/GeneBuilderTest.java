@@ -1,33 +1,31 @@
 package org.uniprot.core.uniprot.builder;
 
+import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.gene.*;
-import org.uniprot.core.uniprot.builder.GeneBuilder;
-import org.uniprot.core.uniprot.builder.GeneNameBuilder;
-import org.uniprot.core.uniprot.builder.GeneNameSynonymBuilder;
-import org.uniprot.core.uniprot.builder.ORFNameBuilder;
-import org.uniprot.core.uniprot.builder.OrderedLocusNameBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-
-import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GeneBuilderTest {
 
     private static final String DB_ID_1 = "PDB Id";
     private static final String DB_NAME_1 = "PDB";
     private static final String VALUE_1 = "the value 1";
-    private static final Evidence EVIDENCE_1 = new EvidenceBuilder()
-            .evidenceCode(EvidenceCode.ECO_0000213)
-            .databaseId(DB_ID_1)
-            .databaseName(DB_NAME_1)
-            .build();
-    private static final GeneName GENE_NAME = new GeneNameBuilder(VALUE_1, singletonList(EVIDENCE_1)).build();
+    private static final Evidence EVIDENCE_1 =
+            new EvidenceBuilder()
+                    .evidenceCode(EvidenceCode.ECO_0000213)
+                    .databaseId(DB_ID_1)
+                    .databaseName(DB_NAME_1)
+                    .build();
+    private static final GeneName GENE_NAME =
+            new GeneNameBuilder(VALUE_1, singletonList(EVIDENCE_1)).build();
     private static final OrderedLocusName ORDERED_LOCUS_NAME =
             new OrderedLocusNameBuilder(VALUE_1, singletonList(EVIDENCE_1)).build();
-    private static final ORFName ORF_NAME = new ORFNameBuilder(VALUE_1, singletonList(EVIDENCE_1)).build();
+    private static final ORFName ORF_NAME =
+            new ORFNameBuilder(VALUE_1, singletonList(EVIDENCE_1)).build();
     private static final GeneNameSynonym SYNONYM =
             new GeneNameSynonymBuilder(VALUE_1, singletonList(EVIDENCE_1)).build();
 
@@ -53,11 +51,12 @@ class GeneBuilderTest {
     @Test
     void testFullGeneBuilderCreationIsAsExpected() {
 
-        GeneBuilder builder = new GeneBuilder()
-                .geneName(GENE_NAME)
-                .orderedLocusNames(singletonList(ORDERED_LOCUS_NAME))
-                .orfNames(singletonList(ORF_NAME))
-                .synonyms(singletonList(SYNONYM));
+        GeneBuilder builder =
+                new GeneBuilder()
+                        .geneName(GENE_NAME)
+                        .orderedLocusNames(singletonList(ORDERED_LOCUS_NAME))
+                        .orfNames(singletonList(ORF_NAME))
+                        .synonyms(singletonList(SYNONYM));
 
         Gene gene = builder.build();
         assertNotNull(gene);
@@ -81,14 +80,15 @@ class GeneBuilderTest {
     @Test
     void testFullGeneBuilderCreationUsingAddMethoIsAsExpected() {
 
-        GeneBuilder builder = new GeneBuilder()
-                .geneName(GENE_NAME)
-                .orderedLocusNames(singletonList(ORDERED_LOCUS_NAME))
-                .addOrderedLocusNames(ORDERED_LOCUS_NAME)
-                .orfNames(singletonList(ORF_NAME))
-                .addOrfNames(ORF_NAME)
-                .synonyms(singletonList(SYNONYM))
-                .addSynonyms(SYNONYM);
+        GeneBuilder builder =
+                new GeneBuilder()
+                        .geneName(GENE_NAME)
+                        .orderedLocusNames(singletonList(ORDERED_LOCUS_NAME))
+                        .addOrderedLocusNames(ORDERED_LOCUS_NAME)
+                        .orfNames(singletonList(ORF_NAME))
+                        .addOrfNames(ORF_NAME)
+                        .synonyms(singletonList(SYNONYM))
+                        .addSynonyms(SYNONYM);
 
         Gene gene = builder.build();
         assertNotNull(gene);

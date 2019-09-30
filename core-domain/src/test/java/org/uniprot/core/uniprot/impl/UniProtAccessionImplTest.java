@@ -1,10 +1,9 @@
 package org.uniprot.core.uniprot.impl;
 
-import org.junit.jupiter.api.Test;
-
-import org.uniprot.core.uniprot.UniProtAccession;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.UniProtAccession;
 
 class UniProtAccessionImplTest {
 

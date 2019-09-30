@@ -1,10 +1,8 @@
 package org.uniprot.core.citation;
 
-
 import org.uniprot.core.util.EnumDisplay;
 
 public enum CitationType implements EnumDisplay<CitationType> {
-
     JOURNAL_ARTICLE("journal article"),
     BOOK("book"),
     ELECTRONIC_ARTICLE("online journal article"),
@@ -32,18 +30,19 @@ public enum CitationType implements EnumDisplay<CitationType> {
                 return type;
             }
         }
-        throw new IllegalArgumentException("The citation with the description " + value + " doesn't exist");
+        throw new IllegalArgumentException(
+                "The citation with the description " + value + " doesn't exist");
     }
 
     public static CitationType typeOf(String value) {
-        for (CitationType citationType : CitationType
-                .values()) {
+        for (CitationType citationType : CitationType.values()) {
 
             if (citationType.getValue().equals(value)) {
                 return citationType;
             }
         }
-        throw new IllegalArgumentException("The citation with the description " + value + " doesn't exist");
+        throw new IllegalArgumentException(
+                "The citation with the description " + value + " doesn't exist");
     }
 
     public String getValue() {
@@ -59,4 +58,3 @@ public enum CitationType implements EnumDisplay<CitationType> {
         return value;
     }
 }
-

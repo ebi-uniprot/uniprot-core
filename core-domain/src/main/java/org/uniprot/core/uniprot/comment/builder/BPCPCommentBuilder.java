@@ -11,13 +11,13 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
     private TemperatureDependence temperatureDependence = null;
 
     public BPCPComment build() {
-        return new BPCPCommentImpl(absorption, kineticParameters, phDependence, redoxPotential, temperatureDependence);
+        return new BPCPCommentImpl(
+                absorption, kineticParameters, phDependence, redoxPotential, temperatureDependence);
     }
 
     @Override
     public BPCPCommentBuilder from(BPCPComment instance) {
-        return this
-                .kineticParameters(instance.getKineticParameters())
+        return this.kineticParameters(instance.getKineticParameters())
                 .absorption(instance.getAbsorption())
                 .phDependence(instance.getPhDependence())
                 .redoxPotential(instance.getRedoxPotential())
