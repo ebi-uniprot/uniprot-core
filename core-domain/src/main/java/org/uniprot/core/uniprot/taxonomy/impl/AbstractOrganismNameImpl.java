@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import static org.uniprot.core.util.Utils.unmodifiableList;
 import static org.uniprot.core.util.Utils.emptyOrString;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 import java.util.List;
 import java.util.Objects;

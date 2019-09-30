@@ -33,7 +33,7 @@ public class ComponentImpl implements Component {
         this.description = description;
         this.proteinCount = proteinCount;
         this.type = type;
-		this.dbXReferences =Utils.unmodifiableList(dbXReferences);
+        this.dbXReferences = Utils.unmodifiableList(dbXReferences);
     }
 
     @Override

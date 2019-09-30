@@ -21,8 +21,10 @@ public class InternalSectionImpl implements InternalSection {
         this.sourceLines = Collections.emptyList();
     }
 
-    public InternalSectionImpl(List<InternalLine> internalLines, List<EvidenceLine> evidenceLines,
-                               List<SourceLine> sourceLines) {
+    public InternalSectionImpl(
+            List<InternalLine> internalLines,
+            List<EvidenceLine> evidenceLines,
+            List<SourceLine> sourceLines) {
         this.internalLines = Utils.unmodifiableList(internalLines);
         this.evidenceLines = Utils.unmodifiableList(evidenceLines);
         this.sourceLines = Utils.unmodifiableList(sourceLines);
@@ -55,26 +57,18 @@ public class InternalSectionImpl implements InternalSection {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
         InternalSectionImpl other = (InternalSectionImpl) obj;
         if (evidenceLines == null) {
-            if (other.evidenceLines != null)
-                return false;
-        } else if (!evidenceLines.equals(other.evidenceLines))
-            return false;
+            if (other.evidenceLines != null) return false;
+        } else if (!evidenceLines.equals(other.evidenceLines)) return false;
         if (internalLines == null) {
-            if (other.internalLines != null)
-                return false;
-        } else if (!internalLines.equals(other.internalLines))
-            return false;
+            if (other.internalLines != null) return false;
+        } else if (!internalLines.equals(other.internalLines)) return false;
         if (sourceLines == null) {
             return other.sourceLines == null;
         } else return sourceLines.equals(other.sourceLines);
     }
-
 }

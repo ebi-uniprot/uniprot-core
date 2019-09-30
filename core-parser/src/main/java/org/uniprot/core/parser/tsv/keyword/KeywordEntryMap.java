@@ -40,9 +40,10 @@ public class KeywordEntryMap implements NamedValueMap {
     private String getGeneOntology() {
         String result = "";
         if (Utils.notNullOrEmpty(keywordEntry.getGeneOntologies())) {
-            result = keywordEntry.getGeneOntologies().stream()
-                    .map(go -> go.getGoId() + ":" + go.getGoTerm())
-                    .collect(Collectors.joining(", "));
+            result =
+                    keywordEntry.getGeneOntologies().stream()
+                            .map(go -> go.getGoId() + ":" + go.getGoTerm())
+                            .collect(Collectors.joining(", "));
         }
         return result;
     }
@@ -57,7 +58,8 @@ public class KeywordEntryMap implements NamedValueMap {
     private Stream<KeywordEntry> getAllChildrenLevel(KeywordEntry entry) {
         Stream<KeywordEntry> result = Stream.of(entry);
         if (entry.getChildren() != null && !entry.getChildren().isEmpty()) {
-            return Stream.concat(result, entry.getChildren().stream().flatMap(this::getAllChildrenLevel));
+            return Stream.concat(
+                    result, entry.getChildren().stream().flatMap(this::getAllChildrenLevel));
         }
         return result;
     }
@@ -72,7 +74,8 @@ public class KeywordEntryMap implements NamedValueMap {
     private Stream<KeywordEntry> getAllParentLevel(KeywordEntry entry) {
         Stream<KeywordEntry> result = Stream.of(entry);
         if (entry.getParents() != null && !entry.getParents().isEmpty()) {
-            return Stream.concat(result, entry.getParents().stream().flatMap(this::getAllParentLevel));
+            return Stream.concat(
+                    result, entry.getParents().stream().flatMap(this::getAllParentLevel));
         }
         return result;
     }
@@ -80,10 +83,13 @@ public class KeywordEntryMap implements NamedValueMap {
     private String getStatistics() {
         String result = "";
         if (keywordEntry.getStatistics() != null) {
-            result = "reviewed:" + keywordEntry.getStatistics().getReviewedProteinCount() + "; " +
-                    "annotated:" + keywordEntry.getStatistics().getUnreviewedProteinCount();
+            result =
+                    "reviewed:"
+                            + keywordEntry.getStatistics().getReviewedProteinCount()
+                            + "; "
+                            + "annotated:"
+                            + keywordEntry.getStatistics().getUnreviewedProteinCount();
         }
         return result;
     }
-
 }

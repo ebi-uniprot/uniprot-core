@@ -36,8 +36,9 @@ public enum EvidenceTypes {
                 EvidenceTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
             List<Property> list = Property.parseJsonArray(source);
-            list.forEach(item -> {
-                types.add(convert(item));
+            list.forEach(
+                    item -> {
+                        types.add(convert(item));
                     });
             typeMap =
                     types.stream()
@@ -47,7 +48,7 @@ public enum EvidenceTypes {
         }
     }
 
-    private  EvidenceTypeDetail convert(Property obj) {
+    private EvidenceTypeDetail convert(Property obj) {
         String name = obj.getString("name");
         String displayName = obj.getString("displayName");
         String uriLink = obj.getString("uriLink");

@@ -33,12 +33,14 @@ public class CatalyticActivityCommentBuilder
         return this;
     }
 
-    public CatalyticActivityCommentBuilder physiologicalReactions(List<PhysiologicalReaction> physiologicalReactions) {
+    public CatalyticActivityCommentBuilder physiologicalReactions(
+            List<PhysiologicalReaction> physiologicalReactions) {
         this.physiologicalReactions = modifiableList(physiologicalReactions);
         return this;
     }
 
-    public CatalyticActivityCommentBuilder addPhysiologicalReaction(PhysiologicalReaction physiologicalReaction) {
+    public CatalyticActivityCommentBuilder addPhysiologicalReaction(
+            PhysiologicalReaction physiologicalReaction) {
         addOrIgnoreNull(physiologicalReaction, this.physiologicalReactions);
         return this;
     }

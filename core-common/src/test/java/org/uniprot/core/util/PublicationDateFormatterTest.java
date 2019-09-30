@@ -1,16 +1,15 @@
 package org.uniprot.core.util;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.EnumSource;
-import org.uniprot.core.util.PublicationDateFormatter;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 /**
  * Created 09/07/19
@@ -44,7 +43,9 @@ class PublicationDateFormatterTest {
     @Test
     void test_THREE_LETTER_MONTH_YEAR_ConvertStringToDate() {
         try {
-            Date date = PublicationDateFormatter.THREE_LETTER_MONTH_YEAR.convertStringToDate("MAR-2002");
+            Date date =
+                    PublicationDateFormatter.THREE_LETTER_MONTH_YEAR.convertStringToDate(
+                            "MAR-2002");
             verifyDate(date, 2002, 2, -1);
 
         } catch (Exception e) {
@@ -55,7 +56,8 @@ class PublicationDateFormatterTest {
     @Test
     void test_DAY_DIGITMONTH_YEAR_ConvertStringToDate() {
         try {
-            Date date = PublicationDateFormatter.DAY_DIGITMONTH_YEAR.convertStringToDate("2001-11-20");
+            Date date =
+                    PublicationDateFormatter.DAY_DIGITMONTH_YEAR.convertStringToDate("2001-11-20");
             verifyDate(date, 2001, 10, 20);
 
         } catch (Exception e) {
@@ -66,7 +68,9 @@ class PublicationDateFormatterTest {
     @Test
     void test_DAY_THREE_LETTER_MONTH_YEAR_ConvertStringToDate() {
         try {
-            Date date = PublicationDateFormatter.DAY_THREE_LETTER_MONTH_YEAR.convertStringToDate("10-MAY-2001");
+            Date date =
+                    PublicationDateFormatter.DAY_THREE_LETTER_MONTH_YEAR.convertStringToDate(
+                            "10-MAY-2001");
             verifyDate(date, 2001, 4, 10);
 
         } catch (Exception e) {
@@ -77,7 +81,8 @@ class PublicationDateFormatterTest {
     @ParameterizedTest
     @EnumSource(PublicationDateFormatter.class)
     void wrongFormats_shouldThrowExceptions(PublicationDateFormatter formatter) {
-        assertThrows(DateTimeParseException.class, () -> formatter.convertStringToDate("wrong-format"));
+        assertThrows(
+                DateTimeParseException.class, () -> formatter.convertStringToDate("wrong-format"));
     }
 
     private void verifyDate(Date date, int expectedYear, int expectedMonth, int expectedDay) {

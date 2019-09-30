@@ -31,12 +31,14 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
         return this;
     }
 
-    public ReactionBuilder references(List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
+    public ReactionBuilder references(
+            List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
         this.reactionReferences = modifiableList(reactionReferences);
         return this;
     }
 
-    public ReactionBuilder addReactionReference(DBCrossReference<ReactionReferenceType> reactionReference) {
+    public ReactionBuilder addReactionReference(
+            DBCrossReference<ReactionReferenceType> reactionReference) {
         addOrIgnoreNull(reactionReference, this.reactionReferences);
         return this;
     }
@@ -69,8 +71,7 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
     public ReactionBuilder from(Reaction instance) {
         evidences.clear();
         reactionReferences.clear();
-        return this
-                .ecNumber(instance.getEcNumber())
+        return this.ecNumber(instance.getEcNumber())
                 .evidences(instance.getEvidences())
                 .name(instance.getName())
                 .references(instance.getReactionReferences());

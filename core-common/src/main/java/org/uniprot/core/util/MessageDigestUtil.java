@@ -10,11 +10,11 @@ public class MessageDigestUtil {
     }
 
     /**
-     * This function call MessageDigest class digest to get bytes and convert the byte array to Hex String
+     * This function call MessageDigest class digest to get bytes and convert the byte array to Hex
+     * String
      *
      * @param seq string to be hashed
-     * @param type
-     *            Message Digest type,
+     * @param type Message Digest type,
      * @return String
      */
     static String getDigest(String seq, String type) {
@@ -43,10 +43,9 @@ public class MessageDigestUtil {
         byte ch;
         int i = 0;
 
-        String[] pseudo = {"0", "1", "2",
-                "3", "4", "5", "6", "7", "8",
-                "9", "A", "B", "C", "D", "E",
-                "F"};
+        String[] pseudo = {
+            "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"
+        };
         StringBuilder out = new StringBuilder(in.length * 2);
 
         while (i < in.length) {
@@ -62,5 +61,4 @@ public class MessageDigestUtil {
         }
         return new String(out);
     }
-
 }

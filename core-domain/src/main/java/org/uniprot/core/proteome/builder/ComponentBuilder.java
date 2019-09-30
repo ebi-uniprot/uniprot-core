@@ -22,7 +22,6 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
         return new ComponentBuilder();
     }
 
-
     public ComponentBuilder name(String name) {
         this.name = name;
         return this;
@@ -33,16 +32,16 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
         return this;
     }
 
-	public ComponentBuilder dbXReferences(List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
-		this.dbXReferences = Utils.modifiableList(dbXReferences);
+    public ComponentBuilder dbXReferences(
+            List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
+        this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
     public ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
-		Utils.addOrIgnoreNull(dbXReference, dbXReferences);
+        Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }
-
 
     public ComponentBuilder proteinCount(int proteinCount) {
         this.proteinCount = proteinCount;

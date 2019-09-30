@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.taxonomy.builder;
 
-
 import static org.uniprot.core.util.Utils.addOrIgnoreNull;
 import static org.uniprot.core.util.Utils.modifiableList;
 
@@ -11,9 +10,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder, Organism> {
     private long taxonId;
     private List<Evidence> evidences = new ArrayList<>();
@@ -43,7 +40,6 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
-
 
     public Organism build() {
         return new OrganismImpl(lineage, taxonId, evidences, scientificName, commonName, synonyms);

@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
+import static java.util.Collections.emptyList;
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
-
-import static java.util.Collections.emptyList;
-import static org.uniprot.core.util.Utils.unmodifiableList;
 
 public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     private static final long serialVersionUID = 3285422222944186108L;
@@ -20,8 +20,13 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
         this(emptyList(), 0L, emptyList(), null, null, emptyList());
     }
 
-    public OrganismImpl(List<String> lineage, long taxonId, List<Evidence> evidences,
-                        String scientificName, String commonName, List<String> synonyms) {
+    public OrganismImpl(
+            List<String> lineage,
+            long taxonId,
+            List<Evidence> evidences,
+            String scientificName,
+            String commonName,
+            List<String> synonyms) {
         super(scientificName, commonName, synonyms);
         this.lineage = unmodifiableList(lineage);
         this.taxonId = taxonId;
@@ -58,13 +63,10 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
         sb.append(super.toString());
         List<String> lineage = this.getLineage();
         if (!lineage.isEmpty()) {
-            sb.append(" (")
-                    .append(String.join(", ", lineage))
-                    .append(")");
+            sb.append(" (").append(String.join(", ", lineage)).append(")");
         }
         return sb.toString();
     }
-
 
     @Override
     public boolean equals(Object o) {
@@ -72,9 +74,9 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         OrganismImpl organism = (OrganismImpl) o;
-        return taxonId == organism.taxonId &&
-                Objects.equals(evidences, organism.evidences) &&
-                Objects.equals(lineage, organism.lineage);
+        return taxonId == organism.taxonId
+                && Objects.equals(evidences, organism.evidences)
+                && Objects.equals(lineage, organism.lineage);
     }
 
     @Override

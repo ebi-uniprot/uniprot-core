@@ -10,7 +10,8 @@ import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniprot.taxonomy.builder.AbstractOrganismNameBuilder;
 import org.uniprot.core.util.Utils;
 
-public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEntryBuilder,TaxonomyEntry>
+public class TaxonomyEntryBuilder
+        extends AbstractOrganismNameBuilder<TaxonomyEntryBuilder, TaxonomyEntry>
         implements Builder<TaxonomyEntryBuilder, TaxonomyEntry> {
 
     private long taxonId;
@@ -43,6 +44,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
         this.taxonId = taxonId;
         return this;
     }
+
     public TaxonomyEntryBuilder mnemonic(String mnemonic) {
         this.mnemonic = mnemonic;
         return this;
@@ -89,7 +91,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addOtherNames(String otherNames) {
-        Utils.addOrIgnoreNull(otherNames,this.otherNames);
+        Utils.addOrIgnoreNull(otherNames, this.otherNames);
         return this;
     }
 
@@ -99,7 +101,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addLineage(TaxonomyLineage lineage) {
-        Utils.addOrIgnoreNull(lineage,this.lineage);
+        Utils.addOrIgnoreNull(lineage, this.lineage);
         return this;
     }
 
@@ -109,7 +111,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addStrain(TaxonomyStrain strains) {
-        Utils.addOrIgnoreNull(strains,this.strains);
+        Utils.addOrIgnoreNull(strains, this.strains);
         return this;
     }
 
@@ -119,7 +121,7 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addHost(Taxonomy host) {
-        Utils.addOrIgnoreNull(host,this.hosts);
+        Utils.addOrIgnoreNull(host, this.hosts);
         return this;
     }
 
@@ -129,29 +131,44 @@ public class TaxonomyEntryBuilder extends AbstractOrganismNameBuilder<TaxonomyEn
     }
 
     public TaxonomyEntryBuilder addLink(String link) {
-        Utils.addOrIgnoreNull(link,this.links);
+        Utils.addOrIgnoreNull(link, this.links);
         return this;
     }
 
-    public TaxonomyEntryBuilder statistics(TaxonomyStatistics statistics){
+    public TaxonomyEntryBuilder statistics(TaxonomyStatistics statistics) {
         this.statistics = statistics;
         return this;
     }
 
-    public TaxonomyEntryBuilder inactiveReason(TaxonomyInactiveReason inactiveReason){
+    public TaxonomyEntryBuilder inactiveReason(TaxonomyInactiveReason inactiveReason) {
         this.inactiveReason = inactiveReason;
         return this;
     }
 
     @Override
     public TaxonomyEntry build() {
-        return new TaxonomyEntryImpl(taxonId,scientificName,commonName,synonyms,mnemonic,parentId,
-                rank,hidden,active,otherNames,lineage,strains,hosts,links,statistics,inactiveReason);
+        return new TaxonomyEntryImpl(
+                taxonId,
+                scientificName,
+                commonName,
+                synonyms,
+                mnemonic,
+                parentId,
+                rank,
+                hidden,
+                active,
+                otherNames,
+                lineage,
+                strains,
+                hosts,
+                links,
+                statistics,
+                inactiveReason);
     }
 
     @Override
     public TaxonomyEntryBuilder from(TaxonomyEntry instance) {
-        if(instance != null) {
+        if (instance != null) {
             this.taxonId(instance.getTaxonId());
             this.scientificName(instance.getScientificName());
             this.commonName(instance.getCommonName());

@@ -136,7 +136,8 @@
 	<xs:simpleType name="geneNameType">
 		<xs:annotation>
 			<xs:documentation>
-				Describes the origin of gene name for genecentric model.
+				Describes the origin of gene name for genecentric
+				model.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:string">

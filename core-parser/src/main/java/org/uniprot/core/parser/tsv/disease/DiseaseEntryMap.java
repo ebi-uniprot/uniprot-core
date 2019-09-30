@@ -49,7 +49,9 @@ public class DiseaseEntryMap implements NamedValueMap {
 
     private String getCrossReferences(List<CrossReference> crossReferences) {
         if (Utils.notNullOrEmpty(crossReferences)) {
-            return crossReferences.stream().map(CrossReference::getId).collect(Collectors.joining(","));
+            return crossReferences.stream()
+                    .map(CrossReference::getId)
+                    .collect(Collectors.joining(","));
         } else {
             return EMPTY_STRING;
         }

@@ -6,9 +6,7 @@ import java.util.List;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.util.Utils;
 
-/**
- * @author lgonzales
- */
+/** @author lgonzales */
 public interface LiteratureMappedReference extends Serializable {
 
     UniProtAccession getUniprotAccession();
@@ -22,7 +20,8 @@ public interface LiteratureMappedReference extends Serializable {
     String getAnnotation();
 
     default boolean hasUniprotAccession() {
-        return Utils.notNull(getUniprotAccession()) && Utils.notNullOrEmpty(getUniprotAccession().getValue());
+        return Utils.notNull(getUniprotAccession())
+                && Utils.notNullOrEmpty(getUniprotAccession().getValue());
     }
 
     default boolean hasSource() {

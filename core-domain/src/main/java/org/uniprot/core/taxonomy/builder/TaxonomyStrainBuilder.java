@@ -25,18 +25,18 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, Tax
     }
 
     public TaxonomyStrainBuilder addSynonym(String synonym) {
-        Utils.addOrIgnoreNull(synonym,this.synonyms);
+        Utils.addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
 
     @Override
     public TaxonomyStrain build() {
-        return new TaxonomyStrainImpl(name,synonyms);
+        return new TaxonomyStrainImpl(name, synonyms);
     }
 
     @Override
     public TaxonomyStrainBuilder from(TaxonomyStrain instance) {
-        if(instance != null) {
+        if (instance != null) {
             this.name(instance.getName());
             this.synonyms(instance.getSynonyms());
         }

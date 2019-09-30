@@ -13,9 +13,10 @@ import org.uniprot.core.util.Utils;
 public class SequenceCautionMap implements NamedValueMap {
 
     private final List<SequenceCautionComment> sequenceCautionComments;
-    private final CCSequenceCautionCommentLineBuilder lineBuilder = new CCSequenceCautionCommentLineBuilder();
+    private final CCSequenceCautionCommentLineBuilder lineBuilder =
+            new CCSequenceCautionCommentLineBuilder();
 
-    public SequenceCautionMap(List<SequenceCautionComment> sequenceCautionComments){
+    public SequenceCautionMap(List<SequenceCautionComment> sequenceCautionComments) {
         this.sequenceCautionComments = sequenceCautionComments;
     }
 
@@ -27,16 +28,16 @@ public class SequenceCautionMap implements NamedValueMap {
     private Map<String, String> getSeqCautionComments(List<SequenceCautionComment> scComments) {
         Map<String, String> sequenceCautionMap = new HashMap<>();
         if (Utils.notNullOrEmpty(scComments)) {
-            String sequenceCautions = scComments.stream()
-                    .map(this::sequenceCautionToString)
-                    .collect(Collectors.joining("  "));
+            String sequenceCautions =
+                    scComments.stream()
+                            .map(this::sequenceCautionToString)
+                            .collect(Collectors.joining("  "));
             sequenceCautionMap.put("cc:sequence_caution", "SEQUENCE CAUTION:  " + sequenceCautions);
         }
         return sequenceCautionMap;
     }
 
-    private String sequenceCautionToString(SequenceCautionComment sequenceCautionComment) {   	
-    	return lineBuilder.buildString(sequenceCautionComment, true, false).replaceAll("\n",  " ");
+    private String sequenceCautionToString(SequenceCautionComment sequenceCautionComment) {
+        return lineBuilder.buildString(sequenceCautionComment, true, false).replaceAll("\n", " ");
     }
-
 }

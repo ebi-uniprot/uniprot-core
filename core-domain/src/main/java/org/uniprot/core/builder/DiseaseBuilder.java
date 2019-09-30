@@ -67,7 +67,7 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         return this;
     }
 
-    public DiseaseBuilder definition(String definition){
+    public DiseaseBuilder definition(String definition) {
         this.definition = definition;
         return this;
     }

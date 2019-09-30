@@ -12,53 +12,52 @@ import org.uniprot.core.uniparc.impl.SequenceFeatureImpl;
 import org.uniprot.core.util.Utils;
 
 /**
- *
  * @author jluo
  * @date: 23 May 2019
- *
-*/
-
+ */
 public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, SequenceFeature> {
-	private InterproGroup interproGroup;
-	private SignatureDbType dbType;
-	private String dbId;
-	private List<Location> locations =new ArrayList<>();
-	@Override
-	public SequenceFeature build() {
-		return new SequenceFeatureImpl( interproGroup,  dbType,  dbId, locations) ;
-	}
-	public SequenceFeatureBuilder interproGroup(InterproGroup interproGroup) {
-		this.interproGroup = interproGroup;
-		return this;
-	}
-	
-	public SequenceFeatureBuilder signatureDbType(SignatureDbType dbType) {
-		this.dbType = dbType;
-		return this;
-	}
-	public SequenceFeatureBuilder signatureDbId(String dbId) {
-		this.dbId = dbId;
-		return this;
-	}
-	public SequenceFeatureBuilder locations(List<Location> locations) {
-		this.locations = Utils.modifiableList(locations);
-		return this;
-	}
-	public SequenceFeatureBuilder addLocation(Location location) {
-		Utils.addOrIgnoreNull(location, locations);
-		return this;
-	}
-	
+    private InterproGroup interproGroup;
+    private SignatureDbType dbType;
+    private String dbId;
+    private List<Location> locations = new ArrayList<>();
 
-	@Override
-	public SequenceFeatureBuilder from(SequenceFeature instance) {
-		this.interproGroup = instance.getInterProDomain();
-		this.dbType = instance.getSignatureDbType();
-		this.dbId = instance.getSignatureDbId();
-		this.locations.clear();
-		this.locations.addAll(instance.getLocations());
-		return this;
-	}
+    @Override
+    public SequenceFeature build() {
+        return new SequenceFeatureImpl(interproGroup, dbType, dbId, locations);
+    }
 
+    public SequenceFeatureBuilder interproGroup(InterproGroup interproGroup) {
+        this.interproGroup = interproGroup;
+        return this;
+    }
+
+    public SequenceFeatureBuilder signatureDbType(SignatureDbType dbType) {
+        this.dbType = dbType;
+        return this;
+    }
+
+    public SequenceFeatureBuilder signatureDbId(String dbId) {
+        this.dbId = dbId;
+        return this;
+    }
+
+    public SequenceFeatureBuilder locations(List<Location> locations) {
+        this.locations = Utils.modifiableList(locations);
+        return this;
+    }
+
+    public SequenceFeatureBuilder addLocation(Location location) {
+        Utils.addOrIgnoreNull(location, locations);
+        return this;
+    }
+
+    @Override
+    public SequenceFeatureBuilder from(SequenceFeature instance) {
+        this.interproGroup = instance.getInterProDomain();
+        this.dbType = instance.getSignatureDbType();
+        this.dbId = instance.getSignatureDbId();
+        this.locations.clear();
+        this.locations.addAll(instance.getLocations());
+        return this;
+    }
 }
-

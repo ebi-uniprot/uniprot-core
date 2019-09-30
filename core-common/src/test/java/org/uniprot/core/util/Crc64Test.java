@@ -1,12 +1,10 @@
 package org.uniprot.core.util;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-
+import org.junit.jupiter.api.Test;
 
 class Crc64Test {
 
@@ -35,12 +33,12 @@ class Crc64Test {
     }
 
     @Test
-    void getCrc64BDCanReturngetCrc64Result(){
-        String seq = "MQTFLKGKRVGYWLSEKKIKKLNFQAFAELCRKRGMEVVQLNLSRPIEEQGPLDVIIHKLTDVILEADQNDSQSLELVHRFQEYIDAHPETIVL";
+    void getCrc64BDCanReturngetCrc64Result() {
+        String seq =
+                "MQTFLKGKRVGYWLSEKKIKKLNFQAFAELCRKRGMEVVQLNLSRPIEEQGPLDVIIHKLTDVILEADQNDSQSLELVHRFQEYIDAHPETIVL";
         String cString1 = Crc64.getCrc64(seq);
         BigDecimal bd = Crc64.getCrc64BD(seq);
         String c2 = Long.toHexString(bd.longValue()).toUpperCase();
         assertEquals(cString1, c2);
     }
-
 }

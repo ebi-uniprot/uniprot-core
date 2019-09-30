@@ -18,16 +18,17 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     private ProteinRecName recommendedName;
     private List<ProteinAltName> alternativeNames = new ArrayList<>();
     private Name allergenName;
-	private Name biotechName;
-	private List<Name> cdAntigenNames = new ArrayList<>();
-	private List<Name> innNames = new ArrayList<>();
+    private Name biotechName;
+    private List<Name> cdAntigenNames = new ArrayList<>();
+    private List<Name> innNames = new ArrayList<>();
+
     public ProteinSectionBuilder recommendedName(ProteinRecName recommendedName) {
         this.recommendedName = recommendedName;
         return this;
     }
 
     public ProteinSectionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
-		this.alternativeNames = modifiableList(alternativeNames);
+        this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
@@ -35,40 +36,46 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
         addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
+
     public ProteinSectionBuilder allergenName(Name allergenName) {
-		this.allergenName = allergenName;
-		return this;
-	}
+        this.allergenName = allergenName;
+        return this;
+    }
 
-	public ProteinSectionBuilder biotechName(Name biotechName) {
-		this.biotechName = biotechName;
-		return this;
-	}
+    public ProteinSectionBuilder biotechName(Name biotechName) {
+        this.biotechName = biotechName;
+        return this;
+    }
 
-	public ProteinSectionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
-		this.cdAntigenNames = modifiableList(cdAntigenNames);
-		return this;
-	}
+    public ProteinSectionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
+        this.cdAntigenNames = modifiableList(cdAntigenNames);
+        return this;
+    }
 
-	public ProteinSectionBuilder addCdAntigenNames(Name cdAntigen) {
-		addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
-		return this;
-	}
+    public ProteinSectionBuilder addCdAntigenNames(Name cdAntigen) {
+        addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
+        return this;
+    }
 
-	public ProteinSectionBuilder innNames(List<Name> innNames) {
-		this.innNames = modifiableList(innNames);
-		return this;
-	}
+    public ProteinSectionBuilder innNames(List<Name> innNames) {
+        this.innNames = modifiableList(innNames);
+        return this;
+    }
 
-	public ProteinSectionBuilder addInnNames(Name innNames) {
-		addOrIgnoreNull(innNames, this.innNames);
-		return this;
-	}
+    public ProteinSectionBuilder addInnNames(Name innNames) {
+        addOrIgnoreNull(innNames, this.innNames);
+        return this;
+    }
+
     @Override
     public ProteinSection build() {
-        return new ProteinSectionImpl(recommendedName, alternativeNames,
-        		 allergenName,  biotechName, cdAntigenNames, innNames
-        		);
+        return new ProteinSectionImpl(
+                recommendedName,
+                alternativeNames,
+                allergenName,
+                biotechName,
+                cdAntigenNames,
+                innNames);
     }
 
     @Override

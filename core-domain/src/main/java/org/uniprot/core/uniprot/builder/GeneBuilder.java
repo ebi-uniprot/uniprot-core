@@ -10,11 +10,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
-/**
- *
- * @author lgonzales
- */
-public class GeneBuilder implements Builder<GeneBuilder,Gene> {
+/** @author lgonzales */
+public class GeneBuilder implements Builder<GeneBuilder, Gene> {
 
     private GeneName geneName = null;
     private List<GeneNameSynonym> synonyms = new ArrayList<>();
@@ -32,7 +29,7 @@ public class GeneBuilder implements Builder<GeneBuilder,Gene> {
     }
 
     public GeneBuilder synonyms(List<GeneNameSynonym> synonyms) {
-        if(synonyms != null) {
+        if (synonyms != null) {
             this.synonyms = modifiableList(synonyms);
         }
         return this;
@@ -44,7 +41,7 @@ public class GeneBuilder implements Builder<GeneBuilder,Gene> {
     }
 
     public GeneBuilder orderedLocusNames(List<OrderedLocusName> orderedLocusNames) {
-        if(orderedLocusNames != null) {
+        if (orderedLocusNames != null) {
             this.orderedLocusNames = modifiableList(orderedLocusNames);
         }
         return this;
@@ -54,8 +51,9 @@ public class GeneBuilder implements Builder<GeneBuilder,Gene> {
         addOrIgnoreNull(orfName, this.orfNames);
         return this;
     }
+
     public GeneBuilder orfNames(List<ORFName> orfNames) {
-        if(orfNames != null) {
+        if (orfNames != null) {
             this.orfNames = modifiableList(orfNames);
         }
         return this;

@@ -1,13 +1,13 @@
 package org.uniprot.core.cv.chebi;
 
-import org.uniprot.core.cv.common.AbstractFileReader;
+import static org.uniprot.core.util.Utils.notNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.uniprot.core.util.Utils.notNull;
+import org.uniprot.core.cv.common.AbstractFileReader;
 
 public class ChebiFileReader extends AbstractFileReader<Chebi> {
     private static final String ID_PREFIX = "id: CHEBI:";

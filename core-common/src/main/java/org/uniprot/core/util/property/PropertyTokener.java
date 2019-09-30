@@ -27,9 +27,8 @@ SOFTWARE.
  */
 
 /**
- * A JSONTokener takes a source string and extracts characters and tokens from
- * it. It is used by the JSONObject and JSONArray constructors to parse
- * JSON source strings.
+ * A JSONTokener takes a source string and extracts characters and tokens from it. It is used by the
+ * JSONObject and JSONArray constructors to parse JSON source strings.
  *
  * @author JSON.org
  * @version 2014-05-03
@@ -37,39 +36,22 @@ SOFTWARE.
 class PropertyTokener implements Serializable {
     private static final long serialVersionUID = -5773077474446482977L;
 
-    /**
-     * Reader for the input.
-     */
+    /** Reader for the input. */
     private final Reader reader;
-    /**
-     * current read character position on the current line.
-     */
+    /** current read character position on the current line. */
     private long character;
-    /**
-     * flag to indicate if the end of the input has been found.
-     */
+    /** flag to indicate if the end of the input has been found. */
     private boolean eof;
-    /**
-     * current read index of the input.
-     */
+    /** current read index of the input. */
     private long index;
-    /**
-     * current line of the input.
-     */
+    /** current line of the input. */
     private long line;
-    /**
-     * previous character read from the input.
-     */
+    /** previous character read from the input. */
     private char previous;
-    /**
-     * flag to indicate that a previous character was requested.
-     */
+    /** flag to indicate that a previous character was requested. */
     private boolean usePrevious;
-    /**
-     * the number of characters read in the previous line.
-     */
+    /** the number of characters read in the previous line. */
     private long characterPreviousLine;
-
 
     /**
      * Construct a JSONTokener from a Reader. The caller must close the Reader.
@@ -77,9 +59,7 @@ class PropertyTokener implements Serializable {
      * @param reader A reader.
      */
     PropertyTokener(Reader reader) {
-        this.reader = reader.markSupported()
-                ? reader
-                : new BufferedReader(reader);
+        this.reader = reader.markSupported() ? reader : new BufferedReader(reader);
         this.eof = false;
         this.usePrevious = false;
         this.previous = 0;
@@ -99,12 +79,11 @@ class PropertyTokener implements Serializable {
     }
 
     /**
-     * Back up one character. This provides a sort of lookahead capability,
-     * so that you can test for a digit or letter before attempting to parse
-     * the next number or identifier.
+     * Back up one character. This provides a sort of lookahead capability, so that you can test for
+     * a digit or letter before attempting to parse the next number or identifier.
      *
-     * @throws PropertyException Thrown if trying to step back more than 1 step
-     *                           or if already at the start of the string
+     * @throws PropertyException Thrown if trying to step back more than 1 step or if already at the
+     *     start of the string
      */
     void back() throws PropertyException {
         if (this.usePrevious || this.index <= 0) {
@@ -125,12 +104,11 @@ class PropertyTokener implements Serializable {
     }
 
     /**
-     * Determine if the source string still contains characters that next()
-     * can consume.
+     * Determine if the source string still contains characters that next() can consume.
      *
      * @return true if not yet at the end of the source.
-     * @throws PropertyException thrown if there is an error stepping forward
-     *                           or backward while checking for more data.
+     * @throws PropertyException thrown if there is an error stepping forward or backward while
+     *     checking for more data.
      */
     boolean more() throws PropertyException {
         if (this.usePrevious) {
@@ -186,8 +164,8 @@ class PropertyTokener implements Serializable {
      *
      * @param n The number of characters to take.
      * @return A string of n characters.
-     * @throws PropertyException Substring bounds error if there are not
-     *                           n characters remaining in the source string.
+     * @throws PropertyException Substring bounds error if there are not n characters remaining in
+     *     the source string.
      */
     String next(int n) throws PropertyException {
         if (n == 0) {
@@ -223,14 +201,12 @@ class PropertyTokener implements Serializable {
     }
 
     /**
-     * Return the characters up to the next close quote character.
-     * Backslash processing is done. The formal JSON format does not
-     * allow strings in single quotes, but an implementation is allowed to
-     * accept them.
+     * Return the characters up to the next close quote character. Backslash processing is done. The
+     * formal JSON format does not allow strings in single quotes, but an implementation is allowed
+     * to accept them.
      *
-     * @param quote The quoting character, either
-     *              <code>"</code>&nbsp;<small>(double quote)</small> or
-     *              <code>'</code>&nbsp;<small>(single quote)</small>.
+     * @param quote The quoting character, either <code>"</code>&nbsp;<small>(double quote)</small>
+     *     or <code>'</code>&nbsp;<small>(single quote)</small>.
      * @return A String.
      * @throws PropertyException Unterminated string.
      */
@@ -289,8 +265,8 @@ class PropertyTokener implements Serializable {
     }
 
     /**
-     * Get the next value. The value can be a Boolean, Double, Integer,
-     * JSONArray, JSONObject, Long, or String, or the JSONObject.NULL object.
+     * Get the next value. The value can be a Boolean, Double, Integer, JSONArray, JSONObject, Long,
+     * or String, or the JSONObject.NULL object.
      *
      * @return An object.
      * @throws PropertyException If syntax error.
@@ -337,14 +313,12 @@ class PropertyTokener implements Serializable {
     }
 
     /**
-     * Skip characters until the next character is the requested character.
-     * If the requested character is not found, no characters are skipped.
+     * Skip characters until the next character is the requested character. If the requested
+     * character is not found, no characters are skipped.
      *
      * @param to A character to skip to.
-     * @return The requested character, or zero if the requested character
-     * is not found.
-     * @throws PropertyException Thrown if there is an error while searching
-     *                           for the to character
+     * @return The requested character, or zero if the requested character is not found.
+     * @throws PropertyException Thrown if there is an error while searching for the to character
      */
     char skipTo(char to) throws PropertyException {
         char c;
@@ -387,7 +361,7 @@ class PropertyTokener implements Serializable {
     /**
      * Make a JSONException to signal a syntax error.
      *
-     * @param message  The error message.
+     * @param message The error message.
      * @param causedBy The throwable that caused the error.
      * @return A JSONException object, suitable for throwing
      */
@@ -402,8 +376,7 @@ class PropertyTokener implements Serializable {
      */
     @Override
     public String toString() {
-        return " at " + this.index + " [character " + this.character + " line " +
-                this.line + "]";
+        return " at " + this.index + " [character " + this.character + " line " + this.line + "]";
     }
 
     /**
@@ -420,8 +393,8 @@ class PropertyTokener implements Serializable {
     }
 
     /**
-     * Increments the internal indexes according to the previous character
-     * read and the character passed as the current character.
+     * Increments the internal indexes according to the previous character read and the character
+     * passed as the current character.
      *
      * @param c the current character read.
      */
