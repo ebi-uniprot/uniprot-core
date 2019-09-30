@@ -21,7 +21,7 @@ class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
         List<String> report = new ArrayList<>();
 
         report.add("Less than 1% residual activity");
-        Range location = Range.create(2, 2);
+        Range location = new Range(2, 2);
         List<String> evs = new ArrayList<>();
         String description = "Less than 1% residual activity";
         AlternativeSequence altSeq =
@@ -52,7 +52,7 @@ class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
         List<String> report = new ArrayList<>();
 
         report.add("Less than 1% residual activity");
-        Range location = Range.create(2, 2);
+        Range location = new Range(2, 2);
 
         List<String> evs = new ArrayList<>();
         evs.add(ev1);

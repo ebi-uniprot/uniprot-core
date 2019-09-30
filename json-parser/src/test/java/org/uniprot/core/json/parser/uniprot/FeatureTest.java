@@ -37,7 +37,7 @@ public class FeatureTest {
 
     @Test
     void testFeatureExact() {
-        Range location = Range.create(2, 8);
+        Range location = new Range(2, 8);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -136,7 +136,7 @@ public class FeatureTest {
                         .id("db id")
                         .build();
 
-        Range location = Range.create(2, 8);
+        Range location = new Range(2, 8);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         return new FeatureBuilder()
                 .type(FeatureType.CHAIN)

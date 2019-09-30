@@ -2,6 +2,7 @@ package org.uniprot.core;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class RangeTest {
@@ -27,6 +28,15 @@ class RangeTest {
         Position end = new Position(25, PositionModifier.UNSURE);
         Range range = new Range(start, end);
         verify(range, start, end);
+    }
+
+    @Nested
+    class hashCode {
+        @Test
+        void hasCodeCanInclude(){
+            Range range = new Range(1, null);
+            verify(range, range.getStart(), range.getEnd());
+        }
     }
 
     private void verify(Range range, Position start, Position end) {

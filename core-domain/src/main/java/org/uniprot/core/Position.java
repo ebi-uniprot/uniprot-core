@@ -7,8 +7,6 @@ public final class Position implements Comparable<Position>, Serializable {
     private Integer value;
     private PositionModifier modifier;
 
-    private Position() {}
-
     public Position(Integer value) {
         this(value, getValueModifier(value));
     }
@@ -69,7 +67,7 @@ public final class Position implements Comparable<Position>, Serializable {
         PositionModifier modifier = PositionModifier.EXACT;
         if (value == null) {
             modifier = PositionModifier.UNKNOWN;
-        } else if (value.intValue() < 0) {
+        } else if (value < 0) {
             modifier = PositionModifier.UNKNOWN;
         }
         return modifier;
