@@ -1,14 +1,14 @@
 package org.uniprot.core;
 
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class PositionTest {
 
@@ -44,10 +44,9 @@ class PositionTest {
             List<Position> propList = Arrays.asList(unknown, exact, unsure);
             Collections.sort(propList);
             assertAll(
-              () -> assertEquals(PositionModifier.EXACT, propList.get(0).getModifier()),
-              () -> assertEquals(PositionModifier.UNSURE, propList.get(1).getModifier()),
-              () -> assertEquals(PositionModifier.UNKNOWN, propList.get(2).getModifier())
-            );
+                    () -> assertEquals(PositionModifier.EXACT, propList.get(0).getModifier()),
+                    () -> assertEquals(PositionModifier.UNSURE, propList.get(1).getModifier()),
+                    () -> assertEquals(PositionModifier.UNKNOWN, propList.get(2).getModifier()));
         }
 
         @Test
@@ -58,10 +57,9 @@ class PositionTest {
             List<Position> propList = Arrays.asList(five, two, three);
             Collections.sort(propList);
             assertAll(
-              () -> assertEquals(5, propList.get(0).getValue().intValue()),
-              () -> assertEquals(2, propList.get(1).getValue().intValue()),
-              () -> assertEquals(3, propList.get(2).getValue().intValue())
-            );
+                    () -> assertEquals(5, propList.get(0).getValue().intValue()),
+                    () -> assertEquals(2, propList.get(1).getValue().intValue()),
+                    () -> assertEquals(3, propList.get(2).getValue().intValue()));
         }
 
         @Test
@@ -72,10 +70,9 @@ class PositionTest {
             List<Position> propList = Arrays.asList(two, one, three);
             Collections.sort(propList);
             assertAll(
-              () -> assertEquals(1, propList.get(0).getValue().intValue()),
-              () -> assertEquals(2, propList.get(1).getValue().intValue()),
-              () -> assertEquals(3, propList.get(2).getValue().intValue())
-            );
+                    () -> assertEquals(1, propList.get(0).getValue().intValue()),
+                    () -> assertEquals(2, propList.get(1).getValue().intValue()),
+                    () -> assertEquals(3, propList.get(2).getValue().intValue()));
         }
     }
 

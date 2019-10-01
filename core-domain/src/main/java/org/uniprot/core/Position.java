@@ -30,7 +30,7 @@ public final class Position implements Comparable<Position>, Serializable {
     public int compareTo(Position o) {
         if (modifier == PositionModifier.UNKNOWN) {
             if (o.getModifier() == PositionModifier.UNKNOWN) {
-              return 0;
+                return 0;
             } else {
                 return 1;
             }
