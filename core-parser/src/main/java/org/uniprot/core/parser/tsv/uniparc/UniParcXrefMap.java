@@ -1,12 +1,7 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
@@ -23,7 +18,9 @@ public class UniParcXrefMap implements NamedValueMap {
     private static final String DELIMITER2 = ";";
 
     public static final List<String> FIELDS =
-            Arrays.asList("gene", "protein", "proteome", "accession", "first_seen", "last_seen");
+            Collections.unmodifiableList(
+                    Arrays.asList(
+                            "gene", "protein", "proteome", "accession", "first_seen", "last_seen"));
 
     private final List<UniParcDBCrossReference> xrefs;
 

@@ -20,7 +20,8 @@ public class ProteomeEntryMap implements NamedValueMap {
     private final ProteomeEntry entry;
     private final List<String> fields;
     public static final List<String> PROTEOME_FIELDS =
-            Arrays.asList("upid", "genome_assembly_id", "protein_count");
+            Collections.unmodifiableList(
+                    Arrays.asList("upid", "genome_assembly_id", "protein_count"));
 
     public ProteomeEntryMap(ProteomeEntry entry, List<String> fields) {
         this.entry = entry;

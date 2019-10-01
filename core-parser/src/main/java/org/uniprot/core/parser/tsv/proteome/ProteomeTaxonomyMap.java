@@ -1,9 +1,6 @@
 package org.uniprot.core.parser.tsv.proteome;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.uniprot.core.parser.tsv.uniprot.EntryMapUtil;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
@@ -15,7 +12,8 @@ import org.uniprot.core.uniprot.taxonomy.Taxonomy;
  */
 public class ProteomeTaxonomyMap implements NamedValueMap {
     public static final List<String> FIELDS =
-            Arrays.asList("organism", "organism_id", "taxon_mnemonic");
+            Collections.unmodifiableList(
+                    Arrays.asList("organism", "organism_id", "taxon_mnemonic"));
 
     private final Taxonomy taxonomy;
 

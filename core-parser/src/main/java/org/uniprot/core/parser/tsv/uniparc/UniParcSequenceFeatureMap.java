@@ -1,9 +1,6 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
@@ -18,21 +15,22 @@ public class UniParcSequenceFeatureMap implements NamedValueMap {
     private static final String DELIMITER = ",";
 
     public static final List<String> FIELDS =
-            Arrays.asList(
-                    "InterPro",
-                    "CDD",
-                    "Gene3D",
-                    "HAMAP",
-                    "PANTHER",
-                    "Pfam",
-                    "PIRSF",
-                    "PRINTS",
-                    "ProPom",
-                    "PROSITE",
-                    "SFLD",
-                    "SMART",
-                    "SUPFAM",
-                    "TIGRFAMs");
+            Collections.unmodifiableList(
+                    Arrays.asList(
+                            "InterPro",
+                            "CDD",
+                            "Gene3D",
+                            "HAMAP",
+                            "PANTHER",
+                            "Pfam",
+                            "PIRSF",
+                            "PRINTS",
+                            "ProPom",
+                            "PROSITE",
+                            "SFLD",
+                            "SMART",
+                            "SUPFAM",
+                            "TIGRFAMs"));
 
     private final List<SequenceFeature> features;
 

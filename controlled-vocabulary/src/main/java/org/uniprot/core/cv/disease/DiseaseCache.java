@@ -22,11 +22,6 @@ public enum DiseaseCache implements BaseCache<Disease> {
     }
 
     @Override
-    public void setDefaultDataFile(String dataFile) {
-        this.defaultDataLocation = dataFile;
-    }
-
-    @Override
     public Map<String, List<Disease>> getCacheMap() {
         return this.locationDiseaseMap;
     }

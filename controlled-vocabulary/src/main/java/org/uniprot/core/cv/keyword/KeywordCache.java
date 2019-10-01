@@ -22,11 +22,6 @@ public enum KeywordCache implements BaseCache<KeywordEntry> {
     }
 
     @Override
-    public void setDefaultDataFile(String dataFile) {
-        this.defaultDataLocation = dataFile;
-    }
-
-    @Override
     public Map<String, List<KeywordEntry>> getCacheMap() {
         return this.locationKeywordMap;
     }
