@@ -2,7 +2,7 @@ package org.uniprot.core.util;
 
 import java.math.BigDecimal;
 
-import javax.validation.constraints.NotNull;
+import javax.annotation.Nonnull;
 
 public class Crc64 {
 
@@ -33,7 +33,7 @@ public class Crc64 {
      * @param sequence sequence
      * @return the crc64 checksum for the sequence
      */
-    public static long getCrc64Long(@NotNull String sequence) {
+    public static long getCrc64Long(@Nonnull String sequence) {
         // x64 + x4 + x3 + x1 + 1
         long pOLY64Reverse = 0xd800000000000000L;
 
@@ -53,7 +53,7 @@ public class Crc64 {
         return reminder;
     }
 
-    public static BigDecimal getCrc64BD(@NotNull String sequence) {
+    public static BigDecimal getCrc64BD(@Nonnull String sequence) {
         long val = getCrc64Long(sequence);
         if (val > 0) {
             return new BigDecimal(val);
@@ -65,7 +65,7 @@ public class Crc64 {
         return bd;
     }
 
-    public static String getCrc64(@NotNull String sequence) {
+    public static String getCrc64(@Nonnull String sequence) {
         long crc64Number = 0;
 
         for (int i = 0; i < sequence.length(); ++i) {

@@ -3,8 +3,7 @@ package org.uniprot.core.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.annotation.Nonnull;
 
 public class MessageDigestUtil {
 
@@ -20,7 +19,7 @@ public class MessageDigestUtil {
      * @param type Message Digest type,
      * @return String
      */
-    static String getDigest(@NotNull String seq, @NotBlank String type) {
+    static String getDigest(@Nonnull String seq, @Nonnull String type) {
         MessageDigest md;
         try {
             md = MessageDigest.getInstance(type);
@@ -38,7 +37,7 @@ public class MessageDigestUtil {
      * @param seq string to be converted
      * @return Hex string
      */
-    public static @NotBlank String getMD5(@NotNull String seq) {
+    public static @Nonnull String getMD5(@Nonnull String seq) {
         return getDigest(seq, "MD5");
     }
 

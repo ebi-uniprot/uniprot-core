@@ -9,8 +9,7 @@ import java.time.temporal.ChronoField;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Enumeration that contains a set of date formatters.
@@ -40,7 +39,7 @@ public enum PublicationDateFormatter {
         this.dateFormat = dateFormat;
     }
 
-    public @NotNull Date convertStringToDate(@NotBlank String publicationDate) {
+    public @Nonnull Date convertStringToDate(@Nonnull String publicationDate) {
         try {
             LocalDate localDate = LocalDate.parse(publicationDate, dateFormat);
             return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
