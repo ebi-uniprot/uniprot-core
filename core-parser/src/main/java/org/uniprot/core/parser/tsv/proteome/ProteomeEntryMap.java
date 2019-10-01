@@ -19,7 +19,7 @@ import org.uniprot.core.proteome.ProteomeXReferenceType;
 public class ProteomeEntryMap implements NamedValueMap {
     private final ProteomeEntry entry;
     private final List<String> fields;
-    public static final List<String> FIELDS =
+    public static final List<String> PROTEOME_FIELDS =
             Arrays.asList("upid", "genome_assembly_id", "protein_count");
 
     public ProteomeEntryMap(ProteomeEntry entry, List<String> fields) {
@@ -60,15 +60,15 @@ public class ProteomeEntryMap implements NamedValueMap {
 
     private Map<String, String> getSimpleAttributeValues() {
         Map<String, String> map = new HashMap<>();
-        map.put(FIELDS.get(0), entry.getId().getValue());
-        map.put(FIELDS.get(1), getGenomeAssemblyId());
-        map.put(FIELDS.get(2), "" + entry.getProteinCount());
+        map.put(PROTEOME_FIELDS.get(0), entry.getId().getValue());
+        map.put(PROTEOME_FIELDS.get(1), getGenomeAssemblyId());
+        map.put(PROTEOME_FIELDS.get(2), "" + entry.getProteinCount());
 
         return map;
     }
 
     private static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(FIELDS::contains);
+        return fields.stream().anyMatch(PROTEOME_FIELDS::contains);
     }
 
     private String getGenomeAssemblyId() {

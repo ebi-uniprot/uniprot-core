@@ -18,7 +18,7 @@ public class UniParcEntryMap implements NamedValueMap {
     private final UniParcEntry entry;
     private final List<String> fields;
 
-    public static final List<String> FIELDS = Arrays.asList("upi");
+    public static final List<String> UNIPARC_FIELDS = Arrays.asList("upi");
 
     public UniParcEntryMap(UniParcEntry entry, List<String> fields) {
         this.entry = entry;
@@ -60,12 +60,12 @@ public class UniParcEntryMap implements NamedValueMap {
     }
 
     private static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(FIELDS::contains);
+        return fields.stream().anyMatch(UNIPARC_FIELDS::contains);
     }
 
     private Map<String, String> getSimpleAttributeValues() {
         Map<String, String> map = new HashMap<>();
-        map.put(FIELDS.get(0), entry.getUniParcId().getValue());
+        map.put(UNIPARC_FIELDS.get(0), entry.getUniParcId().getValue());
         return map;
     }
 }
