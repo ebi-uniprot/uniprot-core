@@ -7,8 +7,6 @@ public interface BaseCache<T> {
 
     String getDefaultDataFile();
 
-    void setDefaultDataFile(String dataFile);
-
     Map<String, List<T>> getCacheMap();
 
     AbstractFileReader<T> getReader();

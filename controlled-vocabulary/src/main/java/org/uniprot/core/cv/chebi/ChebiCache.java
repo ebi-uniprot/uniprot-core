@@ -27,11 +27,6 @@ public enum ChebiCache implements BaseCache<Chebi> {
     }
 
     @Override
-    public void setDefaultDataFile(String dataFile) {
-        this.defaultDataLocation = dataFile;
-    }
-
-    @Override
     public Map<String, List<Chebi>> getCacheMap() {
         return this.chebiMap;
     }

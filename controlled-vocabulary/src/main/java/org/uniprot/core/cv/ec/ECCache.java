@@ -28,11 +28,6 @@ public enum ECCache implements BaseCache<EC> {
     }
 
     @Override
-    public void setDefaultDataFile(String dataFile) {
-        this.defaultDataLocation = dataFile;
-    }
-
-    @Override
     public Map<String, List<EC>> getCacheMap() {
         return this.locationECMap;
     }
