@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class IsoformNameBuilder
 
     public IsoformNameBuilder(String value, List<Evidence> evidences) {
         this.value = value;
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
     }
 
     @Override

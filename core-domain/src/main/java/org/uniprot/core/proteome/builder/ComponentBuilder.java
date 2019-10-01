@@ -34,12 +34,12 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
 
     public ComponentBuilder dbXReferences(
             List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
-        this.dbXReferences = Utils.nonNullList(dbXReferences);
+        this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
     public ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
-        Utils.nonNullAdd(dbXReference, dbXReferences);
+        Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }
 

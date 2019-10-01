@@ -38,7 +38,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
             List<Evidence> evidences) {
         super(database, id, properties);
         this.isoformId = isoformId;
-        this.evidences = Utils.nonNullUnmodifiableList(evidences);
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     public String getIsoformId() {
@@ -47,7 +47,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
 
     @Override
     public boolean hasIsoformId() {
-        return Utils.notEmpty(this.isoformId);
+        return Utils.notNullOrEmpty(this.isoformId);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

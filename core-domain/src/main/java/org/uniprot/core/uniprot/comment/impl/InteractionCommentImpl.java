@@ -34,7 +34,7 @@ public class InteractionCommentImpl extends CommentImpl implements InteractionCo
 
     @Override
     public boolean hasInteractions() {
-        return Utils.notEmpty(this.interactions);
+        return Utils.notNullOrEmpty(this.interactions);
     }
 
     @Override

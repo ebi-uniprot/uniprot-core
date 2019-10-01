@@ -9,6 +9,8 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 /*
 Copyright (c) 2002 JSON.org
@@ -79,14 +81,14 @@ SOFTWARE.
  * @author JSON.org
  * @version 2016-08-15
  */
-public class PropertyObject implements Serializable {
+class PropertyObject implements Property, Serializable {
     private static final long serialVersionUID = -5915002448486752892L;
     /**
      * It is sometimes more convenient and less ambiguous to have a <code>NULL</code> object than to
      * use Java's <code>null</code> value. <code>JSONObject.NULL.equals(null)</code> returns <code>
      * true</code>. <code>JSONObject.NULL.toString()</code> returns <code>"null"</code>.
      */
-    public static final Object NULL = new Null();
+    static final Object NULL = new Null();
     /**
      * Regular Expression Pattern that matches JSON Numbers. This is primarily used for output to
      * guarantee that we are always writing valid JSON.
@@ -98,31 +100,14 @@ public class PropertyObject implements Serializable {
     private final Map<String, Object> map;
 
     /** Construct an empty JSONObject. */
-    public PropertyObject() {
+    PropertyObject() {
         // HashMap is used on purpose to ensure that elements are unordered by
         // the specification.
         // JSON tends to be a portable transfer format to allows the container
         // implementations to rearrange their items for a faster element
         // retrieval based on associative access.
         // Therefore, an implementation mustn't rely on the order of the item.
-        this.map = new HashMap<String, Object>();
-    }
-
-    /**
-     * Construct a JSONObject from a subset of another JSONObject. An array of strings is used to
-     * identify the keys that should be copied. Missing keys are ignored.
-     *
-     * @param jo A JSONObject.
-     * @param names An array of strings.
-     */
-    public PropertyObject(PropertyObject jo, String[] names) {
-        this(names.length);
-        for (int i = 0; i < names.length; i += 1) {
-            try {
-                this.putOnce(names[i], jo.opt(names[i]));
-            } catch (Exception ignore) {
-            }
-        }
+        this.map = new HashMap<>();
     }
 
     /**
@@ -132,7 +117,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If there is a syntax error in the source string or a duplicated
      *     key.
      */
-    public PropertyObject(PropertyTokener x) throws PropertyException {
+    PropertyObject(PropertyTokener x) throws PropertyException {
         this();
         char c;
         String key;
@@ -199,11 +184,11 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If a value in the map is non-finite number.
      * @throws NullPointerException If a key in the map is <code>null</code>
      */
-    public PropertyObject(Map<?, ?> m) {
+    PropertyObject(Map<?, ?> m) {
         if (m == null) {
-            this.map = new HashMap<String, Object>();
+            this.map = new HashMap<>();
         } else {
-            this.map = new HashMap<String, Object>(m.size());
+            this.map = new HashMap<>(m.size());
             for (final Entry<?, ?> e : m.entrySet()) {
                 if (e.getKey() == null) {
                     throw new NullPointerException("Null key.");
@@ -216,45 +201,8 @@ public class PropertyObject implements Serializable {
         }
     }
 
-    public PropertyObject(Object bean) {
-        this();
-    }
-
-    /**
-     * @param val value to convert
-     * @param defaultValue default value to return is the conversion doesn't work or is null.
-     * @return BigDecimal conversion of the original value, or the defaultValue if unable to
-     *     convert.
-     */
-    static BigDecimal objectToBigDecimal(Object val, BigDecimal defaultValue) {
-        if (NULL.equals(val)) {
-            return defaultValue;
-        }
-        if (val instanceof BigDecimal) {
-            return (BigDecimal) val;
-        }
-        if (val instanceof BigInteger) {
-            return new BigDecimal((BigInteger) val);
-        }
-        if (val instanceof Double || val instanceof Float) {
-            final double d = ((Number) val).doubleValue();
-            if (Double.isNaN(d)) {
-                return defaultValue;
-            }
-            return BigDecimal.valueOf(((Number) val).doubleValue());
-        }
-        if (val instanceof Long
-                || val instanceof Integer
-                || val instanceof Short
-                || val instanceof Byte) {
-            return new BigDecimal(((Number) val).longValue());
-        }
-        // don't check if it's a string in case of unchecked Number subclasses
-        try {
-            return new BigDecimal(val.toString());
-        } catch (Exception e) {
-            return defaultValue;
-        }
+    PropertyObject(String obj) {
+        this(new PropertyTokener(obj));
     }
 
     /**
@@ -266,7 +214,7 @@ public class PropertyObject implements Serializable {
      * @param string A String
      * @return A String correctly formatted for insertion in a JSON text.
      */
-    public static String quote(String string) {
+    static String quote(String string) {
         StringWriter sw = new StringWriter();
         synchronized (sw.getBuffer()) {
             try {
@@ -278,7 +226,7 @@ public class PropertyObject implements Serializable {
         }
     }
 
-    public static Writer quote(String string, Writer w) throws IOException {
+    static Writer quote(String string, Writer w) throws IOException {
         if (string == null || string.isEmpty()) {
             w.write("\"\"");
             return w;
@@ -405,10 +353,10 @@ public class PropertyObject implements Serializable {
             // in stringToValue.
             BigInteger bi = new BigInteger(val);
             if (bi.bitLength() <= 31) {
-                return Integer.valueOf(bi.intValue());
+                return bi.intValue();
             }
             if (bi.bitLength() <= 63) {
-                return Long.valueOf(bi.longValue());
+                return bi.longValue();
             }
             return bi;
         }
@@ -425,7 +373,7 @@ public class PropertyObject implements Serializable {
      */
     // Changes to this method must be copied to the corresponding method in
     // the XML class to keep full support for Android
-    public static Object stringToValue(String string) {
+    static Object stringToValue(String string) {
         if ("".equals(string)) {
             return string;
         }
@@ -460,8 +408,8 @@ public class PropertyObject implements Serializable {
                 } else {
                     Long myLong = Long.valueOf(string);
                     if (string.equals(myLong.toString())) {
-                        if (myLong.longValue() == myLong.intValue()) {
-                            return Integer.valueOf(myLong.intValue());
+                        if (myLong == myLong.intValue()) {
+                            return myLong.intValue();
                         }
                         return myLong;
                     }
@@ -478,7 +426,7 @@ public class PropertyObject implements Serializable {
      * @param o The object to test.
      * @throws PropertyException If o is a non-finite number.
      */
-    public static void testValidity(Object o) throws PropertyException {
+    static void testValidity(Object o) throws PropertyException {
         if (o != null) {
             if (o instanceof Double) {
                 if (((Double) o).isInfinite() || ((Double) o).isNaN()) {
@@ -502,56 +450,39 @@ public class PropertyObject implements Serializable {
      * @param object The object to wrap
      * @return The wrapped value
      */
-    public static Object wrap(Object object) {
-        try {
-            if (object == null) {
-                return NULL;
-            }
-            if (object instanceof PropertyObject
-                    || object instanceof PropertyArray
-                    || object instanceof Byte
-                    || object instanceof Character
-                    || object instanceof Short
-                    || object instanceof Integer
-                    || object instanceof Long
-                    || object instanceof Boolean
-                    || object instanceof Float
-                    || object instanceof Double
-                    || object instanceof String
-                    || object instanceof BigInteger
-                    || object instanceof BigDecimal
-                    || object instanceof Enum) {
-                return object;
-            }
-
-            if (object instanceof Collection) {
-                Collection<?> coll = (Collection<?>) object;
-                return new PropertyArray(coll);
-            }
-            if (object.getClass().isArray()) {
-                return new PropertyArray(object);
-            }
-            if (object instanceof Map) {
-                Map<?, ?> map = (Map<?, ?>) object;
-                return new PropertyObject(map);
-            }
-            Package objectPackage = object.getClass().getPackage();
-            String objectPackageName = objectPackage != null ? objectPackage.getName() : "";
-            if (objectPackageName.startsWith("java.")
-                    || objectPackageName.startsWith("javax.")
-                    || object.getClass().getClassLoader() == null) {
-                return object.toString();
-            }
-            return new PropertyObject(object);
-        } catch (Exception exception) {
-            return null;
+    static Object wrap(Object object) {
+        if (object == null) {
+            return NULL;
         }
-    }
-
-    static final void indent(Writer writer, int indent) throws IOException {
-        for (int i = 0; i < indent; i += 1) {
-            writer.write(' ');
+        if (object instanceof PropertyObject
+                || object instanceof PropertyArray
+                || object instanceof Byte
+                || object instanceof Character
+                || object instanceof Short
+                || object instanceof Integer
+                || object instanceof Long
+                || object instanceof Boolean
+                || object instanceof Float
+                || object instanceof Double
+                || object instanceof String
+                || object instanceof BigInteger
+                || object instanceof BigDecimal
+                || object instanceof Enum) {
+            return object;
         }
+
+        if (object instanceof Collection) {
+            Collection<?> coll = (Collection<?>) object;
+            return new PropertyArray(coll);
+        }
+        if (object.getClass().isArray()) {
+            return new PropertyArray(object);
+        }
+        if (object instanceof Map) {
+            Map<?, ?> map = (Map<?, ?>) object;
+            return new PropertyObject(map);
+        }
+        return new PropertyObject();
     }
 
     /**
@@ -561,7 +492,7 @@ public class PropertyObject implements Serializable {
      * @return The object associated with the key.
      * @throws PropertyException if the key is not found.
      */
-    public Object get(String key) throws PropertyException {
+    Object get(String key) throws PropertyException {
         if (key == null) {
             throw new PropertyException("Null key.");
         }
@@ -573,33 +504,13 @@ public class PropertyObject implements Serializable {
     }
 
     /**
-     * Get the Number value associated with a key.
-     *
-     * @param key A key string.
-     * @return The numeric value.
-     * @throws PropertyException if the key is not found or if the value is not a Number object and
-     *     cannot be converted to a number.
-     */
-    public Number getNumber(String key) throws PropertyException {
-        Object object = this.get(key);
-        try {
-            if (object instanceof Number) {
-                return (Number) object;
-            }
-            return stringToNumber(object.toString());
-        } catch (Exception e) {
-            throw new PropertyException("JSONObject[" + quote(key) + "] is not a number.", e);
-        }
-    }
-
-    /**
      * Get the JSONArray value associated with a key.
      *
      * @param key A key string.
      * @return A JSONArray which is the value.
      * @throws PropertyException if the key is not found or if the value is not a JSONArray.
      */
-    public PropertyArray getJSONArray(String key) throws PropertyException {
+    PropertyArray getJSONArray(String key) throws PropertyException {
         Object object = this.get(key);
         if (object instanceof PropertyArray) {
             return (PropertyArray) object;
@@ -614,7 +525,7 @@ public class PropertyObject implements Serializable {
      * @return A JSONObject which is the value.
      * @throws PropertyException if the key is not found or if the value is not a JSONObject.
      */
-    public PropertyObject getJSONObject(String key) throws PropertyException {
+    PropertyObject getJSONObject(String key) throws PropertyException {
         Object object = this.get(key);
         if (object instanceof PropertyObject) {
             return (PropertyObject) object;
@@ -643,7 +554,7 @@ public class PropertyObject implements Serializable {
      * @param key A key string.
      * @return true if the key exists in the JSONObject.
      */
-    public boolean has(String key) {
+    boolean has(String key) {
         return this.map.containsKey(key);
     }
 
@@ -654,19 +565,8 @@ public class PropertyObject implements Serializable {
      * @return true if there is no value associated with the key or if the value is the
      *     JSONObject.NULL object.
      */
-    public boolean isNull(String key) {
+    boolean isNull(String key) {
         return PropertyObject.NULL.equals(this.opt(key));
-    }
-
-    /**
-     * Get an enumeration of the keys of the JSONObject. Modifying this key Set will also modify the
-     * JSONObject. Use with caution.
-     *
-     * @return An iterator of the keys.
-     * @see Set#iterator()
-     */
-    public Iterator<String> keys() {
-        return this.keySet().iterator();
     }
 
     /**
@@ -676,17 +576,8 @@ public class PropertyObject implements Serializable {
      * @return A keySet.
      * @see Map#keySet()
      */
-    public Set<String> keySet() {
+    Set<String> keySet() {
         return this.map.keySet();
-    }
-
-    /**
-     * Get the number of keys stored in the JSONObject.
-     *
-     * @return The number of keys in the JSONObject.
-     */
-    public int length() {
-        return this.map.size();
     }
 
     /**
@@ -694,7 +585,7 @@ public class PropertyObject implements Serializable {
      *
      * @return true if JSONObject is empty, otherwise false.
      */
-    public boolean isEmpty() {
+    boolean isEmpty() {
         return this.map.isEmpty();
     }
 
@@ -704,7 +595,7 @@ public class PropertyObject implements Serializable {
      * @param key A key string.
      * @return An object which is the value, or null if there is no value.
      */
-    public Object opt(String key) {
+    Object opt(String key) {
         return key == null ? null : this.map.get(key);
     }
 
@@ -715,9 +606,16 @@ public class PropertyObject implements Serializable {
      * @param key A key string.
      * @return A JSONArray which is the value.
      */
-    public PropertyArray optJSONArray(String key) {
+    PropertyArray optJSONArray(String key) {
         Object o = this.opt(key);
         return o instanceof PropertyArray ? (PropertyArray) o : null;
+    }
+
+    public List<Property> getProperties(String key) {
+        Spliterator<Object> propertiesArray =
+                Optional.ofNullable(optJSONArray(key)).orElse(new PropertyArray()).spliterator();
+
+        return spliteratorToListIgnoreOthers(propertiesArray);
     }
 
     /**
@@ -729,7 +627,7 @@ public class PropertyObject implements Serializable {
      * @param defaultValue The default.
      * @return An object which is the value.
      */
-    public long optLong(String key, long defaultValue) {
+    long optLong(String key, long defaultValue) {
         final Number val = this.optNumber(key, null);
         if (val == null) {
             return defaultValue;
@@ -747,7 +645,7 @@ public class PropertyObject implements Serializable {
      * @param key A key string.
      * @return An object which is the value.
      */
-    public Number optNumber(String key) {
+    Number optNumber(String key) {
         return this.optNumber(key, null);
     }
 
@@ -761,7 +659,7 @@ public class PropertyObject implements Serializable {
      * @param defaultValue The default.
      * @return An object which is the value.
      */
-    public Number optNumber(String key, Number defaultValue) {
+    Number optNumber(String key, Number defaultValue) {
         Object val = this.opt(key);
         if (NULL.equals(val)) {
             return defaultValue;
@@ -799,7 +697,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, boolean value) throws PropertyException {
+    PropertyObject put(String key, boolean value) throws PropertyException {
         return this.put(key, value ? Boolean.TRUE : Boolean.FALSE);
     }
 
@@ -813,7 +711,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, Collection<?> value) throws PropertyException {
+    PropertyObject put(String key, Collection<?> value) throws PropertyException {
         return this.put(key, new PropertyArray(value));
     }
 
@@ -826,7 +724,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, double value) throws PropertyException {
+    PropertyObject put(String key, double value) throws PropertyException {
         return this.put(key, Double.valueOf(value));
     }
 
@@ -839,7 +737,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, float value) throws PropertyException {
+    PropertyObject put(String key, float value) throws PropertyException {
         return this.put(key, Float.valueOf(value));
     }
 
@@ -852,7 +750,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, int value) throws PropertyException {
+    PropertyObject put(String key, int value) throws PropertyException {
         return this.put(key, Integer.valueOf(value));
     }
 
@@ -865,7 +763,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, long value) throws PropertyException {
+    PropertyObject put(String key, long value) throws PropertyException {
         return this.put(key, Long.valueOf(value));
     }
 
@@ -879,7 +777,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, Map<?, ?> value) throws PropertyException {
+    PropertyObject put(String key, Map<?, ?> value) throws PropertyException {
         return this.put(key, new PropertyObject(value));
     }
 
@@ -894,7 +792,7 @@ public class PropertyObject implements Serializable {
      * @throws PropertyException If the value is non-finite number.
      * @throws NullPointerException If the key is <code>null</code>.
      */
-    public PropertyObject put(String key, Object value) throws PropertyException {
+    PropertyObject put(String key, Object value) throws PropertyException {
         if (key == null) {
             throw new NullPointerException("Null key.");
         }
@@ -916,7 +814,7 @@ public class PropertyObject implements Serializable {
      * @return this.
      * @throws PropertyException if the key is a duplicate
      */
-    public PropertyObject putOnce(String key, Object value) throws PropertyException {
+    PropertyObject putOnce(String key, Object value) throws PropertyException {
         if (key != null && value != null) {
             if (this.opt(key) != null) {
                 throw new PropertyException("Duplicate key \"" + key + "\"");
@@ -932,7 +830,7 @@ public class PropertyObject implements Serializable {
      * @param key The name to be removed.
      * @return The value that was associated with the name, or null if there was no value.
      */
-    public Object remove(String key) {
+    Object remove(String key) {
         return this.map.remove(key);
     }
 
@@ -943,40 +841,33 @@ public class PropertyObject implements Serializable {
      * @param other The other JSONObject
      * @return true if they are equal
      */
-    public boolean similar(Object other) {
-        try {
-            if (!(other instanceof PropertyObject)) {
-                return false;
-            }
-            if (!this.keySet().equals(((PropertyObject) other).keySet())) {
-                return false;
-            }
-            for (final Entry<String, ?> entry : this.entrySet()) {
-                String name = entry.getKey();
-                Object valueThis = entry.getValue();
-                Object valueOther = ((PropertyObject) other).get(name);
-                if (valueThis == valueOther) {
-                    continue;
-                }
-                if (valueThis == null) {
-                    return false;
-                }
-                if (valueThis instanceof PropertyObject) {
-                    if (!((PropertyObject) valueThis).similar(valueOther)) {
-                        return false;
-                    }
-                } else if (valueThis instanceof PropertyArray) {
-                    if (!((PropertyArray) valueThis).similar(valueOther)) {
-                        return false;
-                    }
-                } else if (!valueThis.equals(valueOther)) {
-                    return false;
-                }
-            }
-            return true;
-        } catch (Throwable exception) {
+    boolean similar(Object other) {
+        if (!(other instanceof PropertyObject)) {
             return false;
         }
+        if (!this.keySet().equals(((PropertyObject) other).keySet())) {
+            return false;
+        }
+        for (final Entry<String, ?> entry : this.entrySet()) {
+            String name = entry.getKey();
+            Object valueThis = entry.getValue();
+            Object valueOther = ((PropertyObject) other).get(name);
+            if (valueThis == valueOther) {
+                continue;
+            }
+            if (valueThis instanceof PropertyObject) {
+                if (!((PropertyObject) valueThis).similar(valueOther)) {
+                    return false;
+                }
+            } else if (valueThis instanceof PropertyArray) {
+                if (!((PropertyArray) valueThis).similar(valueOther)) {
+                    return false;
+                }
+            } else if (!valueThis.equals(valueOther)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -987,8 +878,8 @@ public class PropertyObject implements Serializable {
      *
      * @return a java.util.Map containing the entries of this object
      */
-    public Map<String, Object> toMap() {
-        Map<String, Object> results = new HashMap<String, Object>();
+    Map<String, Object> toMap() {
+        Map<String, Object> results = new HashMap<>();
         for (Entry<String, Object> entry : this.entrySet()) {
             Object value;
             if (entry.getValue() == null || NULL.equals(entry.getValue())) {
@@ -1020,8 +911,12 @@ public class PropertyObject implements Serializable {
         return this.map.entrySet();
     }
 
-    private boolean isValidMethodName(String name) {
-        return !"getClass".equals(name) && !"getDeclaringClass".equals(name);
+    static List<Property> spliteratorToListIgnoreOthers(
+            Spliterator<Object> propertyArraySpliterator) {
+        return StreamSupport.stream(propertyArraySpliterator, false)
+                .filter(obj -> obj instanceof PropertyObject)
+                .map(obj -> (Property) obj)
+                .collect(Collectors.toList());
     }
 
     /**
@@ -1059,17 +954,6 @@ public class PropertyObject implements Serializable {
         @Override
         public String toString() {
             return "null";
-        }
-
-        /**
-         * There is only intended to be a single instance of the NULL object, so the clone method
-         * returns itself.
-         *
-         * @return NULL.
-         */
-        @Override
-        protected final Object clone() {
-            return this;
         }
     }
 }

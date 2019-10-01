@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.evidence.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class EvidencedValueBuilder
 
     public EvidencedValueBuilder(String value, List<Evidence> evidences) {
         this.value = value;
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
     }
 
     @Override

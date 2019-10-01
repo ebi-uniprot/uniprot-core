@@ -1,7 +1,7 @@
 package org.uniprot.core.citation.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,17 +27,17 @@ public abstract class AbstractCitationBuilder<
     protected PublicationDate publicationDate;
 
     public B authoringGroups(List<String> groups) {
-        this.authoringGroups = nonNullList(groups);
+        this.authoringGroups = modifiableList(groups);
         return getThis();
     }
 
     public B addAuthorGroup(String group) {
-        nonNullAdd(group, this.authoringGroups);
+        addOrIgnoreNull(group, this.authoringGroups);
         return getThis();
     }
 
     public B authors(List<Author> authors) {
-        this.authors = nonNullList(authors);
+        this.authors = modifiableList(authors);
         return getThis();
     }
 
@@ -52,7 +52,7 @@ public abstract class AbstractCitationBuilder<
     }
 
     public B addAuthor(Author author) {
-        nonNullAdd(author, this.authors);
+        addOrIgnoreNull(author, this.authors);
         return getThis();
     }
 

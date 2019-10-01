@@ -42,7 +42,7 @@ public class MichaelisConstantImpl implements MichaelisConstant {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

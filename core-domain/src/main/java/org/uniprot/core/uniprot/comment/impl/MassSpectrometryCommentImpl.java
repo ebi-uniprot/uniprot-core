@@ -98,7 +98,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
 
     @Override
     public boolean hasRanges() {
-        return Utils.notEmpty(this.ranges);
+        return Utils.notNullOrEmpty(this.ranges);
     }
 
     @Override
@@ -108,7 +108,7 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import static org.uniprot.core.util.Utils.nonNullUnmodifiableList;
-import static org.uniprot.core.util.Utils.nullToEmpty;
+import static org.uniprot.core.util.Utils.emptyOrString;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,9 +20,9 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
     AbstractOrganismNameImpl() {}
 
     AbstractOrganismNameImpl(String scientificName, String commonName, List<String> synonyms) {
-        this.scientificName = nullToEmpty(scientificName);
-        this.commonName = nullToEmpty(commonName);
-        this.synonyms = nonNullUnmodifiableList(synonyms);
+        this.scientificName = emptyOrString(scientificName);
+        this.commonName = emptyOrString(commonName);
+        this.synonyms = unmodifiableList(synonyms);
     }
 
     public String getScientificName() {
@@ -38,15 +38,15 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
     }
 
     public boolean hasScientificName() {
-        return Utils.notEmpty(this.scientificName);
+        return Utils.notNullOrEmpty(this.scientificName);
     }
 
     public boolean hasCommonName() {
-        return Utils.notEmpty(this.commonName);
+        return Utils.notNullOrEmpty(this.commonName);
     }
 
     public boolean hasSynonyms() {
-        return Utils.notEmpty(this.synonyms);
+        return Utils.notNullOrEmpty(this.synonyms);
     }
 
     @Override

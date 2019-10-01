@@ -63,11 +63,11 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
         this.rank = rank;
         this.hidden = hidden;
         this.active = active;
-        this.otherNames = Utils.nonNullList(otherNames);
-        this.lineage = Utils.nonNullList(lineage);
-        this.strains = Utils.nonNullList(strains);
-        this.hosts = Utils.nonNullList(hosts);
-        this.links = Utils.nonNullList(links);
+        this.otherNames = Utils.unmodifiableList(otherNames);
+        this.lineage = Utils.unmodifiableList(lineage);
+        this.strains = Utils.unmodifiableList(strains);
+        this.hosts = Utils.unmodifiableList(hosts);
+        this.links = Utils.unmodifiableList(links);
         this.statistics = statistics;
         this.inactiveReason = inactiveReason;
     }
@@ -139,27 +139,27 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     @Override
     public boolean hasOtherNames() {
-        return Utils.notEmpty(this.otherNames);
+        return Utils.notNullOrEmpty(this.otherNames);
     }
 
     @Override
     public boolean hasLineage() {
-        return Utils.notEmpty(this.lineage);
+        return Utils.notNullOrEmpty(this.lineage);
     }
 
     @Override
     public boolean hasStrains() {
-        return Utils.notEmpty(this.strains);
+        return Utils.notNullOrEmpty(this.strains);
     }
 
     @Override
     public boolean hasHosts() {
-        return Utils.notEmpty(this.hosts);
+        return Utils.notNullOrEmpty(this.hosts);
     }
 
     @Override
     public boolean hasLinks() {
-        return Utils.notEmpty(this.links);
+        return Utils.notNullOrEmpty(this.links);
     }
 
     @Override

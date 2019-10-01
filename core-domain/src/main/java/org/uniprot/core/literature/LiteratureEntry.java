@@ -40,54 +40,54 @@ public interface LiteratureEntry extends Serializable {
     LiteratureStatistics getStatistics();
 
     default boolean hasPubmedId() {
-        return Utils.nonNull(getPubmedId()) && getPubmedId() > 0;
+        return Utils.notNull(getPubmedId()) && getPubmedId() > 0;
     }
 
     default boolean hasDoiId() {
-        return Utils.notEmpty(getDoiId());
+        return Utils.notNullOrEmpty(getDoiId());
     }
 
     default boolean hasTitle() {
-        return Utils.notEmpty(getTitle());
+        return Utils.notNullOrEmpty(getTitle());
     }
 
     default boolean hasAuthoringGroup() {
-        return Utils.notEmpty(getAuthoringGroup());
+        return Utils.notNullOrEmpty(getAuthoringGroup());
     }
 
     default boolean hasAuthors() {
-        return Utils.notEmpty(getAuthors());
+        return Utils.notNullOrEmpty(getAuthors());
     }
 
     default boolean hasPublicationDate() {
-        return Utils.nonNull(getPublicationDate());
+        return Utils.notNull(getPublicationDate());
     }
 
     default boolean hasJournal() {
-        return Utils.nonNull(getJournal());
+        return Utils.notNull(getJournal());
     }
 
     default boolean hasFirstPage() {
-        return Utils.notEmpty(getFirstPage());
+        return Utils.notNullOrEmpty(getFirstPage());
     }
 
     default boolean hasLastPage() {
-        return Utils.notEmpty(getLastPage());
+        return Utils.notNullOrEmpty(getLastPage());
     }
 
     default boolean hasVolume() {
-        return Utils.notEmpty(getVolume());
+        return Utils.notNullOrEmpty(getVolume());
     }
 
     default boolean hasLiteratureAbstract() {
-        return Utils.notEmpty(getLiteratureAbstract());
+        return Utils.notNullOrEmpty(getLiteratureAbstract());
     }
 
     default boolean hasLiteratureMappedReferences() {
-        return Utils.notEmpty(getLiteratureMappedReferences());
+        return Utils.notNullOrEmpty(getLiteratureMappedReferences());
     }
 
     default boolean hasStatistics() {
-        return Utils.nonNull(getStatistics());
+        return Utils.notNull(getStatistics());
     }
 }

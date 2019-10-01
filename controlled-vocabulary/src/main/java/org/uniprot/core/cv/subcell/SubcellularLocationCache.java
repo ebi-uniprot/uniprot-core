@@ -22,11 +22,6 @@ public enum SubcellularLocationCache implements BaseCache<SubcellularLocationEnt
     }
 
     @Override
-    public void setDefaultDataFile(String dataFile) {
-        this.defaultDataLocation = dataFile;
-    }
-
-    @Override
     public Map<String, List<SubcellularLocationEntry>> getCacheMap() {
         return this.locationSubcellularLocationMap;
     }

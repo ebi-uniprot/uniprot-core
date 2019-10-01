@@ -149,43 +149,43 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
 
     public ProteomeEntryBuilder dbXReferences(
             List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
-        this.dbXReferences = Utils.nonNullList(dbXReferences);
+        this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
     public ProteomeEntryBuilder addDbXReferences(
             DBCrossReference<ProteomeXReferenceType> dbXReference) {
-        Utils.nonNullAdd(dbXReference, dbXReferences);
+        Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }
 
     public ProteomeEntryBuilder components(List<Component> components) {
-        this.components = Utils.nonNullList(components);
+        this.components = Utils.modifiableList(components);
         return this;
     }
 
     public ProteomeEntryBuilder addComponent(Component component) {
-        Utils.nonNullAdd(component, components);
+        Utils.addOrIgnoreNull(component, components);
         return this;
     }
 
     public ProteomeEntryBuilder references(List<Citation> references) {
-        this.references = Utils.nonNullList(references);
+        this.references = Utils.modifiableList(references);
         return this;
     }
 
     public ProteomeEntryBuilder addReference(Citation reference) {
-        Utils.nonNullAdd(reference, references);
+        Utils.addOrIgnoreNull(reference, references);
         return this;
     }
 
     public ProteomeEntryBuilder redundantProteomes(List<RedundantProteome> redundantProteomes) {
-        this.redundantProteomes = Utils.nonNullList(redundantProteomes);
+        this.redundantProteomes = Utils.modifiableList(redundantProteomes);
         return this;
     }
 
     public ProteomeEntryBuilder addRedundantProteome(RedundantProteome redundantProteome) {
-        Utils.nonNullAdd(redundantProteome, redundantProteomes);
+        Utils.addOrIgnoreNull(redundantProteome, redundantProteomes);
         return this;
     }
 
@@ -210,22 +210,22 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
     }
 
     public ProteomeEntryBuilder taxonLineage(List<TaxonomyLineage> taxonLineage) {
-        this.taxonLineage = Utils.nonNullList(taxonLineage);
+        this.taxonLineage = Utils.modifiableList(taxonLineage);
         return this;
     }
 
     public ProteomeEntryBuilder addTaxonLineage(TaxonomyLineage taxon) {
-        Utils.nonNullAdd(taxon, taxonLineage);
+        Utils.addOrIgnoreNull(taxon, taxonLineage);
         return this;
     }
 
     public ProteomeEntryBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {
-        this.canonicalProteins = Utils.nonNullList(canonicalProteins);
+        this.canonicalProteins = Utils.modifiableList(canonicalProteins);
         return this;
     }
 
     public ProteomeEntryBuilder addCanonicalProtein(CanonicalProtein canonicalProtein) {
-        Utils.nonNullAdd(canonicalProtein, canonicalProteins);
+        Utils.addOrIgnoreNull(canonicalProtein, canonicalProteins);
         return this;
     }
 }

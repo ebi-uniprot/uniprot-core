@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.description.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +28,12 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     }
 
     public ProteinSectionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
-        this.alternativeNames = nonNullList(alternativeNames);
+        this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
     public ProteinSectionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
-        nonNullAdd(alternativeNames, this.alternativeNames);
+        addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
 
@@ -48,22 +48,22 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     }
 
     public ProteinSectionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
-        this.cdAntigenNames = nonNullList(cdAntigenNames);
+        this.cdAntigenNames = modifiableList(cdAntigenNames);
         return this;
     }
 
     public ProteinSectionBuilder addCdAntigenNames(Name cdAntigen) {
-        nonNullAdd(cdAntigen, this.cdAntigenNames);
+        addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
         return this;
     }
 
     public ProteinSectionBuilder innNames(List<Name> innNames) {
-        this.innNames = nonNullList(innNames);
+        this.innNames = modifiableList(innNames);
         return this;
     }
 
     public ProteinSectionBuilder addInnNames(Name innNames) {
-        nonNullAdd(innNames, this.innNames);
+        addOrIgnoreNull(innNames, this.innNames);
         return this;
     }
 

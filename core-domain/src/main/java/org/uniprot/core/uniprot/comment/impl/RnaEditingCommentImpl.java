@@ -53,7 +53,7 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
 
     @Override
     public boolean hasPositions() {
-        return Utils.notEmpty(this.positions);
+        return Utils.notNullOrEmpty(this.positions);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
 
         @Override
         public boolean hasEvidences() {
-            return Utils.notEmpty(this.evidences);
+            return Utils.notNullOrEmpty(this.evidences);
         }
 
         @Override

@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 public class TemperatureDependenceBuilder
         extends AbstractFreeTextBuilder<TemperatureDependenceBuilder, TemperatureDependence> {
     public TemperatureDependenceBuilder(List<EvidencedValue> evidencedValues) {
-        this.evidencedValues = nonNullList(evidencedValues);
+        this.evidencedValues = modifiableList(evidencedValues);
     }
 
     @Override

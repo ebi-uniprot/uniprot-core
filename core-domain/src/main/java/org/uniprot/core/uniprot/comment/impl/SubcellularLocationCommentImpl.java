@@ -57,7 +57,7 @@ public class SubcellularLocationCommentImpl extends CommentImpl
 
     @Override
     public boolean hasMolecule() {
-        return Utils.notEmpty(this.molecule);
+        return Utils.notNullOrEmpty(this.molecule);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class SubcellularLocationCommentImpl extends CommentImpl
 
     @Override
     public boolean hasSubcellularLocations() {
-        return Utils.notEmpty(this.subcellularLocations);
+        return Utils.notNullOrEmpty(this.subcellularLocations);
     }
 
     @Override

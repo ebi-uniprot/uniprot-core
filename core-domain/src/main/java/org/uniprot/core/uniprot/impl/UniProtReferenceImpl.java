@@ -31,9 +31,9 @@ public class UniProtReferenceImpl implements UniProtReference {
             List<ReferenceComment> referenceComments,
             List<Evidence> evidences) {
         this.citation = citation;
-        this.referencePositions = Utils.nonNullUnmodifiableList(referencePositions);
-        this.referenceComments = Utils.nonNullUnmodifiableList(referenceComments);
-        this.evidences = Utils.nonNullUnmodifiableList(evidences);
+        this.referencePositions = Utils.unmodifiableList(referencePositions);
+        this.referenceComments = Utils.unmodifiableList(referenceComments);
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class UniProtReferenceImpl implements UniProtReference {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override
@@ -75,12 +75,12 @@ public class UniProtReferenceImpl implements UniProtReference {
 
     @Override
     public boolean hasReferenceComments() {
-        return Utils.notEmpty(this.referenceComments);
+        return Utils.notNullOrEmpty(this.referenceComments);
     }
 
     @Override
     public boolean hasReferencePositions() {
-        return Utils.notEmpty(this.referencePositions);
+        return Utils.notNullOrEmpty(this.referencePositions);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,12 +47,12 @@ public final class SequenceCautionCommentBuilder
     }
 
     public SequenceCautionCommentBuilder positions(List<String> positions) {
-        this.positions = nonNullList(positions);
+        this.positions = modifiableList(positions);
         return this;
     }
 
     public SequenceCautionCommentBuilder addPosition(String position) {
-        nonNullAdd(position, this.positions);
+        addOrIgnoreNull(position, this.positions);
         return this;
     }
 
@@ -62,12 +62,12 @@ public final class SequenceCautionCommentBuilder
     }
 
     public SequenceCautionCommentBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 
     public SequenceCautionCommentBuilder addEvidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 }

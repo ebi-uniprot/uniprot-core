@@ -9,7 +9,7 @@ public interface NamedValueMap {
     Map<String, String> attributeValues();
 
     default String getOrDefaultEmpty(String input) {
-        if (Utils.notEmpty(input)) {
+        if (Utils.notNullOrEmpty(input)) {
             return input;
         } else {
             return "";
@@ -17,7 +17,7 @@ public interface NamedValueMap {
     }
 
     default String getOrDefaultEmpty(List<String> input) {
-        if (Utils.notEmpty(input)) {
+        if (Utils.notNullOrEmpty(input)) {
             return String.join(", ", input);
         } else {
             return "";

@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.description.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +23,12 @@ public class ProteinSubNameBuilder implements Builder<ProteinSubNameBuilder, Pro
     }
 
     public ProteinSubNameBuilder ecNumbers(List<EC> ecNumbers) {
-        this.ecNumbers = nonNullList(ecNumbers);
+        this.ecNumbers = modifiableList(ecNumbers);
         return this;
     }
 
     public ProteinSubNameBuilder addEcNumber(EC ecNumbers) {
-        nonNullAdd(ecNumbers, this.ecNumbers);
+        addOrIgnoreNull(ecNumbers, this.ecNumbers);
         return this;
     }
 

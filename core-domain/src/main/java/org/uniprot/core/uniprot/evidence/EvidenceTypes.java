@@ -7,8 +7,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.util.Utils;
-import org.uniprot.core.util.property.PropertyArray;
-import org.uniprot.core.util.property.PropertyObject;
+import org.uniprot.core.util.property.Property;
 
 public enum EvidenceTypes {
     INSTANCE;
@@ -36,10 +35,10 @@ public enum EvidenceTypes {
         try (InputStream configFile =
                 EvidenceTypes.class.getClassLoader().getResourceAsStream(FILENAME)) {
             String source = Utils.loadPropertyInput(configFile);
-            PropertyArray list = new PropertyArray(source);
+            List<Property> list = Property.parseJsonArray(source);
             list.forEach(
                     item -> {
-                        types.add(convert((PropertyObject) item));
+                        types.add(convert(item));
                     });
             typeMap =
                     types.stream()
@@ -49,7 +48,7 @@ public enum EvidenceTypes {
         }
     }
 
-    private EvidenceTypeDetail convert(PropertyObject obj) {
+    private EvidenceTypeDetail convert(Property obj) {
         String name = obj.getString("name");
         String displayName = obj.getString("displayName");
         String uriLink = obj.getString("uriLink");

@@ -34,11 +34,11 @@ public class ProteinSectionImpl implements ProteinSection {
             List<Name> innNames) {
 
         this.recommendedName = recommendedName;
-        this.alternativeNames = Utils.nonNullUnmodifiableList(alternativeNames);
+        this.alternativeNames = Utils.unmodifiableList(alternativeNames);
         this.allergenName = allergenName;
         this.biotechName = biotechName;
-        this.cdAntigenNames = Utils.nonNullUnmodifiableList(cdAntigenNames);
-        this.innNames = Utils.nonNullUnmodifiableList(innNames);
+        this.cdAntigenNames = Utils.unmodifiableList(cdAntigenNames);
+        this.innNames = Utils.unmodifiableList(innNames);
     }
 
     @Override
@@ -58,7 +58,7 @@ public class ProteinSectionImpl implements ProteinSection {
 
     @Override
     public boolean hasAlternativeNames() {
-        return Utils.notEmpty(this.alternativeNames);
+        return Utils.notNullOrEmpty(this.alternativeNames);
     }
 
     @Override
@@ -73,12 +73,12 @@ public class ProteinSectionImpl implements ProteinSection {
 
     @Override
     public boolean hasCdAntigenNames() {
-        return Utils.notEmpty(this.cdAntigenNames);
+        return Utils.notNullOrEmpty(this.cdAntigenNames);
     }
 
     @Override
     public boolean hasInnNames() {
-        return Utils.notEmpty(this.innNames);
+        return Utils.notNullOrEmpty(this.innNames);
     }
 
     @Override

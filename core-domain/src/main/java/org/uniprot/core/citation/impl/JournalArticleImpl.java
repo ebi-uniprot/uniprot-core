@@ -39,9 +39,9 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         if (journalName != null) {
             this.journal = new JournalImpl(journalName);
         }
-        this.firstPage = Utils.nullToEmpty(firstPage);
-        this.lastPage = Utils.nullToEmpty(lastPage);
-        this.volume = Utils.nullToEmpty(volume);
+        this.firstPage = Utils.emptyOrString(firstPage);
+        this.lastPage = Utils.emptyOrString(lastPage);
+        this.volume = Utils.emptyOrString(volume);
     }
 
     @Override
@@ -71,17 +71,17 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
 
     @Override
     public boolean hasFirstPage() {
-        return Utils.notEmpty(this.firstPage);
+        return Utils.notNullOrEmpty(this.firstPage);
     }
 
     @Override
     public boolean hasLastPage() {
-        return Utils.notEmpty(this.lastPage);
+        return Utils.notNullOrEmpty(this.lastPage);
     }
 
     @Override
     public boolean hasVolume() {
-        return Utils.notEmpty(this.volume);
+        return Utils.notNullOrEmpty(this.volume);
     }
 
     @Override

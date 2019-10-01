@@ -24,7 +24,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
             PublicationDate publicationDate,
             String patentNumber) {
         super(CitationType.PATENT, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.patentNumber = Utils.nullToEmpty(patentNumber);
+        this.patentNumber = Utils.emptyOrString(patentNumber);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
 
     @Override
     public boolean hasPatentNumber() {
-        return Utils.notEmpty(this.patentNumber);
+        return Utils.notNullOrEmpty(this.patentNumber);
     }
 
     @Override

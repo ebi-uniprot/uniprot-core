@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  */
 public class NoteBuilder extends AbstractFreeTextBuilder<NoteBuilder, Note> {
     public NoteBuilder(List<EvidencedValue> evidencedValues) {
-        this.evidencedValues = nonNullList(evidencedValues);
+        this.evidencedValues = modifiableList(evidencedValues);
     }
 
     @Override

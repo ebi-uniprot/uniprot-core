@@ -37,7 +37,7 @@ public class FeatureIdImpl implements FeatureId {
     }
 
     public FeatureIdImpl(String value) {
-        this.value = Utils.nullToEmpty(value);
+        this.value = Utils.emptyOrString(value);
     }
 
     public static boolean hasFeatureId(FeatureType type) {
@@ -51,7 +51,7 @@ public class FeatureIdImpl implements FeatureId {
 
     @Override
     public boolean hasValue() {
-        return Utils.notEmpty(this.value);
+        return Utils.notNullOrEmpty(this.value);
     }
 
     @Override

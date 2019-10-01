@@ -20,12 +20,12 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, Tax
     }
 
     public TaxonomyStrainBuilder synonyms(List<String> synonyms) {
-        this.synonyms = Utils.nonNullList(synonyms);
+        this.synonyms = Utils.modifiableList(synonyms);
         return this;
     }
 
     public TaxonomyStrainBuilder addSynonym(String synonym) {
-        Utils.nonNullAdd(synonym, this.synonyms);
+        Utils.addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
 

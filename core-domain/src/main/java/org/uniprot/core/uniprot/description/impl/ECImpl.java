@@ -33,7 +33,7 @@ public class ECImpl extends ECNumberImpl implements EC {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

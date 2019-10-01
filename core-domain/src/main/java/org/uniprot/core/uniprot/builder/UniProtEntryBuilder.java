@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,13 +170,13 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession) {
-            nonNullAdd(secondaryAccession, this.secondaryAccessions);
+            addOrIgnoreNull(secondaryAccession, this.secondaryAccessions);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions) {
-            this.secondaryAccessions = nonNullList(secondaryAccessions);
+            this.secondaryAccessions = modifiableList(secondaryAccessions);
             return this;
         }
 
@@ -200,13 +200,13 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addOrganismHost(OrganismHost organismHost) {
-            nonNullAdd(organismHost, this.organismHosts);
+            addOrIgnoreNull(organismHost, this.organismHosts);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder organismHosts(List<OrganismHost> organismHosts) {
-            this.organismHosts = nonNullList(organismHosts);
+            this.organismHosts = modifiableList(organismHosts);
             return this;
         }
 
@@ -224,87 +224,87 @@ public class UniProtEntryBuilder {
 
         @Override
         public ActiveEntryBuilder addGene(Gene gene) {
-            nonNullAdd(gene, this.genes);
+            addOrIgnoreNull(gene, this.genes);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder genes(List<Gene> genes) {
-            this.genes = nonNullList(genes);
+            this.genes = modifiableList(genes);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder addComment(Comment comment) {
-            nonNullAdd(comment, this.comments);
+            addOrIgnoreNull(comment, this.comments);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder comments(List<Comment> comments) {
-            this.comments = nonNullList(comments);
+            this.comments = modifiableList(comments);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder addFeature(Feature feature) {
-            nonNullAdd(feature, this.features);
+            addOrIgnoreNull(feature, this.features);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder features(List<Feature> features) {
-            this.features = nonNullList(features);
+            this.features = modifiableList(features);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder addGeneLocation(GeneLocation geneLocation) {
-            nonNullAdd(geneLocation, this.geneLocations);
+            addOrIgnoreNull(geneLocation, this.geneLocations);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder geneLocations(List<GeneLocation> geneLocations) {
-            this.geneLocations = nonNullList(geneLocations);
+            this.geneLocations = modifiableList(geneLocations);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder addKeyword(Keyword keyword) {
-            nonNullAdd(keyword, this.keywords);
+            addOrIgnoreNull(keyword, this.keywords);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder keywords(List<Keyword> keywords) {
-            this.keywords = nonNullList(keywords);
+            this.keywords = modifiableList(keywords);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder addReference(UniProtReference reference) {
-            nonNullAdd(reference, this.references);
+            addOrIgnoreNull(reference, this.references);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder references(List<UniProtReference> references) {
-            this.references = nonNullList(references);
+            this.references = modifiableList(references);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder addDatabaseCrossReference(
                 UniProtDBCrossReference databaseCrossReference) {
-            nonNullAdd(databaseCrossReference, this.databaseCrossReferences);
+            addOrIgnoreNull(databaseCrossReference, this.databaseCrossReferences);
             return this;
         }
 
         @Override
         public ActiveEntryBuilder databaseCrossReferences(
                 List<UniProtDBCrossReference> databaseCrossReferences) {
-            this.databaseCrossReferences = nonNullList(databaseCrossReferences);
+            this.databaseCrossReferences = modifiableList(databaseCrossReferences);
             return this;
         }
 

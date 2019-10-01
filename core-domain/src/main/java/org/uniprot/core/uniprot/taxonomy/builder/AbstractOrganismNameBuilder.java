@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +29,12 @@ public abstract class AbstractOrganismNameBuilder<
     }
 
     public B synonyms(List<String> synonyms) {
-        this.synonyms = nonNullList(synonyms);
+        this.synonyms = modifiableList(synonyms);
         return getThis();
     }
 
     public B addSynonyms(String synonym) {
-        nonNullAdd(synonym, this.synonyms);
+        addOrIgnoreNull(synonym, this.synonyms);
         return getThis();
     }
 
@@ -54,7 +54,7 @@ public abstract class AbstractOrganismNameBuilder<
     public B from(OrganismName organismName) {
         this.scientificName = organismName.getScientificName();
         this.commonName = organismName.getCommonName();
-        this.synonyms = nonNullList(organismName.getSynonyms());
+        this.synonyms = modifiableList(organismName.getSynonyms());
         return getThis();
     }
 }

@@ -15,10 +15,10 @@ public interface MaximumVelocity extends HasEvidences {
     }
 
     default boolean hasEnzyme() {
-        return Utils.notEmpty(getEnzyme());
+        return Utils.notNullOrEmpty(getEnzyme());
     }
 
     default boolean hasUnit() {
-        return Utils.notEmpty(getUnit());
+        return Utils.notNullOrEmpty(getUnit());
     }
 }

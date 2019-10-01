@@ -97,7 +97,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
 
         @Override
         public boolean hasValue() {
-            return Utils.notEmpty(this.value);
+            return Utils.notNullOrEmpty(this.value);
         }
 
         @Override

@@ -33,10 +33,10 @@ public class APIsoformImpl implements APIsoform {
             List<String> sequenceIds,
             IsoformSequenceStatus isoformSequenceStatus) {
         this.name = name;
-        this.synonyms = Utils.nonNullUnmodifiableList(synonyms);
+        this.synonyms = Utils.unmodifiableList(synonyms);
         this.note = note;
-        this.isoformIds = Utils.nonNullUnmodifiableList(isoformIds);
-        this.sequenceIds = Utils.nonNullUnmodifiableList(sequenceIds);
+        this.isoformIds = Utils.unmodifiableList(isoformIds);
+        this.sequenceIds = Utils.unmodifiableList(sequenceIds);
 
         if (isoformSequenceStatus == null) {
             this.isoformSequenceStatus = IsoformSequenceStatus.DESCRIBED;
@@ -80,7 +80,7 @@ public class APIsoformImpl implements APIsoform {
 
     @Override
     public boolean hasSynonyms() {
-        return Utils.notEmpty(this.synonyms);
+        return Utils.notNullOrEmpty(this.synonyms);
     }
 
     @Override
@@ -90,12 +90,12 @@ public class APIsoformImpl implements APIsoform {
 
     @Override
     public boolean hasIsoformIds() {
-        return Utils.notEmpty(this.isoformIds);
+        return Utils.notNullOrEmpty(this.isoformIds);
     }
 
     @Override
     public boolean hasSequenceIds() {
-        return Utils.notEmpty(this.sequenceIds);
+        return Utils.notNullOrEmpty(this.sequenceIds);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.xdb.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +44,12 @@ public class UniProtDBCrossReferenceBuilder
     }
 
     public UniProtDBCrossReferenceBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 
     public UniProtDBCrossReferenceBuilder addEvidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 

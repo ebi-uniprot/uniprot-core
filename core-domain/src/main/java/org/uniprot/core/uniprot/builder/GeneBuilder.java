@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,37 +24,37 @@ public class GeneBuilder implements Builder<GeneBuilder, Gene> {
     }
 
     public GeneBuilder addSynonyms(GeneNameSynonym synonym) {
-        nonNullAdd(synonym, this.synonyms);
+        addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
 
     public GeneBuilder synonyms(List<GeneNameSynonym> synonyms) {
         if (synonyms != null) {
-            this.synonyms = nonNullList(synonyms);
+            this.synonyms = modifiableList(synonyms);
         }
         return this;
     }
 
     public GeneBuilder addOrderedLocusNames(OrderedLocusName orderedLocusName) {
-        nonNullAdd(orderedLocusName, this.orderedLocusNames);
+        addOrIgnoreNull(orderedLocusName, this.orderedLocusNames);
         return this;
     }
 
     public GeneBuilder orderedLocusNames(List<OrderedLocusName> orderedLocusNames) {
         if (orderedLocusNames != null) {
-            this.orderedLocusNames = nonNullList(orderedLocusNames);
+            this.orderedLocusNames = modifiableList(orderedLocusNames);
         }
         return this;
     }
 
     public GeneBuilder addOrfNames(ORFName orfName) {
-        nonNullAdd(orfName, this.orfNames);
+        addOrIgnoreNull(orfName, this.orfNames);
         return this;
     }
 
     public GeneBuilder orfNames(List<ORFName> orfNames) {
         if (orfNames != null) {
-            this.orfNames = nonNullList(orfNames);
+            this.orfNames = modifiableList(orfNames);
         }
         return this;
     }

@@ -74,7 +74,7 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
 
     // for single string
     public DiseaseBuilder alternativeNames(String alternativeName) {
-        this.alternativeNames = Utils.nonNullList(this.alternativeNames);
+        this.alternativeNames = Utils.modifiableList(this.alternativeNames);
         this.alternativeNames.add(alternativeName);
         return this;
     }
@@ -86,7 +86,7 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
 
     // setter for single object
     public DiseaseBuilder crossReferences(CrossReference crossReference) {
-        this.crossReferences = Utils.nonNullList(this.crossReferences);
+        this.crossReferences = Utils.modifiableList(this.crossReferences);
         this.crossReferences.add(crossReference);
         return this;
     }
@@ -98,7 +98,7 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
 
     // setter for single object
     public DiseaseBuilder keywords(Keyword keyword) {
-        this.keywords = Utils.nonNullList(this.keywords);
+        this.keywords = Utils.modifiableList(this.keywords);
         this.keywords.add(keyword);
         return this;
     }

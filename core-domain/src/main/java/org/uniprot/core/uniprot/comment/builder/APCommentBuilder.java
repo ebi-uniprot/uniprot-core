@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,22 +32,22 @@ public final class APCommentBuilder
     }
 
     public APCommentBuilder events(List<APEventType> events) {
-        this.events = nonNullList(events);
+        this.events = modifiableList(events);
         return this;
     }
 
     public APCommentBuilder addEvent(APEventType event) {
-        nonNullAdd(event, this.events);
+        addOrIgnoreNull(event, this.events);
         return this;
     }
 
     public APCommentBuilder isoforms(List<APIsoform> isoforms) {
-        this.isoforms = nonNullList(isoforms);
+        this.isoforms = modifiableList(isoforms);
         return this;
     }
 
     public APCommentBuilder addIsoform(APIsoform isoform) {
-        nonNullAdd(isoform, this.isoforms);
+        addOrIgnoreNull(isoform, this.isoforms);
         return this;
     }
 

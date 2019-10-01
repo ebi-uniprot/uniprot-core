@@ -26,8 +26,8 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
             String institute,
             String address) {
         super(CitationType.THESIS, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.institute = Utils.nullToEmpty(institute);
-        this.address = Utils.nullToEmpty(address);
+        this.institute = Utils.emptyOrString(institute);
+        this.address = Utils.emptyOrString(address);
     }
 
     @Override
@@ -42,12 +42,12 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
 
     @Override
     public boolean hasInstitute() {
-        return Utils.notEmpty(this.institute);
+        return Utils.notNullOrEmpty(this.institute);
     }
 
     @Override
     public boolean hasAddress() {
-        return Utils.notEmpty(this.address);
+        return Utils.notNullOrEmpty(this.address);
     }
 
     @Override

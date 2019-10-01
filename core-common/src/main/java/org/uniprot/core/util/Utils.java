@@ -3,13 +3,42 @@ package org.uniprot.core.util;
 import java.io.InputStream;
 import java.util.*;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public class Utils {
-    public static String nullToEmpty(String value) {
-        if (value == null) return "";
-        else return value;
+    /**
+     * Convert null to empty string or return actual
+     *
+     * @param string string null or non null
+     * @return empty string or original string
+     */
+    public @Nonnull static String emptyOrString(@Nullable String string) {
+        if (string == null) return "";
+        else return string;
     }
 
-    public static <T> List<T> nonNullList(List<T> source) {
+    /**
+     * return new Array list when input list is null else return actual list
+     *
+     * @param list null or list
+     * @param <T> Type of list
+     * @return non null list or new array list
+     */
+    public @Nonnull static <T> List<T> emptyOrList(@Nullable List<T> list) {
+        if (list == null) return new ArrayList<>();
+        else return list;
+    }
+
+    /**
+     * Creates new array list from source. Can be expensive call depending on list size. Will change
+     * the implementation of list to array list.
+     *
+     * @param source can be null or any list
+     * @param <T> Type of source list
+     * @return non null array list
+     */
+    public @Nonnull static <T> List<T> modifiableList(@Nullable List<T> source) {
         if (source != null) {
             return new ArrayList<>(source);
         } else {
@@ -17,62 +46,74 @@ public class Utils {
         }
     }
 
-    public static <T> void nonNullAdd(T source, List<T> target) {
-        if (source != null) {
-            target.add(source);
+    /**
+     * Add value in list or ignore if value is null
+     *
+     * @param value value or null when you want to add in list
+     * @param target list to add value, should be notNull and modifiable
+     * @param <T> Type of value and list should be same
+     */
+    public static <T> void addOrIgnoreNull(@Nullable T value, @Nonnull List<T> target) {
+        if (value != null) {
+            target.add(value);
         }
     }
 
-    public static <T> List<T> nonNullUnmodifiableList(List<T> value) {
-        if ((value == null) || value.isEmpty()) {
+    /**
+     * Converts list to unmodifiable list
+     *
+     * @param targetList can be null or any list
+     * @param <T> type of the list
+     * @return Always returns non null un modifiable list
+     */
+    public @Nonnull static <T> List<T> unmodifiableList(@Nullable List<T> targetList) {
+        if ((targetList == null) || targetList.isEmpty()) {
             return Collections.emptyList();
         } else {
-            return Collections.unmodifiableList(value);
+            return Collections.unmodifiableList(targetList);
         }
     }
 
-    public static String loadPropertyInput(InputStream configFile) {
+    public @Nonnull static String loadPropertyInput(@Nonnull InputStream configFile) {
         Scanner s = new Scanner(configFile).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
 
-    public static boolean nullOrEmpty(String value) {
+    public static boolean nullOrEmpty(@Nullable String value) {
         return value == null || value.isEmpty();
     }
 
-    public static boolean nullOrEmpty(List<?> value) {
+    public static boolean nullOrEmpty(@Nullable List<?> value) {
         return value == null || value.isEmpty();
     }
 
-    public static boolean notEmpty(String value) {
+    public static boolean nullOrEmpty(@Nullable Map<?, ?> value) {
+        return value == null || value.isEmpty();
+    }
+
+    public static boolean notNullOrEmpty(@Nullable String value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notEmpty(List<?> value) {
+    public static boolean notNullOrEmpty(@Nullable List<?> value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean notEmpty(Map<?, ?> value) {
+    public static boolean notNullOrEmpty(@Nullable Map<?, ?> value) {
         return value != null && !value.isEmpty();
     }
 
-    public static boolean nonNull(Object o) {
+    public static boolean notNull(@Nullable Object o) {
         return Objects.nonNull(o);
     }
 
-    public static String capitalize(String str) {
+    public @Nullable static String upperFirstChar(@Nullable String str) {
         if (nullOrEmpty(str)) return str;
-        return new StringBuilder()
-                .append(Character.toTitleCase(str.charAt(0)))
-                .append(str.substring(1))
-                .toString();
+        return Character.toTitleCase(str.charAt(0)) + str.substring(1);
     }
 
-    public static String uncapitalize(String str) {
+    public @Nullable static String lowerFirstChar(@Nullable String str) {
         if (nullOrEmpty(str)) return str;
-        return new StringBuilder()
-                .append(Character.toLowerCase(str.charAt(0)))
-                .append(str.substring(1))
-                .toString();
+        return Character.toLowerCase(str.charAt(0)) + str.substring(1);
     }
 }

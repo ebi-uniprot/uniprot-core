@@ -20,23 +20,23 @@ public interface LiteratureMappedReference extends Serializable {
     String getAnnotation();
 
     default boolean hasUniprotAccession() {
-        return Utils.nonNull(getUniprotAccession())
-                && Utils.notEmpty(getUniprotAccession().getValue());
+        return Utils.notNull(getUniprotAccession())
+                && Utils.notNullOrEmpty(getUniprotAccession().getValue());
     }
 
     default boolean hasSource() {
-        return Utils.notEmpty(getSource());
+        return Utils.notNullOrEmpty(getSource());
     }
 
     default boolean hasSourceId() {
-        return Utils.notEmpty(getSourceId());
+        return Utils.notNullOrEmpty(getSourceId());
     }
 
     default boolean hasSourceCategory() {
-        return Utils.notEmpty(getSourceCategory());
+        return Utils.notNullOrEmpty(getSourceCategory());
     }
 
     default boolean hasAnnotation() {
-        return Utils.notEmpty(getAnnotation());
+        return Utils.notNullOrEmpty(getAnnotation());
     }
 }

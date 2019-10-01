@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +33,13 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
 
     public ReactionBuilder references(
             List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
-        this.reactionReferences = nonNullList(reactionReferences);
+        this.reactionReferences = modifiableList(reactionReferences);
         return this;
     }
 
     public ReactionBuilder addReactionReference(
             DBCrossReference<ReactionReferenceType> reactionReference) {
-        nonNullAdd(reactionReference, this.reactionReferences);
+        addOrIgnoreNull(reactionReference, this.reactionReferences);
         return this;
     }
 
@@ -54,12 +54,12 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
     }
 
     public ReactionBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 
     public ReactionBuilder addEvidences(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 

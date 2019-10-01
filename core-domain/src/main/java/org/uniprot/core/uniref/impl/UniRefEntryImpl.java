@@ -53,9 +53,9 @@ public class UniRefEntryImpl implements UniRefEntry {
         this.entryType = entryType;
         this.commonTaxonId = commonTaxonId;
         this.commonTaxon = commonTaxon;
-        this.goTerms = Utils.nonNullUnmodifiableList(goTerms);
+        this.goTerms = Utils.unmodifiableList(goTerms);
         this.representativeMember = representativeMember;
-        this.members = Utils.nonNullUnmodifiableList(members);
+        this.members = Utils.unmodifiableList(members);
         if (memberCount == 0) {
             this.memberCount = this.members.size() + 1;
         } else {

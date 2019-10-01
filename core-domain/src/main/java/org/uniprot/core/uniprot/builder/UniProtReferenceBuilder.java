@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,32 +46,32 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     }
 
     public UniProtReferenceBuilder positions(List<String> referencePositions) {
-        this.referencePositions = nonNullList(referencePositions);
+        this.referencePositions = modifiableList(referencePositions);
         return this;
     }
 
     public UniProtReferenceBuilder addPositions(String referencePosition) {
-        nonNullAdd(referencePosition, this.referencePositions);
+        addOrIgnoreNull(referencePosition, this.referencePositions);
         return this;
     }
 
     public UniProtReferenceBuilder comments(List<ReferenceComment> referenceComments) {
-        this.referenceComments = nonNullList(referenceComments);
+        this.referenceComments = modifiableList(referenceComments);
         return this;
     }
 
     public UniProtReferenceBuilder addComment(ReferenceComment referenceComment) {
-        nonNullAdd(referenceComment, this.referenceComments);
+        addOrIgnoreNull(referenceComment, this.referenceComments);
         return this;
     }
 
     public UniProtReferenceBuilder evidences(List<Evidence> evidences) {
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
         return this;
     }
 
     public UniProtReferenceBuilder evidence(Evidence evidence) {
-        nonNullAdd(evidence, this.evidences);
+        addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 }

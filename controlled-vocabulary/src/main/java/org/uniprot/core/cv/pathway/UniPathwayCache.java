@@ -21,11 +21,6 @@ public enum UniPathwayCache implements BaseCache<UniPathway> {
     }
 
     @Override
-    public void setDefaultDataFile(String dataFile) {
-        this.defaultDataLocation = dataFile;
-    }
-
-    @Override
     public Map<String, List<UniPathway>> getCacheMap() {
         return this.locationPathwayMap;
     }

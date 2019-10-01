@@ -30,32 +30,32 @@ public class LiteratureMappedReferenceBuilder
     }
 
     public LiteratureMappedReferenceBuilder uniprotAccession(String uniprotAccession) {
-        this.uniprotAccession = new UniProtAccessionImpl(Utils.nullToEmpty(uniprotAccession));
+        this.uniprotAccession = new UniProtAccessionImpl(Utils.emptyOrString(uniprotAccession));
         return this;
     }
 
     public LiteratureMappedReferenceBuilder source(String source) {
-        this.source = Utils.nullToEmpty(source);
+        this.source = Utils.emptyOrString(source);
         return this;
     }
 
     public LiteratureMappedReferenceBuilder sourceId(String sourceId) {
-        this.sourceId = Utils.nullToEmpty(sourceId);
+        this.sourceId = Utils.emptyOrString(sourceId);
         return this;
     }
 
     public LiteratureMappedReferenceBuilder sourceCategory(List<String> sourceCategory) {
-        this.sourceCategory = Utils.nonNullList(sourceCategory);
+        this.sourceCategory = Utils.modifiableList(sourceCategory);
         return this;
     }
 
     public LiteratureMappedReferenceBuilder addSourceCategory(String sourceCategory) {
-        Utils.nonNullAdd(sourceCategory, this.sourceCategory);
+        Utils.addOrIgnoreNull(sourceCategory, this.sourceCategory);
         return this;
     }
 
     public LiteratureMappedReferenceBuilder annotation(String annotation) {
-        this.annotation = Utils.nullToEmpty(annotation);
+        this.annotation = Utils.emptyOrString(annotation);
         return this;
     }
 

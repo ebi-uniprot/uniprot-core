@@ -52,12 +52,12 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
 
     @Override
     public boolean hasId() {
-        return Utils.notEmpty(this.id);
+        return Utils.notNullOrEmpty(this.id);
     }
 
     @Override
     public boolean hasProperties() {
-        return Utils.notEmpty(this.properties);
+        return Utils.notNullOrEmpty(this.properties);
     }
 
     public void setProperties(List<Property> properties) {

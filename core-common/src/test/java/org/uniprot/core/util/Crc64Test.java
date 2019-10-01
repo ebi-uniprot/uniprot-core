@@ -31,4 +31,14 @@ class Crc64Test {
         assertEquals("E89E2EE11971278E", cString1);
         assertEquals("E89E2EE11971278E", c2);
     }
+
+    @Test
+    void getCrc64BDCanReturngetCrc64Result() {
+        String seq =
+                "MQTFLKGKRVGYWLSEKKIKKLNFQAFAELCRKRGMEVVQLNLSRPIEEQGPLDVIIHKLTDVILEADQNDSQSLELVHRFQEYIDAHPETIVL";
+        String cString1 = Crc64.getCrc64(seq);
+        BigDecimal bd = Crc64.getCrc64BD(seq);
+        String c2 = Long.toHexString(bd.longValue()).toUpperCase();
+        assertEquals(cString1, c2);
+    }
 }

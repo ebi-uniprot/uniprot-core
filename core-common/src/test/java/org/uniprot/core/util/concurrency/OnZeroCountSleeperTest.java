@@ -41,6 +41,25 @@ class OnZeroCountSleeperTest {
     }
 
     @Test
+    void whenInterruptedItCanHandleException() {
+        int initialCount = 6;
+        OnZeroCountSleeper onZeroCountSleeper = new OnZeroCountSleeper(initialCount, 1000);
+        Thread t = Thread.currentThread();
+        new Thread(
+                        () -> {
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            t.interrupt();
+                        })
+                .start();
+        onZeroCountSleeper.sleepUntilZero();
+        assertThat(onZeroCountSleeper.getCount(), is(initialCount));
+    }
+
+    @Test
     void canIncrementSleeper() {
         sleeper.increment();
         assertThat(sleeper.getCount(), is(1));
@@ -136,7 +155,7 @@ class OnZeroCountSleeperTest {
                                         new Thread(
                                                 () -> {
                                                     try {
-                                                        Thread.sleep((long) (100000));
+                                                        Thread.sleep(100000);
                                                     } catch (InterruptedException e) {
                                                         LOGGER.error("User interrupted", e);
                                                     }

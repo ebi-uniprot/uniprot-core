@@ -21,7 +21,7 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     public TaxonomyStrainImpl(String name, List<String> synonyms) {
         this.name = name;
-        this.synonyms = Utils.nonNullList(synonyms);
+        this.synonyms = Utils.unmodifiableList(synonyms);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     @Override
     public boolean hasName() {
-        return Utils.notEmpty(this.name);
+        return Utils.notNullOrEmpty(this.name);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     @Override
     public boolean hasSynonyms() {
-        return Utils.notEmpty(this.synonyms);
+        return Utils.notNullOrEmpty(this.synonyms);
     }
 
     @Override

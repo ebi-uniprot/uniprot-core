@@ -54,11 +54,11 @@ public class UniParcEntryImpl implements UniParcEntry {
             String uniprotExclusionReason) {
         super();
         this.uniParcId = uniParcId;
-        this.databaseCrossReferences = Utils.nonNullList(databaseCrossReferences);
+        this.databaseCrossReferences = Utils.unmodifiableList(databaseCrossReferences);
         this.sequence = sequence;
 
-        this.sequenceFeatures = Utils.nonNullList(sequenceFeatures);
-        this.taxonomies = Utils.nonNullList(taxonomies);
+        this.sequenceFeatures = Utils.unmodifiableList(sequenceFeatures);
+        this.taxonomies = Utils.unmodifiableList(taxonomies);
         this.uniprotExclusionReason = uniprotExclusionReason;
     }
 

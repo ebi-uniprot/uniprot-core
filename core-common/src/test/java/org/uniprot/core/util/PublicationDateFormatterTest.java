@@ -1,13 +1,16 @@
 package org.uniprot.core.util;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 /**
  * Created 09/07/19
@@ -73,6 +76,36 @@ class PublicationDateFormatterTest {
 
         } catch (Exception e) {
             fail("Year test failed");
+        }
+    }
+
+    @ParameterizedTest
+    @EnumSource(PublicationDateFormatter.class)
+    void wrongFormats_shouldThrowExceptions(PublicationDateFormatter formatter) {
+        assertThrows(
+                DateTimeParseException.class, () -> formatter.convertStringToDate("wrong-format"));
+    }
+
+    @Nested
+    class isValidDate {
+        @Test
+        void year() {
+            assertAll(
+                    () -> assertFalse(PublicationDateFormatter.YEAR.isValidDate("0")),
+                    () -> assertTrue(PublicationDateFormatter.YEAR.isValidDate("2020")));
+        }
+
+        @Test
+        void year_month() {
+            assertAll(
+                    () ->
+                            assertFalse(
+                                    PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate(
+                                            "1920-0")),
+                    () ->
+                            assertTrue(
+                                    PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate(
+                                            "2020-12")));
         }
     }
 

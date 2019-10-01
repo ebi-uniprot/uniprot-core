@@ -48,13 +48,13 @@ public class BookImpl extends AbstractCitationImpl implements Book {
             String publisher,
             String address) {
         super(CitationType.BOOK, authoringGroup, authors, citationXrefs, title, publicationDate);
-        this.bookName = Utils.nullToEmpty(bookName);
-        this.editors = Utils.nonNullUnmodifiableList(editors);
-        this.firstPage = Utils.nullToEmpty(firstPage);
-        this.lastPage = Utils.nullToEmpty(lastPage);
-        this.volume = Utils.nullToEmpty(volume);
-        this.publisher = Utils.nullToEmpty(publisher);
-        this.address = Utils.nullToEmpty(address);
+        this.bookName = Utils.emptyOrString(bookName);
+        this.editors = Utils.unmodifiableList(editors);
+        this.firstPage = Utils.emptyOrString(firstPage);
+        this.lastPage = Utils.emptyOrString(lastPage);
+        this.volume = Utils.emptyOrString(volume);
+        this.publisher = Utils.emptyOrString(publisher);
+        this.address = Utils.emptyOrString(address);
     }
 
     @Override
@@ -94,37 +94,37 @@ public class BookImpl extends AbstractCitationImpl implements Book {
 
     @Override
     public boolean hasBookName() {
-        return Utils.notEmpty(this.bookName);
+        return Utils.notNullOrEmpty(this.bookName);
     }
 
     @Override
     public boolean hasEditors() {
-        return Utils.notEmpty(this.editors);
+        return Utils.notNullOrEmpty(this.editors);
     }
 
     @Override
     public boolean hasFirstPage() {
-        return Utils.notEmpty(this.firstPage);
+        return Utils.notNullOrEmpty(this.firstPage);
     }
 
     @Override
     public boolean hasLastPage() {
-        return Utils.notEmpty(this.lastPage);
+        return Utils.notNullOrEmpty(this.lastPage);
     }
 
     @Override
     public boolean hasVolume() {
-        return Utils.notEmpty(this.volume);
+        return Utils.notNullOrEmpty(this.volume);
     }
 
     @Override
     public boolean hasPublisher() {
-        return Utils.notEmpty(this.publisher);
+        return Utils.notNullOrEmpty(this.publisher);
     }
 
     @Override
     public boolean hasAddress() {
-        return Utils.notEmpty(this.address);
+        return Utils.notNullOrEmpty(this.address);
     }
 
     @Override

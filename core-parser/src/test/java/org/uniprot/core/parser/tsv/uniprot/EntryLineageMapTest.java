@@ -1,8 +1,5 @@
 package org.uniprot.core.parser.tsv.uniprot;
 
-
-
-
 /** TODO: Need to test when we decide how to implement lineage columns */
 class EntryLineageMapTest {
     /*

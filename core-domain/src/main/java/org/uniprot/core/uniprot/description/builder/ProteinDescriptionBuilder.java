@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.description.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +34,12 @@ public class ProteinDescriptionBuilder
     }
 
     public ProteinDescriptionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
-        this.alternativeNames = nonNullList(alternativeNames);
+        this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
     public ProteinDescriptionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
-        nonNullAdd(alternativeNames, this.alternativeNames);
+        addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
 
@@ -54,22 +54,22 @@ public class ProteinDescriptionBuilder
     }
 
     public ProteinDescriptionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
-        this.cdAntigenNames = nonNullList(cdAntigenNames);
+        this.cdAntigenNames = modifiableList(cdAntigenNames);
         return this;
     }
 
     public ProteinDescriptionBuilder addCdAntigenNames(Name cdAntigen) {
-        nonNullAdd(cdAntigen, this.cdAntigenNames);
+        addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
         return this;
     }
 
     public ProteinDescriptionBuilder innNames(List<Name> innNames) {
-        this.innNames = nonNullList(innNames);
+        this.innNames = modifiableList(innNames);
         return this;
     }
 
     public ProteinDescriptionBuilder addInnNames(Name innNames) {
-        nonNullAdd(innNames, this.innNames);
+        addOrIgnoreNull(innNames, this.innNames);
         return this;
     }
 
@@ -81,32 +81,32 @@ public class ProteinDescriptionBuilder
     }
 
     public ProteinDescriptionBuilder submissionNames(List<ProteinSubName> submissionNames) {
-        this.submissionNames = nonNullList(submissionNames);
+        this.submissionNames = modifiableList(submissionNames);
         return this;
     }
 
     public ProteinDescriptionBuilder addSubmissionNames(ProteinSubName submissionNames) {
-        nonNullAdd(submissionNames, this.submissionNames);
+        addOrIgnoreNull(submissionNames, this.submissionNames);
         return this;
     }
 
     public ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
-        this.includes = nonNullList(includes);
+        this.includes = modifiableList(includes);
         return this;
     }
 
     public ProteinDescriptionBuilder addIncludes(ProteinSection includes) {
-        nonNullAdd(includes, this.includes);
+        addOrIgnoreNull(includes, this.includes);
         return this;
     }
 
     public ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
-        this.contains = nonNullList(contains);
+        this.contains = modifiableList(contains);
         return this;
     }
 
     public ProteinDescriptionBuilder addContains(ProteinSection contains) {
-        nonNullAdd(contains, this.contains);
+        addOrIgnoreNull(contains, this.contains);
         return this;
     }
 

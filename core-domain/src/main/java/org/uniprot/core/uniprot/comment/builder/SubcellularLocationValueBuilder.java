@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -24,7 +24,7 @@ public class SubcellularLocationValueBuilder
     public SubcellularLocationValueBuilder(String id, String value, List<Evidence> evidences) {
         this.id = id;
         this.value = value;
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
     }
 
     @Override

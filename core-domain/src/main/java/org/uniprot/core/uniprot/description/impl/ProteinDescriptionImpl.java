@@ -69,15 +69,15 @@ public class ProteinDescriptionImpl implements ProteinDescription {
             List<ProteinSection> includes,
             List<ProteinSection> contains) {
         this.recommendedName = recommendedName;
-        this.alternativeNames = Utils.nonNullUnmodifiableList(alternativeNames);
-        this.submissionNames = Utils.nonNullUnmodifiableList(submissionNames);
+        this.alternativeNames = Utils.unmodifiableList(alternativeNames);
+        this.submissionNames = Utils.unmodifiableList(submissionNames);
         this.allergenName = allergenName;
         this.biotechName = biotechName;
-        this.cdAntigenNames = Utils.nonNullUnmodifiableList(cdAntigenNames);
-        this.innNames = Utils.nonNullUnmodifiableList(innNames);
+        this.cdAntigenNames = Utils.unmodifiableList(cdAntigenNames);
+        this.innNames = Utils.unmodifiableList(innNames);
         this.flag = flag;
-        this.includes = Utils.nonNullUnmodifiableList(includes);
-        this.contains = Utils.nonNullUnmodifiableList(contains);
+        this.includes = Utils.unmodifiableList(includes);
+        this.contains = Utils.unmodifiableList(contains);
     }
 
     @Override
@@ -112,22 +112,22 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 
     @Override
     public boolean hasAlternativeNames() {
-        return Utils.notEmpty(this.alternativeNames);
+        return Utils.notNullOrEmpty(this.alternativeNames);
     }
 
     @Override
     public boolean hasSubmissionNames() {
-        return Utils.notEmpty(this.submissionNames);
+        return Utils.notNullOrEmpty(this.submissionNames);
     }
 
     @Override
     public boolean hasIncludes() {
-        return Utils.notEmpty(this.includes);
+        return Utils.notNullOrEmpty(this.includes);
     }
 
     @Override
     public boolean hasContains() {
-        return Utils.notEmpty(this.contains);
+        return Utils.notNullOrEmpty(this.contains);
     }
 
     @Override
@@ -185,12 +185,12 @@ public class ProteinDescriptionImpl implements ProteinDescription {
 
     @Override
     public boolean hasCdAntigenNames() {
-        return Utils.notEmpty(this.cdAntigenNames);
+        return Utils.notNullOrEmpty(this.cdAntigenNames);
     }
 
     @Override
     public boolean hasInnNames() {
-        return Utils.notEmpty(this.innNames);
+        return Utils.notNullOrEmpty(this.innNames);
     }
 
     @Override

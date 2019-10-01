@@ -2,18 +2,19 @@ package org.uniprot.core.util;
 
 import java.math.BigDecimal;
 
+import javax.annotation.Nonnull;
+
 public class Crc64 {
 
-    private static long[] crc64Array = new long[256];
+    private static final long[] crc64Array = new long[256];
 
-    /** Initialization of _crc64Array. */
     static {
         for (int i = 0; i <= 255; ++i) {
             long k = i;
 
             for (int j = 0; j < 8; ++j) {
                 if ((k & 1) != 0) {
-                    k = (k >>> 1) ^ 0xd800000000000000l;
+                    k = (k >>> 1) ^ 0xd800000000000000L;
                 } else {
                     k = k >>> 1;
                 }
@@ -32,7 +33,7 @@ public class Crc64 {
      * @param sequence sequence
      * @return the crc64 checksum for the sequence
      */
-    public static long getCrc64Long(String sequence) {
+    public static long getCrc64Long(@Nonnull String sequence) {
         // x64 + x4 + x3 + x1 + 1
         long pOLY64Reverse = 0xd800000000000000L;
 
@@ -52,8 +53,8 @@ public class Crc64 {
         return reminder;
     }
 
-    public static BigDecimal getCrc64BD(String sequence) {
-        Long val = getCrc64Long(sequence);
+    public static BigDecimal getCrc64BD(@Nonnull String sequence) {
+        long val = getCrc64Long(sequence);
         if (val > 0) {
             return new BigDecimal(val);
         }
@@ -64,7 +65,7 @@ public class Crc64 {
         return bd;
     }
 
-    public static String getCrc64(String sequence) {
+    public static String getCrc64(@Nonnull String sequence) {
         long crc64Number = 0;
 
         for (int i = 0; i < sequence.length(); ++i) {

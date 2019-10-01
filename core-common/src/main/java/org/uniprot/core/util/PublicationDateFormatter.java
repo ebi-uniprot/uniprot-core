@@ -9,6 +9,8 @@ import java.time.temporal.ChronoField;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.annotation.Nonnull;
+
 /**
  * Enumeration that contains a set of date formatters.
  *
@@ -31,13 +33,13 @@ public enum PublicationDateFormatter {
     DAY_DIGITMONTH_YEAR(formatFor("yyyy-MM-dd").toFormatter(Locale.ENGLISH)),
     DAY_THREE_LETTER_MONTH_YEAR(formatFor("dd-MMM-yyyy").toFormatter(Locale.ENGLISH));
 
-    private DateTimeFormatter dateFormat;
+    private final DateTimeFormatter dateFormat;
 
     PublicationDateFormatter(DateTimeFormatter dateFormat) {
         this.dateFormat = dateFormat;
     }
 
-    public Date convertStringToDate(String publicationDate) {
+    public @Nonnull Date convertStringToDate(@Nonnull String publicationDate) {
         try {
             LocalDate localDate = LocalDate.parse(publicationDate, dateFormat);
             return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
@@ -45,6 +47,10 @@ public enum PublicationDateFormatter {
             System.err.println("failed to parse: " + publicationDate);
             throw e;
         }
+    }
+
+    private static DateTimeFormatterBuilder formatFor(String pattern) {
+        return new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern(pattern);
     }
 
     public boolean isValidDate(String date) {
@@ -55,9 +61,5 @@ public enum PublicationDateFormatter {
         }
 
         return true;
-    }
-
-    private static DateTimeFormatterBuilder formatFor(String pattern) {
-        return new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern(pattern);
     }
 }

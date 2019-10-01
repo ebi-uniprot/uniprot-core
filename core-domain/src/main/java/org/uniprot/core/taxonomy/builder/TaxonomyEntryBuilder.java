@@ -86,52 +86,52 @@ public class TaxonomyEntryBuilder
     }
 
     public TaxonomyEntryBuilder otherNames(List<String> otherNames) {
-        this.otherNames = Utils.nonNullList(otherNames);
+        this.otherNames = Utils.modifiableList(otherNames);
         return this;
     }
 
     public TaxonomyEntryBuilder addOtherNames(String otherNames) {
-        Utils.nonNullAdd(otherNames, this.otherNames);
+        Utils.addOrIgnoreNull(otherNames, this.otherNames);
         return this;
     }
 
     public TaxonomyEntryBuilder lineage(List<TaxonomyLineage> lineage) {
-        this.lineage = Utils.nonNullList(lineage);
+        this.lineage = Utils.modifiableList(lineage);
         return this;
     }
 
     public TaxonomyEntryBuilder addLineage(TaxonomyLineage lineage) {
-        Utils.nonNullAdd(lineage, this.lineage);
+        Utils.addOrIgnoreNull(lineage, this.lineage);
         return this;
     }
 
     public TaxonomyEntryBuilder strains(List<TaxonomyStrain> strains) {
-        this.strains = Utils.nonNullList(strains);
+        this.strains = Utils.modifiableList(strains);
         return this;
     }
 
     public TaxonomyEntryBuilder addStrain(TaxonomyStrain strains) {
-        Utils.nonNullAdd(strains, this.strains);
+        Utils.addOrIgnoreNull(strains, this.strains);
         return this;
     }
 
     public TaxonomyEntryBuilder hosts(List<Taxonomy> hosts) {
-        this.hosts = Utils.nonNullList(hosts);
+        this.hosts = Utils.modifiableList(hosts);
         return this;
     }
 
     public TaxonomyEntryBuilder addHost(Taxonomy host) {
-        Utils.nonNullAdd(host, this.hosts);
+        Utils.addOrIgnoreNull(host, this.hosts);
         return this;
     }
 
     public TaxonomyEntryBuilder links(List<String> links) {
-        this.links = Utils.nonNullList(links);
+        this.links = Utils.modifiableList(links);
         return this;
     }
 
     public TaxonomyEntryBuilder addLink(String link) {
-        Utils.nonNullAdd(link, this.links);
+        Utils.addOrIgnoreNull(link, this.links);
         return this;
     }
 

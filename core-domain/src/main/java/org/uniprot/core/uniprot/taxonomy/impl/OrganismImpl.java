@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
 import static java.util.Collections.emptyList;
-import static org.uniprot.core.util.Utils.nonNullUnmodifiableList;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 import java.util.List;
 import java.util.Objects;
@@ -28,9 +28,9 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
             String commonName,
             List<String> synonyms) {
         super(scientificName, commonName, synonyms);
-        this.lineage = nonNullUnmodifiableList(lineage);
+        this.lineage = unmodifiableList(lineage);
         this.taxonId = taxonId;
-        this.evidences = nonNullUnmodifiableList(evidences);
+        this.evidences = unmodifiableList(evidences);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
 
     @Override
     public boolean hasEvidences() {
-        return Utils.notEmpty(this.evidences);
+        return Utils.notNullOrEmpty(this.evidences);
     }
 
     @Override

@@ -22,7 +22,7 @@ public class PublicationDateImpl implements PublicationDate {
 
     @Override
     public boolean hasValue() {
-        return Utils.notEmpty(this.value);
+        return Utils.notNullOrEmpty(this.value);
     }
 
     @Override

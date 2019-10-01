@@ -24,7 +24,7 @@ public class SequenceImpl implements Sequence {
         this.length = this.value.length();
         this.molWeight = MoleculeWeight.calcMolecularWeight(this.value);
         this.crc64 = Crc64.getCrc64(value);
-        this.md5 = MessageDigestUtil.getDigest(value, "MD5");
+        this.md5 = MessageDigestUtil.getMD5(value);
     }
 
     @Override

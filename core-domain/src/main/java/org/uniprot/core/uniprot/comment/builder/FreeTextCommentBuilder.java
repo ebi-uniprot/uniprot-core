@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl.isFreeTextCommentType;
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +37,12 @@ public class FreeTextCommentBuilder
     }
 
     public FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
-        this.texts = nonNullList(texts);
+        this.texts = modifiableList(texts);
         return this;
     }
 
     public FreeTextCommentBuilder addText(EvidencedValue text) {
-        nonNullAdd(text, this.texts);
+        addOrIgnoreNull(text, this.texts);
         return this;
     }
 }

@@ -16,8 +16,8 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
     }
 
     public AlternativeSequenceImpl(String originalSequence, List<String> alternativeSequences) {
-        this.originalSequence = Utils.nullToEmpty(originalSequence);
-        this.alternativeSequences = Utils.nonNullUnmodifiableList(alternativeSequences);
+        this.originalSequence = Utils.emptyOrString(originalSequence);
+        this.alternativeSequences = Utils.unmodifiableList(alternativeSequences);
     }
 
     @Override

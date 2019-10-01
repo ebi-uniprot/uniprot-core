@@ -75,16 +75,16 @@ public class ProteomeEntryImpl implements ProteomeEntry {
         this.redundantTo = redundantTo;
         this.strain = strain;
         this.isolate = isolate;
-        this.dbXReferences = Utils.nonNullUnmodifiableList(dbXReferences);
-        this.components = Utils.nonNullUnmodifiableList(components);
-        this.references = Utils.nonNullUnmodifiableList(references);
-        this.redundantProteomes = Utils.nonNullUnmodifiableList(redundantProteomes);
+        this.dbXReferences = Utils.unmodifiableList(dbXReferences);
+        this.components = Utils.unmodifiableList(components);
+        this.references = Utils.unmodifiableList(references);
+        this.redundantProteomes = Utils.unmodifiableList(redundantProteomes);
         this.panproteome = panproteome;
         this.annotationScore = annotationScore;
         this.superkingdom = superkingdom;
         this.geneCount = geneCount;
-        this.taxonLineage = Utils.nonNullUnmodifiableList(taxonLineage);
-        this.canonicalProteins = Utils.nonNullUnmodifiableList(canonicalProteins);
+        this.taxonLineage = Utils.unmodifiableList(taxonLineage);
+        this.canonicalProteins = Utils.unmodifiableList(canonicalProteins);
         this.sourceDb = sourceDb;
     }
 

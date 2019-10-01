@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.nonNullAdd;
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +35,12 @@ public final class CofactorCommentBuilder
     }
 
     public CofactorCommentBuilder addCofactor(Cofactor cofactors) {
-        nonNullAdd(cofactors, this.cofactors);
+        addOrIgnoreNull(cofactors, this.cofactors);
         return this;
     }
 
     public CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
-        this.cofactors = nonNullList(cofactors);
+        this.cofactors = modifiableList(cofactors);
         return this;
     }
 

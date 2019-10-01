@@ -20,12 +20,12 @@ public class KeywordEntryMap implements NamedValueMap {
     @Override
     public Map<String, String> attributeValues() {
         Map<String, String> map = new HashMap<>();
-        if (Utils.nonNull(keywordEntry.getKeyword())) {
+        if (Utils.notNull(keywordEntry.getKeyword())) {
             map.put("id", keywordEntry.getKeyword().getAccession());
             map.put("name", keywordEntry.getKeyword().getId());
         }
         map.put("description", getOrDefaultEmpty(keywordEntry.getDefinition()));
-        if (Utils.nonNull(keywordEntry.getCategory())) {
+        if (Utils.notNull(keywordEntry.getCategory())) {
             map.put("category", getOrDefaultEmpty(keywordEntry.getCategory().getId()));
         }
         map.put("synonym", getOrDefaultEmpty(keywordEntry.getSynonyms()));
@@ -39,7 +39,7 @@ public class KeywordEntryMap implements NamedValueMap {
 
     private String getGeneOntology() {
         String result = "";
-        if (Utils.notEmpty(keywordEntry.getGeneOntologies())) {
+        if (Utils.notNullOrEmpty(keywordEntry.getGeneOntologies())) {
             result =
                     keywordEntry.getGeneOntologies().stream()
                             .map(go -> go.getGoId() + ":" + go.getGoTerm())

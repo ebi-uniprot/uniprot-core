@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.nonNullList;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
         this.id = id;
         this.value = value;
         this.category = category;
-        this.evidences = nonNullList(evidences);
+        this.evidences = modifiableList(evidences);
     }
 
     @Override

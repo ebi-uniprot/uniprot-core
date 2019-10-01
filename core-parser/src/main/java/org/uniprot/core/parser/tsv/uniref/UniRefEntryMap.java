@@ -22,16 +22,17 @@ public class UniRefEntryMap implements NamedValueMap {
     private final UniRefEntry entry;
     private final List<String> fields;
     private static final String DELIMITER = "; ";
-    public static final List<String> FIELDS =
-            Arrays.asList(
-                    "id",
-                    "name",
-                    "common_taxon",
-                    "common_taxonid",
-                    "count",
-                    "created",
-                    "length",
-                    "sequence");
+    public static final List<String> UNIREF_FIELDS =
+            Collections.unmodifiableList(
+                    Arrays.asList(
+                            "id",
+                            "name",
+                            "common_taxon",
+                            "common_taxonid",
+                            "count",
+                            "created",
+                            "length",
+                            "sequence"));
     private static final String ORGANISM = "organism";
     private static final String ORGANISM_ID = "organism_id";
     private static final String MEMBER = "member";
@@ -70,21 +71,21 @@ public class UniRefEntryMap implements NamedValueMap {
     }
 
     private static boolean contains(List<String> fields) {
-        return fields.stream().anyMatch(FIELDS::contains);
+        return fields.stream().anyMatch(UNIREF_FIELDS::contains);
     }
 
     private Map<String, String> getSimpleAttributeValues() {
         Map<String, String> map = new HashMap<>();
-        map.put(FIELDS.get(0), entry.getId().getValue());
-        map.put(FIELDS.get(1), entry.getName());
-        map.put(FIELDS.get(2), entry.getCommonTaxon());
-        map.put(FIELDS.get(3), Long.toString(entry.getCommonTaxonId()));
-        map.put(FIELDS.get(4), Integer.toString(entry.getMemberCount()));
-        map.put(FIELDS.get(5), entry.getUpdated().toString());
+        map.put(UNIREF_FIELDS.get(0), entry.getId().getValue());
+        map.put(UNIREF_FIELDS.get(1), entry.getName());
+        map.put(UNIREF_FIELDS.get(2), entry.getCommonTaxon());
+        map.put(UNIREF_FIELDS.get(3), Long.toString(entry.getCommonTaxonId()));
+        map.put(UNIREF_FIELDS.get(4), Integer.toString(entry.getMemberCount()));
+        map.put(UNIREF_FIELDS.get(5), entry.getUpdated().toString());
         map.put(
-                FIELDS.get(6),
+                UNIREF_FIELDS.get(6),
                 Integer.toString(entry.getRepresentativeMember().getSequenceLength()));
-        map.put(FIELDS.get(7), entry.getRepresentativeMember().getSequence().getValue());
+        map.put(UNIREF_FIELDS.get(7), entry.getRepresentativeMember().getSequence().getValue());
         return map;
     }
 

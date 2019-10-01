@@ -43,27 +43,27 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder title(String title) {
-        this.title = Utils.nullToEmpty(title);
+        this.title = Utils.emptyOrString(title);
         return this;
     }
 
     public LiteratureEntryBuilder authoringGroup(List<String> authoringGroup) {
-        this.authoringGroup = Utils.nonNullList(authoringGroup);
+        this.authoringGroup = Utils.modifiableList(authoringGroup);
         return this;
     }
 
     public LiteratureEntryBuilder addAuthoringGroup(String authoringGroup) {
-        Utils.nonNullAdd(authoringGroup, this.authoringGroup);
+        Utils.addOrIgnoreNull(authoringGroup, this.authoringGroup);
         return this;
     }
 
     public LiteratureEntryBuilder authors(List<Author> authors) {
-        this.authors = Utils.nonNullList(authors);
+        this.authors = Utils.modifiableList(authors);
         return this;
     }
 
     public LiteratureEntryBuilder addAuthor(Author author) {
-        Utils.nonNullAdd(author, this.authors);
+        Utils.addOrIgnoreNull(author, this.authors);
         return this;
     }
 
@@ -83,7 +83,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     public LiteratureEntryBuilder journal(String journalName) {
-        if (Utils.notEmpty(journalName)) {
+        if (Utils.notNullOrEmpty(journalName)) {
             this.journal = new JournalImpl(journalName);
         }
         return this;
@@ -111,13 +111,13 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
 
     public LiteratureEntryBuilder literatureMappedReference(
             List<LiteratureMappedReference> literatureMappedReference) {
-        this.literatureMappedReference = Utils.nonNullList(literatureMappedReference);
+        this.literatureMappedReference = Utils.modifiableList(literatureMappedReference);
         return this;
     }
 
     public LiteratureEntryBuilder addLiteratureMappedReference(
             LiteratureMappedReference literatureMappedReference) {
-        Utils.nonNullAdd(literatureMappedReference, this.literatureMappedReference);
+        Utils.addOrIgnoreNull(literatureMappedReference, this.literatureMappedReference);
         return this;
     }
 

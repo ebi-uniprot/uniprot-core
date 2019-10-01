@@ -1,6 +1,6 @@
 package org.uniprot.core.cv.chebi;
 
-import static org.uniprot.core.util.Utils.nonNull;
+import static org.uniprot.core.util.Utils.notNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +21,13 @@ public class ChebiFileReader extends AbstractFileReader<Chebi> {
         ChebiBuilder chebiBuilder = null;
         for (String line : lines) {
             if (line.startsWith("[Term]")) {
-                if (nonNull(chebiBuilder)) {
+                if (notNull(chebiBuilder)) {
                     chebiList.add(chebiBuilder.build());
                 }
                 // start of new term
                 chebiBuilder = new ChebiBuilder();
             }
-            if (nonNull(chebiBuilder)) {
+            if (notNull(chebiBuilder)) {
                 Matcher inchiMatcher = INCHI_PATTERN.matcher(line);
                 if (line.startsWith(ID_PREFIX)) {
                     chebiBuilder.id(line.substring(ID_PREFIX.length()));

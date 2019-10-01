@@ -49,12 +49,12 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
 
     @Override
     public boolean hasMolecule() {
-        return Utils.notEmpty(this.molecule);
+        return Utils.notNullOrEmpty(this.molecule);
     }
 
     @Override
     public boolean hasCofactors() {
-        return Utils.notEmpty(this.cofactors);
+        return Utils.notNullOrEmpty(this.cofactors);
     }
 
     @Override
