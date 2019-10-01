@@ -1,9 +1,10 @@
 package org.uniprot.core.util;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import java.io.InputStream;
 import java.util.*;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 public class Utils {
     /**

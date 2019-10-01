@@ -1,7 +1,8 @@
 package org.uniprot.core.util;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+
+import javax.validation.constraints.NotNull;
 
 public class Crc64 {
 

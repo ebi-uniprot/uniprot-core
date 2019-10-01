@@ -1,10 +1,11 @@
 package org.uniprot.core.util;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class MessageDigestUtil {
 
