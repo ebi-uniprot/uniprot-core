@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -83,6 +84,25 @@ class PublicationDateFormatterTest {
     void wrongFormats_shouldThrowExceptions(PublicationDateFormatter formatter) {
         assertThrows(
                 DateTimeParseException.class, () -> formatter.convertStringToDate("wrong-format"));
+    }
+
+    @Nested
+    class isValidDate{
+        @Test
+        void year(){
+            assertAll(
+              ()-> assertFalse(PublicationDateFormatter.YEAR.isValidDate("0")),
+              ()-> assertTrue(PublicationDateFormatter.YEAR.isValidDate("2020"))
+            );
+        }
+
+        @Test
+        void year_month(){
+            assertAll(
+              ()-> assertFalse(PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate("1920-0")),
+              ()-> assertTrue(PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate("2020-12"))
+            );
+        }
     }
 
     private void verifyDate(Date date, int expectedYear, int expectedMonth, int expectedDay) {
