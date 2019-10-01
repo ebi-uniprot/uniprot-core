@@ -18,12 +18,12 @@ class MessageDigestUtilTest {
     }
 
     @Test
-    void canNotGetMd5OfNullString(){
-        assertThrows(NullPointerException.class, ()-> MessageDigestUtil.getMD5(null));
+    void canNotGetMd5OfNullString() {
+        assertThrows(NullPointerException.class, () -> MessageDigestUtil.getMD5(null));
     }
 
     @Test
-    void canGetMd5OfEmptyString(){
+    void canGetMd5OfEmptyString() {
         assertEquals("D41D8CD98F00B204E9800998ECF8427E", MessageDigestUtil.getMD5(""));
     }
 }

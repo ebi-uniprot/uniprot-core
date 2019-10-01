@@ -87,21 +87,25 @@ class PublicationDateFormatterTest {
     }
 
     @Nested
-    class isValidDate{
+    class isValidDate {
         @Test
-        void year(){
+        void year() {
             assertAll(
-              ()-> assertFalse(PublicationDateFormatter.YEAR.isValidDate("0")),
-              ()-> assertTrue(PublicationDateFormatter.YEAR.isValidDate("2020"))
-            );
+                    () -> assertFalse(PublicationDateFormatter.YEAR.isValidDate("0")),
+                    () -> assertTrue(PublicationDateFormatter.YEAR.isValidDate("2020")));
         }
 
         @Test
-        void year_month(){
+        void year_month() {
             assertAll(
-              ()-> assertFalse(PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate("1920-0")),
-              ()-> assertTrue(PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate("2020-12"))
-            );
+                    () ->
+                            assertFalse(
+                                    PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate(
+                                            "1920-0")),
+                    () ->
+                            assertTrue(
+                                    PublicationDateFormatter.YEAR_DIGIT_MONTH.isValidDate(
+                                            "2020-12")));
         }
     }
 
