@@ -52,4 +52,14 @@ public enum PublicationDateFormatter {
     private static DateTimeFormatterBuilder formatFor(String pattern) {
         return new DateTimeFormatterBuilder().parseCaseInsensitive().appendPattern(pattern);
     }
+
+    public boolean isValidDate(String date) {
+        try {
+            LocalDate.parse(date, dateFormat);
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+
+        return true;
+    }
 }
