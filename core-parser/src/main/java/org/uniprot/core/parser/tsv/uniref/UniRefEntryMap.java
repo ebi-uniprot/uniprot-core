@@ -23,15 +23,16 @@ public class UniRefEntryMap implements NamedValueMap {
     private final List<String> fields;
     private static final String DELIMITER = "; ";
     public static final List<String> UNIREF_FIELDS =
-            Arrays.asList(
-                    "id",
-                    "name",
-                    "common_taxon",
-                    "common_taxonid",
-                    "count",
-                    "created",
-                    "length",
-                    "sequence");
+            Collections.unmodifiableList(
+                    Arrays.asList(
+                            "id",
+                            "name",
+                            "common_taxon",
+                            "common_taxonid",
+                            "count",
+                            "created",
+                            "length",
+                            "sequence"));
     private static final String ORGANISM = "organism";
     private static final String ORGANISM_ID = "organism_id";
     private static final String MEMBER = "member";
