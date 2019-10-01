@@ -39,7 +39,7 @@ public class MessageDigestUtil {
      * @param seq string to be converted
      * @return Hex string
      */
-    public static @NotBlank String getMD5(@Null String seq) {
+    public static @NotBlank String getMD5(@NotNull String seq) {
         return getDigest(seq, "MD5");
     }
 
