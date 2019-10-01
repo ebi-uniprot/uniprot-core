@@ -9,6 +9,9 @@ public final class Property implements Pair<String, String>, Comparable<Property
     private String key;
     private String value;
 
+    //Need by object mapper json conversions
+    private Property(){}
+
     public Property(String key, String value) {
         this.key = key;
         this.value = value;
