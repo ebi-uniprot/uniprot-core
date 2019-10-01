@@ -30,7 +30,7 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         report.add("Alpha");
         report.add("Beta");
-        Range location = Range.create(167, 229);
+        Range location = new Range(167, 229);
         String featureId = "VSP_005610";
         String description = "in isoform Alpha and isoform Beta";
         List<String> evs = new ArrayList<>();
@@ -70,7 +70,7 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         report.add("Alpha");
         report.add("Beta");
-        Range location = Range.create(167, 229);
+        Range location = new Range(167, 229);
         String featureId = "VSP_005610";
 
         List<String> evs = new ArrayList<>();
@@ -107,7 +107,7 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         report.add("Long");
         // report.add("Beta");
-        Range location = Range.create(46, 46);
+        Range location = new Range(46, 46);
         String featureId = "VSP_005610";
 
         List<String> evs = new ArrayList<>();
@@ -142,7 +142,7 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         report.add("Long");
         // report.add("Beta");
-        Range location = Range.create(46, 46);
+        Range location = new Range(46, 46);
         String featureId = "VSP_005610";
 
         List<String> evs = new ArrayList<>();
@@ -184,7 +184,7 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         report.add("Long");
         // report.add("Beta");
-        Range location = Range.create(46, 46);
+        Range location = new Range(46, 46);
         String featureId = "VSP_005610";
 
         List<String> evs = new ArrayList<>();
@@ -236,7 +236,7 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         report.add("2");
         // report.add("Beta");
-        Range location = Range.create(103, 222);
+        Range location = new Range(103, 222);
         String featureId = "VSP_037399";
 
         List<String> evs = new ArrayList<>();
@@ -301,7 +301,7 @@ class FTVasplicFeatureBuildTest extends FTBuildTestAbstr {
 
         report.add("2");
         // report.add("Beta");
-        Range location = Range.create(103, 222);
+        Range location = new Range(103, 222);
         String featureId = "VSP_037399";
 
         List<String> evs = new ArrayList<>();

@@ -16,15 +16,9 @@ public final class Range implements Serializable {
         this(new Position(start, sModifier), new Position(end, eModifier));
     }
 
-    private Range() {}
-
     public Range(Position start, Position end) {
         this.start = start;
         this.end = end;
-    }
-
-    public static Range create(Integer start, Integer end) {
-        return new Range(start, end);
     }
 
     public Position getStart() {

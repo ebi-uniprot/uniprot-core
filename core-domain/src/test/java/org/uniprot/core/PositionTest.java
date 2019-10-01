@@ -1,8 +1,14 @@
 package org.uniprot.core;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PositionTest {
 
@@ -26,6 +32,51 @@ class PositionTest {
         verify(position, 12, PositionModifier.UNSURE);
         position = new Position(12, PositionModifier.OUTSIDE);
         verify(position, 12, PositionModifier.OUTSIDE);
+    }
+
+    @Nested
+    class compareTo {
+        @Test
+        void positionCanBeSort_becauseTheyImplementCompareTo_positionModifier() {
+            Position exact = new Position(2);
+            Position unknown = new Position(2, PositionModifier.UNKNOWN);
+            Position unsure = new Position(2, PositionModifier.UNSURE);
+            List<Position> propList = Arrays.asList(unknown, exact, unsure);
+            Collections.sort(propList);
+            assertAll(
+              () -> assertEquals(PositionModifier.EXACT, propList.get(0).getModifier()),
+              () -> assertEquals(PositionModifier.UNSURE, propList.get(1).getModifier()),
+              () -> assertEquals(PositionModifier.UNKNOWN, propList.get(2).getModifier())
+            );
+        }
+
+        @Test
+        void positionCanBeSort_whenAllUnknown_retainOrder() {
+            Position two = new Position(2, PositionModifier.UNKNOWN);
+            Position three = new Position(3, PositionModifier.UNKNOWN);
+            Position five = new Position(5, PositionModifier.UNKNOWN);
+            List<Position> propList = Arrays.asList(five, two, three);
+            Collections.sort(propList);
+            assertAll(
+              () -> assertEquals(5, propList.get(0).getValue().intValue()),
+              () -> assertEquals(2, propList.get(1).getValue().intValue()),
+              () -> assertEquals(3, propList.get(2).getValue().intValue())
+            );
+        }
+
+        @Test
+        void positionCanBeSort_becauseTheyImplementCompareTo() {
+            Position two = new Position(2);
+            Position one = new Position(1);
+            Position three = new Position(3);
+            List<Position> propList = Arrays.asList(two, one, three);
+            Collections.sort(propList);
+            assertAll(
+              () -> assertEquals(1, propList.get(0).getValue().intValue()),
+              () -> assertEquals(2, propList.get(1).getValue().intValue()),
+              () -> assertEquals(3, propList.get(2).getValue().intValue())
+            );
+        }
     }
 
     private void verify(Position position, Integer value, PositionModifier modifier) {

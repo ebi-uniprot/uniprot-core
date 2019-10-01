@@ -77,7 +77,7 @@ public class MassSpectrometryCommentTest {
     }
 
     public static MassSpectrometryComment getMassSpectrometryComment() {
-        Range range = Range.create(1, 7);
+        Range range = new Range(1, 7);
         MassSpectrometryRange massSpectrometryRange =
                 new MassSpectrometryRangeBuilder()
                         .range(range)

@@ -28,7 +28,7 @@ class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
         List<String> report = new ArrayList<>();
 
         report.add("in a breast cancer sample; somatic mutation; dbSNP:rs35514614");
-        Range location = Range.create(221, 221);
+        Range location = new Range(221, 221);
         String featureId = "VAR_038685";
 
         List<String> evs = new ArrayList<>();
@@ -68,7 +68,7 @@ class FTVariantFeatureBuildTest extends FTBuildTestAbstr {
         List<String> report = new ArrayList<>();
 
         report.add("in a breast cancer sample; somatic mutation; dbSNP:rs35514614");
-        Range location = Range.create(221, 221);
+        Range location = new Range(221, 221);
         String featureId = "VAR_038685";
 
         List<String> evs = new ArrayList<>();
