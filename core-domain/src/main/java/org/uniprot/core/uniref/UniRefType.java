@@ -2,10 +2,8 @@ package org.uniprot.core.uniref;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- * @date: 12 Aug 2019
- */
+import javax.annotation.Nonnull;
+
 public enum UniRefType implements EnumDisplay<UniRefType> {
     UniRef100("1.0"),
     UniRef90("0.9"),
@@ -17,11 +15,11 @@ public enum UniRefType implements EnumDisplay<UniRefType> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name();
     }
 
-    public String getIdentity() {
+    public @Nonnull String getIdentity() {
         return this.identity;
     }
 }
