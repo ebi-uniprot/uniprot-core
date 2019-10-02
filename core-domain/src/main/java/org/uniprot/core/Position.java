@@ -1,5 +1,7 @@
 package org.uniprot.core;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.Serializable;
 
 public final class Position implements Comparable<Position>, Serializable {
@@ -10,27 +12,27 @@ public final class Position implements Comparable<Position>, Serializable {
     // no arg constructor for JSON deserialization
     private Position() {}
 
-    public Position(Integer value) {
+    public Position(@Nullable Integer value) {
         this(value, getValueModifier(value));
     }
 
-    public Position(Integer value, PositionModifier modifier) {
+    public Position(@Nullable Integer value, @Nonnull PositionModifier modifier) {
         this.value = value;
         if (value == null) {
             this.modifier = PositionModifier.UNKNOWN;
         } else this.modifier = modifier;
     }
 
-    public Integer getValue() {
+    public @Nullable Integer getValue() {
         return value;
     }
 
-    public PositionModifier getModifier() {
+    public @Nonnull PositionModifier getModifier() {
         return modifier;
     }
 
     @Override
-    public int compareTo(Position o) {
+    public int compareTo(@Nonnull Position o) {
         if (modifier == PositionModifier.UNKNOWN) {
             if (o.getModifier() == PositionModifier.UNKNOWN) {
                 return 0;
@@ -54,7 +56,7 @@ public final class Position implements Comparable<Position>, Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(@Nullable Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;

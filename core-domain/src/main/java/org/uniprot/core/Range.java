@@ -1,5 +1,7 @@
 package org.uniprot.core;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.io.Serializable;
 
 public final class Range implements Serializable {
@@ -10,25 +12,25 @@ public final class Range implements Serializable {
     // no arg constructor for JSON deserialization
     private Range() {}
 
-    public Range(Integer start, Integer end) {
+    public Range(@Nullable Integer start, @Nullable Integer end) {
         this(new Position(start), new Position(end));
     }
 
     public Range(
-            Integer start, Integer end, PositionModifier sModifier, PositionModifier eModifier) {
+      @Nullable Integer start, @Nullable Integer end, @Nonnull PositionModifier sModifier, @Nonnull PositionModifier eModifier) {
         this(new Position(start, sModifier), new Position(end, eModifier));
     }
 
-    public Range(Position start, Position end) {
+    public Range(@Nonnull Position start, @Nonnull Position end) {
         this.start = start;
         this.end = end;
     }
 
-    public Position getStart() {
+    public @Nonnull Position getStart() {
         return start;
     }
 
-    public Position getEnd() {
+    public @Nonnull Position getEnd() {
         return end;
     }
 
@@ -42,7 +44,7 @@ public final class Range implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(@Nullable Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;

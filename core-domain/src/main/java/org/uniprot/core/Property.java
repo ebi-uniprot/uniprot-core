@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import org.uniprot.core.util.Pair;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public final class Property implements Pair<String, String>, Comparable<Property>, Serializable {
     private static final long serialVersionUID = 2383267527069888292L;
     private String key;
@@ -12,7 +15,7 @@ public final class Property implements Pair<String, String>, Comparable<Property
     // Need by object mapper json conversions
     private Property() {}
 
-    public Property(String key, String value) {
+    public Property(@Nullable String key, @Nullable String value) {
         this.key = key;
         this.value = value;
     }
@@ -37,7 +40,7 @@ public final class Property implements Pair<String, String>, Comparable<Property
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(@Nullable Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
@@ -51,7 +54,7 @@ public final class Property implements Pair<String, String>, Comparable<Property
     }
 
     @Override
-    public int compareTo(Property o) {
+    public int compareTo(@Nonnull Property o) {
         return this.key.compareTo(o.getKey());
     }
 }

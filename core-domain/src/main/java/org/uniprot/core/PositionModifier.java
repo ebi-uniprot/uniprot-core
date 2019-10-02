@@ -2,6 +2,8 @@ package org.uniprot.core;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum PositionModifier implements EnumDisplay<PositionModifier> {
     EXACT,
     OUTSIDE,
@@ -9,7 +11,7 @@ public enum PositionModifier implements EnumDisplay<PositionModifier> {
     UNSURE;
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return this.name();
     }
 }
