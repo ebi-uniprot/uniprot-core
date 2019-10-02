@@ -1,8 +1,8 @@
 package org.uniprot.core.uniref;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum UniRefType implements EnumDisplay<UniRefType> {
     UniRef100("1.0"),

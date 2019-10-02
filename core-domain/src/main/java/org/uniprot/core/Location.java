@@ -1,8 +1,9 @@
 package org.uniprot.core;
 
-import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.Objects;
+
+import javax.annotation.Nullable;
 
 public class Location implements Serializable {
 

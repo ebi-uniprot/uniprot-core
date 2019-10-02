@@ -43,7 +43,7 @@ class UniRefEntryIdBuilderTest {
     }
 
     @Test
-    void twoDifferentObjects_defaultBuild_equal(){
+    void twoDifferentObjects_defaultBuild_equal() {
         String id = "";
         UniRefEntryId ur1 = new UniRefEntryIdBuilder(id).build();
         UniRefEntryId ur2 = new UniRefEntryIdBuilder(id).build();
@@ -52,14 +52,14 @@ class UniRefEntryIdBuilderTest {
     }
 
     @Test
-    void assignedIdCanBeGet(){
+    void assignedIdCanBeGet() {
         String id = "id101";
         UniRefEntryId ur1 = new UniRefEntryIdBuilder(id).build();
         assertEquals(id, ur1.getValue());
     }
 
     @Test
-    void assignedId_value_toString_allAreSame(){
+    void assignedId_value_toString_allAreSame() {
         String id = "id101";
         UniRefEntryId ur1 = new UniRefEntryIdBuilder(id).build();
         assertEquals(id, ur1.getValue());
@@ -67,26 +67,26 @@ class UniRefEntryIdBuilderTest {
     }
 
     @Test
-    void assignedId_null_hasValueFalse(){
+    void assignedId_null_hasValueFalse() {
         UniRefEntryId ur1 = new UniRefEntryIdBuilder(null).build();
         assertFalse(ur1.hasValue());
     }
 
     @Test
-    void assignedId_notNull_hasValueFalse(){
+    void assignedId_notNull_hasValueFalse() {
         UniRefEntryId ur1 = new UniRefEntryIdBuilder("id101").build();
         assertTrue(ur1.hasValue());
     }
 
     @Test
-    void assignedId_nulls_areEqual(){
+    void assignedId_nulls_areEqual() {
         UniRefEntryId ur1 = new UniRefEntryIdBuilder(null).build();
         UniRefEntryId ur2 = new UniRefEntryIdBuilder(null).build();
         assertEquals(ur1, ur2);
     }
 
     @Test
-    void canCreateCopyFromBuilder_canSetValue(){
+    void canCreateCopyFromBuilder_canSetValue() {
         UniRefEntryId ur1 = new UniRefEntryIdBuilder(null).build();
         UniRefEntryId nullObj = new UniRefEntryIdBuilder("101").from(ur1).build();
         assertNull(nullObj.getValue());

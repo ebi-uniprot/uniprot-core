@@ -1,45 +1,44 @@
 package org.uniprot.core.uniref;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class UniRefMemberIdTypeTest {
 
-  @ParameterizedTest
-  @EnumSource(UniRefMemberIdType.class)
-  void displayName(UniRefMemberIdType enm) {
-    assertTrue(Arrays.asList("UniProtKB ID", "UniParc ID").contains(enm.toDisplayName()));
-  }
-
-  @Nested
-  class typeOf{
-    @Test
-    void canConvertLowerCase(){
-      assertEquals(UniRefMemberIdType.UNIPROTKB, UniRefMemberIdType.typeOf("uniprotkb id"));
-    }
-
-    @Test
-    void canConvertUpperCase(){
-      assertEquals(UniRefMemberIdType.UNIPARC, UniRefMemberIdType.typeOf("UNIPARC ID"));
-    }
-
     @ParameterizedTest
-    @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
-    void willThrowException(String val){
-      assertThrows(IllegalArgumentException.class, () -> UniRefMemberIdType.typeOf(val));
+    @EnumSource(UniRefMemberIdType.class)
+    void displayName(UniRefMemberIdType enm) {
+        assertTrue(Arrays.asList("UniProtKB ID", "UniParc ID").contains(enm.toDisplayName()));
     }
 
-    @Test
-    void willThrowException_null(){
-      assertThrows(IllegalArgumentException.class, () -> UniRefMemberIdType.typeOf(null));
-    }
-  }
+    @Nested
+    class typeOf {
+        @Test
+        void canConvertLowerCase() {
+            assertEquals(UniRefMemberIdType.UNIPROTKB, UniRefMemberIdType.typeOf("uniprotkb id"));
+        }
 
+        @Test
+        void canConvertUpperCase() {
+            assertEquals(UniRefMemberIdType.UNIPARC, UniRefMemberIdType.typeOf("UNIPARC ID"));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
+        void willThrowException(String val) {
+            assertThrows(IllegalArgumentException.class, () -> UniRefMemberIdType.typeOf(val));
+        }
+
+        @Test
+        void willThrowException_null() {
+            assertThrows(IllegalArgumentException.class, () -> UniRefMemberIdType.typeOf(null));
+        }
+    }
 }

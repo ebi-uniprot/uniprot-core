@@ -34,7 +34,7 @@ class OverlapRegionBuilderTest {
     }
 
     @Test
-    void twoDifferentObjects_defaultBuild_equal(){
+    void twoDifferentObjects_defaultBuild_equal() {
         OverlapRegion or1 = new OverlapRegionBuilder().build();
         OverlapRegion or2 = new OverlapRegionBuilder().build();
         assertTrue(or1.equals(or2) && or2.equals(or1));

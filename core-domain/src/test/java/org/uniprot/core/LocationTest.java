@@ -19,31 +19,32 @@ class LocationTest {
     }
 
     @Test
-    void start_end_partOfHashCode(){
+    void start_end_partOfHashCode() {
         Location location = new Location(1, 2);
         assertEquals(994, location.hashCode());
     }
 
     @Nested
-    class equals{
+    class equals {
         Location location = new Location(-123, 25);
+
         @Test
-        void location_equal_null(){
+        void location_equal_null() {
             assertNotEquals(location, null);
         }
 
         @Test
-        void location_equal_obj(){
+        void location_equal_obj() {
             assertNotEquals(location, new Object());
         }
 
         @Test
-        void location_equal_itself(){
+        void location_equal_itself() {
             assertEquals(location, location);
         }
 
         @Test
-        void location_equal_otherLocation(){
+        void location_equal_otherLocation() {
             assertEquals(location, new Location(-123, 25));
         }
     }

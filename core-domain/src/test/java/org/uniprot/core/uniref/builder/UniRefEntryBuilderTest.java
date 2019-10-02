@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -15,8 +17,6 @@ import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author jluo
@@ -177,7 +177,7 @@ class UniRefEntryBuilderTest {
     }
 
     @Test
-    void twoDifferentObjects_defaultBuild_equal(){
+    void twoDifferentObjects_defaultBuild_equal() {
         UniRefEntry e1 = new UniRefEntryBuilder().build();
         UniRefEntry e2 = new UniRefEntryBuilder().build();
         assertTrue(e1.equals(e2) && e2.equals(e1));
@@ -185,21 +185,21 @@ class UniRefEntryBuilderTest {
     }
 
     @Test
-    void whenNoMemberCount_defaultIs1(){
+    void whenNoMemberCount_defaultIs1() {
         UniRefEntry e1 = new UniRefEntryBuilder().build();
         assertEquals(1, e1.getMemberCount());
     }
 
     @Test
-    void whenMemberCount_returnMemberCount(){
+    void whenMemberCount_returnMemberCount() {
         UniRefEntry e1 = new UniRefEntryBuilder().memberCount(5).build();
         assertEquals(5, e1.getMemberCount());
     }
 
     @Test
-  void canGetId_setInBuilder(){
-      UniRefEntry e1 = new UniRefEntryBuilder().id("101").build();
-      assertNotNull(e1.getId());
-      assertEquals("101", e1.getId().getValue());
+    void canGetId_setInBuilder() {
+        UniRefEntry e1 = new UniRefEntryBuilder().id("101").build();
+        assertNotNull(e1.getId());
+        assertEquals("101", e1.getId().getValue());
     }
 }

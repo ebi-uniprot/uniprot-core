@@ -1,8 +1,8 @@
 package org.uniprot.core.uniref;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum GoTermType implements EnumDisplay<GoTermType> {
     FUNCTION("GO Molecular Function"),

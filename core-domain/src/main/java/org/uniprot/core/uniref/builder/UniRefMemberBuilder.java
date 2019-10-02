@@ -1,9 +1,9 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.impl.UniRefMemberImpl;
-
-import javax.annotation.Nonnull;
 
 public class UniRefMemberBuilder
         extends AbstractUniRefMemberBuilder<UniRefMemberBuilder, UniRefMember> {

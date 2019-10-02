@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
@@ -8,8 +10,6 @@ import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniref.*;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author jluo
@@ -150,7 +150,7 @@ class RepresentativeMemberBuilderTest {
     }
 
     @Test
-    void twoDifferentObjects_defaultBuild_equal(){
+    void twoDifferentObjects_defaultBuild_equal() {
         RepresentativeMember rm1 = new RepresentativeMemberBuilder().build();
         RepresentativeMember rm2 = new RepresentativeMemberBuilder().build();
         assertTrue(rm1.equals(rm2) && rm2.equals(rm1));

@@ -131,7 +131,7 @@ class UniRefMemberBuilderTest {
     }
 
     @Test
-    void twoDifferentObjects_defaultBuild_equal(){
+    void twoDifferentObjects_defaultBuild_equal() {
         UniRefMember m1 = new UniRefMemberBuilder().build();
         UniRefMember m2 = new UniRefMemberBuilder().build();
         assertTrue(m1.equals(m2) && m2.equals(m1));
