@@ -37,4 +37,12 @@ class GoTermBuilderTest {
         GoTerm goTerm2 = new GoTermBuilder().from(goTerm).build();
         assertEquals(goTerm, goTerm2);
     }
+
+    @Test
+    void twoDifferentObjects_defaultBuild_equal(){
+        GoTerm goTerm1 = new GoTermBuilder().build();
+        GoTerm goTerm2 = new GoTermBuilder().build();
+        assertTrue(goTerm1.equals(goTerm2) && goTerm2.equals(goTerm1));
+        assertEquals(goTerm1.hashCode(), goTerm2.hashCode());
+    }
 }
