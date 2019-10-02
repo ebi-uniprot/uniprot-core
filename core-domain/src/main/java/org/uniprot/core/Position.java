@@ -61,9 +61,7 @@ public final class Position implements Comparable<Position>, Serializable {
         Position other = (Position) obj;
         if (modifier != other.modifier) return false;
         if (modifier == PositionModifier.UNKNOWN) return true;
-        if (value == null) {
-            return other.value == null;
-        } else return value.equals(other.value);
+        return value.equals(other.value);
     }
 
     private static PositionModifier getValueModifier(Integer value) {
