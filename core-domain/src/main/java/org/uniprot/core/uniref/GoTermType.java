@@ -2,10 +2,8 @@ package org.uniprot.core.uniref;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- * @date: 12 Aug 2019
- */
+import javax.annotation.Nonnull;
+
 public enum GoTermType implements EnumDisplay<GoTermType> {
     FUNCTION("GO Molecular Function"),
     PROCESS("GO Biological Process"),
@@ -17,7 +15,7 @@ public enum GoTermType implements EnumDisplay<GoTermType> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return this.displayName;
     }
 }
