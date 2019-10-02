@@ -1,12 +1,9 @@
 package org.uniprot.core;
 
+import javax.annotation.Nullable;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * @author jluo
- * @date: 23 May 2019
- */
 public class Location implements Serializable {
 
     /** */
@@ -15,7 +12,8 @@ public class Location implements Serializable {
     int start;
     int end;
 
-    protected Location() {}
+    // no arg constructor for JSON deserialization
+    private Location() {}
 
     public Location(int start, int end) {
         this.start = start;
@@ -36,7 +34,7 @@ public class Location implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(@Nullable Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
