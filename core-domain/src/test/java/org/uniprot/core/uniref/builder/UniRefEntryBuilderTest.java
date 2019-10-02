@@ -1,8 +1,5 @@
 package org.uniprot.core.uniref.builder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +15,8 @@ import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
 import org.uniprot.core.uniref.UniRefType;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author jluo
@@ -195,5 +194,12 @@ class UniRefEntryBuilderTest {
     void whenMemberCount_returnMemberCount(){
         UniRefEntry e1 = new UniRefEntryBuilder().memberCount(5).build();
         assertEquals(5, e1.getMemberCount());
+    }
+
+    @Test
+  void canGetId_setInBuilder(){
+      UniRefEntry e1 = new UniRefEntryBuilder().id("101").build();
+      assertNotNull(e1.getId());
+      assertEquals("101", e1.getId().getValue());
     }
 }

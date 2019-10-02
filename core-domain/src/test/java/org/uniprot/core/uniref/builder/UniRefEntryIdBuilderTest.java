@@ -84,4 +84,12 @@ class UniRefEntryIdBuilderTest {
         UniRefEntryId ur2 = new UniRefEntryIdBuilder(null).build();
         assertEquals(ur1, ur2);
     }
+
+    @Test
+    void canCreateCopyFromBuilder_canSetValue(){
+        UniRefEntryId ur1 = new UniRefEntryIdBuilder(null).build();
+        UniRefEntryId nullObj = new UniRefEntryIdBuilder("101").from(ur1).build();
+        assertNull(nullObj.getValue());
+        assertNull(nullObj.toString());
+    }
 }
