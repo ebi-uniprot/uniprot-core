@@ -2,6 +2,8 @@ package org.uniprot.core;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
     A(710788),
     B(1146532),
@@ -46,7 +48,7 @@ public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
         return 0;
     }
 
-    public static int calcMolecularWeight(String sequence) {
+    public static int calcMolecularWeight(@Nonnull String sequence) {
 
         long weight = 0;
         for (char c : sequence.toCharArray()) {
@@ -64,7 +66,7 @@ public enum MoleculeWeight implements EnumDisplay<MoleculeWeight> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return this.name();
     }
 }
