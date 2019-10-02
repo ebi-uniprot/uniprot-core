@@ -1,8 +1,9 @@
 package org.uniprot.core;
 
+import java.io.Serializable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.io.Serializable;
 
 public final class Range implements Serializable {
     private static final long serialVersionUID = 8921458888683701817L;
@@ -17,7 +18,10 @@ public final class Range implements Serializable {
     }
 
     public Range(
-      @Nullable Integer start, @Nullable Integer end, @Nonnull PositionModifier sModifier, @Nonnull PositionModifier eModifier) {
+            @Nullable Integer start,
+            @Nullable Integer end,
+            @Nonnull PositionModifier sModifier,
+            @Nonnull PositionModifier eModifier) {
         this(new Position(start, sModifier), new Position(end, eModifier));
     }
 

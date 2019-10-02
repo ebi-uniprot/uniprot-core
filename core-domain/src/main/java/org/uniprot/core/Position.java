@@ -1,8 +1,9 @@
 package org.uniprot.core;
 
+import java.io.Serializable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.io.Serializable;
 
 public final class Position implements Comparable<Position>, Serializable {
     private static final long serialVersionUID = 894962443138290579L;

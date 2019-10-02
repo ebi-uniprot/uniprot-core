@@ -1,13 +1,13 @@
 package org.uniprot.core;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
 
@@ -89,9 +89,8 @@ class PositionTest {
             List<Position> propList = Arrays.asList(two, five, one);
             Collections.sort(propList);
             assertAll(
-              () -> assertEquals(1, propList.get(0).getValue().intValue()),
-              () -> assertEquals(5, propList.get(2).getValue().intValue())
-            );
+                    () -> assertEquals(1, propList.get(0).getValue().intValue()),
+                    () -> assertEquals(5, propList.get(2).getValue().intValue()));
         }
     }
 
