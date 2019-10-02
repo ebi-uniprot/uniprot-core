@@ -1,14 +1,13 @@
 package org.uniprot.core;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class PositionTest {
 
@@ -32,6 +31,13 @@ class PositionTest {
         verify(position, 12, PositionModifier.UNSURE);
         position = new Position(12, PositionModifier.OUTSIDE);
         verify(position, 12, PositionModifier.OUTSIDE);
+    }
+
+    @Test
+    void nullValueWithModifierAreEqual() {
+        Position nullP1 = new Position(null, PositionModifier.UNSURE);
+        Position nullP2 = new Position(null, PositionModifier.UNSURE);
+        assertTrue(nullP1.equals(nullP2));
     }
 
     @Nested
@@ -73,6 +79,19 @@ class PositionTest {
                     () -> assertEquals(1, propList.get(0).getValue().intValue()),
                     () -> assertEquals(2, propList.get(1).getValue().intValue()),
                     () -> assertEquals(3, propList.get(2).getValue().intValue()));
+        }
+
+        @Test
+        void positionCanBeSort_unknownWillHaveLowestPriority() {
+            Position two = new Position(2, PositionModifier.UNSURE);
+            Position five = new Position(5, PositionModifier.UNKNOWN);
+            Position one = new Position(1);
+            List<Position> propList = Arrays.asList(two, five, one);
+            Collections.sort(propList);
+            assertAll(
+              () -> assertEquals(1, propList.get(0).getValue().intValue()),
+              () -> assertEquals(5, propList.get(2).getValue().intValue())
+            );
         }
     }
 
