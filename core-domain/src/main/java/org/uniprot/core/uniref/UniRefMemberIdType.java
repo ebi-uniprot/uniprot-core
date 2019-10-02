@@ -2,10 +2,8 @@ package org.uniprot.core.uniref;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jluo
- * @date: 12 Aug 2019
- */
+import javax.annotation.Nonnull;
+
 public enum UniRefMemberIdType implements EnumDisplay<UniRefMemberIdType> {
     UNIPROTKB("UniProtKB ID"),
     UNIPARC("UniParc ID");
@@ -15,7 +13,7 @@ public enum UniRefMemberIdType implements EnumDisplay<UniRefMemberIdType> {
         this.displayName = displayName;
     }
 
-    public static UniRefMemberIdType typeOf(String name) {
+    public @Nonnull static UniRefMemberIdType typeOf(@Nonnull String name) {
         for (UniRefMemberIdType type : UniRefMemberIdType.values()) {
             if (type.toDisplayName().equalsIgnoreCase(name)) {
                 return type;
@@ -25,7 +23,7 @@ public enum UniRefMemberIdType implements EnumDisplay<UniRefMemberIdType> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return displayName;
     }
 }
