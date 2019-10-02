@@ -30,6 +30,10 @@ public final class Range implements Serializable {
         this.end = end;
     }
 
+    public static Range create(Integer start, Integer end) {
+        return new Range(start, end);
+    }
+
     public @Nonnull Position getStart() {
         return start;
     }
