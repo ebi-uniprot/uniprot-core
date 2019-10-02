@@ -3,15 +3,13 @@ package org.uniprot.core.uniref.builder;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.impl.UniRefMemberImpl;
 
-/**
- * @author jluo
- * @date: 12 Aug 2019
- */
+import javax.annotation.Nonnull;
+
 public class UniRefMemberBuilder
         extends AbstractUniRefMemberBuilder<UniRefMemberBuilder, UniRefMember> {
 
     @Override
-    public UniRefMember build() {
+    public @Nonnull UniRefMember build() {
         return new UniRefMemberImpl(
                 memberIdType,
                 memberId,
@@ -29,7 +27,7 @@ public class UniRefMemberBuilder
     }
 
     @Override
-    public UniRefMemberBuilder from(UniRefMember instance) {
+    public UniRefMemberBuilder from(@Nonnull UniRefMember instance) {
         super.init(instance);
         return this;
     }

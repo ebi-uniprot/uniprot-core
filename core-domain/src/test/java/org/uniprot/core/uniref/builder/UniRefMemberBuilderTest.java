@@ -129,4 +129,12 @@ class UniRefMemberBuilderTest {
         member = new UniRefMemberBuilder().isSeed(true).build();
         assertEquals(true, member.isSeed());
     }
+
+    @Test
+    void twoDifferentObjects_defaultBuild_equal(){
+        UniRefMember m1 = new UniRefMemberBuilder().build();
+        UniRefMember m2 = new UniRefMemberBuilder().build();
+        assertTrue(m1.equals(m2) && m2.equals(m1));
+        assertTrue(m1.hashCode() == m2.hashCode());
+    }
 }
