@@ -2,7 +2,9 @@ package org.uniprot.core.uniprot;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** @author jieluo */
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public enum ProteinExistence implements EnumDisplay<ProteinExistence> {
     PROTEIN_LEVEL("Evidence at protein level", "1: Evidence at protein level"),
     TRANSCRIPT_LEVEL("Evidence at transcript level", "2: Evidence at transcript level"),
@@ -14,34 +16,29 @@ public enum ProteinExistence implements EnumDisplay<ProteinExistence> {
     private String value;
     private String displayName;
 
-    ProteinExistence(String type) {
-        this.value = type;
-        this.displayName = type;
-    }
-
-    ProteinExistence(String type, String displayName) {
-        this.value = type;
+    ProteinExistence(String value, String displayName) {
+        this.value = value;
         this.displayName = displayName;
     }
 
-    public static ProteinExistence typeOf(String value) {
+    public @Nonnull static ProteinExistence typeOf(@Nullable String value) {
         for (ProteinExistence proteinExistence : ProteinExistence.values()) {
             if (proteinExistence.getValue().equalsIgnoreCase(value)) {
                 return proteinExistence;
             }
         }
-        throw new IllegalArgumentException("the proteinExistence " + value + " doesn't exist");
+        return ProteinExistence.UNKNOWN;
     }
 
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return displayName;
     }
 
-    public String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 
-    public String toString() {
+    public @Nonnull String toString() {
         return this.getValue();
     }
 }
