@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
     UNKNOWN("unknown"),
@@ -38,8 +38,7 @@ public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
     }
 
     @Override
-    public @Nonnull
-    String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name;
     }
 }

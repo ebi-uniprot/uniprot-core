@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum ProteinExistence implements EnumDisplay<ProteinExistence> {
     PROTEIN_LEVEL("Evidence at protein level", "1: Evidence at protein level"),

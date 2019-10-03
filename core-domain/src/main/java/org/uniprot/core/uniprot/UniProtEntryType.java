@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
     SWISSPROT("Swiss-Prot"),

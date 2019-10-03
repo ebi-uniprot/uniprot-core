@@ -1,7 +1,11 @@
 package org.uniprot.core.uniprot.xdb.builder;
 
+import static org.uniprot.core.util.Utils.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.Nonnull;
 
 import org.uniprot.core.Property;
 import org.uniprot.core.builder.AbstractDBCrossReferenceBuilder;
@@ -10,10 +14,6 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
-
-import javax.annotation.Nonnull;
-
-import static org.uniprot.core.util.Utils.*;
 
 /**
  * Created 22/01/19

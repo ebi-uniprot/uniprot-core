@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.xdb.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -7,8 +9,6 @@ import org.uniprot.core.Property;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class UniProtDBCrossReferenceImplTest {
 
@@ -220,13 +220,13 @@ class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    void canCheckIsformIsNotPresent(){
+    void canCheckIsformIsNotPresent() {
         UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
         assertFalse(xref.hasIsoformId());
     }
 
     @Test
-    void canCheckEvidencesNotPresent(){
+    void canCheckEvidencesNotPresent() {
         UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
         assertFalse(xref.hasEvidences());
         assertNotNull(xref.getEvidences());
@@ -234,13 +234,13 @@ class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    void toStringWillHave_DASH_propertiesNull(){
+    void toStringWillHave_DASH_propertiesNull() {
         UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
         assertEquals("; null; -.", xref.toString());
     }
 
     @Test
-    void twoDifferentEmptyObjectFromBuilder_areEqual(){
+    void twoDifferentEmptyObjectFromBuilder_areEqual() {
         UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
         UniProtDBCrossReference xref2 = new UniProtDBCrossReferenceBuilder().build();
         assertTrue(xref.equals(xref2) && xref2.equals(xref));
@@ -248,7 +248,7 @@ class UniProtDBCrossReferenceImplTest {
     }
 
     @Test
-    void defaultConstructor_jsonDeSerialization(){
+    void defaultConstructor_jsonDeSerialization() {
         UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl();
         assertNull(xref.getDatabaseType());
         assertEquals("", xref.getId());

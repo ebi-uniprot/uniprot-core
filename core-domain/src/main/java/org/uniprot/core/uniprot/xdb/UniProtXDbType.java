@@ -3,13 +3,13 @@ package org.uniprot.core.uniprot.xdb;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 import org.uniprot.core.cv.xdb.UniProtXDbTypes;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public final class UniProtXDbType implements DatabaseType, Serializable {
     private static final long serialVersionUID = 201534956573963997L;

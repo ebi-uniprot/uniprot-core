@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum InactiveReasonType implements EnumDisplay<InactiveReasonType> {
     DELETED,
@@ -10,8 +10,7 @@ public enum InactiveReasonType implements EnumDisplay<InactiveReasonType> {
     DEMERGED;
 
     @Override
-    public @Nonnull
-    String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name();
     }
 }

@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
     STRAIN("STRAIN"),

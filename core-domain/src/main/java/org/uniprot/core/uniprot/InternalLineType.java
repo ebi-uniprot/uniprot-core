@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum InternalLineType implements EnumDisplay<InternalLineType> {
     CL(1),
@@ -76,8 +76,7 @@ public enum InternalLineType implements EnumDisplay<InternalLineType> {
     }
 
     @Override
-    public @Nonnull
-    String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name();
     }
 }

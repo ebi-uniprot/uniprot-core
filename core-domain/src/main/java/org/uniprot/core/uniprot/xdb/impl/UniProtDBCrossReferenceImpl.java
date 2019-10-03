@@ -3,7 +3,6 @@ package org.uniprot.core.uniprot.xdb.impl;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Property;
@@ -93,8 +92,7 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     private String getDatabaseName() {
-      if(getDatabaseType() !=null)
-        return getDatabaseType().getName();
-      return "";
+        if (getDatabaseType() != null) return getDatabaseType().getName();
+        return "";
     }
 }
