@@ -8,26 +8,29 @@ import org.uniprot.core.cv.xdb.DBXRefTypeAttribute;
 import org.uniprot.core.cv.xdb.UniProtXDbTypeDetail;
 import org.uniprot.core.cv.xdb.UniProtXDbTypes;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public final class UniProtXDbType implements DatabaseType, Serializable {
     private static final long serialVersionUID = 201534956573963997L;
     private String name;
 
     private UniProtXDbType() {}
 
-    public UniProtXDbType(String name) {
+    public UniProtXDbType(@Nullable String name) {
         this.name = name;
     }
 
     @Override
-    public String getName() {
+    public @Nullable String getName() {
         return name;
     }
 
-    public UniProtXDbTypeDetail getDetail() {
+    public @Nonnull UniProtXDbTypeDetail getDetail() {
         return UniProtXDbTypes.INSTANCE.getType(name);
     }
 
-    public DBXRefTypeAttribute getAttribute(int position) {
+    public @Nullable DBXRefTypeAttribute getAttribute(int position) {
         DBXRefTypeAttribute toReturn = null;
         List<DBXRefTypeAttribute> attributes =
                 UniProtXDbTypes.INSTANCE.getType(name).getAttributes();
@@ -46,7 +49,7 @@ public final class UniProtXDbType implements DatabaseType, Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(@Nullable Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
