@@ -2,7 +2,8 @@ package org.uniprot.core.uniprot;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** @author jluo */
+import javax.annotation.Nonnull;
+
 public enum InternalLineType implements EnumDisplay<InternalLineType> {
     CL(1),
     // Chromosomal location of a gene.
@@ -70,21 +71,13 @@ public enum InternalLineType implements EnumDisplay<InternalLineType> {
         this.position = pos;
     }
 
-    public static InternalLineType getTypeByPosition(int position) {
-        for (InternalLineType type : values()) {
-            if (type.getPosition() == position) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException("unknown position " + position);
-    }
-
     public int getPosition() {
         return position;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull
+    String toDisplayName() {
         return name();
     }
 }
