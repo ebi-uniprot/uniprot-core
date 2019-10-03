@@ -1,7 +1,5 @@
 package org.uniprot.core.uniprot.xdb.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -9,6 +7,8 @@ import org.uniprot.core.Property;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class UniProtDBCrossReferenceImplTest {
 
@@ -217,6 +217,42 @@ class UniProtDBCrossReferenceImplTest {
                         .build();
 
         verify(xref, val, type, id, description, null, null, null);
+    }
+
+    @Test
+    void canCheckIsformIsNotPresent(){
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
+        assertFalse(xref.hasIsoformId());
+    }
+
+    @Test
+    void canCheckEvidencesNotPresent(){
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
+        assertFalse(xref.hasEvidences());
+        assertNotNull(xref.getEvidences());
+        assertTrue(xref.getEvidences().isEmpty());
+    }
+
+    @Test
+    void toStringWillHave_DASH_propertiesNull(){
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
+        assertEquals("; null; -.", xref.toString());
+    }
+
+    @Test
+    void twoDifferentEmptyObjectFromBuilder_areEqual(){
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceBuilder().build();
+        UniProtDBCrossReference xref2 = new UniProtDBCrossReferenceBuilder().build();
+        assertTrue(xref.equals(xref2) && xref2.equals(xref));
+        assertEquals(xref.hashCode(), xref2.hashCode());
+    }
+
+    @Test
+    void defaultConstructor_jsonDeSerialization(){
+        UniProtDBCrossReference xref = new UniProtDBCrossReferenceImpl();
+        assertNull(xref.getDatabaseType());
+        assertEquals("", xref.getId());
+        assertTrue(xref.getEvidences().isEmpty());
     }
 
     private void verify(
