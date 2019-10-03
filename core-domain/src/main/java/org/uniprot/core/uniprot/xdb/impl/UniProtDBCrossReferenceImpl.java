@@ -26,11 +26,6 @@ public class UniProtDBCrossReferenceImpl extends DBCrossReferenceImpl<UniProtXDb
     }
 
     public UniProtDBCrossReferenceImpl(
-            UniProtXDbType database, String id, List<Property> properties, String isoformId) {
-        this(database, id, properties, isoformId, Collections.emptyList());
-    }
-
-    public UniProtDBCrossReferenceImpl(
             UniProtXDbType database,
             String id,
             List<Property> properties,

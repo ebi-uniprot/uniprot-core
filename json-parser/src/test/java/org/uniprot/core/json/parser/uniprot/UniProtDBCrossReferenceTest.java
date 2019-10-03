@@ -9,7 +9,6 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
-import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -20,7 +19,7 @@ public class UniProtDBCrossReferenceTest {
     void testUniProtDBCrossReferenceSimple() {
         UniProtXDbType opType = new UniProtXDbType("PIR");
         UniProtDBCrossReference dbCrossReference =
-                new UniProtDBCrossReferenceImpl(opType, "S61096", null, null);
+                new UniProtDBCrossReferenceBuilder().databaseType(opType).id("S61096").build();
 
         ValidateJson.verifyJsonRoundTripParser(dbCrossReference);
 
