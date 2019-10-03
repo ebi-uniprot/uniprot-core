@@ -126,7 +126,7 @@ public class OGLineBuilder extends FFLineBuilderAbstr<List<GeneLocation>>
                 sb.append("Plastid; ");
                 sb.append(organelle.getGeneEncodingType().getName());
                 break;
-            case UNKOWN:
+            case UNKNOWN:
                 break;
         }
 

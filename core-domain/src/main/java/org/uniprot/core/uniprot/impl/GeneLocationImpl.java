@@ -87,7 +87,7 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
                 sb.append("Plastid; ");
                 sb.append(getGeneEncodingType().getName());
                 break;
-            case UNKOWN:
+            case UNKNOWN:
                 break;
         }
 

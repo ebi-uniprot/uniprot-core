@@ -21,7 +21,7 @@ public class OgLineConverter extends EvidenceCollector
                 EvidenceConverterHelper.convert(f.getEvidenceInfo());
         this.addAll(evidenceMap.values());
         for (OgLineObject.OgEnum ogEnum : f.ogs) {
-            GeneEncodingType type = GeneEncodingType.UNKOWN;
+            GeneEncodingType type = GeneEncodingType.UNKNOWN;
             switch (ogEnum) {
                 case HYDROGENOSOME:
                     type = GeneEncodingType.HYDROGENOSOME;
@@ -54,7 +54,7 @@ public class OgLineConverter extends EvidenceCollector
                     type = GeneEncodingType.PLASMID;
                     break;
                 default:
-                    type = GeneEncodingType.UNKOWN;
+                    type = GeneEncodingType.UNKNOWN;
                     break;
             }
             GeneLocation org = new GeneLocationBuilder(type, "", evidenceMap.get(ogEnum)).build();
