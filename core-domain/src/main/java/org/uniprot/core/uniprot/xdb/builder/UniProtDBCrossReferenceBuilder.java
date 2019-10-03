@@ -1,8 +1,5 @@
 package org.uniprot.core.uniprot.xdb.builder;
 
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +10,10 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.uniprot.xdb.impl.UniProtDBCrossReferenceImpl;
+
+import javax.annotation.Nonnull;
+
+import static org.uniprot.core.util.Utils.*;
 
 /**
  * Created 22/01/19
@@ -31,7 +32,7 @@ public class UniProtDBCrossReferenceBuilder
     }
 
     @Override
-    public UniProtDBCrossReferenceBuilder from(UniProtDBCrossReference instance) {
+    public UniProtDBCrossReferenceBuilder from(@Nonnull UniProtDBCrossReference instance) {
         evidences.clear();
         return super.from(instance)
                 .evidences(instance.getEvidences())
@@ -54,7 +55,7 @@ public class UniProtDBCrossReferenceBuilder
     }
 
     public UniProtDBCrossReferenceBuilder addProperty(DBXRefTypeAttribute attribute, String value) {
-        if (value != null && !value.isEmpty() && attribute != null) {
+        if (notNullOrEmpty(value) && notNull(attribute)) {
             this.properties.add(new Property(attribute.getName(), value));
         }
         return this;
