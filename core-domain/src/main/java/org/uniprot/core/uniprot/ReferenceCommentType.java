@@ -2,7 +2,9 @@ package org.uniprot.core.uniprot;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** @author jluo */
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
     STRAIN("STRAIN"),
     PLASMID("PLASMID"),
@@ -15,7 +17,7 @@ public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
         this.value = type;
     }
 
-    public static ReferenceCommentType typeOf(String value) {
+    public @Nonnull static ReferenceCommentType typeOf(@Nullable String value) {
         for (ReferenceCommentType type : ReferenceCommentType.values()) {
             if (type.getValue().equalsIgnoreCase(value)) {
                 return type;
@@ -24,12 +26,12 @@ public enum ReferenceCommentType implements EnumDisplay<ReferenceCommentType> {
         throw new IllegalArgumentException("The ReferenceComment type " + value + " doesn't exist");
     }
 
-    public String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return value;
     }
 }

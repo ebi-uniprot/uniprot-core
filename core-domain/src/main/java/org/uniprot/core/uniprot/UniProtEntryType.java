@@ -2,11 +2,9 @@ package org.uniprot.core.uniprot;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/**
- * @author jieluo
- * @date 17 Jan 2017
- * @time 18:41:43
- */
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
     SWISSPROT("Swiss-Prot"),
     TREMBL("TrEMBL"),
@@ -19,21 +17,21 @@ public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
         this.value = type;
     }
 
-    public static UniProtEntryType typeOf(String value) {
+    public @Nonnull static UniProtEntryType typeOf(@Nullable String value) {
         for (UniProtEntryType entryType : UniProtEntryType.values()) {
-            if (entryType.getValue().equals(value)) {
+            if (entryType.getValue().equalsIgnoreCase(value)) {
                 return entryType;
             }
         }
-        throw new IllegalArgumentException("the entry type " + value + " doesn't exist");
+        return UniProtEntryType.UNKNOWN;
     }
 
-    public String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return value;
     }
 }
