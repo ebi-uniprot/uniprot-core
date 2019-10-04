@@ -12,7 +12,7 @@ public final class EntryAuditImpl implements EntryAudit {
     private int entryVersion;
     private int sequenceVersion;
 
-    private EntryAuditImpl() {}
+    EntryAuditImpl() {}
 
     public EntryAuditImpl(
             LocalDate firstPublicDate,

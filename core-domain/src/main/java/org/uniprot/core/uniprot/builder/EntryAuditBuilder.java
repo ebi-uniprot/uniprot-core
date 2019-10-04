@@ -6,6 +6,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.EntryAudit;
 import org.uniprot.core.uniprot.impl.EntryAuditImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 22/01/19
  *
@@ -44,7 +46,7 @@ public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit>
     }
 
     @Override
-    public EntryAudit build() {
+    public @Nonnull EntryAudit build() {
         return new EntryAuditImpl(
                 firstPublicDate,
                 lastAnnotationUpdateDate,
@@ -54,8 +56,9 @@ public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit>
     }
 
     @Override
-    public EntryAuditBuilder from(EntryAudit instance) {
+    public @Nonnull EntryAuditBuilder from(@Nonnull EntryAudit instance) {
         return new EntryAuditBuilder()
+                .lastAnnotationUpdate(instance.getLastAnnotationUpdateDate())
                 .lastSequenceUpdate(instance.getLastSequenceUpdateDate())
                 .firstPublic(instance.getFirstPublicDate())
                 .entryVersion(instance.getEntryVersion())
