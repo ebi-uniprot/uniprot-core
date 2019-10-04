@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OrganismHostImplTest {
 
@@ -50,5 +50,17 @@ class OrganismHostImplTest {
         assertEquals(scientificName, organism.getScientificName());
         assertEquals(commonName, organism.getCommonName());
         assertEquals(synonyms, organism.getSynonyms());
+    }
+
+    @Test
+    void defaultConstructor_defaultValues() {
+        OrganismHost organism = new OrganismHostImpl();
+        assertEquals(-1, organism.getTaxonId());
+    }
+
+    @Test
+    void toString_defaultObject(){
+        OrganismHost organism = new OrganismHostImpl();
+        assertEquals("-1", organism.toString());
     }
 }

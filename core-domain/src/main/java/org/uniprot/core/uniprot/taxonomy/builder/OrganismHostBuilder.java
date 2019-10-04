@@ -3,6 +3,8 @@ package org.uniprot.core.uniprot.taxonomy.builder;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostImpl;
 
+import javax.annotation.Nonnull;
+
 public class OrganismHostBuilder
         extends AbstractOrganismNameBuilder<OrganismHostBuilder, OrganismHost> {
     private long taxonId;
@@ -12,11 +14,11 @@ public class OrganismHostBuilder
         return this;
     }
 
-    public OrganismHost build() {
+    public @Nonnull OrganismHost build() {
         return new OrganismHostImpl(taxonId, scientificName, commonName, synonyms);
     }
 
-    public OrganismHostBuilder from(OrganismHost instance) {
+    public OrganismHostBuilder from(@Nonnull OrganismHost instance) {
         this.taxonId(instance.getTaxonId());
         this.scientificName(instance.getScientificName());
         this.commonName(instance.getCommonName());
