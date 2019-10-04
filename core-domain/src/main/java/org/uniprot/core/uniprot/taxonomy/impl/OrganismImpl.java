@@ -16,7 +16,7 @@ public class OrganismImpl extends AbstractOrganismNameImpl implements Organism {
     private List<Evidence> evidences;
     private List<String> lineage;
 
-    private OrganismImpl() {
+    OrganismImpl() {
         this(emptyList(), 0L, emptyList(), null, null, emptyList());
     }
 

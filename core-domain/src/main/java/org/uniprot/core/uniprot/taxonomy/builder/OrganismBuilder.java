@@ -10,6 +10,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder, Organism> {
     private long taxonId;
@@ -41,11 +43,11 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
         return this;
     }
 
-    public Organism build() {
+    public @Nonnull Organism build() {
         return new OrganismImpl(lineage, taxonId, evidences, scientificName, commonName, synonyms);
     }
 
-    public OrganismBuilder from(Organism instance) {
+    public OrganismBuilder from(@Nonnull Organism instance) {
         evidences.clear();
         lineage.clear();
         this.taxonId(instance.getTaxonId());
