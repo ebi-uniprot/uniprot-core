@@ -10,6 +10,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class GeneBuilder implements Builder<GeneBuilder, Gene> {
 
@@ -59,12 +61,12 @@ public class GeneBuilder implements Builder<GeneBuilder, Gene> {
         return this;
     }
 
-    public Gene build() {
+    public @Nonnull Gene build() {
         return new GeneImpl(geneName, synonyms, orderedLocusNames, orfNames);
     }
 
     @Override
-    public GeneBuilder from(Gene instance) {
+    public @Nonnull GeneBuilder from(@Nonnull Gene instance) {
         synonyms.clear();
         orderedLocusNames.clear();
         orfNames.clear();

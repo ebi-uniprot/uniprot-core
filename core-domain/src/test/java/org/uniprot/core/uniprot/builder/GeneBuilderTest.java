@@ -112,4 +112,25 @@ class GeneBuilderTest {
         builder.synonyms(singletonList(SYNONYM));
         assertThrows(IllegalArgumentException.class, builder::build);
     }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        Gene obj = new GeneBuilder().build();
+        GeneBuilder builder = new GeneBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        Gene obj = new GeneBuilder().build();
+        Gene obj2 = new GeneBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    @Test
+    void toStringEmpty() {
+        Gene obj = new GeneBuilder().build();
+        assertEquals("", obj.toString());
+    }
 }

@@ -140,7 +140,7 @@ public class GeneImpl implements Gene {
 
     public static class ORFNameImpl extends EvidencedValueImpl implements ORFName {
 
-        private ORFNameImpl() {
+        ORFNameImpl() {
             super(null, null);
         }
 
@@ -152,7 +152,7 @@ public class GeneImpl implements Gene {
     public static class OrderedLocusNameImpl extends EvidencedValueImpl
             implements OrderedLocusName {
 
-        private OrderedLocusNameImpl() {
+        OrderedLocusNameImpl() {
             super(null, null);
         }
 
@@ -163,7 +163,7 @@ public class GeneImpl implements Gene {
 
     public static class GeneNameSynonymImpl extends EvidencedValueImpl implements GeneNameSynonym {
 
-        private GeneNameSynonymImpl() {
+        GeneNameSynonymImpl() {
             super(null, null);
         }
 
@@ -174,7 +174,7 @@ public class GeneImpl implements Gene {
 
     public static class GeneNameImpl extends EvidencedValueImpl implements GeneName {
 
-        private GeneNameImpl() {
+        GeneNameImpl() {
             super(null, null);
         }
 
