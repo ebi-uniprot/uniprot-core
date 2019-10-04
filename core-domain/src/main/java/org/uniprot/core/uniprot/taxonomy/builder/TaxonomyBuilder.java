@@ -3,6 +3,8 @@ package org.uniprot.core.uniprot.taxonomy.builder;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
 
+import javax.annotation.Nonnull;
+
 public class TaxonomyBuilder extends AbstractOrganismNameBuilder<TaxonomyBuilder, Taxonomy> {
     private long taxonId;
     private String mnemonic;
@@ -27,7 +29,7 @@ public class TaxonomyBuilder extends AbstractOrganismNameBuilder<TaxonomyBuilder
     }
 
     @Override
-    public TaxonomyBuilder from(Taxonomy instance) {
+    public TaxonomyBuilder from(@Nonnull Taxonomy instance) {
         this.taxonId(instance.getTaxonId());
         this.mnemonic(instance.getMnemonic());
         this.scientificName(instance.getScientificName());

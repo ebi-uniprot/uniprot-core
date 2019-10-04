@@ -12,7 +12,7 @@ public class TaxonomyImpl extends AbstractOrganismNameImpl implements Taxonomy {
     private long taxonId;
     private String mnemonic;
 
-    private TaxonomyImpl() {
+    TaxonomyImpl() {
         this(-1, null, null, null, null);
     }
 

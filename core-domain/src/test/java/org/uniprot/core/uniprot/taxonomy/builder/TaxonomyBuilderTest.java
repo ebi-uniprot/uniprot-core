@@ -1,6 +1,7 @@
 package org.uniprot.core.uniprot.taxonomy.builder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
 
@@ -45,6 +46,14 @@ class TaxonomyBuilderTest {
     void testSynonyms() {
         Taxonomy taxonomy = getCompleteTaxonomy();
         assertEquals(Collections.singletonList("Some name"), taxonomy.getSynonyms());
+    }
+
+    @Test
+    void defaultBuilder_differentObject_shouldEqual(){
+        Taxonomy taxonomy = new TaxonomyBuilder().build();
+        Taxonomy taxonomy2 = new TaxonomyBuilder().build();
+        assertTrue(taxonomy.equals(taxonomy2) && taxonomy2.equals(taxonomy));
+        assertEquals(taxonomy.hashCode(), taxonomy2.hashCode());
     }
 
     private Taxonomy getCompleteTaxonomy() {
