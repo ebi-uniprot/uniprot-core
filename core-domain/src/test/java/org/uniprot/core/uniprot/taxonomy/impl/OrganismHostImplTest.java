@@ -61,6 +61,6 @@ class OrganismHostImplTest {
     @Test
     void toString_defaultObject(){
         OrganismHost organism = new OrganismHostImpl();
-        assertEquals("-1", organism.toString());
+        assertEquals("-1 ", organism.toString());
     }
 }
