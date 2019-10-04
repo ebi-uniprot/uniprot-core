@@ -20,7 +20,7 @@ public class GeneImpl implements Gene {
     private List<OrderedLocusName> orderedLocusNames;
     private List<ORFName> orfNames;
 
-    private GeneImpl() {
+    GeneImpl() {
         synonyms = new ArrayList<>();
         orderedLocusNames = new ArrayList<>();
         orfNames = new ArrayList<>();
@@ -133,15 +133,9 @@ public class GeneImpl implements Gene {
         if (geneName == null) {
             if (other.geneName != null) return false;
         } else if (!geneName.equals(other.geneName)) return false;
-        if (orderedLocusNames == null) {
-            if (other.orderedLocusNames != null) return false;
-        } else if (!orderedLocusNames.equals(other.orderedLocusNames)) return false;
-        if (orfNames == null) {
-            if (other.orfNames != null) return false;
-        } else if (!orfNames.equals(other.orfNames)) return false;
-        if (synonyms == null) {
-            return other.synonyms == null;
-        } else return synonyms.equals(other.synonyms);
+        if (!orderedLocusNames.equals(other.orderedLocusNames)) return false;
+        if (!orfNames.equals(other.orfNames)) return false;
+        return synonyms.equals(other.synonyms);
     }
 
     public static class ORFNameImpl extends EvidencedValueImpl implements ORFName {
