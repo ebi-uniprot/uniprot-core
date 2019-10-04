@@ -12,7 +12,7 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
     private InactiveReasonType inactiveReasonType;
     private List<String> mergeDemergeTo;
 
-    private EntryInactiveReasonImpl() {
+    EntryInactiveReasonImpl() {
         this.mergeDemergeTo = Collections.emptyList();
     }
 
@@ -49,8 +49,6 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
         if (getClass() != obj.getClass()) return false;
         EntryInactiveReasonImpl other = (EntryInactiveReasonImpl) obj;
         if (inactiveReasonType != other.inactiveReasonType) return false;
-        if (mergeDemergeTo == null) {
-            return other.mergeDemergeTo == null;
-        } else return mergeDemergeTo.equals(other.mergeDemergeTo);
+        return mergeDemergeTo.equals(other.mergeDemergeTo);
     }
 }
