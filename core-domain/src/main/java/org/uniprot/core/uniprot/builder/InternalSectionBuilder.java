@@ -13,6 +13,8 @@ import org.uniprot.core.uniprot.SourceLine;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.impl.InternalSectionImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 24/01/19
  *
@@ -24,12 +26,12 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
     private List<SourceLine> sourceLines = new ArrayList<>();
 
     @Override
-    public InternalSection build() {
+    public @Nonnull InternalSection build() {
         return new InternalSectionImpl(internalLines, evidenceLines, sourceLines);
     }
 
     @Override
-    public InternalSectionBuilder from(InternalSection instance) {
+    public @Nonnull InternalSectionBuilder from(@Nonnull InternalSection instance) {
         this.evidenceLines(instance.getEvidenceLines());
         this.internalLines(instance.getInternalLines());
         this.sourceLines(instance.getSourceLines());
