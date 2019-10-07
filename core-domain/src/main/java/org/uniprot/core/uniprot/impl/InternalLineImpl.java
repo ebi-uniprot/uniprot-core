@@ -8,7 +8,8 @@ public class InternalLineImpl extends ValueImpl implements InternalLine {
     private static final long serialVersionUID = -5550083478261876596L;
     private InternalLineType type;
 
-    private InternalLineImpl() {
+    // no arg constructor for JSON deserialization
+    InternalLineImpl() {
         super(null);
     }
 

@@ -5,6 +5,8 @@ import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalLineType;
 import org.uniprot.core.uniprot.impl.InternalLineImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 24/01/19
  *
@@ -19,7 +21,12 @@ public class InternalLineBuilder extends AbstractValueBuilder<InternalLineBuilde
     }
 
     @Override
-    public InternalLine build() {
+    public @Nonnull InternalLineBuilder from(@Nonnull InternalLine instance) {
+        return new InternalLineBuilder(instance.getType(), instance.getValue());
+    }
+
+    @Override
+    public @Nonnull InternalLine build() {
         return new InternalLineImpl(type, value);
     }
 
