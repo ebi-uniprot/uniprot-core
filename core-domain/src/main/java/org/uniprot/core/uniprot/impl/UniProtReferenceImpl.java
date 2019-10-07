@@ -19,7 +19,8 @@ public class UniProtReferenceImpl implements UniProtReference {
     private List<ReferenceComment> referenceComments;
     private List<Evidence> evidences;
 
-    private UniProtReferenceImpl() {
+    // no arg constructor for JSON deserialization
+    UniProtReferenceImpl() {
         this.referencePositions = Collections.emptyList();
         this.referenceComments = Collections.emptyList();
         this.evidences = Collections.emptyList();

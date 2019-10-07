@@ -13,6 +13,8 @@ import org.uniprot.core.uniprot.UniProtReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.impl.UniProtReferenceImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 18/01/19
  *
@@ -25,12 +27,12 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public UniProtReference build() {
+    public @Nonnull UniProtReference build() {
         return new UniProtReferenceImpl(citation, referencePositions, referenceComments, evidences);
     }
 
     @Override
-    public UniProtReferenceBuilder from(UniProtReference instance) {
+    public @Nonnull UniProtReferenceBuilder from(@Nonnull UniProtReference instance) {
         referenceComments.clear();
         referencePositions.clear();
         evidences.clear();
