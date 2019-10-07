@@ -247,7 +247,7 @@ class KWLineBuildTest {
     }
 
     private Keyword createKeyword(String id, String kw, List<Evidence> evidences) {
-        return new KeywordBuilder(id, kw, KeywordCategory.DOMAIN, evidences).build();
+        return new KeywordBuilder().id(id).value(kw).category(KeywordCategory.DOMAIN).evidences(evidences).build();
     }
 
     private void doTest(String deLine, List<Keyword> genes) {

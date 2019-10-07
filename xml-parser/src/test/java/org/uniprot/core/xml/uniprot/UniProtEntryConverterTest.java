@@ -76,12 +76,9 @@ class UniProtEntryConverterTest {
                 new GeneLocationBuilder().geneEncodingType(GeneEncodingType.PLASMID).evidences(evidences).value("some value").build());
         List<Keyword> keywords = new ArrayList<>();
 
-        keywords.add(
-                new KeywordBuilder("KW-001", "key1", KeywordCategory.UNKNOWN, evidences).build());
-        keywords.add(
-                new KeywordBuilder("KW-002", "key2", KeywordCategory.UNKNOWN, evidences).build());
-        keywords.add(
-                new KeywordBuilder("KW-003", "key3", KeywordCategory.UNKNOWN, evidences).build());
+        keywords.add(new KeywordBuilder().id("KW-001").value("key1").category(KeywordCategory.UNKNOWN).evidences(evidences).build());
+        keywords.add(new KeywordBuilder().id("KW-002").value("key2").category(KeywordCategory.UNKNOWN).evidences(evidences).build());
+        keywords.add(new KeywordBuilder().id("KW-003").value("key3").category(KeywordCategory.UNKNOWN).evidences(evidences).build());
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
         Sequence sequence = new SequenceBuilder(value).build();
         UniProtEntry entry =

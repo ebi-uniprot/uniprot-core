@@ -21,14 +21,6 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
 
     public KeywordBuilder() {}
 
-    public KeywordBuilder(
-            String id, String value, KeywordCategory category, List<Evidence> evidences) {
-        this.id = id;
-        this.value = value;
-        this.category = category;
-        this.evidences = modifiableList(evidences);
-    }
-
     @Override
     public Keyword build() {
         return new KeywordImpl(id, value, category, evidences);
@@ -41,7 +33,7 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
 
     @Override
     public KeywordBuilder from(Keyword instance) {
-        return super.from(instance).id(instance.getId());
+        return super.from(instance).id(instance.getId()).category(instance.getCategory());
     }
 
     public KeywordBuilder id(String id) {
