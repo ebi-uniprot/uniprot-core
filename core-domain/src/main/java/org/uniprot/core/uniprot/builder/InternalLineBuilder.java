@@ -22,7 +22,9 @@ public class InternalLineBuilder extends AbstractValueBuilder<InternalLineBuilde
 
     @Override
     public @Nonnull InternalLineBuilder from(@Nonnull InternalLine instance) {
-        return new InternalLineBuilder(instance.getType(), instance.getValue());
+        super.from(instance);
+        this.type = instance.getType();
+        return this;
     }
 
     @Override
