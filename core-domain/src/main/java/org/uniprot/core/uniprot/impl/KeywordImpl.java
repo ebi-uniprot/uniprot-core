@@ -9,6 +9,8 @@ import org.uniprot.core.uniprot.Keyword;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 
+import static org.uniprot.core.util.Utils.nullOrEmpty;
+
 public class KeywordImpl extends EvidencedValueImpl implements Keyword {
 
     public static final String DEFAULT_ACCESSION = "KW-00000";
@@ -16,14 +18,15 @@ public class KeywordImpl extends EvidencedValueImpl implements Keyword {
     private String id;
     private KeywordCategory category;
 
-    private KeywordImpl() {
+    // no arg constructor for JSON deserialization
+    KeywordImpl() {
         this("", "", KeywordCategory.UNKNOWN, Collections.emptyList());
     }
 
     public KeywordImpl(
             String id, String value, KeywordCategory category, List<Evidence> evidences) {
         super(value, evidences);
-        if (id == null || id.isEmpty()) {
+        if (nullOrEmpty(id)) {
             this.id = DEFAULT_ACCESSION;
         } else this.id = id;
         this.category = category;

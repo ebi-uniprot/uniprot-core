@@ -1,16 +1,18 @@
 package org.uniprot.core.uniprot.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprot.Keyword;
+import org.uniprot.core.uniprot.builder.KeywordBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class KeywordImplTest {
 
@@ -38,6 +40,27 @@ class KeywordImplTest {
         assertEquals(expected, keyword.getDisplayed(" "));
         assertEquals(category, keyword.getCategory());
     }
+
+    @Test
+    void idWillNeverBeNull() {
+        Keyword obj = new KeywordImpl();
+        assertNotNull(obj.getId());
+        assertFalse(obj.getId().isEmpty());
+    }
+
+        @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Keyword obj = new KeywordImpl();
+        assertNotNull(obj);
+    }
+
+@Test
+  void builderFrom_constructorImp_shouldCreate_equalObject() {
+    Keyword impl = new KeywordImpl("abc", "edf", KeywordCategory.UNKNOWN, Collections.emptyList());
+    Keyword obj = new KeywordBuilder().from(impl).build();
+    assertTrue(impl.equals(obj) && obj.equals(impl));
+    assertEquals(impl.hashCode(), obj.hashCode());
+  }
 
     private List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();

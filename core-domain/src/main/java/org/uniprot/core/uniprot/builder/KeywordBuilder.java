@@ -10,6 +10,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.KeywordImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 23/01/19
  *
@@ -22,7 +24,7 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
     public KeywordBuilder() {}
 
     @Override
-    public Keyword build() {
+    public @Nonnull Keyword build() {
         return new KeywordImpl(id, value, category, evidences);
     }
 
@@ -32,7 +34,7 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
     }
 
     @Override
-    public KeywordBuilder from(Keyword instance) {
+    public @Nonnull KeywordBuilder from(@Nonnull Keyword instance) {
         return super.from(instance).id(instance.getId()).category(instance.getCategory());
     }
 
