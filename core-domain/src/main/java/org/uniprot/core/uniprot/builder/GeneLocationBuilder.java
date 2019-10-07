@@ -1,14 +1,11 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.modifiableList;
-
-import java.util.List;
-
 import org.uniprot.core.uniprot.GeneEncodingType;
 import org.uniprot.core.uniprot.GeneLocation;
-import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.GeneLocationImpl;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created 23/01/19
@@ -22,7 +19,7 @@ public class GeneLocationBuilder
     public GeneLocationBuilder() {}
 
     @Override
-    public GeneLocation build() {
+    public @Nonnull GeneLocation build() {
         return new GeneLocationImpl(geneEncodingType, value, evidences);
     }
 
@@ -31,7 +28,14 @@ public class GeneLocationBuilder
         return this;
     }
 
-    @Override
+  @Override
+  public @Nonnull GeneLocationBuilder from(@Nonnull GeneLocation instance) {
+      super.from(instance);
+      this.geneEncodingType(instance.getGeneEncodingType());
+      return this;
+  }
+
+  @Override
     protected GeneLocationBuilder getThis() {
         return this;
     }

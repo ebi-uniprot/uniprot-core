@@ -13,7 +13,7 @@ public class GeneLocationImpl extends EvidencedValueImpl implements GeneLocation
     private static final long serialVersionUID = -3156758801647353702L;
     private GeneEncodingType geneEncodingType;
 
-    private GeneLocationImpl() {
+    GeneLocationImpl() {
         super("", Collections.emptyList());
     }
 

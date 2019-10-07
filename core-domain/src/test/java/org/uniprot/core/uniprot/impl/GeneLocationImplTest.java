@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 import java.util.List;
@@ -9,6 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.GeneEncodingType;
 import org.uniprot.core.uniprot.GeneLocation;
+import org.uniprot.core.uniprot.builder.GeneLocationBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class GeneLocationImplTest {
@@ -77,5 +77,21 @@ class GeneLocationImplTest {
         assertEquals(type, geneLocation.getGeneEncodingType());
         assertEquals(val, geneLocation.getValue());
         assertTrue(geneLocation.getEvidences().isEmpty());
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        GeneLocation impl = new GeneLocationImpl(GeneEncodingType.APICOPLAST, "val", createEvidences());
+        GeneLocation obj = new GeneLocationBuilder().from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        GeneLocation obj = new GeneLocationImpl();
+        assertNotNull(obj);
+        assertEquals("", obj.getValue());
+        assertTrue(obj.getEvidences().isEmpty());
     }
 }
