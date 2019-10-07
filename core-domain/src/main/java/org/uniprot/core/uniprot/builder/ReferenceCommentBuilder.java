@@ -5,6 +5,8 @@ import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.ReferenceCommentImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 18/01/19
  *
@@ -15,7 +17,7 @@ public class ReferenceCommentBuilder
     private ReferenceCommentType type;
 
     @Override
-    public ReferenceComment build() {
+    public @Nonnull ReferenceComment build() {
         return new ReferenceCommentImpl(type, value, evidences);
     }
 
@@ -27,5 +29,10 @@ public class ReferenceCommentBuilder
     public ReferenceCommentBuilder type(ReferenceCommentType type) {
         this.type = type;
         return this;
+    }
+
+    @Override
+    public @Nonnull ReferenceCommentBuilder from(@Nonnull ReferenceComment instance) {
+        return super.from(instance).type(instance.getType());
     }
 }

@@ -13,7 +13,8 @@ public class ReferenceCommentImpl extends EvidencedValueImpl implements Referenc
     private static final long serialVersionUID = 6546262222329573992L;
     private ReferenceCommentType type;
 
-    private ReferenceCommentImpl() {
+    // no arg constructor for JSON deserialization
+    ReferenceCommentImpl() {
         super("", Collections.emptyList());
     }
 
