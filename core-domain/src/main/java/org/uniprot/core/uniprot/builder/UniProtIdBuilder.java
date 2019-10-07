@@ -4,6 +4,8 @@ import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniprot.UniProtId;
 import org.uniprot.core.uniprot.impl.UniProtIdImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 24/01/19
  *
@@ -15,7 +17,7 @@ public class UniProtIdBuilder extends AbstractValueBuilder<UniProtIdBuilder, Uni
     }
 
     @Override
-    public UniProtId build() {
+    public @Nonnull UniProtId build() {
         return new UniProtIdImpl(value);
     }
 
