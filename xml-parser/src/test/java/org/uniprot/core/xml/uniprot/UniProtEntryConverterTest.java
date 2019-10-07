@@ -71,9 +71,9 @@ class UniProtEntryConverterTest {
         List<GeneLocation> organelles = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         organelles.add(
-                new GeneLocationBuilder(GeneEncodingType.APICOPLAST, null, evidences).build());
+                new GeneLocationBuilder().geneEncodingType(GeneEncodingType.APICOPLAST).evidences(evidences).build());
         organelles.add(
-                new GeneLocationBuilder(GeneEncodingType.PLASMID, "some value", evidences).build());
+                new GeneLocationBuilder().geneEncodingType(GeneEncodingType.PLASMID).evidences(evidences).value("some value").build());
         List<Keyword> keywords = new ArrayList<>();
 
         keywords.add(

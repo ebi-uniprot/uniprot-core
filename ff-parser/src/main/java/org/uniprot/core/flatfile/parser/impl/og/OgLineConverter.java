@@ -57,15 +57,14 @@ public class OgLineConverter extends EvidenceCollector
                     type = GeneEncodingType.UNKNOWN;
                     break;
             }
-            GeneLocation org = new GeneLocationBuilder(type, "", evidenceMap.get(ogEnum)).build();
+            GeneLocation org = new GeneLocationBuilder().geneEncodingType(type).value("").evidences(evidenceMap.get(ogEnum)).build();
 
             organelles.add(org);
         }
 
         for (String val : f.plasmidNames) {
             GeneLocation org =
-                    new GeneLocationBuilder(GeneEncodingType.PLASMID, val, evidenceMap.get(val))
-                            .build();
+                    new GeneLocationBuilder().geneEncodingType(GeneEncodingType.PLASMID).value(val).evidences(evidenceMap.get(val)).build();
             organelles.add(org);
         }
 

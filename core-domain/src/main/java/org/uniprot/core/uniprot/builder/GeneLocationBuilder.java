@@ -21,13 +21,6 @@ public class GeneLocationBuilder
 
     public GeneLocationBuilder() {}
 
-    public GeneLocationBuilder(
-            GeneEncodingType geneEncodingType, String value, List<Evidence> evidences) {
-        this.geneEncodingType = geneEncodingType;
-        this.value = value;
-        this.evidences = modifiableList(evidences);
-    }
-
     @Override
     public GeneLocation build() {
         return new GeneLocationImpl(geneEncodingType, value, evidences);

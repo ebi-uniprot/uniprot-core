@@ -21,7 +21,7 @@ class OrganelleConverterTest {
         String value = "pBgh";
         List<Evidence> evidences = createEvidences();
         GeneLocation organelle =
-                new GeneLocationBuilder(geneEncodingType, value, evidences).build();
+                new GeneLocationBuilder().geneEncodingType(geneEncodingType).value(value).evidences(evidences).build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);
         System.out.println(
@@ -37,7 +37,7 @@ class OrganelleConverterTest {
         String value = "";
         List<Evidence> evidences = createEvidences();
         GeneLocation organelle =
-                new GeneLocationBuilder(geneEncodingType, value, evidences).build();
+                new GeneLocationBuilder().geneEncodingType(geneEncodingType).value(value).evidences(evidences).build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);
         System.out.println(
