@@ -15,7 +15,8 @@ public class InternalSectionImpl implements InternalSection {
     private List<EvidenceLine> evidenceLines;
     private List<SourceLine> sourceLines;
 
-    private InternalSectionImpl() {
+    // no arg constructor for JSON deserialization
+    InternalSectionImpl() {
         this.internalLines = Collections.emptyList();
         this.evidenceLines = Collections.emptyList();
         this.sourceLines = Collections.emptyList();
@@ -61,14 +62,8 @@ public class InternalSectionImpl implements InternalSection {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         InternalSectionImpl other = (InternalSectionImpl) obj;
-        if (evidenceLines == null) {
-            if (other.evidenceLines != null) return false;
-        } else if (!evidenceLines.equals(other.evidenceLines)) return false;
-        if (internalLines == null) {
-            if (other.internalLines != null) return false;
-        } else if (!internalLines.equals(other.internalLines)) return false;
-        if (sourceLines == null) {
-            return other.sourceLines == null;
-        } else return sourceLines.equals(other.sourceLines);
+        if (!evidenceLines.equals(other.evidenceLines)) return false;
+        if (!internalLines.equals(other.internalLines)) return false;
+        return sourceLines.equals(other.sourceLines);
     }
 }
