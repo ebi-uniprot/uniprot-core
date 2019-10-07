@@ -4,6 +4,8 @@ import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 24/01/19
  *
@@ -16,7 +18,7 @@ public class UniProtAccessionBuilder
     }
 
     @Override
-    public UniProtAccession build() {
+    public @Nonnull UniProtAccession build() {
         return new UniProtAccessionImpl(value);
     }
 

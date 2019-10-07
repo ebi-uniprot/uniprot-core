@@ -12,7 +12,8 @@ public class UniProtAccessionImpl extends ValueImpl implements UniProtAccession 
     private static final Pattern UNIPROT_ACC_PATTERN =
             Pattern.compile(UNIPROT_ACC_REX, Pattern.CASE_INSENSITIVE);
 
-    private UniProtAccessionImpl() {
+    // no arg constructor for JSON deserialization
+    UniProtAccessionImpl() {
         super(null);
     }
 

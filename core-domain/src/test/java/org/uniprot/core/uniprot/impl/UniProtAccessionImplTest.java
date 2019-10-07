@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprot.builder.SourceLineBuilder;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 
 class UniProtAccessionImplTest {
 
@@ -58,5 +60,19 @@ class UniProtAccessionImplTest {
         assertNotNull(accession);
         assertEquals(val, accession.getValue());
         assertFalse(accession.isValidAccession());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        UniProtAccession obj = new UniProtAccessionImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        UniProtAccession impl = new UniProtAccessionImpl("VAL");
+        UniProtAccession obj = new UniProtAccessionBuilder("VAL").from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }
