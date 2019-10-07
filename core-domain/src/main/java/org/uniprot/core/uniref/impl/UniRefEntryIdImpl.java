@@ -16,6 +16,7 @@ public class UniRefEntryIdImpl extends ValueImpl implements UniRefEntryId {
     private static final Pattern UNIREF_ACC_PATTERN =
             Pattern.compile(UNIREF_ACC_REX, Pattern.CASE_INSENSITIVE);
 
+    // no arg constructor for JSON deserialization
     protected UniRefEntryIdImpl() {
         super(null);
     }

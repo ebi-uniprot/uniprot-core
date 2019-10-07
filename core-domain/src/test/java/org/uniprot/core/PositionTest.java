@@ -98,4 +98,10 @@ class PositionTest {
         assertEquals(value, position.getValue());
         assertEquals(modifier, position.getModifier());
     }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Position obj = new Position();
+        assertNotNull(obj);
+    }
 }

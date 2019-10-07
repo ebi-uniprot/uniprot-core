@@ -19,6 +19,7 @@ public class RepresentativeMemberImpl extends UniRefMemberImpl implements Repres
 
     private Sequence sequence;
 
+    // no arg constructor for JSON deserialization
     protected RepresentativeMemberImpl() {
         super();
     }

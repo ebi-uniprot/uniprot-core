@@ -11,7 +11,7 @@ public final class Range implements Serializable {
     private Position end;
 
     // no arg constructor for JSON deserialization
-    private Range() {}
+    Range() {}
 
     public Range(@Nullable Integer start, @Nullable Integer end) {
         this(new Position(start), new Position(end));

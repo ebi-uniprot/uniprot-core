@@ -29,6 +29,7 @@ public class UniRefMemberImpl implements UniRefMember {
     private OverlapRegion overlapRegion;
     private Boolean seed;
 
+    // no arg constructor for JSON deserialization
     protected UniRefMemberImpl() {}
 
     public UniRefMemberImpl(

@@ -106,4 +106,10 @@ class PropertyTest {
             assertFalse(prop.equals(p));
         }
     }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Property obj = new Property();
+        assertNotNull(obj);
+    }
 }

@@ -11,7 +11,7 @@ public final class Position implements Comparable<Position>, Serializable {
     private PositionModifier modifier;
 
     // no arg constructor for JSON deserialization
-    private Position() {}
+    Position() {}
 
     public Position(@Nullable Integer value) {
         this(value, getValueModifier(value));

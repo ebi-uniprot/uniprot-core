@@ -13,7 +13,7 @@ public final class Property implements Pair<String, String>, Comparable<Property
     private String value;
 
     // Need by object mapper json conversions
-    private Property() {}
+    Property() {}
 
     public Property(@Nullable String key, @Nullable String value) {
         this.key = key;

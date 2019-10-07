@@ -14,7 +14,7 @@ public class Location implements Serializable {
     int end;
 
     // no arg constructor for JSON deserialization
-    private Location() {}
+    Location() {}
 
     public Location(int start, int end) {
         this.start = start;

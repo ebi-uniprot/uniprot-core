@@ -14,6 +14,7 @@ public class OverlapRegionImpl implements OverlapRegion {
     private int start;
     private int end;
 
+    // no arg constructor for JSON deserialization
     protected OverlapRegionImpl() {}
 
     public OverlapRegionImpl(int start, int end) {

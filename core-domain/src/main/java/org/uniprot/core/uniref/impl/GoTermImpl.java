@@ -15,6 +15,7 @@ public class GoTermImpl implements GoTerm {
     private GoTermType type;
     private String id;
 
+    // no arg constructor for JSON deserialization
     protected GoTermImpl() {}
 
     public GoTermImpl(GoTermType type, String id) {

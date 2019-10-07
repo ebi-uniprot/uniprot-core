@@ -106,6 +106,12 @@ class RangeTest {
         }
     }
 
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Range obj = new Range();
+        assertNotNull(obj);
+    }
+
     private void verify(Range range, Position start, Position end) {
         assertEquals(start, range.getStart());
         assertEquals(end, range.getEnd());

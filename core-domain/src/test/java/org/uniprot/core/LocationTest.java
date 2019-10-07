@@ -48,4 +48,11 @@ class LocationTest {
             assertEquals(location, new Location(-123, 25));
         }
     }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Location obj = new Location();
+        assertNotNull(obj);
+    }
+
 }
