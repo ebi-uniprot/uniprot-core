@@ -87,16 +87,6 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         return name();
     }
 
-    public FeatureCategory getCategory() {
-        return category;
-    }
-
-    public static List<FeatureType> getFeatureTypes(FeatureCategory category) {
-        return Arrays.stream(FeatureType.values())
-                .filter(val -> val.getCategory() == category)
-                .collect(Collectors.toList());
-    }
-
     public static FeatureType typeOf(String value) {
         for (FeatureType featureType : FeatureType.values()) {
             if (featureType.name().equalsIgnoreCase(value)) {
@@ -110,10 +100,6 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         }
         throw new IllegalArgumentException(
                 "the fetaure with the description " + value + " doesn't exist");
-    }
-
-    public String getDisplayName() {
-        return displayName;
     }
 
     @Override

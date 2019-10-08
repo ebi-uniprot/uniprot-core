@@ -37,8 +37,8 @@ public final class FeatureTransformer {
     }
 
     public Feature transform(FeatureType featureType, String annotation) {
-        if (annotation.startsWith(featureType.getDisplayName())) {
-            annotation = annotation.substring(featureType.getDisplayName().length() + 1).trim();
+        if (annotation.startsWith(featureType.toDisplayName())) {
+            annotation = annotation.substring(featureType.toDisplayName().length() + 1).trim();
         }
         FeatureBuilder builder = new FeatureBuilder();
         builder.type(featureType);
