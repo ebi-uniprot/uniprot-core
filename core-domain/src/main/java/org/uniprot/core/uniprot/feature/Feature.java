@@ -17,7 +17,7 @@ public interface Feature extends HasEvidences {
 
     DBCrossReference<FeatureXDbType> getDbXref();
 
-    boolean hastLocation();
+    boolean hasLocation();
 
     boolean hasDescription();
 

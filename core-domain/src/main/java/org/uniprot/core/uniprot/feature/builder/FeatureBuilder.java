@@ -15,6 +15,8 @@ import org.uniprot.core.uniprot.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 22/01/19
  *
@@ -30,13 +32,13 @@ public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public Feature build() {
+    public @Nonnull Feature build() {
         return new FeatureImpl(
                 type, location, description, featureId, alternativeSequence, dbXref, evidences);
     }
 
     @Override
-    public FeatureBuilder from(Feature instance) {
+    public @Nonnull FeatureBuilder from(@Nonnull Feature instance) {
         return new FeatureBuilder()
                 .evidences(instance.getEvidences())
                 .description(instance.getDescription())

@@ -19,39 +19,8 @@ public class FeatureImpl implements Feature {
     private DBCrossReference<FeatureXDbType> dbXref;
     private List<Evidence> evidences;
 
-    public FeatureImpl(
-            FeatureType type, Range location, String description, List<Evidence> evidences) {
-        this(type, location, description, null, evidences);
-    }
-
-    public FeatureImpl(
-            FeatureType type,
-            Range location,
-            String description,
-            FeatureId featureId,
-            List<Evidence> evidences) {
-        this(type, location, description, featureId, null, null, evidences);
-    }
-
-    public FeatureImpl(
-            FeatureType type,
-            Range location,
-            String description,
-            FeatureId featureId,
-            AlternativeSequence alternativeSequence,
-            DBCrossReference<FeatureXDbType> dbXref,
-            List<Evidence> evidences) {
-        this(
-                type,
-                location,
-                new FeatureDescriptionImpl(description),
-                featureId,
-                alternativeSequence,
-                dbXref,
-                evidences);
-    }
-
-    private FeatureImpl() {
+    // no arg constructor for JSON deserialization
+    FeatureImpl() {
         evidences = Collections.emptyList();
     }
 
@@ -70,11 +39,7 @@ public class FeatureImpl implements Feature {
         this.featureId = featureId;
         this.alternativeSequence = alternativeSequence;
         this.dbXref = dbXref;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override
@@ -133,7 +98,7 @@ public class FeatureImpl implements Feature {
     }
 
     @Override
-    public boolean hastLocation() {
+    public boolean hasLocation() {
         return this.location != null;
     }
 
@@ -173,9 +138,7 @@ public class FeatureImpl implements Feature {
         if (description == null) {
             if (other.description != null) return false;
         } else if (!description.equals(other.description)) return false;
-        if (evidences == null) {
-            if (other.evidences != null) return false;
-        } else if (!evidences.equals(other.evidences)) return false;
+        if (!evidences.equals(other.evidences)) return false;
         if (featureId == null) {
             if (other.featureId != null) return false;
         } else if (!featureId.equals(other.featureId)) return false;

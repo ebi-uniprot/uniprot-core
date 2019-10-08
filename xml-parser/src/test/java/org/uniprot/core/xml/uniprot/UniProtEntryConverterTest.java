@@ -35,9 +35,9 @@ import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
-import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
@@ -203,18 +203,26 @@ class UniProtEntryConverterTest {
     private List<Feature> createFeatures() {
         List<Feature> features = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
+        Feature featureLocation12 = new FeatureBuilder().type(FeatureType.TURN)
+          .location(new Range(12, 12))
+          .description("some desc1")
+          .evidences(evidences)
+          .build();
+        Feature featureLocation20 = new FeatureBuilder().from(featureLocation12)
+          .location(new Range(20, 23))
+          .description("some desc2").build();
+        Feature featureLocation200 = new FeatureBuilder()
+          .type(FeatureType.CHAIN)
+          .location(new Range(200, 230))
+          .description("some desc3")
+          .featureId("PRO_123")
+          .evidences(evidences)
+          .build();
+
         features.add(createVarSeqFeature());
-        features.add(new FeatureImpl(FeatureType.TURN, new Range(12, 12), "some desc1", evidences));
-
-        features.add(new FeatureImpl(FeatureType.TURN, new Range(20, 23), "some desc2", evidences));
-
-        features.add(
-                new FeatureImpl(
-                        FeatureType.CHAIN,
-                        new Range(200, 230),
-                        "some desc3",
-                        new FeatureIdImpl("PRO_123"),
-                        evidences));
+        features.add(featureLocation12);
+        features.add(featureLocation20);
+        features.add(featureLocation200);
 
         return features;
     }
@@ -224,14 +232,13 @@ class UniProtEntryConverterTest {
         AlternativeSequence as = new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
         FeatureId featureId = new FeatureIdImpl("VSP_112");
 
-        return new FeatureImpl(
-                FeatureType.VAR_SEQ,
-                location,
-                "some description",
-                featureId,
-                as,
-                null,
-                createEvidences());
+        return new FeatureBuilder().type(FeatureType.VAR_SEQ)
+            .location(location)
+            .description("some description")
+            .featureId(featureId)
+            .alternativeSequence(as)
+            .evidences(createEvidences())
+            .build();
     }
 
     private List<Comment> createComments() {

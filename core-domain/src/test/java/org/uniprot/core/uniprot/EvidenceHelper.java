@@ -17,6 +17,11 @@ import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
  * @author Edd
  */
 public class EvidenceHelper {
+
+    public static Evidence createEvidence() {
+        return createEvidences().get(0);
+    }
+
     public static List<Evidence> createEvidences() {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(
