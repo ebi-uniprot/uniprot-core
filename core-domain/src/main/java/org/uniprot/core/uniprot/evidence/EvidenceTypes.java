@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
 
+import javax.annotation.Nonnull;
+
 public enum EvidenceTypes {
     INSTANCE;
     private final String FILENAME = "META-INF/evidenceDbConfiguration.json";
@@ -19,11 +21,7 @@ public enum EvidenceTypes {
         init();
     }
 
-    public List<EvidenceTypeDetail> getAllTypes() {
-        return types;
-    }
-
-    public EvidenceTypeDetail getType(String typeName) {
+    public @Nonnull EvidenceTypeDetail getType(String typeName) {
         EvidenceTypeDetail type = typeMap.get(typeName);
         if (type == null) {
             throw new IllegalArgumentException(typeName + " does not exist in Evidence type list");
