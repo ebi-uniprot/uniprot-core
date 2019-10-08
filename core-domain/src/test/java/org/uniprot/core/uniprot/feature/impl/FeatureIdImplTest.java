@@ -3,7 +3,9 @@ package org.uniprot.core.uniprot.feature.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.builder.FeatureIdBuilder;
 
 class FeatureIdImplTest {
 
@@ -56,5 +58,20 @@ class FeatureIdImplTest {
         assertFalse(featureId.isValid(FeatureType.PROPEP));
         assertFalse(featureId.isValid(FeatureType.VARIANT));
         assertTrue(featureId.isValid(FeatureType.CARBOHYD));
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        FeatureId obj = new FeatureIdImpl();
+        assertNotNull(obj);
+        assertFalse(obj.hasValue());
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        FeatureIdImpl impl = new FeatureIdImpl("2");
+        FeatureId obj = new FeatureIdBuilder("1").from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }

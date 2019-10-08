@@ -32,7 +32,8 @@ public class FeatureIdImpl implements FeatureId {
 
     private String value;
 
-    private FeatureIdImpl() {
+    // no arg constructor for JSON deserialization
+    FeatureIdImpl() {
         this.value = "";
     }
 
@@ -76,8 +77,6 @@ public class FeatureIdImpl implements FeatureId {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         FeatureIdImpl other = (FeatureIdImpl) obj;
-        if (value == null) {
-            return other.value == null;
-        } else return value.equals(other.value);
+        return value.equals(other.value);
     }
 }
