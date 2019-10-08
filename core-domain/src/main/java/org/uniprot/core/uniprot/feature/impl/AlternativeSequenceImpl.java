@@ -11,8 +11,10 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
     private String originalSequence;
     private List<String> alternativeSequences;
 
-    private AlternativeSequenceImpl() {
+    // no arg constructor for JSON deserialization
+    AlternativeSequenceImpl() {
         this.alternativeSequences = Collections.emptyList();
+        this.originalSequence = "";
     }
 
     public AlternativeSequenceImpl(String originalSequence, List<String> alternativeSequences) {
@@ -47,11 +49,7 @@ public class AlternativeSequenceImpl implements AlternativeSequence {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         AlternativeSequenceImpl other = (AlternativeSequenceImpl) obj;
-        if (alternativeSequences == null) {
-            if (other.alternativeSequences != null) return false;
-        } else if (!alternativeSequences.equals(other.alternativeSequences)) return false;
-        if (originalSequence == null) {
-            return other.originalSequence == null;
-        } else return originalSequence.equals(other.originalSequence);
+        if (!alternativeSequences.equals(other.alternativeSequences)) return false;
+        return originalSequence.equals(other.originalSequence);
     }
 }

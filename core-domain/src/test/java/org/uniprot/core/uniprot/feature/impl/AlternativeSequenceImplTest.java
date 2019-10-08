@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprot.feature.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Arrays;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class AlternativeSequenceImplTest {
 
@@ -27,5 +27,19 @@ class AlternativeSequenceImplTest {
 
         assertEquals("AB", as.getOriginalSequence());
         assertTrue(as.getAlternativeSequences().isEmpty());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        AlternativeSequence obj = new AlternativeSequenceImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        AlternativeSequenceImpl impl = new AlternativeSequenceImpl("seq", Collections.singletonList("alter"));
+        AlternativeSequence obj = new AlternativeSequenceBuilder().from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }

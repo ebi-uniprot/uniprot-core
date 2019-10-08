@@ -10,6 +10,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 22/01/19
  *
@@ -21,12 +23,12 @@ public class AlternativeSequenceBuilder
     private List<String> alternativeSequences = new ArrayList<>();
 
     @Override
-    public AlternativeSequence build() {
+    public @Nonnull AlternativeSequence build() {
         return new AlternativeSequenceImpl(originalSequence, alternativeSequences);
     }
 
     @Override
-    public AlternativeSequenceBuilder from(AlternativeSequence instance) {
+    public @Nonnull AlternativeSequenceBuilder from(@Nonnull AlternativeSequence instance) {
         return new AlternativeSequenceBuilder()
                 .original(instance.getOriginalSequence())
                 .alternatives(instance.getAlternativeSequences());
