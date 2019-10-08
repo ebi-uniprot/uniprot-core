@@ -7,7 +7,8 @@ public class FeatureDescriptionImpl implements FeatureDescription {
     private static final long serialVersionUID = -1958668003264920501L;
     private String value;
 
-    private FeatureDescriptionImpl() {
+    // no arg constructor for JSON deserialization
+    FeatureDescriptionImpl() {
         value = "";
     }
 
@@ -39,8 +40,6 @@ public class FeatureDescriptionImpl implements FeatureDescription {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         FeatureDescriptionImpl other = (FeatureDescriptionImpl) obj;
-        if (value == null) {
-            return other.value == null;
-        } else return value.equals(other.value);
+        return value.equals(other.value);
     }
 }
