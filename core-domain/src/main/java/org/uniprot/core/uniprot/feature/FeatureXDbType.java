@@ -3,6 +3,8 @@ package org.uniprot.core.uniprot.feature;
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum FeatureXDbType implements DatabaseType, EnumDisplay<FeatureXDbType> {
     DBSNP("dbSNP");
     private final String name;
@@ -11,21 +13,22 @@ public enum FeatureXDbType implements DatabaseType, EnumDisplay<FeatureXDbType> 
         this.name = name;
     }
 
-    public static FeatureXDbType typeOf(String type) {
+    public @Nonnull static
+    FeatureXDbType typeOf(String type) {
         for (FeatureXDbType featuretype : FeatureXDbType.values()) {
-            if (type.equals(featuretype.getName())) return featuretype;
+            if (type.equalsIgnoreCase(featuretype.getName())) return featuretype;
         }
         throw new IllegalArgumentException(
                 type + " is not valid Feature cross reference database type");
     }
 
     @Override
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name;
     }
 }

@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum FeatureType implements EnumDisplay<FeatureType> {
     /**
      * Enumerates all features types in UniProt. Important!!! The order which is here must the order
@@ -79,15 +81,16 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         this.category = category;
     }
 
-    public String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 
-    public String getName() {
+    public @Nonnull
+    String getName() {
         return name();
     }
 
-    public static FeatureType typeOf(String value) {
+    public @Nonnull static FeatureType typeOf(String value) {
         for (FeatureType featureType : FeatureType.values()) {
             if (featureType.name().equalsIgnoreCase(value)) {
                 return featureType;
@@ -103,7 +106,7 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return displayName;
     }
 }
