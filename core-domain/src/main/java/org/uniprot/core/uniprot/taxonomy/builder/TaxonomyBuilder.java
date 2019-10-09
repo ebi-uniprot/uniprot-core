@@ -30,11 +30,9 @@ public class TaxonomyBuilder extends AbstractOrganismNameBuilder<TaxonomyBuilder
 
     @Override
     public TaxonomyBuilder from(@Nonnull Taxonomy instance) {
+        super.from(instance);
         this.taxonId(instance.getTaxonId());
         this.mnemonic(instance.getMnemonic());
-        this.scientificName(instance.getScientificName());
-        this.commonName(instance.getCommonName());
-        this.synonyms(instance.getSynonyms());
         return this;
     }
 

@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.evidence;
 
+import org.uniprot.core.util.Utils;
+
 import java.io.Serializable;
 
 public class EvidenceTypeDetail implements Serializable {
@@ -9,16 +11,15 @@ public class EvidenceTypeDetail implements Serializable {
     private EvidenceTypeCategory category;
     private String uriLink;
 
-    private EvidenceTypeDetail() {}
+    // no arg constructor for JSON deserialization
+    EvidenceTypeDetail() {uriLink="";}
 
     public EvidenceTypeDetail(
             String name, String displayName, EvidenceTypeCategory category, String uriLink) {
         this.name = name;
         this.displayName = displayName;
         this.category = category;
-        if (uriLink == null) {
-            this.uriLink = "";
-        } else this.uriLink = uriLink;
+        this.uriLink = Utils.emptyOrString(uriLink);
     }
 
     public String getName() {
@@ -63,9 +64,7 @@ public class EvidenceTypeDetail implements Serializable {
         if (name == null) {
             if (other.name != null) return false;
         } else if (!name.equals(other.name)) return false;
-        if (uriLink == null) {
-            if (other.uriLink != null) return false;
-        } else if (!uriLink.equals(other.uriLink)) return false;
+        if (!uriLink.equals(other.uriLink)) return false;
         return true;
     }
 }

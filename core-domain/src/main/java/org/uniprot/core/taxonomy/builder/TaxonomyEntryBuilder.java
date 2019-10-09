@@ -169,11 +169,8 @@ public class TaxonomyEntryBuilder
     @Override
     public TaxonomyEntryBuilder from(TaxonomyEntry instance) {
         if (instance != null) {
+            super.from(instance);
             this.taxonId(instance.getTaxonId());
-            this.scientificName(instance.getScientificName());
-            this.commonName(instance.getCommonName());
-            this.synonyms.clear();
-            this.synonyms(instance.getSynonyms());
             this.mnemonic(instance.getMnemonic());
             this.parentId(instance.getParentId());
             this.rank(instance.getRank());

@@ -19,10 +19,8 @@ public class OrganismHostBuilder
     }
 
     public OrganismHostBuilder from(@Nonnull OrganismHost instance) {
+        super.from(instance);
         this.taxonId(instance.getTaxonId());
-        this.scientificName(instance.getScientificName());
-        this.commonName(instance.getCommonName());
-        this.synonyms(instance.getSynonyms());
         return this;
     }
 

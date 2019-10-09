@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprot.taxonomy.OrganismName;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
 
 import javax.annotation.Nonnull;
@@ -50,11 +51,9 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     public OrganismBuilder from(@Nonnull Organism instance) {
         evidences.clear();
         lineage.clear();
+        super.from(instance);
         this.taxonId(instance.getTaxonId());
         this.evidences(instance.getEvidences());
-        this.scientificName(instance.getScientificName());
-        this.commonName(instance.getCommonName());
-        this.synonyms(instance.getSynonyms());
         this.lineage(instance.getLineage());
         return this;
     }

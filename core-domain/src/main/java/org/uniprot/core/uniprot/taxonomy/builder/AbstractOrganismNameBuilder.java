@@ -37,4 +37,14 @@ public abstract class AbstractOrganismNameBuilder<
         addOrIgnoreNull(synonym, this.synonyms);
         return getThis();
     }
+
+    @Override
+    public B from(T organismName) {
+        this.synonyms.clear();
+        this.scientificName = organismName.getScientificName();
+        this.commonName = organismName.getCommonName();
+        this.synonyms = modifiableList(organismName.getSynonyms());
+        return getThis();
+    }
+
 }
