@@ -8,7 +8,8 @@ public final class EvidenceType implements DatabaseType, Serializable {
     private static final long serialVersionUID = 799945684184000909L;
     private String name;
 
-    private EvidenceType() {}
+    // no arg constructor for JSON deserialization
+    EvidenceType() {}
 
     public EvidenceType(String name) {
         this.name = name;
