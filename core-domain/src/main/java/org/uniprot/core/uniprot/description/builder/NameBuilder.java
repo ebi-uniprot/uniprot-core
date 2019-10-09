@@ -4,6 +4,8 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.impl.NameImpl;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 
+import javax.annotation.Nonnull;
+
 public class NameBuilder extends AbstractEvidencedValueBuilder<NameBuilder, Name> {
 
     @Override
@@ -12,7 +14,8 @@ public class NameBuilder extends AbstractEvidencedValueBuilder<NameBuilder, Name
     }
 
     @Override
-    public Name build() {
+    public @Nonnull
+    Name build() {
         return new NameImpl(value, evidences);
     }
 }
