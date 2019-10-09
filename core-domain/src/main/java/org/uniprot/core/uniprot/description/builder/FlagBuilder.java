@@ -5,6 +5,9 @@ import org.uniprot.core.uniprot.description.Flag;
 import org.uniprot.core.uniprot.description.FlagType;
 import org.uniprot.core.uniprot.description.impl.FlagImpl;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 /**
  * Created 29/01/19
  *
@@ -14,12 +17,14 @@ public class FlagBuilder implements Builder<FlagBuilder, Flag> {
     private FlagType flagType;
 
     @Override
-    public Flag build() {
+    public @Nonnull
+    Flag build() {
         return new FlagImpl(flagType);
     }
 
     @Override
-    public FlagBuilder from(Flag instance) {
+    public @Nullable
+    FlagBuilder from(@Nonnull Flag instance) {
         this.flagType = instance.getType();
         return this;
     }

@@ -7,7 +7,8 @@ public class FlagImpl implements Flag {
     private static final long serialVersionUID = -328562072578231072L;
     private FlagType type;
 
-    private FlagImpl() {}
+    // no arg constructor for JSON deserialization
+    FlagImpl() {}
 
     public FlagImpl(FlagType type) {
         this.type = type;
