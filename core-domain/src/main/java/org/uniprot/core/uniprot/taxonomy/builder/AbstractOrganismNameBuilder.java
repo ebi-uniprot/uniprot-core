@@ -46,5 +46,4 @@ public abstract class AbstractOrganismNameBuilder<
         this.synonyms = modifiableList(organismName.getSynonyms());
         return getThis();
     }
-
 }

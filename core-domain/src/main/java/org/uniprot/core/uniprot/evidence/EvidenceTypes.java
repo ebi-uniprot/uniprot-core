@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
-
-import javax.annotation.Nonnull;
 
 public enum EvidenceTypes {
     INSTANCE;

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.UniProtAccession;
-import org.uniprot.core.uniprot.builder.SourceLineBuilder;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 
 class UniProtAccessionImplTest {

@@ -22,11 +22,12 @@ class FeatureImplTest {
     void testSimple() {
         Range location = new Range(32, 50, PositionModifier.EXACT, PositionModifier.UNSURE);
         Feature feature =
-          new FeatureBuilder().type(FeatureType.ACT_SITE)
-          .location(location)
-          .description("Some description")
-          .evidences(createEvidences())
-          .build();
+                new FeatureBuilder()
+                        .type(FeatureType.ACT_SITE)
+                        .location(location)
+                        .description("Some description")
+                        .evidences(createEvidences())
+                        .build();
         assertEquals(location, feature.getLocation());
         assertEquals("Some description", feature.getDescription().getValue());
         assertEquals(2, feature.getEvidences().size());
@@ -40,12 +41,13 @@ class FeatureImplTest {
         Range location = new Range(32, 96);
         FeatureId featureId = new FeatureIdImpl("PRO_324");
         Feature feature =
-          new FeatureBuilder().type(FeatureType.CHAIN)
-            .location(location)
-            .description("Some chain description")
-            .featureId(featureId)
-            .evidences(createEvidences())
-            .build();
+                new FeatureBuilder()
+                        .type(FeatureType.CHAIN)
+                        .location(location)
+                        .description("Some chain description")
+                        .featureId(featureId)
+                        .evidences(createEvidences())
+                        .build();
 
         assertEquals(location, feature.getLocation());
         assertEquals("Some chain description", feature.getDescription().getValue());
@@ -66,11 +68,20 @@ class FeatureImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DBCrossReference<FeatureXDbType> xrefs = new DBCrossReferenceBuilder<FeatureXDbType>().databaseType(FeatureXDbType.DBSNP)
-        .id("db id")
-        .build();
-        Feature impl = new FeatureImpl(FeatureType.ZN_FING, new Range(1, 2), new FeatureDescriptionImpl("abc")
-          , new FeatureIdBuilder("1").build(), new AlternativeSequenceBuilder().build(), xrefs, createEvidences());
+        DBCrossReference<FeatureXDbType> xrefs =
+                new DBCrossReferenceBuilder<FeatureXDbType>()
+                        .databaseType(FeatureXDbType.DBSNP)
+                        .id("db id")
+                        .build();
+        Feature impl =
+                new FeatureImpl(
+                        FeatureType.ZN_FING,
+                        new Range(1, 2),
+                        new FeatureDescriptionImpl("abc"),
+                        new FeatureIdBuilder("1").build(),
+                        new AlternativeSequenceBuilder().build(),
+                        xrefs,
+                        createEvidences());
         Feature obj = new FeatureBuilder().from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

@@ -6,11 +6,11 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprot.impl.GeneImpl;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class GeneBuilder implements Builder<GeneBuilder, Gene> {

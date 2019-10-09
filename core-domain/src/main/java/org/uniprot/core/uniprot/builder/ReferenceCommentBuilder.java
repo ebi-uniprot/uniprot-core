@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprot.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.ReferenceCommentType;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.ReferenceCommentImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 18/01/19

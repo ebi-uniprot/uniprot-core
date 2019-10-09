@@ -6,14 +6,14 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.uniprot.ReferenceComment;
 import org.uniprot.core.uniprot.UniProtReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.impl.UniProtReferenceImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 18/01/19

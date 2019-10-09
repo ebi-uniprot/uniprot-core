@@ -1,16 +1,13 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.modifiableList;
 
-import java.util.List;
+
+import javax.annotation.Nonnull;
 
 import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprot.Keyword;
-import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.KeywordImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 23/01/19

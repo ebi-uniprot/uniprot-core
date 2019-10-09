@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
+import static org.uniprot.core.util.Utils.nullOrEmpty;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -8,8 +10,6 @@ import org.uniprot.core.cv.keyword.KeywordCategory;
 import org.uniprot.core.uniprot.Keyword;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
-
-import static org.uniprot.core.util.Utils.nullOrEmpty;
 
 public class KeywordImpl extends EvidencedValueImpl implements Keyword {
 

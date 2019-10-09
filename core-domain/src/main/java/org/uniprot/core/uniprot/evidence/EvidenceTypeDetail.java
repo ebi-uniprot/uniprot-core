@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.evidence;
 
-import org.uniprot.core.util.Utils;
-
 import java.io.Serializable;
+
+import org.uniprot.core.util.Utils;
 
 public class EvidenceTypeDetail implements Serializable {
     private static final long serialVersionUID = 4511309637271346914L;
@@ -12,7 +12,9 @@ public class EvidenceTypeDetail implements Serializable {
     private String uriLink;
 
     // no arg constructor for JSON deserialization
-    EvidenceTypeDetail() {uriLink="";}
+    EvidenceTypeDetail() {
+        uriLink = "";
+    }
 
     public EvidenceTypeDetail(
             String name, String displayName, EvidenceTypeCategory category, String uriLink) {

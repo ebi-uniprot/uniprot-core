@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.feature.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.feature.FeatureDescription;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FeatureDescriptionImplTest {
 

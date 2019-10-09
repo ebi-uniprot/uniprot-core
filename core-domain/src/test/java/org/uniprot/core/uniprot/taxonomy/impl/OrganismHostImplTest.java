@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniprot.taxonomy.OrganismHost;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 
 class OrganismHostImplTest {
 
@@ -59,7 +59,7 @@ class OrganismHostImplTest {
     }
 
     @Test
-    void toString_defaultObject(){
+    void toString_defaultObject() {
         OrganismHost organism = new OrganismHostImpl();
         assertEquals("-1 ", organism.toString());
     }

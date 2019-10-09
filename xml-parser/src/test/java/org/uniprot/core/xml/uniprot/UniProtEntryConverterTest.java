@@ -71,14 +71,39 @@ class UniProtEntryConverterTest {
         List<GeneLocation> organelles = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
         organelles.add(
-                new GeneLocationBuilder().geneEncodingType(GeneEncodingType.APICOPLAST).evidences(evidences).build());
+                new GeneLocationBuilder()
+                        .geneEncodingType(GeneEncodingType.APICOPLAST)
+                        .evidences(evidences)
+                        .build());
         organelles.add(
-                new GeneLocationBuilder().geneEncodingType(GeneEncodingType.PLASMID).evidences(evidences).value("some value").build());
+                new GeneLocationBuilder()
+                        .geneEncodingType(GeneEncodingType.PLASMID)
+                        .evidences(evidences)
+                        .value("some value")
+                        .build());
         List<Keyword> keywords = new ArrayList<>();
 
-        keywords.add(new KeywordBuilder().id("KW-001").value("key1").category(KeywordCategory.UNKNOWN).evidences(evidences).build());
-        keywords.add(new KeywordBuilder().id("KW-002").value("key2").category(KeywordCategory.UNKNOWN).evidences(evidences).build());
-        keywords.add(new KeywordBuilder().id("KW-003").value("key3").category(KeywordCategory.UNKNOWN).evidences(evidences).build());
+        keywords.add(
+                new KeywordBuilder()
+                        .id("KW-001")
+                        .value("key1")
+                        .category(KeywordCategory.UNKNOWN)
+                        .evidences(evidences)
+                        .build());
+        keywords.add(
+                new KeywordBuilder()
+                        .id("KW-002")
+                        .value("key2")
+                        .category(KeywordCategory.UNKNOWN)
+                        .evidences(evidences)
+                        .build());
+        keywords.add(
+                new KeywordBuilder()
+                        .id("KW-003")
+                        .value("key3")
+                        .category(KeywordCategory.UNKNOWN)
+                        .evidences(evidences)
+                        .build());
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
         Sequence sequence = new SequenceBuilder(value).build();
         UniProtEntry entry =
@@ -203,21 +228,27 @@ class UniProtEntryConverterTest {
     private List<Feature> createFeatures() {
         List<Feature> features = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        Feature featureLocation12 = new FeatureBuilder().type(FeatureType.TURN)
-          .location(new Range(12, 12))
-          .description("some desc1")
-          .evidences(evidences)
-          .build();
-        Feature featureLocation20 = new FeatureBuilder().from(featureLocation12)
-          .location(new Range(20, 23))
-          .description("some desc2").build();
-        Feature featureLocation200 = new FeatureBuilder()
-          .type(FeatureType.CHAIN)
-          .location(new Range(200, 230))
-          .description("some desc3")
-          .featureId("PRO_123")
-          .evidences(evidences)
-          .build();
+        Feature featureLocation12 =
+                new FeatureBuilder()
+                        .type(FeatureType.TURN)
+                        .location(new Range(12, 12))
+                        .description("some desc1")
+                        .evidences(evidences)
+                        .build();
+        Feature featureLocation20 =
+                new FeatureBuilder()
+                        .from(featureLocation12)
+                        .location(new Range(20, 23))
+                        .description("some desc2")
+                        .build();
+        Feature featureLocation200 =
+                new FeatureBuilder()
+                        .type(FeatureType.CHAIN)
+                        .location(new Range(200, 230))
+                        .description("some desc3")
+                        .featureId("PRO_123")
+                        .evidences(evidences)
+                        .build();
 
         features.add(createVarSeqFeature());
         features.add(featureLocation12);
@@ -232,13 +263,14 @@ class UniProtEntryConverterTest {
         AlternativeSequence as = new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
         FeatureId featureId = new FeatureIdImpl("VSP_112");
 
-        return new FeatureBuilder().type(FeatureType.VAR_SEQ)
-            .location(location)
-            .description("some description")
-            .featureId(featureId)
-            .alternativeSequence(as)
-            .evidences(createEvidences())
-            .build();
+        return new FeatureBuilder()
+                .type(FeatureType.VAR_SEQ)
+                .location(location)
+                .description("some description")
+                .featureId(featureId)
+                .alternativeSequence(as)
+                .evidences(createEvidences())
+                .build();
     }
 
     private List<Comment> createComments() {

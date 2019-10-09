@@ -49,7 +49,7 @@ class TaxonomyBuilderTest {
     }
 
     @Test
-    void defaultBuilder_differentObject_shouldEqual(){
+    void defaultBuilder_differentObject_shouldEqual() {
         Taxonomy taxonomy = new TaxonomyBuilder().build();
         Taxonomy taxonomy2 = new TaxonomyBuilder().build();
         assertTrue(taxonomy.equals(taxonomy2) && taxonomy2.equals(taxonomy));

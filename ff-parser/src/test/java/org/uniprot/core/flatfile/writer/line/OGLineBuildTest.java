@@ -280,12 +280,19 @@ class OGLineBuildTest {
     }
 
     private GeneLocation createPlasmid(String value, List<String> evs) {
-        return new GeneLocationBuilder().geneEncodingType(GeneEncodingType.PLASMID).value(value).evidences(createEvidence(evs))
+        return new GeneLocationBuilder()
+                .geneEncodingType(GeneEncodingType.PLASMID)
+                .value(value)
+                .evidences(createEvidence(evs))
                 .build();
     }
 
     private GeneLocation createOrganelle(GeneEncodingType type, List<String> evs) {
-        return new GeneLocationBuilder().geneEncodingType(type).value("").evidences(createEvidence(evs)).build();
+        return new GeneLocationBuilder()
+                .geneEncodingType(type)
+                .value("")
+                .evidences(createEvidence(evs))
+                .build();
     }
 
     private List<Evidence> createEvidence(List<String> evIds) {

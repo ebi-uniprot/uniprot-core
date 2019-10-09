@@ -6,11 +6,11 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 22/01/19

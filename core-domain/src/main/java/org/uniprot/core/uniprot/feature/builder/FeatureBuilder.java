@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.Range;
@@ -14,8 +16,6 @@ import org.uniprot.core.uniprot.feature.*;
 import org.uniprot.core.uniprot.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 22/01/19

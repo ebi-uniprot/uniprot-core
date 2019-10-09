@@ -113,13 +113,15 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         }
         OrganismName orgName = osLineConverter.convert(f.os);
         Organism oxLineOrganism = oxLineConverter.convert(f.ox);
-        Organism organism = new OrganismBuilder()
-          .taxonId(oxLineOrganism.getTaxonId())
-          .evidences(oxLineOrganism.getEvidences())
-          .lineage(ocLineConverter.convert(f.oc))
-          .scientificName(orgName.getScientificName())
-          .commonName(orgName.getCommonName())
-          .synonyms(orgName.getSynonyms()).build();
+        Organism organism =
+                new OrganismBuilder()
+                        .taxonId(oxLineOrganism.getTaxonId())
+                        .evidences(oxLineOrganism.getEvidences())
+                        .lineage(ocLineConverter.convert(f.oc))
+                        .scientificName(orgName.getScientificName())
+                        .commonName(orgName.getCommonName())
+                        .synonyms(orgName.getSynonyms())
+                        .build();
         activeEntryBuilder.organism(organism);
         activeEntryBuilder.proteinExistence(peLineConverter.convert(f.pe));
         activeEntryBuilder.sequence(sqLineConverter.convert(f.sq));
@@ -132,7 +134,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         InternalSection usl = ssLineConverter.convert(f.ss);
 
         if (drObjects.ssProsites != null) {
-          List<InternalLine> internalLines = new ArrayList<>(drObjects.ssProsites);
+            List<InternalLine> internalLines = new ArrayList<>(drObjects.ssProsites);
             if (usl != null) internalLines.addAll(usl.getInternalLines());
             if (usl != null)
                 activeEntryBuilder.internalSection(

@@ -5,13 +5,13 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.EntryInactiveReason;
 import org.uniprot.core.uniprot.InactiveReasonType;
 import org.uniprot.core.uniprot.impl.EntryInactiveReasonImpl;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class EntryInactiveReasonBuilder

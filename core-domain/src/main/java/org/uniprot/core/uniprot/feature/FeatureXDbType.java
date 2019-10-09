@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.feature;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
-
-import javax.annotation.Nonnull;
 
 public enum FeatureXDbType implements DatabaseType, EnumDisplay<FeatureXDbType> {
     DBSNP("dbSNP");
@@ -13,8 +13,7 @@ public enum FeatureXDbType implements DatabaseType, EnumDisplay<FeatureXDbType> 
         this.name = name;
     }
 
-    public @Nonnull static
-    FeatureXDbType typeOf(String type) {
+    public @Nonnull static FeatureXDbType typeOf(String type) {
         for (FeatureXDbType featuretype : FeatureXDbType.values()) {
             if (type.equalsIgnoreCase(featuretype.getName())) return featuretype;
         }

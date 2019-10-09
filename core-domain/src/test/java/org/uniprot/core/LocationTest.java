@@ -54,5 +54,4 @@ class LocationTest {
         Location obj = new Location();
         assertNotNull(obj);
     }
-
 }

@@ -27,8 +27,12 @@ public class KeywordConverter implements Converter<KeywordType, Keyword> {
     public Keyword fromXml(KeywordType xmlObj) {
         String keywordValue = xmlObj.getValue();
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
-        return new KeywordBuilder().id(xmlObj.getId()).value(keywordValue).category(KeywordCategory.UNKNOWN)
-        .evidences(evidences).build();
+        return new KeywordBuilder()
+                .id(xmlObj.getId())
+                .value(keywordValue)
+                .category(KeywordCategory.UNKNOWN)
+                .evidences(evidences)
+                .build();
     }
 
     @Override

@@ -6,12 +6,11 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismImpl;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder, Organism> {

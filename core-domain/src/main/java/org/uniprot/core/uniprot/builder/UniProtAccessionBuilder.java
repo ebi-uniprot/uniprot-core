@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprot.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 24/01/19

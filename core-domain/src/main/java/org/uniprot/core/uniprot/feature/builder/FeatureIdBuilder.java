@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprot.feature.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniprot.feature.FeatureId;
 import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 30/01/19

@@ -20,6 +20,6 @@ class EvidenceTypesTest {
 
     @Test
     void IllegalArgumentExceptionWithTypeNotFound() {
-        assertThrows(IllegalArgumentException.class, ()->EvidenceTypes.INSTANCE.getType(null));
+        assertThrows(IllegalArgumentException.class, () -> EvidenceTypes.INSTANCE.getType(null));
     }
 }

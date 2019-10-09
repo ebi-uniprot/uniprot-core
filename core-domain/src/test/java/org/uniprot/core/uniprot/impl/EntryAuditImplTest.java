@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprot.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 import java.time.Month;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.EntryAudit;
 import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class EntryAuditImplTest {
 
@@ -18,12 +18,12 @@ class EntryAuditImplTest {
     private int sequenceVersion = 5;
 
     private EntryAudit entryAudit =
-      new EntryAuditImpl(
-        firstPublicDate,
-        lastAnnotationUpdateDate,
-        lastSequenceUpdateDate,
-        entryVersion,
-        sequenceVersion);
+            new EntryAuditImpl(
+                    firstPublicDate,
+                    lastAnnotationUpdateDate,
+                    lastSequenceUpdateDate,
+                    entryVersion,
+                    sequenceVersion);
 
     @Test
     void testEntryAuditImpl() {
@@ -36,14 +36,22 @@ class EntryAuditImplTest {
 
     @Test
     void equalConsiderAnnotationDate() {
-        EntryAudit entryAudit2 = new EntryAuditBuilder().from(entryAudit).lastAnnotationUpdate(LocalDate.now()).build();
+        EntryAudit entryAudit2 =
+                new EntryAuditBuilder()
+                        .from(entryAudit)
+                        .lastAnnotationUpdate(LocalDate.now())
+                        .build();
         assertFalse(entryAudit.equals(entryAudit2) && entryAudit2.equals(entryAudit));
         assertNotEquals(entryAudit.hashCode(), entryAudit2.hashCode());
     }
 
     @Test
     void equalConsiderSequenceDate() {
-        EntryAudit entryAudit2 = new EntryAuditBuilder().from(entryAudit).lastSequenceUpdate(LocalDate.now()).build();
+        EntryAudit entryAudit2 =
+                new EntryAuditBuilder()
+                        .from(entryAudit)
+                        .lastSequenceUpdate(LocalDate.now())
+                        .build();
         assertFalse(entryAudit.equals(entryAudit2) && entryAudit2.equals(entryAudit));
         assertNotEquals(entryAudit.hashCode(), entryAudit2.hashCode());
     }

@@ -81,7 +81,8 @@ class GeneLocationImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        GeneLocation impl = new GeneLocationImpl(GeneEncodingType.APICOPLAST, "val", createEvidences());
+        GeneLocation impl =
+                new GeneLocationImpl(GeneEncodingType.APICOPLAST, "val", createEvidences());
         GeneLocation obj = new GeneLocationBuilder().from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

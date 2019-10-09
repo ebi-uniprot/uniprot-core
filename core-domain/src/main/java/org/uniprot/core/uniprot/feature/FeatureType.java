@@ -1,12 +1,9 @@
 package org.uniprot.core.uniprot.feature;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.uniprot.core.util.EnumDisplay;
 
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum FeatureType implements EnumDisplay<FeatureType> {
     /**
@@ -85,8 +82,7 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         return value;
     }
 
-    public @Nonnull
-    String getName() {
+    public @Nonnull String getName() {
         return name();
     }
 

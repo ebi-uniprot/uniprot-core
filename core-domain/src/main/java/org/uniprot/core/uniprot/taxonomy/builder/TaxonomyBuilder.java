@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.taxonomy.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.uniprot.taxonomy.impl.TaxonomyImpl;
-
-import javax.annotation.Nonnull;
 
 public class TaxonomyBuilder extends AbstractOrganismNameBuilder<TaxonomyBuilder, Taxonomy> {
     private long taxonId;

@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.taxonomy.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.impl.OrganismHostImpl;
-
-import javax.annotation.Nonnull;
 
 public class OrganismHostBuilder
         extends AbstractOrganismNameBuilder<OrganismHostBuilder, OrganismHost> {

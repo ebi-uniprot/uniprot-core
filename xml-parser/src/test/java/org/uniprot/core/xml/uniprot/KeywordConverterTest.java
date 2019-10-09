@@ -21,7 +21,13 @@ class KeywordConverterTest {
         List<Evidence> evidences = createEvidences();
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper(evidences);
         KeywordConverter converter = new KeywordConverter(evRefMapper);
-        Keyword keyword = new KeywordBuilder().id(id).value(val).category(KeywordCategory.UNKNOWN).evidences(evidences).build();
+        Keyword keyword =
+                new KeywordBuilder()
+                        .id(id)
+                        .value(val)
+                        .category(KeywordCategory.UNKNOWN)
+                        .evidences(evidences)
+                        .build();
         KeywordType xmlObj = converter.toXml(keyword);
 
         assertEquals(id, xmlObj.getId());

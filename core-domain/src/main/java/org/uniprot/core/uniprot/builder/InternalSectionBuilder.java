@@ -6,14 +6,14 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.InternalLine;
 import org.uniprot.core.uniprot.InternalSection;
 import org.uniprot.core.uniprot.SourceLine;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.impl.InternalSectionImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 24/01/19

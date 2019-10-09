@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -16,8 +18,6 @@ import org.uniprot.core.uniprot.builder.InternalSectionBuilder;
 import org.uniprot.core.uniprot.builder.SourceLineBuilder;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class InternalSectionImplTest {
 
@@ -112,20 +112,22 @@ class InternalSectionImplTest {
         assertEquals(value, internalLine.getValue());
     }
 
-        @Test
+    @Test
     void needDefaultConstructorForJsonDeserialization() {
-            InternalSection obj = new InternalSectionImpl();
+        InternalSection obj = new InternalSectionImpl();
         assertNotNull(obj);
         assertTrue(obj.getInternalLines().isEmpty());
         assertTrue(obj.getEvidenceLines().isEmpty());
         assertTrue(obj.getSourceLines().isEmpty());
     }
 
-@Test
-  void builderFrom_constructorImp_shouldCreate_equalObject() {
-    InternalSectionImpl impl = new InternalSectionImpl(Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
-    InternalSection obj = new InternalSectionBuilder().from(impl).build();
-    assertTrue(impl.equals(obj) && obj.equals(impl));
-    assertEquals(impl.hashCode(), obj.hashCode());
-  }
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        InternalSectionImpl impl =
+                new InternalSectionImpl(
+                        Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
+        InternalSection obj = new InternalSectionBuilder().from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
 }

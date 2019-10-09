@@ -1,12 +1,12 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.taxonomy.Organism;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class OrganismImplTest {
 
@@ -40,15 +40,15 @@ class OrganismImplTest {
     }
 
     @Test
-    void toString_defaultObject(){
+    void toString_defaultObject() {
         Organism organism = new OrganismImpl();
         assertEquals("", organism.toString());
     }
 
     @Test
-    void taxonIdAndLineagesWillPartOFToString(){
+    void taxonIdAndLineagesWillPartOFToString() {
         Organism organism =
-          new OrganismImpl(Collections.singletonList("abc"), 9606L, null, null, null, null);
-         assertEquals("9606  (abc)", organism.toString());
+                new OrganismImpl(Collections.singletonList("abc"), 9606L, null, null, null, null);
+        assertEquals("9606  (abc)", organism.toString());
     }
 }

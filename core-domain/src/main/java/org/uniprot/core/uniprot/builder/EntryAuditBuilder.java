@@ -2,11 +2,11 @@ package org.uniprot.core.uniprot.builder;
 
 import java.time.LocalDate;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.EntryAudit;
 import org.uniprot.core.uniprot.impl.EntryAuditImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 22/01/19
