@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.description.impl;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -9,21 +8,20 @@ import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 public class ECImpl extends ECNumberImpl implements EC {
     private static final long serialVersionUID = -5418175231477354719L;
     private List<Evidence> evidences;
 
-    private ECImpl() {
+    // no arg constructor for JSON deserialization
+    ECImpl() {
         this("", null);
     }
 
     public ECImpl(String value, List<Evidence> evidences) {
         super(value);
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = unmodifiableList(evidences);
     }
 
     @Override
@@ -40,7 +38,7 @@ public class ECImpl extends ECNumberImpl implements EC {
     public int hashCode() {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
+        result = prime * result + evidences.hashCode();
         return result;
     }
 
@@ -50,9 +48,7 @@ public class ECImpl extends ECNumberImpl implements EC {
         if (!super.equals(obj)) return false;
         if (getClass() != obj.getClass()) return false;
         ECImpl other = (ECImpl) obj;
-        if (evidences == null) {
-            return other.evidences == null;
-        } else return evidences.equals(other.evidences);
+        return evidences.equals(other.evidences);
     }
 
     @Override

@@ -1,8 +1,5 @@
 package org.uniprot.core.uniprot.description.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +10,9 @@ import org.uniprot.core.uniprot.description.builder.ECBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 class ECImplTest {
 
@@ -47,5 +47,26 @@ class ECImplTest {
         assertEquals(ec, ecObj.getValue());
         assertTrue(ecObj.isValid());
         assertEquals(Collections.emptyList(), ecObj.getEvidences());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        EC obj = new ECImpl();
+        assertNotNull(obj);
+        assertFalse(obj.hasEvidences());
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        EC impl = new ECImpl("val", createEvidences());
+        EC obj = new ECBuilder().from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
+    void displayedWillAddEvidences() {
+        EC impl = new ECImpl("val", createEvidences());
+        assertEquals("val {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}", impl.getDisplayed(" "));
     }
 }
