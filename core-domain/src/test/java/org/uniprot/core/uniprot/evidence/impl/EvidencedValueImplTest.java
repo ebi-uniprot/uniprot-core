@@ -1,7 +1,5 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +7,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class EvidencedValueImplTest {
 
@@ -30,5 +32,39 @@ class EvidencedValueImplTest {
         EvidencedValueImpl evidencedValue = new EvidencedValueImpl(value, evidences);
         assertEquals(value, evidencedValue.getValue());
         assertEquals(evidences, evidencedValue.getEvidences());
+    }
+
+    @Test
+    void valueWillNeverBeNull() {
+        EvidencedValueImpl evidencedValue = new EvidencedValueImpl(null,null);
+        assertNotNull(evidencedValue.getValue());
+        assertFalse(evidencedValue.hasValue());
+    }
+
+    @Test
+    void evidencesWillNeverBeNull() {
+        EvidencedValueImpl evidencedValue = new EvidencedValueImpl(null,null);
+        assertNotNull(evidencedValue.getEvidences());
+        assertFalse(evidencedValue.hasEvidences());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        EvidencedValueImpl obj = new EvidencedValueImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void toStringIsSeperatedBySpace() {
+        EvidencedValueImpl evidencedValue = new EvidencedValueImpl("value", null);
+        assertEquals(evidencedValue.toString(), evidencedValue.getDisplayed(" "));
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        EvidencedValueImpl impl = new EvidencedValueImpl("value", null);
+        EvidencedValue obj = new EvidencedValueBuilder().from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }

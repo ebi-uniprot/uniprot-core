@@ -8,6 +8,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -15,7 +17,7 @@ import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
  */
 public class EvidencedValueBuilder
         extends AbstractEvidencedValueBuilder<EvidencedValueBuilder, EvidencedValue> {
-    private EvidencedValueBuilder() {}
+    public EvidencedValueBuilder() {}
 
     public EvidencedValueBuilder(String value, List<Evidence> evidences) {
         this.value = value;
@@ -23,7 +25,7 @@ public class EvidencedValueBuilder
     }
 
     @Override
-    public EvidencedValue build() {
+    public @Nonnull EvidencedValue build() {
         return new EvidencedValueImpl(value, evidences);
     }
 
