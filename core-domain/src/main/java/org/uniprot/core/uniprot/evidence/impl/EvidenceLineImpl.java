@@ -5,24 +5,23 @@ import java.util.Objects;
 
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
+import static org.uniprot.core.util.Utils.emptyOrString;
 
 public class EvidenceLineImpl implements EvidenceLine {
     private String evidence;
     private LocalDate createDate;
     private String curator;
 
-    private EvidenceLineImpl() {
+    // no arg constructor for JSON deserialization
+    EvidenceLineImpl() {
         curator = "";
         evidence = "";
     }
 
     public EvidenceLineImpl(String evidence, LocalDate createDate, String curator) {
-        this.evidence = evidence;
+        this.evidence = emptyOrString(evidence);
         this.createDate = createDate;
-        if (curator == null) {
-            curator = "";
-        }
-        this.curator = curator;
+        this.curator = emptyOrString(curator);
     }
 
     @Override

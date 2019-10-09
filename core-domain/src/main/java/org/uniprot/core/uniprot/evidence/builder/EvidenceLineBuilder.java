@@ -6,6 +6,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceLineImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 25/01/19
  *
@@ -17,12 +19,12 @@ public class EvidenceLineBuilder implements Builder<EvidenceLineBuilder, Evidenc
     private String curator;
 
     @Override
-    public EvidenceLine build() {
+    public @Nonnull EvidenceLine build() {
         return new EvidenceLineImpl(evidence, createDate, curator);
     }
 
     @Override
-    public EvidenceLineBuilder from(EvidenceLine instance) {
+    public @Nonnull EvidenceLineBuilder from(@Nonnull EvidenceLine instance) {
         return this.evidence(instance.getEvidence())
                 .curator(instance.getCurator())
                 .creationDate(instance.getCreateDate());
