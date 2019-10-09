@@ -44,7 +44,7 @@ public class EvidenceHelper {
             }
         }
 
-        EvidenceCode evidenceCode = EvidenceCode.codeOf(code);
+        EvidenceCode evidenceCode = EvidenceCode.typeOf(code);
 
         EvidenceBuilder builder = evidenceBuilder.evidenceCode(evidenceCode);
         if (xref != null) {

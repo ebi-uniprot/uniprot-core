@@ -28,7 +28,7 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
 
     @Override
     public Evidence fromXml(EvidenceType xmlObj) {
-        EvidenceCode evCode = EvidenceCode.codeOf(xmlObj.getType());
+        EvidenceCode evCode = EvidenceCode.typeOf(xmlObj.getType());
 
         EvidenceBuilder evidenceBuilder = new EvidenceBuilder().evidenceCode(evCode);
         if (xmlObj.getSource() != null) {

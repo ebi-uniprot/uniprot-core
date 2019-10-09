@@ -187,7 +187,7 @@ class EntryFeaturesMapTest {
     private Evidence createEvidence(String code, String dbType, String dbId) {
         return new EvidenceBuilder()
                 .databaseId(dbId)
-                .evidenceCode(EvidenceCode.codeOf(code))
+                .evidenceCode(EvidenceCode.typeOf(code))
                 .databaseName(dbType)
                 .build();
     }

@@ -18,7 +18,7 @@ public class CreateUtils {
 
     public static Evidence createEvidence(String evidenceStr) {
         String[] splittedEvidence = evidenceStr.split("\\|");
-        EvidenceCode code = EvidenceCode.codeOf(splittedEvidence[0]);
+        EvidenceCode code = EvidenceCode.typeOf(splittedEvidence[0]);
         String[] splittedDatabase = splittedEvidence[1].split(":");
         return new EvidenceBuilder()
                 .evidenceCode(code)

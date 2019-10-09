@@ -102,7 +102,7 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
         this.categories = categories;
     }
 
-    public static EvidenceCode codeOf(String code) {
+    public static EvidenceCode typeOf(String code) {
         for (EvidenceCode eCode : EvidenceCode.values()) {
             if (code.equals(eCode.getCode())) return eCode;
         }
