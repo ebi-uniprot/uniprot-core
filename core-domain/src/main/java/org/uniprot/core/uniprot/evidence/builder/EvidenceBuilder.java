@@ -7,6 +7,10 @@ import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
 
+import javax.annotation.Nonnull;
+
+import static org.uniprot.core.util.Utils.notNull;
+
 /**
  * Created 16/01/19
  *
@@ -18,7 +22,7 @@ public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
     private String databaseId;
 
     @Override
-    public Evidence build() {
+    public @Nonnull Evidence build() {
         if (databaseName == null && databaseId == null) {
             return new EvidenceImpl(evidenceCode, null);
         } else {
@@ -27,12 +31,13 @@ public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
     }
 
     @Override
-    public EvidenceBuilder from(Evidence instance) {
+    public @Nonnull EvidenceBuilder from(Evidence instance) {
         DBCrossReference<EvidenceType> source = instance.getSource();
-        return new EvidenceBuilder()
-                .evidenceCode(instance.getEvidenceCode())
-                .databaseId(source.getId())
-                .databaseName(source.getDatabaseType().getName());
+        EvidenceBuilder retBuilder = new EvidenceBuilder().evidenceCode(instance.getEvidenceCode());
+        if(notNull(source)){
+            retBuilder.databaseId(source.getId()).databaseName(source.getDatabaseType().getName());
+        }
+        return retBuilder;
     }
 
     public EvidenceBuilder evidenceCode(EvidenceCode evidenceCode) {
@@ -48,17 +53,5 @@ public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
     public EvidenceBuilder databaseId(String databaseId) {
         this.databaseId = databaseId;
         return this;
-    }
-
-    public EvidenceCode getEvidenceCode() {
-        return evidenceCode;
-    }
-
-    public String getDatabaseName() {
-        return databaseName;
-    }
-
-    public String getDatabaseId() {
-        return databaseId;
     }
 }

@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import org.uniprot.core.DatabaseType;
 
+import javax.annotation.Nonnull;
+
 public final class EvidenceType implements DatabaseType, Serializable {
     private static final long serialVersionUID = 799945684184000909L;
     private String name;
@@ -19,7 +21,7 @@ public final class EvidenceType implements DatabaseType, Serializable {
         return name;
     }
 
-    public EvidenceTypeDetail getDetail() {
+    public @Nonnull EvidenceTypeDetail getDetail() {
         return EvidenceTypes.INSTANCE.getType(name);
     }
 
