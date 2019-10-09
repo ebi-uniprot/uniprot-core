@@ -20,9 +20,8 @@ public class EvidenceImpl implements Evidence {
         this(evidenceCode, new DBCrossReferenceImpl<>(new EvidenceType(databaseName), dbId));
     }
 
-    private EvidenceImpl() {}
-
-    private EvidenceImpl(String value) {}
+    // no arg constructor for JSON deserialization
+    EvidenceImpl() {}
 
     public EvidenceImpl(EvidenceCode evidenceCode, DBCrossReference<EvidenceType> source) {
         this.evidenceCode = evidenceCode;
@@ -58,14 +57,9 @@ public class EvidenceImpl implements Evidence {
             if (source.getDatabaseType().equals(REFERENCE)) {
                 sb.append(source.getId());
             } else {
-                if (source.getDatabaseType().getDetail() != null)
-                    sb.append(source.getDatabaseType().getDetail().getDisplayName())
-                            .append(COLON)
-                            .append(source.getId());
-                else
-                    sb.append(source.getDatabaseType().getName())
-                            .append(COLON)
-                            .append(source.getId());
+                sb.append(source.getDatabaseType().getDetail().getDisplayName())
+                    .append(COLON)
+                    .append(source.getId());
             }
         }
 
