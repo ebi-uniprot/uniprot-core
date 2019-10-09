@@ -31,6 +31,7 @@ import org.uniprot.core.uniprot.builder.InternalSectionBuilder;
 import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.taxonomy.Organism;
+import org.uniprot.core.uniprot.taxonomy.OrganismName;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.builder.UniProtDBCrossReferenceBuilder;
@@ -110,14 +111,16 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         if (f.oh != null) {
             activeEntryBuilder.organismHosts(ohLineConverter.convert(f.oh));
         }
-        OrganismBuilder organismBuilder = new OrganismBuilder();
-        organismBuilder.from(osLineConverter.convert(f.os));
+        OrganismName orgName = osLineConverter.convert(f.os);
         Organism oxLineOrganism = oxLineConverter.convert(f.ox);
-        organismBuilder
-                .taxonId(oxLineOrganism.getTaxonId())
-                .evidences(oxLineOrganism.getEvidences())
-                .lineage(ocLineConverter.convert(f.oc));
-        activeEntryBuilder.organism(organismBuilder.build());
+        Organism organism = new OrganismBuilder()
+          .taxonId(oxLineOrganism.getTaxonId())
+          .evidences(oxLineOrganism.getEvidences())
+          .lineage(ocLineConverter.convert(f.oc))
+          .scientificName(orgName.getScientificName())
+          .commonName(orgName.getCommonName())
+          .synonyms(orgName.getSynonyms()).build();
+        activeEntryBuilder.organism(organism);
         activeEntryBuilder.proteinExistence(peLineConverter.convert(f.pe));
         activeEntryBuilder.sequence(sqLineConverter.convert(f.sq));
         List<UniProtReference> citations = new ArrayList<>();
@@ -129,8 +132,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         InternalSection usl = ssLineConverter.convert(f.ss);
 
         if (drObjects.ssProsites != null) {
-            List<InternalLine> internalLines = new ArrayList<>();
-            internalLines.addAll(drObjects.ssProsites);
+          List<InternalLine> internalLines = new ArrayList<>(drObjects.ssProsites);
             if (usl != null) internalLines.addAll(usl.getInternalLines());
             if (usl != null)
                 activeEntryBuilder.internalSection(
@@ -161,7 +163,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
 
     private UniProtDBCrossReference convert(
             UniProtDBCrossReference xref, Map<String, List<Evidence>> goEvidenceMap) {
-        if (xref.getDatabaseType().getName().equals("GO")) {
+        if ("GO".equals(xref.getDatabaseType().getName())) {
             String id = xref.getId();
             List<Evidence> evidences = goEvidenceMap.get(id);
             if ((evidences == null) || (evidences.isEmpty())) {
