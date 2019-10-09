@@ -8,6 +8,8 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinAltName;
 import org.uniprot.core.util.Utils;
 
+import static org.uniprot.core.util.Utils.notNullOrEmpty;
+
 public class ProteinAltNameImpl implements ProteinAltName {
 
     private static final long serialVersionUID = -4837827085627262838L;
@@ -15,7 +17,8 @@ public class ProteinAltNameImpl implements ProteinAltName {
     private List<Name> shortNames;
     private List<EC> ecNumbers;
 
-    private ProteinAltNameImpl() {
+    // no arg constructor for JSON deserialization
+    ProteinAltNameImpl() {
         shortNames = Collections.emptyList();
         ecNumbers = Collections.emptyList();
     }
@@ -48,12 +51,12 @@ public class ProteinAltNameImpl implements ProteinAltName {
 
     @Override
     public boolean hasShortNames() {
-        return this.shortNames != null;
+        return notNullOrEmpty(shortNames);
     }
 
     @Override
     public boolean hasEcNumbers() {
-        return this.ecNumbers != null;
+        return notNullOrEmpty(ecNumbers);
     }
 
     @Override
@@ -62,25 +65,13 @@ public class ProteinAltNameImpl implements ProteinAltName {
                 && ((getFullName().getValue() != null) && !getFullName().getValue().isEmpty());
     }
 
-    public void setFullName(Name fullName) {
-        this.fullName = fullName;
-    }
-
-    public void setShortNames(List<Name> shortNames) {
-        this.shortNames = shortNames;
-    }
-
-    public void setEcNumbers(List<EC> ecNumbers) {
-        this.ecNumbers = ecNumbers;
-    }
-
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((ecNumbers == null) ? 0 : ecNumbers.hashCode());
+        result = prime * result + ecNumbers.hashCode();
         result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
-        result = prime * result + ((shortNames == null) ? 0 : shortNames.hashCode());
+        result = prime * result + shortNames.hashCode();
         return result;
     }
 
@@ -90,15 +81,11 @@ public class ProteinAltNameImpl implements ProteinAltName {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         ProteinAltNameImpl other = (ProteinAltNameImpl) obj;
-        if (ecNumbers == null) {
-            if (other.ecNumbers != null) return false;
-        } else if (!ecNumbers.equals(other.ecNumbers)) return false;
+        if (!ecNumbers.equals(other.ecNumbers)) return false;
         if (fullName == null) {
             if (other.fullName != null) return false;
         } else if (!fullName.equals(other.fullName)) return false;
-        if (shortNames == null) {
-            if (other.shortNames != null) return false;
-        } else if (!shortNames.equals(other.shortNames)) return false;
+        if (!shortNames.equals(other.shortNames)) return false;
         return true;
     }
 }
