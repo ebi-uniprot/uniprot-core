@@ -12,7 +12,9 @@ public class EvidencedValueImpl implements EvidencedValue {
     private String value;
     private List<Evidence> evidences;
 
-    private EvidencedValueImpl() {
+    // no arg constructor for JSON deserialization
+    EvidencedValueImpl() {
+        this.value="";
         this.evidences = Collections.emptyList();
     }
 
@@ -45,8 +47,8 @@ public class EvidencedValueImpl implements EvidencedValue {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((evidences == null) ? 0 : evidences.hashCode());
-        result = prime * result + ((value == null) ? 0 : value.hashCode());
+        result = prime * result + evidences.hashCode();
+        result = prime * result + value.hashCode();
         return result;
     }
 
@@ -56,12 +58,8 @@ public class EvidencedValueImpl implements EvidencedValue {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         EvidencedValueImpl other = (EvidencedValueImpl) obj;
-        if (evidences == null) {
-            if (other.evidences != null) return false;
-        } else if (!evidences.equals(other.evidences)) return false;
-        if (value == null) {
-            return other.value == null;
-        } else return value.equals(other.value);
+        if (!evidences.equals(other.evidences)) return false;
+        return value.equals(other.value);
     }
 
     @Override
