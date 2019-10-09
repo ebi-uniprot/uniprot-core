@@ -1,23 +1,26 @@
 package org.uniprot.core.uniprot.evidence;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
 import org.uniprot.core.util.EnumDisplay;
+
+import javax.annotation.Nonnull;
 
 public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     ECO_0000269(
             "ECO:0000269",
             "Experimental",
             "Literature reference",
-            Arrays.asList("x Publication(s) with 'Manual assertion based on experiment in'"),
+            Collections.singletonList("x Publication(s) with 'Manual assertion based on experiment in'"),
             EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL)),
     ECO_0000303(
             "ECO:0000303",
             "Non-traceable author statement",
             "Literature reference",
-            Arrays.asList("x Publication(s) with 'Manual assertion based on opinion in'"),
+      Collections.singletonList("x Publication(s) with 'Manual assertion based on opinion in'"),
             EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL)),
     ECO_0000305(
             "ECO:0000305",
@@ -30,7 +33,7 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
             "ECO:0000250",
             "Sequence similarity",
             "Another UniProtKB/Swiss-Prot entry",
-            Arrays.asList("By similarity"),
+      Collections.singletonList("By similarity"),
             EnumSet.of(Category.MANUAL)),
     ECO_0000255(
             "ECO:0000255",
@@ -46,13 +49,13 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
             "ECO:0000244",
             "Combinatorial",
             "a PDB entry or literature reference (for large-scale proteomics publications)",
-            Arrays.asList("Combined sources"),
+            Collections.singletonList("Combined sources"),
             EnumSet.of(Category.MANUAL)),
     ECO_0000312(
             "ECO:0000312",
             "Imported information",
             "an entry from nucleotide sequence databases, PDB, model organism databases",
-            Arrays.asList("Imported"),
+            Collections.singletonList("Imported"),
             EnumSet.of(Category.MANUAL)),
     ECO_0000256(
             "ECO:0000256",
@@ -67,20 +70,20 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
             "ECO:0000213",
             "Combinatorial",
             "A PDB entry",
-            Arrays.asList("Combined sources"),
+            Collections.singletonList("Combined sources"),
             EnumSet.of(Category.AUTOMATIC)),
     ECO_0000313(
             "ECO:0000313",
             "Imported information",
             "An entry from nucleotide sequence databases (EMBL, Ensembl),"
                     + " PDB, model organism databases",
-            Arrays.asList("Imported"),
+            Collections.singletonList("Imported"),
             EnumSet.of(Category.AUTOMATIC)),
     ECO_0000259(
             "ECO:0000259",
             "Sequence motif match (InterPro)",
             "An entry in an InterPro member database",
-            Arrays.asList("InterPro annotation"),
+            Collections.singletonList("InterPro annotation"),
             EnumSet.of(Category.AUTOMATIC));
 
     private final String code;
@@ -102,35 +105,35 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
         this.categories = categories;
     }
 
-    public static EvidenceCode typeOf(String code) {
+    public @Nonnull static EvidenceCode typeOf(String code) {
         for (EvidenceCode eCode : EvidenceCode.values()) {
             if (code.equals(eCode.getCode())) return eCode;
         }
         throw new IllegalArgumentException(code + " is not valid Evidence code");
     }
 
-    public String getCode() {
+    public @Nonnull String getCode() {
         return code;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getCode();
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
-    public String getSource() {
+    public @Nonnull String getSource() {
         return source;
     }
 
-    public List<String> getLabels() {
+    public @Nonnull List<String> getLabels() {
         return labels;
     }
 
-    public EnumSet<Category> getCategories() {
+    public @Nonnull EnumSet<Category> getCategories() {
         return categories;
     }
 
