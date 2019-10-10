@@ -20,35 +20,8 @@ public class ProteinDescriptionImpl implements ProteinDescription {
     private List<ProteinSection> contains; // component
     private Flag flag;
 
-    public ProteinDescriptionImpl(
-            ProteinRecName recommendedName, List<ProteinAltName> alternativeNames) {
-        this(recommendedName, alternativeNames, null);
-    }
-
-    public ProteinDescriptionImpl(
-            ProteinRecName recommendedName, List<ProteinAltName> alternativeNames, Flag flag) {
-        this(recommendedName, alternativeNames, null, flag);
-    }
-
-    public ProteinDescriptionImpl(
-            ProteinRecName recommendedName,
-            List<ProteinAltName> alternativeNames,
-            List<ProteinSubName> submissionNames,
-            Flag flag) {
-        this(
-                recommendedName,
-                alternativeNames,
-                null,
-                null,
-                null,
-                null,
-                submissionNames,
-                flag,
-                null,
-                null);
-    }
-
-    private ProteinDescriptionImpl() {
+    // no arg constructor for JSON deserialization
+    ProteinDescriptionImpl() {
         this.alternativeNames = Collections.emptyList();
         this.submissionNames = Collections.emptyList();
         this.cdAntigenNames = Collections.emptyList();
@@ -140,19 +113,6 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         return flag;
     }
 
-    public void setFlag(Flag flag) {
-        this.flag = flag;
-    }
-
-    @Override
-    public boolean isValid() {
-        if (getRecommendedName() != null) {
-            return getRecommendedName().isValid();
-        } else {
-            return getSubmissionNames().stream().anyMatch(val -> val.isValid());
-        }
-    }
-
     @Override
     public Name getAllergenName() {
         return this.allergenName;
@@ -198,15 +158,15 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((allergenName == null) ? 0 : allergenName.hashCode());
-        result = prime * result + ((alternativeNames == null) ? 0 : alternativeNames.hashCode());
+        result = prime * result + alternativeNames.hashCode();
         result = prime * result + ((biotechName == null) ? 0 : biotechName.hashCode());
-        result = prime * result + ((cdAntigenNames == null) ? 0 : cdAntigenNames.hashCode());
-        result = prime * result + ((contains == null) ? 0 : contains.hashCode());
+        result = prime * result + cdAntigenNames.hashCode();
+        result = prime * result + contains.hashCode();
         result = prime * result + ((flag == null) ? 0 : flag.hashCode());
-        result = prime * result + ((includes == null) ? 0 : includes.hashCode());
-        result = prime * result + ((innNames == null) ? 0 : innNames.hashCode());
+        result = prime * result + includes.hashCode();
+        result = prime * result + innNames.hashCode();
         result = prime * result + ((recommendedName == null) ? 0 : recommendedName.hashCode());
-        result = prime * result + ((submissionNames == null) ? 0 : submissionNames.hashCode());
+        result = prime * result + submissionNames.hashCode();
         return result;
     }
 
@@ -219,33 +179,20 @@ public class ProteinDescriptionImpl implements ProteinDescription {
         if (allergenName == null) {
             if (other.allergenName != null) return false;
         } else if (!allergenName.equals(other.allergenName)) return false;
-        if (alternativeNames == null) {
-            if (other.alternativeNames != null) return false;
-        } else if (!alternativeNames.equals(other.alternativeNames)) return false;
+        if (!alternativeNames.equals(other.alternativeNames)) return false;
         if (biotechName == null) {
             if (other.biotechName != null) return false;
         } else if (!biotechName.equals(other.biotechName)) return false;
-        if (cdAntigenNames == null) {
-            if (other.cdAntigenNames != null) return false;
-        } else if (!cdAntigenNames.equals(other.cdAntigenNames)) return false;
-        if (contains == null) {
-            if (other.contains != null) return false;
-        } else if (!contains.equals(other.contains)) return false;
+        if (!cdAntigenNames.equals(other.cdAntigenNames)) return false;
+        if (!contains.equals(other.contains)) return false;
         if (flag == null) {
             if (other.flag != null) return false;
         } else if (!flag.equals(other.flag)) return false;
-        if (includes == null) {
-            if (other.includes != null) return false;
-        } else if (!includes.equals(other.includes)) return false;
-        if (innNames == null) {
-            if (other.innNames != null) return false;
-        } else if (!innNames.equals(other.innNames)) return false;
+        if (!includes.equals(other.includes)) return false;
+        if (!innNames.equals(other.innNames)) return false;
         if (recommendedName == null) {
             if (other.recommendedName != null) return false;
         } else if (!recommendedName.equals(other.recommendedName)) return false;
-        if (submissionNames == null) {
-            if (other.submissionNames != null) return false;
-        } else if (!submissionNames.equals(other.submissionNames)) return false;
-        return true;
+        return submissionNames.equals(other.submissionNames);
     }
 }

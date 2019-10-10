@@ -3,9 +3,11 @@ package org.uniprot.core.xml.uniprot;
 import org.uniprot.core.uniprot.description.Flag;
 import org.uniprot.core.uniprot.description.FlagType;
 import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.description.builder.FlagBuilder;
+import org.uniprot.core.uniprot.description.builder.ProteinDescriptionBuilder;
 import org.uniprot.core.xml.Updater;
 import org.uniprot.core.xml.jaxb.uniprot.SequenceType;
+
+import java.util.Optional;
 
 public class FlagUpdater implements Updater<SequenceType, ProteinDescription> {
 
@@ -14,26 +16,22 @@ public class FlagUpdater implements Updater<SequenceType, ProteinDescription> {
 
     @Override
     public ProteinDescription fromXml(ProteinDescription modelObject, SequenceType xmlObject) {
-        Flag flag = null;
+        FlagType fType = Optional.ofNullable(modelObject.getFlag()).map(Flag::getType).orElse(null);
         String frag = xmlObject.getFragment();
         if (xmlObject.isPrecursor() != null && xmlObject.isPrecursor()) {
-
             if (SINGLE.equals(frag)) {
-                flag = new FlagBuilder(FlagType.FRAGMENT_PRECURSOR).build();
+                fType = FlagType.FRAGMENT_PRECURSOR;
             } else if (MULTIPLE.equals(frag)) {
-                flag = new FlagBuilder(FlagType.FRAGMENTS_PRECURSOR).build();
+                fType = FlagType.FRAGMENTS_PRECURSOR;
             } else {
-                flag = new FlagBuilder(FlagType.PRECURSOR).build();
+                fType = FlagType.PRECURSOR;
             }
         } else if (SINGLE.equals(frag)) {
-            flag = new FlagBuilder(FlagType.FRAGMENT).build();
+            fType = FlagType.FRAGMENT;
         } else if (MULTIPLE.equals(frag)) {
-            flag = new FlagBuilder(FlagType.FRAGMENTS).build();
+            fType = FlagType.FRAGMENTS;
         }
-        if (flag != null) {
-            modelObject.setFlag(flag);
-        }
-        return modelObject;
+        return new ProteinDescriptionBuilder().from(modelObject).flag(fType).build();
     }
 
     @Override

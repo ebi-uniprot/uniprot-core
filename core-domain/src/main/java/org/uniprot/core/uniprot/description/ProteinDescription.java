@@ -43,9 +43,5 @@ public interface ProteinDescription extends Serializable {
 
     boolean hasFlag();
 
-    boolean isValid();
-
     Flag getFlag();
-
-    void setFlag(Flag flag);
 }
