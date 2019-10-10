@@ -12,6 +12,8 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinSubName;
 import org.uniprot.core.uniprot.description.impl.ProteinSubNameImpl;
 
+import javax.annotation.Nonnull;
+
 public class ProteinSubNameBuilder implements Builder<ProteinSubNameBuilder, ProteinSubName> {
 
     private Name fullName;
@@ -33,12 +35,12 @@ public class ProteinSubNameBuilder implements Builder<ProteinSubNameBuilder, Pro
     }
 
     @Override
-    public ProteinSubName build() {
+    public @Nonnull ProteinSubName build() {
         return new ProteinSubNameImpl(fullName, ecNumbers);
     }
 
     @Override
-    public ProteinSubNameBuilder from(ProteinSubName instance) {
+    public @Nonnull ProteinSubNameBuilder from(@Nonnull ProteinSubName instance) {
         this.fullName(instance.getFullName());
         this.ecNumbers(instance.getEcNumbers());
         return this;
