@@ -1,9 +1,11 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static java.util.Collections.emptyList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,7 @@ import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
+import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 
 class NoteImplTest {
 
@@ -45,5 +48,25 @@ class NoteImplTest {
         List<EvidencedValue> texts = new ArrayList<>();
         Note note = new NoteBuilder(texts).build();
         assertEquals(texts, note.getTexts());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Note obj = new NoteImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        EvidencedValue ev1 = new EvidencedValueImpl("1", createEvidences());
+        EvidencedValue ev2 = new EvidencedValueImpl("1", null);
+        List<EvidencedValue> evidencedValues = Arrays.asList(ev1, ev2);
+
+        Note impl = new NoteImpl(evidencedValues);
+        Note obj = new NoteBuilder(null).from(impl).build();
+
+        assertTrue(impl.isValid());
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }
