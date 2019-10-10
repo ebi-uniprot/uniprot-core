@@ -13,6 +13,8 @@ import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.ProteinSection;
 import org.uniprot.core.uniprot.description.impl.ProteinSectionImpl;
 
+import javax.annotation.Nonnull;
+
 public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, ProteinSection> {
 
     private ProteinRecName recommendedName;
@@ -68,7 +70,7 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     }
 
     @Override
-    public ProteinSection build() {
+    public @Nonnull ProteinSection build() {
         return new ProteinSectionImpl(
                 recommendedName,
                 alternativeNames,
@@ -79,9 +81,13 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     }
 
     @Override
-    public ProteinSectionBuilder from(ProteinSection instance) {
+    public @Nonnull ProteinSectionBuilder from(@Nonnull ProteinSection instance) {
+        this.allergenName(instance.getAllergenName());
         this.recommendedName(instance.getRecommendedName());
         this.alternativeNames(instance.getAlternativeNames());
+        this.biotechName(instance.getBiotechName());
+        this.cdAntigenNames(instance.getCdAntigenNames());
+        this.innNames(instance.getInnNames());
         return this;
     }
 }

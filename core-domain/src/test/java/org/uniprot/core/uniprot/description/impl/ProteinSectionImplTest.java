@@ -1,8 +1,7 @@
 package org.uniprot.core.uniprot.description.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -19,6 +18,9 @@ import org.uniprot.core.uniprot.description.builder.ProteinSectionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ProteinSectionImplTest {
 
@@ -62,6 +64,27 @@ class ProteinSectionImplTest {
                         .build();
         assertEquals(recName, section.getRecommendedName());
         assertEquals(0, section.getAlternativeNames().size());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        ProteinSection obj = new ProteinSectionImpl();
+        assertNotNull(obj);
+        assertTrue(obj.getCdAntigenNames().isEmpty());
+        assertTrue(obj.getAlternativeNames().isEmpty());
+        assertTrue(obj.getInnNames().isEmpty());
+        assertFalse(obj.hasRecommendedName());
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        ProteinSection impl = new ProteinSectionImpl(new ProteinRecNameImpl(), Collections.emptyList(),
+          new NameImpl(), new NameImpl(), Collections.emptyList(), Collections.emptyList());
+        ProteinSection obj = new ProteinSectionBuilder().from(impl).build();
+
+        assertTrue(obj.hasRecommendedName());
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 
     private List<Name> createShortNames() {

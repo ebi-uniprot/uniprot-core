@@ -19,7 +19,8 @@ public class ProteinSectionImpl implements ProteinSection {
     private List<Name> cdAntigenNames;
     private List<Name> innNames;
 
-    private ProteinSectionImpl() {
+    // no arg constructor for JSON deserialization
+    ProteinSectionImpl() {
         this.alternativeNames = Collections.emptyList();
         this.cdAntigenNames = Collections.emptyList();
         this.innNames = Collections.emptyList();
@@ -106,10 +107,10 @@ public class ProteinSectionImpl implements ProteinSection {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((allergenName == null) ? 0 : allergenName.hashCode());
-        result = prime * result + ((alternativeNames == null) ? 0 : alternativeNames.hashCode());
+        result = prime * result + alternativeNames.hashCode();
         result = prime * result + ((biotechName == null) ? 0 : biotechName.hashCode());
-        result = prime * result + ((cdAntigenNames == null) ? 0 : cdAntigenNames.hashCode());
-        result = prime * result + ((innNames == null) ? 0 : innNames.hashCode());
+        result = prime * result + cdAntigenNames.hashCode();
+        result = prime * result + innNames.hashCode();
         result = prime * result + ((recommendedName == null) ? 0 : recommendedName.hashCode());
         return result;
     }
@@ -123,21 +124,15 @@ public class ProteinSectionImpl implements ProteinSection {
         if (allergenName == null) {
             if (other.allergenName != null) return false;
         } else if (!allergenName.equals(other.allergenName)) return false;
-        if (alternativeNames == null) {
-            if (other.alternativeNames != null) return false;
-        } else if (!alternativeNames.equals(other.alternativeNames)) return false;
+        if (!alternativeNames.equals(other.alternativeNames)) return false;
         if (biotechName == null) {
             if (other.biotechName != null) return false;
         } else if (!biotechName.equals(other.biotechName)) return false;
-        if (cdAntigenNames == null) {
-            if (other.cdAntigenNames != null) return false;
-        } else if (!cdAntigenNames.equals(other.cdAntigenNames)) return false;
-        if (innNames == null) {
-            if (other.innNames != null) return false;
-        } else if (!innNames.equals(other.innNames)) return false;
+        if (!cdAntigenNames.equals(other.cdAntigenNames)) return false;
+        if (!innNames.equals(other.innNames)) return false;
         if (recommendedName == null) {
-            if (other.recommendedName != null) return false;
-        } else if (!recommendedName.equals(other.recommendedName)) return false;
-        return true;
+            return other.recommendedName == null;
+        } else
+            return recommendedName.equals(other.recommendedName);
     }
 }
