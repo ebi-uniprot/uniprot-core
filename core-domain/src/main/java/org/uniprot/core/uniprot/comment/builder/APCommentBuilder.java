@@ -12,18 +12,20 @@ import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentImpl;
 
+import javax.annotation.Nonnull;
+
 public final class APCommentBuilder
         implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
     private List<APEventType> events = new ArrayList<>();
     private List<APIsoform> isoforms = new ArrayList<>();
     private Note note;
 
-    public AlternativeProductsComment build() {
+    public @Nonnull AlternativeProductsComment build() {
         return new AlternativeProductsCommentImpl(events, isoforms, note);
     }
 
     @Override
-    public APCommentBuilder from(AlternativeProductsComment instance) {
+    public @Nonnull APCommentBuilder from(@Nonnull AlternativeProductsComment instance) {
         events.clear();
         isoforms.clear();
         return this.events(instance.getEvents())
@@ -54,17 +56,5 @@ public final class APCommentBuilder
     public APCommentBuilder note(Note note) {
         this.note = note;
         return this;
-    }
-
-    public List<APEventType> getEvents() {
-        return events;
-    }
-
-    public List<APIsoform> getIsoforms() {
-        return isoforms;
-    }
-
-    public Note getNote() {
-        return note;
     }
 }

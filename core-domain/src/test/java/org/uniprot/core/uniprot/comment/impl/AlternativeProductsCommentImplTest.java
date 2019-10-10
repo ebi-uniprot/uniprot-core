@@ -1,12 +1,13 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createSynonyms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -75,5 +76,21 @@ class AlternativeProductsCommentImplTest {
         assertEquals(events, comment.getEvents());
         assertEquals(isoforms, comment.getIsoforms());
         assertEquals(note, comment.getNote());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        AlternativeProductsComment obj = new AlternativeProductsCommentImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        AlternativeProductsComment impl = new AlternativeProductsCommentImpl(Collections.emptyList(), Collections.emptyList(), new NoteImpl());
+        AlternativeProductsComment obj = new APCommentBuilder().from(impl).build();
+
+        assertTrue(impl.hasNote());
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }

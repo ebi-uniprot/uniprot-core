@@ -14,7 +14,8 @@ public class AlternativeProductsCommentImpl extends CommentImpl
     private List<APIsoform> isoforms;
     private Note note;
 
-    private AlternativeProductsCommentImpl() {
+    // no arg constructor for JSON deserialization
+    AlternativeProductsCommentImpl() {
         super(CommentType.ALTERNATIVE_PRODUCTS);
         this.events = Collections.emptyList();
         this.isoforms = Collections.emptyList();

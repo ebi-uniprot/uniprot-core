@@ -170,6 +170,53 @@ class APCommentBuilderTest {
         assertEquals(1, apIsoform.getSequenceIds().size());
     }
 
+    @Test
+    void canAddSingleIsoform() {
+        AlternativeProductsComment obj = new APCommentBuilder().addIsoform(createAPIsoform()).build();
+        assertNotNull(obj.getIsoforms());
+        assertFalse(obj.getIsoforms().isEmpty());
+        assertTrue(obj.hasIsoforms());
+    }
+
+    @Test
+    void nullIsoform_willBeIgnore() {
+        AlternativeProductsComment obj = new APCommentBuilder().addIsoform(null).build();
+        assertNotNull(obj.getIsoforms());
+        assertTrue(obj.getIsoforms().isEmpty());
+        assertFalse(obj.hasIsoforms());
+    }
+
+    @Test
+    void canAddSingleEvent() {
+        AlternativeProductsComment obj = new APCommentBuilder().addEvent(APEventType.ALTERNATIVE_INITIATION).build();
+        assertNotNull(obj.getEvents());
+        assertFalse(obj.getEvents().isEmpty());
+        assertTrue(obj.hasEvents());
+    }
+
+    @Test
+    void nullEvent_willBeIgnore() {
+        AlternativeProductsComment obj = new APCommentBuilder().addEvent(null).build();
+        assertNotNull(obj.getEvents());
+        assertTrue(obj.getEvents().isEmpty());
+        assertFalse(obj.hasEvents());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        APIsoform obj = new APIsoformBuilder().build();
+        APIsoformBuilder builder = new APIsoformBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        APIsoform obj = new APIsoformBuilder().build();
+        APIsoform obj2 = new APIsoformBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
     private APIsoform createAPIsoform() {
         List<Evidence> evidences = createEvidences();
         String name = "Some name";
