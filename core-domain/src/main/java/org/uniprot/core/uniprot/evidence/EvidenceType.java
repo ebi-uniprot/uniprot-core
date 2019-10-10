@@ -2,9 +2,9 @@ package org.uniprot.core.uniprot.evidence;
 
 import java.io.Serializable;
 
-import org.uniprot.core.DatabaseType;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.DatabaseType;
 
 public final class EvidenceType implements DatabaseType, Serializable {
     private static final long serialVersionUID = 799945684184000909L;

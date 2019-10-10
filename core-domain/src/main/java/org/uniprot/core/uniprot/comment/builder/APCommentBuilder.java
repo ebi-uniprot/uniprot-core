@@ -6,13 +6,13 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.APEventType;
 import org.uniprot.core.uniprot.comment.APIsoform;
 import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public final class APCommentBuilder
         implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {

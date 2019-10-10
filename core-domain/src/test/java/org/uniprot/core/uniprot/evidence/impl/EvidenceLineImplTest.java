@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalDate;
 import java.time.Month;
 
@@ -7,10 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceLineBuilder;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class EvidenceLineImplTest {
-    EvidenceLine impl = new EvidenceLineImpl("ECO:0000269|PubMed:22481068", LocalDate.of(2015, Month.AUGUST, 2), "som curator");
+    EvidenceLine impl =
+            new EvidenceLineImpl(
+                    "ECO:0000269|PubMed:22481068",
+                    LocalDate.of(2015, Month.AUGUST, 2),
+                    "som curator");
 
     @Test
     void needDefaultConstructorForJsonDeserialization() {

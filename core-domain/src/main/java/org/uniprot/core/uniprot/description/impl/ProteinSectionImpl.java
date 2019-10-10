@@ -132,7 +132,6 @@ public class ProteinSectionImpl implements ProteinSection {
         if (!innNames.equals(other.innNames)) return false;
         if (recommendedName == null) {
             return other.recommendedName == null;
-        } else
-            return recommendedName.equals(other.recommendedName);
+        } else return recommendedName.equals(other.recommendedName);
     }
 }

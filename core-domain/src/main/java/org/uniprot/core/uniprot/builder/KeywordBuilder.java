@@ -1,7 +1,5 @@
 package org.uniprot.core.uniprot.builder;
 
-
-
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.cv.keyword.KeywordCategory;

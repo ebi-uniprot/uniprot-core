@@ -172,7 +172,8 @@ class APCommentBuilderTest {
 
     @Test
     void canAddSingleIsoform() {
-        AlternativeProductsComment obj = new APCommentBuilder().addIsoform(createAPIsoform()).build();
+        AlternativeProductsComment obj =
+                new APCommentBuilder().addIsoform(createAPIsoform()).build();
         assertNotNull(obj.getIsoforms());
         assertFalse(obj.getIsoforms().isEmpty());
         assertTrue(obj.hasIsoforms());
@@ -188,7 +189,8 @@ class APCommentBuilderTest {
 
     @Test
     void canAddSingleEvent() {
-        AlternativeProductsComment obj = new APCommentBuilder().addEvent(APEventType.ALTERNATIVE_INITIATION).build();
+        AlternativeProductsComment obj =
+                new APCommentBuilder().addEvent(APEventType.ALTERNATIVE_INITIATION).build();
         assertNotNull(obj.getEvents());
         assertFalse(obj.getEvents().isEmpty());
         assertTrue(obj.hasEvents());

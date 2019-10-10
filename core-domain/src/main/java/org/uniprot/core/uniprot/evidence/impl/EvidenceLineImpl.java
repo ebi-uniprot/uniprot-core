@@ -1,11 +1,12 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
+import static org.uniprot.core.util.Utils.emptyOrString;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceLine;
-import static org.uniprot.core.util.Utils.emptyOrString;
 
 public class EvidenceLineImpl implements EvidenceLine {
     private String evidence;

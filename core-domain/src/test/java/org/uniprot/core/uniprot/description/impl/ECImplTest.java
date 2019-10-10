@@ -1,5 +1,8 @@
 package org.uniprot.core.uniprot.description.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,9 +13,6 @@ import org.uniprot.core.uniprot.description.builder.ECBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 
 class ECImplTest {
 
@@ -67,6 +67,8 @@ class ECImplTest {
     @Test
     void displayedWillAddEvidences() {
         EC impl = new ECImpl("val", createEvidences());
-        assertEquals("val {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}", impl.getDisplayed(" "));
+        assertEquals(
+                "val {ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361}",
+                impl.getDisplayed(" "));
     }
 }

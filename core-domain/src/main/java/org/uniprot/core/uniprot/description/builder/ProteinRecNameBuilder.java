@@ -6,13 +6,13 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.impl.ProteinRecNameImpl;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, ProteinRecName> {

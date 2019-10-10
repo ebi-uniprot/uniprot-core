@@ -5,22 +5,24 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
     ECO_0000269(
             "ECO:0000269",
             "Experimental",
             "Literature reference",
-            Collections.singletonList("x Publication(s) with 'Manual assertion based on experiment in'"),
+            Collections.singletonList(
+                    "x Publication(s) with 'Manual assertion based on experiment in'"),
             EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL)),
     ECO_0000303(
             "ECO:0000303",
             "Non-traceable author statement",
             "Literature reference",
-      Collections.singletonList("x Publication(s) with 'Manual assertion based on opinion in'"),
+            Collections.singletonList(
+                    "x Publication(s) with 'Manual assertion based on opinion in'"),
             EnumSet.of(Category.EXPERIMENTAL, Category.MANUAL)),
     ECO_0000305(
             "ECO:0000305",
@@ -33,7 +35,7 @@ public enum EvidenceCode implements EnumDisplay<EvidenceCode> {
             "ECO:0000250",
             "Sequence similarity",
             "Another UniProtKB/Swiss-Prot entry",
-      Collections.singletonList("By similarity"),
+            Collections.singletonList("By similarity"),
             EnumSet.of(Category.MANUAL)),
     ECO_0000255(
             "ECO:0000255",

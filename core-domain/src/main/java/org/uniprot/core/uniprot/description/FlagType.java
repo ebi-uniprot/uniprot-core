@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.description;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 /**
  * Contains a list of acceptable flag descriptors found within a DE line
@@ -22,8 +22,7 @@ public enum FlagType implements EnumDisplay<FlagType> {
         this.value = value;
     }
 
-    public @Nonnull
-    String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 

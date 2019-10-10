@@ -6,12 +6,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.description.*;
 import org.uniprot.core.uniprot.description.impl.FlagImpl;
 import org.uniprot.core.uniprot.description.impl.ProteinDescriptionImpl;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class ProteinDescriptionBuilder

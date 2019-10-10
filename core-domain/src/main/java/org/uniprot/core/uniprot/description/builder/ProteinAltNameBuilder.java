@@ -6,13 +6,13 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinAltName;
 import org.uniprot.core.uniprot.description.impl.ProteinAltNameImpl;
-
-import javax.annotation.Nonnull;
 
 public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, ProteinAltName> {
 
@@ -51,8 +51,7 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
     }
 
     @Override
-    public @Nonnull
-    ProteinAltNameBuilder from(@Nonnull ProteinAltName instance) {
+    public @Nonnull ProteinAltNameBuilder from(@Nonnull ProteinAltName instance) {
         this.fullName(instance.getFullName());
         this.shortNames(instance.getShortNames());
         this.ecNumbers(instance.getEcNumbers());

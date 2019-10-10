@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprot.description.impl;
 
+import static org.uniprot.core.util.Utils.notNullOrEmpty;
+import static org.uniprot.core.util.Utils.unmodifiableList;
+
 import java.util.Collections;
 import java.util.List;
 
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinSubName;
-
-import static org.uniprot.core.util.Utils.notNullOrEmpty;
-import static org.uniprot.core.util.Utils.unmodifiableList;
 
 public class ProteinSubNameImpl implements ProteinSubName {
 
@@ -71,8 +71,6 @@ public class ProteinSubNameImpl implements ProteinSubName {
         if (!ecNumbers.equals(other.ecNumbers)) return false;
         if (fullName == null) {
             return other.fullName == null;
-        } else
-            return fullName.equals(other.fullName);
-
+        } else return fullName.equals(other.fullName);
     }
 }

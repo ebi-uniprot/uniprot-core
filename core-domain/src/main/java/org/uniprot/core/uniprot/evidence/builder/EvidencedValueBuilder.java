@@ -4,11 +4,11 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

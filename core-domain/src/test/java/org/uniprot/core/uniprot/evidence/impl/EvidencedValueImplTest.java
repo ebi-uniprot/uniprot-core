@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.evidence.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,8 +11,6 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class EvidencedValueImplTest {
 
@@ -36,14 +36,14 @@ class EvidencedValueImplTest {
 
     @Test
     void valueWillNeverBeNull() {
-        EvidencedValueImpl evidencedValue = new EvidencedValueImpl(null,null);
+        EvidencedValueImpl evidencedValue = new EvidencedValueImpl(null, null);
         assertNotNull(evidencedValue.getValue());
         assertFalse(evidencedValue.hasValue());
     }
 
     @Test
     void evidencesWillNeverBeNull() {
-        EvidencedValueImpl evidencedValue = new EvidencedValueImpl(null,null);
+        EvidencedValueImpl evidencedValue = new EvidencedValueImpl(null, null);
         assertNotNull(evidencedValue.getEvidences());
         assertFalse(evidencedValue.hasEvidences());
     }

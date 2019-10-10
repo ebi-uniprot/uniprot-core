@@ -14,7 +14,7 @@ public class EvidencedValueImpl implements EvidencedValue {
 
     // no arg constructor for JSON deserialization
     EvidencedValueImpl() {
-        this.value="";
+        this.value = "";
         this.evidences = Collections.emptyList();
     }
 

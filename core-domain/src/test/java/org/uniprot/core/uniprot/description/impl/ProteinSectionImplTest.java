@@ -1,5 +1,8 @@
 package org.uniprot.core.uniprot.description.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,9 +21,6 @@ import org.uniprot.core.uniprot.description.builder.ProteinSectionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ProteinSectionImplTest {
 
@@ -78,8 +78,14 @@ class ProteinSectionImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        ProteinSection impl = new ProteinSectionImpl(new ProteinRecNameImpl(), Collections.emptyList(),
-          new NameImpl(), new NameImpl(), Collections.emptyList(), Collections.emptyList());
+        ProteinSection impl =
+                new ProteinSectionImpl(
+                        new ProteinRecNameImpl(),
+                        Collections.emptyList(),
+                        new NameImpl(),
+                        new NameImpl(),
+                        Collections.emptyList(),
+                        Collections.emptyList());
         ProteinSection obj = new ProteinSectionBuilder().from(impl).build();
 
         assertTrue(obj.hasRecommendedName());

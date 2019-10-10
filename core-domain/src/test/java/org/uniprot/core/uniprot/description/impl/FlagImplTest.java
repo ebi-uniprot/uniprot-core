@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprot.description.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.description.Flag;
 import org.uniprot.core.uniprot.description.FlagType;
 import org.uniprot.core.uniprot.description.builder.FlagBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FlagImplTest {
 

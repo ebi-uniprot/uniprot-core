@@ -6,13 +6,13 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinSubName;
 import org.uniprot.core.uniprot.description.impl.ProteinSubNameImpl;
-
-import javax.annotation.Nonnull;
 
 public class ProteinSubNameBuilder implements Builder<ProteinSubNameBuilder, ProteinSubName> {
 

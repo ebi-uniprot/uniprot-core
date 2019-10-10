@@ -1,15 +1,15 @@
 package org.uniprot.core.uniprot.evidence.builder;
 
+import static org.uniprot.core.util.Utils.notNull;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
-
-import javax.annotation.Nonnull;
-
-import static org.uniprot.core.util.Utils.notNull;
 
 /**
  * Created 16/01/19
@@ -34,7 +34,7 @@ public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
     public @Nonnull EvidenceBuilder from(Evidence instance) {
         DBCrossReference<EvidenceType> source = instance.getSource();
         EvidenceBuilder retBuilder = new EvidenceBuilder().evidenceCode(instance.getEvidenceCode());
-        if(notNull(source)){
+        if (notNull(source)) {
             retBuilder.databaseId(source.getId()).databaseName(source.getDatabaseType().getName());
         }
         return retBuilder;

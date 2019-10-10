@@ -1,14 +1,14 @@
 package org.uniprot.core.uniprot.description.impl;
 
-import org.uniprot.core.uniprot.description.EC;
-import org.uniprot.core.uniprot.description.Name;
-import org.uniprot.core.uniprot.description.ProteinRecName;
+import static org.uniprot.core.util.Utils.notNullOrEmpty;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.uniprot.core.util.Utils.notNullOrEmpty;
-import static org.uniprot.core.util.Utils.unmodifiableList;
+import org.uniprot.core.uniprot.description.EC;
+import org.uniprot.core.uniprot.description.Name;
+import org.uniprot.core.uniprot.description.ProteinRecName;
 
 public class ProteinRecNameImpl implements ProteinRecName {
 

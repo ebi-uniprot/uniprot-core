@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.description.impl;
 
+import static org.uniprot.core.util.Utils.notNullOrEmpty;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -7,8 +9,6 @@ import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinAltName;
 import org.uniprot.core.util.Utils;
-
-import static org.uniprot.core.util.Utils.notNullOrEmpty;
 
 public class ProteinAltNameImpl implements ProteinAltName {
 

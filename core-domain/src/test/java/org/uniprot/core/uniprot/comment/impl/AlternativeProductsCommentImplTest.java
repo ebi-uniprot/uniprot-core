@@ -86,7 +86,9 @@ class AlternativeProductsCommentImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        AlternativeProductsComment impl = new AlternativeProductsCommentImpl(Collections.emptyList(), Collections.emptyList(), new NoteImpl());
+        AlternativeProductsComment impl =
+                new AlternativeProductsCommentImpl(
+                        Collections.emptyList(), Collections.emptyList(), new NoteImpl());
         AlternativeProductsComment obj = new APCommentBuilder().from(impl).build();
 
         assertTrue(impl.hasNote());

@@ -58,8 +58,8 @@ public class EvidenceImpl implements Evidence {
                 sb.append(source.getId());
             } else {
                 sb.append(source.getDatabaseType().getDetail().getDisplayName())
-                    .append(COLON)
-                    .append(source.getId());
+                        .append(COLON)
+                        .append(source.getId());
             }
         }
 

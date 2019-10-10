@@ -114,14 +114,15 @@ class ProteinRecNameImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        ProteinRecName impl = new ProteinRecNameImpl(new NameImpl(), Collections.emptyList(), Collections.emptyList());
+        ProteinRecName impl =
+                new ProteinRecNameImpl(
+                        new NameImpl(), Collections.emptyList(), Collections.emptyList());
         ProteinRecName obj = new ProteinRecNameBuilder().from(impl).build();
 
         assertTrue(impl.hasFullName());
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
-
 
     private List<Name> createShortNames() {
         List<Evidence> evidences = createEvidences();
