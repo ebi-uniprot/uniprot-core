@@ -1,11 +1,14 @@
 package org.uniprot.core.uniprot.description.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
+
+import java.util.Collections;
+import java.util.List;
+
+import static org.uniprot.core.util.Utils.notNullOrEmpty;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 public class ProteinRecNameImpl implements ProteinRecName {
 
@@ -14,6 +17,7 @@ public class ProteinRecNameImpl implements ProteinRecName {
     private List<Name> shortNames;
     private List<EC> ecNumbers;
 
+    // no arg constructor for JSON deserialization
     ProteinRecNameImpl() {
         shortNames = Collections.emptyList();
         ecNumbers = Collections.emptyList();
@@ -21,16 +25,8 @@ public class ProteinRecNameImpl implements ProteinRecName {
 
     public ProteinRecNameImpl(Name fullName, List<Name> shortNames, List<EC> ecNumbers) {
         this.fullName = fullName;
-        if ((shortNames == null) || (shortNames.isEmpty())) {
-            this.shortNames = Collections.emptyList();
-        } else {
-            this.shortNames = Collections.unmodifiableList(shortNames);
-        }
-        if ((ecNumbers == null) || (ecNumbers.isEmpty())) {
-            this.ecNumbers = Collections.emptyList();
-        } else {
-            this.ecNumbers = Collections.unmodifiableList(ecNumbers);
-        }
+        this.shortNames = unmodifiableList(shortNames);
+        this.ecNumbers = unmodifiableList(ecNumbers);
     }
 
     @Override
@@ -55,12 +51,12 @@ public class ProteinRecNameImpl implements ProteinRecName {
 
     @Override
     public boolean hasShortNames() {
-        return this.shortNames != null;
+        return notNullOrEmpty(shortNames);
     }
 
     @Override
     public boolean hasEcNumbers() {
-        return this.ecNumbers != null;
+        return notNullOrEmpty(ecNumbers);
     }
 
     @Override
@@ -73,9 +69,9 @@ public class ProteinRecNameImpl implements ProteinRecName {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((ecNumbers == null) ? 0 : ecNumbers.hashCode());
+        result = prime * result + ecNumbers.hashCode();
         result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
-        result = prime * result + ((shortNames == null) ? 0 : shortNames.hashCode());
+        result = prime * result + shortNames.hashCode();
         return result;
     }
 
@@ -85,15 +81,10 @@ public class ProteinRecNameImpl implements ProteinRecName {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         ProteinRecNameImpl other = (ProteinRecNameImpl) obj;
-        if (ecNumbers == null) {
-            if (other.ecNumbers != null) return false;
-        } else if (!ecNumbers.equals(other.ecNumbers)) return false;
+        if (!ecNumbers.equals(other.ecNumbers)) return false;
         if (fullName == null) {
             if (other.fullName != null) return false;
         } else if (!fullName.equals(other.fullName)) return false;
-        if (shortNames == null) {
-            if (other.shortNames != null) return false;
-        } else if (!shortNames.equals(other.shortNames)) return false;
-        return true;
+        return shortNames.equals(other.shortNames);
     }
 }

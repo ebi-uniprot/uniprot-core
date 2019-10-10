@@ -12,6 +12,8 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.impl.ProteinRecNameImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, ProteinRecName> {
 
@@ -45,12 +47,12 @@ public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, Pro
     }
 
     @Override
-    public ProteinRecName build() {
+    public @Nonnull ProteinRecName build() {
         return new ProteinRecNameImpl(fullName, shortNames, ecNumbers);
     }
 
     @Override
-    public ProteinRecNameBuilder from(ProteinRecName instance) {
+    public @Nonnull ProteinRecNameBuilder from(@Nonnull ProteinRecName instance) {
         this.fullName(instance.getFullName());
         this.shortNames(instance.getShortNames());
         this.ecNumbers(instance.getEcNumbers());

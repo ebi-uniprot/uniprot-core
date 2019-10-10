@@ -3,6 +3,7 @@ package org.uniprot.core.uniprot.description.impl;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -103,6 +104,24 @@ class ProteinRecNameImplTest {
         assertEquals(0, recName.getEcNumbers().size());
         assertTrue(recName.isValid());
     }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        ProteinRecName obj = new ProteinRecNameImpl();
+        assertNotNull(obj);
+        assertFalse(obj.hasFullName());
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        ProteinRecName impl = new ProteinRecNameImpl(new NameImpl(), Collections.emptyList(), Collections.emptyList());
+        ProteinRecName obj = new ProteinRecNameBuilder().from(impl).build();
+
+        assertTrue(impl.hasFullName());
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
 
     private List<Name> createShortNames() {
         List<Evidence> evidences = createEvidences();
