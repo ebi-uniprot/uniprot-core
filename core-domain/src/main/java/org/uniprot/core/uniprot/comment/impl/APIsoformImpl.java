@@ -19,7 +19,8 @@ public class APIsoformImpl implements APIsoform {
     private List<String> sequenceIds;
     private IsoformSequenceStatus isoformSequenceStatus;
 
-    private APIsoformImpl() {
+    // no arg constructor for JSON deserialization
+    APIsoformImpl() {
         isoformIds = Collections.emptyList();
         sequenceIds = Collections.emptyList();
         synonyms = Collections.emptyList();
@@ -122,7 +123,8 @@ public class APIsoformImpl implements APIsoform {
     }
 
     public static class IsoformNameImpl extends EvidencedValueImpl implements IsoformName {
-        private IsoformNameImpl() {
+        // no arg constructor for JSON deserialization
+        IsoformNameImpl() {
             super("", Collections.emptyList());
         }
 
@@ -132,7 +134,8 @@ public class APIsoformImpl implements APIsoform {
     }
 
     public static class IsoformIdImpl extends ValueImpl implements IsoformId {
-        private IsoformIdImpl() {
+        // no arg constructor for JSON deserialization
+        IsoformIdImpl() {
             super("");
         }
 

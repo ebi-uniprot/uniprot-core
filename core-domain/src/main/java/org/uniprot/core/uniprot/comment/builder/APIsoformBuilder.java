@@ -12,6 +12,8 @@ import org.uniprot.core.Value;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -25,13 +27,13 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     private Note note;
     private IsoformSequenceStatus isoformSequenceStatus;
 
-    public APIsoform build() {
+    public @Nonnull APIsoform build() {
         return new APIsoformImpl(
                 name, synonyms, note, isoformIds, sequenceIds, isoformSequenceStatus);
     }
 
     @Override
-    public APIsoformBuilder from(APIsoform instance) {
+    public @Nonnull APIsoformBuilder from(@Nonnull APIsoform instance) {
         synonyms.clear();
         isoformIds.clear();
         sequenceIds.clear();
@@ -72,7 +74,8 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder addId(String isoformId) {
-        this.isoformIds.add(new APIsoformImpl.IsoformIdImpl(isoformId));
+        if(isoformId != null)
+            this.isoformIds.add(new APIsoformImpl.IsoformIdImpl(isoformId));
         return this;
     }
 

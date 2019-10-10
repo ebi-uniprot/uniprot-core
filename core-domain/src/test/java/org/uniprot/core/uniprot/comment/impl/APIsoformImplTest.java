@@ -1,12 +1,13 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createSynonyms;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -51,6 +52,38 @@ class APIsoformImplTest {
         assertEquals(isoformIds, apIsoform.getIsoformIds());
         assertEquals(sequenceIds, apIsoform.getSequenceIds());
         assertEquals(IsoformSequenceStatus.DESCRIBED, apIsoform.getIsoformSequenceStatus());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        APIsoform obj = new APIsoformImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization_IsoformName() {
+        IsoformName obj = new APIsoformImpl.IsoformNameImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization_IsoformId() {
+        IsoformId obj = new APIsoformImpl.IsoformIdImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        APIsoform impl = new APIsoformImpl(new APIsoformImpl.IsoformNameImpl(), Collections.emptyList(), new NoteImpl(),
+          Collections.emptyList(), Collections.emptyList(), IsoformSequenceStatus.DESCRIBED);
+        APIsoform obj = new APIsoformBuilder().from(impl).build();
+
+        assertTrue(impl.hasName());
+        assertTrue(impl.hasIsoformSequenceStatus());
+        assertTrue(impl.hasNote());
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 
     private List<IsoformId> createIsoformIds() {
