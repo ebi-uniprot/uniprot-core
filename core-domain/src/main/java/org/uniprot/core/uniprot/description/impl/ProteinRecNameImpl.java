@@ -14,7 +14,7 @@ public class ProteinRecNameImpl implements ProteinRecName {
     private List<Name> shortNames;
     private List<EC> ecNumbers;
 
-    private ProteinRecNameImpl() {
+    ProteinRecNameImpl() {
         shortNames = Collections.emptyList();
         ecNumbers = Collections.emptyList();
     }

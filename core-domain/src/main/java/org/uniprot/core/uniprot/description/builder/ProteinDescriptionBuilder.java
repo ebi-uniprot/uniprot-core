@@ -11,6 +11,8 @@ import org.uniprot.core.uniprot.description.*;
 import org.uniprot.core.uniprot.description.impl.FlagImpl;
 import org.uniprot.core.uniprot.description.impl.ProteinDescriptionImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class ProteinDescriptionBuilder
         implements Builder<ProteinDescriptionBuilder, ProteinDescription> {
@@ -111,7 +113,7 @@ public class ProteinDescriptionBuilder
     }
 
     @Override
-    public ProteinDescription build() {
+    public @Nonnull ProteinDescription build() {
         return new ProteinDescriptionImpl(
                 recommendedName,
                 alternativeNames,
@@ -126,7 +128,7 @@ public class ProteinDescriptionBuilder
     }
 
     @Override
-    public ProteinDescriptionBuilder from(ProteinDescription instance) {
+    public @Nonnull ProteinDescriptionBuilder from(@Nonnull ProteinDescription instance) {
         this.recommendedName(instance.getRecommendedName());
         this.alternativeNames(instance.getAlternativeNames());
         this.allergenName(instance.getAllergenName());
