@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.cv.xdb.validator.DBXRefValidator;
 import org.uniprot.core.util.Utils;
 import org.uniprot.core.util.property.Property;
 
@@ -101,7 +100,6 @@ public enum UniProtXDbTypes {
                                         DatabaseCategory.typeOf(category),
                                         uriLink,
                                         attributes);
-                        if (!newDbs.contains(xdbType.getName())) DBXRefValidator.validate(xdbType);
                         types.add(xdbType);
                     });
             typeMap =
