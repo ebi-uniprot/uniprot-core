@@ -9,6 +9,8 @@ import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.AbsorptionImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -21,12 +23,12 @@ public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption>
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public Absorption build() {
+    public @Nonnull Absorption build() {
         return new AbsorptionImpl(max, approximate, note, evidences);
     }
 
     @Override
-    public AbsorptionBuilder from(Absorption instance) {
+    public @Nonnull AbsorptionBuilder from(@Nonnull Absorption instance) {
         evidences.clear();
         return this.note(instance.getNote())
                 .approximate(instance.isApproximate())

@@ -16,21 +16,16 @@ public class AbsorptionImpl implements Absorption {
     private Note note;
     private List<Evidence> evidences;
 
-    private AbsorptionImpl() {
+    // no arg constructor for JSON deserialization
+    AbsorptionImpl() {
         this.evidences = Collections.emptyList();
-    }
-
-    public AbsorptionImpl(int max, Note note, List<Evidence> evidences) {
-        this(max, false, note, evidences);
     }
 
     public AbsorptionImpl(int max, boolean approximate, Note note, List<Evidence> evidences) {
         this.max = max;
         this.approximate = approximate;
         this.note = note;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else this.evidences = Collections.unmodifiableList(evidences);
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override
