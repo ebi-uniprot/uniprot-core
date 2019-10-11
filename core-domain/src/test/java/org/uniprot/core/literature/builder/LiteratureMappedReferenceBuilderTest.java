@@ -1,14 +1,13 @@
 package org.uniprot.core.literature.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Collections;
+import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureMappedReference;
+import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureMappedReferenceWithAdd;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.literature.LiteratureMappedReference;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
 class LiteratureMappedReferenceBuilderTest {
 
@@ -30,8 +29,7 @@ class LiteratureMappedReferenceBuilderTest {
 
     @Test
     void testCompleteLiteratureEntryWithAdd() {
-        LiteratureMappedReference mappedReference =
-                createCompleteLiteratureMappedReferenceWithAdd();
+        LiteratureMappedReference mappedReference = createCompleteLiteratureMappedReferenceWithAdd();
         validateLiteratureMappedReference(mappedReference);
     }
 
@@ -53,24 +51,4 @@ class LiteratureMappedReferenceBuilderTest {
         assertEquals(mappedReference.getUniprotAccession().getValue(), "P12345");
     }
 
-    static LiteratureMappedReference createCompleteLiteratureMappedReference() {
-        return getBasicFields()
-                .sourceCategory(Collections.singletonList("source category"))
-                .uniprotAccession("P12345")
-                .build();
-    }
-
-    static LiteratureMappedReference createCompleteLiteratureMappedReferenceWithAdd() {
-        return getBasicFields()
-                .addSourceCategory("source category")
-                .uniprotAccession(new UniProtAccessionImpl("P12345"))
-                .build();
-    }
-
-    private static LiteratureMappedReferenceBuilder getBasicFields() {
-        return new LiteratureMappedReferenceBuilder()
-                .annotation("annotation value")
-                .source("source value")
-                .sourceId("source Id");
-    }
 }

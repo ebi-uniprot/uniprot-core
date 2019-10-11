@@ -1,18 +1,13 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
-import static org.uniprot.core.ObjectsForTests.createEvidences;
-import static org.uniprot.core.ObjectsForTests.createNote;
+import static org.uniprot.core.ObjectsForTests.*;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.builder.*;
-import org.uniprot.core.uniprot.evidence.Evidence;
 
 class BPCPCommentImplTest {
     MaximumVelocity mv = new MaximumVelocityImpl(3.4, "unit", "enzyme", createEvidences());
@@ -176,57 +171,4 @@ class BPCPCommentImplTest {
         assertEquals(expected, obj.toString());
     }
 
-    private Absorption createAbsorption() {
-        Note note = createNote();
-        List<Evidence> evidences = createEvidences();
-        return new AbsorptionBuilder().evidences(evidences).note(note).max(32).build();
-    }
-
-    private KineticParameters createKineticParameters() {
-        List<MaximumVelocity> velocities = createVelocities();
-
-        List<MichaelisConstant> mConstants = createConstants();
-        Note note = createNote();
-
-        return new KineticParametersBuilder()
-                .maximumVelocities(velocities)
-                .michaelisConstants(mConstants)
-                .note(note)
-                .build();
-    }
-
-    private List<MaximumVelocity> createVelocities() {
-        List<MaximumVelocity> velocities = new ArrayList<>();
-        velocities.add(
-                new MaximumVelocityBuilder()
-                        .velocity(1.0)
-                        .unit("unit1")
-                        .enzyme("enzyme1")
-                        .evidences(createEvidences())
-                        .build());
-        velocities.add(
-                new MaximumVelocityBuilder()
-                        .velocity(1.32)
-                        .unit("unit2")
-                        .enzyme("enzyme2")
-                        .evidences(createEvidences())
-                        .build());
-        return velocities;
-    }
-
-    private List<MichaelisConstant> createConstants() {
-        List<MichaelisConstant> mConstants = new ArrayList<>();
-        double constant = 2.13;
-        MichaelisConstantUnit unit = MichaelisConstantUnit.MG_ML_2;
-        String substrate = "some value";
-        MichaelisConstant mconstant =
-                new MichaelisConstantBuilder()
-                        .constant(constant)
-                        .unit(unit)
-                        .substrate(substrate)
-                        .evidences(createEvidences())
-                        .build();
-        mConstants.add(mconstant);
-        return mConstants;
-    }
 }

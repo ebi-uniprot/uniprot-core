@@ -1,14 +1,14 @@
 package org.uniprot.core.literature.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Collections;
+import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureMappedReference;
+import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureStatistics;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.citation.impl.AuthorImpl;
-import org.uniprot.core.citation.impl.PublicationDateImpl;
 import org.uniprot.core.literature.LiteratureEntry;
 
 /** @author lgonzales */
@@ -40,13 +40,13 @@ class LiteratureEntryBuilderTest {
 
     @Test
     void testCompleteLiteratureEntry() {
-        LiteratureEntry entry = createCompleteLiteratureEntry();
+        LiteratureEntry entry = ObjectsForTests.createCompleteLiteratureEntry();
         validateLiteratureEntry(entry);
     }
 
     @Test
     void testAddMethodsLiteratureEntry() {
-        LiteratureEntry entry = createCompleteLiteratureEntryWithAdd();
+        LiteratureEntry entry = ObjectsForTests.createCompleteLiteratureEntryWithAdd();
         validateLiteratureEntry(entry);
     }
 
@@ -88,51 +88,14 @@ class LiteratureEntryBuilderTest {
         assertTrue(entry.hasStatistics());
         assertEquals(
                 entry.getStatistics(),
-                LiteratureStatisticsBuilderTest.createCompleteLiteratureStatistics());
+                createCompleteLiteratureStatistics());
 
         assertTrue(entry.hasLiteratureMappedReferences());
         MatcherAssert.assertThat(
                 entry.getLiteratureMappedReferences(),
-                Matchers.contains(
-                        LiteratureMappedReferenceBuilderTest
-                                .createCompleteLiteratureMappedReference()));
+                Matchers.contains(createCompleteLiteratureMappedReference()));
 
         assertFalse(entry.isCompleteAuthorList());
     }
 
-    private LiteratureEntry createCompleteLiteratureEntry() {
-        return createBasicLiteratureEntryBuilder()
-                .authors(Collections.singletonList(new AuthorImpl("author name")))
-                .authoringGroup(Collections.singletonList("authoring group"))
-                .literatureMappedReference(
-                        Collections.singletonList(
-                                LiteratureMappedReferenceBuilderTest
-                                        .createCompleteLiteratureMappedReference()))
-                .build();
-    }
-
-    private LiteratureEntry createCompleteLiteratureEntryWithAdd() {
-        return createBasicLiteratureEntryBuilder()
-                .addAuthor(new AuthorImpl("author name"))
-                .addAuthoringGroup("authoring group")
-                .addLiteratureMappedReference(
-                        LiteratureMappedReferenceBuilderTest
-                                .createCompleteLiteratureMappedReference())
-                .build();
-    }
-
-    private LiteratureEntryBuilder createBasicLiteratureEntryBuilder() {
-        return new LiteratureEntryBuilder()
-                .doiId("doi Id")
-                .pubmedId(100L)
-                .firstPage("first Page")
-                .journal("journal Name")
-                .volume("volume")
-                .lastPage("last Page")
-                .literatureAbstract("literature Abstract")
-                .publicationDate(new PublicationDateImpl("21-06-2019"))
-                .statistics(LiteratureStatisticsBuilderTest.createCompleteLiteratureStatistics())
-                .title("title")
-                .completeAuthorList(false);
-    }
 }

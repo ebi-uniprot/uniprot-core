@@ -1,6 +1,7 @@
 package org.uniprot.core.literature.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureStatistics;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.literature.LiteratureStatistics;
@@ -28,13 +29,5 @@ class LiteratureStatisticsBuilderTest {
 
         assertTrue(statistics.hasMappedProteinCount());
         assertEquals(statistics.getMappedProteinCount(), 30L);
-    }
-
-    static LiteratureStatistics createCompleteLiteratureStatistics() {
-        return new LiteratureStatisticsBuilder()
-                .reviewedProteinCount(10)
-                .unreviewedProteinCount(20)
-                .mappedProteinCount(30)
-                .build();
     }
 }

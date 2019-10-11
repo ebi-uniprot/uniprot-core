@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -44,7 +45,7 @@ class APCommentBuilderTest {
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
-        List<APIsoform> apIsoforms = singletonList(createAPIsoform());
+        List<APIsoform> apIsoforms = singletonList(ObjectsForTests.createAPIsoform());
         AlternativeProductsComment comment = builder.events(events).isoforms(apIsoforms).build();
         assertEquals(2, comment.getEvents().size());
         assertEquals(1, comment.getIsoforms().size());
@@ -57,7 +58,7 @@ class APCommentBuilderTest {
         List<APEventType> events = new ArrayList<>();
         events.add(APEventType.ALTERNATIVE_INITIATION);
         events.add(APEventType.ALTERNATIVE_SPLICING);
-        List<APIsoform> apIsoforms = singletonList(createAPIsoform());
+        List<APIsoform> apIsoforms = singletonList(ObjectsForTests.createAPIsoform());
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note apNote = new NoteBuilder(texts).build();
         AlternativeProductsComment comment =
@@ -173,7 +174,7 @@ class APCommentBuilderTest {
     @Test
     void canAddSingleIsoform() {
         AlternativeProductsComment obj =
-                new APCommentBuilder().addIsoform(createAPIsoform()).build();
+                new APCommentBuilder().addIsoform(ObjectsForTests.createAPIsoform()).build();
         assertNotNull(obj.getIsoforms());
         assertFalse(obj.getIsoforms().isEmpty());
         assertTrue(obj.hasIsoforms());
@@ -217,25 +218,6 @@ class APCommentBuilderTest {
         APIsoform obj2 = new APIsoformBuilder().build();
         assertTrue(obj.equals(obj2) && obj2.equals(obj));
         assertEquals(obj.hashCode(), obj2.hashCode());
-    }
-
-    private APIsoform createAPIsoform() {
-        List<Evidence> evidences = createEvidences();
-        String name = "Some name";
-        String syn1 = "synonym1";
-        String syn2 = "Synonym2";
-        List<IsoformName> isoformSynonyms = new ArrayList<>();
-        isoformSynonyms.add(createIsoformName(syn1, evidences));
-        isoformSynonyms.add(createIsoformName(syn2, emptyList()));
-
-        APIsoformBuilder isoformBuilder = new APIsoformBuilder();
-        return isoformBuilder
-                .name(createIsoformName(name, evidences))
-                .synonyms(isoformSynonyms)
-                .ids(asList("isoID1", "isoID2", "isoID3"))
-                .sequenceStatus(IsoformSequenceStatus.DISPLAYED)
-                .sequenceIds(singletonList("someSeqId"))
-                .build();
     }
 
     private static IsoformName createIsoformName(String name, List<Evidence> evidences) {
