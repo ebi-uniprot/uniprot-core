@@ -11,6 +11,8 @@ import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
 import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
 import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
+import org.uniprot.core.taxonomy.*;
+import org.uniprot.core.taxonomy.builder.*;
 import org.uniprot.core.uniparc.*;
 import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
 import org.uniprot.core.uniparc.builder.SequenceFeatureBuilder;
@@ -33,6 +35,7 @@ import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -135,6 +138,36 @@ public class ObjectsForTests {
       return evidences;
   }
 
+  public static List<EvidencedValue> evidenceValues() {
+    List<EvidencedValue> evidencedValues = new ArrayList<>();
+    evidencedValues.add(
+      new EvidencedValueBuilder(
+        "value1",
+        asList(
+          new EvidenceBuilder()
+            .databaseId("ENSP0001324")
+            .databaseName("Ensembl")
+            .evidenceCode(EvidenceCode.ECO_0000313)
+            .build(),
+          new EvidenceBuilder()
+            .databaseId("PIRNR001361")
+            .databaseName("PIRNR")
+            .evidenceCode(EvidenceCode.ECO_0000256)
+            .build()))
+        .build());
+    evidencedValues.add(
+      new EvidencedValueBuilder(
+        "value2",
+        singletonList(
+          new EvidenceBuilder()
+            .databaseId("ENSP0001324")
+            .databaseName("Ensembl")
+            .evidenceCode(EvidenceCode.ECO_0000313)
+            .build()))
+        .build());
+    return evidencedValues;
+  }
+
   public static List<EvidencedValue> createEvidenceValuesWithoutEvidences() {
       List<EvidencedValue> evidencedValues = new ArrayList<>();
       evidencedValues.add(new EvidencedValueBuilder("value1", emptyList()).build());
@@ -169,14 +202,6 @@ public class ObjectsForTests {
       evidencedValues.add(new EvidencedValueBuilder("value1", evidences1).build());
       evidencedValues.add(new EvidencedValueBuilder("value2", evidences2).build());
       return evidencedValues;
-  }
-
-  public static List<Taxonomy> taxonomies() {
-      Taxonomy taxonomy =
-              TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
-      Taxonomy taxonomy2 =
-              TaxonomyBuilder.newInstance().taxonId(10090).scientificName("MOUSE").build();
-      return Arrays.asList(taxonomy, taxonomy2);
   }
 
   public static List<SequenceFeature> sequenceFeatures() {
@@ -379,5 +404,98 @@ public class ObjectsForTests {
               .statistics(createCompleteLiteratureStatistics())
               .title("title")
               .completeAuthorList(false);
+  }
+
+  public static List<Taxonomy> taxonomies() {
+    Taxonomy taxonomy =
+      TaxonomyBuilder.newInstance().taxonId(9606).scientificName("Homo sapiens").build();
+    Taxonomy taxonomy2 =
+      TaxonomyBuilder.newInstance().taxonId(10090).scientificName("MOUSE").build();
+    return Arrays.asList(taxonomy, taxonomy2);
+  }
+
+  public static TaxonomyEntry getCompleteTaxonomyEntryUsingAdd() {
+      TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
+
+      builder.addSynonyms("synonym");
+      builder.addOtherNames("otherName");
+      builder.addLineage(getCompleteTaxonomyLineage());
+      builder.addStrain(getCompleteTaxonomyStrain());
+      builder.addHost(getCompleteTaxonomy());
+      builder.addLink("link");
+
+      return builder.build();
+  }
+
+  public static TaxonomyEntry getCompleteTaxonomyEntry() {
+      TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
+
+      builder.synonyms(singletonList("synonym"));
+      builder.otherNames(singletonList("otherName"));
+      builder.lineage(
+              singletonList(getCompleteTaxonomyLineage()));
+      builder.strains(
+              singletonList(getCompleteTaxonomyStrain()));
+      builder.hosts(singletonList(getCompleteTaxonomy()));
+      builder.links(singletonList("link"));
+
+      return builder.build();
+  }
+
+  private static TaxonomyEntryBuilder getTaxonomyEntryBuilderWithBasicData() {
+      TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
+      builder.taxonId(9606L);
+      builder.scientificName("scientificName");
+      builder.commonName("commonName");
+      builder.mnemonic("mnemonic");
+      builder.parentId(9605L);
+      builder.rank(TaxonomyRank.KINGDOM);
+      builder.hidden(true);
+      builder.active(true);
+      builder.inactiveReason(getCompleteTaxonomyInactiveReason());
+      builder.statistics(getCompleteTaxonomyStatistics());
+      return builder;
+  }
+
+  public static Taxonomy getCompleteTaxonomy() {
+      return TaxonomyBuilder.newInstance()
+              .taxonId(9606)
+              .scientificName("Homo sapiens")
+              .commonName("Human")
+              .synonyms(singletonList("Some name"))
+              .mnemonic("HUMAN")
+              .build();
+  }
+
+  public static TaxonomyLineage getCompleteTaxonomyLineage() {
+      TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
+      builder.taxonId(9606L)
+              .scientificName("Scientific Name")
+              .hidden(true)
+              .rank(TaxonomyRank.FAMILY);
+      return builder.build();
+  }
+
+  public static TaxonomyStrain getCompleteTaxonomyStrain() {
+      TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder();
+      builder.synonyms(singletonList("synonym"));
+      builder.name("name");
+      return builder.build();
+  }
+
+  public static TaxonomyInactiveReason getCompleteTaxonomyInactiveReason() {
+      return new TaxonomyInactiveReasonBuilder()
+              .inactiveReasonType(TaxonomyInactiveReasonType.MERGED)
+              .mergedTo(9604L)
+              .build();
+  }
+
+  public static TaxonomyStatistics getCompleteTaxonomyStatistics() {
+      return new TaxonomyStatisticsBuilder()
+              .reviewedProteinCount(10)
+              .unreviewedProteinCount(20)
+              .referenceProteomeCount(1)
+              .completeProteomeCount(2)
+              .build();
   }
 }

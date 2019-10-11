@@ -1,6 +1,7 @@
 package org.uniprot.core.taxonomy.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.getCompleteTaxonomyStatistics;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
@@ -55,12 +56,4 @@ class TaxonomyStatisticsBuilderTest {
         assertTrue(equals);
     }
 
-    static TaxonomyStatistics getCompleteTaxonomyStatistics() {
-        return new TaxonomyStatisticsBuilder()
-                .reviewedProteinCount(10)
-                .unreviewedProteinCount(20)
-                .referenceProteomeCount(1)
-                .completeProteomeCount(2)
-                .build();
-    }
 }

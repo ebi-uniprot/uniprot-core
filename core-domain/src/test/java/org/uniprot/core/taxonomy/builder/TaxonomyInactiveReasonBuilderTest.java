@@ -1,6 +1,7 @@
 package org.uniprot.core.taxonomy.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.getCompleteTaxonomyInactiveReason;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
@@ -38,10 +39,4 @@ class TaxonomyInactiveReasonBuilderTest {
         assertTrue(equals);
     }
 
-    static TaxonomyInactiveReason getCompleteTaxonomyInactiveReason() {
-        return new TaxonomyInactiveReasonBuilder()
-                .inactiveReasonType(TaxonomyInactiveReasonType.MERGED)
-                .mergedTo(9604L)
-                .build();
-    }
 }

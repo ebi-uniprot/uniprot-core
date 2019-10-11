@@ -1,8 +1,7 @@
 package org.uniprot.core.taxonomy.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Collections;
+import static org.uniprot.core.ObjectsForTests.getCompleteTaxonomyStrain;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -45,13 +44,6 @@ class TaxonomyStrainBuilderTest {
 
         boolean equals = taxonomyStrain.equals(other);
         assertTrue(equals);
-    }
-
-    static TaxonomyStrain getCompleteTaxonomyStrain() {
-        TaxonomyStrainBuilder builder = new TaxonomyStrainBuilder();
-        builder.synonyms(Collections.singletonList("synonym"));
-        builder.name("name");
-        return builder.build();
     }
 
     private void validateTaxonomyStrain(TaxonomyStrain taxonomyStrain) {

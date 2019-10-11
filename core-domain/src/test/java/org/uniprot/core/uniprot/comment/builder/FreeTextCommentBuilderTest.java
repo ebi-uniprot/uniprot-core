@@ -1,21 +1,16 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
+import static org.uniprot.core.ObjectsForTests.evidenceValues;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
 class FreeTextCommentBuilderTest {
     @Test
@@ -28,7 +23,7 @@ class FreeTextCommentBuilderTest {
 
     @Test
     void testBuildBiotechnologyComment() {
-        List<EvidencedValue> texts = createEvidenceValues2();
+        List<EvidencedValue> texts = evidenceValues();
         FreeTextComment comment = buildFreeTextComment(CommentType.BIOTECHNOLOGY, texts);
         assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
     }
@@ -164,33 +159,4 @@ class FreeTextCommentBuilderTest {
                 () -> buildFreeTextComment(CommentType.COFACTOR, texts));
     }
 
-    private List<EvidencedValue> createEvidenceValues2() {
-        List<EvidencedValue> evidencedValues = new ArrayList<>();
-        evidencedValues.add(
-                new EvidencedValueBuilder(
-                                "value1",
-                                asList(
-                                        new EvidenceBuilder()
-                                                .databaseId("ENSP0001324")
-                                                .databaseName("Ensembl")
-                                                .evidenceCode(EvidenceCode.ECO_0000313)
-                                                .build(),
-                                        new EvidenceBuilder()
-                                                .databaseId("PIRNR001361")
-                                                .databaseName("PIRNR")
-                                                .evidenceCode(EvidenceCode.ECO_0000256)
-                                                .build()))
-                        .build());
-        evidencedValues.add(
-                new EvidencedValueBuilder(
-                                "value2",
-                                singletonList(
-                                        new EvidenceBuilder()
-                                                .databaseId("ENSP0001324")
-                                                .databaseName("Ensembl")
-                                                .evidenceCode(EvidenceCode.ECO_0000313)
-                                                .build()))
-                        .build());
-        return evidencedValues;
-    }
 }

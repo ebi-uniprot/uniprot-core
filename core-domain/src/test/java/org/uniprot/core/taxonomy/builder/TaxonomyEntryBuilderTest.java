@@ -2,15 +2,12 @@ package org.uniprot.core.taxonomy.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Collections;
-
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.taxonomy.TaxonomyEntry;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-import org.uniprot.core.uniprot.taxonomy.Taxonomy;
-import org.uniprot.core.uniprot.taxonomy.builder.TaxonomyBuilder;
 
 class TaxonomyEntryBuilderTest {
 
@@ -51,19 +48,19 @@ class TaxonomyEntryBuilderTest {
 
     @Test
     void testCompleteTaxonomyEntry() {
-        TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntry();
+        TaxonomyEntry taxonomyEntry = ObjectsForTests.getCompleteTaxonomyEntry();
         validateTaxonomy(taxonomyEntry);
     }
 
     @Test
     void testAddMethodsTaxonomyEntry() {
-        TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntryUsingAdd();
+        TaxonomyEntry taxonomyEntry = ObjectsForTests.getCompleteTaxonomyEntryUsingAdd();
         validateTaxonomy(taxonomyEntry);
     }
 
     @Test
     void testFromTaxonomyEntry() {
-        TaxonomyEntry taxonomyEntry = getCompleteTaxonomyEntry();
+        TaxonomyEntry taxonomyEntry = ObjectsForTests.getCompleteTaxonomyEntry();
 
         TaxonomyEntry otherEntry = new TaxonomyEntryBuilder().from(taxonomyEntry).build();
         assertEquals(taxonomyEntry.toString(), otherEntry.toString());
@@ -92,19 +89,19 @@ class TaxonomyEntryBuilderTest {
         assertTrue(taxonomyEntry.hasStatistics());
         assertEquals(
                 taxonomyEntry.getStatistics(),
-                TaxonomyStatisticsBuilderTest.getCompleteTaxonomyStatistics());
+                ObjectsForTests.getCompleteTaxonomyStatistics());
 
         assertTrue(taxonomyEntry.hasSynonyms());
         MatcherAssert.assertThat(taxonomyEntry.getSynonyms(), Matchers.contains("synonym"));
 
         assertTrue(taxonomyEntry.hasHosts());
         MatcherAssert.assertThat(
-                taxonomyEntry.getHosts(), Matchers.contains(getCompleteTaxonomy()));
+                taxonomyEntry.getHosts(), Matchers.contains(ObjectsForTests.getCompleteTaxonomy()));
 
         assertTrue(taxonomyEntry.hasLineage());
         MatcherAssert.assertThat(
                 taxonomyEntry.getLineage(),
-                Matchers.contains(TaxonomyLineageBuilderTest.getCompleteTaxonomyLineage()));
+                Matchers.contains(ObjectsForTests.getCompleteTaxonomyLineage()));
 
         assertTrue(taxonomyEntry.hasLinks());
         MatcherAssert.assertThat(taxonomyEntry.getLinks(), Matchers.contains("link"));
@@ -115,65 +112,12 @@ class TaxonomyEntryBuilderTest {
         assertTrue(taxonomyEntry.hasInactiveReason());
         assertEquals(
                 taxonomyEntry.getInactiveReason(),
-                TaxonomyInactiveReasonBuilderTest.getCompleteTaxonomyInactiveReason());
+                ObjectsForTests.getCompleteTaxonomyInactiveReason());
 
         assertTrue(taxonomyEntry.hasStrains());
         MatcherAssert.assertThat(
                 taxonomyEntry.getStrains(),
-                Matchers.contains(TaxonomyStrainBuilderTest.getCompleteTaxonomyStrain()));
+                Matchers.contains(ObjectsForTests.getCompleteTaxonomyStrain()));
     }
 
-    private TaxonomyEntry getCompleteTaxonomyEntryUsingAdd() {
-        TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
-
-        builder.addSynonyms("synonym");
-        builder.addOtherNames("otherName");
-        builder.addLineage(TaxonomyLineageBuilderTest.getCompleteTaxonomyLineage());
-        builder.addStrain(TaxonomyStrainBuilderTest.getCompleteTaxonomyStrain());
-        builder.addHost(getCompleteTaxonomy());
-        builder.addLink("link");
-
-        return builder.build();
-    }
-
-    private TaxonomyEntry getCompleteTaxonomyEntry() {
-        TaxonomyEntryBuilder builder = getTaxonomyEntryBuilderWithBasicData();
-
-        builder.synonyms(Collections.singletonList("synonym"));
-        builder.otherNames(Collections.singletonList("otherName"));
-        builder.lineage(
-                Collections.singletonList(TaxonomyLineageBuilderTest.getCompleteTaxonomyLineage()));
-        builder.strains(
-                Collections.singletonList(TaxonomyStrainBuilderTest.getCompleteTaxonomyStrain()));
-        builder.hosts(Collections.singletonList(getCompleteTaxonomy()));
-        builder.links(Collections.singletonList("link"));
-
-        return builder.build();
-    }
-
-    private TaxonomyEntryBuilder getTaxonomyEntryBuilderWithBasicData() {
-        TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
-        builder.taxonId(9606L);
-        builder.scientificName("scientificName");
-        builder.commonName("commonName");
-        builder.mnemonic("mnemonic");
-        builder.parentId(9605L);
-        builder.rank(TaxonomyRank.KINGDOM);
-        builder.hidden(true);
-        builder.active(true);
-        builder.inactiveReason(
-                TaxonomyInactiveReasonBuilderTest.getCompleteTaxonomyInactiveReason());
-        builder.statistics(TaxonomyStatisticsBuilderTest.getCompleteTaxonomyStatistics());
-        return builder;
-    }
-
-    private Taxonomy getCompleteTaxonomy() {
-        return TaxonomyBuilder.newInstance()
-                .taxonId(9606)
-                .scientificName("Homo sapiens")
-                .commonName("Human")
-                .synonyms(Collections.singletonList("Some name"))
-                .mnemonic("HUMAN")
-                .build();
-    }
 }

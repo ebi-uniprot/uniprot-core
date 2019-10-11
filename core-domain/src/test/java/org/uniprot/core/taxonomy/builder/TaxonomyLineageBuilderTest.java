@@ -1,6 +1,7 @@
 package org.uniprot.core.taxonomy.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.getCompleteTaxonomyLineage;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
@@ -49,12 +50,4 @@ class TaxonomyLineageBuilderTest {
         assertTrue(equals);
     }
 
-    static TaxonomyLineage getCompleteTaxonomyLineage() {
-        TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
-        builder.taxonId(9606L)
-                .scientificName("Scientific Name")
-                .hidden(true)
-                .rank(TaxonomyRank.FAMILY);
-        return builder.build();
-    }
 }
