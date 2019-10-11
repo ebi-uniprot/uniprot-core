@@ -1,11 +1,12 @@
 package org.uniprot.core.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
 import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,12 @@ import org.uniprot.core.uniprot.comment.builder.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class BPCPCommentImplTest {
+    MaximumVelocity mv = new MaximumVelocityImpl(3.4, "unit", "enzyme", createEvidences());
+    MichaelisConstant mc = new MichaelisConstantImpl(6.7, MichaelisConstantUnit.MICRO_MOL, "substrate", createEvidences());
+    BPCPComment impl = new BPCPCommentImpl(new AbsorptionImpl(),new KineticParametersImpl(Collections.singletonList(mv), Collections.singletonList(mc), null),
+      new BPCPCommentImpl.PhDependenceImpl(),
+      new BPCPCommentImpl.RedoxPotentialImpl(), new BPCPCommentImpl.TemperatureDependenceImpl());
+
     @Test
     void testBPCPCommentImpl() {
         Absorption absorption = createAbsorption();
@@ -109,6 +116,64 @@ class BPCPCommentImplTest {
         assertEquals(phDependence, comment.getPhDependence());
         assertEquals(redoxPotential, comment.getRedoxPotential());
         assertEquals(temperatureDependence, comment.getTemperatureDependence());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        BPCPComment obj = new BPCPCommentImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization_RedoxPotential() {
+        RedoxPotential obj = new BPCPCommentImpl.RedoxPotentialImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization_PhDependence() {
+        PhDependence obj = new BPCPCommentImpl.PhDependenceImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization_TemperatureDependence() {
+        TemperatureDependence obj = new BPCPCommentImpl.TemperatureDependenceImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        BPCPComment obj = new BPCPCommentBuilder().from(impl).build();
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
+    void completeObjectWillHaveEveryThing() {
+        assertTrue(impl.hasAbsorption());
+        assertTrue(impl.hasKineticParameters());
+        assertTrue(impl.hasPhDependence());
+        assertTrue(impl.hasRedoxPotential());
+        assertTrue(impl.hasTemperatureDependence());
+    }
+
+    @Test
+    void completeObjectToString() {
+        //todo change below expected once TRM-23041 is completed
+        String expected = "CC       Kinetic parameters:\n" +
+          "CC         KM=6.7 uM for substrate;\n" +
+          "CC         Vmax=3.4 unit enzyme;";
+        //assertEquals(expected, impl.toString());
+        assertTrue(impl.toString().contains(expected));
+    }
+
+    @Test
+    void defaultToString() {
+        String expected = "\nCC   -!- BIOPHYSICOCHEMICAL PROPERTIES:";
+        BPCPComment obj = new BPCPCommentImpl();
+        assertEquals(expected, obj.toString());
     }
 
     private Absorption createAbsorption() {

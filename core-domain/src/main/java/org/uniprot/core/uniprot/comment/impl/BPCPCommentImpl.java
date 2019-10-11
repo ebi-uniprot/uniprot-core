@@ -15,7 +15,8 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
     private RedoxPotential redoxPotential;
     private TemperatureDependence temperatureDependence;
 
-    private BPCPCommentImpl() {
+    // no arg constructor for JSON deserialization
+    BPCPCommentImpl() {
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
     }
 
@@ -178,7 +179,8 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
 
     public static class RedoxPotentialImpl extends FreeTextImpl implements RedoxPotential {
 
-        private RedoxPotentialImpl() {
+        // no arg constructor for JSON deserialization
+        RedoxPotentialImpl() {
             super(Collections.emptyList());
         }
 
@@ -189,7 +191,8 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
 
     public static class PhDependenceImpl extends FreeTextImpl implements PhDependence {
 
-        private PhDependenceImpl() {
+        // no arg constructor for JSON deserialization
+        PhDependenceImpl() {
             super(Collections.emptyList());
         }
 
@@ -201,7 +204,8 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
     public static class TemperatureDependenceImpl extends FreeTextImpl
             implements TemperatureDependence {
 
-        private TemperatureDependenceImpl() {
+        // no arg constructor for JSON deserialization
+        TemperatureDependenceImpl() {
             super(Collections.emptyList());
         }
 
