@@ -49,5 +49,4 @@ class TaxonomyLineageBuilderTest {
         boolean equals = taxonomyLineage.equals(other);
         assertTrue(equals);
     }
-
 }

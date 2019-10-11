@@ -120,5 +120,4 @@ class ProteinRecNameImplTest {
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
-
 }

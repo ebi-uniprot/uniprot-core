@@ -55,5 +55,4 @@ class TaxonomyStatisticsBuilderTest {
         boolean equals = taxonomyStatistics.equals(other);
         assertTrue(equals);
     }
-
 }

@@ -158,5 +158,4 @@ class FreeTextCommentBuilderTest {
                 IllegalArgumentException.class,
                 () -> buildFreeTextComment(CommentType.COFACTOR, texts));
     }
-
 }

@@ -6,12 +6,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public class CatalyticActivityCommentBuilder
         implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
@@ -24,7 +24,8 @@ public class CatalyticActivityCommentBuilder
     }
 
     @Override
-    public @Nonnull CatalyticActivityCommentBuilder from(@Nonnull CatalyticActivityComment instance) {
+    public @Nonnull CatalyticActivityCommentBuilder from(
+            @Nonnull CatalyticActivityComment instance) {
         physiologicalReactions.clear();
         return this.physiologicalReactions(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());

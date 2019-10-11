@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Value;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19
@@ -74,8 +74,7 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
     }
 
     public APIsoformBuilder addId(String isoformId) {
-        if(isoformId != null)
-            this.isoformIds.add(new APIsoformImpl.IsoformIdImpl(isoformId));
+        if (isoformId != null) this.isoformIds.add(new APIsoformImpl.IsoformIdImpl(isoformId));
         return this;
     }
 

@@ -29,7 +29,8 @@ class LiteratureMappedReferenceBuilderTest {
 
     @Test
     void testCompleteLiteratureEntryWithAdd() {
-        LiteratureMappedReference mappedReference = createCompleteLiteratureMappedReferenceWithAdd();
+        LiteratureMappedReference mappedReference =
+                createCompleteLiteratureMappedReferenceWithAdd();
         validateLiteratureMappedReference(mappedReference);
     }
 
@@ -50,5 +51,4 @@ class LiteratureMappedReferenceBuilderTest {
         assertTrue(mappedReference.hasUniprotAccession());
         assertEquals(mappedReference.getUniprotAccession().getValue(), "P12345");
     }
-
 }

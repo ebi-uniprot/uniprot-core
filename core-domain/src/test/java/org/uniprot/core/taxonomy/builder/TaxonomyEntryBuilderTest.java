@@ -88,8 +88,7 @@ class TaxonomyEntryBuilderTest {
 
         assertTrue(taxonomyEntry.hasStatistics());
         assertEquals(
-                taxonomyEntry.getStatistics(),
-                ObjectsForTests.getCompleteTaxonomyStatistics());
+                taxonomyEntry.getStatistics(), ObjectsForTests.getCompleteTaxonomyStatistics());
 
         assertTrue(taxonomyEntry.hasSynonyms());
         MatcherAssert.assertThat(taxonomyEntry.getSynonyms(), Matchers.contains("synonym"));
@@ -119,5 +118,4 @@ class TaxonomyEntryBuilderTest {
                 taxonomyEntry.getStrains(),
                 Matchers.contains(ObjectsForTests.getCompleteTaxonomyStrain()));
     }
-
 }

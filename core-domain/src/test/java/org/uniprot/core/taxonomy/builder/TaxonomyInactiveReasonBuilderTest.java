@@ -38,5 +38,4 @@ class TaxonomyInactiveReasonBuilderTest {
         boolean equals = inactiveReason.equals(otherInactiveReason);
         assertTrue(equals);
     }
-
 }

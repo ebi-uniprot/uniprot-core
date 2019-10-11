@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuilder, BPCPComment> {
     private Absorption absorption = null;

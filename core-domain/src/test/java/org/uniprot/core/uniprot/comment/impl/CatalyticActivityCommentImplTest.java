@@ -1,18 +1,18 @@
 package org.uniprot.core.uniprot.comment.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createPhyReactions;
+import static org.uniprot.core.ObjectsForTests.createReaction;
+
+import java.util.Collections;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
-
-import java.util.Collections;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.createPhyReactions;
-import static org.uniprot.core.ObjectsForTests.createReaction;
 
 class CatalyticActivityCommentImplTest {
     @Test
@@ -44,10 +44,10 @@ class CatalyticActivityCommentImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        CatalyticActivityComment impl = new CatalyticActivityCommentImpl(createReaction(), createPhyReactions());
+        CatalyticActivityComment impl =
+                new CatalyticActivityCommentImpl(createReaction(), createPhyReactions());
         CatalyticActivityComment obj = new CatalyticActivityCommentBuilder().from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }
-
 }

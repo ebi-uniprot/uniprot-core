@@ -74,8 +74,14 @@ class APIsoformImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        APIsoform impl = new APIsoformImpl(new APIsoformImpl.IsoformNameImpl(), Collections.emptyList(), new NoteImpl(),
-          Collections.emptyList(), Collections.emptyList(), IsoformSequenceStatus.DESCRIBED);
+        APIsoform impl =
+                new APIsoformImpl(
+                        new APIsoformImpl.IsoformNameImpl(),
+                        Collections.emptyList(),
+                        new NoteImpl(),
+                        Collections.emptyList(),
+                        Collections.emptyList(),
+                        IsoformSequenceStatus.DESCRIBED);
         APIsoform obj = new APIsoformBuilder().from(impl).build();
 
         assertTrue(impl.hasName());

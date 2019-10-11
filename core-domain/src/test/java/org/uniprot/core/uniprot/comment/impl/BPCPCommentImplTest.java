@@ -11,10 +11,17 @@ import org.uniprot.core.uniprot.comment.builder.*;
 
 class BPCPCommentImplTest {
     MaximumVelocity mv = new MaximumVelocityImpl(3.4, "unit", "enzyme", createEvidences());
-    MichaelisConstant mc = new MichaelisConstantImpl(6.7, MichaelisConstantUnit.MICRO_MOL, "substrate", createEvidences());
-    BPCPComment impl = new BPCPCommentImpl(new AbsorptionImpl(),new KineticParametersImpl(Collections.singletonList(mv), Collections.singletonList(mc), null),
-      new BPCPCommentImpl.PhDependenceImpl(),
-      new BPCPCommentImpl.RedoxPotentialImpl(), new BPCPCommentImpl.TemperatureDependenceImpl());
+    MichaelisConstant mc =
+            new MichaelisConstantImpl(
+                    6.7, MichaelisConstantUnit.MICRO_MOL, "substrate", createEvidences());
+    BPCPComment impl =
+            new BPCPCommentImpl(
+                    new AbsorptionImpl(),
+                    new KineticParametersImpl(
+                            Collections.singletonList(mv), Collections.singletonList(mc), null),
+                    new BPCPCommentImpl.PhDependenceImpl(),
+                    new BPCPCommentImpl.RedoxPotentialImpl(),
+                    new BPCPCommentImpl.TemperatureDependenceImpl());
 
     @Test
     void testBPCPCommentImpl() {
@@ -156,11 +163,12 @@ class BPCPCommentImplTest {
 
     @Test
     void completeObjectToString() {
-        //todo change below expected once TRM-23041 is completed
-        String expected = "CC       Kinetic parameters:\n" +
-          "CC         KM=6.7 uM for substrate;\n" +
-          "CC         Vmax=3.4 unit enzyme;";
-        //assertEquals(expected, impl.toString());
+        // todo change below expected once TRM-23041 is completed
+        String expected =
+                "CC       Kinetic parameters:\n"
+                        + "CC         KM=6.7 uM for substrate;\n"
+                        + "CC         Vmax=3.4 unit enzyme;";
+        // assertEquals(expected, impl.toString());
         assertTrue(impl.toString().contains(expected));
     }
 
@@ -170,5 +178,4 @@ class BPCPCommentImplTest {
         BPCPComment obj = new BPCPCommentImpl();
         assertEquals(expected, obj.toString());
     }
-
 }

@@ -146,5 +146,4 @@ class UniParcEntryBuilderTest {
         assertEquals(seqFeatures, entry3.getSequenceFeatures());
         assertEquals(taxonomies, entry3.getTaxonomies());
     }
-
 }

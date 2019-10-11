@@ -86,9 +86,7 @@ class LiteratureEntryBuilderTest {
         assertEquals(entry.getVolume(), "volume");
 
         assertTrue(entry.hasStatistics());
-        assertEquals(
-                entry.getStatistics(),
-                createCompleteLiteratureStatistics());
+        assertEquals(entry.getStatistics(), createCompleteLiteratureStatistics());
 
         assertTrue(entry.hasLiteratureMappedReferences());
         MatcherAssert.assertThat(
@@ -97,5 +95,4 @@ class LiteratureEntryBuilderTest {
 
         assertFalse(entry.isCompleteAuthorList());
     }
-
 }
