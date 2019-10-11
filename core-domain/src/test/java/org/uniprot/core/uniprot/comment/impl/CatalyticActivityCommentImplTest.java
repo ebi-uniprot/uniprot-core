@@ -1,29 +1,24 @@
 package org.uniprot.core.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprot.comment.Reaction;
+import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.ECNumber;
-import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.impl.DBCrossReferenceImpl;
-import org.uniprot.core.impl.ECNumberImpl;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
-import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
-import org.uniprot.core.uniprot.evidence.Evidence;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createPhyReactions;
+import static org.uniprot.core.ObjectsForTests.createReaction;
 
 class CatalyticActivityCommentImplTest {
     @Test
     void testAll() {
         Reaction reaction = createReaction();
-        List<PhysiologicalReaction> phyReactions = createPhyReaction();
+        List<PhysiologicalReaction> phyReactions = createPhyReactions();
         CatalyticActivityComment comment = new CatalyticActivityCommentImpl(reaction, phyReactions);
         assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
         assertEquals(reaction, comment.getReaction());
@@ -41,45 +36,18 @@ class CatalyticActivityCommentImplTest {
         assertTrue(comment.getPhysiologicalReactions().isEmpty());
     }
 
-    private List<PhysiologicalReaction> createPhyReaction() {
-        List<PhysiologicalReaction> phyReactions = new ArrayList<>();
-        List<Evidence> evidences = createEvidences();
-        phyReactions.add(
-                new PhysiologicalReactionBuilder()
-                        .directionType(PhysiologicalDirectionType.LEFT_TO_RIGHT)
-                        .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                        .databaseType(ReactionReferenceType.RHEA)
-                                        .id("RHEA:123")
-                                        .build())
-                        .evidences(evidences)
-                        .build());
-        phyReactions.add(
-                new PhysiologicalReactionBuilder()
-                        .directionType(PhysiologicalDirectionType.RIGHT_TO_LEFT)
-                        .reactionReference(
-                                new DBCrossReferenceBuilder<ReactionReferenceType>()
-                                        .databaseType(ReactionReferenceType.RHEA)
-                                        .id("RHEA:313")
-                                        .build())
-                        .evidences(evidences)
-                        .build());
-        return phyReactions;
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        CatalyticActivityComment obj = new CatalyticActivityCommentImpl();
+        assertNotNull(obj);
     }
 
-    private Reaction createReaction() {
-        List<Evidence> evidences = createEvidences();
-        String name = "some reaction";
-        List<DBCrossReference<ReactionReferenceType>> references = new ArrayList<>();
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:123"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.RHEA, "RHEA:323"));
-        references.add(new DBCrossReferenceImpl<>(ReactionReferenceType.CHEBI, "ChEBI:3243"));
-        ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
-        return new ReactionBuilder()
-                .name(name)
-                .references(references)
-                .ecNumber(ecNumber)
-                .evidences(evidences)
-                .build();
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        CatalyticActivityComment impl = new CatalyticActivityCommentImpl(createReaction(), createPhyReactions());
+        CatalyticActivityComment obj = new CatalyticActivityCommentBuilder().from(impl).build();
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
+
 }

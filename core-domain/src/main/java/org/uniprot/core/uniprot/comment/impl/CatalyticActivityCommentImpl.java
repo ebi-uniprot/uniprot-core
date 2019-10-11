@@ -15,7 +15,8 @@ public class CatalyticActivityCommentImpl extends CommentImpl implements Catalyt
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions;
 
-    private CatalyticActivityCommentImpl() {
+    // no arg constructor for JSON deserialization
+    CatalyticActivityCommentImpl() {
         super(CommentType.CATALYTIC_ACTIVITY);
         this.physiologicalReactions = Collections.emptyList();
     }
@@ -24,11 +25,7 @@ public class CatalyticActivityCommentImpl extends CommentImpl implements Catalyt
             Reaction reaction, List<PhysiologicalReaction> physiologicalReactions) {
         super(CommentType.CATALYTIC_ACTIVITY);
         this.reaction = reaction;
-        if ((physiologicalReactions == null) || physiologicalReactions.isEmpty()) {
-            this.physiologicalReactions = Collections.emptyList();
-        } else {
-            this.physiologicalReactions = Collections.unmodifiableList(physiologicalReactions);
-        }
+        this.physiologicalReactions = Utils.unmodifiableList(physiologicalReactions);
     }
 
     @Override

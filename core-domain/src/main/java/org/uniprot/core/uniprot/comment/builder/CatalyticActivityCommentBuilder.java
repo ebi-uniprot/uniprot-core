@@ -11,18 +11,20 @@ import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
 
+import javax.annotation.Nonnull;
+
 public class CatalyticActivityCommentBuilder
         implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();
 
     @Override
-    public CatalyticActivityComment build() {
+    public @Nonnull CatalyticActivityComment build() {
         return new CatalyticActivityCommentImpl(reaction, physiologicalReactions);
     }
 
     @Override
-    public CatalyticActivityCommentBuilder from(CatalyticActivityComment instance) {
+    public @Nonnull CatalyticActivityCommentBuilder from(@Nonnull CatalyticActivityComment instance) {
         physiologicalReactions.clear();
         return this.physiologicalReactions(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());
