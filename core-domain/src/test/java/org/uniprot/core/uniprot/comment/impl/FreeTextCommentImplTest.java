@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithEvidences;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 
 import java.util.List;
 

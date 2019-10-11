@@ -2,8 +2,8 @@ package org.uniprot.core.uniprot.comment.builder;
 
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.Arrays;
 import java.util.List;

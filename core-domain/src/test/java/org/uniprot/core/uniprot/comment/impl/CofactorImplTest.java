@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.Collections;
 import java.util.List;

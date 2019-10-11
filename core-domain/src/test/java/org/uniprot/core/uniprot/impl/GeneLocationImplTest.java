@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.List;
 

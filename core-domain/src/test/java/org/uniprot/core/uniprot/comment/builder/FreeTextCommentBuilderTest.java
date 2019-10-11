@@ -4,7 +4,7 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 
 import java.util.ArrayList;
 import java.util.List;

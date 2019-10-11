@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.feature.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidence;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidence;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.Collections;
 

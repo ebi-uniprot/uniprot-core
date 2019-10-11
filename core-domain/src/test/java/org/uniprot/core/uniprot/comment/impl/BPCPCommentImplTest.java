@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidenceValuesWithoutEvidences;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
-import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
+import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
+import static org.uniprot.core.ObjectsForTests.createNote;
 
 import java.util.ArrayList;
 import java.util.Collections;

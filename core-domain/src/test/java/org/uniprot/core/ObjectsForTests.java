@@ -3,18 +3,21 @@ package org.uniprot.core;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.impl.ECNumberImpl;
-import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
-import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
-import org.uniprot.core.uniprot.comment.Reaction;
-import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
 import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.evidence.EvidenceCode;
+import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import static java.util.Collections.emptyList;
 
 public class ObjectsForTests {
   public static Reaction createReaction() {
@@ -61,5 +64,90 @@ public class ObjectsForTests {
         .evidences(evidences)
         .build());
     return phyReactions;
+  }
+
+  public static Note createNote() {
+      List<EvidencedValue> texts = new ArrayList<>();
+      List<Evidence> evidences = new ArrayList<>();
+      evidences.add(
+              new EvidenceBuilder()
+                      .databaseName("Ensembl")
+                      .databaseId("ENSP0001324")
+                      .evidenceCode(EvidenceCode.ECO_0000313)
+                      .build());
+      evidences.add(
+              new EvidenceBuilder()
+                      .databaseName("PIRNR")
+                      .databaseId("PIRNR001361")
+                      .evidenceCode(EvidenceCode.ECO_0000256)
+                      .build());
+      texts.add(new EvidencedValueBuilder("value 1", evidences).build());
+      texts.add(new EvidencedValueBuilder("value2", emptyList()).build());
+      return new NoteBuilder(texts).build();
+  }
+
+  public static List<IsoformName> createSynonyms() {
+      List<IsoformName> synonyms = new ArrayList<>();
+      List<Evidence> evidences = createEvidences();
+      synonyms.add(new IsoformNameBuilder("Syn 1", evidences).build());
+      synonyms.add(new IsoformNameBuilder("Syn 2", evidences).build());
+      return synonyms;
+  }
+
+  public static Evidence createEvidence() {
+      return createEvidences().get(0);
+  }
+
+  public static List<Evidence> createEvidences() {
+      List<Evidence> evidences = new ArrayList<>();
+      evidences.add(
+              new EvidenceBuilder()
+                      .databaseName("PROSITE-ProRule")
+                      .databaseId("PRU10028")
+                      .evidenceCode(EvidenceCode.ECO_0000255)
+                      .build());
+      evidences.add(
+              new EvidenceBuilder()
+                      .databaseName("PIRNR")
+                      .databaseId("PIRNR001361")
+                      .evidenceCode(EvidenceCode.ECO_0000256)
+                      .build());
+      return evidences;
+  }
+
+  public static List<EvidencedValue> createEvidenceValuesWithoutEvidences() {
+      List<EvidencedValue> evidencedValues = new ArrayList<>();
+      evidencedValues.add(new EvidencedValueBuilder("value1", emptyList()).build());
+      evidencedValues.add(new EvidencedValueBuilder("value2", emptyList()).build());
+      return evidencedValues;
+  }
+
+  public static List<EvidencedValue> createEvidenceValuesWithEvidences() {
+      List<Evidence> evidences1 = new ArrayList<>();
+      evidences1.add(
+              new EvidenceBuilder()
+                      .databaseName("Ensembl")
+                      .databaseId("ENSP0001324")
+                      .evidenceCode(EvidenceCode.ECO_0000313)
+                      .build());
+      evidences1.add(
+              new EvidenceBuilder()
+                      .databaseName("PIRNR")
+                      .databaseName("PIRNR001361")
+                      .evidenceCode(EvidenceCode.ECO_0000256)
+                      .build());
+
+      List<Evidence> evidences2 = new ArrayList<>();
+      evidences1.add(
+              new EvidenceBuilder()
+                      .databaseName("Ensembl")
+                      .databaseId("ENSP0001325")
+                      .evidenceCode(EvidenceCode.ECO_0000313)
+                      .build());
+
+      List<EvidencedValue> evidencedValues = new ArrayList<>();
+      evidencedValues.add(new EvidencedValueBuilder("value1", evidences1).build());
+      evidencedValues.add(new EvidencedValueBuilder("value2", evidences2).build());
+      return evidencedValues;
   }
 }

@@ -2,7 +2,7 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import static java.util.Collections.emptyList;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.ArrayList;
 import java.util.Arrays;

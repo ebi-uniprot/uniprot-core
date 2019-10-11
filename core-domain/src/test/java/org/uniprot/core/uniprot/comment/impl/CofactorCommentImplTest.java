@@ -2,8 +2,8 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.uniprot.core.uniprot.EvidenceHelper.createEvidences;
-import static org.uniprot.core.uniprot.comment.impl.ImplTestHelper.createNote;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
+import static org.uniprot.core.ObjectsForTests.createNote;
 
 import java.util.Arrays;
 import java.util.Collections;
