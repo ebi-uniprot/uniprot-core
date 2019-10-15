@@ -9,6 +9,7 @@ import java.util.List;
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.gene.Gene;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.*;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.description.ProteinDescription;
@@ -100,6 +101,10 @@ public class UniProtEntryBuilder {
         ActiveEntryBuilder sequence(Sequence sequence);
 
         ActiveEntryBuilder internalSection(InternalSection internalSection);
+        
+        ActiveEntryBuilder addLineage(TaxonomyLineage lineage);
+
+        ActiveEntryBuilder lineages(List<TaxonomyLineage> lineages);
     }
 
     public interface InactiveEntryBuilder extends Builder<EntryBuilder, UniProtEntry> {
@@ -128,8 +133,8 @@ public class UniProtEntryBuilder {
         private Sequence sequence = null;
         private InternalSection internalSection = null;
         private EntryInactiveReason inactiveReason = null;
-        private boolean active = false;
-
+        private boolean active = true;
+        private List<TaxonomyLineage> lineages;
         private EntryBuilder(UniProtAccession primaryAccession) {
             this.primaryAccession = primaryAccession;
         }
@@ -319,6 +324,18 @@ public class UniProtEntryBuilder {
             this.internalSection = internalSection;
             return this;
         }
+        
+        @Override
+        public ActiveEntryBuilder addLineage(TaxonomyLineage lineage) {
+            addOrIgnoreNull(lineage, this.lineages);
+            return this;
+        }
+
+        @Override
+        public ActiveEntryBuilder lineages(List<TaxonomyLineage> lineages) {
+            this.lineages = modifiableList(lineages);
+            return this;
+        }
 
         @Override
         public UniProtEntry build() {
@@ -342,6 +359,7 @@ public class UniProtEntryBuilder {
                     databaseCrossReferences,
                     sequence,
                     internalSection,
+                    lineages,
                     inactiveReason);
         }
 
@@ -367,6 +385,7 @@ public class UniProtEntryBuilder {
             this.internalSection = instance.getInternalSection();
             this.inactiveReason = instance.getInactiveReason();
             this.annotationScore = instance.getAnnotationScore();
+            this.lineages = instance.getLineages();
             return this;
         }
     }
