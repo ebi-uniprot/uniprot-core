@@ -6,12 +6,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.CofactorCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public final class CofactorCommentBuilder
         implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {

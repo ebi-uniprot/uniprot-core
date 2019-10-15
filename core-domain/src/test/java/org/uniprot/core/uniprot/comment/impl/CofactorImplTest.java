@@ -16,7 +16,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorImplTest {
     private final DBCrossReference<CofactorReferenceType> reference =
-      new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "ChEBI:213");
+            new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "ChEBI:213");
+
     @Test
     void testCofactorImpl() {
         String name = "Some cofactor";

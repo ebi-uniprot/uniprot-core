@@ -16,7 +16,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorCommentBuilderTest {
     private final DBCrossReference<CofactorReferenceType> reference =
-      new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+            new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
 
     @Test
     void testNewInstance() {
