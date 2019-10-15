@@ -15,6 +15,9 @@ import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorCommentBuilderTest {
+    private final DBCrossReference<CofactorReferenceType> reference =
+      new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+
     @Test
     void testNewInstance() {
         CofactorCommentBuilder builder1 = new CofactorCommentBuilder();
@@ -38,8 +41,6 @@ class CofactorCommentBuilderTest {
     @Test
     void testSetCofactors() {
         String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
         List<Cofactor> cofactors = singletonList(cofactor);
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
@@ -55,8 +56,6 @@ class CofactorCommentBuilderTest {
     @Test
     void testSetNote() {
         String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
@@ -85,12 +84,42 @@ class CofactorCommentBuilderTest {
     @Test
     void testCreateCofactor() {
         String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
         Cofactor cofactor = createCofactor(name, reference, createEvidences());
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(2, cofactor.getEvidences().size());
+    }
+
+    @Test
+    void canAddSingleCofactor() {
+        Cofactor cofactor = createCofactor("name", reference, createEvidences());
+        CofactorComment obj = new CofactorCommentBuilder().addCofactor(cofactor).build();
+        assertNotNull(obj.getCofactors());
+        assertFalse(obj.getCofactors().isEmpty());
+        assertTrue(obj.hasCofactors());
+    }
+
+    @Test
+    void nullCofactor_willBeIgnore() {
+        CofactorComment obj = new CofactorCommentBuilder().addCofactor(null).build();
+        assertNotNull(obj.getCofactors());
+        assertTrue(obj.getCofactors().isEmpty());
+        assertFalse(obj.hasCofactors());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        CofactorComment obj = new CofactorCommentBuilder().build();
+        CofactorCommentBuilder builder = new CofactorCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        CofactorComment obj = new CofactorCommentBuilder().build();
+        CofactorComment obj2 = new CofactorCommentBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
     }
 
     private Cofactor createCofactor(

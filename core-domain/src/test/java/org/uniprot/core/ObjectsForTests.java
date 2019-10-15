@@ -495,4 +495,24 @@ public class ObjectsForTests {
                 .completeProteomeCount(2)
                 .build();
     }
+
+    public static List<Cofactor> cofactors() {
+        DBCrossReference<CofactorReferenceType> reference =
+          new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
+        Cofactor cofactor =
+          new CofactorBuilder()
+            .name("cofactor 1")
+            .reference(reference)
+            .evidences(createEvidences())
+            .build();
+        DBCrossReference<CofactorReferenceType> reference2 =
+          new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:31324");
+        Cofactor cofactor2 =
+          new CofactorBuilder()
+            .name("cofactor 2")
+            .reference(reference2)
+            .evidences(createEvidences())
+            .build();
+        return Arrays.asList(cofactor, cofactor2);
+    }
 }

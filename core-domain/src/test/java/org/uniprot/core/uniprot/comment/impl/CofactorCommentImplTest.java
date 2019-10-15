@@ -1,9 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.uniprot.core.ObjectsForTests.createEvidences;
-import static org.uniprot.core.ObjectsForTests.createNote;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -79,37 +77,16 @@ class CofactorCommentImplTest {
 
     @Test
     void testCofactorCommentImplNoNote() {
-        String name = "someName";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:324");
-        Cofactor cofactor =
-                new CofactorBuilder()
-                        .name(name)
-                        .reference(reference)
-                        .evidences(createEvidences())
-                        .build();
-        DBCrossReference<CofactorReferenceType> reference2 =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "CHEBI:31324");
-        Cofactor cofactor2 =
-                new CofactorBuilder()
-                        .name("Some name")
-                        .reference(reference2)
-                        .evidences(createEvidences())
-                        .build();
-        ;
-        List<Cofactor> cofactors = Arrays.asList(cofactor, cofactor2);
-
         Note note = null;
         String molecule = "Some molecule";
         CofactorComment comment =
                 new CofactorCommentBuilder()
                         .molecule(molecule)
-                        .cofactors(cofactors)
+                        .cofactors(cofactors())
                         .note(note)
                         .build();
         assertEquals(molecule, comment.getMolecule());
         assertEquals(2, comment.getCofactors().size());
-        assertEquals(cofactor2, comment.getCofactors().get(1));
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
     }
@@ -132,5 +109,25 @@ class CofactorCommentImplTest {
         assertNotNull(comment.getNote());
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.COFACTOR, comment.getCommentType());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        CofactorComment obj = new CofactorCommentImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        CofactorComment impl = new CofactorCommentImpl("mol", cofactors(),createNote());
+        CofactorComment obj = new CofactorCommentBuilder().from(impl).build();
+
+        assertTrue(impl.isValid());
+        assertTrue(impl.hasCofactors());
+        assertTrue(impl.hasMolecule());
+        assertTrue(impl.hasNote());
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }

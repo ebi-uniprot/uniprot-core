@@ -11,18 +11,20 @@ import org.uniprot.core.uniprot.comment.CofactorComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.CofactorCommentImpl;
 
+import javax.annotation.Nonnull;
+
 public final class CofactorCommentBuilder
         implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {
     private String molecule;
     private List<Cofactor> cofactors = new ArrayList<>();
     private Note note;
 
-    public CofactorComment build() {
+    public @Nonnull CofactorComment build() {
         return new CofactorCommentImpl(molecule, cofactors, note);
     }
 
     @Override
-    public CofactorCommentBuilder from(CofactorComment instance) {
+    public @Nonnull CofactorCommentBuilder from(@Nonnull CofactorComment instance) {
         cofactors.clear();
         return this.cofactors(instance.getCofactors())
                 .molecule(instance.getMolecule())
@@ -47,17 +49,5 @@ public final class CofactorCommentBuilder
     public CofactorCommentBuilder note(Note note) {
         this.note = note;
         return this;
-    }
-
-    public String getMolecule() {
-        return molecule;
-    }
-
-    public List<Cofactor> getCofactors() {
-        return cofactors;
-    }
-
-    public Note getNote() {
-        return note;
     }
 }

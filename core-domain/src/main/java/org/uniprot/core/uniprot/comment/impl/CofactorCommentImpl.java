@@ -16,7 +16,8 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     private List<Cofactor> cofactors;
     private Note note;
 
-    private CofactorCommentImpl() {
+    // no arg constructor for JSON deserialization
+    CofactorCommentImpl() {
         this(null, null, null);
     }
 
@@ -24,11 +25,7 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         super(CommentType.COFACTOR);
         if (molecule == null || molecule.isEmpty()) this.molecule = null;
         else this.molecule = molecule;
-        if ((cofactors == null) || cofactors.isEmpty()) {
-            this.cofactors = Collections.emptyList();
-        } else {
-            this.cofactors = Collections.unmodifiableList(cofactors);
-        }
+        this.cofactors = Utils.unmodifiableList(cofactors);
         this.note = note;
     }
 
