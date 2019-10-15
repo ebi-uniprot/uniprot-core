@@ -13,6 +13,8 @@ import org.uniprot.core.uniprot.comment.CofactorReferenceType;
 import org.uniprot.core.uniprot.comment.impl.CofactorImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -44,12 +46,12 @@ public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor>
     }
 
     @Override
-    public Cofactor build() {
+    public @Nonnull Cofactor build() {
         return new CofactorImpl(name, cofactorReference, evidences);
     }
 
     @Override
-    public CofactorBuilder from(Cofactor instance) {
+    public @Nonnull CofactorBuilder from(@Nonnull Cofactor instance) {
         evidences.clear();
         return this.name(instance.getName())
                 .evidences(instance.getEvidences())

@@ -16,7 +16,8 @@ public class CofactorImpl implements Cofactor {
     private List<Evidence> evidences;
     private DBCrossReference<CofactorReferenceType> cofactorReference;
 
-    private CofactorImpl() {
+    // no arg constructor for JSON deserialization
+    CofactorImpl() {
         this.evidences = Collections.emptyList();
     }
 

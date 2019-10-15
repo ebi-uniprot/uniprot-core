@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.Collections;
@@ -15,11 +15,11 @@ import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CofactorImplTest {
+    private final DBCrossReference<CofactorReferenceType> reference =
+      new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "ChEBI:213");
     @Test
     void testCofactorImpl() {
         String name = "Some cofactor";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "ChEBI:213");
         List<Evidence> evidences = createEvidences();
         Cofactor cofactor =
                 new CofactorBuilder()
@@ -35,13 +35,29 @@ class CofactorImplTest {
     @Test
     void testCofactorImplNoEvidence() {
         String name = "Some cofactor";
-        DBCrossReference<CofactorReferenceType> reference =
-                new DBCrossReferenceImpl<>(CofactorReferenceType.CHEBI, "ChEBI:213");
         List<Evidence> evidences = Collections.emptyList();
         Cofactor cofactor =
                 new CofactorBuilder().name(name).reference(reference).evidences(evidences).build();
         assertEquals(name, cofactor.getName());
         assertEquals(reference, cofactor.getCofactorReference());
         assertEquals(evidences, cofactor.getEvidences());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Cofactor obj = new CofactorImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        Cofactor impl = new CofactorImpl("abc", reference, createEvidences());
+        Cofactor obj = new CofactorBuilder().from(impl).build();
+
+        assertTrue(impl.hasName());
+        assertTrue(impl.hasCofactorReference());
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }
