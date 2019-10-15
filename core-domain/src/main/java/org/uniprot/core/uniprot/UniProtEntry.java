@@ -6,6 +6,7 @@ import java.util.List;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.description.ProteinDescription;
@@ -104,4 +105,6 @@ public interface UniProtEntry extends Serializable {
     boolean hasDatabaseCrossReferences();
 
     List<Evidence> gatherEvidences();
+    
+    List<TaxonomyLineage> getLineages();
 }

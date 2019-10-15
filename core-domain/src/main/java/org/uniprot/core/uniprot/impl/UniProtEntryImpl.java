@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.*;
 import org.uniprot.core.uniprot.comment.APIsoform;
 import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
@@ -69,6 +70,7 @@ public class UniProtEntryImpl implements UniProtEntry {
 
     private InternalSection internalSection;
     private EntryInactiveReason inactiveReason;
+    private List<TaxonomyLineage> lineages;
 
     private UniProtEntryImpl() {
         secondaryAccessions = Collections.emptyList();
@@ -80,6 +82,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         features = Collections.emptyList();
         geneLocations = Collections.emptyList();
         keywords = Collections.emptyList();
+        lineages = Collections.emptyList();
     }
 
     public UniProtEntryImpl(
@@ -106,9 +109,10 @@ public class UniProtEntryImpl implements UniProtEntry {
                 null,
                 null,
                 null,
+                null,
                 inactiveReason);
     }
-
+    
     public UniProtEntryImpl(
             UniProtEntryType entryType,
             UniProtAccession primaryAccession,
@@ -128,7 +132,9 @@ public class UniProtEntryImpl implements UniProtEntry {
             List<UniProtReference> references,
             List<UniProtDBCrossReference> databaseCrossReferences,
             Sequence sequence,
-            InternalSection internalSection) {
+            InternalSection internalSection,
+            List<TaxonomyLineage> lineages
+            ) {
         this(
                 entryType,
                 primaryAccession,
@@ -149,8 +155,11 @@ public class UniProtEntryImpl implements UniProtEntry {
                 databaseCrossReferences,
                 sequence,
                 internalSection,
+                lineages,
                 null);
     }
+    
+   
 
     public UniProtEntryImpl(
             UniProtEntryType entryType,
@@ -172,6 +181,7 @@ public class UniProtEntryImpl implements UniProtEntry {
             List<UniProtDBCrossReference> databaseCrossReferences,
             Sequence sequence,
             InternalSection internalSection,
+            List<TaxonomyLineage> lineages,
             EntryInactiveReason inactiveReason) {
         this.entryType = entryType;
         this.primaryAccession = primaryAccession;
@@ -192,6 +202,7 @@ public class UniProtEntryImpl implements UniProtEntry {
         this.databaseCrossReferences = Utils.modifiableList(databaseCrossReferences);
         this.sequence = sequence;
         this.internalSection = internalSection;
+        this.lineages = Utils.unmodifiableList(lineages);
         this.inactiveReason = inactiveReason;
     }
 
@@ -455,6 +466,11 @@ public class UniProtEntryImpl implements UniProtEntry {
                 sequence,
                 internalSection,
                 inactiveReason);
+    }
+    
+    @Override
+    public List<TaxonomyLineage> getLineages(){
+    	return lineages;
     }
 
     @Override
