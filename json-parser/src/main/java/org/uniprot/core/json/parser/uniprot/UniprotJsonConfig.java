@@ -24,6 +24,8 @@ import org.uniprot.core.json.parser.uniprot.serializer.IsoformIdImplSerializer;
 import org.uniprot.core.json.parser.uniprot.serializer.UniProtAccessionSerializer;
 import org.uniprot.core.json.parser.uniprot.serializer.UniProtIdSerializer;
 import org.uniprot.core.json.parser.uniprot.serializer.UniProtXDbTypeSerializer;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.impl.TaxonomyLineageImpl;
 import org.uniprot.core.uniprot.*;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.impl.*;
@@ -222,6 +224,8 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
         mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
         mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
+        
+        mod.addAbstractTypeMapping(TaxonomyLineage.class, TaxonomyLineageImpl.class);
 
         objMapper.registerModule(mod);
 

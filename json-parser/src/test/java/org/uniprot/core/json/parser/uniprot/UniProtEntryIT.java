@@ -11,6 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.comment.*;
+import org.uniprot.core.taxonomy.TaxonomyLineage;
+import org.uniprot.core.taxonomy.TaxonomyRank;
+import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
 import org.uniprot.core.uniprot.*;
 import org.uniprot.core.uniprot.builder.EntryInactiveReasonBuilder;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
@@ -92,6 +95,7 @@ class UniProtEntryIT {
                                 Collections.singletonList(
                                         UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
                         .sequence(SequenceTest.getSequence())
+                        .lineages(getCompleteTaxonomyLineage())
                         .build();
 
         ValidateJson.verifyJsonRoundTripParser(entry);
@@ -104,5 +108,14 @@ class UniProtEntryIT {
         } catch (Exception e) {
             fail(e.getMessage());
         }
+    }
+    
+    List<TaxonomyLineage> getCompleteTaxonomyLineage() {
+        TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
+        builder.taxonId(9606L)
+                .scientificName("Scientific Name")
+                .hidden(true)
+                .rank(TaxonomyRank.FAMILY);
+        return Collections.singletonList(builder.build());
     }
 }
