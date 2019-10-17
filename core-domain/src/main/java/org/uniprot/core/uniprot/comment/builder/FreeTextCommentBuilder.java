@@ -12,13 +12,15 @@ import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
+import javax.annotation.Nonnull;
+
 public class FreeTextCommentBuilder
         implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
     private CommentType commentType;
     private List<EvidencedValue> texts = new ArrayList<>();
 
     @Override
-    public FreeTextComment build() {
+    public @Nonnull FreeTextComment build() {
         if (!isFreeTextCommentType(commentType)) {
             throw new IllegalArgumentException(commentType + " is not free text comment");
         }
@@ -26,7 +28,7 @@ public class FreeTextCommentBuilder
     }
 
     @Override
-    public FreeTextCommentBuilder from(FreeTextComment instance) {
+    public @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
         texts.clear();
         return this.commentType(instance.getCommentType()).texts(instance.getTexts());
     }
