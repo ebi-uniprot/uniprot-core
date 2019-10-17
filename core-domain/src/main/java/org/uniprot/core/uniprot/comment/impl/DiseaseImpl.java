@@ -20,7 +20,8 @@ public class DiseaseImpl implements Disease {
     private DBCrossReference<DiseaseReferenceType> reference;
     private List<Evidence> evidences;
 
-    private DiseaseImpl() {
+    // no arg constructor for JSON deserialization
+    DiseaseImpl() {
         this(null, null, null, null, null, null);
     }
 
