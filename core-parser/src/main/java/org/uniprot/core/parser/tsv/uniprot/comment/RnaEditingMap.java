@@ -30,7 +30,7 @@ public class RnaEditingMap implements NamedValueMap {
                     reComments.stream()
                             .map(this::mapRnaEditingCommentToString)
                             .collect(Collectors.joining(";  "));
-            rnaEditingCommentMap.put("cc:rna_editing", result);
+            rnaEditingCommentMap.put("cc_rna_editing", result);
         }
         return rnaEditingCommentMap;
     }

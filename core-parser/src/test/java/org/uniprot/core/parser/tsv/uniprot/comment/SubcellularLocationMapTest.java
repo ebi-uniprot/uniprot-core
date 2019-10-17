@@ -31,7 +31,7 @@ class SubcellularLocationMapTest {
         SubcellularLocationMap subcellularLocationMap = new SubcellularLocationMap(sclComments);
         Map<String, String> mappedCelularLocation = subcellularLocationMap.attributeValues();
         assertNotNull(mappedCelularLocation);
-        String value = mappedCelularLocation.get("cc:subcellular_location");
+        String value = mappedCelularLocation.get("cc_subcellular_location");
         String expectedValue =
                 "SUBCELLULAR LOCATION: Capsid protein C: Virion {ECO:0000250|UniProtKB:P17763}. "
                         + "Host nucleus {ECO:0000250|UniProtKB:P17763}. Host cytoplasm, host perinuclear region {ECO:0000250|UniProtKB:P17763}. "
@@ -58,7 +58,7 @@ class SubcellularLocationMapTest {
         SubcellularLocationMap subcellularLocationMap = new SubcellularLocationMap(sclComments);
         Map<String, String> mappedCelularLocation = subcellularLocationMap.attributeValues();
         assertNotNull(mappedCelularLocation);
-        String value = mappedCelularLocation.get("cc:subcellular_location");
+        String value = mappedCelularLocation.get("cc_subcellular_location");
         String expectedValue =
                 "SUBCELLULAR LOCATION: Non-structural protein 1: Secreted {ECO:0000250|UniProtKB:P17763}. "
                         + "Host endoplasmic reticulum membrane; Peripheral membrane protein; "
@@ -109,7 +109,7 @@ class SubcellularLocationMapTest {
         SubcellularLocationMap subcellularLocationMap = new SubcellularLocationMap(sclComments);
         Map<String, String> mappedCelularLocation = subcellularLocationMap.attributeValues();
         assertNotNull(mappedCelularLocation);
-        String value = mappedCelularLocation.get("cc:subcellular_location");
+        String value = mappedCelularLocation.get("cc_subcellular_location");
         String expectedValue =
                 "SUBCELLULAR LOCATION: Non-structural protein 2A: Host endoplasmic reticulum membrane "
                         + "{ECO:0000250|UniProtKB:P17763}; Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}.; "

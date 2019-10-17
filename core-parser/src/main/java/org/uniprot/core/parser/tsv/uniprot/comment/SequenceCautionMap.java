@@ -32,7 +32,7 @@ public class SequenceCautionMap implements NamedValueMap {
                     scComments.stream()
                             .map(this::sequenceCautionToString)
                             .collect(Collectors.joining("  "));
-            sequenceCautionMap.put("cc:sequence_caution", "SEQUENCE CAUTION:  " + sequenceCautions);
+            sequenceCautionMap.put("cc_sequence_caution", "SEQUENCE CAUTION:  " + sequenceCautions);
         }
         return sequenceCautionMap;
     }

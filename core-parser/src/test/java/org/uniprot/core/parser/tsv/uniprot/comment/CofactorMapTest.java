@@ -37,7 +37,7 @@ class CofactorMapTest {
         CofactorMap cofactorMap = new CofactorMap(cofactorComments);
         Map<String, String> mappedCofactor = cofactorMap.attributeValues();
         assertNotNull(mappedCofactor);
-        String value = mappedCofactor.get("cc:cofactor");
+        String value = mappedCofactor.get("cc_cofactor");
         String expectedValue =
                 "COFACTOR: Name=Mg(2+); Xref=ChEBI:CHEBI:18420; "
                         + "Evidence={ECO:0000255|PROSITE-ProRule:PRU00405}; "
@@ -65,7 +65,7 @@ class CofactorMapTest {
         CofactorMap cofactorMap = new CofactorMap(cofactorComments);
         Map<String, String> mappedCofactor = cofactorMap.attributeValues();
         assertNotNull(mappedCofactor);
-        String value = mappedCofactor.get("cc:cofactor");
+        String value = mappedCofactor.get("cc_cofactor");
         String expectedValue =
                 "COFACTOR: Serine protease NS3: Name=Zn(2+); Xref=ChEBI:CHEBI:29105; "
                         + "Evidence={ECO:0000269|PubMed:9060645}; Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";

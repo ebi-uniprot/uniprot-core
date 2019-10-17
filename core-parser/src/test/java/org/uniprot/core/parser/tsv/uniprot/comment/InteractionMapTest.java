@@ -33,7 +33,7 @@ class InteractionMapTest {
         InteractionMap interactionMap = new InteractionMap(interactionComments);
         Map<String, String> mappedInteraction = interactionMap.attributeValues();
         assertNotNull(mappedInteraction);
-        String value = mappedInteraction.get("cc:interaction");
+        String value = mappedInteraction.get("cc_interaction");
         String expectedValue = "P03259; P49711; Q8JSK4; Q9UJU5; P63158; O95983; O00308";
         assertEquals(expectedValue, value);
     }
@@ -55,7 +55,7 @@ class InteractionMapTest {
         InteractionMap interactionMap = new InteractionMap(interactionComments);
         Map<String, String> mappedInteraction = interactionMap.attributeValues();
         assertNotNull(mappedInteraction);
-        String value = mappedInteraction.get("cc:interaction");
+        String value = mappedInteraction.get("cc_interaction");
         String expectedValue = "Itself; P09938; P49723; Q04964";
         assertEquals(expectedValue, value);
     }

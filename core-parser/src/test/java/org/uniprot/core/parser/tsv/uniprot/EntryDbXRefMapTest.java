@@ -33,7 +33,7 @@ class EntryDbXRefMapTest {
         EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(1, result.size());
-        verify("AY189288;AK022746;", "dr:embl", result);
+        verify("AY189288;AK022746;", "dr_embl", result);
     }
 
     @Test
@@ -66,8 +66,8 @@ class EntryDbXRefMapTest {
         EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
-        verify("AY189288;AK022746;", "dr:embl", result);
-        verify("ENST00000330899 [P31689-1];ENST00000439351;", "dr:ensembl", result);
+        verify("AY189288;AK022746;", "dr_embl", result);
+        verify("ENST00000330899 [P31689-1];ENST00000439351;", "dr_ensembl", result);
     }
 
     @Test
@@ -83,8 +83,8 @@ class EntryDbXRefMapTest {
         EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(3, result.size());
-        verify("2LO1;2M6Y;5TKG;", "dr:pdb", result);
-        verify("P31689;", "dr:smr", result);
+        verify("2LO1;2M6Y;5TKG;", "dr_pdb", result);
+        verify("P31689;", "dr_smr", result);
         String pdb3d = "NMR spectroscopy (2); X-ray crystallography (1)";
         verify(pdb3d, "3d", result);
     }
@@ -105,8 +105,8 @@ class EntryDbXRefMapTest {
         EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
-        verify("P31689;", "dr:intact", result);
-        verify("9606.ENSP00000369127;", "dr:string", result);
+        verify("P31689;", "dr_intact", result);
+        verify("9606.ENSP00000369127;", "dr_string", result);
     }
 
     @Test
@@ -120,8 +120,8 @@ class EntryDbXRefMapTest {
         EntryDbXRefMap dl = new EntryDbXRefMap(xrefs);
         Map<String, String> result = dl.attributeValues();
         assertEquals(2, result.size());
-        verify("CHEMBL2189122;", "dr:chembl", result);
-        verify("SLP:000000475;", "dr:swisslipids", result);
+        verify("CHEMBL2189122;", "dr_chembl", result);
+        verify("SLP:000000475;", "dr_swisslipids", result);
     }
 
     @Test

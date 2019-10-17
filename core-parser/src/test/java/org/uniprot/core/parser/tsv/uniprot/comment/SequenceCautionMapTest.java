@@ -28,7 +28,7 @@ class SequenceCautionMapTest {
         SequenceCautionMap sequenceCautionMap = new SequenceCautionMap(sequenceCautionComments);
         Map<String, String> mappedSequenceCaution = sequenceCautionMap.attributeValues();
         assertNotNull(mappedSequenceCaution);
-        String value = mappedSequenceCaution.get("cc:sequence_caution");
+        String value = mappedSequenceCaution.get("cc_sequence_caution");
         String expectedValue =
                 "SEQUENCE CAUTION:  Sequence=BAB43866.1; Type=Miscellaneous discrepancy; Note=Chimeric cDNA. "
                         + "It is a chimera between Dox-A3 and PPO2.; Evidence={ECO:0000305};";
@@ -53,7 +53,7 @@ class SequenceCautionMapTest {
         SequenceCautionMap sequenceCautionMap = new SequenceCautionMap(sequenceCautionComments);
         Map<String, String> mappedSequenceCaution = sequenceCautionMap.attributeValues();
         assertNotNull(mappedSequenceCaution);
-        String value = mappedSequenceCaution.get("cc:sequence_caution");
+        String value = mappedSequenceCaution.get("cc_sequence_caution");
         String expectedValue =
                 "SEQUENCE CAUTION:  Sequence=CAB59730.1; Type=Frameshift; Positions=76, 138; Evidence={ECO:0000305};  "
                         + "Sequence=AAA42785.1; Type=Erroneous gene model prediction; Evidence={ECO:0000305};  "

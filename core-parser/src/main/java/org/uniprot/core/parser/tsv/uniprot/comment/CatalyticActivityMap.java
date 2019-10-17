@@ -32,7 +32,7 @@ public class CatalyticActivityMap implements NamedValueMap {
                             .map(this::getCatalyticActivityString)
                             .collect(Collectors.joining(" "));
 
-            catalyticActivityMap.put("cc:catalytic_activity", catalyticActivityString);
+            catalyticActivityMap.put("cc_catalytic_activity", catalyticActivityString);
         }
         return catalyticActivityMap;
     }

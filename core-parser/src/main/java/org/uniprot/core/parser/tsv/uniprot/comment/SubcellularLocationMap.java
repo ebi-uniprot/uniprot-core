@@ -32,7 +32,7 @@ public class SubcellularLocationMap implements NamedValueMap {
                     sclComments.stream()
                             .map(this::subcelllocationCommentToString)
                             .collect(Collectors.joining("; "));
-            subcellularLocationMap.put("cc:subcellular_location", result);
+            subcellularLocationMap.put("cc_subcellular_location", result);
         }
         return subcellularLocationMap;
     }

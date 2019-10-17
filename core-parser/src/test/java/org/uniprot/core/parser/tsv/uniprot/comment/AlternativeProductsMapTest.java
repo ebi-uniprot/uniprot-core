@@ -40,7 +40,7 @@ class AlternativeProductsMapTest {
                 new AlternativeProductsMap(alternativeProductsComments);
         Map<String, String> mappedAlternativeProducts = alternativeProductsMap.attributeValues();
         assertNotNull(mappedAlternativeProducts);
-        String value = mappedAlternativeProducts.get("cc:alternative_products");
+        String value = mappedAlternativeProducts.get("cc_alternative_products");
         String expectedValue =
                 "ALTERNATIVE PRODUCTS:  Event=Alternative promoter usage, Alternative initiation; "
                         + "Named isoforms=3; Name=Genome polyprotein; IsoId=Q672I1-1; Sequence=Displayed; "
@@ -71,7 +71,7 @@ class AlternativeProductsMapTest {
                 new AlternativeProductsMap(alternativeProductsComments);
         Map<String, String> mappedAlternativeProducts = alternativeProductsMap.attributeValues();
         assertNotNull(mappedAlternativeProducts);
-        String value = mappedAlternativeProducts.get("cc:alternative_products");
+        String value = mappedAlternativeProducts.get("cc_alternative_products");
         String expectedValue =
                 "ALTERNATIVE PRODUCTS:  Event=Alternative splicing; Named isoforms=2; "
                         + "Name=2; IsoId=P37238-1; Sequence=Displayed; "
@@ -109,7 +109,7 @@ class AlternativeProductsMapTest {
                 new AlternativeProductsMap(alternativeProductsComments);
         Map<String, String> mappedAlternativeProducts = alternativeProductsMap.attributeValues();
         assertNotNull(mappedAlternativeProducts);
-        String value = mappedAlternativeProducts.get("cc:alternative_products");
+        String value = mappedAlternativeProducts.get("cc_alternative_products");
         String expectedValue =
                 "ALTERNATIVE PRODUCTS:  Event=Ribosomal frameshifting; Named isoforms=3; "
                         + "Comment=This strategy of translation probably allows the virus to modulate the quantity of "

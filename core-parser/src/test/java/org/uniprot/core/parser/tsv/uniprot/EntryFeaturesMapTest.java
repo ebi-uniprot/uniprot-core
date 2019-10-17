@@ -27,15 +27,15 @@ class EntryFeaturesMapTest {
         EntryFeaturesMap dl = new EntryFeaturesMap(features);
         Map<String, String> result = dl.attributeValues();
         assertEquals(4, result.size());
-        verify("rs1064793108 rs1064793121", "dr:dbsnp", result);
-        verify("DOMAIN 23 23 some domain.", "ft:domain", result);
-        verify("HELIX 7 10 {ECO:0000244|PDB:2LO1}.", "ft:helix", result);
+        verify("rs1064793108 rs1064793121", "dr_dbsnp", result);
+        verify("DOMAIN 23 23 some domain.", "ft_domain", result);
+        verify("HELIX 7 10 {ECO:0000244|PDB:2LO1}.", "ft_helix", result);
         String variantExp =
                 "VARIANT 23 23 A -> G (in SCN1; dbSNP:rs1064793108). /FTId=VAR_064512.;"
                         + " VARIANT 27 27 B -> D (in another; dbSNP:rs1064793121)."
                         + " {ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052}. /FTId=VAR_064556.";
 
-        verify(variantExp, "ft:variant", result);
+        verify(variantExp, "ft_variant", result);
     }
 
     @Test

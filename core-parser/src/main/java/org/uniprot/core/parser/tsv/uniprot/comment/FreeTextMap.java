@@ -35,7 +35,7 @@ public class FreeTextMap implements NamedValueMap {
                             .filter(FreeTextComment::hasTexts)
                             .map(this::getTextCommentString)
                             .collect(Collectors.joining("; "));
-            String field = "cc:" + type.name().toLowerCase();
+            String field = "cc_" + type.name().toLowerCase();
             txtCommentMap.put(field, value);
         }
         return txtCommentMap;

@@ -21,46 +21,46 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 public class EntryFeaturesMap implements NamedValueMap {
     public static final List<String> FIELDS =
             Arrays.asList(
-                    "ft:var_seq",
-                    "ft:variant",
-                    "ft:non_con",
-                    "ft:non_std",
-                    "ft:non_ter",
-                    "ft:conflict",
-                    "ft:unsure",
-                    "ft:act_site",
-                    "ft:binding",
-                    "ft:ca_bind",
-                    "ft:dna_bind",
-                    "ft:metal",
-                    "ft:np_bind",
-                    "ft:site",
-                    "ft:mutagen",
-                    "ft:intramem",
-                    "ft:top_dom",
-                    "ft:transmem",
-                    "ft:chain",
-                    "ft:crosslnk",
-                    "ft:disulfide",
-                    "ft:carbohyd",
-                    "ft:init_met",
-                    "ft:lipid",
-                    "ft:mod_res",
-                    "ft:peptide",
-                    "ft:propep",
-                    "ft:signal",
-                    "ft:transit",
-                    "ft:strand",
-                    "ft:helix",
-                    "ft:turn",
-                    "ft:coiled",
-                    "ft:compbias",
-                    "ft:domain",
-                    "ft:motif",
-                    "ft:region",
-                    "ft:repeat",
-                    "ft:zn_fing",
-                    "dr:dbsnp");
+                    "ft_var_seq",
+                    "ft_variant",
+                    "ft_non_con",
+                    "ft_non_std",
+                    "ft_non_ter",
+                    "ft_conflict",
+                    "ft_unsure",
+                    "ft_act_site",
+                    "ft_binding",
+                    "ft_ca_bind",
+                    "ft_dna_bind",
+                    "ft_metal",
+                    "ft_np_bind",
+                    "ft_site",
+                    "ft_mutagen",
+                    "ft_intramem",
+                    "ft_top_dom",
+                    "ft_transmem",
+                    "ft_chain",
+                    "ft_crosslnk",
+                    "ft_disulfide",
+                    "ft_carbohyd",
+                    "ft_init_met",
+                    "ft_lipid",
+                    "ft_mod_res",
+                    "ft_peptide",
+                    "ft_propep",
+                    "ft_signal",
+                    "ft_transit",
+                    "ft_strand",
+                    "ft_helix",
+                    "ft_turn",
+                    "ft_coiled",
+                    "ft_compbias",
+                    "ft_domain",
+                    "ft_motif",
+                    "ft_region",
+                    "ft_repeat",
+                    "ft_zn_fing",
+                    "dr_dbsnp");
 
     private static final Pattern DBSNP_PATTERN = Pattern.compile("(.+)dbSNP(\\:)(rs(\\d+))(.*)");
     private static final Map<String, String> FEATURETYPE_2_NAME = new HashMap<>();
@@ -132,7 +132,7 @@ public class EntryFeaturesMap implements NamedValueMap {
         }
         featureMap.forEach(
                 (featureType, features) -> {
-                    String key = "ft:" + featureType.name().toLowerCase();
+                    String key = "ft_" + featureType.name().toLowerCase();
                     String value =
                             features.stream()
                                     .map(EntryFeaturesMap::featureToString)
@@ -141,7 +141,7 @@ public class EntryFeaturesMap implements NamedValueMap {
                     if (featureType.equals(FeatureType.VARIANT)) {
                         String dbSnps = variantTodbSnp(features);
                         if (dbSnps != null && !dbSnps.isEmpty()) {
-                            map.put("dr:dbsnp", dbSnps);
+                            map.put("dr_dbsnp", dbSnps);
                         }
                     }
                 });

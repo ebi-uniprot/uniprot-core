@@ -34,7 +34,7 @@ public class InteractionMap implements NamedValueMap {
                             .map(this::getInterAct)
                             .filter(Objects::nonNull)
                             .collect(Collectors.joining("; "));
-            interactionCommentMap.put("cc:interaction", result);
+            interactionCommentMap.put("cc_interaction", result);
         }
         return interactionCommentMap;
     }

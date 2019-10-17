@@ -7,7 +7,7 @@ import org.uniprot.core.Property;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
 public class EntryDbXRefMap implements NamedValueMap {
-    private static final String DR = "dr:";
+    private static final String DR = "dr_";
     private final List<UniProtDBCrossReference> dbReferences;
     private static final Map<String, String> D3MethodMAP = new HashMap<>();
 

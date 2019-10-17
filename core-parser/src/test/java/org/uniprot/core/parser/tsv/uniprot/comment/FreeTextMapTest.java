@@ -26,7 +26,7 @@ class FreeTextMapTest {
         FreeTextMap freeTextMap = new FreeTextMap(freeTextComments, CommentType.INDUCTION);
         Map<String, String> mappedFreeText = freeTextMap.attributeValues();
         assertNotNull(mappedFreeText);
-        String value = mappedFreeText.get("cc:induction");
+        String value = mappedFreeText.get("cc_induction");
         String expectedValue =
                 "INDUCTION: Cell cycle-regulated with highest activity in S phase. Moderately "
                         + "induced by DNA-damage. {ECO:0000269|PubMed:2199320}.";
@@ -48,7 +48,7 @@ class FreeTextMapTest {
         FreeTextMap freeTextMap = new FreeTextMap(freeTextComments, CommentType.SIMILARITY);
         Map<String, String> mappedFreeText = freeTextMap.attributeValues();
         assertNotNull(mappedFreeText);
-        String value = mappedFreeText.get("cc:similarity");
+        String value = mappedFreeText.get("cc_similarity");
         String expectedValue =
                 "SIMILARITY: In the N-terminal section; belongs to the PMEI family. {ECO:0000305}.; "
                         + "SIMILARITY: In the C-terminal section; belongs to the pectinesterase family. {ECO:0000305}.";
