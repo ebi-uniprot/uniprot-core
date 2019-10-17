@@ -18,7 +18,8 @@ public class InteractionImpl implements Interaction {
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
-    private InteractionImpl() {}
+    // no arg constructor for JSON deserialization
+    InteractionImpl() {}
 
     public InteractionImpl(
             InteractionType type,
@@ -118,7 +119,8 @@ public class InteractionImpl implements Interaction {
     }
 
     public static class InteractorImpl extends ValueImpl implements Interactor {
-        private InteractorImpl() {
+        // no arg constructor for JSON deserialization
+        InteractorImpl() {
             super(null);
         }
 
