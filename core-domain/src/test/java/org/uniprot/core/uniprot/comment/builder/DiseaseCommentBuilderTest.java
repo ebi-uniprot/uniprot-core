@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
@@ -67,5 +67,20 @@ class DiseaseCommentBuilderTest {
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        DiseaseComment obj = new DiseaseCommentBuilder().build();
+        DiseaseCommentBuilder builder = new DiseaseCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        DiseaseComment obj = new DiseaseCommentBuilder().build();
+        DiseaseComment obj2 = new DiseaseCommentBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
     }
 }

@@ -5,18 +5,20 @@ import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.DiseaseCommentImpl;
 
+import javax.annotation.Nonnull;
+
 public class DiseaseCommentBuilder
         implements CommentBuilder<DiseaseCommentBuilder, DiseaseComment> {
     private Disease disease;
     private Note note;
 
     @Override
-    public DiseaseComment build() {
+    public @Nonnull DiseaseComment build() {
         return new DiseaseCommentImpl(disease, note);
     }
 
     @Override
-    public DiseaseCommentBuilder from(DiseaseComment instance) {
+    public @Nonnull DiseaseCommentBuilder from(@Nonnull DiseaseComment instance) {
         return this.disease(instance.getDisease()).note(instance.getNote());
     }
 

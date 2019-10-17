@@ -12,7 +12,8 @@ public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
     private Disease disease;
     private Note note;
 
-    private DiseaseCommentImpl() {
+    // no arg constructor for JSON deserialization
+    DiseaseCommentImpl() {
         super(CommentType.DISEASE);
     }
 
