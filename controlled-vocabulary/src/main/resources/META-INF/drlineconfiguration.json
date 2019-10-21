@@ -462,7 +462,7 @@
 		"name": "ProteomicsDB",
 		"displayName": "ProteomicsDB",
 		"category": "PROTEOMIC",
-		"uriLink": "https://www.proteomicsdb.org/proteomicsdb/#human/proteinDetails/%s"	
+		"uriLink": "https://www.proteomicsdb.org/proteomicsdb/#protein/proteinDetails/%s"
 	},
 	{
 		"name": "TopDownProteomics",
@@ -1491,7 +1491,7 @@
 		"name": "Pharos",
 		"displayName": "Pharos",
 		"category": "OTHER",
-		"uriLink": "https://pharos.nih.gov/idg/targets/%u"
+		"uriLink": "https://pharos.nih.gov/targets/%u"
 	},
 	{
 		"name": "DrugCentral",
