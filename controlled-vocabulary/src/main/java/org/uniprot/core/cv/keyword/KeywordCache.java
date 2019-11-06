@@ -10,7 +10,7 @@ import org.uniprot.core.cv.common.BaseCache;
 public enum KeywordCache implements BaseCache<KeywordEntry> {
     INSTANCE;
     public static final String FTP_LOCATION =
-            "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/keywlist.txt";
+            "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/keywlist.txt";
     private Map<String, List<KeywordEntry>> locationKeywordMap = new HashMap<>();
     private AbstractFileReader<KeywordEntry> reader;
 
