@@ -13,7 +13,7 @@ class EntryEncodedMapTest {
     @Test
     void testFields() {
         List<String> fields = EntryEncodedMap.FIELDS;
-        List<String> expected = Collections.singletonList("gene_location");
+        List<String> expected = Collections.singletonList("organelle");
         assertEquals(expected, fields);
     }
 

@@ -29,7 +29,7 @@ public class CofactorMap implements NamedValueMap {
                     cfComments.stream()
                             .map(this::mapCofactorCommentToString)
                             .collect(Collectors.joining(" "));
-            cofactorCommentMap.put("cc:cofactor", result);
+            cofactorCommentMap.put("cc_cofactor", result);
         }
         return cofactorCommentMap;
     }

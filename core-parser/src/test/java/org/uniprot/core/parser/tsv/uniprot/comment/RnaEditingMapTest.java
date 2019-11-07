@@ -34,7 +34,7 @@ class RnaEditingMapTest {
         RnaEditingMap RnaEditingMap = new RnaEditingMap(rnaEditingComments);
         Map<String, String> mappedRnaEditing = RnaEditingMap.attributeValues();
         assertNotNull(mappedRnaEditing);
-        String value = mappedRnaEditing.get("cc:rna_editing");
+        String value = mappedRnaEditing.get("cc_rna_editing");
         String expectedValue =
                 "RNA EDITING: Modified_positions=471 "
                         + "{ECO:0000269|PubMed:10880477, ECO:0000269|PubMed:10966106}, "

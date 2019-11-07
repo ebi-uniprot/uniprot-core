@@ -7,7 +7,7 @@ import java.util.Map;
 public enum PathwayCache {
     INSTANCE;
     public static final String FTP_LOCATION =
-            "ftp://ftp.uniprot.org/pub/databases/uniprot/knowledgebase/docs/pathlist.txt";
+            "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/docs/pathlist.txt";
     Map<String, List<Pathway>> locationPathwayMap = new HashMap<>();
 
     public List<Pathway> get(String file) {

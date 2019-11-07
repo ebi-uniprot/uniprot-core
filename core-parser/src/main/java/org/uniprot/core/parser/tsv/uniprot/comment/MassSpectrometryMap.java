@@ -30,7 +30,7 @@ public class MassSpectrometryMap implements NamedValueMap {
                     msComments.stream()
                             .map(this::mapMassSpectrometryCommentToString)
                             .collect(Collectors.joining(" "));
-            massSpectrometryCommentMap.put("cc:mass_spectrometry", result);
+            massSpectrometryCommentMap.put("cc_mass_spectrometry", result);
         }
         return massSpectrometryCommentMap;
     }

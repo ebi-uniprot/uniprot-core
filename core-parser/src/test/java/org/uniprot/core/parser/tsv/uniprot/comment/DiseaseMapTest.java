@@ -28,7 +28,7 @@ class DiseaseMapTest {
         DiseaseMap diseaseMap = new DiseaseMap(diseaseComments);
         Map<String, String> mappedDisease = diseaseMap.attributeValues();
         assertNotNull(mappedDisease);
-        String value = mappedDisease.get("cc:disease");
+        String value = mappedDisease.get("cc_disease");
         String expectedValue =
                 "DISEASE: Note=Lysosomal acid phosphatase has been shown to be deficient in "
                         + "cultured fibroblasts from patients manifesting intermittent vomiting, hypotonia, lethargy, "
@@ -62,7 +62,7 @@ class DiseaseMapTest {
         DiseaseMap diseaseMap = new DiseaseMap(diseaseComments);
         Map<String, String> mappedDisease = diseaseMap.attributeValues();
         assertNotNull(mappedDisease);
-        String value = mappedDisease.get("cc:disease");
+        String value = mappedDisease.get("cc_disease");
         String expectedValue =
                 "DISEASE: Hypophosphatemic rickets, X-linked dominant (XLHR) [MIM:307800]: "
                         + "A disorder characterized by impaired phosphate uptake in the kidney, which is likely to be caused by "
@@ -99,7 +99,7 @@ class DiseaseMapTest {
         DiseaseMap diseaseMap = new DiseaseMap(diseaseComments);
         Map<String, String> mappedDisease = diseaseMap.attributeValues();
         assertNotNull(mappedDisease);
-        String value = mappedDisease.get("cc:disease");
+        String value = mappedDisease.get("cc_disease");
         String expectedValue =
                 "DISEASE: Note=Phosphoribosyl pyrophosphate synthetase I deficiency is a rare condition "
                         + "caused by mutations in PRPS1 that lead to variable disease phenotypes including optic atrophy, "

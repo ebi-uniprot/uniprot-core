@@ -29,7 +29,7 @@ public class DiseaseMap implements NamedValueMap {
                     dsComments.stream()
                             .map(this::mapDiseaseCommentToString)
                             .collect(Collectors.joining("; "));
-            diseaseCommentMap.put("cc:disease", result);
+            diseaseCommentMap.put("cc_disease", result);
         }
         return diseaseCommentMap;
     }

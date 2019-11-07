@@ -33,7 +33,7 @@ class CatalyticActivityMapTest {
                 new CatalyticActivityMap(catalyticActivityComments);
         Map<String, String> mappedCatalyticActivity = catalyticActivityMap.attributeValues();
         assertNotNull(mappedCatalyticActivity);
-        String value = mappedCatalyticActivity.get("cc:catalytic_activity");
+        String value = mappedCatalyticActivity.get("cc_catalytic_activity");
         String expectedValue =
                 "CATALYTIC ACTIVITY: Reaction=a ribonucleoside 5'-triphosphate + RNA(n) = "
                         + "diphosphate + RNA(n+1); Xref=Rhea:RHEA:21248, Rhea:RHEA-COMP:11128, Rhea:RHEA-COMP:11129, "
@@ -71,7 +71,7 @@ class CatalyticActivityMapTest {
                 new CatalyticActivityMap(catalyticActivityComments);
         Map<String, String> mappedCatalyticActivity = catalyticActivityMap.attributeValues();
         assertNotNull(mappedCatalyticActivity);
-        String value = mappedCatalyticActivity.get("cc:catalytic_activity");
+        String value = mappedCatalyticActivity.get("cc_catalytic_activity");
         String expectedValue =
                 "CATALYTIC ACTIVITY: Reaction=a 2'-deoxyribonucleoside 5'-triphosphate + DNA(n) = "
                         + "diphosphate + DNA(n+1); Xref=Rhea:RHEA:22508, Rhea:RHEA-COMP:11130, Rhea:RHEA-COMP:11131, "

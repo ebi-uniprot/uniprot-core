@@ -30,7 +30,7 @@ public class AlternativeProductsMap implements NamedValueMap {
                     apComments.stream()
                             .map(this::getAlternativeProductsCommentsString2)
                             .collect(Collectors.joining(" "));
-            apCommentMap.put("cc:alternative_products", "ALTERNATIVE PRODUCTS:  " + result);
+            apCommentMap.put("cc_alternative_products", "ALTERNATIVE PRODUCTS:  " + result);
         }
         return apCommentMap;
     }

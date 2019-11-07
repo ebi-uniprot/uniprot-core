@@ -181,7 +181,7 @@ class EntryMapTest {
 
     @Test
     void testAlterProduct() {
-        List<String> fields = Arrays.asList("accession", "cc:alternative_products");
+        List<String> fields = Arrays.asList("accession", "cc_alternative_products");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -201,7 +201,7 @@ class EntryMapTest {
     void testComments() {
         List<String> fields =
                 Arrays.asList(
-                        "accession", "cc:function", "cc:domain", "cc:subunit", "cc:interaction");
+                        "accession", "cc_function", "cc_domain", "cc_subunit", "cc_interaction");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -238,10 +238,10 @@ class EntryMapTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "cc:interaction",
-                        "cc:subcellular_location",
-                        "cc:ptm",
-                        "cc:similarity");
+                        "cc_interaction",
+                        "cc_subcellular_location",
+                        "cc_ptm",
+                        "cc_similarity");
         EntryMap dl = new EntryMap(entryP03431, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -262,7 +262,7 @@ class EntryMapTest {
 
     @Test
     void testProteinFamily() {
-        List<String> fields = Arrays.asList("accession", "protein_families", "cc:similarity");
+        List<String> fields = Arrays.asList("accession", "protein_families", "cc_similarity");
         EntryMap dl = new EntryMap(entryP03431, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -277,7 +277,7 @@ class EntryMapTest {
     @Test
     void testSequenceCaution() {
         List<String> fields =
-                Arrays.asList("accession", "cc:sequence_caution", "error_gmodel_pred");
+                Arrays.asList("accession", "cc_sequence_caution", "error_gmodel_pred");
         EntryMap dl = new EntryMap(entryQ84MC7, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -340,15 +340,15 @@ class EntryMapTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "ft:chain",
-                        "ft:topo_dom",
-                        "ft:transmem",
-                        "ft:mod_res",
-                        "ft:carbohyd",
-                        "ft:var_seq",
-                        "ft:variant",
-                        "ft:conflict",
-                        "ft:domain");
+                        "ft_chain",
+                        "ft_topo_dom",
+                        "ft_transmem",
+                        "ft_mod_res",
+                        "ft_carbohyd",
+                        "ft_var_seq",
+                        "ft_variant",
+                        "ft_conflict",
+                        "ft_domain");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -513,7 +513,7 @@ class EntryMapTest {
     @Test
     void testXRefs1() {
         List<String> fields =
-                Arrays.asList("accession", "dr:embl", "dr:ccds", "dr:refseq", "dr:smr");
+                Arrays.asList("accession", "dr_embl", "dr_ccds", "dr_refseq", "dr_smr");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -534,7 +534,7 @@ class EntryMapTest {
     void testXRefs2() {
         List<String> fields =
                 Arrays.asList(
-                        "accession", "dr:smr", "dr:biogrid", "dr:intact", "dr:mint", "dr:string");
+                        "accession", "dr_smr", "dr_biogrid", "dr_intact", "dr_mint", "dr_string");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -556,11 +556,11 @@ class EntryMapTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "dr:drugbank",
-                        "dr:guidetopharmacology",
-                        "dr:tcdb",
-                        "dr:dmdm",
-                        "dr:maxqb");
+                        "dr_drugbank",
+                        "dr_guidetopharmacology",
+                        "dr_tcdb",
+                        "dr_dmdm",
+                        "dr_maxqb");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -582,11 +582,11 @@ class EntryMapTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "dr:drugbank",
-                        "dr:guidetopharmacology",
-                        "dr:tcdb",
-                        "dr:dmdm",
-                        "dr:maxqb");
+                        "dr_drugbank",
+                        "dr_guidetopharmacology",
+                        "dr_tcdb",
+                        "dr_dmdm",
+                        "dr_maxqb");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -608,11 +608,11 @@ class EntryMapTest {
         List<String> fields =
                 Arrays.asList(
                         "accession",
-                        "dr:ensembl",
-                        "dr:reactome",
-                        "dr:interpro",
-                        "dr:prosite",
-                        "dr:pfam");
+                        "dr_ensembl",
+                        "dr_reactome",
+                        "dr_interpro",
+                        "dr_prosite",
+                        "dr_pfam");
         EntryMap dl = new EntryMap(entryQ15758, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -632,7 +632,7 @@ class EntryMapTest {
 
     @Test
     void testProteome() {
-        List<String> fields = Arrays.asList("accession", "dr:proteomes");
+        List<String> fields = Arrays.asList("accession", "dr_proteomes");
         EntryMap dl = new EntryMap(entryP03431, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
@@ -643,7 +643,7 @@ class EntryMapTest {
 
     @Test
     void testPdb() {
-        List<String> fields = Arrays.asList("accession", "dr:pdb", "3d");
+        List<String> fields = Arrays.asList("accession", "dr_pdb", "3d");
         EntryMap dl = new EntryMap(entryP03431, fields);
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());

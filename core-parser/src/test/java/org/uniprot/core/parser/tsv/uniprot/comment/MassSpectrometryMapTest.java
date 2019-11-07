@@ -33,7 +33,7 @@ class MassSpectrometryMapTest {
         MassSpectrometryMap massSpectrometryMap = new MassSpectrometryMap(massSpectrometryComments);
         Map<String, String> mappedMassSpectrometry = massSpectrometryMap.attributeValues();
         assertNotNull(mappedMassSpectrometry);
-        String value = mappedMassSpectrometry.get("cc:mass_spectrometry");
+        String value = mappedMassSpectrometry.get("cc_mass_spectrometry");
         String expectedValue =
                 "MASS SPECTROMETRY: Mass=17581.1; Method=MALDI; Range=2-165; "
                         + "Evidence={ECO:0000269|PubMed:10094780}; MASS SPECTROMETRY: Mass=66643; Mass_error=13; "
