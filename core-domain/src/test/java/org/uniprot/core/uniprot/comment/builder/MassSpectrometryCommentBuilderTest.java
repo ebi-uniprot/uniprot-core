@@ -1,9 +1,11 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createEvidence;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -74,6 +76,19 @@ class MassSpectrometryCommentBuilderTest {
         assertEquals(0, comment.getEvidences().size());
         assertEquals(0, comment.getRanges().size());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
+    }
+
+    @Test
+    void malWeightError_lessThanFloatNegative() {
+        Float err = Float.MIN_VALUE - 2 ;
+        MassSpectrometryComment comment = new MassSpectrometryCommentBuilder().molWeightError(err).build();
+        assertEquals(err, comment.getMolWeightError(), Double.MIN_VALUE);
+    }
+
+    @Test
+    void malWeightError_FloatMin_notValidValue() {
+        MassSpectrometryComment comment = new MassSpectrometryCommentBuilder().molWeightError(Float.MIN_VALUE).build();
+        assertNotNull(comment.getMolWeightError());
     }
 
     @Test
