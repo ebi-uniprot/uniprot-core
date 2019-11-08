@@ -13,6 +13,8 @@ import org.uniprot.core.uniprot.comment.MichaelisConstant;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.KineticParametersImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -50,12 +52,12 @@ public final class KineticParametersBuilder
     }
 
     @Override
-    public KineticParameters build() {
+    public @Nonnull KineticParameters build() {
         return new KineticParametersImpl(maximumVelocities, michaelisConstants, note);
     }
 
     @Override
-    public KineticParametersBuilder from(KineticParameters instance) {
+    public @Nonnull KineticParametersBuilder from(@Nonnull KineticParameters instance) {
         maximumVelocities.clear();
         michaelisConstants.clear();
         return this.maximumVelocities(instance.getMaximumVelocities())
