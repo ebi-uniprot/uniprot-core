@@ -15,6 +15,8 @@ import org.uniprot.core.uniprot.comment.ReactionReferenceType;
 import org.uniprot.core.uniprot.comment.impl.ReactionImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -58,17 +60,17 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
         return this;
     }
 
-    public ReactionBuilder addEvidences(Evidence evidence) {
+    public ReactionBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 
-    public ReactionImpl build() {
+    public @Nonnull ReactionImpl build() {
         return new ReactionImpl(name, reactionReferences, ecNumber, evidences);
     }
 
     @Override
-    public ReactionBuilder from(Reaction instance) {
+    public @Nonnull ReactionBuilder from(@Nonnull Reaction instance) {
         evidences.clear();
         reactionReferences.clear();
         return this.ecNumber(instance.getEcNumber())
