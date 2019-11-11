@@ -16,7 +16,8 @@ public class MichaelisConstantImpl implements MichaelisConstant {
     private String substrate;
     private List<Evidence> evidences;
 
-    private MichaelisConstantImpl() {
+    // no arg constructor for JSON deserialization
+    MichaelisConstantImpl() {
         this.evidences = Collections.emptyList();
     }
 
@@ -28,11 +29,7 @@ public class MichaelisConstantImpl implements MichaelisConstant {
         this.constant = constant;
         this.unit = unit;
         this.substrate = substrate;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override
