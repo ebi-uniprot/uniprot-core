@@ -11,6 +11,8 @@ import org.uniprot.core.uniprot.comment.MaximumVelocity;
 import org.uniprot.core.uniprot.comment.impl.MaximumVelocityImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 16/01/19
  *
@@ -23,12 +25,12 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, M
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public MaximumVelocity build() {
+    public @Nonnull MaximumVelocity build() {
         return new MaximumVelocityImpl(velocity, unit, enzyme, evidences);
     }
 
     @Override
-    public MaximumVelocityBuilder from(MaximumVelocity instance) {
+    public @Nonnull MaximumVelocityBuilder from(@Nonnull MaximumVelocity instance) {
         evidences.clear();
         return this.evidences(instance.getEvidences())
                 .enzyme(instance.getEnzyme())
