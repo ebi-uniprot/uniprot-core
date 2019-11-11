@@ -20,7 +20,8 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     private List<MassSpectrometryRange> ranges;
     private List<Evidence> evidences;
 
-    private MassSpectrometryCommentImpl() {
+    // no arg constructor for JSON deserialization
+    MassSpectrometryCommentImpl() {
         super(CommentType.MASS_SPECTROMETRY);
         this.ranges = Collections.emptyList();
         this.evidences = Collections.emptyList();
@@ -39,16 +40,8 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
 
         this.molWeightError = molWeightError;
         this.note = note;
-        if ((ranges == null) || ranges.isEmpty()) {
-            this.ranges = Collections.emptyList();
-        } else {
-            this.ranges = Collections.unmodifiableList(ranges);
-        }
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.ranges = Utils.unmodifiableList(ranges);
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

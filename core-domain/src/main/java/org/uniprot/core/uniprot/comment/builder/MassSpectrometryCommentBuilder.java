@@ -12,6 +12,8 @@ import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
+import javax.annotation.Nonnull;
+
 public final class MassSpectrometryCommentBuilder
         implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
     private MassSpectrometryMethod method;
@@ -21,13 +23,13 @@ public final class MassSpectrometryCommentBuilder
     private List<MassSpectrometryRange> ranges = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
 
-    public MassSpectrometryComment build() {
+    public @Nonnull MassSpectrometryComment build() {
         return new MassSpectrometryCommentImpl(
                 method, molWeight, molWeightError, note, ranges, evidences);
     }
 
     @Override
-    public MassSpectrometryCommentBuilder from(MassSpectrometryComment instance) {
+    public @Nonnull MassSpectrometryCommentBuilder from(@Nonnull MassSpectrometryComment instance) {
         ranges.clear();
         evidences.clear();
         return this.molWeight(instance.getMolWeight())
