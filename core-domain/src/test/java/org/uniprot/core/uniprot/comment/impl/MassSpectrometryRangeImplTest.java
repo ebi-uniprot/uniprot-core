@@ -1,11 +1,12 @@
 package org.uniprot.core.uniprot.comment.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
+import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class MassSpectrometryRangeImplTest {
 
@@ -21,6 +22,23 @@ class MassSpectrometryRangeImplTest {
 
         MassSpectrometryRange msRange = new MassSpectrometryRangeImpl(range, "");
         verify(msRange, range, "");
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        MassSpectrometryRange obj = new MassSpectrometryRangeImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        MassSpectrometryRange impl = new MassSpectrometryRangeImpl(1,2,"isofrom");
+        MassSpectrometryRange obj = new MassSpectrometryRangeBuilder().from(impl).build();
+
+        assertTrue(impl.hasIsoformId());
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 
     private void verify(MassSpectrometryRange msRange, Range range, String isoformId) {

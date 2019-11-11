@@ -5,6 +5,8 @@ import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryRangeImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -25,12 +27,12 @@ public final class MassSpectrometryRangeBuilder
         return this;
     }
 
-    public MassSpectrometryRangeImpl build() {
+    public @Nonnull MassSpectrometryRangeImpl build() {
         return new MassSpectrometryRangeImpl(range, isoformId);
     }
 
     @Override
-    public MassSpectrometryRangeBuilder from(MassSpectrometryRange instance) {
+    public @Nonnull MassSpectrometryRangeBuilder from(@Nonnull MassSpectrometryRange instance) {
         return this.isoformId(instance.getIsoformId()).range(instance.getRange());
     }
 }

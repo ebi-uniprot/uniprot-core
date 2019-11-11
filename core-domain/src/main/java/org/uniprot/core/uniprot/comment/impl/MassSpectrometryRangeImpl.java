@@ -10,7 +10,8 @@ public class MassSpectrometryRangeImpl implements MassSpectrometryRange {
     private Range range;
     private String isoformId;
 
-    private MassSpectrometryRangeImpl() {
+    // no arg constructor for JSON deserialization
+    MassSpectrometryRangeImpl() {
         this.isoformId = "";
     }
 
