@@ -14,6 +14,8 @@ import org.uniprot.core.uniprot.comment.ReactionReferenceType;
 import org.uniprot.core.uniprot.comment.impl.PhysiologicalReactionImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -41,17 +43,17 @@ public final class PhysiologicalReactionBuilder
         return this;
     }
 
-    public PhysiologicalReactionBuilder addEvidences(Evidence evidence) {
+    public PhysiologicalReactionBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 
-    public PhysiologicalReactionImpl build() {
+    public @Nonnull PhysiologicalReactionImpl build() {
         return new PhysiologicalReactionImpl(directionType, reactionReference, evidences);
     }
 
     @Override
-    public PhysiologicalReactionBuilder from(PhysiologicalReaction instance) {
+    public @Nonnull PhysiologicalReactionBuilder from(@Nonnull PhysiologicalReaction instance) {
         evidences.clear();
         return this.evidences(instance.getEvidences())
                 .directionType(instance.getDirectionType())
