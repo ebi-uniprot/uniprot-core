@@ -73,4 +73,25 @@ class RnaEditingCommentBuilderTest {
         assertEquals("123", position.getPosition());
         assertEquals(evidences, position.getEvidences());
     }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        RnaEditingComment obj = new RnaEditingCommentBuilder().build();
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        RnaEditingComment obj = new RnaEditingCommentBuilder().build();
+        RnaEditingComment obj2 = new RnaEditingCommentBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    @Test
+    void canAddRnaPosition() {
+        RnaEditingComment obj = new RnaEditingCommentBuilder().addPosition( new RnaEditingPositionBuilder("123", createEvidences()).build()).build();
+        assertTrue(obj.hasPositions());
+    }
 }
