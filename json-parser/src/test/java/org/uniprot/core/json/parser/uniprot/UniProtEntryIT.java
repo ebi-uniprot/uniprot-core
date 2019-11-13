@@ -109,7 +109,7 @@ class UniProtEntryIT {
             fail(e.getMessage());
         }
     }
-    
+
     List<TaxonomyLineage> getCompleteTaxonomyLineage() {
         TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
         builder.taxonId(9606L)

@@ -101,7 +101,7 @@ public class UniProtEntryBuilder {
         ActiveEntryBuilder sequence(Sequence sequence);
 
         ActiveEntryBuilder internalSection(InternalSection internalSection);
-        
+
         ActiveEntryBuilder addLineage(TaxonomyLineage lineage);
 
         ActiveEntryBuilder lineages(List<TaxonomyLineage> lineages);
@@ -135,6 +135,7 @@ public class UniProtEntryBuilder {
         private EntryInactiveReason inactiveReason = null;
         private boolean active = true;
         private List<TaxonomyLineage> lineages;
+
         private EntryBuilder(UniProtAccession primaryAccession) {
             this.primaryAccession = primaryAccession;
         }
@@ -324,7 +325,7 @@ public class UniProtEntryBuilder {
             this.internalSection = internalSection;
             return this;
         }
-        
+
         @Override
         public ActiveEntryBuilder addLineage(TaxonomyLineage lineage) {
             addOrIgnoreNull(lineage, this.lineages);

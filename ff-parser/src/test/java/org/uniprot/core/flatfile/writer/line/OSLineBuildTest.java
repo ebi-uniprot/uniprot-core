@@ -16,8 +16,10 @@ class OSLineBuildTest {
     @Test
     void test2() {
         String osLine = "OS   Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB).";
-      
-        FFLine ffLine = builder.build(createOrganism("Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB)"));
+
+        FFLine ffLine =
+                builder.build(
+                        createOrganism("Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB)"));
 
         String resultString = ffLine.toString();
         // System.out.println(text.getText());
@@ -26,15 +28,14 @@ class OSLineBuildTest {
     }
 
     private Organism createOrganism(String name) {
-  	  OrganismName organismName =OrganismNameLineParser.createFromOrganismLine(name);
-  	  OrganismBuilder builder =new OrganismBuilder();
-  	  builder.scientificName(organismName.getScientificName())
-  	  .synonyms(organismName.getSynonyms())
-  	  .commonName(organismName.getCommonName())
-  	  ;
-  	 return builder.build();
-  }
-    
+        OrganismName organismName = OrganismNameLineParser.createFromOrganismLine(name);
+        OrganismBuilder builder = new OrganismBuilder();
+        builder.scientificName(organismName.getScientificName())
+                .synonyms(organismName.getSynonyms())
+                .commonName(organismName.getCommonName());
+        return builder.build();
+    }
+
     @Test
     void test41() {
 
@@ -42,11 +43,13 @@ class OSLineBuildTest {
                 "OS   Methylobacterium extorquens (Methylobacterium dichloromethanicum)\n"
                         + "OS   (Protomonas extorquens).";
 
-
-        FFLine ffLine = builder.build(createOrganism("Methylobacterium extorquens (Methylobacterium dichloromethanicum) (Protomonas extorquens)"));
+        FFLine ffLine =
+                builder.build(
+                        createOrganism(
+                                "Methylobacterium extorquens (Methylobacterium dichloromethanicum) (Protomonas extorquens)"));
 
         String resultString = ffLine.toString();
-         System.out.println(osLine);
+        System.out.println(osLine);
         System.out.println(resultString);
         assertEquals(osLine, resultString);
     }

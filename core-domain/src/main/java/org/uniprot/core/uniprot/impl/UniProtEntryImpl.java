@@ -112,7 +112,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                 null,
                 inactiveReason);
     }
-    
+
     public UniProtEntryImpl(
             UniProtEntryType entryType,
             UniProtAccession primaryAccession,
@@ -133,8 +133,7 @@ public class UniProtEntryImpl implements UniProtEntry {
             List<UniProtDBCrossReference> databaseCrossReferences,
             Sequence sequence,
             InternalSection internalSection,
-            List<TaxonomyLineage> lineages
-            ) {
+            List<TaxonomyLineage> lineages) {
         this(
                 entryType,
                 primaryAccession,
@@ -158,8 +157,6 @@ public class UniProtEntryImpl implements UniProtEntry {
                 lineages,
                 null);
     }
-    
-   
 
     public UniProtEntryImpl(
             UniProtEntryType entryType,
@@ -467,10 +464,10 @@ public class UniProtEntryImpl implements UniProtEntry {
                 internalSection,
                 inactiveReason);
     }
-    
+
     @Override
-    public List<TaxonomyLineage> getLineages(){
-    	return lineages;
+    public List<TaxonomyLineage> getLineages() {
+        return lineages;
     }
 
     @Override
