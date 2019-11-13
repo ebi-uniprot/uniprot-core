@@ -18,7 +18,8 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     private String note;
     private List<Evidence> evidences;
 
-    private SequenceCautionCommentImpl() {
+    // no arg constructor for JSON deserialization
+    SequenceCautionCommentImpl() {
         super(CommentType.SEQUENCE_CAUTION);
         this.evidences = Collections.emptyList();
         this.positions = Collections.emptyList();
@@ -33,17 +34,9 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
         super(CommentType.SEQUENCE_CAUTION);
         this.sequenceCautionType = sequenceCautionType;
         this.sequence = sequence;
-        if ((positions == null) || positions.isEmpty()) {
-            this.positions = Collections.emptyList();
-        } else {
-            this.positions = Collections.unmodifiableList(positions);
-        }
+        this.positions = Utils.unmodifiableList(positions);
         this.note = note;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

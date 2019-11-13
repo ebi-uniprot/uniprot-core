@@ -1,8 +1,11 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createEvidence;
+import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -78,5 +81,68 @@ class SequenceCautionCommentBuilderTest {
         assertEquals("some note", comment.getNote());
         assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
+    }
+
+    @Test
+    void canAddSingleEvidence() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().addEvidence(createEvidence()).build();
+        assertNotNull(obj.getEvidences());
+        assertFalse(obj.getEvidences().isEmpty());
+        assertTrue(obj.hasEvidences());
+    }
+
+    @Test
+    void nullEvidence_willBeIgnore() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().addEvidence(null).build();
+        assertNotNull(obj.getEvidences());
+        assertTrue(obj.getEvidences().isEmpty());
+        assertFalse(obj.hasEvidences());
+    }
+
+    @Test
+    void evidences_willConvertUnModifiable_toModifiable() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().evidences(Collections.emptyList()).addEvidence(createEvidence()).build();
+        assertNotNull(obj.getEvidences());
+        assertFalse(obj.getEvidences().isEmpty());
+        assertTrue(obj.hasEvidences());
+    }
+
+    @Test
+    void canAddListEvidences() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().evidences(createEvidences()).build();
+        assertNotNull(obj.getEvidences());
+        assertFalse(obj.getEvidences().isEmpty());
+        assertTrue(obj.hasEvidences());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().build();
+        SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().build();
+        SequenceCautionComment obj2 = new SequenceCautionCommentBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    @Test
+    void canAddSinglePosition() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().addPosition("pos").build();
+        assertNotNull(obj.getPositions());
+        assertFalse(obj.getPositions().isEmpty());
+        assertTrue(obj.hasPositions());
+    }
+
+    @Test
+    void nullPosition_willBeIgnore() {
+        SequenceCautionComment obj = new SequenceCautionCommentBuilder().addPosition(null).build();
+        assertNotNull(obj.getPositions());
+        assertTrue(obj.getPositions().isEmpty());
+        assertFalse(obj.hasPositions());
     }
 }
