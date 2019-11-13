@@ -532,7 +532,7 @@ public class CcLineConverter extends EvidenceCollector
     private RnaEdPosition convertRNAEditingPosition(
             int pos, Map<Object, List<Evidence>> evidences) {
         String spos = "" + pos;
-        return new RnaEditingPositionBuilder(spos, evidences.get(spos)).build();
+        return new RnaEditingPositionBuilder().position(spos).evidences(evidences.get(spos)).build();
     }
 
     private FreeTextComment convertTextOnly(

@@ -27,9 +27,7 @@ class RnaEditingCommentConverterTest {
         // ECO:0000269|PubMed:11230166
         String pos = "320";
         RnaEdPosition position =
-                new RnaEditingPositionBuilder(
-                                pos,
-                                evidencesFromLines(
+                new RnaEditingPositionBuilder().position(pos).evidences(evidencesFromLines(
                                         "ECO:0000269|PubMed:10574461",
                                         "ECO:0000269|PubMed:11230166"))
                         .build();
@@ -47,8 +45,8 @@ class RnaEditingCommentConverterTest {
     void test() {
         String pos = "320";
         RnaEdPosition position =
-                new RnaEditingPositionBuilder(
-                                pos,
+                new RnaEditingPositionBuilder().position(
+                                pos).evidences(
                                 evidencesFromLines(
                                         "ECO:0000269|PubMed:10574461",
                                         "ECO:0000269|PubMed:11230166",

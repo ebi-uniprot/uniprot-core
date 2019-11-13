@@ -29,7 +29,7 @@ class RnaEditingCommentImplTest {
   @Test
   void builderFrom_constructorImp_shouldCreate_equalObject() {
     RnaEditingCommentImpl.RnaEdPositionImpl pos = new RnaEditingCommentImpl.RnaEdPositionImpl("pos", createEvidences());
-    RnaEdPosition posBuild = new RnaEditingPositionBuilder("pos1", createEvidences()).from(pos).build();
+    RnaEdPosition posBuild = new RnaEditingPositionBuilder().position("pos1").evidences(createEvidences()).from(pos).build();
 
     assertTrue(pos.hasEvidences());
     assertTrue(pos.equals(posBuild) && posBuild.equals(pos));

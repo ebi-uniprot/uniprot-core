@@ -70,8 +70,8 @@ public class RnaEditingCommentTest {
                                         "value", "ECO:0000256|PIRNR:PIRNR001361"))
                         .build();
         RnaEdPosition rnaEdPositions =
-                new RnaEditingPositionBuilder(
-                                "rna position",
+                new RnaEditingPositionBuilder().position(
+                                "rna position").evidences(
                                 CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                         .build();
 
