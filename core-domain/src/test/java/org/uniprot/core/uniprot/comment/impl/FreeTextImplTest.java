@@ -1,12 +1,14 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.comment.FreeText;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -32,5 +34,11 @@ class FreeTextImplTest {
         texts.add(new EvidencedValueImpl("value2", Collections.emptyList()));
         FreeTextImpl freeText = new FreeTextImpl(texts);
         assertEquals(texts, freeText.getTexts());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        FreeText obj = new FreeTextImpl();
+        assertNotNull(obj);
     }
 }
