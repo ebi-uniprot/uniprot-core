@@ -17,7 +17,8 @@ public class SubcellularLocationCommentImpl extends CommentImpl
     private Note note;
     private List<SubcellularLocation> subcellularLocations;
 
-    private SubcellularLocationCommentImpl() {
+    // no arg constructor for JSON deserialization
+    SubcellularLocationCommentImpl() {
         super(CommentType.SUBCELLULAR_LOCATION);
         this.molecule = "";
         this.subcellularLocations = Collections.emptyList();
@@ -26,17 +27,8 @@ public class SubcellularLocationCommentImpl extends CommentImpl
     public SubcellularLocationCommentImpl(
             String molecule, List<SubcellularLocation> subcellularLocations, Note note) {
         super(CommentType.SUBCELLULAR_LOCATION);
-        if (molecule == null || molecule.isEmpty()) {
-            this.molecule = "";
-        } else {
-            this.molecule = molecule;
-        }
-
-        if ((subcellularLocations == null) || subcellularLocations.isEmpty()) {
-            this.subcellularLocations = Collections.emptyList();
-        } else {
-            this.subcellularLocations = Collections.unmodifiableList(subcellularLocations);
-        }
+        this.molecule = Utils.emptyOrString(molecule);
+        this.subcellularLocations = Utils.unmodifiableList(subcellularLocations);
         this.note = note;
     }
 

@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
@@ -156,5 +155,37 @@ class SubcellularLocationCommentBuilderTest {
         assertEquals(location, sublocation.getLocation());
         assertEquals(topology, sublocation.getTopology());
         assertFalse(sublocation.getOrientation() != null);
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        SubcellularLocationComment obj = new SubcellularLocationCommentBuilder().build();
+        SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        SubcellularLocationComment obj = new SubcellularLocationCommentBuilder().build();
+        SubcellularLocationComment obj2 = new SubcellularLocationCommentBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    @Test
+    void canAddSingleSubcellularLocation() {
+        SubcellularLocationComment obj = new SubcellularLocationCommentBuilder().addSubcellularLocation(
+          new SubcellularLocationBuilder().build()).build();
+        assertNotNull(obj.getSubcellularLocations());
+        assertFalse(obj.getSubcellularLocations().isEmpty());
+        assertTrue(obj.hasSubcellularLocations());
+    }
+
+    @Test
+    void nullSubcellularLocation_willBeIgnore() {
+        SubcellularLocationComment obj = new SubcellularLocationCommentBuilder().addSubcellularLocation(null).build();
+        assertNotNull(obj.getSubcellularLocations());
+        assertTrue(obj.getSubcellularLocations().isEmpty());
+        assertFalse(obj.hasSubcellularLocations());
     }
 }
