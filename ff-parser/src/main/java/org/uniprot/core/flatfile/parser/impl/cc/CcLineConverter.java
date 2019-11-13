@@ -460,9 +460,7 @@ public class CcLineConverter extends EvidenceCollector
         if (evidences == null) {
             evidences = evidenceMap.get(lo);
         }
-        return new SubcellularLocationValueBuilder(
-                        subcellLocation, locationValue.value, evidenceMap.get(locationValue))
-                .build();
+        return new SubcellularLocationValueBuilder().id(subcellLocation).value(locationValue.value).evidences(evidenceMap.get(locationValue)).build();
     }
 
     private MassSpectrometryComment convertMassSpectrometry(

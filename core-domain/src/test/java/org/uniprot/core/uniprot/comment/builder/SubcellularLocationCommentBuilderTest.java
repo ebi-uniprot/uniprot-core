@@ -38,26 +38,19 @@ class SubcellularLocationCommentBuilderTest {
         SubcellularLocation sublocation =
                 new SubcellularLocationBuilder()
                         .location(
-                                new SubcellularLocationValueBuilder(
-                                                locationId, locationVal, evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id(locationId).value(locationVal).evidences(evidences).build())
                         .topology(
-                                new SubcellularLocationValueBuilder(topId, topologyVal, evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id(topId).value(topologyVal).evidences(evidences).build())
                         .orientation(
-                                new SubcellularLocationValueBuilder(
-                                                orientId, orientationVal, evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id(orientId).value(orientationVal).evidences(evidences).build())
                         .build();
         sublocations.add(sublocation);
         SubcellularLocation sublocation2 =
                 new SubcellularLocationBuilder()
                         .location(
-                                new SubcellularLocationValueBuilder("id1", "val1", evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id1").value("val1").evidences(evidences).build())
                         .topology(
-                                new SubcellularLocationValueBuilder("id2", "val2", evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id2").value("val2").evidences(evidences).build())
                         .build();
         sublocations.add(sublocation2);
         SubcellularLocationCommentBuilder builder = new SubcellularLocationCommentBuilder();
@@ -82,26 +75,18 @@ class SubcellularLocationCommentBuilderTest {
         SubcellularLocation sublocation =
                 new SubcellularLocationBuilder()
                         .location(
-                                new SubcellularLocationValueBuilder("id1", locationVal, evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id1").value(locationVal).evidences(evidences).build())
                         .topology(
-                                new SubcellularLocationValueBuilder("id2", topologyVal, evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id2").value(topologyVal).evidences(evidences).build())
                         .orientation(
-                                new SubcellularLocationValueBuilder(
-                                                "id3", orientationVal, evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id3").value(orientationVal).evidences(evidences).build())
                         .build();
 
         sublocations.add(sublocation);
         SubcellularLocation sublocation2 =
                 new SubcellularLocationBuilder()
-                        .location(
-                                new SubcellularLocationValueBuilder("id4", "val1", evidences)
-                                        .build())
-                        .topology(
-                                new SubcellularLocationValueBuilder("id5", "val2", evidences)
-                                        .build())
+                        .location(new SubcellularLocationValueBuilder().id("id4").value("val1").evidences(evidences).build())
+                        .topology(new SubcellularLocationValueBuilder().id("id5").value("val2").evidences(evidences).build())
                         .build();
         sublocations.add(sublocation2);
 
@@ -123,7 +108,7 @@ class SubcellularLocationCommentBuilderTest {
         String value = "some data";
         List<Evidence> evidences = createEvidences();
         SubcellularLocationValue slv =
-                new SubcellularLocationValueBuilder("id1", value, evidences).build();
+                new SubcellularLocationValueBuilder().id("id1").value(value).evidences(evidences).build();
         assertEquals(value, slv.getValue());
         assertEquals(evidences, slv.getEvidences());
     }
@@ -135,11 +120,11 @@ class SubcellularLocationCommentBuilderTest {
         String topologyVal = "some top";
         String orientationVal = "some orient";
         SubcellularLocationValue location =
-                new SubcellularLocationValueBuilder("id1", locationVal, evidences).build();
+                new SubcellularLocationValueBuilder().id("id1").value(locationVal).evidences(evidences).build();
         SubcellularLocationValue topology =
-                new SubcellularLocationValueBuilder("id2", topologyVal, evidences).build();
+                new SubcellularLocationValueBuilder().id("id2").value(topologyVal).evidences(evidences).build();
         SubcellularLocationValue orientation =
-                new SubcellularLocationValueBuilder("id3", orientationVal, evidences).build();
+                new SubcellularLocationValueBuilder().id("id3").value(orientationVal).evidences(evidences).build();
         SubcellularLocation sublocation =
                 new SubcellularLocationBuilder()
                         .location(location)

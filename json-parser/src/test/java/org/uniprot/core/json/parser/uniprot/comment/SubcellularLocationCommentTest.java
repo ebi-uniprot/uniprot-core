@@ -89,17 +89,11 @@ public class SubcellularLocationCommentTest {
         SubcellularLocation sublocation =
                 new SubcellularLocationBuilder()
                         .location(
-                                new SubcellularLocationValueBuilder(
-                                                "id1", "location value", evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id1").value("location value").evidences(evidences).build())
                         .orientation(
-                                new SubcellularLocationValueBuilder(
-                                                "id2", "orientation value", evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id2").value("orientation value").evidences(evidences).build())
                         .topology(
-                                new SubcellularLocationValueBuilder(
-                                                "id2", "topology value", evidences)
-                                        .build())
+                                new SubcellularLocationValueBuilder().id("id2").value("topology value").evidences(evidences).build())
                         .build();
 
         List<SubcellularLocation> subcellularLocations = Collections.singletonList(sublocation);

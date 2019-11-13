@@ -9,6 +9,8 @@ import org.uniprot.core.uniprot.comment.impl.SubcellularLocationImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -19,16 +21,8 @@ public class SubcellularLocationValueBuilder
                 SubcellularLocationValueBuilder, SubcellularLocationValue> {
     private String id;
 
-    private SubcellularLocationValueBuilder() {}
-
-    public SubcellularLocationValueBuilder(String id, String value, List<Evidence> evidences) {
-        this.id = id;
-        this.value = value;
-        this.evidences = modifiableList(evidences);
-    }
-
     @Override
-    public SubcellularLocationValue build() {
+    public @Nonnull SubcellularLocationValue build() {
         return new SubcellularLocationImpl.SubcellularLocationValueImpl(id, value, evidences);
     }
 
@@ -38,11 +32,11 @@ public class SubcellularLocationValueBuilder
     }
 
     @Override
-    public SubcellularLocationValueBuilder from(SubcellularLocationValue instance) {
+    public @Nonnull SubcellularLocationValueBuilder from(@Nonnull SubcellularLocationValue instance) {
         return super.from(instance).id(instance.getId());
     }
 
-    public SubcellularLocationValueBuilder id(String id) {
+    public @Nonnull SubcellularLocationValueBuilder id(String id) {
         this.id = id;
         return this;
     }
