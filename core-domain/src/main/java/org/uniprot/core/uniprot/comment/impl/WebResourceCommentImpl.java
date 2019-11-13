@@ -15,7 +15,8 @@ public class WebResourceCommentImpl extends CommentImpl implements WebResourceCo
     private boolean ftp;
     private String note;
 
-    private WebResourceCommentImpl() {
+    // no arg constructor for JSON deserialization
+    WebResourceCommentImpl() {
         this(null, null, false, null);
     }
 
