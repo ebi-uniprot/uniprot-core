@@ -5,6 +5,8 @@ import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprot.comment.impl.SubcellularLocationImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -31,12 +33,12 @@ public final class SubcellularLocationBuilder
         return this;
     }
 
-    public SubcellularLocationImpl build() {
+    public @Nonnull SubcellularLocationImpl build() {
         return new SubcellularLocationImpl(location, topology, orientation);
     }
 
     @Override
-    public SubcellularLocationBuilder from(SubcellularLocation instance) {
+    public SubcellularLocationBuilder from(@Nonnull SubcellularLocation instance) {
         return this.location(instance.getLocation())
                 .orientation(instance.getOrientation())
                 .topology(instance.getTopology());
