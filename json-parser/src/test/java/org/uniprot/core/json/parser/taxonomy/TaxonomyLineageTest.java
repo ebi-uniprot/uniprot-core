@@ -6,7 +6,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.builder.TaxonomyLineageBuilder;
 
-class TaxonomyLineageTest {
+public class TaxonomyLineageTest {
 
     @Test
     void testSimpleTaxonomyLineage() {
@@ -26,10 +26,12 @@ class TaxonomyLineageTest {
         ValidateJson.verifyEmptyFields(taxonomyLineage);
     }
 
-    static TaxonomyLineage getCompleteTaxonomyLineage() {
+    public static TaxonomyLineage getCompleteTaxonomyLineage() {
         TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
         builder.taxonId(9606L)
                 .scientificName("Scientific Name")
+                .commonName("Common Name")
+                .addSynonyms("synonym")
                 .hidden(true)
                 .rank(TaxonomyRank.FAMILY);
         return builder.build();

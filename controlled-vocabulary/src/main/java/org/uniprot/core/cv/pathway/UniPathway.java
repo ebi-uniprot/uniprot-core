@@ -1,10 +1,12 @@
 package org.uniprot.core.cv.pathway;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class UniPathway implements Comparable<UniPathway> {
+public class UniPathway implements Comparable<UniPathway>, Serializable {
+    private static final long serialVersionUID = 7579189176261471604L;
     private final String accession;
     private final String name;
     private UniPathway parent;
@@ -25,11 +27,10 @@ public class UniPathway implements Comparable<UniPathway> {
 
     public void setParent(UniPathway parent) {
         this.parent = parent;
-        if (this.parent != null) {
-            if (!this.parent.getChildren().contains(this)) {
-                this.parent.getChildren().add(this);
-            }
-        }
+    }
+
+    public void setChildren(List<UniPathway> children) {
+        this.children = children;
     }
 
     public UniPathway getParent() {

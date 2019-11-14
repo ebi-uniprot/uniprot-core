@@ -2,6 +2,7 @@ package org.uniprot.core.uniref.builder;
 
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniref.RepresentativeMember;
+import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.impl.RepresentativeMemberImpl;
 
 /**
@@ -38,8 +39,13 @@ public class RepresentativeMemberBuilder
 
     @Override
     public RepresentativeMemberBuilder from(RepresentativeMember instance) {
-        super.init(instance);
-        return sequence(instance.getSequence());
+        RepresentativeMemberBuilder builder = super.fromMember(instance);
+        builder.sequence(instance.getSequence());
+        return builder;
+    }
+
+    public RepresentativeMemberBuilder from(UniRefMember instance) {
+        return super.fromMember(instance);
     }
 
     @Override

@@ -49,4 +49,13 @@ public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
     public String toDisplayName() {
         return name;
     }
+
+    public static TaxonomyRank typeOf(String value) {
+        for (TaxonomyRank taxonomyRank : TaxonomyRank.values()) {
+            if (taxonomyRank.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
+                return taxonomyRank;
+            }
+        }
+        throw new IllegalArgumentException("The taxonomy rank: " + value + " doesn't exist");
+    }
 }

@@ -94,20 +94,21 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    protected void init(T instance) {
-        this.memberIdType(instance.getMemberIdType())
-                .memberId(instance.getMemberId())
-                .organismName(instance.getOrganismName())
-                .organismTaxId(instance.getOrganismTaxId())
-                .sequenceLength(instance.getSequenceLength())
-                .proteinName(instance.getProteinName())
-                .accession(instance.getUniProtAccession())
-                .uniref100Id(instance.getUniRef100Id())
-                .uniref90Id(instance.getUniRef90Id())
-                .uniref50Id(instance.getUniRef50Id())
-                .uniparcId(instance.getUniParcId())
-                .overlapRegion(instance.getOverlapRegion())
-                .isSeed(instance.isSeed());
+    <S extends UniRefMember> B fromMember(S instance) {
+        this.memberIdType(instance.getMemberIdType());
+        this.memberId(instance.getMemberId());
+        this.organismName(instance.getOrganismName());
+        this.organismTaxId(instance.getOrganismTaxId());
+        this.sequenceLength(instance.getSequenceLength());
+        this.proteinName(instance.getProteinName());
+        this.accession(instance.getUniProtAccession());
+        this.uniref100Id(instance.getUniRef100Id());
+        this.uniref90Id(instance.getUniRef90Id());
+        this.uniref50Id(instance.getUniRef50Id());
+        this.uniparcId(instance.getUniParcId());
+        this.overlapRegion(instance.getOverlapRegion());
+        this.isSeed(instance.isSeed());
+        return getThis();
     }
 
     protected abstract B getThis();

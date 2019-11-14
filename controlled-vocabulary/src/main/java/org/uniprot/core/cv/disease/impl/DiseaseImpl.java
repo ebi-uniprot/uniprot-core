@@ -1,14 +1,15 @@
 package org.uniprot.core.cv.disease.impl;
 
-import java.util.List;
-import java.util.Objects;
-
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
 import org.uniprot.core.cv.keyword.Keyword;
 
+import java.util.List;
+import java.util.Objects;
+
 public class DiseaseImpl implements Disease {
 
+    private static final long serialVersionUID = 3059038050252487022L;
     private String id;
 
     private final String accession;

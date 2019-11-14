@@ -1,6 +1,7 @@
 package org.uniprot.core.util;
 
 public class PairImpl<K, V> implements Pair<K, V> {
+    private static final long serialVersionUID = -2316868501519520544L;
     private final K key;
     private final V value;
 

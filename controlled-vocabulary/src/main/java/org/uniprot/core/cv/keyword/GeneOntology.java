@@ -1,6 +1,8 @@
 package org.uniprot.core.cv.keyword;
 
-public interface GeneOntology {
+import java.io.Serializable;
+
+public interface GeneOntology extends Serializable {
     String getGoId();
 
     String getGoTerm();

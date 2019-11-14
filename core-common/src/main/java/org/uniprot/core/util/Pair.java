@@ -1,6 +1,8 @@
 package org.uniprot.core.util;
 
-public interface Pair<K, V> {
+import java.io.Serializable;
+
+public interface Pair<K, V> extends Serializable {
     K getKey();
 
     V getValue();

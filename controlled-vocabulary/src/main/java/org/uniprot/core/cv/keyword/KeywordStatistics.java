@@ -1,7 +1,9 @@
 package org.uniprot.core.cv.keyword;
 
+import java.io.Serializable;
+
 /** @author lgonzales */
-public interface KeywordStatistics {
+public interface KeywordStatistics extends Serializable {
 
     long getReviewedProteinCount();
 

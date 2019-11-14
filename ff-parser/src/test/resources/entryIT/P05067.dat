@@ -2350,7 +2350,6 @@ DR   ChiTaRS; APP; human.
 DR   EvolutionaryTrace; P05067; -.
 DR   GeneWiki; Amyloid_precursor_protein; -.
 DR   GenomeRNAi; 351; -.
-DR   PMAP-CutDB; P05067; -.
 DR   PRO; PR:P05067; -.
 DR   Proteomes; UP000005640; Chromosome 21.
 DR   Bgee; ENSG00000142192; Expressed in 242 organ(s), highest expression level in frontal cortex.

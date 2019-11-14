@@ -1,17 +1,5 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.disease.DiseaseFileReader;
@@ -23,6 +11,18 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.Utils;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
 /**
  * This class contains all the external supporting data map required to parse from flat file to
  * Entry object.
@@ -32,11 +32,12 @@ import org.uniprot.core.util.Utils;
 public class SupportingDataMapImpl implements SupportingDataMap {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SupportingDataMapImpl.class);
+    private static final long serialVersionUID = 1728773536729799626L;
 
     private Map<String, Pair<String, KeywordCategory>> keywordMap = new HashMap<>();
-    private Map<String, String> diseaseMap = new HashMap<>();;
-    private Map<String, Map<String, List<Evidence>>> goEvidencesMap = new HashMap<>();;
-    private Map<String, String> subcellularLocationMap = new HashMap<>();;
+    private Map<String, String> diseaseMap = new HashMap<>();
+    private Map<String, Map<String, List<Evidence>>> goEvidencesMap = new HashMap<>();
+    private Map<String, String> subcellularLocationMap = new HashMap<>();
 
     public SupportingDataMapImpl() {
         this(null, null, null, null);
