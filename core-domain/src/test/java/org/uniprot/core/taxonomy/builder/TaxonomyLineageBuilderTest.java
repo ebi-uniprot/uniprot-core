@@ -1,11 +1,10 @@
 package org.uniprot.core.taxonomy.builder;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.getCompleteTaxonomyLineage;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class TaxonomyLineageBuilderTest {
 
@@ -21,6 +20,8 @@ class TaxonomyLineageBuilderTest {
 
         assertFalse(taxonomyLineage.hasScientificName());
         assertFalse(taxonomyLineage.hasRank());
+        assertFalse(taxonomyLineage.hasCommonName());
+        assertFalse(taxonomyLineage.hasSynonyms());
     }
 
     @Test
@@ -35,6 +36,9 @@ class TaxonomyLineageBuilderTest {
 
         assertTrue(taxonomyLineage.hasScientificName());
         assertEquals(taxonomyLineage.getScientificName(), "Scientific Name");
+        assertEquals(taxonomyLineage.getCommonName(), "common Name");
+        assertEquals(taxonomyLineage.getSynonyms().size(), 1);
+        assertEquals(taxonomyLineage.getSynonyms().get(0), "synonyms");
     }
 
     @Test
@@ -48,5 +52,16 @@ class TaxonomyLineageBuilderTest {
 
         boolean equals = taxonomyLineage.equals(other);
         assertTrue(equals);
+    }
+
+    static TaxonomyLineage getCompleteTaxonomyLineage() {
+        TaxonomyLineageBuilder builder = new TaxonomyLineageBuilder();
+        builder.taxonId(9606L)
+                .commonName("common Name")
+                .addSynonyms("synonyms")
+                .scientificName("Scientific Name")
+                .hidden(true)
+                .rank(TaxonomyRank.FAMILY);
+        return builder.build();
     }
 }

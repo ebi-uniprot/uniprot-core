@@ -1,14 +1,15 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import java.util.*;
-
 import org.uniprot.core.cv.keyword.GeneOntology;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.cv.keyword.KeywordEntry;
 import org.uniprot.core.cv.keyword.KeywordStatistics;
 
+import java.util.*;
+
 public class KeywordEntryImpl implements KeywordEntry {
 
+    private static final long serialVersionUID = 226389200105459588L;
     private Keyword keyword;
     private String definition;
     private List<String> synonyms;

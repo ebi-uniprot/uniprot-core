@@ -1,11 +1,5 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.gene.Gene;
@@ -18,6 +12,12 @@ import org.uniprot.core.uniprot.impl.UniProtEntryImpl;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
 
 /**
  * A staged builder that guides a user when creating a {@link UniProtEntry} instance. For example,
@@ -101,7 +101,7 @@ public class UniProtEntryBuilder {
         ActiveEntryBuilder sequence(Sequence sequence);
 
         ActiveEntryBuilder internalSection(InternalSection internalSection);
-        
+
         ActiveEntryBuilder addLineage(TaxonomyLineage lineage);
 
         ActiveEntryBuilder lineages(List<TaxonomyLineage> lineages);
@@ -135,6 +135,7 @@ public class UniProtEntryBuilder {
         private EntryInactiveReason inactiveReason = null;
         private boolean active = true;
         private List<TaxonomyLineage> lineages;
+
         private EntryBuilder(UniProtAccession primaryAccession) {
             this.primaryAccession = primaryAccession;
         }
@@ -324,7 +325,7 @@ public class UniProtEntryBuilder {
             this.internalSection = internalSection;
             return this;
         }
-        
+
         @Override
         public ActiveEntryBuilder addLineage(TaxonomyLineage lineage) {
             addOrIgnoreNull(lineage, this.lineages);

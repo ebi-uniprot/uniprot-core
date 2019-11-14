@@ -1,39 +1,12 @@
 package org.uniprot.core.uniprot.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
-
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.comment.APIsoform;
-import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
-import org.uniprot.core.uniprot.comment.BPCPComment;
-import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
-import org.uniprot.core.uniprot.comment.CofactorComment;
-import org.uniprot.core.uniprot.comment.Comment;
-import org.uniprot.core.uniprot.comment.CommentType;
-import org.uniprot.core.uniprot.comment.DiseaseComment;
-import org.uniprot.core.uniprot.comment.FreeText;
-import org.uniprot.core.uniprot.comment.FreeTextComment;
-import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.comment.Note;
-import org.uniprot.core.uniprot.comment.RnaEditingComment;
-import org.uniprot.core.uniprot.comment.SequenceCautionComment;
-import org.uniprot.core.uniprot.comment.SubcellularLocation;
-import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
-import org.uniprot.core.uniprot.description.ProteinAltName;
-import org.uniprot.core.uniprot.description.ProteinDescription;
-import org.uniprot.core.uniprot.description.ProteinRecName;
-import org.uniprot.core.uniprot.description.ProteinSection;
-import org.uniprot.core.uniprot.description.ProteinSubName;
+import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.description.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 import org.uniprot.core.uniprot.feature.Feature;
@@ -43,6 +16,9 @@ import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.util.Utils;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UniProtEntryImpl implements UniProtEntry {
     private static final long serialVersionUID = 3240727057252439286L;
@@ -112,7 +88,7 @@ public class UniProtEntryImpl implements UniProtEntry {
                 null,
                 inactiveReason);
     }
-    
+
     public UniProtEntryImpl(
             UniProtEntryType entryType,
             UniProtAccession primaryAccession,
@@ -133,8 +109,7 @@ public class UniProtEntryImpl implements UniProtEntry {
             List<UniProtDBCrossReference> databaseCrossReferences,
             Sequence sequence,
             InternalSection internalSection,
-            List<TaxonomyLineage> lineages
-            ) {
+            List<TaxonomyLineage> lineages) {
         this(
                 entryType,
                 primaryAccession,
@@ -158,8 +133,6 @@ public class UniProtEntryImpl implements UniProtEntry {
                 lineages,
                 null);
     }
-    
-   
 
     public UniProtEntryImpl(
             UniProtEntryType entryType,
@@ -467,10 +440,10 @@ public class UniProtEntryImpl implements UniProtEntry {
                 internalSection,
                 inactiveReason);
     }
-    
+
     @Override
-    public List<TaxonomyLineage> getLineages(){
-    	return lineages;
+    public List<TaxonomyLineage> getLineages() {
+        return lineages;
     }
 
     @Override

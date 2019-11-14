@@ -1,11 +1,11 @@
 package org.uniprot.core.scorer.uniprotkb;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.DefaultUniProtParser;
 import org.uniprot.core.flatfile.parser.impl.SupportingDataMapImpl;
 import org.uniprot.core.uniprot.UniProtEntry;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by IntelliJ IDEA. User: spatient Date: 08-Mar-2010 Time: 13:47:47 To change this template
@@ -219,7 +219,6 @@ class Q04756ScoredTest {
                     + "DR   OMA; RDRAWGY; -.\n"
                     + "DR   OrthoDB; EOG9VX4R3; -.\n"
                     + "DR   PhylomeDB; Q04756; -.\n"
-                    + "DR   PMAP-CutDB; Q04756; -.\n"
                     + "DR   Bgee; Q04756; -.\n"
                     + "DR   CleanEx; HS_HGFAC; -.\n"
                     + "DR   GO; GO:0005615; C:extracellular space; IEA:InterPro.\n"

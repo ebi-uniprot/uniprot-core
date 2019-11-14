@@ -1,12 +1,13 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.cv.keyword.KeywordStatistics;
+
+import java.util.Objects;
 
 /** @author lgonzales */
 public class KeywordStatisticsImpl implements KeywordStatistics {
 
+    private static final long serialVersionUID = 1767966627449407612L;
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
 

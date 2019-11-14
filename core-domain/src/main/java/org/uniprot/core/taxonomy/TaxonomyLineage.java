@@ -1,21 +1,19 @@
 package org.uniprot.core.taxonomy;
 
+import org.uniprot.core.uniprot.taxonomy.OrganismName;
+
 import java.io.Serializable;
 
 /** @author lgonzales */
-public interface TaxonomyLineage extends Serializable {
+public interface TaxonomyLineage extends OrganismName, Serializable {
 
     long getTaxonId();
-
-    String getScientificName();
 
     TaxonomyRank getRank();
 
     boolean isHidden();
 
     boolean hasTaxonId();
-
-    boolean hasScientificName();
 
     boolean hasRank();
 }

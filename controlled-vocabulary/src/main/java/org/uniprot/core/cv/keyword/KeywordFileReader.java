@@ -1,8 +1,5 @@
 package org.uniprot.core.cv.keyword;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.cv.common.AbstractFileReader;
@@ -11,6 +8,9 @@ import org.uniprot.core.cv.keyword.impl.KeywordEntryImpl;
 import org.uniprot.core.cv.keyword.impl.KeywordImpl;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     private static final String WW_LINE = "WW";
@@ -38,14 +38,17 @@ public class KeywordFileReader extends AbstractFileReader<KeywordEntry> {
     public Map<String, Pair<String, KeywordCategory>> parseFileToAccessionMap(String fileName) {
         List<KeywordEntry> keywordEntryList = parse(fileName);
         return keywordEntryList.stream()
-                .collect(Collectors.toMap(this::getId, this::getAccessionCategoryPair));
+                .collect(
+                        Collectors.toMap(
+                                KeywordFileReader::getId,
+                                KeywordFileReader::getAccessionCategoryPair));
     }
 
-    private String getId(KeywordEntry keyword) {
+    public static String getId(KeywordEntry keyword) {
         return keyword.getKeyword().getId();
     }
 
-    private Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
+    public static Pair<String, KeywordCategory> getAccessionCategoryPair(KeywordEntry keyword) {
         String accession = keyword.getAccession();
         Keyword kcategory = keyword.getCategory();
         KeywordCategory category;

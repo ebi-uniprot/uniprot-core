@@ -1,13 +1,13 @@
 package org.uniprot.core.uniprot.taxonomy.impl;
 
-import static org.uniprot.core.util.Utils.emptyOrString;
-import static org.uniprot.core.util.Utils.unmodifiableList;
+import org.uniprot.core.uniprot.taxonomy.OrganismName;
+import org.uniprot.core.util.Utils;
 
 import java.util.List;
 import java.util.Objects;
 
-import org.uniprot.core.uniprot.taxonomy.OrganismName;
-import org.uniprot.core.util.Utils;
+import static org.uniprot.core.util.Utils.emptyOrString;
+import static org.uniprot.core.util.Utils.unmodifiableList;
 
 /** @author lgonzales */
 public abstract class AbstractOrganismNameImpl implements OrganismName {
@@ -19,7 +19,8 @@ public abstract class AbstractOrganismNameImpl implements OrganismName {
 
     AbstractOrganismNameImpl() {}
 
-    AbstractOrganismNameImpl(String scientificName, String commonName, List<String> synonyms) {
+    public AbstractOrganismNameImpl(
+            String scientificName, String commonName, List<String> synonyms) {
         this.scientificName = emptyOrString(scientificName);
         this.commonName = emptyOrString(commonName);
         this.synonyms = unmodifiableList(synonyms);

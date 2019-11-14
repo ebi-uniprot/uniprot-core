@@ -1,10 +1,11 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import java.util.Objects;
-
 import org.uniprot.core.cv.keyword.Keyword;
 
+import java.util.Objects;
+
 public class KeywordImpl implements Keyword {
+    private static final long serialVersionUID = -1281635311660829402L;
     private final String id;
     private final String accession;
 
