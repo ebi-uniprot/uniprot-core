@@ -1,12 +1,12 @@
 package org.uniprot.core.cv.xdb;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.uniprot.core.cv.xdb.DatabaseCategory.*;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.uniprot.core.cv.xdb.DatabaseCategory.*;
 
 class UniProtXDbTypesTest {
 
@@ -285,7 +285,7 @@ class UniProtXDbTypesTest {
         verifyGroupSize(
                 UniProtXDbTypes.INSTANCE.getDBTypesByCategory(GENOME_ANNOTATION_DATABASES), 14);
         verifyGroupSize(
-                UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES), 37);
+                UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES), 36);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 9);
         verifyGroupSize(
                 UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES), 8);
