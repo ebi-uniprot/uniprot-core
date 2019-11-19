@@ -88,8 +88,11 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
                 .redundantProteomes(redundantProteomes)
                 .dbXReferences(xrefs)
                 .superkingdom(Superkingdom.fromValue(xmlObj.getSuperregnum().value()))
-                .annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore())
                 .references(citations);
+
+        if (xmlObj.getAnnotationScore() != null) {
+            builder.annotationScore(xmlObj.getAnnotationScore().getNormalizedAnnotationScore());
+        }
 
         if (!Strings.isNullOrEmpty(xmlObj.getRedundantTo())) {
             builder.redundantTo(proteomeId(xmlObj.getRedundantTo()));
