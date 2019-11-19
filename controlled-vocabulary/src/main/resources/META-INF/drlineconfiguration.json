@@ -82,7 +82,7 @@
 		"name": "DisProt",
 		"displayName": "DisProt",
 		"category": "FMD",
-		"uriLink": "http://disprot.bio.unipd.it/%s" 
+		"uriLink": "https://disprot.org/%s"
 	},
 	{
 		"name": "SMR",
@@ -769,18 +769,6 @@
 		"uriLink": "http://www.york.ac.uk/res/thomas/Gene.cfm?recordID=%s"
 	},
 	{
-		"name": "EcoGene",
-		"displayName": "EcoGene",
-		"category": "ORG",
-		"uriLink": "http://www.ecogene.org/gene/%s",
-		"attributes": [
-			{
-				"name": "GeneName",
-				"xmlTag":"gene designation"			
-			}
-		]
-	},
-	{
 		"name": "euHCVdb",
 		"displayName": "euHCVdb",
 		"category": "ORG",
@@ -820,7 +808,7 @@
 		"name": "HGNC",
 		"displayName": "HGNC",
 		"category": "ORG",
-		"uriLink": "https://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id=%s",
+		"uriLink": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/%s",
 		"attributes": [
 			{
 				"name": "GeneName",
