@@ -26,7 +26,7 @@ class SubcellularScoredTest extends CommentScoreTestBase {
     @Test
     void shouldScore20() {
         String line =
-                "CC   -!- SUBCELLULAR LOCATION: Spike protein S2: Virion membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Single-\n"
+                "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Single-\n"
                         + "CC       pass type I membrane protein {ECO:0000256|HAMAP-Rule:MF_01146}. Host endoplasmic\n"
                         + "CC       reticulum-Golgi intermediate compartment membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Single-pass\n"
                         + "CC       type I membrane protein) {ECO:0000256|HAMAP-Rule:MF_01146}. Note=Accumulates in the\n"
