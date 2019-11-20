@@ -2,6 +2,9 @@ package org.uniprot.core.uniref.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
@@ -76,10 +79,23 @@ class UniRefMemberBuilderTest {
     }
 
     @Test
-    void testAccession() {
+    void testAddAccession() {
         UniProtAccession accession = new UniProtAccessionBuilder("P12345").build();
-        UniRefMember member = new UniRefMemberBuilder().accession(accession).build();
-        assertEquals(accession, member.getUniProtAccession());
+        UniRefMember member = new UniRefMemberBuilder().addAccession(accession).build();
+        assertEquals(1, member.getUniProtAccessions().size());
+        assertEquals(accession, member.getUniProtAccessions().get(0));
+    }
+
+    @Test
+    void testAccessions() {
+        UniProtAccession accession1 = new UniProtAccessionBuilder("P12345").build();
+        UniProtAccession accession2 = new UniProtAccessionBuilder("P12346").build();
+        List<UniProtAccession> accessions
+        =Arrays.asList(accession1, accession2);
+        UniRefMember member = new UniRefMemberBuilder().accessions(accessions).build();
+        assertEquals(2, member.getUniProtAccessions().size());
+        assertEquals(accession1, member.getUniProtAccessions().get(0));
+        assertEquals(accession2, member.getUniProtAccessions().get(1));
     }
 
     @Test

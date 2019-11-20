@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref.impl;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.uniparc.UniParcId;
@@ -8,6 +10,7 @@ import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
+import org.uniprot.core.util.Utils;
 
 /**
  * @author jluo
@@ -21,7 +24,7 @@ public class UniRefMemberImpl implements UniRefMember {
     private long organismTaxId;
     private int sequenceLength;
     private String proteinName;
-    private UniProtAccession accession;
+    private List<UniProtAccession> accessions;
     private UniRefEntryId uniref50Id;
     private UniRefEntryId uniref90Id;
     private UniRefEntryId uniref100Id;
@@ -30,7 +33,9 @@ public class UniRefMemberImpl implements UniRefMember {
     private Boolean seed;
 
     // no arg constructor for JSON deserialization
-    protected UniRefMemberImpl() {}
+    protected UniRefMemberImpl() {
+    	accessions =Collections.emptyList();
+    }
 
     public UniRefMemberImpl(
             UniRefMemberIdType memberIdType,
@@ -39,7 +44,7 @@ public class UniRefMemberImpl implements UniRefMember {
             long organismTaxId,
             int sequenceLength,
             String proteinName,
-            UniProtAccession accession,
+            List<UniProtAccession> accessions,
             UniRefEntryId uniref50Id,
             UniRefEntryId uniref90Id,
             UniRefEntryId uniref100Id,
@@ -52,7 +57,7 @@ public class UniRefMemberImpl implements UniRefMember {
         this.organismTaxId = organismTaxId;
         this.sequenceLength = sequenceLength;
         this.proteinName = proteinName;
-        this.accession = accession;
+        this.accessions =  Utils.unmodifiableList(accessions);
         this.uniref50Id = uniref50Id;
         this.uniref90Id = uniref90Id;
         this.uniref100Id = uniref100Id;
@@ -92,8 +97,8 @@ public class UniRefMemberImpl implements UniRefMember {
     }
 
     @Override
-    public UniProtAccession getUniProtAccession() {
-        return accession;
+    public List<UniProtAccession> getUniProtAccessions() {
+        return accessions;
     }
 
     @Override
@@ -135,7 +140,7 @@ public class UniRefMemberImpl implements UniRefMember {
                 organismTaxId,
                 sequenceLength,
                 proteinName,
-                accession,
+                accessions,
                 uniref50Id,
                 uniref90Id,
                 uniref100Id,
@@ -156,7 +161,7 @@ public class UniRefMemberImpl implements UniRefMember {
                 && (organismTaxId == other.organismTaxId)
                 && (sequenceLength == other.sequenceLength)
                 && Objects.equals(proteinName, other.proteinName)
-                && Objects.equals(accession, other.accession)
+                && Objects.equals(accessions, other.accessions)
                 && Objects.equals(uniref50Id, other.uniref50Id)
                 && Objects.equals(uniref90Id, other.uniref90Id)
                 && Objects.equals(uniref100Id, other.uniref100Id)

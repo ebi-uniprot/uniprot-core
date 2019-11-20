@@ -125,10 +125,10 @@ public class UniRefEntryMap implements NamedValueMap {
     }
 
     private static String getMember(UniRefMember member) {
-        if (member.getMemberIdType() == UniRefMemberIdType.UNIPROTKB) {
-            return member.getUniProtAccession().getValue();
-        } else {
+//        if ((member.getMemberIdType() == UniRefMemberIdType.UNIPROTKB) && !member.getUniProtAccessions().isEmpty()  {
+//            return member.getUniProtAccession().getValue();
+//        } else {
             return member.getMemberId();
-        }
+ 
     }
 }

@@ -1,5 +1,6 @@
 package org.uniprot.core.uniref.impl;
 
+import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.Sequence;
@@ -31,7 +32,7 @@ public class RepresentativeMemberImpl extends UniRefMemberImpl implements Repres
             long organismTaxId,
             int sequenceLength,
             String proteinName,
-            UniProtAccession accession,
+            List<UniProtAccession> accessions,
             UniRefEntryId uniref50Id,
             UniRefEntryId uniref90Id,
             UniRefEntryId uniref100Id,
@@ -46,7 +47,7 @@ public class RepresentativeMemberImpl extends UniRefMemberImpl implements Repres
                 organismTaxId,
                 sequenceLength,
                 proteinName,
-                accession,
+                accessions,
                 uniref50Id,
                 uniref90Id,
                 uniref100Id,
