@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Arrays;
-import java.util.List;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
@@ -29,7 +29,6 @@ class SequenceCautionCommentBuilderTest {
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
         assertFalse(comment.getNote() != null);
-        assertEquals(0, comment.getPositions().size());
         assertNull(comment.getSequence());
     }
 
@@ -43,40 +42,40 @@ class SequenceCautionCommentBuilderTest {
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
         assertFalse(comment.getNote() != null);
-        assertEquals(0, comment.getPositions().size());
+ 
         assertEquals("somesequence", comment.getSequence());
+        assertNull(comment.getMolecule());
     }
 
     @Test
-    void testSetPositions() {
-        List<String> positions = Arrays.asList(new String[] {"P1", "P2"});
+    void testSetMolecule() {
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                         .sequence("somesequence")
-                        .positions(positions)
+                        .molecule("Isoform 3")
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
         assertFalse(comment.getNote() != null);
-        assertEquals(positions, comment.getPositions());
+ 
         assertEquals("somesequence", comment.getSequence());
+        assertEquals("Isoform 3", comment.getMolecule());
     }
+
 
     @Test
     void testSetNote() {
-        List<String> positions = Arrays.asList(new String[] {"P1", "P2"});
+
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
         SequenceCautionComment comment =
                 builder.sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                         .sequence("somesequence")
-                        .positions(positions)
                         .note("some note")
                         .build();
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
         assertEquals("some note", comment.getNote());
-        assertEquals(positions, comment.getPositions());
         assertEquals("somesequence", comment.getSequence());
     }
 }

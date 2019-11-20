@@ -3,6 +3,7 @@ package org.uniprot.core.flatfile.transformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineUtils;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
@@ -25,18 +26,17 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
     }
 
     @Override
-    public FreeTextComment transform(CommentType type, String annotation) {
-        List<EvidencedValue> texts = buildFreeTexts(annotation);
-
+    public FreeTextComment transform(CommentType type, String annotation) {    
         FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
-        return builder.commentType(type).texts(texts).build();
+        buildFreeTexts(annotation, builder);
+        return builder.commentType(type).build();
     }
 
-    private List<EvidencedValue> buildFreeTexts(String annotation) {
+    private void buildFreeTexts(String annotation, FreeTextCommentBuilder builder) {
         List<EvidencedValue> texts = new ArrayList<>();
         int indexPre = 0;
         int indexPost = 0;
-
+        boolean first =true;
         do {
             indexPre = annotation.indexOf(EVIDENCE_PREFIX);
             if (indexPre == -1) break;
@@ -49,9 +49,20 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
             annotation = annotation.substring(indexPost + 2).trim();
         } while ((indexPost != -1) && (indexPre != -1));
         if (!annotation.isEmpty()) {
-            texts.add(createCommentText(annotation));
-        }
-        return texts;
+        	EvidencedValue cText = createCommentText(annotation);
+      	  if(first) {
+            	first =false;
+				List<String> result = CcLineUtils.parseFreeText(cText.getValue());
+				String newValue = result.get(1);
+				String molecule = result.get(0);
+				builder.molecule(molecule);
+				EvidencedValueBuilder evBuilder =new EvidencedValueBuilder(newValue, cText.getEvidences());
+
+				cText= evBuilder.build();
+            }
+          texts.add(cText);
+      }
+      builder.texts(texts);
     }
 
     private EvidencedValue createCommentText(String value) {

@@ -54,9 +54,11 @@ public class SubcelLocationCommentTransformer
 
         moleculeEndIndex = preNote.indexOf(": ");
         if (moleculeEndIndex > -1) {
-            builder.molecule(preNote.substring(0, moleculeEndIndex));
+           String molecule = preNote.substring(1, moleculeEndIndex-1);
+           builder.molecule(molecule);
             preNote = preNote.substring(moleculeEndIndex + 1).trim();
         }
+
 
         List<SubcellularLocation> locations = populateLocations(preNote);
         builder.subcellularLocations(locations);

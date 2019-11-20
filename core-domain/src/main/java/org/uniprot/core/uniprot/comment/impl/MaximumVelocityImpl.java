@@ -15,7 +15,7 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     private String enzyme;
     private List<Evidence> evidences;
 
-    private MaximumVelocityImpl() {
+    MaximumVelocityImpl() {
         this.evidences = Collections.emptyList();
     }
 

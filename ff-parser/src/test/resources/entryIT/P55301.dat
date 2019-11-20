@@ -2,7 +2,7 @@ ID   FTR_METBF               Reviewed;         297 AA.
 AC   P55301; Q46DU0;
 DT   01-OCT-1996, integrated into UniProtKB/Swiss-Prot.
 DT   01-OCT-1996, sequence version 1.
-DT   07-NOV-2018, entry version 126.
+DT   10-APR-2019, entry version 130.
 DE   RecName: Full=Formylmethanofuran--tetrahydromethanopterin formyltransferase;
 DE            EC=2.3.1.101;
 DE   AltName: Full=H4MPT formyltransferase;
@@ -23,9 +23,8 @@ RN   [2]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RC   STRAIN=Fusaro / DSM 804;
 RX   PubMed=16980466; DOI=10.1128/JB.00810-06;
-RA   Maeder D.L., Anderson I., Brettin T.S., Bruce D.C., Gilna P.,
-RA   Han C.S., Lapidus A., Metcalf W.W., Saunders E., Tapia R.,
-RA   Sowers K.R.;
+RA   Maeder D.L., Anderson I., Brettin T.S., Bruce D.C., Gilna P., Han C.S.,
+RA   Lapidus A., Metcalf W.W., Saunders E., Tapia R., Sowers K.R.;
 RT   "The Methanosarcina barkeri genome: comparative analysis with
 RT   Methanosarcina acetivorans and Methanosarcina mazei reveals extensive
 RT   rearrangement within methanosarcinal genomes.";
@@ -33,8 +32,7 @@ RL   J. Bacteriol. 188:7922-7931(2006).
 RN   [3]
 RP   PROTEIN SEQUENCE OF 1-26.
 RX   PubMed=1483480; DOI=10.1111/j.1432-1033.1992.tb17502.x;
-RA   Breitung J., Borner G., Scholz S., Linder D., Stetter K.O.,
-RA   Thauer R.K.;
+RA   Breitung J., Borner G., Scholz S., Linder D., Stetter K.O., Thauer R.K.;
 RT   "Salt dependence, kinetic properties and catalytic mechanism of N-
 RT   formylmethanofuran:tetrahydromethanopterin formyltransferase from the
 RT   extreme thermophile Methanopyrus kandleri.";
@@ -44,23 +42,28 @@ RP   X-RAY CRYSTALLOGRAPHY (1.85 ANGSTROMS).
 RX   PubMed=12192072; DOI=10.1110/ps.0211002;
 RA   Mamat B., Roth A., Grimm C., Ermler U., Tziatzios C., Schubert D.,
 RA   Thauer R.K., Shima S.;
-RT   "Crystal structures and enzymatic properties of three
-RT   formyltransferases from archaea: environmental adaptation and
-RT   evolutionary relationship.";
+RT   "Crystal structures and enzymatic properties of three formyltransferases
+RT   from archaea: environmental adaptation and evolutionary relationship.";
 RL   Protein Sci. 11:2168-2178(2002).
 CC   -!- FUNCTION: Catalyzes the reversible transfer of a formyl group from
-CC       formylmethanofuran (formyl-MFR) to tetrahydromethanopterin
-CC       (H(4)MPT) so as to produce 5-formyl tetrahydromethanopterin (5-
-CC       formyl-H(4)MPT) and methanofuran (MFR).
+CC       formylmethanofuran (formyl-MFR) to tetrahydromethanopterin (H(4)MPT) so
+CC       as to produce 5-formyl tetrahydromethanopterin (5-formyl-H(4)MPT) and
+CC       methanofuran (MFR).
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=5,6,7,8-tetrahydromethanopterin + H(+) + N-formylmethanofuran
+CC         = methanofuran + N(5)-formyl-5,6,7,8-tetrahydromethanopterin;
+CC         Xref=Rhea:RHEA:18061, ChEBI:CHEBI:15378, ChEBI:CHEBI:57727,
+CC         ChEBI:CHEBI:58018, ChEBI:CHEBI:58103, ChEBI:CHEBI:58151;
+CC         EC=2.3.1.101;
 CC   -!- PATHWAY: One-carbon metabolism; methanogenesis from CO(2); 5,10-
 CC       methenyl-5,6,7,8-tetrahydromethanopterin from CO(2): step 2/3.
 CC   -!- SUBUNIT: Homotetramer.
 CC   -!- SUBCELLULAR LOCATION: Cytoplasm.
 CC   -!- SIMILARITY: Belongs to the FTR family. {ECO:0000305}.
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
 CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 DR   EMBL; X91143; CAA62582.1; -; Genomic_DNA.
 DR   EMBL; CP000099; AAZ69952.1; -; Genomic_DNA.
 DR   RefSeq; WP_011306001.1; NC_007355.1.
@@ -76,7 +79,7 @@ DR   eggNOG; COG2037; LUCA.
 DR   HOGENOM; HOG000230959; -.
 DR   KO; K00672; -.
 DR   OMA; SVIMCPA; -.
-DR   OrthoDB; POG093Z09PX; -.
+DR   OrthoDB; 62652at2157; -.
 DR   BRENDA; 2.3.1.101; 3250.
 DR   UniPathway; UPA00640; UER00693.
 DR   EvolutionaryTrace; P55301; -.
@@ -100,40 +103,69 @@ PE   1: Evidence at protein level;
 KW   3D-structure; Acyltransferase; Complete proteome; Cytoplasm;
 KW   Direct protein sequencing; Methanogenesis; One-carbon metabolism;
 KW   Transferase.
-FT   CHAIN         1    297       Formylmethanofuran--
-FT                                tetrahydromethanopterin
-FT                                formyltransferase.
-FT                                /FTId=PRO_0000138117.
-FT   CONFLICT     22     26       RVLIT -> VIIAA (in Ref. 3; AA sequence).
-FT                                {ECO:0000305}.
-FT   STRAND        6      8       {ECO:0000244|PDB:1M5S}.
-FT   STRAND       12     26       {ECO:0000244|PDB:1M5S}.
-FT   HELIX        30     41       {ECO:0000244|PDB:1M5S}.
-FT   TURN         47     49       {ECO:0000244|PDB:1M5S}.
-FT   STRAND       53     60       {ECO:0000244|PDB:1M5S}.
-FT   TURN         62     64       {ECO:0000244|PDB:1M5S}.
-FT   STRAND       71     80       {ECO:0000244|PDB:1M5S}.
-FT   HELIX        81     95       {ECO:0000244|PDB:1M5S}.
-FT   TURN         96     98       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      103    107       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      112    115       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       117    122       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       123    125       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      130    134       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      137    144       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      147    153       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      155    172       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       173    187       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       198    200       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      202    204       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      207    209       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       222    224       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       226    231       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      243    253       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       254    268       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      274    278       {ECO:0000244|PDB:1M5S}.
-FT   STRAND      288    292       {ECO:0000244|PDB:1M5S}.
-FT   HELIX       293    296       {ECO:0000244|PDB:1M5S}.
+FT   CHAIN           1..297
+FT                   /note="Formylmethanofuran--tetrahydromethanopterin
+FT                   formyltransferase"
+FT                   /id="PRO_0000138117"
+FT   CONFLICT        22..26
+FT                   /note="RVLIT -> VIIAA (in Ref. 3; AA sequence)"
+FT                   /evidence="ECO:0000305"
+FT   STRAND          6..8
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          12..26
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           30..41
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   TURN            47..49
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          53..60
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   TURN            62..64
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          71..80
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           81..95
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   TURN            96..98
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          103..107
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          112..115
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           117..122
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           123..125
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          130..134
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          137..144
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          147..153
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          155..172
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           173..187
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           198..200
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          202..204
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          207..209
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           222..224
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           226..231
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          243..253
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           254..268
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          274..278
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   STRAND          288..292
+FT                   /evidence="ECO:0000244|PDB:1M5S"
+FT   HELIX           293..296
+FT                   /evidence="ECO:0000244|PDB:1M5S"
 SQ   SEQUENCE   297 AA;  31697 MW;  1D584BA3006FD802 CRC64;
      MEINGVEIED TYAEAFPIKI ARVLITAATK RWALVAATEA TGFATSVIMC PAEAGIERLA
      SPSETPDGRP GVYVQICTFK YEALEEQLLE RIGQCVLTAP TTAVFNGLPE AEKQFNVGFK

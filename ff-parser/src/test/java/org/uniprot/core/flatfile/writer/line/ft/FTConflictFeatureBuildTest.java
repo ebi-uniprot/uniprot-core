@@ -7,17 +7,19 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 
 class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void testTwoReports() {
         String ftLine =
-                "FT   CONFLICT      1      1       A -> Q (in Ref. 1; BAA37160/BAA37165 and\n"
-                        + "FT                                2).";
-        String ftLineString = "CONFLICT 1 1 A -> Q (in Ref. 1; BAA37160/BAA37165 and 2).";
+                "FT   CONFLICT        1\n" + 
+                "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"";
+        String ftLineString = "CONFLICT 1\n" + 
+            "/note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"";
 
-        Range location = new Range(1, 1);
+        FeatureLocation location = new FeatureLocation(1, 1);
         String originalSequence = "A";
         List<String> alternativeSequences = new ArrayList<>();
         alternativeSequences.add("Q");
@@ -40,17 +42,20 @@ class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void testConflictEvidence() {
         String ftLine =
-                "FT   CONFLICT      1      1       A -> Q (in Ref. 1; BAA37160/BAA37165 and\n"
-                        + "FT                                2). {ECO:0000269|PubMed:10433554,\n"
-                        + "FT                                ECO:0000313|EMBL:BAG16761.1}.";
-        String ftLineString = "CONFLICT 1 1 A -> Q (in Ref. 1; BAA37160/BAA37165 and 2).";
+                "FT   CONFLICT        1\n" + 
+                "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"\n" + 
+                "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n" + 
+                "FT                   ECO:0000313|EMBL:BAG16761.1\"";
+        String ftLineString = "CONFLICT 1\n" + 
+            "/note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"";
         String ftLineStringEv =
-                "CONFLICT 1 1 A -> Q (in Ref. 1; BAA37160/BAA37165 and 2). "
-                        + "{ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1}.";
+                "CONFLICT 1\n" + 
+                "/note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"\n" + 
+                "/evidence=\"ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1\"";
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         // String ev3 ="ECO:0000303|Ref.6";
-        Range location = new Range(1, 1);
+        FeatureLocation location = new FeatureLocation(1, 1);
 
         String originalSequence = "A";
         List<String> alternativeSequences = new ArrayList<>();
@@ -78,11 +83,13 @@ class FTConflictFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void testThreeReprotsAndTwoAltSeq() {
         String ftLine =
-                "FT   CONFLICT      1      1       A -> QK (in Ref. 1; BAA37160/BAA37165, 2;\n"
-                        + "FT                                ABO40479 and 6; AAH63566).";
+                "FT   CONFLICT        1\n" + 
+                "FT                   /note=\"A -> QK (in Ref. 1; BAA37160/BAA37165, 2; ABO40479\n" + 
+                "FT                   and 6; AAH63566)\"";
         String ftLineString =
-                "CONFLICT 1 1 A -> QK (in Ref. 1; BAA37160/BAA37165, 2; ABO40479 and 6; AAH63566).";
-        Range location = new Range(1, 1);
+                "CONFLICT 1\n" + 
+                "/note=\"A -> QK (in Ref. 1; BAA37160/BAA37165, 2; ABO40479 and 6; AAH63566)\"";
+        FeatureLocation location = new FeatureLocation(1, 1);
 
         String originalSequence = "A";
         List<String> alternativeSequences = new ArrayList<>();

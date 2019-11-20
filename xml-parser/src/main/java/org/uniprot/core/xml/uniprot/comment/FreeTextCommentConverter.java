@@ -7,9 +7,12 @@ import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
+
+import com.google.common.base.Strings;
 
 public class FreeTextCommentConverter implements CommentConverter<FreeTextComment> {
     private final ObjectFactory xmlUniprotFactory;
@@ -35,7 +38,12 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
                         .map(eviValueConverter::fromXml)
                         .collect(Collectors.toList());
 
-        return new FreeTextCommentBuilder().commentType(type).texts(texts).build();
+        FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
+        // Molecule
+        if (xmlObj.getMolecule() != null) {
+            builder.molecule(xmlObj.getMolecule().getValue());
+        }
+        return builder.commentType(type).texts(texts).build();
     }
 
     @Override
@@ -45,6 +53,13 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
         CommentType xmlObj = xmlUniprotFactory.createCommentType();
         // type
         xmlObj.setType(uniObj.getCommentType().toXmlDisplayName());
+        
+        if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(uniObj.getMolecule());
+            xmlObj.setMolecule(mol);
+        }
+        
         uniObj.getTexts().forEach(val -> xmlObj.getText().add(eviValueConverter.toXml(val)));
         return xmlObj;
     }

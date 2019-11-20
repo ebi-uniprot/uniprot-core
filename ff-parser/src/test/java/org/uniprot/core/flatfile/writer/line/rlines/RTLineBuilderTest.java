@@ -16,7 +16,7 @@ class RTLineBuilderTest {
                 "Comparative genomic analyses of frog virus 3, type species of the genus Ranavirus (family Iridoviridae).";
         List<String> lines = builder.buildLine(title, true, true);
         assertEquals(2, lines.size());
-        String expected = "RT   genus Ranavirus (family Iridoviridae).\";";
+        String expected = "RT   Ranavirus (family Iridoviridae).\";";
         assertEquals(expected, lines.get(1));
     }
 
@@ -37,7 +37,7 @@ class RTLineBuilderTest {
                 "Characterization and organization of the genes encoding the A-, B- and C-chains of human complement subcomponent C1q. The complete derived amino acid sequence of human C1q.";
         List<String> lines = builder.buildLine(title, true, true);
         assertEquals(
-                "RT   \"Characterization and organization of the genes encoding the A-,",
+                "RT   \"Characterization and organization of the genes encoding the A-, B- and C-",
                 lines.get(0));
     }
 }

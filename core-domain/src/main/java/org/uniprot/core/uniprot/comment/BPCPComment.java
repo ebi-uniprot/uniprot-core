@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment;
 
-public interface BPCPComment extends Comment {
+public interface BPCPComment extends Comment, HasMolecule {
 
     Absorption getAbsorption();
 

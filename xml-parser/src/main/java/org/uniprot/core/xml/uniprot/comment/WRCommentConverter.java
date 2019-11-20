@@ -6,6 +6,7 @@ import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 
 import com.google.common.base.Strings;
@@ -26,6 +27,12 @@ public class WRCommentConverter implements CommentConverter<WebResourceComment> 
         if (xmlObject == null) return null;
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
 
+        // Molecule
+        if (xmlObject.getMolecule() != null) {
+            builder.molecule(xmlObject.getMolecule().getValue());
+        }
+        
+        
         if (xmlObject.getName() != null) {
             builder.resourceName(xmlObject.getName());
         }
@@ -50,6 +57,13 @@ public class WRCommentConverter implements CommentConverter<WebResourceComment> 
         if (uniObj == null) return null;
         CommentType commentType = xmlUniprotFactory.createCommentType();
         commentType.setType(WebResourceComment.ONLINE_INFORMATION_XMLTAG);
+        
+        if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(uniObj.getMolecule());
+            commentType.setMolecule(mol);
+        }
+        
         if (!Strings.isNullOrEmpty(uniObj.getResourceName())) {
             commentType.setName(uniObj.getResourceName());
         }

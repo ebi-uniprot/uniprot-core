@@ -17,7 +17,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences;
 
-    private PhysiologicalReactionImpl() {
+    PhysiologicalReactionImpl() {
         this.evidences = Collections.emptyList();
     }
 

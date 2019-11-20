@@ -2,7 +2,7 @@ ID   VEGFA_MOUSE             Reviewed;         214 AA.
 AC   Q00731; O70123; Q66S31; Q6GT23; Q6WZL9;
 DT   01-APR-1993, integrated into UniProtKB/Swiss-Prot.
 DT   01-OCT-1996, sequence version 2.
-DT   05-DEC-2018, entry version 178.
+DT   13-FEB-2019, entry version 180.
 DE   RecName: Full=Vascular endothelial growth factor A;
 DE            Short=VEGF-A;
 DE   AltName: Full=Vascular permeability factor;
@@ -10,9 +10,9 @@ DE            Short=VPF;
 DE   Flags: Precursor;
 GN   Name=Vegfa; Synonyms=Vegf;
 OS   Mus musculus (Mouse).
-OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
-OC   Mammalia; Eutheria; Euarchontoglires; Glires; Rodentia; Myomorpha;
-OC   Muroidea; Muridae; Murinae; Mus; Mus.
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Glires; Rodentia; Myomorpha; Muroidea; Muridae;
+OC   Murinae; Mus; Mus.
 OX   NCBI_TaxID=10090;
 RN   [1]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORMS VEGF-1; VEGF-2 AND VEGF-3).
@@ -25,44 +25,63 @@ RN   [2]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM VEGF-1).
 RX   PubMed=1644816;
 RA   Claffey K.P., Wilkison W.O., Spiegelman B.M.;
-RT   "Vascular endothelial growth factor. Regulation by cell
-RT   differentiation and activated second messenger pathways.";
+RT   "Vascular endothelial growth factor. Regulation by cell differentiation and
+RT   activated second messenger pathways.";
 RL   J. Biol. Chem. 267:16317-16322(1992).
 RN   [3]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM VEGF-4).
 RC   STRAIN=ICR;
 RX   PubMed=9446618; DOI=10.1074/jbc.273.5.3033;
 RA   Sugihara T., Wadhwa R., Kaul S.C., Mitsui Y.;
-RT   "A novel alternatively spliced form of murine vascular endothelial
-RT   growth factor, VEGF 115.";
+RT   "A novel alternatively spliced form of murine vascular endothelial growth
+RT   factor, VEGF 115.";
 RL   J. Biol. Chem. 273:3033-3038(1998).
 RN   [4]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM VEGF-5).
 RC   STRAIN=FVB/N;
 RA   Jankowsky J.A., Adamski F.M., Robertson F.M.;
-RT   "Identification of a unique Mus musculus VEGF isoform of 102 amino
-RT   acids.";
+RT   "Identification of a unique Mus musculus VEGF isoform of 102 amino acids.";
 RL   Submitted (MAR-2003) to the EMBL/GenBank/DDBJ databases.
 RN   [5]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RC   STRAIN=C57BL/6J;
 RX   PubMed=19468303; DOI=10.1371/journal.pbio.1000112;
-RA   Church D.M., Goodstadt L., Hillier L.W., Zody M.C., Goldstein S.,
-RA   She X., Bult C.J., Agarwala R., Cherry J.L., DiCuccio M., Hlavina W.,
-RA   Kapustin Y., Meric P., Maglott D., Birtle Z., Marques A.C., Graves T.,
-RA   Zhou S., Teague B., Potamousis K., Churas C., Place M., Herschleb J.,
-RA   Runnheim R., Forrest D., Amos-Landgraf J., Schwartz D.C., Cheng Z.,
-RA   Lindblad-Toh K., Eichler E.E., Ponting C.P.;
-RT   "Lineage-specific biology revealed by a finished genome assembly of
-RT   the mouse.";
+RA   Church D.M., Goodstadt L., Hillier L.W., Zody M.C., Goldstein S., She X.,
+RA   Bult C.J., Agarwala R., Cherry J.L., DiCuccio M., Hlavina W., Kapustin Y.,
+RA   Meric P., Maglott D., Birtle Z., Marques A.C., Graves T., Zhou S.,
+RA   Teague B., Potamousis K., Churas C., Place M., Herschleb J., Runnheim R.,
+RA   Forrest D., Amos-Landgraf J., Schwartz D.C., Cheng Z., Lindblad-Toh K.,
+RA   Eichler E.E., Ponting C.P.;
+RT   "Lineage-specific biology revealed by a finished genome assembly of the
+RT   mouse.";
 RL   PLoS Biol. 7:E1000112-E1000112(2009).
 RN   [6]
 RP   PARTIAL NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM L-VEGF-1).
 RC   STRAIN=C57BL/6J; TISSUE=Brain;
 RX   PubMed=15489334; DOI=10.1101/gr.2596504;
 RG   The MGC Project Team;
-RT   "The status, quality, and expansion of the NIH full-length cDNA
-RT   project: the Mammalian Gene Collection (MGC).";
+RA   Gerhard D.S., Wagner L., Feingold E.A., Shenmen C.M., Grouse L.H.,
+RA   Schuler G., Klein S.L., Old S., Rasooly R., Good P., Guyer M., Peck A.M.,
+RA   Derge J.G., Lipman D., Collins F.S., Jang W., Sherry S., Feolo M.,
+RA   Misquitta L., Lee E., Rotmistrovsky K., Greenhut S.F., Schaefer C.F.,
+RA   Buetow K., Bonner T.I., Haussler D., Kent J., Kiekhaus M., Furey T.,
+RA   Brent M., Prange C., Schreiber K., Shapiro N., Bhat N.K., Hopkins R.F.,
+RA   Hsie F., Driscoll T., Soares M.B., Casavant T.L., Scheetz T.E.,
+RA   Brown-stein M.J., Usdin T.B., Toshiyuki S., Carninci P., Piao Y.,
+RA   Dudekula D.B., Ko M.S., Kawakami K., Suzuki Y., Sugano S., Gruber C.E.,
+RA   Smith M.R., Simmons B., Moore T., Waterman R., Johnson S.L., Ruan Y.,
+RA   Wei C.L., Mathavan S., Gunaratne P.H., Wu J., Garcia A.M., Hulyk S.W.,
+RA   Fuh E., Yuan Y., Sneed A., Kowis C., Hodgson A., Muzny D.M., McPherson J.,
+RA   Gibbs R.A., Fahey J., Helton E., Ketteman M., Madan A., Rodrigues S.,
+RA   Sanchez A., Whiting M., Madari A., Young A.C., Wetherby K.D., Granite S.J.,
+RA   Kwong P.N., Brinkley C.P., Pearson R.L., Bouffard G.G., Blakesly R.W.,
+RA   Green E.D., Dickson M.C., Rodriguez A.C., Grimwood J., Schmutz J.,
+RA   Myers R.M., Butterfield Y.S., Griffith M., Griffith O.L., Krzywinski M.I.,
+RA   Liao N., Morin R., Morrin R., Palmquist D., Petrescu A.S., Skalska U.,
+RA   Smailus D.E., Stott J.M., Schnerch A., Schein J.E., Jones S.J., Holt R.A.,
+RA   Baross A., Marra M.A., Clifton S., Makowski K.A., Bosak S., Malek J.;
+RT   "The status, quality, and expansion of the NIH full-length cDNA project:
+RT   the Mammalian Gene Collection (MGC).";
 RL   Genome Res. 14:2121-2127(2004).
 RN   [7]
 RP   NUCLEOTIDE SEQUENCE [MRNA] OF 1-123 (ISOFORMS VEGF-1/VEGF-2/VEGF-3).
@@ -75,10 +94,9 @@ RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA] OF 1-3 (ISOFORMS
 RP   VEGF-1/VEGF-2/VEGF-3/VEGF-4/VEGF-5).
 RX   PubMed=8632007; DOI=10.1074/jbc.271.7.3877;
 RA   Shima D.T., Kuroki M., Deutsch U., Ng Y., Adamis A.P., D'Amore P.A.;
-RT   "The mouse gene for vascular endothelial growth factor. Genomic
-RT   structure, definition of the transcriptional unit, and
-RT   characterization of transcriptional and post-transcriptional
-RT   regulatory sequences.";
+RT   "The mouse gene for vascular endothelial growth factor. Genomic structure,
+RT   definition of the transcriptional unit, and characterization of
+RT   transcriptional and post-transcriptional regulatory sequences.";
 RL   J. Biol. Chem. 271:3877-3883(1996).
 RN   [9]
 RP   DEVELOPMENTAL STAGE.
@@ -99,41 +117,40 @@ RN   [11]
 RP   FUNCTION, AND INTERACTION WITH NRP1.
 RX   PubMed=26503042; DOI=10.1038/nature15510;
 RA   He W., Bai G., Zhou H., Wei N., White N.M., Lauer J., Liu H., Shi Y.,
-RA   Dumitru C.D., Lettieri K., Shubayev V., Jordanova A.,
-RA   Guergueltcheva V., Griffin P.R., Burgess R.W., Pfaff S.L., Yang X.L.;
-RT   "CMT2D neuropathy is linked to the neomorphic binding activity of
-RT   glycyl-tRNA synthetase.";
+RA   Dumitru C.D., Lettieri K., Shubayev V., Jordanova A., Guergueltcheva V.,
+RA   Griffin P.R., Burgess R.W., Pfaff S.L., Yang X.L.;
+RT   "CMT2D neuropathy is linked to the neomorphic binding activity of glycyl-
+RT   tRNA synthetase.";
 RL   Nature 526:710-714(2015).
 RN   [12]
 RP   ERRATUM.
 RX   PubMed=26789244; DOI=10.1038/nature16499;
 RA   He W., Bai G., Zhou H., Wei N., White N.M., Lauer J., Liu H., Shi Y.,
-RA   Dan Dumitru C., Lettieri K., Shubayev V., Jordanova A.,
-RA   Guergueltcheva V., Griffin P.R., Burgess R.W., Pfaff S.L., Yang X.L.;
-RT   "Corrigendum: CMT2D neuropathy is linked to the neomorphic binding
-RT   activity of glycyl-tRNA synthetase.";
+RA   Dan Dumitru C., Lettieri K., Shubayev V., Jordanova A., Guergueltcheva V.,
+RA   Griffin P.R., Burgess R.W., Pfaff S.L., Yang X.L.;
+RT   "Corrigendum: CMT2D neuropathy is linked to the neomorphic binding activity
+RT   of glycyl-tRNA synthetase.";
 RL   Nature 532:402-402(2016).
 CC   -!- FUNCTION: Growth factor active in angiogenesis, vasculogenesis and
 CC       endothelial cell growth. Induces endothelial cell proliferation,
 CC       promotes cell migration, inhibits apoptosis and induces
 CC       permeabilization of blood vessels. Binds to the FLT1/VEGFR1 and
-CC       KDR/VEGFR2 receptors, heparan sulfate and heparin. May play a role
-CC       in increasing vascular permeability during lactation, when
-CC       increased transport of molecules from the blood is required for
-CC       efficient milk protein synthesis (By similarity). Binding to NRP1
-CC       receptor initiates a signaling pathway needed for motor neuron
-CC       axon guidance and cell body migration, including for the caudal
-CC       migration of facial motor neurons from rhombomere 4 to rhombomere
-CC       6 during embryonic development (PubMed:26503042). {ECO:0000250,
-CC       ECO:0000269|PubMed:26503042}.
-CC   -!- SUBUNIT: Homodimer; disulfide-linked. Also found as heterodimer
-CC       with PGF (By similarity). Interacts with NRP1 (PubMed:26503042).
+CC       KDR/VEGFR2 receptors, heparan sulfate and heparin. May play a role in
+CC       increasing vascular permeability during lactation, when increased
+CC       transport of molecules from the blood is required for efficient milk
+CC       protein synthesis (By similarity). Binding to NRP1 receptor initiates a
+CC       signaling pathway needed for motor neuron axon guidance and cell body
+CC       migration, including for the caudal migration of facial motor neurons
+CC       from rhombomere 4 to rhombomere 6 during embryonic development
+CC       (PubMed:26503042). {ECO:0000250, ECO:0000269|PubMed:26503042}.
+CC   -!- SUBUNIT: Homodimer; disulfide-linked. Also found as heterodimer with
+CC       PGF (By similarity). Interacts with NRP1 (PubMed:26503042).
 CC       {ECO:0000250, ECO:0000269|PubMed:26503042}.
-CC   -!- SUBCELLULAR LOCATION: Isoform VEGF-1: Secreted.
-CC   -!- SUBCELLULAR LOCATION: Isoform VEGF-2: Secreted.
-CC   -!- SUBCELLULAR LOCATION: Isoform VEGF-3: Cell membrane; Peripheral
-CC       membrane protein. Note=Remains cell-surface associated unless
-CC       released by heparin.
+CC   -!- SUBCELLULAR LOCATION: [Isoform VEGF-1]: Secreted.
+CC   -!- SUBCELLULAR LOCATION: [Isoform VEGF-2]: Secreted.
+CC   -!- SUBCELLULAR LOCATION: [Isoform VEGF-3]: Cell membrane; Peripheral
+CC       membrane protein. Note=Remains cell-surface associated unless released
+CC       by heparin.
 CC   -!- ALTERNATIVE PRODUCTS:
 CC       Event=Alternative promoter usage, Alternative splicing, Alternative initiation; Named isoforms=6;
 CC       Name=VEGF-3; Synonyms=VEGF188;
@@ -149,22 +166,20 @@ CC         IsoId=Q00731-5; Sequence=VSP_016419, VSP_016420;
 CC       Name=L-VEGF-1;
 CC         IsoId=Q00731-6; Sequence=VSP_038746, VSP_004626, VSP_004627;
 CC         Note=Gene prediction based on EST data. Produced by alternative
-CC         promoter usage and alternative initiation. Starts at an
-CC         alternative upstream CUG codon.;
+CC         promoter usage and alternative initiation. Starts at an alternative
+CC         upstream CUG codon.;
 CC   -!- TISSUE SPECIFICITY: In developing embryos, expressed mainly in the
-CC       choroid plexus, paraventricular neuroepithelium, placenta and
-CC       kidney glomeruli. Also found in bronchial epithelium, adrenal
-CC       gland and in seminiferous tubules of testis. High expression of
-CC       VEGF continues in kidney glomeruli and choroid plexus in adults.
-CC   -!- DEVELOPMENTAL STAGE: Levels increase during pregnancy (maximum
-CC       5.5-fold at 5 days) and a more marked increase occurs during
-CC       lactation (maximal 9.7-fold at 7 days). Levels decrease
-CC       progressively during the phase of involution.
-CC       {ECO:0000269|PubMed:10878616}.
-CC   -!- INDUCTION: By IL-6 and FSH in vitro.
-CC       {ECO:0000269|PubMed:16259067}.
-CC   -!- DOMAIN: Isoform VEGF-3 contains a basic insert which acts as a
-CC       cell retention signal.
+CC       choroid plexus, paraventricular neuroepithelium, placenta and kidney
+CC       glomeruli. Also found in bronchial epithelium, adrenal gland and in
+CC       seminiferous tubules of testis. High expression of VEGF continues in
+CC       kidney glomeruli and choroid plexus in adults.
+CC   -!- DEVELOPMENTAL STAGE: Levels increase during pregnancy (maximum 5.5-fold
+CC       at 5 days) and a more marked increase occurs during lactation (maximal
+CC       9.7-fold at 7 days). Levels decrease progressively during the phase of
+CC       involution. {ECO:0000269|PubMed:10878616}.
+CC   -!- INDUCTION: By IL-6 and FSH in vitro. {ECO:0000269|PubMed:16259067}.
+CC   -!- DOMAIN: Isoform VEGF-3 contains a basic insert which acts as a cell
+CC       retention signal.
 CC   -!- SIMILARITY: Belongs to the PDGF/VEGF growth factor family.
 CC       {ECO:0000305}.
 CC   -!- SEQUENCE CAUTION:
@@ -196,7 +211,7 @@ DR   RefSeq; NP_001273987.1; NM_001287058.1. [Q00731-3]
 DR   RefSeq; NP_001303970.1; NM_001317041.1.
 DR   RefSeq; NP_033531.3; NM_009505.4. [Q00731-6]
 DR   SMR; Q00731; -.
-DR   BioGrid; 204512; 2.
+DR   BioGrid; 204512; 4.
 DR   ComplexPortal; CPX-3160; Vascular endothelial growth factor A complex.
 DR   DIP; DIP-31909N; -.
 DR   IntAct; Q00731; 3.
@@ -221,11 +236,11 @@ DR   GeneTree; ENSGT00940000157284; -.
 DR   HOGENOM; HOG000230896; -.
 DR   InParanoid; Q00731; -.
 DR   KO; K05448; -.
+DR   OrthoDB; 1364454at2759; -.
 DR   PhylomeDB; Q00731; -.
 DR   Reactome; R-MMU-114608; Platelet degranulation.
 DR   Reactome; R-MMU-194313; VEGF ligand-receptor interactions.
 DR   Reactome; R-MMU-195399; VEGF binds to VEGFR leading to receptor dimerization.
-DR   Reactome; R-MMU-3928662; EPHB-mediated forward signaling.
 DR   Reactome; R-MMU-4420097; VEGFA-VEGFR2 Pathway.
 DR   Reactome; R-MMU-5218921; VEGFR2 mediated cell proliferation.
 DR   ChiTaRS; Vegfa; mouse.
@@ -259,7 +274,6 @@ DR   GO; GO:0048018; F:receptor ligand activity; ISS:UniProtKB.
 DR   GO; GO:0005102; F:signaling receptor binding; IDA:MGI.
 DR   GO; GO:0043183; F:vascular endothelial growth factor receptor 1 binding; IDA:MGI.
 DR   GO; GO:0043184; F:vascular endothelial growth factor receptor 2 binding; IDA:MGI.
-DR   GO; GO:0043185; F:vascular endothelial growth factor receptor 3 binding; IBA:GO_Central.
 DR   GO; GO:0005172; F:vascular endothelial growth factor receptor binding; ISS:UniProtKB.
 DR   GO; GO:0032147; P:activation of protein kinase activity; ISS:UniProtKB.
 DR   GO; GO:0001525; P:angiogenesis; IDA:MGI.
@@ -281,7 +295,7 @@ DR   GO; GO:0060326; P:cell chemotaxis; ISO:MGI.
 DR   GO; GO:0048469; P:cell maturation; IMP:MGI.
 DR   GO; GO:0016477; P:cell migration; IDA:MGI.
 DR   GO; GO:0002042; P:cell migration involved in sprouting angiogenesis; ISS:UniProtKB.
-DR   GO; GO:0008283; P:cell proliferation; IMP:MGI.
+DR   GO; GO:0008283; P:cell population proliferation; IMP:MGI.
 DR   GO; GO:0071456; P:cellular response to hypoxia; ISS:UniProtKB.
 DR   GO; GO:0035924; P:cellular response to vascular endothelial growth factor stimulus; IGI:BHF-UCL.
 DR   GO; GO:0097533; P:cellular stress response to acid chemical; ISO:MGI.
@@ -336,7 +350,7 @@ DR   GO; GO:0045785; P:positive regulation of cell adhesion; ISS:UniProtKB.
 DR   GO; GO:0051781; P:positive regulation of cell division; IEA:UniProtKB-KW.
 DR   GO; GO:0030335; P:positive regulation of cell migration; ISO:MGI.
 DR   GO; GO:0090050; P:positive regulation of cell migration involved in sprouting angiogenesis; ISS:UniProtKB.
-DR   GO; GO:0008284; P:positive regulation of cell proliferation; IDA:MGI.
+DR   GO; GO:0008284; P:positive regulation of cell population proliferation; IDA:MGI.
 DR   GO; GO:0038091; P:positive regulation of cell proliferation by VEGF-activated platelet derived growth factor receptor signaling pathway; ISS:UniProtKB.
 DR   GO; GO:0051272; P:positive regulation of cellular component movement; ISS:UniProtKB.
 DR   GO; GO:0120162; P:positive regulation of cold-induced thermogenesis; IMP:YuBioLab.
@@ -413,69 +427,86 @@ DR   SUPFAM; SSF57593; SSF57593; 1.
 DR   PROSITE; PS00249; PDGF_1; 1.
 DR   PROSITE; PS50278; PDGF_2; 1.
 PE   1: Evidence at protein level;
-KW   Alternative initiation; Alternative promoter usage;
-KW   Alternative splicing; Angiogenesis; Cell membrane; Complete proteome;
-KW   Developmental protein; Differentiation; Disulfide bond; Glycoprotein;
-KW   Growth factor; Heparin-binding; Membrane; Mitogen; Reference proteome;
-KW   Secreted; Signal.
-FT   SIGNAL        1     26       {ECO:0000250}.
-FT   CHAIN        27    214       Vascular endothelial growth factor A.
-FT                                /FTId=PRO_0000023388.
-FT   CARBOHYD    100    100       N-linked (GlcNAc...) asparagine.
-FT                                {ECO:0000305}.
-FT   DISULFID     51     93       {ECO:0000250}.
-FT   DISULFID     76     76       Interchain. {ECO:0000250}.
-FT   DISULFID     82    127       {ECO:0000250}.
-FT   DISULFID     85     85       Interchain. {ECO:0000250}.
-FT   DISULFID     86    129       {ECO:0000250}.
-FT   VAR_SEQ       1      1       M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA
-FT                                PGGGVEGVGARGIARKLFVQLLGSSRSVVAVVCAAGDKPIG
-FT                                AGRSASSGLEKPGPEKRGEEEKEEERGPQWALGSQEPSSWT
-FT                                GEAAVCADSAPAARAPQAPARASVPEGRGARQGAQESGLPR
-FT                                SPSRRGSASRAGPGRASETM (in isoform L-VEGF-
-FT                                1). {ECO:0000305}.
-FT                                /FTId=VSP_038746.
-FT   VAR_SEQ     105    141       IMRIKPHQSQHIGEMSFLQHSRCECRPKKDRTKPEKK ->
-FT                                VGTCGTGDGAGAGGGRRTVVQGGALEGCLGLCLGNFW (in
-FT                                isoform VEGF-4).
-FT                                {ECO:0000303|PubMed:9446618}.
-FT                                /FTId=VSP_016418.
-FT   VAR_SEQ     105    128       IMRIKPHQSQHIGEMSFLQHSRCE -> VGTCGTGDGAGAG
-FT                                GAGGQWYKEGH (in isoform VEGF-5).
-FT                                {ECO:0000303|Ref.4}.
-FT                                /FTId=VSP_016419.
-FT   VAR_SEQ     129    214       Missing (in isoform VEGF-5).
-FT                                {ECO:0000303|Ref.4}.
-FT                                /FTId=VSP_016420.
-FT   VAR_SEQ     140    140       K -> N (in isoform VEGF-1 and isoform L-
-FT                                VEGF-1). {ECO:0000303|PubMed:1592003,
-FT                                ECO:0000303|PubMed:1644816}.
-FT                                /FTId=VSP_004626.
-FT   VAR_SEQ     141    208       Missing (in isoform VEGF-2).
-FT                                {ECO:0000303|PubMed:1592003}.
-FT                                /FTId=VSP_004628.
-FT   VAR_SEQ     141    164       Missing (in isoform VEGF-1 and isoform L-
-FT                                VEGF-1). {ECO:0000303|PubMed:1592003,
-FT                                ECO:0000303|PubMed:1644816}.
-FT                                /FTId=VSP_004627.
-FT   VAR_SEQ     142    214       Missing (in isoform VEGF-4).
-FT                                {ECO:0000303|PubMed:9446618}.
-FT                                /FTId=VSP_016421.
-FT   CONFLICT     61     61       F -> I (in Ref. 3; AAC05442).
-FT                                {ECO:0000305}.
-FT   CONFLICT    117    118       GE -> ER (in Ref. 2; AAA40547).
-FT                                {ECO:0000305}.
+KW   Alternative initiation; Alternative promoter usage; Alternative splicing;
+KW   Angiogenesis; Cell membrane; Complete proteome; Developmental protein;
+KW   Differentiation; Disulfide bond; Glycoprotein; Growth factor;
+KW   Heparin-binding; Membrane; Mitogen; Reference proteome; Secreted; Signal.
+FT   SIGNAL          1..26
+FT                   /evidence="ECO:0000250"
+FT   CHAIN           27..214
+FT                   /note="Vascular endothelial growth factor A"
+FT                   /id="PRO_0000023388"
+FT   CARBOHYD        100
+FT                   /note="N-linked (GlcNAc...) asparagine"
+FT                   /evidence="ECO:0000305"
+FT   DISULFID        51..93
+FT                   /evidence="ECO:0000250"
+FT   DISULFID        76
+FT                   /note="Interchain"
+FT                   /evidence="ECO:0000250"
+FT   DISULFID        82..127
+FT                   /evidence="ECO:0000250"
+FT   DISULFID        85
+FT                   /note="Interchain"
+FT                   /evidence="ECO:0000250"
+FT   DISULFID        86..129
+FT                   /evidence="ECO:0000250"
+FT   VAR_SEQ         1
+FT                   /note="M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPAPGGGVEGVGAR
+FT                   GIARKLFVQLLGSSRSVVAVVCAAGDKPIGAGRSASSGLEKPGPEKRGEEEKEEERGPQ
+FT                   WALGSQEPSSWTGEAAVCADSAPAARAPQAPARASVPEGRGARQGAQESGLPRSPSRRG
+FT                   SASRAGPGRASETM (in isoform L-VEGF- 1)"
+FT                   /evidence="ECO:0000305"
+FT                   /id="VSP_038746"
+FT   VAR_SEQ         105..141
+FT                   /note="IMRIKPHQSQHIGEMSFLQHSRCECRPKKDRTKPEKK -> VGTCGTGDGAG
+FT                   AGGGRRTVVQGGALEGCLGLCLGNFW (in isoform VEGF-4)"
+FT                   /evidence="ECO:0000303|PubMed:9446618"
+FT                   /id="VSP_016418"
+FT   VAR_SEQ         105..128
+FT                   /note="IMRIKPHQSQHIGEMSFLQHSRCE -> VGTCGTGDGAGAGGAGGQWYKEGH
+FT                   (in isoform VEGF-5)"
+FT                   /evidence="ECO:0000303|Ref.4"
+FT                   /id="VSP_016419"
+FT   VAR_SEQ         129..214
+FT                   /note="Missing (in isoform VEGF-5)"
+FT                   /evidence="ECO:0000303|Ref.4"
+FT                   /id="VSP_016420"
+FT   VAR_SEQ         140
+FT                   /note="K -> N (in isoform VEGF-1 and isoform L- VEGF-1)"
+FT                   /evidence="ECO:0000303|PubMed:1592003,
+FT                   ECO:0000303|PubMed:1644816"
+FT                   /id="VSP_004626"
+FT   VAR_SEQ         141..208
+FT                   /note="Missing (in isoform VEGF-2)"
+FT                   /evidence="ECO:0000303|PubMed:1592003"
+FT                   /id="VSP_004628"
+FT   VAR_SEQ         141..164
+FT                   /note="Missing (in isoform VEGF-1 and isoform L- VEGF-1)"
+FT                   /evidence="ECO:0000303|PubMed:1592003,
+FT                   ECO:0000303|PubMed:1644816"
+FT                   /id="VSP_004627"
+FT   VAR_SEQ         142..214
+FT                   /note="Missing (in isoform VEGF-4)"
+FT                   /evidence="ECO:0000303|PubMed:9446618"
+FT                   /id="VSP_016421"
+FT   CONFLICT        61
+FT                   /note="F -> I (in Ref. 3; AAC05442)"
+FT                   /evidence="ECO:0000305"
+FT   CONFLICT        117..118
+FT                   /note="GE -> ER (in Ref. 2; AAA40547)"
+FT                   /evidence="ECO:0000305"
 **
 **   #################    INTERNAL SECTION    ##################
-**EV ECO:0000250; -; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:10878616; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:16259067; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:26503042; ANN; 27-FEB-2017.
-**EV ECO:0000303; PubMed:1592003; XXX; 01-JAN-1900.
-**EV ECO:0000303; PubMed:1644816; XXX; 01-JAN-1900.
-**EV ECO:0000303; PubMed:9446618; XXX; 01-JAN-1900.
-**EV ECO:0000303; Ref.4; XXX; 01-JAN-1900.
-**EV ECO:0000305; -; XXX; 01-JAN-1900.
+**EV ECO:0000250; -; XXX; 08-APR-2017.
+**EV ECO:0000269; PubMed:10878616; XXX; 11-MAR-2017.
+**EV ECO:0000269; PubMed:16259067; XXX; 11-MAR-2017.
+**EV ECO:0000269; PubMed:26503042; ANN; 11-MAR-2017.
+**EV ECO:0000303; PubMed:1592003; XXX; 08-APR-2017.
+**EV ECO:0000303; PubMed:1644816; XXX; 08-APR-2017.
+**EV ECO:0000303; PubMed:9446618; XXX; 08-APR-2017.
+**EV ECO:0000303; Ref.4; XXX; 08-APR-2017.
+**EV ECO:0000305; -; XXX; 08-APR-2017.
 **SO UPD; 8872; 01-NOV-2005.
 **ZB SEF, 01-NOV-2001; MAM, 08-NOV-2005; SHS, 27-NOV-2005; ALG/LYG, 19-SEP-2006;
 **ZB WMC, 03-NOV-2007; MAM, 07-DEC-2009; LIB, 21-JAN-2010; ANN, 27-FEB-2017;

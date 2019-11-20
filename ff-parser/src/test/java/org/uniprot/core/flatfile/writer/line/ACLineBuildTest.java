@@ -45,8 +45,8 @@ class ACLineBuildTest {
     @Test
     void test2() {
         String acLine =
-                "AC   Q96PK6; B0LM41; B3KMN4; D6RGD8; O75932; Q2PYN1; Q53GV1; Q68DQ9;\n"
-                        + "AC   Q96PK5; A0A000ACJ5; Q96BV4;";
+                "AC   Q96PK6; B0LM41; B3KMN4; D6RGD8; O75932; Q2PYN1; Q53GV1; Q68DQ9; Q96PK5;\n" + 
+                "AC   A0A000ACJ5; Q96BV4;";
         List<UniProtAccession> acces = new ArrayList<>();
         acces.add(new UniProtAccessionBuilder("Q96PK6").build());
         acces.add(new UniProtAccessionBuilder("B0LM41").build());

@@ -13,23 +13,32 @@ public class LineBuilderHelper {
     private static final String SEPARATOR2 = ", ";
 
     public static String export(List<Evidence> evs) {
+    	return export(evs, true);
+      
+    }
+    
+    
+    public static String export(List<Evidence> evs, boolean withBracket) {
         String s = "";
         List<Evidence> evIds = evs.stream().collect(Collectors.toList());
         Collections.sort(evIds);
         boolean first = true;
         boolean isEco = false;
         for (Evidence evid : evIds) {
-            if (evid.getValue().startsWith("ECO")) isEco = true;
+            if (evid.getValue().startsWith("ECO"))
+                isEco = true;
             if (!first) {
                 if (evid.getValue().startsWith("ECO")) {
                     s += SEPARATOR2;
 
-                } else s += SEPARATOR1;
+                } else
+                    s += SEPARATOR1;
+
             }
             s += evid.getValue();
             first = false;
         }
-        if (s.length() > 0) {
+        if ((s.length() > 0) && withBracket) {
             if (isEco) {
                 s = " {" + s + "}";
             } else {
@@ -38,6 +47,7 @@ public class LineBuilderHelper {
         }
         return s;
     }
+
 
     public static class EvidenceComparator implements Comparator<Evidence> {
         public int compare(Evidence ev1, Evidence ev2) {

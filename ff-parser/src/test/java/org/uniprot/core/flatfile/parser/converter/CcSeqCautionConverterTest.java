@@ -33,8 +33,7 @@ class CcSeqCautionConverterTest {
         CcLineObject.SequenceCautionObject sco2 = new CcLineObject.SequenceCautionObject();
         sco2.sequence = "CAI39742.1";
         sco2.type = CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION;
-        sco2.positions.add(388);
-        sco2.positions.add(399);
+      
         sc.sequenceCautionObjects.add(sco2);
 
         cc1.object = sc;
@@ -56,13 +55,12 @@ class CcSeqCautionConverterTest {
         SequenceCautionComment wcomment2 = (SequenceCautionComment) comment2;
 
         assertEquals(SequenceCautionType.ERRONEOUS_PREDICTION, wcomment.getSequenceCautionType());
-        assertEquals(0, wcomment.getPositions().size());
+
         assertEquals("CAI12537.1", wcomment.getSequence());
 
         assertEquals(SequenceCautionType.ERRONEOUS_PREDICTION, wcomment2.getSequenceCautionType());
-        assertEquals(2, wcomment2.getPositions().size());
+
         assertEquals("CAI39742.1", wcomment2.getSequence());
-        assertEquals("388", wcomment2.getPositions().get(0));
-        assertEquals("399", wcomment2.getPositions().get(1));
+
     }
 }

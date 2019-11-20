@@ -2,7 +2,7 @@ ID   RISB_LAWIP              Reviewed;         157 AA.
 AC   Q1MS15;
 DT   15-JAN-2008, integrated into UniProtKB/Swiss-Prot.
 DT   30-MAY-2006, sequence version 1.
-DT   05-DEC-2018, entry version 80.
+DT   16-JAN-2019, entry version 81.
 DE   RecName: Full=6,7-dimethyl-8-ribityllumazine synthase {ECO:0000255|HAMAP-Rule:MF_00178};
 DE            Short=DMRL synthase {ECO:0000255|HAMAP-Rule:MF_00178};
 DE            Short=LS {ECO:0000255|HAMAP-Rule:MF_00178};
@@ -18,26 +18,25 @@ RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RC   STRAIN=PHE/MN1-00;
 RA   Kaur K., Zhang Q., Beckler D., Munir S., Li L., Kinsley K., Herron L.,
 RA   Peterson A., May B., Singh S., Gebhart C., Kapur V.;
-RT   "The complete genome sequence of Lawsonia intracellularis: the
-RT   causative agent of proliferative enteropathy.";
+RT   "The complete genome sequence of Lawsonia intracellularis: the causative
+RT   agent of proliferative enteropathy.";
 RL   Submitted (NOV-2005) to the EMBL/GenBank/DDBJ databases.
-CC   -!- FUNCTION: Catalyzes the formation of 6,7-dimethyl-8-
-CC       ribityllumazine by condensation of 5-amino-6-(D-
-CC       ribitylamino)uracil with 3,4-dihydroxy-2-butanone 4-phosphate.
-CC       This is the penultimate step in the biosynthesis of riboflavin.
-CC       {ECO:0000255|HAMAP-Rule:MF_00178}.
+CC   -!- FUNCTION: Catalyzes the formation of 6,7-dimethyl-8-ribityllumazine by
+CC       condensation of 5-amino-6-(D-ribitylamino)uracil with 3,4-dihydroxy-2-
+CC       butanone 4-phosphate. This is the penultimate step in the biosynthesis
+CC       of riboflavin. {ECO:0000255|HAMAP-Rule:MF_00178}.
 CC   -!- CATALYTIC ACTIVITY:
 CC       Reaction=(2S)-2-hydroxy-3-oxobutyl phosphate + 5-amino-6-(D-
-CC         ribitylamino)uracil = 6,7-dimethyl-8-(1-D-ribityl)lumazine +
-CC         H(+) + 2 H2O + phosphate; Xref=Rhea:RHEA:26152,
-CC         ChEBI:CHEBI:15377, ChEBI:CHEBI:15378, ChEBI:CHEBI:15934,
-CC         ChEBI:CHEBI:43474, ChEBI:CHEBI:58201, ChEBI:CHEBI:58830;
-CC         EC=2.5.1.78; Evidence={ECO:0000255|HAMAP-Rule:MF_00178};
-CC   -!- PATHWAY: Cofactor biosynthesis; riboflavin biosynthesis;
-CC       riboflavin from 2-hydroxy-3-oxobutyl phosphate and 5-amino-6-(D-
+CC         ribitylamino)uracil = 6,7-dimethyl-8-(1-D-ribityl)lumazine + H(+) + 2
+CC         H2O + phosphate; Xref=Rhea:RHEA:26152, ChEBI:CHEBI:15377,
+CC         ChEBI:CHEBI:15378, ChEBI:CHEBI:15934, ChEBI:CHEBI:43474,
+CC         ChEBI:CHEBI:58201, ChEBI:CHEBI:58830; EC=2.5.1.78;
+CC         Evidence={ECO:0000255|HAMAP-Rule:MF_00178};
+CC   -!- PATHWAY: Cofactor biosynthesis; riboflavin biosynthesis; riboflavin
+CC       from 2-hydroxy-3-oxobutyl phosphate and 5-amino-6-(D-
 CC       ribitylamino)uracil: step 1/2. {ECO:0000255|HAMAP-Rule:MF_00178}.
-CC   -!- SIMILARITY: Belongs to the DMRL synthase family.
-CC       {ECO:0000255|HAMAP-Rule:MF_00178}.
+CC   -!- SIMILARITY: Belongs to the DMRL synthase family. {ECO:0000255|HAMAP-
+CC       Rule:MF_00178}.
 DR   EMBL; AM180252; CAJ54210.1; -; Genomic_DNA.
 DR   RefSeq; WP_011526237.1; NC_008011.1.
 DR   SMR; Q1MS15; -.
@@ -48,6 +47,7 @@ DR   eggNOG; COG0054; LUCA.
 DR   HOGENOM; HOG000229249; -.
 DR   KO; K00794; -.
 DR   OMA; HGNKGTE; -.
+DR   OrthoDB; 1680292at2; -.
 DR   BioCyc; LINT363253:G1GJC-173-MONOMER; -.
 DR   UniPathway; UPA00275; UER00404.
 DR   Proteomes; UP000002430; Chromosome.
@@ -67,24 +67,31 @@ DR   TIGRFAMs; TIGR00114; lumazine-synth; 1.
 PE   3: Inferred from homology;
 KW   Complete proteome; Reference proteome; Riboflavin biosynthesis;
 KW   Transferase.
-FT   CHAIN         1    157       6,7-dimethyl-8-ribityllumazine synthase.
-FT                                /FTId=PRO_1000040439.
-FT   REGION       59     61       5-amino-6-(D-ribitylamino)uracil binding.
-FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
-FT   REGION       83     85       5-amino-6-(D-ribitylamino)uracil binding.
-FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
-FT   REGION       88     89       1-deoxy-L-glycero-tetrulose 4-phosphate
-FT                                binding. {ECO:0000255|HAMAP-
-FT                                Rule:MF_00178}.
-FT   ACT_SITE     91     91       Proton donor. {ECO:0000255|HAMAP-
-FT                                Rule:MF_00178}.
-FT   BINDING      25     25       5-amino-6-(D-ribitylamino)uracil.
-FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
-FT   BINDING     116    116       5-amino-6-(D-ribitylamino)uracil; via
-FT                                amide nitrogen and carbonyl oxygen.
-FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
-FT   BINDING     130    130       1-deoxy-L-glycero-tetrulose 4-phosphate.
-FT                                {ECO:0000255|HAMAP-Rule:MF_00178}.
+FT   CHAIN           1..157
+FT                   /note="6,7-dimethyl-8-ribityllumazine synthase"
+FT                   /id="PRO_1000040439"
+FT   REGION          59..61
+FT                   /note="5-amino-6-(D-ribitylamino)uracil binding"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   REGION          83..85
+FT                   /note="5-amino-6-(D-ribitylamino)uracil binding"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   REGION          88..89
+FT                   /note="1-deoxy-L-glycero-tetrulose 4-phosphate binding"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   ACT_SITE        91
+FT                   /note="Proton donor"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   BINDING         25
+FT                   /note="5-amino-6-(D-ribitylamino)uracil"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   BINDING         116
+FT                   /note="5-amino-6-(D-ribitylamino)uracil; via amide nitrogen
+FT                   and carbonyl oxygen"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
+FT   BINDING         130
+FT                   /note="1-deoxy-L-glycero-tetrulose 4-phosphate"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00178"
 **
 **   #################    INTERNAL SECTION    ##################
 **EV ECO:0000255; HAMAP-Rule:MF_00178; XXX; 06-NOV-2015.

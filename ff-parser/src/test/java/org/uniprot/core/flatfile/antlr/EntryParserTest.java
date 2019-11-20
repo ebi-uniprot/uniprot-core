@@ -46,10 +46,13 @@ class EntryParserTest {
                         + "DR   Pfam; PF04947; Pox_VLTF3; 1.\n"
                         + "PE   4: Predicted;\n"
                         + "KW   Activator; Complete proteome; Reference proteome; Transcription;\n"
-                        + "KW   Transcription regulation.\n"
-                        + "FT   CHAIN         1    256       Putative transcription factor 001R.\n"
-                        + "FT                                /FTId=PRO_0000410512.\n"
-                        + "FT   COMPBIAS     14     17       Poly-Arg.\n"
+                        + "KW   Transcription regulation.\n"                     
+                        + "FT   TRANSMEM        116..142\n" + 
+                          "FT                   /note=\"Helical\"\n" + 
+                          "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n" + 
+                          "FT   TRANSMEM        154..177\n" + 
+                          "FT                   /note=\"Helical\"\n" + 
+                          "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n"
                         + "SQ   SEQUENCE   256 AA;  29735 MW;  B4840739BF7D4121 CRC64;\n"
                         + "     MAFSAEDVLK EYDRRRRMEA LLLSLYYPND RKLLDYKEWS PPRVQVECPK APVEWNNPPS\n"
                         + "     EKGLIVGHFS GIKYKGEKAQ ASEVDVNKMC CWVSKFKDAM RRYQGIQTCK IPGKVLSDLD\n"

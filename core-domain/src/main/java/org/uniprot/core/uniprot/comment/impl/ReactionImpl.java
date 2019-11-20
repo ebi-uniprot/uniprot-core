@@ -19,7 +19,7 @@ public class ReactionImpl implements Reaction {
     private ECNumber ecNumber;
     private List<Evidence> evidences;
 
-    private ReactionImpl() {
+    ReactionImpl() {
         this.evidences = Collections.emptyList();
         this.reactionReferences = Collections.emptyList();
     }

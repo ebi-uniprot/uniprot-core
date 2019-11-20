@@ -15,7 +15,7 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
 
-    private SubcellularLocationImpl() {}
+    SubcellularLocationImpl() {}
 
     public SubcellularLocationImpl(
             SubcellularLocationValue location,

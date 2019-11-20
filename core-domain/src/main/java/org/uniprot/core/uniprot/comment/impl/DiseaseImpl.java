@@ -20,7 +20,7 @@ public class DiseaseImpl implements Disease {
     private DBCrossReference<DiseaseReferenceType> reference;
     private List<Evidence> evidences;
 
-    private DiseaseImpl() {
+    DiseaseImpl() {
         this(null, null, null, null, null, null);
     }
 

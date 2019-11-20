@@ -19,10 +19,12 @@ class CatalyticActivityCommentImplTest {
     void testAll() {
         Reaction reaction = createReaction();
         List<PhysiologicalReaction> phyReactions = createPhyReactions();
-        CatalyticActivityComment comment = new CatalyticActivityCommentImpl(reaction, phyReactions);
+        String molecule ="Isoform 2";
+        CatalyticActivityComment comment = new CatalyticActivityCommentImpl(molecule, reaction, phyReactions);
         assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
         assertEquals(reaction, comment.getReaction());
         assertEquals(phyReactions, comment.getPhysiologicalReactions());
+        assertEquals(molecule, comment.getMolecule());
     }
 
     @Test
@@ -30,7 +32,7 @@ class CatalyticActivityCommentImplTest {
         Reaction reaction = createReaction();
 
         CatalyticActivityComment comment =
-                new CatalyticActivityCommentImpl(reaction, Collections.emptyList());
+                new CatalyticActivityCommentImpl(null, reaction, Collections.emptyList());
         assertEquals(CommentType.CATALYTIC_ACTIVITY, comment.getCommentType());
         assertEquals(reaction, comment.getReaction());
         assertTrue(comment.getPhysiologicalReactions().isEmpty());
@@ -45,7 +47,7 @@ class CatalyticActivityCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         CatalyticActivityComment impl =
-                new CatalyticActivityCommentImpl(createReaction(), createPhyReactions());
+                new CatalyticActivityCommentImpl("Isoform 3", createReaction(), createPhyReactions());
         CatalyticActivityComment obj = new CatalyticActivityCommentBuilder().from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

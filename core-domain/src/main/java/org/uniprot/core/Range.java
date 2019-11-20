@@ -5,13 +5,13 @@ import java.io.Serializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public final class Range implements Serializable {
+public class Range implements Serializable {
     private static final long serialVersionUID = 8921458888683701817L;
     private Position start;
     private Position end;
 
     // no arg constructor for JSON deserialization
-    Range() {}
+    protected Range() {}
 
     public Range(@Nullable Integer start, @Nullable Integer end) {
         this(new Position(start), new Position(end));

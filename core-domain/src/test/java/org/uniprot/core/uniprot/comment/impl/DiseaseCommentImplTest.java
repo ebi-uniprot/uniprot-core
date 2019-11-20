@@ -36,10 +36,13 @@ class DiseaseCommentImplTest {
                         .reference(reference)
                         .build();
         Note note = createNote();
+        
+        String molecule="isoform 1";
 
-        DiseaseComment comment = new DiseaseCommentImpl(disease, note);
+        DiseaseComment comment = new DiseaseCommentImpl(molecule, disease, note);
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
+        assertEquals(molecule, comment.getMolecule());
     }
 }

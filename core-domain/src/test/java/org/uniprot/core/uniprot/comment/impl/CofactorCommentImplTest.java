@@ -61,7 +61,7 @@ class CofactorCommentImplTest {
         List<Cofactor> cofactors = Arrays.asList(cofactor);
 
         Note note = createNote();
-        String molecule = "";
+        String molecule =null;
         CofactorComment comment =
                 new CofactorCommentBuilder()
                         .molecule(molecule)

@@ -13,26 +13,26 @@ DE              Short=gp70;
 DE   Flags: Fragment;
 GN   Name=env;
 OS   Friend murine leukemia virus (FrMLV).
-OC   Viruses; Ortervirales; Retroviridae; Orthoretrovirinae;
-OC   Gammaretrovirus; Murine leukemia virus.
+OC   Viruses; Ortervirales; Retroviridae; Orthoretrovirinae; Gammaretrovirus;
+OC   Murine leukemia virus.
 OX   NCBI_TaxID=11795;
 OH   NCBI_TaxID=10090; Mus musculus (Mouse).
 RN   [1]
 RP   PROTEIN SEQUENCE.
 RX   PubMed=6310544; DOI=10.1073/pnas.79.19.5788;
 RA   Chen R.;
-RT   "Complete amino acid sequence and glycosylation sites of glycoprotein
-RT   gp71A of Friend murine leukemia virus.";
+RT   "Complete amino acid sequence and glycosylation sites of glycoprotein gp71A
+RT   of Friend murine leukemia virus.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 79:5788-5792(1982).
 RN   [2]
 RP   GLYCOSYLATION AT ASN-12; ASN-168; ASN-266; THR-268; SER-273; SER-275;
-RP   THR-277; THR-279; ASN-302; THR-304; THR-309; ASN-334; ASN-341; ASN-374
-RP   AND ASN-410.
+RP   THR-277; THR-279; ASN-302; THR-304; THR-309; ASN-334; ASN-341; ASN-374 AND
+RP   ASN-410.
 RX   PubMed=2298213; DOI=10.1111/j.1432-1033.1990.tb15281.x;
 RA   Geyer R., Dabrowski J., Dabrowski U., Linder D., Schlueter M.,
 RA   Schott H.-H., Stirm S.;
-RT   "Oligosaccharides at individual glycosylation sites in glycoprotein 71
-RT   of Friend murine leukemia virus.";
+RT   "Oligosaccharides at individual glycosylation sites in glycoprotein 71 of
+RT   Friend murine leukemia virus.";
 RL   Eur. J. Biochem. 187:95-110(1990).
 RN   [3]
 RP   DISULFIDE BONDS, AND SEQUENCE REVISION TO 184.
@@ -41,30 +41,29 @@ RA   Linder M., Linder D., Hahnen J., Schott H.-H., Stirm S.;
 RT   "Localization of the intrachain disulfide bonds of the envelope
 RT   glycoprotein 71 from Friend murine leukemia virus.";
 RL   Eur. J. Biochem. 203:65-73(1992).
-CC   -!- FUNCTION: The surface protein (SU) attaches the virus to the host
-CC       cell by binding to its receptor. This interaction triggers the
-CC       refolding of the transmembrane protein (TM) and is thought to
-CC       activate its fusogenic potential by unmasking its fusion peptide.
-CC       Fusion occurs at the host cell plasma membrane (By similarity).
+CC   -!- FUNCTION: The surface protein (SU) attaches the virus to the host cell
+CC       by binding to its receptor. This interaction triggers the refolding of
+CC       the transmembrane protein (TM) and is thought to activate its fusogenic
+CC       potential by unmasking its fusion peptide. Fusion occurs at the host
+CC       cell plasma membrane (By similarity). {ECO:0000250}.
+CC   -!- SUBUNIT: The mature envelope protein (Env) consists of a trimer of SU-
+CC       TM heterodimers attached by a labile interchain disulfide bond.
 CC       {ECO:0000250}.
-CC   -!- SUBUNIT: The mature envelope protein (Env) consists of a trimer of
-CC       SU-TM heterodimers attached by a labile interchain disulfide bond.
-CC       {ECO:0000250}.
-CC   -!- SUBCELLULAR LOCATION: Surface protein: Virion membrane; Peripheral
+CC   -!- SUBCELLULAR LOCATION: [Surface protein]: Virion membrane; Peripheral
 CC       membrane protein. Host cell membrane; Peripheral membrane protein.
-CC       Note=The surface protein is not anchored to the viral envelope,
-CC       but associates with the virion surface through its binding to TM.
+CC       Note=The surface protein is not anchored to the viral envelope, but
+CC       associates with the virion surface through its binding to TM.
 CC       {ECO:0000250}.
 CC   -!- PTM: Specific enzymatic cleavages in vivo yield mature proteins.
-CC       Envelope glycoproteins are synthesized as a inactive precursor
-CC       that is N-glycosylated and processed likely by host cell furin or
-CC       by a furin-like protease in the Golgi to yield the mature SU and
-CC       TM proteins. The cleavage site between SU and TM requires the
-CC       minimal sequence [KR]-X-[KR]-R (By similarity). {ECO:0000250}.
-CC   -----------------------------------------------------------------------
+CC       Envelope glycoproteins are synthesized as a inactive precursor that is
+CC       N-glycosylated and processed likely by host cell furin or by a furin-
+CC       like protease in the Golgi to yield the mature SU and TM proteins. The
+CC       cleavage site between SU and TM requires the minimal sequence [KR]-X-
+CC       [KR]-R (By similarity). {ECO:0000250}.
+CC   ---------------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
 CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 DR   PIR; S20285; VCFMLV.
 DR   SMR; P03395; -.
 DR   GlyConnect; 315; -.
@@ -89,96 +88,134 @@ KW   Fusion of virus membrane with host cell membrane;
 KW   Fusion of virus membrane with host membrane; Glycoprotein;
 KW   Host cell membrane; Host membrane; Host-virus interaction; Membrane;
 KW   Metal-binding; Viral attachment to host cell; Viral envelope protein;
-KW   Viral penetration into host cytoplasm; Virion;
-KW   Virus entry into host cell; Zinc.
-FT   CHAIN        <1   >445       Envelope glycoprotein.
-FT                                /FTId=PRO_0000239584.
-FT   CHAIN         1    445       Surface protein. {ECO:0000250}.
-FT                                /FTId=PRO_0000125471.
-FT   TOPO_DOM      1   >445       Extracellular. {ECO:0000255}.
-FT   MOTIF       312    315       CXXC.
-FT   COMPBIAS    233    283       Pro-rich.
-FT   METAL        55     55       Zinc. {ECO:0000250}.
-FT   METAL        86     86       Zinc. {ECO:0000250}.
-FT   CARBOHYD     12     12       N-linked (GlcNAc...) (hybrid) asparagine;
-FT                                by host. {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000083.
-FT   CARBOHYD    168    168       N-linked (GlcNAc...) (high mannose)
-FT                                asparagine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000084.
-FT   CARBOHYD    266    266       N-linked (GlcNAc...)
-FT                                (polylactosaminoglycan) asparagine; by
-FT                                host. {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000085.
-FT   CARBOHYD    268    268       O-linked (GalNAc...) threonine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000086.
-FT   CARBOHYD    273    273       O-linked (GalNAc...) serine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000087.
-FT   CARBOHYD    275    275       O-linked (GalNAc...) serine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000088.
-FT   CARBOHYD    277    277       O-linked (GalNAc...) threonine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000089.
-FT   CARBOHYD    279    279       O-linked (GalNAc...) threonine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000090.
-FT   CARBOHYD    302    302       N-linked (GlcNAc...)
-FT                                (polylactosaminoglycan) asparagine; by
-FT                                host. {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000091.
-FT   CARBOHYD    304    304       O-linked (GalNAc...) threonine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000092.
-FT   CARBOHYD    309    309       O-linked (GalNAc...) threonine; by host.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000093.
-FT   CARBOHYD    334    334       N-linked (GlcNAc...) (high mannose)
-FT                                asparagine; by host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   CARBOHYD    334    334       N-linked (GlcNAc...) (hybrid) asparagine;
-FT                                by host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   CARBOHYD    334    334       N-linked (GlcNAc...)
-FT                                (polylactosaminoglycan) asparagine; by
-FT                                host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   CARBOHYD    341    341       N-linked (GlcNAc...) (high mannose)
-FT                                asparagine; by host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   CARBOHYD    341    341       N-linked (GlcNAc...) (hybrid) asparagine;
-FT                                by host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   CARBOHYD    341    341       N-linked (GlcNAc...)
-FT                                (polylactosaminoglycan) asparagine; by
-FT                                host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   CARBOHYD    374    374       N-linked (GlcNAc...)
-FT                                (polylactosaminoglycan) asparagine; by
-FT                                host. {ECO:0000269|PubMed:2298213}.
-FT                                /FTId=CAR_000096.
-FT   CARBOHYD    410    410       N-linked (GlcNAc...) (high mannose)
-FT                                asparagine; by host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   CARBOHYD    410    410       N-linked (GlcNAc...)
-FT                                (polylactosaminoglycan) asparagine; by
-FT                                host; alternate.
-FT                                {ECO:0000269|PubMed:2298213}.
-FT   DISULFID     46     98       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID     72     87       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID     73     83       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID    121    141       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID    133    146       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID    178    184       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID    312    315       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID    342    396       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID    361    373       {ECO:0000269|PubMed:1730242}.
-FT   DISULFID    403    416       {ECO:0000269|PubMed:1730242}.
-FT   NON_TER       1      1
-FT   NON_TER     445    445
+KW   Viral penetration into host cytoplasm; Virion; Virus entry into host cell;
+KW   Zinc.
+FT   CHAIN           <1..>445
+FT                   /note="Envelope glycoprotein"
+FT                   /id="PRO_0000239584"
+FT   CHAIN           1..445
+FT                   /note="Surface protein"
+FT                   /evidence="ECO:0000250"
+FT                   /id="PRO_0000125471"
+FT   TOPO_DOM        1..>445
+FT                   /note="Extracellular"
+FT                   /evidence="ECO:0000255"
+FT   MOTIF           312..315
+FT                   /note="CXXC"
+FT   COMPBIAS        233..283
+FT                   /note="Pro-rich"
+FT   METAL           55
+FT                   /note="Zinc"
+FT                   /evidence="ECO:0000250"
+FT   METAL           86
+FT                   /note="Zinc"
+FT                   /evidence="ECO:0000250"
+FT   CARBOHYD        12
+FT                   /note="N-linked (GlcNAc...) (hybrid) asparagine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000083"
+FT   CARBOHYD        168
+FT                   /note="N-linked (GlcNAc...) (high mannose) asparagine; by
+FT                   host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000084"
+FT   CARBOHYD        266
+FT                   /note="N-linked (GlcNAc...) (polylactosaminoglycan)
+FT                   asparagine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000085"
+FT   CARBOHYD        268
+FT                   /note="O-linked (GalNAc...) threonine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000086"
+FT   CARBOHYD        273
+FT                   /note="O-linked (GalNAc...) serine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000087"
+FT   CARBOHYD        275
+FT                   /note="O-linked (GalNAc...) serine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000088"
+FT   CARBOHYD        277
+FT                   /note="O-linked (GalNAc...) threonine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000089"
+FT   CARBOHYD        279
+FT                   /note="O-linked (GalNAc...) threonine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000090"
+FT   CARBOHYD        302
+FT                   /note="N-linked (GlcNAc...) (polylactosaminoglycan)
+FT                   asparagine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000091"
+FT   CARBOHYD        304
+FT                   /note="O-linked (GalNAc...) threonine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000092"
+FT   CARBOHYD        309
+FT                   /note="O-linked (GalNAc...) threonine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000093"
+FT   CARBOHYD        334
+FT                   /note="N-linked (GlcNAc...) (high mannose) asparagine; by
+FT                   host; alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   CARBOHYD        334
+FT                   /note="N-linked (GlcNAc...) (hybrid) asparagine; by host;
+FT                   alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   CARBOHYD        334
+FT                   /note="N-linked (GlcNAc...) (polylactosaminoglycan)
+FT                   asparagine; by host; alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   CARBOHYD        341
+FT                   /note="N-linked (GlcNAc...) (high mannose) asparagine; by
+FT                   host; alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   CARBOHYD        341
+FT                   /note="N-linked (GlcNAc...) (hybrid) asparagine; by host;
+FT                   alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   CARBOHYD        341
+FT                   /note="N-linked (GlcNAc...) (polylactosaminoglycan)
+FT                   asparagine; by host; alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   CARBOHYD        374
+FT                   /note="N-linked (GlcNAc...) (polylactosaminoglycan)
+FT                   asparagine; by host"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT                   /id="CAR_000096"
+FT   CARBOHYD        410
+FT                   /note="N-linked (GlcNAc...) (high mannose) asparagine; by
+FT                   host; alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   CARBOHYD        410
+FT                   /note="N-linked (GlcNAc...) (polylactosaminoglycan)
+FT                   asparagine; by host; alternate"
+FT                   /evidence="ECO:0000269|PubMed:2298213"
+FT   DISULFID        46..98
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        72..87
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        73..83
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        121..141
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        133..146
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        178..184
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        312..315
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        342..396
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        361..373
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   DISULFID        403..416
+FT                   /evidence="ECO:0000269|PubMed:1730242"
+FT   NON_TER         1
+FT   NON_TER         445
 SQ   SEQUENCE   445 AA;  48615 MW;  FB30083E491E8975 CRC64;
      AAPGSSPHQV YNITWEVTNG DRETVWAISG NHPLWTWWPV LTPDLCMLAL HGPPHWGLEY
      QAPYSSPPGP PCCSGSGGSS PGCSRDCNEP LTSLTPRCNT AWNRLKLDQV THKSSEGFYV

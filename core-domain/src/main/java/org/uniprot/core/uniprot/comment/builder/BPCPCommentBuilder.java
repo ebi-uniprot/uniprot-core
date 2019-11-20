@@ -6,6 +6,7 @@ import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 
 public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuilder, BPCPComment> {
+	private String molecule;
     private Absorption absorption = null;
     private KineticParameters kineticParameters = null;
     private PhDependence phDependence = null;
@@ -13,17 +14,23 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
     private TemperatureDependence temperatureDependence = null;
 
     public @Nonnull BPCPComment build() {
-        return new BPCPCommentImpl(
+        return new BPCPCommentImpl(molecule,
                 absorption, kineticParameters, phDependence, redoxPotential, temperatureDependence);
     }
 
     @Override
     public @Nonnull BPCPCommentBuilder from(@Nonnull BPCPComment instance) {
         return this.kineticParameters(instance.getKineticParameters())
+        		.molecule(instance.getMolecule())
                 .absorption(instance.getAbsorption())
                 .phDependence(instance.getPhDependence())
                 .redoxPotential(instance.getRedoxPotential())
                 .temperatureDependence(instance.getTemperatureDependence());
+    }
+
+    public BPCPCommentBuilder molecule(String molecule) {
+        this.molecule = molecule;
+        return this;
     }
 
     public BPCPCommentBuilder absorption(Absorption absorption) {

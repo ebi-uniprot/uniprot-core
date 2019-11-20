@@ -11,9 +11,12 @@ import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
 import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
+
+import com.google.common.base.Strings;
 
 public class DiseaseCommentConverter implements CommentConverter<DiseaseComment> {
     private final ObjectFactory xmlUniprotFactory;
@@ -39,6 +42,11 @@ public class DiseaseCommentConverter implements CommentConverter<DiseaseComment>
         if (xmlComment == null) return null;
 
         DiseaseCommentBuilder builder = new DiseaseCommentBuilder();
+        
+        // Molecule
+        if (xmlComment.getMolecule() != null) {
+            builder.molecule(xmlComment.getMolecule().getValue());
+        }
 
         // We do not want to se disease as null in kraken objects, but as empty.
         // Control vocabulary checks are based only on name and id.
@@ -84,6 +92,12 @@ public class DiseaseCommentConverter implements CommentConverter<DiseaseComment>
         // comment type
         xmlComment.setType(comment.getCommentType().toDisplayName().toLowerCase());
 
+        if (!Strings.isNullOrEmpty(comment.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(comment.getMolecule());
+            xmlComment.setMolecule(mol);
+        }
+        
         if (comment.hasDefinedDisease()) {
             xmlComment.setDisease(diseaseConverter.toXml(comment.getDisease()));
             List<Evidence> evidenceIds = comment.getDisease().getEvidences();

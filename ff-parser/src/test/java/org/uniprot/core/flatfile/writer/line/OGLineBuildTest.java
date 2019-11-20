@@ -204,13 +204,13 @@ class OGLineBuildTest {
     @Test
     void testOrganPlasmidsWithEvidence() {
         String ogLine =
-                "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
-                        + "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.\n"
-                        + "OG   Plasmid IncFII R100 (NR1) {ECO:0000269|PubMed:10433554,\n"
-                        + "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid IncW R388 {ECO:0000303|Ref.6},\n"
-                        + "OG   and Plasmid pLMO20 {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "OG   ECO:0000313|EMBL:BAG16761.1}.";
+                "OG   Plastid; Chloroplast {ECO:0000256|HAMAP-Rule:MF_00205,\n" + 
+                "OG   ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n" + 
+                "OG   ECO:0000313|EMBL:BAG16761.1, ECO:0000313|PDB:3OW2}.\n" + 
+                "OG   Plasmid IncFII R100 (NR1) {ECO:0000269|PubMed:10433554,\n" + 
+                "OG   ECO:0000313|EMBL:BAG16761.1}, Plasmid IncW R388 {ECO:0000303|Ref.6}, and\n" + 
+                "OG   Plasmid pLMO20 {ECO:0000256|HAMAP-Rule:MF_00205,\n" + 
+                "OG   ECO:0000313|EMBL:BAG16761.1}.";
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";

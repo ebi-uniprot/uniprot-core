@@ -18,7 +18,7 @@ public class InteractionImpl implements Interaction {
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
-    private InteractionImpl() {}
+    InteractionImpl() {}
 
     public InteractionImpl(
             InteractionType type,
@@ -118,7 +118,12 @@ public class InteractionImpl implements Interaction {
     }
 
     public static class InteractorImpl extends ValueImpl implements Interactor {
-        private InteractorImpl() {
+        /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+
+    private InteractorImpl() {
             super(null);
         }
 
