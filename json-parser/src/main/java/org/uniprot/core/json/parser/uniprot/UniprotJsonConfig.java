@@ -224,7 +224,7 @@ public class UniprotJsonConfig extends JsonConfig {
         mod.registerSubtypes(new NamedType(SubmissionImpl.class, "Submission"));
         mod.registerSubtypes(new NamedType(ThesisImpl.class, "Thesis"));
         mod.registerSubtypes(new NamedType(UnpublishedImpl.class, "Unpublished"));
-        
+
         mod.addAbstractTypeMapping(TaxonomyLineage.class, TaxonomyLineageImpl.class);
 
         objMapper.registerModule(mod);

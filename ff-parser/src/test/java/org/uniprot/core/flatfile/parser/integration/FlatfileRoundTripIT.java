@@ -98,6 +98,7 @@ class FlatfileRoundTripIT {
     }
 
     private void testFile(String file, boolean isPublic) {
+        System.out.println("====>" + file);
         String entryStr = readEntryFromFile(file);
         testEntry(entryStr, isPublic);
     }

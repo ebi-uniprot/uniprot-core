@@ -105,6 +105,6 @@ public interface UniProtEntry extends Serializable {
     boolean hasDatabaseCrossReferences();
 
     List<Evidence> gatherEvidences();
-    
+
     List<TaxonomyLineage> getLineages();
 }
