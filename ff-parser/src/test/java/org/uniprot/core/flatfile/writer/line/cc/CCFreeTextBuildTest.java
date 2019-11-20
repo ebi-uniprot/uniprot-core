@@ -17,20 +17,19 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPTMWithEvidence4() {
         String ccLine =
-                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                        + "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n"
-                        + "CC       secretase leads to generation and extracellular release of soluble\n"
-                        + "CC       APP peptides, S-APP-alpha and S-APP-beta, and the retention of\n"
-                        + "CC       corresponding membrane-anchored C-terminal fragments, C80, C83 and\n"
-                        + "CC       C99. Subsequent processing of C80 and C83 by gamma-secretase\n"
-                        + "CC       yields P3 peptides. This is the major secretory pathway and is\n"
-                        + "CC       non-amyloidogenic. Alternatively, presenilin/nicastrin-mediated\n"
-                        + "CC       gamma-secretase processing of C99 releases the amyloid beta\n"
-                        + "CC       proteins, amyloid-beta 40 (Abeta40) and amyloid-beta 42 (Abeta42),\n"
-                        + "CC       major components of amyloid plaques, and the cytotoxic C-terminal\n"
-                        + "CC       fragments, gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59).\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" + 
+                    "CC       Cleavage either by alpha-secretase, beta-secretase or theta-secretase\n" + 
+                    "CC       leads to generation and extracellular release of soluble APP peptides,\n" + 
+                    "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n" + 
+                    "CC       membrane-anchored C-terminal fragments, C80, C83 and C99. Subsequent\n" + 
+                    "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides. This\n" + 
+                    "CC       is the major secretory pathway and is non-amyloidogenic. Alternatively,\n" + 
+                    "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n" + 
+                    "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40) and\n" + 
+                    "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques, and the\n" + 
+                    "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and gamma-\n" + 
+                    "CC       CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n" + 
+                    "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text1 =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -70,21 +69,20 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPTMWithEvidence2() {
         String ccLine =
-                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                        + "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n"
-                        + "CC       secretase leads to generation and extracellular release of soluble\n"
-                        + "CC       APP peptides, S-APP-alpha and S-APP-beta, and the retention of\n"
-                        + "CC       corresponding membrane-anchored C-terminal fragments, C80, C83 and\n"
-                        + "CC       C99. Subsequent processing of C80 and C83 by gamma-secretase\n"
-                        + "CC       yields P3 peptides. {ECO:0000313|Ensembl:ENSP00000409133}. This is\n"
-                        + "CC       the major secretory pathway and is non-amyloidogenic.\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}. Alternatively,\n"
-                        + "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n"
-                        + "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40) and\n"
-                        + "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques,\n"
-                        + "CC       and the cytotoxic C-terminal fragments, gamma-CTF(50), gamma-\n"
-                        + "CC       CTF(57) and gamma-CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" + 
+                    "CC       Cleavage either by alpha-secretase, beta-secretase or theta-secretase\n" + 
+                    "CC       leads to generation and extracellular release of soluble APP peptides,\n" + 
+                    "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n" + 
+                    "CC       membrane-anchored C-terminal fragments, C80, C83 and C99. Subsequent\n" + 
+                    "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides.\n" + 
+                    "CC       {ECO:0000313|Ensembl:ENSP00000409133}. This is the major secretory\n" + 
+                    "CC       pathway and is non-amyloidogenic. {ECO:0000256|HAMAP-Rule:MF_00205}.\n" + 
+                    "CC       Alternatively, presenilin/nicastrin-mediated gamma-secretase processing\n" + 
+                    "CC       of C99 releases the amyloid beta proteins, amyloid-beta 40 (Abeta40)\n" + 
+                    "CC       and amyloid-beta 42 (Abeta42), major components of amyloid plaques, and\n" + 
+                    "CC       the cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and\n" + 
+                    "CC       gamma-CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n" + 
+                    "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text1 =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -126,23 +124,21 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPTMWithEvidence3() {
         String ccLine =
-                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                        + "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n"
-                        + "CC       secretase leads to generation and extracellular release of soluble\n"
-                        + "CC       APP peptides, S-APP-alpha and S-APP-beta, and the retention of\n"
-                        + "CC       corresponding membrane-anchored C-terminal fragments, C80, C83 and\n"
-                        + "CC       C99. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}. Subsequent processing of C80\n"
-                        + "CC       and C83 by gamma-secretase yields P3 peptides.\n"
-                        + "CC       {ECO:0000313|Ensembl:ENSP00000409133}. This is the major secretory\n"
-                        + "CC       pathway and is non-amyloidogenic. {ECO:0000256|HAMAP-\n"
-                        + "CC       Rule:MF_00205}. Alternatively, presenilin/nicastrin-mediated\n"
-                        + "CC       gamma-secretase processing of C99 releases the amyloid beta\n"
-                        + "CC       proteins, amyloid-beta 40 (Abeta40) and amyloid-beta 42 (Abeta42),\n"
-                        + "CC       major components of amyloid plaques, and the cytotoxic C-terminal\n"
-                        + "CC       fragments, gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59).\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" + 
+                    "CC       Cleavage either by alpha-secretase, beta-secretase or theta-secretase\n" + 
+                    "CC       leads to generation and extracellular release of soluble APP peptides,\n" + 
+                    "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n" + 
+                    "CC       membrane-anchored C-terminal fragments, C80, C83 and C99.\n" + 
+                    "CC       {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.\n" + 
+                    "CC       Subsequent processing of C80 and C83 by gamma-secretase yields P3\n" + 
+                    "CC       peptides. {ECO:0000313|Ensembl:ENSP00000409133}. This is the major\n" + 
+                    "CC       secretory pathway and is non-amyloidogenic. {ECO:0000256|HAMAP-\n" + 
+                    "CC       Rule:MF_00205}. Alternatively, presenilin/nicastrin-mediated gamma-\n" + 
+                    "CC       secretase processing of C99 releases the amyloid beta proteins,\n" + 
+                    "CC       amyloid-beta 40 (Abeta40) and amyloid-beta 42 (Abeta42), major\n" + 
+                    "CC       components of amyloid plaques, and the cytotoxic C-terminal fragments,\n" + 
+                    "CC       gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59). {ECO:0000256|HAMAP-\n" + 
+                    "CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
         String text1 =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -186,9 +182,9 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testAllergen() throws Exception {
         String ccLine =
-                ("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE.\n"
-                        + "CC       Partially heat-labile allergen that may cause both respiratory and\n"
-                        + "CC       food-allergy symptoms in patients with the bird-egg syndrome.");
+                ("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE. Partially\n"
+                        + "CC       heat-labile allergen that may cause both respiratory and food-allergy\n"
+                        + "CC       symptoms in patients with the bird-egg syndrome.");
         String text =
                 "Causes an allergic reaction in human. Binds to IgE. "
                         + "Partially heat-labile allergen that may cause both respiratory and "
@@ -206,11 +202,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testAllergenWithEvidence() throws Exception {
         String ccLine =
-                ("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE.\n"
-                        + "CC       Partially heat-labile allergen that may cause both respiratory and\n"
-                        + "CC       food-allergy symptoms in patients with the bird-egg syndrome.\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- ALLERGEN: Causes an allergic reaction in human. Binds to IgE. Partially\n" + 
+                    "CC       heat-labile allergen that may cause both respiratory and food-allergy\n" + 
+                    "CC       symptoms in patients with the bird-egg syndrome. {ECO:0000256|HAMAP-\n" + 
+                    "CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Causes an allergic reaction in human. Binds to IgE. "
                         + "Partially heat-labile allergen that may cause both respiratory and "
@@ -231,10 +226,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testBIOTECHNOLOGY() {
         String ccLine =
-                ("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing\n"
-                        + "CC       an antisense PG gene by genetic manipulation. The Flavr Savr\n"
-                        + "CC       tomato produced by Calgene (Monsanto) in such a manner has a\n"
-                        + "CC       longer shelf life due to delayed ripening (Probable).");
+                ("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing an\n"
+                        + "CC       antisense PG gene by genetic manipulation. The Flavr Savr tomato\n"
+                        + "CC       produced by Calgene (Monsanto) in such a manner has a longer shelf life\n"
+                        + "CC       due to delayed ripening (Probable).");
         String text =
                 "The effect of PG can be neutralized by introducing "
                         + "an antisense PG gene by genetic manipulation. The Flavr Savr "
@@ -255,11 +250,11 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testBIOTECHNOLOGYWithEvidence() {
         String ccLine =
-                ("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing\n"
-                        + "CC       an antisense PG gene by genetic manipulation. The Flavr Savr\n"
-                        + "CC       tomato produced by Calgene (Monsanto) in such a manner has a\n"
-                        + "CC       longer shelf life due to delayed ripening (Probable).\n"
-                        + "CC       {ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- BIOTECHNOLOGY: The effect of PG can be neutralized by introducing an\n" + 
+                    "CC       antisense PG gene by genetic manipulation. The Flavr Savr tomato\n" + 
+                    "CC       produced by Calgene (Monsanto) in such a manner has a longer shelf life\n" + 
+                    "CC       due to delayed ripening (Probable).\n" + 
+                    "CC       {ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "The effect of PG can be neutralized by introducing "
                         + "an antisense PG gene by genetic manipulation. The Flavr Savr "
@@ -279,8 +274,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testActivityRegulation() {
         String ccLine =
-                ("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate +\n"
-                        + "CC       L-glutamine.");
+                ("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate + L-\n"
+                        + "CC       glutamine.");
         String text = "ATP + L-glutamate + NH(3) = ADP + phosphate + L-glutamine.";
         List<String> evs = new ArrayList<>();
         //	evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
@@ -292,8 +287,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testActivityRegulationWithEvidence() {
         String ccLine =
-                ("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate +\n"
-                        + "CC       L-glutamine. {ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- ACTIVITY REGULATION: ATP + L-glutamate + NH(3) = ADP + phosphate + L-\n" + 
+                    "CC       glutamine. {ECO:0000313|Ensembl:ENSP00000409133}.");
         String text = "ATP + L-glutamate + NH(3) = ADP + phosphate + L-glutamine.";
         List<String> evs = new ArrayList<>();
         //	evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
@@ -355,8 +350,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testDevelopmental() {
         String ccLine =
-                ("CC   -!- DEVELOPMENTAL STAGE: Expressed early during conidial (dormant\n"
-                        + "CC       spores) differentiation.");
+                ("CC   -!- DEVELOPMENTAL STAGE: Expressed early during conidial (dormant spores)\n" + 
+                    "CC       differentiation.");
         String text = "Expressed early during conidial (dormant spores) differentiation.";
         List<String> evs = new ArrayList<>();
         //	evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
@@ -368,8 +363,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testDevelopmentalWithEvidence() {
         String ccLine =
-                ("CC   -!- DEVELOPMENTAL STAGE: Expressed early during conidial (dormant\n"
-                        + "CC       spores) differentiation. {ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- DEVELOPMENTAL STAGE: Expressed early during conidial (dormant spores)\n" + 
+                    "CC       differentiation. {ECO:0000313|Ensembl:ENSP00000409133}.");
         String text = "Expressed early during conidial (dormant spores) differentiation.";
         List<String> evs = new ArrayList<>();
         //	evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
@@ -381,8 +376,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testDOMAIN() {
         String ccLine =
-                ("CC   -!- DOMAIN: The B chain is composed of two domains, each domain\n"
-                        + "CC       consists of 3 homologous subdomains (alpha, beta, gamma).");
+                ("CC   -!- DOMAIN: The B chain is composed of two domains, each domain consists of\n" + 
+                    "CC       3 homologous subdomains (alpha, beta, gamma).");
         String text =
                 "The B chain is composed of two domains, each domain "
                         + "consists of 3 homologous subdomains (alpha, beta, gamma).";
@@ -396,9 +391,9 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testDOMAINWithEvidence() {
         String ccLine =
-                ("CC   -!- DOMAIN: The B chain is composed of two domains, each domain\n"
-                        + "CC       consists of 3 homologous subdomains (alpha, beta, gamma).\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.");
+                ("CC   -!- DOMAIN: The B chain is composed of two domains, each domain consists of\n" + 
+                    "CC       3 homologous subdomains (alpha, beta, gamma). {ECO:0000256|HAMAP-\n" + 
+                    "CC       Rule:MF_00205}.");
         String text =
                 "The B chain is composed of two domains, each domain "
                         + "consists of 3 homologous subdomains (alpha, beta, gamma).";
@@ -429,11 +424,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testEnxymeRegulationWithEvidence() {
         String ccLine =
-                ("CC   -!- ACTIVITY REGULATION: The activity of this enzyme is controlled by\n"
-                        + "CC       adenylation under conditions of abundant glutamine. The fully\n"
-                        + "CC       adenylated enzyme complex is inactive (By similarity).\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- ACTIVITY REGULATION: The activity of this enzyme is controlled by\n" + 
+                    "CC       adenylation under conditions of abundant glutamine. The fully\n" + 
+                    "CC       adenylated enzyme complex is inactive (By similarity).\n" + 
+                    "CC       {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "The activity of this enzyme is controlled by "
                         + "adenylation under conditions of abundant glutamine. The fully "
@@ -448,8 +442,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testINDUCTION() {
         String ccLine =
-                ("CC   -!- INDUCTION: By infection, plant wounding, or elicitor treatment of\n"
-                        + "CC       cell cultures.");
+                ("CC   -!- INDUCTION: By infection, plant wounding, or elicitor treatment of cell\n" + 
+                    "CC       cultures.");
         String text = "By infection, plant wounding, or elicitor treatment of cell cultures.";
         List<String> evs = new ArrayList<>();
         //		evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
@@ -461,8 +455,8 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testINDUCTIONWithEvidence() {
         String ccLine =
-                ("CC   -!- INDUCTION: By infection, plant wounding, or elicitor treatment of\n"
-                        + "CC       cell cultures. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                ("CC   -!- INDUCTION: By infection, plant wounding, or elicitor treatment of cell\n"
+                        + "CC       cultures. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
                         + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text = "By infection, plant wounding, or elicitor treatment of cell cultures.";
         List<String> evs = new ArrayList<>();
@@ -531,10 +525,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPAHRMA() {
         String ccLine =
-                ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen),\n"
-                        + "CC       Betaseron (Berlex) and Rebif (Serono). Used in the treatment of\n"
-                        + "CC       multiple sclerosis (MS). Betaseron is a slightly modified form of\n"
-                        + "CC       IFNB1 with two residue substitutions.");
+                ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen), Betaseron\n" + 
+                    "CC       (Berlex) and Rebif (Serono). Used in the treatment of multiple\n" + 
+                    "CC       sclerosis (MS). Betaseron is a slightly modified form of IFNB1 with two\n" + 
+                    "CC       residue substitutions.");
         String text =
                 "Available under the names Avonex (Biogen), "
                         + "Betaseron (Berlex) and Rebif (Serono). Used in the treatment of "
@@ -550,11 +544,11 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPAHRMAWithEvidence() {
         String ccLine =
-                ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen),\n"
-                        + "CC       Betaseron (Berlex) and Rebif (Serono). Used in the treatment of\n"
-                        + "CC       multiple sclerosis (MS). Betaseron is a slightly modified form of\n"
-                        + "CC       IFNB1 with two residue substitutions. {ECO:0000256|HAMAP-\n"
-                        + "CC       Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- PHARMACEUTICAL: Available under the names Avonex (Biogen), Betaseron\n"
+                        + "CC       (Berlex) and Rebif (Serono). Used in the treatment of multiple\n"
+                        + "CC       sclerosis (MS). Betaseron is a slightly modified form of IFNB1 with two\n"
+                        + "CC       residue substitutions. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Available under the names Avonex (Biogen), "
                         + "Betaseron (Berlex) and Rebif (Serono). Used in the treatment of "
@@ -570,18 +564,18 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPTM() {
         String ccLine =
-                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                        + "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n"
-                        + "CC       secretase leads to generation and extracellular release of soluble\n"
-                        + "CC       APP peptides, S-APP-alpha and S-APP-beta, and the retention of\n"
-                        + "CC       corresponding membrane-anchored C-terminal fragments, C80, C83 and\n"
-                        + "CC       C99. Subsequent processing of C80 and C83 by gamma-secretase\n"
-                        + "CC       yields P3 peptides. This is the major secretory pathway and is\n"
-                        + "CC       non-amyloidogenic. Alternatively, presenilin/nicastrin-mediated\n"
-                        + "CC       gamma-secretase processing of C99 releases the amyloid beta\n"
-                        + "CC       proteins, amyloid-beta 40 (Abeta40) and amyloid-beta 42 (Abeta42),\n"
-                        + "CC       major components of amyloid plaques, and the cytotoxic C-terminal\n"
-                        + "CC       fragments, gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59).");
+                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" + 
+                    "CC       Cleavage either by alpha-secretase, beta-secretase or theta-secretase\n" + 
+                    "CC       leads to generation and extracellular release of soluble APP peptides,\n" + 
+                    "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n" + 
+                    "CC       membrane-anchored C-terminal fragments, C80, C83 and C99. Subsequent\n" + 
+                    "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides. This\n" + 
+                    "CC       is the major secretory pathway and is non-amyloidogenic. Alternatively,\n" + 
+                    "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n" + 
+                    "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40) and\n" + 
+                    "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques, and the\n" + 
+                    "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and gamma-\n" + 
+                    "CC       CTF(59).");
         String text =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -605,20 +599,19 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testPTMWithEvidence() {
         String ccLine =
-                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n"
-                        + "CC       Cleavage either by alpha-secretase, beta-secretase or theta-\n"
-                        + "CC       secretase leads to generation and extracellular release of soluble\n"
-                        + "CC       APP peptides, S-APP-alpha and S-APP-beta, and the retention of\n"
-                        + "CC       corresponding membrane-anchored C-terminal fragments, C80, C83 and\n"
-                        + "CC       C99. Subsequent processing of C80 and C83 by gamma-secretase\n"
-                        + "CC       yields P3 peptides. This is the major secretory pathway and is\n"
-                        + "CC       non-amyloidogenic. Alternatively, presenilin/nicastrin-mediated\n"
-                        + "CC       gamma-secretase processing of C99 releases the amyloid beta\n"
-                        + "CC       proteins, amyloid-beta 40 (Abeta40) and amyloid-beta 42 (Abeta42),\n"
-                        + "CC       major components of amyloid plaques, and the cytotoxic C-terminal\n"
-                        + "CC       fragments, gamma-CTF(50), gamma-CTF(57) and gamma-CTF(59).\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- PTM: Proteolytically processed under normal cellular conditions.\n" + 
+                    "CC       Cleavage either by alpha-secretase, beta-secretase or theta-secretase\n" + 
+                    "CC       leads to generation and extracellular release of soluble APP peptides,\n" + 
+                    "CC       S-APP-alpha and S-APP-beta, and the retention of corresponding\n" + 
+                    "CC       membrane-anchored C-terminal fragments, C80, C83 and C99. Subsequent\n" + 
+                    "CC       processing of C80 and C83 by gamma-secretase yields P3 peptides. This\n" + 
+                    "CC       is the major secretory pathway and is non-amyloidogenic. Alternatively,\n" + 
+                    "CC       presenilin/nicastrin-mediated gamma-secretase processing of C99\n" + 
+                    "CC       releases the amyloid beta proteins, amyloid-beta 40 (Abeta40) and\n" + 
+                    "CC       amyloid-beta 42 (Abeta42), major components of amyloid plaques, and the\n" + 
+                    "CC       cytotoxic C-terminal fragments, gamma-CTF(50), gamma-CTF(57) and gamma-\n" + 
+                    "CC       CTF(59). {ECO:0000256|HAMAP-Rule:MF_00205,\n" + 
+                    "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Proteolytically processed under normal cellular conditions. "
                         + "Cleavage either by alpha-secretase, beta-secretase or theta-"
@@ -730,8 +723,7 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     void testToxicWithEvidence() {
         String ccLine =
                 ("CC   -!- TOXIC DOSE: PD(50) is 1.72 mg/kg by injection in blowfly larvae.\n"
-                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133}.");
         String text = "PD(50) is 1.72 mg/kg by injection in blowfly larvae";
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
@@ -743,11 +735,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testFunctionWithNoEvidence() {
         String ccLine =
-                ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps\n"
-                        + "CC       in lysine degradation. The N-terminal and the C-terminal contain\n"
-                        + "CC       lysine-oxoglutarate reductase and saccharopine dehydrogenase\n"
-                        + "CC       activity, respectively. Negatively regulates free Lys accumulation\n"
-                        + "CC       in seeds.");
+                ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps in\n" + 
+                    "CC       lysine degradation. The N-terminal and the C-terminal contain lysine-\n" + 
+                    "CC       oxoglutarate reductase and saccharopine dehydrogenase  activity,\n" + 
+                    "CC       respectively. Negatively regulates free Lys accumulation in seeds.");
         String text =
                 "Bifunctional enzyme that catalyzes the first two steps "
                         + "in lysine degradation. The N-terminal and the C-terminal contain "
@@ -764,11 +755,11 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testFunctionWithEvidence() {
         String ccLine =
-                ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps\n"
-                        + "CC       in lysine degradation. The N-terminal and the C-terminal contain\n"
-                        + "CC       lysine-oxoglutarate reductase and saccharopine dehydrogenase\n"
-                        + "CC       activity, respectively. Negatively regulates free Lys accumulation\n"
-                        + "CC       in seeds. {ECO:0000256|HAMAP-Rule:MF_00205}.");
+                ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps in\n" + 
+                    "CC       lysine degradation. The N-terminal and the C-terminal contain lysine-\n" + 
+                    "CC       oxoglutarate reductase and saccharopine dehydrogenase  activity,\n" + 
+                    "CC       respectively. Negatively regulates free Lys accumulation in seeds.\n" + 
+                    "CC       {ECO:0000256|HAMAP-Rule:MF_00205}.");
         String text =
                 "Bifunctional enzyme that catalyzes the first two steps "
                         + "in lysine degradation. The N-terminal and the C-terminal contain "
@@ -785,10 +776,10 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void test2() throws Exception {
         String ccLine =
-                ("CC   -!- FUNCTION: Stimulates the proliferation of early hematopoietic\n"
-                        + "CC       cells. Synergizes well with a number of other colony stimulating\n"
-                        + "CC       factors and interleukins. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
+                ("CC   -!- FUNCTION: Stimulates the proliferation of early hematopoietic cells.\n" + 
+                    "CC       Synergizes well with a number of other colony stimulating factors and\n" + 
+                    "CC       interleukins. {ECO:0000256|HAMAP-Rule:MF_00205,\n" + 
+                    "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
 
         String text =
                 "Stimulates the proliferation of early hematopoietic "
@@ -804,16 +795,16 @@ class CCFreeTextBuildTest extends CCBuildTestAbstr {
     @Test
     void testFunctionWithEvidence2() {
         String ccLine =
-                ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps\n"
-                        + "CC       in lysine degradation. The N-terminal and the C-terminal contain\n"
-                        + "CC       lysine-oxoglutarate reductase and saccharopine dehydrogenase\n"
-                        + "CC       activity, respectively. Negatively regulates free Lys accumulation\n"
-                        + "CC       in seeds (By similarity). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                ("CC   -!- FUNCTION: Bifunctional enzyme that catalyzes the first two steps in\n"
+                        + "CC       lysine degradation. The N-terminal and the C-terminal contain lysine-\n"
+                        + "CC       oxoglutarate reductase and saccharopine dehydrogenase activity,\n"
+                        + "CC       respectively. Negatively regulates free Lys accumulation in seeds (By\n"
+                        + "CC       similarity). {ECO:0000256|HAMAP-Rule:MF_00205,\n"
                         + "CC       ECO:0000313|Ensembl:ENSP00000409133}.");
         String text =
                 "Bifunctional enzyme that catalyzes the first two steps "
                         + "in lysine degradation. The N-terminal and the C-terminal contain "
-                        + "lysine-oxoglutarate reductase and saccharopine dehydrogenase "
+                        + "lysine-oxoglutarate reductase and saccharopine dehydrogenase"
                         + " activity, respectively. Negatively regulates free Lys accumulation "
                         + "in seeds (By similarity)";
         List<String> evs = new ArrayList<>();

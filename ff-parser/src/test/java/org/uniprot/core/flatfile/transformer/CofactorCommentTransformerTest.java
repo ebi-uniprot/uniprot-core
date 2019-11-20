@@ -39,7 +39,7 @@ class CofactorCommentTransformerTest {
         String moleculeStr = "Isoform 1";
         String noteStr = "Binds 2 divalent ions per subunit (magnesium or cobalt)";
 
-        String val = moleculeStr + ":\n Note=" + noteStr + ".";
+        String val = "["+ moleculeStr + "]:\n Note=" + noteStr + ".";
 
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, val);
 
@@ -63,7 +63,7 @@ class CofactorCommentTransformerTest {
         String nameStr1 = "(-)-Variabilin";
         String refsStr1 = "Name=" + nameStr1 + "; Xref=ChEBI:" + refStr1 + ";";
 
-        String val = moleculeStr + ":\n" + refsStr1;
+        String val ="["+ moleculeStr + "]:\n" + refsStr1;
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, val);
 
         assertThat(CommentType.COFACTOR, is(equalTo(comment.getCommentType())));
@@ -97,7 +97,7 @@ class CofactorCommentTransformerTest {
         String nameStr2 = "5-methyl-3-isoxazolyl sulfate";
         String refsStr2 = "Name=" + nameStr2 + "; Xref=ChEBI:" + refStr2 + ";";
 
-        String val = moleculeStr + ":\n" + refsStr1 + " " + refsStr2;
+        String val ="["+ moleculeStr + "]:\n" + refsStr1 + " " + refsStr2;
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, val);
 
         assertThat(CommentType.COFACTOR, is(equalTo(comment.getCommentType())));
@@ -135,7 +135,7 @@ class CofactorCommentTransformerTest {
 
         String noteStr = "Binds 2 divalent ions per subunit (magnesium or cobalt)";
 
-        String val = moleculeStr + ":\n" + refsStr1 + "\n Note=" + noteStr + ".";
+        String val = "["+ moleculeStr + "]:\n" + refsStr1 + "\n Note=" + noteStr + ".";
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, val);
 
         assertThat(CommentType.COFACTOR, is(equalTo(comment.getCommentType())));
@@ -212,7 +212,7 @@ class CofactorCommentTransformerTest {
     @Test
     void testEvidence2() {
         String ccLineStringEvidence =
-                "COFACTOR: Serine protease NS3:\n"
+                "COFACTOR: [Serine protease NS3]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
                         + " ECO:0000269|PubMed:16683189};\n"
                         + "Name=A very looooooooooooong cofactor name with 1 evidence tag; "
@@ -258,7 +258,7 @@ class CofactorCommentTransformerTest {
     @Test
     void testFailed() {
         String ccLineStringEvidence =
-                "COFACTOR: Serine protease NS3:\n"
+                "COFACTOR: [Serine protease NS3]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n"
                         + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
 
@@ -288,7 +288,7 @@ class CofactorCommentTransformerTest {
     @Test
     void testFailed2() {
         String ccLineStringEvidence =
-                "COFACTOR: Non-structural protein 5A:\n"
+                "COFACTOR: [Non-structural protein 5A]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};\n"
                         + " Note=Binds 1 zinc ion in the NS5A N-terminal domain. {ECO:0000250};";
 
@@ -324,7 +324,7 @@ class CofactorCommentTransformerTest {
         String nameStr1 = "FAD";
         String refsStr1 = "Name=" + nameStr1 + "; Xref=ChEBI:" + refStr1 + ";";
 
-        String val = moleculeStr + ":\n" + refsStr1;
+        String val = "["+ moleculeStr + "]:\n" + refsStr1;
         System.out.println(val);
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, val);
         assertNotNull(comment);

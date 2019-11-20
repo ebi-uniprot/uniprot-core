@@ -3,8 +3,6 @@ package org.uniprot.core.json.parser.uniprot.comment;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.json.parser.uniprot.CreateUtils;
@@ -41,15 +39,14 @@ public class SequenceCautionCommentTest {
         assertNotNull(jsonNode.get("commentType"));
         assertEquals("SEQUENCE CAUTION", jsonNode.get("commentType").asText());
 
+        assertNotNull(jsonNode.get("molecule"));
+        assertEquals("Isoform 2", jsonNode.get("molecule").asText());
+        
         assertNotNull(jsonNode.get("sequenceCautionType"));
         assertEquals("Erroneous initiation", jsonNode.get("sequenceCautionType").asText());
 
         assertNotNull(jsonNode.get("sequence"));
         assertEquals("sequence", jsonNode.get("sequence").asText());
-
-        assertNotNull(jsonNode.get("positions"));
-        assertEquals(1, jsonNode.get("positions").size());
-        assertEquals("position", jsonNode.get("positions").get(0).asText());
 
         assertNotNull(jsonNode.get("note"));
         assertEquals("Text note", jsonNode.get("note").asText());
@@ -62,9 +59,9 @@ public class SequenceCautionCommentTest {
 
     public static SequenceCautionComment getSequenceCautionComment() {
         return new SequenceCautionCommentBuilder()
+        		.molecule("Isoform 2")
                 .sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                 .sequence("sequence")
-                .positions(Collections.singletonList("position"))
                 .note("Text note")
                 .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                 .build();

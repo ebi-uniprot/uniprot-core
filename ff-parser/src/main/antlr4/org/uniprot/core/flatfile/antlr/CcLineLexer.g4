@@ -9,7 +9,8 @@ options { superClass=org.uniprot.core.flatfile.antlr.RememberLastTokenLexer; }
 //define the tokens that is common in all the modes.
 tokens { CC_TOPIC_START, SPACE, SEMICOLON, COMA,
  COLON, DOT, NEW_LINE, CHANGE_OF_LINE, CHANGE_OF_LINE_LEVEL2, DOT_NEW_LINE,
- CC_HEADER_1, CC_HEADER_2, INTEGER, DASH, QUESTION_MARK, LEFT_B, RIGHT_B, EV_START, EV_END,
+ CC_HEADER_1, CC_HEADER_2, INTEGER, DASH, QUESTION_MARK, LEFT_B, RIGHT_B, EV_START, EV_END, LEFT_SQ, RIGHT_SQ,
+ COLON_SPACE,COLON_SPACE_SQ,
  CC_PROPERTIES_TEXT, CC_PROPERTIES_NOTE_TEXT}
 
 CC_HEADER : 'CC   ';
@@ -38,7 +39,7 @@ CC_TOPIC_SEQUENCE_CAUTION:
 CC_TOPIC_RNA_EDITING:
                 'RNA EDITING'                        -> pushMode ( CC_RNA_EDITING );
 CC_TOPIC_DISEASE:
-                 'DISEASE:'                           -> pushMode ( CC_DISEASE );
+                 'DISEASE'                           -> pushMode ( CC_DISEASE );
 CC_TOPIC_COFACTOR:
                  'COFACTOR'                           -> pushMode ( CC_COFACTOR );
                  
@@ -62,6 +63,14 @@ CC_COMMON_NEW_LINE : '\n'                            -> type (NEW_LINE), popMode
 CC_COMMON_TEXT_WORD: TL ((TL|'.'|' '|';')* TL)?           ; //force a word not to end with space, or dot, or a semicolon.
 CC_COMMON_LEFT_B : '{'                               -> type(LEFT_B) ,pushMode(EVIDENCE_MODE);
 fragment TL: ~[ ;.{\n\r\t];
+
+//mode CC_COMMON_PRODUCT;
+//CC_COM_PRODUCT_COLON: ':'                            -> popMode, type(COLON) ;
+//CC_COM_PRODUCT_LINE: '\nCC       '           {setType(CHANGE_OF_LINE);replaceChangeOfLine();};
+//CC_COM_PRODUCT_WORD: CC_COM_PROD_LETTER+         -> type(CC_PRODUCT_WORD);
+//CC_COM_PROD_SPACE: ' '         -> type(SPACE);
+//fragment CC_COM_PROD_LETTER: ~[ .;\n\r\t];
+
 
 mode EVIDENCE_MODE;
 EV_SEPARATOR: ',';
@@ -88,6 +97,15 @@ EV_EV_CHANGE_OF_LINE:   '\nCC       '                                  -> type(C
 EV_EV_TAG :  EV_ECO_TAG_EV (EV_ECO_TAG_SOURCE)?                       -> type (EV_TAG);
 fragment EV_ECO_TAG_EV : 'ECO:'[0-9]* ;
 fragment EV_ECO_TAG_SOURCE: '|'(~[ ,}\n\r\t] | EV_CHANGE_OF_LINE | EV_CHANGE_OF_LINE_2)+;
+
+
+mode CC_MOLECULE_2;
+CC_MOLE_COLON: ':'                            -> popMode, type(COLON) ;
+CC_MOLE_CHANGE_LINE: '\nCC       '           {setType(CHANGE_OF_LINE);replaceChangeOfLine();};
+CC_MOLE_TEXT_2:                   CC_MOLE_TEXT_LETTER_2+ (CC_MOLE_TEXT_SPACE_2 CC_MOLE_TEXT_LETTER_2+)*;
+CC_MOLE_TEXT_SPACE_2: ' '                               -> type (SPACE);
+fragment CC_MOLE_TEXT_LETTER_2: ~[ :;\n\r\t];
+
 
 //properties text are the values that ends with ';' in the CC line.
 mode CC_PROPERTIES_TEXT_MODE;
@@ -141,6 +159,11 @@ mode CC_BIOPHYSICOCHEMICAL_PROPERTIES;
 
 CC_BP_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_BP_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
+CC_BP_COLON : ':'                            -> type (COLON);
+CC_BP_SPACE : ' '                            -> type (SPACE);
+CC_BP_SEMICOLON : ';'                            -> type (SEMICOLON);
+CC_BP_NEW_LINE: '\n'                             -> type (NEW_LINE);
+CC_BP_COLONSPACE : ': '                        -> type(COLON_SPACE), pushMode(CC_MOLECULE_2);
 CC_BP_HEADER_1 : 'CC       '                  ->  type (CC_HEADER_1) ;
 CC_BP_HEADER_2 : 'CC         '                ->  type (CC_HEADER_2) ;
 CC_BP_ABSORPTION: 'Absorption';
@@ -154,10 +177,7 @@ CC_BP_REDOX_POTENTIAL: 'Redox potential:'     -> pushMode( CC_NOTE_LEVEL_2_MODE 
 CC_BP_TEMPERATURE_DEPENDENCE: 'Temperature dependence:' -> pushMode( CC_NOTE_LEVEL_2_MODE );
 CC_BP_NM : 'nm';
 CC_BP_DIGIT: '~'?[1-9][0-9]*;
-CC_BP_COLON : ':'                            -> type (COLON);
-CC_BP_SPACE : ' '                            -> type (SPACE);
-CC_BP_SEMICOLON : ';'                            -> type (SEMICOLON);
-CC_BP_NEW_LINE: '\n'                             -> type (NEW_LINE);
+
 
 
 /*
@@ -197,7 +217,7 @@ mode CC_SUBCELLULAR_LOCATION;
 
 CC_SL_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_SL_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
-
+CC_SL_COLONSPACE : ': ['                        -> type(COLON_SPACE_SQ), pushMode(CC_MOLECULE_2);
 CC_SL_COLON : ':'                               -> type (COLON);
 CC_SL_SPACE : ' '                            -> type (SPACE);
 CC_SL_DOT : '.'                              -> type (DOT);
@@ -271,15 +291,17 @@ mode CC_SEQUENCE_CAUTION;
 
 CC_SQ_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_SQ_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
-
-CC_SC_SEMICOLON : ';'                               -> type (SEMICOLON);
 CC_SC_COLON : ':'                               -> type (COLON);
+CC_SC_COLONSPACE : ': '                        -> type(COLON_SPACE), pushMode(CC_MOLECULE_2);
+CC_SC_SEMICOLON : ';'                               -> type (SEMICOLON);
 CC_SC_SPACE : ' '                               -> type (SPACE);
 CC_SC_HEADER_1: 'CC       '                 -> type (CC_HEADER_1);
 CC_SC_NEW_LINE: '\n'                                -> type (NEW_LINE);
+
+
 CC_SC_SEQUENCE : 'Sequence='                     -> pushMode ( CC_SEQUENCE_CAUTION_SEQUENCE );
 CC_SC_TYPE : 'Type=';
-CC_SC_POSITIONS : 'Positions='                -> pushMode ( CC_SEQUENCE_CAUTION_POSITION );
+//CC_SC_POSITIONS : 'Positions='                -> pushMode ( CC_SEQUENCE_CAUTION_POSITION );
 CC_SC_NOTE : 'Note='                          -> pushMode ( CC_SEQUENCE_CAUTION_NOTE );
 CC_SC_EV_START : 'Evidence={'                 ->  pushMode ( EV_EVIDENCE_MODE );
 CC_SC_TYPE_VALUE: 'Frameshift' | 'Erroneous initiation' | 'Erroneous termination'
@@ -301,12 +323,12 @@ CC_SC_NOTE_SEMICOLON : ';'                               -> type (SEMICOLON), po
 CC_SC_NOTE_TEXT: CC_SC_NOTE_TEXT_L+ ;
 fragment  CC_SC_NOTE_TEXT_L: ~[;\n\r\t];
 
-mode CC_SEQUENCE_CAUTION_POSITION;
-CC_SC_P_SEMICOLON : ';'                               -> popMode, type (SEMICOLON);
-CC_SC_P_SPACE : ' '                                   -> type (SPACE);
-CC_SC_P_COMA : ','                                    -> type (COMA);
-CC_SC_P_INT : [1-9][0-9]*                             -> type (INTEGER);
-CC_SC_P_VALUE: 'Several';
+//mode CC_SEQUENCE_CAUTION_POSITION;
+//CC_SC_P_SEMICOLON : ';'                               -> popMode, type (SEMICOLON);
+//CC_SC_P_SPACE : ' '                                   -> type (SPACE);
+//CC_SC_P_COMA : ','                                    -> type (COMA);
+//CC_SC_P_INT : [1-9][0-9]*                             -> type (INTEGER);
+//CC_SC_P_VALUE: 'Several';
 
 //the cc web resource model;
 //CC   -!- WEB RESOURCE: Name=ResourceName[; Note=FreeText][; URL=WWWAddress];
@@ -314,7 +336,7 @@ mode CC_WEB_RESOURCE;
 
 CC_WR_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_WR_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
-
+CC_WR_COLONSPACE : ': ['                        -> type(COLON_SPACE_SQ), pushMode(CC_MOLECULE_2);
 CC_WR_NAME_START: 'Name='                           -> pushMode(CC_PROPERTIES_TEXT_MODE);
 CC_WR_NOTE_START: 'Note='                           -> pushMode(CC_PROPERTIES_TEXT_MODE);
 CC_WR_URL_START: 'URL='                             -> pushMode(CC_PROPERTIES_TEXT_MODE);
@@ -337,8 +359,8 @@ mode CC_MASS_SPECTROMETRY;
 
 CC_MS_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_MS__TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
-
 CC_MS_COLON : ':'                               -> type (COLON);
+CC_MS_COLONSPACE : ': ['                        -> type(COLON_SPACE_SQ), pushMode(CC_MOLECULE_2);
 CC_MS_SEMI : ';'                               -> type (SEMICOLON);
 CC_MS_SPACE : ' '                               -> type (SPACE);
 CC_MS_NEW_LINE: '\n'                                -> type (NEW_LINE);
@@ -390,6 +412,7 @@ mode CC_RNA_EDITING;
 CC_RE_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_RE_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
 
+CC_RE_COLONSPACE : ': ['                        -> type(COLON_SPACE_SQ), pushMode(CC_MOLECULE_2);
 CC_RE_MODIFIED_POSITION: 'Modified_positions='  ;
 CC_RE_MODIFIED_POSITION_UNDETERMINED: 'Undetermined';
 CC_RE_MODIFIED_POSITION_NOT_APPLICABLE: 'Not_applicable';
@@ -427,7 +450,8 @@ mode CC_DISEASE;
 
 CC_D_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_D_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
-
+CC_D_COLON: ':'                        -> type (COLON);
+CC_D_COLONSPACE : ': ['                        -> type(COLON_SPACE_SQ), pushMode(CC_MOLECULE_2);
 CC_D_SPACE: ' '                           -> type (SPACE);
 CC_D_DOT: '.'                             -> type (DOT);
 
@@ -467,7 +491,7 @@ CC_COF_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_COF__TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
 
 CC_COF_COLON : ':'                               -> type (COLON);
-CC_COF_COLONSPACE : ': '                        -> pushMode(CC_COFACTORP_MOLECULE);
+CC_COF_COLONSPACE : ': '                        -> type(COLON_SPACE), pushMode(CC_MOLECULE_2);
 CC_COF_SEMI : ';'                               -> type (SEMICOLON);
 CC_COF_COMA : ','                               -> type (COMA);
 CC_COF_SPACE : ' '                            -> type (SPACE);
@@ -484,20 +508,11 @@ CC_COF_WORD: CC_COF_WORD_LETTER+ ;
 fragment CC_COF_WORD_LETTER: ~[ :.;=\n\r\t{];
 
 
-mode CC_COFACTORP_MOLECULE;
-CC_COF_MOL_COLON: ':'                            -> popMode, type(COLON) ;
-CC_COF_MOL_CHANGE_LINE: '\nCC       '           {setType(CHANGE_OF_LINE);replaceChangeOfLine();};
-CC_COF_MOL_WORD: CC_COF_WMOL_ORD_LETTER+         -> type(CC_COF_WORD);
-CC_COF_MOL_SPACE: ' '         -> type(SPACE);
-fragment CC_COF_WMOL_ORD_LETTER: ~[ :.;\n\r\t];
-
-
-
-
 mode CC_CATALYTIC_ACTIVITY;
 
 CC_CAT_ACT_CC_HEADER  : 'CC   '                   -> popMode, type(CC_HEADER);
 CC_CAT_ACT_TOPIC_START  : '-!- '                   -> popMode, type(CC_TOPIC_START) ;
+CC_CAT_COLONSPACE : ': '                        -> type(COLON_SPACE), pushMode(CC_MOLECULE_2);
 CC_CAT_ACT_SEMICOLON : ';'                               -> type (SEMICOLON);
 CC_CAT_ACT_COLON : ':'                               -> type (COLON);
 CC_CAT_ACT_SPACE : ' '                               -> type (SPACE);

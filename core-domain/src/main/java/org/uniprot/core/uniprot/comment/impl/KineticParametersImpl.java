@@ -16,7 +16,7 @@ public class KineticParametersImpl implements KineticParameters {
     private List<MichaelisConstant> michaelisConstants;
     private Note note;
 
-    private KineticParametersImpl() {
+    KineticParametersImpl() {
         this.maximumVelocities = Collections.emptyList();
         this.michaelisConstants = Collections.emptyList();
     }

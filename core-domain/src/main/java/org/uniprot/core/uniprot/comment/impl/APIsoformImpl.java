@@ -123,7 +123,12 @@ public class APIsoformImpl implements APIsoform {
     }
 
     public static class IsoformNameImpl extends EvidencedValueImpl implements IsoformName {
-        // no arg constructor for JSON deserialization
+        /**
+     * 
+     */
+    private static final long serialVersionUID = 8473412391754613382L;
+
+    // no arg constructor for JSON deserialization
         IsoformNameImpl() {
             super("", Collections.emptyList());
         }
@@ -134,7 +139,12 @@ public class APIsoformImpl implements APIsoform {
     }
 
     public static class IsoformIdImpl extends ValueImpl implements IsoformId {
-        // no arg constructor for JSON deserialization
+        /**
+     * 
+     */
+    private static final long serialVersionUID = -8782819385757982941L;
+
+    // no arg constructor for JSON deserialization
         IsoformIdImpl() {
             super("");
         }

@@ -1,8 +1,6 @@
 package org.uniprot.core.xml.uniprot.comment;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
@@ -10,7 +8,7 @@ import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
-import org.uniprot.core.xml.jaxb.uniprot.LocationType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
@@ -21,7 +19,6 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
     private final ObjectFactory xmlUniprotFactory;
     private final SCConflictConverter conflictConverter;
     private final EvidenceIndexMapper evRefMapper;
-    private final SCPositionConverter positionConverter;
 
     public SCCommentConverter(EvidenceIndexMapper evRefMapper) {
         this(evRefMapper, new ObjectFactory());
@@ -31,7 +28,6 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
         this.xmlUniprotFactory = xmlUniprotFactory;
         this.conflictConverter = new SCConflictConverter(xmlUniprotFactory);
         this.evRefMapper = evRefMapper;
-        this.positionConverter = new SCPositionConverter(xmlUniprotFactory);
     }
 
     @Override
@@ -39,6 +35,12 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
         if (xmlObj == null) return null;
 
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
+        
+     // Molecule
+        if (xmlObj.getMolecule() != null) {
+            builder.molecule(xmlObj.getMolecule().getValue());
+        }
+        
         CommentType.Conflict conflict = xmlObj.getConflict();
         SequenceCautionType scType = SequenceCautionType.UNKNOWN;
         if (conflict != null) {
@@ -54,14 +56,6 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
             builder.note(text);
         }
 
-        List<String> positions =
-                xmlObj.getLocation().stream()
-                        .map(positionConverter::fromXml)
-                        .collect(Collectors.toList());
-        builder.positions(positions);
-        if (positions.isEmpty() && scType == SequenceCautionType.FRAMESHIFT) {
-            builder.positions(Arrays.asList("Several"));
-        }
         if (!xmlObj.getEvidence().isEmpty()) {
             List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
             builder.evidences(evidences);
@@ -74,6 +68,14 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
         if (uniObj == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
+        
+        if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(uniObj.getMolecule());
+            commentXML.setMolecule(mol);
+        }
+        
+        
         // Sequence Conflict
         if (uniObj.getSequence() != null) {
             commentXML.setConflict(conflictConverter.toXml(uniObj.getSequence()));
@@ -93,17 +95,6 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
             //			}
             text.setValue(note);
             commentXML.getText().add(text);
-        }
-
-        // Positions
-        if (uniObj.getPositions() != null && !uniObj.getPositions().isEmpty()) {
-            for (String position : uniObj.getPositions()) {
-                final LocationType location = positionConverter.toXml(position);
-                if (location.getPosition() != null
-                        && location.getPosition().getPosition() != null) {
-                    commentXML.getLocation().add(location);
-                }
-            }
         }
 
         // Evidences

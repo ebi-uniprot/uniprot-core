@@ -2,6 +2,8 @@ package org.uniprot.core.uniprot.comment;
 
 import java.util.List;
 
+import org.uniprot.core.util.Utils;
+
 /**
  * Description of A cofactor: any non-protein substance required for an enzyme to be catalytically
  * active
@@ -36,21 +38,18 @@ import java.util.List;
  * @version 1.0
  * @see Comment
  */
-public interface CofactorComment extends Comment {
-    /** @return molecule */
-    String getMolecule();
+public interface CofactorComment extends Comment, HasMolecule{
 
     /** @return list of cofactor */
     List<Cofactor> getCofactors();
 
     /** @return cofactor note */
-    Note getNote();
-
-    boolean hasMolecule();
+    Note getNote();  
 
     boolean hasCofactors();
 
     boolean hasNote();
 
     boolean isValid();
+   
 }

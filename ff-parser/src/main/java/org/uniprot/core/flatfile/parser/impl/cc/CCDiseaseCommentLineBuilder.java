@@ -23,6 +23,7 @@ public class CCDiseaseCommentLineBuilder extends CCLineBuilderAbstr<DiseaseComme
             addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
         }
         if (includeCommentType) addCommentTypeName(comment, sb);
+        addMolecule(comment, sb, true);
 
         // if the disease is defined then in needs to be represented in the string
         boolean needSpace = false;

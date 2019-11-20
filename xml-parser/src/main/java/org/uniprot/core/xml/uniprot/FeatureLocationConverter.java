@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.Range;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.uniprot.LocationType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
@@ -12,7 +13,7 @@ import org.uniprot.core.xml.jaxb.uniprot.PositionType;
 
 import com.google.common.base.Strings;
 
-public class FeatureLocationConverter implements Converter<LocationType, Range> {
+public class FeatureLocationConverter implements Converter<LocationType, FeatureLocation> {
     private static final String GREATER_THAN = "greater than";
     private static final String LESS_THAN = "less than";
     private static final String UNKNOWN = "unknown";
@@ -28,7 +29,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
     }
 
     @Override
-    public Range fromXml(LocationType xmlLocation) {
+    public FeatureLocation fromXml(LocationType xmlLocation) {
         Position start;
         Position end;
         if (xmlLocation.getPosition() != null) {
@@ -39,7 +40,9 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
             end = fromXml(xmlLocation.getEnd(), GREATER_THAN);
         }
 
-        return new Range(start, end);
+        String sequence = xmlLocation.getSequence();
+        return new FeatureLocation(sequence, start.getValue(), end.getValue(), 
+        		start.getModifier(), end.getModifier());
     }
 
     private Position fromXml(PositionType position, String outsideString) {
@@ -59,7 +62,7 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
     }
 
     @Override
-    public LocationType toXml(Range location) {
+    public LocationType toXml(FeatureLocation location) {
         LocationType locationType = xmlUniprotFactory.createLocationType();
         if (locationIsSame(location, PositionModifier.EXACT)) {
             setExactPosition(locationType, location);
@@ -70,6 +73,9 @@ public class FeatureLocationConverter implements Converter<LocationType, Range> 
         } else {
             locationType.setBegin(toXml(location.getStart(), LESS_THAN));
             locationType.setEnd(toXml(location.getEnd(), GREATER_THAN));
+        }
+        if(!Strings.isNullOrEmpty(location.getSequence())) {
+        	locationType.setSequence(location.getSequence());
         }
         return locationType;
     }

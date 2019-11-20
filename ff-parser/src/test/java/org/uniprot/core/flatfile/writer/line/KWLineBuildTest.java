@@ -91,8 +91,8 @@ class KWLineBuildTest {
     @Test
     void test3() {
         String kwLine =
-                "KW   Cell membrane; Complete proteome; Glycoprotein; GPI-anchor;\n"
-                        + "KW   Lipoprotein; Membrane; Repeat; Signal; Sporozoite.";
+                "KW   Cell membrane; Complete proteome; Glycoprotein; GPI-anchor; Lipoprotein;\n" + 
+                "KW   Membrane; Repeat; Signal; Sporozoite.";
 
         List<Keyword> keywords = new ArrayList<>();
         keywords.add(createKeyword("", "Cell membrane", Collections.emptyList()));
@@ -182,16 +182,15 @@ class KWLineBuildTest {
     @Test
     void testEvidence2() {
         String kwLine =
-                "KW   Disulfide bond {ECO:0000256|SAAS:SAAS000777_004_000331};\n"
-                        + "KW   Fusion of virus membrane with host membrane\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n"
-                        + "KW   Host-virus interaction {ECO:0000256|SAAS:SAAS000777_004_000688};\n"
-                        + "KW   Viral attachment to host cell\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_000923};\n"
-                        + "KW   Viral envelope protein {ECO:0000313|EMBL:AAY20056.1};\n"
-                        + "KW   Viral penetration into host cytoplasm\n"
-                        + "KW   {ECO:0000256|SAAS:SAAS000777_004_001402}; Virion;\n"
-                        + "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842}.";
+                "KW   Disulfide bond {ECO:0000256|SAAS:SAAS000777_004_000331};\n" + 
+                "KW   Fusion of virus membrane with host membrane\n" + 
+                "KW   {ECO:0000256|SAAS:SAAS000777_004_001688};\n" + 
+                "KW   Host-virus interaction {ECO:0000256|SAAS:SAAS000777_004_000688};\n" + 
+                "KW   Viral attachment to host cell {ECO:0000256|SAAS:SAAS000777_004_000923};\n" + 
+                "KW   Viral envelope protein {ECO:0000313|EMBL:AAY20056.1};\n" + 
+                "KW   Viral penetration into host cytoplasm\n" + 
+                "KW   {ECO:0000256|SAAS:SAAS000777_004_001402}; Virion;\n" + 
+                "KW   Virus entry into host cell {ECO:0000256|SAAS:SAAS000777_004_000842}.";
 
         List<Keyword> keywords = new ArrayList<>();
         keywords.add(

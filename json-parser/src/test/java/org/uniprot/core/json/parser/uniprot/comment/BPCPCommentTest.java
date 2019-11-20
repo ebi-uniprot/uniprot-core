@@ -38,6 +38,9 @@ public class BPCPCommentTest {
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
         assertEquals("BIOPHYSICOCHEMICAL PROPERTIES", jsonNode.get("commentType").asText());
+        
+        assertNotNull(jsonNode.get("molecule"));
+        assertEquals("Isoform 3", jsonNode.get("molecule").asText());
 
         assertNotNull(jsonNode.get("absorption"));
         JsonNode absorption = jsonNode.get("absorption");
@@ -162,6 +165,7 @@ public class BPCPCommentTest {
                         .note(note)
                         .build();
         return new BPCPCommentBuilder()
+        		.molecule("Isoform 3")
                 .absorption(absorption)
                 .kineticParameters(kp)
                 .phDependence(new PhDependenceBuilder(texts).build())

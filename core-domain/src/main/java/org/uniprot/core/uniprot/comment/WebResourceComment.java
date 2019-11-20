@@ -1,6 +1,6 @@
 package org.uniprot.core.uniprot.comment;
 
-public interface WebResourceComment extends Comment {
+public interface WebResourceComment extends Comment, HasMolecule {
     String ONLINE_INFORMATION_XMLTAG = "online information";
 
     String getResourceName();
@@ -16,4 +16,5 @@ public interface WebResourceComment extends Comment {
     boolean hasNote();
 
     boolean hasResourceUrl();
+
 }

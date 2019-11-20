@@ -9,11 +9,11 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
@@ -449,7 +449,7 @@ class FeatureConverterTest {
         }
         return new FeatureBuilder()
                 .type(type)
-                .location(new Range(start, end))
+                .location(new FeatureLocation(start, end))
                 .description(description)
                 .featureId(featureId)
                 .alternativeSequence(altSeq)

@@ -8,20 +8,20 @@ import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
-public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComment {
+public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements RnaEditingComment {
     private static final long serialVersionUID = -5382803114400917004L;
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions;
     private Note note;
 
-    private RnaEditingCommentImpl() {
-        super(CommentType.RNA_EDITING);
+    RnaEditingCommentImpl() {
+        super(CommentType.RNA_EDITING, null);
         this.positions = Collections.emptyList();
     }
 
-    public RnaEditingCommentImpl(
+    public RnaEditingCommentImpl(String molecule,
             RnaEditingLocationType locationType, List<RnaEdPosition> positions, Note note) {
-        super(CommentType.RNA_EDITING);
+        super(CommentType.RNA_EDITING, molecule);
         this.locationType = locationType;
         if ((positions == null) || positions.isEmpty()) {
             this.positions = Collections.emptyList();
@@ -78,10 +78,14 @@ public class RnaEditingCommentImpl extends CommentImpl implements RnaEditingComm
     }
 
     public static class RnaEdPositionImpl implements RnaEdPosition {
-        private String position;
+        /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
+    private String position;
         private List<Evidence> evidences;
 
-        private RnaEdPositionImpl() {
+        RnaEdPositionImpl() {
             this.evidences = Collections.emptyList();
         }
 

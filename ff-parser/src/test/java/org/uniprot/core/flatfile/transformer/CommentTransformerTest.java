@@ -130,7 +130,7 @@ class CommentTransformerTest {
     void testMassSpec() {
         String tString =
                 "MASS SPECTROMETRY: Mass=8320; Mass_error=3;"
-                        + " Method=Electrospray; Range=1-72; Evidence={ECO:0000269|PubMed:8735961};";
+                        + " Method=Electrospray; Evidence={ECO:0000269|PubMed:8735961};";
         testComment(tString, CommentType.MASS_SPECTROMETRY);
     }
 

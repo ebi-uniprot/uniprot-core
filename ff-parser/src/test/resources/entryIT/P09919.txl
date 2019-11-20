@@ -2,7 +2,7 @@ ID   CSF3_HUMAN              Reviewed;         207 AA.
 AC   P09919; A8MXR7;
 DT   01-JUL-1989, integrated into UniProtKB/Swiss-Prot.
 DT   01-JUL-1989, sequence version 1.
-DT   05-DEC-2018, entry version 199.
+DT   13-FEB-2019, entry version 201.
 DE   RecName: Full=Granulocyte colony-stimulating factor;
 DE            Short=G-CSF;
 DE   AltName: Full=Pluripoietin;
@@ -11,34 +11,32 @@ DE   AltName: INN=Lenograstim;
 DE   Flags: Precursor;
 GN   Name=CSF3; Synonyms=C17orf33, GCSF;
 OS   Homo sapiens (Human).
-OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
-OC   Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
-OC   Catarrhini; Hominidae; Homo.
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Primates; Haplorrhini; Catarrhini; Hominidae;
+OC   Homo.
 OX   NCBI_TaxID=9606;
 RN   [1]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM LONG).
 RX   PubMed=3484805; DOI=10.1038/319415a0;
 RA   Nagata S., Tsuchiya M., Asano S., Kaziro Y., Yamazaki T., Yamamoto O.,
 RA   Hirata Y., Kubota N., Oheda M., Nomura H., Ono M.;
-RT   "Molecular cloning and expression of cDNA for human granulocyte
-RT   colony-stimulating factor.";
+RT   "Molecular cloning and expression of cDNA for human granulocyte colony-
+RT   stimulating factor.";
 RL   Nature 319:415-418(1986).
 RN   [2]
-RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA / MRNA] (ISOFORM SHORT), AND
-RP   ALTERNATIVE SPLICING.
+RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA / MRNA] (ISOFORM SHORT), AND ALTERNATIVE
+RP   SPLICING.
 RX   PubMed=2423327;
 RA   Nagata S., Tsuchiya M., Asano S., Yamamoto O., Hirata Y., Kubota N.,
 RA   Oheda M., Nomura H., Yamazaki T.;
-RT   "The chromosomal gene structure and two mRNAs for human granulocyte
-RT   colony-stimulating factor.";
+RT   "The chromosomal gene structure and two mRNAs for human granulocyte colony-
+RT   stimulating factor.";
 RL   EMBO J. 5:575-581(1986).
 RN   [3]
 RP   NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM SHORT).
 RX   PubMed=3494801;
-RA   Devlin J.J., Devlin P.E., Myambo K., Lilly M.B., Rado T.A.,
-RA   Warren M.K.;
-RT   "Expression of granulocyte colony-stimulating factor by human cell
-RT   lines.";
+RA   Devlin J.J., Devlin P.E., Myambo K., Lilly M.B., Rado T.A., Warren M.K.;
+RT   "Expression of granulocyte colony-stimulating factor by human cell lines.";
 RL   J. Leukoc. Biol. 41:302-306(1987).
 RN   [4]
 RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA], AND VARIANTS MET-157 AND THR-174.
@@ -47,10 +45,10 @@ RL   Submitted (JUN-2001) to the EMBL/GenBank/DDBJ databases.
 RN   [5]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 3).
 RX   PubMed=15028279; DOI=10.1016/j.ygeno.2003.09.023;
-RA   Jin P., Fu G.K., Wilson A.D., Yang J., Chien D., Hawkins P.R.,
-RA   Au-Young J., Stuve L.L.;
-RT   "PCR isolation and cloning of novel splice variant mRNAs from known
-RT   drug target genes.";
+RA   Jin P., Fu G.K., Wilson A.D., Yang J., Chien D., Hawkins P.R., Au-Young J.,
+RA   Stuve L.L.;
+RT   "PCR isolation and cloning of novel splice variant mRNAs from known drug
+RT   target genes.";
 RL   Genomics 83:566-571(2004).
 RN   [6]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
@@ -58,59 +56,58 @@ RX   PubMed=16625196; DOI=10.1038/nature04689;
 RA   Zody M.C., Garber M., Adams D.J., Sharpe T., Harrow J., Lupski J.R.,
 RA   Nicholson C., Searle S.M., Wilming L., Young S.K., Abouelleil A.,
 RA   Allen N.R., Bi W., Bloom T., Borowsky M.L., Bugalter B.E., Butler J.,
-RA   Chang J.L., Chen C.-K., Cook A., Corum B., Cuomo C.A., de Jong P.J.,
-RA   DeCaprio D., Dewar K., FitzGerald M., Gilbert J., Gibson R.,
-RA   Gnerre S., Goldstein S., Grafham D.V., Grocock R., Hafez N.,
-RA   Hagopian D.S., Hart E., Norman C.H., Humphray S., Jaffe D.B.,
-RA   Jones M., Kamal M., Khodiyar V.K., LaButti K., Laird G., Lehoczky J.,
-RA   Liu X., Lokyitsang T., Loveland J., Lui A., Macdonald P., Major J.E.,
-RA   Matthews L., Mauceli E., McCarroll S.A., Mihalev A.H., Mudge J.,
-RA   Nguyen C., Nicol R., O'Leary S.B., Osoegawa K., Schwartz D.C.,
-RA   Shaw-Smith C., Stankiewicz P., Steward C., Swarbreck D.,
+RA   Chang J.L., Chen C.K., Cook A., Corum B., Cuomo C.A., de Jong P.J.,
+RA   DeCaprio D., Dewar K., FitzGerald M., Gilbert J., Gibson R., Gnerre S.,
+RA   Goldstein S., Grafham D.V., Grocock R., Hafez N., Hagopian D.S., Hart E.,
+RA   Norman C.H., Humphray S., Jaffe D.B., Jones M., Kamal M., Khodiyar V.K.,
+RA   LaButti K., Laird G., Lehoczky J., Liu X., Lokyitsang T., Loveland J.,
+RA   Lui A., Macdonald P., Major J.E., Matthews L., Mauceli E., McCarroll S.A.,
+RA   Mihalev A.H., Mudge J., Nguyen C., Nicol R., O'Leary S.B., Osoegawa K.,
+RA   Schwartz D.C., Shaw-Smith C., Stankiewicz P., Steward C., Swarbreck D.,
 RA   Venkataraman V., Whittaker C.A., Yang X., Zimmer A.R., Bradley A.,
 RA   Hubbard T., Birren B.W., Rogers J., Lander E.S., Nusbaum C.;
-RT   "DNA sequence of human chromosome 17 and analysis of rearrangement in
-RT   the human lineage.";
+RT   "DNA sequence of human chromosome 17 and analysis of rearrangement in the
+RT   human lineage.";
 RL   Nature 440:1045-1049(2006).
 RN   [7]
 RP   NUCLEOTIDE SEQUENCE [MRNA] OF 19-207 (ISOFORM SHORT).
 RX   PubMed=2420009; DOI=10.1126/science.2420009;
-RA   Souza L.M., Boone T.C., Gabrilove J., Lai P.H., Zsebo K.M.,
-RA   Murdock D.C., Chazin V.R., Bruszewski J., Lu H., Chen K.K.,
-RA   Barendt J., Platzer E., Moore M.A.S., Mertelsmann R., Welte K.;
-RT   "Recombinant human granulocyte colony-stimulating factor: effects on
-RT   normal and leukemic myeloid cells.";
+RA   Souza L.M., Boone T.C., Gabrilove J., Lai P.H., Zsebo K.M., Murdock D.C.,
+RA   Chazin V.R., Bruszewski J., Lu H., Chen K.K., Barendt J., Platzer E.,
+RA   Moore M.A.S., Mertelsmann R., Welte K.;
+RT   "Recombinant human granulocyte colony-stimulating factor: effects on normal
+RT   and leukemic myeloid cells.";
 RL   Science 232:61-66(1986).
 RN   [8]
 RP   PROTEIN SEQUENCE OF 30-46.
 RX   PubMed=8554326; DOI=10.1006/abbi.1995.0047;
 RA   Haniu M., Horan T., Arakawa T., Le J., Katta V., Rohde M.F.;
-RT   "Extracellular domain of granulocyte-colony stimulating factor
-RT   receptor. Interaction with its ligand and identification of a domain
-RT   in close proximity of ligand-binding region.";
+RT   "Extracellular domain of granulocyte-colony stimulating factor receptor.
+RT   Interaction with its ligand and identification of a domain in close
+RT   proximity of ligand-binding region.";
 RL   Arch. Biochem. Biophys. 324:344-356(1995).
 RN   [9]
 RP   GLYCOSYLATION AT THR-166.
 RX   PubMed=7685769; DOI=10.1016/0021-9673(93)83098-D;
 RA   Clogston C.L., Hu S., Boone T.C., Lu H.S.;
-RT   "Glycosidase digestion, electrophoresis and chromatographic analysis
-RT   of recombinant human granulocyte colony-stimulating factor glycoforms
-RT   produced in Chinese hamster ovary cells.";
+RT   "Glycosidase digestion, electrophoresis and chromatographic analysis of
+RT   recombinant human granulocyte colony-stimulating factor glycoforms produced
+RT   in Chinese hamster ovary cells.";
 RL   J. Chromatogr. A 637:55-62(1993).
 RN   [10]
 RP   STRUCTURE BY NMR.
 RX   PubMed=1281794; DOI=10.1016/0014-5793(92)81521-M;
 RA   Zink T., Ross A., Ambrosius D., Rudolph R., Holak T.A.;
-RT   "Secondary structure of human granulocyte colony-stimulating factor
-RT   derived from NMR spectroscopy.";
+RT   "Secondary structure of human granulocyte colony-stimulating factor derived
+RT   from NMR spectroscopy.";
 RL   FEBS Lett. 314:435-439(1992).
 RN   [11]
 RP   STRUCTURE BY NMR.
 RX   PubMed=7518249; DOI=10.1021/bi00194a009;
 RA   Zink T., Ross A., Luers K., Cieslar C., Rudolph R., Holak T.A.;
-RT   "Structure and dynamics of the human granulocyte colony-stimulating
-RT   factor determined by NMR spectroscopy. Loop mobility in a four-helix-
-RT   bundle protein.";
+RT   "Structure and dynamics of the human granulocyte colony-stimulating factor
+RT   determined by NMR spectroscopy. Loop mobility in a four-helix-bundle
+RT   protein.";
 RL   Biochemistry 33:8453-8463(1994).
 RN   [12]
 RP   X-RAY CRYSTALLOGRAPHY (2.2 ANGSTROMS).
@@ -136,9 +133,9 @@ RT   stimulating factor (GCSF) receptor signaling complex.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 103:3135-3140(2006).
 CC   -!- FUNCTION: Granulocyte/macrophage colony-stimulating factors are
 CC       cytokines that act in hematopoiesis by controlling the production,
-CC       differentiation, and function of 2 related white cell populations
-CC       of the blood, the granulocytes and the monocytes-macrophages. This
-CC       CSF induces granulocytes.
+CC       differentiation, and function of 2 related white cell populations of
+CC       the blood, the granulocytes and the monocytes-macrophages. This CSF
+CC       induces granulocytes.
 CC   -!- SUBUNIT: Monomer. {ECO:0000269|PubMed:10537111,
 CC       ECO:0000269|PubMed:16492764}.
 CC   -!- SUBCELLULAR LOCATION: Secreted.
@@ -151,18 +148,18 @@ CC         IsoId=P09919-2; Sequence=VSP_002673;
 CC       Name=3;
 CC         IsoId=P09919-3; Sequence=VSP_045246;
 CC         Note=No experimental confirmation available.;
-CC   -!- PTM: O-glycan consists of Gal-GalNAc disaccharide which can be
-CC       modified with up to two sialic acid residues (done in
-CC       recombinantly expressed G-CSF from CHO cells).
+CC   -!- PTM: O-glycan consists of Gal-GalNAc disaccharide which can be modified
+CC       with up to two sialic acid residues (done in recombinantly expressed G-
+CC       CSF from CHO cells).
 CC   -!- PHARMACEUTICAL: Available under the names Neupogen or Granulokine
-CC       (Amgen/Roche) and Granocyte (Rhone-Poulenc). Used to treat
-CC       neutropenia (a disorder characterized by an extremely low number
-CC       of neutrophils in blood).
+CC       (Amgen/Roche) and Granocyte (Rhone-Poulenc). Used to treat neutropenia
+CC       (a disorder characterized by an extremely low number of neutrophils in
+CC       blood).
 CC   -!- SIMILARITY: Belongs to the IL-6 superfamily. {ECO:0000305}.
 CC   -!- CAUTION: PubMed:2420009 misquotes the gene name as "CSF1".
 CC       {ECO:0000305}.
-CC   -!- WEB RESOURCE: Name=Neupogen/Granulokine; Note=Clinical information
-CC       on Neupogen/Granulokine;
+CC   -!- WEB RESOURCE: Name=Neupogen/Granulokine; Note=Clinical information on
+CC       Neupogen/Granulokine;
 CC       URL="https://www.neupogen.com";
 CC   -!- WEB RESOURCE: Name=SeattleSNPs;
 CC       URL="http://pga.gs.washington.edu/data/csf3/";
@@ -233,7 +230,7 @@ DR   HOGENOM; HOG000015371; -.
 DR   InParanoid; P09919; -.
 DR   KO; K05423; -.
 DR   OMA; HKLCHPE; -.
-DR   OrthoDB; EOG091G0NDU; -.
+DR   OrthoDB; 1289639at2759; -.
 DR   PhylomeDB; P09919; -.
 DR   TreeFam; TF337698; -.
 DR   Reactome; R-HSA-449836; Other interleukin signaling.
@@ -264,7 +261,7 @@ DR   GO; GO:0007275; P:multicellular organism development; TAS:ProtInc.
 DR   GO; GO:1901215; P:negative regulation of neuron death; IEA:Ensembl.
 DR   GO; GO:2000251; P:positive regulation of actin cytoskeleton reorganization; IDA:BHF-UCL.
 DR   GO; GO:0030838; P:positive regulation of actin filament polymerization; IDA:BHF-UCL.
-DR   GO; GO:0008284; P:positive regulation of cell proliferation; IBA:GO_Central.
+DR   GO; GO:0008284; P:positive regulation of cell population proliferation; IBA:GO_Central.
 DR   GO; GO:0051091; P:positive regulation of DNA-binding transcription factor activity; IDA:BHF-UCL.
 DR   GO; GO:0045639; P:positive regulation of myeloid cell differentiation; IBA:GO_Central.
 DR   GO; GO:0033138; P:positive regulation of peptidyl-serine phosphorylation; IDA:BHF-UCL.
@@ -287,61 +284,79 @@ DR   SUPFAM; SSF47266; SSF47266; 1.
 DR   PROSITE; PS00254; INTERLEUKIN_6; 1.
 PE   1: Evidence at protein level;
 KW   3D-structure; Alternative splicing; Complete proteome; Cytokine;
-KW   Direct protein sequencing; Disulfide bond; Glycoprotein;
-KW   Growth factor; Pharmaceutical; Polymorphism; Reference proteome;
-KW   Secreted; Signal.
-FT   SIGNAL        1     29       {ECO:0000305|PubMed:8554326}.
-FT   CHAIN        30    207       Granulocyte colony-stimulating factor.
-FT                                /FTId=PRO_0000015570.
-FT   CARBOHYD    166    166       O-linked (GalNAc...) threonine.
-FT                                {ECO:0000250}.
-FT   DISULFID     69     75
-FT   DISULFID     97    107
-FT   VAR_SEQ      66     68       Missing (in isoform Short).
-FT                                {ECO:0000303|PubMed:2420009,
-FT                                ECO:0000303|PubMed:2423327,
-FT                                ECO:0000303|PubMed:3494801}.
-FT                                /FTId=VSP_002673.
-FT   VAR_SEQ      69    104       Missing (in isoform 3).
-FT                                {ECO:0000303|PubMed:15028279}.
-FT                                /FTId=VSP_045246.
-FT   VARIANT     157    157       L -> M (in dbSNP:rs2227329).
-FT                                {ECO:0000269|Ref.4}.
-FT                                /FTId=VAR_013073.
-FT   VARIANT     174    174       A -> T (in dbSNP:rs2227330).
-FT                                {ECO:0000269|Ref.4}.
-FT                                /FTId=VAR_013074.
-FT   CONFLICT     30     30       A -> M (in Ref. 8; AA sequence).
-FT                                {ECO:0000305}.
-FT   STRAND       37     39       {ECO:0000244|PDB:1CD9}.
-FT   HELIX        41     65       {ECO:0000244|PDB:5GW9}.
-FT   HELIX        69     72       {ECO:0000244|PDB:5GW9}.
-FT   HELIX        77     87       {ECO:0000244|PDB:5GW9}.
-FT   STRAND       99    101       {ECO:0000244|PDB:5GW9}.
-FT   HELIX       104    124       {ECO:0000244|PDB:5GW9}.
-FT   TURN        125    127       {ECO:0000244|PDB:5GW9}.
-FT   TURN        130    132       {ECO:0000244|PDB:5GW9}.
-FT   HELIX       133    157       {ECO:0000244|PDB:5GW9}.
-FT   STRAND      166    168       {ECO:0000244|PDB:1GNC}.
-FT   HELIX       176    201       {ECO:0000244|PDB:5GW9}.
-FT   TURN        203    205       {ECO:0000244|PDB:2D9Q}.
+KW   Direct protein sequencing; Disulfide bond; Glycoprotein; Growth factor;
+KW   Pharmaceutical; Polymorphism; Reference proteome; Secreted; Signal.
+FT   SIGNAL          1..29
+FT                   /evidence="ECO:0000305|PubMed:8554326"
+FT   CHAIN           30..207
+FT                   /note="Granulocyte colony-stimulating factor"
+FT                   /id="PRO_0000015570"
+FT   CARBOHYD        166
+FT                   /note="O-linked (GalNAc...) threonine"
+FT                   /evidence="ECO:0000250"
+FT   DISULFID        69..75
+FT   DISULFID        97..107
+FT   VAR_SEQ         66..68
+FT                   /note="Missing (in isoform Short)"
+FT                   /evidence="ECO:0000303|PubMed:2420009,
+FT                   ECO:0000303|PubMed:2423327, ECO:0000303|PubMed:3494801"
+FT                   /id="VSP_002673"
+FT   VAR_SEQ         69..104
+FT                   /note="Missing (in isoform 3)"
+FT                   /evidence="ECO:0000303|PubMed:15028279"
+FT                   /id="VSP_045246"
+FT   VARIANT         157
+FT                   /note="L -> M (in dbSNP:rs2227329)"
+FT                   /evidence="ECO:0000269|Ref.4"
+FT                   /id="VAR_013073"
+FT   VARIANT         174
+FT                   /note="A -> T (in dbSNP:rs2227330)"
+FT                   /evidence="ECO:0000269|Ref.4"
+FT                   /id="VAR_013074"
+FT   CONFLICT        30
+FT                   /note="A -> M (in Ref. 8; AA sequence)"
+FT                   /evidence="ECO:0000305"
+FT   STRAND          37..39
+FT                   /evidence="ECO:0000244|PDB:1CD9"
+FT   HELIX           41..65
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   HELIX           69..72
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   HELIX           77..87
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   STRAND          99..101
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   HELIX           104..124
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   TURN            125..127
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   TURN            130..132
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   HELIX           133..157
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   STRAND          166..168
+FT                   /evidence="ECO:0000244|PDB:1GNC"
+FT   HELIX           176..201
+FT                   /evidence="ECO:0000244|PDB:5GW9"
+FT   TURN            203..205
+FT                   /evidence="ECO:0000244|PDB:2D9Q"
 **
 **   #################    INTERNAL SECTION    ##################
+**EV ECO:0000244; PDB:1CD9; INT; 18-OCT-2017.
+**EV ECO:0000244; PDB:1GNC; INT; 18-OCT-2017.
+**EV ECO:0000244; PDB:2D9Q; INT; 18-OCT-2017.
+**EV ECO:0000244; PDB:5GW9; INT; 18-OCT-2017.
+**EV ECO:0000250; -; XXX; 18-OCT-2017.
+**EV ECO:0000269; PubMed:10537111; XXX; 05-SEP-2018.
+**EV ECO:0000269; PubMed:16492764; XXX; 05-SEP-2018.
+**EV ECO:0000269; Ref.4; XXX; 18-OCT-2017.
+**EV ECO:0000303; PubMed:15028279; XXX; 18-OCT-2017.
+**EV ECO:0000303; PubMed:2420009; XXX; 18-OCT-2017.
+**EV ECO:0000303; PubMed:2423327; XXX; 18-OCT-2017.
+**EV ECO:0000303; PubMed:3494801; XXX; 18-OCT-2017.
+**EV ECO:0000305; -; XXX; 18-OCT-2017.
+**EV ECO:0000305; PubMed:8554326; XXX; 18-OCT-2017.
 **CL 17q11.2-q12;
-**EV ECO:0000244; PDB:1CD9; INT; 04-OCT-2017.
-**EV ECO:0000244; PDB:1GNC; INT; 04-OCT-2017.
-**EV ECO:0000244; PDB:2D9Q; INT; 04-OCT-2017.
-**EV ECO:0000244; PDB:5GW9; INT; 04-OCT-2017.
-**EV ECO:0000250; -; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:10537111; XXX; 01-JAN-1900.
-**EV ECO:0000269; PubMed:16492764; XXX; 01-JAN-1900.
-**EV ECO:0000269; Ref.4; XXX; 01-JAN-1900.
-**EV ECO:0000303; PubMed:15028279; XXX; 01-JAN-1900.
-**EV ECO:0000303; PubMed:2420009; XXX; 01-JAN-1900.
-**EV ECO:0000303; PubMed:2423327; XXX; 01-JAN-1900.
-**EV ECO:0000303; PubMed:3494801; XXX; 01-JAN-1900.
-**EV ECO:0000305; -; XXX; 01-JAN-1900.
-**EV ECO:0000305; PubMed:8554326; XXX; 01-JAN-1900.
 **ZB UHI, 31-OCT-2008; ALG, 13-DEC-2012;
 SQ   SEQUENCE   207 AA;  22293 MW;  421F635ECC776996 CRC64;
      MAGPATQSPM KLMALQLLLW HSALWTVQEA TPLGPASSLP QSFLLKCLEQ VRKIQGDGAA

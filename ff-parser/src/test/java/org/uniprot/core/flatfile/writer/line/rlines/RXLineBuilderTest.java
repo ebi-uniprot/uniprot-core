@@ -66,9 +66,9 @@ class RXLineBuilderTest {
         Citation xrefs =
                 buildCitationXref("15165820", "10.1016/j.virol.2004.02.019", "asfsadgdasgdagd");
         List<String> lines = builder.buildLine(xrefs, true, true);
-        assertEquals(2, lines.size());
-        String expected = "RX   DOI=10.1016/j.virol.2004.02.019;";
-        assertEquals(expected, lines.get(1));
+        assertEquals(1, lines.size());
+        String expected = "RX   PubMed=15165820; AGRICOLA=asfsadgdasgdagd; DOI=10.1016/j.virol.2004.02.019;";
+        assertEquals(expected, lines.get(0));
     }
 
     @Test

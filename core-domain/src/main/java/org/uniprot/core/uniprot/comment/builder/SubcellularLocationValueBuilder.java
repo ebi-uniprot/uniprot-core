@@ -19,7 +19,7 @@ public class SubcellularLocationValueBuilder
                 SubcellularLocationValueBuilder, SubcellularLocationValue> {
     private String id;
 
-    private SubcellularLocationValueBuilder() {}
+    SubcellularLocationValueBuilder() {}
 
     public SubcellularLocationValueBuilder(String id, String value, List<Evidence> evidences) {
         this.id = id;

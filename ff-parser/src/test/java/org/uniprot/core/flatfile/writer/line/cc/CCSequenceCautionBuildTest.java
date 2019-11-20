@@ -19,20 +19,17 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     void testSequenceCauction() {
         String ccLine =
                 ("CC   -!- SEQUENCE CAUTION:\n"
-                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.;");
+                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;");
         String ccLineString =
                 ("SEQUENCE CAUTION:\n"
-                        + "Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.;");
+                        + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;");
         String sequence = "CAA57511.1";
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
-        List<String> positions = new ArrayList<>();
-        positions.add("421");
-        positions.add("589");
-        positions.add("591");
+     
 
         SequenceCautionComment comment =
-                buildComment(sequence, SequenceCautionType.FRAMESHIFT, positions, note, evs);
+                buildComment(sequence, SequenceCautionType.FRAMESHIFT, note, evs);
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
     }
@@ -41,26 +38,22 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     void testSequenceCauctionWithEvidence() {
         String ccLine =
                 ("CC   -!- SEQUENCE CAUTION:\n"
-                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};");
+                        + "CC       Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};");
         String ccLineString =
                 ("SEQUENCE CAUTION:\n"
-                        + "Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.;");
+                        + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.;");
         String ccLineStringEvidence =
                 ("SEQUENCE CAUTION:\n"
-                        + "Sequence=CAA57511.1; Type=Frameshift; Positions=421, 589, 591; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};");
+                        + "Sequence=CAA57511.1; Type=Frameshift; Note=The predicted gene.; Evidence={ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|Ensembl:ENSP00000409133};");
 
         String sequence = "CAA57511.1";
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
         evs.add("ECO:0000313|Ensembl:ENSP00000409133");
-        List<String> positions = new ArrayList<>();
-        positions.add("421");
-        positions.add("589");
-        positions.add("591");
 
         SequenceCautionComment comment =
-                buildComment(sequence, SequenceCautionType.FRAMESHIFT, positions, note, evs);
+                buildComment(sequence, SequenceCautionType.FRAMESHIFT, note, evs);
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
         doTestStringEv(ccLineStringEvidence, comment);
@@ -74,14 +67,11 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
         String sequence = "CAA57511.1";
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
-        List<String> positions = new ArrayList<>();
-        //	positions.add("421");
-        //	positions.add("589");
-        //	positions.add("591");
+
 
         SequenceCautionComment comment =
                 buildComment(
-                        sequence, SequenceCautionType.ERRONEOUS_PREDICTION, positions, note, evs);
+                        sequence, SequenceCautionType.ERRONEOUS_PREDICTION, note, evs);
         doTest(ccLine, comment);
     }
 
@@ -101,14 +91,11 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
-        List<String> positions = new ArrayList<>();
-        //	positions.add("421");
-        //	positions.add("589");
-        //	positions.add("591");
+       
 
         SequenceCautionComment comment =
                 buildComment(
-                        sequence, SequenceCautionType.ERRONEOUS_PREDICTION, positions, note, evs);
+                        sequence, SequenceCautionType.ERRONEOUS_PREDICTION, note, evs);
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
         // doTestStringEv(ccLineStringEvidence, comment);
@@ -117,7 +104,6 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     SequenceCautionComment buildComment(
             String sequence,
             SequenceCautionType type,
-            List<String> positions,
             String note,
             List<String> evs) {
 
@@ -126,7 +112,6 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
         builder.sequenceCautionType(type)
                 .sequence(sequence)
                 .note(note)
-                .positions(positions)
                 .evidences(createEvidence(evs));
 
         return builder.build();

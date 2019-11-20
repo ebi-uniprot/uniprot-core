@@ -16,7 +16,7 @@ public class MichaelisConstantImpl implements MichaelisConstant {
     private String substrate;
     private List<Evidence> evidences;
 
-    private MichaelisConstantImpl() {
+    MichaelisConstantImpl() {
         this.evidences = Collections.emptyList();
     }
 

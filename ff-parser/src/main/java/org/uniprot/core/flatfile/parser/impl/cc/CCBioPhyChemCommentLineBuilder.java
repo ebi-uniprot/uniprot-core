@@ -39,9 +39,11 @@ public class CCBioPhyChemCommentLineBuilder extends CCLineBuilderAbstr<BPCPComme
             boolean includeCommentType) {
         List<String> lines = new ArrayList<>();
 
-        // first line
-        if (includeCommentType) lines.add(buildStart(comment, includeFlatFileMarkings));
+        String startWithMol = buildStartWithMolecule(comment, includeFlatFileMarkings, includeCommentType);
+    	if(!Strings.isNullOrEmpty(startWithMol))
+    		lines.add(startWithMol);      
 
+     
         if (comment.getAbsorption() != null) {
             lines.addAll(
                     buildAbsorptionLine(

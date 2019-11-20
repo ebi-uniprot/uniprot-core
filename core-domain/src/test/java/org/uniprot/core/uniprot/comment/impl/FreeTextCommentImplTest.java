@@ -14,16 +14,18 @@ class FreeTextCommentImplTest {
     @Test
     void testNoEvidence() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
-        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.ALLERGEN, texts);
+        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.ALLERGEN, "", texts);
         assertEquals(CommentType.ALLERGEN, comment.getCommentType());
         assertEquals(texts, comment.getTexts());
+        assertEquals("", comment.getMolecule());
     }
 
     @Test
     void testWithEvidence() {
         List<EvidencedValue> texts = createEvidenceValuesWithEvidences();
-        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, texts);
+        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, "isoform 2", texts);
         assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
         assertEquals(texts, comment.getTexts());
+        assertEquals("isoform 2", comment.getMolecule());
     }
 }

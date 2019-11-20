@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
 
 import com.google.common.base.Strings;
 
@@ -18,11 +15,10 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     void testMASSSPEC() {
         String ccLine =
                 "CC   -!- MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray;\n"
-                        + "CC       Range=167-186; Note=Monophosphorylated;\n"
-                        + "CC       Evidence={ECO:0000303|PubMed:16629414};";
+                        + "CC       Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
 
         String ccLineString =
-                "MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray; Range=167-186; Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
+                "MASS SPECTROMETRY: Mass=2189.4; Method=Electrospray; Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
 
         List<String> evidences = new ArrayList<>();
@@ -37,10 +33,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         MassSpectrometryMethod.ELECTROSPRAY,
                         note,
                         evidences,
-                        true);
-        List<MassSpectrometryRange> ranges = new ArrayList<>();
-        ranges.add(buildRange(167, 186, ""));
-        builder.ranges(ranges);
+                        true);      
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -49,11 +42,11 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
     void testMASSSPEC2() {
         String ccLine =
-                "CC   -!- MASS SPECTROMETRY: Mass=22629; Mass_error=1.6;\n"
-                        + "CC       Method=Electrospray; Range=16-214 (P04653-1); Note=Allele D, with\n"
-                        + "CC       6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
+                "CC   -!- MASS SPECTROMETRY: [P04653-1]: Mass=22629; Mass_error=1.6;\n"
+                        + "CC       Method=Electrospray; Note=Allele D, with 6 phosphate groups;\n"
+                        + "CC       Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString =
-                "MASS SPECTROMETRY: Mass=22629; Mass_error=1.6; Method=Electrospray; Range=16-214 (P04653-1); Note=Allele D, with "
+                "MASS SPECTROMETRY: [P04653-1]: Mass=22629; Mass_error=1.6; Method=Electrospray; Note=Allele D, with "
                         + "6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
         List<String> evidences = new ArrayList<>();
@@ -69,9 +62,8 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         note,
                         evidences,
                         true);
-        List<MassSpectrometryRange> ranges = new ArrayList<>();
-        ranges.add(buildRange(16, 214, "P04653-1"));
-        builder.ranges(ranges);
+        builder.molecule( "P04653-1");
+       
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -80,16 +72,16 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
     void testMass3() {
         String ccLine =
-                "CC   -!- MASS SPECTROMETRY: Mass=22629; Mass_error=1.6;\n"
-                        + "CC       Method=Electrospray; Range=16-214 (P04653-1); Note=Allele D, with\n"
-                        + "CC       6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
+                "CC   -!- MASS SPECTROMETRY: [P04653-1]: Mass=22629; Mass_error=1.6;\n"
+                        + "CC       Method=Electrospray; Note=Allele D, with 6 phosphate groups;\n"
+                        + "CC       Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString =
-                "MASS SPECTROMETRY: Mass=22629; Mass_error=1.6; "
-                        + "Method=Electrospray; Range=16-214 (P04653-1); Note=Allele D, with "
+                "MASS SPECTROMETRY: [P04653-1]: Mass=22629; Mass_error=1.6; "
+                        + "Method=Electrospray; Note=Allele D, with "
                         + "6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineStringEvidence =
-                "MASS SPECTROMETRY: Mass=22629; Mass_error=1.6; "
-                        + "Method=Electrospray; Range=16-214 (P04653-1); Note=Allele D, with "
+                "MASS SPECTROMETRY: [P04653-1]: Mass=22629; Mass_error=1.6; "
+                        + "Method=Electrospray; Note=Allele D, with "
                         + "6 phosphate groups; Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
         List<String> evidences = new ArrayList<>();
@@ -105,9 +97,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         note,
                         evidences,
                         false);
-        List<MassSpectrometryRange> ranges = new ArrayList<>();
-        ranges.add(buildRange(16, 214, "P04653-1"));
-        builder.ranges(ranges);
+        builder.molecule("P04653-1");
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -118,12 +108,12 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
     void testMass4() {
         String ccLine =
-                "CC   -!- MASS SPECTROMETRY: Mass=3260; Method=MALDI; Range=?-?;\n"
+                "CC   -!- MASS SPECTROMETRY: Mass=3260; Method=MALDI;\n"
                         + "CC       Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString =
-                "MASS SPECTROMETRY: Mass=3260; Method=MALDI; Range=?-?; Evidence={ECO:0000303|PubMed:16629414};";
+                "MASS SPECTROMETRY: Mass=3260; Method=MALDI; Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineStringEvidence =
-                "MASS SPECTROMETRY: Mass=3260; Method=MALDI; Range=?-?; "
+                "MASS SPECTROMETRY: Mass=3260; Method=MALDI; "
                         + "Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
         List<String> evidences = new ArrayList<>();
@@ -139,9 +129,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         note,
                         evidences,
                         false);
-        List<MassSpectrometryRange> ranges = new ArrayList<>();
-        ranges.add(buildRange(-1, -1, ""));
-        builder.ranges(ranges);
+        
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -151,12 +139,11 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
     @Test
     void test6() {
         String ccLine =
-                "CC   -!- MASS SPECTROMETRY: Mass=871.3; Method=Electrospray; Range=35-42,\n"
-                        + "CC       101-108 (P04653-1), 145-152, 189-196; Note=Monophosphorylated;\n"
-                        + "CC       Evidence={ECO:0000303|PubMed:16629414};";
+                "CC   -!- MASS SPECTROMETRY: [P04653-1]: Mass=871.3; Method=Electrospray;\n"
+                        + "CC       Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
         String ccLineString =
-                "MASS SPECTROMETRY: Mass=871.3; Method=Electrospray; Range=35-42, "
-                        + "101-108 (P04653-1), 145-152, 189-196; Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
+                "MASS SPECTROMETRY: [P04653-1]: Mass=871.3; Method=Electrospray;"
+                        + " Note=Monophosphorylated; Evidence={ECO:0000303|PubMed:16629414};";
         String ev1 = "ECO:0000303|PubMed:16629414";
         List<String> evidences = new ArrayList<>();
         evidences.add(ev1);
@@ -171,12 +158,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         note,
                         evidences,
                         true);
-        List<MassSpectrometryRange> ranges = new ArrayList<>();
-        ranges.add(buildRange(35, 42, ""));
-        ranges.add(buildRange(101, 108, "P04653-1"));
-        ranges.add(buildRange(145, 152, ""));
-        ranges.add(buildRange(189, 196, ""));
-        builder.ranges(ranges);
+        builder.molecule( "P04653-1");
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -198,10 +180,5 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         return builder;
     }
 
-    MassSpectrometryRange buildRange(int start, int end, String isoform) {
-        return new MassSpectrometryRangeBuilder()
-                .range(new Range(start, end))
-                .isoformId(isoform)
-                .build();
-    }
+  
 }

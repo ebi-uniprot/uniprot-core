@@ -1,29 +1,44 @@
 package org.uniprot.core.flatfile.transformer;
 
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+
+import java.util.AbstractMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.stream.Collectors;
 
 import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
-import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.AlternativeSequenceHelper;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 import org.uniprot.core.util.Pair;
 import org.uniprot.core.util.PairImpl;
 
-public final class FeatureTransformer {
-    private static final String FTID = "/FTId=";
-    private static final String BRACKET_LEFT = "(";
-    private static final String SEMICOLON = ";";
-    private static final String COMMA = ",";
+import com.google.common.base.Strings;
+
+/**
+ *
+ * @author jluo
+ * @date: 18 Nov 2019
+ *
+*/
+
+public class FeatureTransformer {
+	private static final String FTID = "/id=\"";
+    private static final String NOTE = "/note=\"";
+    private static final String EVIDENCE = "/evidence=\"";
     private static final String SPACE = " ";
+    private static final String BRACKET_LEFT = "(";
+    private static final String COMMA = ",";
     private static final String STOP = ".";
     private static final String MISSING = "Missing";
     private static final String LINE_END = "\n";
@@ -35,60 +50,79 @@ public final class FeatureTransformer {
         annotation = annotation.substring(index + 1).trim();
         return transform(FeatureType.typeOf(type), annotation);
     }
-
-    public Feature transform(FeatureType featureType, String annotation) {
-        if (annotation.startsWith(featureType.toDisplayName())) {
-            annotation = annotation.substring(featureType.toDisplayName().length() + 1).trim();
-        }
-        FeatureBuilder builder = new FeatureBuilder();
-        builder.type(featureType);
-        int index = annotation.indexOf(FTID);
-        String ftid = null;
-        if (index != -1) {
-            ftid = annotation.substring(index + FTID.length());
-            if (ftid.endsWith(".")) {
-                ftid = ftid.substring(0, ftid.length() - 1);
-            }
-            annotation = annotation.substring(0, index).trim();
-            if (annotation.endsWith("\n")) {
-                annotation = annotation.substring(0, annotation.length() - 1).trim();
-            }
-        }
-        if (ftid != null) {
-            builder.featureId(ftid);
-        }
-        List<Evidence> evidences = new ArrayList<>();
-        String value = CommentTransformerHelper.stripEvidences(annotation, evidences);
-        builder.evidences(evidences);
-
-        index = value.indexOf(SPACE);
-        String locationStart = value.substring(0, index);
-        value = value.substring(index + SPACE.length());
-        index = value.indexOf(SPACE);
-        String locationEnd;
-        if (index != -1) {
-            locationEnd = value.substring(0, index);
-            value = value.substring(index + SPACE.length());
-        } else {
-            locationEnd = value;
-            value = "";
-        }
-        Range featureLocation = convertFeatureLocation(locationStart, locationEnd);
-        builder.location(featureLocation);
-        if (value.endsWith(".")) {
-            value = value.substring(0, value.length() - 1);
-        }
-        if (!AlternativeSequenceHelper.hasAlternativeSequence(featureType)) {
-            builder.description(value);
-        } else {
-            Pair<String, AlternativeSequence> pair = updateFeatureDescription(featureType, value);
-            builder.alternativeSequence(pair.getValue());
-            builder.description(pair.getKey());
-        }
-
-        return builder.build();
+    private Map.Entry<String, String> extractToken(String annotation, String tokenKey ){
+    	 int index = annotation.indexOf(tokenKey);
+    	 String token= "";
+    	 if (index != -1) {
+    		 token = annotation.substring(index + tokenKey.length());
+             if (token.endsWith("\"")) {
+            	 token = token.substring(0, token.length() - 1);
+             }
+             annotation = annotation.substring(0, index).trim();
+             if (annotation.endsWith("\n")) {
+                 annotation.substring(0, annotation.length() - 1).trim();
+             }
+         }
+    	 return new AbstractMap.SimpleEntry<>(annotation, token);
     }
 
+    public Feature transform( FeatureType featureType, String annotation) {
+        if (annotation.startsWith(featureType.name())) {
+            annotation = annotation.substring(featureType.name().length() + 1).trim();
+        }
+        Map.Entry<String, String> entry= extractToken(annotation, FTID); 
+        annotation = entry.getKey();
+        String ftid = entry.getValue();
+        
+        FeatureBuilder builder = new FeatureBuilder();
+        builder.type(featureType);
+        
+        if (!Strings.isNullOrEmpty(ftid)) {
+            builder.featureId(ftid);
+        }      
+        entry= extractToken(annotation, EVIDENCE); 
+        annotation = entry.getKey();
+        String evidence = entry.getValue();
+        if(!Strings.isNullOrEmpty(evidence)) {
+        	String[] evIds = evidence.split(", ");
+        	builder.evidences(
+        	Arrays.stream(evIds)
+        	.map(val -> parseEvidenceLine(val.trim()))
+        	.collect(Collectors.toList()));
+        }
+             
+        entry= extractToken(annotation, NOTE); 
+        annotation = entry.getKey();
+        String note = entry.getValue();
+        if(!Strings.isNullOrEmpty(note)) {
+            String text =note.trim();
+            if (!AlternativeSequenceHelper.hasAlternativeSequence(featureType)) {
+               builder.description(text);
+            }
+            else{    
+            	Pair<String, AlternativeSequence> result = updateFeatureDescription(
+            			featureType,  text);
+            	   builder.alternativeSequence(result.getValue());
+                   builder.description(result.getKey());
+            }
+        }
+        String sequence ="";
+        String [] sToken = annotation.split(":");
+        if(sToken.length ==2) {
+        	sequence=sToken[0];
+        	annotation =sToken[1];
+        }
+        String [] token = annotation.split("\\.\\.");
+        String locationStart=token[0];
+        String locationEnd=token[0];
+        if(token.length==2) {
+        	locationEnd=token[1];
+        }
+        builder.location(createFeatureLocation(locationStart, locationEnd, sequence));
+      
+           return builder.build();
+    }
+    
     private Pair<String, AlternativeSequence> updateFeatureDescription(
             FeatureType type, String text) {
         String description = "";
@@ -179,10 +213,15 @@ public final class FeatureTransformer {
                 new AlternativeSequenceBuilder().original(original).alternatives(altSeq).build());
     }
 
-    public static Range convertFeatureLocation(String locationStart, String locationEnd) {
-        Position start = convertPosition(locationStart, '<');
+   
+    public static FeatureLocation createFeatureLocation(String locationStart, String locationEnd, String sequence) {
+    	Position start = convertPosition(locationStart, '<');
         Position end = convertPosition(locationEnd, '>');
-        return new Range(start, end);
+        return new FeatureLocation(sequence, start.getValue(), 
+        		end.getValue(),
+        		start.getModifier(),
+        		end.getModifier());
+    	
     }
 
     private static Position convertPosition(String location, char outside) {
@@ -230,3 +269,4 @@ public final class FeatureTransformer {
         return new Position(pos, modifier);
     }
 }
+

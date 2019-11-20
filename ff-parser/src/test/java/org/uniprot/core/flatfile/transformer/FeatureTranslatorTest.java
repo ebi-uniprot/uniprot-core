@@ -18,7 +18,9 @@ class FeatureTranslatorTest {
         // "SIGNAL <1 33 Potential.",
         // "CHAIN 34 121 Potential.\n/FTId=PRO_5001267722.",
         //
-        String testString = "NON_TER 1 1";
+    	
+    	String testString = "NON_TER 1\n";
+
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.NON_TER, feature.getType());
@@ -29,8 +31,9 @@ class FeatureTranslatorTest {
 
     @Test
     void testChain() {
-
-        String testString = "CHAIN ? 121 Potential.\n/FTId=PRO_5001267722.";
+   	 String testString = "CHAIN ?..121\n/note=\"Potential\"\n"
+             + "/id=\"PRO_5001267722\"\n";
+    
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.CHAIN, feature.getType());
@@ -43,8 +46,9 @@ class FeatureTranslatorTest {
 
     @Test
     void testSignal() {
+    	String testString = "SIGNAL <1..33\n/note=\"Potential\"\n"
+               ;
 
-        String testString = "SIGNAL <1 33 Potential.";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.SIGNAL, feature.getType());
@@ -58,8 +62,8 @@ class FeatureTranslatorTest {
 
     @Test
     void testBinding() {
-
-        String testString = "BINDING 138 138 NAD(P)HX; via amide nitrogen.";
+    	String testString = "BINDING 138\n/note=\"NAD(P)HX; via amide nitrogen\""
+                ;
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.BINDING, feature.getType());
@@ -77,8 +81,8 @@ class FeatureTranslatorTest {
 
     @Test
     void testConflict() {
-
-        String testString = "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633).";
+    	String testString = "CONFLICT 124..127\n/note=\"GLTA -> ESHP (in Ref. 1; AAA98633)\""
+                ;
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.CONFLICT, feature.getType());
@@ -99,15 +103,13 @@ class FeatureTranslatorTest {
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory.create(feature);
 
         String converted = builder.buildString(feature);
-
-        System.out.println(converted);
         assertEquals(testString, converted);
     }
 
     @Test
     void testConflict2() {
-
-        String testString = "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633 and 3; AA432).";
+    	String testString = "CONFLICT 124..127\n/note=\"GLTA -> ESHP (in Ref. 1; AAA98633 and 3; AA432)\""
+                ;
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.CONFLICT, feature.getType());
@@ -129,16 +131,14 @@ class FeatureTranslatorTest {
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory.create(feature);
 
         String converted = builder.buildString(feature);
-
-        System.out.println(converted);
         assertEquals(testString, converted);
     }
 
     @Test
     void testConflict3() {
+    	String testString = "CONFLICT 124..127\n/note=\"GLTA -> ESHP (in Ref. 1; AAA98633, 3; AA432 and 4; AB321)\""
+                ;
 
-        String testString =
-                "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633, 3; AA432 and 4; AB321).";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.CONFLICT, feature.getType());
@@ -163,16 +163,14 @@ class FeatureTranslatorTest {
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory.create(feature);
 
         String converted = builder.buildString(feature);
-
-        System.out.println(converted);
         assertEquals(testString, converted);
     }
 
     @Test
     void testMutagen() {
+    	String testString = "MUTAGEN 9\n/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16\""
+                ;
 
-        String testString =
-                "MUTAGEN 9 9 K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16.";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.MUTAGEN, feature.getType());
@@ -200,8 +198,9 @@ class FeatureTranslatorTest {
 
     @Test
     void testVariant() {
-
-        String testString = "VARIANT 421 421 C -> R (in GS; dbSNP:rs28936387).\n/FTId=VAR_007115.";
+    	String testString = "VARIANT 421\n/note=\"C -> R (in GS; dbSNP:rs28936387)\"\n"
+    			 + "/id=\"VAR_007115\"";
+       
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.VARIANT, feature.getType());
@@ -230,7 +229,8 @@ class FeatureTranslatorTest {
     @Test
     void testVariant2() {
 
-        String testString = "VARIANT 561 561 Missing (in GS).\n/FTId=VAR_007118.";
+        String testString = "VARIANT 561\n/note=\"Missing (in GS)\"\n"
+      			 + "/id=\"VAR_007118\"";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
 
@@ -249,16 +249,16 @@ class FeatureTranslatorTest {
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory.create(feature);
 
         String converted = builder.buildString(feature);
+ 
         assertEquals(testString, converted);
         assertEquals("VAR_007118", feature.getFeatureId().getValue());
     }
 
     @Test
     void testVarSeq() {
-
-        String testString =
-                "VAR_SEQ 239 239 E -> ERDVIRSVRLPRE (in isoform PLEC- 0, isoform 1C,"
-                        + " isoform 2A and isoform 3A).\n/FTId=VSP_005049.";
+    	String testString = "VAR_SEQ 239\n/note=\"E -> ERDVIRSVRLPRE (in isoform PLEC-0, isoform 1C,"
+        	    + " isoform 2A and isoform 3A)\"\n"
+       			 + "/id=\"VSP_005049\"";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.VAR_SEQ, feature.getType());
@@ -280,7 +280,7 @@ class FeatureTranslatorTest {
         //                "2A",
         //                feature.getAlternativeSequence().getReport().getValue().get(2));
         assertEquals(
-                "in isoform PLEC- 0, isoform 1C, isoform 2A and isoform 3A",
+                "in isoform PLEC-0, isoform 1C, isoform 2A and isoform 3A",
                 feature.getDescription().getValue());
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory.create(feature);
 
@@ -291,8 +291,9 @@ class FeatureTranslatorTest {
 
     @Test
     void testVarSeq2() {
+    	String testString = "VAR_SEQ 1..242\n/note=\"Missing (in isoform PLEC-1H)\"\n"
+      			 + "/id=\"VSP_005040\"";
 
-        String testString = "VAR_SEQ 1 242 Missing (in isoform PLEC-1H).\n/FTId=VSP_005040.";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.VAR_SEQ, feature.getType());
@@ -313,14 +314,16 @@ class FeatureTranslatorTest {
 
         String converted = builder.buildString(feature);
         assertEquals(testString, converted);
+        
         assertEquals("VSP_005040", feature.getFeatureId().getValue());
     }
     //
 
     @Test
     void testCarbohyd() {
+    	String testString = "CARBOHYD 196\n/note=\"N-linked (GlcNAc...); by host\"\n"
+     			 ;
 
-        String testString = "CARBOHYD 196 196 N-linked (GlcNAc...); by host.";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.CARBOHYD, feature.getType());
@@ -334,13 +337,14 @@ class FeatureTranslatorTest {
         FFLineBuilder<Feature> builder = FeatureLineBuilderFactory.create(feature);
 
         String converted = builder.buildString(feature);
-        assertEquals(testString, converted);
+        assertEquals(testString, converted+"\n");
     }
 
     @Test
     void testCarbohyd2() {
+    	String testString = "CARBOHYD 7\n/note=\"O-linked (GalNAc...)\""
+    			 ;
 
-        String testString = "CARBOHYD 7 7 O-linked (GalNAc...).";
         Feature feature = transformer.transform(testString);
         assertNotNull(feature);
         assertEquals(FeatureType.CARBOHYD, feature.getType());

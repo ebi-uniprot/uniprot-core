@@ -36,7 +36,7 @@ package org.uniprot.core.uniprot.comment;
  * @version 1.0
  * @see Comment
  */
-public interface DiseaseComment extends Comment {
+public interface DiseaseComment extends Comment, HasMolecule {
     /** @return the definition of the disease */
     Disease getDisease();
 
@@ -55,4 +55,5 @@ public interface DiseaseComment extends Comment {
     Note getNote();
 
     boolean hasNote();
+
 }

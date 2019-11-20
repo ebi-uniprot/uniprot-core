@@ -1,7 +1,6 @@
 package org.uniprot.core.xml.uniprot.comment;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
@@ -9,6 +8,7 @@ import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
 import org.uniprot.core.xml.jaxb.uniprot.EvidencedStringType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 
@@ -16,7 +16,6 @@ import com.google.common.base.Strings;
 
 public class MSCommentConverter implements CommentConverter<MassSpectrometryComment> {
     private final ObjectFactory xmlUniprotFactory;
-    private final MSRangeConverter rangeConverter;
     private final EvidenceIndexMapper evRefMapper;
 
     public MSCommentConverter(EvidenceIndexMapper evRefMapper) {
@@ -26,7 +25,6 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
     public MSCommentConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.evRefMapper = evRefMapper;
         this.xmlUniprotFactory = xmlUniprotFactory;
-        this.rangeConverter = new MSRangeConverter(xmlUniprotFactory);
     }
 
     @Override
@@ -34,6 +32,11 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         if (xmlObj == null) return null;
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
 
+        // Molecule
+        if (xmlObj.getMolecule() != null) {
+            builder.molecule(xmlObj.getMolecule().getValue());
+        }
+        
         if (xmlObj.getMethod() != null)
             builder.method(MassSpectrometryMethod.toType(xmlObj.getMethod()));
 
@@ -41,11 +44,7 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
 
         if (xmlObj.getMass() != null) builder.molWeight(xmlObj.getMass());
 
-        // Ranges
-        builder.ranges(
-                xmlObj.getLocation().stream()
-                        .map(rangeConverter::fromXml)
-                        .collect(Collectors.toList()));
+      
 
         // Note
         if (!xmlObj.getText().isEmpty()) {
@@ -65,6 +64,13 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         if (uniObj == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
+        
+        if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(uniObj.getMolecule());
+            commentXML.setMolecule(mol);
+        }
+        
         // Method
         if (uniObj.getMethod() != null) commentXML.setMethod(uniObj.getMethod().getValue());
 
@@ -76,11 +82,6 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         if ((uniObj.getMolWeightError() != null) && (uniObj.getMolWeightError() > 0))
             commentXML.setError(Float.toString(uniObj.getMolWeightError()));
 
-        // Ranges
-        if (uniObj.getRanges() != null) {
-            uniObj.getRanges()
-                    .forEach(val -> commentXML.getLocation().add(rangeConverter.toXml(val)));
-        }
 
         // Note
         if (!Strings.isNullOrEmpty(uniObj.getNote())) {

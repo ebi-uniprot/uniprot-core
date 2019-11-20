@@ -139,7 +139,6 @@ public class UniprotJsonConfig extends JsonConfig {
                 RnaEdPosition.class, RnaEditingCommentImpl.RnaEdPositionImpl.class);
         mod.addAbstractTypeMapping(RnaEditingComment.class, RnaEditingCommentImpl.class);
         mod.addAbstractTypeMapping(MichaelisConstant.class, MichaelisConstantImpl.class);
-        mod.addAbstractTypeMapping(MassSpectrometryRange.class, MassSpectrometryRangeImpl.class);
         mod.addAbstractTypeMapping(KineticParameters.class, KineticParametersImpl.class);
         mod.addAbstractTypeMapping(SubcellularLocation.class, SubcellularLocationImpl.class);
         mod.addAbstractTypeMapping(

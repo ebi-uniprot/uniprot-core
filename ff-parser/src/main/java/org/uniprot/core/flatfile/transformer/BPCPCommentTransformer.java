@@ -35,6 +35,8 @@ public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
 
         StringTokenizer st = new StringTokenizer(annotation, "\n");
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
+        annotation = updateMolecule(annotation, builder);
+        
         while (st.hasMoreTokens()) {
             String token = st.nextToken();
             switchTopic(token, st, builder);
@@ -42,6 +44,20 @@ public class BPCPCommentTransformer implements CommentTransformer<BPCPComment> {
         return builder.build();
     }
 
+    private String updateMolecule(String annotation,  BPCPCommentBuilder builder ) {
+    	if(annotation.startsWith("[") && annotation.contains("]")){
+    		int index =annotation.indexOf("]");
+    		String molecule = annotation.substring(1, index);
+    		molecule = molecule.replaceAll("\n", " ");
+    		builder.molecule(molecule);
+    		annotation = annotation.substring(index+2);
+    		  if (annotation.startsWith("\n"))
+                  annotation = annotation.substring(1);
+    		 return annotation;
+    	}
+    	return annotation;
+    }
+    
     private void switchTopic(String line, StringTokenizer lines, BPCPCommentBuilder builder) {
 
         if (line.equals(KINETIC_PARAMETERS)) {

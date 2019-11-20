@@ -22,7 +22,6 @@ class SCCommentConverterTest {
         Evidence evidence = parseEvidenceLine("ECO:0000305");
         builder.sequence("AAA40939.1")
                 .sequenceCautionType(SequenceCautionType.FRAMESHIFT)
-                .positions(Arrays.asList("Several"))
                 .evidences(Arrays.asList(evidence));
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());
@@ -39,7 +38,6 @@ class SCCommentConverterTest {
         Evidence evidence = parseEvidenceLine("ECO:0000305");
         builder.sequence("AAA40939.1")
                 .sequenceCautionType(SequenceCautionType.FRAMESHIFT)
-                .positions(Arrays.asList("535"))
                 .evidences(Arrays.asList(evidence));
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());

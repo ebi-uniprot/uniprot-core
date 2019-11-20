@@ -2,69 +2,66 @@ ID   ARBK2_HUMAN             Reviewed;         688 AA.
 AC   P35626; Q9UGW9;
 DT   01-JUN-1994, integrated into UniProtKB/Swiss-Prot.
 DT   17-OCT-2006, sequence version 2.
-DT   07-NOV-2018, entry version 183.
+DT   13-FEB-2019, entry version 186.
 DE   RecName: Full=Beta-adrenergic receptor kinase 2;
 DE            Short=Beta-ARK-2;
 DE            EC=2.7.11.15;
 DE   AltName: Full=G-protein-coupled receptor kinase 3 {ECO:0000312|MIM:109636};
 GN   Name=GRK3 {ECO:0000312|MIM:109636}; Synonyms=ADRBK2, BARK2;
 OS   Homo sapiens (Human).
-OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
-OC   Mammalia; Eutheria; Euarchontoglires; Primates; Haplorrhini;
-OC   Catarrhini; Hominidae; Homo.
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Primates; Haplorrhini; Catarrhini; Hominidae;
+OC   Homo.
 OX   NCBI_TaxID=9606;
 RN   [1]
 RP   NUCLEOTIDE SEQUENCE [MRNA].
 RC   TISSUE=Brain;
 RX   PubMed=8427589; DOI=10.1006/bbrc.1993.1072;
 RA   Parruti G., Ambrosini G., Sallese M., de Blasi A.;
-RT   "Molecular cloning, functional expression and mRNA analysis of human
-RT   beta-adrenergic receptor kinase 2.";
+RT   "Molecular cloning, functional expression and mRNA analysis of human beta-
+RT   adrenergic receptor kinase 2.";
 RL   Biochem. Biophys. Res. Commun. 190:475-481(1993).
 RN   [2]
 RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RX   PubMed=10591208; DOI=10.1038/990031;
-RA   Dunham I., Hunt A.R., Collins J.E., Bruskiewich R., Beare D.M.,
-RA   Clamp M., Smink L.J., Ainscough R., Almeida J.P., Babbage A.K.,
-RA   Bagguley C., Bailey J., Barlow K.F., Bates K.N., Beasley O.P.,
-RA   Bird C.P., Blakey S.E., Bridgeman A.M., Buck D., Burgess J.,
-RA   Burrill W.D., Burton J., Carder C., Carter N.P., Chen Y., Clark G.,
-RA   Clegg S.M., Cobley V.E., Cole C.G., Collier R.E., Connor R.,
-RA   Conroy D., Corby N.R., Coville G.J., Cox A.V., Davis J., Dawson E.,
-RA   Dhami P.D., Dockree C., Dodsworth S.J., Durbin R.M., Ellington A.G.,
-RA   Evans K.L., Fey J.M., Fleming K., French L., Garner A.A.,
+RA   Dunham I., Hunt A.R., Collins J.E., Bruskiewich R., Beare D.M., Clamp M.,
+RA   Smink L.J., Ainscough R., Almeida J.P., Babbage A.K., Bagguley C.,
+RA   Bailey J., Barlow K.F., Bates K.N., Beasley O.P., Bird C.P., Blakey S.E.,
+RA   Bridgeman A.M., Buck D., Burgess J., Burrill W.D., Burton J., Carder C.,
+RA   Carter N.P., Chen Y., Clark G., Clegg S.M., Cobley V.E., Cole C.G.,
+RA   Collier R.E., Connor R., Conroy D., Corby N.R., Coville G.J., Cox A.V.,
+RA   Davis J., Dawson E., Dhami P.D., Dockree C., Dodsworth S.J., Durbin R.M.,
+RA   Ellington A.G., Evans K.L., Fey J.M., Fleming K., French L., Garner A.A.,
 RA   Gilbert J.G.R., Goward M.E., Grafham D.V., Griffiths M.N.D., Hall C.,
-RA   Hall R.E., Hall-Tamlyn G., Heathcott R.W., Ho S., Holmes S.,
-RA   Hunt S.E., Jones M.C., Kershaw J., Kimberley A.M., King A.,
-RA   Laird G.K., Langford C.F., Leversha M.A., Lloyd C., Lloyd D.M.,
-RA   Martyn I.D., Mashreghi-Mohammadi M., Matthews L.H., Mccann O.T.,
-RA   Mcclay J., Mclaren S., McMurray A.A., Milne S.A., Mortimore B.J.,
-RA   Odell C.N., Pavitt R., Pearce A.V., Pearson D., Phillimore B.J.C.T.,
-RA   Phillips S.H., Plumb R.W., Ramsay H., Ramsey Y., Rogers L., Ross M.T.,
-RA   Scott C.E., Sehra H.K., Skuce C.D., Smalley S., Smith M.L.,
-RA   Soderlund C., Spragon L., Steward C.A., Sulston J.E., Swann R.M.,
-RA   Vaudin M., Wall M., Wallis J.M., Whiteley M.N., Willey D.L.,
+RA   Hall R.E., Hall-Tamlyn G., Heathcott R.W., Ho S., Holmes S., Hunt S.E.,
+RA   Jones M.C., Kershaw J., Kimberley A.M., King A., Laird G.K., Langford C.F.,
+RA   Leversha M.A., Lloyd C., Lloyd D.M., Martyn I.D., Mashreghi-Mohammadi M.,
+RA   Matthews L.H., Mccann O.T., Mcclay J., Mclaren S., McMurray A.A.,
+RA   Milne S.A., Mortimore B.J., Odell C.N., Pavitt R., Pearce A.V., Pearson D.,
+RA   Phillimore B.J.C.T., Phillips S.H., Plumb R.W., Ramsay H., Ramsey Y.,
+RA   Rogers L., Ross M.T., Scott C.E., Sehra H.K., Skuce C.D., Smalley S.,
+RA   Smith M.L., Soderlund C., Spragon L., Steward C.A., Sulston J.E.,
+RA   Swann R.M., Vaudin M., Wall M., Wallis J.M., Whiteley M.N., Willey D.L.,
 RA   Williams L., Williams S.A., Williamson H., Wilmer T.E., Wilming L.,
 RA   Wright C.L., Hubbard T., Bentley D.R., Beck S., Rogers J., Shimizu N.,
-RA   Minoshima S., Kawasaki K., Sasaki T., Asakawa S., Kudoh J.,
-RA   Shintani A., Shibuya K., Yoshizaki Y., Aoki N., Mitsuyama S.,
-RA   Roe B.A., Chen F., Chu L., Crabtree J., Deschamps S., Do A., Do T.,
-RA   Dorman A., Fang F., Fu Y., Hu P., Hua A., Kenton S., Lai H., Lao H.I.,
-RA   Lewis J., Lewis S., Lin S.-P., Loh P., Malaj E., Nguyen T., Pan H.,
-RA   Phan S., Qi S., Qian Y., Ray L., Ren Q., Shaull S., Sloan D., Song L.,
-RA   Wang Q., Wang Y., Wang Z., White J., Willingham D., Wu H., Yao Z.,
-RA   Zhan M., Zhang G., Chissoe S., Murray J., Miller N., Minx P.,
-RA   Fulton R., Johnson D., Bemis G., Bentley D., Bradshaw H., Bourne S.,
-RA   Cordes M., Du Z., Fulton L., Goela D., Graves T., Hawkins J.,
-RA   Hinds K., Kemp K., Latreille P., Layman D., Ozersky P., Rohlfing T.,
-RA   Scheet P., Walker C., Wamsley A., Wohldmann P., Pepin K., Nelson J.,
-RA   Korf I., Bedell J.A., Hillier L.W., Mardis E., Waterston R.,
-RA   Wilson R., Emanuel B.S., Shaikh T., Kurahashi H., Saitta S.,
-RA   Budarf M.L., McDermid H.E., Johnson A., Wong A.C.C., Morrow B.E.,
-RA   Edelmann L., Kim U.J., Shizuya H., Simon M.I., Dumanski J.P.,
-RA   Peyrard M., Kedra D., Seroussi E., Fransson I., Tapia I., Bruder C.E.,
-RA   O'Brien K.P., Wilkinson P., Bodenteich A., Hartman K., Hu X.,
-RA   Khan A.S., Lane L., Tilahun Y., Wright H.;
+RA   Minoshima S., Kawasaki K., Sasaki T., Asakawa S., Kudoh J., Shintani A.,
+RA   Shibuya K., Yoshizaki Y., Aoki N., Mitsuyama S., Roe B.A., Chen F., Chu L.,
+RA   Crabtree J., Deschamps S., Do A., Do T., Dorman A., Fang F., Fu Y., Hu P.,
+RA   Hua A., Kenton S., Lai H., Lao H.I., Lewis J., Lewis S., Lin S.-P., Loh P.,
+RA   Malaj E., Nguyen T., Pan H., Phan S., Qi S., Qian Y., Ray L., Ren Q.,
+RA   Shaull S., Sloan D., Song L., Wang Q., Wang Y., Wang Z., White J.,
+RA   Willingham D., Wu H., Yao Z., Zhan M., Zhang G., Chissoe S., Murray J.,
+RA   Miller N., Minx P., Fulton R., Johnson D., Bemis G., Bentley D.,
+RA   Bradshaw H., Bourne S., Cordes M., Du Z., Fulton L., Goela D., Graves T.,
+RA   Hawkins J., Hinds K., Kemp K., Latreille P., Layman D., Ozersky P.,
+RA   Rohlfing T., Scheet P., Walker C., Wamsley A., Wohldmann P., Pepin K.,
+RA   Nelson J., Korf I., Bedell J.A., Hillier L.W., Mardis E., Waterston R.,
+RA   Wilson R., Emanuel B.S., Shaikh T., Kurahashi H., Saitta S., Budarf M.L.,
+RA   McDermid H.E., Johnson A., Wong A.C.C., Morrow B.E., Edelmann L., Kim U.J.,
+RA   Shizuya H., Simon M.I., Dumanski J.P., Peyrard M., Kedra D., Seroussi E.,
+RA   Fransson I., Tapia I., Bruder C.E., O'Brien K.P., Wilkinson P.,
+RA   Bodenteich A., Hartman K., Hu X., Khan A.S., Lane L., Tilahun Y.,
+RA   Wright H.;
 RT   "The DNA sequence of human chromosome 22.";
 RL   Nature 402:489-495(1999).
 RN   [3]
@@ -72,43 +69,49 @@ RP   UBIQUITINATION.
 RX   PubMed=20596523; DOI=10.1371/journal.pone.0011332;
 RA   Del Rincon S.V., Rogers J., Widschwendter M., Sun D., Sieburg H.B.,
 RA   Spruck C.;
-RT   "Development and validation of a method for profiling post-
-RT   translational modification activities using protein microarrays.";
+RT   "Development and validation of a method for profiling post-translational
+RT   modification activities using protein microarrays.";
 RL   PLoS ONE 5:E11332-E11332(2010).
 RN   [4]
 RP   VARIANTS [LARGE SCALE ANALYSIS] SER-50; SER-60 AND LYS-104.
 RX   PubMed=17344846; DOI=10.1038/nature05610;
-RA   Greenman C., Stephens P., Smith R., Dalgliesh G.L., Hunter C.,
-RA   Bignell G., Davies H., Teague J., Butler A., Stevens C., Edkins S.,
-RA   O'Meara S., Vastrik I., Schmidt E.E., Avis T., Barthorpe S.,
-RA   Bhamra G., Buck G., Choudhury B., Clements J., Cole J., Dicks E.,
-RA   Forbes S., Gray K., Halliday K., Harrison R., Hills K., Hinton J.,
-RA   Jenkinson A., Jones D., Menzies A., Mironenko T., Perry J., Raine K.,
-RA   Richardson D., Shepherd R., Small A., Tofts C., Varian J., Webb T.,
-RA   West S., Widaa S., Yates A., Cahill D.P., Louis D.N., Goldstraw P.,
-RA   Nicholson A.G., Brasseur F., Looijenga L., Weber B.L., Chiew Y.-E.,
-RA   DeFazio A., Greaves M.F., Green A.R., Campbell P., Birney E.,
-RA   Easton D.F., Chenevix-Trench G., Tan M.-H., Khoo S.K., Teh B.T.,
-RA   Yuen S.T., Leung S.Y., Wooster R., Futreal P.A., Stratton M.R.;
+RA   Greenman C., Stephens P., Smith R., Dalgliesh G.L., Hunter C., Bignell G.,
+RA   Davies H., Teague J., Butler A., Stevens C., Edkins S., O'Meara S.,
+RA   Vastrik I., Schmidt E.E., Avis T., Barthorpe S., Bhamra G., Buck G.,
+RA   Choudhury B., Clements J., Cole J., Dicks E., Forbes S., Gray K.,
+RA   Halliday K., Harrison R., Hills K., Hinton J., Jenkinson A., Jones D.,
+RA   Menzies A., Mironenko T., Perry J., Raine K., Richardson D., Shepherd R.,
+RA   Small A., Tofts C., Varian J., Webb T., West S., Widaa S., Yates A.,
+RA   Cahill D.P., Louis D.N., Goldstraw P., Nicholson A.G., Brasseur F.,
+RA   Looijenga L., Weber B.L., Chiew Y.-E., DeFazio A., Greaves M.F.,
+RA   Green A.R., Campbell P., Birney E., Easton D.F., Chenevix-Trench G.,
+RA   Tan M.-H., Khoo S.K., Teh B.T., Yuen S.T., Leung S.Y., Wooster R.,
+RA   Futreal P.A., Stratton M.R.;
 RT   "Patterns of somatic mutation in human cancer genomes.";
 RL   Nature 446:153-158(2007).
-CC   -!- FUNCTION: Specifically phosphorylates the agonist-occupied form of
-CC       the beta-adrenergic and closely related receptors.
+CC   -!- FUNCTION: Specifically phosphorylates the agonist-occupied form of the
+CC       beta-adrenergic and closely related receptors.
+CC   -!- CATALYTIC ACTIVITY:
+CC       Reaction=[beta-adrenergic receptor] + ATP = [beta-adrenergic receptor]-
+CC         phosphate + ADP + H(+); Xref=Rhea:RHEA:19429, Rhea:RHEA-COMP:11222,
+CC         Rhea:RHEA-COMP:11223, ChEBI:CHEBI:15378, ChEBI:CHEBI:30616,
+CC         ChEBI:CHEBI:43176, ChEBI:CHEBI:68546, ChEBI:CHEBI:456216;
+CC         EC=2.7.11.15;
 CC   -!- PTM: Ubiquitinated. {ECO:0000269|PubMed:20596523}.
 CC   -!- SIMILARITY: Belongs to the protein kinase superfamily. AGC Ser/Thr
 CC       protein kinase family. GPRK subfamily. {ECO:0000305}.
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
 CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 DR   EMBL; X69117; CAA48870.1; -; mRNA.
 DR   EMBL; AL022329; -; NOT_ANNOTATED_CDS; Genomic_DNA.
 DR   CCDS; CCDS13832.1; -.
 DR   PIR; JC1469; JC1469.
 DR   RefSeq; NP_005151.2; NM_005160.3.
 DR   SMR; P35626; -.
-DR   BioGrid; 106666; 10.
-DR   IntAct; P35626; 4.
+DR   BioGrid; 106666; 11.
+DR   IntAct; P35626; 5.
 DR   STRING; 9606.ENSP00000317578; -.
 DR   BindingDB; P35626; -.
 DR   ChEMBL; CHEMBL1075166; -.
@@ -117,9 +120,10 @@ DR   GuidetoPHARMACOLOGY; 1467; -.
 DR   GlyConnect; 1034; -.
 DR   iPTMnet; P35626; -.
 DR   PhosphoSitePlus; P35626; -.
-DR   BioMuta; ADRBK2; -.
+DR   BioMuta; GRK3; -.
 DR   DMDM; 116241253; -.
 DR   EPD; P35626; -.
+DR   jPOST; P35626; -.
 DR   MaxQB; P35626; -.
 DR   PaxDb; P35626; -.
 DR   PeptideAtlas; P35626; -.
@@ -142,12 +146,12 @@ DR   OpenTargets; ENSG00000100077; -.
 DR   PharmGKB; PA41; -.
 DR   eggNOG; KOG0986; Eukaryota.
 DR   eggNOG; ENOG410YRQZ; LUCA.
-DR   GeneTree; ENSGT00860000133699; -.
+DR   GeneTree; ENSGT00940000157699; -.
 DR   HOGENOM; HOG000006742; -.
 DR   InParanoid; P35626; -.
 DR   KO; K00910; -.
 DR   OMA; DHVQTHL; -.
-DR   OrthoDB; EOG091G0AEI; -.
+DR   OrthoDB; 1083437at2759; -.
 DR   PhylomeDB; P35626; -.
 DR   TreeFam; TF313940; -.
 DR   BRENDA; 2.7.11.15; 2681.
@@ -200,40 +204,54 @@ DR   PROSITE; PS50011; PROTEIN_KINASE_DOM; 1.
 DR   PROSITE; PS00108; PROTEIN_KINASE_ST; 1.
 DR   PROSITE; PS50132; RGS; 1.
 PE   1: Evidence at protein level;
-KW   ATP-binding; Complete proteome; Kinase; Nucleotide-binding;
-KW   Polymorphism; Reference proteome; Serine/threonine-protein kinase;
-KW   Transferase; Ubl conjugation.
-FT   CHAIN         1    688       Beta-adrenergic receptor kinase 2.
-FT                                /FTId=PRO_0000085632.
-FT   DOMAIN       54    175       RGS. {ECO:0000255|PROSITE-
-FT                                ProRule:PRU00171}.
-FT   DOMAIN      191    453       Protein kinase. {ECO:0000255|PROSITE-
-FT                                ProRule:PRU00159}.
-FT   DOMAIN      454    521       AGC-kinase C-terminal.
-FT   DOMAIN      558    652       PH. {ECO:0000255|PROSITE-
-FT                                ProRule:PRU00145}.
-FT   NP_BIND     197    205       ATP. {ECO:0000255|PROSITE-
-FT                                ProRule:PRU00159}.
-FT   REGION        1    190       N-terminal.
-FT   ACT_SITE    317    317       Proton acceptor. {ECO:0000255|PROSITE-
-FT                                ProRule:PRU00159, ECO:0000255|PROSITE-
-FT                                ProRule:PRU10027}.
-FT   BINDING     220    220       ATP. {ECO:0000255|PROSITE-
-FT                                ProRule:PRU00159}.
-FT   VARIANT      50     50       R -> S (in dbSNP:rs55700971).
-FT                                {ECO:0000269|PubMed:17344846}.
-FT                                /FTId=VAR_040380.
-FT   VARIANT      60     60       N -> S (in dbSNP:rs55740593).
-FT                                {ECO:0000269|PubMed:17344846}.
-FT                                /FTId=VAR_040381.
-FT   VARIANT     104    104       R -> K (in a lung bronchoalveolar
-FT                                carcinoma sample; somatic mutation).
-FT                                {ECO:0000269|PubMed:17344846}.
-FT                                /FTId=VAR_040382.
-FT   VARIANT     409    409       V -> M (in dbSNP:rs2272859).
-FT                                /FTId=VAR_028005.
-FT   CONFLICT    308    308       M -> V (in Ref. 1; CAA48870).
-FT                                {ECO:0000305}.
+KW   ATP-binding; Complete proteome; Kinase; Nucleotide-binding; Polymorphism;
+KW   Reference proteome; Serine/threonine-protein kinase; Transferase;
+KW   Ubl conjugation.
+FT   CHAIN           1..688
+FT                   /note="Beta-adrenergic receptor kinase 2"
+FT                   /id="PRO_0000085632"
+FT   DOMAIN          54..175
+FT                   /note="RGS"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00171"
+FT   DOMAIN          191..453
+FT                   /note="Protein kinase"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159"
+FT   DOMAIN          454..521
+FT                   /note="AGC-kinase C-terminal"
+FT   DOMAIN          558..652
+FT                   /note="PH"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00145"
+FT   NP_BIND         197..205
+FT                   /note="ATP"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159"
+FT   REGION          1..190
+FT                   /note="N-terminal"
+FT   ACT_SITE        317
+FT                   /note="Proton acceptor"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159,
+FT                   ECO:0000255|PROSITE-ProRule:PRU10027"
+FT   BINDING         220
+FT                   /note="ATP"
+FT                   /evidence="ECO:0000255|PROSITE-ProRule:PRU00159"
+FT   VARIANT         50
+FT                   /note="R -> S (in dbSNP:rs55700971)"
+FT                   /evidence="ECO:0000269|PubMed:17344846"
+FT                   /id="VAR_040380"
+FT   VARIANT         60
+FT                   /note="N -> S (in dbSNP:rs55740593)"
+FT                   /evidence="ECO:0000269|PubMed:17344846"
+FT                   /id="VAR_040381"
+FT   VARIANT         104
+FT                   /note="R -> K (in a lung bronchoalveolar carcinoma sample;
+FT                   somatic mutation)"
+FT                   /evidence="ECO:0000269|PubMed:17344846"
+FT                   /id="VAR_040382"
+FT   VARIANT         409
+FT                   /note="V -> M (in dbSNP:rs2272859)"
+FT                   /id="VAR_028005"
+FT   CONFLICT        308
+FT                   /note="M -> V (in Ref. 1; CAA48870)"
+FT                   /evidence="ECO:0000305"
 SQ   SEQUENCE   688 AA;  79710 MW;  50844236A01C1423 CRC64;
      MADLEAVLAD VSYLMAMEKS KATPAARASK RIVLPEPSIR SVMQKYLAER NEITFDKIFN
      QKIGFLLFKD FCLNEINEAV PQVKFYEEIK EYEKLDNEED RLCRSRQIYD AYIMKELLSC
