@@ -20,6 +20,9 @@ class MaximumVelocityImplTest {
     MaximumVelocity obj = new MaximumVelocityBuilder().from(impl).build();
 
     assertTrue(impl.hasEvidences());
+    assertTrue(impl.hasVelocity());
+    assertTrue(impl.hasEnzyme());
+    assertTrue(impl.hasUnit());
 
     assertTrue(impl.equals(obj) && obj.equals(impl));
     assertEquals(impl.hashCode(), obj.hashCode());

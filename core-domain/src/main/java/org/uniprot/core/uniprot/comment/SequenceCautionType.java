@@ -2,7 +2,6 @@ package org.uniprot.core.uniprot.comment;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** User: Emilio Salazar Date: 14-May-2007 */
 public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     FRAMESHIFT("Frameshift"),
     ERRONEOUS_INITIATION("Erroneous initiation"),
@@ -19,6 +18,7 @@ public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     }
 
     public static SequenceCautionType typeOf(String value) {
+        if(value != null)
         for (SequenceCautionType sequenceCautionType : SequenceCautionType.values()) {
             if (sequenceCautionType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
                 return sequenceCautionType;

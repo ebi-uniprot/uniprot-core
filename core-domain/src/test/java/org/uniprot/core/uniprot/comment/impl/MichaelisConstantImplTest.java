@@ -21,6 +21,9 @@ class MichaelisConstantImplTest {
     MichaelisConstant obj = new MichaelisConstantBuilder().from(impl).build();
 
     assertTrue(impl.hasEvidences());
+    assertTrue(impl.hasConstant());
+    assertTrue(impl.hasUnit());
+    assertTrue(impl.hasSubstrate());
 
     assertTrue(impl.equals(obj) && obj.equals(impl));
     assertEquals(impl.hashCode(), obj.hashCode());

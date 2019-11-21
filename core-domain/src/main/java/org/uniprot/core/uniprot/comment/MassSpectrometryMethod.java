@@ -20,7 +20,7 @@ public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod
 
     public static MassSpectrometryMethod toType(String type) {
         for (MassSpectrometryMethod method : MassSpectrometryMethod.values()) {
-            if (method.getValue().equals(type)) return method;
+            if (method.getValue().equalsIgnoreCase(type)) return method;
         }
         return MassSpectrometryMethod.UNKNOWN;
     }

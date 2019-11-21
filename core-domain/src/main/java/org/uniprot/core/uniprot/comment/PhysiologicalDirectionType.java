@@ -22,6 +22,7 @@ public enum PhysiologicalDirectionType implements EnumDisplay<PhysiologicalDirec
      *     type.
      */
     public static PhysiologicalDirectionType typeOf(String value) {
+        if(value != null)
         for (PhysiologicalDirectionType referenceType : PhysiologicalDirectionType.values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;

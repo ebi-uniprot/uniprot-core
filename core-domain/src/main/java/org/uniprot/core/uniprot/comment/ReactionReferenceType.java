@@ -22,6 +22,7 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
      *     type.
      */
     public static ReactionReferenceType typeOf(String value) {
+        if(value != null)
         for (ReactionReferenceType referenceType : ReactionReferenceType.values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;

@@ -8,20 +8,18 @@ public enum InteractionType implements EnumDisplay<InteractionType> {
     BINARY,
     UNKNOWN;
 
+    private final String baseUrl = "https://www.ebi.ac.uk/intact/search/do/search?";
     public String getLink() {
-
         switch (this) {
             case SELF:
-                return "https://www.ebi.ac.uk/intact/search/do/search?self=";
+                return baseUrl + "self=";
             case BINARY:
-                return "https://www.ebi.ac.uk/intact/search/do/search?binary=";
+                return baseUrl + "binary=";
             case XENO:
-                return "https://www.ebi.ac.uk/intact/search/do/search?xeno=";
-            case UNKNOWN:
+                return baseUrl + "xeno=";
+            default:
                 return "";
         }
-
-        return "";
     }
 
     @Override
