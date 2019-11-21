@@ -162,9 +162,11 @@ class FreeTextCommentBuilderTest {
 
     @Test
     void canAddSingleText() {
-        FreeTextComment obj = new FreeTextCommentBuilder()
-          .commentType(CommentType.DOMAIN)
-          .addText(new EvidencedValueBuilder("value1", emptyList()).build()).build();
+        FreeTextComment obj =
+                new FreeTextCommentBuilder()
+                        .commentType(CommentType.DOMAIN)
+                        .addText(new EvidencedValueBuilder("value1", emptyList()).build())
+                        .build();
         assertNotNull(obj.getTexts());
         assertFalse(obj.getTexts().isEmpty());
         assertTrue(obj.hasTexts());
@@ -172,7 +174,8 @@ class FreeTextCommentBuilderTest {
 
     @Test
     void nullText_willBeIgnore() {
-        FreeTextComment obj = new FreeTextCommentBuilder().commentType(CommentType.DOMAIN).addText(null).build();
+        FreeTextComment obj =
+                new FreeTextCommentBuilder().commentType(CommentType.DOMAIN).addText(null).build();
         assertNotNull(obj.getTexts());
         assertTrue(obj.getTexts().isEmpty());
         assertFalse(obj.hasTexts());
@@ -180,7 +183,8 @@ class FreeTextCommentBuilderTest {
 
     @Test
     void canCreateBuilderFromInstance() {
-        FreeTextComment obj = new FreeTextCommentBuilder().commentType(CommentType.DISRUPTION_PHENOTYPE).build();
+        FreeTextComment obj =
+                new FreeTextCommentBuilder().commentType(CommentType.DISRUPTION_PHENOTYPE).build();
         FreeTextCommentBuilder builder = new FreeTextCommentBuilder().from(obj);
         assertNotNull(builder);
     }

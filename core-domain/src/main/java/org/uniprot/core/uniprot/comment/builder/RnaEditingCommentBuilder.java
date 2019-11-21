@@ -6,13 +6,13 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
 import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
 import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public final class RnaEditingCommentBuilder
         implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
@@ -27,7 +27,9 @@ public final class RnaEditingCommentBuilder
     @Override
     public @Nonnull RnaEditingCommentBuilder from(@Nonnull RnaEditingComment instance) {
         positions.clear();
-        return this.positions(instance.getPositions()).locationType(instance.getLocationType()).note(instance.getNote());
+        return this.positions(instance.getPositions())
+                .locationType(instance.getLocationType())
+                .note(instance.getNote());
     }
 
     public RnaEditingCommentBuilder locationType(RnaEditingLocationType locationType) {

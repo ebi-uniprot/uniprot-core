@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
 import org.uniprot.core.uniprot.comment.impl.SubcellularLocationImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

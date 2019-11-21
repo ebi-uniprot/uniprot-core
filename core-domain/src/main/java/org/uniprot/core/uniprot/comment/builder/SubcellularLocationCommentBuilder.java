@@ -6,12 +6,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
 import org.uniprot.core.uniprot.comment.impl.SubcellularLocationCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public final class SubcellularLocationCommentBuilder
         implements CommentBuilder<SubcellularLocationCommentBuilder, SubcellularLocationComment> {
@@ -24,7 +24,8 @@ public final class SubcellularLocationCommentBuilder
     }
 
     @Override
-    public @Nonnull SubcellularLocationCommentBuilder from(@Nonnull SubcellularLocationComment instance) {
+    public @Nonnull SubcellularLocationCommentBuilder from(
+            @Nonnull SubcellularLocationComment instance) {
         subcellularLocations.clear();
         return this.molecule(instance.getMolecule())
                 .subcellularLocations(instance.getSubcellularLocations())

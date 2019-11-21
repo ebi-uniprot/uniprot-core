@@ -6,14 +6,14 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.KineticParameters;
 import org.uniprot.core.uniprot.comment.MaximumVelocity;
 import org.uniprot.core.uniprot.comment.MichaelisConstant;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.KineticParametersImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

@@ -6,11 +6,11 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.impl.InteractionCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public class InteractionCommentBuilder
         implements CommentBuilder<InteractionCommentBuilder, InteractionComment> {

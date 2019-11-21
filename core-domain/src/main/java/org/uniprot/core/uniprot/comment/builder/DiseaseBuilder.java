@@ -6,14 +6,14 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
 import org.uniprot.core.uniprot.comment.impl.DiseaseImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
-
-import javax.annotation.Nonnull;
 
 public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     private String diseaseId;

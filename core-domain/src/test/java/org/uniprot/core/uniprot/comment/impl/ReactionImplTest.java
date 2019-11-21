@@ -3,7 +3,6 @@ package org.uniprot.core.uniprot.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,11 +18,11 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 class ReactionImplTest {
 
-    private List<DBCrossReference<ReactionReferenceType>> references = Arrays.asList(
-        xref(ReactionReferenceType.RHEA, "RHEA:123"),
-        xref(ReactionReferenceType.RHEA, "RHEA:323"),
-        xref(ReactionReferenceType.CHEBI, "ChEBI:3243")
-    );
+    private List<DBCrossReference<ReactionReferenceType>> references =
+            Arrays.asList(
+                    xref(ReactionReferenceType.RHEA, "RHEA:123"),
+                    xref(ReactionReferenceType.RHEA, "RHEA:323"),
+                    xref(ReactionReferenceType.CHEBI, "ChEBI:3243"));
     private ECNumber ecNumber = new ECNumberImpl("1.2.4.5");
 
     @Test
@@ -89,22 +88,24 @@ class ReactionImplTest {
         assertNotNull(obj);
     }
 
-@Test
-  void builderFrom_constructorImp_shouldCreate_equalObject() {
-    Reaction impl = new ReactionImpl("name", references, ecNumber, createEvidences());
-    Reaction obj = new ReactionBuilder().from(impl).build();
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        Reaction impl = new ReactionImpl("name", references, ecNumber, createEvidences());
+        Reaction obj = new ReactionBuilder().from(impl).build();
 
-    assertTrue(impl.hasEvidences());
-    assertTrue(impl.hasName());
+        assertTrue(impl.hasEvidences());
+        assertTrue(impl.hasName());
 
-    assertTrue(impl.equals(obj) && obj.equals(impl));
-    assertEquals(impl.hashCode(), obj.hashCode());
-  }
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
 
     @Test
     void toString_test() {
         Reaction impl = new ReactionImpl("name", references, ecNumber, createEvidences());
-        assertEquals("Reaction=name; Xref=Rhea:RHEA:123, Rhea:RHEA:323, ChEBI:ChEBI:3243; EC=1.2.4.5; Evidence={ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361};", impl.toString());
+        assertEquals(
+                "Reaction=name; Xref=Rhea:RHEA:123, Rhea:RHEA:323, ChEBI:ChEBI:3243; EC=1.2.4.5; Evidence={ECO:0000255|PROSITE-ProRule:PRU10028, ECO:0000256|PIRNR:PIRNR001361};",
+                impl.toString());
     }
 
     private DBCrossReference<ReactionReferenceType> xref(ReactionReferenceType type, String id) {

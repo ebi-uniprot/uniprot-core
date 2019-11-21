@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.DiseaseCommentImpl;
-
-import javax.annotation.Nonnull;
 
 public class DiseaseCommentBuilder
         implements CommentBuilder<DiseaseCommentBuilder, DiseaseComment> {

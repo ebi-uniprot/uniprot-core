@@ -80,14 +80,16 @@ class MassSpectrometryCommentBuilderTest {
 
     @Test
     void malWeightError_lessThanFloatNegative() {
-        Float err = Float.MIN_VALUE - 2 ;
-        MassSpectrometryComment comment = new MassSpectrometryCommentBuilder().molWeightError(err).build();
+        Float err = Float.MIN_VALUE - 2;
+        MassSpectrometryComment comment =
+                new MassSpectrometryCommentBuilder().molWeightError(err).build();
         assertEquals(err, comment.getMolWeightError(), Double.MIN_VALUE);
     }
 
     @Test
     void malWeightError_FloatMin_notValidValue() {
-        MassSpectrometryComment comment = new MassSpectrometryCommentBuilder().molWeightError(Float.MIN_VALUE).build();
+        MassSpectrometryComment comment =
+                new MassSpectrometryCommentBuilder().molWeightError(Float.MIN_VALUE).build();
         assertNotNull(comment.getMolWeightError());
     }
 
@@ -168,68 +170,78 @@ class MassSpectrometryCommentBuilderTest {
         assertEquals(isoformId, range.getIsoformId());
     }
 
-  @Test
-  void canAddSingleEvidence() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().addEvidence(createEvidence()).build();
-    assertNotNull(obj.getEvidences());
-    assertFalse(obj.getEvidences().isEmpty());
-    assertTrue(obj.hasEvidences());
-  }
+    @Test
+    void canAddSingleEvidence() {
+        MassSpectrometryComment obj =
+                new MassSpectrometryCommentBuilder().addEvidence(createEvidence()).build();
+        assertNotNull(obj.getEvidences());
+        assertFalse(obj.getEvidences().isEmpty());
+        assertTrue(obj.hasEvidences());
+    }
 
-  @Test
-  void nullEvidence_willBeIgnore() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().addEvidence(null).build();
-    assertNotNull(obj.getEvidences());
-    assertTrue(obj.getEvidences().isEmpty());
-    assertFalse(obj.hasEvidences());
-  }
+    @Test
+    void nullEvidence_willBeIgnore() {
+        MassSpectrometryComment obj =
+                new MassSpectrometryCommentBuilder().addEvidence(null).build();
+        assertNotNull(obj.getEvidences());
+        assertTrue(obj.getEvidences().isEmpty());
+        assertFalse(obj.hasEvidences());
+    }
 
-  @Test
-  void evidences_willConvertUnModifiable_toModifiable() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().evidences(Collections.emptyList()).addEvidence(createEvidence()).build();
-    assertNotNull(obj.getEvidences());
-    assertFalse(obj.getEvidences().isEmpty());
-    assertTrue(obj.hasEvidences());
-  }
+    @Test
+    void evidences_willConvertUnModifiable_toModifiable() {
+        MassSpectrometryComment obj =
+                new MassSpectrometryCommentBuilder()
+                        .evidences(Collections.emptyList())
+                        .addEvidence(createEvidence())
+                        .build();
+        assertNotNull(obj.getEvidences());
+        assertFalse(obj.getEvidences().isEmpty());
+        assertTrue(obj.hasEvidences());
+    }
 
-  @Test
-  void canAddListEvidences() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().evidences(createEvidences()).build();
-    assertNotNull(obj.getEvidences());
-    assertFalse(obj.getEvidences().isEmpty());
-    assertTrue(obj.hasEvidences());
-  }
+    @Test
+    void canAddListEvidences() {
+        MassSpectrometryComment obj =
+                new MassSpectrometryCommentBuilder().evidences(createEvidences()).build();
+        assertNotNull(obj.getEvidences());
+        assertFalse(obj.getEvidences().isEmpty());
+        assertTrue(obj.hasEvidences());
+    }
 
-  @Test
-  void canAddSingleRange() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().addRange(createMassSpectrometryRange(1, 2, "isoformId")).build();
-    assertNotNull(obj.getRanges());
-    assertFalse(obj.getRanges().isEmpty());
-    assertTrue(obj.hasRanges());
-  }
+    @Test
+    void canAddSingleRange() {
+        MassSpectrometryComment obj =
+                new MassSpectrometryCommentBuilder()
+                        .addRange(createMassSpectrometryRange(1, 2, "isoformId"))
+                        .build();
+        assertNotNull(obj.getRanges());
+        assertFalse(obj.getRanges().isEmpty());
+        assertTrue(obj.hasRanges());
+    }
 
-  @Test
-  void nullRange_willBeIgnore() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().addRange(null).build();
-    assertNotNull(obj.getRanges());
-    assertTrue(obj.getRanges().isEmpty());
-    assertFalse(obj.hasRanges());
-  }
+    @Test
+    void nullRange_willBeIgnore() {
+        MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().addRange(null).build();
+        assertNotNull(obj.getRanges());
+        assertTrue(obj.getRanges().isEmpty());
+        assertFalse(obj.hasRanges());
+    }
 
-  @Test
-  void canCreateBuilderFromInstance() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().build();
-    MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder().from(obj);
-    assertNotNull(builder);
-  }
+    @Test
+    void canCreateBuilderFromInstance() {
+        MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().build();
+        MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
 
-  @Test
-  void defaultBuild_objsAreEqual() {
-    MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().build();
-    MassSpectrometryComment obj2 = new MassSpectrometryCommentBuilder().build();
-    assertTrue(obj.equals(obj2) && obj2.equals(obj));
-    assertEquals(obj.hashCode(), obj2.hashCode());
-  }
+    @Test
+    void defaultBuild_objsAreEqual() {
+        MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().build();
+        MassSpectrometryComment obj2 = new MassSpectrometryCommentBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
+    }
 
     private MassSpectrometryRange createMassSpectrometryRange(
             int start, int end, String isoformId) {

@@ -7,12 +7,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-
-import javax.annotation.Nonnull;
 
 public class FreeTextCommentBuilder
         implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {

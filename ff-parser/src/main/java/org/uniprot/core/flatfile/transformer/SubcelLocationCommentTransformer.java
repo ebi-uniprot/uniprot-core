@@ -101,6 +101,10 @@ public class SubcelLocationCommentTransformer
         List<Evidence> evidences = new ArrayList<>();
         value = CommentTransformerHelper.stripEvidences(value, evidences);
         value = CommentTransformerHelper.stripTrailing(value, ".");
-        return new SubcellularLocationValueBuilder().id("").value(value).evidences(evidences).build();
+        return new SubcellularLocationValueBuilder()
+                .id("")
+                .value(value)
+                .evidences(evidences)
+                .build();
     }
 }

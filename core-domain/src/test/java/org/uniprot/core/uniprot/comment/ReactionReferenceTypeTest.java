@@ -1,47 +1,46 @@
 package org.uniprot.core.uniprot.comment;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ReactionReferenceTypeTest {
-  @Test
-  void getName_displayName_areSame() {
-    assertSame(
-      ReactionReferenceType.CHEBI.getName(),
-      ReactionReferenceType.CHEBI.toDisplayName());
-  }
-
-  @Nested
-  class typeOf {
-
     @Test
-    void canConvertLowerCase() {
-      assertEquals(ReactionReferenceType.RHEA, ReactionReferenceType.typeOf("rhea"));
+    void getName_displayName_areSame() {
+        assertSame(
+                ReactionReferenceType.CHEBI.getName(), ReactionReferenceType.CHEBI.toDisplayName());
     }
 
-    @Test
-    void canConvertUpperCase() {
-      assertEquals(ReactionReferenceType.CHEBI, ReactionReferenceType.typeOf("CHEBI"));
-    }
+    @Nested
+    class typeOf {
 
-    @Test
-    void canConvertMixCase() {
-      assertEquals(ReactionReferenceType.RHEA, ReactionReferenceType.typeOf("RheA"));
-    }
+        @Test
+        void canConvertLowerCase() {
+            assertEquals(ReactionReferenceType.RHEA, ReactionReferenceType.typeOf("rhea"));
+        }
 
-    @ParameterizedTest
-    @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
-    void willBeUnknown(String val) {
-      assertEquals(ReactionReferenceType.UNKNOWN, ReactionReferenceType.typeOf(val));
-    }
+        @Test
+        void canConvertUpperCase() {
+            assertEquals(ReactionReferenceType.CHEBI, ReactionReferenceType.typeOf("CHEBI"));
+        }
 
-    @Test
-    void willBeUnknown_null() {
-      assertEquals(ReactionReferenceType.UNKNOWN, ReactionReferenceType.typeOf(null));
+        @Test
+        void canConvertMixCase() {
+            assertEquals(ReactionReferenceType.RHEA, ReactionReferenceType.typeOf("RheA"));
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = {"uniprotkbid", "UNIPARCID", "", "abc", "  "})
+        void willBeUnknown(String val) {
+            assertEquals(ReactionReferenceType.UNKNOWN, ReactionReferenceType.typeOf(val));
+        }
+
+        @Test
+        void willBeUnknown_null() {
+            assertEquals(ReactionReferenceType.UNKNOWN, ReactionReferenceType.typeOf(null));
+        }
     }
-  }
 }

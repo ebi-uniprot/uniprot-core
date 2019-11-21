@@ -37,7 +37,9 @@ class FreeTextCommentImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        FreeTextComment impl = new FreeTextCommentImpl(CommentType.DISRUPTION_PHENOTYPE, createEvidenceValuesWithoutEvidences());
+        FreeTextComment impl =
+                new FreeTextCommentImpl(
+                        CommentType.DISRUPTION_PHENOTYPE, createEvidenceValuesWithoutEvidences());
         FreeTextComment obj = new FreeTextCommentBuilder().from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

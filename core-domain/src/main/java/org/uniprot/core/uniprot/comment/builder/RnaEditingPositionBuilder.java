@@ -6,12 +6,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 16/01/19

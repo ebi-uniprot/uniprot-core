@@ -1,11 +1,11 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryRangeImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

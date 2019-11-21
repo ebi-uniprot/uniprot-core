@@ -57,12 +57,12 @@ public enum CommentType implements EnumDisplay<CommentType> {
     }
 
     public static CommentType typeOf(String value) {
-        if(value != null)
-        for (CommentType commentType : CommentType.values()) {
-            if (commentType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
-                return commentType;
+        if (value != null)
+            for (CommentType commentType : CommentType.values()) {
+                if (commentType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
+                    return commentType;
+                }
             }
-        }
 
         throw new IllegalArgumentException("The comment type: " + value + " doesn't exist");
     }

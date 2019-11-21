@@ -99,6 +99,7 @@ class DiseaseBuilderTest {
         assertEquals(referenceType, reference.getDatabaseType());
         assertEquals(referenceId, reference.getId());
     }
+
     @Test
     void canAddSingleEvidence() {
         Disease obj = new DiseaseBuilder().addEvidence(createEvidence()).build();
@@ -114,7 +115,6 @@ class DiseaseBuilderTest {
         assertTrue(obj.getEvidences().isEmpty());
         assertFalse(obj.hasEvidences());
     }
-
 
     @Test
     void canCreateBuilderFromInstance() {

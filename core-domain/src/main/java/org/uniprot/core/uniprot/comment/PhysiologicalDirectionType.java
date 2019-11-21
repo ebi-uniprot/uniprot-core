@@ -22,12 +22,12 @@ public enum PhysiologicalDirectionType implements EnumDisplay<PhysiologicalDirec
      *     type.
      */
     public static PhysiologicalDirectionType typeOf(String value) {
-        if(value != null)
-        for (PhysiologicalDirectionType referenceType : PhysiologicalDirectionType.values()) {
-            if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
-                return referenceType;
+        if (value != null)
+            for (PhysiologicalDirectionType referenceType : PhysiologicalDirectionType.values()) {
+                if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
+                    return referenceType;
+                }
             }
-        }
         throw new IllegalArgumentException(
                 "The physiological direction type: " + value + " doesn't exist");
     }

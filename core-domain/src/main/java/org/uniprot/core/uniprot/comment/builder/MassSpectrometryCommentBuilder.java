@@ -6,13 +6,13 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
-
-import javax.annotation.Nonnull;
 
 public final class MassSpectrometryCommentBuilder
         implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {

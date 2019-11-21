@@ -69,7 +69,8 @@ class RnaEditingCommentBuilderTest {
     @Test
     void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
-        RnaEdPosition position = new RnaEditingPositionBuilder().position("123").evidences(evidences).build();
+        RnaEdPosition position =
+                new RnaEditingPositionBuilder().position("123").evidences(evidences).build();
         assertEquals("123", position.getPosition());
         assertEquals(evidences, position.getEvidences());
     }
@@ -91,7 +92,14 @@ class RnaEditingCommentBuilderTest {
 
     @Test
     void canAddRnaPosition() {
-        RnaEditingComment obj = new RnaEditingCommentBuilder().addPosition( new RnaEditingPositionBuilder().position("123").evidences(createEvidences()).build()).build();
+        RnaEditingComment obj =
+                new RnaEditingCommentBuilder()
+                        .addPosition(
+                                new RnaEditingPositionBuilder()
+                                        .position("123")
+                                        .evidences(createEvidences())
+                                        .build())
+                        .build();
         assertTrue(obj.hasPositions());
     }
 }

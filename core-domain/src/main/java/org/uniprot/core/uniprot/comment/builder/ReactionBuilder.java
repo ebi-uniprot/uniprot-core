@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.ECNumber;
@@ -14,8 +16,6 @@ import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.ReactionReferenceType;
 import org.uniprot.core.uniprot.comment.impl.ReactionImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

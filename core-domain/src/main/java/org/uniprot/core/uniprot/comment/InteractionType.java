@@ -9,6 +9,7 @@ public enum InteractionType implements EnumDisplay<InteractionType> {
     UNKNOWN;
 
     private final String baseUrl = "https://www.ebi.ac.uk/intact/search/do/search?";
+
     public String getLink() {
         switch (this) {
             case SELF:
