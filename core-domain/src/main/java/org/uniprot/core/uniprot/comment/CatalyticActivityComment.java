@@ -10,5 +10,4 @@ public interface CatalyticActivityComment extends Comment, HasMolecule {
     boolean hasReaction();
 
     boolean hasPhysiologicalReactions();
-   
 }

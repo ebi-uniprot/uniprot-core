@@ -47,8 +47,7 @@ public class CatalyticActivityCommentTest {
 
         assertNotNull(jsonNode.get("molecule"));
         assertEquals("Isoform 3", jsonNode.get("molecule").asText());
- 
-             
+
         assertNotNull(jsonNode.get("reaction"));
         JsonNode reaction = jsonNode.get("reaction");
         assertNotNull(reaction.get("name"));
@@ -89,7 +88,7 @@ public class CatalyticActivityCommentTest {
 
     public static CatalyticActivityComment getCatalyticActivityComment() {
         return new CatalyticActivityCommentBuilder()
-        		.molecule("Isoform 3")
+                .molecule("Isoform 3")
                 .physiologicalReactions(createPhyReactions())
                 .reaction(createReaction())
                 .build();

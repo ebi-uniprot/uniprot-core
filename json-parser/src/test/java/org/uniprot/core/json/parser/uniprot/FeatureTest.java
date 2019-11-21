@@ -37,7 +37,7 @@ public class FeatureTest {
 
     @Test
     void testFeatureExact() {
-    	FeatureLocation location = new FeatureLocation(2, 8);
+        FeatureLocation location = new FeatureLocation(2, 8);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -45,7 +45,9 @@ public class FeatureTest {
 
     @Test
     void testFeatureOut() {
-        FeatureLocation location = new FeatureLocation("seq1", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
+        FeatureLocation location =
+                new FeatureLocation(
+                        "seq1", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -53,7 +55,8 @@ public class FeatureTest {
 
     @Test
     void testFeatureUnsure() {
-    	FeatureLocation location = new FeatureLocation(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE);
+        FeatureLocation location =
+                new FeatureLocation(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -61,7 +64,9 @@ public class FeatureTest {
 
     @Test
     void testFeatureUnknow() {
-    	FeatureLocation location = new FeatureLocation("seqId", -1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
+        FeatureLocation location =
+                new FeatureLocation(
+                        "seqId", -1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -136,8 +141,9 @@ public class FeatureTest {
                         .id("db id")
                         .build();
 
-        FeatureLocation location = new FeatureLocation("sequence 1", 2, 8,
-        		PositionModifier.EXACT, PositionModifier.EXACT);
+        FeatureLocation location =
+                new FeatureLocation(
+                        "sequence 1", 2, 8, PositionModifier.EXACT, PositionModifier.EXACT);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         return new FeatureBuilder()
                 .type(FeatureType.CHAIN)

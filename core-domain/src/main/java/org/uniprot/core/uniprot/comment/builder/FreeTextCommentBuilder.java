@@ -29,9 +29,9 @@ public class FreeTextCommentBuilder
     @Override
     public FreeTextCommentBuilder from(FreeTextComment instance) {
         texts.clear();
-        return this.commentType(instance.getCommentType()).texts(instance.getTexts())
-        		.molecule(instance.getMolecule())
-        		;
+        return this.commentType(instance.getCommentType())
+                .texts(instance.getTexts())
+                .molecule(instance.getMolecule());
     }
 
     public FreeTextCommentBuilder commentType(CommentType commentType) {
@@ -43,7 +43,7 @@ public class FreeTextCommentBuilder
         this.molecule = molecule;
         return this;
     }
-    
+
     public FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
         this.texts = modifiableList(texts);
         return this;

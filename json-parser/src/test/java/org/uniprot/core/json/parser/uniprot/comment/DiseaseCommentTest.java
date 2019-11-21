@@ -88,6 +88,10 @@ public class DiseaseCommentTest {
                                 CreateUtils.createEvidencedValueList(
                                         "value2", "ECO:0000256|PIRNR:PIRNR001362"))
                         .build();
-        return new DiseaseCommentBuilder().molecule("Isoform 3").disease(disease).note(note).build();
+        return new DiseaseCommentBuilder()
+                .molecule("Isoform 3")
+                .disease(disease)
+                .note(note)
+                .build();
     }
 }

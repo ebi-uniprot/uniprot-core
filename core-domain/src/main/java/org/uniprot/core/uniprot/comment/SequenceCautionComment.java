@@ -15,5 +15,4 @@ public interface SequenceCautionComment extends Comment, HasEvidences, HasMolecu
     boolean hasNote();
 
     boolean hasSequenceCautionType();
-
 }

@@ -16,5 +16,4 @@ public interface WebResourceComment extends Comment, HasMolecule {
     boolean hasNote();
 
     boolean hasResourceUrl();
-
 }

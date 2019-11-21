@@ -38,12 +38,8 @@ class CcLineSeqCautionCommentParserTest {
                 null);
     }
 
-
     private void verify(
-            SequenceCautionObject obj,
-            String seq,
-            SequenceCautionType type,
-            String note) {
+            SequenceCautionObject obj, String seq, SequenceCautionType type, String note) {
         assertEquals(seq, obj.sequence);
 
         assertEquals(type, obj.type);
@@ -67,7 +63,7 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.sequenceCautionObjects.get(0),
                 "AAG34697.1",
-                         SequenceCautionType.ERRONEOUS_TERMINATION,
+                SequenceCautionType.ERRONEOUS_TERMINATION,
                 "Translated as Ser");
     }
 
@@ -88,7 +84,6 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.sequenceCautionObjects.get(0),
                 "CAI12537.1",
-
                 SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION,
                 null);
         verify(
@@ -115,10 +110,9 @@ class CcLineSeqCautionCommentParserTest {
         verify(
                 sc.sequenceCautionObjects.get(0),
                 "AAA25676.1",
-
                 SequenceCautionType.FRAMESHIFT,
                 null);
-      
+
         verify(
                 sc.sequenceCautionObjects.get(1),
                 "CAD59919.1",

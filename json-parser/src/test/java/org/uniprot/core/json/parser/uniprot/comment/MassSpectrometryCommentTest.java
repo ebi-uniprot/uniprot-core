@@ -46,8 +46,6 @@ public class MassSpectrometryCommentTest {
         assertNotNull(jsonNode.get("note"));
         assertEquals("note value", jsonNode.get("note").asText());
 
-      
-
         assertNotNull(jsonNode.get("evidences"));
         assertEquals(1, jsonNode.get("evidences").size());
         JsonNode evidence = jsonNode.get("evidences").get(0);
@@ -55,10 +53,9 @@ public class MassSpectrometryCommentTest {
     }
 
     public static MassSpectrometryComment getMassSpectrometryComment() {
-       
 
         return new MassSpectrometryCommentBuilder()
-        		.molecule("isoform 1")
+                .molecule("isoform 1")
                 .method(MassSpectrometryMethod.LSI)
                 .molWeight(2.1f)
                 .molWeightError(1.2f)

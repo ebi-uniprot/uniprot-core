@@ -42,21 +42,22 @@ public class CCLineBuilder extends FFLineBuilderAbstr<List<Comment>>
     private List<String> buildLines(
             List<Comment> f, boolean includeFFMarkings, boolean showEvidence) {
         List<String> lines = new ArrayList<>();
-   
-   //     boolean seqCautionStart = true;
-        String molecule =null;
+
+        //     boolean seqCautionStart = true;
+        String molecule = null;
         int nSeqCaution = 0;
         for (Comment comment : f) {
             FFLineBuilder<Comment> fbuilder = CCLineBuilderFactory.create(comment);
             if (comment.getCommentType() == CommentType.SEQUENCE_CAUTION) {
-            	nSeqCaution +=1;
-             //   seqCautionStart =sameSequenceCautionComment((SequenceCautionComment) comment, seqCautionStart, molecule);
+                nSeqCaution += 1;
+                //   seqCautionStart =sameSequenceCautionComment((SequenceCautionComment) comment,
+                // seqCautionStart, molecule);
                 FFLineBuilder<SequenceCautionComment> seqCautionBuilder =
                         CCLineBuilderFactory.create((SequenceCautionComment) comment);
                 ((CCSequenceCautionCommentLineBuilder) seqCautionBuilder)
-                        .setIsFirstSequenceCaution(nSeqCaution ==1);
-                if(comment instanceof HasMolecule)
-                molecule =((HasMolecule)comment).getMolecule();
+                        .setIsFirstSequenceCaution(nSeqCaution == 1);
+                if (comment instanceof HasMolecule)
+                    molecule = ((HasMolecule) comment).getMolecule();
             }
             if (includeFFMarkings) {
                 if (showEvidence) lines.addAll(fbuilder.buildWithEvidence(comment).lines());
@@ -68,12 +69,12 @@ public class CCLineBuilder extends FFLineBuilderAbstr<List<Comment>>
         }
         return lines;
     }
-    private boolean sameSequenceCautionComment(SequenceCautionComment scCaution, boolean start, String molecule) {
-    	if(start)
-    		return true;
-    	else {
-    		return (!Objects.equal(scCaution.getMolecule(), molecule));
-    	}
+
+    private boolean sameSequenceCautionComment(
+            SequenceCautionComment scCaution, boolean start, String molecule) {
+        if (start) return true;
+        else {
+            return (!Objects.equal(scCaution.getMolecule(), molecule));
+        }
     }
-    
 }

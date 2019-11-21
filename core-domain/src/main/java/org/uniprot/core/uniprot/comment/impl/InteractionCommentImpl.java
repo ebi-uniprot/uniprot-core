@@ -13,7 +13,7 @@ public class InteractionCommentImpl extends CommentImpl implements InteractionCo
     private static final long serialVersionUID = 460447737850135638L;
     private List<Interaction> interactions;
 
-     InteractionCommentImpl() {
+    InteractionCommentImpl() {
         super(CommentType.INTERACTION);
         this.interactions = Collections.emptyList();
     }

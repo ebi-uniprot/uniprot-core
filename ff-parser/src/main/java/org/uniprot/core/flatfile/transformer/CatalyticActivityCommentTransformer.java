@@ -42,12 +42,12 @@ public class CatalyticActivityCommentTransformer
 
     @Override
     public CatalyticActivityComment transform(CommentType commentType, String annotation) {
-    	  CatalyticActivityCommentBuilder builder = new CatalyticActivityCommentBuilder();
-    	  annotation = updateMolecule(annotation, builder);
+        CatalyticActivityCommentBuilder builder = new CatalyticActivityCommentBuilder();
+        annotation = updateMolecule(annotation, builder);
         Matcher matcher = ATALYTIC_ACTIVITY_PATTERN.matcher(annotation);
 
         if (matcher.matches()) {
-          
+
             String reactionName = matcher.group(5);
             String reactionXref = matcher.group(8);
             String reactionEc = matcher.group(10);
@@ -77,20 +77,20 @@ public class CatalyticActivityCommentTransformer
                     "Unable to convert annotation to CATALYTIC_ACTIVITY comment: " + annotation);
         }
     }
-    private String updateMolecule(String annotation,  CatalyticActivityCommentBuilder builder ) {
-    	if(annotation.startsWith("[") && annotation.contains("]")){
-    		int index =annotation.indexOf("]");
-    		String molecule = annotation.substring(1, index);
-    		molecule = molecule.replaceAll("\n", " ");
-    		builder.molecule(molecule);
-    		annotation = annotation.substring(index+2).trim();
-    		  if (annotation.startsWith("\n"))
-                  annotation = annotation.substring(1);
-    		 return annotation;
-    	}
-    	return annotation;
+
+    private String updateMolecule(String annotation, CatalyticActivityCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
+        }
+        return annotation;
     }
-    
+
     private PhysiologicalReaction createPhysiologicalDirection(
             String name, String xref, String evidence) {
         DBCrossReference<ReactionReferenceType> reference = null;

@@ -17,10 +17,9 @@ class FtLineParserTest {
     @Test
     void testChain() {
         String ftLines =
-                "FT   CHAIN           20..873\n" + 
-                "FT                   /note=\"104 kDa microneme/rhoptry antigen\"\n" + 
-                "FT                   /id=\"PRO_0000232680\"\n"
-          ;
+                "FT   CHAIN           20..873\n"
+                        + "FT                   /note=\"104 kDa microneme/rhoptry antigen\"\n"
+                        + "FT                   /id=\"PRO_0000232680\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -36,9 +35,7 @@ class FtLineParserTest {
 
     @Test
     void testHelix() {
-    	String ftLines =
-                "FT   HELIX           33..83\n"
-          ;
+        String ftLines = "FT   HELIX           33..83\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -49,9 +46,9 @@ class FtLineParserTest {
     @Test
     void testMutagenMultiLineText() {
         String ftLines =
-                "FT   MUTAGEN         119\n" + 
-                "FT                   /note=\"C->R,E,A: Loss of cADPr hydrolase and\n" + 
-                "FT                   ADP-ribosyl cyclase activity\"\n";
+                "FT   MUTAGEN         119\n"
+                        + "FT                   /note=\"C->R,E,A: Loss of cADPr hydrolase and\n"
+                        + "FT                   ADP-ribosyl cyclase activity\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -67,14 +64,12 @@ class FtLineParserTest {
 
     @Test
     void testVarSeqMultiLineText() {
-        String ftLines =               
-        		
-        		"FT   VAR_SEQ         33..83\n" + 
-        		"FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n" + 
-        		"FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n" + 
-        		"FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n" + 
-        		"FT                   /id=\"VSP_004370\"\n"
- ;
+        String ftLines =
+                "FT   VAR_SEQ         33..83\n"
+                        + "FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
+                        + "FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n"
+                        + "FT                   /id=\"VSP_004370\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -90,13 +85,12 @@ class FtLineParserTest {
 
     @Test
     void testVarSeqWraper1() {
-    	 String ftLines =               
-         		
-         		"FT   VAR_SEQ         33..83\n" + 
-         		"FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n" + 
-         		"FT                   -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n" + 
-         		"FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n" + 
-         		"FT                   /id=\"VSP_004370\"\n";
+        String ftLines =
+                "FT   VAR_SEQ         33..83\n"
+                        + "FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
+                        + "FT                   -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:17344846\"\n"
+                        + "FT                   /id=\"VSP_004370\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -112,15 +106,14 @@ class FtLineParserTest {
 
     @Test
     void testVarSeq() {
-String ftLines =               
-          		
-          		"FT   VAR_SEQ         1..31\n" + 
-          		"FT                   /note=\"MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n" + 
-          		"FT                   KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n" +
-          		"FT                   SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK (in isoform 4)\"\n" + 
-          		"FT                   /evidence=\"ECO:0000303|PubMed:14702039\"\n" + 
-          		"FT                   /id=\"VSP_043645\"\n";
-   
+        String ftLines =
+                "FT   VAR_SEQ         1..31\n"
+                        + "FT                   /note=\"MLTCNKAGSRMVVDAANSNGPFQPVVLLHIR -> MPNKNK\n"
+                        + "FT                   KEKESPKAGKSGKSSKEGQDTVESEQISVRKNSLVAVPSTV\n"
+                        + "FT                   SAKIKVPVSQPIVKKDKRQNSSRFSASNNRELQKLPSLK (in isoform 4)\"\n"
+                        + "FT                   /evidence=\"ECO:0000303|PubMed:14702039\"\n"
+                        + "FT                   /id=\"VSP_043645\"\n";
+
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -146,13 +139,12 @@ String ftLines =
 
     @Test
     void testVarSeq2() {
-    	 String ftLines =               
-          		
-          		"FT   VAR_SEQ         1\n" + 
-          		"FT                   /note=\"M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA\n" + 
-          		"FT                   SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1)\"\n" + 
-          		"FT                   /evidence=\"ECO:0000305\"\n" + 
-          		"FT                   /id=\"VSP_038746\"\n";
+        String ftLines =
+                "FT   VAR_SEQ         1\n"
+                        + "FT                   /note=\"M -> MTDRQTDTAPSPSAHLLAGGLPTVDAAASREEPKPA\n"
+                        + "FT                   SPSRRGSASRAGPGRASETM (in isoform L-VEGF-1)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT                   /id=\"VSP_038746\"\n";
 
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -178,17 +170,16 @@ String ftLines =
 
     @Test
     void testMultiFt() {
-    	 String ftLines =               
-           		
-           		"FT   VAR_SEQ         33..83\n" + 
-           		"FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n" + 
-           		"FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n" + 
-           		"FT                   /id=\"VSP_004370\"\n"+
-            	"FT   MUTAGEN         119\n" + 
-                "FT                   /note=\"C->R,E,A: Loss of cADPr hydrolase and\n" + 
-                "FT                   ADP-ribosyl cyclase activity\"\n" +
-                "FT   HELIX           33..83\n" +
-                "FT   TURN            3..33\n";
+        String ftLines =
+                "FT   VAR_SEQ         33..83\n"
+                        + "FT                   /note=\"TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL\n"
+                        + "FT                   DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in isoform 2)\"\n"
+                        + "FT                   /id=\"VSP_004370\"\n"
+                        + "FT   MUTAGEN         119\n"
+                        + "FT                   /note=\"C->R,E,A: Loss of cADPr hydrolase and\n"
+                        + "FT                   ADP-ribosyl cyclase activity\"\n"
+                        + "FT   HELIX           33..83\n"
+                        + "FT   TURN            3..33\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -213,9 +204,9 @@ String ftLines =
 
     @Test
     void testWithPotential() {
-   	 String ftLines =                       		
-        		"FT   CARBOHYD        61\n" + 
-        		"FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n" ;
+        String ftLines =
+                "FT   CARBOHYD        61\n"
+                        + "FT                   /note=\"N-linked (GlcNAc...); by host (Potential)\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -231,15 +222,13 @@ String ftLines =
 
     @Test
     void testUnknown() {
-    	  String ftLines =
-    			  "FT   TRANSIT         1..?\n" + 
-    	          "FT                   /note=\"Mitochondrion (Potential)\"\n" + 
-                  "FT   CHAIN           ?..610\n" + 
-                  "FT                   /note=\"Protein ABC1 homolog, mitochondrial\"\n" + 
-                  "FT                   /id=\"PRO_0000000261\"\n"
-            ;
-    	  
-     
+        String ftLines =
+                "FT   TRANSIT         1..?\n"
+                        + "FT                   /note=\"Mitochondrion (Potential)\"\n"
+                        + "FT   CHAIN           ?..610\n"
+                        + "FT                   /note=\"Protein ABC1 homolog, mitochondrial\"\n"
+                        + "FT                   /id=\"PRO_0000000261\"\n";
+
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -257,12 +246,11 @@ String ftLines =
 
     @Test
     void testWithEvidence() {
-    	 String ftLines =               
-           		
-           		"FT   METAL           186\n" + 
-           		"FT                   /note=\"Calcium; via carbonyl oxygen\"\n" + 
-           		"FT                   /evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942\"\n" ;
-     
+        String ftLines =
+                "FT   METAL           186\n"
+                        + "FT                   /note=\"Calcium; via carbonyl oxygen\"\n"
+                        + "FT                   /evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942\"\n";
+
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -279,10 +267,9 @@ String ftLines =
 
     @Test
     void testWithEvidence2() {
-    	 String ftLines =               
-            		
-            		"FT   HELIX           33..83\n" + 
-            		"FT                   /evidence=\"ECO:0000313|EMBL:BAG16761.1\"\n" ;
+        String ftLines =
+                "FT   HELIX           33..83\n"
+                        + "FT                   /evidence=\"ECO:0000313|EMBL:BAG16761.1\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -294,14 +281,13 @@ String ftLines =
 
     @Test
     void testWithEvidence3() {
-    	 String ftLines =                          		
-            		"FT   REGION          237..240\n" + 
-            		"FT                   /note=\"Sulfate 1 binding\"\n" + 
-            		"FT   REGION          275..277\n" + 
-            		"FT                   /note=\"Phosphate 2 binding\"\n" + 
-            		"FT                   /evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006\"\n" ;
-    	
-    	
+        String ftLines =
+                "FT   REGION          237..240\n"
+                        + "FT                   /note=\"Sulfate 1 binding\"\n"
+                        + "FT   REGION          275..277\n"
+                        + "FT                   /note=\"Phosphate 2 binding\"\n"
+                        + "FT                   /evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006\"\n";
+
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
@@ -317,11 +303,10 @@ String ftLines =
 
     @Test
     void testWithEvidence4() {
-    	 String ftLines =               
-            		
-            		"FT   TRANSMEM        57..77\n" + 
-            		"FT                   /note=\"Helical; (Potential)\"\n" + 
-            		"FT                   /evidence=\"ECO:0000257|HAMAP-Rule:MF_03021\"\n" ;
+        String ftLines =
+                "FT   TRANSMEM        57..77\n"
+                        + "FT                   /note=\"Helical; (Potential)\"\n"
+                        + "FT                   /evidence=\"ECO:0000257|HAMAP-Rule:MF_03021\"\n";
 
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -334,13 +319,11 @@ String ftLines =
                 Arrays.asList(new String[] {"ECO:0000257|HAMAP-Rule:MF_03021"}));
     }
 
-
     @Test
     void testConflictFeature() {
-    	 String ftLine =               
-         		
-         		"FT   CONFLICT        1\n" + 
-         		"FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"\n"  ;
+        String ftLine =
+                "FT   CONFLICT        1\n"
+                        + "FT                   /note=\"A -> Q (in Ref. 1; BAA37160/BAA37165 and 2)\"\n";
 
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -358,12 +341,11 @@ String ftLines =
 
     @Test
     void testConflictFeature2() {
-    	 String ftLine =               
-          		
-          		"FT   CONFLICT        149..176\n" + 
-          		"FT                   /note=\"KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLST\n" +
-          		"FT                   VS (in Ref. 4; CAA78385)\"\n"  +
-          		"FT                   /evidence=\"ECO:0000305\"\n" ;
+        String ftLine =
+                "FT   CONFLICT        149..176\n"
+                        + "FT                   /note=\"KREICYFQLYPDYIEQNIRSVRFNCYTK -> IERNMLLST\n"
+                        + "FT                   VS (in Ref. 4; CAA78385)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n";
 
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -382,12 +364,11 @@ String ftLines =
 
     @Test
     void testConflictFeatureWithSlash() {
-    	String ftLine =               
-          		
-          		"FT   CONFLICT        430..432\n" + 
-          		"FT                   /note=\"ALL -> DLV (in Ref. 1; BAA85929/BAA85930/\n" +
-          		"FT                   BAA85931)\"\n"  +
-          		"FT                   /evidence=\"ECO:0000305\"\n" ;
+        String ftLine =
+                "FT   CONFLICT        430..432\n"
+                        + "FT                   /note=\"ALL -> DLV (in Ref. 1; BAA85929/BAA85930/\n"
+                        + "FT                   BAA85931)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n";
 
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -406,11 +387,10 @@ String ftLines =
 
     @Test
     void testVariantWithMulti() {
-    	String ftLine =               
-          		
-          		"FT   VARIANT         267..294\n" + 
-          		"FT                   /note=\"ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" +
-          		"FT                   LKVPVVQKVTKRLGVTSPD\"\n" ;
+        String ftLine =
+                "FT   VARIANT         267..294\n"
+                        + "FT                   /note=\"ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n"
+                        + "FT                   LKVPVVQKVTKRLGVTSPD\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
@@ -427,12 +407,11 @@ String ftLines =
 
     @Test
     void testVariantWithMulti2() {
-    	String ftLine =               
-          		
-          		"FT   VARIANT         157..224\n" + 
-          		"FT                   /note=\"EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n" +
-          		"FT                   PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n"+
-          	    "FT                   (in strain 168 and its derivatives, non surfactin-producing strains)\"\n" ;
+        String ftLine =
+                "FT   VARIANT         157..224\n"
+                        + "FT                   /note=\"EGKGLSLPLDSFSVRLHQDGQVSIELPDSHSPCYIKTYEVD\n"
+                        + "FT                   PGYKMAVCAAHPDFPEDITMVSYEELL -> GRQRLIASA\n"
+                        + "FT                   (in strain 168 and its derivatives, non surfactin-producing strains)\"\n";
 
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
@@ -451,11 +430,10 @@ String ftLines =
 
     @Test
     void testVarSeqWithMulti() {
-    	String ftLine =               
-          		
-          		"FT   VAR_SEQ         267..294\n" + 
-          		"FT                   /note=\"ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n" +
-          	    "FT                   LKVPVVQKVTKRLGVTSPD\"\n" ;
+        String ftLine =
+                "FT   VAR_SEQ         267..294\n"
+                        + "FT                   /note=\"ASAIILRSQLIVALAQKLSRTVGVNKAV -> ITAVTLPPD\n"
+                        + "FT                   LKVPVVQKVTKRLGVTSPD\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLine);
@@ -473,68 +451,68 @@ String ftLines =
     @Test
     void testMultiFeatures() {
         String ftLines =
-                "FT   SIGNAL          1..22\n" + 
-                "FT                   /evidence=\"ECO:0000255\"\n" + 
-                "FT   PROPEP          23..36\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n" + 
-                "FT                   /id=\"PRO_0000032105\"\n" + 
-                "FT   CHAIN           37..64\n" + 
-                "FT                   /note=\"2S sulfur-rich seed storage protein small chain 1\"\n" + 
-                "FT                   /id=\"PRO_0000032106\"\n" + 
-                "FT   PROPEP          65..69\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n" + 
-                "FT                   /id=\"PRO_0000032107\"\n" + 
-                "FT   CHAIN           70..142\n" + 
-                "FT                   /note=\"2S sulfur-rich seed storage protein large chain 1B\"\n" + 
-                "FT                   /id=\"PRO_0000032108\"\n" + 
-                "FT   PROPEP          143..146\n" + 
-                "FT                   /id=\"PRO_0000032109\"\n" + 
-                "FT   MOD_RES         37\n" + 
-                "FT                   /note=\"Pyrrolidone carboxylic acid\"\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n" + 
-                "FT   DISULFID        40..92\n" + 
-                "FT                   /note=\"Interchain (between small and large chains)\"\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n" + 
-                "FT   DISULFID        53..81\n" + 
-                "FT                   /note=\"Interchain (between small and large chains)\"\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n" + 
-                "FT   DISULFID        82..130\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n" + 
-                "FT   DISULFID        94..137\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n" + 
-                "FT   VARIANT         91\n" + 
-                "FT                   /note=\"S -> E (in variant 1A)\"\n" + 
-                "FT   CONFLICT        38..39\n" + 
-                "FT                   /note=\"EE -> QQ (in Ref. 5; AA sequence)\"\n" + 
-                "FT                   /evidence=\"ECO:0000305\"\n" + 
-                "FT   CONFLICT        102..103\n" + 
-                "FT                   /note=\"MR -> RM (in Ref. 4; BAA96554)\"\n" + 
-                "FT                   /evidence=\"ECO:0000305\"\n" + 
-                "FT   CONFLICT        107\n" + 
-                "FT                   /note=\"E -> K (in Ref. 4; BAA96554)\"\n" + 
-                "FT                   /evidence=\"ECO:0000305\"\n" + 
-                "FT   CONFLICT        122\n" + 
-                "FT                   /note=\"L -> M (in Ref. 5; AA sequence)\"\n" + 
-                "FT                   /evidence=\"ECO:0000305\"\n" + 
-                "FT   CONFLICT        126\n" + 
-                "FT                   /note=\"I -> L (in Ref. 5; AA sequence)\"\n" + 
-                "FT                   /evidence=\"ECO:0000305\"\n" + 
-                "FT   HELIX           37..46\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n" + 
-                "FT   HELIX           49..62\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n" + 
-                "FT   TURN            63..66\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n" + 
-                "FT   STRAND          71..73\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n" + 
-                "FT   HELIX           76..87\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n" + 
-                "FT   HELIX           90..108\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n" + 
-                "FT   HELIX           114..130\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n" + 
-                "FT   TURN            138..141\n" + 
-                "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n";
+                "FT   SIGNAL          1..22\n"
+                        + "FT                   /evidence=\"ECO:0000255\"\n"
+                        + "FT   PROPEP          23..36\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
+                        + "FT                   /id=\"PRO_0000032105\"\n"
+                        + "FT   CHAIN           37..64\n"
+                        + "FT                   /note=\"2S sulfur-rich seed storage protein small chain 1\"\n"
+                        + "FT                   /id=\"PRO_0000032106\"\n"
+                        + "FT   PROPEP          65..69\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
+                        + "FT                   /id=\"PRO_0000032107\"\n"
+                        + "FT   CHAIN           70..142\n"
+                        + "FT                   /note=\"2S sulfur-rich seed storage protein large chain 1B\"\n"
+                        + "FT                   /id=\"PRO_0000032108\"\n"
+                        + "FT   PROPEP          143..146\n"
+                        + "FT                   /id=\"PRO_0000032109\"\n"
+                        + "FT   MOD_RES         37\n"
+                        + "FT                   /note=\"Pyrrolidone carboxylic acid\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:3758080\"\n"
+                        + "FT   DISULFID        40..92\n"
+                        + "FT                   /note=\"Interchain (between small and large chains)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   DISULFID        53..81\n"
+                        + "FT                   /note=\"Interchain (between small and large chains)\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   DISULFID        82..130\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   DISULFID        94..137\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:12421566\"\n"
+                        + "FT   VARIANT         91\n"
+                        + "FT                   /note=\"S -> E (in variant 1A)\"\n"
+                        + "FT   CONFLICT        38..39\n"
+                        + "FT                   /note=\"EE -> QQ (in Ref. 5; AA sequence)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        102..103\n"
+                        + "FT                   /note=\"MR -> RM (in Ref. 4; BAA96554)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        107\n"
+                        + "FT                   /note=\"E -> K (in Ref. 4; BAA96554)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        122\n"
+                        + "FT                   /note=\"L -> M (in Ref. 5; AA sequence)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   CONFLICT        126\n"
+                        + "FT                   /note=\"I -> L (in Ref. 5; AA sequence)\"\n"
+                        + "FT                   /evidence=\"ECO:0000305\"\n"
+                        + "FT   HELIX           37..46\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           49..62\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   TURN            63..66\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   STRAND          71..73\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           76..87\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           90..108\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   HELIX           114..130\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n"
+                        + "FT   TURN            138..141\n"
+                        + "FT                   /evidence=\"ECO:0000244|PDB:2LVF\"\n";
         UniprotLineParser<FtLineObject> parser =
                 new DefaultUniprotLineParserFactory().createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);

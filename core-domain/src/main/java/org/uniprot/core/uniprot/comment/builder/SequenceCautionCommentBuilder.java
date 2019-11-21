@@ -13,15 +13,15 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 public final class SequenceCautionCommentBuilder
         implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
-	String molecule;
+    String molecule;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private String note;
     private List<Evidence> evidences = new ArrayList<>();
 
     public SequenceCautionComment build() {
-        return new SequenceCautionCommentImpl(molecule,
-                sequenceCautionType, sequence, note, evidences);
+        return new SequenceCautionCommentImpl(
+                molecule, sequenceCautionType, sequence, note, evidences);
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class SequenceCautionCommentBuilder
         this.molecule = molecule;
         return this;
     }
-    
+
     public SequenceCautionCommentBuilder sequence(String sequence) {
         this.sequence = sequence;
         return this;

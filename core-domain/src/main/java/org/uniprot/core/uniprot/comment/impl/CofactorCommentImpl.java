@@ -25,7 +25,6 @@ public class CofactorCommentImpl extends CommentHasMoleculeImpl implements Cofac
         this.note = note;
     }
 
-
     @Override
     public List<Cofactor> getCofactors() {
         return cofactors;
@@ -57,8 +56,7 @@ public class CofactorCommentImpl extends CommentHasMoleculeImpl implements Cofac
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         CofactorCommentImpl that = (CofactorCommentImpl) o;
-        return Objects.equals(cofactors, that.cofactors)
-                && Objects.equals(note, that.note);
+        return Objects.equals(cofactors, that.cofactors) && Objects.equals(note, that.note);
     }
 
     @Override

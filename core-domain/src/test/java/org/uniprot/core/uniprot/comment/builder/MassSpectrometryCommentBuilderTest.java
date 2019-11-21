@@ -3,11 +3,9 @@ package org.uniprot.core.uniprot.comment.builder;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
@@ -22,12 +20,11 @@ class MassSpectrometryCommentBuilderTest {
         assertNotNull(builder2);
         assertFalse(builder1 == builder2);
     }
-    
+
     @Test
     void testSetMolecule() {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
-        MassSpectrometryComment comment =
-                builder.molecule("Isoform 2").build();
+        MassSpectrometryComment comment = builder.molecule("Isoform 2").build();
         assertEquals(null, comment.getMethod());
         assertNull(comment.getMolWeight());
         assertFalse(comment.getMolWeightError() != null);
@@ -122,6 +119,4 @@ class MassSpectrometryCommentBuilderTest {
         assertEquals(evidences, comment.getEvidences());
         assertEquals(CommentType.MASS_SPECTROMETRY, comment.getCommentType());
     }
-
-  
 }

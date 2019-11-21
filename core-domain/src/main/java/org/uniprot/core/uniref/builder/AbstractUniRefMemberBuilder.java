@@ -27,7 +27,7 @@ public abstract class AbstractUniRefMemberBuilder<
     protected long organismTaxId;
     protected int sequenceLength;
     protected String proteinName;
-    protected List<UniProtAccession> accessions = new ArrayList<>(); ;
+    protected List<UniProtAccession> accessions = new ArrayList<>();;
     protected UniRefEntryId uniref50Id;
     protected UniRefEntryId uniref90Id;
     protected UniRefEntryId uniref100Id;
@@ -66,16 +66,16 @@ public abstract class AbstractUniRefMemberBuilder<
     }
 
     public B addAccession(UniProtAccession accession) {
-    	   addOrIgnoreNull(accession, this.accessions);
+        addOrIgnoreNull(accession, this.accessions);
 
         return getThis();
     }
-    
+
     public B accessions(List<UniProtAccession> accessions) {
-    	 if (accessions != null) {
-             this.accessions = modifiableList(accessions);
-         }
- 
+        if (accessions != null) {
+            this.accessions = modifiableList(accessions);
+        }
+
         return getThis();
     }
 

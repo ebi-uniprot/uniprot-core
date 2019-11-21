@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;

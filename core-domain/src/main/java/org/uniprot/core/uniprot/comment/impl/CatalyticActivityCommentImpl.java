@@ -10,7 +10,8 @@ import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.util.Utils;
 
-public class CatalyticActivityCommentImpl extends CommentHasMoleculeImpl implements CatalyticActivityComment {
+public class CatalyticActivityCommentImpl extends CommentHasMoleculeImpl
+        implements CatalyticActivityComment {
     private static final long serialVersionUID = 166685624467020599L;
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions;
@@ -21,8 +22,10 @@ public class CatalyticActivityCommentImpl extends CommentHasMoleculeImpl impleme
         this.physiologicalReactions = Collections.emptyList();
     }
 
-    public CatalyticActivityCommentImpl(String molecule,
-            Reaction reaction, List<PhysiologicalReaction> physiologicalReactions) {
+    public CatalyticActivityCommentImpl(
+            String molecule,
+            Reaction reaction,
+            List<PhysiologicalReaction> physiologicalReactions) {
         super(CommentType.CATALYTIC_ACTIVITY, molecule);
         this.reaction = reaction;
         this.physiologicalReactions = Utils.unmodifiableList(physiologicalReactions);

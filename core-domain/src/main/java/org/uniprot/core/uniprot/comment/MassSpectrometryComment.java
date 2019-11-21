@@ -11,7 +11,7 @@ public interface MassSpectrometryComment extends Comment, HasMolecule {
     public Float getMolWeightError();
 
     public String getNote();
-    
+
     public MassSpectrometryMethod getMethod();
 
     public List<Evidence> getEvidences();

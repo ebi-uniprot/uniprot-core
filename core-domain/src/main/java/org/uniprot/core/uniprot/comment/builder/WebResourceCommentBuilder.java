@@ -5,7 +5,7 @@ import org.uniprot.core.uniprot.comment.impl.WebResourceCommentImpl;
 
 public final class WebResourceCommentBuilder
         implements CommentBuilder<WebResourceCommentBuilder, WebResourceComment> {
-	String molecule;
+    String molecule;
     private String resourceName;
     private String resourceUrl;
     private boolean isFtp = false;
@@ -23,12 +23,12 @@ public final class WebResourceCommentBuilder
                 .resourceUrl(instance.getResourceUrl())
                 .molecule(instance.getMolecule());
     }
-    
+
     public WebResourceCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
-    
+
     public WebResourceCommentBuilder resourceName(String resourceName) {
         this.resourceName = resourceName;
         return this;

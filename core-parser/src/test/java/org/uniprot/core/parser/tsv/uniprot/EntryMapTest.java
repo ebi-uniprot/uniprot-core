@@ -187,11 +187,12 @@ class EntryMapTest {
         assertEquals(fields.size(), result.size());
         verify("Q15758", 0, result);
 
-        String altProd ="ALTERNATIVE PRODUCTS:  Event=Alternative splicing, Alternative initiation; "
-            + "Named isoforms=3; Comment=A number of isoforms are produced by alternative initiation. "
-            + "Isoforms start at multiple alternative CUG and GUG codons. {ECO:0000269|PubMed:11350958}; Name=1; "
-            + "IsoId=Q15758-1; Sequence=Displayed; Name=2; IsoId=Q15758-2; Sequence=VSP_046354; Name=3; "
-            + "IsoId=Q15758-3; Sequence=VSP_046851;" ;
+        String altProd =
+                "ALTERNATIVE PRODUCTS:  Event=Alternative splicing, Alternative initiation; "
+                        + "Named isoforms=3; Comment=A number of isoforms are produced by alternative initiation. "
+                        + "Isoforms start at multiple alternative CUG and GUG codons. {ECO:0000269|PubMed:11350958}; Name=1; "
+                        + "IsoId=Q15758-1; Sequence=Displayed; Name=2; IsoId=Q15758-2; Sequence=VSP_046354; Name=3; "
+                        + "IsoId=Q15758-3; Sequence=VSP_046851;";
         verify(altProd, 1, result);
     }
 
@@ -282,9 +283,9 @@ class EntryMapTest {
         verify("Q84MC7", 0, result);
         String seqCaution =
                 "SEQUENCE CAUTION:  Sequence=AAF97339.1; Type=Erroneous initiation; Note=Truncated N-terminus.; "
-                + "Evidence={ECO:0000305};  Sequence=AAM65514.1; Type=Erroneous initiation; Note=Truncated N-terminus.; "
-                + "Evidence={ECO:0000305};";
-      verify(seqCaution, 1, result);
+                        + "Evidence={ECO:0000305};  Sequence=AAM65514.1; Type=Erroneous initiation; Note=Truncated N-terminus.; "
+                        + "Evidence={ECO:0000305};";
+        verify(seqCaution, 1, result);
     }
 
     @Test
@@ -305,20 +306,27 @@ class EntryMapTest {
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Absorption: Abs(max)=280 nm {ECO:0000269|PubMed:12111146, "
                         + "ECO:0000269|PubMed:12118243}; Note=Exhibits a shoulder at 360 nm, "
                         + "a smaller absorption peak at 450 nm, and a second, larger peak at 590 nm. {ECO:0000269|PubMed:12118243};";
-//        String kinetic =
-//                "BIOPHYSICOCHEMICAL PROPERTIES:  Kinetic parameters: KM=5.61 mM for ethanol {ECO:0000269|PubMed:10320337,"
-//                        + " ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276}; KM=0.105 mM for butane-1-ol {ECO:0000269|PubMed:10320337,"
-//                        + " ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276}; Vmax=45.5 umol/min/mg enzyme toward potassium"
-//                        + " ferricyanide (in the presence of 30 mM Tris-HCl pH 8.0) {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256,"
-//                        + " ECO:0000269|PubMed:7730276};";
+        //        String kinetic =
+        //                "BIOPHYSICOCHEMICAL PROPERTIES:  Kinetic parameters: KM=5.61 mM for
+        // ethanol {ECO:0000269|PubMed:10320337,"
+        //                        + " ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};
+        // KM=0.105 mM for butane-1-ol {ECO:0000269|PubMed:10320337,"
+        //                        + " ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};
+        // Vmax=45.5 umol/min/mg enzyme toward potassium"
+        //                        + " ferricyanide (in the presence of 30 mM Tris-HCl pH 8.0)
+        // {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256,"
+        //                        + " ECO:0000269|PubMed:7730276};";
         String phDep =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  pH dependence: Optimum pH is 3.5 with 2,2'-azinobis-"
-                + "(3-ethylbenzthiazoline-6-sulphonate) as substrate, 5.0-7.5 with guiacol as substrate, "
-                + "and 6.0-7.0 with syringaldazine as substrate. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243};";
-//        String redox =
-//                "BIOPHYSICOCHEMICAL PROPERTIES:  Redox potential: E(0) is +185 mV for heme c at pH 7.0, +188 mV "
-//                        + "for heme c at pH 8.0, +172 mV for heme c at pH 8.0 and 0.3 M KCl and +189 mV for ADH IIB-Azurin complex."
-//                        + " {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256, ECO:0000269|PubMed:7730276};";
+                        + "(3-ethylbenzthiazoline-6-sulphonate) as substrate, 5.0-7.5 with guiacol as substrate, "
+                        + "and 6.0-7.0 with syringaldazine as substrate. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243};";
+        //        String redox =
+        //                "BIOPHYSICOCHEMICAL PROPERTIES:  Redox potential: E(0) is +185 mV for heme
+        // c at pH 7.0, +188 mV "
+        //                        + "for heme c at pH 8.0, +172 mV for heme c at pH 8.0 and 0.3 M
+        // KCl and +189 mV for ADH IIB-Azurin complex."
+        //                        + " {ECO:0000269|PubMed:10320337, ECO:0000269|PubMed:16061256,
+        // ECO:0000269|PubMed:7730276};";
         String tempDep =
                 "BIOPHYSICOCHEMICAL PROPERTIES:  Temperature dependence: Optimum temperature is 60-70 degrees "
                         + "Celsius. {ECO:0000269|PubMed:12111146, ECO:0000269|PubMed:12118243};";
@@ -347,58 +355,58 @@ class EntryMapTest {
         List<String> result = dl.getData();
         assertEquals(fields.size(), result.size());
         verify("Q15758", 0, result);
-        
-        String chain = "CHAIN 1..541 /note=\"Neutral amino acid transporter B(0)\" /id=\"PRO_0000202082\"";
+
+        String chain =
+                "CHAIN 1..541 /note=\"Neutral amino acid transporter B(0)\" /id=\"PRO_0000202082\"";
         String topo_dom =
                 "TOPO_DOM 1..51 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 82..94 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 117..130 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 154..224 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 249..257 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 286..306 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 329..333 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 365..373 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 401..413 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 448..460 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
-                + " TOPO_DOM 483..541 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\"";
+                        + " TOPO_DOM 82..94 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 117..130 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 154..224 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 249..257 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 286..306 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 329..333 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 365..373 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 401..413 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 448..460 /note=\"Extracellular\" /evidence=\"ECO:0000305\";"
+                        + " TOPO_DOM 483..541 /note=\"Cytoplasmic\" /evidence=\"ECO:0000305\"";
         String transmem =
                 "TRANSMEM 52..81 /note=\"Helical; Name=1\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                + " TRANSMEM 95..116 /note=\"Helical; Name=2\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                + " TRANSMEM 131..153 /note=\"Helical; Name=3\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                + " TRANSMEM 225..248 /note=\"Helical; Name=4\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                + " TRANSMEM 258..285 /note=\"Helical; Name=5\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                + " TRANSMEM 307..328 /note=\"Helical; Name=6\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                + " TRANSMEM 374..400 /note=\"Helical; Name=7\" /evidence=\"ECO:0000305|PubMed:29872227\";"
-                + " TRANSMEM 461..482 /note=\"Helical; Name=8\" /evidence=\"ECO:0000305|PubMed:29872227\"";
+                        + " TRANSMEM 95..116 /note=\"Helical; Name=2\" /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 131..153 /note=\"Helical; Name=3\" /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 225..248 /note=\"Helical; Name=4\" /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 258..285 /note=\"Helical; Name=5\" /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 307..328 /note=\"Helical; Name=6\" /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 374..400 /note=\"Helical; Name=7\" /evidence=\"ECO:0000305|PubMed:29872227\";"
+                        + " TRANSMEM 461..482 /note=\"Helical; Name=8\" /evidence=\"ECO:0000305|PubMed:29872227\"";
         String modRes =
                 "MOD_RES 1 /note=\"N-acetylmethionine\" /evidence=\"ECO:0000244|PubMed:19413330, ECO:0000244|PubMed:22814378\";"
-                + " MOD_RES 493 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:21406692, ECO:0000244|PubMed:23186163\";"
-                + " MOD_RES 494 /note=\"Phosphothreonine\" /evidence=\"ECO:0000244|PubMed:23186163\";"
-                + " MOD_RES 503 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:19690332\";"
-                + " MOD_RES 535 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:17081983, ECO:0000244|PubMed:18669648, ECO:0000244|PubMed:19690332\";"
-                + " MOD_RES 539 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:23186163\"";
+                        + " MOD_RES 493 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:21406692, ECO:0000244|PubMed:23186163\";"
+                        + " MOD_RES 494 /note=\"Phosphothreonine\" /evidence=\"ECO:0000244|PubMed:23186163\";"
+                        + " MOD_RES 503 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:19690332\";"
+                        + " MOD_RES 535 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:17081983, ECO:0000244|PubMed:18669648, ECO:0000244|PubMed:19690332\";"
+                        + " MOD_RES 539 /note=\"Phosphoserine\" /evidence=\"ECO:0000244|PubMed:23186163\"";
         String carbohyd =
                 "CARBOHYD 163 /note=\"N-linked (GlcNAc...) asparagine\" /evidence=\"ECO:0000255\"; "
-                + "CARBOHYD 212 /note=\"N-linked (GlcNAc...) asparagine\" /evidence=\"ECO:0000269|PubMed:19349973\"";
+                        + "CARBOHYD 212 /note=\"N-linked (GlcNAc...) asparagine\" /evidence=\"ECO:0000269|PubMed:19349973\"";
         String varSeq =
                 "VAR_SEQ 1..228 /note=\"Missing (in isoform 3)\" /evidence=\"ECO:0000303|PubMed:14702039\""
-                + " /id=\"VSP_046851\"; VAR_SEQ 1..203 /note=\"MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLG"
-                + "VSGAGGALALGPERLSAFVFPGELLLRLLRMIILPLVVCSLIGGAASLDPGALGRLGAWALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLD"
-                + "LARNIFPSNLVSAAFRS -> M (in isoform 2)\" /evidence=\"ECO:0000303|PubMed:14702039\" /id=\"VSP_046354\"";
+                        + " /id=\"VSP_046851\"; VAR_SEQ 1..203 /note=\"MVADPPRDSKGLAAAEPTANGGLALASIEDQGAAAGGYCGSRDQVRRCLRANLLVLLTVVAVVAGVALGLG"
+                        + "VSGAGGALALGPERLSAFVFPGELLLRLLRMIILPLVVCSLIGGAASLDPGALGRLGAWALLFFLVTTLLASALGVGLALALQPGAASAAINASVGAAGSAENAPSKEVLDSFLD"
+                        + "LARNIFPSNLVSAAFRS -> M (in isoform 2)\" /evidence=\"ECO:0000303|PubMed:14702039\" /id=\"VSP_046354\"";
         String variant =
                 "VARIANT 17 /note=\"P -> A (in dbSNP:rs3027956)\" /id=\"VAR_020439\";"
-                + " VARIANT 512 /note=\"V -> L (in dbSNP:rs3027961)\" /evidence=\"ECO:0000244|PubMed:19690332, ECO:0000269|PubMed:14702039\" /id=\"VAR_013517\"";
+                        + " VARIANT 512 /note=\"V -> L (in dbSNP:rs3027961)\" /evidence=\"ECO:0000244|PubMed:19690332, ECO:0000269|PubMed:14702039\" /id=\"VAR_013517\"";
         String conflict =
                 "CONFLICT 18..24 /note=\"TANGGLA -> PPTGAWQ (in Ref. 1; AAC50629)\" /evidence=\"ECO:0000305\";"
-                + " CONFLICT 44 /note=\"Q -> L (in Ref. 1; AAC50629)\" /evidence=\"ECO:0000305\";"
-                + " CONFLICT 84..87 /note=\"ERLS -> GALE (in Ref. 1; AAC50629)\" /evidence=\"ECO:0000305\";"
-                + " CONFLICT 341 /note=\"V -> A (in Ref. 5; BAH14917)\" /evidence=\"ECO:0000305\";"
-                + " CONFLICT 453 /note=\"I -> V (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
-                + " CONFLICT 460 /note=\"D -> G (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
-                + " CONFLICT 463 /note=\"V -> A (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
-                + " CONFLICT 508 /note=\"D -> G (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\"";
+                        + " CONFLICT 44 /note=\"Q -> L (in Ref. 1; AAC50629)\" /evidence=\"ECO:0000305\";"
+                        + " CONFLICT 84..87 /note=\"ERLS -> GALE (in Ref. 1; AAC50629)\" /evidence=\"ECO:0000305\";"
+                        + " CONFLICT 341 /note=\"V -> A (in Ref. 5; BAH14917)\" /evidence=\"ECO:0000305\";"
+                        + " CONFLICT 453 /note=\"I -> V (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
+                        + " CONFLICT 460 /note=\"D -> G (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
+                        + " CONFLICT 463 /note=\"V -> A (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\";"
+                        + " CONFLICT 508 /note=\"D -> G (in Ref. 2; AAD09812)\" /evidence=\"ECO:0000305\"";
         String domain = "";
-
 
         verify(chain, 1, result);
         verify(topo_dom, 2, result);
@@ -435,8 +443,8 @@ class EntryMapTest {
         verify("Q15758", 0, result);
         String pmids =
                 "8702519; 10051606; 10196349; 14702039; 15057824; 15489334; 11350958;"
-                + " 10708449; 17081983; 17081065; 18669648; 19413330; 19349973; 19690332;"
-                + " 20068231; 21269460; 21406692; 22814378; 23186163; 25944712; 28424515; 29872227";
+                        + " 10708449; 17081983; 17081065; 18669648; 19413330; 19349973; 19690332;"
+                        + " 20068231; 21269460; 21406692; 22814378; 23186163; 25944712; 28424515; 29872227";
         verify(pmids, 1, result);
     }
 

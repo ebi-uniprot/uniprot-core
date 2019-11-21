@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
@@ -33,9 +32,8 @@ class EntryFeaturesMapTest {
         verify("HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"", "ft_helix", result);
         String variantExp =
                 "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" /id=\"VAR_064512\";"
-                + " VARIANT 27 /note=\"B -> D (in another; dbSNP:rs1064793121)\" /evidence=\"ECO:0000269|PubMed:12345,"
-                + " ECO:0000269|PubMed:6142052\" /id=\"VAR_064556\"";
-
+                        + " VARIANT 27 /note=\"B -> D (in another; dbSNP:rs1064793121)\" /evidence=\"ECO:0000269|PubMed:12345,"
+                        + " ECO:0000269|PubMed:6142052\" /id=\"VAR_064556\"";
 
         verify(variantExp, "ft_variant", result);
     }
@@ -72,12 +70,18 @@ class EntryFeaturesMapTest {
         features.add(feature);
         features.add(
                 createFeature(
-                        FeatureType.DOMAIN, new FeatureLocation(23, 23), "some domain", null, null, null));
+                        FeatureType.DOMAIN,
+                        new FeatureLocation(23, 23),
+                        "some domain",
+                        null,
+                        null,
+                        null));
 
         List<Evidence> evidences2 = new ArrayList<>();
         evidences2.add(createEvidence("ECO:0000244", "PDB", "2LO1"));
         Feature feature2 =
-                createFeature(FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences2, null);
+                createFeature(
+                        FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences2, null);
         features.add(feature2);
 
         return features;
@@ -99,7 +103,8 @@ class EntryFeaturesMapTest {
                         null,
                         createAlternativeSequence("A", "G"));
         String result = EntryFeaturesMap.featureToString(feature);
-        String expected = "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" /id=\"VAR_064512\"";
+        String expected =
+                "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" /id=\"VAR_064512\"";
         assertEquals(result, expected);
     }
 
@@ -120,7 +125,7 @@ class EntryFeaturesMapTest {
         String result = EntryFeaturesMap.featureToString(feature);
         String expected =
                 "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" "
-                + "/evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\" /id=\"VAR_064512\"";
+                        + "/evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\" /id=\"VAR_064512\"";
         assertEquals(result, expected);
     }
 
@@ -128,7 +133,12 @@ class EntryFeaturesMapTest {
     void testFeatureToString() {
         Feature feature =
                 createFeature(
-                        FeatureType.DOMAIN, new FeatureLocation(23, 23), "some domain", null, null, null);
+                        FeatureType.DOMAIN,
+                        new FeatureLocation(23, 23),
+                        "some domain",
+                        null,
+                        null,
+                        null);
         String result = EntryFeaturesMap.featureToString(feature);
         String expected = "DOMAIN 23 /note=\"some domain\"";
         assertEquals(result, expected);
@@ -159,7 +169,8 @@ class EntryFeaturesMapTest {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(createEvidence("ECO:0000244", "PDB", "2LO1"));
         Feature feature =
-                createFeature(FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences, null);
+                createFeature(
+                        FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences, null);
         String result = EntryFeaturesMap.featureToString(feature);
         String expected = "HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"";
         assertEquals(result, expected);

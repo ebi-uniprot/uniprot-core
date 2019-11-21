@@ -6,7 +6,6 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
@@ -21,7 +20,8 @@ class FeatureImplTest {
 
     @Test
     void testSimple() {
-    	FeatureLocation location = new FeatureLocation(null, 32, 50, PositionModifier.EXACT, PositionModifier.UNSURE);
+        FeatureLocation location =
+                new FeatureLocation(null, 32, 50, PositionModifier.EXACT, PositionModifier.UNSURE);
         Feature feature =
                 new FeatureBuilder()
                         .type(FeatureType.ACT_SITE)

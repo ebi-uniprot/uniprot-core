@@ -26,10 +26,7 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
 
     private Token lastToken;
     private Token nextToken;
-    private static final List<String> END_TOKENS =
-    		Arrays.asList(new String[] {
-    				"-", "/"
-    		});
+    private static final List<String> END_TOKENS = Arrays.asList(new String[] {"-", "/"});
 
     protected RememberLastTokenLexer(CharStream input) {
         super(input);
@@ -38,88 +35,83 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
     @Override
     public Token emit() {
         lastToken = super.emit();
-    	nextToken = super.getToken();
+        nextToken = super.getToken();
         return lastToken;
     }
-  
-    public void replaceDoubleQuote() {
-    	
-    	  String text3= this.getText();
-          System.out.println(text3);
-          this.setText("''");
-    	if(nextToken !=null) {
-    		 String text2 = nextToken.getText();
-    		 System.out.println("nextToken=" +text2);
 
-    	}
+    public void replaceDoubleQuote() {
+
+        String text3 = this.getText();
+        System.out.println(text3);
+        this.setText("''");
+        if (nextToken != null) {
+            String text2 = nextToken.getText();
+            System.out.println("nextToken=" + text2);
+        }
     }
+
     public void replaceChangeOfLine() {
         if (lastToken != null) {
             String text1 = lastToken.getText();
             if (text1.endsWith("-")) {
                 int index = this._input.index();
-                String text = this._input.getText(Interval.of(index, index+3));
+                String text = this._input.getText(Interval.of(index, index + 3));
 
                 // Do not add a blank after a hyphen that is not preceded by a
                 // blank and not followed by and/or.
                 //
-                if ((text.startsWith("and ") || text.startsWith("or "))
-                     || text1.endsWith(" -")){
+                if ((text.startsWith("and ") || text.startsWith("or ")) || text1.endsWith(" -")) {
                     this.setText(" ");
-                }else{
+                } else {
                     this.setText("");
                 }
             } else {
                 this.setText(" ");
             }
         }
-//		this.setText(" ");
+        //		this.setText(" ");
     }
-    
-    
+
     public void replaceChangeOfLineForFT() {
         if (lastToken != null) {
             String text1 = lastToken.getText();
             if (text1.endsWith("/")) {
-            	this.setText("");
-            }else if (text1.endsWith("-")) {
+                this.setText("");
+            } else if (text1.endsWith("-")) {
                 int index = this._input.index();
-                String text = this._input.getText(Interval.of(index, index+3));
+                String text = this._input.getText(Interval.of(index, index + 3));
 
                 // Do not add a blank after a hyphen that is not preceded by a
                 // blank and not followed by and/or.
                 //
-                if ((text.startsWith("and ") || text.startsWith("or "))
-                     || text1.endsWith(" -")){
+                if ((text.startsWith("and ") || text.startsWith("or ")) || text1.endsWith(" -")) {
                     this.setText(" ");
-                }else{
+                } else {
                     this.setText("");
                 }
             } else {
                 this.setText(" ");
             }
         }
-//		this.setText(" ");
+        //		this.setText(" ");
     }
 
     public void replaceChangeOfLine(boolean seq) {
-		if (!seq) {
-			replaceChangeOfLineForFT();
-		} else {
-			if (isSequenceLetter(lastToken.getText())) {
-				this.setText("");
-			} else {
-				replaceChangeOfLineForFT();
-			}
-		}
-	}
+        if (!seq) {
+            replaceChangeOfLineForFT();
+        } else {
+            if (isSequenceLetter(lastToken.getText())) {
+                this.setText("");
+            } else {
+                replaceChangeOfLineForFT();
+            }
+        }
+    }
 
-	public boolean isSequenceLetter(String se) {
-		for (int i = 0; i < se.length(); i++) {
-			if (se.charAt(i) > 'Z' || se.charAt(i) < 'A')
-				return false;
-		}
-		return true;
-	}
+    public boolean isSequenceLetter(String se) {
+        for (int i = 0; i < se.length(); i++) {
+            if (se.charAt(i) > 'Z' || se.charAt(i) < 'A') return false;
+        }
+        return true;
+    }
 }
-

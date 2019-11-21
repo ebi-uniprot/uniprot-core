@@ -13,7 +13,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.Range;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
@@ -260,7 +259,7 @@ class UniProtEntryConverterTest {
     }
 
     private Feature createVarSeqFeature() {
-    	FeatureLocation location = new FeatureLocation(65, 86);
+        FeatureLocation location = new FeatureLocation(65, 86);
         AlternativeSequence as = new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
         FeatureId featureId = new FeatureIdImpl("VSP_112");
 

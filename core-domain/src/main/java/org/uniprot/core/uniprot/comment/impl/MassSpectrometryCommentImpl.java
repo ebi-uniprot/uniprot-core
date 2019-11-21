@@ -10,7 +10,8 @@ import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
-public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl implements MassSpectrometryComment {
+public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl
+        implements MassSpectrometryComment {
     private static final long serialVersionUID = 7080239485468338483L;
     private MassSpectrometryMethod method;
     private Float molWeight;
@@ -23,7 +24,8 @@ public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl implemen
         this.evidences = Collections.emptyList();
     }
 
-    public MassSpectrometryCommentImpl(String molecule,
+    public MassSpectrometryCommentImpl(
+            String molecule,
             MassSpectrometryMethod method,
             Float molWeight,
             Float molWeightError,
@@ -34,7 +36,7 @@ public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl implemen
         this.molWeight = molWeight;
 
         this.molWeightError = molWeightError;
-        this.note = note;      
+        this.note = note;
         if ((evidences == null) || evidences.isEmpty()) {
             this.evidences = Collections.emptyList();
         } else {
@@ -107,7 +109,6 @@ public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl implemen
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                super.hashCode(), method, molWeight, molWeightError, note, evidences);
+        return Objects.hash(super.hashCode(), method, molWeight, molWeightError, note, evidences);
     }
 }

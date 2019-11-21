@@ -56,46 +56,46 @@ abstract class AbstractDBXTest {
                         + "CC   -----------------------------------------------------------------------\n"
                         + DR_TO_REPLACE
                         + "\n"
-                        + "PE   4: Predicted;\n" + 
-                        "KW   DNA-binding {ECO:0000313|EMBL:SFD02281.1};\n" + 
-                        "KW   Phosphoprotein {ECO:0000256|PROSITE-ProRule:PRU00169};\n" + 
-                        "KW   TPR repeat {ECO:0000256|PROSITE-ProRule:PRU00339}.\n" + 
-                        "FT   DOMAIN          18..137\n" + 
-                        "FT                   /note=\"Response regulatory\"\n" + 
-                        "FT                   /evidence=\"ECO:0000259|PROSITE:PS50110\"\n" + 
-                        "FT   DOMAIN          207..308\n" + 
-                        "FT                   /note=\"TPR_REGION\"\n" + 
-                        "FT                   /evidence=\"ECO:0000259|PROSITE:PS50293\"\n" + 
-                        "FT   REPEAT          207..240\n" + 
-                        "FT                   /note=\"TPR\"\n" + 
-                        "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n" + 
-                        "FT   REPEAT          241..274\n" + 
-                        "FT                   /note=\"TPR\"\n" + 
-                        "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n" + 
-                        "FT   REPEAT          275..308\n" + 
-                        "FT                   /note=\"TPR\"\n" + 
-                        "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n" + 
-                        "FT   REPEAT          455..488\n" + 
-                        "FT                   /note=\"TPR\"\n" + 
-                        "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n" + 
-                        "FT   DOMAIN          455..488\n" + 
-                        "FT                   /note=\"TPR_REGION\"\n" + 
-                        "FT                   /evidence=\"ECO:0000259|PROSITE:PS50293\"\n" + 
-                        "FT   MOD_RES         68\n" + 
-                        "FT                   /note=\"4-aspartylphosphate\"\n" + 
-                        "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00169\"\n" + 
-                        "SQ   SEQUENCE   558 AA;  62745 MW;  DDA8B194737898EA CRC64;\n" + 
-                        "     MNAFTTPATD QVDWASKTYL VVDDFVGVRQ LLREALRSLG ARTIDQAASG GEAMGLLNKT\n" + 
-                        "     RYDVVLCDFN LGEGKNGQQV LEEARMRNLL QPSSVFLMVS AEKSVESVMG AAEHQPDAYL\n" + 
-                        "     VKPITEGVLL SRLNRVWRKK QVFSLIDQAY VEKDYLRAAR LCDEQVVDNK VHEIDLLRMK\n" + 
-                        "     ARLMEKSGEP GKARETYERV LAQREYQWAR SGLAKIRMAD GEYEQARQMF QTVIAENRYY\n" + 
-                        "     IDAYDQLALA YQNLGKHEEA LGILERAAKL SPNSVPRQRN LGQACLKLGN IGMAEKAFRK\n" + 
-                        "     CISIGEYSIR KTPDAYLGLA RVCGLKNDPK EALQLLIAAQ REFGADHPDL ELRTKITEGL\n" + 
-                        "     VYHESGDYRR ARKAGDELEA LLQSTSERPD VTTCLEMATL LFAVGCKEAP VDLLCYVIRN\n" + 
-                        "     NHDNPLLHDD VQKIFEKARM GEEGEGLIRG ARKEAVDLMN QGVLLWKTNK LAEAVEWMRN\n" + 
-                        "     ARTALPHNAR ILFNSVQILV SHMQQRGYSA ELSEEAHVVL ATVDRLQPGQ QRFAQLMEQL\n" + 
-                        "     MLLVPKEEPV ALAEAAAV\n" + 
-                        "//\n";
+                        + "PE   4: Predicted;\n"
+                        + "KW   DNA-binding {ECO:0000313|EMBL:SFD02281.1};\n"
+                        + "KW   Phosphoprotein {ECO:0000256|PROSITE-ProRule:PRU00169};\n"
+                        + "KW   TPR repeat {ECO:0000256|PROSITE-ProRule:PRU00339}.\n"
+                        + "FT   DOMAIN          18..137\n"
+                        + "FT                   /note=\"Response regulatory\"\n"
+                        + "FT                   /evidence=\"ECO:0000259|PROSITE:PS50110\"\n"
+                        + "FT   DOMAIN          207..308\n"
+                        + "FT                   /note=\"TPR_REGION\"\n"
+                        + "FT                   /evidence=\"ECO:0000259|PROSITE:PS50293\"\n"
+                        + "FT   REPEAT          207..240\n"
+                        + "FT                   /note=\"TPR\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n"
+                        + "FT   REPEAT          241..274\n"
+                        + "FT                   /note=\"TPR\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n"
+                        + "FT   REPEAT          275..308\n"
+                        + "FT                   /note=\"TPR\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n"
+                        + "FT   REPEAT          455..488\n"
+                        + "FT                   /note=\"TPR\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00339\"\n"
+                        + "FT   DOMAIN          455..488\n"
+                        + "FT                   /note=\"TPR_REGION\"\n"
+                        + "FT                   /evidence=\"ECO:0000259|PROSITE:PS50293\"\n"
+                        + "FT   MOD_RES         68\n"
+                        + "FT                   /note=\"4-aspartylphosphate\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|PROSITE-ProRule:PRU00169\"\n"
+                        + "SQ   SEQUENCE   558 AA;  62745 MW;  DDA8B194737898EA CRC64;\n"
+                        + "     MNAFTTPATD QVDWASKTYL VVDDFVGVRQ LLREALRSLG ARTIDQAASG GEAMGLLNKT\n"
+                        + "     RYDVVLCDFN LGEGKNGQQV LEEARMRNLL QPSSVFLMVS AEKSVESVMG AAEHQPDAYL\n"
+                        + "     VKPITEGVLL SRLNRVWRKK QVFSLIDQAY VEKDYLRAAR LCDEQVVDNK VHEIDLLRMK\n"
+                        + "     ARLMEKSGEP GKARETYERV LAQREYQWAR SGLAKIRMAD GEYEQARQMF QTVIAENRYY\n"
+                        + "     IDAYDQLALA YQNLGKHEEA LGILERAAKL SPNSVPRQRN LGQACLKLGN IGMAEKAFRK\n"
+                        + "     CISIGEYSIR KTPDAYLGLA RVCGLKNDPK EALQLLIAAQ REFGADHPDL ELRTKITEGL\n"
+                        + "     VYHESGDYRR ARKAGDELEA LLQSTSERPD VTTCLEMATL LFAVGCKEAP VDLLCYVIRN\n"
+                        + "     NHDNPLLHDD VQKIFEKARM GEEGEGLIRG ARKEAVDLMN QGVLLWKTNK LAEAVEWMRN\n"
+                        + "     ARTALPHNAR ILFNSVQILV SHMQQRGYSA ELSEEAHVVL ATVDRLQPGQ QRFAQLMEQL\n"
+                        + "     MLLVPKEEPV ALAEAAAV\n"
+                        + "//\n";
         return entryStr.replace(DR_TO_REPLACE, citationLines);
     }
 }

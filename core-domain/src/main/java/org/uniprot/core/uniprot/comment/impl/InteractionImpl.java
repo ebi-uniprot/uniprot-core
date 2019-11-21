@@ -118,12 +118,10 @@ public class InteractionImpl implements Interaction {
     }
 
     public static class InteractorImpl extends ValueImpl implements Interactor {
-        /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+        /** */
+        private static final long serialVersionUID = 1L;
 
-    private InteractorImpl() {
+        private InteractorImpl() {
             super(null);
         }
 

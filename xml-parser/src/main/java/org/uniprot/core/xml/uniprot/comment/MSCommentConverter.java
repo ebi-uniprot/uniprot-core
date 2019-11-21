@@ -36,15 +36,13 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         if (xmlObj.getMolecule() != null) {
             builder.molecule(xmlObj.getMolecule().getValue());
         }
-        
+
         if (xmlObj.getMethod() != null)
             builder.method(MassSpectrometryMethod.toType(xmlObj.getMethod()));
 
         if (xmlObj.getError() != null) builder.molWeightError(Float.parseFloat(xmlObj.getError()));
 
         if (xmlObj.getMass() != null) builder.molWeight(xmlObj.getMass());
-
-      
 
         // Note
         if (!xmlObj.getText().isEmpty()) {
@@ -64,13 +62,13 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         if (uniObj == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
-        
+
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(uniObj.getMolecule());
             commentXML.setMolecule(mol);
         }
-        
+
         // Method
         if (uniObj.getMethod() != null) commentXML.setMethod(uniObj.getMethod().getValue());
 
@@ -81,7 +79,6 @@ public class MSCommentConverter implements CommentConverter<MassSpectrometryComm
         // Error
         if ((uniObj.getMolWeightError() != null) && (uniObj.getMolWeightError() > 0))
             commentXML.setError(Float.toString(uniObj.getMolWeightError()));
-
 
         // Note
         if (!Strings.isNullOrEmpty(uniObj.getNote())) {

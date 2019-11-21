@@ -31,8 +31,7 @@ public class WRCommentConverter implements CommentConverter<WebResourceComment> 
         if (xmlObject.getMolecule() != null) {
             builder.molecule(xmlObject.getMolecule().getValue());
         }
-        
-        
+
         if (xmlObject.getName() != null) {
             builder.resourceName(xmlObject.getName());
         }
@@ -57,13 +56,13 @@ public class WRCommentConverter implements CommentConverter<WebResourceComment> 
         if (uniObj == null) return null;
         CommentType commentType = xmlUniprotFactory.createCommentType();
         commentType.setType(WebResourceComment.ONLINE_INFORMATION_XMLTAG);
-        
+
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(uniObj.getMolecule());
             commentType.setMolecule(mol);
         }
-        
+
         if (!Strings.isNullOrEmpty(uniObj.getResourceName())) {
             commentType.setName(uniObj.getResourceName());
         }

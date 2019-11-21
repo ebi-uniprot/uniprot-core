@@ -19,8 +19,8 @@ public class WebResourceCommentImpl extends CommentHasMoleculeImpl implements We
         this(null, null, null, false, null);
     }
 
-    public WebResourceCommentImpl(String molecule,
-            String resourceName, String resourceUrl, boolean ftp, String note) {
+    public WebResourceCommentImpl(
+            String molecule, String resourceName, String resourceUrl, boolean ftp, String note) {
         super(CommentType.WEBRESOURCE, molecule);
         this.resourceName = emptyOrString(resourceName);
         this.resourceUrl = emptyOrString(resourceUrl);

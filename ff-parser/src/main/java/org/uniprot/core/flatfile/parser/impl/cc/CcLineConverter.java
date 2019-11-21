@@ -102,11 +102,9 @@ import com.google.common.base.Strings;
 
 public class CcLineConverter extends EvidenceCollector
         implements Converter<CcLineObject, List<Comment>> {
-    /**
-   * 
-   */
-  private static final long serialVersionUID = 9161643642138549927L;
-  // private final DefaultCommentFactory factory = DefaultCommentFactory
+    /** */
+    private static final long serialVersionUID = 9161643642138549927L;
+    // private final DefaultCommentFactory factory = DefaultCommentFactory
     // .getInstance();
     private final Map<String, String> diseaseMap;
     private final Map<String, String> subcellularLocationMap;
@@ -158,9 +156,9 @@ public class CcLineConverter extends EvidenceCollector
         for (CcLineObject.SequenceCautionObject cObj : seqC.sequenceCautionObjects) {
             SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
             builder.sequenceCautionType(convertSequenceCautionType(cObj.type));
-            if(seqC.molecule !=null) {
-            	builder.molecule(seqC.molecule);
-			}                       
+            if (seqC.molecule != null) {
+                builder.molecule(seqC.molecule);
+            }
             if ((cObj.note != null) && (!cObj.note.isEmpty())) {
                 builder.note(cObj.note);
             }
@@ -319,11 +317,10 @@ public class CcLineConverter extends EvidenceCollector
         // CC Celsius and at pH 7.6);
         // CC Vmax=1.9 mmol/min/mg enzyme;
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
-    	if(cObj.molecule !=null) {
-    		builder.molecule(cObj.molecule);
-		}
-        
-        
+        if (cObj.molecule != null) {
+            builder.molecule(cObj.molecule);
+        }
+
         if (isNotEmpty(cObj.kms) || isNotEmpty(cObj.vmaxs) || isNotEmpty(cObj.kpNote)) {
             List<MichaelisConstant> mcs = new ArrayList<>();
             cObj.kms.stream()
@@ -421,8 +418,10 @@ public class CcLineConverter extends EvidenceCollector
 
     private WebResourceComment convertWebResource(CcLineObject.WebResource cObj) {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
-        builder.resourceName(cObj.name).note(cObj.note).resourceUrl(cObj.url)
-        .molecule(cObj.molecule);
+        builder.resourceName(cObj.name)
+                .note(cObj.note)
+                .resourceUrl(cObj.url)
+                .molecule(cObj.molecule);
         if (cObj.url != null) builder.isFtp(cObj.url.startsWith("ftp"));
         return builder.build();
     }
@@ -459,13 +458,12 @@ public class CcLineConverter extends EvidenceCollector
     private DiseaseComment convertDisease(
             CcLineObject.Disease cObj, Map<Object, List<Evidence>> evidences) {
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
-        if(!Strings.isNullOrEmpty(cObj.molecule)) {
-        	commentBuilder.molecule(cObj.molecule);
-		}
-        
+        if (!Strings.isNullOrEmpty(cObj.molecule)) {
+            commentBuilder.molecule(cObj.molecule);
+        }
+
         DiseaseBuilder builder = new DiseaseBuilder();
-        
-        
+
         if (!Strings.isNullOrEmpty(cObj.name)) {
             builder.diseaseId(cObj.name);
             String disease = diseaseMap.getOrDefault(cObj.name, "");
@@ -547,10 +545,10 @@ public class CcLineConverter extends EvidenceCollector
     private MassSpectrometryComment convertMassSpectrometry(
             CcLineObject.MassSpectrometry cObj, Map<Object, List<Evidence>> evidenceMap) {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
-        if(cObj.molecule !=null) {
-        	builder.molecule(cObj.molecule);
-		}
-        
+        if (cObj.molecule != null) {
+            builder.molecule(cObj.molecule);
+        }
+
         Float mass = cObj.mass;
         Float massError = cObj.massError;
         builder.method(MassSpectrometryMethod.toType(cObj.method))
@@ -566,18 +564,16 @@ public class CcLineConverter extends EvidenceCollector
                         .map(EvidenceHelper::parseEvidenceLine)
                         .collect(Collectors.toList()));
 
-     
         return builder.build();
     }
 
-  
     private RnaEditingComment convertRNAEditing(
             CcLineObject.RnaEditing cObj, Map<Object, List<Evidence>> evidences) {
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
-        if(cObj.molecule !=null) {
-        	builder.molecule(cObj.molecule);
-		}
-        
+        if (cObj.molecule != null) {
+            builder.molecule(cObj.molecule);
+        }
+
         if (cObj.locations.isEmpty()) {
             if (cObj.locationEnum == RnaEditingLocationEnum.UNDETERMINED) {
                 builder.locationType(RnaEditingLocationType.Undetermined);
@@ -608,23 +604,25 @@ public class CcLineConverter extends EvidenceCollector
             CommentType commentType,
             CcLineObject.FreeText cObj,
             Map<Object, List<Evidence>> evidences) {
-    	List<EvidencedValue> cTexts = new ArrayList<>();
-    	String molecule=null;
-		boolean first =true;
-		for (EvidencedString val : cObj.texts) {
-			String value = val.value;
-			if(first) {
-				first =false;
-				List<String> result = CcLineUtils.parseFreeText(value);
-				value = result.get(1);
-				 molecule = result.get(0);
-			
-			}
-			  List<Evidence> txtEvidences = parseEvidenceLines(val.evidences);
-		     cTexts.add(new EvidencedValueBuilder(value, txtEvidences).build());
-		
-		}
-        return new FreeTextCommentBuilder().commentType(commentType).texts(cTexts).molecule(molecule).build();
+        List<EvidencedValue> cTexts = new ArrayList<>();
+        String molecule = null;
+        boolean first = true;
+        for (EvidencedString val : cObj.texts) {
+            String value = val.value;
+            if (first) {
+                first = false;
+                List<String> result = CcLineUtils.parseFreeText(value);
+                value = result.get(1);
+                molecule = result.get(0);
+            }
+            List<Evidence> txtEvidences = parseEvidenceLines(val.evidences);
+            cTexts.add(new EvidencedValueBuilder(value, txtEvidences).build());
+        }
+        return new FreeTextCommentBuilder()
+                .commentType(commentType)
+                .texts(cTexts)
+                .molecule(molecule)
+                .build();
     }
 
     private CofactorComment convertCofactor(
@@ -689,7 +687,7 @@ public class CcLineConverter extends EvidenceCollector
     }
 
     private CatalyticActivityComment convertCatalyticActivity(
-            CatalyticActivity object, Map<Object, List<Evidence>> evidences) {   	
+            CatalyticActivity object, Map<Object, List<Evidence>> evidences) {
         Reaction reaction = convertReaction(object.reaction, evidences);
         List<PhysiologicalReaction> physiologicalReactions =
                 object.physiologicalDirections.stream()

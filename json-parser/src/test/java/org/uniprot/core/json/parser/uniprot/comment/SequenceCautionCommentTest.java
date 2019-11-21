@@ -41,7 +41,7 @@ public class SequenceCautionCommentTest {
 
         assertNotNull(jsonNode.get("molecule"));
         assertEquals("Isoform 2", jsonNode.get("molecule").asText());
-        
+
         assertNotNull(jsonNode.get("sequenceCautionType"));
         assertEquals("Erroneous initiation", jsonNode.get("sequenceCautionType").asText());
 
@@ -59,7 +59,7 @@ public class SequenceCautionCommentTest {
 
     public static SequenceCautionComment getSequenceCautionComment() {
         return new SequenceCautionCommentBuilder()
-        		.molecule("Isoform 2")
+                .molecule("Isoform 2")
                 .sequenceCautionType(SequenceCautionType.ERRONEOUS_INITIATION)
                 .sequence("sequence")
                 .note("Text note")

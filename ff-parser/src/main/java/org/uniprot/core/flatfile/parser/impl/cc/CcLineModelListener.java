@@ -18,11 +18,10 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
 public class CcLineModelListener extends CcLineParserBaseListener
         implements ParseTreeObjectExtractor<CcLineObject> {
 
-    /**
-   * 
-   */
-  private static final long serialVersionUID = -5176453367383322865L;
-  private CcLineObject object;
+    /** */
+    private static final long serialVersionUID = -5176453367383322865L;
+
+    private CcLineObject object;
 
     private EvidencedString getEvidencedString(
             CcLineParser.Cc_properties_text_level2_with_evContext context) {
@@ -110,14 +109,14 @@ public class CcLineModelListener extends CcLineParserBaseListener
         CcLineObject.SequenceCaution sc = new CcLineObject.SequenceCaution();
         cc.object = sc;
         object.ccs.add(cc);
-        
-        Cc_molecule2Context moleculeCtx =ctx.cc_molecule2();
-        if(moleculeCtx !=null) {
-        	String mol = moleculeCtx.getText();
-        	if((mol!=null) && (mol.length()>2))
-        		sc.molecule = mol.substring(1, mol.length()-1);
+
+        Cc_molecule2Context moleculeCtx = ctx.cc_molecule2();
+        if (moleculeCtx != null) {
+            String mol = moleculeCtx.getText();
+            if ((mol != null) && (mol.length() > 2))
+                sc.molecule = mol.substring(1, mol.length() - 1);
         }
-        
+
         List<CcLineParser.Cc_sequence_caution_lineContext> ccSequenceCautionLineContexts =
                 ctx.cc_sequence_caution_line();
 
@@ -164,10 +163,10 @@ public class CcLineModelListener extends CcLineParserBaseListener
         CcLineObject.MassSpectrometry ms = new CcLineObject.MassSpectrometry();
         cc.object = ms;
         object.ccs.add(cc);
-        
-        if(ctx.cc_molecule2() !=null) {
-        	String text = ctx.cc_molecule2().getText();   	
-        	ms.molecule = text.substring(0, text.length()-1);
+
+        if (ctx.cc_molecule2() != null) {
+            String text = ctx.cc_molecule2().getText();
+            ms.molecule = text.substring(0, text.length() - 1);
         }
 
         CcLineParser.Cc_mass_spectrometry_massContext ccMassSpectrometryMassContext =
@@ -214,10 +213,10 @@ public class CcLineModelListener extends CcLineParserBaseListener
         CcLineObject.WebResource wr = new CcLineObject.WebResource();
         cc.object = wr;
         object.ccs.add(cc);
-        
-        if(ctx.cc_molecule2() !=null) {
-        	String text = ctx.cc_molecule2().getText();   	
-        	wr.molecule = text.substring(0, text.length()-1);
+
+        if (ctx.cc_molecule2() != null) {
+            String text = ctx.cc_molecule2().getText();
+            wr.molecule = text.substring(0, text.length() - 1);
         }
 
         CcLineParser.Cc_web_resource_nameContext ccWebResourceNameContext =
@@ -289,14 +288,14 @@ public class CcLineModelListener extends CcLineParserBaseListener
                 new CcLineObject.BiophysicochemicalProperties();
         cc.object = bp;
         object.ccs.add(cc);
-       
-        Cc_molecule2Context moleculeCtx =ctx.cc_molecule2();
-        if(moleculeCtx !=null) {
-        	String mol = moleculeCtx.getText();
-        	if((mol!=null) && (mol.length()>2))
-        		bp.molecule = mol.substring(1, mol.length()-1);
+
+        Cc_molecule2Context moleculeCtx = ctx.cc_molecule2();
+        if (moleculeCtx != null) {
+            String mol = moleculeCtx.getText();
+            if ((mol != null) && (mol.length() > 2))
+                bp.molecule = mol.substring(1, mol.length() - 1);
         }
-        
+
         List<CcLineParser.Cc_biophyiochemical_propertiesContext> ctx2 =
                 ctx.cc_biophyiochemical_properties();
         for (CcLineParser.Cc_biophyiochemical_propertiesContext
@@ -419,12 +418,12 @@ public class CcLineModelListener extends CcLineParserBaseListener
         cc.topic = CcLineObject.CCTopicEnum.RNA_EDITING;
         CcLineObject.RnaEditing re = new CcLineObject.RnaEditing();
         cc.object = re;
-        
-        if(ctx.cc_molecule2() !=null) {
-        	String text = ctx.cc_molecule2().getText();   	
-        	re.molecule = text.substring(0, text.length()-1);
+
+        if (ctx.cc_molecule2() != null) {
+            String text = ctx.cc_molecule2().getText();
+            re.molecule = text.substring(0, text.length() - 1);
         }
-        
+
         CcLineParser.Cc_rna_editing_positionContext positionContext =
                 ctx.cc_rna_edigint_modified_position().cc_rna_editing_position();
         if (positionContext != null) {
@@ -493,11 +492,10 @@ public class CcLineModelListener extends CcLineParserBaseListener
         CcLineObject.SubcullarLocation sl = new CcLineObject.SubcullarLocation();
         cc.object = sl;
 
-        if(ctx.cc_molecule2() !=null) {
-        	String text = ctx.cc_molecule2().getText();   	
-        	sl.molecule = text.substring(0, text.length()-1);
+        if (ctx.cc_molecule2() != null) {
+            String text = ctx.cc_molecule2().getText();
+            sl.molecule = text.substring(0, text.length() - 1);
         }
-        
 
         CcLineParser.Cc_subcellular_noteContext ccSubcellularNoteContext =
                 ctx.cc_subcellular_note();
@@ -757,11 +755,11 @@ public class CcLineModelListener extends CcLineParserBaseListener
         CcLineObject.Disease dd = new CcLineObject.Disease();
         cc.object = dd;
 
-        if(ctx.cc_molecule2() !=null) {
-        	String text = ctx.cc_molecule2().getText();   	
-        	dd.molecule = text.substring(0, text.length()-1);
+        if (ctx.cc_molecule2() != null) {
+            String text = ctx.cc_molecule2().getText();
+            dd.molecule = text.substring(0, text.length() - 1);
         }
-        
+
         if (ctx.cc_disease_name_abbr() != null) {
             String text = ctx.cc_disease_name_abbr().getText();
             if ((text.endsWith(")")) && (text.indexOf("(") > 0)) {
@@ -814,11 +812,11 @@ public class CcLineModelListener extends CcLineParserBaseListener
         cc.topic = CcLineObject.CCTopicEnum.COFACTOR;
         CcLineObject.StructuredCofactor dd = new CcLineObject.StructuredCofactor();
         cc.object = dd;
-        Cc_molecule2Context moleculeCtx =ctx.cc_molecule2();
-        if(moleculeCtx !=null) {
-        	String mol = moleculeCtx.getText();
-        	if((mol!=null) && (mol.length()>2))
-        		dd.molecule = mol.substring(1, mol.length()-1);
+        Cc_molecule2Context moleculeCtx = ctx.cc_molecule2();
+        if (moleculeCtx != null) {
+            String mol = moleculeCtx.getText();
+            if ((mol != null) && (mol.length() > 2))
+                dd.molecule = mol.substring(1, mol.length() - 1);
         }
         Cc_cofactor_noteContext note = ctx.cc_cofactor_note();
         if (note != null) {

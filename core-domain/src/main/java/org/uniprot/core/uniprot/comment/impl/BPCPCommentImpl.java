@@ -20,7 +20,8 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
         super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, null);
     }
 
-    public BPCPCommentImpl(String molecule,
+    public BPCPCommentImpl(
+            String molecule,
             Absorption absorption,
             KineticParameters kineticParameters,
             PhDependence phDependence,
@@ -179,12 +180,10 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
 
     public static class RedoxPotentialImpl extends FreeTextImpl implements RedoxPotential {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 4549243776349161129L;
+        /** */
+        private static final long serialVersionUID = 4549243776349161129L;
 
-    // no arg constructor for JSON deserialization
+        // no arg constructor for JSON deserialization
         RedoxPotentialImpl() {
             super(Collections.emptyList());
         }
@@ -196,12 +195,10 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
 
     public static class PhDependenceImpl extends FreeTextImpl implements PhDependence {
 
-        /**
-     * 
-     */
-    private static final long serialVersionUID = -5623099152387117244L;
+        /** */
+        private static final long serialVersionUID = -5623099152387117244L;
 
-    // no arg constructor for JSON deserialization
+        // no arg constructor for JSON deserialization
         PhDependenceImpl() {
             super(Collections.emptyList());
         }
@@ -214,12 +211,10 @@ public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComme
     public static class TemperatureDependenceImpl extends FreeTextImpl
             implements TemperatureDependence {
 
-        /**
-     * 
-     */
-    private static final long serialVersionUID = -2126530892957285968L;
+        /** */
+        private static final long serialVersionUID = -2126530892957285968L;
 
-    // no arg constructor for JSON deserialization
+        // no arg constructor for JSON deserialization
         TemperatureDependenceImpl() {
             super(Collections.emptyList());
         }

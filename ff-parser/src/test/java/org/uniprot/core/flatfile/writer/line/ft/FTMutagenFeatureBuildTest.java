@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureLocation;
@@ -13,10 +12,10 @@ import org.uniprot.core.uniprot.feature.FeatureType;
 class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void testMutagen() {
-        String ftLine = "FT   MUTAGEN         2\n" + 
-            "FT                   /note=\"B->A,N: Less than 1% residual activity\"";
-        String ftLineString = "MUTAGEN 2\n" + 
-            "/note=\"B->A,N: Less than 1% residual activity\"";
+        String ftLine =
+                "FT   MUTAGEN         2\n"
+                        + "FT                   /note=\"B->A,N: Less than 1% residual activity\"";
+        String ftLineString = "MUTAGEN 2\n" + "/note=\"B->A,N: Less than 1% residual activity\"";
         String originalSequence = "B";
         List<String> alternativeSequences = new ArrayList<>();
         alternativeSequences.add("A");
@@ -39,16 +38,15 @@ class FTMutagenFeatureBuildTest extends FTBuildTestAbstr {
     @Test
     void testMutagenEvidence() {
         String ftLine =
-                "FT   MUTAGEN         2\n" + 
-                "FT                   /note=\"B->A,N: Less than 1% residual activity\"\n" + 
-                "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n" + 
-                "FT                   ECO:0000313|EMBL:BAG16761.1\"";
-        String ftLineString = "MUTAGEN 2\n" + 
-            "/note=\"B->A,N: Less than 1% residual activity\"";
+                "FT   MUTAGEN         2\n"
+                        + "FT                   /note=\"B->A,N: Less than 1% residual activity\"\n"
+                        + "FT                   /evidence=\"ECO:0000269|PubMed:10433554,\n"
+                        + "FT                   ECO:0000313|EMBL:BAG16761.1\"";
+        String ftLineString = "MUTAGEN 2\n" + "/note=\"B->A,N: Less than 1% residual activity\"";
         String ftLineStringEv =
-                "MUTAGEN 2\n" + 
-                "/note=\"B->A,N: Less than 1% residual activity\"\n" + 
-                "/evidence=\"ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1\"";
+                "MUTAGEN 2\n"
+                        + "/note=\"B->A,N: Less than 1% residual activity\"\n"
+                        + "/evidence=\"ECO:0000269|PubMed:10433554, ECO:0000313|EMBL:BAG16761.1\"";
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
         String ev2 = "ECO:0000269|PubMed:10433554";
         String originalSequence = "B";

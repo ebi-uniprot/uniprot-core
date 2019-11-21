@@ -85,15 +85,12 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
                                     PROPERTY_SOURCE_UNIREF50, uniObj.getUniRef50Id().getValue()));
         }
         if ((uniObj.getUniProtAccessions() != null) && !uniObj.getUniProtAccessions().isEmpty()) {
-        	List<UniProtAccession> accessions = uniObj.getUniProtAccessions();
-        	accessions.forEach(accession -> {
-        		 xref.getProperty()
-                 .add(
-                         createProperty(
-                                 PROPERTY_SOURCE_UNIPROT,
-                                 accession.getValue()));
-        	});
-
+            List<UniProtAccession> accessions = uniObj.getUniProtAccessions();
+            accessions.forEach(
+                    accession -> {
+                        xref.getProperty()
+                                .add(createProperty(PROPERTY_SOURCE_UNIPROT, accession.getValue()));
+                    });
         }
         if (uniObj.getSequenceLength() > 0) {
             xref.getProperty()

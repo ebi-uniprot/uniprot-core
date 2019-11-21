@@ -44,7 +44,7 @@ class CcMSConverterTest {
         assertTrue(wcomment.getMolWeightError() != null);
         assertEquals(0, wcomment.getMolWeightError(), 0.0001);
         //	assertEquals(null, wcomment.getNote());
-       
+
         assertEquals("P15522-2", wcomment.getMolecule());
 
         List<Evidence> sources = wcomment.getEvidences();

@@ -11,5 +11,4 @@ public interface SubcellularLocationComment extends Comment, HasMolecule {
     boolean hasNote();
 
     boolean hasSubcellularLocations();
-
 }

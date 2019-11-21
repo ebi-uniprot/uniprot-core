@@ -23,7 +23,8 @@ class FreeTextCommentImplTest {
     @Test
     void testWithEvidence() {
         List<EvidencedValue> texts = createEvidenceValuesWithEvidences();
-        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, "isoform 2", texts);
+        FreeTextCommentImpl comment =
+                new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, "isoform 2", texts);
         assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
         assertEquals(texts, comment.getTexts());
         assertEquals("isoform 2", comment.getMolecule());

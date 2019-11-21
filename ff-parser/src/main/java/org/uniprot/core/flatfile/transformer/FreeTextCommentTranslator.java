@@ -26,7 +26,7 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
     }
 
     @Override
-    public FreeTextComment transform(CommentType type, String annotation) {    
+    public FreeTextComment transform(CommentType type, String annotation) {
         FreeTextCommentBuilder builder = new FreeTextCommentBuilder();
         buildFreeTexts(annotation, builder);
         return builder.commentType(type).build();
@@ -36,7 +36,7 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
         List<EvidencedValue> texts = new ArrayList<>();
         int indexPre = 0;
         int indexPost = 0;
-        boolean first =true;
+        boolean first = true;
         do {
             indexPre = annotation.indexOf(EVIDENCE_PREFIX);
             if (indexPre == -1) break;
@@ -49,20 +49,21 @@ public class FreeTextCommentTranslator implements CommentTransformer<FreeTextCom
             annotation = annotation.substring(indexPost + 2).trim();
         } while ((indexPost != -1) && (indexPre != -1));
         if (!annotation.isEmpty()) {
-        	EvidencedValue cText = createCommentText(annotation);
-      	  if(first) {
-            	first =false;
-				List<String> result = CcLineUtils.parseFreeText(cText.getValue());
-				String newValue = result.get(1);
-				String molecule = result.get(0);
-				builder.molecule(molecule);
-				EvidencedValueBuilder evBuilder =new EvidencedValueBuilder(newValue, cText.getEvidences());
+            EvidencedValue cText = createCommentText(annotation);
+            if (first) {
+                first = false;
+                List<String> result = CcLineUtils.parseFreeText(cText.getValue());
+                String newValue = result.get(1);
+                String molecule = result.get(0);
+                builder.molecule(molecule);
+                EvidencedValueBuilder evBuilder =
+                        new EvidencedValueBuilder(newValue, cText.getEvidences());
 
-				cText= evBuilder.build();
+                cText = evBuilder.build();
             }
-          texts.add(cText);
-      }
-      builder.texts(texts);
+            texts.add(cText);
+        }
+        builder.texts(texts);
     }
 
     private EvidencedValue createCommentText(String value) {

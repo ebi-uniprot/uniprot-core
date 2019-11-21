@@ -36,13 +36,12 @@ public class RnaEditingCommentConverter implements CommentConverter<RnaEditingCo
     public RnaEditingComment fromXml(CommentType xmlObj) {
         if (xmlObj == null) return null;
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
-        
+
         // Molecule
         if (xmlObj.getMolecule() != null) {
             builder.molecule(xmlObj.getMolecule().getValue());
         }
-        
-        
+
         if (xmlObj.getLocation() != null && !xmlObj.getLocation().isEmpty()) {
             builder.positions(
                     xmlObj.getLocation().stream()
@@ -72,13 +71,12 @@ public class RnaEditingCommentConverter implements CommentConverter<RnaEditingCo
 
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType("RNA editing");
-        
+
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(uniObj.getMolecule());
             commentXML.setMolecule(mol);
         }
-        
 
         if ((uniObj.getNote() != null) && (!uniObj.getNote().getTexts().isEmpty())) {
             uniObj.getNote()

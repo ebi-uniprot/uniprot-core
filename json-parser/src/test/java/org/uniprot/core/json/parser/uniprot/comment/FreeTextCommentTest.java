@@ -37,7 +37,7 @@ public class FreeTextCommentTest {
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(comment);
         assertNotNull(jsonNode.get("commentType"));
         assertEquals("DISRUPTION PHENOTYPE", jsonNode.get("commentType").asText());
-        
+
         assertNotNull(jsonNode.get("molecule"));
         assertEquals("Isoform 4", jsonNode.get("molecule").asText());
 

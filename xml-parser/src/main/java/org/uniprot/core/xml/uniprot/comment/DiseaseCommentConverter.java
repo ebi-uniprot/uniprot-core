@@ -42,7 +42,7 @@ public class DiseaseCommentConverter implements CommentConverter<DiseaseComment>
         if (xmlComment == null) return null;
 
         DiseaseCommentBuilder builder = new DiseaseCommentBuilder();
-        
+
         // Molecule
         if (xmlComment.getMolecule() != null) {
             builder.molecule(xmlComment.getMolecule().getValue());
@@ -97,7 +97,7 @@ public class DiseaseCommentConverter implements CommentConverter<DiseaseComment>
             mol.setValue(comment.getMolecule());
             xmlComment.setMolecule(mol);
         }
-        
+
         if (comment.hasDefinedDisease()) {
             xmlComment.setDisease(diseaseConverter.toXml(comment.getDisease()));
             List<Evidence> evidenceIds = comment.getDisease().getEvidences();

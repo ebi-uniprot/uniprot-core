@@ -26,7 +26,6 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
         String sequence = "CAA57511.1";
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
-     
 
         SequenceCautionComment comment =
                 buildComment(sequence, SequenceCautionType.FRAMESHIFT, note, evs);
@@ -68,10 +67,8 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
 
-
         SequenceCautionComment comment =
-                buildComment(
-                        sequence, SequenceCautionType.ERRONEOUS_PREDICTION, note, evs);
+                buildComment(sequence, SequenceCautionType.ERRONEOUS_PREDICTION, note, evs);
         doTest(ccLine, comment);
     }
 
@@ -91,21 +88,16 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
         String note = "The predicted gene.";
         List<String> evs = new ArrayList<>();
         evs.add("ECO:0000256|HAMAP-Rule:MF_00205");
-       
 
         SequenceCautionComment comment =
-                buildComment(
-                        sequence, SequenceCautionType.ERRONEOUS_PREDICTION, note, evs);
+                buildComment(sequence, SequenceCautionType.ERRONEOUS_PREDICTION, note, evs);
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
         // doTestStringEv(ccLineStringEvidence, comment);
     }
 
     SequenceCautionComment buildComment(
-            String sequence,
-            SequenceCautionType type,
-            String note,
-            List<String> evs) {
+            String sequence, SequenceCautionType type, String note, List<String> evs) {
 
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
 

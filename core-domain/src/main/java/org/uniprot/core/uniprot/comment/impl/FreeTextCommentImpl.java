@@ -67,8 +67,8 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
         return Objects.hash(super.hashCode(), commentType, molecule);
     }
 
-  @Override
-  public String getMolecule() {
-    return molecule;
-  }
+    @Override
+    public String getMolecule() {
+        return molecule;
+    }
 }

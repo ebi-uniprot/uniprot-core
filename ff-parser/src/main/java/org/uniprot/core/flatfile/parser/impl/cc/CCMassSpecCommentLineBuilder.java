@@ -57,7 +57,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
         sb.append(METHOD);
         sb.append(comment.getMethod().getValue());
         sb.append(SEMICOLON);
-        //	}      
+        //	}
         if (!Strings.isNullOrEmpty(comment.getNote())) {
             sb.append(SPACE);
             sb.append(NOTE);

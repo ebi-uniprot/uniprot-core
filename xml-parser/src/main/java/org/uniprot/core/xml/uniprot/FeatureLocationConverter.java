@@ -41,8 +41,8 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
         }
 
         String sequence = xmlLocation.getSequence();
-        return new FeatureLocation(sequence, start.getValue(), end.getValue(), 
-        		start.getModifier(), end.getModifier());
+        return new FeatureLocation(
+                sequence, start.getValue(), end.getValue(), start.getModifier(), end.getModifier());
     }
 
     private Position fromXml(PositionType position, String outsideString) {
@@ -74,8 +74,8 @@ public class FeatureLocationConverter implements Converter<LocationType, Feature
             locationType.setBegin(toXml(location.getStart(), LESS_THAN));
             locationType.setEnd(toXml(location.getEnd(), GREATER_THAN));
         }
-        if(!Strings.isNullOrEmpty(location.getSequence())) {
-        	locationType.setSequence(location.getSequence());
+        if (!Strings.isNullOrEmpty(location.getSequence())) {
+            locationType.setSequence(location.getSequence());
         }
         return locationType;
     }

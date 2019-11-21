@@ -110,27 +110,26 @@ class SubcellularLocationMapTest {
         Map<String, String> mappedCelularLocation = subcellularLocationMap.attributeValues();
         assertNotNull(mappedCelularLocation);
         String value = mappedCelularLocation.get("cc_subcellular_location");
-        String expectedValue=
-        		"SUBCELLULAR LOCATION: [Non-structural protein 2A]: Host endoplasmic reticulum membrane "
-        		+ "{ECO:0000250|UniProtKB:P17763}; Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}.; "
-        		+ "SUBCELLULAR LOCATION: [Serine protease subunit NS2B]: Host endoplasmic reticulum membrane; "
-        		+ "Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}.; SUBCELLULAR LOCATION: [Serine protease "
-        		+ "NS3]: Host endoplasmic reticulum membrane {ECO:0000255|PROSITE-ProRule:PRU00860}; Peripheral membrane "
-        		+ "protein {ECO:0000255|PROSITE-ProRule:PRU00860}; Cytoplasmic side {ECO:0000255|PROSITE-ProRule:PRU00860}."
-        		+ " Note=Remains non-covalently associated to serine protease subunit NS2B. "
-        		+ "{ECO:0000255|PROSITE-ProRule:PRU00860}.; "
-        		+ "SUBCELLULAR LOCATION: [Non-structural protein 4A]: Host endoplasmic reticulum membrane "
-        		+ "{ECO:0000250|UniProtKB:P17763}; Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}. "
-        		+ "Note=Located in RE-associated vesicles hosting the replication complex. {ECO:0000250|UniProtKB:P17763}.; "
-        		+ "SUBCELLULAR LOCATION: [Non-structural protein 4B]: Host endoplasmic reticulum membrane {ECO:0000250|UniProtKB:P17763}; "
-        		+ "Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}. Note=Located in RE-derived vesicles "
-        		+ "hosting the replication complex. {ECO:0000250|UniProtKB:Q9Q6P4}.; SUBCELLULAR LOCATION: [RNA-directed "
-        		+ "RNA polymerase NS5]: Host endoplasmic reticulum membrane; Peripheral membrane protein; Cytoplasmic side. "
-        		+ "Host nucleus {ECO:0000250|UniProtKB:P17763}. Note=Located in RE-associated vesicles hosting the "
-        		+ "replication complex. NS5 protein is mainly localized in the nucleus rather than in ER vesicles. "
-        		+ "{ECO:0000250|UniProtKB:P17763}." ; 
+        String expectedValue =
+                "SUBCELLULAR LOCATION: [Non-structural protein 2A]: Host endoplasmic reticulum membrane "
+                        + "{ECO:0000250|UniProtKB:P17763}; Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}.; "
+                        + "SUBCELLULAR LOCATION: [Serine protease subunit NS2B]: Host endoplasmic reticulum membrane; "
+                        + "Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}.; SUBCELLULAR LOCATION: [Serine protease "
+                        + "NS3]: Host endoplasmic reticulum membrane {ECO:0000255|PROSITE-ProRule:PRU00860}; Peripheral membrane "
+                        + "protein {ECO:0000255|PROSITE-ProRule:PRU00860}; Cytoplasmic side {ECO:0000255|PROSITE-ProRule:PRU00860}."
+                        + " Note=Remains non-covalently associated to serine protease subunit NS2B. "
+                        + "{ECO:0000255|PROSITE-ProRule:PRU00860}.; "
+                        + "SUBCELLULAR LOCATION: [Non-structural protein 4A]: Host endoplasmic reticulum membrane "
+                        + "{ECO:0000250|UniProtKB:P17763}; Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}. "
+                        + "Note=Located in RE-associated vesicles hosting the replication complex. {ECO:0000250|UniProtKB:P17763}.; "
+                        + "SUBCELLULAR LOCATION: [Non-structural protein 4B]: Host endoplasmic reticulum membrane {ECO:0000250|UniProtKB:P17763}; "
+                        + "Multi-pass membrane protein {ECO:0000250|UniProtKB:P17763}. Note=Located in RE-derived vesicles "
+                        + "hosting the replication complex. {ECO:0000250|UniProtKB:Q9Q6P4}.; SUBCELLULAR LOCATION: [RNA-directed "
+                        + "RNA polymerase NS5]: Host endoplasmic reticulum membrane; Peripheral membrane protein; Cytoplasmic side. "
+                        + "Host nucleus {ECO:0000250|UniProtKB:P17763}. Note=Located in RE-associated vesicles hosting the "
+                        + "replication complex. NS5 protein is mainly localized in the nucleus rather than in ER vesicles. "
+                        + "{ECO:0000250|UniProtKB:P17763}.";
 
-       
         assertEquals(expectedValue, value);
     }
 }

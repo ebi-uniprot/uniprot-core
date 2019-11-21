@@ -222,7 +222,7 @@ public class RLLineBuilder implements RLine<Citation> {
         }
 
         temp.append(book.getBookName());
-        boolean bookAstract= bookHasAbstract(book.getBookName());
+        boolean bookAstract = bookHasAbstract(book.getBookName());
         boolean hasPages =
                 (!Strings.isNullOrEmpty(book.getVolume())
                         || !Strings.isNullOrEmpty(book.getFirstPage())
@@ -270,12 +270,11 @@ public class RLLineBuilder implements RLine<Citation> {
         }
         return lines;
     }
+
     private boolean bookHasAbstract(String title) {
-    	if(Strings.isNullOrEmpty(title))
-    		return false;
-    	String titleNoCase = title.toLowerCase();
-    	if(titleNoCase.contains(", abstract"))
-    		return true;
-    	return false;
+        if (Strings.isNullOrEmpty(title)) return false;
+        String titleNoCase = title.toLowerCase();
+        if (titleNoCase.contains(", abstract")) return true;
+        return false;
     }
 }

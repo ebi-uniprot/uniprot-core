@@ -32,11 +32,11 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
         if (includeCommentType) addCommentTypeName(comment, sb);
         // Add molecule
         addMolecule(comment, sb, true);
-        
+
         boolean needSpace = false;
         StringBuilder locations =
                 buildLocations(comment, comment.getSubcellularLocations(), showEvidence);
-        
+
         if (locations.length() > 0) {
             if (needSpace) sb.append(SPACE);
             sb.append(locations);

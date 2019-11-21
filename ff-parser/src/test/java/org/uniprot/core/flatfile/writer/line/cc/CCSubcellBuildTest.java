@@ -245,8 +245,7 @@ class CCSubcellBuildTest extends CCBuildTestAbstr {
                         + "CC       similarity); Another top. Note=Accumulates in the endoplasmic\n"
                         + "CC       reticulum-Golgi intermediate compartment, where it participates in\n"
                         + "CC       virus particle assembly. Some S oligomers may be transported to the\n"
-                        + "CC       plasma membrane, where they may mediate cell fusion (By similarity).")
-                        ;
+                        + "CC       plasma membrane, where they may mediate cell fusion (By similarity).");
 
         String molecule = "Spike protein S2";
         String note =

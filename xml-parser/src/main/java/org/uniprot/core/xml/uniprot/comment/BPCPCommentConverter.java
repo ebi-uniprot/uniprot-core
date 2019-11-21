@@ -71,15 +71,13 @@ public class BPCPCommentConverter implements CommentConverter<BPCPComment> {
         if (comment == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType(comment.getCommentType().toXmlDisplayName());
-        
+
         if (!Strings.isNullOrEmpty(comment.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(comment.getMolecule());
             commentXML.setMolecule(mol);
         }
-        
-        
-        
+
         // Absorption
         if ((comment.getAbsorption() != null) && (comment.getAbsorption().getMax() != 0)) {
             commentXML.setAbsorption(absorptionConverter.toXml(comment.getAbsorption()));

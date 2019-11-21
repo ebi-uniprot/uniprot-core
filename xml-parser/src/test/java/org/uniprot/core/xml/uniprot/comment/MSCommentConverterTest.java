@@ -17,8 +17,6 @@ import org.uniprot.core.xml.uniprot.UniProtXmlTestHelper;
 
 class MSCommentConverterTest {
 
- 
-
     @Test
     void test() {
 
@@ -28,7 +26,6 @@ class MSCommentConverterTest {
         MassSpectrometryComment comment =
                 builder.molWeight(3042.79f)
                         .method(MassSpectrometryMethod.ELECTROSPRAY)
-
                         .note("Monoisotopic mass.")
                         .evidences(singletonList(evidence))
                         .build();
@@ -50,7 +47,7 @@ class MSCommentConverterTest {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
         MassSpectrometryComment comment =
                 builder.molWeight(3042.79f)
-                	.molecule(isoformId)
+                        .molecule(isoformId)
                         .molWeightError(0.023f)
                         .method(MassSpectrometryMethod.ELECTROSPRAY)
                         .note("Monoisotopic mass.")
@@ -64,5 +61,4 @@ class MSCommentConverterTest {
         MassSpectrometryComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
-
 }

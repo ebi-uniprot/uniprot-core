@@ -16,7 +16,7 @@ public class SubcellularLocationCommentImpl extends CommentHasMoleculeImpl
     private Note note;
     private List<SubcellularLocation> subcellularLocations;
 
-     SubcellularLocationCommentImpl() {
+    SubcellularLocationCommentImpl() {
         super(CommentType.SUBCELLULAR_LOCATION, null);
         this.subcellularLocations = Collections.emptyList();
     }
@@ -41,7 +41,6 @@ public class SubcellularLocationCommentImpl extends CommentHasMoleculeImpl
     public List<SubcellularLocation> getSubcellularLocations() {
         return subcellularLocations;
     }
-
 
     @Override
     public boolean hasNote() {

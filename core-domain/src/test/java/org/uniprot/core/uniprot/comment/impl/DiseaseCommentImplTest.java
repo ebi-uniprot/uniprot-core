@@ -36,8 +36,8 @@ class DiseaseCommentImplTest {
                         .reference(reference)
                         .build();
         Note note = createNote();
-        
-        String molecule="isoform 1";
+
+        String molecule = "isoform 1";
 
         DiseaseComment comment = new DiseaseCommentImpl(molecule, disease, note);
         assertEquals(note, comment.getNote());

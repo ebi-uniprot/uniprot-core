@@ -55,5 +55,4 @@ public interface DiseaseComment extends Comment, HasMolecule {
     Note getNote();
 
     boolean hasNote();
-
 }

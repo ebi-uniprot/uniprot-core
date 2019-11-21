@@ -33,7 +33,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         MassSpectrometryMethod.ELECTROSPRAY,
                         note,
                         evidences,
-                        true);      
+                        true);
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -62,8 +62,8 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         note,
                         evidences,
                         true);
-        builder.molecule( "P04653-1");
-       
+        builder.molecule("P04653-1");
+
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -129,7 +129,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         note,
                         evidences,
                         false);
-        
+
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -158,7 +158,7 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
                         note,
                         evidences,
                         true);
-        builder.molecule( "P04653-1");
+        builder.molecule("P04653-1");
         MassSpectrometryComment comment = builder.build();
         doTest(ccLine, comment);
         doTestString(ccLineString, comment);
@@ -179,6 +179,4 @@ class CCMassSpectromBuildTest extends CCBuildTestAbstr {
         if (!Strings.isNullOrEmpty(note)) builder.note(note);
         return builder;
     }
-
-  
 }

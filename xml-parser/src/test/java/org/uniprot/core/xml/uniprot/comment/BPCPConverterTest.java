@@ -166,7 +166,7 @@ class BPCPConverterTest {
     @Test
     void testAbsorptionMolecule() {
         int max = 21;
-        String molecule ="isoform 1";
+        String molecule = "isoform 1";
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
         Note note = createNote(texts);
         Absorption absorption = createAbsorption(max, true, note, createEvidences());
@@ -189,7 +189,6 @@ class BPCPConverterTest {
         assertEquals(comment, converted);
     }
 
-    
     private TemperatureDependence createTemperatureDependence(List<EvidencedValue> texts) {
         return new TemperatureDependenceBuilder(texts).build();
     }

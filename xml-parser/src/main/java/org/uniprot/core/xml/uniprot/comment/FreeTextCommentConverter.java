@@ -53,13 +53,13 @@ public class FreeTextCommentConverter implements CommentConverter<FreeTextCommen
         CommentType xmlObj = xmlUniprotFactory.createCommentType();
         // type
         xmlObj.setType(uniObj.getCommentType().toXmlDisplayName());
-        
+
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(uniObj.getMolecule());
             xmlObj.setMolecule(mol);
         }
-        
+
         uniObj.getTexts().forEach(val -> xmlObj.getText().add(eviValueConverter.toXml(val)));
         return xmlObj;
     }

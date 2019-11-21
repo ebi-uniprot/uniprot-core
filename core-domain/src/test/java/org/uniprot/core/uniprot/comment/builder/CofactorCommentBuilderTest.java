@@ -63,7 +63,7 @@ class CofactorCommentBuilderTest {
         String molecule = "Isoform 2";
         CofactorComment comment =
                 builder.molecule(molecule).cofactors(cofactors).note(note).build();
-        assertEquals(molecule, comment.getMolecule() );
+        assertEquals(molecule, comment.getMolecule());
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
         assertNotNull(comment.getNote());

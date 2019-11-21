@@ -33,7 +33,7 @@ class CcSeqCautionConverterTest {
         CcLineObject.SequenceCautionObject sco2 = new CcLineObject.SequenceCautionObject();
         sco2.sequence = "CAI39742.1";
         sco2.type = CcLineObject.SequenceCautionType.ERRONEOUS_GENE_MODEL_PREDICTION;
-      
+
         sc.sequenceCautionObjects.add(sco2);
 
         cc1.object = sc;
@@ -61,6 +61,5 @@ class CcSeqCautionConverterTest {
         assertEquals(SequenceCautionType.ERRONEOUS_PREDICTION, wcomment2.getSequenceCautionType());
 
         assertEquals("CAI39742.1", wcomment2.getSequence());
-
     }
 }

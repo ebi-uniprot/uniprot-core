@@ -34,7 +34,7 @@ public class UniRefMemberImpl implements UniRefMember {
 
     // no arg constructor for JSON deserialization
     protected UniRefMemberImpl() {
-    	accessions =Collections.emptyList();
+        accessions = Collections.emptyList();
     }
 
     public UniRefMemberImpl(
@@ -57,7 +57,7 @@ public class UniRefMemberImpl implements UniRefMember {
         this.organismTaxId = organismTaxId;
         this.sequenceLength = sequenceLength;
         this.proteinName = proteinName;
-        this.accessions =  Utils.unmodifiableList(accessions);
+        this.accessions = Utils.unmodifiableList(accessions);
         this.uniref50Id = uniref50Id;
         this.uniref90Id = uniref90Id;
         this.uniref100Id = uniref100Id;

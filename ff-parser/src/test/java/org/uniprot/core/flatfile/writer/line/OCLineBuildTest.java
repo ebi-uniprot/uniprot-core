@@ -16,8 +16,8 @@ class OCLineBuildTest {
     void testHuman() {
 
         String ocLine =
-                "OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;\n" + 
-                "OC   Eutheria; Euarchontoglires; Primates; Catarrhini; Hominidae; Homo.";
+                "OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;\n"
+                        + "OC   Eutheria; Euarchontoglires; Primates; Catarrhini; Hominidae; Homo.";
         List<String> taxonNames = new ArrayList<>();
         taxonNames.add("Eukaryota");
         taxonNames.add("Metazoa");

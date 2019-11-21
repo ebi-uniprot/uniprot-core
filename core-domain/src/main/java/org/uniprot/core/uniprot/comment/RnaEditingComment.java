@@ -18,5 +18,4 @@ public interface RnaEditingComment extends Comment, HasMolecule {
     boolean hasPositions();
 
     boolean hasNote();
-
 }

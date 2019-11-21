@@ -45,8 +45,7 @@ public class CatalyticActivityCommentConverter
         if (xmlObj.getMolecule() != null) {
             builder.molecule(xmlObj.getMolecule().getValue());
         }
-        
-        
+
         return builder.reaction(reaction).physiologicalReactions(physioReactions).build();
     }
 
@@ -59,7 +58,7 @@ public class CatalyticActivityCommentConverter
             mol.setValue(uniObj.getMolecule());
             commentType.setMolecule(mol);
         }
-        
+
         commentType.setReaction(reactionConverter.toXml(uniObj.getReaction()));
         uniObj.getPhysiologicalReactions()
                 .forEach(

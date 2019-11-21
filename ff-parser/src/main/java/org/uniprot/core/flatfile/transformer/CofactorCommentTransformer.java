@@ -34,7 +34,7 @@ public class CofactorCommentTransformer implements CommentTransformer<CofactorCo
     private static final Pattern COFACTOR_PATTERN = Pattern.compile(COFACTOR_REGEX);
 
     private static String extractCofactorMolecule(String molecule) {
-    	 return molecule.substring(1, molecule.indexOf(COLON)-1);
+        return molecule.substring(1, molecule.indexOf(COLON) - 1);
     }
 
     private static List<Cofactor> extractCofactorReferences(String xrefs) {

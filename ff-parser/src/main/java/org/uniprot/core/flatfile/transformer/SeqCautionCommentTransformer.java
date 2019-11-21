@@ -50,18 +50,17 @@ public class SeqCautionCommentTransformer implements CommentTransformer<Sequence
         }
         return builder.build();
     }
-    private String updateMolecule(String annotation,  SequenceCautionCommentBuilder builder ) {
-    	if(annotation.startsWith("[") && annotation.contains("]")){
-    		int index =annotation.indexOf("]");
-    		String molecule = annotation.substring(1, index);
-    		molecule = molecule.replaceAll("\n", " ");
-    		builder.molecule(molecule);
-    		annotation = annotation.substring(index+2).trim();
-    		  if (annotation.startsWith("\n"))
-                  annotation = annotation.substring(1);
-    		 return annotation;
-    	}
-    	return annotation;
+
+    private String updateMolecule(String annotation, SequenceCautionCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
+        }
+        return annotation;
     }
-    
 }

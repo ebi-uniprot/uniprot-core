@@ -13,7 +13,8 @@ class FeatureLocationConverterTest {
 
     @Test
     void testSameExact() {
-        FeatureLocation location = createFeatureLocation(null, 10, 10, PositionModifier.EXACT, PositionModifier.EXACT);
+        FeatureLocation location =
+                createFeatureLocation(null, 10, 10, PositionModifier.EXACT, PositionModifier.EXACT);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -26,7 +27,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testSameUnsure() {
-    	FeatureLocation location = createFeatureLocation("someSeq", 10, 10, PositionModifier.UNSURE, PositionModifier.UNSURE);
+        FeatureLocation location =
+                createFeatureLocation(
+                        "someSeq", 10, 10, PositionModifier.UNSURE, PositionModifier.UNSURE);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -40,8 +43,9 @@ class FeatureLocationConverterTest {
     @Test
     void testSameUnknown() {
 
-    	FeatureLocation location =
-                createFeatureLocation(null, null, null, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
+        FeatureLocation location =
+                createFeatureLocation(
+                        null, null, null, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -54,7 +58,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testExactNotSame() {
-    	FeatureLocation location = createFeatureLocation("id", 10, 230, PositionModifier.EXACT, PositionModifier.EXACT);
+        FeatureLocation location =
+                createFeatureLocation(
+                        "id", 10, 230, PositionModifier.EXACT, PositionModifier.EXACT);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -67,7 +73,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testExactUnSureNotSame() {
-    	FeatureLocation location = createFeatureLocation("oneId", 10, 230, PositionModifier.EXACT, PositionModifier.UNSURE);
+        FeatureLocation location =
+                createFeatureLocation(
+                        "oneId", 10, 230, PositionModifier.EXACT, PositionModifier.UNSURE);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -80,7 +88,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testUnSureNotSame() {
-    	FeatureLocation location = createFeatureLocation("", 10, 230, PositionModifier.UNSURE, PositionModifier.UNSURE);
+        FeatureLocation location =
+                createFeatureLocation(
+                        "", 10, 230, PositionModifier.UNSURE, PositionModifier.UNSURE);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -93,7 +103,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testExactOutsideNotSame() {
-    	FeatureLocation location = createFeatureLocation("", 10, 230, PositionModifier.EXACT, PositionModifier.OUTSIDE);
+        FeatureLocation location =
+                createFeatureLocation(
+                        "", 10, 230, PositionModifier.EXACT, PositionModifier.OUTSIDE);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -106,7 +118,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testOutsideExactNotSame() {
-    	FeatureLocation location = createFeatureLocation(null, 10, 230, PositionModifier.OUTSIDE, PositionModifier.EXACT);
+        FeatureLocation location =
+                createFeatureLocation(
+                        null, 10, 230, PositionModifier.OUTSIDE, PositionModifier.EXACT);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -119,7 +133,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testExactUnknowNotSame() {
-    	FeatureLocation location = createFeatureLocation(null, 10, 230, PositionModifier.EXACT, PositionModifier.UNKNOWN);
+        FeatureLocation location =
+                createFeatureLocation(
+                        null, 10, 230, PositionModifier.EXACT, PositionModifier.UNKNOWN);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -132,7 +148,9 @@ class FeatureLocationConverterTest {
 
     @Test
     void testUnknowExactNotSame() {
-    	FeatureLocation location = createFeatureLocation("", 10, 230, PositionModifier.UNKNOWN, PositionModifier.EXACT);
+        FeatureLocation location =
+                createFeatureLocation(
+                        "", 10, 230, PositionModifier.UNKNOWN, PositionModifier.EXACT);
 
         LocationType xmlObj = converter.toXml(location);
 
@@ -143,8 +161,12 @@ class FeatureLocationConverterTest {
         assertEquals(location, converted);
     }
 
-    private FeatureLocation createFeatureLocation(String sequence,
-            Integer start, Integer end, PositionModifier pmStart, PositionModifier pmEnd) {
+    private FeatureLocation createFeatureLocation(
+            String sequence,
+            Integer start,
+            Integer end,
+            PositionModifier pmStart,
+            PositionModifier pmEnd) {
         return new FeatureLocation(sequence, start, end, pmStart, pmEnd);
     }
 }

@@ -35,12 +35,12 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
         if (xmlObj == null) return null;
 
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
-        
-     // Molecule
+
+        // Molecule
         if (xmlObj.getMolecule() != null) {
             builder.molecule(xmlObj.getMolecule().getValue());
         }
-        
+
         CommentType.Conflict conflict = xmlObj.getConflict();
         SequenceCautionType scType = SequenceCautionType.UNKNOWN;
         if (conflict != null) {
@@ -68,14 +68,13 @@ public class SCCommentConverter implements CommentConverter<SequenceCautionComme
         if (uniObj == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
-        
+
         if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
             MoleculeType mol = xmlUniprotFactory.createMoleculeType();
             mol.setValue(uniObj.getMolecule());
             commentXML.setMolecule(mol);
         }
-        
-        
+
         // Sequence Conflict
         if (uniObj.getSequence() != null) {
             commentXML.setConflict(conflictConverter.toXml(uniObj.getSequence()));

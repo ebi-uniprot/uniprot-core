@@ -42,7 +42,7 @@ class SequenceCautionCommentBuilderTest {
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
         assertFalse(comment.getNote() != null);
- 
+
         assertEquals("somesequence", comment.getSequence());
         assertNull(comment.getMolecule());
     }
@@ -58,11 +58,10 @@ class SequenceCautionCommentBuilderTest {
         assertEquals(SequenceCautionType.ERRONEOUS_INITIATION, comment.getSequenceCautionType());
         assertEquals(CommentType.SEQUENCE_CAUTION, comment.getCommentType());
         assertFalse(comment.getNote() != null);
- 
+
         assertEquals("somesequence", comment.getSequence());
         assertEquals("Isoform 3", comment.getMolecule());
     }
-
 
     @Test
     void testSetNote() {

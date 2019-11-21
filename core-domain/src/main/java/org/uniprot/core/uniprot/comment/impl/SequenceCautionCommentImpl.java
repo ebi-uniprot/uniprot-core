@@ -10,19 +10,21 @@ import org.uniprot.core.uniprot.comment.SequenceCautionType;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
-public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl implements SequenceCautionComment {
+public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
+        implements SequenceCautionComment {
     private static final long serialVersionUID = 4628964374292908502L;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private String note;
     private List<Evidence> evidences;
 
-     SequenceCautionCommentImpl() {
+    SequenceCautionCommentImpl() {
         super(CommentType.SEQUENCE_CAUTION, null);
         this.evidences = Collections.emptyList();
     }
 
-    public SequenceCautionCommentImpl(String molecule,
+    public SequenceCautionCommentImpl(
+            String molecule,
             SequenceCautionType sequenceCautionType,
             String sequence,
             String note,
@@ -67,7 +69,7 @@ public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl implement
     public boolean hasSequenceCautionType() {
         return this.sequenceCautionType != null;
     }
-    
+
     @Override
     public List<Evidence> getEvidences() {
         return evidences;
@@ -92,7 +94,6 @@ public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl implement
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                super.hashCode(), sequenceCautionType, sequence, note, evidences);
+        return Objects.hash(super.hashCode(), sequenceCautionType, sequence, note, evidences);
     }
 }

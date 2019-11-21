@@ -34,11 +34,10 @@ public class CCSequenceCautionCommentLineBuilder
             boolean includeCommentType) {
         StringBuilder sb = new StringBuilder();
         List<String> lines = new ArrayList<>();
-        if (isFirstSequenceCauction) {  
-        	String startWithMol = buildStartWithMolecule(comment, includeFFMarkings, includeCommentType);
-        	if(!Strings.isNullOrEmpty(startWithMol))
-        		lines.add(startWithMol);      
-
+        if (isFirstSequenceCauction) {
+            String startWithMol =
+                    buildStartWithMolecule(comment, includeFFMarkings, includeCommentType);
+            if (!Strings.isNullOrEmpty(startWithMol)) lines.add(startWithMol);
         }
         if (includeFFMarkings) sb.append(this.linePrefix);
         boolean needSpace = false;
@@ -53,7 +52,7 @@ public class CCSequenceCautionCommentLineBuilder
                     .append(SEMICOLON);
             needSpace = true;
         }
-       
+
         if (!Strings.isNullOrEmpty(comment.getNote())) {
             if (needSpace) sb.append(SPACE);
             sb.append(NOTE);

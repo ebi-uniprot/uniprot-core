@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 public final class MassSpectrometryCommentBuilder
         implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
-	String molecule;
+    String molecule;
     private MassSpectrometryMethod method;
     private Float molWeight;
     private Float molWeightError;
@@ -21,8 +21,8 @@ public final class MassSpectrometryCommentBuilder
     private List<Evidence> evidences = new ArrayList<>();
 
     public MassSpectrometryComment build() {
-        return new MassSpectrometryCommentImpl(molecule,
-                method, molWeight, molWeightError, note, evidences);
+        return new MassSpectrometryCommentImpl(
+                molecule, method, molWeight, molWeightError, note, evidences);
     }
 
     @Override
@@ -40,7 +40,7 @@ public final class MassSpectrometryCommentBuilder
         this.molecule = molecule;
         return this;
     }
-    
+
     public MassSpectrometryCommentBuilder method(MassSpectrometryMethod method) {
         this.method = method;
         return this;

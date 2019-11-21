@@ -16,11 +16,10 @@ public class WebResourceCommentTransformer implements CommentTransformer<WebReso
 
     @Override
     public WebResourceComment transform(CommentType type, String annotation) {
-    	  WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
-    	  annotation = updateMolecule(annotation, builder);  	  
+        WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
+        annotation = updateMolecule(annotation, builder);
         annotation = CommentTransformerHelper.stripTrailing(annotation, ".");
         String[] tokens = annotation.split(";");
-      
 
         for (String token : tokens) {
             token = token.trim();
@@ -65,18 +64,17 @@ public class WebResourceCommentTransformer implements CommentTransformer<WebReso
         }
         return builder.build();
     }
-    private String updateMolecule(String annotation,  WebResourceCommentBuilder builder ) {
-    	if(annotation.startsWith("[") && annotation.contains("]")){
-    		int index =annotation.indexOf("]");
-    		String molecule = annotation.substring(1, index);
-    		molecule = molecule.replaceAll("\n", " ");
-    		builder.molecule(molecule);
-    		annotation = annotation.substring(index+2).trim();
-    		  if (annotation.startsWith("\n"))
-                  annotation = annotation.substring(1);
-    		 return annotation;
-    	}
-    	return annotation;
+
+    private String updateMolecule(String annotation, WebResourceCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
+        }
+        return annotation;
     }
-    
 }

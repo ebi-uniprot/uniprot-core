@@ -20,7 +20,6 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
         return transform(COMMENT_TYPE, annotation);
     }
 
-    
     @Override
     public MassSpectrometryComment transform(CommentType type, String annotation) {
         annotation = CommentTransformerHelper.trimCommentHeader(annotation, COMMENT_TYPE);
@@ -28,13 +27,13 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
         StringBuilder com = new StringBuilder();
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
         annotation = updateMolecule(annotation, builder);
-        
+
         for (int iii = 0; iii < annotation.length(); iii++) {
             char c = annotation.charAt(iii);
             if (c == ';') {
                 String follow = annotation.substring(iii + 1);
                 if (follow.startsWith(" Mass=")
-                        || follow.startsWith(" Note=")                    
+                        || follow.startsWith(" Note=")
                         || follow.startsWith(" Mass_error=")
                         || follow.startsWith(" Method=")
                         || follow.startsWith(" Evidence=")) {
@@ -75,7 +74,6 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                         continue;
                     }
 
-                    
                     if (token.startsWith("Note")) {
                         String note = token.substring(indexEq + 1, token.length());
                         builder.note(note);
@@ -111,17 +109,16 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
         return builder.build();
     }
 
-    private String updateMolecule(String annotation,  MassSpectrometryCommentBuilder builder ) {
-    	if(annotation.startsWith("[") && annotation.contains("]")){
-    		int index =annotation.indexOf("]");
-    		String molecule = annotation.substring(1, index);
-    		molecule = molecule.replaceAll("\n", " ");
-    		builder.molecule(molecule);
-    		annotation = annotation.substring(index+2).trim();
-    		  if (annotation.startsWith("\n"))
-                  annotation = annotation.substring(1);
-    		 return annotation;
-    	}
-    	return annotation;
+    private String updateMolecule(String annotation, MassSpectrometryCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
+        }
+        return annotation;
     }
 }

@@ -30,14 +30,11 @@ class CcLineMSCommentParserTest {
     }
 
     private void verify(
-            CcLineObject.MassSpectrometry ms,
-            float mass,
-            float mass_error,
-            String method) {
+            CcLineObject.MassSpectrometry ms, float mass, float mass_error, String method) {
         assertEquals(mass, ms.mass, 0.000001f);
         assertEquals(mass_error, ms.massError, 0.000001f);
         assertEquals(method, ms.method);
-      
+
         ;
     }
 

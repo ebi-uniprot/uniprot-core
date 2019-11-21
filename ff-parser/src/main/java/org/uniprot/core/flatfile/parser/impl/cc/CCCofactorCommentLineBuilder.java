@@ -43,8 +43,7 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
         StringBuilder firstLine = new StringBuilder();
 
         firstLine.append(buildStartWithMolecule(comment, includeFFMarkings, includeCommentType));
-        if (firstLine.length() > 0)
-            lines.add(firstLine.toString());
+        if (firstLine.length() > 0) lines.add(firstLine.toString());
         for (Cofactor cofactor : comment.getCofactors()) {
             StringBuilder sb = new StringBuilder();
             if (includeFFMarkings) sb.append(this.linePrefix);
