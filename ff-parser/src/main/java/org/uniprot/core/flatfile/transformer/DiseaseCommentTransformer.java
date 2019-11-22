@@ -25,9 +25,13 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
 
     @Override
     public DiseaseComment transform(CommentType type, String annotation) {
-        annotation = CommentTransformerHelper.trimCommentHeader(annotation, COMMENT_TYPE);
-        String[] splitByNote = annotation.split("Note=");
         DiseaseCommentBuilder builder = new DiseaseCommentBuilder();
+
+        annotation = CommentTransformerHelper.trimCommentHeader(annotation, COMMENT_TYPE);
+        annotation = updateMolecule(annotation, builder);
+
+        String[] splitByNote = annotation.split("Note=");
+
         builder.disease(populateDisease(splitByNote[0].trim()));
         if (splitByNote.length == 2) {
             String noteValue = splitByNote[1].trim();
@@ -37,6 +41,19 @@ public class DiseaseCommentTransformer implements CommentTransformer<DiseaseComm
             builder.note(note);
         }
         return builder.build();
+    }
+
+    private String updateMolecule(String annotation, DiseaseCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
+        }
+        return annotation;
     }
 
     private Disease populateDisease(String diseaseString) {

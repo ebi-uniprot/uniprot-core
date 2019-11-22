@@ -76,6 +76,7 @@ public class RnaEditingCommentTest {
                         .build();
 
         return new RnaEditingCommentBuilder()
+                .molecule("Isoform 2")
                 .locationType(RnaEditingLocationType.Known)
                 .addPosition(rnaEdPositions)
                 .note(note)

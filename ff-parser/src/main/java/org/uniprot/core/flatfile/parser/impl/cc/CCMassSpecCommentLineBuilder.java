@@ -1,14 +1,17 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
-import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_COMA;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_SEMICOLON;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPS;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SPACE;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 
 import com.google.common.base.Strings;
 
@@ -20,7 +23,6 @@ import com.google.common.base.Strings;
 public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectrometryComment> {
 
     private static final String EVIDENCE = "Evidence=";
-    private static final String RANGE2 = "Range=";
     private static final String METHOD = "Method=";
     private static final String MASS_ERROR = "Mass_error=";
     private static final String MASS = "Mass=";
@@ -40,7 +42,7 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
             sb.append(comment.getCommentType().toDisplayName());
             sb.append(": ");
         }
-
+        addMolecule(comment, sb, true);
         sb.append(MASS);
         sb.append(getSigDig(comment.getMolWeight()));
         if ((comment.getMolWeightError() != null)
@@ -54,37 +56,8 @@ public class CCMassSpecCommentLineBuilder extends CCLineBuilderAbstr<MassSpectro
         sb.append(SEPARATOR_SEMICOLON);
         sb.append(METHOD);
         sb.append(comment.getMethod().getValue());
-
+        sb.append(SEMICOLON);
         //	}
-        if ((comment.getRanges() != null) && (comment.getRanges().size() > 0)) {
-            boolean isfirst = true;
-            sb.append(SEPARATOR_SEMICOLON);
-            sb.append(RANGE2);
-            for (MassSpectrometryRange range : comment.getRanges()) {
-                if (!isfirst) sb.append(SEPARATOR_COMA);
-
-                if (range.getRange().getStart().getModifier() == PositionModifier.UNKNOWN) {
-                    sb.append("?");
-                } else {
-                    sb.append(range.getRange().getStart().getValue());
-                }
-                sb.append("-");
-
-                if (range.getRange().getEnd().getModifier() == PositionModifier.UNKNOWN) {
-                    sb.append("?");
-                } else {
-                    sb.append(range.getRange().getEnd().getValue());
-                }
-
-                if (range.hasIsoformId()) {
-                    sb.append(" (");
-                    sb.append(range.getIsoformId());
-                    sb.append(")");
-                }
-                isfirst = false;
-            }
-            sb.append(SEMICOLON);
-        }
         if (!Strings.isNullOrEmpty(comment.getNote())) {
             sb.append(SPACE);
             sb.append(NOTE);

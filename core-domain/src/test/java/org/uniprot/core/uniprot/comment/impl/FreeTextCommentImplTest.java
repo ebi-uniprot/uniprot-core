@@ -16,17 +16,20 @@ class FreeTextCommentImplTest {
     @Test
     void testNoEvidence() {
         List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
-        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.ALLERGEN, texts);
+        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.ALLERGEN, "", texts);
         assertEquals(CommentType.ALLERGEN, comment.getCommentType());
         assertEquals(texts, comment.getTexts());
+        assertEquals("", comment.getMolecule());
     }
 
     @Test
     void testWithEvidence() {
         List<EvidencedValue> texts = createEvidenceValuesWithEvidences();
-        FreeTextCommentImpl comment = new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, texts);
+        FreeTextCommentImpl comment =
+                new FreeTextCommentImpl(CommentType.BIOTECHNOLOGY, "isoform 2", texts);
         assertEquals(CommentType.BIOTECHNOLOGY, comment.getCommentType());
         assertEquals(texts, comment.getTexts());
+        assertEquals("isoform 2", comment.getMolecule());
     }
 
     @Test
@@ -39,7 +42,7 @@ class FreeTextCommentImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         FreeTextComment impl =
                 new FreeTextCommentImpl(
-                        CommentType.DISRUPTION_PHENOTYPE, createEvidenceValuesWithoutEvidences());
+                        CommentType.DISRUPTION_PHENOTYPE, "molecule", createEvidenceValuesWithoutEvidences());
         FreeTextComment obj = new FreeTextCommentBuilder().from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());

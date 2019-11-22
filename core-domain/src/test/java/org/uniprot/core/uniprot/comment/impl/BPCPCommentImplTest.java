@@ -16,6 +16,7 @@ class BPCPCommentImplTest {
                     6.7, MichaelisConstantUnit.MICRO_MOL, "substrate", createEvidences());
     BPCPComment impl =
             new BPCPCommentImpl(
+                    "",
                     new AbsorptionImpl(),
                     new KineticParametersImpl(
                             Collections.singletonList(mv), Collections.singletonList(mc), null),

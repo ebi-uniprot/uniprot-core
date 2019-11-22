@@ -17,8 +17,10 @@ public final class FFLineConstant {
     public static final String SEPARATOR__CAP_AND = " AND ";
     public static final String COLON = ":";
 
-    public static final int LINE_LENGTH = 75;
+    public static final int LINE_LENGTH = 80;
     public static final String DEFAUT_LINESPACE = "   ";
     public static final String FEATURE_SPACE = "                                ";
     public static final String[] SEPS = new String[] {SEPARATOR, DASH};
+    public static final String SQUARE_BRACKET_LEFT = "[";
+    public static final String SQUARE_BRACKET_RIGHT = "]";
 }

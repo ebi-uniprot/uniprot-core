@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
-import org.uniprot.core.uniprot.comment.builder.MassSpectrometryRangeBuilder;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 public class MSCommentTransformer implements CommentTransformer<MassSpectrometryComment> {
@@ -29,15 +26,15 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
         annotation = CommentTransformerHelper.stripTrailing(annotation, ".");
         StringBuilder com = new StringBuilder();
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
+        annotation = updateMolecule(annotation, builder);
+
         for (int iii = 0; iii < annotation.length(); iii++) {
             char c = annotation.charAt(iii);
             if (c == ';') {
                 String follow = annotation.substring(iii + 1);
                 if (follow.startsWith(" Mass=")
                         || follow.startsWith(" Note=")
-                        || follow.startsWith(" Source=")
                         || follow.startsWith(" Mass_error=")
-                        || follow.startsWith(" Range=")
                         || follow.startsWith(" Method=")
                         || follow.startsWith(" Evidence=")) {
                     com.append('\u1000');
@@ -69,6 +66,14 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                         builder.molWeight(Float.parseFloat(mw));
                         continue;
                     }
+                    if (token.startsWith("Method")) {
+                        String method = token.substring(indexEq + 1, token.length());
+                        if (method.length() > 0) {
+                            builder.method(MassSpectrometryMethod.toType(method));
+                        }
+                        continue;
+                    }
+
                     if (token.startsWith("Note")) {
                         String note = token.substring(indexEq + 1, token.length());
                         builder.note(note);
@@ -80,23 +85,6 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
                             List<Evidence> evidences = new ArrayList<>();
                             CommentTransformerHelper.stripEvidences(evidenceStr, evidences);
                             builder.evidences(evidences);
-                        }
-                        continue;
-                    }
-
-                    if (token.startsWith("Range")) {
-                        String range = token.substring(indexEq + 1, token.length());
-
-                        if (range.length() > 0) {
-                            List<MassSpectrometryRange> ranges = getMassSpecRanges(range);
-                            builder.ranges(ranges);
-                        }
-                        continue;
-                    }
-                    if (token.startsWith("Method")) {
-                        String method = token.substring(indexEq + 1, token.length());
-                        if (method.length() > 0) {
-                            builder.method(MassSpectrometryMethod.toType(method));
                         }
                         continue;
                     }
@@ -121,73 +109,16 @@ public class MSCommentTransformer implements CommentTransformer<MassSpectrometry
         return builder.build();
     }
 
-    private List<MassSpectrometryRange> getMassSpecRanges(String range) {
-        StringTokenizer dashTokenizer = new StringTokenizer(range, ",");
-        StringBuilder leftOvers = new StringBuilder();
-        boolean openStatement = false;
-        List<MassSpectrometryRange> massSpecRanges = new ArrayList<>();
-
-        while (dashTokenizer.hasMoreTokens()) {
-            String token = dashTokenizer.nextToken();
-            String isoformId = "";
-            if (openStatement) {
-                String restToken = leftOvers.toString() + "," + token;
-                int indexLastRightBracket = restToken.lastIndexOf(')');
-                if (indexLastRightBracket > -1) {
-                    isoformId = restToken.substring(0, indexLastRightBracket).trim();
-                    leftOvers = new StringBuilder();
-                    token = restToken.substring(indexLastRightBracket + 1);
-                    openStatement = false;
-                }
-                if (token.length() < 1) {
-                    continue;
-                }
-            }
-            int indexDash = token.indexOf('-');
-            int indexLeftBracket = token.indexOf('(');
-            int indexLastRightBracket = token.lastIndexOf(')');
-            int start = -1;
-            int end = -1;
-            if (!openStatement && indexDash > -1) {
-                start = parseRangeNumber(token.substring(0, indexDash));
-                if (indexLeftBracket > -1) {
-                    end = parseRangeNumber(token.substring(indexDash + 1, indexLeftBracket));
-                    if (indexLastRightBracket > -1) {
-                        isoformId =
-                                token.substring(indexLeftBracket + 1, indexLastRightBracket).trim();
-                        openStatement = false;
-                    } else {
-                        leftOvers.append(token.substring(indexLeftBracket + 1));
-                        openStatement = true;
-                    }
-                } else {
-                    end = parseRangeNumber(token.substring(indexDash + 1));
-                }
-                if (!openStatement) {
-                    massSpecRanges.add(
-                            new MassSpectrometryRangeBuilder()
-                                    .range(new Range(start, end))
-                                    .isoformId(isoformId)
-                                    .build());
-                    leftOvers = new StringBuilder();
-                }
-            } else {
-                leftOvers.append(",");
-                leftOvers.append(token);
-                openStatement = true;
-            }
+    private String updateMolecule(String annotation, MassSpectrometryCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
         }
-        return massSpecRanges;
-    }
-
-    private int parseRangeNumber(String numberOrUnknown) {
-        numberOrUnknown = numberOrUnknown.trim();
-        final int numberOrUnknownLength = numberOrUnknown.length();
-        if (numberOrUnknownLength < 1) {
-            throw new IllegalArgumentException("Missing position in mass spectrometry range.");
-        }
-        return (numberOrUnknownLength == 1 && numberOrUnknown.charAt(0) == '?')
-                ? -1
-                : Integer.parseInt(numberOrUnknown);
+        return annotation;
     }
 }

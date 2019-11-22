@@ -76,6 +76,7 @@ class UniProtEntryIteratorIT {
             UniProtEntry entry = iterator.next();
             FlatfileWriter<UniProtEntry> writer = new UniProtFlatfileWriter();
             String convertedEntryStr = writer.write(entry, true);
+            System.out.println(convertedEntryStr);
             assertEquals(entryStr, convertedEntryStr + "\n");
         } catch (Exception e) {
             fail("test failed");

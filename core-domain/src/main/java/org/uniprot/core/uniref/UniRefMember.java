@@ -1,6 +1,7 @@
 package org.uniprot.core.uniref;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
@@ -22,7 +23,7 @@ public interface UniRefMember extends Serializable {
 
     String getProteinName();
 
-    UniProtAccession getUniProtAccession();
+    List<UniProtAccession> getUniProtAccessions();
 
     UniRefEntryId getUniRef50Id();
 

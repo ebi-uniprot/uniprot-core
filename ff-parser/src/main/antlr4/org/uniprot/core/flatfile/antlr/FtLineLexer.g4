@@ -1,59 +1,104 @@
-/*
-FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL
-FT                                -> SECLTYGKQPLTSFHPFTSQMPP (in
-FT                                isoform 2).
-FT                                /FTId=VSP_004370.
-*/
-
 lexer grammar FtLineLexer;
 
 options { superClass=org.uniprot.core.flatfile.antlr.RememberLastTokenLexer; }
 
-tokens{FT_HEADER, NEW_LINE, CHANGE_OF_LINE, LEFT_B, SPACE}
+tokens{FT_HEADER, NEW_LINE, CHANGE_OF_LINE, LEFT_B, SPACE, DOUBLE_QUOTE, COMA}
 
 @members {
-    //number of location token has been parsed.
-    private int loc = 0;
     private boolean inVarSeq=false;
 }
 
-FT_HEADER: 'FT   '                     {loc=0;inVarSeq=false;};
-FT_LOCATION: SPACE_+     ((('<' | '>' | '?') ?  ([1-9][0-9]*)) | '?')      {loc<2}? {loc++;};
-fragment SPACE_: ' ';
-FT_HEADER_2: 'FT                                ';
+//FT_KEY:
+//      'INIT_MET'|'SIGNAL'|'PROPEP'|'TRANSIT'|'CHAIN'|'PEPTIDE'|'TOPO_DOM'|'TRANSMEM'|
+//      'INTRAMEM'|'DOMAIN'|'REPEAT'|'CA_BIND'|'ZN_FING'|'DNA_BIND'|'NP_BIND'|'REGION'|
+//      'COILED'|'MOTIF'|'COMPBIAS'|'ACT_SITE'|'METAL'|'BINDING'|'SITE'|'NON_STD'|
+//      'MOD_RES'|'LIPID'|'CARBOHYD'|'DISULFID'|'CROSSLNK'|'VARIANT'|'MUTAGEN'|'UNSURE'|
+//      'CONFLICT'|'NON_CONS'|'NON_TER'|'HELIX'|'STRAND'|'TURN'
+//       ;
+      
+FT_KEY_OTHERS: 'NON_STD'|'MOD_RES'|'NON_CONS'|'NON_TER'|'HELIX'|'STRAND'|'TURN'|'UNSURE'; 
+      
+FT_KEY_INIT_MET:  'INIT_MET' {inVarSeq=false;};
+FT_KEY_SIGNAL:  'SIGNAL' {inVarSeq=false;};
+FT_KEY_PROPEP:  'PROPEP' {inVarSeq=false;};       
+FT_KEY_TRANSIT:  'TRANSIT' {inVarSeq=false;};
+FT_KEY_CHAIN:  'CHAIN' {inVarSeq=false;};
+FT_KEY_PEPTIDE:  'PEPTIDE' {inVarSeq=false;};        
+FT_KEY_TOPO_DOM:  'TOPO_DOM' {inVarSeq=false;};     
+FT_KEY_TRANSMEM:  'TRANSMEM' {inVarSeq=false;};  
 
-FT_KEY:
-      'INIT_MET'|'SIGNAL'|'PROPEP'|'TRANSIT'|'CHAIN'|'PEPTIDE'|'TOPO_DOM'|'TRANSMEM'|
-      'INTRAMEM'|'DOMAIN'|'REPEAT'|'CA_BIND'|'ZN_FING'|'DNA_BIND'|'NP_BIND'|
-      'REGION'|'COILED'|'MOTIF'|'COMPBIAS'|'ACT_SITE'|'METAL'|'BINDING'|'SITE'|
-      'NON_STD'|'MOD_RES'|'LIPID'|'CARBOHYD'|'DISULFID'|'CROSSLNK'|
-      'MUTAGEN'|'UNSURE'|'CONFLICT'|'NON_CONS'|
-      'NON_TER'|'HELIX'|'STRAND'|'TURN';
+FT_KEY_INTRAMEM:  'INTRAMEM' {inVarSeq=false;};
+FT_KEY_DOMAIN:  'DOMAIN' {inVarSeq=false;};
+FT_KEY_REPEAT:  'REPEAT' {inVarSeq=false;};
+FT_KEY_CA_BIND:  'CA_BIND' {inVarSeq=false;};       
+FT_KEY_ZN_FING:  'ZN_FING' {inVarSeq=false;};
+FT_KEY_DNA_BIND:  'DNA_BIND' {inVarSeq=false;};
+FT_KEY_NP_BIND:  'NP_BIND' {inVarSeq=false;};        
+FT_KEY_REGION:  'REGION' {inVarSeq=false;};
+
+FT_KEY_COILED:  'COILED' {inVarSeq=false;};
+FT_KEY_MOTIF:  'MOTIF' {inVarSeq=false;};     
+FT_KEY_COMPBIAS:  'COMPBIAS' {inVarSeq=false;};
+FT_KEY_ACT_SITE:  'ACT_SITE' {inVarSeq=false;};
+FT_KEY_METAL:  'METAL' {inVarSeq=false;};  
+FT_KEY_BINDING:  'BINDING' {inVarSeq=false;};
+FT_KEY_SITE:  'SITE' {inVarSeq=false;};  
+FT_KEY_LIPID:  'LIPID' {inVarSeq=false;};
+FT_KEY_CARBOHYD:  'CARBOHYD' {inVarSeq=false;};   
+FT_KEY_DISULFID:  'DISULFID' {inVarSeq=false;};  
+FT_KEY_CROSSLNK:  'CROSSLNK' {inVarSeq=false;};
+FT_KEY_VARIANT:  'VARIANT' {inVarSeq=false;};   
+FT_KEY_MUTAGEN:  'MUTAGEN' {inVarSeq=false;};  
+FT_KEY_CONFLICT:  'CONFLICT' {inVarSeq=false;};
+  
 FT_KEY_VAR_SEQ:  'VAR_SEQ' {inVarSeq=true;};
-FT_KEY_VARIANT:  'VARIANT' {inVarSeq=true;};
 
-
+FT_HEADER : 'FT   ';
+FT_SPOT:'.';
 NEW_LINE: '\n';
-SPACE7: '       ' {loc==2}?                         -> pushMode(FT_CONTENT);
-SPACE1: ' ' {loc==2}?                         -> pushMode(FT_CONTENT);
-LEFT_B_OUT: '{'   {loc==2}?                         -> type(LEFT_B);
-FTID: '\nFT                                /FTId='  -> pushMode(FTID_MODE);
-
-mode FT_CONTENT;
-ID_WORD: ('VSP_'| 'VAR_'|'PRO_'|'VSP_') [0-9]+;
-FTID_2: '\nFT                                /FTId='      ->type(FTID), pushMode(FTID_MODE);
-
+FT_HEADER_2:          'FT                   ';
 DOT : '.';
-NEW_LINE_: '\n'                                      -> type (NEW_LINE), popMode;
-CHANGE_OF_LINE : '\nFT                                ' {replaceChangeOfLine(inVarSeq);};
 SPACE: ' ';
-FT_LINE: FT_WORD (DOT SPACE FT_WORD)*                      {!getText().startsWith("/FTId=")}?;
-fragment FT_WORD: LD ((DOT|LD|'/'|' ')* LD)? ;
-fragment LD : ~[ \.\r\n\t];
-//LEFT_B : '{'                    -> pushMode(EVIDENCE_MODE);
 
-mode FTID_MODE;
+FT_LOCATION_2: ((('<' | '>' | '?') ?  ([1-9][0-9]*)) | '?')     ;
+FT_LOCATION_ISO: FT_LOCATION_LT+;  
+fragment FT_LOCATION_LT:  [0-9a-zA-Z\-\:\?];
+
+FT_SEMICOLON: ':';
+
+FT_ISOFORM_WORD: FT_ISOFORM_LT+;
+fragment FT_ISOFORM_LT : [0-9a-zA-Z\-];
+
+SPACES: SPACE_+;
+fragment SPACE_: ' ';
+FT_NOTE:            '\nFT                   /note="'                           ->  pushMode( FT_NOTE_MODE );
+FT_EVIDENCE:        '\nFT                   /evidence="'                           -> pushMode( FT_EVIDENCE_MODE );
+FT_ID:              '\nFT                   /id="'      -> pushMode(FT_ID_MODE);
+FT_NEW_LINE_: '\n'                                      -> type (NEW_LINE), popMode;
+
+
+mode FT_NOTE_MODE;
+FT_NOTE_DOUBLE_QUOTE : '""'                         {replaceDoubleQuote(); setType(FT_NOTE_WORD);};
+FT_NOTE_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+FT_NOTE_SPACE : ' '                            -> type (SPACE);
+FT_NOTE_COMA : ','                             -> type (COMA);
+FT_NOTE_CHANGE_OF_LINE : '\nFT                   '               {replaceChangeOfLine(inVarSeq); setType(CHANGE_OF_LINE);};
+FT_NOTE_WORD: FT_NOTE_LT (FT_NOTE_LT)* ;
+fragment FT_NOTE_LT : ~[ \"\r\n\t];
+
+mode FT_EVIDENCE_MODE;
+FT_EV_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);
+EV_SPACE: ' '                      -> type (SPACE);
+EV_SEPARATOR: ',';
+EV_CHANGE_OF_LINE: '\nFT                   '  -> type(CHANGE_OF_LINE);
+EV_TAG : ECO_TAG;
+
+fragment ECO_TAG: ECO_TAG_EV (ECO_TAG_SOURCE)?;
+fragment ECO_TAG_EV : 'ECO:'[0-9]* ;
+fragment ECO_TAG_SOURCE: '|'(~[ \",}\n\r\t]|EV_CHANGE_OF_LINE)+;
+
+mode FT_ID_MODE;
 fragment INTEGER: [0-9]+;
 fragment ID_STARTER:  'VSP_'|'PRO_'|'VAR_'|'VSP_'|'CAR_';
 FTID_VALUE: ID_STARTER  INTEGER;
-FTID_DOT: '.'                   ->type(DOT), popMode;
+FT_ID_QUOTE : '"'                              -> popMode, type (DOUBLE_QUOTE);

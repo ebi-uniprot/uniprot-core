@@ -16,12 +16,13 @@ import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentImpl;
 
 public final class RnaEditingCommentBuilder
         implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
+    private String molecule;
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions = new ArrayList<>();
     private Note note;
 
     public @Nonnull RnaEditingComment build() {
-        return new RnaEditingCommentImpl(locationType, positions, note);
+        return new RnaEditingCommentImpl(molecule, locationType, positions, note);
     }
 
     @Override
@@ -29,7 +30,13 @@ public final class RnaEditingCommentBuilder
         positions.clear();
         return this.positions(instance.getPositions())
                 .locationType(instance.getLocationType())
-                .note(instance.getNote());
+                .molecule(instance.getMolecule())
+          .note(instance.getNote());
+    }
+
+    public RnaEditingCommentBuilder molecule(String molecule) {
+        this.molecule = molecule;
+        return this;
     }
 
     public RnaEditingCommentBuilder locationType(RnaEditingLocationType locationType) {

@@ -7,40 +7,37 @@ import java.util.Objects;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
-import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
-public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpectrometryComment {
+public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl
+        implements MassSpectrometryComment {
     private static final long serialVersionUID = 7080239485468338483L;
     private MassSpectrometryMethod method;
     private Float molWeight;
     private Float molWeightError;
     private String note;
-    private List<MassSpectrometryRange> ranges;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
     MassSpectrometryCommentImpl() {
-        super(CommentType.MASS_SPECTROMETRY);
-        this.ranges = Collections.emptyList();
+        super(CommentType.MASS_SPECTROMETRY, null);
         this.evidences = Collections.emptyList();
     }
 
     public MassSpectrometryCommentImpl(
+            String molecule,
             MassSpectrometryMethod method,
             Float molWeight,
             Float molWeightError,
             String note,
-            List<MassSpectrometryRange> ranges,
             List<Evidence> evidences) {
-        super(CommentType.MASS_SPECTROMETRY);
+        super(CommentType.MASS_SPECTROMETRY, molecule);
         this.method = method;
         this.molWeight = molWeight;
 
         this.molWeightError = molWeightError;
         this.note = note;
-        this.ranges = Utils.unmodifiableList(ranges);
         this.evidences = Utils.unmodifiableList(evidences);
     }
 
@@ -57,11 +54,6 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     @Override
     public String getNote() {
         return note;
-    }
-
-    @Override
-    public List<MassSpectrometryRange> getRanges() {
-        return ranges;
     }
 
     @Override
@@ -90,11 +82,6 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
     }
 
     @Override
-    public boolean hasRanges() {
-        return Utils.notNullOrEmpty(this.ranges);
-    }
-
-    @Override
     public boolean hasMethod() {
         return this.method != null;
     }
@@ -114,13 +101,11 @@ public class MassSpectrometryCommentImpl extends CommentImpl implements MassSpec
                 && Objects.equals(molWeight, that.molWeight)
                 && Objects.equals(molWeightError, that.molWeightError)
                 && Objects.equals(note, that.note)
-                && Objects.equals(ranges, that.ranges)
                 && Objects.equals(evidences, that.evidences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                super.hashCode(), method, molWeight, molWeightError, note, ranges, evidences);
+        return Objects.hash(super.hashCode(), method, molWeight, molWeightError, note, evidences);
     }
 }

@@ -38,6 +38,9 @@ public class FreeTextCommentTest {
         assertNotNull(jsonNode.get("commentType"));
         assertEquals("DISRUPTION PHENOTYPE", jsonNode.get("commentType").asText());
 
+        assertNotNull(jsonNode.get("molecule"));
+        assertEquals("Isoform 4", jsonNode.get("molecule").asText());
+
         assertNotNull(jsonNode.get("texts"));
         assertEquals(1, jsonNode.get("texts").size());
         JsonNode valueEvidence = jsonNode.get("texts").get(0);
@@ -48,6 +51,7 @@ public class FreeTextCommentTest {
     public static FreeTextComment getFreeTextComment() {
         return new FreeTextCommentBuilder()
                 .commentType(CommentType.DISRUPTION_PHENOTYPE)
+                .molecule("Isoform 4")
                 .texts(
                         CreateUtils.createEvidencedValueList(
                                 "value", "ECO:0000256|PIRNR:PIRNR001360"))

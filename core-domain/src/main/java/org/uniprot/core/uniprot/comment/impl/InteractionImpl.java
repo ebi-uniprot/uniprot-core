@@ -119,6 +119,9 @@ public class InteractionImpl implements Interaction {
     }
 
     public static class InteractorImpl extends ValueImpl implements Interactor {
+        /** */
+        private static final long serialVersionUID = 1L;
+
         // no arg constructor for JSON deserialization
         InteractorImpl() {
             super(null);

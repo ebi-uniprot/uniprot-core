@@ -32,15 +32,17 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
     private static final long serialVersionUID = -3483334429376201154L;
 
     private CommentType commentType;
+    private String molecule;
 
     // no arg constructor for JSON deserialization
     FreeTextCommentImpl() {
         super(Collections.emptyList());
     }
 
-    public FreeTextCommentImpl(CommentType type, List<EvidencedValue> texts) {
+    public FreeTextCommentImpl(CommentType type, String molecule, List<EvidencedValue> texts) {
         super(texts);
         this.commentType = type;
+        this.molecule = molecule;
     }
 
     public static boolean isFreeTextCommentType(CommentType type) {
@@ -58,11 +60,16 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         FreeTextCommentImpl that = (FreeTextCommentImpl) o;
-        return commentType == that.commentType;
+        return (commentType == that.commentType) && Objects.equals(molecule, that.molecule);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), commentType);
+        return Objects.hash(super.hashCode(), commentType, molecule);
+    }
+
+    @Override
+    public String getMolecule() {
+        return molecule;
     }
 }

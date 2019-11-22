@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 import org.uniprot.core.parser.tsv.uniprot.NamedValueMap;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefMember;
-import org.uniprot.core.uniref.UniRefMemberIdType;
 
 /**
  * @author jluo
@@ -125,10 +124,10 @@ public class UniRefEntryMap implements NamedValueMap {
     }
 
     private static String getMember(UniRefMember member) {
-        if (member.getMemberIdType() == UniRefMemberIdType.UNIPROTKB) {
-            return member.getUniProtAccession().getValue();
-        } else {
-            return member.getMemberId();
-        }
+        //        if ((member.getMemberIdType() == UniRefMemberIdType.UNIPROTKB) &&
+        // !member.getUniProtAccessions().isEmpty()  {
+        //            return member.getUniProtAccession().getValue();
+        //        } else {
+        return member.getMemberId();
     }
 }

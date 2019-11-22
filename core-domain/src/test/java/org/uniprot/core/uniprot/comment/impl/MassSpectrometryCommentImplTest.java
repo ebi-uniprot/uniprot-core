@@ -20,12 +20,11 @@ class MassSpectrometryCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         MassSpectrometryComment impl =
-                new MassSpectrometryCommentImpl(
+                new MassSpectrometryCommentImpl("mol",
                         MassSpectrometryMethod.ELECTROSPRAY,
                         0.1F,
                         0.2F,
                         "note",
-                        Collections.emptyList(),
                         createEvidences());
         MassSpectrometryComment obj = new MassSpectrometryCommentBuilder().from(impl).build();
 

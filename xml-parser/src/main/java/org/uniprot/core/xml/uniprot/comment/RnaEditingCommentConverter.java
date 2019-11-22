@@ -8,9 +8,12 @@ import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
 import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
 import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
 import org.uniprot.core.xml.uniprot.EvidencedValueConverter;
+
+import com.google.common.base.Strings;
 
 public class RnaEditingCommentConverter implements CommentConverter<RnaEditingComment> {
 
@@ -33,6 +36,12 @@ public class RnaEditingCommentConverter implements CommentConverter<RnaEditingCo
     public RnaEditingComment fromXml(CommentType xmlObj) {
         if (xmlObj == null) return null;
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
+
+        // Molecule
+        if (xmlObj.getMolecule() != null) {
+            builder.molecule(xmlObj.getMolecule().getValue());
+        }
+
         if (xmlObj.getLocation() != null && !xmlObj.getLocation().isEmpty()) {
             builder.positions(
                     xmlObj.getLocation().stream()
@@ -62,6 +71,12 @@ public class RnaEditingCommentConverter implements CommentConverter<RnaEditingCo
 
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType("RNA editing");
+
+        if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(uniObj.getMolecule());
+            commentXML.setMolecule(mol);
+        }
 
         if ((uniObj.getNote() != null) && (!uniObj.getNote().getTexts().isEmpty())) {
             uniObj.getNote()

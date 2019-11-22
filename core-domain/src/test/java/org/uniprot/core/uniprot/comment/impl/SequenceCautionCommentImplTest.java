@@ -20,15 +20,13 @@ class SequenceCautionCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         SequenceCautionComment impl =
-                new SequenceCautionCommentImpl(
+                new SequenceCautionCommentImpl("molecule",
                         SequenceCautionType.ERRONEOUS_TERMIINATION,
                         "sequ",
-                        Collections.singletonList("pos"),
                         "note",
                         createEvidences());
         SequenceCautionComment obj = new SequenceCautionCommentBuilder().from(impl).build();
 
-        assertTrue(impl.hasPositions());
         assertTrue(impl.hasNote());
         assertTrue(impl.hasSequence());
         assertTrue(impl.hasSequenceCautionType());

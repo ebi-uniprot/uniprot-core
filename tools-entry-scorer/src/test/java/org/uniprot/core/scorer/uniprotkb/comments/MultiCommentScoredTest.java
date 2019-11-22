@@ -65,7 +65,7 @@ class MultiCommentScoredTest extends CommentScoreTestBase {
                         //        "CC   -!- CATALYTIC ACTIVITY: Nucleoside triphosphate + RNA(n) =
                         // diphosphate\n" +
                         //         "CC       + RNA(n+1).\n" +
-                        "CC   -!- SUBCELLULAR LOCATION: Envelope protein E: Virion membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Multi-\n"
+                        "CC   -!- SUBCELLULAR LOCATION: [Envelope protein E]: Virion membrane {ECO:0000256|HAMAP-Rule:MF_01146}; Multi-\n"
                         + "CC       pass membrane protein {ECO:0000256|HAMAP-Rule:MF_01146}. Host endoplasmic reticulum membrane\n"
                         + "CC       {ECO:0000256|HAMAP-Rule:MF_01146}; Multi-\n"
                         + "CC       pass membrane protein {ECO:0000256|PubMed:16629414}.\n"

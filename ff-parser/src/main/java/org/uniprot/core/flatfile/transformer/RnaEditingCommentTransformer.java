@@ -39,6 +39,9 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
 
     @Override
     public RnaEditingComment transform(CommentType commentType, String annotation) {
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
+        annotation = updateMolecule(annotation, builder);
+
         annotation = CommentTransformerHelper.stripTrailing(annotation, ";");
         int noteIndex = annotation.indexOf("; " + NOTE);
         String noteStr = null;
@@ -47,7 +50,7 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
             annotation = annotation.substring(0, noteIndex);
         }
         String[] tokens = annotation.split(";");
-        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
+
         for (String token : tokens) {
             token = token.trim();
             if (token.startsWith(MODIFIED_POSITIONS)) {
@@ -81,6 +84,19 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
             builder.note(note);
         }
         return builder.build();
+    }
+
+    private String updateMolecule(String annotation, RnaEditingCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
+        }
+        return annotation;
     }
 
     private List<String> splitPosition(String pos) {

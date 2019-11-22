@@ -7,13 +7,14 @@ import org.uniprot.core.uniprot.comment.impl.WebResourceCommentImpl;
 
 public final class WebResourceCommentBuilder
         implements CommentBuilder<WebResourceCommentBuilder, WebResourceComment> {
+    String molecule;
     private String resourceName;
     private String resourceUrl;
     private boolean isFtp = false;
     private String note;
 
     public @Nonnull WebResourceComment build() {
-        return new WebResourceCommentImpl(resourceName, resourceUrl, isFtp, note);
+        return new WebResourceCommentImpl(molecule, resourceName, resourceUrl, isFtp, note);
     }
 
     @Override
@@ -21,7 +22,13 @@ public final class WebResourceCommentBuilder
         return this.isFtp(instance.isFtp())
                 .note(instance.getNote())
                 .resourceName(instance.getResourceName())
-                .resourceUrl(instance.getResourceUrl());
+                .resourceUrl(instance.getResourceUrl())
+                .molecule(instance.getMolecule());
+    }
+
+    public WebResourceCommentBuilder molecule(String molecule) {
+        this.molecule = molecule;
+        return this;
     }
 
     public @Nonnull WebResourceCommentBuilder resourceName(String resourceName) {

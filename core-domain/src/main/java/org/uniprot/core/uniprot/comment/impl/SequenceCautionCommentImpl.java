@@ -10,31 +10,29 @@ import org.uniprot.core.uniprot.comment.SequenceCautionType;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.util.Utils;
 
-public class SequenceCautionCommentImpl extends CommentImpl implements SequenceCautionComment {
+public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
+        implements SequenceCautionComment {
     private static final long serialVersionUID = 4628964374292908502L;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
-    private List<String> positions;
     private String note;
     private List<Evidence> evidences;
 
     // no arg constructor for JSON deserialization
     SequenceCautionCommentImpl() {
-        super(CommentType.SEQUENCE_CAUTION);
+        super(CommentType.SEQUENCE_CAUTION, null);
         this.evidences = Collections.emptyList();
-        this.positions = Collections.emptyList();
     }
 
     public SequenceCautionCommentImpl(
+            String molecule,
             SequenceCautionType sequenceCautionType,
             String sequence,
-            List<String> positions,
             String note,
             List<Evidence> evidences) {
-        super(CommentType.SEQUENCE_CAUTION);
+        super(CommentType.SEQUENCE_CAUTION, molecule);
         this.sequenceCautionType = sequenceCautionType;
         this.sequence = sequence;
-        this.positions = Utils.unmodifiableList(positions);
         this.note = note;
         this.evidences = Utils.unmodifiableList(evidences);
     }
@@ -55,11 +53,6 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     }
 
     @Override
-    public List<String> getPositions() {
-        return positions;
-    }
-
-    @Override
     public boolean hasSequence() {
         return Utils.notNullOrEmpty(this.sequence);
     }
@@ -72,11 +65,6 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
     @Override
     public boolean hasSequenceCautionType() {
         return this.sequenceCautionType != null;
-    }
-
-    @Override
-    public boolean hasPositions() {
-        return Utils.notNullOrEmpty(this.positions);
     }
 
     @Override
@@ -97,14 +85,12 @@ public class SequenceCautionCommentImpl extends CommentImpl implements SequenceC
         SequenceCautionCommentImpl that = (SequenceCautionCommentImpl) o;
         return sequenceCautionType == that.sequenceCautionType
                 && Objects.equals(sequence, that.sequence)
-                && Objects.equals(positions, that.positions)
                 && Objects.equals(note, that.note)
                 && Objects.equals(evidences, that.evidences);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(
-                super.hashCode(), sequenceCautionType, sequence, positions, note, evidences);
+        return Objects.hash(super.hashCode(), sequenceCautionType, sequence, note, evidences);
     }
 }

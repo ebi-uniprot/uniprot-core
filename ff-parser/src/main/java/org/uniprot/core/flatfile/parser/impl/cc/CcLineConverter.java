@@ -10,21 +10,88 @@ import java.util.stream.Collectors;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.ECNumber;
-import org.uniprot.core.Range;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.flatfile.parser.Converter;
 import org.uniprot.core.flatfile.parser.exception.ParseDiseaseException;
 import org.uniprot.core.flatfile.parser.exception.ParseSubcellularLocationException;
 import org.uniprot.core.flatfile.parser.impl.EvidenceCollector;
 import org.uniprot.core.flatfile.parser.impl.EvidenceConverterHelper;
-import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.*;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.CAPhysioDirection;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.CAReaction;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.CatalyticActivity;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.CofactorItem;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.EvidencedString;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.LocationObject;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.LocationValue;
+import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject.RnaEditingLocationEnum;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.impl.ECNumberImpl;
-import org.uniprot.core.uniprot.comment.*;
+import org.uniprot.core.uniprot.comment.APEventType;
+import org.uniprot.core.uniprot.comment.APIsoform;
+import org.uniprot.core.uniprot.comment.Absorption;
+import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
+import org.uniprot.core.uniprot.comment.BPCPComment;
+import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprot.comment.Cofactor;
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.comment.CofactorReferenceType;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
+import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.Interaction;
-import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
+import org.uniprot.core.uniprot.comment.InteractionComment;
+import org.uniprot.core.uniprot.comment.InteractionType;
+import org.uniprot.core.uniprot.comment.IsoformSequenceStatus;
+import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
+import org.uniprot.core.uniprot.comment.MaximumVelocity;
+import org.uniprot.core.uniprot.comment.MichaelisConstant;
+import org.uniprot.core.uniprot.comment.MichaelisConstantUnit;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.PhysiologicalDirectionType;
+import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
+import org.uniprot.core.uniprot.comment.Reaction;
+import org.uniprot.core.uniprot.comment.ReactionReferenceType;
+import org.uniprot.core.uniprot.comment.RnaEdPosition;
+import org.uniprot.core.uniprot.comment.RnaEditingComment;
+import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
-import org.uniprot.core.uniprot.comment.builder.*;
+import org.uniprot.core.uniprot.comment.SubcellularLocation;
+import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
+import org.uniprot.core.uniprot.comment.WebResourceComment;
+import org.uniprot.core.uniprot.comment.builder.APCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.APIsoformBuilder;
+import org.uniprot.core.uniprot.comment.builder.AbsorptionBuilder;
+import org.uniprot.core.uniprot.comment.builder.BPCPCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.CofactorBuilder;
+import org.uniprot.core.uniprot.comment.builder.CofactorCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.DiseaseBuilder;
+import org.uniprot.core.uniprot.comment.builder.DiseaseCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.FreeTextCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.InteractionBuilder;
+import org.uniprot.core.uniprot.comment.builder.InteractionCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.IsoformNameBuilder;
+import org.uniprot.core.uniprot.comment.builder.KineticParametersBuilder;
+import org.uniprot.core.uniprot.comment.builder.MassSpectrometryCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.MaximumVelocityBuilder;
+import org.uniprot.core.uniprot.comment.builder.MichaelisConstantBuilder;
+import org.uniprot.core.uniprot.comment.builder.NoteBuilder;
+import org.uniprot.core.uniprot.comment.builder.PhDependenceBuilder;
+import org.uniprot.core.uniprot.comment.builder.PhysiologicalReactionBuilder;
+import org.uniprot.core.uniprot.comment.builder.ReactionBuilder;
+import org.uniprot.core.uniprot.comment.builder.RedoxPotentialBuilder;
+import org.uniprot.core.uniprot.comment.builder.RnaEditingCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.RnaEditingPositionBuilder;
+import org.uniprot.core.uniprot.comment.builder.SequenceCautionCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationCommentBuilder;
+import org.uniprot.core.uniprot.comment.builder.SubcellularLocationValueBuilder;
+import org.uniprot.core.uniprot.comment.builder.TemperatureDependenceBuilder;
+import org.uniprot.core.uniprot.comment.builder.WebResourceCommentBuilder;
 import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -35,6 +102,8 @@ import com.google.common.base.Strings;
 
 public class CcLineConverter extends EvidenceCollector
         implements Converter<CcLineObject, List<Comment>> {
+    /** */
+    private static final long serialVersionUID = 9161643642138549927L;
     // private final DefaultCommentFactory factory = DefaultCommentFactory
     // .getInstance();
     private final Map<String, String> diseaseMap;
@@ -87,16 +156,12 @@ public class CcLineConverter extends EvidenceCollector
         for (CcLineObject.SequenceCautionObject cObj : seqC.sequenceCautionObjects) {
             SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
             builder.sequenceCautionType(convertSequenceCautionType(cObj.type));
+            if (seqC.molecule != null) {
+                builder.molecule(seqC.molecule);
+            }
             if ((cObj.note != null) && (!cObj.note.isEmpty())) {
                 builder.note(cObj.note);
             }
-            List<String> positions =
-                    cObj.positions.stream().map(Object::toString).collect(Collectors.toList());
-
-            if ((cObj.positions.size() == 0) && (cObj.positionValue != null)) {
-                positions.add(cObj.positionValue);
-            }
-            builder.positions(positions);
             if (cObj.sequence != null) {
                 builder.sequence(cObj.sequence);
             }
@@ -252,6 +317,10 @@ public class CcLineConverter extends EvidenceCollector
         // CC Celsius and at pH 7.6);
         // CC Vmax=1.9 mmol/min/mg enzyme;
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
+        if (cObj.molecule != null) {
+            builder.molecule(cObj.molecule);
+        }
+
         if (isNotEmpty(cObj.kms) || isNotEmpty(cObj.vmaxs) || isNotEmpty(cObj.kpNote)) {
             List<MichaelisConstant> mcs = new ArrayList<>();
             cObj.kms.stream()
@@ -349,7 +418,10 @@ public class CcLineConverter extends EvidenceCollector
 
     private WebResourceComment convertWebResource(CcLineObject.WebResource cObj) {
         WebResourceCommentBuilder builder = new WebResourceCommentBuilder();
-        builder.resourceName(cObj.name).note(cObj.note).resourceUrl(cObj.url);
+        builder.resourceName(cObj.name)
+                .note(cObj.note)
+                .resourceUrl(cObj.url)
+                .molecule(cObj.molecule);
         if (cObj.url != null) builder.isFtp(cObj.url.startsWith("ftp"));
         return builder.build();
     }
@@ -386,7 +458,12 @@ public class CcLineConverter extends EvidenceCollector
     private DiseaseComment convertDisease(
             CcLineObject.Disease cObj, Map<Object, List<Evidence>> evidences) {
         DiseaseCommentBuilder commentBuilder = new DiseaseCommentBuilder();
+        if (!Strings.isNullOrEmpty(cObj.molecule)) {
+            commentBuilder.molecule(cObj.molecule);
+        }
+
         DiseaseBuilder builder = new DiseaseBuilder();
+
         if (!Strings.isNullOrEmpty(cObj.name)) {
             builder.diseaseId(cObj.name);
             String disease = diseaseMap.getOrDefault(cObj.name, "");
@@ -470,6 +547,10 @@ public class CcLineConverter extends EvidenceCollector
     private MassSpectrometryComment convertMassSpectrometry(
             CcLineObject.MassSpectrometry cObj, Map<Object, List<Evidence>> evidenceMap) {
         MassSpectrometryCommentBuilder builder = new MassSpectrometryCommentBuilder();
+        if (cObj.molecule != null) {
+            builder.molecule(cObj.molecule);
+        }
+
         Float mass = cObj.mass;
         Float massError = cObj.massError;
         builder.method(MassSpectrometryMethod.toType(cObj.method))
@@ -485,32 +566,16 @@ public class CcLineConverter extends EvidenceCollector
                         .map(EvidenceHelper::parseEvidenceLine)
                         .collect(Collectors.toList()));
 
-        builder.ranges(
-                cObj.ranges.stream()
-                        .map(this::convertMassSpectrometryRange)
-                        .collect(Collectors.toList()));
         return builder.build();
-    }
-
-    private MassSpectrometryRange convertMassSpectrometryRange(
-            CcLineObject.MassSpectrometryRange mrange) {
-        int start;
-        int end;
-        if (mrange.startUnknown) {
-            start = -1;
-        } else start = mrange.start;
-        if (mrange.endUnknown) {
-            end = -1;
-        } else end = mrange.end;
-        return new MassSpectrometryRangeBuilder()
-                .range(new Range(start, end))
-                .isoformId(mrange.rangeIsoform)
-                .build();
     }
 
     private RnaEditingComment convertRNAEditing(
             CcLineObject.RnaEditing cObj, Map<Object, List<Evidence>> evidences) {
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
+        if (cObj.molecule != null) {
+            builder.molecule(cObj.molecule);
+        }
+
         if (cObj.locations.isEmpty()) {
             if (cObj.locationEnum == RnaEditingLocationEnum.UNDETERMINED) {
                 builder.locationType(RnaEditingLocationType.Undetermined);
@@ -544,8 +609,25 @@ public class CcLineConverter extends EvidenceCollector
             CommentType commentType,
             CcLineObject.FreeText cObj,
             Map<Object, List<Evidence>> evidences) {
-        List<EvidencedValue> texts = convert(cObj.texts);
-        return new FreeTextCommentBuilder().commentType(commentType).texts(texts).build();
+        List<EvidencedValue> cTexts = new ArrayList<>();
+        String molecule = null;
+        boolean first = true;
+        for (EvidencedString val : cObj.texts) {
+            String value = val.value;
+            if (first) {
+                first = false;
+                List<String> result = CcLineUtils.parseFreeText(value);
+                value = result.get(1);
+                molecule = result.get(0);
+            }
+            List<Evidence> txtEvidences = parseEvidenceLines(val.evidences);
+            cTexts.add(new EvidencedValueBuilder(value, txtEvidences).build());
+        }
+        return new FreeTextCommentBuilder()
+                .commentType(commentType)
+                .texts(cTexts)
+                .molecule(molecule)
+                .build();
     }
 
     private CofactorComment convertCofactor(
@@ -617,7 +699,7 @@ public class CcLineConverter extends EvidenceCollector
                         .map(val -> convertPhysiologicalDirection(val, evidences))
                         .collect(Collectors.toList());
 
-        return new CatalyticActivityCommentImpl(reaction, physiologicalReactions);
+        return new CatalyticActivityCommentImpl(object.molecule, reaction, physiologicalReactions);
     }
 
     private PhysiologicalReaction convertPhysiologicalDirection(

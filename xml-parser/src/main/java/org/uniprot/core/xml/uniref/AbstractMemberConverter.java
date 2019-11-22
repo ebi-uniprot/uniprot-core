@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.uniprot.core.uniparc.builder.UniParcIdBuilder;
+import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
@@ -83,12 +84,13 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
                             createProperty(
                                     PROPERTY_SOURCE_UNIREF50, uniObj.getUniRef50Id().getValue()));
         }
-        if (uniObj.getUniProtAccession() != null) {
-            xref.getProperty()
-                    .add(
-                            createProperty(
-                                    PROPERTY_SOURCE_UNIPROT,
-                                    uniObj.getUniProtAccession().getValue()));
+        if ((uniObj.getUniProtAccessions() != null) && !uniObj.getUniProtAccessions().isEmpty()) {
+            List<UniProtAccession> accessions = uniObj.getUniProtAccessions();
+            accessions.forEach(
+                    accession -> {
+                        xref.getProperty()
+                                .add(createProperty(PROPERTY_SOURCE_UNIPROT, accession.getValue()));
+                    });
         }
         if (uniObj.getSequenceLength() > 0) {
             xref.getProperty()
@@ -150,7 +152,7 @@ public abstract class AbstractMemberConverter<T extends UniRefMember>
             } else if (property.getType().equals(PROPERTY_SOURCE_UNIREF50)) {
                 builder.uniref50Id(new UniRefEntryIdBuilder(property.getValue()).build());
             } else if (property.getType().equals(PROPERTY_SOURCE_UNIPROT)) {
-                builder.accession(new UniProtAccessionBuilder(property.getValue()).build());
+                builder.addAccession(new UniProtAccessionBuilder(property.getValue()).build());
             } else if (property.getType().equals(PROPERTY_IS_SEED)) {
                 builder.isSeed(Boolean.parseBoolean(property.getValue()));
             } else {

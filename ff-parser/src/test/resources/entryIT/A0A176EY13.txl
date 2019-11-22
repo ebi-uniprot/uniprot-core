@@ -2,7 +2,7 @@ ID   A0A176EY13_9RHOB        Unreviewed;       394 AA.
 AC   A0A176EY13;
 DT   07-SEP-2016, integrated into UniProtKB/TrEMBL.
 DT   07-SEP-2016, sequence version 1.
-DT   28-FEB-2018, entry version 9.
+DT   16-JAN-2019, entry version 10.
 DE   SubName: Full=Precorrin-6Y C5,15-methyltransferase {ECO:0000313|EMBL:KZY30980.1};
 DE   Flags: Fragment;
 GN   ORFNames=A3731_24270 {ECO:0000313|EMBL:KZY30980.1};
@@ -18,9 +18,9 @@ RA   Sosa O.A.;
 RT   "Microbial cycling of marine high molecular weight dissolved organic
 RT   matter.";
 RL   Submitted (MAR-2016) to the EMBL/GenBank/DDBJ databases.
-CC   -!- CAUTION: The sequence shown here is derived from an
-CC       EMBL/GenBank/DDBJ whole genome shotgun (WGS) entry which is
-CC       preliminary data. {ECO:0000313|EMBL:KZY30980.1}.
+CC   -!- CAUTION: The sequence shown here is derived from an EMBL/GenBank/DDBJ
+CC       whole genome shotgun (WGS) entry which is preliminary data.
+CC       {ECO:0000313|EMBL:KZY30980.1}.
 DR   EMBL; LWFA01003209; KZY30980.1; -; Genomic_DNA.
 DR   EnsemblBacteria; KZY30980; KZY30980; A3731_24270.
 DR   Proteomes; UP000077043; Unassembled WGS sequence.
@@ -44,10 +44,12 @@ DR   TIGRFAMs; TIGR02469; CbiT; 1.
 PE   4: Predicted;
 KW   Complete proteome {ECO:0000313|Proteomes:UP000077043};
 KW   Methyltransferase {ECO:0000313|EMBL:KZY30980.1};
-KW   Reference proteome {ECO:0000313|Proteomes:UP000077043};
 KW   Transferase {ECO:0000313|EMBL:KZY30980.1}.
-FT   DOMAIN        6    187       TP_methylase. {ECO:0000259|Pfam:PF00590}.
-FT   NON_TER     394    394       {ECO:0000313|EMBL:KZY30980.1}.
+FT   DOMAIN          6..187
+FT                   /note="TP_methylase"
+FT                   /evidence="ECO:0000259|Pfam:PF00590"
+FT   NON_TER         394
+FT                   /evidence="ECO:0000313|EMBL:KZY30980.1"
 **
 **   #################    INTERNAL SECTION    ##################
 **EV ECO:0000259; Pfam:PF00590; -; 27-SEP-2016.

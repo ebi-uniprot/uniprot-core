@@ -15,8 +15,8 @@ class FtLineTransformerTest {
 
     @Test
     void testChain() {
+        String lines = "CHAIN ?..121\n/note=\"Potential\"\n" + "/id=\"PRO_5001267722\"\n";
 
-        String lines = "CHAIN ? 121 Potential.\n/FTId=PRO_5001267722.";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -30,8 +30,8 @@ class FtLineTransformerTest {
 
     @Test
     void testSignal() {
+        String lines = "SIGNAL <1..33\n/note=\"some description\"\n";
 
-        String lines = "SIGNAL <1 33 some description.";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -46,8 +46,8 @@ class FtLineTransformerTest {
 
     @Test
     void testConflict() {
+        String lines = "CONFLICT 124..127\n/note=\"GLTA -> ESHP (in Ref. 1; AAA98633)\"\n";
 
-        String lines = "CONFLICT 124 127 GLTA -> ESHP (in Ref. 1; AAA98633).";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -69,9 +69,9 @@ class FtLineTransformerTest {
 
     @Test
     void testMutagen() {
-
         String lines =
-                "MUTAGEN 9 9 K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16.";
+                "MUTAGEN 9\n/note=\"K->R: Does not affect E-cadherin/CDH1 repression; when associated with R-16\"\n";
+
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -96,8 +96,10 @@ class FtLineTransformerTest {
 
     @Test
     void testVariant() {
+        String lines =
+                "VARIANT 421\n/note=\"C -> R (in GS; dbSNP:rs28936387)\"\n"
+                        + "/id=\"VAR_007115\"\n";
 
-        String lines = "VARIANT 421 421 C -> R (in GS; dbSNP:rs28936387).\n/FTId=VAR_007115.";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -122,8 +124,8 @@ class FtLineTransformerTest {
 
     @Test
     void testVariant2() {
+        String lines = "VARIANT 561\n/note=\"Missing (in GS)\"\n" + "/id=\"VAR_007118\"\n";
 
-        String lines = "VARIANT 561 561 Missing (in GS).\n/FTId=VAR_007118.";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -146,10 +148,10 @@ class FtLineTransformerTest {
 
     @Test
     void testVarSeq() {
-
         String lines =
-                "VAR_SEQ 239 239 E -> ERDVIRSVRLPRE (in isoform PLEC-0, isoform 1C,"
-                        + " isoform 2A and isoform 3A).\n/FTId=VSP_005049.";
+                "VAR_SEQ 239\n/note=\"E -> ERDVIRSVRLPRE (in isoform PLEC-0, isoform 1C,"
+                        + " isoform 2A and isoform 3A)\"\n"
+                        + "/id=\"VSP_005049\"\n";
 
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
@@ -181,8 +183,9 @@ class FtLineTransformerTest {
 
     @Test
     void testVarSeq2() {
+        String lines =
+                "VAR_SEQ 1..242\n/note=\"Missing (in isoform PLEC-1H)\"\n" + "/id=\"VSP_005040\"\n";
 
-        String lines = "VAR_SEQ 1 242 Missing (in isoform PLEC-1H).\n/FTId=VSP_005040.";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -208,8 +211,8 @@ class FtLineTransformerTest {
 
     @Test
     void testCarbohyd() {
+        String lines = "CARBOHYD 196\n/note=\"N-linked (GlcNAc...); by host\"\n";
 
-        String lines = "CARBOHYD 196 196 N-linked (GlcNAc...); by host.";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);
@@ -227,8 +230,7 @@ class FtLineTransformerTest {
 
     @Test
     void testCarbohyd2() {
-
-        String lines = "CARBOHYD 7 7 O-linked (GalNAc...).";
+        String lines = "CARBOHYD 7\n/note=\"O-linked (GalNAc...)\"\n";
         List<Feature> features = transformer.transformNoHeader(lines);
         assertEquals(1, features.size());
         Feature feature = features.get(0);

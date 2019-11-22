@@ -1,9 +1,9 @@
 ID   CYB_MICMU               Reviewed;         379 AA.
-AC   Q9G0S9; Q35043; Q8HEG1; Q9G935; Q9G936; Q9G937; Q9G938; Q9G939;
-AC   Q9G940; Q9G941;
+AC   Q9G0S9; Q35043; Q8HEG1; Q9G935; Q9G936; Q9G937; Q9G938; Q9G939; Q9G940;
+AC   Q9G941;
 DT   09-MAY-2003, integrated into UniProtKB/Swiss-Prot.
 DT   01-MAR-2001, sequence version 1.
-DT   10-OCT-2018, entry version 89.
+DT   16-JAN-2019, entry version 90.
 DE   RecName: Full=Cytochrome b;
 DE   AltName: Full=Complex III subunit 3;
 DE   AltName: Full=Complex III subunit III;
@@ -12,9 +12,9 @@ DE   AltName: Full=Ubiquinol-cytochrome-c reductase complex cytochrome b subunit
 GN   Name=MT-CYB; Synonyms=COB, CYTB, MTCYB;
 OS   Microcebus murinus (Lesser mouse lemur) (Gray Mouse Lemur).
 OG   Mitochondrion.
-OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
-OC   Mammalia; Eutheria; Euarchontoglires; Primates; Strepsirrhini;
-OC   Lemuriformes; Cheirogaleidae; Microcebus.
+OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi; Mammalia;
+OC   Eutheria; Euarchontoglires; Primates; Strepsirrhini; Lemuriformes;
+OC   Cheirogaleidae; Microcebus.
 OX   NCBI_TaxID=30608;
 RN   [1]
 RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
@@ -24,9 +24,9 @@ RT   "Ancient single origin for Malagasy primates.";
 RL   Proc. Natl. Acad. Sci. U.S.A. 93:5122-5126(1996).
 RN   [2]
 RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
-RC   STRAIN=Isolate 00-016A-8EBC, Isolate Jorg 33, Isolate Jorg 37,
-RC   Isolate Jorg 64, Isolate RMR 24, Isolate RMR 44, Isolate YLE199, and
-RC   Isolate YLE74;
+RC   STRAIN=Isolate 00-016A-8EBC, Isolate Jorg 33, Isolate Jorg 37, Isolate
+RC   Jorg 64, Isolate RMR 24, Isolate RMR 44, Isolate YLE199, and Isolate
+RC   YLE74;
 RX   PubMed=11005834; DOI=10.1073/pnas.200121897;
 RA   Yoder A.D., Rasoloarison R.M., Goodman S.M., Irwin J.A., Atsalis S.,
 RA   Ravosa M.J., Ganzhorn J.U.;
@@ -37,43 +37,41 @@ RN   [3]
 RP   NUCLEOTIDE SEQUENCE [GENOMIC DNA].
 RC   STRAIN=Isolate YLE357;
 RA   Yoder A.D., Burns M.M., Genin F.;
-RT   "Molecular evidence of reproductive isolation in sympatric sibling
-RT   species of mouse lemurs.";
+RT   "Molecular evidence of reproductive isolation in sympatric sibling species
+RT   of mouse lemurs.";
 RL   Folia Primatol. 23:1335-1343(2002).
-CC   -!- FUNCTION: Component of the ubiquinol-cytochrome c reductase
-CC       complex (complex III or cytochrome b-c1 complex) that is part of
-CC       the mitochondrial respiratory chain. The b-c1 complex mediates
-CC       electron transfer from ubiquinol to cytochrome c. Contributes to
-CC       the generation of a proton gradient across the mitochondrial
-CC       membrane that is then used for ATP synthesis.
-CC       {ECO:0000250|UniProtKB:P00157}.
+CC   -!- FUNCTION: Component of the ubiquinol-cytochrome c reductase complex
+CC       (complex III or cytochrome b-c1 complex) that is part of the
+CC       mitochondrial respiratory chain. The b-c1 complex mediates electron
+CC       transfer from ubiquinol to cytochrome c. Contributes to the generation
+CC       of a proton gradient across the mitochondrial membrane that is then
+CC       used for ATP synthesis. {ECO:0000250|UniProtKB:P00157}.
 CC   -!- COFACTOR:
 CC       Name=heme; Xref=ChEBI:CHEBI:30413;
 CC         Evidence={ECO:0000250|UniProtKB:P00157};
 CC       Note=Binds 2 heme groups non-covalently.
 CC       {ECO:0000250|UniProtKB:P00157};
-CC   -!- SUBUNIT: The cytochrome bc1 complex contains 11 subunits: 3
-CC       respiratory subunits (MT-CYB, CYC1 and UQCRFS1), 2 core proteins
-CC       (UQCRC1 and UQCRC2) and 6 low-molecular weight proteins
-CC       (UQCRH/QCR6, UQCRB/QCR7, UQCRQ/QCR8, UQCR10/QCR9, UQCR11/QCR10 and
-CC       a cleavage product of UQCRFS1). This cytochrome bc1 complex then
-CC       forms a dimer. {ECO:0000250|UniProtKB:P00157}.
+CC   -!- SUBUNIT: The cytochrome bc1 complex contains 11 subunits: 3 respiratory
+CC       subunits (MT-CYB, CYC1 and UQCRFS1), 2 core proteins (UQCRC1 and
+CC       UQCRC2) and 6 low-molecular weight proteins (UQCRH/QCR6, UQCRB/QCR7,
+CC       UQCRQ/QCR8, UQCR10/QCR9, UQCR11/QCR10 and a cleavage product of
+CC       UQCRFS1). This cytochrome bc1 complex then forms a dimer.
+CC       {ECO:0000250|UniProtKB:P00157}.
 CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane
 CC       {ECO:0000250|UniProtKB:P00157}; Multi-pass membrane protein
 CC       {ECO:0000250|UniProtKB:P00157}.
-CC   -!- MISCELLANEOUS: Heme 1 (or BL or b562) is low-potential and absorbs
-CC       at about 562 nm, and heme 2 (or BH or b566) is high-potential and
-CC       absorbs at about 566 nm. {ECO:0000250}.
-CC   -!- SIMILARITY: Belongs to the cytochrome b family.
-CC       {ECO:0000255|PROSITE-ProRule:PRU00967, ECO:0000255|PROSITE-
-CC       ProRule:PRU00968}.
+CC   -!- MISCELLANEOUS: Heme 1 (or BL or b562) is low-potential and absorbs at
+CC       about 562 nm, and heme 2 (or BH or b566) is high-potential and absorbs
+CC       at about 566 nm. {ECO:0000250}.
+CC   -!- SIMILARITY: Belongs to the cytochrome b family. {ECO:0000255|PROSITE-
+CC       ProRule:PRU00967, ECO:0000255|PROSITE-ProRule:PRU00968}.
 CC   -!- CAUTION: The full-length protein contains only eight transmembrane
 CC       helices, not nine as predicted by bioinformatics tools.
 CC       {ECO:0000250|UniProtKB:P00157}.
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
 CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 DR   EMBL; U53572; AAC50529.1; -; Genomic_DNA.
 DR   EMBL; AF285557; AAG30702.1; -; Genomic_DNA.
 DR   EMBL; AF285558; AAG30703.1; -; Genomic_DNA.
@@ -91,6 +89,7 @@ DR   SMR; Q9G0S9; -.
 DR   Ensembl; ENSMICT00000053028; ENSMICP00000022746; ENSMICG00000037851.
 DR   GeneID; 26823990; -.
 DR   CTD; 4519; -.
+DR   OrthoDB; 1125966at2759; -.
 DR   GO; GO:0031305; C:integral component of mitochondrial inner membrane; IEA:Ensembl.
 DR   GO; GO:0045275; C:respiratory chain complex III; IEA:InterPro.
 DR   GO; GO:0046872; F:metal ion binding; IEA:UniProtKB-KW.
@@ -113,45 +112,81 @@ DR   SUPFAM; SSF81648; SSF81648; 1.
 DR   PROSITE; PS51003; CYTB_CTER; 1.
 DR   PROSITE; PS51002; CYTB_NTER; 1.
 PE   3: Inferred from homology;
-KW   Electron transport; Heme; Iron; Membrane; Metal-binding;
-KW   Mitochondrion; Mitochondrion inner membrane; Respiratory chain;
-KW   Transmembrane; Transmembrane helix; Transport; Ubiquinone.
-FT   CHAIN         1    379       Cytochrome b.
-FT                                /FTId=PRO_0000061187.
-FT   TRANSMEM     33     53       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   TRANSMEM     77     98       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   TRANSMEM    113    133       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   TRANSMEM    178    198       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   TRANSMEM    226    246       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   TRANSMEM    288    308       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   TRANSMEM    320    340       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   TRANSMEM    347    367       Helical. {ECO:0000250|UniProtKB:P00157}.
-FT   METAL        83     83       Iron 1 (heme b562 axial ligand).
-FT                                {ECO:0000250|UniProtKB:P00157}.
-FT   METAL        97     97       Iron 2 (heme b566 axial ligand).
-FT                                {ECO:0000250|UniProtKB:P00157}.
-FT   METAL       182    182       Iron 1 (heme b562 axial ligand).
-FT                                {ECO:0000250|UniProtKB:P00157}.
-FT   METAL       196    196       Iron 2 (heme b566 axial ligand).
-FT                                {ECO:0000250|UniProtKB:P00157}.
-FT   BINDING     201    201       Ubiquinone.
-FT                                {ECO:0000250|UniProtKB:P00157}.
-FT   VARIANT       2      2       T -> A (in strain: Isolate RMR 24).
-FT   VARIANT      42     42       V -> A (in strain: Isolate Jorg 37).
-FT   VARIANT      78     78       I -> V (in strain: Isolate Jorg 64).
-FT   VARIANT     158    158       T -> N (in strain: Isolate YLE357).
-FT   VARIANT     183    183       F -> Y (in strain: Isolate Jorg 33).
-FT   VARIANT     185    185       L -> M (in strain: Isolate RMR 24).
-FT   VARIANT     186    186       P -> T (in strain: Isolate YLE74).
-FT   VARIANT     195    195       V -> I (in strain: Isolate RMR 44).
-FT   VARIANT     234    234       F -> L (in strain: Isolate Jorg 64).
-FT   VARIANT     251    251       G -> D (in strain: Isolate Jorg 64).
-FT   VARIANT     316    316       T -> A (in strain: Isolate Jorg 37).
-FT   VARIANT     324    324       M -> I (in strain: Isolate 00-016A-8EBC
-FT                                and Isolate RMR 24).
-FT   VARIANT     324    324       M -> T (in strain: Isolate YLE199).
-FT   VARIANT     345    345       H -> Y (in strain: Isolate 00-016A-8EBC,
-FT                                Isolate RMR 24 and Isolate YLE199).
+KW   Electron transport; Heme; Iron; Membrane; Metal-binding; Mitochondrion;
+KW   Mitochondrion inner membrane; Respiratory chain; Transmembrane;
+KW   Transmembrane helix; Transport; Ubiquinone.
+FT   CHAIN           1..379
+FT                   /note="Cytochrome b"
+FT                   /id="PRO_0000061187"
+FT   TRANSMEM        33..53
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   TRANSMEM        77..98
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   TRANSMEM        113..133
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   TRANSMEM        178..198
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   TRANSMEM        226..246
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   TRANSMEM        288..308
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   TRANSMEM        320..340
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   TRANSMEM        347..367
+FT                   /note="Helical"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   METAL           83
+FT                   /note="Iron 1 (heme b562 axial ligand)"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   METAL           97
+FT                   /note="Iron 2 (heme b566 axial ligand)"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   METAL           182
+FT                   /note="Iron 1 (heme b562 axial ligand)"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   METAL           196
+FT                   /note="Iron 2 (heme b566 axial ligand)"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   BINDING         201
+FT                   /note="Ubiquinone"
+FT                   /evidence="ECO:0000250|UniProtKB:P00157"
+FT   VARIANT         2
+FT                   /note="T -> A (in strain: Isolate RMR 24)"
+FT   VARIANT         42
+FT                   /note="V -> A (in strain: Isolate Jorg 37)"
+FT   VARIANT         78
+FT                   /note="I -> V (in strain: Isolate Jorg 64)"
+FT   VARIANT         158
+FT                   /note="T -> N (in strain: Isolate YLE357)"
+FT   VARIANT         183
+FT                   /note="F -> Y (in strain: Isolate Jorg 33)"
+FT   VARIANT         185
+FT                   /note="L -> M (in strain: Isolate RMR 24)"
+FT   VARIANT         186
+FT                   /note="P -> T (in strain: Isolate YLE74)"
+FT   VARIANT         195
+FT                   /note="V -> I (in strain: Isolate RMR 44)"
+FT   VARIANT         234
+FT                   /note="F -> L (in strain: Isolate Jorg 64)"
+FT   VARIANT         251
+FT                   /note="G -> D (in strain: Isolate Jorg 64)"
+FT   VARIANT         316
+FT                   /note="T -> A (in strain: Isolate Jorg 37)"
+FT   VARIANT         324
+FT                   /note="M -> I (in strain: Isolate 00-016A-8EBC and Isolate
+FT                   RMR 24)"
+FT   VARIANT         324
+FT                   /note="M -> T (in strain: Isolate YLE199)"
+FT   VARIANT         345
+FT                   /note="H -> Y (in strain: Isolate 00-016A-8EBC, Isolate RMR
+FT                   24 and Isolate YLE199)"
 SQ   SEQUENCE   379 AA;  42819 MW;  EAD063C413622F72 CRC64;
      MTNIRKTHPL MKIMNNSFID LPAPSNISSW WNFGSLLGAC LVIQIITGLF LAMHYTADTT
      TAFSSVTHIC RDVNQGWIIR YLHANGASMF FLCLFLHVGR GMYYGSFTLT ETWNIGIILL

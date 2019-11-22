@@ -510,7 +510,7 @@ class CcLineTransformerTest {
     @Test
     void testConfactorEvidence2() {
         String ccLineStringEvidence =
-                "COFACTOR: Serine protease NS3:\n"
+                "COFACTOR: [Serine protease NS3]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
                         + " ECO:0000269|PubMed:16683189};\n"
                         + "Name=A very looooooooooooong cofactor name with 1 evidence tag; "
@@ -559,7 +559,7 @@ class CcLineTransformerTest {
     @Test
     void testCofactor3() {
         String ccLineStringEvidence =
-                "COFACTOR: Serine protease NS3:\n"
+                "COFACTOR: [Serine protease NS3]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n"
                         + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
 
@@ -592,7 +592,7 @@ class CcLineTransformerTest {
     @Test
     void testCofactor4() {
         String ccLineStringEvidence =
-                "COFACTOR: Non-structural protein 5A:\n"
+                "COFACTOR: [Non-structural protein 5A]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};\n"
                         + " Note=Binds 1 zinc ion in the NS5A N-terminal domain. {ECO:0000250};";
 

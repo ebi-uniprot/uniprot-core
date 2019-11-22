@@ -36,17 +36,13 @@ import java.util.List;
  * @version 1.0
  * @see Comment
  */
-public interface CofactorComment extends Comment {
-    /** @return molecule */
-    String getMolecule();
+public interface CofactorComment extends Comment, HasMolecule {
 
     /** @return list of cofactor */
     List<Cofactor> getCofactors();
 
     /** @return cofactor note */
     Note getNote();
-
-    boolean hasMolecule();
 
     boolean hasCofactors();
 

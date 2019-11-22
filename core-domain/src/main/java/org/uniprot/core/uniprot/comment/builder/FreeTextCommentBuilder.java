@@ -17,6 +17,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
 public class FreeTextCommentBuilder
         implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
     private CommentType commentType;
+    private String molecule;
     private List<EvidencedValue> texts = new ArrayList<>();
 
     @Override
@@ -24,17 +25,24 @@ public class FreeTextCommentBuilder
         if (!isFreeTextCommentType(commentType)) {
             throw new IllegalArgumentException(commentType + " is not free text comment");
         }
-        return new FreeTextCommentImpl(commentType, texts);
+        return new FreeTextCommentImpl(commentType, molecule, texts);
     }
 
     @Override
     public @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
         texts.clear();
-        return this.commentType(instance.getCommentType()).texts(instance.getTexts());
+        return this.commentType(instance.getCommentType())
+                .texts(instance.getTexts())
+                .molecule(instance.getMolecule());
     }
 
     public FreeTextCommentBuilder commentType(CommentType commentType) {
         this.commentType = commentType;
+        return this;
+    }
+
+    public FreeTextCommentBuilder molecule(String molecule) {
+        this.molecule = molecule;
         return this;
     }
 

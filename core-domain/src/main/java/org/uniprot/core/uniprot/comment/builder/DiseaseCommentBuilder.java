@@ -9,17 +9,25 @@ import org.uniprot.core.uniprot.comment.impl.DiseaseCommentImpl;
 
 public class DiseaseCommentBuilder
         implements CommentBuilder<DiseaseCommentBuilder, DiseaseComment> {
+    String molecule;
     private Disease disease;
     private Note note;
 
     @Override
     public @Nonnull DiseaseComment build() {
-        return new DiseaseCommentImpl(disease, note);
+        return new DiseaseCommentImpl(molecule, disease, note);
     }
 
     @Override
     public @Nonnull DiseaseCommentBuilder from(@Nonnull DiseaseComment instance) {
-        return this.disease(instance.getDisease()).note(instance.getNote());
+        return this.disease(instance.getDisease())
+                .note(instance.getNote())
+                .molecule(instance.getMolecule());
+    }
+
+    public DiseaseCommentBuilder molecule(String molecule) {
+        this.molecule = molecule;
+        return this;
     }
 
     public DiseaseCommentBuilder disease(Disease disease) {

@@ -19,9 +19,10 @@ class FeatureWithEvidenceScoredTest {
     @Test
     void shouldModResScore3() {
         String ftLine =
-                "FT   MOD_RES     117    117       2-(S-cysteinyl)pyruvic acid O-\n"
-                        + "FT                                phosphothioketal (By similarity).\n"
-                        + "FT                                {ECO:0000256|HAMAP-Rule:MF_00111}.\n";
+                "FT   MOD_RES         117\n"
+                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal (By similarity)\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
+
         Feature feature = createFeature(ftLine);
         verify(feature, 3.0, singletonList(new EvidenceType("HAMAP-Rule")));
     }
@@ -29,37 +30,54 @@ class FeatureWithEvidenceScoredTest {
     @Test
     void shouldModResScore0() {
         String ftLine =
-                "FT   MOD_RES     117    117       2-(S-cysteinyl)pyruvic acid O-\n"
-                        + "FT                                phosphothioketal (By similarity).\n"
-                        + "FT                                {ECO:0000256|HAMAP-Rule:MF_00111}.\n";
+                "FT   MOD_RES         117\n"
+                        + "FT                   /note=\"2-(S-cysteinyl)pyruvic acid O-phosphothioketal (By similarity)\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|HAMAP-Rule:MF_00111\"\n";
+
         Feature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceType("RuleBase")));
     }
 
     @Test
     void shouldTransMemScore3() {
-        String ftLine = "FT   TRANSMEM    789    809       Helical. {ECO:0000256|SAM:Phobius}.\n";
+        String ftLine =
+                "FT   TRANSMEM        789..809\n"
+                        + "FT                   /note=\"Helical\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n";
+
         Feature feature = createFeature(ftLine);
         verify(feature, 3.0, singletonList(new EvidenceType("SAM")));
     }
 
     @Test
     void shouldTransMemScore0() {
-        String ftLine = "FT   TRANSMEM    789    809       Helical. {ECO:0000256|SAM:Phobius}.\n";
+        String ftLine =
+                "FT   TRANSMEM        789..809\n"
+                        + "FT                   /note=\"Helical\"\n"
+                        + "FT                   /evidence=\"ECO:0000256|SAM:Phobius\"\n";
+
         Feature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceType("HAMAP-Rule")));
     }
 
     @Test
     void shouldDOMAINScore00() {
-        String ftLine = "FT   DOMAIN        1    438       SPX. {ECO:0000259|PROSITE:PS51382}.\n";
+        String ftLine =
+                "FT   DOMAIN          1..438\n"
+                        + "FT                   /note=\"SPX\"\n"
+                        + "FT                   /evidence=\"ECO:0000259|PROSITE:PS51382\"\n";
+
         Feature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceType("PROSITE")));
     }
 
     @Test
     void shouldDOMAINScore0() {
-        String ftLine = "FT   DOMAIN        1    438       SPX. {ECO:0000259|PROSITE:PS51382}.\n";
+        String ftLine =
+                "FT   DOMAIN          1..438\n"
+                        + "FT                   /note=\"SPX\"\n"
+                        + "FT                   /evidence=\"ECO:0000259|PROSITE:PS51382\"\n";
+
         Feature feature = createFeature(ftLine);
         verify(feature, 0.0, singletonList(new EvidenceType("SAM")));
     }

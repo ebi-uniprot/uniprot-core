@@ -18,7 +18,6 @@ public class SeqCautionCommentTransformer implements CommentTransformer<Sequence
     private static final String TYPE = "Type=";
     private static final String NOTE = "Note=";
     private static final String EVIDENCE = "Evidence=";
-    private static final String POSITION = "Positions=";
     private static final CommentType COMMENT_TYPE = CommentType.SEQUENCE_CAUTION;
 
     @Override
@@ -32,6 +31,7 @@ public class SeqCautionCommentTransformer implements CommentTransformer<Sequence
         annotation = CommentTransformerHelper.stripTrailing(annotation, ";");
         String[] tokens = annotation.split(";");
         SequenceCautionCommentBuilder builder = new SequenceCautionCommentBuilder();
+        annotation = updateMolecule(annotation, builder);
         for (String token : tokens) {
             token = token.trim();
             if (token.startsWith(SEQUENCE)) {
@@ -41,15 +41,6 @@ public class SeqCautionCommentTransformer implements CommentTransformer<Sequence
                         SequenceCautionType.typeOf(token.substring(TYPE.length())));
             } else if (token.startsWith(NOTE)) {
                 builder.note(token.substring(NOTE.length()));
-            } else if (token.startsWith(POSITION)) {
-                String val = token.substring(POSITION.length());
-                String[] poses = val.split(",");
-
-                List<String> positions = new ArrayList<>();
-                for (String pos : poses) {
-                    positions.add(pos.trim());
-                }
-                builder.positions(positions);
             } else if (token.startsWith(EVIDENCE)) {
                 List<Evidence> evidences = new ArrayList<>();
                 CommentTransformerHelper.stripEvidences(
@@ -58,5 +49,18 @@ public class SeqCautionCommentTransformer implements CommentTransformer<Sequence
             }
         }
         return builder.build();
+    }
+
+    private String updateMolecule(String annotation, SequenceCautionCommentBuilder builder) {
+        if (annotation.startsWith("[") && annotation.contains("]")) {
+            int index = annotation.indexOf("]");
+            String molecule = annotation.substring(1, index);
+            molecule = molecule.replaceAll("\n", " ");
+            builder.molecule(molecule);
+            annotation = annotation.substring(index + 2).trim();
+            if (annotation.startsWith("\n")) annotation = annotation.substring(1);
+            return annotation;
+        }
+        return annotation;
     }
 }

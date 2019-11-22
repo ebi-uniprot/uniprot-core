@@ -13,6 +13,10 @@ public class LineBuilderHelper {
     private static final String SEPARATOR2 = ", ";
 
     public static String export(List<Evidence> evs) {
+        return export(evs, true);
+    }
+
+    public static String export(List<Evidence> evs, boolean withBracket) {
         String s = "";
         List<Evidence> evIds = evs.stream().collect(Collectors.toList());
         Collections.sort(evIds);
@@ -29,7 +33,7 @@ public class LineBuilderHelper {
             s += evid.getValue();
             first = false;
         }
-        if (s.length() > 0) {
+        if ((s.length() > 0) && withBracket) {
             if (isEco) {
                 s = " {" + s + "}";
             } else {

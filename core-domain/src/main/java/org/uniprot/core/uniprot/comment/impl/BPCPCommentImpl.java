@@ -7,7 +7,7 @@ import java.util.Objects;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
+public class BPCPCommentImpl extends CommentHasMoleculeImpl implements BPCPComment {
     private static final long serialVersionUID = -8649046279103961092L;
     private Absorption absorption;
     private KineticParameters kineticParameters;
@@ -17,16 +17,17 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
 
     // no arg constructor for JSON deserialization
     BPCPCommentImpl() {
-        super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+        super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, null);
     }
 
     public BPCPCommentImpl(
+            String molecule,
             Absorption absorption,
             KineticParameters kineticParameters,
             PhDependence phDependence,
             RedoxPotential redoxPotential,
             TemperatureDependence temperatureDependence) {
-        super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES);
+        super(CommentType.BIOPHYSICOCHEMICAL_PROPERTIES, molecule);
         this.absorption = absorption;
         this.kineticParameters = kineticParameters;
         this.phDependence = phDependence;
@@ -179,6 +180,9 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
 
     public static class RedoxPotentialImpl extends FreeTextImpl implements RedoxPotential {
 
+        /** */
+        private static final long serialVersionUID = 4549243776349161129L;
+
         // no arg constructor for JSON deserialization
         RedoxPotentialImpl() {
             super(Collections.emptyList());
@@ -190,6 +194,9 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
     }
 
     public static class PhDependenceImpl extends FreeTextImpl implements PhDependence {
+
+        /** */
+        private static final long serialVersionUID = -5623099152387117244L;
 
         // no arg constructor for JSON deserialization
         PhDependenceImpl() {
@@ -203,6 +210,9 @@ public class BPCPCommentImpl extends CommentImpl implements BPCPComment {
 
     public static class TemperatureDependenceImpl extends FreeTextImpl
             implements TemperatureDependence {
+
+        /** */
+        private static final long serialVersionUID = -2126530892957285968L;
 
         // no arg constructor for JSON deserialization
         TemperatureDependenceImpl() {

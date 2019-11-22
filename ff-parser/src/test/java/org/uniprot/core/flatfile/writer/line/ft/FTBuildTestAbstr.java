@@ -5,9 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
 import org.uniprot.core.flatfile.parser.impl.ft.FeatureLineBuilderFactory;
 import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.flatfile.writer.FFLineBuilder;
@@ -15,6 +13,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.impl.EvidenceHelper;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
@@ -56,6 +55,7 @@ class FTBuildTestAbstr {
             List<String> evs) {
         return createFeature(
                 type,
+                null,
                 nstart,
                 nend,
                 PositionModifier.EXACT,
@@ -67,6 +67,7 @@ class FTBuildTestAbstr {
 
     Feature createFeature(
             FeatureType type,
+            String sequence,
             int nstart,
             int nend,
             PositionModifier sfModifier,
@@ -74,8 +75,8 @@ class FTBuildTestAbstr {
             String description,
             String ftId,
             List<String> evs) {
-        Range location =
-                new Range(new Position(nstart, sfModifier), new Position(nend, efModifier));
+        FeatureLocation location =
+                new FeatureLocation(sequence, nstart, nend, sfModifier, efModifier);
 
         return new FeatureBuilder()
                 .type(type)
@@ -88,7 +89,7 @@ class FTBuildTestAbstr {
 
     Feature createFeature(
             FeatureType type,
-            Range location,
+            FeatureLocation location,
             String description,
             String ftId,
             AlternativeSequence alternativeSequence,

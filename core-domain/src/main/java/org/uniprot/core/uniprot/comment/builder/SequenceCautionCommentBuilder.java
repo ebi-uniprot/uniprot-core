@@ -15,26 +15,25 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 
 public final class SequenceCautionCommentBuilder
         implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
+    String molecule;
     private SequenceCautionType sequenceCautionType;
     private String sequence;
     private String note;
-    private List<String> positions = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
 
     public @Nonnull SequenceCautionComment build() {
         return new SequenceCautionCommentImpl(
-                sequenceCautionType, sequence, positions, note, evidences);
+                molecule, sequenceCautionType, sequence, note, evidences);
     }
 
     @Override
     public @Nonnull SequenceCautionCommentBuilder from(@Nonnull SequenceCautionComment instance) {
-        positions.clear();
         evidences.clear();
         return this.sequenceCautionType(instance.getSequenceCautionType())
                 .sequence(instance.getSequence())
                 .evidences(instance.getEvidences())
                 .note(instance.getNote())
-                .positions(instance.getPositions());
+                .molecule(instance.getMolecule());
     }
 
     public SequenceCautionCommentBuilder sequenceCautionType(
@@ -43,18 +42,13 @@ public final class SequenceCautionCommentBuilder
         return this;
     }
 
+    public SequenceCautionCommentBuilder molecule(String molecule) {
+        this.molecule = molecule;
+        return this;
+    }
+
     public SequenceCautionCommentBuilder sequence(String sequence) {
         this.sequence = sequence;
-        return this;
-    }
-
-    public SequenceCautionCommentBuilder positions(List<String> positions) {
-        this.positions = modifiableList(positions);
-        return this;
-    }
-
-    public SequenceCautionCommentBuilder addPosition(String position) {
-        addOrIgnoreNull(position, this.positions);
         return this;
     }
 

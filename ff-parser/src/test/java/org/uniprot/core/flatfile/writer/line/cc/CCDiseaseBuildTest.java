@@ -18,14 +18,13 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
     void testNoEvidence() {
         String ccLine =
                 ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
-                        + "CC       characterized by malignant lesions arising from the inner wall of\n"
-                        + "CC       the large intestine (the colon) and the rectum. Genetic\n"
-                        + "CC       alterations are often associated with progression from\n"
-                        + "CC       premalignant lesion (adenoma) to invasive adenocarcinoma. Risk\n"
-                        + "CC       factors for cancer of the colon and rectum include colon polyps,\n"
-                        + "CC       long-standing ulcerative colitis, and genetic family history.\n"
-                        + "CC       Note=The gene represented in this entry is involved in disease\n"
-                        + "CC       pathogenesis.");
+                        + "CC       characterized by malignant lesions arising from the inner wall of the\n"
+                        + "CC       large intestine (the colon) and the rectum. Genetic alterations are\n"
+                        + "CC       often associated with progression from premalignant lesion (adenoma) to\n"
+                        + "CC       invasive adenocarcinoma. Risk factors for cancer of the colon and\n"
+                        + "CC       rectum include colon polyps, long-standing ulcerative colitis, and\n"
+                        + "CC       genetic family history. Note=The gene represented in this entry is\n"
+                        + "CC       involved in disease pathogenesis.");
 
         String ccLineString =
                 ("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease "
@@ -70,15 +69,15 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
     void testEvidence1() {
         String ccLine =
                 ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
-                        + "CC       characterized by malignant lesions arising from the inner wall of\n"
-                        + "CC       the large intestine (the colon) and the rectum. Genetic\n"
-                        + "CC       alterations are often associated with progression from\n"
-                        + "CC       premalignant lesion (adenoma) to invasive adenocarcinoma. Risk\n"
-                        + "CC       factors for cancer of the colon and rectum include colon polyps,\n"
-                        + "CC       long-standing ulcerative colitis, and genetic family history.\n"
-                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
-                        + "CC       ECO:0000313|EMBL:BAG16761.1}. Note=The gene represented in this\n"
-                        + "CC       entry is involved in disease pathogenesis.");
+                        + "CC       characterized by malignant lesions arising from the inner wall of the\n"
+                        + "CC       large intestine (the colon) and the rectum. Genetic alterations are\n"
+                        + "CC       often associated with progression from premalignant lesion (adenoma) to\n"
+                        + "CC       invasive adenocarcinoma. Risk factors for cancer of the colon and\n"
+                        + "CC       rectum include colon polyps, long-standing ulcerative colitis, and\n"
+                        + "CC       genetic family history. {ECO:0000269|PubMed:10433554,\n"
+                        + "CC       ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1}. Note=The gene\n"
+                        + "CC       represented in this entry is involved in disease pathogenesis.");
+
         String ccLineStringEvidence =
                 ("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease "
                         + "characterized by malignant lesions arising from the inner wall of "
@@ -139,16 +138,16 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
     void testEvidence2() {
         String ccLine =
                 ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
-                        + "CC       characterized by malignant lesions arising from the inner wall of\n"
-                        + "CC       the large intestine (the colon) and the rectum. Genetic\n"
-                        + "CC       alterations are often associated with progression from\n"
-                        + "CC       premalignant lesion (adenoma) to invasive adenocarcinoma. Risk\n"
-                        + "CC       factors for cancer of the colon and rectum include colon polyps,\n"
-                        + "CC       long-standing ulcerative colitis, and genetic family history.\n"
-                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
-                        + "CC       ECO:0000313|EMBL:BAG16761.1}. Note=The gene represented in this\n"
-                        + "CC       entry is involved in disease pathogenesis. {ECO:0000256|HAMAP-\n"
-                        + "CC       Rule:MF_00205, ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}.");
+                        + "CC       characterized by malignant lesions arising from the inner wall of the\n"
+                        + "CC       large intestine (the colon) and the rectum. Genetic alterations are\n"
+                        + "CC       often associated with progression from premalignant lesion (adenoma) to\n"
+                        + "CC       invasive adenocarcinoma. Risk factors for cancer of the colon and\n"
+                        + "CC       rectum include colon polyps, long-standing ulcerative colitis, and\n"
+                        + "CC       genetic family history. {ECO:0000269|PubMed:10433554,\n"
+                        + "CC       ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1}. Note=The gene\n"
+                        + "CC       represented in this entry is involved in disease pathogenesis.\n"
+                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6,\n"
+                        + "CC       ECO:0000313|PDB:3OW2}.");
         String ccLineStringEvidence =
                 ("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease "
                         + "characterized by malignant lesions arising from the inner wall of "
@@ -212,17 +211,17 @@ class CCDiseaseBuildTest extends CCBuildTestAbstr {
     void testEvidence3() {
         String ccLine =
                 ("CC   -!- DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease\n"
-                        + "CC       characterized by malignant lesions arising from the inner wall of\n"
-                        + "CC       the large intestine (the colon) and the rectum. Genetic\n"
-                        + "CC       alterations are often associated with progression from\n"
-                        + "CC       premalignant lesion (adenoma) to invasive adenocarcinoma. Risk\n"
-                        + "CC       factors for cancer of the colon and rectum include colon polyps,\n"
-                        + "CC       long-standing ulcerative colitis, and genetic family history.\n"
-                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6,\n"
-                        + "CC       ECO:0000313|EMBL:BAG16761.1}. Note=The gene represented in this\n"
-                        + "CC       entry is involved in disease pathogenesis. {ECO:0000256|HAMAP-\n"
-                        + "CC       Rule:MF_00205, ECO:0000303|Ref.6, ECO:0000313|PDB:3OW2}. Another\n"
-                        + "CC       note. {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6}.");
+                        + "CC       characterized by malignant lesions arising from the inner wall of the\n"
+                        + "CC       large intestine (the colon) and the rectum. Genetic alterations are\n"
+                        + "CC       often associated with progression from premalignant lesion (adenoma) to\n"
+                        + "CC       invasive adenocarcinoma. Risk factors for cancer of the colon and\n"
+                        + "CC       rectum include colon polyps, long-standing ulcerative colitis, and\n"
+                        + "CC       genetic family history. {ECO:0000269|PubMed:10433554,\n"
+                        + "CC       ECO:0000303|Ref.6, ECO:0000313|EMBL:BAG16761.1}. Note=The gene\n"
+                        + "CC       represented in this entry is involved in disease pathogenesis.\n"
+                        + "CC       {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000303|Ref.6,\n"
+                        + "CC       ECO:0000313|PDB:3OW2}. Another note. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
+                        + "CC       ECO:0000303|Ref.6}.");
         String ccLineStringEvidence =
                 ("DISEASE: Colorectal cancer (CRC) [MIM:114500]: A complex disease "
                         + "characterized by malignant lesions arising from the inner wall of "

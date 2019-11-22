@@ -106,7 +106,7 @@ class CcLineSubCellCommentParserTest {
 
     @Test
     void test3() {
-        String lines = "CC   -!- SUBCELLULAR LOCATION: Isoform 2: Cytoplasm (Probable).\n"
+        String lines = "CC   -!- SUBCELLULAR LOCATION: [Isoform 2]: Cytoplasm (Probable).\n"
                 //	+"CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
                 //	+"CC       terminal amino acids may participate in cell membrane attachment.\n"
                 ;
@@ -193,7 +193,7 @@ class CcLineSubCellCommentParserTest {
 
     @Test
     void testIsoformHasDot() {
-        String lines = "CC   -!- SUBCELLULAR LOCATION: Isoform UL12.5: Host mitochondrion.\n"
+        String lines = "CC   -!- SUBCELLULAR LOCATION: [Isoform UL12.5]: Host mitochondrion.\n"
                 //	+"CC       (By similarity). Secreted (By similarity). Note=The last 22 C-\n"
                 //	+"CC       terminal amino acids may participate in cell membrane attachment.\n"
                 ;
@@ -245,7 +245,7 @@ class CcLineSubCellCommentParserTest {
     @Test
     void testIsoformWithComma() {
         String lines =
-                "CC   -!- SUBCELLULAR LOCATION: Processed beta-1,4-galactosyltransferase 1:\n"
+                "CC   -!- SUBCELLULAR LOCATION: [Processed beta-1,4-galactosyltransferase 1]:\n"
                         + "CC       Secreted. Note=Soluble form found in body fluids.\n";
         UniprotLineParser<CcLineObject> parser =
                 new DefaultUniprotLineParserFactory().createCcLineParser();
@@ -355,7 +355,7 @@ class CcLineSubCellCommentParserTest {
                         + "CC       Note=Loosely associated with the inner membrane.\n"
                         + "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
                         + "CC       membrane protein (By similarity).\n"
-                        + "CC   -!- SUBCELLULAR LOCATION: Spike protein S2: Virion membrane; Single-\n"
+                        + "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane; Single-\n"
                         + "CC       pass type I membrane sdssds protein (By similarity). Host\n"
                         + "CC       endoplasmic reticulum-Golgi intermediate compartment membrane;\n"
                         + "CC       Type I me (By similarity); Another top. Note=Accumulates in the\n"
@@ -366,7 +366,7 @@ class CcLineSubCellCommentParserTest {
                         + "CC   -!- SUBCELLULAR LOCATION: Mitochondrion inner membrane; Multi-pass\n"
                         + "CC       membrane protein (By similarity). {ECO:0000313|EMBL:BAG16761.1,\n"
                         + "CC       ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}.\n"
-                        + "CC   -!- SUBCELLULAR LOCATION: Spike protein S2: Virion membrane\n"
+                        + "CC   -!- SUBCELLULAR LOCATION: [Spike protein S2]: Virion membrane\n"
                         + "CC       {ECO:0000313|EMBL:BAG16761.1}; Single-pass type I membrane sdssds\n"
                         + "CC       protein (By similarity) {ECO:0000269|PubMed:10433554}. Host\n"
                         + "CC       endoplasmic reticulum-Golgi intermediate compartment membrane\n"

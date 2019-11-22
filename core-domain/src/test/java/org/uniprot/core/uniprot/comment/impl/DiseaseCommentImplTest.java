@@ -26,10 +26,13 @@ class DiseaseCommentImplTest {
     void testDiseaseCommentImpl() {
         Note note = createNote();
 
-        DiseaseComment comment = new DiseaseCommentImpl(disease, note);
+        String molecule = "isoform 1";
+
+        DiseaseComment comment = new DiseaseCommentImpl(molecule, disease, note);
         assertEquals(note, comment.getNote());
         assertEquals(CommentType.DISEASE, comment.getCommentType());
         assertEquals(disease, comment.getDisease());
+        assertEquals(molecule, comment.getMolecule());
     }
 
     @Test
@@ -40,7 +43,7 @@ class DiseaseCommentImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DiseaseComment impl = new DiseaseCommentImpl(disease, createNote());
+        DiseaseComment impl = new DiseaseCommentImpl("molecule",disease, createNote());
         DiseaseComment obj = new DiseaseCommentBuilder().from(impl).build();
 
         assertTrue(impl.hasDefinedDisease());

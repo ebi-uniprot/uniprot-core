@@ -8,12 +8,12 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
@@ -37,7 +37,7 @@ public class FeatureTest {
 
     @Test
     void testFeatureExact() {
-        Range location = new Range(2, 8);
+        FeatureLocation location = new FeatureLocation(2, 8);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -45,7 +45,9 @@ public class FeatureTest {
 
     @Test
     void testFeatureOut() {
-        Range location = new Range(2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
+        FeatureLocation location =
+                new FeatureLocation(
+                        "seq1", 2, 8, PositionModifier.OUTSIDE, PositionModifier.OUTSIDE);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -53,7 +55,8 @@ public class FeatureTest {
 
     @Test
     void testFeatureUnsure() {
-        Range location = new Range(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE);
+        FeatureLocation location =
+                new FeatureLocation(2, 8, PositionModifier.UNSURE, PositionModifier.UNSURE);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -61,7 +64,9 @@ public class FeatureTest {
 
     @Test
     void testFeatureUnknow() {
-        Range location = new Range(-1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
+        FeatureLocation location =
+                new FeatureLocation(
+                        "seqId", -1, -1, PositionModifier.UNKNOWN, PositionModifier.UNKNOWN);
         Feature feature = new FeatureBuilder().type(FeatureType.CHAIN).location(location).build();
 
         ValidateJson.verifyJsonRoundTripParser(feature);
@@ -136,7 +141,9 @@ public class FeatureTest {
                         .id("db id")
                         .build();
 
-        Range location = new Range(2, 8);
+        FeatureLocation location =
+                new FeatureLocation(
+                        "sequence 1", 2, 8, PositionModifier.EXACT, PositionModifier.EXACT);
         List<Evidence> evidences = CreateUtils.createEvidenceList("ECO:0000269|PubMed:11389730");
         return new FeatureBuilder()
                 .type(FeatureType.CHAIN)
