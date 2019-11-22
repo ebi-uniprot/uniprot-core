@@ -42,7 +42,8 @@ class RnaEditingCommentImplTest {
         assertEquals(pos.hashCode(), posBuild.hashCode());
 
         RnaEditingComment impl =
-                new RnaEditingCommentImpl("molecule",
+                new RnaEditingCommentImpl(
+                        "molecule",
                         RnaEditingLocationType.Undetermined,
                         Collections.singletonList(pos),
                         createNote());

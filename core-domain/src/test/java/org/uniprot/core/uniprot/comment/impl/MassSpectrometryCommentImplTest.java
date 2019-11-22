@@ -3,8 +3,6 @@ package org.uniprot.core.uniprot.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
@@ -20,7 +18,8 @@ class MassSpectrometryCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         MassSpectrometryComment impl =
-                new MassSpectrometryCommentImpl("mol",
+                new MassSpectrometryCommentImpl(
+                        "mol",
                         MassSpectrometryMethod.ELECTROSPRAY,
                         0.1F,
                         0.2F,

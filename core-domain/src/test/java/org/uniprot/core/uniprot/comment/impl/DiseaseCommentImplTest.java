@@ -43,7 +43,7 @@ class DiseaseCommentImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DiseaseComment impl = new DiseaseCommentImpl("molecule",disease, createNote());
+        DiseaseComment impl = new DiseaseCommentImpl("molecule", disease, createNote());
         DiseaseComment obj = new DiseaseCommentBuilder().from(impl).build();
 
         assertTrue(impl.hasDefinedDisease());

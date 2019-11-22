@@ -31,7 +31,7 @@ public final class RnaEditingCommentBuilder
         return this.positions(instance.getPositions())
                 .locationType(instance.getLocationType())
                 .molecule(instance.getMolecule())
-          .note(instance.getNote());
+                .note(instance.getNote());
     }
 
     public RnaEditingCommentBuilder molecule(String molecule) {

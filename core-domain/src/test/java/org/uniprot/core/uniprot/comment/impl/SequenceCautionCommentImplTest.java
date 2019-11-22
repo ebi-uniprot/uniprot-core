@@ -3,8 +3,6 @@ package org.uniprot.core.uniprot.comment.impl;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
-import java.util.Collections;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.SequenceCautionComment;
 import org.uniprot.core.uniprot.comment.SequenceCautionType;
@@ -20,7 +18,8 @@ class SequenceCautionCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         SequenceCautionComment impl =
-                new SequenceCautionCommentImpl("molecule",
+                new SequenceCautionCommentImpl(
+                        "molecule",
                         SequenceCautionType.ERRONEOUS_TERMIINATION,
                         "sequ",
                         "note",
