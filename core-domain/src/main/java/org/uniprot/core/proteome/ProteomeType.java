@@ -2,6 +2,8 @@ package org.uniprot.core.proteome;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum ProteomeType implements EnumDisplay<ProteomeType> {
     NORMAL("Complete proteome"),
     REFERENCE("Reference proteome"),
@@ -15,12 +17,12 @@ public enum ProteomeType implements EnumDisplay<ProteomeType> {
         this.name = name;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getName();
     }
 }

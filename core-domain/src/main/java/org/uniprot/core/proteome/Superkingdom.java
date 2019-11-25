@@ -2,6 +2,8 @@ package org.uniprot.core.proteome;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum Superkingdom implements EnumDisplay<Superkingdom> {
     ARCHAEA("archaea"),
     VIRUSES("viruses"),
@@ -14,18 +16,18 @@ public enum Superkingdom implements EnumDisplay<Superkingdom> {
         this.name = name;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getName();
     }
 
-    public static Superkingdom fromValue(String type) {
+    public static @Nonnull Superkingdom fromValue(String type) {
         for (Superkingdom gnType : Superkingdom.values()) {
-            if (gnType.getName().equals(type)) return gnType;
+            if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }
         throw new IllegalArgumentException(type);
     }
