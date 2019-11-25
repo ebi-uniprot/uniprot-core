@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 
@@ -19,14 +19,14 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testInterProDomain() {
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf = new SequenceFeatureBuilder().interproGroup(domain).build();
         assertEquals(domain, sf.getInterProDomain());
     }
 
     @Test
     void testSignatureDbType() {
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)
@@ -38,7 +38,7 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testSignatureDbId() {
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)
@@ -53,7 +53,7 @@ class SequenceFeatureBuilderTest {
     @Test
     void testLocations() {
         List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)
@@ -70,7 +70,7 @@ class SequenceFeatureBuilderTest {
     @Test
     void testAddLocation() {
         List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)
@@ -88,7 +88,7 @@ class SequenceFeatureBuilderTest {
     @Test
     void testFrom() {
         List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)

@@ -13,7 +13,7 @@ import org.uniprot.core.impl.ValueImpl;
 import org.uniprot.core.json.parser.JsonConfig;
 import org.uniprot.core.json.parser.deserializer.LocalDateDeserializer;
 import org.uniprot.core.json.parser.serializer.LocalDateSerializer;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
 import org.uniprot.core.uniparc.UniParcEntry;
@@ -68,7 +68,7 @@ public class UniParcJsonConfig extends JsonConfig {
         mod.addSerializer(LocalDate.class, new LocalDateSerializer());
         mod.addDeserializer(LocalDate.class, new LocalDateDeserializer());
         mod.addAbstractTypeMapping(UniParcEntry.class, UniParcEntryImpl.class);
-        mod.addAbstractTypeMapping(InterproGroup.class, InterProGroupImpl.class);
+        mod.addAbstractTypeMapping(InterProGroup.class, InterProGroupImpl.class);
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
         mod.addAbstractTypeMapping(Taxonomy.class, TaxonomyImpl.class);
         mod.addAbstractTypeMapping(

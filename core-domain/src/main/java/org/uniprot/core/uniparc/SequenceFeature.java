@@ -10,7 +10,7 @@ import org.uniprot.core.Location;
  * @date: 22 May 2019
  */
 public interface SequenceFeature extends Serializable {
-    InterproGroup getInterProDomain();
+    InterProGroup getInterProDomain();
 
     SignatureDbType getSignatureDbType();
 

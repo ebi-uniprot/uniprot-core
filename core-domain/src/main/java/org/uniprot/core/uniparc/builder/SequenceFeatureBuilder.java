@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.Location;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.impl.SequenceFeatureImpl;
@@ -16,7 +16,7 @@ import org.uniprot.core.util.Utils;
  * @date: 23 May 2019
  */
 public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, SequenceFeature> {
-    private InterproGroup interproGroup;
+    private InterProGroup interproGroup;
     private SignatureDbType dbType;
     private String dbId;
     private List<Location> locations = new ArrayList<>();
@@ -26,7 +26,7 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, S
         return new SequenceFeatureImpl(interproGroup, dbType, dbId, locations);
     }
 
-    public SequenceFeatureBuilder interproGroup(InterproGroup interproGroup) {
+    public SequenceFeatureBuilder interproGroup(InterProGroup interproGroup) {
         this.interproGroup = interproGroup;
         return this;
     }

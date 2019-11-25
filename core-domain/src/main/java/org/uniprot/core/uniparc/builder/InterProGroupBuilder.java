@@ -1,19 +1,19 @@
 package org.uniprot.core.uniparc.builder;
 
 import org.uniprot.core.Builder;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.impl.InterProGroupImpl;
 
 /**
  * @author jluo
  * @date: 23 May 2019
  */
-public class InterProGroupBuilder implements Builder<InterProGroupBuilder, InterproGroup> {
+public class InterProGroupBuilder implements Builder<InterProGroupBuilder, InterProGroup> {
     private String id;
     private String name;
 
     @Override
-    public InterproGroup build() {
+    public InterProGroup build() {
         return new InterProGroupImpl(id, name);
     }
 
@@ -28,7 +28,7 @@ public class InterProGroupBuilder implements Builder<InterProGroupBuilder, Inter
     }
 
     @Override
-    public InterProGroupBuilder from(InterproGroup instance) {
+    public InterProGroupBuilder from(InterProGroup instance) {
         this.id = instance.getId();
         this.name = instance.getName();
         return this;
