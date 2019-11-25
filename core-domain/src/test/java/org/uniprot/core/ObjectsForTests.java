@@ -523,56 +523,82 @@ public class ObjectsForTests {
         return Arrays.asList(cofactor, cofactor2);
     }
 
-    public static List<DBCrossReference<ProteomeXReferenceType>> proteomeXReferenceTypes(){
+    public static List<DBCrossReference<ProteomeXReferenceType>> proteomeXReferenceTypes() {
         DBCrossReference<ProteomeXReferenceType> xref1 =
-          new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-            .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
-            .id("ACA121")
-            .build();
+                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
+                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
+                        .id("ACA121")
+                        .build();
         DBCrossReference<ProteomeXReferenceType> xref2 =
-          new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-            .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
-            .id("ADFDA121")
-            .build();
+                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
+                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
+                        .id("ADFDA121")
+                        .build();
         return Arrays.asList(xref1, xref2);
     }
 
-    public static ProteomeEntry createProteomeEntry(){
-        ComponentImpl component = new ComponentImpl("name", "desc", 5, ComponentType.SEGMENTED_GENOME, proteomeXReferenceTypes());
+    public static ProteomeEntry createProteomeEntry() {
+        ComponentImpl component =
+                new ComponentImpl(
+                        "name",
+                        "desc",
+                        5,
+                        ComponentType.SEGMENTED_GENOME,
+                        proteomeXReferenceTypes());
         JournalArticleBuilder builder = new JournalArticleBuilder();
         RedundantProteome rp = new RedundantProteomeImpl(new ProteomeIdImpl("id"), 4.5F);
         updateCitationBuilderWithCommonAttributes(builder);
         new UniProtAccessionImpl("val");
-        ProteinImpl protein = new ProteinImpl(new UniProtAccessionImpl("val"), UniProtEntryType.INACTIVE, 20L, "gene",
-          GeneNameType.ORF);
-        CanonicalProteinImpl canonicalProtein = new CanonicalProteinImpl(protein, singletonList(protein));
-        return new ProteomeEntryImpl(new ProteomeIdImpl("id"), taxonomies().get(0), "description",
-          LocalDate.now(), ProteomeType.NORMAL, new ProteomeIdImpl("id1"), "strain", "isolate",
-          proteomeXReferenceTypes(), Collections.singletonList(component), Collections.singletonList(builder.build()),
-          Collections.singletonList(rp), new ProteomeIdImpl("panProteome"), 5, Superkingdom.EUKARYOTA,
-          90, Collections.singletonList(getCompleteTaxonomyLineage()), Collections.singletonList(canonicalProtein),
-          "db");
+        ProteinImpl protein =
+                new ProteinImpl(
+                        new UniProtAccessionImpl("val"),
+                        UniProtEntryType.INACTIVE,
+                        20L,
+                        "gene",
+                        GeneNameType.ORF);
+        CanonicalProteinImpl canonicalProtein =
+                new CanonicalProteinImpl(protein, singletonList(protein));
+        return new ProteomeEntryImpl(
+                new ProteomeIdImpl("id"),
+                taxonomies().get(0),
+                "description",
+                LocalDate.now(),
+                ProteomeType.NORMAL,
+                new ProteomeIdImpl("id1"),
+                "strain",
+                "isolate",
+                proteomeXReferenceTypes(),
+                Collections.singletonList(component),
+                Collections.singletonList(builder.build()),
+                Collections.singletonList(rp),
+                new ProteomeIdImpl("panProteome"),
+                5,
+                Superkingdom.EUKARYOTA,
+                90,
+                Collections.singletonList(getCompleteTaxonomyLineage()),
+                Collections.singletonList(canonicalProtein),
+                "db");
     }
 
-    public static void updateCitationBuilderWithCommonAttributes(AbstractCitationBuilder<?, ?> builder) {
+    public static void updateCitationBuilderWithCommonAttributes(
+            AbstractCitationBuilder<?, ?> builder) {
         final String TITLE = "Some title";
         final String PUBLICATION_DATE = "2015-MAY";
         final List<String> GROUPS = asList("T1", "T2");
         final List<String> AUTHORS = asList("Tom", "John");
-        builder
-          .title(TITLE)
-          .publicationDate(PUBLICATION_DATE)
-          .authoringGroups(GROUPS)
-          .authors(AUTHORS)
-          .citationXrefs(
-            asList(
-              new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(CitationXrefType.PUBMED)
-                .id("id1")
-                .build(),
-              new DBCrossReferenceBuilder<CitationXrefType>()
-                .databaseType(CitationXrefType.AGRICOLA)
-                .id("id2")
-                .build()));
+        builder.title(TITLE)
+                .publicationDate(PUBLICATION_DATE)
+                .authoringGroups(GROUPS)
+                .authors(AUTHORS)
+                .citationXrefs(
+                        asList(
+                                new DBCrossReferenceBuilder<CitationXrefType>()
+                                        .databaseType(CitationXrefType.PUBMED)
+                                        .id("id1")
+                                        .build(),
+                                new DBCrossReferenceBuilder<CitationXrefType>()
+                                        .databaseType(CitationXrefType.AGRICOLA)
+                                        .id("id2")
+                                        .build()));
     }
 }

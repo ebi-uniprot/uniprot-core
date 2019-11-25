@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
-
-import javax.annotation.Nonnull;
 
 public enum ProteomeXReferenceType implements DatabaseType, EnumDisplay<ProteomeXReferenceType> {
     GENOME_ASSEMBLY("GenomeAssembly"),

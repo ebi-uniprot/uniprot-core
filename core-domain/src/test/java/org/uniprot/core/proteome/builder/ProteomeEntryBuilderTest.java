@@ -1,6 +1,5 @@
 package org.uniprot.core.proteome.builder;
 
-import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.citation.builder.SubmissionBuilder;
 import org.uniprot.core.proteome.*;

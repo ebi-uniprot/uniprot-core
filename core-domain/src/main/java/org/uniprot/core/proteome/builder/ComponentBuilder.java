@@ -3,6 +3,8 @@ package org.uniprot.core.proteome.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.proteome.Component;
@@ -11,8 +13,6 @@ import org.uniprot.core.proteome.ProteomeXReferenceType;
 import org.uniprot.core.proteome.impl.ComponentImpl;
 import org.uniprot.core.util.Utils;
 
-import javax.annotation.Nonnull;
-
 public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
     private String name;
     private String description;
@@ -20,8 +20,7 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
     private ComponentType type;
     private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences = new ArrayList<>();
 
-    public static @Nonnull
-    ComponentBuilder newInstance() {
+    public static @Nonnull ComponentBuilder newInstance() {
         return new ComponentBuilder();
     }
 
@@ -41,7 +40,8 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
         return this;
     }
 
-    public @Nonnull ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
+    public @Nonnull ComponentBuilder addDbXReference(
+            DBCrossReference<ProteomeXReferenceType> dbXReference) {
         Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }

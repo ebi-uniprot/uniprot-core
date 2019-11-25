@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.Citation;
@@ -12,8 +14,6 @@ import org.uniprot.core.proteome.impl.ProteomeEntryImpl;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, ProteomeEntry> {
     private ProteomeId id;
@@ -181,7 +181,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder redundantProteomes(List<RedundantProteome> redundantProteomes) {
+    public @Nonnull ProteomeEntryBuilder redundantProteomes(
+            List<RedundantProteome> redundantProteomes) {
         this.redundantProteomes = Utils.modifiableList(redundantProteomes);
         return this;
     }
@@ -221,13 +222,13 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, Prote
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder canonicalProteins(List<CanonicalProtein> canonicalProteins) {
+    public @Nonnull ProteomeEntryBuilder canonicalProteins(
+            List<CanonicalProtein> canonicalProteins) {
         this.canonicalProteins = Utils.modifiableList(canonicalProteins);
         return this;
     }
 
-    public @Nonnull
-    ProteomeEntryBuilder addCanonicalProtein(CanonicalProtein canonicalProtein) {
+    public @Nonnull ProteomeEntryBuilder addCanonicalProtein(CanonicalProtein canonicalProtein) {
         Utils.addOrIgnoreNull(canonicalProtein, canonicalProteins);
         return this;
     }

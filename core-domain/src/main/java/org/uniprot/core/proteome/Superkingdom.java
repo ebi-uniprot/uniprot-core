@@ -1,8 +1,8 @@
 package org.uniprot.core.proteome;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum Superkingdom implements EnumDisplay<Superkingdom> {
     ARCHAEA("archaea"),

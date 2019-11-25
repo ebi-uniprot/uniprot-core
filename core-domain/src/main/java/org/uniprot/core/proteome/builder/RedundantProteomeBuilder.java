@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.RedundantProteome;
 import org.uniprot.core.proteome.impl.RedundantProteomeImpl;
-
-import javax.annotation.Nonnull;
 
 public class RedundantProteomeBuilder
         implements Builder<RedundantProteomeBuilder, RedundantProteome> {

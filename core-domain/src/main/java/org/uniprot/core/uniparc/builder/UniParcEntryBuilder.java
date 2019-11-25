@@ -3,6 +3,8 @@ package org.uniprot.core.uniparc.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
@@ -12,8 +14,6 @@ import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcEntryImpl;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

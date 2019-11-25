@@ -1,10 +1,10 @@
 package org.uniprot.core.proteome.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.impl.ProteomeIdImpl;
-
-import javax.annotation.Nonnull;
 
 public class ProteomeIdBuilder extends AbstractValueBuilder<ProteomeIdBuilder, ProteomeId> {
     public ProteomeIdBuilder(String value) {
@@ -12,8 +12,7 @@ public class ProteomeIdBuilder extends AbstractValueBuilder<ProteomeIdBuilder, P
     }
 
     @Override
-    public @Nonnull
-    ProteomeId build() {
+    public @Nonnull ProteomeId build() {
         return new ProteomeIdImpl(value);
     }
 

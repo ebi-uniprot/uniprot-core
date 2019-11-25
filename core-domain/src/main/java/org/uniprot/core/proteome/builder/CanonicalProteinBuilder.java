@@ -3,13 +3,13 @@ package org.uniprot.core.proteome.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.CanonicalProtein;
 import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.CanonicalProteinImpl;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder, CanonicalProtein> {
     private Protein canonicalProtein;

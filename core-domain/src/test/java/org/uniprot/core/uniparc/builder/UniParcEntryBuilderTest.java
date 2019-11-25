@@ -155,7 +155,10 @@ class UniParcEntryBuilderTest {
 
     @Test
     void canAddSingleDatabaseCrossReference() {
-        UniParcEntry obj = new UniParcEntryBuilder().addDatabaseCrossReference(uniParcDBCrossReferences().get(0)).build();
+        UniParcEntry obj =
+                new UniParcEntryBuilder()
+                        .addDatabaseCrossReference(uniParcDBCrossReferences().get(0))
+                        .build();
         assertNotNull(obj.getDbXReferences());
         assertFalse(obj.getDbXReferences().isEmpty());
     }
@@ -169,7 +172,8 @@ class UniParcEntryBuilderTest {
 
     @Test
     void canAddSingleSequenceFeature() {
-        UniParcEntry obj = new UniParcEntryBuilder().addSequenceFeature(sequenceFeatures().get(0)).build();
+        UniParcEntry obj =
+                new UniParcEntryBuilder().addSequenceFeature(sequenceFeatures().get(0)).build();
         assertNotNull(obj.getSequenceFeatures());
         assertFalse(obj.getSequenceFeatures().isEmpty());
     }

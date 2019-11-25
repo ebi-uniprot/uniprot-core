@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

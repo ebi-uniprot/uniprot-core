@@ -5,9 +5,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.uniprot.core.ObjectsForTests.proteomeXReferenceTypes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
@@ -68,7 +65,8 @@ class ComponentBuilderTest {
                         .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
-        Component component = ComponentBuilder.newInstance().dbXReferences(proteomeXReferenceTypes()).build();
+        Component component =
+                ComponentBuilder.newInstance().dbXReferences(proteomeXReferenceTypes()).build();
         assertEquals(2, component.getDbXReferences().size());
         assertThat(component.getDbXReferences(), hasItem(xref2));
     }

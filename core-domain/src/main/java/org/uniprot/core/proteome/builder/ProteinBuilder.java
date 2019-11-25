@@ -1,5 +1,7 @@
 package org.uniprot.core.proteome.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
@@ -8,8 +10,6 @@ import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 
-import javax.annotation.Nonnull;
-
 public class ProteinBuilder implements Builder<ProteinBuilder, Protein> {
     private UniProtAccession accession;
     private UniProtEntryType entryType;
@@ -17,8 +17,7 @@ public class ProteinBuilder implements Builder<ProteinBuilder, Protein> {
     private String geneName;
     private GeneNameType geneNameType;
 
-    public static @Nonnull
-    ProteinBuilder newInstance() {
+    public static @Nonnull ProteinBuilder newInstance() {
         return new ProteinBuilder();
     }
 
