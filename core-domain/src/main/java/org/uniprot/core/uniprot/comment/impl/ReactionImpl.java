@@ -19,6 +19,7 @@ public class ReactionImpl implements Reaction {
     private ECNumber ecNumber;
     private List<Evidence> evidences;
 
+    // no arg constructor for JSON deserialization
     ReactionImpl() {
         this.evidences = Collections.emptyList();
         this.reactionReferences = Collections.emptyList();
@@ -30,17 +31,9 @@ public class ReactionImpl implements Reaction {
             ECNumber ecNumber,
             List<Evidence> evidences) {
         this.name = name;
-        if ((reactionReferences == null) || reactionReferences.isEmpty()) {
-            this.reactionReferences = Collections.emptyList();
-        } else {
-            this.reactionReferences = Collections.unmodifiableList(reactionReferences);
-        }
+        this.reactionReferences = Utils.unmodifiableList(reactionReferences);
+        this.evidences = Utils.unmodifiableList(evidences);
         this.ecNumber = ecNumber;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
     }
 
     @Override

@@ -18,6 +18,7 @@ public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
     private String note;
     private List<Evidence> evidences;
 
+    // no arg constructor for JSON deserialization
     SequenceCautionCommentImpl() {
         super(CommentType.SEQUENCE_CAUTION, null);
         this.evidences = Collections.emptyList();
@@ -33,11 +34,7 @@ public class SequenceCautionCommentImpl extends CommentHasMoleculeImpl
         this.sequenceCautionType = sequenceCautionType;
         this.sequence = sequence;
         this.note = note;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

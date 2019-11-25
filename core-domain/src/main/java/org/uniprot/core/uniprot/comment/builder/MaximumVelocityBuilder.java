@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.MaximumVelocity;
 import org.uniprot.core.uniprot.comment.impl.MaximumVelocityImpl;
@@ -23,12 +25,12 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, M
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public MaximumVelocity build() {
+    public @Nonnull MaximumVelocity build() {
         return new MaximumVelocityImpl(velocity, unit, enzyme, evidences);
     }
 
     @Override
-    public MaximumVelocityBuilder from(MaximumVelocity instance) {
+    public @Nonnull MaximumVelocityBuilder from(@Nonnull MaximumVelocity instance) {
         evidences.clear();
         return this.evidences(instance.getEvidences())
                 .enzyme(instance.getEnzyme())

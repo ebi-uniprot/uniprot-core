@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.Note;
@@ -12,12 +14,12 @@ public class DiseaseCommentBuilder
     private Note note;
 
     @Override
-    public DiseaseComment build() {
+    public @Nonnull DiseaseComment build() {
         return new DiseaseCommentImpl(molecule, disease, note);
     }
 
     @Override
-    public DiseaseCommentBuilder from(DiseaseComment instance) {
+    public @Nonnull DiseaseCommentBuilder from(@Nonnull DiseaseComment instance) {
         return this.disease(instance.getDisease())
                 .note(instance.getNote())
                 .molecule(instance.getMolecule());

@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.impl.InteractionCommentImpl;
@@ -25,12 +27,12 @@ public class InteractionCommentBuilder
     }
 
     @Override
-    public InteractionComment build() {
+    public @Nonnull InteractionComment build() {
         return new InteractionCommentImpl(interactions);
     }
 
     @Override
-    public InteractionCommentBuilder from(InteractionComment instance) {
+    public @Nonnull InteractionCommentBuilder from(@Nonnull InteractionComment instance) {
         interactions.clear();
         return this.interactions(instance.getInteractions());
     }

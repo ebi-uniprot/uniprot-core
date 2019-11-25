@@ -1,5 +1,9 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import static java.util.Objects.nonNull;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.comment.Interaction;
@@ -16,7 +20,7 @@ public final class InteractionBuilder implements Builder<InteractionBuilder, Int
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
-    public Interaction build() {
+    public @Nonnull Interaction build() {
         return new InteractionImpl(
                 type,
                 uniProtAccession,
@@ -27,13 +31,16 @@ public final class InteractionBuilder implements Builder<InteractionBuilder, Int
     }
 
     @Override
-    public InteractionBuilder from(Interaction instance) {
-        return this.uniProtAccession(instance.getUniProtAccession())
+    public @Nonnull InteractionBuilder from(@Nonnull Interaction instance) {
+        this.uniProtAccession(instance.getUniProtAccession())
                 .geneName(instance.getGeneName())
                 .interactionType(instance.getType())
-                .numberOfExperiments(instance.getNumberOfExperiments())
-                .firstInteractor(instance.getFirstInteractor().getValue())
-                .secondInteractor(instance.getSecondInteractor().getValue());
+                .numberOfExperiments(instance.getNumberOfExperiments());
+        if (nonNull(instance.getFirstInteractor()))
+            this.firstInteractor(instance.getFirstInteractor().getValue());
+        if (nonNull((instance.getSecondInteractor())))
+            this.secondInteractor(instance.getSecondInteractor().getValue());
+        return this;
     }
 
     public InteractionBuilder interactionType(InteractionType type) {

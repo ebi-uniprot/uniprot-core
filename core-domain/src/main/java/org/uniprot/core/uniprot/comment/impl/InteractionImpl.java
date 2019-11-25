@@ -18,6 +18,7 @@ public class InteractionImpl implements Interaction {
     private Interactor firstInteractor;
     private Interactor secondInteractor;
 
+    // no arg constructor for JSON deserialization
     InteractionImpl() {}
 
     public InteractionImpl(
@@ -121,7 +122,8 @@ public class InteractionImpl implements Interaction {
         /** */
         private static final long serialVersionUID = 1L;
 
-        private InteractorImpl() {
+        // no arg constructor for JSON deserialization
+        InteractorImpl() {
             super(null);
         }
 

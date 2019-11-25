@@ -2,7 +2,6 @@ package org.uniprot.core.uniprot.comment;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** User: mkleen@ebi.ac.uk Date: 28-Nov-2005 Time: 11:24:21 */
 public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> {
     DISPLAYED("displayed", "Displayed"),
     EXTERNAL("external", "External"),
@@ -19,7 +18,7 @@ public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> 
 
     public static IsoformSequenceStatus typeOf(String value) {
         for (IsoformSequenceStatus status : IsoformSequenceStatus.values()) {
-            if (status.getValue().equals(value)) {
+            if (status.getValue().equalsIgnoreCase(value)) {
                 return status;
             }
         }

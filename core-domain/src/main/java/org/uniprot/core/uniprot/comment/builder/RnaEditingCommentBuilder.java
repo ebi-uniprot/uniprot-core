@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.RnaEditingComment;
@@ -19,16 +21,17 @@ public final class RnaEditingCommentBuilder
     private List<RnaEdPosition> positions = new ArrayList<>();
     private Note note;
 
-    public RnaEditingComment build() {
+    public @Nonnull RnaEditingComment build() {
         return new RnaEditingCommentImpl(molecule, locationType, positions, note);
     }
 
     @Override
-    public RnaEditingCommentBuilder from(RnaEditingComment instance) {
+    public @Nonnull RnaEditingCommentBuilder from(@Nonnull RnaEditingComment instance) {
         positions.clear();
         return this.positions(instance.getPositions())
                 .locationType(instance.getLocationType())
-                .molecule(instance.getMolecule());
+                .molecule(instance.getMolecule())
+                .note(instance.getNote());
     }
 
     public RnaEditingCommentBuilder molecule(String molecule) {

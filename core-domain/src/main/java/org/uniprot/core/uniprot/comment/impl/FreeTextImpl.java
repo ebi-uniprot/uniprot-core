@@ -12,6 +12,7 @@ public class FreeTextImpl implements FreeText {
     private static final long serialVersionUID = -4309930597833279389L;
     private List<EvidencedValue> texts;
 
+    // no arg constructor for JSON deserialization
     FreeTextImpl() {
         this.texts = Collections.emptyList();
     }

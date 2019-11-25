@@ -19,6 +19,7 @@ public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl
     private String note;
     private List<Evidence> evidences;
 
+    // no arg constructor for JSON deserialization
     MassSpectrometryCommentImpl() {
         super(CommentType.MASS_SPECTROMETRY, null);
         this.evidences = Collections.emptyList();
@@ -37,11 +38,7 @@ public class MassSpectrometryCommentImpl extends CommentHasMoleculeImpl
 
         this.molWeightError = molWeightError;
         this.note = note;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

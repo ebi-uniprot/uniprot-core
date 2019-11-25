@@ -34,6 +34,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
     private CommentType commentType;
     private String molecule;
 
+    // no arg constructor for JSON deserialization
     FreeTextCommentImpl() {
         super(Collections.emptyList());
     }

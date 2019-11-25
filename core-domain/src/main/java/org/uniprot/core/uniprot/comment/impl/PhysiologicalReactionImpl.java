@@ -17,6 +17,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences;
 
+    // no arg constructor for JSON deserialization
     PhysiologicalReactionImpl() {
         this.evidences = Collections.emptyList();
     }
@@ -27,11 +28,7 @@ public class PhysiologicalReactionImpl implements PhysiologicalReaction {
             List<Evidence> evidences) {
         this.directionType = directionType;
         this.reactionReference = reactionReference;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

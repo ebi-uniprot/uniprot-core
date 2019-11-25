@@ -13,6 +13,7 @@ public class InteractionCommentImpl extends CommentImpl implements InteractionCo
     private static final long serialVersionUID = 460447737850135638L;
     private List<Interaction> interactions;
 
+    // no arg constructor for JSON deserialization
     InteractionCommentImpl() {
         super(CommentType.INTERACTION);
         this.interactions = Collections.emptyList();
@@ -20,11 +21,7 @@ public class InteractionCommentImpl extends CommentImpl implements InteractionCo
 
     public InteractionCommentImpl(List<Interaction> interactions) {
         super(CommentType.INTERACTION);
-        if ((interactions == null) || interactions.isEmpty()) {
-            this.interactions = Collections.emptyList();
-        } else {
-            this.interactions = Collections.unmodifiableList(interactions);
-        }
+        this.interactions = Utils.unmodifiableList(interactions);
     }
 
     @Override

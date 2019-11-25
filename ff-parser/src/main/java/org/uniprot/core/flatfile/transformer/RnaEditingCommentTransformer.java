@@ -67,7 +67,11 @@ public class RnaEditingCommentTransformer implements CommentTransformer<RnaEditi
                     List<Evidence> evidences = new ArrayList<>();
                     pos = CommentTransformerHelper.stripEvidences(pos, evidences);
 
-                    RnaEdPosition position = new RnaEditingPositionBuilder(pos, evidences).build();
+                    RnaEdPosition position =
+                            new RnaEditingPositionBuilder()
+                                    .position(pos)
+                                    .evidences(evidences)
+                                    .build();
                     positions.add(position);
                 }
                 builder.positions(positions);

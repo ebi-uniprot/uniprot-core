@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.RnaEdPosition;
 import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentImpl;
@@ -21,20 +23,13 @@ public class RnaEditingPositionBuilder
     private String position;
     private List<Evidence> evidences = new ArrayList<>();
 
-    private RnaEditingPositionBuilder() {}
-
-    public RnaEditingPositionBuilder(String position, List<Evidence> evidences) {
-        this.position = position;
-        this.evidences = this.evidences = modifiableList(evidences);
-    }
-
     @Override
-    public RnaEdPosition build() {
+    public @Nonnull RnaEdPosition build() {
         return new RnaEditingCommentImpl.RnaEdPositionImpl(position, evidences);
     }
 
     @Override
-    public RnaEditingPositionBuilder from(RnaEdPosition instance) {
+    public @Nonnull RnaEditingPositionBuilder from(@Nonnull RnaEdPosition instance) {
         evidences.clear();
         return this.evidences(instance.getEvidences()).position(instance.getPosition());
     }

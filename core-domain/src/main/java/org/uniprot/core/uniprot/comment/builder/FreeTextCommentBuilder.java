@@ -7,6 +7,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl;
@@ -19,7 +21,7 @@ public class FreeTextCommentBuilder
     private List<EvidencedValue> texts = new ArrayList<>();
 
     @Override
-    public FreeTextComment build() {
+    public @Nonnull FreeTextComment build() {
         if (!isFreeTextCommentType(commentType)) {
             throw new IllegalArgumentException(commentType + " is not free text comment");
         }
@@ -27,7 +29,7 @@ public class FreeTextCommentBuilder
     }
 
     @Override
-    public FreeTextCommentBuilder from(FreeTextComment instance) {
+    public @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
         texts.clear();
         return this.commentType(instance.getCommentType())
                 .texts(instance.getTexts())

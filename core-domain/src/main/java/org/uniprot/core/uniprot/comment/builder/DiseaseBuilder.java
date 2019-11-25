@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.uniprot.comment.Disease;
@@ -21,12 +23,12 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     private DBCrossReference<DiseaseReferenceType> reference;
     private List<Evidence> evidences = new ArrayList<>();
 
-    public Disease build() {
+    public @Nonnull Disease build() {
         return new DiseaseImpl(diseaseId, diseaseAc, acronym, description, reference, evidences);
     }
 
     @Override
-    public DiseaseBuilder from(Disease instance) {
+    public @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
         return this.acronym(instance.getAcronym())
                 .description(instance.getDescription())
                 .diseaseAc(instance.getDiseaseAccession())

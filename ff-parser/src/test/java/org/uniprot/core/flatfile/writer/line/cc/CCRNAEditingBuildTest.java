@@ -215,6 +215,6 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     }
 
     private RnaEdPosition buildPosition(String p, List<String> evs) {
-        return new RnaEditingPositionBuilder(p, createEvidence(evs)).build();
+        return new RnaEditingPositionBuilder().position(p).evidences(createEvidence(evs)).build();
     }
 }

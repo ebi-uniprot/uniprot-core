@@ -15,6 +15,7 @@ public class WebResourceCommentImpl extends CommentHasMoleculeImpl implements We
     private boolean ftp;
     private String note;
 
+    // no arg constructor for JSON deserialization
     WebResourceCommentImpl() {
         this(null, null, null, false, null);
     }

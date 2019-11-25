@@ -16,6 +16,7 @@ public class KineticParametersImpl implements KineticParameters {
     private List<MichaelisConstant> michaelisConstants;
     private Note note;
 
+    // no arg constructor for JSON deserialization
     KineticParametersImpl() {
         this.maximumVelocities = Collections.emptyList();
         this.michaelisConstants = Collections.emptyList();

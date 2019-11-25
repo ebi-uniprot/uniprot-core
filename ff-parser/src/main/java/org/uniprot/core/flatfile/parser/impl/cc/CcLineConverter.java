@@ -537,8 +537,10 @@ public class CcLineConverter extends EvidenceCollector
         if (evidences == null) {
             evidences = evidenceMap.get(lo);
         }
-        return new SubcellularLocationValueBuilder(
-                        subcellLocation, locationValue.value, evidenceMap.get(locationValue))
+        return new SubcellularLocationValueBuilder()
+                .id(subcellLocation)
+                .value(locationValue.value)
+                .evidences(evidenceMap.get(locationValue))
                 .build();
     }
 
@@ -597,7 +599,10 @@ public class CcLineConverter extends EvidenceCollector
     private RnaEdPosition convertRNAEditingPosition(
             int pos, Map<Object, List<Evidence>> evidences) {
         String spos = "" + pos;
-        return new RnaEditingPositionBuilder(spos, evidences.get(spos)).build();
+        return new RnaEditingPositionBuilder()
+                .position(spos)
+                .evidences(evidences.get(spos))
+                .build();
     }
 
     private FreeTextComment convertTextOnly(

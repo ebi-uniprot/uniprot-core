@@ -14,6 +14,7 @@ public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements Rna
     private List<RnaEdPosition> positions;
     private Note note;
 
+    // no arg constructor for JSON deserialization
     RnaEditingCommentImpl() {
         super(CommentType.RNA_EDITING, null);
         this.positions = Collections.emptyList();
@@ -87,17 +88,14 @@ public class RnaEditingCommentImpl extends CommentHasMoleculeImpl implements Rna
         private String position;
         private List<Evidence> evidences;
 
+        // no arg constructor for JSON deserialization
         RnaEdPositionImpl() {
             this.evidences = Collections.emptyList();
         }
 
         public RnaEdPositionImpl(String position, List<Evidence> evidences) {
             this.position = position;
-            if ((evidences == null) || evidences.isEmpty()) {
-                this.evidences = Collections.emptyList();
-            } else {
-                this.evidences = Collections.unmodifiableList(evidences);
-            }
+            this.evidences = Utils.unmodifiableList(evidences);
         }
 
         @Override

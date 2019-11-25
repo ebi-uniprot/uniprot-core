@@ -36,8 +36,8 @@ class RnaEditingCommentBuilderTest {
     void testSetpositions() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        positions.add(new RnaEditingPositionBuilder("123", evidences).build());
-        positions.add(new RnaEditingPositionBuilder("432", evidences).build());
+        positions.add(new RnaEditingPositionBuilder().position("123").evidences(evidences).build());
+        positions.add(new RnaEditingPositionBuilder().position("432").evidences(evidences).build());
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
                 builder.locationType(RnaEditingLocationType.Known).positions(positions).build();
@@ -51,8 +51,8 @@ class RnaEditingCommentBuilderTest {
     void testSetNote() {
         List<RnaEdPosition> positions = new ArrayList<>();
         List<Evidence> evidences = createEvidences();
-        positions.add(new RnaEditingPositionBuilder("123", evidences).build());
-        positions.add(new RnaEditingPositionBuilder("432", evidences).build());
+        positions.add(new RnaEditingPositionBuilder().position("123").evidences(evidences).build());
+        positions.add(new RnaEditingPositionBuilder().position("432").evidences(evidences).build());
         Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
         RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder();
         RnaEditingComment comment =
@@ -69,8 +69,37 @@ class RnaEditingCommentBuilderTest {
     @Test
     void testCreatePosition() {
         List<Evidence> evidences = createEvidences();
-        RnaEdPosition position = new RnaEditingPositionBuilder("123", evidences).build();
+        RnaEdPosition position =
+                new RnaEditingPositionBuilder().position("123").evidences(evidences).build();
         assertEquals("123", position.getPosition());
         assertEquals(evidences, position.getEvidences());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        RnaEditingComment obj = new RnaEditingCommentBuilder().build();
+        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        RnaEditingComment obj = new RnaEditingCommentBuilder().build();
+        RnaEditingComment obj2 = new RnaEditingCommentBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
+    }
+
+    @Test
+    void canAddRnaPosition() {
+        RnaEditingComment obj =
+                new RnaEditingCommentBuilder()
+                        .addPosition(
+                                new RnaEditingPositionBuilder()
+                                        .position("123")
+                                        .evidences(createEvidences())
+                                        .build())
+                        .build();
+        assertTrue(obj.hasPositions());
     }
 }

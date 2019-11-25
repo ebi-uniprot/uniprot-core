@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
 import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentImpl;
@@ -20,13 +22,13 @@ public final class MassSpectrometryCommentBuilder
     private String note;
     private List<Evidence> evidences = new ArrayList<>();
 
-    public MassSpectrometryComment build() {
+    public @Nonnull MassSpectrometryComment build() {
         return new MassSpectrometryCommentImpl(
                 molecule, method, molWeight, molWeightError, note, evidences);
     }
 
     @Override
-    public MassSpectrometryCommentBuilder from(MassSpectrometryComment instance) {
+    public @Nonnull MassSpectrometryCommentBuilder from(@Nonnull MassSpectrometryComment instance) {
         evidences.clear();
         return this.molWeight(instance.getMolWeight())
                 .molWeightError(instance.getMolWeightError())

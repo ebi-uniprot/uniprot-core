@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
@@ -17,35 +19,36 @@ public final class SubcellularLocationCommentBuilder
     private Note note;
     private List<SubcellularLocation> subcellularLocations = new ArrayList<>();
 
-    public SubcellularLocationComment build() {
+    public @Nonnull SubcellularLocationComment build() {
         return new SubcellularLocationCommentImpl(molecule, subcellularLocations, note);
     }
 
     @Override
-    public SubcellularLocationCommentBuilder from(SubcellularLocationComment instance) {
+    public @Nonnull SubcellularLocationCommentBuilder from(
+            @Nonnull SubcellularLocationComment instance) {
         subcellularLocations.clear();
         return this.molecule(instance.getMolecule())
                 .subcellularLocations(instance.getSubcellularLocations())
                 .note(instance.getNote());
     }
 
-    public SubcellularLocationCommentBuilder molecule(String molecule) {
+    public @Nonnull SubcellularLocationCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public SubcellularLocationCommentBuilder note(Note note) {
+    public @Nonnull SubcellularLocationCommentBuilder note(Note note) {
         this.note = note;
         return this;
     }
 
-    public SubcellularLocationCommentBuilder subcellularLocations(
+    public @Nonnull SubcellularLocationCommentBuilder subcellularLocations(
             List<SubcellularLocation> subcellularLocations) {
         this.subcellularLocations = modifiableList(subcellularLocations);
         return this;
     }
 
-    public SubcellularLocationCommentBuilder addSubcellularLocation(
+    public @Nonnull SubcellularLocationCommentBuilder addSubcellularLocation(
             SubcellularLocation subcellularLocation) {
         addOrIgnoreNull(subcellularLocation, this.subcellularLocations);
         return this;

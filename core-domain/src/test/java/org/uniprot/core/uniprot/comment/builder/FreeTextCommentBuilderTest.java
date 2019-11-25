@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static java.util.Collections.emptyList;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidenceValuesWithoutEvidences;
 import static org.uniprot.core.ObjectsForTests.evidenceValues;
 
@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
+import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 
 class FreeTextCommentBuilderTest {
     @Test
@@ -157,5 +158,42 @@ class FreeTextCommentBuilderTest {
         assertThrows(
                 IllegalArgumentException.class,
                 () -> buildFreeTextComment(CommentType.COFACTOR, texts));
+    }
+
+    @Test
+    void canAddSingleText() {
+        FreeTextComment obj =
+                new FreeTextCommentBuilder()
+                        .commentType(CommentType.DOMAIN)
+                        .addText(new EvidencedValueBuilder("value1", emptyList()).build())
+                        .build();
+        assertNotNull(obj.getTexts());
+        assertFalse(obj.getTexts().isEmpty());
+        assertTrue(obj.hasTexts());
+    }
+
+    @Test
+    void nullText_willBeIgnore() {
+        FreeTextComment obj =
+                new FreeTextCommentBuilder().commentType(CommentType.DOMAIN).addText(null).build();
+        assertNotNull(obj.getTexts());
+        assertTrue(obj.getTexts().isEmpty());
+        assertFalse(obj.hasTexts());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        FreeTextComment obj =
+                new FreeTextCommentBuilder().commentType(CommentType.DISRUPTION_PHENOTYPE).build();
+        FreeTextCommentBuilder builder = new FreeTextCommentBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        FreeTextComment obj = new FreeTextCommentBuilder().commentType(CommentType.DOMAIN).build();
+        FreeTextComment obj2 = new FreeTextCommentBuilder().commentType(CommentType.DOMAIN).build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
     }
 }
