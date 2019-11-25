@@ -11,7 +11,8 @@ public class RedundantProteomeImpl implements RedundantProteome {
     private ProteomeId id;
     private Float similarity;
 
-    private RedundantProteomeImpl() {}
+    // no arg constructor for JSON deserialization
+    RedundantProteomeImpl() {}
 
     public RedundantProteomeImpl(ProteomeId id, Float similarity) {
         this.id = id;
