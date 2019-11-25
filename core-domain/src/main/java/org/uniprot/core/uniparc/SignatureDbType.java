@@ -2,6 +2,8 @@ package org.uniprot.core.uniparc;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author jluo
  * @date: 21 May 2019
@@ -28,11 +30,11 @@ public enum SignatureDbType implements EnumDisplay<SignatureDbType> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name;
     }
 
-    public static SignatureDbType typeOf(String value) {
+    public static @Nonnull SignatureDbType typeOf(String value) {
         for (SignatureDbType type : SignatureDbType.values()) {
             if (type.toDisplayName().equalsIgnoreCase(value)) {
                 return type;
