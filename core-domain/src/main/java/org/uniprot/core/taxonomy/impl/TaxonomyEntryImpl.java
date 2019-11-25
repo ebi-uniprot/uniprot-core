@@ -35,7 +35,8 @@ public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private TaxonomyInactiveReason inactiveReason;
 
-    private TaxonomyEntryImpl() {
+    // no arg constructor for JSON deserialization
+    TaxonomyEntryImpl() {
         this(
                 0, null, null, null, null, null, null, null, null, null, null, null, null, null,
                 null, null);
