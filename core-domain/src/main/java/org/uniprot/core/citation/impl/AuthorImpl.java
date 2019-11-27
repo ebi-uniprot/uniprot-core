@@ -7,7 +7,8 @@ public class AuthorImpl implements Author {
     private static final long serialVersionUID = -3113315529380049309L;
     private String value;
 
-    private AuthorImpl() {
+    // no arg constructor for JSON deserialization
+    AuthorImpl() {
         this.value = "";
     }
 

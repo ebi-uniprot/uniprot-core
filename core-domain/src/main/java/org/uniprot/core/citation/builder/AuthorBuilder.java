@@ -4,6 +4,8 @@ import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.impl.AuthorImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 24/01/19
  *
@@ -15,7 +17,7 @@ public class AuthorBuilder extends AbstractValueBuilder<AuthorBuilder, Author> {
     }
 
     @Override
-    public Author build() {
+    public @Nonnull Author build() {
         return new AuthorImpl(value);
     }
 
