@@ -10,6 +10,8 @@ import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.BookImpl;
 
+import javax.annotation.Nonnull;
+
 public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book> {
     private String bookName;
     private List<Author> editors = new ArrayList<>();
@@ -19,7 +21,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
     private String publisher = "";
     private String address = "";
 
-    public Book build() {
+    public @Nonnull Book build() {
         return new BookImpl(
                 authoringGroups,
                 authors,
@@ -36,7 +38,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
     }
 
     @Override
-    public BookBuilder from(Book instance) {
+    public @Nonnull BookBuilder from(Book instance) {
         init(instance);
         return this.address(instance.getAddress())
                 .bookName(instance.getBookName())
@@ -50,12 +52,12 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
                 .volume(instance.getVolume());
     }
 
-    public BookBuilder bookName(String bookName) {
+    public @Nonnull BookBuilder bookName(String bookName) {
         this.bookName = bookName;
         return this;
     }
 
-    public BookBuilder editors(List<String> editors) {
+    public @Nonnull BookBuilder editors(List<String> editors) {
         List<Author> newEditors = new ArrayList<>();
         if (editors != null) {
             newEditors = editors.stream().map(AuthorImpl::new).collect(Collectors.toList());
@@ -64,7 +66,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         return this;
     }
 
-    public BookBuilder editors(Collection<Author> editors) {
+    public @Nonnull BookBuilder editors(Collection<Author> editors) {
         List<Author> newEditors = new ArrayList<>();
         if (editors != null) {
             newEditors.addAll(editors);
@@ -73,32 +75,32 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
         return this;
     }
 
-    public BookBuilder addEditor(String editor) {
+    public @Nonnull BookBuilder addEditor(String editor) {
         this.editors.add(new AuthorImpl(editor));
         return this;
     }
 
-    public BookBuilder firstPage(String firstPage) {
+    public @Nonnull BookBuilder firstPage(String firstPage) {
         this.firstPage = firstPage;
         return this;
     }
 
-    public BookBuilder lastPage(String lastPage) {
+    public @Nonnull BookBuilder lastPage(String lastPage) {
         this.lastPage = lastPage;
         return this;
     }
 
-    public BookBuilder volume(String volume) {
+    public @Nonnull BookBuilder volume(String volume) {
         this.volume = volume;
         return this;
     }
 
-    public BookBuilder publisher(String publisher) {
+    public @Nonnull BookBuilder publisher(String publisher) {
         this.publisher = publisher;
         return this;
     }
 
-    public BookBuilder address(String address) {
+    public @Nonnull BookBuilder address(String address) {
         this.address = address;
         return this;
     }

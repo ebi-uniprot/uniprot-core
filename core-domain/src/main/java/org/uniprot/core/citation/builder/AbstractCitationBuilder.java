@@ -47,7 +47,8 @@ public abstract class AbstractCitationBuilder<
     }
 
     public B addAuthor(String author) {
-        this.authors.add(new AuthorImpl(author));
+        if(author != null)
+            this.authors.add(new AuthorImpl(author));
         return getThis();
     }
 
@@ -79,7 +80,7 @@ public abstract class AbstractCitationBuilder<
     protected void init(T instance) {
         this.citationXrefs(instance.getCitationXrefs())
                 .title(instance.getTitle())
-                .publicationDate(instance.getPublicationDate().getValue())
+                .publicationDate(instance.getPublicationDate())
                 .authors(
                         instance.getAuthors().stream()
                                 .map(Value::getValue)

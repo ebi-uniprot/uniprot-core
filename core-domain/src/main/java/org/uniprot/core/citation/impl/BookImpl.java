@@ -3,6 +3,7 @@ package org.uniprot.core.citation.impl;
 import static java.util.Collections.emptyList;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
@@ -18,7 +19,8 @@ public class BookImpl extends AbstractCitationImpl implements Book {
     private String publisher;
     private String address;
 
-    private BookImpl() {
+    // no arg constructor for JSON deserialization
+    BookImpl() {
         this(
                 emptyList(),
                 emptyList(),
@@ -147,26 +149,12 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         if (!super.equals(obj)) return false;
         if (getClass() != obj.getClass()) return false;
         BookImpl other = (BookImpl) obj;
-        if (address == null) {
-            if (other.address != null) return false;
-        } else if (!address.equals(other.address)) return false;
-        if (bookName == null) {
-            if (other.bookName != null) return false;
-        } else if (!bookName.equals(other.bookName)) return false;
-        if (editors == null) {
-            if (other.editors != null) return false;
-        } else if (!editors.equals(other.editors)) return false;
-        if (firstPage == null) {
-            if (other.firstPage != null) return false;
-        } else if (!firstPage.equals(other.firstPage)) return false;
-        if (lastPage == null) {
-            if (other.lastPage != null) return false;
-        } else if (!lastPage.equals(other.lastPage)) return false;
-        if (publisher == null) {
-            if (other.publisher != null) return false;
-        } else if (!publisher.equals(other.publisher)) return false;
-        if (volume == null) {
-            return other.volume == null;
-        } else return volume.equals(other.volume);
+        return Objects.equals(this.address, other.address)
+          && Objects.equals(this.bookName, other.bookName)
+          && Objects.equals(this.editors, other.editors)
+          && Objects.equals(this.firstPage, other.firstPage)
+          && Objects.equals(this.lastPage, other.lastPage)
+          && Objects.equals(this.publisher, other.publisher)
+          && Objects.equals(this.volume, other.volume);
     }
 }
