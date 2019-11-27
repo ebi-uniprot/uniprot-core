@@ -4,6 +4,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class LiteratureStatisticsBuilder
         implements Builder<LiteratureStatisticsBuilder, LiteratureStatistics> {
@@ -12,29 +14,29 @@ public class LiteratureStatisticsBuilder
     private long unreviewedProteinCount;
     private long mappedProteinCount;
 
-    public LiteratureStatisticsBuilder reviewedProteinCount(long reviewedProteinCount) {
+    public @Nonnull LiteratureStatisticsBuilder reviewedProteinCount(long reviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         return this;
     }
 
-    public LiteratureStatisticsBuilder unreviewedProteinCount(long unreviewedProteinCount) {
+    public @Nonnull LiteratureStatisticsBuilder unreviewedProteinCount(long unreviewedProteinCount) {
         this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }
 
-    public LiteratureStatisticsBuilder mappedProteinCount(long mappedProteinCount) {
+    public @Nonnull LiteratureStatisticsBuilder mappedProteinCount(long mappedProteinCount) {
         this.mappedProteinCount = mappedProteinCount;
         return this;
     }
 
     @Override
-    public LiteratureStatistics build() {
+    public @Nonnull LiteratureStatistics build() {
         return new LiteratureStatisticsImpl(
                 reviewedProteinCount, unreviewedProteinCount, mappedProteinCount);
     }
 
     @Override
-    public LiteratureStatisticsBuilder from(LiteratureStatistics instance) {
+    public @Nonnull LiteratureStatisticsBuilder from(@Nonnull LiteratureStatistics instance) {
         return new LiteratureStatisticsBuilder()
                 .reviewedProteinCount(instance.getReviewedProteinCount())
                 .unreviewedProteinCount(instance.getUnreviewedProteinCount())
