@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.MichaelisConstant;
 import org.uniprot.core.uniprot.comment.MichaelisConstantUnit;
@@ -50,12 +52,12 @@ public final class MichaelisConstantBuilder
     }
 
     @Override
-    public MichaelisConstant build() {
+    public @Nonnull MichaelisConstant build() {
         return new MichaelisConstantImpl(constant, unit, substrate, evidences);
     }
 
     @Override
-    public MichaelisConstantBuilder from(MichaelisConstant instance) {
+    public @Nonnull MichaelisConstantBuilder from(@Nonnull MichaelisConstant instance) {
         evidences.clear();
         return this.evidences(instance.getEvidences())
                 .constant(instance.getConstant())

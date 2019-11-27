@@ -32,6 +32,7 @@ public class FtLineObject implements HasEvidenceInfo {
 
         public String ft_text;
         public String ftId;
+        public String sequence;
     }
 
     public static enum FTType {

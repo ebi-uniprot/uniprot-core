@@ -7,17 +7,18 @@ import org.uniprot.core.uniprot.comment.Disease;
 import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.Note;
 
-public class DiseaseCommentImpl extends CommentImpl implements DiseaseComment {
+public class DiseaseCommentImpl extends CommentHasMoleculeImpl implements DiseaseComment {
     private static final long serialVersionUID = 1934540834096516974L;
     private Disease disease;
     private Note note;
 
-    private DiseaseCommentImpl() {
-        super(CommentType.DISEASE);
+    // no arg constructor for JSON deserialization
+    DiseaseCommentImpl() {
+        super(CommentType.DISEASE, null);
     }
 
-    public DiseaseCommentImpl(Disease disease, Note note) {
-        super(CommentType.DISEASE);
+    public DiseaseCommentImpl(String molecule, Disease disease, Note note) {
+        super(CommentType.DISEASE, molecule);
         this.disease = disease;
         this.note = note;
     }

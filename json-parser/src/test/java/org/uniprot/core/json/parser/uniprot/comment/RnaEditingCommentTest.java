@@ -70,12 +70,13 @@ public class RnaEditingCommentTest {
                                         "value", "ECO:0000256|PIRNR:PIRNR001361"))
                         .build();
         RnaEdPosition rnaEdPositions =
-                new RnaEditingPositionBuilder(
-                                "rna position",
-                                CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
+                new RnaEditingPositionBuilder()
+                        .position("rna position")
+                        .evidences(CreateUtils.createEvidenceList("ECO:0000256|PIRNR:PIRNR001361"))
                         .build();
 
         return new RnaEditingCommentBuilder()
+                .molecule("Isoform 2")
                 .locationType(RnaEditingLocationType.Known)
                 .addPosition(rnaEdPositions)
                 .note(note)

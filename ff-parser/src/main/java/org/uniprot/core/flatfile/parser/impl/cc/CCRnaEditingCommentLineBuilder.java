@@ -27,7 +27,7 @@ public class CCRnaEditingCommentLineBuilder extends CCLineBuilderAbstr<RnaEditin
             addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
         }
         if (includeCommentType) addCommentTypeName(comment, sb);
-
+        addMolecule(comment, sb, true);
         int positionCount = 0;
         for (RnaEdPosition aPosition : comment.getPositions()) {
             if (aPosition.getPosition() != null && aPosition.getPosition().trim().length() >= 0) {

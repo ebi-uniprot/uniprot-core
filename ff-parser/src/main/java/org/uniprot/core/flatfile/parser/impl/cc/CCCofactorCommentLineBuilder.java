@@ -1,6 +1,11 @@
 package org.uniprot.core.flatfile.parser.impl.cc;
 
-import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.*;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEMICOLON;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR_SEMICOLON;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPS;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SPACE;
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.STOP;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +16,6 @@ import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.uniprot.comment.Cofactor;
 import org.uniprot.core.uniprot.comment.CofactorComment;
 import org.uniprot.core.uniprot.comment.CofactorReferenceType;
-
-import com.google.common.base.Strings;
 
 /**
  * CC -!- COFACTOR: CC Name=Mg(2+); Xref=ChEBI:CHEBI:18420;
@@ -38,12 +41,8 @@ public class CCCofactorCommentLineBuilder extends CCLineBuilderAbstr<CofactorCom
         List<String> lines = new ArrayList<>();
         // first line
         StringBuilder firstLine = new StringBuilder();
-        if (includeCommentType) firstLine.append(buildStart(comment, includeFFMarkings));
-        if (!Strings.isNullOrEmpty(comment.getMolecule())) {
-            // if(includeFFMarkings)
-            firstLine.append(SPACE);
-            firstLine.append(comment.getMolecule()).append(":");
-        }
+
+        firstLine.append(buildStartWithMolecule(comment, includeFFMarkings, includeCommentType));
         if (firstLine.length() > 0) lines.add(firstLine.toString());
         for (Cofactor cofactor : comment.getCofactors()) {
             StringBuilder sb = new StringBuilder();

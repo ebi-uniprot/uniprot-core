@@ -1,7 +1,7 @@
 package org.uniprot.core.uniprot.comment.impl;
 
 import static java.util.Collections.singletonList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 import static org.uniprot.core.ObjectsForTests.createNote;
 
@@ -153,6 +153,23 @@ class KineticParametersImplTest {
         assertEquals(2, kp.getMaximumVelocities().size());
         assertEquals(0, kp.getMichaelisConstants().size());
         assertEquals(note, kp.getNote());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        KineticParameters obj = new KineticParametersImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        KineticParameters impl =
+                new KineticParametersImpl(createVelocities(), createConstants(), createNote());
+        KineticParameters obj = new KineticParametersBuilder().from(impl).build();
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+        assertTrue(obj.hasNote());
     }
 
     private List<MaximumVelocity> createVelocities() {

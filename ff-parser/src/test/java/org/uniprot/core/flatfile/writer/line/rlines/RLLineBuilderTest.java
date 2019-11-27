@@ -84,10 +84,10 @@ class RLLineBuilderTest {
         Book citation = bookBuilder.build();
 
         List<String> lines = builder.buildLine(citation, true, true);
-        assertEquals(3, lines.size());
+        assertEquals(2, lines.size());
         String expected =
                 "RL   CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
-        assertEquals(expected, lines.get(2));
+        assertEquals(expected, lines.get(1));
         lines = builder.buildLine(citation, false, true);
         assertEquals(1, lines.size());
         expected =

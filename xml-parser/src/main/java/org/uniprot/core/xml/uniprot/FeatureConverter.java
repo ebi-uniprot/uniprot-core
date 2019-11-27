@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.AlternativeSequenceHelper;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureIdBuilder;
@@ -50,7 +50,7 @@ public class FeatureConverter implements Converter<FeatureType, Feature> {
             }
         }
 
-        Range location = locationConverter.fromXml(xmlObj.getLocation());
+        FeatureLocation location = locationConverter.fromXml(xmlObj.getLocation());
         List<Evidence> evidences = evRefMapper.parseEvidenceIds(xmlObj.getEvidence());
         String ftid = xmlObj.getId();
         FeatureId featureId = null;

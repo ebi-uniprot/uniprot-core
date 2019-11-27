@@ -1,6 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.createEvidence;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
 import java.util.List;
@@ -97,5 +98,36 @@ class DiseaseBuilderTest {
 
         assertEquals(referenceType, reference.getDatabaseType());
         assertEquals(referenceId, reference.getId());
+    }
+
+    @Test
+    void canAddSingleEvidence() {
+        Disease obj = new DiseaseBuilder().addEvidence(createEvidence()).build();
+        assertNotNull(obj.getEvidences());
+        assertFalse(obj.getEvidences().isEmpty());
+        assertTrue(obj.hasEvidences());
+    }
+
+    @Test
+    void nullEvidence_willBeIgnore() {
+        Disease obj = new DiseaseBuilder().addEvidence(null).build();
+        assertNotNull(obj.getEvidences());
+        assertTrue(obj.getEvidences().isEmpty());
+        assertFalse(obj.hasEvidences());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        Disease obj = new DiseaseBuilder().build();
+        DiseaseBuilder builder = new DiseaseBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        Disease obj = new DiseaseBuilder().build();
+        Disease obj2 = new DiseaseBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
     }
 }

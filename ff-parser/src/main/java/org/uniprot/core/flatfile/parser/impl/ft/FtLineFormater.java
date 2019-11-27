@@ -4,7 +4,7 @@ import org.uniprot.core.flatfile.parser.LineFormater;
 import org.uniprot.core.uniprot.feature.FeatureType;
 
 public class FtLineFormater implements LineFormater {
-    private static final String OTHER_LINE_PREFIX = "FT                                ";
+    private static final String OTHER_LINE_PREFIX = "FT                   ";
     private static final String FIRST_LINE_PREFIX = "FT   ";
     private static final String LINE_SEPARATOR = "\n";
 

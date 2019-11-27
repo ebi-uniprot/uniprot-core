@@ -34,6 +34,9 @@ public class WebResourceCommentTest {
         assertNotNull(jsonNode.get("commentType"));
         assertEquals("WEB RESOURCE", jsonNode.get("commentType").asText());
 
+        assertNotNull(jsonNode.get("molecule"));
+        assertEquals("Isoform 2", jsonNode.get("molecule").asText());
+
         assertNotNull(jsonNode.get("resourceName"));
         assertEquals("resource name", jsonNode.get("resourceName").asText());
 
@@ -49,6 +52,7 @@ public class WebResourceCommentTest {
 
     public static WebResourceComment getWebResourceComment() {
         return new WebResourceCommentBuilder()
+                .molecule("Isoform 2")
                 .resourceName("resource name")
                 .resourceUrl("resource URL")
                 .isFtp(true)

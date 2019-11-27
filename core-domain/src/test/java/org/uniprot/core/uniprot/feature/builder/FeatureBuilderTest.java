@@ -1,6 +1,9 @@
 package org.uniprot.core.uniprot.feature.builder;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.ObjectsForTests.createEvidence;
 import static org.uniprot.core.ObjectsForTests.createEvidences;
 
@@ -8,9 +11,13 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.Range;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
-import org.uniprot.core.uniprot.feature.*;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
+import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.FeatureXDbType;
 
 class FeatureBuilderTest {
 
@@ -22,7 +29,7 @@ class FeatureBuilderTest {
 
     @Test
     void canSetLocation() {
-        Range range = new Range(1, 2);
+        FeatureLocation range = new FeatureLocation(1, 2);
         Feature obj = new FeatureBuilder().location(range).build();
         assertEquals(range, obj.getLocation());
         assertTrue(obj.hasLocation());

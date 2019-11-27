@@ -7,8 +7,8 @@ DE   RecName: Full=7.2 kDa cytotoxin RVV-7 {ECO:0000303|PubMed:16997639, ECO:000
 DE   Flags: Fragment;
 OS   Daboia russelii (Russel's viper) (Vipera russelii).
 OC   Eukaryota; Metazoa; Chordata; Craniata; Vertebrata; Euteleostomi;
-OC   Lepidosauria; Squamata; Bifurcata; Unidentata; Episquamata;
-OC   Toxicofera; Serpentes; Colubroidea; Viperidae; Viperinae; Daboia.
+OC   Lepidosauria; Squamata; Bifurcata; Unidentata; Episquamata; Toxicofera;
+OC   Serpentes; Colubroidea; Viperidae; Viperinae; Daboia.
 OX   NCBI_TaxID=8707;
 RN   [1]
 RP   PROTEIN SEQUENCE, FUNCTION, SUBUNIT, SUBCELLULAR LOCATION, AND MASS
@@ -17,8 +17,7 @@ RC   TISSUE=Venom;
 RX   PubMed=16997639; DOI=10.1016/j.jchromb.2006.08.038;
 RA   Maity G., Mandal S., Chatterjee A., Bhattacharyya D.;
 RT   "Purification and characterization of a low molecular weight
-RT   multifunctional cytotoxic phospholipase A2 from Russell's viper
-RT   venom.";
+RT   multifunctional cytotoxic phospholipase A2 from Russell's viper venom.";
 RL   J. Chromatogr. B 845:232-243(2007).
 RN   [2]
 RP   PROTEIN SEQUENCE OF 1-15, FUNCTION, AND MASS SPECTROMETRY.
@@ -28,33 +27,32 @@ RA   Mandal S., Bhattacharyya D.;
 RT   "Ability of a small, basic protein isolated from Russell's viper venom
 RT   (Daboia russelli russelli) to induce renal tubular necrosis in mice.";
 RL   Toxicon 50:236-250(2007).
-CC   -!- FUNCTION: This three-finger cytotoxin shows cytotoxicity and
-CC       direct nephrotoxicity. The cytotoxicity has been observed on
-CC       B16F10 melanoma cells (EC(50)=2.56 uM) (PubMed:16997639) and on
-CC       kidney proximal tubular epithelium LLCPK1 cells (EC(50)=4.79 uM);
-CC       it is due to necrotic cell death and not to apoptosis. Direct
-CC       nephrotoxicity has been deduced from binding to LLCPK1 cell line
-CC       and to kidney membranes. In addition, after intravenous injection
-CC       into mice tail vein, the toxin principally accumulates in kidney,
-CC       but only minimally in blood, liver and brain (PubMed:17499831).
-CC       {ECO:0000269|PubMed:16997639, ECO:0000269|PubMed:17499831}.
-CC   -!- SUBUNIT: Monomer. Homodimerizes during storage at 30 degrees
-CC       Celsius (observed after 3 days). {ECO:0000269|PubMed:16997639}.
-CC   -!- SUBCELLULAR LOCATION: Secreted {ECO:0000269|PubMed:16997639}.
-CC       Target cell membrane {ECO:0000250|UniProtKB:P60301}.
+CC   -!- FUNCTION: This three-finger cytotoxin shows cytotoxicity and direct
+CC       nephrotoxicity. The cytotoxicity has been observed on B16F10 melanoma
+CC       cells (EC(50)=2.56 uM) (PubMed:16997639) and on kidney proximal tubular
+CC       epithelium LLCPK1 cells (EC(50)=4.79 uM); it is due to necrotic cell
+CC       death and not to apoptosis. Direct nephrotoxicity has been deduced from
+CC       binding to LLCPK1 cell line and to kidney membranes. In addition, after
+CC       intravenous injection into mice tail vein, the toxin principally
+CC       accumulates in kidney, but only minimally in blood, liver and brain
+CC       (PubMed:17499831). {ECO:0000269|PubMed:16997639,
+CC       ECO:0000269|PubMed:17499831}.
+CC   -!- SUBUNIT: Monomer. Homodimerizes during storage at 30 degrees Celsius
+CC       (observed after 3 days). {ECO:0000269|PubMed:16997639}.
+CC   -!- SUBCELLULAR LOCATION: Secreted {ECO:0000269|PubMed:16997639}. Target
+CC       cell membrane {ECO:0000250|UniProtKB:P60301}.
 CC   -!- TISSUE SPECIFICITY: Expressed by the venom gland. {ECO:0000305}.
-CC   -!- MASS SPECTROMETRY: Mass=7201.0; Method=Electrospray; Range=1-?;
-CC       Evidence={ECO:0000269|PubMed:16997639,
-CC       ECO:0000269|PubMed:17499831};
-CC   -!- SIMILARITY: Belongs to the snake three-finger toxin family. Short-
-CC       chain subfamily. Type IA cytotoxin sub-subfamily. {ECO:0000305}.
+CC   -!- MASS SPECTROMETRY: Mass=7201; Method=Electrospray;
+CC       Evidence={ECO:0000269|PubMed:17499831, ECO:0000269|PubMed:16997639};
+CC   -!- SIMILARITY: Belongs to the snake three-finger toxin family. Short-chain
+CC       subfamily. Type IA cytotoxin sub-subfamily. {ECO:0000305}.
 CC   -!- CAUTION: Surprinsingly, this toxin has also been observed to have
 CC       phospholipase A2 and trypsin inhibitory activities.
 CC       {ECO:0000269|PubMed:16997639}.
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms
 CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License
-CC   -----------------------------------------------------------------------
+CC   ---------------------------------------------------------------------------
 DR   GO; GO:0005576; C:extracellular region; IEA:UniProtKB-SubCell.
 DR   GO; GO:0016020; C:membrane; IEA:UniProtKB-KW.
 DR   GO; GO:0044218; C:other organism cell membrane; IEA:UniProtKB-SubCell.
@@ -62,11 +60,13 @@ DR   GO; GO:0090729; F:toxin activity; IEA:UniProtKB-KW.
 PE   1: Evidence at protein level;
 KW   Direct protein sequencing; Membrane; Secreted; Target cell membrane;
 KW   Target membrane; Toxin.
-FT   CHAIN         1    >20       7.2 kDa cytotoxin RVV-7.
-FT                                /FTId=PRO_0000433034.
-FT   UNSURE       14     14       Assigned by comparison with orthologs.
-FT                                {ECO:0000305}.
-FT   NON_TER      20     20
+FT   CHAIN           1..>20
+FT                   /note="7.2 kDa cytotoxin RVV-7"
+FT                   /id="PRO_0000433034"
+FT   UNSURE          14
+FT                   /note="Assigned by comparison with orthologs"
+FT                   /evidence="ECO:0000305"
+FT   NON_TER         20
 SQ   SEQUENCE   20 AA;  2179 MW;  1FFF0FE2DE91BE85 CRC64;
      LECNKLVDIA YITCPAGKNL
 //

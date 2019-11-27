@@ -218,7 +218,7 @@ public class UniProtGffParser {
         // note - alternativeSequence
         if (feature.hasAlternativeSequence()) {
             ifBuilderNonEmptyThenAppendSpace(note);
-            FTLineBuilderHelper.addAlternativeSequence(note, feature, false);
+            FTLineBuilderHelper.addAlternativeSequence(note, feature, false, "");
             if (!(featureType.equals(MUTAGEN))) {
                 // change all to arrows without space before and after
                 replaceArrow(note);

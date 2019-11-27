@@ -163,6 +163,32 @@ class BPCPConverterTest {
         assertEquals(comment, converted);
     }
 
+    @Test
+    void testAbsorptionMolecule() {
+        int max = 21;
+        String molecule = "isoform 1";
+        List<EvidencedValue> texts = createEvidenceValuesWithoutEvidences();
+        Note note = createNote(texts);
+        Absorption absorption = createAbsorption(max, true, note, createEvidences());
+        BPCPAbsorptionConverter absorptionConverter =
+                new BPCPAbsorptionConverter(new EvidenceIndexMapper());
+
+        CommentType.Absorption xmlAbsorption = absorptionConverter.toXml(absorption);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlAbsorption, CommentType.Absorption.class, "absorption"));
+        Absorption absorptionConverted = absorptionConverter.fromXml(xmlAbsorption);
+        assertEquals(absorption, absorptionConverted);
+        BPCPCommentBuilder builder = new BPCPCommentBuilder();
+        BPCPComment comment = builder.absorption(absorption).molecule(molecule).build();
+        BPCPCommentConverter converter = new BPCPCommentConverter(new EvidenceIndexMapper());
+        CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
+        BPCPComment converted = converter.fromXml(xmlComment);
+        assertEquals(comment, converted);
+    }
+
     private TemperatureDependence createTemperatureDependence(List<EvidencedValue> texts) {
         return new TemperatureDependenceBuilder(texts).build();
     }

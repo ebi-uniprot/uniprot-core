@@ -16,7 +16,7 @@ class CcLineCofactorCommentParserTest {
     @Test
     void test() {
         String lines =
-                "CC   -!- COFACTOR: Isoform 1:\n"
+                "CC   -!- COFACTOR: [Isoform 1]:\n"
                         + "CC       Name=Mg(2+); Xref=ChEBI:CHEBI:18420; Evidence={ECO:0000255|HAMAP-Rule:MF_00087};\n"
                         + "CC       Name=Co(2+); Xref=ChEBI:CHEBI:48828; Evidence={ECO:0000255|HAMAP-Rule:MF_00088};\n"
                         + "CC       Note=Binds 2 divalent ions per subunit (magnesium or cobalt).\n"
@@ -51,7 +51,7 @@ class CcLineCofactorCommentParserTest {
     @Test
     void test2() {
         String lines =
-                "CC   -!- COFACTOR: Serine protease NS3:\n"
+                "CC   -!- COFACTOR: [Serine protease NS3]:\n"
                         + "CC       Name=Zn(2+); Xref=ChEBI:CHEBI:29105;\n"
                         + "CC         Evidence={ECO:0000269|PubMed:16683188,\n"
                         + "CC         ECO:0000269|PubMed:16683189};\n"
@@ -193,7 +193,7 @@ class CcLineCofactorCommentParserTest {
     void testNoHeaderWithEvidence() {
 
         String ccLineStringEvidence =
-                "COFACTOR: Serine protease NS3:\n"
+                "COFACTOR: [Serine protease NS3]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:16683188,"
                         + " ECO:0000269|PubMed:16683189};\n"
                         + "Name=A very looooooooooooong cofactor name with 1 evidence tag; "
@@ -214,7 +214,7 @@ class CcLineCofactorCommentParserTest {
     void testNoHeaderWithEvidence2() {
 
         String ccLineStringEvidence =
-                "COFACTOR: Serine protease NS3:\n"
+                "COFACTOR: [Serine protease NS3]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000269|PubMed:9060645};\n"
                         + "Note=Binds 1 zinc ion. {ECO:0000269|PubMed:9060645};";
         CcLineFormater formater = new CcLineFormater();
@@ -229,7 +229,7 @@ class CcLineCofactorCommentParserTest {
     void testNoHeaderWithEvidence3() {
 
         String ccLineStringEvidence =
-                "COFACTOR: Non-structural protein 5A:\n"
+                "COFACTOR: [Non-structural protein 5A]:\n"
                         + "Name=Zn(2+); Xref=ChEBI:CHEBI:29105; Evidence={ECO:0000250};\n"
                         + "Note=Binds 1 zinc ion in the NS5A N-terminal domain. {ECO:0000250};";
         CcLineFormater formater = new CcLineFormater();

@@ -9,9 +9,8 @@ import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.util.Utils;
 
-public class CofactorCommentImpl extends CommentImpl implements CofactorComment {
+public class CofactorCommentImpl extends CommentHasMoleculeImpl implements CofactorComment {
     private static final long serialVersionUID = -2902168556405341703L;
-    private String molecule;
     private List<Cofactor> cofactors;
     private Note note;
 
@@ -21,16 +20,9 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     }
 
     public CofactorCommentImpl(String molecule, List<Cofactor> cofactors, Note note) {
-        super(CommentType.COFACTOR);
-        if (molecule == null || molecule.isEmpty()) this.molecule = null;
-        else this.molecule = molecule;
+        super(CommentType.COFACTOR, molecule);
         this.cofactors = Utils.unmodifiableList(cofactors);
         this.note = note;
-    }
-
-    @Override
-    public String getMolecule() {
-        return molecule;
     }
 
     @Override
@@ -41,11 +33,6 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
     @Override
     public Note getNote() {
         return note;
-    }
-
-    @Override
-    public boolean hasMolecule() {
-        return Utils.notNullOrEmpty(this.molecule);
     }
 
     @Override
@@ -69,13 +56,11 @@ public class CofactorCommentImpl extends CommentImpl implements CofactorComment 
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         CofactorCommentImpl that = (CofactorCommentImpl) o;
-        return Objects.equals(molecule, that.molecule)
-                && Objects.equals(cofactors, that.cofactors)
-                && Objects.equals(note, that.note);
+        return Objects.equals(cofactors, that.cofactors) && Objects.equals(note, that.note);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), molecule, cofactors, note);
+        return Objects.hash(super.hashCode(), cofactors, note);
     }
 }

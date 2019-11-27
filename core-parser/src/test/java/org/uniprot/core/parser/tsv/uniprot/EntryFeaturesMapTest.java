@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
@@ -28,12 +28,12 @@ class EntryFeaturesMapTest {
         Map<String, String> result = dl.attributeValues();
         assertEquals(4, result.size());
         verify("rs1064793108 rs1064793121", "dr_dbsnp", result);
-        verify("DOMAIN 23 23 some domain.", "ft_domain", result);
-        verify("HELIX 7 10 {ECO:0000244|PDB:2LO1}.", "ft_helix", result);
+        verify("DOMAIN 23 /note=\"some domain\"", "ft_domain", result);
+        verify("HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"", "ft_helix", result);
         String variantExp =
-                "VARIANT 23 23 A -> G (in SCN1; dbSNP:rs1064793108). /FTId=VAR_064512.;"
-                        + " VARIANT 27 27 B -> D (in another; dbSNP:rs1064793121)."
-                        + " {ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052}. /FTId=VAR_064556.";
+                "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" /id=\"VAR_064512\";"
+                        + " VARIANT 27 /note=\"B -> D (in another; dbSNP:rs1064793121)\" /evidence=\"ECO:0000269|PubMed:12345,"
+                        + " ECO:0000269|PubMed:6142052\" /id=\"VAR_064556\"";
 
         verify(variantExp, "ft_variant", result);
     }
@@ -54,7 +54,7 @@ class EntryFeaturesMapTest {
         features.add(
                 createFeature(
                         FeatureType.VARIANT,
-                        new Range(23, 23),
+                        new FeatureLocation(23, 23),
                         "in SCN1; dbSNP:rs1064793108",
                         "VAR_064512",
                         null,
@@ -62,7 +62,7 @@ class EntryFeaturesMapTest {
         Feature feature =
                 createFeature(
                         FeatureType.VARIANT,
-                        new Range(27, 27),
+                        new FeatureLocation(27, 27),
                         "in another; dbSNP:rs1064793121",
                         "VAR_064556",
                         evidences,
@@ -70,12 +70,18 @@ class EntryFeaturesMapTest {
         features.add(feature);
         features.add(
                 createFeature(
-                        FeatureType.DOMAIN, new Range(23, 23), "some domain", null, null, null));
+                        FeatureType.DOMAIN,
+                        new FeatureLocation(23, 23),
+                        "some domain",
+                        null,
+                        null,
+                        null));
 
         List<Evidence> evidences2 = new ArrayList<>();
         evidences2.add(createEvidence("ECO:0000244", "PDB", "2LO1"));
         Feature feature2 =
-                createFeature(FeatureType.HELIX, new Range(7, 10), "", null, evidences2, null);
+                createFeature(
+                        FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences2, null);
         features.add(feature2);
 
         return features;
@@ -91,13 +97,14 @@ class EntryFeaturesMapTest {
         Feature feature =
                 createFeature(
                         FeatureType.VARIANT,
-                        new Range(23, 23),
+                        new FeatureLocation(23, 23),
                         "in SCN1; dbSNP:rs1064793108",
                         "VAR_064512",
                         null,
                         createAlternativeSequence("A", "G"));
         String result = EntryFeaturesMap.featureToString(feature);
-        String expected = "VARIANT 23 23 A -> G (in SCN1; dbSNP:rs1064793108). /FTId=VAR_064512.";
+        String expected =
+                "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" /id=\"VAR_064512\"";
         assertEquals(result, expected);
     }
 
@@ -110,15 +117,15 @@ class EntryFeaturesMapTest {
         Feature feature =
                 createFeature(
                         FeatureType.VARIANT,
-                        new Range(23, 23),
+                        new FeatureLocation(23, 23),
                         "in SCN1; dbSNP:rs1064793108",
                         "VAR_064512",
                         evidences,
                         createAlternativeSequence("A", "G"));
         String result = EntryFeaturesMap.featureToString(feature);
         String expected =
-                "VARIANT 23 23 A -> G (in SCN1; dbSNP:rs1064793108)."
-                        + " {ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052}. /FTId=VAR_064512.";
+                "VARIANT 23 /note=\"A -> G (in SCN1; dbSNP:rs1064793108)\" "
+                        + "/evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\" /id=\"VAR_064512\"";
         assertEquals(result, expected);
     }
 
@@ -126,9 +133,14 @@ class EntryFeaturesMapTest {
     void testFeatureToString() {
         Feature feature =
                 createFeature(
-                        FeatureType.DOMAIN, new Range(23, 23), "some domain", null, null, null);
+                        FeatureType.DOMAIN,
+                        new FeatureLocation(23, 23),
+                        "some domain",
+                        null,
+                        null,
+                        null);
         String result = EntryFeaturesMap.featureToString(feature);
-        String expected = "DOMAIN 23 23 some domain.";
+        String expected = "DOMAIN 23 /note=\"some domain\"";
         assertEquals(result, expected);
     }
 
@@ -140,7 +152,7 @@ class EntryFeaturesMapTest {
         Feature feature =
                 createFeature(
                         FeatureType.DOMAIN,
-                        new Range(23, 23),
+                        new FeatureLocation(23, 23),
                         "some domain",
                         null,
                         evidences,
@@ -148,7 +160,7 @@ class EntryFeaturesMapTest {
 
         String result = EntryFeaturesMap.featureToString(feature);
         String expected =
-                "DOMAIN 23 23 some domain. {ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052}.";
+                "DOMAIN 23 /note=\"some domain\" /evidence=\"ECO:0000269|PubMed:12345, ECO:0000269|PubMed:6142052\"";
         assertEquals(result, expected);
     }
 
@@ -157,9 +169,10 @@ class EntryFeaturesMapTest {
         List<Evidence> evidences = new ArrayList<>();
         evidences.add(createEvidence("ECO:0000244", "PDB", "2LO1"));
         Feature feature =
-                createFeature(FeatureType.HELIX, new Range(7, 10), "", null, evidences, null);
+                createFeature(
+                        FeatureType.HELIX, new FeatureLocation(7, 10), "", null, evidences, null);
         String result = EntryFeaturesMap.featureToString(feature);
-        String expected = "HELIX 7 10 {ECO:0000244|PDB:2LO1}.";
+        String expected = "HELIX 7..10 /evidence=\"ECO:0000244|PDB:2LO1\"";
         assertEquals(result, expected);
     }
 
@@ -169,7 +182,7 @@ class EntryFeaturesMapTest {
 
     private Feature createFeature(
             FeatureType type,
-            Range range,
+            FeatureLocation range,
             String description,
             String ftid,
             List<Evidence> evidences,

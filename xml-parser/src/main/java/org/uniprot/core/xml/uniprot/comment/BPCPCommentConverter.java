@@ -3,8 +3,11 @@ package org.uniprot.core.xml.uniprot.comment;
 import org.uniprot.core.uniprot.comment.BPCPComment;
 import org.uniprot.core.uniprot.comment.builder.BPCPCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+
+import com.google.common.base.Strings;
 
 public class BPCPCommentConverter implements CommentConverter<BPCPComment> {
 
@@ -32,7 +35,10 @@ public class BPCPCommentConverter implements CommentConverter<BPCPComment> {
     public BPCPComment fromXml(CommentType xmlObj) {
         if (xmlObj == null) return null;
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
-
+        // Molecule
+        if (xmlObj.getMolecule() != null) {
+            builder.molecule(xmlObj.getMolecule().getValue());
+        }
         // Absorption
         if (xmlObj.getAbsorption() != null) {
             builder.absorption(absorptionConverter.fromXml(xmlObj.getAbsorption()));
@@ -65,6 +71,13 @@ public class BPCPCommentConverter implements CommentConverter<BPCPComment> {
         if (comment == null) return null;
         CommentType commentXML = xmlUniprotFactory.createCommentType();
         commentXML.setType(comment.getCommentType().toXmlDisplayName());
+
+        if (!Strings.isNullOrEmpty(comment.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(comment.getMolecule());
+            commentXML.setMolecule(mol);
+        }
+
         // Absorption
         if ((comment.getAbsorption() != null) && (comment.getAbsorption().getMax() != 0)) {
             commentXML.setAbsorption(absorptionConverter.toXml(comment.getAbsorption()));

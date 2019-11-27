@@ -61,7 +61,11 @@ public class SubcellularLocationConverter
                     }
             }
         }
-        return new SubcellularLocationValueBuilder("", locationStr, evidences).build();
+        return new SubcellularLocationValueBuilder()
+                .id("")
+                .value(locationStr)
+                .evidences(evidences)
+                .build();
     }
 
     private String getLocationValues(List<EvidencedStringType> values) {

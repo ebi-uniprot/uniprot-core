@@ -15,20 +15,27 @@ import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
 
 public class CatalyticActivityCommentBuilder
         implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
+    private String molecule;
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();
 
     @Override
     public @Nonnull CatalyticActivityComment build() {
-        return new CatalyticActivityCommentImpl(reaction, physiologicalReactions);
+        return new CatalyticActivityCommentImpl(molecule, reaction, physiologicalReactions);
     }
 
     @Override
     public @Nonnull CatalyticActivityCommentBuilder from(
             @Nonnull CatalyticActivityComment instance) {
         physiologicalReactions.clear();
-        return this.physiologicalReactions(instance.getPhysiologicalReactions())
+        return this.molecule(instance.getMolecule())
+                .physiologicalReactions(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());
+    }
+
+    public CatalyticActivityCommentBuilder molecule(String molecule) {
+        this.molecule = molecule;
+        return this;
     }
 
     public CatalyticActivityCommentBuilder reaction(Reaction reaction) {

@@ -2,7 +2,7 @@ ID   GRCA_SALPB              Reviewed;         127 AA.
 AC   A9N0W4;
 DT   20-MAY-2008, integrated into UniProtKB/Swiss-Prot.
 DT   05-FEB-2008, sequence version 1.
-DT   07-JUN-2017, entry version 52.
+DT   05-DEC-2018, entry version 54.
 DE   RecName: Full=Autonomous glycyl radical cofactor {ECO:0000255|HAMAP-Rule:MF_00806};
 GN   Name=grcA {ECO:0000255|HAMAP-Rule:MF_00806};
 GN   OrderedLocusNames=SPAB_00329;
@@ -15,11 +15,11 @@ RP   NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA].
 RC   STRAIN=ATCC BAA-1250 / SPB7;
 RG   The Salmonella enterica serovar Paratyphi B Genome Sequencing Project;
 RA   McClelland M., Sanderson E.K., Porwollik S., Spieth J., Clifton W.S.,
-RA   Fulton R., Cordes M., Wollam A., Shah N., Pepin K., Bhonagiri V.,
-RA   Nash W., Johnson M., Thiruvilangam P., Wilson R.;
+RA   Fulton R., Cordes M., Wollam A., Shah N., Pepin K., Bhonagiri V., Nash W.,
+RA   Johnson M., Thiruvilangam P., Wilson R.;
 RL   Submitted (NOV-2007) to the EMBL/GenBank/DDBJ databases.
-CC   -!- FUNCTION: Acts as a radical domain for damaged PFL and possibly
-CC       other radical proteins. {ECO:0000255|HAMAP-Rule:MF_00806}.
+CC   -!- FUNCTION: Acts as a radical domain for damaged PFL and possibly other
+CC       radical proteins. {ECO:0000255|HAMAP-Rule:MF_00806}.
 DR   EMBL; CP000886; ABX65766.1; -; Genomic_DNA.
 DR   RefSeq; WP_000627811.1; NC_010102.1.
 DR   SMR; A9N0W4; -.
@@ -29,8 +29,8 @@ DR   PATRIC; fig|1016998.12.peg.312; -.
 DR   HOGENOM; HOG000281256; -.
 DR   KO; K06866; -.
 DR   OMA; GQFEYRE; -.
+DR   BioCyc; SENT1016998:SPAB_RS01350-MONOMER; -.
 DR   GO; GO:0003824; F:catalytic activity; IEA:InterPro.
-DR   GO; GO:0008152; P:metabolic process; IEA:InterPro.
 DR   HAMAP; MF_00806; GrcA; 1.
 DR   InterPro; IPR019777; Form_AcTrfase_GR_CS.
 DR   InterPro; IPR001150; Gly_radical.
@@ -42,12 +42,15 @@ DR   PROSITE; PS00850; GLY_RADICAL_1; 1.
 DR   PROSITE; PS51149; GLY_RADICAL_2; 1.
 PE   3: Inferred from homology;
 KW   Organic radical.
-FT   CHAIN         1    127       Autonomous glycyl radical cofactor.
-FT                                /FTId=PRO_1000083732.
-FT   DOMAIN        5    127       Glycine radical. {ECO:0000255|HAMAP-
-FT                                Rule:MF_00806}.
-FT   MOD_RES     102    102       Glycine radical. {ECO:0000255|HAMAP-
-FT                                Rule:MF_00806}.
+FT   CHAIN           1..127
+FT                   /note="Autonomous glycyl radical cofactor"
+FT                   /id="PRO_1000083732"
+FT   DOMAIN          5..127
+FT                   /note="Glycine radical"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00806"
+FT   MOD_RES         102
+FT                   /note="Glycine radical"
+FT                   /evidence="ECO:0000255|HAMAP-Rule:MF_00806"
 **
 **   #################    INTERNAL SECTION    ##################
 **EV ECO:0000255; HAMAP-Rule:MF_00806; XXX; 06-NOV-2015.

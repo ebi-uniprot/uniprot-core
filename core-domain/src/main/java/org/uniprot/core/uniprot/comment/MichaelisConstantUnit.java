@@ -34,15 +34,6 @@ public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> 
         return getName();
     }
 
-    /**
-     * Added for beans - just use this rather than toDisplayNameString?
-     *
-     * @return String - the display name
-     */
-    public String getDisplayString() {
-        return toDisplayNameString();
-    }
-
     public String toDisplayNameString() {
         return name;
     }

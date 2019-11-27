@@ -16,13 +16,13 @@ class MassSpectrometryMapTest {
     @Test
     void testMassSpectrometryMapping() {
         String massSpectrometryLine =
-                "CC   -!- MASS SPECTROMETRY: Mass=17581.1; Method=MALDI; Range=2-165;\n"
+                "CC   -!- MASS SPECTROMETRY: Mass=17581.1; Method=MALDI;\n"
                         + "     CC       Evidence={ECO:0000269|PubMed:10094780};\n"
                         + "     CC   -!- MASS SPECTROMETRY: Mass=66643; Mass_error=13; Method=Electrospray;\n"
-                        + "     CC       Range=2-165; Note=Isolated L10(L12)4.;\n"
+                        + "     CC       Note=Isolated L10(L12)4.;\n"
                         + "     CC       Evidence={ECO:0000269|PubMed:15923259};\n"
                         + "     CC   -!- MASS SPECTROMETRY: Mass=17580; Mass_error=2; Method=Electrospray;\n"
-                        + "     CC       Range=2-165; Evidence={ECO:0000269|PubMed:15923259};";
+                        + "     CC       Evidence={ECO:0000269|PubMed:15923259};";
 
         UniProtEntry entry =
                 CommentTestUtil.createUniProtEntryFromCommentLine(massSpectrometryLine);
@@ -35,10 +35,10 @@ class MassSpectrometryMapTest {
         assertNotNull(mappedMassSpectrometry);
         String value = mappedMassSpectrometry.get("cc_mass_spectrometry");
         String expectedValue =
-                "MASS SPECTROMETRY: Mass=17581.1; Method=MALDI; Range=2-165; "
+                "MASS SPECTROMETRY: Mass=17581.1; Method=MALDI; "
                         + "Evidence={ECO:0000269|PubMed:10094780}; MASS SPECTROMETRY: Mass=66643; Mass_error=13; "
-                        + "Method=Electrospray; Range=2-165; Note=Isolated L10(L12)4.; Evidence={ECO:0000269|PubMed:15923259}; "
-                        + "MASS SPECTROMETRY: Mass=17580; Mass_error=2; Method=Electrospray; Range=2-165; "
+                        + "Method=Electrospray; Note=Isolated L10(L12)4.; Evidence={ECO:0000269|PubMed:15923259}; "
+                        + "MASS SPECTROMETRY: Mass=17580; Mass_error=2; Method=Electrospray; "
                         + "Evidence={ECO:0000269|PubMed:15923259};";
         assertEquals(expectedValue, value);
     }

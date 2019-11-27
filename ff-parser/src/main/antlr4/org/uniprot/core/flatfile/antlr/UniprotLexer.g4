@@ -62,24 +62,17 @@ SS_HEADER: '**' ;
 SPACE_FIVE: '     ' ;
 NEW_LINE: '\n'     ;
 
+
 CC_COPY_RIGHT_OLD:
-        'CC   -----------------------------------------------------------------------' NEW_LINE
-        'CC   Copyrighted by the UniProt Consortium, see http://www.uniprot.org/terms' NEW_LINE
-        'CC   Distributed under the Creative Commons Attribution-NoDerivs License'     NEW_LINE
-        'CC   -----------------------------------------------------------------------' NEW_LINE
-        ;
-
-
-CC_COPY_RIGHT:
-        'CC   -----------------------------------------------------------------------' NEW_LINE
-        'CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms' NEW_LINE
-        'CC   Distributed under the Creative Commons Attribution-NoDerivs License'     NEW_LINE
-        'CC   -----------------------------------------------------------------------' NEW_LINE
-        ;
-
-CC_COPY_RIGHT_NEW:
         'CC   -----------------------------------------------------------------------' NEW_LINE
         'CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms' NEW_LINE
         'CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License'     NEW_LINE
         'CC   -----------------------------------------------------------------------' NEW_LINE
+        ;
+
+CC_COPY_RIGHT:
+        'CC   ---------------------------------------------------------------------------' NEW_LINE
+        'CC   Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms' NEW_LINE
+        'CC   Distributed under the Creative Commons Attribution (CC BY 4.0) License'     NEW_LINE
+        'CC   ---------------------------------------------------------------------------' NEW_LINE
         ;

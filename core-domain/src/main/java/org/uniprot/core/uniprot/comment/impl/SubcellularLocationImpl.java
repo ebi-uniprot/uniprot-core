@@ -15,7 +15,8 @@ public class SubcellularLocationImpl implements SubcellularLocation {
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
 
-    private SubcellularLocationImpl() {}
+    // no arg constructor for JSON deserialization
+    SubcellularLocationImpl() {}
 
     public SubcellularLocationImpl(
             SubcellularLocationValue location,
@@ -77,7 +78,8 @@ public class SubcellularLocationImpl implements SubcellularLocation {
         private static final long serialVersionUID = -2637543322400653482L;
         private String id;
 
-        private SubcellularLocationValueImpl() {
+        // no arg constructor for JSON deserialization
+        SubcellularLocationValueImpl() {
             super(null, Collections.emptyList());
         }
 

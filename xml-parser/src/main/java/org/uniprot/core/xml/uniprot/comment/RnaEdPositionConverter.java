@@ -29,9 +29,9 @@ public class RnaEdPositionConverter implements Converter<LocationType, RnaEdPosi
     public RnaEdPosition fromXml(LocationType xmlObj) {
         if (xmlObj != null && xmlObj.getPosition() != null) {
             String position = xmlObj.getPosition().getPosition().toString().trim();
-            return new RnaEditingPositionBuilder(
-                            position,
-                            evRefMapper.parseEvidenceIds(xmlObj.getPosition().getEvidence()))
+            return new RnaEditingPositionBuilder()
+                    .position(position)
+                    .evidences(evRefMapper.parseEvidenceIds(xmlObj.getPosition().getEvidence()))
                     .build();
         } else return null;
     }

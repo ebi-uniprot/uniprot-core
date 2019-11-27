@@ -27,7 +27,7 @@ public class RepresentativeMemberBuilder
                 organismTaxId,
                 sequenceLength,
                 proteinName,
-                accession,
+                accessions,
                 uniref50Id,
                 uniref90Id,
                 uniref100Id,

@@ -1,5 +1,8 @@
 package org.uniprot.core.flatfile.antlr;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.misc.Interval;
@@ -22,6 +25,8 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
     private static final long serialVersionUID = 1L;
 
     private Token lastToken;
+    private Token nextToken;
+    private static final List<String> END_TOKENS = Arrays.asList(new String[] {"-", "/"});
 
     protected RememberLastTokenLexer(CharStream input) {
         super(input);
@@ -30,26 +35,20 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
     @Override
     public Token emit() {
         lastToken = super.emit();
+        nextToken = super.getToken();
         return lastToken;
     }
 
-    /**
-     * This method is used by the lexer, when it sees an change of line, normally in the format of
-     * "CC " in middle of a string, it will replace it with an space or nothing, depending on the
-     * last token's ending.
-     */
-    //	public void replaceChangeOfLine() {
-    //        //System.out.println(token.getText());
-    //
-    //        if (lastToken != null) {
-    //			if (lastToken.getText().endsWith("-")) {
-    //				this.setText("");
-    //			} else {
-    //				this.setText(" ");
-    //			}
-    //		}
-    ////		this.setText(" ");
-    //	}
+    public void replaceDoubleQuote() {
+
+        String text3 = this.getText();
+        System.out.println(text3);
+        this.setText("''");
+        if (nextToken != null) {
+            String text2 = nextToken.getText();
+            System.out.println("nextToken=" + text2);
+        }
+    }
 
     public void replaceChangeOfLine() {
         if (lastToken != null) {
@@ -110,12 +109,8 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
     }
 
     public boolean isSequenceLetter(String se) {
-        String val = se;
-        if (val.contains("-> ")) {
-            val = val.substring(val.indexOf("-> ") + 3);
-        }
-        for (int i = 0; i < val.length(); i++) {
-            if (val.charAt(i) > 'Z' || val.charAt(i) < 'A') return false;
+        for (int i = 0; i < se.length(); i++) {
+            if (se.charAt(i) > 'Z' || se.charAt(i) < 'A') return false;
         }
         return true;
     }

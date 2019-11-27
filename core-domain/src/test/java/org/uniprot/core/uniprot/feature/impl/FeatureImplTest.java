@@ -6,10 +6,10 @@ import static org.uniprot.core.ObjectsForTests.createEvidences;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.PositionModifier;
-import org.uniprot.core.Range;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.builder.AlternativeSequenceBuilder;
@@ -20,7 +20,8 @@ class FeatureImplTest {
 
     @Test
     void testSimple() {
-        Range location = new Range(32, 50, PositionModifier.EXACT, PositionModifier.UNSURE);
+        FeatureLocation location =
+                new FeatureLocation(null, 32, 50, PositionModifier.EXACT, PositionModifier.UNSURE);
         Feature feature =
                 new FeatureBuilder()
                         .type(FeatureType.ACT_SITE)
@@ -38,7 +39,7 @@ class FeatureImplTest {
 
     @Test
     void testWithFeatureId() {
-        Range location = new Range(32, 96);
+        FeatureLocation location = new FeatureLocation(32, 96);
         FeatureId featureId = new FeatureIdImpl("PRO_324");
         Feature feature =
                 new FeatureBuilder()
@@ -76,7 +77,7 @@ class FeatureImplTest {
         Feature impl =
                 new FeatureImpl(
                         FeatureType.ZN_FING,
-                        new Range(1, 2),
+                        new FeatureLocation(1, 2),
                         new FeatureDescriptionImpl("abc"),
                         new FeatureIdBuilder("1").build(),
                         new AlternativeSequenceBuilder().build(),

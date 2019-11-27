@@ -17,7 +17,7 @@ public class UniRefMemberBuilder
                 organismTaxId,
                 sequenceLength,
                 proteinName,
-                accession,
+                accessions,
                 uniref50Id,
                 uniref90Id,
                 uniref100Id,

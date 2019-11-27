@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.KineticParameters;
 import org.uniprot.core.uniprot.comment.MaximumVelocity;
@@ -50,12 +52,12 @@ public final class KineticParametersBuilder
     }
 
     @Override
-    public KineticParameters build() {
+    public @Nonnull KineticParameters build() {
         return new KineticParametersImpl(maximumVelocities, michaelisConstants, note);
     }
 
     @Override
-    public KineticParametersBuilder from(KineticParameters instance) {
+    public @Nonnull KineticParametersBuilder from(@Nonnull KineticParameters instance) {
         maximumVelocities.clear();
         michaelisConstants.clear();
         return this.maximumVelocities(instance.getMaximumVelocities())

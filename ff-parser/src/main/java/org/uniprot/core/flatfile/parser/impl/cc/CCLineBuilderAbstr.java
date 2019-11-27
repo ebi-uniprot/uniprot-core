@@ -13,9 +13,12 @@ import org.uniprot.core.flatfile.writer.impl.FFLines;
 import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.FreeText;
+import org.uniprot.core.uniprot.comment.HasMolecule;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
+
+import com.google.common.base.Strings;
 
 public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilderAbstr<T>
         implements CommentLineBuilder<T> {
@@ -60,17 +63,6 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
         return FFLines.create(lls);
     }
 
-    //	protected String buildCommentStatus(HasCommentStatus comment ) {
-    //		String extra="";
-    //		if (comment.getCommentStatus() == CommentStatus.BY_SIMILARITY) {
-    //			extra += " (By similarity)";
-    //		} else if (comment.getCommentStatus() == CommentStatus.PROBABLE) {
-    //			extra += " (Probable)";
-    //		}  else if (comment.getCommentStatus() == CommentStatus.POTENTIAL) {
-    //			extra += " (Potential)";
-    //		}
-    //		return extra;
-    //	}
     protected StringBuilder addFlatFileMarkingsIfRequired(
             boolean includeFlatFileMarkings, StringBuilder sb) {
         if (includeFlatFileMarkings) sb.append(CC_FF_MARK);
@@ -167,5 +159,40 @@ public abstract class CCLineBuilderAbstr<T extends Comment> extends FFLineBuilde
 
     protected boolean isValidNote(Note note) {
         return (note != null) && note.isValid();
+    }
+
+    protected void addMolecule(Comment comment, StringBuilder sb, boolean appendSpace) {
+        if (comment instanceof HasMolecule) {
+            String mol = ((HasMolecule) comment).getMolecule();
+            if (!Strings.isNullOrEmpty(mol)) {
+                sb.append(SQUARE_BRACKET_LEFT)
+                        .append(mol)
+                        .append(SQUARE_BRACKET_RIGHT)
+                        .append(COLON);
+                if (appendSpace) sb.append(SPACE);
+            }
+        }
+    }
+
+    protected String buildStartWithMolecule(
+            Comment comment, boolean includeFlatFileMarkings, boolean includeCommentType) {
+        StringBuilder start = new StringBuilder();
+        if (includeCommentType) {
+            addFlatFileMarkingsIfRequired(includeFlatFileMarkings, start);
+            start.append(comment.getCommentType().toDisplayName());
+            start.append(":");
+        }
+        if (comment instanceof HasMolecule) {
+            String mol = ((HasMolecule) comment).getMolecule();
+            if (!Strings.isNullOrEmpty(mol)) {
+                if (includeCommentType)
+                    start.append(SPACE)
+                            .append(SQUARE_BRACKET_LEFT)
+                            .append(mol)
+                            .append(SQUARE_BRACKET_RIGHT)
+                            .append(COLON);
+            }
+        }
+        return start.toString();
     }
 }

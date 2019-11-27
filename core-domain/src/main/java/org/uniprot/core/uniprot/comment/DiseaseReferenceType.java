@@ -30,11 +30,12 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
      *     type.
      */
     public static DiseaseReferenceType typeOf(String value) {
-        for (DiseaseReferenceType referenceType : DiseaseReferenceType.values()) {
-            if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
-                return referenceType;
+        if (value != null)
+            for (DiseaseReferenceType referenceType : DiseaseReferenceType.values()) {
+                if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
+                    return referenceType;
+                }
             }
-        }
 
         throw new IllegalArgumentException(
                 "The disease reference type: " + value + " doesn't exist");

@@ -44,8 +44,8 @@ class RLineBuildTest {
                         + "RC   pSd4_G1190, and pSd5_G1213;\n"
                         + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
                         + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
-                        + "RT   \"Comparative genomic analyses of frog virus 3, type species of the\n"
-                        + "RT   genus Ranavirus (family Iridoviridae).\";\n"
+                        + "RT   \"Comparative genomic analyses of frog virus 3, type species of the genus\n"
+                        + "RT   Ranavirus (family Iridoviridae).\";\n"
                         + "RL   Virology 323:70-84(2004).";
 
         JournalArticleBuilder jaBuilder = new JournalArticleBuilder();
@@ -106,8 +106,8 @@ class RLineBuildTest {
                         + "RC   {ECO:0000303|Ref.6}, and pSd5_G1213 {ECO:0000256|HAMAP-Rule:MF_00205};\n"
                         + "RX   PubMed=15165820; DOI=10.1016/j.virol.2004.02.019;\n"
                         + "RA   Tan W.G., Barkman T.J., Gregory Chinchar V., Essani K.;\n"
-                        + "RT   \"Comparative genomic analyses of frog virus 3, type species of the\n"
-                        + "RT   genus Ranavirus (family Iridoviridae).\";\n"
+                        + "RT   \"Comparative genomic analyses of frog virus 3, type species of the genus\n"
+                        + "RT   Ranavirus (family Iridoviridae).\";\n"
                         + "RL   Virology 323:70-84(2004).";
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
@@ -189,8 +189,8 @@ class RLineBuildTest {
                         + "RC   PLASMID=pYV, and pSd2_G1252;\n"
                         + "RC   TRANSPOSON=Tn2502, pSd4_G1190, and pSd5_G1213;\n"
                         + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
-                        + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia\n"
-                        + "RT   coli in Europe.\";\n"
+                        + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia coli in\n"
+                        + "RT   Europe.\";\n"
                         + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
         SubmissionBuilder smBuilder = new SubmissionBuilder();
         List<String> authors =
@@ -237,8 +237,8 @@ class RLineBuildTest {
                         + "RC   TRANSPOSON=Tn2502 {ECO:0000256|HAMAP-Rule:MF_00205}, and pSd4_G1190\n"
                         + "RC   {ECO:0000256|HAMAP-Rule:MF_00205};\n"
                         + "RA   Tan W.G.H., Barkman T.J., Chinchar V.G.;\n"
-                        + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia\n"
-                        + "RT   coli in Europe.\";\n"
+                        + "RT   \"Emergence of plasmid-mediated quinolone resistance in Escherichia coli in\n"
+                        + "RT   Europe.\";\n"
                         + "RL   Submitted (FEB-2004) to the EMBL/GenBank/DDBJ databases.";
 
         String ev1 = "ECO:0000313|EMBL:BAG16761.1";
@@ -306,8 +306,8 @@ class RLineBuildTest {
                 "RN   [1]\n"
                         + "RP   NUCLEOTIDE SEQUENCE.\n"
                         + "RA   Arctander P., Fjeldsaa J.;\n"
-                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study\n"
+                        + "RT   of speciation using DNA sequence data.\";\n"
                         + "RL   (In) Loeschcke V., Magnusson S., Ottesen M., Foltmann B., Dano K.,\n"
                         + "RL   Neurath H. (eds.);\n"
                         + "RL   CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
@@ -354,10 +354,9 @@ class RLineBuildTest {
                 "RN   [5]\n"
                         + "RP   NUCLEOTIDE SEQUENCE.\n"
                         + "RA   Arctander P., Fjeldsaa J.;\n"
-                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                        + "RT   study of speciation using DNA sequence data.\";\n"
-                        + "RL   (In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H.\n"
-                        + "RL   (eds.);\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study\n"
+                        + "RT   of speciation using DNA sequence data.\";\n"
+                        + "RL   (In) Magnusson S., Ottesen M., Foltmann B., Dano K., Neurath H. (eds.);\n"
                         + "RL   CONSERVATION GENETICS, pp.205-227, Birkhaeuser Verlag, Basel (1994).";
 
         BookBuilder bkBuilder = new BookBuilder();
@@ -402,8 +401,8 @@ class RLineBuildTest {
                 "RN   [5]\n"
                         + "RP   NUCLEOTIDE SEQUENCE.\n"
                         + "RA   Arctander P., Fjeldsaa J.;\n"
-                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study\n"
+                        + "RT   of speciation using DNA sequence data.\";\n"
                         + "RL   (In) Proceedings of the 9th international conference on Arabidopsis\n"
                         + "RL   research, abstract#501708527, Madison (1998).";
 
@@ -442,8 +441,8 @@ class RLineBuildTest {
                 "RN   [5]\n"
                         + "RP   NUCLEOTIDE SEQUENCE.\n"
                         + "RA   Arctander P., Fjeldsaa J.;\n"
-                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study\n"
+                        + "RT   of speciation using DNA sequence data.\";\n"
                         + "RL   Thesis (2002), Department of Fakultaet fuer Biologie, Universitaet\n"
                         + "RL   Heidelberg, Heidelberg, Germany.";
 
@@ -478,8 +477,8 @@ class RLineBuildTest {
                 "RN   [5]\n"
                         + "RP   NUCLEOTIDE SEQUENCE.\n"
                         + "RA   Arctander P., Fjeldsaa J.;\n"
-                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study\n"
+                        + "RT   of speciation using DNA sequence data.\";\n"
                         + "RL   Patent number WO0149833, 12-JUL-2001.";
 
         PatentBuilder paBuilder = new PatentBuilder();
@@ -510,8 +509,8 @@ class RLineBuildTest {
                 "RN   [5]\n"
                         + "RP   NUCLEOTIDE SEQUENCE.\n"
                         + "RA   Arctander P., Fjeldsaa J.;\n"
-                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study\n"
+                        + "RT   of speciation using DNA sequence data.\";\n"
                         + "RL   (er) Plant Gene Register PGR99-114.";
 
         ElectronicArticleBuilder eaBuilder = new ElectronicArticleBuilder();
@@ -542,8 +541,8 @@ class RLineBuildTest {
                 "RN   [5]\n"
                         + "RP   NUCLEOTIDE SEQUENCE.\n"
                         + "RA   Arctander P., Fjeldsaa J.;\n"
-                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A\n"
-                        + "RT   study of speciation using DNA sequence data.\";\n"
+                        + "RT   \"Andean tapaculos of the genus Scytalopus (Aves, Rhinocryptidae): A study\n"
+                        + "RT   of speciation using DNA sequence data.\";\n"
                         + "RL   Unpublished observations (JAN-2012).";
 
         UnpublishedBuilder uoBuilder = new UnpublishedBuilder();
@@ -616,9 +615,7 @@ class RLineBuildTest {
         builder.setRN(num);
         FFLine ffLine = builder.buildWithEvidence(citation);
         String resultString = ffLine.toString();
-        // System.out.println(resultString);
-        // System.out.println();
-        // System.out.println(rlines);
+
         assertEquals(rlines, resultString);
     }
 

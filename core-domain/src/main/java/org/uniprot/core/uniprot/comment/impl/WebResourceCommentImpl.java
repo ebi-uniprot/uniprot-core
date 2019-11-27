@@ -8,20 +8,21 @@ import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.util.Utils;
 
-public class WebResourceCommentImpl extends CommentImpl implements WebResourceComment {
+public class WebResourceCommentImpl extends CommentHasMoleculeImpl implements WebResourceComment {
     private static final long serialVersionUID = -2748929647045369784L;
     private String resourceName;
     private String resourceUrl;
     private boolean ftp;
     private String note;
 
-    private WebResourceCommentImpl() {
-        this(null, null, false, null);
+    // no arg constructor for JSON deserialization
+    WebResourceCommentImpl() {
+        this(null, null, null, false, null);
     }
 
     public WebResourceCommentImpl(
-            String resourceName, String resourceUrl, boolean ftp, String note) {
-        super(CommentType.WEBRESOURCE);
+            String molecule, String resourceName, String resourceUrl, boolean ftp, String note) {
+        super(CommentType.WEBRESOURCE, molecule);
         this.resourceName = emptyOrString(resourceName);
         this.resourceUrl = emptyOrString(resourceUrl);
         this.ftp = ftp;

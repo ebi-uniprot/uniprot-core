@@ -60,10 +60,10 @@ class CofactorCommentBuilderTest {
         List<Cofactor> cofactors = Arrays.asList(cofactor);
         CofactorCommentBuilder builder = new CofactorCommentBuilder();
         Note note = new NoteBuilder(createEvidenceValuesWithoutEvidences()).build();
-        String molecule = "";
+        String molecule = "Isoform 2";
         CofactorComment comment =
                 builder.molecule(molecule).cofactors(cofactors).note(note).build();
-        assertFalse(comment.getMolecule() != null);
+        assertEquals(molecule, comment.getMolecule());
         assertEquals(1, comment.getCofactors().size());
         assertEquals(cofactor, comment.getCofactors().get(0));
         assertNotNull(comment.getNote());

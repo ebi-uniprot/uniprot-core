@@ -2,10 +2,12 @@ package org.uniprot.core.uniprot.comment.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniprot.UniProtAccession;
+import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
@@ -127,11 +129,33 @@ class InteractionBuilderTest {
                         .secondInteractor("first2")
                         .uniProtAccession("P12345")
                         .build();
-        List<Interaction> interactions = Arrays.asList(interaction);
+        List<Interaction> interactions = Collections.singletonList(interaction);
         InteractionCommentBuilder commentBuilder = new InteractionCommentBuilder();
 
         InteractionComment comment = commentBuilder.interactions(interactions).build();
         assertEquals(interactions, comment.getInteractions());
         assertEquals(CommentType.INTERACTION, comment.getCommentType());
+    }
+
+    @Test
+    void canSetUniProtAccession() {
+        UniProtAccession accession = new UniProtAccessionBuilder("ac").build();
+        Interaction obj = new InteractionBuilder().uniProtAccession(accession).build();
+        assertEquals(accession, obj.getUniProtAccession());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        Interaction obj = new InteractionBuilder().build();
+        InteractionBuilder builder = new InteractionBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        Interaction obj = new InteractionBuilder().build();
+        Interaction obj2 = new InteractionBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
     }
 }

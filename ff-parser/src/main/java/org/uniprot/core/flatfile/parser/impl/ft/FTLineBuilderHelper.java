@@ -1,16 +1,23 @@
 package org.uniprot.core.flatfile.parser.impl.ft;
 
+import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.DASH;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.LINE_LENGTH;
 import static org.uniprot.core.flatfile.writer.impl.FFLineConstant.SEPARATOR;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.uniprot.core.Position;
 import org.uniprot.core.PositionModifier;
 import org.uniprot.core.flatfile.writer.impl.FFLineWrapper;
-import org.uniprot.core.uniprot.feature.*;
+import org.uniprot.core.flatfile.writer.impl.LineBuilderHelper;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDescription;
+import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
+import org.uniprot.core.uniprot.feature.FeatureType;
 
 import com.google.common.base.Strings;
 
@@ -26,10 +33,17 @@ public class FTLineBuilderHelper {
     private static final String MISSING = "Missing";
     private static final String QUESTION_MARK = "?";
     private static final String SPACE = " ";
-    public static final String FT_ID = "/FTId=";
-    public static final String FT_LINE_PREFIX_2 = "FT                                ";
+    public static final String FT_ID = "/id=\"";
+    public static final String FT_LINE_PREFIX_2 = "FT                   ";
     public static final String SPACE_LOCATION_DESCRIPTION = "       ";
     public static final String FT_LINE_PREFIX = "FT   ";
+    public static final int NUMBER_OF_SPACE = 19;
+    public static final String COLON = ":";
+    public static final String STOP = ".";
+    public static final String DOUBLE_STOP = "..";
+    public static final String NOTE_PREFIX = "/note=\"";
+    public static final String DOUBLE_QUOTE = "\"";
+    public static final String EVIDENCE_PREFIX = "/evidence=\"";
 
     public static StringBuilder getDescriptionString(Feature feature) {
         StringBuilder sb = new StringBuilder();
@@ -40,85 +54,103 @@ public class FTLineBuilderHelper {
         return sb;
     }
 
-    public static StringBuilder getFeatureId(Feature feature, boolean includeFFMarkup) {
+    public static List<String> buildNote(
+            Feature feature, StringBuilder extra, boolean includeFFMarkup) {
+        String extraString = replaceDoubleQuoteWithDoubleDoubleQuote(extra.toString());
+        //    StringBuilder note =
+        //        new StringBuilder();
+        boolean hasAlternativeSequence = feature.hasAlternativeSequence();
+        if ((extraString.length() == 0) && !hasAlternativeSequence) return Collections.emptyList();
         StringBuilder sb = new StringBuilder();
-        if (feature.hasFeatureId()) {
-            FeatureId featureId = feature.getFeatureId();
-            if ((featureId != null) && featureId.isValid(feature.getType())) {
-                if (includeFFMarkup) sb.append(FT_LINE_PREFIX_2);
-                sb.append(FT_ID);
-                sb.append(featureId.getValue());
-                sb.append(".");
+        if (includeFFMarkup) sb.append(FT_LINE_PREFIX_2);
+        sb.append(NOTE_PREFIX);
+        String[] seps = {SEPARATOR, DASH};
+        if (!hasAlternativeSequence) {
+            sb.append(extraString);
+            sb.append(DOUBLE_QUOTE);
+            if (includeFFMarkup) {
+                return FFLineWrapper.buildLines(
+                        sb.toString(), seps, FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
+            } else {
+                List<String> result = new ArrayList<>();
+                result.add(sb.toString());
+                return result;
             }
+        } else {
+            return addAlternativeSequence(sb, feature, includeFFMarkup, extraString);
         }
+    }
 
+    public static List<String> buildNote(Feature feature, boolean includeFFMarkup) {
+        StringBuilder note = buildExtra(feature);
+        return buildNote(feature, note, includeFFMarkup);
+    }
+
+    public static StringBuilder buildEvidences(List<Evidence> evidences, boolean includeFFMarkup) {
+        String evidence = LineBuilderHelper.export(evidences, false);
+        if (evidence.length() == 0) return new StringBuilder();
+        StringBuilder sb = new StringBuilder();
+        if (includeFFMarkup) sb.append(FT_LINE_PREFIX_2);
+        sb.append(EVIDENCE_PREFIX).append(evidence).append(DOUBLE_QUOTE);
+        return sb;
+    }
+
+    public static StringBuilder buildFeatureId(FeatureId ftId, boolean includeFFMarkup) {
+        StringBuilder sb = new StringBuilder();
+        if ((ftId != null) && !Strings.isNullOrEmpty(ftId.getValue())) {
+            if (includeFFMarkup) sb.append(FT_LINE_PREFIX_2);
+            sb.append(FT_ID);
+            sb.append(ftId.getValue());
+            sb.append(DOUBLE_QUOTE);
+        }
         return sb;
     }
 
     public static StringBuilder buildExtra(Feature feature) {
         StringBuilder sb = new StringBuilder();
         sb.append(getDescriptionString(feature));
-        boolean hasDescription = (sb.length() > 0);
-        StringBuilder status = new StringBuilder();
-        if (status.length() > 0) {
-            if (hasDescription) sb.append(" (");
-            if (hasDescription) sb.append(")");
-        }
         return sb;
     }
 
-    public static StringBuilder buildFeatureCommon(Feature feature, boolean includeFFMarkup) {
+    public static StringBuilder buildFeatureHeader(Feature feature, boolean includeFFMarkup) {
         StringBuilder sb = new StringBuilder();
         if (includeFFMarkup) sb.append(FT_LINE_PREFIX);
         sb.append(feature.getType());
-        sb.append(SPACE);
+        if (includeFFMarkup) {
+            int length = feature.getType().name().length();
+            int numberOfSpace = 19 - 3 - length;
+            for (int i = 0; i < numberOfSpace; i++) {
+                sb.append(SPACE);
+            }
+        } else {
+            sb.append(SPACE);
+        }
         if (feature.getLocation() != null) {
-            writeFeatureLocation(feature, sb, includeFFMarkup);
+            sb.append(buildFeatureLocation(feature.getLocation()));
         }
         return sb;
     }
 
-    private static boolean isValidPosition(Position position) {
-        return (position.getValue() != null)
-                && (position.getValue() > -1)
-                && (position.getModifier() != PositionModifier.UNKNOWN);
-    }
-
-    private static void writeFeatureLocation(
-            Feature feature, StringBuilder temp, boolean includeFFMarkup) {
-        String start = getModifierString(feature.getLocation().getStart().getModifier(), false);
-        if (isValidPosition(feature.getLocation().getStart())) {
-            start += feature.getLocation().getStart().getValue();
+    public static String buildFeatureLocation(FeatureLocation location) {
+        StringBuilder temp = new StringBuilder();
+        if (!Strings.isNullOrEmpty(location.getSequence())) {
+            temp.append(location.getSequence()).append(COLON);
         }
-
-        String end = getModifierString(feature.getLocation().getEnd().getModifier(), true);
-        if (isValidPosition(feature.getLocation().getEnd())) {
-            end += feature.getLocation().getEnd().getValue();
+        String start = getModifierString(location.getStart().getModifier(), false);
+        if ((location.getStart().getValue() > -1)
+                && (location.getStart().getModifier() != PositionModifier.UNKNOWN)) {
+            start += location.getStart().getValue();
         }
-
-        int currentLength = temp.toString().length();
-        int startLength = start.length();
-
-        final int DISTANCE1 = 20;
-        final int DISTANCE2 = 27;
-        int lastBlank = DISTANCE1 - startLength - currentLength;
-        if (includeFFMarkup) {
-            for (int i = 0; i < lastBlank; i++) {
-                temp.append(SPACE);
-            }
+        String end = getModifierString(location.getEnd().getModifier(), true);
+        if ((location.getEnd().getValue() > -1)
+                && (location.getEnd().getModifier() != PositionModifier.UNKNOWN)) {
+            end += location.getEnd().getValue();
         }
         temp.append(start);
-        currentLength = temp.toString().length();
-        int endLength = end.length();
-        lastBlank = DISTANCE2 - endLength - currentLength;
-        if (includeFFMarkup) {
-            for (int i = 0; i < lastBlank; i++) {
-                temp.append(SPACE);
-            }
-        } else {
-            temp.append(SPACE);
+        if (!start.equals(end)) {
+            temp.append(DOUBLE_STOP).append(end);
         }
-        temp.append(end);
+        return temp.toString();
     }
 
     private static String getModifierString(PositionModifier mod, boolean isEnd) {
@@ -141,74 +173,93 @@ public class FTLineBuilderHelper {
     }
 
     public static List<String> addAlternativeSequence(
-            StringBuilder sb, Feature feature, boolean includeFFMarkings) {
-        if (includeFFMarkings) return addAlternativeSequence(sb, feature);
-        else return addAlternativeSequenceNoFFMarking(sb, feature);
+            StringBuilder sb,
+            Feature featureWithAlternativeSequence,
+            boolean includeFFMarkings,
+            String extra) {
+
+        if (includeFFMarkings)
+            return addAlternativeSequence(sb, featureWithAlternativeSequence, extra);
+        else return addAlternativeSequenceNoFFMarking(sb, featureWithAlternativeSequence, extra);
     }
 
     private static List<String> addAlternativeSequenceNoFFMarking(
-            StringBuilder sb, Feature feature) {
+            StringBuilder sb, Feature featureWithAlternativeSequence, String extra) {
         List<String> lines = new ArrayList<>();
-        if (feature.hasAlternativeSequence()) {
-            AlternativeSequence altSeq = feature.getAlternativeSequence();
-
-            if (hasAlternativeSequence(altSeq)) {
-                String originalSequence = altSeq.getOriginalSequence();
-                sb.append(originalSequence);
-
-                if (feature.getType() == FeatureType.MUTAGEN) {
-                    sb.append(ARROW);
-                } else {
-                    sb.append(ARROW_TWO_SPACES);
-                }
-                String joiner = getJoiner(feature.getType());
-                sb.append(
-                        altSeq.getAlternativeSequences().stream()
-                                .collect(Collectors.joining(joiner)));
+        if (hasAlternativeSequence(featureWithAlternativeSequence)) {
+            String originalSequence =
+                    featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence();
+            sb.append(originalSequence);
+            if (featureWithAlternativeSequence.getType() == FeatureType.MUTAGEN) {
+                sb.append(ARROW);
             } else {
-                sb.append(MISSING);
+                sb.append(ARROW_TWO_SPACES);
             }
-            if (sb.length() > 0) lines.add(sb.toString());
+            String joiner = getJoiner(featureWithAlternativeSequence);
+            sb.append(
+                    featureWithAlternativeSequence.getAlternativeSequence()
+                            .getAlternativeSequences().stream()
+                            .collect(Collectors.joining(joiner)));
+        } else {
+            sb.append(MISSING);
         }
+        if (!Strings.isNullOrEmpty(extra)) {
+            sb.append(extra);
+        }
+        sb.append("\"");
+        lines.add(sb.toString());
         return lines;
     }
 
-    private static String getJoiner(FeatureType type) {
-        if (type == FeatureType.CONFLICT) {
+    private static String getJoiner(Feature featureWithAlternativeSequence) {
+        if (featureWithAlternativeSequence.getType() == FeatureType.CONFLICT) {
             return OR_TWO_SPACES;
         } else {
             return COMMA;
         }
     }
 
-    private static boolean hasAlternativeSequence(AlternativeSequence altSequence) {
-        return (altSequence != null)
-                && !Strings.isNullOrEmpty(altSequence.getOriginalSequence())
-                && !altSequence.getAlternativeSequences().isEmpty();
+    private static boolean hasAlternativeSequence(Feature featureWithAlternativeSequence) {
+        return featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence() != null
+                && !featureWithAlternativeSequence
+                        .getAlternativeSequence()
+                        .getOriginalSequence()
+                        .equals("")
+                && !featureWithAlternativeSequence
+                        .getAlternativeSequence()
+                        .getAlternativeSequences()
+                        .isEmpty();
     }
 
-    private static List<String> addAlternativeSequence(StringBuilder sb, Feature feature) {
+    private static List<String> addAlternativeSequence(
+            StringBuilder sb, Feature featureWithAlternativeSequence, String extra) {
         List<String> lines = new ArrayList<>();
-        if (feature.hasAlternativeSequence()) {
-            AlternativeSequence altSeq = feature.getAlternativeSequence();
-            sb = wrapAdd(lines, sb, SEPARATOR, FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
-            if (hasAlternativeSequence(altSeq)) {
-                sb = addOriginalSequence(sb, altSeq, feature.getType(), lines);
+        sb = wrapAdd(lines, sb, SEPARATOR, FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
+        if (hasAlternativeSequence(featureWithAlternativeSequence)) {
+            sb = addOriginalSequence(sb, featureWithAlternativeSequence, lines);
 
-                boolean first = true;
-                for (String atlternativeSequence : altSeq.getAlternativeSequences()) {
-                    if (!first) {
-                        sb = addJoinForAlternativeSequence(sb, feature.getType(), lines);
-                    }
-                    sb.append(atlternativeSequence);
-                    sb = wrapAdd(lines, sb, "", FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
-                    first = false;
+            boolean first = true;
+            for (String atlternativeSequence :
+                    featureWithAlternativeSequence
+                            .getAlternativeSequence()
+                            .getAlternativeSequences()) {
+                if (!first) {
+                    addJoinForAlternativeSequence(sb, featureWithAlternativeSequence, lines);
                 }
-            } else {
-                sb.append(MISSING);
+                sb.append(atlternativeSequence);
+                sb = wrapAdd(lines, sb, "", FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
+                first = false;
             }
-            if (sb.length() > 0) lines.add(sb.toString());
+        } else {
+            sb.append(MISSING);
         }
+        if (!Strings.isNullOrEmpty(extra)) {
+            sb.append(extra);
+        }
+        sb.append("\"");
+
+        sb = wrapAdd(lines, sb, SEPARATOR, FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
+        if (sb.length() > 0) lines.add(sb.toString());
         return lines;
     }
 
@@ -221,15 +272,13 @@ public class FTLineBuilderHelper {
     }
 
     private static StringBuilder addOriginalSequence(
-            StringBuilder sb,
-            AlternativeSequence altSequence,
-            FeatureType type,
-            List<String> lines) {
-        String originalSequence = altSequence.getOriginalSequence();
+            StringBuilder sb, Feature featureWithAlternativeSequence, List<String> lines) {
+        String originalSequence =
+                featureWithAlternativeSequence.getAlternativeSequence().getOriginalSequence();
         sb.append(originalSequence);
         sb = wrapAdd(lines, sb, "", FTLineBuilderHelper.FT_LINE_PREFIX_2, LINE_LENGTH);
 
-        if (type == FeatureType.MUTAGEN) {
+        if (featureWithAlternativeSequence.getType() == FeatureType.MUTAGEN) {
             if (isLongerLineLength(sb, ARROW)) {
                 sb = addToLines(sb, lines);
             }
@@ -252,9 +301,9 @@ public class FTLineBuilderHelper {
         return sb;
     }
 
-    private static StringBuilder addJoinForAlternativeSequence(
-            StringBuilder sb, FeatureType type, List<String> lines) {
-        if (type == FeatureType.CONFLICT) {
+    private static void addJoinForAlternativeSequence(
+            StringBuilder sb, Feature featureWithAlternativeSequence, List<String> lines) {
+        if (featureWithAlternativeSequence.getType() == FeatureType.CONFLICT) {
             if (isLongerLineLength(sb, OR_RIGHT_SPACE)) {
                 sb = addToLines(sb, lines);
                 sb = new StringBuilder(OR_RIGHT_SPACE);
@@ -268,7 +317,6 @@ public class FTLineBuilderHelper {
                 sb = new StringBuilder(FTLineBuilderHelper.FT_LINE_PREFIX_2 + COMMA);
             } else sb.append(COMMA);
         }
-        return sb;
     }
 
     private static StringBuilder wrapAdd(
@@ -280,9 +328,13 @@ public class FTLineBuilderHelper {
             if (i == (lines2.size() - 1)) {
                 sb = new StringBuilder(lines2.get(i));
             } else {
-                lines.add(lines2.get(i).trim());
+                lines.add(lines2.get(i));
             }
         }
         return sb;
+    }
+
+    public static String replaceDoubleQuoteWithDoubleDoubleQuote(String s) {
+        return s.replaceAll("\"", "\"\"");
     }
 }

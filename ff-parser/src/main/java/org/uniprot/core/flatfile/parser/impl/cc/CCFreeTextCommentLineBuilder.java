@@ -21,6 +21,7 @@ public class CCFreeTextCommentLineBuilder extends CCLineBuilderAbstr<FreeTextCom
 
         addFlatFileMarkingsIfRequired(includeFFMarkings, sb);
         if (includeCommentType) addCommentTypeName(comment, sb);
+        addMolecule(comment, sb, true);
         boolean first = true;
         for (EvidencedValue text : comment.getTexts()) {
             if (!first) sb.append(SPACE);

@@ -10,9 +10,14 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.feature.*;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDescription;
+import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
+import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.uniprot.feature.impl.FeatureDescriptionImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
 import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
@@ -24,7 +29,7 @@ import org.uniprot.core.uniprot.feature.impl.FeatureImpl;
  */
 public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
     private FeatureType type;
-    private Range location;
+    private FeatureLocation location;
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
@@ -54,7 +59,7 @@ public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
         return this;
     }
 
-    public FeatureBuilder location(Range location) {
+    public FeatureBuilder location(FeatureLocation location) {
         this.location = location;
         return this;
     }

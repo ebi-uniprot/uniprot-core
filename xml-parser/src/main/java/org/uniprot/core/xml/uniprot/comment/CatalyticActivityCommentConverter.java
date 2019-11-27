@@ -8,8 +8,11 @@ import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.builder.CatalyticActivityCommentBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.CommentType;
+import org.uniprot.core.xml.jaxb.uniprot.MoleculeType;
 import org.uniprot.core.xml.jaxb.uniprot.ObjectFactory;
 import org.uniprot.core.xml.uniprot.EvidenceIndexMapper;
+
+import com.google.common.base.Strings;
 
 public class CatalyticActivityCommentConverter
         implements CommentConverter<CatalyticActivityComment> {
@@ -38,6 +41,11 @@ public class CatalyticActivityCommentConverter
                         .collect(Collectors.toList());
 
         CatalyticActivityCommentBuilder builder = new CatalyticActivityCommentBuilder();
+        // Molecule
+        if (xmlObj.getMolecule() != null) {
+            builder.molecule(xmlObj.getMolecule().getValue());
+        }
+
         return builder.reaction(reaction).physiologicalReactions(physioReactions).build();
     }
 
@@ -45,6 +53,12 @@ public class CatalyticActivityCommentConverter
     public CommentType toXml(CatalyticActivityComment uniObj) {
         CommentType commentType = xmlUniprotFactory.createCommentType();
         commentType.setType(uniObj.getCommentType().toDisplayName().toLowerCase());
+        if (!Strings.isNullOrEmpty(uniObj.getMolecule())) {
+            MoleculeType mol = xmlUniprotFactory.createMoleculeType();
+            mol.setValue(uniObj.getMolecule());
+            commentType.setMolecule(mol);
+        }
+
         commentType.setReaction(reactionConverter.toXml(uniObj.getReaction()));
         uniObj.getPhysiologicalReactions()
                 .forEach(

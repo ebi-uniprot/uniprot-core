@@ -17,8 +17,8 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         String evi = "ECO:0000256|RuleBase:RU362091";
         evs.add(evi);
         String expected =
-                "CC   -!- SIMILARITY: Belongs to the sodium:solute symporter (SSF)"
-                        + "\nCC       (TC 2.A.21) family. {ECO:0000256|RuleBase:RU362091}.";
+                "CC   -!- SIMILARITY: Belongs to the sodium:solute symporter (SSF) (TC 2.A.21)\n"
+                        + "CC       family. {ECO:0000256|RuleBase:RU362091}.";
         FreeTextComment comment = buildComment(CommentType.SIMILARITY, text, evs);
         doTest(expected, comment);
     }
@@ -30,8 +30,8 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         String evi = "ECO:0000256|RuleBase:RU362091";
         evs.add(evi);
         String expected =
-                "CC   -!- SIMILARITY: Belongs to the sodium:solute symporter (SSF)"
-                        + "\nCC       (EC 2.A.21) family. {ECO:0000256|RuleBase:RU362091}.";
+                "CC   -!- SIMILARITY: Belongs to the sodium:solute symporter (SSF) (EC 2.A.21)\n"
+                        + "CC       family. {ECO:0000256|RuleBase:RU362091}.";
         FreeTextComment comment = buildComment(CommentType.SIMILARITY, text, evs);
         doTest(expected, comment);
     }
@@ -48,14 +48,13 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         evs.add(evi);
         FreeTextComment comment = buildComment(CommentType.FUNCTION, text, evs);
         String expected =
-                "CC   -!- FUNCTION: Non-catalytic subunit of the queuine tRNA-"
-                        + "\nCC       ribosyltransferase (TGT) that catalyzes the base-exchange of a"
-                        + "\nCC       guanine (G) residue with queuine (Q) at position 34 (anticodon"
-                        + "\nCC       wobble position) in tRNAs with GU(N) anticodons (tRNA-Asp, -Asn,"
-                        + "\nCC       -His and -Tyr), resulting in the hypermodified nucleoside"
-                        + "\nCC       queuosine (7-(((4,5-cis-dihydroxy-2-cyclopenten-1-"
-                        + "\nCC       yl)amino)methyl)-7-deazaguanosine). {ECO:0000256|HAMAP-"
-                        + "\nCC       Rule:MF_03043}.";
+                "CC   -!- FUNCTION: Non-catalytic subunit of the queuine tRNA-ribosyltransferase\n"
+                        + "CC       (TGT) that catalyzes the base-exchange of a guanine (G) residue with\n"
+                        + "CC       queuine (Q) at position 34 (anticodon wobble position) in tRNAs with\n"
+                        + "CC       GU(N) anticodons (tRNA-Asp, -Asn, -His and -Tyr), resulting in the\n"
+                        + "CC       hypermodified nucleoside queuosine (7-(((4,5-cis-dihydroxy-2-\n"
+                        + "CC       cyclopenten-1-yl)amino)methyl)-7-deazaguanosine). {ECO:0000256|HAMAP-\n"
+                        + "CC       Rule:MF_03043}.";
         doTest(expected, comment);
     }
 
@@ -71,12 +70,12 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         FreeTextComment comment = buildComment(CommentType.FUNCTION, text, evs);
 
         String expected =
-                "CC   -!- FUNCTION: Responsible, at least in part, for anchoring of the"
-                        + "\nCC       major outer membrane lipoprotein (Lpp, also known as the Braun"
-                        + "\nCC       lipoprotein) to the peptidoglycan via a meso-diaminopimelyl-L-"
-                        + "\nCC       Lys- bond on the terminal residue of Lpp. Can be oxidized in vivo,"
-                        + "\nCC       its reduction depends preferentially on DsbG, although DsbC is"
-                        + "\nCC       able to partially replace DsbG. {ECO:0000269|PubMed:18456808}.";
+                "CC   -!- FUNCTION: Responsible, at least in part, for anchoring of the major\n"
+                        + "CC       outer membrane lipoprotein (Lpp, also known as the Braun lipoprotein)\n"
+                        + "CC       to the peptidoglycan via a meso-diaminopimelyl-L-Lys- bond on the\n"
+                        + "CC       terminal residue of Lpp. Can be oxidized in vivo, its reduction depends\n"
+                        + "CC       preferentially on DsbG, although DsbC is able to partially replace\n"
+                        + "CC       DsbG. {ECO:0000269|PubMed:18456808}.";
 
         doTest(expected, comment);
     }
@@ -92,9 +91,9 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text, evs);
 
         String expected =
-                "CC   -!- ACTIVITY REGULATION: Release of protein hormones and neuropeptides"
-                        + "\nCC       from their precursors, generally by hydrolysis of -Lys-"
-                        + "\nCC       Arg-|- bonds. {ECO:0000269|PubMed:18456808}.";
+                "CC   -!- ACTIVITY REGULATION: Release of protein hormones and neuropeptides from\n"
+                        + "CC       their precursors, generally by hydrolysis of -Lys-Arg-|- bonds.\n"
+                        + "CC       {ECO:0000269|PubMed:18456808}.";
         doTest(expected, comment);
     }
 
@@ -107,9 +106,9 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
         evs.add(evi);
         FreeTextComment comment = buildComment(CommentType.ACTIVITY_REGULATION, text, evs);
         String expected =
-                "CC   -!- ACTIVITY REGULATION: Hydrolysis of -Arg-|-Xaa- and -Lys-|-"
-                        + "\nCC       Xaa- bonds in oligopeptides, even when P1' residue is proline."
-                        + "\nCC       {ECO:0000269|PubMed:18456808}.";
+                "CC   -!- ACTIVITY REGULATION: Hydrolysis of -Arg-|-Xaa- and -Lys-|-Xaa- bonds in\n"
+                        + "CC       oligopeptides, even when P1' residue is proline.\n"
+                        + "CC       {ECO:0000269|PubMed:18456808}.";
         doTest(expected, comment);
     }
 
@@ -121,13 +120,12 @@ class CCLineWrapperTest extends CCBuildTestAbstr {
                         + " shorter than five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec; and"
                         + " Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu- and -Tyr-|-Trp bonds also occurs).";
         String expected =
-                "CC   -!- ACTIVITY REGULATION: Hydrolysis of proteins to small peptides in"
-                        + "\nCC       the presence of ATP and magnesium. Alpha-casein is the usual test"
-                        + "\nCC       substrate. In the absence of ATP, only oligopeptides shorter than"
-                        + "\nCC       five residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec;"
-                        + "\nCC       and Leu-Tyr-Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-"
-                        + "\nCC       Leu- and -Tyr-|-Trp bonds also occurs). {ECO:0000255|HAMAP-"
-                        + "\nCC       Rule:MF_00444}.";
+                "CC   -!- ACTIVITY REGULATION: Hydrolysis of proteins to small peptides in the\n"
+                        + "CC       presence of ATP and magnesium. Alpha-casein is the usual test\n"
+                        + "CC       substrate. In the absence of ATP, only oligopeptides shorter than five\n"
+                        + "CC       residues are hydrolyzed (such as succinyl-Leu-Tyr-|-NHMec; and Leu-Tyr-\n"
+                        + "CC       Leu-|-Tyr-Trp, in which cleavage of the -Tyr-|-Leu- and -Tyr-|-Trp\n"
+                        + "CC       bonds also occurs). {ECO:0000255|HAMAP-Rule:MF_00444}.";
 
         String evi = "ECO:0000255|HAMAP-Rule:MF_00444";
         List<String> evs = new ArrayList<>();

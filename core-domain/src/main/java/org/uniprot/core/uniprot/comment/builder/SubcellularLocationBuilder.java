@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationValue;
@@ -31,12 +33,12 @@ public final class SubcellularLocationBuilder
         return this;
     }
 
-    public SubcellularLocationImpl build() {
+    public @Nonnull SubcellularLocationImpl build() {
         return new SubcellularLocationImpl(location, topology, orientation);
     }
 
     @Override
-    public SubcellularLocationBuilder from(SubcellularLocation instance) {
+    public SubcellularLocationBuilder from(@Nonnull SubcellularLocation instance) {
         return this.location(instance.getLocation())
                 .orientation(instance.getOrientation())
                 .topology(instance.getTopology());

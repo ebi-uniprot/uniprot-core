@@ -35,7 +35,9 @@ public class CCSequenceCautionCommentLineBuilder
         StringBuilder sb = new StringBuilder();
         List<String> lines = new ArrayList<>();
         if (isFirstSequenceCauction) {
-            if (includeCommentType) lines.add(buildStart(comment, includeFFMarkings));
+            String startWithMol =
+                    buildStartWithMolecule(comment, includeFFMarkings, includeCommentType);
+            if (!Strings.isNullOrEmpty(startWithMol)) lines.add(startWithMol);
         }
         if (includeFFMarkings) sb.append(this.linePrefix);
         boolean needSpace = false;
@@ -50,19 +52,7 @@ public class CCSequenceCautionCommentLineBuilder
                     .append(SEMICOLON);
             needSpace = true;
         }
-        if ((comment.getPositions() != null) && (comment.getPositions().size() > 0)) {
-            if (needSpace) sb.append(SPACE);
-            sb.append("Positions=");
-            for (int i = 0; i < comment.getPositions().size(); i++) {
-                sb.append(comment.getPositions().get(i));
-                if ((i + 1) == comment.getPositions().size()) {
-                    sb.append(SEMICOLON);
-                } else {
-                    sb.append(SEPARATOR_COMA);
-                }
-            }
-            needSpace = true;
-        }
+
         if (!Strings.isNullOrEmpty(comment.getNote())) {
             if (needSpace) sb.append(SPACE);
             sb.append(NOTE);

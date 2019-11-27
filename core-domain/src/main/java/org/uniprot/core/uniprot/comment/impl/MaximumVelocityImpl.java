@@ -15,7 +15,8 @@ public class MaximumVelocityImpl implements MaximumVelocity {
     private String enzyme;
     private List<Evidence> evidences;
 
-    private MaximumVelocityImpl() {
+    // no arg constructor for JSON deserialization
+    MaximumVelocityImpl() {
         this.evidences = Collections.emptyList();
     }
 
@@ -24,11 +25,7 @@ public class MaximumVelocityImpl implements MaximumVelocity {
         this.velocity = velocity;
         this.unit = unit;
         this.enzyme = enzyme;
-        if ((evidences == null) || evidences.isEmpty()) {
-            this.evidences = Collections.emptyList();
-        } else {
-            this.evidences = Collections.unmodifiableList(evidences);
-        }
+        this.evidences = Utils.unmodifiableList(evidences);
     }
 
     @Override

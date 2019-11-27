@@ -1,5 +1,11 @@
 package org.uniprot.core.uniref.builder;
 
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
@@ -21,7 +27,7 @@ public abstract class AbstractUniRefMemberBuilder<
     protected long organismTaxId;
     protected int sequenceLength;
     protected String proteinName;
-    protected UniProtAccession accession;
+    protected List<UniProtAccession> accessions = new ArrayList<>();;
     protected UniRefEntryId uniref50Id;
     protected UniRefEntryId uniref90Id;
     protected UniRefEntryId uniref100Id;
@@ -59,8 +65,17 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    public B accession(UniProtAccession accession) {
-        this.accession = accession;
+    public B addAccession(UniProtAccession accession) {
+        addOrIgnoreNull(accession, this.accessions);
+
+        return getThis();
+    }
+
+    public B accessions(List<UniProtAccession> accessions) {
+        if (accessions != null) {
+            this.accessions = modifiableList(accessions);
+        }
+
         return getThis();
     }
 
@@ -101,7 +116,7 @@ public abstract class AbstractUniRefMemberBuilder<
         this.organismTaxId(instance.getOrganismTaxId());
         this.sequenceLength(instance.getSequenceLength());
         this.proteinName(instance.getProteinName());
-        this.accession(instance.getUniProtAccession());
+        this.accessions(instance.getUniProtAccessions())
         this.uniref100Id(instance.getUniRef100Id());
         this.uniref90Id(instance.getUniRef90Id());
         this.uniref50Id(instance.getUniRef50Id());

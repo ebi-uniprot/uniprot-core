@@ -1,9 +1,3 @@
-/*
-FT   VAR_SEQ      33     83       TPDINPAWYTGRGIRPVGRFGRRRATPRDVTGLGQLSCLPL
-FT                                DGRTKFSQRG -> SECLTYGKQPLTSFHPFTSQMPP (in
-FT                                isoform 2).
-FT                                /FTId=VSP_004370.
-*/
 
 parser grammar FtLineParser;
 
@@ -11,19 +5,30 @@ options { tokenVocab=FtLineLexer; superClass=org.uniprot.core.flatfile.antlr.Abs
 
 ft_ft: ft_line+;
 
-ft_line: FT_HEADER ft_key loc_start loc_end
-          (ft_value2)? ft_id?
+ft_line: FT_HEADER ft_key ft_locations   
+          (ft_note)?
+          (ft_evidence )?
+        (ft_id)?
         NEW_LINE
          ;
-ft_value2: (SPACE7|SPACE1) ft_text DOT ;
+         
+  
+ ft_key: FT_KEY_INIT_MET|FT_KEY_SIGNAL|FT_KEY_PROPEP|FT_KEY_TRANSIT|FT_KEY_CHAIN|FT_KEY_PEPTIDE|FT_KEY_TOPO_DOM|FT_KEY_TRANSMEM|
+         FT_KEY_INTRAMEM|FT_KEY_DOMAIN|FT_KEY_REPEAT|FT_KEY_CA_BIND|FT_KEY_ZN_FING|FT_KEY_DNA_BIND|FT_KEY_NP_BIND|FT_KEY_REGION|
+         FT_KEY_COILED|FT_KEY_MOTIF|FT_KEY_COMPBIAS|FT_KEY_ACT_SITE|FT_KEY_METAL|FT_KEY_BINDING|FT_KEY_SITE|FT_KEY_LIPID|
+         FT_KEY_CARBOHYD|FT_KEY_DISULFID|FT_KEY_CROSSLNK|FT_KEY_VARIANT|FT_KEY_MUTAGEN|FT_KEY_CONFLICT|FT_KEY_OTHERS|FT_KEY_VAR_SEQ
+ ;
+ ft_locations: (SPACE | SPACES)  loc_start (FT_SPOT FT_SPOT loc_end)?;
+ //ft_isoform: FT_ISOFORM_WORD (SPACE FT_ISOFORM_WORD)*;
+loc_start:   (FT_LOCATION_ISO|FT_LOCATION_2) (SPACE FT_LOCATION_ISO|FT_LOCATION_2)*;
+loc_end:    FT_LOCATION_2;
 
-ft_key: FT_KEY|FT_KEY_VAR_SEQ|FT_KEY_VARIANT;
-ft_id: FTID FTID_VALUE DOT;
+ft_note: FT_NOTE note_text DOUBLE_QUOTE;
+note_text: (FT_NOTE_WORD)+ ((SPACE|CHANGE_OF_LINE) (FT_NOTE_WORD)+)*;
+ft_evidence: FT_EVIDENCE EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* DOUBLE_QUOTE;
 
-ft_text: FT_LINE DOT? (CHANGE_OF_LINE FT_LINE DOT?)*;
-loc_start:   FT_LOCATION;
-loc_end:    FT_LOCATION;
 
-//evidence: LEFT_B  EV_TAG (EV_SEPARATOR (SPACE|CHANGE_OF_LINE) EV_TAG)* RIGHT_B;
+ft_id: FT_ID FTID_VALUE DOUBLE_QUOTE;
+
 
 

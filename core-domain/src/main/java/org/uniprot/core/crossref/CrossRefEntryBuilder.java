@@ -2,6 +2,8 @@ package org.uniprot.core.crossref;
 
 import org.uniprot.core.Builder;
 
+import javax.annotation.Nonnull;
+
 public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, CrossRefEntry> {
     private String name;
     private String accession;
@@ -15,12 +17,9 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, Cross
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
-    public static CrossRefEntryBuilder newInstance() {
-        return new CrossRefEntryBuilder();
-    }
-
     @Override
-    public CrossRefEntry build() {
+    public @Nonnull
+    CrossRefEntry build() {
         return new CrossRefEntryImpl(
                 this.name,
                 this.accession,
@@ -36,7 +35,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, Cross
     }
 
     @Override
-    public CrossRefEntryBuilder from(CrossRefEntry instance) {
+    public @Nonnull CrossRefEntryBuilder from(@Nonnull CrossRefEntry instance) {
         this.name = instance.getName();
         this.accession = instance.getAccession();
         this.abbrev = instance.getAbbrev();
@@ -51,57 +50,57 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, Cross
         return this;
     }
 
-    public CrossRefEntryBuilder name(String name) {
+    public @Nonnull CrossRefEntryBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public CrossRefEntryBuilder accession(String accession) {
+    public @Nonnull CrossRefEntryBuilder accession(String accession) {
         this.accession = accession;
         return this;
     }
 
-    public CrossRefEntryBuilder abbrev(String abbrev) {
+    public @Nonnull CrossRefEntryBuilder abbrev(String abbrev) {
         this.abbrev = abbrev;
         return this;
     }
 
-    public CrossRefEntryBuilder pubMedId(String pubMedId) {
+    public @Nonnull CrossRefEntryBuilder pubMedId(String pubMedId) {
         this.pubMedId = pubMedId;
         return this;
     }
 
-    public CrossRefEntryBuilder doiId(String doiId) {
+    public @Nonnull CrossRefEntryBuilder doiId(String doiId) {
         this.doiId = doiId;
         return this;
     }
 
-    public CrossRefEntryBuilder linkType(String linkType) {
+    public @Nonnull CrossRefEntryBuilder linkType(String linkType) {
         this.linkType = linkType;
         return this;
     }
 
-    public CrossRefEntryBuilder server(String server) {
+    public @Nonnull CrossRefEntryBuilder server(String server) {
         this.server = server;
         return this;
     }
 
-    public CrossRefEntryBuilder dbUrl(String dbUrl) {
+    public @Nonnull CrossRefEntryBuilder dbUrl(String dbUrl) {
         this.dbUrl = dbUrl;
         return this;
     }
 
-    public CrossRefEntryBuilder category(String category) {
+    public @Nonnull CrossRefEntryBuilder category(String category) {
         this.category = category;
         return this;
     }
 
-    public CrossRefEntryBuilder reviewedProteinCount(Long reviewedProteinCount) {
+    public @Nonnull CrossRefEntryBuilder reviewedProteinCount(Long reviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         return this;
     }
 
-    public CrossRefEntryBuilder unreviewedProteinCount(Long unreviewedProteinCount) {
+    public @Nonnull CrossRefEntryBuilder unreviewedProteinCount(Long unreviewedProteinCount) {
         this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }

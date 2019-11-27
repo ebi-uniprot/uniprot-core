@@ -4,15 +4,21 @@ import java.util.Collections;
 import java.util.List;
 
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.Range;
 import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.uniprot.feature.*;
+import org.uniprot.core.uniprot.feature.AlternativeSequence;
+import org.uniprot.core.uniprot.feature.AlternativeSequenceHelper;
+import org.uniprot.core.uniprot.feature.Feature;
+import org.uniprot.core.uniprot.feature.FeatureDescription;
+import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
+import org.uniprot.core.uniprot.feature.FeatureType;
+import org.uniprot.core.uniprot.feature.FeatureXDbType;
 import org.uniprot.core.util.Utils;
 
 public class FeatureImpl implements Feature {
     private static final long serialVersionUID = -5308576363211194641L;
     private FeatureType type;
-    private Range location;
+    private FeatureLocation location;
     private FeatureDescription description;
     private FeatureId featureId;
     private AlternativeSequence alternativeSequence;
@@ -26,7 +32,7 @@ public class FeatureImpl implements Feature {
 
     public FeatureImpl(
             FeatureType type,
-            Range location,
+            FeatureLocation location,
             FeatureDescription description,
             FeatureId featureId,
             AlternativeSequence alternativeSequence,
@@ -58,7 +64,7 @@ public class FeatureImpl implements Feature {
     }
 
     @Override
-    public Range getLocation() {
+    public FeatureLocation getLocation() {
         return location;
     }
 

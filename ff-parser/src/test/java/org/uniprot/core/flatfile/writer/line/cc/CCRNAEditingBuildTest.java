@@ -51,15 +51,14 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test
     void testRNAEDITING3() {
         String ccLine =
-                ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1},\n"
-                        + "CC       158 {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
+                ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1}, 158\n"
+                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
                         + "CC       {ECO:0000303|Ref.6}; Note=Partially edited. RNA editing generates\n"
-                        + "CC       receptor isoforms that differ in their ability to interact with\n"
-                        + "CC       the phospholipase C signaling cascade in a transfected cell line,\n"
+                        + "CC       receptor isoforms that differ in their ability to interact with the\n"
+                        + "CC       phospholipase C signaling cascade in a transfected cell line,\n"
                         + "CC       suggesting that this RNA processing event may contribute to the\n"
-                        + "CC       modulation of serotonergic neurotransmission in the central\n"
-                        + "CC       nervous system. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|PDB:3OW2};");
+                        + "CC       modulation of serotonergic neurotransmission in the central nervous\n"
+                        + "CC       system. {ECO:0000256|HAMAP-Rule:MF_00205, ECO:0000313|PDB:3OW2};");
         String ccLineString =
                 ("RNA EDITING: Modified_positions=156, "
                         + "158, 160; Note=Partially edited. RNA editing generates "
@@ -130,15 +129,14 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     @Test
     void testRNAEDITING4() {
         String ccLine =
-                ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1},\n"
-                        + "CC       158 {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
-                        + "CC       {ECO:0000303|Ref.6}; Note=Partial edited. {ECO:0000313|PDB:3OW2}.\n"
-                        + "CC       RNA editing generates receptor isoforms that differ in the\n"
-                        + "CC       phospholipase C signaling cascade in a transfected cell line,\n"
-                        + "CC       suggesting that this RNA processing event may contribute to the\n"
-                        + "CC       modulation of serotonergic neurotransmission in the central\n"
-                        + "CC       nervous system. {ECO:0000256|HAMAP-Rule:MF_00205,\n"
-                        + "CC       ECO:0000313|PDB:3OW2};");
+                ("CC   -!- RNA EDITING: Modified_positions=156 {ECO:0000313|EMBL:BAG16761.1}, 158\n"
+                        + "CC       {ECO:0000269|PubMed:10433554, ECO:0000303|Ref.6}, 160\n"
+                        + "CC       {ECO:0000303|Ref.6}; Note=Partial edited. {ECO:0000313|PDB:3OW2}. RNA\n"
+                        + "CC       editing generates receptor isoforms that differ in the phospholipase C\n"
+                        + "CC       signaling cascade in a transfected cell line, suggesting that this RNA\n"
+                        + "CC       processing event may contribute to the modulation of serotonergic\n"
+                        + "CC       neurotransmission in the central nervous system. {ECO:0000256|HAMAP-\n"
+                        + "CC       Rule:MF_00205, ECO:0000313|PDB:3OW2};");
         String ccLineString =
                 ("RNA EDITING: Modified_positions=156, "
                         + "158, 160; Note=Partial edited.. RNA editing generates "
@@ -217,6 +215,6 @@ class CCRNAEditingBuildTest extends CCBuildTestAbstr {
     }
 
     private RnaEdPosition buildPosition(String p, List<String> evs) {
-        return new RnaEditingPositionBuilder(p, createEvidence(evs)).build();
+        return new RnaEditingPositionBuilder().position(p).evidences(createEvidence(evs)).build();
     }
 }

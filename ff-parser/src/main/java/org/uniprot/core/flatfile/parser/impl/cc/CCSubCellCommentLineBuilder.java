@@ -31,13 +31,12 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
         }
         if (includeCommentType) addCommentTypeName(comment, sb);
         // Add molecule
+        addMolecule(comment, sb, true);
+
         boolean needSpace = false;
-        if (!Strings.isNullOrEmpty(comment.getMolecule())) {
-            sb.append(comment.getMolecule()).append(":");
-            needSpace = true;
-        }
         StringBuilder locations =
                 buildLocations(comment, comment.getSubcellularLocations(), showEvidence);
+
         if (locations.length() > 0) {
             if (needSpace) sb.append(SPACE);
             sb.append(locations);

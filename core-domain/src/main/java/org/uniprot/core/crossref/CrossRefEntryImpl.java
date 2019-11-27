@@ -16,7 +16,8 @@ public class CrossRefEntryImpl implements CrossRefEntry {
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
-    private CrossRefEntryImpl() {
+    // no arg constructor for JSON deserialization
+    CrossRefEntryImpl() {
         // do nothing.. just to satisfy the objectmapper
     }
 
@@ -50,17 +51,9 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         return this.name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public String getAccession() {
         return this.accession;
-    }
-
-    public void setAccession(String accession) {
-        this.accession = accession;
     }
 
     @Override
@@ -68,17 +61,9 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         return this.abbrev;
     }
 
-    public void setAbbrev(String abbrev) {
-        this.abbrev = abbrev;
-    }
-
     @Override
     public String getPubMedId() {
         return this.pubMedId;
-    }
-
-    public void setPubMedId(String pubMedId) {
-        this.pubMedId = pubMedId;
     }
 
     @Override
@@ -86,17 +71,9 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         return this.doiId;
     }
 
-    public void setDoiId(String doiId) {
-        this.doiId = doiId;
-    }
-
     @Override
     public String getLinkType() {
         return this.linkType;
-    }
-
-    public void setLinkType(String linkType) {
-        this.linkType = linkType;
     }
 
     @Override
@@ -104,17 +81,9 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         return this.server;
     }
 
-    public void setServer(String server) {
-        this.server = server;
-    }
-
     @Override
     public String getDbUrl() {
         return this.dbUrl;
-    }
-
-    public void setDbUrl(String dbUrl) {
-        this.dbUrl = dbUrl;
     }
 
     @Override
@@ -122,26 +91,14 @@ public class CrossRefEntryImpl implements CrossRefEntry {
         return this.category;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     @Override
     public Long getReviewedProteinCount() {
         return this.reviewedProteinCount;
     }
 
-    public void setReviewedProteinCount(Long reviewedProteinCount) {
-        this.reviewedProteinCount = reviewedProteinCount;
-    }
-
     @Override
     public Long getUnreviewedProteinCount() {
         return this.unreviewedProteinCount;
-    }
-
-    public void setUnreviewedProteinCount(Long unreviewedProteinCount) {
-        this.unreviewedProteinCount = unreviewedProteinCount;
     }
 
     @Override

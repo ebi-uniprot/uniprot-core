@@ -10,39 +10,23 @@ import org.uniprot.core.uniprot.comment.SubcellularLocation;
 import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
 import org.uniprot.core.util.Utils;
 
-public class SubcellularLocationCommentImpl extends CommentImpl
+public class SubcellularLocationCommentImpl extends CommentHasMoleculeImpl
         implements SubcellularLocationComment {
     private static final long serialVersionUID = 955858123969540661L;
-    private String molecule;
     private Note note;
     private List<SubcellularLocation> subcellularLocations;
 
-    private SubcellularLocationCommentImpl() {
-        super(CommentType.SUBCELLULAR_LOCATION);
-        this.molecule = "";
+    // no arg constructor for JSON deserialization
+    SubcellularLocationCommentImpl() {
+        super(CommentType.SUBCELLULAR_LOCATION, null);
         this.subcellularLocations = Collections.emptyList();
     }
 
     public SubcellularLocationCommentImpl(
             String molecule, List<SubcellularLocation> subcellularLocations, Note note) {
-        super(CommentType.SUBCELLULAR_LOCATION);
-        if (molecule == null || molecule.isEmpty()) {
-            this.molecule = "";
-        } else {
-            this.molecule = molecule;
-        }
-
-        if ((subcellularLocations == null) || subcellularLocations.isEmpty()) {
-            this.subcellularLocations = Collections.emptyList();
-        } else {
-            this.subcellularLocations = Collections.unmodifiableList(subcellularLocations);
-        }
+        super(CommentType.SUBCELLULAR_LOCATION, molecule);
+        this.subcellularLocations = Utils.unmodifiableList(subcellularLocations);
         this.note = note;
-    }
-
-    @Override
-    public String getMolecule() {
-        return molecule;
     }
 
     @Override
@@ -53,11 +37,6 @@ public class SubcellularLocationCommentImpl extends CommentImpl
     @Override
     public List<SubcellularLocation> getSubcellularLocations() {
         return subcellularLocations;
-    }
-
-    @Override
-    public boolean hasMolecule() {
-        return Utils.notNullOrEmpty(this.molecule);
     }
 
     @Override
@@ -76,13 +55,12 @@ public class SubcellularLocationCommentImpl extends CommentImpl
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         SubcellularLocationCommentImpl that = (SubcellularLocationCommentImpl) o;
-        return Objects.equals(molecule, that.molecule)
-                && Objects.equals(note, that.note)
+        return Objects.equals(note, that.note)
                 && Objects.equals(subcellularLocations, that.subcellularLocations);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), molecule, note, subcellularLocations);
+        return Objects.hash(super.hashCode(), note, subcellularLocations);
     }
 }

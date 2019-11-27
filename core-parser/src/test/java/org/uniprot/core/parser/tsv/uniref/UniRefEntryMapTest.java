@@ -81,7 +81,7 @@ class UniRefEntryMapTest {
                 new UniRefEntryBuilder().from(entry).addMember(createMember2()).build();
 
         String members = UniRefEntryMap.getMembers(entry2);
-        assertEquals("P12345; P12347; UPI0000E5B23D", members);
+        assertEquals("P12345_HUMAN; P12347_HUMAN; UPI0000E5B23D", members);
     }
 
     private UniRefEntry createEntry() {
@@ -138,7 +138,7 @@ class UniRefEntryMapTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .accession(new UniProtAccessionBuilder("P12345").build())
+                        .addAccession(new UniProtAccessionBuilder("P12345").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())
@@ -164,7 +164,7 @@ class UniRefEntryMapTest {
                         .sequenceLength(length)
                         .proteinName(pName)
                         .uniparcId(new UniParcIdBuilder(upi).build())
-                        .accession(new UniProtAccessionBuilder("P12347").build())
+                        .addAccession(new UniProtAccessionBuilder("P12347").build())
                         .uniref100Id(new UniRefEntryIdBuilder("UniRef100_P03923").build())
                         .uniref90Id(new UniRefEntryIdBuilder("UniRef90_P03943").build())
                         .uniref50Id(new UniRefEntryIdBuilder("UniRef50_P03973").build())

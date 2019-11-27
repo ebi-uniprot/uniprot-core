@@ -11,7 +11,6 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineObject;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
-import org.uniprot.core.uniprot.comment.MassSpectrometryRange;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
 class CcMSConverterTest {
@@ -27,11 +26,7 @@ class CcMSConverterTest {
         CcLineObject.MassSpectrometry wr = new CcLineObject.MassSpectrometry();
         wr.mass = 13822;
         wr.method = "MALDI";
-        CcLineObject.MassSpectrometryRange mrange = new CcLineObject.MassSpectrometryRange();
-        mrange.start = 19;
-        mrange.end = 140;
-        wr.ranges.add(mrange);
-        mrange.rangeIsoform = "P15522-2";
+        wr.molecule = "P15522-2";
         wr.sources.add("ECO:0000269|PubMed:15208022");
         cc1.object = wr;
         ccLineO.ccs.add(cc1);
@@ -49,12 +44,9 @@ class CcMSConverterTest {
         assertTrue(wcomment.getMolWeightError() != null);
         assertEquals(0, wcomment.getMolWeightError(), 0.0001);
         //	assertEquals(null, wcomment.getNote());
-        List<MassSpectrometryRange> ranges = wcomment.getRanges();
-        assertEquals(1, ranges.size());
-        MassSpectrometryRange range = ranges.get(0);
-        assertEquals("P15522-2", range.getIsoformId());
-        assertEquals(19, range.getRange().getStart().getValue().intValue());
-        assertEquals(140, range.getRange().getEnd().getValue().intValue());
+
+        assertEquals("P15522-2", wcomment.getMolecule());
+
         List<Evidence> sources = wcomment.getEvidences();
         assertEquals(1, sources.size());
         Evidence source = sources.get(0);

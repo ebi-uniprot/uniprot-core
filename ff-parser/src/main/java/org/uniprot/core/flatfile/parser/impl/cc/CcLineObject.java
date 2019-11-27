@@ -85,6 +85,7 @@ public class CcLineObject implements HasEvidenceInfo {
     }
 
     public static class BiophysicochemicalProperties {
+        public String molecule;
         public EvidencedString bsorptionAbs;
         public List<EvidencedString> bsorptionNote = new ArrayList<>();
         public List<EvidencedString> kms = new ArrayList<>();
@@ -105,6 +106,7 @@ public class CcLineObject implements HasEvidenceInfo {
     }
 
     public static class WebResource {
+        public String molecule;
         public String name;
         public String url;
         public String note;
@@ -201,6 +203,7 @@ public class CcLineObject implements HasEvidenceInfo {
     }
 
     public static class RnaEditing {
+        public String molecule;
         public RnaEditingLocationEnum locationEnum;
         public List<Integer> locations = new ArrayList<>();
         public List<EvidencedString> note = new ArrayList<>();
@@ -212,6 +215,7 @@ public class CcLineObject implements HasEvidenceInfo {
     }
 
     public static class SequenceCaution {
+        public String molecule;
         public List<SequenceCautionObject> sequenceCautionObjects = new ArrayList<>();
     }
 
@@ -230,31 +234,25 @@ public class CcLineObject implements HasEvidenceInfo {
     }
 
     public static class SequenceCautionObject {
+        public String molecule;
         public String sequence;
         public SequenceCautionType type;
-        public List<Integer> positions = new ArrayList<>();
-        public String positionValue;
+        //   public List<Integer> positions = new ArrayList<>();
+        //   public String positionValue;
         public String note;
     }
 
     public static class MassSpectrometry {
+        public String molecule;
         public float mass;
         public float massError;
         public String method;
-        public List<MassSpectrometryRange> ranges = new ArrayList<>();
         public String note;
         public List<String> sources = new ArrayList<>();
     }
 
-    public static class MassSpectrometryRange {
-        public int start;
-        public boolean startUnknown;
-        public int end;
-        public boolean endUnknown;
-        public String rangeIsoform;
-    }
-
     public static class Disease {
+        public String molecule;
         public String name;
         public String abbr;
         public String mim;
@@ -274,10 +272,12 @@ public class CcLineObject implements HasEvidenceInfo {
     }
 
     public static class FreeText {
+        public String molecule;
         public List<EvidencedString> texts = new ArrayList<>();
     }
 
     public static class CatalyticActivity {
+        public String molecule;
         public CAReaction reaction;
         public List<CAPhysioDirection> physiologicalDirections = new ArrayList<>();
     }

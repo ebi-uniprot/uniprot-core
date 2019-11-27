@@ -13,7 +13,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
-import org.uniprot.core.Range;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
 import org.uniprot.core.cv.keyword.KeywordCategory;
@@ -34,6 +33,7 @@ import org.uniprot.core.uniprot.evidence.builder.EvidencedValueBuilder;
 import org.uniprot.core.uniprot.feature.AlternativeSequence;
 import org.uniprot.core.uniprot.feature.Feature;
 import org.uniprot.core.uniprot.feature.FeatureId;
+import org.uniprot.core.uniprot.feature.FeatureLocation;
 import org.uniprot.core.uniprot.feature.FeatureType;
 import org.uniprot.core.uniprot.feature.builder.FeatureBuilder;
 import org.uniprot.core.uniprot.feature.impl.AlternativeSequenceImpl;
@@ -231,20 +231,20 @@ class UniProtEntryConverterTest {
         Feature featureLocation12 =
                 new FeatureBuilder()
                         .type(FeatureType.TURN)
-                        .location(new Range(12, 12))
+                        .location(new FeatureLocation(12, 12))
                         .description("some desc1")
                         .evidences(evidences)
                         .build();
         Feature featureLocation20 =
                 new FeatureBuilder()
                         .from(featureLocation12)
-                        .location(new Range(20, 23))
+                        .location(new FeatureLocation(20, 23))
                         .description("some desc2")
                         .build();
         Feature featureLocation200 =
                 new FeatureBuilder()
                         .type(FeatureType.CHAIN)
-                        .location(new Range(200, 230))
+                        .location(new FeatureLocation(200, 230))
                         .description("some desc3")
                         .featureId("PRO_123")
                         .evidences(evidences)
@@ -259,7 +259,7 @@ class UniProtEntryConverterTest {
     }
 
     private Feature createVarSeqFeature() {
-        Range location = new Range(65, 86);
+        FeatureLocation location = new FeatureLocation(65, 86);
         AlternativeSequence as = new AlternativeSequenceImpl("RS", Arrays.asList("DB", "AA"));
         FeatureId featureId = new FeatureIdImpl("VSP_112");
 

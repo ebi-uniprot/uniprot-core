@@ -29,6 +29,7 @@ public class CCWebResourceCommentLineBuilder extends CCLineBuilderAbstr<WebResou
             sb.append(comment.getCommentType().toDisplayName());
             sb.append(": ");
         }
+        addMolecule(comment, sb, true);
         sb.append(NAME);
         sb.append(comment.getResourceName());
         sb.append(SEMICOLON);

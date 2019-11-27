@@ -48,7 +48,8 @@ public class CatalyticActivityCCLineBuilder extends CCLineBuilderAbstr<Catalytic
         List<String> lines = new ArrayList<>();
         // first line
         StringBuilder firstLine = new StringBuilder();
-        if (includeCommentType) firstLine.append(buildStart(comment, includeFFMarkings));
+        firstLine.append(buildStartWithMolecule(comment, includeFFMarkings, includeCommentType));
+
         if (firstLine.length() > 0) lines.add(firstLine.toString());
         Reaction reaction = comment.getReaction();
         StringBuilder sb = new StringBuilder();
