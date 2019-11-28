@@ -1492,5 +1492,11 @@
 		"displayName": "ABCD",
 		"category": "PAM",
 		"uriLink": "https://web.expasy.org/cgi-bin/abcd/search_abcd.pl?input=%u"
+	},
+	{
+		"name": "RNAct",
+		"displayName": "RNAct",
+		"category": "OTHER",
+		"uriLink": "https://rnact.crg.eu/%d?query=%u"
 	}
 ]

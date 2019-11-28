@@ -1,9 +1,7 @@
 CleanEx
 ProtClustDB
 PathwayCommons
-DrugCentral
-Pharos
-MassIVE
 ProDom
 PlantReactome
 Proteomes
+RNAct
