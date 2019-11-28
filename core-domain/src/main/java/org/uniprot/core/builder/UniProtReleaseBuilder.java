@@ -6,6 +6,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.UniProtRelease;
 import org.uniprot.core.impl.UniProtReleaseImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author jluo
  * @date: 13 Aug 2019
@@ -16,34 +18,34 @@ public class UniProtReleaseBuilder implements Builder<UniProtReleaseBuilder, Uni
     private String nextVersion;
     private LocalDate nextReleaseDate;
 
-    public UniProtReleaseBuilder currentVersion(String currentVersion) {
+    public @Nonnull UniProtReleaseBuilder currentVersion(String currentVersion) {
         this.currentVersion = currentVersion;
         return this;
     }
 
-    public UniProtReleaseBuilder currentReleaseDate(LocalDate currentReleaseDate) {
+    public @Nonnull UniProtReleaseBuilder currentReleaseDate(LocalDate currentReleaseDate) {
         this.currentReleaseDate = currentReleaseDate;
         return this;
     }
 
-    public UniProtReleaseBuilder nextVersion(String nextVersion) {
+    public @Nonnull UniProtReleaseBuilder nextVersion(String nextVersion) {
         this.nextVersion = nextVersion;
         return this;
     }
 
-    public UniProtReleaseBuilder nextReleaseDate(LocalDate nextReleaseDate) {
+    public @Nonnull UniProtReleaseBuilder nextReleaseDate(LocalDate nextReleaseDate) {
         this.nextReleaseDate = nextReleaseDate;
         return this;
     }
 
     @Override
-    public UniProtRelease build() {
+    public @Nonnull UniProtRelease build() {
         return new UniProtReleaseImpl(
                 currentVersion, currentReleaseDate, nextVersion, nextReleaseDate);
     }
 
     @Override
-    public UniProtReleaseBuilder from(UniProtRelease instance) {
+    public @Nonnull UniProtReleaseBuilder from(@Nonnull UniProtRelease instance) {
         return this.currentVersion(instance.getCurrentVersion())
                 .currentReleaseDate(instance.getCurrentReleaseDate())
                 .nextVersion(instance.getNextVersion())
