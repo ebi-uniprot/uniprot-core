@@ -13,7 +13,8 @@ public class SequenceImpl implements Sequence {
     private String crc64;
     private String md5;
 
-    private SequenceImpl() {
+    // no arg constructor for JSON deserialization
+    SequenceImpl() {
         this.value = "";
     }
 
@@ -72,8 +73,6 @@ public class SequenceImpl implements Sequence {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         SequenceImpl other = (SequenceImpl) obj;
-        if (value == null) {
-            return other.value == null;
-        } else return value.equals(other.value);
+        return value.equals(other.value);
     }
 }
