@@ -2,6 +2,8 @@ package org.uniprot.core.builder;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.cv.disease.CrossReference;
 import org.uniprot.core.cv.disease.Disease;
@@ -20,12 +22,12 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     private Long reviewedProteinCount;
     private Long unreviewedProteinCount;
 
-    public static DiseaseBuilder newInstance() {
+    public static @Nonnull DiseaseBuilder newInstance() {
         return new DiseaseBuilder();
     }
 
     @Override
-    public Disease build() {
+    public @Nonnull Disease build() {
         return new DiseaseImpl(
                 this.id,
                 this.accession,
@@ -39,7 +41,7 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
     }
 
     @Override
-    public DiseaseBuilder from(Disease instance) {
+    public @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
         this.id = instance.getId();
         this.accession = instance.getAccession();
         this.acronym = instance.getAcronym();
@@ -52,68 +54,68 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         return this;
     }
 
-    public DiseaseBuilder id(String id) {
+    public @Nonnull DiseaseBuilder id(String id) {
         this.id = id;
         return this;
     }
 
-    public DiseaseBuilder accession(String accession) {
+    public @Nonnull DiseaseBuilder accession(String accession) {
         this.accession = accession;
         return this;
     }
 
-    public DiseaseBuilder acronym(String acronym) {
+    public @Nonnull DiseaseBuilder acronym(String acronym) {
         this.acronym = acronym;
         return this;
     }
 
-    public DiseaseBuilder definition(String definition) {
+    public @Nonnull DiseaseBuilder definition(String definition) {
         this.definition = definition;
         return this;
     }
 
     // for single string
-    public DiseaseBuilder alternativeNames(String alternativeName) {
+    public @Nonnull DiseaseBuilder alternativeNames(String alternativeName) {
         this.alternativeNames = Utils.modifiableList(this.alternativeNames);
         this.alternativeNames.add(alternativeName);
         return this;
     }
 
-    public DiseaseBuilder alternativeNames(List<String> alternativeNames) {
+    public @Nonnull DiseaseBuilder alternativeNames(List<String> alternativeNames) {
         this.alternativeNames = alternativeNames;
         return this;
     }
 
     // setter for single object
-    public DiseaseBuilder crossReferences(CrossReference crossReference) {
+    public @Nonnull DiseaseBuilder crossReferences(CrossReference crossReference) {
         this.crossReferences = Utils.modifiableList(this.crossReferences);
         this.crossReferences.add(crossReference);
         return this;
     }
 
-    public DiseaseBuilder crossReferences(List<CrossReference> crossReferences) {
+    public @Nonnull DiseaseBuilder crossReferences(List<CrossReference> crossReferences) {
         this.crossReferences = crossReferences;
         return this;
     }
 
     // setter for single object
-    public DiseaseBuilder keywords(Keyword keyword) {
+    public @Nonnull DiseaseBuilder keywords(Keyword keyword) {
         this.keywords = Utils.modifiableList(this.keywords);
         this.keywords.add(keyword);
         return this;
     }
 
-    public DiseaseBuilder keywords(List<Keyword> keywords) {
+    public @Nonnull DiseaseBuilder keywords(List<Keyword> keywords) {
         this.keywords = keywords;
         return this;
     }
 
-    public DiseaseBuilder reviewedProteinCount(Long reviewedProteinCount) {
+    public @Nonnull DiseaseBuilder reviewedProteinCount(Long reviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         return this;
     }
 
-    public DiseaseBuilder unreviewedProteinCount(Long unreviewedProteinCount) {
+    public @Nonnull DiseaseBuilder unreviewedProteinCount(Long unreviewedProteinCount) {
         this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }
