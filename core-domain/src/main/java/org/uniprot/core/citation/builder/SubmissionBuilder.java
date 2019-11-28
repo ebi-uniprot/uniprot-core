@@ -4,22 +4,24 @@ import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.impl.SubmissionImpl;
 
+import javax.annotation.Nonnull;
+
 public final class SubmissionBuilder
         extends AbstractCitationBuilder<SubmissionBuilder, Submission> {
     private SubmissionDatabase submissionDb;
 
-    public Submission build() {
+    public @Nonnull Submission build() {
         return new SubmissionImpl(
                 authoringGroups, authors, xrefs, title, publicationDate, submissionDb);
     }
 
     @Override
-    public SubmissionBuilder from(Submission instance) {
+    public @Nonnull SubmissionBuilder from(Submission instance) {
         init(instance);
         return this.submittedToDatabase(instance.getSubmissionDatabase());
     }
 
-    public SubmissionBuilder submittedToDatabase(SubmissionDatabase submissionDb) {
+    public @Nonnull SubmissionBuilder submittedToDatabase(SubmissionDatabase submissionDb) {
         this.submissionDb = submissionDb;
         return this;
     }
