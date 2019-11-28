@@ -1,11 +1,11 @@
 package org.uniprot.core.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SequenceImplTest {
     private static Sequence sequence;

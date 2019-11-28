@@ -54,10 +54,10 @@ public class UniProtReleaseImpl implements UniProtRelease {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniProtReleaseImpl that = (UniProtReleaseImpl) o;
-        return Objects.equals(currentVersion, that.currentVersion) &&
-          Objects.equals(currentReleaseDate, that.currentReleaseDate) &&
-          Objects.equals(nextVersion, that.nextVersion) &&
-          Objects.equals(nextReleaseDate, that.nextReleaseDate);
+        return Objects.equals(currentVersion, that.currentVersion)
+                && Objects.equals(currentReleaseDate, that.currentReleaseDate)
+                && Objects.equals(nextVersion, that.nextVersion)
+                && Objects.equals(nextReleaseDate, that.nextReleaseDate);
     }
 
     @Override

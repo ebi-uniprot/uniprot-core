@@ -1,9 +1,9 @@
 package org.uniprot.core.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Value;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ValueImplTest {
 

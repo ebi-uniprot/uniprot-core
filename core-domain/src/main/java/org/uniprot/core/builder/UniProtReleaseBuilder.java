@@ -2,11 +2,11 @@ package org.uniprot.core.builder;
 
 import java.time.LocalDate;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.UniProtRelease;
 import org.uniprot.core.impl.UniProtReleaseImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo
