@@ -9,7 +9,8 @@ public class PublicationDateImpl implements PublicationDate {
     private static final long serialVersionUID = 3232437573866835411L;
     private String value;
 
-    private PublicationDateImpl() {}
+    // no arg constructor for JSON deserialization
+    PublicationDateImpl() {}
 
     public PublicationDateImpl(String value) {
         this.value = value;

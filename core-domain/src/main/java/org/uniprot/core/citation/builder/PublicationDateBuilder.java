@@ -4,6 +4,8 @@ import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 29/01/19
  *
@@ -16,7 +18,7 @@ public class PublicationDateBuilder
     }
 
     @Override
-    public PublicationDate build() {
+    public @Nonnull PublicationDate build() {
         return new PublicationDateImpl(value);
     }
 
