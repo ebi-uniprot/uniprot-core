@@ -3,6 +3,8 @@ package org.uniprot.core.citation.builder;
 import org.uniprot.core.citation.JournalArticle;
 import org.uniprot.core.citation.impl.JournalArticleImpl;
 
+import javax.annotation.Nonnull;
+
 public final class JournalArticleBuilder
         extends AbstractCitationBuilder<JournalArticleBuilder, JournalArticle> {
     private String journalName;
@@ -11,7 +13,7 @@ public final class JournalArticleBuilder
     private String volume = "";
 
     @Override
-    public JournalArticle build() {
+    public @Nonnull JournalArticle build() {
         return new JournalArticleImpl(
                 authoringGroups,
                 authors,
@@ -25,7 +27,7 @@ public final class JournalArticleBuilder
     }
 
     @Override
-    public JournalArticleBuilder from(JournalArticle instance) {
+    public @Nonnull JournalArticleBuilder from(@Nonnull JournalArticle instance) {
         init(instance);
         return this.journalName(instance.getJournal().getName())
                 .firstPage(instance.getFirstPage())
@@ -33,22 +35,22 @@ public final class JournalArticleBuilder
                 .volume(instance.getVolume());
     }
 
-    public JournalArticleBuilder journalName(String journalName) {
+    public @Nonnull JournalArticleBuilder journalName(String journalName) {
         this.journalName = journalName;
         return this;
     }
 
-    public JournalArticleBuilder firstPage(String firstPage) {
+    public @Nonnull JournalArticleBuilder firstPage(String firstPage) {
         this.firstPage = firstPage;
         return this;
     }
 
-    public JournalArticleBuilder lastPage(String lastPage) {
+    public @Nonnull JournalArticleBuilder lastPage(String lastPage) {
         this.lastPage = lastPage;
         return this;
     }
 
-    public JournalArticleBuilder volume(String volume) {
+    public @Nonnull JournalArticleBuilder volume(String volume) {
         this.volume = volume;
         return this;
     }
