@@ -3,6 +3,7 @@ package org.uniprot.core.citation.impl;
 import static java.util.Collections.emptyList;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
@@ -13,7 +14,8 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
     private String institute;
     private String address;
 
-    private ThesisImpl() {
+    // no arg constructor for JSON deserialization
+    ThesisImpl() {
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
@@ -65,11 +67,7 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         if (!super.equals(obj)) return false;
         if (getClass() != obj.getClass()) return false;
         ThesisImpl other = (ThesisImpl) obj;
-        if (address == null) {
-            if (other.address != null) return false;
-        } else if (!address.equals(other.address)) return false;
-        if (institute == null) {
-            return other.institute == null;
-        } else return institute.equals(other.institute);
+        return Objects.equals(this.address, other.address)
+          && Objects.equals(this.institute, other.institute);
     }
 }
