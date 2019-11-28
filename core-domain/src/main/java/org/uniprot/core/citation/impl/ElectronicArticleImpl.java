@@ -76,7 +76,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         if (getClass() != obj.getClass()) return false;
         ElectronicArticleImpl other = (ElectronicArticleImpl) obj;
         return Objects.equals(this.journal, other.journal)
-          && Objects.equals(this.locator, other.locator);
+                && Objects.equals(this.locator, other.locator);
     }
 
     public static class LocatorImpl implements Locator {

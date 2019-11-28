@@ -1,10 +1,10 @@
 package org.uniprot.core.literature.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class LiteratureStatisticsBuilder
@@ -19,7 +19,8 @@ public class LiteratureStatisticsBuilder
         return this;
     }
 
-    public @Nonnull LiteratureStatisticsBuilder unreviewedProteinCount(long unreviewedProteinCount) {
+    public @Nonnull LiteratureStatisticsBuilder unreviewedProteinCount(
+            long unreviewedProteinCount) {
         this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }

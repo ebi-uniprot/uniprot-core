@@ -47,8 +47,7 @@ public abstract class AbstractCitationBuilder<
     }
 
     public B addAuthor(String author) {
-        if(author != null)
-            this.authors.add(new AuthorImpl(author));
+        if (author != null) this.authors.add(new AuthorImpl(author));
         return getThis();
     }
 

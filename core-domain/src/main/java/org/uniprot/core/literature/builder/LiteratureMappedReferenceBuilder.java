@@ -3,14 +3,14 @@ package org.uniprot.core.literature.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.impl.LiteratureMappedReferenceImpl;
 import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class LiteratureMappedReferenceBuilder
@@ -26,7 +26,8 @@ public class LiteratureMappedReferenceBuilder
 
     private String annotation;
 
-    public @Nonnull LiteratureMappedReferenceBuilder uniprotAccession(UniProtAccession uniprotAccession) {
+    public @Nonnull LiteratureMappedReferenceBuilder uniprotAccession(
+            UniProtAccession uniprotAccession) {
         this.uniprotAccession = uniprotAccession;
         return this;
     }
@@ -56,7 +57,7 @@ public class LiteratureMappedReferenceBuilder
         return this;
     }
 
-    public@Nonnull  LiteratureMappedReferenceBuilder annotation(String annotation) {
+    public @Nonnull LiteratureMappedReferenceBuilder annotation(String annotation) {
         this.annotation = Utils.emptyOrString(annotation);
         return this;
     }
@@ -68,7 +69,8 @@ public class LiteratureMappedReferenceBuilder
     }
 
     @Override
-    public @Nonnull LiteratureMappedReferenceBuilder from(@Nonnull LiteratureMappedReference instance) {
+    public @Nonnull LiteratureMappedReferenceBuilder from(
+            @Nonnull LiteratureMappedReference instance) {
         return new LiteratureMappedReferenceBuilder()
                 .uniprotAccession(instance.getUniprotAccession())
                 .source(instance.getSource())

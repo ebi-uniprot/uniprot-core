@@ -1,10 +1,10 @@
 package org.uniprot.core.citation.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.citation.Submission;
 import org.uniprot.core.citation.SubmissionDatabase;
 import org.uniprot.core.citation.impl.SubmissionImpl;
-
-import javax.annotation.Nonnull;
 
 public final class SubmissionBuilder
         extends AbstractCitationBuilder<SubmissionBuilder, Submission> {

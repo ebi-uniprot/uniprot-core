@@ -68,6 +68,6 @@ public class ThesisImpl extends AbstractCitationImpl implements Thesis {
         if (getClass() != obj.getClass()) return false;
         ThesisImpl other = (ThesisImpl) obj;
         return Objects.equals(this.address, other.address)
-          && Objects.equals(this.institute, other.institute);
+                && Objects.equals(this.institute, other.institute);
     }
 }

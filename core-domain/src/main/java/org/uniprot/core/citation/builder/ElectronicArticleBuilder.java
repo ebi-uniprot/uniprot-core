@@ -1,9 +1,9 @@
 package org.uniprot.core.citation.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.citation.ElectronicArticle;
 import org.uniprot.core.citation.impl.ElectronicArticleImpl;
-
-import javax.annotation.Nonnull;
 
 public final class ElectronicArticleBuilder
         extends AbstractCitationBuilder<ElectronicArticleBuilder, ElectronicArticle> {

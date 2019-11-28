@@ -150,11 +150,11 @@ public class BookImpl extends AbstractCitationImpl implements Book {
         if (getClass() != obj.getClass()) return false;
         BookImpl other = (BookImpl) obj;
         return Objects.equals(this.address, other.address)
-          && Objects.equals(this.bookName, other.bookName)
-          && Objects.equals(this.editors, other.editors)
-          && Objects.equals(this.firstPage, other.firstPage)
-          && Objects.equals(this.lastPage, other.lastPage)
-          && Objects.equals(this.publisher, other.publisher)
-          && Objects.equals(this.volume, other.volume);
+                && Objects.equals(this.bookName, other.bookName)
+                && Objects.equals(this.editors, other.editors)
+                && Objects.equals(this.firstPage, other.firstPage)
+                && Objects.equals(this.lastPage, other.lastPage)
+                && Objects.equals(this.publisher, other.publisher)
+                && Objects.equals(this.volume, other.volume);
     }
 }

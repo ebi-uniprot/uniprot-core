@@ -99,7 +99,8 @@ class LiteratureEntryBuilderTest {
 
     @Test
     void canAddJEntry() {
-        LiteratureEntry entry = new LiteratureEntryBuilder().journal(new JournalImpl("name")).build();
+        LiteratureEntry entry =
+                new LiteratureEntryBuilder().journal(new JournalImpl("name")).build();
         assertTrue(entry.hasJournal());
     }
 

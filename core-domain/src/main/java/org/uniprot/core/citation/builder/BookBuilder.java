@@ -5,12 +5,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.BookImpl;
-
-import javax.annotation.Nonnull;
 
 public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book> {
     private String bookName;

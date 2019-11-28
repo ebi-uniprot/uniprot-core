@@ -113,10 +113,10 @@ public abstract class AbstractCitationImpl implements Citation {
         if (getClass() != obj.getClass()) return false;
         AbstractCitationImpl other = (AbstractCitationImpl) obj;
         return Objects.equals(this.authoringGroup, other.authoringGroup)
-          && Objects.equals(this.authors, other.authors)
-          && Objects.equals(this.citationType, other.citationType)
-          && Objects.equals(this.citationXrefs, other.citationXrefs)
-          && Objects.equals(this.publicationDate, other.publicationDate)
-          && Objects.equals(this.title, other.title);
+                && Objects.equals(this.authors, other.authors)
+                && Objects.equals(this.citationType, other.citationType)
+                && Objects.equals(this.citationXrefs, other.citationXrefs)
+                && Objects.equals(this.publicationDate, other.publicationDate)
+                && Objects.equals(this.title, other.title);
     }
 }

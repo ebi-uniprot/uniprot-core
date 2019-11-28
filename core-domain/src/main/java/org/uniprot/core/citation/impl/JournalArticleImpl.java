@@ -104,8 +104,8 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         if (getClass() != obj.getClass()) return false;
         JournalArticleImpl other = (JournalArticleImpl) obj;
         return Objects.equals(this.journal, other.journal)
-          && Objects.equals(this.lastPage, other.lastPage)
-          && Objects.equals(this.volume, other.volume)
-          && Objects.equals(this.firstPage, other.firstPage);
+                && Objects.equals(this.lastPage, other.lastPage)
+                && Objects.equals(this.volume, other.volume)
+                && Objects.equals(this.firstPage, other.firstPage);
     }
 }

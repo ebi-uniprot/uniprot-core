@@ -1,10 +1,10 @@
 package org.uniprot.core.citation.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 29/01/19

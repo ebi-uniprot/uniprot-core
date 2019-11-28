@@ -1,9 +1,9 @@
 package org.uniprot.core.citation;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
-
-import javax.annotation.Nonnull;
 
 public enum CitationXrefType implements DatabaseType, EnumDisplay<CitationXrefType> {
     PUBMED("PubMed"),

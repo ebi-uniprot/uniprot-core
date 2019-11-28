@@ -1,5 +1,7 @@
 package org.uniprot.core.citation.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -10,8 +12,6 @@ import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.impl.AuthorImpl;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class BookBuilderTest extends AbstractCitationBuilderTest {
 
@@ -166,7 +166,8 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
 
     @Test
     void canAddAuthCol() {
-        Book book = new BookBuilder().editors(Collections.singleton(new AuthorImpl("auth"))).build();
+        Book book =
+                new BookBuilder().editors(Collections.singleton(new AuthorImpl("auth"))).build();
         assertFalse(book.getEditors().isEmpty());
         assertEquals(1, book.getEditors().size());
     }

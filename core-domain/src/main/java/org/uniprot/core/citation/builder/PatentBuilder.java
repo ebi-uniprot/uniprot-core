@@ -1,9 +1,9 @@
 package org.uniprot.core.citation.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.citation.Patent;
 import org.uniprot.core.citation.impl.PatentImpl;
-
-import javax.annotation.Nonnull;
 
 public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, Patent> {
     private String patentNumber;

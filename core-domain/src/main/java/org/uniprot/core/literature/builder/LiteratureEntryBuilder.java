@@ -3,6 +3,8 @@ package org.uniprot.core.literature.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Journal;
@@ -13,8 +15,6 @@ import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureEntryImpl;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 /** @author lgonzales */
 public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, LiteratureEntry> {
