@@ -16,6 +16,7 @@ public class FeatureLocation extends Range {
 
     private final String sequence;
 
+    // no arg constructor for JSON deserialization
     FeatureLocation() {
         super();
         sequence = null;
