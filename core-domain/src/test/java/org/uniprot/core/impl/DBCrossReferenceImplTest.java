@@ -3,8 +3,6 @@ package org.uniprot.core.impl;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,12 +13,14 @@ import org.uniprot.core.builder.DBCrossReferenceBuilder;
 
 class DBCrossReferenceImplTest {
 
-    private List<Property> properties = asList(new Property("key1", "value1"), new Property("key2", "value2"));
-    private DBCrossReference<DefaultDatabaseType> xref = new DBCrossReferenceBuilder<DefaultDatabaseType>()
-          .databaseType(new DefaultDatabaseType("EMBL"))
-          .id("DB123414")
-          .properties(properties)
-          .build();
+    private List<Property> properties =
+            asList(new Property("key1", "value1"), new Property("key2", "value2"));
+    private DBCrossReference<DefaultDatabaseType> xref =
+            new DBCrossReferenceBuilder<DefaultDatabaseType>()
+                    .databaseType(new DefaultDatabaseType("EMBL"))
+                    .id("DB123414")
+                    .properties(properties)
+                    .build();
 
     @Test
     void testDBCrossReferenceImplStringString() {
@@ -55,9 +55,10 @@ class DBCrossReferenceImplTest {
 
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
-        DBCrossReference<DefaultDatabaseType> impl = new DBCrossReferenceImpl<>(new DefaultDatabaseType("EMBL"),
-          "one", properties);
-        DBCrossReference<DefaultDatabaseType> obj = new DBCrossReferenceBuilder<DefaultDatabaseType>().from(impl).build();
+        DBCrossReference<DefaultDatabaseType> impl =
+                new DBCrossReferenceImpl<>(new DefaultDatabaseType("EMBL"), "one", properties);
+        DBCrossReference<DefaultDatabaseType> obj =
+                new DBCrossReferenceBuilder<DefaultDatabaseType>().from(impl).build();
 
         assertTrue(impl.hasDatabaseType());
         assertTrue(impl.hasId());
