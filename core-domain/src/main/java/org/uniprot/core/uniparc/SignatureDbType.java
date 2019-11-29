@@ -34,7 +34,7 @@ public enum SignatureDbType implements EnumDisplay<SignatureDbType> {
         return name;
     }
 
-    public static @Nonnull SignatureDbType typeOf(String value) {
+    public static @Nonnull SignatureDbType typeOf(@Nonnull String value) {
         for (SignatureDbType type : SignatureDbType.values()) {
             if (type.toDisplayName().equalsIgnoreCase(value)) {
                 return type;

@@ -17,7 +17,7 @@ public enum UniProtEntryType implements EnumDisplay<UniProtEntryType> {
         this.value = type;
     }
 
-    public @Nonnull static UniProtEntryType typeOf(@Nullable String value) {
+    public @Nonnull static UniProtEntryType typeOf(@Nonnull String value) {
         for (UniProtEntryType entryType : UniProtEntryType.values()) {
             if (entryType.getValue().equalsIgnoreCase(value)) {
                 return entryType;

@@ -13,7 +13,7 @@ public enum FeatureXDbType implements DatabaseType, EnumDisplay<FeatureXDbType> 
         this.name = name;
     }
 
-    public @Nonnull static FeatureXDbType typeOf(String type) {
+    public @Nonnull static FeatureXDbType typeOf(@Nonnull String type) {
         for (FeatureXDbType featuretype : FeatureXDbType.values()) {
             if (type.equalsIgnoreCase(featuretype.getName())) return featuretype;
         }

@@ -78,7 +78,7 @@ public enum UniParcDatabaseType implements DatabaseType, EnumDisplay<UniParcData
         return alive;
     }
 
-    public static @Nonnull UniParcDatabaseType typeOf(String value) {
+    public static @Nonnull UniParcDatabaseType typeOf(@Nonnull String value) {
         for (UniParcDatabaseType type : UniParcDatabaseType.values()) {
             if (type.toDisplayName().equalsIgnoreCase(value)) {
                 return type;

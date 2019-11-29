@@ -21,7 +21,7 @@ public enum ProteinExistence implements EnumDisplay<ProteinExistence> {
         this.displayName = displayName;
     }
 
-    public @Nonnull static ProteinExistence typeOf(@Nullable String value) {
+    public @Nonnull static ProteinExistence typeOf(@Nonnull String value) {
         for (ProteinExistence proteinExistence : ProteinExistence.values()) {
             if (proteinExistence.getValue().equalsIgnoreCase(value)) {
                 return proteinExistence;

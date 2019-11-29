@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.feature;
 
+import javax.annotation.Nonnull;
+
 public enum FeatureCategory {
     MOLECULE_PROCESSING("Molecule processing"),
     REGIONS("Regions"),
@@ -14,7 +16,7 @@ public enum FeatureCategory {
         this.name = name;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 }

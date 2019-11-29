@@ -3,6 +3,8 @@ package org.uniprot.core.uniprot.comment;
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionReferenceType> {
     CHEBI("ChEBI"),
     RHEA("Rhea"),
@@ -21,7 +23,7 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum
      *     type.
      */
-    public static ReactionReferenceType typeOf(String value) {
+    public static @Nonnull ReactionReferenceType typeOf(@Nonnull String value) {
         if (value != null)
             for (ReactionReferenceType referenceType : ReactionReferenceType.values()) {
                 if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
@@ -32,7 +34,7 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
     }
 
     @Override
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
@@ -41,7 +43,7 @@ public enum ReactionReferenceType implements DatabaseType, EnumDisplay<ReactionR
      *
      * @return the name of the source
      */
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name;
     }
 }

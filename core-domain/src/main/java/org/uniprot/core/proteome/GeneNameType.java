@@ -27,7 +27,7 @@ public enum GeneNameType implements EnumDisplay<GeneNameType> {
         return getName();
     }
 
-    public static @Nonnull GeneNameType fromValue(String type) {
+    public static @Nonnull GeneNameType fromValue(@Nonnull String type) {
         for (GeneNameType gnType : GeneNameType.values()) {
             if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }

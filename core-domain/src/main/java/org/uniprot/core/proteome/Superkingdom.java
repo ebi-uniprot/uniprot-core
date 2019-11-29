@@ -25,7 +25,7 @@ public enum Superkingdom implements EnumDisplay<Superkingdom> {
         return getName();
     }
 
-    public static @Nonnull Superkingdom fromValue(String type) {
+    public static @Nonnull Superkingdom fromValue(@Nonnull String type) {
         for (Superkingdom gnType : Superkingdom.values()) {
             if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }

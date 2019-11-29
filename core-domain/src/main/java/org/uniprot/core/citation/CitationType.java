@@ -26,7 +26,7 @@ public enum CitationType implements EnumDisplay<CitationType> {
         this(type, type);
     }
 
-    public static @Nonnull CitationType typeOf(String value) {
+    public static @Nonnull CitationType typeOf(@Nonnull String value) {
         for (CitationType citationType : CitationType.values()) {
 
             if (citationType.getValue().equalsIgnoreCase(value)) {

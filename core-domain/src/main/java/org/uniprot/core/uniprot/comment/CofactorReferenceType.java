@@ -3,6 +3,8 @@ package org.uniprot.core.uniprot.comment;
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorReferenceType> {
     CHEBI("ChEBI"),
     NONE("");
@@ -20,7 +22,7 @@ public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorR
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum
      *     type.
      */
-    public static CofactorReferenceType typeOf(String value) {
+    public static @Nonnull CofactorReferenceType typeOf(@Nonnull String value) {
         for (CofactorReferenceType referenceType : CofactorReferenceType.values()) {
             if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
                 return referenceType;
@@ -32,7 +34,7 @@ public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorR
     }
 
     @Override
-    public String getName() {
+    public @Nonnull String getName() {
         return this.displayName;
     }
 
@@ -41,7 +43,7 @@ public enum CofactorReferenceType implements DatabaseType, EnumDisplay<CofactorR
      *
      * @return the name of the source
      */
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return displayName;
     }
 }

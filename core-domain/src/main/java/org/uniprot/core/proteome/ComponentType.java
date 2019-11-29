@@ -31,7 +31,7 @@ public enum ComponentType implements EnumDisplay<ComponentType> {
         return name;
     }
 
-    public static @Nonnull ComponentType fromValue(String type) {
+    public static @Nonnull ComponentType fromValue(@Nonnull String type) {
         for (ComponentType gnType : ComponentType.values()) {
             if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }

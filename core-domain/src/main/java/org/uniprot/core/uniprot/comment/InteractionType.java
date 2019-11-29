@@ -2,6 +2,8 @@ package org.uniprot.core.uniprot.comment;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum InteractionType implements EnumDisplay<InteractionType> {
     SELF,
     XENO,
@@ -24,7 +26,7 @@ public enum InteractionType implements EnumDisplay<InteractionType> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name();
     }
 }

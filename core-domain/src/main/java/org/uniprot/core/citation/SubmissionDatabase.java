@@ -18,7 +18,7 @@ public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
         this.name = name;
     }
 
-    public static @Nonnull SubmissionDatabase typeOf(String name) {
+    public static @Nonnull SubmissionDatabase typeOf(@Nonnull String name) {
         for (SubmissionDatabase submissionDatabase : SubmissionDatabase.values()) {
             if (submissionDatabase.getName().equalsIgnoreCase(name)) {
                 return submissionDatabase;

@@ -29,7 +29,7 @@ public enum ProteomeXReferenceType implements DatabaseType, EnumDisplay<Proteome
         return getName();
     }
 
-    public static @Nonnull ProteomeXReferenceType fromValue(String type) {
+    public static @Nonnull ProteomeXReferenceType fromValue(@Nonnull String type) {
         for (ProteomeXReferenceType gnType : ProteomeXReferenceType.values()) {
             if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }

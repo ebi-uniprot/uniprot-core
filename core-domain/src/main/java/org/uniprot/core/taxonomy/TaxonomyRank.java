@@ -2,6 +2,8 @@ package org.uniprot.core.taxonomy;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
     FORMA("forma"),
     VARIETAS("varietas"),
@@ -41,12 +43,12 @@ public enum TaxonomyRank implements EnumDisplay<TaxonomyRank> {
         this.name = name;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name;
     }
 }

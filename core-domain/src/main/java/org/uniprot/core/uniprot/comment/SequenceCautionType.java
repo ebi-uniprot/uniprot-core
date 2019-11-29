@@ -2,6 +2,8 @@ package org.uniprot.core.uniprot.comment;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
     FRAMESHIFT("Frameshift"),
     ERRONEOUS_INITIATION("Erroneous initiation"),
@@ -17,7 +19,7 @@ public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
         this.value = value;
     }
 
-    public static SequenceCautionType typeOf(String value) {
+    public @Nonnull static SequenceCautionType typeOf(@Nonnull String value) {
         if (value != null)
             for (SequenceCautionType sequenceCautionType : SequenceCautionType.values()) {
                 if (sequenceCautionType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
@@ -35,7 +37,7 @@ public enum SequenceCautionType implements EnumDisplay<SequenceCautionType> {
      *
      * @return the name of this enum constant
      */
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return value;
     }
 }

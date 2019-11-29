@@ -2,6 +2,8 @@ package org.uniprot.core.uniprot.comment;
 
 import org.uniprot.core.util.EnumDisplay;
 
+import javax.annotation.Nonnull;
+
 public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod> {
     // [Electrospray, FAB, LSI, MALDI, Plasma desorption, SELDI, Unknown]
     ELECTROSPRAY("Electrospray"),
@@ -18,19 +20,19 @@ public enum MassSpectrometryMethod implements EnumDisplay<MassSpectrometryMethod
         this.value = type;
     }
 
-    public static MassSpectrometryMethod toType(String type) {
+    public static @Nonnull MassSpectrometryMethod toType(@Nonnull String type) {
         for (MassSpectrometryMethod method : MassSpectrometryMethod.values()) {
             if (method.getValue().equalsIgnoreCase(type)) return method;
         }
         return MassSpectrometryMethod.UNKNOWN;
     }
 
-    public String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return value;
     }
 }
