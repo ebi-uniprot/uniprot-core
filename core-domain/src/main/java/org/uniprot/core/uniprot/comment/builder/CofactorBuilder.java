@@ -40,7 +40,8 @@ public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor>
         return this;
     }
 
-    public @Nonnull CofactorBuilder reference(DBCrossReference<CofactorReferenceType> cofactorReference) {
+    public @Nonnull CofactorBuilder reference(
+            DBCrossReference<CofactorReferenceType> cofactorReference) {
         this.cofactorReference = cofactorReference;
         return this;
     }

@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import org.uniprot.core.util.EnumDisplay;
 

@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.Value;
 import org.uniprot.core.citation.Author;
@@ -16,8 +18,6 @@ import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
-
-import javax.annotation.Nonnull;
 
 public abstract class AbstractCitationBuilder<
                 B extends AbstractCitationBuilder<B, T>, T extends Citation>

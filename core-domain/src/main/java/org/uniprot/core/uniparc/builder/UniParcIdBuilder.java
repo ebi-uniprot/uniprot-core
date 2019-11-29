@@ -1,10 +1,10 @@
 package org.uniprot.core.uniparc.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

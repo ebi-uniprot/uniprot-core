@@ -4,12 +4,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.IsoformName;
 import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 15/01/19

@@ -54,7 +54,8 @@ public class UniProtDBCrossReferenceBuilder
         return this;
     }
 
-    public @Nonnull UniProtDBCrossReferenceBuilder addProperty(DBXRefTypeAttribute attribute, String value) {
+    public @Nonnull UniProtDBCrossReferenceBuilder addProperty(
+            DBXRefTypeAttribute attribute, String value) {
         if (notNullOrEmpty(value) && notNull(attribute)) {
             this.properties.add(new Property(attribute.getName(), value));
         }

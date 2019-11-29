@@ -1,10 +1,10 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.impl.OverlapRegionImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

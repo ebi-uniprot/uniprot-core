@@ -1,10 +1,10 @@
 package org.uniprot.core.uniparc.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.impl.InterProGroupImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

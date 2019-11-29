@@ -2,12 +2,12 @@ package org.uniprot.core.uniparc.builder;
 
 import java.time.LocalDate;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractDBCrossReferenceBuilder;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabaseType;
 import org.uniprot.core.uniparc.impl.UniParcDBCrossReferenceImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

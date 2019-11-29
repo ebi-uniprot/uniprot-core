@@ -35,7 +35,8 @@ public class ProteinDescriptionBuilder
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
+    public @Nonnull ProteinDescriptionBuilder alternativeNames(
+            List<ProteinAltName> alternativeNames) {
         this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
@@ -82,7 +83,8 @@ public class ProteinDescriptionBuilder
         return this;
     }
 
-    public @Nonnull ProteinDescriptionBuilder submissionNames(List<ProteinSubName> submissionNames) {
+    public @Nonnull ProteinDescriptionBuilder submissionNames(
+            List<ProteinSubName> submissionNames) {
         this.submissionNames = modifiableList(submissionNames);
         return this;
     }

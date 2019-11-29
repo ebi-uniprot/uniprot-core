@@ -3,12 +3,12 @@ package org.uniprot.core.taxonomy.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.taxonomy.impl.TaxonomyStrainImpl;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, TaxonomyStrain> {
 

@@ -58,7 +58,8 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
         return this;
     }
 
-    public @Nonnull BPCPCommentBuilder temperatureDependence(TemperatureDependence temperatureDependence) {
+    public @Nonnull BPCPCommentBuilder temperatureDependence(
+            TemperatureDependence temperatureDependence) {
         this.temperatureDependence = temperatureDependence;
         return this;
     }

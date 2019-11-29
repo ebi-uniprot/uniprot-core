@@ -33,7 +33,7 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
         return super.from(instance).id(instance.getId()).category(instance.getCategory());
     }
 
-    public@Nonnull  KeywordBuilder id(String id) {
+    public @Nonnull KeywordBuilder id(String id) {
         this.id = id;
         return this;
     }

@@ -5,12 +5,12 @@ import static org.uniprot.core.util.Utils.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.Property;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 10/01/19

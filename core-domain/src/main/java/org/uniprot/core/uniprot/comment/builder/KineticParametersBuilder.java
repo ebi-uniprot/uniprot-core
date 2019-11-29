@@ -26,7 +26,8 @@ public final class KineticParametersBuilder
     private List<MichaelisConstant> michaelisConstants = new ArrayList<>();
     private Note note;
 
-    public @Nonnull KineticParametersBuilder maximumVelocities(List<MaximumVelocity> maximumVelocities) {
+    public @Nonnull KineticParametersBuilder maximumVelocities(
+            List<MaximumVelocity> maximumVelocities) {
         this.maximumVelocities = modifiableList(maximumVelocities);
         return this;
     }
@@ -36,12 +37,14 @@ public final class KineticParametersBuilder
         return this;
     }
 
-    public @Nonnull KineticParametersBuilder michaelisConstants(List<MichaelisConstant> michaelisConstants) {
+    public @Nonnull KineticParametersBuilder michaelisConstants(
+            List<MichaelisConstant> michaelisConstants) {
         this.michaelisConstants = modifiableList(michaelisConstants);
         return this;
     }
 
-    public @Nonnull KineticParametersBuilder addMichaelisConstant(MichaelisConstant michaelisConstant) {
+    public @Nonnull KineticParametersBuilder addMichaelisConstant(
+            MichaelisConstant michaelisConstant) {
         addOrIgnoreNull(michaelisConstant, this.michaelisConstants);
         return this;
     }

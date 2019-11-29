@@ -1,9 +1,9 @@
 package org.uniprot.core.uniprot.comment;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
-
-import javax.annotation.Nonnull;
 
 /**
  * Enumeration of the possible external sources that have a references to diseases.

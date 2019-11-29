@@ -16,7 +16,8 @@ public interface Builder<B extends Builder, T> {
      *
      * @return an instance of type, {@code T}.
      */
-    @Nonnull T build();
+    @Nonnull
+    T build();
 
     /**
      * Creates a builder of type {@code B} whose contents is copied from the supplied instance of
@@ -25,5 +26,6 @@ public interface Builder<B extends Builder, T> {
      * @param instance the instance whose values are copied from.
      * @return a new builder of type {@code B} based on the values in {@code instance}.
      */
-    @Nonnull B from(@Nonnull T instance);
+    @Nonnull
+    B from(@Nonnull T instance);
 }

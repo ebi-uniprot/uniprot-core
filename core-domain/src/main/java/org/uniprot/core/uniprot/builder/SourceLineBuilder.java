@@ -1,10 +1,10 @@
 package org.uniprot.core.uniprot.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniprot.SourceLine;
 import org.uniprot.core.uniprot.impl.SourceLineImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 24/01/19

@@ -1,10 +1,10 @@
 package org.uniprot.core.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 10/01/19

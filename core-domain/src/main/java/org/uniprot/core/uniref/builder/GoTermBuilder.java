@@ -1,11 +1,11 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.GoTermType;
 import org.uniprot.core.uniref.impl.GoTermImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

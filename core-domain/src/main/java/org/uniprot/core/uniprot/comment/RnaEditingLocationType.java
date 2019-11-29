@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.comment;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 /** Created by IntelliJ IDEA. User: spatient Date: 03-Feb-2009 Time: 17:21:39 */
 public enum RnaEditingLocationType implements EnumDisplay<RnaEditingLocationType> {

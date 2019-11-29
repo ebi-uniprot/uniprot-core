@@ -1,8 +1,8 @@
 package org.uniprot.core.uniprot.comment;
 
-import org.uniprot.core.util.EnumDisplay;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.util.EnumDisplay;
 
 public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> {
     DISPLAYED("displayed", "Displayed"),

@@ -1,10 +1,10 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.impl.RepresentativeMemberImpl;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

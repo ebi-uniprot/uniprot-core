@@ -4,11 +4,11 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.TemperatureDependence;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 16/01/19
@@ -22,8 +22,7 @@ public class TemperatureDependenceBuilder
     }
 
     @Override
-    protected @Nonnull
-    TemperatureDependenceBuilder getThis() {
+    protected @Nonnull TemperatureDependenceBuilder getThis() {
         return this;
     }
 

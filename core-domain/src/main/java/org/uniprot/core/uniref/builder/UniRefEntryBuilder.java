@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.RepresentativeMember;
@@ -13,8 +15,6 @@ import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryImpl;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo
@@ -105,7 +105,8 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
         return this;
     }
 
-    public @Nonnull UniRefEntryBuilder representativeMember(RepresentativeMember representativeMember) {
+    public @Nonnull UniRefEntryBuilder representativeMember(
+            RepresentativeMember representativeMember) {
         this.representativeMember = representativeMember;
         return this;
     }

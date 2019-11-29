@@ -27,7 +27,8 @@ public final class PhysiologicalReactionBuilder
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences = new ArrayList<>();
 
-    public @Nonnull PhysiologicalReactionBuilder directionType(PhysiologicalDirectionType directionType) {
+    public @Nonnull PhysiologicalReactionBuilder directionType(
+            PhysiologicalDirectionType directionType) {
         this.directionType = directionType;
         return this;
     }

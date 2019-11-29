@@ -4,12 +4,12 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.gene.GeneName;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.GeneImpl;
-
-import javax.annotation.Nonnull;
 
 public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuilder, GeneName> {
 

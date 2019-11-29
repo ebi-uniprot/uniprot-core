@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
@@ -13,8 +15,6 @@ import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.UniRefMember;
 import org.uniprot.core.uniref.UniRefMemberIdType;
-
-import javax.annotation.Nonnull;
 
 /**
  * @author jluo

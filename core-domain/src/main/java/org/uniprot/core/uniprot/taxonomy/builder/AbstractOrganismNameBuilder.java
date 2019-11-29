@@ -6,10 +6,10 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
-
-import javax.annotation.Nonnull;
 
 public abstract class AbstractOrganismNameBuilder<
                 B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>

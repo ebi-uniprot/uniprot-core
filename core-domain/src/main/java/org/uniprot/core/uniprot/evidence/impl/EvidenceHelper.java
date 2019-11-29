@@ -5,14 +5,14 @@ import static org.uniprot.core.uniprot.evidence.impl.EvidenceImpl.REFERENCE;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 22/01/19

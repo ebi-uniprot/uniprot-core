@@ -2,11 +2,11 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import java.util.*;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-
-import javax.annotation.Nonnull;
 
 public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment {
     private static final Set<CommentType> VALID_COMMENT_TYPES =

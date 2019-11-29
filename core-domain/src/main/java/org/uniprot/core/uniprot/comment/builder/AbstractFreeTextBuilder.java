@@ -5,11 +5,11 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.FreeText;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
-
-import javax.annotation.Nonnull;
 
 /**
  * Created 16/01/19
