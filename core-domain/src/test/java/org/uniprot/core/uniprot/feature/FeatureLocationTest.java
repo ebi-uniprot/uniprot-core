@@ -21,10 +21,10 @@ class FeatureLocationTest {
 
     assertNotNull(obj.getStart());
     assertNull(obj.getStart().getValue());
-    assertEquals(PositionModifier.EXACT, obj.getStart().getModifier());
+    assertEquals(PositionModifier.UNKNOWN, obj.getStart().getModifier());
 
     assertNotNull(obj.getEnd());
     assertNull(obj.getEnd().getValue());
-    assertEquals(PositionModifier.UNSURE, obj.getEnd().getModifier());
+    assertEquals(PositionModifier.UNKNOWN, obj.getEnd().getModifier());
   }
 }
