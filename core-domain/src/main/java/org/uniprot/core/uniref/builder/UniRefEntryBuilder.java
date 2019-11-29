@@ -14,6 +14,8 @@ import org.uniprot.core.uniref.UniRefType;
 import org.uniprot.core.uniref.impl.UniRefEntryImpl;
 import org.uniprot.core.util.Utils;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author jluo
  * @date: 13 Aug 2019
@@ -31,7 +33,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
     private List<UniRefMember> members = new ArrayList<>();
 
     @Override
-    public UniRefEntry build() {
+    public @Nonnull UniRefEntry build() {
         return new UniRefEntryImpl(
                 id,
                 name,
@@ -46,7 +48,7 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
     }
 
     @Override
-    public UniRefEntryBuilder from(UniRefEntry instance) {
+    public @Nonnull UniRefEntryBuilder from(@Nonnull UniRefEntry instance) {
         return this.id(instance.getId())
                 .name(instance.getName())
                 .updated(instance.getUpdated())
@@ -58,67 +60,67 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
                 .members(instance.getMembers());
     }
 
-    public UniRefEntryBuilder id(UniRefEntryId id) {
+    public @Nonnull UniRefEntryBuilder id(UniRefEntryId id) {
         this.id = id;
         return this;
     }
 
-    public UniRefEntryBuilder id(String id) {
+    public @Nonnull UniRefEntryBuilder id(String id) {
         this.id = new UniRefEntryIdBuilder(id).build();
         return this;
     }
 
-    public UniRefEntryBuilder name(String name) {
+    public @Nonnull UniRefEntryBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public UniRefEntryBuilder updated(LocalDate updated) {
+    public @Nonnull UniRefEntryBuilder updated(LocalDate updated) {
         this.updated = updated;
         return this;
     }
 
-    public UniRefEntryBuilder entryType(UniRefType entryType) {
+    public @Nonnull UniRefEntryBuilder entryType(UniRefType entryType) {
         this.entryType = entryType;
         return this;
     }
 
-    public UniRefEntryBuilder commonTaxonId(long commonTaxonId) {
+    public @Nonnull UniRefEntryBuilder commonTaxonId(long commonTaxonId) {
         this.commonTaxonId = commonTaxonId;
         return this;
     }
 
-    public UniRefEntryBuilder commonTaxon(String commonTaxon) {
+    public @Nonnull UniRefEntryBuilder commonTaxon(String commonTaxon) {
         this.commonTaxon = commonTaxon;
         return this;
     }
 
-    public UniRefEntryBuilder goTerms(List<GoTerm> goTerms) {
+    public @Nonnull UniRefEntryBuilder goTerms(List<GoTerm> goTerms) {
         this.goTerms = Utils.modifiableList(goTerms);
         return this;
     }
 
-    public UniRefEntryBuilder addGoTerm(GoTerm goTerm) {
+    public @Nonnull UniRefEntryBuilder addGoTerm(GoTerm goTerm) {
         Utils.addOrIgnoreNull(goTerm, this.goTerms);
         return this;
     }
 
-    public UniRefEntryBuilder representativeMember(RepresentativeMember representativeMember) {
+    public @Nonnull UniRefEntryBuilder representativeMember(RepresentativeMember representativeMember) {
         this.representativeMember = representativeMember;
         return this;
     }
 
-    public UniRefEntryBuilder members(List<UniRefMember> unirefMembers) {
+    public @Nonnull UniRefEntryBuilder members(List<UniRefMember> unirefMembers) {
         this.members = Utils.modifiableList(unirefMembers);
         return this;
     }
 
-    public UniRefEntryBuilder addMember(UniRefMember unirefMember) {
+    public @Nonnull UniRefEntryBuilder addMember(UniRefMember unirefMember) {
         Utils.addOrIgnoreNull(unirefMember, this.members);
         return this;
     }
 
-    public UniRefEntryBuilder memberCount(int memberCount) {
+    public @Nonnull UniRefEntryBuilder memberCount(int memberCount) {
         this.memberCount = memberCount;
         return this;
     }

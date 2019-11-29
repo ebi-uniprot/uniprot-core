@@ -4,6 +4,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.impl.InterProGroupImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author jluo
  * @date: 23 May 2019
@@ -13,22 +15,22 @@ public class InterProGroupBuilder implements Builder<InterProGroupBuilder, Inter
     private String name;
 
     @Override
-    public InterProGroup build() {
+    public @Nonnull InterProGroup build() {
         return new InterProGroupImpl(id, name);
     }
 
-    public InterProGroupBuilder id(String id) {
+    public @Nonnull InterProGroupBuilder id(String id) {
         this.id = id;
         return this;
     }
 
-    public InterProGroupBuilder name(String name) {
+    public @Nonnull InterProGroupBuilder name(String name) {
         this.name = name;
         return this;
     }
 
     @Override
-    public InterProGroupBuilder from(InterProGroup instance) {
+    public @Nonnull InterProGroupBuilder from(@Nonnull InterProGroup instance) {
         this.id = instance.getId();
         this.name = instance.getName();
         return this;

@@ -15,6 +15,8 @@ import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 import org.uniprot.core.uniprot.evidence.impl.EvidencedValueImpl;
 
+import javax.annotation.Nonnull;
+
 public class AbstractEvidencedValueBuilderTest {
     private static final String DB_ID_1 = "PIR_ID";
     private static final String DB_NAME_1 = "PIR";
@@ -109,18 +111,18 @@ public class AbstractEvidencedValueBuilderTest {
             extends AbstractEvidencedValueBuilder<
                     TestableEvidencedValueBuilder, EvidencedValueImpl> {
         @Override
-        public EvidencedValueImpl build() {
-            return new EvidencedValueImpl(this.getValue(), this.getEvidences());
+        public @Nonnull EvidencedValueImpl build() {
+            return new EvidencedValueImpl(this.value, this.evidences);
         }
 
         @Override
-        public TestableEvidencedValueBuilder from(EvidencedValueImpl instance) {
+        public @Nonnull TestableEvidencedValueBuilder from(@Nonnull EvidencedValueImpl instance) {
             super.from(instance);
             return this;
         }
 
         @Override
-        protected TestableEvidencedValueBuilder getThis() {
+        protected @Nonnull TestableEvidencedValueBuilder getThis() {
             return this;
         }
     }

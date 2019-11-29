@@ -25,22 +25,22 @@ public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor>
     private List<Evidence> evidences = new ArrayList<>();
     private DBCrossReference<CofactorReferenceType> cofactorReference;
 
-    public CofactorBuilder name(String name) {
+    public @Nonnull CofactorBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public CofactorBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull CofactorBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public CofactorBuilder addEvidence(Evidence evidence) {
+    public @Nonnull CofactorBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 
-    public CofactorBuilder reference(DBCrossReference<CofactorReferenceType> cofactorReference) {
+    public @Nonnull CofactorBuilder reference(DBCrossReference<CofactorReferenceType> cofactorReference) {
         this.cofactorReference = cofactorReference;
         return this;
     }

@@ -18,7 +18,7 @@ public class FeatureIdBuilder extends AbstractValueBuilder<FeatureIdBuilder, Fea
     }
 
     @Override
-    protected FeatureIdBuilder getThis() {
+    protected @Nonnull FeatureIdBuilder getThis() {
         return this;
     }
 

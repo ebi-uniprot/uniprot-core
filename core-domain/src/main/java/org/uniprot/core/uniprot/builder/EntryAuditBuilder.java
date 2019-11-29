@@ -20,27 +20,27 @@ public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit>
     private int entryVersion;
     private int sequenceVersion;
 
-    public EntryAuditBuilder firstPublic(LocalDate firstPublic) {
+    public @Nonnull EntryAuditBuilder firstPublic(LocalDate firstPublic) {
         this.firstPublicDate = firstPublic;
         return this;
     }
 
-    public EntryAuditBuilder lastAnnotationUpdate(LocalDate lastAnnotationUpdate) {
+    public @Nonnull EntryAuditBuilder lastAnnotationUpdate(LocalDate lastAnnotationUpdate) {
         this.lastAnnotationUpdateDate = lastAnnotationUpdate;
         return this;
     }
 
-    public EntryAuditBuilder lastSequenceUpdate(LocalDate lastSequenceUpdate) {
+    public @Nonnull EntryAuditBuilder lastSequenceUpdate(LocalDate lastSequenceUpdate) {
         this.lastSequenceUpdateDate = lastSequenceUpdate;
         return this;
     }
 
-    public EntryAuditBuilder entryVersion(int entryVersion) {
+    public @Nonnull EntryAuditBuilder entryVersion(int entryVersion) {
         this.entryVersion = entryVersion;
         return this;
     }
 
-    public EntryAuditBuilder sequenceVersion(int sequenceVersion) {
+    public @Nonnull EntryAuditBuilder sequenceVersion(int sequenceVersion) {
         this.sequenceVersion = sequenceVersion;
         return this;
     }

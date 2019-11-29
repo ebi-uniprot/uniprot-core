@@ -11,6 +11,8 @@ import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.impl.SequenceFeatureImpl;
 import org.uniprot.core.util.Utils;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author jluo
  * @date: 23 May 2019
@@ -22,37 +24,37 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, S
     private List<Location> locations = new ArrayList<>();
 
     @Override
-    public SequenceFeature build() {
+    public @Nonnull SequenceFeature build() {
         return new SequenceFeatureImpl(interproGroup, dbType, dbId, locations);
     }
 
-    public SequenceFeatureBuilder interproGroup(InterProGroup interproGroup) {
+    public @Nonnull SequenceFeatureBuilder interproGroup(InterProGroup interproGroup) {
         this.interproGroup = interproGroup;
         return this;
     }
 
-    public SequenceFeatureBuilder signatureDbType(SignatureDbType dbType) {
+    public @Nonnull SequenceFeatureBuilder signatureDbType(SignatureDbType dbType) {
         this.dbType = dbType;
         return this;
     }
 
-    public SequenceFeatureBuilder signatureDbId(String dbId) {
+    public @Nonnull SequenceFeatureBuilder signatureDbId(String dbId) {
         this.dbId = dbId;
         return this;
     }
 
-    public SequenceFeatureBuilder locations(List<Location> locations) {
+    public @Nonnull SequenceFeatureBuilder locations(List<Location> locations) {
         this.locations = Utils.modifiableList(locations);
         return this;
     }
 
-    public SequenceFeatureBuilder addLocation(Location location) {
+    public @Nonnull SequenceFeatureBuilder addLocation(Location location) {
         Utils.addOrIgnoreNull(location, locations);
         return this;
     }
 
     @Override
-    public SequenceFeatureBuilder from(SequenceFeature instance) {
+    public @Nonnull SequenceFeatureBuilder from(@Nonnull SequenceFeature instance) {
         this.interproGroup = instance.getInterProDomain();
         this.dbType = instance.getSignatureDbType();
         this.dbId = instance.getSignatureDbId();

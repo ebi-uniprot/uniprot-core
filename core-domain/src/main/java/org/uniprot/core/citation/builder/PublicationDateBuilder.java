@@ -23,7 +23,7 @@ public class PublicationDateBuilder
     }
 
     @Override
-    protected PublicationDateBuilder getThis() {
+    protected @Nonnull PublicationDateBuilder getThis() {
         return this;
     }
 }

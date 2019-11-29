@@ -9,6 +9,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
+import javax.annotation.Nonnull;
+
 public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuilder, GeneName> {
 
     public GeneNameBuilder() {}
@@ -19,12 +21,12 @@ public class GeneNameBuilder extends AbstractEvidencedValueBuilder<GeneNameBuild
     }
 
     @Override
-    protected GeneNameBuilder getThis() {
+    protected @Nonnull GeneNameBuilder getThis() {
         return this;
     }
 
     @Override
-    public GeneName build() {
+    public @Nonnull GeneName build() {
         return new GeneImpl.GeneNameImpl(value, evidences);
     }
 }

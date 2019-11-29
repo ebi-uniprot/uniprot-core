@@ -22,7 +22,7 @@ public class AuthorBuilder extends AbstractValueBuilder<AuthorBuilder, Author> {
     }
 
     @Override
-    protected AuthorBuilder getThis() {
+    protected @Nonnull AuthorBuilder getThis() {
         return this;
     }
 }

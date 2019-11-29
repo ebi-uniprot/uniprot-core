@@ -8,6 +8,8 @@ import org.uniprot.core.uniprot.comment.RedoxPotential;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 16/01/19
  *
@@ -20,12 +22,12 @@ public class RedoxPotentialBuilder
     }
 
     @Override
-    protected RedoxPotentialBuilder getThis() {
+    protected @Nonnull RedoxPotentialBuilder getThis() {
         return this;
     }
 
     @Override
-    protected RedoxPotential createConcreteInstance() {
+    protected @Nonnull RedoxPotential createConcreteInstance() {
         return new BPCPCommentImpl.RedoxPotentialImpl(evidencedValues);
     }
 }

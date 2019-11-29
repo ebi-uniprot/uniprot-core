@@ -18,17 +18,17 @@ public final class SubcellularLocationBuilder
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;
 
-    public SubcellularLocationBuilder location(SubcellularLocationValue location) {
+    public @Nonnull SubcellularLocationBuilder location(SubcellularLocationValue location) {
         this.location = location;
         return this;
     }
 
-    public SubcellularLocationBuilder topology(SubcellularLocationValue topology) {
+    public @Nonnull SubcellularLocationBuilder topology(SubcellularLocationValue topology) {
         this.topology = topology;
         return this;
     }
 
-    public SubcellularLocationBuilder orientation(SubcellularLocationValue orientation) {
+    public @Nonnull SubcellularLocationBuilder orientation(SubcellularLocationValue orientation) {
         this.orientation = orientation;
         return this;
     }
@@ -38,7 +38,7 @@ public final class SubcellularLocationBuilder
     }
 
     @Override
-    public SubcellularLocationBuilder from(@Nonnull SubcellularLocation instance) {
+    public @Nonnull SubcellularLocationBuilder from(@Nonnull SubcellularLocation instance) {
         return this.location(instance.getLocation())
                 .orientation(instance.getOrientation())
                 .topology(instance.getTopology());

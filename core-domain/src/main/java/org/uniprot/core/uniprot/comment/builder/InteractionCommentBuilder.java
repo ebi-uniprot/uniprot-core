@@ -16,12 +16,12 @@ public class InteractionCommentBuilder
         implements CommentBuilder<InteractionCommentBuilder, InteractionComment> {
     private List<Interaction> interactions = new ArrayList<>();
 
-    public InteractionCommentBuilder interactions(List<Interaction> interactions) {
+    public @Nonnull InteractionCommentBuilder interactions(List<Interaction> interactions) {
         this.interactions = modifiableList(interactions);
         return this;
     }
 
-    public InteractionCommentBuilder addInteraction(Interaction interaction) {
+    public @Nonnull InteractionCommentBuilder addInteraction(Interaction interaction) {
         addOrIgnoreNull(interaction, this.interactions);
         return this;
     }

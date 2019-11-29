@@ -9,6 +9,8 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.comment.FreeText;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 16/01/19
  *
@@ -20,17 +22,17 @@ public abstract class AbstractFreeTextBuilder<
     protected List<EvidencedValue> evidencedValues = new ArrayList<>();
 
     @Override
-    public F build() {
+    public @Nonnull F build() {
         return createConcreteInstance();
     }
 
     @Override
-    public B from(F instance) {
+    public @Nonnull B from(@Nonnull F instance) {
         this.evidencedValues = modifiableList(instance.getTexts());
         return getThis();
     }
 
-    protected abstract B getThis();
+    protected abstract @Nonnull B getThis();
 
-    protected abstract F createConcreteInstance();
+    protected abstract @Nonnull F createConcreteInstance();
 }

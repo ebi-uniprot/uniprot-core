@@ -8,6 +8,8 @@ import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.NoteImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 16/01/19
  *
@@ -19,12 +21,12 @@ public class NoteBuilder extends AbstractFreeTextBuilder<NoteBuilder, Note> {
     }
 
     @Override
-    protected NoteBuilder getThis() {
+    protected @Nonnull NoteBuilder getThis() {
         return this;
     }
 
     @Override
-    protected Note createConcreteInstance() {
+    protected @Nonnull Note createConcreteInstance() {
         return new NoteImpl(evidencedValues);
     }
 }

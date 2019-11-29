@@ -5,6 +5,8 @@ import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
 import org.uniprot.core.taxonomy.impl.TaxonomyInactiveReasonImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class TaxonomyInactiveReasonBuilder
         implements Builder<TaxonomyInactiveReasonBuilder, TaxonomyInactiveReason> {
@@ -13,24 +15,24 @@ public class TaxonomyInactiveReasonBuilder
 
     private long mergedTo;
 
-    public TaxonomyInactiveReasonBuilder inactiveReasonType(
+    public @Nonnull TaxonomyInactiveReasonBuilder inactiveReasonType(
             TaxonomyInactiveReasonType inactiveReasonType) {
         this.inactiveReasonType = inactiveReasonType;
         return this;
     }
 
-    public TaxonomyInactiveReasonBuilder mergedTo(long mergedTo) {
+    public @Nonnull TaxonomyInactiveReasonBuilder mergedTo(long mergedTo) {
         this.mergedTo = mergedTo;
         return this;
     }
 
     @Override
-    public TaxonomyInactiveReason build() {
+    public @Nonnull TaxonomyInactiveReason build() {
         return new TaxonomyInactiveReasonImpl(inactiveReasonType, mergedTo);
     }
 
     @Override
-    public TaxonomyInactiveReasonBuilder from(TaxonomyInactiveReason instance) {
+    public @Nonnull TaxonomyInactiveReasonBuilder from(@Nonnull TaxonomyInactiveReason instance) {
         this.inactiveReasonType = instance.getInactiveReasonType();
         this.mergedTo = instance.getMergedTo();
         return this;

@@ -38,32 +38,32 @@ public class InternalSectionBuilder implements Builder<InternalSectionBuilder, I
         return this;
     }
 
-    public InternalSectionBuilder internalLines(List<InternalLine> internalLines) {
+    public @Nonnull InternalSectionBuilder internalLines(List<InternalLine> internalLines) {
         this.internalLines = modifiableList(internalLines);
         return this;
     }
 
-    public InternalSectionBuilder addInternalLine(InternalLine internalLine) {
+    public @Nonnull InternalSectionBuilder addInternalLine(InternalLine internalLine) {
         addOrIgnoreNull(internalLine, this.internalLines);
         return this;
     }
 
-    public InternalSectionBuilder evidenceLines(List<EvidenceLine> evidenceLines) {
+    public @Nonnull InternalSectionBuilder evidenceLines(List<EvidenceLine> evidenceLines) {
         this.evidenceLines = modifiableList(evidenceLines);
         return this;
     }
 
-    public InternalSectionBuilder addEvidenceLine(EvidenceLine evidenceLine) {
+    public @Nonnull InternalSectionBuilder addEvidenceLine(EvidenceLine evidenceLine) {
         addOrIgnoreNull(evidenceLine, this.evidenceLines);
         return this;
     }
 
-    public InternalSectionBuilder sourceLines(List<SourceLine> sourceLines) {
+    public @Nonnull InternalSectionBuilder sourceLines(List<SourceLine> sourceLines) {
         this.sourceLines = modifiableList(sourceLines);
         return this;
     }
 
-    public InternalSectionBuilder addSourceLine(SourceLine sourceLine) {
+    public @Nonnull InternalSectionBuilder addSourceLine(SourceLine sourceLine) {
         addOrIgnoreNull(sourceLine, this.sourceLines);
         return this;
     }

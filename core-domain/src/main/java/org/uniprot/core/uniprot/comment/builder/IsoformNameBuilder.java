@@ -9,6 +9,8 @@ import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 15/01/19
  *
@@ -24,12 +26,12 @@ public class IsoformNameBuilder
     }
 
     @Override
-    public IsoformName build() {
+    public @Nonnull IsoformName build() {
         return new APIsoformImpl.IsoformNameImpl(value, evidences);
     }
 
     @Override
-    protected IsoformNameBuilder getThis() {
+    protected @Nonnull IsoformNameBuilder getThis() {
         return this;
     }
 }

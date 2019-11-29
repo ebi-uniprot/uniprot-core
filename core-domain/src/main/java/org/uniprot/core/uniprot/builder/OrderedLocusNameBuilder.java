@@ -9,6 +9,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class OrderedLocusNameBuilder
         extends AbstractEvidencedValueBuilder<OrderedLocusNameBuilder, OrderedLocusName> {
@@ -21,12 +23,12 @@ public class OrderedLocusNameBuilder
     }
 
     @Override
-    protected OrderedLocusNameBuilder getThis() {
+    protected @Nonnull OrderedLocusNameBuilder getThis() {
         return this;
     }
 
     @Override
-    public OrderedLocusName build() {
+    public @Nonnull OrderedLocusName build() {
         return new GeneImpl.OrderedLocusNameImpl(value, evidences);
     }
 }

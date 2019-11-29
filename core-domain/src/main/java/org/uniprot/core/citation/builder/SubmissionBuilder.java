@@ -27,7 +27,7 @@ public final class SubmissionBuilder
     }
 
     @Override
-    protected SubmissionBuilder getThis() {
+    protected @Nonnull SubmissionBuilder getThis() {
         return this;
     }
 }

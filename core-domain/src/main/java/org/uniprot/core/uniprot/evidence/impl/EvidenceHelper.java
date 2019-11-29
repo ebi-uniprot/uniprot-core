@@ -12,6 +12,8 @@ import org.uniprot.core.uniprot.evidence.EvidenceCode;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
 import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 22/01/19
  *
@@ -20,11 +22,11 @@ import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 public class EvidenceHelper {
     private static final String REF_PREFIX = "Ref.";
 
-    public static List<Evidence> parseEvidenceLines(List<String> evStrs) {
+    public static @Nonnull List<Evidence> parseEvidenceLines(@Nonnull List<String> evStrs) {
         return evStrs.stream().map(EvidenceHelper::parseEvidenceLine).collect(Collectors.toList());
     }
 
-    public static Evidence parseEvidenceLine(String val) {
+    public static @Nonnull Evidence parseEvidenceLine(@Nonnull String val) {
         String[] token = val.split("\\|");
         String code = token[0];
         DBCrossReference<EvidenceType> xref = null;

@@ -39,7 +39,7 @@ public final class ElectronicArticleBuilder
     }
 
     @Override
-    protected ElectronicArticleBuilder getThis() {
+    protected @Nonnull ElectronicArticleBuilder getThis() {
         return this;
     }
 }

@@ -34,17 +34,17 @@ public class AlternativeSequenceBuilder
                 .alternatives(instance.getAlternativeSequences());
     }
 
-    public AlternativeSequenceBuilder original(String originalSequence) {
+    public @Nonnull AlternativeSequenceBuilder original(String originalSequence) {
         this.originalSequence = originalSequence;
         return this;
     }
 
-    public AlternativeSequenceBuilder alternatives(List<String> alternativeSequences) {
+    public @Nonnull AlternativeSequenceBuilder alternatives(List<String> alternativeSequences) {
         this.alternativeSequences = modifiableList(alternativeSequences);
         return this;
     }
 
-    public AlternativeSequenceBuilder alternative(String alternative) {
+    public @Nonnull AlternativeSequenceBuilder alternative(String alternative) {
         addOrIgnoreNull(alternative, this.alternativeSequences);
         return this;
     }

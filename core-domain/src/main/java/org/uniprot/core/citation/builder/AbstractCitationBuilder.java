@@ -17,6 +17,8 @@ import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
 
+import javax.annotation.Nonnull;
+
 public abstract class AbstractCitationBuilder<
                 B extends AbstractCitationBuilder<B, T>, T extends Citation>
         implements CitationBuilder<B, T> {
@@ -26,52 +28,52 @@ public abstract class AbstractCitationBuilder<
     protected String title = "";
     protected PublicationDate publicationDate;
 
-    public B authoringGroups(List<String> groups) {
+    public @Nonnull B authoringGroups(List<String> groups) {
         this.authoringGroups = modifiableList(groups);
         return getThis();
     }
 
-    public B addAuthorGroup(String group) {
+    public @Nonnull B addAuthorGroup(String group) {
         addOrIgnoreNull(group, this.authoringGroups);
         return getThis();
     }
 
-    public B authors(List<Author> authors) {
+    public @Nonnull B authors(List<Author> authors) {
         this.authors = modifiableList(authors);
         return getThis();
     }
 
-    public B authors(Collection<String> authors) {
+    public @Nonnull B authors(Collection<String> authors) {
         this.authors.addAll(authors.stream().map(AuthorImpl::new).collect(Collectors.toList()));
         return getThis();
     }
 
-    public B addAuthor(String author) {
+    public @Nonnull B addAuthor(String author) {
         if (author != null) this.authors.add(new AuthorImpl(author));
         return getThis();
     }
 
-    public B addAuthor(Author author) {
+    public @Nonnull B addAuthor(Author author) {
         addOrIgnoreNull(author, this.authors);
         return getThis();
     }
 
-    public B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
+    public @Nonnull B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
         this.xrefs = citationXrefs;
         return getThis();
     }
 
-    public B title(String title) {
+    public @Nonnull B title(String title) {
         this.title = title;
         return getThis();
     }
 
-    public B publicationDate(String publicationDate) {
+    public @Nonnull B publicationDate(String publicationDate) {
         this.publicationDate = new PublicationDateImpl(publicationDate);
         return getThis();
     }
 
-    public B publicationDate(PublicationDate publicationDate) {
+    public @Nonnull B publicationDate(PublicationDate publicationDate) {
         this.publicationDate = publicationDate;
         return getThis();
     }
@@ -87,5 +89,5 @@ public abstract class AbstractCitationBuilder<
                 .authoringGroups(instance.getAuthoringGroup());
     }
 
-    protected abstract B getThis();
+    protected abstract @Nonnull B getThis();
 }

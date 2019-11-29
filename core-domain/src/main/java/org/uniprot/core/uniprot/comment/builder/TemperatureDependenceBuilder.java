@@ -8,6 +8,8 @@ import org.uniprot.core.uniprot.comment.TemperatureDependence;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 16/01/19
  *
@@ -20,12 +22,13 @@ public class TemperatureDependenceBuilder
     }
 
     @Override
-    protected TemperatureDependenceBuilder getThis() {
+    protected @Nonnull
+    TemperatureDependenceBuilder getThis() {
         return this;
     }
 
     @Override
-    protected TemperatureDependence createConcreteInstance() {
+    protected @Nonnull TemperatureDependence createConcreteInstance() {
         return new BPCPCommentImpl.TemperatureDependenceImpl(evidencedValues);
     }
 }

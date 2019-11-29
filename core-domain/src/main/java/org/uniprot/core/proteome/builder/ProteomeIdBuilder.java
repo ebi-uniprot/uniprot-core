@@ -17,7 +17,7 @@ public class ProteomeIdBuilder extends AbstractValueBuilder<ProteomeIdBuilder, P
     }
 
     @Override
-    protected ProteomeIdBuilder getThis() {
+    protected @Nonnull ProteomeIdBuilder getThis() {
         return this;
     }
 }

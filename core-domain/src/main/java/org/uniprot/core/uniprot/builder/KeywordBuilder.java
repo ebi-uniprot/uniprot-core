@@ -24,7 +24,7 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
     }
 
     @Override
-    protected KeywordBuilder getThis() {
+    protected @Nonnull KeywordBuilder getThis() {
         return this;
     }
 
@@ -33,12 +33,12 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
         return super.from(instance).id(instance.getId()).category(instance.getCategory());
     }
 
-    public KeywordBuilder id(String id) {
+    public@Nonnull  KeywordBuilder id(String id) {
         this.id = id;
         return this;
     }
 
-    public KeywordBuilder category(KeywordCategory category) {
+    public @Nonnull KeywordBuilder category(KeywordCategory category) {
         this.category = category;
         return this;
     }

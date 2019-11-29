@@ -38,27 +38,27 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, M
                 .velocity(instance.getVelocity());
     }
 
-    public MaximumVelocityBuilder velocity(double velocity) {
+    public @Nonnull MaximumVelocityBuilder velocity(double velocity) {
         this.velocity = velocity;
         return this;
     }
 
-    public MaximumVelocityBuilder unit(String unit) {
+    public @Nonnull MaximumVelocityBuilder unit(String unit) {
         this.unit = unit;
         return this;
     }
 
-    public MaximumVelocityBuilder enzyme(String enzyme) {
+    public @Nonnull MaximumVelocityBuilder enzyme(String enzyme) {
         this.enzyme = enzyme;
         return this;
     }
 
-    public MaximumVelocityBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull MaximumVelocityBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public MaximumVelocityBuilder addEvidence(Evidence evidence) {
+    public @Nonnull MaximumVelocityBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

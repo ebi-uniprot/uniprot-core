@@ -48,47 +48,47 @@ public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
                 .name(instance.getName());
     }
 
-    public APIsoformBuilder name(IsoformName name) {
+    public @Nonnull APIsoformBuilder name(IsoformName name) {
         this.name = name;
         return this;
     }
 
-    public APIsoformBuilder synonyms(List<IsoformName> synonyms) {
+    public @Nonnull APIsoformBuilder synonyms(List<IsoformName> synonyms) {
         this.synonyms = modifiableList(synonyms);
         return this;
     }
 
-    public APIsoformBuilder addSynonym(IsoformName synonym) {
+    public @Nonnull APIsoformBuilder addSynonym(IsoformName synonym) {
         addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
 
-    public APIsoformBuilder note(Note note) {
+    public @Nonnull APIsoformBuilder note(Note note) {
         this.note = note;
         return this;
     }
 
-    public APIsoformBuilder ids(List<String> isoformIds) {
+    public @Nonnull APIsoformBuilder ids(List<String> isoformIds) {
         isoformIds.stream().map(APIsoformImpl.IsoformIdImpl::new).forEach(this.isoformIds::add);
         return this;
     }
 
-    public APIsoformBuilder addId(String isoformId) {
+    public @Nonnull APIsoformBuilder addId(String isoformId) {
         if (isoformId != null) this.isoformIds.add(new APIsoformImpl.IsoformIdImpl(isoformId));
         return this;
     }
 
-    public APIsoformBuilder sequenceIds(List<String> sequenceIds) {
+    public @Nonnull APIsoformBuilder sequenceIds(List<String> sequenceIds) {
         this.sequenceIds = modifiableList(sequenceIds);
         return this;
     }
 
-    public APIsoformBuilder addSequenceId(String sequenceId) {
+    public @Nonnull APIsoformBuilder addSequenceId(String sequenceId) {
         addOrIgnoreNull(sequenceId, this.sequenceIds);
         return this;
     }
 
-    public APIsoformBuilder sequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
+    public @Nonnull APIsoformBuilder sequenceStatus(IsoformSequenceStatus isoformSequenceStatus) {
         this.isoformSequenceStatus = isoformSequenceStatus;
         return this;
     }

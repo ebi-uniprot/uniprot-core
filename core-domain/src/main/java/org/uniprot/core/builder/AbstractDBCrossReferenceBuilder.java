@@ -10,6 +10,8 @@ import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.Property;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 10/01/19
  *
@@ -24,36 +26,36 @@ public abstract class AbstractDBCrossReferenceBuilder<
     protected String id;
     protected List<Property> properties = new ArrayList<>();
 
-    protected abstract B getThis();
+    protected abstract @Nonnull B getThis();
 
     @Override
-    public B from(D instance) {
+    public @Nonnull B from(@Nonnull D instance) {
         return this.properties(instance.getProperties())
                 .id(instance.getId())
                 .databaseType(instance.getDatabaseType());
     }
 
-    public B databaseType(T type) {
+    public @Nonnull B databaseType(T type) {
         this.databaseType = type;
         return getThis();
     }
 
-    public B id(String id) {
+    public @Nonnull B id(String id) {
         this.id = id;
         return getThis();
     }
 
-    public B properties(List<Property> properties) {
+    public @Nonnull B properties(List<Property> properties) {
         this.properties = modifiableList(properties);
         return getThis();
     }
 
-    public B addProperty(Property property) {
+    public @Nonnull B addProperty(Property property) {
         addOrIgnoreNull(property, this.properties);
         return getThis();
     }
 
-    public B addProperty(String key, String value) {
+    public @Nonnull B addProperty(String key, String value) {
         if (!nullOrEmpty(key) && !nullOrEmpty(value)) {
             this.properties.add(new Property(key, value));
         }

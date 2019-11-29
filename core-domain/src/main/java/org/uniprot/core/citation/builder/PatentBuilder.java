@@ -25,7 +25,7 @@ public final class PatentBuilder extends AbstractCitationBuilder<PatentBuilder, 
     }
 
     @Override
-    protected PatentBuilder getThis() {
+    protected @Nonnull PatentBuilder getThis() {
         return this;
     }
 }

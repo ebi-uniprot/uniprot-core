@@ -40,17 +40,17 @@ public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
         return retBuilder;
     }
 
-    public EvidenceBuilder evidenceCode(EvidenceCode evidenceCode) {
+    public @Nonnull EvidenceBuilder evidenceCode(EvidenceCode evidenceCode) {
         this.evidenceCode = evidenceCode;
         return this;
     }
 
-    public EvidenceBuilder databaseName(String databaseName) {
+    public @Nonnull EvidenceBuilder databaseName(String databaseName) {
         this.databaseName = databaseName;
         return this;
     }
 
-    public EvidenceBuilder databaseId(String databaseId) {
+    public @Nonnull EvidenceBuilder databaseId(String databaseId) {
         this.databaseId = databaseId;
         return this;
     }

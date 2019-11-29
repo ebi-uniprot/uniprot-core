@@ -9,7 +9,7 @@ import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 public class NameBuilder extends AbstractEvidencedValueBuilder<NameBuilder, Name> {
 
     @Override
-    protected NameBuilder getThis() {
+    protected @Nonnull NameBuilder getThis() {
         return this;
     }
 

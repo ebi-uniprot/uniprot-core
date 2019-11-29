@@ -33,32 +33,32 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
                 .temperatureDependence(instance.getTemperatureDependence());
     }
 
-    public BPCPCommentBuilder molecule(String molecule) {
+    public @Nonnull BPCPCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public BPCPCommentBuilder absorption(Absorption absorption) {
+    public @Nonnull BPCPCommentBuilder absorption(Absorption absorption) {
         this.absorption = absorption;
         return this;
     }
 
-    public BPCPCommentBuilder kineticParameters(KineticParameters kineticParameters) {
+    public @Nonnull BPCPCommentBuilder kineticParameters(KineticParameters kineticParameters) {
         this.kineticParameters = kineticParameters;
         return this;
     }
 
-    public BPCPCommentBuilder phDependence(PhDependence phDependence) {
+    public @Nonnull BPCPCommentBuilder phDependence(PhDependence phDependence) {
         this.phDependence = phDependence;
         return this;
     }
 
-    public BPCPCommentBuilder redoxPotential(RedoxPotential redoxPotential) {
+    public @Nonnull BPCPCommentBuilder redoxPotential(RedoxPotential redoxPotential) {
         this.redoxPotential = redoxPotential;
         return this;
     }
 
-    public BPCPCommentBuilder temperatureDependence(TemperatureDependence temperatureDependence) {
+    public @Nonnull BPCPCommentBuilder temperatureDependence(TemperatureDependence temperatureDependence) {
         this.temperatureDependence = temperatureDependence;
         return this;
     }

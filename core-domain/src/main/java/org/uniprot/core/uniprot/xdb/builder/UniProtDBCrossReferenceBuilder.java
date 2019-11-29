@@ -27,34 +27,34 @@ public class UniProtDBCrossReferenceBuilder
     private List<Evidence> evidences = new ArrayList<>();
 
     @Override
-    public UniProtDBCrossReference build() {
+    public @Nonnull UniProtDBCrossReference build() {
         return new UniProtDBCrossReferenceImpl(databaseType, id, properties, isoformId, evidences);
     }
 
     @Override
-    public UniProtDBCrossReferenceBuilder from(@Nonnull UniProtDBCrossReference instance) {
+    public @Nonnull UniProtDBCrossReferenceBuilder from(@Nonnull UniProtDBCrossReference instance) {
         evidences.clear();
         return super.from(instance)
                 .evidences(instance.getEvidences())
                 .isoformId(instance.getIsoformId());
     }
 
-    public UniProtDBCrossReferenceBuilder isoformId(String isoformId) {
+    public @Nonnull UniProtDBCrossReferenceBuilder isoformId(String isoformId) {
         this.isoformId = isoformId;
         return this;
     }
 
-    public UniProtDBCrossReferenceBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull UniProtDBCrossReferenceBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public UniProtDBCrossReferenceBuilder addEvidence(Evidence evidence) {
+    public @Nonnull UniProtDBCrossReferenceBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 
-    public UniProtDBCrossReferenceBuilder addProperty(DBXRefTypeAttribute attribute, String value) {
+    public @Nonnull UniProtDBCrossReferenceBuilder addProperty(DBXRefTypeAttribute attribute, String value) {
         if (notNullOrEmpty(value) && notNull(attribute)) {
             this.properties.add(new Property(attribute.getName(), value));
         }
@@ -62,7 +62,7 @@ public class UniProtDBCrossReferenceBuilder
     }
 
     @Override
-    protected UniProtDBCrossReferenceBuilder getThis() {
+    protected @Nonnull UniProtDBCrossReferenceBuilder getThis() {
         return this;
     }
 }

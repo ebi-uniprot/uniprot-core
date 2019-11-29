@@ -106,7 +106,7 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
     }
 
     @Override
-    protected BookBuilder getThis() {
+    protected @Nonnull BookBuilder getThis() {
         return this;
     }
 }

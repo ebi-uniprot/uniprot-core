@@ -22,11 +22,11 @@ public class ReferenceCommentBuilder
     }
 
     @Override
-    protected ReferenceCommentBuilder getThis() {
+    protected @Nonnull ReferenceCommentBuilder getThis() {
         return this;
     }
 
-    public ReferenceCommentBuilder type(ReferenceCommentType type) {
+    public @Nonnull ReferenceCommentBuilder type(ReferenceCommentType type) {
         this.type = type;
         return this;
     }

@@ -4,6 +4,8 @@ import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniprot.SourceLine;
 import org.uniprot.core.uniprot.impl.SourceLineImpl;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 24/01/19
  *
@@ -15,12 +17,12 @@ public class SourceLineBuilder extends AbstractValueBuilder<SourceLineBuilder, S
     }
 
     @Override
-    public SourceLine build() {
+    public @Nonnull SourceLine build() {
         return new SourceLineImpl(value);
     }
 
     @Override
-    protected SourceLineBuilder getThis() {
+    protected @Nonnull SourceLineBuilder getThis() {
         return this;
     }
 }

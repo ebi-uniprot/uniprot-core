@@ -18,7 +18,7 @@ public final class UnpublishedBuilder
     }
 
     @Override
-    protected UnpublishedBuilder getThis() {
+    protected @Nonnull UnpublishedBuilder getThis() {
         return this;
     }
 }

@@ -8,6 +8,8 @@ import org.uniprot.core.uniprot.comment.PhDependence;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created 16/01/19
  *
@@ -20,12 +22,12 @@ public class PhDependenceBuilder
     }
 
     @Override
-    protected PhDependenceBuilder getThis() {
+    protected @Nonnull PhDependenceBuilder getThis() {
         return this;
     }
 
     @Override
-    protected PhDependence createConcreteInstance() {
+    protected @Nonnull PhDependence createConcreteInstance() {
         return new BPCPCommentImpl.PhDependenceImpl(evidencedValues);
     }
 }

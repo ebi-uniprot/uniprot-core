@@ -27,23 +27,23 @@ public final class PhysiologicalReactionBuilder
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences = new ArrayList<>();
 
-    public PhysiologicalReactionBuilder directionType(PhysiologicalDirectionType directionType) {
+    public @Nonnull PhysiologicalReactionBuilder directionType(PhysiologicalDirectionType directionType) {
         this.directionType = directionType;
         return this;
     }
 
-    public PhysiologicalReactionBuilder reactionReference(
+    public @Nonnull PhysiologicalReactionBuilder reactionReference(
             DBCrossReference<ReactionReferenceType> reactionReference) {
         this.reactionReference = reactionReference;
         return this;
     }
 
-    public PhysiologicalReactionBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull PhysiologicalReactionBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public PhysiologicalReactionBuilder addEvidence(Evidence evidence) {
+    public @Nonnull PhysiologicalReactionBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

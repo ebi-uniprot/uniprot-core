@@ -24,7 +24,7 @@ public class SubcellularLocationValueBuilder
     }
 
     @Override
-    protected SubcellularLocationValueBuilder getThis() {
+    protected @Nonnull SubcellularLocationValueBuilder getThis() {
         return this;
     }
 

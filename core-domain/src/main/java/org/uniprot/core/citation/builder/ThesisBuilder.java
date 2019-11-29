@@ -31,7 +31,7 @@ public final class ThesisBuilder extends AbstractCitationBuilder<ThesisBuilder, 
     }
 
     @Override
-    protected ThesisBuilder getThis() {
+    protected @Nonnull ThesisBuilder getThis() {
         return this;
     }
 }

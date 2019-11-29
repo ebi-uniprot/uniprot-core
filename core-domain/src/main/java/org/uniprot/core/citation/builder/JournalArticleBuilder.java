@@ -56,7 +56,7 @@ public final class JournalArticleBuilder
     }
 
     @Override
-    protected JournalArticleBuilder getThis() {
+    protected @Nonnull JournalArticleBuilder getThis() {
         return this;
     }
 }

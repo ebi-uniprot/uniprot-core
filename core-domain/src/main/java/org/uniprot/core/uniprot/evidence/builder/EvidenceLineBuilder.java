@@ -30,17 +30,17 @@ public class EvidenceLineBuilder implements Builder<EvidenceLineBuilder, Evidenc
                 .creationDate(instance.getCreateDate());
     }
 
-    public EvidenceLineBuilder evidence(String evidence) {
+    public @Nonnull EvidenceLineBuilder evidence(String evidence) {
         this.evidence = evidence;
         return this;
     }
 
-    public EvidenceLineBuilder creationDate(LocalDate date) {
+    public @Nonnull EvidenceLineBuilder creationDate(LocalDate date) {
         this.createDate = date;
         return this;
     }
 
-    public EvidenceLineBuilder curator(String curator) {
+    public @Nonnull EvidenceLineBuilder curator(String curator) {
         this.curator = curator;
         return this;
     }

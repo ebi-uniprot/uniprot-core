@@ -9,6 +9,8 @@ import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
+import javax.annotation.Nonnull;
+
 /** @author lgonzales */
 public class GeneNameSynonymBuilder
         extends AbstractEvidencedValueBuilder<GeneNameSynonymBuilder, GeneNameSynonym> {
@@ -21,12 +23,12 @@ public class GeneNameSynonymBuilder
     }
 
     @Override
-    protected GeneNameSynonymBuilder getThis() {
+    protected @Nonnull GeneNameSynonymBuilder getThis() {
         return this;
     }
 
     @Override
-    public GeneNameSynonym build() {
+    public @Nonnull GeneNameSynonym build() {
         return new GeneImpl.GeneNameSynonymImpl(value, evidences);
     }
 }
