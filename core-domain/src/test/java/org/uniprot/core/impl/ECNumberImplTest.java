@@ -1,8 +1,9 @@
 package org.uniprot.core.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.ECNumber;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class ECNumberImplTest {
     @Test
@@ -22,5 +23,30 @@ class ECNumberImplTest {
     private void verify(String ec, boolean valid) {
         ECNumberImpl ecnumber = new ECNumberImpl(ec);
         assertEquals(valid, ecnumber.isValid());
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        ECNumber obj = new ECNumberImpl();
+        assertNotNull(obj);
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalObject() {
+        ECNumber impl = new ECNumberImpl("ec");
+        ECNumber obj = new ECNumberImpl("ec");
+
+        assertTrue(impl.hasValue());
+
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
+    }
+
+    @Test
+    void builderFrom_constructorImp_shouldCreate_equalNullObject() {
+        ECNumber impl = new ECNumberImpl(null);
+        ECNumber obj = new ECNumberImpl(null);
+        assertTrue(impl.equals(obj) && obj.equals(impl));
+        assertEquals(impl.hashCode(), obj.hashCode());
     }
 }
