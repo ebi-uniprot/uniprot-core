@@ -116,7 +116,7 @@ public abstract class AbstractUniRefMemberBuilder<
         this.organismTaxId(instance.getOrganismTaxId());
         this.sequenceLength(instance.getSequenceLength());
         this.proteinName(instance.getProteinName());
-        this.accessions(instance.getUniProtAccessions())
+        this.accessions(instance.getUniProtAccessions());
         this.uniref100Id(instance.getUniRef100Id());
         this.uniref90Id(instance.getUniRef90Id());
         this.uniref50Id(instance.getUniRef50Id());

@@ -1,8 +1,8 @@
 package org.uniprot.core.cv.keyword.impl;
 
-import org.uniprot.core.cv.keyword.GeneOntology;
-
 import java.util.Objects;
+
+import org.uniprot.core.cv.keyword.GeneOntology;
 
 public class GeneOntologyImpl implements GeneOntology {
     private static final long serialVersionUID = -5760727679729608097L;

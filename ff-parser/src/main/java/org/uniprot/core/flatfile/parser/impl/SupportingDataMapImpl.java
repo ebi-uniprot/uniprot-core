@@ -1,15 +1,6 @@
 package org.uniprot.core.flatfile.parser.impl;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.uniprot.core.cv.disease.DiseaseFileReader;
-import org.uniprot.core.cv.keyword.KeywordCategory;
-import org.uniprot.core.cv.keyword.KeywordFileReader;
-import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
-import org.uniprot.core.flatfile.parser.SupportingDataMap;
-import org.uniprot.core.uniprot.evidence.Evidence;
-import org.uniprot.core.util.Pair;
-import org.uniprot.core.util.Utils;
+import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +12,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.uniprot.core.uniprot.evidence.impl.EvidenceHelper.parseEvidenceLine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.uniprot.core.cv.disease.DiseaseFileReader;
+import org.uniprot.core.cv.keyword.KeywordCategory;
+import org.uniprot.core.cv.keyword.KeywordFileReader;
+import org.uniprot.core.cv.subcell.SubcellularLocationFileReader;
+import org.uniprot.core.flatfile.parser.SupportingDataMap;
+import org.uniprot.core.uniprot.evidence.Evidence;
+import org.uniprot.core.util.Pair;
+import org.uniprot.core.util.Utils;
 
 /**
  * This class contains all the external supporting data map required to parse from flat file to

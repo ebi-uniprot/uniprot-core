@@ -1,5 +1,10 @@
 package org.uniprot.core.flatfile.writer.line;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.flatfile.parser.impl.oh.OHLineBuilder;
@@ -7,11 +12,6 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismHostBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OHLineBuildTest {
     private OHLineBuilder builder = new OHLineBuilder();

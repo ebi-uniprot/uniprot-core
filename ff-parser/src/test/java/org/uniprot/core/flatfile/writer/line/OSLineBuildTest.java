@@ -1,5 +1,7 @@
 package org.uniprot.core.flatfile.writer.line;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.flatfile.parser.impl.OrganismNameLineParser;
 import org.uniprot.core.flatfile.parser.impl.os.OSLineBuilder;
@@ -7,8 +9,6 @@ import org.uniprot.core.flatfile.writer.FFLine;
 import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 import org.uniprot.core.uniprot.taxonomy.builder.OrganismBuilder;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class OSLineBuildTest {
     private OSLineBuilder builder = new OSLineBuilder();

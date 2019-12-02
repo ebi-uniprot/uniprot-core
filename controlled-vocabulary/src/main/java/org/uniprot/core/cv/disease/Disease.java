@@ -1,9 +1,9 @@
 package org.uniprot.core.cv.disease;
 
-import org.uniprot.core.cv.keyword.Keyword;
-
 import java.io.Serializable;
 import java.util.List;
+
+import org.uniprot.core.cv.keyword.Keyword;
 
 public interface Disease extends Serializable {
     String getId();

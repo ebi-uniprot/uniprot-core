@@ -1,8 +1,8 @@
 package org.uniprot.core.crossref;
 
-import org.uniprot.core.Builder;
-
 import javax.annotation.Nonnull;
+
+import org.uniprot.core.Builder;
 
 public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, CrossRefEntry> {
     private String name;
@@ -18,8 +18,7 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, Cross
     private Long unreviewedProteinCount;
 
     @Override
-    public @Nonnull
-    CrossRefEntry build() {
+    public @Nonnull CrossRefEntry build() {
         return new CrossRefEntryImpl(
                 this.name,
                 this.accession,

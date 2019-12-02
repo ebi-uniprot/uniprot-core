@@ -1,5 +1,8 @@
 package org.uniprot.core.uniprot;
 
+import java.io.Serializable;
+import java.util.List;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
@@ -14,9 +17,6 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
-
-import java.io.Serializable;
-import java.util.List;
 
 /**
  * @author jieluo

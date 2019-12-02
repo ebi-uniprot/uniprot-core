@@ -1,5 +1,8 @@
 package org.uniprot.core.uniprot.impl;
 
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
@@ -16,9 +19,6 @@ import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 import org.uniprot.core.uniprot.xdb.UniProtXDbType;
 import org.uniprot.core.util.Utils;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class UniProtEntryImpl implements UniProtEntry {
     private static final long serialVersionUID = 3240727057252439286L;

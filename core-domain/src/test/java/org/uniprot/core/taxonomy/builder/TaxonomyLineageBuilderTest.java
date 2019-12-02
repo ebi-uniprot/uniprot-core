@@ -1,10 +1,10 @@
 package org.uniprot.core.taxonomy.builder;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TaxonomyLineageBuilderTest {
 

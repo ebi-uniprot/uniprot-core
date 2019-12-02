@@ -1,11 +1,11 @@
 package org.uniprot.core.taxonomy.impl;
 
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.uniprot.taxonomy.impl.AbstractOrganismNameImpl;
-
-import java.util.List;
-import java.util.Objects;
 
 /** @author lgonzales */
 public class TaxonomyLineageImpl extends AbstractOrganismNameImpl implements TaxonomyLineage {
