@@ -19,4 +19,10 @@ class RedundantProteomeBuilderTest {
         assertEquals(id, rproteome.getId().getValue());
         assertEquals(0.98f, rproteome.getSimilarity().doubleValue(), Double.MIN_VALUE);
     }
+
+    @Test
+    void canAddIdFromString() {
+        RedundantProteome proteome = new RedundantProteomeBuilder().proteomeId("id").build();
+        assertNotNull(proteome.getId());
+    }
 }

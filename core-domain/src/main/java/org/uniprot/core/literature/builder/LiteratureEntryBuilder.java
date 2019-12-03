@@ -3,6 +3,8 @@ package org.uniprot.core.literature.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Journal;
@@ -32,102 +34,102 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     private List<LiteratureMappedReference> literatureMappedReference = new ArrayList<>();
     private LiteratureStatistics statistics;
 
-    public LiteratureEntryBuilder pubmedId(Long pubmedId) {
+    public @Nonnull LiteratureEntryBuilder pubmedId(Long pubmedId) {
         this.pubmedId = pubmedId;
         return this;
     }
 
-    public LiteratureEntryBuilder doiId(String doiId) {
+    public @Nonnull LiteratureEntryBuilder doiId(String doiId) {
         this.doiId = doiId;
         return this;
     }
 
-    public LiteratureEntryBuilder title(String title) {
+    public @Nonnull LiteratureEntryBuilder title(String title) {
         this.title = Utils.emptyOrString(title);
         return this;
     }
 
-    public LiteratureEntryBuilder authoringGroup(List<String> authoringGroup) {
+    public @Nonnull LiteratureEntryBuilder authoringGroup(List<String> authoringGroup) {
         this.authoringGroup = Utils.modifiableList(authoringGroup);
         return this;
     }
 
-    public LiteratureEntryBuilder addAuthoringGroup(String authoringGroup) {
+    public @Nonnull LiteratureEntryBuilder addAuthoringGroup(String authoringGroup) {
         Utils.addOrIgnoreNull(authoringGroup, this.authoringGroup);
         return this;
     }
 
-    public LiteratureEntryBuilder authors(List<Author> authors) {
+    public @Nonnull LiteratureEntryBuilder authors(List<Author> authors) {
         this.authors = Utils.modifiableList(authors);
         return this;
     }
 
-    public LiteratureEntryBuilder addAuthor(Author author) {
+    public @Nonnull LiteratureEntryBuilder addAuthor(Author author) {
         Utils.addOrIgnoreNull(author, this.authors);
         return this;
     }
 
-    public LiteratureEntryBuilder completeAuthorList(boolean completeAuthorList) {
+    public @Nonnull LiteratureEntryBuilder completeAuthorList(boolean completeAuthorList) {
         this.completeAuthorList = completeAuthorList;
         return this;
     }
 
-    public LiteratureEntryBuilder publicationDate(PublicationDate publicationDate) {
+    public @Nonnull LiteratureEntryBuilder publicationDate(PublicationDate publicationDate) {
         this.publicationDate = publicationDate;
         return this;
     }
 
-    public LiteratureEntryBuilder journal(Journal journal) {
+    public @Nonnull LiteratureEntryBuilder journal(Journal journal) {
         this.journal = journal;
         return this;
     }
 
-    public LiteratureEntryBuilder journal(String journalName) {
+    public @Nonnull LiteratureEntryBuilder journal(String journalName) {
         if (Utils.notNullOrEmpty(journalName)) {
             this.journal = new JournalImpl(journalName);
         }
         return this;
     }
 
-    public LiteratureEntryBuilder firstPage(String firstPage) {
+    public @Nonnull LiteratureEntryBuilder firstPage(String firstPage) {
         this.firstPage = firstPage;
         return this;
     }
 
-    public LiteratureEntryBuilder lastPage(String lastPage) {
+    public @Nonnull LiteratureEntryBuilder lastPage(String lastPage) {
         this.lastPage = lastPage;
         return this;
     }
 
-    public LiteratureEntryBuilder volume(String volume) {
+    public @Nonnull LiteratureEntryBuilder volume(String volume) {
         this.volume = volume;
         return this;
     }
 
-    public LiteratureEntryBuilder literatureAbstract(String literatureAbstract) {
+    public @Nonnull LiteratureEntryBuilder literatureAbstract(String literatureAbstract) {
         this.literatureAbstract = literatureAbstract;
         return this;
     }
 
-    public LiteratureEntryBuilder literatureMappedReference(
+    public @Nonnull LiteratureEntryBuilder literatureMappedReference(
             List<LiteratureMappedReference> literatureMappedReference) {
         this.literatureMappedReference = Utils.modifiableList(literatureMappedReference);
         return this;
     }
 
-    public LiteratureEntryBuilder addLiteratureMappedReference(
+    public @Nonnull LiteratureEntryBuilder addLiteratureMappedReference(
             LiteratureMappedReference literatureMappedReference) {
         Utils.addOrIgnoreNull(literatureMappedReference, this.literatureMappedReference);
         return this;
     }
 
-    public LiteratureEntryBuilder statistics(LiteratureStatistics statistics) {
+    public @Nonnull LiteratureEntryBuilder statistics(LiteratureStatistics statistics) {
         this.statistics = statistics;
         return this;
     }
 
     @Override
-    public LiteratureEntry build() {
+    public @Nonnull LiteratureEntry build() {
         return new LiteratureEntryImpl(
                 pubmedId,
                 doiId,
@@ -146,7 +148,7 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
     }
 
     @Override
-    public LiteratureEntryBuilder from(LiteratureEntry instance) {
+    public @Nonnull LiteratureEntryBuilder from(@Nonnull LiteratureEntry instance) {
         LiteratureEntryBuilder builder =
                 new LiteratureEntryBuilder()
                         .pubmedId(instance.getPubmedId())

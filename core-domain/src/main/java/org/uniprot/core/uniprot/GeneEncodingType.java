@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import org.uniprot.core.util.EnumDisplay;
 
@@ -24,7 +23,7 @@ public enum GeneEncodingType implements EnumDisplay<GeneEncodingType> {
         this.name = name;
     }
 
-    public @Nonnull static GeneEncodingType typeOf(@Nullable String name) {
+    public @Nonnull static GeneEncodingType typeOf(@Nonnull String name) {
         for (GeneEncodingType geneEncodingType : GeneEncodingType.values()) {
             if (geneEncodingType.getName().equalsIgnoreCase(name)) {
                 return geneEncodingType;

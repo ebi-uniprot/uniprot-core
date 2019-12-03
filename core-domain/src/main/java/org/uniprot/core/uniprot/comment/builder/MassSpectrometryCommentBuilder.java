@@ -38,22 +38,22 @@ public final class MassSpectrometryCommentBuilder
                 .method(instance.getMethod());
     }
 
-    public MassSpectrometryCommentBuilder molecule(String molecule) {
+    public @Nonnull MassSpectrometryCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public MassSpectrometryCommentBuilder method(MassSpectrometryMethod method) {
+    public @Nonnull MassSpectrometryCommentBuilder method(MassSpectrometryMethod method) {
         this.method = method;
         return this;
     }
 
-    public MassSpectrometryCommentBuilder molWeight(Float molWeight) {
+    public @Nonnull MassSpectrometryCommentBuilder molWeight(Float molWeight) {
         this.molWeight = molWeight;
         return this;
     }
 
-    public MassSpectrometryCommentBuilder molWeightError(Float molWeightError) {
+    public @Nonnull MassSpectrometryCommentBuilder molWeightError(Float molWeightError) {
         if ((molWeightError != null) && (Math.abs(molWeightError - 0.0) <= Float.MIN_VALUE)) {
             this.molWeightError = null;
         }
@@ -61,17 +61,17 @@ public final class MassSpectrometryCommentBuilder
         return this;
     }
 
-    public MassSpectrometryCommentBuilder note(String note) {
+    public @Nonnull MassSpectrometryCommentBuilder note(String note) {
         this.note = note;
         return this;
     }
 
-    public MassSpectrometryCommentBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull MassSpectrometryCommentBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public MassSpectrometryCommentBuilder addEvidence(Evidence evidence) {
+    public @Nonnull MassSpectrometryCommentBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

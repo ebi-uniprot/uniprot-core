@@ -1,5 +1,7 @@
 package org.uniprot.core.proteome;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum GeneNameType implements EnumDisplay<GeneNameType> {
@@ -16,18 +18,18 @@ public enum GeneNameType implements EnumDisplay<GeneNameType> {
         this.name = name;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getName();
     }
 
-    public static GeneNameType fromValue(String type) {
+    public static @Nonnull GeneNameType fromValue(@Nonnull String type) {
         for (GeneNameType gnType : GeneNameType.values()) {
-            if (gnType.getName().equals(type)) return gnType;
+            if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }
         return GeneNameType.MISSING;
     }

@@ -1,5 +1,7 @@
 package org.uniprot.core.taxonomy.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
 import org.uniprot.core.taxonomy.impl.TaxonomyStatisticsImpl;
@@ -12,28 +14,28 @@ public class TaxonomyStatisticsBuilder
     private long referenceProteomeCount;
     private long completeProteomeCount;
 
-    public TaxonomyStatisticsBuilder reviewedProteinCount(long reviewedProteinCount) {
+    public @Nonnull TaxonomyStatisticsBuilder reviewedProteinCount(long reviewedProteinCount) {
         this.reviewedProteinCount = reviewedProteinCount;
         return this;
     }
 
-    public TaxonomyStatisticsBuilder unreviewedProteinCount(long unreviewedProteinCount) {
+    public @Nonnull TaxonomyStatisticsBuilder unreviewedProteinCount(long unreviewedProteinCount) {
         this.unreviewedProteinCount = unreviewedProteinCount;
         return this;
     }
 
-    public TaxonomyStatisticsBuilder referenceProteomeCount(long referenceProteomeCount) {
+    public @Nonnull TaxonomyStatisticsBuilder referenceProteomeCount(long referenceProteomeCount) {
         this.referenceProteomeCount = referenceProteomeCount;
         return this;
     }
 
-    public TaxonomyStatisticsBuilder completeProteomeCount(long completeProteomeCount) {
+    public @Nonnull TaxonomyStatisticsBuilder completeProteomeCount(long completeProteomeCount) {
         this.completeProteomeCount = completeProteomeCount;
         return this;
     }
 
     @Override
-    public TaxonomyStatistics build() {
+    public @Nonnull TaxonomyStatistics build() {
         return new TaxonomyStatisticsImpl(
                 reviewedProteinCount,
                 unreviewedProteinCount,
@@ -42,7 +44,7 @@ public class TaxonomyStatisticsBuilder
     }
 
     @Override
-    public TaxonomyStatisticsBuilder from(TaxonomyStatistics instance) {
+    public @Nonnull TaxonomyStatisticsBuilder from(@Nonnull TaxonomyStatistics instance) {
         if (instance != null) {
             this.reviewedProteinCount(instance.getReviewedProteinCount());
             this.unreviewedProteinCount(instance.getUnreviewedProteinCount());

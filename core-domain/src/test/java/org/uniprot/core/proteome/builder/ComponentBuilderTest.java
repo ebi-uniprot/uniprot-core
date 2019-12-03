@@ -3,9 +3,7 @@ package org.uniprot.core.proteome.builder;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
+import static org.uniprot.core.ObjectsForTests.proteomeXReferenceTypes;
 
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
@@ -51,15 +49,10 @@ class ComponentBuilderTest {
                         .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
                         .id("ACA121")
                         .build();
-        DBCrossReference<ProteomeXReferenceType> xref2 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
-                        .id("ADFDA121")
-                        .build();
         Component component =
                 ComponentBuilder.newInstance()
-                        .addDbXReference(xref1)
-                        .addDbXReference(xref2)
+                        .addDbXReference(proteomeXReferenceTypes().get(0))
+                        .addDbXReference(proteomeXReferenceTypes().get(1))
                         .build();
         assertEquals(2, component.getDbXReferences().size());
         assertThat(component.getDbXReferences(), hasItem(xref1));
@@ -67,20 +60,13 @@ class ComponentBuilderTest {
 
     @Test
     void testXrefs() {
-        List<DBCrossReference<ProteomeXReferenceType>> xrefs = new ArrayList<>();
-        DBCrossReference<ProteomeXReferenceType> xref1 =
-                new DBCrossReferenceBuilder<ProteomeXReferenceType>()
-                        .databaseType(ProteomeXReferenceType.GENOME_ACCESSION)
-                        .id("ACA121")
-                        .build();
         DBCrossReference<ProteomeXReferenceType> xref2 =
                 new DBCrossReferenceBuilder<ProteomeXReferenceType>()
                         .databaseType(ProteomeXReferenceType.GENOME_ANNOTATION)
                         .id("ADFDA121")
                         .build();
-        xrefs.add(xref1);
-        xrefs.add(xref2);
-        Component component = ComponentBuilder.newInstance().dbXReferences(xrefs).build();
+        Component component =
+                ComponentBuilder.newInstance().dbXReferences(proteomeXReferenceTypes()).build();
         assertEquals(2, component.getDbXReferences().size());
         assertThat(component.getDbXReferences(), hasItem(xref2));
     }

@@ -22,7 +22,7 @@ public class UniProtIdBuilder extends AbstractValueBuilder<UniProtIdBuilder, Uni
     }
 
     @Override
-    protected UniProtIdBuilder getThis() {
+    protected @Nonnull UniProtIdBuilder getThis() {
         return this;
     }
 }

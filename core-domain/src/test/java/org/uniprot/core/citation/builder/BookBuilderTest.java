@@ -1,12 +1,17 @@
 package org.uniprot.core.citation.builder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Book;
 import org.uniprot.core.citation.CitationType;
+import org.uniprot.core.citation.impl.AuthorImpl;
 
 class BookBuilderTest extends AbstractCitationBuilderTest {
 
@@ -142,5 +147,78 @@ class BookBuilderTest extends AbstractCitationBuilderTest {
         assertEquals("3", citation.getVolume());
         assertEquals("London Press", citation.getPublisher());
         assertEquals("London", citation.getAddress());
+    }
+
+    @Test
+    void canAddSingleEditor() {
+        Book book = new BookBuilder().addEditor("auth").build();
+        assertFalse(book.getEditors().isEmpty());
+        assertEquals(1, book.getEditors().size());
+    }
+
+    @Test
+    void addingNullAuthCollection_willBeReplacedByEmpty() {
+        Collection<Author> auth = null;
+        Book book = new BookBuilder().editors(auth).build();
+        assertNotNull(book.getEditors());
+        assertTrue(book.getEditors().isEmpty());
+    }
+
+    @Test
+    void canAddAuthCol() {
+        Book book =
+                new BookBuilder().editors(Collections.singleton(new AuthorImpl("auth"))).build();
+        assertFalse(book.getEditors().isEmpty());
+        assertEquals(1, book.getEditors().size());
+    }
+
+    @Test
+    void canAddStringAuthor() {
+        Book book = new BookBuilder().addAuthor(("auth")).build();
+        assertFalse(book.getAuthors().isEmpty());
+        assertEquals(1, book.getAuthors().size());
+    }
+
+    @Test
+    void nullStringAuthorWillBeIgnore() {
+        String auth = null;
+        Book book = new BookBuilder().addAuthor(auth).build();
+        assertTrue(book.getAuthors().isEmpty());
+    }
+
+    @Test
+    void nullAuthorWillBeIgnored() {
+        Author auth = null;
+        Book book = new BookBuilder().addAuthor(auth).build();
+        assertTrue(book.getAuthors().isEmpty());
+    }
+
+    @Test
+    void canAddAuthor() {
+        Author auth = new AuthorImpl("auth");
+        Book book = new BookBuilder().addAuthor(auth).build();
+        assertFalse(book.getAuthors().isEmpty());
+        assertEquals(1, book.getAuthors().size());
+    }
+
+    @Test
+    void canAddStringAuthGroup() {
+        Book book = new BookBuilder().addAuthorGroup("authGroup").build();
+        assertFalse(book.getAuthoringGroup().isEmpty());
+        assertEquals(1, book.getAuthoringGroup().size());
+    }
+
+    @Test
+    void nullAuthGroupWillIgnore() {
+        Book book = new BookBuilder().addAuthorGroup(null).build();
+        assertTrue(book.getAuthoringGroup().isEmpty());
+    }
+
+    @Test
+    void canAddUnModifiableAuthList() {
+        List<Author> authorList = Collections.singletonList(new AuthorImpl("auth"));
+        Book book = new BookBuilder().authors(authorList).build();
+        assertFalse(book.getAuthors().isEmpty());
+        assertEquals(1, book.getAuthors().size());
     }
 }

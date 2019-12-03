@@ -18,27 +18,27 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     private List<Evidence> evidences = new ArrayList<>();
     private List<String> lineage = new ArrayList<>();
 
-    public OrganismBuilder taxonId(long taxonId) {
+    public @Nonnull OrganismBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
         return this;
     }
 
-    public OrganismBuilder lineage(List<String> lineage) {
+    public @Nonnull OrganismBuilder lineage(List<String> lineage) {
         this.lineage = modifiableList(lineage);
         return this;
     }
 
-    public OrganismBuilder addLineage(String lineage) {
+    public @Nonnull OrganismBuilder addLineage(String lineage) {
         addOrIgnoreNull(lineage, this.lineage);
         return this;
     }
 
-    public OrganismBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull OrganismBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public OrganismBuilder addEvidence(Evidence evidence) {
+    public @Nonnull OrganismBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
@@ -47,7 +47,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
         return new OrganismImpl(lineage, taxonId, evidences, scientificName, commonName, synonyms);
     }
 
-    public OrganismBuilder from(@Nonnull Organism instance) {
+    public @Nonnull OrganismBuilder from(@Nonnull Organism instance) {
         evidences.clear();
         lineage.clear();
         super.from(instance);
@@ -58,7 +58,7 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
     }
 
     @Override
-    protected OrganismBuilder getThis() {
+    protected @Nonnull OrganismBuilder getThis() {
         return this;
     }
 }

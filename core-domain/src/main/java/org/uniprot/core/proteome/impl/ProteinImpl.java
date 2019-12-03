@@ -16,7 +16,8 @@ public class ProteinImpl implements Protein {
     private String geneName;
     private GeneNameType geneNameType;
 
-    private ProteinImpl() {}
+    // no arg constructor for JSON deserialization
+    ProteinImpl() {}
 
     public ProteinImpl(
             UniProtAccession accession,

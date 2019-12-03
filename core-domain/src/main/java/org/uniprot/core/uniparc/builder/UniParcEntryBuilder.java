@@ -3,6 +3,8 @@ package org.uniprot.core.uniparc.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
@@ -26,7 +28,7 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
     private List<Taxonomy> taxonomies = new ArrayList<>();
 
     @Override
-    public UniParcEntry build() {
+    public @Nonnull UniParcEntry build() {
         return new UniParcEntryImpl(
                 uniParcId,
                 databaseCrossReferences,
@@ -36,59 +38,59 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
                 uniprotExclusionReason);
     }
 
-    public UniParcEntryBuilder uniParcId(String uniParcId) {
+    public @Nonnull UniParcEntryBuilder uniParcId(String uniParcId) {
         return uniParcId(new UniParcIdBuilder(uniParcId).build());
     }
 
-    public UniParcEntryBuilder uniParcId(UniParcId uniParcId) {
+    public @Nonnull UniParcEntryBuilder uniParcId(UniParcId uniParcId) {
         this.uniParcId = uniParcId;
         return this;
     }
 
-    public UniParcEntryBuilder databaseCrossReferences(
+    public @Nonnull UniParcEntryBuilder databaseCrossReferences(
             List<UniParcDBCrossReference> databaseCrossReferences) {
         this.databaseCrossReferences = Utils.modifiableList(databaseCrossReferences);
         return this;
     }
 
-    public UniParcEntryBuilder addDatabaseCrossReference(
+    public @Nonnull UniParcEntryBuilder addDatabaseCrossReference(
             UniParcDBCrossReference databaseCrossReference) {
         Utils.addOrIgnoreNull(databaseCrossReference, databaseCrossReferences);
         return this;
     }
 
-    public UniParcEntryBuilder sequence(Sequence sequence) {
+    public @Nonnull UniParcEntryBuilder sequence(Sequence sequence) {
         this.sequence = sequence;
         return this;
     }
 
-    public UniParcEntryBuilder uniprotExclusionReason(String uniprotExclusionReason) {
+    public @Nonnull UniParcEntryBuilder uniprotExclusionReason(String uniprotExclusionReason) {
         this.uniprotExclusionReason = uniprotExclusionReason;
         return this;
     }
 
-    public UniParcEntryBuilder sequenceFeatures(List<SequenceFeature> sequenceFeatures) {
+    public @Nonnull UniParcEntryBuilder sequenceFeatures(List<SequenceFeature> sequenceFeatures) {
         this.sequenceFeatures = Utils.modifiableList(sequenceFeatures);
         return this;
     }
 
-    public UniParcEntryBuilder addSequenceFeature(SequenceFeature sequenceFeature) {
+    public @Nonnull UniParcEntryBuilder addSequenceFeature(SequenceFeature sequenceFeature) {
         Utils.addOrIgnoreNull(sequenceFeature, sequenceFeatures);
         return this;
     }
 
-    public UniParcEntryBuilder taxonomies(List<Taxonomy> taxonomies) {
+    public @Nonnull UniParcEntryBuilder taxonomies(List<Taxonomy> taxonomies) {
         this.taxonomies = Utils.modifiableList(taxonomies);
         return this;
     }
 
-    public UniParcEntryBuilder addTaxonomy(Taxonomy taxonomy) {
+    public @Nonnull UniParcEntryBuilder addTaxonomy(Taxonomy taxonomy) {
         Utils.addOrIgnoreNull(taxonomy, taxonomies);
         return this;
     }
 
     @Override
-    public UniParcEntryBuilder from(UniParcEntry instance) {
+    public @Nonnull UniParcEntryBuilder from(@Nonnull UniParcEntry instance) {
         return uniParcId(instance.getUniParcId())
                 .databaseCrossReferences(instance.getDbXReferences())
                 .sequence(instance.getSequence())

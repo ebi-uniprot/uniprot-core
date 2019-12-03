@@ -12,7 +12,7 @@ public class TaxonomyInactiveReasonImpl implements TaxonomyInactiveReason {
 
     private long mergedTo;
 
-    private TaxonomyInactiveReasonImpl() {
+    TaxonomyInactiveReasonImpl() {
         this(null, 0);
     }
 

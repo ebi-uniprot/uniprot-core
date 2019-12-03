@@ -36,22 +36,22 @@ public class FreeTextCommentBuilder
                 .molecule(instance.getMolecule());
     }
 
-    public FreeTextCommentBuilder commentType(CommentType commentType) {
+    public @Nonnull FreeTextCommentBuilder commentType(CommentType commentType) {
         this.commentType = commentType;
         return this;
     }
 
-    public FreeTextCommentBuilder molecule(String molecule) {
+    public @Nonnull FreeTextCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
+    public @Nonnull FreeTextCommentBuilder texts(List<EvidencedValue> texts) {
         this.texts = modifiableList(texts);
         return this;
     }
 
-    public FreeTextCommentBuilder addText(EvidencedValue text) {
+    public @Nonnull FreeTextCommentBuilder addText(EvidencedValue text) {
         addOrIgnoreNull(text, this.texts);
         return this;
     }

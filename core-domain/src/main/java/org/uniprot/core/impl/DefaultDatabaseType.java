@@ -5,7 +5,8 @@ import org.uniprot.core.DatabaseType;
 public final class DefaultDatabaseType implements DatabaseType {
     private String name;
 
-    private DefaultDatabaseType() {}
+    // no arg constructor for JSON deserialization
+    DefaultDatabaseType() {}
 
     public DefaultDatabaseType(String name) {
         this.name = name;

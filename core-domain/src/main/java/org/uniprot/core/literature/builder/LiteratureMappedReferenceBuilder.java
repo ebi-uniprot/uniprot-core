@@ -3,6 +3,8 @@ package org.uniprot.core.literature.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.impl.LiteratureMappedReferenceImpl;
@@ -24,49 +26,51 @@ public class LiteratureMappedReferenceBuilder
 
     private String annotation;
 
-    public LiteratureMappedReferenceBuilder uniprotAccession(UniProtAccession uniprotAccession) {
+    public @Nonnull LiteratureMappedReferenceBuilder uniprotAccession(
+            UniProtAccession uniprotAccession) {
         this.uniprotAccession = uniprotAccession;
         return this;
     }
 
-    public LiteratureMappedReferenceBuilder uniprotAccession(String uniprotAccession) {
+    public @Nonnull LiteratureMappedReferenceBuilder uniprotAccession(String uniprotAccession) {
         this.uniprotAccession = new UniProtAccessionImpl(Utils.emptyOrString(uniprotAccession));
         return this;
     }
 
-    public LiteratureMappedReferenceBuilder source(String source) {
+    public @Nonnull LiteratureMappedReferenceBuilder source(String source) {
         this.source = Utils.emptyOrString(source);
         return this;
     }
 
-    public LiteratureMappedReferenceBuilder sourceId(String sourceId) {
+    public @Nonnull LiteratureMappedReferenceBuilder sourceId(String sourceId) {
         this.sourceId = Utils.emptyOrString(sourceId);
         return this;
     }
 
-    public LiteratureMappedReferenceBuilder sourceCategory(List<String> sourceCategory) {
+    public @Nonnull LiteratureMappedReferenceBuilder sourceCategory(List<String> sourceCategory) {
         this.sourceCategory = Utils.modifiableList(sourceCategory);
         return this;
     }
 
-    public LiteratureMappedReferenceBuilder addSourceCategory(String sourceCategory) {
+    public @Nonnull LiteratureMappedReferenceBuilder addSourceCategory(String sourceCategory) {
         Utils.addOrIgnoreNull(sourceCategory, this.sourceCategory);
         return this;
     }
 
-    public LiteratureMappedReferenceBuilder annotation(String annotation) {
+    public @Nonnull LiteratureMappedReferenceBuilder annotation(String annotation) {
         this.annotation = Utils.emptyOrString(annotation);
         return this;
     }
 
     @Override
-    public LiteratureMappedReference build() {
+    public @Nonnull LiteratureMappedReference build() {
         return new LiteratureMappedReferenceImpl(
                 uniprotAccession, source, sourceId, sourceCategory, annotation);
     }
 
     @Override
-    public LiteratureMappedReferenceBuilder from(LiteratureMappedReference instance) {
+    public @Nonnull LiteratureMappedReferenceBuilder from(
+            @Nonnull LiteratureMappedReference instance) {
         return new LiteratureMappedReferenceBuilder()
                 .uniprotAccession(instance.getUniprotAccession())
                 .source(instance.getSource())

@@ -20,41 +20,41 @@ public class GeneBuilder implements Builder<GeneBuilder, Gene> {
     private List<OrderedLocusName> orderedLocusNames = new ArrayList<>();
     private List<ORFName> orfNames = new ArrayList<>();
 
-    public GeneBuilder geneName(GeneName geneName) {
+    public @Nonnull GeneBuilder geneName(GeneName geneName) {
         this.geneName = geneName;
         return this;
     }
 
-    public GeneBuilder addSynonyms(GeneNameSynonym synonym) {
+    public @Nonnull GeneBuilder addSynonyms(GeneNameSynonym synonym) {
         addOrIgnoreNull(synonym, this.synonyms);
         return this;
     }
 
-    public GeneBuilder synonyms(List<GeneNameSynonym> synonyms) {
+    public @Nonnull GeneBuilder synonyms(List<GeneNameSynonym> synonyms) {
         if (synonyms != null) {
             this.synonyms = modifiableList(synonyms);
         }
         return this;
     }
 
-    public GeneBuilder addOrderedLocusNames(OrderedLocusName orderedLocusName) {
+    public @Nonnull GeneBuilder addOrderedLocusNames(OrderedLocusName orderedLocusName) {
         addOrIgnoreNull(orderedLocusName, this.orderedLocusNames);
         return this;
     }
 
-    public GeneBuilder orderedLocusNames(List<OrderedLocusName> orderedLocusNames) {
+    public @Nonnull GeneBuilder orderedLocusNames(List<OrderedLocusName> orderedLocusNames) {
         if (orderedLocusNames != null) {
             this.orderedLocusNames = modifiableList(orderedLocusNames);
         }
         return this;
     }
 
-    public GeneBuilder addOrfNames(ORFName orfName) {
+    public @Nonnull GeneBuilder addOrfNames(ORFName orfName) {
         addOrIgnoreNull(orfName, this.orfNames);
         return this;
     }
 
-    public GeneBuilder orfNames(List<ORFName> orfNames) {
+    public @Nonnull GeneBuilder orfNames(List<ORFName> orfNames) {
         if (orfNames != null) {
             this.orfNames = modifiableList(orfNames);
         }

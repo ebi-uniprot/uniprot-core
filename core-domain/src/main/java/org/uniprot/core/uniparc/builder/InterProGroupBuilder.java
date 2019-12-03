@@ -1,34 +1,36 @@
 package org.uniprot.core.uniparc.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.impl.InterProGroupImpl;
 
 /**
  * @author jluo
  * @date: 23 May 2019
  */
-public class InterProGroupBuilder implements Builder<InterProGroupBuilder, InterproGroup> {
+public class InterProGroupBuilder implements Builder<InterProGroupBuilder, InterProGroup> {
     private String id;
     private String name;
 
     @Override
-    public InterproGroup build() {
+    public @Nonnull InterProGroup build() {
         return new InterProGroupImpl(id, name);
     }
 
-    public InterProGroupBuilder id(String id) {
+    public @Nonnull InterProGroupBuilder id(String id) {
         this.id = id;
         return this;
     }
 
-    public InterProGroupBuilder name(String name) {
+    public @Nonnull InterProGroupBuilder name(String name) {
         this.name = name;
         return this;
     }
 
     @Override
-    public InterProGroupBuilder from(InterproGroup instance) {
+    public @Nonnull InterProGroupBuilder from(@Nonnull InterProGroup instance) {
         this.id = instance.getId();
         this.name = instance.getName();
         return this;

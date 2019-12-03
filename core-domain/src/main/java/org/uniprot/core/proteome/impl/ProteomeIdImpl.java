@@ -13,7 +13,8 @@ public class ProteomeIdImpl extends ValueImpl implements ProteomeId {
 
     private static final long serialVersionUID = -2119733175394446567L;
 
-    private ProteomeIdImpl() {
+    // no arg constructor for JSON deserialization
+    ProteomeIdImpl() {
         super(null);
     }
 

@@ -25,17 +25,17 @@ public class DiseaseCommentBuilder
                 .molecule(instance.getMolecule());
     }
 
-    public DiseaseCommentBuilder molecule(String molecule) {
+    public @Nonnull DiseaseCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public DiseaseCommentBuilder disease(Disease disease) {
+    public @Nonnull DiseaseCommentBuilder disease(Disease disease) {
         this.disease = disease;
         return this;
     }
 
-    public DiseaseCommentBuilder note(Note note) {
+    public @Nonnull DiseaseCommentBuilder note(Note note) {
         this.note = note;
         return this;
     }

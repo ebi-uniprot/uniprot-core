@@ -30,7 +30,7 @@ public class EvidencedValueBuilder
     }
 
     @Override
-    protected EvidencedValueBuilder getThis() {
+    protected @Nonnull EvidencedValueBuilder getThis() {
         return this;
     }
 }

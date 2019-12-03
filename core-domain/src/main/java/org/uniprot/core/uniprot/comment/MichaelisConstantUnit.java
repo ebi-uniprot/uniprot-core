@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> {
@@ -16,7 +18,7 @@ public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> 
         this.name = name;
     }
 
-    public static MichaelisConstantUnit convert(String unit) {
+    public static @Nonnull MichaelisConstantUnit convert(@Nonnull String unit) {
         for (MichaelisConstantUnit value : MichaelisConstantUnit.values()) {
             if (value.name.equals(unit)) {
                 return value;
@@ -25,16 +27,16 @@ public enum MichaelisConstantUnit implements EnumDisplay<MichaelisConstantUnit> 
         throw new RuntimeException("unknown Michaelis Constant Unit: " + unit);
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getName();
     }
 
-    public String toDisplayNameString() {
+    public @Nonnull String toDisplayNameString() {
         return name;
     }
 }

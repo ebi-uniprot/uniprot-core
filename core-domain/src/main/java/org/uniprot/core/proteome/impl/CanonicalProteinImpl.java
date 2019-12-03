@@ -13,7 +13,8 @@ public class CanonicalProteinImpl implements CanonicalProtein {
     private Protein canonicalProtein;
     private List<Protein> relatedProteins;
 
-    private CanonicalProteinImpl() {
+    // no arg constructor for JSON deserialization
+    CanonicalProteinImpl() {
         relatedProteins = Collections.emptyList();
     }
 

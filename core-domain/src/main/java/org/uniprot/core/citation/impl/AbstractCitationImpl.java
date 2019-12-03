@@ -1,7 +1,7 @@
 package org.uniprot.core.citation.impl;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.uniprot.core.DBCrossReference;
@@ -16,11 +16,6 @@ public abstract class AbstractCitationImpl implements Citation {
     private List<DBCrossReference<CitationXrefType>> citationXrefs;
     private String title;
     private PublicationDate publicationDate;
-
-    private AbstractCitationImpl() {
-        this.authors = Collections.emptyList();
-        this.authoringGroup = Collections.emptyList();
-    }
 
     public AbstractCitationImpl(
             CitationType citationType,
@@ -117,21 +112,11 @@ public abstract class AbstractCitationImpl implements Citation {
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
         AbstractCitationImpl other = (AbstractCitationImpl) obj;
-        if (authoringGroup == null) {
-            if (other.authoringGroup != null) return false;
-        } else if (!authoringGroup.equals(other.authoringGroup)) return false;
-        if (authors == null) {
-            if (other.authors != null) return false;
-        } else if (!authors.equals(other.authors)) return false;
-        if (citationType != other.citationType) return false;
-        if (citationXrefs == null) {
-            if (other.citationXrefs != null) return false;
-        } else if (!citationXrefs.equals(other.citationXrefs)) return false;
-        if (publicationDate == null) {
-            if (other.publicationDate != null) return false;
-        } else if (!publicationDate.equals(other.publicationDate)) return false;
-        if (title == null) {
-            return other.title == null;
-        } else return title.equals(other.title);
+        return Objects.equals(this.authoringGroup, other.authoringGroup)
+                && Objects.equals(this.authors, other.authors)
+                && Objects.equals(this.citationType, other.citationType)
+                && Objects.equals(this.citationXrefs, other.citationXrefs)
+                && Objects.equals(this.publicationDate, other.publicationDate)
+                && Objects.equals(this.title, other.title);
     }
 }

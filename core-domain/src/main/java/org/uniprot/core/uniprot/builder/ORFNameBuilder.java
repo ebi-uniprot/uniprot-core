@@ -4,6 +4,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.gene.ORFName;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
@@ -20,12 +22,12 @@ public class ORFNameBuilder extends AbstractEvidencedValueBuilder<ORFNameBuilder
     }
 
     @Override
-    protected ORFNameBuilder getThis() {
+    protected @Nonnull ORFNameBuilder getThis() {
         return this;
     }
 
     @Override
-    public ORFName build() {
+    public @Nonnull ORFName build() {
         return new GeneImpl.ORFNameImpl(value, evidences);
     }
 }

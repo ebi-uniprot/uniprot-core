@@ -19,7 +19,7 @@ public class TaxonomyLineageImpl implements TaxonomyLineage {
 
     private boolean hidden;
 
-    private TaxonomyLineageImpl() {
+    TaxonomyLineageImpl() {
         this(0, null, null, false);
     }
 

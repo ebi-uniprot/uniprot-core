@@ -31,22 +31,22 @@ public final class CofactorCommentBuilder
                 .note(instance.getNote());
     }
 
-    public CofactorCommentBuilder molecule(String molecule) {
+    public @Nonnull CofactorCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public CofactorCommentBuilder addCofactor(Cofactor cofactors) {
+    public @Nonnull CofactorCommentBuilder addCofactor(Cofactor cofactors) {
         addOrIgnoreNull(cofactors, this.cofactors);
         return this;
     }
 
-    public CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
+    public @Nonnull CofactorCommentBuilder cofactors(List<Cofactor> cofactors) {
         this.cofactors = modifiableList(cofactors);
         return this;
     }
 
-    public CofactorCommentBuilder note(Note note) {
+    public @Nonnull CofactorCommentBuilder note(Note note) {
         this.note = note;
         return this;
     }

@@ -1,5 +1,7 @@
 package org.uniprot.core.uniparc.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniparc.impl.UniParcIdImpl;
@@ -14,12 +16,12 @@ public class UniParcIdBuilder extends AbstractValueBuilder<UniParcIdBuilder, Uni
     }
 
     @Override
-    public UniParcId build() {
+    public @Nonnull UniParcId build() {
         return new UniParcIdImpl(value);
     }
 
     @Override
-    protected UniParcIdBuilder getThis() {
+    protected @Nonnull UniParcIdBuilder getThis() {
         return this;
     }
 }

@@ -36,7 +36,8 @@ public class ProteomeEntryImpl implements ProteomeEntry {
     private List<CanonicalProtein> canonicalProteins;
     private String sourceDb;
 
-    private ProteomeEntryImpl() {
+    // no arg constructor for JSON deserialization
+    ProteomeEntryImpl() {
         dbXReferences = Collections.emptyList();
         components = Collections.emptyList();
         references = Collections.emptyList();
@@ -165,7 +166,7 @@ public class ProteomeEntryImpl implements ProteomeEntry {
 
     @Override
     public int getProteinCount() {
-        return components.stream().mapToInt(val -> val.getProteinCount()).sum();
+        return components.stream().mapToInt(Component::getProteinCount).sum();
     }
 
     @Override

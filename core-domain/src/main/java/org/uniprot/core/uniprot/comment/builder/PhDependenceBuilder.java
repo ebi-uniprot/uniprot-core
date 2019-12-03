@@ -4,6 +4,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.PhDependence;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -20,12 +22,12 @@ public class PhDependenceBuilder
     }
 
     @Override
-    protected PhDependenceBuilder getThis() {
+    protected @Nonnull PhDependenceBuilder getThis() {
         return this;
     }
 
     @Override
-    protected PhDependence createConcreteInstance() {
+    protected @Nonnull PhDependence createConcreteInstance() {
         return new BPCPCommentImpl.PhDependenceImpl(evidencedValues);
     }
 }

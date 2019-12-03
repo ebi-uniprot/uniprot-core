@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprot.taxonomy.OrganismName;
 
@@ -16,30 +18,30 @@ public abstract class AbstractOrganismNameBuilder<
     protected String commonName = "";
     protected List<String> synonyms = new ArrayList<>();
 
-    protected abstract B getThis();
+    protected abstract @Nonnull B getThis();
 
-    public B scientificName(String scientificName) {
+    public @Nonnull B scientificName(String scientificName) {
         this.scientificName = scientificName;
         return getThis();
     }
 
-    public B commonName(String commonName) {
+    public @Nonnull B commonName(String commonName) {
         this.commonName = commonName;
         return getThis();
     }
 
-    public B synonyms(List<String> synonyms) {
+    public @Nonnull B synonyms(List<String> synonyms) {
         this.synonyms = modifiableList(synonyms);
         return getThis();
     }
 
-    public B addSynonyms(String synonym) {
+    public @Nonnull B addSynonyms(String synonym) {
         addOrIgnoreNull(synonym, this.synonyms);
         return getThis();
     }
 
     @Override
-    public B from(T organismName) {
+    public @Nonnull B from(@Nonnull T organismName) {
         this.synonyms.clear();
         this.scientificName = organismName.getScientificName();
         this.commonName = organismName.getCommonName();

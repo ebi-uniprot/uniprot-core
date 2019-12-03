@@ -1,5 +1,7 @@
 package org.uniprot.core.citation.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.citation.Unpublished;
 import org.uniprot.core.citation.impl.UnpublishedImpl;
 
@@ -10,13 +12,13 @@ public final class UnpublishedBuilder
     }
 
     @Override
-    public UnpublishedBuilder from(Unpublished instance) {
+    public @Nonnull UnpublishedBuilder from(Unpublished instance) {
         init(instance);
         return this;
     }
 
     @Override
-    protected UnpublishedBuilder getThis() {
+    protected @Nonnull UnpublishedBuilder getThis() {
         return this;
     }
 }

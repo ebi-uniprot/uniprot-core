@@ -6,6 +6,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.UniParcId;
 import org.uniprot.core.uniprot.UniProtAccession;
@@ -35,43 +37,43 @@ public abstract class AbstractUniRefMemberBuilder<
     protected OverlapRegion overlapRegion;
     protected Boolean seed;
 
-    public B memberIdType(UniRefMemberIdType memberIdType) {
+    public @Nonnull B memberIdType(UniRefMemberIdType memberIdType) {
         this.memberIdType = memberIdType;
         return getThis();
     }
 
-    public B memberId(String memberId) {
+    public @Nonnull B memberId(String memberId) {
         this.memberId = memberId;
         return getThis();
     }
 
-    public B organismName(String organismName) {
+    public @Nonnull B organismName(String organismName) {
         this.organismName = organismName;
         return getThis();
     }
 
-    public B organismTaxId(long organismTaxId) {
+    public @Nonnull B organismTaxId(long organismTaxId) {
         this.organismTaxId = organismTaxId;
         return getThis();
     }
 
-    public B sequenceLength(int sequenceLength) {
+    public @Nonnull B sequenceLength(int sequenceLength) {
         this.sequenceLength = sequenceLength;
         return getThis();
     }
 
-    public B proteinName(String proteinName) {
+    public @Nonnull B proteinName(String proteinName) {
         this.proteinName = proteinName;
         return getThis();
     }
 
-    public B addAccession(UniProtAccession accession) {
+    public @Nonnull B addAccession(UniProtAccession accession) {
         addOrIgnoreNull(accession, this.accessions);
 
         return getThis();
     }
 
-    public B accessions(List<UniProtAccession> accessions) {
+    public @Nonnull B accessions(List<UniProtAccession> accessions) {
         if (accessions != null) {
             this.accessions = modifiableList(accessions);
         }
@@ -79,37 +81,37 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    public B uniref100Id(UniRefEntryId uniref100Id) {
+    public @Nonnull B uniref100Id(UniRefEntryId uniref100Id) {
         this.uniref100Id = uniref100Id;
         return getThis();
     }
 
-    public B uniref90Id(UniRefEntryId uniref90Id) {
+    public @Nonnull B uniref90Id(UniRefEntryId uniref90Id) {
         this.uniref90Id = uniref90Id;
         return getThis();
     }
 
-    public B uniref50Id(UniRefEntryId uniref50Id) {
+    public @Nonnull B uniref50Id(UniRefEntryId uniref50Id) {
         this.uniref50Id = uniref50Id;
         return getThis();
     }
 
-    public B uniparcId(UniParcId uniparcId) {
+    public @Nonnull B uniparcId(UniParcId uniparcId) {
         this.uniparcId = uniparcId;
         return getThis();
     }
 
-    public B overlapRegion(OverlapRegion overlapRegion) {
+    public @Nonnull B overlapRegion(OverlapRegion overlapRegion) {
         this.overlapRegion = overlapRegion;
         return getThis();
     }
 
-    public B isSeed(Boolean seed) {
+    public @Nonnull B isSeed(Boolean seed) {
         this.seed = seed;
         return getThis();
     }
 
-    protected void init(T instance) {
+    protected void init(@Nonnull T instance) {
         this.memberIdType(instance.getMemberIdType())
                 .memberId(instance.getMemberId())
                 .organismName(instance.getOrganismName())
@@ -125,5 +127,5 @@ public abstract class AbstractUniRefMemberBuilder<
                 .isSeed(instance.isSeed());
     }
 
-    protected abstract B getThis();
+    protected abstract @Nonnull B getThis();
 }

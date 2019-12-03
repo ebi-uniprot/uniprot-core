@@ -23,7 +23,7 @@ public class UniProtAccessionBuilder
     }
 
     @Override
-    protected UniProtAccessionBuilder getThis() {
+    protected @Nonnull UniProtAccessionBuilder getThis() {
         return this;
     }
 }

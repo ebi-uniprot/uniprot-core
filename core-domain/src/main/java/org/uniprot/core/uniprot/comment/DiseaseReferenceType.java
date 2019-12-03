@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
 
@@ -29,7 +31,7 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum
      *     type.
      */
-    public static DiseaseReferenceType typeOf(String value) {
+    public static @Nonnull DiseaseReferenceType typeOf(@Nonnull String value) {
         if (value != null)
             for (DiseaseReferenceType referenceType : DiseaseReferenceType.values()) {
                 if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
@@ -46,12 +48,12 @@ public enum DiseaseReferenceType implements DatabaseType, EnumDisplay<DiseaseRef
      *
      * @return the name of the source
      */
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return displayName;
     }
 
     @Override
-    public String getName() {
+    public @Nonnull String getName() {
         return displayName;
     }
 }

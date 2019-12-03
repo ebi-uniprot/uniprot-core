@@ -4,6 +4,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.gene.GeneNameSynonym;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
@@ -21,12 +23,12 @@ public class GeneNameSynonymBuilder
     }
 
     @Override
-    protected GeneNameSynonymBuilder getThis() {
+    protected @Nonnull GeneNameSynonymBuilder getThis() {
         return this;
     }
 
     @Override
-    public GeneNameSynonym build() {
+    public @Nonnull GeneNameSynonym build() {
         return new GeneImpl.GeneNameSynonymImpl(value, evidences);
     }
 }

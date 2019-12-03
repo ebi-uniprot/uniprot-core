@@ -2,6 +2,8 @@ package org.uniprot.core.uniprot.comment.impl;
 
 import java.util.*;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -50,7 +52,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
     }
 
     @Override
-    public CommentType getCommentType() {
+    public @Nonnull CommentType getCommentType() {
         return commentType;
     }
 
@@ -69,7 +71,7 @@ public class FreeTextCommentImpl extends FreeTextImpl implements FreeTextComment
     }
 
     @Override
-    public String getMolecule() {
+    public @Nonnull String getMolecule() {
         return molecule;
     }
 }

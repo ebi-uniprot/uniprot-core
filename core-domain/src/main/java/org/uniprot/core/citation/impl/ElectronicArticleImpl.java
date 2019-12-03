@@ -3,6 +3,7 @@ package org.uniprot.core.citation.impl;
 import static java.util.Collections.emptyList;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
@@ -13,7 +14,8 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
     private Journal journal;
     private Locator locator;
 
-    private ElectronicArticleImpl() {
+    // no arg constructor for JSON deserialization
+    ElectronicArticleImpl() {
         this(emptyList(), emptyList(), emptyList(), null, null, null, null);
     }
 
@@ -73,18 +75,15 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
         if (!super.equals(obj)) return false;
         if (getClass() != obj.getClass()) return false;
         ElectronicArticleImpl other = (ElectronicArticleImpl) obj;
-        if (journal == null) {
-            if (other.journal != null) return false;
-        } else if (!journal.equals(other.journal)) return false;
-        if (locator == null) {
-            return other.locator == null;
-        } else return locator.equals(other.locator);
+        return Objects.equals(this.journal, other.journal)
+                && Objects.equals(this.locator, other.locator);
     }
 
     public static class LocatorImpl implements Locator {
         private String value;
 
-        private LocatorImpl() {}
+        // no arg constructor for JSON deserialization
+        LocatorImpl() {}
 
         public LocatorImpl(String value) {
             this.value = value;
@@ -115,9 +114,7 @@ public class ElectronicArticleImpl extends AbstractCitationImpl implements Elect
             if (obj == null) return false;
             if (getClass() != obj.getClass()) return false;
             LocatorImpl other = (LocatorImpl) obj;
-            if (value == null) {
-                return other.value == null;
-            } else return value.equals(other.value);
+            return Objects.equals(this.value, other.value);
         }
     }
 }

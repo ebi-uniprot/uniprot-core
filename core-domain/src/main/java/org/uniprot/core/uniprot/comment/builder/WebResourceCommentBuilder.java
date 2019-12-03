@@ -26,7 +26,7 @@ public final class WebResourceCommentBuilder
                 .molecule(instance.getMolecule());
     }
 
-    public WebResourceCommentBuilder molecule(String molecule) {
+    public @Nonnull WebResourceCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }

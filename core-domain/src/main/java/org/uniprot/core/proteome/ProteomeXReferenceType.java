@@ -1,5 +1,7 @@
 package org.uniprot.core.proteome;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
 
@@ -18,16 +20,16 @@ public enum ProteomeXReferenceType implements DatabaseType, EnumDisplay<Proteome
     }
 
     @Override
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getName();
     }
 
-    public static ProteomeXReferenceType fromValue(String type) {
+    public static @Nonnull ProteomeXReferenceType fromValue(@Nonnull String type) {
         for (ProteomeXReferenceType gnType : ProteomeXReferenceType.values()) {
             if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }

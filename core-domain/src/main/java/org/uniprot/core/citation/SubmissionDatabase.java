@@ -1,5 +1,7 @@
 package org.uniprot.core.citation;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
@@ -16,9 +18,9 @@ public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
         this.name = name;
     }
 
-    public static SubmissionDatabase typeOf(String name) {
+    public static @Nonnull SubmissionDatabase typeOf(@Nonnull String name) {
         for (SubmissionDatabase submissionDatabase : SubmissionDatabase.values()) {
-            if (submissionDatabase.getName().equals(name)) {
+            if (submissionDatabase.getName().equalsIgnoreCase(name)) {
                 return submissionDatabase;
             }
         }
@@ -26,12 +28,12 @@ public enum SubmissionDatabase implements EnumDisplay<SubmissionDatabase> {
                 "the feature with the description " + name + " doesn't exist");
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getName();
     }
 }

@@ -43,37 +43,37 @@ public final class InteractionBuilder implements Builder<InteractionBuilder, Int
         return this;
     }
 
-    public InteractionBuilder interactionType(InteractionType type) {
+    public @Nonnull InteractionBuilder interactionType(InteractionType type) {
         this.type = type;
         return this;
     }
 
-    public InteractionBuilder geneName(String geneName) {
+    public @Nonnull InteractionBuilder geneName(String geneName) {
         this.geneName = geneName;
         return this;
     }
 
-    public InteractionBuilder numberOfExperiments(int nbExp) {
+    public @Nonnull InteractionBuilder numberOfExperiments(int nbExp) {
         this.numberOfExperiments = nbExp;
         return this;
     }
 
-    public InteractionBuilder firstInteractor(String firstInteractor) {
+    public @Nonnull InteractionBuilder firstInteractor(String firstInteractor) {
         this.firstInteractor = new InteractionImpl.InteractorImpl(firstInteractor);
         return this;
     }
 
-    public InteractionBuilder secondInteractor(String secondInteractor) {
+    public @Nonnull InteractionBuilder secondInteractor(String secondInteractor) {
         this.secondInteractor = new InteractionImpl.InteractorImpl(secondInteractor);
         return this;
     }
 
-    public InteractionBuilder uniProtAccession(UniProtAccession uniprotAccession) {
+    public @Nonnull InteractionBuilder uniProtAccession(UniProtAccession uniprotAccession) {
         this.uniProtAccession = uniprotAccession;
         return this;
     }
 
-    public InteractionBuilder uniProtAccession(String uniProtAccession) {
+    public @Nonnull InteractionBuilder uniProtAccession(String uniProtAccession) {
         this.uniProtAccession = new UniProtAccessionImpl(uniProtAccession);
         return this;
     }

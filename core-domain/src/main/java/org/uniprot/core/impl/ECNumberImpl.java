@@ -10,7 +10,8 @@ public class ECNumberImpl implements ECNumber {
     private static final long serialVersionUID = -9050725609382601827L;
     private String value;
 
-    private ECNumberImpl() {
+    // no arg constructor for JSON deserialization
+    ECNumberImpl() {
         this.value = "";
     }
 

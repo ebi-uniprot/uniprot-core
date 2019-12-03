@@ -5,6 +5,8 @@ import static org.uniprot.core.uniprot.evidence.impl.EvidenceImpl.REFERENCE;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -20,11 +22,11 @@ import org.uniprot.core.uniprot.evidence.builder.EvidenceBuilder;
 public class EvidenceHelper {
     private static final String REF_PREFIX = "Ref.";
 
-    public static List<Evidence> parseEvidenceLines(List<String> evStrs) {
+    public static @Nonnull List<Evidence> parseEvidenceLines(@Nonnull List<String> evStrs) {
         return evStrs.stream().map(EvidenceHelper::parseEvidenceLine).collect(Collectors.toList());
     }
 
-    public static Evidence parseEvidenceLine(String val) {
+    public static @Nonnull Evidence parseEvidenceLine(@Nonnull String val) {
         String[] token = val.split("\\|");
         String code = token[0];
         DBCrossReference<EvidenceType> xref = null;

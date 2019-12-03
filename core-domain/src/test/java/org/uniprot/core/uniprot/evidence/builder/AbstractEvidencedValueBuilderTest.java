@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.EvidenceCode;
@@ -109,18 +111,18 @@ public class AbstractEvidencedValueBuilderTest {
             extends AbstractEvidencedValueBuilder<
                     TestableEvidencedValueBuilder, EvidencedValueImpl> {
         @Override
-        public EvidencedValueImpl build() {
-            return new EvidencedValueImpl(this.getValue(), this.getEvidences());
+        public @Nonnull EvidencedValueImpl build() {
+            return new EvidencedValueImpl(this.value, this.evidences);
         }
 
         @Override
-        public TestableEvidencedValueBuilder from(EvidencedValueImpl instance) {
+        public @Nonnull TestableEvidencedValueBuilder from(@Nonnull EvidencedValueImpl instance) {
             super.from(instance);
             return this;
         }
 
         @Override
-        protected TestableEvidencedValueBuilder getThis() {
+        protected @Nonnull TestableEvidencedValueBuilder getThis() {
             return this;
         }
     }

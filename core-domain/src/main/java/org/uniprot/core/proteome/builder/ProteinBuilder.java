@@ -1,5 +1,7 @@
 package org.uniprot.core.proteome.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.GeneNameType;
 import org.uniprot.core.proteome.Protein;
@@ -15,46 +17,46 @@ public class ProteinBuilder implements Builder<ProteinBuilder, Protein> {
     private String geneName;
     private GeneNameType geneNameType;
 
-    public static ProteinBuilder newInstance() {
+    public static @Nonnull ProteinBuilder newInstance() {
         return new ProteinBuilder();
     }
 
     @Override
-    public Protein build() {
+    public @Nonnull Protein build() {
         return new ProteinImpl(accession, entryType, sequenceLength, geneName, geneNameType);
     }
 
-    public ProteinBuilder accession(String accession) {
+    public @Nonnull ProteinBuilder accession(String accession) {
         return accession(new UniProtAccessionBuilder(accession).build());
     }
 
-    public ProteinBuilder accession(UniProtAccession accession) {
+    public @Nonnull ProteinBuilder accession(UniProtAccession accession) {
         this.accession = accession;
         return this;
     }
 
-    public ProteinBuilder entryType(UniProtEntryType entryType) {
+    public @Nonnull ProteinBuilder entryType(UniProtEntryType entryType) {
         this.entryType = entryType;
         return this;
     }
 
-    public ProteinBuilder sequenceLength(long sequenceLength) {
+    public @Nonnull ProteinBuilder sequenceLength(long sequenceLength) {
         this.sequenceLength = sequenceLength;
         return this;
     }
 
-    public ProteinBuilder geneName(String geneName) {
+    public @Nonnull ProteinBuilder geneName(String geneName) {
         this.geneName = geneName;
         return this;
     }
 
-    public ProteinBuilder geneNameType(GeneNameType geneNameType) {
+    public @Nonnull ProteinBuilder geneNameType(GeneNameType geneNameType) {
         this.geneNameType = geneNameType;
         return this;
     }
 
     @Override
-    public ProteinBuilder from(Protein instance) {
+    public @Nonnull ProteinBuilder from(@Nonnull Protein instance) {
         this.accession = instance.getAccession();
         this.entryType = instance.getEntryType();
         this.sequenceLength = instance.getSequenceLength();

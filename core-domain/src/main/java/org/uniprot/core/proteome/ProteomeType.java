@@ -1,5 +1,7 @@
 package org.uniprot.core.proteome;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum ProteomeType implements EnumDisplay<ProteomeType> {
@@ -15,12 +17,12 @@ public enum ProteomeType implements EnumDisplay<ProteomeType> {
         this.name = name;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return getName();
     }
 }

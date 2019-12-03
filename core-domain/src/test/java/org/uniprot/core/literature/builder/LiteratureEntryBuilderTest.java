@@ -9,6 +9,7 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.ObjectsForTests;
 import org.uniprot.core.citation.impl.AuthorImpl;
+import org.uniprot.core.citation.impl.JournalImpl;
 import org.uniprot.core.literature.LiteratureEntry;
 
 /** @author lgonzales */
@@ -94,5 +95,27 @@ class LiteratureEntryBuilderTest {
                 Matchers.contains(createCompleteLiteratureMappedReference()));
 
         assertFalse(entry.isCompleteAuthorList());
+    }
+
+    @Test
+    void canAddJEntry() {
+        LiteratureEntry entry =
+                new LiteratureEntryBuilder().journal(new JournalImpl("name")).build();
+        assertTrue(entry.hasJournal());
+    }
+
+    @Test
+    void canCreateBuilderFromInstance() {
+        LiteratureEntry obj = new LiteratureEntryBuilder().build();
+        LiteratureEntryBuilder builder = new LiteratureEntryBuilder().from(obj);
+        assertNotNull(builder);
+    }
+
+    @Test
+    void defaultBuild_objsAreEqual() {
+        LiteratureEntry obj = new LiteratureEntryBuilder().build();
+        LiteratureEntry obj2 = new LiteratureEntryBuilder().build();
+        assertTrue(obj.equals(obj2) && obj2.equals(obj));
+        assertEquals(obj.hashCode(), obj2.hashCode());
     }
 }

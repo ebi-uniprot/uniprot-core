@@ -11,7 +11,7 @@ public class TaxonomyStatisticsImpl implements TaxonomyStatistics {
     private long referenceProteomeCount;
     private long completeProteomeCount;
 
-    private TaxonomyStatisticsImpl() {
+    TaxonomyStatisticsImpl() {
         this(0, 0, 0, 0);
     }
 

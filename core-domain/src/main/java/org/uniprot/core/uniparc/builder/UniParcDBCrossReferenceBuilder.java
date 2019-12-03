@@ -2,6 +2,8 @@ package org.uniprot.core.uniparc.builder;
 
 import java.time.LocalDate;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractDBCrossReferenceBuilder;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabaseType;
@@ -21,38 +23,38 @@ public class UniParcDBCrossReferenceBuilder
     private LocalDate lastUpdated;
 
     @Override
-    public UniParcDBCrossReference build() {
+    public @Nonnull UniParcDBCrossReference build() {
         return new UniParcDBCrossReferenceImpl(
                 databaseType, id, properties, versionI, version, active, created, lastUpdated);
     }
 
-    public UniParcDBCrossReferenceBuilder versionI(int versionI) {
+    public @Nonnull UniParcDBCrossReferenceBuilder versionI(int versionI) {
         this.versionI = versionI;
         return this;
     }
 
-    public UniParcDBCrossReferenceBuilder version(Integer version) {
+    public @Nonnull UniParcDBCrossReferenceBuilder version(Integer version) {
         this.version = version;
         return this;
     }
 
-    public UniParcDBCrossReferenceBuilder active(boolean active) {
+    public @Nonnull UniParcDBCrossReferenceBuilder active(boolean active) {
         this.active = active;
         return this;
     }
 
-    public UniParcDBCrossReferenceBuilder created(LocalDate created) {
+    public @Nonnull UniParcDBCrossReferenceBuilder created(LocalDate created) {
         this.created = created;
         return this;
     }
 
-    public UniParcDBCrossReferenceBuilder lastUpdated(LocalDate lastUpdated) {
+    public @Nonnull UniParcDBCrossReferenceBuilder lastUpdated(LocalDate lastUpdated) {
         this.lastUpdated = lastUpdated;
         return this;
     }
 
     @Override
-    public UniParcDBCrossReferenceBuilder from(UniParcDBCrossReference instance) {
+    public @Nonnull UniParcDBCrossReferenceBuilder from(@Nonnull UniParcDBCrossReference instance) {
         return super.from(instance)
                 .versionI(instance.getVersionI())
                 .version(instance.getVersion())

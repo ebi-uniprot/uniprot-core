@@ -146,4 +146,56 @@ class UniParcEntryBuilderTest {
         assertEquals(seqFeatures, entry3.getSequenceFeatures());
         assertEquals(taxonomies, entry3.getTaxonomies());
     }
+
+    @Test
+    void canAddIdFromString() {
+        UniParcEntry entry = new UniParcEntryBuilder().uniParcId("abc").build();
+        assertEquals("abc", entry.getUniParcId().getValue());
+    }
+
+    @Test
+    void canAddSingleDatabaseCrossReference() {
+        UniParcEntry obj =
+                new UniParcEntryBuilder()
+                        .addDatabaseCrossReference(uniParcDBCrossReferences().get(0))
+                        .build();
+        assertNotNull(obj.getDbXReferences());
+        assertFalse(obj.getDbXReferences().isEmpty());
+    }
+
+    @Test
+    void nullDatabaseCrossReference_willBeIgnore() {
+        UniParcEntry obj = new UniParcEntryBuilder().addDatabaseCrossReference(null).build();
+        assertNotNull(obj.getDbXReferences());
+        assertTrue(obj.getDbXReferences().isEmpty());
+    }
+
+    @Test
+    void canAddSingleSequenceFeature() {
+        UniParcEntry obj =
+                new UniParcEntryBuilder().addSequenceFeature(sequenceFeatures().get(0)).build();
+        assertNotNull(obj.getSequenceFeatures());
+        assertFalse(obj.getSequenceFeatures().isEmpty());
+    }
+
+    @Test
+    void nullSequenceFeature_willBeIgnore() {
+        UniParcEntry obj = new UniParcEntryBuilder().addSequenceFeature(null).build();
+        assertNotNull(obj.getSequenceFeatures());
+        assertTrue(obj.getSequenceFeatures().isEmpty());
+    }
+
+    @Test
+    void canAddSingleTaxonomy() {
+        UniParcEntry obj = new UniParcEntryBuilder().addTaxonomy(taxonomies().get(0)).build();
+        assertNotNull(obj.getTaxonomies());
+        assertFalse(obj.getTaxonomies().isEmpty());
+    }
+
+    @Test
+    void nullTaxonomy_willBeIgnore() {
+        UniParcEntry obj = new UniParcEntryBuilder().addTaxonomy(null).build();
+        assertNotNull(obj.getTaxonomies());
+        assertTrue(obj.getTaxonomies().isEmpty());
+    }
 }

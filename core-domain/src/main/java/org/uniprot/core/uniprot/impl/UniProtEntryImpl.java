@@ -72,7 +72,8 @@ public class UniProtEntryImpl implements UniProtEntry {
     private EntryInactiveReason inactiveReason;
     private List<TaxonomyLineage> lineages;
 
-    private UniProtEntryImpl() {
+    // no arg constructor for JSON deserialization
+    UniProtEntryImpl() {
         secondaryAccessions = Collections.emptyList();
         organismHosts = Collections.emptyList();
         genes = Collections.emptyList();
@@ -83,79 +84,6 @@ public class UniProtEntryImpl implements UniProtEntry {
         geneLocations = Collections.emptyList();
         keywords = Collections.emptyList();
         lineages = Collections.emptyList();
-    }
-
-    public UniProtEntryImpl(
-            UniProtAccession primaryAccession,
-            UniProtId uniProtId,
-            EntryInactiveReason inactiveReason) {
-        this(
-                UniProtEntryType.UNKNOWN,
-                primaryAccession,
-                null,
-                uniProtId,
-                null,
-                0,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                inactiveReason);
-    }
-
-    public UniProtEntryImpl(
-            UniProtEntryType entryType,
-            UniProtAccession primaryAccession,
-            List<UniProtAccession> secondaryAccessions,
-            UniProtId uniProtId,
-            EntryAudit entryAudit,
-            double annotationScore,
-            Organism organism,
-            List<OrganismHost> organismHosts,
-            ProteinExistence proteinExistence,
-            ProteinDescription proteinDescription,
-            List<Gene> genes,
-            List<Comment> comments,
-            List<Feature> features,
-            List<GeneLocation> geneLocations,
-            List<Keyword> keywords,
-            List<UniProtReference> references,
-            List<UniProtDBCrossReference> databaseCrossReferences,
-            Sequence sequence,
-            InternalSection internalSection,
-            List<TaxonomyLineage> lineages) {
-        this(
-                entryType,
-                primaryAccession,
-                secondaryAccessions,
-                uniProtId,
-                entryAudit,
-                annotationScore,
-                organism,
-                organismHosts,
-                proteinExistence,
-                proteinDescription,
-                genes,
-                comments,
-                features,
-                geneLocations,
-                keywords,
-                references,
-                databaseCrossReferences,
-                sequence,
-                internalSection,
-                lineages,
-                null);
     }
 
     public UniProtEntryImpl(

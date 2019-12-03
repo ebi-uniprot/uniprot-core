@@ -4,6 +4,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.IsoformName;
 import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
@@ -24,12 +26,12 @@ public class IsoformNameBuilder
     }
 
     @Override
-    public IsoformName build() {
+    public @Nonnull IsoformName build() {
         return new APIsoformImpl.IsoformNameImpl(value, evidences);
     }
 
     @Override
-    protected IsoformNameBuilder getThis() {
+    protected @Nonnull IsoformNameBuilder getThis() {
         return this;
     }
 }

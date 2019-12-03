@@ -31,7 +31,8 @@ public class LiteratureEntryImpl implements LiteratureEntry {
     private List<LiteratureMappedReference> literatureMappedReferences;
     private LiteratureStatistics statistics;
 
-    private LiteratureEntryImpl() {
+    // no arg constructor for JSON deserialization
+    LiteratureEntryImpl() {
         this(null, null, null, null, null, false, null, null, null, null, null, null, null, null);
     }
 

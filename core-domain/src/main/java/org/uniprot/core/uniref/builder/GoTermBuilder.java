@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.GoTerm;
 import org.uniprot.core.uniref.GoTermType;
@@ -15,22 +17,22 @@ public class GoTermBuilder implements Builder<GoTermBuilder, GoTerm> {
     private String id;
 
     @Override
-    public GoTerm build() {
+    public @Nonnull GoTerm build() {
         return new GoTermImpl(type, id);
     }
 
-    public GoTermBuilder type(GoTermType type) {
+    public @Nonnull GoTermBuilder type(GoTermType type) {
         this.type = type;
         return this;
     }
 
-    public GoTermBuilder id(String id) {
+    public @Nonnull GoTermBuilder id(String id) {
         this.id = id;
         return this;
     }
 
     @Override
-    public GoTermBuilder from(GoTerm instance) {
+    public GoTermBuilder from(@Nonnull GoTerm instance) {
         return this.type(instance.getType()).id(instance.getId());
     }
 }
