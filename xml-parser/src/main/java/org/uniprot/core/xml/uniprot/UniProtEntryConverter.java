@@ -239,7 +239,10 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
 
     private UniProtEntryBuilder createUniprotEntryBuilderFromXml(Entry xmlEntry) {
         List<String> accessions = xmlEntry.getAccession();
-        return new UniProtEntryBuilder (accessions.get(0), xmlEntry.getName().get(0), UniProtEntryType.typeOf(xmlEntry.getDataset()))
+        return new UniProtEntryBuilder(
+                        accessions.get(0),
+                        xmlEntry.getName().get(0),
+                        UniProtEntryType.typeOf(xmlEntry.getDataset()))
                 .proteinExistence(ProteinExistence.typeOf(xmlEntry.getProteinExistence().getType()))
                 .secondaryAccessionsSet(
                         accessions.subList(1, accessions.size()).stream()

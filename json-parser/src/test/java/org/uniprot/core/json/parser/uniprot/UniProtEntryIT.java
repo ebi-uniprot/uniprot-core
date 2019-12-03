@@ -65,7 +65,11 @@ class UniProtEntryIT {
         comments.add(WebResourceCommentTest.getWebResourceComment());
 
         UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();
-        UniProtEntryBuilder builder = new UniProtEntryBuilder(UniProtAccessionTest.getUniProtAccession(), uniProtId, UniProtEntryType.SWISSPROT);
+        UniProtEntryBuilder builder =
+                new UniProtEntryBuilder(
+                        UniProtAccessionTest.getUniProtAccession(),
+                        uniProtId,
+                        UniProtEntryType.SWISSPROT);
         UniProtEntry entry =
                 builder.secondaryAccessionAdd(UniProtAccessionTest.getUniProtAccession())
                         .entryAudit(EntryAuditTest.getEntryAudit())
@@ -74,7 +78,8 @@ class UniProtEntryIT {
                         .genesSet(Collections.singletonList(GeneTest.createCompleteGene()))
                         .annotationScore(2)
                         .organism(OrganimsTest.getOrganism())
-                        .organismHostsSet(Collections.singletonList(OrganimHostTest.getOrganismHost()))
+                        .organismHostsSet(
+                                Collections.singletonList(OrganimHostTest.getOrganismHost()))
                         .commentsSet(comments)
                         .featuresSet(Collections.singletonList(FeatureTest.getFeature()))
                         .internalSection(InternalSectionTest.getInternalSection())

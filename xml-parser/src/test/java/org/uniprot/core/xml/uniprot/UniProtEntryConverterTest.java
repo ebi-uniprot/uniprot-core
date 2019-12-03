@@ -105,7 +105,8 @@ class UniProtEntryConverterTest {
                         .build());
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
         Sequence sequence = new SequenceBuilder(value).build();
-        UniProtEntry entry = new UniProtEntryBuilder("P12345", "P12345_HUMAN", UniProtEntryType.TREMBL)
+        UniProtEntry entry =
+                new UniProtEntryBuilder("P12345", "P12345_HUMAN", UniProtEntryType.TREMBL)
                         .secondaryAccessionsSet(secondaryAccessions)
                         .organism(createOrganism())
                         .organismHostsSet(createOrganismHosts())

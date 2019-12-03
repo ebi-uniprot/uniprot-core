@@ -83,7 +83,9 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         clear();
         Map.Entry<UniProtId, UniProtEntryType> ids = idLineConverter.convert(f.id);
         UniProtAcLineObject acLineObj = acLineConverter.convert(f.ac);
-        UniProtEntryBuilder activeEntryBuilder = new UniProtEntryBuilder(acLineObj.getPrimaryAccession(), ids.getKey(), ids.getValue())
+        UniProtEntryBuilder activeEntryBuilder =
+                new UniProtEntryBuilder(
+                                acLineObj.getPrimaryAccession(), ids.getKey(), ids.getValue())
                         .secondaryAccessionsSet(acLineObj.getSecondAccessions())
                         .entryAudit(dtLineConverter.convert(f.dt));
         if (f.cc != null) activeEntryBuilder.commentsSet(ccLineConverter.convert(f.cc));
