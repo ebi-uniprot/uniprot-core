@@ -51,7 +51,6 @@ class UniProtEntryConverterTest {
 
     @Test
     void test() {
-        UniProtEntryBuilder builder = new UniProtEntryBuilder();
         List<UniProtAccession> secondaryAccessions = new ArrayList<>();
         secondaryAccessions.add(new UniProtAccessionBuilder("P23456").build());
         secondaryAccessions.add(new UniProtAccessionBuilder("P23457").build());
@@ -106,23 +105,19 @@ class UniProtEntryConverterTest {
                         .build());
         String value = "MSSPASTPSRRSSRRGRVTPTQSLRSEESRSSPNRRRRGE";
         Sequence sequence = new SequenceBuilder(value).build();
-        UniProtEntry entry =
-                builder.primaryAccession(new UniProtAccessionBuilder("P12345").build())
-                        .uniProtId(new UniProtIdBuilder("P12345_HUMAN").build())
-                        .active()
-                        .entryType(UniProtEntryType.TREMBL)
-                        .secondaryAccessions(secondaryAccessions)
+        UniProtEntry entry = new UniProtEntryBuilder("P12345", "P12345_HUMAN", UniProtEntryType.TREMBL)
+                        .secondaryAccessionsSet(secondaryAccessions)
                         .organism(createOrganism())
-                        .organismHosts(createOrganismHosts())
+                        .organismHostsSet(createOrganismHosts())
                         .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                         .entryAudit(entryAudit)
-                        .geneLocations(organelles)
-                        .databaseCrossReferences(createDbXref())
-                        .keywords(keywords)
+                        .geneLocationsSet(organelles)
+                        .databaseCrossReferencesSet(createDbXref())
+                        .keywordsSet(keywords)
                         .proteinDescription(createProteinDescription())
-                        .genes(singletonList(createGene()))
-                        .comments(createComments())
-                        .features(createFeatures())
+                        .genesSet(singletonList(createGene()))
+                        .commentsSet(createComments())
+                        .featuresSet(createFeatures())
                         .sequence(sequence)
                         .build();
         UniProtEntryConverter converter = new UniProtEntryConverter();

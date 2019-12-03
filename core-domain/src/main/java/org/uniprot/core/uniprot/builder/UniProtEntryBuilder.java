@@ -1,10 +1,8 @@
 package org.uniprot.core.uniprot.builder;
 
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
@@ -19,375 +17,271 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
-/**
- * A staged builder that guides a user when creating a {@link UniProtEntry} instance. For example,
- * the accession must be supplied first, after which the ID must be added. After this, one chooses
- * the entry type. Many fields can be set for the usual Swiss-Prot/TrEMBL entry types. However,
- * inactive entries have only a single field available for setting; the inactive reason.
- *
- * @author lgonzales
- */
-public class UniProtEntryBuilder {
-
-    public EntryBuilder from(UniProtEntry instance) {
-        return new EntryBuilder(instance.getPrimaryAccession()).from(instance);
-    }
-
-    public UniProtIdBuilder primaryAccession(UniProtAccession primaryAccession) {
-        return new EntryBuilder(primaryAccession);
-    }
-
-    public interface UniProtIdBuilder {
-        Status uniProtId(UniProtId uniProtId);
-    }
-
-    public interface Status {
-        ActiveEntryBuilder active();
-
-        InactiveEntryBuilder inactive();
-    }
-
-    public interface ActiveEntryBuilder extends Builder<EntryBuilder, UniProtEntry> {
-        ActiveEntryBuilder entryType(UniProtEntryType entryType);
-
-        ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession);
-
-        ActiveEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions);
-
-        ActiveEntryBuilder entryAudit(EntryAudit entryAudit);
-
-        ActiveEntryBuilder annotationScore(double annotationScore);
-
-        ActiveEntryBuilder organism(Organism organism);
-
-        ActiveEntryBuilder addOrganismHost(OrganismHost organismHost);
-
-        ActiveEntryBuilder organismHosts(List<OrganismHost> organismHosts);
-
-        ActiveEntryBuilder proteinExistence(ProteinExistence proteinExistence);
-
-        ActiveEntryBuilder proteinDescription(ProteinDescription proteinDescription);
-
-        ActiveEntryBuilder addGene(Gene gene);
-
-        ActiveEntryBuilder genes(List<Gene> genes);
-
-        ActiveEntryBuilder addComment(Comment comment);
-
-        ActiveEntryBuilder comments(List<Comment> comments);
-
-        ActiveEntryBuilder addFeature(Feature feature);
-
-        ActiveEntryBuilder features(List<Feature> features);
-
-        ActiveEntryBuilder addGeneLocation(GeneLocation geneLocation);
-
-        ActiveEntryBuilder geneLocations(List<GeneLocation> geneLocations);
-
-        ActiveEntryBuilder addKeyword(Keyword keyword);
-
-        ActiveEntryBuilder keywords(List<Keyword> keywords);
-
-        ActiveEntryBuilder addReference(UniProtReference reference);
-
-        ActiveEntryBuilder references(List<UniProtReference> references);
-
-        ActiveEntryBuilder addDatabaseCrossReference(
-                UniProtDBCrossReference databaseCrossReference);
-
-        ActiveEntryBuilder databaseCrossReferences(
-                List<UniProtDBCrossReference> databaseCrossReferences);
-
-        ActiveEntryBuilder sequence(Sequence sequence);
-
-        ActiveEntryBuilder internalSection(InternalSection internalSection);
-
-        ActiveEntryBuilder addLineage(TaxonomyLineage lineage);
-
-        ActiveEntryBuilder lineages(List<TaxonomyLineage> lineages);
-    }
-
-    public interface InactiveEntryBuilder extends Builder<EntryBuilder, UniProtEntry> {
-        InactiveEntryBuilder inactiveReason(EntryInactiveReason inactiveReason);
-    }
-
-    private class EntryBuilder extends UniProtEntryBuilder
-            implements UniProtIdBuilder, ActiveEntryBuilder, InactiveEntryBuilder, Status {
-        private UniProtAccession primaryAccession;
-        private UniProtEntryType entryType = null;
-        private List<UniProtAccession> secondaryAccessions = new ArrayList<>();
-        private UniProtId uniProtId = null;
-        private EntryAudit entryAudit = null;
-        private double annotationScore;
-        private Organism organism = null;
-        private List<OrganismHost> organismHosts = new ArrayList<>();
-        private ProteinExistence proteinExistence = null;
-        private ProteinDescription proteinDescription = null;
-        private List<Gene> genes = new ArrayList<>();
-        private List<Comment> comments = new ArrayList<>();
-        private List<Feature> features = new ArrayList<>();
-        private List<GeneLocation> geneLocations = new ArrayList<>();
-        private List<Keyword> keywords = new ArrayList<>();
-        private List<UniProtReference> references = new ArrayList<>();
-        private List<UniProtDBCrossReference> databaseCrossReferences = new ArrayList<>();
-        private Sequence sequence = null;
-        private InternalSection internalSection = null;
-        private EntryInactiveReason inactiveReason = null;
-        private boolean active = true;
-        private List<TaxonomyLineage> lineages;
-
-        private EntryBuilder(UniProtAccession primaryAccession) {
-            this.primaryAccession = primaryAccession;
-        }
-
-        @Override
-        public Status uniProtId(UniProtId uniProtId) {
-            this.uniProtId = uniProtId;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder active() {
-            this.active = true;
-            return this;
-        }
-
-        @Override
-        public InactiveEntryBuilder inactive() {
-            this.active = false;
-            this.entryType = UniProtEntryType.INACTIVE;
-            return this;
-        }
-
-        @Override
-        public InactiveEntryBuilder inactiveReason(EntryInactiveReason inactiveReason) {
-            this.inactiveReason = inactiveReason;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder entryType(UniProtEntryType entryType) {
-            if (active && entryType == UniProtEntryType.INACTIVE) {
-                throw new IllegalArgumentException("Cannot set an active entry to be inactive.");
-            }
-            this.entryType = entryType;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addSecondaryAccession(UniProtAccession secondaryAccession) {
-            addOrIgnoreNull(secondaryAccession, this.secondaryAccessions);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder secondaryAccessions(List<UniProtAccession> secondaryAccessions) {
-            this.secondaryAccessions = modifiableList(secondaryAccessions);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder entryAudit(EntryAudit entryAudit) {
-            this.entryAudit = entryAudit;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder annotationScore(double annotationScore) {
-            this.annotationScore = annotationScore;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder organism(Organism organism) {
-            this.organism = organism;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addOrganismHost(OrganismHost organismHost) {
-            addOrIgnoreNull(organismHost, this.organismHosts);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder organismHosts(List<OrganismHost> organismHosts) {
-            this.organismHosts = modifiableList(organismHosts);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder proteinExistence(ProteinExistence proteinExistence) {
-            this.proteinExistence = proteinExistence;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder proteinDescription(ProteinDescription proteinDescription) {
-            this.proteinDescription = proteinDescription;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addGene(Gene gene) {
-            addOrIgnoreNull(gene, this.genes);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder genes(List<Gene> genes) {
-            this.genes = modifiableList(genes);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addComment(Comment comment) {
-            addOrIgnoreNull(comment, this.comments);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder comments(List<Comment> comments) {
-            this.comments = modifiableList(comments);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addFeature(Feature feature) {
-            addOrIgnoreNull(feature, this.features);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder features(List<Feature> features) {
-            this.features = modifiableList(features);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addGeneLocation(GeneLocation geneLocation) {
-            addOrIgnoreNull(geneLocation, this.geneLocations);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder geneLocations(List<GeneLocation> geneLocations) {
-            this.geneLocations = modifiableList(geneLocations);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addKeyword(Keyword keyword) {
-            addOrIgnoreNull(keyword, this.keywords);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder keywords(List<Keyword> keywords) {
-            this.keywords = modifiableList(keywords);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addReference(UniProtReference reference) {
-            addOrIgnoreNull(reference, this.references);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder references(List<UniProtReference> references) {
-            this.references = modifiableList(references);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addDatabaseCrossReference(
-                UniProtDBCrossReference databaseCrossReference) {
-            addOrIgnoreNull(databaseCrossReference, this.databaseCrossReferences);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder databaseCrossReferences(
-                List<UniProtDBCrossReference> databaseCrossReferences) {
-            this.databaseCrossReferences = modifiableList(databaseCrossReferences);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder sequence(Sequence sequence) {
-            this.sequence = sequence;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder internalSection(InternalSection internalSection) {
-            this.internalSection = internalSection;
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder addLineage(TaxonomyLineage lineage) {
-            addOrIgnoreNull(lineage, this.lineages);
-            return this;
-        }
-
-        @Override
-        public ActiveEntryBuilder lineages(List<TaxonomyLineage> lineages) {
-            this.lineages = modifiableList(lineages);
-            return this;
-        }
-
-        @Override
-        public UniProtEntry build() {
-            return new UniProtEntryImpl(
-                    entryType,
-                    primaryAccession,
-                    secondaryAccessions,
-                    uniProtId,
-                    entryAudit,
-                    annotationScore,
-                    organism,
-                    organismHosts,
-                    proteinExistence,
-                    proteinDescription,
-                    genes,
-                    comments,
-                    features,
-                    geneLocations,
-                    keywords,
-                    references,
-                    databaseCrossReferences,
-                    sequence,
-                    internalSection,
-                    lineages,
-                    inactiveReason);
-        }
-
-        @Override
-        public EntryBuilder from(UniProtEntry instance) {
-            this.entryType = instance.getEntryType();
-            this.primaryAccession = instance.getPrimaryAccession();
-            this.secondaryAccessions = instance.getSecondaryAccessions();
-            this.uniProtId = instance.getUniProtId();
-            this.entryAudit = instance.getEntryAudit();
-            this.organism = instance.getOrganism();
-            this.organismHosts = instance.getOrganismHosts();
-            this.proteinExistence = instance.getProteinExistence();
-            this.proteinDescription = instance.getProteinDescription();
-            this.genes = instance.getGenes();
-            this.comments = instance.getComments();
-            this.features = instance.getFeatures();
-            this.geneLocations = instance.getGeneLocations();
-            this.keywords = instance.getKeywords();
-            this.references = instance.getReferences();
-            this.databaseCrossReferences = instance.getDatabaseCrossReferences();
-            this.sequence = instance.getSequence();
-            this.internalSection = instance.getInternalSection();
-            this.inactiveReason = instance.getInactiveReason();
-            this.annotationScore = instance.getAnnotationScore();
-            this.lineages = instance.getLineages();
-            return this;
-        }
-    }
+import javax.annotation.Nonnull;
+
+import static org.uniprot.core.util.Utils.*;
+
+public class UniProtEntryBuilder implements Builder<UniProtEntryBuilder, UniProtEntry> {
+
+  private UniProtAccession primaryAccession;
+  private UniProtEntryType entryType;
+  private List<UniProtAccession> secondaryAccessions = new ArrayList<>();
+  private UniProtId uniProtId;
+  private EntryAudit entryAudit = null;
+  private double annotationScore;
+  private Organism organism = null;
+  private List<OrganismHost> organismHosts = new ArrayList<>();
+  private ProteinExistence proteinExistence = null;
+  private ProteinDescription proteinDescription = null;
+  private List<Gene> genes = new ArrayList<>();
+  private List<Comment> comments = new ArrayList<>();
+  private List<Feature> features = new ArrayList<>();
+  private List<GeneLocation> geneLocations = new ArrayList<>();
+  private List<Keyword> keywords = new ArrayList<>();
+  private List<UniProtReference> references = new ArrayList<>();
+  private List<UniProtDBCrossReference> databaseCrossReferences = new ArrayList<>();
+  private Sequence sequence = null;
+  private InternalSection internalSection = null;
+  private EntryInactiveReason inactiveReason;
+  private List<TaxonomyLineage> lineages;
+
+  public UniProtEntryBuilder(String primaryAccession, String uniProtId, UniProtEntryType type) {
+    this(new UniProtAccessionBuilder(primaryAccession).build(), new UniProtIdBuilder(uniProtId).build(), type);
+  }
+
+  public UniProtEntryBuilder(UniProtAccession primaryAccession, UniProtId uniProtId, UniProtEntryType type) {
+    this(primaryAccession, uniProtId, type, null);
+  }
+
+  public UniProtEntryBuilder(String primaryAccession, String uniProtId, EntryInactiveReason inactiveReason) {
+    this(new UniProtAccessionBuilder(primaryAccession).build(), new UniProtIdBuilder(uniProtId).build(), inactiveReason);
+  }
+
+  public UniProtEntryBuilder(UniProtAccession primaryAccession, UniProtId uniProtId, EntryInactiveReason inactiveReason) {
+    this(primaryAccession, uniProtId, UniProtEntryType.INACTIVE, inactiveReason);
+  }
+
+  private UniProtEntryBuilder(UniProtAccession primaryAccession, UniProtId uniProtId, UniProtEntryType type, EntryInactiveReason inactiveReason) {
+    this.entryType = inactiveReason == null ? type : UniProtEntryType.INACTIVE;
+    this.inactiveReason = inactiveReason;
+    this.primaryAccession = primaryAccession;
+    this.uniProtId = uniProtId;
+  }
+
+  public @Nonnull UniProtEntryBuilder primaryAccession(String primaryAccession) {
+    return primaryAccession(new UniProtAccessionBuilder(primaryAccession).build());
+  }
+
+  public @Nonnull UniProtEntryBuilder primaryAccession(UniProtAccession primaryAccession) {
+    this.primaryAccession = primaryAccession;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder uniProtId(String uniProtId) {
+    return uniProtId(new UniProtIdBuilder(uniProtId).build());
+  }
+
+  public @Nonnull UniProtEntryBuilder uniProtId(UniProtId uniProtId) {
+    this.uniProtId = uniProtId;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder entryType(UniProtEntryType entryType) {
+    this.entryType = entryType;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder secondaryAccessionAdd(UniProtAccession secondaryAccession) {
+    addOrIgnoreNull(secondaryAccession, this.secondaryAccessions);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder secondaryAccessionsSet(List<UniProtAccession> secondaryAccessions) {
+    this.secondaryAccessions = modifiableList(secondaryAccessions);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder entryAudit(EntryAudit entryAudit) {
+    this.entryAudit = entryAudit;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder annotationScore(double annotationScore) {
+    this.annotationScore = annotationScore;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder organism(Organism organism) {
+    this.organism = organism;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder organismHostAdd(OrganismHost organismHost) {
+    addOrIgnoreNull(organismHost, this.organismHosts);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder organismHostsSet(List<OrganismHost> organismHosts) {
+    this.organismHosts = modifiableList(organismHosts);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder proteinExistence(ProteinExistence proteinExistence) {
+    this.proteinExistence = proteinExistence;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder proteinDescription(ProteinDescription proteinDescription) {
+    this.proteinDescription = proteinDescription;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder geneAdd(Gene gene) {
+    addOrIgnoreNull(gene, this.genes);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder genesSet(List<Gene> genes) {
+    this.genes = modifiableList(genes);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder commentAdd(Comment comment) {
+    addOrIgnoreNull(comment, this.comments);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder commentsSet(List<Comment> comments) {
+    this.comments = modifiableList(comments);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder featureAdd(Feature feature) {
+    addOrIgnoreNull(feature, this.features);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder featuresSet(List<Feature> features) {
+    this.features = modifiableList(features);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder geneLocationAdd(GeneLocation geneLocation) {
+    addOrIgnoreNull(geneLocation, this.geneLocations);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder geneLocationsSet(List<GeneLocation> geneLocations) {
+    this.geneLocations = modifiableList(geneLocations);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder keywordAdd(Keyword keyword) {
+    addOrIgnoreNull(keyword, this.keywords);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder keywordsSet(List<Keyword> keywords) {
+    this.keywords = modifiableList(keywords);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder referenceAdd(UniProtReference reference) {
+    addOrIgnoreNull(reference, this.references);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder referencesSet(List<UniProtReference> references) {
+    this.references = modifiableList(references);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder databaseCrossReferenceAdd(
+    UniProtDBCrossReference databaseCrossReference) {
+    addOrIgnoreNull(databaseCrossReference, this.databaseCrossReferences);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder databaseCrossReferencesSet(
+    List<UniProtDBCrossReference> databaseCrossReferences) {
+    this.databaseCrossReferences = modifiableList(databaseCrossReferences);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder sequence(Sequence sequence) {
+    this.sequence = sequence;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder internalSection(InternalSection internalSection) {
+    this.internalSection = internalSection;
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder lineageAdd(TaxonomyLineage lineage) {
+    addOrIgnoreNull(lineage, this.lineages);
+    return this;
+  }
+
+  public @Nonnull UniProtEntryBuilder lineagesSet(List<TaxonomyLineage> lineages) {
+    this.lineages = modifiableList(lineages);
+    return this;
+  }
+
+  @Override
+  public @Nonnull UniProtEntry build() {
+    return new UniProtEntryImpl(
+      entryType,
+      primaryAccession,
+      secondaryAccessions,
+      uniProtId,
+      entryAudit,
+      annotationScore,
+      organism,
+      organismHosts,
+      proteinExistence,
+      proteinDescription,
+      genes,
+      comments,
+      features,
+      geneLocations,
+      keywords,
+      references,
+      databaseCrossReferences,
+      sequence,
+      internalSection,
+      lineages,
+      inactiveReason);
+  }
+
+  @Override
+  @Deprecated
+  //TODO delete this method in future
+  public @Nonnull UniProtEntryBuilder from(@Nonnull UniProtEntry instance) {
+    return UniProtEntryBuilder.fromInstance(instance);
+  }
+
+  //TODO rename this method to from
+  public static @Nonnull UniProtEntryBuilder fromInstance(@Nonnull UniProtEntry instance) {
+    UniProtEntryBuilder builder = new UniProtEntryBuilder(instance.getPrimaryAccession(), instance.getUniProtId(), instance.getEntryType());
+    builder.secondaryAccessionsSet(instance.getSecondaryAccessions())
+    .organismHostsSet(instance.getOrganismHosts())
+    .entryAudit(instance.getEntryAudit())
+    .organism(instance.getOrganism())
+    .proteinExistence(instance.getProteinExistence())
+    .proteinDescription(instance.getProteinDescription())
+    .genesSet(instance.getGenes())
+    .commentsSet(instance.getComments())
+    .featuresSet(instance.getFeatures())
+    .geneLocationsSet(instance.getGeneLocations())
+    .keywordsSet(instance.getKeywords())
+    .referencesSet(instance.getReferences())
+    .databaseCrossReferencesSet(instance.getDatabaseCrossReferences())
+    .sequence(instance.getSequence())
+    .internalSection(instance.getInternalSection())
+    .annotationScore(instance.getAnnotationScore())
+    .lineagesSet(instance.getLineages());
+    builder.inactiveReason = instance.getInactiveReason();
+    return builder;
+  }
 }

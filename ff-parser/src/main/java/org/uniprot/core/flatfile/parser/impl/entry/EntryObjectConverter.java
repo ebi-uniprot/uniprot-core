@@ -81,35 +81,30 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
     @Override
     public UniProtEntry convert(EntryObject f) {
         clear();
-        UniProtEntryBuilder builder = new UniProtEntryBuilder();
         Map.Entry<UniProtId, UniProtEntryType> ids = idLineConverter.convert(f.id);
         UniProtAcLineObject acLineObj = acLineConverter.convert(f.ac);
-        UniProtEntryBuilder.ActiveEntryBuilder activeEntryBuilder =
-                builder.primaryAccession(acLineObj.getPrimaryAccession())
-                        .uniProtId(ids.getKey())
-                        .active()
-                        .entryType(ids.getValue())
-                        .secondaryAccessions(acLineObj.getSecondAccessions())
+        UniProtEntryBuilder activeEntryBuilder = new UniProtEntryBuilder(acLineObj.getPrimaryAccession(), ids.getKey(), ids.getValue())
+                        .secondaryAccessionsSet(acLineObj.getSecondAccessions())
                         .entryAudit(dtLineConverter.convert(f.dt));
-        if (f.cc != null) activeEntryBuilder.comments(ccLineConverter.convert(f.cc));
+        if (f.cc != null) activeEntryBuilder.commentsSet(ccLineConverter.convert(f.cc));
         activeEntryBuilder.proteinDescription(deLineConverter.convert(f.de));
         UniProtDrObjects drObjects = drLineConverter.convert(f.dr);
-        activeEntryBuilder.databaseCrossReferences(
+        activeEntryBuilder.databaseCrossReferencesSet(
                 addGoEvidence(f.ac.primaryAcc, drObjects.drObjects));
 
         if (f.ft != null) {
-            activeEntryBuilder.features(ftLineConverter.convert(f.ft));
+            activeEntryBuilder.featuresSet(ftLineConverter.convert(f.ft));
         }
-        if (f.gn != null) activeEntryBuilder.genes(gnLineConverter.convert(f.gn));
+        if (f.gn != null) activeEntryBuilder.genesSet(gnLineConverter.convert(f.gn));
 
         if (f.kw != null) {
-            activeEntryBuilder.keywords(kwLineConverter.convert(f.kw));
+            activeEntryBuilder.keywordsSet(kwLineConverter.convert(f.kw));
         }
         if (f.og != null) {
-            activeEntryBuilder.geneLocations(ogLineConverter.convert(f.og));
+            activeEntryBuilder.geneLocationsSet(ogLineConverter.convert(f.og));
         }
         if (f.oh != null) {
-            activeEntryBuilder.organismHosts(ohLineConverter.convert(f.oh));
+            activeEntryBuilder.organismHostsSet(ohLineConverter.convert(f.oh));
         }
         OrganismName orgName = osLineConverter.convert(f.os);
         Organism oxLineOrganism = oxLineConverter.convert(f.ox);
@@ -129,7 +124,7 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtEntry
         for (EntryObject.ReferenceObject refObj : f.ref) {
             citations.add(refObjConverter.convert(refObj));
         }
-        activeEntryBuilder.references(citations);
+        activeEntryBuilder.referencesSet(citations);
 
         InternalSection usl = ssLineConverter.convert(f.ss);
 
