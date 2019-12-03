@@ -41,12 +41,7 @@ class UniProtEntryIT {
         UniProtAccession accession = new UniProtAccessionBuilder("accession value").build();
 
         UniProtEntry inactiveEntry =
-                new UniProtEntryBuilder()
-                        .primaryAccession(accession)
-                        .uniProtId(uniProtId)
-                        .inactive()
-                        .inactiveReason(inactiveReason)
-                        .build();
+                new UniProtEntryBuilder(accession, uniProtId, inactiveReason).build();
         ValidateJson.verifyJsonRoundTripParser(inactiveEntry);
         JsonNode jsonNode = ValidateJson.getJsonNodeFromSerializeOnlyMapper(inactiveEntry);
         assertNotNull(jsonNode.get("primaryAccession"));
@@ -70,32 +65,33 @@ class UniProtEntryIT {
         comments.add(WebResourceCommentTest.getWebResourceComment());
 
         UniProtId uniProtId = new UniProtIdBuilder("uniprot id").build();
-        UniProtEntryBuilder builder = new UniProtEntryBuilder();
+        UniProtEntryBuilder builder =
+                new UniProtEntryBuilder(
+                        UniProtAccessionTest.getUniProtAccession(),
+                        uniProtId,
+                        UniProtEntryType.SWISSPROT);
         UniProtEntry entry =
-                builder.primaryAccession(UniProtAccessionTest.getUniProtAccession())
-                        .uniProtId(uniProtId)
-                        .active()
-                        .entryType(UniProtEntryType.SWISSPROT)
-                        .addSecondaryAccession(UniProtAccessionTest.getUniProtAccession())
+                builder.secondaryAccessionAdd(UniProtAccessionTest.getUniProtAccession())
                         .entryAudit(EntryAuditTest.getEntryAudit())
                         .proteinExistence(ProteinExistence.PROTEIN_LEVEL)
                         .proteinDescription(ProteinDescriptionTest.getProteinDescription())
-                        .genes(Collections.singletonList(GeneTest.createCompleteGene()))
+                        .genesSet(Collections.singletonList(GeneTest.createCompleteGene()))
                         .annotationScore(2)
                         .organism(OrganimsTest.getOrganism())
-                        .organismHosts(Collections.singletonList(OrganimHostTest.getOrganismHost()))
-                        .comments(comments)
-                        .features(Collections.singletonList(FeatureTest.getFeature()))
+                        .organismHostsSet(
+                                Collections.singletonList(OrganimHostTest.getOrganismHost()))
+                        .commentsSet(comments)
+                        .featuresSet(Collections.singletonList(FeatureTest.getFeature()))
                         .internalSection(InternalSectionTest.getInternalSection())
-                        .keywords(Collections.singletonList(KeywordTest.getKeyword()))
-                        .geneLocations(
+                        .keywordsSet(Collections.singletonList(KeywordTest.getKeyword()))
+                        .geneLocationsSet(
                                 Collections.singletonList(GeneLocationTest.getGeneLocation()))
-                        .references(UniProtReferenceTest.getUniProtReferences())
-                        .databaseCrossReferences(
+                        .referencesSet(UniProtReferenceTest.getUniProtReferences())
+                        .databaseCrossReferencesSet(
                                 Collections.singletonList(
                                         UniProtDBCrossReferenceTest.getUniProtDBCrossReference()))
                         .sequence(SequenceTest.getSequence())
-                        .lineages(getCompleteTaxonomyLineage())
+                        .lineagesSet(getCompleteTaxonomyLineage())
                         .build();
 
         ValidateJson.verifyJsonRoundTripParser(entry);

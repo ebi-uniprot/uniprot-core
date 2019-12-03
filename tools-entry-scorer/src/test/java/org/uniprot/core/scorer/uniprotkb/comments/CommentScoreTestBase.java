@@ -8,9 +8,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
-import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 import org.uniprot.core.uniprot.evidence.EvidenceType;
@@ -52,13 +50,10 @@ class CommentScoreTestBase {
 
     void verifyMulti(String line, double expectedScore, boolean isSp) throws Exception {
         List<Comment> comments = ccLineTransformer.transformNoHeader(line);
+        UniProtEntryType entryType = isSp ? UniProtEntryType.SWISSPROT : UniProtEntryType.TREMBL;
         UniProtEntry entry =
-                new UniProtEntryBuilder()
-                        .primaryAccession(new UniProtAccessionBuilder("P12345").build())
-                        .uniProtId(new UniProtIdBuilder("ID_12345").build())
-                        .active()
-                        .entryType(isSp ? UniProtEntryType.SWISSPROT : UniProtEntryType.TREMBL)
-                        .comments(comments)
+                new UniProtEntryBuilder("P12345", "ID_12345", entryType)
+                        .commentsSet(comments)
                         .build();
 
         UniProtEntryScored entryScored = new UniProtEntryScored(entry);

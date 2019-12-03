@@ -1,5 +1,8 @@
 package org.uniprot.core.uniprot.impl;
 
+import static org.uniprot.core.util.Utils.notNull;
+import static org.uniprot.core.util.Utils.nullOrEmpty;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -108,6 +111,17 @@ public class UniProtEntryImpl implements UniProtEntry {
             InternalSection internalSection,
             List<TaxonomyLineage> lineages,
             EntryInactiveReason inactiveReason) {
+        if (Objects.isNull(entryType)) {
+            throw new IllegalArgumentException("entryType is Mandatory for uniprot entry.");
+        } else if (Objects.isNull(primaryAccession) || nullOrEmpty(primaryAccession.getValue())) {
+            throw new IllegalArgumentException("primaryAccession is Mandatory for uniprot entry.");
+        } else if (Objects.isNull(uniProtId) || nullOrEmpty(uniProtId.getValue())) {
+            throw new IllegalArgumentException("uniProtId is Mandatory for uniprot entry.");
+        } else if (notNull(inactiveReason) && entryType != UniProtEntryType.INACTIVE) {
+            throw new IllegalArgumentException("Inactive entry must have type INACTIVE");
+        } else if (Objects.isNull(inactiveReason) && entryType == UniProtEntryType.INACTIVE) {
+            throw new IllegalArgumentException("Active entry must NOT have type INACTIVE");
+        }
         this.entryType = entryType;
         this.primaryAccession = primaryAccession;
         this.secondaryAccessions = Utils.unmodifiableList(secondaryAccessions);
