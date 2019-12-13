@@ -14,7 +14,7 @@ public class UniProtXDbTypeDetail implements Serializable {
     private DatabaseCategory category;
     private String uriLink;
     private List<DBXRefTypeAttribute> attributes;
-    private boolean implicit =false;
+    private String linkTp ="Explicit";
     private String linkedDb= null;
 
     private UniProtXDbTypeDetail() {
@@ -45,14 +45,14 @@ public class UniProtXDbTypeDetail implements Serializable {
             DatabaseCategory category,
             String uriLink,
             List<DBXRefTypeAttribute> attributes,
-            boolean implicit,
+            String linkTp,
             String linkedDb) {
         super();
         this.name = name;
         this.displayName = displayName;
         this.category = category;
         this.uriLink = uriLink;
-        this.implicit= implicit;
+        this.linkTp= linkTp;
         this.linkedDb = linkedDb;
         this.attributes = new ArrayList<>();
         if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
@@ -79,7 +79,13 @@ public class UniProtXDbTypeDetail implements Serializable {
         return attributes;
     }
 
-    @Override
+    public String getLinkTp() {
+  return linkTp;}
+
+  public String getLinkedDb() {
+  return linkedDb;}
+
+  @Override
     public int hashCode() {
         return Objects.hash(
                 this.attributes, this.category, this.displayName, this.name, this.uriLink);

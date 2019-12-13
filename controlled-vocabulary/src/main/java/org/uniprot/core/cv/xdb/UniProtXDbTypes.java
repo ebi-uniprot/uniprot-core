@@ -80,17 +80,9 @@ public enum UniProtXDbTypes {
                         String uriLink = item.getString("uriLink");
                        
                         String linkTp = item.optString("linkTp", "Explicit");
-       
-                        boolean implicit =false;
-                        String linkedDb =null;
-                        if(linkTp !=null) {
-                        	if(linkTp.startsWith("Implicit")) {
-                        		implicit =true;
-                        		if(linkTp.startsWith("Implicit: ")) {
-                        			linkedDb = linkTp.substring("Implicit: ".length());
-                        		}
-                        	}
-                        }
+                        String linkedDb = item.optString("linkedDb", null);
+     
+                        
                         List<DBXRefTypeAttribute> attributes = new ArrayList<>();
                         List<Property> properties = item.getProperties("attributes");
                         if (properties != null) {
@@ -112,7 +104,7 @@ public enum UniProtXDbTypes {
                                         displayName,
                                         DatabaseCategory.typeOf(category),
                                         uriLink,
-                                        attributes, implicit, linkedDb);
+                                        attributes, linkTp, linkedDb);
                         types.add(xdbType);
                     });
             typeMap =
