@@ -264,7 +264,7 @@ class UniProtXDbTypesTest {
 
     @Test
     void testDatabaseFieldSize() {
-        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 4);
+        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 6);
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 3);
         verifyGroupSize(
                 UniProtXDbTypes.INSTANCE.getDBTypesByCategory(

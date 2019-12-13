@@ -62,7 +62,7 @@ class DBXRefValidatorIT {
                         opType.getDisplayName(),
                         DatabaseCategory.CHEMISTRY,
                         opType.getUriLink(),
-                        opType.getAttributes());
+                        opType.getAttributes(), false, null);
 
         // validate, the category should mismatch
         List<Pair<String, String>> mismatches = DBXRefValidator.validate(actualOpType);
