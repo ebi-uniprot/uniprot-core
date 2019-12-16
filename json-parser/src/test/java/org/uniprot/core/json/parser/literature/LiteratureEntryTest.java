@@ -27,7 +27,7 @@ class LiteratureEntryTest {
         ValidateJson.verifyEmptyFields(literatureEntry);
     }
 
-    private LiteratureEntry getCompleteLiteratureEntry() {
+    static LiteratureEntry getCompleteLiteratureEntry() {
         return new LiteratureEntryBuilder()
                 .doiId("doi Id")
                 .pubmedId(100L)
@@ -41,8 +41,6 @@ class LiteratureEntryTest {
                 .literatureAbstract("literature Abstract")
                 .publicationDate(new PublicationDateImpl("21-06-2019"))
                 .title("title")
-                .addLiteratureMappedReference(
-                        LiteratureMappedReferenceTest.getCompleteLiteratureMappedReference())
                 .statistics(LiteratureStatisticsTest.getCompleteLiteratureStatistics())
                 .build();
     }

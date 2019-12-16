@@ -35,8 +35,6 @@ public interface LiteratureEntry extends Serializable {
 
     String getLiteratureAbstract();
 
-    List<LiteratureMappedReference> getLiteratureMappedReferences();
-
     LiteratureStatistics getStatistics();
 
     default boolean hasPubmedId() {
@@ -81,10 +79,6 @@ public interface LiteratureEntry extends Serializable {
 
     default boolean hasLiteratureAbstract() {
         return Utils.notNullOrEmpty(getLiteratureAbstract());
-    }
-
-    default boolean hasLiteratureMappedReferences() {
-        return Utils.notNullOrEmpty(getLiteratureMappedReferences());
     }
 
     default boolean hasStatistics() {

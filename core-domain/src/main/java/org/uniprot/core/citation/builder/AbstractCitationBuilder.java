@@ -63,6 +63,11 @@ public abstract class AbstractCitationBuilder<
         return getThis();
     }
 
+    public @Nonnull B addCitationXrefs(DBCrossReference<CitationXrefType> citationXref) {
+        addOrIgnoreNull(citationXref, this.xrefs);
+        return getThis();
+    }
+
     public @Nonnull B title(String title) {
         this.title = title;
         return getThis();

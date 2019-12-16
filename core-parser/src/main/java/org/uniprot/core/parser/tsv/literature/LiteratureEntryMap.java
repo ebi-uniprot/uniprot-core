@@ -34,7 +34,6 @@ public class LiteratureEntryMap implements NamedValueMap {
         map.put("journal", getJournal());
         map.put("publication", getPublication());
         map.put("reference", getReference());
-        map.put("mapped_references", getMappedReferences());
         map.put("statistics", getStatistics());
 
         return map;
@@ -72,20 +71,6 @@ public class LiteratureEntryMap implements NamedValueMap {
 
     private String getAuthoringGroup() {
         return String.join(", ", literatureEntry.getAuthoringGroup());
-    }
-
-    private String getMappedReferences() {
-        return literatureEntry.getLiteratureMappedReferences().stream()
-                .map(
-                        mapped ->
-                                mapped.getSource()
-                                        + "; "
-                                        + mapped.getSourceId()
-                                        + "; "
-                                        + String.join(", ", mapped.getSourceCategory())
-                                        + "; "
-                                        + mapped.getAnnotation())
-                .collect(Collectors.joining(", "));
     }
 
     private String getReference() {

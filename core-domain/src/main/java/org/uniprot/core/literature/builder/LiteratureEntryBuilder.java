@@ -111,18 +111,6 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
         return this;
     }
 
-    public @Nonnull LiteratureEntryBuilder literatureMappedReference(
-            List<LiteratureMappedReference> literatureMappedReference) {
-        this.literatureMappedReference = Utils.modifiableList(literatureMappedReference);
-        return this;
-    }
-
-    public @Nonnull LiteratureEntryBuilder addLiteratureMappedReference(
-            LiteratureMappedReference literatureMappedReference) {
-        Utils.addOrIgnoreNull(literatureMappedReference, this.literatureMappedReference);
-        return this;
-    }
-
     public @Nonnull LiteratureEntryBuilder statistics(LiteratureStatistics statistics) {
         this.statistics = statistics;
         return this;
@@ -143,7 +131,6 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
                 lastPage,
                 volume,
                 literatureAbstract,
-                literatureMappedReference,
                 statistics);
     }
 
@@ -163,7 +150,6 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
                         .firstPage(instance.getFirstPage())
                         .lastPage(instance.getLastPage())
                         .literatureAbstract(instance.getLiteratureAbstract())
-                        .literatureMappedReference(instance.getLiteratureMappedReferences())
                         .statistics(instance.getStatistics());
         return builder;
     }
