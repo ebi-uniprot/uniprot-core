@@ -19,7 +19,7 @@ public class LiteratureStoreEntryImpl implements LiteratureStoreEntry {
     private List<LiteratureMappedReference> literatureMappedReferences;
 
     LiteratureStoreEntryImpl() {
-        this(null,null);
+        this(null, null);
     }
 
     public LiteratureStoreEntryImpl(

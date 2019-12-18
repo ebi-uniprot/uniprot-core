@@ -31,7 +31,8 @@ class LiteratureStoreEntryTest {
     LiteratureStoreEntry getCompleteLiteratureStoreEntry() {
         return new LiteratureStoreEntryBuilder()
                 .literatureEntry(LiteratureEntryTest.getCompleteLiteratureEntry())
-                .addLiteratureMappedReference(LiteratureMappedReferenceTest.getCompleteLiteratureMappedReference())
+                .addLiteratureMappedReference(
+                        LiteratureMappedReferenceTest.getCompleteLiteratureMappedReference())
                 .build();
     }
 }
