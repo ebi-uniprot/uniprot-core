@@ -18,7 +18,7 @@ public class TaxonomyLineageImpl extends AbstractOrganismNameImpl implements Tax
 
     private boolean hidden;
 
-    private TaxonomyLineageImpl() {
+    TaxonomyLineageImpl() {
         this(0, null, null, null, null, false);
     }
 
