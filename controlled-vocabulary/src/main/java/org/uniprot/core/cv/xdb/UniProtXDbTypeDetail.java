@@ -14,31 +14,31 @@ public class UniProtXDbTypeDetail implements Serializable {
     private DatabaseCategory category;
     private String uriLink;
     private List<DBXRefTypeAttribute> attributes;
-    private String linkTp ="Explicit";
-    private String linkedDb= null;
+    private String linkTp = "Explicit";
+    private String linkedDb = null;
 
     private UniProtXDbTypeDetail() {
         this.attributes = new ArrayList<>();
         this.attributes.add(DEFAULT_ATTRIBUTE);
     }
 
-//    public UniProtXDbTypeDetail(
-//            String name,
-//            String displayName,
-//            DatabaseCategory category,
-//            String uriLink,
-//            List<DBXRefTypeAttribute> attributes) {
-//        super();
-//        this.name = name;
-//        this.displayName = displayName;
-//        this.category = category;
-//        this.uriLink = uriLink;
-//
-//        this.attributes = new ArrayList<>();
-//        if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
-//        else this.attributes.add(DEFAULT_ATTRIBUTE);
-//    }
-//    
+    //    public UniProtXDbTypeDetail(
+    //            String name,
+    //            String displayName,
+    //            DatabaseCategory category,
+    //            String uriLink,
+    //            List<DBXRefTypeAttribute> attributes) {
+    //        super();
+    //        this.name = name;
+    //        this.displayName = displayName;
+    //        this.category = category;
+    //        this.uriLink = uriLink;
+    //
+    //        this.attributes = new ArrayList<>();
+    //        if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
+    //        else this.attributes.add(DEFAULT_ATTRIBUTE);
+    //    }
+    //
     public UniProtXDbTypeDetail(
             String name,
             String displayName,
@@ -52,7 +52,7 @@ public class UniProtXDbTypeDetail implements Serializable {
         this.displayName = displayName;
         this.category = category;
         this.uriLink = uriLink;
-        this.linkTp= linkTp;
+        this.linkTp = linkTp;
         this.linkedDb = linkedDb;
         this.attributes = new ArrayList<>();
         if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
@@ -80,12 +80,14 @@ public class UniProtXDbTypeDetail implements Serializable {
     }
 
     public String getLinkTp() {
-  return linkTp;}
+        return linkTp;
+    }
 
-  public String getLinkedDb() {
-  return linkedDb;}
+    public String getLinkedDb() {
+        return linkedDb;
+    }
 
-  @Override
+    @Override
     public int hashCode() {
         return Objects.hash(
                 this.attributes, this.category, this.displayName, this.name, this.uriLink);

@@ -499,7 +499,7 @@ public class ObjectsForTests {
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)
                 .referenceProteomeCount(1)
-                .completeProteomeCount(2)
+                .proteomeCount(2)
                 .build();
     }
 

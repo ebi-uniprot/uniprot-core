@@ -103,6 +103,7 @@ public class UniProtXDbTypeDetailTest {
             DatabaseCategory category,
             String uriLink,
             List<DBXRefTypeAttribute> attributes) {
-        return new UniProtXDbTypeDetail(name, displayName, category, uriLink, attributes, "Explicit", null);
+        return new UniProtXDbTypeDetail(
+                name, displayName, category, uriLink, attributes, "Explicit", null);
     }
 }

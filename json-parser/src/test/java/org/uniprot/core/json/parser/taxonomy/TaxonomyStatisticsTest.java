@@ -29,7 +29,7 @@ class TaxonomyStatisticsTest {
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)
                 .referenceProteomeCount(2)
-                .completeProteomeCount(1)
+                .proteomeCount(1)
                 .build();
     }
 }

@@ -101,7 +101,7 @@ public class TaxonomyEntryMap implements NamedValueMap {
                     + taxonomyEntry.getStatistics().getReferenceProteomeCount()
                     + "; "
                     + "complete:"
-                    + taxonomyEntry.getStatistics().getCompleteProteomeCount();
+                    + taxonomyEntry.getStatistics().getProteomeCount();
         } else {
             return "";
         }
