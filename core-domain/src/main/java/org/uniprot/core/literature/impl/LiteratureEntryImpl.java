@@ -7,7 +7,6 @@ import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.Journal;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.literature.LiteratureEntry;
-import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.util.Utils;
 
@@ -28,12 +27,11 @@ public class LiteratureEntryImpl implements LiteratureEntry {
     private String lastPage;
     private String volume;
     private String literatureAbstract;
-    private List<LiteratureMappedReference> literatureMappedReferences;
     private LiteratureStatistics statistics;
 
     // no arg constructor for JSON deserialization
     LiteratureEntryImpl() {
-        this(null, null, null, null, null, false, null, null, null, null, null, null, null, null);
+        this(null, null, null, null, null, false, null, null, null, null, null, null, null);
     }
 
     public LiteratureEntryImpl(
@@ -49,7 +47,6 @@ public class LiteratureEntryImpl implements LiteratureEntry {
             String lastPage,
             String volume,
             String literatureAbstract,
-            List<LiteratureMappedReference> literatureMappedReferences,
             LiteratureStatistics statistics) {
         this.pubmedId = pubmedId;
         this.doiId = Utils.emptyOrString(doiId);
@@ -63,7 +60,6 @@ public class LiteratureEntryImpl implements LiteratureEntry {
         this.lastPage = Utils.emptyOrString(lastPage);
         this.volume = Utils.emptyOrString(volume);
         this.literatureAbstract = Utils.emptyOrString(literatureAbstract);
-        this.literatureMappedReferences = Utils.unmodifiableList(literatureMappedReferences);
         this.statistics = statistics;
     }
 
@@ -128,11 +124,6 @@ public class LiteratureEntryImpl implements LiteratureEntry {
     }
 
     @Override
-    public List<LiteratureMappedReference> getLiteratureMappedReferences() {
-        return literatureMappedReferences;
-    }
-
-    @Override
     public LiteratureStatistics getStatistics() {
         return statistics;
     }
@@ -154,9 +145,7 @@ public class LiteratureEntryImpl implements LiteratureEntry {
                 && Objects.equals(getLastPage(), that.getLastPage())
                 && Objects.equals(getVolume(), that.getVolume())
                 && Objects.equals(getLiteratureAbstract(), that.getLiteratureAbstract())
-                && Objects.equals(getStatistics(), that.getStatistics())
-                && Objects.equals(
-                        getLiteratureMappedReferences(), that.getLiteratureMappedReferences());
+                && Objects.equals(getStatistics(), that.getStatistics());
     }
 
     @Override
@@ -174,16 +163,14 @@ public class LiteratureEntryImpl implements LiteratureEntry {
                 getLastPage(),
                 getVolume(),
                 getLiteratureAbstract(),
-                getStatistics(),
-                getLiteratureMappedReferences());
+                getStatistics());
     }
 
     @Override
     public String toString() {
         return "LiteratureEntryImpl{"
-                + "pubmedId='"
+                + "pubmedId="
                 + pubmedId
-                + '\''
                 + ", doiId='"
                 + doiId
                 + '\''
@@ -214,8 +201,6 @@ public class LiteratureEntryImpl implements LiteratureEntry {
                 + '\''
                 + ", statistics="
                 + statistics
-                + ", literatureMappedReferences="
-                + literatureMappedReferences
                 + '}';
     }
 }

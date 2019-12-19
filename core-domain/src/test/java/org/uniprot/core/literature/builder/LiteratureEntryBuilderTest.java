@@ -1,7 +1,6 @@
 package org.uniprot.core.literature.builder;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureMappedReference;
 import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureStatistics;
 
 import org.hamcrest.MatcherAssert;
@@ -35,7 +34,6 @@ class LiteratureEntryBuilderTest {
         assertFalse(entry.hasTitle());
         assertFalse(entry.hasVolume());
         assertFalse(entry.hasStatistics());
-        assertFalse(entry.hasLiteratureMappedReferences());
         assertTrue(entry.isCompleteAuthorList());
     }
 
@@ -88,11 +86,6 @@ class LiteratureEntryBuilderTest {
 
         assertTrue(entry.hasStatistics());
         assertEquals(entry.getStatistics(), createCompleteLiteratureStatistics());
-
-        assertTrue(entry.hasLiteratureMappedReferences());
-        MatcherAssert.assertThat(
-                entry.getLiteratureMappedReferences(),
-                Matchers.contains(createCompleteLiteratureMappedReference()));
 
         assertFalse(entry.isCompleteAuthorList());
     }

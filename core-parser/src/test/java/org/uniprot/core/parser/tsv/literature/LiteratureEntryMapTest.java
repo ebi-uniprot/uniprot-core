@@ -10,12 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.citation.impl.AuthorImpl;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
 import org.uniprot.core.literature.LiteratureEntry;
-import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
-import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
 import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
-import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
 /**
  * @author lgonzales
@@ -28,7 +25,7 @@ class LiteratureEntryMapTest {
         LiteratureEntry entry = new LiteratureEntryBuilder().pubmedId(10L).build();
         Map<String, String> mappedEntries = new LiteratureEntryMap(entry).attributeValues();
         assertThat(mappedEntries, notNullValue());
-        assertEquals(12, mappedEntries.size());
+        assertEquals(11, mappedEntries.size());
         assertEquals("10", mappedEntries.get("id"));
         mappedEntries.remove("id");
 
@@ -41,7 +38,7 @@ class LiteratureEntryMapTest {
 
         Map<String, String> mappedEntries = new LiteratureEntryMap(entry).attributeValues();
 
-        assertEquals(12, mappedEntries.size());
+        assertEquals(11, mappedEntries.size());
         assertEquals("100", mappedEntries.get("id"));
         assertEquals("doi Id", mappedEntries.get("doi"));
         assertEquals("title", mappedEntries.get("title"));
@@ -50,9 +47,6 @@ class LiteratureEntryMapTest {
                 mappedEntries.get("reference"));
         assertEquals("authoring group; author name", mappedEntries.get("author_and_group"));
         assertEquals("journal Name", mappedEntries.get("journal"));
-        assertEquals(
-                "source value; source Id; source category; annotation value",
-                mappedEntries.get("mapped_references"));
         assertEquals("author name", mappedEntries.get("author"));
         assertEquals("21-06-2019", mappedEntries.get("publication"));
         assertEquals("authoring group", mappedEntries.get("authoring_group"));
@@ -75,17 +69,6 @@ class LiteratureEntryMapTest {
                 .completeAuthorList(false)
                 .addAuthor(new AuthorImpl("author name"))
                 .addAuthoringGroup("authoring group")
-                .addLiteratureMappedReference(createCompleteLiteratureMappedReference())
-                .build();
-    }
-
-    private LiteratureMappedReference createCompleteLiteratureMappedReference() {
-        return new LiteratureMappedReferenceBuilder()
-                .annotation("annotation value")
-                .source("source value")
-                .sourceId("source Id")
-                .addSourceCategory("source category")
-                .uniprotAccession(new UniProtAccessionImpl("P12345"))
                 .build();
     }
 
