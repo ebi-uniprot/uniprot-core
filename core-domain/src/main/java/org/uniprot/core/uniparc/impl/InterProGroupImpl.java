@@ -2,13 +2,13 @@ package org.uniprot.core.uniparc.impl;
 
 import java.util.Objects;
 
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 
 /**
  * @author jluo
  * @date: 22 May 2019
  */
-public class InterProGroupImpl implements InterproGroup {
+public class InterProGroupImpl implements InterProGroup {
 
     /** */
     private static final long serialVersionUID = 1200750330707649533L;

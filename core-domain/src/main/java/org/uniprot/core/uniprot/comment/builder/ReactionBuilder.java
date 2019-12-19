@@ -28,39 +28,39 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
     private List<DBCrossReference<ReactionReferenceType>> reactionReferences = new ArrayList<>();
     private List<Evidence> evidences = new ArrayList<>();
 
-    public ReactionBuilder name(String name) {
+    public @Nonnull ReactionBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public ReactionBuilder references(
+    public @Nonnull ReactionBuilder references(
             List<DBCrossReference<ReactionReferenceType>> reactionReferences) {
         this.reactionReferences = modifiableList(reactionReferences);
         return this;
     }
 
-    public ReactionBuilder addReactionReference(
+    public @Nonnull ReactionBuilder addReactionReference(
             DBCrossReference<ReactionReferenceType> reactionReference) {
         addOrIgnoreNull(reactionReference, this.reactionReferences);
         return this;
     }
 
-    public ReactionBuilder ecNumber(String ecNumber) {
+    public @Nonnull ReactionBuilder ecNumber(String ecNumber) {
         this.ecNumber = new ECNumberImpl(ecNumber);
         return this;
     }
 
-    public ReactionBuilder ecNumber(ECNumber ecNumber) {
+    public @Nonnull ReactionBuilder ecNumber(ECNumber ecNumber) {
         this.ecNumber = ecNumber;
         return this;
     }
 
-    public ReactionBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull ReactionBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public ReactionBuilder addEvidence(Evidence evidence) {
+    public @Nonnull ReactionBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

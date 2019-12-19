@@ -12,7 +12,7 @@ import org.uniprot.core.Location;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.builder.SequenceBuilder;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
@@ -72,7 +72,7 @@ class UniParcFastaParserTest {
 
     private List<SequenceFeature> getSeqFeatures() {
         List<Location> locations = Arrays.asList(new Location(12, 23), new Location(45, 89));
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)

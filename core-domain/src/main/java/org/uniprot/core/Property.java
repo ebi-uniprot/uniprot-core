@@ -21,12 +21,12 @@ public final class Property implements Pair<String, String>, Comparable<Property
     }
 
     @Override
-    public String getKey() {
+    public @Nonnull String getKey() {
         return key;
     }
 
     @Override
-    public String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 

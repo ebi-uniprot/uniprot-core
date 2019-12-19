@@ -42,37 +42,37 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
                 .positions(instance.getReferencePositions());
     }
 
-    public UniProtReferenceBuilder citation(Citation citation) {
+    public @Nonnull UniProtReferenceBuilder citation(Citation citation) {
         this.citation = citation;
         return this;
     }
 
-    public UniProtReferenceBuilder positions(List<String> referencePositions) {
+    public @Nonnull UniProtReferenceBuilder positions(List<String> referencePositions) {
         this.referencePositions = modifiableList(referencePositions);
         return this;
     }
 
-    public UniProtReferenceBuilder addPositions(String referencePosition) {
+    public @Nonnull UniProtReferenceBuilder addPositions(String referencePosition) {
         addOrIgnoreNull(referencePosition, this.referencePositions);
         return this;
     }
 
-    public UniProtReferenceBuilder comments(List<ReferenceComment> referenceComments) {
+    public @Nonnull UniProtReferenceBuilder comments(List<ReferenceComment> referenceComments) {
         this.referenceComments = modifiableList(referenceComments);
         return this;
     }
 
-    public UniProtReferenceBuilder addComment(ReferenceComment referenceComment) {
+    public @Nonnull UniProtReferenceBuilder addComment(ReferenceComment referenceComment) {
         addOrIgnoreNull(referenceComment, this.referenceComments);
         return this;
     }
 
-    public UniProtReferenceBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull UniProtReferenceBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public UniProtReferenceBuilder evidence(Evidence evidence) {
+    public @Nonnull UniProtReferenceBuilder evidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

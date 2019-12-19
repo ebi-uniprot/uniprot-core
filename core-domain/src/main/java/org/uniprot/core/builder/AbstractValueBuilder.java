@@ -1,5 +1,7 @@
 package org.uniprot.core.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Value;
 
@@ -17,10 +19,10 @@ public abstract class AbstractValueBuilder<B extends AbstractValueBuilder<B, T>,
     }
 
     @Override
-    public B from(T instance) {
+    public @Nonnull B from(@Nonnull T instance) {
         this.value = instance.getValue();
         return getThis();
     }
 
-    protected abstract B getThis();
+    protected abstract @Nonnull B getThis();
 }

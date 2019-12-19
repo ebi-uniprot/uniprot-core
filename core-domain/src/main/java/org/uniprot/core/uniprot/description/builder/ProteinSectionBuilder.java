@@ -24,47 +24,47 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
     private List<Name> cdAntigenNames = new ArrayList<>();
     private List<Name> innNames = new ArrayList<>();
 
-    public ProteinSectionBuilder recommendedName(ProteinRecName recommendedName) {
+    public @Nonnull ProteinSectionBuilder recommendedName(ProteinRecName recommendedName) {
         this.recommendedName = recommendedName;
         return this;
     }
 
-    public ProteinSectionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
+    public @Nonnull ProteinSectionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
         this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
-    public ProteinSectionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
+    public @Nonnull ProteinSectionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
         addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
 
-    public ProteinSectionBuilder allergenName(Name allergenName) {
+    public @Nonnull ProteinSectionBuilder allergenName(Name allergenName) {
         this.allergenName = allergenName;
         return this;
     }
 
-    public ProteinSectionBuilder biotechName(Name biotechName) {
+    public @Nonnull ProteinSectionBuilder biotechName(Name biotechName) {
         this.biotechName = biotechName;
         return this;
     }
 
-    public ProteinSectionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
+    public @Nonnull ProteinSectionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
         this.cdAntigenNames = modifiableList(cdAntigenNames);
         return this;
     }
 
-    public ProteinSectionBuilder addCdAntigenNames(Name cdAntigen) {
+    public @Nonnull ProteinSectionBuilder addCdAntigenNames(Name cdAntigen) {
         addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
         return this;
     }
 
-    public ProteinSectionBuilder innNames(List<Name> innNames) {
+    public @Nonnull ProteinSectionBuilder innNames(List<Name> innNames) {
         this.innNames = modifiableList(innNames);
         return this;
     }
 
-    public ProteinSectionBuilder addInnNames(Name innNames) {
+    public @Nonnull ProteinSectionBuilder addInnNames(Name innNames) {
         addOrIgnoreNull(innNames, this.innNames);
         return this;
     }

@@ -16,7 +16,8 @@ public class DBCrossReferenceImpl<T extends DatabaseType> implements DBCrossRefe
     protected String id;
     protected List<Property> properties;
 
-    private DBCrossReferenceImpl() {
+    // no arg constructor for JSON deserialization
+    DBCrossReferenceImpl() {
         this.properties = Collections.emptyList();
     }
 

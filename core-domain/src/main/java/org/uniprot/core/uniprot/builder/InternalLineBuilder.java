@@ -33,7 +33,7 @@ public class InternalLineBuilder extends AbstractValueBuilder<InternalLineBuilde
     }
 
     @Override
-    protected InternalLineBuilder getThis() {
+    protected @Nonnull InternalLineBuilder getThis() {
         return this;
     }
 }

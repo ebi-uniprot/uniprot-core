@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum PhysiologicalDirectionType implements EnumDisplay<PhysiologicalDirectionType> {
@@ -21,7 +23,7 @@ public enum PhysiologicalDirectionType implements EnumDisplay<PhysiologicalDirec
      * @throws IllegalArgumentException is thrown when the provided value has no corresponding enum
      *     type.
      */
-    public static PhysiologicalDirectionType typeOf(String value) {
+    public static @Nonnull PhysiologicalDirectionType typeOf(@Nonnull String value) {
         if (value != null)
             for (PhysiologicalDirectionType referenceType : PhysiologicalDirectionType.values()) {
                 if (referenceType.toDisplayName().equalsIgnoreCase(value.trim())) {
@@ -37,7 +39,7 @@ public enum PhysiologicalDirectionType implements EnumDisplay<PhysiologicalDirec
      *
      * @return the name of the source
      */
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name;
     }
 }

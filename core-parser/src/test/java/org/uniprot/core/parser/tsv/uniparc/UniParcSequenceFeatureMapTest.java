@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
@@ -64,7 +64,7 @@ class UniParcSequenceFeatureMapTest {
     }
 
     private List<SequenceFeature> create() {
-        InterproGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
+        InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
                         .interproGroup(domain)

@@ -21,27 +21,27 @@ public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, Pro
     private List<Name> shortNames = new ArrayList<>();
     private List<EC> ecNumbers = new ArrayList<>();
 
-    public ProteinRecNameBuilder fullName(Name fullName) {
+    public @Nonnull ProteinRecNameBuilder fullName(Name fullName) {
         this.fullName = fullName;
         return this;
     }
 
-    public ProteinRecNameBuilder shortNames(List<Name> shortNames) {
+    public @Nonnull ProteinRecNameBuilder shortNames(List<Name> shortNames) {
         this.shortNames = modifiableList(shortNames);
         return this;
     }
 
-    public ProteinRecNameBuilder addShortName(Name shortNames) {
+    public @Nonnull ProteinRecNameBuilder addShortName(Name shortNames) {
         addOrIgnoreNull(shortNames, this.shortNames);
         return this;
     }
 
-    public ProteinRecNameBuilder ecNumbers(List<EC> ecNumbers) {
+    public @Nonnull ProteinRecNameBuilder ecNumbers(List<EC> ecNumbers) {
         this.ecNumbers = modifiableList(ecNumbers);
         return this;
     }
 
-    public ProteinRecNameBuilder addEcNumber(EC ecNumbers) {
+    public @Nonnull ProteinRecNameBuilder addEcNumber(EC ecNumbers) {
         addOrIgnoreNull(ecNumbers, this.ecNumbers);
         return this;
     }

@@ -27,12 +27,12 @@ public class UniRefMemberBuilder
     }
 
     @Override
-    public UniRefMemberBuilder from(@Nonnull UniRefMember instance) {
+    public @Nonnull UniRefMemberBuilder from(@Nonnull UniRefMember instance) {
         return super.fromMember(instance);
     }
 
     @Override
-    protected UniRefMemberBuilder getThis() {
+    protected @Nonnull UniRefMemberBuilder getThis() {
         return this;
     }
 }

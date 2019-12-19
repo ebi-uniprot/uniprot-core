@@ -37,37 +37,37 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
                 .reference(instance.getReference());
     }
 
-    public DiseaseBuilder diseaseId(String diseaseId) {
+    public @Nonnull DiseaseBuilder diseaseId(String diseaseId) {
         this.diseaseId = diseaseId;
         return this;
     }
 
-    public DiseaseBuilder diseaseAc(String diseaseAc) {
+    public @Nonnull DiseaseBuilder diseaseAc(String diseaseAc) {
         this.diseaseAc = diseaseAc;
         return this;
     }
 
-    public DiseaseBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull DiseaseBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public DiseaseBuilder addEvidence(Evidence evidence) {
+    public @Nonnull DiseaseBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }
 
-    public DiseaseBuilder acronym(String acronym) {
+    public @Nonnull DiseaseBuilder acronym(String acronym) {
         this.acronym = acronym;
         return this;
     }
 
-    public DiseaseBuilder description(String description) {
+    public @Nonnull DiseaseBuilder description(String description) {
         this.description = description;
         return this;
     }
 
-    public DiseaseBuilder reference(DBCrossReference<DiseaseReferenceType> reference) {
+    public @Nonnull DiseaseBuilder reference(DBCrossReference<DiseaseReferenceType> reference) {
         this.reference = reference;
         return this;
     }

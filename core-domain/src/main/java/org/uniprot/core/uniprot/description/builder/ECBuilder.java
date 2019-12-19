@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.description.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.description.EC;
 import org.uniprot.core.uniprot.description.impl.ECImpl;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
@@ -8,12 +10,12 @@ import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
 public class ECBuilder extends AbstractEvidencedValueBuilder<ECBuilder, EC> {
 
     @Override
-    protected ECBuilder getThis() {
+    protected @Nonnull ECBuilder getThis() {
         return this;
     }
 
     @Override
-    public EC build() {
+    public @Nonnull EC build() {
         return new ECImpl(value, evidences);
     }
 }

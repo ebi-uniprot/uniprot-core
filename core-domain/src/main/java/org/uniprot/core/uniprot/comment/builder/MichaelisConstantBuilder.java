@@ -26,27 +26,27 @@ public final class MichaelisConstantBuilder
     private String substrate;
     private List<Evidence> evidences = new ArrayList<>();
 
-    public MichaelisConstantBuilder constant(double constant) {
+    public @Nonnull MichaelisConstantBuilder constant(double constant) {
         this.constant = constant;
         return this;
     }
 
-    public MichaelisConstantBuilder unit(MichaelisConstantUnit unit) {
+    public @Nonnull MichaelisConstantBuilder unit(MichaelisConstantUnit unit) {
         this.unit = unit;
         return this;
     }
 
-    public MichaelisConstantBuilder substrate(String substrate) {
+    public @Nonnull MichaelisConstantBuilder substrate(String substrate) {
         this.substrate = substrate;
         return this;
     }
 
-    public MichaelisConstantBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull MichaelisConstantBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public MichaelisConstantBuilder addEvidence(Evidence evidence) {
+    public @Nonnull MichaelisConstantBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

@@ -4,6 +4,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.gene.OrderedLocusName;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.builder.AbstractEvidencedValueBuilder;
@@ -21,12 +23,12 @@ public class OrderedLocusNameBuilder
     }
 
     @Override
-    protected OrderedLocusNameBuilder getThis() {
+    protected @Nonnull OrderedLocusNameBuilder getThis() {
         return this;
     }
 
     @Override
-    public OrderedLocusName build() {
+    public @Nonnull OrderedLocusName build() {
         return new GeneImpl.OrderedLocusNameImpl(value, evidences);
     }
 }

@@ -1,7 +1,6 @@
 package org.uniprot.core.uniprot;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import org.uniprot.core.util.EnumDisplay;
 
@@ -21,7 +20,7 @@ public enum ProteinExistence implements EnumDisplay<ProteinExistence> {
         this.displayName = displayName;
     }
 
-    public @Nonnull static ProteinExistence typeOf(@Nullable String value) {
+    public @Nonnull static ProteinExistence typeOf(@Nonnull String value) {
         for (ProteinExistence proteinExistence : ProteinExistence.values()) {
             if (proteinExistence.getValue().equalsIgnoreCase(value)) {
                 return proteinExistence;

@@ -1,5 +1,7 @@
 package org.uniprot.core.citation.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.citation.Author;
 import org.uniprot.core.citation.impl.AuthorImpl;
@@ -15,12 +17,12 @@ public class AuthorBuilder extends AbstractValueBuilder<AuthorBuilder, Author> {
     }
 
     @Override
-    public Author build() {
+    public @Nonnull Author build() {
         return new AuthorImpl(value);
     }
 
     @Override
-    protected AuthorBuilder getThis() {
+    protected @Nonnull AuthorBuilder getThis() {
         return this;
     }
 }

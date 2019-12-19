@@ -21,7 +21,7 @@ public enum EvidenceTypes {
         init();
     }
 
-    public @Nonnull EvidenceTypeDetail getType(String typeName) {
+    public @Nonnull EvidenceTypeDetail getType(@Nonnull String typeName) {
         EvidenceTypeDetail type = typeMap.get(typeName);
         if (type == null) {
             throw new IllegalArgumentException(typeName + " does not exist in Evidence type list");

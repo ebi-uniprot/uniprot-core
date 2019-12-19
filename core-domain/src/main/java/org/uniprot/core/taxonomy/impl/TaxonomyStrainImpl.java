@@ -15,7 +15,8 @@ public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     private List<String> synonyms;
 
-    private TaxonomyStrainImpl() {
+    // no arg constructor for JSON deserialization
+    TaxonomyStrainImpl() {
         this(null, null);
     }
 

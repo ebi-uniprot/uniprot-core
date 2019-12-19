@@ -18,7 +18,8 @@ public class LiteratureMappedReferenceImpl implements LiteratureMappedReference 
     private List<String> sourceCategory;
     private String annotation;
 
-    private LiteratureMappedReferenceImpl() {
+    // no arg constructor for JSON deserialization
+    LiteratureMappedReferenceImpl() {
         this(null, null, null, null, null);
     }
 

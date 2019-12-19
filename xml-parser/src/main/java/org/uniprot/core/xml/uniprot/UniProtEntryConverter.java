@@ -16,7 +16,6 @@ import org.uniprot.core.uniprot.UniProtReference;
 import org.uniprot.core.uniprot.builder.EntryAuditBuilder;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
-import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.description.ProteinDescription;
@@ -74,12 +73,10 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
     public UniProtEntry fromXml(Entry xmlEntry) {
         Map<Evidence, Integer> evidenceIdMap = fromXmlForEvidences(xmlEntry);
         evRefMapper.reset(evidenceIdMap);
-        UniProtEntryBuilder builder = new UniProtEntryBuilder();
-        UniProtEntryBuilder.ActiveEntryBuilder activeEntryBuilder =
-                updateMetaDataFromXml(xmlEntry, builder);
+        UniProtEntryBuilder activeEntryBuilder = createUniprotEntryBuilderFromXml(xmlEntry);
         activeEntryBuilder.organism(organismConverter.fromXml(xmlEntry.getOrganism()));
         if (!xmlEntry.getOrganismHost().isEmpty()) {
-            activeEntryBuilder.organismHosts(
+            activeEntryBuilder.organismHostsSet(
                     xmlEntry.getOrganismHost().stream()
                             .map(organismHostConverter::fromXml)
                             .collect(Collectors.toList()));
@@ -87,30 +84,30 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         ProteinDescription proteinDescription = descriptionConverter.fromXml(xmlEntry.getProtein());
         activeEntryBuilder.proteinDescription(
                 flagUpdater.fromXml(proteinDescription, xmlEntry.getSequence()));
-        activeEntryBuilder.genes(
+        activeEntryBuilder.genesSet(
                 xmlEntry.getGene().stream()
                         .map(geneConverter::fromXml)
                         .collect(Collectors.toList()));
-        activeEntryBuilder.geneLocations(
+        activeEntryBuilder.geneLocationsSet(
                 xmlEntry.getGeneLocation().stream()
                         .map(organelleConverter::fromXml)
                         .collect(Collectors.toList()));
-        activeEntryBuilder.references(
+        activeEntryBuilder.referencesSet(
                 xmlEntry.getReference().stream()
                         .map(referenceConverter::fromXml)
                         .collect(Collectors.toList()));
-        activeEntryBuilder.comments(fromXmlForComments(xmlEntry));
-        activeEntryBuilder.databaseCrossReferences(
+        activeEntryBuilder.commentsSet(fromXmlForComments(xmlEntry));
+        activeEntryBuilder.databaseCrossReferencesSet(
                 xmlEntry.getDbReference().stream()
                         .filter(val -> !val.getType().equals("EC"))
                         .map(xrefConverter::fromXml)
                         .filter(val -> val != null)
                         .collect(Collectors.toList()));
-        activeEntryBuilder.keywords(
+        activeEntryBuilder.keywordsSet(
                 xmlEntry.getKeyword().stream()
                         .map(keywordConverter::fromXml)
                         .collect(Collectors.toList()));
-        activeEntryBuilder.features(
+        activeEntryBuilder.featuresSet(
                 xmlEntry.getFeature().stream()
                         .map(featureConverter::fromXml)
                         .collect(Collectors.toList()));
@@ -240,15 +237,14 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtEntry> {
         }
     }
 
-    private UniProtEntryBuilder.ActiveEntryBuilder updateMetaDataFromXml(
-            Entry xmlEntry, UniProtEntryBuilder builder) {
+    private UniProtEntryBuilder createUniprotEntryBuilderFromXml(Entry xmlEntry) {
         List<String> accessions = xmlEntry.getAccession();
-        return builder.primaryAccession(new UniProtAccessionBuilder(accessions.get(0)).build())
-                .uniProtId(new UniProtIdBuilder(xmlEntry.getName().get(0)).build())
-                .active()
-                .entryType(UniProtEntryType.typeOf(xmlEntry.getDataset()))
+        return new UniProtEntryBuilder(
+                        accessions.get(0),
+                        xmlEntry.getName().get(0),
+                        UniProtEntryType.typeOf(xmlEntry.getDataset()))
                 .proteinExistence(ProteinExistence.typeOf(xmlEntry.getProteinExistence().getType()))
-                .secondaryAccessions(
+                .secondaryAccessionsSet(
                         accessions.subList(1, accessions.size()).stream()
                                 .map(sec -> new UniProtAccessionBuilder(sec).build())
                                 .collect(Collectors.toList()))

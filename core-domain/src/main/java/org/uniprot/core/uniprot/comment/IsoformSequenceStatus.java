@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> {
@@ -16,7 +18,7 @@ public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> 
         this.displayValue = displayValue;
     }
 
-    public static IsoformSequenceStatus typeOf(String value) {
+    public static @Nonnull IsoformSequenceStatus typeOf(@Nonnull String value) {
         for (IsoformSequenceStatus status : IsoformSequenceStatus.values()) {
             if (status.getValue().equalsIgnoreCase(value)) {
                 return status;
@@ -26,12 +28,12 @@ public enum IsoformSequenceStatus implements EnumDisplay<IsoformSequenceStatus> 
                 "the IsoformSequenceStatus with the description " + value + " doesn't exist");
     }
 
-    public String getValue() {
+    public @Nonnull String getValue() {
         return this.value;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return displayValue;
     }
 }

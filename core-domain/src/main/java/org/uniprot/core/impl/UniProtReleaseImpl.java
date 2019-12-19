@@ -1,6 +1,7 @@
 package org.uniprot.core.impl;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import org.uniprot.core.UniProtRelease;
 
@@ -46,5 +47,21 @@ public class UniProtReleaseImpl implements UniProtRelease {
     @Override
     public LocalDate getNextReleaseDate() {
         return this.nextReleaseDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UniProtReleaseImpl that = (UniProtReleaseImpl) o;
+        return Objects.equals(currentVersion, that.currentVersion)
+                && Objects.equals(currentReleaseDate, that.currentReleaseDate)
+                && Objects.equals(nextVersion, that.nextVersion)
+                && Objects.equals(nextReleaseDate, that.nextReleaseDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(currentVersion, currentReleaseDate, nextVersion, nextReleaseDate);
     }
 }

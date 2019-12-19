@@ -20,27 +20,27 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, Pro
     private List<Name> shortNames = new ArrayList<>();
     private List<EC> ecNumbers = new ArrayList<>();
 
-    public ProteinAltNameBuilder fullName(Name fullName) {
+    public @Nonnull ProteinAltNameBuilder fullName(Name fullName) {
         this.fullName = fullName;
         return this;
     }
 
-    public ProteinAltNameBuilder shortNames(List<Name> shortNames) {
+    public @Nonnull ProteinAltNameBuilder shortNames(List<Name> shortNames) {
         this.shortNames = modifiableList(shortNames);
         return this;
     }
 
-    public ProteinAltNameBuilder addShortName(Name shortNames) {
+    public @Nonnull ProteinAltNameBuilder addShortName(Name shortNames) {
         addOrIgnoreNull(shortNames, this.shortNames);
         return this;
     }
 
-    public ProteinAltNameBuilder ecNumbers(List<EC> ecNumbers) {
+    public @Nonnull ProteinAltNameBuilder ecNumbers(List<EC> ecNumbers) {
         this.ecNumbers = modifiableList(ecNumbers);
         return this;
     }
 
-    public ProteinAltNameBuilder addEcNumber(EC ecNumbers) {
+    public @Nonnull ProteinAltNameBuilder addEcNumber(EC ecNumbers) {
         addOrIgnoreNull(ecNumbers, this.ecNumbers);
         return this;
     }

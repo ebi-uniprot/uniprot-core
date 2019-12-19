@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum InteractionType implements EnumDisplay<InteractionType> {
@@ -24,7 +26,7 @@ public enum InteractionType implements EnumDisplay<InteractionType> {
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name();
     }
 }

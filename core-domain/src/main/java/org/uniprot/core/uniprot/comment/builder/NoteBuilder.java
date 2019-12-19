@@ -4,6 +4,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.NoteImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -19,12 +21,12 @@ public class NoteBuilder extends AbstractFreeTextBuilder<NoteBuilder, Note> {
     }
 
     @Override
-    protected NoteBuilder getThis() {
+    protected @Nonnull NoteBuilder getThis() {
         return this;
     }
 
     @Override
-    protected Note createConcreteInstance() {
+    protected @Nonnull Note createConcreteInstance() {
         return new NoteImpl(evidencedValues);
     }
 }

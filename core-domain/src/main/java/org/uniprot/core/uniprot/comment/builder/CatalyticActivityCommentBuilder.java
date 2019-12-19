@@ -33,23 +33,23 @@ public class CatalyticActivityCommentBuilder
                 .reaction(instance.getReaction());
     }
 
-    public CatalyticActivityCommentBuilder molecule(String molecule) {
+    public @Nonnull CatalyticActivityCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public CatalyticActivityCommentBuilder reaction(Reaction reaction) {
+    public @Nonnull CatalyticActivityCommentBuilder reaction(Reaction reaction) {
         this.reaction = reaction;
         return this;
     }
 
-    public CatalyticActivityCommentBuilder physiologicalReactions(
+    public @Nonnull CatalyticActivityCommentBuilder physiologicalReactions(
             List<PhysiologicalReaction> physiologicalReactions) {
         this.physiologicalReactions = modifiableList(physiologicalReactions);
         return this;
     }
 
-    public CatalyticActivityCommentBuilder addPhysiologicalReaction(
+    public @Nonnull CatalyticActivityCommentBuilder addPhysiologicalReaction(
             PhysiologicalReaction physiologicalReaction) {
         addOrIgnoreNull(physiologicalReaction, this.physiologicalReactions);
         return this;

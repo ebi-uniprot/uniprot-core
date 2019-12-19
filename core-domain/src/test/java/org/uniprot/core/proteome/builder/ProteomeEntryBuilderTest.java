@@ -1,9 +1,9 @@
 package org.uniprot.core.proteome.builder;
 
-import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.ObjectsForTests.updateCitationBuilderWithCommonAttributes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
 import org.uniprot.core.citation.*;
-import org.uniprot.core.citation.builder.AbstractCitationBuilder;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
 import org.uniprot.core.citation.builder.SubmissionBuilder;
 import org.uniprot.core.proteome.*;
@@ -193,11 +192,11 @@ class ProteomeEntryBuilderTest {
     @Test
     void testReferences() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
-        this.buildCitationParameters(builder);
+        updateCitationBuilderWithCommonAttributes(builder);
         JournalArticle citation1 = builder.build();
 
         SubmissionBuilder builder2 = new SubmissionBuilder();
-        buildCitationParameters(builder2);
+        updateCitationBuilderWithCommonAttributes(builder2);
 
         builder2.submittedToDatabase(SubmissionDatabase.PDB);
         Submission citation2 = builder2.build();
@@ -213,11 +212,11 @@ class ProteomeEntryBuilderTest {
     @Test
     void testAddReferenceCitation() {
         JournalArticleBuilder builder = new JournalArticleBuilder();
-        this.buildCitationParameters(builder);
+        updateCitationBuilderWithCommonAttributes(builder);
         JournalArticle citation1 = builder.build();
 
         SubmissionBuilder builder2 = new SubmissionBuilder();
-        buildCitationParameters(builder2);
+        updateCitationBuilderWithCommonAttributes(builder2);
 
         builder2.submittedToDatabase(SubmissionDatabase.PDB);
         Submission citation2 = builder2.build();
@@ -229,28 +228,6 @@ class ProteomeEntryBuilderTest {
                         .build();
         assertEquals(2, proteome.getReferences().size());
         assertThat(proteome.getReferences(), hasItem(citation2));
-    }
-
-    void buildCitationParameters(AbstractCitationBuilder<?, ?> builder) {
-        final String TITLE = "Some title";
-        final String PUBLICATION_DATE = "2015-MAY";
-        final List<String> GROUPS = asList("T1", "T2");
-        final List<String> AUTHORS = asList("Tom", "John");
-        builder.title(TITLE)
-                .publicationDate(PUBLICATION_DATE)
-                .authoringGroups(GROUPS)
-                .authors(AUTHORS)
-                .citationXrefs(
-                        asList(
-                                new DBCrossReferenceBuilder<CitationXrefType>()
-                                        .databaseType(CitationXrefType.PUBMED)
-                                        .id("id1")
-                                        .build(),
-                                new DBCrossReferenceBuilder<CitationXrefType>()
-                                        .databaseType(CitationXrefType.AGRICOLA)
-                                        .id("id2")
-                                        .build()))
-                .build();
     }
 
     @Test
@@ -374,5 +351,25 @@ class ProteomeEntryBuilderTest {
                 ProteomeEntryBuilder.newInstance().canonicalProteins(cProteins).build();
         assertEquals(2, proteome.getCanonicalProteins().size());
         assertThat(proteome.getCanonicalProteins(), hasItem(cProtein2));
+    }
+
+    @Test
+    void canAddIdAsString() {
+        ProteomeEntry entry = new ProteomeEntryBuilder().proteomeId("id").build();
+        assertNotNull(entry.getId());
+    }
+
+    @Test
+    void canAddDbSouce() {
+        String db = "sd";
+        ProteomeEntry entry = new ProteomeEntryBuilder().sourceDb(db).build();
+        assertEquals(db, entry.getSourceDb());
+    }
+
+    @Test
+    void canAddTaxonomyLineage() {
+        TaxonomyLineage taxonomyLineage = new TaxonomyLineageBuilder().build();
+        ProteomeEntry entry = new ProteomeEntryBuilder().addTaxonLineage(taxonomyLineage).build();
+        assertFalse(entry.getTaxonLineage().isEmpty());
     }
 }

@@ -21,8 +21,8 @@ class TaxonomyStatisticsBuilderTest {
         assertFalse(taxonomyStatistics.hasReferenceProteomeCount());
         assertEquals(taxonomyStatistics.getReferenceProteomeCount(), 0L);
 
-        assertFalse(taxonomyStatistics.hasCompleteProteomeCount());
-        assertEquals(taxonomyStatistics.getCompleteProteomeCount(), 0L);
+        assertFalse(taxonomyStatistics.hasProteomeCount());
+        assertEquals(taxonomyStatistics.getProteomeCount(), 0L);
     }
 
     @Test
@@ -38,8 +38,8 @@ class TaxonomyStatisticsBuilderTest {
         assertTrue(taxonomyStatistics.hasReferenceProteomeCount());
         assertEquals(taxonomyStatistics.getReferenceProteomeCount(), 1L);
 
-        assertTrue(taxonomyStatistics.hasCompleteProteomeCount());
-        assertEquals(taxonomyStatistics.getCompleteProteomeCount(), 2L);
+        assertTrue(taxonomyStatistics.hasProteomeCount());
+        assertEquals(taxonomyStatistics.getProteomeCount(), 2L);
     }
 
     @Test

@@ -3,6 +3,8 @@ package org.uniprot.core.proteome.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.proteome.Component;
@@ -18,48 +20,49 @@ public class ComponentBuilder implements Builder<ComponentBuilder, Component> {
     private ComponentType type;
     private List<DBCrossReference<ProteomeXReferenceType>> dbXReferences = new ArrayList<>();
 
-    public static ComponentBuilder newInstance() {
+    public static @Nonnull ComponentBuilder newInstance() {
         return new ComponentBuilder();
     }
 
-    public ComponentBuilder name(String name) {
+    public @Nonnull ComponentBuilder name(String name) {
         this.name = name;
         return this;
     }
 
-    public ComponentBuilder description(String description) {
+    public @Nonnull ComponentBuilder description(String description) {
         this.description = description;
         return this;
     }
 
-    public ComponentBuilder dbXReferences(
+    public @Nonnull ComponentBuilder dbXReferences(
             List<DBCrossReference<ProteomeXReferenceType>> dbXReferences) {
         this.dbXReferences = Utils.modifiableList(dbXReferences);
         return this;
     }
 
-    public ComponentBuilder addDbXReference(DBCrossReference<ProteomeXReferenceType> dbXReference) {
+    public @Nonnull ComponentBuilder addDbXReference(
+            DBCrossReference<ProteomeXReferenceType> dbXReference) {
         Utils.addOrIgnoreNull(dbXReference, dbXReferences);
         return this;
     }
 
-    public ComponentBuilder proteinCount(int proteinCount) {
+    public @Nonnull ComponentBuilder proteinCount(int proteinCount) {
         this.proteinCount = proteinCount;
         return this;
     }
 
-    public ComponentBuilder type(ComponentType type) {
+    public @Nonnull ComponentBuilder type(ComponentType type) {
         this.type = type;
         return this;
     }
 
     @Override
-    public Component build() {
+    public @Nonnull Component build() {
         return new ComponentImpl(name, description, proteinCount, type, dbXReferences);
     }
 
     @Override
-    public ComponentBuilder from(Component instance) {
+    public @Nonnull ComponentBuilder from(@Nonnull Component instance) {
         this.name = instance.getName();
         this.description = instance.getDescription();
         this.proteinCount = instance.getProteinCount();

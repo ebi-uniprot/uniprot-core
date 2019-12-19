@@ -3,6 +3,7 @@ package org.uniprot.core.citation.impl;
 import static java.util.Collections.emptyList;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
@@ -15,7 +16,8 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
     private String lastPage;
     private String volume;
 
-    private JournalArticleImpl() {
+    // no arg constructor for JSON deserialization
+    JournalArticleImpl() {
         this(emptyList(), emptyList(), emptyList(), null, null, null, null, null, null);
     }
 
@@ -101,17 +103,9 @@ public class JournalArticleImpl extends AbstractCitationImpl implements JournalA
         if (!super.equals(obj)) return false;
         if (getClass() != obj.getClass()) return false;
         JournalArticleImpl other = (JournalArticleImpl) obj;
-        if (firstPage == null) {
-            if (other.firstPage != null) return false;
-        } else if (!firstPage.equals(other.firstPage)) return false;
-        if (journal == null) {
-            if (other.journal != null) return false;
-        } else if (!journal.equals(other.journal)) return false;
-        if (lastPage == null) {
-            if (other.lastPage != null) return false;
-        } else if (!lastPage.equals(other.lastPage)) return false;
-        if (volume == null) {
-            return other.volume == null;
-        } else return volume.equals(other.volume);
+        return Objects.equals(this.journal, other.journal)
+                && Objects.equals(this.lastPage, other.lastPage)
+                && Objects.equals(this.volume, other.volume)
+                && Objects.equals(this.firstPage, other.firstPage);
     }
 }

@@ -4,6 +4,8 @@ import static org.uniprot.core.util.Utils.modifiableList;
 
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.uniprot.comment.RedoxPotential;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
@@ -20,12 +22,12 @@ public class RedoxPotentialBuilder
     }
 
     @Override
-    protected RedoxPotentialBuilder getThis() {
+    protected @Nonnull RedoxPotentialBuilder getThis() {
         return this;
     }
 
     @Override
-    protected RedoxPotential createConcreteInstance() {
+    protected @Nonnull RedoxPotential createConcreteInstance() {
         return new BPCPCommentImpl.RedoxPotentialImpl(evidencedValues);
     }
 }

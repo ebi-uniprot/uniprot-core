@@ -1,10 +1,9 @@
-package org.uniprot.core.uniprot.impl;
+package org.uniprot.core.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.uniprot.core.impl.ValueImpl;
+import org.uniprot.core.Value;
 
 class ValueImplTest {
 
@@ -17,5 +16,11 @@ class ValueImplTest {
         assertEquals(valImpl, valImpl2);
         ValueImpl valImpl3 = new ValueImpl("AnotherValue");
         assertNotEquals(valImpl, valImpl3);
+    }
+
+    @Test
+    void needDefaultConstructorForJsonDeserialization() {
+        Value obj = new ValueImpl();
+        assertNotNull(obj);
     }
 }

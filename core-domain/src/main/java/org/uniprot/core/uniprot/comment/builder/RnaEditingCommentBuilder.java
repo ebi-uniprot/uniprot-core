@@ -34,27 +34,27 @@ public final class RnaEditingCommentBuilder
                 .note(instance.getNote());
     }
 
-    public RnaEditingCommentBuilder molecule(String molecule) {
+    public @Nonnull RnaEditingCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public RnaEditingCommentBuilder locationType(RnaEditingLocationType locationType) {
+    public @Nonnull RnaEditingCommentBuilder locationType(RnaEditingLocationType locationType) {
         this.locationType = locationType;
         return this;
     }
 
-    public RnaEditingCommentBuilder positions(List<RnaEdPosition> positions) {
+    public @Nonnull RnaEditingCommentBuilder positions(List<RnaEdPosition> positions) {
         this.positions = modifiableList(positions);
         return this;
     }
 
-    public RnaEditingCommentBuilder addPosition(RnaEdPosition position) {
+    public @Nonnull RnaEditingCommentBuilder addPosition(RnaEdPosition position) {
         addOrIgnoreNull(position, this.positions);
         return this;
     }
 
-    public RnaEditingCommentBuilder note(Note note) {
+    public @Nonnull RnaEditingCommentBuilder note(Note note) {
         this.note = note;
         return this;
     }

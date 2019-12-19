@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniref.RepresentativeMember;
 import org.uniprot.core.uniref.UniRefMember;
@@ -13,13 +15,13 @@ public class RepresentativeMemberBuilder
         extends AbstractUniRefMemberBuilder<RepresentativeMemberBuilder, RepresentativeMember> {
     private Sequence sequence;
 
-    public RepresentativeMemberBuilder sequence(Sequence sequence) {
+    public @Nonnull RepresentativeMemberBuilder sequence(Sequence sequence) {
         this.sequence = sequence;
         return this;
     }
 
     @Override
-    public RepresentativeMember build() {
+    public @Nonnull RepresentativeMember build() {
         return new RepresentativeMemberImpl(
                 memberIdType,
                 memberId,
@@ -38,7 +40,7 @@ public class RepresentativeMemberBuilder
     }
 
     @Override
-    public RepresentativeMemberBuilder from(RepresentativeMember instance) {
+    public @Nonnull RepresentativeMemberBuilder from(@Nonnull RepresentativeMember instance) {
         RepresentativeMemberBuilder builder = super.fromMember(instance);
         builder.sequence(instance.getSequence());
         return builder;
@@ -49,7 +51,7 @@ public class RepresentativeMemberBuilder
     }
 
     @Override
-    protected RepresentativeMemberBuilder getThis() {
+    protected @Nonnull RepresentativeMemberBuilder getThis() {
         return this;
     }
 }

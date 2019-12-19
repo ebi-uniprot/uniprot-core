@@ -1,5 +1,7 @@
 package org.uniprot.core.citation.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.citation.PublicationDate;
 import org.uniprot.core.citation.impl.PublicationDateImpl;
@@ -16,12 +18,12 @@ public class PublicationDateBuilder
     }
 
     @Override
-    public PublicationDate build() {
+    public @Nonnull PublicationDate build() {
         return new PublicationDateImpl(value);
     }
 
     @Override
-    protected PublicationDateBuilder getThis() {
+    protected @Nonnull PublicationDateBuilder getThis() {
         return this;
     }
 }

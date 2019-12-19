@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.Value;
 import org.uniprot.core.citation.Author;
@@ -26,52 +28,52 @@ public abstract class AbstractCitationBuilder<
     protected String title = "";
     protected PublicationDate publicationDate;
 
-    public B authoringGroups(List<String> groups) {
+    public @Nonnull B authoringGroups(List<String> groups) {
         this.authoringGroups = modifiableList(groups);
         return getThis();
     }
 
-    public B addAuthorGroup(String group) {
+    public @Nonnull B addAuthorGroup(String group) {
         addOrIgnoreNull(group, this.authoringGroups);
         return getThis();
     }
 
-    public B authors(List<Author> authors) {
+    public @Nonnull B authors(List<Author> authors) {
         this.authors = modifiableList(authors);
         return getThis();
     }
 
-    public B authors(Collection<String> authors) {
+    public @Nonnull B authors(Collection<String> authors) {
         this.authors.addAll(authors.stream().map(AuthorImpl::new).collect(Collectors.toList()));
         return getThis();
     }
 
-    public B addAuthor(String author) {
-        this.authors.add(new AuthorImpl(author));
+    public @Nonnull B addAuthor(String author) {
+        if (author != null) this.authors.add(new AuthorImpl(author));
         return getThis();
     }
 
-    public B addAuthor(Author author) {
+    public @Nonnull B addAuthor(Author author) {
         addOrIgnoreNull(author, this.authors);
         return getThis();
     }
 
-    public B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
+    public @Nonnull B citationXrefs(List<DBCrossReference<CitationXrefType>> citationXrefs) {
         this.xrefs = citationXrefs;
         return getThis();
     }
 
-    public B title(String title) {
+    public @Nonnull B title(String title) {
         this.title = title;
         return getThis();
     }
 
-    public B publicationDate(String publicationDate) {
+    public @Nonnull B publicationDate(String publicationDate) {
         this.publicationDate = new PublicationDateImpl(publicationDate);
         return getThis();
     }
 
-    public B publicationDate(PublicationDate publicationDate) {
+    public @Nonnull B publicationDate(PublicationDate publicationDate) {
         this.publicationDate = publicationDate;
         return getThis();
     }
@@ -79,7 +81,7 @@ public abstract class AbstractCitationBuilder<
     protected void init(T instance) {
         this.citationXrefs(instance.getCitationXrefs())
                 .title(instance.getTitle())
-                .publicationDate(instance.getPublicationDate().getValue())
+                .publicationDate(instance.getPublicationDate())
                 .authors(
                         instance.getAuthors().stream()
                                 .map(Value::getValue)
@@ -87,5 +89,5 @@ public abstract class AbstractCitationBuilder<
                 .authoringGroups(instance.getAuthoringGroup());
     }
 
-    protected abstract B getThis();
+    protected abstract @Nonnull B getThis();
 }

@@ -1,5 +1,7 @@
 package org.uniprot.core.taxonomy.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
@@ -16,28 +18,28 @@ public class TaxonomyLineageBuilder
 
     private boolean hidden;
 
-    public TaxonomyLineageBuilder taxonId(long taxonId) {
+    public @Nonnull TaxonomyLineageBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
         return this;
     }
 
-    public TaxonomyLineageBuilder rank(TaxonomyRank rank) {
+    public @Nonnull TaxonomyLineageBuilder rank(TaxonomyRank rank) {
         this.rank = rank;
         return this;
     }
 
-    public TaxonomyLineageBuilder hidden(boolean hidden) {
+    public @Nonnull TaxonomyLineageBuilder hidden(boolean hidden) {
         this.hidden = hidden;
         return this;
     }
 
     @Override
-    public TaxonomyLineage build() {
+    public @Nonnull TaxonomyLineage build() {
         return new TaxonomyLineageImpl(taxonId, scientificName, commonName, synonyms, rank, hidden);
     }
 
     @Override
-    public TaxonomyLineageBuilder from(TaxonomyLineage instance) {
+    public @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
         if (instance != null) {
             this.taxonId(instance.getTaxonId());
             this.scientificName(instance.getScientificName());
@@ -50,7 +52,7 @@ public class TaxonomyLineageBuilder
     }
 
     @Override
-    protected TaxonomyLineageBuilder getThis() {
+    protected @Nonnull TaxonomyLineageBuilder getThis() {
         return this;
     }
 }

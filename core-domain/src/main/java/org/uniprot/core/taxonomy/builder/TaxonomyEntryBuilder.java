@@ -3,6 +3,8 @@ package org.uniprot.core.taxonomy.builder;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.*;
 import org.uniprot.core.taxonomy.impl.TaxonomyEntryImpl;
@@ -40,113 +42,113 @@ public class TaxonomyEntryBuilder
 
     private TaxonomyInactiveReason inactiveReason;
 
-    public TaxonomyEntryBuilder taxonId(long taxonId) {
+    public @Nonnull TaxonomyEntryBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
         return this;
     }
 
-    public TaxonomyEntryBuilder mnemonic(String mnemonic) {
+    public @Nonnull TaxonomyEntryBuilder mnemonic(String mnemonic) {
         this.mnemonic = mnemonic;
         return this;
     }
 
-    public TaxonomyEntryBuilder rank(TaxonomyRank rank) {
+    public @Nonnull TaxonomyEntryBuilder rank(TaxonomyRank rank) {
         this.rank = rank;
         return this;
     }
 
-    public TaxonomyEntryBuilder parentId(long parentId) {
+    public @Nonnull TaxonomyEntryBuilder parentId(long parentId) {
         this.parentId = parentId;
         return this;
     }
 
-    public TaxonomyEntryBuilder parentId(Long parentId) {
+    public @Nonnull TaxonomyEntryBuilder parentId(Long parentId) {
         this.parentId = parentId;
         return this;
     }
 
-    public TaxonomyEntryBuilder hidden(Boolean hidden) {
+    public @Nonnull TaxonomyEntryBuilder hidden(Boolean hidden) {
         this.hidden = hidden;
         return this;
     }
 
-    public TaxonomyEntryBuilder hidden(boolean hidden) {
+    public @Nonnull TaxonomyEntryBuilder hidden(boolean hidden) {
         this.hidden = hidden;
         return this;
     }
 
-    public TaxonomyEntryBuilder active(Boolean active) {
+    public @Nonnull TaxonomyEntryBuilder active(Boolean active) {
         this.active = active;
         return this;
     }
 
-    public TaxonomyEntryBuilder active(boolean active) {
+    public @Nonnull TaxonomyEntryBuilder active(boolean active) {
         this.active = active;
         return this;
     }
 
-    public TaxonomyEntryBuilder otherNames(List<String> otherNames) {
+    public @Nonnull TaxonomyEntryBuilder otherNames(List<String> otherNames) {
         this.otherNames = Utils.modifiableList(otherNames);
         return this;
     }
 
-    public TaxonomyEntryBuilder addOtherNames(String otherNames) {
+    public @Nonnull TaxonomyEntryBuilder addOtherNames(String otherNames) {
         Utils.addOrIgnoreNull(otherNames, this.otherNames);
         return this;
     }
 
-    public TaxonomyEntryBuilder lineage(List<TaxonomyLineage> lineage) {
+    public @Nonnull TaxonomyEntryBuilder lineage(List<TaxonomyLineage> lineage) {
         this.lineage = Utils.modifiableList(lineage);
         return this;
     }
 
-    public TaxonomyEntryBuilder addLineage(TaxonomyLineage lineage) {
+    public @Nonnull TaxonomyEntryBuilder addLineage(TaxonomyLineage lineage) {
         Utils.addOrIgnoreNull(lineage, this.lineage);
         return this;
     }
 
-    public TaxonomyEntryBuilder strains(List<TaxonomyStrain> strains) {
+    public @Nonnull TaxonomyEntryBuilder strains(List<TaxonomyStrain> strains) {
         this.strains = Utils.modifiableList(strains);
         return this;
     }
 
-    public TaxonomyEntryBuilder addStrain(TaxonomyStrain strains) {
+    public @Nonnull TaxonomyEntryBuilder addStrain(TaxonomyStrain strains) {
         Utils.addOrIgnoreNull(strains, this.strains);
         return this;
     }
 
-    public TaxonomyEntryBuilder hosts(List<Taxonomy> hosts) {
+    public @Nonnull TaxonomyEntryBuilder hosts(List<Taxonomy> hosts) {
         this.hosts = Utils.modifiableList(hosts);
         return this;
     }
 
-    public TaxonomyEntryBuilder addHost(Taxonomy host) {
+    public @Nonnull TaxonomyEntryBuilder addHost(Taxonomy host) {
         Utils.addOrIgnoreNull(host, this.hosts);
         return this;
     }
 
-    public TaxonomyEntryBuilder links(List<String> links) {
+    public @Nonnull TaxonomyEntryBuilder links(List<String> links) {
         this.links = Utils.modifiableList(links);
         return this;
     }
 
-    public TaxonomyEntryBuilder addLink(String link) {
+    public @Nonnull TaxonomyEntryBuilder addLink(String link) {
         Utils.addOrIgnoreNull(link, this.links);
         return this;
     }
 
-    public TaxonomyEntryBuilder statistics(TaxonomyStatistics statistics) {
+    public @Nonnull TaxonomyEntryBuilder statistics(TaxonomyStatistics statistics) {
         this.statistics = statistics;
         return this;
     }
 
-    public TaxonomyEntryBuilder inactiveReason(TaxonomyInactiveReason inactiveReason) {
+    public @Nonnull TaxonomyEntryBuilder inactiveReason(TaxonomyInactiveReason inactiveReason) {
         this.inactiveReason = inactiveReason;
         return this;
     }
 
     @Override
-    public TaxonomyEntry build() {
+    public @Nonnull TaxonomyEntry build() {
         return new TaxonomyEntryImpl(
                 taxonId,
                 scientificName,
@@ -167,7 +169,7 @@ public class TaxonomyEntryBuilder
     }
 
     @Override
-    public TaxonomyEntryBuilder from(TaxonomyEntry instance) {
+    public @Nonnull TaxonomyEntryBuilder from(@Nonnull TaxonomyEntry instance) {
         if (instance != null) {
             super.from(instance);
             this.taxonId(instance.getTaxonId());
@@ -193,7 +195,7 @@ public class TaxonomyEntryBuilder
     }
 
     @Override
-    protected TaxonomyEntryBuilder getThis() {
+    protected @Nonnull TaxonomyEntryBuilder getThis() {
         return this;
     }
 }

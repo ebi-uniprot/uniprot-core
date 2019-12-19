@@ -30,84 +30,86 @@ public class ProteinDescriptionBuilder
     private List<ProteinSection> includes = new ArrayList<>();
     private List<ProteinSection> contains = new ArrayList<>();
 
-    public ProteinDescriptionBuilder recommendedName(ProteinRecName recommendedName) {
+    public @Nonnull ProteinDescriptionBuilder recommendedName(ProteinRecName recommendedName) {
         this.recommendedName = recommendedName;
         return this;
     }
 
-    public ProteinDescriptionBuilder alternativeNames(List<ProteinAltName> alternativeNames) {
+    public @Nonnull ProteinDescriptionBuilder alternativeNames(
+            List<ProteinAltName> alternativeNames) {
         this.alternativeNames = modifiableList(alternativeNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
+    public @Nonnull ProteinDescriptionBuilder addAlternativeNames(ProteinAltName alternativeNames) {
         addOrIgnoreNull(alternativeNames, this.alternativeNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder allergenName(Name allergenName) {
+    public @Nonnull ProteinDescriptionBuilder allergenName(Name allergenName) {
         this.allergenName = allergenName;
         return this;
     }
 
-    public ProteinDescriptionBuilder biotechName(Name biotechName) {
+    public @Nonnull ProteinDescriptionBuilder biotechName(Name biotechName) {
         this.biotechName = biotechName;
         return this;
     }
 
-    public ProteinDescriptionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
+    public @Nonnull ProteinDescriptionBuilder cdAntigenNames(List<Name> cdAntigenNames) {
         this.cdAntigenNames = modifiableList(cdAntigenNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder addCdAntigenNames(Name cdAntigen) {
+    public @Nonnull ProteinDescriptionBuilder addCdAntigenNames(Name cdAntigen) {
         addOrIgnoreNull(cdAntigen, this.cdAntigenNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder innNames(List<Name> innNames) {
+    public @Nonnull ProteinDescriptionBuilder innNames(List<Name> innNames) {
         this.innNames = modifiableList(innNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder addInnNames(Name innNames) {
+    public @Nonnull ProteinDescriptionBuilder addInnNames(Name innNames) {
         addOrIgnoreNull(innNames, this.innNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder flag(FlagType flag) {
+    public @Nonnull ProteinDescriptionBuilder flag(FlagType flag) {
         if (flag != null) {
             this.flag = new FlagImpl(flag);
         }
         return this;
     }
 
-    public ProteinDescriptionBuilder submissionNames(List<ProteinSubName> submissionNames) {
+    public @Nonnull ProteinDescriptionBuilder submissionNames(
+            List<ProteinSubName> submissionNames) {
         this.submissionNames = modifiableList(submissionNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder addSubmissionNames(ProteinSubName submissionNames) {
+    public @Nonnull ProteinDescriptionBuilder addSubmissionNames(ProteinSubName submissionNames) {
         addOrIgnoreNull(submissionNames, this.submissionNames);
         return this;
     }
 
-    public ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
+    public @Nonnull ProteinDescriptionBuilder includes(List<ProteinSection> includes) {
         this.includes = modifiableList(includes);
         return this;
     }
 
-    public ProteinDescriptionBuilder addIncludes(ProteinSection includes) {
+    public @Nonnull ProteinDescriptionBuilder addIncludes(ProteinSection includes) {
         addOrIgnoreNull(includes, this.includes);
         return this;
     }
 
-    public ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
+    public @Nonnull ProteinDescriptionBuilder contains(List<ProteinSection> contains) {
         this.contains = modifiableList(contains);
         return this;
     }
 
-    public ProteinDescriptionBuilder addContains(ProteinSection contains) {
+    public @Nonnull ProteinDescriptionBuilder addContains(ProteinSection contains) {
         addOrIgnoreNull(contains, this.contains);
         return this;
     }

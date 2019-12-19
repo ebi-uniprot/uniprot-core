@@ -10,7 +10,8 @@ import org.uniprot.core.citation.*;
 public class UnpublishedImpl extends AbstractCitationImpl implements Unpublished {
     private static final long serialVersionUID = -5673746978175138190L;
 
-    private UnpublishedImpl() {
+    // no arg constructor for JSON deserialization
+    UnpublishedImpl() {
         this(emptyList(), emptyList(), emptyList(), null, null);
     }
 

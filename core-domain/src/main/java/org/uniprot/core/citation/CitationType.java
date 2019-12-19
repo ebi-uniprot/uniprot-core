@@ -1,5 +1,7 @@
 package org.uniprot.core.citation;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 public enum CitationType implements EnumDisplay<CitationType> {
@@ -24,20 +26,10 @@ public enum CitationType implements EnumDisplay<CitationType> {
         this(type, type);
     }
 
-    public static CitationType citationTypeOf(String value) {
-        for (CitationType type : CitationType.values()) {
-            if (type.getValue().equals(value)) {
-                return type;
-            }
-        }
-        throw new IllegalArgumentException(
-                "The citation with the description " + value + " doesn't exist");
-    }
-
-    public static CitationType typeOf(String value) {
+    public static @Nonnull CitationType typeOf(@Nonnull String value) {
         for (CitationType citationType : CitationType.values()) {
 
-            if (citationType.getValue().equals(value)) {
+            if (citationType.getValue().equalsIgnoreCase(value)) {
                 return citationType;
             }
         }
@@ -45,16 +37,16 @@ public enum CitationType implements EnumDisplay<CitationType> {
                 "The citation with the description " + value + " doesn't exist");
     }
 
-    public String getValue() {
+    public @Nonnull String getValue() {
         return value;
     }
 
-    public String getDisplayName() {
+    public @Nonnull String getDisplayName() {
         return displayName;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return value;
     }
 }

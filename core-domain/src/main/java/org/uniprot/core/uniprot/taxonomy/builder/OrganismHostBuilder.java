@@ -9,7 +9,7 @@ public class OrganismHostBuilder
         extends AbstractOrganismNameBuilder<OrganismHostBuilder, OrganismHost> {
     private long taxonId;
 
-    public OrganismHostBuilder taxonId(long taxonId) {
+    public @Nonnull OrganismHostBuilder taxonId(long taxonId) {
         this.taxonId = taxonId;
         return this;
     }
@@ -18,14 +18,14 @@ public class OrganismHostBuilder
         return new OrganismHostImpl(taxonId, scientificName, commonName, synonyms);
     }
 
-    public OrganismHostBuilder from(@Nonnull OrganismHost instance) {
+    public @Nonnull OrganismHostBuilder from(@Nonnull OrganismHost instance) {
         super.from(instance);
         this.taxonId(instance.getTaxonId());
         return this;
     }
 
     @Override
-    protected OrganismHostBuilder getThis() {
+    protected @Nonnull OrganismHostBuilder getThis() {
         return this;
     }
 }

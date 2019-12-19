@@ -1,5 +1,7 @@
 package org.uniprot.core.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceImpl;
@@ -17,12 +19,12 @@ public class SequenceBuilder implements Builder<SequenceBuilder, Sequence> {
     }
 
     @Override
-    public Sequence build() {
+    public @Nonnull Sequence build() {
         return new SequenceImpl(sequence);
     }
 
     @Override
-    public SequenceBuilder from(Sequence instance) {
+    public @Nonnull SequenceBuilder from(@Nonnull Sequence instance) {
         this.sequence = instance.getValue();
         return this;
     }

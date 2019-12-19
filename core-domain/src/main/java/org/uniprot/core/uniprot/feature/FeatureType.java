@@ -85,7 +85,7 @@ public enum FeatureType implements EnumDisplay<FeatureType> {
         return name();
     }
 
-    public @Nonnull static FeatureType typeOf(String value) {
+    public static @Nonnull FeatureType typeOf(@Nonnull String value) {
         for (FeatureType featureType : FeatureType.values()) {
             if (featureType.name().equalsIgnoreCase(value)) {
                 return featureType;

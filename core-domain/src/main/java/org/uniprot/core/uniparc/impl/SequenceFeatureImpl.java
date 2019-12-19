@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.uniprot.core.Location;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.util.Utils;
@@ -19,7 +19,7 @@ public class SequenceFeatureImpl implements SequenceFeature {
     /** */
     private static final long serialVersionUID = -8511912268843073779L;
 
-    private InterproGroup interproGroup;
+    private InterProGroup interproGroup;
     private SignatureDbType database;
     private String databaseId;
     private List<Location> locations;
@@ -29,7 +29,7 @@ public class SequenceFeatureImpl implements SequenceFeature {
     }
 
     public SequenceFeatureImpl(
-            InterproGroup domain, SignatureDbType dbType, String dbId, List<Location> locations) {
+            InterProGroup domain, SignatureDbType dbType, String dbId, List<Location> locations) {
         super();
         this.interproGroup = domain;
         this.database = dbType;
@@ -38,7 +38,7 @@ public class SequenceFeatureImpl implements SequenceFeature {
     }
 
     @Override
-    public InterproGroup getInterProDomain() {
+    public InterProGroup getInterProDomain() {
         return interproGroup;
     }
 

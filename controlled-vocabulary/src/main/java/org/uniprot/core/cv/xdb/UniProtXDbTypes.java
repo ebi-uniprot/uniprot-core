@@ -78,6 +78,10 @@ public enum UniProtXDbTypes {
                         String displayName = item.getString("displayName");
                         String category = item.getString("category");
                         String uriLink = item.getString("uriLink");
+
+                        String linkTp = item.optString("linkTp", "Explicit");
+                        String linkedDb = item.optString("linkedDb", null);
+
                         List<DBXRefTypeAttribute> attributes = new ArrayList<>();
                         List<Property> properties = item.getProperties("attributes");
                         if (properties != null) {
@@ -99,7 +103,9 @@ public enum UniProtXDbTypes {
                                         displayName,
                                         DatabaseCategory.typeOf(category),
                                         uriLink,
-                                        attributes);
+                                        attributes,
+                                        linkTp,
+                                        linkedDb);
                         types.add(xdbType);
                     });
             typeMap =

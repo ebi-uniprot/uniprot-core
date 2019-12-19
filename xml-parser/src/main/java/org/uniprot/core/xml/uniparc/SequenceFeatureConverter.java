@@ -3,7 +3,7 @@ package org.uniprot.core.xml.uniparc;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Location;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
@@ -60,7 +60,7 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
         return xmlObj;
     }
 
-    class InterProGroupConverter implements Converter<SeqFeatureGroupType, InterproGroup> {
+    class InterProGroupConverter implements Converter<SeqFeatureGroupType, InterProGroup> {
         private final ObjectFactory xmlFactory;
 
         InterProGroupConverter(ObjectFactory xmlFactory) {
@@ -68,12 +68,12 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
         }
 
         @Override
-        public InterproGroup fromXml(SeqFeatureGroupType xmlObj) {
+        public InterProGroup fromXml(SeqFeatureGroupType xmlObj) {
             return new InterProGroupBuilder().name(xmlObj.getName()).id(xmlObj.getId()).build();
         }
 
         @Override
-        public SeqFeatureGroupType toXml(InterproGroup uniObj) {
+        public SeqFeatureGroupType toXml(InterProGroup uniObj) {
             SeqFeatureGroupType xmlObj = xmlFactory.createSeqFeatureGroupType();
             xmlObj.setName(uniObj.getName());
             xmlObj.setId(uniObj.getId());

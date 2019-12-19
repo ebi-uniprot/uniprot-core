@@ -1,6 +1,14 @@
 package org.uniprot.core.uniprot.impl;
 
-import java.util.*;
+import static org.uniprot.core.util.Utils.notNull;
+import static org.uniprot.core.util.Utils.nullOrEmpty;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 import org.uniprot.core.Sequence;
@@ -8,8 +16,27 @@ import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.gene.Gene;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.*;
-import org.uniprot.core.uniprot.comment.*;
-import org.uniprot.core.uniprot.description.*;
+import org.uniprot.core.uniprot.comment.APIsoform;
+import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
+import org.uniprot.core.uniprot.comment.BPCPComment;
+import org.uniprot.core.uniprot.comment.CatalyticActivityComment;
+import org.uniprot.core.uniprot.comment.CofactorComment;
+import org.uniprot.core.uniprot.comment.Comment;
+import org.uniprot.core.uniprot.comment.CommentType;
+import org.uniprot.core.uniprot.comment.DiseaseComment;
+import org.uniprot.core.uniprot.comment.FreeText;
+import org.uniprot.core.uniprot.comment.FreeTextComment;
+import org.uniprot.core.uniprot.comment.MassSpectrometryComment;
+import org.uniprot.core.uniprot.comment.Note;
+import org.uniprot.core.uniprot.comment.RnaEditingComment;
+import org.uniprot.core.uniprot.comment.SequenceCautionComment;
+import org.uniprot.core.uniprot.comment.SubcellularLocation;
+import org.uniprot.core.uniprot.comment.SubcellularLocationComment;
+import org.uniprot.core.uniprot.description.ProteinAltName;
+import org.uniprot.core.uniprot.description.ProteinDescription;
+import org.uniprot.core.uniprot.description.ProteinRecName;
+import org.uniprot.core.uniprot.description.ProteinSection;
+import org.uniprot.core.uniprot.description.ProteinSubName;
 import org.uniprot.core.uniprot.evidence.Evidence;
 import org.uniprot.core.uniprot.evidence.HasEvidences;
 import org.uniprot.core.uniprot.feature.Feature;
@@ -48,7 +75,8 @@ public class UniProtEntryImpl implements UniProtEntry {
     private EntryInactiveReason inactiveReason;
     private List<TaxonomyLineage> lineages;
 
-    private UniProtEntryImpl() {
+    // no arg constructor for JSON deserialization
+    UniProtEntryImpl() {
         secondaryAccessions = Collections.emptyList();
         organismHosts = Collections.emptyList();
         genes = Collections.emptyList();
@@ -59,79 +87,6 @@ public class UniProtEntryImpl implements UniProtEntry {
         geneLocations = Collections.emptyList();
         keywords = Collections.emptyList();
         lineages = Collections.emptyList();
-    }
-
-    public UniProtEntryImpl(
-            UniProtAccession primaryAccession,
-            UniProtId uniProtId,
-            EntryInactiveReason inactiveReason) {
-        this(
-                UniProtEntryType.UNKNOWN,
-                primaryAccession,
-                null,
-                uniProtId,
-                null,
-                0,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                inactiveReason);
-    }
-
-    public UniProtEntryImpl(
-            UniProtEntryType entryType,
-            UniProtAccession primaryAccession,
-            List<UniProtAccession> secondaryAccessions,
-            UniProtId uniProtId,
-            EntryAudit entryAudit,
-            double annotationScore,
-            Organism organism,
-            List<OrganismHost> organismHosts,
-            ProteinExistence proteinExistence,
-            ProteinDescription proteinDescription,
-            List<Gene> genes,
-            List<Comment> comments,
-            List<Feature> features,
-            List<GeneLocation> geneLocations,
-            List<Keyword> keywords,
-            List<UniProtReference> references,
-            List<UniProtDBCrossReference> databaseCrossReferences,
-            Sequence sequence,
-            InternalSection internalSection,
-            List<TaxonomyLineage> lineages) {
-        this(
-                entryType,
-                primaryAccession,
-                secondaryAccessions,
-                uniProtId,
-                entryAudit,
-                annotationScore,
-                organism,
-                organismHosts,
-                proteinExistence,
-                proteinDescription,
-                genes,
-                comments,
-                features,
-                geneLocations,
-                keywords,
-                references,
-                databaseCrossReferences,
-                sequence,
-                internalSection,
-                lineages,
-                null);
     }
 
     public UniProtEntryImpl(
@@ -156,6 +111,17 @@ public class UniProtEntryImpl implements UniProtEntry {
             InternalSection internalSection,
             List<TaxonomyLineage> lineages,
             EntryInactiveReason inactiveReason) {
+        if (Objects.isNull(entryType)) {
+            throw new IllegalArgumentException("entryType is Mandatory for uniprot entry.");
+        } else if (Objects.isNull(primaryAccession) || nullOrEmpty(primaryAccession.getValue())) {
+            throw new IllegalArgumentException("primaryAccession is Mandatory for uniprot entry.");
+        } else if (Objects.isNull(uniProtId) || nullOrEmpty(uniProtId.getValue())) {
+            throw new IllegalArgumentException("uniProtId is Mandatory for uniprot entry.");
+        } else if (notNull(inactiveReason) && entryType != UniProtEntryType.INACTIVE) {
+            throw new IllegalArgumentException("Inactive entry must have type INACTIVE");
+        } else if (Objects.isNull(inactiveReason) && entryType == UniProtEntryType.INACTIVE) {
+            throw new IllegalArgumentException("Active entry must NOT have type INACTIVE");
+        }
         this.entryType = entryType;
         this.primaryAccession = primaryAccession;
         this.secondaryAccessions = Utils.unmodifiableList(secondaryAccessions);

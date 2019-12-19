@@ -3,6 +3,7 @@ package org.uniprot.core.citation.impl;
 import static java.util.Collections.emptyList;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.citation.*;
@@ -12,7 +13,8 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
     private static final long serialVersionUID = 7708555945786333862L;
     private final String patentNumber;
 
-    private PatentImpl() {
+    // no arg constructor for JSON deserialization
+    PatentImpl() {
         this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 
@@ -51,8 +53,6 @@ public class PatentImpl extends AbstractCitationImpl implements Patent {
         if (!super.equals(obj)) return false;
         if (getClass() != obj.getClass()) return false;
         PatentImpl other = (PatentImpl) obj;
-        if (patentNumber == null) {
-            return other.patentNumber == null;
-        } else return patentNumber.equals(other.patentNumber);
+        return Objects.equals(this.patentNumber, other.patentNumber);
     }
 }

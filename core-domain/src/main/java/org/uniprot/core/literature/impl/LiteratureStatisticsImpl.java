@@ -11,7 +11,8 @@ public class LiteratureStatisticsImpl implements LiteratureStatistics {
     private long unreviewedProteinCount;
     private long mappedProteinCount;
 
-    private LiteratureStatisticsImpl() {
+    // no arg constructor for JSON deserialization
+    LiteratureStatisticsImpl() {
         this(0, 0, 0);
     }
 

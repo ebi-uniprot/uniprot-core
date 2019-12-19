@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Location;
 import org.uniprot.core.json.parser.ValidateJson;
-import org.uniprot.core.uniparc.InterproGroup;
+import org.uniprot.core.uniparc.InterProGroup;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.SignatureDbType;
 import org.uniprot.core.uniparc.builder.InterProGroupBuilder;
@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class SequenceFeatureTest {
     @Test
     void testInterProGroup() {
-        InterproGroup domain =
+        InterProGroup domain =
                 new InterProGroupBuilder().id("IPR007123").name("Gelsolin-like domain").build();
 
         ValidateJson.verifyJsonRoundTripParser(

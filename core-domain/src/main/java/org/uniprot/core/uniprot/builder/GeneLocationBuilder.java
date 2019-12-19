@@ -23,7 +23,7 @@ public class GeneLocationBuilder
         return new GeneLocationImpl(geneEncodingType, value, evidences);
     }
 
-    public GeneLocationBuilder geneEncodingType(GeneEncodingType geneEncodingType) {
+    public @Nonnull GeneLocationBuilder geneEncodingType(GeneEncodingType geneEncodingType) {
         this.geneEncodingType = geneEncodingType;
         return this;
     }
@@ -36,7 +36,7 @@ public class GeneLocationBuilder
     }
 
     @Override
-    protected GeneLocationBuilder getThis() {
+    protected @Nonnull GeneLocationBuilder getThis() {
         return this;
     }
 }

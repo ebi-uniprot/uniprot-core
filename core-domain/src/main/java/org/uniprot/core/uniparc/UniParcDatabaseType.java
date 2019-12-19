@@ -1,5 +1,7 @@
 package org.uniprot.core.uniparc;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.DatabaseType;
 import org.uniprot.core.util.EnumDisplay;
 
@@ -63,20 +65,20 @@ public enum UniParcDatabaseType implements DatabaseType, EnumDisplay<UniParcData
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return displayName;
     }
 
     @Override
-    public String getName() {
+    public @Nonnull String getName() {
         return displayName;
     }
 
-    public boolean isAlive() {
+    public @Nonnull boolean isAlive() {
         return alive;
     }
 
-    public static UniParcDatabaseType typeOf(String value) {
+    public static @Nonnull UniParcDatabaseType typeOf(@Nonnull String value) {
         for (UniParcDatabaseType type : UniParcDatabaseType.values()) {
             if (type.toDisplayName().equalsIgnoreCase(value)) {
                 return type;

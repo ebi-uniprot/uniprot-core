@@ -36,22 +36,22 @@ public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption>
                 .evidences(instance.getEvidences());
     }
 
-    public AbsorptionBuilder max(int max) {
+    public @Nonnull AbsorptionBuilder max(int max) {
         this.max = max;
         return this;
     }
 
-    public AbsorptionBuilder approximate(boolean approximate) {
+    public @Nonnull AbsorptionBuilder approximate(boolean approximate) {
         this.approximate = approximate;
         return this;
     }
 
-    public AbsorptionBuilder note(Note note) {
+    public @Nonnull AbsorptionBuilder note(Note note) {
         this.note = note;
         return this;
     }
 
-    public AbsorptionBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull AbsorptionBuilder evidences(List<Evidence> evidences) {
         this.evidences = evidences;
         return this;
     }

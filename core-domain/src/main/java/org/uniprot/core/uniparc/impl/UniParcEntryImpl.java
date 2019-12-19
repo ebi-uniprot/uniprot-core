@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcDBCrossReference;
@@ -34,15 +35,6 @@ public class UniParcEntryImpl implements UniParcEntry {
         this.databaseCrossReferences = Collections.emptyList();
         this.sequenceFeatures = Collections.emptyList();
         this.taxonomies = Collections.emptyList();
-    }
-
-    public UniParcEntryImpl(
-            UniParcId uniParcId,
-            List<UniParcDBCrossReference> databaseCrossReferences,
-            Sequence sequence,
-            List<SequenceFeature> sequenceFeatures,
-            List<Taxonomy> taxonomies) {
-        this(uniParcId, databaseCrossReferences, sequence, sequenceFeatures, taxonomies, null);
     }
 
     public UniParcEntryImpl(
@@ -99,7 +91,7 @@ public class UniParcEntryImpl implements UniParcEntry {
                                                     .equals(
                                                             UniParcDBCrossReference
                                                                     .PROPERTY_NCBI_TAXONOMY_ID))
-                            .map(val -> val.getValue())
+                            .map(Property::getValue)
                             .distinct()
                             .map(this::convertTaxonomy)
                             .collect(Collectors.toList());

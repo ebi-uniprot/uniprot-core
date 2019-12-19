@@ -33,27 +33,27 @@ public final class APCommentBuilder
                 .note(instance.getNote());
     }
 
-    public APCommentBuilder events(List<APEventType> events) {
+    public @Nonnull APCommentBuilder events(List<APEventType> events) {
         this.events = modifiableList(events);
         return this;
     }
 
-    public APCommentBuilder addEvent(APEventType event) {
+    public @Nonnull APCommentBuilder addEvent(APEventType event) {
         addOrIgnoreNull(event, this.events);
         return this;
     }
 
-    public APCommentBuilder isoforms(List<APIsoform> isoforms) {
+    public @Nonnull APCommentBuilder isoforms(List<APIsoform> isoforms) {
         this.isoforms = modifiableList(isoforms);
         return this;
     }
 
-    public APCommentBuilder addIsoform(APIsoform isoform) {
+    public @Nonnull APCommentBuilder addIsoform(APIsoform isoform) {
         addOrIgnoreNull(isoform, this.isoforms);
         return this;
     }
 
-    public APCommentBuilder note(Note note) {
+    public @Nonnull APCommentBuilder note(Note note) {
         this.note = note;
         return this;
     }

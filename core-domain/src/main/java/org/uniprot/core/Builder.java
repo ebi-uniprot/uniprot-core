@@ -1,5 +1,7 @@
 package org.uniprot.core;
 
+import javax.annotation.Nonnull;
+
 /**
  * The contract for all builders to adhere to, and also implement a {@code from} method to create a
  * builder whose values are copied from a specified instance.
@@ -14,6 +16,7 @@ public interface Builder<B extends Builder, T> {
      *
      * @return an instance of type, {@code T}.
      */
+    @Nonnull
     T build();
 
     /**
@@ -23,5 +26,6 @@ public interface Builder<B extends Builder, T> {
      * @param instance the instance whose values are copied from.
      * @return a new builder of type {@code B} based on the values in {@code instance}.
      */
-    B from(T instance);
+    @Nonnull
+    B from(@Nonnull T instance);
 }

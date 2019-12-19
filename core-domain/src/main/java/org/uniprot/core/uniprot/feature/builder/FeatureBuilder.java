@@ -54,52 +54,52 @@ public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
                 .dbXref(instance.getDbXref());
     }
 
-    public FeatureBuilder type(FeatureType type) {
+    public @Nonnull FeatureBuilder type(FeatureType type) {
         this.type = type;
         return this;
     }
 
-    public FeatureBuilder location(FeatureLocation location) {
+    public @Nonnull FeatureBuilder location(FeatureLocation location) {
         this.location = location;
         return this;
     }
 
-    public FeatureBuilder description(String description) {
+    public @Nonnull FeatureBuilder description(String description) {
         this.description = new FeatureDescriptionImpl(description);
         return this;
     }
 
-    public FeatureBuilder description(FeatureDescription description) {
+    public @Nonnull FeatureBuilder description(FeatureDescription description) {
         this.description = description;
         return this;
     }
 
-    public FeatureBuilder featureId(FeatureId featureId) {
+    public @Nonnull FeatureBuilder featureId(FeatureId featureId) {
         this.featureId = featureId;
         return this;
     }
 
-    public FeatureBuilder featureId(String featureId) {
+    public @Nonnull FeatureBuilder featureId(String featureId) {
         this.featureId = new FeatureIdImpl(featureId);
         return this;
     }
 
-    public FeatureBuilder alternativeSequence(AlternativeSequence alternativeSequence) {
+    public @Nonnull FeatureBuilder alternativeSequence(AlternativeSequence alternativeSequence) {
         this.alternativeSequence = alternativeSequence;
         return this;
     }
 
-    public FeatureBuilder dbXref(DBCrossReference<FeatureXDbType> dbXref) {
+    public @Nonnull FeatureBuilder dbXref(DBCrossReference<FeatureXDbType> dbXref) {
         this.dbXref = dbXref;
         return this;
     }
 
-    public FeatureBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull FeatureBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public FeatureBuilder evidence(Evidence evidence) {
+    public @Nonnull FeatureBuilder evidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

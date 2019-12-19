@@ -1,5 +1,7 @@
 package org.uniprot.core.proteome;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 /**
@@ -20,18 +22,18 @@ public enum ComponentType implements EnumDisplay<ComponentType> {
         this.name = name;
     }
 
-    public String getName() {
+    public @Nonnull String getName() {
         return name;
     }
 
     @Override
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return name;
     }
 
-    public static ComponentType fromValue(String type) {
+    public static @Nonnull ComponentType fromValue(@Nonnull String type) {
         for (ComponentType gnType : ComponentType.values()) {
-            if (gnType.getName().equals(type)) return gnType;
+            if (gnType.getName().equalsIgnoreCase(type)) return gnType;
         }
         return ComponentType.UNPLACED;
     }

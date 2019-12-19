@@ -1,5 +1,7 @@
 package org.uniprot.core.uniprot.comment;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.util.EnumDisplay;
 
 /**
@@ -56,7 +58,7 @@ public enum CommentType implements EnumDisplay<CommentType> {
         this.xmlDisplayValue = xmlDisplayValue;
     }
 
-    public static CommentType typeOf(String value) {
+    public static @Nonnull CommentType typeOf(@Nonnull String value) {
         if (value != null)
             for (CommentType commentType : CommentType.values()) {
                 if (commentType.toDisplayName().trim().equalsIgnoreCase(value.trim())) {
@@ -74,7 +76,7 @@ public enum CommentType implements EnumDisplay<CommentType> {
      *
      * @return the name of this enum constant
      */
-    public String toDisplayName() {
+    public @Nonnull String toDisplayName() {
         return value;
     }
 
@@ -83,7 +85,7 @@ public enum CommentType implements EnumDisplay<CommentType> {
      *
      * @return
      */
-    public String toXmlDisplayName() {
+    public @Nonnull String toXmlDisplayName() {
         return xmlDisplayValue;
     }
 }

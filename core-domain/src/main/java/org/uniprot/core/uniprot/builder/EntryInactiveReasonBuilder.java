@@ -19,17 +19,17 @@ public class EntryInactiveReasonBuilder
     private InactiveReasonType inactiveReasonType;
     private List<String> mergeDemergeTo = new ArrayList<>();
 
-    public EntryInactiveReasonBuilder type(InactiveReasonType inactiveReasonType) {
+    public @Nonnull EntryInactiveReasonBuilder type(InactiveReasonType inactiveReasonType) {
         this.inactiveReasonType = inactiveReasonType;
         return this;
     }
 
-    public EntryInactiveReasonBuilder mergeDemergeTo(List<String> mergeDemergeTo) {
+    public @Nonnull EntryInactiveReasonBuilder mergeDemergeTo(List<String> mergeDemergeTo) {
         this.mergeDemergeTo = modifiableList(mergeDemergeTo);
         return this;
     }
 
-    public EntryInactiveReasonBuilder addMergeDemergeTo(String mergeDemergeTo) {
+    public @Nonnull EntryInactiveReasonBuilder addMergeDemergeTo(String mergeDemergeTo) {
         Utils.addOrIgnoreNull(mergeDemergeTo, this.mergeDemergeTo);
         return this;
     }

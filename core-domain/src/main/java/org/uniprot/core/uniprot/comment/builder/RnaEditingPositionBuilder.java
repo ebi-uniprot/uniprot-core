@@ -34,17 +34,17 @@ public class RnaEditingPositionBuilder
         return this.evidences(instance.getEvidences()).position(instance.getPosition());
     }
 
-    public RnaEditingPositionBuilder position(String position) {
+    public @Nonnull RnaEditingPositionBuilder position(String position) {
         this.position = position;
         return this;
     }
 
-    public RnaEditingPositionBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull RnaEditingPositionBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public RnaEditingPositionBuilder addEvidence(Evidence evidence) {
+    public @Nonnull RnaEditingPositionBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

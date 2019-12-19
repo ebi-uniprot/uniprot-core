@@ -11,9 +11,7 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineTransformer;
 import org.uniprot.core.scorer.uniprotkb.UniProtEntryScored;
 import org.uniprot.core.uniprot.UniProtEntry;
 import org.uniprot.core.uniprot.UniProtEntryType;
-import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 import org.uniprot.core.uniprot.builder.UniProtEntryBuilder;
-import org.uniprot.core.uniprot.builder.UniProtIdBuilder;
 import org.uniprot.core.uniprot.comment.Comment;
 import org.uniprot.core.uniprot.comment.CommentType;
 
@@ -42,12 +40,8 @@ class CCScoredTest {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC);
         UniProtEntry entry =
-                new UniProtEntryBuilder()
-                        .primaryAccession(new UniProtAccessionBuilder("P12345").build())
-                        .uniProtId(new UniProtIdBuilder("ID_12345").build())
-                        .active()
-                        .entryType(UniProtEntryType.SWISSPROT)
-                        .comments(comments)
+                new UniProtEntryBuilder("P12345", "ID_12345", UniProtEntryType.SWISSPROT)
+                        .commentsSet(comments)
                         .build();
 
         UniProtEntryScored scored = new UniProtEntryScored(entry);
@@ -143,12 +137,8 @@ class CCScoredTest {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         List<Comment> comments = ccLineTransformer.transformNoHeader(CC_2);
         UniProtEntry entry =
-                new UniProtEntryBuilder()
-                        .primaryAccession(new UniProtAccessionBuilder("P12345").build())
-                        .uniProtId(new UniProtIdBuilder("ID_12345").build())
-                        .active()
-                        .entryType(UniProtEntryType.SWISSPROT)
-                        .comments(comments)
+                new UniProtEntryBuilder("P12345", "ID_12345", UniProtEntryType.SWISSPROT)
+                        .commentsSet(comments)
                         .build();
 
         UniProtEntryScored scored = new UniProtEntryScored(entry);

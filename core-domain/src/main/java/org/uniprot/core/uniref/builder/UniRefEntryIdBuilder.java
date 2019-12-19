@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.uniref.UniRefEntryId;
 import org.uniprot.core.uniref.impl.UniRefEntryIdImpl;
@@ -16,12 +18,12 @@ public class UniRefEntryIdBuilder
     }
 
     @Override
-    public UniRefEntryId build() {
+    public @Nonnull UniRefEntryId build() {
         return new UniRefEntryIdImpl(value);
     }
 
     @Override
-    protected UniRefEntryIdBuilder getThis() {
+    protected @Nonnull UniRefEntryIdBuilder getThis() {
         return this;
     }
 }

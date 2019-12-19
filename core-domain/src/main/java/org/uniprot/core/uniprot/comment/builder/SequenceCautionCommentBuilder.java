@@ -36,33 +36,33 @@ public final class SequenceCautionCommentBuilder
                 .molecule(instance.getMolecule());
     }
 
-    public SequenceCautionCommentBuilder sequenceCautionType(
+    public @Nonnull SequenceCautionCommentBuilder sequenceCautionType(
             SequenceCautionType sequenceCautionType) {
         this.sequenceCautionType = sequenceCautionType;
         return this;
     }
 
-    public SequenceCautionCommentBuilder molecule(String molecule) {
+    public @Nonnull SequenceCautionCommentBuilder molecule(String molecule) {
         this.molecule = molecule;
         return this;
     }
 
-    public SequenceCautionCommentBuilder sequence(String sequence) {
+    public @Nonnull SequenceCautionCommentBuilder sequence(String sequence) {
         this.sequence = sequence;
         return this;
     }
 
-    public SequenceCautionCommentBuilder note(String note) {
+    public @Nonnull SequenceCautionCommentBuilder note(String note) {
         this.note = note;
         return this;
     }
 
-    public SequenceCautionCommentBuilder evidences(List<Evidence> evidences) {
+    public @Nonnull SequenceCautionCommentBuilder evidences(List<Evidence> evidences) {
         this.evidences = modifiableList(evidences);
         return this;
     }
 
-    public SequenceCautionCommentBuilder addEvidence(Evidence evidence) {
+    public @Nonnull SequenceCautionCommentBuilder addEvidence(Evidence evidence) {
         addOrIgnoreNull(evidence, this.evidences);
         return this;
     }

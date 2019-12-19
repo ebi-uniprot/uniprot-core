@@ -11,7 +11,8 @@ public class SubmissionImpl extends AbstractCitationImpl implements Submission {
     private static final long serialVersionUID = 7406371948424303592L;
     private SubmissionDatabase submissionDatabase;
 
-    private SubmissionImpl() {
+    // no arg constructor for JSON deserialization
+    SubmissionImpl() {
         this(emptyList(), emptyList(), emptyList(), null, null, null);
     }
 

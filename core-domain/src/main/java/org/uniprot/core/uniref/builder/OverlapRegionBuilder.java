@@ -1,5 +1,7 @@
 package org.uniprot.core.uniref.builder;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniref.OverlapRegion;
 import org.uniprot.core.uniref.impl.OverlapRegionImpl;
@@ -13,21 +15,21 @@ public class OverlapRegionBuilder implements Builder<OverlapRegionBuilder, Overl
     private int end;
 
     @Override
-    public OverlapRegion build() {
+    public @Nonnull OverlapRegion build() {
         return new OverlapRegionImpl(start, end);
     }
 
     @Override
-    public OverlapRegionBuilder from(OverlapRegion instance) {
+    public @Nonnull OverlapRegionBuilder from(@Nonnull OverlapRegion instance) {
         return start(instance.getStart()).end(instance.getEnd());
     }
 
-    public OverlapRegionBuilder start(int start) {
+    public @Nonnull OverlapRegionBuilder start(int start) {
         this.start = start;
         return this;
     }
 
-    public OverlapRegionBuilder end(int end) {
+    public @Nonnull OverlapRegionBuilder end(int end) {
         this.end = end;
         return this;
     }

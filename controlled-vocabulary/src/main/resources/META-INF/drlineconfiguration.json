@@ -21,6 +21,53 @@
 		]
 	},
 	{
+		"name": "GenBank",
+		"displayName": "GenBank",
+		"category": "SEQ",
+		"uriLink": "https://www.ncbi.nlm.nih.gov/protein/%s",
+		"linkTp": "Implicit",
+		"linkedDb": "EMBL",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%s"			
+			},
+			{
+				"name": "Status",
+				"xmlTag":"status"
+			},
+			{
+				"name": "MoleculeType",
+				"xmlTag":"molecule type"
+			}
+		]
+	},
+	
+	{
+		"name": "DDBJ",
+		"displayName": "DDBJ",
+		"category": "SEQ",
+		"uriLink": "http://getentry.ddbj.nig.ac.jp/getentry/dad/%s",
+		"linkTp": "Implicit",
+		"linkedDb": "EMBL",
+		"attributes": [
+			{
+				"name": "ProteinId",
+				"xmlTag":"protein sequence ID",
+				"uriLink":"http://getentry.ddbj.nig.ac.jp/getentry/na/%s"			
+			},
+			{
+				"name": "Status",
+				"xmlTag":"status"
+			},
+			{
+				"name": "MoleculeType",
+				"xmlTag":"molecule type"
+			}
+		]
+	},
+	{
 		"name": "CCDS",
 		"displayName": "CCDS",
 		"category": "SEQ",
@@ -1188,12 +1235,6 @@
 		"uriLink": "http://genomernai.org/genedetails/%s"	
 	},
 	{
-		"name": "PMAP-CutDB",
-		"displayName": "PMAP-CutDB",
-		"category": "OTHER",
-		"uriLink": "http://substrate.burnham.org/lookup/uniprot/%u"
-	},
-	{
 		"name": "PRO",
 		"displayName": "PRO",
 		"category": "OTHER",
@@ -1492,5 +1533,11 @@
 		"displayName": "ABCD",
 		"category": "PAM",
 		"uriLink": "https://web.expasy.org/cgi-bin/abcd/search_abcd.pl?input=%u"
+	},
+	{
+		"name": "RNAct",
+		"displayName": "RNAct",
+		"category": "OTHER",
+		"uriLink": "https://rnact.crg.eu/%d?query=%u"
 	}
 ]
