@@ -289,7 +289,7 @@ class UniProtXDbTypesTest {
         verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 9);
         verifyGroupSize(
                 UniProtXDbTypes.INSTANCE.getDBTypesByCategory(ENZYME_AND_PATHWAY_DATABASES), 8);
-        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(OTHER), 8);
+        verifyGroupSize(UniProtXDbTypes.INSTANCE.getDBTypesByCategory(OTHER), 7);
         verifyGroupSize(
                 UniProtXDbTypes.INSTANCE.getDBTypesByCategory(GENE_EXPRESSION_DATABASES), 5);
         verifyGroupSize(
