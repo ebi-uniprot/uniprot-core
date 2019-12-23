@@ -115,7 +115,8 @@ public class UniProtEntryImpl implements UniProtEntry {
             throw new IllegalArgumentException("entryType is Mandatory for uniprot entry.");
         } else if (Objects.isNull(primaryAccession) || nullOrEmpty(primaryAccession.getValue())) {
             throw new IllegalArgumentException("primaryAccession is Mandatory for uniprot entry.");
-        } else if (Objects.isNull(uniProtId) || nullOrEmpty(uniProtId.getValue())) {
+        } else if ((Objects.isNull(uniProtId) || nullOrEmpty(uniProtId.getValue()))
+                && entryType != UniProtEntryType.INACTIVE) {
             throw new IllegalArgumentException("uniProtId is Mandatory for uniprot entry.");
         } else if (notNull(inactiveReason) && entryType != UniProtEntryType.INACTIVE) {
             throw new IllegalArgumentException("Inactive entry must have type INACTIVE");

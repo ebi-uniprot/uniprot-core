@@ -64,6 +64,15 @@ public class UniProtEntryBuilder implements Builder<UniProtEntryBuilder, UniProt
                 inactiveReason);
     }
 
+    public UniProtEntryBuilder(String primaryAccession, EntryInactiveReason inactiveReason) {
+        this(new UniProtAccessionBuilder(primaryAccession).build(), inactiveReason);
+    }
+
+    public UniProtEntryBuilder(
+            UniProtAccession primaryAccession, EntryInactiveReason inactiveReason) {
+        this(primaryAccession, null, inactiveReason);
+    }
+
     public UniProtEntryBuilder(
             UniProtAccession primaryAccession,
             UniProtId uniProtId,
