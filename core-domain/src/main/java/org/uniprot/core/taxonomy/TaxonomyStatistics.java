@@ -10,13 +10,21 @@ public interface TaxonomyStatistics extends Serializable {
 
     long getReferenceProteomeCount();
 
-    long getCompleteProteomeCount();
+    long getProteomeCount();
 
-    boolean hasReviewedProteinCount();
+    default boolean hasReviewedProteinCount() {
+        return getReviewedProteinCount() > 0L;
+    }
 
-    boolean hasUnreviewedProteinCount();
+    default boolean hasUnreviewedProteinCount() {
+        return getUnreviewedProteinCount() > 0L;
+    }
 
-    boolean hasReferenceProteomeCount();
+    default boolean hasReferenceProteomeCount() {
+        return getReferenceProteomeCount() > 0L;
+    }
 
-    boolean hasCompleteProteomeCount();
+    default boolean hasProteomeCount() {
+        return getProteomeCount() > 0L;
+    }
 }

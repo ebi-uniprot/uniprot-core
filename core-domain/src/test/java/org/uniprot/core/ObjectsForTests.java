@@ -21,9 +21,11 @@ import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.LiteratureStatistics;
+import org.uniprot.core.literature.LiteratureStoreEntry;
 import org.uniprot.core.literature.builder.LiteratureEntryBuilder;
 import org.uniprot.core.literature.builder.LiteratureMappedReferenceBuilder;
 import org.uniprot.core.literature.builder.LiteratureStatisticsBuilder;
+import org.uniprot.core.literature.builder.LiteratureStoreEntryBuilder;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.proteome.impl.*;
 import org.uniprot.core.taxonomy.*;
@@ -373,11 +375,25 @@ public class ObjectsForTests {
                 .sourceId("source Id");
     }
 
+    public static LiteratureStoreEntry createCompleteLiteratureStoreEntry() {
+        return new LiteratureStoreEntryBuilder()
+                .literatureEntry(createCompleteLiteratureEntry())
+                .literatureMappedReference(
+                        Collections.singletonList(createCompleteLiteratureMappedReference()))
+                .build();
+    }
+
+    public static LiteratureStoreEntry createCompleteLiteratureStoreEntryWithAdd() {
+        return new LiteratureStoreEntryBuilder()
+                .literatureEntry(createCompleteLiteratureEntry())
+                .addLiteratureMappedReference(createCompleteLiteratureMappedReference())
+                .build();
+    }
+
     public static LiteratureEntry createCompleteLiteratureEntry() {
         return createBasicLiteratureEntryBuilder()
                 .authors(singletonList(new AuthorImpl("author name")))
                 .authoringGroup(singletonList("authoring group"))
-                .literatureMappedReference(singletonList(createCompleteLiteratureMappedReference()))
                 .build();
     }
 
@@ -385,7 +401,6 @@ public class ObjectsForTests {
         return createBasicLiteratureEntryBuilder()
                 .addAuthor(new AuthorImpl("author name"))
                 .addAuthoringGroup("authoring group")
-                .addLiteratureMappedReference(createCompleteLiteratureMappedReference())
                 .build();
     }
 
@@ -499,7 +514,7 @@ public class ObjectsForTests {
                 .reviewedProteinCount(10)
                 .unreviewedProteinCount(20)
                 .referenceProteomeCount(1)
-                .completeProteomeCount(2)
+                .proteomeCount(2)
                 .build();
     }
 

@@ -22,23 +22,23 @@ public class UniProtXDbTypeDetail implements Serializable {
         this.attributes.add(DEFAULT_ATTRIBUTE);
     }
 
-//    public UniProtXDbTypeDetail(
-//            String name,
-//            String displayName,
-//            DatabaseCategory category,
-//            String uriLink,
-//            List<DBXRefTypeAttribute> attributes) {
-//        super();
-//        this.name = name;
-//        this.displayName = displayName;
-//        this.category = category;
-//        this.uriLink = uriLink;
-//
-//        this.attributes = new ArrayList<>();
-//        if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
-//        else this.attributes.add(DEFAULT_ATTRIBUTE);
-//    }
-//    
+    //    public UniProtXDbTypeDetail(
+    //            String name,
+    //            String displayName,
+    //            DatabaseCategory category,
+    //            String uriLink,
+    //            List<DBXRefTypeAttribute> attributes) {
+    //        super();
+    //        this.name = name;
+    //        this.displayName = displayName;
+    //        this.category = category;
+    //        this.uriLink = uriLink;
+    //
+    //        this.attributes = new ArrayList<>();
+    //        if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
+    //        else this.attributes.add(DEFAULT_ATTRIBUTE);
+    //    }
+    //
     public UniProtXDbTypeDetail(
             String name,
             String displayName,
@@ -80,12 +80,12 @@ public class UniProtXDbTypeDetail implements Serializable {
     }
 
     public String getLinkTp() {
-  return linkTp;}
+        return linkTp;
+    }
 
   public String getLinkedReason() {
   return linkedReason;}
-
-  @Override
+    @Override
     public int hashCode() {
         return Objects.hash(
                 this.attributes, this.category, this.displayName, this.name, this.uriLink);
