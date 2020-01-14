@@ -15,7 +15,7 @@ public class UniProtXDbTypeDetail implements Serializable {
     private String uriLink;
     private List<DBXRefTypeAttribute> attributes;
     private String linkTp ="Explicit";
-    private String linkedDb= null;
+    private String linkedReason= null;
 
     private UniProtXDbTypeDetail() {
         this.attributes = new ArrayList<>();
@@ -46,14 +46,14 @@ public class UniProtXDbTypeDetail implements Serializable {
             String uriLink,
             List<DBXRefTypeAttribute> attributes,
             String linkTp,
-            String linkedDb) {
+            String linkedReason) {
         super();
         this.name = name;
         this.displayName = displayName;
         this.category = category;
         this.uriLink = uriLink;
         this.linkTp= linkTp;
-        this.linkedDb = linkedDb;
+        this.linkedReason = linkedReason;
         this.attributes = new ArrayList<>();
         if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
         else this.attributes.add(DEFAULT_ATTRIBUTE);
@@ -82,8 +82,8 @@ public class UniProtXDbTypeDetail implements Serializable {
     public String getLinkTp() {
   return linkTp;}
 
-  public String getLinkedDb() {
-  return linkedDb;}
+  public String getLinkedReason() {
+  return linkedReason;}
 
   @Override
     public int hashCode() {
