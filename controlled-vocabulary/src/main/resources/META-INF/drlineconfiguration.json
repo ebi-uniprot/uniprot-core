@@ -8,7 +8,7 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"https://www.ebi.ac.uk/ena/data/view/%ProteinId"			
+				"uriLink":"https://www.ebi.ac.uk/ena/data/view/%proteinId"			
 			},
 			{
 				"name": "Status",
@@ -31,7 +31,7 @@
 			{
 				"name": "ProteinId",
 				"xmlTag":"protein sequence ID",
-				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%ProteinId"			
+				"uriLink":"https://www.ncbi.nlm.nih.gov/nuccore/%proteinId"			
 			},
 			{
 				"name": "Status",
@@ -918,7 +918,7 @@
 		"displayName": "GenAtlas",
 		"category": "ORG",
 		"linkTp": "Implicit",
-		"linkedDb": "DR:HGNC",
+		"linkedReason": "DR:HGNC",
 		"uriLink": "http://genatlas.medecine.univ-paris5.fr/fiche.php?symbol=%geneName"
 		
 	},

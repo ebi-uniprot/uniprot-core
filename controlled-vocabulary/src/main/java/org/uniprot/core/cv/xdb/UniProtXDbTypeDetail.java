@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class UniProtXDbTypeDetail implements Serializable {
+
     private static final long serialVersionUID = 8751881513996820892L;
+	public static String EXPLICIT = "Explicit";
     private static final DBXRefTypeAttribute DEFAULT_ATTRIBUTE =
             new DBXRefTypeAttribute("Description", "description", null);
     private String name;
@@ -14,7 +16,7 @@ public class UniProtXDbTypeDetail implements Serializable {
     private DatabaseCategory category;
     private String uriLink;
     private List<DBXRefTypeAttribute> attributes;
-    private String linkTp ="Explicit";
+    private String linkTp =EXPLICIT;
     private String linkedReason= null;
 
     private UniProtXDbTypeDetail() {

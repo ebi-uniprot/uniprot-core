@@ -80,7 +80,7 @@ public enum UniProtXDbTypes {
                         String uriLink = item.getString("uriLink");
 
                         String linkTp = item.optString("linkTp", "Explicit");
-                        String linkedDb = item.optString("linkedDb", null);
+                        String linkedReason = item.optString("linkedReason", null);
 
                         List<DBXRefTypeAttribute> attributes = new ArrayList<>();
                         List<Property> properties = item.getProperties("attributes");
@@ -105,14 +105,14 @@ public enum UniProtXDbTypes {
                                         uriLink,
                                         attributes,
                                         linkTp,
-                                        linkedDb);
+                                        linkedReason);
                         types.add(xdbType);
                     });
             typeMap =
                     types.stream()
                             .collect(
                                     Collectors.toMap(
-                                            UniProtXDbTypeDetail::getDisplayName, val -> val));
+                                            UniProtXDbTypeDetail::getName, val -> val));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
