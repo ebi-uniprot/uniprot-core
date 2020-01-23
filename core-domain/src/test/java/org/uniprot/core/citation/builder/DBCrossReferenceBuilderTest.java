@@ -24,8 +24,7 @@ class DBCrossReferenceBuilderTest {
                         .id("id1")
                         .build();
 
-        DBCrossReference<CitationXrefType> copiedInstance =
-                new DBCrossReferenceBuilder<CitationXrefType>().from(xref).build();
+        DBCrossReference<CitationXrefType> copiedInstance = DBCrossReferenceBuilder.from(xref).build();
 
         assertThat(xref, is(copiedInstance));
     }
