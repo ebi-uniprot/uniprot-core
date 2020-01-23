@@ -23,7 +23,7 @@ public abstract class AbstractEvidencedValueBuilder<
     protected String value;
     protected List<Evidence> evidences = new ArrayList<>();
 
-    public static void init(@Nonnull AbstractEvidencedValueBuilder builder, @Nonnull EvidencedValue instance) {
+    protected static <B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue> void init(@Nonnull B builder, @Nonnull E instance) {
         builder.evidences(instance.getEvidences())
           .value(instance.getValue());
     }

@@ -40,7 +40,7 @@ public abstract class AbstractOrganismNameBuilder<
         return getThis();
     }
 
-    protected static void init(@Nonnull AbstractOrganismNameBuilder builder, @Nonnull OrganismName organismName) {
+    protected static <B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName> void init(@Nonnull B builder, @Nonnull T organismName) {
         builder.synonyms(organismName.getSynonyms())
           .scientificName(organismName.getScientificName())
           .commonName(organismName.getCommonName());
