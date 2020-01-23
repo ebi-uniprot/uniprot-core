@@ -10,8 +10,7 @@ import org.uniprot.core.uniref.impl.UniRefEntryIdImpl;
  * @author jluo
  * @date: 12 Aug 2019
  */
-public class UniRefEntryIdBuilder
-        extends AbstractValueBuilder<UniRefEntryIdBuilder, UniRefEntryId> {
+public class UniRefEntryIdBuilder extends AbstractValueBuilder<UniRefEntryId> {
 
     public UniRefEntryIdBuilder(String value) {
         super(value);

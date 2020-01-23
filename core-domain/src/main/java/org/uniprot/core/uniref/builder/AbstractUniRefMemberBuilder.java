@@ -22,7 +22,7 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
  */
 public abstract class AbstractUniRefMemberBuilder<
                 B extends AbstractUniRefMemberBuilder<B, T>, T extends UniRefMember>
-        implements Builder<B, T> {
+        implements Builder<T> {
     protected UniRefMemberIdType memberIdType;
     protected String memberId;
     protected String organismName;

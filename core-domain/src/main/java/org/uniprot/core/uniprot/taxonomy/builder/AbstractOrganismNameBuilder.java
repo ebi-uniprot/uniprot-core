@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.taxonomy.OrganismName;
 
 public abstract class AbstractOrganismNameBuilder<
                 B extends AbstractOrganismNameBuilder<B, T>, T extends OrganismName>
-        implements Builder<B, T> {
+        implements Builder<T> {
     protected String scientificName = "";
     protected String commonName = "";
     protected List<String> synonyms = new ArrayList<>();

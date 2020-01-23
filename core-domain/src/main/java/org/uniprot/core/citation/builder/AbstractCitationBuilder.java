@@ -21,7 +21,7 @@ import org.uniprot.core.citation.impl.PublicationDateImpl;
 
 public abstract class AbstractCitationBuilder<
                 B extends AbstractCitationBuilder<B, T>, T extends Citation>
-        implements CitationBuilder<B, T> {
+        implements CitationBuilder<T> {
     protected List<String> authoringGroups = new ArrayList<>();
     protected List<Author> authors = new ArrayList<>();
     protected List<DBCrossReference<CitationXrefType>> xrefs = new ArrayList<>();

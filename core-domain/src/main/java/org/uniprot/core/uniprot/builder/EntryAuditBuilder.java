@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.impl.EntryAuditImpl;
  *
  * @author Edd
  */
-public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit> {
+public class EntryAuditBuilder implements Builder<EntryAudit> {
     private LocalDate firstPublicDate;
     private LocalDate lastAnnotationUpdateDate;
     private LocalDate lastSequenceUpdateDate;

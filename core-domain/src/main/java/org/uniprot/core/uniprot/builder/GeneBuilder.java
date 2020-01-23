@@ -13,7 +13,7 @@ import org.uniprot.core.gene.*;
 import org.uniprot.core.uniprot.impl.GeneImpl;
 
 /** @author lgonzales */
-public class GeneBuilder implements Builder<GeneBuilder, Gene> {
+public class GeneBuilder implements Builder<Gene> {
 
     private GeneName geneName = null;
     private List<GeneNameSynonym> synonyms = new ArrayList<>();

@@ -14,8 +14,7 @@ import org.uniprot.core.uniprot.description.impl.FlagImpl;
 import org.uniprot.core.uniprot.description.impl.ProteinDescriptionImpl;
 
 /** @author lgonzales */
-public class ProteinDescriptionBuilder
-        implements Builder<ProteinDescriptionBuilder, ProteinDescription> {
+public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
 
     private ProteinRecName recommendedName;
     private List<ProteinAltName> alternativeNames = new ArrayList<>();

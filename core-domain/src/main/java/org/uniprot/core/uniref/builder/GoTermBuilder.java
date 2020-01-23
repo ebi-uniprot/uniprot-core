@@ -11,7 +11,7 @@ import org.uniprot.core.uniref.impl.GoTermImpl;
  * @author jluo
  * @date: 12 Aug 2019
  */
-public class GoTermBuilder implements Builder<GoTermBuilder, GoTerm> {
+public class GoTermBuilder implements Builder<GoTerm> {
 
     private GoTermType type;
     private String id;

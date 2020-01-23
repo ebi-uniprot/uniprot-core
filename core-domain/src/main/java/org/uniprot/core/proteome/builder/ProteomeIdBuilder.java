@@ -6,7 +6,7 @@ import org.uniprot.core.builder.AbstractValueBuilder;
 import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.impl.ProteomeIdImpl;
 
-public class ProteomeIdBuilder extends AbstractValueBuilder<ProteomeIdBuilder, ProteomeId> {
+public class ProteomeIdBuilder extends AbstractValueBuilder<ProteomeId> {
     public ProteomeIdBuilder(String value) {
         super(value);
     }

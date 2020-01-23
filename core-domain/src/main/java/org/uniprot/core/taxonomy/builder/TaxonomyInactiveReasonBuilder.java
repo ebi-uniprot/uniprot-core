@@ -8,8 +8,7 @@ import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
 import org.uniprot.core.taxonomy.impl.TaxonomyInactiveReasonImpl;
 
 /** @author lgonzales */
-public class TaxonomyInactiveReasonBuilder
-        implements Builder<TaxonomyInactiveReasonBuilder, TaxonomyInactiveReason> {
+public class TaxonomyInactiveReasonBuilder implements Builder<TaxonomyInactiveReason> {
 
     private TaxonomyInactiveReasonType inactiveReasonType;
 

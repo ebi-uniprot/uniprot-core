@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.evidence.impl.EvidenceLineImpl;
  *
  * @author Edd
  */
-public class EvidenceLineBuilder implements Builder<EvidenceLineBuilder, EvidenceLine> {
+public class EvidenceLineBuilder implements Builder<EvidenceLine> {
     private String evidence;
     private LocalDate createDate;
     private String curator;

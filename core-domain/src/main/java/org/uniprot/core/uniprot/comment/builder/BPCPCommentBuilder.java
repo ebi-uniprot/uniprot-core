@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 
-public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuilder, BPCPComment> {
+public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
     private String molecule;
     private Absorption absorption = null;
     private KineticParameters kineticParameters = null;

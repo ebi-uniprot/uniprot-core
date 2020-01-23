@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
-public class LiteratureMappedReferenceBuilder
-        implements Builder<LiteratureMappedReferenceBuilder, LiteratureMappedReference> {
+public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappedReference> {
 
     private UniProtAccession uniprotAccession;
 

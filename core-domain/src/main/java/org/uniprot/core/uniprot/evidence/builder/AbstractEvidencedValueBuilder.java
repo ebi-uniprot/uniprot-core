@@ -19,7 +19,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  */
 public abstract class AbstractEvidencedValueBuilder<
                 B extends AbstractEvidencedValueBuilder<B, E>, E extends EvidencedValue>
-        implements Builder<B, E> {
+        implements Builder<E> {
     protected String value;
     protected List<Evidence> evidences = new ArrayList<>();
 

@@ -18,7 +18,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public class MaximumVelocityBuilder implements Builder<MaximumVelocityBuilder, MaximumVelocity> {
+public class MaximumVelocityBuilder implements Builder<MaximumVelocity> {
     private double velocity;
     private String unit;
     private String enzyme;

@@ -7,8 +7,7 @@ import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.RedundantProteome;
 import org.uniprot.core.proteome.impl.RedundantProteomeImpl;
 
-public class RedundantProteomeBuilder
-        implements Builder<RedundantProteomeBuilder, RedundantProteome> {
+public class RedundantProteomeBuilder implements Builder<RedundantProteome> {
     private ProteomeId id;
     private Float similarity;
 

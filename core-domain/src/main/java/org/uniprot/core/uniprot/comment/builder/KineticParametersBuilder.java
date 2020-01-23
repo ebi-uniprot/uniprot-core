@@ -20,8 +20,7 @@ import org.uniprot.core.uniprot.comment.impl.KineticParametersImpl;
  *
  * @author Edd
  */
-public final class KineticParametersBuilder
-        implements Builder<KineticParametersBuilder, KineticParameters> {
+public final class KineticParametersBuilder implements Builder<KineticParameters> {
     private List<MaximumVelocity> maximumVelocities = new ArrayList<>();
     private List<MichaelisConstant> michaelisConstants = new ArrayList<>();
     private Note note;

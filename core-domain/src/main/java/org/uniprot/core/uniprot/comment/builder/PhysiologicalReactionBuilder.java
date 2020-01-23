@@ -21,8 +21,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public final class PhysiologicalReactionBuilder
-        implements Builder<PhysiologicalReactionBuilder, PhysiologicalReaction> {
+public final class PhysiologicalReactionBuilder implements Builder<PhysiologicalReaction> {
     private PhysiologicalDirectionType directionType;
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences = new ArrayList<>();

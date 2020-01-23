@@ -18,8 +18,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public class RnaEditingPositionBuilder
-        implements Builder<RnaEditingPositionBuilder, RnaEdPosition> {
+public class RnaEditingPositionBuilder implements Builder<RnaEdPosition> {
     private String position;
     private List<Evidence> evidences = new ArrayList<>();
 

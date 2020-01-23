@@ -10,7 +10,7 @@ import org.uniprot.core.uniref.impl.OverlapRegionImpl;
  * @author jluo
  * @date: 12 Aug 2019
  */
-public class OverlapRegionBuilder implements Builder<OverlapRegionBuilder, OverlapRegion> {
+public class OverlapRegionBuilder implements Builder<OverlapRegion> {
     private int start;
     private int end;
 

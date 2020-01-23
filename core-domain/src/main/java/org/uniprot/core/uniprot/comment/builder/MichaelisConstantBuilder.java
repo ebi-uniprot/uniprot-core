@@ -19,8 +19,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public final class MichaelisConstantBuilder
-        implements Builder<MichaelisConstantBuilder, MichaelisConstant> {
+public final class MichaelisConstantBuilder implements Builder<MichaelisConstant> {
     private double constant;
     private MichaelisConstantUnit unit;
     private String substrate;

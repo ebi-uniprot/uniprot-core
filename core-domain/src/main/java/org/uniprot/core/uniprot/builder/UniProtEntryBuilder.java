@@ -20,7 +20,7 @@ import org.uniprot.core.uniprot.taxonomy.Organism;
 import org.uniprot.core.uniprot.taxonomy.OrganismHost;
 import org.uniprot.core.uniprot.xdb.UniProtDBCrossReference;
 
-public class UniProtEntryBuilder implements Builder<UniProtEntryBuilder, UniProtEntry> {
+public class UniProtEntryBuilder implements Builder<UniProtEntry> {
 
     private UniProtAccession primaryAccession;
     private UniProtEntryType entryType;

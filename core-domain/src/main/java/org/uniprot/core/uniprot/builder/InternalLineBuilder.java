@@ -12,7 +12,7 @@ import org.uniprot.core.uniprot.impl.InternalLineImpl;
  *
  * @author Edd
  */
-public class InternalLineBuilder extends AbstractValueBuilder<InternalLineBuilder, InternalLine> {
+public class InternalLineBuilder extends AbstractValueBuilder<InternalLine> {
     private InternalLineType type;
 
     public InternalLineBuilder(InternalLineType type, String value) {

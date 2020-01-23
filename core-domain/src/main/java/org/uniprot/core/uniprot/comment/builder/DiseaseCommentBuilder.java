@@ -7,8 +7,7 @@ import org.uniprot.core.uniprot.comment.DiseaseComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.DiseaseCommentImpl;
 
-public class DiseaseCommentBuilder
-        implements CommentBuilder<DiseaseCommentBuilder, DiseaseComment> {
+public class DiseaseCommentBuilder implements CommentBuilder<DiseaseComment> {
     String molecule;
     private Disease disease;
     private Note note;

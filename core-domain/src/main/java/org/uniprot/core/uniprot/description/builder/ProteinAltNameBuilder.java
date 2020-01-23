@@ -14,7 +14,7 @@ import org.uniprot.core.uniprot.description.Name;
 import org.uniprot.core.uniprot.description.ProteinAltName;
 import org.uniprot.core.uniprot.description.impl.ProteinAltNameImpl;
 
-public class ProteinAltNameBuilder implements Builder<ProteinAltNameBuilder, ProteinAltName> {
+public class ProteinAltNameBuilder implements Builder<ProteinAltName> {
 
     private Name fullName;
     private List<Name> shortNames = new ArrayList<>();

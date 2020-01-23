@@ -22,7 +22,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction> {
+public final class ReactionBuilder implements Builder<Reaction> {
     private String name;
     private ECNumber ecNumber;
     private List<DBCrossReference<ReactionReferenceType>> reactionReferences = new ArrayList<>();

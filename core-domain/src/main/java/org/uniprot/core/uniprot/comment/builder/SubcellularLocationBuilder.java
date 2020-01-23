@@ -12,8 +12,7 @@ import org.uniprot.core.uniprot.comment.impl.SubcellularLocationImpl;
  *
  * @author Edd
  */
-public final class SubcellularLocationBuilder
-        implements Builder<SubcellularLocationBuilder, SubcellularLocation> {
+public final class SubcellularLocationBuilder implements Builder<SubcellularLocation> {
     private SubcellularLocationValue location;
     private SubcellularLocationValue topology;
     private SubcellularLocationValue orientation;

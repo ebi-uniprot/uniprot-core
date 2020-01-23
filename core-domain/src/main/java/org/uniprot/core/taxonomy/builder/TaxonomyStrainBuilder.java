@@ -10,7 +10,7 @@ import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.taxonomy.impl.TaxonomyStrainImpl;
 import org.uniprot.core.util.Utils;
 
-public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, TaxonomyStrain> {
+public class TaxonomyStrainBuilder implements Builder<TaxonomyStrain> {
 
     private String name;
 

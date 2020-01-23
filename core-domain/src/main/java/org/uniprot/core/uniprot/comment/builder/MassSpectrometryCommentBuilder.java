@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class MassSpectrometryCommentBuilder
-        implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
+public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryComment> {
     String molecule;
     private MassSpectrometryMethod method;
     private Float molWeight;

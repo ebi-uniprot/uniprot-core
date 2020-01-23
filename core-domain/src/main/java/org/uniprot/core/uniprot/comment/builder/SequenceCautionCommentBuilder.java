@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.comment.SequenceCautionType;
 import org.uniprot.core.uniprot.comment.impl.SequenceCautionCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class SequenceCautionCommentBuilder
-        implements CommentBuilder<SequenceCautionCommentBuilder, SequenceCautionComment> {
+public final class SequenceCautionCommentBuilder implements CommentBuilder<SequenceCautionComment> {
     String molecule;
     private SequenceCautionType sequenceCautionType;
     private String sequence;

@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.comment.PhysiologicalReaction;
 import org.uniprot.core.uniprot.comment.Reaction;
 import org.uniprot.core.uniprot.comment.impl.CatalyticActivityCommentImpl;
 
-public class CatalyticActivityCommentBuilder
-        implements CommentBuilder<CatalyticActivityCommentBuilder, CatalyticActivityComment> {
+public class CatalyticActivityCommentBuilder implements CommentBuilder<CatalyticActivityComment> {
     private String molecule;
     private Reaction reaction;
     private List<PhysiologicalReaction> physiologicalReactions = new ArrayList<>();

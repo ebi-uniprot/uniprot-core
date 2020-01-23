@@ -19,7 +19,7 @@ import org.uniprot.core.uniprot.comment.impl.APIsoformImpl;
  *
  * @author Edd
  */
-public class APIsoformBuilder implements Builder<APIsoformBuilder, APIsoform> {
+public class APIsoformBuilder implements Builder<APIsoform> {
     private IsoformName name;
     private List<IsoformName> synonyms = new ArrayList<>();
     private List<IsoformId> isoformIds = new ArrayList<>();

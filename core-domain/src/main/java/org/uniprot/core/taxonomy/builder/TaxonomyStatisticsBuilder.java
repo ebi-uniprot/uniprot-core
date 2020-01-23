@@ -6,8 +6,7 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
 import org.uniprot.core.taxonomy.impl.TaxonomyStatisticsImpl;
 
-public class TaxonomyStatisticsBuilder
-        implements Builder<TaxonomyStatisticsBuilder, TaxonomyStatistics> {
+public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatistics> {
 
     private long reviewedProteinCount;
     private long unreviewedProteinCount;

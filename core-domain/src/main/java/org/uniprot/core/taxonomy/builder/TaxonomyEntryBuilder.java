@@ -14,7 +14,7 @@ import org.uniprot.core.util.Utils;
 
 public class TaxonomyEntryBuilder
         extends AbstractOrganismNameBuilder<TaxonomyEntryBuilder, TaxonomyEntry>
-        implements Builder<TaxonomyEntryBuilder, TaxonomyEntry> {
+        implements Builder<TaxonomyEntry> {
 
     private long taxonId;
 

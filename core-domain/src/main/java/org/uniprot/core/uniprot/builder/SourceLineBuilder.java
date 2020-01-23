@@ -11,7 +11,7 @@ import org.uniprot.core.uniprot.impl.SourceLineImpl;
  *
  * @author Edd
  */
-public class SourceLineBuilder extends AbstractValueBuilder<SourceLineBuilder, SourceLine> {
+public class SourceLineBuilder extends AbstractValueBuilder<SourceLine> {
     public SourceLineBuilder(String value) {
         super(value);
     }

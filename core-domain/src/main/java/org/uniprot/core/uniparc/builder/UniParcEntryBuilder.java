@@ -19,7 +19,7 @@ import org.uniprot.core.util.Utils;
  * @author jluo
  * @date: 23 May 2019
  */
-public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParcEntry> {
+public class UniParcEntryBuilder implements Builder<UniParcEntry> {
     private UniParcId uniParcId;
     private List<UniParcDBCrossReference> databaseCrossReferences = new ArrayList<>();
     private Sequence sequence;

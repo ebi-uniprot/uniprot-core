@@ -14,8 +14,7 @@ import org.uniprot.core.uniprot.comment.RnaEditingComment;
 import org.uniprot.core.uniprot.comment.RnaEditingLocationType;
 import org.uniprot.core.uniprot.comment.impl.RnaEditingCommentImpl;
 
-public final class RnaEditingCommentBuilder
-        implements CommentBuilder<RnaEditingCommentBuilder, RnaEditingComment> {
+public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditingComment> {
     private String molecule;
     private RnaEditingLocationType locationType;
     private List<RnaEdPosition> positions = new ArrayList<>();

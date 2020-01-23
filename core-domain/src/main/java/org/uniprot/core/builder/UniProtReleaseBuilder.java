@@ -12,7 +12,7 @@ import org.uniprot.core.impl.UniProtReleaseImpl;
  * @author jluo
  * @date: 13 Aug 2019
  */
-public class UniProtReleaseBuilder implements Builder<UniProtReleaseBuilder, UniProtRelease> {
+public class UniProtReleaseBuilder implements Builder<UniProtRelease> {
     private String currentVersion;
     private LocalDate currentReleaseDate;
     private String nextVersion;

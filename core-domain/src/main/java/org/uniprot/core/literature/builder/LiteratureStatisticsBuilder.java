@@ -7,8 +7,7 @@ import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureStatisticsImpl;
 
 /** @author lgonzales */
-public class LiteratureStatisticsBuilder
-        implements Builder<LiteratureStatisticsBuilder, LiteratureStatistics> {
+public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics> {
 
     private long reviewedProteinCount;
     private long unreviewedProteinCount;

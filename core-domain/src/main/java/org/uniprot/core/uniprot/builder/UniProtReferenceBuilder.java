@@ -20,7 +20,7 @@ import org.uniprot.core.uniprot.impl.UniProtReferenceImpl;
  *
  * @author Edd
  */
-public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder, UniProtReference> {
+public class UniProtReferenceBuilder implements Builder<UniProtReference> {
     private Citation citation;
     private List<String> referencePositions = new ArrayList<>();
     private List<ReferenceComment> referenceComments = new ArrayList<>();

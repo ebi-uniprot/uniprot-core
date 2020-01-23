@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.comment.CofactorComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.CofactorCommentImpl;
 
-public final class CofactorCommentBuilder
-        implements CommentBuilder<CofactorCommentBuilder, CofactorComment> {
+public final class CofactorCommentBuilder implements CommentBuilder<CofactorComment> {
     private String molecule;
     private List<Cofactor> cofactors = new ArrayList<>();
     private Note note;

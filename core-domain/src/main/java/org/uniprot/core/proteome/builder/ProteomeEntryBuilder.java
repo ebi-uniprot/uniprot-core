@@ -15,7 +15,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprot.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
 
-public class ProteomeEntryBuilder implements Builder<ProteomeEntryBuilder, ProteomeEntry> {
+public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId id;
     private String description;
     private Taxonomy taxonomy;

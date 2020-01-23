@@ -15,8 +15,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public class TemperatureDependenceBuilder
-        extends AbstractFreeTextBuilder<TemperatureDependenceBuilder, TemperatureDependence> {
+public class TemperatureDependenceBuilder extends AbstractFreeTextBuilder<TemperatureDependence> {
     public TemperatureDependenceBuilder(List<EvidencedValue> evidencedValues) {
         this.evidencedValues = modifiableList(evidencedValues);
     }

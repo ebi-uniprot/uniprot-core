@@ -20,7 +20,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor> {
+public final class CofactorBuilder implements Builder<Cofactor> {
     private String name;
     private List<Evidence> evidences = new ArrayList<>();
     private DBCrossReference<CofactorReferenceType> cofactorReference;

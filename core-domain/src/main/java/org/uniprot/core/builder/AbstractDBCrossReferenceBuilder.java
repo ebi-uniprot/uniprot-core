@@ -21,7 +21,7 @@ public abstract class AbstractDBCrossReferenceBuilder<
                 B extends AbstractDBCrossReferenceBuilder<B, T, D>,
                 T extends DatabaseType,
                 D extends DBCrossReference<T>>
-        implements Builder<B, D> {
+        implements Builder<D> {
     protected T databaseType;
     protected String id;
     protected List<Property> properties = new ArrayList<>();

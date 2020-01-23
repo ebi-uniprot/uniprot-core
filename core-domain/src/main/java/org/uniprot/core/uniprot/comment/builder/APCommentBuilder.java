@@ -14,8 +14,7 @@ import org.uniprot.core.uniprot.comment.AlternativeProductsComment;
 import org.uniprot.core.uniprot.comment.Note;
 import org.uniprot.core.uniprot.comment.impl.AlternativeProductsCommentImpl;
 
-public final class APCommentBuilder
-        implements CommentBuilder<APCommentBuilder, AlternativeProductsComment> {
+public final class APCommentBuilder implements CommentBuilder<AlternativeProductsComment> {
     private List<APEventType> events = new ArrayList<>();
     private List<APIsoform> isoforms = new ArrayList<>();
     private Note note;

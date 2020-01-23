@@ -10,7 +10,7 @@ import org.uniprot.core.uniprot.UniProtAccession;
 import org.uniprot.core.uniprot.UniProtEntryType;
 import org.uniprot.core.uniprot.builder.UniProtAccessionBuilder;
 
-public class ProteinBuilder implements Builder<ProteinBuilder, Protein> {
+public class ProteinBuilder implements Builder<Protein> {
     private UniProtAccession accession;
     private UniProtEntryType entryType;
     private long sequenceLength;

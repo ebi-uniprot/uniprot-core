@@ -4,7 +4,7 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 
-public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, CrossRefEntry> {
+public class CrossRefEntryBuilder implements Builder<CrossRefEntry> {
     private String name;
     private String accession;
     private String abbrev;

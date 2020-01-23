@@ -20,7 +20,7 @@ import org.uniprot.core.util.Utils;
  * @author jluo
  * @date: 13 Aug 2019
  */
-public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEntry> {
+public class UniRefEntryBuilder implements Builder<UniRefEntry> {
     private UniRefEntryId id;
     private String name;
     private int memberCount;

@@ -17,7 +17,7 @@ import org.uniprot.core.util.Utils;
  * @author jluo
  * @date: 23 May 2019
  */
-public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, SequenceFeature> {
+public class SequenceFeatureBuilder implements Builder<SequenceFeature> {
     private InterProGroup interproGroup;
     private SignatureDbType dbType;
     private String dbId;

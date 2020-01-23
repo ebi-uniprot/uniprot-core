@@ -5,8 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.comment.impl.WebResourceCommentImpl;
 
-public final class WebResourceCommentBuilder
-        implements CommentBuilder<WebResourceCommentBuilder, WebResourceComment> {
+public final class WebResourceCommentBuilder implements CommentBuilder<WebResourceComment> {
     String molecule;
     private String resourceName;
     private String resourceUrl;

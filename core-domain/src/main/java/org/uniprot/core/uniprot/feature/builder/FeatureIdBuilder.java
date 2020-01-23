@@ -11,7 +11,7 @@ import org.uniprot.core.uniprot.feature.impl.FeatureIdImpl;
  *
  * @author Edd
  */
-public class FeatureIdBuilder extends AbstractValueBuilder<FeatureIdBuilder, FeatureId> {
+public class FeatureIdBuilder extends AbstractValueBuilder<FeatureId> {
     @Override
     public @Nonnull FeatureId build() {
         return new FeatureIdImpl(value);

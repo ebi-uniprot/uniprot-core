@@ -10,7 +10,7 @@ import javax.annotation.Nonnull;
  *
  * @author Edd
  */
-public interface Builder<B extends Builder, T> {
+public interface Builder<T> {
     /**
      * Creates the instance of type, {@code T}.
      *

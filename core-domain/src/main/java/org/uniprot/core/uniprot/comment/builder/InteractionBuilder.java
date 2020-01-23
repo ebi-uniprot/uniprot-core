@@ -12,7 +12,7 @@ import org.uniprot.core.uniprot.comment.Interactor;
 import org.uniprot.core.uniprot.comment.impl.InteractionImpl;
 import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
 
-public final class InteractionBuilder implements Builder<InteractionBuilder, Interaction> {
+public final class InteractionBuilder implements Builder<Interaction> {
     private InteractionType type;
     private UniProtAccession uniProtAccession;
     private String geneName;

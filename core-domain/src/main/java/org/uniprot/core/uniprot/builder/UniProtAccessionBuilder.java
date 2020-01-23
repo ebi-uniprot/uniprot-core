@@ -11,8 +11,7 @@ import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
  *
  * @author Edd
  */
-public class UniProtAccessionBuilder
-        extends AbstractValueBuilder<UniProtAccessionBuilder, UniProtAccession> {
+public class UniProtAccessionBuilder extends AbstractValueBuilder<UniProtAccession> {
     public UniProtAccessionBuilder(String value) {
         super(value);
     }

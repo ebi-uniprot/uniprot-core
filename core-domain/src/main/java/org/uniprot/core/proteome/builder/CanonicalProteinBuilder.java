@@ -11,7 +11,7 @@ import org.uniprot.core.proteome.Protein;
 import org.uniprot.core.proteome.impl.CanonicalProteinImpl;
 import org.uniprot.core.util.Utils;
 
-public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder, CanonicalProtein> {
+public class CanonicalProteinBuilder implements Builder<CanonicalProtein> {
     private Protein canonicalProtein;
     private List<Protein> relatedProteins = new ArrayList<>();
 

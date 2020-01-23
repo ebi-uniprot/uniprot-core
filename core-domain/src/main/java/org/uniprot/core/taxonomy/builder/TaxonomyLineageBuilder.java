@@ -7,8 +7,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageImpl;
 
-public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, TaxonomyLineage> {
-
+public class TaxonomyLineageBuilder implements Builder<TaxonomyLineage> {
     private long taxonId;
 
     private String scientificName;

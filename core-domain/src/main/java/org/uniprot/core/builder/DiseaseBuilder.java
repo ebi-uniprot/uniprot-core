@@ -11,7 +11,7 @@ import org.uniprot.core.cv.disease.impl.DiseaseImpl;
 import org.uniprot.core.cv.keyword.Keyword;
 import org.uniprot.core.util.Utils;
 
-public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
+public class DiseaseBuilder implements Builder<Disease> {
     private String id;
     private String accession;
     private String acronym;

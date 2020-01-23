@@ -14,8 +14,7 @@ import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-public class FreeTextCommentBuilder
-        implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
+public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
     private CommentType commentType;
     private String molecule;
     private List<EvidencedValue> texts = new ArrayList<>();

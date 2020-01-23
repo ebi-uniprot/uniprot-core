@@ -17,7 +17,7 @@ import org.uniprot.core.literature.impl.LiteratureEntryImpl;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
-public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, LiteratureEntry> {
+public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
 
     private Long pubmedId;
     private String doiId;

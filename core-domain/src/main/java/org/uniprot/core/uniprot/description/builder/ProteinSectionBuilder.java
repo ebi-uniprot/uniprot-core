@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.ProteinSection;
 import org.uniprot.core.uniprot.description.impl.ProteinSectionImpl;
 
-public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, ProteinSection> {
+public class ProteinSectionBuilder implements Builder<ProteinSection> {
 
     private ProteinRecName recommendedName;
     private List<ProteinAltName> alternativeNames = new ArrayList<>();

@@ -16,8 +16,7 @@ import org.uniprot.core.util.Utils;
  * @author lgonzales
  * @since 2019-12-05
  */
-public class LiteratureStoreEntryBuilder
-        implements Builder<LiteratureStoreEntryBuilder, LiteratureStoreEntry> {
+public class LiteratureStoreEntryBuilder implements Builder<LiteratureStoreEntry> {
 
     private LiteratureEntry literatureEntry;
     private List<LiteratureMappedReference> literatureMappedReferences = new ArrayList<>();

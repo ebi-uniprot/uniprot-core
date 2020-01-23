@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.impl.ProteinRecNameImpl;
 
 /** @author lgonzales */
-public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, ProteinRecName> {
+public class ProteinRecNameBuilder implements Builder<ProteinRecName> {
 
     private Name fullName;
     private List<Name> shortNames = new ArrayList<>();

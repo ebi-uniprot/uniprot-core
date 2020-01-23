@@ -16,9 +16,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public abstract class AbstractFreeTextBuilder<
-                B extends AbstractFreeTextBuilder<B, F>, F extends FreeText>
-        implements Builder<AbstractFreeTextBuilder, F> {
+public abstract class AbstractFreeTextBuilder< F extends FreeText> implements Builder<F> {
     protected List<EvidencedValue> evidencedValues = new ArrayList<>();
 
     @Override

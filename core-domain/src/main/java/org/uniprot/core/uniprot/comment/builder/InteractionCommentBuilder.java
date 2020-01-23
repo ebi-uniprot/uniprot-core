@@ -12,8 +12,7 @@ import org.uniprot.core.uniprot.comment.Interaction;
 import org.uniprot.core.uniprot.comment.InteractionComment;
 import org.uniprot.core.uniprot.comment.impl.InteractionCommentImpl;
 
-public class InteractionCommentBuilder
-        implements CommentBuilder<InteractionCommentBuilder, InteractionComment> {
+public class InteractionCommentBuilder implements CommentBuilder<InteractionComment> {
     private List<Interaction> interactions = new ArrayList<>();
 
     public @Nonnull InteractionCommentBuilder interactions(List<Interaction> interactions) {

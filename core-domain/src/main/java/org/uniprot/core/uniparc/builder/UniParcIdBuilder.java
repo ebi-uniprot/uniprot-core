@@ -10,7 +10,7 @@ import org.uniprot.core.uniparc.impl.UniParcIdImpl;
  * @author jluo
  * @date: 23 May 2019
  */
-public class UniParcIdBuilder extends AbstractValueBuilder<UniParcIdBuilder, UniParcId> {
+public class UniParcIdBuilder extends AbstractValueBuilder<UniParcId> {
     public UniParcIdBuilder(String value) {
         super(value);
     }

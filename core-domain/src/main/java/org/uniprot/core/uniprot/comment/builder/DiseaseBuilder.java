@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
 import org.uniprot.core.uniprot.comment.impl.DiseaseImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
+public final class DiseaseBuilder implements Builder<Disease> {
     private String diseaseId;
     private String diseaseAc;
     private String acronym;

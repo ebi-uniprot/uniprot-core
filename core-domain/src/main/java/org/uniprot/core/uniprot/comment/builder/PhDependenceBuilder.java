@@ -15,8 +15,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public class PhDependenceBuilder
-        extends AbstractFreeTextBuilder<PhDependenceBuilder, PhDependence> {
+public class PhDependenceBuilder extends AbstractFreeTextBuilder<PhDependence> {
     public PhDependenceBuilder(List<EvidencedValue> evidencedValues) {
         this.evidencedValues = modifiableList(evidencedValues);
     }
