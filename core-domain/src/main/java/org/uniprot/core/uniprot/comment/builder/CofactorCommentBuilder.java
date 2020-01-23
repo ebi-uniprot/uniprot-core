@@ -23,10 +23,8 @@ public final class CofactorCommentBuilder
         return new CofactorCommentImpl(molecule, cofactors, note);
     }
 
-    @Override
-    public @Nonnull CofactorCommentBuilder from(@Nonnull CofactorComment instance) {
-        cofactors.clear();
-        return this.cofactors(instance.getCofactors())
+    public static @Nonnull CofactorCommentBuilder from(@Nonnull CofactorComment instance) {
+        return new CofactorCommentBuilder().cofactors(instance.getCofactors())
                 .molecule(instance.getMolecule())
                 .note(instance.getNote());
     }

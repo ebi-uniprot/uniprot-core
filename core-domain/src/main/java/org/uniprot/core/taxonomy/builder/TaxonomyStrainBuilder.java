@@ -36,12 +36,9 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrainBuilder, Tax
         return new TaxonomyStrainImpl(name, synonyms);
     }
 
-    @Override
-    public @Nonnull TaxonomyStrainBuilder from(@Nonnull TaxonomyStrain instance) {
-        if (instance != null) {
-            this.name(instance.getName());
-            this.synonyms(instance.getSynonyms());
-        }
-        return this;
+    public static @Nonnull TaxonomyStrainBuilder from(@Nonnull TaxonomyStrain instance) {
+        return new TaxonomyStrainBuilder()
+            .name(instance.getName())
+            .synonyms(instance.getSynonyms());
     }
 }

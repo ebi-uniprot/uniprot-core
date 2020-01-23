@@ -40,12 +40,9 @@ public abstract class AbstractOrganismNameBuilder<
         return getThis();
     }
 
-    @Override
-    public @Nonnull B from(@Nonnull T organismName) {
-        this.synonyms.clear();
-        this.scientificName = organismName.getScientificName();
-        this.commonName = organismName.getCommonName();
-        this.synonyms = modifiableList(organismName.getSynonyms());
-        return getThis();
+    protected static void init(@Nonnull AbstractOrganismNameBuilder builder, @Nonnull OrganismName organismName) {
+        builder.synonyms(organismName.getSynonyms())
+          .scientificName(organismName.getScientificName())
+          .commonName(organismName.getCommonName());
     }
 }

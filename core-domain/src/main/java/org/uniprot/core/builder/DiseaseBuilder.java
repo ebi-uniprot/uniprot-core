@@ -40,18 +40,18 @@ public class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
                 this.unreviewedProteinCount);
     }
 
-    @Override
-    public @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
-        this.id = instance.getId();
-        this.accession = instance.getAccession();
-        this.acronym = instance.getAcronym();
-        this.definition = instance.getDefinition();
-        this.alternativeNames = instance.getAlternativeNames();
-        this.crossReferences = instance.getCrossReferences();
-        this.keywords = instance.getKeywords();
-        this.reviewedProteinCount = instance.getReviewedProteinCount();
-        this.unreviewedProteinCount = instance.getUnreviewedProteinCount();
-        return this;
+    public static @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
+        DiseaseBuilder builder = new DiseaseBuilder();
+        builder.id(instance.getId())
+        .accession(instance.getAccession())
+        .acronym(instance.getAcronym())
+        .definition(instance.getDefinition())
+        .alternativeNames(instance.getAlternativeNames())
+        .crossReferences(instance.getCrossReferences())
+        .keywords(instance.getKeywords())
+        .reviewedProteinCount(instance.getReviewedProteinCount())
+        .unreviewedProteinCount(instance.getUnreviewedProteinCount());
+        return builder;
     }
 
     public @Nonnull DiseaseBuilder id(String id) {

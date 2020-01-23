@@ -55,8 +55,7 @@ public class EntryAuditBuilder implements Builder<EntryAuditBuilder, EntryAudit>
                 sequenceVersion);
     }
 
-    @Override
-    public @Nonnull EntryAuditBuilder from(@Nonnull EntryAudit instance) {
+    public static @Nonnull EntryAuditBuilder from(@Nonnull EntryAudit instance) {
         return new EntryAuditBuilder()
                 .lastAnnotationUpdate(instance.getLastAnnotationUpdateDate())
                 .lastSequenceUpdate(instance.getLastSequenceUpdateDate())

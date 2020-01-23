@@ -44,9 +44,9 @@ public class UniProtReleaseBuilder implements Builder<UniProtReleaseBuilder, Uni
                 currentVersion, currentReleaseDate, nextVersion, nextReleaseDate);
     }
 
-    @Override
-    public @Nonnull UniProtReleaseBuilder from(@Nonnull UniProtRelease instance) {
-        return this.currentVersion(instance.getCurrentVersion())
+    public static  @Nonnull UniProtReleaseBuilder from(@Nonnull UniProtRelease instance) {
+        return new UniProtReleaseBuilder()
+                .currentVersion(instance.getCurrentVersion())
                 .currentReleaseDate(instance.getCurrentReleaseDate())
                 .nextVersion(instance.getNextVersion())
                 .nextReleaseDate(instance.getNextReleaseDate());

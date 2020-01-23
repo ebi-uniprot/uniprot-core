@@ -22,8 +22,7 @@ public class UniRefEntryIdBuilder
         return new UniRefEntryIdImpl(value);
     }
 
-    @Override
-    protected @Nonnull UniRefEntryIdBuilder getThis() {
-        return this;
+    public static @Nonnull UniRefEntryIdBuilder from(@Nonnull UniRefEntryId instance) {
+        return new UniRefEntryIdBuilder(instance.getValue());
     }
 }

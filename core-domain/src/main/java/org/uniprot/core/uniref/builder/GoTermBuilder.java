@@ -31,8 +31,7 @@ public class GoTermBuilder implements Builder<GoTermBuilder, GoTerm> {
         return this;
     }
 
-    @Override
-    public GoTermBuilder from(@Nonnull GoTerm instance) {
-        return this.type(instance.getType()).id(instance.getId());
+    public static @Nonnull GoTermBuilder from(@Nonnull GoTerm instance) {
+        return new GoTermBuilder().type(instance.getType()).id(instance.getId());
     }
 }

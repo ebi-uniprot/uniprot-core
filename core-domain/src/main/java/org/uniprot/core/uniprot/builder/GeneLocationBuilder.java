@@ -28,11 +28,11 @@ public class GeneLocationBuilder
         return this;
     }
 
-    @Override
-    public @Nonnull GeneLocationBuilder from(@Nonnull GeneLocation instance) {
-        super.from(instance);
-        this.geneEncodingType(instance.getGeneEncodingType());
-        return this;
+    public static @Nonnull GeneLocationBuilder from(@Nonnull GeneLocation instance) {
+        GeneLocationBuilder builder = new GeneLocationBuilder();
+        AbstractEvidencedValueBuilder.init(builder, instance);
+        builder.geneEncodingType(instance.getGeneEncodingType());
+        return builder;
     }
 
     @Override

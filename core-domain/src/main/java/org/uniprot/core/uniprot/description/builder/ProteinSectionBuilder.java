@@ -80,14 +80,12 @@ public class ProteinSectionBuilder implements Builder<ProteinSectionBuilder, Pro
                 innNames);
     }
 
-    @Override
-    public @Nonnull ProteinSectionBuilder from(@Nonnull ProteinSection instance) {
-        this.allergenName(instance.getAllergenName());
-        this.recommendedName(instance.getRecommendedName());
-        this.alternativeNames(instance.getAlternativeNames());
-        this.biotechName(instance.getBiotechName());
-        this.cdAntigenNames(instance.getCdAntigenNames());
-        this.innNames(instance.getInnNames());
-        return this;
+    public static @Nonnull ProteinSectionBuilder from(@Nonnull ProteinSection instance) {
+        return new ProteinSectionBuilder().allergenName(instance.getAllergenName())
+        .recommendedName(instance.getRecommendedName())
+        .alternativeNames(instance.getAlternativeNames())
+        .biotechName(instance.getBiotechName())
+        .cdAntigenNames(instance.getCdAntigenNames())
+        .innNames(instance.getInnNames());
     }
 }

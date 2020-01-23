@@ -23,10 +23,9 @@ public abstract class AbstractEvidencedValueBuilder<
     protected String value;
     protected List<Evidence> evidences = new ArrayList<>();
 
-    @Override
-    public @Nonnull B from(@Nonnull E instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences()).value(instance.getValue());
+    public static void init(@Nonnull AbstractEvidencedValueBuilder builder, @Nonnull EvidencedValue instance) {
+        builder.evidences(instance.getEvidences())
+          .value(instance.getValue());
     }
 
     public @Nonnull B value(String value) {

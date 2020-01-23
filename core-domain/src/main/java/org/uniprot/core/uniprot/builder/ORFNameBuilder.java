@@ -30,4 +30,8 @@ public class ORFNameBuilder extends AbstractEvidencedValueBuilder<ORFNameBuilder
     public @Nonnull ORFName build() {
         return new GeneImpl.ORFNameImpl(value, evidences);
     }
+
+    public static @Nonnull ORFNameBuilder from(@Nonnull ORFName instance) {
+        return new ORFNameBuilder(instance.getValue(), instance.getEvidences());
+    }
 }

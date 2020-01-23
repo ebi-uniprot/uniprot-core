@@ -28,10 +28,8 @@ public class RnaEditingPositionBuilder
         return new RnaEditingCommentImpl.RnaEdPositionImpl(position, evidences);
     }
 
-    @Override
-    public @Nonnull RnaEditingPositionBuilder from(@Nonnull RnaEdPosition instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences()).position(instance.getPosition());
+    public static @Nonnull RnaEditingPositionBuilder from(@Nonnull RnaEdPosition instance) {
+        return new RnaEditingPositionBuilder().evidences(instance.getEvidences()).position(instance.getPosition());
     }
 
     public @Nonnull RnaEditingPositionBuilder position(String position) {

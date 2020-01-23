@@ -42,14 +42,11 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, T
         return new TaxonomyLineageImpl(taxonId, scientificName, rank, hidden);
     }
 
-    @Override
-    public @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
-        if (instance != null) {
-            this.taxonId(instance.getTaxonId());
-            this.scientificName(instance.getScientificName());
-            this.rank(instance.getRank());
-            this.hidden(instance.isHidden());
-        }
-        return this;
+    public static @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
+        return new TaxonomyLineageBuilder()
+            .taxonId(instance.getTaxonId())
+            .scientificName(instance.getScientificName())
+            .rank(instance.getRank())
+            .hidden(instance.isHidden());
     }
 }

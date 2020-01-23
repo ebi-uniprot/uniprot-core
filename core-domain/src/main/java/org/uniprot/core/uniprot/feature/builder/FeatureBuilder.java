@@ -42,8 +42,7 @@ public class FeatureBuilder implements Builder<FeatureBuilder, Feature> {
                 type, location, description, featureId, alternativeSequence, dbXref, evidences);
     }
 
-    @Override
-    public @Nonnull FeatureBuilder from(@Nonnull Feature instance) {
+    public static @Nonnull FeatureBuilder from(@Nonnull Feature instance) {
         return new FeatureBuilder()
                 .evidences(instance.getEvidences())
                 .description(instance.getDescription())

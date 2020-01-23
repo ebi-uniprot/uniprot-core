@@ -31,9 +31,7 @@ public class InteractionCommentBuilder
         return new InteractionCommentImpl(interactions);
     }
 
-    @Override
-    public @Nonnull InteractionCommentBuilder from(@Nonnull InteractionComment instance) {
-        interactions.clear();
-        return this.interactions(instance.getInteractions());
+    public static @Nonnull InteractionCommentBuilder from(@Nonnull InteractionComment instance) {
+        return new InteractionCommentBuilder().interactions(instance.getInteractions());
     }
 }

@@ -21,10 +21,8 @@ public class FlagBuilder implements Builder<FlagBuilder, Flag> {
         return new FlagImpl(flagType);
     }
 
-    @Override
-    public @Nullable FlagBuilder from(@Nonnull Flag instance) {
-        this.flagType = instance.getType();
-        return this;
+    public static @Nullable FlagBuilder from(@Nonnull Flag instance) {
+        return new FlagBuilder(instance.getType());
     }
 
     public FlagBuilder(FlagType flagType) {

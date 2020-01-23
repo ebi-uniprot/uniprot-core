@@ -56,10 +56,8 @@ public final class MichaelisConstantBuilder
         return new MichaelisConstantImpl(constant, unit, substrate, evidences);
     }
 
-    @Override
-    public @Nonnull MichaelisConstantBuilder from(@Nonnull MichaelisConstant instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences())
+    public static @Nonnull MichaelisConstantBuilder from(@Nonnull MichaelisConstant instance) {
+        return new MichaelisConstantBuilder().evidences(instance.getEvidences())
                 .constant(instance.getConstant())
                 .substrate(instance.getSubstrate())
                 .unit(instance.getUnit());

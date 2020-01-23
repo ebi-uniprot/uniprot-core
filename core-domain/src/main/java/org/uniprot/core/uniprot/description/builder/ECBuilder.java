@@ -18,4 +18,10 @@ public class ECBuilder extends AbstractEvidencedValueBuilder<ECBuilder, EC> {
     public @Nonnull EC build() {
         return new ECImpl(value, evidences);
     }
+
+    public static @Nonnull ECBuilder from(@Nonnull EC instance) {
+        ECBuilder builder = new ECBuilder();
+        AbstractEvidencedValueBuilder.init(builder, instance);
+        return builder;
+    }
 }

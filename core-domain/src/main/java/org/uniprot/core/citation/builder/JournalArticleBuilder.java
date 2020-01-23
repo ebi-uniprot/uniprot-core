@@ -26,10 +26,10 @@ public final class JournalArticleBuilder
                 volume);
     }
 
-    @Override
-    public @Nonnull JournalArticleBuilder from(@Nonnull JournalArticle instance) {
-        init(instance);
-        return this.journalName(instance.getJournal().getName())
+    public static @Nonnull JournalArticleBuilder from(@Nonnull JournalArticle instance) {
+        JournalArticleBuilder builder = new JournalArticleBuilder();
+        init(builder, instance);
+        return builder.journalName(instance.getJournal().getName())
                 .firstPage(instance.getFirstPage())
                 .lastPage(instance.getLastPage())
                 .volume(instance.getVolume());

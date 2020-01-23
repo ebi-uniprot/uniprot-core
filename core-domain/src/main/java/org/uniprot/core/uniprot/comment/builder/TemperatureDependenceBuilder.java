@@ -22,12 +22,11 @@ public class TemperatureDependenceBuilder
     }
 
     @Override
-    protected @Nonnull TemperatureDependenceBuilder getThis() {
-        return this;
-    }
-
-    @Override
     protected @Nonnull TemperatureDependence createConcreteInstance() {
         return new BPCPCommentImpl.TemperatureDependenceImpl(evidencedValues);
+    }
+
+    public static @Nonnull TemperatureDependenceBuilder from(@Nonnull TemperatureDependence instance) {
+        return new TemperatureDependenceBuilder(instance.getTexts());
     }
 }

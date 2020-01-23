@@ -65,15 +65,11 @@ public class GeneBuilder implements Builder<GeneBuilder, Gene> {
         return new GeneImpl(geneName, synonyms, orderedLocusNames, orfNames);
     }
 
-    @Override
-    public @Nonnull GeneBuilder from(@Nonnull Gene instance) {
-        synonyms.clear();
-        orderedLocusNames.clear();
-        orfNames.clear();
-        this.geneName(instance.getGeneName());
-        this.orfNames(instance.getOrfNames());
-        this.orderedLocusNames(instance.getOrderedLocusNames());
-        this.synonyms(instance.getSynonyms());
-        return this;
+    public static @Nonnull GeneBuilder from(@Nonnull Gene instance) {
+        return new GeneBuilder()
+        .geneName(instance.getGeneName())
+        .orfNames(instance.getOrfNames())
+        .orderedLocusNames(instance.getOrderedLocusNames())
+        .synonyms(instance.getSynonyms());
     }
 }

@@ -59,11 +59,8 @@ public final class KineticParametersBuilder
         return new KineticParametersImpl(maximumVelocities, michaelisConstants, note);
     }
 
-    @Override
-    public @Nonnull KineticParametersBuilder from(@Nonnull KineticParameters instance) {
-        maximumVelocities.clear();
-        michaelisConstants.clear();
-        return this.maximumVelocities(instance.getMaximumVelocities())
+    public static @Nonnull KineticParametersBuilder from(@Nonnull KineticParameters instance) {
+        return new KineticParametersBuilder().maximumVelocities(instance.getMaximumVelocities())
                 .michaelisConstants(instance.getMichaelisConstants())
                 .note(instance.getNote());
     }

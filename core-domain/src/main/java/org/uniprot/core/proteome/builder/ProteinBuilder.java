@@ -55,13 +55,12 @@ public class ProteinBuilder implements Builder<ProteinBuilder, Protein> {
         return this;
     }
 
-    @Override
-    public @Nonnull ProteinBuilder from(@Nonnull Protein instance) {
-        this.accession = instance.getAccession();
-        this.entryType = instance.getEntryType();
-        this.sequenceLength = instance.getSequenceLength();
-        this.geneName = instance.getGeneName();
-        this.geneNameType = instance.getGeneNameType();
-        return this;
+    public static @Nonnull ProteinBuilder from(@Nonnull Protein instance) {
+        return new ProteinBuilder()
+        .accession(instance.getAccession())
+        .entryType(instance.getEntryType())
+        .sequenceLength(instance.getSequenceLength())
+        .geneName(instance.getGeneName())
+        .geneNameType(instance.getGeneNameType());
     }
 }

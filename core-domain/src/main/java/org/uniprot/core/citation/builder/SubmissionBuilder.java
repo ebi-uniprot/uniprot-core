@@ -15,10 +15,10 @@ public final class SubmissionBuilder
                 authoringGroups, authors, xrefs, title, publicationDate, submissionDb);
     }
 
-    @Override
-    public @Nonnull SubmissionBuilder from(Submission instance) {
-        init(instance);
-        return this.submittedToDatabase(instance.getSubmissionDatabase());
+    public static @Nonnull SubmissionBuilder from(Submission instance) {
+        SubmissionBuilder builder = new SubmissionBuilder();
+        init(builder, instance);
+        return builder.submittedToDatabase(instance.getSubmissionDatabase());
     }
 
     public @Nonnull SubmissionBuilder submittedToDatabase(SubmissionDatabase submissionDb) {

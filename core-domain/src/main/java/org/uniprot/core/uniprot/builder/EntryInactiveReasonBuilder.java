@@ -39,11 +39,9 @@ public class EntryInactiveReasonBuilder
         return new EntryInactiveReasonImpl(inactiveReasonType, mergeDemergeTo);
     }
 
-    @Override
-    public @Nonnull EntryInactiveReasonBuilder from(@Nonnull EntryInactiveReason instance) {
-        this.mergeDemergeTo.clear();
-        this.type(instance.getInactiveReasonType());
-        this.mergeDemergeTo(instance.getMergeDemergeTo());
-        return this;
+    public static @Nonnull EntryInactiveReasonBuilder from(@Nonnull EntryInactiveReason instance) {
+        return new EntryInactiveReasonBuilder()
+        .type(instance.getInactiveReasonType())
+        .mergeDemergeTo(instance.getMergeDemergeTo());
     }
 }

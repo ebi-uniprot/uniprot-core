@@ -27,10 +27,8 @@ public final class MassSpectrometryCommentBuilder
                 molecule, method, molWeight, molWeightError, note, evidences);
     }
 
-    @Override
-    public @Nonnull MassSpectrometryCommentBuilder from(@Nonnull MassSpectrometryComment instance) {
-        evidences.clear();
-        return this.molWeight(instance.getMolWeight())
+    public static @Nonnull MassSpectrometryCommentBuilder from(@Nonnull MassSpectrometryComment instance) {
+        return new MassSpectrometryCommentBuilder().molWeight(instance.getMolWeight())
                 .molWeightError(instance.getMolWeightError())
                 .evidences(instance.getEvidences())
                 .molecule(instance.getMolecule())

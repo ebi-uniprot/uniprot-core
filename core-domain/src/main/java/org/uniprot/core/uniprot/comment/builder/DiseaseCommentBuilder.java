@@ -18,9 +18,8 @@ public class DiseaseCommentBuilder
         return new DiseaseCommentImpl(molecule, disease, note);
     }
 
-    @Override
-    public @Nonnull DiseaseCommentBuilder from(@Nonnull DiseaseComment instance) {
-        return this.disease(instance.getDisease())
+    public static @Nonnull DiseaseCommentBuilder from(@Nonnull DiseaseComment instance) {
+        return new DiseaseCommentBuilder().disease(instance.getDisease())
                 .note(instance.getNote())
                 .molecule(instance.getMolecule());
     }

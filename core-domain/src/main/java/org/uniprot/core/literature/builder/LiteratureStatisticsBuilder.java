@@ -36,8 +36,7 @@ public class LiteratureStatisticsBuilder
                 reviewedProteinCount, unreviewedProteinCount, mappedProteinCount);
     }
 
-    @Override
-    public @Nonnull LiteratureStatisticsBuilder from(@Nonnull LiteratureStatistics instance) {
+    public static @Nonnull LiteratureStatisticsBuilder from(@Nonnull LiteratureStatistics instance) {
         return new LiteratureStatisticsBuilder()
                 .reviewedProteinCount(instance.getReviewedProteinCount())
                 .unreviewedProteinCount(instance.getUnreviewedProteinCount())

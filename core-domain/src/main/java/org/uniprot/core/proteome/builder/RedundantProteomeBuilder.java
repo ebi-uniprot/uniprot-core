@@ -36,10 +36,9 @@ public class RedundantProteomeBuilder
         return new RedundantProteomeImpl(id, similarity);
     }
 
-    @Override
-    public @Nonnull RedundantProteomeBuilder from(@Nonnull RedundantProteome instance) {
-        this.id = instance.getId();
-        this.similarity = instance.getSimilarity();
-        return this;
+    public static @Nonnull RedundantProteomeBuilder from(@Nonnull RedundantProteome instance) {
+        return new RedundantProteomeBuilder()
+        .proteomeId(instance.getId())
+        .similarity(instance.getSimilarity());
     }
 }

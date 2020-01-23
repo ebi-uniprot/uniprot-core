@@ -28,9 +28,10 @@ public class KeywordBuilder extends AbstractEvidencedValueBuilder<KeywordBuilder
         return this;
     }
 
-    @Override
-    public @Nonnull KeywordBuilder from(@Nonnull Keyword instance) {
-        return super.from(instance).id(instance.getId()).category(instance.getCategory());
+    public static @Nonnull KeywordBuilder from(@Nonnull Keyword instance) {
+        KeywordBuilder builder = new KeywordBuilder();
+        AbstractEvidencedValueBuilder.init(builder, instance);
+        return builder.id(instance.getId()).category(instance.getCategory());
     }
 
     public @Nonnull KeywordBuilder id(String id) {

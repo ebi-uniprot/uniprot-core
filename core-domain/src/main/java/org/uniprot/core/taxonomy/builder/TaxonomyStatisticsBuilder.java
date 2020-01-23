@@ -43,14 +43,11 @@ public class TaxonomyStatisticsBuilder
                 proteomeCount);
     }
 
-    @Override
-    public @Nonnull TaxonomyStatisticsBuilder from(@Nonnull TaxonomyStatistics instance) {
-        if (instance != null) {
-            this.reviewedProteinCount(instance.getReviewedProteinCount());
-            this.unreviewedProteinCount(instance.getUnreviewedProteinCount());
-            this.proteomeCount(instance.getProteomeCount());
-            this.referenceProteomeCount(instance.getReferenceProteomeCount());
-        }
-        return this;
+    public static @Nonnull TaxonomyStatisticsBuilder from(@Nonnull TaxonomyStatistics instance) {
+        return new TaxonomyStatisticsBuilder()
+            .reviewedProteinCount(instance.getReviewedProteinCount())
+            .unreviewedProteinCount(instance.getUnreviewedProteinCount())
+            .proteomeCount(instance.getProteomeCount())
+            .referenceProteomeCount(instance.getReferenceProteomeCount());
     }
 }

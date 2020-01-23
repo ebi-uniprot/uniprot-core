@@ -23,11 +23,9 @@ public final class SubcellularLocationCommentBuilder
         return new SubcellularLocationCommentImpl(molecule, subcellularLocations, note);
     }
 
-    @Override
-    public @Nonnull SubcellularLocationCommentBuilder from(
+    public static @Nonnull SubcellularLocationCommentBuilder from(
             @Nonnull SubcellularLocationComment instance) {
-        subcellularLocations.clear();
-        return this.molecule(instance.getMolecule())
+        return new SubcellularLocationCommentBuilder().molecule(instance.getMolecule())
                 .subcellularLocations(instance.getSubcellularLocations())
                 .note(instance.getNote());
     }

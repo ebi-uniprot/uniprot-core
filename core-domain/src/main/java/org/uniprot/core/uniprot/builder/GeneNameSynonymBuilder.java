@@ -31,4 +31,8 @@ public class GeneNameSynonymBuilder
     public @Nonnull GeneNameSynonym build() {
         return new GeneImpl.GeneNameSynonymImpl(value, evidences);
     }
+
+    public static @Nonnull GeneNameSynonymBuilder from(@Nonnull GeneNameSynonym instance) {
+        return new GeneNameSynonymBuilder(instance.getValue(), instance.getEvidences());
+    }
 }

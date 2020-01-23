@@ -27,8 +27,7 @@ public class AlternativeSequenceBuilder
         return new AlternativeSequenceImpl(originalSequence, alternativeSequences);
     }
 
-    @Override
-    public @Nonnull AlternativeSequenceBuilder from(@Nonnull AlternativeSequence instance) {
+    public static @Nonnull AlternativeSequenceBuilder from(@Nonnull AlternativeSequence instance) {
         return new AlternativeSequenceBuilder()
                 .original(instance.getOriginalSequence())
                 .alternatives(instance.getAlternativeSequences());

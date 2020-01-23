@@ -29,10 +29,9 @@ public class InterProGroupBuilder implements Builder<InterProGroupBuilder, Inter
         return this;
     }
 
-    @Override
-    public @Nonnull InterProGroupBuilder from(@Nonnull InterProGroup instance) {
-        this.id = instance.getId();
-        this.name = instance.getName();
-        return this;
+    public static @Nonnull InterProGroupBuilder from(@Nonnull InterProGroup instance) {
+        return new InterProGroupBuilder()
+        .id(instance.getId())
+        .name(instance.getName());
     }
 }

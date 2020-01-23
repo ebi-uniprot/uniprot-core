@@ -89,9 +89,9 @@ public class UniParcEntryBuilder implements Builder<UniParcEntryBuilder, UniParc
         return this;
     }
 
-    @Override
-    public @Nonnull UniParcEntryBuilder from(@Nonnull UniParcEntry instance) {
-        return uniParcId(instance.getUniParcId())
+    public static @Nonnull UniParcEntryBuilder from(@Nonnull UniParcEntry instance) {
+        return new UniParcEntryBuilder()
+                .uniParcId(instance.getUniParcId())
                 .databaseCrossReferences(instance.getDbXReferences())
                 .sequence(instance.getSequence())
                 .uniprotExclusionReason(instance.getUniProtExclusionReason())

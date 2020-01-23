@@ -68,8 +68,7 @@ public class LiteratureMappedReferenceBuilder
                 uniprotAccession, source, sourceId, sourceCategory, annotation);
     }
 
-    @Override
-    public @Nonnull LiteratureMappedReferenceBuilder from(
+    public static @Nonnull LiteratureMappedReferenceBuilder from(
             @Nonnull LiteratureMappedReference instance) {
         return new LiteratureMappedReferenceBuilder()
                 .uniprotAccession(instance.getUniprotAccession())

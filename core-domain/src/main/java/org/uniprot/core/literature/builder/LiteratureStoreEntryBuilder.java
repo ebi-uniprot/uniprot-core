@@ -45,13 +45,9 @@ public class LiteratureStoreEntryBuilder
         return new LiteratureStoreEntryImpl(literatureEntry, literatureMappedReferences);
     }
 
-    @Nonnull
-    @Override
-    public LiteratureStoreEntryBuilder from(@Nonnull LiteratureStoreEntry instance) {
-        LiteratureStoreEntryBuilder builder =
-                new LiteratureStoreEntryBuilder()
+    public static @Nonnull LiteratureStoreEntryBuilder from(@Nonnull LiteratureStoreEntry instance) {
+        return new LiteratureStoreEntryBuilder()
                         .literatureEntry(instance.getLiteratureEntry())
                         .literatureMappedReference(instance.getLiteratureMappedReferences());
-        return builder;
     }
 }

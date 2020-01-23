@@ -51,10 +51,8 @@ public final class CofactorBuilder implements Builder<CofactorBuilder, Cofactor>
         return new CofactorImpl(name, cofactorReference, evidences);
     }
 
-    @Override
-    public @Nonnull CofactorBuilder from(@Nonnull Cofactor instance) {
-        evidences.clear();
-        return this.name(instance.getName())
+    public static @Nonnull CofactorBuilder from(@Nonnull Cofactor instance) {
+        return new CofactorBuilder().name(instance.getName())
                 .evidences(instance.getEvidences())
                 .reference(instance.getCofactorReference());
     }

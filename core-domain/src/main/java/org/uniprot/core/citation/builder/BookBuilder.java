@@ -37,10 +37,10 @@ public final class BookBuilder extends AbstractCitationBuilder<BookBuilder, Book
                 address);
     }
 
-    @Override
-    public @Nonnull BookBuilder from(Book instance) {
-        init(instance);
-        return this.address(instance.getAddress())
+    public static @Nonnull BookBuilder from(@Nonnull Book instance) {
+        BookBuilder builder = new BookBuilder();
+        init(builder, instance);
+        return builder.address(instance.getAddress())
                 .bookName(instance.getBookName())
                 .editors(
                         instance.getEditors().stream()

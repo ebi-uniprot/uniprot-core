@@ -22,8 +22,7 @@ public class UniProtAccessionBuilder
         return new UniProtAccessionImpl(value);
     }
 
-    @Override
-    protected @Nonnull UniProtAccessionBuilder getThis() {
-        return this;
+    public static @Nonnull UniProtAccessionBuilder from (@Nonnull UniProtAccession instance){
+        return new UniProtAccessionBuilder(instance.getValue());
     }
 }

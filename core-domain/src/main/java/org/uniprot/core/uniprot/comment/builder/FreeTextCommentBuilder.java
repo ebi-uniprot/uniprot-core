@@ -28,10 +28,8 @@ public class FreeTextCommentBuilder
         return new FreeTextCommentImpl(commentType, molecule, texts);
     }
 
-    @Override
-    public @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
-        texts.clear();
-        return this.commentType(instance.getCommentType())
+    public static @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
+        return new FreeTextCommentBuilder().commentType(instance.getCommentType())
                 .texts(instance.getTexts())
                 .molecule(instance.getMolecule());
     }

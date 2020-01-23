@@ -47,9 +47,8 @@ public class UniRefEntryBuilder implements Builder<UniRefEntryBuilder, UniRefEnt
                 members);
     }
 
-    @Override
-    public @Nonnull UniRefEntryBuilder from(@Nonnull UniRefEntry instance) {
-        return this.id(instance.getId())
+    public static @Nonnull UniRefEntryBuilder from(@Nonnull UniRefEntry instance) {
+        return new UniRefEntryBuilder().id(instance.getId())
                 .name(instance.getName())
                 .updated(instance.getUpdated())
                 .entryType(instance.getEntryType())

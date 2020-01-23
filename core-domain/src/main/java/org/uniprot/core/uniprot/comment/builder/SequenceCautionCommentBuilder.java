@@ -26,10 +26,8 @@ public final class SequenceCautionCommentBuilder
                 molecule, sequenceCautionType, sequence, note, evidences);
     }
 
-    @Override
-    public @Nonnull SequenceCautionCommentBuilder from(@Nonnull SequenceCautionComment instance) {
-        evidences.clear();
-        return this.sequenceCautionType(instance.getSequenceCautionType())
+    public static @Nonnull SequenceCautionCommentBuilder from(@Nonnull SequenceCautionComment instance) {
+        return new SequenceCautionCommentBuilder().sequenceCautionType(instance.getSequenceCautionType())
                 .sequence(instance.getSequence())
                 .evidences(instance.getEvidences())
                 .note(instance.getNote())

@@ -22,12 +22,11 @@ public class RedoxPotentialBuilder
     }
 
     @Override
-    protected @Nonnull RedoxPotentialBuilder getThis() {
-        return this;
-    }
-
-    @Override
     protected @Nonnull RedoxPotential createConcreteInstance() {
         return new BPCPCommentImpl.RedoxPotentialImpl(evidencedValues);
+    }
+
+    public static @Nonnull RedoxPotentialBuilder from(@Nonnull RedoxPotential instance) {
+        return new RedoxPotentialBuilder(instance.getTexts());
     }
 }

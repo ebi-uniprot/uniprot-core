@@ -31,10 +31,9 @@ public class TaxonomyInactiveReasonBuilder
         return new TaxonomyInactiveReasonImpl(inactiveReasonType, mergedTo);
     }
 
-    @Override
-    public @Nonnull TaxonomyInactiveReasonBuilder from(@Nonnull TaxonomyInactiveReason instance) {
-        this.inactiveReasonType = instance.getInactiveReasonType();
-        this.mergedTo = instance.getMergedTo();
-        return this;
+    public static @Nonnull TaxonomyInactiveReasonBuilder from(@Nonnull TaxonomyInactiveReason instance) {
+        return new TaxonomyInactiveReasonBuilder()
+        .inactiveReasonType(instance.getInactiveReasonType())
+        .mergedTo(instance.getMergedTo());
     }
 }

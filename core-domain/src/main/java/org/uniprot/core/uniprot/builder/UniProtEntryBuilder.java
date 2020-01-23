@@ -269,15 +269,7 @@ public class UniProtEntryBuilder implements Builder<UniProtEntryBuilder, UniProt
                 inactiveReason);
     }
 
-    @Override
-    @Deprecated
-    // TODO delete this method in future
-    public @Nonnull UniProtEntryBuilder from(@Nonnull UniProtEntry instance) {
-        return UniProtEntryBuilder.fromInstance(instance);
-    }
-
-    // TODO rename this method to from
-    public static @Nonnull UniProtEntryBuilder fromInstance(@Nonnull UniProtEntry instance) {
+    public static @Nonnull UniProtEntryBuilder from(@Nonnull UniProtEntry instance) {
         UniProtEntryBuilder builder =
                 new UniProtEntryBuilder(
                         instance.getPrimaryAccession(),

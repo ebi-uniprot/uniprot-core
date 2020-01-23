@@ -20,8 +20,7 @@ public class UniParcIdBuilder extends AbstractValueBuilder<UniParcIdBuilder, Uni
         return new UniParcIdImpl(value);
     }
 
-    @Override
-    protected @Nonnull UniParcIdBuilder getThis() {
-        return this;
+    public static @Nonnull UniParcIdBuilder from(@Nonnull UniParcId instance) {
+        return new UniParcIdBuilder(instance.getValue());
     }
 }

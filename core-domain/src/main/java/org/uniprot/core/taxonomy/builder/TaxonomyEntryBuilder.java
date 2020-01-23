@@ -168,30 +168,23 @@ public class TaxonomyEntryBuilder
                 inactiveReason);
     }
 
-    @Override
-    public @Nonnull TaxonomyEntryBuilder from(@Nonnull TaxonomyEntry instance) {
-        if (instance != null) {
-            super.from(instance);
-            this.taxonId(instance.getTaxonId());
-            this.mnemonic(instance.getMnemonic());
-            this.parentId(instance.getParentId());
-            this.rank(instance.getRank());
-            this.hidden(instance.isHidden());
-            this.active(instance.isActive());
-            this.otherNames.clear();
-            this.otherNames(instance.getOtherNames());
-            this.lineage.clear();
-            this.lineage(instance.getLineage());
-            this.strains.clear();
-            this.strains(instance.getStrains());
-            this.hosts.clear();
-            this.hosts(instance.getHosts());
-            this.links.clear();
-            this.links(instance.getLinks());
-            this.statistics(instance.getStatistics());
-            this.inactiveReason = instance.getInactiveReason();
-        }
-        return this;
+    public static @Nonnull TaxonomyEntryBuilder from(@Nonnull TaxonomyEntry instance) {
+        TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
+        AbstractOrganismNameBuilder.init(builder, instance);
+        builder.taxonId(instance.getTaxonId())
+            .mnemonic(instance.getMnemonic())
+            .parentId(instance.getParentId())
+            .rank(instance.getRank())
+            .hidden(instance.isHidden())
+            .active(instance.isActive())
+            .otherNames(instance.getOtherNames())
+            .lineage(instance.getLineage())
+            .strains(instance.getStrains())
+            .hosts(instance.getHosts())
+            .links(instance.getLinks())
+            .statistics(instance.getStatistics())
+            .inactiveReason(instance.getInactiveReason());
+        return builder;
     }
 
     @Override

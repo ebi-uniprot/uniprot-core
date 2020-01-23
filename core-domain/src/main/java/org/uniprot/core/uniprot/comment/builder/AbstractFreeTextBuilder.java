@@ -26,13 +26,5 @@ public abstract class AbstractFreeTextBuilder<
         return createConcreteInstance();
     }
 
-    @Override
-    public @Nonnull B from(@Nonnull F instance) {
-        this.evidencedValues = modifiableList(instance.getTexts());
-        return getThis();
-    }
-
-    protected abstract @Nonnull B getThis();
-
     protected abstract @Nonnull F createConcreteInstance();
 }

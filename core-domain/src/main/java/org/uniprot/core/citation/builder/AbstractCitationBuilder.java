@@ -83,8 +83,8 @@ public abstract class AbstractCitationBuilder<
         return getThis();
     }
 
-    protected void init(T instance) {
-        this.citationXrefs(instance.getCitationXrefs())
+    protected static void init(AbstractCitationBuilder builder, Citation instance) {
+        builder.citationXrefs(instance.getCitationXrefs())
                 .title(instance.getTitle())
                 .publicationDate(instance.getPublicationDate())
                 .authors(

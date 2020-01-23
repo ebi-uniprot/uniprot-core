@@ -22,8 +22,7 @@ public class PublicationDateBuilder
         return new PublicationDateImpl(value);
     }
 
-    @Override
-    protected @Nonnull PublicationDateBuilder getThis() {
-        return this;
+    public static @Nonnull PublicationDateBuilder from(@Nonnull PublicationDate instance) {
+        return new PublicationDateBuilder(instance.getValue());
     }
 }

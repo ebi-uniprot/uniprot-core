@@ -17,12 +17,11 @@ public class FeatureIdBuilder extends AbstractValueBuilder<FeatureIdBuilder, Fea
         return new FeatureIdImpl(value);
     }
 
-    @Override
-    protected @Nonnull FeatureIdBuilder getThis() {
-        return this;
-    }
-
     public FeatureIdBuilder(String value) {
         super(value);
+    }
+
+    public static @Nonnull FeatureIdBuilder from(@Nonnull FeatureId instance) {
+        return new FeatureIdBuilder(instance.getValue());
     }
 }

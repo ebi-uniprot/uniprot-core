@@ -23,4 +23,10 @@ public class DBCrossReferenceBuilder<T extends DatabaseType>
     protected @Nonnull DBCrossReferenceBuilder<T> getThis() {
         return this;
     }
+
+    public static @Nonnull DBCrossReferenceBuilder<DatabaseType> from(@Nonnull DBCrossReference<DatabaseType> instance) {
+        DBCrossReferenceBuilder<DatabaseType> builder = new DBCrossReferenceBuilder<>();
+        AbstractDBCrossReferenceBuilder.init(builder, instance);
+        return builder;
+    }
 }

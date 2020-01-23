@@ -21,12 +21,11 @@ public class NoteBuilder extends AbstractFreeTextBuilder<NoteBuilder, Note> {
     }
 
     @Override
-    protected @Nonnull NoteBuilder getThis() {
-        return this;
-    }
-
-    @Override
     protected @Nonnull Note createConcreteInstance() {
         return new NoteImpl(evidencedValues);
+    }
+
+    public static @Nonnull NoteBuilder from(@Nonnull Note instance) {
+        return new NoteBuilder(instance.getTexts());
     }
 }

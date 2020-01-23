@@ -53,13 +53,11 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeatureBuilder, S
         return this;
     }
 
-    @Override
-    public @Nonnull SequenceFeatureBuilder from(@Nonnull SequenceFeature instance) {
-        this.interproGroup = instance.getInterProDomain();
-        this.dbType = instance.getSignatureDbType();
-        this.dbId = instance.getSignatureDbId();
-        this.locations.clear();
-        this.locations.addAll(instance.getLocations());
-        return this;
+    public static @Nonnull SequenceFeatureBuilder from(@Nonnull SequenceFeature instance) {
+        return new SequenceFeatureBuilder()
+        .interproGroup(instance.getInterProDomain())
+        .signatureDbType(instance.getSignatureDbType())
+        .signatureDbId(instance.getSignatureDbId())
+        .locations(instance.getLocations());
     }
 }

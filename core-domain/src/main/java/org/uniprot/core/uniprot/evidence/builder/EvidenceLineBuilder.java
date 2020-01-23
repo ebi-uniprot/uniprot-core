@@ -23,9 +23,8 @@ public class EvidenceLineBuilder implements Builder<EvidenceLineBuilder, Evidenc
         return new EvidenceLineImpl(evidence, createDate, curator);
     }
 
-    @Override
-    public @Nonnull EvidenceLineBuilder from(@Nonnull EvidenceLine instance) {
-        return this.evidence(instance.getEvidence())
+    public static @Nonnull EvidenceLineBuilder from(@Nonnull EvidenceLine instance) {
+        return new EvidenceLineBuilder().evidence(instance.getEvidence())
                 .curator(instance.getCurator())
                 .creationDate(instance.getCreateDate());
     }

@@ -22,12 +22,11 @@ public class PhDependenceBuilder
     }
 
     @Override
-    protected @Nonnull PhDependenceBuilder getThis() {
-        return this;
-    }
-
-    @Override
     protected @Nonnull PhDependence createConcreteInstance() {
         return new BPCPCommentImpl.PhDependenceImpl(evidencedValues);
+    }
+
+    public static @Nonnull PhDependenceBuilder from(@Nonnull PhDependence instance) {
+        return new PhDependenceBuilder(instance.getTexts());
     }
 }

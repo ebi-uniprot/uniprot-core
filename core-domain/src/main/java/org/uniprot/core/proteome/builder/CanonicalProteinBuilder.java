@@ -39,11 +39,9 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProteinBuilder,
         return this;
     }
 
-    @Override
-    public @Nonnull CanonicalProteinBuilder from(@Nonnull CanonicalProtein instance) {
-        this.canonicalProtein = instance.getCanonicalProtein();
-        relatedProteins.clear();
-        relatedProteins.addAll(instance.getRelatedProteins());
-        return this;
+    public static @Nonnull CanonicalProteinBuilder from(@Nonnull CanonicalProtein instance) {
+        return new CanonicalProteinBuilder()
+          .canonicalProtein(instance.getCanonicalProtein())
+          .relatedProteins(instance.getRelatedProteins());
     }
 }

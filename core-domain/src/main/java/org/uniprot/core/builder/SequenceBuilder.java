@@ -23,9 +23,7 @@ public class SequenceBuilder implements Builder<SequenceBuilder, Sequence> {
         return new SequenceImpl(sequence);
     }
 
-    @Override
-    public @Nonnull SequenceBuilder from(@Nonnull Sequence instance) {
-        this.sequence = instance.getValue();
-        return this;
+    public static @Nonnull SequenceBuilder from(@Nonnull Sequence instance) {
+        return new SequenceBuilder(instance.getValue());
     }
 }

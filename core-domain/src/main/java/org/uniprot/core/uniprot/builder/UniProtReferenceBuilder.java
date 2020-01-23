@@ -31,12 +31,9 @@ public class UniProtReferenceBuilder implements Builder<UniProtReferenceBuilder,
         return new UniProtReferenceImpl(citation, referencePositions, referenceComments, evidences);
     }
 
-    @Override
-    public @Nonnull UniProtReferenceBuilder from(@Nonnull UniProtReference instance) {
-        referenceComments.clear();
-        referencePositions.clear();
-        evidences.clear();
-        return this.citation(instance.getCitation())
+    public static @Nonnull UniProtReferenceBuilder from(@Nonnull UniProtReference instance) {
+        return new UniProtReferenceBuilder()
+                .citation(instance.getCitation())
                 .evidences(instance.getEvidences())
                 .comments(instance.getReferenceComments())
                 .positions(instance.getReferencePositions());

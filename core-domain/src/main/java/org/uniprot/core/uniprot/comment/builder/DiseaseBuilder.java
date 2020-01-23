@@ -27,9 +27,8 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         return new DiseaseImpl(diseaseId, diseaseAc, acronym, description, reference, evidences);
     }
 
-    @Override
-    public @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
-        return this.acronym(instance.getAcronym())
+    public static @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
+        return new DiseaseBuilder().acronym(instance.getAcronym())
                 .description(instance.getDescription())
                 .diseaseAc(instance.getDiseaseAccession())
                 .diseaseId(instance.getDiseaseId())

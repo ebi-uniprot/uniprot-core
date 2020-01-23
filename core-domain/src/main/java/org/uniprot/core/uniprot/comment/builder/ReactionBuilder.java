@@ -69,11 +69,8 @@ public final class ReactionBuilder implements Builder<ReactionBuilder, Reaction>
         return new ReactionImpl(name, reactionReferences, ecNumber, evidences);
     }
 
-    @Override
-    public @Nonnull ReactionBuilder from(@Nonnull Reaction instance) {
-        evidences.clear();
-        reactionReferences.clear();
-        return this.ecNumber(instance.getEcNumber())
+    public static @Nonnull ReactionBuilder from(@Nonnull Reaction instance) {
+        return new ReactionBuilder().ecNumber(instance.getEcNumber())
                 .evidences(instance.getEvidences())
                 .name(instance.getName())
                 .references(instance.getReactionReferences());

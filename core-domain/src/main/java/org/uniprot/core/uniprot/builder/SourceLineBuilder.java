@@ -21,8 +21,7 @@ public class SourceLineBuilder extends AbstractValueBuilder<SourceLineBuilder, S
         return new SourceLineImpl(value);
     }
 
-    @Override
-    protected @Nonnull SourceLineBuilder getThis() {
-        return this;
+    public static @Nonnull SourceLineBuilder from (@Nonnull SourceLine instance){
+        return new SourceLineBuilder(instance.getValue());
     }
 }

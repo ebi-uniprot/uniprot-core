@@ -53,10 +53,8 @@ public final class PhysiologicalReactionBuilder
         return new PhysiologicalReactionImpl(directionType, reactionReference, evidences);
     }
 
-    @Override
-    public @Nonnull PhysiologicalReactionBuilder from(@Nonnull PhysiologicalReaction instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences())
+    public static @Nonnull PhysiologicalReactionBuilder from(@Nonnull PhysiologicalReaction instance) {
+        return new PhysiologicalReactionBuilder().evidences(instance.getEvidences())
                 .directionType(instance.getDirectionType())
                 .reactionReference(instance.getReactionReference());
     }

@@ -11,10 +11,10 @@ public final class UnpublishedBuilder
         return new UnpublishedImpl(authoringGroups, authors, xrefs, title, publicationDate);
     }
 
-    @Override
-    public @Nonnull UnpublishedBuilder from(Unpublished instance) {
-        init(instance);
-        return this;
+    public static @Nonnull UnpublishedBuilder from(Unpublished instance) {
+        UnpublishedBuilder builder = new UnpublishedBuilder();
+        init(builder, instance);
+        return builder;
     }
 
     @Override

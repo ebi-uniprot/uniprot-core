@@ -33,20 +33,18 @@ public class CrossRefEntryBuilder implements Builder<CrossRefEntryBuilder, Cross
                 this.unreviewedProteinCount);
     }
 
-    @Override
-    public @Nonnull CrossRefEntryBuilder from(@Nonnull CrossRefEntry instance) {
-        this.name = instance.getName();
-        this.accession = instance.getAccession();
-        this.abbrev = instance.getAbbrev();
-        this.pubMedId = instance.getPubMedId();
-        this.doiId = instance.getDoiId();
-        this.linkType = instance.getLinkType();
-        this.server = instance.getServer();
-        this.dbUrl = instance.getDbUrl();
-        this.category = instance.getCategory();
-        this.reviewedProteinCount = instance.getReviewedProteinCount();
-        this.unreviewedProteinCount = instance.getUnreviewedProteinCount();
-        return this;
+    public static @Nonnull CrossRefEntryBuilder from(@Nonnull CrossRefEntry instance) {
+        return new CrossRefEntryBuilder().name(instance.getName())
+        .accession(instance.getAccession())
+        .abbrev(instance.getAbbrev())
+        .pubMedId(instance.getPubMedId())
+        .doiId(instance.getDoiId())
+        .linkType(instance.getLinkType())
+        .server(instance.getServer())
+        .dbUrl(instance.getDbUrl())
+        .category(instance.getCategory())
+        .reviewedProteinCount(instance.getReviewedProteinCount())
+        .unreviewedProteinCount(instance.getUnreviewedProteinCount());
     }
 
     public @Nonnull CrossRefEntryBuilder name(String name) {
