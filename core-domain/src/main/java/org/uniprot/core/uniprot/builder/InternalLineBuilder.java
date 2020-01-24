@@ -12,7 +12,7 @@ import org.uniprot.core.uniprot.impl.InternalLineImpl;
  *
  * @author Edd
  */
-public class InternalLineBuilder extends AbstractValueBuilder<InternalLineBuilder, InternalLine> {
+public class InternalLineBuilder extends AbstractValueBuilder<InternalLine> {
     private InternalLineType type;
 
     public InternalLineBuilder(InternalLineType type, String value) {
@@ -20,20 +20,12 @@ public class InternalLineBuilder extends AbstractValueBuilder<InternalLineBuilde
         this.type = type;
     }
 
-    @Override
-    public @Nonnull InternalLineBuilder from(@Nonnull InternalLine instance) {
-        super.from(instance);
-        this.type = instance.getType();
-        return this;
+    public static @Nonnull InternalLineBuilder from(@Nonnull InternalLine instance) {
+        return new InternalLineBuilder(instance.getType(), instance.getValue());
     }
 
     @Override
     public @Nonnull InternalLine build() {
         return new InternalLineImpl(type, value);
-    }
-
-    @Override
-    protected @Nonnull InternalLineBuilder getThis() {
-        return this;
     }
 }

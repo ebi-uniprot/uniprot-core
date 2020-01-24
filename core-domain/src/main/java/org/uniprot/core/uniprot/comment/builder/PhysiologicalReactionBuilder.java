@@ -21,8 +21,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public final class PhysiologicalReactionBuilder
-        implements Builder<PhysiologicalReactionBuilder, PhysiologicalReaction> {
+public final class PhysiologicalReactionBuilder implements Builder<PhysiologicalReaction> {
     private PhysiologicalDirectionType directionType;
     private DBCrossReference<ReactionReferenceType> reactionReference;
     private List<Evidence> evidences = new ArrayList<>();
@@ -53,10 +52,8 @@ public final class PhysiologicalReactionBuilder
         return new PhysiologicalReactionImpl(directionType, reactionReference, evidences);
     }
 
-    @Override
-    public @Nonnull PhysiologicalReactionBuilder from(@Nonnull PhysiologicalReaction instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences())
+    public static @Nonnull PhysiologicalReactionBuilder from(@Nonnull PhysiologicalReaction instance) {
+        return new PhysiologicalReactionBuilder().evidences(instance.getEvidences())
                 .directionType(instance.getDirectionType())
                 .reactionReference(instance.getReactionReference());
     }

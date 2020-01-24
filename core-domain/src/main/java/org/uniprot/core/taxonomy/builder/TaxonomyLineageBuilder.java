@@ -7,8 +7,7 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.taxonomy.impl.TaxonomyLineageImpl;
 
-public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, TaxonomyLineage> {
-
+public class TaxonomyLineageBuilder implements Builder<TaxonomyLineage> {
     private long taxonId;
 
     private String scientificName;
@@ -42,14 +41,11 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineageBuilder, T
         return new TaxonomyLineageImpl(taxonId, scientificName, rank, hidden);
     }
 
-    @Override
-    public @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
-        if (instance != null) {
-            this.taxonId(instance.getTaxonId());
-            this.scientificName(instance.getScientificName());
-            this.rank(instance.getRank());
-            this.hidden(instance.isHidden());
-        }
-        return this;
+    public static @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
+        return new TaxonomyLineageBuilder()
+            .taxonId(instance.getTaxonId())
+            .scientificName(instance.getScientificName())
+            .rank(instance.getRank())
+            .hidden(instance.isHidden());
     }
 }

@@ -5,8 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.uniprot.comment.WebResourceComment;
 import org.uniprot.core.uniprot.comment.impl.WebResourceCommentImpl;
 
-public final class WebResourceCommentBuilder
-        implements CommentBuilder<WebResourceCommentBuilder, WebResourceComment> {
+public final class WebResourceCommentBuilder implements CommentBuilder<WebResourceComment> {
     String molecule;
     private String resourceName;
     private String resourceUrl;
@@ -17,9 +16,8 @@ public final class WebResourceCommentBuilder
         return new WebResourceCommentImpl(molecule, resourceName, resourceUrl, isFtp, note);
     }
 
-    @Override
-    public @Nonnull WebResourceCommentBuilder from(@Nonnull WebResourceComment instance) {
-        return this.isFtp(instance.isFtp())
+    public static @Nonnull WebResourceCommentBuilder from(@Nonnull WebResourceComment instance) {
+        return new WebResourceCommentBuilder().isFtp(instance.isFtp())
                 .note(instance.getNote())
                 .resourceName(instance.getResourceName())
                 .resourceUrl(instance.getResourceUrl())

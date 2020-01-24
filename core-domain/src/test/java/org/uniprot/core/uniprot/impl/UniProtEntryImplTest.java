@@ -37,7 +37,7 @@ class UniProtEntryImplTest {
     @Test
     void canFilterByCommentType() {
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).commentsSet(comments).build();
+                UniProtEntryBuilder.from(minEntry).commentsSet(comments).build();
         List<DiseaseComment> comments = entry.getCommentByType(CommentType.DISEASE);
 
         assertFalse(comments.isEmpty());
@@ -47,7 +47,7 @@ class UniProtEntryImplTest {
     @Test
     void canFilterByFeatureType() {
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).featuresSet(features).build();
+                UniProtEntryBuilder.from(minEntry).featuresSet(features).build();
         List<Feature> comments = entry.getFeaturesByType(FeatureType.CHAIN);
 
         assertFalse(comments.isEmpty());

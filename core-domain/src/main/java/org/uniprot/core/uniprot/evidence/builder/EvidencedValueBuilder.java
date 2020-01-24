@@ -33,4 +33,10 @@ public class EvidencedValueBuilder
     protected @Nonnull EvidencedValueBuilder getThis() {
         return this;
     }
+
+    public static @Nonnull EvidencedValueBuilder from(@Nonnull EvidencedValue instance) {
+        EvidencedValueBuilder builder = new EvidencedValueBuilder();
+        AbstractEvidencedValueBuilder.init(builder, instance);
+        return builder;
+    }
 }

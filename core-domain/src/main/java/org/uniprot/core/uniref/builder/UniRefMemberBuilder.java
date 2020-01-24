@@ -26,10 +26,10 @@ public class UniRefMemberBuilder
                 seed);
     }
 
-    @Override
-    public @Nonnull UniRefMemberBuilder from(@Nonnull UniRefMember instance) {
-        super.init(instance);
-        return this;
+    public static @Nonnull UniRefMemberBuilder from(@Nonnull UniRefMember instance) {
+        UniRefMemberBuilder builder = new UniRefMemberBuilder();
+        AbstractUniRefMemberBuilder.init(builder, instance);
+        return builder;
     }
 
     @Override

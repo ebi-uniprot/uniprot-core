@@ -13,8 +13,7 @@ import org.uniprot.core.uniprot.comment.MassSpectrometryMethod;
 import org.uniprot.core.uniprot.comment.impl.MassSpectrometryCommentImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class MassSpectrometryCommentBuilder
-        implements CommentBuilder<MassSpectrometryCommentBuilder, MassSpectrometryComment> {
+public final class MassSpectrometryCommentBuilder implements CommentBuilder<MassSpectrometryComment> {
     String molecule;
     private MassSpectrometryMethod method;
     private Float molWeight;
@@ -27,10 +26,8 @@ public final class MassSpectrometryCommentBuilder
                 molecule, method, molWeight, molWeightError, note, evidences);
     }
 
-    @Override
-    public @Nonnull MassSpectrometryCommentBuilder from(@Nonnull MassSpectrometryComment instance) {
-        evidences.clear();
-        return this.molWeight(instance.getMolWeight())
+    public static @Nonnull MassSpectrometryCommentBuilder from(@Nonnull MassSpectrometryComment instance) {
+        return new MassSpectrometryCommentBuilder().molWeight(instance.getMolWeight())
                 .molWeightError(instance.getMolWeightError())
                 .evidences(instance.getEvidences())
                 .molecule(instance.getMolecule())

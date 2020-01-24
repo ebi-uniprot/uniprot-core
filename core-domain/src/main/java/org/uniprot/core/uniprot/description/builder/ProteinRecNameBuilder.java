@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.description.ProteinRecName;
 import org.uniprot.core.uniprot.description.impl.ProteinRecNameImpl;
 
 /** @author lgonzales */
-public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, ProteinRecName> {
+public class ProteinRecNameBuilder implements Builder<ProteinRecName> {
 
     private Name fullName;
     private List<Name> shortNames = new ArrayList<>();
@@ -51,11 +51,9 @@ public class ProteinRecNameBuilder implements Builder<ProteinRecNameBuilder, Pro
         return new ProteinRecNameImpl(fullName, shortNames, ecNumbers);
     }
 
-    @Override
-    public @Nonnull ProteinRecNameBuilder from(@Nonnull ProteinRecName instance) {
-        this.fullName(instance.getFullName());
-        this.shortNames(instance.getShortNames());
-        this.ecNumbers(instance.getEcNumbers());
-        return this;
+    public static @Nonnull ProteinRecNameBuilder from(@Nonnull ProteinRecName instance) {
+        return new ProteinRecNameBuilder().fullName(instance.getFullName())
+        .shortNames(instance.getShortNames())
+        .ecNumbers(instance.getEcNumbers());
     }
 }

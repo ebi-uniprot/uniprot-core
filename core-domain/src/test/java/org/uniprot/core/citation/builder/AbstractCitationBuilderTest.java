@@ -17,6 +17,8 @@ import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.impl.AbstractCitationImpl;
 
+import javax.annotation.Nonnull;
+
 class AbstractCitationBuilderTest {
     private static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;
     private static final String TITLE = "Some title";
@@ -93,18 +95,17 @@ class AbstractCitationBuilderTest {
     private static class TestableCitationBuilder
             extends AbstractCitationBuilder<TestableCitationBuilder, TestableCitation> {
         @Override
-        public TestableCitation build() {
+        public @Nonnull TestableCitation build() {
             return new TestableCitation(this);
         }
 
-        @Override
         public TestableCitationBuilder from(TestableCitation instance) {
-            init(instance);
+            AbstractCitationBuilder.init(this, instance);
             return this;
         }
 
         @Override
-        protected TestableCitationBuilder getThis() {
+        protected @Nonnull TestableCitationBuilder getThis() {
             return this;
         }
     }

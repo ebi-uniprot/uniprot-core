@@ -11,8 +11,7 @@ import org.uniprot.core.uniprot.impl.UniProtAccessionImpl;
  *
  * @author Edd
  */
-public class UniProtAccessionBuilder
-        extends AbstractValueBuilder<UniProtAccessionBuilder, UniProtAccession> {
+public class UniProtAccessionBuilder extends AbstractValueBuilder<UniProtAccession> {
     public UniProtAccessionBuilder(String value) {
         super(value);
     }
@@ -22,8 +21,7 @@ public class UniProtAccessionBuilder
         return new UniProtAccessionImpl(value);
     }
 
-    @Override
-    protected @Nonnull UniProtAccessionBuilder getThis() {
-        return this;
+    public static @Nonnull UniProtAccessionBuilder from (@Nonnull UniProtAccession instance){
+        return new UniProtAccessionBuilder(instance.getValue());
     }
 }

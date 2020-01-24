@@ -18,8 +18,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public class RnaEditingPositionBuilder
-        implements Builder<RnaEditingPositionBuilder, RnaEdPosition> {
+public class RnaEditingPositionBuilder implements Builder<RnaEdPosition> {
     private String position;
     private List<Evidence> evidences = new ArrayList<>();
 
@@ -28,10 +27,8 @@ public class RnaEditingPositionBuilder
         return new RnaEditingCommentImpl.RnaEdPositionImpl(position, evidences);
     }
 
-    @Override
-    public @Nonnull RnaEditingPositionBuilder from(@Nonnull RnaEdPosition instance) {
-        evidences.clear();
-        return this.evidences(instance.getEvidences()).position(instance.getPosition());
+    public static @Nonnull RnaEditingPositionBuilder from(@Nonnull RnaEdPosition instance) {
+        return new RnaEditingPositionBuilder().evidences(instance.getEvidences()).position(instance.getPosition());
     }
 
     public @Nonnull RnaEditingPositionBuilder position(String position) {

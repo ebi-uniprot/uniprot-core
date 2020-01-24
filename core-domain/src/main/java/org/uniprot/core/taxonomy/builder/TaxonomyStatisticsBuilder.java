@@ -6,8 +6,7 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyStatistics;
 import org.uniprot.core.taxonomy.impl.TaxonomyStatisticsImpl;
 
-public class TaxonomyStatisticsBuilder
-        implements Builder<TaxonomyStatisticsBuilder, TaxonomyStatistics> {
+public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatistics> {
 
     private long reviewedProteinCount;
     private long unreviewedProteinCount;
@@ -43,14 +42,11 @@ public class TaxonomyStatisticsBuilder
                 proteomeCount);
     }
 
-    @Override
-    public @Nonnull TaxonomyStatisticsBuilder from(@Nonnull TaxonomyStatistics instance) {
-        if (instance != null) {
-            this.reviewedProteinCount(instance.getReviewedProteinCount());
-            this.unreviewedProteinCount(instance.getUnreviewedProteinCount());
-            this.proteomeCount(instance.getProteomeCount());
-            this.referenceProteomeCount(instance.getReferenceProteomeCount());
-        }
-        return this;
+    public static @Nonnull TaxonomyStatisticsBuilder from(@Nonnull TaxonomyStatistics instance) {
+        return new TaxonomyStatisticsBuilder()
+            .reviewedProteinCount(instance.getReviewedProteinCount())
+            .unreviewedProteinCount(instance.getUnreviewedProteinCount())
+            .proteomeCount(instance.getProteomeCount())
+            .referenceProteomeCount(instance.getReferenceProteomeCount());
     }
 }

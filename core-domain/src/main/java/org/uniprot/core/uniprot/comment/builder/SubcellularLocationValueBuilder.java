@@ -28,10 +28,11 @@ public class SubcellularLocationValueBuilder
         return this;
     }
 
-    @Override
-    public @Nonnull SubcellularLocationValueBuilder from(
+    public static @Nonnull SubcellularLocationValueBuilder from(
             @Nonnull SubcellularLocationValue instance) {
-        return super.from(instance).id(instance.getId());
+        SubcellularLocationValueBuilder builder = new SubcellularLocationValueBuilder();
+        AbstractEvidencedValueBuilder.init(builder, instance);
+        return builder.id(instance.getId());
     }
 
     public @Nonnull SubcellularLocationValueBuilder id(String id) {

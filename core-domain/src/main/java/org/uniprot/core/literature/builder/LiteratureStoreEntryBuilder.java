@@ -16,8 +16,7 @@ import org.uniprot.core.util.Utils;
  * @author lgonzales
  * @since 2019-12-05
  */
-public class LiteratureStoreEntryBuilder
-        implements Builder<LiteratureStoreEntryBuilder, LiteratureStoreEntry> {
+public class LiteratureStoreEntryBuilder implements Builder<LiteratureStoreEntry> {
 
     private LiteratureEntry literatureEntry;
     private List<LiteratureMappedReference> literatureMappedReferences = new ArrayList<>();
@@ -45,13 +44,9 @@ public class LiteratureStoreEntryBuilder
         return new LiteratureStoreEntryImpl(literatureEntry, literatureMappedReferences);
     }
 
-    @Nonnull
-    @Override
-    public LiteratureStoreEntryBuilder from(@Nonnull LiteratureStoreEntry instance) {
-        LiteratureStoreEntryBuilder builder =
-                new LiteratureStoreEntryBuilder()
+    public static @Nonnull LiteratureStoreEntryBuilder from(@Nonnull LiteratureStoreEntry instance) {
+        return new LiteratureStoreEntryBuilder()
                         .literatureEntry(instance.getLiteratureEntry())
                         .literatureMappedReference(instance.getLiteratureMappedReferences());
-        return builder;
     }
 }

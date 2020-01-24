@@ -15,19 +15,17 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public class PhDependenceBuilder
-        extends AbstractFreeTextBuilder<PhDependenceBuilder, PhDependence> {
+public class PhDependenceBuilder extends AbstractFreeTextBuilder<PhDependence> {
     public PhDependenceBuilder(List<EvidencedValue> evidencedValues) {
         this.evidencedValues = modifiableList(evidencedValues);
     }
 
     @Override
-    protected @Nonnull PhDependenceBuilder getThis() {
-        return this;
-    }
-
-    @Override
     protected @Nonnull PhDependence createConcreteInstance() {
         return new BPCPCommentImpl.PhDependenceImpl(evidencedValues);
+    }
+
+    public static @Nonnull PhDependenceBuilder from(@Nonnull PhDependence instance) {
+        return new PhDependenceBuilder(instance.getTexts());
     }
 }

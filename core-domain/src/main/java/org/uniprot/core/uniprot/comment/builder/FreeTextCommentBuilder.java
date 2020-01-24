@@ -14,8 +14,7 @@ import org.uniprot.core.uniprot.comment.FreeTextComment;
 import org.uniprot.core.uniprot.comment.impl.FreeTextCommentImpl;
 import org.uniprot.core.uniprot.evidence.EvidencedValue;
 
-public class FreeTextCommentBuilder
-        implements CommentBuilder<FreeTextCommentBuilder, FreeTextComment> {
+public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
     private CommentType commentType;
     private String molecule;
     private List<EvidencedValue> texts = new ArrayList<>();
@@ -28,10 +27,8 @@ public class FreeTextCommentBuilder
         return new FreeTextCommentImpl(commentType, molecule, texts);
     }
 
-    @Override
-    public @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
-        texts.clear();
-        return this.commentType(instance.getCommentType())
+    public static @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
+        return new FreeTextCommentBuilder().commentType(instance.getCommentType())
                 .texts(instance.getTexts())
                 .molecule(instance.getMolecule());
     }

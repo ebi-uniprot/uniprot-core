@@ -15,19 +15,17 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public class RedoxPotentialBuilder
-        extends AbstractFreeTextBuilder<RedoxPotentialBuilder, RedoxPotential> {
+public class RedoxPotentialBuilder extends AbstractFreeTextBuilder<RedoxPotential> {
     public RedoxPotentialBuilder(List<EvidencedValue> evidencedValues) {
         this.evidencedValues = modifiableList(evidencedValues);
     }
 
     @Override
-    protected @Nonnull RedoxPotentialBuilder getThis() {
-        return this;
-    }
-
-    @Override
     protected @Nonnull RedoxPotential createConcreteInstance() {
         return new BPCPCommentImpl.RedoxPotentialImpl(evidencedValues);
+    }
+
+    public static @Nonnull RedoxPotentialBuilder from(@Nonnull RedoxPotential instance) {
+        return new RedoxPotentialBuilder(instance.getTexts());
     }
 }

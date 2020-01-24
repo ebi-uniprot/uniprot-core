@@ -10,19 +10,10 @@ import org.uniprot.core.Value;
  *
  * @author Edd
  */
-public abstract class AbstractValueBuilder<B extends AbstractValueBuilder<B, T>, T extends Value>
-        implements Builder<B, T> {
+public abstract class AbstractValueBuilder<T extends Value> implements Builder<T> {
     protected String value;
 
     public AbstractValueBuilder(String value) {
         this.value = value;
     }
-
-    @Override
-    public @Nonnull B from(@Nonnull T instance) {
-        this.value = instance.getValue();
-        return getThis();
-    }
-
-    protected abstract @Nonnull B getThis();
 }

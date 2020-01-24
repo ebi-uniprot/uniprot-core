@@ -16,7 +16,7 @@ import org.uniprot.core.uniprot.evidence.impl.EvidenceImpl;
  *
  * @author Edd
  */
-public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
+public class EvidenceBuilder implements Builder<Evidence> {
     private EvidenceCode evidenceCode;
     private String databaseName;
     private String databaseId;
@@ -30,8 +30,7 @@ public class EvidenceBuilder implements Builder<EvidenceBuilder, Evidence> {
         }
     }
 
-    @Override
-    public @Nonnull EvidenceBuilder from(Evidence instance) {
+    public static @Nonnull EvidenceBuilder from(Evidence instance) {
         DBCrossReference<EvidenceType> source = instance.getSource();
         EvidenceBuilder retBuilder = new EvidenceBuilder().evidenceCode(instance.getEvidenceCode());
         if (notNull(source)) {

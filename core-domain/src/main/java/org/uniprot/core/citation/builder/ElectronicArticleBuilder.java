@@ -21,10 +21,10 @@ public final class ElectronicArticleBuilder
                 new ElectronicArticleImpl.LocatorImpl(locator));
     }
 
-    @Override
-    public @Nonnull ElectronicArticleBuilder from(@Nonnull ElectronicArticle instance) {
-        init(instance);
-        return this.journalName(instance.getJournal().getName())
+    public static @Nonnull ElectronicArticleBuilder from(@Nonnull ElectronicArticle instance) {
+        ElectronicArticleBuilder builder = new ElectronicArticleBuilder();
+        init(builder, instance);
+        return builder.journalName(instance.getJournal().getName())
                 .locator(instance.getLocator().getValue());
     }
 

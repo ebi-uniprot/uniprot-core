@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.uniprot.comment.*;
 import org.uniprot.core.uniprot.comment.impl.BPCPCommentImpl;
 
-public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuilder, BPCPComment> {
+public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
     private String molecule;
     private Absorption absorption = null;
     private KineticParameters kineticParameters = null;
@@ -23,9 +23,8 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPCommentBuild
                 temperatureDependence);
     }
 
-    @Override
-    public @Nonnull BPCPCommentBuilder from(@Nonnull BPCPComment instance) {
-        return this.kineticParameters(instance.getKineticParameters())
+    public static @Nonnull BPCPCommentBuilder from(@Nonnull BPCPComment instance) {
+        return new BPCPCommentBuilder().kineticParameters(instance.getKineticParameters())
                 .molecule(instance.getMolecule())
                 .absorption(instance.getAbsorption())
                 .phDependence(instance.getPhDependence())

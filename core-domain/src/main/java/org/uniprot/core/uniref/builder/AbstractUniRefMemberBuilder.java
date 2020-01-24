@@ -22,7 +22,7 @@ import org.uniprot.core.uniref.UniRefMemberIdType;
  */
 public abstract class AbstractUniRefMemberBuilder<
                 B extends AbstractUniRefMemberBuilder<B, T>, T extends UniRefMember>
-        implements Builder<B, T> {
+        implements Builder<T> {
     protected UniRefMemberIdType memberIdType;
     protected String memberId;
     protected String organismName;
@@ -111,8 +111,8 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    protected void init(@Nonnull T instance) {
-        this.memberIdType(instance.getMemberIdType())
+    protected static <B extends AbstractUniRefMemberBuilder<B, T>, T extends UniRefMember> void init(@Nonnull B builder, @Nonnull T instance) {
+        builder.memberIdType(instance.getMemberIdType())
                 .memberId(instance.getMemberId())
                 .organismName(instance.getOrganismName())
                 .organismTaxId(instance.getOrganismTaxId())

@@ -17,7 +17,7 @@ import org.uniprot.core.literature.impl.LiteratureEntryImpl;
 import org.uniprot.core.util.Utils;
 
 /** @author lgonzales */
-public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, LiteratureEntry> {
+public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
 
     private Long pubmedId;
     private String doiId;
@@ -134,10 +134,8 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
                 statistics);
     }
 
-    @Override
-    public @Nonnull LiteratureEntryBuilder from(@Nonnull LiteratureEntry instance) {
-        LiteratureEntryBuilder builder =
-                new LiteratureEntryBuilder()
+    public static @Nonnull LiteratureEntryBuilder from(@Nonnull LiteratureEntry instance) {
+        return new LiteratureEntryBuilder()
                         .pubmedId(instance.getPubmedId())
                         .doiId(instance.getDoiId())
                         .title(instance.getTitle())
@@ -151,6 +149,5 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntryBuilder, L
                         .lastPage(instance.getLastPage())
                         .literatureAbstract(instance.getLiteratureAbstract())
                         .statistics(instance.getStatistics());
-        return builder;
     }
 }

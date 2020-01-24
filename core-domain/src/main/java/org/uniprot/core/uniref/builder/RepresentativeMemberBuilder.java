@@ -38,10 +38,10 @@ public class RepresentativeMemberBuilder
                 sequence);
     }
 
-    @Override
-    public @Nonnull RepresentativeMemberBuilder from(@Nonnull RepresentativeMember instance) {
-        super.init(instance);
-        return sequence(instance.getSequence());
+    public static @Nonnull RepresentativeMemberBuilder from(@Nonnull RepresentativeMember instance) {
+        RepresentativeMemberBuilder builder = new RepresentativeMemberBuilder();
+        AbstractUniRefMemberBuilder.init(builder, instance);
+        return builder.sequence(instance.getSequence());
     }
 
     @Override

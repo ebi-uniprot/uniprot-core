@@ -10,7 +10,7 @@ import org.uniprot.core.uniparc.impl.UniParcIdImpl;
  * @author jluo
  * @date: 23 May 2019
  */
-public class UniParcIdBuilder extends AbstractValueBuilder<UniParcIdBuilder, UniParcId> {
+public class UniParcIdBuilder extends AbstractValueBuilder<UniParcId> {
     public UniParcIdBuilder(String value) {
         super(value);
     }
@@ -20,8 +20,7 @@ public class UniParcIdBuilder extends AbstractValueBuilder<UniParcIdBuilder, Uni
         return new UniParcIdImpl(value);
     }
 
-    @Override
-    protected @Nonnull UniParcIdBuilder getThis() {
-        return this;
+    public static @Nonnull UniParcIdBuilder from(@Nonnull UniParcId instance) {
+        return new UniParcIdBuilder(instance.getValue());
     }
 }

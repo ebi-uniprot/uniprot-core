@@ -15,18 +15,17 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public class NoteBuilder extends AbstractFreeTextBuilder<NoteBuilder, Note> {
+public class NoteBuilder extends AbstractFreeTextBuilder<Note> {
     public NoteBuilder(List<EvidencedValue> evidencedValues) {
         this.evidencedValues = modifiableList(evidencedValues);
     }
 
     @Override
-    protected @Nonnull NoteBuilder getThis() {
-        return this;
-    }
-
-    @Override
     protected @Nonnull Note createConcreteInstance() {
         return new NoteImpl(evidencedValues);
+    }
+
+    public static @Nonnull NoteBuilder from(@Nonnull Note instance) {
+        return new NoteBuilder(instance.getTexts());
     }
 }

@@ -13,7 +13,7 @@ import org.uniprot.core.uniprot.evidence.impl.EvidenceLineImpl;
  *
  * @author Edd
  */
-public class EvidenceLineBuilder implements Builder<EvidenceLineBuilder, EvidenceLine> {
+public class EvidenceLineBuilder implements Builder<EvidenceLine> {
     private String evidence;
     private LocalDate createDate;
     private String curator;
@@ -23,9 +23,8 @@ public class EvidenceLineBuilder implements Builder<EvidenceLineBuilder, Evidenc
         return new EvidenceLineImpl(evidence, createDate, curator);
     }
 
-    @Override
-    public @Nonnull EvidenceLineBuilder from(@Nonnull EvidenceLine instance) {
-        return this.evidence(instance.getEvidence())
+    public static @Nonnull EvidenceLineBuilder from(@Nonnull EvidenceLine instance) {
+        return new EvidenceLineBuilder().evidence(instance.getEvidence())
                 .curator(instance.getCurator())
                 .creationDate(instance.getCreateDate());
     }

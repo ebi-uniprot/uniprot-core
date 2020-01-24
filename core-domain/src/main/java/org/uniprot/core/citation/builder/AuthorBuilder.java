@@ -11,7 +11,7 @@ import org.uniprot.core.citation.impl.AuthorImpl;
  *
  * @author Edd
  */
-public class AuthorBuilder extends AbstractValueBuilder<AuthorBuilder, Author> {
+public class AuthorBuilder extends AbstractValueBuilder<Author> {
     public AuthorBuilder(String value) {
         super(value);
     }
@@ -21,8 +21,7 @@ public class AuthorBuilder extends AbstractValueBuilder<AuthorBuilder, Author> {
         return new AuthorImpl(value);
     }
 
-    @Override
-    protected @Nonnull AuthorBuilder getThis() {
-        return this;
+    public static @Nonnull AuthorBuilder from(@Nonnull Author instance) {
+        return new AuthorBuilder(instance.getValue());
     }
 }

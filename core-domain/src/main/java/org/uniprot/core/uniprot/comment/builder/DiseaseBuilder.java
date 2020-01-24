@@ -15,7 +15,7 @@ import org.uniprot.core.uniprot.comment.DiseaseReferenceType;
 import org.uniprot.core.uniprot.comment.impl.DiseaseImpl;
 import org.uniprot.core.uniprot.evidence.Evidence;
 
-public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
+public final class DiseaseBuilder implements Builder<Disease> {
     private String diseaseId;
     private String diseaseAc;
     private String acronym;
@@ -27,9 +27,8 @@ public final class DiseaseBuilder implements Builder<DiseaseBuilder, Disease> {
         return new DiseaseImpl(diseaseId, diseaseAc, acronym, description, reference, evidences);
     }
 
-    @Override
-    public @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
-        return this.acronym(instance.getAcronym())
+    public static @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
+        return new DiseaseBuilder().acronym(instance.getAcronym())
                 .description(instance.getDescription())
                 .diseaseAc(instance.getDiseaseAccession())
                 .diseaseId(instance.getDiseaseId())

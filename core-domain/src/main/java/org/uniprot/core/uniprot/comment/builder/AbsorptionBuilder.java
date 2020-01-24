@@ -16,7 +16,7 @@ import org.uniprot.core.uniprot.evidence.Evidence;
  *
  * @author Edd
  */
-public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption> {
+public class AbsorptionBuilder implements Builder<Absorption> {
     private int max;
     private boolean approximate;
     private Note note;
@@ -27,10 +27,8 @@ public class AbsorptionBuilder implements Builder<AbsorptionBuilder, Absorption>
         return new AbsorptionImpl(max, approximate, note, evidences);
     }
 
-    @Override
-    public @Nonnull AbsorptionBuilder from(@Nonnull Absorption instance) {
-        evidences.clear();
-        return this.note(instance.getNote())
+    public static @Nonnull AbsorptionBuilder from(@Nonnull Absorption instance) {
+        return new AbsorptionBuilder().note(instance.getNote())
                 .approximate(instance.isApproximate())
                 .max(instance.getMax())
                 .evidences(instance.getEvidences());

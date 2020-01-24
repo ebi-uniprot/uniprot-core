@@ -57,8 +57,7 @@ class DBCrossReferenceImplTest {
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         DBCrossReference<DefaultDatabaseType> impl =
                 new DBCrossReferenceImpl<>(new DefaultDatabaseType("EMBL"), "one", properties);
-        DBCrossReference<DefaultDatabaseType> obj =
-                new DBCrossReferenceBuilder<DefaultDatabaseType>().from(impl).build();
+        DBCrossReference<DefaultDatabaseType> obj = DBCrossReferenceBuilder.from(impl).build();
 
         assertTrue(impl.hasDatabaseType());
         assertTrue(impl.hasId());
