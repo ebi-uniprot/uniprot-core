@@ -158,8 +158,14 @@ class ProteinDescriptionBuilderTest {
     }
 
     @Test
+    void addingNullInFlagTypeWill_keepItNull() {
+        ProteinDescription obj = new ProteinDescriptionBuilder().flag((FlagType) null).build();
+        assertNull(obj.getFlag());
+    }
+
+    @Test
     void addingNullInFlagWill_keepItNull() {
-        ProteinDescription obj = new ProteinDescriptionBuilder().flag(null).build();
+        ProteinDescription obj = new ProteinDescriptionBuilder().flag((Flag) null).build();
         assertNull(obj.getFlag());
     }
 

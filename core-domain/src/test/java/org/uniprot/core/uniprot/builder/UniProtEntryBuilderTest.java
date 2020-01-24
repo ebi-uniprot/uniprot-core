@@ -33,7 +33,7 @@ class UniProtEntryBuilderTest {
 
     @Test
     void canCreateBuilderFromInstance() {
-        UniProtEntryBuilder builder = UniProtEntryBuilder.fromInstance(minEntry);
+        UniProtEntryBuilder builder = UniProtEntryBuilder.from(minEntry);
         assertNotNull(builder);
     }
 
@@ -41,7 +41,7 @@ class UniProtEntryBuilderTest {
     void accessionCanBeChangeFromBuilder_string() {
         String access = "new";
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).primaryAccession(access).build();
+                UniProtEntryBuilder.from(minEntry).primaryAccession(access).build();
         assertEquals(access, entry.getPrimaryAccession().getValue());
     }
 
@@ -49,28 +49,28 @@ class UniProtEntryBuilderTest {
     void accessionCanBeChangeFromBuilder() {
         UniProtAccession access = new UniProtAccessionBuilder("new").build();
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).primaryAccession(access).build();
+                UniProtEntryBuilder.from(minEntry).primaryAccession(access).build();
         assertEquals(access, entry.getPrimaryAccession());
     }
 
     @Test
     void uniProtIdCanBeChangeFromBuilder_string() {
         String id = "new";
-        UniProtEntry entry = UniProtEntryBuilder.fromInstance(minEntry).uniProtId(id).build();
+        UniProtEntry entry = UniProtEntryBuilder.from(minEntry).uniProtId(id).build();
         assertEquals(id, entry.getUniProtId().getValue());
     }
 
     @Test
     void uniProtIdCanBeChangeFromBuilder() {
         UniProtId id = new UniProtIdBuilder("new").build();
-        UniProtEntry entry = UniProtEntryBuilder.fromInstance(minEntry).uniProtId(id).build();
+        UniProtEntry entry = UniProtEntryBuilder.from(minEntry).uniProtId(id).build();
         assertEquals(id, entry.getUniProtId());
     }
 
     @Test
     void entryTypeCanBeChangeFromBuilder() {
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry)
+                UniProtEntryBuilder.from(minEntry)
                         .entryType(UniProtEntryType.SWISSPROT)
                         .build();
         assertEquals(UniProtEntryType.SWISSPROT, entry.getEntryType());
@@ -80,14 +80,14 @@ class UniProtEntryBuilderTest {
     void entryTypeCanBeChangeFromBuilder_butCannotBeNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> UniProtEntryBuilder.fromInstance(minEntry).entryType(null).build());
+                () -> UniProtEntryBuilder.from(minEntry).entryType(null).build());
     }
 
     @Test
     void canAddAuditEntry() {
         EntryAudit entryAudit = new EntryAuditBuilder().build();
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).entryAudit(entryAudit).build();
+                UniProtEntryBuilder.from(minEntry).entryAudit(entryAudit).build();
         assertEquals(entryAudit, entry.getEntryAudit());
     }
 
@@ -95,7 +95,7 @@ class UniProtEntryBuilderTest {
     void canAddAnnotationScore() {
         double score = 454;
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).annotationScore(score).build();
+                UniProtEntryBuilder.from(minEntry).annotationScore(score).build();
         assertEquals(score, entry.getAnnotationScore());
         assertTrue(entry.hasAnnotationScore());
     }
@@ -103,7 +103,7 @@ class UniProtEntryBuilderTest {
     @Test
     void canSetOrganism() {
         Organism organism = new OrganismBuilder().build();
-        UniProtEntry entry = UniProtEntryBuilder.fromInstance(minEntry).organism(organism).build();
+        UniProtEntry entry = UniProtEntryBuilder.from(minEntry).organism(organism).build();
         assertTrue(entry.hasOrganism());
         assertEquals(organism, entry.getOrganism());
     }
@@ -111,7 +111,7 @@ class UniProtEntryBuilderTest {
     @Test
     void canSet_proteinExistence() {
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry)
+                UniProtEntryBuilder.from(minEntry)
                         .proteinExistence(ProteinExistence.HOMOLOGY)
                         .build();
         assertTrue(entry.hasProteinExistence());
@@ -122,7 +122,7 @@ class UniProtEntryBuilderTest {
     void canSet_proteinDescription() {
         ProteinDescription description = new ProteinDescriptionBuilder().build();
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).proteinDescription(description).build();
+                UniProtEntryBuilder.from(minEntry).proteinDescription(description).build();
         assertTrue(entry.hasProteinDescription());
         assertEquals(description, entry.getProteinDescription());
     }
@@ -130,7 +130,7 @@ class UniProtEntryBuilderTest {
     @Test
     void canSet_sequence() {
         Sequence sequence = new SequenceBuilder("seq").build();
-        UniProtEntry entry = UniProtEntryBuilder.fromInstance(minEntry).sequence(sequence).build();
+        UniProtEntry entry = UniProtEntryBuilder.from(minEntry).sequence(sequence).build();
         assertEquals(sequence, entry.getSequence());
     }
 
@@ -138,7 +138,7 @@ class UniProtEntryBuilderTest {
     void canSet_internalSection() {
         InternalSection internalSection = new InternalSectionBuilder().build();
         UniProtEntry entry =
-                UniProtEntryBuilder.fromInstance(minEntry).internalSection(internalSection).build();
+                UniProtEntryBuilder.from(minEntry).internalSection(internalSection).build();
         assertEquals(internalSection, entry.getInternalSection());
     }
 
@@ -195,7 +195,7 @@ class UniProtEntryBuilderTest {
                                     minEntry.getPrimaryAccession(), minEntry.getUniProtId(), reason)
                             .build();
 
-            UniProtEntry entry = UniProtEntryBuilder.fromInstance(inactive).build();
+            UniProtEntry entry = UniProtEntryBuilder.from(inactive).build();
 
             assertFalse(entry.isActive());
             assertEquals(
@@ -212,13 +212,13 @@ class UniProtEntryBuilderTest {
             assertThrows(
                     IllegalArgumentException.class,
                     () ->
-                            UniProtEntryBuilder.fromInstance(inactive)
+                            UniProtEntryBuilder.from(inactive)
                                     .entryType(UniProtEntryType.SWISSPROT)
                                     .build());
             assertThrows(
                     IllegalArgumentException.class,
                     () ->
-                            UniProtEntryBuilder.fromInstance(inactive)
+                            UniProtEntryBuilder.from(inactive)
                                     .entryType(UniProtEntryType.TREMBL)
                                     .build());
         }
@@ -264,7 +264,7 @@ class UniProtEntryBuilderTest {
 
         @Test
         void canActiveFromActiveEntry() {
-            UniProtEntry entry = UniProtEntryBuilder.fromInstance(minEntry).build();
+            UniProtEntry entry = UniProtEntryBuilder.from(minEntry).build();
 
             assertTrue(entry.isActive());
         }
@@ -274,7 +274,7 @@ class UniProtEntryBuilderTest {
             assertThrows(
                     IllegalArgumentException.class,
                     () ->
-                            UniProtEntryBuilder.fromInstance(minEntry)
+                            UniProtEntryBuilder.from(minEntry)
                                     .entryType(UniProtEntryType.INACTIVE)
                                     .build());
         }
@@ -287,7 +287,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).secondaryAccessionAdd(acc).build();
+                    UniProtEntryBuilder.from(minEntry).secondaryAccessionAdd(acc).build();
             assertNotNull(obj.getSecondaryAccessions());
             assertFalse(obj.getSecondaryAccessions().isEmpty());
             assertTrue(obj.hasSecondaryAccessions());
@@ -296,7 +296,7 @@ class UniProtEntryBuilderTest {
         @Test
         void null_singleAdd_willBeIgnore() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).secondaryAccessionAdd(null).build();
+                    UniProtEntryBuilder.from(minEntry).secondaryAccessionAdd(null).build();
             assertNotNull(obj.getSecondaryAccessions());
             assertTrue(obj.getSecondaryAccessions().isEmpty());
             assertFalse(obj.hasSecondaryAccessions());
@@ -305,7 +305,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .secondaryAccessionsSet(emptyList())
                             .secondaryAccessionAdd(acc)
                             .build();
@@ -317,7 +317,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .secondaryAccessionsSet(singletonList(acc))
                             .build();
             assertNotNull(obj.getSecondaryAccessions());
@@ -328,7 +328,7 @@ class UniProtEntryBuilderTest {
         @Test
         void previousAddedWillBeIgnoreUponSet() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .secondaryAccessionAdd(acc)
                             .secondaryAccessionsSet(null)
                             .build();
@@ -345,7 +345,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).organismHostAdd(host).build();
+                    UniProtEntryBuilder.from(minEntry).organismHostAdd(host).build();
             assertNotNull(obj.getOrganismHosts());
             assertFalse(obj.getOrganismHosts().isEmpty());
             assertTrue(obj.hasOrganismHosts());
@@ -354,7 +354,7 @@ class UniProtEntryBuilderTest {
         @Test
         void null_singleAdd_willBeIgnore() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).organismHostAdd(null).build();
+                    UniProtEntryBuilder.from(minEntry).organismHostAdd(null).build();
             assertNotNull(obj.getOrganismHosts());
             assertTrue(obj.getOrganismHosts().isEmpty());
             assertFalse(obj.hasOrganismHosts());
@@ -363,7 +363,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .organismHostsSet(emptyList())
                             .organismHostAdd(host)
                             .build();
@@ -375,7 +375,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .organismHostsSet(singletonList(host))
                             .build();
             assertNotNull(obj.getOrganismHosts());
@@ -386,7 +386,7 @@ class UniProtEntryBuilderTest {
         @Test
         void previousAddedWillBeIgnoreUponSet() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .organismHostAdd(host)
                             .organismHostsSet(null)
                             .build();
@@ -402,7 +402,7 @@ class UniProtEntryBuilderTest {
 
         @Test
         void canAddSingle() {
-            UniProtEntry obj = UniProtEntryBuilder.fromInstance(minEntry).geneAdd(gene).build();
+            UniProtEntry obj = UniProtEntryBuilder.from(minEntry).geneAdd(gene).build();
             assertNotNull(obj.getGenes());
             assertFalse(obj.getGenes().isEmpty());
             assertTrue(obj.hasGenes());
@@ -410,7 +410,7 @@ class UniProtEntryBuilderTest {
 
         @Test
         void null_singleAdd_willBeIgnore() {
-            UniProtEntry obj = UniProtEntryBuilder.fromInstance(minEntry).geneAdd(null).build();
+            UniProtEntry obj = UniProtEntryBuilder.from(minEntry).geneAdd(null).build();
             assertNotNull(obj.getGenes());
             assertTrue(obj.getGenes().isEmpty());
             assertFalse(obj.hasGenes());
@@ -419,7 +419,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .genesSet(emptyList())
                             .geneAdd(gene)
                             .build();
@@ -431,7 +431,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .genesSet(singletonList(gene))
                             .build();
             assertNotNull(obj.getGenes());
@@ -443,7 +443,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<Gene> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).geneAdd(gene).genesSet(list).build();
+                    UniProtEntryBuilder.from(minEntry).geneAdd(gene).genesSet(list).build();
             assertNotNull(obj.getOrganismHosts());
             assertTrue(obj.getOrganismHosts().isEmpty());
             assertFalse(obj.hasGenes());
@@ -457,7 +457,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).commentAdd(comment).build();
+                    UniProtEntryBuilder.from(minEntry).commentAdd(comment).build();
             assertNotNull(obj.getComments());
             assertFalse(obj.getComments().isEmpty());
             assertTrue(obj.hasComments());
@@ -465,7 +465,7 @@ class UniProtEntryBuilderTest {
 
         @Test
         void null_singleAdd_willBeIgnore() {
-            UniProtEntry obj = UniProtEntryBuilder.fromInstance(minEntry).commentAdd(null).build();
+            UniProtEntry obj = UniProtEntryBuilder.from(minEntry).commentAdd(null).build();
             assertNotNull(obj.getComments());
             assertTrue(obj.getComments().isEmpty());
             assertFalse(obj.hasComments());
@@ -474,7 +474,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .commentsSet(emptyList())
                             .commentAdd(comment)
                             .build();
@@ -486,7 +486,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .commentsSet(singletonList(comment))
                             .build();
             assertNotNull(obj.getComments());
@@ -498,7 +498,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<Comment> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .commentAdd(comment)
                             .commentsSet(list)
                             .build();
@@ -515,7 +515,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).featureAdd(feature).build();
+                    UniProtEntryBuilder.from(minEntry).featureAdd(feature).build();
             assertNotNull(obj.getFeatures());
             assertFalse(obj.getFeatures().isEmpty());
             assertTrue(obj.hasFeatures());
@@ -523,7 +523,7 @@ class UniProtEntryBuilderTest {
 
         @Test
         void null_singleAdd_willBeIgnore() {
-            UniProtEntry obj = UniProtEntryBuilder.fromInstance(minEntry).featureAdd(null).build();
+            UniProtEntry obj = UniProtEntryBuilder.from(minEntry).featureAdd(null).build();
             assertNotNull(obj.getFeatures());
             assertTrue(obj.getFeatures().isEmpty());
             assertFalse(obj.hasFeatures());
@@ -532,7 +532,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .featuresSet(emptyList())
                             .featureAdd(feature)
                             .build();
@@ -544,7 +544,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .featuresSet(singletonList(feature))
                             .build();
             assertNotNull(obj.getFeatures());
@@ -556,7 +556,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<Feature> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .featureAdd(feature)
                             .featuresSet(list)
                             .build();
@@ -573,7 +573,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).geneLocationAdd(location).build();
+                    UniProtEntryBuilder.from(minEntry).geneLocationAdd(location).build();
             assertNotNull(obj.getGeneLocations());
             assertFalse(obj.getGeneLocations().isEmpty());
             assertTrue(obj.hasGeneLocations());
@@ -582,7 +582,7 @@ class UniProtEntryBuilderTest {
         @Test
         void null_singleAdd_willBeIgnore() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).geneLocationAdd(null).build();
+                    UniProtEntryBuilder.from(minEntry).geneLocationAdd(null).build();
             assertNotNull(obj.getGeneLocations());
             assertTrue(obj.getGeneLocations().isEmpty());
             assertFalse(obj.hasGeneLocations());
@@ -591,7 +591,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .geneLocationsSet(emptyList())
                             .geneLocationAdd(location)
                             .build();
@@ -603,7 +603,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .geneLocationsSet(singletonList(location))
                             .build();
             assertNotNull(obj.getGeneLocations());
@@ -615,7 +615,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<GeneLocation> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .geneLocationAdd(location)
                             .geneLocationsSet(list)
                             .build();
@@ -632,7 +632,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).keywordAdd(keyword).build();
+                    UniProtEntryBuilder.from(minEntry).keywordAdd(keyword).build();
             assertNotNull(obj.getKeywords());
             assertFalse(obj.getKeywords().isEmpty());
             assertTrue(obj.hasKeywords());
@@ -640,7 +640,7 @@ class UniProtEntryBuilderTest {
 
         @Test
         void null_singleAdd_willBeIgnore() {
-            UniProtEntry obj = UniProtEntryBuilder.fromInstance(minEntry).keywordAdd(null).build();
+            UniProtEntry obj = UniProtEntryBuilder.from(minEntry).keywordAdd(null).build();
             assertNotNull(obj.getKeywords());
             assertTrue(obj.getKeywords().isEmpty());
             assertFalse(obj.hasKeywords());
@@ -649,7 +649,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .keywordsSet(emptyList())
                             .keywordAdd(keyword)
                             .build();
@@ -661,7 +661,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .keywordsSet(singletonList(keyword))
                             .build();
             assertNotNull(obj.getKeywords());
@@ -673,7 +673,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<Keyword> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .keywordAdd(keyword)
                             .keywordsSet(list)
                             .build();
@@ -690,7 +690,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).referenceAdd(reference).build();
+                    UniProtEntryBuilder.from(minEntry).referenceAdd(reference).build();
             assertNotNull(obj.getReferences());
             assertFalse(obj.getReferences().isEmpty());
             assertTrue(obj.hasReferences());
@@ -699,7 +699,7 @@ class UniProtEntryBuilderTest {
         @Test
         void null_singleAdd_willBeIgnore() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).referenceAdd(null).build();
+                    UniProtEntryBuilder.from(minEntry).referenceAdd(null).build();
             assertNotNull(obj.getReferences());
             assertTrue(obj.getReferences().isEmpty());
             assertFalse(obj.hasReferences());
@@ -708,7 +708,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .referencesSet(emptyList())
                             .referenceAdd(reference)
                             .build();
@@ -720,7 +720,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .referencesSet(singletonList(reference))
                             .build();
             assertNotNull(obj.getReferences());
@@ -732,7 +732,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<UniProtReference> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .referenceAdd(reference)
                             .referencesSet(list)
                             .build();
@@ -749,7 +749,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .databaseCrossReferenceAdd(reference)
                             .build();
             assertNotNull(obj.getDatabaseCrossReferences());
@@ -760,7 +760,7 @@ class UniProtEntryBuilderTest {
         @Test
         void null_singleAdd_willBeIgnore() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .databaseCrossReferenceAdd(null)
                             .build();
             assertNotNull(obj.getDatabaseCrossReferences());
@@ -771,7 +771,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .databaseCrossReferencesSet(emptyList())
                             .databaseCrossReferenceAdd(reference)
                             .build();
@@ -783,7 +783,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .databaseCrossReferencesSet(singletonList(reference))
                             .build();
             assertNotNull(obj.getDatabaseCrossReferences());
@@ -795,7 +795,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<UniProtDBCrossReference> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .databaseCrossReferenceAdd(reference)
                             .databaseCrossReferencesSet(list)
                             .build();
@@ -812,14 +812,14 @@ class UniProtEntryBuilderTest {
         @Test
         void canAddSingle() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry).lineageAdd(lineage).build();
+                    UniProtEntryBuilder.from(minEntry).lineageAdd(lineage).build();
             assertNotNull(obj.getLineages());
             assertFalse(obj.getLineages().isEmpty());
         }
 
         @Test
         void null_singleAdd_willBeIgnore() {
-            UniProtEntry obj = UniProtEntryBuilder.fromInstance(minEntry).lineageAdd(null).build();
+            UniProtEntry obj = UniProtEntryBuilder.from(minEntry).lineageAdd(null).build();
             assertNotNull(obj.getLineages());
             assertTrue(obj.getLineages().isEmpty());
         }
@@ -827,7 +827,7 @@ class UniProtEntryBuilderTest {
         @Test
         void set_willConvertUnModifiable_toModifiable() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .lineagesSet(emptyList())
                             .lineageAdd(lineage)
                             .build();
@@ -838,7 +838,7 @@ class UniProtEntryBuilderTest {
         @Test
         void canSetList() {
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .lineagesSet(singletonList(lineage))
                             .build();
             assertNotNull(obj.getLineages());
@@ -849,7 +849,7 @@ class UniProtEntryBuilderTest {
         void previousAddedWillBeIgnoreUponSet() {
             List<TaxonomyLineage> list = null;
             UniProtEntry obj =
-                    UniProtEntryBuilder.fromInstance(minEntry)
+                    UniProtEntryBuilder.from(minEntry)
                             .lineageAdd(lineage)
                             .lineagesSet(list)
                             .build();
