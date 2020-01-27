@@ -8,7 +8,7 @@ import java.util.Objects;
 public class UniProtXDbTypeDetail implements Serializable {
 
     private static final long serialVersionUID = 8751881513996820892L;
-	public static String EXPLICIT = "Explicit";
+	public static final String EXPLICIT = "Explicit";
     private static final DBXRefTypeAttribute DEFAULT_ATTRIBUTE =
             new DBXRefTypeAttribute("Description", "description", null);
     private String name;
