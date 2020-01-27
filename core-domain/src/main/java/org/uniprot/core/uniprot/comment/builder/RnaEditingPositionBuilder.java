@@ -28,7 +28,9 @@ public class RnaEditingPositionBuilder implements Builder<RnaEdPosition> {
     }
 
     public static @Nonnull RnaEditingPositionBuilder from(@Nonnull RnaEdPosition instance) {
-        return new RnaEditingPositionBuilder().evidences(instance.getEvidences()).position(instance.getPosition());
+        return new RnaEditingPositionBuilder()
+                .evidences(instance.getEvidences())
+                .position(instance.getPosition());
     }
 
     public @Nonnull RnaEditingPositionBuilder position(String position) {

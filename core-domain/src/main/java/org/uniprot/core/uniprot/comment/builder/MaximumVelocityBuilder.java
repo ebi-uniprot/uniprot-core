@@ -30,7 +30,8 @@ public class MaximumVelocityBuilder implements Builder<MaximumVelocity> {
     }
 
     public static @Nonnull MaximumVelocityBuilder from(@Nonnull MaximumVelocity instance) {
-        return new MaximumVelocityBuilder().evidences(instance.getEvidences())
+        return new MaximumVelocityBuilder()
+                .evidences(instance.getEvidences())
                 .enzyme(instance.getEnzyme())
                 .unit(instance.getUnit())
                 .velocity(instance.getVelocity());

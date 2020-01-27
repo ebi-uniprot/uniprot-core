@@ -28,7 +28,8 @@ public class AbsorptionBuilder implements Builder<Absorption> {
     }
 
     public static @Nonnull AbsorptionBuilder from(@Nonnull Absorption instance) {
-        return new AbsorptionBuilder().note(instance.getNote())
+        return new AbsorptionBuilder()
+                .note(instance.getNote())
                 .approximate(instance.isApproximate())
                 .max(instance.getMax())
                 .evidences(instance.getEvidences());

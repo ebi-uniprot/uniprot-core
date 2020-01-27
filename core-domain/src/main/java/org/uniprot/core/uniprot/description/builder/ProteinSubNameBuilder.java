@@ -40,7 +40,8 @@ public class ProteinSubNameBuilder implements Builder<ProteinSubName> {
     }
 
     public static @Nonnull ProteinSubNameBuilder from(@Nonnull ProteinSubName instance) {
-        return new ProteinSubNameBuilder().fullName(instance.getFullName())
-        .ecNumbers(instance.getEcNumbers());
+        return new ProteinSubNameBuilder()
+                .fullName(instance.getFullName())
+                .ecNumbers(instance.getEcNumbers());
     }
 }

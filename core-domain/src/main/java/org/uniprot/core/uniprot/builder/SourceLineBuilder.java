@@ -21,7 +21,7 @@ public class SourceLineBuilder extends AbstractValueBuilder<SourceLine> {
         return new SourceLineImpl(value);
     }
 
-    public static @Nonnull SourceLineBuilder from (@Nonnull SourceLine instance){
+    public static @Nonnull SourceLineBuilder from(@Nonnull SourceLine instance) {
         return new SourceLineBuilder(instance.getValue());
     }
 }

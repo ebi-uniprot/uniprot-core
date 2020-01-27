@@ -52,8 +52,9 @@ public class ProteinRecNameBuilder implements Builder<ProteinRecName> {
     }
 
     public static @Nonnull ProteinRecNameBuilder from(@Nonnull ProteinRecName instance) {
-        return new ProteinRecNameBuilder().fullName(instance.getFullName())
-        .shortNames(instance.getShortNames())
-        .ecNumbers(instance.getEcNumbers());
+        return new ProteinRecNameBuilder()
+                .fullName(instance.getFullName())
+                .shortNames(instance.getShortNames())
+                .ecNumbers(instance.getEcNumbers());
     }
 }

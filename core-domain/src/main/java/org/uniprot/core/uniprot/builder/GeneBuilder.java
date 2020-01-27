@@ -67,9 +67,9 @@ public class GeneBuilder implements Builder<Gene> {
 
     public static @Nonnull GeneBuilder from(@Nonnull Gene instance) {
         return new GeneBuilder()
-        .geneName(instance.getGeneName())
-        .orfNames(instance.getOrfNames())
-        .orderedLocusNames(instance.getOrderedLocusNames())
-        .synonyms(instance.getSynonyms());
+                .geneName(instance.getGeneName())
+                .orfNames(instance.getOrfNames())
+                .orderedLocusNames(instance.getOrderedLocusNames())
+                .synonyms(instance.getSynonyms());
     }
 }

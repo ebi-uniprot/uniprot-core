@@ -25,8 +25,10 @@ public final class SequenceCautionCommentBuilder implements CommentBuilder<Seque
                 molecule, sequenceCautionType, sequence, note, evidences);
     }
 
-    public static @Nonnull SequenceCautionCommentBuilder from(@Nonnull SequenceCautionComment instance) {
-        return new SequenceCautionCommentBuilder().sequenceCautionType(instance.getSequenceCautionType())
+    public static @Nonnull SequenceCautionCommentBuilder from(
+            @Nonnull SequenceCautionComment instance) {
+        return new SequenceCautionCommentBuilder()
+                .sequenceCautionType(instance.getSequenceCautionType())
                 .sequence(instance.getSequence())
                 .evidences(instance.getEvidences())
                 .note(instance.getNote())

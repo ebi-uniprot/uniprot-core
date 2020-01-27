@@ -38,7 +38,7 @@ public class TaxonomyStrainBuilder implements Builder<TaxonomyStrain> {
 
     public static @Nonnull TaxonomyStrainBuilder from(@Nonnull TaxonomyStrain instance) {
         return new TaxonomyStrainBuilder()
-            .name(instance.getName())
-            .synonyms(instance.getSynonyms());
+                .name(instance.getName())
+                .synonyms(instance.getSynonyms());
     }
 }

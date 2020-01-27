@@ -110,9 +110,7 @@ public enum UniProtXDbTypes {
                     });
             typeMap =
                     types.stream()
-                            .collect(
-                                    Collectors.toMap(
-                                            UniProtXDbTypeDetail::getName, val -> val));
+                            .collect(Collectors.toMap(UniProtXDbTypeDetail::getName, val -> val));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

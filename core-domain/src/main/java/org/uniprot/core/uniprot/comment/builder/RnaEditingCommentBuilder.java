@@ -25,7 +25,8 @@ public final class RnaEditingCommentBuilder implements CommentBuilder<RnaEditing
     }
 
     public static @Nonnull RnaEditingCommentBuilder from(@Nonnull RnaEditingComment instance) {
-        return new RnaEditingCommentBuilder().positions(instance.getPositions())
+        return new RnaEditingCommentBuilder()
+                .positions(instance.getPositions())
                 .locationType(instance.getLocationType())
                 .molecule(instance.getMolecule())
                 .note(instance.getNote());

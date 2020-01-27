@@ -35,7 +35,8 @@ public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics
                 reviewedProteinCount, unreviewedProteinCount, mappedProteinCount);
     }
 
-    public static @Nonnull LiteratureStatisticsBuilder from(@Nonnull LiteratureStatistics instance) {
+    public static @Nonnull LiteratureStatisticsBuilder from(
+            @Nonnull LiteratureStatistics instance) {
         return new LiteratureStatisticsBuilder()
                 .reviewedProteinCount(instance.getReviewedProteinCount())
                 .unreviewedProteinCount(instance.getUnreviewedProteinCount())

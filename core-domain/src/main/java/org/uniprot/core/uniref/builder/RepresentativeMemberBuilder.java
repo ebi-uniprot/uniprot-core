@@ -38,7 +38,8 @@ public class RepresentativeMemberBuilder
                 sequence);
     }
 
-    public static @Nonnull RepresentativeMemberBuilder from(@Nonnull RepresentativeMember instance) {
+    public static @Nonnull RepresentativeMemberBuilder from(
+            @Nonnull RepresentativeMember instance) {
         RepresentativeMemberBuilder builder = new RepresentativeMemberBuilder();
         AbstractUniRefMemberBuilder.init(builder, instance);
         return builder.sequence(instance.getSequence());

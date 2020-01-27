@@ -28,8 +28,13 @@ public abstract class AbstractDBCrossReferenceBuilder<
 
     protected abstract @Nonnull B getThis();
 
-    protected static <B extends AbstractDBCrossReferenceBuilder<B, T, D>, T extends DatabaseType, D extends DBCrossReference<T>>
-    void init(@Nonnull AbstractDBCrossReferenceBuilder<B, T, D> builder, @Nonnull D instance) {
+    protected static <
+                    B extends AbstractDBCrossReferenceBuilder<B, T, D>,
+                    T extends DatabaseType,
+                    D extends DBCrossReference<T>>
+            void init(
+                    @Nonnull AbstractDBCrossReferenceBuilder<B, T, D> builder,
+                    @Nonnull D instance) {
         builder.properties(instance.getProperties())
                 .id(instance.getId())
                 .databaseType(instance.getDatabaseType());

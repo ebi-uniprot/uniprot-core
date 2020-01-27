@@ -28,7 +28,8 @@ public class FreeTextCommentBuilder implements CommentBuilder<FreeTextComment> {
     }
 
     public static @Nonnull FreeTextCommentBuilder from(@Nonnull FreeTextComment instance) {
-        return new FreeTextCommentBuilder().commentType(instance.getCommentType())
+        return new FreeTextCommentBuilder()
+                .commentType(instance.getCommentType())
                 .texts(instance.getTexts())
                 .molecule(instance.getMolecule());
     }

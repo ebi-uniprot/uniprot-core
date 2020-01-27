@@ -24,7 +24,8 @@ public class EvidenceLineBuilder implements Builder<EvidenceLine> {
     }
 
     public static @Nonnull EvidenceLineBuilder from(@Nonnull EvidenceLine instance) {
-        return new EvidenceLineBuilder().evidence(instance.getEvidence())
+        return new EvidenceLineBuilder()
+                .evidence(instance.getEvidence())
                 .curator(instance.getCurator())
                 .creationDate(instance.getCreateDate());
     }

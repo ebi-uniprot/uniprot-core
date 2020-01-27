@@ -44,9 +44,10 @@ public class LiteratureStoreEntryBuilder implements Builder<LiteratureStoreEntry
         return new LiteratureStoreEntryImpl(literatureEntry, literatureMappedReferences);
     }
 
-    public static @Nonnull LiteratureStoreEntryBuilder from(@Nonnull LiteratureStoreEntry instance) {
+    public static @Nonnull LiteratureStoreEntryBuilder from(
+            @Nonnull LiteratureStoreEntry instance) {
         return new LiteratureStoreEntryBuilder()
-                        .literatureEntry(instance.getLiteratureEntry())
-                        .literatureMappedReference(instance.getLiteratureMappedReferences());
+                .literatureEntry(instance.getLiteratureEntry())
+                .literatureMappedReference(instance.getLiteratureMappedReferences());
     }
 }

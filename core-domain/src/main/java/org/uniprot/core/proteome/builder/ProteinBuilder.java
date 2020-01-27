@@ -57,10 +57,10 @@ public class ProteinBuilder implements Builder<Protein> {
 
     public static @Nonnull ProteinBuilder from(@Nonnull Protein instance) {
         return new ProteinBuilder()
-        .accession(instance.getAccession())
-        .entryType(instance.getEntryType())
-        .sequenceLength(instance.getSequenceLength())
-        .geneName(instance.getGeneName())
-        .geneNameType(instance.getGeneNameType());
+                .accession(instance.getAccession())
+                .entryType(instance.getEntryType())
+                .sequenceLength(instance.getSequenceLength())
+                .geneName(instance.getGeneName())
+                .geneNameType(instance.getGeneNameType());
     }
 }
