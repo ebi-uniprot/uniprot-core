@@ -79,7 +79,9 @@ public enum UniProtXDbTypes {
                         String category = item.getString("category");
                         String uriLink = item.getString("uriLink");
 
-                        String linkTp = item.optString("linkTp", "Explicit");
+                        String implicit = item.optString("implicit", "false");
+                        boolean isImplicit = Boolean.parseBoolean(implicit);
+
                         String linkedReason = item.optString("linkedReason", null);
 
                         List<DBXRefTypeAttribute> attributes = new ArrayList<>();
@@ -104,7 +106,7 @@ public enum UniProtXDbTypes {
                                         DatabaseCategory.typeOf(category),
                                         uriLink,
                                         attributes,
-                                        linkTp,
+                                        isImplicit,
                                         linkedReason);
                         types.add(xdbType);
                     });

@@ -2,6 +2,7 @@ package org.uniprot.core.cv.xdb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.uniprot.core.cv.xdb.DatabaseCategory.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ class UniProtXDbTypesTest {
     void testEmblType() {
         UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("EMBL");
         assertEquals("EMBL", opType.getName());
+        assertFalse(opType.isImplicit());
         assertEquals(SEQUENCE_DATABASES, opType.getCategory());
         assertEquals("https://www.ebi.ac.uk/ena/data/view/%id", opType.getUriLink());
         assertEquals(3, opType.getAttributes().size());
@@ -29,7 +31,24 @@ class UniProtXDbTypesTest {
                 opType.getAttributes().get(0),
                 "ProteinId",
                 "protein sequence ID",
-                "https://www.ebi.ac.uk/ena/data/view/%proteinId");
+                "https://www.ebi.ac.uk/ena/data/view/%ProteinId");
+        verifyAttribute(opType.getAttributes().get(1), "Status", "status", null);
+        verifyAttribute(opType.getAttributes().get(2), "MoleculeType", "molecule type", null);
+    }
+    
+    @Test
+    void testGeneBankType() {
+        UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("GenBank");
+        assertEquals("GenBank", opType.getName());
+        assertTrue(opType.isImplicit());
+        assertEquals(SEQUENCE_DATABASES, opType.getCategory());
+        assertEquals("https://www.ncbi.nlm.nih.gov/protein/%id", opType.getUriLink());
+        assertEquals(3, opType.getAttributes().size());
+        verifyAttribute(
+                opType.getAttributes().get(0),
+                "ProteinId",
+                "protein sequence ID",
+                "https://www.ncbi.nlm.nih.gov/nuccore/%ProteinId");
         verifyAttribute(opType.getAttributes().get(1), "Status", "status", null);
         verifyAttribute(opType.getAttributes().get(2), "MoleculeType", "molecule type", null);
     }
@@ -153,12 +172,12 @@ class UniProtXDbTypesTest {
                 opType.getAttributes().get(0),
                 "ProteinId",
                 "protein sequence ID",
-                "https://www.ensembl.org/id/%proteinId");
+                "https://www.ensembl.org/id/%ProteinId");
         verifyAttribute(
                 opType.getAttributes().get(1),
                 "GeneId",
                 "gene ID",
-                "https://www.ensembl.org/id/%geneId");
+                "https://www.ensembl.org/id/%GeneId");
     }
 
     @Test
@@ -182,7 +201,7 @@ class UniProtXDbTypesTest {
         assertEquals("eggNOG", opType.getDisplayName());
         assertEquals(PHYLOGENOMIC_DATABASES, opType.getCategory());
         assertEquals(
-                "http://eggnogdb.embl.de/#/app/results?seqid=%u&target_nogs=%id",
+                "http://eggnogdb.embl.de/#/app/results?seqid=%accession&target_nogs=%id",
                 opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ToxonomicScope", "taxonomic scope", null);
