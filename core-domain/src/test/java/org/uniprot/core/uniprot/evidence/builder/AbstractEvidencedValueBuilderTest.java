@@ -115,7 +115,8 @@ public class AbstractEvidencedValueBuilderTest {
             return new EvidencedValueImpl(this.value, this.evidences);
         }
 
-        public static @Nonnull TestableEvidencedValueBuilder from(@Nonnull EvidencedValueImpl instance) {
+        public static @Nonnull TestableEvidencedValueBuilder from(
+                @Nonnull EvidencedValueImpl instance) {
             TestableEvidencedValueBuilder builder = new TestableEvidencedValueBuilder();
             AbstractEvidencedValueBuilder.init(builder, instance);
             return builder;

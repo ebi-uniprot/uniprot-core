@@ -1,6 +1,5 @@
 package org.uniprot.core.builder;
 
-
 import org.uniprot.core.Builder;
 import org.uniprot.core.Value;
 

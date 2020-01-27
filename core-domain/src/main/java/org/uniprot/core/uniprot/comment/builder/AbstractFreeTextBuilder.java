@@ -1,6 +1,5 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-
 import java.util.ArrayList;
 import java.util.List;
 

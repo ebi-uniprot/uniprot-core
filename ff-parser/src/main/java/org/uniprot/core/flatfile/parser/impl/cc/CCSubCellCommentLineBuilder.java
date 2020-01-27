@@ -38,7 +38,6 @@ public class CCSubCellCommentLineBuilder extends CCLineBuilderAbstr<SubcellularL
                 buildLocations(comment, comment.getSubcellularLocations(), showEvidence);
 
         if (locations.length() > 0) {
-            if (needSpace) sb.append(SPACE);
             sb.append(locations);
             needSpace = true;
         }
