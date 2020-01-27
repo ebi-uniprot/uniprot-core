@@ -156,7 +156,7 @@ class UtilsTest {
             @Test
             void whenNullOrEmpty_returnFalse() {
                 assertAll(
-                        () -> assertFalse(Utils.notNullOrEmpty((List) null)),
+                        () -> assertFalse(Utils.notNullOrEmpty((Collection) null)),
                         () -> assertFalse(Utils.notNullOrEmpty(Collections.emptyList())));
             }
 
@@ -181,7 +181,7 @@ class UtilsTest {
         class nullOrEmpty {
             @Test
             void whenNullOrEmpty_returnTrue() {
-                assertTrue(Utils.nullOrEmpty((List) null));
+                assertTrue(Utils.nullOrEmpty((Collection) null));
                 assertTrue(Utils.nullOrEmpty(Collections.emptyList()));
             }
 
