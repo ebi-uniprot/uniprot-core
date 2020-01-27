@@ -172,18 +172,18 @@ public class TaxonomyEntryBuilder
         TaxonomyEntryBuilder builder = new TaxonomyEntryBuilder();
         AbstractOrganismNameBuilder.init(builder, instance);
         builder.taxonId(instance.getTaxonId())
-            .mnemonic(instance.getMnemonic())
-            .parentId(instance.getParentId())
-            .rank(instance.getRank())
-            .hidden(instance.isHidden())
-            .active(instance.isActive())
-            .otherNames(instance.getOtherNames())
-            .lineage(instance.getLineage())
-            .strains(instance.getStrains())
-            .hosts(instance.getHosts())
-            .links(instance.getLinks())
-            .statistics(instance.getStatistics())
-            .inactiveReason(instance.getInactiveReason());
+                .mnemonic(instance.getMnemonic())
+                .parentId(instance.getParentId())
+                .rank(instance.getRank())
+                .hidden(instance.isHidden())
+                .active(instance.isActive())
+                .otherNames(instance.getOtherNames())
+                .lineage(instance.getLineage())
+                .strains(instance.getStrains())
+                .hosts(instance.getHosts())
+                .links(instance.getLinks())
+                .statistics(instance.getStatistics())
+                .inactiveReason(instance.getInactiveReason());
         return builder;
     }
 

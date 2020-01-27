@@ -37,7 +37,7 @@ public class RedundantProteomeBuilder implements Builder<RedundantProteome> {
 
     public static @Nonnull RedundantProteomeBuilder from(@Nonnull RedundantProteome instance) {
         return new RedundantProteomeBuilder()
-        .proteomeId(instance.getId())
-        .similarity(instance.getSimilarity());
+                .proteomeId(instance.getId())
+                .similarity(instance.getSimilarity());
     }
 }

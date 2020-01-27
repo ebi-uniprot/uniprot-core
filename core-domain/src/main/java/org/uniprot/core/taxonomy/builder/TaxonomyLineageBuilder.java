@@ -43,9 +43,9 @@ public class TaxonomyLineageBuilder implements Builder<TaxonomyLineage> {
 
     public static @Nonnull TaxonomyLineageBuilder from(@Nonnull TaxonomyLineage instance) {
         return new TaxonomyLineageBuilder()
-            .taxonId(instance.getTaxonId())
-            .scientificName(instance.getScientificName())
-            .rank(instance.getRank())
-            .hidden(instance.isHidden());
+                .taxonId(instance.getTaxonId())
+                .scientificName(instance.getScientificName())
+                .rank(instance.getRank())
+                .hidden(instance.isHidden());
     }
 }

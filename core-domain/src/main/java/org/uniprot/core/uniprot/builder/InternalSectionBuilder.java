@@ -32,9 +32,9 @@ public class InternalSectionBuilder implements Builder<InternalSection> {
 
     public static @Nonnull InternalSectionBuilder from(@Nonnull InternalSection instance) {
         return new InternalSectionBuilder()
-        .evidenceLines(instance.getEvidenceLines())
-        .internalLines(instance.getInternalLines())
-        .sourceLines(instance.getSourceLines());
+                .evidenceLines(instance.getEvidenceLines())
+                .internalLines(instance.getInternalLines())
+                .sourceLines(instance.getSourceLines());
     }
 
     public @Nonnull InternalSectionBuilder internalLines(List<InternalLine> internalLines) {

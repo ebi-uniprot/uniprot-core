@@ -55,9 +55,9 @@ public class SequenceFeatureBuilder implements Builder<SequenceFeature> {
 
     public static @Nonnull SequenceFeatureBuilder from(@Nonnull SequenceFeature instance) {
         return new SequenceFeatureBuilder()
-        .interproGroup(instance.getInterProDomain())
-        .signatureDbType(instance.getSignatureDbType())
-        .signatureDbId(instance.getSignatureDbId())
-        .locations(instance.getLocations());
+                .interproGroup(instance.getInterProDomain())
+                .signatureDbType(instance.getSignatureDbType())
+                .signatureDbId(instance.getSignatureDbId())
+                .locations(instance.getLocations());
     }
 }

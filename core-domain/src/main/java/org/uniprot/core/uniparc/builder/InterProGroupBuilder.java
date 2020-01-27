@@ -30,8 +30,6 @@ public class InterProGroupBuilder implements Builder<InterProGroup> {
     }
 
     public static @Nonnull InterProGroupBuilder from(@Nonnull InterProGroup instance) {
-        return new InterProGroupBuilder()
-        .id(instance.getId())
-        .name(instance.getName());
+        return new InterProGroupBuilder().id(instance.getId()).name(instance.getName());
     }
 }

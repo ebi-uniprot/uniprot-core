@@ -37,7 +37,8 @@ public final class SubcellularLocationBuilder implements Builder<SubcellularLoca
     }
 
     public static @Nonnull SubcellularLocationBuilder from(@Nonnull SubcellularLocation instance) {
-        return new SubcellularLocationBuilder().location(instance.getLocation())
+        return new SubcellularLocationBuilder()
+                .location(instance.getLocation())
                 .orientation(instance.getOrientation())
                 .topology(instance.getTopology());
     }

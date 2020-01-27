@@ -53,7 +53,8 @@ public class UniParcDBCrossReferenceBuilder
         return this;
     }
 
-    public static @Nonnull UniParcDBCrossReferenceBuilder from(@Nonnull UniParcDBCrossReference instance) {
+    public static @Nonnull UniParcDBCrossReferenceBuilder from(
+            @Nonnull UniParcDBCrossReference instance) {
         UniParcDBCrossReferenceBuilder builder = new UniParcDBCrossReferenceBuilder();
         AbstractDBCrossReferenceBuilder.init(builder, instance);
         return builder.versionI(instance.getVersionI())

@@ -63,10 +63,10 @@ public class ComponentBuilder implements Builder<Component> {
 
     public static @Nonnull ComponentBuilder from(@Nonnull Component instance) {
         return new ComponentBuilder()
-        .name(instance.getName())
-        .description(instance.getDescription())
-        .proteinCount(instance.getProteinCount())
-        .type(instance.getType())
-        .dbXReferences(instance.getDbXReferences());
+                .name(instance.getName())
+                .description(instance.getDescription())
+                .proteinCount(instance.getProteinCount())
+                .type(instance.getType())
+                .dbXReferences(instance.getDbXReferences());
     }
 }

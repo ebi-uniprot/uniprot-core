@@ -24,7 +24,8 @@ public final class APCommentBuilder implements CommentBuilder<AlternativeProduct
     }
 
     public static @Nonnull APCommentBuilder from(@Nonnull AlternativeProductsComment instance) {
-        return new APCommentBuilder().events(instance.getEvents())
+        return new APCommentBuilder()
+                .events(instance.getEvents())
                 .isoforms(instance.getIsoforms())
                 .note(instance.getNote());
     }

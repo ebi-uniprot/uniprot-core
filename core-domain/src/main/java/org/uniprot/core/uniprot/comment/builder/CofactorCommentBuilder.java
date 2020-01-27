@@ -23,7 +23,8 @@ public final class CofactorCommentBuilder implements CommentBuilder<CofactorComm
     }
 
     public static @Nonnull CofactorCommentBuilder from(@Nonnull CofactorComment instance) {
-        return new CofactorCommentBuilder().cofactors(instance.getCofactors())
+        return new CofactorCommentBuilder()
+                .cofactors(instance.getCofactors())
                 .molecule(instance.getMolecule())
                 .note(instance.getNote());
     }

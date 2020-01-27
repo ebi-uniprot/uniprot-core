@@ -1,6 +1,5 @@
 package org.uniprot.core.builder;
 
-import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.Value;

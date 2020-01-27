@@ -111,7 +111,8 @@ public abstract class AbstractUniRefMemberBuilder<
         return getThis();
     }
 
-    protected static <B extends AbstractUniRefMemberBuilder<B, T>, T extends UniRefMember> void init(@Nonnull B builder, @Nonnull T instance) {
+    protected static <B extends AbstractUniRefMemberBuilder<B, T>, T extends UniRefMember>
+            void init(@Nonnull B builder, @Nonnull T instance) {
         builder.memberIdType(instance.getMemberIdType())
                 .memberId(instance.getMemberId())
                 .organismName(instance.getOrganismName())

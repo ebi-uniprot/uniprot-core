@@ -44,9 +44,9 @@ public class TaxonomyStatisticsBuilder implements Builder<TaxonomyStatistics> {
 
     public static @Nonnull TaxonomyStatisticsBuilder from(@Nonnull TaxonomyStatistics instance) {
         return new TaxonomyStatisticsBuilder()
-            .reviewedProteinCount(instance.getReviewedProteinCount())
-            .unreviewedProteinCount(instance.getUnreviewedProteinCount())
-            .proteomeCount(instance.getProteomeCount())
-            .referenceProteomeCount(instance.getReferenceProteomeCount());
+                .reviewedProteinCount(instance.getReviewedProteinCount())
+                .unreviewedProteinCount(instance.getUnreviewedProteinCount())
+                .proteomeCount(instance.getProteomeCount())
+                .referenceProteomeCount(instance.getReferenceProteomeCount());
     }
 }

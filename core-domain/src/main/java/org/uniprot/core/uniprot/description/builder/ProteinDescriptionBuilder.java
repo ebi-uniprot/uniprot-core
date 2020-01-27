@@ -134,15 +134,16 @@ public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
     }
 
     public static @Nonnull ProteinDescriptionBuilder from(@Nonnull ProteinDescription instance) {
-        return new ProteinDescriptionBuilder().recommendedName(instance.getRecommendedName())
-        .alternativeNames(instance.getAlternativeNames())
-        .allergenName(instance.getAllergenName())
-        .biotechName(instance.getBiotechName())
-        .cdAntigenNames(instance.getCdAntigenNames())
-        .innNames(instance.getInnNames())
-        .submissionNames(instance.getSubmissionNames())
-        .flag(instance.getFlag())
-        .contains(instance.getContains())
-        .includes(instance.getIncludes());
+        return new ProteinDescriptionBuilder()
+                .recommendedName(instance.getRecommendedName())
+                .alternativeNames(instance.getAlternativeNames())
+                .allergenName(instance.getAllergenName())
+                .biotechName(instance.getBiotechName())
+                .cdAntigenNames(instance.getCdAntigenNames())
+                .innNames(instance.getInnNames())
+                .submissionNames(instance.getSubmissionNames())
+                .flag(instance.getFlag())
+                .contains(instance.getContains())
+                .includes(instance.getIncludes());
     }
 }

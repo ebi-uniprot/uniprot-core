@@ -40,7 +40,7 @@ public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReason> 
 
     public static @Nonnull EntryInactiveReasonBuilder from(@Nonnull EntryInactiveReason instance) {
         return new EntryInactiveReasonBuilder()
-        .type(instance.getInactiveReasonType())
-        .mergeDemergeTo(instance.getMergeDemergeTo());
+                .type(instance.getInactiveReasonType())
+                .mergeDemergeTo(instance.getMergeDemergeTo());
     }
 }

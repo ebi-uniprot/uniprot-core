@@ -31,8 +31,7 @@ public class TaxonomyBuilder extends AbstractOrganismNameBuilder<TaxonomyBuilder
     public static @Nonnull TaxonomyBuilder from(@Nonnull Taxonomy instance) {
         TaxonomyBuilder builder = new TaxonomyBuilder();
         AbstractOrganismNameBuilder.init(builder, instance);
-        builder.taxonId(instance.getTaxonId())
-        .mnemonic(instance.getMnemonic());
+        builder.taxonId(instance.getTaxonId()).mnemonic(instance.getMnemonic());
         return builder;
     }
 

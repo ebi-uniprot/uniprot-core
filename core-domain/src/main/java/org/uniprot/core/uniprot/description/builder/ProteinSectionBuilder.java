@@ -81,11 +81,12 @@ public class ProteinSectionBuilder implements Builder<ProteinSection> {
     }
 
     public static @Nonnull ProteinSectionBuilder from(@Nonnull ProteinSection instance) {
-        return new ProteinSectionBuilder().allergenName(instance.getAllergenName())
-        .recommendedName(instance.getRecommendedName())
-        .alternativeNames(instance.getAlternativeNames())
-        .biotechName(instance.getBiotechName())
-        .cdAntigenNames(instance.getCdAntigenNames())
-        .innNames(instance.getInnNames());
+        return new ProteinSectionBuilder()
+                .allergenName(instance.getAllergenName())
+                .recommendedName(instance.getRecommendedName())
+                .alternativeNames(instance.getAlternativeNames())
+                .biotechName(instance.getBiotechName())
+                .cdAntigenNames(instance.getCdAntigenNames())
+                .innNames(instance.getInnNames());
     }
 }

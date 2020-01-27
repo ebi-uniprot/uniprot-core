@@ -59,7 +59,8 @@ public final class KineticParametersBuilder implements Builder<KineticParameters
     }
 
     public static @Nonnull KineticParametersBuilder from(@Nonnull KineticParameters instance) {
-        return new KineticParametersBuilder().maximumVelocities(instance.getMaximumVelocities())
+        return new KineticParametersBuilder()
+                .maximumVelocities(instance.getMaximumVelocities())
                 .michaelisConstants(instance.getMichaelisConstants())
                 .note(instance.getNote());
     }
