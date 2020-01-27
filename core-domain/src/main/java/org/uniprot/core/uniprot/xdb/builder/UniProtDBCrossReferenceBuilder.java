@@ -31,11 +31,11 @@ public class UniProtDBCrossReferenceBuilder
         return new UniProtDBCrossReferenceImpl(databaseType, id, properties, isoformId, evidences);
     }
 
-    public static @Nonnull UniProtDBCrossReferenceBuilder from(@Nonnull UniProtDBCrossReference instance) {
+    public static @Nonnull UniProtDBCrossReferenceBuilder from(
+            @Nonnull UniProtDBCrossReference instance) {
         UniProtDBCrossReferenceBuilder builder = new UniProtDBCrossReferenceBuilder();
         AbstractDBCrossReferenceBuilder.init(builder, instance);
-        return builder.evidences(instance.getEvidences())
-                .isoformId(instance.getIsoformId());
+        return builder.evidences(instance.getEvidences()).isoformId(instance.getIsoformId());
     }
 
     public @Nonnull UniProtDBCrossReferenceBuilder isoformId(String isoformId) {

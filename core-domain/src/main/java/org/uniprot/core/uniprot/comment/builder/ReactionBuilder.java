@@ -70,7 +70,8 @@ public final class ReactionBuilder implements Builder<Reaction> {
     }
 
     public static @Nonnull ReactionBuilder from(@Nonnull Reaction instance) {
-        return new ReactionBuilder().ecNumber(instance.getEcNumber())
+        return new ReactionBuilder()
+                .ecNumber(instance.getEcNumber())
                 .evidences(instance.getEvidences())
                 .name(instance.getName())
                 .references(instance.getReactionReferences());

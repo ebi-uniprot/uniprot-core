@@ -51,8 +51,9 @@ public class ProteinAltNameBuilder implements Builder<ProteinAltName> {
     }
 
     public static @Nonnull ProteinAltNameBuilder from(@Nonnull ProteinAltName instance) {
-        return new ProteinAltNameBuilder().fullName(instance.getFullName())
-        .shortNames(instance.getShortNames())
-        .ecNumbers(instance.getEcNumbers());
+        return new ProteinAltNameBuilder()
+                .fullName(instance.getFullName())
+                .shortNames(instance.getShortNames())
+                .ecNumbers(instance.getEcNumbers());
     }
 }

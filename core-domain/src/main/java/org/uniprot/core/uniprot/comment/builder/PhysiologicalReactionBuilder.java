@@ -52,8 +52,10 @@ public final class PhysiologicalReactionBuilder implements Builder<Physiological
         return new PhysiologicalReactionImpl(directionType, reactionReference, evidences);
     }
 
-    public static @Nonnull PhysiologicalReactionBuilder from(@Nonnull PhysiologicalReaction instance) {
-        return new PhysiologicalReactionBuilder().evidences(instance.getEvidences())
+    public static @Nonnull PhysiologicalReactionBuilder from(
+            @Nonnull PhysiologicalReaction instance) {
+        return new PhysiologicalReactionBuilder()
+                .evidences(instance.getEvidences())
                 .directionType(instance.getDirectionType())
                 .reactionReference(instance.getReactionReference());
     }

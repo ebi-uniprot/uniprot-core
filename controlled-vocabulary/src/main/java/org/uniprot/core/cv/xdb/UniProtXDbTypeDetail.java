@@ -8,6 +8,7 @@ import java.util.Objects;
 public class UniProtXDbTypeDetail implements Serializable {
 
     private static final long serialVersionUID = 8751881513996820892L;
+
     private static final DBXRefTypeAttribute DEFAULT_ATTRIBUTE =
             new DBXRefTypeAttribute("Description", "description", null);
     private String name;
@@ -15,8 +16,10 @@ public class UniProtXDbTypeDetail implements Serializable {
     private DatabaseCategory category;
     private String uriLink;
     private List<DBXRefTypeAttribute> attributes;
+
     private boolean implicit =false;
     private String linkedReason= null;
+
 
     private UniProtXDbTypeDetail() {
         this.attributes = new ArrayList<>();
@@ -53,6 +56,7 @@ public class UniProtXDbTypeDetail implements Serializable {
         this.displayName = displayName;
         this.category = category;
         this.uriLink = uriLink;
+
         this.implicit= implicit;
         this.linkedReason = linkedReason;
         this.attributes = new ArrayList<>();
@@ -84,8 +88,10 @@ public class UniProtXDbTypeDetail implements Serializable {
         return implicit;
     }
 
-  public String getLinkedReason() {
-  return linkedReason;}
+    public String getLinkedReason() {
+        return linkedReason;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(

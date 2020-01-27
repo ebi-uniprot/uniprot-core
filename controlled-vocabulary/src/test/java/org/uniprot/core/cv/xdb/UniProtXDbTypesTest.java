@@ -214,7 +214,8 @@ class UniProtXDbTypesTest {
         assertEquals("Reactome", opType.getName());
         assertEquals("Reactome", opType.getDisplayName());
         assertEquals(ENZYME_AND_PATHWAY_DATABASES, opType.getCategory());
-        assertEquals("https://www.reactome.org/PathwayBrowser/#%id&FLG=%accession", opType.getUriLink());
+        assertEquals(
+                "https://www.reactome.org/PathwayBrowser/#%id&FLG=%accession", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "PathwayName", "pathway name", null);
     }

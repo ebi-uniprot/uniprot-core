@@ -43,14 +43,14 @@ public class DiseaseBuilder implements Builder<Disease> {
     public static @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
         DiseaseBuilder builder = new DiseaseBuilder();
         builder.id(instance.getId())
-        .accession(instance.getAccession())
-        .acronym(instance.getAcronym())
-        .definition(instance.getDefinition())
-        .alternativeNames(instance.getAlternativeNames())
-        .crossReferences(instance.getCrossReferences())
-        .keywords(instance.getKeywords())
-        .reviewedProteinCount(instance.getReviewedProteinCount())
-        .unreviewedProteinCount(instance.getUnreviewedProteinCount());
+                .accession(instance.getAccession())
+                .acronym(instance.getAcronym())
+                .definition(instance.getDefinition())
+                .alternativeNames(instance.getAlternativeNames())
+                .crossReferences(instance.getCrossReferences())
+                .keywords(instance.getKeywords())
+                .reviewedProteinCount(instance.getReviewedProteinCount())
+                .unreviewedProteinCount(instance.getUnreviewedProteinCount());
         return builder;
     }
 

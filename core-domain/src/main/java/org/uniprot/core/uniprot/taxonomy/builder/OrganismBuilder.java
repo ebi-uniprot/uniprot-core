@@ -51,8 +51,8 @@ public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder
         OrganismBuilder builder = new OrganismBuilder();
         AbstractOrganismNameBuilder.init(builder, instance);
         builder.taxonId(instance.getTaxonId())
-        .evidences(instance.getEvidences())
-        .lineage(instance.getLineage());
+                .evidences(instance.getEvidences())
+                .lineage(instance.getLineage());
         return builder;
     }
 

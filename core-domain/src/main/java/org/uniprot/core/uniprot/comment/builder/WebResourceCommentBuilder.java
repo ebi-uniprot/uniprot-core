@@ -17,7 +17,8 @@ public final class WebResourceCommentBuilder implements CommentBuilder<WebResour
     }
 
     public static @Nonnull WebResourceCommentBuilder from(@Nonnull WebResourceComment instance) {
-        return new WebResourceCommentBuilder().isFtp(instance.isFtp())
+        return new WebResourceCommentBuilder()
+                .isFtp(instance.isFtp())
                 .note(instance.getNote())
                 .resourceName(instance.getResourceName())
                 .resourceUrl(instance.getResourceUrl())

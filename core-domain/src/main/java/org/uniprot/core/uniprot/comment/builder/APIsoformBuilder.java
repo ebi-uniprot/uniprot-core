@@ -33,7 +33,8 @@ public class APIsoformBuilder implements Builder<APIsoform> {
     }
 
     public static @Nonnull APIsoformBuilder from(@Nonnull APIsoform instance) {
-        return new APIsoformBuilder().sequenceIds(instance.getSequenceIds())
+        return new APIsoformBuilder()
+                .sequenceIds(instance.getSequenceIds())
                 .ids(
                         instance.getIsoformIds().stream()
                                 .map(Value::getValue)

@@ -28,7 +28,8 @@ public final class DiseaseBuilder implements Builder<Disease> {
     }
 
     public static @Nonnull DiseaseBuilder from(@Nonnull Disease instance) {
-        return new DiseaseBuilder().acronym(instance.getAcronym())
+        return new DiseaseBuilder()
+                .acronym(instance.getAcronym())
                 .description(instance.getDescription())
                 .diseaseAc(instance.getDiseaseAccession())
                 .diseaseId(instance.getDiseaseId())

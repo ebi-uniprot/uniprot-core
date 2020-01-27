@@ -136,18 +136,18 @@ public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
 
     public static @Nonnull LiteratureEntryBuilder from(@Nonnull LiteratureEntry instance) {
         return new LiteratureEntryBuilder()
-                        .pubmedId(instance.getPubmedId())
-                        .doiId(instance.getDoiId())
-                        .title(instance.getTitle())
-                        .authoringGroup(instance.getAuthoringGroup())
-                        .authors(instance.getAuthors())
-                        .completeAuthorList(instance.isCompleteAuthorList())
-                        .publicationDate(instance.getPublicationDate())
-                        .journal(instance.getJournal())
-                        .volume(instance.getVolume())
-                        .firstPage(instance.getFirstPage())
-                        .lastPage(instance.getLastPage())
-                        .literatureAbstract(instance.getLiteratureAbstract())
-                        .statistics(instance.getStatistics());
+                .pubmedId(instance.getPubmedId())
+                .doiId(instance.getDoiId())
+                .title(instance.getTitle())
+                .authoringGroup(instance.getAuthoringGroup())
+                .authors(instance.getAuthors())
+                .completeAuthorList(instance.isCompleteAuthorList())
+                .publicationDate(instance.getPublicationDate())
+                .journal(instance.getJournal())
+                .volume(instance.getVolume())
+                .firstPage(instance.getFirstPage())
+                .lastPage(instance.getLastPage())
+                .literatureAbstract(instance.getLiteratureAbstract())
+                .statistics(instance.getStatistics());
     }
 }

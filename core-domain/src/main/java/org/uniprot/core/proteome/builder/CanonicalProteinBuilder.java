@@ -41,7 +41,7 @@ public class CanonicalProteinBuilder implements Builder<CanonicalProtein> {
 
     public static @Nonnull CanonicalProteinBuilder from(@Nonnull CanonicalProtein instance) {
         return new CanonicalProteinBuilder()
-          .canonicalProtein(instance.getCanonicalProtein())
-          .relatedProteins(instance.getRelatedProteins());
+                .canonicalProtein(instance.getCanonicalProtein())
+                .relatedProteins(instance.getRelatedProteins());
     }
 }

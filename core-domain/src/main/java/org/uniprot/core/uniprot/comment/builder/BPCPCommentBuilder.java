@@ -24,7 +24,8 @@ public final class BPCPCommentBuilder implements CommentBuilder<BPCPComment> {
     }
 
     public static @Nonnull BPCPCommentBuilder from(@Nonnull BPCPComment instance) {
-        return new BPCPCommentBuilder().kineticParameters(instance.getKineticParameters())
+        return new BPCPCommentBuilder()
+                .kineticParameters(instance.getKineticParameters())
                 .molecule(instance.getMolecule())
                 .absorption(instance.getAbsorption())
                 .phDependence(instance.getPhDependence())

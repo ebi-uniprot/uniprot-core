@@ -25,7 +25,8 @@ public class CatalyticActivityCommentBuilder implements CommentBuilder<Catalytic
 
     public static @Nonnull CatalyticActivityCommentBuilder from(
             @Nonnull CatalyticActivityComment instance) {
-        return new CatalyticActivityCommentBuilder().molecule(instance.getMolecule())
+        return new CatalyticActivityCommentBuilder()
+                .molecule(instance.getMolecule())
                 .physiologicalReactions(instance.getPhysiologicalReactions())
                 .reaction(instance.getReaction());
     }

@@ -21,7 +21,7 @@ public class UniProtAccessionBuilder extends AbstractValueBuilder<UniProtAccessi
         return new UniProtAccessionImpl(value);
     }
 
-    public static @Nonnull UniProtAccessionBuilder from (@Nonnull UniProtAccession instance){
+    public static @Nonnull UniProtAccessionBuilder from(@Nonnull UniProtAccession instance) {
         return new UniProtAccessionBuilder(instance.getValue());
     }
 }

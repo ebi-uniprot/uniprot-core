@@ -56,7 +56,8 @@ public final class MichaelisConstantBuilder implements Builder<MichaelisConstant
     }
 
     public static @Nonnull MichaelisConstantBuilder from(@Nonnull MichaelisConstant instance) {
-        return new MichaelisConstantBuilder().evidences(instance.getEvidences())
+        return new MichaelisConstantBuilder()
+                .evidences(instance.getEvidences())
                 .constant(instance.getConstant())
                 .substrate(instance.getSubstrate())
                 .unit(instance.getUnit());

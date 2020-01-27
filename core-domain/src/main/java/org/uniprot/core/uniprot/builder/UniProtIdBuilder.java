@@ -21,7 +21,7 @@ public class UniProtIdBuilder extends AbstractValueBuilder<UniProtId> {
         return new UniProtIdImpl(value);
     }
 
-    public static @Nonnull UniProtIdBuilder from (@Nonnull UniProtId instance){
+    public static @Nonnull UniProtIdBuilder from(@Nonnull UniProtId instance) {
         return new UniProtIdBuilder(instance.getValue());
     }
 }

@@ -77,6 +77,7 @@ class DBXRefValidatorIT {
                 DatabaseCategory.CHEMISTRY.getDisplayName(),
                 mismatches.get(0).getValue()); // actual
     }
+
     @Disabled
     @Test
     void testValidateEachDBXRef() {
@@ -94,6 +95,7 @@ class DBXRefValidatorIT {
             }
         }
     }
+
     @Disabled
     @Test
     void testCompareDRLineConfig() throws IOException {

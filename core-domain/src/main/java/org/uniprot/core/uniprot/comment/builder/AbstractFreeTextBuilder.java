@@ -1,7 +1,5 @@
 package org.uniprot.core.uniprot.comment.builder;
 
-import static org.uniprot.core.util.Utils.modifiableList;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,7 @@ import org.uniprot.core.uniprot.evidence.EvidencedValue;
  *
  * @author Edd
  */
-public abstract class AbstractFreeTextBuilder< F extends FreeText> implements Builder<F> {
+public abstract class AbstractFreeTextBuilder<F extends FreeText> implements Builder<F> {
     protected List<EvidencedValue> evidencedValues = new ArrayList<>();
 
     @Override

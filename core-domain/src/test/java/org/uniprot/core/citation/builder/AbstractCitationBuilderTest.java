@@ -8,6 +8,8 @@ import static org.hamcrest.core.Is.is;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.annotation.Nonnull;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.DBCrossReference;
 import org.uniprot.core.Value;
@@ -16,8 +18,6 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationType;
 import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.impl.AbstractCitationImpl;
-
-import javax.annotation.Nonnull;
 
 class AbstractCitationBuilderTest {
     private static final CitationType CITATION_TYPE = CitationType.UNPUBLISHED;

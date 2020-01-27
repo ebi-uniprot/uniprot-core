@@ -18,7 +18,8 @@ public class DiseaseCommentBuilder implements CommentBuilder<DiseaseComment> {
     }
 
     public static @Nonnull DiseaseCommentBuilder from(@Nonnull DiseaseComment instance) {
-        return new DiseaseCommentBuilder().disease(instance.getDisease())
+        return new DiseaseCommentBuilder()
+                .disease(instance.getDisease())
                 .note(instance.getNote())
                 .molecule(instance.getMolecule());
     }
