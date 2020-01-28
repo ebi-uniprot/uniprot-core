@@ -38,7 +38,6 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("EMBL", "AY548484", "AAT09660.1", "-", "Genomic_DNA"));
         obj.drObjects.add(creatDrObject("RefSeq", "YP_031579.1", "NC_005946.1", null, null));
         obj.drObjects.add(creatDrObject("GeneID", "2947773", "-", null, null));
-        obj.drObjects.add(creatDrObject("ProtClustDB", "CLSP2511514", "-", null, null));
         obj.drObjects.add(
                 creatDrObject(
                         "GO",
@@ -56,26 +55,25 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("InterPro", "IPR007031", "Poxvirus_VLTF3", null, null));
         UniProtDrObjects drObjects = converter.convert(obj);
         List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
-        assertEquals(7, xrefs.size());
+        assertEquals(6, xrefs.size());
         validate(xrefs.get(0), "EMBL", "AY548484", "AAT09660.1", "-", "Genomic_DNA");
         validate(xrefs.get(1), "REFSEQ", "YP_031579.1", "NC_005946.1", null, null);
         validate(xrefs.get(2), "GENEID", "2947773", "-", null, null);
-        validate(xrefs.get(3), "PROTCLUSTDB", "CLSP2511514", "-", null, null);
         validate(
-                xrefs.get(4),
+                xrefs.get(3),
                 "GO",
                 "GO:0006355",
                 "P:regulation of transcription, DNA-dependent",
                 "IEA:UniProtKB-KW",
                 null);
         validate(
-                xrefs.get(5),
+                xrefs.get(4),
                 "GO",
                 "GO:0046782",
                 "P:regulation of viral transcription",
                 "IEA:InterPro",
                 null);
-        validate(xrefs.get(6), "INTERPRO", "IPR007031", "Poxvirus_VLTF3", null, null);
+        validate(xrefs.get(5), "INTERPRO", "IPR007031", "Poxvirus_VLTF3", null, null);
     }
 
     @Test
@@ -110,7 +108,6 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("EMBL2", "AY548484", "AAT09660.1", "-", "Genomic_DNA"));
         obj.drObjects.add(creatDrObject("RefSeq", "YP_031579.1", "NC_005946.1", null, null));
         obj.drObjects.add(creatDrObject("GeneID", "2947773", "-", null, null));
-        obj.drObjects.add(creatDrObject("ProtClustDB", "CLSP2511514", "-", null, null));
         obj.drObjects.add(
                 creatDrObject(
                         "GO",
@@ -129,28 +126,27 @@ class DrLineConverterTest {
         DrLineConverter converter2 = new DrLineConverter(true);
         UniProtDrObjects drObjects = converter2.convert(obj);
         List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
-        assertEquals(6, xrefs.size());
+        assertEquals(5, xrefs.size());
         //	validate( xrefs.get(0), "EMBL,
         //			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
 
         validate(xrefs.get(0), "REFSEQ", "YP_031579.1", "NC_005946.1", null, null);
         validate(xrefs.get(1), "GENEID", "2947773", "-", null, null);
-        validate(xrefs.get(2), "PROTCLUSTDB", "CLSP2511514", "-", null, null);
         validate(
-                xrefs.get(3),
+                xrefs.get(2),
                 "GO",
                 "GO:0006355",
                 "P:regulation of transcription, DNA-dependent",
                 "IEA:UniProtKB-KW",
                 null);
         validate(
-                xrefs.get(4),
+                xrefs.get(3),
                 "GO",
                 "GO:0046782",
                 "P:regulation of viral transcription",
                 "IEA:InterPro",
                 null);
-        validate(xrefs.get(5), "INTERPRO", "IPR007031", "Poxvirus_VLTF3", null, null);
+        validate(xrefs.get(4), "INTERPRO", "IPR007031", "Poxvirus_VLTF3", null, null);
     }
 
     @Test
@@ -166,7 +162,6 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("EMBL2", "AY548484", "AAT09660.1", "-", "Genomic_DNA"));
         obj.drObjects.add(creatDrObject("RefSeq", "YP_031579.1", "NC_005946.1", null, null));
         obj.drObjects.add(creatDrObject("GeneID", "2947773", "-", null, null));
-        obj.drObjects.add(creatDrObject("ProtClustDB", "CLSP2511514", "-", null, null));
         obj.drObjects.add(
                 creatDrObject(
                         "GO",
@@ -181,15 +176,14 @@ class DrLineConverterTest {
         DrLineConverter converter2 = new DrLineConverter(true);
         UniProtDrObjects drObjects = converter2.convert(obj);
         List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
-        assertEquals(6, xrefs.size());
+        assertEquals(5, xrefs.size());
         //	validate( xrefs.get(0), "EMBL,
         //			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
 
         validate(xrefs.get(0), "REFSEQ", "YP_031579.1", "NC_005946.1", null, null);
         validate(xrefs.get(1), "GENEID", "2947773", "-", null, null);
-        validate(xrefs.get(2), "PROTCLUSTDB", "CLSP2511514", "-", null, null);
         validate(
-                xrefs.get(3),
+                xrefs.get(2),
                 "GO",
                 "GO:0006355",
                 "P:regulation of transcription, DNA-dependent",
@@ -197,7 +191,7 @@ class DrLineConverterTest {
                 null);
         //	validate( xrefs.get(4), "GO,
         //			"GO:0046782", "P:regulation of viral transcription", "IEA:InterPro", null );
-        validate(xrefs.get(5), "InterPro", "IPR007031", "Poxvirus_VLTF3", null, null);
+        validate(xrefs.get(4), "InterPro", "IPR007031", "Poxvirus_VLTF3", null, null);
     }
 
     @Test
@@ -213,7 +207,6 @@ class DrLineConverterTest {
         obj.drObjects.add(creatDrObject("EMBL2", "AY548484", "AAT09660.1", "-", "Genomic_DNA"));
         obj.drObjects.add(creatDrObject("RefSeq", "YP_031579.1", "NC_005946.1", "notdata", null));
         obj.drObjects.add(creatDrObject("GeneID", "2947773", "-", null, null));
-        obj.drObjects.add(creatDrObject("ProtClustDB", "CLSP2511514", "-", null, null));
         obj.drObjects.add(
                 creatDrObject(
                         "GO",
@@ -232,28 +225,27 @@ class DrLineConverterTest {
         DrLineConverter converter2 = new DrLineConverter(true);
         UniProtDrObjects drObjects = converter2.convert(obj);
         List<UniProtDBCrossReference> xrefs = drObjects.drObjects;
-        assertEquals(6, xrefs.size());
+        assertEquals(5, xrefs.size());
         //	validate( xrefs.get(0), "EMBL,
         //			"AY548484", "AAT09660.1", "-", "Genomic_DNA");
 
         validate(xrefs.get(0), "REFSEQ", "YP_031579.1", "NC_005946.1", null, null);
         validate(xrefs.get(1), "GENEID", "2947773", "-", null, null);
-        validate(xrefs.get(2), "PROTCLUSTDB", "CLSP2511514", "-", null, null);
         validate(
-                xrefs.get(3),
+                xrefs.get(2),
                 "GO",
                 "GO:0006355",
                 "P:regulation of transcription, DNA-dependent",
                 "IEA:UniProtKB-KW",
                 null);
         validate(
-                xrefs.get(4),
+                xrefs.get(3),
                 "GO",
                 "GO:0046782",
                 "P:regulation of viral transcription",
                 "IEA:InterPro",
                 null);
-        validate(xrefs.get(5), "INTERPRO", "IPR007031", "Poxvirus_VLTF3", null, null);
+        validate(xrefs.get(4), "INTERPRO", "IPR007031", "Poxvirus_VLTF3", null, null);
     }
 
     @Test
