@@ -11,11 +11,11 @@ import java.util.Collections;
 import java.util.List;
 
 import org.uniprot.core.builder.DBCrossReferenceBuilder;
+import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationXrefType;
 import org.uniprot.core.citation.builder.AbstractCitationBuilder;
 import org.uniprot.core.citation.builder.JournalArticleBuilder;
-import org.uniprot.core.citation.impl.AuthorImpl;
-import org.uniprot.core.citation.impl.PublicationDateImpl;
+import org.uniprot.core.citation.builder.LiteratureBuilder;
 import org.uniprot.core.impl.DBCrossReferenceImpl;
 import org.uniprot.core.impl.ECNumberImpl;
 import org.uniprot.core.literature.LiteratureEntry;
@@ -391,16 +391,31 @@ public class ObjectsForTests {
     }
 
     public static LiteratureEntry createCompleteLiteratureEntry() {
-        return createBasicLiteratureEntryBuilder()
-                .authors(singletonList(new AuthorImpl("author name")))
-                .authoringGroup(singletonList("authoring group"))
+        return new LiteratureEntryBuilder()
+                .citation(createCompleteLiteratureCitation())
+                .statistics(createCompleteLiteratureStatistics())
                 .build();
     }
 
-    public static LiteratureEntry createCompleteLiteratureEntryWithAdd() {
-        return createBasicLiteratureEntryBuilder()
-                .addAuthor(new AuthorImpl("author name"))
-                .addAuthoringGroup("authoring group")
+    public static Citation createCompleteLiteratureCitation() {
+        DBCrossReference<CitationXrefType> xref =
+                new DBCrossReferenceBuilder<CitationXrefType>()
+                        .databaseType(CitationXrefType.PUBMED)
+                        .id("id1")
+                        .build();
+
+        return new LiteratureBuilder()
+                .literatureAbstract("literature abstract")
+                .completeAuthorList(true)
+                .firstPage("first page")
+                .lastPage("last page")
+                .volume("the volume")
+                .journalName("The journal name")
+                .addAuthor("John")
+                .addAuthorGroup("the author group")
+                .addCitationXrefs(xref)
+                .publicationDate("2015-MAY")
+                .title("the big title")
                 .build();
     }
 
@@ -410,21 +425,6 @@ public class ObjectsForTests {
                 .unreviewedProteinCount(20)
                 .mappedProteinCount(30)
                 .build();
-    }
-
-    private static LiteratureEntryBuilder createBasicLiteratureEntryBuilder() {
-        return new LiteratureEntryBuilder()
-                .doiId("doi Id")
-                .pubmedId(100L)
-                .firstPage("first Page")
-                .journal("journal Name")
-                .volume("volume")
-                .lastPage("last Page")
-                .literatureAbstract("literature Abstract")
-                .publicationDate(new PublicationDateImpl("21-06-2019"))
-                .statistics(createCompleteLiteratureStatistics())
-                .title("title")
-                .completeAuthorList(false);
     }
 
     public static List<Taxonomy> taxonomies() {

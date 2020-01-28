@@ -17,9 +17,8 @@ public class UniProtXDbTypeDetail implements Serializable {
     private String uriLink;
     private List<DBXRefTypeAttribute> attributes;
 
-    private boolean implicit =false;
-    private String linkedReason= null;
-
+    private boolean implicit = false;
+    private String linkedReason = null;
 
     private UniProtXDbTypeDetail() {
         this.attributes = new ArrayList<>();
@@ -57,7 +56,7 @@ public class UniProtXDbTypeDetail implements Serializable {
         this.category = category;
         this.uriLink = uriLink;
 
-        this.implicit= implicit;
+        this.implicit = implicit;
         this.linkedReason = linkedReason;
         this.attributes = new ArrayList<>();
         if ((attributes != null) && !attributes.isEmpty()) this.attributes.addAll(attributes);
