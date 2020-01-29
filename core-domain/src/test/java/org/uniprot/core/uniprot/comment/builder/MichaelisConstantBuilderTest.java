@@ -13,7 +13,7 @@ class MichaelisConstantBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         MichaelisConstant obj = new MichaelisConstantBuilder().build();
-        MichaelisConstantBuilder builder = new MichaelisConstantBuilder().from(obj);
+        MichaelisConstantBuilder builder = MichaelisConstantBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -113,7 +113,7 @@ class FeatureBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Feature obj = new FeatureBuilder().build();
-        FeatureBuilder builder = new FeatureBuilder().from(obj);
+        FeatureBuilder builder = FeatureBuilder.from(obj);
         assertNotNull(builder);
     }
 

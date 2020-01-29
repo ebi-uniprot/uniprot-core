@@ -19,7 +19,7 @@ class EntryInactiveReasonBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         EntryInactiveReason reason = new EntryInactiveReasonBuilder().build();
-        EntryInactiveReasonBuilder builder = new EntryInactiveReasonBuilder().from(reason);
+        EntryInactiveReasonBuilder builder = EntryInactiveReasonBuilder.from(reason);
         assertNotNull(builder);
     }
 

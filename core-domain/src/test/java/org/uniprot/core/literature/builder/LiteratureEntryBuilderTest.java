@@ -100,7 +100,7 @@ class LiteratureEntryBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         LiteratureEntry obj = new LiteratureEntryBuilder().build();
-        LiteratureEntryBuilder builder = new LiteratureEntryBuilder().from(obj);
+        LiteratureEntryBuilder builder = LiteratureEntryBuilder.from(obj);
         assertNotNull(builder);
     }
 

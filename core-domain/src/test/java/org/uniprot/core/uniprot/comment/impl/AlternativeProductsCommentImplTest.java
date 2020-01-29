@@ -89,7 +89,7 @@ class AlternativeProductsCommentImplTest {
         AlternativeProductsComment impl =
                 new AlternativeProductsCommentImpl(
                         Collections.emptyList(), Collections.emptyList(), new NoteImpl());
-        AlternativeProductsComment obj = new APCommentBuilder().from(impl).build();
+        AlternativeProductsComment obj = APCommentBuilder.from(impl).build();
 
         assertTrue(impl.hasNote());
         assertTrue(impl.equals(obj) && obj.equals(impl));

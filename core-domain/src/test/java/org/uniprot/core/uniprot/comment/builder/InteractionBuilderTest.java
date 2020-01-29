@@ -147,7 +147,7 @@ class InteractionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Interaction obj = new InteractionBuilder().build();
-        InteractionBuilder builder = new InteractionBuilder().from(obj);
+        InteractionBuilder builder = InteractionBuilder.from(obj);
         assertNotNull(builder);
     }
 

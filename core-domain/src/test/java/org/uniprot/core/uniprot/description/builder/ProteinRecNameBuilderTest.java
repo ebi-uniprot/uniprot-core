@@ -44,7 +44,7 @@ class ProteinRecNameBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         ProteinRecName obj = new ProteinRecNameBuilder().build();
-        ProteinRecNameBuilder builder = new ProteinRecNameBuilder().from(obj);
+        ProteinRecNameBuilder builder = ProteinRecNameBuilder.from(obj);
         assertNotNull(builder);
     }
 

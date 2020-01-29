@@ -10,7 +10,7 @@ class UniProtIdBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         UniProtId obj = new UniProtIdBuilder("val").build();
-        UniProtIdBuilder builder = new UniProtIdBuilder("val").from(obj);
+        UniProtIdBuilder builder = UniProtIdBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -18,7 +18,7 @@ class UniParcIdBuilderTest {
         assertEquals(upi, id.getValue());
         assertTrue(id.isValidId());
         String upi2 = "UPI0000083A02";
-        UniParcId fromId = new UniParcIdBuilder(upi2).from(id).build();
+        UniParcId fromId = UniParcIdBuilder.from(id).build();
         assertEquals(id, fromId);
     }
 

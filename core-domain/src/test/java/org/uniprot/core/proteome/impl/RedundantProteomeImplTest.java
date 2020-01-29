@@ -16,7 +16,7 @@ class RedundantProteomeImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         RedundantProteome impl = new RedundantProteomeImpl(new ProteomeIdImpl("id"), 5.8F);
-        RedundantProteome obj = new RedundantProteomeBuilder().from(impl).build();
+        RedundantProteome obj = RedundantProteomeBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

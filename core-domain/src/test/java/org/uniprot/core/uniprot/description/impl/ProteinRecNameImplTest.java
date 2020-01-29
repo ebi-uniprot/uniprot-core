@@ -114,7 +114,7 @@ class ProteinRecNameImplTest {
         ProteinRecName impl =
                 new ProteinRecNameImpl(
                         new NameImpl(), Collections.emptyList(), Collections.emptyList());
-        ProteinRecName obj = new ProteinRecNameBuilder().from(impl).build();
+        ProteinRecName obj = ProteinRecNameBuilder.from(impl).build();
 
         assertTrue(impl.hasFullName());
         assertTrue(impl.equals(obj) && obj.equals(impl));

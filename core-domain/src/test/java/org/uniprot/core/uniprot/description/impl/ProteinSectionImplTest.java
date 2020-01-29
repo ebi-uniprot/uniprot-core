@@ -86,7 +86,7 @@ class ProteinSectionImplTest {
                         new NameImpl(),
                         Collections.emptyList(),
                         Collections.emptyList());
-        ProteinSection obj = new ProteinSectionBuilder().from(impl).build();
+        ProteinSection obj = ProteinSectionBuilder.from(impl).build();
 
         assertTrue(obj.hasRecommendedName());
         assertTrue(impl.equals(obj) && obj.equals(impl));

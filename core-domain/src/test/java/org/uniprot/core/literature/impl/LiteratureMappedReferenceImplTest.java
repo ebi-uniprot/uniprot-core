@@ -26,7 +26,7 @@ class LiteratureMappedReferenceImplTest {
                         "sid",
                         Collections.singletonList("sou cat"),
                         "anno");
-        LiteratureMappedReference obj = new LiteratureMappedReferenceBuilder().from(impl).build();
+        LiteratureMappedReference obj = LiteratureMappedReferenceBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

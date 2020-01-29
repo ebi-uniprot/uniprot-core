@@ -35,7 +35,7 @@ class UniProtXDbTypesTest {
         verifyAttribute(opType.getAttributes().get(1), "Status", "status", null);
         verifyAttribute(opType.getAttributes().get(2), "MoleculeType", "molecule type", null);
     }
-    
+
     @Test
     void testGeneBankType() {
         UniProtXDbTypeDetail opType = UniProtXDbTypes.INSTANCE.getType("GenBank");

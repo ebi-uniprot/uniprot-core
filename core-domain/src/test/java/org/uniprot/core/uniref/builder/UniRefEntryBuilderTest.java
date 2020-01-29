@@ -46,7 +46,7 @@ class UniRefEntryBuilderTest {
                         .representativeMember(member)
                         .build();
 
-        UniRefEntry entry2 = new UniRefEntryBuilder().from(entry).build();
+        UniRefEntry entry2 = UniRefEntryBuilder.from(entry).build();
         assertEquals(entry, entry2);
     }
 

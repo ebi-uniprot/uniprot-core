@@ -43,7 +43,7 @@ class RepresentativeMemberBuilderTest {
                         .organismTaxId(9606)
                         .sequence(sequence)
                         .build();
-        RepresentativeMember member2 = new RepresentativeMemberBuilder().from(member).build();
+        RepresentativeMember member2 = RepresentativeMemberBuilder.from(member).build();
         assertEquals(member, member2);
     }
 

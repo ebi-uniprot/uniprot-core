@@ -9,7 +9,7 @@ class SourceLineBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         SourceLine obj = new SourceLineBuilder("val").build();
-        SourceLineBuilder builder = new SourceLineBuilder("val").from(obj);
+        SourceLineBuilder builder = SourceLineBuilder.from(obj);
         assertNotNull(builder);
     }
 

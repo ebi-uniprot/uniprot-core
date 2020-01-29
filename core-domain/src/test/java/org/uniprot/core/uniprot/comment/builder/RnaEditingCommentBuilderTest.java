@@ -78,7 +78,7 @@ class RnaEditingCommentBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         RnaEditingComment obj = new RnaEditingCommentBuilder().build();
-        RnaEditingCommentBuilder builder = new RnaEditingCommentBuilder().from(obj);
+        RnaEditingCommentBuilder builder = RnaEditingCommentBuilder.from(obj);
         assertNotNull(builder);
     }
 

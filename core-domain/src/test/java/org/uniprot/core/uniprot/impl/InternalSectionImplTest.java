@@ -126,7 +126,7 @@ class InternalSectionImplTest {
         InternalSectionImpl impl =
                 new InternalSectionImpl(
                         Collections.emptyList(), Collections.emptyList(), Collections.emptyList());
-        InternalSection obj = new InternalSectionBuilder().from(impl).build();
+        InternalSection obj = InternalSectionBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

@@ -18,7 +18,7 @@ class OverlapRegionBuilderTest {
         int end = 65;
 
         OverlapRegion overlapRegion = new OverlapRegionBuilder().start(start).end(end).build();
-        OverlapRegion overlapRegion2 = new OverlapRegionBuilder().from(overlapRegion).build();
+        OverlapRegion overlapRegion2 = OverlapRegionBuilder.from(overlapRegion).build();
         assertEquals(overlapRegion, overlapRegion2);
     }
 

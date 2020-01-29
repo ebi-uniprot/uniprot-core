@@ -59,7 +59,7 @@ class ECImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         EC impl = new ECImpl("val", createEvidences());
-        EC obj = new ECBuilder().from(impl).build();
+        EC obj = ECBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

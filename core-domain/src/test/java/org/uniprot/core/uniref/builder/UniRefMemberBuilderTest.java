@@ -34,7 +34,7 @@ class UniRefMemberBuilderTest {
                         .organismTaxId(9606)
                         .build();
 
-        UniRefMember member2 = new UniRefMemberBuilder().from(member).build();
+        UniRefMember member2 = UniRefMemberBuilder.from(member).build();
         assertEquals(member, member2);
     }
 

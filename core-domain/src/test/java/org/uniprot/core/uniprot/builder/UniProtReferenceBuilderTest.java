@@ -90,7 +90,7 @@ class UniProtReferenceBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         UniProtReference obj = new UniProtReferenceBuilder().build();
-        UniProtReferenceBuilder builder = new UniProtReferenceBuilder().from(obj);
+        UniProtReferenceBuilder builder = UniProtReferenceBuilder.from(obj);
         assertNotNull(builder);
     }
 

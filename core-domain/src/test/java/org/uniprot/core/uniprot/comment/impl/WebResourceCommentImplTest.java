@@ -16,7 +16,7 @@ class WebResourceCommentImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         WebResourceComment impl = new WebResourceCommentImpl("mol", "resc", "url", false, "note");
-        WebResourceComment obj = new WebResourceCommentBuilder().from(impl).build();
+        WebResourceComment obj = WebResourceCommentBuilder.from(impl).build();
 
         assertTrue(impl.hasNote());
         assertTrue(impl.hasResourceName());

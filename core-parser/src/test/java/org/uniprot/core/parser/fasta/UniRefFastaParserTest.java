@@ -43,7 +43,7 @@ class UniRefFastaParserTest {
     void testFastaEntry2() {
         UniRefEntry entry = createEntry();
         UniRefEntry entry2 =
-                new UniRefEntryBuilder().from(entry).commonTaxonId(1l).commonTaxon("root").build();
+                UniRefEntryBuilder.from(entry).commonTaxonId(1l).commonTaxon("root").build();
 
         String fasta = UniRefFastaParser.toFasta(entry2);
 
@@ -59,33 +59,19 @@ class UniRefFastaParserTest {
         UniRefType type = UniRefType.UniRef100;
         String name = "Cluster: AMP-binding enzyme family protein";
         UniRefEntryId entryId = new UniRefEntryIdBuilder(id).build();
-        UniRefEntry entry =
-                new UniRefEntryBuilder()
-                        .id(entryId)
-                        .name(name)
-                        .updated(LocalDate.now())
-                        .entryType(type)
-                        .commonTaxonId(9606l)
-                        .commonTaxon("Homo sapiens")
-                        .representativeMember(createReprestativeMember())
-                        .addMember(createMember())
-                        .addGoTerm(
-                                new GoTermBuilder()
-                                        .type(GoTermType.COMPONENT)
-                                        .id("GO:0044444")
-                                        .build())
-                        .addGoTerm(
-                                new GoTermBuilder()
-                                        .type(GoTermType.FUNCTION)
-                                        .id("GO:0044459")
-                                        .build())
-                        .addGoTerm(
-                                new GoTermBuilder()
-                                        .type(GoTermType.PROCESS)
-                                        .id("GO:0032459")
-                                        .build())
-                        .build();
-        return entry;
+        return new UniRefEntryBuilder()
+                .id(entryId)
+                .name(name)
+                .updated(LocalDate.now())
+                .entryType(type)
+                .commonTaxonId(9606l)
+                .commonTaxon("Homo sapiens")
+                .representativeMember(createReprestativeMember())
+                .addMember(createMember())
+                .addGoTerm(new GoTermBuilder().type(GoTermType.COMPONENT).id("GO:0044444").build())
+                .addGoTerm(new GoTermBuilder().type(GoTermType.FUNCTION).id("GO:0044459").build())
+                .addGoTerm(new GoTermBuilder().type(GoTermType.PROCESS).id("GO:0032459").build())
+                .build();
     }
 
     private RepresentativeMember createReprestativeMember() {

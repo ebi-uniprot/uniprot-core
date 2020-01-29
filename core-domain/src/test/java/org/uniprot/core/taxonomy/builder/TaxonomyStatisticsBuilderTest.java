@@ -46,8 +46,7 @@ class TaxonomyStatisticsBuilderTest {
     void testFromTaxonomyStrain() {
         TaxonomyStatistics taxonomyStatistics = getCompleteTaxonomyStatistics();
 
-        TaxonomyStatisticsBuilder builder =
-                new TaxonomyStatisticsBuilder().from(taxonomyStatistics);
+        TaxonomyStatisticsBuilder builder = TaxonomyStatisticsBuilder.from(taxonomyStatistics);
 
         TaxonomyStatistics other = builder.build();
         assertEquals(taxonomyStatistics.toString(), other.toString());

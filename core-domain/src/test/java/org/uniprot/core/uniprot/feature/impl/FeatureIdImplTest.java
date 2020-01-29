@@ -70,7 +70,7 @@ class FeatureIdImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         FeatureIdImpl impl = new FeatureIdImpl("2");
-        FeatureId obj = new FeatureIdBuilder("1").from(impl).build();
+        FeatureId obj = FeatureIdBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

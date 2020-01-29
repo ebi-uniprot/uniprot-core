@@ -49,7 +49,7 @@ class RnaEditingPositionBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         RnaEdPosition obj = new RnaEditingPositionBuilder().build();
-        RnaEditingPositionBuilder builder = new RnaEditingPositionBuilder().from(obj);
+        RnaEditingPositionBuilder builder = RnaEditingPositionBuilder.from(obj);
         assertNotNull(builder);
     }
 

@@ -24,7 +24,7 @@ class LiteratureStoreEntryImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         LiteratureStoreEntry impl = new LiteratureStoreEntryImpl(null, Collections.emptyList());
-        LiteratureStoreEntry obj = new LiteratureStoreEntryBuilder().from(impl).build();
+        LiteratureStoreEntry obj = LiteratureStoreEntryBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

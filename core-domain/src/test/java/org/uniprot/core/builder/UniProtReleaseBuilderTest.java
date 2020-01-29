@@ -43,7 +43,7 @@ class UniProtReleaseBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         UniProtRelease obj = new UniProtReleaseBuilder().build();
-        UniProtReleaseBuilder builder = new UniProtReleaseBuilder().from(obj);
+        UniProtReleaseBuilder builder = UniProtReleaseBuilder.from(obj);
         assertNotNull(builder);
     }
 

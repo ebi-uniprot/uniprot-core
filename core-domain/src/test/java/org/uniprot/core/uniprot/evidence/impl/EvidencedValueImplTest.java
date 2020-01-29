@@ -63,7 +63,7 @@ class EvidencedValueImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         EvidencedValueImpl impl = new EvidencedValueImpl("value", null);
-        EvidencedValue obj = new EvidencedValueBuilder().from(impl).build();
+        EvidencedValue obj = EvidencedValueBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

@@ -18,7 +18,7 @@ class SourceLineImplTest {
     @Test
     void builderFrom_constructorImp_shouldCreate_equalObject() {
         SourceLineImpl impl = new SourceLineImpl(VAL);
-        SourceLine obj = new SourceLineBuilder(VAL).from(impl).build();
+        SourceLine obj = SourceLineBuilder.from(impl).build();
         assertTrue(impl.equals(obj) && obj.equals(impl));
         assertEquals(impl.hashCode(), obj.hashCode());
     }

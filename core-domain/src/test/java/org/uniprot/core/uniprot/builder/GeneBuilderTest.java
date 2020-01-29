@@ -116,7 +116,7 @@ class GeneBuilderTest {
     @Test
     void canCreateBuilderFromInstance() {
         Gene obj = new GeneBuilder().build();
-        GeneBuilder builder = new GeneBuilder().from(obj);
+        GeneBuilder builder = GeneBuilder.from(obj);
         assertNotNull(builder);
     }
 
